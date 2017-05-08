@@ -25,7 +25,7 @@ package gov.nasa.jpl.imce.oml.model.runtime;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * @see gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceStructuredDataPropertyContext
+ * @see gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceStructuredDataPropertyValue
  * <!-- end-model-doc -->
  *
  *

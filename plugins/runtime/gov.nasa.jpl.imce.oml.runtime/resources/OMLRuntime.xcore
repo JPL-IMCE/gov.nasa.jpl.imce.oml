@@ -121,7 +121,7 @@ class OMLEntityDataPropertyToScalar extends OMLRelationshipFromEntity {
 }
 
 /*
- * @see gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceStructuredDataPropertyContext
+ * @see gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceStructuredDataPropertyValue
  */
 class OMLEntityDataPropertyToStructure extends OMLRelationshipFromEntity, OMLRelationshipToStructure {}
 
