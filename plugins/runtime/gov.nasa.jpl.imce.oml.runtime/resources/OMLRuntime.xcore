@@ -1,0 +1,139 @@
+@Ecore(nsPrefix="omlr", nsURI="http://imce.jpl.nasa.gov/oml/runtime")
+@GenModel(copyrightText="
+Copyright 2017 California Institute of Technology (\"Caltech\").
+U.S. Government sponsorship acknowledged.
+
+Licensed under the Apache License, Version 2.0 (the \"License\");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an \"AS IS\" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+", bundleManifest="false",
+   childCreationExtenders="true",
+   complianceLevel="8.0",
+   featureDelegation="None",
+   modelPluginVariables="org.eclipse.xtext.xbase.lib org.eclipse.emf.ecore.xcore.lib org.eclipse.emf.cdo",
+   rootExtendsClass="org.eclipse.emf.internal.cdo.CDOObjectImpl",
+   rootExtendsInterface="org.eclipse.emf.cdo.CDOObject",
+   modelDirectory="gov.nasa.jpl.imce.oml.runtime/src-xcore/",
+   editDirectory="gov.nasa.jpl.imce.oml.runtime.edit/src-gen",
+   editorDirectory="gov.nasa.jpl.imce.oml.runtime.ui/src-gen",
+   modelName="OMLR")
+
+/*
+ * An OML Bundle specifies the vocabulary of a DSL.
+ * To turn that vocabulary into a DSL-specific metamodel,
+ * the OML Bundle can be lifted into a new metamodel that extends the oml.runtime.
+ * This allows analyzing a DSL-specific model that is an instance of the DSL-specific metamodel
+ * as if it were created as an instance of the OML DescriptionBox vocabulary.
+ * 
+ * The correspondence with the OML DescriptionBox vocabulary is indicated in '@see' annotations.
+ */
+package gov.nasa.jpl.imce.oml.model.runtime
+
+import org.eclipse.emf.ecore.util.ECrossReferenceAdapter
+import org.eclipse.emf.ecore.util.EcoreUtil
+
+type IRI wraps String
+
+type LexicalValue wraps String
+
+abstract class OMLObject {
+	
+	container OMLDescription[1] omlRoot opposite omlDescriptionContents
+	
+	op <T extends OMLObject> T[] omlInverseReferencers(Class<T> aType) {
+		val resourceSet = this.eResource.resourceSet
+		val adapters = resourceSet.eAdapters.filter(ECrossReferenceAdapter)
+		if (adapters.empty) {
+			val references = EcoreUtil.UsageCrossReferencer.find(this, resourceSet)
+			references.filter(OMLObject).filter(aType).asEList
+		} else {
+			adapters.get(0).getInverseReferences(this).filter(OMLObject).filter(aType).asEList
+		}
+	}
+}
+
+/*
+ * @see gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox
+ */
+class OMLDescription extends OMLObject {
+	IRI omlDesciptionIRI
+	
+	contains OMLObject[] omlDescriptionContents opposite omlRoot
+	
+	op OMLDescription getOMLRoot() { this }
+}
+
+/*
+ * @see gov.nasa.jpl.imce.oml.model.descriptions.StructuredDataPropertyTuple
+ */
+class OMLStructure extends OMLObject {}
+
+abstract class OMLEntity extends OMLObject {}
+
+/*
+ * @see gov.nasa.jpl.imce.oml.model.descriptions.ConceptInstance
+ */
+class OMLConcept extends OMLEntity {}
+
+abstract class OMLRelationshipFromEntity extends OMLObject {
+	op OMLEntity[1] omlSource()
+}
+
+abstract class OMLRelationshipFromStructure extends OMLObject {
+	op OMLStructure[1] omlSource()
+}
+
+abstract class OMLRelationshipToEntity extends OMLObject {
+	op OMLEntity[1] omlTarget()
+}
+
+abstract class OMLRelationshipToStructure extends OMLObject {
+	op OMLStructure[1] omlTarget()
+}
+
+abstract class OMLEntityRelationship extends OMLRelationshipFromEntity, OMLRelationshipToEntity {}
+
+/*
+ * @see gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstance
+ * @see gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstanceDomain
+ * @see gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstanceRange
+ */
+class OMLReifiedRelationship extends OMLEntityRelationship, OMLEntity {}
+
+/*
+ * @see gov.nasa.jpl.imce.oml.model.descriptions.UnreifiedRelationshipInstanceTuple
+ */
+class OMLUnreifiedRelationship extends OMLEntityRelationship {}
+
+/*
+ * @see gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceScalarDataPropertyValue
+ */
+class OMLEntityDataPropertyToScalar extends OMLRelationshipFromEntity {
+	LexicalValue value
+}
+
+/*
+ * @see gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceStructuredDataPropertyContext
+ */
+class OMLEntityDataPropertyToStructure extends OMLRelationshipFromEntity, OMLRelationshipToStructure {}
+
+
+/*
+ * @see gov.nasa.jpl.imce.oml.model.descriptions.ScalarDataPropertyValue
+ */
+class OMLStructureDataPropertyToScalar extends OMLRelationshipFromStructure {
+	LexicalValue value
+}
+
+/*
+ * @see gov.nasa.jpl.imce.oml.model.descriptions.StructuredDataPropertyTuple
+ */
+class OMLStructureDataPropertyToStructure extends OMLRelationshipFromStructure, OMLRelationshipToStructure {}
