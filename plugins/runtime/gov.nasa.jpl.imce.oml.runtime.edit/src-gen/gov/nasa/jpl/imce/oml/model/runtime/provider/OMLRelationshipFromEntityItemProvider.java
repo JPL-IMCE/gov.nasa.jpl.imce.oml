@@ -19,12 +19,14 @@
 package gov.nasa.jpl.imce.oml.model.runtime.provider;
 
 
+import gov.nasa.jpl.imce.oml.model.runtime.RuntimePackage;
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
 /**
@@ -55,8 +57,31 @@ public class OMLRelationshipFromEntityItemProvider extends OMLObjectItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addOmlSourcePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Oml Source feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOmlSourcePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_OMLRelationshipFromEntity_omlSource_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_OMLRelationshipFromEntity_omlSource_feature", "_UI_OMLRelationshipFromEntity_type"),
+				 RuntimePackage.Literals.OML_RELATIONSHIP_FROM_ENTITY__OML_SOURCE,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**

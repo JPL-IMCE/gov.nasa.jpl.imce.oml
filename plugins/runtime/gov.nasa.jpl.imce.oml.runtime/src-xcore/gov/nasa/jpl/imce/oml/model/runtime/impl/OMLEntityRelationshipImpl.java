@@ -22,21 +22,36 @@ import gov.nasa.jpl.imce.oml.model.runtime.OMLEntity;
 import gov.nasa.jpl.imce.oml.model.runtime.OMLEntityRelationship;
 import gov.nasa.jpl.imce.oml.model.runtime.OMLRelationshipToEntity;
 import gov.nasa.jpl.imce.oml.model.runtime.RuntimePackage;
-
-import java.lang.reflect.InvocationTargetException;
-
-import org.eclipse.emf.common.util.EList;
-
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>OML Entity Relationship</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are implemented:
+ * </p>
+ * <ul>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.runtime.impl.OMLEntityRelationshipImpl#getOmlTarget <em>Oml Target</em>}</li>
+ * </ul>
  *
  * @generated
  */
 public abstract class OMLEntityRelationshipImpl extends OMLRelationshipFromEntityImpl implements OMLEntityRelationship {
+	/**
+	 * The cached value of the '{@link #getOmlTarget() <em>Oml Target</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOmlTarget()
+	 * @generated
+	 * @ordered
+	 */
+	protected OMLEntity omlTarget;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -61,10 +76,37 @@ public abstract class OMLEntityRelationshipImpl extends OMLRelationshipFromEntit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OMLEntity omlTarget() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+	public OMLEntity getOmlTarget() {
+		if (omlTarget != null && ((EObject)omlTarget).eIsProxy()) {
+			InternalEObject oldOmlTarget = (InternalEObject)omlTarget;
+			omlTarget = (OMLEntity)eResolveProxy(oldOmlTarget);
+			if (omlTarget != oldOmlTarget) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, RuntimePackage.OML_ENTITY_RELATIONSHIP__OML_TARGET, oldOmlTarget, omlTarget));
+			}
+		}
+		return omlTarget;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OMLEntity basicGetOmlTarget() {
+		return omlTarget;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOmlTarget(OMLEntity newOmlTarget) {
+		OMLEntity oldOmlTarget = omlTarget;
+		omlTarget = newOmlTarget;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RuntimePackage.OML_ENTITY_RELATIONSHIP__OML_TARGET, oldOmlTarget, omlTarget));
 	}
 
 	/**
@@ -73,14 +115,73 @@ public abstract class OMLEntityRelationshipImpl extends OMLRelationshipFromEntit
 	 * @generated
 	 */
 	@Override
-	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+			case RuntimePackage.OML_ENTITY_RELATIONSHIP__OML_TARGET:
+				if (resolve) return getOmlTarget();
+				return basicGetOmlTarget();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
+			case RuntimePackage.OML_ENTITY_RELATIONSHIP__OML_TARGET:
+				setOmlTarget((OMLEntity)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
+			case RuntimePackage.OML_ENTITY_RELATIONSHIP__OML_TARGET:
+				setOmlTarget((OMLEntity)null);
+				return;
+		}
+		super.eUnset(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
+			case RuntimePackage.OML_ENTITY_RELATIONSHIP__OML_TARGET:
+				return omlTarget != null;
+		}
+		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == OMLRelationshipToEntity.class) {
-			switch (baseOperationID) {
-				case RuntimePackage.OML_RELATIONSHIP_TO_ENTITY___OML_TARGET: return RuntimePackage.OML_ENTITY_RELATIONSHIP___OML_TARGET;
+			switch (derivedFeatureID) {
+				case RuntimePackage.OML_ENTITY_RELATIONSHIP__OML_TARGET: return RuntimePackage.OML_RELATIONSHIP_TO_ENTITY__OML_TARGET;
 				default: return -1;
 			}
 		}
-		return super.eDerivedOperationID(baseOperationID, baseClass);
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
 	}
 
 	/**
@@ -89,12 +190,14 @@ public abstract class OMLEntityRelationshipImpl extends OMLRelationshipFromEntit
 	 * @generated
 	 */
 	@Override
-	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
-		switch (operationID) {
-			case RuntimePackage.OML_ENTITY_RELATIONSHIP___OML_TARGET:
-				return omlTarget();
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == OMLRelationshipToEntity.class) {
+			switch (baseFeatureID) {
+				case RuntimePackage.OML_RELATIONSHIP_TO_ENTITY__OML_TARGET: return RuntimePackage.OML_ENTITY_RELATIONSHIP__OML_TARGET;
+				default: return -1;
+			}
 		}
-		return super.eInvoke(operationID, arguments);
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 } //OMLEntityRelationshipImpl

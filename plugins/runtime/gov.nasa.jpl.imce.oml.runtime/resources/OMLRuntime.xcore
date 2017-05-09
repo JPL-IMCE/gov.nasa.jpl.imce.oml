@@ -34,6 +34,8 @@ limitations under the License.
  * as if it were created as an instance of the OML DescriptionBox vocabulary.
  * 
  * The correspondence with the OML DescriptionBox vocabulary is indicated in '@see' annotations.
+ * 
+ * @TODO: DescriptionBoxRefinement (an import-like relationship)
  */
 package gov.nasa.jpl.imce.oml.model.runtime
 
@@ -76,6 +78,12 @@ class OMLDescription extends OMLObject {
  */
 class OMLStructure extends OMLObject {}
 
+/*
+ * @see gov.nasa.jpl.imce.oml.model.descriptions.ConceptualEntitySingletonInstance
+ * 
+ * Note that there is no name attribute per se.
+ * When mapping OMLRuntime-based M1 => OML DescriptionBox M1, the OMLEntity ID will be used as a name.
+ */
 abstract class OMLEntity extends OMLObject {}
 
 /*
@@ -84,19 +92,19 @@ abstract class OMLEntity extends OMLObject {}
 class OMLConcept extends OMLEntity {}
 
 abstract class OMLRelationshipFromEntity extends OMLObject {
-	op OMLEntity[1] omlSource()
+	refers OMLEntity[1] omlSource
 }
 
 abstract class OMLRelationshipFromStructure extends OMLObject {
-	op OMLStructure[1] omlSource()
+	refers OMLStructure[1] omlSource
 }
 
 abstract class OMLRelationshipToEntity extends OMLObject {
-	op OMLEntity[1] omlTarget()
+	refers OMLEntity[1] omlTarget
 }
 
 abstract class OMLRelationshipToStructure extends OMLObject {
-	op OMLStructure[1] omlTarget()
+	refers OMLStructure[1] omlTarget
 }
 
 abstract class OMLEntityRelationship extends OMLRelationshipFromEntity, OMLRelationshipToEntity {}

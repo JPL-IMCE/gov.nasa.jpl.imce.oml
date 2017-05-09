@@ -350,8 +350,8 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getOMLRelationshipFromEntity__OmlSource() {
-		return omlRelationshipFromEntityEClass.getEOperations().get(0);
+	public EReference getOMLRelationshipFromEntity_OmlSource() {
+		return (EReference)omlRelationshipFromEntityEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -368,8 +368,8 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getOMLRelationshipFromStructure__OmlSource() {
-		return omlRelationshipFromStructureEClass.getEOperations().get(0);
+	public EReference getOMLRelationshipFromStructure_OmlSource() {
+		return (EReference)omlRelationshipFromStructureEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -386,8 +386,8 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getOMLRelationshipToEntity__OmlTarget() {
-		return omlRelationshipToEntityEClass.getEOperations().get(0);
+	public EReference getOMLRelationshipToEntity_OmlTarget() {
+		return (EReference)omlRelationshipToEntityEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -404,8 +404,8 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getOMLRelationshipToStructure__OmlTarget() {
-		return omlRelationshipToStructureEClass.getEOperations().get(0);
+	public EReference getOMLRelationshipToStructure_OmlTarget() {
+		return (EReference)omlRelationshipToStructureEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -551,16 +551,16 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 		omlConceptEClass = createEClass(OML_CONCEPT);
 
 		omlRelationshipFromEntityEClass = createEClass(OML_RELATIONSHIP_FROM_ENTITY);
-		createEOperation(omlRelationshipFromEntityEClass, OML_RELATIONSHIP_FROM_ENTITY___OML_SOURCE);
+		createEReference(omlRelationshipFromEntityEClass, OML_RELATIONSHIP_FROM_ENTITY__OML_SOURCE);
 
 		omlRelationshipFromStructureEClass = createEClass(OML_RELATIONSHIP_FROM_STRUCTURE);
-		createEOperation(omlRelationshipFromStructureEClass, OML_RELATIONSHIP_FROM_STRUCTURE___OML_SOURCE);
+		createEReference(omlRelationshipFromStructureEClass, OML_RELATIONSHIP_FROM_STRUCTURE__OML_SOURCE);
 
 		omlRelationshipToEntityEClass = createEClass(OML_RELATIONSHIP_TO_ENTITY);
-		createEOperation(omlRelationshipToEntityEClass, OML_RELATIONSHIP_TO_ENTITY___OML_TARGET);
+		createEReference(omlRelationshipToEntityEClass, OML_RELATIONSHIP_TO_ENTITY__OML_TARGET);
 
 		omlRelationshipToStructureEClass = createEClass(OML_RELATIONSHIP_TO_STRUCTURE);
-		createEOperation(omlRelationshipToStructureEClass, OML_RELATIONSHIP_TO_STRUCTURE___OML_TARGET);
+		createEReference(omlRelationshipToStructureEClass, OML_RELATIONSHIP_TO_STRUCTURE__OML_TARGET);
 
 		omlEntityRelationshipEClass = createEClass(OML_ENTITY_RELATIONSHIP);
 
@@ -662,20 +662,16 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 		initEClass(omlConceptEClass, OMLConcept.class, "OMLConcept", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(omlRelationshipFromEntityEClass, OMLRelationshipFromEntity.class, "OMLRelationshipFromEntity", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEOperation(getOMLRelationshipFromEntity__OmlSource(), this.getOMLEntity(), "omlSource", 1, 1, !IS_UNIQUE, IS_ORDERED);
+		initEReference(getOMLRelationshipFromEntity_OmlSource(), this.getOMLEntity(), null, "omlSource", null, 1, 1, OMLRelationshipFromEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(omlRelationshipFromStructureEClass, OMLRelationshipFromStructure.class, "OMLRelationshipFromStructure", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEOperation(getOMLRelationshipFromStructure__OmlSource(), this.getOMLStructure(), "omlSource", 1, 1, !IS_UNIQUE, IS_ORDERED);
+		initEReference(getOMLRelationshipFromStructure_OmlSource(), this.getOMLStructure(), null, "omlSource", null, 1, 1, OMLRelationshipFromStructure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(omlRelationshipToEntityEClass, OMLRelationshipToEntity.class, "OMLRelationshipToEntity", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEOperation(getOMLRelationshipToEntity__OmlTarget(), this.getOMLEntity(), "omlTarget", 1, 1, !IS_UNIQUE, IS_ORDERED);
+		initEReference(getOMLRelationshipToEntity_OmlTarget(), this.getOMLEntity(), null, "omlTarget", null, 1, 1, OMLRelationshipToEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(omlRelationshipToStructureEClass, OMLRelationshipToStructure.class, "OMLRelationshipToStructure", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEOperation(getOMLRelationshipToStructure__OmlTarget(), this.getOMLStructure(), "omlTarget", 1, 1, !IS_UNIQUE, IS_ORDERED);
+		initEReference(getOMLRelationshipToStructure_OmlTarget(), this.getOMLStructure(), null, "omlTarget", null, 1, 1, OMLRelationshipToStructure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(omlEntityRelationshipEClass, OMLEntityRelationship.class, "OMLEntityRelationship", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

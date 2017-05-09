@@ -24,6 +24,13 @@ package gov.nasa.jpl.imce.oml.model.runtime;
  * A representation of the model object '<em><b>OML Entity</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * @see gov.nasa.jpl.imce.oml.model.descriptions.ConceptualEntitySingletonInstance
+ * 
+ * Note that there is no name attribute per se.
+ * When mapping OMLRuntime-based M1 => OML DescriptionBox M1, the OMLEntity ID will be used as a name.
+ * <!-- end-model-doc -->
+ *
  *
  * @see gov.nasa.jpl.imce.oml.model.runtime.RuntimePackage#getOMLEntity()
  * @model abstract="true"

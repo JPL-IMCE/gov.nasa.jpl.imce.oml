@@ -22,21 +22,36 @@ import gov.nasa.jpl.imce.oml.model.runtime.OMLRelationshipToStructure;
 import gov.nasa.jpl.imce.oml.model.runtime.OMLStructure;
 import gov.nasa.jpl.imce.oml.model.runtime.OMLStructureDataPropertyToStructure;
 import gov.nasa.jpl.imce.oml.model.runtime.RuntimePackage;
-
-import java.lang.reflect.InvocationTargetException;
-
-import org.eclipse.emf.common.util.EList;
-
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>OML Structure Data Property To Structure</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are implemented:
+ * </p>
+ * <ul>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.runtime.impl.OMLStructureDataPropertyToStructureImpl#getOmlTarget <em>Oml Target</em>}</li>
+ * </ul>
  *
  * @generated
  */
 public class OMLStructureDataPropertyToStructureImpl extends OMLRelationshipFromStructureImpl implements OMLStructureDataPropertyToStructure {
+	/**
+	 * The cached value of the '{@link #getOmlTarget() <em>Oml Target</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOmlTarget()
+	 * @generated
+	 * @ordered
+	 */
+	protected OMLStructure omlTarget;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -61,10 +76,37 @@ public class OMLStructureDataPropertyToStructureImpl extends OMLRelationshipFrom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OMLStructure omlTarget() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+	public OMLStructure getOmlTarget() {
+		if (omlTarget != null && ((EObject)omlTarget).eIsProxy()) {
+			InternalEObject oldOmlTarget = (InternalEObject)omlTarget;
+			omlTarget = (OMLStructure)eResolveProxy(oldOmlTarget);
+			if (omlTarget != oldOmlTarget) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, RuntimePackage.OML_STRUCTURE_DATA_PROPERTY_TO_STRUCTURE__OML_TARGET, oldOmlTarget, omlTarget));
+			}
+		}
+		return omlTarget;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OMLStructure basicGetOmlTarget() {
+		return omlTarget;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOmlTarget(OMLStructure newOmlTarget) {
+		OMLStructure oldOmlTarget = omlTarget;
+		omlTarget = newOmlTarget;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RuntimePackage.OML_STRUCTURE_DATA_PROPERTY_TO_STRUCTURE__OML_TARGET, oldOmlTarget, omlTarget));
 	}
 
 	/**
@@ -73,14 +115,73 @@ public class OMLStructureDataPropertyToStructureImpl extends OMLRelationshipFrom
 	 * @generated
 	 */
 	@Override
-	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+			case RuntimePackage.OML_STRUCTURE_DATA_PROPERTY_TO_STRUCTURE__OML_TARGET:
+				if (resolve) return getOmlTarget();
+				return basicGetOmlTarget();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
+			case RuntimePackage.OML_STRUCTURE_DATA_PROPERTY_TO_STRUCTURE__OML_TARGET:
+				setOmlTarget((OMLStructure)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
+			case RuntimePackage.OML_STRUCTURE_DATA_PROPERTY_TO_STRUCTURE__OML_TARGET:
+				setOmlTarget((OMLStructure)null);
+				return;
+		}
+		super.eUnset(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
+			case RuntimePackage.OML_STRUCTURE_DATA_PROPERTY_TO_STRUCTURE__OML_TARGET:
+				return omlTarget != null;
+		}
+		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == OMLRelationshipToStructure.class) {
-			switch (baseOperationID) {
-				case RuntimePackage.OML_RELATIONSHIP_TO_STRUCTURE___OML_TARGET: return RuntimePackage.OML_STRUCTURE_DATA_PROPERTY_TO_STRUCTURE___OML_TARGET;
+			switch (derivedFeatureID) {
+				case RuntimePackage.OML_STRUCTURE_DATA_PROPERTY_TO_STRUCTURE__OML_TARGET: return RuntimePackage.OML_RELATIONSHIP_TO_STRUCTURE__OML_TARGET;
 				default: return -1;
 			}
 		}
-		return super.eDerivedOperationID(baseOperationID, baseClass);
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
 	}
 
 	/**
@@ -89,12 +190,14 @@ public class OMLStructureDataPropertyToStructureImpl extends OMLRelationshipFrom
 	 * @generated
 	 */
 	@Override
-	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
-		switch (operationID) {
-			case RuntimePackage.OML_STRUCTURE_DATA_PROPERTY_TO_STRUCTURE___OML_TARGET:
-				return omlTarget();
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == OMLRelationshipToStructure.class) {
+			switch (baseFeatureID) {
+				case RuntimePackage.OML_RELATIONSHIP_TO_STRUCTURE__OML_TARGET: return RuntimePackage.OML_STRUCTURE_DATA_PROPERTY_TO_STRUCTURE__OML_TARGET;
+				default: return -1;
+			}
 		}
-		return super.eInvoke(operationID, arguments);
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 } //OMLStructureDataPropertyToStructureImpl

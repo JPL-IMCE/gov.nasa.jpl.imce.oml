@@ -21,21 +21,36 @@ package gov.nasa.jpl.imce.oml.model.runtime.impl;
 import gov.nasa.jpl.imce.oml.model.runtime.OMLRelationshipFromStructure;
 import gov.nasa.jpl.imce.oml.model.runtime.OMLStructure;
 import gov.nasa.jpl.imce.oml.model.runtime.RuntimePackage;
-
-import java.lang.reflect.InvocationTargetException;
-
-import org.eclipse.emf.common.util.EList;
-
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>OML Relationship From Structure</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are implemented:
+ * </p>
+ * <ul>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.runtime.impl.OMLRelationshipFromStructureImpl#getOmlSource <em>Oml Source</em>}</li>
+ * </ul>
  *
  * @generated
  */
 public abstract class OMLRelationshipFromStructureImpl extends OMLObjectImpl implements OMLRelationshipFromStructure {
+	/**
+	 * The cached value of the '{@link #getOmlSource() <em>Oml Source</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOmlSource()
+	 * @generated
+	 * @ordered
+	 */
+	protected OMLStructure omlSource;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -60,10 +75,37 @@ public abstract class OMLRelationshipFromStructureImpl extends OMLObjectImpl imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OMLStructure omlSource() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+	public OMLStructure getOmlSource() {
+		if (omlSource != null && ((EObject)omlSource).eIsProxy()) {
+			InternalEObject oldOmlSource = (InternalEObject)omlSource;
+			omlSource = (OMLStructure)eResolveProxy(oldOmlSource);
+			if (omlSource != oldOmlSource) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, RuntimePackage.OML_RELATIONSHIP_FROM_STRUCTURE__OML_SOURCE, oldOmlSource, omlSource));
+			}
+		}
+		return omlSource;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OMLStructure basicGetOmlSource() {
+		return omlSource;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOmlSource(OMLStructure newOmlSource) {
+		OMLStructure oldOmlSource = omlSource;
+		omlSource = newOmlSource;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RuntimePackage.OML_RELATIONSHIP_FROM_STRUCTURE__OML_SOURCE, oldOmlSource, omlSource));
 	}
 
 	/**
@@ -72,12 +114,57 @@ public abstract class OMLRelationshipFromStructureImpl extends OMLObjectImpl imp
 	 * @generated
 	 */
 	@Override
-	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
-		switch (operationID) {
-			case RuntimePackage.OML_RELATIONSHIP_FROM_STRUCTURE___OML_SOURCE:
-				return omlSource();
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+			case RuntimePackage.OML_RELATIONSHIP_FROM_STRUCTURE__OML_SOURCE:
+				if (resolve) return getOmlSource();
+				return basicGetOmlSource();
 		}
-		return super.eInvoke(operationID, arguments);
+		return super.eGet(featureID, resolve, coreType);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
+			case RuntimePackage.OML_RELATIONSHIP_FROM_STRUCTURE__OML_SOURCE:
+				setOmlSource((OMLStructure)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
+			case RuntimePackage.OML_RELATIONSHIP_FROM_STRUCTURE__OML_SOURCE:
+				setOmlSource((OMLStructure)null);
+				return;
+		}
+		super.eUnset(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
+			case RuntimePackage.OML_RELATIONSHIP_FROM_STRUCTURE__OML_SOURCE:
+				return omlSource != null;
+		}
+		return super.eIsSet(featureID);
 	}
 
 } //OMLRelationshipFromStructureImpl

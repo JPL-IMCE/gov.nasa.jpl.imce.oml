@@ -24,6 +24,12 @@ package gov.nasa.jpl.imce.oml.model.runtime;
  * A representation of the model object '<em><b>OML Relationship To Entity</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <p>
+ * The following features are supported:
+ * </p>
+ * <ul>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.runtime.OMLRelationshipToEntity#getOmlTarget <em>Oml Target</em>}</li>
+ * </ul>
  *
  * @see gov.nasa.jpl.imce.oml.model.runtime.RuntimePackage#getOMLRelationshipToEntity()
  * @model abstract="true"
@@ -31,11 +37,29 @@ package gov.nasa.jpl.imce.oml.model.runtime;
  */
 public interface OMLRelationshipToEntity extends OMLObject {
 	/**
+	 * Returns the value of the '<em><b>Oml Target</b></em>' reference.
 	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Oml Target</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
 	 * <!-- end-user-doc -->
-	 * @model unique="false" required="true"
+	 * @return the value of the '<em>Oml Target</em>' reference.
+	 * @see #setOmlTarget(OMLEntity)
+	 * @see gov.nasa.jpl.imce.oml.model.runtime.RuntimePackage#getOMLRelationshipToEntity_OmlTarget()
+	 * @model required="true"
 	 * @generated
 	 */
-	OMLEntity omlTarget();
+	OMLEntity getOmlTarget();
+
+	/**
+	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.runtime.OMLRelationshipToEntity#getOmlTarget <em>Oml Target</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Oml Target</em>' reference.
+	 * @see #getOmlTarget()
+	 * @generated
+	 */
+	void setOmlTarget(OMLEntity value);
 
 } // OMLRelationshipToEntity

@@ -24,6 +24,12 @@ package gov.nasa.jpl.imce.oml.model.runtime;
  * A representation of the model object '<em><b>OML Relationship From Entity</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <p>
+ * The following features are supported:
+ * </p>
+ * <ul>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.runtime.OMLRelationshipFromEntity#getOmlSource <em>Oml Source</em>}</li>
+ * </ul>
  *
  * @see gov.nasa.jpl.imce.oml.model.runtime.RuntimePackage#getOMLRelationshipFromEntity()
  * @model abstract="true"
@@ -31,11 +37,29 @@ package gov.nasa.jpl.imce.oml.model.runtime;
  */
 public interface OMLRelationshipFromEntity extends OMLObject {
 	/**
+	 * Returns the value of the '<em><b>Oml Source</b></em>' reference.
 	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Oml Source</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
 	 * <!-- end-user-doc -->
-	 * @model unique="false" required="true"
+	 * @return the value of the '<em>Oml Source</em>' reference.
+	 * @see #setOmlSource(OMLEntity)
+	 * @see gov.nasa.jpl.imce.oml.model.runtime.RuntimePackage#getOMLRelationshipFromEntity_OmlSource()
+	 * @model required="true"
 	 * @generated
 	 */
-	OMLEntity omlSource();
+	OMLEntity getOmlSource();
+
+	/**
+	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.runtime.OMLRelationshipFromEntity#getOmlSource <em>Oml Source</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Oml Source</em>' reference.
+	 * @see #getOmlSource()
+	 * @generated
+	 */
+	void setOmlSource(OMLEntity value);
 
 } // OMLRelationshipFromEntity
