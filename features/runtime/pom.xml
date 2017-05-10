@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>gov.nasa.jpl.imce.oml</groupId>
+	<artifactId>gov.nasa.jpl.imce.oml.features.runtime</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	
+	<parent>
+		<groupId>gov.nasa.jpl.imce.oml</groupId>
+		<artifactId>gov.nasa.jpl.imce.oml.features</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+
+	<modules>
+		<module>gov.nasa.jpl.imce.oml.runtime.feature</module>
+		<module>gov.nasa.jpl.imce.oml.runtime.platform.feature</module>
+	</modules>
+</project>

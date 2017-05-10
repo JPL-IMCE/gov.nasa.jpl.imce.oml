@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<site>
-   <feature url="features/gov.nasa.jpl.imce.oml.runtime.feature_0.1.0.201705081513.jar" id="gov.nasa.jpl.imce.oml.runtime.feature" version="0.1.0.201705081513">
-      <category name="oml.runtime"/>
-   </feature>
-   <category-def name="oml.runtime" label="OML Runtime"/>
-</site>

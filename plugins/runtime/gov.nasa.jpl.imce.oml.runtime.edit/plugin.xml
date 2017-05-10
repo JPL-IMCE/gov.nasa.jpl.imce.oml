@@ -26,7 +26,7 @@
       <!-- @generated OMLRuntime -->
       <factory
             uri="http://imce.jpl.nasa.gov/oml/runtime"
-            class="gov.nasa.jpl.imce.oml.model.runtime.provider.RuntimeItemProviderAdapterFactory"
+            class="gov.nasa.jpl.imce.oml.runtime.provider.RuntimeItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
                org.eclipse.emf.edit.provider.IStructuredItemContentProvider

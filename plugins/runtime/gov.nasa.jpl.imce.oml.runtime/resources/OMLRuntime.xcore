@@ -37,10 +37,12 @@ limitations under the License.
  * 
  * @TODO: DescriptionBoxRefinement (an import-like relationship)
  */
-package gov.nasa.jpl.imce.oml.model.runtime
+package gov.nasa.jpl.imce.oml.runtime
 
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter
 import org.eclipse.emf.ecore.util.EcoreUtil
+
+annotation "http://imce.jpl.nasa.gov/oml/runtime/OMLProvenance" as OMLProvenance
 
 type IRI wraps String
 
@@ -78,6 +80,10 @@ class OMLDescription extends OMLObject {
  */
 class OMLStructure extends OMLObject {}
 
+class OMLScalar extends OMLObject {
+	String value
+}
+
 /*
  * @see gov.nasa.jpl.imce.oml.model.descriptions.ConceptualEntitySingletonInstance
  * 
@@ -85,6 +91,8 @@ class OMLStructure extends OMLObject {}
  * When mapping OMLRuntime-based M1 => OML DescriptionBox M1, the OMLEntity ID will be used as a name.
  */
 abstract class OMLEntity extends OMLObject {}
+
+class OMLAspect extends OMLEntity {}
 
 /*
  * @see gov.nasa.jpl.imce.oml.model.descriptions.ConceptInstance

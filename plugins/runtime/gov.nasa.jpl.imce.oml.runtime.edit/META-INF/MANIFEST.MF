@@ -8,5 +8,5 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: gov.nasa.jpl.imce.oml.runtime;bundle-version="0.1.0";visibility:=reexport,
  org.eclipse.emf.ecore.edit;bundle-version="2.9.0";visibility:=reexport,
  org.eclipse.core.runtime;bundle-version="3.12.0";visibility:=reexport
-Export-Package: gov.nasa.jpl.imce.oml.model.runtime.provider
-Bundle-Activator: gov.nasa.jpl.imce.oml.model.runtime.provider.OMLREditPlugin$Implementation
+Export-Package: gov.nasa.jpl.imce.oml.runtime.provider
+Bundle-Activator: gov.nasa.jpl.imce.oml.runtime.provider.OMLREditPlugin$Implementation

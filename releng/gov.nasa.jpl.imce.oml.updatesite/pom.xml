@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>gov.nasa.jpl.imce.oml</groupId>
+	<artifactId>gov.nasa.jpl.imce.oml.updatesite</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>eclipse-repository</packaging>
+	
+	<parent>
+		<groupId>gov.nasa.jpl.imce.oml</groupId>
+		<artifactId>gov.nasa.jpl.imce.oml.releng</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+</project>
