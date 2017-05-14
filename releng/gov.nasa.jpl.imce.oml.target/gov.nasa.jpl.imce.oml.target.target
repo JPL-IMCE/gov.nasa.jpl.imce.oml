@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.8"?><target name="gov.nasa.jpl.imce.oml.target" sequenceNumber="12">
+<?pde version="3.8"?><target name="gov.nasa.jpl.imce.oml.target" sequenceNumber="13">
 <locations>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.platform.feature.group" version="4.6.3.v20170301-0400"/>
@@ -43,6 +43,10 @@
 <unit id="org.scalaide.worksheet.feature.feature.group" version="0.6.0.v-2_11-201612131053-33a0723"/>
 <unit id="org.scalaide.worksheet.source.feature.feature.group" version="0.6.0.v-2_11-201612131053-33a0723"/>
 <repository location="http://download.scala-ide.org/sdk/lithium/e46/scala211/stable/site"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.scala-ide.equinox-weaving-launcher.feature.feature.group" version="1.1.0.201602261118"/>
+<repository location="http://download.scala-ide.org/plugins/equinox-weaving-launcher/releases/site/"/>
 </location>
 </locations>
 </target>

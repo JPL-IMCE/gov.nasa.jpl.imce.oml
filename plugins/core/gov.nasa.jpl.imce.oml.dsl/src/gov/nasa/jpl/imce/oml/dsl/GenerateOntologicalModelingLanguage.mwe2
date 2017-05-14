@@ -43,8 +43,13 @@ Workflow {
 					enabled = true
 					root = "../../tests/core/gov.nasa.jpl.imce.oml.dsl.tests"
 				}
+				// @TODO: There are no tests.
+				// @TODO: In Eclipse, the generated OntologicalModelingLanguageUiInjectorProvider has a compile error
+				// 		  because it cannot access gov.nasa.jpl.imce.oml.dsl.ui.internal.DslActivator even though
+				//		  the manifest in gov.nasa.jpl.imce.oml.dsl.ui specifically makes it visible to the test plugin:
+				//		  gov.nasa.jpl.imce.oml.dsl.ui.internal;x-friends:="gov.nasa.jpl.imce.oml.dsl.ui.tests",
 				eclipsePluginTest = {
-					enabled = true
+					enabled = false
 					root = "./gov.nasa.jpl.imce.oml.dsl.ui.tests"
 				}
 				genericIde = {

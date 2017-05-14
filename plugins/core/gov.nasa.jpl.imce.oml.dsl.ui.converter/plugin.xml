@@ -17,16 +17,6 @@
 		<handler
         	class="gov.nasa.jpl.imce.oml.dsl.ui.converter.LiftOMLBundleToXcoreHandler"
         	commandId="gov.nasa.jpl.imce.oml.dsl.ui.converter.LiftOMLBundleToXcoreCommand">
-			<enabledWhen>
-			    <with variable="selection">
-			        <iterate ifEmpty="false">
-			            <adapt type="org.eclipse.core.resources.IResource">
-			                <test property="org.eclipse.core.resources.name"
-			                    value="*.oml"/>
-			            </adapt>
-			        </iterate>
-			    </with>
-			</enabledWhen>
       	</handler>
 	</extension>
 	<extension point="org.eclipse.ui.menus">
