@@ -17,6 +17,5 @@
 		<module>gov.nasa.jpl.imce.oml.dsl</module>
 		<module>gov.nasa.jpl.imce.oml.dsl.ide</module>
 		<module>gov.nasa.jpl.imce.oml.dsl.ui</module>
-		<module>gov.nasa.jpl.imce.oml.dsl.ui.converter</module>
 	</modules>
 </project>

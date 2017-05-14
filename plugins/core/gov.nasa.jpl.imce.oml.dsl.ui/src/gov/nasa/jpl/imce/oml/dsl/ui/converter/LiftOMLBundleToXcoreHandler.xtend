@@ -26,10 +26,10 @@ import org.eclipse.core.runtime.IProgressMonitor
 class LiftOMLBundleToXcoreHandler extends AbstractHandler {
 
 	@Inject
-	private IGenerator2 generator
+	protected IGenerator2 generator
 
 	@Inject
-	private Provider<EclipseResourceFileSystemAccess2> fileAccessProvider
+	protected Provider<EclipseResourceFileSystemAccess2> fileAccessProvider
 
 	@Inject
 	IResourceSetProvider resourceSetProvider

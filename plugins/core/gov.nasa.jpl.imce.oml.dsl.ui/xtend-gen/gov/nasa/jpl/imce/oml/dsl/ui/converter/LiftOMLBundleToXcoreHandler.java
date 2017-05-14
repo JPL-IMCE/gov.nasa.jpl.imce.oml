@@ -29,10 +29,10 @@ import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 @SuppressWarnings("all")
 public class LiftOMLBundleToXcoreHandler extends AbstractHandler {
   @Inject
-  private IGenerator2 generator;
+  protected IGenerator2 generator;
   
   @Inject
-  private Provider<EclipseResourceFileSystemAccess2> fileAccessProvider;
+  protected Provider<EclipseResourceFileSystemAccess2> fileAccessProvider;
   
   @Inject
   private IResourceSetProvider resourceSetProvider;

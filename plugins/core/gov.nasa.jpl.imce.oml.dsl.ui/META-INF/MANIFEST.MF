@@ -22,7 +22,7 @@ Bundle-ActivationPolicy: lazy
 Bundle-Vendor: %providerName
 Export-Package: gov.nasa.jpl.imce.oml.dsl.ui,
  gov.nasa.jpl.imce.oml.dsl.ui.contentassist,
- gov.nasa.jpl.imce.oml.dsl.ui.internal;x-friends:="gov.nasa.jpl.imce.oml.dsl.ui.tests",
+ gov.nasa.jpl.imce.oml.dsl.ui.internal,
  gov.nasa.jpl.imce.oml.dsl.ui.labeling,
  gov.nasa.jpl.imce.oml.dsl.ui.outline,
  gov.nasa.jpl.imce.oml.dsl.ui.quickfix
