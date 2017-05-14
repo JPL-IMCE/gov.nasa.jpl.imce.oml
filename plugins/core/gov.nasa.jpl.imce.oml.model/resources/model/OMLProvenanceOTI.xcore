@@ -1,0 +1,86 @@
+@Ecore(nsPrefix="oml2oti", nsURI="http://imce.jpl.nasa.gov/oml/provenance/oti")
+@GenModel(copyrightText="
+Copyright 2016 California Institute of Technology (\"Caltech\").
+U.S. Government sponsorship acknowledged.
+
+Licensed under the Apache License, Version 2.0 (the \"License\");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an \"AS IS\" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+", bundleManifest="false",
+   childCreationExtenders="true",
+   complianceLevel="8.0",
+   featureDelegation="None",
+   modelPluginVariables="org.eclipse.xtext.xbase.lib org.eclipse.emf.ecore.xcore.lib org.eclipse.emf.cdo",
+   rootExtendsClass="org.eclipse.emf.internal.cdo.CDOObjectImpl",
+   rootExtendsInterface="org.eclipse.emf.cdo.CDOObject",
+   modelDirectory="gov.nasa.jpl.imce.oml.model/src-gen/",
+   modelName="OML2OTI")
+  
+// If commented, it is possible to build cleanly with 'gradle :generateXtext'
+// If uncommented, 'gradle :generateXtext' will have several java.io.IOExceptions like these:
+// The path '.../plugin.properties' is unmapped
+// The path '.../build.properties' is unmapped
+// The path '.../plugin.xml' is unmapped
+// @GenModel(modelPluginID="oml.model")
+ 
+package gov.nasa.jpl.imce.oml.provenance.oti
+
+/*
+ * An RFC-4122 UUID; either Version 4 (random) or Version 5 (SHA-1 hash & namespace) 
+ */
+type UUID wraps String
+
+type OML_IRI wraps String
+
+type OTI_TOOL_SPECIFIC_ID wraps String
+
+type OTI_TOOL_SPECIFIC_UUID wraps String
+
+type OTI_TOOL_SPECIFIC_URL wraps String
+
+/*
+ * A 3 or 4 tuple establishing the provenance between:
+ * - an OML Element identified by its primary key: omlUUID or, if it is an OML Resource, by its auxiliary key: omlIRI
+ * - an OTI UMLElement (identified by its keys: otiID, otiURL, and, if available, otiUUID)
+ */
+class OML2OTIProvenance {
+	
+	/*
+	 * The UUID of an OML Resource mapped to OTI
+	 */
+	UUID[1] omlUUID
+	
+	/*
+	 * If the OML Element is an OML Resource, its IRI otherwise nothing.
+	 */
+	OML_IRI[?] omlIRI
+	
+	/*
+	 * The OTI tool-specific ID of the OTI element mapped from an OML Element
+	 */
+	OTI_TOOL_SPECIFIC_ID[1] otiID
+	
+	/*
+	 * The OTI tool-specific URL of the OTI element mapped from an OML Element
+	 */
+	OTI_TOOL_SPECIFIC_URL[1] otiURL
+	
+	/*
+	 * The OTI tool-specific UUID of the OTI element mapped from an OML Element
+	 */
+	OTI_TOOL_SPECIFIC_UUID[?] otiUUID
+	
+	/*
+	 * Explanation of the OML to OTI provenance mapping
+	 */
+	String[1] explanation
+}
+

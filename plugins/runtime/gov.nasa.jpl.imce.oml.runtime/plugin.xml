@@ -26,7 +26,7 @@
       <!-- @generated OMLRuntime -->
       <package
             uri="http://imce.jpl.nasa.gov/oml/runtime"
-            class="gov.nasa.jpl.imce.oml.runtime.RuntimePackage"
+            class="gov.nasa.jpl.imce.oml.runtime.OMLRuntimePackage"
             genModel="resources/OMLRuntime.xcore"/>
    </extension>
 

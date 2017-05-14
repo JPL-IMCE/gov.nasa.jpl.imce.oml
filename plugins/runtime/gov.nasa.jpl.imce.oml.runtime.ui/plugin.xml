@@ -28,12 +28,12 @@
             id="org.eclipse.emf.ecore.Wizard.category.ID"
             name="%_UI_Wizard_category"/>
       <wizard
-            id="gov.nasa.jpl.imce.oml.runtime.presentation.RuntimeModelWizardID"
-            name="%_UI_RuntimeModelWizard_label"
-            class="gov.nasa.jpl.imce.oml.runtime.presentation.RuntimeModelWizard"
+            id="gov.nasa.jpl.imce.oml.runtime.presentation.OMLRuntimeModelWizardID"
+            name="%_UI_OMLRuntimeModelWizard_label"
+            class="gov.nasa.jpl.imce.oml.runtime.presentation.OMLRuntimeModelWizard"
             category="org.eclipse.emf.ecore.Wizard.category.ID"
-            icon="icons/full/obj16/RuntimeModelFile.gif">
-         <description>%_UI_RuntimeModelWizard_description</description>
+            icon="icons/full/obj16/OMLRuntimeModelFile.gif">
+         <description>%_UI_OMLRuntimeModelWizard_description</description>
          <selection class="org.eclipse.core.resources.IResource"/>
       </wizard>
    </extension>
@@ -41,12 +41,12 @@
    <extension point="org.eclipse.ui.editors">
       <!-- @generated OMLRuntime -->
       <editor
-            id="gov.nasa.jpl.imce.oml.runtime.presentation.RuntimeEditorID"
-            name="%_UI_RuntimeEditor_label"
-            icon="icons/full/obj16/RuntimeModelFile.gif"
-            extensions="runtime"
-            class="gov.nasa.jpl.imce.oml.runtime.presentation.RuntimeEditor"
-            contributorClass="gov.nasa.jpl.imce.oml.runtime.presentation.RuntimeActionBarContributor">
+            id="gov.nasa.jpl.imce.oml.runtime.presentation.OMLRuntimeEditorID"
+            name="%_UI_OMLRuntimeEditor_label"
+            icon="icons/full/obj16/OMLRuntimeModelFile.gif"
+            extensions="omlruntime"
+            class="gov.nasa.jpl.imce.oml.runtime.presentation.OMLRuntimeEditor"
+            contributorClass="gov.nasa.jpl.imce.oml.runtime.presentation.OMLRuntimeActionBarContributor">
       </editor>
    </extension>
 </plugin>

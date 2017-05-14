@@ -10,14 +10,10 @@
 		<groupId>gov.nasa.jpl.imce.oml</groupId>
 		<artifactId>gov.nasa.jpl.imce.oml.root</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
-		<relativePath>./releng</relativePath>
 	</parent>
 
 	<modules>
-	<!-- 
-	TODO: move from oml.core
-			<module>core</module>
-	-->
+		<module>core</module>
 		<module>runtime</module>
 	</modules>
 </project>

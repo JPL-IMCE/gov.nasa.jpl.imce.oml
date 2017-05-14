@@ -19,8 +19,7 @@
 package gov.nasa.jpl.imce.oml.runtime.provider;
 
 
-import gov.nasa.jpl.imce.oml.runtime.RuntimePackage;
-
+import gov.nasa.jpl.imce.oml.runtime.OMLRuntimePackage;
 import java.util.Collection;
 import java.util.List;
 
@@ -76,7 +75,7 @@ public class OMLRelationshipFromStructureItemProvider extends OMLObjectItemProvi
 				 getResourceLocator(),
 				 getString("_UI_OMLRelationshipFromStructure_omlSource_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_OMLRelationshipFromStructure_omlSource_feature", "_UI_OMLRelationshipFromStructure_type"),
-				 RuntimePackage.Literals.OML_RELATIONSHIP_FROM_STRUCTURE__OML_SOURCE,
+				 OMLRuntimePackage.Literals.OML_RELATIONSHIP_FROM_STRUCTURE__OML_SOURCE,
 				 true,
 				 false,
 				 true,

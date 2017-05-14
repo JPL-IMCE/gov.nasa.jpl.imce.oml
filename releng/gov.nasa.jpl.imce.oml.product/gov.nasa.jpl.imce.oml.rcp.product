@@ -29,8 +29,9 @@
    </plugins>
 
    <features>
-      <feature id="gov.nasa.jpl.imce.oml.feature"/>
-      <feature id="gov.nasa.jpl.imce.oml.platform.feature"/>
+      <feature id="gov.nasa.jpl.imce.oml.core.feature" version="0.6.1"/>
+      <feature id="gov.nasa.jpl.imce.oml.runtime.feature" version="0.1.0.qualifier"/>
+      <feature id="gov.nasa.jpl.imce.oml.runtime.platform.feature" version="1.0.0.qualifier"/>
    </features>
 
    <configurations>

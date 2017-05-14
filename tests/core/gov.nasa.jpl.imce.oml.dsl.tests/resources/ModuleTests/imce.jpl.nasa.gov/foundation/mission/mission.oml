@@ -1,0 +1,23 @@
+open terminology <http://imce.jpl.nasa.gov/foundation/mission/mission> {
+
+	extends <http://imce.jpl.nasa.gov/foundation/base/base>
+
+	aspect PerformingElement
+
+	concept Component
+
+	concept Function
+
+	Component extendsAspect base:IdentifiedElement
+
+	reifiedRelationship Performs {
+		inverseFunctional
+		asymmetric
+		irreflexive
+		unreified=performs
+		inverse=isPerformedBy
+		source=Component
+		target=Function
+	}
+
+}

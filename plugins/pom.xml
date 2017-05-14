@@ -13,10 +13,7 @@
 	</parent>
 
 	<modules>
-		<!-- 
-		TODO: migrate from oml.core
 		<module>core</module>
-		-->
 		<module>runtime</module>
 	</modules>
 </project>

@@ -1,0 +1,1167 @@
+@Ecore(nsPrefix="omlt", nsURI="http://imce.jpl.nasa.gov/oml/terminologies")
+@GenModel(copyrightText="
+Copyright 2016 California Institute of Technology (\"Caltech\").
+U.S. Government sponsorship acknowledged.
+
+Licensed under the Apache License, Version 2.0 (the \"License\");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an \"AS IS\" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+", bundleManifest="false",
+   childCreationExtenders="true",
+   complianceLevel="8.0",
+   featureDelegation="None",
+   modelPluginVariables="org.eclipse.xtext.xbase.lib org.eclipse.emf.ecore.xcore.lib org.eclipse.emf.cdo",
+   rootExtendsClass="org.eclipse.emf.internal.cdo.CDOObjectImpl",
+   rootExtendsInterface="org.eclipse.emf.cdo.CDOObject",
+   modelDirectory="gov.nasa.jpl.imce.oml.model/src-gen/",
+   modelName="OMLT")
+  
+// If commented, it is possible to build cleanly with 'gradle :generateXtext'
+// If uncommented, 'gradle :generateXtext' swill have several java.io.IOExceptions like these:
+// The path '.../plugin.properties' is unmapped
+// The path '.../build.properties' is unmapped
+// The path '.../plugin.xml' is unmapped
+// @GenModel(modelPluginID="oml.model")
+ 
+package gov.nasa.jpl.imce.oml.model.terminologies
+
+import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions
+
+import gov.nasa.jpl.imce.oml.model.common.Collection
+import gov.nasa.jpl.imce.oml.model.common.CopyConstructor
+import gov.nasa.jpl.imce.oml.model.common.DerivedUUID
+import gov.nasa.jpl.imce.oml.model.common.Element
+import gov.nasa.jpl.imce.oml.model.common.FunctionalInterface
+import gov.nasa.jpl.imce.oml.model.common.Glossary
+import gov.nasa.jpl.imce.oml.model.common.ImplicitExtent
+import gov.nasa.jpl.imce.oml.model.common.IRI
+import gov.nasa.jpl.imce.oml.model.common.LangRange
+import gov.nasa.jpl.imce.oml.model.common.LexicalNumber
+import gov.nasa.jpl.imce.oml.model.common.LexicalTime
+import gov.nasa.jpl.imce.oml.model.common.LexicalValue
+import gov.nasa.jpl.imce.oml.model.common.LocalName
+import gov.nasa.jpl.imce.oml.model.common.Module
+import gov.nasa.jpl.imce.oml.model.common.ModuleEdge
+import gov.nasa.jpl.imce.oml.model.common.ModuleElement
+import gov.nasa.jpl.imce.oml.model.common.NamespaceUUID
+import gov.nasa.jpl.imce.oml.model.common.NotFunctionalAPI
+import gov.nasa.jpl.imce.oml.model.common.NotSchema
+import gov.nasa.jpl.imce.oml.model.common.Override
+import gov.nasa.jpl.imce.oml.model.common.OverrideVal
+import gov.nasa.jpl.imce.oml.model.common.Pattern
+import gov.nasa.jpl.imce.oml.model.common.Resource
+import gov.nasa.jpl.imce.oml.model.common.Scala
+import gov.nasa.jpl.imce.oml.model.common.UUID
+
+
+/*
+ * OML supports two different interpretations for OML TerminologyBox vocabularies:
+ * - An open-world interpretation where the vocabulary formalizes a particular domain 
+ *   that will be used for modeling particular systems in that domain.
+ * - A closed-world interpretation where the vocabulary formalizes the description of
+ *   a particular system modeled using the open-world vocabulary for a particular domain.
+ * The difference between these interpretations primarily affects the mapping to an [OWL2-DL Class]
+ * of a concrete OML ConceptualEntity as follows:
+ * - For OpenWorldDefinitions, the mapped [OWL2-DL Class] has open-world semantics; that is,
+ *   it classifies a set of individuals that share the characteristics and capabilities 
+ *   encoded in the [OWL2-DL Class].
+ * - For ClosedWorldDefinitions, the mapped [OWL2-DL Class] has a closed-world semantics in
+ *   the sense that it is intended to classify a singleton individual uniquely identified
+ *   via the values of its identifying OML DataRelationshipFromEntity properties.
+ */
+@Glossary
+enum TerminologyKind {
+	/*
+	 * Each OML Entity in an OpenWorldDefinitions OML TerminologyBox has the semantics of
+	 * an [OWL2-DL Class]; that is, it classifies a set of individuals 
+	 * that share the characteristics and capabilities encoded in the [OWL2-DL Class].
+	 * A well-formed OML SpecializationAxiom establishing a taxonomic relationship between 
+	 * two OML Term(s) can be asserted arbitrarily in any OpenWorldDefinitions OML TerminologyBox 
+	 * that directly or indirectly includes the related OML Term(s). 
+	 * For example, suppose that OML Concept(s) `A` and `B`
+	 * are defined in OpenWorldDefinitions OML TerminologyBox `P` and `Q` respectively. 
+	 * Suppose further that OpenWorldDefinitions OML TerminologyBox(es), `U` and `V`, each
+	 * extend both `P` and `Q` where `U` asserts that `A` extends `B` while `V` asserts that `B` extends `A.
+	 * This is well-formed; furthermore, an OpenWorldDefinitions OML TerminologyBox extending both `U` and `V` 
+	 * would force `A` and `B` to become equivalent OML Concept(s) per the open-world semantics of [OWL2-DL].
+	 */
+	OpenWorldDefinitions
+	/*
+	 * Each OML ConceptualEntity in a ClosedWorldDesignation terminology describes a unique thing 
+	 * in the real world uniquely identifiable by the collection of its identifying OML DataRelationshipFromEntity properties
+	 * (e.g., serial numbers, unique identifiers, ...).
+	 * A well-formed ClosedWorldDesignations OML TerminologyBox is restricted to defining singleton OML ConceptualEntity(-ies), each as
+	 * a specialization of at least one concrete OML ConceptualEntity defined  in an extended OpenWorldDefinitions OML TerminologyBox.
+	 * Each OML ConceptualEntity in a ClosedWorldDesignations OML TerminologyBox maps to
+	 * an [OWL2-DL Class] with an axiom asserting its equivalence to an exact cardinality restriction of 1 for
+	 * each of its identifying OML DataRelationshipFromEntity properties.
+	 */
+	ClosedWorldDesignations
+}
+
+/*
+ * An OML TerminologyBox is an OML Module for defining a domain-specific vocabulary
+ * as a logical set of OML TerminologyBoxStatement(s), possibly by reuse of other 
+ * vocabularies via OML TerminologyBoxAxiom(s).
+ * The semantics of an OML TerminologyBox domain-specific vocabulary is defined
+ * by the mapping to [OWL2-DL] of the other vocabularies it reuses, if any, and
+ * that of its OML TerminologyBoxAxiom(s) and OML TerminologyBoxStatement(s) 
+ * according to its OML TerminologyKind. 
+ */
+@Glossary
+abstract class TerminologyBox extends Module {
+	
+	TerminologyKind[1] kind
+	
+	/*
+	 * The OML TerminologyBoxAxiom(s) asserted in this OML TerminologyBox
+	 */
+	@NotSchema
+	@Collection(kind="Set")
+	contains TerminologyBoxAxiom[] boxAxioms opposite tbox
+	
+	/*
+	 * The OML TerminologyBoxStatement(s) asserted in this OML TerminologyBox
+	 */
+	@NotSchema
+	@Collection(kind="Set")
+	contains TerminologyBoxStatement[] boxStatements opposite tbox
+}
+
+/*
+ * An OML TerminologyBoxStatement is a logical axiom about an OML TerminologyThing
+ * in an OML TerminologyBox.
+ */
+@Glossary
+abstract class TerminologyBoxStatement extends ModuleElement {
+	
+	container TerminologyBox[1] tbox opposite boxStatements
+}
+
+/*
+ * An OML TerminologyAxiom is asserted in an OML TerminologyBox of some kind.
+ */
+@Glossary
+abstract class TerminologyAxiom extends ModuleEdge {
+	
+	/*
+	 * The source TerminologyBox
+	 */
+	@NotSchema
+	@ImplicitExtent
+	op TerminologyBox[?] source()
+	
+	@NotSchema
+	@ImplicitExtent
+	op Module[?] sourceModule() { source() }
+	
+	/*
+	 * The target TerminologyBox
+	 */
+	@NotSchema
+	@ImplicitExtent
+	op TerminologyBox[1] target()
+	
+	@NotSchema
+	@ImplicitExtent
+	op Module[1] targetModule() { target() }
+}
+
+/*
+ * An OML TerminologyBoxAxiom is an OML TerminologyAxiom that
+ * asserts a logical statement about an OML TerminologyBox.
+ */
+@Glossary
+abstract class TerminologyBoxAxiom extends TerminologyAxiom {
+	
+	@CopyConstructor
+	container TerminologyBox[1] tbox opposite boxAxioms
+}
+
+/*
+ * An OML TerminologyExtensionAxiom allows an extendingTerminology to
+ * make references (via OML TerminologyBoxStatement(s)) to OML TerminologyThing(s)
+ * declared within the transitive closure of the extendedTerminlogy.
+ */
+@Glossary
+@DerivedUUID
+class TerminologyExtensionAxiom extends TerminologyBoxAxiom {
+
+	@Scala(code="extent.terminologyBoxOfTerminologyBoxAxiom.get(this)")
+	@ImplicitExtent
+	@NotSchema
+	op TerminologyBox[?] extendingTerminology() { tbox }
+	
+	@CopyConstructor
+  	refers TerminologyBox[1] extendedTerminology
+  	
+	/*
+	 * The extendingTerminology is the source
+	 */
+	@ImplicitExtent
+	@NotSchema
+	@Override
+	op TerminologyBox[?] source() { extendingTerminology() }
+	
+	/*
+	 * The extendedTerminology is the target
+	 */
+	@ImplicitExtent
+	@NotSchema
+	@Override
+	op TerminologyBox[1] target() { extendedTerminology }
+  	
+	@NotFunctionalAPI
+	@NotSchema
+	op UUID[1] uuid() {
+		OMLExtensions.derivedUUID(
+		"TerminologyExtensionAxiom", 
+		"tbox" -> tbox?.uuid()?.toString,
+		"extendedTerminology" -> extendedTerminology?.uuid()?.toString
+		)?.toString
+	}
+}
+
+/*
+ * An OML Term map to the declaration of an [OWL2-DL Entity] of some kind.
+ */
+@Glossary
+@NamespaceUUID(namespace="tbox", factors="name")
+abstract class Term extends TerminologyBoxStatement, Resource {
+	
+	@Scala(code="extent.terminologyBoxOfTerminologyBoxStatement.get(this).flatMap(_.iri().map(_ + \"#\" + name))")
+	@ImplicitExtent
+	@NotSchema
+	@Override
+	op IRI[?] iri() { tbox?.iri()+'#'+name() }
+	
+	@Scala(code="extent.terminologyBoxOfTerminologyBoxStatement.get(this).map(tbox => tbox.nsPrefix+\":\"+name)")
+	@ImplicitExtent
+	@NotSchema
+	@Override
+	op String[?] abbrevIRI() { (tbox?.nsPrefix()?:"")+':'+name() }
+	
+	@Override
+	LocalName[1] name
+	
+	@NotFunctionalAPI
+	@NotSchema
+	op LocalName[1] name() { getName() }
+	
+	@NotFunctionalAPI
+	@NotSchema
+	op UUID[1] uuid() {
+		OMLExtensions.namespaceUUID(tbox?.uuid(), "name" -> name()?.toString())?.toString
+	}
+}
+
+/*
+ * An OML UnaryTermKind is an abstraction for the category of OML Term(s)
+ * that are relationships with arity 1
+ */
+@Glossary
+abstract class UnaryTermKind {}
+
+/*
+ * An OML DirectedBinaryRelationshipKind is an abstraction 
+ * for the category of OML Term(s)
+ * that are relationships with arity 2
+ */
+@Glossary
+abstract class DirectedBinaryRelationshipKind {
+	
+	@NotSchema
+	op Term[1] relationDomain()
+	
+	@NotSchema
+	op Term[1] relationRange()
+}
+
+/*
+ * An OML Entity is an abstraction for an OML Term
+ * that is either an OML UnaryTermKind or
+ * an OML DirectedBinaryRelationshipKind whose subject
+ * and range are both a kind of OML Entity.
+ */
+@Glossary
+abstract class Entity extends Term {}
+
+/*
+ * An OML ConceptualEntity is an OML Entity that can be instantiated
+ * as an OML ConceptualEntitySingletonInstance in any OML DescriptionBox.
+ * It is partially instantiated if some essential OML EntityRelationship
+ * or OML DataRelationshipFromEntity with `isIdentityCriteria=true` lacks
+ * an OML TerminologyInstanceAssertion specifying its reference or value respectively.
+ */
+@Glossary
+abstract class ConceptualEntity {}
+
+/*
+ * An OML Aspect is a kind of OML Entity of OML UnaryTermKind.
+ * It is intended to be used as a specialization parent
+ * for one or more OML ConceptualEntity.
+ */
+@Glossary
+class Aspect extends Entity, UnaryTermKind {}
+
+/*
+ * An OML Concept is an OML ConceptualEntity of OML UnaryTermKind.
+ */
+@Glossary
+class Concept extends Entity, ConceptualEntity, UnaryTermKind {}
+
+/*
+ * An OML EntityRelationship is a kind of OML Term that
+ * is an OML DirectedBinaryRelationshipKind between a
+ * domain OML Entity and a range OML Entity.
+ */
+@Glossary
+abstract class EntityRelationship extends Term, DirectedBinaryRelationshipKind {
+
+ 	refers Entity[1] source
+
+	@NotSchema
+	@Override
+	op Term[1] relationDomain() { source }
+
+ 	refers Entity[1] target
+
+	@NotSchema
+	@Override
+	op Term[1] relationRange() { target }
+	
+ 	/*
+ 	 * 0 <= target.size <= 1
+	 */
+	boolean[1] isFunctional
+ 	/*
+ 	 * 0 <= source.size <= 1
+	 */ 	 
+ 	boolean[1] isInverseFunctional
+ 	/*
+ 	 * 1 <= target.size
+	 */
+ 	boolean[1] isEssential
+ 	/*
+ 	 * 1 <= source.size 	
+	 */
+ 	boolean[1] isInverseEssential
+ 	/*
+ 	 * Whether this relationship is symmetric
+	 */
+ 	boolean[1] isSymmetric
+ 	/*
+ 	 * Whether this relationship is asymmetric
+	 */
+ 	boolean[1] isAsymmetric
+ 	/*
+ 	 * Whether this relationship is reflexive
+	 */
+ 	boolean[1] isReflexive
+ 	/*
+ 	 * Whether this relationship is irreflexive
+	 */ 	 
+ 	boolean[1] isIrreflexive
+ 	/*
+ 	 * Whether this relationship is transitive
+	 */
+ 	boolean[1] isTransitive
+}
+
+/*
+ * An OML ReifiedRelationship is an OML ConceptualEntity and a kind of OML EntityRelationship
+ * where an instance has an intrinsic identity. This means that
+ * an OML ReifiedRelationship can be involved as the domain or the
+ * range of another OML EntityRelationship as well as the
+ * domain of an OML DataRelationshipFromEntity.
+ */
+@Glossary
+class ReifiedRelationship extends EntityRelationship, Entity, ConceptualEntity {
+
+	LocalName[1] unreifiedPropertyName
+	LocalName[?] unreifiedInversePropertyName
+}
+
+/*
+ * An OML UnreifiedRelationship is a kind of OML EntityRelationship
+ * where an instance has no intrinsic identity but rather structural
+ * equivalence semantics as a tuple of references. This means
+ * that an OML UnreifiedRelationship cannot be involved as the domain
+ * or range of any kind of OML DirectedBinaryRelationshipKind.
+ */
+@Glossary
+class UnreifiedRelationship extends EntityRelationship {}
+
+/*
+ * An OML Datatype is a common abstraction for what should be, in principle,
+ * [OWL2 DataRange] of arity 1 (atomic) or > 1 (tuple structure).
+ * In practice, an OML DataType maps to the [OWL2-DL] subset; which means
+ * that an atomic OML Datatype maps to an [OWL2 Datatype] whereas
+ * a structured OML Datatype maps to an [OWL2 Class].
+ */
+@Glossary
+abstract class Datatype extends Term {}
+
+/*
+ * An OWL DataRange corresponds to an [OWL2 DataRange] with arity=1.
+ */
+@Glossary
+abstract class DataRange extends Datatype {}
+
+/*
+ * An OML Scalar corresponds to an OWL2 Declaration of an [OWL2 DataRange] with arity=1.
+ */
+@Glossary
+class Scalar extends DataRange, UnaryTermKind {}
+
+/*
+ * An OML DataRelationship is an OML DirectedBinaryRelationshipKind
+ * where the domain or the range is some kind of OML Datatype.
+ */
+@Glossary
+abstract class DataRelationship extends Term, DirectedBinaryRelationshipKind {
+	
+	@NotSchema
+	op Term[1] source()
+	
+	@NotSchema
+	@Override
+	op Term[1] relationDomain() { source }
+	
+	@NotSchema
+	op Datatype[1] target()
+	
+	@NotSchema
+	@Override
+	op Term[1] relationRange() { target }
+}
+
+/*
+ * An OML DataRelationshipDomain is an abstraction 
+ * for the domain of an OML DataRelationship
+ */
+@Glossary
+abstract class DataRelationshipDomain extends Element, Resource {
+}
+
+/*
+ * An OML DataRelationshipFromEntity is an OML DataRelationship
+ * whose domain is an OML Entity.
+ */
+@Glossary
+abstract class DataRelationshipFromEntity extends DataRelationshipDomain {
+	refers Entity[1] domain
+	
+	/*
+	 * Specifies the OntoClean IdentityCriteria semantics of an OML DataRelationshipFromEntity:
+	 * - +IC, if true; which means that every OML ConceptualEntity defined in a ClosedWorldDesignations OML Terminology
+	 *   has an exact cardinality restriction of 1 for the possible values of the relationship, which is an
+	 *   encoding in [OWL2-DL] of
+	 * - ~IC, if false
+	 */
+	@Glossary
+	boolean[1] isIdentityCriteria
+}
+
+/*
+ * An OML DataRelationshipFromStructure is an OML DataRelationship
+ * whose domain is an OML Structure.
+ */
+@Glossary
+abstract class DataRelationshipFromStructure extends DataRelationshipDomain {
+	refers Structure[1] domain
+}
+
+/*
+ * An OML DataRelationshipRange is an abstraction 
+ * for the range of an OML DataRelationship
+ */
+@Glossary
+abstract class DataRelationshipRange extends Element, Resource {
+}
+
+/*
+ * An OML DataRelationshipToScalar is an OML DataRelationship 
+ * whose range is an OML DataRange.
+ */
+@Glossary
+abstract class DataRelationshipToScalar extends DataRelationshipRange {
+	refers DataRange[1] range
+}
+
+/*
+ * An OML DataRelationshipToStructure is an OML DataRelationship 
+ * whose range is an OML Structure.
+ */
+@Glossary
+abstract class DataRelationshipToStructure extends DataRelationshipRange {
+	refers Structure[1] range
+}
+
+/*
+ * An OML EntityStructuredDataProperty is an OML DataRelationship
+ * whose domain is an OML Entity and range is an OML Structure.
+ */
+@Glossary
+class EntityStructuredDataProperty extends DataRelationship, DataRelationshipFromEntity, DataRelationshipToStructure {
+	
+	@FunctionalInterface
+	@OverrideVal
+	op UUID[1] uuid()
+	
+	@NotSchema
+	@Override
+	op Term[1] source() { domain }
+	
+	@NotSchema
+	@Override
+	op Datatype[1] target() { range }
+}
+
+/*
+ * An OML EntityScalarDataProperty is an OML DataRelationship
+ * whose domain is an OML Entity and range is an OML DataRange.
+ */
+@Glossary
+class EntityScalarDataProperty extends DataRelationship, DataRelationshipFromEntity, DataRelationshipToScalar {
+	
+	@FunctionalInterface
+	@OverrideVal
+	op UUID[1] uuid()
+	
+	@NotSchema
+	@Override
+	op Term[1] source() { domain }
+	
+	@NotSchema
+	@Override
+	op Datatype[1] target() { range }
+}
+
+/*
+ * An OML StructuredDataProperty is an OML DataRelationship
+ * whose domain is an OML Structure and range is an OML Structure.
+ */
+@Glossary
+class StructuredDataProperty extends DataRelationship, DataRelationshipFromStructure, DataRelationshipToStructure {
+	
+	@FunctionalInterface
+	@OverrideVal
+	op UUID[1] uuid()
+	
+	@NotSchema
+	@Override
+	op Term[1] source() { domain }
+	
+	@NotSchema
+	@Override
+	op Datatype[1] target() { range }
+}
+
+/*
+ * An OML ScalarDataProperty is an OML DataRelationship
+ * whose domain is an OML Structure and range is an OML DataRange.
+ */
+@Glossary
+class ScalarDataProperty extends DataRelationship, DataRelationshipFromStructure, DataRelationshipToScalar {
+	
+	@FunctionalInterface
+	@OverrideVal
+	op UUID[1] uuid()
+	
+	@NotSchema
+	@Override
+	op Term[1] source() { domain }
+	
+	@NotSchema
+	@Override
+	op Datatype[1] target() { range }
+}
+
+/*
+ * An OML Structure would correspond to an OWL2 Declaration of an [OWL2 DataRange] with arity > 1.
+ * However, since OWL2 Datatypes in the [OWL2-DL] are restricted to have arity=1,
+ * the OML mapping to [OWL2-DL] involves a pattern-based usage of an [OWL2 Class] to represent an OML Structure.
+ * The arity corresponds to the cardinality of the set of ScalarDataProperty & StructuredDataProperty 
+ * relationships whose domain is this structure.
+ */
+@Glossary
+class Structure extends Datatype, UnaryTermKind {}
+
+/*
+ * An OML TermAxiom is a logical axiom about an OML Term.
+ */
+@Glossary
+abstract class TermAxiom extends TerminologyBoxStatement {}
+
+/*
+ * An OML EntityRestrictionAxiom maps to an [OWL2 Object Property Restiction]
+ * for an OML EntityRelationship.
+ */
+@Glossary
+abstract class EntityRestrictionAxiom extends TermAxiom {
+
+	 refers EntityRelationship[1] restrictedRelation
+
+	 refers Entity[1] restrictedRange
+
+	 refers Entity[1] restrictedDomain
+}
+
+/*
+ * An OML EntityExistentialRestrictionAxiom maps 
+ * to an [OWL2 Object Property Existential Restriction].
+ */
+@Glossary
+@DerivedUUID
+class EntityExistentialRestrictionAxiom extends EntityRestrictionAxiom {
+	
+	@NotFunctionalAPI
+	@NotSchema
+	op UUID[1] uuid() {
+		OMLExtensions.derivedUUID(
+		"EntityExistentialRestrictionAxiom", 
+		"tbox" -> tbox.uuid(),
+		"restrictedRelation" -> restrictedRelation?.uuid()?.toString,
+		"restrictedDomain" -> restrictedDomain?.uuid()?.toString, 
+		"restrictedRange" -> restrictedRange?.uuid()?.toString
+		)?.toString
+	}
+}
+
+/*
+ * An OML EntityUniversalRestrictionAxiom maps
+ * to an [OWL2 Object Property Universal Restriction].
+ */
+@Glossary
+@DerivedUUID
+class EntityUniversalRestrictionAxiom extends EntityRestrictionAxiom {
+	
+	@NotFunctionalAPI
+	@NotSchema
+	op UUID[1] uuid() {
+		OMLExtensions.derivedUUID(
+		"EntityUniversalRestrictionAxiom", 
+		"tbox" -> tbox.uuid(),
+		"restrictedRelation" -> restrictedRelation?.uuid()?.toString,
+		"restrictedDomain" -> restrictedDomain?.uuid()?.toString, 
+		"restrictedRange" -> restrictedRange?.uuid()?.toString
+		)?.toString
+	}
+	
+}
+
+/*
+ * An OML SpecializationAxiom is a logical axiom
+ * about a taxonomic relationship between a specific and a general OML Entity.
+ */
+@Glossary
+abstract class SpecializationAxiom extends TermAxiom {
+	/*
+	 * Get the sub (child) entity
+	 */
+	@NotSchema
+	op Entity[1] child()
+	/*
+	 * Get the super (parent) entity
+	 */
+	@NotSchema
+	op Entity[1] parent()
+}
+
+/*
+ * An OML AspectSpecializationAxiom is a logical axiom
+ * about a taxonomic relationship between a specific OML Aspect 
+ * and a general OML Entity.
+ */
+@Glossary
+@DerivedUUID
+class AspectSpecializationAxiom extends SpecializationAxiom {
+	
+	/*
+	 * The sub (child) entity
+	 */
+	refers Entity[1] subEntity
+	/*
+	 * The super (parent) aspect
+	 */
+	refers Aspect[1] superAspect
+	/*
+	 * Get the sub (child) entity
+	 */
+	@NotSchema
+	@Override
+	op Entity[1] child() { subEntity }
+	/*
+	 * Get the super (parent) entity
+	 */
+	@NotSchema
+	@Override
+	op Entity[1] parent() { superAspect }
+	
+	@NotFunctionalAPI
+	@NotSchema
+	op UUID[1] uuid() {
+		OMLExtensions.derivedUUID(
+		"AspectSpecializationAxiom",  
+		"tbox" -> tbox.uuid(),
+		"superAspect" -> superAspect?.uuid()?.toString,
+		"subEntity" -> subEntity?.uuid()?.toString
+		)?.toString
+	}
+}
+
+/*
+ * An OML ConceptSpecializationAxiom is a logical axiom
+ * about a taxonomic relationship between a specific and general
+ * OML Concept.
+ */
+@Glossary
+@DerivedUUID
+class ConceptSpecializationAxiom extends SpecializationAxiom {
+	
+	refers Concept[1] subConcept
+	refers Concept[1] superConcept
+	/*
+	 * Get the sub (child) entity
+	 */
+	@NotSchema
+	@Override
+	op Entity[1] child() { subConcept }
+	/*
+	 * Get the super (parent) entity
+	 */
+	@NotSchema
+	@Override
+	op Entity[1] parent() { superConcept }
+	
+	@NotFunctionalAPI
+	@NotSchema
+	op UUID[1] uuid() {
+		OMLExtensions.derivedUUID(
+		"ConceptSpecializationAxiom",
+		"tbox" -> tbox?.uuid(),
+		"superConcept" -> superConcept?.uuid()?.toString,
+		"subConcept" -> subConcept?.uuid()?.toString
+		)?.toString
+	}
+}
+
+/*
+ * An OML ReifiedRelationshipSpecializationAxiom is a logical axiom
+ * about a taxonomic relationship between a specific and general
+ * OML ReifiedRelationship.
+ */
+@Glossary
+@DerivedUUID
+class ReifiedRelationshipSpecializationAxiom extends SpecializationAxiom {
+	
+	/*
+	 * The sub (child) relationship
+	 */
+	refers ReifiedRelationship[1] subRelationship
+	
+	/*
+	 * The super (parent) relationship
+	 */
+	refers ReifiedRelationship[1] superRelationship
+	
+	/*
+	 * Get the sub (child) entity
+	 */
+	@NotSchema
+	@Override
+	op Entity[1] child() { subRelationship }
+	
+	/*
+	 * Get the super (parent) entity
+	 */
+	@NotSchema
+	@Override
+	op Entity[1] parent() { superRelationship }
+	
+	@NotFunctionalAPI
+	@NotSchema
+	op UUID[1] uuid() {
+		OMLExtensions.derivedUUID(
+		"ReifiedRelationshipSpecializationAxiom",
+		"tbox" -> tbox?.uuid(),
+		"superRelationship" -> superRelationship?.uuid()?.toString,
+		"subRelationship" -> subRelationship?.uuid()?.toString
+		)?.toString
+	}
+}
+
+/*
+ * An OML EntityScalarDataPropertyRestrictionAxiom maps to
+ * some kind of OWL2 Data Property Restriction.
+ */
+@Glossary
+abstract class EntityScalarDataPropertyRestrictionAxiom extends TermAxiom {
+	refers Entity[1] restrictedEntity
+  	refers EntityScalarDataProperty[1] scalarProperty
+}
+
+/*
+ * An OML EntityScalarDataPropertyExistentialRestrictionAxiom maps to an 
+ * OWL2 DataSomeValuesFrom restriction (the range must be explicitly defined as a Scalar datatype)
+ */
+@Glossary
+@DerivedUUID
+class EntityScalarDataPropertyExistentialRestrictionAxiom 
+extends EntityScalarDataPropertyRestrictionAxiom {
+	
+  	refers DataRange[1] scalarRestriction
+  	
+	@NotFunctionalAPI
+	@NotSchema
+	op UUID[1] uuid() {
+		OMLExtensions.derivedUUID(
+		"EntityScalarDataPropertyExistentialRestrictionAxiom",
+		"tbox" -> tbox?.uuid(),
+		"restrictedEntity" -> restrictedEntity?.uuid()?.toString,
+		"scalarProperty" -> scalarProperty?.uuid()?.toString,
+		"scalarRestriction" -> scalarRestriction?.uuid()?.toString
+		)?.toString
+	}
+}
+
+/*
+ * An OML EntityScalarDataPropertyUniversalRestrictionAxiom maps to an
+ * OWL2 DataAllValuesFrom (the range must be explicitly defined as a Scalar datatype)
+ */
+@Glossary
+@DerivedUUID
+class EntityScalarDataPropertyUniversalRestrictionAxiom 
+extends EntityScalarDataPropertyRestrictionAxiom {
+	
+  	refers DataRange[1] scalarRestriction
+  	
+	@NotFunctionalAPI
+	@NotSchema
+	op UUID[1] uuid() {
+		OMLExtensions.derivedUUID(
+		"EntityScalarDataPropertyUniversalRestrictionAxiom",
+		"tbox" -> tbox?.uuid(),
+		"restrictedEntity" -> restrictedEntity?.uuid()?.toString,
+		"scalarProperty" -> scalarProperty?.uuid()?.toString,
+		"scalarRestriction" -> scalarRestriction?.uuid()?.toString
+		)?.toString
+	}
+}
+
+/**
+ * An OML EntityScalarDataPropertyParticularRestrictionAxiom maps to an OWL2 DataHasValue restriction.
+ */
+@Glossary
+@DerivedUUID
+class EntityScalarDataPropertyParticularRestrictionAxiom
+extends EntityScalarDataPropertyRestrictionAxiom {
+	
+	LexicalValue[1] literalValue
+  	
+	@NotFunctionalAPI
+	@NotSchema
+	op UUID[1] uuid() {
+		OMLExtensions.derivedUUID(
+		"EntityScalarDataPropertyParticularRestrictionAxiom",
+		"tbox" -> tbox?.uuid(),
+		"restrictedEntity" -> restrictedEntity?.uuid()?.toString,
+		"scalarProperty" -> scalarProperty?.uuid()?.toString
+		)?.toString
+	}
+}
+
+/*
+ * An OML RestrictedDataRange corresponds to an [OWL2 DataRange] defined
+ * in terms of some kind of restriction of some other OML DataRange.
+ * The specializations of OML RestrictedDataRange correspond to
+ * the allowed restrictions in the [OWL2 Datatype Maps].
+ * Node that the vocabulary of XSD fundamental facets is not included in OWL2-DL, consequently, 
+ * there is no support in OML for specifying datatype restrictions involving XSD fundamental facets as well.
+ * Each specialization maps to an OWL2 Declaration of an [OWL2 Datatype] whose
+ * [OWL2 DataRange] corresponds to the OWL2 mapping of that specialized restriction.
+ */ 
+@Glossary
+abstract class RestrictedDataRange extends DataRange {
+	/*
+	 * The restricted (general) data range of this data range (specific)
+	 */
+	refers DataRange[1] restrictedRange
+}
+
+/*
+ * An OML BinaryScalarRestriction is a data range that specifies how one binary scalar adds facet restrictions to another.
+ * Applicable when the restricted scalar represents [OWL2 Binary Data].
+ * 
+ * The restricted scalar must be directly or indirectly a restriction of:
+ * - [xsd:base64Binary]
+ * - [xsd:hexBinary]
+ * 
+ * Facets:
+ * - [xsd:length]
+ * - [xsd:minLength]
+ * - [xsd:maxLength]
+ */
+@Glossary
+class BinaryScalarRestriction extends RestrictedDataRange {
+	
+	/*
+	 * The length of the binary data
+	 */
+	int[?] length
+	/*
+	 * The minimum length of the binary data
+	 */
+	int[?] minLength
+	/*
+	 * The maximum length of the binary data
+	 */
+	int[?] maxLength
+}
+
+/*
+ * An OML IRIScalarRestriction is a data range that specifies how one IRI scalar adds facet restrictions to another.
+ * Applicable when the restricted scalar represents an [OWL2 IRI].
+ * 
+ * The restricted scalar must be directly or indirectly a restriction of:
+ * - [xsd:anyURI]
+ * 
+ * Facets:
+ * - [xsd:length]
+ * - [xsd:minLength]
+ * - [xsd:maxLength]
+ * - [xsd:pattern]
+ */
+@Glossary
+class IRIScalarRestriction extends RestrictedDataRange {
+	
+	/*
+	 * The length of the IRI
+	 */
+	int[?] length
+	/*
+	 * The minimum length of the IRI
+	 */
+	int[?] minLength
+	/*
+	 * The maximum length of the IRI
+	 */
+	int[?] maxLength
+	/*
+	 * The pattern of the IRI (https://www.w3.org/TR/xmlschema-2/#regexs)
+	 */
+	Pattern[?] pattern
+}
+
+/*
+ * An OML NumericScalarRestriction is a data range that specifies how one numeric scalar range adds facet restrictions to another.
+ * Applies when the restricted scalar represents [OWL2 Real Numbers, Decimal Numbers and Integers] or [OWL2 Floating-Point Numbers].
+ * 
+ * The restricted scalar must be directly or indirectly a restriction of:
+ * - [owl:real]
+ * - [owl:rational]
+ * - [xsd:decimal]
+ * - [xsd:integer]
+ * - [xsd:nonNegativeInteger]
+ * - [xsd:nonPositiveInteger]
+ * - [xsd:positiveInteger]
+ * - [xsd:negativeInteger]
+ * - [xsd:long]
+ * - [xsd:int]
+ * - [xsd:short]
+ * - [xsd:byte]
+ * - [xsd:unsignedLong]
+ * - [xsd:unsignedInt]
+ * - [xsd:unsignedShort]
+ * - [xsd:unsignedByte]
+ * - [xsd:double]
+ * - [xsd:float]
+ * 
+ * Facets:
+ * - [xsd:minInclusive]
+ * - [xsd:maxInclusive]
+ * - [xsd:minExclusive]
+ * - [xsd:maxExclusive]
+ */
+@Glossary
+class NumericScalarRestriction extends RestrictedDataRange {
+	
+	/*
+	 * The inclusive minimum value in the range
+	 */
+	LexicalNumber[?] minInclusive
+	/*
+	 * The inclusive maximum value in the range
+	 */
+	LexicalNumber[?] maxInclusive
+	/*
+	 * The exclusive minimum value in the range
+	 */
+	LexicalNumber[?] minExclusive
+	/*
+	 * The exclusive maximum value in the range
+	 */
+	LexicalNumber[?] maxExclusive
+}
+
+/*
+ * An OML PlainLiteralScalarRestriction is a data range that specifies how one plain literal scalar adds facet restrictions to another.
+ * Applicable when the restricted scalar represents [rdf:PlainLiteral].
+ * 
+ * The restricted scalar must be directly or indirectly a restriction of:
+ * - [rdf:PlainLiteral]
+ * 
+ * Facets:
+ * - [xsd:langRange]
+ * - [xsd:length]
+ * - [xsd:minLength]
+ * - [xsd:maxLength]
+ * - [xsd:pattern]
+ */
+@Glossary
+class PlainLiteralScalarRestriction extends RestrictedDataRange {
+	
+	/*
+	 * The length of the plain literal
+	 */
+	int[?] length
+	/*
+	 * The minimum length of the plain literal
+	 */
+	int[?] minLength
+	/*
+	 * The maximum length of the plain literal
+	 */
+	int[?] maxLength
+	/*
+	 * The pattern of the plain literal (https://www.w3.org/TR/xmlschema-2/#regexs)
+	 */
+	Pattern[?] pattern
+	/*
+	 * The language of the plain literal (http://www.rfc-editor.org/rfc/bcp/bcp47.txt)
+	 */
+	LangRange[?] langRange
+}
+
+/*
+ * An OML StringScalarRestriction is a data range that specifies how one string scalar adds facet restrictions to another.
+ * Applicable when the restricted scalar represents [OWL2 Strings].
+ * 
+ * The restricted scalar must be directly or indirectly a restriction of:
+ * - [xsd:string]
+ * - [xsd:normalizedString]
+ * - [xsd:token]
+ * - [xsd:language]
+ * - [xsd:Name]
+ * - [xsd:NCName]
+ * - [xsd:NMTOKEN]
+ * 
+ * Facets:
+ * - [xsd:length]
+ * - [xsd:minLength]
+ * - [xsd:maxLength]
+ * - [xsd:pattern]
+ */
+@Glossary
+class StringScalarRestriction extends RestrictedDataRange {
+	
+	/*
+	 * The length of the string
+	 */
+	int[?] length
+	/*
+	 * The minimum length of the string
+	 */
+	int[?] minLength
+	/*
+	 * The maximum length of the string
+	 */
+	int[?] maxLength
+	/*
+	 * The pattern of the string (https://www.w3.org/TR/xmlschema-2/#regexs)
+	 */
+	Pattern[?] pattern
+}
+
+/*
+ * An OML TimeScalarRestriction is a data range that specifies how one time scalar adds facet restrictions to another.
+ * Applicable when the restricted scalar represents [OWL2 Time Instants].
+ * 
+ * The restricted scalar must be directly or indirectly a restriction of:
+ * - [xsd:dateTime]
+ * - [xsd:dateTimeStamp]
+ * 
+ * Facets:
+ * - [xsd:minInclusive]
+ * - [xsd:maxInclusive]
+ * - [xsd:minExclusive]
+ * - [xsd:maxExclusive]
+ */
+@Glossary
+class TimeScalarRestriction extends RestrictedDataRange {
+	
+	/*
+	 * The inclusive minimum value in the range
+	 */
+	LexicalTime[?] minInclusive
+	/*
+	 * The inclusive maximum value in the range
+	 */
+	LexicalTime[?] maxInclusive
+	/*
+	 * The exclusive minimum value in the range
+	 */
+	LexicalTime[?] minExclusive
+	/*
+	 * The exclusive maximum value in the range
+	 */
+	LexicalTime[?] maxExclusive
+}
+
+/*
+ * An OML SynonymScalarRestriction is a data range that is defined as a synonym for another (i.e. the restrictedRange).
+ */
+@Glossary
+class SynonymScalarRestriction extends RestrictedDataRange {
+}
+
+/*
+ * An OML ScalarOneOfRestriction is a data range that specifies how a scalar is a restricted set of literal values of another.
+ * Semantics: OWL2 DataOneOf
+ */
+@Glossary
+class ScalarOneOfRestriction extends RestrictedDataRange {
+}
+
+/*
+ * An OML ScalarOneOfLiteralAxiom specifies a literal in a ScalarOneOfRestriction data range.
+ */
+@Glossary
+class ScalarOneOfLiteralAxiom extends TermAxiom {
+	
+	refers ScalarOneOfRestriction[1] axiom
+	
+	/*
+	 * The value of the literal from the restrictedScalar datatype
+	 */
+	LexicalValue[1] value
+	
+	@NotFunctionalAPI
+	@NotSchema
+	op UUID[1] uuid() {
+		OMLExtensions.derivedUUID(
+		"ScalarOneOfLiteralAxiom",
+		"tbox" -> tbox?.uuid()?.toString,
+		"axiom" -> axiom?.uuid()?.toString
+		)?.toString
+	}
+}

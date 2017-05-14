@@ -20,8 +20,7 @@ package gov.nasa.jpl.imce.oml.runtime.provider;
 
 
 import gov.nasa.jpl.imce.oml.runtime.OMLEntityDataPropertyToScalar;
-import gov.nasa.jpl.imce.oml.runtime.RuntimePackage;
-
+import gov.nasa.jpl.imce.oml.runtime.OMLRuntimePackage;
 import java.util.Collection;
 import java.util.List;
 
@@ -79,7 +78,7 @@ public class OMLEntityDataPropertyToScalarItemProvider extends OMLRelationshipFr
 				 getResourceLocator(),
 				 getString("_UI_OMLEntityDataPropertyToScalar_value_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_OMLEntityDataPropertyToScalar_value_feature", "_UI_OMLEntityDataPropertyToScalar_type"),
-				 RuntimePackage.Literals.OML_ENTITY_DATA_PROPERTY_TO_SCALAR__VALUE,
+				 OMLRuntimePackage.Literals.OML_ENTITY_DATA_PROPERTY_TO_SCALAR__VALUE,
 				 true,
 				 false,
 				 false,
@@ -126,7 +125,7 @@ public class OMLEntityDataPropertyToScalarItemProvider extends OMLRelationshipFr
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(OMLEntityDataPropertyToScalar.class)) {
-			case RuntimePackage.OML_ENTITY_DATA_PROPERTY_TO_SCALAR__VALUE:
+			case OMLRuntimePackage.OML_ENTITY_DATA_PROPERTY_TO_SCALAR__VALUE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

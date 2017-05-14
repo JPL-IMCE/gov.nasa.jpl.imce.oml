@@ -19,8 +19,7 @@
 package gov.nasa.jpl.imce.oml.runtime.provider;
 
 
-import gov.nasa.jpl.imce.oml.runtime.RuntimePackage;
-
+import gov.nasa.jpl.imce.oml.runtime.OMLRuntimePackage;
 import java.util.Collection;
 import java.util.List;
 
@@ -91,7 +90,7 @@ public class OMLObjectItemProvider
 				 getResourceLocator(),
 				 getString("_UI_OMLObject_omlRoot_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_OMLObject_omlRoot_feature", "_UI_OMLObject_type"),
-				 RuntimePackage.Literals.OML_OBJECT__OML_ROOT,
+				 OMLRuntimePackage.Literals.OML_OBJECT__OML_ROOT,
 				 true,
 				 false,
 				 true,

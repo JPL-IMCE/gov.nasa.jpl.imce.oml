@@ -21,10 +21,10 @@ limitations under the License.
    modelPluginVariables="org.eclipse.xtext.xbase.lib org.eclipse.emf.ecore.xcore.lib org.eclipse.emf.cdo",
    rootExtendsClass="org.eclipse.emf.internal.cdo.CDOObjectImpl",
    rootExtendsInterface="org.eclipse.emf.cdo.CDOObject",
-   modelDirectory="gov.nasa.jpl.imce.oml.runtime/src-xcore/",
+   modelDirectory="gov.nasa.jpl.imce.oml.runtime/src-gen/",
    editDirectory="gov.nasa.jpl.imce.oml.runtime.edit/src-gen",
    editorDirectory="gov.nasa.jpl.imce.oml.runtime.ui/src-gen",
-   modelName="OMLR")
+   modelName="OMLR", prefix="OMLRuntime")
 
 /*
  * An OML Bundle specifies the vocabulary of a DSL.
@@ -34,8 +34,7 @@ limitations under the License.
  * as if it were created as an instance of the OML DescriptionBox vocabulary.
  * 
  * The correspondence with the OML DescriptionBox vocabulary is indicated in '@see' annotations.
- * 
- * @TODO: DescriptionBoxRefinement (an import-like relationship)
+ * @TBD: DescriptionBoxRefinement (an import-like relationship)
  */
 package gov.nasa.jpl.imce.oml.runtime
 
@@ -78,11 +77,7 @@ class OMLDescription extends OMLObject {
 /*
  * @see gov.nasa.jpl.imce.oml.model.descriptions.StructuredDataPropertyTuple
  */
-class OMLStructure extends OMLObject {}
-
-class OMLScalar extends OMLObject {
-	String value
-}
+class OMLStructure {}
 
 /*
  * @see gov.nasa.jpl.imce.oml.model.descriptions.ConceptualEntitySingletonInstance

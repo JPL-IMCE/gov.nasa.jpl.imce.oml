@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: gov.nasa.jpl.imce.oml.dsl.ide;singleton:=true
+Export-Package: gov.nasa.jpl.imce.oml.dsl.ide,
+ gov.nasa.jpl.imce.oml.dsl.ide.contentassist.antlr,
+ gov.nasa.jpl.imce.oml.dsl.ide.contentassist.antlr.internal
+Bundle-Name: %pluginName
+Bundle-Version: 0.6.1
+Bundle-ClassPath: .
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.xtext.xbase.lib;visibility:=reexport,
+ org.eclipse.xtext.ide;visibility:=reexport,
+ org.eclipse.xtext.xbase.ide;visibility:=reexport,
+ gov.nasa.jpl.imce.oml.dsl;visibility:=reexport,
+ org.antlr.runtime;visibility:=reexport
+Bundle-ManifestVersion: 2
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %providerName
+
