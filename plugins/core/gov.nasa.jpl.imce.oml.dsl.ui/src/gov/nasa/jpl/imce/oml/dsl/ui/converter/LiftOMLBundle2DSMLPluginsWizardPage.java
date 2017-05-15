@@ -1,0 +1,84 @@
+package gov.nasa.jpl.imce.oml.dsl.ui.converter;
+
+import org.eclipse.jface.wizard.WizardPage;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.widgets.Text;
+
+public class LiftOMLBundle2DSMLPluginsWizardPage extends WizardPage {
+	
+	private Text dsmlEcorePluginName;
+	private Text dsmlEditPluginName;
+	private Text dsmlUIPluginName;
+	
+	/**
+	 * Create the wizard.
+	 */
+	public LiftOMLBundle2DSMLPluginsWizardPage() {
+		super("wizardPage");
+		setTitle("Wizard Page title");
+		setDescription("Wizard Page description");
+	}
+
+	/**
+	 * Create contents of the wizard.
+	 * @param parent
+	 */
+	public void createControl(Composite parent) {
+		Composite container = new Composite(parent, SWT.NULL);
+
+		setControl(container);
+		container.setLayout(new GridLayout(2, false));
+		
+		Label dsmlEcorePluginLabel = new Label(container, SWT.NONE);
+		dsmlEcorePluginLabel.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
+		dsmlEcorePluginLabel.setText("DSML ecore plugin:");
+		
+		dsmlEcorePluginName = new Text(container, SWT.BORDER);
+		dsmlEcorePluginName.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+		
+		Label dsmlEditPluginLabel = new Label(container, SWT.NONE);
+		dsmlEditPluginLabel.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
+		dsmlEditPluginLabel.setText("DSML edit plugin:");
+		
+		dsmlEditPluginName = new Text(container, SWT.BORDER);
+		dsmlEditPluginName.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+		
+		Label dsmlUIPluginLabel = new Label(container, SWT.NONE);
+		dsmlUIPluginLabel.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
+		dsmlUIPluginLabel.setText("DSML ui plugin:");
+		
+		dsmlUIPluginName = new Text(container, SWT.BORDER);
+		dsmlUIPluginName.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+		
+		setPageComplete(true);
+	}
+
+	public void setDsmlEcorePluginName(String dsmlEcorePluginName) {
+		this.dsmlEcorePluginName.setText(dsmlEcorePluginName);
+	}
+	
+	public String getDsmlEcorePluginName() {
+		return dsmlEcorePluginName.getText();
+	}
+
+	public void setDsmlEditPluginName(String dsmlEditPluginName) {
+		this.dsmlEditPluginName.setText(dsmlEditPluginName);
+	}
+	
+	public String getDsmlEditPluginName() {
+		return dsmlEditPluginName.getText();
+	}
+
+	public void setDsmlUIPluginName(String dsmlUIPluginName) {
+		this.dsmlUIPluginName.setText(dsmlUIPluginName);
+	}
+	
+	public String getDsmlUIPluginName() {
+		return dsmlUIPluginName.getText();
+	}
+
+}

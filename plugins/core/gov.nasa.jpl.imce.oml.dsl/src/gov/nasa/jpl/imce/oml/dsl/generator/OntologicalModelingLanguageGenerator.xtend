@@ -67,6 +67,7 @@ import gov.nasa.jpl.imce.oml.model.terminologies.SynonymScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.DataRange
 import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship
 import org.eclipse.emf.ecore.EAttribute
+import org.eclipse.core.resources.IProject
 
 /**
  * Generates code from your model files on save.
@@ -79,6 +80,38 @@ class OntologicalModelingLanguageGenerator extends AbstractGenerator {
 
 	static val xCoreKeywords = newArrayList('refers', 'contains', 'extends', 'imports', 'id')
 
+	protected var Bundle omlBundle
+	protected var IProject ecoreProjectHandle
+	protected var IProject editProjectHandle
+	protected var IProject uiProjectHandle
+	protected var String dsmlName
+	
+	public def void setEcoreProjectHandle(IProject ecoreProjectHandle) {
+		this.ecoreProjectHandle = ecoreProjectHandle
+	}
+	
+	public def void setEditProjectHandle(IProject editProjectHandle) {
+		this.editProjectHandle = editProjectHandle
+	}
+	
+	public def void setUIProjectHandle(IProject uiProjectHandle) {
+		this.uiProjectHandle = uiProjectHandle
+	}
+	
+	public def void setDSMLName(String dsmlName) {
+		this.dsmlName = dsmlName
+	}
+	
+	public def Bundle getBundle() { omlBundle }
+	
+	override afterGenerate(Resource input, IFileSystemAccess2 fsa, IGeneratorContext context) {
+		super.afterGenerate(input, fsa, context)
+		omlBundle = null
+		ecoreProjectHandle = null
+		editProjectHandle = null
+		uiProjectHandle = null
+	}
+	
 	override beforeGenerate(Resource input, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		super.beforeGenerate(input, fsa, context)
 		EcoreUtil2.resolveAll(input)
@@ -114,6 +147,17 @@ class OntologicalModelingLanguageGenerator extends AbstractGenerator {
 			'''
 			throw new IllegalArgumentException(message)
 		}
+		
+		switch top : input.contents.get(0) {
+			Extent: {
+				val bundles = top.modules.filter(Bundle)
+				if (bundles.size != 1) 
+					throw new IllegalArgumentException("There should be exactly 1 Bundle in "+input)
+				omlBundle = bundles.get(0)
+			}
+			default:
+				throw new IllegalArgumentException("There should be exactly 1 Bundle in "+input)
+		}
 	}
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
@@ -128,7 +172,7 @@ class OntologicalModelingLanguageGenerator extends AbstractGenerator {
 						allTboxes.addAll(bundle.allImportedBundles.map[allImportedTerminologies].flatten)
 						for (terminology : allTboxes) {
 							val filename = terminology.validQName + ".xcore"
-							val contents = new TerminologyToXcoreGenerator(allTboxes, terminology).doGenerate
+							val contents = new TerminologyToXcoreGenerator(this, allTboxes, terminology, dsmlName).doGenerate
 							System.out.println("generating: " + filename)
 							fsa.generateFile(filename, contents)
 						}
@@ -148,14 +192,36 @@ class OntologicalModelingLanguageGenerator extends AbstractGenerator {
 		val Set<TerminologyBox> terminologies
 		val TerminologyBox terminology
 		val Map<String, String> imports
-
-		new(Iterable<TerminologyBox> terminologies, TerminologyBox terminology) {
+		val OntologicalModelingLanguageGenerator generator
+		
+		val String packageEQName
+		val String packageQName
+		val String packageTName
+		val String dsmlName
+		
+		new(OntologicalModelingLanguageGenerator generator, Iterable<TerminologyBox> terminologies, TerminologyBox terminology,  String dsmlName) {
+			this.generator = generator
 			this.terminologies = new HashSet()
 			for (t : terminologies) {
 				this.terminologies.add(t)
 			}
 			this.terminology = terminology
 			this.imports = new HashMap<String, String>()
+			
+			val eInfo = generator.editProjectHandle
+			val eLoc = eInfo.fullPath
+			val eSegs = eLoc.segments
+			
+			val pInfo = generator.ecoreProjectHandle
+			val pLoc = pInfo.fullPath
+			val pSegs = pLoc.segments
+			
+			this.packageEQName = eSegs.join('.')
+			this.packageQName = pSegs.join('.')
+			
+			this.dsmlName = dsmlName 
+			
+			this.packageTName = terminology.validQName
 		}
 
 		def protected imported(String qualifiedName) {
@@ -233,15 +299,15 @@ class OntologicalModelingLanguageGenerator extends AbstractGenerator {
 		'''
 
 		def protected convertToPackage(TerminologyBox terminology) '''
-			«val packageQName = terminology.validQName»
-			«val packageName = terminology.validName»
 			@GenModel(featureDelegation="None",
 			   modelPluginVariables="org.eclipse.xtext.xbase.lib org.eclipse.emf.ecore.xcore.lib org.eclipse.emf.cdo",
 			   rootExtendsClass="org.eclipse.emf.internal.cdo.CDOObjectImpl",
 			   rootExtendsInterface="org.eclipse.emf.cdo.CDOObject",
-			   childCreationExtenders="true", modelName="«packageName»", prefix="«packageName»",
-			   editDirectory="/«packageQName».edit/src-gen")
-			package «packageQName»
+			   childCreationExtenders="true", 
+			   modelName="«dsmlName»",
+			   prefix="«dsmlName»",
+			   editDirectory="/«packageEQName»/src-gen")
+			package «packageTName»
 		'''
 
 		def protected convertToImports(TerminologyBox terminology) '''

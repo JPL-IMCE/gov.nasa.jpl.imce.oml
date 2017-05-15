@@ -19,6 +19,7 @@ package gov.nasa.jpl.imce.oml.dsl;
 
 import gov.nasa.jpl.imce.oml.dsl.AbstractOntologicalModelingLanguageRuntimeModule;
 import gov.nasa.jpl.imce.oml.dsl.formatting2.OntologicalModelingLanguageFormatter;
+import gov.nasa.jpl.imce.oml.dsl.generator.OntologicalModelingLanguageGenerator;
 import gov.nasa.jpl.imce.oml.dsl.linking.OWLLinkingService;
 import gov.nasa.jpl.imce.oml.dsl.scoping.OMLImportedNamespaceAwareLocalScopeProvider;
 import gov.nasa.jpl.imce.oml.dsl.serializer.OntologicalModelingLanguageCrossReferenceSerializer;
@@ -70,5 +71,9 @@ public class OntologicalModelingLanguageRuntimeModule extends AbstractOntologica
   
   public Class<? extends ICrossReferenceSerializer> bindICrossReferenceSerializer() {
     return OntologicalModelingLanguageCrossReferenceSerializer.class;
+  }
+  
+  public Class<? extends OntologicalModelingLanguageGenerator> bindOMLGenerator() {
+    return OntologicalModelingLanguageGenerator.class;
   }
 }

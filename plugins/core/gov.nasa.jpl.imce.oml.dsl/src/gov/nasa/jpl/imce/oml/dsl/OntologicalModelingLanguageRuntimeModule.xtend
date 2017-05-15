@@ -17,22 +17,23 @@
  */
 package gov.nasa.jpl.imce.oml.dsl
 
+import gov.nasa.jpl.imce.oml.dsl.formatting2.OntologicalModelingLanguageFormatter
+import gov.nasa.jpl.imce.oml.dsl.generator.OntologicalModelingLanguageGenerator
 import gov.nasa.jpl.imce.oml.dsl.linking.OWLLinkingService
+import gov.nasa.jpl.imce.oml.dsl.scoping.OMLImportedNamespaceAwareLocalScopeProvider
+import gov.nasa.jpl.imce.oml.dsl.serializer.OntologicalModelingLanguageCrossReferenceSerializer
+import gov.nasa.jpl.imce.oml.dsl.services.OntologicalModelingLanguageGrammarAccess
+import gov.nasa.jpl.imce.oml.dsl.util.OMLQualifiedNameConverter
+import gov.nasa.jpl.imce.oml.dsl.util.OMLQualifiedNameProvider
+import gov.nasa.jpl.imce.oml.dsl.util.OMLValueConverterService
+import org.eclipse.xtext.IGrammarAccess
 import org.eclipse.xtext.conversion.IValueConverterService
+import org.eclipse.xtext.formatting2.IFormatter2
 import org.eclipse.xtext.linking.ILinkingService
 import org.eclipse.xtext.naming.IQualifiedNameConverter
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.scoping.IScopeProvider
-import org.eclipse.xtext.formatting2.IFormatter2
-import gov.nasa.jpl.imce.oml.dsl.formatting2.OntologicalModelingLanguageFormatter
-import org.eclipse.xtext.IGrammarAccess
-import gov.nasa.jpl.imce.oml.dsl.scoping.OMLImportedNamespaceAwareLocalScopeProvider
-import gov.nasa.jpl.imce.oml.dsl.util.OMLValueConverterService
-import gov.nasa.jpl.imce.oml.dsl.util.OMLQualifiedNameConverter
-import gov.nasa.jpl.imce.oml.dsl.util.OMLQualifiedNameProvider
-import gov.nasa.jpl.imce.oml.dsl.services.OntologicalModelingLanguageGrammarAccess
 import org.eclipse.xtext.serializer.tokens.ICrossReferenceSerializer
-import gov.nasa.jpl.imce.oml.dsl.serializer.OntologicalModelingLanguageCrossReferenceSerializer
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
@@ -70,5 +71,8 @@ class OntologicalModelingLanguageRuntimeModule extends AbstractOntologicalModeli
 	def Class<? extends ICrossReferenceSerializer> bindICrossReferenceSerializer() {
 		OntologicalModelingLanguageCrossReferenceSerializer
 	}
-	
+		
+	def Class<? extends OntologicalModelingLanguageGenerator> bindOMLGenerator() {
+		OntologicalModelingLanguageGenerator
+	}
 }

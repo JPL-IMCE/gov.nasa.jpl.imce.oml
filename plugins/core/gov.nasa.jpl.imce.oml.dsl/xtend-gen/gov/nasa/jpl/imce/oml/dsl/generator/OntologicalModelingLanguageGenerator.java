@@ -65,6 +65,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.emf.cdo.CDOObject;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
@@ -102,7 +104,18 @@ public class OntologicalModelingLanguageGenerator extends AbstractGenerator {
     
     private final Map<String, String> imports;
     
-    public TerminologyToXcoreGenerator(final Iterable<TerminologyBox> terminologies, final TerminologyBox terminology) {
+    private final OntologicalModelingLanguageGenerator generator;
+    
+    private final String packageEQName;
+    
+    private final String packageQName;
+    
+    private final String packageTName;
+    
+    private final String dsmlName;
+    
+    public TerminologyToXcoreGenerator(final OntologicalModelingLanguageGenerator generator, final Iterable<TerminologyBox> terminologies, final TerminologyBox terminology, final String dsmlName) {
+      this.generator = generator;
       HashSet<TerminologyBox> _hashSet = new HashSet<TerminologyBox>();
       this.terminologies = _hashSet;
       for (final TerminologyBox t : terminologies) {
@@ -111,6 +124,16 @@ public class OntologicalModelingLanguageGenerator extends AbstractGenerator {
       this.terminology = terminology;
       HashMap<String, String> _hashMap = new HashMap<String, String>();
       this.imports = _hashMap;
+      final IProject eInfo = generator.editProjectHandle;
+      final IPath eLoc = eInfo.getFullPath();
+      final String[] eSegs = eLoc.segments();
+      final IProject pInfo = generator.ecoreProjectHandle;
+      final IPath pLoc = pInfo.getFullPath();
+      final String[] pSegs = pLoc.segments();
+      this.packageEQName = IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(eSegs)), ".");
+      this.packageQName = IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(pSegs)), ".");
+      this.dsmlName = dsmlName;
+      this.packageTName = OntologicalModelingLanguageGenerator.validQName(terminology);
     }
     
     protected String imported(final String qualifiedName) {
@@ -291,10 +314,6 @@ public class OntologicalModelingLanguageGenerator extends AbstractGenerator {
     
     protected CharSequence convertToPackage(final TerminologyBox terminology) {
       StringConcatenation _builder = new StringConcatenation();
-      final String packageQName = OntologicalModelingLanguageGenerator.validQName(terminology);
-      _builder.newLineIfNotEmpty();
-      final String packageName = OntologicalModelingLanguageGenerator.validName(terminology);
-      _builder.newLineIfNotEmpty();
       _builder.append("@GenModel(featureDelegation=\"None\",");
       _builder.newLine();
       _builder.append("   ");
@@ -307,19 +326,25 @@ public class OntologicalModelingLanguageGenerator extends AbstractGenerator {
       _builder.append("rootExtendsInterface=\"org.eclipse.emf.cdo.CDOObject\",");
       _builder.newLine();
       _builder.append("   ");
-      _builder.append("childCreationExtenders=\"true\", modelName=\"");
-      _builder.append(packageName, "   ");
-      _builder.append("\", prefix=\"");
-      _builder.append(packageName, "   ");
+      _builder.append("childCreationExtenders=\"true\", ");
+      _builder.newLine();
+      _builder.append("   ");
+      _builder.append("modelName=\"");
+      _builder.append(this.dsmlName, "   ");
+      _builder.append("\",");
+      _builder.newLineIfNotEmpty();
+      _builder.append("   ");
+      _builder.append("prefix=\"");
+      _builder.append(this.dsmlName, "   ");
       _builder.append("\",");
       _builder.newLineIfNotEmpty();
       _builder.append("   ");
       _builder.append("editDirectory=\"/");
-      _builder.append(packageQName, "   ");
-      _builder.append(".edit/src-gen\")");
+      _builder.append(this.packageEQName, "   ");
+      _builder.append("/src-gen\")");
       _builder.newLineIfNotEmpty();
       _builder.append("package ");
-      _builder.append(packageQName);
+      _builder.append(this.packageTName);
       _builder.newLineIfNotEmpty();
       return _builder;
     }
@@ -1566,6 +1591,44 @@ public class OntologicalModelingLanguageGenerator extends AbstractGenerator {
   
   private final static ArrayList<String> xCoreKeywords = CollectionLiterals.<String>newArrayList("refers", "contains", "extends", "imports", "id");
   
+  protected Bundle omlBundle;
+  
+  protected IProject ecoreProjectHandle;
+  
+  protected IProject editProjectHandle;
+  
+  protected IProject uiProjectHandle;
+  
+  protected String dsmlName;
+  
+  public void setEcoreProjectHandle(final IProject ecoreProjectHandle) {
+    this.ecoreProjectHandle = ecoreProjectHandle;
+  }
+  
+  public void setEditProjectHandle(final IProject editProjectHandle) {
+    this.editProjectHandle = editProjectHandle;
+  }
+  
+  public void setUIProjectHandle(final IProject uiProjectHandle) {
+    this.uiProjectHandle = uiProjectHandle;
+  }
+  
+  public void setDSMLName(final String dsmlName) {
+    this.dsmlName = dsmlName;
+  }
+  
+  public Bundle getBundle() {
+    return this.omlBundle;
+  }
+  
+  public void afterGenerate(final Resource input, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
+    super.afterGenerate(input, fsa, context);
+    this.omlBundle = null;
+    this.ecoreProjectHandle = null;
+    this.editProjectHandle = null;
+    this.uiProjectHandle = null;
+  }
+  
   public void beforeGenerate(final Resource input, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
     super.beforeGenerate(input, fsa, context);
     EcoreUtil2.resolveAll(input);
@@ -1661,6 +1724,22 @@ public class OntologicalModelingLanguageGenerator extends AbstractGenerator {
       final String message_2 = _builder_2.toString();
       throw new IllegalArgumentException(message_2);
     }
+    EObject _get = input.getContents().get(0);
+    final EObject top = _get;
+    boolean _matched = false;
+    if (top instanceof Extent) {
+      _matched=true;
+      final Iterable<Bundle> bundles = Iterables.<Bundle>filter(((Extent)top).getModules(), Bundle.class);
+      int _size_3 = IterableExtensions.size(bundles);
+      boolean _notEquals = (_size_3 != 1);
+      if (_notEquals) {
+        throw new IllegalArgumentException(("There should be exactly 1 Bundle in " + input));
+      }
+      this.omlBundle = ((Bundle[])Conversions.unwrapArray(bundles, Bundle.class))[0];
+    }
+    if (!_matched) {
+      throw new IllegalArgumentException(("There should be exactly 1 Bundle in " + input));
+    }
   }
   
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
@@ -1687,7 +1766,7 @@ public class OntologicalModelingLanguageGenerator extends AbstractGenerator {
               {
                 String _validQName = OntologicalModelingLanguageGenerator.validQName(terminology);
                 final String filename = (_validQName + ".xcore");
-                final CharSequence contents = new OntologicalModelingLanguageGenerator.TerminologyToXcoreGenerator(allTboxes, terminology).doGenerate();
+                final CharSequence contents = new OntologicalModelingLanguageGenerator.TerminologyToXcoreGenerator(this, allTboxes, terminology, this.dsmlName).doGenerate();
                 System.out.println(("generating: " + filename));
                 fsa.generateFile(filename, contents);
               }

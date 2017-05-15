@@ -13,6 +13,8 @@ Require-Bundle: org.apache.log4j;visibility:=reexport,
  org.eclipse.compare;visibility:=reexport,
  org.eclipse.xtend.lib;visibility:=reexport,
  org.eclipse.xtext.xbase.lib;visibility:=reexport,
+ org.eclipse.emf.codegen.ecore.ui;bundle-version="2.12.0";visibility:=reexport,
+ org.eclipse.emf.ecore.xcore.ui;bundle-version="1.4.0";visibility:=reexport,
  gov.nasa.jpl.imce.oml.model;visibility:=reexport,
  gov.nasa.jpl.imce.oml.dsl;visibility:=reexport,
  gov.nasa.jpl.imce.oml.dsl.ide;visibility:=reexport
