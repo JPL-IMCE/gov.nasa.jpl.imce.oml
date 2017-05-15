@@ -1,2 +1,7 @@
+sudo: required
+
+services:
+  - docker
+  
 script:
-- mvn clean verify
+- docker run --rm -v $(pwd):/root/sources -w /root/sources maven:3.5-jdk-8 mvn clean verify
