@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="OML Workbench" uid="gov.nasa.jpl.imce.oml.rcp.product" id="org.eclipse.platform.ide" version="1.0.0.qualifier" useFeatures="false" includeLaunchers="true">
-
+<product name="OML Workbench" uid="gov.nasa.jpl.imce.oml.rcp.product" application="org.eclipse.e4.ui.workbench.swt.E4Application" version="1.0.0.qualifier" useFeatures="true" includeLaunchers="true">
 
    <configIni use="default">
    </configIni>
@@ -16,7 +15,6 @@
 
    <windowImages/>
 
-
    <launcher name="OML Workbench">
       <solaris/>
       <win useIco="false">
@@ -24,10 +22,8 @@
       </win>
    </launcher>
 
-
    <vm>
    </vm>
-
 
    <plugins>
       <plugin id="com.google.guava"/>
@@ -37,6 +33,7 @@
       <plugin id="gov.nasa.jpl.imce.oml.dsl.ide"/>
       <plugin id="gov.nasa.jpl.imce.oml.dsl.ui"/>
       <plugin id="gov.nasa.jpl.imce.oml.model"/>
+      <plugin id="gov.nasa.jpl.imce.oml.rcp"/>
       <plugin id="gov.nasa.jpl.imce.oml.runtime"/>
       <plugin id="gov.nasa.jpl.imce.oml.runtime.edit"/>
       <plugin id="gov.nasa.jpl.imce.oml.runtime.ui"/>
