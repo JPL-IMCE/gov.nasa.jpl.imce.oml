@@ -7,6 +7,7 @@ import org.eclipse.xtext.xbase.lib.Exceptions;
 
 @SuppressWarnings("all")
 public class OMLCatalogManager extends CatalogManager {
+  @Override
   public Catalog getPrivateCatalog() {
     try {
       final OMLCatalog catalog = new OMLCatalog();

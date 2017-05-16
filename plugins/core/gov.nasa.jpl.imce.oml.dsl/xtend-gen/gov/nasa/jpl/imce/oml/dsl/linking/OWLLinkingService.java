@@ -62,6 +62,7 @@ public class OWLLinkingService extends DefaultLinkingService {
   @Inject
   private IQualifiedNameConverter qualifiedNameConverter;
   
+  @Override
   public List<EObject> getLinkedObjects(final EObject context, final EReference ref, final INode node) throws IllegalNodeException {
     try {
       final EClass requiredType = ref.getEReferenceType();
@@ -99,83 +100,79 @@ public class OWLLinkingService extends DefaultLinkingService {
           }
           final Resource resolvedOML = rs.getResource(URI.createURI(resolvedIRI), true);
           final StringBuffer problems = new StringBuffer();
-          final Consumer<Resource.Diagnostic> _function = new Consumer<Resource.Diagnostic>() {
-            public void accept(final Resource.Diagnostic e) {
-              boolean _matched = false;
-              if (e instanceof Diagnostic) {
-                _matched=true;
-                String _message = ((Diagnostic)e).getMessage();
-                String _plus = ("\n" + _message);
-                String _plus_1 = (_plus + " at ");
-                String _location = ((Diagnostic)e).getLocation();
-                String _plus_2 = (_plus_1 + _location);
-                String _plus_3 = (_plus_2 + " line:");
-                int _line = ((Diagnostic)e).getLine();
-                String _plus_4 = (_plus_3 + Integer.valueOf(_line));
-                String _plus_5 = (_plus_4 + ", column:");
-                int _column = ((Diagnostic)e).getColumn();
-                String _plus_6 = (_plus_5 + Integer.valueOf(_column));
-                String _plus_7 = (_plus_6 + ", offset:");
-                int _offset = ((Diagnostic)e).getOffset();
-                String _plus_8 = (_plus_7 + Integer.valueOf(_offset));
-                String _plus_9 = (_plus_8 + ", length:");
-                int _length = ((Diagnostic)e).getLength();
-                String _plus_10 = (_plus_9 + Integer.valueOf(_length));
-                problems.append(_plus_10);
-              }
-              if (!_matched) {
-                String _message = e.getMessage();
-                String _plus = ("\n" + _message);
-                String _plus_1 = (_plus + " at ");
-                String _location = e.getLocation();
-                String _plus_2 = (_plus_1 + _location);
-                String _plus_3 = (_plus_2 + " line:");
-                int _line = e.getLine();
-                String _plus_4 = (_plus_3 + Integer.valueOf(_line));
-                String _plus_5 = (_plus_4 + ", column:");
-                int _column = e.getColumn();
-                String _plus_6 = (_plus_5 + Integer.valueOf(_column));
-                problems.append(_plus_6);
-              }
+          final Consumer<Resource.Diagnostic> _function = (Resource.Diagnostic e) -> {
+            boolean _matched = false;
+            if (e instanceof Diagnostic) {
+              _matched=true;
+              String _message = ((Diagnostic)e).getMessage();
+              String _plus = ("\n" + _message);
+              String _plus_1 = (_plus + " at ");
+              String _location = ((Diagnostic)e).getLocation();
+              String _plus_2 = (_plus_1 + _location);
+              String _plus_3 = (_plus_2 + " line:");
+              int _line = ((Diagnostic)e).getLine();
+              String _plus_4 = (_plus_3 + Integer.valueOf(_line));
+              String _plus_5 = (_plus_4 + ", column:");
+              int _column = ((Diagnostic)e).getColumn();
+              String _plus_6 = (_plus_5 + Integer.valueOf(_column));
+              String _plus_7 = (_plus_6 + ", offset:");
+              int _offset = ((Diagnostic)e).getOffset();
+              String _plus_8 = (_plus_7 + Integer.valueOf(_offset));
+              String _plus_9 = (_plus_8 + ", length:");
+              int _length_1 = ((Diagnostic)e).getLength();
+              String _plus_10 = (_plus_9 + Integer.valueOf(_length_1));
+              problems.append(_plus_10);
+            }
+            if (!_matched) {
+              String _message = e.getMessage();
+              String _plus = ("\n" + _message);
+              String _plus_1 = (_plus + " at ");
+              String _location = e.getLocation();
+              String _plus_2 = (_plus_1 + _location);
+              String _plus_3 = (_plus_2 + " line:");
+              int _line = e.getLine();
+              String _plus_4 = (_plus_3 + Integer.valueOf(_line));
+              String _plus_5 = (_plus_4 + ", column:");
+              int _column = e.getColumn();
+              String _plus_6 = (_plus_5 + Integer.valueOf(_column));
+              problems.append(_plus_6);
             }
           };
           resolvedOML.getErrors().forEach(_function);
-          final Consumer<Resource.Diagnostic> _function_1 = new Consumer<Resource.Diagnostic>() {
-            public void accept(final Resource.Diagnostic e) {
-              boolean _matched = false;
-              if (e instanceof Diagnostic) {
-                _matched=true;
-                String _message = ((Diagnostic)e).getMessage();
-                String _plus = (_message + " at ");
-                String _location = ((Diagnostic)e).getLocation();
-                String _plus_1 = (_plus + _location);
-                String _plus_2 = (_plus_1 + " line:");
-                int _line = ((Diagnostic)e).getLine();
-                String _plus_3 = (_plus_2 + Integer.valueOf(_line));
-                String _plus_4 = (_plus_3 + ", column:");
-                int _column = ((Diagnostic)e).getColumn();
-                String _plus_5 = (_plus_4 + Integer.valueOf(_column));
-                String _plus_6 = (_plus_5 + ", offset:");
-                int _offset = ((Diagnostic)e).getOffset();
-                String _plus_7 = (_plus_6 + Integer.valueOf(_offset));
-                String _plus_8 = (_plus_7 + ", length:");
-                int _length = ((Diagnostic)e).getLength();
-                String _plus_9 = (_plus_8 + Integer.valueOf(_length));
-                problems.append(_plus_9);
-              }
-              if (!_matched) {
-                String _message = e.getMessage();
-                String _plus = (_message + " at ");
-                String _location = e.getLocation();
-                String _plus_1 = (_plus + _location);
-                String _plus_2 = (_plus_1 + " line:");
-                int _line = e.getLine();
-                String _plus_3 = (_plus_2 + Integer.valueOf(_line));
-                String _plus_4 = (_plus_3 + ", column:");
-                int _column = e.getColumn();
-                String _plus_5 = (_plus_4 + Integer.valueOf(_column));
-                problems.append(_plus_5);
-              }
+          final Consumer<Resource.Diagnostic> _function_1 = (Resource.Diagnostic e) -> {
+            boolean _matched = false;
+            if (e instanceof Diagnostic) {
+              _matched=true;
+              String _message = ((Diagnostic)e).getMessage();
+              String _plus = (_message + " at ");
+              String _location = ((Diagnostic)e).getLocation();
+              String _plus_1 = (_plus + _location);
+              String _plus_2 = (_plus_1 + " line:");
+              int _line = ((Diagnostic)e).getLine();
+              String _plus_3 = (_plus_2 + Integer.valueOf(_line));
+              String _plus_4 = (_plus_3 + ", column:");
+              int _column = ((Diagnostic)e).getColumn();
+              String _plus_5 = (_plus_4 + Integer.valueOf(_column));
+              String _plus_6 = (_plus_5 + ", offset:");
+              int _offset = ((Diagnostic)e).getOffset();
+              String _plus_7 = (_plus_6 + Integer.valueOf(_offset));
+              String _plus_8 = (_plus_7 + ", length:");
+              int _length_1 = ((Diagnostic)e).getLength();
+              String _plus_9 = (_plus_8 + Integer.valueOf(_length_1));
+              problems.append(_plus_9);
+            }
+            if (!_matched) {
+              String _message = e.getMessage();
+              String _plus = (_message + " at ");
+              String _location = e.getLocation();
+              String _plus_1 = (_plus + _location);
+              String _plus_2 = (_plus_1 + " line:");
+              int _line = e.getLine();
+              String _plus_3 = (_plus_2 + Integer.valueOf(_line));
+              String _plus_4 = (_plus_3 + ", column:");
+              int _column = e.getColumn();
+              String _plus_5 = (_plus_4 + Integer.valueOf(_column));
+              problems.append(_plus_5);
             }
           };
           resolvedOML.getWarnings().forEach(_function_1);
@@ -190,21 +187,15 @@ public class OWLLinkingService extends DefaultLinkingService {
         EClass _bundle = BundlesPackage.eINSTANCE.getBundle();
         if (Objects.equal(refType, _bundle)) {
           _matched=true;
-          final Function1<Resource, Iterable<Bundle>> _function_2 = new Function1<Resource, Iterable<Bundle>>() {
-            public Iterable<Bundle> apply(final Resource it) {
-              final Function1<Extent, Iterable<Bundle>> _function = new Function1<Extent, Iterable<Bundle>>() {
-                public Iterable<Bundle> apply(final Extent it) {
-                  return Iterables.<Bundle>filter(it.getModules(), Bundle.class);
-                }
-              };
-              return Iterables.<Bundle>concat(IterableExtensions.<Extent, Iterable<Bundle>>map(Iterables.<Extent>filter(it.getContents(), Extent.class), _function));
-            }
+          final Function1<Resource, Iterable<Bundle>> _function_2 = (Resource it) -> {
+            final Function1<Extent, Iterable<Bundle>> _function_3 = (Extent it_1) -> {
+              return Iterables.<Bundle>filter(it_1.getModules(), Bundle.class);
+            };
+            return Iterables.<Bundle>concat(IterableExtensions.<Extent, Iterable<Bundle>>map(Iterables.<Extent>filter(it.getContents(), Extent.class), _function_3));
           };
-          final Function1<Bundle, Boolean> _function_3 = new Function1<Bundle, Boolean>() {
-            public Boolean apply(final Bundle b) {
-              String _iri = b.iri();
-              return Boolean.valueOf(Objects.equal(_iri, resourceIRI));
-            }
+          final Function1<Bundle, Boolean> _function_3 = (Bundle b) -> {
+            String _iri = b.iri();
+            return Boolean.valueOf(Objects.equal(_iri, resourceIRI));
           };
           final Bundle bundle = IterableExtensions.<Bundle>findFirst(Iterables.<Bundle>concat(ListExtensions.<Resource, Iterable<Bundle>>map(rs.getResources(), _function_2)), _function_3);
           List<EObject> _xifexpression_1 = null;
@@ -219,21 +210,15 @@ public class OWLLinkingService extends DefaultLinkingService {
           EClass _terminologyBox = TerminologiesPackage.eINSTANCE.getTerminologyBox();
           if (Objects.equal(refType, _terminologyBox)) {
             _matched=true;
-            final Function1<Resource, Iterable<TerminologyBox>> _function_4 = new Function1<Resource, Iterable<TerminologyBox>>() {
-              public Iterable<TerminologyBox> apply(final Resource it) {
-                final Function1<Extent, Iterable<TerminologyBox>> _function = new Function1<Extent, Iterable<TerminologyBox>>() {
-                  public Iterable<TerminologyBox> apply(final Extent it) {
-                    return Iterables.<TerminologyBox>filter(it.getModules(), TerminologyBox.class);
-                  }
-                };
-                return Iterables.<TerminologyBox>concat(IterableExtensions.<Extent, Iterable<TerminologyBox>>map(Iterables.<Extent>filter(it.getContents(), Extent.class), _function));
-              }
+            final Function1<Resource, Iterable<TerminologyBox>> _function_4 = (Resource it) -> {
+              final Function1<Extent, Iterable<TerminologyBox>> _function_5 = (Extent it_1) -> {
+                return Iterables.<TerminologyBox>filter(it_1.getModules(), TerminologyBox.class);
+              };
+              return Iterables.<TerminologyBox>concat(IterableExtensions.<Extent, Iterable<TerminologyBox>>map(Iterables.<Extent>filter(it.getContents(), Extent.class), _function_5));
             };
-            final Function1<TerminologyBox, Boolean> _function_5 = new Function1<TerminologyBox, Boolean>() {
-              public Boolean apply(final TerminologyBox tbox) {
-                String _iri = tbox.iri();
-                return Boolean.valueOf(Objects.equal(_iri, resourceIRI));
-              }
+            final Function1<TerminologyBox, Boolean> _function_5 = (TerminologyBox tbox) -> {
+              String _iri = tbox.iri();
+              return Boolean.valueOf(Objects.equal(_iri, resourceIRI));
             };
             final TerminologyBox tbox = IterableExtensions.<TerminologyBox>findFirst(Iterables.<TerminologyBox>concat(ListExtensions.<Resource, Iterable<TerminologyBox>>map(rs.getResources(), _function_4)), _function_5);
             List<EObject> _xifexpression_2 = null;
@@ -249,21 +234,15 @@ public class OWLLinkingService extends DefaultLinkingService {
           EClass _descriptionBox = DescriptionsPackage.eINSTANCE.getDescriptionBox();
           if (Objects.equal(refType, _descriptionBox)) {
             _matched=true;
-            final Function1<Resource, Iterable<DescriptionBox>> _function_6 = new Function1<Resource, Iterable<DescriptionBox>>() {
-              public Iterable<DescriptionBox> apply(final Resource it) {
-                final Function1<Extent, Iterable<DescriptionBox>> _function = new Function1<Extent, Iterable<DescriptionBox>>() {
-                  public Iterable<DescriptionBox> apply(final Extent it) {
-                    return Iterables.<DescriptionBox>filter(it.getModules(), DescriptionBox.class);
-                  }
-                };
-                return Iterables.<DescriptionBox>concat(IterableExtensions.<Extent, Iterable<DescriptionBox>>map(Iterables.<Extent>filter(it.getContents(), Extent.class), _function));
-              }
+            final Function1<Resource, Iterable<DescriptionBox>> _function_6 = (Resource it) -> {
+              final Function1<Extent, Iterable<DescriptionBox>> _function_7 = (Extent it_1) -> {
+                return Iterables.<DescriptionBox>filter(it_1.getModules(), DescriptionBox.class);
+              };
+              return Iterables.<DescriptionBox>concat(IterableExtensions.<Extent, Iterable<DescriptionBox>>map(Iterables.<Extent>filter(it.getContents(), Extent.class), _function_7));
             };
-            final Function1<DescriptionBox, Boolean> _function_7 = new Function1<DescriptionBox, Boolean>() {
-              public Boolean apply(final DescriptionBox dbox) {
-                String _iri = dbox.iri();
-                return Boolean.valueOf(Objects.equal(_iri, resourceIRI));
-              }
+            final Function1<DescriptionBox, Boolean> _function_7 = (DescriptionBox dbox) -> {
+              String _iri = dbox.iri();
+              return Boolean.valueOf(Objects.equal(_iri, resourceIRI));
             };
             final DescriptionBox dbox = IterableExtensions.<DescriptionBox>findFirst(Iterables.<DescriptionBox>concat(ListExtensions.<Resource, Iterable<DescriptionBox>>map(rs.getResources(), _function_6)), _function_7);
             List<EObject> _xifexpression_3 = null;
@@ -290,10 +269,8 @@ public class OWLLinkingService extends DefaultLinkingService {
           if (nextSE instanceof Annotation) {
             _matched_1=true;
             final Iterable<ILeafNode> nextLeafNodes = nextNode.getLeafNodes();
-            final Function1<ILeafNode, Boolean> _function_8 = new Function1<ILeafNode, Boolean>() {
-              public Boolean apply(final ILeafNode n) {
-                return Boolean.valueOf(CrossReference.class.isInstance(n.getGrammarElement()));
-              }
+            final Function1<ILeafNode, Boolean> _function_8 = (ILeafNode n) -> {
+              return Boolean.valueOf(CrossReference.class.isInstance(n.getGrammarElement()));
             };
             final ILeafNode n1 = IterableExtensions.<ILeafNode>findFirst(nextLeafNodes, _function_8);
             this.getLinkedObjects(nextSE, ref, n1);

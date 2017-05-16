@@ -20,6 +20,7 @@ public class OntologicalModelingLanguageCrossReferenceSerializer extends CrossRe
    * - node !== null when target comes from creating a model via the Xtext DSL parser
    * - node === null when target comes from creating a model directly via the DSL metamodel factory API
    */
+  @Override
   public String serializeCrossRef(final EObject semanticObject, final CrossReference crossref, final EObject target, final INode node, final ISerializationDiagnostic.Acceptor errors) {
     String _xblockexpression = null;
     {

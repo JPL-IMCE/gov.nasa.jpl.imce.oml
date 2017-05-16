@@ -255,25 +255,23 @@ public class OMLExtensions {
   public static UUID namespaceUUID(final String namespace, final Pair<String, String>[] factors) {
     UUID _xblockexpression = null;
     {
-      final Function1<Pair<String, String>, String> _function = new Function1<Pair<String, String>, String>() {
-        public String apply(final Pair<String, String> pair) {
-          String _elvis = null;
-          String _key = pair.getKey();
-          if (_key != null) {
-            _elvis = _key;
-          } else {
-            _elvis = "";
-          }
-          String _plus = (_elvis + ":");
-          String _elvis_1 = null;
-          String _value = pair.getValue();
-          if (_value != null) {
-            _elvis_1 = _value;
-          } else {
-            _elvis_1 = "";
-          }
-          return (_plus + _elvis_1);
+      final Function1<Pair<String, String>, String> _function = (Pair<String, String> pair) -> {
+        String _elvis = null;
+        String _key = pair.getKey();
+        if (_key != null) {
+          _elvis = _key;
+        } else {
+          _elvis = "";
         }
+        String _plus = (_elvis + ":");
+        String _elvis_1 = null;
+        String _value = pair.getValue();
+        if (_value != null) {
+          _elvis_1 = _value;
+        } else {
+          _elvis_1 = "";
+        }
+        return (_plus + _elvis_1);
       };
       String _join = IterableExtensions.join(ListExtensions.<Pair<String, String>, String>map(((List<Pair<String, String>>)Conversions.doWrapArray(factors)), _function), ",");
       final String name = (namespace + _join);
@@ -350,25 +348,23 @@ public class OMLExtensions {
   public static UUID derivedUUID(final String context, final Pair<String, String>[] factors) {
     UUID _xblockexpression = null;
     {
-      final Function1<Pair<String, String>, String> _function = new Function1<Pair<String, String>, String>() {
-        public String apply(final Pair<String, String> pair) {
-          String _elvis = null;
-          String _key = pair.getKey();
-          if (_key != null) {
-            _elvis = _key;
-          } else {
-            _elvis = "";
-          }
-          String _plus = (_elvis + ":");
-          String _elvis_1 = null;
-          String _value = pair.getValue();
-          if (_value != null) {
-            _elvis_1 = _value;
-          } else {
-            _elvis_1 = "";
-          }
-          return (_plus + _elvis_1);
+      final Function1<Pair<String, String>, String> _function = (Pair<String, String> pair) -> {
+        String _elvis = null;
+        String _key = pair.getKey();
+        if (_key != null) {
+          _elvis = _key;
+        } else {
+          _elvis = "";
         }
+        String _plus = (_elvis + ":");
+        String _elvis_1 = null;
+        String _value = pair.getValue();
+        if (_value != null) {
+          _elvis_1 = _value;
+        } else {
+          _elvis_1 = "";
+        }
+        return (_plus + _elvis_1);
       };
       String _join = IterableExtensions.join(ListExtensions.<Pair<String, String>, String>map(((List<Pair<String, String>>)Conversions.doWrapArray(factors)), _function), ",");
       final String name = (context + _join);
@@ -394,34 +390,26 @@ public class OMLExtensions {
   }
   
   public void phasedResolveAll(final Extent it) {
-    final Consumer<TerminologyGraph> _function = new Consumer<TerminologyGraph>() {
-      public void accept(final TerminologyGraph it) {
-        final Consumer<TerminologyBoxAxiom> _function = new Consumer<TerminologyBoxAxiom>() {
-          public void accept(final TerminologyBoxAxiom it) {
-            boolean _matched = false;
-            if (it instanceof TerminologyExtensionAxiom) {
-              _matched=true;
-              EcoreUtil.resolveAll(it);
-            }
-          }
-        };
-        it.getBoxAxioms().forEach(_function);
-      }
+    final Consumer<TerminologyGraph> _function = (TerminologyGraph it_1) -> {
+      final Consumer<TerminologyBoxAxiom> _function_1 = (TerminologyBoxAxiom it_2) -> {
+        boolean _matched = false;
+        if (it_2 instanceof TerminologyExtensionAxiom) {
+          _matched=true;
+          EcoreUtil.resolveAll(it_2);
+        }
+      };
+      it_1.getBoxAxioms().forEach(_function_1);
     };
     this.terminologyGraphs(it).forEach(_function);
-    final Consumer<TerminologyGraph> _function_1 = new Consumer<TerminologyGraph>() {
-      public void accept(final TerminologyGraph it) {
-        final Consumer<TerminologyBoxAxiom> _function = new Consumer<TerminologyBoxAxiom>() {
-          public void accept(final TerminologyBoxAxiom it) {
-            boolean _matched = false;
-            if (it instanceof SpecializationAxiom) {
-              _matched=true;
-              EcoreUtil.resolveAll(it);
-            }
-          }
-        };
-        it.getBoxAxioms().forEach(_function);
-      }
+    final Consumer<TerminologyGraph> _function_1 = (TerminologyGraph it_1) -> {
+      final Consumer<TerminologyBoxAxiom> _function_2 = (TerminologyBoxAxiom it_2) -> {
+        boolean _matched = false;
+        if (it_2 instanceof SpecializationAxiom) {
+          _matched=true;
+          EcoreUtil.resolveAll(it_2);
+        }
+      };
+      it_1.getBoxAxioms().forEach(_function_2);
     };
     this.terminologyGraphs(it).forEach(_function_1);
   }
@@ -439,10 +427,8 @@ public class OMLExtensions {
       }
       final TerminologyBox tbox = IterableExtensions.<TerminologyBox>head(queue);
       queue.remove(tbox);
-      final Function1<TerminologyBoxAxiom, TerminologyBox> _function = new Function1<TerminologyBoxAxiom, TerminologyBox>() {
-        public TerminologyBox apply(final TerminologyBoxAxiom it) {
-          return it.target();
-        }
+      final Function1<TerminologyBoxAxiom, TerminologyBox> _function = (TerminologyBoxAxiom it) -> {
+        return it.target();
       };
       final Iterable<TerminologyBox> inc = IterableExtensions.<TerminologyBox>filterNull(ListExtensions.<TerminologyBoxAxiom, TerminologyBox>map(tbox.getBoxAxioms(), _function));
       Iterables.<TerminologyBox>addAll(queue, inc);
@@ -465,10 +451,8 @@ public class OMLExtensions {
       }
       final Module m = IterableExtensions.<Module>head(queue);
       queue.remove(m);
-      final Function1<ModuleEdge, Module> _function = new Function1<ModuleEdge, Module>() {
-        public Module apply(final ModuleEdge it) {
-          return it.targetModule();
-        }
+      final Function1<ModuleEdge, Module> _function = (ModuleEdge it) -> {
+        return it.targetModule();
       };
       final Iterable<Module> inc = IterableExtensions.<Module>filterNull(ListExtensions.<ModuleEdge, Module>map(m.moduleEdges(), _function));
       Iterables.<Module>addAll(queue, inc);
@@ -484,10 +468,8 @@ public class OMLExtensions {
   
   public Iterable<Entity> allEntities(final TerminologyBox it) {
     Iterable<Entity> _localEntities = this.localEntities(it);
-    final Function1<TerminologyBox, Iterable<Entity>> _function = new Function1<TerminologyBox, Iterable<Entity>>() {
-      public Iterable<Entity> apply(final TerminologyBox it) {
-        return OMLExtensions.this.localEntities(it);
-      }
+    final Function1<TerminologyBox, Iterable<Entity>> _function = (TerminologyBox it_1) -> {
+      return this.localEntities(it_1);
     };
     Iterable<Entity> _flatten = Iterables.<Entity>concat(IterableExtensions.<TerminologyBox, Iterable<Entity>>map(this.allImportedTerminologies(it), _function));
     return Iterables.<Entity>concat(_localEntities, _flatten);
@@ -499,10 +481,8 @@ public class OMLExtensions {
   
   public Iterable<Aspect> allAspects(final TerminologyBox it) {
     Iterable<Aspect> _localAspects = this.localAspects(it);
-    final Function1<TerminologyBox, Iterable<Aspect>> _function = new Function1<TerminologyBox, Iterable<Aspect>>() {
-      public Iterable<Aspect> apply(final TerminologyBox it) {
-        return OMLExtensions.this.localAspects(it);
-      }
+    final Function1<TerminologyBox, Iterable<Aspect>> _function = (TerminologyBox it_1) -> {
+      return this.localAspects(it_1);
     };
     Iterable<Aspect> _flatten = Iterables.<Aspect>concat(IterableExtensions.<TerminologyBox, Iterable<Aspect>>map(this.allImportedTerminologies(it), _function));
     return Iterables.<Aspect>concat(_localAspects, _flatten);
@@ -514,10 +494,8 @@ public class OMLExtensions {
   
   public Iterable<Concept> allConcepts(final TerminologyBox it) {
     Iterable<Concept> _localConcepts = this.localConcepts(it);
-    final Function1<TerminologyBox, Iterable<Concept>> _function = new Function1<TerminologyBox, Iterable<Concept>>() {
-      public Iterable<Concept> apply(final TerminologyBox it) {
-        return OMLExtensions.this.localConcepts(it);
-      }
+    final Function1<TerminologyBox, Iterable<Concept>> _function = (TerminologyBox it_1) -> {
+      return this.localConcepts(it_1);
     };
     Iterable<Concept> _flatten = Iterables.<Concept>concat(IterableExtensions.<TerminologyBox, Iterable<Concept>>map(this.allImportedTerminologies(it), _function));
     return Iterables.<Concept>concat(_localConcepts, _flatten);
@@ -533,10 +511,8 @@ public class OMLExtensions {
   
   public Iterable<ReifiedRelationship> allReifiedRelationships(final TerminologyBox it) {
     Iterable<ReifiedRelationship> _localReifiedRelationships = this.localReifiedRelationships(it);
-    final Function1<TerminologyBox, Iterable<ReifiedRelationship>> _function = new Function1<TerminologyBox, Iterable<ReifiedRelationship>>() {
-      public Iterable<ReifiedRelationship> apply(final TerminologyBox it) {
-        return OMLExtensions.this.localReifiedRelationships(it);
-      }
+    final Function1<TerminologyBox, Iterable<ReifiedRelationship>> _function = (TerminologyBox it_1) -> {
+      return this.localReifiedRelationships(it_1);
     };
     Iterable<ReifiedRelationship> _flatten = Iterables.<ReifiedRelationship>concat(IterableExtensions.<TerminologyBox, Iterable<ReifiedRelationship>>map(this.allImportedTerminologies(it), _function));
     return Iterables.<ReifiedRelationship>concat(_localReifiedRelationships, _flatten);
@@ -548,10 +524,8 @@ public class OMLExtensions {
   
   public Iterable<EntityRelationship> allEntityRelationships(final TerminologyBox it) {
     Iterable<EntityRelationship> _localEntityRelationships = this.localEntityRelationships(it);
-    final Function1<TerminologyBox, Iterable<EntityRelationship>> _function = new Function1<TerminologyBox, Iterable<EntityRelationship>>() {
-      public Iterable<EntityRelationship> apply(final TerminologyBox it) {
-        return OMLExtensions.this.localEntityRelationships(it);
-      }
+    final Function1<TerminologyBox, Iterable<EntityRelationship>> _function = (TerminologyBox it_1) -> {
+      return this.localEntityRelationships(it_1);
     };
     Iterable<EntityRelationship> _flatten = Iterables.<EntityRelationship>concat(IterableExtensions.<TerminologyBox, Iterable<EntityRelationship>>map(this.allImportedTerminologies(it), _function));
     return Iterables.<EntityRelationship>concat(_localEntityRelationships, _flatten);
@@ -598,10 +572,8 @@ public class OMLExtensions {
       }
       final Bundle bundle = IterableExtensions.<Bundle>head(queue);
       queue.remove(bundle);
-      final Function1<TerminologyBundleAxiom, TerminologyBox> _function = new Function1<TerminologyBundleAxiom, TerminologyBox>() {
-        public TerminologyBox apply(final TerminologyBundleAxiom it) {
-          return it.target();
-        }
+      final Function1<TerminologyBundleAxiom, TerminologyBox> _function = (TerminologyBundleAxiom it) -> {
+        return it.target();
       };
       final Iterable<Bundle> inc = Iterables.<Bundle>filter(ListExtensions.<TerminologyBundleAxiom, TerminologyBox>map(bundle.getBundleAxioms(), _function), Bundle.class);
       Iterables.<Bundle>addAll(queue, inc);
@@ -632,22 +604,16 @@ public class OMLExtensions {
       }
       final DescriptionBox dbox = IterableExtensions.<DescriptionBox>head(queue);
       queue.remove(dbox);
-      final Function1<DescriptionBoxRefinement, DescriptionBox> _function = new Function1<DescriptionBoxRefinement, DescriptionBox>() {
-        public DescriptionBox apply(final DescriptionBoxRefinement it) {
-          return it.getRefinedDescriptionBox();
-        }
+      final Function1<DescriptionBoxRefinement, DescriptionBox> _function = (DescriptionBoxRefinement it) -> {
+        return it.getRefinedDescriptionBox();
       };
       final List<DescriptionBox> incd = ListExtensions.<DescriptionBoxRefinement, DescriptionBox>map(dbox.getDescriptionBoxRefinements(), _function);
       queue.addAll(incd);
-      final Function1<DescriptionBoxExtendsClosedWorldDefinitions, TerminologyBox> _function_1 = new Function1<DescriptionBoxExtendsClosedWorldDefinitions, TerminologyBox>() {
-        public TerminologyBox apply(final DescriptionBoxExtendsClosedWorldDefinitions it) {
-          return it.getClosedWorldDefinitions();
-        }
+      final Function1<DescriptionBoxExtendsClosedWorldDefinitions, TerminologyBox> _function_1 = (DescriptionBoxExtendsClosedWorldDefinitions it) -> {
+        return it.getClosedWorldDefinitions();
       };
-      final Function1<TerminologyBox, Iterable<TerminologyBox>> _function_2 = new Function1<TerminologyBox, Iterable<TerminologyBox>>() {
-        public Iterable<TerminologyBox> apply(final TerminologyBox it) {
-          return OMLExtensions.this.allImportedTerminologies(it);
-        }
+      final Function1<TerminologyBox, Iterable<TerminologyBox>> _function_2 = (TerminologyBox it) -> {
+        return this.allImportedTerminologies(it);
       };
       final Iterable<TerminologyBox> inct = Iterables.<TerminologyBox>concat(ListExtensions.<TerminologyBox, Iterable<TerminologyBox>>map(ListExtensions.<DescriptionBoxExtendsClosedWorldDefinitions, TerminologyBox>map(dbox.getClosedWorldDefinitions(), _function_1), _function_2));
       Iterables.<TerminologyBox>addAll(acc, inct);
@@ -669,10 +635,8 @@ public class OMLExtensions {
       }
       final DescriptionBox dbox = IterableExtensions.<DescriptionBox>head(queue);
       queue.remove(dbox);
-      final Function1<DescriptionBoxRefinement, DescriptionBox> _function = new Function1<DescriptionBoxRefinement, DescriptionBox>() {
-        public DescriptionBox apply(final DescriptionBoxRefinement it) {
-          return it.getRefinedDescriptionBox();
-        }
+      final Function1<DescriptionBoxRefinement, DescriptionBox> _function = (DescriptionBoxRefinement it) -> {
+        return it.getRefinedDescriptionBox();
       };
       final List<DescriptionBox> inc = ListExtensions.<DescriptionBoxRefinement, DescriptionBox>map(dbox.getDescriptionBoxRefinements(), _function);
       queue.addAll(inc);

@@ -28,10 +28,12 @@ public class OMLExternalReferenceValueConverter extends AbstractLexerBasedConver
   @Inject
   protected IValueConverterService valueConverterService;
   
+  @Override
   public String toEscapedString(final String value) {
     return (("<" + value) + ">");
   }
   
+  @Override
   public String toValue(final String string, final INode node) throws ValueConverterException {
     if (((!string.startsWith("<")) || (!string.endsWith(">")))) {
       throw new ValueConverterException("Invalid IRI", node, null);
