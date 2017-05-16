@@ -21,30 +21,6 @@
          id="org.eclipse.e4.rcp"
          version="0.0.0"/>
 
-   <includes
-         id="org.eclipse.emf.cdo.sdk"
-         version="0.0.0"/>
-
-   <includes
-         id="org.eclipse.emf.ecore.xcore.sdk"
-         version="0.0.0"/>
-
-   <includes
-         id="org.eclipse.sirius.specifier"
-         version="0.0.0"/>
-
-   <includes
-         id="org.eclipse.uml2.sdk"
-         version="0.0.0"/>
-
-   <includes
-         id="org.eclipse.xtend.sdk"
-         version="0.0.0"/>
-
-   <includes
-         id="org.eclipse.xtext.sdk"
-         version="0.0.0"/>
-
    <plugin
          id="org.antlr.runtime"
          download-size="0"
@@ -1455,5 +1431,33 @@
          download-size="0"
          install-size="0"
          version="0.0.0"/>
+
+   <plugin
+         id="org.apache.xml.resolver"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.codegen.ecore.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.codegen.ecore.xtext.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.ecore.xcore.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
 </feature>
