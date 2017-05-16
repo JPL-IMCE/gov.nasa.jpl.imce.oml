@@ -479,13 +479,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.emf.mwe.core.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.apache.commons.httpclient"
          download-size="0"
          install-size="0"
@@ -507,13 +500,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.emf.compare.edit.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.emf.compare.ide"
          download-size="0"
          install-size="0"
@@ -521,28 +507,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.emf.compare.ide.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.emf.compare.ide.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.compare.ide.ui.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.compare.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -577,13 +542,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.xpand.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.xtend.typesystem.emf"
          download-size="0"
          install-size="0"
@@ -591,21 +549,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.xtend.typesystem.emf.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.emf.mwe.utils"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.emf.mwe.utils.source"
          download-size="0"
          install-size="0"
          version="0.0.0"

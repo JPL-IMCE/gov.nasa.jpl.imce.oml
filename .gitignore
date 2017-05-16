@@ -1,5 +1,6 @@
 *.DS_Store
 *.java._trace
 *.xtendbin
+.polyglot.build.properties
 bin
 target
