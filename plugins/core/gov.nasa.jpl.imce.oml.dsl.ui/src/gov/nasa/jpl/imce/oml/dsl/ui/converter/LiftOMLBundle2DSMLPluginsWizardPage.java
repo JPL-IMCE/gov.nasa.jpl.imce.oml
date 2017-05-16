@@ -34,6 +34,7 @@ public class LiftOMLBundle2DSMLPluginsWizardPage extends WizardPage {
 		container.setLayout(new GridLayout(2, false));
 		
 		Label dsmlEcorePluginLabel = new Label(container, SWT.NONE);
+		dsmlEcorePluginLabel.setToolTipText("If needed, customize the Java package qualified name for the DSML metamodel plugin.");
 		dsmlEcorePluginLabel.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
 		dsmlEcorePluginLabel.setText("DSML ecore plugin:");
 		
@@ -41,6 +42,7 @@ public class LiftOMLBundle2DSMLPluginsWizardPage extends WizardPage {
 		dsmlEcorePluginName.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 		
 		Label dsmlEditPluginLabel = new Label(container, SWT.NONE);
+		dsmlEditPluginLabel.setToolTipText("If needed, customize the Java package qualified name for the DSML edit plugin.");
 		dsmlEditPluginLabel.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
 		dsmlEditPluginLabel.setText("DSML edit plugin:");
 		
@@ -48,6 +50,7 @@ public class LiftOMLBundle2DSMLPluginsWizardPage extends WizardPage {
 		dsmlEditPluginName.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 		
 		Label dsmlUIPluginLabel = new Label(container, SWT.NONE);
+		dsmlUIPluginLabel.setToolTipText("If needed, customize the Java package qualified name for the DSML Eclipse UI plugin.");
 		dsmlUIPluginLabel.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
 		dsmlUIPluginLabel.setText("DSML ui plugin:");
 		

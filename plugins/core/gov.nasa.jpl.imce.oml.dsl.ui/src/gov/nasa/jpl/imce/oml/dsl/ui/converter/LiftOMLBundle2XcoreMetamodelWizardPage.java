@@ -47,16 +47,19 @@ public class LiftOMLBundle2XcoreMetamodelWizardPage extends WizardPage {
 		container.setLayout(new GridLayout(2, false));
 		
 		Label dsmlBundleSpecificationLabel = new Label(container, SWT.NONE);
+		dsmlBundleSpecificationLabel.setToolTipText("The IRI of the selected OML Bundle (read-only).");
 		dsmlBundleSpecificationLabel.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
 		dsmlBundleSpecificationLabel.setAlignment(SWT.RIGHT);
 		dsmlBundleSpecificationLabel.setText("DSML Specification Bundle IRI:");
 		
 		dsmlBundleSpecificationPath = new Text(container, SWT.BORDER);
+		dsmlBundleSpecificationPath.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 		dsmlBundleSpecificationPath.setEnabled(false);
 		dsmlBundleSpecificationPath.setEditable(false);
 		dsmlBundleSpecificationPath.setText(omlBundle.iri());
 		
 		Label dsmlQualifiedNameLabel = new Label(container, SWT.NONE);
+		dsmlQualifiedNameLabel.setToolTipText("A Java package namepace prefix (with \".\") for the generated DSML plugins variants (prefix + \".ecore\", prefix + \".edit\", ...).");
 		dsmlQualifiedNameLabel.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
 		dsmlQualifiedNameLabel.setAlignment(SWT.RIGHT);
 		dsmlQualifiedNameLabel.setText("DSML qualified name:");
@@ -72,6 +75,7 @@ public class LiftOMLBundle2XcoreMetamodelWizardPage extends WizardPage {
 		dslQualifiedNameText.setText(initialQName);
 		
 		Label dsmlNameLabel = new Label(container, SWT.NONE);
+		dsmlNameLabel.setToolTipText("The unqualified name of the DSML metamodel (without \".\").");
 		dsmlNameLabel.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
 		dsmlNameLabel.setText("DSML name:");
 		dsmlNameLabel.setAlignment(SWT.RIGHT);

@@ -13,8 +13,8 @@
 	</parent>
 
 	<modules>
+		<module>gov.nasa.jpl.imce.oml.target</module>
 		<module>gov.nasa.jpl.imce.oml.updatesite</module>
 		<module>gov.nasa.jpl.imce.oml.product</module>
-		<module>gov.nasa.jpl.imce.oml.target</module>
 	</modules>
 </project>
