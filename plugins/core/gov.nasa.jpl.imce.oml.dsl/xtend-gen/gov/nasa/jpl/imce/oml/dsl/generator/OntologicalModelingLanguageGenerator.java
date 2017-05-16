@@ -372,10 +372,8 @@ public class OntologicalModelingLanguageGenerator extends AbstractGenerator {
     protected CharSequence convertToBody(final TerminologyBox terminology) {
       StringConcatenation _builder = new StringConcatenation();
       {
-        final Function1<Term, String> _function = new Function1<Term, String>() {
-          public String apply(final Term it) {
-            return OntologicalModelingLanguageGenerator.validName(it);
-          }
+        final Function1<Term, String> _function = (Term it) -> {
+          return OntologicalModelingLanguageGenerator.validName(it);
         };
         List<Term> _sortBy = IterableExtensions.<Term, String>sortBy(Iterables.<Term>filter(terminology.getBoxStatements(), Term.class), _function);
         boolean _hasElements = false;
@@ -395,11 +393,9 @@ public class OntologicalModelingLanguageGenerator extends AbstractGenerator {
     
     protected CharSequence _convertToType(final ScalarOneOfRestriction range) {
       StringConcatenation _builder = new StringConcatenation();
-      final Function1<ScalarOneOfLiteralAxiom, Boolean> _function = new Function1<ScalarOneOfLiteralAxiom, Boolean>() {
-        public Boolean apply(final ScalarOneOfLiteralAxiom a) {
-          ScalarOneOfRestriction _axiom = a.getAxiom();
-          return Boolean.valueOf((_axiom == range));
-        }
+      final Function1<ScalarOneOfLiteralAxiom, Boolean> _function = (ScalarOneOfLiteralAxiom a) -> {
+        ScalarOneOfRestriction _axiom = a.getAxiom();
+        return Boolean.valueOf((_axiom == range));
       };
       final Iterable<ScalarOneOfLiteralAxiom> axioms = IterableExtensions.<ScalarOneOfLiteralAxiom>filter(this.<ScalarOneOfLiteralAxiom>allTBoxStatementsOfType(ScalarOneOfLiteralAxiom.class), _function);
       _builder.newLineIfNotEmpty();
@@ -409,10 +405,8 @@ public class OntologicalModelingLanguageGenerator extends AbstractGenerator {
       _builder.append(" {");
       _builder.newLineIfNotEmpty();
       {
-        final Function1<ScalarOneOfLiteralAxiom, String> _function_1 = new Function1<ScalarOneOfLiteralAxiom, String>() {
-          public String apply(final ScalarOneOfLiteralAxiom it) {
-            return it.getValue();
-          }
+        final Function1<ScalarOneOfLiteralAxiom, String> _function_1 = (ScalarOneOfLiteralAxiom it) -> {
+          return it.getValue();
         };
         List<ScalarOneOfLiteralAxiom> _sortBy = IterableExtensions.<ScalarOneOfLiteralAxiom, String>sortBy(axioms, _function_1);
         for(final ScalarOneOfLiteralAxiom literal : _sortBy) {
@@ -429,10 +423,8 @@ public class OntologicalModelingLanguageGenerator extends AbstractGenerator {
     
     public String lookupOML2JavaDatatypeBinding(final DataRange range) {
       String _elvis = null;
-      final Function1<Annotation, Boolean> _function = new Function1<Annotation, Boolean>() {
-        public Boolean apply(final Annotation it) {
-          return Boolean.valueOf((Objects.equal(it.getSubject(), range) && Objects.equal(it.getProperty().getIri(), "http://imce.jpl.nasa.gov/oml/runtime/OML2JavaDatatypeBinding")));
-        }
+      final Function1<Annotation, Boolean> _function = (Annotation it) -> {
+        return Boolean.valueOf((Objects.equal(it.getSubject(), range) && Objects.equal(it.getProperty().getIri(), "http://imce.jpl.nasa.gov/oml/runtime/OML2JavaDatatypeBinding")));
       };
       Annotation _findFirst = IterableExtensions.<Annotation>findFirst(range.getTbox().getAnnotations(), _function);
       String _value = null;
@@ -776,16 +768,12 @@ public class OntologicalModelingLanguageGenerator extends AbstractGenerator {
       _builder.append(_entityProperties, "\t");
       _builder.newLineIfNotEmpty();
       _builder.append("\t");
-      final Function1<ReifiedRelationshipSpecializationAxiom, Boolean> _function = new Function1<ReifiedRelationshipSpecializationAxiom, Boolean>() {
-        public Boolean apply(final ReifiedRelationshipSpecializationAxiom it) {
-          ReifiedRelationship _subRelationship = it.getSubRelationship();
-          return Boolean.valueOf(Objects.equal(_subRelationship, relationship));
-        }
+      final Function1<ReifiedRelationshipSpecializationAxiom, Boolean> _function = (ReifiedRelationshipSpecializationAxiom it) -> {
+        ReifiedRelationship _subRelationship = it.getSubRelationship();
+        return Boolean.valueOf(Objects.equal(_subRelationship, relationship));
       };
-      final Function1<ReifiedRelationshipSpecializationAxiom, ReifiedRelationship> _function_1 = new Function1<ReifiedRelationshipSpecializationAxiom, ReifiedRelationship>() {
-        public ReifiedRelationship apply(final ReifiedRelationshipSpecializationAxiom it) {
-          return it.getSuperRelationship();
-        }
+      final Function1<ReifiedRelationshipSpecializationAxiom, ReifiedRelationship> _function_1 = (ReifiedRelationshipSpecializationAxiom it) -> {
+        return it.getSuperRelationship();
       };
       final Iterable<ReifiedRelationship> superClasses = IterableExtensions.<ReifiedRelationshipSpecializationAxiom, ReifiedRelationship>map(IterableExtensions.<ReifiedRelationshipSpecializationAxiom>filter(this.<ReifiedRelationshipSpecializationAxiom>allTBoxStatementsOfType(ReifiedRelationshipSpecializationAxiom.class), _function), _function_1);
       _builder.newLineIfNotEmpty();
@@ -904,16 +892,12 @@ public class OntologicalModelingLanguageGenerator extends AbstractGenerator {
       CharSequence _xblockexpression = null;
       {
         final ArrayList<String> types = new ArrayList<String>();
-        final Function1<AspectSpecializationAxiom, Boolean> _function = new Function1<AspectSpecializationAxiom, Boolean>() {
-          public Boolean apply(final AspectSpecializationAxiom it) {
-            Entity _subEntity = it.getSubEntity();
-            return Boolean.valueOf(Objects.equal(_subEntity, aspect));
-          }
+        final Function1<AspectSpecializationAxiom, Boolean> _function = (AspectSpecializationAxiom it) -> {
+          Entity _subEntity = it.getSubEntity();
+          return Boolean.valueOf(Objects.equal(_subEntity, aspect));
         };
-        final Function1<AspectSpecializationAxiom, String> _function_1 = new Function1<AspectSpecializationAxiom, String>() {
-          public String apply(final AspectSpecializationAxiom it) {
-            return TerminologyToXcoreGenerator.this.imported(it.getSuperAspect());
-          }
+        final Function1<AspectSpecializationAxiom, String> _function_1 = (AspectSpecializationAxiom it) -> {
+          return this.imported(it.getSuperAspect());
         };
         types.addAll(IterableExtensions.<String>sort(IterableExtensions.<AspectSpecializationAxiom, String>map(IterableExtensions.<AspectSpecializationAxiom>filter(this.<AspectSpecializationAxiom>allTBoxStatementsOfType(AspectSpecializationAxiom.class), _function), _function_1)));
         boolean _isEmpty = types.isEmpty();
@@ -929,32 +913,24 @@ public class OntologicalModelingLanguageGenerator extends AbstractGenerator {
       CharSequence _xblockexpression = null;
       {
         final ArrayList<String> types = new ArrayList<String>();
-        final Function1<ConceptSpecializationAxiom, Boolean> _function = new Function1<ConceptSpecializationAxiom, Boolean>() {
-          public Boolean apply(final ConceptSpecializationAxiom it) {
-            Concept _subConcept = it.getSubConcept();
-            return Boolean.valueOf(Objects.equal(_subConcept, concept));
-          }
+        final Function1<ConceptSpecializationAxiom, Boolean> _function = (ConceptSpecializationAxiom it) -> {
+          Concept _subConcept = it.getSubConcept();
+          return Boolean.valueOf(Objects.equal(_subConcept, concept));
         };
-        final Function1<ConceptSpecializationAxiom, String> _function_1 = new Function1<ConceptSpecializationAxiom, String>() {
-          public String apply(final ConceptSpecializationAxiom it) {
-            return TerminologyToXcoreGenerator.this.imported(it.getSuperConcept());
-          }
+        final Function1<ConceptSpecializationAxiom, String> _function_1 = (ConceptSpecializationAxiom it) -> {
+          return this.imported(it.getSuperConcept());
         };
         types.addAll(IterableExtensions.<String>sort(IterableExtensions.<ConceptSpecializationAxiom, String>map(IterableExtensions.<ConceptSpecializationAxiom>filter(this.<ConceptSpecializationAxiom>allTBoxStatementsOfType(ConceptSpecializationAxiom.class), _function), _function_1)));
         boolean _isEmpty = types.isEmpty();
         if (_isEmpty) {
           types.add(this.imported(OMLRuntimePackage.Literals.OML_CONCEPT));
         }
-        final Function1<AspectSpecializationAxiom, Boolean> _function_2 = new Function1<AspectSpecializationAxiom, Boolean>() {
-          public Boolean apply(final AspectSpecializationAxiom it) {
-            Entity _subEntity = it.getSubEntity();
-            return Boolean.valueOf(Objects.equal(_subEntity, concept));
-          }
+        final Function1<AspectSpecializationAxiom, Boolean> _function_2 = (AspectSpecializationAxiom it) -> {
+          Entity _subEntity = it.getSubEntity();
+          return Boolean.valueOf(Objects.equal(_subEntity, concept));
         };
-        final Function1<AspectSpecializationAxiom, String> _function_3 = new Function1<AspectSpecializationAxiom, String>() {
-          public String apply(final AspectSpecializationAxiom it) {
-            return TerminologyToXcoreGenerator.this.imported(it.getSuperAspect());
-          }
+        final Function1<AspectSpecializationAxiom, String> _function_3 = (AspectSpecializationAxiom it) -> {
+          return this.imported(it.getSuperAspect());
         };
         types.addAll(IterableExtensions.<String>sort(IterableExtensions.<AspectSpecializationAxiom, String>map(IterableExtensions.<AspectSpecializationAxiom>filter(this.<AspectSpecializationAxiom>allTBoxStatementsOfType(AspectSpecializationAxiom.class), _function_2), _function_3)));
         _xblockexpression = this.convertToExtends(types);
@@ -966,32 +942,24 @@ public class OntologicalModelingLanguageGenerator extends AbstractGenerator {
       CharSequence _xblockexpression = null;
       {
         final ArrayList<String> types = new ArrayList<String>();
-        final Function1<ReifiedRelationshipSpecializationAxiom, Boolean> _function = new Function1<ReifiedRelationshipSpecializationAxiom, Boolean>() {
-          public Boolean apply(final ReifiedRelationshipSpecializationAxiom it) {
-            ReifiedRelationship _subRelationship = it.getSubRelationship();
-            return Boolean.valueOf(Objects.equal(_subRelationship, relationship));
-          }
+        final Function1<ReifiedRelationshipSpecializationAxiom, Boolean> _function = (ReifiedRelationshipSpecializationAxiom it) -> {
+          ReifiedRelationship _subRelationship = it.getSubRelationship();
+          return Boolean.valueOf(Objects.equal(_subRelationship, relationship));
         };
-        final Function1<ReifiedRelationshipSpecializationAxiom, String> _function_1 = new Function1<ReifiedRelationshipSpecializationAxiom, String>() {
-          public String apply(final ReifiedRelationshipSpecializationAxiom it) {
-            return TerminologyToXcoreGenerator.this.imported(it.getSuperRelationship());
-          }
+        final Function1<ReifiedRelationshipSpecializationAxiom, String> _function_1 = (ReifiedRelationshipSpecializationAxiom it) -> {
+          return this.imported(it.getSuperRelationship());
         };
         types.addAll(IterableExtensions.<String>sort(IterableExtensions.<ReifiedRelationshipSpecializationAxiom, String>map(IterableExtensions.<ReifiedRelationshipSpecializationAxiom>filter(this.<ReifiedRelationshipSpecializationAxiom>allTBoxStatementsOfType(ReifiedRelationshipSpecializationAxiom.class), _function), _function_1)));
         boolean _isEmpty = types.isEmpty();
         if (_isEmpty) {
           types.add(this.imported(OMLRuntimePackage.Literals.OML_REIFIED_RELATIONSHIP));
         }
-        final Function1<AspectSpecializationAxiom, Boolean> _function_2 = new Function1<AspectSpecializationAxiom, Boolean>() {
-          public Boolean apply(final AspectSpecializationAxiom it) {
-            Entity _subEntity = it.getSubEntity();
-            return Boolean.valueOf(Objects.equal(_subEntity, relationship));
-          }
+        final Function1<AspectSpecializationAxiom, Boolean> _function_2 = (AspectSpecializationAxiom it) -> {
+          Entity _subEntity = it.getSubEntity();
+          return Boolean.valueOf(Objects.equal(_subEntity, relationship));
         };
-        final Function1<AspectSpecializationAxiom, String> _function_3 = new Function1<AspectSpecializationAxiom, String>() {
-          public String apply(final AspectSpecializationAxiom it) {
-            return TerminologyToXcoreGenerator.this.imported(it.getSuperAspect());
-          }
+        final Function1<AspectSpecializationAxiom, String> _function_3 = (AspectSpecializationAxiom it) -> {
+          return this.imported(it.getSuperAspect());
         };
         types.addAll(IterableExtensions.<String>sort(IterableExtensions.<AspectSpecializationAxiom, String>map(IterableExtensions.<AspectSpecializationAxiom>filter(this.<AspectSpecializationAxiom>allTBoxStatementsOfType(AspectSpecializationAxiom.class), _function_2), _function_3)));
         _xblockexpression = this.convertToExtends(types);
@@ -1002,16 +970,12 @@ public class OntologicalModelingLanguageGenerator extends AbstractGenerator {
     protected CharSequence _dataProperties(final Structure structure) {
       StringConcatenation _builder = new StringConcatenation();
       {
-        final Function1<ScalarDataProperty, Boolean> _function = new Function1<ScalarDataProperty, Boolean>() {
-          public Boolean apply(final ScalarDataProperty it) {
-            Structure _domain = it.getDomain();
-            return Boolean.valueOf(Objects.equal(_domain, structure));
-          }
+        final Function1<ScalarDataProperty, Boolean> _function = (ScalarDataProperty it) -> {
+          Structure _domain = it.getDomain();
+          return Boolean.valueOf(Objects.equal(_domain, structure));
         };
-        final Function1<ScalarDataProperty, String> _function_1 = new Function1<ScalarDataProperty, String>() {
-          public String apply(final ScalarDataProperty it) {
-            return it.name();
-          }
+        final Function1<ScalarDataProperty, String> _function_1 = (ScalarDataProperty it) -> {
+          return it.name();
         };
         List<ScalarDataProperty> _sortBy = IterableExtensions.<ScalarDataProperty, String>sortBy(IterableExtensions.<ScalarDataProperty>filter(this.<ScalarDataProperty>allTBoxStatementsOfType(ScalarDataProperty.class), _function), _function_1);
         for(final ScalarDataProperty property : _sortBy) {
@@ -1026,16 +990,12 @@ public class OntologicalModelingLanguageGenerator extends AbstractGenerator {
         }
       }
       {
-        final Function1<StructuredDataProperty, Boolean> _function_2 = new Function1<StructuredDataProperty, Boolean>() {
-          public Boolean apply(final StructuredDataProperty it) {
-            Structure _domain = it.getDomain();
-            return Boolean.valueOf(Objects.equal(_domain, structure));
-          }
+        final Function1<StructuredDataProperty, Boolean> _function_2 = (StructuredDataProperty it) -> {
+          Structure _domain = it.getDomain();
+          return Boolean.valueOf(Objects.equal(_domain, structure));
         };
-        final Function1<StructuredDataProperty, String> _function_3 = new Function1<StructuredDataProperty, String>() {
-          public String apply(final StructuredDataProperty it) {
-            return it.name();
-          }
+        final Function1<StructuredDataProperty, String> _function_3 = (StructuredDataProperty it) -> {
+          return it.name();
         };
         List<StructuredDataProperty> _sortBy_1 = IterableExtensions.<StructuredDataProperty, String>sortBy(IterableExtensions.<StructuredDataProperty>filter(this.<StructuredDataProperty>allTBoxStatementsOfType(StructuredDataProperty.class), _function_2), _function_3);
         for(final StructuredDataProperty property_1 : _sortBy_1) {
@@ -1056,16 +1016,12 @@ public class OntologicalModelingLanguageGenerator extends AbstractGenerator {
     protected CharSequence _dataProperties(final Entity entity) {
       StringConcatenation _builder = new StringConcatenation();
       {
-        final Function1<EntityScalarDataProperty, Boolean> _function = new Function1<EntityScalarDataProperty, Boolean>() {
-          public Boolean apply(final EntityScalarDataProperty it) {
-            Entity _domain = it.getDomain();
-            return Boolean.valueOf(Objects.equal(_domain, entity));
-          }
+        final Function1<EntityScalarDataProperty, Boolean> _function = (EntityScalarDataProperty it) -> {
+          Entity _domain = it.getDomain();
+          return Boolean.valueOf(Objects.equal(_domain, entity));
         };
-        final Function1<EntityScalarDataProperty, String> _function_1 = new Function1<EntityScalarDataProperty, String>() {
-          public String apply(final EntityScalarDataProperty it) {
-            return it.name();
-          }
+        final Function1<EntityScalarDataProperty, String> _function_1 = (EntityScalarDataProperty it) -> {
+          return it.name();
         };
         List<EntityScalarDataProperty> _sortBy = IterableExtensions.<EntityScalarDataProperty, String>sortBy(IterableExtensions.<EntityScalarDataProperty>filter(this.<EntityScalarDataProperty>allTBoxStatementsOfType(EntityScalarDataProperty.class), _function), _function_1);
         for(final EntityScalarDataProperty property : _sortBy) {
@@ -1088,16 +1044,12 @@ public class OntologicalModelingLanguageGenerator extends AbstractGenerator {
         }
       }
       {
-        final Function1<EntityStructuredDataProperty, Boolean> _function_2 = new Function1<EntityStructuredDataProperty, Boolean>() {
-          public Boolean apply(final EntityStructuredDataProperty it) {
-            Entity _domain = it.getDomain();
-            return Boolean.valueOf(Objects.equal(_domain, entity));
-          }
+        final Function1<EntityStructuredDataProperty, Boolean> _function_2 = (EntityStructuredDataProperty it) -> {
+          Entity _domain = it.getDomain();
+          return Boolean.valueOf(Objects.equal(_domain, entity));
         };
-        final Function1<EntityStructuredDataProperty, String> _function_3 = new Function1<EntityStructuredDataProperty, String>() {
-          public String apply(final EntityStructuredDataProperty it) {
-            return it.name();
-          }
+        final Function1<EntityStructuredDataProperty, String> _function_3 = (EntityStructuredDataProperty it) -> {
+          return it.name();
         };
         List<EntityStructuredDataProperty> _sortBy_1 = IterableExtensions.<EntityStructuredDataProperty, String>sortBy(IterableExtensions.<EntityStructuredDataProperty>filter(this.<EntityStructuredDataProperty>allTBoxStatementsOfType(EntityStructuredDataProperty.class), _function_2), _function_3);
         for(final EntityStructuredDataProperty property_1 : _sortBy_1) {
@@ -1140,16 +1092,12 @@ public class OntologicalModelingLanguageGenerator extends AbstractGenerator {
     protected CharSequence entityProperties(final Entity entity) {
       StringConcatenation _builder = new StringConcatenation();
       {
-        final Function1<UnreifiedRelationship, Boolean> _function = new Function1<UnreifiedRelationship, Boolean>() {
-          public Boolean apply(final UnreifiedRelationship it) {
-            Entity _source = it.getSource();
-            return Boolean.valueOf(Objects.equal(_source, entity));
-          }
+        final Function1<UnreifiedRelationship, Boolean> _function = (UnreifiedRelationship it) -> {
+          Entity _source = it.getSource();
+          return Boolean.valueOf(Objects.equal(_source, entity));
         };
-        final Function1<UnreifiedRelationship, String> _function_1 = new Function1<UnreifiedRelationship, String>() {
-          public String apply(final UnreifiedRelationship it) {
-            return it.name();
-          }
+        final Function1<UnreifiedRelationship, String> _function_1 = (UnreifiedRelationship it) -> {
+          return it.name();
         };
         List<UnreifiedRelationship> _sortBy = IterableExtensions.<UnreifiedRelationship, String>sortBy(IterableExtensions.<UnreifiedRelationship>filter(this.<UnreifiedRelationship>allTBoxStatementsOfType(UnreifiedRelationship.class), _function), _function_1);
         for(final UnreifiedRelationship property : _sortBy) {
@@ -1176,16 +1124,12 @@ public class OntologicalModelingLanguageGenerator extends AbstractGenerator {
     protected CharSequence entityOperations(final Entity entity) {
       StringConcatenation _builder = new StringConcatenation();
       {
-        final Function1<ReifiedRelationship, Boolean> _function = new Function1<ReifiedRelationship, Boolean>() {
-          public Boolean apply(final ReifiedRelationship it) {
-            Entity _source = it.getSource();
-            return Boolean.valueOf(Objects.equal(_source, entity));
-          }
+        final Function1<ReifiedRelationship, Boolean> _function = (ReifiedRelationship it) -> {
+          Entity _source = it.getSource();
+          return Boolean.valueOf(Objects.equal(_source, entity));
         };
-        final Function1<ReifiedRelationship, String> _function_1 = new Function1<ReifiedRelationship, String>() {
-          public String apply(final ReifiedRelationship it) {
-            return TerminologyToXcoreGenerator.this.targetName(it);
-          }
+        final Function1<ReifiedRelationship, String> _function_1 = (ReifiedRelationship it) -> {
+          return this.targetName(it);
         };
         List<ReifiedRelationship> _sortBy = IterableExtensions.<ReifiedRelationship, String>sortBy(IterableExtensions.<ReifiedRelationship>filter(this.<ReifiedRelationship>allTBoxStatementsOfType(ReifiedRelationship.class), _function), _function_1);
         for(final ReifiedRelationship relationship : _sortBy) {
@@ -1221,15 +1165,11 @@ public class OntologicalModelingLanguageGenerator extends AbstractGenerator {
         }
       }
       {
-        final Function1<ReifiedRelationship, Boolean> _function_2 = new Function1<ReifiedRelationship, Boolean>() {
-          public Boolean apply(final ReifiedRelationship it) {
-            return Boolean.valueOf((Objects.equal(it.getTarget(), entity) && (it.getUnreifiedInversePropertyName() != null)));
-          }
+        final Function1<ReifiedRelationship, Boolean> _function_2 = (ReifiedRelationship it) -> {
+          return Boolean.valueOf((Objects.equal(it.getTarget(), entity) && (it.getUnreifiedInversePropertyName() != null)));
         };
-        final Function1<ReifiedRelationship, String> _function_3 = new Function1<ReifiedRelationship, String>() {
-          public String apply(final ReifiedRelationship it) {
-            return TerminologyToXcoreGenerator.this.sourceName(it);
-          }
+        final Function1<ReifiedRelationship, String> _function_3 = (ReifiedRelationship it) -> {
+          return this.sourceName(it);
         };
         List<ReifiedRelationship> _sortBy_1 = IterableExtensions.<ReifiedRelationship, String>sortBy(IterableExtensions.<ReifiedRelationship>filter(this.<ReifiedRelationship>allTBoxStatementsOfType(ReifiedRelationship.class), _function_2), _function_3);
         for(final ReifiedRelationship relationship_1 : _sortBy_1) {
@@ -1265,15 +1205,11 @@ public class OntologicalModelingLanguageGenerator extends AbstractGenerator {
         }
       }
       {
-        final Function1<EntityUniversalRestrictionAxiom, Boolean> _function_4 = new Function1<EntityUniversalRestrictionAxiom, Boolean>() {
-          public Boolean apply(final EntityUniversalRestrictionAxiom it) {
-            return Boolean.valueOf((Objects.equal(it.getRestrictedDomain(), entity) && it.getRestrictedRelation().isIsFunctional()));
-          }
+        final Function1<EntityUniversalRestrictionAxiom, Boolean> _function_4 = (EntityUniversalRestrictionAxiom it) -> {
+          return Boolean.valueOf((Objects.equal(it.getRestrictedDomain(), entity) && it.getRestrictedRelation().isIsFunctional()));
         };
-        final Function1<EntityUniversalRestrictionAxiom, String> _function_5 = new Function1<EntityUniversalRestrictionAxiom, String>() {
-          public String apply(final EntityUniversalRestrictionAxiom it) {
-            return TerminologyToXcoreGenerator.this.toFirstLower(it.getRestrictedRange());
-          }
+        final Function1<EntityUniversalRestrictionAxiom, String> _function_5 = (EntityUniversalRestrictionAxiom it) -> {
+          return this.toFirstLower(it.getRestrictedRange());
         };
         List<EntityUniversalRestrictionAxiom> _sortBy_2 = IterableExtensions.<EntityUniversalRestrictionAxiom, String>sortBy(IterableExtensions.<EntityUniversalRestrictionAxiom>filter(this.<EntityUniversalRestrictionAxiom>allTBoxStatementsOfType(EntityUniversalRestrictionAxiom.class), _function_4), _function_5);
         for(final EntityUniversalRestrictionAxiom axiom : _sortBy_2) {
@@ -1312,15 +1248,11 @@ public class OntologicalModelingLanguageGenerator extends AbstractGenerator {
         }
       }
       {
-        final Function1<EntityUniversalRestrictionAxiom, Boolean> _function_6 = new Function1<EntityUniversalRestrictionAxiom, Boolean>() {
-          public Boolean apply(final EntityUniversalRestrictionAxiom it) {
-            return Boolean.valueOf(((Objects.equal(it.getRestrictedRange(), entity) && (TerminologyToXcoreGenerator.this.hasRelationshipInverse(it.getRestrictedRelation())).booleanValue()) && it.getRestrictedRelation().isIsInverseFunctional()));
-          }
+        final Function1<EntityUniversalRestrictionAxiom, Boolean> _function_6 = (EntityUniversalRestrictionAxiom it) -> {
+          return Boolean.valueOf(((Objects.equal(it.getRestrictedRange(), entity) && (this.hasRelationshipInverse(it.getRestrictedRelation())).booleanValue()) && it.getRestrictedRelation().isIsInverseFunctional()));
         };
-        final Function1<EntityUniversalRestrictionAxiom, String> _function_7 = new Function1<EntityUniversalRestrictionAxiom, String>() {
-          public String apply(final EntityUniversalRestrictionAxiom it) {
-            return TerminologyToXcoreGenerator.this.toFirstLower(it.getRestrictedDomain());
-          }
+        final Function1<EntityUniversalRestrictionAxiom, String> _function_7 = (EntityUniversalRestrictionAxiom it) -> {
+          return this.toFirstLower(it.getRestrictedDomain());
         };
         List<EntityUniversalRestrictionAxiom> _sortBy_3 = IterableExtensions.<EntityUniversalRestrictionAxiom, String>sortBy(IterableExtensions.<EntityUniversalRestrictionAxiom>filter(this.<EntityUniversalRestrictionAxiom>allTBoxStatementsOfType(EntityUniversalRestrictionAxiom.class), _function_6), _function_7);
         for(final EntityUniversalRestrictionAxiom axiom_1 : _sortBy_3) {
@@ -1496,19 +1428,15 @@ public class OntologicalModelingLanguageGenerator extends AbstractGenerator {
     }
     
     protected <T extends TerminologyBoxAxiom> Iterable<T> allTBoxAxiomsOfType(final Class<T> type) {
-      final Function1<TerminologyBox, EList<TerminologyBoxAxiom>> _function = new Function1<TerminologyBox, EList<TerminologyBoxAxiom>>() {
-        public EList<TerminologyBoxAxiom> apply(final TerminologyBox it) {
-          return it.getBoxAxioms();
-        }
+      final Function1<TerminologyBox, EList<TerminologyBoxAxiom>> _function = (TerminologyBox it) -> {
+        return it.getBoxAxioms();
       };
       return Iterables.<T>filter(Iterables.<TerminologyBoxAxiom>concat(IterableExtensions.<TerminologyBox, EList<TerminologyBoxAxiom>>map(this.terminologies, _function)), type);
     }
     
     protected <T extends TerminologyBoxStatement> Iterable<T> allTBoxStatementsOfType(final Class<T> type) {
-      final Function1<TerminologyBox, EList<TerminologyBoxStatement>> _function = new Function1<TerminologyBox, EList<TerminologyBoxStatement>>() {
-        public EList<TerminologyBoxStatement> apply(final TerminologyBox it) {
-          return it.getBoxStatements();
-        }
+      final Function1<TerminologyBox, EList<TerminologyBoxStatement>> _function = (TerminologyBox it) -> {
+        return it.getBoxStatements();
       };
       return Iterables.<T>filter(Iterables.<TerminologyBoxStatement>concat(IterableExtensions.<TerminologyBox, EList<TerminologyBoxStatement>>map(this.terminologies, _function)), type);
     }
@@ -1621,6 +1549,7 @@ public class OntologicalModelingLanguageGenerator extends AbstractGenerator {
     return this.omlBundle;
   }
   
+  @Override
   public void afterGenerate(final Resource input, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
     super.afterGenerate(input, fsa, context);
     this.omlBundle = null;
@@ -1629,14 +1558,13 @@ public class OntologicalModelingLanguageGenerator extends AbstractGenerator {
     this.uiProjectHandle = null;
   }
   
+  @Override
   public void beforeGenerate(final Resource input, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
     super.beforeGenerate(input, fsa, context);
     EcoreUtil2.resolveAll(input);
     final ResourceSet rs = input.getResourceSet();
-    final Function1<Resource, EList<Resource.Diagnostic>> _function = new Function1<Resource, EList<Resource.Diagnostic>>() {
-      public EList<Resource.Diagnostic> apply(final Resource it) {
-        return it.getErrors();
-      }
+    final Function1<Resource, EList<Resource.Diagnostic>> _function = (Resource it) -> {
+      return it.getErrors();
     };
     final Iterable<Resource.Diagnostic> errors = Iterables.<Resource.Diagnostic>concat(ListExtensions.<Resource, EList<Resource.Diagnostic>>map(rs.getResources(), _function));
     boolean _isEmpty = IterableExtensions.isEmpty(errors);
@@ -1666,10 +1594,8 @@ public class OntologicalModelingLanguageGenerator extends AbstractGenerator {
       final String message = _builder.toString();
       throw new IllegalArgumentException(message);
     }
-    final Function1<Resource, EList<Resource.Diagnostic>> _function_1 = new Function1<Resource, EList<Resource.Diagnostic>>() {
-      public EList<Resource.Diagnostic> apply(final Resource it) {
-        return it.getWarnings();
-      }
+    final Function1<Resource, EList<Resource.Diagnostic>> _function_1 = (Resource it) -> {
+      return it.getWarnings();
     };
     final Iterable<Resource.Diagnostic> warnings = Iterables.<Resource.Diagnostic>concat(ListExtensions.<Resource, EList<Resource.Diagnostic>>map(rs.getResources(), _function_1));
     boolean _isEmpty_1 = IterableExtensions.isEmpty(warnings);
@@ -1699,11 +1625,9 @@ public class OntologicalModelingLanguageGenerator extends AbstractGenerator {
       final String message_1 = _builder_1.toString();
       throw new IllegalArgumentException(message_1);
     }
-    final Function1<Resource, Boolean> _function_2 = new Function1<Resource, Boolean>() {
-      public Boolean apply(final Resource it) {
-        boolean _isLoaded = it.isLoaded();
-        return Boolean.valueOf((!_isLoaded));
-      }
+    final Function1<Resource, Boolean> _function_2 = (Resource it) -> {
+      boolean _isLoaded = it.isLoaded();
+      return Boolean.valueOf((!_isLoaded));
     };
     final Iterable<Resource> missing = IterableExtensions.<Resource>filter(rs.getResources(), _function_2);
     boolean _isEmpty_2 = IterableExtensions.isEmpty(missing);
@@ -1742,6 +1666,7 @@ public class OntologicalModelingLanguageGenerator extends AbstractGenerator {
     }
   }
   
+  @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
     boolean _isEmpty = resource.getContents().isEmpty();
     boolean _not = (!_isEmpty);
@@ -1756,10 +1681,8 @@ public class OntologicalModelingLanguageGenerator extends AbstractGenerator {
           {
             final HashSet<TerminologyBox> allTboxes = new HashSet<TerminologyBox>();
             Iterables.<TerminologyBox>addAll(allTboxes, this._oMLExtensions.allImportedTerminologies(bundle));
-            final Function1<Bundle, Iterable<TerminologyBox>> _function = new Function1<Bundle, Iterable<TerminologyBox>>() {
-              public Iterable<TerminologyBox> apply(final Bundle it) {
-                return OntologicalModelingLanguageGenerator.this._oMLExtensions.allImportedTerminologies(it);
-              }
+            final Function1<Bundle, Iterable<TerminologyBox>> _function = (Bundle it) -> {
+              return this._oMLExtensions.allImportedTerminologies(it);
             };
             Iterables.<TerminologyBox>addAll(allTboxes, Iterables.<TerminologyBox>concat(IterableExtensions.<Bundle, Iterable<TerminologyBox>>map(this._oMLExtensions.allImportedBundles(bundle), _function)));
             for (final TerminologyBox terminology : allTboxes) {
@@ -1868,10 +1791,8 @@ public class OntologicalModelingLanguageGenerator extends AbstractGenerator {
         throw new IllegalArgumentException(("Invalid terminology IRI: " + terminology));
       }
       final String qname = terminology.iri().substring((colon + 3));
-      final Function1<String, String> _function = new Function1<String, String>() {
-        public String apply(final String it) {
-          return OntologicalModelingLanguageGenerator.legalName(it);
-        }
+      final Function1<String, String> _function = (String it) -> {
+        return OntologicalModelingLanguageGenerator.legalName(it);
       };
       final String qualifiedName = IterableExtensions.join(ListExtensions.<String, String>map(((List<String>)Conversions.doWrapArray(qname.split("\\."))), _function), ".").replace("/", ".");
       _xblockexpression = qualifiedName;

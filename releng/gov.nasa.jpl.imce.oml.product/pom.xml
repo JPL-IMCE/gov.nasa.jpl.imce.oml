@@ -34,7 +34,7 @@
 					</formats>
 					<products>
 						<product>
-							<id>OML Workbench</id>
+							<id>gov.nasa.jpl.imce.oml.rcp.product</id>
 							<rootFolders>
 								<macosx>OML Workbench.app</macosx>
 							</rootFolders>
