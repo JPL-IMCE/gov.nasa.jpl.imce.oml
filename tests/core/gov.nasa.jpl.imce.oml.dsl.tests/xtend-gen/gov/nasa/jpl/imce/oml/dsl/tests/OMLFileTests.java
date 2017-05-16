@@ -49,6 +49,7 @@ public class OMLFileTests extends OMLTest {
    * that the result of parsing an OML test file
    * is precisely an OML TerminologyExtent
    */
+  @Override
   protected Class<? extends EObject> getRootObjectType(final URI uri) {
     return Extent.class;
   }
@@ -73,52 +74,48 @@ public class OMLFileTests extends OMLTest {
   
   @Test
   public void format1() {
-    final Procedure1<FormatterTestRequest> _function = new Procedure1<FormatterTestRequest>() {
-      public void apply(final FormatterTestRequest it) {
-        final Procedure1<MapBasedPreferenceValues> _function = new Procedure1<MapBasedPreferenceValues>() {
-          public void apply(final MapBasedPreferenceValues it) {
-            it.<String>put(FormatterPreferenceKeys.indentation, "\t");
-            it.<Integer>put(FormatterPreferenceKeys.tabWidth, Integer.valueOf(2));
-          }
-        };
-        it.preferences(_function);
-        StringConcatenation _builder = new StringConcatenation();
-        _builder.append("open terminology <http://imce.jpl.nasa.gov/foundation/base/base> {");
-        _builder.newLine();
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("aspect IdentifiedElement");
-        _builder.newLine();
-        _builder.newLine();
-        _builder.append("}");
-        _builder.newLine();
-        it.setExpectation(_builder);
-        StringConcatenation _builder_1 = new StringConcatenation();
-        _builder_1.append(" ");
-        _builder_1.append("open ");
-        _builder_1.newLine();
-        _builder_1.append(" ");
-        _builder_1.newLine();
-        _builder_1.append("  ");
-        _builder_1.append("terminology ");
-        _builder_1.newLine();
-        _builder_1.append("  ");
-        _builder_1.newLine();
-        _builder_1.append("    ");
-        _builder_1.append("<http://imce.jpl.nasa.gov/foundation/base/base>       {");
-        _builder_1.newLine();
-        _builder_1.append("\t");
-        _builder_1.newLine();
-        _builder_1.append("\t    ");
-        _builder_1.append("aspect ");
-        _builder_1.newLine();
-        _builder_1.append("\t  ");
-        _builder_1.append("IdentifiedElement");
-        _builder_1.newLine();
-        _builder_1.append("}");
-        _builder_1.newLine();
-        it.setToBeFormatted(_builder_1);
-      }
+    final Procedure1<FormatterTestRequest> _function = (FormatterTestRequest it) -> {
+      final Procedure1<MapBasedPreferenceValues> _function_1 = (MapBasedPreferenceValues it_1) -> {
+        it_1.<String>put(FormatterPreferenceKeys.indentation, "\t");
+        it_1.<Integer>put(FormatterPreferenceKeys.tabWidth, Integer.valueOf(2));
+      };
+      it.preferences(_function_1);
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("open terminology <http://imce.jpl.nasa.gov/foundation/base/base> {");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("aspect IdentifiedElement");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("}");
+      _builder.newLine();
+      it.setExpectation(_builder);
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append(" ");
+      _builder_1.append("open ");
+      _builder_1.newLine();
+      _builder_1.append(" ");
+      _builder_1.newLine();
+      _builder_1.append("  ");
+      _builder_1.append("terminology ");
+      _builder_1.newLine();
+      _builder_1.append("  ");
+      _builder_1.newLine();
+      _builder_1.append("    ");
+      _builder_1.append("<http://imce.jpl.nasa.gov/foundation/base/base>       {");
+      _builder_1.newLine();
+      _builder_1.append("\t");
+      _builder_1.newLine();
+      _builder_1.append("\t    ");
+      _builder_1.append("aspect ");
+      _builder_1.newLine();
+      _builder_1.append("\t  ");
+      _builder_1.append("IdentifiedElement");
+      _builder_1.newLine();
+      _builder_1.append("}");
+      _builder_1.newLine();
+      it.setToBeFormatted(_builder_1);
     };
     this._formatterTestHelper.assertFormatted(_function);
   }

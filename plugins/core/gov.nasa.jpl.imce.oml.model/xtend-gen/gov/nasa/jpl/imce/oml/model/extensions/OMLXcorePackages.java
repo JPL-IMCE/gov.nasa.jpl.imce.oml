@@ -67,18 +67,16 @@ public class OMLXcorePackages {
     final URI omld_uri = URI.createPlatformResourceURI(("/gov.nasa.jpl.imce.oml.model" + omld), false);
     final String oml2oti = "/model/OMLProvenanceOTI.xcore";
     final URI oml2oti_uri = URI.createPlatformResourceURI(("/gov.nasa.jpl.imce.oml.model" + oml2oti), false);
-    final Procedure1<Map<URI, URI>> _function = new Procedure1<Map<URI, URI>>() {
-      public void apply(final Map<URI, URI> uriMap) {
-        try {
-          uriMap.put(omlc_uri, URI.createURI(CommonPackage.class.getResource(omlc).toURI().toString()));
-          uriMap.put(omlt_uri, URI.createURI(CommonPackage.class.getResource(omlt).toURI().toString()));
-          uriMap.put(omlg_uri, URI.createURI(CommonPackage.class.getResource(omlg).toURI().toString()));
-          uriMap.put(omlb_uri, URI.createURI(CommonPackage.class.getResource(omlb).toURI().toString()));
-          uriMap.put(omld_uri, URI.createURI(CommonPackage.class.getResource(omld).toURI().toString()));
-          uriMap.put(oml2oti_uri, URI.createURI(CommonPackage.class.getResource(oml2oti).toURI().toString()));
-        } catch (Throwable _e) {
-          throw Exceptions.sneakyThrow(_e);
-        }
+    final Procedure1<Map<URI, URI>> _function = (Map<URI, URI> uriMap) -> {
+      try {
+        uriMap.put(omlc_uri, URI.createURI(CommonPackage.class.getResource(omlc).toURI().toString()));
+        uriMap.put(omlt_uri, URI.createURI(CommonPackage.class.getResource(omlt).toURI().toString()));
+        uriMap.put(omlg_uri, URI.createURI(CommonPackage.class.getResource(omlg).toURI().toString()));
+        uriMap.put(omlb_uri, URI.createURI(CommonPackage.class.getResource(omlb).toURI().toString()));
+        uriMap.put(omld_uri, URI.createURI(CommonPackage.class.getResource(omld).toURI().toString()));
+        uriMap.put(oml2oti_uri, URI.createURI(CommonPackage.class.getResource(oml2oti).toURI().toString()));
+      } catch (Throwable _e) {
+        throw Exceptions.sneakyThrow(_e);
       }
     };
     this.set = OMLXcorePackages.createXcoreResourceSet(_function);

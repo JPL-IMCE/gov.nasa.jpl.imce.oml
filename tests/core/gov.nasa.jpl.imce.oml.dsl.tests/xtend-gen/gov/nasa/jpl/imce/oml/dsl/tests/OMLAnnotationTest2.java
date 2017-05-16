@@ -83,15 +83,13 @@ public class OMLAnnotationTest2 {
       Assert.assertEquals(c.name(), "PerformingElement");
       final EList<Annotation> ann = tbox.getAnnotations();
       Assert.assertEquals(2, ann.size());
-      final Consumer<Annotation> _function = new Consumer<Annotation>() {
-        public void accept(final Annotation a) {
-          final AnnotationProperty a_prop = a.getProperty();
-          final Element a_subj = a.getSubject();
-          final String a_value = a.getValue();
-          Assert.assertTrue((a_value.equals("Performing Element") || a_value.equals("A performing element")));
-          Assert.assertSame(ap, a_prop);
-          Assert.assertSame(c, a_subj);
-        }
+      final Consumer<Annotation> _function = (Annotation a) -> {
+        final AnnotationProperty a_prop = a.getProperty();
+        final Element a_subj = a.getSubject();
+        final String a_value = a.getValue();
+        Assert.assertTrue((a_value.equals("Performing Element") || a_value.equals("A performing element")));
+        Assert.assertSame(ap, a_prop);
+        Assert.assertSame(c, a_subj);
       };
       ann.forEach(_function);
       String _name = this.getClass().getName();

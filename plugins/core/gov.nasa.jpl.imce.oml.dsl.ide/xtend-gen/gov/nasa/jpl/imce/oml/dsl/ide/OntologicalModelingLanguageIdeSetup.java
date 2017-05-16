@@ -28,6 +28,7 @@ import org.eclipse.xtext.util.Modules2;
  */
 @SuppressWarnings("all")
 public class OntologicalModelingLanguageIdeSetup extends OntologicalModelingLanguageStandaloneSetup {
+  @Override
   public Injector createInjector() {
     OntologicalModelingLanguageRuntimeModule _ontologicalModelingLanguageRuntimeModule = new OntologicalModelingLanguageRuntimeModule();
     OntologicalModelingLanguageIdeModule _ontologicalModelingLanguageIdeModule = new OntologicalModelingLanguageIdeModule();
