@@ -472,13 +472,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.apache.commons.codec.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.emf.mwe.core"
          download-size="0"
          install-size="0"
@@ -494,13 +487,6 @@
 
    <plugin
          id="org.apache.commons.httpclient"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.apache.commons.httpclient.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -578,13 +564,6 @@
 
    <plugin
          id="org.h2"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.h2.source"
          download-size="0"
          install-size="0"
          version="0.0.0"
