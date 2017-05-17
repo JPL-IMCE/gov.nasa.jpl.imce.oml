@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/gov.nasa.jpl.imce.oml.runtime.platform.feature_0.7.0.qualifier.jar" id="gov.nasa.jpl.imce.oml.runtime.platform.feature" version="0.7.0.qualifier">
+      <category name="oml.runtime.platform"/>
+   </feature>
+   <category-def name="oml.runtime.platform" label="OML Runtime Platform"/>
+</site>
