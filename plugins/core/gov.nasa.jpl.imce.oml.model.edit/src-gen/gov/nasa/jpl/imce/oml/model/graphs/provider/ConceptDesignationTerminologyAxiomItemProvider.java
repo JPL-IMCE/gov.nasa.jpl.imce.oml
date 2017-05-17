@@ -19,6 +19,8 @@
 package gov.nasa.jpl.imce.oml.model.graphs.provider;
 
 
+import gov.nasa.jpl.imce.oml.model.edit.provider.OMLEditPlugin;
+
 import gov.nasa.jpl.imce.oml.model.graphs.ConceptDesignationTerminologyAxiom;
 import gov.nasa.jpl.imce.oml.model.graphs.GraphsPackage;
 
@@ -172,7 +174,7 @@ public class ConceptDesignationTerminologyAxiomItemProvider extends TerminologyB
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return GraphsEditPlugin.INSTANCE;
+		return OMLEditPlugin.INSTANCE;
 	}
 
 }

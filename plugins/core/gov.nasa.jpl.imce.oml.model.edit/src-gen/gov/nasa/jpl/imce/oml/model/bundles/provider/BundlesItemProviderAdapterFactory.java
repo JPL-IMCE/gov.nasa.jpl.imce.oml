@@ -27,6 +27,8 @@ import gov.nasa.jpl.imce.oml.model.common.Extent;
 
 import gov.nasa.jpl.imce.oml.model.common.util.CommonSwitch;
 
+import gov.nasa.jpl.imce.oml.model.edit.provider.OMLEditPlugin;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -408,7 +410,7 @@ public class BundlesItemProviderAdapterFactory extends BundlesAdapterFactory imp
 		 * @generated
 		 */
 		public ResourceLocator getResourceLocator() {
-			return BundlesEditPlugin.INSTANCE;
+			return OMLEditPlugin.INSTANCE;
 		}
 	}
 

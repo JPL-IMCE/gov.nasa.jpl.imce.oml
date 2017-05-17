@@ -225,9 +225,7 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 		isInited = true;
 
 		// Initialize simple dependencies
-		CommonPackage.eINSTANCE.eClass();
 		TerminologiesPackage.eINSTANCE.eClass();
-		EcorePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theDescriptionsPackage.createPackageContents();

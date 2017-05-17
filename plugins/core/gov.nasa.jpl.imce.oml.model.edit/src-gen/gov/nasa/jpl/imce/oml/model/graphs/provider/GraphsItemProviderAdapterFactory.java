@@ -23,6 +23,8 @@ import gov.nasa.jpl.imce.oml.model.common.Extent;
 
 import gov.nasa.jpl.imce.oml.model.common.util.CommonSwitch;
 
+import gov.nasa.jpl.imce.oml.model.edit.provider.OMLEditPlugin;
+
 import gov.nasa.jpl.imce.oml.model.graphs.GraphsFactory;
 
 import gov.nasa.jpl.imce.oml.model.graphs.util.GraphsAdapterFactory;
@@ -370,7 +372,7 @@ public class GraphsItemProviderAdapterFactory extends GraphsAdapterFactory imple
 		 * @generated
 		 */
 		public ResourceLocator getResourceLocator() {
-			return GraphsEditPlugin.INSTANCE;
+			return OMLEditPlugin.INSTANCE;
 		}
 	}
 
@@ -457,7 +459,7 @@ public class GraphsItemProviderAdapterFactory extends GraphsAdapterFactory imple
 		 * @generated
 		 */
 		public ResourceLocator getResourceLocator() {
-			return GraphsEditPlugin.INSTANCE;
+			return OMLEditPlugin.INSTANCE;
 		}
 	}
 

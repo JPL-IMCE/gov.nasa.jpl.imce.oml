@@ -27,7 +27,8 @@
 	complianceLevel="8.0",
 	featureDelegation="None",
 	modelDirectory="/gov.nasa.jpl.imce.oml.model/src-gen/",
-	editDirectory="/gov.nasa.jpl.imce.oml.model.edit/src-gen/"
+	editDirectory="/gov.nasa.jpl.imce.oml.model.edit/src-gen/",
+	editPluginClass="gov.nasa.jpl.imce.oml.model.edit.provider.OMLEditPlugin"
 )
 package gov.nasa.jpl.imce.oml.model.descriptions
 

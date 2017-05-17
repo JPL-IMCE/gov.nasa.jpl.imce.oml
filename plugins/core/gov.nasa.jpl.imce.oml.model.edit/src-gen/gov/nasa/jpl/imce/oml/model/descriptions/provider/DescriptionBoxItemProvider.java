@@ -25,6 +25,8 @@ import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsFactory;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsPackage;
 
+import gov.nasa.jpl.imce.oml.model.edit.provider.OMLEditPlugin;
+
 import java.util.Collection;
 import java.util.List;
 
@@ -254,7 +256,7 @@ public class DescriptionBoxItemProvider extends ModuleItemProvider {
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return DescriptionsEditPlugin.INSTANCE;
+		return OMLEditPlugin.INSTANCE;
 	}
 
 }

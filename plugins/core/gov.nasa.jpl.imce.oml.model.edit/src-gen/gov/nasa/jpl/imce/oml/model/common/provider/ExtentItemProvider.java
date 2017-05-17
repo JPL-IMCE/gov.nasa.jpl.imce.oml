@@ -23,6 +23,8 @@ import gov.nasa.jpl.imce.oml.model.common.CommonFactory;
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
 
+import gov.nasa.jpl.imce.oml.model.edit.provider.OMLEditPlugin;
+
 import java.util.Collection;
 import java.util.List;
 
@@ -180,7 +182,7 @@ public class ExtentItemProvider
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return CommonEditPlugin.INSTANCE;
+		return OMLEditPlugin.INSTANCE;
 	}
 
 }

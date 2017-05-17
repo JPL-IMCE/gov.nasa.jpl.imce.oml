@@ -512,7 +512,6 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 
 		// Initialize simple dependencies
 		CommonPackage.eINSTANCE.eClass();
-		EcorePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theTerminologiesPackage.createPackageContents();

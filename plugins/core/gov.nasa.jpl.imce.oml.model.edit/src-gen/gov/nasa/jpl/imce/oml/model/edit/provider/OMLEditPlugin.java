@@ -16,26 +16,26 @@
  * limitations under the License.
  * 
  */
-package gov.nasa.jpl.imce.oml.model.common.provider;
+package gov.nasa.jpl.imce.oml.model.edit.provider;
 
 import org.eclipse.emf.common.EMFPlugin;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
 /**
- * This is the central singleton for the Common edit plugin.
+ * This is the central singleton for the Terminologies edit plugin.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public final class CommonEditPlugin extends EMFPlugin {
+public final class OMLEditPlugin extends EMFPlugin {
 	/**
 	 * Keep track of the singleton.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final CommonEditPlugin INSTANCE = new CommonEditPlugin();
+	public static final OMLEditPlugin INSTANCE = new OMLEditPlugin();
 
 	/**
 	 * Keep track of the singleton.
@@ -51,9 +51,10 @@ public final class CommonEditPlugin extends EMFPlugin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CommonEditPlugin() {
+	public OMLEditPlugin() {
 		super
 		  (new ResourceLocator [] {
+		     OMLEditPlugin.INSTANCE,
 		   });
 	}
 

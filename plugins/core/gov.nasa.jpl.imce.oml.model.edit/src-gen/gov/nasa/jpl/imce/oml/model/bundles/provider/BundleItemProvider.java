@@ -23,6 +23,8 @@ import gov.nasa.jpl.imce.oml.model.bundles.Bundle;
 import gov.nasa.jpl.imce.oml.model.bundles.BundlesFactory;
 import gov.nasa.jpl.imce.oml.model.bundles.BundlesPackage;
 
+import gov.nasa.jpl.imce.oml.model.edit.provider.OMLEditPlugin;
+
 import gov.nasa.jpl.imce.oml.model.terminologies.provider.TerminologyBoxItemProvider;
 
 import java.util.Collection;
@@ -177,7 +179,7 @@ public class BundleItemProvider extends TerminologyBoxItemProvider {
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return BundlesEditPlugin.INSTANCE;
+		return OMLEditPlugin.INSTANCE;
 	}
 
 }

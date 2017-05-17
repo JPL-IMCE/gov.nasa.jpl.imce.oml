@@ -27,6 +27,8 @@ import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsFactory;
 
 import gov.nasa.jpl.imce.oml.model.descriptions.util.DescriptionsAdapterFactory;
 
+import gov.nasa.jpl.imce.oml.model.edit.provider.OMLEditPlugin;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -576,7 +578,7 @@ public class DescriptionsItemProviderAdapterFactory extends DescriptionsAdapterF
 		 * @generated
 		 */
 		public ResourceLocator getResourceLocator() {
-			return DescriptionsEditPlugin.INSTANCE;
+			return OMLEditPlugin.INSTANCE;
 		}
 	}
 

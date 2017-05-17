@@ -21,6 +21,8 @@ package gov.nasa.jpl.imce.oml.model.terminologies.provider;
 
 import gov.nasa.jpl.imce.oml.model.common.provider.ModuleElementItemProvider;
 
+import gov.nasa.jpl.imce.oml.model.edit.provider.OMLEditPlugin;
+
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBoxStatement;
 
@@ -138,7 +140,7 @@ public class TerminologyBoxStatementItemProvider extends ModuleElementItemProvid
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return TerminologiesEditPlugin.INSTANCE;
+		return OMLEditPlugin.INSTANCE;
 	}
 
 }

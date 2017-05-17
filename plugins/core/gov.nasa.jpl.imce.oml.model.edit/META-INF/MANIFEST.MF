@@ -4,11 +4,12 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: gov.nasa.jpl.imce.oml.model.edit;singleton:=true
 Bundle-Version: 0.7.0.qualifier
 Bundle-ClassPath: .
-Bundle-Activator: gov.nasa.jpl.imce.oml.model.graphs.provider.GraphsEditPlugin$Implementation
+Bundle-Activator: gov.nasa.jpl.imce.oml.model.edit.provider.OMLEditPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: gov.nasa.jpl.imce.oml.model.common.provider,
+ gov.nasa.jpl.imce.oml.model.edit.provider,
  gov.nasa.jpl.imce.oml.model.graphs.provider,
  gov.nasa.jpl.imce.oml.model.bundles.provider,
  gov.nasa.jpl.imce.oml.model.terminologies.provider,

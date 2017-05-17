@@ -22,6 +22,8 @@ package gov.nasa.jpl.imce.oml.model.bundles.provider;
 import gov.nasa.jpl.imce.oml.model.bundles.BundlesPackage;
 import gov.nasa.jpl.imce.oml.model.bundles.TerminologyBundleAxiom;
 
+import gov.nasa.jpl.imce.oml.model.edit.provider.OMLEditPlugin;
+
 import gov.nasa.jpl.imce.oml.model.terminologies.provider.TerminologyAxiomItemProvider;
 
 import java.util.Collection;
@@ -138,7 +140,7 @@ public class TerminologyBundleAxiomItemProvider extends TerminologyAxiomItemProv
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return BundlesEditPlugin.INSTANCE;
+		return OMLEditPlugin.INSTANCE;
 	}
 
 }

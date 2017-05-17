@@ -22,6 +22,8 @@ package gov.nasa.jpl.imce.oml.model.common.provider;
 import gov.nasa.jpl.imce.oml.model.common.Annotation;
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
 
+import gov.nasa.jpl.imce.oml.model.edit.provider.OMLEditPlugin;
+
 import java.util.Collection;
 import java.util.List;
 
@@ -237,7 +239,7 @@ public class AnnotationItemProvider
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return CommonEditPlugin.INSTANCE;
+		return OMLEditPlugin.INSTANCE;
 	}
 
 }

@@ -20,4 +20,21 @@
 		<module>gov.nasa.jpl.imce.oml.dsl.ui</module>
 		<module>gov.nasa.jpl.imce.oml.rcp</module>
 	</modules>
+	
+	<properties>
+		<maven.deploy.skip>false</maven.deploy.skip>
+	</properties>
+	<distributionManagement>
+		<!-- 
+		
+		<repository>
+			<id>bintray</id>
+			<url>https://api.bintray.com/content/jpl-imce/gov.nasa.jpl.imce/${project.name}/${project.version};publish=1</url>
+		</repository>
+		-->
+		<repository>
+			<id>artifactory</id>
+			<url>https://cae-artifactory.jpl.nasa.gov/artifactory/maven-libs-release-local</url>
+		</repository>
+	</distributionManagement>
 </project>

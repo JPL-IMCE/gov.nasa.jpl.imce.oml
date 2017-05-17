@@ -23,6 +23,8 @@ import gov.nasa.jpl.imce.oml.model.common.provider.ModuleEdgeItemProvider;
 
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxRelationship;
 
+import gov.nasa.jpl.imce.oml.model.edit.provider.OMLEditPlugin;
+
 import java.util.Collection;
 import java.util.List;
 
@@ -113,7 +115,7 @@ public class DescriptionBoxRelationshipItemProvider extends ModuleEdgeItemProvid
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return DescriptionsEditPlugin.INSTANCE;
+		return OMLEditPlugin.INSTANCE;
 	}
 
 }

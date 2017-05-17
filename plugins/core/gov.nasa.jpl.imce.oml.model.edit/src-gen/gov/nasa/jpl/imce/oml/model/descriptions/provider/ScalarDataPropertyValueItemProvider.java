@@ -24,6 +24,8 @@ import gov.nasa.jpl.imce.oml.model.common.provider.ElementItemProvider;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsPackage;
 import gov.nasa.jpl.imce.oml.model.descriptions.ScalarDataPropertyValue;
 
+import gov.nasa.jpl.imce.oml.model.edit.provider.OMLEditPlugin;
+
 import java.util.Collection;
 import java.util.List;
 
@@ -203,7 +205,7 @@ public class ScalarDataPropertyValueItemProvider extends ElementItemProvider {
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return DescriptionsEditPlugin.INSTANCE;
+		return OMLEditPlugin.INSTANCE;
 	}
 
 }

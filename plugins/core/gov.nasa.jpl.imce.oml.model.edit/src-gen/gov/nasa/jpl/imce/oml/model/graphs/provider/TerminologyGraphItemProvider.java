@@ -19,6 +19,8 @@
 package gov.nasa.jpl.imce.oml.model.graphs.provider;
 
 
+import gov.nasa.jpl.imce.oml.model.edit.provider.OMLEditPlugin;
+
 import gov.nasa.jpl.imce.oml.model.graphs.GraphsFactory;
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyGraph;
 
@@ -137,7 +139,7 @@ public class TerminologyGraphItemProvider extends TerminologyBoxItemProvider {
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return GraphsEditPlugin.INSTANCE;
+		return OMLEditPlugin.INSTANCE;
 	}
 
 }

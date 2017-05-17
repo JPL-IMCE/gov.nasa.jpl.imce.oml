@@ -19,6 +19,8 @@
 package gov.nasa.jpl.imce.oml.model.graphs.provider;
 
 
+import gov.nasa.jpl.imce.oml.model.edit.provider.OMLEditPlugin;
+
 import gov.nasa.jpl.imce.oml.model.graphs.GraphsPackage;
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyNestingAxiom;
 
@@ -172,7 +174,7 @@ public class TerminologyNestingAxiomItemProvider extends TerminologyBoxAxiomItem
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return GraphsEditPlugin.INSTANCE;
+		return OMLEditPlugin.INSTANCE;
 	}
 
 }

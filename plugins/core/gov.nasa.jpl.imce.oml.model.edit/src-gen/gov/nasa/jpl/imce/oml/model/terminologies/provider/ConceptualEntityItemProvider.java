@@ -19,6 +19,8 @@
 package gov.nasa.jpl.imce.oml.model.terminologies.provider;
 
 
+import gov.nasa.jpl.imce.oml.model.edit.provider.OMLEditPlugin;
+
 import java.util.Collection;
 import java.util.List;
 
@@ -119,7 +121,7 @@ public class ConceptualEntityItemProvider
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return TerminologiesEditPlugin.INSTANCE;
+		return OMLEditPlugin.INSTANCE;
 	}
 
 }

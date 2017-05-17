@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="gov.nasa.jpl.imce.oml.core.feature"
-      label="Ontological Modeling Language Feature"
-      version="0.7.0.qualifier">
+      label="%featureName"
+      version="0.7.0.qualifier"
+      provider-name="%featureProvider">
 
    <description url="https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.core/blob/master/gov.nasa.jpl.imce.oml.feature/README.md">
       Eclipse features for the Ontological Modeling Language
@@ -45,7 +46,7 @@ License Terms
    </license>
 
    <requires>
-      <import feature="gov.nasa.jpl.imce.oml.runtime.feature" version="0.7.0"/>
+      <import feature="gov.nasa.jpl.imce.oml.runtime.feature" version="0.7.0.qualifier"/>
    </requires>
 
    <plugin
