@@ -3,12 +3,21 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>gov.nasa.jpl.imce.oml</groupId>
 	<artifactId>gov.nasa.jpl.imce.oml.updatesite</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>0.7.0</version>
 	<packaging>eclipse-repository</packaging>
 	
 	<parent>
 		<groupId>gov.nasa.jpl.imce.oml</groupId>
 		<artifactId>gov.nasa.jpl.imce.oml.releng</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
+		<version>0.7.0</version>
 	</parent>
+	<properties>
+		<maven.deploy.skip>false</maven.deploy.skip>
+	</properties>
+	<distributionManagement>
+		<repository>
+			<id>bintray</id>
+			<url>https://api.bintray.com/content/jpl-imce/gov.nasa.jpl.imce/gov.nasa.jpl.imce.oml.updatesite/${project.version};publish=1</url>
+		</repository>
+	</distributionManagement>
 </project>

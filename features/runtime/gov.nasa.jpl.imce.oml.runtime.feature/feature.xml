@@ -2,7 +2,7 @@
 <feature
       id="gov.nasa.jpl.imce.oml.runtime.feature"
       label="%featureName"
-      version="0.1.0.qualifier"
+      version="0.7.0.qualifier"
       provider-name="%featureProvider">
 
    <description url="https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/blob/master/features/README.md">
@@ -46,7 +46,7 @@ License Terms
    </license>
 
    <requires>
-      <import feature="gov.nasa.jpl.imce.oml.runtime.platform.feature" version="1.0.0.qualifier"/>
+      <import feature="gov.nasa.jpl.imce.oml.runtime.platform.feature" version="0.7.0" match="compatible"/>
    </requires>
 
    <plugin

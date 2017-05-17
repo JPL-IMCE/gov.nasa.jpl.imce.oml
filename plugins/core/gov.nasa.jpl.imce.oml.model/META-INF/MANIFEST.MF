@@ -23,7 +23,7 @@ Export-Package: gov.nasa.jpl.imce.fm,
  gov.nasa.jpl.imce.oml.provenance.oti.impl,
  gov.nasa.jpl.imce.oml.provenance.oti.util
 Bundle-Name: %pluginName
-Bundle-Version: 0.6.1
+Bundle-Version: 0.7.0
 Bundle-ClassPath: .
 Bundle-Localization: plugin
 Require-Bundle: gov.nasa.jpl.imce.oml.uuid;visibility:=reexport,

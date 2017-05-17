@@ -3,13 +3,16 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>gov.nasa.jpl.imce.oml</groupId>
 	<artifactId>gov.nasa.jpl.imce.oml.configuration</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<packaging>pom</packaging>
 
 	<properties>
 		<tycho.version>0.26.0</tycho.version>
+		<oml.version>0.7.0</oml.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<neon-repo.url>http://download.eclipse.org/releases/neon</neon-repo.url>
+    	<!-- Skip the deployment here, submodules can override this property -->
+    	<maven.deploy.skip>true</maven.deploy.skip>
 	</properties>
 	 		
 <!-- Repositories should be commented out to only use the target definition 
@@ -72,6 +75,44 @@
 					</environments>
 				</configuration>
 			</plugin>
+			
+			<!-- enable source feature generation -->
+			<!--  
+			
+			TODO: enabling this requires some additional files:
+				 [ERROR] Failed to execute goal org.eclipse.tycho.extras:tycho-source-feature-plugin:0.26.0:source-feature 
+				 (source-feature) on project gov.nasa.jpl.imce.oml.runtime.platform.feature: 
+				 Source feature depends on 'sourceTemplateFeature/feature.properties', entry 'featureName'. However, this key could not be found -> [Help 1]
+				 
+			<plugin>
+				<groupId>org.eclipse.tycho.extras</groupId>
+				<artifactId>tycho-source-feature-plugin</artifactId>
+				<version>${tycho.version}</version>
+				<executions>
+					<execution>
+						<id>source-feature</id>
+						<phase>package</phase>
+						<goals>
+							<goal>source-feature</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-source-plugin</artifactId>
+				<version>${tycho.version}</version>
+				<executions>
+					<execution>
+						<id>plugin-source</id>
+						<goals>
+							<goal>plugin-source</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			
+			-->
 		</plugins>
 	</build>
 	

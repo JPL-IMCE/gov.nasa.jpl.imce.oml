@@ -3,7 +3,7 @@
    <feature url="features/gov.nasa.jpl.imce.oml.runtime.feature_0.1.0.qualifier.jar" id="gov.nasa.jpl.imce.oml.runtime.feature" version="0.1.0.qualifier">
       <category name="OMLWorkbench"/>
    </feature>
-   <feature url="features/gov.nasa.jpl.imce.oml.runtime.platform.feature_1.0.0.qualifier.jar" id="gov.nasa.jpl.imce.oml.runtime.platform.feature" version="1.0.0.qualifier">
+   <feature url="features/gov.nasa.jpl.imce.oml.runtime.platform.feature_0.7.0.jar" id="gov.nasa.jpl.imce.oml.runtime.platform.feature" version="0.7.0">
       <category name="OMLWorkbench"/>
    </feature>
    <category-def name="OMLWorkbench" label="OML Workbench"/>

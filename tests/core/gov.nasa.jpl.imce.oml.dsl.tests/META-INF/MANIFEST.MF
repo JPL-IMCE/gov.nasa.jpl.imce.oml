@@ -23,6 +23,6 @@ Import-Package: org.hamcrest.core,
 Export-Package: com.itemis.xtext.testing,
  gov.nasa.jpl.imce.oml.dsl.tests;x-internal=true
 Bundle-Name: %pluginName
-Bundle-Version: 0.6.1
+Bundle-Version: 0.7.0
 Bundle-ClassPath: .
 Bundle-Localization: plugin

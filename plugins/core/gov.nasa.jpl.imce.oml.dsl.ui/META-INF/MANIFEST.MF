@@ -29,7 +29,7 @@ Export-Package: gov.nasa.jpl.imce.oml.dsl.ui,
  gov.nasa.jpl.imce.oml.dsl.ui.outline,
  gov.nasa.jpl.imce.oml.dsl.ui.quickfix
 Bundle-Name: %pluginName
-Bundle-Version: 0.6.1
+Bundle-Version: 0.7.0
 Bundle-ClassPath: .
 Bundle-Localization: plugin
 Bundle-Activator: gov.nasa.jpl.imce.oml.dsl.ui.internal.DslActivator
