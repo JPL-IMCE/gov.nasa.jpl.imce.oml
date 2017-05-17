@@ -15,9 +15,22 @@
 		<maven.deploy.skip>false</maven.deploy.skip>
 	</properties>
 	<distributionManagement>
+		<!-- 
+		
+		[ERROR] Failed to execute goal org.apache.maven.plugins:maven-deploy-plugin:2.5:deploy (default-deploy on project gov.nasa.jpl.imce.oml.updatesite: 
+		 Failed to deploy artifacts: Could not transfer artifact gov.nasa.jpl.imce.oml:gov.nasa.jpl.imce.oml.updatesite:zip:0.7.0 
+		 from/to bintray (https://api.bintray.com/content/jpl-imce/gov.nasa.jpl.imce/gov.nasa.jpl.imce.oml.updatesite/0.7.0;publish=1): 
+		 Failed to transfer file: https://api.bintray.com/content/jpl-imce/gov.nasa.jpl.imce/gov.nasa.jpl.imce.oml.updatesite/0.7.0;publish=1/gov/nasa/jpl/imce/oml/gov.nasa.jpl.imce.oml.updatesite/0.7.0/gov.nasa.jpl.imce.oml.updatesite-0.7.0.zip. 
+		 Return code is: 413, ReasonPhrase: Request Entity Too Large. 
+		 
 		<repository>
 			<id>bintray</id>
 			<url>https://api.bintray.com/content/jpl-imce/gov.nasa.jpl.imce/gov.nasa.jpl.imce.oml.updatesite/${project.version};publish=1</url>
+		</repository>
+		-->
+		<repository>
+			<id>artifactory</id>
+			<url>https://cae-artifactory.jpl.nasa.gov/artifactory/maven-libs-release-local</url>
 		</repository>
 	</distributionManagement>
 </project>
