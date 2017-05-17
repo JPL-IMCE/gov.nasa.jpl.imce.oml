@@ -11,20 +11,28 @@
 		<oml.version>0.7.0-SNAPSHOT</oml.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<neon-repo.url>http://download.eclipse.org/releases/neon</neon-repo.url>
-    	<!-- Skip the deployment here, submodules can override this property -->
-    	<maven.deploy.skip>true</maven.deploy.skip>
 	</properties>
-	 		
-<!-- Repositories should be commented out to only use the target definition 
-    <repositories>
-    	<repository>
-    		<id>neon</id>
-    		<url>${neon-repo.url}</url>
-    		<layout>p2</layout>
-    	</repository>
-	</repositories>
--->
-		 
+
+	<distributionManagement>
+		<!-- 
+		Don't publish snapshot builds to bintray
+		
+		<repository>
+			<id>bintray</id>
+			<url>https://api.bintray.com/content/jpl-imce/gov.nasa.jpl.imce/${project.name}/${project.version};publish=1</url>
+		</repository>
+		-->
+		
+		<repository>
+			<id>artifactory</id>
+			<url>https://cae-artifactory.jpl.nasa.gov/artifactory/maven-libs-release-local</url>
+		</repository>
+		<snapshotRepository>
+			<id>artifactory</id>
+			<url>https://cae-artifactory.jpl.nasa.gov/artifactory/maven-libs-snapshot-local</url>
+		</snapshotRepository>
+	</distributionManagement>
+	
 	<build>
 		<plugins>
 			<plugin>
