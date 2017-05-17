@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 California Institute of Technology (\"Caltech\").
+ * Copyright 2017 California Institute of Technology (\"Caltech\").
  * U.S. Government sponsorship acknowledged.
  *
  * Licensed under the Apache License, Version 2.0 (the \"License\");
@@ -20,8 +20,8 @@ import com.google.common.collect.Maps;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.Module;
-import gov.nasa.jpl.imce.oml.dsl.OntologicalModelingLanguageRuntimeModule;
-import gov.nasa.jpl.imce.oml.dsl.ui.OntologicalModelingLanguageUiModule;
+import gov.nasa.jpl.imce.oml.dsl.OMLRuntimeModule;
+import gov.nasa.jpl.imce.oml.dsl.ui.OMLUiModule;
 import java.util.Collections;
 import java.util.Map;
 import org.apache.log4j.Logger;
@@ -36,7 +36,7 @@ import org.osgi.framework.BundleContext;
  */
 public class DslActivator extends AbstractUIPlugin {
 
-	public static final String GOV_NASA_JPL_IMCE_OML_DSL_ONTOLOGICALMODELINGLANGUAGE = "gov.nasa.jpl.imce.oml.dsl.OntologicalModelingLanguage";
+	public static final String GOV_NASA_JPL_IMCE_OML_DSL_OML = "gov.nasa.jpl.imce.oml.dsl.OML";
 	
 	private static final Logger logger = Logger.getLogger(DslActivator.class);
 	
@@ -86,15 +86,15 @@ public class DslActivator extends AbstractUIPlugin {
 	}
 	
 	protected Module getRuntimeModule(String grammar) {
-		if (GOV_NASA_JPL_IMCE_OML_DSL_ONTOLOGICALMODELINGLANGUAGE.equals(grammar)) {
-			return new OntologicalModelingLanguageRuntimeModule();
+		if (GOV_NASA_JPL_IMCE_OML_DSL_OML.equals(grammar)) {
+			return new OMLRuntimeModule();
 		}
 		throw new IllegalArgumentException(grammar);
 	}
 	
 	protected Module getUiModule(String grammar) {
-		if (GOV_NASA_JPL_IMCE_OML_DSL_ONTOLOGICALMODELINGLANGUAGE.equals(grammar)) {
-			return new OntologicalModelingLanguageUiModule(this);
+		if (GOV_NASA_JPL_IMCE_OML_DSL_OML.equals(grammar)) {
+			return new OMLUiModule(this);
 		}
 		throw new IllegalArgumentException(grammar);
 	}

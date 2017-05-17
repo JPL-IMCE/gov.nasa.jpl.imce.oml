@@ -4,48 +4,48 @@
 	<extension
 		point="org.eclipse.ui.editors">
 		<editor
-			class="gov.nasa.jpl.imce.oml.dsl.ui.OntologicalModelingLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
+			class="gov.nasa.jpl.imce.oml.dsl.ui.OMLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
 			contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
 			default="true"
 			extensions="oml"
-			id="gov.nasa.jpl.imce.oml.dsl.OntologicalModelingLanguage"
+			id="gov.nasa.jpl.imce.oml.dsl.OML"
 			name="OML Editor">
 		</editor>
 	</extension>
 	<extension
 		point="org.eclipse.ui.handlers">
 		<handler
-			class="gov.nasa.jpl.imce.oml.dsl.ui.OntologicalModelingLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclarationHandler"
+			class="gov.nasa.jpl.imce.oml.dsl.ui.OMLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclarationHandler"
 			commandId="org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclaration">
 			<activeWhen>
 				<reference
-					definitionId="gov.nasa.jpl.imce.oml.dsl.OntologicalModelingLanguage.Editor.opened">
+					definitionId="gov.nasa.jpl.imce.oml.dsl.OML.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
 		<handler
-			class="gov.nasa.jpl.imce.oml.dsl.ui.OntologicalModelingLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
-			commandId="gov.nasa.jpl.imce.oml.dsl.OntologicalModelingLanguage.validate">
+			class="gov.nasa.jpl.imce.oml.dsl.ui.OMLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
+			commandId="gov.nasa.jpl.imce.oml.dsl.OML.validate">
 		<activeWhen>
 			<reference
-					definitionId="gov.nasa.jpl.imce.oml.dsl.OntologicalModelingLanguage.Editor.opened">
+					definitionId="gov.nasa.jpl.imce.oml.dsl.OML.Editor.opened">
 			</reference>
 		</activeWhen>
 		</handler>
 		<!-- copy qualified name -->
 		<handler
-			class="gov.nasa.jpl.imce.oml.dsl.ui.OntologicalModelingLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedNameHandler"
+			class="gov.nasa.jpl.imce.oml.dsl.ui.OMLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedNameHandler"
 			commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName">
 			<activeWhen>
-				<reference definitionId="gov.nasa.jpl.imce.oml.dsl.OntologicalModelingLanguage.Editor.opened" />
+				<reference definitionId="gov.nasa.jpl.imce.oml.dsl.OML.Editor.opened" />
 			</activeWhen>
 		</handler>
 		<handler
-			class="gov.nasa.jpl.imce.oml.dsl.ui.OntologicalModelingLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedNameHandler"
+			class="gov.nasa.jpl.imce.oml.dsl.ui.OMLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedNameHandler"
 			commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedName">
 			<activeWhen>
 				<and>
-					<reference definitionId="gov.nasa.jpl.imce.oml.dsl.OntologicalModelingLanguage.XtextEditor.opened" />
+					<reference definitionId="gov.nasa.jpl.imce.oml.dsl.OML.XtextEditor.opened" />
 					<iterate>
 						<adapt type="org.eclipse.xtext.ui.editor.outline.IOutlineNode" />
 					</iterate>
@@ -54,22 +54,22 @@
 		</handler>
 	</extension>
 	<extension point="org.eclipse.core.expressions.definitions">
-		<definition id="gov.nasa.jpl.imce.oml.dsl.OntologicalModelingLanguage.Editor.opened">
+		<definition id="gov.nasa.jpl.imce.oml.dsl.OML.Editor.opened">
 			<and>
 				<reference definitionId="isActiveEditorAnInstanceOfXtextEditor"/>
 				<with variable="activeEditor">
 					<test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName"
-						value="gov.nasa.jpl.imce.oml.dsl.OntologicalModelingLanguage"
+						value="gov.nasa.jpl.imce.oml.dsl.OML"
 						forcePluginActivation="true"/>
 				</with>
 			</and>
 		</definition>
-		<definition id="gov.nasa.jpl.imce.oml.dsl.OntologicalModelingLanguage.XtextEditor.opened">
+		<definition id="gov.nasa.jpl.imce.oml.dsl.OML.XtextEditor.opened">
 			<and>
 				<reference definitionId="isXtextEditorActive"/>
 				<with variable="activeEditor">
 					<test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName"
-						value="gov.nasa.jpl.imce.oml.dsl.OntologicalModelingLanguage"
+						value="gov.nasa.jpl.imce.oml.dsl.OML"
 						forcePluginActivation="true"/>
 				</with>
 			</and>
@@ -78,33 +78,33 @@
 	<extension
 			point="org.eclipse.ui.preferencePages">
 		<page
-			class="gov.nasa.jpl.imce.oml.dsl.ui.OntologicalModelingLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-			id="gov.nasa.jpl.imce.oml.dsl.OntologicalModelingLanguage"
-			name="OntologicalModelingLanguage">
-			<keywordReference id="gov.nasa.jpl.imce.oml.dsl.ui.keyword_OntologicalModelingLanguage"/>
+			class="gov.nasa.jpl.imce.oml.dsl.ui.OMLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+			id="gov.nasa.jpl.imce.oml.dsl.OML"
+			name="OML">
+			<keywordReference id="gov.nasa.jpl.imce.oml.dsl.ui.keyword_OML"/>
 		</page>
 		<page
-			category="gov.nasa.jpl.imce.oml.dsl.OntologicalModelingLanguage"
-			class="gov.nasa.jpl.imce.oml.dsl.ui.OntologicalModelingLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
-			id="gov.nasa.jpl.imce.oml.dsl.OntologicalModelingLanguage.coloring"
+			category="gov.nasa.jpl.imce.oml.dsl.OML"
+			class="gov.nasa.jpl.imce.oml.dsl.ui.OMLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
+			id="gov.nasa.jpl.imce.oml.dsl.OML.coloring"
 			name="Syntax Coloring">
-			<keywordReference id="gov.nasa.jpl.imce.oml.dsl.ui.keyword_OntologicalModelingLanguage"/>
+			<keywordReference id="gov.nasa.jpl.imce.oml.dsl.ui.keyword_OML"/>
 		</page>
 		<page
-			category="gov.nasa.jpl.imce.oml.dsl.OntologicalModelingLanguage"
-			class="gov.nasa.jpl.imce.oml.dsl.ui.OntologicalModelingLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
-			id="gov.nasa.jpl.imce.oml.dsl.OntologicalModelingLanguage.templates"
+			category="gov.nasa.jpl.imce.oml.dsl.OML"
+			class="gov.nasa.jpl.imce.oml.dsl.ui.OMLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
+			id="gov.nasa.jpl.imce.oml.dsl.OML.templates"
 			name="Templates">
-			<keywordReference id="gov.nasa.jpl.imce.oml.dsl.ui.keyword_OntologicalModelingLanguage"/>
+			<keywordReference id="gov.nasa.jpl.imce.oml.dsl.ui.keyword_OML"/>
 		</page>
 	</extension>
 	<extension
 			point="org.eclipse.ui.propertyPages">
 		<page
-			class="gov.nasa.jpl.imce.oml.dsl.ui.OntologicalModelingLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-			id="gov.nasa.jpl.imce.oml.dsl.OntologicalModelingLanguage"
-			name="OntologicalModelingLanguage">
-			<keywordReference id="gov.nasa.jpl.imce.oml.dsl.ui.keyword_OntologicalModelingLanguage"/>
+			class="gov.nasa.jpl.imce.oml.dsl.ui.OMLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+			id="gov.nasa.jpl.imce.oml.dsl.OML"
+			name="OML">
+			<keywordReference id="gov.nasa.jpl.imce.oml.dsl.ui.keyword_OML"/>
 			<enabledWhen>
 				<adapt type="org.eclipse.core.resources.IProject"/>
 			</enabledWhen>
@@ -114,40 +114,40 @@
 	<extension
 		point="org.eclipse.ui.keywords">
 		<keyword
-			id="gov.nasa.jpl.imce.oml.dsl.ui.keyword_OntologicalModelingLanguage"
-			label="OntologicalModelingLanguage"/>
+			id="gov.nasa.jpl.imce.oml.dsl.ui.keyword_OML"
+			label="OML"/>
 	</extension>
 	<extension
 		point="org.eclipse.ui.commands">
 	<command
 			description="Trigger expensive validation"
-			id="gov.nasa.jpl.imce.oml.dsl.OntologicalModelingLanguage.validate"
+			id="gov.nasa.jpl.imce.oml.dsl.OML.validate"
 			name="Validate">
 	</command>
 	<!-- copy qualified name -->
 	<command
 			id="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName"
 			categoryId="org.eclipse.ui.category.edit"
-			description="Copy the qualified name for the selected OML element"
-			name="Copy Qualified OML Name">
+			description="Copy the qualified name for the selected element"
+			name="Copy Qualified Name">
 	</command>
 	<command
 			id="org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedName"
 			categoryId="org.eclipse.ui.category.edit"
-			description="Copy the qualified name for the selected OML element"
-			name="Copy Qualified OML Name">
+			description="Copy the qualified name for the selected element"
+			name="Copy Qualified Name">
 	</command>
 	</extension>
 	<extension point="org.eclipse.ui.menus">
 		<menuContribution
 			locationURI="popup:#TextEditorContext?after=group.edit">
 			 <command
-				 commandId="gov.nasa.jpl.imce.oml.dsl.OntologicalModelingLanguage.validate"
+				 commandId="gov.nasa.jpl.imce.oml.dsl.OML.validate"
 				 style="push"
-				 tooltip="Trigger expensive OML validation">
+				 tooltip="Trigger expensive validation">
 			<visibleWhen checkEnabled="false">
 				<reference
-					definitionId="gov.nasa.jpl.imce.oml.dsl.OntologicalModelingLanguage.Editor.opened">
+					definitionId="gov.nasa.jpl.imce.oml.dsl.OML.Editor.opened">
 				</reference>
 			</visibleWhen>
 		</command>
@@ -155,17 +155,17 @@
 		<!-- copy qualified name -->
 		<menuContribution locationURI="popup:#TextEditorContext?after=copy">
 			<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName"
-				style="push" tooltip="Copy Qualified OML Name">
+				style="push" tooltip="Copy Qualified Name">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="gov.nasa.jpl.imce.oml.dsl.OntologicalModelingLanguage.Editor.opened" />
+					<reference definitionId="gov.nasa.jpl.imce.oml.dsl.OML.Editor.opened" />
 				</visibleWhen>
 			</command>
 		</menuContribution>
 		<menuContribution locationURI="menu:edit?after=copy">
 			<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName"
-				style="push" tooltip="Copy Qualified OML Name">
+				style="push" tooltip="Copy Qualified Name">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="gov.nasa.jpl.imce.oml.dsl.OntologicalModelingLanguage.Editor.opened" />
+					<reference definitionId="gov.nasa.jpl.imce.oml.dsl.OML.Editor.opened" />
 				</visibleWhen>
 			</command>
 		</menuContribution>
@@ -174,7 +174,7 @@
 				style="push" tooltip="Copy Qualified Name">
 				<visibleWhen checkEnabled="false">
 					<and>
-						<reference definitionId="gov.nasa.jpl.imce.oml.dsl.OntologicalModelingLanguage.XtextEditor.opened" />
+						<reference definitionId="gov.nasa.jpl.imce.oml.dsl.OML.XtextEditor.opened" />
 						<iterate>
 							<adapt type="org.eclipse.xtext.ui.editor.outline.IOutlineNode" />
 						</iterate>
@@ -187,7 +187,7 @@
 		<menuContribution locationURI="popup:#TextEditorContext?endof=group.find">
 			<command commandId="org.eclipse.xtext.ui.editor.FindReferences">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="gov.nasa.jpl.imce.oml.dsl.OntologicalModelingLanguage.Editor.opened">
+					<reference definitionId="gov.nasa.jpl.imce.oml.dsl.OML.Editor.opened">
 					</reference>
 				</visibleWhen>
 			</command>
@@ -195,11 +195,11 @@
 	</extension>
 	<extension point="org.eclipse.ui.handlers">
 		<handler
-			class="gov.nasa.jpl.imce.oml.dsl.ui.OntologicalModelingLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.findrefs.FindReferencesHandler"
+			class="gov.nasa.jpl.imce.oml.dsl.ui.OMLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.findrefs.FindReferencesHandler"
 			commandId="org.eclipse.xtext.ui.editor.FindReferences">
 			<activeWhen>
 				<reference
-					definitionId="gov.nasa.jpl.imce.oml.dsl.OntologicalModelingLanguage.Editor.opened">
+					definitionId="gov.nasa.jpl.imce.oml.dsl.OML.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
@@ -208,61 +208,59 @@
 	<extension
 		point="org.eclipse.emf.ecore.extension_parser">
 		<parser
-			class="gov.nasa.jpl.imce.oml.dsl.ui.OntologicalModelingLanguageExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
+			class="gov.nasa.jpl.imce.oml.dsl.ui.OMLExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
 			type="oml">
 		</parser>
 	</extension>
 	<extension point="org.eclipse.xtext.extension_resourceServiceProvider">
 		<resourceServiceProvider
-			class="gov.nasa.jpl.imce.oml.dsl.ui.OntologicalModelingLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
+			class="gov.nasa.jpl.imce.oml.dsl.ui.OMLExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
 			uriExtension="oml">
 		</resourceServiceProvider>
 	</extension>
-	<!-- marker definitions for gov.nasa.jpl.imce.oml.dsl.OntologicalModelingLanguage -->
+	<!-- marker definitions for gov.nasa.jpl.imce.oml.dsl.OML -->
 	<extension
-			id="ontologicalmodelinglanguage.check.fast"
-			name="OntologicalModelingLanguage Problem"
+			id="oml.check.fast"
+			name="OML Problem"
 			point="org.eclipse.core.resources.markers">
 		<super type="org.eclipse.xtext.ui.check.fast"/>
 		<persistent value="true"/>
 	</extension>
 	<extension
-			id="ontologicalmodelinglanguage.check.normal"
-			name="OntologicalModelingLanguage Problem"
+			id="oml.check.normal"
+			name="OML Problem"
 			point="org.eclipse.core.resources.markers">
 		<super type="org.eclipse.xtext.ui.check.normal"/>
 		<persistent value="true"/>
 	</extension>
 	<extension
-			id="ontologicalmodelinglanguage.check.expensive"
-			name="OntologicalModelingLanguage Problem"
+			id="oml.check.expensive"
+			name="OML Problem"
 			point="org.eclipse.core.resources.markers">
 		<super type="org.eclipse.xtext.ui.check.expensive"/>
 		<persistent value="true"/>
 	</extension>
-	<!--
 	<extension point="org.eclipse.xtext.builder.participant">
 		<participant
-			class="gov.nasa.jpl.imce.oml.dsl.ui.OntologicalModelingLanguageExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant"
+			class="gov.nasa.jpl.imce.oml.dsl.ui.OMLExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant"
 			fileExtensions="oml"/>
 	</extension>
-	-->
 	<extension point="org.eclipse.ui.preferencePages">
 		<page
-			category="gov.nasa.jpl.imce.oml.dsl.OntologicalModelingLanguage"
-			class="gov.nasa.jpl.imce.oml.dsl.ui.OntologicalModelingLanguageExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
-			id="gov.nasa.jpl.imce.oml.dsl.OntologicalModelingLanguage.compiler.preferencePage"
+			category="gov.nasa.jpl.imce.oml.dsl.OML"
+			class="gov.nasa.jpl.imce.oml.dsl.ui.OMLExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+			id="gov.nasa.jpl.imce.oml.dsl.OML.compiler.preferencePage"
 			name="Compiler">
-			<keywordReference id="gov.nasa.jpl.imce.oml.dsl.ui.keyword_OntologicalModelingLanguage"/>
+			<keywordReference id="gov.nasa.jpl.imce.oml.dsl.ui.keyword_OML"/>
 		</page>
 	</extension>
 	<extension point="org.eclipse.ui.propertyPages">
 		<page
-			category="gov.nasa.jpl.imce.oml.dsl.OntologicalModelingLanguage"
-			class="gov.nasa.jpl.imce.oml.dsl.ui.OntologicalModelingLanguageExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
-			id="gov.nasa.jpl.imce.oml.dsl.OntologicalModelingLanguage.compiler.propertyPage"
+			category="gov.nasa.jpl.imce.oml.dsl.OML"
+			class="gov.nasa.jpl.imce.oml.dsl.ui.OMLExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+			id="gov.nasa.jpl.imce.oml.dsl.OML.compiler.propertyPage"
 			name="Compiler">
-			<keywordReference id="gov.nasa.jpl.imce.oml.dsl.ui.keyword_OntologicalModelingLanguage"/>
+			<keywordReference id="gov.nasa.jpl.imce.oml.dsl.ui.keyword_OML"/>
 			<enabledWhen>
 				<adapt type="org.eclipse.core.resources.IProject"/>
 			</enabledWhen>
@@ -273,20 +271,20 @@
 		<menuContribution locationURI="popup:#TextEditorContext?after=xtext.ui.openDeclaration">
 			<command
 				commandId="org.eclipse.xtext.ui.OpenGeneratedFileCommand"
-				id="gov.nasa.jpl.imce.oml.dsl.OntologicalModelingLanguage.OpenGeneratedCode"
+				id="gov.nasa.jpl.imce.oml.dsl.OML.OpenGeneratedCode"
 				style="push">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="gov.nasa.jpl.imce.oml.dsl.OntologicalModelingLanguage.Editor.opened" />
+					<reference definitionId="gov.nasa.jpl.imce.oml.dsl.OML.Editor.opened" />
 				</visibleWhen>
 			</command>
 		</menuContribution>
 	</extension>
 	<extension point="org.eclipse.ui.handlers">
 		<handler
-			class="gov.nasa.jpl.imce.oml.dsl.ui.OntologicalModelingLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.generator.trace.OpenGeneratedFileHandler"
+			class="gov.nasa.jpl.imce.oml.dsl.ui.OMLExecutableExtensionFactory:org.eclipse.xtext.ui.generator.trace.OpenGeneratedFileHandler"
 			commandId="org.eclipse.xtext.ui.OpenGeneratedFileCommand">
 			<activeWhen>
-				<reference definitionId="gov.nasa.jpl.imce.oml.dsl.OntologicalModelingLanguage.Editor.opened" />
+				<reference definitionId="gov.nasa.jpl.imce.oml.dsl.OML.Editor.opened" />
 			</activeWhen>
 		</handler>
 	</extension>
@@ -294,11 +292,11 @@
 	<extension
 		point="org.eclipse.ui.handlers">
 		<handler 
-			class="gov.nasa.jpl.imce.oml.dsl.ui.OntologicalModelingLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.outline.quickoutline.ShowQuickOutlineActionHandler"
+			class="gov.nasa.jpl.imce.oml.dsl.ui.OMLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.outline.quickoutline.ShowQuickOutlineActionHandler"
 			commandId="org.eclipse.xtext.ui.editor.outline.QuickOutline">
 			<activeWhen>
 				<reference
-					definitionId="gov.nasa.jpl.imce.oml.dsl.OntologicalModelingLanguage.Editor.opened">
+					definitionId="gov.nasa.jpl.imce.oml.dsl.OML.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
@@ -306,7 +304,7 @@
 	<extension
 		point="org.eclipse.ui.commands">
 		<command
-			description="Open the quick OML outline."
+			description="Open the quick outline."
 			id="org.eclipse.xtext.ui.editor.outline.QuickOutline"
 			name="Quick Outline">
 		</command>
@@ -316,35 +314,35 @@
 			locationURI="popup:#TextEditorContext?after=group.open">
 			<command commandId="org.eclipse.xtext.ui.editor.outline.QuickOutline"
 				style="push"
-				tooltip="Open Quick OML Outline">
+				tooltip="Open Quick Outline">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="gov.nasa.jpl.imce.oml.dsl.OntologicalModelingLanguage.Editor.opened"/>
+					<reference definitionId="gov.nasa.jpl.imce.oml.dsl.OML.Editor.opened"/>
 				</visibleWhen>
 			</command>
 		</menuContribution>
 	</extension>
-	<!-- quickfix marker resolution generator for gov.nasa.jpl.imce.oml.dsl.OntologicalModelingLanguage -->
+	<!-- quickfix marker resolution generator for gov.nasa.jpl.imce.oml.dsl.OML -->
 	<extension
 			point="org.eclipse.ui.ide.markerResolution">
 		<markerResolutionGenerator
-			class="gov.nasa.jpl.imce.oml.dsl.ui.OntologicalModelingLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
-			markerType="gov.nasa.jpl.imce.oml.dsl.ui.ontologicalmodelinglanguage.check.fast">
+			class="gov.nasa.jpl.imce.oml.dsl.ui.OMLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+			markerType="gov.nasa.jpl.imce.oml.dsl.ui.oml.check.fast">
 			<attribute
 				name="FIXABLE_KEY"
 				value="true">
 			</attribute>
 		</markerResolutionGenerator>
 		<markerResolutionGenerator
-			class="gov.nasa.jpl.imce.oml.dsl.ui.OntologicalModelingLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
-			markerType="gov.nasa.jpl.imce.oml.dsl.ui.ontologicalmodelinglanguage.check.normal">
+			class="gov.nasa.jpl.imce.oml.dsl.ui.OMLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+			markerType="gov.nasa.jpl.imce.oml.dsl.ui.oml.check.normal">
 			<attribute
 				name="FIXABLE_KEY"
 				value="true">
 			</attribute>
 		</markerResolutionGenerator>
 		<markerResolutionGenerator
-			class="gov.nasa.jpl.imce.oml.dsl.ui.OntologicalModelingLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
-			markerType="gov.nasa.jpl.imce.oml.dsl.ui.ontologicalmodelinglanguage.check.expensive">
+			class="gov.nasa.jpl.imce.oml.dsl.ui.OMLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+			markerType="gov.nasa.jpl.imce.oml.dsl.ui.oml.check.expensive">
 			<attribute
 				name="FIXABLE_KEY"
 				value="true">
@@ -354,11 +352,11 @@
 	<!-- Rename Refactoring -->
 	<extension point="org.eclipse.ui.handlers">
 		<handler 
-			class="gov.nasa.jpl.imce.oml.dsl.ui.OntologicalModelingLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.DefaultRenameElementHandler"
+			class="gov.nasa.jpl.imce.oml.dsl.ui.OMLExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.DefaultRenameElementHandler"
 			commandId="org.eclipse.xtext.ui.refactoring.RenameElement">
 			<activeWhen>
 				<reference
-					definitionId="gov.nasa.jpl.imce.oml.dsl.OntologicalModelingLanguage.Editor.opened">
+					definitionId="gov.nasa.jpl.imce.oml.dsl.OML.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
@@ -370,7 +368,7 @@
 				style="push">
 				<visibleWhen checkEnabled="false">
 					<reference
-						definitionId="gov.nasa.jpl.imce.oml.dsl.OntologicalModelingLanguage.Editor.opened">
+						definitionId="gov.nasa.jpl.imce.oml.dsl.OML.Editor.opened">
 					</reference>
 				</visibleWhen>
 			</command>
@@ -378,28 +376,28 @@
 	</extension>
 	<extension point="org.eclipse.ui.preferencePages">
 		<page
-			category="gov.nasa.jpl.imce.oml.dsl.OntologicalModelingLanguage"
-			class="gov.nasa.jpl.imce.oml.dsl.ui.OntologicalModelingLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferencePage"
-			id="gov.nasa.jpl.imce.oml.dsl.OntologicalModelingLanguage.refactoring"
+			category="gov.nasa.jpl.imce.oml.dsl.OML"
+			class="gov.nasa.jpl.imce.oml.dsl.ui.OMLExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferencePage"
+			id="gov.nasa.jpl.imce.oml.dsl.OML.refactoring"
 			name="Refactoring">
-			<keywordReference id="gov.nasa.jpl.imce.oml.dsl.ui.keyword_OntologicalModelingLanguage"/>
+			<keywordReference id="gov.nasa.jpl.imce.oml.dsl.ui.keyword_OML"/>
 		</page>
 	</extension>
 	<extension point="org.eclipse.compare.contentViewers">
-		<viewer id="gov.nasa.jpl.imce.oml.dsl.OntologicalModelingLanguage.compare.contentViewers"
-			class="gov.nasa.jpl.imce.oml.dsl.ui.OntologicalModelingLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+		<viewer id="gov.nasa.jpl.imce.oml.dsl.OML.compare.contentViewers"
+			class="gov.nasa.jpl.imce.oml.dsl.ui.OMLExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
 			extensions="oml">
 		</viewer>
 	</extension>
 	<extension point="org.eclipse.compare.contentMergeViewers">
-		<viewer id="gov.nasa.jpl.imce.oml.dsl.OntologicalModelingLanguage.compare.contentMergeViewers"
-			class="gov.nasa.jpl.imce.oml.dsl.ui.OntologicalModelingLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
-			extensions="oml" label="OntologicalModelingLanguage Compare">
+		<viewer id="gov.nasa.jpl.imce.oml.dsl.OML.compare.contentMergeViewers"
+			class="gov.nasa.jpl.imce.oml.dsl.ui.OMLExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+			extensions="oml" label="OML Compare">
 		</viewer>
 	</extension>
 	<extension point="org.eclipse.ui.editors.documentProviders">
-		<provider id="gov.nasa.jpl.imce.oml.dsl.OntologicalModelingLanguage.editors.documentProviders"
-			class="gov.nasa.jpl.imce.oml.dsl.ui.OntologicalModelingLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
+		<provider id="gov.nasa.jpl.imce.oml.dsl.OML.editors.documentProviders"
+			class="gov.nasa.jpl.imce.oml.dsl.ui.OMLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
 			extensions="oml">
 		</provider>
 	</extension>
@@ -409,7 +407,7 @@
 			type="text">
 		</fileTypes>
 	</extension>
-	
+
 	<!-- Converter -->
 	
 	<extension
@@ -426,7 +424,7 @@
 	<extension
     	point="org.eclipse.ui.handlers">
 		<handler
-        	class="gov.nasa.jpl.imce.oml.dsl.ui.OntologicalModelingLanguageExecutableExtensionFactory:gov.nasa.jpl.imce.oml.dsl.ui.converter.LiftOMLBundleToXcoreHandler"
+        	class="gov.nasa.jpl.imce.oml.dsl.ui.OMLExecutableExtensionFactory:gov.nasa.jpl.imce.oml.dsl.ui.converter.LiftOMLBundleToXcoreHandler"
         	commandId="gov.nasa.jpl.imce.oml.dsl.ui.converter.LiftOMLBundleToXcoreCommand">
       	</handler>
 	</extension>
@@ -452,7 +450,7 @@
             	style="push">
 	            <visibleWhen checkEnabled="false">
 	            	<reference 
-	            		definitionId="gov.nasa.jpl.imce.oml.dsl.OntologicalModelingLanguage.XtextEditor.opened">
+	            		definitionId="gov.nasa.jpl.imce.oml.dsl.OML.XtextEditor.opened">
 	                </reference>
 	            </visibleWhen>
         	</command>

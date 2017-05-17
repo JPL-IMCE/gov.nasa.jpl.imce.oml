@@ -1,5 +1,22 @@
 Manifest-Version: 1.0
-Bundle-SymbolicName: gov.nasa.jpl.imce.oml.dsl;singleton:=true
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-Vendor: %providerName
+Bundle-Version: 0.7.0.qualifier
+Bundle-SymbolicName: gov.nasa.jpl.imce.oml.dsl; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.emf.ecore,
+ org.eclipse.xtext.xbase.lib,
+ org.antlr.runtime,
+ org.eclipse.xtext.util,
+ org.eclipse.xtend.lib,
+ org.eclipse.emf.common,
+ gov.nasa.jpl.imce.oml.model,
+ gov.nasa.jpl.imce.oml.runtime
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: gov.nasa.jpl.imce.oml.dsl,
  gov.nasa.jpl.imce.oml.dsl.formatting2,
  gov.nasa.jpl.imce.oml.dsl.generator,
@@ -11,28 +28,5 @@ Export-Package: gov.nasa.jpl.imce.oml.dsl,
  gov.nasa.jpl.imce.oml.dsl.services,
  gov.nasa.jpl.imce.oml.dsl.util,
  gov.nasa.jpl.imce.oml.dsl.validation
-Bundle-Name: %pluginName
-Bundle-Version: 0.7.0
-Bundle-ClassPath: .
-Bundle-Localization: plugin
-Require-Bundle: org.antlr.runtime;visibility:=reexport,
- org.apache.log4j;visibility:=reexport,
- org.apache.commons.logging;bundle-version="1.1.1";visibility:=reexport,
- org.eclipse.core.resources;visibility:=reexport,
- org.eclipse.xtend.lib;visibility:=reexport,
- org.eclipse.xtext;visibility:=reexport,
- org.eclipse.xtext.util;visibility:=reexport,
- org.eclipse.xtext.xbase.lib;visibility:=reexport,
- org.eclipse.emf.ecore.xcore.lib;visibility:=reexport,
- org.eclipse.emf.ecore.xcore;visibility:=reexport,
- org.eclipse.xtext.generator;visibility:=reexport,
- org.apache.xml.resolver;bundle-version="1.2.0";visibility:=reexport,
- org.eclipse.emf.cdo;visibility:=reexport,
- org.eclipse.emf.mwe2.launch;visibility:=reexport,
- gov.nasa.jpl.imce.oml.runtime;visibility:=reexport,
- gov.nasa.jpl.imce.oml.model;visibility:=reexport
-Bundle-ManifestVersion: 2
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Bundle-ActivationPolicy: lazy
-Bundle-Vendor: %providerName
 Import-Package: org.apache.log4j
+Bundle-Localization: plugin

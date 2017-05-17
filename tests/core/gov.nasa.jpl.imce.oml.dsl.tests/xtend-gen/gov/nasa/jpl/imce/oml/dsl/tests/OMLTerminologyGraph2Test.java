@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 California Institute of Technology (\"Caltech\").
+ * Copyright 2017 California Institute of Technology (\"Caltech\").
  * U.S. Government sponsorship acknowledged.
  * 
  * Licensed under the Apache License, Version 2.0 (the \"License\");
@@ -17,7 +17,7 @@
 package gov.nasa.jpl.imce.oml.dsl.tests;
 
 import com.google.inject.Inject;
-import gov.nasa.jpl.imce.oml.dsl.tests.OntologicalModelingLanguageInjectorProvider;
+import gov.nasa.jpl.imce.oml.dsl.tests.OMLInjectorProvider;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -32,7 +32,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(XtextRunner.class)
-@InjectWith(OntologicalModelingLanguageInjectorProvider.class)
+@InjectWith(OMLInjectorProvider.class)
 @SuppressWarnings("all")
 public class OMLTerminologyGraph2Test {
   @Inject

@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 California Institute of Technology (\"Caltech\").
+ * Copyright 2017 California Institute of Technology (\"Caltech\").
  * U.S. Government sponsorship acknowledged.
  *
  * Licensed under the Apache License, Version 2.0 (the \"License\");
@@ -28,7 +28,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(XtextRunner)
-@InjectWith(OntologicalModelingLanguageInjectorProvider)
+@InjectWith(OMLInjectorProvider)
 class OMLTerminologyGraph2Test{
 
 	@Inject

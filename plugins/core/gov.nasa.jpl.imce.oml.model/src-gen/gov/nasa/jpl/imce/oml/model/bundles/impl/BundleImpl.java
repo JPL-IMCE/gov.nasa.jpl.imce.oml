@@ -1,6 +1,6 @@
 /**
  * 
- * Copyright 2016 California Institute of Technology ("Caltech").
+ * Copyright 2017 California Institute of Technology ("Caltech").
  * U.S. Government sponsorship acknowledged.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -126,7 +126,8 @@ public class BundleImpl extends TerminologyBoxImpl implements Bundle {
 	 * @generated
 	 */
 	public EList<ModuleEdge> moduleEdges() {
-		BasicEList<ModuleEdge> _xblockexpression = null; {
+		BasicEList<ModuleEdge> _xblockexpression = null;
+		{
 			final BasicEList<ModuleEdge> me = new BasicEList<ModuleEdge>();
 			me.addAll(this.getBoxAxioms());
 			me.addAll(this.getBundleAxioms());

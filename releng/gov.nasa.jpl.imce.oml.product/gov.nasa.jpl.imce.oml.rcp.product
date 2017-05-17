@@ -238,9 +238,9 @@
    </plugins>
 
    <features>
-      <feature id="gov.nasa.jpl.imce.oml.core.feature" installMode="root" version="0.7.0"/>
-      <feature id="gov.nasa.jpl.imce.oml.runtime.feature" installMode="root" version="0.7.0"/>
-      <feature id="gov.nasa.jpl.imce.oml.runtime.platform.feature" installMode="root" version="0.7.0"/>
+      <feature id="gov.nasa.jpl.imce.oml.core.feature" installMode="root"/>
+      <feature id="gov.nasa.jpl.imce.oml.runtime.feature" installMode="root"/>
+      <feature id="gov.nasa.jpl.imce.oml.runtime.platform.feature" installMode="root"/>
    </features>
 
    <configurations>

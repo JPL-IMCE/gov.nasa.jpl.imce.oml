@@ -3,12 +3,12 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>gov.nasa.jpl.imce.oml</groupId>
 	<artifactId>gov.nasa.jpl.imce.oml.configuration</artifactId>
-	<version>1.0.0</version>
+	<version>0.7.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<properties>
 		<tycho.version>0.26.0</tycho.version>
-		<oml.version>0.7.0</oml.version>
+		<oml.version>0.7.0-SNAPSHOT</oml.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<neon-repo.url>http://download.eclipse.org/releases/neon</neon-repo.url>
     	<!-- Skip the deployment here, submodules can override this property -->
@@ -43,7 +43,7 @@
 						<artifact>
 							<groupId>gov.nasa.jpl.imce.oml</groupId>
 							<artifactId>gov.nasa.jpl.imce.oml.target</artifactId>
-							<version>1.0.0-SNAPSHOT</version>
+							<version>0.7.0-SNAPSHOT</version>
 						</artifact>
 					</target>					
 					<environments>

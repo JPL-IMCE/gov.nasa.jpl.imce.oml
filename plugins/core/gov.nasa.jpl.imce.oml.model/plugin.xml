@@ -1,45 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.0"?>
+
+<!--
+ 
+ Copyright 2017 California Institute of Technology ("Caltech").
+ U.S. Government sponsorship acknowledged.
+ 
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ 
+      http://www.apache.org/licenses/LICENSE-2.0
+ 
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ 
+-->
+
 <plugin>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated FunctionalMetamodel -->
+      <!-- @generated OMLDescriptions -->
       <package
-            uri="http://imce.jpl.nasa.gov/fm"
-            class="gov.nasa.jpl.imce.fm.FmPackage"
-            genModel="resources/model/FunctionalMetamodel.xcore"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated OMLProvenanceOTI -->
-      <package
-            uri="http://imce.jpl.nasa.gov/oml/provenance/oti"
-            class="gov.nasa.jpl.imce.oml.provenance.oti.OtiPackage"
-            genModel="resources/model/OMLProvenanceOTI.xcore"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated OMLTerminologies -->
-      <package
-            uri="http://imce.jpl.nasa.gov/oml/terminologies"
-            class="gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage"
-            genModel="resources/model/OMLTerminologies.xcore"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated OMLGraphs -->
-      <package
-            uri="http://imce.jpl.nasa.gov/oml/graphs"
-            class="gov.nasa.jpl.imce.oml.model.graphs.GraphsPackage"
-            genModel="resources/model/OMLGraphs.xcore"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated OMLBundles -->
-      <package
-            uri="http://imce.jpl.nasa.gov/oml/bundles"
-            class="gov.nasa.jpl.imce.oml.model.bundles.BundlesPackage"
-            genModel="resources/model/OMLBundles.xcore"/>
+            uri="http://imce.jpl.nasa.gov/oml/descriptions"
+            class="gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsPackage"
+            genModel="model/OMLDescriptions.xcore"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
@@ -47,15 +35,31 @@
       <package
             uri="http://imce.jpl.nasa.gov/oml/common"
             class="gov.nasa.jpl.imce.oml.model.common.CommonPackage"
-            genModel="resources/model/OMLCommon.xcore"/>
+            genModel="model/OMLCommon.xcore"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated OMLDescriptions -->
+      <!-- @generated OMLGraphs -->
       <package
-            uri="http://imce.jpl.nasa.gov/oml/descriptions"
-            class="gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsPackage"
-            genModel="resources/model/OMLDescriptions.xcore"/>
+            uri="http://imce.jpl.nasa.gov/oml/graphs"
+            class="gov.nasa.jpl.imce.oml.model.graphs.GraphsPackage"
+            genModel="model/OMLGraphs.xcore"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated OMLBundles -->
+      <package
+            uri="http://imce.jpl.nasa.gov/oml/bundles"
+            class="gov.nasa.jpl.imce.oml.model.bundles.BundlesPackage"
+            genModel="model/OMLBundles.xcore"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated OMLTerminologies -->
+      <package
+            uri="http://imce.jpl.nasa.gov/oml/terminologies"
+            class="gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage"
+            genModel="model/OMLTerminologies.xcore"/>
    </extension>
 
 </plugin>

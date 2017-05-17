@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 California Institute of Technology ("Caltech").
+ * Copyright 2017 California Institute of Technology ("Caltech").
  * U.S. Government sponsorship acknowledged.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,13 +25,11 @@ import org.eclipse.xtext.formatting2.FormatterPreferenceKeys
 import org.eclipse.xtext.testing.InjectWith
 import org.eclipse.xtext.testing.XtextRunner
 import org.eclipse.xtext.testing.formatter.FormatterTestHelper
-//import org.eclipse.xtext.testing.util.ParseHelper
-//import org.eclipse.xtext.testing.validation.ValidationTestHelper
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(XtextRunner)
-@InjectWith(OntologicalModelingLanguageInjectorProvider)
+@InjectWith(OMLInjectorProvider)
 class OMLFileTests extends OMLTest {
 
 //	@Inject

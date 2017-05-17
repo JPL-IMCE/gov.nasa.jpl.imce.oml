@@ -25,6 +25,8 @@ import gov.nasa.jpl.imce.oml.model.bundles.Bundle
 import gov.nasa.jpl.imce.oml.model.bundles.BundledTerminologyAxiom
 import gov.nasa.jpl.imce.oml.model.bundles.RootConceptTaxonomyAxiom
 import gov.nasa.jpl.imce.oml.model.bundles.SpecificDisjointConceptAxiom
+import gov.nasa.jpl.imce.oml.model.bundles.AnonymousConceptUnionAxiom
+import gov.nasa.jpl.imce.oml.model.common.Module
 import gov.nasa.jpl.imce.oml.model.common.Element
 import gov.nasa.jpl.imce.oml.model.common.Extent
 import gov.nasa.jpl.imce.oml.model.descriptions.ConceptInstance
@@ -71,6 +73,11 @@ import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyExtensionAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.TimeScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship
+import gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceScalarDataPropertyValue
+import gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceStructuredDataPropertyValue
+import gov.nasa.jpl.imce.oml.model.descriptions.StructuredDataPropertyTuple
+import gov.nasa.jpl.imce.oml.model.descriptions.ScalarDataPropertyValue
+import gov.nasa.jpl.imce.oml.model.descriptions.ConceptualEntitySingletonInstance
 import java.io.IOException
 import java.net.URL
 import java.util.ArrayList
@@ -82,15 +89,8 @@ import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.emf.ecore.util.EcoreUtil
-import gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceScalarDataPropertyValue
-import gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceStructuredDataPropertyValue
-import gov.nasa.jpl.imce.oml.model.descriptions.StructuredDataPropertyTuple
-import gov.nasa.jpl.imce.oml.model.descriptions.ScalarDataPropertyValue
-import gov.nasa.jpl.imce.oml.model.descriptions.ConceptualEntitySingletonInstance
 import com.google.common.collect.Sets
 import java.util.HashSet
-import gov.nasa.jpl.imce.oml.model.bundles.AnonymousConceptUnionAxiom
-import gov.nasa.jpl.imce.oml.model.common.Module
 
 class OMLExtensions {
 	
@@ -103,7 +103,7 @@ class OMLExtensions {
 		if (OMLCatalogManager.isInstance(o)) {
 			val cm = OMLCatalogManager.cast(o)
 			cm.useStaticCatalog = false
-			cm.catalogClassName = "gov.nasa.jpl.imce.oml.model.extensions.OMLCatalog"
+			cm.catalogClassName = "gov.nasa.jpl.imce.oml.extensions.OMLCatalog"
 			rs.loadOptions.putIfAbsent(RESOURCE_SET_CATALOG_MANAGER, cm)
 			return cm
 		} else {

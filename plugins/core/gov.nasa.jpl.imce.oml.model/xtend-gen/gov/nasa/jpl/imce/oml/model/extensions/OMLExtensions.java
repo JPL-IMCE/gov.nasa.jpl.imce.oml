@@ -130,7 +130,7 @@ public class OMLExtensions {
     if (_isInstance) {
       final OMLCatalogManager cm = OMLCatalogManager.class.cast(o);
       cm.setUseStaticCatalog(false);
-      cm.setCatalogClassName("gov.nasa.jpl.imce.oml.model.extensions.OMLCatalog");
+      cm.setCatalogClassName("gov.nasa.jpl.imce.oml.extensions.OMLCatalog");
       rs.getLoadOptions().putIfAbsent(OMLExtensions.RESOURCE_SET_CATALOG_MANAGER, cm);
       return cm;
     } else {

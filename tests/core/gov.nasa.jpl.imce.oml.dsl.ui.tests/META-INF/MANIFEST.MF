@@ -1,28 +1,24 @@
 Manifest-Version: 1.0
-Bundle-SymbolicName: gov.nasa.jpl.imce.oml.dsl.ui.tests;singleton:=true
-Require-Bundle: org.eclipse.xtext.testing;visibility:=reexport,
- org.eclipse.xtext.xbase.junit;visibility:=reexport,
- org.eclipse.xtext.junit4;visibility:=reexport,
- org.eclipse.core.runtime;visibility:=reexport,
- org.eclipse.ui.workbench;visibility:=reexport,
- org.eclipse.xtext.xbase.testing;visibility:=reexport,
- gov.nasa.jpl.imce.oml.model;bundle-version="0.6.1";visibility:=reexport,
- gov.nasa.jpl.imce.oml.dsl;bundle-version="0.6.1";visibility:=reexport,
- gov.nasa.jpl.imce.oml.dsl.ide;bundle-version="0.6.1";visibility:=reexport,
- gov.nasa.jpl.imce.oml.dsl.ui;bundle-version="0.6.1";visibility:=reexport
 Bundle-ManifestVersion: 2
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Bundle-ActivationPolicy: lazy
+Bundle-Name: %pluginName
 Bundle-Vendor: %providerName
+Bundle-Version: 0.7.0.qualifier
+Bundle-SymbolicName: gov.nasa.jpl.imce.oml.dsl.ui.tests; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: gov.nasa.jpl.imce.oml.dsl.ui,
+ org.junit;bundle-version="4.12.0",
+ org.eclipse.xtext.testing,
+ org.eclipse.xtext.xbase.testing,
+ org.eclipse.xtext.junit4,
+ org.eclipse.xtext.xbase.junit,
+ org.eclipse.core.runtime,
+ org.eclipse.ui.workbench;resolution:=optional
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: gov.nasa.jpl.imce.oml.dsl.ui.tests;x-internal=true
 Import-Package: org.hamcrest.core,
  org.junit;version="4.5.0",
+ org.junit.runners.model;version="4.5.0",
  org.junit.runner;version="4.5.0",
- org.junit.runner.manipulation;version="4.5.0",
- org.junit.runner.notification;version="4.5.0",
  org.junit.runners;version="4.5.0",
- org.junit.runners.model;version="4.5.0"
-Export-Package: gov.nasa.jpl.imce.oml.dsl.ui.tests;x-internal=true
-Bundle-Name: %pluginName
-Bundle-Version: 0.6.1
-Bundle-ClassPath: .
-Bundle-Localization: plugin
+ org.junit.runner.manipulation;version="4.5.0",
+ org.junit.runner.notification;version="4.5.0"

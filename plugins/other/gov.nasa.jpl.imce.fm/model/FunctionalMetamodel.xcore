@@ -1,0 +1,102 @@
+/**
+ * Copyright 2017 California Institute of Technology (\"Caltech\").
+ * U.S. Government sponsorship acknowledged.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the \"License\")
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * 		http://www.apache.org/licenses/LICENSE-2.0
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an \"AS IS\" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ */
+@Ecore(
+	nsPrefix="fm", 
+	nsURI="http://imce.jpl.nasa.gov/fm"
+)
+@GenModel(
+	copyrightText="\nCopyright 2017 California Institute of Technology (\"Caltech\").\nU.S. Government sponsorship acknowledged.\n\nLicensed under the Apache License, Version 2.0 (the \"License\");\nyou may not use this file except in compliance with the License.\nYou may obtain a copy of the License at\n\n     http://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software\ndistributed under the License is distributed on an \"AS IS\" BASIS,\nWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and\nlimitations under the License.\n",
+	modelPluginVariables="org.eclipse.xtext.xbase.lib org.eclipse.emf.ecore.xcore.lib org.eclipse.emf.cdo",
+	rootExtendsClass="org.eclipse.emf.internal.cdo.CDOObjectImpl",
+	rootExtendsInterface="org.eclipse.emf.cdo.CDOObject",
+	childCreationExtenders="true",
+	complianceLevel="8.0",
+	featureDelegation="None",
+	modelDirectory="/gov.nasa.jpl.imce.fm/src-gen/"
+)
+package gov.nasa.jpl.imce.fm
+
+type DTString wraps String
+
+abstract class Type {
+	DTString[1] name
+}
+
+abstract class PrimitiveType extends Type {}
+
+class Boolean extends PrimitiveType {}
+class String extends PrimitiveType {}
+class Integer extends PrimitiveType {}
+class NaturalInteger extends PrimitiveType {}
+
+abstract class Metaclass extends Type {}
+
+abstract class InformationCarryingMetaclass extends Metaclass {}
+abstract class InformationContainerMetaclass extends Metaclass {}
+
+class Value extends InformationCarryingMetaclass {}
+
+class Entity extends InformationCarryingMetaclass, InformationContainerMetaclass {}
+
+class Extent extends InformationContainerMetaclass {}
+
+abstract class BinaryDirectedRelationship {
+	
+	op Metaclass[1] domain()
+	
+	op Type[1] range()
+}
+
+class BinaryCompositeAssociation extends BinaryDirectedRelationship {
+	
+	refers InformationContainerMetaclass[1] source
+	DTString[1] sourceRoleName
+	
+	op Metaclass[1] domain() { source }
+	
+	refers InformationCarryingMetaclass[1] target
+	DTString[1] targetRoleName
+	
+	op Type[1] range() { target }
+}
+
+class EssentialReference extends BinaryDirectedRelationship {
+
+	refers InformationCarryingMetaclass[1] source
+	
+	op Metaclass[1] domain() { source }
+	
+	refers Entity[1] target
+	
+	DTString[1] referenceName
+	
+	op Type[1] range() { target }
+	
+}
+
+class EssentialAttribute extends BinaryDirectedRelationship {
+	
+	refers InformationCarryingMetaclass[1] source
+	
+	op Metaclass[1] domain() { source }
+	
+	refers PrimitiveType[1] target
+	
+	DTString[1] attributeName
+	
+	op Type[1] range() { target }
+}

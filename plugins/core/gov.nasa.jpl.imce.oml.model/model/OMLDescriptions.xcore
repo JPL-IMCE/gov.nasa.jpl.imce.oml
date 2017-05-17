@@ -1,0 +1,566 @@
+/**
+ * Copyright 2017 California Institute of Technology (\"Caltech\").
+ * U.S. Government sponsorship acknowledged.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the \"License\")
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * 		http://www.apache.org/licenses/LICENSE-2.0
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an \"AS IS\" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ */
+@Ecore(
+	nsPrefix="omld", 
+	nsURI="http://imce.jpl.nasa.gov/oml/descriptions"
+)
+@GenModel(
+	copyrightText="\nCopyright 2017 California Institute of Technology (\"Caltech\").\nU.S. Government sponsorship acknowledged.\n\nLicensed under the Apache License, Version 2.0 (the \"License\");\nyou may not use this file except in compliance with the License.\nYou may obtain a copy of the License at\n\n     http://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software\ndistributed under the License is distributed on an \"AS IS\" BASIS,\nWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and\nlimitations under the License.\n",
+	modelPluginVariables="org.eclipse.xtext.xbase.lib org.eclipse.emf.ecore.xcore.lib org.eclipse.emf.cdo",
+	rootExtendsClass="org.eclipse.emf.internal.cdo.CDOObjectImpl",
+	rootExtendsInterface="org.eclipse.emf.cdo.CDOObject",
+	childCreationExtenders="true",
+	complianceLevel="8.0",
+	featureDelegation="None",
+	modelDirectory="/gov.nasa.jpl.imce.oml.model/src-gen/",
+	editDirectory="/gov.nasa.jpl.imce.oml.model.edit/src-gen/"
+)
+package gov.nasa.jpl.imce.oml.model.descriptions
+
+import org.eclipse.emf.common.util.BasicEList
+
+import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions
+
+import gov.nasa.jpl.imce.oml.model.common.Collection
+import gov.nasa.jpl.imce.oml.model.common.CopyConstructor
+import gov.nasa.jpl.imce.oml.model.common.DerivedUUID
+import gov.nasa.jpl.imce.oml.model.common.Element
+import gov.nasa.jpl.imce.oml.model.common.Glossary
+import gov.nasa.jpl.imce.oml.model.common.ImplicitExtent
+import gov.nasa.jpl.imce.oml.model.common.IRI
+import gov.nasa.jpl.imce.oml.model.common.LocalName
+import gov.nasa.jpl.imce.oml.model.common.Module
+import gov.nasa.jpl.imce.oml.model.common.ModuleEdge
+import gov.nasa.jpl.imce.oml.model.common.ModuleElement
+import gov.nasa.jpl.imce.oml.model.common.NamespaceUUID
+import gov.nasa.jpl.imce.oml.model.common.NotFunctionalAPI
+import gov.nasa.jpl.imce.oml.model.common.NotSchema
+import gov.nasa.jpl.imce.oml.model.common.Override
+import gov.nasa.jpl.imce.oml.model.common.Resource
+import gov.nasa.jpl.imce.oml.model.common.Scala
+import gov.nasa.jpl.imce.oml.model.common.UUID
+import gov.nasa.jpl.imce.oml.model.terminologies.Concept
+import gov.nasa.jpl.imce.oml.model.terminologies.ConceptualEntity
+import gov.nasa.jpl.imce.oml.model.terminologies.DataRelationshipToScalar
+import gov.nasa.jpl.imce.oml.model.terminologies.DataRelationshipToStructure
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship
+import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox
+import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataProperty
+
+/*
+ * OML DescriptionKind specifies semantic constraints that apply to
+ * an OML DescriptionBox as follows:
+ * - Final: the description is intended to be well-formed with all essential information (e.g., values of `isIdentityCriteria` data properties)
+ * - Partial: the description may lack some essential information (e.g., values of `isIdentityCriteria` data properties)
+ */
+@Glossary
+enum DescriptionKind {
+	Final
+	Partial
+}
+
+/*
+ * An OML DescriptionBox maps to an [OWL2-DL Ontology]
+ * about [OWL2-DL NamedIndividuals] mapped from OML TerminologyInstanceAssertion(s).
+ */
+@Glossary
+class DescriptionBox extends Module {
+	
+	DescriptionKind[1] kind
+	
+	@CopyConstructor
+	@Collection(kind="Set")
+	contains DescriptionBoxRefinement[] descriptionBoxRefinements opposite refiningDescriptionBox
+	
+	@CopyConstructor
+	@Collection(kind="Set")
+	contains DescriptionBoxExtendsClosedWorldDefinitions[] closedWorldDefinitions opposite descriptionBox
+	
+	@CopyConstructor
+	@Collection(kind="Set")
+	contains ConceptInstance[] conceptInstances opposite descriptionBox
+	
+	@CopyConstructor
+	@Collection(kind="Set")
+	contains ReifiedRelationshipInstance[] reifiedRelationshipInstances opposite descriptionBox
+	
+	@CopyConstructor
+	@Collection(kind="Set")
+	contains ReifiedRelationshipInstanceDomain[] reifiedRelationshipInstanceDomains opposite descriptionBox
+	
+	@CopyConstructor
+	@Collection(kind="Set")
+	contains ReifiedRelationshipInstanceRange[] reifiedRelationshipInstanceRanges opposite descriptionBox
+	
+	@CopyConstructor
+	@Collection(kind="Set")
+	contains UnreifiedRelationshipInstanceTuple[] unreifiedRelationshipInstanceTuples opposite descriptionBox
+	
+	@CopyConstructor
+	@Collection(kind="Set")
+	contains SingletonInstanceScalarDataPropertyValue[] singletonScalarDataPropertyValues opposite descriptionBox
+	
+	@CopyConstructor
+	@Collection(kind="Set")
+	contains SingletonInstanceStructuredDataPropertyValue[] singletonStructuredDataPropertyValues opposite descriptionBox
+	
+	@Scala(code="descriptionBoxRefinements ++ closedWorldDefinitions")
+	@ImplicitExtent
+	@NotSchema
+	@Override
+	op ModuleEdge[] moduleEdges() {
+		val me = new BasicEList<ModuleEdge>()
+		me.addAll(descriptionBoxRefinements)
+		me.addAll(closedWorldDefinitions)
+		me
+	}
+}
+
+/*
+ * An OML DescriptionBoxRelationship is a directed binary relationship
+ * from an OML DescriptionBox source to an OML Module target.
+ */
+@Glossary
+abstract class DescriptionBoxRelationship extends ModuleEdge {
+	
+	@NotSchema
+	@ImplicitExtent
+	op DescriptionBox[?] descriptionDomain()
+	
+	@NotSchema
+	@ImplicitExtent
+	op Module[?] sourceModule() { descriptionDomain() }
+}
+
+/*
+ * An OML DescriptionBoxExtendsClosedWorldDefinition specifies
+ * an OML DescriptionBoxRelationship from an OML DescriptionBox 
+ * to an OML TerminologyBox such that an OML SingletonInstance defined in the
+ * former can be an instance of an OML Term defined in the latter.
+ */
+@Glossary
+@DerivedUUID
+class DescriptionBoxExtendsClosedWorldDefinitions extends DescriptionBoxRelationship {
+	
+	@CopyConstructor
+	container DescriptionBox[1] descriptionBox opposite closedWorldDefinitions
+	
+	@Scala(code="extent.descriptionBoxOfDescriptionBoxExtendsClosedWorldDefinitions.get(this)")
+	@ImplicitExtent
+	@NotSchema
+	op DescriptionBox[?] descriptionDomain() { descriptionBox }
+	
+	refers TerminologyBox[1] closedWorldDefinitions
+	
+	@NotSchema
+	@ImplicitExtent
+	op Module[1] targetModule() { closedWorldDefinitions }
+	
+	@NotFunctionalAPI
+	@NotSchema
+	op UUID[1] uuid() {
+		OMLExtensions.derivedUUID(
+		"DescriptionBoxExtendsClosedWorldDefinitions",
+		"descriptionBox" -> descriptionBox?.uuid()?.toString,
+		"closedWorldDefinitions" -> closedWorldDefinitions?.uuid()?.toString
+		)?.toString
+	}
+}
+
+/*
+ * An OML DescriptionBoxRefinement is an OML DescriptionBoxRelationship
+ * from an OML DescriptionBox to another OML DescriptionBox where
+ * the former refines the descriptions of the latter.
+ */
+@Glossary
+@DerivedUUID
+class DescriptionBoxRefinement extends DescriptionBoxRelationship {
+	
+	@CopyConstructor
+	container DescriptionBox[1] refiningDescriptionBox opposite descriptionBoxRefinements
+	
+	@Scala(code="extent.descriptionBoxOfDescriptionBoxRefinement.get(this)")
+	@ImplicitExtent
+	@NotSchema
+	op DescriptionBox[?] descriptionDomain() { refiningDescriptionBox }
+	
+	refers DescriptionBox[1] refinedDescriptionBox
+	
+	@NotSchema
+	@ImplicitExtent
+	op Module[1] targetModule() { refinedDescriptionBox }
+	
+	@NotFunctionalAPI
+	@NotSchema
+	op UUID[1] uuid() {
+		OMLExtensions.derivedUUID(
+		"DescriptionBoxRefinement",
+		"refiningDescriptionBox" -> refiningDescriptionBox?.uuid()?.toString,
+		"refinedDescriptionBox" -> refinedDescriptionBox?.uuid()?.toString
+		)?.toString
+	}
+}
+
+/*
+ * An OML TerminologyInstanceAssertion is a logical OML ModuleElement defined in an OML TerminologyDescription.
+ */
+@Glossary
+abstract class TerminologyInstanceAssertion extends ModuleElement {}
+
+/*
+ * An OML SingletonInstanceScalarDataPropertyValue defines a tuple for representing the atomic String value
+ * of an OML EntityScalarDataProperty for a particular OML ConceptualEntitySingletonInstance.
+ */
+@Glossary
+@DerivedUUID
+class SingletonInstanceScalarDataPropertyValue extends ModuleElement {
+	
+	@CopyConstructor
+	container DescriptionBox[1] descriptionBox opposite singletonScalarDataPropertyValues 
+	
+	refers ConceptualEntitySingletonInstance[1] singletonInstance
+	refers EntityScalarDataProperty[1] scalarDataProperty
+	
+	String[1] scalarPropertyValue
+	
+	@NotFunctionalAPI
+	@NotSchema
+	op UUID[1] uuid() {
+		OMLExtensions.derivedUUID(
+		"ScalarDataPropertyValue", 
+		"descriptionBox" -> getDescriptionBox?.uuid()?.toString(),
+		"singletonInstance" -> getSingletonInstance?.uuid()?.toString(),
+		"scalarDataProperty" -> getScalarDataProperty?.uuid()?.toString()
+		)?.toString
+	}
+	
+	@Scala(code="extent.descriptionBoxOfSingletonInstanceScalarDataPropertyValue.get(this)")
+	@ImplicitExtent
+	@NotSchema
+	op DescriptionBox[?] descriptionBox() { getDescriptionBox }
+}
+
+/*
+ * An OML SingletonInstanceStructuredDataPropertyContext defines the context of
+ * an OML DataRelationshipToStructure for an insance of either an OML Concept or OML Structure
+ * for specifying values of its data properties
+ * via nested OML StructuredDataPropertyTuple(s) and OML ScalarDataPropertyValue(s).
+ */
+@Glossary
+@DerivedUUID
+abstract class SingletonInstanceStructuredDataPropertyContext extends Element {
+	
+	refers DataRelationshipToStructure[1] structuredDataProperty
+	
+	contains StructuredDataPropertyTuple[] structuredPropertyTuples opposite structuredDataPropertyContext
+	
+	contains ScalarDataPropertyValue[] scalarDataPropertyValues opposite structuredDataPropertyContext
+	
+	@ImplicitExtent
+	@NotSchema
+	op DescriptionBox[?] descriptionBox()
+}
+
+/*
+ * 
+ * An OML SingletonInstanceStructuredDataPropertyValue is an SingletonInstanceStructuredDataPropertyContext
+ * for an OML ConceptualEntitySingletonInstance.
+ */
+@Glossary
+@DerivedUUID
+class SingletonInstanceStructuredDataPropertyValue extends SingletonInstanceStructuredDataPropertyContext, ModuleElement {
+	
+	@CopyConstructor
+	container DescriptionBox[1] descriptionBox opposite singletonStructuredDataPropertyValues
+	
+	refers ConceptualEntitySingletonInstance[1] singletonInstance
+	
+	@NotFunctionalAPI
+	@NotSchema
+	op UUID[1] uuid() {
+		OMLExtensions.derivedUUID(
+		"StructuredDataPropertyValue", 
+		"descriptionBox" -> getDescriptionBox?.uuid()?.toString(),
+		"singletonInstance" -> getSingletonInstance?.uuid()?.toString(),
+		"structuredDataProperty" -> getStructuredDataProperty?.uuid()?.toString()
+		)?.toString
+	}
+	
+	@Scala(code="extent.descriptionBoxOfSingletonInstanceStructuredDataPropertyValue.get(this)")
+	@ImplicitExtent
+	@NotSchema
+	op DescriptionBox[?] descriptionBox() { getDescriptionBox }
+}
+
+/*
+ * An OML StructuredDataPropertyTuple is an SingletonInstanceStructuredDataPropertyContext
+ * nested in a container OML SingletonInstanceStructuredDataPropertyContext.
+ */
+@Glossary
+@DerivedUUID
+class StructuredDataPropertyTuple extends SingletonInstanceStructuredDataPropertyContext {
+	
+	@CopyConstructor
+	container SingletonInstanceStructuredDataPropertyContext[1] structuredDataPropertyContext opposite structuredPropertyTuples
+	
+	@Scala(code="extent.singletonInstanceStructuredDataPropertyContextOfStructuredDataPropertyTuple.get(this).flatMap(_.descriptionBox())")
+	@ImplicitExtent
+	@NotSchema
+	@Override
+	op DescriptionBox[?] descriptionBox() { structuredDataPropertyContext?.descriptionBox }
+	
+	@NotFunctionalAPI
+	@NotSchema
+	op UUID[1] uuid() {
+		OMLExtensions.derivedUUID(
+		"DataStructureTuple", 
+		"structuredDataPropertyContext" -> structuredDataPropertyContext?.uuid()?.toString(),
+		"structuredDataProperty" -> structuredDataProperty?.uuid()?.toString()
+		)?.toString
+	}
+}
+
+/*
+ * An OML ScalarDataPropertyValue specifies a literal string as the value of 
+ * an OML DataRelationshipToScalar in the scope of an OML SingletonInstanceStructuredDataPropertyContext.
+ */
+@Glossary
+@DerivedUUID
+class ScalarDataPropertyValue extends Element {
+	
+	@CopyConstructor
+	container SingletonInstanceStructuredDataPropertyContext[1] structuredDataPropertyContext opposite scalarDataPropertyValues
+	
+	refers DataRelationshipToScalar[1] scalarDataProperty
+	String[1] scalarPropertyValue
+	
+	@Scala(code="extent.singletonInstanceStructuredDataPropertyContextOfScalarDataPropertyValue.get(this).flatMap(_.descriptionBox())")
+	@ImplicitExtent
+	@NotSchema
+	op DescriptionBox[?] descriptionBox() { structuredDataPropertyContext?.descriptionBox }
+	
+	@NotFunctionalAPI
+	@NotSchema
+	op UUID[1] uuid() {
+		OMLExtensions.derivedUUID(
+		"ScalarDataPropertyValue", 
+		"structuredDataPropertyContext" -> structuredDataPropertyContext?.uuid()?.toString(),
+		"scalarDataProperty" -> scalarDataProperty?.uuid()?.toString()
+		)?.toString
+	}
+}
+
+/*
+ * An OML ConceptualEntitySingletonInstance defines an instance of an OML ConceptualEntity.
+ * An OML ConceptualEntitySingletonInstance maps to an [OWL2 NamedIndividual].
+ * The semantics depends on the kind of OML ConceptualEntity classifier:
+ * - If the OML ConceptualEntity is the domain for at least at least 
+ *   one OML DataRelationshipFromEntity with `isIdentityCriteria=true`,
+ *   then the [OWL2-DL] mapping includes an [OWL2 Key Axiom]
+ *   forcing that all distinctly named OML ConceptualEntitySingletonInstance 
+ *   must have different values for each OML DataRelationshipFromEntity with `isIdentityCriteria=true`.
+ * - otherwise, distinctly named OML ConceptualEntitySingletonInstance 
+ *   represent semantically different instances.
+ */
+@Glossary
+@NamespaceUUID(namespace="descriptionBox", factors="name")
+abstract class ConceptualEntitySingletonInstance extends TerminologyInstanceAssertion, Resource {
+	
+	@ImplicitExtent
+	@NotSchema
+	op DescriptionBox[?] descriptionBox()
+	
+	@Scala(code="descriptionBox().flatMap(_.iri())")
+	@ImplicitExtent
+	@NotSchema
+	@Override
+	op IRI[?] iri() { descriptionBox?.iri()+'#'+name() }
+	
+	@Scala(code="descriptionBox().map(dbox => dbox.nsPrefix+\":\"+name)")
+	@ImplicitExtent
+	@NotSchema
+	@Override
+	op String[?] abbrevIRI() { (descriptionBox?.nsPrefix()?:"")+':'+name() }
+	
+	@Override
+	LocalName[1] name
+	
+	@NotFunctionalAPI
+	@NotSchema
+	op LocalName[1] name() { getName() }
+	
+	@NotSchema
+	op ConceptualEntity[1] conceptualEntitySingletonClassifier()
+	
+	@NotFunctionalAPI
+	@NotSchema
+	op UUID[1] uuid() {
+		OMLExtensions.namespaceUUID(descriptionBox?.uuid()?.toString, "name" -> name()?.toString)?.toString
+	}
+}
+
+/*
+ * An OML ConceptInstance is an OML ConceptualEntitySingletonInstance classified by an OML Concept.
+ */
+@Glossary
+class ConceptInstance extends ConceptualEntitySingletonInstance {
+	
+	@CopyConstructor
+	container DescriptionBox[1] descriptionBox opposite conceptInstances
+	
+	refers Concept[1] singletonConceptClassifier
+	
+	@NotSchema
+	@Override
+	op ConceptualEntity[1] conceptualEntitySingletonClassifier() { singletonConceptClassifier }
+	
+	@Scala(code="extent.descriptionBoxOfConceptInstance.get(this)")
+	@ImplicitExtent
+	@NotSchema
+	op DescriptionBox[?] descriptionBox() { getDescriptionBox }
+}
+
+/*
+ * An OML ReifiedRelationshipInstance is an OML ConceptualEntitySingletonInstance  classified by an OML ReifiedRelationship.
+ */
+@Glossary
+class ReifiedRelationshipInstance extends ConceptualEntitySingletonInstance {
+	
+	@CopyConstructor
+	container DescriptionBox[1] descriptionBox opposite reifiedRelationshipInstances
+	
+	refers ReifiedRelationship[1] singletonReifiedRelationshipClassifier
+	
+	@NotSchema
+	@Override
+	op ConceptualEntity[1] conceptualEntitySingletonClassifier() { singletonReifiedRelationshipClassifier }
+	
+	@Scala(code="extent.descriptionBoxOfReifiedRelationshipInstance.get(this)")
+	@ImplicitExtent
+	@NotSchema
+	op DescriptionBox[?] descriptionBox() { getDescriptionBox }
+}
+
+/*
+ * An OML ReifiedRelationshipInstanceDomain specifies which OML ConceptualEntitySingletonInstance
+ * plays the role of the domain for an OML ReifiedRelationshipInstance.
+ * An OML ReifiedRelationshipInstanceDomain has no intrinsic identity; instead,
+ * an OML ReifiedRelationshipInstanceDomain is semantically equivalent 
+ * to another OML ReifiedRelationshipInstanceDomain referencing the same property and domain.
+ */
+@Glossary
+@DerivedUUID
+class ReifiedRelationshipInstanceDomain extends TerminologyInstanceAssertion {
+	
+	@CopyConstructor
+	container DescriptionBox[1] descriptionBox opposite reifiedRelationshipInstanceDomains
+	
+	refers ReifiedRelationshipInstance[1] reifiedRelationshipInstance
+	
+	refers ConceptualEntitySingletonInstance[1] domain
+	
+	@Scala(code="extent.descriptionBoxOfReifiedRelationshipInstanceDomain.get(this)")
+	@ImplicitExtent
+	@NotSchema
+	op DescriptionBox[?] descriptionBox() { getDescriptionBox }
+	
+	@NotFunctionalAPI
+	@NotSchema
+	op UUID[1] uuid() {
+		OMLExtensions.derivedUUID(
+		"ReifiedRelationshipInstanceDomain", 
+		"descriptionBox" -> descriptionBox()?.uuid()?.toString(),
+		"reifiedRelationshipInstance" -> reifiedRelationshipInstance?.uuid()?.toString(),
+		"domain" -> domain?.uuid()?.toString()
+		)?.toString
+	}
+}
+
+/*
+ * An OML ReifiedRelationshipInstanceRange specifies which OML ConceptualEntitySingletonInstance
+ * plays the role of the range for an OML ReifiedRelationshipInstance.
+ * An OML ReifiedRelationshipInstanceRange has no intrinsic identity; instead,
+ * an OML ReifiedRelationshipInstanceRange is semantically equivalent 
+ * to another OML ReifiedRelationshipInstanceRange referencing the same property and range.
+ */
+@Glossary
+@DerivedUUID
+class ReifiedRelationshipInstanceRange extends TerminologyInstanceAssertion {
+	
+	@CopyConstructor
+	container DescriptionBox[1] descriptionBox opposite reifiedRelationshipInstanceRanges
+	
+	refers ReifiedRelationshipInstance[1] reifiedRelationshipInstance
+	
+	refers ConceptualEntitySingletonInstance[1] range
+	
+	@Scala(code="extent.descriptionBoxOfReifiedRelationshipInstanceRange.get(this)")
+	@ImplicitExtent
+	@NotSchema
+	op DescriptionBox[?] descriptionBox() { getDescriptionBox }
+	
+	@NotFunctionalAPI
+	@NotSchema
+	op UUID[1] uuid() {
+		OMLExtensions.derivedUUID(
+		"ReifiedRelationshipInstanceRange", 
+		"descriptionBox" -> descriptionBox()?.uuid()?.toString(),
+		"reifiedRelationshipInstance" -> reifiedRelationshipInstance?.uuid()?.toString(),
+		"range" -> range?.uuid()?.toString()
+		)?.toString
+	}
+}
+
+/*
+ * An OML UnreifiedRelationshipInstanceTuple specifies a triple involving
+ * a reference to an OML ConceptualEntitySingletonInstance playing the role of the domain
+ * of an OML UnreifiedRelationship whose range is played by a reference to an OML ConceptualEntitySingletonInstance.
+ * An OML UnreifiedRelationshipInstanceTuple has no intrinsic identity; instead,
+ * an OML UnreifiedRelationshipInstanceTuple is semantically equivalent 
+ * to another OML UnreifiedRelationshipInstanceTuple referencing the same domain, property and range.
+ */
+@Glossary
+@DerivedUUID
+class UnreifiedRelationshipInstanceTuple extends TerminologyInstanceAssertion {
+	
+	@CopyConstructor
+	container DescriptionBox[1] descriptionBox opposite unreifiedRelationshipInstanceTuples
+	
+	refers UnreifiedRelationship[1] unreifiedRelationship
+	
+	refers ConceptualEntitySingletonInstance[1] domain
+	
+	refers ConceptualEntitySingletonInstance[1] range
+	
+	@Scala(code="extent.descriptionBoxOfUnreifiedRelationshipInstanceTuple.get(this)")
+	@ImplicitExtent
+	@NotSchema
+	op DescriptionBox[?] descriptionBox() { getDescriptionBox }
+	
+	@NotFunctionalAPI
+	@NotSchema
+	op UUID[1] uuid() {
+		OMLExtensions.derivedUUID(
+		"UnreifiedRelationshipInstanceTuple", 
+		"descriptionBox" -> descriptionBox()?.uuid()?.toString(),
+		"unreifiedRelationship" -> unreifiedRelationship?.uuid()?.toString(),
+		"domain" -> domain?.uuid()?.toString(),
+		"range" -> range?.uuid()?.toString()
+		)?.toString
+	}
+}

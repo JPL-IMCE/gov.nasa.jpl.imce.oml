@@ -1,0 +1,183 @@
+/**
+ * Copyright 2017 California Institute of Technology (\"Caltech\").
+ * U.S. Government sponsorship acknowledged.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the \"License\")
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * 		http://www.apache.org/licenses/LICENSE-2.0
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an \"AS IS\" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ */
+@Ecore(
+	nsPrefix="omlg", 
+	nsURI="http://imce.jpl.nasa.gov/oml/graphs"
+)
+@GenModel(
+	copyrightText="\nCopyright 2017 California Institute of Technology (\"Caltech\").\nU.S. Government sponsorship acknowledged.\n\nLicensed under the Apache License, Version 2.0 (the \"License\");\nyou may not use this file except in compliance with the License.\nYou may obtain a copy of the License at\n\n     http://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software\ndistributed under the License is distributed on an \"AS IS\" BASIS,\nWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and\nlimitations under the License.\n",
+	modelPluginVariables="org.eclipse.xtext.xbase.lib org.eclipse.emf.ecore.xcore.lib org.eclipse.emf.cdo",
+	rootExtendsClass="org.eclipse.emf.internal.cdo.CDOObjectImpl",
+	rootExtendsInterface="org.eclipse.emf.cdo.CDOObject",
+	childCreationExtenders="true",
+	complianceLevel="8.0",
+	featureDelegation="None",
+	modelDirectory="/gov.nasa.jpl.imce.oml.model/src-gen/",
+	editDirectory="/gov.nasa.jpl.imce.oml.model.edit/src-gen/"
+)  
+package gov.nasa.jpl.imce.oml.model.graphs
+
+import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions
+
+import gov.nasa.jpl.imce.oml.model.common.CopyConstructor
+import gov.nasa.jpl.imce.oml.model.common.DerivedUUID
+import gov.nasa.jpl.imce.oml.model.common.Glossary
+import gov.nasa.jpl.imce.oml.model.common.ImplicitExtent
+import gov.nasa.jpl.imce.oml.model.common.ModuleEdge
+import gov.nasa.jpl.imce.oml.model.common.NotFunctionalAPI
+import gov.nasa.jpl.imce.oml.model.common.NotSchema
+import gov.nasa.jpl.imce.oml.model.common.Override
+import gov.nasa.jpl.imce.oml.model.common.Scala
+import gov.nasa.jpl.imce.oml.model.common.UUID
+import gov.nasa.jpl.imce.oml.model.terminologies.Concept
+import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox
+import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBoxAxiom
+
+/*
+ * An OML TerminologyGraph is an OML TerminologyBox with no statements our axioms involving OML Bundle(s).
+ */
+@Glossary
+class TerminologyGraph extends TerminologyBox {
+	
+	@Scala(code="boxAxioms")
+	@ImplicitExtent
+	@NotSchema
+	@Override
+	op ModuleEdge[] moduleEdges() {
+		boxAxioms.filter(ModuleEdge).asEList
+	}
+	
+}
+
+/*
+ * An OML ConceptDesignationTerminologyAxiom establishes
+ * a relationship from a source OML TerminologyBox
+ * where a designated OML Concept is defined to
+ * a target OML TerminologyGraph in which the internal
+ * structure of the designated OML Concept can be defined. 
+ */
+@Glossary
+@DerivedUUID
+class ConceptDesignationTerminologyAxiom extends TerminologyBoxAxiom {
+	
+	@ImplicitExtent
+	@NotSchema
+	@Scala(code="extent.terminologyBoxOfTerminologyBoxAxiom.get(this) match {
+      case scala.Some(g: resolver.api.TerminologyGraph) => scala.Some(g)
+      case _ => scala.None
+    }")
+	op TerminologyGraph[?] designationTerminologyGraph() { 
+		switch tbox {
+			TerminologyGraph:
+				TerminologyGraph.cast(tbox)
+			default:
+				null
+		}
+	}
+	 
+	refers TerminologyBox[1] designatedTerminology
+	
+	refers Concept[1] designatedConcept
+	 
+	/*
+	 * The designationTerminologyGraph is the source
+	 */
+	@Scala(code="designationTerminologyGraph()")
+	@ImplicitExtent
+	@NotSchema
+	@Override
+	op TerminologyBox[?] source() { designationTerminologyGraph }
+	
+	/*
+	 * The TerminologyBox that asserts the designatedConcept is the target
+	 */
+	@ImplicitExtent
+	@NotSchema
+	@Override
+	op TerminologyBox[1] target() { designatedTerminology }
+	
+	@NotFunctionalAPI
+	@NotSchema
+	op UUID[1] uuid() {
+		OMLExtensions.derivedUUID(
+		"ConceptDesignationTerminologyAxiom",
+		"tbox" -> tbox.uuid().toString,
+		"designatedConcept" -> designatedConcept?.uuid()?.toString,
+		"designatedTerminology" -> designatedTerminology?.uuid()?.toString
+		)?.toString
+	}
+}
+
+/*
+ * An OML TerminologyNestingAxiom provides support for relating
+ * a white-box nested OML TerminologyGraph used for describing internal
+ * details about a nesting OML Concept defined in a nesting OML TerminologyBox. 
+ * This nesting OML Concept specifies the context for the internal details
+ * defined in the nested OML TerminologyGraph.
+ */
+@Glossary
+@DerivedUUID
+class TerminologyNestingAxiom extends TerminologyBoxAxiom {
+
+  	@CopyConstructor
+	refers TerminologyBox[1] nestingTerminology
+
+	@Scala(code="extent.terminologyBoxOfTerminologyBoxAxiom.get(this) match {
+      case scala.Some(g: resolver.api.TerminologyGraph) => scala.Some(g)
+      case _ => scala.None
+    }")
+	@NotSchema
+	@ImplicitExtent
+	op TerminologyGraph[?] nestedTerminology() { 
+		switch tbox {
+			TerminologyGraph:
+				TerminologyGraph.cast(tbox)
+			default:
+				null
+		}
+	 }
+
+  	refers Concept[1] nestingContext
+  	
+	/*
+	 * The nestedTerminology is the source
+	 */
+	@Scala(code="nestedTerminology()")
+	@ImplicitExtent
+	@NotSchema
+	@Override
+	op TerminologyBox[?] source() { nestedTerminology }
+	
+	/*
+	 * The nestingTerminology is the target
+	 */
+	@ImplicitExtent
+	@NotSchema
+	@Override
+	op TerminologyBox[1] target() { nestingTerminology }
+  	
+	@NotFunctionalAPI
+	@NotSchema
+	op UUID[1] uuid() {
+		OMLExtensions.derivedUUID(
+		"TerminologyNestingAxiom",
+		"tbox" -> tbox.uuid().toString,
+		"nestingTerminology" -> nestingTerminology?.uuid()?.toString,
+		"nestingContext" -> nestingContext?.uuid()?.toString
+		)?.toString
+	}
+}

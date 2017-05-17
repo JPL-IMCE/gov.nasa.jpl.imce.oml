@@ -1,19 +1,16 @@
 Manifest-Version: 1.0
-Bundle-SymbolicName: gov.nasa.jpl.imce.oml.dsl.ide;singleton:=true
-Export-Package: gov.nasa.jpl.imce.oml.dsl.ide,
- gov.nasa.jpl.imce.oml.dsl.ide.contentassist.antlr,
- gov.nasa.jpl.imce.oml.dsl.ide.contentassist.antlr.internal
-Bundle-Name: %pluginName
-Bundle-Version: 0.7.0
-Bundle-ClassPath: .
-Bundle-Localization: plugin
-Require-Bundle: org.eclipse.xtext.xbase.lib;visibility:=reexport,
- org.eclipse.xtext.ide;visibility:=reexport,
- org.eclipse.xtext.xbase.ide;visibility:=reexport,
- gov.nasa.jpl.imce.oml.dsl;visibility:=reexport,
- org.antlr.runtime;visibility:=reexport
 Bundle-ManifestVersion: 2
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Bundle-ActivationPolicy: lazy
+Bundle-Name: %pluginName
 Bundle-Vendor: %providerName
+Bundle-Version: 0.7.0.qualifier
+Bundle-SymbolicName: gov.nasa.jpl.imce.oml.dsl.ide; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: gov.nasa.jpl.imce.oml.dsl,
+ org.eclipse.xtext.ide,
+ org.eclipse.xtext.xbase.ide,
+ org.antlr.runtime
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: gov.nasa.jpl.imce.oml.dsl.ide.contentassist.antlr.internal,
+ gov.nasa.jpl.imce.oml.dsl.ide.contentassist.antlr
+Bundle-Localization: plugin
 

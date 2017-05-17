@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
-Bundle-SymbolicName: gov.nasa.jpl.imce.oml.dsl.ui;singleton:=true
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-Vendor: %providerName
+Bundle-Version: 0.7.0.qualifier
+Bundle-SymbolicName: gov.nasa.jpl.imce.oml.dsl.ui; singleton:=true
+Bundle-ActivationPolicy: lazy
 Require-Bundle: org.apache.log4j;visibility:=reexport,
  org.eclipse.xtext.ui;visibility:=reexport,
  org.eclipse.xtext.ui.codetemplates.ui;visibility:=reexport,
@@ -17,20 +22,13 @@ Require-Bundle: org.apache.log4j;visibility:=reexport,
  org.eclipse.emf.ecore.xcore.ui;bundle-version="1.4.0";visibility:=reexport,
  gov.nasa.jpl.imce.oml.model;visibility:=reexport,
  gov.nasa.jpl.imce.oml.dsl;visibility:=reexport,
- gov.nasa.jpl.imce.oml.dsl.ide;visibility:=reexport
-Bundle-ManifestVersion: 2
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Bundle-ActivationPolicy: lazy
-Bundle-Vendor: %providerName
-Export-Package: gov.nasa.jpl.imce.oml.dsl.ui,
- gov.nasa.jpl.imce.oml.dsl.ui.contentassist,
- gov.nasa.jpl.imce.oml.dsl.ui.internal,
- gov.nasa.jpl.imce.oml.dsl.ui.labeling,
- gov.nasa.jpl.imce.oml.dsl.ui.outline,
- gov.nasa.jpl.imce.oml.dsl.ui.quickfix
-Bundle-Name: %pluginName
-Bundle-Version: 0.7.0
-Bundle-ClassPath: .
-Bundle-Localization: plugin
-Bundle-Activator: gov.nasa.jpl.imce.oml.dsl.ui.internal.DslActivator
+ gov.nasa.jpl.imce.oml.dsl.ide;visibility:=reexport,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources
 Import-Package: org.apache.log4j
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: gov.nasa.jpl.imce.oml.dsl.ui.internal,
+ gov.nasa.jpl.imce.oml.dsl.ui.quickfix,
+ gov.nasa.jpl.imce.oml.dsl.ui.contentassist
+Bundle-Activator: gov.nasa.jpl.imce.oml.dsl.ui.internal.DslActivator
+Bundle-Localization: plugin

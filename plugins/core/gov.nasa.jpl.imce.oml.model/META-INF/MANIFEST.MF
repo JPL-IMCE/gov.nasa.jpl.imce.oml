@@ -1,9 +1,14 @@
 Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-ActivationPolicy: lazy
+Bundle-Localization: plugin
+Bundle-Vendor: %providerName
+Bundle-Name: %pluginName
 Bundle-SymbolicName: gov.nasa.jpl.imce.oml.model;singleton:=true
-Export-Package: gov.nasa.jpl.imce.fm,
- gov.nasa.jpl.imce.fm.impl,
- gov.nasa.jpl.imce.fm.util,
- gov.nasa.jpl.imce.oml.model.bundles,
+Bundle-Version: 0.7.0.qualifier
+Bundle-ClassPath: .
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: gov.nasa.jpl.imce.oml.model.bundles,
  gov.nasa.jpl.imce.oml.model.bundles.impl,
  gov.nasa.jpl.imce.oml.model.bundles.util,
  gov.nasa.jpl.imce.oml.model.common,
@@ -18,14 +23,7 @@ Export-Package: gov.nasa.jpl.imce.fm,
  gov.nasa.jpl.imce.oml.model.graphs.util,
  gov.nasa.jpl.imce.oml.model.terminologies,
  gov.nasa.jpl.imce.oml.model.terminologies.impl,
- gov.nasa.jpl.imce.oml.model.terminologies.util,
- gov.nasa.jpl.imce.oml.provenance.oti,
- gov.nasa.jpl.imce.oml.provenance.oti.impl,
- gov.nasa.jpl.imce.oml.provenance.oti.util
-Bundle-Name: %pluginName
-Bundle-Version: 0.7.0
-Bundle-ClassPath: .
-Bundle-Localization: plugin
+ gov.nasa.jpl.imce.oml.model.terminologies.util
 Require-Bundle: gov.nasa.jpl.imce.oml.uuid;visibility:=reexport,
  org.eclipse.core.runtime;visibility:=reexport,
  org.eclipse.core.resources;visibility:=reexport,
@@ -34,11 +32,7 @@ Require-Bundle: gov.nasa.jpl.imce.oml.uuid;visibility:=reexport,
  org.eclipse.emf.ecore.xcore.lib;visibility:=reexport,
  org.eclipse.emf.ecore.xcore;visibility:=reexport,
  org.eclipse.emf.cdo;visibility:=reexport,
+ gov.nasa.jpl.imce.oml.model;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
  org.apache.log4j;visibility:=reexport,
- org.eclipse.emf.codegen.ecore;bundle-version="2.12.0";visibility:=reexport
-Bundle-ManifestVersion: 2
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Bundle-ActivationPolicy: lazy
-Bundle-Vendor: %providerName
-
+ org.eclipse.emf.codegen.ecore;visibility:=reexport

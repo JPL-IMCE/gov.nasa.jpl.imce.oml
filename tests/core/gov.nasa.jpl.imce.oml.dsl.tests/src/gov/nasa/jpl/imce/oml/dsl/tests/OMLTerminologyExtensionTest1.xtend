@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 California Institute of Technology (\"Caltech\").
+ * Copyright 2017 California Institute of Technology (\"Caltech\").
  * U.S. Government sponsorship acknowledged.
  *
  * Licensed under the Apache License, Version 2.0 (the \"License\");
@@ -24,10 +24,10 @@ import org.eclipse.xtext.testing.util.ParseHelper
 import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.eclipse.xtext.junit4.validation.ValidationTestHelper
+import org.eclipse.xtext.testing.validation.ValidationTestHelper
 
 @RunWith(XtextRunner)
-@InjectWith(OntologicalModelingLanguageInjectorProvider)
+@InjectWith(OMLInjectorProvider)
 class OMLTerminologyExtensionTest1 {
 
 	@Inject
