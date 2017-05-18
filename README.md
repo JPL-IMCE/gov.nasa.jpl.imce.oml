@@ -1,10 +1,16 @@
 # Tycho organization for OML
 
-## Updating version numbers:
+# Process notes
+
+## To set versions everywhere
+
+Execute from the `gov.nasa.jpl.imce.oml.tycho` folder:
 
 ```shell
- mvn org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=0.7.0 -Dtycho.mode=maven
+ mvn org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion={VERSION} -Dtycho.mode=maven
 ```
+
+where `{VERSION}` follows [semantic versioning](http://semver.org) (e.g., `Major.Minor.Patch` or `Major.Minor.Patch-SNAPSHOT`).
 
 Note that this *should* update all versions in the following locations:
 
@@ -17,13 +23,14 @@ Note that this *should* update all versions in the following locations:
 - `category.xml//site/feature[@id=...]/@url`
 - `category.xml//site/feature[@id=...]/@version`
 
-Beware of exceptions!
+Check carefully the log to make sure all versions have been properly updated.
+Check with `git status` and/or `git diff` to confirm the changes.
 
-- [releng/gov.nasa.jpl.imce.oml.configuration/pom.xml](releng/gov.nasa.jpl.imce.oml.configuration/pom.xml)
-- Some `META-INF/MANIFEST.MF//Bundle-Version` may not be updated.
-- Some `feature.xml//feature/@version` may not be updated.
+## Deployment
 
-## Artifactory publishing
+TODO: Explore using maven profiles to decouple deployment info.
+
+### Artifactory publishing
 
 In `~/.m2/settings.xml` include, replacing `{ARTIFACTORY USERNAME}` and `{ARTIFACTORY APIKEY}` with appropriate credentials.
 

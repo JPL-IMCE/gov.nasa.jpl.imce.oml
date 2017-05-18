@@ -6,17 +6,129 @@
 	<version>0.7.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	
-	<parent>
-		<groupId>gov.nasa.jpl.imce.oml</groupId>
-		<artifactId>gov.nasa.jpl.imce.oml.configuration</artifactId>
-		<version>0.7.0-SNAPSHOT</version>
-		<relativePath>./releng/gov.nasa.jpl.imce.oml.configuration</relativePath>
-	</parent>
-
+	<properties>
+		<tycho.version>0.26.0</tycho.version>
+		<oml.version>0.7.0-SNAPSHOT</oml.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<neon-repo.url>http://download.eclipse.org/releases/neon</neon-repo.url>
+	</properties>
+	
 	<modules>
 		<module>plugins</module>
 		<module>features</module>
 		<module>tests</module>
 		<module>releng</module>
 	</modules>
+		
+	<distributionManagement>
+		<!-- 
+		Don't publish snapshot builds to bintray
+		
+		<repository>
+			<id>bintray</id>
+			<url>https://api.bintray.com/content/jpl-imce/gov.nasa.jpl.imce/${project.name}/${project.version};publish=1</url>
+		</repository>
+		-->
+		
+		<repository>
+			<id>artifactory</id>
+			<url>https://cae-artifactory.jpl.nasa.gov/artifactory/maven-libs-release-local</url>
+		</repository>
+		<snapshotRepository>
+			<id>artifactory</id>
+			<url>https://cae-artifactory.jpl.nasa.gov/artifactory/maven-libs-snapshot-local</url>
+		</snapshotRepository>
+	</distributionManagement>
+	
+	<build>
+		<plugins>
+			<plugin>
+	    		<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho.version}</version>
+				<extensions>true</extensions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<version>${tycho.version}</version>
+				<configuration>
+					<target> 
+						<artifact>
+							<groupId>gov.nasa.jpl.imce.oml</groupId>
+							<artifactId>gov.nasa.jpl.imce.oml.target</artifactId>
+							<version>0.7.0-SNAPSHOT</version>
+						</artifact>
+					</target>					
+					<environments>
+						<environment>
+							<os>linux</os>
+							<ws>gtk</ws>
+							<arch>x86</arch>
+						</environment>
+						<environment>
+							<os>linux</os>
+							<ws>gtk</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86</arch>
+						</environment>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>macosx</os>
+							<ws>cocoa</ws>
+							<arch>x86_64</arch>
+						</environment>
+					</environments>
+				</configuration>
+			</plugin>
+			
+			<!-- enable source feature generation -->
+			<!--  
+			
+			TODO: enabling this requires some additional files:
+				 [ERROR] Failed to execute goal org.eclipse.tycho.extras:tycho-source-feature-plugin:0.26.0:source-feature 
+				 (source-feature) on project gov.nasa.jpl.imce.oml.runtime.platform.feature: 
+				 Source feature depends on 'sourceTemplateFeature/feature.properties', entry 'featureName'. However, this key could not be found -> [Help 1]
+				 
+			<plugin>
+				<groupId>org.eclipse.tycho.extras</groupId>
+				<artifactId>tycho-source-feature-plugin</artifactId>
+				<version>${tycho.version}</version>
+				<executions>
+					<execution>
+						<id>source-feature</id>
+						<phase>package</phase>
+						<goals>
+							<goal>source-feature</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-source-plugin</artifactId>
+				<version>${tycho.version}</version>
+				<executions>
+					<execution>
+						<id>plugin-source</id>
+						<goals>
+							<goal>plugin-source</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			
+			-->
+		</plugins>
+	</build>
+	
 </project>
