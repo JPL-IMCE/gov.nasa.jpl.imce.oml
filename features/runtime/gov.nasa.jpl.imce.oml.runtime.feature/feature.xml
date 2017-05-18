@@ -45,10 +45,6 @@ limitations under the License.
 License Terms
    </license>
 
-   <requires>
-      <import feature="gov.nasa.jpl.imce.oml.runtime.platform.feature" version="0.7.0.qualifier"/>
-   </requires>
-
    <plugin
          id="gov.nasa.jpl.imce.oml.runtime"
          download-size="0"
