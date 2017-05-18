@@ -14,5 +14,6 @@
 
 	<modules>
 		<module>gov.nasa.jpl.imce.oml.core.feature</module>
+		<module>gov.nasa.jpl.imce.oml.platform.feature</module>
 	</modules>
 </project>

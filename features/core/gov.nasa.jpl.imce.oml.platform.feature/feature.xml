@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="gov.nasa.jpl.imce.oml.runtime.platform.feature"
+      id="gov.nasa.jpl.imce.oml.platform.feature"
       label="%featureName"
       version="0.7.0.qualifier"
       provider-name="%providerName">
