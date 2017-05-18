@@ -20,6 +20,7 @@ package gov.nasa.jpl.imce.oml.runtime.impl;
 
 import gov.nasa.jpl.imce.oml.runtime.OMLAspect;
 import gov.nasa.jpl.imce.oml.runtime.OMLRuntimePackage;
+
 import org.eclipse.emf.ecore.EClass;
 
 /**

@@ -20,7 +20,9 @@ package gov.nasa.jpl.imce.oml.runtime.impl;
 
 import gov.nasa.jpl.imce.oml.runtime.OMLRuntimePackage;
 import gov.nasa.jpl.imce.oml.runtime.OMLStructure;
+
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.emf.internal.cdo.CDOObjectImpl;
 
 /**

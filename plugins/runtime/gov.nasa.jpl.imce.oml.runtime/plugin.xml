@@ -27,7 +27,7 @@
       <package
             uri="http://imce.jpl.nasa.gov/oml/runtime"
             class="gov.nasa.jpl.imce.oml.runtime.OMLRuntimePackage"
-            genModel="resources/OMLRuntime.xcore"/>
+            genModel="model/OMLRuntime.xcore"/>
    </extension>
 
 </plugin>

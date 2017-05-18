@@ -37,9 +37,25 @@ import org.eclipse.emf.ecore.EReference;
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
+ * <!-- begin-model-doc -->
+ * *
+ * Copyright 2017 California Institute of Technology (\"Caltech\").
+ * U.S. Government sponsorship acknowledged.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the \"License\")
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * 		http://www.apache.org/licenses/LICENSE-2.0
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an \"AS IS\" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * <!-- end-model-doc -->
  * @see gov.nasa.jpl.imce.oml.runtime.OMLRuntimeFactory
  * @model kind="package"
- *        annotation="http://www.eclipse.org/emf/2002/GenModel copyrightText='\nCopyright 2017 California Institute of Technology (\"Caltech\").\nU.S. Government sponsorship acknowledged.\n\nLicensed under the Apache License, Version 2.0 (the \"License\");\nyou may not use this file except in compliance with the License.\nYou may obtain a copy of the License at\n\n     http://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software\ndistributed under the License is distributed on an \"AS IS\" BASIS,\nWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and\nlimitations under the License.\n' bundleManifest='false' childCreationExtenders='true' complianceLevel='8.0' featureDelegation='None' modelPluginVariables='org.eclipse.xtext.xbase.lib org.eclipse.emf.ecore.xcore.lib org.eclipse.emf.cdo' rootExtendsClass='org.eclipse.emf.internal.cdo.CDOObjectImpl' rootExtendsInterface='org.eclipse.emf.cdo.CDOObject' modelDirectory='gov.nasa.jpl.imce.oml.runtime/src-gen/' editDirectory='gov.nasa.jpl.imce.oml.runtime.edit/src-gen' editorDirectory='gov.nasa.jpl.imce.oml.runtime.ui/src-gen' modelName='OMLR' prefix='OMLRuntime' basePackage='gov.nasa.jpl.imce.oml'"
+ *        annotation="http://www.eclipse.org/emf/2002/GenModel copyrightText='\nCopyright 2017 California Institute of Technology (\"Caltech\").\nU.S. Government sponsorship acknowledged.\n\nLicensed under the Apache License, Version 2.0 (the \"License\");\nyou may not use this file except in compliance with the License.\nYou may obtain a copy of the License at\n\n     http://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software\ndistributed under the License is distributed on an \"AS IS\" BASIS,\nWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and\nlimitations under the License.\n' modelPluginVariables='org.eclipse.xtext.xbase.lib org.eclipse.emf.ecore.xcore.lib org.eclipse.emf.cdo' rootExtendsClass='org.eclipse.emf.internal.cdo.CDOObjectImpl' rootExtendsInterface='org.eclipse.emf.cdo.CDOObject' childCreationExtenders='true' extensibleProviderFactory='true' complianceLevel='8.0' featureDelegation='None' modelName='OMLRuntime' prefix='OMLRuntime' modelDirectory='/gov.nasa.jpl.imce.oml.runtime/src-gen/' editDirectory='/gov.nasa.jpl.imce.oml.runtime.edit/src-gen/' basePackage='gov.nasa.jpl.imce.oml'"
  *        annotation="http://www.eclipse.org/emf/2011/Xcore OMLProvenance='http://imce.jpl.nasa.gov/oml/runtime/OMLProvenance'"
  * @generated
  */

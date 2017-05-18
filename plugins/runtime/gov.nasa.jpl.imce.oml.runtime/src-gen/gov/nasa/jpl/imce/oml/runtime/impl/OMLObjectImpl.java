@@ -23,6 +23,7 @@ import com.google.common.collect.Iterables;
 import gov.nasa.jpl.imce.oml.runtime.OMLDescription;
 import gov.nasa.jpl.imce.oml.runtime.OMLObject;
 import gov.nasa.jpl.imce.oml.runtime.OMLRuntimePackage;
+
 import java.lang.Iterable;
 
 import java.lang.reflect.InvocationTargetException;
@@ -145,7 +146,8 @@ public abstract class OMLObjectImpl extends CDOObjectImpl implements OMLObject {
 	 * @generated
 	 */
 	public <T extends OMLObject> EList<T> omlInverseReferencers(final Class<T> aType) {
-		EList<T> _xblockexpression = null; {
+		EList<T> _xblockexpression = null;
+		{
 			final ResourceSet resourceSet = this.eResource().getResourceSet();
 			final Iterable<ECrossReferenceAdapter> adapters = Iterables.<ECrossReferenceAdapter>filter(resourceSet.eAdapters(), ECrossReferenceAdapter.class);
 			EList<T> _xifexpression = null;
