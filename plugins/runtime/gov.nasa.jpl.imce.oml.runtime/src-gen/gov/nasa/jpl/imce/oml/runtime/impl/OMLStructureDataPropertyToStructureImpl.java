@@ -22,6 +22,7 @@ import gov.nasa.jpl.imce.oml.runtime.OMLRelationshipToStructure;
 import gov.nasa.jpl.imce.oml.runtime.OMLRuntimePackage;
 import gov.nasa.jpl.imce.oml.runtime.OMLStructure;
 import gov.nasa.jpl.imce.oml.runtime.OMLStructureDataPropertyToStructure;
+
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;

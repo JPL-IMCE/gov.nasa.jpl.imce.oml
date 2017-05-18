@@ -20,7 +20,6 @@ package gov.nasa.jpl.imce.oml.runtime;
 
 import org.eclipse.emf.cdo.CDOObject;
 
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>OML Structure</b></em>'.

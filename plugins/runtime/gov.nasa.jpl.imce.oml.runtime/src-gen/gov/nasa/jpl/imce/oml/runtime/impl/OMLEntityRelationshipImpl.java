@@ -22,6 +22,7 @@ import gov.nasa.jpl.imce.oml.runtime.OMLEntity;
 import gov.nasa.jpl.imce.oml.runtime.OMLEntityRelationship;
 import gov.nasa.jpl.imce.oml.runtime.OMLRelationshipToEntity;
 import gov.nasa.jpl.imce.oml.runtime.OMLRuntimePackage;
+
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;

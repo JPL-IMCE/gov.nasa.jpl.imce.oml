@@ -23,19 +23,19 @@ import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 /**
- * This is the central singleton for the OMLR edit plugin.
+ * This is the central singleton for the OMLRuntime edit plugin.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public final class OMLREditPlugin extends EMFPlugin {
+public final class OMLRuntimeEditPlugin extends EMFPlugin {
 	/**
 	 * Keep track of the singleton.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final OMLREditPlugin INSTANCE = new OMLREditPlugin();
+	public static final OMLRuntimeEditPlugin INSTANCE = new OMLRuntimeEditPlugin();
 
 	/**
 	 * Keep track of the singleton.
@@ -51,7 +51,7 @@ public final class OMLREditPlugin extends EMFPlugin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OMLREditPlugin() {
+	public OMLRuntimeEditPlugin() {
 		super
 		  (new ResourceLocator [] {
 		   });

@@ -87,7 +87,7 @@ import org.eclipse.ui.part.ISetSelectionTarget;
 
 import gov.nasa.jpl.imce.oml.runtime.OMLRuntimeFactory;
 import gov.nasa.jpl.imce.oml.runtime.OMLRuntimePackage;
-import gov.nasa.jpl.imce.oml.runtime.provider.OMLREditPlugin;
+import gov.nasa.jpl.imce.oml.runtime.provider.OMLRuntimeEditPlugin;
 
 
 import org.eclipse.core.runtime.Path;
@@ -551,7 +551,7 @@ public class OMLRuntimeModelWizard extends Wizard implements INewWizard {
 		 */
 		protected String getLabel(String typeName) {
 			try {
-				return OMLREditPlugin.INSTANCE.getString("_UI_" + typeName + "_type");
+				return OMLRuntimeEditPlugin.INSTANCE.getString("_UI_" + typeName + "_type");
 			}
 			catch(MissingResourceException mre) {
 				OMLREditorPlugin.INSTANCE.log(mre);
