@@ -1,0 +1,19 @@
+gov.nasa.jpl.imce.oml.tycho 0.7.0.1 is a release deployed internally at JPL
+
+### Release process
+
+```shell
+git branch 0.7.0.1
+git checkout 0.7.0.1
+mvn org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=0.7.0.1 -Dtycho.mode=maven -Dproperties=oml.version 
+git add -A
+git commit -S -m"Release 0.7.0.1"
+git push -u origin 0.7.0.1
+```
+
+Verify the build on https://travis-ci.org/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho
+
+```shell
+mvn clean verify
+mvn deploy
+```
