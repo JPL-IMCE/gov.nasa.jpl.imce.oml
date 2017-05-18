@@ -5,9 +5,9 @@ Bundle-SymbolicName: gov.nasa.jpl.imce.oml.runtime.edit;singleton:=true
 Bundle-Version: 0.7.0.qualifier
 Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Require-Bundle: gov.nasa.jpl.imce.oml.runtime;bundle-version="0.1.0";visibility:=reexport,
- org.eclipse.emf.ecore.edit;bundle-version="2.9.0";visibility:=reexport,
- org.eclipse.core.runtime;bundle-version="3.12.0";visibility:=reexport
+Require-Bundle: gov.nasa.jpl.imce.oml.runtime;bundle-version="[0.1.0,1.0.0)";visibility:=reexport,
+ org.eclipse.emf.ecore.edit;bundle-version="[2.9.0,3.0.0)";visibility:=reexport,
+ org.eclipse.core.runtime;bundle-version="[3.12.0,4.0.0)";visibility:=reexport
 Export-Package: gov.nasa.jpl.imce.oml.runtime.provider
 Bundle-Activator: gov.nasa.jpl.imce.oml.runtime.provider.OMLREditPlugin$Implementation
 Bundle-Localization: plugin

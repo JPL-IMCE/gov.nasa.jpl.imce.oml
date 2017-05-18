@@ -10,5 +10,5 @@ Export-Package: com.fasterxml.uuid,
  com.fasterxml.uuid.ext,
  com.fasterxml.uuid.impl
 Bundle-Vendor: %providerName
-Require-Bundle: org.apache.xml.resolver;bundle-version="1.2.0";visibility:=reexport
+Require-Bundle: org.apache.xml.resolver;bundle-version="[1.2.0,2.0.0)";visibility:=reexport
 Bundle-ActivationPolicy: lazy
