@@ -19,3 +19,4 @@ gov.nasa.jpl.imce.oml.tycho 0.7.0.2 is a minor bug fix release
 
   Copied the instructions provided in the issue comment to the [OML WB/README.md](../releng/gov.nasa.jpl.oml.product/README.md).
   
+### [Release process](releaseProcess.markdown)
