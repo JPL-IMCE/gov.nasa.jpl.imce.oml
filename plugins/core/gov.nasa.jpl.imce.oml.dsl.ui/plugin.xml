@@ -240,11 +240,19 @@
 		<super type="org.eclipse.xtext.ui.check.expensive"/>
 		<persistent value="true"/>
 	</extension>
+	<!--
+	  @generated NOT
+	  
+	  Do not enable this!
+	  
+	  @see https://christiandietrich.wordpress.com/2011/10/15/xtext-calling-the-generator-from-a-context-menu/
+	  
 	<extension point="org.eclipse.xtext.builder.participant">
 		<participant
 			class="gov.nasa.jpl.imce.oml.dsl.ui.OMLExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant"
 			fileExtensions="oml"/>
 	</extension>
+	-->
 	<extension point="org.eclipse.ui.preferencePages">
 		<page
 			category="gov.nasa.jpl.imce.oml.dsl.OML"
