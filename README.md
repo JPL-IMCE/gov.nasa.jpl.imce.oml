@@ -1,4 +1,4 @@
-# Tycho organization for OML
+# Tycho organization for OML [![Build Status](https://travis-ci.org/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho.svg?branch=master)](https://travis-ci.org/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho)
 
 # Process notes
 
