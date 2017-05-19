@@ -1,6 +1,13 @@
-# Tycho organization for OML [![Build Status](https://travis-ci.org/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho.svg?branch=master)](https://travis-ci.org/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho)
+# Ontological Modeling Language (OML) Platform & Core Features [![Build Status](https://travis-ci.org/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho.svg?branch=master)](https://travis-ci.org/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho)
 
-# Process notes
+OML is a specification language designed to support rigorous ontological modeling in the context of model-based systems engineering.
+This multi-project is organized according to Eclipse Tycho guidelines.
+
+## OML Workbench
+
+The [OML Workbench](releng/gov.nasa.jpl.imce.oml.product/README.md) is an Eclipse-based RCP application.
+
+## OML Development Process notes
 
 ## To set versions everywhere
 
