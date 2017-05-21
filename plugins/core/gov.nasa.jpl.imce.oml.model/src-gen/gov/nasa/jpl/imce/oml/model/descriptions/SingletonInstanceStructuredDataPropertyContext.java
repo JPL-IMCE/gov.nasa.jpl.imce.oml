@@ -90,6 +90,7 @@ public interface SingletonInstanceStructuredDataPropertyContext extends Element 
 	 * @see gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsPackage#getSingletonInstanceStructuredDataPropertyContext_StructuredPropertyTuples()
 	 * @see gov.nasa.jpl.imce.oml.model.descriptions.StructuredDataPropertyTuple#getStructuredDataPropertyContext
 	 * @model opposite="structuredDataPropertyContext" containment="true"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
 	 * @generated
 	 */
 	EList<StructuredDataPropertyTuple> getStructuredPropertyTuples();
@@ -108,6 +109,7 @@ public interface SingletonInstanceStructuredDataPropertyContext extends Element 
 	 * @see gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsPackage#getSingletonInstanceStructuredDataPropertyContext_ScalarDataPropertyValues()
 	 * @see gov.nasa.jpl.imce.oml.model.descriptions.ScalarDataPropertyValue#getStructuredDataPropertyContext
 	 * @model opposite="structuredDataPropertyContext" containment="true"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
 	 * @generated
 	 */
 	EList<ScalarDataPropertyValue> getScalarDataPropertyValues();

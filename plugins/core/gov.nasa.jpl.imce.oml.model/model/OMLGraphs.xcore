@@ -32,9 +32,7 @@
 )  
 package gov.nasa.jpl.imce.oml.model.graphs
 
-import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions
-
-import gov.nasa.jpl.imce.oml.model.common.CopyConstructor
+import gov.nasa.jpl.imce.oml.model.common.Collection
 import gov.nasa.jpl.imce.oml.model.common.DerivedUUID
 import gov.nasa.jpl.imce.oml.model.common.Glossary
 import gov.nasa.jpl.imce.oml.model.common.ImplicitExtent
@@ -44,6 +42,7 @@ import gov.nasa.jpl.imce.oml.model.common.NotSchema
 import gov.nasa.jpl.imce.oml.model.common.Override
 import gov.nasa.jpl.imce.oml.model.common.Scala
 import gov.nasa.jpl.imce.oml.model.common.UUID
+import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBoxAxiom
@@ -54,7 +53,8 @@ import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBoxAxiom
 @Glossary
 class TerminologyGraph extends TerminologyBox {
 	
-	@Scala(code="boxAxioms")
+	@Scala(code="extent.boxAxioms.getOrElse(this, scala.collection.immutable.Set.empty[resolver.api.ModuleEdge])")
+	@Collection(kind="Set")
 	@ImplicitExtent
 	@NotSchema
 	@Override
@@ -134,7 +134,6 @@ class ConceptDesignationTerminologyAxiom extends TerminologyBoxAxiom {
 @DerivedUUID
 class TerminologyNestingAxiom extends TerminologyBoxAxiom {
 
-  	@CopyConstructor
 	refers TerminologyBox[1] nestingTerminology
 
 	@Scala(code="extent.terminologyBoxOfTerminologyBoxAxiom.get(this) match {

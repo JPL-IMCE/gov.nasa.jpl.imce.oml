@@ -392,6 +392,8 @@ public class GraphsPackageImpl extends EPackageImpl implements GraphsPackage {
 		createGlossaryAnnotations();
 		// http://imce.jpl.nasa.gov/oml/Scala
 		createScalaAnnotations();
+		// http://imce.jpl.nasa.gov/oml/Collection
+		createCollectionAnnotations();
 		// http://imce.jpl.nasa.gov/oml/ImplicitExtent
 		createImplicitExtentAnnotations();
 		// http://imce.jpl.nasa.gov/oml/NotSchema
@@ -402,8 +404,6 @@ public class GraphsPackageImpl extends EPackageImpl implements GraphsPackage {
 		createDerivedUUIDAnnotations();
 		// http://imce.jpl.nasa.gov/oml/NotFunctionalAPI
 		createNotFunctionalAPIAnnotations();
-		// http://imce.jpl.nasa.gov/oml/CopyConstructor
-		createCopyConstructorAnnotations();
 	}
 
 	/**
@@ -443,7 +443,7 @@ public class GraphsPackageImpl extends EPackageImpl implements GraphsPackage {
 		  (getTerminologyGraph__ModuleEdges(), 
 		   source, 
 		   new String[] {
-			 "code", "boxAxioms"
+			 "code", "extent.boxAxioms.getOrElse(this, scala.collection.immutable.Set.empty[resolver.api.ModuleEdge])"
 		   });	
 		addAnnotation
 		  (getConceptDesignationTerminologyAxiom__DesignationTerminologyGraph(), 
@@ -468,6 +468,22 @@ public class GraphsPackageImpl extends EPackageImpl implements GraphsPackage {
 		   source, 
 		   new String[] {
 			 "code", "nestedTerminology()"
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://imce.jpl.nasa.gov/oml/Collection</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createCollectionAnnotations() {
+		String source = "http://imce.jpl.nasa.gov/oml/Collection";	
+		addAnnotation
+		  (getTerminologyGraph__ModuleEdges(), 
+		   source, 
+		   new String[] {
+			 "kind", "Set"
 		   });
 	}
 
@@ -641,21 +657,6 @@ public class GraphsPackageImpl extends EPackageImpl implements GraphsPackage {
 		   });	
 		addAnnotation
 		  (getTerminologyNestingAxiom__Uuid(), 
-		   source, 
-		   new String[] {
-		   });
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://imce.jpl.nasa.gov/oml/CopyConstructor</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createCopyConstructorAnnotations() {
-		String source = "http://imce.jpl.nasa.gov/oml/CopyConstructor";	
-		addAnnotation
-		  (getTerminologyNestingAxiom_NestingTerminology(), 
 		   source, 
 		   new String[] {
 		   });

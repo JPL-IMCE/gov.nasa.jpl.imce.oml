@@ -1427,6 +1427,8 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 		createGlossaryAnnotations();
 		// http://imce.jpl.nasa.gov/oml/Scala
 		createScalaAnnotations();
+		// http://imce.jpl.nasa.gov/oml/Collection
+		createCollectionAnnotations();
 		// http://imce.jpl.nasa.gov/oml/ImplicitExtent
 		createImplicitExtentAnnotations();
 		// http://imce.jpl.nasa.gov/oml/NotSchema
@@ -1435,12 +1437,12 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 		createOverrideAnnotations();
 		// http://imce.jpl.nasa.gov/oml/CopyConstructor
 		createCopyConstructorAnnotations();
-		// http://imce.jpl.nasa.gov/oml/Collection
-		createCollectionAnnotations();
 		// http://imce.jpl.nasa.gov/oml/DerivedUUID
 		createDerivedUUIDAnnotations();
 		// http://imce.jpl.nasa.gov/oml/NotFunctionalAPI
 		createNotFunctionalAPIAnnotations();
+		// http://imce.jpl.nasa.gov/oml/Factory
+		createFactoryAnnotations();
 		// http://imce.jpl.nasa.gov/oml/NamespaceUUID
 		createNamespaceUUIDAnnotations();
 	}
@@ -1552,7 +1554,7 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 		  (getDescriptionBox__ModuleEdges(), 
 		   source, 
 		   new String[] {
-			 "code", "descriptionBoxRefinements ++ closedWorldDefinitions"
+			 "code", "extent.descriptionBoxRefinements.getOrElse(this, scala.collection.immutable.Set.empty[resolver.api.ModuleEdge]) ++ extent.closedWorldDefinitions.getOrElse(this, scala.collection.immutable.Set.empty[resolver.api.ModuleEdge])"
 		   });	
 		addAnnotation
 		  (getDescriptionBoxExtendsClosedWorldDefinitions__DescriptionDomain(), 
@@ -1631,6 +1633,88 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 		   source, 
 		   new String[] {
 			 "code", "extent.descriptionBoxOfUnreifiedRelationshipInstanceTuple.get(this)"
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://imce.jpl.nasa.gov/oml/Collection</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createCollectionAnnotations() {
+		String source = "http://imce.jpl.nasa.gov/oml/Collection";	
+		addAnnotation
+		  (getDescriptionBox__ModuleEdges(), 
+		   source, 
+		   new String[] {
+			 "kind", "Set"
+		   });	
+		addAnnotation
+		  (getDescriptionBox_DescriptionBoxRefinements(), 
+		   source, 
+		   new String[] {
+			 "kind", "Set"
+		   });	
+		addAnnotation
+		  (getDescriptionBox_ClosedWorldDefinitions(), 
+		   source, 
+		   new String[] {
+			 "kind", "Set"
+		   });	
+		addAnnotation
+		  (getDescriptionBox_ConceptInstances(), 
+		   source, 
+		   new String[] {
+			 "kind", "Set"
+		   });	
+		addAnnotation
+		  (getDescriptionBox_ReifiedRelationshipInstances(), 
+		   source, 
+		   new String[] {
+			 "kind", "Set"
+		   });	
+		addAnnotation
+		  (getDescriptionBox_ReifiedRelationshipInstanceDomains(), 
+		   source, 
+		   new String[] {
+			 "kind", "Set"
+		   });	
+		addAnnotation
+		  (getDescriptionBox_ReifiedRelationshipInstanceRanges(), 
+		   source, 
+		   new String[] {
+			 "kind", "Set"
+		   });	
+		addAnnotation
+		  (getDescriptionBox_UnreifiedRelationshipInstanceTuples(), 
+		   source, 
+		   new String[] {
+			 "kind", "Set"
+		   });	
+		addAnnotation
+		  (getDescriptionBox_SingletonScalarDataPropertyValues(), 
+		   source, 
+		   new String[] {
+			 "kind", "Set"
+		   });	
+		addAnnotation
+		  (getDescriptionBox_SingletonStructuredDataPropertyValues(), 
+		   source, 
+		   new String[] {
+			 "kind", "Set"
+		   });	
+		addAnnotation
+		  (getSingletonInstanceStructuredDataPropertyContext_StructuredPropertyTuples(), 
+		   source, 
+		   new String[] {
+			 "kind", "Set"
+		   });	
+		addAnnotation
+		  (getSingletonInstanceStructuredDataPropertyContext_ScalarDataPropertyValues(), 
+		   source, 
+		   new String[] {
+			 "kind", "Set"
 		   });
 	}
 
@@ -2021,125 +2105,6 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 		  (getDescriptionBox_SingletonStructuredDataPropertyValues(), 
 		   source, 
 		   new String[] {
-		   });	
-		addAnnotation
-		  (getDescriptionBoxExtendsClosedWorldDefinitions_DescriptionBox(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getDescriptionBoxRefinement_RefiningDescriptionBox(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getSingletonInstanceScalarDataPropertyValue_DescriptionBox(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getSingletonInstanceStructuredDataPropertyValue_DescriptionBox(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getStructuredDataPropertyTuple_StructuredDataPropertyContext(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getScalarDataPropertyValue_StructuredDataPropertyContext(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getConceptInstance_DescriptionBox(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getReifiedRelationshipInstance_DescriptionBox(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getReifiedRelationshipInstanceDomain_DescriptionBox(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getReifiedRelationshipInstanceRange_DescriptionBox(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getUnreifiedRelationshipInstanceTuple_DescriptionBox(), 
-		   source, 
-		   new String[] {
-		   });
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://imce.jpl.nasa.gov/oml/Collection</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createCollectionAnnotations() {
-		String source = "http://imce.jpl.nasa.gov/oml/Collection";	
-		addAnnotation
-		  (getDescriptionBox_DescriptionBoxRefinements(), 
-		   source, 
-		   new String[] {
-			 "kind", "Set"
-		   });	
-		addAnnotation
-		  (getDescriptionBox_ClosedWorldDefinitions(), 
-		   source, 
-		   new String[] {
-			 "kind", "Set"
-		   });	
-		addAnnotation
-		  (getDescriptionBox_ConceptInstances(), 
-		   source, 
-		   new String[] {
-			 "kind", "Set"
-		   });	
-		addAnnotation
-		  (getDescriptionBox_ReifiedRelationshipInstances(), 
-		   source, 
-		   new String[] {
-			 "kind", "Set"
-		   });	
-		addAnnotation
-		  (getDescriptionBox_ReifiedRelationshipInstanceDomains(), 
-		   source, 
-		   new String[] {
-			 "kind", "Set"
-		   });	
-		addAnnotation
-		  (getDescriptionBox_ReifiedRelationshipInstanceRanges(), 
-		   source, 
-		   new String[] {
-			 "kind", "Set"
-		   });	
-		addAnnotation
-		  (getDescriptionBox_UnreifiedRelationshipInstanceTuples(), 
-		   source, 
-		   new String[] {
-			 "kind", "Set"
-		   });	
-		addAnnotation
-		  (getDescriptionBox_SingletonScalarDataPropertyValues(), 
-		   source, 
-		   new String[] {
-			 "kind", "Set"
-		   });	
-		addAnnotation
-		  (getDescriptionBox_SingletonStructuredDataPropertyValues(), 
-		   source, 
-		   new String[] {
-			 "kind", "Set"
 		   });
 	}
 
@@ -2263,6 +2228,71 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 		   });	
 		addAnnotation
 		  (getUnreifiedRelationshipInstanceTuple__Uuid(), 
+		   source, 
+		   new String[] {
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://imce.jpl.nasa.gov/oml/Factory</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createFactoryAnnotations() {
+		String source = "http://imce.jpl.nasa.gov/oml/Factory";	
+		addAnnotation
+		  (getDescriptionBoxExtendsClosedWorldDefinitions_DescriptionBox(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getDescriptionBoxRefinement_RefiningDescriptionBox(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getSingletonInstanceScalarDataPropertyValue_DescriptionBox(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getSingletonInstanceStructuredDataPropertyValue_DescriptionBox(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getStructuredDataPropertyTuple_StructuredDataPropertyContext(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getScalarDataPropertyValue_StructuredDataPropertyContext(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getConceptInstance_DescriptionBox(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getReifiedRelationshipInstance_DescriptionBox(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getReifiedRelationshipInstanceDomain_DescriptionBox(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getReifiedRelationshipInstanceRange_DescriptionBox(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getUnreifiedRelationshipInstanceTuple_DescriptionBox(), 
 		   source, 
 		   new String[] {
 		   });

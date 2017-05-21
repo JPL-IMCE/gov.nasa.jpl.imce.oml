@@ -40,6 +40,7 @@ import gov.nasa.jpl.imce.oml.model.common.Collection
 import gov.nasa.jpl.imce.oml.model.common.CopyConstructor
 import gov.nasa.jpl.imce.oml.model.common.DerivedUUID
 import gov.nasa.jpl.imce.oml.model.common.Element
+import gov.nasa.jpl.imce.oml.model.common.Factory
 import gov.nasa.jpl.imce.oml.model.common.FunctionalInterface
 import gov.nasa.jpl.imce.oml.model.common.Glossary
 import gov.nasa.jpl.imce.oml.model.common.ImplicitExtent
@@ -79,7 +80,8 @@ class Bundle extends TerminologyBox {
 	contains TerminologyBundleStatement[] bundleStatements opposite bundle
 	
 	
-	@Scala(code="boxAxioms ++ bundleAxioms")
+	@Scala(code="extent.boxAxioms.getOrElse(this, scala.collection.immutable.Set.empty[resolver.api.ModuleEdge]) ++ extent.bundleAxioms.getOrElse(this, scala.collection.immutable.Set.empty[resolver.api.ModuleEdge])")
+	@Collection(kind="Set")
 	@ImplicitExtent
 	@NotSchema
 	@Override
@@ -141,7 +143,7 @@ abstract class DisjointUnionOfConceptsAxiom extends Element {
 	/*
 	 * The parent of this node in a disjoint concept taxonomy tree.
 	 */
-	@CopyConstructor
+	@Factory
 	container ConceptTreeDisjunction[1] disjointTaxonomyParent opposite disjunctions
 	
 	@Scala(code="extent.conceptTreeDisjunctionOfDisjointUnionOfConceptsAxiom.get(this)")
@@ -238,7 +240,6 @@ class RootConceptTaxonomyAxiom extends TerminologyBundleStatement, ConceptTreeDi
 @DerivedUUID
 class BundledTerminologyAxiom extends TerminologyBundleAxiom {
 
-	@CopyConstructor
 	refers TerminologyBox[1] bundledTerminology
 	
 	/*

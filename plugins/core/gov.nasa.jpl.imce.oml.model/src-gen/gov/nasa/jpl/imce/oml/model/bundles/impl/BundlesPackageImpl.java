@@ -619,16 +619,18 @@ public class BundlesPackageImpl extends EPackageImpl implements BundlesPackage {
 		createGlossaryAnnotations();
 		// http://imce.jpl.nasa.gov/oml/Scala
 		createScalaAnnotations();
+		// http://imce.jpl.nasa.gov/oml/Collection
+		createCollectionAnnotations();
 		// http://imce.jpl.nasa.gov/oml/ImplicitExtent
 		createImplicitExtentAnnotations();
 		// http://imce.jpl.nasa.gov/oml/NotSchema
 		createNotSchemaAnnotations();
 		// http://imce.jpl.nasa.gov/oml/Override
 		createOverrideAnnotations();
-		// http://imce.jpl.nasa.gov/oml/Collection
-		createCollectionAnnotations();
 		// http://imce.jpl.nasa.gov/oml/CopyConstructor
 		createCopyConstructorAnnotations();
+		// http://imce.jpl.nasa.gov/oml/Factory
+		createFactoryAnnotations();
 		// http://imce.jpl.nasa.gov/oml/DerivedUUID
 		createDerivedUUIDAnnotations();
 		// http://imce.jpl.nasa.gov/oml/FunctionalInterface
@@ -708,7 +710,7 @@ public class BundlesPackageImpl extends EPackageImpl implements BundlesPackage {
 		  (getBundle__ModuleEdges(), 
 		   source, 
 		   new String[] {
-			 "code", "boxAxioms ++ bundleAxioms"
+			 "code", "extent.boxAxioms.getOrElse(this, scala.collection.immutable.Set.empty[resolver.api.ModuleEdge]) ++ extent.bundleAxioms.getOrElse(this, scala.collection.immutable.Set.empty[resolver.api.ModuleEdge])"
 		   });	
 		addAnnotation
 		  (getDisjointUnionOfConceptsAxiom__ConceptTreeDisjunctionParent(), 
@@ -733,6 +735,40 @@ public class BundlesPackageImpl extends EPackageImpl implements BundlesPackage {
 		   source, 
 		   new String[] {
 			 "code", "extent.bundleOfTerminologyBundleAxiom.get(this)"
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://imce.jpl.nasa.gov/oml/Collection</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createCollectionAnnotations() {
+		String source = "http://imce.jpl.nasa.gov/oml/Collection";	
+		addAnnotation
+		  (getBundle__ModuleEdges(), 
+		   source, 
+		   new String[] {
+			 "kind", "Set"
+		   });	
+		addAnnotation
+		  (getBundle_BundleAxioms(), 
+		   source, 
+		   new String[] {
+			 "kind", "Set"
+		   });	
+		addAnnotation
+		  (getBundle_BundleStatements(), 
+		   source, 
+		   new String[] {
+			 "kind", "Set"
+		   });	
+		addAnnotation
+		  (getConceptTreeDisjunction_Disjunctions(), 
+		   source, 
+		   new String[] {
+			 "kind", "Set"
 		   });
 	}
 
@@ -877,34 +913,6 @@ public class BundlesPackageImpl extends EPackageImpl implements BundlesPackage {
 	}
 
 	/**
-	 * Initializes the annotations for <b>http://imce.jpl.nasa.gov/oml/Collection</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createCollectionAnnotations() {
-		String source = "http://imce.jpl.nasa.gov/oml/Collection";	
-		addAnnotation
-		  (getBundle_BundleAxioms(), 
-		   source, 
-		   new String[] {
-			 "kind", "Set"
-		   });	
-		addAnnotation
-		  (getBundle_BundleStatements(), 
-		   source, 
-		   new String[] {
-			 "kind", "Set"
-		   });	
-		addAnnotation
-		  (getConceptTreeDisjunction_Disjunctions(), 
-		   source, 
-		   new String[] {
-			 "kind", "Set"
-		   });
-	}
-
-	/**
 	 * Initializes the annotations for <b>http://imce.jpl.nasa.gov/oml/CopyConstructor</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -921,14 +929,19 @@ public class BundlesPackageImpl extends EPackageImpl implements BundlesPackage {
 		  (getTerminologyBundleAxiom_Bundle(), 
 		   source, 
 		   new String[] {
-		   });	
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://imce.jpl.nasa.gov/oml/Factory</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createFactoryAnnotations() {
+		String source = "http://imce.jpl.nasa.gov/oml/Factory";	
 		addAnnotation
 		  (getDisjointUnionOfConceptsAxiom_DisjointTaxonomyParent(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getBundledTerminologyAxiom_BundledTerminology(), 
 		   source, 
 		   new String[] {
 		   });

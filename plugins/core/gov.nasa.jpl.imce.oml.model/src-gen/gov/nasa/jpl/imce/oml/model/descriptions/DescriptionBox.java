@@ -259,7 +259,8 @@ public interface DescriptionBox extends Module {
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%org.eclipse.emf.common.util.BasicEList%><<%gov.nasa.jpl.imce.oml.model.common.ModuleEdge%>> _xblockexpression = null;\n{\n\tfinal <%org.eclipse.emf.common.util.BasicEList%><<%gov.nasa.jpl.imce.oml.model.common.ModuleEdge%>> me = new <%org.eclipse.emf.common.util.BasicEList%><<%gov.nasa.jpl.imce.oml.model.common.ModuleEdge%>>();\n\tme.addAll(this.getDescriptionBoxRefinements());\n\tme.addAll(this.getClosedWorldDefinitions());\n\t_xblockexpression = me;\n}\nreturn _xblockexpression;'"
-	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='descriptionBoxRefinements ++ closedWorldDefinitions'"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='extent.descriptionBoxRefinements.getOrElse(this, scala.collection.immutable.Set.empty[resolver.api.ModuleEdge]) ++ extent.closedWorldDefinitions.getOrElse(this, scala.collection.immutable.Set.empty[resolver.api.ModuleEdge])'"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
 	 * @generated
 	 */
 	EList<ModuleEdge> moduleEdges();

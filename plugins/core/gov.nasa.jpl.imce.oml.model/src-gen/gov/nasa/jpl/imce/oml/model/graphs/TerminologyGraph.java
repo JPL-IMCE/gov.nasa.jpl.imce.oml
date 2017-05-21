@@ -44,7 +44,8 @@ public interface TerminologyGraph extends TerminologyBox {
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return <%org.eclipse.emf.common.util.ECollections%>.<<%gov.nasa.jpl.imce.oml.model.common.ModuleEdge%>>asEList(((<%gov.nasa.jpl.imce.oml.model.common.ModuleEdge%>[])org.eclipse.xtext.xbase.lib.Conversions.unwrapArray(<%com.google.common.collect.Iterables%>.<<%gov.nasa.jpl.imce.oml.model.common.ModuleEdge%>>filter(this.getBoxAxioms(), <%gov.nasa.jpl.imce.oml.model.common.ModuleEdge%>.class), <%gov.nasa.jpl.imce.oml.model.common.ModuleEdge%>.class)));'"
-	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='boxAxioms'"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='extent.boxAxioms.getOrElse(this, scala.collection.immutable.Set.empty[resolver.api.ModuleEdge])'"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
 	 * @generated
 	 */
 	EList<ModuleEdge> moduleEdges();

@@ -1,0 +1,10 @@
+gov.nasa.jpl.imce.oml.tycho 0.7.0.4 is a minor bug fix release for OML development code generation
+
+### Bug fixes
+
+- [#18 Update the xcore metamodels to produce the Scala APIs with the oml.development.generators](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/18)
+
+	Updated annotations in *.xcore metamodels to address problems in the generated Scala code:
+	- [Generate the Module.moduleEdges Scala API & implementation](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.resolver/issues/4)
+	
+### [Release process](releaseProcess.markdown)

@@ -123,6 +123,7 @@ public interface Module extends Element, Resource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
 	 * @generated
 	 */
 	EList<ModuleEdge> moduleEdges();

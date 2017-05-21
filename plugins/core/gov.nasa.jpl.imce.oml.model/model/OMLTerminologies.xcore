@@ -38,6 +38,7 @@ import gov.nasa.jpl.imce.oml.model.common.Collection
 import gov.nasa.jpl.imce.oml.model.common.CopyConstructor
 import gov.nasa.jpl.imce.oml.model.common.DerivedUUID
 import gov.nasa.jpl.imce.oml.model.common.Element
+import gov.nasa.jpl.imce.oml.model.common.Factory
 import gov.nasa.jpl.imce.oml.model.common.FunctionalInterface
 import gov.nasa.jpl.imce.oml.model.common.Glossary
 import gov.nasa.jpl.imce.oml.model.common.ImplicitExtent
@@ -142,6 +143,7 @@ abstract class TerminologyBox extends Module {
 @Glossary
 abstract class TerminologyBoxStatement extends ModuleElement {
 	
+	@Factory
 	container TerminologyBox[1] tbox opposite boxStatements
 }
 
@@ -199,7 +201,6 @@ class TerminologyExtensionAxiom extends TerminologyBoxAxiom {
 	@NotSchema
 	op TerminologyBox[?] extendingTerminology() { tbox }
 	
-	@CopyConstructor
   	refers TerminologyBox[1] extendedTerminology
   	
 	/*

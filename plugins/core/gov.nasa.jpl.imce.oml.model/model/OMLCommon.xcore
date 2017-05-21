@@ -110,6 +110,8 @@ annotation "http://imce.jpl.nasa.gov/oml/ExtentContainer" as ExtentContainer
 
 annotation "http://imce.jpl.nasa.gov/oml/ExtentManaged" as ExtentManaged
 
+annotation "http://imce.jpl.nasa.gov/oml/Factory" as Factory
+
 annotation "http://imce.jpl.nasa.gov/oml/ImplicitExtent" as ImplicitExtent
 
 annotation "http://imce.jpl.nasa.gov/oml/NamespaceUUID" as NamespaceUUID
@@ -313,6 +315,7 @@ class AnnotationSubjectPropertyValue {
 @NotSchema
 class Annotation {
 	
+	@Factory
 	container Module[1] module opposite annotations
 	
 	@IsOrderingKey
@@ -358,6 +361,7 @@ abstract class Module extends Element, Resource {
 	@NotSchema
 	container Extent[1] extent opposite modules
 	
+	@Collection(kind="Set")
 	@ImplicitExtent
 	@NotSchema
 	op ModuleEdge[] moduleEdges()
@@ -382,6 +386,7 @@ abstract class Module extends Element, Resource {
 	@NotSchema
 	op String[?] abbrevIRI() { nsPrefix }
 	
+	@Factory
 	@NotSchema
 	@Collection(kind="Set")
 	contains Annotation[] annotations opposite module

@@ -1,4 +1,4 @@
-gov.nasa.jpl.imce.oml.tycho 0.7.0.2 is a minor bug fix release
+gov.nasa.jpl.imce.oml.tycho 0.7.0.3 is a minor bug fix release
 
 ### Bug fixes
 

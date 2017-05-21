@@ -40,6 +40,7 @@ import gov.nasa.jpl.imce.oml.model.common.Collection
 import gov.nasa.jpl.imce.oml.model.common.CopyConstructor
 import gov.nasa.jpl.imce.oml.model.common.DerivedUUID
 import gov.nasa.jpl.imce.oml.model.common.Element
+import gov.nasa.jpl.imce.oml.model.common.Factory
 import gov.nasa.jpl.imce.oml.model.common.Glossary
 import gov.nasa.jpl.imce.oml.model.common.ImplicitExtent
 import gov.nasa.jpl.imce.oml.model.common.IRI
@@ -120,7 +121,8 @@ class DescriptionBox extends Module {
 	@Collection(kind="Set")
 	contains SingletonInstanceStructuredDataPropertyValue[] singletonStructuredDataPropertyValues opposite descriptionBox
 	
-	@Scala(code="descriptionBoxRefinements ++ closedWorldDefinitions")
+	@Scala(code="extent.descriptionBoxRefinements.getOrElse(this, scala.collection.immutable.Set.empty[resolver.api.ModuleEdge]) ++ extent.closedWorldDefinitions.getOrElse(this, scala.collection.immutable.Set.empty[resolver.api.ModuleEdge])")
+	@Collection(kind="Set")
 	@ImplicitExtent
 	@NotSchema
 	@Override
@@ -158,7 +160,7 @@ abstract class DescriptionBoxRelationship extends ModuleEdge {
 @DerivedUUID
 class DescriptionBoxExtendsClosedWorldDefinitions extends DescriptionBoxRelationship {
 	
-	@CopyConstructor
+	@Factory
 	container DescriptionBox[1] descriptionBox opposite closedWorldDefinitions
 	
 	@Scala(code="extent.descriptionBoxOfDescriptionBoxExtendsClosedWorldDefinitions.get(this)")
@@ -192,7 +194,7 @@ class DescriptionBoxExtendsClosedWorldDefinitions extends DescriptionBoxRelation
 @DerivedUUID
 class DescriptionBoxRefinement extends DescriptionBoxRelationship {
 	
-	@CopyConstructor
+	@Factory
 	container DescriptionBox[1] refiningDescriptionBox opposite descriptionBoxRefinements
 	
 	@Scala(code="extent.descriptionBoxOfDescriptionBoxRefinement.get(this)")
@@ -231,7 +233,7 @@ abstract class TerminologyInstanceAssertion extends ModuleElement {}
 @DerivedUUID
 class SingletonInstanceScalarDataPropertyValue extends ModuleElement {
 	
-	@CopyConstructor
+	@Factory
 	container DescriptionBox[1] descriptionBox opposite singletonScalarDataPropertyValues 
 	
 	refers ConceptualEntitySingletonInstance[1] singletonInstance
@@ -268,8 +270,10 @@ abstract class SingletonInstanceStructuredDataPropertyContext extends Element {
 	
 	refers DataRelationshipToStructure[1] structuredDataProperty
 	
+	@Collection(kind="Set")
 	contains StructuredDataPropertyTuple[] structuredPropertyTuples opposite structuredDataPropertyContext
 	
+	@Collection(kind="Set")
 	contains ScalarDataPropertyValue[] scalarDataPropertyValues opposite structuredDataPropertyContext
 	
 	@ImplicitExtent
@@ -286,7 +290,7 @@ abstract class SingletonInstanceStructuredDataPropertyContext extends Element {
 @DerivedUUID
 class SingletonInstanceStructuredDataPropertyValue extends SingletonInstanceStructuredDataPropertyContext, ModuleElement {
 	
-	@CopyConstructor
+	@Factory
 	container DescriptionBox[1] descriptionBox opposite singletonStructuredDataPropertyValues
 	
 	refers ConceptualEntitySingletonInstance[1] singletonInstance
@@ -316,7 +320,7 @@ class SingletonInstanceStructuredDataPropertyValue extends SingletonInstanceStru
 @DerivedUUID
 class StructuredDataPropertyTuple extends SingletonInstanceStructuredDataPropertyContext {
 	
-	@CopyConstructor
+	@Factory
 	container SingletonInstanceStructuredDataPropertyContext[1] structuredDataPropertyContext opposite structuredPropertyTuples
 	
 	@Scala(code="extent.singletonInstanceStructuredDataPropertyContextOfStructuredDataPropertyTuple.get(this).flatMap(_.descriptionBox())")
@@ -344,7 +348,7 @@ class StructuredDataPropertyTuple extends SingletonInstanceStructuredDataPropert
 @DerivedUUID
 class ScalarDataPropertyValue extends Element {
 	
-	@CopyConstructor
+	@Factory
 	container SingletonInstanceStructuredDataPropertyContext[1] structuredDataPropertyContext opposite scalarDataPropertyValues
 	
 	refers DataRelationshipToScalar[1] scalarDataProperty
@@ -421,7 +425,7 @@ abstract class ConceptualEntitySingletonInstance extends TerminologyInstanceAsse
 @Glossary
 class ConceptInstance extends ConceptualEntitySingletonInstance {
 	
-	@CopyConstructor
+	@Factory
 	container DescriptionBox[1] descriptionBox opposite conceptInstances
 	
 	refers Concept[1] singletonConceptClassifier
@@ -442,7 +446,7 @@ class ConceptInstance extends ConceptualEntitySingletonInstance {
 @Glossary
 class ReifiedRelationshipInstance extends ConceptualEntitySingletonInstance {
 	
-	@CopyConstructor
+	@Factory
 	container DescriptionBox[1] descriptionBox opposite reifiedRelationshipInstances
 	
 	refers ReifiedRelationship[1] singletonReifiedRelationshipClassifier
@@ -468,7 +472,7 @@ class ReifiedRelationshipInstance extends ConceptualEntitySingletonInstance {
 @DerivedUUID
 class ReifiedRelationshipInstanceDomain extends TerminologyInstanceAssertion {
 	
-	@CopyConstructor
+	@Factory
 	container DescriptionBox[1] descriptionBox opposite reifiedRelationshipInstanceDomains
 	
 	refers ReifiedRelationshipInstance[1] reifiedRelationshipInstance
@@ -503,7 +507,7 @@ class ReifiedRelationshipInstanceDomain extends TerminologyInstanceAssertion {
 @DerivedUUID
 class ReifiedRelationshipInstanceRange extends TerminologyInstanceAssertion {
 	
-	@CopyConstructor
+	@Factory
 	container DescriptionBox[1] descriptionBox opposite reifiedRelationshipInstanceRanges
 	
 	refers ReifiedRelationshipInstance[1] reifiedRelationshipInstance
@@ -539,7 +543,7 @@ class ReifiedRelationshipInstanceRange extends TerminologyInstanceAssertion {
 @DerivedUUID
 class UnreifiedRelationshipInstanceTuple extends TerminologyInstanceAssertion {
 	
-	@CopyConstructor
+	@Factory
 	container DescriptionBox[1] descriptionBox opposite unreifiedRelationshipInstanceTuples
 	
 	refers UnreifiedRelationship[1] unreifiedRelationship

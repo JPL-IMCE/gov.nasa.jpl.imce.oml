@@ -2677,6 +2677,8 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		createNotSchemaAnnotations();
 		// http://imce.jpl.nasa.gov/oml/Collection
 		createCollectionAnnotations();
+		// http://imce.jpl.nasa.gov/oml/Factory
+		createFactoryAnnotations();
 		// http://imce.jpl.nasa.gov/oml/ImplicitExtent
 		createImplicitExtentAnnotations();
 		// http://imce.jpl.nasa.gov/oml/CopyConstructor
@@ -3245,6 +3247,21 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	}
 
 	/**
+	 * Initializes the annotations for <b>http://imce.jpl.nasa.gov/oml/Factory</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createFactoryAnnotations() {
+		String source = "http://imce.jpl.nasa.gov/oml/Factory";	
+		addAnnotation
+		  (getTerminologyBoxStatement_Tbox(), 
+		   source, 
+		   new String[] {
+		   });
+	}
+
+	/**
 	 * Initializes the annotations for <b>http://imce.jpl.nasa.gov/oml/ImplicitExtent</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3309,11 +3326,6 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		String source = "http://imce.jpl.nasa.gov/oml/CopyConstructor";	
 		addAnnotation
 		  (getTerminologyBoxAxiom_Tbox(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getTerminologyExtensionAxiom_ExtendedTerminology(), 
 		   source, 
 		   new String[] {
 		   });

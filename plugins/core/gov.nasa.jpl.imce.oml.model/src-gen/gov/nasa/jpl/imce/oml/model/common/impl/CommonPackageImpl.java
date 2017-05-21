@@ -1027,6 +1027,8 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		createCollectionAnnotations();
 		// http://imce.jpl.nasa.gov/oml/ValueTable
 		createValueTableAnnotations();
+		// http://imce.jpl.nasa.gov/oml/Factory
+		createFactoryAnnotations();
 		// http://imce.jpl.nasa.gov/oml/ExtentContainer
 		createExtentContainerAnnotations();
 		// http://imce.jpl.nasa.gov/oml/ResolverAPI
@@ -1061,6 +1063,7 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 			 "Glossary", "http://imce.jpl.nasa.gov/oml/Glossary",
 			 "ExtentContainer", "http://imce.jpl.nasa.gov/oml/ExtentContainer",
 			 "ExtentManaged", "http://imce.jpl.nasa.gov/oml/ExtentManaged",
+			 "Factory", "http://imce.jpl.nasa.gov/oml/Factory",
 			 "ImplicitExtent", "http://imce.jpl.nasa.gov/oml/ImplicitExtent",
 			 "NamespaceUUID", "http://imce.jpl.nasa.gov/oml/NamespaceUUID",
 			 "DerivedUUID", "http://imce.jpl.nasa.gov/oml/DerivedUUID"
@@ -1500,6 +1503,12 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 			 "kind", "Set"
 		   });	
 		addAnnotation
+		  (getModule__ModuleEdges(), 
+		   source, 
+		   new String[] {
+			 "kind", "Set"
+		   });	
+		addAnnotation
 		  (getModule_Annotations(), 
 		   source, 
 		   new String[] {
@@ -1517,6 +1526,26 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		String source = "http://imce.jpl.nasa.gov/oml/ValueTable";	
 		addAnnotation
 		  (annotationEntryEClass, 
+		   source, 
+		   new String[] {
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://imce.jpl.nasa.gov/oml/Factory</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createFactoryAnnotations() {
+		String source = "http://imce.jpl.nasa.gov/oml/Factory";	
+		addAnnotation
+		  (getAnnotation_Module(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getModule_Annotations(), 
 		   source, 
 		   new String[] {
 		   });
