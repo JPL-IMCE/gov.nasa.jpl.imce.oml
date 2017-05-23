@@ -43,6 +43,11 @@ type IRI wraps String
 
 type LexicalValue wraps String
 
+/**
+* TODO: Improve performance, usage of EcoreUtil.UsageCrossReferencer may not be as efficient as 
+*       another implementation utilizing code that is used by "aql:self.eInverse(base::Contains)"
+* 		according to Maged
+*/		
 abstract class OMLObject {
 	
 	container OMLDescription[1] omlRoot opposite omlDescriptionContents
@@ -52,9 +57,9 @@ abstract class OMLObject {
 		val adapters = resourceSet.eAdapters.filter(ECrossReferenceAdapter)
 		if (adapters.empty) {
 			val references = EcoreUtil.UsageCrossReferencer.find(this, resourceSet)
-			references.filter(OMLObject).filter(aType).asEList
+			references.map[EObject].filter(aType).asEList
 		} else {
-			adapters.get(0).getInverseReferences(this).filter(OMLObject).filter(aType).asEList
+			adapters.get(0).getInverseReferences(this).filter(aType).asEList
 		}
 	}
 }
