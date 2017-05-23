@@ -44,7 +44,7 @@ type IRI wraps String
 type LexicalValue wraps String
 
 abstract class OMLObject {
-	
+	//TODO: Improve performance, this may have some performance issues
 	container OMLDescription[1] omlRoot opposite omlDescriptionContents
 	
 	op <T extends OMLObject> T[] omlInverseReferencers(Class<T> aType) {
@@ -52,9 +52,9 @@ abstract class OMLObject {
 		val adapters = resourceSet.eAdapters.filter(ECrossReferenceAdapter)
 		if (adapters.empty) {
 			val references = EcoreUtil.UsageCrossReferencer.find(this, resourceSet)
-			references.filter(OMLObject).filter(aType).asEList
+			references.map[EObject].filter(aType).asEList
 		} else {
-			adapters.get(0).getInverseReferences(this).filter(OMLObject).filter(aType).asEList
+			adapters.get(0).getInverseReferences(this).filter(aType).asEList
 		}
 	}
 }
