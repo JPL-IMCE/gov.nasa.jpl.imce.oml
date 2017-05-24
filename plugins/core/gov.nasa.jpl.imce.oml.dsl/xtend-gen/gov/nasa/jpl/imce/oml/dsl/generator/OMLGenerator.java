@@ -1153,7 +1153,7 @@ public class OMLGenerator extends AbstractGenerator {
           _builder.append("omlInverseReferencers(");
           String _imported_1 = this.imported(relationship);
           _builder.append(_imported_1, "\t");
-          _builder.append(").map[omlTarget]");
+          _builder.append(").filter[omlSource === this].map[omlTarget]");
           {
             boolean _isIsFunctional_1 = relationship.isIsFunctional();
             if (_isIsFunctional_1) {
@@ -1193,7 +1193,7 @@ public class OMLGenerator extends AbstractGenerator {
           _builder.append("omlInverseReferencers(");
           String _imported_3 = this.imported(relationship_1);
           _builder.append(_imported_3, "\t");
-          _builder.append(").map[omlSource]");
+          _builder.append(").filter[omlTarget === this].map[omlSource]");
           {
             boolean _isIsInverseFunctional_1 = relationship_1.isIsInverseFunctional();
             if (_isIsInverseFunctional_1) {
@@ -1240,7 +1240,7 @@ public class OMLGenerator extends AbstractGenerator {
           _builder.append("omlInverseReferencers(");
           String _imported_5 = this.imported(axiom.getRestrictedRelation());
           _builder.append(_imported_5, "\t");
-          _builder.append(").map[omlTarget].findFirst[true] as ");
+          _builder.append(").filter[omlSource === this].map[omlTarget].findFirst[true] as ");
           String _imported_6 = this.imported(axiom.getRestrictedRange());
           _builder.append(_imported_6, "\t");
           _builder.newLineIfNotEmpty();
@@ -1283,7 +1283,7 @@ public class OMLGenerator extends AbstractGenerator {
           _builder.append("omlInverseReferencers(");
           String _imported_8 = this.imported(axiom_1.getRestrictedRelation());
           _builder.append(_imported_8, "\t");
-          _builder.append(").map[omlSource].findFirst[true] as ");
+          _builder.append(").filter[omlTarget === this].map[omlSource].findFirst[true] as ");
           String _imported_9 = this.imported(axiom_1.getRestrictedDomain());
           _builder.append(_imported_9, "\t");
           _builder.newLineIfNotEmpty();

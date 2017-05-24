@@ -565,24 +565,24 @@ class OMLGenerator extends AbstractGenerator {
 		def protected entityOperations(Entity entity) '''
 			«FOR relationship : allTBoxStatementsOfType(ReifiedRelationship).filter[source == entity].sortBy[targetName]»
 				op «relationship.target.imported»«IF !relationship.isIsFunctional»[]«ENDIF» «relationship.targetName»() {
-					omlInverseReferencers(«relationship.imported»).map[omlTarget]«IF relationship.isIsFunctional».findFirst[true]«ENDIF»
+					omlInverseReferencers(«relationship.imported»).filter[omlSource === this].map[omlTarget]«IF relationship.isIsFunctional».findFirst[true]«ENDIF»
 				}
 			«ENDFOR»			
 			«FOR relationship : allTBoxStatementsOfType(ReifiedRelationship).filter[target == entity && unreifiedInversePropertyName !== null].sortBy[sourceName]»
 				op «relationship.source.imported»«IF !relationship.isIsInverseFunctional»[]«ENDIF» «relationship.sourceName»() {
-					omlInverseReferencers(«relationship.imported»).map[omlSource]«IF relationship.isIsInverseFunctional».findFirst[true]«ENDIF»
+					omlInverseReferencers(«relationship.imported»).filter[omlTarget === this].map[omlSource]«IF relationship.isIsInverseFunctional».findFirst[true]«ENDIF»
 				}
 			«ENDFOR»			
 			«FOR axiom : allTBoxStatementsOfType(EntityUniversalRestrictionAxiom).filter[restrictedDomain == entity && restrictedRelation.isIsFunctional].sortBy[restrictedRange.toFirstLower]»
 				@OMLProvenance(kind="«axiom.eClass.name»",restrictedDomain="«axiom.restrictedDomain.abbrevIRI»",restrictedRelation="«axiom.restrictedRelation.abbrevIRI»",restrictedRange="«axiom.restrictedRange.abbrevIRI»")
 				op «axiom.restrictedRange.imported» «axiom.restrictedRange.toFirstLower»() {
-					omlInverseReferencers(«axiom.restrictedRelation.imported»).map[omlTarget].findFirst[true] as «axiom.restrictedRange.imported»
+					omlInverseReferencers(«axiom.restrictedRelation.imported»).filter[omlSource === this].map[omlTarget].findFirst[true] as «axiom.restrictedRange.imported»
 				}
 			«ENDFOR»			
 			«FOR axiom : allTBoxStatementsOfType(EntityUniversalRestrictionAxiom).filter[restrictedRange == entity && restrictedRelation.hasRelationshipInverse && restrictedRelation.isIsInverseFunctional].sortBy[restrictedDomain.toFirstLower]»
 				@OMLProvenance(kind="«axiom.eClass.name»",restrictedDomain="«axiom.restrictedDomain.abbrevIRI»",restrictedRelation="«axiom.restrictedRelation.abbrevIRI»",restrictedRange="«axiom.restrictedRange.abbrevIRI»")
 				op «axiom.restrictedDomain.imported» «axiom.restrictedDomain.toFirstLower»() {
-					omlInverseReferencers(«axiom.restrictedRelation.imported»).map[omlSource].findFirst[true] as «axiom.restrictedDomain.imported»
+					omlInverseReferencers(«axiom.restrictedRelation.imported»).filter[omlTarget === this].map[omlSource].findFirst[true] as «axiom.restrictedDomain.imported»
 				}
 			«ENDFOR»			
 		'''
