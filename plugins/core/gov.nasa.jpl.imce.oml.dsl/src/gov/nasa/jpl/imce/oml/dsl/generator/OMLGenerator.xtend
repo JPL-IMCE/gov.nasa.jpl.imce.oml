@@ -17,58 +17,57 @@
  */
 package gov.nasa.jpl.imce.oml.dsl.generator
 
-import org.eclipse.emf.ecore.EClass
-import org.eclipse.emf.ecore.resource.Resource
-import org.eclipse.xtext.generator.AbstractGenerator
-import org.eclipse.xtext.generator.IFileSystemAccess2
-import org.eclipse.xtext.generator.IGeneratorContext
+import com.google.inject.Inject
 import gov.nasa.jpl.imce.oml.model.bundles.Bundle
-
+import gov.nasa.jpl.imce.oml.model.common.Extent
+import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions
+import gov.nasa.jpl.imce.oml.model.terminologies.Aspect
+import gov.nasa.jpl.imce.oml.model.terminologies.AspectSpecializationAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.BinaryScalarRestriction
+import gov.nasa.jpl.imce.oml.model.terminologies.Concept
+import gov.nasa.jpl.imce.oml.model.terminologies.ConceptSpecializationAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.DataRange
+import gov.nasa.jpl.imce.oml.model.terminologies.DataRelationship
+import gov.nasa.jpl.imce.oml.model.terminologies.Entity
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataProperty
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataProperty
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalRestrictionAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction
+import gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction
+import gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.Scalar
+import gov.nasa.jpl.imce.oml.model.terminologies.ScalarDataProperty
+import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfRestriction
+import gov.nasa.jpl.imce.oml.model.terminologies.StringScalarRestriction
+import gov.nasa.jpl.imce.oml.model.terminologies.Structure
+import gov.nasa.jpl.imce.oml.model.terminologies.StructuredDataProperty
+import gov.nasa.jpl.imce.oml.model.terminologies.SynonymScalarRestriction
+import gov.nasa.jpl.imce.oml.model.terminologies.Term
+import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage
+import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox
+import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBoxAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBoxStatement
+import gov.nasa.jpl.imce.oml.model.terminologies.TimeScalarRestriction
+import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship
+import gov.nasa.jpl.imce.oml.runtime.OMLRuntimePackage
 import java.util.ArrayList
 import java.util.Collection
 import java.util.HashMap
 import java.util.HashSet
 import java.util.Map
 import java.util.Set
-import gov.nasa.jpl.imce.oml.model.terminologies.Concept
-import gov.nasa.jpl.imce.oml.model.terminologies.Structure
-import gov.nasa.jpl.imce.oml.model.terminologies.Aspect
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship
-import gov.nasa.jpl.imce.oml.model.terminologies.AspectSpecializationAxiom
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom
-import gov.nasa.jpl.imce.oml.model.terminologies.Scalar
-import gov.nasa.jpl.imce.oml.model.terminologies.Term
-import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox
-import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom
-import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfRestriction
-import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataProperty
-import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataProperty
-import gov.nasa.jpl.imce.oml.model.terminologies.Entity
-import gov.nasa.jpl.imce.oml.model.terminologies.ScalarDataProperty
-import gov.nasa.jpl.imce.oml.model.terminologies.StructuredDataProperty
-import gov.nasa.jpl.imce.oml.model.terminologies.ConceptSpecializationAxiom
-import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage
-import gov.nasa.jpl.imce.oml.runtime.OMLRuntimePackage
-import gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalRestrictionAxiom
-import gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship
-import org.eclipse.xtext.EcoreUtil2
-import gov.nasa.jpl.imce.oml.model.common.Extent
-import com.google.inject.Inject
-import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions
-import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBoxAxiom
-import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBoxStatement
-import gov.nasa.jpl.imce.oml.model.terminologies.DataRelationship
-import gov.nasa.jpl.imce.oml.model.terminologies.BinaryScalarRestriction
-import gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction
-import gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction
-import gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction
-import gov.nasa.jpl.imce.oml.model.terminologies.StringScalarRestriction
-import gov.nasa.jpl.imce.oml.model.terminologies.TimeScalarRestriction
-import gov.nasa.jpl.imce.oml.model.terminologies.SynonymScalarRestriction
-import gov.nasa.jpl.imce.oml.model.terminologies.DataRange
-import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship
-import org.eclipse.emf.ecore.EAttribute
 import org.eclipse.core.resources.IProject
+import org.eclipse.emf.ecore.EAttribute
+import org.eclipse.emf.ecore.EClass
+import org.eclipse.emf.ecore.resource.Resource
+import org.eclipse.xtext.EcoreUtil2
+import org.eclipse.xtext.generator.AbstractGenerator
+import org.eclipse.xtext.generator.IFileSystemAccess2
+import org.eclipse.xtext.generator.IGeneratorContext
 
 /**
  * Generates code from your model files on save.
@@ -703,13 +702,9 @@ class OMLGenerator extends AbstractGenerator {
 	}
 
 	def protected static validQName(TerminologyBox terminology) {
-		val colon = terminology.iri().indexOf('://')
-		if (colon == -1)
-			throw new java.lang.IllegalArgumentException("Invalid terminology IRI: "+terminology)
-			
-		val qname = terminology.iri().substring(colon+3)
-		val qualifiedName = qname.split('\\.').map[legalName].join('.').replace('/','.')
-		qualifiedName
+		val iri = terminology.iri()
+		val qname = OMLExtensions.convertIRItoNamespace(iri)
+		qname
 	}
 	
 	def protected static legalName(String name) {

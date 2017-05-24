@@ -1787,16 +1787,9 @@ public class OMLGenerator extends AbstractGenerator {
   protected static String validQName(final TerminologyBox terminology) {
     String _xblockexpression = null;
     {
-      final int colon = terminology.iri().indexOf("://");
-      if ((colon == (-1))) {
-        throw new IllegalArgumentException(("Invalid terminology IRI: " + terminology));
-      }
-      final String qname = terminology.iri().substring((colon + 3));
-      final Function1<String, String> _function = (String it) -> {
-        return OMLGenerator.legalName(it);
-      };
-      final String qualifiedName = IterableExtensions.join(ListExtensions.<String, String>map(((List<String>)Conversions.doWrapArray(qname.split("\\."))), _function), ".").replace("/", ".");
-      _xblockexpression = qualifiedName;
+      final String iri = terminology.iri();
+      final String qname = OMLExtensions.convertIRItoNamespace(iri);
+      _xblockexpression = qname;
     }
     return _xblockexpression;
   }

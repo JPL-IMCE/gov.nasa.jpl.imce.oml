@@ -226,6 +226,33 @@ public class OMLExtensions {
     return null;
   }
   
+  public static String convertIRItoNamespace(final String iri) {
+    String _xblockexpression = null;
+    {
+      final int index1 = iri.indexOf("://");
+      final String pname = iri.substring((index1 + 3));
+      final int index2 = pname.indexOf("/");
+      String _xifexpression = null;
+      if ((index2 > 0)) {
+        _xifexpression = pname.substring(0, index2);
+      } else {
+        _xifexpression = pname;
+      }
+      final String domain = _xifexpression;
+      final String qprefix = IterableExtensions.join(ListExtensions.<String>reverse(((List<String>)Conversions.doWrapArray(domain.split("\\.")))), ".");
+      String _xifexpression_1 = null;
+      if ((index2 > 0)) {
+        _xifexpression_1 = pname.substring(index2);
+      } else {
+        _xifexpression_1 = "";
+      }
+      final String qsuffix = _xifexpression_1;
+      final String qname = (qprefix + qsuffix).replaceAll("[/-]", ".");
+      _xblockexpression = qname;
+    }
+    return _xblockexpression;
+  }
+  
   public static UUID namespaceUUID(final String namespace) {
     ArrayList<Pair<String, String>> _arrayList = new ArrayList<Pair<String, String>>();
     return OMLExtensions.namespaceUUID(namespace, ((Pair<String, String>[])Conversions.unwrapArray(_arrayList, Pair.class)));

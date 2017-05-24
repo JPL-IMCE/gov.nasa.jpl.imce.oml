@@ -21,9 +21,9 @@ import gov.nasa.jpl.imce.oml.dsl.ui.converter.LiftOMLBundle2DSMLPluginsWizardPag
 import gov.nasa.jpl.imce.oml.dsl.ui.converter.LiftOMLBundle2NewXcoreProjectWizardPage;
 import gov.nasa.jpl.imce.oml.dsl.ui.converter.LiftOMLBundle2XcoreMetamodelWizardPage;
 import gov.nasa.jpl.imce.oml.model.bundles.Bundle;
+import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.util.List;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -31,9 +31,6 @@ import org.eclipse.emf.ecore.xcore.ui.EmptyXcoreProjectWizard;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.eclipse.xtext.xbase.lib.Conversions;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.eclipse.xtext.xbase.lib.ListExtensions;
 
 @SuppressWarnings("all")
 public class LiftOMLBundle2XcoreMetamodelWizard extends EmptyXcoreProjectWizard {
@@ -55,25 +52,7 @@ public class LiftOMLBundle2XcoreMetamodelWizard extends EmptyXcoreProjectWizard 
   @Override
   public void addPages() {
     final String iri = this.omlBundle.iri();
-    final int index1 = iri.indexOf("://");
-    final String pname = iri.substring((index1 + 3));
-    final int index2 = pname.indexOf("/");
-    String _xifexpression = null;
-    if ((index2 > 0)) {
-      _xifexpression = pname.substring(0, index2);
-    } else {
-      _xifexpression = pname;
-    }
-    final String domain = _xifexpression;
-    final String qprefix = IterableExtensions.join(ListExtensions.<String>reverse(((List<String>)Conversions.doWrapArray(domain.split("\\.")))), ".");
-    String _xifexpression_1 = null;
-    if ((index2 > 0)) {
-      _xifexpression_1 = pname.substring(index2);
-    } else {
-      _xifexpression_1 = "";
-    }
-    final String qsuffix = _xifexpression_1;
-    final String qname = (qprefix + qsuffix).replaceAll("[/-]", ".");
+    final String qname = OMLExtensions.convertIRItoNamespace(iri);
     LiftOMLBundle2XcoreMetamodelWizardPage _liftOMLBundle2XcoreMetamodelWizardPage = new LiftOMLBundle2XcoreMetamodelWizardPage(qname, this.omlBundle);
     this.page1 = _liftOMLBundle2XcoreMetamodelWizardPage;
     this.addPage(this.page1);

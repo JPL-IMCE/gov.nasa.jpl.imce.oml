@@ -170,6 +170,17 @@ class OMLExtensions {
 		return null
 	}
 	
+	static def String convertIRItoNamespace(String iri) {
+		val index1 = iri.indexOf("://")
+		val pname = iri.substring(index1+3)
+		val index2 = pname.indexOf("/")
+		val domain = if (index2 > 0) pname.substring(0, index2) else pname
+		val qprefix = domain.split("\\.").reverse.join(".")
+		val qsuffix = if (index2 > 0) pname.substring(index2) else ""
+		val qname = (qprefix + qsuffix).replaceAll("[/-]",".")
+		qname
+	}
+	
   	static def UUID namespaceUUID(String namespace) {
   		namespaceUUID(namespace, new ArrayList<Pair<String,String>>())
   	}

@@ -18,6 +18,7 @@
 package gov.nasa.jpl.imce.oml.dsl.ui.converter
 
 import gov.nasa.jpl.imce.oml.model.bundles.Bundle
+import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions
 import org.eclipse.emf.ecore.xcore.ui.EmptyXcoreProjectWizard
 import org.eclipse.jface.viewers.IStructuredSelection
 import org.eclipse.core.runtime.IPath
@@ -45,13 +46,7 @@ class LiftOMLBundle2XcoreMetamodelWizard extends EmptyXcoreProjectWizard {
 
 	override void addPages() {
 		val iri = omlBundle.iri()
-		val index1 = iri.indexOf("://")
-		val pname = iri.substring(index1+3)
-		val index2 = pname.indexOf("/")
-		val domain = if (index2 > 0) pname.substring(0, index2) else pname
-		val qprefix = domain.split("\\.").reverse.join(".")
-		val qsuffix = if (index2 > 0) pname.substring(index2) else ""
-		val qname = (qprefix + qsuffix).replaceAll("[/-]",".")
+		val qname = OMLExtensions.convertIRItoNamespace(iri)
 				
 		page1 = new LiftOMLBundle2XcoreMetamodelWizardPage(qname, omlBundle)
 		addPage(page1)
