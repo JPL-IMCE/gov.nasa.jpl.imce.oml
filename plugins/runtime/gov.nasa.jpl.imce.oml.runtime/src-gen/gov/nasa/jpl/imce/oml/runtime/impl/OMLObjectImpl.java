@@ -54,6 +54,8 @@ import org.eclipse.emf.ecore.util.EcoreUtil.UsageCrossReferencer;
 
 import org.eclipse.emf.internal.cdo.CDOObjectImpl;
 
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 /**
@@ -156,12 +158,17 @@ public abstract class OMLObjectImpl extends CDOObjectImpl implements OMLObject {
 				EList<T> _xblockexpression_1 = null;
 				{
 					final Collection<Setting> references = UsageCrossReferencer.find(this, resourceSet);
-					_xblockexpression_1 = ECollections.<T>asEList(((T[])org.eclipse.xtext.xbase.lib.Conversions.unwrapArray(Iterables.<T>filter(Iterables.<OMLObject>filter(references, OMLObject.class), aType), OMLObject.class)));
+					final Function1<Setting, EObject> _function = new Function1<Setting, EObject>() {
+						public EObject apply(final Setting it) {
+							return it.getEObject();
+						}
+					};
+					_xblockexpression_1 = ECollections.<T>asEList(((T[])org.eclipse.xtext.xbase.lib.Conversions.unwrapArray(Iterables.<T>filter(IterableExtensions.<Setting, EObject>map(references, _function), aType), OMLObject.class)));
 				}
 				_xifexpression = _xblockexpression_1;
 			}
 			else {
-				_xifexpression = ECollections.<T>asEList(((T[])org.eclipse.xtext.xbase.lib.Conversions.unwrapArray(Iterables.<T>filter(Iterables.<OMLObject>filter(((ECrossReferenceAdapter[])org.eclipse.xtext.xbase.lib.Conversions.unwrapArray(adapters, ECrossReferenceAdapter.class))[0].getInverseReferences(this), OMLObject.class), aType), OMLObject.class)));
+				_xifexpression = ECollections.<T>asEList(((T[])org.eclipse.xtext.xbase.lib.Conversions.unwrapArray(Iterables.<T>filter(((ECrossReferenceAdapter[])org.eclipse.xtext.xbase.lib.Conversions.unwrapArray(adapters, ECrossReferenceAdapter.class))[0].getInverseReferences(this), aType), OMLObject.class)));
 			}
 			_xblockexpression = _xifexpression;
 		}
