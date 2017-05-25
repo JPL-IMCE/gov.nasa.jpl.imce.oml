@@ -46,10 +46,6 @@
          version="0.0.0"/>
 
    <includes
-         id="org.eclipse.draw2d"
-         version="0.0.0"/>
-
-   <includes
          id="org.eclipse.emf.cdo.compare"
          version="0.0.0"/>
 
@@ -79,10 +75,6 @@
 
    <includes
          id="org.eclipse.emf.cdo.source"
-         version="0.0.0"/>
-
-   <includes
-         id="org.eclipse.gef"
          version="0.0.0"/>
 
    <includes
@@ -123,14 +115,6 @@
 
    <includes
          id="org.eclipse.emf.mapping.ui.source"
-         version="0.0.0"/>
-
-   <includes
-         id="org.eclipse.emf.transaction"
-         version="0.0.0"/>
-
-   <includes
-         id="org.eclipse.emf.workspace"
          version="0.0.0"/>
 
    <includes
@@ -214,10 +198,6 @@
          version="0.0.0"/>
 
    <includes
-         id="org.eclipse.gmf.runtime.thirdparty"
-         version="0.0.0"/>
-
-   <includes
          id="org.eclipse.emf.validation"
          version="0.0.0"/>
 
@@ -295,6 +275,282 @@
 
    <includes
          id="org.eclipse.pde"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.e4.core.tools.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.e4.core.tools.feature.source"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.equinox.sdk"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.xtext.sdk"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.egit.mylyn"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.mylyn.github.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.emf.oda.sdk"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.birt"
+         version="0.0.0"/>
+
+   <includes
+         id="fr.obeo.dsl.designer.ce.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="fr.obeo.dsl.designer.ce.feature.source"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.acceleo.query"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.eef.sdk.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.eef.sdk.feature.source"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.eef.ext.widgets.reference.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.eef.ext.widgets.reference.feature.source"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.emf.compare.diagram.sirius"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.emf.compare.diagram.sirius.source"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.emf.compare.egit"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.emf.compare.ide.ui"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.emf.compare.ide.ui.source"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.emf.compare.source"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.emf.ecoretools.sdk"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.emf.transaction.sdk"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.emf.validation.sdk"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.epp.mpc"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.gef.sdk"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.gmf.runtime.sdk"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.sirius.doc.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.sirius.interpreter.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.sirius.interpreter.feature.source"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.sirius.properties.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.sirius.properties.feature.source"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.sirius.runtime.acceleo"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.sirius.runtime.acceleo.source"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.sirius.runtime.aql"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.sirius.runtime.aql.source"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.sirius.runtime.ide.eef"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.sirius.runtime.ide.eef.source"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.sirius.runtime.ide.ui"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.sirius.runtime.ide.ui.acceleo"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.sirius.runtime.ide.ui.acceleo.source"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.sirius.runtime.ide.ui.source"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.sirius.runtime.source"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.sirius.samples"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.sirius.specifier.ide.ui.acceleo"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.sirius.specifier.ide.ui.acceleo.source"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.sirius.specifier.ide.ui.aql"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.sirius.specifier.ide.ui.aql.source"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.sirius.specifier.ide.ui.source"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.sirius.specifier.properties.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.sirius.specifier.properties.feature.source"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.sirius.tests.support"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.sirius.tests.support.source"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.swtbot.ide"
+         version="0.0.0"/>
+
+   <includes
+         id="org.scala-ide.equinox-weaving-launcher.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.scala-ide.scala211.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.scala-ide.scala211.source.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.scala-ide.sdt.dev.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.scala-ide.sdt.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.scala-ide.sdt.scalatest.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.scala-ide.sdt.scalatest.source.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.scala-ide.sdt.source.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.scala-ide.sdt.weaving.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.scala-ide.zinc.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.scala-ide.zinc.source.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.scala.tools.eclipse.search.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.scala.tools.eclipse.search.source.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.scalaide.worksheet.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="org.scalaide.worksheet.source.feature"
          version="0.0.0"/>
 
    <plugin
