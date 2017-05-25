@@ -1153,7 +1153,7 @@ public class OMLGenerator extends AbstractGenerator {
           _builder.append("omlInverseReferencers(");
           String _imported_1 = this.imported(relationship);
           _builder.append(_imported_1, "\t");
-          _builder.append(").filter[omlSource === this].map[omlTarget]");
+          _builder.append(").filter[omlSource === this].map[omlTarget].toEList");
           {
             boolean _isIsFunctional_1 = relationship.isIsFunctional();
             if (_isIsFunctional_1) {
@@ -1193,7 +1193,7 @@ public class OMLGenerator extends AbstractGenerator {
           _builder.append("omlInverseReferencers(");
           String _imported_3 = this.imported(relationship_1);
           _builder.append(_imported_3, "\t");
-          _builder.append(").filter[omlTarget === this].map[omlSource]");
+          _builder.append(").filter[omlTarget === this].map[omlSource].toEList");
           {
             boolean _isIsInverseFunctional_1 = relationship_1.isIsInverseFunctional();
             if (_isIsInverseFunctional_1) {
