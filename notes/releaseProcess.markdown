@@ -2,8 +2,8 @@
 
 ```shell
 export V=<major>.<minor>.<patch>.<build>
-git branch $V
-git checkout $V
+git branch release/$V
+git checkout release/$V
 mvn org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=$V -Dtycho.mode=maven -Dproperties=oml.version 
 ```
 
@@ -12,7 +12,7 @@ Edit [pom.xml](../pom.xml), replacing `/project/build/plugins/plugin[2]/configur
 ```
 git add -A
 git commit -S -m"Release $V"
-git push -u origin $V
+git push -u origin release/$V
 ```
 
 Verify the build on https://travis-ci.org/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho
