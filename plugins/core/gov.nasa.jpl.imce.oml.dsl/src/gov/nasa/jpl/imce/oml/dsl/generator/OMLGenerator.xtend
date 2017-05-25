@@ -565,12 +565,12 @@ class OMLGenerator extends AbstractGenerator {
 		def protected entityOperations(Entity entity) '''
 			«FOR relationship : allTBoxStatementsOfType(ReifiedRelationship).filter[source == entity].sortBy[targetName]»
 				op «relationship.target.imported»«IF !relationship.isIsFunctional»[]«ENDIF» «relationship.targetName»() {
-					omlInverseReferencers(«relationship.imported»).filter[omlSource === this].map[omlTarget]«IF relationship.isIsFunctional».findFirst[true]«ENDIF»
+					omlInverseReferencers(«relationship.imported»).filter[omlSource === this].map[omlTarget].toEList«IF relationship.isIsFunctional».findFirst[true]«ENDIF»
 				}
 			«ENDFOR»			
 			«FOR relationship : allTBoxStatementsOfType(ReifiedRelationship).filter[target == entity && unreifiedInversePropertyName !== null].sortBy[sourceName]»
 				op «relationship.source.imported»«IF !relationship.isIsInverseFunctional»[]«ENDIF» «relationship.sourceName»() {
-					omlInverseReferencers(«relationship.imported»).filter[omlTarget === this].map[omlSource]«IF relationship.isIsInverseFunctional».findFirst[true]«ENDIF»
+					omlInverseReferencers(«relationship.imported»).filter[omlTarget === this].map[omlSource].toEList«IF relationship.isIsInverseFunctional».findFirst[true]«ENDIF»
 				}
 			«ENDFOR»			
 			«FOR axiom : allTBoxStatementsOfType(EntityUniversalRestrictionAxiom).filter[restrictedDomain == entity && restrictedRelation.isIsFunctional].sortBy[restrictedRange.toFirstLower]»
