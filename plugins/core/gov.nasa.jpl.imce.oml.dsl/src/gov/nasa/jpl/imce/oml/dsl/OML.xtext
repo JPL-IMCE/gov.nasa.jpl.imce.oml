@@ -60,7 +60,7 @@ AnnotationProperty returns AnnotationProperty:
 Annotation returns Annotation:
 	'@' property=[AnnotationProperty|ABBREV_IRI]
 	'=' value=STRING;
-
+	
 Module returns Module:
 	TerminologyBox | DescriptionBox;
 	
@@ -70,7 +70,9 @@ TerminologyBox returns TerminologyBox:
 	Bundle | TerminologyGraph;
 
 TerminologyGraph returns TerminologyGraph:
-	kind=TerminologyKind 'terminology' iri=IRI '{'
+	( annotations+=Annotation )*
+	kind=TerminologyKind 'terminology' iri=IRI 
+	'{'
 	( annotations+=Annotation | 
 	  boxAxioms+=TerminologyBoxAxiom | 
 	  boxStatements+=TerminologyBoxStatement
@@ -78,12 +80,31 @@ TerminologyGraph returns TerminologyGraph:
 	'}';
 
 Bundle returns Bundle:
-	kind=TerminologyKind 'bundle' iri=IRI '{'
+	( annotations+=Annotation )*
+	kind=TerminologyKind 'bundle' iri=IRI 
+	'{'
 	( annotations+=Annotation |
 	  boxAxioms+=TerminologyBoxAxiom |
 	  boxStatements+=TerminologyBoxStatement |
 	  bundleStatements+=TerminologyBundleStatement |
 	  bundleAxioms+=TerminologyBundleAxiom
+	)*
+	'}';
+	
+DescriptionBox returns DescriptionBox:
+	( annotations+=Annotation )*
+	kind=DescriptionKind 'descriptionBox' iri=IRI
+	'{'
+	( annotations+=Annotation |
+	  closedWorldDefinitions+=DescriptionBoxExtendsClosedWorldDefinitions |
+	  descriptionBoxRefinements+=DescriptionBoxRefinement |
+	  conceptInstances+=ConceptInstance |
+	  reifiedRelationshipInstances+=ReifiedRelationshipInstance |
+	  reifiedRelationshipInstanceDomains+=ReifiedRelationshipInstanceDomain|
+	  reifiedRelationshipInstanceRanges+=ReifiedRelationshipInstanceRange |
+	  unreifiedRelationshipInstanceTuples+=UnreifiedRelationshipInstanceTuple |
+	  singletonScalarDataPropertyValues+=SingletonInstanceScalarDataPropertyValue |
+	  singletonStructuredDataPropertyValues+=SingletonInstanceStructuredDataPropertyValue
 	)*
 	'}';
 	
@@ -418,23 +439,6 @@ TimeScalarRestriction returns TimeScalarRestriction:
 		'restrictedRange' restrictedRange=[DataRange|Reference]
 	'}';
 //----------------------------
-
-DescriptionBox returns DescriptionBox:
-	kind=DescriptionKind 'descriptionBox'
-	iri=IRI
-	'{'
-	( annotations+=Annotation |
-	  closedWorldDefinitions+=DescriptionBoxExtendsClosedWorldDefinitions |
-	  descriptionBoxRefinements+=DescriptionBoxRefinement |
-	  conceptInstances+=ConceptInstance |
-	  reifiedRelationshipInstances+=ReifiedRelationshipInstance |
-	  reifiedRelationshipInstanceDomains+=ReifiedRelationshipInstanceDomain|
-	  reifiedRelationshipInstanceRanges+=ReifiedRelationshipInstanceRange |
-	  unreifiedRelationshipInstanceTuples+=UnreifiedRelationshipInstanceTuple |
-	  singletonScalarDataPropertyValues+=SingletonInstanceScalarDataPropertyValue |
-	  singletonStructuredDataPropertyValues+=SingletonInstanceStructuredDataPropertyValue
-	)*
-	'}';
 
 enum DescriptionKind returns DescriptionKind:
 	Final = 'final' | 

@@ -95,7 +95,7 @@ class OMLFormatter extends AbstractFormatter2 {
 	def dispatch void format(TerminologyGraph terminologyGraph, extension IFormattableDocument document) {
 		terminologyGraph.regionFor.feature(TerminologiesPackage.eINSTANCE.terminologyBox_Kind).append[oneSpace]
 		terminologyGraph.regionFor.keyword('terminology').surround[oneSpace]
-		terminologyGraph.regionFor.ruleCall(terminologyGraphAccess.iriIRITerminalRuleCall_2_0).surround[oneSpace]
+		terminologyGraph.regionFor.ruleCall(terminologyGraphAccess.iriIRITerminalRuleCall_3_0).surround[oneSpace]
 	
 		val lcurly = terminologyGraph.regionFor.keyword('{')
 		val rcurly = terminologyGraph.regionFor.keyword('}')
@@ -111,7 +111,7 @@ class OMLFormatter extends AbstractFormatter2 {
 	def dispatch void format(Bundle bundle, extension IFormattableDocument document) {
 		bundle.regionFor.feature(TerminologiesPackage.eINSTANCE.terminologyBox_Kind).append[oneSpace]
 		bundle.regionFor.keyword('bundle').surround[oneSpace]
-		bundle.regionFor.ruleCall(bundleAccess.iriIRITerminalRuleCall_2_0).surround[oneSpace]
+		bundle.regionFor.ruleCall(bundleAccess.iriIRITerminalRuleCall_3_0).surround[oneSpace]
 		
 		val lcurly = bundle.regionFor.keyword('{')
 		val rcurly = bundle.regionFor.keyword('}')
@@ -129,7 +129,7 @@ class OMLFormatter extends AbstractFormatter2 {
 	def dispatch void format(DescriptionBox descriptionBox, extension IFormattableDocument document) {
 		descriptionBox.regionFor.feature(DescriptionsPackage.eINSTANCE.descriptionBox_Kind).append[oneSpace]
 		descriptionBox.regionFor.keyword('descriptionBox').surround[oneSpace]
-		descriptionBox.regionFor.ruleCall(descriptionBoxAccess.iriIRITerminalRuleCall_2_0).surround[oneSpace]
+		descriptionBox.regionFor.ruleCall(descriptionBoxAccess.iriIRITerminalRuleCall_3_0).surround[oneSpace]
 		
 		val lcurly = descriptionBox.regionFor.keyword('{')
 		val rcurly = descriptionBox.regionFor.keyword('}')

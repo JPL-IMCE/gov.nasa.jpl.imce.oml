@@ -353,9 +353,28 @@ ruleTerminologyGraph returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getTerminologyGraphAccess().getKindTerminologyKindEnumRuleCall_0_0());
+					newCompositeNode(grammarAccess.getTerminologyGraphAccess().getAnnotationsAnnotationParserRuleCall_0_0());
 				}
-				lv_kind_0_0=ruleTerminologyKind
+				lv_annotations_0_0=ruleAnnotation
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getTerminologyGraphRule());
+					}
+					add(
+						$current,
+						"annotations",
+						lv_annotations_0_0,
+						"gov.nasa.jpl.imce.oml.dsl.OML.Annotation");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)*
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getTerminologyGraphAccess().getKindTerminologyKindEnumRuleCall_1_0());
+				}
+				lv_kind_1_0=ruleTerminologyKind
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getTerminologyGraphRule());
@@ -363,21 +382,21 @@ ruleTerminologyGraph returns [EObject current=null]
 					set(
 						$current,
 						"kind",
-						lv_kind_0_0,
+						lv_kind_1_0,
 						"gov.nasa.jpl.imce.oml.dsl.OML.TerminologyKind");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		otherlv_1='terminology'
+		otherlv_2='terminology'
 		{
-			newLeafNode(otherlv_1, grammarAccess.getTerminologyGraphAccess().getTerminologyKeyword_1());
+			newLeafNode(otherlv_2, grammarAccess.getTerminologyGraphAccess().getTerminologyKeyword_2());
 		}
 		(
 			(
-				lv_iri_2_0=RULE_IRI
+				lv_iri_3_0=RULE_IRI
 				{
-					newLeafNode(lv_iri_2_0, grammarAccess.getTerminologyGraphAccess().getIriIRITerminalRuleCall_2_0());
+					newLeafNode(lv_iri_3_0, grammarAccess.getTerminologyGraphAccess().getIriIRITerminalRuleCall_3_0());
 				}
 				{
 					if ($current==null) {
@@ -386,22 +405,22 @@ ruleTerminologyGraph returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"iri",
-						lv_iri_2_0,
+						lv_iri_3_0,
 						"gov.nasa.jpl.imce.oml.dsl.OML.IRI");
 				}
 			)
 		)
-		otherlv_3='{'
+		otherlv_4='{'
 		{
-			newLeafNode(otherlv_3, grammarAccess.getTerminologyGraphAccess().getLeftCurlyBracketKeyword_3());
+			newLeafNode(otherlv_4, grammarAccess.getTerminologyGraphAccess().getLeftCurlyBracketKeyword_4());
 		}
 		(
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getTerminologyGraphAccess().getAnnotationsAnnotationParserRuleCall_4_0_0());
+						newCompositeNode(grammarAccess.getTerminologyGraphAccess().getAnnotationsAnnotationParserRuleCall_5_0_0());
 					}
-					lv_annotations_4_0=ruleAnnotation
+					lv_annotations_5_0=ruleAnnotation
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getTerminologyGraphRule());
@@ -409,7 +428,7 @@ ruleTerminologyGraph returns [EObject current=null]
 						add(
 							$current,
 							"annotations",
-							lv_annotations_4_0,
+							lv_annotations_5_0,
 							"gov.nasa.jpl.imce.oml.dsl.OML.Annotation");
 						afterParserOrEnumRuleCall();
 					}
@@ -419,9 +438,9 @@ ruleTerminologyGraph returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getTerminologyGraphAccess().getBoxAxiomsTerminologyBoxAxiomParserRuleCall_4_1_0());
+						newCompositeNode(grammarAccess.getTerminologyGraphAccess().getBoxAxiomsTerminologyBoxAxiomParserRuleCall_5_1_0());
 					}
-					lv_boxAxioms_5_0=ruleTerminologyBoxAxiom
+					lv_boxAxioms_6_0=ruleTerminologyBoxAxiom
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getTerminologyGraphRule());
@@ -429,7 +448,7 @@ ruleTerminologyGraph returns [EObject current=null]
 						add(
 							$current,
 							"boxAxioms",
-							lv_boxAxioms_5_0,
+							lv_boxAxioms_6_0,
 							"gov.nasa.jpl.imce.oml.dsl.OML.TerminologyBoxAxiom");
 						afterParserOrEnumRuleCall();
 					}
@@ -439,9 +458,9 @@ ruleTerminologyGraph returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getTerminologyGraphAccess().getBoxStatementsTerminologyBoxStatementParserRuleCall_4_2_0());
+						newCompositeNode(grammarAccess.getTerminologyGraphAccess().getBoxStatementsTerminologyBoxStatementParserRuleCall_5_2_0());
 					}
-					lv_boxStatements_6_0=ruleTerminologyBoxStatement
+					lv_boxStatements_7_0=ruleTerminologyBoxStatement
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getTerminologyGraphRule());
@@ -449,16 +468,16 @@ ruleTerminologyGraph returns [EObject current=null]
 						add(
 							$current,
 							"boxStatements",
-							lv_boxStatements_6_0,
+							lv_boxStatements_7_0,
 							"gov.nasa.jpl.imce.oml.dsl.OML.TerminologyBoxStatement");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
 		)*
-		otherlv_7='}'
+		otherlv_8='}'
 		{
-			newLeafNode(otherlv_7, grammarAccess.getTerminologyGraphAccess().getRightCurlyBracketKeyword_5());
+			newLeafNode(otherlv_8, grammarAccess.getTerminologyGraphAccess().getRightCurlyBracketKeyword_6());
 		}
 	)
 ;
@@ -482,9 +501,28 @@ ruleBundle returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getBundleAccess().getKindTerminologyKindEnumRuleCall_0_0());
+					newCompositeNode(grammarAccess.getBundleAccess().getAnnotationsAnnotationParserRuleCall_0_0());
 				}
-				lv_kind_0_0=ruleTerminologyKind
+				lv_annotations_0_0=ruleAnnotation
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getBundleRule());
+					}
+					add(
+						$current,
+						"annotations",
+						lv_annotations_0_0,
+						"gov.nasa.jpl.imce.oml.dsl.OML.Annotation");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)*
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getBundleAccess().getKindTerminologyKindEnumRuleCall_1_0());
+				}
+				lv_kind_1_0=ruleTerminologyKind
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getBundleRule());
@@ -492,21 +530,21 @@ ruleBundle returns [EObject current=null]
 					set(
 						$current,
 						"kind",
-						lv_kind_0_0,
+						lv_kind_1_0,
 						"gov.nasa.jpl.imce.oml.dsl.OML.TerminologyKind");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		otherlv_1='bundle'
+		otherlv_2='bundle'
 		{
-			newLeafNode(otherlv_1, grammarAccess.getBundleAccess().getBundleKeyword_1());
+			newLeafNode(otherlv_2, grammarAccess.getBundleAccess().getBundleKeyword_2());
 		}
 		(
 			(
-				lv_iri_2_0=RULE_IRI
+				lv_iri_3_0=RULE_IRI
 				{
-					newLeafNode(lv_iri_2_0, grammarAccess.getBundleAccess().getIriIRITerminalRuleCall_2_0());
+					newLeafNode(lv_iri_3_0, grammarAccess.getBundleAccess().getIriIRITerminalRuleCall_3_0());
 				}
 				{
 					if ($current==null) {
@@ -515,22 +553,22 @@ ruleBundle returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"iri",
-						lv_iri_2_0,
+						lv_iri_3_0,
 						"gov.nasa.jpl.imce.oml.dsl.OML.IRI");
 				}
 			)
 		)
-		otherlv_3='{'
+		otherlv_4='{'
 		{
-			newLeafNode(otherlv_3, grammarAccess.getBundleAccess().getLeftCurlyBracketKeyword_3());
+			newLeafNode(otherlv_4, grammarAccess.getBundleAccess().getLeftCurlyBracketKeyword_4());
 		}
 		(
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getBundleAccess().getAnnotationsAnnotationParserRuleCall_4_0_0());
+						newCompositeNode(grammarAccess.getBundleAccess().getAnnotationsAnnotationParserRuleCall_5_0_0());
 					}
-					lv_annotations_4_0=ruleAnnotation
+					lv_annotations_5_0=ruleAnnotation
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getBundleRule());
@@ -538,7 +576,7 @@ ruleBundle returns [EObject current=null]
 						add(
 							$current,
 							"annotations",
-							lv_annotations_4_0,
+							lv_annotations_5_0,
 							"gov.nasa.jpl.imce.oml.dsl.OML.Annotation");
 						afterParserOrEnumRuleCall();
 					}
@@ -548,9 +586,9 @@ ruleBundle returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getBundleAccess().getBoxAxiomsTerminologyBoxAxiomParserRuleCall_4_1_0());
+						newCompositeNode(grammarAccess.getBundleAccess().getBoxAxiomsTerminologyBoxAxiomParserRuleCall_5_1_0());
 					}
-					lv_boxAxioms_5_0=ruleTerminologyBoxAxiom
+					lv_boxAxioms_6_0=ruleTerminologyBoxAxiom
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getBundleRule());
@@ -558,7 +596,7 @@ ruleBundle returns [EObject current=null]
 						add(
 							$current,
 							"boxAxioms",
-							lv_boxAxioms_5_0,
+							lv_boxAxioms_6_0,
 							"gov.nasa.jpl.imce.oml.dsl.OML.TerminologyBoxAxiom");
 						afterParserOrEnumRuleCall();
 					}
@@ -568,9 +606,9 @@ ruleBundle returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getBundleAccess().getBoxStatementsTerminologyBoxStatementParserRuleCall_4_2_0());
+						newCompositeNode(grammarAccess.getBundleAccess().getBoxStatementsTerminologyBoxStatementParserRuleCall_5_2_0());
 					}
-					lv_boxStatements_6_0=ruleTerminologyBoxStatement
+					lv_boxStatements_7_0=ruleTerminologyBoxStatement
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getBundleRule());
@@ -578,7 +616,7 @@ ruleBundle returns [EObject current=null]
 						add(
 							$current,
 							"boxStatements",
-							lv_boxStatements_6_0,
+							lv_boxStatements_7_0,
 							"gov.nasa.jpl.imce.oml.dsl.OML.TerminologyBoxStatement");
 						afterParserOrEnumRuleCall();
 					}
@@ -588,9 +626,9 @@ ruleBundle returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getBundleAccess().getBundleStatementsTerminologyBundleStatementParserRuleCall_4_3_0());
+						newCompositeNode(grammarAccess.getBundleAccess().getBundleStatementsTerminologyBundleStatementParserRuleCall_5_3_0());
 					}
-					lv_bundleStatements_7_0=ruleTerminologyBundleStatement
+					lv_bundleStatements_8_0=ruleTerminologyBundleStatement
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getBundleRule());
@@ -598,7 +636,7 @@ ruleBundle returns [EObject current=null]
 						add(
 							$current,
 							"bundleStatements",
-							lv_bundleStatements_7_0,
+							lv_bundleStatements_8_0,
 							"gov.nasa.jpl.imce.oml.dsl.OML.TerminologyBundleStatement");
 						afterParserOrEnumRuleCall();
 					}
@@ -608,9 +646,9 @@ ruleBundle returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getBundleAccess().getBundleAxiomsTerminologyBundleAxiomParserRuleCall_4_4_0());
+						newCompositeNode(grammarAccess.getBundleAccess().getBundleAxiomsTerminologyBundleAxiomParserRuleCall_5_4_0());
 					}
-					lv_bundleAxioms_8_0=ruleTerminologyBundleAxiom
+					lv_bundleAxioms_9_0=ruleTerminologyBundleAxiom
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getBundleRule());
@@ -618,16 +656,304 @@ ruleBundle returns [EObject current=null]
 						add(
 							$current,
 							"bundleAxioms",
-							lv_bundleAxioms_8_0,
+							lv_bundleAxioms_9_0,
 							"gov.nasa.jpl.imce.oml.dsl.OML.TerminologyBundleAxiom");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
 		)*
-		otherlv_9='}'
+		otherlv_10='}'
 		{
-			newLeafNode(otherlv_9, grammarAccess.getBundleAccess().getRightCurlyBracketKeyword_5());
+			newLeafNode(otherlv_10, grammarAccess.getBundleAccess().getRightCurlyBracketKeyword_6());
+		}
+	)
+;
+
+// Entry rule entryRuleDescriptionBox
+entryRuleDescriptionBox returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getDescriptionBoxRule()); }
+	iv_ruleDescriptionBox=ruleDescriptionBox
+	{ $current=$iv_ruleDescriptionBox.current; }
+	EOF;
+
+// Rule DescriptionBox
+ruleDescriptionBox returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getDescriptionBoxAccess().getAnnotationsAnnotationParserRuleCall_0_0());
+				}
+				lv_annotations_0_0=ruleAnnotation
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getDescriptionBoxRule());
+					}
+					add(
+						$current,
+						"annotations",
+						lv_annotations_0_0,
+						"gov.nasa.jpl.imce.oml.dsl.OML.Annotation");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)*
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getDescriptionBoxAccess().getKindDescriptionKindEnumRuleCall_1_0());
+				}
+				lv_kind_1_0=ruleDescriptionKind
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getDescriptionBoxRule());
+					}
+					set(
+						$current,
+						"kind",
+						lv_kind_1_0,
+						"gov.nasa.jpl.imce.oml.dsl.OML.DescriptionKind");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_2='descriptionBox'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getDescriptionBoxAccess().getDescriptionBoxKeyword_2());
+		}
+		(
+			(
+				lv_iri_3_0=RULE_IRI
+				{
+					newLeafNode(lv_iri_3_0, grammarAccess.getDescriptionBoxAccess().getIriIRITerminalRuleCall_3_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getDescriptionBoxRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"iri",
+						lv_iri_3_0,
+						"gov.nasa.jpl.imce.oml.dsl.OML.IRI");
+				}
+			)
+		)
+		otherlv_4='{'
+		{
+			newLeafNode(otherlv_4, grammarAccess.getDescriptionBoxAccess().getLeftCurlyBracketKeyword_4());
+		}
+		(
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getDescriptionBoxAccess().getAnnotationsAnnotationParserRuleCall_5_0_0());
+					}
+					lv_annotations_5_0=ruleAnnotation
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getDescriptionBoxRule());
+						}
+						add(
+							$current,
+							"annotations",
+							lv_annotations_5_0,
+							"gov.nasa.jpl.imce.oml.dsl.OML.Annotation");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+			    |
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getDescriptionBoxAccess().getClosedWorldDefinitionsDescriptionBoxExtendsClosedWorldDefinitionsParserRuleCall_5_1_0());
+					}
+					lv_closedWorldDefinitions_6_0=ruleDescriptionBoxExtendsClosedWorldDefinitions
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getDescriptionBoxRule());
+						}
+						add(
+							$current,
+							"closedWorldDefinitions",
+							lv_closedWorldDefinitions_6_0,
+							"gov.nasa.jpl.imce.oml.dsl.OML.DescriptionBoxExtendsClosedWorldDefinitions");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+			    |
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getDescriptionBoxAccess().getDescriptionBoxRefinementsDescriptionBoxRefinementParserRuleCall_5_2_0());
+					}
+					lv_descriptionBoxRefinements_7_0=ruleDescriptionBoxRefinement
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getDescriptionBoxRule());
+						}
+						add(
+							$current,
+							"descriptionBoxRefinements",
+							lv_descriptionBoxRefinements_7_0,
+							"gov.nasa.jpl.imce.oml.dsl.OML.DescriptionBoxRefinement");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+			    |
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getDescriptionBoxAccess().getConceptInstancesConceptInstanceParserRuleCall_5_3_0());
+					}
+					lv_conceptInstances_8_0=ruleConceptInstance
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getDescriptionBoxRule());
+						}
+						add(
+							$current,
+							"conceptInstances",
+							lv_conceptInstances_8_0,
+							"gov.nasa.jpl.imce.oml.dsl.OML.ConceptInstance");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+			    |
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getDescriptionBoxAccess().getReifiedRelationshipInstancesReifiedRelationshipInstanceParserRuleCall_5_4_0());
+					}
+					lv_reifiedRelationshipInstances_9_0=ruleReifiedRelationshipInstance
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getDescriptionBoxRule());
+						}
+						add(
+							$current,
+							"reifiedRelationshipInstances",
+							lv_reifiedRelationshipInstances_9_0,
+							"gov.nasa.jpl.imce.oml.dsl.OML.ReifiedRelationshipInstance");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+			    |
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getDescriptionBoxAccess().getReifiedRelationshipInstanceDomainsReifiedRelationshipInstanceDomainParserRuleCall_5_5_0());
+					}
+					lv_reifiedRelationshipInstanceDomains_10_0=ruleReifiedRelationshipInstanceDomain
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getDescriptionBoxRule());
+						}
+						add(
+							$current,
+							"reifiedRelationshipInstanceDomains",
+							lv_reifiedRelationshipInstanceDomains_10_0,
+							"gov.nasa.jpl.imce.oml.dsl.OML.ReifiedRelationshipInstanceDomain");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+			    |
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getDescriptionBoxAccess().getReifiedRelationshipInstanceRangesReifiedRelationshipInstanceRangeParserRuleCall_5_6_0());
+					}
+					lv_reifiedRelationshipInstanceRanges_11_0=ruleReifiedRelationshipInstanceRange
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getDescriptionBoxRule());
+						}
+						add(
+							$current,
+							"reifiedRelationshipInstanceRanges",
+							lv_reifiedRelationshipInstanceRanges_11_0,
+							"gov.nasa.jpl.imce.oml.dsl.OML.ReifiedRelationshipInstanceRange");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+			    |
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getDescriptionBoxAccess().getUnreifiedRelationshipInstanceTuplesUnreifiedRelationshipInstanceTupleParserRuleCall_5_7_0());
+					}
+					lv_unreifiedRelationshipInstanceTuples_12_0=ruleUnreifiedRelationshipInstanceTuple
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getDescriptionBoxRule());
+						}
+						add(
+							$current,
+							"unreifiedRelationshipInstanceTuples",
+							lv_unreifiedRelationshipInstanceTuples_12_0,
+							"gov.nasa.jpl.imce.oml.dsl.OML.UnreifiedRelationshipInstanceTuple");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+			    |
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getDescriptionBoxAccess().getSingletonScalarDataPropertyValuesSingletonInstanceScalarDataPropertyValueParserRuleCall_5_8_0());
+					}
+					lv_singletonScalarDataPropertyValues_13_0=ruleSingletonInstanceScalarDataPropertyValue
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getDescriptionBoxRule());
+						}
+						add(
+							$current,
+							"singletonScalarDataPropertyValues",
+							lv_singletonScalarDataPropertyValues_13_0,
+							"gov.nasa.jpl.imce.oml.dsl.OML.SingletonInstanceScalarDataPropertyValue");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+			    |
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getDescriptionBoxAccess().getSingletonStructuredDataPropertyValuesSingletonInstanceStructuredDataPropertyValueParserRuleCall_5_9_0());
+					}
+					lv_singletonStructuredDataPropertyValues_14_0=ruleSingletonInstanceStructuredDataPropertyValue
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getDescriptionBoxRule());
+						}
+						add(
+							$current,
+							"singletonStructuredDataPropertyValues",
+							lv_singletonStructuredDataPropertyValues_14_0,
+							"gov.nasa.jpl.imce.oml.dsl.OML.SingletonInstanceStructuredDataPropertyValue");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)*
+		otherlv_15='}'
+		{
+			newLeafNode(otherlv_15, grammarAccess.getDescriptionBoxAccess().getRightCurlyBracketKeyword_6());
 		}
 	)
 ;
@@ -5023,275 +5349,6 @@ ruleTimeScalarRestriction returns [EObject current=null]
 		otherlv_14='}'
 		{
 			newLeafNode(otherlv_14, grammarAccess.getTimeScalarRestrictionAccess().getRightCurlyBracketKeyword_6());
-		}
-	)
-;
-
-// Entry rule entryRuleDescriptionBox
-entryRuleDescriptionBox returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getDescriptionBoxRule()); }
-	iv_ruleDescriptionBox=ruleDescriptionBox
-	{ $current=$iv_ruleDescriptionBox.current; }
-	EOF;
-
-// Rule DescriptionBox
-ruleDescriptionBox returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getDescriptionBoxAccess().getKindDescriptionKindEnumRuleCall_0_0());
-				}
-				lv_kind_0_0=ruleDescriptionKind
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getDescriptionBoxRule());
-					}
-					set(
-						$current,
-						"kind",
-						lv_kind_0_0,
-						"gov.nasa.jpl.imce.oml.dsl.OML.DescriptionKind");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-		otherlv_1='descriptionBox'
-		{
-			newLeafNode(otherlv_1, grammarAccess.getDescriptionBoxAccess().getDescriptionBoxKeyword_1());
-		}
-		(
-			(
-				lv_iri_2_0=RULE_IRI
-				{
-					newLeafNode(lv_iri_2_0, grammarAccess.getDescriptionBoxAccess().getIriIRITerminalRuleCall_2_0());
-				}
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getDescriptionBoxRule());
-					}
-					setWithLastConsumed(
-						$current,
-						"iri",
-						lv_iri_2_0,
-						"gov.nasa.jpl.imce.oml.dsl.OML.IRI");
-				}
-			)
-		)
-		otherlv_3='{'
-		{
-			newLeafNode(otherlv_3, grammarAccess.getDescriptionBoxAccess().getLeftCurlyBracketKeyword_3());
-		}
-		(
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getDescriptionBoxAccess().getAnnotationsAnnotationParserRuleCall_4_0_0());
-					}
-					lv_annotations_4_0=ruleAnnotation
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getDescriptionBoxRule());
-						}
-						add(
-							$current,
-							"annotations",
-							lv_annotations_4_0,
-							"gov.nasa.jpl.imce.oml.dsl.OML.Annotation");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-			    |
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getDescriptionBoxAccess().getClosedWorldDefinitionsDescriptionBoxExtendsClosedWorldDefinitionsParserRuleCall_4_1_0());
-					}
-					lv_closedWorldDefinitions_5_0=ruleDescriptionBoxExtendsClosedWorldDefinitions
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getDescriptionBoxRule());
-						}
-						add(
-							$current,
-							"closedWorldDefinitions",
-							lv_closedWorldDefinitions_5_0,
-							"gov.nasa.jpl.imce.oml.dsl.OML.DescriptionBoxExtendsClosedWorldDefinitions");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-			    |
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getDescriptionBoxAccess().getDescriptionBoxRefinementsDescriptionBoxRefinementParserRuleCall_4_2_0());
-					}
-					lv_descriptionBoxRefinements_6_0=ruleDescriptionBoxRefinement
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getDescriptionBoxRule());
-						}
-						add(
-							$current,
-							"descriptionBoxRefinements",
-							lv_descriptionBoxRefinements_6_0,
-							"gov.nasa.jpl.imce.oml.dsl.OML.DescriptionBoxRefinement");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-			    |
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getDescriptionBoxAccess().getConceptInstancesConceptInstanceParserRuleCall_4_3_0());
-					}
-					lv_conceptInstances_7_0=ruleConceptInstance
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getDescriptionBoxRule());
-						}
-						add(
-							$current,
-							"conceptInstances",
-							lv_conceptInstances_7_0,
-							"gov.nasa.jpl.imce.oml.dsl.OML.ConceptInstance");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-			    |
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getDescriptionBoxAccess().getReifiedRelationshipInstancesReifiedRelationshipInstanceParserRuleCall_4_4_0());
-					}
-					lv_reifiedRelationshipInstances_8_0=ruleReifiedRelationshipInstance
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getDescriptionBoxRule());
-						}
-						add(
-							$current,
-							"reifiedRelationshipInstances",
-							lv_reifiedRelationshipInstances_8_0,
-							"gov.nasa.jpl.imce.oml.dsl.OML.ReifiedRelationshipInstance");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-			    |
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getDescriptionBoxAccess().getReifiedRelationshipInstanceDomainsReifiedRelationshipInstanceDomainParserRuleCall_4_5_0());
-					}
-					lv_reifiedRelationshipInstanceDomains_9_0=ruleReifiedRelationshipInstanceDomain
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getDescriptionBoxRule());
-						}
-						add(
-							$current,
-							"reifiedRelationshipInstanceDomains",
-							lv_reifiedRelationshipInstanceDomains_9_0,
-							"gov.nasa.jpl.imce.oml.dsl.OML.ReifiedRelationshipInstanceDomain");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-			    |
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getDescriptionBoxAccess().getReifiedRelationshipInstanceRangesReifiedRelationshipInstanceRangeParserRuleCall_4_6_0());
-					}
-					lv_reifiedRelationshipInstanceRanges_10_0=ruleReifiedRelationshipInstanceRange
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getDescriptionBoxRule());
-						}
-						add(
-							$current,
-							"reifiedRelationshipInstanceRanges",
-							lv_reifiedRelationshipInstanceRanges_10_0,
-							"gov.nasa.jpl.imce.oml.dsl.OML.ReifiedRelationshipInstanceRange");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-			    |
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getDescriptionBoxAccess().getUnreifiedRelationshipInstanceTuplesUnreifiedRelationshipInstanceTupleParserRuleCall_4_7_0());
-					}
-					lv_unreifiedRelationshipInstanceTuples_11_0=ruleUnreifiedRelationshipInstanceTuple
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getDescriptionBoxRule());
-						}
-						add(
-							$current,
-							"unreifiedRelationshipInstanceTuples",
-							lv_unreifiedRelationshipInstanceTuples_11_0,
-							"gov.nasa.jpl.imce.oml.dsl.OML.UnreifiedRelationshipInstanceTuple");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-			    |
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getDescriptionBoxAccess().getSingletonScalarDataPropertyValuesSingletonInstanceScalarDataPropertyValueParserRuleCall_4_8_0());
-					}
-					lv_singletonScalarDataPropertyValues_12_0=ruleSingletonInstanceScalarDataPropertyValue
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getDescriptionBoxRule());
-						}
-						add(
-							$current,
-							"singletonScalarDataPropertyValues",
-							lv_singletonScalarDataPropertyValues_12_0,
-							"gov.nasa.jpl.imce.oml.dsl.OML.SingletonInstanceScalarDataPropertyValue");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-			    |
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getDescriptionBoxAccess().getSingletonStructuredDataPropertyValuesSingletonInstanceStructuredDataPropertyValueParserRuleCall_4_9_0());
-					}
-					lv_singletonStructuredDataPropertyValues_13_0=ruleSingletonInstanceStructuredDataPropertyValue
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getDescriptionBoxRule());
-						}
-						add(
-							$current,
-							"singletonStructuredDataPropertyValues",
-							lv_singletonStructuredDataPropertyValues_13_0,
-							"gov.nasa.jpl.imce.oml.dsl.OML.SingletonInstanceStructuredDataPropertyValue");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-		)*
-		otherlv_14='}'
-		{
-			newLeafNode(otherlv_14, grammarAccess.getDescriptionBoxAccess().getRightCurlyBracketKeyword_5());
 		}
 	)
 ;
