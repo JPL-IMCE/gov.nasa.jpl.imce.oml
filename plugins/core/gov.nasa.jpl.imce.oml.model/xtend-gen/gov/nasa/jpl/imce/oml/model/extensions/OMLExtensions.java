@@ -74,13 +74,11 @@ import gov.nasa.jpl.imce.oml.model.terminologies.Scalar;
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfRestriction;
-import gov.nasa.jpl.imce.oml.model.terminologies.SpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.StringScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.Structure;
 import gov.nasa.jpl.imce.oml.model.terminologies.StructuredDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.SynonymScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox;
-import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBoxAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyExtensionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.TimeScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship;
@@ -417,28 +415,13 @@ public class OMLExtensions {
   }
   
   public void phasedResolveAll(final Extent it) {
-    final Consumer<TerminologyGraph> _function = (TerminologyGraph it_1) -> {
-      final Consumer<TerminologyBoxAxiom> _function_1 = (TerminologyBoxAxiom it_2) -> {
-        boolean _matched = false;
-        if (it_2 instanceof TerminologyExtensionAxiom) {
-          _matched=true;
-          EcoreUtil.resolveAll(it_2);
-        }
+    final Consumer<Module> _function = (Module it_1) -> {
+      final Consumer<ModuleEdge> _function_1 = (ModuleEdge it_2) -> {
+        EcoreUtil.resolveAll(it_2.targetModule());
       };
-      it_1.getBoxAxioms().forEach(_function_1);
+      it_1.moduleEdges().forEach(_function_1);
     };
-    this.terminologyGraphs(it).forEach(_function);
-    final Consumer<TerminologyGraph> _function_1 = (TerminologyGraph it_1) -> {
-      final Consumer<TerminologyBoxAxiom> _function_2 = (TerminologyBoxAxiom it_2) -> {
-        boolean _matched = false;
-        if (it_2 instanceof SpecializationAxiom) {
-          _matched=true;
-          EcoreUtil.resolveAll(it_2);
-        }
-      };
-      it_1.getBoxAxioms().forEach(_function_2);
-    };
-    this.terminologyGraphs(it).forEach(_function_1);
+    it.getModules().forEach(_function);
   }
   
   public Iterable<TerminologyBox> allImportedTerminologies(final TerminologyBox it) {
@@ -454,10 +437,10 @@ public class OMLExtensions {
       }
       final TerminologyBox tbox = IterableExtensions.<TerminologyBox>head(queue);
       queue.remove(tbox);
-      final Function1<TerminologyBoxAxiom, TerminologyBox> _function = (TerminologyBoxAxiom it) -> {
-        return it.target();
+      final Function1<ModuleEdge, Module> _function = (ModuleEdge it) -> {
+        return it.targetModule();
       };
-      final Iterable<TerminologyBox> inc = IterableExtensions.<TerminologyBox>filterNull(ListExtensions.<TerminologyBoxAxiom, TerminologyBox>map(tbox.getBoxAxioms(), _function));
+      final Iterable<TerminologyBox> inc = Iterables.<TerminologyBox>filter(IterableExtensions.<Module>filterNull(ListExtensions.<ModuleEdge, Module>map(tbox.moduleEdges(), _function)), TerminologyBox.class);
       Iterables.<TerminologyBox>addAll(queue, inc);
       Iterables.<TerminologyBox>addAll(acc, inc);
       _xblockexpression = this.collectAllImportedTerminologies(queue, acc);

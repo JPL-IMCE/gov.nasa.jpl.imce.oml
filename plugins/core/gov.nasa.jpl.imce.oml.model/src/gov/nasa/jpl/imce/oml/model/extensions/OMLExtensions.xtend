@@ -300,21 +300,10 @@ class OMLExtensions {
 	}
 	
 	def phasedResolveAll(Extent it) {
-		
-		// phase 1
-		terminologyGraphs.forEach[
-			boxAxioms.forEach[switch it {
-				TerminologyExtensionAxiom:
-					EcoreUtil.resolveAll(it)	
-			}]
-		]
-		
-		// phase 2
-		terminologyGraphs.forEach[
-			boxAxioms.forEach[switch it {
-				SpecializationAxiom:
-					EcoreUtil.resolveAll(it)	
-			}]
+		modules.forEach[
+			moduleEdges.forEach[
+				EcoreUtil.resolveAll(targetModule)
+			]
 		]
 	}
 	
@@ -332,7 +321,7 @@ class OMLExtensions {
 		val tbox = queue.head
 		queue.remove(tbox)
 		
-		val inc = tbox.boxAxioms.map[target].filterNull
+		val inc = tbox.moduleEdges.map[targetModule].filterNull.filter(TerminologyBox)
 		queue.addAll(inc)
 		acc.addAll(inc)
 		
