@@ -9,6 +9,14 @@ The [OML Workbench](releng/gov.nasa.jpl.imce.oml.product/README.md) is an Eclips
 
 ## OML Development Process notes
 
+## GIT
+
+Xtext compiles a grammar file, `*.xtext` into a corresponding binary in the `src-gen` folder as `*.xtextbin`.
+If generated sources are in GIT:
+
+- `git ls-files *.xtext | wc -l` should be equal to `git ls-files *.xtextbin | wc -l`
+- `.gitignore` should no include a pattern matching `*.xtextbin`
+
 ## To set versions everywhere
 
 Execute from the `gov.nasa.jpl.imce.oml.tycho` folder:
