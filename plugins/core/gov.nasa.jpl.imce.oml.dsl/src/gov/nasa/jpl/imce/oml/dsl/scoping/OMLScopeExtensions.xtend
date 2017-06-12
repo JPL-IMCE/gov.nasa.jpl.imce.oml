@@ -19,15 +19,20 @@ package gov.nasa.jpl.imce.oml.dsl.scoping
 
 import com.google.common.base.Function
 import com.google.common.collect.Lists
+import com.google.common.collect.Sets
 import com.google.inject.Inject
+import gov.nasa.jpl.imce.oml.model.bundles.Bundle
 import gov.nasa.jpl.imce.oml.model.bundles.BundledTerminologyAxiom
 import gov.nasa.jpl.imce.oml.model.common.Annotation
 import gov.nasa.jpl.imce.oml.model.common.Element
+import gov.nasa.jpl.imce.oml.model.common.Extent
 import gov.nasa.jpl.imce.oml.model.common.Resource
+import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions
 import gov.nasa.jpl.imce.oml.model.graphs.ConceptDesignationTerminologyAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox
 import java.util.ArrayList
+import java.util.Set
 import org.eclipse.emf.ecore.EReference
 import org.eclipse.xtext.naming.IQualifiedNameConverter
 import org.eclipse.xtext.naming.QualifiedName
@@ -35,12 +40,6 @@ import org.eclipse.xtext.resource.IEObjectDescription
 import org.eclipse.xtext.scoping.IScope
 import org.eclipse.xtext.scoping.Scopes
 import org.eclipse.xtext.scoping.impl.SimpleScope
-import gov.nasa.jpl.imce.oml.model.bundles.Bundle
-import gov.nasa.jpl.imce.oml.model.common.Extent
-import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox
-import java.util.Set
-import com.google.common.collect.Sets
-import org.eclipse.xtext.EcoreUtil2
 
 class OMLScopeExtensions {
 	
@@ -206,6 +205,8 @@ class OMLScopeExtensions {
 		bundleScope(b, [localConcepts], [importedResourceNameFunction])
 	}
 	
+	// =================================================
+	
 	def <T extends Element> IScope descriptionScope(
 		DescriptionBox dbox,
 		Function<DescriptionBox, Iterable<T>> localScopeFunction,
@@ -230,21 +231,8 @@ class OMLScopeExtensions {
 		descriptionScope(dbox, [localReifiedRelationshipInstances], [importedDescriptionNameFunction])
 	}
 	
-	// @TODO Find what is the proper way to compute this scope lazily without forcing resolution as is done here.
-	// try writing queries to traverse the closed world definition TBOxes to find their tbox statements & tbox axioms that import other tboxes.
-	protected def void forceResolvingTerminologiesUsedInDescriptionBox(DescriptionBox dbox) {
-		val exts = dbox.eResource.resourceSet.resources.map[contents.filter(Extent)].flatten
-		val ax = exts.map[modules.filter(DescriptionBox)].flatten.map[closedWorldDefinitions].flatten.toList
-		val tboxes = ax.map[closedWorldDefinitions]
-		tboxes.forEach[EcoreUtil2.resolveAll(it)]
-		
-	}
-	
-	// @TODO Find what is the proper way to compute this scope lazily without forcing resolution as is done here.
 	def IScope allEntityStructuredDataPropertiesScope(DescriptionBox dbox) {
-		forceResolvingTerminologiesUsedInDescriptionBox(dbox)
-		val exts = dbox.eResource.resourceSet.resources.map[contents.filter(Extent)].flatten
-		val tboxes = exts.map[modules.filter(TerminologyBox)].flatten
+		val tboxes = dbox.allImportedTerminologiesFromDescription()
 		
 		val ArrayList<IEObjectDescription> result = Lists.newArrayList()
 		val inc = tboxes.map [ tbox |
@@ -257,11 +245,8 @@ class OMLScopeExtensions {
 		new SimpleScope(result)
 	}
 	
-	// @TODO Find what is the proper way to compute this scope lazily without forcing resolution as is done here.
 	def IScope allEntityScalarDataPropertiesScope(DescriptionBox dbox) {
-		forceResolvingTerminologiesUsedInDescriptionBox(dbox)
-		val exts = dbox.eResource.resourceSet.resources.map[contents.filter(Extent)].flatten
-		val tboxes = exts.map[modules.filter(TerminologyBox)].flatten
+		val tboxes = dbox.allImportedTerminologiesFromDescription()
 		
 		val ArrayList<IEObjectDescription> result = Lists.newArrayList()
 		val inc = tboxes.map [ tbox |
@@ -274,11 +259,8 @@ class OMLScopeExtensions {
 		new SimpleScope(result)
 	}
 	
-	// @TODO Find what is the proper way to compute this scope lazily without forcing resolution as is done here.
 	def IScope allStructuredDataPropertiesScope(DescriptionBox dbox) {
-		forceResolvingTerminologiesUsedInDescriptionBox(dbox)
-		val exts = dbox.eResource.resourceSet.resources.map[contents.filter(Extent)].flatten
-		val tboxes = exts.map[modules.filter(TerminologyBox)].flatten
+		val tboxes = dbox.allImportedTerminologiesFromDescription()
 		
 		val ArrayList<IEObjectDescription> result = Lists.newArrayList()
 		val inc = tboxes.map [ tbox |
@@ -291,11 +273,8 @@ class OMLScopeExtensions {
 		new SimpleScope(result)
 	}
 	
-	// @TODO Find what is the proper way to compute this scope lazily without forcing resolution as is done here.
 	def IScope allScalarDataPropertiesScope(DescriptionBox dbox) {
-		forceResolvingTerminologiesUsedInDescriptionBox(dbox)
-		val exts = dbox.eResource.resourceSet.resources.map[contents.filter(Extent)].flatten
-		val tboxes = exts.map[modules.filter(TerminologyBox)].flatten
+		val tboxes = dbox.allImportedTerminologiesFromDescription()
 		
 		val ArrayList<IEObjectDescription> result = Lists.newArrayList()
 		val inc = tboxes.map [ tbox |
@@ -308,11 +287,8 @@ class OMLScopeExtensions {
 		new SimpleScope(result)
 	}
 	
-	// @TODO Find what is the proper way to compute this scope lazily without forcing resolution as is done here.
 	def IScope allConceptsScope(DescriptionBox dbox) {
-		forceResolvingTerminologiesUsedInDescriptionBox(dbox)
-		val exts = dbox.eResource.resourceSet.resources.map[contents.filter(Extent)].flatten
-		val tboxes = exts.map[modules.filter(TerminologyBox)].flatten
+		val tboxes = dbox.allImportedTerminologiesFromDescription()
 		
 		val ArrayList<IEObjectDescription> result = Lists.newArrayList()
 		val inc = tboxes.map [ tbox |
@@ -325,11 +301,8 @@ class OMLScopeExtensions {
 		new SimpleScope(result)
 	}
 	
-	// @TODO Find what is the proper way to compute this scope lazily without forcing resolution as is done here.
 	def IScope allReifiedRelationshipScope(DescriptionBox dbox) {
-		forceResolvingTerminologiesUsedInDescriptionBox(dbox)
-		val exts = dbox.eResource.resourceSet.resources.map[contents.filter(Extent)].flatten
-		val tboxes = exts.map[modules.filter(TerminologyBox)].flatten
+		val tboxes = dbox.allImportedTerminologiesFromDescription()
 		
 		val ArrayList<IEObjectDescription> result = Lists.newArrayList()
 		val inc = tboxes.map [ tbox |
@@ -342,11 +315,8 @@ class OMLScopeExtensions {
 		new SimpleScope(result)
 	}
 	
-	// @TODO Find what is the proper way to compute this scope lazily without forcing resolution as is done here.
 	def IScope allUnreifiedRelationshipScope(DescriptionBox dbox) {
-		forceResolvingTerminologiesUsedInDescriptionBox(dbox)
-		val exts = dbox.eResource.resourceSet.resources.map[contents.filter(Extent)].flatten
-		val tboxes = exts.map[modules.filter(TerminologyBox)].flatten
+		val tboxes = dbox.allImportedTerminologiesFromDescription()
 		
 		val ArrayList<IEObjectDescription> result = Lists.newArrayList()
 		val inc = tboxes.map [ tbox |

@@ -31,7 +31,6 @@ import gov.nasa.jpl.imce.oml.model.common.Extent;
 import gov.nasa.jpl.imce.oml.model.common.Module;
 import gov.nasa.jpl.imce.oml.model.descriptions.ConceptualEntitySingletonInstance;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox;
-import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxExtendsClosedWorldDefinitions;
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstance;
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
 import gov.nasa.jpl.imce.oml.model.graphs.ConceptDesignationTerminologyAxiom;
@@ -51,13 +50,10 @@ import gov.nasa.jpl.imce.oml.model.terminologies.StructuredDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox;
 import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
-import java.util.function.Consumer;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.IEObjectDescription;
@@ -426,49 +422,19 @@ public class OMLScopeExtensions {
     return this.<ReifiedRelationshipInstance>descriptionScope(dbox, _function, _function_1);
   }
   
-  protected void forceResolvingTerminologiesUsedInDescriptionBox(final DescriptionBox dbox) {
-    final Function1<Resource, Iterable<Extent>> _function = (Resource it) -> {
-      return Iterables.<Extent>filter(it.getContents(), Extent.class);
-    };
-    final Iterable<Extent> exts = Iterables.<Extent>concat(ListExtensions.<Resource, Iterable<Extent>>map(dbox.eResource().getResourceSet().getResources(), _function));
-    final Function1<Extent, Iterable<DescriptionBox>> _function_1 = (Extent it) -> {
-      return Iterables.<DescriptionBox>filter(it.getModules(), DescriptionBox.class);
-    };
-    final Function1<DescriptionBox, EList<DescriptionBoxExtendsClosedWorldDefinitions>> _function_2 = (DescriptionBox it) -> {
-      return it.getClosedWorldDefinitions();
-    };
-    final List<DescriptionBoxExtendsClosedWorldDefinitions> ax = IterableExtensions.<DescriptionBoxExtendsClosedWorldDefinitions>toList(Iterables.<DescriptionBoxExtendsClosedWorldDefinitions>concat(IterableExtensions.<DescriptionBox, EList<DescriptionBoxExtendsClosedWorldDefinitions>>map(Iterables.<DescriptionBox>concat(IterableExtensions.<Extent, Iterable<DescriptionBox>>map(exts, _function_1)), _function_2)));
-    final Function1<DescriptionBoxExtendsClosedWorldDefinitions, TerminologyBox> _function_3 = (DescriptionBoxExtendsClosedWorldDefinitions it) -> {
-      return it.getClosedWorldDefinitions();
-    };
-    final List<TerminologyBox> tboxes = ListExtensions.<DescriptionBoxExtendsClosedWorldDefinitions, TerminologyBox>map(ax, _function_3);
-    final Consumer<TerminologyBox> _function_4 = (TerminologyBox it) -> {
-      EcoreUtil2.resolveAll(it);
-    };
-    tboxes.forEach(_function_4);
-  }
-  
   public IScope allEntityStructuredDataPropertiesScope(final DescriptionBox dbox) {
     SimpleScope _xblockexpression = null;
     {
-      this.forceResolvingTerminologiesUsedInDescriptionBox(dbox);
-      final Function1<Resource, Iterable<Extent>> _function = (Resource it) -> {
-        return Iterables.<Extent>filter(it.getContents(), Extent.class);
-      };
-      final Iterable<Extent> exts = Iterables.<Extent>concat(ListExtensions.<Resource, Iterable<Extent>>map(dbox.eResource().getResourceSet().getResources(), _function));
-      final Function1<Extent, Iterable<TerminologyBox>> _function_1 = (Extent it) -> {
-        return Iterables.<TerminologyBox>filter(it.getModules(), TerminologyBox.class);
-      };
-      final Iterable<TerminologyBox> tboxes = Iterables.<TerminologyBox>concat(IterableExtensions.<Extent, Iterable<TerminologyBox>>map(exts, _function_1));
+      final Iterable<TerminologyBox> tboxes = this._oMLExtensions.allImportedTerminologiesFromDescription(dbox);
       final ArrayList<IEObjectDescription> result = Lists.<IEObjectDescription>newArrayList();
-      final Function1<TerminologyBox, Iterable<IEObjectDescription>> _function_2 = (TerminologyBox tbox) -> {
-        final Function<EntityStructuredDataProperty, QualifiedName> _function_3 = (EntityStructuredDataProperty importedThing) -> {
+      final Function1<TerminologyBox, Iterable<IEObjectDescription>> _function = (TerminologyBox tbox) -> {
+        final Function<EntityStructuredDataProperty, QualifiedName> _function_1 = (EntityStructuredDataProperty importedThing) -> {
           return this.<EntityStructuredDataProperty>importedResourceNameFunction(Pair.<TerminologyBox, EntityStructuredDataProperty>of(tbox, importedThing));
         };
         return Scopes.<EntityStructuredDataProperty>scopedElementsFor(
-          this._oMLExtensions.localEntityStructuredDataProperties(tbox), _function_3);
+          this._oMLExtensions.localEntityStructuredDataProperties(tbox), _function_1);
       };
-      final Iterable<IEObjectDescription> inc = Iterables.<IEObjectDescription>concat(IterableExtensions.<TerminologyBox, Iterable<IEObjectDescription>>map(tboxes, _function_2));
+      final Iterable<IEObjectDescription> inc = Iterables.<IEObjectDescription>concat(IterableExtensions.<TerminologyBox, Iterable<IEObjectDescription>>map(tboxes, _function));
       Iterables.<IEObjectDescription>addAll(result, inc);
       _xblockexpression = new SimpleScope(result);
     }
@@ -478,24 +444,16 @@ public class OMLScopeExtensions {
   public IScope allEntityScalarDataPropertiesScope(final DescriptionBox dbox) {
     SimpleScope _xblockexpression = null;
     {
-      this.forceResolvingTerminologiesUsedInDescriptionBox(dbox);
-      final Function1<Resource, Iterable<Extent>> _function = (Resource it) -> {
-        return Iterables.<Extent>filter(it.getContents(), Extent.class);
-      };
-      final Iterable<Extent> exts = Iterables.<Extent>concat(ListExtensions.<Resource, Iterable<Extent>>map(dbox.eResource().getResourceSet().getResources(), _function));
-      final Function1<Extent, Iterable<TerminologyBox>> _function_1 = (Extent it) -> {
-        return Iterables.<TerminologyBox>filter(it.getModules(), TerminologyBox.class);
-      };
-      final Iterable<TerminologyBox> tboxes = Iterables.<TerminologyBox>concat(IterableExtensions.<Extent, Iterable<TerminologyBox>>map(exts, _function_1));
+      final Iterable<TerminologyBox> tboxes = this._oMLExtensions.allImportedTerminologiesFromDescription(dbox);
       final ArrayList<IEObjectDescription> result = Lists.<IEObjectDescription>newArrayList();
-      final Function1<TerminologyBox, Iterable<IEObjectDescription>> _function_2 = (TerminologyBox tbox) -> {
-        final Function<EntityScalarDataProperty, QualifiedName> _function_3 = (EntityScalarDataProperty importedThing) -> {
+      final Function1<TerminologyBox, Iterable<IEObjectDescription>> _function = (TerminologyBox tbox) -> {
+        final Function<EntityScalarDataProperty, QualifiedName> _function_1 = (EntityScalarDataProperty importedThing) -> {
           return this.<EntityScalarDataProperty>importedResourceNameFunction(Pair.<TerminologyBox, EntityScalarDataProperty>of(tbox, importedThing));
         };
         return Scopes.<EntityScalarDataProperty>scopedElementsFor(
-          this._oMLExtensions.localEntityScalarDataProperties(tbox), _function_3);
+          this._oMLExtensions.localEntityScalarDataProperties(tbox), _function_1);
       };
-      final Iterable<IEObjectDescription> inc = Iterables.<IEObjectDescription>concat(IterableExtensions.<TerminologyBox, Iterable<IEObjectDescription>>map(tboxes, _function_2));
+      final Iterable<IEObjectDescription> inc = Iterables.<IEObjectDescription>concat(IterableExtensions.<TerminologyBox, Iterable<IEObjectDescription>>map(tboxes, _function));
       Iterables.<IEObjectDescription>addAll(result, inc);
       _xblockexpression = new SimpleScope(result);
     }
@@ -505,24 +463,16 @@ public class OMLScopeExtensions {
   public IScope allStructuredDataPropertiesScope(final DescriptionBox dbox) {
     SimpleScope _xblockexpression = null;
     {
-      this.forceResolvingTerminologiesUsedInDescriptionBox(dbox);
-      final Function1<Resource, Iterable<Extent>> _function = (Resource it) -> {
-        return Iterables.<Extent>filter(it.getContents(), Extent.class);
-      };
-      final Iterable<Extent> exts = Iterables.<Extent>concat(ListExtensions.<Resource, Iterable<Extent>>map(dbox.eResource().getResourceSet().getResources(), _function));
-      final Function1<Extent, Iterable<TerminologyBox>> _function_1 = (Extent it) -> {
-        return Iterables.<TerminologyBox>filter(it.getModules(), TerminologyBox.class);
-      };
-      final Iterable<TerminologyBox> tboxes = Iterables.<TerminologyBox>concat(IterableExtensions.<Extent, Iterable<TerminologyBox>>map(exts, _function_1));
+      final Iterable<TerminologyBox> tboxes = this._oMLExtensions.allImportedTerminologiesFromDescription(dbox);
       final ArrayList<IEObjectDescription> result = Lists.<IEObjectDescription>newArrayList();
-      final Function1<TerminologyBox, Iterable<IEObjectDescription>> _function_2 = (TerminologyBox tbox) -> {
-        final Function<StructuredDataProperty, QualifiedName> _function_3 = (StructuredDataProperty importedThing) -> {
+      final Function1<TerminologyBox, Iterable<IEObjectDescription>> _function = (TerminologyBox tbox) -> {
+        final Function<StructuredDataProperty, QualifiedName> _function_1 = (StructuredDataProperty importedThing) -> {
           return this.<StructuredDataProperty>importedResourceNameFunction(Pair.<TerminologyBox, StructuredDataProperty>of(tbox, importedThing));
         };
         return Scopes.<StructuredDataProperty>scopedElementsFor(
-          this._oMLExtensions.localStructuredDataProperties(tbox), _function_3);
+          this._oMLExtensions.localStructuredDataProperties(tbox), _function_1);
       };
-      final Iterable<IEObjectDescription> inc = Iterables.<IEObjectDescription>concat(IterableExtensions.<TerminologyBox, Iterable<IEObjectDescription>>map(tboxes, _function_2));
+      final Iterable<IEObjectDescription> inc = Iterables.<IEObjectDescription>concat(IterableExtensions.<TerminologyBox, Iterable<IEObjectDescription>>map(tboxes, _function));
       Iterables.<IEObjectDescription>addAll(result, inc);
       _xblockexpression = new SimpleScope(result);
     }
@@ -532,24 +482,16 @@ public class OMLScopeExtensions {
   public IScope allScalarDataPropertiesScope(final DescriptionBox dbox) {
     SimpleScope _xblockexpression = null;
     {
-      this.forceResolvingTerminologiesUsedInDescriptionBox(dbox);
-      final Function1<Resource, Iterable<Extent>> _function = (Resource it) -> {
-        return Iterables.<Extent>filter(it.getContents(), Extent.class);
-      };
-      final Iterable<Extent> exts = Iterables.<Extent>concat(ListExtensions.<Resource, Iterable<Extent>>map(dbox.eResource().getResourceSet().getResources(), _function));
-      final Function1<Extent, Iterable<TerminologyBox>> _function_1 = (Extent it) -> {
-        return Iterables.<TerminologyBox>filter(it.getModules(), TerminologyBox.class);
-      };
-      final Iterable<TerminologyBox> tboxes = Iterables.<TerminologyBox>concat(IterableExtensions.<Extent, Iterable<TerminologyBox>>map(exts, _function_1));
+      final Iterable<TerminologyBox> tboxes = this._oMLExtensions.allImportedTerminologiesFromDescription(dbox);
       final ArrayList<IEObjectDescription> result = Lists.<IEObjectDescription>newArrayList();
-      final Function1<TerminologyBox, Iterable<IEObjectDescription>> _function_2 = (TerminologyBox tbox) -> {
-        final Function<ScalarDataProperty, QualifiedName> _function_3 = (ScalarDataProperty importedThing) -> {
+      final Function1<TerminologyBox, Iterable<IEObjectDescription>> _function = (TerminologyBox tbox) -> {
+        final Function<ScalarDataProperty, QualifiedName> _function_1 = (ScalarDataProperty importedThing) -> {
           return this.<ScalarDataProperty>importedResourceNameFunction(Pair.<TerminologyBox, ScalarDataProperty>of(tbox, importedThing));
         };
         return Scopes.<ScalarDataProperty>scopedElementsFor(
-          this._oMLExtensions.localScalarDataProperties(tbox), _function_3);
+          this._oMLExtensions.localScalarDataProperties(tbox), _function_1);
       };
-      final Iterable<IEObjectDescription> inc = Iterables.<IEObjectDescription>concat(IterableExtensions.<TerminologyBox, Iterable<IEObjectDescription>>map(tboxes, _function_2));
+      final Iterable<IEObjectDescription> inc = Iterables.<IEObjectDescription>concat(IterableExtensions.<TerminologyBox, Iterable<IEObjectDescription>>map(tboxes, _function));
       Iterables.<IEObjectDescription>addAll(result, inc);
       _xblockexpression = new SimpleScope(result);
     }
@@ -559,24 +501,16 @@ public class OMLScopeExtensions {
   public IScope allConceptsScope(final DescriptionBox dbox) {
     SimpleScope _xblockexpression = null;
     {
-      this.forceResolvingTerminologiesUsedInDescriptionBox(dbox);
-      final Function1<Resource, Iterable<Extent>> _function = (Resource it) -> {
-        return Iterables.<Extent>filter(it.getContents(), Extent.class);
-      };
-      final Iterable<Extent> exts = Iterables.<Extent>concat(ListExtensions.<Resource, Iterable<Extent>>map(dbox.eResource().getResourceSet().getResources(), _function));
-      final Function1<Extent, Iterable<TerminologyBox>> _function_1 = (Extent it) -> {
-        return Iterables.<TerminologyBox>filter(it.getModules(), TerminologyBox.class);
-      };
-      final Iterable<TerminologyBox> tboxes = Iterables.<TerminologyBox>concat(IterableExtensions.<Extent, Iterable<TerminologyBox>>map(exts, _function_1));
+      final Iterable<TerminologyBox> tboxes = this._oMLExtensions.allImportedTerminologiesFromDescription(dbox);
       final ArrayList<IEObjectDescription> result = Lists.<IEObjectDescription>newArrayList();
-      final Function1<TerminologyBox, Iterable<IEObjectDescription>> _function_2 = (TerminologyBox tbox) -> {
-        final Function<Concept, QualifiedName> _function_3 = (Concept importedThing) -> {
+      final Function1<TerminologyBox, Iterable<IEObjectDescription>> _function = (TerminologyBox tbox) -> {
+        final Function<Concept, QualifiedName> _function_1 = (Concept importedThing) -> {
           return this.<Concept>importedResourceNameFunction(Pair.<TerminologyBox, Concept>of(tbox, importedThing));
         };
         return Scopes.<Concept>scopedElementsFor(
-          this._oMLExtensions.localConcepts(tbox), _function_3);
+          this._oMLExtensions.localConcepts(tbox), _function_1);
       };
-      final Iterable<IEObjectDescription> inc = Iterables.<IEObjectDescription>concat(IterableExtensions.<TerminologyBox, Iterable<IEObjectDescription>>map(tboxes, _function_2));
+      final Iterable<IEObjectDescription> inc = Iterables.<IEObjectDescription>concat(IterableExtensions.<TerminologyBox, Iterable<IEObjectDescription>>map(tboxes, _function));
       Iterables.<IEObjectDescription>addAll(result, inc);
       _xblockexpression = new SimpleScope(result);
     }
@@ -586,24 +520,16 @@ public class OMLScopeExtensions {
   public IScope allReifiedRelationshipScope(final DescriptionBox dbox) {
     SimpleScope _xblockexpression = null;
     {
-      this.forceResolvingTerminologiesUsedInDescriptionBox(dbox);
-      final Function1<Resource, Iterable<Extent>> _function = (Resource it) -> {
-        return Iterables.<Extent>filter(it.getContents(), Extent.class);
-      };
-      final Iterable<Extent> exts = Iterables.<Extent>concat(ListExtensions.<Resource, Iterable<Extent>>map(dbox.eResource().getResourceSet().getResources(), _function));
-      final Function1<Extent, Iterable<TerminologyBox>> _function_1 = (Extent it) -> {
-        return Iterables.<TerminologyBox>filter(it.getModules(), TerminologyBox.class);
-      };
-      final Iterable<TerminologyBox> tboxes = Iterables.<TerminologyBox>concat(IterableExtensions.<Extent, Iterable<TerminologyBox>>map(exts, _function_1));
+      final Iterable<TerminologyBox> tboxes = this._oMLExtensions.allImportedTerminologiesFromDescription(dbox);
       final ArrayList<IEObjectDescription> result = Lists.<IEObjectDescription>newArrayList();
-      final Function1<TerminologyBox, Iterable<IEObjectDescription>> _function_2 = (TerminologyBox tbox) -> {
-        final Function<ReifiedRelationship, QualifiedName> _function_3 = (ReifiedRelationship importedThing) -> {
+      final Function1<TerminologyBox, Iterable<IEObjectDescription>> _function = (TerminologyBox tbox) -> {
+        final Function<ReifiedRelationship, QualifiedName> _function_1 = (ReifiedRelationship importedThing) -> {
           return this.<ReifiedRelationship>importedResourceNameFunction(Pair.<TerminologyBox, ReifiedRelationship>of(tbox, importedThing));
         };
         return Scopes.<ReifiedRelationship>scopedElementsFor(
-          this._oMLExtensions.localReifiedRelationships(tbox), _function_3);
+          this._oMLExtensions.localReifiedRelationships(tbox), _function_1);
       };
-      final Iterable<IEObjectDescription> inc = Iterables.<IEObjectDescription>concat(IterableExtensions.<TerminologyBox, Iterable<IEObjectDescription>>map(tboxes, _function_2));
+      final Iterable<IEObjectDescription> inc = Iterables.<IEObjectDescription>concat(IterableExtensions.<TerminologyBox, Iterable<IEObjectDescription>>map(tboxes, _function));
       Iterables.<IEObjectDescription>addAll(result, inc);
       _xblockexpression = new SimpleScope(result);
     }
@@ -613,24 +539,16 @@ public class OMLScopeExtensions {
   public IScope allUnreifiedRelationshipScope(final DescriptionBox dbox) {
     SimpleScope _xblockexpression = null;
     {
-      this.forceResolvingTerminologiesUsedInDescriptionBox(dbox);
-      final Function1<Resource, Iterable<Extent>> _function = (Resource it) -> {
-        return Iterables.<Extent>filter(it.getContents(), Extent.class);
-      };
-      final Iterable<Extent> exts = Iterables.<Extent>concat(ListExtensions.<Resource, Iterable<Extent>>map(dbox.eResource().getResourceSet().getResources(), _function));
-      final Function1<Extent, Iterable<TerminologyBox>> _function_1 = (Extent it) -> {
-        return Iterables.<TerminologyBox>filter(it.getModules(), TerminologyBox.class);
-      };
-      final Iterable<TerminologyBox> tboxes = Iterables.<TerminologyBox>concat(IterableExtensions.<Extent, Iterable<TerminologyBox>>map(exts, _function_1));
+      final Iterable<TerminologyBox> tboxes = this._oMLExtensions.allImportedTerminologiesFromDescription(dbox);
       final ArrayList<IEObjectDescription> result = Lists.<IEObjectDescription>newArrayList();
-      final Function1<TerminologyBox, Iterable<IEObjectDescription>> _function_2 = (TerminologyBox tbox) -> {
-        final Function<UnreifiedRelationship, QualifiedName> _function_3 = (UnreifiedRelationship importedThing) -> {
+      final Function1<TerminologyBox, Iterable<IEObjectDescription>> _function = (TerminologyBox tbox) -> {
+        final Function<UnreifiedRelationship, QualifiedName> _function_1 = (UnreifiedRelationship importedThing) -> {
           return this.<UnreifiedRelationship>importedResourceNameFunction(Pair.<TerminologyBox, UnreifiedRelationship>of(tbox, importedThing));
         };
         return Scopes.<UnreifiedRelationship>scopedElementsFor(
-          this._oMLExtensions.localUnreifiedRelationships(tbox), _function_3);
+          this._oMLExtensions.localUnreifiedRelationships(tbox), _function_1);
       };
-      final Iterable<IEObjectDescription> inc = Iterables.<IEObjectDescription>concat(IterableExtensions.<TerminologyBox, Iterable<IEObjectDescription>>map(tboxes, _function_2));
+      final Iterable<IEObjectDescription> inc = Iterables.<IEObjectDescription>concat(IterableExtensions.<TerminologyBox, Iterable<IEObjectDescription>>map(tboxes, _function));
       Iterables.<IEObjectDescription>addAll(result, inc);
       _xblockexpression = new SimpleScope(result);
     }

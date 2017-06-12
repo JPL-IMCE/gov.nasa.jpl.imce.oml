@@ -1,0 +1,11 @@
+gov.nasa.jpl.imce.oml.tycho 0.7.0.6 is a minor bug fix release
+
+### Bug fixes
+
+- [#36 Incorrect logic for computing scopes for DescriptionBoxes](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/36)
+
+- [#37 Add DSL grammar syntax for module annotations](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/37)
+
+- [#38 Scope calculation for OML Bundles fails to include BundleAxiom edges](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/38)
+
+### [Release process](releaseProcess.markdown)

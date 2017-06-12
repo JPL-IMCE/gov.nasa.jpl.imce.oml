@@ -160,7 +160,7 @@ public class OMLFormatter extends AbstractFormatter2 {
     final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(terminologyGraph).ruleCall(this._oMLGrammarAccess.getTerminologyGraphAccess().getIriIRITerminalRuleCall_2_0()), _function_2);
+    document.surround(this.textRegionExtensions.regionFor(terminologyGraph).ruleCall(this._oMLGrammarAccess.getTerminologyGraphAccess().getIriIRITerminalRuleCall_3_0()), _function_2);
     final ISemanticRegion lcurly = this.textRegionExtensions.regionFor(terminologyGraph).keyword("{");
     final ISemanticRegion rcurly = this.textRegionExtensions.regionFor(terminologyGraph).keyword("}");
     final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
@@ -210,7 +210,7 @@ public class OMLFormatter extends AbstractFormatter2 {
     final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(bundle).ruleCall(this._oMLGrammarAccess.getBundleAccess().getIriIRITerminalRuleCall_2_0()), _function_2);
+    document.surround(this.textRegionExtensions.regionFor(bundle).ruleCall(this._oMLGrammarAccess.getBundleAccess().getIriIRITerminalRuleCall_3_0()), _function_2);
     final ISemanticRegion lcurly = this.textRegionExtensions.regionFor(bundle).keyword("{");
     final ISemanticRegion rcurly = this.textRegionExtensions.regionFor(bundle).keyword("}");
     final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
@@ -274,7 +274,7 @@ public class OMLFormatter extends AbstractFormatter2 {
     final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(descriptionBox).ruleCall(this._oMLGrammarAccess.getDescriptionBoxAccess().getIriIRITerminalRuleCall_2_0()), _function_2);
+    document.surround(this.textRegionExtensions.regionFor(descriptionBox).ruleCall(this._oMLGrammarAccess.getDescriptionBoxAccess().getIriIRITerminalRuleCall_3_0()), _function_2);
     final ISemanticRegion lcurly = this.textRegionExtensions.regionFor(descriptionBox).keyword("{");
     final ISemanticRegion rcurly = this.textRegionExtensions.regionFor(descriptionBox).keyword("}");
     final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
