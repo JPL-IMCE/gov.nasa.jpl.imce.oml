@@ -19,10 +19,8 @@
 package gov.nasa.jpl.imce.oml.runtime.impl;
 
 import gov.nasa.jpl.imce.oml.runtime.OMLDescription;
-import gov.nasa.jpl.imce.oml.runtime.OMLObject;
+import gov.nasa.jpl.imce.oml.runtime.OMLEntity;
 import gov.nasa.jpl.imce.oml.runtime.OMLRuntimePackage;
-
-import java.lang.reflect.InvocationTargetException;
 
 import java.util.Collection;
 
@@ -47,42 +45,42 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link gov.nasa.jpl.imce.oml.runtime.impl.OMLDescriptionImpl#getOmlDesciptionIRI <em>Oml Desciption IRI</em>}</li>
- *   <li>{@link gov.nasa.jpl.imce.oml.runtime.impl.OMLDescriptionImpl#getOmlDescriptionContents <em>Oml Description Contents</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.runtime.impl.OMLDescriptionImpl#getOmlIRI <em>Oml IRI</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.runtime.impl.OMLDescriptionImpl#getOmlContents <em>Oml Contents</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class OMLDescriptionImpl extends OMLObjectImpl implements OMLDescription {
 	/**
-	 * The default value of the '{@link #getOmlDesciptionIRI() <em>Oml Desciption IRI</em>}' attribute.
+	 * The default value of the '{@link #getOmlIRI() <em>Oml IRI</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOmlDesciptionIRI()
+	 * @see #getOmlIRI()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String OML_DESCIPTION_IRI_EDEFAULT = null;
+	protected static final String OML_IRI_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getOmlDesciptionIRI() <em>Oml Desciption IRI</em>}' attribute.
+	 * The cached value of the '{@link #getOmlIRI() <em>Oml IRI</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOmlDesciptionIRI()
+	 * @see #getOmlIRI()
 	 * @generated
 	 * @ordered
 	 */
-	protected String omlDesciptionIRI = OML_DESCIPTION_IRI_EDEFAULT;
+	protected String omlIRI = OML_IRI_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getOmlDescriptionContents() <em>Oml Description Contents</em>}' containment reference list.
+	 * The cached value of the '{@link #getOmlContents() <em>Oml Contents</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOmlDescriptionContents()
+	 * @see #getOmlContents()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<OMLObject> omlDescriptionContents;
+	protected EList<OMLEntity> omlContents;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -108,8 +106,8 @@ public class OMLDescriptionImpl extends OMLObjectImpl implements OMLDescription 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getOmlDesciptionIRI() {
-		return omlDesciptionIRI;
+	public String getOmlIRI() {
+		return omlIRI;
 	}
 
 	/**
@@ -117,11 +115,11 @@ public class OMLDescriptionImpl extends OMLObjectImpl implements OMLDescription 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setOmlDesciptionIRI(String newOmlDesciptionIRI) {
-		String oldOmlDesciptionIRI = omlDesciptionIRI;
-		omlDesciptionIRI = newOmlDesciptionIRI;
+	public void setOmlIRI(String newOmlIRI) {
+		String oldOmlIRI = omlIRI;
+		omlIRI = newOmlIRI;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OMLRuntimePackage.OML_DESCRIPTION__OML_DESCIPTION_IRI, oldOmlDesciptionIRI, omlDesciptionIRI));
+			eNotify(new ENotificationImpl(this, Notification.SET, OMLRuntimePackage.OML_DESCRIPTION__OML_IRI, oldOmlIRI, omlIRI));
 	}
 
 	/**
@@ -129,20 +127,11 @@ public class OMLDescriptionImpl extends OMLObjectImpl implements OMLDescription 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<OMLObject> getOmlDescriptionContents() {
-		if (omlDescriptionContents == null) {
-			omlDescriptionContents = new EObjectContainmentWithInverseEList<OMLObject>(OMLObject.class, this, OMLRuntimePackage.OML_DESCRIPTION__OML_DESCRIPTION_CONTENTS, OMLRuntimePackage.OML_OBJECT__OML_ROOT);
+	public EList<OMLEntity> getOmlContents() {
+		if (omlContents == null) {
+			omlContents = new EObjectContainmentWithInverseEList<OMLEntity>(OMLEntity.class, this, OMLRuntimePackage.OML_DESCRIPTION__OML_CONTENTS, OMLRuntimePackage.OML_ENTITY__OML_DESCRIPTION);
 		}
-		return omlDescriptionContents;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public OMLDescription getOMLRoot() {
-		return this;
+		return omlContents;
 	}
 
 	/**
@@ -154,8 +143,8 @@ public class OMLDescriptionImpl extends OMLObjectImpl implements OMLDescription 
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case OMLRuntimePackage.OML_DESCRIPTION__OML_DESCRIPTION_CONTENTS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getOmlDescriptionContents()).basicAdd(otherEnd, msgs);
+			case OMLRuntimePackage.OML_DESCRIPTION__OML_CONTENTS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getOmlContents()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -168,8 +157,8 @@ public class OMLDescriptionImpl extends OMLObjectImpl implements OMLDescription 
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case OMLRuntimePackage.OML_DESCRIPTION__OML_DESCRIPTION_CONTENTS:
-				return ((InternalEList<?>)getOmlDescriptionContents()).basicRemove(otherEnd, msgs);
+			case OMLRuntimePackage.OML_DESCRIPTION__OML_CONTENTS:
+				return ((InternalEList<?>)getOmlContents()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -182,10 +171,10 @@ public class OMLDescriptionImpl extends OMLObjectImpl implements OMLDescription 
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case OMLRuntimePackage.OML_DESCRIPTION__OML_DESCIPTION_IRI:
-				return getOmlDesciptionIRI();
-			case OMLRuntimePackage.OML_DESCRIPTION__OML_DESCRIPTION_CONTENTS:
-				return getOmlDescriptionContents();
+			case OMLRuntimePackage.OML_DESCRIPTION__OML_IRI:
+				return getOmlIRI();
+			case OMLRuntimePackage.OML_DESCRIPTION__OML_CONTENTS:
+				return getOmlContents();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -199,12 +188,12 @@ public class OMLDescriptionImpl extends OMLObjectImpl implements OMLDescription 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case OMLRuntimePackage.OML_DESCRIPTION__OML_DESCIPTION_IRI:
-				setOmlDesciptionIRI((String)newValue);
+			case OMLRuntimePackage.OML_DESCRIPTION__OML_IRI:
+				setOmlIRI((String)newValue);
 				return;
-			case OMLRuntimePackage.OML_DESCRIPTION__OML_DESCRIPTION_CONTENTS:
-				getOmlDescriptionContents().clear();
-				getOmlDescriptionContents().addAll((Collection<? extends OMLObject>)newValue);
+			case OMLRuntimePackage.OML_DESCRIPTION__OML_CONTENTS:
+				getOmlContents().clear();
+				getOmlContents().addAll((Collection<? extends OMLEntity>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -218,11 +207,11 @@ public class OMLDescriptionImpl extends OMLObjectImpl implements OMLDescription 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case OMLRuntimePackage.OML_DESCRIPTION__OML_DESCIPTION_IRI:
-				setOmlDesciptionIRI(OML_DESCIPTION_IRI_EDEFAULT);
+			case OMLRuntimePackage.OML_DESCRIPTION__OML_IRI:
+				setOmlIRI(OML_IRI_EDEFAULT);
 				return;
-			case OMLRuntimePackage.OML_DESCRIPTION__OML_DESCRIPTION_CONTENTS:
-				getOmlDescriptionContents().clear();
+			case OMLRuntimePackage.OML_DESCRIPTION__OML_CONTENTS:
+				getOmlContents().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -236,26 +225,12 @@ public class OMLDescriptionImpl extends OMLObjectImpl implements OMLDescription 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case OMLRuntimePackage.OML_DESCRIPTION__OML_DESCIPTION_IRI:
-				return OML_DESCIPTION_IRI_EDEFAULT == null ? omlDesciptionIRI != null : !OML_DESCIPTION_IRI_EDEFAULT.equals(omlDesciptionIRI);
-			case OMLRuntimePackage.OML_DESCRIPTION__OML_DESCRIPTION_CONTENTS:
-				return omlDescriptionContents != null && !omlDescriptionContents.isEmpty();
+			case OMLRuntimePackage.OML_DESCRIPTION__OML_IRI:
+				return OML_IRI_EDEFAULT == null ? omlIRI != null : !OML_IRI_EDEFAULT.equals(omlIRI);
+			case OMLRuntimePackage.OML_DESCRIPTION__OML_CONTENTS:
+				return omlContents != null && !omlContents.isEmpty();
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
-		switch (operationID) {
-			case OMLRuntimePackage.OML_DESCRIPTION___GET_OML_ROOT:
-				return getOMLRoot();
-		}
-		return super.eInvoke(operationID, arguments);
 	}
 
 	/**
@@ -268,8 +243,8 @@ public class OMLDescriptionImpl extends OMLObjectImpl implements OMLDescription 
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (omlDesciptionIRI: ");
-		result.append(omlDesciptionIRI);
+		result.append(" (omlIRI: ");
+		result.append(omlIRI);
 		result.append(')');
 		return result.toString();
 	}

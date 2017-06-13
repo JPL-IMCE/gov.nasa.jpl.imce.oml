@@ -19,7 +19,6 @@
 package gov.nasa.jpl.imce.oml.runtime.provider;
 
 
-import gov.nasa.jpl.imce.oml.runtime.OMLRuntimePackage;
 import java.util.Collection;
 import java.util.List;
 
@@ -28,7 +27,6 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IChildCreationExtender;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -73,31 +71,8 @@ public class OMLObjectItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addOmlRootPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Oml Root feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addOmlRootPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_OMLObject_omlRoot_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_OMLObject_omlRoot_feature", "_UI_OMLObject_type"),
-				 OMLRuntimePackage.Literals.OML_OBJECT__OML_ROOT,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
 	}
 
 	/**

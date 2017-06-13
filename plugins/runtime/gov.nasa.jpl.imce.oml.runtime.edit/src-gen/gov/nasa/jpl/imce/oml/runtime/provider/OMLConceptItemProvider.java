@@ -19,6 +19,8 @@
 package gov.nasa.jpl.imce.oml.runtime.provider;
 
 
+import gov.nasa.jpl.imce.oml.runtime.OMLConcept;
+
 import java.util.Collection;
 import java.util.List;
 
@@ -78,7 +80,10 @@ public class OMLConceptItemProvider extends OMLEntityItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_OMLConcept_type");
+		String label = ((OMLConcept)object).getOmlName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_OMLConcept_type") :
+			getString("_UI_OMLConcept_type") + " " + label;
 	}
 	
 

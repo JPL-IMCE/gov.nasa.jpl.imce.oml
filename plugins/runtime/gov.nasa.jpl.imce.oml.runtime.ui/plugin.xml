@@ -23,30 +23,63 @@
 <plugin>
 
    <extension point="org.eclipse.ui.newWizards">
-      <!-- @generated OMLRuntime -->
       <category
-            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            id="gov.nasa.jpl.imce.oml.runtime.ui.category"
             name="%_UI_Wizard_category"/>
       <wizard
-            id="gov.nasa.jpl.imce.oml.runtime.presentation.OMLRuntimeModelWizardID"
-            name="%_UI_OMLRuntimeModelWizard_label"
-            class="gov.nasa.jpl.imce.oml.runtime.presentation.OMLRuntimeModelWizard"
-            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            id="gov.nasa.jpl.imce.oml.runtime.ui.NewWizard"
+            name="%_UI_OMLRuntimeNewModelWizard_label"
+            class="gov.nasa.jpl.imce.oml.runtime.ui.OMLRuntimeNewModelWizard"
+            category="gov.nasa.jpl.imce.oml.runtime.ui.category"
             icon="icons/full/obj16/OMLRuntimeModelFile.gif">
-         <description>%_UI_OMLRuntimeModelWizard_description</description>
+         <description>%_UI_OMLRuntimeNewModelWizard_description</description>
          <selection class="org.eclipse.core.resources.IResource"/>
       </wizard>
    </extension>
 
+   <extension point="org.eclipse.ui.importWizards">
+      <category
+            id="gov.nasa.jpl.imce.oml.runtime.ui.category"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="gov.nasa.jpl.imce.oml.runtime.ui.ImportWizard"
+            name="%_UI_OMLRuntimeImportModelWizard_label"
+            class="gov.nasa.jpl.imce.oml.runtime.ui.OMLRuntimeImportModelWizard"
+            category="gov.nasa.jpl.imce.oml.runtime.ui.category"
+            icon="icons/full/obj16/OMLRuntimeModelFile.gif">
+         <description>%_UI_OMLRuntimeImportModelWizard_description</description>
+         <selection
+               class="org.eclipse.core.resources.IResource">
+         </selection>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.exportWizards">
+      <category
+            id="gov.nasa.jpl.imce.oml.runtime.ui.category"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="gov.nasa.jpl.imce.oml.runtime.ui.ExportWizard"
+            name="%_UI_OMLRuntimeExportModelWizard_label"
+            class="gov.nasa.jpl.imce.oml.runtime.ui.OMLRuntimeExportModelWizard"
+            category="gov.nasa.jpl.imce.oml.runtime.ui.category"
+            icon="icons/full/obj16/OMLRuntimeModelFile.gif">
+          <description>%_UI_OMLRuntimeExportModelWizard_description</description>
+         <selection
+               class="org.eclipse.core.resources.IFile"
+               name="*.di">
+         </selection>
+      </wizard>
+   </extension>
+
    <extension point="org.eclipse.ui.editors">
-      <!-- @generated OMLRuntime -->
       <editor
             id="gov.nasa.jpl.imce.oml.runtime.presentation.OMLRuntimeEditorID"
             name="%_UI_OMLRuntimeEditor_label"
             icon="icons/full/obj16/OMLRuntimeModelFile.gif"
             extensions="omlruntime"
-            class="gov.nasa.jpl.imce.oml.runtime.presentation.OMLRuntimeEditor"
-            contributorClass="gov.nasa.jpl.imce.oml.runtime.presentation.OMLRuntimeActionBarContributor">
+            class="gov.nasa.jpl.imce.oml.runtime.ui.OMLRuntimeEditor"
+            contributorClass="gov.nasa.jpl.imce.oml.runtime.ui.OMLRuntimeActionBarContributor">
       </editor>
    </extension>
 </plugin>

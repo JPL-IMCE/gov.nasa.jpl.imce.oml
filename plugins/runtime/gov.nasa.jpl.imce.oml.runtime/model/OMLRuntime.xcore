@@ -41,6 +41,8 @@ annotation "http://imce.jpl.nasa.gov/oml/runtime/OMLProvenance" as OMLProvenance
 
 type IRI wraps String
 
+type LocalName wraps String
+
 type LexicalValue wraps String
 
 /**
@@ -49,9 +51,7 @@ type LexicalValue wraps String
 * 		according to Maged
 */		
 abstract class OMLObject {
-	
-	container OMLDescription[1] omlRoot opposite omlDescriptionContents
-	
+		
 	op <T extends OMLObject> T[] omlInverseReferencers(Class<T> aType) {
 		val resourceSet = this.eResource.resourceSet
 		val adapters = resourceSet.eAdapters.filter(ECrossReferenceAdapter)
@@ -68,17 +68,15 @@ abstract class OMLObject {
  * @see gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox
  */
 class OMLDescription extends OMLObject {
-	IRI omlDesciptionIRI
+	IRI omlIRI
 	
-	contains OMLObject[] omlDescriptionContents opposite omlRoot
-	
-	op OMLDescription getOMLRoot() { this }
+	contains OMLEntity[] omlContents opposite omlDescription
 }
 
 /*
  * @see gov.nasa.jpl.imce.oml.model.descriptions.StructuredDataPropertyTuple
  */
-class OMLStructure {}
+class OMLStructure extends OMLObject {}
 
 /*
  * @see gov.nasa.jpl.imce.oml.model.descriptions.ConceptualEntitySingletonInstance
@@ -86,7 +84,11 @@ class OMLStructure {}
  * Note that there is no name attribute per se.
  * When mapping OMLRuntime-based M1 => OML DescriptionBox M1, the OMLEntity ID will be used as a name.
  */
-abstract class OMLEntity extends OMLObject {}
+abstract class OMLEntity extends OMLObject {
+	LocalName omlName
+
+	container OMLDescription[1] omlDescription opposite omlContents
+}
 
 class OMLAspect extends OMLEntity {}
 
@@ -95,57 +97,12 @@ class OMLAspect extends OMLEntity {}
  */
 class OMLConcept extends OMLEntity {}
 
-abstract class OMLRelationshipFromEntity extends OMLObject {
-	refers OMLEntity[1] omlSource
-}
-
-abstract class OMLRelationshipFromStructure extends OMLObject {
-	refers OMLStructure[1] omlSource
-}
-
-abstract class OMLRelationshipToEntity extends OMLObject {
-	refers OMLEntity[1] omlTarget
-}
-
-abstract class OMLRelationshipToStructure extends OMLObject {
-	refers OMLStructure[1] omlTarget
-}
-
-abstract class OMLEntityRelationship extends OMLRelationshipFromEntity, OMLRelationshipToEntity {}
-
 /*
  * @see gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstance
  * @see gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstanceDomain
  * @see gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstanceRange
  */
-class OMLReifiedRelationship extends OMLEntityRelationship, OMLEntity {}
-
-/*
- * @see gov.nasa.jpl.imce.oml.model.descriptions.UnreifiedRelationshipInstanceTuple
- */
-class OMLUnreifiedRelationship extends OMLEntityRelationship {}
-
-/*
- * @see gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceScalarDataPropertyValue
- */
-class OMLEntityDataPropertyToScalar extends OMLRelationshipFromEntity {
-	LexicalValue value
+class OMLReifiedRelationship extends OMLEntity {
+	refers OMLEntity[1] omlSource
+	refers OMLEntity[1] omlTarget
 }
-
-/*
- * @see gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceStructuredDataPropertyValue
- */
-class OMLEntityDataPropertyToStructure extends OMLRelationshipFromEntity, OMLRelationshipToStructure {}
-
-
-/*
- * @see gov.nasa.jpl.imce.oml.model.descriptions.ScalarDataPropertyValue
- */
-class OMLStructureDataPropertyToScalar extends OMLRelationshipFromStructure {
-	LexicalValue value
-}
-
-/*
- * @see gov.nasa.jpl.imce.oml.model.descriptions.StructuredDataPropertyTuple
- */
-class OMLStructureDataPropertyToStructure extends OMLRelationshipFromStructure, OMLRelationshipToStructure {}

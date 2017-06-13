@@ -23,8 +23,6 @@ import gov.nasa.jpl.imce.oml.runtime.OMLStructure;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.internal.cdo.CDOObjectImpl;
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>OML Structure</b></em>'.
@@ -32,7 +30,7 @@ import org.eclipse.emf.internal.cdo.CDOObjectImpl;
  *
  * @generated
  */
-public class OMLStructureImpl extends CDOObjectImpl implements OMLStructure {
+public class OMLStructureImpl extends OMLObjectImpl implements OMLStructure {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

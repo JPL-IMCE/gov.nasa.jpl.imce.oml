@@ -16,6 +16,7 @@
 		<module>gov.nasa.jpl.imce.oml.runtime</module>
 		<module>gov.nasa.jpl.imce.oml.runtime.edit</module>
 		<module>gov.nasa.jpl.imce.oml.runtime.ui</module>
+		<module>gov.nasa.jpl.imce.oml.runtime.generator</module>
 		<module>gov.nasa.jpl.imce.oml.uuid</module>
 	</modules>
 </project>

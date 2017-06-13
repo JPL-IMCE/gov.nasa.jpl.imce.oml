@@ -22,21 +22,11 @@ import gov.nasa.jpl.imce.oml.runtime.OMLAspect;
 import gov.nasa.jpl.imce.oml.runtime.OMLConcept;
 import gov.nasa.jpl.imce.oml.runtime.OMLDescription;
 import gov.nasa.jpl.imce.oml.runtime.OMLEntity;
-import gov.nasa.jpl.imce.oml.runtime.OMLEntityDataPropertyToScalar;
-import gov.nasa.jpl.imce.oml.runtime.OMLEntityDataPropertyToStructure;
-import gov.nasa.jpl.imce.oml.runtime.OMLEntityRelationship;
 import gov.nasa.jpl.imce.oml.runtime.OMLObject;
 import gov.nasa.jpl.imce.oml.runtime.OMLReifiedRelationship;
-import gov.nasa.jpl.imce.oml.runtime.OMLRelationshipFromEntity;
-import gov.nasa.jpl.imce.oml.runtime.OMLRelationshipFromStructure;
-import gov.nasa.jpl.imce.oml.runtime.OMLRelationshipToEntity;
-import gov.nasa.jpl.imce.oml.runtime.OMLRelationshipToStructure;
 import gov.nasa.jpl.imce.oml.runtime.OMLRuntimeFactory;
 import gov.nasa.jpl.imce.oml.runtime.OMLRuntimePackage;
 import gov.nasa.jpl.imce.oml.runtime.OMLStructure;
-import gov.nasa.jpl.imce.oml.runtime.OMLStructureDataPropertyToScalar;
-import gov.nasa.jpl.imce.oml.runtime.OMLStructureDataPropertyToStructure;
-import gov.nasa.jpl.imce.oml.runtime.OMLUnreifiedRelationship;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -104,41 +94,6 @@ public class OMLRuntimePackageImpl extends EPackageImpl implements OMLRuntimePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass omlRelationshipFromEntityEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass omlRelationshipFromStructureEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass omlRelationshipToEntityEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass omlRelationshipToStructureEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass omlEntityRelationshipEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass omlReifiedRelationshipEClass = null;
 
 	/**
@@ -146,42 +101,14 @@ public class OMLRuntimePackageImpl extends EPackageImpl implements OMLRuntimePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass omlUnreifiedRelationshipEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass omlEntityDataPropertyToScalarEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass omlEntityDataPropertyToStructureEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass omlStructureDataPropertyToScalarEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass omlStructureDataPropertyToStructureEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EDataType iriEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType localNameEDataType = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -268,15 +195,6 @@ public class OMLRuntimePackageImpl extends EPackageImpl implements OMLRuntimePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOMLObject_OmlRoot() {
-		return (EReference)omlObjectEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EOperation getOMLObject__OmlInverseReferencers__Class() {
 		return omlObjectEClass.getEOperations().get(0);
 	}
@@ -295,7 +213,7 @@ public class OMLRuntimePackageImpl extends EPackageImpl implements OMLRuntimePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getOMLDescription_OmlDesciptionIRI() {
+	public EAttribute getOMLDescription_OmlIRI() {
 		return (EAttribute)omlDescriptionEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -304,17 +222,8 @@ public class OMLRuntimePackageImpl extends EPackageImpl implements OMLRuntimePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOMLDescription_OmlDescriptionContents() {
+	public EReference getOMLDescription_OmlContents() {
 		return (EReference)omlDescriptionEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getOMLDescription__GetOMLRoot() {
-		return omlDescriptionEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -340,6 +249,24 @@ public class OMLRuntimePackageImpl extends EPackageImpl implements OMLRuntimePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getOMLEntity_OmlName() {
+		return (EAttribute)omlEntityEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getOMLEntity_OmlDescription() {
+		return (EReference)omlEntityEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getOMLAspect() {
 		return omlAspectEClass;
 	}
@@ -358,87 +285,6 @@ public class OMLRuntimePackageImpl extends EPackageImpl implements OMLRuntimePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getOMLRelationshipFromEntity() {
-		return omlRelationshipFromEntityEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getOMLRelationshipFromEntity_OmlSource() {
-		return (EReference)omlRelationshipFromEntityEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getOMLRelationshipFromStructure() {
-		return omlRelationshipFromStructureEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getOMLRelationshipFromStructure_OmlSource() {
-		return (EReference)omlRelationshipFromStructureEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getOMLRelationshipToEntity() {
-		return omlRelationshipToEntityEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getOMLRelationshipToEntity_OmlTarget() {
-		return (EReference)omlRelationshipToEntityEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getOMLRelationshipToStructure() {
-		return omlRelationshipToStructureEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getOMLRelationshipToStructure_OmlTarget() {
-		return (EReference)omlRelationshipToStructureEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getOMLEntityRelationship() {
-		return omlEntityRelationshipEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getOMLReifiedRelationship() {
 		return omlReifiedRelationshipEClass;
 	}
@@ -448,8 +294,8 @@ public class OMLRuntimePackageImpl extends EPackageImpl implements OMLRuntimePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getOMLUnreifiedRelationship() {
-		return omlUnreifiedRelationshipEClass;
+	public EReference getOMLReifiedRelationship_OmlSource() {
+		return (EReference)omlReifiedRelationshipEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -457,53 +303,8 @@ public class OMLRuntimePackageImpl extends EPackageImpl implements OMLRuntimePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getOMLEntityDataPropertyToScalar() {
-		return omlEntityDataPropertyToScalarEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getOMLEntityDataPropertyToScalar_Value() {
-		return (EAttribute)omlEntityDataPropertyToScalarEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getOMLEntityDataPropertyToStructure() {
-		return omlEntityDataPropertyToStructureEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getOMLStructureDataPropertyToScalar() {
-		return omlStructureDataPropertyToScalarEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getOMLStructureDataPropertyToScalar_Value() {
-		return (EAttribute)omlStructureDataPropertyToScalarEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getOMLStructureDataPropertyToStructure() {
-		return omlStructureDataPropertyToStructureEClass;
+	public EReference getOMLReifiedRelationship_OmlTarget() {
+		return (EReference)omlReifiedRelationshipEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -513,6 +314,15 @@ public class OMLRuntimePackageImpl extends EPackageImpl implements OMLRuntimePac
 	 */
 	public EDataType getIRI() {
 		return iriEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getLocalName() {
+		return localNameEDataType;
 	}
 
 	/**
@@ -553,52 +363,29 @@ public class OMLRuntimePackageImpl extends EPackageImpl implements OMLRuntimePac
 
 		// Create classes and their features
 		omlObjectEClass = createEClass(OML_OBJECT);
-		createEReference(omlObjectEClass, OML_OBJECT__OML_ROOT);
 		createEOperation(omlObjectEClass, OML_OBJECT___OML_INVERSE_REFERENCERS__CLASS);
 
 		omlDescriptionEClass = createEClass(OML_DESCRIPTION);
-		createEAttribute(omlDescriptionEClass, OML_DESCRIPTION__OML_DESCIPTION_IRI);
-		createEReference(omlDescriptionEClass, OML_DESCRIPTION__OML_DESCRIPTION_CONTENTS);
-		createEOperation(omlDescriptionEClass, OML_DESCRIPTION___GET_OML_ROOT);
+		createEAttribute(omlDescriptionEClass, OML_DESCRIPTION__OML_IRI);
+		createEReference(omlDescriptionEClass, OML_DESCRIPTION__OML_CONTENTS);
 
 		omlStructureEClass = createEClass(OML_STRUCTURE);
 
 		omlEntityEClass = createEClass(OML_ENTITY);
+		createEAttribute(omlEntityEClass, OML_ENTITY__OML_NAME);
+		createEReference(omlEntityEClass, OML_ENTITY__OML_DESCRIPTION);
 
 		omlAspectEClass = createEClass(OML_ASPECT);
 
 		omlConceptEClass = createEClass(OML_CONCEPT);
 
-		omlRelationshipFromEntityEClass = createEClass(OML_RELATIONSHIP_FROM_ENTITY);
-		createEReference(omlRelationshipFromEntityEClass, OML_RELATIONSHIP_FROM_ENTITY__OML_SOURCE);
-
-		omlRelationshipFromStructureEClass = createEClass(OML_RELATIONSHIP_FROM_STRUCTURE);
-		createEReference(omlRelationshipFromStructureEClass, OML_RELATIONSHIP_FROM_STRUCTURE__OML_SOURCE);
-
-		omlRelationshipToEntityEClass = createEClass(OML_RELATIONSHIP_TO_ENTITY);
-		createEReference(omlRelationshipToEntityEClass, OML_RELATIONSHIP_TO_ENTITY__OML_TARGET);
-
-		omlRelationshipToStructureEClass = createEClass(OML_RELATIONSHIP_TO_STRUCTURE);
-		createEReference(omlRelationshipToStructureEClass, OML_RELATIONSHIP_TO_STRUCTURE__OML_TARGET);
-
-		omlEntityRelationshipEClass = createEClass(OML_ENTITY_RELATIONSHIP);
-
 		omlReifiedRelationshipEClass = createEClass(OML_REIFIED_RELATIONSHIP);
-
-		omlUnreifiedRelationshipEClass = createEClass(OML_UNREIFIED_RELATIONSHIP);
-
-		omlEntityDataPropertyToScalarEClass = createEClass(OML_ENTITY_DATA_PROPERTY_TO_SCALAR);
-		createEAttribute(omlEntityDataPropertyToScalarEClass, OML_ENTITY_DATA_PROPERTY_TO_SCALAR__VALUE);
-
-		omlEntityDataPropertyToStructureEClass = createEClass(OML_ENTITY_DATA_PROPERTY_TO_STRUCTURE);
-
-		omlStructureDataPropertyToScalarEClass = createEClass(OML_STRUCTURE_DATA_PROPERTY_TO_SCALAR);
-		createEAttribute(omlStructureDataPropertyToScalarEClass, OML_STRUCTURE_DATA_PROPERTY_TO_SCALAR__VALUE);
-
-		omlStructureDataPropertyToStructureEClass = createEClass(OML_STRUCTURE_DATA_PROPERTY_TO_STRUCTURE);
+		createEReference(omlReifiedRelationshipEClass, OML_REIFIED_RELATIONSHIP__OML_SOURCE);
+		createEReference(omlReifiedRelationshipEClass, OML_REIFIED_RELATIONSHIP__OML_TARGET);
 
 		// Create data types
 		iriEDataType = createEDataType(IRI);
+		localNameEDataType = createEDataType(LOCAL_NAME);
 		lexicalValueEDataType = createEDataType(LEXICAL_VALUE);
 	}
 
@@ -634,28 +421,14 @@ public class OMLRuntimePackageImpl extends EPackageImpl implements OMLRuntimePac
 
 		// Add supertypes to classes
 		omlDescriptionEClass.getESuperTypes().add(this.getOMLObject());
+		omlStructureEClass.getESuperTypes().add(this.getOMLObject());
 		omlEntityEClass.getESuperTypes().add(this.getOMLObject());
 		omlAspectEClass.getESuperTypes().add(this.getOMLEntity());
 		omlConceptEClass.getESuperTypes().add(this.getOMLEntity());
-		omlRelationshipFromEntityEClass.getESuperTypes().add(this.getOMLObject());
-		omlRelationshipFromStructureEClass.getESuperTypes().add(this.getOMLObject());
-		omlRelationshipToEntityEClass.getESuperTypes().add(this.getOMLObject());
-		omlRelationshipToStructureEClass.getESuperTypes().add(this.getOMLObject());
-		omlEntityRelationshipEClass.getESuperTypes().add(this.getOMLRelationshipFromEntity());
-		omlEntityRelationshipEClass.getESuperTypes().add(this.getOMLRelationshipToEntity());
-		omlReifiedRelationshipEClass.getESuperTypes().add(this.getOMLEntityRelationship());
 		omlReifiedRelationshipEClass.getESuperTypes().add(this.getOMLEntity());
-		omlUnreifiedRelationshipEClass.getESuperTypes().add(this.getOMLEntityRelationship());
-		omlEntityDataPropertyToScalarEClass.getESuperTypes().add(this.getOMLRelationshipFromEntity());
-		omlEntityDataPropertyToStructureEClass.getESuperTypes().add(this.getOMLRelationshipFromEntity());
-		omlEntityDataPropertyToStructureEClass.getESuperTypes().add(this.getOMLRelationshipToStructure());
-		omlStructureDataPropertyToScalarEClass.getESuperTypes().add(this.getOMLRelationshipFromStructure());
-		omlStructureDataPropertyToStructureEClass.getESuperTypes().add(this.getOMLRelationshipFromStructure());
-		omlStructureDataPropertyToStructureEClass.getESuperTypes().add(this.getOMLRelationshipToStructure());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(omlObjectEClass, OMLObject.class, "OMLObject", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getOMLObject_OmlRoot(), this.getOMLDescription(), this.getOMLDescription_OmlDescriptionContents(), "omlRoot", null, 1, 1, OMLObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		EOperation op = initEOperation(getOMLObject__OmlInverseReferencers__Class(), null, "omlInverseReferencers", 0, -1, !IS_UNIQUE, IS_ORDERED);
 		ETypeParameter t1 = addETypeParameter(op, "T");
@@ -669,49 +442,26 @@ public class OMLRuntimePackageImpl extends EPackageImpl implements OMLRuntimePac
 		initEOperation(op, g1);
 
 		initEClass(omlDescriptionEClass, OMLDescription.class, "OMLDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getOMLDescription_OmlDesciptionIRI(), this.getIRI(), "omlDesciptionIRI", null, 0, 1, OMLDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOMLDescription_OmlDescriptionContents(), this.getOMLObject(), this.getOMLObject_OmlRoot(), "omlDescriptionContents", null, 0, -1, OMLDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEOperation(getOMLDescription__GetOMLRoot(), this.getOMLDescription(), "getOMLRoot", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEAttribute(getOMLDescription_OmlIRI(), this.getIRI(), "omlIRI", null, 0, 1, OMLDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOMLDescription_OmlContents(), this.getOMLEntity(), this.getOMLEntity_OmlDescription(), "omlContents", null, 0, -1, OMLDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(omlStructureEClass, OMLStructure.class, "OMLStructure", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(omlEntityEClass, OMLEntity.class, "OMLEntity", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getOMLEntity_OmlName(), this.getLocalName(), "omlName", null, 0, 1, OMLEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOMLEntity_OmlDescription(), this.getOMLDescription(), this.getOMLDescription_OmlContents(), "omlDescription", null, 1, 1, OMLEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(omlAspectEClass, OMLAspect.class, "OMLAspect", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(omlConceptEClass, OMLConcept.class, "OMLConcept", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(omlRelationshipFromEntityEClass, OMLRelationshipFromEntity.class, "OMLRelationshipFromEntity", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getOMLRelationshipFromEntity_OmlSource(), this.getOMLEntity(), null, "omlSource", null, 1, 1, OMLRelationshipFromEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(omlRelationshipFromStructureEClass, OMLRelationshipFromStructure.class, "OMLRelationshipFromStructure", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getOMLRelationshipFromStructure_OmlSource(), this.getOMLStructure(), null, "omlSource", null, 1, 1, OMLRelationshipFromStructure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(omlRelationshipToEntityEClass, OMLRelationshipToEntity.class, "OMLRelationshipToEntity", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getOMLRelationshipToEntity_OmlTarget(), this.getOMLEntity(), null, "omlTarget", null, 1, 1, OMLRelationshipToEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(omlRelationshipToStructureEClass, OMLRelationshipToStructure.class, "OMLRelationshipToStructure", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getOMLRelationshipToStructure_OmlTarget(), this.getOMLStructure(), null, "omlTarget", null, 1, 1, OMLRelationshipToStructure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(omlEntityRelationshipEClass, OMLEntityRelationship.class, "OMLEntityRelationship", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
 		initEClass(omlReifiedRelationshipEClass, OMLReifiedRelationship.class, "OMLReifiedRelationship", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(omlUnreifiedRelationshipEClass, OMLUnreifiedRelationship.class, "OMLUnreifiedRelationship", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(omlEntityDataPropertyToScalarEClass, OMLEntityDataPropertyToScalar.class, "OMLEntityDataPropertyToScalar", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getOMLEntityDataPropertyToScalar_Value(), this.getLexicalValue(), "value", null, 0, 1, OMLEntityDataPropertyToScalar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(omlEntityDataPropertyToStructureEClass, OMLEntityDataPropertyToStructure.class, "OMLEntityDataPropertyToStructure", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(omlStructureDataPropertyToScalarEClass, OMLStructureDataPropertyToScalar.class, "OMLStructureDataPropertyToScalar", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getOMLStructureDataPropertyToScalar_Value(), this.getLexicalValue(), "value", null, 0, 1, OMLStructureDataPropertyToScalar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(omlStructureDataPropertyToStructureEClass, OMLStructureDataPropertyToStructure.class, "OMLStructureDataPropertyToStructure", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getOMLReifiedRelationship_OmlSource(), this.getOMLEntity(), null, "omlSource", null, 1, 1, OMLReifiedRelationship.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOMLReifiedRelationship_OmlTarget(), this.getOMLEntity(), null, "omlTarget", null, 1, 1, OMLReifiedRelationship.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize data types
 		initEDataType(iriEDataType, String.class, "IRI", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(localNameEDataType, String.class, "LocalName", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(lexicalValueEDataType, String.class, "LexicalValue", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource

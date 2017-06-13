@@ -220,121 +220,6 @@ public class OMLRuntimeItemProviderAdapterFactory extends OMLRuntimeAdapterFacto
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.runtime.OMLUnreifiedRelationship} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected OMLUnreifiedRelationshipItemProvider omlUnreifiedRelationshipItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.runtime.OMLUnreifiedRelationship}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createOMLUnreifiedRelationshipAdapter() {
-		if (omlUnreifiedRelationshipItemProvider == null) {
-			omlUnreifiedRelationshipItemProvider = new OMLUnreifiedRelationshipItemProvider(this);
-		}
-
-		return omlUnreifiedRelationshipItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.runtime.OMLEntityDataPropertyToScalar} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected OMLEntityDataPropertyToScalarItemProvider omlEntityDataPropertyToScalarItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.runtime.OMLEntityDataPropertyToScalar}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createOMLEntityDataPropertyToScalarAdapter() {
-		if (omlEntityDataPropertyToScalarItemProvider == null) {
-			omlEntityDataPropertyToScalarItemProvider = new OMLEntityDataPropertyToScalarItemProvider(this);
-		}
-
-		return omlEntityDataPropertyToScalarItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.runtime.OMLEntityDataPropertyToStructure} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected OMLEntityDataPropertyToStructureItemProvider omlEntityDataPropertyToStructureItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.runtime.OMLEntityDataPropertyToStructure}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createOMLEntityDataPropertyToStructureAdapter() {
-		if (omlEntityDataPropertyToStructureItemProvider == null) {
-			omlEntityDataPropertyToStructureItemProvider = new OMLEntityDataPropertyToStructureItemProvider(this);
-		}
-
-		return omlEntityDataPropertyToStructureItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.runtime.OMLStructureDataPropertyToScalar} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected OMLStructureDataPropertyToScalarItemProvider omlStructureDataPropertyToScalarItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.runtime.OMLStructureDataPropertyToScalar}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createOMLStructureDataPropertyToScalarAdapter() {
-		if (omlStructureDataPropertyToScalarItemProvider == null) {
-			omlStructureDataPropertyToScalarItemProvider = new OMLStructureDataPropertyToScalarItemProvider(this);
-		}
-
-		return omlStructureDataPropertyToScalarItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.runtime.OMLStructureDataPropertyToStructure} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected OMLStructureDataPropertyToStructureItemProvider omlStructureDataPropertyToStructureItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.runtime.OMLStructureDataPropertyToStructure}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createOMLStructureDataPropertyToStructureAdapter() {
-		if (omlStructureDataPropertyToStructureItemProvider == null) {
-			omlStructureDataPropertyToStructureItemProvider = new OMLStructureDataPropertyToStructureItemProvider(this);
-		}
-
-		return omlStructureDataPropertyToStructureItemProvider;
-	}
-
-	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -465,11 +350,6 @@ public class OMLRuntimeItemProviderAdapterFactory extends OMLRuntimeAdapterFacto
 		if (omlAspectItemProvider != null) omlAspectItemProvider.dispose();
 		if (omlConceptItemProvider != null) omlConceptItemProvider.dispose();
 		if (omlReifiedRelationshipItemProvider != null) omlReifiedRelationshipItemProvider.dispose();
-		if (omlUnreifiedRelationshipItemProvider != null) omlUnreifiedRelationshipItemProvider.dispose();
-		if (omlEntityDataPropertyToScalarItemProvider != null) omlEntityDataPropertyToScalarItemProvider.dispose();
-		if (omlEntityDataPropertyToStructureItemProvider != null) omlEntityDataPropertyToStructureItemProvider.dispose();
-		if (omlStructureDataPropertyToScalarItemProvider != null) omlStructureDataPropertyToScalarItemProvider.dispose();
-		if (omlStructureDataPropertyToStructureItemProvider != null) omlStructureDataPropertyToStructureItemProvider.dispose();
 	}
 
 }

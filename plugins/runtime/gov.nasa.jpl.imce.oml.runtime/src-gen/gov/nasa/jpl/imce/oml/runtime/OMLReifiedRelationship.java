@@ -30,10 +30,69 @@ package gov.nasa.jpl.imce.oml.runtime;
  * @see gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstanceRange
  * <!-- end-model-doc -->
  *
+ * <p>
+ * The following features are supported:
+ * </p>
+ * <ul>
+ *   <li>{@link gov.nasa.jpl.imce.oml.runtime.OMLReifiedRelationship#getOmlSource <em>Oml Source</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.runtime.OMLReifiedRelationship#getOmlTarget <em>Oml Target</em>}</li>
+ * </ul>
  *
  * @see gov.nasa.jpl.imce.oml.runtime.OMLRuntimePackage#getOMLReifiedRelationship()
  * @model
  * @generated
  */
-public interface OMLReifiedRelationship extends OMLEntityRelationship, OMLEntity {
+public interface OMLReifiedRelationship extends OMLEntity {
+	/**
+	 * Returns the value of the '<em><b>Oml Source</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Oml Source</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Oml Source</em>' reference.
+	 * @see #setOmlSource(OMLEntity)
+	 * @see gov.nasa.jpl.imce.oml.runtime.OMLRuntimePackage#getOMLReifiedRelationship_OmlSource()
+	 * @model required="true"
+	 * @generated
+	 */
+	OMLEntity getOmlSource();
+
+	/**
+	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.runtime.OMLReifiedRelationship#getOmlSource <em>Oml Source</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Oml Source</em>' reference.
+	 * @see #getOmlSource()
+	 * @generated
+	 */
+	void setOmlSource(OMLEntity value);
+
+	/**
+	 * Returns the value of the '<em><b>Oml Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Oml Target</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Oml Target</em>' reference.
+	 * @see #setOmlTarget(OMLEntity)
+	 * @see gov.nasa.jpl.imce.oml.runtime.OMLRuntimePackage#getOMLReifiedRelationship_OmlTarget()
+	 * @model required="true"
+	 * @generated
+	 */
+	OMLEntity getOmlTarget();
+
+	/**
+	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.runtime.OMLReifiedRelationship#getOmlTarget <em>Oml Target</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Oml Target</em>' reference.
+	 * @see #getOmlTarget()
+	 * @generated
+	 */
+	void setOmlTarget(OMLEntity value);
+
 } // OMLReifiedRelationship

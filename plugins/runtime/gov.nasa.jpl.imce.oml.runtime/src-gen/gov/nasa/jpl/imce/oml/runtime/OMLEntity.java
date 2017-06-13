@@ -31,10 +31,71 @@ package gov.nasa.jpl.imce.oml.runtime;
  * When mapping OMLRuntime-based M1 => OML DescriptionBox M1, the OMLEntity ID will be used as a name.
  * <!-- end-model-doc -->
  *
+ * <p>
+ * The following features are supported:
+ * </p>
+ * <ul>
+ *   <li>{@link gov.nasa.jpl.imce.oml.runtime.OMLEntity#getOmlName <em>Oml Name</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.runtime.OMLEntity#getOmlDescription <em>Oml Description</em>}</li>
+ * </ul>
  *
  * @see gov.nasa.jpl.imce.oml.runtime.OMLRuntimePackage#getOMLEntity()
  * @model abstract="true"
  * @generated
  */
 public interface OMLEntity extends OMLObject {
+	/**
+	 * Returns the value of the '<em><b>Oml Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Oml Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Oml Name</em>' attribute.
+	 * @see #setOmlName(String)
+	 * @see gov.nasa.jpl.imce.oml.runtime.OMLRuntimePackage#getOMLEntity_OmlName()
+	 * @model unique="false" dataType="gov.nasa.jpl.imce.oml.runtime.LocalName"
+	 * @generated
+	 */
+	String getOmlName();
+
+	/**
+	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.runtime.OMLEntity#getOmlName <em>Oml Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Oml Name</em>' attribute.
+	 * @see #getOmlName()
+	 * @generated
+	 */
+	void setOmlName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Oml Description</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link gov.nasa.jpl.imce.oml.runtime.OMLDescription#getOmlContents <em>Oml Contents</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Oml Description</em>' container reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Oml Description</em>' container reference.
+	 * @see #setOmlDescription(OMLDescription)
+	 * @see gov.nasa.jpl.imce.oml.runtime.OMLRuntimePackage#getOMLEntity_OmlDescription()
+	 * @see gov.nasa.jpl.imce.oml.runtime.OMLDescription#getOmlContents
+	 * @model opposite="omlContents" required="true" transient="false"
+	 * @generated
+	 */
+	OMLDescription getOmlDescription();
+
+	/**
+	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.runtime.OMLEntity#getOmlDescription <em>Oml Description</em>}' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Oml Description</em>' container reference.
+	 * @see #getOmlDescription()
+	 * @generated
+	 */
+	void setOmlDescription(OMLDescription value);
+
 } // OMLEntity

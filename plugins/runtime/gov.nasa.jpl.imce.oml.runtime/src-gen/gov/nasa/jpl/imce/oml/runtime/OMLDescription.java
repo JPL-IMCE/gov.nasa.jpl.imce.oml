@@ -33,8 +33,8 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link gov.nasa.jpl.imce.oml.runtime.OMLDescription#getOmlDesciptionIRI <em>Oml Desciption IRI</em>}</li>
- *   <li>{@link gov.nasa.jpl.imce.oml.runtime.OMLDescription#getOmlDescriptionContents <em>Oml Description Contents</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.runtime.OMLDescription#getOmlIRI <em>Oml IRI</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.runtime.OMLDescription#getOmlContents <em>Oml Contents</em>}</li>
  * </ul>
  *
  * @see gov.nasa.jpl.imce.oml.runtime.OMLRuntimePackage#getOMLDescription()
@@ -43,56 +43,47 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface OMLDescription extends OMLObject {
 	/**
-	 * Returns the value of the '<em><b>Oml Desciption IRI</b></em>' attribute.
+	 * Returns the value of the '<em><b>Oml IRI</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Oml Desciption IRI</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Oml IRI</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Oml Desciption IRI</em>' attribute.
-	 * @see #setOmlDesciptionIRI(String)
-	 * @see gov.nasa.jpl.imce.oml.runtime.OMLRuntimePackage#getOMLDescription_OmlDesciptionIRI()
+	 * @return the value of the '<em>Oml IRI</em>' attribute.
+	 * @see #setOmlIRI(String)
+	 * @see gov.nasa.jpl.imce.oml.runtime.OMLRuntimePackage#getOMLDescription_OmlIRI()
 	 * @model unique="false" dataType="gov.nasa.jpl.imce.oml.runtime.IRI"
 	 * @generated
 	 */
-	String getOmlDesciptionIRI();
+	String getOmlIRI();
 
 	/**
-	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.runtime.OMLDescription#getOmlDesciptionIRI <em>Oml Desciption IRI</em>}' attribute.
+	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.runtime.OMLDescription#getOmlIRI <em>Oml IRI</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Oml Desciption IRI</em>' attribute.
-	 * @see #getOmlDesciptionIRI()
+	 * @param value the new value of the '<em>Oml IRI</em>' attribute.
+	 * @see #getOmlIRI()
 	 * @generated
 	 */
-	void setOmlDesciptionIRI(String value);
+	void setOmlIRI(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Oml Description Contents</b></em>' containment reference list.
-	 * The list contents are of type {@link gov.nasa.jpl.imce.oml.runtime.OMLObject}.
-	 * It is bidirectional and its opposite is '{@link gov.nasa.jpl.imce.oml.runtime.OMLObject#getOmlRoot <em>Oml Root</em>}'.
+	 * Returns the value of the '<em><b>Oml Contents</b></em>' containment reference list.
+	 * The list contents are of type {@link gov.nasa.jpl.imce.oml.runtime.OMLEntity}.
+	 * It is bidirectional and its opposite is '{@link gov.nasa.jpl.imce.oml.runtime.OMLEntity#getOmlDescription <em>Oml Description</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Oml Description Contents</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Oml Contents</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Oml Description Contents</em>' containment reference list.
-	 * @see gov.nasa.jpl.imce.oml.runtime.OMLRuntimePackage#getOMLDescription_OmlDescriptionContents()
-	 * @see gov.nasa.jpl.imce.oml.runtime.OMLObject#getOmlRoot
-	 * @model opposite="omlRoot" containment="true"
+	 * @return the value of the '<em>Oml Contents</em>' containment reference list.
+	 * @see gov.nasa.jpl.imce.oml.runtime.OMLRuntimePackage#getOMLDescription_OmlContents()
+	 * @see gov.nasa.jpl.imce.oml.runtime.OMLEntity#getOmlDescription
+	 * @model opposite="omlDescription" containment="true"
 	 * @generated
 	 */
-	EList<OMLObject> getOmlDescriptionContents();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model kind="operation" unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return this;'"
-	 * @generated
-	 */
-	OMLDescription getOMLRoot();
+	EList<OMLEntity> getOmlContents();
 
 } // OMLDescription
