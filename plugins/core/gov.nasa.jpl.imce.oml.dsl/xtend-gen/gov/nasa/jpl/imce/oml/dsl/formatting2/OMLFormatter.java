@@ -677,45 +677,41 @@ public class OMLFormatter extends AbstractFormatter2 {
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(t).keyword(this._oMLGrammarAccess.getEntityScalarDataPropertyAccess().getEntityScalarDataPropertyKeyword_0()), _function);
+    document.append(this.textRegionExtensions.regionFor(t).keyword("entityScalarDataProperty"), _function);
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
-      it.noSpace();
+      it.oneSpace();
     };
-    document.prepend(this.textRegionExtensions.regionFor(t).ruleCall(this._oMLGrammarAccess.getEntityScalarDataPropertyAccess().getNameIDTerminalRuleCall_2_0()), _function_1);
+    document.surround(this.textRegionExtensions.regionFor(t).assignment(this._oMLGrammarAccess.getEntityScalarDataPropertyAccess().getIsIdentityCriteriaAssignment_1()), _function_1);
+    final ISemanticRegion lcurly = this.textRegionExtensions.regionFor(t).keyword("{");
+    final ISemanticRegion rcurly = this.textRegionExtensions.regionFor(t).keyword("}");
     final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(t).ruleCall(this._oMLGrammarAccess.getEntityScalarDataPropertyAccess().getNameIDTerminalRuleCall_2_0()), _function_2);
-    final ISemanticRegion lcurly = this.textRegionExtensions.regionFor(t).keyword(this._oMLGrammarAccess.getEntityScalarDataPropertyAccess().getLeftCurlyBracketKeyword_3());
-    final ISemanticRegion rcurly = this.textRegionExtensions.regionFor(t).keyword(this._oMLGrammarAccess.getEntityScalarDataPropertyAccess().getRightCurlyBracketKeyword_8());
+    document.prepend(lcurly, _function_2);
     final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
-      it.oneSpace();
-    };
-    document.prepend(lcurly, _function_3);
-    final Procedure1<IHiddenRegionFormatter> _function_4 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(lcurly, _function_4);
-    final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it) -> {
+    document.append(lcurly, _function_3);
+    final Procedure1<IHiddenRegionFormatter> _function_4 = (IHiddenRegionFormatter it) -> {
       it.indent();
     };
-    document.<ISemanticRegion, ISemanticRegion>interior(lcurly, rcurly, _function_5);
+    document.<ISemanticRegion, ISemanticRegion>interior(lcurly, rcurly, _function_4);
+    final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it) -> {
+      it.oneSpace();
+    };
+    document.append(this.textRegionExtensions.regionFor(t).keyword("domain"), _function_5);
     final Procedure1<IHiddenRegionFormatter> _function_6 = (IHiddenRegionFormatter it) -> {
-      it.oneSpace();
+      it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(t).keyword(this._oMLGrammarAccess.getEntityScalarDataPropertyAccess().getDomainKeyword_4()), _function_6);
+    document.append(this.textRegionExtensions.regionFor(t).ruleCall(this._oMLGrammarAccess.getEntityScalarDataPropertyAccess().getDomainEntityReferenceParserRuleCall_5_0_1()), _function_6);
     final Procedure1<IHiddenRegionFormatter> _function_7 = (IHiddenRegionFormatter it) -> {
-      it.newLine();
-    };
-    document.append(this.textRegionExtensions.regionFor(t).ruleCall(this._oMLGrammarAccess.getEntityScalarDataPropertyAccess().getDomainEntityReferenceParserRuleCall_5_0_1()), _function_7);
-    final Procedure1<IHiddenRegionFormatter> _function_8 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(t).keyword(this._oMLGrammarAccess.getEntityScalarDataPropertyAccess().getRangeKeyword_6()), _function_8);
-    final Procedure1<IHiddenRegionFormatter> _function_9 = (IHiddenRegionFormatter it) -> {
+    document.append(this.textRegionExtensions.regionFor(t).keyword("range"), _function_7);
+    final Procedure1<IHiddenRegionFormatter> _function_8 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(t).ruleCall(this._oMLGrammarAccess.getEntityScalarDataPropertyAccess().getRangeDataRangeReferenceParserRuleCall_7_0_1()), _function_9);
+    document.append(this.textRegionExtensions.regionFor(t).ruleCall(this._oMLGrammarAccess.getEntityScalarDataPropertyAccess().getRangeDataRangeReferenceParserRuleCall_7_0_1()), _function_8);
   }
   
   protected void _format(final StructuredDataProperty t, @Extension final IFormattableDocument document) {

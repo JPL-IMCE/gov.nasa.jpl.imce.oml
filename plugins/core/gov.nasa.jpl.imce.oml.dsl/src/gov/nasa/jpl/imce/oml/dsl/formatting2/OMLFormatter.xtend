@@ -280,19 +280,18 @@ class OMLFormatter extends AbstractFormatter2 {
 	}
 	
 	def dispatch void format(EntityScalarDataProperty t, extension IFormattableDocument document) {
-		t.regionFor.keyword(entityScalarDataPropertyAccess.entityScalarDataPropertyKeyword_0).append[oneSpace]
-		t.regionFor.ruleCall(entityScalarDataPropertyAccess.nameIDTerminalRuleCall_2_0).prepend[noSpace]
-		t.regionFor.ruleCall(entityScalarDataPropertyAccess.nameIDTerminalRuleCall_2_0).append[oneSpace]
+		t.regionFor.keyword('entityScalarDataProperty').append[oneSpace]
+		t.regionFor.assignment(entityScalarDataPropertyAccess.isIdentityCriteriaAssignment_1).surround[oneSpace]
 		
-		val lcurly = t.regionFor.keyword(entityScalarDataPropertyAccess.leftCurlyBracketKeyword_3)
-		val rcurly = t.regionFor.keyword(entityScalarDataPropertyAccess.rightCurlyBracketKeyword_8)
+		val lcurly = t.regionFor.keyword('{')
+		val rcurly = t.regionFor.keyword('}')
 		lcurly.prepend[oneSpace]
 		lcurly.append[newLine]
 		interior(lcurly, rcurly)[indent]
 		
-		t.regionFor.keyword(entityScalarDataPropertyAccess.domainKeyword_4).append[oneSpace]
+		t.regionFor.keyword('domain').append[oneSpace]
 		t.regionFor.ruleCall(entityScalarDataPropertyAccess.domainEntityReferenceParserRuleCall_5_0_1).append[newLine]
-		t.regionFor.keyword(entityScalarDataPropertyAccess.rangeKeyword_6).append[oneSpace]
+		t.regionFor.keyword('range').append[oneSpace]
 		t.regionFor.ruleCall(entityScalarDataPropertyAccess.rangeDataRangeReferenceParserRuleCall_7_0_1).append[newLine]
 	}
 	
