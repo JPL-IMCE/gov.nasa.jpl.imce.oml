@@ -1,0 +1,7 @@
+gov.nasa.jpl.imce.oml.tycho 0.7.0.7 is a minor bug fix release
+
+### Issues resolved
+
+- [#40 Implement OML to Ecore transformation for DBoxes](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/40)
+
+- [#43 Formatting problem with EntityScalarDataProperties](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/43)
