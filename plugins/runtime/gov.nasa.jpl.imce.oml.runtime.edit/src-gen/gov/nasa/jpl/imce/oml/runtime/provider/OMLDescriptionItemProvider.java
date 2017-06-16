@@ -22,6 +22,7 @@ package gov.nasa.jpl.imce.oml.runtime.provider;
 import gov.nasa.jpl.imce.oml.runtime.OMLDescription;
 import gov.nasa.jpl.imce.oml.runtime.OMLRuntimeFactory;
 import gov.nasa.jpl.imce.oml.runtime.OMLRuntimePackage;
+
 import java.util.Collection;
 import java.util.List;
 
@@ -63,25 +64,25 @@ public class OMLDescriptionItemProvider extends OMLObjectItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addOmlDesciptionIRIPropertyDescriptor(object);
+			addOmlIRIPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Oml Desciption IRI feature.
+	 * This adds a property descriptor for the Oml IRI feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addOmlDesciptionIRIPropertyDescriptor(Object object) {
+	protected void addOmlIRIPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_OMLDescription_omlDesciptionIRI_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_OMLDescription_omlDesciptionIRI_feature", "_UI_OMLDescription_type"),
-				 OMLRuntimePackage.Literals.OML_DESCRIPTION__OML_DESCIPTION_IRI,
+				 getString("_UI_OMLDescription_omlIRI_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_OMLDescription_omlIRI_feature", "_UI_OMLDescription_type"),
+				 OMLRuntimePackage.Literals.OML_DESCRIPTION__OML_IRI,
 				 true,
 				 false,
 				 false,
@@ -102,7 +103,7 @@ public class OMLDescriptionItemProvider extends OMLObjectItemProvider {
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(OMLRuntimePackage.Literals.OML_DESCRIPTION__OML_DESCRIPTION_CONTENTS);
+			childrenFeatures.add(OMLRuntimePackage.Literals.OML_DESCRIPTION__OML_CONTENTS);
 		}
 		return childrenFeatures;
 	}
@@ -139,7 +140,7 @@ public class OMLDescriptionItemProvider extends OMLObjectItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((OMLDescription)object).getOmlDesciptionIRI();
+		String label = ((OMLDescription)object).getOmlIRI();
 		return label == null || label.length() == 0 ?
 			getString("_UI_OMLDescription_type") :
 			getString("_UI_OMLDescription_type") + " " + label;
@@ -158,10 +159,10 @@ public class OMLDescriptionItemProvider extends OMLObjectItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(OMLDescription.class)) {
-			case OMLRuntimePackage.OML_DESCRIPTION__OML_DESCIPTION_IRI:
+			case OMLRuntimePackage.OML_DESCRIPTION__OML_IRI:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case OMLRuntimePackage.OML_DESCRIPTION__OML_DESCRIPTION_CONTENTS:
+			case OMLRuntimePackage.OML_DESCRIPTION__OML_CONTENTS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -181,48 +182,18 @@ public class OMLDescriptionItemProvider extends OMLObjectItemProvider {
 
 		newChildDescriptors.add
 			(createChildParameter
-				(OMLRuntimePackage.Literals.OML_DESCRIPTION__OML_DESCRIPTION_CONTENTS,
-				 OMLRuntimeFactory.eINSTANCE.createOMLDescription()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(OMLRuntimePackage.Literals.OML_DESCRIPTION__OML_DESCRIPTION_CONTENTS,
+				(OMLRuntimePackage.Literals.OML_DESCRIPTION__OML_CONTENTS,
 				 OMLRuntimeFactory.eINSTANCE.createOMLAspect()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(OMLRuntimePackage.Literals.OML_DESCRIPTION__OML_DESCRIPTION_CONTENTS,
+				(OMLRuntimePackage.Literals.OML_DESCRIPTION__OML_CONTENTS,
 				 OMLRuntimeFactory.eINSTANCE.createOMLConcept()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(OMLRuntimePackage.Literals.OML_DESCRIPTION__OML_DESCRIPTION_CONTENTS,
+				(OMLRuntimePackage.Literals.OML_DESCRIPTION__OML_CONTENTS,
 				 OMLRuntimeFactory.eINSTANCE.createOMLReifiedRelationship()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(OMLRuntimePackage.Literals.OML_DESCRIPTION__OML_DESCRIPTION_CONTENTS,
-				 OMLRuntimeFactory.eINSTANCE.createOMLUnreifiedRelationship()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(OMLRuntimePackage.Literals.OML_DESCRIPTION__OML_DESCRIPTION_CONTENTS,
-				 OMLRuntimeFactory.eINSTANCE.createOMLEntityDataPropertyToScalar()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(OMLRuntimePackage.Literals.OML_DESCRIPTION__OML_DESCRIPTION_CONTENTS,
-				 OMLRuntimeFactory.eINSTANCE.createOMLEntityDataPropertyToStructure()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(OMLRuntimePackage.Literals.OML_DESCRIPTION__OML_DESCRIPTION_CONTENTS,
-				 OMLRuntimeFactory.eINSTANCE.createOMLStructureDataPropertyToScalar()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(OMLRuntimePackage.Literals.OML_DESCRIPTION__OML_DESCRIPTION_CONTENTS,
-				 OMLRuntimeFactory.eINSTANCE.createOMLStructureDataPropertyToStructure()));
 	}
 
 }

@@ -108,48 +108,8 @@ public class OMLRuntimeAdapterFactory extends AdapterFactoryImpl {
 				return createOMLConceptAdapter();
 			}
 			@Override
-			public Adapter caseOMLRelationshipFromEntity(OMLRelationshipFromEntity object) {
-				return createOMLRelationshipFromEntityAdapter();
-			}
-			@Override
-			public Adapter caseOMLRelationshipFromStructure(OMLRelationshipFromStructure object) {
-				return createOMLRelationshipFromStructureAdapter();
-			}
-			@Override
-			public Adapter caseOMLRelationshipToEntity(OMLRelationshipToEntity object) {
-				return createOMLRelationshipToEntityAdapter();
-			}
-			@Override
-			public Adapter caseOMLRelationshipToStructure(OMLRelationshipToStructure object) {
-				return createOMLRelationshipToStructureAdapter();
-			}
-			@Override
-			public Adapter caseOMLEntityRelationship(OMLEntityRelationship object) {
-				return createOMLEntityRelationshipAdapter();
-			}
-			@Override
 			public Adapter caseOMLReifiedRelationship(OMLReifiedRelationship object) {
 				return createOMLReifiedRelationshipAdapter();
-			}
-			@Override
-			public Adapter caseOMLUnreifiedRelationship(OMLUnreifiedRelationship object) {
-				return createOMLUnreifiedRelationshipAdapter();
-			}
-			@Override
-			public Adapter caseOMLEntityDataPropertyToScalar(OMLEntityDataPropertyToScalar object) {
-				return createOMLEntityDataPropertyToScalarAdapter();
-			}
-			@Override
-			public Adapter caseOMLEntityDataPropertyToStructure(OMLEntityDataPropertyToStructure object) {
-				return createOMLEntityDataPropertyToStructureAdapter();
-			}
-			@Override
-			public Adapter caseOMLStructureDataPropertyToScalar(OMLStructureDataPropertyToScalar object) {
-				return createOMLStructureDataPropertyToScalarAdapter();
-			}
-			@Override
-			public Adapter caseOMLStructureDataPropertyToStructure(OMLStructureDataPropertyToStructure object) {
-				return createOMLStructureDataPropertyToStructureAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -256,76 +216,6 @@ public class OMLRuntimeAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.runtime.OMLRelationshipFromEntity <em>OML Relationship From Entity</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see gov.nasa.jpl.imce.oml.runtime.OMLRelationshipFromEntity
-	 * @generated
-	 */
-	public Adapter createOMLRelationshipFromEntityAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.runtime.OMLRelationshipFromStructure <em>OML Relationship From Structure</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see gov.nasa.jpl.imce.oml.runtime.OMLRelationshipFromStructure
-	 * @generated
-	 */
-	public Adapter createOMLRelationshipFromStructureAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.runtime.OMLRelationshipToEntity <em>OML Relationship To Entity</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see gov.nasa.jpl.imce.oml.runtime.OMLRelationshipToEntity
-	 * @generated
-	 */
-	public Adapter createOMLRelationshipToEntityAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.runtime.OMLRelationshipToStructure <em>OML Relationship To Structure</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see gov.nasa.jpl.imce.oml.runtime.OMLRelationshipToStructure
-	 * @generated
-	 */
-	public Adapter createOMLRelationshipToStructureAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.runtime.OMLEntityRelationship <em>OML Entity Relationship</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see gov.nasa.jpl.imce.oml.runtime.OMLEntityRelationship
-	 * @generated
-	 */
-	public Adapter createOMLEntityRelationshipAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.runtime.OMLReifiedRelationship <em>OML Reified Relationship</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -336,76 +226,6 @@ public class OMLRuntimeAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createOMLReifiedRelationshipAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.runtime.OMLUnreifiedRelationship <em>OML Unreified Relationship</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see gov.nasa.jpl.imce.oml.runtime.OMLUnreifiedRelationship
-	 * @generated
-	 */
-	public Adapter createOMLUnreifiedRelationshipAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.runtime.OMLEntityDataPropertyToScalar <em>OML Entity Data Property To Scalar</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see gov.nasa.jpl.imce.oml.runtime.OMLEntityDataPropertyToScalar
-	 * @generated
-	 */
-	public Adapter createOMLEntityDataPropertyToScalarAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.runtime.OMLEntityDataPropertyToStructure <em>OML Entity Data Property To Structure</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see gov.nasa.jpl.imce.oml.runtime.OMLEntityDataPropertyToStructure
-	 * @generated
-	 */
-	public Adapter createOMLEntityDataPropertyToStructureAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.runtime.OMLStructureDataPropertyToScalar <em>OML Structure Data Property To Scalar</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see gov.nasa.jpl.imce.oml.runtime.OMLStructureDataPropertyToScalar
-	 * @generated
-	 */
-	public Adapter createOMLStructureDataPropertyToScalarAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.runtime.OMLStructureDataPropertyToStructure <em>OML Structure Data Property To Structure</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see gov.nasa.jpl.imce.oml.runtime.OMLStructureDataPropertyToStructure
-	 * @generated
-	 */
-	public Adapter createOMLStructureDataPropertyToStructureAdapter() {
 		return null;
 	}
 

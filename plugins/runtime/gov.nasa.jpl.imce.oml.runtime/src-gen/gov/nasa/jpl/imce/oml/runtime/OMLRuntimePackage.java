@@ -103,22 +103,13 @@ public interface OMLRuntimePackage extends EPackage {
 	int OML_OBJECT = 0;
 
 	/**
-	 * The feature id for the '<em><b>Oml Root</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_OBJECT__OML_ROOT = 0;
-
-	/**
 	 * The number of structural features of the '<em>OML Object</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OML_OBJECT_FEATURE_COUNT = 1;
+	int OML_OBJECT_FEATURE_COUNT = 0;
 
 	/**
 	 * The operation id for the '<em>Oml Inverse Referencers</em>' operation.
@@ -149,31 +140,22 @@ public interface OMLRuntimePackage extends EPackage {
 	int OML_DESCRIPTION = 1;
 
 	/**
-	 * The feature id for the '<em><b>Oml Root</b></em>' container reference.
+	 * The feature id for the '<em><b>Oml IRI</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OML_DESCRIPTION__OML_ROOT = OML_OBJECT__OML_ROOT;
+	int OML_DESCRIPTION__OML_IRI = OML_OBJECT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Oml Desciption IRI</b></em>' attribute.
+	 * The feature id for the '<em><b>Oml Contents</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OML_DESCRIPTION__OML_DESCIPTION_IRI = OML_OBJECT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Oml Description Contents</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_DESCRIPTION__OML_DESCRIPTION_CONTENTS = OML_OBJECT_FEATURE_COUNT + 1;
+	int OML_DESCRIPTION__OML_CONTENTS = OML_OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>OML Description</em>' class.
@@ -194,22 +176,13 @@ public interface OMLRuntimePackage extends EPackage {
 	int OML_DESCRIPTION___OML_INVERSE_REFERENCERS__CLASS = OML_OBJECT___OML_INVERSE_REFERENCERS__CLASS;
 
 	/**
-	 * The operation id for the '<em>Get OML Root</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_DESCRIPTION___GET_OML_ROOT = OML_OBJECT_OPERATION_COUNT + 0;
-
-	/**
 	 * The number of operations of the '<em>OML Description</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OML_DESCRIPTION_OPERATION_COUNT = OML_OBJECT_OPERATION_COUNT + 1;
+	int OML_DESCRIPTION_OPERATION_COUNT = OML_OBJECT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.runtime.impl.OMLStructureImpl <em>OML Structure</em>}' class.
@@ -228,7 +201,16 @@ public interface OMLRuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OML_STRUCTURE_FEATURE_COUNT = 0;
+	int OML_STRUCTURE_FEATURE_COUNT = OML_OBJECT_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Oml Inverse Referencers</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OML_STRUCTURE___OML_INVERSE_REFERENCERS__CLASS = OML_OBJECT___OML_INVERSE_REFERENCERS__CLASS;
 
 	/**
 	 * The number of operations of the '<em>OML Structure</em>' class.
@@ -237,7 +219,7 @@ public interface OMLRuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OML_STRUCTURE_OPERATION_COUNT = 0;
+	int OML_STRUCTURE_OPERATION_COUNT = OML_OBJECT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.runtime.impl.OMLEntityImpl <em>OML Entity</em>}' class.
@@ -250,13 +232,22 @@ public interface OMLRuntimePackage extends EPackage {
 	int OML_ENTITY = 3;
 
 	/**
-	 * The feature id for the '<em><b>Oml Root</b></em>' container reference.
+	 * The feature id for the '<em><b>Oml Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OML_ENTITY__OML_ROOT = OML_OBJECT__OML_ROOT;
+	int OML_ENTITY__OML_NAME = OML_OBJECT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Oml Description</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OML_ENTITY__OML_DESCRIPTION = OML_OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>OML Entity</em>' class.
@@ -265,7 +256,7 @@ public interface OMLRuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OML_ENTITY_FEATURE_COUNT = OML_OBJECT_FEATURE_COUNT + 0;
+	int OML_ENTITY_FEATURE_COUNT = OML_OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Oml Inverse Referencers</em>' operation.
@@ -296,13 +287,22 @@ public interface OMLRuntimePackage extends EPackage {
 	int OML_ASPECT = 4;
 
 	/**
-	 * The feature id for the '<em><b>Oml Root</b></em>' container reference.
+	 * The feature id for the '<em><b>Oml Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OML_ASPECT__OML_ROOT = OML_ENTITY__OML_ROOT;
+	int OML_ASPECT__OML_NAME = OML_ENTITY__OML_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Oml Description</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OML_ASPECT__OML_DESCRIPTION = OML_ENTITY__OML_DESCRIPTION;
 
 	/**
 	 * The number of structural features of the '<em>OML Aspect</em>' class.
@@ -342,13 +342,22 @@ public interface OMLRuntimePackage extends EPackage {
 	int OML_CONCEPT = 5;
 
 	/**
-	 * The feature id for the '<em><b>Oml Root</b></em>' container reference.
+	 * The feature id for the '<em><b>Oml Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OML_CONCEPT__OML_ROOT = OML_ENTITY__OML_ROOT;
+	int OML_CONCEPT__OML_NAME = OML_ENTITY__OML_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Oml Description</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OML_CONCEPT__OML_DESCRIPTION = OML_ENTITY__OML_DESCRIPTION;
 
 	/**
 	 * The number of structural features of the '<em>OML Concept</em>' class.
@@ -378,290 +387,6 @@ public interface OMLRuntimePackage extends EPackage {
 	int OML_CONCEPT_OPERATION_COUNT = OML_ENTITY_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.runtime.impl.OMLRelationshipFromEntityImpl <em>OML Relationship From Entity</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see gov.nasa.jpl.imce.oml.runtime.impl.OMLRelationshipFromEntityImpl
-	 * @see gov.nasa.jpl.imce.oml.runtime.impl.OMLRuntimePackageImpl#getOMLRelationshipFromEntity()
-	 * @generated
-	 */
-	int OML_RELATIONSHIP_FROM_ENTITY = 6;
-
-	/**
-	 * The feature id for the '<em><b>Oml Root</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_RELATIONSHIP_FROM_ENTITY__OML_ROOT = OML_OBJECT__OML_ROOT;
-
-	/**
-	 * The feature id for the '<em><b>Oml Source</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_RELATIONSHIP_FROM_ENTITY__OML_SOURCE = OML_OBJECT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>OML Relationship From Entity</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_RELATIONSHIP_FROM_ENTITY_FEATURE_COUNT = OML_OBJECT_FEATURE_COUNT + 1;
-
-	/**
-	 * The operation id for the '<em>Oml Inverse Referencers</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_RELATIONSHIP_FROM_ENTITY___OML_INVERSE_REFERENCERS__CLASS = OML_OBJECT___OML_INVERSE_REFERENCERS__CLASS;
-
-	/**
-	 * The number of operations of the '<em>OML Relationship From Entity</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_RELATIONSHIP_FROM_ENTITY_OPERATION_COUNT = OML_OBJECT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.runtime.impl.OMLRelationshipFromStructureImpl <em>OML Relationship From Structure</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see gov.nasa.jpl.imce.oml.runtime.impl.OMLRelationshipFromStructureImpl
-	 * @see gov.nasa.jpl.imce.oml.runtime.impl.OMLRuntimePackageImpl#getOMLRelationshipFromStructure()
-	 * @generated
-	 */
-	int OML_RELATIONSHIP_FROM_STRUCTURE = 7;
-
-	/**
-	 * The feature id for the '<em><b>Oml Root</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_RELATIONSHIP_FROM_STRUCTURE__OML_ROOT = OML_OBJECT__OML_ROOT;
-
-	/**
-	 * The feature id for the '<em><b>Oml Source</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_RELATIONSHIP_FROM_STRUCTURE__OML_SOURCE = OML_OBJECT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>OML Relationship From Structure</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_RELATIONSHIP_FROM_STRUCTURE_FEATURE_COUNT = OML_OBJECT_FEATURE_COUNT + 1;
-
-	/**
-	 * The operation id for the '<em>Oml Inverse Referencers</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_RELATIONSHIP_FROM_STRUCTURE___OML_INVERSE_REFERENCERS__CLASS = OML_OBJECT___OML_INVERSE_REFERENCERS__CLASS;
-
-	/**
-	 * The number of operations of the '<em>OML Relationship From Structure</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_RELATIONSHIP_FROM_STRUCTURE_OPERATION_COUNT = OML_OBJECT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.runtime.impl.OMLRelationshipToEntityImpl <em>OML Relationship To Entity</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see gov.nasa.jpl.imce.oml.runtime.impl.OMLRelationshipToEntityImpl
-	 * @see gov.nasa.jpl.imce.oml.runtime.impl.OMLRuntimePackageImpl#getOMLRelationshipToEntity()
-	 * @generated
-	 */
-	int OML_RELATIONSHIP_TO_ENTITY = 8;
-
-	/**
-	 * The feature id for the '<em><b>Oml Root</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_RELATIONSHIP_TO_ENTITY__OML_ROOT = OML_OBJECT__OML_ROOT;
-
-	/**
-	 * The feature id for the '<em><b>Oml Target</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_RELATIONSHIP_TO_ENTITY__OML_TARGET = OML_OBJECT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>OML Relationship To Entity</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_RELATIONSHIP_TO_ENTITY_FEATURE_COUNT = OML_OBJECT_FEATURE_COUNT + 1;
-
-	/**
-	 * The operation id for the '<em>Oml Inverse Referencers</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_RELATIONSHIP_TO_ENTITY___OML_INVERSE_REFERENCERS__CLASS = OML_OBJECT___OML_INVERSE_REFERENCERS__CLASS;
-
-	/**
-	 * The number of operations of the '<em>OML Relationship To Entity</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_RELATIONSHIP_TO_ENTITY_OPERATION_COUNT = OML_OBJECT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.runtime.impl.OMLRelationshipToStructureImpl <em>OML Relationship To Structure</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see gov.nasa.jpl.imce.oml.runtime.impl.OMLRelationshipToStructureImpl
-	 * @see gov.nasa.jpl.imce.oml.runtime.impl.OMLRuntimePackageImpl#getOMLRelationshipToStructure()
-	 * @generated
-	 */
-	int OML_RELATIONSHIP_TO_STRUCTURE = 9;
-
-	/**
-	 * The feature id for the '<em><b>Oml Root</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_RELATIONSHIP_TO_STRUCTURE__OML_ROOT = OML_OBJECT__OML_ROOT;
-
-	/**
-	 * The feature id for the '<em><b>Oml Target</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_RELATIONSHIP_TO_STRUCTURE__OML_TARGET = OML_OBJECT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>OML Relationship To Structure</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_RELATIONSHIP_TO_STRUCTURE_FEATURE_COUNT = OML_OBJECT_FEATURE_COUNT + 1;
-
-	/**
-	 * The operation id for the '<em>Oml Inverse Referencers</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_RELATIONSHIP_TO_STRUCTURE___OML_INVERSE_REFERENCERS__CLASS = OML_OBJECT___OML_INVERSE_REFERENCERS__CLASS;
-
-	/**
-	 * The number of operations of the '<em>OML Relationship To Structure</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_RELATIONSHIP_TO_STRUCTURE_OPERATION_COUNT = OML_OBJECT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.runtime.impl.OMLEntityRelationshipImpl <em>OML Entity Relationship</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see gov.nasa.jpl.imce.oml.runtime.impl.OMLEntityRelationshipImpl
-	 * @see gov.nasa.jpl.imce.oml.runtime.impl.OMLRuntimePackageImpl#getOMLEntityRelationship()
-	 * @generated
-	 */
-	int OML_ENTITY_RELATIONSHIP = 10;
-
-	/**
-	 * The feature id for the '<em><b>Oml Root</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_ENTITY_RELATIONSHIP__OML_ROOT = OML_RELATIONSHIP_FROM_ENTITY__OML_ROOT;
-
-	/**
-	 * The feature id for the '<em><b>Oml Source</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_ENTITY_RELATIONSHIP__OML_SOURCE = OML_RELATIONSHIP_FROM_ENTITY__OML_SOURCE;
-
-	/**
-	 * The feature id for the '<em><b>Oml Target</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_ENTITY_RELATIONSHIP__OML_TARGET = OML_RELATIONSHIP_FROM_ENTITY_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>OML Entity Relationship</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_ENTITY_RELATIONSHIP_FEATURE_COUNT = OML_RELATIONSHIP_FROM_ENTITY_FEATURE_COUNT + 1;
-
-	/**
-	 * The operation id for the '<em>Oml Inverse Referencers</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_ENTITY_RELATIONSHIP___OML_INVERSE_REFERENCERS__CLASS = OML_RELATIONSHIP_FROM_ENTITY___OML_INVERSE_REFERENCERS__CLASS;
-
-	/**
-	 * The number of operations of the '<em>OML Entity Relationship</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_ENTITY_RELATIONSHIP_OPERATION_COUNT = OML_RELATIONSHIP_FROM_ENTITY_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.runtime.impl.OMLReifiedRelationshipImpl <em>OML Reified Relationship</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -669,16 +394,25 @@ public interface OMLRuntimePackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.runtime.impl.OMLRuntimePackageImpl#getOMLReifiedRelationship()
 	 * @generated
 	 */
-	int OML_REIFIED_RELATIONSHIP = 11;
+	int OML_REIFIED_RELATIONSHIP = 6;
 
 	/**
-	 * The feature id for the '<em><b>Oml Root</b></em>' container reference.
+	 * The feature id for the '<em><b>Oml Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OML_REIFIED_RELATIONSHIP__OML_ROOT = OML_ENTITY_RELATIONSHIP__OML_ROOT;
+	int OML_REIFIED_RELATIONSHIP__OML_NAME = OML_ENTITY__OML_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Oml Description</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OML_REIFIED_RELATIONSHIP__OML_DESCRIPTION = OML_ENTITY__OML_DESCRIPTION;
 
 	/**
 	 * The feature id for the '<em><b>Oml Source</b></em>' reference.
@@ -687,7 +421,7 @@ public interface OMLRuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OML_REIFIED_RELATIONSHIP__OML_SOURCE = OML_ENTITY_RELATIONSHIP__OML_SOURCE;
+	int OML_REIFIED_RELATIONSHIP__OML_SOURCE = OML_ENTITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Oml Target</b></em>' reference.
@@ -696,7 +430,7 @@ public interface OMLRuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OML_REIFIED_RELATIONSHIP__OML_TARGET = OML_ENTITY_RELATIONSHIP__OML_TARGET;
+	int OML_REIFIED_RELATIONSHIP__OML_TARGET = OML_ENTITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>OML Reified Relationship</em>' class.
@@ -705,7 +439,7 @@ public interface OMLRuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OML_REIFIED_RELATIONSHIP_FEATURE_COUNT = OML_ENTITY_RELATIONSHIP_FEATURE_COUNT + 0;
+	int OML_REIFIED_RELATIONSHIP_FEATURE_COUNT = OML_ENTITY_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Oml Inverse Referencers</em>' operation.
@@ -714,7 +448,7 @@ public interface OMLRuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OML_REIFIED_RELATIONSHIP___OML_INVERSE_REFERENCERS__CLASS = OML_ENTITY_RELATIONSHIP___OML_INVERSE_REFERENCERS__CLASS;
+	int OML_REIFIED_RELATIONSHIP___OML_INVERSE_REFERENCERS__CLASS = OML_ENTITY___OML_INVERSE_REFERENCERS__CLASS;
 
 	/**
 	 * The number of operations of the '<em>OML Reified Relationship</em>' class.
@@ -723,327 +457,7 @@ public interface OMLRuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OML_REIFIED_RELATIONSHIP_OPERATION_COUNT = OML_ENTITY_RELATIONSHIP_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.runtime.impl.OMLUnreifiedRelationshipImpl <em>OML Unreified Relationship</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see gov.nasa.jpl.imce.oml.runtime.impl.OMLUnreifiedRelationshipImpl
-	 * @see gov.nasa.jpl.imce.oml.runtime.impl.OMLRuntimePackageImpl#getOMLUnreifiedRelationship()
-	 * @generated
-	 */
-	int OML_UNREIFIED_RELATIONSHIP = 12;
-
-	/**
-	 * The feature id for the '<em><b>Oml Root</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_UNREIFIED_RELATIONSHIP__OML_ROOT = OML_ENTITY_RELATIONSHIP__OML_ROOT;
-
-	/**
-	 * The feature id for the '<em><b>Oml Source</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_UNREIFIED_RELATIONSHIP__OML_SOURCE = OML_ENTITY_RELATIONSHIP__OML_SOURCE;
-
-	/**
-	 * The feature id for the '<em><b>Oml Target</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_UNREIFIED_RELATIONSHIP__OML_TARGET = OML_ENTITY_RELATIONSHIP__OML_TARGET;
-
-	/**
-	 * The number of structural features of the '<em>OML Unreified Relationship</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_UNREIFIED_RELATIONSHIP_FEATURE_COUNT = OML_ENTITY_RELATIONSHIP_FEATURE_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Oml Inverse Referencers</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_UNREIFIED_RELATIONSHIP___OML_INVERSE_REFERENCERS__CLASS = OML_ENTITY_RELATIONSHIP___OML_INVERSE_REFERENCERS__CLASS;
-
-	/**
-	 * The number of operations of the '<em>OML Unreified Relationship</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_UNREIFIED_RELATIONSHIP_OPERATION_COUNT = OML_ENTITY_RELATIONSHIP_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.runtime.impl.OMLEntityDataPropertyToScalarImpl <em>OML Entity Data Property To Scalar</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see gov.nasa.jpl.imce.oml.runtime.impl.OMLEntityDataPropertyToScalarImpl
-	 * @see gov.nasa.jpl.imce.oml.runtime.impl.OMLRuntimePackageImpl#getOMLEntityDataPropertyToScalar()
-	 * @generated
-	 */
-	int OML_ENTITY_DATA_PROPERTY_TO_SCALAR = 13;
-
-	/**
-	 * The feature id for the '<em><b>Oml Root</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_ENTITY_DATA_PROPERTY_TO_SCALAR__OML_ROOT = OML_RELATIONSHIP_FROM_ENTITY__OML_ROOT;
-
-	/**
-	 * The feature id for the '<em><b>Oml Source</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_ENTITY_DATA_PROPERTY_TO_SCALAR__OML_SOURCE = OML_RELATIONSHIP_FROM_ENTITY__OML_SOURCE;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_ENTITY_DATA_PROPERTY_TO_SCALAR__VALUE = OML_RELATIONSHIP_FROM_ENTITY_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>OML Entity Data Property To Scalar</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_ENTITY_DATA_PROPERTY_TO_SCALAR_FEATURE_COUNT = OML_RELATIONSHIP_FROM_ENTITY_FEATURE_COUNT + 1;
-
-	/**
-	 * The operation id for the '<em>Oml Inverse Referencers</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_ENTITY_DATA_PROPERTY_TO_SCALAR___OML_INVERSE_REFERENCERS__CLASS = OML_RELATIONSHIP_FROM_ENTITY___OML_INVERSE_REFERENCERS__CLASS;
-
-	/**
-	 * The number of operations of the '<em>OML Entity Data Property To Scalar</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_ENTITY_DATA_PROPERTY_TO_SCALAR_OPERATION_COUNT = OML_RELATIONSHIP_FROM_ENTITY_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.runtime.impl.OMLEntityDataPropertyToStructureImpl <em>OML Entity Data Property To Structure</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see gov.nasa.jpl.imce.oml.runtime.impl.OMLEntityDataPropertyToStructureImpl
-	 * @see gov.nasa.jpl.imce.oml.runtime.impl.OMLRuntimePackageImpl#getOMLEntityDataPropertyToStructure()
-	 * @generated
-	 */
-	int OML_ENTITY_DATA_PROPERTY_TO_STRUCTURE = 14;
-
-	/**
-	 * The feature id for the '<em><b>Oml Root</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_ENTITY_DATA_PROPERTY_TO_STRUCTURE__OML_ROOT = OML_RELATIONSHIP_FROM_ENTITY__OML_ROOT;
-
-	/**
-	 * The feature id for the '<em><b>Oml Source</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_ENTITY_DATA_PROPERTY_TO_STRUCTURE__OML_SOURCE = OML_RELATIONSHIP_FROM_ENTITY__OML_SOURCE;
-
-	/**
-	 * The feature id for the '<em><b>Oml Target</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_ENTITY_DATA_PROPERTY_TO_STRUCTURE__OML_TARGET = OML_RELATIONSHIP_FROM_ENTITY_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>OML Entity Data Property To Structure</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_ENTITY_DATA_PROPERTY_TO_STRUCTURE_FEATURE_COUNT = OML_RELATIONSHIP_FROM_ENTITY_FEATURE_COUNT + 1;
-
-	/**
-	 * The operation id for the '<em>Oml Inverse Referencers</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_ENTITY_DATA_PROPERTY_TO_STRUCTURE___OML_INVERSE_REFERENCERS__CLASS = OML_RELATIONSHIP_FROM_ENTITY___OML_INVERSE_REFERENCERS__CLASS;
-
-	/**
-	 * The number of operations of the '<em>OML Entity Data Property To Structure</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_ENTITY_DATA_PROPERTY_TO_STRUCTURE_OPERATION_COUNT = OML_RELATIONSHIP_FROM_ENTITY_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.runtime.impl.OMLStructureDataPropertyToScalarImpl <em>OML Structure Data Property To Scalar</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see gov.nasa.jpl.imce.oml.runtime.impl.OMLStructureDataPropertyToScalarImpl
-	 * @see gov.nasa.jpl.imce.oml.runtime.impl.OMLRuntimePackageImpl#getOMLStructureDataPropertyToScalar()
-	 * @generated
-	 */
-	int OML_STRUCTURE_DATA_PROPERTY_TO_SCALAR = 15;
-
-	/**
-	 * The feature id for the '<em><b>Oml Root</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_STRUCTURE_DATA_PROPERTY_TO_SCALAR__OML_ROOT = OML_RELATIONSHIP_FROM_STRUCTURE__OML_ROOT;
-
-	/**
-	 * The feature id for the '<em><b>Oml Source</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_STRUCTURE_DATA_PROPERTY_TO_SCALAR__OML_SOURCE = OML_RELATIONSHIP_FROM_STRUCTURE__OML_SOURCE;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_STRUCTURE_DATA_PROPERTY_TO_SCALAR__VALUE = OML_RELATIONSHIP_FROM_STRUCTURE_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>OML Structure Data Property To Scalar</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_STRUCTURE_DATA_PROPERTY_TO_SCALAR_FEATURE_COUNT = OML_RELATIONSHIP_FROM_STRUCTURE_FEATURE_COUNT + 1;
-
-	/**
-	 * The operation id for the '<em>Oml Inverse Referencers</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_STRUCTURE_DATA_PROPERTY_TO_SCALAR___OML_INVERSE_REFERENCERS__CLASS = OML_RELATIONSHIP_FROM_STRUCTURE___OML_INVERSE_REFERENCERS__CLASS;
-
-	/**
-	 * The number of operations of the '<em>OML Structure Data Property To Scalar</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_STRUCTURE_DATA_PROPERTY_TO_SCALAR_OPERATION_COUNT = OML_RELATIONSHIP_FROM_STRUCTURE_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.runtime.impl.OMLStructureDataPropertyToStructureImpl <em>OML Structure Data Property To Structure</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see gov.nasa.jpl.imce.oml.runtime.impl.OMLStructureDataPropertyToStructureImpl
-	 * @see gov.nasa.jpl.imce.oml.runtime.impl.OMLRuntimePackageImpl#getOMLStructureDataPropertyToStructure()
-	 * @generated
-	 */
-	int OML_STRUCTURE_DATA_PROPERTY_TO_STRUCTURE = 16;
-
-	/**
-	 * The feature id for the '<em><b>Oml Root</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_STRUCTURE_DATA_PROPERTY_TO_STRUCTURE__OML_ROOT = OML_RELATIONSHIP_FROM_STRUCTURE__OML_ROOT;
-
-	/**
-	 * The feature id for the '<em><b>Oml Source</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_STRUCTURE_DATA_PROPERTY_TO_STRUCTURE__OML_SOURCE = OML_RELATIONSHIP_FROM_STRUCTURE__OML_SOURCE;
-
-	/**
-	 * The feature id for the '<em><b>Oml Target</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_STRUCTURE_DATA_PROPERTY_TO_STRUCTURE__OML_TARGET = OML_RELATIONSHIP_FROM_STRUCTURE_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>OML Structure Data Property To Structure</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_STRUCTURE_DATA_PROPERTY_TO_STRUCTURE_FEATURE_COUNT = OML_RELATIONSHIP_FROM_STRUCTURE_FEATURE_COUNT + 1;
-
-	/**
-	 * The operation id for the '<em>Oml Inverse Referencers</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_STRUCTURE_DATA_PROPERTY_TO_STRUCTURE___OML_INVERSE_REFERENCERS__CLASS = OML_RELATIONSHIP_FROM_STRUCTURE___OML_INVERSE_REFERENCERS__CLASS;
-
-	/**
-	 * The number of operations of the '<em>OML Structure Data Property To Structure</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OML_STRUCTURE_DATA_PROPERTY_TO_STRUCTURE_OPERATION_COUNT = OML_RELATIONSHIP_FROM_STRUCTURE_OPERATION_COUNT + 0;
+	int OML_REIFIED_RELATIONSHIP_OPERATION_COUNT = OML_ENTITY_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '<em>IRI</em>' data type.
@@ -1053,7 +467,17 @@ public interface OMLRuntimePackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.runtime.impl.OMLRuntimePackageImpl#getIRI()
 	 * @generated
 	 */
-	int IRI = 17;
+	int IRI = 7;
+
+	/**
+	 * The meta object id for the '<em>Local Name</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.lang.String
+	 * @see gov.nasa.jpl.imce.oml.runtime.impl.OMLRuntimePackageImpl#getLocalName()
+	 * @generated
+	 */
+	int LOCAL_NAME = 8;
 
 	/**
 	 * The meta object id for the '<em>Lexical Value</em>' data type.
@@ -1063,7 +487,7 @@ public interface OMLRuntimePackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.runtime.impl.OMLRuntimePackageImpl#getLexicalValue()
 	 * @generated
 	 */
-	int LEXICAL_VALUE = 18;
+	int LEXICAL_VALUE = 9;
 
 
 	/**
@@ -1075,17 +499,6 @@ public interface OMLRuntimePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getOMLObject();
-
-	/**
-	 * Returns the meta object for the container reference '{@link gov.nasa.jpl.imce.oml.runtime.OMLObject#getOmlRoot <em>Oml Root</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Oml Root</em>'.
-	 * @see gov.nasa.jpl.imce.oml.runtime.OMLObject#getOmlRoot()
-	 * @see #getOMLObject()
-	 * @generated
-	 */
-	EReference getOMLObject_OmlRoot();
 
 	/**
 	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.runtime.OMLObject#omlInverseReferencers(java.lang.Class) <em>Oml Inverse Referencers</em>}' operation.
@@ -1108,36 +521,26 @@ public interface OMLRuntimePackage extends EPackage {
 	EClass getOMLDescription();
 
 	/**
-	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.runtime.OMLDescription#getOmlDesciptionIRI <em>Oml Desciption IRI</em>}'.
+	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.runtime.OMLDescription#getOmlIRI <em>Oml IRI</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Oml Desciption IRI</em>'.
-	 * @see gov.nasa.jpl.imce.oml.runtime.OMLDescription#getOmlDesciptionIRI()
+	 * @return the meta object for the attribute '<em>Oml IRI</em>'.
+	 * @see gov.nasa.jpl.imce.oml.runtime.OMLDescription#getOmlIRI()
 	 * @see #getOMLDescription()
 	 * @generated
 	 */
-	EAttribute getOMLDescription_OmlDesciptionIRI();
+	EAttribute getOMLDescription_OmlIRI();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link gov.nasa.jpl.imce.oml.runtime.OMLDescription#getOmlDescriptionContents <em>Oml Description Contents</em>}'.
+	 * Returns the meta object for the containment reference list '{@link gov.nasa.jpl.imce.oml.runtime.OMLDescription#getOmlContents <em>Oml Contents</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Oml Description Contents</em>'.
-	 * @see gov.nasa.jpl.imce.oml.runtime.OMLDescription#getOmlDescriptionContents()
+	 * @return the meta object for the containment reference list '<em>Oml Contents</em>'.
+	 * @see gov.nasa.jpl.imce.oml.runtime.OMLDescription#getOmlContents()
 	 * @see #getOMLDescription()
 	 * @generated
 	 */
-	EReference getOMLDescription_OmlDescriptionContents();
-
-	/**
-	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.runtime.OMLDescription#getOMLRoot() <em>Get OML Root</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Get OML Root</em>' operation.
-	 * @see gov.nasa.jpl.imce.oml.runtime.OMLDescription#getOMLRoot()
-	 * @generated
-	 */
-	EOperation getOMLDescription__GetOMLRoot();
+	EReference getOMLDescription_OmlContents();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.runtime.OMLStructure <em>OML Structure</em>}'.
@@ -1160,6 +563,28 @@ public interface OMLRuntimePackage extends EPackage {
 	EClass getOMLEntity();
 
 	/**
+	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.runtime.OMLEntity#getOmlName <em>Oml Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Oml Name</em>'.
+	 * @see gov.nasa.jpl.imce.oml.runtime.OMLEntity#getOmlName()
+	 * @see #getOMLEntity()
+	 * @generated
+	 */
+	EAttribute getOMLEntity_OmlName();
+
+	/**
+	 * Returns the meta object for the container reference '{@link gov.nasa.jpl.imce.oml.runtime.OMLEntity#getOmlDescription <em>Oml Description</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Oml Description</em>'.
+	 * @see gov.nasa.jpl.imce.oml.runtime.OMLEntity#getOmlDescription()
+	 * @see #getOMLEntity()
+	 * @generated
+	 */
+	EReference getOMLEntity_OmlDescription();
+
+	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.runtime.OMLAspect <em>OML Aspect</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1180,100 +605,6 @@ public interface OMLRuntimePackage extends EPackage {
 	EClass getOMLConcept();
 
 	/**
-	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.runtime.OMLRelationshipFromEntity <em>OML Relationship From Entity</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>OML Relationship From Entity</em>'.
-	 * @see gov.nasa.jpl.imce.oml.runtime.OMLRelationshipFromEntity
-	 * @generated
-	 */
-	EClass getOMLRelationshipFromEntity();
-
-	/**
-	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.runtime.OMLRelationshipFromEntity#getOmlSource <em>Oml Source</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Oml Source</em>'.
-	 * @see gov.nasa.jpl.imce.oml.runtime.OMLRelationshipFromEntity#getOmlSource()
-	 * @see #getOMLRelationshipFromEntity()
-	 * @generated
-	 */
-	EReference getOMLRelationshipFromEntity_OmlSource();
-
-	/**
-	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.runtime.OMLRelationshipFromStructure <em>OML Relationship From Structure</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>OML Relationship From Structure</em>'.
-	 * @see gov.nasa.jpl.imce.oml.runtime.OMLRelationshipFromStructure
-	 * @generated
-	 */
-	EClass getOMLRelationshipFromStructure();
-
-	/**
-	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.runtime.OMLRelationshipFromStructure#getOmlSource <em>Oml Source</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Oml Source</em>'.
-	 * @see gov.nasa.jpl.imce.oml.runtime.OMLRelationshipFromStructure#getOmlSource()
-	 * @see #getOMLRelationshipFromStructure()
-	 * @generated
-	 */
-	EReference getOMLRelationshipFromStructure_OmlSource();
-
-	/**
-	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.runtime.OMLRelationshipToEntity <em>OML Relationship To Entity</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>OML Relationship To Entity</em>'.
-	 * @see gov.nasa.jpl.imce.oml.runtime.OMLRelationshipToEntity
-	 * @generated
-	 */
-	EClass getOMLRelationshipToEntity();
-
-	/**
-	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.runtime.OMLRelationshipToEntity#getOmlTarget <em>Oml Target</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Oml Target</em>'.
-	 * @see gov.nasa.jpl.imce.oml.runtime.OMLRelationshipToEntity#getOmlTarget()
-	 * @see #getOMLRelationshipToEntity()
-	 * @generated
-	 */
-	EReference getOMLRelationshipToEntity_OmlTarget();
-
-	/**
-	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.runtime.OMLRelationshipToStructure <em>OML Relationship To Structure</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>OML Relationship To Structure</em>'.
-	 * @see gov.nasa.jpl.imce.oml.runtime.OMLRelationshipToStructure
-	 * @generated
-	 */
-	EClass getOMLRelationshipToStructure();
-
-	/**
-	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.runtime.OMLRelationshipToStructure#getOmlTarget <em>Oml Target</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Oml Target</em>'.
-	 * @see gov.nasa.jpl.imce.oml.runtime.OMLRelationshipToStructure#getOmlTarget()
-	 * @see #getOMLRelationshipToStructure()
-	 * @generated
-	 */
-	EReference getOMLRelationshipToStructure_OmlTarget();
-
-	/**
-	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.runtime.OMLEntityRelationship <em>OML Entity Relationship</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>OML Entity Relationship</em>'.
-	 * @see gov.nasa.jpl.imce.oml.runtime.OMLEntityRelationship
-	 * @generated
-	 */
-	EClass getOMLEntityRelationship();
-
-	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.runtime.OMLReifiedRelationship <em>OML Reified Relationship</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1284,76 +615,26 @@ public interface OMLRuntimePackage extends EPackage {
 	EClass getOMLReifiedRelationship();
 
 	/**
-	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.runtime.OMLUnreifiedRelationship <em>OML Unreified Relationship</em>}'.
+	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.runtime.OMLReifiedRelationship#getOmlSource <em>Oml Source</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>OML Unreified Relationship</em>'.
-	 * @see gov.nasa.jpl.imce.oml.runtime.OMLUnreifiedRelationship
+	 * @return the meta object for the reference '<em>Oml Source</em>'.
+	 * @see gov.nasa.jpl.imce.oml.runtime.OMLReifiedRelationship#getOmlSource()
+	 * @see #getOMLReifiedRelationship()
 	 * @generated
 	 */
-	EClass getOMLUnreifiedRelationship();
+	EReference getOMLReifiedRelationship_OmlSource();
 
 	/**
-	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.runtime.OMLEntityDataPropertyToScalar <em>OML Entity Data Property To Scalar</em>}'.
+	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.runtime.OMLReifiedRelationship#getOmlTarget <em>Oml Target</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>OML Entity Data Property To Scalar</em>'.
-	 * @see gov.nasa.jpl.imce.oml.runtime.OMLEntityDataPropertyToScalar
+	 * @return the meta object for the reference '<em>Oml Target</em>'.
+	 * @see gov.nasa.jpl.imce.oml.runtime.OMLReifiedRelationship#getOmlTarget()
+	 * @see #getOMLReifiedRelationship()
 	 * @generated
 	 */
-	EClass getOMLEntityDataPropertyToScalar();
-
-	/**
-	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.runtime.OMLEntityDataPropertyToScalar#getValue <em>Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see gov.nasa.jpl.imce.oml.runtime.OMLEntityDataPropertyToScalar#getValue()
-	 * @see #getOMLEntityDataPropertyToScalar()
-	 * @generated
-	 */
-	EAttribute getOMLEntityDataPropertyToScalar_Value();
-
-	/**
-	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.runtime.OMLEntityDataPropertyToStructure <em>OML Entity Data Property To Structure</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>OML Entity Data Property To Structure</em>'.
-	 * @see gov.nasa.jpl.imce.oml.runtime.OMLEntityDataPropertyToStructure
-	 * @generated
-	 */
-	EClass getOMLEntityDataPropertyToStructure();
-
-	/**
-	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.runtime.OMLStructureDataPropertyToScalar <em>OML Structure Data Property To Scalar</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>OML Structure Data Property To Scalar</em>'.
-	 * @see gov.nasa.jpl.imce.oml.runtime.OMLStructureDataPropertyToScalar
-	 * @generated
-	 */
-	EClass getOMLStructureDataPropertyToScalar();
-
-	/**
-	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.runtime.OMLStructureDataPropertyToScalar#getValue <em>Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see gov.nasa.jpl.imce.oml.runtime.OMLStructureDataPropertyToScalar#getValue()
-	 * @see #getOMLStructureDataPropertyToScalar()
-	 * @generated
-	 */
-	EAttribute getOMLStructureDataPropertyToScalar_Value();
-
-	/**
-	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.runtime.OMLStructureDataPropertyToStructure <em>OML Structure Data Property To Structure</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>OML Structure Data Property To Structure</em>'.
-	 * @see gov.nasa.jpl.imce.oml.runtime.OMLStructureDataPropertyToStructure
-	 * @generated
-	 */
-	EClass getOMLStructureDataPropertyToStructure();
+	EReference getOMLReifiedRelationship_OmlTarget();
 
 	/**
 	 * Returns the meta object for data type '{@link java.lang.String <em>IRI</em>}'.
@@ -1365,6 +646,17 @@ public interface OMLRuntimePackage extends EPackage {
 	 * @generated
 	 */
 	EDataType getIRI();
+
+	/**
+	 * Returns the meta object for data type '{@link java.lang.String <em>Local Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Local Name</em>'.
+	 * @see java.lang.String
+	 * @model instanceClass="java.lang.String"
+	 * @generated
+	 */
+	EDataType getLocalName();
 
 	/**
 	 * Returns the meta object for data type '{@link java.lang.String <em>Lexical Value</em>}'.
@@ -1411,14 +703,6 @@ public interface OMLRuntimePackage extends EPackage {
 		EClass OML_OBJECT = eINSTANCE.getOMLObject();
 
 		/**
-		 * The meta object literal for the '<em><b>Oml Root</b></em>' container reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference OML_OBJECT__OML_ROOT = eINSTANCE.getOMLObject_OmlRoot();
-
-		/**
 		 * The meta object literal for the '<em><b>Oml Inverse Referencers</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1437,28 +721,20 @@ public interface OMLRuntimePackage extends EPackage {
 		EClass OML_DESCRIPTION = eINSTANCE.getOMLDescription();
 
 		/**
-		 * The meta object literal for the '<em><b>Oml Desciption IRI</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Oml IRI</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute OML_DESCRIPTION__OML_DESCIPTION_IRI = eINSTANCE.getOMLDescription_OmlDesciptionIRI();
+		EAttribute OML_DESCRIPTION__OML_IRI = eINSTANCE.getOMLDescription_OmlIRI();
 
 		/**
-		 * The meta object literal for the '<em><b>Oml Description Contents</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Oml Contents</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference OML_DESCRIPTION__OML_DESCRIPTION_CONTENTS = eINSTANCE.getOMLDescription_OmlDescriptionContents();
-
-		/**
-		 * The meta object literal for the '<em><b>Get OML Root</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation OML_DESCRIPTION___GET_OML_ROOT = eINSTANCE.getOMLDescription__GetOMLRoot();
+		EReference OML_DESCRIPTION__OML_CONTENTS = eINSTANCE.getOMLDescription_OmlContents();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.runtime.impl.OMLStructureImpl <em>OML Structure</em>}' class.
@@ -1481,6 +757,22 @@ public interface OMLRuntimePackage extends EPackage {
 		EClass OML_ENTITY = eINSTANCE.getOMLEntity();
 
 		/**
+		 * The meta object literal for the '<em><b>Oml Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute OML_ENTITY__OML_NAME = eINSTANCE.getOMLEntity_OmlName();
+
+		/**
+		 * The meta object literal for the '<em><b>Oml Description</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OML_ENTITY__OML_DESCRIPTION = eINSTANCE.getOMLEntity_OmlDescription();
+
+		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.runtime.impl.OMLAspectImpl <em>OML Aspect</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1501,88 +793,6 @@ public interface OMLRuntimePackage extends EPackage {
 		EClass OML_CONCEPT = eINSTANCE.getOMLConcept();
 
 		/**
-		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.runtime.impl.OMLRelationshipFromEntityImpl <em>OML Relationship From Entity</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see gov.nasa.jpl.imce.oml.runtime.impl.OMLRelationshipFromEntityImpl
-		 * @see gov.nasa.jpl.imce.oml.runtime.impl.OMLRuntimePackageImpl#getOMLRelationshipFromEntity()
-		 * @generated
-		 */
-		EClass OML_RELATIONSHIP_FROM_ENTITY = eINSTANCE.getOMLRelationshipFromEntity();
-
-		/**
-		 * The meta object literal for the '<em><b>Oml Source</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference OML_RELATIONSHIP_FROM_ENTITY__OML_SOURCE = eINSTANCE.getOMLRelationshipFromEntity_OmlSource();
-
-		/**
-		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.runtime.impl.OMLRelationshipFromStructureImpl <em>OML Relationship From Structure</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see gov.nasa.jpl.imce.oml.runtime.impl.OMLRelationshipFromStructureImpl
-		 * @see gov.nasa.jpl.imce.oml.runtime.impl.OMLRuntimePackageImpl#getOMLRelationshipFromStructure()
-		 * @generated
-		 */
-		EClass OML_RELATIONSHIP_FROM_STRUCTURE = eINSTANCE.getOMLRelationshipFromStructure();
-
-		/**
-		 * The meta object literal for the '<em><b>Oml Source</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference OML_RELATIONSHIP_FROM_STRUCTURE__OML_SOURCE = eINSTANCE.getOMLRelationshipFromStructure_OmlSource();
-
-		/**
-		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.runtime.impl.OMLRelationshipToEntityImpl <em>OML Relationship To Entity</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see gov.nasa.jpl.imce.oml.runtime.impl.OMLRelationshipToEntityImpl
-		 * @see gov.nasa.jpl.imce.oml.runtime.impl.OMLRuntimePackageImpl#getOMLRelationshipToEntity()
-		 * @generated
-		 */
-		EClass OML_RELATIONSHIP_TO_ENTITY = eINSTANCE.getOMLRelationshipToEntity();
-
-		/**
-		 * The meta object literal for the '<em><b>Oml Target</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference OML_RELATIONSHIP_TO_ENTITY__OML_TARGET = eINSTANCE.getOMLRelationshipToEntity_OmlTarget();
-
-		/**
-		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.runtime.impl.OMLRelationshipToStructureImpl <em>OML Relationship To Structure</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see gov.nasa.jpl.imce.oml.runtime.impl.OMLRelationshipToStructureImpl
-		 * @see gov.nasa.jpl.imce.oml.runtime.impl.OMLRuntimePackageImpl#getOMLRelationshipToStructure()
-		 * @generated
-		 */
-		EClass OML_RELATIONSHIP_TO_STRUCTURE = eINSTANCE.getOMLRelationshipToStructure();
-
-		/**
-		 * The meta object literal for the '<em><b>Oml Target</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference OML_RELATIONSHIP_TO_STRUCTURE__OML_TARGET = eINSTANCE.getOMLRelationshipToStructure_OmlTarget();
-
-		/**
-		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.runtime.impl.OMLEntityRelationshipImpl <em>OML Entity Relationship</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see gov.nasa.jpl.imce.oml.runtime.impl.OMLEntityRelationshipImpl
-		 * @see gov.nasa.jpl.imce.oml.runtime.impl.OMLRuntimePackageImpl#getOMLEntityRelationship()
-		 * @generated
-		 */
-		EClass OML_ENTITY_RELATIONSHIP = eINSTANCE.getOMLEntityRelationship();
-
-		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.runtime.impl.OMLReifiedRelationshipImpl <em>OML Reified Relationship</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1593,70 +803,20 @@ public interface OMLRuntimePackage extends EPackage {
 		EClass OML_REIFIED_RELATIONSHIP = eINSTANCE.getOMLReifiedRelationship();
 
 		/**
-		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.runtime.impl.OMLUnreifiedRelationshipImpl <em>OML Unreified Relationship</em>}' class.
+		 * The meta object literal for the '<em><b>Oml Source</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see gov.nasa.jpl.imce.oml.runtime.impl.OMLUnreifiedRelationshipImpl
-		 * @see gov.nasa.jpl.imce.oml.runtime.impl.OMLRuntimePackageImpl#getOMLUnreifiedRelationship()
 		 * @generated
 		 */
-		EClass OML_UNREIFIED_RELATIONSHIP = eINSTANCE.getOMLUnreifiedRelationship();
+		EReference OML_REIFIED_RELATIONSHIP__OML_SOURCE = eINSTANCE.getOMLReifiedRelationship_OmlSource();
 
 		/**
-		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.runtime.impl.OMLEntityDataPropertyToScalarImpl <em>OML Entity Data Property To Scalar</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see gov.nasa.jpl.imce.oml.runtime.impl.OMLEntityDataPropertyToScalarImpl
-		 * @see gov.nasa.jpl.imce.oml.runtime.impl.OMLRuntimePackageImpl#getOMLEntityDataPropertyToScalar()
-		 * @generated
-		 */
-		EClass OML_ENTITY_DATA_PROPERTY_TO_SCALAR = eINSTANCE.getOMLEntityDataPropertyToScalar();
-
-		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Oml Target</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute OML_ENTITY_DATA_PROPERTY_TO_SCALAR__VALUE = eINSTANCE.getOMLEntityDataPropertyToScalar_Value();
-
-		/**
-		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.runtime.impl.OMLEntityDataPropertyToStructureImpl <em>OML Entity Data Property To Structure</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see gov.nasa.jpl.imce.oml.runtime.impl.OMLEntityDataPropertyToStructureImpl
-		 * @see gov.nasa.jpl.imce.oml.runtime.impl.OMLRuntimePackageImpl#getOMLEntityDataPropertyToStructure()
-		 * @generated
-		 */
-		EClass OML_ENTITY_DATA_PROPERTY_TO_STRUCTURE = eINSTANCE.getOMLEntityDataPropertyToStructure();
-
-		/**
-		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.runtime.impl.OMLStructureDataPropertyToScalarImpl <em>OML Structure Data Property To Scalar</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see gov.nasa.jpl.imce.oml.runtime.impl.OMLStructureDataPropertyToScalarImpl
-		 * @see gov.nasa.jpl.imce.oml.runtime.impl.OMLRuntimePackageImpl#getOMLStructureDataPropertyToScalar()
-		 * @generated
-		 */
-		EClass OML_STRUCTURE_DATA_PROPERTY_TO_SCALAR = eINSTANCE.getOMLStructureDataPropertyToScalar();
-
-		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute OML_STRUCTURE_DATA_PROPERTY_TO_SCALAR__VALUE = eINSTANCE.getOMLStructureDataPropertyToScalar_Value();
-
-		/**
-		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.runtime.impl.OMLStructureDataPropertyToStructureImpl <em>OML Structure Data Property To Structure</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see gov.nasa.jpl.imce.oml.runtime.impl.OMLStructureDataPropertyToStructureImpl
-		 * @see gov.nasa.jpl.imce.oml.runtime.impl.OMLRuntimePackageImpl#getOMLStructureDataPropertyToStructure()
-		 * @generated
-		 */
-		EClass OML_STRUCTURE_DATA_PROPERTY_TO_STRUCTURE = eINSTANCE.getOMLStructureDataPropertyToStructure();
+		EReference OML_REIFIED_RELATIONSHIP__OML_TARGET = eINSTANCE.getOMLReifiedRelationship_OmlTarget();
 
 		/**
 		 * The meta object literal for the '<em>IRI</em>' data type.
@@ -1667,6 +827,16 @@ public interface OMLRuntimePackage extends EPackage {
 		 * @generated
 		 */
 		EDataType IRI = eINSTANCE.getIRI();
+
+		/**
+		 * The meta object literal for the '<em>Local Name</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.lang.String
+		 * @see gov.nasa.jpl.imce.oml.runtime.impl.OMLRuntimePackageImpl#getLocalName()
+		 * @generated
+		 */
+		EDataType LOCAL_NAME = eINSTANCE.getLocalName();
 
 		/**
 		 * The meta object literal for the '<em>Lexical Value</em>' data type.

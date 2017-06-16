@@ -83,51 +83,6 @@ public interface OMLRuntimeFactory extends EFactory {
 	OMLReifiedRelationship createOMLReifiedRelationship();
 
 	/**
-	 * Returns a new object of class '<em>OML Unreified Relationship</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>OML Unreified Relationship</em>'.
-	 * @generated
-	 */
-	OMLUnreifiedRelationship createOMLUnreifiedRelationship();
-
-	/**
-	 * Returns a new object of class '<em>OML Entity Data Property To Scalar</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>OML Entity Data Property To Scalar</em>'.
-	 * @generated
-	 */
-	OMLEntityDataPropertyToScalar createOMLEntityDataPropertyToScalar();
-
-	/**
-	 * Returns a new object of class '<em>OML Entity Data Property To Structure</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>OML Entity Data Property To Structure</em>'.
-	 * @generated
-	 */
-	OMLEntityDataPropertyToStructure createOMLEntityDataPropertyToStructure();
-
-	/**
-	 * Returns a new object of class '<em>OML Structure Data Property To Scalar</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>OML Structure Data Property To Scalar</em>'.
-	 * @generated
-	 */
-	OMLStructureDataPropertyToScalar createOMLStructureDataPropertyToScalar();
-
-	/**
-	 * Returns a new object of class '<em>OML Structure Data Property To Structure</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>OML Structure Data Property To Structure</em>'.
-	 * @generated
-	 */
-	OMLStructureDataPropertyToStructure createOMLStructureDataPropertyToStructure();
-
-	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

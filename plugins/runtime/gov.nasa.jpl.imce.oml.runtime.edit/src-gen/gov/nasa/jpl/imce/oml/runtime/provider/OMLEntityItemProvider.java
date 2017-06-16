@@ -19,13 +19,19 @@
 package gov.nasa.jpl.imce.oml.runtime.provider;
 
 
+import gov.nasa.jpl.imce.oml.runtime.OMLEntity;
+import gov.nasa.jpl.imce.oml.runtime.OMLRuntimePackage;
+
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
  * This is the item provider adapter for a {@link gov.nasa.jpl.imce.oml.runtime.OMLEntity} object.
@@ -55,8 +61,54 @@ public class OMLEntityItemProvider extends OMLObjectItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addOmlNamePropertyDescriptor(object);
+			addOmlDescriptionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Oml Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOmlNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_OMLEntity_omlName_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_OMLEntity_omlName_feature", "_UI_OMLEntity_type"),
+				 OMLRuntimePackage.Literals.OML_ENTITY__OML_NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Oml Description feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOmlDescriptionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_OMLEntity_omlDescription_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_OMLEntity_omlDescription_feature", "_UI_OMLEntity_type"),
+				 OMLRuntimePackage.Literals.OML_ENTITY__OML_DESCRIPTION,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
@@ -67,7 +119,10 @@ public class OMLEntityItemProvider extends OMLObjectItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_OMLEntity_type");
+		String label = ((OMLEntity)object).getOmlName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_OMLEntity_type") :
+			getString("_UI_OMLEntity_type") + " " + label;
 	}
 	
 
@@ -81,6 +136,12 @@ public class OMLEntityItemProvider extends OMLObjectItemProvider {
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(OMLEntity.class)) {
+			case OMLRuntimePackage.OML_ENTITY__OML_NAME:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+		}
 		super.notifyChanged(notification);
 	}
 

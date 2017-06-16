@@ -78,11 +78,6 @@ public class OMLRuntimeFactoryImpl extends EFactoryImpl implements OMLRuntimeFac
 			case OMLRuntimePackage.OML_ASPECT: return (EObject)createOMLAspect();
 			case OMLRuntimePackage.OML_CONCEPT: return (EObject)createOMLConcept();
 			case OMLRuntimePackage.OML_REIFIED_RELATIONSHIP: return (EObject)createOMLReifiedRelationship();
-			case OMLRuntimePackage.OML_UNREIFIED_RELATIONSHIP: return (EObject)createOMLUnreifiedRelationship();
-			case OMLRuntimePackage.OML_ENTITY_DATA_PROPERTY_TO_SCALAR: return (EObject)createOMLEntityDataPropertyToScalar();
-			case OMLRuntimePackage.OML_ENTITY_DATA_PROPERTY_TO_STRUCTURE: return (EObject)createOMLEntityDataPropertyToStructure();
-			case OMLRuntimePackage.OML_STRUCTURE_DATA_PROPERTY_TO_SCALAR: return (EObject)createOMLStructureDataPropertyToScalar();
-			case OMLRuntimePackage.OML_STRUCTURE_DATA_PROPERTY_TO_STRUCTURE: return (EObject)createOMLStructureDataPropertyToStructure();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -98,6 +93,8 @@ public class OMLRuntimeFactoryImpl extends EFactoryImpl implements OMLRuntimeFac
 		switch (eDataType.getClassifierID()) {
 			case OMLRuntimePackage.IRI:
 				return createIRIFromString(eDataType, initialValue);
+			case OMLRuntimePackage.LOCAL_NAME:
+				return createLocalNameFromString(eDataType, initialValue);
 			case OMLRuntimePackage.LEXICAL_VALUE:
 				return createLexicalValueFromString(eDataType, initialValue);
 			default:
@@ -115,6 +112,8 @@ public class OMLRuntimeFactoryImpl extends EFactoryImpl implements OMLRuntimeFac
 		switch (eDataType.getClassifierID()) {
 			case OMLRuntimePackage.IRI:
 				return convertIRIToString(eDataType, instanceValue);
+			case OMLRuntimePackage.LOCAL_NAME:
+				return convertLocalNameToString(eDataType, instanceValue);
 			case OMLRuntimePackage.LEXICAL_VALUE:
 				return convertLexicalValueToString(eDataType, instanceValue);
 			default:
@@ -177,56 +176,6 @@ public class OMLRuntimeFactoryImpl extends EFactoryImpl implements OMLRuntimeFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OMLUnreifiedRelationship createOMLUnreifiedRelationship() {
-		OMLUnreifiedRelationshipImpl omlUnreifiedRelationship = new OMLUnreifiedRelationshipImpl();
-		return omlUnreifiedRelationship;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public OMLEntityDataPropertyToScalar createOMLEntityDataPropertyToScalar() {
-		OMLEntityDataPropertyToScalarImpl omlEntityDataPropertyToScalar = new OMLEntityDataPropertyToScalarImpl();
-		return omlEntityDataPropertyToScalar;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public OMLEntityDataPropertyToStructure createOMLEntityDataPropertyToStructure() {
-		OMLEntityDataPropertyToStructureImpl omlEntityDataPropertyToStructure = new OMLEntityDataPropertyToStructureImpl();
-		return omlEntityDataPropertyToStructure;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public OMLStructureDataPropertyToScalar createOMLStructureDataPropertyToScalar() {
-		OMLStructureDataPropertyToScalarImpl omlStructureDataPropertyToScalar = new OMLStructureDataPropertyToScalarImpl();
-		return omlStructureDataPropertyToScalar;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public OMLStructureDataPropertyToStructure createOMLStructureDataPropertyToStructure() {
-		OMLStructureDataPropertyToStructureImpl omlStructureDataPropertyToStructure = new OMLStructureDataPropertyToStructureImpl();
-		return omlStructureDataPropertyToStructure;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public String createIRIFromString(EDataType eDataType, String initialValue) {
 		return (String)super.createFromString(eDataType, initialValue);
 	}
@@ -237,6 +186,24 @@ public class OMLRuntimeFactoryImpl extends EFactoryImpl implements OMLRuntimeFac
 	 * @generated
 	 */
 	public String convertIRIToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String createLocalNameFromString(EDataType eDataType, String initialValue) {
+		return (String)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertLocalNameToString(EDataType eDataType, Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 

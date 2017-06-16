@@ -107,6 +107,8 @@ public class OMLGenerator extends AbstractGenerator {
     
     private final OMLGenerator generator;
     
+    private final String packageNsURI;
+    
     private final String packageEQName;
     
     private final String packageQName;
@@ -133,6 +135,7 @@ public class OMLGenerator extends AbstractGenerator {
       final String[] pSegs = pLoc.segments();
       this.packageEQName = IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(eSegs)), ".");
       this.packageQName = IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(pSegs)), ".");
+      this.packageNsURI = terminology.getIri();
       this.dsmlName = dsmlName;
       this.packageTName = OMLGenerator.validQName(terminology);
     }
@@ -315,35 +318,55 @@ public class OMLGenerator extends AbstractGenerator {
     
     protected CharSequence convertToPackage(final TerminologyBox terminology) {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("@GenModel(featureDelegation=\"None\",");
+      _builder.append("@Ecore(");
       _builder.newLine();
-      _builder.append("   ");
+      _builder.append("\t");
+      _builder.append("nsURI=\"");
+      _builder.append(this.packageNsURI, "\t");
+      _builder.append("\"");
+      _builder.newLineIfNotEmpty();
+      _builder.append(")");
+      _builder.newLine();
+      _builder.append("@GenModel(");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("copyrightText=\"\\nCopyright 2017 California Institute of Technology (\\\"Caltech\\\").\\nU.S. Government sponsorship acknowledged.\\n\\nLicensed under the Apache License, Version 2.0 (the \\\"License\\\");\\nyou may not use this file except in compliance with the License.\\nYou may obtain a copy of the License at\\n\\n     http://www.apache.org/licenses/LICENSE-2.0\\n\\nUnless required by applicable law or agreed to in writing, software\\ndistributed under the License is distributed on an \\\"AS IS\\\" BASIS,\\nWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\\nSee the License for the specific language governing permissions and\\nlimitations under the License.\\n\",");
+      _builder.newLine();
+      _builder.append("\t");
       _builder.append("modelPluginVariables=\"org.eclipse.xtext.xbase.lib org.eclipse.emf.ecore.xcore.lib org.eclipse.emf.cdo\",");
       _builder.newLine();
-      _builder.append("   ");
+      _builder.append("\t");
       _builder.append("rootExtendsClass=\"org.eclipse.emf.internal.cdo.CDOObjectImpl\",");
       _builder.newLine();
-      _builder.append("   ");
+      _builder.append("\t");
       _builder.append("rootExtendsInterface=\"org.eclipse.emf.cdo.CDOObject\",");
       _builder.newLine();
-      _builder.append("   ");
-      _builder.append("childCreationExtenders=\"true\", ");
+      _builder.append("\t");
+      _builder.append("childCreationExtenders=\"true\",");
       _builder.newLine();
-      _builder.append("   ");
-      _builder.append("modelName=\"");
-      _builder.append(this.dsmlName, "   ");
-      _builder.append("\",");
+      _builder.append("\t");
+      _builder.append("complianceLevel=\"8.0\",");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("featureDelegation=\"None\",");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("modelDirectory=\"/");
+      _builder.append(this.packageQName, "\t");
+      _builder.append("/src-gen/\",");
       _builder.newLineIfNotEmpty();
-      _builder.append("   ");
-      _builder.append("prefix=\"");
-      _builder.append(this.dsmlName, "   ");
-      _builder.append("\",");
-      _builder.newLineIfNotEmpty();
-      _builder.append("   ");
+      _builder.append("\t");
       _builder.append("editDirectory=\"/");
-      _builder.append(this.packageEQName, "   ");
-      _builder.append("/src-gen\")");
+      _builder.append(this.packageEQName, "\t");
+      _builder.append("/src-gen\",");
       _builder.newLineIfNotEmpty();
+      _builder.append("\t");
+      _builder.append("editPluginClass=\"");
+      _builder.append(this.packageEQName, "\t");
+      _builder.append(".BundleEditPlugin\"");
+      _builder.newLineIfNotEmpty();
+      _builder.append(")");
+      _builder.newLine();
       _builder.append("package ");
       _builder.append(this.packageTName);
       _builder.newLineIfNotEmpty();
