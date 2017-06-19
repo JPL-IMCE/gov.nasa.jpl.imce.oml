@@ -2662,15 +2662,15 @@ rule__Value__Alternatives
 	}
 :
 	(
-		{ before(grammarAccess.getValueAccess().getINTTerminalRuleCall_0()); }
-		RULE_INT
-		{ after(grammarAccess.getValueAccess().getINTTerminalRuleCall_0()); }
+		{ before(grammarAccess.getValueAccess().getDECIMALTerminalRuleCall_0()); }
+		RULE_DECIMAL
+		{ after(grammarAccess.getValueAccess().getDECIMALTerminalRuleCall_0()); }
 	)
 	|
 	(
-		{ before(grammarAccess.getValueAccess().getDECIMALTerminalRuleCall_1()); }
-		RULE_DECIMAL
-		{ after(grammarAccess.getValueAccess().getDECIMALTerminalRuleCall_1()); }
+		{ before(grammarAccess.getValueAccess().getINTTerminalRuleCall_1()); }
+		RULE_INT
+		{ after(grammarAccess.getValueAccess().getINTTerminalRuleCall_1()); }
 	)
 	|
 	(
@@ -16299,7 +16299,7 @@ RULE_HEX : ('0x'|'0X') ('0'..'9'|'a'..'f'|'A'..'F'|'_')+ ('#' (('b'|'B') ('i'|'I
 
 RULE_INT : ('0'..'9')+;
 
-RULE_DECIMAL : RULE_INT (('e'|'E') ('+'|'-')? RULE_INT)? (('b'|'B') ('i'|'I'|'d'|'D')|('l'|'L'|'d'|'D'|'f'|'F'));
+RULE_DECIMAL : RULE_INT (('e'|'E') ('+'|'-')? RULE_INT)? (('b'|'B') ('i'|'I'|'d'|'D')|('l'|'L'|'d'|'D'|'f'|'F'))?;
 
 RULE_FLOAT : '-'? ('0'..'9')+ '.' ('0'..'9')+ (('e'|'E') ('+'|'-')? ('0'..'9')+)?;
 

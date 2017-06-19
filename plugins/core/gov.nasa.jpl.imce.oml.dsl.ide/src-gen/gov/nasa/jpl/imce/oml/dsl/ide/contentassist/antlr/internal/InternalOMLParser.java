@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalOMLParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_IRI", "RULE_ID", "RULE_ABBREV_IRI", "RULE_INT", "RULE_DECIMAL", "RULE_STRING", "RULE_UUID", "RULE_HEX", "RULE_FLOAT", "RULE_HEX_8DIGITS", "RULE_HEX_4DIGITS", "RULE_HEX_12DIGITS", "RULE_HEX_DIGIT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "'open'", "'closed'", "'final'", "'partial'", "'annotationProperty'", "'='", "'@'", "'terminology'", "'{'", "'}'", "'bundle'", "'descriptionBox'", "'bundles'", "'conceptDesignationTerminologyAxiom'", "'designatedTerminology'", "'designatedConcept'", "'extends'", "'terminologyNestingAxiom'", "'nestingTerminology'", "'nestingContext'", "'aspect'", "'concept'", "'reifiedRelationship'", "'unreified'", "'source'", "'target'", "'inverse'", "'unreifiedRelationship'", "'scalar'", "'structure'", "'entityStructuredDataProperty'", "'domain'", "'range'", "'entityScalarDataProperty'", "'structuredDataProperty'", "'scalarDataProperty'", "'anonymousConceptUnion'", "'('", "')'", "'rootConceptTaxonomy'", "'disjointLeaf'", "'someEntities'", "'.'", "'in'", "'allEntities'", "'extendsAspect'", "'extendsConcept'", "'extendsRelationship'", "'someData'", "'allData'", "','", "'binaryScalarRestriction'", "'restrictedRange'", "'length'", "'minLength'", "'maxLength'", "'iriScalarRestriction'", "'pattern'", "'numericScalarRestriction'", "'minInclusive'", "'maxInclusive'", "'minExclusive'", "'maxExclusive'", "'plainLiteralScalarRestriction'", "'langRange'", "'scalarOneOfRestriction'", "'oneOf'", "'stringScalarRestriction'", "'synonymScalarRestriction'", "'timeScalarRestriction'", "'refines'", "'conceptInstance'", "'is-a'", "'reifiedRelationshipInstance'", "'tuple'", "'functional'", "'inverseFunctional'", "'essential'", "'inverseEssential'", "'symmetric'", "'asymmetric'", "'reflexive'", "'irreflexive'", "'transitive'", "'+'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_IRI", "RULE_ID", "RULE_ABBREV_IRI", "RULE_DECIMAL", "RULE_INT", "RULE_STRING", "RULE_UUID", "RULE_HEX", "RULE_FLOAT", "RULE_HEX_8DIGITS", "RULE_HEX_4DIGITS", "RULE_HEX_12DIGITS", "RULE_HEX_DIGIT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "'open'", "'closed'", "'final'", "'partial'", "'annotationProperty'", "'='", "'@'", "'terminology'", "'{'", "'}'", "'bundle'", "'descriptionBox'", "'bundles'", "'conceptDesignationTerminologyAxiom'", "'designatedTerminology'", "'designatedConcept'", "'extends'", "'terminologyNestingAxiom'", "'nestingTerminology'", "'nestingContext'", "'aspect'", "'concept'", "'reifiedRelationship'", "'unreified'", "'source'", "'target'", "'inverse'", "'unreifiedRelationship'", "'scalar'", "'structure'", "'entityStructuredDataProperty'", "'domain'", "'range'", "'entityScalarDataProperty'", "'structuredDataProperty'", "'scalarDataProperty'", "'anonymousConceptUnion'", "'('", "')'", "'rootConceptTaxonomy'", "'disjointLeaf'", "'someEntities'", "'.'", "'in'", "'allEntities'", "'extendsAspect'", "'extendsConcept'", "'extendsRelationship'", "'someData'", "'allData'", "','", "'binaryScalarRestriction'", "'restrictedRange'", "'length'", "'minLength'", "'maxLength'", "'iriScalarRestriction'", "'pattern'", "'numericScalarRestriction'", "'minInclusive'", "'maxInclusive'", "'minExclusive'", "'maxExclusive'", "'plainLiteralScalarRestriction'", "'langRange'", "'scalarOneOfRestriction'", "'oneOf'", "'stringScalarRestriction'", "'synonymScalarRestriction'", "'timeScalarRestriction'", "'refines'", "'conceptInstance'", "'is-a'", "'reifiedRelationshipInstance'", "'tuple'", "'functional'", "'inverseFunctional'", "'essential'", "'inverseEssential'", "'symmetric'", "'asymmetric'", "'reflexive'", "'irreflexive'", "'transitive'", "'+'"
     };
     public static final int RULE_HEX=11;
     public static final int T__50=50;
@@ -40,7 +40,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
     public static final int T__61=61;
     public static final int RULE_ID=5;
     public static final int RULE_UUID=10;
-    public static final int RULE_INT=7;
+    public static final int RULE_INT=8;
     public static final int T__66=66;
     public static final int RULE_ML_COMMENT=17;
     public static final int T__67=67;
@@ -88,7 +88,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
     public static final int T__96=96;
     public static final int T__97=97;
     public static final int T__98=98;
-    public static final int RULE_DECIMAL=8;
+    public static final int RULE_DECIMAL=7;
     public static final int T__26=26;
     public static final int T__27=27;
     public static final int T__28=28;
@@ -8590,7 +8590,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                 if ( (LA22_1==25) ) {
                     int LA22_4 = input.LA(3);
 
-                    if ( ((LA22_4>=RULE_INT && LA22_4<=RULE_FLOAT)) ) {
+                    if ( ((LA22_4>=RULE_DECIMAL && LA22_4<=RULE_FLOAT)) ) {
                         alt22=2;
                     }
                     else if ( (LA22_4==28) ) {
@@ -8618,7 +8618,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                 if ( (LA22_2==25) ) {
                     int LA22_4 = input.LA(3);
 
-                    if ( ((LA22_4>=RULE_INT && LA22_4<=RULE_FLOAT)) ) {
+                    if ( ((LA22_4>=RULE_DECIMAL && LA22_4<=RULE_FLOAT)) ) {
                         alt22=2;
                     }
                     else if ( (LA22_4==28) ) {
@@ -8646,7 +8646,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                 if ( (LA22_3==25) ) {
                     int LA22_4 = input.LA(3);
 
-                    if ( ((LA22_4>=RULE_INT && LA22_4<=RULE_FLOAT)) ) {
+                    if ( ((LA22_4>=RULE_DECIMAL && LA22_4<=RULE_FLOAT)) ) {
                         alt22=2;
                     }
                     else if ( (LA22_4==28) ) {
@@ -8762,7 +8762,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                     if ( (LA23_4==28) ) {
                         alt23=1;
                     }
-                    else if ( ((LA23_4>=RULE_INT && LA23_4<=RULE_FLOAT)) ) {
+                    else if ( ((LA23_4>=RULE_DECIMAL && LA23_4<=RULE_FLOAT)) ) {
                         alt23=2;
                     }
                     else {
@@ -8790,7 +8790,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                     if ( (LA23_4==28) ) {
                         alt23=1;
                     }
-                    else if ( ((LA23_4>=RULE_INT && LA23_4<=RULE_FLOAT)) ) {
+                    else if ( ((LA23_4>=RULE_DECIMAL && LA23_4<=RULE_FLOAT)) ) {
                         alt23=2;
                     }
                     else {
@@ -8818,7 +8818,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                     if ( (LA23_4==28) ) {
                         alt23=1;
                     }
-                    else if ( ((LA23_4>=RULE_INT && LA23_4<=RULE_FLOAT)) ) {
+                    else if ( ((LA23_4>=RULE_DECIMAL && LA23_4<=RULE_FLOAT)) ) {
                         alt23=2;
                     }
                     else {
@@ -9062,21 +9062,21 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Value__Alternatives"
-    // InternalOML.g:2659:1: rule__Value__Alternatives : ( ( RULE_INT ) | ( RULE_DECIMAL ) | ( RULE_STRING ) | ( RULE_UUID ) | ( RULE_HEX ) | ( RULE_FLOAT ) );
+    // InternalOML.g:2659:1: rule__Value__Alternatives : ( ( RULE_DECIMAL ) | ( RULE_INT ) | ( RULE_STRING ) | ( RULE_UUID ) | ( RULE_HEX ) | ( RULE_FLOAT ) );
     public final void rule__Value__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOML.g:2663:1: ( ( RULE_INT ) | ( RULE_DECIMAL ) | ( RULE_STRING ) | ( RULE_UUID ) | ( RULE_HEX ) | ( RULE_FLOAT ) )
+            // InternalOML.g:2663:1: ( ( RULE_DECIMAL ) | ( RULE_INT ) | ( RULE_STRING ) | ( RULE_UUID ) | ( RULE_HEX ) | ( RULE_FLOAT ) )
             int alt26=6;
             switch ( input.LA(1) ) {
-            case RULE_INT:
+            case RULE_DECIMAL:
                 {
                 alt26=1;
                 }
                 break;
-            case RULE_DECIMAL:
+            case RULE_INT:
                 {
                 alt26=2;
                 }
@@ -9110,14 +9110,14 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
 
             switch (alt26) {
                 case 1 :
-                    // InternalOML.g:2664:2: ( RULE_INT )
+                    // InternalOML.g:2664:2: ( RULE_DECIMAL )
                     {
-                    // InternalOML.g:2664:2: ( RULE_INT )
-                    // InternalOML.g:2665:3: RULE_INT
+                    // InternalOML.g:2664:2: ( RULE_DECIMAL )
+                    // InternalOML.g:2665:3: RULE_DECIMAL
                     {
-                     before(grammarAccess.getValueAccess().getINTTerminalRuleCall_0()); 
-                    match(input,RULE_INT,FOLLOW_2); 
-                     after(grammarAccess.getValueAccess().getINTTerminalRuleCall_0()); 
+                     before(grammarAccess.getValueAccess().getDECIMALTerminalRuleCall_0()); 
+                    match(input,RULE_DECIMAL,FOLLOW_2); 
+                     after(grammarAccess.getValueAccess().getDECIMALTerminalRuleCall_0()); 
 
                     }
 
@@ -9125,14 +9125,14 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // InternalOML.g:2670:2: ( RULE_DECIMAL )
+                    // InternalOML.g:2670:2: ( RULE_INT )
                     {
-                    // InternalOML.g:2670:2: ( RULE_DECIMAL )
-                    // InternalOML.g:2671:3: RULE_DECIMAL
+                    // InternalOML.g:2670:2: ( RULE_INT )
+                    // InternalOML.g:2671:3: RULE_INT
                     {
-                     before(grammarAccess.getValueAccess().getDECIMALTerminalRuleCall_1()); 
-                    match(input,RULE_DECIMAL,FOLLOW_2); 
-                     after(grammarAccess.getValueAccess().getDECIMALTerminalRuleCall_1()); 
+                     before(grammarAccess.getValueAccess().getINTTerminalRuleCall_1()); 
+                    match(input,RULE_INT,FOLLOW_2); 
+                     after(grammarAccess.getValueAccess().getINTTerminalRuleCall_1()); 
 
                     }
 
@@ -50327,7 +50327,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_45 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000040L});
     public static final BitSet FOLLOW_46 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000E00L});
     public static final BitSet FOLLOW_47 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_48 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_48 = new BitSet(new long[]{0x0000000000000100L});
     public static final BitSet FOLLOW_49 = new BitSet(new long[]{0x0000000000000000L,0x0000000000002E00L});
     public static final BitSet FOLLOW_50 = new BitSet(new long[]{0x0000000000000000L,0x0000000000078000L});
     public static final BitSet FOLLOW_51 = new BitSet(new long[]{0x0000000000000000L,0x0000000000102E00L});

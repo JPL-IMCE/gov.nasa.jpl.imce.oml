@@ -15742,12 +15742,12 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleValue"
-    // InternalOML.g:6295:1: ruleValue returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_INT_0= RULE_INT | this_DECIMAL_1= RULE_DECIMAL | this_STRING_2= RULE_STRING | this_UUID_3= RULE_UUID | this_HEX_4= RULE_HEX | this_FLOAT_5= RULE_FLOAT ) ;
+    // InternalOML.g:6295:1: ruleValue returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_DECIMAL_0= RULE_DECIMAL | this_INT_1= RULE_INT | this_STRING_2= RULE_STRING | this_UUID_3= RULE_UUID | this_HEX_4= RULE_HEX | this_FLOAT_5= RULE_FLOAT ) ;
     public final AntlrDatatypeRuleToken ruleValue() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
-        Token this_INT_0=null;
-        Token this_DECIMAL_1=null;
+        Token this_DECIMAL_0=null;
+        Token this_INT_1=null;
         Token this_STRING_2=null;
         Token this_UUID_3=null;
         Token this_HEX_4=null;
@@ -15757,18 +15757,18 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalOML.g:6301:2: ( (this_INT_0= RULE_INT | this_DECIMAL_1= RULE_DECIMAL | this_STRING_2= RULE_STRING | this_UUID_3= RULE_UUID | this_HEX_4= RULE_HEX | this_FLOAT_5= RULE_FLOAT ) )
-            // InternalOML.g:6302:2: (this_INT_0= RULE_INT | this_DECIMAL_1= RULE_DECIMAL | this_STRING_2= RULE_STRING | this_UUID_3= RULE_UUID | this_HEX_4= RULE_HEX | this_FLOAT_5= RULE_FLOAT )
+            // InternalOML.g:6301:2: ( (this_DECIMAL_0= RULE_DECIMAL | this_INT_1= RULE_INT | this_STRING_2= RULE_STRING | this_UUID_3= RULE_UUID | this_HEX_4= RULE_HEX | this_FLOAT_5= RULE_FLOAT ) )
+            // InternalOML.g:6302:2: (this_DECIMAL_0= RULE_DECIMAL | this_INT_1= RULE_INT | this_STRING_2= RULE_STRING | this_UUID_3= RULE_UUID | this_HEX_4= RULE_HEX | this_FLOAT_5= RULE_FLOAT )
             {
-            // InternalOML.g:6302:2: (this_INT_0= RULE_INT | this_DECIMAL_1= RULE_DECIMAL | this_STRING_2= RULE_STRING | this_UUID_3= RULE_UUID | this_HEX_4= RULE_HEX | this_FLOAT_5= RULE_FLOAT )
+            // InternalOML.g:6302:2: (this_DECIMAL_0= RULE_DECIMAL | this_INT_1= RULE_INT | this_STRING_2= RULE_STRING | this_UUID_3= RULE_UUID | this_HEX_4= RULE_HEX | this_FLOAT_5= RULE_FLOAT )
             int alt42=6;
             switch ( input.LA(1) ) {
-            case RULE_INT:
+            case RULE_DECIMAL:
                 {
                 alt42=1;
                 }
                 break;
-            case RULE_DECIMAL:
+            case RULE_INT:
                 {
                 alt42=2;
                 }
@@ -15802,27 +15802,27 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
 
             switch (alt42) {
                 case 1 :
-                    // InternalOML.g:6303:3: this_INT_0= RULE_INT
+                    // InternalOML.g:6303:3: this_DECIMAL_0= RULE_DECIMAL
                     {
-                    this_INT_0=(Token)match(input,RULE_INT,FOLLOW_2); 
+                    this_DECIMAL_0=(Token)match(input,RULE_DECIMAL,FOLLOW_2); 
 
-                    			current.merge(this_INT_0);
+                    			current.merge(this_DECIMAL_0);
                     		
 
-                    			newLeafNode(this_INT_0, grammarAccess.getValueAccess().getINTTerminalRuleCall_0());
+                    			newLeafNode(this_DECIMAL_0, grammarAccess.getValueAccess().getDECIMALTerminalRuleCall_0());
                     		
 
                     }
                     break;
                 case 2 :
-                    // InternalOML.g:6311:3: this_DECIMAL_1= RULE_DECIMAL
+                    // InternalOML.g:6311:3: this_INT_1= RULE_INT
                     {
-                    this_DECIMAL_1=(Token)match(input,RULE_DECIMAL,FOLLOW_2); 
+                    this_INT_1=(Token)match(input,RULE_INT,FOLLOW_2); 
 
-                    			current.merge(this_DECIMAL_1);
+                    			current.merge(this_INT_1);
                     		
 
-                    			newLeafNode(this_DECIMAL_1, grammarAccess.getValueAccess().getDECIMALTerminalRuleCall_1());
+                    			newLeafNode(this_INT_1, grammarAccess.getValueAccess().getINTTerminalRuleCall_1());
                     		
 
                     }

@@ -6300,20 +6300,20 @@ ruleValue returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
 	leaveRule();
 }:
 	(
-		this_INT_0=RULE_INT
+		this_DECIMAL_0=RULE_DECIMAL
 		{
-			$current.merge(this_INT_0);
+			$current.merge(this_DECIMAL_0);
 		}
 		{
-			newLeafNode(this_INT_0, grammarAccess.getValueAccess().getINTTerminalRuleCall_0());
+			newLeafNode(this_DECIMAL_0, grammarAccess.getValueAccess().getDECIMALTerminalRuleCall_0());
 		}
 		    |
-		this_DECIMAL_1=RULE_DECIMAL
+		this_INT_1=RULE_INT
 		{
-			$current.merge(this_DECIMAL_1);
+			$current.merge(this_INT_1);
 		}
 		{
-			newLeafNode(this_DECIMAL_1, grammarAccess.getValueAccess().getDECIMALTerminalRuleCall_1());
+			newLeafNode(this_INT_1, grammarAccess.getValueAccess().getINTTerminalRuleCall_1());
 		}
 		    |
 		this_STRING_2=RULE_STRING
@@ -6426,7 +6426,7 @@ RULE_HEX : ('0x'|'0X') ('0'..'9'|'a'..'f'|'A'..'F'|'_')+ ('#' (('b'|'B') ('i'|'I
 
 RULE_INT : ('0'..'9')+;
 
-RULE_DECIMAL : RULE_INT (('e'|'E') ('+'|'-')? RULE_INT)? (('b'|'B') ('i'|'I'|'d'|'D')|('l'|'L'|'d'|'D'|'f'|'F'));
+RULE_DECIMAL : RULE_INT (('e'|'E') ('+'|'-')? RULE_INT)? (('b'|'B') ('i'|'I'|'d'|'D')|('l'|'L'|'d'|'D'|'f'|'F'))?;
 
 RULE_FLOAT : '-'? ('0'..'9')+ '.' ('0'..'9')+ (('e'|'E') ('+'|'-')? ('0'..'9')+)?;
 

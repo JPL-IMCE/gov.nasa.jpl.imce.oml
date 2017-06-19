@@ -3934,25 +3934,25 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	public class ValueElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.Value");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cINTTerminalRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cDECIMALTerminalRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cDECIMALTerminalRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cINTTerminalRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cSTRINGTerminalRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		private final RuleCall cUUIDTerminalRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		private final RuleCall cHEXTerminalRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
 		private final RuleCall cFLOATTerminalRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
 		
 		//Value:
-		//	INT | DECIMAL | STRING | UUID | HEX | FLOAT;
+		//	DECIMAL | INT | STRING | UUID | HEX | FLOAT;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//INT | DECIMAL | STRING | UUID | HEX | FLOAT
+		//DECIMAL | INT | STRING | UUID | HEX | FLOAT
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//INT
-		public RuleCall getINTTerminalRuleCall_0() { return cINTTerminalRuleCall_0; }
-		
 		//DECIMAL
-		public RuleCall getDECIMALTerminalRuleCall_1() { return cDECIMALTerminalRuleCall_1; }
+		public RuleCall getDECIMALTerminalRuleCall_0() { return cDECIMALTerminalRuleCall_0; }
+		
+		//INT
+		public RuleCall getINTTerminalRuleCall_1() { return cINTTerminalRuleCall_1; }
 		
 		//STRING
 		public RuleCall getSTRINGTerminalRuleCall_2() { return cSTRINGTerminalRuleCall_2; }
@@ -5189,7 +5189,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Value:
-	//	INT | DECIMAL | STRING | UUID | HEX | FLOAT;
+	//	DECIMAL | INT | STRING | UUID | HEX | FLOAT;
 	public ValueElements getValueAccess() {
 		return pValue;
 	}
@@ -5266,7 +5266,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//terminal DECIMAL:
-	//	INT (('e' | 'E') ('+' | '-')? INT)? (('b' | 'B') ('i' | 'I' | 'd' | 'D') | ('l' | 'L' | 'd' | 'D' | 'f' | 'F'));
+	//	INT (('e' | 'E') ('+' | '-')? INT)? (('b' | 'B') ('i' | 'I' | 'd' | 'D') | ('l' | 'L' | 'd' | 'D' | 'f' | 'F'))?;
 	public TerminalRule getDECIMALRule() {
 		return tDECIMAL;
 	}
