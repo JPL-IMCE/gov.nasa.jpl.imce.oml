@@ -526,7 +526,7 @@ ValidID:
 	ID;
 	
 Value:
-	INT | DECIMAL | STRING | UUID | HEX | FLOAT;
+	DECIMAL | INT | STRING | UUID | HEX | FLOAT;
 	
 //----------------------------
 
@@ -570,7 +570,7 @@ terminal INT returns ecore::EInt:
 terminal DECIMAL:
 	INT 
 	(('e'|'E') ('+'|'-')? INT)? 
-	(('b'|'B')('i'|'I'|'d'|'D') | ('l'|'L'|'d'|'D'|'f'|'F'));
+	(('b'|'B')('i'|'I'|'d'|'D') | ('l'|'L'|'d'|'D'|'f'|'F'))?;
 
 terminal FLOAT:
 	'-'?
