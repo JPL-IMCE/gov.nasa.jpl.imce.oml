@@ -33,7 +33,6 @@ import org.eclipse.xtext.ParserRule;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.TerminalRule;
 import org.eclipse.xtext.UnorderedGroup;
-import org.eclipse.xtext.common.services.TerminalsGrammarAccess;
 import org.eclipse.xtext.service.AbstractElementFinder.AbstractEnumRuleElementFinder;
 import org.eclipse.xtext.service.AbstractElementFinder.AbstractGrammarElementFinder;
 import org.eclipse.xtext.service.GrammarProvider;
@@ -3936,27 +3935,27 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.Value");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cDECIMALTerminalRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cSTRINGTerminalRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cINTTerminalRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cINTTerminalRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cSTRINGTerminalRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		private final RuleCall cUUIDTerminalRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		private final RuleCall cHEXTerminalRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
 		private final RuleCall cFLOATTerminalRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
 		
 		//Value:
-		//	DECIMAL | STRING | INT | UUID | HEX | FLOAT;
+		//	DECIMAL | INT | STRING | UUID | HEX | FLOAT;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//DECIMAL | STRING | INT | UUID | HEX | FLOAT
+		//DECIMAL | INT | STRING | UUID | HEX | FLOAT
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//DECIMAL
 		public RuleCall getDECIMALTerminalRuleCall_0() { return cDECIMALTerminalRuleCall_0; }
 		
-		//STRING
-		public RuleCall getSTRINGTerminalRuleCall_1() { return cSTRINGTerminalRuleCall_1; }
-		
 		//INT
-		public RuleCall getINTTerminalRuleCall_2() { return cINTTerminalRuleCall_2; }
+		public RuleCall getINTTerminalRuleCall_1() { return cINTTerminalRuleCall_1; }
+		
+		//STRING
+		public RuleCall getSTRINGTerminalRuleCall_2() { return cSTRINGTerminalRuleCall_2; }
 		
 		//UUID
 		public RuleCall getUUIDTerminalRuleCall_3() { return cUUIDTerminalRuleCall_3; }
@@ -4122,14 +4121,10 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	private final TerminalRule tWS;
 	
 	private final Grammar grammar;
-	
-	private final TerminalsGrammarAccess gaTerminals;
 
 	@Inject
-	public OMLGrammarAccess(GrammarProvider grammarProvider,
-			TerminalsGrammarAccess gaTerminals) {
+	public OMLGrammarAccess(GrammarProvider grammarProvider) {
 		this.grammar = internalFindGrammar(grammarProvider);
-		this.gaTerminals = gaTerminals;
 		this.pExtent = new ExtentElements();
 		this.pAnnotationProperty = new AnnotationPropertyElements();
 		this.pAnnotation = new AnnotationElements();
@@ -4248,10 +4243,6 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		return grammar;
 	}
 	
-	
-	public TerminalsGrammarAccess getTerminalsGrammarAccess() {
-		return gaTerminals;
-	}
 
 	
 	//Extent:
@@ -5198,7 +5189,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Value:
-	//	DECIMAL | STRING | INT | UUID | HEX | FLOAT;
+	//	DECIMAL | INT | STRING | UUID | HEX | FLOAT;
 	public ValueElements getValueAccess() {
 		return pValue;
 	}
@@ -5221,14 +5212,13 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//terminal ABBREV_IRI:
-	//	('a'..'z' | 'A'..'Z' | '$' | '_') ('a'..'z' | 'A'..'Z' | '$' | '_' | '0'..'9')+ ':' ('a'..'z' | 'A'..'Z' | '$' | '_')
-	//	('a'..'z' | 'A'..'Z' | '$' | '_' | '0'..'9')*;
+	//	('a'..'z' | 'A'..'Z' | '_' | '.' | '0'..'9')+ ':' ('a'..'z' | 'A'..'Z' | '_' | '.' | '0'..'9')+;
 	public TerminalRule getABBREV_IRIRule() {
 		return tABBREV_IRI;
 	}
 	
-	//@ Override terminal ID:
-	//	'^'? ('a'..'z' | 'A'..'Z' | '$' | '_') ('a'..'z' | 'A'..'Z' | '$' | '_' | '0'..'9')*;
+	//terminal ID:
+	//	'^'? ('a'..'z' | 'A'..'Z' | '_') ('a'..'z' | 'A'..'Z' | '_' | '.' | '0'..'9')*;
 	public TerminalRule getIDRule() {
 		return tID;
 	}
@@ -5269,8 +5259,8 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		return tHEX;
 	}
 	
-	//@ Override terminal INT returns ecore::EInt:
-	//	'0'..'9' ('0'..'9' | '_')*;
+	//terminal INT returns ecore::EInt:
+	//	'0'..'9'+;
 	public TerminalRule getINTRule() {
 		return tINT;
 	}
@@ -5287,27 +5277,21 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		return tFLOAT;
 	}
 	
-	//@ Override terminal ML_COMMENT:
+	//terminal ML_COMMENT:
 	//	'/*'->'*/';
 	public TerminalRule getML_COMMENTRule() {
 		return tML_COMMENT;
 	}
 	
-	//@ Override terminal SL_COMMENT:
+	//terminal SL_COMMENT:
 	//	'//' !('\n' | '\r')* ('\r'? '\n')?;
 	public TerminalRule getSL_COMMENTRule() {
 		return tSL_COMMENT;
 	}
 	
-	//@ Override terminal WS:
+	//terminal WS:
 	//	' ' | '\t' | '\r' | '\n'+;
 	public TerminalRule getWSRule() {
 		return tWS;
-	}
-	
-	//terminal ANY_OTHER:
-	//	.;
-	public TerminalRule getANY_OTHERRule() {
-		return gaTerminals.getANY_OTHERRule();
 	}
 }

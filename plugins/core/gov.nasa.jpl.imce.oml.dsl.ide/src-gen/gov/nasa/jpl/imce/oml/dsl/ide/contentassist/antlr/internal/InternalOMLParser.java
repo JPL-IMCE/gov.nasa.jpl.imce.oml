@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalOMLParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_IRI", "RULE_ID", "RULE_ABBREV_IRI", "RULE_DECIMAL", "RULE_STRING", "RULE_INT", "RULE_UUID", "RULE_HEX", "RULE_FLOAT", "RULE_HEX_8DIGITS", "RULE_HEX_4DIGITS", "RULE_HEX_12DIGITS", "RULE_HEX_DIGIT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'open'", "'closed'", "'final'", "'partial'", "'annotationProperty'", "'='", "'@'", "'terminology'", "'{'", "'}'", "'bundle'", "'descriptionBox'", "'bundles'", "'conceptDesignationTerminologyAxiom'", "'designatedTerminology'", "'designatedConcept'", "'extends'", "'terminologyNestingAxiom'", "'nestingTerminology'", "'nestingContext'", "'aspect'", "'concept'", "'reifiedRelationship'", "'unreified'", "'source'", "'target'", "'inverse'", "'unreifiedRelationship'", "'scalar'", "'structure'", "'entityStructuredDataProperty'", "'domain'", "'range'", "'entityScalarDataProperty'", "'structuredDataProperty'", "'scalarDataProperty'", "'anonymousConceptUnion'", "'('", "')'", "'rootConceptTaxonomy'", "'disjointLeaf'", "'someEntities'", "'.'", "'in'", "'allEntities'", "'extendsAspect'", "'extendsConcept'", "'extendsRelationship'", "'someData'", "'allData'", "','", "'binaryScalarRestriction'", "'restrictedRange'", "'length'", "'minLength'", "'maxLength'", "'iriScalarRestriction'", "'pattern'", "'numericScalarRestriction'", "'minInclusive'", "'maxInclusive'", "'minExclusive'", "'maxExclusive'", "'plainLiteralScalarRestriction'", "'langRange'", "'scalarOneOfRestriction'", "'oneOf'", "'stringScalarRestriction'", "'synonymScalarRestriction'", "'timeScalarRestriction'", "'refines'", "'conceptInstance'", "'is-a'", "'reifiedRelationshipInstance'", "'tuple'", "'functional'", "'inverseFunctional'", "'essential'", "'inverseEssential'", "'symmetric'", "'asymmetric'", "'reflexive'", "'irreflexive'", "'transitive'", "'+'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_IRI", "RULE_ID", "RULE_ABBREV_IRI", "RULE_DECIMAL", "RULE_INT", "RULE_STRING", "RULE_UUID", "RULE_HEX", "RULE_FLOAT", "RULE_HEX_8DIGITS", "RULE_HEX_4DIGITS", "RULE_HEX_12DIGITS", "RULE_HEX_DIGIT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "'open'", "'closed'", "'final'", "'partial'", "'annotationProperty'", "'='", "'@'", "'terminology'", "'{'", "'}'", "'bundle'", "'descriptionBox'", "'bundles'", "'conceptDesignationTerminologyAxiom'", "'designatedTerminology'", "'designatedConcept'", "'extends'", "'terminologyNestingAxiom'", "'nestingTerminology'", "'nestingContext'", "'aspect'", "'concept'", "'reifiedRelationship'", "'unreified'", "'source'", "'target'", "'inverse'", "'unreifiedRelationship'", "'scalar'", "'structure'", "'entityStructuredDataProperty'", "'domain'", "'range'", "'entityScalarDataProperty'", "'structuredDataProperty'", "'scalarDataProperty'", "'anonymousConceptUnion'", "'('", "')'", "'rootConceptTaxonomy'", "'disjointLeaf'", "'someEntities'", "'.'", "'in'", "'allEntities'", "'extendsAspect'", "'extendsConcept'", "'extendsRelationship'", "'someData'", "'allData'", "','", "'binaryScalarRestriction'", "'restrictedRange'", "'length'", "'minLength'", "'maxLength'", "'iriScalarRestriction'", "'pattern'", "'numericScalarRestriction'", "'minInclusive'", "'maxInclusive'", "'minExclusive'", "'maxExclusive'", "'plainLiteralScalarRestriction'", "'langRange'", "'scalarOneOfRestriction'", "'oneOf'", "'stringScalarRestriction'", "'synonymScalarRestriction'", "'timeScalarRestriction'", "'refines'", "'conceptInstance'", "'is-a'", "'reifiedRelationshipInstance'", "'tuple'", "'functional'", "'inverseFunctional'", "'essential'", "'inverseEssential'", "'symmetric'", "'asymmetric'", "'reflexive'", "'irreflexive'", "'transitive'", "'+'"
     };
     public static final int RULE_HEX=11;
     public static final int T__50=50;
@@ -40,7 +40,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
     public static final int T__61=61;
     public static final int RULE_ID=5;
     public static final int RULE_UUID=10;
-    public static final int RULE_INT=9;
+    public static final int RULE_INT=8;
     public static final int T__66=66;
     public static final int RULE_ML_COMMENT=17;
     public static final int T__67=67;
@@ -97,11 +97,12 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
     public static final int T__23=23;
     public static final int T__24=24;
     public static final int T__25=25;
+    public static final int T__20=20;
     public static final int T__21=21;
     public static final int T__70=70;
     public static final int T__71=71;
     public static final int T__72=72;
-    public static final int RULE_STRING=8;
+    public static final int RULE_STRING=9;
     public static final int RULE_SL_COMMENT=18;
     public static final int T__77=77;
     public static final int T__78=78;
@@ -117,7 +118,6 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
     public static final int T__82=82;
     public static final int T__83=83;
     public static final int RULE_WS=19;
-    public static final int RULE_ANY_OTHER=20;
     public static final int T__88=88;
     public static final int T__89=89;
     public static final int T__84=84;
@@ -126,7 +126,6 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
     public static final int T__103=103;
     public static final int T__86=86;
     public static final int T__87=87;
-    public static final int T__105=105;
 
     // delegates
     // delegators
@@ -6011,10 +6010,10 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt1=2;
             int LA1_0 = input.LA(1);
 
-            if ( (LA1_0==25) ) {
+            if ( (LA1_0==24) ) {
                 alt1=1;
             }
-            else if ( ((LA1_0>=21 && LA1_0<=24)||LA1_0==27) ) {
+            else if ( ((LA1_0>=20 && LA1_0<=23)||LA1_0==26) ) {
                 alt1=2;
             }
             else {
@@ -6233,14 +6232,14 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:2039:1: ( ( ( rule__TerminologyGraph__AnnotationsAssignment_5_0 ) ) | ( ( rule__TerminologyGraph__BoxAxiomsAssignment_5_1 ) ) | ( ( rule__TerminologyGraph__BoxStatementsAssignment_5_2 ) ) )
             int alt4=3;
             switch ( input.LA(1) ) {
-            case 27:
+            case 26:
                 {
                 alt4=1;
                 }
                 break;
-            case 34:
+            case 33:
+            case 36:
             case 37:
-            case 38:
                 {
                 alt4=2;
                 }
@@ -6248,29 +6247,29 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             case RULE_IRI:
             case RULE_ID:
             case RULE_ABBREV_IRI:
+            case 40:
             case 41:
             case 42:
-            case 43:
+            case 47:
             case 48:
             case 49:
             case 50:
-            case 51:
+            case 53:
             case 54:
             case 55:
-            case 56:
-            case 62:
-            case 65:
+            case 61:
+            case 64:
+            case 68:
             case 69:
-            case 70:
-            case 72:
-            case 77:
-            case 79:
-            case 84:
+            case 71:
+            case 76:
+            case 78:
+            case 83:
+            case 85:
             case 86:
             case 87:
             case 88:
             case 89:
-            case 90:
                 {
                 alt4=3;
                 }
@@ -6385,14 +6384,14 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:2066:1: ( ( ( rule__Bundle__AnnotationsAssignment_5_0 ) ) | ( ( rule__Bundle__BoxAxiomsAssignment_5_1 ) ) | ( ( rule__Bundle__BoxStatementsAssignment_5_2 ) ) | ( ( rule__Bundle__BundleStatementsAssignment_5_3 ) ) | ( ( rule__Bundle__BundleAxiomsAssignment_5_4 ) ) )
             int alt5=5;
             switch ( input.LA(1) ) {
-            case 27:
+            case 26:
                 {
                 alt5=1;
                 }
                 break;
-            case 34:
+            case 33:
+            case 36:
             case 37:
-            case 38:
                 {
                 alt5=2;
                 }
@@ -6400,39 +6399,39 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             case RULE_IRI:
             case RULE_ID:
             case RULE_ABBREV_IRI:
+            case 40:
             case 41:
             case 42:
-            case 43:
+            case 47:
             case 48:
             case 49:
             case 50:
-            case 51:
+            case 53:
             case 54:
             case 55:
-            case 56:
-            case 62:
-            case 65:
+            case 61:
+            case 64:
+            case 68:
             case 69:
-            case 70:
-            case 72:
-            case 77:
-            case 79:
-            case 84:
+            case 71:
+            case 76:
+            case 78:
+            case 83:
+            case 85:
             case 86:
             case 87:
             case 88:
             case 89:
-            case 90:
                 {
                 alt5=3;
                 }
                 break;
-            case 60:
+            case 59:
                 {
                 alt5=4;
                 }
                 break;
-            case 33:
+            case 32:
                 {
                 alt5=5;
                 }
@@ -6875,17 +6874,17 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:2174:1: ( ( ruleConceptDesignationTerminologyAxiom ) | ( ruleTerminologyExtensionAxiom ) | ( ruleTerminologyNestingAxiom ) )
             int alt7=3;
             switch ( input.LA(1) ) {
-            case 34:
+            case 33:
                 {
                 alt7=1;
                 }
                 break;
-            case 37:
+            case 36:
                 {
                 alt7=2;
                 }
                 break;
-            case 38:
+            case 37:
                 {
                 alt7=3;
                 }
@@ -6983,10 +6982,10 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt8=2;
             int LA8_0 = input.LA(1);
 
-            if ( ((LA8_0>=RULE_IRI && LA8_0<=RULE_ABBREV_IRI)||LA8_0==62||LA8_0==65||(LA8_0>=69 && LA8_0<=70)||LA8_0==87) ) {
+            if ( ((LA8_0>=RULE_IRI && LA8_0<=RULE_ABBREV_IRI)||LA8_0==61||LA8_0==64||(LA8_0>=68 && LA8_0<=69)||LA8_0==86) ) {
                 alt8=1;
             }
-            else if ( ((LA8_0>=41 && LA8_0<=43)||(LA8_0>=48 && LA8_0<=51)||(LA8_0>=54 && LA8_0<=56)||LA8_0==72||LA8_0==77||LA8_0==79||LA8_0==84||LA8_0==86||(LA8_0>=88 && LA8_0<=90)) ) {
+            else if ( ((LA8_0>=40 && LA8_0<=42)||(LA8_0>=47 && LA8_0<=50)||(LA8_0>=53 && LA8_0<=55)||LA8_0==71||LA8_0==76||LA8_0==78||LA8_0==83||LA8_0==85||(LA8_0>=87 && LA8_0<=89)) ) {
                 alt8=2;
             }
             else {
@@ -7061,36 +7060,36 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:2222:1: ( ( ruleAtomicEntity ) | ( ruleEntityRelationship ) | ( ruleDatatype ) | ( ruleDataRelationship ) )
             int alt9=4;
             switch ( input.LA(1) ) {
+            case 40:
             case 41:
-            case 42:
                 {
                 alt9=1;
                 }
                 break;
-            case 43:
-            case 48:
+            case 42:
+            case 47:
                 {
                 alt9=2;
                 }
                 break;
+            case 48:
             case 49:
-            case 50:
-            case 72:
-            case 77:
-            case 79:
-            case 84:
-            case 86:
+            case 71:
+            case 76:
+            case 78:
+            case 83:
+            case 85:
+            case 87:
             case 88:
             case 89:
-            case 90:
                 {
                 alt9=3;
                 }
                 break;
-            case 51:
+            case 50:
+            case 53:
             case 54:
             case 55:
-            case 56:
                 {
                 alt9=4;
                 }
@@ -7207,10 +7206,10 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt10=2;
             int LA10_0 = input.LA(1);
 
-            if ( (LA10_0==41) ) {
+            if ( (LA10_0==40) ) {
                 alt10=1;
             }
-            else if ( (LA10_0==42) ) {
+            else if ( (LA10_0==41) ) {
                 alt10=2;
             }
             else {
@@ -7286,10 +7285,10 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt11=2;
             int LA11_0 = input.LA(1);
 
-            if ( (LA11_0==43) ) {
+            if ( (LA11_0==42) ) {
                 alt11=1;
             }
-            else if ( (LA11_0==48) ) {
+            else if ( (LA11_0==47) ) {
                 alt11=2;
             }
             else {
@@ -7365,10 +7364,10 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt12=2;
             int LA12_0 = input.LA(1);
 
-            if ( (LA12_0==49||LA12_0==72||LA12_0==77||LA12_0==79||LA12_0==84||LA12_0==86||(LA12_0>=88 && LA12_0<=90)) ) {
+            if ( (LA12_0==48||LA12_0==71||LA12_0==76||LA12_0==78||LA12_0==83||LA12_0==85||(LA12_0>=87 && LA12_0<=89)) ) {
                 alt12=1;
             }
-            else if ( (LA12_0==50) ) {
+            else if ( (LA12_0==49) ) {
                 alt12=2;
             }
             else {
@@ -7444,10 +7443,10 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt13=2;
             int LA13_0 = input.LA(1);
 
-            if ( (LA13_0==49) ) {
+            if ( (LA13_0==48) ) {
                 alt13=1;
             }
-            else if ( (LA13_0==72||LA13_0==77||LA13_0==79||LA13_0==84||LA13_0==86||(LA13_0>=88 && LA13_0<=90)) ) {
+            else if ( (LA13_0==71||LA13_0==76||LA13_0==78||LA13_0==83||LA13_0==85||(LA13_0>=87 && LA13_0<=89)) ) {
                 alt13=2;
             }
             else {
@@ -7522,42 +7521,42 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:2339:1: ( ( ruleBinaryScalarRestriction ) | ( ruleIRIScalarRestriction ) | ( ruleNumericScalarRestriction ) | ( rulePlainLiteralScalarRestriction ) | ( ruleScalarOneOfRestriction ) | ( ruleStringScalarRestriction ) | ( ruleSynonymScalarRestriction ) | ( ruleTimeScalarRestriction ) )
             int alt14=8;
             switch ( input.LA(1) ) {
-            case 72:
+            case 71:
                 {
                 alt14=1;
                 }
                 break;
-            case 77:
+            case 76:
                 {
                 alt14=2;
                 }
                 break;
-            case 79:
+            case 78:
                 {
                 alt14=3;
                 }
                 break;
-            case 84:
+            case 83:
                 {
                 alt14=4;
                 }
                 break;
-            case 86:
+            case 85:
                 {
                 alt14=5;
                 }
                 break;
-            case 88:
+            case 87:
                 {
                 alt14=6;
                 }
                 break;
-            case 89:
+            case 88:
                 {
                 alt14=7;
                 }
                 break;
-            case 90:
+            case 89:
                 {
                 alt14=8;
                 }
@@ -7749,22 +7748,22 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:2396:1: ( ( ruleEntityStructuredDataProperty ) | ( ruleEntityScalarDataProperty ) | ( ruleStructuredDataProperty ) | ( ruleScalarDataProperty ) )
             int alt15=4;
             switch ( input.LA(1) ) {
-            case 51:
+            case 50:
                 {
                 alt15=1;
                 }
                 break;
-            case 54:
+            case 53:
                 {
                 alt15=2;
                 }
                 break;
-            case 55:
+            case 54:
                 {
                 alt15=3;
                 }
                 break;
-            case 56:
+            case 55:
                 {
                 alt15=4;
                 }
@@ -7880,19 +7879,19 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:2429:1: ( ( ruleEntityRestrictionAxiom ) | ( ruleEntityScalarDataPropertyRestrictionAxiom ) | ( ruleScalarOneOfLiteralAxiom ) | ( ruleSpecializationAxiom ) )
             int alt16=4;
             switch ( input.LA(1) ) {
-            case 62:
-            case 65:
+            case 61:
+            case 64:
                 {
                 alt16=1;
                 }
                 break;
+            case 68:
             case 69:
-            case 70:
                 {
                 alt16=2;
                 }
                 break;
-            case 87:
+            case 86:
                 {
                 alt16=3;
                 }
@@ -8016,10 +8015,10 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt17=2;
             int LA17_0 = input.LA(1);
 
-            if ( (LA17_0==62) ) {
+            if ( (LA17_0==61) ) {
                 alt17=1;
             }
-            else if ( (LA17_0==65) ) {
+            else if ( (LA17_0==64) ) {
                 alt17=2;
             }
             else {
@@ -8095,19 +8094,19 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt18=3;
             int LA18_0 = input.LA(1);
 
-            if ( (LA18_0==69) ) {
+            if ( (LA18_0==68) ) {
                 alt18=1;
             }
-            else if ( (LA18_0==70) ) {
+            else if ( (LA18_0==69) ) {
                 switch ( input.LA(2) ) {
                 case RULE_IRI:
                     {
                     int LA18_3 = input.LA(3);
 
-                    if ( (LA18_3==71) ) {
+                    if ( (LA18_3==70) ) {
                         alt18=2;
                     }
-                    else if ( (LA18_3==63) ) {
+                    else if ( (LA18_3==62) ) {
                         alt18=3;
                     }
                     else {
@@ -8122,10 +8121,10 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                     {
                     int LA18_4 = input.LA(3);
 
-                    if ( (LA18_4==63) ) {
+                    if ( (LA18_4==62) ) {
                         alt18=3;
                     }
-                    else if ( (LA18_4==71) ) {
+                    else if ( (LA18_4==70) ) {
                         alt18=2;
                     }
                     else {
@@ -8140,10 +8139,10 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                     {
                     int LA18_5 = input.LA(3);
 
-                    if ( (LA18_5==63) ) {
+                    if ( (LA18_5==62) ) {
                         alt18=3;
                     }
-                    else if ( (LA18_5==71) ) {
+                    else if ( (LA18_5==70) ) {
                         alt18=2;
                     }
                     else {
@@ -8256,17 +8255,17 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             case RULE_IRI:
                 {
                 switch ( input.LA(2) ) {
-                case 66:
+                case 65:
                     {
                     alt19=2;
                     }
                     break;
-                case 68:
+                case 67:
                     {
                     alt19=3;
                     }
                     break;
-                case 67:
+                case 66:
                     {
                     alt19=1;
                     }
@@ -8283,17 +8282,17 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             case RULE_ABBREV_IRI:
                 {
                 switch ( input.LA(2) ) {
-                case 66:
+                case 65:
                     {
                     alt19=2;
                     }
                     break;
-                case 68:
+                case 67:
                     {
                     alt19=3;
                     }
                     break;
-                case 67:
+                case 66:
                     {
                     alt19=1;
                     }
@@ -8310,17 +8309,17 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             case RULE_ID:
                 {
                 switch ( input.LA(2) ) {
-                case 66:
+                case 65:
                     {
                     alt19=2;
                     }
                     break;
-                case 68:
+                case 67:
                     {
                     alt19=3;
                     }
                     break;
-                case 67:
+                case 66:
                     {
                     alt19=1;
                     }
@@ -8427,10 +8426,10 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt20=2;
             int LA20_0 = input.LA(1);
 
-            if ( (LA20_0==57) ) {
+            if ( (LA20_0==56) ) {
                 alt20=1;
             }
-            else if ( (LA20_0==61) ) {
+            else if ( (LA20_0==60) ) {
                 alt20=2;
             }
             else {
@@ -8506,10 +8505,10 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt21=2;
             int LA21_0 = input.LA(1);
 
-            if ( (LA21_0==92) ) {
+            if ( (LA21_0==91) ) {
                 alt21=1;
             }
-            else if ( (LA21_0==94) ) {
+            else if ( (LA21_0==93) ) {
                 alt21=2;
             }
             else {
@@ -8588,13 +8587,13 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                 {
                 int LA22_1 = input.LA(2);
 
-                if ( (LA22_1==26) ) {
+                if ( (LA22_1==25) ) {
                     int LA22_4 = input.LA(3);
 
                     if ( ((LA22_4>=RULE_DECIMAL && LA22_4<=RULE_FLOAT)) ) {
                         alt22=2;
                     }
-                    else if ( (LA22_4==29) ) {
+                    else if ( (LA22_4==28) ) {
                         alt22=1;
                     }
                     else {
@@ -8616,13 +8615,13 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                 {
                 int LA22_2 = input.LA(2);
 
-                if ( (LA22_2==26) ) {
+                if ( (LA22_2==25) ) {
                     int LA22_4 = input.LA(3);
 
                     if ( ((LA22_4>=RULE_DECIMAL && LA22_4<=RULE_FLOAT)) ) {
                         alt22=2;
                     }
-                    else if ( (LA22_4==29) ) {
+                    else if ( (LA22_4==28) ) {
                         alt22=1;
                     }
                     else {
@@ -8644,13 +8643,13 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                 {
                 int LA22_3 = input.LA(2);
 
-                if ( (LA22_3==26) ) {
+                if ( (LA22_3==25) ) {
                     int LA22_4 = input.LA(3);
 
                     if ( ((LA22_4>=RULE_DECIMAL && LA22_4<=RULE_FLOAT)) ) {
                         alt22=2;
                     }
-                    else if ( (LA22_4==29) ) {
+                    else if ( (LA22_4==28) ) {
                         alt22=1;
                     }
                     else {
@@ -8757,10 +8756,10 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                 {
                 int LA23_1 = input.LA(2);
 
-                if ( (LA23_1==26) ) {
+                if ( (LA23_1==25) ) {
                     int LA23_4 = input.LA(3);
 
-                    if ( (LA23_4==29) ) {
+                    if ( (LA23_4==28) ) {
                         alt23=1;
                     }
                     else if ( ((LA23_4>=RULE_DECIMAL && LA23_4<=RULE_FLOAT)) ) {
@@ -8785,10 +8784,10 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                 {
                 int LA23_2 = input.LA(2);
 
-                if ( (LA23_2==26) ) {
+                if ( (LA23_2==25) ) {
                     int LA23_4 = input.LA(3);
 
-                    if ( (LA23_4==29) ) {
+                    if ( (LA23_4==28) ) {
                         alt23=1;
                     }
                     else if ( ((LA23_4>=RULE_DECIMAL && LA23_4<=RULE_FLOAT)) ) {
@@ -8813,10 +8812,10 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                 {
                 int LA23_3 = input.LA(2);
 
-                if ( (LA23_3==26) ) {
+                if ( (LA23_3==25) ) {
                     int LA23_4 = input.LA(3);
 
-                    if ( (LA23_4==29) ) {
+                    if ( (LA23_4==28) ) {
                         alt23=1;
                     }
                     else if ( ((LA23_4>=RULE_DECIMAL && LA23_4<=RULE_FLOAT)) ) {
@@ -9063,13 +9062,13 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Value__Alternatives"
-    // InternalOML.g:2659:1: rule__Value__Alternatives : ( ( RULE_DECIMAL ) | ( RULE_STRING ) | ( RULE_INT ) | ( RULE_UUID ) | ( RULE_HEX ) | ( RULE_FLOAT ) );
+    // InternalOML.g:2659:1: rule__Value__Alternatives : ( ( RULE_DECIMAL ) | ( RULE_INT ) | ( RULE_STRING ) | ( RULE_UUID ) | ( RULE_HEX ) | ( RULE_FLOAT ) );
     public final void rule__Value__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOML.g:2663:1: ( ( RULE_DECIMAL ) | ( RULE_STRING ) | ( RULE_INT ) | ( RULE_UUID ) | ( RULE_HEX ) | ( RULE_FLOAT ) )
+            // InternalOML.g:2663:1: ( ( RULE_DECIMAL ) | ( RULE_INT ) | ( RULE_STRING ) | ( RULE_UUID ) | ( RULE_HEX ) | ( RULE_FLOAT ) )
             int alt26=6;
             switch ( input.LA(1) ) {
             case RULE_DECIMAL:
@@ -9077,12 +9076,12 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                 alt26=1;
                 }
                 break;
-            case RULE_STRING:
+            case RULE_INT:
                 {
                 alt26=2;
                 }
                 break;
-            case RULE_INT:
+            case RULE_STRING:
                 {
                 alt26=3;
                 }
@@ -9126,14 +9125,14 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // InternalOML.g:2670:2: ( RULE_STRING )
+                    // InternalOML.g:2670:2: ( RULE_INT )
                     {
-                    // InternalOML.g:2670:2: ( RULE_STRING )
-                    // InternalOML.g:2671:3: RULE_STRING
+                    // InternalOML.g:2670:2: ( RULE_INT )
+                    // InternalOML.g:2671:3: RULE_INT
                     {
-                     before(grammarAccess.getValueAccess().getSTRINGTerminalRuleCall_1()); 
-                    match(input,RULE_STRING,FOLLOW_2); 
-                     after(grammarAccess.getValueAccess().getSTRINGTerminalRuleCall_1()); 
+                     before(grammarAccess.getValueAccess().getINTTerminalRuleCall_1()); 
+                    match(input,RULE_INT,FOLLOW_2); 
+                     after(grammarAccess.getValueAccess().getINTTerminalRuleCall_1()); 
 
                     }
 
@@ -9141,14 +9140,14 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 3 :
-                    // InternalOML.g:2676:2: ( RULE_INT )
+                    // InternalOML.g:2676:2: ( RULE_STRING )
                     {
-                    // InternalOML.g:2676:2: ( RULE_INT )
-                    // InternalOML.g:2677:3: RULE_INT
+                    // InternalOML.g:2676:2: ( RULE_STRING )
+                    // InternalOML.g:2677:3: RULE_STRING
                     {
-                     before(grammarAccess.getValueAccess().getINTTerminalRuleCall_2()); 
-                    match(input,RULE_INT,FOLLOW_2); 
-                     after(grammarAccess.getValueAccess().getINTTerminalRuleCall_2()); 
+                     before(grammarAccess.getValueAccess().getSTRINGTerminalRuleCall_2()); 
+                    match(input,RULE_STRING,FOLLOW_2); 
+                     after(grammarAccess.getValueAccess().getSTRINGTerminalRuleCall_2()); 
 
                     }
 
@@ -9228,10 +9227,10 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt27=2;
             int LA27_0 = input.LA(1);
 
-            if ( (LA27_0==21) ) {
+            if ( (LA27_0==20) ) {
                 alt27=1;
             }
-            else if ( (LA27_0==22) ) {
+            else if ( (LA27_0==21) ) {
                 alt27=2;
             }
             else {
@@ -9251,7 +9250,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                     // InternalOML.g:2711:3: ( 'open' )
                     // InternalOML.g:2711:4: 'open'
                     {
-                    match(input,21,FOLLOW_2); 
+                    match(input,20,FOLLOW_2); 
 
                     }
 
@@ -9272,7 +9271,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                     // InternalOML.g:2717:3: ( 'closed' )
                     // InternalOML.g:2717:4: 'closed'
                     {
-                    match(input,22,FOLLOW_2); 
+                    match(input,21,FOLLOW_2); 
 
                     }
 
@@ -9311,10 +9310,10 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt28=2;
             int LA28_0 = input.LA(1);
 
-            if ( (LA28_0==23) ) {
+            if ( (LA28_0==22) ) {
                 alt28=1;
             }
-            else if ( (LA28_0==24) ) {
+            else if ( (LA28_0==23) ) {
                 alt28=2;
             }
             else {
@@ -9334,7 +9333,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                     // InternalOML.g:2732:3: ( 'final' )
                     // InternalOML.g:2732:4: 'final'
                     {
-                    match(input,23,FOLLOW_2); 
+                    match(input,22,FOLLOW_2); 
 
                     }
 
@@ -9355,7 +9354,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                     // InternalOML.g:2738:3: ( 'partial' )
                     // InternalOML.g:2738:4: 'partial'
                     {
-                    match(input,24,FOLLOW_2); 
+                    match(input,23,FOLLOW_2); 
 
                     }
 
@@ -9511,7 +9510,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                 int alt29=2;
                 int LA29_0 = input.LA(1);
 
-                if ( ((LA29_0>=21 && LA29_0<=25)||LA29_0==27) ) {
+                if ( ((LA29_0>=20 && LA29_0<=24)||LA29_0==26) ) {
                     alt29=1;
                 }
 
@@ -9608,7 +9607,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:2818:2: 'annotationProperty'
             {
              before(grammarAccess.getAnnotationPropertyAccess().getAnnotationPropertyKeyword_0()); 
-            match(input,25,FOLLOW_2); 
+            match(input,24,FOLLOW_2); 
              after(grammarAccess.getAnnotationPropertyAccess().getAnnotationPropertyKeyword_0()); 
 
             }
@@ -9768,7 +9767,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:2872:2: '='
             {
              before(grammarAccess.getAnnotationPropertyAccess().getEqualsSignKeyword_2()); 
-            match(input,26,FOLLOW_2); 
+            match(input,25,FOLLOW_2); 
              after(grammarAccess.getAnnotationPropertyAccess().getEqualsSignKeyword_2()); 
 
             }
@@ -9923,7 +9922,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:2926:2: '@'
             {
              before(grammarAccess.getAnnotationAccess().getCommercialAtKeyword_0()); 
-            match(input,27,FOLLOW_2); 
+            match(input,26,FOLLOW_2); 
              after(grammarAccess.getAnnotationAccess().getCommercialAtKeyword_0()); 
 
             }
@@ -10083,7 +10082,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:2980:2: '='
             {
              before(grammarAccess.getAnnotationAccess().getEqualsSignKeyword_2()); 
-            match(input,26,FOLLOW_2); 
+            match(input,25,FOLLOW_2); 
              after(grammarAccess.getAnnotationAccess().getEqualsSignKeyword_2()); 
 
             }
@@ -10244,7 +10243,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                 int alt30=2;
                 int LA30_0 = input.LA(1);
 
-                if ( (LA30_0==27) ) {
+                if ( (LA30_0==26) ) {
                     alt30=1;
                 }
 
@@ -10426,7 +10425,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:3088:2: 'terminology'
             {
              before(grammarAccess.getTerminologyGraphAccess().getTerminologyKeyword_2()); 
-            match(input,28,FOLLOW_2); 
+            match(input,27,FOLLOW_2); 
              after(grammarAccess.getTerminologyGraphAccess().getTerminologyKeyword_2()); 
 
             }
@@ -10586,7 +10585,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:3142:2: '{'
             {
              before(grammarAccess.getTerminologyGraphAccess().getLeftCurlyBracketKeyword_4()); 
-            match(input,29,FOLLOW_2); 
+            match(input,28,FOLLOW_2); 
              after(grammarAccess.getTerminologyGraphAccess().getLeftCurlyBracketKeyword_4()); 
 
             }
@@ -10667,7 +10666,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                 int alt31=2;
                 int LA31_0 = input.LA(1);
 
-                if ( ((LA31_0>=RULE_IRI && LA31_0<=RULE_ABBREV_IRI)||LA31_0==27||LA31_0==34||(LA31_0>=37 && LA31_0<=38)||(LA31_0>=41 && LA31_0<=43)||(LA31_0>=48 && LA31_0<=51)||(LA31_0>=54 && LA31_0<=56)||LA31_0==62||LA31_0==65||(LA31_0>=69 && LA31_0<=70)||LA31_0==72||LA31_0==77||LA31_0==79||LA31_0==84||(LA31_0>=86 && LA31_0<=90)) ) {
+                if ( ((LA31_0>=RULE_IRI && LA31_0<=RULE_ABBREV_IRI)||LA31_0==26||LA31_0==33||(LA31_0>=36 && LA31_0<=37)||(LA31_0>=40 && LA31_0<=42)||(LA31_0>=47 && LA31_0<=50)||(LA31_0>=53 && LA31_0<=55)||LA31_0==61||LA31_0==64||(LA31_0>=68 && LA31_0<=69)||LA31_0==71||LA31_0==76||LA31_0==78||LA31_0==83||(LA31_0>=85 && LA31_0<=89)) ) {
                     alt31=1;
                 }
 
@@ -10759,7 +10758,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:3195:2: '}'
             {
              before(grammarAccess.getTerminologyGraphAccess().getRightCurlyBracketKeyword_6()); 
-            match(input,30,FOLLOW_2); 
+            match(input,29,FOLLOW_2); 
              after(grammarAccess.getTerminologyGraphAccess().getRightCurlyBracketKeyword_6()); 
 
             }
@@ -10840,7 +10839,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                 int alt32=2;
                 int LA32_0 = input.LA(1);
 
-                if ( (LA32_0==27) ) {
+                if ( (LA32_0==26) ) {
                     alt32=1;
                 }
 
@@ -11022,7 +11021,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:3277:2: 'bundle'
             {
              before(grammarAccess.getBundleAccess().getBundleKeyword_2()); 
-            match(input,31,FOLLOW_2); 
+            match(input,30,FOLLOW_2); 
              after(grammarAccess.getBundleAccess().getBundleKeyword_2()); 
 
             }
@@ -11182,7 +11181,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:3331:2: '{'
             {
              before(grammarAccess.getBundleAccess().getLeftCurlyBracketKeyword_4()); 
-            match(input,29,FOLLOW_2); 
+            match(input,28,FOLLOW_2); 
              after(grammarAccess.getBundleAccess().getLeftCurlyBracketKeyword_4()); 
 
             }
@@ -11263,7 +11262,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                 int alt33=2;
                 int LA33_0 = input.LA(1);
 
-                if ( ((LA33_0>=RULE_IRI && LA33_0<=RULE_ABBREV_IRI)||LA33_0==27||(LA33_0>=33 && LA33_0<=34)||(LA33_0>=37 && LA33_0<=38)||(LA33_0>=41 && LA33_0<=43)||(LA33_0>=48 && LA33_0<=51)||(LA33_0>=54 && LA33_0<=56)||LA33_0==60||LA33_0==62||LA33_0==65||(LA33_0>=69 && LA33_0<=70)||LA33_0==72||LA33_0==77||LA33_0==79||LA33_0==84||(LA33_0>=86 && LA33_0<=90)) ) {
+                if ( ((LA33_0>=RULE_IRI && LA33_0<=RULE_ABBREV_IRI)||LA33_0==26||(LA33_0>=32 && LA33_0<=33)||(LA33_0>=36 && LA33_0<=37)||(LA33_0>=40 && LA33_0<=42)||(LA33_0>=47 && LA33_0<=50)||(LA33_0>=53 && LA33_0<=55)||LA33_0==59||LA33_0==61||LA33_0==64||(LA33_0>=68 && LA33_0<=69)||LA33_0==71||LA33_0==76||LA33_0==78||LA33_0==83||(LA33_0>=85 && LA33_0<=89)) ) {
                     alt33=1;
                 }
 
@@ -11355,7 +11354,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:3384:2: '}'
             {
              before(grammarAccess.getBundleAccess().getRightCurlyBracketKeyword_6()); 
-            match(input,30,FOLLOW_2); 
+            match(input,29,FOLLOW_2); 
              after(grammarAccess.getBundleAccess().getRightCurlyBracketKeyword_6()); 
 
             }
@@ -11436,7 +11435,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                 int alt34=2;
                 int LA34_0 = input.LA(1);
 
-                if ( (LA34_0==27) ) {
+                if ( (LA34_0==26) ) {
                     alt34=1;
                 }
 
@@ -11618,7 +11617,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:3466:2: 'descriptionBox'
             {
              before(grammarAccess.getDescriptionBoxAccess().getDescriptionBoxKeyword_2()); 
-            match(input,32,FOLLOW_2); 
+            match(input,31,FOLLOW_2); 
              after(grammarAccess.getDescriptionBoxAccess().getDescriptionBoxKeyword_2()); 
 
             }
@@ -11778,7 +11777,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:3520:2: '{'
             {
              before(grammarAccess.getDescriptionBoxAccess().getLeftCurlyBracketKeyword_4()); 
-            match(input,29,FOLLOW_2); 
+            match(input,28,FOLLOW_2); 
              after(grammarAccess.getDescriptionBoxAccess().getLeftCurlyBracketKeyword_4()); 
 
             }
@@ -11859,7 +11858,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                 int alt35=2;
                 int LA35_0 = input.LA(1);
 
-                if ( ((LA35_0>=RULE_IRI && LA35_0<=RULE_ABBREV_IRI)||LA35_0==27||LA35_0==37||(LA35_0>=52 && LA35_0<=53)||(LA35_0>=91 && LA35_0<=92)||(LA35_0>=94 && LA35_0<=95)) ) {
+                if ( ((LA35_0>=RULE_IRI && LA35_0<=RULE_ABBREV_IRI)||LA35_0==26||LA35_0==36||(LA35_0>=51 && LA35_0<=52)||(LA35_0>=90 && LA35_0<=91)||(LA35_0>=93 && LA35_0<=94)) ) {
                     alt35=1;
                 }
 
@@ -11951,7 +11950,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:3573:2: '}'
             {
              before(grammarAccess.getDescriptionBoxAccess().getRightCurlyBracketKeyword_6()); 
-            match(input,30,FOLLOW_2); 
+            match(input,29,FOLLOW_2); 
              after(grammarAccess.getDescriptionBoxAccess().getRightCurlyBracketKeyword_6()); 
 
             }
@@ -12026,7 +12025,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:3601:2: 'bundles'
             {
              before(grammarAccess.getBundledTerminologyAxiomAccess().getBundlesKeyword_0()); 
-            match(input,33,FOLLOW_2); 
+            match(input,32,FOLLOW_2); 
              after(grammarAccess.getBundledTerminologyAxiomAccess().getBundlesKeyword_0()); 
 
             }
@@ -12181,7 +12180,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:3655:2: 'conceptDesignationTerminologyAxiom'
             {
              before(grammarAccess.getConceptDesignationTerminologyAxiomAccess().getConceptDesignationTerminologyAxiomKeyword_0()); 
-            match(input,34,FOLLOW_2); 
+            match(input,33,FOLLOW_2); 
              after(grammarAccess.getConceptDesignationTerminologyAxiomAccess().getConceptDesignationTerminologyAxiomKeyword_0()); 
 
             }
@@ -12256,7 +12255,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:3682:2: '{'
             {
              before(grammarAccess.getConceptDesignationTerminologyAxiomAccess().getLeftCurlyBracketKeyword_1()); 
-            match(input,29,FOLLOW_2); 
+            match(input,28,FOLLOW_2); 
              after(grammarAccess.getConceptDesignationTerminologyAxiomAccess().getLeftCurlyBracketKeyword_1()); 
 
             }
@@ -12331,7 +12330,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:3709:2: 'designatedTerminology'
             {
              before(grammarAccess.getConceptDesignationTerminologyAxiomAccess().getDesignatedTerminologyKeyword_2()); 
-            match(input,35,FOLLOW_2); 
+            match(input,34,FOLLOW_2); 
              after(grammarAccess.getConceptDesignationTerminologyAxiomAccess().getDesignatedTerminologyKeyword_2()); 
 
             }
@@ -12491,7 +12490,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:3763:2: 'designatedConcept'
             {
              before(grammarAccess.getConceptDesignationTerminologyAxiomAccess().getDesignatedConceptKeyword_4()); 
-            match(input,36,FOLLOW_2); 
+            match(input,35,FOLLOW_2); 
              after(grammarAccess.getConceptDesignationTerminologyAxiomAccess().getDesignatedConceptKeyword_4()); 
 
             }
@@ -12646,7 +12645,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:3816:2: '}'
             {
              before(grammarAccess.getConceptDesignationTerminologyAxiomAccess().getRightCurlyBracketKeyword_6()); 
-            match(input,30,FOLLOW_2); 
+            match(input,29,FOLLOW_2); 
              after(grammarAccess.getConceptDesignationTerminologyAxiomAccess().getRightCurlyBracketKeyword_6()); 
 
             }
@@ -12721,7 +12720,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:3844:2: 'extends'
             {
              before(grammarAccess.getTerminologyExtensionAxiomAccess().getExtendsKeyword_0()); 
-            match(input,37,FOLLOW_2); 
+            match(input,36,FOLLOW_2); 
              after(grammarAccess.getTerminologyExtensionAxiomAccess().getExtendsKeyword_0()); 
 
             }
@@ -12876,7 +12875,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:3898:2: 'terminologyNestingAxiom'
             {
              before(grammarAccess.getTerminologyNestingAxiomAccess().getTerminologyNestingAxiomKeyword_0()); 
-            match(input,38,FOLLOW_2); 
+            match(input,37,FOLLOW_2); 
              after(grammarAccess.getTerminologyNestingAxiomAccess().getTerminologyNestingAxiomKeyword_0()); 
 
             }
@@ -12951,7 +12950,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:3925:2: '{'
             {
              before(grammarAccess.getTerminologyNestingAxiomAccess().getLeftCurlyBracketKeyword_1()); 
-            match(input,29,FOLLOW_2); 
+            match(input,28,FOLLOW_2); 
              after(grammarAccess.getTerminologyNestingAxiomAccess().getLeftCurlyBracketKeyword_1()); 
 
             }
@@ -13026,7 +13025,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:3952:2: 'nestingTerminology'
             {
              before(grammarAccess.getTerminologyNestingAxiomAccess().getNestingTerminologyKeyword_2()); 
-            match(input,39,FOLLOW_2); 
+            match(input,38,FOLLOW_2); 
              after(grammarAccess.getTerminologyNestingAxiomAccess().getNestingTerminologyKeyword_2()); 
 
             }
@@ -13186,7 +13185,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:4006:2: 'nestingContext'
             {
              before(grammarAccess.getTerminologyNestingAxiomAccess().getNestingContextKeyword_4()); 
-            match(input,40,FOLLOW_2); 
+            match(input,39,FOLLOW_2); 
              after(grammarAccess.getTerminologyNestingAxiomAccess().getNestingContextKeyword_4()); 
 
             }
@@ -13341,7 +13340,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:4059:2: '}'
             {
              before(grammarAccess.getTerminologyNestingAxiomAccess().getRightCurlyBracketKeyword_6()); 
-            match(input,30,FOLLOW_2); 
+            match(input,29,FOLLOW_2); 
              after(grammarAccess.getTerminologyNestingAxiomAccess().getRightCurlyBracketKeyword_6()); 
 
             }
@@ -13416,7 +13415,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:4087:2: 'aspect'
             {
              before(grammarAccess.getAspectAccess().getAspectKeyword_0()); 
-            match(input,41,FOLLOW_2); 
+            match(input,40,FOLLOW_2); 
              after(grammarAccess.getAspectAccess().getAspectKeyword_0()); 
 
             }
@@ -13571,7 +13570,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:4141:2: 'concept'
             {
              before(grammarAccess.getConceptAccess().getConceptKeyword_0()); 
-            match(input,42,FOLLOW_2); 
+            match(input,41,FOLLOW_2); 
              after(grammarAccess.getConceptAccess().getConceptKeyword_0()); 
 
             }
@@ -13726,7 +13725,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:4195:2: 'reifiedRelationship'
             {
              before(grammarAccess.getReifiedRelationshipAccess().getReifiedRelationshipKeyword_0()); 
-            match(input,43,FOLLOW_2); 
+            match(input,42,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipAccess().getReifiedRelationshipKeyword_0()); 
 
             }
@@ -13886,7 +13885,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:4249:2: '{'
             {
              before(grammarAccess.getReifiedRelationshipAccess().getLeftCurlyBracketKeyword_2()); 
-            match(input,29,FOLLOW_2); 
+            match(input,28,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipAccess().getLeftCurlyBracketKeyword_2()); 
 
             }
@@ -14046,7 +14045,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:4303:2: 'unreified'
             {
              before(grammarAccess.getReifiedRelationshipAccess().getUnreifiedKeyword_4()); 
-            match(input,44,FOLLOW_2); 
+            match(input,43,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipAccess().getUnreifiedKeyword_4()); 
 
             }
@@ -14121,7 +14120,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:4330:2: '='
             {
              before(grammarAccess.getReifiedRelationshipAccess().getEqualsSignKeyword_5()); 
-            match(input,26,FOLLOW_2); 
+            match(input,25,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipAccess().getEqualsSignKeyword_5()); 
 
             }
@@ -14285,7 +14284,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt36=2;
             int LA36_0 = input.LA(1);
 
-            if ( (LA36_0==47) ) {
+            if ( (LA36_0==46) ) {
                 alt36=1;
             }
             switch (alt36) {
@@ -14377,7 +14376,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:4411:2: 'source'
             {
              before(grammarAccess.getReifiedRelationshipAccess().getSourceKeyword_8()); 
-            match(input,45,FOLLOW_2); 
+            match(input,44,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipAccess().getSourceKeyword_8()); 
 
             }
@@ -14452,7 +14451,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:4438:2: '='
             {
              before(grammarAccess.getReifiedRelationshipAccess().getEqualsSignKeyword_9()); 
-            match(input,26,FOLLOW_2); 
+            match(input,25,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipAccess().getEqualsSignKeyword_9()); 
 
             }
@@ -14612,7 +14611,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:4492:2: 'target'
             {
              before(grammarAccess.getReifiedRelationshipAccess().getTargetKeyword_11()); 
-            match(input,46,FOLLOW_2); 
+            match(input,45,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipAccess().getTargetKeyword_11()); 
 
             }
@@ -14687,7 +14686,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:4519:2: '='
             {
              before(grammarAccess.getReifiedRelationshipAccess().getEqualsSignKeyword_12()); 
-            match(input,26,FOLLOW_2); 
+            match(input,25,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipAccess().getEqualsSignKeyword_12()); 
 
             }
@@ -14842,7 +14841,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:4572:2: '}'
             {
              before(grammarAccess.getReifiedRelationshipAccess().getRightCurlyBracketKeyword_14()); 
-            match(input,30,FOLLOW_2); 
+            match(input,29,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipAccess().getRightCurlyBracketKeyword_14()); 
 
             }
@@ -14917,7 +14916,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:4600:2: 'inverse'
             {
              before(grammarAccess.getReifiedRelationshipAccess().getInverseKeyword_7_0()); 
-            match(input,47,FOLLOW_2); 
+            match(input,46,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipAccess().getInverseKeyword_7_0()); 
 
             }
@@ -14992,7 +14991,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:4627:2: '='
             {
              before(grammarAccess.getReifiedRelationshipAccess().getEqualsSignKeyword_7_1()); 
-            match(input,26,FOLLOW_2); 
+            match(input,25,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipAccess().getEqualsSignKeyword_7_1()); 
 
             }
@@ -15147,7 +15146,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:4681:2: 'unreifiedRelationship'
             {
              before(grammarAccess.getUnreifiedRelationshipAccess().getUnreifiedRelationshipKeyword_0()); 
-            match(input,48,FOLLOW_2); 
+            match(input,47,FOLLOW_2); 
              after(grammarAccess.getUnreifiedRelationshipAccess().getUnreifiedRelationshipKeyword_0()); 
 
             }
@@ -15307,7 +15306,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:4735:2: '{'
             {
              before(grammarAccess.getUnreifiedRelationshipAccess().getLeftCurlyBracketKeyword_2()); 
-            match(input,29,FOLLOW_2); 
+            match(input,28,FOLLOW_2); 
              after(grammarAccess.getUnreifiedRelationshipAccess().getLeftCurlyBracketKeyword_2()); 
 
             }
@@ -15467,7 +15466,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:4789:2: 'source'
             {
              before(grammarAccess.getUnreifiedRelationshipAccess().getSourceKeyword_4()); 
-            match(input,45,FOLLOW_2); 
+            match(input,44,FOLLOW_2); 
              after(grammarAccess.getUnreifiedRelationshipAccess().getSourceKeyword_4()); 
 
             }
@@ -15542,7 +15541,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:4816:2: '='
             {
              before(grammarAccess.getUnreifiedRelationshipAccess().getEqualsSignKeyword_5()); 
-            match(input,26,FOLLOW_2); 
+            match(input,25,FOLLOW_2); 
              after(grammarAccess.getUnreifiedRelationshipAccess().getEqualsSignKeyword_5()); 
 
             }
@@ -15702,7 +15701,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:4870:2: 'target'
             {
              before(grammarAccess.getUnreifiedRelationshipAccess().getTargetKeyword_7()); 
-            match(input,46,FOLLOW_2); 
+            match(input,45,FOLLOW_2); 
              after(grammarAccess.getUnreifiedRelationshipAccess().getTargetKeyword_7()); 
 
             }
@@ -15777,7 +15776,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:4897:2: '='
             {
              before(grammarAccess.getUnreifiedRelationshipAccess().getEqualsSignKeyword_8()); 
-            match(input,26,FOLLOW_2); 
+            match(input,25,FOLLOW_2); 
              after(grammarAccess.getUnreifiedRelationshipAccess().getEqualsSignKeyword_8()); 
 
             }
@@ -15932,7 +15931,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:4950:2: '}'
             {
              before(grammarAccess.getUnreifiedRelationshipAccess().getRightCurlyBracketKeyword_10()); 
-            match(input,30,FOLLOW_2); 
+            match(input,29,FOLLOW_2); 
              after(grammarAccess.getUnreifiedRelationshipAccess().getRightCurlyBracketKeyword_10()); 
 
             }
@@ -16007,7 +16006,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:4978:2: 'scalar'
             {
              before(grammarAccess.getScalarAccess().getScalarKeyword_0()); 
-            match(input,49,FOLLOW_2); 
+            match(input,48,FOLLOW_2); 
              after(grammarAccess.getScalarAccess().getScalarKeyword_0()); 
 
             }
@@ -16162,7 +16161,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:5032:2: 'structure'
             {
              before(grammarAccess.getStructureAccess().getStructureKeyword_0()); 
-            match(input,50,FOLLOW_2); 
+            match(input,49,FOLLOW_2); 
              after(grammarAccess.getStructureAccess().getStructureKeyword_0()); 
 
             }
@@ -16317,7 +16316,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:5086:2: 'entityStructuredDataProperty'
             {
              before(grammarAccess.getEntityStructuredDataPropertyAccess().getEntityStructuredDataPropertyKeyword_0()); 
-            match(input,51,FOLLOW_2); 
+            match(input,50,FOLLOW_2); 
              after(grammarAccess.getEntityStructuredDataPropertyAccess().getEntityStructuredDataPropertyKeyword_0()); 
 
             }
@@ -16396,7 +16395,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt37=2;
             int LA37_0 = input.LA(1);
 
-            if ( (LA37_0==105) ) {
+            if ( (LA37_0==104) ) {
                 alt37=1;
             }
             switch (alt37) {
@@ -16573,7 +16572,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:5167:2: '{'
             {
              before(grammarAccess.getEntityStructuredDataPropertyAccess().getLeftCurlyBracketKeyword_3()); 
-            match(input,29,FOLLOW_2); 
+            match(input,28,FOLLOW_2); 
              after(grammarAccess.getEntityStructuredDataPropertyAccess().getLeftCurlyBracketKeyword_3()); 
 
             }
@@ -16648,7 +16647,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:5194:2: 'domain'
             {
              before(grammarAccess.getEntityStructuredDataPropertyAccess().getDomainKeyword_4()); 
-            match(input,52,FOLLOW_2); 
+            match(input,51,FOLLOW_2); 
              after(grammarAccess.getEntityStructuredDataPropertyAccess().getDomainKeyword_4()); 
 
             }
@@ -16808,7 +16807,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:5248:2: 'range'
             {
              before(grammarAccess.getEntityStructuredDataPropertyAccess().getRangeKeyword_6()); 
-            match(input,53,FOLLOW_2); 
+            match(input,52,FOLLOW_2); 
              after(grammarAccess.getEntityStructuredDataPropertyAccess().getRangeKeyword_6()); 
 
             }
@@ -16963,7 +16962,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:5301:2: '}'
             {
              before(grammarAccess.getEntityStructuredDataPropertyAccess().getRightCurlyBracketKeyword_8()); 
-            match(input,30,FOLLOW_2); 
+            match(input,29,FOLLOW_2); 
              after(grammarAccess.getEntityStructuredDataPropertyAccess().getRightCurlyBracketKeyword_8()); 
 
             }
@@ -17038,7 +17037,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:5329:2: 'entityScalarDataProperty'
             {
              before(grammarAccess.getEntityScalarDataPropertyAccess().getEntityScalarDataPropertyKeyword_0()); 
-            match(input,54,FOLLOW_2); 
+            match(input,53,FOLLOW_2); 
              after(grammarAccess.getEntityScalarDataPropertyAccess().getEntityScalarDataPropertyKeyword_0()); 
 
             }
@@ -17117,7 +17116,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt38=2;
             int LA38_0 = input.LA(1);
 
-            if ( (LA38_0==105) ) {
+            if ( (LA38_0==104) ) {
                 alt38=1;
             }
             switch (alt38) {
@@ -17294,7 +17293,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:5410:2: '{'
             {
              before(grammarAccess.getEntityScalarDataPropertyAccess().getLeftCurlyBracketKeyword_3()); 
-            match(input,29,FOLLOW_2); 
+            match(input,28,FOLLOW_2); 
              after(grammarAccess.getEntityScalarDataPropertyAccess().getLeftCurlyBracketKeyword_3()); 
 
             }
@@ -17369,7 +17368,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:5437:2: 'domain'
             {
              before(grammarAccess.getEntityScalarDataPropertyAccess().getDomainKeyword_4()); 
-            match(input,52,FOLLOW_2); 
+            match(input,51,FOLLOW_2); 
              after(grammarAccess.getEntityScalarDataPropertyAccess().getDomainKeyword_4()); 
 
             }
@@ -17529,7 +17528,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:5491:2: 'range'
             {
              before(grammarAccess.getEntityScalarDataPropertyAccess().getRangeKeyword_6()); 
-            match(input,53,FOLLOW_2); 
+            match(input,52,FOLLOW_2); 
              after(grammarAccess.getEntityScalarDataPropertyAccess().getRangeKeyword_6()); 
 
             }
@@ -17684,7 +17683,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:5544:2: '}'
             {
              before(grammarAccess.getEntityScalarDataPropertyAccess().getRightCurlyBracketKeyword_8()); 
-            match(input,30,FOLLOW_2); 
+            match(input,29,FOLLOW_2); 
              after(grammarAccess.getEntityScalarDataPropertyAccess().getRightCurlyBracketKeyword_8()); 
 
             }
@@ -17759,7 +17758,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:5572:2: 'structuredDataProperty'
             {
              before(grammarAccess.getStructuredDataPropertyAccess().getStructuredDataPropertyKeyword_0()); 
-            match(input,55,FOLLOW_2); 
+            match(input,54,FOLLOW_2); 
              after(grammarAccess.getStructuredDataPropertyAccess().getStructuredDataPropertyKeyword_0()); 
 
             }
@@ -17919,7 +17918,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:5626:2: '{'
             {
              before(grammarAccess.getStructuredDataPropertyAccess().getLeftCurlyBracketKeyword_2()); 
-            match(input,29,FOLLOW_2); 
+            match(input,28,FOLLOW_2); 
              after(grammarAccess.getStructuredDataPropertyAccess().getLeftCurlyBracketKeyword_2()); 
 
             }
@@ -17994,7 +17993,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:5653:2: 'domain'
             {
              before(grammarAccess.getStructuredDataPropertyAccess().getDomainKeyword_3()); 
-            match(input,52,FOLLOW_2); 
+            match(input,51,FOLLOW_2); 
              after(grammarAccess.getStructuredDataPropertyAccess().getDomainKeyword_3()); 
 
             }
@@ -18154,7 +18153,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:5707:2: 'range'
             {
              before(grammarAccess.getStructuredDataPropertyAccess().getRangeKeyword_5()); 
-            match(input,53,FOLLOW_2); 
+            match(input,52,FOLLOW_2); 
              after(grammarAccess.getStructuredDataPropertyAccess().getRangeKeyword_5()); 
 
             }
@@ -18309,7 +18308,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:5760:2: '}'
             {
              before(grammarAccess.getStructuredDataPropertyAccess().getRightCurlyBracketKeyword_7()); 
-            match(input,30,FOLLOW_2); 
+            match(input,29,FOLLOW_2); 
              after(grammarAccess.getStructuredDataPropertyAccess().getRightCurlyBracketKeyword_7()); 
 
             }
@@ -18384,7 +18383,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:5788:2: 'scalarDataProperty'
             {
              before(grammarAccess.getScalarDataPropertyAccess().getScalarDataPropertyKeyword_0()); 
-            match(input,56,FOLLOW_2); 
+            match(input,55,FOLLOW_2); 
              after(grammarAccess.getScalarDataPropertyAccess().getScalarDataPropertyKeyword_0()); 
 
             }
@@ -18544,7 +18543,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:5842:2: '{'
             {
              before(grammarAccess.getScalarDataPropertyAccess().getLeftCurlyBracketKeyword_2()); 
-            match(input,29,FOLLOW_2); 
+            match(input,28,FOLLOW_2); 
              after(grammarAccess.getScalarDataPropertyAccess().getLeftCurlyBracketKeyword_2()); 
 
             }
@@ -18619,7 +18618,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:5869:2: 'domain'
             {
              before(grammarAccess.getScalarDataPropertyAccess().getDomainKeyword_3()); 
-            match(input,52,FOLLOW_2); 
+            match(input,51,FOLLOW_2); 
              after(grammarAccess.getScalarDataPropertyAccess().getDomainKeyword_3()); 
 
             }
@@ -18779,7 +18778,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:5923:2: 'range'
             {
              before(grammarAccess.getScalarDataPropertyAccess().getRangeKeyword_5()); 
-            match(input,53,FOLLOW_2); 
+            match(input,52,FOLLOW_2); 
              after(grammarAccess.getScalarDataPropertyAccess().getRangeKeyword_5()); 
 
             }
@@ -18934,7 +18933,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:5976:2: '}'
             {
              before(grammarAccess.getScalarDataPropertyAccess().getRightCurlyBracketKeyword_7()); 
-            match(input,30,FOLLOW_2); 
+            match(input,29,FOLLOW_2); 
              after(grammarAccess.getScalarDataPropertyAccess().getRightCurlyBracketKeyword_7()); 
 
             }
@@ -19009,7 +19008,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:6004:2: 'anonymousConceptUnion'
             {
              before(grammarAccess.getAnonymousConceptUnionAxiomAccess().getAnonymousConceptUnionKeyword_0()); 
-            match(input,57,FOLLOW_2); 
+            match(input,56,FOLLOW_2); 
              after(grammarAccess.getAnonymousConceptUnionAxiomAccess().getAnonymousConceptUnionKeyword_0()); 
 
             }
@@ -19084,7 +19083,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:6031:2: '('
             {
              before(grammarAccess.getAnonymousConceptUnionAxiomAccess().getLeftParenthesisKeyword_1()); 
-            match(input,58,FOLLOW_2); 
+            match(input,57,FOLLOW_2); 
              after(grammarAccess.getAnonymousConceptUnionAxiomAccess().getLeftParenthesisKeyword_1()); 
 
             }
@@ -19244,7 +19243,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:6085:2: ')'
             {
              before(grammarAccess.getAnonymousConceptUnionAxiomAccess().getRightParenthesisKeyword_3()); 
-            match(input,59,FOLLOW_2); 
+            match(input,58,FOLLOW_2); 
              after(grammarAccess.getAnonymousConceptUnionAxiomAccess().getRightParenthesisKeyword_3()); 
 
             }
@@ -19319,7 +19318,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:6112:2: '{'
             {
              before(grammarAccess.getAnonymousConceptUnionAxiomAccess().getLeftCurlyBracketKeyword_4()); 
-            match(input,29,FOLLOW_2); 
+            match(input,28,FOLLOW_2); 
              after(grammarAccess.getAnonymousConceptUnionAxiomAccess().getLeftCurlyBracketKeyword_4()); 
 
             }
@@ -19400,7 +19399,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                 int alt39=2;
                 int LA39_0 = input.LA(1);
 
-                if ( (LA39_0==57||LA39_0==61) ) {
+                if ( (LA39_0==56||LA39_0==60) ) {
                     alt39=1;
                 }
 
@@ -19492,7 +19491,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:6165:2: '}'
             {
              before(grammarAccess.getAnonymousConceptUnionAxiomAccess().getRightCurlyBracketKeyword_6()); 
-            match(input,30,FOLLOW_2); 
+            match(input,29,FOLLOW_2); 
              after(grammarAccess.getAnonymousConceptUnionAxiomAccess().getRightCurlyBracketKeyword_6()); 
 
             }
@@ -19567,7 +19566,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:6193:2: 'rootConceptTaxonomy'
             {
              before(grammarAccess.getRootConceptTaxonomyAxiomAccess().getRootConceptTaxonomyKeyword_0()); 
-            match(input,60,FOLLOW_2); 
+            match(input,59,FOLLOW_2); 
              after(grammarAccess.getRootConceptTaxonomyAxiomAccess().getRootConceptTaxonomyKeyword_0()); 
 
             }
@@ -19642,7 +19641,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:6220:2: '('
             {
              before(grammarAccess.getRootConceptTaxonomyAxiomAccess().getLeftParenthesisKeyword_1()); 
-            match(input,58,FOLLOW_2); 
+            match(input,57,FOLLOW_2); 
              after(grammarAccess.getRootConceptTaxonomyAxiomAccess().getLeftParenthesisKeyword_1()); 
 
             }
@@ -19802,7 +19801,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:6274:2: ')'
             {
              before(grammarAccess.getRootConceptTaxonomyAxiomAccess().getRightParenthesisKeyword_3()); 
-            match(input,59,FOLLOW_2); 
+            match(input,58,FOLLOW_2); 
              after(grammarAccess.getRootConceptTaxonomyAxiomAccess().getRightParenthesisKeyword_3()); 
 
             }
@@ -19877,7 +19876,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:6301:2: '{'
             {
              before(grammarAccess.getRootConceptTaxonomyAxiomAccess().getLeftCurlyBracketKeyword_4()); 
-            match(input,29,FOLLOW_2); 
+            match(input,28,FOLLOW_2); 
              after(grammarAccess.getRootConceptTaxonomyAxiomAccess().getLeftCurlyBracketKeyword_4()); 
 
             }
@@ -19958,7 +19957,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                 int alt40=2;
                 int LA40_0 = input.LA(1);
 
-                if ( (LA40_0==57||LA40_0==61) ) {
+                if ( (LA40_0==56||LA40_0==60) ) {
                     alt40=1;
                 }
 
@@ -20050,7 +20049,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:6354:2: '}'
             {
              before(grammarAccess.getRootConceptTaxonomyAxiomAccess().getRightCurlyBracketKeyword_6()); 
-            match(input,30,FOLLOW_2); 
+            match(input,29,FOLLOW_2); 
              after(grammarAccess.getRootConceptTaxonomyAxiomAccess().getRightCurlyBracketKeyword_6()); 
 
             }
@@ -20125,7 +20124,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:6382:2: 'disjointLeaf'
             {
              before(grammarAccess.getSpecificDisjointConceptAxiomAccess().getDisjointLeafKeyword_0()); 
-            match(input,61,FOLLOW_2); 
+            match(input,60,FOLLOW_2); 
              after(grammarAccess.getSpecificDisjointConceptAxiomAccess().getDisjointLeafKeyword_0()); 
 
             }
@@ -20200,7 +20199,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:6409:2: '('
             {
              before(grammarAccess.getSpecificDisjointConceptAxiomAccess().getLeftParenthesisKeyword_1()); 
-            match(input,58,FOLLOW_2); 
+            match(input,57,FOLLOW_2); 
              after(grammarAccess.getSpecificDisjointConceptAxiomAccess().getLeftParenthesisKeyword_1()); 
 
             }
@@ -20355,7 +20354,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:6462:2: ')'
             {
              before(grammarAccess.getSpecificDisjointConceptAxiomAccess().getRightParenthesisKeyword_3()); 
-            match(input,59,FOLLOW_2); 
+            match(input,58,FOLLOW_2); 
              after(grammarAccess.getSpecificDisjointConceptAxiomAccess().getRightParenthesisKeyword_3()); 
 
             }
@@ -20430,7 +20429,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:6490:2: 'someEntities'
             {
              before(grammarAccess.getEntityExistentialRestrictionAxiomAccess().getSomeEntitiesKeyword_0()); 
-            match(input,62,FOLLOW_2); 
+            match(input,61,FOLLOW_2); 
              after(grammarAccess.getEntityExistentialRestrictionAxiomAccess().getSomeEntitiesKeyword_0()); 
 
             }
@@ -20590,7 +20589,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:6544:2: '.'
             {
              before(grammarAccess.getEntityExistentialRestrictionAxiomAccess().getFullStopKeyword_2()); 
-            match(input,63,FOLLOW_2); 
+            match(input,62,FOLLOW_2); 
              after(grammarAccess.getEntityExistentialRestrictionAxiomAccess().getFullStopKeyword_2()); 
 
             }
@@ -20750,7 +20749,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:6598:2: 'in'
             {
              before(grammarAccess.getEntityExistentialRestrictionAxiomAccess().getInKeyword_4()); 
-            match(input,64,FOLLOW_2); 
+            match(input,63,FOLLOW_2); 
              after(grammarAccess.getEntityExistentialRestrictionAxiomAccess().getInKeyword_4()); 
 
             }
@@ -20905,7 +20904,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:6652:2: 'allEntities'
             {
              before(grammarAccess.getEntityUniversalRestrictionAxiomAccess().getAllEntitiesKeyword_0()); 
-            match(input,65,FOLLOW_2); 
+            match(input,64,FOLLOW_2); 
              after(grammarAccess.getEntityUniversalRestrictionAxiomAccess().getAllEntitiesKeyword_0()); 
 
             }
@@ -21065,7 +21064,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:6706:2: '.'
             {
              before(grammarAccess.getEntityUniversalRestrictionAxiomAccess().getFullStopKeyword_2()); 
-            match(input,63,FOLLOW_2); 
+            match(input,62,FOLLOW_2); 
              after(grammarAccess.getEntityUniversalRestrictionAxiomAccess().getFullStopKeyword_2()); 
 
             }
@@ -21225,7 +21224,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:6760:2: 'in'
             {
              before(grammarAccess.getEntityUniversalRestrictionAxiomAccess().getInKeyword_4()); 
-            match(input,64,FOLLOW_2); 
+            match(input,63,FOLLOW_2); 
              after(grammarAccess.getEntityUniversalRestrictionAxiomAccess().getInKeyword_4()); 
 
             }
@@ -21465,7 +21464,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:6841:2: 'extendsAspect'
             {
              before(grammarAccess.getAspectSpecializationAxiomAccess().getExtendsAspectKeyword_1()); 
-            match(input,66,FOLLOW_2); 
+            match(input,65,FOLLOW_2); 
              after(grammarAccess.getAspectSpecializationAxiomAccess().getExtendsAspectKeyword_1()); 
 
             }
@@ -21705,7 +21704,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:6922:2: 'extendsConcept'
             {
              before(grammarAccess.getConceptSpecializationAxiomAccess().getExtendsConceptKeyword_1()); 
-            match(input,67,FOLLOW_2); 
+            match(input,66,FOLLOW_2); 
              after(grammarAccess.getConceptSpecializationAxiomAccess().getExtendsConceptKeyword_1()); 
 
             }
@@ -21945,7 +21944,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:7003:2: 'extendsRelationship'
             {
              before(grammarAccess.getReifiedRelationshipSpecializationAxiomAccess().getExtendsRelationshipKeyword_1()); 
-            match(input,68,FOLLOW_2); 
+            match(input,67,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipSpecializationAxiomAccess().getExtendsRelationshipKeyword_1()); 
 
             }
@@ -22100,7 +22099,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:7057:2: 'someData'
             {
              before(grammarAccess.getEntityScalarDataPropertyExistentialRestrictionAxiomAccess().getSomeDataKeyword_0()); 
-            match(input,69,FOLLOW_2); 
+            match(input,68,FOLLOW_2); 
              after(grammarAccess.getEntityScalarDataPropertyExistentialRestrictionAxiomAccess().getSomeDataKeyword_0()); 
 
             }
@@ -22260,7 +22259,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:7111:2: '.'
             {
              before(grammarAccess.getEntityScalarDataPropertyExistentialRestrictionAxiomAccess().getFullStopKeyword_2()); 
-            match(input,63,FOLLOW_2); 
+            match(input,62,FOLLOW_2); 
              after(grammarAccess.getEntityScalarDataPropertyExistentialRestrictionAxiomAccess().getFullStopKeyword_2()); 
 
             }
@@ -22420,7 +22419,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:7165:2: 'in'
             {
              before(grammarAccess.getEntityScalarDataPropertyExistentialRestrictionAxiomAccess().getInKeyword_4()); 
-            match(input,64,FOLLOW_2); 
+            match(input,63,FOLLOW_2); 
              after(grammarAccess.getEntityScalarDataPropertyExistentialRestrictionAxiomAccess().getInKeyword_4()); 
 
             }
@@ -22575,7 +22574,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:7219:2: 'allData'
             {
              before(grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomAccess().getAllDataKeyword_0()); 
-            match(input,70,FOLLOW_2); 
+            match(input,69,FOLLOW_2); 
              after(grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomAccess().getAllDataKeyword_0()); 
 
             }
@@ -22735,7 +22734,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:7273:2: ','
             {
              before(grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomAccess().getCommaKeyword_2()); 
-            match(input,71,FOLLOW_2); 
+            match(input,70,FOLLOW_2); 
              after(grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomAccess().getCommaKeyword_2()); 
 
             }
@@ -22895,7 +22894,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:7327:2: '='
             {
              before(grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomAccess().getEqualsSignKeyword_4()); 
-            match(input,26,FOLLOW_2); 
+            match(input,25,FOLLOW_2); 
              after(grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomAccess().getEqualsSignKeyword_4()); 
 
             }
@@ -23050,7 +23049,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:7381:2: 'allData'
             {
              before(grammarAccess.getEntityScalarDataPropertyUniversalRestrictionAxiomAccess().getAllDataKeyword_0()); 
-            match(input,70,FOLLOW_2); 
+            match(input,69,FOLLOW_2); 
              after(grammarAccess.getEntityScalarDataPropertyUniversalRestrictionAxiomAccess().getAllDataKeyword_0()); 
 
             }
@@ -23210,7 +23209,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:7435:2: '.'
             {
              before(grammarAccess.getEntityScalarDataPropertyUniversalRestrictionAxiomAccess().getFullStopKeyword_2()); 
-            match(input,63,FOLLOW_2); 
+            match(input,62,FOLLOW_2); 
              after(grammarAccess.getEntityScalarDataPropertyUniversalRestrictionAxiomAccess().getFullStopKeyword_2()); 
 
             }
@@ -23370,7 +23369,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:7489:2: 'in'
             {
              before(grammarAccess.getEntityScalarDataPropertyUniversalRestrictionAxiomAccess().getInKeyword_4()); 
-            match(input,64,FOLLOW_2); 
+            match(input,63,FOLLOW_2); 
              after(grammarAccess.getEntityScalarDataPropertyUniversalRestrictionAxiomAccess().getInKeyword_4()); 
 
             }
@@ -23525,7 +23524,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:7543:2: 'binaryScalarRestriction'
             {
              before(grammarAccess.getBinaryScalarRestrictionAccess().getBinaryScalarRestrictionKeyword_0()); 
-            match(input,72,FOLLOW_2); 
+            match(input,71,FOLLOW_2); 
              after(grammarAccess.getBinaryScalarRestrictionAccess().getBinaryScalarRestrictionKeyword_0()); 
 
             }
@@ -23685,7 +23684,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:7597:2: '{'
             {
              before(grammarAccess.getBinaryScalarRestrictionAccess().getLeftCurlyBracketKeyword_2()); 
-            match(input,29,FOLLOW_2); 
+            match(input,28,FOLLOW_2); 
              after(grammarAccess.getBinaryScalarRestrictionAccess().getLeftCurlyBracketKeyword_2()); 
 
             }
@@ -23845,7 +23844,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:7651:2: 'restrictedRange'
             {
              before(grammarAccess.getBinaryScalarRestrictionAccess().getRestrictedRangeKeyword_4()); 
-            match(input,73,FOLLOW_2); 
+            match(input,72,FOLLOW_2); 
              after(grammarAccess.getBinaryScalarRestrictionAccess().getRestrictedRangeKeyword_4()); 
 
             }
@@ -24000,7 +23999,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:7704:2: '}'
             {
              before(grammarAccess.getBinaryScalarRestrictionAccess().getRightCurlyBracketKeyword_6()); 
-            match(input,30,FOLLOW_2); 
+            match(input,29,FOLLOW_2); 
              after(grammarAccess.getBinaryScalarRestrictionAccess().getRightCurlyBracketKeyword_6()); 
 
             }
@@ -24075,7 +24074,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:7732:2: 'length'
             {
              before(grammarAccess.getBinaryScalarRestrictionAccess().getLengthKeyword_3_0_0()); 
-            match(input,74,FOLLOW_2); 
+            match(input,73,FOLLOW_2); 
              after(grammarAccess.getBinaryScalarRestrictionAccess().getLengthKeyword_3_0_0()); 
 
             }
@@ -24230,7 +24229,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:7786:2: 'minLength'
             {
              before(grammarAccess.getBinaryScalarRestrictionAccess().getMinLengthKeyword_3_1_0()); 
-            match(input,75,FOLLOW_2); 
+            match(input,74,FOLLOW_2); 
              after(grammarAccess.getBinaryScalarRestrictionAccess().getMinLengthKeyword_3_1_0()); 
 
             }
@@ -24385,7 +24384,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:7840:2: 'maxLength'
             {
              before(grammarAccess.getBinaryScalarRestrictionAccess().getMaxLengthKeyword_3_2_0()); 
-            match(input,76,FOLLOW_2); 
+            match(input,75,FOLLOW_2); 
              after(grammarAccess.getBinaryScalarRestrictionAccess().getMaxLengthKeyword_3_2_0()); 
 
             }
@@ -24540,7 +24539,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:7894:2: 'iriScalarRestriction'
             {
              before(grammarAccess.getIRIScalarRestrictionAccess().getIriScalarRestrictionKeyword_0()); 
-            match(input,77,FOLLOW_2); 
+            match(input,76,FOLLOW_2); 
              after(grammarAccess.getIRIScalarRestrictionAccess().getIriScalarRestrictionKeyword_0()); 
 
             }
@@ -24700,7 +24699,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:7948:2: '{'
             {
              before(grammarAccess.getIRIScalarRestrictionAccess().getLeftCurlyBracketKeyword_2()); 
-            match(input,29,FOLLOW_2); 
+            match(input,28,FOLLOW_2); 
              after(grammarAccess.getIRIScalarRestrictionAccess().getLeftCurlyBracketKeyword_2()); 
 
             }
@@ -24860,7 +24859,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8002:2: 'restrictedRange'
             {
              before(grammarAccess.getIRIScalarRestrictionAccess().getRestrictedRangeKeyword_4()); 
-            match(input,73,FOLLOW_2); 
+            match(input,72,FOLLOW_2); 
              after(grammarAccess.getIRIScalarRestrictionAccess().getRestrictedRangeKeyword_4()); 
 
             }
@@ -25015,7 +25014,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8055:2: '}'
             {
              before(grammarAccess.getIRIScalarRestrictionAccess().getRightCurlyBracketKeyword_6()); 
-            match(input,30,FOLLOW_2); 
+            match(input,29,FOLLOW_2); 
              after(grammarAccess.getIRIScalarRestrictionAccess().getRightCurlyBracketKeyword_6()); 
 
             }
@@ -25090,7 +25089,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8083:2: 'length'
             {
              before(grammarAccess.getIRIScalarRestrictionAccess().getLengthKeyword_3_0_0()); 
-            match(input,74,FOLLOW_2); 
+            match(input,73,FOLLOW_2); 
              after(grammarAccess.getIRIScalarRestrictionAccess().getLengthKeyword_3_0_0()); 
 
             }
@@ -25245,7 +25244,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8137:2: 'minLength'
             {
              before(grammarAccess.getIRIScalarRestrictionAccess().getMinLengthKeyword_3_1_0()); 
-            match(input,75,FOLLOW_2); 
+            match(input,74,FOLLOW_2); 
              after(grammarAccess.getIRIScalarRestrictionAccess().getMinLengthKeyword_3_1_0()); 
 
             }
@@ -25400,7 +25399,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8191:2: 'maxLength'
             {
              before(grammarAccess.getIRIScalarRestrictionAccess().getMaxLengthKeyword_3_2_0()); 
-            match(input,76,FOLLOW_2); 
+            match(input,75,FOLLOW_2); 
              after(grammarAccess.getIRIScalarRestrictionAccess().getMaxLengthKeyword_3_2_0()); 
 
             }
@@ -25555,7 +25554,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8245:2: 'pattern'
             {
              before(grammarAccess.getIRIScalarRestrictionAccess().getPatternKeyword_3_3_0()); 
-            match(input,78,FOLLOW_2); 
+            match(input,77,FOLLOW_2); 
              after(grammarAccess.getIRIScalarRestrictionAccess().getPatternKeyword_3_3_0()); 
 
             }
@@ -25710,7 +25709,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8299:2: 'numericScalarRestriction'
             {
              before(grammarAccess.getNumericScalarRestrictionAccess().getNumericScalarRestrictionKeyword_0()); 
-            match(input,79,FOLLOW_2); 
+            match(input,78,FOLLOW_2); 
              after(grammarAccess.getNumericScalarRestrictionAccess().getNumericScalarRestrictionKeyword_0()); 
 
             }
@@ -25870,7 +25869,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8353:2: '{'
             {
              before(grammarAccess.getNumericScalarRestrictionAccess().getLeftCurlyBracketKeyword_2()); 
-            match(input,29,FOLLOW_2); 
+            match(input,28,FOLLOW_2); 
              after(grammarAccess.getNumericScalarRestrictionAccess().getLeftCurlyBracketKeyword_2()); 
 
             }
@@ -26030,7 +26029,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8407:2: 'restrictedRange'
             {
              before(grammarAccess.getNumericScalarRestrictionAccess().getRestrictedRangeKeyword_4()); 
-            match(input,73,FOLLOW_2); 
+            match(input,72,FOLLOW_2); 
              after(grammarAccess.getNumericScalarRestrictionAccess().getRestrictedRangeKeyword_4()); 
 
             }
@@ -26185,7 +26184,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8460:2: '}'
             {
              before(grammarAccess.getNumericScalarRestrictionAccess().getRightCurlyBracketKeyword_6()); 
-            match(input,30,FOLLOW_2); 
+            match(input,29,FOLLOW_2); 
              after(grammarAccess.getNumericScalarRestrictionAccess().getRightCurlyBracketKeyword_6()); 
 
             }
@@ -26260,7 +26259,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8488:2: 'minInclusive'
             {
              before(grammarAccess.getNumericScalarRestrictionAccess().getMinInclusiveKeyword_3_0_0()); 
-            match(input,80,FOLLOW_2); 
+            match(input,79,FOLLOW_2); 
              after(grammarAccess.getNumericScalarRestrictionAccess().getMinInclusiveKeyword_3_0_0()); 
 
             }
@@ -26415,7 +26414,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8542:2: 'maxInclusive'
             {
              before(grammarAccess.getNumericScalarRestrictionAccess().getMaxInclusiveKeyword_3_1_0()); 
-            match(input,81,FOLLOW_2); 
+            match(input,80,FOLLOW_2); 
              after(grammarAccess.getNumericScalarRestrictionAccess().getMaxInclusiveKeyword_3_1_0()); 
 
             }
@@ -26570,7 +26569,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8596:2: 'minExclusive'
             {
              before(grammarAccess.getNumericScalarRestrictionAccess().getMinExclusiveKeyword_3_2_0()); 
-            match(input,82,FOLLOW_2); 
+            match(input,81,FOLLOW_2); 
              after(grammarAccess.getNumericScalarRestrictionAccess().getMinExclusiveKeyword_3_2_0()); 
 
             }
@@ -26725,7 +26724,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8650:2: 'maxExclusive'
             {
              before(grammarAccess.getNumericScalarRestrictionAccess().getMaxExclusiveKeyword_3_3_0()); 
-            match(input,83,FOLLOW_2); 
+            match(input,82,FOLLOW_2); 
              after(grammarAccess.getNumericScalarRestrictionAccess().getMaxExclusiveKeyword_3_3_0()); 
 
             }
@@ -26880,7 +26879,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8704:2: 'plainLiteralScalarRestriction'
             {
              before(grammarAccess.getPlainLiteralScalarRestrictionAccess().getPlainLiteralScalarRestrictionKeyword_0()); 
-            match(input,84,FOLLOW_2); 
+            match(input,83,FOLLOW_2); 
              after(grammarAccess.getPlainLiteralScalarRestrictionAccess().getPlainLiteralScalarRestrictionKeyword_0()); 
 
             }
@@ -27040,7 +27039,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8758:2: '{'
             {
              before(grammarAccess.getPlainLiteralScalarRestrictionAccess().getLeftCurlyBracketKeyword_2()); 
-            match(input,29,FOLLOW_2); 
+            match(input,28,FOLLOW_2); 
              after(grammarAccess.getPlainLiteralScalarRestrictionAccess().getLeftCurlyBracketKeyword_2()); 
 
             }
@@ -27200,7 +27199,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8812:2: 'restrictedRange'
             {
              before(grammarAccess.getPlainLiteralScalarRestrictionAccess().getRestrictedRangeKeyword_4()); 
-            match(input,73,FOLLOW_2); 
+            match(input,72,FOLLOW_2); 
              after(grammarAccess.getPlainLiteralScalarRestrictionAccess().getRestrictedRangeKeyword_4()); 
 
             }
@@ -27355,7 +27354,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8865:2: '}'
             {
              before(grammarAccess.getPlainLiteralScalarRestrictionAccess().getRightCurlyBracketKeyword_6()); 
-            match(input,30,FOLLOW_2); 
+            match(input,29,FOLLOW_2); 
              after(grammarAccess.getPlainLiteralScalarRestrictionAccess().getRightCurlyBracketKeyword_6()); 
 
             }
@@ -27430,7 +27429,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8893:2: 'length'
             {
              before(grammarAccess.getPlainLiteralScalarRestrictionAccess().getLengthKeyword_3_0_0()); 
-            match(input,74,FOLLOW_2); 
+            match(input,73,FOLLOW_2); 
              after(grammarAccess.getPlainLiteralScalarRestrictionAccess().getLengthKeyword_3_0_0()); 
 
             }
@@ -27585,7 +27584,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8947:2: 'minLength'
             {
              before(grammarAccess.getPlainLiteralScalarRestrictionAccess().getMinLengthKeyword_3_1_0()); 
-            match(input,75,FOLLOW_2); 
+            match(input,74,FOLLOW_2); 
              after(grammarAccess.getPlainLiteralScalarRestrictionAccess().getMinLengthKeyword_3_1_0()); 
 
             }
@@ -27740,7 +27739,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:9001:2: 'maxLength'
             {
              before(grammarAccess.getPlainLiteralScalarRestrictionAccess().getMaxLengthKeyword_3_2_0()); 
-            match(input,76,FOLLOW_2); 
+            match(input,75,FOLLOW_2); 
              after(grammarAccess.getPlainLiteralScalarRestrictionAccess().getMaxLengthKeyword_3_2_0()); 
 
             }
@@ -27895,7 +27894,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:9055:2: 'pattern'
             {
              before(grammarAccess.getPlainLiteralScalarRestrictionAccess().getPatternKeyword_3_3_0()); 
-            match(input,78,FOLLOW_2); 
+            match(input,77,FOLLOW_2); 
              after(grammarAccess.getPlainLiteralScalarRestrictionAccess().getPatternKeyword_3_3_0()); 
 
             }
@@ -28050,7 +28049,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:9109:2: 'langRange'
             {
              before(grammarAccess.getPlainLiteralScalarRestrictionAccess().getLangRangeKeyword_3_4_0()); 
-            match(input,85,FOLLOW_2); 
+            match(input,84,FOLLOW_2); 
              after(grammarAccess.getPlainLiteralScalarRestrictionAccess().getLangRangeKeyword_3_4_0()); 
 
             }
@@ -28205,7 +28204,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:9163:2: 'scalarOneOfRestriction'
             {
              before(grammarAccess.getScalarOneOfRestrictionAccess().getScalarOneOfRestrictionKeyword_0()); 
-            match(input,86,FOLLOW_2); 
+            match(input,85,FOLLOW_2); 
              after(grammarAccess.getScalarOneOfRestrictionAccess().getScalarOneOfRestrictionKeyword_0()); 
 
             }
@@ -28365,7 +28364,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:9217:2: '{'
             {
              before(grammarAccess.getScalarOneOfRestrictionAccess().getLeftCurlyBracketKeyword_2()); 
-            match(input,29,FOLLOW_2); 
+            match(input,28,FOLLOW_2); 
              after(grammarAccess.getScalarOneOfRestrictionAccess().getLeftCurlyBracketKeyword_2()); 
 
             }
@@ -28440,7 +28439,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:9244:2: 'restrictedRange'
             {
              before(grammarAccess.getScalarOneOfRestrictionAccess().getRestrictedRangeKeyword_3()); 
-            match(input,73,FOLLOW_2); 
+            match(input,72,FOLLOW_2); 
              after(grammarAccess.getScalarOneOfRestrictionAccess().getRestrictedRangeKeyword_3()); 
 
             }
@@ -28595,7 +28594,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:9297:2: '}'
             {
              before(grammarAccess.getScalarOneOfRestrictionAccess().getRightCurlyBracketKeyword_5()); 
-            match(input,30,FOLLOW_2); 
+            match(input,29,FOLLOW_2); 
              after(grammarAccess.getScalarOneOfRestrictionAccess().getRightCurlyBracketKeyword_5()); 
 
             }
@@ -28670,7 +28669,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:9325:2: 'oneOf'
             {
              before(grammarAccess.getScalarOneOfLiteralAxiomAccess().getOneOfKeyword_0()); 
-            match(input,87,FOLLOW_2); 
+            match(input,86,FOLLOW_2); 
              after(grammarAccess.getScalarOneOfLiteralAxiomAccess().getOneOfKeyword_0()); 
 
             }
@@ -28830,7 +28829,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:9379:2: '='
             {
              before(grammarAccess.getScalarOneOfLiteralAxiomAccess().getEqualsSignKeyword_2()); 
-            match(input,26,FOLLOW_2); 
+            match(input,25,FOLLOW_2); 
              after(grammarAccess.getScalarOneOfLiteralAxiomAccess().getEqualsSignKeyword_2()); 
 
             }
@@ -28985,7 +28984,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:9433:2: 'stringScalarRestriction'
             {
              before(grammarAccess.getStringScalarRestrictionAccess().getStringScalarRestrictionKeyword_0()); 
-            match(input,88,FOLLOW_2); 
+            match(input,87,FOLLOW_2); 
              after(grammarAccess.getStringScalarRestrictionAccess().getStringScalarRestrictionKeyword_0()); 
 
             }
@@ -29145,7 +29144,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:9487:2: '{'
             {
              before(grammarAccess.getStringScalarRestrictionAccess().getLeftCurlyBracketKeyword_2()); 
-            match(input,29,FOLLOW_2); 
+            match(input,28,FOLLOW_2); 
              after(grammarAccess.getStringScalarRestrictionAccess().getLeftCurlyBracketKeyword_2()); 
 
             }
@@ -29305,7 +29304,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:9541:2: 'restrictedRange'
             {
              before(grammarAccess.getStringScalarRestrictionAccess().getRestrictedRangeKeyword_4()); 
-            match(input,73,FOLLOW_2); 
+            match(input,72,FOLLOW_2); 
              after(grammarAccess.getStringScalarRestrictionAccess().getRestrictedRangeKeyword_4()); 
 
             }
@@ -29460,7 +29459,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:9594:2: '}'
             {
              before(grammarAccess.getStringScalarRestrictionAccess().getRightCurlyBracketKeyword_6()); 
-            match(input,30,FOLLOW_2); 
+            match(input,29,FOLLOW_2); 
              after(grammarAccess.getStringScalarRestrictionAccess().getRightCurlyBracketKeyword_6()); 
 
             }
@@ -29535,7 +29534,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:9622:2: 'length'
             {
              before(grammarAccess.getStringScalarRestrictionAccess().getLengthKeyword_3_0_0()); 
-            match(input,74,FOLLOW_2); 
+            match(input,73,FOLLOW_2); 
              after(grammarAccess.getStringScalarRestrictionAccess().getLengthKeyword_3_0_0()); 
 
             }
@@ -29690,7 +29689,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:9676:2: 'minLength'
             {
              before(grammarAccess.getStringScalarRestrictionAccess().getMinLengthKeyword_3_1_0()); 
-            match(input,75,FOLLOW_2); 
+            match(input,74,FOLLOW_2); 
              after(grammarAccess.getStringScalarRestrictionAccess().getMinLengthKeyword_3_1_0()); 
 
             }
@@ -29845,7 +29844,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:9730:2: 'maxLength'
             {
              before(grammarAccess.getStringScalarRestrictionAccess().getMaxLengthKeyword_3_2_0()); 
-            match(input,76,FOLLOW_2); 
+            match(input,75,FOLLOW_2); 
              after(grammarAccess.getStringScalarRestrictionAccess().getMaxLengthKeyword_3_2_0()); 
 
             }
@@ -30000,7 +29999,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:9784:2: 'pattern'
             {
              before(grammarAccess.getStringScalarRestrictionAccess().getPatternKeyword_3_3_0()); 
-            match(input,78,FOLLOW_2); 
+            match(input,77,FOLLOW_2); 
              after(grammarAccess.getStringScalarRestrictionAccess().getPatternKeyword_3_3_0()); 
 
             }
@@ -30155,7 +30154,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:9838:2: 'synonymScalarRestriction'
             {
              before(grammarAccess.getSynonymScalarRestrictionAccess().getSynonymScalarRestrictionKeyword_0()); 
-            match(input,89,FOLLOW_2); 
+            match(input,88,FOLLOW_2); 
              after(grammarAccess.getSynonymScalarRestrictionAccess().getSynonymScalarRestrictionKeyword_0()); 
 
             }
@@ -30315,7 +30314,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:9892:2: '{'
             {
              before(grammarAccess.getSynonymScalarRestrictionAccess().getLeftCurlyBracketKeyword_2()); 
-            match(input,29,FOLLOW_2); 
+            match(input,28,FOLLOW_2); 
              after(grammarAccess.getSynonymScalarRestrictionAccess().getLeftCurlyBracketKeyword_2()); 
 
             }
@@ -30390,7 +30389,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:9919:2: 'restrictedRange'
             {
              before(grammarAccess.getSynonymScalarRestrictionAccess().getRestrictedRangeKeyword_3()); 
-            match(input,73,FOLLOW_2); 
+            match(input,72,FOLLOW_2); 
              after(grammarAccess.getSynonymScalarRestrictionAccess().getRestrictedRangeKeyword_3()); 
 
             }
@@ -30545,7 +30544,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:9972:2: '}'
             {
              before(grammarAccess.getSynonymScalarRestrictionAccess().getRightCurlyBracketKeyword_5()); 
-            match(input,30,FOLLOW_2); 
+            match(input,29,FOLLOW_2); 
              after(grammarAccess.getSynonymScalarRestrictionAccess().getRightCurlyBracketKeyword_5()); 
 
             }
@@ -30620,7 +30619,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:10000:2: 'timeScalarRestriction'
             {
              before(grammarAccess.getTimeScalarRestrictionAccess().getTimeScalarRestrictionKeyword_0()); 
-            match(input,90,FOLLOW_2); 
+            match(input,89,FOLLOW_2); 
              after(grammarAccess.getTimeScalarRestrictionAccess().getTimeScalarRestrictionKeyword_0()); 
 
             }
@@ -30780,7 +30779,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:10054:2: '{'
             {
              before(grammarAccess.getTimeScalarRestrictionAccess().getLeftCurlyBracketKeyword_2()); 
-            match(input,29,FOLLOW_2); 
+            match(input,28,FOLLOW_2); 
              after(grammarAccess.getTimeScalarRestrictionAccess().getLeftCurlyBracketKeyword_2()); 
 
             }
@@ -30940,7 +30939,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:10108:2: 'restrictedRange'
             {
              before(grammarAccess.getTimeScalarRestrictionAccess().getRestrictedRangeKeyword_4()); 
-            match(input,73,FOLLOW_2); 
+            match(input,72,FOLLOW_2); 
              after(grammarAccess.getTimeScalarRestrictionAccess().getRestrictedRangeKeyword_4()); 
 
             }
@@ -31095,7 +31094,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:10161:2: '}'
             {
              before(grammarAccess.getTimeScalarRestrictionAccess().getRightCurlyBracketKeyword_6()); 
-            match(input,30,FOLLOW_2); 
+            match(input,29,FOLLOW_2); 
              after(grammarAccess.getTimeScalarRestrictionAccess().getRightCurlyBracketKeyword_6()); 
 
             }
@@ -31170,7 +31169,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:10189:2: 'minInclusive'
             {
              before(grammarAccess.getTimeScalarRestrictionAccess().getMinInclusiveKeyword_3_0_0()); 
-            match(input,80,FOLLOW_2); 
+            match(input,79,FOLLOW_2); 
              after(grammarAccess.getTimeScalarRestrictionAccess().getMinInclusiveKeyword_3_0_0()); 
 
             }
@@ -31325,7 +31324,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:10243:2: 'maxInclusive'
             {
              before(grammarAccess.getTimeScalarRestrictionAccess().getMaxInclusiveKeyword_3_1_0()); 
-            match(input,81,FOLLOW_2); 
+            match(input,80,FOLLOW_2); 
              after(grammarAccess.getTimeScalarRestrictionAccess().getMaxInclusiveKeyword_3_1_0()); 
 
             }
@@ -31480,7 +31479,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:10297:2: 'minExclusive'
             {
              before(grammarAccess.getTimeScalarRestrictionAccess().getMinExclusiveKeyword_3_2_0()); 
-            match(input,82,FOLLOW_2); 
+            match(input,81,FOLLOW_2); 
              after(grammarAccess.getTimeScalarRestrictionAccess().getMinExclusiveKeyword_3_2_0()); 
 
             }
@@ -31635,7 +31634,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:10351:2: 'maxExclusive'
             {
              before(grammarAccess.getTimeScalarRestrictionAccess().getMaxExclusiveKeyword_3_3_0()); 
-            match(input,83,FOLLOW_2); 
+            match(input,82,FOLLOW_2); 
              after(grammarAccess.getTimeScalarRestrictionAccess().getMaxExclusiveKeyword_3_3_0()); 
 
             }
@@ -31790,7 +31789,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:10405:2: 'extends'
             {
              before(grammarAccess.getDescriptionBoxExtendsClosedWorldDefinitionsAccess().getExtendsKeyword_0()); 
-            match(input,37,FOLLOW_2); 
+            match(input,36,FOLLOW_2); 
              after(grammarAccess.getDescriptionBoxExtendsClosedWorldDefinitionsAccess().getExtendsKeyword_0()); 
 
             }
@@ -31945,7 +31944,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:10459:2: 'refines'
             {
              before(grammarAccess.getDescriptionBoxRefinementAccess().getRefinesKeyword_0()); 
-            match(input,91,FOLLOW_2); 
+            match(input,90,FOLLOW_2); 
              after(grammarAccess.getDescriptionBoxRefinementAccess().getRefinesKeyword_0()); 
 
             }
@@ -32185,7 +32184,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:10540:2: '.'
             {
              before(grammarAccess.getSingletonInstanceScalarDataPropertyValueAccess().getFullStopKeyword_1()); 
-            match(input,63,FOLLOW_2); 
+            match(input,62,FOLLOW_2); 
              after(grammarAccess.getSingletonInstanceScalarDataPropertyValueAccess().getFullStopKeyword_1()); 
 
             }
@@ -32345,7 +32344,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:10594:2: '='
             {
              before(grammarAccess.getSingletonInstanceScalarDataPropertyValueAccess().getEqualsSignKeyword_3()); 
-            match(input,26,FOLLOW_2); 
+            match(input,25,FOLLOW_2); 
              after(grammarAccess.getSingletonInstanceScalarDataPropertyValueAccess().getEqualsSignKeyword_3()); 
 
             }
@@ -32585,7 +32584,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:10675:2: '.'
             {
              before(grammarAccess.getSingletonInstanceStructuredDataPropertyValueAccess().getFullStopKeyword_1()); 
-            match(input,63,FOLLOW_2); 
+            match(input,62,FOLLOW_2); 
              after(grammarAccess.getSingletonInstanceStructuredDataPropertyValueAccess().getFullStopKeyword_1()); 
 
             }
@@ -32745,7 +32744,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:10729:2: '='
             {
              before(grammarAccess.getSingletonInstanceStructuredDataPropertyValueAccess().getEqualsSignKeyword_3()); 
-            match(input,26,FOLLOW_2); 
+            match(input,25,FOLLOW_2); 
              after(grammarAccess.getSingletonInstanceStructuredDataPropertyValueAccess().getEqualsSignKeyword_3()); 
 
             }
@@ -32820,7 +32819,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:10756:2: '{'
             {
              before(grammarAccess.getSingletonInstanceStructuredDataPropertyValueAccess().getLeftCurlyBracketKeyword_4()); 
-            match(input,29,FOLLOW_2); 
+            match(input,28,FOLLOW_2); 
              after(grammarAccess.getSingletonInstanceStructuredDataPropertyValueAccess().getLeftCurlyBracketKeyword_4()); 
 
             }
@@ -32993,7 +32992,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:10809:2: '}'
             {
              before(grammarAccess.getSingletonInstanceStructuredDataPropertyValueAccess().getRightCurlyBracketKeyword_6()); 
-            match(input,30,FOLLOW_2); 
+            match(input,29,FOLLOW_2); 
              after(grammarAccess.getSingletonInstanceStructuredDataPropertyValueAccess().getRightCurlyBracketKeyword_6()); 
 
             }
@@ -33153,7 +33152,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:10864:2: '='
             {
              before(grammarAccess.getStructuredDataPropertyTupleAccess().getEqualsSignKeyword_1()); 
-            match(input,26,FOLLOW_2); 
+            match(input,25,FOLLOW_2); 
              after(grammarAccess.getStructuredDataPropertyTupleAccess().getEqualsSignKeyword_1()); 
 
             }
@@ -33228,7 +33227,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:10891:2: '{'
             {
              before(grammarAccess.getStructuredDataPropertyTupleAccess().getLeftCurlyBracketKeyword_2()); 
-            match(input,29,FOLLOW_2); 
+            match(input,28,FOLLOW_2); 
              after(grammarAccess.getStructuredDataPropertyTupleAccess().getLeftCurlyBracketKeyword_2()); 
 
             }
@@ -33401,7 +33400,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:10944:2: '}'
             {
              before(grammarAccess.getStructuredDataPropertyTupleAccess().getRightCurlyBracketKeyword_4()); 
-            match(input,30,FOLLOW_2); 
+            match(input,29,FOLLOW_2); 
              after(grammarAccess.getStructuredDataPropertyTupleAccess().getRightCurlyBracketKeyword_4()); 
 
             }
@@ -33561,7 +33560,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:10999:2: '='
             {
              before(grammarAccess.getScalarDataPropertyValueAccess().getEqualsSignKeyword_1()); 
-            match(input,26,FOLLOW_2); 
+            match(input,25,FOLLOW_2); 
              after(grammarAccess.getScalarDataPropertyValueAccess().getEqualsSignKeyword_1()); 
 
             }
@@ -33716,7 +33715,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:11053:2: 'conceptInstance'
             {
              before(grammarAccess.getConceptInstanceAccess().getConceptInstanceKeyword_0()); 
-            match(input,92,FOLLOW_2); 
+            match(input,91,FOLLOW_2); 
              after(grammarAccess.getConceptInstanceAccess().getConceptInstanceKeyword_0()); 
 
             }
@@ -33791,7 +33790,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:11080:2: '('
             {
              before(grammarAccess.getConceptInstanceAccess().getLeftParenthesisKeyword_1()); 
-            match(input,58,FOLLOW_2); 
+            match(input,57,FOLLOW_2); 
              after(grammarAccess.getConceptInstanceAccess().getLeftParenthesisKeyword_1()); 
 
             }
@@ -33951,7 +33950,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:11134:2: 'is-a'
             {
              before(grammarAccess.getConceptInstanceAccess().getIsAKeyword_3()); 
-            match(input,93,FOLLOW_2); 
+            match(input,92,FOLLOW_2); 
              after(grammarAccess.getConceptInstanceAccess().getIsAKeyword_3()); 
 
             }
@@ -34106,7 +34105,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:11187:2: ')'
             {
              before(grammarAccess.getConceptInstanceAccess().getRightParenthesisKeyword_5()); 
-            match(input,59,FOLLOW_2); 
+            match(input,58,FOLLOW_2); 
              after(grammarAccess.getConceptInstanceAccess().getRightParenthesisKeyword_5()); 
 
             }
@@ -34181,7 +34180,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:11215:2: 'reifiedRelationshipInstance'
             {
              before(grammarAccess.getReifiedRelationshipInstanceAccess().getReifiedRelationshipInstanceKeyword_0()); 
-            match(input,94,FOLLOW_2); 
+            match(input,93,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipInstanceAccess().getReifiedRelationshipInstanceKeyword_0()); 
 
             }
@@ -34256,7 +34255,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:11242:2: '('
             {
              before(grammarAccess.getReifiedRelationshipInstanceAccess().getLeftParenthesisKeyword_1()); 
-            match(input,58,FOLLOW_2); 
+            match(input,57,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipInstanceAccess().getLeftParenthesisKeyword_1()); 
 
             }
@@ -34416,7 +34415,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:11296:2: 'is-a'
             {
              before(grammarAccess.getReifiedRelationshipInstanceAccess().getIsAKeyword_3()); 
-            match(input,93,FOLLOW_2); 
+            match(input,92,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipInstanceAccess().getIsAKeyword_3()); 
 
             }
@@ -34571,7 +34570,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:11349:2: ')'
             {
              before(grammarAccess.getReifiedRelationshipInstanceAccess().getRightParenthesisKeyword_5()); 
-            match(input,59,FOLLOW_2); 
+            match(input,58,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipInstanceAccess().getRightParenthesisKeyword_5()); 
 
             }
@@ -34646,7 +34645,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:11377:2: 'domain'
             {
              before(grammarAccess.getReifiedRelationshipInstanceDomainAccess().getDomainKeyword_0()); 
-            match(input,52,FOLLOW_2); 
+            match(input,51,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipInstanceDomainAccess().getDomainKeyword_0()); 
 
             }
@@ -34721,7 +34720,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:11404:2: '('
             {
              before(grammarAccess.getReifiedRelationshipInstanceDomainAccess().getLeftParenthesisKeyword_1()); 
-            match(input,58,FOLLOW_2); 
+            match(input,57,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipInstanceDomainAccess().getLeftParenthesisKeyword_1()); 
 
             }
@@ -34881,7 +34880,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:11458:2: ')'
             {
              before(grammarAccess.getReifiedRelationshipInstanceDomainAccess().getRightParenthesisKeyword_3()); 
-            match(input,59,FOLLOW_2); 
+            match(input,58,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipInstanceDomainAccess().getRightParenthesisKeyword_3()); 
 
             }
@@ -34956,7 +34955,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:11485:2: '='
             {
              before(grammarAccess.getReifiedRelationshipInstanceDomainAccess().getEqualsSignKeyword_4()); 
-            match(input,26,FOLLOW_2); 
+            match(input,25,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipInstanceDomainAccess().getEqualsSignKeyword_4()); 
 
             }
@@ -35111,7 +35110,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:11539:2: 'range'
             {
              before(grammarAccess.getReifiedRelationshipInstanceRangeAccess().getRangeKeyword_0()); 
-            match(input,53,FOLLOW_2); 
+            match(input,52,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipInstanceRangeAccess().getRangeKeyword_0()); 
 
             }
@@ -35186,7 +35185,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:11566:2: '('
             {
              before(grammarAccess.getReifiedRelationshipInstanceRangeAccess().getLeftParenthesisKeyword_1()); 
-            match(input,58,FOLLOW_2); 
+            match(input,57,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipInstanceRangeAccess().getLeftParenthesisKeyword_1()); 
 
             }
@@ -35346,7 +35345,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:11620:2: ')'
             {
              before(grammarAccess.getReifiedRelationshipInstanceRangeAccess().getRightParenthesisKeyword_3()); 
-            match(input,59,FOLLOW_2); 
+            match(input,58,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipInstanceRangeAccess().getRightParenthesisKeyword_3()); 
 
             }
@@ -35421,7 +35420,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:11647:2: '='
             {
              before(grammarAccess.getReifiedRelationshipInstanceRangeAccess().getEqualsSignKeyword_4()); 
-            match(input,26,FOLLOW_2); 
+            match(input,25,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipInstanceRangeAccess().getEqualsSignKeyword_4()); 
 
             }
@@ -35576,7 +35575,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:11701:2: 'tuple'
             {
              before(grammarAccess.getUnreifiedRelationshipInstanceTupleAccess().getTupleKeyword_0()); 
-            match(input,95,FOLLOW_2); 
+            match(input,94,FOLLOW_2); 
              after(grammarAccess.getUnreifiedRelationshipInstanceTupleAccess().getTupleKeyword_0()); 
 
             }
@@ -35651,7 +35650,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:11728:2: '{'
             {
              before(grammarAccess.getUnreifiedRelationshipInstanceTupleAccess().getLeftCurlyBracketKeyword_1()); 
-            match(input,29,FOLLOW_2); 
+            match(input,28,FOLLOW_2); 
              after(grammarAccess.getUnreifiedRelationshipInstanceTupleAccess().getLeftCurlyBracketKeyword_1()); 
 
             }
@@ -35726,7 +35725,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:11755:2: 'unreifiedRelationship'
             {
              before(grammarAccess.getUnreifiedRelationshipInstanceTupleAccess().getUnreifiedRelationshipKeyword_2()); 
-            match(input,48,FOLLOW_2); 
+            match(input,47,FOLLOW_2); 
              after(grammarAccess.getUnreifiedRelationshipInstanceTupleAccess().getUnreifiedRelationshipKeyword_2()); 
 
             }
@@ -35886,7 +35885,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:11809:2: 'domain'
             {
              before(grammarAccess.getUnreifiedRelationshipInstanceTupleAccess().getDomainKeyword_4()); 
-            match(input,52,FOLLOW_2); 
+            match(input,51,FOLLOW_2); 
              after(grammarAccess.getUnreifiedRelationshipInstanceTupleAccess().getDomainKeyword_4()); 
 
             }
@@ -36046,7 +36045,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:11863:2: 'range'
             {
              before(grammarAccess.getUnreifiedRelationshipInstanceTupleAccess().getRangeKeyword_6()); 
-            match(input,53,FOLLOW_2); 
+            match(input,52,FOLLOW_2); 
              after(grammarAccess.getUnreifiedRelationshipInstanceTupleAccess().getRangeKeyword_6()); 
 
             }
@@ -36201,7 +36200,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:11916:2: '}'
             {
              before(grammarAccess.getUnreifiedRelationshipInstanceTupleAccess().getRightCurlyBracketKeyword_8()); 
-            match(input,30,FOLLOW_2); 
+            match(input,29,FOLLOW_2); 
              after(grammarAccess.getUnreifiedRelationshipInstanceTupleAccess().getRightCurlyBracketKeyword_8()); 
 
             }
@@ -38121,13 +38120,13 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt63=2;
             int LA63_0 = input.LA(1);
 
-            if ( LA63_0 == 74 && getUnorderedGroupHelper().canSelect(grammarAccess.getBinaryScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
+            if ( LA63_0 == 73 && getUnorderedGroupHelper().canSelect(grammarAccess.getBinaryScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
                 alt63=1;
             }
-            else if ( LA63_0 == 75 && getUnorderedGroupHelper().canSelect(grammarAccess.getBinaryScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
+            else if ( LA63_0 == 74 && getUnorderedGroupHelper().canSelect(grammarAccess.getBinaryScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
                 alt63=1;
             }
-            else if ( LA63_0 == 76 && getUnorderedGroupHelper().canSelect(grammarAccess.getBinaryScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
+            else if ( LA63_0 == 75 && getUnorderedGroupHelper().canSelect(grammarAccess.getBinaryScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
                 alt63=1;
             }
             switch (alt63) {
@@ -38179,13 +38178,13 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt64=3;
             int LA64_0 = input.LA(1);
 
-            if ( LA64_0 == 74 && getUnorderedGroupHelper().canSelect(grammarAccess.getBinaryScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
+            if ( LA64_0 == 73 && getUnorderedGroupHelper().canSelect(grammarAccess.getBinaryScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
                 alt64=1;
             }
-            else if ( LA64_0 == 75 && getUnorderedGroupHelper().canSelect(grammarAccess.getBinaryScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
+            else if ( LA64_0 == 74 && getUnorderedGroupHelper().canSelect(grammarAccess.getBinaryScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
                 alt64=2;
             }
-            else if ( LA64_0 == 76 && getUnorderedGroupHelper().canSelect(grammarAccess.getBinaryScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
+            else if ( LA64_0 == 75 && getUnorderedGroupHelper().canSelect(grammarAccess.getBinaryScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
                 alt64=3;
             }
             else {
@@ -38375,13 +38374,13 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt65=2;
             int LA65_0 = input.LA(1);
 
-            if ( LA65_0 == 74 && getUnorderedGroupHelper().canSelect(grammarAccess.getBinaryScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
+            if ( LA65_0 == 73 && getUnorderedGroupHelper().canSelect(grammarAccess.getBinaryScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
                 alt65=1;
             }
-            else if ( LA65_0 == 75 && getUnorderedGroupHelper().canSelect(grammarAccess.getBinaryScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
+            else if ( LA65_0 == 74 && getUnorderedGroupHelper().canSelect(grammarAccess.getBinaryScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
                 alt65=1;
             }
-            else if ( LA65_0 == 76 && getUnorderedGroupHelper().canSelect(grammarAccess.getBinaryScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
+            else if ( LA65_0 == 75 && getUnorderedGroupHelper().canSelect(grammarAccess.getBinaryScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
                 alt65=1;
             }
             switch (alt65) {
@@ -38436,13 +38435,13 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt66=2;
             int LA66_0 = input.LA(1);
 
-            if ( LA66_0 == 74 && getUnorderedGroupHelper().canSelect(grammarAccess.getBinaryScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
+            if ( LA66_0 == 73 && getUnorderedGroupHelper().canSelect(grammarAccess.getBinaryScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
                 alt66=1;
             }
-            else if ( LA66_0 == 75 && getUnorderedGroupHelper().canSelect(grammarAccess.getBinaryScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
+            else if ( LA66_0 == 74 && getUnorderedGroupHelper().canSelect(grammarAccess.getBinaryScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
                 alt66=1;
             }
-            else if ( LA66_0 == 76 && getUnorderedGroupHelper().canSelect(grammarAccess.getBinaryScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
+            else if ( LA66_0 == 75 && getUnorderedGroupHelper().canSelect(grammarAccess.getBinaryScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
                 alt66=1;
             }
             switch (alt66) {
@@ -38526,16 +38525,16 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt67=2;
             int LA67_0 = input.LA(1);
 
-            if ( LA67_0 == 74 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
+            if ( LA67_0 == 73 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
                 alt67=1;
             }
-            else if ( LA67_0 == 75 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
+            else if ( LA67_0 == 74 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
                 alt67=1;
             }
-            else if ( LA67_0 == 76 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
+            else if ( LA67_0 == 75 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
                 alt67=1;
             }
-            else if ( LA67_0 == 78 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
+            else if ( LA67_0 == 77 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
                 alt67=1;
             }
             switch (alt67) {
@@ -38587,16 +38586,16 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt68=4;
             int LA68_0 = input.LA(1);
 
-            if ( LA68_0 == 74 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
+            if ( LA68_0 == 73 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
                 alt68=1;
             }
-            else if ( LA68_0 == 75 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
+            else if ( LA68_0 == 74 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
                 alt68=2;
             }
-            else if ( LA68_0 == 76 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
+            else if ( LA68_0 == 75 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
                 alt68=3;
             }
-            else if ( LA68_0 == 78 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
+            else if ( LA68_0 == 77 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
                 alt68=4;
             }
             else {
@@ -38832,16 +38831,16 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt69=2;
             int LA69_0 = input.LA(1);
 
-            if ( LA69_0 == 74 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
+            if ( LA69_0 == 73 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
                 alt69=1;
             }
-            else if ( LA69_0 == 75 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
+            else if ( LA69_0 == 74 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
                 alt69=1;
             }
-            else if ( LA69_0 == 76 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
+            else if ( LA69_0 == 75 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
                 alt69=1;
             }
-            else if ( LA69_0 == 78 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
+            else if ( LA69_0 == 77 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
                 alt69=1;
             }
             switch (alt69) {
@@ -38896,16 +38895,16 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt70=2;
             int LA70_0 = input.LA(1);
 
-            if ( LA70_0 == 74 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
+            if ( LA70_0 == 73 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
                 alt70=1;
             }
-            else if ( LA70_0 == 75 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
+            else if ( LA70_0 == 74 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
                 alt70=1;
             }
-            else if ( LA70_0 == 76 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
+            else if ( LA70_0 == 75 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
                 alt70=1;
             }
-            else if ( LA70_0 == 78 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
+            else if ( LA70_0 == 77 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
                 alt70=1;
             }
             switch (alt70) {
@@ -38960,16 +38959,16 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt71=2;
             int LA71_0 = input.LA(1);
 
-            if ( LA71_0 == 74 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
+            if ( LA71_0 == 73 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
                 alt71=1;
             }
-            else if ( LA71_0 == 75 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
+            else if ( LA71_0 == 74 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
                 alt71=1;
             }
-            else if ( LA71_0 == 76 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
+            else if ( LA71_0 == 75 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
                 alt71=1;
             }
-            else if ( LA71_0 == 78 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
+            else if ( LA71_0 == 77 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
                 alt71=1;
             }
             switch (alt71) {
@@ -39053,16 +39052,16 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt72=2;
             int LA72_0 = input.LA(1);
 
-            if ( LA72_0 == 80 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
+            if ( LA72_0 == 79 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
                 alt72=1;
             }
-            else if ( LA72_0 == 81 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
+            else if ( LA72_0 == 80 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
                 alt72=1;
             }
-            else if ( LA72_0 == 82 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
+            else if ( LA72_0 == 81 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
                 alt72=1;
             }
-            else if ( LA72_0 == 83 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
+            else if ( LA72_0 == 82 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
                 alt72=1;
             }
             switch (alt72) {
@@ -39114,16 +39113,16 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt73=4;
             int LA73_0 = input.LA(1);
 
-            if ( LA73_0 == 80 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
+            if ( LA73_0 == 79 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
                 alt73=1;
             }
-            else if ( LA73_0 == 81 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
+            else if ( LA73_0 == 80 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
                 alt73=2;
             }
-            else if ( LA73_0 == 82 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
+            else if ( LA73_0 == 81 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
                 alt73=3;
             }
-            else if ( LA73_0 == 83 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
+            else if ( LA73_0 == 82 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
                 alt73=4;
             }
             else {
@@ -39359,16 +39358,16 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt74=2;
             int LA74_0 = input.LA(1);
 
-            if ( LA74_0 == 80 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
+            if ( LA74_0 == 79 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
                 alt74=1;
             }
-            else if ( LA74_0 == 81 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
+            else if ( LA74_0 == 80 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
                 alt74=1;
             }
-            else if ( LA74_0 == 82 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
+            else if ( LA74_0 == 81 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
                 alt74=1;
             }
-            else if ( LA74_0 == 83 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
+            else if ( LA74_0 == 82 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
                 alt74=1;
             }
             switch (alt74) {
@@ -39423,16 +39422,16 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt75=2;
             int LA75_0 = input.LA(1);
 
-            if ( LA75_0 == 80 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
+            if ( LA75_0 == 79 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
                 alt75=1;
             }
-            else if ( LA75_0 == 81 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
+            else if ( LA75_0 == 80 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
                 alt75=1;
             }
-            else if ( LA75_0 == 82 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
+            else if ( LA75_0 == 81 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
                 alt75=1;
             }
-            else if ( LA75_0 == 83 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
+            else if ( LA75_0 == 82 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
                 alt75=1;
             }
             switch (alt75) {
@@ -39487,16 +39486,16 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt76=2;
             int LA76_0 = input.LA(1);
 
-            if ( LA76_0 == 80 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
+            if ( LA76_0 == 79 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
                 alt76=1;
             }
-            else if ( LA76_0 == 81 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
+            else if ( LA76_0 == 80 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
                 alt76=1;
             }
-            else if ( LA76_0 == 82 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
+            else if ( LA76_0 == 81 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
                 alt76=1;
             }
-            else if ( LA76_0 == 83 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
+            else if ( LA76_0 == 82 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
                 alt76=1;
             }
             switch (alt76) {
@@ -39580,19 +39579,19 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt77=2;
             int LA77_0 = input.LA(1);
 
-            if ( LA77_0 == 74 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
+            if ( LA77_0 == 73 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
                 alt77=1;
             }
-            else if ( LA77_0 == 75 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
+            else if ( LA77_0 == 74 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
                 alt77=1;
             }
-            else if ( LA77_0 == 76 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
+            else if ( LA77_0 == 75 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
                 alt77=1;
             }
-            else if ( LA77_0 == 78 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
+            else if ( LA77_0 == 77 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
                 alt77=1;
             }
-            else if ( LA77_0 == 85 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 4) ) {
+            else if ( LA77_0 == 84 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 4) ) {
                 alt77=1;
             }
             switch (alt77) {
@@ -39644,19 +39643,19 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt78=5;
             int LA78_0 = input.LA(1);
 
-            if ( LA78_0 == 74 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
+            if ( LA78_0 == 73 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
                 alt78=1;
             }
-            else if ( LA78_0 == 75 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
+            else if ( LA78_0 == 74 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
                 alt78=2;
             }
-            else if ( LA78_0 == 76 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
+            else if ( LA78_0 == 75 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
                 alt78=3;
             }
-            else if ( LA78_0 == 78 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
+            else if ( LA78_0 == 77 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
                 alt78=4;
             }
-            else if ( LA78_0 == 85 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 4) ) {
+            else if ( LA78_0 == 84 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 4) ) {
                 alt78=5;
             }
             else {
@@ -39938,19 +39937,19 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt79=2;
             int LA79_0 = input.LA(1);
 
-            if ( LA79_0 == 74 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
+            if ( LA79_0 == 73 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
                 alt79=1;
             }
-            else if ( LA79_0 == 75 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
+            else if ( LA79_0 == 74 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
                 alt79=1;
             }
-            else if ( LA79_0 == 76 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
+            else if ( LA79_0 == 75 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
                 alt79=1;
             }
-            else if ( LA79_0 == 78 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
+            else if ( LA79_0 == 77 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
                 alt79=1;
             }
-            else if ( LA79_0 == 85 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 4) ) {
+            else if ( LA79_0 == 84 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 4) ) {
                 alt79=1;
             }
             switch (alt79) {
@@ -40005,19 +40004,19 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt80=2;
             int LA80_0 = input.LA(1);
 
-            if ( LA80_0 == 74 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
+            if ( LA80_0 == 73 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
                 alt80=1;
             }
-            else if ( LA80_0 == 75 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
+            else if ( LA80_0 == 74 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
                 alt80=1;
             }
-            else if ( LA80_0 == 76 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
+            else if ( LA80_0 == 75 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
                 alt80=1;
             }
-            else if ( LA80_0 == 78 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
+            else if ( LA80_0 == 77 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
                 alt80=1;
             }
-            else if ( LA80_0 == 85 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 4) ) {
+            else if ( LA80_0 == 84 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 4) ) {
                 alt80=1;
             }
             switch (alt80) {
@@ -40072,19 +40071,19 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt81=2;
             int LA81_0 = input.LA(1);
 
-            if ( LA81_0 == 74 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
+            if ( LA81_0 == 73 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
                 alt81=1;
             }
-            else if ( LA81_0 == 75 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
+            else if ( LA81_0 == 74 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
                 alt81=1;
             }
-            else if ( LA81_0 == 76 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
+            else if ( LA81_0 == 75 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
                 alt81=1;
             }
-            else if ( LA81_0 == 78 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
+            else if ( LA81_0 == 77 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
                 alt81=1;
             }
-            else if ( LA81_0 == 85 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 4) ) {
+            else if ( LA81_0 == 84 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 4) ) {
                 alt81=1;
             }
             switch (alt81) {
@@ -40139,19 +40138,19 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt82=2;
             int LA82_0 = input.LA(1);
 
-            if ( LA82_0 == 74 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
+            if ( LA82_0 == 73 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
                 alt82=1;
             }
-            else if ( LA82_0 == 75 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
+            else if ( LA82_0 == 74 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
                 alt82=1;
             }
-            else if ( LA82_0 == 76 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
+            else if ( LA82_0 == 75 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
                 alt82=1;
             }
-            else if ( LA82_0 == 78 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
+            else if ( LA82_0 == 77 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
                 alt82=1;
             }
-            else if ( LA82_0 == 85 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 4) ) {
+            else if ( LA82_0 == 84 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_3(), 4) ) {
                 alt82=1;
             }
             switch (alt82) {
@@ -40235,16 +40234,16 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt83=2;
             int LA83_0 = input.LA(1);
 
-            if ( LA83_0 == 74 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
+            if ( LA83_0 == 73 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
                 alt83=1;
             }
-            else if ( LA83_0 == 75 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
+            else if ( LA83_0 == 74 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
                 alt83=1;
             }
-            else if ( LA83_0 == 76 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
+            else if ( LA83_0 == 75 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
                 alt83=1;
             }
-            else if ( LA83_0 == 78 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
+            else if ( LA83_0 == 77 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
                 alt83=1;
             }
             switch (alt83) {
@@ -40296,16 +40295,16 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt84=4;
             int LA84_0 = input.LA(1);
 
-            if ( LA84_0 == 74 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
+            if ( LA84_0 == 73 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
                 alt84=1;
             }
-            else if ( LA84_0 == 75 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
+            else if ( LA84_0 == 74 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
                 alt84=2;
             }
-            else if ( LA84_0 == 76 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
+            else if ( LA84_0 == 75 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
                 alt84=3;
             }
-            else if ( LA84_0 == 78 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
+            else if ( LA84_0 == 77 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
                 alt84=4;
             }
             else {
@@ -40541,16 +40540,16 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt85=2;
             int LA85_0 = input.LA(1);
 
-            if ( LA85_0 == 74 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
+            if ( LA85_0 == 73 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
                 alt85=1;
             }
-            else if ( LA85_0 == 75 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
+            else if ( LA85_0 == 74 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
                 alt85=1;
             }
-            else if ( LA85_0 == 76 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
+            else if ( LA85_0 == 75 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
                 alt85=1;
             }
-            else if ( LA85_0 == 78 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
+            else if ( LA85_0 == 77 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
                 alt85=1;
             }
             switch (alt85) {
@@ -40605,16 +40604,16 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt86=2;
             int LA86_0 = input.LA(1);
 
-            if ( LA86_0 == 74 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
+            if ( LA86_0 == 73 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
                 alt86=1;
             }
-            else if ( LA86_0 == 75 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
+            else if ( LA86_0 == 74 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
                 alt86=1;
             }
-            else if ( LA86_0 == 76 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
+            else if ( LA86_0 == 75 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
                 alt86=1;
             }
-            else if ( LA86_0 == 78 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
+            else if ( LA86_0 == 77 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
                 alt86=1;
             }
             switch (alt86) {
@@ -40669,16 +40668,16 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt87=2;
             int LA87_0 = input.LA(1);
 
-            if ( LA87_0 == 74 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
+            if ( LA87_0 == 73 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
                 alt87=1;
             }
-            else if ( LA87_0 == 75 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
+            else if ( LA87_0 == 74 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
                 alt87=1;
             }
-            else if ( LA87_0 == 76 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
+            else if ( LA87_0 == 75 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
                 alt87=1;
             }
-            else if ( LA87_0 == 78 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
+            else if ( LA87_0 == 77 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
                 alt87=1;
             }
             switch (alt87) {
@@ -40762,16 +40761,16 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt88=2;
             int LA88_0 = input.LA(1);
 
-            if ( LA88_0 == 80 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
+            if ( LA88_0 == 79 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
                 alt88=1;
             }
-            else if ( LA88_0 == 81 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
+            else if ( LA88_0 == 80 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
                 alt88=1;
             }
-            else if ( LA88_0 == 82 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
+            else if ( LA88_0 == 81 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
                 alt88=1;
             }
-            else if ( LA88_0 == 83 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
+            else if ( LA88_0 == 82 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
                 alt88=1;
             }
             switch (alt88) {
@@ -40823,16 +40822,16 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt89=4;
             int LA89_0 = input.LA(1);
 
-            if ( LA89_0 == 80 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
+            if ( LA89_0 == 79 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
                 alt89=1;
             }
-            else if ( LA89_0 == 81 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
+            else if ( LA89_0 == 80 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
                 alt89=2;
             }
-            else if ( LA89_0 == 82 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
+            else if ( LA89_0 == 81 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
                 alt89=3;
             }
-            else if ( LA89_0 == 83 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
+            else if ( LA89_0 == 82 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
                 alt89=4;
             }
             else {
@@ -41068,16 +41067,16 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt90=2;
             int LA90_0 = input.LA(1);
 
-            if ( LA90_0 == 80 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
+            if ( LA90_0 == 79 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
                 alt90=1;
             }
-            else if ( LA90_0 == 81 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
+            else if ( LA90_0 == 80 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
                 alt90=1;
             }
-            else if ( LA90_0 == 82 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
+            else if ( LA90_0 == 81 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
                 alt90=1;
             }
-            else if ( LA90_0 == 83 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
+            else if ( LA90_0 == 82 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
                 alt90=1;
             }
             switch (alt90) {
@@ -41132,16 +41131,16 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt91=2;
             int LA91_0 = input.LA(1);
 
-            if ( LA91_0 == 80 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
+            if ( LA91_0 == 79 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
                 alt91=1;
             }
-            else if ( LA91_0 == 81 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
+            else if ( LA91_0 == 80 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
                 alt91=1;
             }
-            else if ( LA91_0 == 82 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
+            else if ( LA91_0 == 81 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
                 alt91=1;
             }
-            else if ( LA91_0 == 83 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
+            else if ( LA91_0 == 82 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
                 alt91=1;
             }
             switch (alt91) {
@@ -41196,16 +41195,16 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt92=2;
             int LA92_0 = input.LA(1);
 
-            if ( LA92_0 == 80 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
+            if ( LA92_0 == 79 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_3(), 0) ) {
                 alt92=1;
             }
-            else if ( LA92_0 == 81 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
+            else if ( LA92_0 == 80 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_3(), 1) ) {
                 alt92=1;
             }
-            else if ( LA92_0 == 82 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
+            else if ( LA92_0 == 81 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_3(), 2) ) {
                 alt92=1;
             }
-            else if ( LA92_0 == 83 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
+            else if ( LA92_0 == 82 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_3(), 3) ) {
                 alt92=1;
             }
             switch (alt92) {
@@ -43030,7 +43029,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:13958:4: 'functional'
             {
              before(grammarAccess.getReifiedRelationshipAccess().getIsFunctionalFunctionalKeyword_3_0_0()); 
-            match(input,96,FOLLOW_2); 
+            match(input,95,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipAccess().getIsFunctionalFunctionalKeyword_3_0_0()); 
 
             }
@@ -43075,7 +43074,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:13977:4: 'inverseFunctional'
             {
              before(grammarAccess.getReifiedRelationshipAccess().getIsInverseFunctionalInverseFunctionalKeyword_3_1_0()); 
-            match(input,97,FOLLOW_2); 
+            match(input,96,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipAccess().getIsInverseFunctionalInverseFunctionalKeyword_3_1_0()); 
 
             }
@@ -43120,7 +43119,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:13996:4: 'essential'
             {
              before(grammarAccess.getReifiedRelationshipAccess().getIsEssentialEssentialKeyword_3_2_0()); 
-            match(input,98,FOLLOW_2); 
+            match(input,97,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipAccess().getIsEssentialEssentialKeyword_3_2_0()); 
 
             }
@@ -43165,7 +43164,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:14015:4: 'inverseEssential'
             {
              before(grammarAccess.getReifiedRelationshipAccess().getIsInverseEssentialInverseEssentialKeyword_3_3_0()); 
-            match(input,99,FOLLOW_2); 
+            match(input,98,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipAccess().getIsInverseEssentialInverseEssentialKeyword_3_3_0()); 
 
             }
@@ -43210,7 +43209,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:14034:4: 'symmetric'
             {
              before(grammarAccess.getReifiedRelationshipAccess().getIsSymmetricSymmetricKeyword_3_4_0()); 
-            match(input,100,FOLLOW_2); 
+            match(input,99,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipAccess().getIsSymmetricSymmetricKeyword_3_4_0()); 
 
             }
@@ -43255,7 +43254,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:14053:4: 'asymmetric'
             {
              before(grammarAccess.getReifiedRelationshipAccess().getIsAsymmetricAsymmetricKeyword_3_5_0()); 
-            match(input,101,FOLLOW_2); 
+            match(input,100,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipAccess().getIsAsymmetricAsymmetricKeyword_3_5_0()); 
 
             }
@@ -43300,7 +43299,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:14072:4: 'reflexive'
             {
              before(grammarAccess.getReifiedRelationshipAccess().getIsReflexiveReflexiveKeyword_3_6_0()); 
-            match(input,102,FOLLOW_2); 
+            match(input,101,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipAccess().getIsReflexiveReflexiveKeyword_3_6_0()); 
 
             }
@@ -43345,7 +43344,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:14091:4: 'irreflexive'
             {
              before(grammarAccess.getReifiedRelationshipAccess().getIsIrreflexiveIrreflexiveKeyword_3_7_0()); 
-            match(input,103,FOLLOW_2); 
+            match(input,102,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipAccess().getIsIrreflexiveIrreflexiveKeyword_3_7_0()); 
 
             }
@@ -43390,7 +43389,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:14110:4: 'transitive'
             {
              before(grammarAccess.getReifiedRelationshipAccess().getIsTransitiveTransitiveKeyword_3_8_0()); 
-            match(input,104,FOLLOW_2); 
+            match(input,103,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipAccess().getIsTransitiveTransitiveKeyword_3_8_0()); 
 
             }
@@ -43644,7 +43643,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:14212:4: 'functional'
             {
              before(grammarAccess.getUnreifiedRelationshipAccess().getIsFunctionalFunctionalKeyword_3_0_0()); 
-            match(input,96,FOLLOW_2); 
+            match(input,95,FOLLOW_2); 
              after(grammarAccess.getUnreifiedRelationshipAccess().getIsFunctionalFunctionalKeyword_3_0_0()); 
 
             }
@@ -43689,7 +43688,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:14231:4: 'inverseFunctional'
             {
              before(grammarAccess.getUnreifiedRelationshipAccess().getIsInverseFunctionalInverseFunctionalKeyword_3_1_0()); 
-            match(input,97,FOLLOW_2); 
+            match(input,96,FOLLOW_2); 
              after(grammarAccess.getUnreifiedRelationshipAccess().getIsInverseFunctionalInverseFunctionalKeyword_3_1_0()); 
 
             }
@@ -43734,7 +43733,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:14250:4: 'essential'
             {
              before(grammarAccess.getUnreifiedRelationshipAccess().getIsEssentialEssentialKeyword_3_2_0()); 
-            match(input,98,FOLLOW_2); 
+            match(input,97,FOLLOW_2); 
              after(grammarAccess.getUnreifiedRelationshipAccess().getIsEssentialEssentialKeyword_3_2_0()); 
 
             }
@@ -43779,7 +43778,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:14269:4: 'inverseEssential'
             {
              before(grammarAccess.getUnreifiedRelationshipAccess().getIsInverseEssentialInverseEssentialKeyword_3_3_0()); 
-            match(input,99,FOLLOW_2); 
+            match(input,98,FOLLOW_2); 
              after(grammarAccess.getUnreifiedRelationshipAccess().getIsInverseEssentialInverseEssentialKeyword_3_3_0()); 
 
             }
@@ -43824,7 +43823,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:14288:4: 'symmetric'
             {
              before(grammarAccess.getUnreifiedRelationshipAccess().getIsSymmetricSymmetricKeyword_3_4_0()); 
-            match(input,100,FOLLOW_2); 
+            match(input,99,FOLLOW_2); 
              after(grammarAccess.getUnreifiedRelationshipAccess().getIsSymmetricSymmetricKeyword_3_4_0()); 
 
             }
@@ -43869,7 +43868,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:14307:4: 'asymmetric'
             {
              before(grammarAccess.getUnreifiedRelationshipAccess().getIsAsymmetricAsymmetricKeyword_3_5_0()); 
-            match(input,101,FOLLOW_2); 
+            match(input,100,FOLLOW_2); 
              after(grammarAccess.getUnreifiedRelationshipAccess().getIsAsymmetricAsymmetricKeyword_3_5_0()); 
 
             }
@@ -43914,7 +43913,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:14326:4: 'reflexive'
             {
              before(grammarAccess.getUnreifiedRelationshipAccess().getIsReflexiveReflexiveKeyword_3_6_0()); 
-            match(input,102,FOLLOW_2); 
+            match(input,101,FOLLOW_2); 
              after(grammarAccess.getUnreifiedRelationshipAccess().getIsReflexiveReflexiveKeyword_3_6_0()); 
 
             }
@@ -43959,7 +43958,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:14345:4: 'irreflexive'
             {
              before(grammarAccess.getUnreifiedRelationshipAccess().getIsIrreflexiveIrreflexiveKeyword_3_7_0()); 
-            match(input,103,FOLLOW_2); 
+            match(input,102,FOLLOW_2); 
              after(grammarAccess.getUnreifiedRelationshipAccess().getIsIrreflexiveIrreflexiveKeyword_3_7_0()); 
 
             }
@@ -44004,7 +44003,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:14364:4: 'transitive'
             {
              before(grammarAccess.getUnreifiedRelationshipAccess().getIsTransitiveTransitiveKeyword_3_8_0()); 
-            match(input,104,FOLLOW_2); 
+            match(input,103,FOLLOW_2); 
              after(grammarAccess.getUnreifiedRelationshipAccess().getIsTransitiveTransitiveKeyword_3_8_0()); 
 
             }
@@ -44221,7 +44220,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:14451:4: '+'
             {
              before(grammarAccess.getEntityStructuredDataPropertyAccess().getIsIdentityCriteriaPlusSignKeyword_1_0()); 
-            match(input,105,FOLLOW_2); 
+            match(input,104,FOLLOW_2); 
              after(grammarAccess.getEntityStructuredDataPropertyAccess().getIsIdentityCriteriaPlusSignKeyword_1_0()); 
 
             }
@@ -44401,7 +44400,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:14523:4: '+'
             {
              before(grammarAccess.getEntityScalarDataPropertyAccess().getIsIdentityCriteriaPlusSignKeyword_1_0()); 
-            match(input,105,FOLLOW_2); 
+            match(input,104,FOLLOW_2); 
              after(grammarAccess.getEntityScalarDataPropertyAccess().getIsIdentityCriteriaPlusSignKeyword_1_0()); 
 
             }
@@ -48908,8 +48907,8 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
     protected DFA61 dfa61 = new DFA61(this);
     protected DFA62 dfa62 = new DFA62(this);
     static final String dfa_1s = "\7\uffff";
-    static final String dfa_2s = "\1\25\1\6\2\uffff\1\32\1\10\1\25";
-    static final String dfa_3s = "\1\33\1\6\2\uffff\1\32\1\10\1\33";
+    static final String dfa_2s = "\1\24\1\6\2\uffff\1\31\1\11\1\24";
+    static final String dfa_3s = "\1\32\1\6\2\uffff\1\31\1\11\1\32";
     static final String dfa_4s = "\2\uffff\1\1\1\2\3\uffff";
     static final String dfa_5s = "\7\uffff}>";
     static final String[] dfa_6s = {
@@ -48947,8 +48946,8 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
         }
     }
     static final String dfa_7s = "\11\uffff";
-    static final String dfa_8s = "\1\25\1\6\2\34\1\32\2\uffff\1\10\1\25";
-    static final String dfa_9s = "\1\33\1\6\2\37\1\32\2\uffff\1\10\1\33";
+    static final String dfa_8s = "\1\24\1\6\2\33\1\31\2\uffff\1\11\1\24";
+    static final String dfa_9s = "\1\32\1\6\2\36\1\31\2\uffff\1\11\1\32";
     static final String dfa_10s = "\5\uffff\1\2\1\1\2\uffff";
     static final String dfa_11s = "\11\uffff}>";
     static final String[] dfa_12s = {
@@ -48988,12 +48987,12 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
         }
     }
     static final String dfa_13s = "\23\uffff";
-    static final String dfa_14s = "\1\4\10\uffff\3\77\1\4\3\32\1\7\2\uffff";
-    static final String dfa_15s = "\1\137\10\uffff\3\77\1\6\3\32\1\35\2\uffff";
+    static final String dfa_14s = "\1\4\10\uffff\3\76\1\4\3\31\1\7\2\uffff";
+    static final String dfa_15s = "\1\136\10\uffff\3\76\1\6\3\31\1\34\2\uffff";
     static final String dfa_16s = "\1\uffff\1\1\1\2\1\3\1\4\1\5\1\6\1\7\1\10\10\uffff\1\12\1\11";
     static final String dfa_17s = "\23\uffff}>";
     static final String[] dfa_18s = {
-            "\1\11\1\13\1\12\24\uffff\1\1\11\uffff\1\2\16\uffff\1\6\1\7\45\uffff\1\3\1\4\1\uffff\1\5\1\10",
+            "\1\11\1\13\1\12\23\uffff\1\1\11\uffff\1\2\16\uffff\1\6\1\7\45\uffff\1\3\1\4\1\uffff\1\5\1\10",
             "",
             "",
             "",
@@ -49009,7 +49008,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             "\1\20",
             "\1\20",
             "\1\20",
-            "\6\22\20\uffff\1\21",
+            "\6\22\17\uffff\1\21",
             "",
             ""
     };
@@ -49039,8 +49038,8 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
         }
     }
     static final String dfa_19s = "\13\uffff";
-    static final String dfa_20s = "\1\54\12\uffff";
-    static final String dfa_21s = "\1\150\12\uffff";
+    static final String dfa_20s = "\1\53\12\uffff";
+    static final String dfa_21s = "\1\147\12\uffff";
     static final String dfa_22s = "\1\uffff\11\1\1\2";
     static final String dfa_23s = "\1\0\12\uffff}>";
     static final String[] dfa_24s = {
@@ -49091,25 +49090,25 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                         int index43_0 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( LA43_0 == 96 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 0) ) {s = 1;}
+                        if ( LA43_0 == 95 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 0) ) {s = 1;}
 
-                        else if ( LA43_0 == 97 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 1) ) {s = 2;}
+                        else if ( LA43_0 == 96 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 1) ) {s = 2;}
 
-                        else if ( LA43_0 == 98 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 2) ) {s = 3;}
+                        else if ( LA43_0 == 97 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 2) ) {s = 3;}
 
-                        else if ( LA43_0 == 99 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 3) ) {s = 4;}
+                        else if ( LA43_0 == 98 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 3) ) {s = 4;}
 
-                        else if ( LA43_0 == 100 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 4) ) {s = 5;}
+                        else if ( LA43_0 == 99 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 4) ) {s = 5;}
 
-                        else if ( LA43_0 == 101 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 5) ) {s = 6;}
+                        else if ( LA43_0 == 100 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 5) ) {s = 6;}
 
-                        else if ( LA43_0 == 102 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 6) ) {s = 7;}
+                        else if ( LA43_0 == 101 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 6) ) {s = 7;}
 
-                        else if ( LA43_0 == 103 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 7) ) {s = 8;}
+                        else if ( LA43_0 == 102 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 7) ) {s = 8;}
 
-                        else if ( LA43_0 == 104 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 8) ) {s = 9;}
+                        else if ( LA43_0 == 103 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 8) ) {s = 9;}
 
-                        else if ( (LA43_0==44) ) {s = 10;}
+                        else if ( (LA43_0==43) ) {s = 10;}
 
                          
                         input.seek(index43_0);
@@ -49123,8 +49122,8 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
         }
     }
     static final String dfa_25s = "\12\uffff";
-    static final String dfa_26s = "\1\140\11\uffff";
-    static final String dfa_27s = "\1\150\11\uffff";
+    static final String dfa_26s = "\1\137\11\uffff";
+    static final String dfa_27s = "\1\147\11\uffff";
     static final String dfa_28s = "\1\uffff\1\1\1\2\1\3\1\4\1\5\1\6\1\7\1\10\1\11";
     static final String dfa_29s = "\1\0\11\uffff}>";
     static final String[] dfa_30s = {
@@ -49174,23 +49173,23 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                         int index44_0 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( LA44_0 == 96 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 0) ) {s = 1;}
+                        if ( LA44_0 == 95 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 0) ) {s = 1;}
 
-                        else if ( LA44_0 == 97 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 1) ) {s = 2;}
+                        else if ( LA44_0 == 96 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 1) ) {s = 2;}
 
-                        else if ( LA44_0 == 98 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 2) ) {s = 3;}
+                        else if ( LA44_0 == 97 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 2) ) {s = 3;}
 
-                        else if ( LA44_0 == 99 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 3) ) {s = 4;}
+                        else if ( LA44_0 == 98 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 3) ) {s = 4;}
 
-                        else if ( LA44_0 == 100 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 4) ) {s = 5;}
+                        else if ( LA44_0 == 99 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 4) ) {s = 5;}
 
-                        else if ( LA44_0 == 101 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 5) ) {s = 6;}
+                        else if ( LA44_0 == 100 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 5) ) {s = 6;}
 
-                        else if ( LA44_0 == 102 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 6) ) {s = 7;}
+                        else if ( LA44_0 == 101 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 6) ) {s = 7;}
 
-                        else if ( LA44_0 == 103 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 7) ) {s = 8;}
+                        else if ( LA44_0 == 102 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 7) ) {s = 8;}
 
-                        else if ( LA44_0 == 104 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 8) ) {s = 9;}
+                        else if ( LA44_0 == 103 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 8) ) {s = 9;}
 
                          
                         input.seek(index44_0);
@@ -49231,25 +49230,25 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                         int index45_0 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( LA45_0 == 96 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 0) ) {s = 1;}
+                        if ( LA45_0 == 95 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 0) ) {s = 1;}
 
-                        else if ( LA45_0 == 97 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 1) ) {s = 2;}
+                        else if ( LA45_0 == 96 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 1) ) {s = 2;}
 
-                        else if ( LA45_0 == 98 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 2) ) {s = 3;}
+                        else if ( LA45_0 == 97 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 2) ) {s = 3;}
 
-                        else if ( LA45_0 == 99 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 3) ) {s = 4;}
+                        else if ( LA45_0 == 98 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 3) ) {s = 4;}
 
-                        else if ( LA45_0 == 100 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 4) ) {s = 5;}
+                        else if ( LA45_0 == 99 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 4) ) {s = 5;}
 
-                        else if ( LA45_0 == 101 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 5) ) {s = 6;}
+                        else if ( LA45_0 == 100 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 5) ) {s = 6;}
 
-                        else if ( LA45_0 == 102 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 6) ) {s = 7;}
+                        else if ( LA45_0 == 101 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 6) ) {s = 7;}
 
-                        else if ( LA45_0 == 103 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 7) ) {s = 8;}
+                        else if ( LA45_0 == 102 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 7) ) {s = 8;}
 
-                        else if ( LA45_0 == 104 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 8) ) {s = 9;}
+                        else if ( LA45_0 == 103 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 8) ) {s = 9;}
 
-                        else if ( (LA45_0==44) ) {s = 10;}
+                        else if ( (LA45_0==43) ) {s = 10;}
 
                          
                         input.seek(index45_0);
@@ -49290,25 +49289,25 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                         int index46_0 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( LA46_0 == 96 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 0) ) {s = 1;}
+                        if ( LA46_0 == 95 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 0) ) {s = 1;}
 
-                        else if ( LA46_0 == 97 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 1) ) {s = 2;}
+                        else if ( LA46_0 == 96 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 1) ) {s = 2;}
 
-                        else if ( LA46_0 == 98 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 2) ) {s = 3;}
+                        else if ( LA46_0 == 97 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 2) ) {s = 3;}
 
-                        else if ( LA46_0 == 99 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 3) ) {s = 4;}
+                        else if ( LA46_0 == 98 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 3) ) {s = 4;}
 
-                        else if ( LA46_0 == 100 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 4) ) {s = 5;}
+                        else if ( LA46_0 == 99 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 4) ) {s = 5;}
 
-                        else if ( LA46_0 == 101 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 5) ) {s = 6;}
+                        else if ( LA46_0 == 100 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 5) ) {s = 6;}
 
-                        else if ( LA46_0 == 102 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 6) ) {s = 7;}
+                        else if ( LA46_0 == 101 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 6) ) {s = 7;}
 
-                        else if ( LA46_0 == 103 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 7) ) {s = 8;}
+                        else if ( LA46_0 == 102 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 7) ) {s = 8;}
 
-                        else if ( LA46_0 == 104 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 8) ) {s = 9;}
+                        else if ( LA46_0 == 103 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 8) ) {s = 9;}
 
-                        else if ( (LA46_0==44) ) {s = 10;}
+                        else if ( (LA46_0==43) ) {s = 10;}
 
                          
                         input.seek(index46_0);
@@ -49349,25 +49348,25 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                         int index47_0 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( LA47_0 == 96 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 0) ) {s = 1;}
+                        if ( LA47_0 == 95 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 0) ) {s = 1;}
 
-                        else if ( LA47_0 == 97 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 1) ) {s = 2;}
+                        else if ( LA47_0 == 96 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 1) ) {s = 2;}
 
-                        else if ( LA47_0 == 98 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 2) ) {s = 3;}
+                        else if ( LA47_0 == 97 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 2) ) {s = 3;}
 
-                        else if ( LA47_0 == 99 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 3) ) {s = 4;}
+                        else if ( LA47_0 == 98 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 3) ) {s = 4;}
 
-                        else if ( LA47_0 == 100 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 4) ) {s = 5;}
+                        else if ( LA47_0 == 99 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 4) ) {s = 5;}
 
-                        else if ( LA47_0 == 101 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 5) ) {s = 6;}
+                        else if ( LA47_0 == 100 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 5) ) {s = 6;}
 
-                        else if ( LA47_0 == 102 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 6) ) {s = 7;}
+                        else if ( LA47_0 == 101 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 6) ) {s = 7;}
 
-                        else if ( LA47_0 == 103 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 7) ) {s = 8;}
+                        else if ( LA47_0 == 102 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 7) ) {s = 8;}
 
-                        else if ( LA47_0 == 104 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 8) ) {s = 9;}
+                        else if ( LA47_0 == 103 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 8) ) {s = 9;}
 
-                        else if ( (LA47_0==44) ) {s = 10;}
+                        else if ( (LA47_0==43) ) {s = 10;}
 
                          
                         input.seek(index47_0);
@@ -49408,25 +49407,25 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                         int index48_0 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( LA48_0 == 96 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 0) ) {s = 1;}
+                        if ( LA48_0 == 95 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 0) ) {s = 1;}
 
-                        else if ( LA48_0 == 97 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 1) ) {s = 2;}
+                        else if ( LA48_0 == 96 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 1) ) {s = 2;}
 
-                        else if ( LA48_0 == 98 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 2) ) {s = 3;}
+                        else if ( LA48_0 == 97 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 2) ) {s = 3;}
 
-                        else if ( LA48_0 == 99 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 3) ) {s = 4;}
+                        else if ( LA48_0 == 98 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 3) ) {s = 4;}
 
-                        else if ( LA48_0 == 100 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 4) ) {s = 5;}
+                        else if ( LA48_0 == 99 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 4) ) {s = 5;}
 
-                        else if ( LA48_0 == 101 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 5) ) {s = 6;}
+                        else if ( LA48_0 == 100 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 5) ) {s = 6;}
 
-                        else if ( LA48_0 == 102 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 6) ) {s = 7;}
+                        else if ( LA48_0 == 101 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 6) ) {s = 7;}
 
-                        else if ( LA48_0 == 103 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 7) ) {s = 8;}
+                        else if ( LA48_0 == 102 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 7) ) {s = 8;}
 
-                        else if ( LA48_0 == 104 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 8) ) {s = 9;}
+                        else if ( LA48_0 == 103 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 8) ) {s = 9;}
 
-                        else if ( (LA48_0==44) ) {s = 10;}
+                        else if ( (LA48_0==43) ) {s = 10;}
 
                          
                         input.seek(index48_0);
@@ -49467,25 +49466,25 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                         int index49_0 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( LA49_0 == 96 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 0) ) {s = 1;}
+                        if ( LA49_0 == 95 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 0) ) {s = 1;}
 
-                        else if ( LA49_0 == 97 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 1) ) {s = 2;}
+                        else if ( LA49_0 == 96 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 1) ) {s = 2;}
 
-                        else if ( LA49_0 == 98 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 2) ) {s = 3;}
+                        else if ( LA49_0 == 97 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 2) ) {s = 3;}
 
-                        else if ( LA49_0 == 99 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 3) ) {s = 4;}
+                        else if ( LA49_0 == 98 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 3) ) {s = 4;}
 
-                        else if ( LA49_0 == 100 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 4) ) {s = 5;}
+                        else if ( LA49_0 == 99 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 4) ) {s = 5;}
 
-                        else if ( LA49_0 == 101 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 5) ) {s = 6;}
+                        else if ( LA49_0 == 100 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 5) ) {s = 6;}
 
-                        else if ( LA49_0 == 102 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 6) ) {s = 7;}
+                        else if ( LA49_0 == 101 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 6) ) {s = 7;}
 
-                        else if ( LA49_0 == 103 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 7) ) {s = 8;}
+                        else if ( LA49_0 == 102 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 7) ) {s = 8;}
 
-                        else if ( LA49_0 == 104 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 8) ) {s = 9;}
+                        else if ( LA49_0 == 103 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 8) ) {s = 9;}
 
-                        else if ( (LA49_0==44) ) {s = 10;}
+                        else if ( (LA49_0==43) ) {s = 10;}
 
                          
                         input.seek(index49_0);
@@ -49526,25 +49525,25 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                         int index50_0 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( LA50_0 == 96 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 0) ) {s = 1;}
+                        if ( LA50_0 == 95 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 0) ) {s = 1;}
 
-                        else if ( LA50_0 == 97 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 1) ) {s = 2;}
+                        else if ( LA50_0 == 96 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 1) ) {s = 2;}
 
-                        else if ( LA50_0 == 98 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 2) ) {s = 3;}
+                        else if ( LA50_0 == 97 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 2) ) {s = 3;}
 
-                        else if ( LA50_0 == 99 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 3) ) {s = 4;}
+                        else if ( LA50_0 == 98 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 3) ) {s = 4;}
 
-                        else if ( LA50_0 == 100 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 4) ) {s = 5;}
+                        else if ( LA50_0 == 99 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 4) ) {s = 5;}
 
-                        else if ( LA50_0 == 101 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 5) ) {s = 6;}
+                        else if ( LA50_0 == 100 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 5) ) {s = 6;}
 
-                        else if ( LA50_0 == 102 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 6) ) {s = 7;}
+                        else if ( LA50_0 == 101 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 6) ) {s = 7;}
 
-                        else if ( LA50_0 == 103 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 7) ) {s = 8;}
+                        else if ( LA50_0 == 102 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 7) ) {s = 8;}
 
-                        else if ( LA50_0 == 104 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 8) ) {s = 9;}
+                        else if ( LA50_0 == 103 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 8) ) {s = 9;}
 
-                        else if ( (LA50_0==44) ) {s = 10;}
+                        else if ( (LA50_0==43) ) {s = 10;}
 
                          
                         input.seek(index50_0);
@@ -49585,25 +49584,25 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                         int index51_0 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( LA51_0 == 96 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 0) ) {s = 1;}
+                        if ( LA51_0 == 95 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 0) ) {s = 1;}
 
-                        else if ( LA51_0 == 97 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 1) ) {s = 2;}
+                        else if ( LA51_0 == 96 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 1) ) {s = 2;}
 
-                        else if ( LA51_0 == 98 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 2) ) {s = 3;}
+                        else if ( LA51_0 == 97 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 2) ) {s = 3;}
 
-                        else if ( LA51_0 == 99 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 3) ) {s = 4;}
+                        else if ( LA51_0 == 98 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 3) ) {s = 4;}
 
-                        else if ( LA51_0 == 100 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 4) ) {s = 5;}
+                        else if ( LA51_0 == 99 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 4) ) {s = 5;}
 
-                        else if ( LA51_0 == 101 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 5) ) {s = 6;}
+                        else if ( LA51_0 == 100 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 5) ) {s = 6;}
 
-                        else if ( LA51_0 == 102 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 6) ) {s = 7;}
+                        else if ( LA51_0 == 101 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 6) ) {s = 7;}
 
-                        else if ( LA51_0 == 103 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 7) ) {s = 8;}
+                        else if ( LA51_0 == 102 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 7) ) {s = 8;}
 
-                        else if ( LA51_0 == 104 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 8) ) {s = 9;}
+                        else if ( LA51_0 == 103 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 8) ) {s = 9;}
 
-                        else if ( (LA51_0==44) ) {s = 10;}
+                        else if ( (LA51_0==43) ) {s = 10;}
 
                          
                         input.seek(index51_0);
@@ -49644,25 +49643,25 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                         int index52_0 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( LA52_0 == 96 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 0) ) {s = 1;}
+                        if ( LA52_0 == 95 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 0) ) {s = 1;}
 
-                        else if ( LA52_0 == 97 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 1) ) {s = 2;}
+                        else if ( LA52_0 == 96 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 1) ) {s = 2;}
 
-                        else if ( LA52_0 == 98 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 2) ) {s = 3;}
+                        else if ( LA52_0 == 97 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 2) ) {s = 3;}
 
-                        else if ( LA52_0 == 99 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 3) ) {s = 4;}
+                        else if ( LA52_0 == 98 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 3) ) {s = 4;}
 
-                        else if ( LA52_0 == 100 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 4) ) {s = 5;}
+                        else if ( LA52_0 == 99 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 4) ) {s = 5;}
 
-                        else if ( LA52_0 == 101 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 5) ) {s = 6;}
+                        else if ( LA52_0 == 100 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 5) ) {s = 6;}
 
-                        else if ( LA52_0 == 102 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 6) ) {s = 7;}
+                        else if ( LA52_0 == 101 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 6) ) {s = 7;}
 
-                        else if ( LA52_0 == 103 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 7) ) {s = 8;}
+                        else if ( LA52_0 == 102 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 7) ) {s = 8;}
 
-                        else if ( LA52_0 == 104 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 8) ) {s = 9;}
+                        else if ( LA52_0 == 103 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_3(), 8) ) {s = 9;}
 
-                        else if ( (LA52_0==44) ) {s = 10;}
+                        else if ( (LA52_0==43) ) {s = 10;}
 
                          
                         input.seek(index52_0);
@@ -49675,7 +49674,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             throw nvae;
         }
     }
-    static final String dfa_31s = "\1\55\12\uffff";
+    static final String dfa_31s = "\1\54\12\uffff";
     static final String[] dfa_32s = {
             "\1\12\62\uffff\1\1\1\2\1\3\1\4\1\5\1\6\1\7\1\10\1\11",
             "",
@@ -49719,25 +49718,25 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                         int index53_0 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( LA53_0 == 96 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 0) ) {s = 1;}
+                        if ( LA53_0 == 95 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 0) ) {s = 1;}
 
-                        else if ( LA53_0 == 97 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 1) ) {s = 2;}
+                        else if ( LA53_0 == 96 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 1) ) {s = 2;}
 
-                        else if ( LA53_0 == 98 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 2) ) {s = 3;}
+                        else if ( LA53_0 == 97 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 2) ) {s = 3;}
 
-                        else if ( LA53_0 == 99 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 3) ) {s = 4;}
+                        else if ( LA53_0 == 98 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 3) ) {s = 4;}
 
-                        else if ( LA53_0 == 100 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 4) ) {s = 5;}
+                        else if ( LA53_0 == 99 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 4) ) {s = 5;}
 
-                        else if ( LA53_0 == 101 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 5) ) {s = 6;}
+                        else if ( LA53_0 == 100 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 5) ) {s = 6;}
 
-                        else if ( LA53_0 == 102 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 6) ) {s = 7;}
+                        else if ( LA53_0 == 101 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 6) ) {s = 7;}
 
-                        else if ( LA53_0 == 103 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 7) ) {s = 8;}
+                        else if ( LA53_0 == 102 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 7) ) {s = 8;}
 
-                        else if ( LA53_0 == 104 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 8) ) {s = 9;}
+                        else if ( LA53_0 == 103 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 8) ) {s = 9;}
 
-                        else if ( (LA53_0==45) ) {s = 10;}
+                        else if ( (LA53_0==44) ) {s = 10;}
 
                          
                         input.seek(index53_0);
@@ -49778,23 +49777,23 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                         int index54_0 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( LA54_0 == 96 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 0) ) {s = 1;}
+                        if ( LA54_0 == 95 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 0) ) {s = 1;}
 
-                        else if ( LA54_0 == 97 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 1) ) {s = 2;}
+                        else if ( LA54_0 == 96 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 1) ) {s = 2;}
 
-                        else if ( LA54_0 == 98 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 2) ) {s = 3;}
+                        else if ( LA54_0 == 97 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 2) ) {s = 3;}
 
-                        else if ( LA54_0 == 99 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 3) ) {s = 4;}
+                        else if ( LA54_0 == 98 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 3) ) {s = 4;}
 
-                        else if ( LA54_0 == 100 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 4) ) {s = 5;}
+                        else if ( LA54_0 == 99 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 4) ) {s = 5;}
 
-                        else if ( LA54_0 == 101 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 5) ) {s = 6;}
+                        else if ( LA54_0 == 100 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 5) ) {s = 6;}
 
-                        else if ( LA54_0 == 102 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 6) ) {s = 7;}
+                        else if ( LA54_0 == 101 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 6) ) {s = 7;}
 
-                        else if ( LA54_0 == 103 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 7) ) {s = 8;}
+                        else if ( LA54_0 == 102 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 7) ) {s = 8;}
 
-                        else if ( LA54_0 == 104 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 8) ) {s = 9;}
+                        else if ( LA54_0 == 103 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 8) ) {s = 9;}
 
                          
                         input.seek(index54_0);
@@ -49835,25 +49834,25 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                         int index55_0 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( LA55_0 == 96 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 0) ) {s = 1;}
+                        if ( LA55_0 == 95 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 0) ) {s = 1;}
 
-                        else if ( LA55_0 == 97 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 1) ) {s = 2;}
+                        else if ( LA55_0 == 96 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 1) ) {s = 2;}
 
-                        else if ( LA55_0 == 98 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 2) ) {s = 3;}
+                        else if ( LA55_0 == 97 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 2) ) {s = 3;}
 
-                        else if ( LA55_0 == 99 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 3) ) {s = 4;}
+                        else if ( LA55_0 == 98 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 3) ) {s = 4;}
 
-                        else if ( LA55_0 == 100 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 4) ) {s = 5;}
+                        else if ( LA55_0 == 99 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 4) ) {s = 5;}
 
-                        else if ( LA55_0 == 101 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 5) ) {s = 6;}
+                        else if ( LA55_0 == 100 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 5) ) {s = 6;}
 
-                        else if ( LA55_0 == 102 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 6) ) {s = 7;}
+                        else if ( LA55_0 == 101 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 6) ) {s = 7;}
 
-                        else if ( LA55_0 == 103 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 7) ) {s = 8;}
+                        else if ( LA55_0 == 102 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 7) ) {s = 8;}
 
-                        else if ( LA55_0 == 104 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 8) ) {s = 9;}
+                        else if ( LA55_0 == 103 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 8) ) {s = 9;}
 
-                        else if ( (LA55_0==45) ) {s = 10;}
+                        else if ( (LA55_0==44) ) {s = 10;}
 
                          
                         input.seek(index55_0);
@@ -49894,25 +49893,25 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                         int index56_0 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( LA56_0 == 96 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 0) ) {s = 1;}
+                        if ( LA56_0 == 95 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 0) ) {s = 1;}
 
-                        else if ( LA56_0 == 97 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 1) ) {s = 2;}
+                        else if ( LA56_0 == 96 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 1) ) {s = 2;}
 
-                        else if ( LA56_0 == 98 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 2) ) {s = 3;}
+                        else if ( LA56_0 == 97 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 2) ) {s = 3;}
 
-                        else if ( LA56_0 == 99 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 3) ) {s = 4;}
+                        else if ( LA56_0 == 98 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 3) ) {s = 4;}
 
-                        else if ( LA56_0 == 100 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 4) ) {s = 5;}
+                        else if ( LA56_0 == 99 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 4) ) {s = 5;}
 
-                        else if ( LA56_0 == 101 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 5) ) {s = 6;}
+                        else if ( LA56_0 == 100 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 5) ) {s = 6;}
 
-                        else if ( LA56_0 == 102 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 6) ) {s = 7;}
+                        else if ( LA56_0 == 101 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 6) ) {s = 7;}
 
-                        else if ( LA56_0 == 103 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 7) ) {s = 8;}
+                        else if ( LA56_0 == 102 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 7) ) {s = 8;}
 
-                        else if ( LA56_0 == 104 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 8) ) {s = 9;}
+                        else if ( LA56_0 == 103 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 8) ) {s = 9;}
 
-                        else if ( (LA56_0==45) ) {s = 10;}
+                        else if ( (LA56_0==44) ) {s = 10;}
 
                          
                         input.seek(index56_0);
@@ -49953,25 +49952,25 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                         int index57_0 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( LA57_0 == 96 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 0) ) {s = 1;}
+                        if ( LA57_0 == 95 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 0) ) {s = 1;}
 
-                        else if ( LA57_0 == 97 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 1) ) {s = 2;}
+                        else if ( LA57_0 == 96 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 1) ) {s = 2;}
 
-                        else if ( LA57_0 == 98 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 2) ) {s = 3;}
+                        else if ( LA57_0 == 97 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 2) ) {s = 3;}
 
-                        else if ( LA57_0 == 99 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 3) ) {s = 4;}
+                        else if ( LA57_0 == 98 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 3) ) {s = 4;}
 
-                        else if ( LA57_0 == 100 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 4) ) {s = 5;}
+                        else if ( LA57_0 == 99 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 4) ) {s = 5;}
 
-                        else if ( LA57_0 == 101 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 5) ) {s = 6;}
+                        else if ( LA57_0 == 100 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 5) ) {s = 6;}
 
-                        else if ( LA57_0 == 102 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 6) ) {s = 7;}
+                        else if ( LA57_0 == 101 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 6) ) {s = 7;}
 
-                        else if ( LA57_0 == 103 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 7) ) {s = 8;}
+                        else if ( LA57_0 == 102 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 7) ) {s = 8;}
 
-                        else if ( LA57_0 == 104 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 8) ) {s = 9;}
+                        else if ( LA57_0 == 103 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 8) ) {s = 9;}
 
-                        else if ( (LA57_0==45) ) {s = 10;}
+                        else if ( (LA57_0==44) ) {s = 10;}
 
                          
                         input.seek(index57_0);
@@ -50012,25 +50011,25 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                         int index58_0 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( LA58_0 == 96 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 0) ) {s = 1;}
+                        if ( LA58_0 == 95 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 0) ) {s = 1;}
 
-                        else if ( LA58_0 == 97 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 1) ) {s = 2;}
+                        else if ( LA58_0 == 96 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 1) ) {s = 2;}
 
-                        else if ( LA58_0 == 98 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 2) ) {s = 3;}
+                        else if ( LA58_0 == 97 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 2) ) {s = 3;}
 
-                        else if ( LA58_0 == 99 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 3) ) {s = 4;}
+                        else if ( LA58_0 == 98 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 3) ) {s = 4;}
 
-                        else if ( LA58_0 == 100 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 4) ) {s = 5;}
+                        else if ( LA58_0 == 99 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 4) ) {s = 5;}
 
-                        else if ( LA58_0 == 101 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 5) ) {s = 6;}
+                        else if ( LA58_0 == 100 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 5) ) {s = 6;}
 
-                        else if ( LA58_0 == 102 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 6) ) {s = 7;}
+                        else if ( LA58_0 == 101 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 6) ) {s = 7;}
 
-                        else if ( LA58_0 == 103 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 7) ) {s = 8;}
+                        else if ( LA58_0 == 102 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 7) ) {s = 8;}
 
-                        else if ( LA58_0 == 104 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 8) ) {s = 9;}
+                        else if ( LA58_0 == 103 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 8) ) {s = 9;}
 
-                        else if ( (LA58_0==45) ) {s = 10;}
+                        else if ( (LA58_0==44) ) {s = 10;}
 
                          
                         input.seek(index58_0);
@@ -50071,25 +50070,25 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                         int index59_0 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( LA59_0 == 96 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 0) ) {s = 1;}
+                        if ( LA59_0 == 95 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 0) ) {s = 1;}
 
-                        else if ( LA59_0 == 97 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 1) ) {s = 2;}
+                        else if ( LA59_0 == 96 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 1) ) {s = 2;}
 
-                        else if ( LA59_0 == 98 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 2) ) {s = 3;}
+                        else if ( LA59_0 == 97 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 2) ) {s = 3;}
 
-                        else if ( LA59_0 == 99 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 3) ) {s = 4;}
+                        else if ( LA59_0 == 98 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 3) ) {s = 4;}
 
-                        else if ( LA59_0 == 100 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 4) ) {s = 5;}
+                        else if ( LA59_0 == 99 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 4) ) {s = 5;}
 
-                        else if ( LA59_0 == 101 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 5) ) {s = 6;}
+                        else if ( LA59_0 == 100 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 5) ) {s = 6;}
 
-                        else if ( LA59_0 == 102 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 6) ) {s = 7;}
+                        else if ( LA59_0 == 101 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 6) ) {s = 7;}
 
-                        else if ( LA59_0 == 103 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 7) ) {s = 8;}
+                        else if ( LA59_0 == 102 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 7) ) {s = 8;}
 
-                        else if ( LA59_0 == 104 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 8) ) {s = 9;}
+                        else if ( LA59_0 == 103 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 8) ) {s = 9;}
 
-                        else if ( (LA59_0==45) ) {s = 10;}
+                        else if ( (LA59_0==44) ) {s = 10;}
 
                          
                         input.seek(index59_0);
@@ -50130,25 +50129,25 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                         int index60_0 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( LA60_0 == 96 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 0) ) {s = 1;}
+                        if ( LA60_0 == 95 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 0) ) {s = 1;}
 
-                        else if ( LA60_0 == 97 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 1) ) {s = 2;}
+                        else if ( LA60_0 == 96 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 1) ) {s = 2;}
 
-                        else if ( LA60_0 == 98 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 2) ) {s = 3;}
+                        else if ( LA60_0 == 97 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 2) ) {s = 3;}
 
-                        else if ( LA60_0 == 99 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 3) ) {s = 4;}
+                        else if ( LA60_0 == 98 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 3) ) {s = 4;}
 
-                        else if ( LA60_0 == 100 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 4) ) {s = 5;}
+                        else if ( LA60_0 == 99 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 4) ) {s = 5;}
 
-                        else if ( LA60_0 == 101 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 5) ) {s = 6;}
+                        else if ( LA60_0 == 100 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 5) ) {s = 6;}
 
-                        else if ( LA60_0 == 102 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 6) ) {s = 7;}
+                        else if ( LA60_0 == 101 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 6) ) {s = 7;}
 
-                        else if ( LA60_0 == 103 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 7) ) {s = 8;}
+                        else if ( LA60_0 == 102 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 7) ) {s = 8;}
 
-                        else if ( LA60_0 == 104 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 8) ) {s = 9;}
+                        else if ( LA60_0 == 103 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 8) ) {s = 9;}
 
-                        else if ( (LA60_0==45) ) {s = 10;}
+                        else if ( (LA60_0==44) ) {s = 10;}
 
                          
                         input.seek(index60_0);
@@ -50189,25 +50188,25 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                         int index61_0 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( LA61_0 == 96 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 0) ) {s = 1;}
+                        if ( LA61_0 == 95 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 0) ) {s = 1;}
 
-                        else if ( LA61_0 == 97 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 1) ) {s = 2;}
+                        else if ( LA61_0 == 96 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 1) ) {s = 2;}
 
-                        else if ( LA61_0 == 98 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 2) ) {s = 3;}
+                        else if ( LA61_0 == 97 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 2) ) {s = 3;}
 
-                        else if ( LA61_0 == 99 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 3) ) {s = 4;}
+                        else if ( LA61_0 == 98 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 3) ) {s = 4;}
 
-                        else if ( LA61_0 == 100 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 4) ) {s = 5;}
+                        else if ( LA61_0 == 99 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 4) ) {s = 5;}
 
-                        else if ( LA61_0 == 101 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 5) ) {s = 6;}
+                        else if ( LA61_0 == 100 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 5) ) {s = 6;}
 
-                        else if ( LA61_0 == 102 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 6) ) {s = 7;}
+                        else if ( LA61_0 == 101 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 6) ) {s = 7;}
 
-                        else if ( LA61_0 == 103 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 7) ) {s = 8;}
+                        else if ( LA61_0 == 102 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 7) ) {s = 8;}
 
-                        else if ( LA61_0 == 104 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 8) ) {s = 9;}
+                        else if ( LA61_0 == 103 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 8) ) {s = 9;}
 
-                        else if ( (LA61_0==45) ) {s = 10;}
+                        else if ( (LA61_0==44) ) {s = 10;}
 
                          
                         input.seek(index61_0);
@@ -50248,25 +50247,25 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                         int index62_0 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( LA62_0 == 96 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 0) ) {s = 1;}
+                        if ( LA62_0 == 95 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 0) ) {s = 1;}
 
-                        else if ( LA62_0 == 97 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 1) ) {s = 2;}
+                        else if ( LA62_0 == 96 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 1) ) {s = 2;}
 
-                        else if ( LA62_0 == 98 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 2) ) {s = 3;}
+                        else if ( LA62_0 == 97 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 2) ) {s = 3;}
 
-                        else if ( LA62_0 == 99 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 3) ) {s = 4;}
+                        else if ( LA62_0 == 98 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 3) ) {s = 4;}
 
-                        else if ( LA62_0 == 100 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 4) ) {s = 5;}
+                        else if ( LA62_0 == 99 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 4) ) {s = 5;}
 
-                        else if ( LA62_0 == 101 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 5) ) {s = 6;}
+                        else if ( LA62_0 == 100 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 5) ) {s = 6;}
 
-                        else if ( LA62_0 == 102 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 6) ) {s = 7;}
+                        else if ( LA62_0 == 101 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 6) ) {s = 7;}
 
-                        else if ( LA62_0 == 103 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 7) ) {s = 8;}
+                        else if ( LA62_0 == 102 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 7) ) {s = 8;}
 
-                        else if ( LA62_0 == 104 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 8) ) {s = 9;}
+                        else if ( LA62_0 == 103 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_3(), 8) ) {s = 9;}
 
-                        else if ( (LA62_0==45) ) {s = 10;}
+                        else if ( (LA62_0==44) ) {s = 10;}
 
                          
                         input.seek(index62_0);
@@ -50283,64 +50282,64 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
 
     public static final BitSet FOLLOW_1 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x000000000BE00000L});
-    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x000000000BE00002L});
+    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000005F00000L});
+    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000005F00002L});
     public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000004000000L});
+    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000002000000L});
     public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000008600000L});
-    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000008000002L});
-    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000020000000L});
-    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x41CF0E6448000070L,0x0000000007D0A162L});
-    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x41CF0E6408000072L,0x0000000007D0A162L});
-    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000080000000L});
-    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x51CF0E6648000070L,0x0000000007D0A162L});
-    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x51CF0E6608000072L,0x0000000007D0A162L});
-    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000000100000000L});
-    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0030002048000070L,0x00000000D8000000L});
-    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0030002008000072L,0x00000000D8000000L});
-    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000000800000000L});
-    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000001000000000L});
+    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000004300000L});
+    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000004000002L});
+    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x20E7873224000070L,0x0000000003E850B1L});
+    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x20E7873204000072L,0x0000000003E850B1L});
+    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000040000000L});
+    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x28E7873324000070L,0x0000000003E850B1L});
+    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x28E7873304000072L,0x0000000003E850B1L});
+    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000000080000000L});
+    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0018001024000070L,0x000000006C000000L});
+    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0018001004000072L,0x000000006C000000L});
+    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000000800000000L});
     public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000000000000070L});
-    public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x0000000040000000L});
-    public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0000008000000000L});
-    public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x0000010000000000L});
+    public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x0000000020000000L});
+    public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0000004000000000L});
+    public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x0000008000000000L});
     public static final BitSet FOLLOW_27 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x0000000000000000L,0x000001FF00000000L});
-    public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x0000100000000000L});
-    public static final BitSet FOLLOW_30 = new BitSet(new long[]{0x0000A00000000000L});
-    public static final BitSet FOLLOW_31 = new BitSet(new long[]{0x0000400000000000L});
-    public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x0000200000000000L});
-    public static final BitSet FOLLOW_33 = new BitSet(new long[]{0x0000000000000020L,0x0000020000000000L});
-    public static final BitSet FOLLOW_34 = new BitSet(new long[]{0x0010000000000000L});
-    public static final BitSet FOLLOW_35 = new BitSet(new long[]{0x0020000000000000L});
-    public static final BitSet FOLLOW_36 = new BitSet(new long[]{0x0400000000000000L});
-    public static final BitSet FOLLOW_37 = new BitSet(new long[]{0x0800000000000000L});
-    public static final BitSet FOLLOW_38 = new BitSet(new long[]{0x2200000040000000L});
-    public static final BitSet FOLLOW_39 = new BitSet(new long[]{0x2200000000000002L});
-    public static final BitSet FOLLOW_40 = new BitSet(new long[]{0x8000000000000000L});
-    public static final BitSet FOLLOW_41 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_42 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000004L});
-    public static final BitSet FOLLOW_43 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000008L});
-    public static final BitSet FOLLOW_44 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000010L});
-    public static final BitSet FOLLOW_45 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000080L});
-    public static final BitSet FOLLOW_46 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001C00L});
-    public static final BitSet FOLLOW_47 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_48 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_49 = new BitSet(new long[]{0x0000000000000000L,0x0000000000005C00L});
-    public static final BitSet FOLLOW_50 = new BitSet(new long[]{0x0000000000000000L,0x00000000000F0000L});
-    public static final BitSet FOLLOW_51 = new BitSet(new long[]{0x0000000000000000L,0x0000000000205C00L});
+    public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x0000000000000000L,0x000000FF80000000L});
+    public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x0000080000000000L});
+    public static final BitSet FOLLOW_30 = new BitSet(new long[]{0x0000500000000000L});
+    public static final BitSet FOLLOW_31 = new BitSet(new long[]{0x0000200000000000L});
+    public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x0000100000000000L});
+    public static final BitSet FOLLOW_33 = new BitSet(new long[]{0x0000000000000020L,0x0000010000000000L});
+    public static final BitSet FOLLOW_34 = new BitSet(new long[]{0x0008000000000000L});
+    public static final BitSet FOLLOW_35 = new BitSet(new long[]{0x0010000000000000L});
+    public static final BitSet FOLLOW_36 = new BitSet(new long[]{0x0200000000000000L});
+    public static final BitSet FOLLOW_37 = new BitSet(new long[]{0x0400000000000000L});
+    public static final BitSet FOLLOW_38 = new BitSet(new long[]{0x1100000020000000L});
+    public static final BitSet FOLLOW_39 = new BitSet(new long[]{0x1100000000000002L});
+    public static final BitSet FOLLOW_40 = new BitSet(new long[]{0x4000000000000000L});
+    public static final BitSet FOLLOW_41 = new BitSet(new long[]{0x8000000000000000L});
+    public static final BitSet FOLLOW_42 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_43 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000004L});
+    public static final BitSet FOLLOW_44 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000008L});
+    public static final BitSet FOLLOW_45 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000040L});
+    public static final BitSet FOLLOW_46 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000E00L});
+    public static final BitSet FOLLOW_47 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_48 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_49 = new BitSet(new long[]{0x0000000000000000L,0x0000000000002E00L});
+    public static final BitSet FOLLOW_50 = new BitSet(new long[]{0x0000000000000000L,0x0000000000078000L});
+    public static final BitSet FOLLOW_51 = new BitSet(new long[]{0x0000000000000000L,0x0000000000102E00L});
     public static final BitSet FOLLOW_52 = new BitSet(new long[]{0x0000000000001F80L});
-    public static final BitSet FOLLOW_53 = new BitSet(new long[]{0x0000000040000070L});
+    public static final BitSet FOLLOW_53 = new BitSet(new long[]{0x0000000020000070L});
     public static final BitSet FOLLOW_54 = new BitSet(new long[]{0x0000000000000072L});
-    public static final BitSet FOLLOW_55 = new BitSet(new long[]{0x0000000000000000L,0x0000000020000000L});
-    public static final BitSet FOLLOW_56 = new BitSet(new long[]{0x0001000000000000L});
-    public static final BitSet FOLLOW_57 = new BitSet(new long[]{0x0000000000000002L,0x000001FF00000000L});
-    public static final BitSet FOLLOW_58 = new BitSet(new long[]{0x0000000000000002L,0x0000000000001C00L});
-    public static final BitSet FOLLOW_59 = new BitSet(new long[]{0x0000000000000002L,0x0000000000005C00L});
-    public static final BitSet FOLLOW_60 = new BitSet(new long[]{0x0000000000000002L,0x00000000000F0000L});
-    public static final BitSet FOLLOW_61 = new BitSet(new long[]{0x0000000000000002L,0x0000000000205C00L});
+    public static final BitSet FOLLOW_55 = new BitSet(new long[]{0x0000000000000000L,0x0000000010000000L});
+    public static final BitSet FOLLOW_56 = new BitSet(new long[]{0x0000800000000000L});
+    public static final BitSet FOLLOW_57 = new BitSet(new long[]{0x0000000000000002L,0x000000FF80000000L});
+    public static final BitSet FOLLOW_58 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000E00L});
+    public static final BitSet FOLLOW_59 = new BitSet(new long[]{0x0000000000000002L,0x0000000000002E00L});
+    public static final BitSet FOLLOW_60 = new BitSet(new long[]{0x0000000000000002L,0x0000000000078000L});
+    public static final BitSet FOLLOW_61 = new BitSet(new long[]{0x0000000000000002L,0x0000000000102E00L});
 
 }

@@ -42,15 +42,33 @@ class OMLTerminologyGraph1Test{
 		val result = parseHelper.parse(
 '''
 annotationProperty rdfs:label=<http://www.w3.org/2000/01/rdf-schema#label>
+annotationProperty 1.1:title=<http://purl.org/dc/elements/1.1/title>
 
 open terminology <http://imce.jpl.nasa.gov/foundation/mission/mission>
 {
 
 	@rdfs:label = "Performing Element"
 	@rdfs:label = "A performing element"
+	@1.1:title = "Performing Element"
 	concept PerformingElement
 
 }
+
+open terminology <http://purl.org/dc/elements/1.1/> {
+	
+	concept Foo
+}
+
+open terminology <http://example.org> {
+	
+	extends <http://purl.org/dc/elements/1.1/>
+
+	concept Bar
+	
+	Bar extendsConcept 1.1:Foo
+	
+}
+
 ''')
 		assertNotNull(result)
 		val errors = result.eResource.errors
