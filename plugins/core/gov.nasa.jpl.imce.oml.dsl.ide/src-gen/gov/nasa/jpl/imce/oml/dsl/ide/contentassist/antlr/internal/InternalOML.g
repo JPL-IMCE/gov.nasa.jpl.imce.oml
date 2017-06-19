@@ -2662,21 +2662,21 @@ rule__Value__Alternatives
 	}
 :
 	(
-		{ before(grammarAccess.getValueAccess().getDECIMALTerminalRuleCall_0()); }
-		RULE_DECIMAL
-		{ after(grammarAccess.getValueAccess().getDECIMALTerminalRuleCall_0()); }
-	)
-	|
-	(
-		{ before(grammarAccess.getValueAccess().getSTRINGTerminalRuleCall_1()); }
-		RULE_STRING
-		{ after(grammarAccess.getValueAccess().getSTRINGTerminalRuleCall_1()); }
-	)
-	|
-	(
-		{ before(grammarAccess.getValueAccess().getINTTerminalRuleCall_2()); }
+		{ before(grammarAccess.getValueAccess().getINTTerminalRuleCall_0()); }
 		RULE_INT
-		{ after(grammarAccess.getValueAccess().getINTTerminalRuleCall_2()); }
+		{ after(grammarAccess.getValueAccess().getINTTerminalRuleCall_0()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getValueAccess().getDECIMALTerminalRuleCall_1()); }
+		RULE_DECIMAL
+		{ after(grammarAccess.getValueAccess().getDECIMALTerminalRuleCall_1()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getValueAccess().getSTRINGTerminalRuleCall_2()); }
+		RULE_STRING
+		{ after(grammarAccess.getValueAccess().getSTRINGTerminalRuleCall_2()); }
 	)
 	|
 	(
@@ -16281,9 +16281,9 @@ RULE_STRING : ('"' ('\\' .|~(('\\'|'"')))* '"'?|'\'' ('\\' .|~(('\\'|'\'')))* '\
 
 RULE_IRI : '<' ~('>')* '>';
 
-RULE_ABBREV_IRI : ('a'..'z'|'A'..'Z'|'$'|'_') ('a'..'z'|'A'..'Z'|'$'|'_'|'0'..'9')+ ':' ('a'..'z'|'A'..'Z'|'$'|'_') ('a'..'z'|'A'..'Z'|'$'|'_'|'0'..'9')*;
+RULE_ABBREV_IRI : ('a'..'z'|'A'..'Z'|'_'|'.'|'0'..'9')+ ':' ('a'..'z'|'A'..'Z'|'_'|'.'|'0'..'9')+;
 
-RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'$'|'_') ('a'..'z'|'A'..'Z'|'$'|'_'|'0'..'9')*;
+RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'.'|'0'..'9')*;
 
 RULE_UUID : RULE_HEX_8DIGITS '-' RULE_HEX_4DIGITS '-' RULE_HEX_4DIGITS '-' RULE_HEX_4DIGITS '-' RULE_HEX_12DIGITS;
 
@@ -16297,9 +16297,9 @@ fragment RULE_HEX_DIGIT : ('0'..'9'|'a'..'f'|'A'..'F');
 
 RULE_HEX : ('0x'|'0X') ('0'..'9'|'a'..'f'|'A'..'F'|'_')+ ('#' (('b'|'B') ('i'|'I')|('l'|'L')))?;
 
-RULE_INT : '0'..'9' ('0'..'9'|'_')*;
+RULE_INT : ('0'..'9')+;
 
-RULE_DECIMAL : RULE_INT (('e'|'E') ('+'|'-')? RULE_INT)? (('b'|'B') ('i'|'I'|'d'|'D')|('l'|'L'|'d'|'D'|'f'|'F'))?;
+RULE_DECIMAL : RULE_INT (('e'|'E') ('+'|'-')? RULE_INT)? (('b'|'B') ('i'|'I'|'d'|'D')|('l'|'L'|'d'|'D'|'f'|'F'));
 
 RULE_FLOAT : '-'? ('0'..'9')+ '.' ('0'..'9')+ (('e'|'E') ('+'|'-')? ('0'..'9')+)?;
 
@@ -16308,5 +16308,3 @@ RULE_ML_COMMENT : '/*' ( options {greedy=false;} : . )*'*/';
 RULE_SL_COMMENT : '//' ~(('\n'|'\r'))* ('\r'? '\n')?;
 
 RULE_WS : (' '|'\t'|'\r'|'\n')+;
-
-RULE_ANY_OTHER : .;
