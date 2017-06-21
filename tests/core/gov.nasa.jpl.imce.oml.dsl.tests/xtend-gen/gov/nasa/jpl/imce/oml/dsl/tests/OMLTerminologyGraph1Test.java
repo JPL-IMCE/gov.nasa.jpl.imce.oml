@@ -53,6 +53,8 @@ public class OMLTerminologyGraph1Test {
       _builder.newLine();
       _builder.append("annotationProperty 1.1:title=<http://purl.org/dc/elements/1.1/title>");
       _builder.newLine();
+      _builder.append("annotationProperty owl2-mof2:hasBinaryDependencySource=<http://imce.jpl.nasa.gov/foundation/owl2-mof2/owl2-mof2#hasBinaryDependencySource>");
+      _builder.newLine();
       _builder.newLine();
       _builder.append("open terminology <http://imce.jpl.nasa.gov/foundation/mission/mission>");
       _builder.newLine();
@@ -71,6 +73,11 @@ public class OMLTerminologyGraph1Test {
       _builder.append("\t");
       _builder.append("concept PerformingElement");
       _builder.newLine();
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("concept Foo-Bar");
+      _builder.newLine();
+      _builder.append("\t");
       _builder.newLine();
       _builder.append("}");
       _builder.newLine();
