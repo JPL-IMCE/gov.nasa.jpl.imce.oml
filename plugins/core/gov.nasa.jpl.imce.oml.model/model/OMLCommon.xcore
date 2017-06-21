@@ -118,6 +118,8 @@ annotation "http://imce.jpl.nasa.gov/oml/NamespaceUUID" as NamespaceUUID
 
 annotation "http://imce.jpl.nasa.gov/oml/DerivedUUID" as DerivedUUID
 
+annotation "http://imce.jpl.nasa.gov/oml/IRIReference" as IRIReference
+
 /*
  * An IRI based on RFC 3987
  */
@@ -210,6 +212,7 @@ abstract class ModuleEdge extends Element {
 	@ImplicitExtent
 	op Module[?] sourceModule()
 	
+	@IRIReference
 	@NotSchema
 	@ImplicitExtent
 	op Module[1] targetModule()

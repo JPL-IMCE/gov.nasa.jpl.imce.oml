@@ -43,6 +43,7 @@ import gov.nasa.jpl.imce.oml.model.common.FunctionalInterface
 import gov.nasa.jpl.imce.oml.model.common.Glossary
 import gov.nasa.jpl.imce.oml.model.common.ImplicitExtent
 import gov.nasa.jpl.imce.oml.model.common.IRI
+import gov.nasa.jpl.imce.oml.model.common.IRIReference
 import gov.nasa.jpl.imce.oml.model.common.LangRange
 import gov.nasa.jpl.imce.oml.model.common.LexicalNumber
 import gov.nasa.jpl.imce.oml.model.common.LexicalTime
@@ -167,11 +168,13 @@ abstract class TerminologyAxiom extends ModuleEdge {
 	/*
 	 * The target TerminologyBox
 	 */
-	@NotSchema
+	@IRIReference
+  	@NotSchema
 	@ImplicitExtent
 	op TerminologyBox[1] target()
 	
-	@NotSchema
+	@IRIReference
+  	@NotSchema
 	@ImplicitExtent
 	op Module[1] targetModule() { target() }
 }
@@ -201,6 +204,7 @@ class TerminologyExtensionAxiom extends TerminologyBoxAxiom {
 	@NotSchema
 	op TerminologyBox[?] extendingTerminology() { tbox }
 	
+	@IRIReference
   	refers TerminologyBox[1] extendedTerminology
   	
 	/*
@@ -214,7 +218,8 @@ class TerminologyExtensionAxiom extends TerminologyBoxAxiom {
 	/*
 	 * The extendedTerminology is the target
 	 */
-	@ImplicitExtent
+	@IRIReference
+  	@ImplicitExtent
 	@NotSchema
 	@Override
 	op TerminologyBox[1] target() { extendedTerminology }
