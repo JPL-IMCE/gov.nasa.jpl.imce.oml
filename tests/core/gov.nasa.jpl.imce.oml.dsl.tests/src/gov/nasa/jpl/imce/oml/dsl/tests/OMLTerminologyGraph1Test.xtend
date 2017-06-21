@@ -43,6 +43,7 @@ class OMLTerminologyGraph1Test{
 '''
 annotationProperty rdfs:label=<http://www.w3.org/2000/01/rdf-schema#label>
 annotationProperty 1.1:title=<http://purl.org/dc/elements/1.1/title>
+annotationProperty owl2-mof2:hasBinaryDependencySource=<http://imce.jpl.nasa.gov/foundation/owl2-mof2/owl2-mof2#hasBinaryDependencySource>
 
 open terminology <http://imce.jpl.nasa.gov/foundation/mission/mission>
 {
@@ -52,6 +53,8 @@ open terminology <http://imce.jpl.nasa.gov/foundation/mission/mission>
 	@1.1:title = "Performing Element"
 	concept PerformingElement
 
+	concept Foo-Bar
+	
 }
 
 open terminology <http://purl.org/dc/elements/1.1/> {
