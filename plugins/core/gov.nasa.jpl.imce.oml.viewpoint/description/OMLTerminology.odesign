@@ -1,32 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_3="http://www.eclipse.org/sirius/tree/description/1.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="viewpoint" version="11.1.1.201610211630">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="viewpoint" version="11.1.1.201610211630">
   <ownedViewpoints name="OML Modeling" modelFileExtension="oml">
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Terminolgy Diagram" domainClass="graphs.TerminologyGraph">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Terminolgy Diagram" domainClass="graphs.TerminologyGraph" enablePopupBars="true">
       <metamodel href="http://imce.jpl.nasa.gov/oml/common#/"/>
       <metamodel href="http://imce.jpl.nasa.gov/oml/terminologies#/"/>
       <metamodel href="http://imce.jpl.nasa.gov/oml/bundles#/"/>
       <metamodel href="http://imce.jpl.nasa.gov/oml/graphs#/"/>
       <defaultLayer name="Default" reusedMappings="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@defaultLayer/@edgeMappings[name='Reified%20%20Relationship%20Specialization%20Axiom']">
-        <edgeMappings name="Entity Existential Restriction Axiom" semanticCandidatesExpression="feature:boxStatements" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@additionalLayers[name='Aspects']/@containerMappings[name='Aspect'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@additionalLayers[name='Concepts']/@containerMappings[name='Concept']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@additionalLayers[name='Aspects']/@containerMappings[name='Aspect'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@additionalLayers[name='Concepts']/@containerMappings[name='Concept']" targetFinderExpression="feature:restrictedDomain" sourceFinderExpression="feature:restrictedRange" domainClass="terminologies.EntityExistentialRestrictionAxiom" useDomainElement="true">
-          <style targetArrow="InputClosedArrow" sizeComputationExpression="2">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
-            <centerLabelStyleDescription showIcon="false" labelExpression="&lt;&lt;existential>>">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
-            </centerLabelStyleDescription>
+        <nodeMappings name="Scalar" semanticCandidatesExpression="aql:self.boxStatements" domainClass="terminologies.Scalar">
+          <style xsi:type="style:SquareDescription" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
-        </edgeMappings>
-        <edgeMappings name="Entity Universal Restriction Axiom" semanticCandidatesExpression="feature:boxStatements" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@additionalLayers[name='Aspects']/@containerMappings[name='Aspect'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@additionalLayers[name='Concepts']/@containerMappings[name='Concept']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@additionalLayers[name='Aspects']/@containerMappings[name='Aspect'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@additionalLayers[name='Concepts']/@containerMappings[name='Concept']" targetFinderExpression="feature:restrictedDomain" sourceFinderExpression="feature:restrictedRange" domainClass="terminologies.EntityUniversalRestrictionAxiom" useDomainElement="true">
-          <style targetArrow="InputClosedArrow" sizeComputationExpression="2">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <centerLabelStyleDescription showIcon="false" labelExpression="&lt;&lt;universal>>">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
-            </centerLabelStyleDescription>
-          </style>
-        </edgeMappings>
-        <edgeMappings name="Reified Relationship" semanticCandidatesExpression="feature:boxStatements" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@additionalLayers[name='Aspects']/@containerMappings[name='Aspect'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@additionalLayers[name='Concepts']/@containerMappings[name='Concept']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@additionalLayers[name='Aspects']/@containerMappings[name='Aspect'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@additionalLayers[name='Concepts']/@containerMappings[name='Concept']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="terminologies.ReifiedRelationship" useDomainElement="true">
+        </nodeMappings>
+        <edgeMappings name="Reified Relationship" semanticCandidatesExpression="feature:boxStatements" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@defaultLayer/@containerMappings[name='Aspect'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@defaultLayer/@containerMappings[name='Concept']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@defaultLayer/@containerMappings[name='Aspect'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@defaultLayer/@containerMappings[name='Concept']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="terminologies.ReifiedRelationship" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <centerLabelStyleDescription showIcon="false" labelExpression="feature:name">
+            <centerLabelStyleDescription labelExpression="feature:name">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
@@ -34,671 +25,127 @@
         <edgeMappings name="Reified Relationship Self" semanticCandidatesExpression="feature:boxStatements" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@defaultLayer/@edgeMappings[name='Reified%20Relationship']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@defaultLayer/@edgeMappings[name='Reified%20Relationship']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="terminologies.ReifiedRelationship" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
-            <centerLabelStyleDescription showIcon="false" labelExpression="feature:name">
+            <centerLabelStyleDescription labelExpression="feature:name">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="Unreified Relationship" semanticCandidatesExpression="feature:boxStatements" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@additionalLayers[name='Aspects']/@containerMappings[name='Aspect'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@additionalLayers[name='Concepts']/@containerMappings[name='Concept']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@additionalLayers[name='Aspects']/@containerMappings[name='Aspect'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@additionalLayers[name='Concepts']/@containerMappings[name='Concept']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="terminologies.UnreifiedRelationship" useDomainElement="true">
+        <edgeMappings name="Unreified Relationship" semanticCandidatesExpression="feature:boxStatements" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@defaultLayer/@containerMappings[name='Aspect'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@defaultLayer/@containerMappings[name='Concept']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@defaultLayer/@containerMappings[name='Aspect'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@defaultLayer/@containerMappings[name='Concept']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="terminologies.UnreifiedRelationship" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
-            <centerLabelStyleDescription showIcon="false" labelExpression="feature:name">
+            <centerLabelStyleDescription labelExpression="feature:name">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Entity Existential Restriction Axiom" semanticCandidatesExpression="feature:boxStatements" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@defaultLayer/@containerMappings[name='Aspect'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@defaultLayer/@containerMappings[name='Concept'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@defaultLayer/@edgeMappings[name='Reified%20Relationship']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@defaultLayer/@containerMappings[name='Aspect'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@defaultLayer/@containerMappings[name='Concept'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@defaultLayer/@edgeMappings[name='Reified%20Relationship']" targetFinderExpression="feature:restrictedDomain" sourceFinderExpression="feature:restrictedRange" domainClass="terminologies.EntityExistentialRestrictionAxiom" useDomainElement="true">
+          <style targetArrow="InputClosedArrow" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Entity Universal Restriction Axiom" semanticCandidatesExpression="feature:boxStatements" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@defaultLayer/@containerMappings[name='Aspect'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@defaultLayer/@containerMappings[name='Concept'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@defaultLayer/@edgeMappings[name='Reified%20Relationship']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@defaultLayer/@containerMappings[name='Aspect'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@defaultLayer/@containerMappings[name='Concept'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@defaultLayer/@edgeMappings[name='Reified%20Relationship']" targetFinderExpression="feature:restrictedDomain" sourceFinderExpression="feature:restrictedRange" domainClass="terminologies.EntityUniversalRestrictionAxiom" useDomainElement="true">
+          <style targetArrow="InputClosedArrow" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Aspect Specialization Axiom" semanticCandidatesExpression="feature:boxStatements" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@defaultLayer/@containerMappings[name='Aspect'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@defaultLayer/@containerMappings[name='Concept'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@defaultLayer/@edgeMappings[name='Reified%20Relationship']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@defaultLayer/@containerMappings[name='Aspect']" targetFinderExpression="feature:superAspect" sourceFinderExpression="feature:subEntity" domainClass="terminologies.AspectSpecializationAxiom" useDomainElement="true">
+          <style targetArrow="InputClosedArrow" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Concept Specialization Axiom" semanticCandidatesExpression="feature:boxStatements" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@defaultLayer/@containerMappings[name='Concept']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@defaultLayer/@containerMappings[name='Concept']" targetFinderExpression="feature:superConcept" sourceFinderExpression="feature:subConcept" domainClass="terminologies.ConceptSpecializationAxiom" useDomainElement="true">
+          <style targetArrow="InputClosedArrow" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
         <edgeMappings name="Reified  Relationship Specialization Axiom" semanticCandidatesExpression="feature:boxStatements" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@defaultLayer/@edgeMappings[name='Reified%20Relationship']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@defaultLayer/@edgeMappings[name='Reified%20Relationship']" targetFinderExpression="feature:superRelationship" sourceFinderExpression="feature:subRelationship" domainClass="terminologies.ReifiedRelationshipSpecializationAxiom" useDomainElement="true">
           <style targetArrow="InputClosedArrow" sizeComputationExpression="2">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='chocolate']"/>
-            <centerLabelStyleDescription showIcon="false">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-      </defaultLayer>
-      <additionalLayers name="Aspects" activeByDefault="true">
-        <edgeMappings name="Aspect Specialization Axiom" semanticCandidatesExpression="feature:boxStatements" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@additionalLayers[name='Aspects']/@containerMappings[name='Aspect'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@additionalLayers[name='Concepts']/@containerMappings[name='Concept']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@additionalLayers[name='Aspects']/@containerMappings[name='Aspect']" targetFinderExpression="feature:superAspect" sourceFinderExpression="feature:subEntity" domainClass="terminologies.AspectSpecializationAxiom" useDomainElement="true">
-          <style targetArrow="InputClosedArrow" sizeComputationExpression="2">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
-            <centerLabelStyleDescription showIcon="false">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
-            </centerLabelStyleDescription>
-          </style>
-        </edgeMappings>
-        <containerMappings name="Aspect" semanticCandidatesExpression="aql:self.getVisualEntities()" domainClass="terminologies.Aspect" childrenPresentation="List">
-          <subNodeMappings name="Entity Structured Data Property" semanticCandidatesExpression="aql:self.getContainedEntityStructuredDataProperties()" domainClass="terminologies.EntityStructuredDataProperty">
-            <style xsi:type="style:LozengeNodeDescription" showIcon="false" labelExpression="aql:self.name + ' : ' + self.range.name" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            </style>
-          </subNodeMappings>
-          <subNodeMappings name="Entity Scalar Data Property" semanticCandidatesExpression="aql:self.getContainedEntityScalarDataProperties()" domainClass="terminologies.EntityScalarDataProperty">
+        <containerMappings name="Concept" semanticCandidatesExpression="aql:self.boxStatements" domainClass="terminologies.Concept" childrenPresentation="List">
+          <subNodeMappings name="Entity Structured Data Property" semanticCandidatesExpression="aql:self.eInverse()->filter(terminologies::EntityStructuredDataProperty)->select(p|p.domain = self)" domainClass="terminologies.EntityStructuredDataProperty">
             <style xsi:type="style:LozengeNodeDescription" labelExpression="aql:self.name + ' : ' + self.range.name" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:self. abbrevIRI()" tooltipExpression="Aspect">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_chocolate']"/>
-          </style>
-        </containerMappings>
-      </additionalLayers>
-      <additionalLayers name="Concepts" activeByDefault="true">
-        <edgeMappings name="Concept Specialization Axiom" semanticCandidatesExpression="feature:boxStatements" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@additionalLayers[name='Concepts']/@containerMappings[name='Concept']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@additionalLayers[name='Concepts']/@containerMappings[name='Concept']" targetFinderExpression="feature:superConcept" sourceFinderExpression="feature:subConcept" domainClass="terminologies.ConceptSpecializationAxiom" useDomainElement="true">
-          <style targetArrow="InputClosedArrow" sizeComputationExpression="2">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
-            <centerLabelStyleDescription showIcon="false">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
-            </centerLabelStyleDescription>
-          </style>
-        </edgeMappings>
-        <containerMappings name="Concept" semanticCandidatesExpression="aql:self.getVisualEntities()" domainClass="terminologies.Concept" childrenPresentation="List">
-          <subNodeMappings name="Entity Structured Data Property" semanticCandidatesExpression="aql:self.getContainedEntityStructuredDataProperties()" domainClass="terminologies.EntityStructuredDataProperty">
-            <style xsi:type="style:LozengeNodeDescription" showIcon="false" labelExpression="aql:self.name + ' : ' + self.range. name" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+          <subNodeMappings name="Entity Scalar Data Property" semanticCandidatesExpression="aql:self.eInverse()->filter(terminologies::EntityScalarDataProperty)->select(p|p.domain = self)" domainClass="terminologies.EntityScalarDataProperty">
+            <style xsi:type="style:LozengeNodeDescription" labelExpression="aql:self.name + ' : ' + self.range.name" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
-          <subNodeMappings name="Entity Scalar Data Property" semanticCandidatesExpression="aql:self.getContainedEntityScalarDataProperties()" domainClass="terminologies.EntityScalarDataProperty">
-            <style xsi:type="style:LozengeNodeDescription" showIcon="false" labelExpression="aql:self.name + ' : ' + self.range.name" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="Aspect" semanticCandidatesExpression="aql:self.boxStatements" domainClass="terminologies.Aspect" childrenPresentation="List">
+          <subNodeMappings name="Entity Structured Data Property" semanticCandidatesExpression="aql:self.eInverse()->filter(terminologies::EntityStructuredDataProperty)->select(p|p.domain = self)" domainClass="terminologies.EntityStructuredDataProperty">
+            <style xsi:type="style:LozengeNodeDescription" labelExpression="aql:self.name + ' : ' + self.range.name" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="aql:self. abbrevIRI()" tooltipExpression="Concept">
+          <subNodeMappings name="Entity Scalar Data Property" semanticCandidatesExpression="aql:self.eInverse()->filter(terminologies::EntityScalarDataProperty)->select(p|p.domain = self)" domainClass="terminologies.EntityScalarDataProperty">
+            <style xsi:type="style:LozengeNodeDescription" labelExpression="aql:self.name + ' : ' + self.range.name" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
           </style>
         </containerMappings>
-      </additionalLayers>
-      <additionalLayers name="Structures" activeByDefault="true">
         <containerMappings name="Structure" semanticCandidatesExpression="aql:self.boxStatements" domainClass="terminologies.Structure" childrenPresentation="List">
-          <subNodeMappings name="Structured Data Property" semanticCandidatesExpression="aql:self.getContainedStructuredDataProperties()" domainClass="terminologies.StructuredDataProperty">
-            <style xsi:type="style:LozengeNodeDescription" showIcon="false" labelExpression="aql:self.name + ' : ' + self.range.name" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+          <subNodeMappings name="Structured Data Property" semanticCandidatesExpression="aql:self.eInverse()->filter(terminologies::StructuredDataProperty)->select(p|p.domain = self)" domainClass="terminologies.StructuredDataProperty">
+            <style xsi:type="style:LozengeNodeDescription" labelExpression="aql:self.name + ' : ' + self.range.name" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
-          <subNodeMappings name="Scalar Data Property" semanticCandidatesExpression="aql:self.getContainedScalarDataProperties()" domainClass="terminologies.ScalarDataProperty">
-            <style xsi:type="style:LozengeNodeDescription" showIcon="false" labelExpression="aql:self.name + ' : ' + self.range.name" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+          <subNodeMappings name="Scalar Data Property" semanticCandidatesExpression="aql:self.eInverse()->filter(terminologies::ScalarDataProperty)->select(p|p.domain = self)" domainClass="terminologies.ScalarDataProperty">
+            <style xsi:type="style:LozengeNodeDescription" labelExpression="aql:self.name + ' : ' + self.range.name" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="aql:self. abbrevIRI()">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
           </style>
         </containerMappings>
-      </additionalLayers>
-      <additionalLayers name="DataRanges" activeByDefault="true">
-        <nodeMappings name="String Scalar Restriction" semanticCandidatesExpression="aql:self.getContainedStringScalarRestrictions()" domainClass="terminologies.StringScalarRestriction">
-          <style xsi:type="style:DotDescription" showIcon="false" labelExpression="aql:self.getDetailedLabel()" labelPosition="node" resizeKind="NSEW">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
-          </style>
-        </nodeMappings>
-        <nodeMappings name="Numeric Scalar Restriction" semanticCandidatesExpression="aql:self.getContainedNumericScalarRestrictions()" domainClass="terminologies.NumericScalarRestriction">
-          <style xsi:type="style:DotDescription" showIcon="false" labelExpression="aql:self.getDetailedLabel()" labelPosition="node" resizeKind="NSEW">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
-          </style>
-        </nodeMappings>
-        <nodeMappings name="Binary Scalar Restriction" semanticCandidatesExpression="aql:self.getContainedBinaryScalarRestrictions()" domainClass="terminologies.BinaryScalarRestriction">
-          <style xsi:type="style:DotDescription" showIcon="false" labelExpression="aql:self.getDetailedLabel()" labelPosition="node" resizeKind="NSEW">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
-          </style>
-        </nodeMappings>
-        <nodeMappings name="IRI Scalar Restriction" semanticCandidatesExpression="aql:self.getContainedIRIScalarRestrictions()" domainClass="terminologies.IRIScalarRestriction">
-          <style xsi:type="style:DotDescription" showIcon="false" labelExpression="aql:self.getDetailedLabel()" labelPosition="node" resizeKind="NSEW">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
-          </style>
-        </nodeMappings>
-        <nodeMappings name="Plain Literal Scalar Restriction" semanticCandidatesExpression="aql:self.getContainedPlainLiteralScalarRestrictions()" domainClass="terminologies.PlainLiteralScalarRestriction">
-          <style xsi:type="style:DotDescription" showIcon="false" labelExpression="aql:self.getDetailedLabel()" labelPosition="node" resizeKind="NSEW">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
-          </style>
-        </nodeMappings>
-        <nodeMappings name="Time Scalar Restriction" semanticCandidatesExpression="aql:self.getContainedTimeScalarRestrictions()" domainClass="terminologies.TimeScalarRestriction">
-          <style xsi:type="style:DotDescription" showIcon="false" labelExpression="aql:self.getDetailedLabel()" labelPosition="node" resizeKind="NSEW">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
-          </style>
-        </nodeMappings>
-        <nodeMappings name="Synonym Scalar Restriction" semanticCandidatesExpression="aql:self.getContainedSynonymScalarRestrictions()" domainClass="terminologies.SynonymScalarRestriction">
-          <style xsi:type="style:DotDescription" showIcon="false" labelExpression="aql:self.getDetailedLabel()" labelPosition="node" resizeKind="NSEW">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
-          </style>
-        </nodeMappings>
-        <nodeMappings name="ScalarOneOf Restriction" semanticCandidatesExpression="aql:self.getContainedScalarOneOfRestrictions()" domainClass="terminologies.ScalarOneOfRestriction">
-          <style xsi:type="style:DotDescription" showIcon="false" labelExpression="aql:self.getDetailedLabel()" labelPosition="node" resizeKind="NSEW">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
-          </style>
-        </nodeMappings>
-        <edgeMappings name="Restricted Data Range" semanticCandidatesExpression="aql:self.boxStatements" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@additionalLayers[name='DataRanges']/@nodeMappings[name='Binary%20Scalar%20Restriction'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@additionalLayers[name='DataRanges']/@nodeMappings[name='IRI%20Scalar%20Restriction'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@additionalLayers[name='DataRanges']/@nodeMappings[name='Numeric%20Scalar%20Restriction'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@additionalLayers[name='DataRanges']/@nodeMappings[name='Plain%20Literal%20Scalar%20Restriction'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@additionalLayers[name='DataRanges']/@nodeMappings[name='ScalarOneOf%20Restriction'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@additionalLayers[name='DataRanges']/@nodeMappings[name='String%20Scalar%20Restriction'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@additionalLayers[name='DataRanges']/@nodeMappings[name='Synonym%20Scalar%20Restriction'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@additionalLayers[name='DataRanges']/@nodeMappings[name='Time%20Scalar%20Restriction']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@additionalLayers[name='DataRanges']/@containerMappings[name='Scalar'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@additionalLayers[name='DataRanges']/@nodeMappings[name='Binary%20Scalar%20Restriction'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@additionalLayers[name='DataRanges']/@nodeMappings[name='IRI%20Scalar%20Restriction'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@additionalLayers[name='DataRanges']/@nodeMappings[name='Numeric%20Scalar%20Restriction'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@additionalLayers[name='DataRanges']/@nodeMappings[name='Plain%20Literal%20Scalar%20Restriction'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@additionalLayers[name='DataRanges']/@nodeMappings[name='ScalarOneOf%20Restriction'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@additionalLayers[name='DataRanges']/@nodeMappings[name='String%20Scalar%20Restriction'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@additionalLayers[name='DataRanges']/@nodeMappings[name='Synonym%20Scalar%20Restriction'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@additionalLayers[name='DataRanges']/@nodeMappings[name='Time%20Scalar%20Restriction']" targetFinderExpression="feature:restrictedRange" sourceFinderExpression="aql:self" domainClass="terminologies.RestrictedDataRange" useDomainElement="true">
-          <style lineStyle="dash" sizeComputationExpression="2">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <centerLabelStyleDescription showIcon="false" labelExpression="aql:self.getRestrictedRangeLabel()">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </centerLabelStyleDescription>
-          </style>
-        </edgeMappings>
-        <containerMappings name="Scalar" semanticCandidatesExpression="aql:self.boxStatements" domainClass="terminologies.Scalar" childrenPresentation="List">
-          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
-          </style>
-        </containerMappings>
-      </additionalLayers>
-    </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:EditionTableDescription" name="Terminolgy Relationships" domainClass="graphs.TerminologyGraph">
-      <ownedLineMappings name="Terminology" domainClass="terminologies.TerminologyBox" semanticCandidatesExpression="var:self" headerLabelExpression="aql:self.abbrevIRI()">
-        <defaultForeground labelSize="11">
-          <foreGroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-        </defaultForeground>
-        <ownedSubLines name="Relationship" domainClass="terminologies.EntityRelationship" semanticCandidatesExpression="feature:boxStatements">
-          <defaultForeground>
-            <foreGroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-          </defaultForeground>
-        </ownedSubLines>
-        <create name="Reified Relationship" elementsToSelect="service:stdEmptyCollection()" mapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Relationships']/@ownedLineMappings[name='Terminology']/@ownedSubLines[name='Relationship']">
-          <variables name="root" documentation="The semantic root element of the table."/>
-          <variables name="element" documentation="The semantic currently edited element."/>
-          <variables name="container" documentation="The semantic element corresponding to the view container."/>
-          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:root">
-            <subModelOperations xsi:type="tool:CreateInstance" typeName="terminologies.ReifiedRelationship" referenceName="elements">
-              <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'Relationship'+root.boxStatements->filter(terminologies::EntityRelationship)->size()"/>
-            </subModelOperations>
-          </firstModelOperation>
-        </create>
-        <create name="Unreified Relationship" elementsToSelect="service:stdEmptyCollection()" mapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Relationships']/@ownedLineMappings[name='Terminology']/@ownedSubLines[name='Relationship']">
-          <variables name="root" documentation="The semantic root element of the table."/>
-          <variables name="element" documentation="The semantic currently edited element."/>
-          <variables name="container" documentation="The semantic element corresponding to the view container."/>
-          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:root">
-            <subModelOperations xsi:type="tool:CreateInstance" typeName="terminologies.UnreifiedRelationship" referenceName="elements">
-              <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'Relationship'+root.boxStatements->filter(terminologies::EntityRelationship)->size()"/>
-            </subModelOperations>
-          </firstModelOperation>
-        </create>
-        <delete name="Terminology" precondition="false">
-          <variables name="element" documentation="The semantic currently edited element."/>
-          <variables name="root" documentation="The semantic root element of the table."/>
-          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:element"/>
-        </delete>
-      </ownedLineMappings>
-      <ownedColumnMappings name="Source" headerLabelExpression="Source" featureName="source" labelExpression="aql:lineSemantic.oclAsType(terminologies::EntityRelationship).source.abbrevIRI()"/>
-      <ownedColumnMappings name="Target" headerLabelExpression="Target" featureName="target" labelExpression="aql:lineSemantic.oclAsType(terminologies::EntityRelationship).target.abbrevIRI()"/>
-      <ownedColumnMappings name="unreifiedPropertyName" headerLabelExpression="Unreified Property Name" featureName="unreifiedPropertyName" labelExpression="aql:lineSemantic.oclAsType(terminologies::ReifiedRelationship).unreifiedPropertyName"/>
-      <ownedColumnMappings name="unreifiedInversePropertyName" headerLabelExpression="Unreified Inverse Property Name" featureName="unreifiedInversePropertyName" labelExpression="aql:lineSemantic.oclAsType(terminologies::ReifiedRelationship).unreifiedInversePropertyName"/>
-      <ownedColumnMappings name="functional" headerLabelExpression="Functional" featureName="isFunctional" labelExpression="aql:lineSemantic.oclAsType(terminologies::EntityRelationship).isFunctional.toString()"/>
-      <ownedColumnMappings name="inverseFunctional" headerLabelExpression="Inverse Functional" featureName="isInverseFunctional" labelExpression="aql:lineSemantic.oclAsType(terminologies::EntityRelationship).isInverseFunctional.toString()"/>
-      <ownedColumnMappings name="symmetric" headerLabelExpression="Symmetric" featureName="isSymmetric" labelExpression="aql:lineSemantic.oclAsType(terminologies::EntityRelationship).isSymmetric.toString()"/>
-      <ownedColumnMappings name="asymmetric" headerLabelExpression="Asymmetric" featureName="isAsymmetric" labelExpression="aql:lineSemantic.oclAsType(terminologies::EntityRelationship).isAsymmetric.toString()"/>
-      <ownedColumnMappings name="reflexive" headerLabelExpression="Reflexive" featureName="isReflexive" labelExpression="aql:lineSemantic.oclAsType(terminologies::EntityRelationship).isReflexive.toString()"/>
-      <ownedColumnMappings name="irreflexive" headerLabelExpression="Irreflexive" featureName="isIrreflexive" labelExpression="aql:lineSemantic.oclAsType(terminologies::EntityRelationship).isIrreflexive.toString()"/>
-      <ownedColumnMappings name="transitive" headerLabelExpression="Transitive" featureName="isTransitive" labelExpression="aql:lineSemantic.oclAsType(terminologies::EntityRelationship).isTransitive.toString()"/>
-    </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:EditionTableDescription" name="Terminolgy Properties" domainClass="graphs.TerminologyGraph">
-      <ownedLineMappings name="Terminology" domainClass="terminologies.TerminologyBox" semanticCandidatesExpression="var:self" headerLabelExpression="aql:self.abbrevIRI()">
-        <defaultForeground>
-          <foreGroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-        </defaultForeground>
-        <ownedSubLines name="Properties" domainClass="terminologies.DataRelationship" semanticCandidatesExpression="feature:boxStatements">
-          <defaultForeground>
-            <foreGroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-          </defaultForeground>
-        </ownedSubLines>
-        <create name="Entity Structured Data Property" elementsToSelect="service:stdEmptyCollection()" mapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Relationships']/@ownedLineMappings[name='Terminology']/@ownedSubLines[name='Relationship']">
-          <variables name="root" documentation="The semantic root element of the table."/>
-          <variables name="element" documentation="The semantic currently edited element."/>
-          <variables name="container" documentation="The semantic element corresponding to the view container."/>
-          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:root">
-            <subModelOperations xsi:type="tool:CreateInstance" typeName="terminologies.EntityStructuredDataProperty" referenceName="elements">
-              <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'Relationship'+root.boxStatements->filter(terminologies::EntityRelationship)->size()"/>
-            </subModelOperations>
-          </firstModelOperation>
-        </create>
-        <create name="Entity Scalar Data Property" elementsToSelect="service:stdEmptyCollection()" mapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Relationships']/@ownedLineMappings[name='Terminology']/@ownedSubLines[name='Relationship']">
-          <variables name="root" documentation="The semantic root element of the table."/>
-          <variables name="element" documentation="The semantic currently edited element."/>
-          <variables name="container" documentation="The semantic element corresponding to the view container."/>
-          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:root">
-            <subModelOperations xsi:type="tool:CreateInstance" typeName="terminologies.EntityScalarDataProperty" referenceName="elements">
-              <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'Relationship'+root.boxStatements->filter(terminologies::EntityRelationship)->size()"/>
-            </subModelOperations>
-          </firstModelOperation>
-        </create>
-        <create name="Structured Data Property" elementsToSelect="service:stdEmptyCollection()" mapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Relationships']/@ownedLineMappings[name='Terminology']/@ownedSubLines[name='Relationship']">
-          <variables name="root" documentation="The semantic root element of the table."/>
-          <variables name="element" documentation="The semantic currently edited element."/>
-          <variables name="container" documentation="The semantic element corresponding to the view container."/>
-          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:root">
-            <subModelOperations xsi:type="tool:CreateInstance" typeName="terminologies.StructuredDataProperty" referenceName="elements">
-              <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'Relationship'+root.boxStatements->filter(terminologies::EntityRelationship)->size()"/>
-            </subModelOperations>
-          </firstModelOperation>
-        </create>
-        <create name="Scalar Data Property" elementsToSelect="service:stdEmptyCollection()" mapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Relationships']/@ownedLineMappings[name='Terminology']/@ownedSubLines[name='Relationship']">
-          <variables name="root" documentation="The semantic root element of the table."/>
-          <variables name="element" documentation="The semantic currently edited element."/>
-          <variables name="container" documentation="The semantic element corresponding to the view container."/>
-          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:root">
-            <subModelOperations xsi:type="tool:CreateInstance" typeName="terminologies.ScalarDataProperty" referenceName="elements">
-              <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'Relationship'+root.boxStatements->filter(terminologies::EntityRelationship)->size()"/>
-            </subModelOperations>
-          </firstModelOperation>
-        </create>
-        <delete name="Terminology" precondition="false">
-          <variables name="element" documentation="The semantic currently edited element."/>
-          <variables name="root" documentation="The semantic root element of the table."/>
-          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:element"/>
-        </delete>
-      </ownedLineMappings>
-      <ownedColumnMappings name="Domain" headerLabelExpression="Domain" featureName="domain" labelExpression="aql:lineSemantic.oclAsType(terminologies::DataRelationship).source().abbrevIRI()">
-        <defaultForeground>
-          <foreGroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-        </defaultForeground>
-      </ownedColumnMappings>
-      <ownedColumnMappings name="Range" headerLabelExpression="Range" featureName="range" labelExpression="aql:lineSemantic.oclAsType(terminologies::DataRelationship).target().abbrevIRI()">
-        <defaultForeground>
-          <foreGroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-        </defaultForeground>
-      </ownedColumnMappings>
-      <ownedColumnMappings name="Name" headerLabelExpression="Name" featureName="name" labelExpression="aql:lineSemantic.oclAsType(terminologies::DataRelationship).name">
-        <defaultForeground>
-          <foreGroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-        </defaultForeground>
-      </ownedColumnMappings>
-    </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:CrossTableDescription" name="Terminology Aspects" domainClass="graphs.TerminologyGraph">
-      <ownedLineMappings name="Terminology" domainClass="terminologies.TerminologyBox" semanticCandidatesExpression="var:self" headerLabelExpression="aql:self.abbrevIRI()">
-        <defaultForeground>
-          <foreGroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-        </defaultForeground>
-        <ownedSubLines name="Entity" domainClass="terminologies.Entity" semanticCandidatesExpression="feature:boxStatements">
-          <defaultForeground>
-            <foreGroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-          </defaultForeground>
-        </ownedSubLines>
-        <create name="Concept" elementsToSelect="service:stdEmptyCollection()" mapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Relationships']/@ownedLineMappings[name='Terminology']/@ownedSubLines[name='Relationship']">
-          <variables name="root" documentation="The semantic root element of the table."/>
-          <variables name="element" documentation="The semantic currently edited element."/>
-          <variables name="container" documentation="The semantic element corresponding to the view container."/>
-          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:root">
-            <subModelOperations xsi:type="tool:CreateInstance" typeName="terminologies.Concept" referenceName="elements">
-              <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'Relationship'+root.boxStatements->filter(terminologies::EntityRelationship)->size()"/>
-            </subModelOperations>
-          </firstModelOperation>
-        </create>
-        <create name="Aspect" elementsToSelect="service:stdEmptyCollection()" mapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Relationships']/@ownedLineMappings[name='Terminology']/@ownedSubLines[name='Relationship']">
-          <variables name="root" documentation="The semantic root element of the table."/>
-          <variables name="element" documentation="The semantic currently edited element."/>
-          <variables name="container" documentation="The semantic element corresponding to the view container."/>
-          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:root">
-            <subModelOperations xsi:type="tool:CreateInstance" typeName="terminologies.Aspect" referenceName="elements">
-              <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'Relationship'+root.boxStatements->filter(terminologies::EntityRelationship)->size()"/>
-            </subModelOperations>
-          </firstModelOperation>
-        </create>
-        <create name="Reified Relationship" elementsToSelect="service:stdEmptyCollection()" mapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Relationships']/@ownedLineMappings[name='Terminology']/@ownedSubLines[name='Relationship']">
-          <variables name="root" documentation="The semantic root element of the table."/>
-          <variables name="element" documentation="The semantic currently edited element."/>
-          <variables name="container" documentation="The semantic element corresponding to the view container."/>
-          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:root">
-            <subModelOperations xsi:type="tool:CreateInstance" typeName="terminologies.ReifiedRelationship" referenceName="elements">
-              <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'Relationship'+root.boxStatements->filter(terminologies::EntityRelationship)->size()"/>
-            </subModelOperations>
-          </firstModelOperation>
-        </create>
-        <delete name="Terminology" precondition="false">
-          <variables name="element" documentation="The semantic currently edited element."/>
-          <variables name="root" documentation="The semantic root element of the table."/>
-          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:element"/>
-        </delete>
-      </ownedLineMappings>
-      <ownedColumnMappings name="Aspect" headerLabelExpression="feature:name" domainClass="terminologies.Aspect" semanticCandidatesExpression="feature:boxStatements"/>
-      <intersection name="Aspect Specialization" lineMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminology%20Aspects']/@ownedLineMappings[name='Terminology']/@ownedSubLines[name='Entity']" columnMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminology%20Aspects']/@ownedColumnMappings.0" labelExpression="X" useDomainClass="true" columnFinderExpression="aql:self.superAspect" lineFinderExpression="aql:self.subEntity" semanticCandidatesExpression="feature:boxStatements" domainClass="terminologies.AspectSpecializationAxiom"/>
-    </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:CrossTableDescription" name="Terminology Concepts" domainClass="graphs.TerminologyGraph">
-      <ownedLineMappings name="Terminology" domainClass="terminologies.TerminologyBox" semanticCandidatesExpression="var:self" headerLabelExpression="aql:self.abbrevIRI()">
-        <defaultForeground>
-          <foreGroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-        </defaultForeground>
-        <ownedSubLines name="Concept" domainClass="terminologies.Concept" semanticCandidatesExpression="feature:boxStatements">
-          <defaultForeground>
-            <foreGroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-          </defaultForeground>
-        </ownedSubLines>
-        <create name="Concept" elementsToSelect="service:stdEmptyCollection()" mapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Relationships']/@ownedLineMappings[name='Terminology']/@ownedSubLines[name='Relationship']">
-          <variables name="root" documentation="The semantic root element of the table."/>
-          <variables name="element" documentation="The semantic currently edited element."/>
-          <variables name="container" documentation="The semantic element corresponding to the view container."/>
-          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:root">
-            <subModelOperations xsi:type="tool:CreateInstance" typeName="terminologies.Concept" referenceName="elements">
-              <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:'Relationship'+root.boxStatements->filter(terminologies::EntityRelationship)->size()"/>
-            </subModelOperations>
-          </firstModelOperation>
-        </create>
-        <delete name="Terminology" precondition="false">
-          <variables name="element" documentation="The semantic currently edited element."/>
-          <variables name="root" documentation="The semantic root element of the table."/>
-          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:element"/>
-        </delete>
-      </ownedLineMappings>
-      <ownedColumnMappings name="Concept" headerLabelExpression="feature:name" domainClass="terminologies.Concept" semanticCandidatesExpression="feature:boxStatements"/>
-      <intersection name="Concept Specialization" lineMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminology%20Concepts']/@ownedLineMappings[name='Terminology']/@ownedSubLines[name='Concept']" columnMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminology%20Concepts']/@ownedColumnMappings.0" labelExpression="X" useDomainClass="true" columnFinderExpression="aql:self.superConcept" lineFinderExpression="aql:self.subConcept" semanticCandidatesExpression="feature:boxStatements" domainClass="terminologies.ConceptSpecializationAxiom"/>
-    </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_3:TreeDescription" name="Sub Hiearchy" domainClass="graphs.TerminologyGraph">
-      <subItemMappings name="Terminology" domainClass="terminologies.TerminologyBox" semanticCandidatesExpression="var:self">
-        <defaultStyle labelExpression="feature: iri">
-          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-        </defaultStyle>
-        <subItemMappings name="Concept" domainClass="terminologies.Concept" semanticCandidatesExpression="aql:container.oclAsType(terminologies::TerminologyBox)->collect(t|t.boxStatements->filter(terminologies::Concept)->union(t.boxStatements->filter(terminologies::ConceptSpecializationAxiom).superConcept)->select(e|e.eInverse()->filter(terminologies::SpecializationAxiom)->select(a|a.child() = e)->isEmpty()))">
-          <defaultStyle labelExpression="aql:self.abbrevIRI()">
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-          </defaultStyle>
-          <subItemMappings name="Sub Concept" domainClass="terminologies.Concept" semanticCandidatesExpression="aql:tree.target.oclAsType(terminologies::TerminologyBox)->collect(t|t.boxStatements->filter(terminologies::ConceptSpecializationAxiom)->select(a|a.superConcept = self).subConcept->union(t.boxStatements->filter(terminologies::AspectSpecializationAxiom)->select(a|a.superAspect = self).subEntity))">
-            <defaultStyle>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </defaultStyle>
-          </subItemMappings>
-        </subItemMappings>
-        <subItemMappings name="Aspect" domainClass="terminologies.Aspect" semanticCandidatesExpression="aql:container.oclAsType(terminologies::TerminologyBox)->collect(t|t.boxStatements->filter(terminologies::Aspect)->union(t.boxStatements->filter(terminologies::AspectSpecializationAxiom).superAspect)->select(e|e.eInverse()->filter(terminologies::SpecializationAxiom)->select(a|a.child() = e)->isEmpty()))">
-          <defaultStyle labelExpression="aql:self.abbrevIRI()">
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-          </defaultStyle>
-          <subItemMappings name="Sub Aspect" domainClass="terminologies.Aspect" semanticCandidatesExpression="aql:tree.target.oclAsType(terminologies::TerminologyBox)->collect(t|t.boxStatements->filter(terminologies::AspectSpecializationAxiom)->select(a|a.superAspect = self).subEntity)">
-            <defaultStyle>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </defaultStyle>
-          </subItemMappings>
-        </subItemMappings>
-      </subItemMappings>
-    </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Concept Usage Viewer" initialisation="true" domainClass="terminologies.Concept">
-      <metamodel href="http://imce.jpl.nasa.gov/oml/common#/"/>
-      <metamodel href="http://imce.jpl.nasa.gov/oml/terminologies#/"/>
-      <metamodel href="http://imce.jpl.nasa.gov/oml/bundles#/"/>
-      <metamodel href="http://imce.jpl.nasa.gov/oml/graphs#/"/>
-      <defaultLayer name="Default">
-        <edgeMappings name="Root as Source (Entity Relationship)" semanticCandidatesExpression="aql:self.getDirectVisualRelationshipsWithRootAsDomain()" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="terminologies.EntityRelationship" useDomainElement="true">
-          <style sizeComputationExpression="2">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <centerLabelStyleDescription labelExpression="feature:name">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </centerLabelStyleDescription>
-          </style>
-        </edgeMappings>
-        <edgeMappings name="Root as Target (Reified Relationship)" semanticCandidatesExpression="aql:self.getDirectVisualRelationshipsWithRootAsRange()" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetFinderExpression="feature:source" sourceFinderExpression="feature:target" domainClass="terminologies.ReifiedRelationship" useDomainElement="true">
-          <style sizeComputationExpression="2">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <centerLabelStyleDescription labelExpression="feature:unreifiedInversePropertyName">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </centerLabelStyleDescription>
-          </style>
-        </edgeMappings>
-        <edgeMappings name="Entity Universal Restriction Axiom (Root as Source)" semanticCandidatesExpression="aql:self.getUniversalAxiomWithRootAsSource()" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetFinderExpression="feature:restrictedDomain" sourceFinderExpression="feature:restrictedRange" domainClass="terminologies.EntityUniversalRestrictionAxiom" useDomainElement="true">
-          <style targetArrow="InputClosedArrow" sizeComputationExpression="2">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <beginLabelStyleDescription labelExpression="aql:self.restrictedRelation.name">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </beginLabelStyleDescription>
-            <centerLabelStyleDescription labelExpression="&lt;&lt;universal>>">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
-            </centerLabelStyleDescription>
-          </style>
-        </edgeMappings>
-        <edgeMappings name="Entity Universal Restriction Axiom (Root as Target)" semanticCandidatesExpression="aql:self.getUniversalAxiomWithRootAsTarget()" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetFinderExpression="feature:restrictedDomain" sourceFinderExpression="feature:restrictedRange" domainClass="terminologies.EntityUniversalRestrictionAxiom" useDomainElement="true">
-          <style targetArrow="InputClosedArrow" sizeComputationExpression="2">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <beginLabelStyleDescription labelExpression="aql:self.restrictedRelation.oclAsType(terminologies::ReifiedRelationship).unreifiedInversePropertyName">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </beginLabelStyleDescription>
-            <centerLabelStyleDescription labelExpression="&lt;&lt;universal>>">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
-            </centerLabelStyleDescription>
-          </style>
-        </edgeMappings>
-        <edgeMappings name="Entity Existential Restriction Axiom (Root as Source)" semanticCandidatesExpression="aql:self.getExistentialAxiomWithRootAsSource()" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetFinderExpression="feature:restrictedDomain" sourceFinderExpression="feature:restrictedRange" domainClass="terminologies.EntityExistentialRestrictionAxiom" useDomainElement="true">
-          <style targetArrow="InputClosedArrow" sizeComputationExpression="2">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <beginLabelStyleDescription labelExpression="aql:self.restrictedRelation.name">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </beginLabelStyleDescription>
-            <centerLabelStyleDescription labelExpression="&lt;&lt;existential>>">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
-            </centerLabelStyleDescription>
-          </style>
-        </edgeMappings>
-        <edgeMappings name="Entity Existential Restriction Axiom (Root as Target)" semanticCandidatesExpression="aql:self.getExistentialAxiomWithRootAsTarget()" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetFinderExpression="feature:restrictedDomain" sourceFinderExpression="feature:restrictedRange" domainClass="terminologies.EntityExistentialRestrictionAxiom" useDomainElement="true">
-          <style targetArrow="InputClosedArrow" sizeComputationExpression="2">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <beginLabelStyleDescription labelExpression="aql:self.restrictedRelation.name">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </beginLabelStyleDescription>
-            <centerLabelStyleDescription labelExpression="&lt;&lt;existential>>">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
-            </centerLabelStyleDescription>
-          </style>
-        </edgeMappings>
-        <edgeMappings name="Indirect Root as Source (Entity Relationship)" semanticCandidatesExpression="aql:self.getIndirectRelationshipsWithRootAsSource()" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetFinderExpression="feature:target" sourceFinderExpression="aql:diagram.getRootConcept()" domainClass="terminologies.ReifiedRelationship" useDomainElement="true">
-          <style sizeComputationExpression="2">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <centerLabelStyleDescription labelExpression="feature:name">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </centerLabelStyleDescription>
-          </style>
-        </edgeMappings>
-        <edgeMappings name="Indirect Root as Target (Entity Relationship)" semanticCandidatesExpression="aql:self.getIndirectRelationshipsWithRootAsTarget()" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetFinderExpression="feature:source" sourceFinderExpression="aql:diagram.getRootConcept()" domainClass="terminologies.ReifiedRelationship" useDomainElement="true">
-          <style sizeComputationExpression="2">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <centerLabelStyleDescription labelExpression="feature:unreifiedInversePropertyName">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </centerLabelStyleDescription>
-          </style>
-        </edgeMappings>
-        <edgeMappings name="Aspect as Root" semanticCandidatesExpression="aql:diagram.getDirectVisualRelationshipsWithAspectAsDomain()" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetFinderExpression="aql:diagram.getRootConcept()" sourceFinderExpression="aql:self.getConceptRoots()" domainClass="terminologies.ReifiedRelationship" useDomainElement="true">
-          <style sizeComputationExpression="2">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <centerLabelStyleDescription labelExpression="feature:unreifiedInversePropertyName">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </centerLabelStyleDescription>
-          </style>
-        </edgeMappings>
-        <containerMappings name="Concept" semanticCandidatesExpression="aql:self.getConnectedConcepts()" domainClass="terminologies.Concept" childrenPresentation="List">
-          <subNodeMappings name="Entity Structured Data Property" semanticCandidatesExpression="aql:self.getContainedEntityStructuredDataProperties" domainClass="terminologies.EntityStructuredDataProperty">
-            <style xsi:type="style:LozengeNodeDescription" showIcon="false" labelExpression="aql:self.name + ' : ' + self.range. name" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            </style>
-          </subNodeMappings>
-          <subNodeMappings name="Entity Scalar Data Property" semanticCandidatesExpression="aql:self.getContainedEntityScalarDataProperties()" domainClass="terminologies.EntityScalarDataProperty">
-            <style xsi:type="style:LozengeNodeDescription" showIcon="false" labelExpression="aql:self.name + ' : ' + self.range.name" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
-            </style>
-          </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="aql:self. abbrevIRI()" tooltipExpression="Concept">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
-          </style>
-        </containerMappings>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Aspect/Concept Class Diagram" initialisation="true" domainClass="terminologies.UnaryTermKind">
-      <defaultLayer name="Default">
-        <edgeMappings name="Aspect Specialization Axiom" semanticCandidatesExpression="aql:diagram.getVisualAspectAxioms()" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Aspect%2FConcept%20Class%20Diagram']/@defaultLayer/@containerMappings[name='Aspect'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Aspect%2FConcept%20Class%20Diagram']/@defaultLayer/@containerMappings[name='Concept']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Aspect%2FConcept%20Class%20Diagram']/@defaultLayer/@containerMappings[name='Aspect']" targetFinderExpression="feature:superAspect" sourceFinderExpression="feature:subEntity" domainClass="terminologies.AspectSpecializationAxiom" useDomainElement="true">
-          <style targetArrow="InputClosedArrow" sizeComputationExpression="2">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
-            <centerLabelStyleDescription>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
-            </centerLabelStyleDescription>
-          </style>
-        </edgeMappings>
-        <edgeMappings name="Concept Specialization Axiom" semanticCandidatesExpression="aql:diagram.getVisualConceptAxioms()" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Aspect%2FConcept%20Class%20Diagram']/@defaultLayer/@containerMappings[name='Concept']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@additionalLayers[name='Concepts']/@containerMappings[name='Concept']" targetFinderExpression="feature:superConcept" sourceFinderExpression="feature:subConcept" domainClass="terminologies.ConceptSpecializationAxiom" useDomainElement="true">
-          <style targetArrow="InputClosedArrow" sizeComputationExpression="2">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
-            <centerLabelStyleDescription>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
-            </centerLabelStyleDescription>
-          </style>
-        </edgeMappings>
-        <edgeMappings name="Entity Restriction Axiom" semanticCandidatesExpression="aql:diagram.getVisualRestrictionAxioms()" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Aspect%2FConcept%20Class%20Diagram']/@defaultLayer/@containerMappings[name='Aspect'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Aspect%2FConcept%20Class%20Diagram']/@defaultLayer/@containerMappings[name='Concept']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Aspect%2FConcept%20Class%20Diagram']/@defaultLayer/@containerMappings[name='Aspect'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Aspect%2FConcept%20Class%20Diagram']/@defaultLayer/@containerMappings[name='Concept']" targetFinderExpression="feature:restrictedRange" sourceFinderExpression="feature:restrictedDomain" domainClass="terminologies.EntityRestrictionAxiom" useDomainElement="true">
-          <style targetArrow="InputClosedArrow" sizeComputationExpression="2">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
-            <beginLabelStyleDescription labelExpression="aql:self.restrictedRelation.abbrevIRI()">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </beginLabelStyleDescription>
-            <centerLabelStyleDescription labelExpression="aql:self.getAxiomLabel()">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
-            </centerLabelStyleDescription>
-          </style>
-        </edgeMappings>
-        <edgeMappings name="Root as Source (Entity Relationship)" semanticCandidatesExpression="aql:diagram.getVisualRelationshipsWithRootAsDomain()" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Aspect%2FConcept%20Class%20Diagram']/@defaultLayer/@containerMappings[name='Concept'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Aspect%2FConcept%20Class%20Diagram']/@defaultLayer/@containerMappings[name='Aspect']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Aspect%2FConcept%20Class%20Diagram']/@defaultLayer/@containerMappings[name='Concept'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Aspect%2FConcept%20Class%20Diagram']/@defaultLayer/@containerMappings[name='Aspect']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="terminologies.EntityRelationship" useDomainElement="true">
-          <style sizeComputationExpression="2">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <centerLabelStyleDescription labelExpression="feature:name">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </centerLabelStyleDescription>
-          </style>
-        </edgeMappings>
-        <edgeMappings name="Root as Target (Reified Relationship)" semanticCandidatesExpression="aql:diagram.getVisualRelationshipsWithRootAsRange()" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Aspect%2FConcept%20Class%20Diagram']/@defaultLayer/@containerMappings[name='Concept'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Aspect%2FConcept%20Class%20Diagram']/@defaultLayer/@containerMappings[name='Aspect']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Aspect%2FConcept%20Class%20Diagram']/@defaultLayer/@containerMappings[name='Concept'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Aspect%2FConcept%20Class%20Diagram']/@defaultLayer/@containerMappings[name='Aspect']" targetFinderExpression="feature:source" sourceFinderExpression="feature:target" domainClass="terminologies.ReifiedRelationship" useDomainElement="true">
-          <style sizeComputationExpression="2">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <centerLabelStyleDescription labelExpression="feature:unreifiedInversePropertyName">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </centerLabelStyleDescription>
-          </style>
-        </edgeMappings>
-        <containerMappings name="Concept" semanticCandidatesExpression="aql:diagram.getVisualEntities()" domainClass="terminologies.Concept" childrenPresentation="List">
-          <subNodeMappings name="Entity Structured Data Property" semanticCandidatesExpression="aql:self.getContainedEntityStructuredDataProperties()" domainClass="terminologies.EntityStructuredDataProperty">
-            <style xsi:type="style:LozengeNodeDescription" showIcon="false" labelExpression="aql:self.name + ' : ' + self.range. name" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            </style>
-          </subNodeMappings>
-          <subNodeMappings name="Entity Scalar Data Property" semanticCandidatesExpression="aql:self.getContainedEntityScalarDataProperties()" domainClass="terminologies.EntityScalarDataProperty">
-            <style xsi:type="style:LozengeNodeDescription" showIcon="false" labelExpression="aql:self.name + ' : ' + self.range.name" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
-            </style>
-          </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:self. abbrevIRI()" tooltipExpression="Concept">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
-          </style>
-        </containerMappings>
-        <containerMappings name="Aspect" semanticCandidatesExpression="aql:diagram.getVisualEntities()" domainClass="terminologies.Aspect" childrenPresentation="List">
-          <subNodeMappings name="Entity Structured Data Property" semanticCandidatesExpression="aql:self.getContainedEntityStructuredDataProperties()" domainClass="terminologies.EntityStructuredDataProperty">
-            <style xsi:type="style:LozengeNodeDescription" showIcon="false" labelExpression="aql:self.name + ' : ' + self.range.name" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            </style>
-          </subNodeMappings>
-          <subNodeMappings name="Entity Scalar Data Property" semanticCandidatesExpression="aql:self.getContainedEntityScalarDataProperties()" domainClass="terminologies.EntityScalarDataProperty">
-            <style xsi:type="style:LozengeNodeDescription" showIcon="false" labelExpression="aql:self.name + ' : ' + self.range.name" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            </style>
-          </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:self. abbrevIRI()" tooltipExpression="Aspect">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_chocolate']"/>
-          </style>
-        </containerMappings>
-      </defaultLayer>
-    </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Reified Relationship Diagram" domainClass="terminologies.ReifiedRelationship" enablePopupBars="true">
-      <defaultLayer name="Default">
-        <nodeMappings name="Reified Relationship" semanticCandidatesExpression="aql:self" domainClass="terminologies.ReifiedRelationship">
-          <style xsi:type="style:EllipseNodeDescription" showIcon="false" labelPosition="node" resizeKind="NSEW">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
-          </style>
-        </nodeMappings>
-        <nodeMappings name="Source Entity" semanticCandidatesExpression="feature:source" domainClass="terminologies.Entity">
-          <style xsi:type="style:SquareDescription" showIcon="false" labelPosition="node" resizeKind="NSEW">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
-          </style>
-        </nodeMappings>
-        <nodeMappings name="Target Entity" semanticCandidatesExpression="feature:target" domainClass="terminologies.Entity">
-          <style xsi:type="style:SquareDescription" showIcon="false" labelPosition="node" resizeKind="NSEW">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
-          </style>
-        </nodeMappings>
-        <edgeMappings name="Source" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Reified%20Relationship%20Diagram']/@defaultLayer/@nodeMappings[name='Reified%20Relationship']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Reified%20Relationship%20Diagram']/@defaultLayer/@nodeMappings[name='Source%20Entity']" targetFinderExpression="feature:source">
-          <style sizeComputationExpression="2">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <centerLabelStyleDescription labelExpression="Source">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </centerLabelStyleDescription>
-          </style>
-        </edgeMappings>
-        <edgeMappings name="Target" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Reified%20Relationship%20Diagram']/@defaultLayer/@nodeMappings[name='Reified%20Relationship']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Reified%20Relationship%20Diagram']/@defaultLayer/@nodeMappings[name='Target%20Entity']" targetFinderExpression="feature:target">
-          <style sizeComputationExpression="2">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <centerLabelStyleDescription labelExpression="Target">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </centerLabelStyleDescription>
-          </style>
-        </edgeMappings>
-      </defaultLayer>
-    </ownedRepresentations>
-    <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.common.tools.api.interpreter.StandardServices"/>
-    <ownedJavaExtensions qualifiedClassName="gov.nasa.jpl.imce.oml.viewpoint.AspectConceptClassDiagramService"/>
-    <ownedJavaExtensions qualifiedClassName="gov.nasa.jpl.imce.oml.viewpoint.TerminologyDiagramService"/>
-    <ownedJavaExtensions qualifiedClassName="gov.nasa.jpl.imce.oml.viewpoint.ConceptUsageDiagramService"/>
-    <ownedJavaExtensions qualifiedClassName="gov.nasa.jpl.imce.oml.viewpoint.DiagramUtil"/>
+    <ownedJavaExtensions qualifiedClassName="gov.nasa.jpl.imce.oml.viewpoint.Services"/>
   </ownedViewpoints>
 </description:Group>
