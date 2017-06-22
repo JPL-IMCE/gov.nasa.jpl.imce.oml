@@ -5212,8 +5212,8 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//terminal ABBREV_IRI:
-	//	('a'..'z' | 'A'..'Z' | '_' | '0'..'9') ('a'..'z' | 'A'..'Z' | '_' | '-' | '.' | '0'..'9')+ ':' ('a'..'z' | 'A'..'Z' |
-	//	'_' | '0'..'9') ('a'..'z' | 'A'..'Z' | '_' | '-' | '.' | '0'..'9')+;
+	//	('a'..'z' | 'A'..'Z' | '_' | '0'..'9') ('a'..'z' | 'A'..'Z' | '_' | '-' | '.' | '0'..'9')* ':' ('a'..'z' | 'A'..'Z' |
+	//	'_' | '0'..'9') ('a'..'z' | 'A'..'Z' | '_' | '-' | '.' | '0'..'9')*;
 	public TerminalRule getABBREV_IRIRule() {
 		return tABBREV_IRI;
 	}
