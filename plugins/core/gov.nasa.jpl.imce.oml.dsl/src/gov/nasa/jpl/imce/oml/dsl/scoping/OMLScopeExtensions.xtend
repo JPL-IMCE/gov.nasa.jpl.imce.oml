@@ -55,7 +55,7 @@ class OMLScopeExtensions {
 	 * @TODO See the workaround in OMLImportedNamespaceAwareLocalScopeProvider.getScope
 	 */
 	def scope_Annotation_property(Annotation annotation, EReference eRef) {
-		val annoationProperties = annotation.module.allImportedModules.map[extent.annotationProperties].flatten
+		val annoationProperties = annotation?.module?.allImportedModules?.map[extent?.annotationProperties]?.flatten
 		Scopes.scopeFor(
 			annoationProperties,
 			[ qnc.toQualifiedName(it.abbrevIRI) ],
