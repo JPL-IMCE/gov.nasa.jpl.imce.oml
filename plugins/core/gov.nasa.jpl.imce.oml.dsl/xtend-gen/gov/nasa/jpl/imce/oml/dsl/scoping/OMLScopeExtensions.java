@@ -85,10 +85,31 @@ public class OMLScopeExtensions {
   public IScope scope_Annotation_property(final Annotation annotation, final EReference eRef) {
     IScope _xblockexpression = null;
     {
-      final Function1<Module, EList<AnnotationProperty>> _function = (Module it) -> {
-        return it.getExtent().getAnnotationProperties();
-      };
-      final Iterable<AnnotationProperty> annoationProperties = Iterables.<AnnotationProperty>concat(IterableExtensions.<Module, EList<AnnotationProperty>>map(this._oMLExtensions.allImportedModules(annotation.getModule()), _function));
+      Module _module = null;
+      if (annotation!=null) {
+        _module=annotation.getModule();
+      }
+      Iterable<Module> _allImportedModules = null;
+      if (_module!=null) {
+        _allImportedModules=this._oMLExtensions.allImportedModules(_module);
+      }
+      Iterable<EList<AnnotationProperty>> _map = null;
+      if (_allImportedModules!=null) {
+        final Function1<Module, EList<AnnotationProperty>> _function = (Module it) -> {
+          Extent _extent = it.getExtent();
+          EList<AnnotationProperty> _annotationProperties = null;
+          if (_extent!=null) {
+            _annotationProperties=_extent.getAnnotationProperties();
+          }
+          return _annotationProperties;
+        };
+        _map=IterableExtensions.<Module, EList<AnnotationProperty>>map(_allImportedModules, _function);
+      }
+      Iterable<AnnotationProperty> _flatten = null;
+      if (_map!=null) {
+        _flatten=Iterables.<AnnotationProperty>concat(_map);
+      }
+      final Iterable<AnnotationProperty> annoationProperties = _flatten;
       final Function<AnnotationProperty, QualifiedName> _function_1 = (AnnotationProperty it) -> {
         return this.qnc.toQualifiedName(it.getAbbrevIRI());
       };
