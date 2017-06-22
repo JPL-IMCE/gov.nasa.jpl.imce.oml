@@ -44,6 +44,7 @@ import gov.nasa.jpl.imce.oml.model.common.Factory
 import gov.nasa.jpl.imce.oml.model.common.FunctionalInterface
 import gov.nasa.jpl.imce.oml.model.common.Glossary
 import gov.nasa.jpl.imce.oml.model.common.ImplicitExtent
+import gov.nasa.jpl.imce.oml.model.common.IRIReference
 import gov.nasa.jpl.imce.oml.model.common.LocalName
 import gov.nasa.jpl.imce.oml.model.common.ModuleEdge
 import gov.nasa.jpl.imce.oml.model.common.ModuleElement
@@ -240,6 +241,7 @@ class RootConceptTaxonomyAxiom extends TerminologyBundleStatement, ConceptTreeDi
 @DerivedUUID
 class BundledTerminologyAxiom extends TerminologyBundleAxiom {
 
+	@IRIReference
 	refers TerminologyBox[1] bundledTerminology
 	
 	/*
@@ -254,6 +256,7 @@ class BundledTerminologyAxiom extends TerminologyBundleAxiom {
 	/*
 	 * The bundledTerminology is the target
 	 */
+	@IRIReference
 	@ImplicitExtent
 	@NotSchema
 	@Override

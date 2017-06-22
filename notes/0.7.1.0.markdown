@@ -4,5 +4,12 @@ gov.nasa.jpl.imce.oml.tycho 0.7.1.0 is a significant bug fix release
 
 - [#45 Need to support legal IRIs and fragments](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/45)
 
+- [#48 ModuleEdge needs to refer to the target module by IRI](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/48)
+
+	Added annotations in OML*.xcore to drive code generation changes in
+	https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tables and https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.resolver
+
+- [#49 Allow '-' character in abbreviated IRI and name](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/49)
+
 ### [Release process](releaseProcess.markdown)
 
