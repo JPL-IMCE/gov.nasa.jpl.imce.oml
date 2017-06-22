@@ -78,17 +78,14 @@ public class OMLScopeExtensions {
   /**
    * The syntax of Annotation involves "@<annotation property abbrev IRI> = <annotation value>".
    * Therefore, construct the resolvable scope of AnnotationProperties
-   * in terms of the abbrevIRI of each AnnotationProperty in the TerminologyExtent.
+   * in terms of the abbrevIRI of each AnnotationProperty accessible from all imported modules.
    * 
-   * @TODO See the workaround in OMLImportedNamespaceAwareLocalScopeProvider.getScope
+   * This scope computation accounts for possible parsing errors resulting in EFeature values being null.
    */
   public IScope scope_Annotation_property(final Annotation annotation, final EReference eRef) {
     IScope _xblockexpression = null;
     {
-      Module _module = null;
-      if (annotation!=null) {
-        _module=annotation.getModule();
-      }
+      Module _module = annotation.getModule();
       Iterable<Module> _allImportedModules = null;
       if (_module!=null) {
         _allImportedModules=this._oMLExtensions.allImportedModules(_module);
@@ -96,12 +93,7 @@ public class OMLScopeExtensions {
       Iterable<EList<AnnotationProperty>> _map = null;
       if (_allImportedModules!=null) {
         final Function1<Module, EList<AnnotationProperty>> _function = (Module it) -> {
-          Extent _extent = it.getExtent();
-          EList<AnnotationProperty> _annotationProperties = null;
-          if (_extent!=null) {
-            _annotationProperties=_extent.getAnnotationProperties();
-          }
-          return _annotationProperties;
+          return it.getExtent().getAnnotationProperties();
         };
         _map=IterableExtensions.<Module, EList<AnnotationProperty>>map(_allImportedModules, _function);
       }
@@ -113,8 +105,7 @@ public class OMLScopeExtensions {
       final Function<AnnotationProperty, QualifiedName> _function_1 = (AnnotationProperty it) -> {
         return this.qnc.toQualifiedName(it.getAbbrevIRI());
       };
-      _xblockexpression = Scopes.<AnnotationProperty>scopeFor(annoationProperties, _function_1, 
-        IScope.NULLSCOPE);
+      _xblockexpression = Scopes.<AnnotationProperty>scopeFor(annoationProperties, _function_1, IScope.NULLSCOPE);
     }
     return _xblockexpression;
   }
