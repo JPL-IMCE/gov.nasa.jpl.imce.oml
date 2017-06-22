@@ -192,6 +192,7 @@ class OMLGenerator extends AbstractGenerator {
 		val Set<TerminologyBox> terminologies
 		val TerminologyBox terminology
 		val Map<String, String> imports
+		val Set<String> localNames
 		val OMLGenerator generator
 		
 		val String packageNsURI
@@ -208,6 +209,10 @@ class OMLGenerator extends AbstractGenerator {
 			}
 			this.terminology = terminology
 			this.imports = new HashMap<String, String>()
+			
+			this.localNames = new HashSet<String>()
+			terminology.boxStatements.filter(Entity).forEach[this.localNames.add(it.name())]
+			terminology.boxStatements.filter(Structure).forEach[this.localNames.add(it.name())]
 			
 			val eInfo = generator.editProjectHandle
 			val eLoc = eInfo.fullPath
@@ -230,13 +235,19 @@ class OMLGenerator extends AbstractGenerator {
 			val sections = qualifiedName.split('\\.')
 			val simpleName = sections.get(sections.size - 1).legalName
 			val legalQName = qualifiedName.legalName
-			switch existing:imports.get(simpleName) {
-				case null:
-					imports.put(simpleName, legalQName)
-				case existing != legalQName:
-					return legalQName
-			}
-			simpleName
+			if (localNames.contains(simpleName))
+				legalQName
+			else
+				switch existing:imports.get(simpleName) {
+					case null: {
+						imports.put(simpleName, legalQName)
+						simpleName
+					}
+					case existing != legalQName:
+						legalQName
+					default:
+						existing	
+				}
 		}
 
 		def protected imported(EClass eClass) {

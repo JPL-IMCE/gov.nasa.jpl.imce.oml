@@ -78,22 +78,47 @@ public class OMLScopeExtensions {
   /**
    * The syntax of Annotation involves "@<annotation property abbrev IRI> = <annotation value>".
    * Therefore, construct the resolvable scope of AnnotationProperties
-   * in terms of the abbrevIRI of each AnnotationProperty in the TerminologyExtent.
+   * in terms of the abbrevIRI of each AnnotationProperty accessible from all imported modules.
    * 
-   * @TODO See the workaround in OMLImportedNamespaceAwareLocalScopeProvider.getScope
+   * This scope computation accounts for possible parsing errors resulting in EFeature values being null.
    */
   public IScope scope_Annotation_property(final Annotation annotation, final EReference eRef) {
     IScope _xblockexpression = null;
     {
-      final Function1<Module, EList<AnnotationProperty>> _function = (Module it) -> {
-        return it.getExtent().getAnnotationProperties();
+      Module _module = annotation.getModule();
+      Iterable<Module> _allImportedModules = null;
+      if (_module!=null) {
+        _allImportedModules=this._oMLExtensions.allImportedModules(_module);
+      }
+      Iterable<Extent> _map = null;
+      if (_allImportedModules!=null) {
+        final Function1<Module, Extent> _function = (Module it) -> {
+          return it.getExtent();
+        };
+        _map=IterableExtensions.<Module, Extent>map(_allImportedModules, _function);
+      }
+      Iterable<Extent> _filterNull = null;
+      if (_map!=null) {
+        _filterNull=IterableExtensions.<Extent>filterNull(_map);
+      }
+      final Iterable<Extent> extents = _filterNull;
+      final Function1<Extent, EList<AnnotationProperty>> _function_1 = (Extent it) -> {
+        return it.getAnnotationProperties();
       };
-      final Iterable<AnnotationProperty> annoationProperties = Iterables.<AnnotationProperty>concat(IterableExtensions.<Module, EList<AnnotationProperty>>map(this._oMLExtensions.allImportedModules(annotation.getModule()), _function));
-      final Function<AnnotationProperty, QualifiedName> _function_1 = (AnnotationProperty it) -> {
+      Iterable<EList<AnnotationProperty>> _map_1 = IterableExtensions.<Extent, EList<AnnotationProperty>>map(extents, _function_1);
+      Iterable<AnnotationProperty> _flatten = null;
+      if (_map_1!=null) {
+        _flatten=Iterables.<AnnotationProperty>concat(_map_1);
+      }
+      Iterable<AnnotationProperty> _filterNull_1 = null;
+      if (_flatten!=null) {
+        _filterNull_1=IterableExtensions.<AnnotationProperty>filterNull(_flatten);
+      }
+      final Iterable<AnnotationProperty> annoationProperties = _filterNull_1;
+      final Function<AnnotationProperty, QualifiedName> _function_2 = (AnnotationProperty it) -> {
         return this.qnc.toQualifiedName(it.getAbbrevIRI());
       };
-      _xblockexpression = Scopes.<AnnotationProperty>scopeFor(annoationProperties, _function_1, 
-        IScope.NULLSCOPE);
+      _xblockexpression = Scopes.<AnnotationProperty>scopeFor(annoationProperties, _function_2, IScope.NULLSCOPE);
     }
     return _xblockexpression;
   }

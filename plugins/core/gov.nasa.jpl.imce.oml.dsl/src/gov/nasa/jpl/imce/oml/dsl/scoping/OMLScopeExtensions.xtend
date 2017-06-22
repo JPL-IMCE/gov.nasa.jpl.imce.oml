@@ -50,16 +50,20 @@ class OMLScopeExtensions {
 	/*
 	 * The syntax of Annotation involves "@<annotation property abbrev IRI> = <annotation value>".
 	 * Therefore, construct the resolvable scope of AnnotationProperties
-	 * in terms of the abbrevIRI of each AnnotationProperty in the TerminologyExtent.
+	 * in terms of the abbrevIRI of each AnnotationProperty accessible from all imported modules.
 	 * 
-	 * @TODO See the workaround in OMLImportedNamespaceAwareLocalScopeProvider.getScope
+	 * This scope computation accounts for possible parsing errors resulting in EFeature values being null.
 	 */
 	def scope_Annotation_property(Annotation annotation, EReference eRef) {
-		val annoationProperties = annotation.module.allImportedModules.map[extent.annotationProperties].flatten
-		Scopes.scopeFor(
-			annoationProperties,
-			[ qnc.toQualifiedName(it.abbrevIRI) ],
-			IScope.NULLSCOPE)	
+		val extents =
+			annotation.module?. // may be null!
+			allImportedModules?. // may be null!
+			map[extent]?. // may be null!
+			filterNull // remove nulls!
+		val annoationProperties = extents.map[annotationProperties]?. // may be null!
+			flatten?. // may be null!
+			filterNull // remove nulls!
+		Scopes.scopeFor(annoationProperties, [qnc.toQualifiedName(it.abbrevIRI)], IScope.NULLSCOPE)
 	}
 	
 	def scope_BundledTerminologyAxiom_bundledTerminology(BundledTerminologyAxiom context) {

@@ -66,6 +66,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Consumer;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.emf.cdo.CDOObject;
@@ -105,6 +106,8 @@ public class OMLGenerator extends AbstractGenerator {
     
     private final Map<String, String> imports;
     
+    private final Set<String> localNames;
+    
     private final OMLGenerator generator;
     
     private final String packageNsURI;
@@ -127,6 +130,16 @@ public class OMLGenerator extends AbstractGenerator {
       this.terminology = terminology;
       HashMap<String, String> _hashMap = new HashMap<String, String>();
       this.imports = _hashMap;
+      HashSet<String> _hashSet_1 = new HashSet<String>();
+      this.localNames = _hashSet_1;
+      final Consumer<Entity> _function = (Entity it) -> {
+        this.localNames.add(it.name());
+      };
+      Iterables.<Entity>filter(terminology.getBoxStatements(), Entity.class).forEach(_function);
+      final Consumer<Structure> _function_1 = (Structure it) -> {
+        this.localNames.add(it.name());
+      };
+      Iterables.<Structure>filter(terminology.getBoxStatements(), Structure.class).forEach(_function_1);
       final IProject eInfo = generator.editProjectHandle;
       final IPath eLoc = eInfo.getFullPath();
       final String[] eSegs = eLoc.segments();
@@ -148,21 +161,37 @@ public class OMLGenerator extends AbstractGenerator {
         int _minus = (_size - 1);
         final String simpleName = OMLGenerator.legalName(sections[_minus]);
         final String legalQName = OMLGenerator.legalName(qualifiedName);
-        String _get = this.imports.get(simpleName);
-        final String existing = _get;
-        boolean _matched = false;
-        if (Objects.equal(existing, null)) {
-          _matched=true;
-          this.imports.put(simpleName, legalQName);
-        }
-        if (!_matched) {
-          boolean _notEquals = (!Objects.equal(existing, legalQName));
-          if (_notEquals) {
+        String _xifexpression = null;
+        boolean _contains = this.localNames.contains(simpleName);
+        if (_contains) {
+          _xifexpression = legalQName;
+        } else {
+          String _switchResult = null;
+          String _get = this.imports.get(simpleName);
+          final String existing = _get;
+          boolean _matched = false;
+          if (Objects.equal(existing, null)) {
             _matched=true;
-            return legalQName;
+            String _xblockexpression_1 = null;
+            {
+              this.imports.put(simpleName, legalQName);
+              _xblockexpression_1 = simpleName;
+            }
+            _switchResult = _xblockexpression_1;
           }
+          if (!_matched) {
+            boolean _notEquals = (!Objects.equal(existing, legalQName));
+            if (_notEquals) {
+              _matched=true;
+              _switchResult = legalQName;
+            }
+          }
+          if (!_matched) {
+            _switchResult = existing;
+          }
+          _xifexpression = _switchResult;
         }
-        _xblockexpression = simpleName;
+        _xblockexpression = _xifexpression;
       }
       return _xblockexpression;
     }
