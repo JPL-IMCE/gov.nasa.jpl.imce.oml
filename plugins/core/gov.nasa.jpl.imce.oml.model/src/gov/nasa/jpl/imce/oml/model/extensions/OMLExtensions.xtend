@@ -92,7 +92,9 @@ import org.eclipse.emf.ecore.util.EcoreUtil
 import com.google.common.collect.Sets
 import java.util.HashSet
 
-class OMLExtensions {
+public class OMLExtensions {
+	
+	static public val String OML_CATALOG_XML = "oml.catalog.xml"
 	
 	static val String RESOURCE_SET_CATALOG_MANAGER = "RESOURCE_SET_CATALOG_MANAGER"
 	static val String RESOURCE_SET_CATALOG_RESOLVER = "RESOURCE_SET_CATALOG_RESOLVER"
@@ -150,7 +152,7 @@ class OMLExtensions {
 		while (current.segmentCount > 0) {
 			try {
 				System.out.println("# Searching for OML catalog in: " + current)
-				val omlC = current.appendSegment("oml.catalog.xml")
+				val omlC = current.appendSegment(OML_CATALOG_XML)
 				val omlURL = new URL(omlC.toString)
 				
 				// check the catalog file can be opened.

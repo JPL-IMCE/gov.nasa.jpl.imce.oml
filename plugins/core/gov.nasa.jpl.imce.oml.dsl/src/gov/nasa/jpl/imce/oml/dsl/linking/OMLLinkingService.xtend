@@ -77,7 +77,10 @@ class OMLLinkingService extends DefaultLinkingService {
 				throw new IllegalNodeException(node, "Cross-reference cannot specify a fragment OML Entity: "+crossRefIRI)
 			
 			val Catalog catalog = OMLExtensions.findCatalogIfExists(context.eResource)
-			if (null !== catalog) {
+			if (null === catalog) {
+				throw new IllegalNodeException(node, "IRI Cross-reference resolution for "+crossRefString+" requires an "+
+					OMLExtensions.OML_CATALOG_XML+" file; but no such catalog file was found!")
+			} else {
 				val resolvedIRI = catalog.resolveURI(resourceIRI+".oml")
 				if (null === resolvedIRI || resolvedIRI == resourceIRI)
 					return Collections.emptyList()
