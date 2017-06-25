@@ -90,12 +90,14 @@ public class OMLLinkingService extends DefaultLinkingService {
         }
         final String resourceIRI = _xifexpression;
         if ((fragmentIndex > 0)) {
-          throw new IllegalNodeException(node, ("Cross-reference cannot specify a fragment OML Entity: " + crossRefIRI));
+          throw new IllegalNodeException(node, 
+            ("Cross-reference cannot specify a fragment OML Entity: " + crossRefIRI));
         }
         final Catalog catalog = OMLExtensions.findCatalogIfExists(context.eResource());
         if ((null == catalog)) {
-          throw new IllegalNodeException(node, (((("IRI Cross-reference resolution for " + crossRefString) + " requires an ") + 
-            OMLExtensions.OML_CATALOG_XML) + " file; but no such catalog file was found!"));
+          throw new IllegalNodeException(node, 
+            (((("IRI Cross-reference resolution for " + crossRefString) + " requires an ") + 
+              OMLExtensions.OML_CATALOG_XML) + " file; but no such catalog file was found!"));
         } else {
           final String resolvedIRI = catalog.resolveURI((resourceIRI + ".oml"));
           if (((null == resolvedIRI) || Objects.equal(resolvedIRI, resourceIRI))) {
@@ -118,7 +120,8 @@ public class OMLLinkingService extends DefaultLinkingService {
               String _plus_5 = (_plus_4 + ", column:");
               int _column = ((Diagnostic)e).getColumn();
               String _plus_6 = (_plus_5 + Integer.valueOf(_column));
-              String _plus_7 = (_plus_6 + ", offset:");
+              String _plus_7 = (_plus_6 + 
+                ", offset:");
               int _offset = ((Diagnostic)e).getOffset();
               String _plus_8 = (_plus_7 + Integer.valueOf(_offset));
               String _plus_9 = (_plus_8 + ", length:");
@@ -156,7 +159,8 @@ public class OMLLinkingService extends DefaultLinkingService {
               String _plus_4 = (_plus_3 + ", column:");
               int _column = ((Diagnostic)e).getColumn();
               String _plus_5 = (_plus_4 + Integer.valueOf(_column));
-              String _plus_6 = (_plus_5 + ", offset:");
+              String _plus_6 = (_plus_5 + 
+                ", offset:");
               int _offset = ((Diagnostic)e).getOffset();
               String _plus_7 = (_plus_6 + Integer.valueOf(_offset));
               String _plus_8 = (_plus_7 + ", length:");
@@ -181,83 +185,85 @@ public class OMLLinkingService extends DefaultLinkingService {
           resolvedOML.getWarnings().forEach(_function_1);
           if (((!resolvedOML.getErrors().isEmpty()) || (!resolvedOML.getWarnings().isEmpty()))) {
             String _string = problems.toString();
-            String _plus = (("Problem loading: " + resolvedIRI) + _string);
+            String _plus = ((((("IRI cross reference problems\nCross reference:\n" + crossRefString) + 
+              "\nResolved IRI:\n") + resolvedIRI) + 
+              "\n") + _string);
             throw new IllegalNodeException(node, _plus);
           }
-        }
-        final EClassifier refType = ref.getEType();
-        boolean _matched = false;
-        EClass _bundle = BundlesPackage.eINSTANCE.getBundle();
-        if (Objects.equal(refType, _bundle)) {
-          _matched=true;
-          final Function1<Resource, Iterable<Bundle>> _function_2 = (Resource it) -> {
-            final Function1<Extent, Iterable<Bundle>> _function_3 = (Extent it_1) -> {
-              return Iterables.<Bundle>filter(it_1.getModules(), Bundle.class);
-            };
-            return Iterables.<Bundle>concat(IterableExtensions.<Extent, Iterable<Bundle>>map(Iterables.<Extent>filter(it.getContents(), Extent.class), _function_3));
-          };
-          final Function1<Bundle, Boolean> _function_3 = (Bundle b) -> {
-            String _iri = b.iri();
-            return Boolean.valueOf(Objects.equal(_iri, resourceIRI));
-          };
-          final Bundle bundle = IterableExtensions.<Bundle>findFirst(Iterables.<Bundle>concat(ListExtensions.<Resource, Iterable<Bundle>>map(rs.getResources(), _function_2)), _function_3);
-          List<EObject> _xifexpression_1 = null;
-          if ((null == bundle)) {
-            _xifexpression_1 = Collections.<EObject>emptyList();
-          } else {
-            _xifexpression_1 = Collections.<EObject>singletonList(bundle);
-          }
-          return _xifexpression_1;
-        }
-        if (!_matched) {
-          EClass _terminologyBox = TerminologiesPackage.eINSTANCE.getTerminologyBox();
-          if (Objects.equal(refType, _terminologyBox)) {
+          final EClassifier refType = ref.getEType();
+          boolean _matched = false;
+          EClass _bundle = BundlesPackage.eINSTANCE.getBundle();
+          if (Objects.equal(refType, _bundle)) {
             _matched=true;
-            final Function1<Resource, Iterable<TerminologyBox>> _function_4 = (Resource it) -> {
-              final Function1<Extent, Iterable<TerminologyBox>> _function_5 = (Extent it_1) -> {
-                return Iterables.<TerminologyBox>filter(it_1.getModules(), TerminologyBox.class);
+            final Function1<Resource, Iterable<Bundle>> _function_2 = (Resource it) -> {
+              final Function1<Extent, Iterable<Bundle>> _function_3 = (Extent it_1) -> {
+                return Iterables.<Bundle>filter(it_1.getModules(), Bundle.class);
               };
-              return Iterables.<TerminologyBox>concat(IterableExtensions.<Extent, Iterable<TerminologyBox>>map(Iterables.<Extent>filter(it.getContents(), Extent.class), _function_5));
+              return Iterables.<Bundle>concat(IterableExtensions.<Extent, Iterable<Bundle>>map(Iterables.<Extent>filter(it.getContents(), Extent.class), _function_3));
             };
-            final Function1<TerminologyBox, Boolean> _function_5 = (TerminologyBox tbox) -> {
-              String _iri = tbox.iri();
+            final Function1<Bundle, Boolean> _function_3 = (Bundle b) -> {
+              String _iri = b.iri();
               return Boolean.valueOf(Objects.equal(_iri, resourceIRI));
             };
-            final TerminologyBox tbox = IterableExtensions.<TerminologyBox>findFirst(Iterables.<TerminologyBox>concat(ListExtensions.<Resource, Iterable<TerminologyBox>>map(rs.getResources(), _function_4)), _function_5);
-            List<EObject> _xifexpression_2 = null;
-            if ((null == tbox)) {
-              _xifexpression_2 = Collections.<EObject>emptyList();
+            final Bundle bundle = IterableExtensions.<Bundle>findFirst(Iterables.<Bundle>concat(ListExtensions.<Resource, Iterable<Bundle>>map(rs.getResources(), _function_2)), _function_3);
+            List<EObject> _xifexpression_1 = null;
+            if ((null == bundle)) {
+              _xifexpression_1 = Collections.<EObject>emptyList();
             } else {
-              _xifexpression_2 = Collections.<EObject>singletonList(tbox);
+              _xifexpression_1 = Collections.<EObject>singletonList(bundle);
             }
-            return _xifexpression_2;
+            return _xifexpression_1;
           }
-        }
-        if (!_matched) {
-          EClass _descriptionBox = DescriptionsPackage.eINSTANCE.getDescriptionBox();
-          if (Objects.equal(refType, _descriptionBox)) {
-            _matched=true;
-            final Function1<Resource, Iterable<DescriptionBox>> _function_6 = (Resource it) -> {
-              final Function1<Extent, Iterable<DescriptionBox>> _function_7 = (Extent it_1) -> {
-                return Iterables.<DescriptionBox>filter(it_1.getModules(), DescriptionBox.class);
+          if (!_matched) {
+            EClass _terminologyBox = TerminologiesPackage.eINSTANCE.getTerminologyBox();
+            if (Objects.equal(refType, _terminologyBox)) {
+              _matched=true;
+              final Function1<Resource, Iterable<TerminologyBox>> _function_4 = (Resource it) -> {
+                final Function1<Extent, Iterable<TerminologyBox>> _function_5 = (Extent it_1) -> {
+                  return Iterables.<TerminologyBox>filter(it_1.getModules(), TerminologyBox.class);
+                };
+                return Iterables.<TerminologyBox>concat(IterableExtensions.<Extent, Iterable<TerminologyBox>>map(Iterables.<Extent>filter(it.getContents(), Extent.class), _function_5));
               };
-              return Iterables.<DescriptionBox>concat(IterableExtensions.<Extent, Iterable<DescriptionBox>>map(Iterables.<Extent>filter(it.getContents(), Extent.class), _function_7));
-            };
-            final Function1<DescriptionBox, Boolean> _function_7 = (DescriptionBox dbox) -> {
-              String _iri = dbox.iri();
-              return Boolean.valueOf(Objects.equal(_iri, resourceIRI));
-            };
-            final DescriptionBox dbox = IterableExtensions.<DescriptionBox>findFirst(Iterables.<DescriptionBox>concat(ListExtensions.<Resource, Iterable<DescriptionBox>>map(rs.getResources(), _function_6)), _function_7);
-            List<EObject> _xifexpression_3 = null;
-            if ((null == dbox)) {
-              _xifexpression_3 = Collections.<EObject>emptyList();
-            } else {
-              _xifexpression_3 = Collections.<EObject>singletonList(dbox);
+              final Function1<TerminologyBox, Boolean> _function_5 = (TerminologyBox tbox) -> {
+                String _iri = tbox.iri();
+                return Boolean.valueOf(Objects.equal(_iri, resourceIRI));
+              };
+              final TerminologyBox tbox = IterableExtensions.<TerminologyBox>findFirst(Iterables.<TerminologyBox>concat(ListExtensions.<Resource, Iterable<TerminologyBox>>map(rs.getResources(), _function_4)), _function_5);
+              List<EObject> _xifexpression_2 = null;
+              if ((null == tbox)) {
+                _xifexpression_2 = Collections.<EObject>emptyList();
+              } else {
+                _xifexpression_2 = Collections.<EObject>singletonList(tbox);
+              }
+              return _xifexpression_2;
             }
-            return _xifexpression_3;
           }
+          if (!_matched) {
+            EClass _descriptionBox = DescriptionsPackage.eINSTANCE.getDescriptionBox();
+            if (Objects.equal(refType, _descriptionBox)) {
+              _matched=true;
+              final Function1<Resource, Iterable<DescriptionBox>> _function_6 = (Resource it) -> {
+                final Function1<Extent, Iterable<DescriptionBox>> _function_7 = (Extent it_1) -> {
+                  return Iterables.<DescriptionBox>filter(it_1.getModules(), DescriptionBox.class);
+                };
+                return Iterables.<DescriptionBox>concat(IterableExtensions.<Extent, Iterable<DescriptionBox>>map(Iterables.<Extent>filter(it.getContents(), Extent.class), _function_7));
+              };
+              final Function1<DescriptionBox, Boolean> _function_7 = (DescriptionBox dbox) -> {
+                String _iri = dbox.iri();
+                return Boolean.valueOf(Objects.equal(_iri, resourceIRI));
+              };
+              final DescriptionBox dbox = IterableExtensions.<DescriptionBox>findFirst(Iterables.<DescriptionBox>concat(ListExtensions.<Resource, Iterable<DescriptionBox>>map(rs.getResources(), _function_6)), _function_7);
+              List<EObject> _xifexpression_3 = null;
+              if ((null == dbox)) {
+                _xifexpression_3 = Collections.<EObject>emptyList();
+              } else {
+                _xifexpression_3 = Collections.<EObject>singletonList(dbox);
+              }
+              return _xifexpression_3;
+            }
+          }
+          return Collections.<EObject>emptyList();
         }
-        return Collections.<EObject>emptyList();
       }
       if ((Annotation.class.isInstance(context) && Objects.equal(ref, CommonPackage.eINSTANCE.getAnnotation_Property()))) {
         final Annotation aContext = Annotation.class.cast(context);
