@@ -1,13 +1,13 @@
 /*
  * Copyright 2017 California Institute of Technology ("Caltech").
  * U.S. Government sponsorship acknowledged.
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *     http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -46,10 +46,10 @@ import org.eclipse.xtext.resource.IEObjectDescription
 import org.eclipse.xtext.scoping.IScope
 
 class OMLLinkingService extends DefaultLinkingService {
-	
+
 	@Inject
 	private IQualifiedNameConverter qualifiedNameConverter
-	
+
 	override getLinkedObjects(EObject context, EReference ref, INode node) throws IllegalNodeException {
 		val EClass requiredType = ref.getEReferenceType()
 		if (null === requiredType)
@@ -62,71 +62,90 @@ class OMLLinkingService extends DefaultLinkingService {
 
 		// Is this an IRI cross-reference?
 		if (crossRefString.startsWith("<") && crossRefString.endsWith(">")) {
-			
+
 			// For an IRI cross-reference, find an OASIS XML catalog to resolve the IRI into a local OML file URL, which we need to load into the XtextResourceSet.
-			
 			val rs = context.eResource.resourceSet
 			if (null === rs)
 				return Collections.emptyList()
-				
+
 			val crossRefIRI = crossRefString.substring(1, crossRefString.length - 1)
 			val fragmentIndex = crossRefIRI.indexOf('#')
 
 			val resourceIRI = if(-1 == fragmentIndex) crossRefIRI else crossRefIRI.substring(1, fragmentIndex - 1)
-			if (fragmentIndex > 0) 
-				throw new IllegalNodeException(node, "Cross-reference cannot specify a fragment OML Entity: "+crossRefIRI)
-			
+			if (fragmentIndex > 0)
+				throw new IllegalNodeException(node,
+					"Cross-reference cannot specify a fragment OML Entity: " + crossRefIRI)
+
 			val Catalog catalog = OMLExtensions.findCatalogIfExists(context.eResource)
 			if (null === catalog) {
-				throw new IllegalNodeException(node, "IRI Cross-reference resolution for "+crossRefString+" requires an "+
-					OMLExtensions.OML_CATALOG_XML+" file; but no such catalog file was found!")
+				throw new IllegalNodeException(node,
+					"IRI Cross-reference resolution for " + crossRefString + " requires an " +
+						OMLExtensions.OML_CATALOG_XML + " file; but no such catalog file was found!")
 			} else {
-				val resolvedIRI = catalog.resolveURI(resourceIRI+".oml")
+				val resolvedIRI = catalog.resolveURI(resourceIRI + ".oml")
 				if (null === resolvedIRI || resolvedIRI == resourceIRI)
 					return Collections.emptyList()
-				
+
 				val resolvedOML = rs.getResource(URI.createURI(resolvedIRI), true)
 				val StringBuffer problems = new StringBuffer()
-				resolvedOML.errors.forEach[Diagnostic e |
+				resolvedOML.errors.forEach [ Diagnostic e |
 					switch e {
 						org.eclipse.xtext.diagnostics.Diagnostic:
-							problems.append("\n"+e.message+" at "+e.location+" line:"+e.line+", column:"+e.column+", offset:"+e.offset+", length:"+e.length)
+							problems.append(
+								"\n" + e.message + " at " + e.location + " line:" + e.line + ", column:" + e.column +
+									", offset:" + e.offset + ", length:" + e.length)
 						default:
-							problems.append("\n"+e.message+" at "+e.location+" line:"+e.line+", column:"+e.column)
+							problems.append(
+								"\n" + e.message + " at " + e.location + " line:" + e.line + ", column:" + e.column)
 					}
 				]
-				resolvedOML.warnings.forEach[Diagnostic e |
+				resolvedOML.warnings.forEach [ Diagnostic e |
 					switch e {
 						org.eclipse.xtext.diagnostics.Diagnostic:
-							problems.append(e.message+" at "+e.location+" line:"+e.line+", column:"+e.column+", offset:"+e.offset+", length:"+e.length)
+							problems.append(
+								e.message + " at " + e.location + " line:" + e.line + ", column:" + e.column +
+									", offset:" + e.offset + ", length:" + e.length)
 						default:
-							problems.append(e.message+" at "+e.location+" line:"+e.line+", column:"+e.column)
+							problems.append(
+								e.message + " at " + e.location + " line:" + e.line + ", column:" + e.column)
 					}
 				]
 				if (!resolvedOML.errors.empty || !resolvedOML.warnings.empty) {
-					throw new IllegalNodeException(node, "Problem loading: "+resolvedIRI+problems.toString)
+					throw new IllegalNodeException(
+						node,
+						"IRI cross reference problems\nCross reference:\n" + 
+						crossRefString + 
+						"\nResolved IRI:\n" +
+						resolvedIRI + 
+						"\n" + problems.toString
+					)
+				}
+
+				val refType = ref.EType
+				switch refType {
+					case BundlesPackage.eINSTANCE.bundle: {
+						val bundle = rs.resources.map[contents.filter(Extent).map[modules.filter(Bundle)].flatten].
+							flatten.findFirst[b|b.iri() == resourceIRI]
+						return if(null === bundle) Collections.emptyList() else Collections.singletonList(bundle)
+					}
+					case TerminologiesPackage.eINSTANCE.terminologyBox: {
+						val tbox = rs.resources.map [
+							contents.filter(Extent).map[modules.filter(TerminologyBox)].flatten
+						].flatten.findFirst[tbox|tbox.iri() == resourceIRI]
+						return if(null === tbox) Collections.emptyList() else Collections.singletonList(tbox)
+					}
+					case DescriptionsPackage.eINSTANCE.descriptionBox: {
+						val dbox = rs.resources.map [
+							contents.filter(Extent).map[modules.filter(DescriptionBox)].flatten
+						].flatten.findFirst[dbox|dbox.iri() == resourceIRI]
+						return if(null === dbox) Collections.emptyList() else Collections.singletonList(dbox)
+					}
+					default:
+						return Collections.emptyList()
 				}
 			}
-			val refType = ref.EType
-			switch refType {
-				case BundlesPackage.eINSTANCE.bundle: {
-					val bundle = rs.resources.map[contents.filter(Extent).map[modules.filter(Bundle)].flatten].flatten.findFirst[b|b.iri() == resourceIRI]
-					return if(null === bundle) Collections.emptyList() else Collections.singletonList(bundle)
-				}
-				case TerminologiesPackage.eINSTANCE.terminologyBox: {
-					val tbox = rs.resources.map[contents.filter(Extent).map[modules.filter(TerminologyBox)].flatten].flatten.findFirst[tbox|tbox.iri() == resourceIRI]
-					return if(null === tbox) Collections.emptyList() else Collections.singletonList(tbox)
-				}
-				case DescriptionsPackage.eINSTANCE.descriptionBox: {
-					val dbox = rs.resources.map[contents.filter(Extent).map[modules.filter(DescriptionBox)].flatten].flatten.findFirst[dbox|dbox.iri() == resourceIRI]
-					return if(null === dbox) Collections.emptyList() else Collections.singletonList(dbox)
-				}
-				default:
-					return Collections.emptyList()
-			}
-			
-		} 
-		
+		}
+
 		if (Annotation.isInstance(context) && ref == CommonPackage.eINSTANCE.annotation_Property) {
 			// Look for what the next node is...
 			val aContext = Annotation.cast(context)
@@ -145,7 +164,6 @@ class OMLLinkingService extends DefaultLinkingService {
 					// <Annotation> == nextSE
 					// ...
 					// <Element>
-					
 					// force resolving the next annotation; as a side effect, it will have its subset set.
 					val nextLeafNodes = nextNode.leafNodes
 					val n1 = nextLeafNodes.findFirst[n|CrossReference.isInstance(n.grammarElement)]
@@ -154,14 +172,13 @@ class OMLLinkingService extends DefaultLinkingService {
 				}
 			}
 		}
-		
-		//val defaultResult = super.getLinkedObjects(context, ref, node)
-		//return defaultResult
-		
+
+		// val defaultResult = super.getLinkedObjects(context, ref, node)
+		// return defaultResult
 		val IScope scope = getScope(context, ref)
 		val QualifiedName qualifiedLinkName = qualifiedNameConverter.toQualifiedName(crossRefString)
-		val IEObjectDescription eObjectDescription = scope.getSingleElement(qualifiedLinkName)		
-		
+		val IEObjectDescription eObjectDescription = scope.getSingleElement(qualifiedLinkName)
+
 		if (null === eObjectDescription) {
 			val defaultResult = super.getLinkedObjects(context, ref, node)
 			if (defaultResult !== null && !defaultResult.empty)
@@ -172,5 +189,5 @@ class OMLLinkingService extends DefaultLinkingService {
 		val e = eObjectDescription.getEObjectOrProxy()
 		return Collections.singletonList(e)
 	}
-	
+
 }
