@@ -32,7 +32,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.EcorePackage;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
@@ -112,8 +111,6 @@ public class GraphsPackageImpl extends EPackageImpl implements GraphsPackage {
 
 		// Initialize simple dependencies
 		TerminologiesPackage.eINSTANCE.eClass();
-		CommonPackage.eINSTANCE.eClass();
-		EcorePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theGraphsPackage.createPackageContents();
@@ -405,6 +402,8 @@ public class GraphsPackageImpl extends EPackageImpl implements GraphsPackage {
 		createOverrideAnnotations();
 		// http://imce.jpl.nasa.gov/oml/DerivedUUID
 		createDerivedUUIDAnnotations();
+		// http://imce.jpl.nasa.gov/oml/IRIReference
+		createIRIReferenceAnnotations();
 		// http://imce.jpl.nasa.gov/oml/NotFunctionalAPI
 		createNotFunctionalAPIAnnotations();
 	}
@@ -640,6 +639,36 @@ public class GraphsPackageImpl extends EPackageImpl implements GraphsPackage {
 		   });	
 		addAnnotation
 		  (terminologyNestingAxiomEClass, 
+		   source, 
+		   new String[] {
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://imce.jpl.nasa.gov/oml/IRIReference</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createIRIReferenceAnnotations() {
+		String source = "http://imce.jpl.nasa.gov/oml/IRIReference";	
+		addAnnotation
+		  (getConceptDesignationTerminologyAxiom__Target(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getConceptDesignationTerminologyAxiom_DesignatedTerminology(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getTerminologyNestingAxiom__Target(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getTerminologyNestingAxiom_NestingTerminology(), 
 		   source, 
 		   new String[] {
 		   });

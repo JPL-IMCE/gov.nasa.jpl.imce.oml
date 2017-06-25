@@ -39,7 +39,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.EcorePackage;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
@@ -161,8 +160,6 @@ public class BundlesPackageImpl extends EPackageImpl implements BundlesPackage {
 
 		// Initialize simple dependencies
 		TerminologiesPackage.eINSTANCE.eClass();
-		CommonPackage.eINSTANCE.eClass();
-		EcorePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theBundlesPackage.createPackageContents();
@@ -642,6 +639,8 @@ public class BundlesPackageImpl extends EPackageImpl implements BundlesPackage {
 		createOverrideValAnnotations();
 		// http://imce.jpl.nasa.gov/oml/NamespaceUUID
 		createNamespaceUUIDAnnotations();
+		// http://imce.jpl.nasa.gov/oml/IRIReference
+		createIRIReferenceAnnotations();
 		// http://imce.jpl.nasa.gov/oml/NotFunctionalAPI
 		createNotFunctionalAPIAnnotations();
 	}
@@ -1039,6 +1038,26 @@ public class BundlesPackageImpl extends EPackageImpl implements BundlesPackage {
 		   new String[] {
 			 "namespace", "disjointTaxonomyParent",
 			 "factors", "name"
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://imce.jpl.nasa.gov/oml/IRIReference</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createIRIReferenceAnnotations() {
+		String source = "http://imce.jpl.nasa.gov/oml/IRIReference";	
+		addAnnotation
+		  (getBundledTerminologyAxiom__Target(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getBundledTerminologyAxiom_BundledTerminology(), 
+		   source, 
+		   new String[] {
 		   });
 	}
 

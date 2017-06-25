@@ -512,7 +512,6 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 
 		// Initialize simple dependencies
 		CommonPackage.eINSTANCE.eClass();
-		EcorePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theTerminologiesPackage.createPackageContents();
@@ -2682,6 +2681,8 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		createFactoryAnnotations();
 		// http://imce.jpl.nasa.gov/oml/ImplicitExtent
 		createImplicitExtentAnnotations();
+		// http://imce.jpl.nasa.gov/oml/IRIReference
+		createIRIReferenceAnnotations();
 		// http://imce.jpl.nasa.gov/oml/CopyConstructor
 		createCopyConstructorAnnotations();
 		// http://imce.jpl.nasa.gov/oml/DerivedUUID
@@ -3312,6 +3313,36 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   });	
 		addAnnotation
 		  (getTerm__AbbrevIRI(), 
+		   source, 
+		   new String[] {
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://imce.jpl.nasa.gov/oml/IRIReference</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createIRIReferenceAnnotations() {
+		String source = "http://imce.jpl.nasa.gov/oml/IRIReference";	
+		addAnnotation
+		  (getTerminologyAxiom__Target(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getTerminologyAxiom__TargetModule(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getTerminologyExtensionAxiom__Target(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getTerminologyExtensionAxiom_ExtendedTerminology(), 
 		   source, 
 		   new String[] {
 		   });
