@@ -905,7 +905,7 @@ public class OMLFormatter extends AbstractFormatter2 {
     };
     document.append(this.textRegionExtensions.regionFor(ax).keyword("someEntities"), _function);
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
-      it.noSpace();
+      it.oneSpace();
     };
     document.surround(this.textRegionExtensions.regionFor(ax).keyword("."), _function_1);
     final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
@@ -920,7 +920,7 @@ public class OMLFormatter extends AbstractFormatter2 {
     };
     document.append(this.textRegionExtensions.regionFor(ax).keyword("allEntities"), _function);
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
-      it.noSpace();
+      it.oneSpace();
     };
     document.surround(this.textRegionExtensions.regionFor(ax).keyword("."), _function_1);
     final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
@@ -935,7 +935,7 @@ public class OMLFormatter extends AbstractFormatter2 {
     };
     document.append(this.textRegionExtensions.regionFor(ax).keyword("someData"), _function);
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
-      it.noSpace();
+      it.oneSpace();
     };
     document.surround(this.textRegionExtensions.regionFor(ax).keyword("."), _function_1);
     final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
@@ -950,7 +950,7 @@ public class OMLFormatter extends AbstractFormatter2 {
     };
     document.append(this.textRegionExtensions.regionFor(ax).keyword("allData"), _function);
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
-      it.noSpace();
+      it.oneSpace();
     };
     document.surround(this.textRegionExtensions.regionFor(ax).keyword("."), _function_1);
     final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
@@ -965,7 +965,7 @@ public class OMLFormatter extends AbstractFormatter2 {
     };
     document.append(this.textRegionExtensions.regionFor(ax).keyword("allData"), _function);
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
-      it.noSpace();
+      it.oneSpace();
     };
     document.surround(this.textRegionExtensions.regionFor(ax).keyword("."), _function_1);
     final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
@@ -1457,7 +1457,7 @@ public class OMLFormatter extends AbstractFormatter2 {
   
   protected void _format(final SingletonInstanceScalarDataPropertyValue s, @Extension final IFormattableDocument document) {
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
-      it.noSpace();
+      it.oneSpace();
     };
     document.surround(this.textRegionExtensions.regionFor(s).keyword("."), _function);
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
@@ -1468,7 +1468,7 @@ public class OMLFormatter extends AbstractFormatter2 {
   
   protected void _format(final SingletonInstanceStructuredDataPropertyValue s, @Extension final IFormattableDocument document) {
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
-      it.noSpace();
+      it.oneSpace();
     };
     document.surround(this.textRegionExtensions.regionFor(s).keyword("."), _function);
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
