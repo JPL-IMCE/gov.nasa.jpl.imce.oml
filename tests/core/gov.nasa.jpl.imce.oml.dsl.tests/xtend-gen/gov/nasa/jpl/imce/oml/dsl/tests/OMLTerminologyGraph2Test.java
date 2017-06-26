@@ -16,86 +16,24 @@
  */
 package gov.nasa.jpl.imce.oml.dsl.tests;
 
-import com.google.inject.Inject;
 import gov.nasa.jpl.imce.oml.dsl.tests.OMLInjectorProvider;
-import gov.nasa.jpl.imce.oml.model.common.Extent;
-import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
-import org.eclipse.xtend2.lib.StringConcatenation;
+import gov.nasa.jpl.imce.oml.dsl.tests.OMLTest;
 import org.eclipse.xtext.testing.InjectWith;
 import org.eclipse.xtext.testing.XtextRunner;
-import org.eclipse.xtext.testing.util.ParseHelper;
-import org.eclipse.xtext.testing.validation.ValidationTestHelper;
-import org.eclipse.xtext.xbase.lib.Exceptions;
-import org.eclipse.xtext.xbase.lib.Extension;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(XtextRunner.class)
 @InjectWith(OMLInjectorProvider.class)
 @SuppressWarnings("all")
-public class OMLTerminologyGraph2Test {
-  @Inject
-  private ParseHelper<Extent> parseHelper;
-  
-  @Inject
-  @Extension
-  private ValidationTestHelper _validationTestHelper;
-  
-  @Inject
-  @Extension
-  private OMLExtensions _oMLExtensions;
-  
+public class OMLTerminologyGraph2Test extends OMLTest {
   @Test
   public void terminologyGraph2() {
-    try {
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("annotationProperty rdfs:label=<http://www.w3.org/2000/01/rdf-schema#label>");
-      _builder.newLine();
-      _builder.newLine();
-      _builder.append("annotationProperty dc:description=<http://purl.org/dc/elements/1.1/#description>");
-      _builder.newLine();
-      _builder.newLine();
-      _builder.append("open terminology <http://imce.jpl.nasa.gov/foundation/base/base>");
-      _builder.newLine();
-      _builder.append("{");
-      _builder.newLine();
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("aspect IdentifiedElement");
-      _builder.newLine();
-      _builder.newLine();
-      _builder.append("}");
-      _builder.newLine();
-      _builder.newLine();
-      _builder.append("open terminology <http://imce.jpl.nasa.gov/foundation/mission/mission>");
-      _builder.newLine();
-      _builder.append("{");
-      _builder.newLine();
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("extends <http://imce.jpl.nasa.gov/foundation/base/base>");
-      _builder.newLine();
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("concept Component");
-      _builder.newLine();
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("Component extendsAspect base:IdentifiedElement");
-      _builder.newLine();
-      _builder.newLine();
-      _builder.append("}");
-      _builder.newLine();
-      final Extent result = this.parseHelper.parse(_builder);
-      Assert.assertNotNull(result);
-      this._oMLExtensions.phasedResolveAll(result);
-      this._validationTestHelper.assertNoErrors(result);
-      String _name = this.getClass().getName();
-      String _plus = (_name + " OK!");
-      System.out.println(_plus);
-    } catch (Throwable _e) {
-      throw Exceptions.sneakyThrow(_e);
-    }
+    this.testFile(
+      "OMLTerminologyGraph2Test/imce.jpl.nasa.gov/foundation/mission/mission.oml", 
+      "OMLTerminologyGraph2Test/imce.jpl.nasa.gov/foundation/base/base.oml");
+    String _name = this.getClass().getName();
+    String _plus = (_name + " OK!");
+    System.out.println(_plus);
   }
 }

@@ -108,6 +108,8 @@ import org.eclipse.xtext.xbase.lib.Pair;
 
 @SuppressWarnings("all")
 public class OMLExtensions {
+  public final static String OML_CATALOG_XML = "oml.catalog.xml";
+  
   private final static String RESOURCE_SET_CATALOG_MANAGER = "RESOURCE_SET_CATALOG_MANAGER";
   
   private final static String RESOURCE_SET_CATALOG_RESOLVER = "RESOURCE_SET_CATALOG_RESOLVER";
@@ -198,7 +200,7 @@ public class OMLExtensions {
     while ((current.segmentCount() > 0)) {
       try {
         System.out.println(("# Searching for OML catalog in: " + current));
-        final URI omlC = current.appendSegment("oml.catalog.xml");
+        final URI omlC = current.appendSegment(OMLExtensions.OML_CATALOG_XML);
         String _string = omlC.toString();
         final URL omlURL = new URL(_string);
         final InputStream omlS = omlURL.openStream();

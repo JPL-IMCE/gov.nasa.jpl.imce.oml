@@ -368,35 +368,35 @@ class OMLFormatter extends AbstractFormatter2 {
 	def dispatch void format(EntityExistentialRestrictionAxiom ax, extension IFormattableDocument document) {
 		ax.regionFor.keyword('someEntities').append[oneSpace]
 		
-		ax.regionFor.keyword('.').surround[noSpace]
+		ax.regionFor.keyword('.').surround[oneSpace]
 		ax.regionFor.keyword('in').surround[oneSpace]
 	}
 	
 	def dispatch void format(EntityUniversalRestrictionAxiom ax, extension IFormattableDocument document) {
 		ax.regionFor.keyword('allEntities').append[oneSpace]
 		
-		ax.regionFor.keyword('.').surround[noSpace]
+		ax.regionFor.keyword('.').surround[oneSpace]
 		ax.regionFor.keyword('in').surround[oneSpace]
 	}
 	
 	def dispatch void format(EntityScalarDataPropertyExistentialRestrictionAxiom ax, extension IFormattableDocument document) {
 		ax.regionFor.keyword('someData').append[oneSpace]
 		
-		ax.regionFor.keyword('.').surround[noSpace]
+		ax.regionFor.keyword('.').surround[oneSpace]
 		ax.regionFor.keyword('in').surround[oneSpace]
 	}
 	
 	def dispatch void format(EntityScalarDataPropertyParticularRestrictionAxiom ax, extension IFormattableDocument document) {
 		ax.regionFor.keyword('allData').append[oneSpace]
 		
-		ax.regionFor.keyword('.').surround[noSpace]
+		ax.regionFor.keyword('.').surround[oneSpace]
 		ax.regionFor.keyword('in').surround[oneSpace]
 	}
 	
 	def dispatch void format(EntityScalarDataPropertyUniversalRestrictionAxiom ax, extension IFormattableDocument document) {
 		ax.regionFor.keyword('allData').append[oneSpace]
 		
-		ax.regionFor.keyword('.').surround[noSpace]
+		ax.regionFor.keyword('.').surround[oneSpace]
 		ax.regionFor.keyword('in').surround[oneSpace]
 	}
 	
@@ -575,12 +575,12 @@ class OMLFormatter extends AbstractFormatter2 {
 	}
 	
 	def dispatch void format(SingletonInstanceScalarDataPropertyValue s, extension IFormattableDocument document) {
-		s.regionFor.keyword('.').surround[noSpace]
+		s.regionFor.keyword('.').surround[oneSpace]
 		s.regionFor.keyword('=').surround[oneSpace]
 	}
 	
 	def dispatch void format(SingletonInstanceStructuredDataPropertyValue s, extension IFormattableDocument document) {
-		s.regionFor.keyword('.').surround[noSpace]
+		s.regionFor.keyword('.').surround[oneSpace]
 		s.regionFor.keyword('=').surround[oneSpace]
 		
 		val lcurly = s.regionFor.keyword('{')

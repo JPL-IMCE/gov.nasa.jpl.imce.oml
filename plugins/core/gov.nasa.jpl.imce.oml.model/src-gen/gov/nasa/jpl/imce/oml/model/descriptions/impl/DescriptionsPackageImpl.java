@@ -225,9 +225,7 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 		isInited = true;
 
 		// Initialize simple dependencies
-		CommonPackage.eINSTANCE.eClass();
 		TerminologiesPackage.eINSTANCE.eClass();
-		EcorePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theDescriptionsPackage.createPackageContents();
@@ -1441,6 +1439,8 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 		createCopyConstructorAnnotations();
 		// http://imce.jpl.nasa.gov/oml/DerivedUUID
 		createDerivedUUIDAnnotations();
+		// http://imce.jpl.nasa.gov/oml/IRIReference
+		createIRIReferenceAnnotations();
 		// http://imce.jpl.nasa.gov/oml/NotFunctionalAPI
 		createNotFunctionalAPIAnnotations();
 		// http://imce.jpl.nasa.gov/oml/Factory
@@ -2165,6 +2165,36 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 		   });	
 		addAnnotation
 		  (unreifiedRelationshipInstanceTupleEClass, 
+		   source, 
+		   new String[] {
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://imce.jpl.nasa.gov/oml/IRIReference</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createIRIReferenceAnnotations() {
+		String source = "http://imce.jpl.nasa.gov/oml/IRIReference";	
+		addAnnotation
+		  (getDescriptionBoxExtendsClosedWorldDefinitions__TargetModule(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getDescriptionBoxExtendsClosedWorldDefinitions_ClosedWorldDefinitions(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getDescriptionBoxRefinement__TargetModule(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getDescriptionBoxRefinement_RefinedDescriptionBox(), 
 		   source, 
 		   new String[] {
 		   });
