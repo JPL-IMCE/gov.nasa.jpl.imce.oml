@@ -2,7 +2,7 @@ open terminology <http://imce.jpl.nasa.gov/foundation/mission/mission> {
 
 	extends <http://imce.jpl.nasa.gov/foundation/base/base>
 
- 	@rdfs:label = "PerformingElement"
+	@rdfs:label="PerformingElement"
 	aspect PerformingElement
 
 	concept Component
@@ -13,10 +13,10 @@ open terminology <http://imce.jpl.nasa.gov/foundation/mission/mission> {
 		inverseFunctional
 		asymmetric
 		irreflexive
-  		unreified=performs
-  		inverse=isPerformedBy
-  		source=Component
-  		target=Function
- 	}
+		unreified=performs
+		inverse=isPerformedBy
+		source=Component
+		target=Function
+	}
 
 }
