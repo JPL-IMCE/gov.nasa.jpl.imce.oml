@@ -286,6 +286,14 @@ public class OMLExtensions {
 		Generators.nameBasedGenerator(NameBasedGenerator.NAMESPACE_URL).generate(name)
 	}
 
+	static def String getModuleNsURI(Module it) {
+		annotations.findFirst[a| a.property.iri == "http://imce.jpl.nasa.gov/oml/runtime#OML2EcoreNsURI"]?.value ?: iri()
+	}
+	
+	static def String getModuleNsPrefix(Module it) {
+		annotations.findFirst[a| a.property.iri == "http://imce.jpl.nasa.gov/oml/runtime#OML2EcoreNsPrefix"]?.value ?: name()
+	}
+	
 	def Iterable<TerminologyBox> terminologies(Extent it) {
 		it.modules.filter(TerminologyBox)
 	}
