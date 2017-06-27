@@ -28,6 +28,7 @@ import gov.nasa.jpl.imce.oml.model.bundles.BundledTerminologyAxiom;
 import gov.nasa.jpl.imce.oml.model.bundles.RootConceptTaxonomyAxiom;
 import gov.nasa.jpl.imce.oml.model.bundles.SpecificDisjointConceptAxiom;
 import gov.nasa.jpl.imce.oml.model.bundles.TerminologyBundleAxiom;
+import gov.nasa.jpl.imce.oml.model.common.Annotation;
 import gov.nasa.jpl.imce.oml.model.common.Element;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
 import gov.nasa.jpl.imce.oml.model.common.Module;
@@ -398,6 +399,46 @@ public class OMLExtensions {
       _xblockexpression = Generators.nameBasedGenerator(NameBasedGenerator.NAMESPACE_URL).generate(name);
     }
     return _xblockexpression;
+  }
+  
+  public static String getModuleNsURI(final Module it) {
+    String _elvis = null;
+    final Function1<Annotation, Boolean> _function = (Annotation a) -> {
+      String _iri = a.getProperty().getIri();
+      return Boolean.valueOf(Objects.equal(_iri, "http://imce.jpl.nasa.gov/oml/runtime#OML2EcoreNsURI"));
+    };
+    Annotation _findFirst = IterableExtensions.<Annotation>findFirst(it.getAnnotations(), _function);
+    String _value = null;
+    if (_findFirst!=null) {
+      _value=_findFirst.getValue();
+    }
+    if (_value != null) {
+      _elvis = _value;
+    } else {
+      String _iri = it.iri();
+      _elvis = _iri;
+    }
+    return _elvis;
+  }
+  
+  public static String getModuleNsPrefix(final Module it) {
+    String _elvis = null;
+    final Function1<Annotation, Boolean> _function = (Annotation a) -> {
+      String _iri = a.getProperty().getIri();
+      return Boolean.valueOf(Objects.equal(_iri, "http://imce.jpl.nasa.gov/oml/runtime#OML2EcoreNsPrefix"));
+    };
+    Annotation _findFirst = IterableExtensions.<Annotation>findFirst(it.getAnnotations(), _function);
+    String _value = null;
+    if (_findFirst!=null) {
+      _value=_findFirst.getValue();
+    }
+    if (_value != null) {
+      _elvis = _value;
+    } else {
+      String _name = it.name();
+      _elvis = _name;
+    }
+    return _elvis;
   }
   
   public Iterable<TerminologyBox> terminologies(final Extent it) {

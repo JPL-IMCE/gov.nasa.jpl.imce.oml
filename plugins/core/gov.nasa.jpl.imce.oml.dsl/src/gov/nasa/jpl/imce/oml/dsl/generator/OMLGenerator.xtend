@@ -1,13 +1,13 @@
 /*
  * Copyright 2017 California Institute of Technology ("Caltech").
  * U.S. Government sponsorship acknowledged.
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *     http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -85,25 +85,25 @@ class OMLGenerator extends AbstractGenerator {
 	protected var IProject editProjectHandle
 	protected var IProject uiProjectHandle
 	protected var String dsmlName
-	
+
 	public def void setEcoreProjectHandle(IProject ecoreProjectHandle) {
 		this.ecoreProjectHandle = ecoreProjectHandle
 	}
-	
+
 	public def void setEditProjectHandle(IProject editProjectHandle) {
 		this.editProjectHandle = editProjectHandle
 	}
-	
+
 	public def void setUIProjectHandle(IProject uiProjectHandle) {
 		this.uiProjectHandle = uiProjectHandle
 	}
-	
+
 	public def void setDSMLName(String dsmlName) {
 		this.dsmlName = dsmlName
 	}
-	
+
 	public def Bundle getBundle() { omlBundle }
-	
+
 	override afterGenerate(Resource input, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		super.afterGenerate(input, fsa, context)
 		omlBundle = null
@@ -111,52 +111,52 @@ class OMLGenerator extends AbstractGenerator {
 		editProjectHandle = null
 		uiProjectHandle = null
 	}
-	
+
 	override beforeGenerate(Resource input, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		super.beforeGenerate(input, fsa, context)
 		EcoreUtil2.resolveAll(input)
-		
+
 		val rs = input.resourceSet
 		val errors = rs.resources.map[errors].flatten
 		if (!errors.empty) {
 			val message = '''
-			«errors.size» errors: 
-			«FOR e : errors»
-				«e.location» line: «e.line», column: «e.column» «e.message»
-			«ENDFOR»
+				«errors.size» errors: 
+				«FOR e : errors»
+					«e.location» line: «e.line», column: «e.column» «e.message»
+				«ENDFOR»
 			'''
 			throw new IllegalArgumentException(message)
 		}
 		val warnings = rs.resources.map[warnings].flatten
 		if (!warnings.empty) {
 			val message = '''
-			«warnings.size» warnings: 
-			«FOR w : warnings»
-				«w.location» line: «w.line», column: «w.column» «w.message»
-			«ENDFOR»
+				«warnings.size» warnings: 
+				«FOR w : warnings»
+					«w.location» line: «w.line», column: «w.column» «w.message»
+				«ENDFOR»
 			'''
 			throw new IllegalArgumentException(message)
 		}
 		val missing = rs.resources.filter[!loaded]
 		if (!missing.empty) {
 			val message = '''
-			«missing.size» missing resources: 
-			«FOR m : missing»
-				«m.URI»
-			«ENDFOR»
+				«missing.size» missing resources: 
+				«FOR m : missing»
+					«m.URI»
+				«ENDFOR»
 			'''
 			throw new IllegalArgumentException(message)
 		}
-		
+
 		switch top : input.contents.get(0) {
 			Extent: {
 				val bundles = top.modules.filter(Bundle)
-				if (bundles.size != 1) 
-					throw new IllegalArgumentException("There should be exactly 1 Bundle in "+input)
+				if (bundles.size != 1)
+					throw new IllegalArgumentException("There should be exactly 1 Bundle in " + input)
 				omlBundle = bundles.get(0)
 			}
 			default:
-				throw new IllegalArgumentException("There should be exactly 1 Bundle in "+input)
+				throw new IllegalArgumentException("There should be exactly 1 Bundle in " + input)
 		}
 	}
 
@@ -172,7 +172,8 @@ class OMLGenerator extends AbstractGenerator {
 						allTboxes.addAll(bundle.allImportedBundles.map[allImportedTerminologies].flatten)
 						for (terminology : allTboxes) {
 							val filename = terminology.validQName + ".xcore"
-							val contents = new TerminologyToXcoreGenerator(this, allTboxes, terminology, dsmlName).doGenerate
+							val contents = new TerminologyToXcoreGenerator(this, allTboxes, terminology, dsmlName).
+								doGenerate
 							System.out.println("generating: " + filename)
 							fsa.generateFile(filename, contents)
 						}
@@ -187,6 +188,8 @@ class OMLGenerator extends AbstractGenerator {
 
 	private static class TerminologyToXcoreGenerator {
 
+		@Inject extension OMLExtensions
+
 		val String XSD_NS = 'http://www.w3.org/2001/XMLSchema#'
 
 		val Set<TerminologyBox> terminologies
@@ -194,14 +197,16 @@ class OMLGenerator extends AbstractGenerator {
 		val Map<String, String> imports
 		val Set<String> localNames
 		val OMLGenerator generator
-		
+
 		val String packageNsURI
+		val String packageNsPrefix
 		val String packageEQName
 		val String packageQName
 		val String packageTName
 		val String dsmlName
-		
-		new(OMLGenerator generator, Iterable<TerminologyBox> terminologies, TerminologyBox terminology,  String dsmlName) {
+
+		new(OMLGenerator generator, Iterable<TerminologyBox> terminologies, TerminologyBox terminology,
+			String dsmlName) {
 			this.generator = generator
 			this.terminologies = new HashSet()
 			for (t : terminologies) {
@@ -209,25 +214,26 @@ class OMLGenerator extends AbstractGenerator {
 			}
 			this.terminology = terminology
 			this.imports = new HashMap<String, String>()
-			
+
 			this.localNames = new HashSet<String>()
 			terminology.boxStatements.filter(Entity).forEach[this.localNames.add(it.name())]
 			terminology.boxStatements.filter(Structure).forEach[this.localNames.add(it.name())]
-			
+
 			val eInfo = generator.editProjectHandle
 			val eLoc = eInfo.fullPath
 			val eSegs = eLoc.segments
-			
+
 			val pInfo = generator.ecoreProjectHandle
 			val pLoc = pInfo.fullPath
 			val pSegs = pLoc.segments
-			
+
 			this.packageEQName = eSegs.join('.')
 			this.packageQName = pSegs.join('.')
-			
-			this.packageNsURI = terminology.getIri
-			this.dsmlName = dsmlName 
-			
+
+			this.packageNsURI = OMLExtensions.getModuleNsURI(terminology)
+			this.packageNsPrefix = OMLExtensions.getModuleNsPrefix(terminology)
+			this.dsmlName = dsmlName
+
 			this.packageTName = terminology.validQName
 		}
 
@@ -246,7 +252,7 @@ class OMLGenerator extends AbstractGenerator {
 					case existing != legalQName:
 						legalQName
 					default:
-						existing	
+						existing
 				}
 		}
 
@@ -313,7 +319,8 @@ class OMLGenerator extends AbstractGenerator {
 
 		def protected convertToPackage(TerminologyBox terminology) '''
 			@Ecore(
-				nsURI="«packageNsURI»"
+				nsURI="«packageNsURI»",
+				nsPrefix="«packageNsPrefix»"
 			)
 			@GenModel(
 				copyrightText="\nCopyright 2017 California Institute of Technology (\"Caltech\").\nU.S. Government sponsorship acknowledged.\n\nLicensed under the Apache License, Version 2.0 (the \"License\");\nyou may not use this file except in compliance with the License.\nYou may obtain a copy of the License at\n\n     http://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software\ndistributed under the License is distributed on an \"AS IS\" BASIS,\nWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and\nlimitations under the License.\n",
@@ -360,9 +367,8 @@ class OMLGenerator extends AbstractGenerator {
 		def String facet(DataRange range, EAttribute facet) {
 			if (!range.eIsSet(facet))
 				''
-			else 
-			'''
-			@ExtendedMetaData(key="«facet.name»",value="«range.eGet(facet)»")
+			else '''
+				@ExtendedMetaData(key="«facet.name»",value="«range.eGet(facet)»")
 			'''
 		}
 
@@ -370,11 +376,11 @@ class OMLGenerator extends AbstractGenerator {
 			val buff = new StringBuffer()
 			buff.append(
 			'''
-			@OMLProvenance(kind="«range.eClass.name»",iri="«range.iri»")
+				@OMLProvenance(kind="«range.eClass.name»",iri="«range.iri»")
 			''')
-			for (f: facets) {
+			for (f : facets) {
 				val ext = facet(range, f)
-				if (!ext.empty)	{
+				if (!ext.empty) {
 					buff.append(ext)
 				}
 			}
@@ -509,6 +515,8 @@ class OMLGenerator extends AbstractGenerator {
 			}
 		'''
 
+		def protected dispatch convertToType(DataRelationship dr) ''''''
+		
 		def protected dispatch convertToType(Term t) '''
 			// «t.eClass.name»: «t.name()»
 		'''
@@ -546,19 +554,32 @@ class OMLGenerator extends AbstractGenerator {
 			types.convertToExtends
 		}
 
+/**
+ * For now, use the java datatype name as the type of a scalar data property:
+ * «property.range.lookupOML2JavaDatatypeBinding»[1] «property.validName»
+ * 
+ * Consider mapping OML DataRanges to corresponding Ecore datatypes.
+ */
 		def protected dispatch dataProperties(Structure structure) '''
 			«FOR property : allTBoxStatementsOfType(ScalarDataProperty).filter[domain == structure].sortBy[name()]»
-				«property.dataContainer»«property.range.imported»[1] «property.validName»
+				«property.range.lookupOML2JavaDatatypeBinding»[1] «property.validName»
 			«ENDFOR»
 			«FOR property : allTBoxStatementsOfType(StructuredDataProperty).filter[domain == structure].sortBy[name()]»
 				contains «property.dataContainer»«property.range.imported»[1] «property.validName»
 			«ENDFOR»
 		'''
 
+
+/**
+ * For now, use the java datatype name as the type of a scalar data property:
+ * «property.range.lookupOML2JavaDatatypeBinding»[1] «property.validName»
+ * 
+ * Consider mapping OML DataRanges to corresponding Ecore datatypes.
+ */
 		def protected dispatch dataProperties(Entity entity) '''
 			«FOR property : allTBoxStatementsOfType(EntityScalarDataProperty).filter[domain == entity].sortBy[name()]»
 				@OMLProvenance(kind="«property.eClass.name»",iri="«property.iri»")
-				«property.dataContainer»«property.range.imported»[1] «property.validName»
+				«property.range.lookupOML2JavaDatatypeBinding»[1] «property.validName»
 			«ENDFOR»
 			«FOR property : allTBoxStatementsOfType(EntityStructuredDataProperty).filter[domain == entity].sortBy[name()]»
 				@OMLProvenance(kind="«property.eClass.name»",iri="«property.iri»")
@@ -678,6 +699,7 @@ class OMLGenerator extends AbstractGenerator {
 		def toFirstLower(String s) {
 			Character.toLowerCase(s.charAt(0)) + s.substring(1)
 		}
+
 	}
 
 	def protected static dispatch validName(DataRelationship dr) {
@@ -721,12 +743,12 @@ class OMLGenerator extends AbstractGenerator {
 		terminology.name.legalName
 	}
 
-	def protected static validQName(TerminologyBox terminology) {
-		val iri = terminology.iri()
-		val qname = OMLExtensions.convertIRItoNamespace(iri)
+	def protected static validQName(TerminologyBox t) {
+		val uri = OMLExtensions.getModuleNsURI(t)
+		val qname = OMLExtensions.convertIRItoNamespace(uri)
 		qname
 	}
-	
+
 	def protected static legalName(String name) {
 		var valid = name
 		if (valid.length > 0) {

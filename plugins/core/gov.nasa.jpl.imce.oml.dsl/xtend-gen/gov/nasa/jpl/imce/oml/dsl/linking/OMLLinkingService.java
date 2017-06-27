@@ -88,7 +88,17 @@ public class OMLLinkingService extends DefaultLinkingService {
         } else {
           _xifexpression = crossRefIRI.substring(1, (fragmentIndex - 1));
         }
-        final String resourceIRI = _xifexpression;
+        final String refIRI = _xifexpression;
+        String _xifexpression_1 = null;
+        boolean _endsWith = refIRI.endsWith("/");
+        if (_endsWith) {
+          int _length_1 = refIRI.length();
+          int _minus_1 = (_length_1 - 1);
+          _xifexpression_1 = refIRI.substring(0, _minus_1);
+        } else {
+          _xifexpression_1 = refIRI;
+        }
+        final String resourceIRI = _xifexpression_1;
         if ((fragmentIndex > 0)) {
           throw new IllegalNodeException(node, 
             ("Cross-reference cannot specify a fragment OML Entity: " + crossRefIRI));
@@ -125,8 +135,8 @@ public class OMLLinkingService extends DefaultLinkingService {
               int _offset = ((Diagnostic)e).getOffset();
               String _plus_8 = (_plus_7 + Integer.valueOf(_offset));
               String _plus_9 = (_plus_8 + ", length:");
-              int _length_1 = ((Diagnostic)e).getLength();
-              String _plus_10 = (_plus_9 + Integer.valueOf(_length_1));
+              int _length_2 = ((Diagnostic)e).getLength();
+              String _plus_10 = (_plus_9 + Integer.valueOf(_length_2));
               problems.append(_plus_10);
             }
             if (!_matched) {
@@ -164,8 +174,8 @@ public class OMLLinkingService extends DefaultLinkingService {
               int _offset = ((Diagnostic)e).getOffset();
               String _plus_7 = (_plus_6 + Integer.valueOf(_offset));
               String _plus_8 = (_plus_7 + ", length:");
-              int _length_1 = ((Diagnostic)e).getLength();
-              String _plus_9 = (_plus_8 + Integer.valueOf(_length_1));
+              int _length_2 = ((Diagnostic)e).getLength();
+              String _plus_9 = (_plus_8 + Integer.valueOf(_length_2));
               problems.append(_plus_9);
             }
             if (!_matched) {
@@ -203,16 +213,16 @@ public class OMLLinkingService extends DefaultLinkingService {
             };
             final Function1<Bundle, Boolean> _function_3 = (Bundle b) -> {
               String _iri = b.iri();
-              return Boolean.valueOf(Objects.equal(_iri, resourceIRI));
+              return Boolean.valueOf(Objects.equal(_iri, refIRI));
             };
             final Bundle bundle = IterableExtensions.<Bundle>findFirst(Iterables.<Bundle>concat(ListExtensions.<Resource, Iterable<Bundle>>map(rs.getResources(), _function_2)), _function_3);
-            List<EObject> _xifexpression_1 = null;
+            List<EObject> _xifexpression_2 = null;
             if ((null == bundle)) {
-              _xifexpression_1 = Collections.<EObject>emptyList();
+              _xifexpression_2 = Collections.<EObject>emptyList();
             } else {
-              _xifexpression_1 = Collections.<EObject>singletonList(bundle);
+              _xifexpression_2 = Collections.<EObject>singletonList(bundle);
             }
-            return _xifexpression_1;
+            return _xifexpression_2;
           }
           if (!_matched) {
             EClass _terminologyBox = TerminologiesPackage.eINSTANCE.getTerminologyBox();
@@ -226,16 +236,16 @@ public class OMLLinkingService extends DefaultLinkingService {
               };
               final Function1<TerminologyBox, Boolean> _function_5 = (TerminologyBox tbox) -> {
                 String _iri = tbox.iri();
-                return Boolean.valueOf(Objects.equal(_iri, resourceIRI));
+                return Boolean.valueOf(Objects.equal(_iri, refIRI));
               };
               final TerminologyBox tbox = IterableExtensions.<TerminologyBox>findFirst(Iterables.<TerminologyBox>concat(ListExtensions.<Resource, Iterable<TerminologyBox>>map(rs.getResources(), _function_4)), _function_5);
-              List<EObject> _xifexpression_2 = null;
+              List<EObject> _xifexpression_3 = null;
               if ((null == tbox)) {
-                _xifexpression_2 = Collections.<EObject>emptyList();
+                _xifexpression_3 = Collections.<EObject>emptyList();
               } else {
-                _xifexpression_2 = Collections.<EObject>singletonList(tbox);
+                _xifexpression_3 = Collections.<EObject>singletonList(tbox);
               }
-              return _xifexpression_2;
+              return _xifexpression_3;
             }
           }
           if (!_matched) {
@@ -250,16 +260,16 @@ public class OMLLinkingService extends DefaultLinkingService {
               };
               final Function1<DescriptionBox, Boolean> _function_7 = (DescriptionBox dbox) -> {
                 String _iri = dbox.iri();
-                return Boolean.valueOf(Objects.equal(_iri, resourceIRI));
+                return Boolean.valueOf(Objects.equal(_iri, refIRI));
               };
               final DescriptionBox dbox = IterableExtensions.<DescriptionBox>findFirst(Iterables.<DescriptionBox>concat(ListExtensions.<Resource, Iterable<DescriptionBox>>map(rs.getResources(), _function_6)), _function_7);
-              List<EObject> _xifexpression_3 = null;
+              List<EObject> _xifexpression_4 = null;
               if ((null == dbox)) {
-                _xifexpression_3 = Collections.<EObject>emptyList();
+                _xifexpression_4 = Collections.<EObject>emptyList();
               } else {
-                _xifexpression_3 = Collections.<EObject>singletonList(dbox);
+                _xifexpression_4 = Collections.<EObject>singletonList(dbox);
               }
-              return _xifexpression_3;
+              return _xifexpression_4;
             }
           }
           return Collections.<EObject>emptyList();
