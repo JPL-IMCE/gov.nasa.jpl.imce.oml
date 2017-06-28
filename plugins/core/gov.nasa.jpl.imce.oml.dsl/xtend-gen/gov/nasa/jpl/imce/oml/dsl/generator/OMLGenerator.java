@@ -1435,8 +1435,8 @@ public class OMLGenerator extends AbstractGenerator {
     
     protected String targetName(final ReifiedRelationship relationship) {
       String _switchResult = null;
-      String _name = relationship.name();
-      final String s = _name;
+      String _unreifiedPropertyName = relationship.getUnreifiedPropertyName();
+      final String s = _unreifiedPropertyName;
       boolean _matched = false;
       if (Objects.equal(s, null)) {
         _matched=true;
