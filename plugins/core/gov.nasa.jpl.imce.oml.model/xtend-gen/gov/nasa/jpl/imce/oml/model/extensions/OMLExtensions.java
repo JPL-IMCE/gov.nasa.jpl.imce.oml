@@ -200,7 +200,6 @@ public class OMLExtensions {
     URI current = path;
     while ((current.segmentCount() > 0)) {
       try {
-        System.out.println(("# Searching for OML catalog in: " + current));
         final URI omlC = current.appendSegment(OMLExtensions.OML_CATALOG_XML);
         String _string = omlC.toString();
         final URL omlURL = new URL(_string);
@@ -212,7 +211,6 @@ public class OMLExtensions {
           String _string_1 = omlC.toString();
           URL _uRL = new URL(_string_1);
           c.parseCatalog(_uRL);
-          System.out.println(("# Found catalog: " + omlC));
         }
         return c;
       } catch (final Throwable _t) {

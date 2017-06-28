@@ -1770,7 +1770,6 @@ public class OMLGenerator extends AbstractGenerator {
                 String _validQName = OMLGenerator.validQName(terminology);
                 final String filename = (_validQName + ".xcore");
                 final CharSequence contents = new OMLGenerator.TerminologyToXcoreGenerator(this, allTboxes, terminology, this.dsmlName).doGenerate();
-                System.out.println(("generating: " + filename));
                 fsa.generateFile(filename, contents);
               }
             }
