@@ -28,7 +28,7 @@ import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 
 @SuppressWarnings("all")
-public class LiftOMLBundle2NewXcoreProjectWizardPage extends WizardNewProjectCreationPage {
+public class LiftOMLBundle2XcoreNewProjectWizardPage extends WizardNewProjectCreationPage {
   protected LiftOMLBundle2XcoreMetamodelWizard wizard;
   
   @Override
@@ -37,7 +37,7 @@ public class LiftOMLBundle2NewXcoreProjectWizardPage extends WizardNewProjectCre
     super.dispose();
   }
   
-  public LiftOMLBundle2NewXcoreProjectWizardPage(final String initialProjectName, final LiftOMLBundle2XcoreMetamodelWizard wizard) {
+  public LiftOMLBundle2XcoreNewProjectWizardPage(final String initialProjectName, final LiftOMLBundle2XcoreMetamodelWizard wizard) {
     super("Lift OML Bundle to New Xcore Project");
     this.wizard = wizard;
     this.setInitialProjectName(initialProjectName);
