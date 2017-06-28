@@ -655,7 +655,7 @@ class OMLGenerator extends AbstractGenerator {
 		}
 
 		def protected targetName(ReifiedRelationship relationship) {
-			val s = switch s : relationship.name() {
+			val s = switch s : relationship.unreifiedPropertyName {
 				case null:
 					''
 				case s.length > 0:
