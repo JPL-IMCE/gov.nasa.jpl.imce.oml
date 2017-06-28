@@ -151,7 +151,7 @@ public class OMLExtensions {
 		var current = path
 		while (current.segmentCount > 0) {
 			try {
-				System.out.println("# Searching for OML catalog in: " + current)
+				//System.out.println("# Searching for OML catalog in: " + current)
 				val omlC = current.appendSegment(OML_CATALOG_XML)
 				val omlURL = new URL(omlC.toString)
 
@@ -161,7 +161,7 @@ public class OMLExtensions {
 
 				if (!c.hasParsedCatalog(omlURL)) {
 					c.parseCatalog(new URL(omlC.toString))
-					System.out.println("# Found catalog: " + omlC)
+					//System.out.println("# Found catalog: " + omlC)
 				}
 
 				return c

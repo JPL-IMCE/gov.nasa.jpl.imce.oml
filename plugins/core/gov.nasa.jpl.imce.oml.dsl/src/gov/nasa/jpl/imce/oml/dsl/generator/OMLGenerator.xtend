@@ -174,7 +174,7 @@ class OMLGenerator extends AbstractGenerator {
 							val filename = terminology.validQName + ".xcore"
 							val contents = new TerminologyToXcoreGenerator(this, allTboxes, terminology, dsmlName).
 								doGenerate
-							System.out.println("generating: " + filename)
+							//System.out.println("generating: " + filename)
 							fsa.generateFile(filename, contents)
 						}
 					}
