@@ -182,6 +182,7 @@ DataRelationship returns DataRelationship:
 TermAxiom returns TermAxiom:
 	EntityRestrictionAxiom |
 	EntityScalarDataPropertyRestrictionAxiom |
+	EntityStructuredDataPropertyRestrictionAxiom |
 	ScalarOneOfLiteralAxiom |
 	SpecializationAxiom;
 	
@@ -193,6 +194,9 @@ EntityScalarDataPropertyRestrictionAxiom returns EntityScalarDataPropertyRestric
 	EntityScalarDataPropertyExistentialRestrictionAxiom | 
 	EntityScalarDataPropertyParticularRestrictionAxiom | 
 	EntityScalarDataPropertyUniversalRestrictionAxiom;
+	
+EntityStructuredDataPropertyRestrictionAxiom returns EntityStructuredDataPropertyRestrictionAxiom:
+	EntityStructuredDataPropertyParticularRestrictionAxiom;
 	
 SpecializationAxiom returns SpecializationAxiom:
 	ConceptSpecializationAxiom | 
@@ -358,6 +362,30 @@ EntityScalarDataPropertyUniversalRestrictionAxiom returns EntityScalarDataProper
 	restrictedEntity=[Entity|Reference]
 	'.' scalarProperty=[EntityScalarDataProperty|Reference]
 	'in' scalarRestriction=[DataRange|Reference];
+
+// 1 EntityStructuredDataPropertyRestrictionAxiom
+EntityStructuredDataPropertyParticularRestrictionAxiom returns EntityStructuredDataPropertyParticularRestrictionAxiom:
+	'every'
+	restrictedEntity=[Entity|Reference]
+	'.'
+	structuredDataProperty=[EntityStructuredDataProperty|Reference]
+	'='
+	'{'
+	( structuredPropertyTuples+=RestrictionStructuredDataPropertyTuple |
+	  scalarDataPropertyValues+=RestrictionScalarDataPropertyValue )*
+	'}';
+	
+RestrictionStructuredDataPropertyTuple returns RestrictionStructuredDataPropertyTuple:
+	structuredDataProperty=[StructuredDataProperty|Reference]
+	'=' '{'
+	( structuredPropertyTuples+=RestrictionStructuredDataPropertyTuple |
+	  scalarDataPropertyValues+=RestrictionScalarDataPropertyValue )*
+    '}';
+
+RestrictionScalarDataPropertyValue returns RestrictionScalarDataPropertyValue:
+	scalarDataProperty=[ScalarDataProperty|Reference]
+	'=' 
+	scalarPropertyValue=Value;
 
 // 8 RestrictedDataRanges + 1 ScalarOneOfLiteralAxiom
 
