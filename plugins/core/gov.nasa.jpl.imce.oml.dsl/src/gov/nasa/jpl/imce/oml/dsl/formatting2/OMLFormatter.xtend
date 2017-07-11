@@ -387,10 +387,10 @@ class OMLFormatter extends AbstractFormatter2 {
 	}
 	
 	def dispatch void format(EntityScalarDataPropertyParticularRestrictionAxiom ax, extension IFormattableDocument document) {
-		ax.regionFor.keyword('allData').append[oneSpace]
+		ax.regionFor.keyword('every').append[oneSpace]
 		
 		ax.regionFor.keyword('.').surround[oneSpace]
-		ax.regionFor.keyword('in').surround[oneSpace]
+		ax.regionFor.keyword('=').surround[oneSpace]
 	}
 	
 	def dispatch void format(EntityScalarDataPropertyUniversalRestrictionAxiom ax, extension IFormattableDocument document) {
