@@ -1,0 +1,15 @@
+gov.nasa.jpl.imce.oml.tycho 0.7.1.2 resolves minor problems found in 0.7.1.1
+
+## Issues Resolved
+
+- [#66 Fix OML textual syntax for EntityScalarDataPropertyParticularRestrictionAxiom](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/66)
+
+- [#65 OMLGenerator produces invalid Xcore from OML](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/65)
+
+- [#64 Lift OML Bundle to XCore Default Location Bug](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/64)
+
+- [#63 Remove the verbose output: `# Searching for OML catalog in: ...`](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/63)
+
+- [#10 Lift OML Bundle wizard is not available in the project explorer context menu](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/10)
+
+### [Release process](releaseProcess.markdown)
