@@ -2,6 +2,10 @@ gov.nasa.jpl.imce.oml.tycho 0.7.1.2 resolves minor problems found in 0.7.1.1
 
 ## Issues Resolved
 
+- [#68 scalar data property value must be a `LexicalValue`, not a `String`](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/68)
+
+- [#67 Missing EntityStructuredDataPropertyParticularRestrictionAxiom](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/67)
+
 - [#66 Fix OML textual syntax for EntityScalarDataPropertyParticularRestrictionAxiom](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/66)
 
 - [#65 OMLGenerator produces invalid Xcore from OML](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/65)
