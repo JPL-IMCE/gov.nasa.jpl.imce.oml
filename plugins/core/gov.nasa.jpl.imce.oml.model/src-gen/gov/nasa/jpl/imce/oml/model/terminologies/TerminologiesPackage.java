@@ -4365,7 +4365,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM___TERMINOLOGY_BOX = ENTITY_STRUCTURED_DATA_PROPERTY_RESTRICTION_AXIOM_OPERATION_COUNT + 0;
+	int ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM___TERMINOLOGY_BOX = ENTITY_STRUCTURED_DATA_PROPERTY_RESTRICTION_AXIOM_OPERATION_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Uuid</em>' operation.
@@ -4374,7 +4374,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM___UUID = ENTITY_STRUCTURED_DATA_PROPERTY_RESTRICTION_AXIOM_OPERATION_COUNT + 1;
+	int ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM___UUID = ENTITY_STRUCTURED_DATA_PROPERTY_RESTRICTION_AXIOM_OPERATION_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Entity Structured Data Property Particular Restriction Axiom</em>' class.
@@ -4383,7 +4383,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM_OPERATION_COUNT = ENTITY_STRUCTURED_DATA_PROPERTY_RESTRICTION_AXIOM_OPERATION_COUNT + 2;
+	int ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM_OPERATION_COUNT = ENTITY_STRUCTURED_DATA_PROPERTY_RESTRICTION_AXIOM_OPERATION_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.RestrictionStructuredDataPropertyContextImpl <em>Restriction Structured Data Property Context</em>}' class.
@@ -7201,6 +7201,16 @@ public interface TerminologiesPackage extends EPackage {
 	EClass getEntityStructuredDataPropertyParticularRestrictionAxiom();
 
 	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataPropertyParticularRestrictionAxiom#terminologyBox() <em>Terminology Box</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Terminology Box</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataPropertyParticularRestrictionAxiom#terminologyBox()
+	 * @generated
+	 */
+	EOperation getEntityStructuredDataPropertyParticularRestrictionAxiom__TerminologyBox();
+
+	/**
 	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataPropertyParticularRestrictionAxiom#uuid() <em>Uuid</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8950,6 +8960,14 @@ public interface TerminologiesPackage extends EPackage {
 		 * @generated
 		 */
 		EClass ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM = eINSTANCE.getEntityStructuredDataPropertyParticularRestrictionAxiom();
+
+		/**
+		 * The meta object literal for the '<em><b>Terminology Box</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM___TERMINOLOGY_BOX = eINSTANCE.getEntityStructuredDataPropertyParticularRestrictionAxiom__TerminologyBox();
 
 		/**
 		 * The meta object literal for the '<em><b>Uuid</b></em>' operation.

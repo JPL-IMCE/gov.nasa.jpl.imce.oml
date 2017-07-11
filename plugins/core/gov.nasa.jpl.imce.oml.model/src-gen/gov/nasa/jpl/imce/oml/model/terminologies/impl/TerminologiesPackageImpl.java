@@ -1761,8 +1761,17 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getEntityStructuredDataPropertyParticularRestrictionAxiom__Uuid() {
+	public EOperation getEntityStructuredDataPropertyParticularRestrictionAxiom__TerminologyBox() {
 		return entityStructuredDataPropertyParticularRestrictionAxiomEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getEntityStructuredDataPropertyParticularRestrictionAxiom__Uuid() {
+		return entityStructuredDataPropertyParticularRestrictionAxiomEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -2454,6 +2463,7 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		createEReference(entityStructuredDataPropertyRestrictionAxiomEClass, ENTITY_STRUCTURED_DATA_PROPERTY_RESTRICTION_AXIOM__RESTRICTED_ENTITY);
 
 		entityStructuredDataPropertyParticularRestrictionAxiomEClass = createEClass(ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM);
+		createEOperation(entityStructuredDataPropertyParticularRestrictionAxiomEClass, ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM___TERMINOLOGY_BOX);
 		createEOperation(entityStructuredDataPropertyParticularRestrictionAxiomEClass, ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM___UUID);
 
 		restrictionStructuredDataPropertyContextEClass = createEClass(RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT);
@@ -2858,6 +2868,8 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		initEReference(getEntityStructuredDataPropertyRestrictionAxiom_RestrictedEntity(), this.getEntity(), null, "restrictedEntity", null, 1, 1, EntityStructuredDataPropertyRestrictionAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(entityStructuredDataPropertyParticularRestrictionAxiomEClass, EntityStructuredDataPropertyParticularRestrictionAxiom.class, "EntityStructuredDataPropertyParticularRestrictionAxiom", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEOperation(getEntityStructuredDataPropertyParticularRestrictionAxiom__TerminologyBox(), this.getTerminologyBox(), "terminologyBox", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEOperation(getEntityStructuredDataPropertyParticularRestrictionAxiom__Uuid(), theCommonPackage.getUUID(), "uuid", 1, 1, !IS_UNIQUE, IS_ORDERED);
 
@@ -3516,6 +3528,11 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   new String[] {
 		   });	
 		addAnnotation
+		  (getEntityStructuredDataPropertyParticularRestrictionAxiom__TerminologyBox(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
 		  (getEntityStructuredDataPropertyParticularRestrictionAxiom__Uuid(), 
 		   source, 
 		   new String[] {
@@ -3661,6 +3678,11 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   });	
 		addAnnotation
 		  (getTerm__AbbrevIRI(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getEntityStructuredDataPropertyParticularRestrictionAxiom__TerminologyBox(), 
 		   source, 
 		   new String[] {
 		   });	
@@ -3961,6 +3983,11 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   });	
 		addAnnotation
 		  (getReifiedRelationshipSpecializationAxiom__Parent(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getEntityStructuredDataPropertyParticularRestrictionAxiom__TerminologyBox(), 
 		   source, 
 		   new String[] {
 		   });	

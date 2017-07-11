@@ -185,6 +185,15 @@ public class EntityStructuredDataPropertyParticularRestrictionAxiomImpl extends 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public TerminologyBox terminologyBox() {
+		return this.getTbox();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String uuid() {
 		TerminologyBox _tbox = this.getTbox();
 		String _uuid = null;
@@ -219,17 +228,6 @@ public class EntityStructuredDataPropertyParticularRestrictionAxiomImpl extends 
 			_string_2=_derivedUUID.toString();
 		}
 		return _string_2;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TerminologyBox terminologyBox() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -413,10 +411,10 @@ public class EntityStructuredDataPropertyParticularRestrictionAxiomImpl extends 
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case TerminologiesPackage.ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM___UUID:
-				return uuid();
 			case TerminologiesPackage.ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM___TERMINOLOGY_BOX:
 				return terminologyBox();
+			case TerminologiesPackage.ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM___UUID:
+				return uuid();
 		}
 		return super.eInvoke(operationID, arguments);
 	}
