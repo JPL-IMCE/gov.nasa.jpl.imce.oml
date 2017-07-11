@@ -902,6 +902,11 @@ abstract class EntityStructuredDataPropertyRestrictionAxiom extends TermAxiom {
 class EntityStructuredDataPropertyParticularRestrictionAxiom
 extends EntityStructuredDataPropertyRestrictionAxiom, RestrictionStructuredDataPropertyContext {
   	
+	@ImplicitExtent
+	@NotSchema
+	@Override
+	op TerminologyBox[?] terminologyBox() { tbox }
+	
 	@NotFunctionalAPI
 	@NotSchema
 	op UUID[1] uuid() {
