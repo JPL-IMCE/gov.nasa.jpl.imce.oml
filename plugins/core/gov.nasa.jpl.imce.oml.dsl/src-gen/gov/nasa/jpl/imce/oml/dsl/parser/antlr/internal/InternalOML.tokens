@@ -1,11 +1,10 @@
 '('=63
 ')'=64
 '+'=56
-','=76
 '.'=68
 '='=21
 '@'=22
-'allData'=75
+'allData'=76
 'allEntities'=70
 'annotationProperty'=20
 'anonymousConceptUnion'=62
@@ -26,6 +25,7 @@
 'entityScalarDataProperty'=59
 'entityStructuredDataProperty'=55
 'essential'=41
+'every'=75
 'extends'=32
 'extendsAspect'=71
 'extendsConcept'=72

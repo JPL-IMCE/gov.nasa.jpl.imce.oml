@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalOMLParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ABBREV_IRI", "RULE_IRI", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_DECIMAL", "RULE_UUID", "RULE_HEX", "RULE_FLOAT", "RULE_HEX_8DIGITS", "RULE_HEX_4DIGITS", "RULE_HEX_12DIGITS", "RULE_HEX_DIGIT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "'annotationProperty'", "'='", "'@'", "'terminology'", "'{'", "'}'", "'bundle'", "'descriptionBox'", "'bundles'", "'conceptDesignationTerminologyAxiom'", "'designatedTerminology'", "'designatedConcept'", "'extends'", "'terminologyNestingAxiom'", "'nestingTerminology'", "'nestingContext'", "'aspect'", "'concept'", "'reifiedRelationship'", "'functional'", "'inverseFunctional'", "'essential'", "'inverseEssential'", "'symmetric'", "'asymmetric'", "'reflexive'", "'irreflexive'", "'transitive'", "'unreified'", "'inverse'", "'source'", "'target'", "'unreifiedRelationship'", "'scalar'", "'structure'", "'entityStructuredDataProperty'", "'+'", "'domain'", "'range'", "'entityScalarDataProperty'", "'structuredDataProperty'", "'scalarDataProperty'", "'anonymousConceptUnion'", "'('", "')'", "'rootConceptTaxonomy'", "'disjointLeaf'", "'someEntities'", "'.'", "'in'", "'allEntities'", "'extendsAspect'", "'extendsConcept'", "'extendsRelationship'", "'someData'", "'allData'", "','", "'binaryScalarRestriction'", "'length'", "'minLength'", "'maxLength'", "'restrictedRange'", "'iriScalarRestriction'", "'pattern'", "'numericScalarRestriction'", "'minInclusive'", "'maxInclusive'", "'minExclusive'", "'maxExclusive'", "'plainLiteralScalarRestriction'", "'langRange'", "'scalarOneOfRestriction'", "'oneOf'", "'stringScalarRestriction'", "'synonymScalarRestriction'", "'timeScalarRestriction'", "'refines'", "'conceptInstance'", "'is-a'", "'reifiedRelationshipInstance'", "'tuple'", "'open'", "'closed'", "'final'", "'partial'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ABBREV_IRI", "RULE_IRI", "RULE_STRING", "RULE_ID", "RULE_INT", "RULE_DECIMAL", "RULE_UUID", "RULE_HEX", "RULE_FLOAT", "RULE_HEX_8DIGITS", "RULE_HEX_4DIGITS", "RULE_HEX_12DIGITS", "RULE_HEX_DIGIT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "'annotationProperty'", "'='", "'@'", "'terminology'", "'{'", "'}'", "'bundle'", "'descriptionBox'", "'bundles'", "'conceptDesignationTerminologyAxiom'", "'designatedTerminology'", "'designatedConcept'", "'extends'", "'terminologyNestingAxiom'", "'nestingTerminology'", "'nestingContext'", "'aspect'", "'concept'", "'reifiedRelationship'", "'functional'", "'inverseFunctional'", "'essential'", "'inverseEssential'", "'symmetric'", "'asymmetric'", "'reflexive'", "'irreflexive'", "'transitive'", "'unreified'", "'inverse'", "'source'", "'target'", "'unreifiedRelationship'", "'scalar'", "'structure'", "'entityStructuredDataProperty'", "'+'", "'domain'", "'range'", "'entityScalarDataProperty'", "'structuredDataProperty'", "'scalarDataProperty'", "'anonymousConceptUnion'", "'('", "')'", "'rootConceptTaxonomy'", "'disjointLeaf'", "'someEntities'", "'.'", "'in'", "'allEntities'", "'extendsAspect'", "'extendsConcept'", "'extendsRelationship'", "'someData'", "'every'", "'allData'", "'binaryScalarRestriction'", "'length'", "'minLength'", "'maxLength'", "'restrictedRange'", "'iriScalarRestriction'", "'pattern'", "'numericScalarRestriction'", "'minInclusive'", "'maxInclusive'", "'minExclusive'", "'maxExclusive'", "'plainLiteralScalarRestriction'", "'langRange'", "'scalarOneOfRestriction'", "'oneOf'", "'stringScalarRestriction'", "'synonymScalarRestriction'", "'timeScalarRestriction'", "'refines'", "'conceptInstance'", "'is-a'", "'reifiedRelationshipInstance'", "'tuple'", "'open'", "'closed'", "'final'", "'partial'"
     };
     public static final int RULE_HEX=11;
     public static final int T__50=50;
@@ -1065,6 +1065,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
                 case 70:
                 case 74:
                 case 75:
+                case 76:
                 case 77:
                 case 82:
                 case 84:
@@ -1443,6 +1444,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
                 case 70:
                 case 74:
                 case 75:
+                case 76:
                 case 77:
                 case 82:
                 case 84:
@@ -3027,7 +3029,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
             int alt11=2;
             int LA11_0 = input.LA(1);
 
-            if ( ((LA11_0>=RULE_ABBREV_IRI && LA11_0<=RULE_IRI)||LA11_0==RULE_ID||LA11_0==67||LA11_0==70||(LA11_0>=74 && LA11_0<=75)||LA11_0==92) ) {
+            if ( ((LA11_0>=RULE_ABBREV_IRI && LA11_0<=RULE_IRI)||LA11_0==RULE_ID||LA11_0==67||LA11_0==70||(LA11_0>=74 && LA11_0<=76)||LA11_0==92) ) {
                 alt11=1;
             }
             else if ( ((LA11_0>=36 && LA11_0<=38)||(LA11_0>=52 && LA11_0<=55)||(LA11_0>=59 && LA11_0<=61)||LA11_0==77||LA11_0==82||LA11_0==84||LA11_0==89||LA11_0==91||(LA11_0>=93 && LA11_0<=95)) ) {
@@ -4338,6 +4340,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
                 break;
             case 74:
             case 75:
+            case 76:
                 {
                 alt19=2;
                 }
@@ -4641,81 +4644,29 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
             {
             // InternalOML.g:1709:2: (this_EntityScalarDataPropertyExistentialRestrictionAxiom_0= ruleEntityScalarDataPropertyExistentialRestrictionAxiom | this_EntityScalarDataPropertyParticularRestrictionAxiom_1= ruleEntityScalarDataPropertyParticularRestrictionAxiom | this_EntityScalarDataPropertyUniversalRestrictionAxiom_2= ruleEntityScalarDataPropertyUniversalRestrictionAxiom )
             int alt21=3;
-            int LA21_0 = input.LA(1);
-
-            if ( (LA21_0==74) ) {
+            switch ( input.LA(1) ) {
+            case 74:
+                {
                 alt21=1;
-            }
-            else if ( (LA21_0==75) ) {
-                switch ( input.LA(2) ) {
-                case RULE_IRI:
-                    {
-                    int LA21_3 = input.LA(3);
-
-                    if ( (LA21_3==76) ) {
-                        alt21=2;
-                    }
-                    else if ( (LA21_3==68) ) {
-                        alt21=3;
-                    }
-                    else {
-                        NoViableAltException nvae =
-                            new NoViableAltException("", 21, 3, input);
-
-                        throw nvae;
-                    }
-                    }
-                    break;
-                case RULE_ABBREV_IRI:
-                    {
-                    int LA21_4 = input.LA(3);
-
-                    if ( (LA21_4==76) ) {
-                        alt21=2;
-                    }
-                    else if ( (LA21_4==68) ) {
-                        alt21=3;
-                    }
-                    else {
-                        NoViableAltException nvae =
-                            new NoViableAltException("", 21, 4, input);
-
-                        throw nvae;
-                    }
-                    }
-                    break;
-                case RULE_ID:
-                    {
-                    int LA21_5 = input.LA(3);
-
-                    if ( (LA21_5==68) ) {
-                        alt21=3;
-                    }
-                    else if ( (LA21_5==76) ) {
-                        alt21=2;
-                    }
-                    else {
-                        NoViableAltException nvae =
-                            new NoViableAltException("", 21, 5, input);
-
-                        throw nvae;
-                    }
-                    }
-                    break;
-                default:
-                    NoViableAltException nvae =
-                        new NoViableAltException("", 21, 2, input);
-
-                    throw nvae;
                 }
-
-            }
-            else {
+                break;
+            case 75:
+                {
+                alt21=2;
+                }
+                break;
+            case 76:
+                {
+                alt21=3;
+                }
+                break;
+            default:
                 NoViableAltException nvae =
                     new NoViableAltException("", 21, 0, input);
 
                 throw nvae;
             }
+
             switch (alt21) {
                 case 1 :
                     // InternalOML.g:1710:3: this_EntityScalarDataPropertyExistentialRestrictionAxiom_0= ruleEntityScalarDataPropertyExistentialRestrictionAxiom
@@ -9570,7 +9521,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleEntityScalarDataPropertyParticularRestrictionAxiom"
-    // InternalOML.g:3715:1: ruleEntityScalarDataPropertyParticularRestrictionAxiom returns [EObject current=null] : (otherlv_0= 'allData' ( ( ruleReference ) ) otherlv_2= ',' ( ( ruleReference ) ) otherlv_4= '=' ( (lv_literalValue_5_0= RULE_STRING ) ) ) ;
+    // InternalOML.g:3715:1: ruleEntityScalarDataPropertyParticularRestrictionAxiom returns [EObject current=null] : (otherlv_0= 'every' ( ( ruleReference ) ) otherlv_2= '.' ( ( ruleReference ) ) otherlv_4= '=' ( (lv_literalValue_5_0= RULE_STRING ) ) ) ;
     public final EObject ruleEntityScalarDataPropertyParticularRestrictionAxiom() throws RecognitionException {
         EObject current = null;
 
@@ -9583,15 +9534,15 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalOML.g:3721:2: ( (otherlv_0= 'allData' ( ( ruleReference ) ) otherlv_2= ',' ( ( ruleReference ) ) otherlv_4= '=' ( (lv_literalValue_5_0= RULE_STRING ) ) ) )
-            // InternalOML.g:3722:2: (otherlv_0= 'allData' ( ( ruleReference ) ) otherlv_2= ',' ( ( ruleReference ) ) otherlv_4= '=' ( (lv_literalValue_5_0= RULE_STRING ) ) )
+            // InternalOML.g:3721:2: ( (otherlv_0= 'every' ( ( ruleReference ) ) otherlv_2= '.' ( ( ruleReference ) ) otherlv_4= '=' ( (lv_literalValue_5_0= RULE_STRING ) ) ) )
+            // InternalOML.g:3722:2: (otherlv_0= 'every' ( ( ruleReference ) ) otherlv_2= '.' ( ( ruleReference ) ) otherlv_4= '=' ( (lv_literalValue_5_0= RULE_STRING ) ) )
             {
-            // InternalOML.g:3722:2: (otherlv_0= 'allData' ( ( ruleReference ) ) otherlv_2= ',' ( ( ruleReference ) ) otherlv_4= '=' ( (lv_literalValue_5_0= RULE_STRING ) ) )
-            // InternalOML.g:3723:3: otherlv_0= 'allData' ( ( ruleReference ) ) otherlv_2= ',' ( ( ruleReference ) ) otherlv_4= '=' ( (lv_literalValue_5_0= RULE_STRING ) )
+            // InternalOML.g:3722:2: (otherlv_0= 'every' ( ( ruleReference ) ) otherlv_2= '.' ( ( ruleReference ) ) otherlv_4= '=' ( (lv_literalValue_5_0= RULE_STRING ) ) )
+            // InternalOML.g:3723:3: otherlv_0= 'every' ( ( ruleReference ) ) otherlv_2= '.' ( ( ruleReference ) ) otherlv_4= '=' ( (lv_literalValue_5_0= RULE_STRING ) )
             {
             otherlv_0=(Token)match(input,75,FOLLOW_19); 
 
-            			newLeafNode(otherlv_0, grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomAccess().getAllDataKeyword_0());
+            			newLeafNode(otherlv_0, grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomAccess().getEveryKeyword_0());
             		
             // InternalOML.g:3727:3: ( ( ruleReference ) )
             // InternalOML.g:3728:4: ( ruleReference )
@@ -9607,7 +9558,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
 
             					newCompositeNode(grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomAccess().getRestrictedEntityEntityCrossReference_1_0());
             				
-            pushFollow(FOLLOW_40);
+            pushFollow(FOLLOW_35);
             ruleReference();
 
             state._fsp--;
@@ -9621,9 +9572,9 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,76,FOLLOW_19); 
+            otherlv_2=(Token)match(input,68,FOLLOW_19); 
 
-            			newLeafNode(otherlv_2, grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomAccess().getCommaKeyword_2());
+            			newLeafNode(otherlv_2, grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomAccess().getFullStopKeyword_2());
             		
             // InternalOML.g:3747:3: ( ( ruleReference ) )
             // InternalOML.g:3748:4: ( ruleReference )
@@ -9760,7 +9711,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
             // InternalOML.g:3803:2: (otherlv_0= 'allData' ( ( ruleReference ) ) otherlv_2= '.' ( ( ruleReference ) ) otherlv_4= 'in' ( ( ruleReference ) ) )
             // InternalOML.g:3804:3: otherlv_0= 'allData' ( ( ruleReference ) ) otherlv_2= '.' ( ( ruleReference ) ) otherlv_4= 'in' ( ( ruleReference ) )
             {
-            otherlv_0=(Token)match(input,75,FOLLOW_19); 
+            otherlv_0=(Token)match(input,76,FOLLOW_19); 
 
             			newLeafNode(otherlv_0, grammarAccess.getEntityScalarDataPropertyUniversalRestrictionAxiomAccess().getAllDataKeyword_0());
             		
@@ -9971,7 +9922,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,24,FOLLOW_41); 
+            otherlv_2=(Token)match(input,24,FOLLOW_40); 
 
             			newLeafNode(otherlv_2, grammarAccess.getBinaryScalarRestrictionAccess().getLeftCurlyBracketKeyword_2());
             		
@@ -10029,7 +9980,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
             	    // InternalOML.g:3921:19: (otherlv_4= 'length' ( (lv_length_5_0= RULE_INT ) ) )
             	    // InternalOML.g:3921:20: otherlv_4= 'length' ( (lv_length_5_0= RULE_INT ) )
             	    {
-            	    otherlv_4=(Token)match(input,78,FOLLOW_42); 
+            	    otherlv_4=(Token)match(input,78,FOLLOW_41); 
 
             	    									newLeafNode(otherlv_4, grammarAccess.getBinaryScalarRestrictionAccess().getLengthKeyword_3_0_0());
             	    								
@@ -10039,7 +9990,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
             	    // InternalOML.g:3926:10: (lv_length_5_0= RULE_INT )
             	    // InternalOML.g:3927:11: lv_length_5_0= RULE_INT
             	    {
-            	    lv_length_5_0=(Token)match(input,RULE_INT,FOLLOW_41); 
+            	    lv_length_5_0=(Token)match(input,RULE_INT,FOLLOW_40); 
 
             	    											newLeafNode(lv_length_5_0, grammarAccess.getBinaryScalarRestrictionAccess().getLengthINTTerminalRuleCall_3_0_1_0());
             	    										
@@ -10101,7 +10052,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
             	    // InternalOML.g:3954:19: (otherlv_6= 'minLength' ( (lv_minLength_7_0= RULE_INT ) ) )
             	    // InternalOML.g:3954:20: otherlv_6= 'minLength' ( (lv_minLength_7_0= RULE_INT ) )
             	    {
-            	    otherlv_6=(Token)match(input,79,FOLLOW_42); 
+            	    otherlv_6=(Token)match(input,79,FOLLOW_41); 
 
             	    									newLeafNode(otherlv_6, grammarAccess.getBinaryScalarRestrictionAccess().getMinLengthKeyword_3_1_0());
             	    								
@@ -10111,7 +10062,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
             	    // InternalOML.g:3959:10: (lv_minLength_7_0= RULE_INT )
             	    // InternalOML.g:3960:11: lv_minLength_7_0= RULE_INT
             	    {
-            	    lv_minLength_7_0=(Token)match(input,RULE_INT,FOLLOW_41); 
+            	    lv_minLength_7_0=(Token)match(input,RULE_INT,FOLLOW_40); 
 
             	    											newLeafNode(lv_minLength_7_0, grammarAccess.getBinaryScalarRestrictionAccess().getMinLengthINTTerminalRuleCall_3_1_1_0());
             	    										
@@ -10173,7 +10124,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
             	    // InternalOML.g:3987:19: (otherlv_8= 'maxLength' ( (lv_maxLength_9_0= RULE_INT ) ) )
             	    // InternalOML.g:3987:20: otherlv_8= 'maxLength' ( (lv_maxLength_9_0= RULE_INT ) )
             	    {
-            	    otherlv_8=(Token)match(input,80,FOLLOW_42); 
+            	    otherlv_8=(Token)match(input,80,FOLLOW_41); 
 
             	    									newLeafNode(otherlv_8, grammarAccess.getBinaryScalarRestrictionAccess().getMaxLengthKeyword_3_2_0());
             	    								
@@ -10183,7 +10134,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
             	    // InternalOML.g:3992:10: (lv_maxLength_9_0= RULE_INT )
             	    // InternalOML.g:3993:11: lv_maxLength_9_0= RULE_INT
             	    {
-            	    lv_maxLength_9_0=(Token)match(input,RULE_INT,FOLLOW_41); 
+            	    lv_maxLength_9_0=(Token)match(input,RULE_INT,FOLLOW_40); 
 
             	    											newLeafNode(lv_maxLength_9_0, grammarAccess.getBinaryScalarRestrictionAccess().getMaxLengthINTTerminalRuleCall_3_2_1_0());
             	    										
@@ -10392,7 +10343,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,24,FOLLOW_43); 
+            otherlv_2=(Token)match(input,24,FOLLOW_42); 
 
             			newLeafNode(otherlv_2, grammarAccess.getIRIScalarRestrictionAccess().getLeftCurlyBracketKeyword_2());
             		
@@ -10453,7 +10404,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
             	    // InternalOML.g:4103:19: (otherlv_4= 'length' ( (lv_length_5_0= RULE_INT ) ) )
             	    // InternalOML.g:4103:20: otherlv_4= 'length' ( (lv_length_5_0= RULE_INT ) )
             	    {
-            	    otherlv_4=(Token)match(input,78,FOLLOW_42); 
+            	    otherlv_4=(Token)match(input,78,FOLLOW_41); 
 
             	    									newLeafNode(otherlv_4, grammarAccess.getIRIScalarRestrictionAccess().getLengthKeyword_3_0_0());
             	    								
@@ -10463,7 +10414,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
             	    // InternalOML.g:4108:10: (lv_length_5_0= RULE_INT )
             	    // InternalOML.g:4109:11: lv_length_5_0= RULE_INT
             	    {
-            	    lv_length_5_0=(Token)match(input,RULE_INT,FOLLOW_43); 
+            	    lv_length_5_0=(Token)match(input,RULE_INT,FOLLOW_42); 
 
             	    											newLeafNode(lv_length_5_0, grammarAccess.getIRIScalarRestrictionAccess().getLengthINTTerminalRuleCall_3_0_1_0());
             	    										
@@ -10525,7 +10476,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
             	    // InternalOML.g:4136:19: (otherlv_6= 'minLength' ( (lv_minLength_7_0= RULE_INT ) ) )
             	    // InternalOML.g:4136:20: otherlv_6= 'minLength' ( (lv_minLength_7_0= RULE_INT ) )
             	    {
-            	    otherlv_6=(Token)match(input,79,FOLLOW_42); 
+            	    otherlv_6=(Token)match(input,79,FOLLOW_41); 
 
             	    									newLeafNode(otherlv_6, grammarAccess.getIRIScalarRestrictionAccess().getMinLengthKeyword_3_1_0());
             	    								
@@ -10535,7 +10486,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
             	    // InternalOML.g:4141:10: (lv_minLength_7_0= RULE_INT )
             	    // InternalOML.g:4142:11: lv_minLength_7_0= RULE_INT
             	    {
-            	    lv_minLength_7_0=(Token)match(input,RULE_INT,FOLLOW_43); 
+            	    lv_minLength_7_0=(Token)match(input,RULE_INT,FOLLOW_42); 
 
             	    											newLeafNode(lv_minLength_7_0, grammarAccess.getIRIScalarRestrictionAccess().getMinLengthINTTerminalRuleCall_3_1_1_0());
             	    										
@@ -10597,7 +10548,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
             	    // InternalOML.g:4169:19: (otherlv_8= 'maxLength' ( (lv_maxLength_9_0= RULE_INT ) ) )
             	    // InternalOML.g:4169:20: otherlv_8= 'maxLength' ( (lv_maxLength_9_0= RULE_INT ) )
             	    {
-            	    otherlv_8=(Token)match(input,80,FOLLOW_42); 
+            	    otherlv_8=(Token)match(input,80,FOLLOW_41); 
 
             	    									newLeafNode(otherlv_8, grammarAccess.getIRIScalarRestrictionAccess().getMaxLengthKeyword_3_2_0());
             	    								
@@ -10607,7 +10558,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
             	    // InternalOML.g:4174:10: (lv_maxLength_9_0= RULE_INT )
             	    // InternalOML.g:4175:11: lv_maxLength_9_0= RULE_INT
             	    {
-            	    lv_maxLength_9_0=(Token)match(input,RULE_INT,FOLLOW_43); 
+            	    lv_maxLength_9_0=(Token)match(input,RULE_INT,FOLLOW_42); 
 
             	    											newLeafNode(lv_maxLength_9_0, grammarAccess.getIRIScalarRestrictionAccess().getMaxLengthINTTerminalRuleCall_3_2_1_0());
             	    										
@@ -10679,7 +10630,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
             	    // InternalOML.g:4207:10: (lv_pattern_11_0= RULE_STRING )
             	    // InternalOML.g:4208:11: lv_pattern_11_0= RULE_STRING
             	    {
-            	    lv_pattern_11_0=(Token)match(input,RULE_STRING,FOLLOW_43); 
+            	    lv_pattern_11_0=(Token)match(input,RULE_STRING,FOLLOW_42); 
 
             	    											newLeafNode(lv_pattern_11_0, grammarAccess.getIRIScalarRestrictionAccess().getPatternSTRINGTerminalRuleCall_3_3_1_0());
             	    										
@@ -10888,7 +10839,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,24,FOLLOW_44); 
+            otherlv_2=(Token)match(input,24,FOLLOW_43); 
 
             			newLeafNode(otherlv_2, grammarAccess.getNumericScalarRestrictionAccess().getLeftCurlyBracketKeyword_2());
             		
@@ -10959,7 +10910,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
             	    // InternalOML.g:4323:10: (lv_minInclusive_5_0= RULE_STRING )
             	    // InternalOML.g:4324:11: lv_minInclusive_5_0= RULE_STRING
             	    {
-            	    lv_minInclusive_5_0=(Token)match(input,RULE_STRING,FOLLOW_44); 
+            	    lv_minInclusive_5_0=(Token)match(input,RULE_STRING,FOLLOW_43); 
 
             	    											newLeafNode(lv_minInclusive_5_0, grammarAccess.getNumericScalarRestrictionAccess().getMinInclusiveSTRINGTerminalRuleCall_3_0_1_0());
             	    										
@@ -11031,7 +10982,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
             	    // InternalOML.g:4356:10: (lv_maxInclusive_7_0= RULE_STRING )
             	    // InternalOML.g:4357:11: lv_maxInclusive_7_0= RULE_STRING
             	    {
-            	    lv_maxInclusive_7_0=(Token)match(input,RULE_STRING,FOLLOW_44); 
+            	    lv_maxInclusive_7_0=(Token)match(input,RULE_STRING,FOLLOW_43); 
 
             	    											newLeafNode(lv_maxInclusive_7_0, grammarAccess.getNumericScalarRestrictionAccess().getMaxInclusiveSTRINGTerminalRuleCall_3_1_1_0());
             	    										
@@ -11103,7 +11054,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
             	    // InternalOML.g:4389:10: (lv_minExclusive_9_0= RULE_STRING )
             	    // InternalOML.g:4390:11: lv_minExclusive_9_0= RULE_STRING
             	    {
-            	    lv_minExclusive_9_0=(Token)match(input,RULE_STRING,FOLLOW_44); 
+            	    lv_minExclusive_9_0=(Token)match(input,RULE_STRING,FOLLOW_43); 
 
             	    											newLeafNode(lv_minExclusive_9_0, grammarAccess.getNumericScalarRestrictionAccess().getMinExclusiveSTRINGTerminalRuleCall_3_2_1_0());
             	    										
@@ -11175,7 +11126,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
             	    // InternalOML.g:4422:10: (lv_maxExclusive_11_0= RULE_STRING )
             	    // InternalOML.g:4423:11: lv_maxExclusive_11_0= RULE_STRING
             	    {
-            	    lv_maxExclusive_11_0=(Token)match(input,RULE_STRING,FOLLOW_44); 
+            	    lv_maxExclusive_11_0=(Token)match(input,RULE_STRING,FOLLOW_43); 
 
             	    											newLeafNode(lv_maxExclusive_11_0, grammarAccess.getNumericScalarRestrictionAccess().getMaxExclusiveSTRINGTerminalRuleCall_3_3_1_0());
             	    										
@@ -11386,7 +11337,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,24,FOLLOW_45); 
+            otherlv_2=(Token)match(input,24,FOLLOW_44); 
 
             			newLeafNode(otherlv_2, grammarAccess.getPlainLiteralScalarRestrictionAccess().getLeftCurlyBracketKeyword_2());
             		
@@ -11450,7 +11401,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
             	    // InternalOML.g:4533:19: (otherlv_4= 'length' ( (lv_length_5_0= RULE_INT ) ) )
             	    // InternalOML.g:4533:20: otherlv_4= 'length' ( (lv_length_5_0= RULE_INT ) )
             	    {
-            	    otherlv_4=(Token)match(input,78,FOLLOW_42); 
+            	    otherlv_4=(Token)match(input,78,FOLLOW_41); 
 
             	    									newLeafNode(otherlv_4, grammarAccess.getPlainLiteralScalarRestrictionAccess().getLengthKeyword_3_0_0());
             	    								
@@ -11460,7 +11411,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
             	    // InternalOML.g:4538:10: (lv_length_5_0= RULE_INT )
             	    // InternalOML.g:4539:11: lv_length_5_0= RULE_INT
             	    {
-            	    lv_length_5_0=(Token)match(input,RULE_INT,FOLLOW_45); 
+            	    lv_length_5_0=(Token)match(input,RULE_INT,FOLLOW_44); 
 
             	    											newLeafNode(lv_length_5_0, grammarAccess.getPlainLiteralScalarRestrictionAccess().getLengthINTTerminalRuleCall_3_0_1_0());
             	    										
@@ -11522,7 +11473,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
             	    // InternalOML.g:4566:19: (otherlv_6= 'minLength' ( (lv_minLength_7_0= RULE_INT ) ) )
             	    // InternalOML.g:4566:20: otherlv_6= 'minLength' ( (lv_minLength_7_0= RULE_INT ) )
             	    {
-            	    otherlv_6=(Token)match(input,79,FOLLOW_42); 
+            	    otherlv_6=(Token)match(input,79,FOLLOW_41); 
 
             	    									newLeafNode(otherlv_6, grammarAccess.getPlainLiteralScalarRestrictionAccess().getMinLengthKeyword_3_1_0());
             	    								
@@ -11532,7 +11483,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
             	    // InternalOML.g:4571:10: (lv_minLength_7_0= RULE_INT )
             	    // InternalOML.g:4572:11: lv_minLength_7_0= RULE_INT
             	    {
-            	    lv_minLength_7_0=(Token)match(input,RULE_INT,FOLLOW_45); 
+            	    lv_minLength_7_0=(Token)match(input,RULE_INT,FOLLOW_44); 
 
             	    											newLeafNode(lv_minLength_7_0, grammarAccess.getPlainLiteralScalarRestrictionAccess().getMinLengthINTTerminalRuleCall_3_1_1_0());
             	    										
@@ -11594,7 +11545,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
             	    // InternalOML.g:4599:19: (otherlv_8= 'maxLength' ( (lv_maxLength_9_0= RULE_INT ) ) )
             	    // InternalOML.g:4599:20: otherlv_8= 'maxLength' ( (lv_maxLength_9_0= RULE_INT ) )
             	    {
-            	    otherlv_8=(Token)match(input,80,FOLLOW_42); 
+            	    otherlv_8=(Token)match(input,80,FOLLOW_41); 
 
             	    									newLeafNode(otherlv_8, grammarAccess.getPlainLiteralScalarRestrictionAccess().getMaxLengthKeyword_3_2_0());
             	    								
@@ -11604,7 +11555,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
             	    // InternalOML.g:4604:10: (lv_maxLength_9_0= RULE_INT )
             	    // InternalOML.g:4605:11: lv_maxLength_9_0= RULE_INT
             	    {
-            	    lv_maxLength_9_0=(Token)match(input,RULE_INT,FOLLOW_45); 
+            	    lv_maxLength_9_0=(Token)match(input,RULE_INT,FOLLOW_44); 
 
             	    											newLeafNode(lv_maxLength_9_0, grammarAccess.getPlainLiteralScalarRestrictionAccess().getMaxLengthINTTerminalRuleCall_3_2_1_0());
             	    										
@@ -11676,7 +11627,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
             	    // InternalOML.g:4637:10: (lv_pattern_11_0= RULE_STRING )
             	    // InternalOML.g:4638:11: lv_pattern_11_0= RULE_STRING
             	    {
-            	    lv_pattern_11_0=(Token)match(input,RULE_STRING,FOLLOW_45); 
+            	    lv_pattern_11_0=(Token)match(input,RULE_STRING,FOLLOW_44); 
 
             	    											newLeafNode(lv_pattern_11_0, grammarAccess.getPlainLiteralScalarRestrictionAccess().getPatternSTRINGTerminalRuleCall_3_3_1_0());
             	    										
@@ -11748,7 +11699,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
             	    // InternalOML.g:4670:10: (lv_langRange_13_0= RULE_STRING )
             	    // InternalOML.g:4671:11: lv_langRange_13_0= RULE_STRING
             	    {
-            	    lv_langRange_13_0=(Token)match(input,RULE_STRING,FOLLOW_45); 
+            	    lv_langRange_13_0=(Token)match(input,RULE_STRING,FOLLOW_44); 
 
             	    											newLeafNode(lv_langRange_13_0, grammarAccess.getPlainLiteralScalarRestrictionAccess().getLangRangeSTRINGTerminalRuleCall_3_4_1_0());
             	    										
@@ -11949,7 +11900,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,24,FOLLOW_46); 
+            otherlv_2=(Token)match(input,24,FOLLOW_45); 
 
             			newLeafNode(otherlv_2, grammarAccess.getScalarOneOfRestrictionAccess().getLeftCurlyBracketKeyword_2());
             		
@@ -12245,7 +12196,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,24,FOLLOW_43); 
+            otherlv_2=(Token)match(input,24,FOLLOW_42); 
 
             			newLeafNode(otherlv_2, grammarAccess.getStringScalarRestrictionAccess().getLeftCurlyBracketKeyword_2());
             		
@@ -12306,7 +12257,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
             	    // InternalOML.g:4911:19: (otherlv_4= 'length' ( (lv_length_5_0= RULE_INT ) ) )
             	    // InternalOML.g:4911:20: otherlv_4= 'length' ( (lv_length_5_0= RULE_INT ) )
             	    {
-            	    otherlv_4=(Token)match(input,78,FOLLOW_42); 
+            	    otherlv_4=(Token)match(input,78,FOLLOW_41); 
 
             	    									newLeafNode(otherlv_4, grammarAccess.getStringScalarRestrictionAccess().getLengthKeyword_3_0_0());
             	    								
@@ -12316,7 +12267,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
             	    // InternalOML.g:4916:10: (lv_length_5_0= RULE_INT )
             	    // InternalOML.g:4917:11: lv_length_5_0= RULE_INT
             	    {
-            	    lv_length_5_0=(Token)match(input,RULE_INT,FOLLOW_43); 
+            	    lv_length_5_0=(Token)match(input,RULE_INT,FOLLOW_42); 
 
             	    											newLeafNode(lv_length_5_0, grammarAccess.getStringScalarRestrictionAccess().getLengthINTTerminalRuleCall_3_0_1_0());
             	    										
@@ -12378,7 +12329,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
             	    // InternalOML.g:4944:19: (otherlv_6= 'minLength' ( (lv_minLength_7_0= RULE_INT ) ) )
             	    // InternalOML.g:4944:20: otherlv_6= 'minLength' ( (lv_minLength_7_0= RULE_INT ) )
             	    {
-            	    otherlv_6=(Token)match(input,79,FOLLOW_42); 
+            	    otherlv_6=(Token)match(input,79,FOLLOW_41); 
 
             	    									newLeafNode(otherlv_6, grammarAccess.getStringScalarRestrictionAccess().getMinLengthKeyword_3_1_0());
             	    								
@@ -12388,7 +12339,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
             	    // InternalOML.g:4949:10: (lv_minLength_7_0= RULE_INT )
             	    // InternalOML.g:4950:11: lv_minLength_7_0= RULE_INT
             	    {
-            	    lv_minLength_7_0=(Token)match(input,RULE_INT,FOLLOW_43); 
+            	    lv_minLength_7_0=(Token)match(input,RULE_INT,FOLLOW_42); 
 
             	    											newLeafNode(lv_minLength_7_0, grammarAccess.getStringScalarRestrictionAccess().getMinLengthINTTerminalRuleCall_3_1_1_0());
             	    										
@@ -12450,7 +12401,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
             	    // InternalOML.g:4977:19: (otherlv_8= 'maxLength' ( (lv_maxLength_9_0= RULE_INT ) ) )
             	    // InternalOML.g:4977:20: otherlv_8= 'maxLength' ( (lv_maxLength_9_0= RULE_INT ) )
             	    {
-            	    otherlv_8=(Token)match(input,80,FOLLOW_42); 
+            	    otherlv_8=(Token)match(input,80,FOLLOW_41); 
 
             	    									newLeafNode(otherlv_8, grammarAccess.getStringScalarRestrictionAccess().getMaxLengthKeyword_3_2_0());
             	    								
@@ -12460,7 +12411,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
             	    // InternalOML.g:4982:10: (lv_maxLength_9_0= RULE_INT )
             	    // InternalOML.g:4983:11: lv_maxLength_9_0= RULE_INT
             	    {
-            	    lv_maxLength_9_0=(Token)match(input,RULE_INT,FOLLOW_43); 
+            	    lv_maxLength_9_0=(Token)match(input,RULE_INT,FOLLOW_42); 
 
             	    											newLeafNode(lv_maxLength_9_0, grammarAccess.getStringScalarRestrictionAccess().getMaxLengthINTTerminalRuleCall_3_2_1_0());
             	    										
@@ -12532,7 +12483,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
             	    // InternalOML.g:5015:10: (lv_pattern_11_0= RULE_STRING )
             	    // InternalOML.g:5016:11: lv_pattern_11_0= RULE_STRING
             	    {
-            	    lv_pattern_11_0=(Token)match(input,RULE_STRING,FOLLOW_43); 
+            	    lv_pattern_11_0=(Token)match(input,RULE_STRING,FOLLOW_42); 
 
             	    											newLeafNode(lv_pattern_11_0, grammarAccess.getStringScalarRestrictionAccess().getPatternSTRINGTerminalRuleCall_3_3_1_0());
             	    										
@@ -12733,7 +12684,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,24,FOLLOW_46); 
+            otherlv_2=(Token)match(input,24,FOLLOW_45); 
 
             			newLeafNode(otherlv_2, grammarAccess.getSynonymScalarRestrictionAccess().getLeftCurlyBracketKeyword_2());
             		
@@ -12890,7 +12841,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,24,FOLLOW_44); 
+            otherlv_2=(Token)match(input,24,FOLLOW_43); 
 
             			newLeafNode(otherlv_2, grammarAccess.getTimeScalarRestrictionAccess().getLeftCurlyBracketKeyword_2());
             		
@@ -12961,7 +12912,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
             	    // InternalOML.g:5200:10: (lv_minInclusive_5_0= RULE_STRING )
             	    // InternalOML.g:5201:11: lv_minInclusive_5_0= RULE_STRING
             	    {
-            	    lv_minInclusive_5_0=(Token)match(input,RULE_STRING,FOLLOW_44); 
+            	    lv_minInclusive_5_0=(Token)match(input,RULE_STRING,FOLLOW_43); 
 
             	    											newLeafNode(lv_minInclusive_5_0, grammarAccess.getTimeScalarRestrictionAccess().getMinInclusiveSTRINGTerminalRuleCall_3_0_1_0());
             	    										
@@ -13033,7 +12984,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
             	    // InternalOML.g:5233:10: (lv_maxInclusive_7_0= RULE_STRING )
             	    // InternalOML.g:5234:11: lv_maxInclusive_7_0= RULE_STRING
             	    {
-            	    lv_maxInclusive_7_0=(Token)match(input,RULE_STRING,FOLLOW_44); 
+            	    lv_maxInclusive_7_0=(Token)match(input,RULE_STRING,FOLLOW_43); 
 
             	    											newLeafNode(lv_maxInclusive_7_0, grammarAccess.getTimeScalarRestrictionAccess().getMaxInclusiveSTRINGTerminalRuleCall_3_1_1_0());
             	    										
@@ -13105,7 +13056,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
             	    // InternalOML.g:5266:10: (lv_minExclusive_9_0= RULE_STRING )
             	    // InternalOML.g:5267:11: lv_minExclusive_9_0= RULE_STRING
             	    {
-            	    lv_minExclusive_9_0=(Token)match(input,RULE_STRING,FOLLOW_44); 
+            	    lv_minExclusive_9_0=(Token)match(input,RULE_STRING,FOLLOW_43); 
 
             	    											newLeafNode(lv_minExclusive_9_0, grammarAccess.getTimeScalarRestrictionAccess().getMinExclusiveSTRINGTerminalRuleCall_3_2_1_0());
             	    										
@@ -13177,7 +13128,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
             	    // InternalOML.g:5299:10: (lv_maxExclusive_11_0= RULE_STRING )
             	    // InternalOML.g:5300:11: lv_maxExclusive_11_0= RULE_STRING
             	    {
-            	    lv_maxExclusive_11_0=(Token)match(input,RULE_STRING,FOLLOW_44); 
+            	    lv_maxExclusive_11_0=(Token)match(input,RULE_STRING,FOLLOW_43); 
 
             	    											newLeafNode(lv_maxExclusive_11_0, grammarAccess.getTimeScalarRestrictionAccess().getMaxExclusiveSTRINGTerminalRuleCall_3_3_1_0());
             	    										
@@ -13749,7 +13700,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,21,FOLLOW_47); 
+            otherlv_3=(Token)match(input,21,FOLLOW_46); 
 
             			newLeafNode(otherlv_3, grammarAccess.getSingletonInstanceScalarDataPropertyValueAccess().getEqualsSignKeyword_3());
             		
@@ -13930,7 +13881,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_3, grammarAccess.getSingletonInstanceStructuredDataPropertyValueAccess().getEqualsSignKeyword_3());
             		
-            otherlv_4=(Token)match(input,24,FOLLOW_48); 
+            otherlv_4=(Token)match(input,24,FOLLOW_47); 
 
             			newLeafNode(otherlv_4, grammarAccess.getSingletonInstanceStructuredDataPropertyValueAccess().getLeftCurlyBracketKeyword_4());
             		
@@ -14015,7 +13966,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
 
             	    						newCompositeNode(grammarAccess.getSingletonInstanceStructuredDataPropertyValueAccess().getStructuredPropertyTuplesStructuredDataPropertyTupleParserRuleCall_5_0_0());
             	    					
-            	    pushFollow(FOLLOW_48);
+            	    pushFollow(FOLLOW_47);
             	    lv_structuredPropertyTuples_5_0=ruleStructuredDataPropertyTuple();
 
             	    state._fsp--;
@@ -14052,7 +14003,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
 
             	    						newCompositeNode(grammarAccess.getSingletonInstanceStructuredDataPropertyValueAccess().getScalarDataPropertyValuesScalarDataPropertyValueParserRuleCall_5_1_0());
             	    					
-            	    pushFollow(FOLLOW_48);
+            	    pushFollow(FOLLOW_47);
             	    lv_scalarDataPropertyValues_6_0=ruleScalarDataPropertyValue();
 
             	    state._fsp--;
@@ -14200,7 +14151,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_1, grammarAccess.getStructuredDataPropertyTupleAccess().getEqualsSignKeyword_1());
             		
-            otherlv_2=(Token)match(input,24,FOLLOW_48); 
+            otherlv_2=(Token)match(input,24,FOLLOW_47); 
 
             			newLeafNode(otherlv_2, grammarAccess.getStructuredDataPropertyTupleAccess().getLeftCurlyBracketKeyword_2());
             		
@@ -14285,7 +14236,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
 
             	    						newCompositeNode(grammarAccess.getStructuredDataPropertyTupleAccess().getStructuredPropertyTuplesStructuredDataPropertyTupleParserRuleCall_3_0_0());
             	    					
-            	    pushFollow(FOLLOW_48);
+            	    pushFollow(FOLLOW_47);
             	    lv_structuredPropertyTuples_3_0=ruleStructuredDataPropertyTuple();
 
             	    state._fsp--;
@@ -14322,7 +14273,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
 
             	    						newCompositeNode(grammarAccess.getStructuredDataPropertyTupleAccess().getScalarDataPropertyValuesScalarDataPropertyValueParserRuleCall_3_1_0());
             	    					
-            	    pushFollow(FOLLOW_48);
+            	    pushFollow(FOLLOW_47);
             	    lv_scalarDataPropertyValues_4_0=ruleScalarDataPropertyValue();
 
             	    state._fsp--;
@@ -14462,7 +14413,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,21,FOLLOW_47); 
+            otherlv_1=(Token)match(input,21,FOLLOW_46); 
 
             			newLeafNode(otherlv_1, grammarAccess.getScalarDataPropertyValueAccess().getEqualsSignKeyword_1());
             		
@@ -14590,7 +14541,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
             // InternalOML.g:5827:4: (lv_name_2_0= RULE_ID )
             // InternalOML.g:5828:5: lv_name_2_0= RULE_ID
             {
-            lv_name_2_0=(Token)match(input,RULE_ID,FOLLOW_49); 
+            lv_name_2_0=(Token)match(input,RULE_ID,FOLLOW_48); 
 
             					newLeafNode(lv_name_2_0, grammarAccess.getConceptInstanceAccess().getNameIDTerminalRuleCall_2_0());
             				
@@ -14739,7 +14690,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
             // InternalOML.g:5896:4: (lv_name_2_0= RULE_ID )
             // InternalOML.g:5897:5: lv_name_2_0= RULE_ID
             {
-            lv_name_2_0=(Token)match(input,RULE_ID,FOLLOW_49); 
+            lv_name_2_0=(Token)match(input,RULE_ID,FOLLOW_48); 
 
             					newLeafNode(lv_name_2_0, grammarAccess.getReifiedRelationshipInstanceAccess().getNameIDTerminalRuleCall_2_0());
             				
@@ -15179,7 +15130,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_0, grammarAccess.getUnreifiedRelationshipInstanceTupleAccess().getTupleKeyword_0());
             		
-            otherlv_1=(Token)match(input,24,FOLLOW_50); 
+            otherlv_1=(Token)match(input,24,FOLLOW_49); 
 
             			newLeafNode(otherlv_1, grammarAccess.getUnreifiedRelationshipInstanceTupleAccess().getLeftCurlyBracketKeyword_1());
             		
@@ -16387,9 +16338,9 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000400000L,0x0000006000000000L});
     public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000800000L});
     public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000001000000L});
-    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x38F00073224000B0L,0x00000000FA142C48L});
+    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x38F00073224000B0L,0x00000000FA143C48L});
     public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000004000000L});
-    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x38F00073324000B0L,0x00000000FA142C4AL});
+    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x38F00073324000B0L,0x00000000FA143C4AL});
     public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000008500000L,0x000001E000000000L});
     public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000008000000L});
     public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x06000001024000B0L,0x0000001B00000000L});
@@ -16416,16 +16367,15 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_37 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000080L});
     public static final BitSet FOLLOW_38 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
     public static final BitSet FOLLOW_39 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
-    public static final BitSet FOLLOW_40 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
-    public static final BitSet FOLLOW_41 = new BitSet(new long[]{0x0000000000000000L,0x000000000003C000L});
-    public static final BitSet FOLLOW_42 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_43 = new BitSet(new long[]{0x0000000000000000L,0x00000000000BC000L});
-    public static final BitSet FOLLOW_44 = new BitSet(new long[]{0x0000000000000000L,0x0000000001E20000L});
-    public static final BitSet FOLLOW_45 = new BitSet(new long[]{0x0000000000000000L,0x00000000040BC000L});
-    public static final BitSet FOLLOW_46 = new BitSet(new long[]{0x0000000000000000L,0x0000000000020000L});
-    public static final BitSet FOLLOW_47 = new BitSet(new long[]{0x0000000000001F40L});
-    public static final BitSet FOLLOW_48 = new BitSet(new long[]{0x00000000020000B0L});
-    public static final BitSet FOLLOW_49 = new BitSet(new long[]{0x0000000000000000L,0x0000000400000000L});
-    public static final BitSet FOLLOW_50 = new BitSet(new long[]{0x0010000000000000L});
+    public static final BitSet FOLLOW_40 = new BitSet(new long[]{0x0000000000000000L,0x000000000003C000L});
+    public static final BitSet FOLLOW_41 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_42 = new BitSet(new long[]{0x0000000000000000L,0x00000000000BC000L});
+    public static final BitSet FOLLOW_43 = new BitSet(new long[]{0x0000000000000000L,0x0000000001E20000L});
+    public static final BitSet FOLLOW_44 = new BitSet(new long[]{0x0000000000000000L,0x00000000040BC000L});
+    public static final BitSet FOLLOW_45 = new BitSet(new long[]{0x0000000000000000L,0x0000000000020000L});
+    public static final BitSet FOLLOW_46 = new BitSet(new long[]{0x0000000000001F40L});
+    public static final BitSet FOLLOW_47 = new BitSet(new long[]{0x00000000020000B0L});
+    public static final BitSet FOLLOW_48 = new BitSet(new long[]{0x0000000000000000L,0x0000000400000000L});
+    public static final BitSet FOLLOW_49 = new BitSet(new long[]{0x0010000000000000L});
 
 }

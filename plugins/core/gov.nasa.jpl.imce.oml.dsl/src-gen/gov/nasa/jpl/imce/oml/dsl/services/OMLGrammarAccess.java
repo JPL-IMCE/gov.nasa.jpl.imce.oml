@@ -2273,11 +2273,11 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	public class EntityScalarDataPropertyParticularRestrictionAxiomElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.EntityScalarDataPropertyParticularRestrictionAxiom");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cAllDataKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cEveryKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cRestrictedEntityAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final CrossReference cRestrictedEntityEntityCrossReference_1_0 = (CrossReference)cRestrictedEntityAssignment_1.eContents().get(0);
 		private final RuleCall cRestrictedEntityEntityReferenceParserRuleCall_1_0_1 = (RuleCall)cRestrictedEntityEntityCrossReference_1_0.eContents().get(1);
-		private final Keyword cCommaKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cFullStopKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cScalarPropertyAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final CrossReference cScalarPropertyEntityScalarDataPropertyCrossReference_3_0 = (CrossReference)cScalarPropertyAssignment_3.eContents().get(0);
 		private final RuleCall cScalarPropertyEntityScalarDataPropertyReferenceParserRuleCall_3_0_1 = (RuleCall)cScalarPropertyEntityScalarDataPropertyCrossReference_3_0.eContents().get(1);
@@ -2286,18 +2286,18 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cLiteralValueSTRINGTerminalRuleCall_5_0 = (RuleCall)cLiteralValueAssignment_5.eContents().get(0);
 		
 		//EntityScalarDataPropertyParticularRestrictionAxiom:
-		//	'allData'
+		//	'every'
 		//	restrictedEntity=[Entity|Reference]
-		//	',' scalarProperty=[EntityScalarDataProperty|Reference]
+		//	'.' scalarProperty=[EntityScalarDataProperty|Reference]
 		//	'=' literalValue=STRING;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'allData' restrictedEntity=[Entity|Reference] ',' scalarProperty=[EntityScalarDataProperty|Reference] '='
+		//'every' restrictedEntity=[Entity|Reference] '.' scalarProperty=[EntityScalarDataProperty|Reference] '='
 		//literalValue=STRING
 		public Group getGroup() { return cGroup; }
 		
-		//'allData'
-		public Keyword getAllDataKeyword_0() { return cAllDataKeyword_0; }
+		//'every'
+		public Keyword getEveryKeyword_0() { return cEveryKeyword_0; }
 		
 		//restrictedEntity=[Entity|Reference]
 		public Assignment getRestrictedEntityAssignment_1() { return cRestrictedEntityAssignment_1; }
@@ -2308,8 +2308,8 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//Reference
 		public RuleCall getRestrictedEntityEntityReferenceParserRuleCall_1_0_1() { return cRestrictedEntityEntityReferenceParserRuleCall_1_0_1; }
 		
-		//','
-		public Keyword getCommaKeyword_2() { return cCommaKeyword_2; }
+		//'.'
+		public Keyword getFullStopKeyword_2() { return cFullStopKeyword_2; }
 		
 		//scalarProperty=[EntityScalarDataProperty|Reference]
 		public Assignment getScalarPropertyAssignment_3() { return cScalarPropertyAssignment_3; }
@@ -4836,9 +4836,9 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//EntityScalarDataPropertyParticularRestrictionAxiom:
-	//	'allData'
+	//	'every'
 	//	restrictedEntity=[Entity|Reference]
-	//	',' scalarProperty=[EntityScalarDataProperty|Reference]
+	//	'.' scalarProperty=[EntityScalarDataProperty|Reference]
 	//	'=' literalValue=STRING;
 	public EntityScalarDataPropertyParticularRestrictionAxiomElements getEntityScalarDataPropertyParticularRestrictionAxiomAccess() {
 		return pEntityScalarDataPropertyParticularRestrictionAxiom;

@@ -3720,9 +3720,9 @@ ruleEntityScalarDataPropertyParticularRestrictionAxiom returns [EObject current=
 	leaveRule();
 }:
 	(
-		otherlv_0='allData'
+		otherlv_0='every'
 		{
-			newLeafNode(otherlv_0, grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomAccess().getAllDataKeyword_0());
+			newLeafNode(otherlv_0, grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomAccess().getEveryKeyword_0());
 		}
 		(
 			(
@@ -3740,9 +3740,9 @@ ruleEntityScalarDataPropertyParticularRestrictionAxiom returns [EObject current=
 				}
 			)
 		)
-		otherlv_2=','
+		otherlv_2='.'
 		{
-			newLeafNode(otherlv_2, grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomAccess().getCommaKeyword_2());
+			newLeafNode(otherlv_2, grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomAccess().getFullStopKeyword_2());
 		}
 		(
 			(

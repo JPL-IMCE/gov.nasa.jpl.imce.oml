@@ -7216,9 +7216,9 @@ rule__EntityScalarDataPropertyParticularRestrictionAxiom__Group__0__Impl
 	}
 :
 (
-	{ before(grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomAccess().getAllDataKeyword_0()); }
-	'allData'
-	{ after(grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomAccess().getAllDataKeyword_0()); }
+	{ before(grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomAccess().getEveryKeyword_0()); }
+	'every'
+	{ after(grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomAccess().getEveryKeyword_0()); }
 )
 ;
 finally {
@@ -7270,9 +7270,9 @@ rule__EntityScalarDataPropertyParticularRestrictionAxiom__Group__2__Impl
 	}
 :
 (
-	{ before(grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomAccess().getCommaKeyword_2()); }
-	','
-	{ after(grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomAccess().getCommaKeyword_2()); }
+	{ before(grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomAccess().getFullStopKeyword_2()); }
+	'.'
+	{ after(grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomAccess().getFullStopKeyword_2()); }
 )
 ;
 finally {
