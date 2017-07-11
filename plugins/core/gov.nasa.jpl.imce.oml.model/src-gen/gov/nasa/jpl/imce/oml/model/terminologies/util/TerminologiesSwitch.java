@@ -547,6 +547,50 @@ public class TerminologiesSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case TerminologiesPackage.ENTITY_STRUCTURED_DATA_PROPERTY_RESTRICTION_AXIOM: {
+				EntityStructuredDataPropertyRestrictionAxiom entityStructuredDataPropertyRestrictionAxiom = (EntityStructuredDataPropertyRestrictionAxiom)theEObject;
+				T result = caseEntityStructuredDataPropertyRestrictionAxiom(entityStructuredDataPropertyRestrictionAxiom);
+				if (result == null) result = caseTermAxiom(entityStructuredDataPropertyRestrictionAxiom);
+				if (result == null) result = caseTerminologyBoxStatement(entityStructuredDataPropertyRestrictionAxiom);
+				if (result == null) result = caseModuleElement(entityStructuredDataPropertyRestrictionAxiom);
+				if (result == null) result = caseElement(entityStructuredDataPropertyRestrictionAxiom);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TerminologiesPackage.ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM: {
+				EntityStructuredDataPropertyParticularRestrictionAxiom entityStructuredDataPropertyParticularRestrictionAxiom = (EntityStructuredDataPropertyParticularRestrictionAxiom)theEObject;
+				T result = caseEntityStructuredDataPropertyParticularRestrictionAxiom(entityStructuredDataPropertyParticularRestrictionAxiom);
+				if (result == null) result = caseEntityStructuredDataPropertyRestrictionAxiom(entityStructuredDataPropertyParticularRestrictionAxiom);
+				if (result == null) result = caseRestrictionStructuredDataPropertyContext(entityStructuredDataPropertyParticularRestrictionAxiom);
+				if (result == null) result = caseTermAxiom(entityStructuredDataPropertyParticularRestrictionAxiom);
+				if (result == null) result = caseTerminologyBoxStatement(entityStructuredDataPropertyParticularRestrictionAxiom);
+				if (result == null) result = caseModuleElement(entityStructuredDataPropertyParticularRestrictionAxiom);
+				if (result == null) result = caseElement(entityStructuredDataPropertyParticularRestrictionAxiom);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TerminologiesPackage.RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT: {
+				RestrictionStructuredDataPropertyContext restrictionStructuredDataPropertyContext = (RestrictionStructuredDataPropertyContext)theEObject;
+				T result = caseRestrictionStructuredDataPropertyContext(restrictionStructuredDataPropertyContext);
+				if (result == null) result = caseElement(restrictionStructuredDataPropertyContext);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TerminologiesPackage.RESTRICTION_STRUCTURED_DATA_PROPERTY_TUPLE: {
+				RestrictionStructuredDataPropertyTuple restrictionStructuredDataPropertyTuple = (RestrictionStructuredDataPropertyTuple)theEObject;
+				T result = caseRestrictionStructuredDataPropertyTuple(restrictionStructuredDataPropertyTuple);
+				if (result == null) result = caseRestrictionStructuredDataPropertyContext(restrictionStructuredDataPropertyTuple);
+				if (result == null) result = caseElement(restrictionStructuredDataPropertyTuple);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TerminologiesPackage.RESTRICTION_SCALAR_DATA_PROPERTY_VALUE: {
+				RestrictionScalarDataPropertyValue restrictionScalarDataPropertyValue = (RestrictionScalarDataPropertyValue)theEObject;
+				T result = caseRestrictionScalarDataPropertyValue(restrictionScalarDataPropertyValue);
+				if (result == null) result = caseElement(restrictionScalarDataPropertyValue);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case TerminologiesPackage.RESTRICTED_DATA_RANGE: {
 				RestrictedDataRange restrictedDataRange = (RestrictedDataRange)theEObject;
 				T result = caseRestrictedDataRange(restrictedDataRange);
@@ -1313,6 +1357,81 @@ public class TerminologiesSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseEntityScalarDataPropertyParticularRestrictionAxiom(EntityScalarDataPropertyParticularRestrictionAxiom object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Entity Structured Data Property Restriction Axiom</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Entity Structured Data Property Restriction Axiom</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEntityStructuredDataPropertyRestrictionAxiom(EntityStructuredDataPropertyRestrictionAxiom object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Entity Structured Data Property Particular Restriction Axiom</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Entity Structured Data Property Particular Restriction Axiom</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEntityStructuredDataPropertyParticularRestrictionAxiom(EntityStructuredDataPropertyParticularRestrictionAxiom object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Restriction Structured Data Property Context</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Restriction Structured Data Property Context</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRestrictionStructuredDataPropertyContext(RestrictionStructuredDataPropertyContext object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Restriction Structured Data Property Tuple</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Restriction Structured Data Property Tuple</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRestrictionStructuredDataPropertyTuple(RestrictionStructuredDataPropertyTuple object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Restriction Scalar Data Property Value</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Restriction Scalar Data Property Value</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRestrictionScalarDataPropertyValue(RestrictionScalarDataPropertyValue object) {
 		return null;
 	}
 

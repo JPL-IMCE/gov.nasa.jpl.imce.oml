@@ -60,8 +60,11 @@ import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyExisten
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyParticularRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyUniversalRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataProperty;
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataPropertyParticularRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictedDataRange;
+import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue;
+import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple;
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.StructuredDataProperty;
@@ -552,6 +555,86 @@ public class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespa
                 scope = this._oMLScopeExtensions.allRangesScope(((EntityScalarDataPropertyUniversalRestrictionAxiom)context).getTbox());
               }
             }
+          }
+        }
+      }
+      if (!_matched) {
+        if (context instanceof EntityStructuredDataPropertyParticularRestrictionAxiom) {
+          _matched=true;
+          EReference _entityStructuredDataPropertyRestrictionAxiom_RestrictedEntity = TerminologiesPackage.eINSTANCE.getEntityStructuredDataPropertyRestrictionAxiom_RestrictedEntity();
+          boolean _equals = Objects.equal(reference, _entityStructuredDataPropertyRestrictionAxiom_RestrictedEntity);
+          if (_equals) {
+            scope = this._oMLScopeExtensions.allEntitiesScope(((EntityStructuredDataPropertyParticularRestrictionAxiom)context).getTbox());
+          } else {
+            EReference _restrictionStructuredDataPropertyContext_StructuredDataProperty = TerminologiesPackage.eINSTANCE.getRestrictionStructuredDataPropertyContext_StructuredDataProperty();
+            boolean _equals_1 = Objects.equal(reference, _restrictionStructuredDataPropertyContext_StructuredDataProperty);
+            if (_equals_1) {
+              scope = this._oMLScopeExtensions.allEntityStructuredDataPropertiesScope(((EntityStructuredDataPropertyParticularRestrictionAxiom)context).getTbox());
+            } else {
+              EReference _restrictionStructuredDataPropertyContext_ScalarDataPropertyValues = TerminologiesPackage.eINSTANCE.getRestrictionStructuredDataPropertyContext_ScalarDataPropertyValues();
+              boolean _equals_2 = Objects.equal(reference, _restrictionStructuredDataPropertyContext_ScalarDataPropertyValues);
+              if (_equals_2) {
+                scope = this._oMLScopeExtensions.allScalarDataPropertiesScope(((EntityStructuredDataPropertyParticularRestrictionAxiom)context).getTbox());
+              } else {
+                EReference _restrictionStructuredDataPropertyContext_StructuredPropertyTuples = TerminologiesPackage.eINSTANCE.getRestrictionStructuredDataPropertyContext_StructuredPropertyTuples();
+                boolean _equals_3 = Objects.equal(reference, _restrictionStructuredDataPropertyContext_StructuredPropertyTuples);
+                if (_equals_3) {
+                  scope = this._oMLScopeExtensions.allStructuredDataPropertiesScope(((EntityStructuredDataPropertyParticularRestrictionAxiom)context).getTbox());
+                }
+              }
+            }
+          }
+        }
+      }
+      if (!_matched) {
+        if (context instanceof RestrictionStructuredDataPropertyTuple) {
+          _matched=true;
+          EReference _restrictionStructuredDataPropertyContext_StructuredDataProperty = TerminologiesPackage.eINSTANCE.getRestrictionStructuredDataPropertyContext_StructuredDataProperty();
+          boolean _equals = Objects.equal(reference, _restrictionStructuredDataPropertyContext_StructuredDataProperty);
+          if (_equals) {
+            TerminologyBox _terminologyBox = ((RestrictionStructuredDataPropertyTuple)context).terminologyBox();
+            IScope _allEntityStructuredDataPropertiesScope = null;
+            if (_terminologyBox!=null) {
+              _allEntityStructuredDataPropertiesScope=this._oMLScopeExtensions.allEntityStructuredDataPropertiesScope(_terminologyBox);
+            }
+            scope = _allEntityStructuredDataPropertiesScope;
+          } else {
+            EReference _restrictionStructuredDataPropertyContext_ScalarDataPropertyValues = TerminologiesPackage.eINSTANCE.getRestrictionStructuredDataPropertyContext_ScalarDataPropertyValues();
+            boolean _equals_1 = Objects.equal(reference, _restrictionStructuredDataPropertyContext_ScalarDataPropertyValues);
+            if (_equals_1) {
+              TerminologyBox _terminologyBox_1 = ((RestrictionStructuredDataPropertyTuple)context).terminologyBox();
+              IScope _allScalarDataPropertiesScope = null;
+              if (_terminologyBox_1!=null) {
+                _allScalarDataPropertiesScope=this._oMLScopeExtensions.allScalarDataPropertiesScope(_terminologyBox_1);
+              }
+              scope = _allScalarDataPropertiesScope;
+            } else {
+              EReference _restrictionStructuredDataPropertyContext_StructuredPropertyTuples = TerminologiesPackage.eINSTANCE.getRestrictionStructuredDataPropertyContext_StructuredPropertyTuples();
+              boolean _equals_2 = Objects.equal(reference, _restrictionStructuredDataPropertyContext_StructuredPropertyTuples);
+              if (_equals_2) {
+                TerminologyBox _terminologyBox_2 = ((RestrictionStructuredDataPropertyTuple)context).terminologyBox();
+                IScope _allStructuredDataPropertiesScope = null;
+                if (_terminologyBox_2!=null) {
+                  _allStructuredDataPropertiesScope=this._oMLScopeExtensions.allStructuredDataPropertiesScope(_terminologyBox_2);
+                }
+                scope = _allStructuredDataPropertiesScope;
+              }
+            }
+          }
+        }
+      }
+      if (!_matched) {
+        if (context instanceof RestrictionScalarDataPropertyValue) {
+          _matched=true;
+          EReference _restrictionScalarDataPropertyValue_ScalarDataProperty = TerminologiesPackage.eINSTANCE.getRestrictionScalarDataPropertyValue_ScalarDataProperty();
+          boolean _equals = Objects.equal(reference, _restrictionScalarDataPropertyValue_ScalarDataProperty);
+          if (_equals) {
+            TerminologyBox _terminologyBox = ((RestrictionScalarDataPropertyValue)context).terminologyBox();
+            IScope _allScalarDataPropertiesScope = null;
+            if (_terminologyBox!=null) {
+              _allScalarDataPropertiesScope=this._oMLScopeExtensions.allScalarDataPropertiesScope(_terminologyBox);
+            }
+            scope = _allScalarDataPropertiesScope;
           }
         }
       }

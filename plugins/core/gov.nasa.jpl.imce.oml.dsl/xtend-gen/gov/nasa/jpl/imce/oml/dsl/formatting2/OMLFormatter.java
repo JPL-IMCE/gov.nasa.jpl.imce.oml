@@ -58,12 +58,15 @@ import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyExisten
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyParticularRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyUniversalRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataProperty;
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataPropertyParticularRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom;
+import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue;
+import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple;
 import gov.nasa.jpl.imce.oml.model.terminologies.Scalar;
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom;
@@ -948,7 +951,7 @@ public class OMLFormatter extends AbstractFormatter2 {
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(ax).keyword("allData"), _function);
+    document.append(this.textRegionExtensions.regionFor(ax).keyword("every"), _function);
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
@@ -956,7 +959,7 @@ public class OMLFormatter extends AbstractFormatter2 {
     final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(ax).keyword("in"), _function_2);
+    document.surround(this.textRegionExtensions.regionFor(ax).keyword("="), _function_2);
   }
   
   protected void _format(final EntityScalarDataPropertyUniversalRestrictionAxiom ax, @Extension final IFormattableDocument document) {
@@ -972,6 +975,95 @@ public class OMLFormatter extends AbstractFormatter2 {
       it.oneSpace();
     };
     document.surround(this.textRegionExtensions.regionFor(ax).keyword("in"), _function_2);
+  }
+  
+  protected void _format(final EntityStructuredDataPropertyParticularRestrictionAxiom ax, @Extension final IFormattableDocument document) {
+    final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
+      it.oneSpace();
+    };
+    document.append(this.textRegionExtensions.regionFor(ax).keyword("every"), _function);
+    final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
+      it.oneSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(ax).keyword("."), _function_1);
+    final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
+      it.oneSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(ax).keyword("="), _function_2);
+    final ISemanticRegion lcurly = this.textRegionExtensions.regionFor(ax).keyword("{");
+    final ISemanticRegion rcurly = this.textRegionExtensions.regionFor(ax).keyword("}");
+    final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
+      it.oneSpace();
+    };
+    document.prepend(lcurly, _function_3);
+    final Procedure1<IHiddenRegionFormatter> _function_4 = (IHiddenRegionFormatter it) -> {
+      it.newLine();
+    };
+    document.append(lcurly, _function_4);
+    final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it) -> {
+      it.indent();
+    };
+    document.<ISemanticRegion, ISemanticRegion>interior(lcurly, rcurly, _function_5);
+    final Consumer<RestrictionStructuredDataPropertyTuple> _function_6 = (RestrictionStructuredDataPropertyTuple it) -> {
+      final Procedure1<IHiddenRegionFormatter> _function_7 = (IHiddenRegionFormatter it_1) -> {
+        it_1.setNewLines(1);
+      };
+      document.<RestrictionStructuredDataPropertyTuple>append(document.<RestrictionStructuredDataPropertyTuple>format(it), _function_7);
+    };
+    ax.getStructuredPropertyTuples().forEach(_function_6);
+    final Consumer<RestrictionScalarDataPropertyValue> _function_7 = (RestrictionScalarDataPropertyValue it) -> {
+      final Procedure1<IHiddenRegionFormatter> _function_8 = (IHiddenRegionFormatter it_1) -> {
+        it_1.setNewLines(1);
+      };
+      document.<RestrictionScalarDataPropertyValue>append(document.<RestrictionScalarDataPropertyValue>format(it), _function_8);
+    };
+    ax.getScalarDataPropertyValues().forEach(_function_7);
+  }
+  
+  protected void _format(final RestrictionStructuredDataPropertyTuple t, @Extension final IFormattableDocument document) {
+    final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
+      it.oneSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(t).keyword("="), _function);
+    final ISemanticRegion lcurly = this.textRegionExtensions.regionFor(t).keyword("{");
+    final ISemanticRegion rcurly = this.textRegionExtensions.regionFor(t).keyword("}");
+    final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
+      it.oneSpace();
+    };
+    document.prepend(lcurly, _function_1);
+    final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
+      it.newLine();
+    };
+    document.append(lcurly, _function_2);
+    final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
+      it.indent();
+    };
+    document.<ISemanticRegion, ISemanticRegion>interior(lcurly, rcurly, _function_3);
+    final Consumer<RestrictionStructuredDataPropertyTuple> _function_4 = (RestrictionStructuredDataPropertyTuple it) -> {
+      final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it_1) -> {
+        it_1.setNewLines(1);
+      };
+      document.<RestrictionStructuredDataPropertyTuple>append(document.<RestrictionStructuredDataPropertyTuple>format(it), _function_5);
+    };
+    t.getStructuredPropertyTuples().forEach(_function_4);
+    final Consumer<RestrictionScalarDataPropertyValue> _function_5 = (RestrictionScalarDataPropertyValue it) -> {
+      final Procedure1<IHiddenRegionFormatter> _function_6 = (IHiddenRegionFormatter it_1) -> {
+        it_1.setNewLines(1);
+      };
+      document.<RestrictionScalarDataPropertyValue>append(document.<RestrictionScalarDataPropertyValue>format(it), _function_6);
+    };
+    t.getScalarDataPropertyValues().forEach(_function_5);
+  }
+  
+  protected void _format(final RestrictionScalarDataPropertyValue s, @Extension final IFormattableDocument document) {
+    final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
+      it.oneSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(s).keyword("."), _function);
+    final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
+      it.oneSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(s).keyword("="), _function_1);
   }
   
   protected void _format(final BinaryScalarRestriction sc, @Extension final IFormattableDocument document) {
@@ -1540,6 +1632,17 @@ public class OMLFormatter extends AbstractFormatter2 {
     t.getScalarDataPropertyValues().forEach(_function_5);
   }
   
+  protected void _format(final ScalarDataPropertyValue s, @Extension final IFormattableDocument document) {
+    final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
+      it.oneSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(s).keyword("."), _function);
+    final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
+      it.oneSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(s).keyword("="), _function_1);
+  }
+  
   protected void _format(final ConceptInstance i, @Extension final IFormattableDocument document) {
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.noSpace();
@@ -1644,6 +1747,9 @@ public class OMLFormatter extends AbstractFormatter2 {
     } else if (sc instanceof EntityStructuredDataProperty) {
       _format((EntityStructuredDataProperty)sc, document);
       return;
+    } else if (sc instanceof EntityStructuredDataPropertyParticularRestrictionAxiom) {
+      _format((EntityStructuredDataPropertyParticularRestrictionAxiom)sc, document);
+      return;
     } else if (sc instanceof EntityUniversalRestrictionAxiom) {
       _format((EntityUniversalRestrictionAxiom)sc, document);
       return;
@@ -1718,6 +1824,15 @@ public class OMLFormatter extends AbstractFormatter2 {
       return;
     } else if (sc instanceof StructuredDataPropertyTuple) {
       _format((StructuredDataPropertyTuple)sc, document);
+      return;
+    } else if (sc instanceof RestrictionStructuredDataPropertyTuple) {
+      _format((RestrictionStructuredDataPropertyTuple)sc, document);
+      return;
+    } else if (sc instanceof ScalarDataPropertyValue) {
+      _format((ScalarDataPropertyValue)sc, document);
+      return;
+    } else if (sc instanceof RestrictionScalarDataPropertyValue) {
+      _format((RestrictionScalarDataPropertyValue)sc, document);
       return;
     } else if (sc instanceof XtextResource) {
       _format((XtextResource)sc, document);

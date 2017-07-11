@@ -46,6 +46,8 @@ import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyParticu
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyUniversalRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataProperty;
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataPropertyParticularRestrictionAxiom;
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataPropertyRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction;
@@ -53,6 +55,9 @@ import gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictedDataRange;
+import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue;
+import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyContext;
+import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple;
 import gov.nasa.jpl.imce.oml.model.terminologies.Scalar;
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom;
@@ -386,6 +391,41 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * @generated
 	 */
 	private EClass entityScalarDataPropertyParticularRestrictionAxiomEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass entityStructuredDataPropertyRestrictionAxiomEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass entityStructuredDataPropertyParticularRestrictionAxiomEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass restrictionStructuredDataPropertyContextEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass restrictionStructuredDataPropertyTupleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass restrictionScalarDataPropertyValueEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1694,6 +1734,177 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getEntityStructuredDataPropertyRestrictionAxiom() {
+		return entityStructuredDataPropertyRestrictionAxiomEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getEntityStructuredDataPropertyRestrictionAxiom_RestrictedEntity() {
+		return (EReference)entityStructuredDataPropertyRestrictionAxiomEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getEntityStructuredDataPropertyParticularRestrictionAxiom() {
+		return entityStructuredDataPropertyParticularRestrictionAxiomEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getEntityStructuredDataPropertyParticularRestrictionAxiom__Uuid() {
+		return entityStructuredDataPropertyParticularRestrictionAxiomEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getRestrictionStructuredDataPropertyContext() {
+		return restrictionStructuredDataPropertyContextEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getRestrictionStructuredDataPropertyContext_StructuredDataProperty() {
+		return (EReference)restrictionStructuredDataPropertyContextEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getRestrictionStructuredDataPropertyContext_StructuredPropertyTuples() {
+		return (EReference)restrictionStructuredDataPropertyContextEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getRestrictionStructuredDataPropertyContext_ScalarDataPropertyValues() {
+		return (EReference)restrictionStructuredDataPropertyContextEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getRestrictionStructuredDataPropertyContext__TerminologyBox() {
+		return restrictionStructuredDataPropertyContextEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getRestrictionStructuredDataPropertyTuple() {
+		return restrictionStructuredDataPropertyTupleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getRestrictionStructuredDataPropertyTuple_StructuredDataPropertyContext() {
+		return (EReference)restrictionStructuredDataPropertyTupleEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getRestrictionStructuredDataPropertyTuple__TerminologyBox() {
+		return restrictionStructuredDataPropertyTupleEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getRestrictionStructuredDataPropertyTuple__Uuid() {
+		return restrictionStructuredDataPropertyTupleEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getRestrictionScalarDataPropertyValue() {
+		return restrictionScalarDataPropertyValueEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getRestrictionScalarDataPropertyValue_StructuredDataPropertyContext() {
+		return (EReference)restrictionScalarDataPropertyValueEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getRestrictionScalarDataPropertyValue_ScalarDataProperty() {
+		return (EReference)restrictionScalarDataPropertyValueEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getRestrictionScalarDataPropertyValue_ScalarPropertyValue() {
+		return (EAttribute)restrictionScalarDataPropertyValueEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getRestrictionScalarDataPropertyValue__TerminologyBox() {
+		return restrictionScalarDataPropertyValueEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getRestrictionScalarDataPropertyValue__Uuid() {
+		return restrictionScalarDataPropertyValueEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getRestrictedDataRange() {
 		return restrictedDataRangeEClass;
 	}
@@ -2239,6 +2450,30 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		createEAttribute(entityScalarDataPropertyParticularRestrictionAxiomEClass, ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__LITERAL_VALUE);
 		createEOperation(entityScalarDataPropertyParticularRestrictionAxiomEClass, ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM___UUID);
 
+		entityStructuredDataPropertyRestrictionAxiomEClass = createEClass(ENTITY_STRUCTURED_DATA_PROPERTY_RESTRICTION_AXIOM);
+		createEReference(entityStructuredDataPropertyRestrictionAxiomEClass, ENTITY_STRUCTURED_DATA_PROPERTY_RESTRICTION_AXIOM__RESTRICTED_ENTITY);
+
+		entityStructuredDataPropertyParticularRestrictionAxiomEClass = createEClass(ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM);
+		createEOperation(entityStructuredDataPropertyParticularRestrictionAxiomEClass, ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM___UUID);
+
+		restrictionStructuredDataPropertyContextEClass = createEClass(RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT);
+		createEReference(restrictionStructuredDataPropertyContextEClass, RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__STRUCTURED_DATA_PROPERTY);
+		createEReference(restrictionStructuredDataPropertyContextEClass, RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__STRUCTURED_PROPERTY_TUPLES);
+		createEReference(restrictionStructuredDataPropertyContextEClass, RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__SCALAR_DATA_PROPERTY_VALUES);
+		createEOperation(restrictionStructuredDataPropertyContextEClass, RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT___TERMINOLOGY_BOX);
+
+		restrictionStructuredDataPropertyTupleEClass = createEClass(RESTRICTION_STRUCTURED_DATA_PROPERTY_TUPLE);
+		createEReference(restrictionStructuredDataPropertyTupleEClass, RESTRICTION_STRUCTURED_DATA_PROPERTY_TUPLE__STRUCTURED_DATA_PROPERTY_CONTEXT);
+		createEOperation(restrictionStructuredDataPropertyTupleEClass, RESTRICTION_STRUCTURED_DATA_PROPERTY_TUPLE___TERMINOLOGY_BOX);
+		createEOperation(restrictionStructuredDataPropertyTupleEClass, RESTRICTION_STRUCTURED_DATA_PROPERTY_TUPLE___UUID);
+
+		restrictionScalarDataPropertyValueEClass = createEClass(RESTRICTION_SCALAR_DATA_PROPERTY_VALUE);
+		createEReference(restrictionScalarDataPropertyValueEClass, RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__STRUCTURED_DATA_PROPERTY_CONTEXT);
+		createEReference(restrictionScalarDataPropertyValueEClass, RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__SCALAR_DATA_PROPERTY);
+		createEAttribute(restrictionScalarDataPropertyValueEClass, RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE);
+		createEOperation(restrictionScalarDataPropertyValueEClass, RESTRICTION_SCALAR_DATA_PROPERTY_VALUE___TERMINOLOGY_BOX);
+		createEOperation(restrictionScalarDataPropertyValueEClass, RESTRICTION_SCALAR_DATA_PROPERTY_VALUE___UUID);
+
 		restrictedDataRangeEClass = createEClass(RESTRICTED_DATA_RANGE);
 		createEReference(restrictedDataRangeEClass, RESTRICTED_DATA_RANGE__RESTRICTED_RANGE);
 
@@ -2382,6 +2617,12 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		entityScalarDataPropertyExistentialRestrictionAxiomEClass.getESuperTypes().add(this.getEntityScalarDataPropertyRestrictionAxiom());
 		entityScalarDataPropertyUniversalRestrictionAxiomEClass.getESuperTypes().add(this.getEntityScalarDataPropertyRestrictionAxiom());
 		entityScalarDataPropertyParticularRestrictionAxiomEClass.getESuperTypes().add(this.getEntityScalarDataPropertyRestrictionAxiom());
+		entityStructuredDataPropertyRestrictionAxiomEClass.getESuperTypes().add(this.getTermAxiom());
+		entityStructuredDataPropertyParticularRestrictionAxiomEClass.getESuperTypes().add(this.getEntityStructuredDataPropertyRestrictionAxiom());
+		entityStructuredDataPropertyParticularRestrictionAxiomEClass.getESuperTypes().add(this.getRestrictionStructuredDataPropertyContext());
+		restrictionStructuredDataPropertyContextEClass.getESuperTypes().add(theCommonPackage.getElement());
+		restrictionStructuredDataPropertyTupleEClass.getESuperTypes().add(this.getRestrictionStructuredDataPropertyContext());
+		restrictionScalarDataPropertyValueEClass.getESuperTypes().add(theCommonPackage.getElement());
 		restrictedDataRangeEClass.getESuperTypes().add(this.getDataRange());
 		binaryScalarRestrictionEClass.getESuperTypes().add(this.getRestrictedDataRange());
 		iriScalarRestrictionEClass.getESuperTypes().add(this.getRestrictedDataRange());
@@ -2612,6 +2853,36 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		initEAttribute(getEntityScalarDataPropertyParticularRestrictionAxiom_LiteralValue(), theCommonPackage.getLexicalValue(), "literalValue", null, 1, 1, EntityScalarDataPropertyParticularRestrictionAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getEntityScalarDataPropertyParticularRestrictionAxiom__Uuid(), theCommonPackage.getUUID(), "uuid", 1, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEClass(entityStructuredDataPropertyRestrictionAxiomEClass, EntityStructuredDataPropertyRestrictionAxiom.class, "EntityStructuredDataPropertyRestrictionAxiom", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEntityStructuredDataPropertyRestrictionAxiom_RestrictedEntity(), this.getEntity(), null, "restrictedEntity", null, 1, 1, EntityStructuredDataPropertyRestrictionAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(entityStructuredDataPropertyParticularRestrictionAxiomEClass, EntityStructuredDataPropertyParticularRestrictionAxiom.class, "EntityStructuredDataPropertyParticularRestrictionAxiom", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEOperation(getEntityStructuredDataPropertyParticularRestrictionAxiom__Uuid(), theCommonPackage.getUUID(), "uuid", 1, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEClass(restrictionStructuredDataPropertyContextEClass, RestrictionStructuredDataPropertyContext.class, "RestrictionStructuredDataPropertyContext", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getRestrictionStructuredDataPropertyContext_StructuredDataProperty(), this.getDataRelationshipToStructure(), null, "structuredDataProperty", null, 1, 1, RestrictionStructuredDataPropertyContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRestrictionStructuredDataPropertyContext_StructuredPropertyTuples(), this.getRestrictionStructuredDataPropertyTuple(), this.getRestrictionStructuredDataPropertyTuple_StructuredDataPropertyContext(), "structuredPropertyTuples", null, 0, -1, RestrictionStructuredDataPropertyContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRestrictionStructuredDataPropertyContext_ScalarDataPropertyValues(), this.getRestrictionScalarDataPropertyValue(), this.getRestrictionScalarDataPropertyValue_StructuredDataPropertyContext(), "scalarDataPropertyValues", null, 0, -1, RestrictionStructuredDataPropertyContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getRestrictionStructuredDataPropertyContext__TerminologyBox(), this.getTerminologyBox(), "terminologyBox", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEClass(restrictionStructuredDataPropertyTupleEClass, RestrictionStructuredDataPropertyTuple.class, "RestrictionStructuredDataPropertyTuple", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getRestrictionStructuredDataPropertyTuple_StructuredDataPropertyContext(), this.getRestrictionStructuredDataPropertyContext(), this.getRestrictionStructuredDataPropertyContext_StructuredPropertyTuples(), "structuredDataPropertyContext", null, 1, 1, RestrictionStructuredDataPropertyTuple.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getRestrictionStructuredDataPropertyTuple__TerminologyBox(), this.getTerminologyBox(), "terminologyBox", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getRestrictionStructuredDataPropertyTuple__Uuid(), theCommonPackage.getUUID(), "uuid", 1, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEClass(restrictionScalarDataPropertyValueEClass, RestrictionScalarDataPropertyValue.class, "RestrictionScalarDataPropertyValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getRestrictionScalarDataPropertyValue_StructuredDataPropertyContext(), this.getRestrictionStructuredDataPropertyContext(), this.getRestrictionStructuredDataPropertyContext_ScalarDataPropertyValues(), "structuredDataPropertyContext", null, 1, 1, RestrictionScalarDataPropertyValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRestrictionScalarDataPropertyValue_ScalarDataProperty(), this.getDataRelationshipToScalar(), null, "scalarDataProperty", null, 1, 1, RestrictionScalarDataPropertyValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRestrictionScalarDataPropertyValue_ScalarPropertyValue(), theCommonPackage.getLexicalValue(), "scalarPropertyValue", null, 1, 1, RestrictionScalarDataPropertyValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getRestrictionScalarDataPropertyValue__TerminologyBox(), this.getTerminologyBox(), "terminologyBox", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getRestrictionScalarDataPropertyValue__Uuid(), theCommonPackage.getUUID(), "uuid", 1, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(restrictedDataRangeEClass, RestrictedDataRange.class, "RestrictedDataRange", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRestrictedDataRange_RestrictedRange(), this.getDataRange(), null, "restrictedRange", null, 1, 1, RestrictedDataRange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2930,6 +3201,31 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   new String[] {
 		   });	
 		addAnnotation
+		  (entityStructuredDataPropertyRestrictionAxiomEClass, 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (entityStructuredDataPropertyParticularRestrictionAxiomEClass, 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (restrictionStructuredDataPropertyContextEClass, 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (restrictionStructuredDataPropertyTupleEClass, 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (restrictionScalarDataPropertyValueEClass, 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
 		  (restrictedDataRangeEClass, 
 		   source, 
 		   new String[] {
@@ -3220,6 +3516,36 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   new String[] {
 		   });	
 		addAnnotation
+		  (getEntityStructuredDataPropertyParticularRestrictionAxiom__Uuid(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getRestrictionStructuredDataPropertyContext__TerminologyBox(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getRestrictionStructuredDataPropertyTuple__TerminologyBox(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getRestrictionStructuredDataPropertyTuple__Uuid(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getRestrictionScalarDataPropertyValue__TerminologyBox(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getRestrictionScalarDataPropertyValue__Uuid(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
 		  (getScalarOneOfLiteralAxiom__Uuid(), 
 		   source, 
 		   new String[] {
@@ -3245,6 +3571,18 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   source, 
 		   new String[] {
 			 "kind", "Set"
+		   });	
+		addAnnotation
+		  (getRestrictionStructuredDataPropertyContext_StructuredPropertyTuples(), 
+		   source, 
+		   new String[] {
+			 "kind", "Set"
+		   });	
+		addAnnotation
+		  (getRestrictionStructuredDataPropertyContext_ScalarDataPropertyValues(), 
+		   source, 
+		   new String[] {
+			 "kind", "Set"
 		   });
 	}
 
@@ -3258,6 +3596,16 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		String source = "http://imce.jpl.nasa.gov/oml/Factory";	
 		addAnnotation
 		  (getTerminologyBoxStatement_Tbox(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getRestrictionStructuredDataPropertyTuple_StructuredDataPropertyContext(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getRestrictionScalarDataPropertyValue_StructuredDataPropertyContext(), 
 		   source, 
 		   new String[] {
 		   });
@@ -3313,6 +3661,21 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   });	
 		addAnnotation
 		  (getTerm__AbbrevIRI(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getRestrictionStructuredDataPropertyContext__TerminologyBox(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getRestrictionStructuredDataPropertyTuple__TerminologyBox(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getRestrictionScalarDataPropertyValue__TerminologyBox(), 
 		   source, 
 		   new String[] {
 		   });
@@ -3415,6 +3778,26 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		  (entityScalarDataPropertyParticularRestrictionAxiomEClass, 
 		   source, 
 		   new String[] {
+		   });	
+		addAnnotation
+		  (entityStructuredDataPropertyParticularRestrictionAxiomEClass, 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (restrictionStructuredDataPropertyContextEClass, 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (restrictionStructuredDataPropertyTupleEClass, 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (restrictionScalarDataPropertyValueEClass, 
+		   source, 
+		   new String[] {
 		   });
 	}
 
@@ -3443,6 +3826,18 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   source, 
 		   new String[] {
 			 "code", "extent.terminologyBoxOfTerminologyBoxStatement.get(this).map(tbox => tbox.nsPrefix+\":\"+name)"
+		   });	
+		addAnnotation
+		  (getRestrictionStructuredDataPropertyTuple__TerminologyBox(), 
+		   source, 
+		   new String[] {
+			 "code", "extent.restrictionStructuredDataPropertyContextOfRestrictionStructuredDataPropertyTuple.get(this).flatMap(_.terminologyBox())"
+		   });	
+		addAnnotation
+		  (getRestrictionScalarDataPropertyValue__TerminologyBox(), 
+		   source, 
+		   new String[] {
+			 "code", "extent.restrictionStructuredDataPropertyContextOfScalarDataPropertyValue.get(this).flatMap(_.terminologyBox())"
 		   });
 	}
 
@@ -3568,6 +3963,11 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		  (getReifiedRelationshipSpecializationAxiom__Parent(), 
 		   source, 
 		   new String[] {
+		   });	
+		addAnnotation
+		  (getRestrictionStructuredDataPropertyTuple__TerminologyBox(), 
+		   source, 
+		   new String[] {
 		   });
 	}
 
@@ -3631,6 +4031,21 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   });	
 		addAnnotation
 		  (getEntityScalarDataPropertyParticularRestrictionAxiom__Uuid(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getEntityStructuredDataPropertyParticularRestrictionAxiom__Uuid(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getRestrictionStructuredDataPropertyTuple__Uuid(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getRestrictionScalarDataPropertyValue__Uuid(), 
 		   source, 
 		   new String[] {
 		   });	

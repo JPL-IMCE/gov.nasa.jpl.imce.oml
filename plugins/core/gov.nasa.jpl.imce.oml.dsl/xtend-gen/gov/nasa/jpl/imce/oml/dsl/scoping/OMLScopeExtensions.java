@@ -361,6 +361,36 @@ public class OMLScopeExtensions {
     return this.<EntityScalarDataProperty>terminologyScope(tbox, _function, _function_1);
   }
   
+  public IScope allEntityStructuredDataPropertiesScope(final TerminologyBox tbox) {
+    final Function<TerminologyBox, Iterable<EntityStructuredDataProperty>> _function = (TerminologyBox it) -> {
+      return this._oMLExtensions.localEntityStructuredDataProperties(it);
+    };
+    final Function<Pair<TerminologyBox, EntityStructuredDataProperty>, QualifiedName> _function_1 = (Pair<TerminologyBox, EntityStructuredDataProperty> it) -> {
+      return this.<EntityStructuredDataProperty>importedResourceNameFunction(it);
+    };
+    return this.<EntityStructuredDataProperty>terminologyScope(tbox, _function, _function_1);
+  }
+  
+  public IScope allScalarDataPropertiesScope(final TerminologyBox tbox) {
+    final Function<TerminologyBox, Iterable<ScalarDataProperty>> _function = (TerminologyBox it) -> {
+      return this._oMLExtensions.localScalarDataProperties(it);
+    };
+    final Function<Pair<TerminologyBox, ScalarDataProperty>, QualifiedName> _function_1 = (Pair<TerminologyBox, ScalarDataProperty> it) -> {
+      return this.<ScalarDataProperty>importedResourceNameFunction(it);
+    };
+    return this.<ScalarDataProperty>terminologyScope(tbox, _function, _function_1);
+  }
+  
+  public IScope allStructuredDataPropertiesScope(final TerminologyBox tbox) {
+    final Function<TerminologyBox, Iterable<StructuredDataProperty>> _function = (TerminologyBox it) -> {
+      return this._oMLExtensions.localStructuredDataProperties(it);
+    };
+    final Function<Pair<TerminologyBox, StructuredDataProperty>, QualifiedName> _function_1 = (Pair<TerminologyBox, StructuredDataProperty> it) -> {
+      return this.<StructuredDataProperty>importedResourceNameFunction(it);
+    };
+    return this.<StructuredDataProperty>terminologyScope(tbox, _function, _function_1);
+  }
+  
   public IScope allScalarOneOfRestrictionsScope(final TerminologyBox tbox) {
     final Function<TerminologyBox, Iterable<ScalarOneOfRestriction>> _function = (TerminologyBox it) -> {
       return this._oMLExtensions.localScalarOneOfRestrictions(it);

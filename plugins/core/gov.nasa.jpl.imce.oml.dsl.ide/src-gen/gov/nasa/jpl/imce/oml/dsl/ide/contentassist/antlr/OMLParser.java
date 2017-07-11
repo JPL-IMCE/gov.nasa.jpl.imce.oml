@@ -65,6 +65,8 @@ public class OMLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getSpecializationAxiomAccess().getAlternatives(), "rule__SpecializationAxiom__Alternatives");
 					put(grammarAccess.getConceptTreeDisjunctionAccess().getAlternatives(), "rule__ConceptTreeDisjunction__Alternatives");
 					put(grammarAccess.getDisjointUnionOfConceptsAxiomAccess().getAlternatives(), "rule__DisjointUnionOfConceptsAxiom__Alternatives");
+					put(grammarAccess.getEntityStructuredDataPropertyParticularRestrictionAxiomAccess().getAlternatives_6(), "rule__EntityStructuredDataPropertyParticularRestrictionAxiom__Alternatives_6");
+					put(grammarAccess.getRestrictionStructuredDataPropertyTupleAccess().getAlternatives_3(), "rule__RestrictionStructuredDataPropertyTuple__Alternatives_3");
 					put(grammarAccess.getTerminologyInstanceAssertionAccess().getAlternatives(), "rule__TerminologyInstanceAssertion__Alternatives");
 					put(grammarAccess.getConceptualEntitySingletonInstanceAccess().getAlternatives(), "rule__ConceptualEntitySingletonInstance__Alternatives");
 					put(grammarAccess.getSingletonInstanceStructuredDataPropertyValueAccess().getAlternatives_5(), "rule__SingletonInstanceStructuredDataPropertyValue__Alternatives_5");
@@ -106,6 +108,9 @@ public class OMLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getEntityScalarDataPropertyExistentialRestrictionAxiomAccess().getGroup(), "rule__EntityScalarDataPropertyExistentialRestrictionAxiom__Group__0");
 					put(grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomAccess().getGroup(), "rule__EntityScalarDataPropertyParticularRestrictionAxiom__Group__0");
 					put(grammarAccess.getEntityScalarDataPropertyUniversalRestrictionAxiomAccess().getGroup(), "rule__EntityScalarDataPropertyUniversalRestrictionAxiom__Group__0");
+					put(grammarAccess.getEntityStructuredDataPropertyParticularRestrictionAxiomAccess().getGroup(), "rule__EntityStructuredDataPropertyParticularRestrictionAxiom__Group__0");
+					put(grammarAccess.getRestrictionStructuredDataPropertyTupleAccess().getGroup(), "rule__RestrictionStructuredDataPropertyTuple__Group__0");
+					put(grammarAccess.getRestrictionScalarDataPropertyValueAccess().getGroup(), "rule__RestrictionScalarDataPropertyValue__Group__0");
 					put(grammarAccess.getBinaryScalarRestrictionAccess().getGroup(), "rule__BinaryScalarRestriction__Group__0");
 					put(grammarAccess.getBinaryScalarRestrictionAccess().getGroup_3_0(), "rule__BinaryScalarRestriction__Group_3_0__0");
 					put(grammarAccess.getBinaryScalarRestrictionAccess().getGroup_3_1(), "rule__BinaryScalarRestriction__Group_3_1__0");
@@ -259,6 +264,15 @@ public class OMLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getEntityScalarDataPropertyUniversalRestrictionAxiomAccess().getRestrictedEntityAssignment_1(), "rule__EntityScalarDataPropertyUniversalRestrictionAxiom__RestrictedEntityAssignment_1");
 					put(grammarAccess.getEntityScalarDataPropertyUniversalRestrictionAxiomAccess().getScalarPropertyAssignment_3(), "rule__EntityScalarDataPropertyUniversalRestrictionAxiom__ScalarPropertyAssignment_3");
 					put(grammarAccess.getEntityScalarDataPropertyUniversalRestrictionAxiomAccess().getScalarRestrictionAssignment_5(), "rule__EntityScalarDataPropertyUniversalRestrictionAxiom__ScalarRestrictionAssignment_5");
+					put(grammarAccess.getEntityStructuredDataPropertyParticularRestrictionAxiomAccess().getRestrictedEntityAssignment_1(), "rule__EntityStructuredDataPropertyParticularRestrictionAxiom__RestrictedEntityAssignment_1");
+					put(grammarAccess.getEntityStructuredDataPropertyParticularRestrictionAxiomAccess().getStructuredDataPropertyAssignment_3(), "rule__EntityStructuredDataPropertyParticularRestrictionAxiom__StructuredDataPropertyAssignment_3");
+					put(grammarAccess.getEntityStructuredDataPropertyParticularRestrictionAxiomAccess().getStructuredPropertyTuplesAssignment_6_0(), "rule__EntityStructuredDataPropertyParticularRestrictionAxiom__StructuredPropertyTuplesAssignment_6_0");
+					put(grammarAccess.getEntityStructuredDataPropertyParticularRestrictionAxiomAccess().getScalarDataPropertyValuesAssignment_6_1(), "rule__EntityStructuredDataPropertyParticularRestrictionAxiom__ScalarDataPropertyValuesAssignment_6_1");
+					put(grammarAccess.getRestrictionStructuredDataPropertyTupleAccess().getStructuredDataPropertyAssignment_0(), "rule__RestrictionStructuredDataPropertyTuple__StructuredDataPropertyAssignment_0");
+					put(grammarAccess.getRestrictionStructuredDataPropertyTupleAccess().getStructuredPropertyTuplesAssignment_3_0(), "rule__RestrictionStructuredDataPropertyTuple__StructuredPropertyTuplesAssignment_3_0");
+					put(grammarAccess.getRestrictionStructuredDataPropertyTupleAccess().getScalarDataPropertyValuesAssignment_3_1(), "rule__RestrictionStructuredDataPropertyTuple__ScalarDataPropertyValuesAssignment_3_1");
+					put(grammarAccess.getRestrictionScalarDataPropertyValueAccess().getScalarDataPropertyAssignment_0(), "rule__RestrictionScalarDataPropertyValue__ScalarDataPropertyAssignment_0");
+					put(grammarAccess.getRestrictionScalarDataPropertyValueAccess().getScalarPropertyValueAssignment_2(), "rule__RestrictionScalarDataPropertyValue__ScalarPropertyValueAssignment_2");
 					put(grammarAccess.getBinaryScalarRestrictionAccess().getNameAssignment_1(), "rule__BinaryScalarRestriction__NameAssignment_1");
 					put(grammarAccess.getBinaryScalarRestrictionAccess().getLengthAssignment_3_0_1(), "rule__BinaryScalarRestriction__LengthAssignment_3_0_1");
 					put(grammarAccess.getBinaryScalarRestrictionAccess().getMinLengthAssignment_3_1_1(), "rule__BinaryScalarRestriction__MinLengthAssignment_3_1_1");

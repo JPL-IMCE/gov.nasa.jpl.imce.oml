@@ -56,12 +56,15 @@ import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyExisten
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyParticularRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyUniversalRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataProperty;
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataPropertyParticularRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom;
+import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue;
+import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple;
 import gov.nasa.jpl.imce.oml.model.terminologies.Scalar;
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom;
@@ -213,6 +216,9 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case TerminologiesPackage.ENTITY_STRUCTURED_DATA_PROPERTY:
 				sequence_EntityStructuredDataProperty(context, (EntityStructuredDataProperty) semanticObject); 
 				return; 
+			case TerminologiesPackage.ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM:
+				sequence_EntityStructuredDataPropertyParticularRestrictionAxiom(context, (EntityStructuredDataPropertyParticularRestrictionAxiom) semanticObject); 
+				return; 
 			case TerminologiesPackage.ENTITY_UNIVERSAL_RESTRICTION_AXIOM:
 				sequence_EntityUniversalRestrictionAxiom(context, (EntityUniversalRestrictionAxiom) semanticObject); 
 				return; 
@@ -230,6 +236,12 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				return; 
 			case TerminologiesPackage.REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM:
 				sequence_ReifiedRelationshipSpecializationAxiom(context, (ReifiedRelationshipSpecializationAxiom) semanticObject); 
+				return; 
+			case TerminologiesPackage.RESTRICTION_SCALAR_DATA_PROPERTY_VALUE:
+				sequence_RestrictionScalarDataPropertyValue(context, (RestrictionScalarDataPropertyValue) semanticObject); 
+				return; 
+			case TerminologiesPackage.RESTRICTION_STRUCTURED_DATA_PROPERTY_TUPLE:
+				sequence_RestrictionStructuredDataPropertyTuple(context, (RestrictionStructuredDataPropertyTuple) semanticObject); 
 				return; 
 			case TerminologiesPackage.SCALAR:
 				sequence_Scalar(context, (Scalar) semanticObject); 
@@ -648,7 +660,7 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     EntityScalarDataPropertyParticularRestrictionAxiom returns EntityScalarDataPropertyParticularRestrictionAxiom
 	 *
 	 * Constraint:
-	 *     (restrictedEntity=[Entity|Reference] scalarProperty=[EntityScalarDataProperty|Reference] literalValue=STRING)
+	 *     (restrictedEntity=[Entity|Reference] scalarProperty=[EntityScalarDataProperty|Reference] literalValue=Value)
 	 */
 	protected void sequence_EntityScalarDataPropertyParticularRestrictionAxiom(ISerializationContext context, EntityScalarDataPropertyParticularRestrictionAxiom semanticObject) {
 		if (errorAcceptor != null) {
@@ -662,7 +674,7 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		SequenceFeeder feeder = createSequencerFeeder(context, (EObject) semanticObject);
 		feeder.accept(grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomAccess().getRestrictedEntityEntityReferenceParserRuleCall_1_0_1(), semanticObject.eGet(TerminologiesPackage.Literals.ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM__RESTRICTED_ENTITY, false));
 		feeder.accept(grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomAccess().getScalarPropertyEntityScalarDataPropertyReferenceParserRuleCall_3_0_1(), semanticObject.eGet(TerminologiesPackage.Literals.ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM__SCALAR_PROPERTY, false));
-		feeder.accept(grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomAccess().getLiteralValueSTRINGTerminalRuleCall_5_0(), semanticObject.getLiteralValue());
+		feeder.accept(grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomAccess().getLiteralValueValueParserRuleCall_5_0(), semanticObject.getLiteralValue());
 		feeder.finish();
 	}
 	
@@ -705,6 +717,25 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     (isIdentityCriteria?='+'? name=ID domain=[Entity|Reference] range=[DataRange|Reference])
 	 */
 	protected void sequence_EntityScalarDataProperty(ISerializationContext context, EntityScalarDataProperty semanticObject) {
+		genericSequencer.createSequence(context, (EObject) semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     TerminologyBoxStatement returns EntityStructuredDataPropertyParticularRestrictionAxiom
+	 *     TermAxiom returns EntityStructuredDataPropertyParticularRestrictionAxiom
+	 *     EntityStructuredDataPropertyRestrictionAxiom returns EntityStructuredDataPropertyParticularRestrictionAxiom
+	 *     EntityStructuredDataPropertyParticularRestrictionAxiom returns EntityStructuredDataPropertyParticularRestrictionAxiom
+	 *
+	 * Constraint:
+	 *     (
+	 *         restrictedEntity=[Entity|Reference] 
+	 *         structuredDataProperty=[EntityStructuredDataProperty|Reference] 
+	 *         (structuredPropertyTuples+=RestrictionStructuredDataPropertyTuple | scalarDataPropertyValues+=RestrictionScalarDataPropertyValue)*
+	 *     )
+	 */
+	protected void sequence_EntityStructuredDataPropertyParticularRestrictionAxiom(ISerializationContext context, EntityStructuredDataPropertyParticularRestrictionAxiom semanticObject) {
 		genericSequencer.createSequence(context, (EObject) semanticObject);
 	}
 	
@@ -933,6 +964,42 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     )
 	 */
 	protected void sequence_ReifiedRelationship(ISerializationContext context, ReifiedRelationship semanticObject) {
+		genericSequencer.createSequence(context, (EObject) semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     RestrictionScalarDataPropertyValue returns RestrictionScalarDataPropertyValue
+	 *
+	 * Constraint:
+	 *     (scalarDataProperty=[ScalarDataProperty|Reference] scalarPropertyValue=Value)
+	 */
+	protected void sequence_RestrictionScalarDataPropertyValue(ISerializationContext context, RestrictionScalarDataPropertyValue semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient((EObject) semanticObject, TerminologiesPackage.Literals.RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__SCALAR_DATA_PROPERTY) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, TerminologiesPackage.Literals.RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__SCALAR_DATA_PROPERTY));
+			if (transientValues.isValueTransient((EObject) semanticObject, TerminologiesPackage.Literals.RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, TerminologiesPackage.Literals.RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, (EObject) semanticObject);
+		feeder.accept(grammarAccess.getRestrictionScalarDataPropertyValueAccess().getScalarDataPropertyScalarDataPropertyReferenceParserRuleCall_0_0_1(), semanticObject.eGet(TerminologiesPackage.Literals.RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__SCALAR_DATA_PROPERTY, false));
+		feeder.accept(grammarAccess.getRestrictionScalarDataPropertyValueAccess().getScalarPropertyValueValueParserRuleCall_2_0(), semanticObject.getScalarPropertyValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     RestrictionStructuredDataPropertyTuple returns RestrictionStructuredDataPropertyTuple
+	 *
+	 * Constraint:
+	 *     (
+	 *         structuredDataProperty=[StructuredDataProperty|Reference] 
+	 *         (structuredPropertyTuples+=RestrictionStructuredDataPropertyTuple | scalarDataPropertyValues+=RestrictionScalarDataPropertyValue)*
+	 *     )
+	 */
+	protected void sequence_RestrictionStructuredDataPropertyTuple(ISerializationContext context, RestrictionStructuredDataPropertyTuple semanticObject) {
 		genericSequencer.createSequence(context, (EObject) semanticObject);
 	}
 	
