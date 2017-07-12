@@ -525,6 +525,75 @@ public class TerminologiesItemProviderAdapterFactory extends TerminologiesAdapte
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataPropertyParticularRestrictionAxiom} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EntityStructuredDataPropertyParticularRestrictionAxiomItemProvider entityStructuredDataPropertyParticularRestrictionAxiomItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataPropertyParticularRestrictionAxiom}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEntityStructuredDataPropertyParticularRestrictionAxiomAdapter() {
+		if (entityStructuredDataPropertyParticularRestrictionAxiomItemProvider == null) {
+			entityStructuredDataPropertyParticularRestrictionAxiomItemProvider = new EntityStructuredDataPropertyParticularRestrictionAxiomItemProvider(this);
+		}
+
+		return entityStructuredDataPropertyParticularRestrictionAxiomItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected RestrictionStructuredDataPropertyTupleItemProvider restrictionStructuredDataPropertyTupleItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createRestrictionStructuredDataPropertyTupleAdapter() {
+		if (restrictionStructuredDataPropertyTupleItemProvider == null) {
+			restrictionStructuredDataPropertyTupleItemProvider = new RestrictionStructuredDataPropertyTupleItemProvider(this);
+		}
+
+		return restrictionStructuredDataPropertyTupleItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected RestrictionScalarDataPropertyValueItemProvider restrictionScalarDataPropertyValueItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createRestrictionScalarDataPropertyValueAdapter() {
+		if (restrictionScalarDataPropertyValueItemProvider == null) {
+			restrictionScalarDataPropertyValueItemProvider = new RestrictionScalarDataPropertyValueItemProvider(this);
+		}
+
+		return restrictionScalarDataPropertyValueItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.terminologies.BinaryScalarRestriction} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -849,6 +918,9 @@ public class TerminologiesItemProviderAdapterFactory extends TerminologiesAdapte
 		if (entityScalarDataPropertyExistentialRestrictionAxiomItemProvider != null) entityScalarDataPropertyExistentialRestrictionAxiomItemProvider.dispose();
 		if (entityScalarDataPropertyUniversalRestrictionAxiomItemProvider != null) entityScalarDataPropertyUniversalRestrictionAxiomItemProvider.dispose();
 		if (entityScalarDataPropertyParticularRestrictionAxiomItemProvider != null) entityScalarDataPropertyParticularRestrictionAxiomItemProvider.dispose();
+		if (entityStructuredDataPropertyParticularRestrictionAxiomItemProvider != null) entityStructuredDataPropertyParticularRestrictionAxiomItemProvider.dispose();
+		if (restrictionStructuredDataPropertyTupleItemProvider != null) restrictionStructuredDataPropertyTupleItemProvider.dispose();
+		if (restrictionScalarDataPropertyValueItemProvider != null) restrictionScalarDataPropertyValueItemProvider.dispose();
 		if (binaryScalarRestrictionItemProvider != null) binaryScalarRestrictionItemProvider.dispose();
 		if (iriScalarRestrictionItemProvider != null) iriScalarRestrictionItemProvider.dispose();
 		if (numericScalarRestrictionItemProvider != null) numericScalarRestrictionItemProvider.dispose();

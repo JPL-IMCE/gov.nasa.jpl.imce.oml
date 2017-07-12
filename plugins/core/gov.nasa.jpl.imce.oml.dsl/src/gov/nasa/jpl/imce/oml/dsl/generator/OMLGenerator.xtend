@@ -174,7 +174,7 @@ class OMLGenerator extends AbstractGenerator {
 							val filename = terminology.validQName + ".xcore"
 							val contents = new TerminologyToXcoreGenerator(this, allTboxes, terminology, dsmlName).
 								doGenerate
-							System.out.println("generating: " + filename)
+							//System.out.println("generating: " + filename)
 							fsa.generateFile(filename, contents)
 						}
 					}
@@ -655,7 +655,7 @@ class OMLGenerator extends AbstractGenerator {
 		}
 
 		def protected targetName(ReifiedRelationship relationship) {
-			val s = switch s : relationship.name() {
+			val s = switch s : relationship.unreifiedPropertyName {
 				case null:
 					''
 				case s.length > 0:

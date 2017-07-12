@@ -1636,20 +1636,29 @@ ruleTermAxiom returns [EObject current=null]
 		}
 		    |
 		{
-			newCompositeNode(grammarAccess.getTermAxiomAccess().getScalarOneOfLiteralAxiomParserRuleCall_2());
+			newCompositeNode(grammarAccess.getTermAxiomAccess().getEntityStructuredDataPropertyRestrictionAxiomParserRuleCall_2());
 		}
-		this_ScalarOneOfLiteralAxiom_2=ruleScalarOneOfLiteralAxiom
+		this_EntityStructuredDataPropertyRestrictionAxiom_2=ruleEntityStructuredDataPropertyRestrictionAxiom
 		{
-			$current = $this_ScalarOneOfLiteralAxiom_2.current;
+			$current = $this_EntityStructuredDataPropertyRestrictionAxiom_2.current;
 			afterParserOrEnumRuleCall();
 		}
 		    |
 		{
-			newCompositeNode(grammarAccess.getTermAxiomAccess().getSpecializationAxiomParserRuleCall_3());
+			newCompositeNode(grammarAccess.getTermAxiomAccess().getScalarOneOfLiteralAxiomParserRuleCall_3());
 		}
-		this_SpecializationAxiom_3=ruleSpecializationAxiom
+		this_ScalarOneOfLiteralAxiom_3=ruleScalarOneOfLiteralAxiom
 		{
-			$current = $this_SpecializationAxiom_3.current;
+			$current = $this_ScalarOneOfLiteralAxiom_3.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getTermAxiomAccess().getSpecializationAxiomParserRuleCall_4());
+		}
+		this_SpecializationAxiom_4=ruleSpecializationAxiom
+		{
+			$current = $this_SpecializationAxiom_4.current;
 			afterParserOrEnumRuleCall();
 		}
 	)
@@ -1734,6 +1743,31 @@ ruleEntityScalarDataPropertyRestrictionAxiom returns [EObject current=null]
 			afterParserOrEnumRuleCall();
 		}
 	)
+;
+
+// Entry rule entryRuleEntityStructuredDataPropertyRestrictionAxiom
+entryRuleEntityStructuredDataPropertyRestrictionAxiom returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getEntityStructuredDataPropertyRestrictionAxiomRule()); }
+	iv_ruleEntityStructuredDataPropertyRestrictionAxiom=ruleEntityStructuredDataPropertyRestrictionAxiom
+	{ $current=$iv_ruleEntityStructuredDataPropertyRestrictionAxiom.current; }
+	EOF;
+
+// Rule EntityStructuredDataPropertyRestrictionAxiom
+ruleEntityStructuredDataPropertyRestrictionAxiom returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	{
+		newCompositeNode(grammarAccess.getEntityStructuredDataPropertyRestrictionAxiomAccess().getEntityStructuredDataPropertyParticularRestrictionAxiomParserRuleCall());
+	}
+	this_EntityStructuredDataPropertyParticularRestrictionAxiom_0=ruleEntityStructuredDataPropertyParticularRestrictionAxiom
+	{
+		$current = $this_EntityStructuredDataPropertyParticularRestrictionAxiom_0.current;
+		afterParserOrEnumRuleCall();
+	}
 ;
 
 // Entry rule entryRuleSpecializationAxiom
@@ -3720,9 +3754,9 @@ ruleEntityScalarDataPropertyParticularRestrictionAxiom returns [EObject current=
 	leaveRule();
 }:
 	(
-		otherlv_0='allData'
+		otherlv_0='every'
 		{
-			newLeafNode(otherlv_0, grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomAccess().getAllDataKeyword_0());
+			newLeafNode(otherlv_0, grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomAccess().getEveryKeyword_0());
 		}
 		(
 			(
@@ -3740,9 +3774,9 @@ ruleEntityScalarDataPropertyParticularRestrictionAxiom returns [EObject current=
 				}
 			)
 		)
-		otherlv_2=','
+		otherlv_2='.'
 		{
-			newLeafNode(otherlv_2, grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomAccess().getCommaKeyword_2());
+			newLeafNode(otherlv_2, grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomAccess().getFullStopKeyword_2());
 		}
 		(
 			(
@@ -3766,19 +3800,20 @@ ruleEntityScalarDataPropertyParticularRestrictionAxiom returns [EObject current=
 		}
 		(
 			(
-				lv_literalValue_5_0=RULE_STRING
 				{
-					newLeafNode(lv_literalValue_5_0, grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomAccess().getLiteralValueSTRINGTerminalRuleCall_5_0());
+					newCompositeNode(grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomAccess().getLiteralValueValueParserRuleCall_5_0());
 				}
+				lv_literalValue_5_0=ruleValue
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomRule());
+						$current = createModelElementForParent(grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomRule());
 					}
-					setWithLastConsumed(
+					set(
 						$current,
 						"literalValue",
 						lv_literalValue_5_0,
-						"gov.nasa.jpl.imce.oml.dsl.OML.STRING");
+						"gov.nasa.jpl.imce.oml.dsl.OML.Value");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
@@ -3857,6 +3892,264 @@ ruleEntityScalarDataPropertyUniversalRestrictionAxiom returns [EObject current=n
 				}
 				ruleReference
 				{
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+	)
+;
+
+// Entry rule entryRuleEntityStructuredDataPropertyParticularRestrictionAxiom
+entryRuleEntityStructuredDataPropertyParticularRestrictionAxiom returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getEntityStructuredDataPropertyParticularRestrictionAxiomRule()); }
+	iv_ruleEntityStructuredDataPropertyParticularRestrictionAxiom=ruleEntityStructuredDataPropertyParticularRestrictionAxiom
+	{ $current=$iv_ruleEntityStructuredDataPropertyParticularRestrictionAxiom.current; }
+	EOF;
+
+// Rule EntityStructuredDataPropertyParticularRestrictionAxiom
+ruleEntityStructuredDataPropertyParticularRestrictionAxiom returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='every'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getEntityStructuredDataPropertyParticularRestrictionAxiomAccess().getEveryKeyword_0());
+		}
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getEntityStructuredDataPropertyParticularRestrictionAxiomRule());
+					}
+				}
+				{
+					newCompositeNode(grammarAccess.getEntityStructuredDataPropertyParticularRestrictionAxiomAccess().getRestrictedEntityEntityCrossReference_1_0());
+				}
+				ruleReference
+				{
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_2='.'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getEntityStructuredDataPropertyParticularRestrictionAxiomAccess().getFullStopKeyword_2());
+		}
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getEntityStructuredDataPropertyParticularRestrictionAxiomRule());
+					}
+				}
+				{
+					newCompositeNode(grammarAccess.getEntityStructuredDataPropertyParticularRestrictionAxiomAccess().getStructuredDataPropertyEntityStructuredDataPropertyCrossReference_3_0());
+				}
+				ruleReference
+				{
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_4='='
+		{
+			newLeafNode(otherlv_4, grammarAccess.getEntityStructuredDataPropertyParticularRestrictionAxiomAccess().getEqualsSignKeyword_4());
+		}
+		otherlv_5='{'
+		{
+			newLeafNode(otherlv_5, grammarAccess.getEntityStructuredDataPropertyParticularRestrictionAxiomAccess().getLeftCurlyBracketKeyword_5());
+		}
+		(
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getEntityStructuredDataPropertyParticularRestrictionAxiomAccess().getStructuredPropertyTuplesRestrictionStructuredDataPropertyTupleParserRuleCall_6_0_0());
+					}
+					lv_structuredPropertyTuples_6_0=ruleRestrictionStructuredDataPropertyTuple
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getEntityStructuredDataPropertyParticularRestrictionAxiomRule());
+						}
+						add(
+							$current,
+							"structuredPropertyTuples",
+							lv_structuredPropertyTuples_6_0,
+							"gov.nasa.jpl.imce.oml.dsl.OML.RestrictionStructuredDataPropertyTuple");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+			    |
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getEntityStructuredDataPropertyParticularRestrictionAxiomAccess().getScalarDataPropertyValuesRestrictionScalarDataPropertyValueParserRuleCall_6_1_0());
+					}
+					lv_scalarDataPropertyValues_7_0=ruleRestrictionScalarDataPropertyValue
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getEntityStructuredDataPropertyParticularRestrictionAxiomRule());
+						}
+						add(
+							$current,
+							"scalarDataPropertyValues",
+							lv_scalarDataPropertyValues_7_0,
+							"gov.nasa.jpl.imce.oml.dsl.OML.RestrictionScalarDataPropertyValue");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)*
+		otherlv_8='}'
+		{
+			newLeafNode(otherlv_8, grammarAccess.getEntityStructuredDataPropertyParticularRestrictionAxiomAccess().getRightCurlyBracketKeyword_7());
+		}
+	)
+;
+
+// Entry rule entryRuleRestrictionStructuredDataPropertyTuple
+entryRuleRestrictionStructuredDataPropertyTuple returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getRestrictionStructuredDataPropertyTupleRule()); }
+	iv_ruleRestrictionStructuredDataPropertyTuple=ruleRestrictionStructuredDataPropertyTuple
+	{ $current=$iv_ruleRestrictionStructuredDataPropertyTuple.current; }
+	EOF;
+
+// Rule RestrictionStructuredDataPropertyTuple
+ruleRestrictionStructuredDataPropertyTuple returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getRestrictionStructuredDataPropertyTupleRule());
+					}
+				}
+				{
+					newCompositeNode(grammarAccess.getRestrictionStructuredDataPropertyTupleAccess().getStructuredDataPropertyStructuredDataPropertyCrossReference_0_0());
+				}
+				ruleReference
+				{
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_1='='
+		{
+			newLeafNode(otherlv_1, grammarAccess.getRestrictionStructuredDataPropertyTupleAccess().getEqualsSignKeyword_1());
+		}
+		otherlv_2='{'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getRestrictionStructuredDataPropertyTupleAccess().getLeftCurlyBracketKeyword_2());
+		}
+		(
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getRestrictionStructuredDataPropertyTupleAccess().getStructuredPropertyTuplesRestrictionStructuredDataPropertyTupleParserRuleCall_3_0_0());
+					}
+					lv_structuredPropertyTuples_3_0=ruleRestrictionStructuredDataPropertyTuple
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getRestrictionStructuredDataPropertyTupleRule());
+						}
+						add(
+							$current,
+							"structuredPropertyTuples",
+							lv_structuredPropertyTuples_3_0,
+							"gov.nasa.jpl.imce.oml.dsl.OML.RestrictionStructuredDataPropertyTuple");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+			    |
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getRestrictionStructuredDataPropertyTupleAccess().getScalarDataPropertyValuesRestrictionScalarDataPropertyValueParserRuleCall_3_1_0());
+					}
+					lv_scalarDataPropertyValues_4_0=ruleRestrictionScalarDataPropertyValue
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getRestrictionStructuredDataPropertyTupleRule());
+						}
+						add(
+							$current,
+							"scalarDataPropertyValues",
+							lv_scalarDataPropertyValues_4_0,
+							"gov.nasa.jpl.imce.oml.dsl.OML.RestrictionScalarDataPropertyValue");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)*
+		otherlv_5='}'
+		{
+			newLeafNode(otherlv_5, grammarAccess.getRestrictionStructuredDataPropertyTupleAccess().getRightCurlyBracketKeyword_4());
+		}
+	)
+;
+
+// Entry rule entryRuleRestrictionScalarDataPropertyValue
+entryRuleRestrictionScalarDataPropertyValue returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getRestrictionScalarDataPropertyValueRule()); }
+	iv_ruleRestrictionScalarDataPropertyValue=ruleRestrictionScalarDataPropertyValue
+	{ $current=$iv_ruleRestrictionScalarDataPropertyValue.current; }
+	EOF;
+
+// Rule RestrictionScalarDataPropertyValue
+ruleRestrictionScalarDataPropertyValue returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getRestrictionScalarDataPropertyValueRule());
+					}
+				}
+				{
+					newCompositeNode(grammarAccess.getRestrictionScalarDataPropertyValueAccess().getScalarDataPropertyScalarDataPropertyCrossReference_0_0());
+				}
+				ruleReference
+				{
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_1='='
+		{
+			newLeafNode(otherlv_1, grammarAccess.getRestrictionScalarDataPropertyValueAccess().getEqualsSignKeyword_1());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getRestrictionScalarDataPropertyValueAccess().getScalarPropertyValueValueParserRuleCall_2_0());
+				}
+				lv_scalarPropertyValue_2_0=ruleValue
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getRestrictionScalarDataPropertyValueRule());
+					}
+					set(
+						$current,
+						"scalarPropertyValue",
+						lv_scalarPropertyValue_2_0,
+						"gov.nasa.jpl.imce.oml.dsl.OML.Value");
 					afterParserOrEnumRuleCall();
 				}
 			)

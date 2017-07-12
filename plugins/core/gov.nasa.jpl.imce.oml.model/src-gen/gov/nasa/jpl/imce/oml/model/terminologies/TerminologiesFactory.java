@@ -209,6 +209,33 @@ public interface TerminologiesFactory extends EFactory {
 	EntityScalarDataPropertyParticularRestrictionAxiom createEntityScalarDataPropertyParticularRestrictionAxiom();
 
 	/**
+	 * Returns a new object of class '<em>Entity Structured Data Property Particular Restriction Axiom</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Entity Structured Data Property Particular Restriction Axiom</em>'.
+	 * @generated
+	 */
+	EntityStructuredDataPropertyParticularRestrictionAxiom createEntityStructuredDataPropertyParticularRestrictionAxiom();
+
+	/**
+	 * Returns a new object of class '<em>Restriction Structured Data Property Tuple</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Restriction Structured Data Property Tuple</em>'.
+	 * @generated
+	 */
+	RestrictionStructuredDataPropertyTuple createRestrictionStructuredDataPropertyTuple();
+
+	/**
+	 * Returns a new object of class '<em>Restriction Scalar Data Property Value</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Restriction Scalar Data Property Value</em>'.
+	 * @generated
+	 */
+	RestrictionScalarDataPropertyValue createRestrictionScalarDataPropertyValue();
+
+	/**
 	 * Returns a new object of class '<em>Binary Scalar Restriction</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

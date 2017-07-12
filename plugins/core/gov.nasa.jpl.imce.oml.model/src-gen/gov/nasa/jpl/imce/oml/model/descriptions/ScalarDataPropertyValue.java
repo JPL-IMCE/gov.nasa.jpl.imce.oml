@@ -111,7 +111,7 @@ public interface ScalarDataPropertyValue extends Element {
 	 * @return the value of the '<em>Scalar Property Value</em>' attribute.
 	 * @see #setScalarPropertyValue(String)
 	 * @see gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsPackage#getScalarDataPropertyValue_ScalarPropertyValue()
-	 * @model unique="false" required="true"
+	 * @model unique="false" dataType="gov.nasa.jpl.imce.oml.model.common.LexicalValue" required="true"
 	 * @generated
 	 */
 	String getScalarPropertyValue();

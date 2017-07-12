@@ -17,9 +17,8 @@
  */
 package gov.nasa.jpl.imce.oml.dsl.ui.converter;
 
-import gov.nasa.jpl.imce.oml.dsl.ui.converter.LiftOMLBundle2DSMLPluginsWizardPage;
-import gov.nasa.jpl.imce.oml.dsl.ui.converter.LiftOMLBundle2NewXcoreProjectWizardPage;
 import gov.nasa.jpl.imce.oml.dsl.ui.converter.LiftOMLBundle2XcoreMetamodelWizardPage;
+import gov.nasa.jpl.imce.oml.dsl.ui.converter.LiftOMLBundle2XcoreNewProjectWizardPage;
 import gov.nasa.jpl.imce.oml.model.bundles.Bundle;
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
 import java.io.IOException;
@@ -30,6 +29,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.xcore.ui.EmptyXcoreProjectWizard;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IWorkbench;
+import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
 import org.eclipse.xtend2.lib.StringConcatenation;
 
 @SuppressWarnings("all")
@@ -38,7 +38,9 @@ public class LiftOMLBundle2XcoreMetamodelWizard extends EmptyXcoreProjectWizard 
   
   protected LiftOMLBundle2XcoreMetamodelWizardPage page1;
   
-  protected LiftOMLBundle2DSMLPluginsWizardPage page2;
+  protected WizardNewProjectCreationPage newProjectCreationPage1;
+  
+  protected WizardNewProjectCreationPage newProjectCreationPage2;
   
   protected Bundle omlBundle;
   
@@ -56,11 +58,17 @@ public class LiftOMLBundle2XcoreMetamodelWizard extends EmptyXcoreProjectWizard 
     LiftOMLBundle2XcoreMetamodelWizardPage _liftOMLBundle2XcoreMetamodelWizardPage = new LiftOMLBundle2XcoreMetamodelWizardPage(qname, this.omlBundle);
     this.page1 = _liftOMLBundle2XcoreMetamodelWizardPage;
     this.addPage(this.page1);
-    LiftOMLBundle2DSMLPluginsWizardPage _liftOMLBundle2DSMLPluginsWizardPage = new LiftOMLBundle2DSMLPluginsWizardPage();
-    this.page2 = _liftOMLBundle2DSMLPluginsWizardPage;
-    this.addPage(this.page2);
-    LiftOMLBundle2NewXcoreProjectWizardPage _liftOMLBundle2NewXcoreProjectWizardPage = new LiftOMLBundle2NewXcoreProjectWizardPage(qname, this);
-    this.newProjectCreationPage = _liftOMLBundle2NewXcoreProjectWizardPage;
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append(qname);
+    _builder.append(".edit");
+    LiftOMLBundle2XcoreNewProjectWizardPage _liftOMLBundle2XcoreNewProjectWizardPage = new LiftOMLBundle2XcoreNewProjectWizardPage(_builder.toString(), this);
+    this.newProjectCreationPage1 = _liftOMLBundle2XcoreNewProjectWizardPage;
+    this.addPage(this.newProjectCreationPage1);
+    StringConcatenation _builder_1 = new StringConcatenation();
+    _builder_1.append(qname);
+    _builder_1.append(".ecore");
+    LiftOMLBundle2XcoreNewProjectWizardPage _liftOMLBundle2XcoreNewProjectWizardPage_1 = new LiftOMLBundle2XcoreNewProjectWizardPage(_builder_1.toString(), this);
+    this.newProjectCreationPage = _liftOMLBundle2XcoreNewProjectWizardPage_1;
     this.addPage(this.newProjectCreationPage);
   }
   
@@ -80,19 +88,6 @@ public class LiftOMLBundle2XcoreMetamodelWizard extends EmptyXcoreProjectWizard 
       int _minus = (_length - 6);
       qname = qname.substring(0, _minus);
     }
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append(qname);
-    _builder.append(".ecore");
-    this.page2.setDsmlEcorePluginName(_builder.toString());
-    StringConcatenation _builder_1 = new StringConcatenation();
-    _builder_1.append(qname);
-    _builder_1.append(".edit");
-    this.page2.setDsmlEditPluginName(_builder_1.toString());
-    StringConcatenation _builder_2 = new StringConcatenation();
-    _builder_2.append(qname);
-    _builder_2.append(".ui");
-    this.page2.setDsmlUIPluginName(_builder_2.toString());
-    this.page2.setPageComplete(true);
   }
   
   @Override
@@ -109,12 +104,16 @@ public class LiftOMLBundle2XcoreMetamodelWizard extends EmptyXcoreProjectWizard 
     return this.page1;
   }
   
-  public LiftOMLBundle2DSMLPluginsWizardPage getLiftOMLBundle2DSMLPluginsWizardPage() {
-    return this.page2;
+  public LiftOMLBundle2XcoreNewProjectWizardPage getLiftOMLBundle2XcoreNewProjectWizardPage1() {
+    return ((LiftOMLBundle2XcoreNewProjectWizardPage) this.newProjectCreationPage1);
   }
   
-  public LiftOMLBundle2NewXcoreProjectWizardPage getLiftOMLBundle2NewXcoreProjectWizardPage() {
-    return ((LiftOMLBundle2NewXcoreProjectWizardPage) this.newProjectCreationPage);
+  public LiftOMLBundle2XcoreNewProjectWizardPage getLiftOMLBundle2XcoreNewProjectWizardPage2() {
+    return ((LiftOMLBundle2XcoreNewProjectWizardPage) this.newProjectCreationPage2);
+  }
+  
+  public LiftOMLBundle2XcoreNewProjectWizardPage getLiftOMLBundle2XcoreNewProjectWizardPage() {
+    return ((LiftOMLBundle2XcoreNewProjectWizardPage) this.newProjectCreationPage);
   }
   
   @Override

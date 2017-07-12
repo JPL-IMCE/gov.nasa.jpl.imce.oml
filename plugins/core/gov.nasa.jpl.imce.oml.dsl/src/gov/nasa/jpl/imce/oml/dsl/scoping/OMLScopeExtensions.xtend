@@ -179,6 +179,18 @@ class OMLScopeExtensions {
 		terminologyScope(tbox, [localEntityScalarDataProperties], [importedResourceNameFunction])
 	}
 	
+	def IScope allEntityStructuredDataPropertiesScope(TerminologyBox tbox) {
+		terminologyScope(tbox, [localEntityStructuredDataProperties], [importedResourceNameFunction])
+	}
+	
+	def IScope allScalarDataPropertiesScope(TerminologyBox tbox) {
+		terminologyScope(tbox, [localScalarDataProperties], [importedResourceNameFunction])
+	}
+	
+	def IScope allStructuredDataPropertiesScope(TerminologyBox tbox) {
+		terminologyScope(tbox, [localStructuredDataProperties], [importedResourceNameFunction])
+	}
+	
 	def IScope allScalarOneOfRestrictionsScope(TerminologyBox tbox) {
 		terminologyScope(tbox, [localScalarOneOfRestrictions], [importedResourceNameFunction])
 	}

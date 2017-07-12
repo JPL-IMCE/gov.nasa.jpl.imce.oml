@@ -23,7 +23,7 @@ import org.eclipse.swt.widgets.Composite
 import org.eclipse.swt.widgets.Text
 import org.eclipse.ui.dialogs.WizardNewProjectCreationPage
 
-class LiftOMLBundle2NewXcoreProjectWizardPage extends WizardNewProjectCreationPage {
+class LiftOMLBundle2XcoreNewProjectWizardPage extends WizardNewProjectCreationPage {
 
 	protected var LiftOMLBundle2XcoreMetamodelWizard wizard
 
@@ -70,4 +70,5 @@ class LiftOMLBundle2NewXcoreProjectWizardPage extends WizardNewProjectCreationPa
 			throw new IllegalArgumentException("setProjectName: " + e.getMessage, e)
 		} 
 	}
+
 }
