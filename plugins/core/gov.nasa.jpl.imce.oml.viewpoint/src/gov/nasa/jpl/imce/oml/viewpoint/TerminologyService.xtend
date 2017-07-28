@@ -1,28 +1,25 @@
 package gov.nasa.jpl.imce.oml.viewpoint
 
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyGraph
+import gov.nasa.jpl.imce.oml.model.terminologies.Aspect
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept
 import gov.nasa.jpl.imce.oml.model.terminologies.Entity
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityRestrictionAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship
 import gov.nasa.jpl.imce.oml.model.terminologies.SpecializationAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBoxStatement
 import java.util.AbstractMap.SimpleEntry
+import java.util.ArrayList
 import java.util.HashMap
 import java.util.HashSet
 import java.util.LinkedHashSet
-import java.util.Set
-import java.util.Map.Entry
-import java.util.List
-import java.util.ArrayList
-import java.util.Map
 import java.util.LinkedList
+import java.util.List
+import java.util.Map
+import java.util.Map.Entry
 import java.util.Queue
-import gov.nasa.jpl.imce.oml.model.terminologies.Aspect
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship
-import gov.nasa.jpl.imce.oml.model.terminologies.AspectSpecializationAxiom
-import gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipImpl
-import gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityRelationshipImpl
+import java.util.Set
 
 class TerminologyService {
 	def Set<Entity> getVisualEntities(TerminologyGraph tg){
@@ -42,6 +39,11 @@ class TerminologyService {
 		entities
 	}
 	
+	/*
+	 * Gets all {@link Entity} that are directly connected (relationship/axiom)
+	 * to the passed {@link Entity}
+	 * @param e The entity which to find connections 
+	 */
 	def Set<Entity> getConnectedEntities(Entity e){
 		val entities = new HashSet<Entity>
 		e.tbox.boxStatements.
@@ -61,6 +63,13 @@ class TerminologyService {
 		entities		
 	}
 	
+	/*
+	 * Gets all {@link Concept}s that are connected, directly
+	 * and indirectly, to the passed {@ Concept}.  For indirect
+	 * connections this method only finds the first Concept, not all
+	 * @param c Root concept
+	 * @return Set<Concept> The set of {@link Concept}s connected to c 
+	 */
 	def Set<Concept> getConnectedConcepts(Concept c){
 		val graph = buildEntityGraph(c)
 		val concepts = new HashSet<Concept>
@@ -140,7 +149,14 @@ class TerminologyService {
 		concepts
 	}
 	
-	// Same as 'getConnectedConcept'.  Returns relationships instead of Concepts
+	/*
+	 * Same as 'getConnectedConcepts' but returns all
+	 * {@link EntityRelationship}s, {@link SpecializationAxiom}s and
+	 * {@link EntityRestrictionAxiom}s.
+	 * @param c Root Concept
+	 * @return Set<TerminologyBoxStatement> The set of {@link EntityRelationship}s, 
+	 * {@link SpecializationAxiom}s and	{@link EntityRestrictionAxiom}s. connected to c
+	 */
 	def Set<TerminologyBoxStatement> getUsageReltionships(Concept c){
 		val graph = buildEntityGraph(c)
 		val relationships = new HashSet<TerminologyBoxStatement>
@@ -224,6 +240,12 @@ class TerminologyService {
 		relationships
 	}
 	
+	/*
+	 * Gets all {@link ReifiedRelationship}s that are indirectly connected
+	 * to the {@link Concept} 'c' in which 'c' would be the source
+	 * @param c Root {@link Concept}
+	 * @return Set<ReifiedRelationship> Set of indirectly connected relationships
+	 */
 	def Set<ReifiedRelationship> getIndirectRelationshipsWithRootAsSource(Concept c){
 		val relationships = new HashSet<ReifiedRelationship>
 		
@@ -237,6 +259,12 @@ class TerminologyService {
 		relationships		
 	}	
 	
+	/*
+	 * Gets all {@link ReifiedRelationship}s that are indirectly connected
+	 * to the {@link Concept} 'c' in which 'c' would be the target
+	 * @param c Root {@link Concept}
+	 * @return Set<ReifiedRelationship> Set of indirectly connected relationships
+	 */
 	def Set<ReifiedRelationship> getIndirectRelationshipsWithRootAsTarget(Concept c){
 	    val relationships = new HashSet<ReifiedRelationship>
 		
