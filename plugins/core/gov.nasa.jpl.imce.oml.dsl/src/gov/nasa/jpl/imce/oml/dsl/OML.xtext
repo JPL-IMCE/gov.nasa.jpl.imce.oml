@@ -16,7 +16,6 @@
  * License Terms
  */
 grammar gov.nasa.jpl.imce.oml.dsl.OML 
-	with org.eclipse.xtext.common.Terminals
 	hidden(WS, ML_COMMENT, SL_COMMENT) 
 
 import "http://imce.jpl.nasa.gov/oml/common"
@@ -183,6 +182,7 @@ DataRelationship returns DataRelationship:
 TermAxiom returns TermAxiom:
 	EntityRestrictionAxiom |
 	EntityScalarDataPropertyRestrictionAxiom |
+	EntityStructuredDataPropertyRestrictionAxiom |
 	ScalarOneOfLiteralAxiom |
 	SpecializationAxiom;
 	
@@ -194,6 +194,9 @@ EntityScalarDataPropertyRestrictionAxiom returns EntityScalarDataPropertyRestric
 	EntityScalarDataPropertyExistentialRestrictionAxiom | 
 	EntityScalarDataPropertyParticularRestrictionAxiom | 
 	EntityScalarDataPropertyUniversalRestrictionAxiom;
+	
+EntityStructuredDataPropertyRestrictionAxiom returns EntityStructuredDataPropertyRestrictionAxiom:
+	EntityStructuredDataPropertyParticularRestrictionAxiom;
 	
 SpecializationAxiom returns SpecializationAxiom:
 	ConceptSpecializationAxiom | 
@@ -349,16 +352,40 @@ EntityScalarDataPropertyExistentialRestrictionAxiom returns EntityScalarDataProp
 	'in' scalarRestriction=[DataRange|Reference];
 
 EntityScalarDataPropertyParticularRestrictionAxiom returns EntityScalarDataPropertyParticularRestrictionAxiom:
-	'allData'
+	'every'
 	restrictedEntity=[Entity|Reference]
-	',' scalarProperty=[EntityScalarDataProperty|Reference]
-	'=' literalValue=STRING;
+	'.' scalarProperty=[EntityScalarDataProperty|Reference]
+	'=' literalValue=Value;
 	
 EntityScalarDataPropertyUniversalRestrictionAxiom returns EntityScalarDataPropertyUniversalRestrictionAxiom:
 	'allData'
 	restrictedEntity=[Entity|Reference]
 	'.' scalarProperty=[EntityScalarDataProperty|Reference]
 	'in' scalarRestriction=[DataRange|Reference];
+
+// 1 EntityStructuredDataPropertyRestrictionAxiom
+EntityStructuredDataPropertyParticularRestrictionAxiom returns EntityStructuredDataPropertyParticularRestrictionAxiom:
+	'every'
+	restrictedEntity=[Entity|Reference]
+	'.'
+	structuredDataProperty=[EntityStructuredDataProperty|Reference]
+	'='
+	'{'
+	( structuredPropertyTuples+=RestrictionStructuredDataPropertyTuple |
+	  scalarDataPropertyValues+=RestrictionScalarDataPropertyValue )*
+	'}';
+	
+RestrictionStructuredDataPropertyTuple returns RestrictionStructuredDataPropertyTuple:
+	structuredDataProperty=[StructuredDataProperty|Reference]
+	'=' '{'
+	( structuredPropertyTuples+=RestrictionStructuredDataPropertyTuple |
+	  scalarDataPropertyValues+=RestrictionScalarDataPropertyValue )*
+    '}';
+
+RestrictionScalarDataPropertyValue returns RestrictionScalarDataPropertyValue:
+	scalarDataProperty=[ScalarDataProperty|Reference]
+	'=' 
+	scalarPropertyValue=Value;
 
 // 8 RestrictedDataRanges + 1 ScalarOneOfLiteralAxiom
 
@@ -527,7 +554,7 @@ ValidID:
 	ID;
 	
 Value:
-	DECIMAL | STRING | INT | UUID | HEX | FLOAT;
+	DECIMAL | INT | STRING | UUID | HEX | FLOAT;
 	
 //----------------------------
 
@@ -541,39 +568,32 @@ terminal IRI:
 	'<' (!'>')* '>';
 
 terminal ABBREV_IRI:
-	('a'..'z'|'A'..'Z'|'$'|'_') ('a'..'z'|'A'..'Z'|'$'|'_'|'0'..'9')+ ':' ('a'..'z'|'A'..'Z'|'$'|'_') ('a'..'z'|'A'..'Z'|'$'|'_'|'0'..'9')*;
+	('a'..'z'|'A'..'Z'|'_'|'0'..'9')('a'..'z'|'A'..'Z'|'_'|'-'|'.'|'0'..'9')* ':' ('a'..'z'|'A'..'Z'|'_'|'0'..'9')('a'..'z'|'A'..'Z'|'_'|'-'|'.'|'0'..'9')*;
 	
-@Override
 terminal ID:
-	'^'? ('a'..'z'|'A'..'Z'|'$'|'_') ('a'..'z'|'A'..'Z'|'$'|'_'|'0'..'9')*;
+	'^'? ('a'..'z'|'A'..'Z'|'_')('a'..'z'|'A'..'Z'|'_'|'-'|'.'|'0'..'9')*;
 
 terminal UUID:
-	HEX_8DIGITS '-' HEX_4DIGITS '-' HEX_4DIGITS '-' HEX_4DIGITS '-' HEX_12DIGITS
-;
+	HEX_8DIGITS '-' HEX_4DIGITS '-' HEX_4DIGITS '-' HEX_4DIGITS '-' HEX_12DIGITS;
 
 terminal HEX_12DIGITS:
- 	HEX_8DIGITS HEX_4DIGITS
-;
+ 	HEX_8DIGITS HEX_4DIGITS;
 
 terminal HEX_8DIGITS:
- 	HEX_4DIGITS HEX_4DIGITS
-;
+ 	HEX_4DIGITS HEX_4DIGITS;
 
 terminal HEX_4DIGITS:
- 	HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT
-;
+ 	HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT;
 
 terminal HEX_DIGIT:
-	('0'..'9'|'a'..'f'|'A'..'F')
-;
+	('0'..'9'|'a'..'f'|'A'..'F');
 
 terminal HEX:
 	('0x'|'0X') ('0'..'9'|'a'..'f'|'A'..'F'|'_')+ 
 	('#' (('b'|'B')('i'|'I') | ('l'|'L')))?;
 	
-@Override
 terminal INT returns ecore::EInt:
-	'0'..'9' ('0'..'9'|'_')*; 
+	('0'..'9')+; 
 
 terminal DECIMAL:
 	INT 
@@ -585,14 +605,11 @@ terminal FLOAT:
 	(('0'..'9')+ '.' ('0'..'9')+)
     (('e' | 'E') ('+' | '-')? ('0'..'9')+)?;
     
-@Override
 terminal ML_COMMENT  : 
  	'/*' -> '*/';
  
-@Override
 terminal SL_COMMENT : 
  	'//' !('\n'|'\r')* ('\r'? '\n')?;
  
-@Override
 terminal WS  : 
  	(' '|'\t'|'\r'|'\n')+;

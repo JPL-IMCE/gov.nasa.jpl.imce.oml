@@ -44,6 +44,8 @@ import gov.nasa.jpl.imce.oml.model.common.Factory
 import gov.nasa.jpl.imce.oml.model.common.Glossary
 import gov.nasa.jpl.imce.oml.model.common.ImplicitExtent
 import gov.nasa.jpl.imce.oml.model.common.IRI
+import gov.nasa.jpl.imce.oml.model.common.IRIReference
+import gov.nasa.jpl.imce.oml.model.common.LexicalValue
 import gov.nasa.jpl.imce.oml.model.common.LocalName
 import gov.nasa.jpl.imce.oml.model.common.Module
 import gov.nasa.jpl.imce.oml.model.common.ModuleEdge
@@ -168,8 +170,10 @@ class DescriptionBoxExtendsClosedWorldDefinitions extends DescriptionBoxRelation
 	@NotSchema
 	op DescriptionBox[?] descriptionDomain() { descriptionBox }
 	
+	@IRIReference
 	refers TerminologyBox[1] closedWorldDefinitions
 	
+	@IRIReference
 	@NotSchema
 	@ImplicitExtent
 	op Module[1] targetModule() { closedWorldDefinitions }
@@ -202,8 +206,10 @@ class DescriptionBoxRefinement extends DescriptionBoxRelationship {
 	@NotSchema
 	op DescriptionBox[?] descriptionDomain() { refiningDescriptionBox }
 	
+	@IRIReference
 	refers DescriptionBox[1] refinedDescriptionBox
 	
+	@IRIReference
 	@NotSchema
 	@ImplicitExtent
 	op Module[1] targetModule() { refinedDescriptionBox }
@@ -352,7 +358,7 @@ class ScalarDataPropertyValue extends Element {
 	container SingletonInstanceStructuredDataPropertyContext[1] structuredDataPropertyContext opposite scalarDataPropertyValues
 	
 	refers DataRelationshipToScalar[1] scalarDataProperty
-	String[1] scalarPropertyValue
+	LexicalValue[1] scalarPropertyValue
 	
 	@Scala(code="extent.singletonInstanceStructuredDataPropertyContextOfScalarDataPropertyValue.get(this).flatMap(_.descriptionBox())")
 	@ImplicitExtent

@@ -19,12 +19,16 @@
 package gov.nasa.jpl.imce.oml.runtime.provider;
 
 
+import gov.nasa.jpl.imce.oml.runtime.OMLReifiedRelationship;
+import gov.nasa.jpl.imce.oml.runtime.OMLRuntimePackage;
+
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
 /**
@@ -33,7 +37,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
  * <!-- end-user-doc -->
  * @generated
  */
-public class OMLReifiedRelationshipItemProvider extends OMLEntityRelationshipItemProvider {
+public class OMLReifiedRelationshipItemProvider extends OMLEntityItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -55,8 +59,54 @@ public class OMLReifiedRelationshipItemProvider extends OMLEntityRelationshipIte
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addOmlSourcePropertyDescriptor(object);
+			addOmlTargetPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Oml Source feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOmlSourcePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_OMLReifiedRelationship_omlSource_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_OMLReifiedRelationship_omlSource_feature", "_UI_OMLReifiedRelationship_type"),
+				 OMLRuntimePackage.Literals.OML_REIFIED_RELATIONSHIP__OML_SOURCE,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Oml Target feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOmlTargetPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_OMLReifiedRelationship_omlTarget_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_OMLReifiedRelationship_omlTarget_feature", "_UI_OMLReifiedRelationship_type"),
+				 OMLRuntimePackage.Literals.OML_REIFIED_RELATIONSHIP__OML_TARGET,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
@@ -78,7 +128,10 @@ public class OMLReifiedRelationshipItemProvider extends OMLEntityRelationshipIte
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_OMLReifiedRelationship_type");
+		String label = ((OMLReifiedRelationship)object).getOmlName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_OMLReifiedRelationship_type") :
+			getString("_UI_OMLReifiedRelationship_type") + " " + label;
 	}
 	
 

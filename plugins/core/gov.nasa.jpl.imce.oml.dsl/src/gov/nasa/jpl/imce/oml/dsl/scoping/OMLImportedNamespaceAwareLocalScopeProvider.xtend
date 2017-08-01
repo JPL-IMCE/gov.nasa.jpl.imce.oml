@@ -70,6 +70,9 @@ import org.eclipse.xtext.naming.IQualifiedNameConverter
 import org.eclipse.xtext.scoping.IScope
 import org.eclipse.xtext.scoping.impl.ImportNormalizer
 import org.eclipse.xtext.scoping.impl.ImportedNamespaceAwareLocalScopeProvider
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataPropertyParticularRestrictionAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple
+import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue
 
 class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespaceAwareLocalScopeProvider {
 	
@@ -222,6 +225,28 @@ class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespaceAware
 				else if (reference == TerminologiesPackage.eINSTANCE.entityScalarDataPropertyUniversalRestrictionAxiom_ScalarRestriction)
 					scope = context.tbox.allRangesScope
 				
+			EntityStructuredDataPropertyParticularRestrictionAxiom:
+				if (reference == TerminologiesPackage.eINSTANCE.entityStructuredDataPropertyRestrictionAxiom_RestrictedEntity)
+					scope = context.tbox.allEntitiesScope
+				else if (reference == TerminologiesPackage.eINSTANCE.restrictionStructuredDataPropertyContext_StructuredDataProperty)
+					scope = context.tbox.allEntityStructuredDataPropertiesScope
+				else if (reference == TerminologiesPackage.eINSTANCE.restrictionStructuredDataPropertyContext_ScalarDataPropertyValues)
+					scope = context.tbox.allScalarDataPropertiesScope
+				else if (reference == TerminologiesPackage.eINSTANCE.restrictionStructuredDataPropertyContext_StructuredPropertyTuples)
+					scope = context.tbox.allStructuredDataPropertiesScope
+			
+			RestrictionStructuredDataPropertyTuple:
+				if (reference == TerminologiesPackage.eINSTANCE.restrictionStructuredDataPropertyContext_StructuredDataProperty)
+					scope = context.terminologyBox()?.allEntityStructuredDataPropertiesScope
+				else if (reference == TerminologiesPackage.eINSTANCE.restrictionStructuredDataPropertyContext_ScalarDataPropertyValues)
+					scope = context.terminologyBox()?.allScalarDataPropertiesScope
+				else if (reference == TerminologiesPackage.eINSTANCE.restrictionStructuredDataPropertyContext_StructuredPropertyTuples)
+					scope = context.terminologyBox()?.allStructuredDataPropertiesScope
+			
+			RestrictionScalarDataPropertyValue:
+				if (reference == TerminologiesPackage.eINSTANCE.restrictionScalarDataPropertyValue_ScalarDataProperty)
+					scope = context.terminologyBox()?.allScalarDataPropertiesScope
+					
 			ScalarOneOfLiteralAxiom:
 				if (reference == TerminologiesPackage.eINSTANCE.scalarOneOfLiteralAxiom_Axiom)
 					scope = context.tbox.allScalarOneOfRestrictionsScope

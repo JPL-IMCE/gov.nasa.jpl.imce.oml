@@ -20,18 +20,13 @@ package gov.nasa.jpl.imce.oml.dsl.util;
 import com.google.inject.Inject;
 import org.eclipse.xtext.conversion.IValueConverterService;
 import org.eclipse.xtext.conversion.ValueConverterException;
-import org.eclipse.xtext.conversion.impl.AbstractLexerBasedConverter;
+import org.eclipse.xtext.conversion.impl.AbstractValueConverter;
 import org.eclipse.xtext.nodemodel.INode;
 
 @SuppressWarnings("all")
-public class OMLExternalReferenceValueConverter extends AbstractLexerBasedConverter<String> {
+public class OMLExternalReferenceValueConverter extends AbstractValueConverter<String> {
   @Inject
   protected IValueConverterService valueConverterService;
-  
-  @Override
-  public String toEscapedString(final String value) {
-    return (("<" + value) + ">");
-  }
   
   @Override
   public String toValue(final String string, final INode node) throws ValueConverterException {
@@ -39,5 +34,10 @@ public class OMLExternalReferenceValueConverter extends AbstractLexerBasedConver
       throw new ValueConverterException("Invalid IRI", node, null);
     }
     return string;
+  }
+  
+  @Override
+  public String toString(final String value) throws ValueConverterException {
+    return (("<" + value) + ">");
   }
 }

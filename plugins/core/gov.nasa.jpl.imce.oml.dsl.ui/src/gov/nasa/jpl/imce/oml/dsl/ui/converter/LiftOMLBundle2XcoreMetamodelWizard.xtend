@@ -27,12 +27,13 @@ import org.eclipse.core.runtime.IProgressMonitor
 import org.eclipse.core.runtime.CoreException
 import java.io.UnsupportedEncodingException
 import java.io.IOException
+import org.eclipse.ui.dialogs.WizardNewProjectCreationPage
 
 class LiftOMLBundle2XcoreMetamodelWizard extends EmptyXcoreProjectWizard {
 	protected IStructuredSelection sselection
 	protected LiftOMLBundle2XcoreMetamodelWizardPage page1
-	protected LiftOMLBundle2DSMLPluginsWizardPage page2
-	
+	protected WizardNewProjectCreationPage newProjectCreationPage1;
+	protected WizardNewProjectCreationPage newProjectCreationPage2;
 	protected Bundle omlBundle
 
 	new(IWorkbench wb, IStructuredSelection sselection, Bundle omlBundle) {
@@ -50,10 +51,13 @@ class LiftOMLBundle2XcoreMetamodelWizard extends EmptyXcoreProjectWizard {
 				
 		page1 = new LiftOMLBundle2XcoreMetamodelWizardPage(qname, omlBundle)
 		addPage(page1)
-		page2 = new LiftOMLBundle2DSMLPluginsWizardPage()
-		addPage(page2)
-		newProjectCreationPage = new LiftOMLBundle2NewXcoreProjectWizardPage(qname, this)
+		newProjectCreationPage1 = new LiftOMLBundle2XcoreNewProjectWizardPage('''«qname».edit''', this)
+		addPage(newProjectCreationPage1)
+		//newProjectCreationPage2 = new LiftOMLBundle2NewXcoreProjectWizardPage('''«qname».ui''', this)
+		//addPage(newProjectCreationPage2)
+		newProjectCreationPage = new LiftOMLBundle2XcoreNewProjectWizardPage('''«qname».ecore''', this)
 		addPage(newProjectCreationPage)
+		
 	}
 
 	def void setGenModelProjectLocation(IPath location) {
@@ -67,10 +71,10 @@ class LiftOMLBundle2XcoreMetamodelWizard extends EmptyXcoreProjectWizard {
 	def void updateDsmlPluginNames() {
 		var String qname = page1.getDSLQualifiedName()
 		if(qname.endsWith(".ecore")) qname = qname.substring(0, qname.length() - 6)
-		page2.setDsmlEcorePluginName('''«qname».ecore''')
-		page2.setDsmlEditPluginName('''«qname».edit''')
-		page2.setDsmlUIPluginName('''«qname».ui''')
-		page2.setPageComplete(true)
+		//page2.setDsmlEcorePluginName('''«qname».ecore''')
+		//page2.setDsmlEditPluginName('''«qname».edit''')
+		//page2.setDsmlUIPluginName('''«qname».ui''')
+		//page2.setPageComplete(true)
 	}
 	
 	override modifyWorkspace(IProgressMonitor progressMonitor) throws CoreException, UnsupportedEncodingException, IOException {
@@ -84,15 +88,19 @@ class LiftOMLBundle2XcoreMetamodelWizard extends EmptyXcoreProjectWizard {
 	def LiftOMLBundle2XcoreMetamodelWizardPage getLiftOMLBundle2XcoreMetamodelWizardPage() {
 		return page1
 	}
-
-	def LiftOMLBundle2DSMLPluginsWizardPage getLiftOMLBundle2DSMLPluginsWizardPage() {
-		return page2
+	
+	def LiftOMLBundle2XcoreNewProjectWizardPage getLiftOMLBundle2XcoreNewProjectWizardPage1() {
+		return newProjectCreationPage1 as LiftOMLBundle2XcoreNewProjectWizardPage
 	}
 	
-	def LiftOMLBundle2NewXcoreProjectWizardPage getLiftOMLBundle2NewXcoreProjectWizardPage() {
-		return newProjectCreationPage as LiftOMLBundle2NewXcoreProjectWizardPage
+	def LiftOMLBundle2XcoreNewProjectWizardPage getLiftOMLBundle2XcoreNewProjectWizardPage2() {
+		return newProjectCreationPage2 as LiftOMLBundle2XcoreNewProjectWizardPage
 	}
-
+	
+	def LiftOMLBundle2XcoreNewProjectWizardPage getLiftOMLBundle2XcoreNewProjectWizardPage() {
+		return newProjectCreationPage as LiftOMLBundle2XcoreNewProjectWizardPage
+	}
+	
 	override protected String[] getRequiredBundles() {
 		#[
 			"org.eclipse.core.runtime",

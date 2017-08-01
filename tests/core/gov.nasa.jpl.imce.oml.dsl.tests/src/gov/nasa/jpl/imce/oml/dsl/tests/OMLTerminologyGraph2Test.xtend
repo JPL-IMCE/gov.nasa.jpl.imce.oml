@@ -16,61 +16,22 @@
  */
 package gov.nasa.jpl.imce.oml.dsl.tests
 
-import com.google.inject.Inject
-import gov.nasa.jpl.imce.oml.model.common.Extent
-import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions
 import org.eclipse.xtext.testing.InjectWith
 import org.eclipse.xtext.testing.XtextRunner
-import org.eclipse.xtext.testing.util.ParseHelper
-import org.eclipse.xtext.testing.validation.ValidationTestHelper
-import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(XtextRunner)
 @InjectWith(OMLInjectorProvider)
-class OMLTerminologyGraph2Test{
+class OMLTerminologyGraph2Test extends OMLTest {
 
-	@Inject
-	ParseHelper<Extent> parseHelper
-
-	@Inject 
-	extension ValidationTestHelper
-
-	@Inject
-	extension OMLExtensions
-	
 	@Test 
 	def void terminologyGraph2() {
-		
-		val result = parseHelper.parse(
-'''
-annotationProperty rdfs:label=<http://www.w3.org/2000/01/rdf-schema#label>
-
-annotationProperty dc:description=<http://purl.org/dc/elements/1.1/#description>
-
-open terminology <http://imce.jpl.nasa.gov/foundation/base/base>
-{
-
-	aspect IdentifiedElement
-
-}
-
-open terminology <http://imce.jpl.nasa.gov/foundation/mission/mission>
-{
-
-	extends <http://imce.jpl.nasa.gov/foundation/base/base>
-
-	concept Component
-
-	Component extendsAspect base:IdentifiedElement
-
-}
-''')
-		Assert.assertNotNull(result)
-		result.phasedResolveAll	
-		result.assertNoErrors
-		
+				
+		testFile(
+		"OMLTerminologyGraph2Test/imce.jpl.nasa.gov/foundation/mission/mission.oml", 
+		"OMLTerminologyGraph2Test/imce.jpl.nasa.gov/foundation/base/base.oml")
+	
 		System.out.println(this.class.name + " OK!")
 	}
 

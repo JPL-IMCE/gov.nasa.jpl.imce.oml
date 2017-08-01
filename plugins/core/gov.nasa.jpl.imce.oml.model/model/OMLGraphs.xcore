@@ -36,6 +36,7 @@ import gov.nasa.jpl.imce.oml.model.common.Collection
 import gov.nasa.jpl.imce.oml.model.common.DerivedUUID
 import gov.nasa.jpl.imce.oml.model.common.Glossary
 import gov.nasa.jpl.imce.oml.model.common.ImplicitExtent
+import gov.nasa.jpl.imce.oml.model.common.IRIReference
 import gov.nasa.jpl.imce.oml.model.common.ModuleEdge
 import gov.nasa.jpl.imce.oml.model.common.NotFunctionalAPI
 import gov.nasa.jpl.imce.oml.model.common.NotSchema
@@ -90,6 +91,7 @@ class ConceptDesignationTerminologyAxiom extends TerminologyBoxAxiom {
 		}
 	}
 	 
+	@IRIReference
 	refers TerminologyBox[1] designatedTerminology
 	
 	refers Concept[1] designatedConcept
@@ -106,6 +108,7 @@ class ConceptDesignationTerminologyAxiom extends TerminologyBoxAxiom {
 	/*
 	 * The TerminologyBox that asserts the designatedConcept is the target
 	 */
+	@IRIReference
 	@ImplicitExtent
 	@NotSchema
 	@Override
@@ -134,6 +137,7 @@ class ConceptDesignationTerminologyAxiom extends TerminologyBoxAxiom {
 @DerivedUUID
 class TerminologyNestingAxiom extends TerminologyBoxAxiom {
 
+	@IRIReference
 	refers TerminologyBox[1] nestingTerminology
 
 	@Scala(code="extent.terminologyBoxOfTerminologyBoxAxiom.get(this) match {
@@ -165,6 +169,7 @@ class TerminologyNestingAxiom extends TerminologyBoxAxiom {
 	/*
 	 * The nestingTerminology is the target
 	 */
+	@IRIReference
 	@ImplicitExtent
 	@NotSchema
 	@Override

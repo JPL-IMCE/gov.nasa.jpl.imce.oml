@@ -1349,7 +1349,7 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 		initEClass(scalarDataPropertyValueEClass, ScalarDataPropertyValue.class, "ScalarDataPropertyValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getScalarDataPropertyValue_StructuredDataPropertyContext(), this.getSingletonInstanceStructuredDataPropertyContext(), this.getSingletonInstanceStructuredDataPropertyContext_ScalarDataPropertyValues(), "structuredDataPropertyContext", null, 1, 1, ScalarDataPropertyValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getScalarDataPropertyValue_ScalarDataProperty(), theTerminologiesPackage.getDataRelationshipToScalar(), null, "scalarDataProperty", null, 1, 1, ScalarDataPropertyValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getScalarDataPropertyValue_ScalarPropertyValue(), theEcorePackage.getEString(), "scalarPropertyValue", null, 1, 1, ScalarDataPropertyValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getScalarDataPropertyValue_ScalarPropertyValue(), theCommonPackage.getLexicalValue(), "scalarPropertyValue", null, 1, 1, ScalarDataPropertyValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getScalarDataPropertyValue__DescriptionBox(), this.getDescriptionBox(), "descriptionBox", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
@@ -1439,6 +1439,8 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 		createCopyConstructorAnnotations();
 		// http://imce.jpl.nasa.gov/oml/DerivedUUID
 		createDerivedUUIDAnnotations();
+		// http://imce.jpl.nasa.gov/oml/IRIReference
+		createIRIReferenceAnnotations();
 		// http://imce.jpl.nasa.gov/oml/NotFunctionalAPI
 		createNotFunctionalAPIAnnotations();
 		// http://imce.jpl.nasa.gov/oml/Factory
@@ -2163,6 +2165,36 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 		   });	
 		addAnnotation
 		  (unreifiedRelationshipInstanceTupleEClass, 
+		   source, 
+		   new String[] {
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://imce.jpl.nasa.gov/oml/IRIReference</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createIRIReferenceAnnotations() {
+		String source = "http://imce.jpl.nasa.gov/oml/IRIReference";	
+		addAnnotation
+		  (getDescriptionBoxExtendsClosedWorldDefinitions__TargetModule(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getDescriptionBoxExtendsClosedWorldDefinitions_ClosedWorldDefinitions(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getDescriptionBoxRefinement__TargetModule(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getDescriptionBoxRefinement_RefinedDescriptionBox(), 
 		   source, 
 		   new String[] {
 		   });

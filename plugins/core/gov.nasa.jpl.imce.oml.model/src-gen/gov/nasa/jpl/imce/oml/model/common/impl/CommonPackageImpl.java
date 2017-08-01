@@ -1017,6 +1017,8 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		createIsOrderingKeyAnnotations();
 		// http://imce.jpl.nasa.gov/oml/Glossary
 		createGlossaryAnnotations();
+		// http://imce.jpl.nasa.gov/oml/IRIReference
+		createIRIReferenceAnnotations();
 		// http://imce.jpl.nasa.gov/oml/ExtentManaged
 		createExtentManagedAnnotations();
 		// http://imce.jpl.nasa.gov/oml/NamespaceUUID
@@ -1066,7 +1068,8 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 			 "Factory", "http://imce.jpl.nasa.gov/oml/Factory",
 			 "ImplicitExtent", "http://imce.jpl.nasa.gov/oml/ImplicitExtent",
 			 "NamespaceUUID", "http://imce.jpl.nasa.gov/oml/NamespaceUUID",
-			 "DerivedUUID", "http://imce.jpl.nasa.gov/oml/DerivedUUID"
+			 "DerivedUUID", "http://imce.jpl.nasa.gov/oml/DerivedUUID",
+			 "IRIReference", "http://imce.jpl.nasa.gov/oml/IRIReference"
 		   });
 	}
 
@@ -1405,6 +1408,21 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		   });	
 		addAnnotation
 		  (moduleEClass, 
+		   source, 
+		   new String[] {
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://imce.jpl.nasa.gov/oml/IRIReference</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createIRIReferenceAnnotations() {
+		String source = "http://imce.jpl.nasa.gov/oml/IRIReference";	
+		addAnnotation
+		  (getModuleEdge__TargetModule(), 
 		   source, 
 		   new String[] {
 		   });

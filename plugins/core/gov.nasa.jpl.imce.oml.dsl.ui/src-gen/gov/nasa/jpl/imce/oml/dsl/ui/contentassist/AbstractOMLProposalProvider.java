@@ -20,16 +20,16 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.CrossReference;
 import org.eclipse.xtext.RuleCall;
-import org.eclipse.xtext.common.ui.contentassist.TerminalsProposalProvider;
+import org.eclipse.xtext.ui.editor.contentassist.AbstractJavaBasedContentProposalProvider;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
 
 /**
- * Represents a generated, default implementation of superclass {@link TerminalsProposalProvider}.
+ * Represents a generated, default implementation of superclass {@link AbstractJavaBasedContentProposalProvider}.
  * Methods are dynamically dispatched on the first parameter, i.e., you can override them 
  * with a more concrete subtype. 
  */
-public abstract class AbstractOMLProposalProvider extends TerminalsProposalProvider {
+public abstract class AbstractOMLProposalProvider extends AbstractJavaBasedContentProposalProvider {
 
 	public void completeExtent_AnnotationProperties(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
@@ -349,6 +349,33 @@ public abstract class AbstractOMLProposalProvider extends TerminalsProposalProvi
 	public void completeEntityScalarDataPropertyUniversalRestrictionAxiom_ScalarRestriction(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		lookupCrossReference(((CrossReference)assignment.getTerminal()), context, acceptor);
 	}
+	public void completeEntityStructuredDataPropertyParticularRestrictionAxiom_RestrictedEntity(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		lookupCrossReference(((CrossReference)assignment.getTerminal()), context, acceptor);
+	}
+	public void completeEntityStructuredDataPropertyParticularRestrictionAxiom_StructuredDataProperty(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		lookupCrossReference(((CrossReference)assignment.getTerminal()), context, acceptor);
+	}
+	public void completeEntityStructuredDataPropertyParticularRestrictionAxiom_StructuredPropertyTuples(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
+	}
+	public void completeEntityStructuredDataPropertyParticularRestrictionAxiom_ScalarDataPropertyValues(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
+	}
+	public void completeRestrictionStructuredDataPropertyTuple_StructuredDataProperty(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		lookupCrossReference(((CrossReference)assignment.getTerminal()), context, acceptor);
+	}
+	public void completeRestrictionStructuredDataPropertyTuple_StructuredPropertyTuples(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
+	}
+	public void completeRestrictionStructuredDataPropertyTuple_ScalarDataPropertyValues(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
+	}
+	public void completeRestrictionScalarDataPropertyValue_ScalarDataProperty(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		lookupCrossReference(((CrossReference)assignment.getTerminal()), context, acceptor);
+	}
+	public void completeRestrictionScalarDataPropertyValue_ScalarPropertyValue(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
+	}
 	public void completeBinaryScalarRestriction_Name(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
 	}
@@ -623,6 +650,9 @@ public abstract class AbstractOMLProposalProvider extends TerminalsProposalProvi
 	public void complete_EntityScalarDataPropertyRestrictionAxiom(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		// subclasses may override
 	}
+	public void complete_EntityStructuredDataPropertyRestrictionAxiom(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		// subclasses may override
+	}
 	public void complete_SpecializationAxiom(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		// subclasses may override
 	}
@@ -702,6 +732,15 @@ public abstract class AbstractOMLProposalProvider extends TerminalsProposalProvi
 		// subclasses may override
 	}
 	public void complete_EntityScalarDataPropertyUniversalRestrictionAxiom(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		// subclasses may override
+	}
+	public void complete_EntityStructuredDataPropertyParticularRestrictionAxiom(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		// subclasses may override
+	}
+	public void complete_RestrictionStructuredDataPropertyTuple(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		// subclasses may override
+	}
+	public void complete_RestrictionScalarDataPropertyValue(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		// subclasses may override
 	}
 	public void complete_BinaryScalarRestriction(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {

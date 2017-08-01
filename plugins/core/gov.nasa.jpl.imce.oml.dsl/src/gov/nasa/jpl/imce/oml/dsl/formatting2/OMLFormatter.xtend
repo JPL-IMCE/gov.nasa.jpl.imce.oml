@@ -69,6 +69,10 @@ import gov.nasa.jpl.imce.oml.model.bundles.AnonymousConceptUnionAxiom
 import gov.nasa.jpl.imce.oml.model.descriptions.ConceptInstance
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstance
 import gov.nasa.jpl.imce.oml.model.descriptions.StructuredDataPropertyTuple
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataPropertyParticularRestrictionAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple
+import gov.nasa.jpl.imce.oml.model.descriptions.ScalarDataPropertyValue
+import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue
 
 class OMLFormatter extends AbstractFormatter2 {
 	
@@ -280,19 +284,18 @@ class OMLFormatter extends AbstractFormatter2 {
 	}
 	
 	def dispatch void format(EntityScalarDataProperty t, extension IFormattableDocument document) {
-		t.regionFor.keyword(entityScalarDataPropertyAccess.entityScalarDataPropertyKeyword_0).append[oneSpace]
-		t.regionFor.ruleCall(entityScalarDataPropertyAccess.nameIDTerminalRuleCall_2_0).prepend[noSpace]
-		t.regionFor.ruleCall(entityScalarDataPropertyAccess.nameIDTerminalRuleCall_2_0).append[oneSpace]
+		t.regionFor.keyword('entityScalarDataProperty').append[oneSpace]
+		t.regionFor.assignment(entityScalarDataPropertyAccess.isIdentityCriteriaAssignment_1).surround[oneSpace]
 		
-		val lcurly = t.regionFor.keyword(entityScalarDataPropertyAccess.leftCurlyBracketKeyword_3)
-		val rcurly = t.regionFor.keyword(entityScalarDataPropertyAccess.rightCurlyBracketKeyword_8)
+		val lcurly = t.regionFor.keyword('{')
+		val rcurly = t.regionFor.keyword('}')
 		lcurly.prepend[oneSpace]
 		lcurly.append[newLine]
 		interior(lcurly, rcurly)[indent]
 		
-		t.regionFor.keyword(entityScalarDataPropertyAccess.domainKeyword_4).append[oneSpace]
+		t.regionFor.keyword('domain').append[oneSpace]
 		t.regionFor.ruleCall(entityScalarDataPropertyAccess.domainEntityReferenceParserRuleCall_5_0_1).append[newLine]
-		t.regionFor.keyword(entityScalarDataPropertyAccess.rangeKeyword_6).append[oneSpace]
+		t.regionFor.keyword('range').append[oneSpace]
 		t.regionFor.ruleCall(entityScalarDataPropertyAccess.rangeDataRangeReferenceParserRuleCall_7_0_1).append[newLine]
 	}
 	
@@ -369,36 +372,70 @@ class OMLFormatter extends AbstractFormatter2 {
 	def dispatch void format(EntityExistentialRestrictionAxiom ax, extension IFormattableDocument document) {
 		ax.regionFor.keyword('someEntities').append[oneSpace]
 		
-		ax.regionFor.keyword('.').surround[noSpace]
+		ax.regionFor.keyword('.').surround[oneSpace]
 		ax.regionFor.keyword('in').surround[oneSpace]
 	}
 	
 	def dispatch void format(EntityUniversalRestrictionAxiom ax, extension IFormattableDocument document) {
 		ax.regionFor.keyword('allEntities').append[oneSpace]
 		
-		ax.regionFor.keyword('.').surround[noSpace]
+		ax.regionFor.keyword('.').surround[oneSpace]
 		ax.regionFor.keyword('in').surround[oneSpace]
 	}
 	
 	def dispatch void format(EntityScalarDataPropertyExistentialRestrictionAxiom ax, extension IFormattableDocument document) {
 		ax.regionFor.keyword('someData').append[oneSpace]
 		
-		ax.regionFor.keyword('.').surround[noSpace]
+		ax.regionFor.keyword('.').surround[oneSpace]
 		ax.regionFor.keyword('in').surround[oneSpace]
 	}
 	
 	def dispatch void format(EntityScalarDataPropertyParticularRestrictionAxiom ax, extension IFormattableDocument document) {
-		ax.regionFor.keyword('allData').append[oneSpace]
+		ax.regionFor.keyword('every').append[oneSpace]
 		
-		ax.regionFor.keyword('.').surround[noSpace]
-		ax.regionFor.keyword('in').surround[oneSpace]
+		ax.regionFor.keyword('.').surround[oneSpace]
+		ax.regionFor.keyword('=').surround[oneSpace]
 	}
 	
 	def dispatch void format(EntityScalarDataPropertyUniversalRestrictionAxiom ax, extension IFormattableDocument document) {
 		ax.regionFor.keyword('allData').append[oneSpace]
 		
-		ax.regionFor.keyword('.').surround[noSpace]
+		ax.regionFor.keyword('.').surround[oneSpace]
 		ax.regionFor.keyword('in').surround[oneSpace]
+	}
+	
+	def dispatch void format(EntityStructuredDataPropertyParticularRestrictionAxiom ax, extension IFormattableDocument document) {
+		ax.regionFor.keyword('every').append[oneSpace]
+		
+		ax.regionFor.keyword('.').surround[oneSpace]
+		ax.regionFor.keyword('=').surround[oneSpace]
+		
+		val lcurly = ax.regionFor.keyword('{')
+		val rcurly = ax.regionFor.keyword('}')
+		lcurly.prepend[oneSpace]
+		lcurly.append[newLine]
+		interior(lcurly, rcurly)[indent]
+
+		ax.structuredPropertyTuples.forEach[format.append[setNewLines(1)]]
+		ax.scalarDataPropertyValues.forEach[format.append[setNewLines(1)]]
+	}
+	
+	def dispatch void format(RestrictionStructuredDataPropertyTuple t, extension IFormattableDocument document) {
+		t.regionFor.keyword('=').surround[oneSpace]
+		
+		val lcurly = t.regionFor.keyword('{')
+		val rcurly = t.regionFor.keyword('}')
+		lcurly.prepend[oneSpace]
+		lcurly.append[newLine]
+		interior(lcurly, rcurly)[indent]
+
+		t.structuredPropertyTuples.forEach[format.append[setNewLines(1)]]
+		t.scalarDataPropertyValues.forEach[format.append[setNewLines(1)]]
+	}
+	
+	def dispatch void format(RestrictionScalarDataPropertyValue s, extension IFormattableDocument document) {
+		s.regionFor.keyword('.').surround[oneSpace]
+		s.regionFor.keyword('=').surround[oneSpace]
 	}
 	
 	def dispatch void format(BinaryScalarRestriction sc, extension IFormattableDocument document) {
@@ -576,12 +613,12 @@ class OMLFormatter extends AbstractFormatter2 {
 	}
 	
 	def dispatch void format(SingletonInstanceScalarDataPropertyValue s, extension IFormattableDocument document) {
-		s.regionFor.keyword('.').surround[noSpace]
+		s.regionFor.keyword('.').surround[oneSpace]
 		s.regionFor.keyword('=').surround[oneSpace]
 	}
 	
 	def dispatch void format(SingletonInstanceStructuredDataPropertyValue s, extension IFormattableDocument document) {
-		s.regionFor.keyword('.').surround[noSpace]
+		s.regionFor.keyword('.').surround[oneSpace]
 		s.regionFor.keyword('=').surround[oneSpace]
 		
 		val lcurly = s.regionFor.keyword('{')
@@ -605,6 +642,11 @@ class OMLFormatter extends AbstractFormatter2 {
 
 		t.structuredPropertyTuples.forEach[format.append[setNewLines(1)]]
 		t.scalarDataPropertyValues.forEach[format.append[setNewLines(1)]]
+	}
+	
+	def dispatch void format(ScalarDataPropertyValue s, extension IFormattableDocument document) {
+		s.regionFor.keyword('.').surround[oneSpace]
+		s.regionFor.keyword('=').surround[oneSpace]
 	}
 	
 	def dispatch void format(ConceptInstance i, extension IFormattableDocument document) {
