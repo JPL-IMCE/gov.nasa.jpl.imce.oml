@@ -1,29 +1,12 @@
-/*
- * Copyright 2017 California Institute of Technology ("Caltech").
- * U.S. Government sponsorship acknowledged.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * License Terms
- */
- 
 package gov.nasa.jpl.imce.oml.viewpoint
 
-import gov.nasa.jpl.imce.oml.model.graphs.TerminologyGraph
 import gov.nasa.jpl.imce.oml.model.terminologies.Aspect
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept
 import gov.nasa.jpl.imce.oml.model.terminologies.Entity
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialRestrictionAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityRestrictionAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalRestrictionAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship
 import gov.nasa.jpl.imce.oml.model.terminologies.SpecializationAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBoxStatement
@@ -31,60 +14,150 @@ import java.util.AbstractMap.SimpleEntry
 import java.util.ArrayList
 import java.util.HashMap
 import java.util.HashSet
-import java.util.LinkedHashSet
 import java.util.LinkedList
 import java.util.List
 import java.util.Map
 import java.util.Map.Entry
 import java.util.Queue
 import java.util.Set
+import org.eclipse.sirius.diagram.DDiagram
+import org.eclipse.sirius.diagram.DSemanticDiagram
 
-class TerminologyService {
-	def Set<Entity> getVisualEntities(TerminologyGraph tg){
-		val entities  = new LinkedHashSet<Entity>()
-		
-		for(statement : tg.boxStatements){
-			if (statement instanceof Entity){
-				entities.add(statement as Entity)
-			}
-			if(statement instanceof SpecializationAxiom){
-				val temp = statement as SpecializationAxiom
-				entities.add(temp.child)
-				entities.add(temp.parent)
-			}
-		}
-		
-		entities
+class ConceptUsageDiagramService {
+	
+	def Concept getRootConcept(DDiagram d){
+		return (d as DSemanticDiagram).target as Concept
+	}	
+	
+	/*
+	 * Gets all {@link EntityRelationship}s with the 
+	 * passed {@link} Concept as its relation domain
+	 * 
+	 * @param c The root Concept
+	 * @return Set of {@link ReifiedRelationship}s
+	 */
+	def Set<ReifiedRelationship> getVisualRelationshipsWithRootAsDomain(Concept c){
+		return getUsageReltionships(c).
+		filter(ReifiedRelationship).
+		filter[f | f.source == c].
+		toSet
 	}
 	
 	/*
-	 * Gets all {@link Entity} that are directly connected (relationship/axiom)
-	 * to the passed {@link Entity}
-	 * @param e The entity which to find connections 
+	 * Gets all {@link ReifiedRelationship}s with the 
+	 * passed {@link} Concept as its relation range
+	 * 
+	 * @param c The root Concept
+	 * @return Set of {@link ReifiedRelationship}s
 	 */
-	def Set<Entity> getConnectedEntities(Entity e){
-		val entities = new HashSet<Entity>
-		e.tbox.boxStatements.
+	def Set<ReifiedRelationship> getVisualRelationshipsWithRootAsRange(Concept c){
+		return getUsageReltionships(c).
+		filter(ReifiedRelationship).
+		filter[f | f.target == c].
+		toSet
+	}	
+	
+	/*
+	 * Gets all {@link ReifiedRelationship}s that are indirectly connected
+	 * to the {@link Concept} 'c' in which 'c' would be the source
+	 * 
+	 * @param c Root {@link Concept}
+	 * @return Set<ReifiedRelationship> Set of indirectly connected relationships
+	 */
+	def Set<ReifiedRelationship> getIndirectRelationshipsWithRootAsSource(Concept c){
+		val relationships = new HashSet<ReifiedRelationship>
+		
+        getUsageReltionships(c).
+		filter(ReifiedRelationship).
+		filter[f | f.source instanceof Aspect].
 		forEach[t | 
-			val entry = getSourceAndTarget(t)
-			if(entry != null){
-				val n1 = entry.key
-				val n2 = entry.value
-				if(n1 == e){
-					entities.add(n2)
-				} else if (n2 == e){
-					entities.add(n1)
-				}
-			}						
+			relationships.add(t as ReifiedRelationship)
 		]
-		entities.add(e)
-		entities		
+		
+		relationships		
+	}	
+	
+	/*
+	 * Gets all {@link ReifiedRelationship}s that are indirectly connected
+	 * to the {@link Concept} 'c' in which 'c' would be the target
+	 * 
+	 * @param c Root {@link Concept}
+	 * @return Set<ReifiedRelationship> Set of indirectly connected relationships
+	 */
+	def Set<ReifiedRelationship> getIndirectRelationshipsWithRootAsTarget(Concept c){
+	    val relationships = new HashSet<ReifiedRelationship>
+		
+        getUsageReltionships(c).
+		filter(ReifiedRelationship).
+		filter[f | f.target instanceof Aspect].
+		forEach[t | 
+			relationships.add(t as ReifiedRelationship)
+		]
+		
+		relationships			
 	}
+	
+	/*
+	 * Gets all {@link EntityUniversalRestrictionAxiom}s that have the passed
+	 * {@link Concept} as its restricted domain
+	 * 
+	 * @param c The root {@link Concept}
+	 * @return Set of {@link EntityUniversalRestrictionAxioms}s
+	 */
+	def Set<EntityUniversalRestrictionAxiom> getUniversalAxiomWithRootAsSource(Concept c){
+		return getUsageReltionships(c).
+		filter(EntityUniversalRestrictionAxiom).
+		filter[f | f.restrictedDomain == c].
+		toSet
+	}
+
+	/*
+	 * Gets all {@link EntityUniversalRestrictionAxiom}s that have the passed
+	 * {@link Concept} as its restricted range
+	 * 
+	 * @param c The root {@link Concept}
+	 * @return Set of {@link EntityUniversalRestrictionAxioms}s
+	 */
+	def Set<EntityUniversalRestrictionAxiom> getUniversalAxiomWithRootAsTarget(Concept c){
+		return getUsageReltionships(c).
+		filter(EntityUniversalRestrictionAxiom).
+		filter[f | f.restrictedRange == c].
+		toSet
+	}	
+	
+	/*
+	 * Gets all {@link EntityExitenstialRestrictionAxiom}s that have the passed
+	 * {@link Concept} as its restricted domain
+	 * 
+	 * @param c The root {@link Concept}
+	 * @return Set of {@link EntityExistentialRestrictionAxioms}s
+	 */
+	def Set<EntityExistentialRestrictionAxiom> getExistentialAxiomWithRootAsSource(Concept c){
+		return getUsageReltionships(c).
+		filter(EntityExistentialRestrictionAxiom).
+		filter[f | f.restrictedDomain == c].
+		toSet
+	}
+	
+	/*
+	 * Gets all {@link EntityExistentialRestrictionAxiom}s that have the passed
+	 * {@link Concept} as its restricted domain
+	 * 
+	 * @param c The root {@link Concept}
+	 * @return Set of {@link EntityExistentialRestrictionAxioms}s
+	 */
+	def Set<EntityExistentialRestrictionAxiom> getExistentialAxiomWithRootAsTarget(Concept c){
+		return getUsageReltionships(c).
+		filter(EntityExistentialRestrictionAxiom).
+		filter[f | f.restrictedRange == c].
+		toSet
+	}	
 	
 	/*
 	 * Gets all {@link Concept}s that are connected, directly
 	 * and indirectly, to the passed {@ Concept}.  For indirect
 	 * connections this method only finds the first Concept, not all
+	 * 
 	 * @param c Root concept
 	 * @return Set<Concept> The set of {@link Concept}s connected to c 
 	 */
@@ -165,17 +238,18 @@ class TerminologyService {
 		}
 		concepts.add(c)
 		concepts
-	}
+	}	
 	
 	/*
 	 * Same as 'getConnectedConcepts' but returns all
 	 * {@link EntityRelationship}s, {@link SpecializationAxiom}s and
 	 * {@link EntityRestrictionAxiom}s.
+	 * 
 	 * @param c Root Concept
 	 * @return Set<TerminologyBoxStatement> The set of {@link EntityRelationship}s, 
 	 * {@link SpecializationAxiom}s and	{@link EntityRestrictionAxiom}s. connected to c
 	 */
-	def Set<TerminologyBoxStatement> getUsageReltionships(Concept c){
+	private def Set<TerminologyBoxStatement> getUsageReltionships(Concept c){
 		val graph = buildEntityGraph(c)
 		val relationships = new HashSet<TerminologyBoxStatement>
 		// For graph search
@@ -258,44 +332,6 @@ class TerminologyService {
 		relationships
 	}
 	
-	/*
-	 * Gets all {@link ReifiedRelationship}s that are indirectly connected
-	 * to the {@link Concept} 'c' in which 'c' would be the source
-	 * @param c Root {@link Concept}
-	 * @return Set<ReifiedRelationship> Set of indirectly connected relationships
-	 */
-	def Set<ReifiedRelationship> getIndirectRelationshipsWithRootAsSource(Concept c){
-		val relationships = new HashSet<ReifiedRelationship>
-		
-        getUsageReltionships(c).
-		filter(ReifiedRelationship).
-		filter[f | f.source instanceof Aspect].
-		forEach[t | 
-			relationships.add(t as ReifiedRelationship)
-		]
-		
-		relationships		
-	}	
-	
-	/*
-	 * Gets all {@link ReifiedRelationship}s that are indirectly connected
-	 * to the {@link Concept} 'c' in which 'c' would be the target
-	 * @param c Root {@link Concept}
-	 * @return Set<ReifiedRelationship> Set of indirectly connected relationships
-	 */
-	def Set<ReifiedRelationship> getIndirectRelationshipsWithRootAsTarget(Concept c){
-	    val relationships = new HashSet<ReifiedRelationship>
-		
-        getUsageReltionships(c).
-		filter(ReifiedRelationship).
-		filter[f | f.target instanceof Aspect].
-		forEach[t | 
-			relationships.add(t as ReifiedRelationship)
-		]
-		
-		relationships			
-	}
-	
 	private def Map<Entity,List<Entry<Entity,TerminologyBoxStatement>>> buildEntityGraph(Entity c){
 				
 		// Key: Entity
@@ -304,6 +340,7 @@ class TerminologyService {
 		
 		// Build graph
 		c.tbox.boxStatements.
+		//c.tbox.allEntitiesScope.allElements.filter(TerminologyBoxStatement).
 		forEach[relOrAx |
 			val entry = getSourceAndTarget(relOrAx)
 			if(entry != null){
@@ -351,5 +388,4 @@ class TerminologyService {
 		}
 		null
 	}
-	
 }
