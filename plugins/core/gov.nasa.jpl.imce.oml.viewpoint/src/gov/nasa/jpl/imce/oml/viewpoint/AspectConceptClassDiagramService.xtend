@@ -9,10 +9,7 @@ import gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityRestrictionAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship
 import gov.nasa.jpl.imce.oml.model.terminologies.SpecializationAxiom
-import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBoxStatement
-import java.util.AbstractMap.SimpleEntry
 import java.util.HashSet
-import java.util.Map.Entry
 import java.util.Set
 import org.eclipse.sirius.diagram.DDiagram
 import org.eclipse.sirius.diagram.DSemanticDiagram
@@ -26,7 +23,7 @@ class AspectConceptClassDiagramService {
 	 * @param The diagram
 	 * @return The root {@link Entity}
 	 */
-	def Entity getRootConcept(DDiagram d){
+	def Entity getRootEntity(DDiagram d){
 		return (d as DSemanticDiagram).target as Entity
 	}
 
@@ -37,10 +34,10 @@ class AspectConceptClassDiagramService {
 	 * @param c The root Concept
 	 * @return Set of {@link ReifiedRelationship}s
 	 */
-	def Set<EntityRelationship> getVisualRelationshipsWithRootAsDomain(Concept c){
-		return c.tbox.boxStatements.
+	def Set<EntityRelationship> getVisualRelationshipsWithRootAsDomain(Entity e){
+		return e.tbox.boxStatements.
 		filter(EntityRelationship).
-		filter[f | f.source == c].
+		filter[f | f.source == e].
 		toSet
 	}
 	
@@ -51,10 +48,10 @@ class AspectConceptClassDiagramService {
 	 * @param c The root Concept
 	 * @return Set of {@link ReifiedRelationship}s
 	 */
-	def Set<ReifiedRelationship> getVisualRelationshipsWithRootAsRange(Concept c){
-		return c.tbox.boxStatements.
+	def Set<ReifiedRelationship> getVisualRelationshipsWithRootAsRange(Entity e){
+		return e.tbox.boxStatements.
 		filter(ReifiedRelationship).
-		filter[f | f.target == c].
+		filter[f | f.target == e].
 		toSet
 	}	
 

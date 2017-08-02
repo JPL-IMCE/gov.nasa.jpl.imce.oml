@@ -317,7 +317,7 @@ public class UnreifiedRelationshipInstanceTupleImpl extends TerminologyInstanceA
 		}
 		Pair<String, String> _mappedTo_1 = Pair.<String, String>of("unreifiedRelationship", _string_1);
 		ConceptualEntitySingletonInstance _domain = this.getDomain();
-		String _uuid_2 = null;
+		Object _uuid_2 = null;
 		if (_domain!=null) {
 			_uuid_2=_domain.uuid();
 		}
@@ -327,7 +327,7 @@ public class UnreifiedRelationshipInstanceTupleImpl extends TerminologyInstanceA
 		}
 		Pair<String, String> _mappedTo_2 = Pair.<String, String>of("domain", _string_2);
 		ConceptualEntitySingletonInstance _range = this.getRange();
-		String _uuid_3 = null;
+		Object _uuid_3 = null;
 		if (_range!=null) {
 			_uuid_3=_range.uuid();
 		}
