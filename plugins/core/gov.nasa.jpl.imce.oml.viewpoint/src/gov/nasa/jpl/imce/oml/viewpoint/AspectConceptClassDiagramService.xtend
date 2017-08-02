@@ -1,0 +1,149 @@
+package gov.nasa.jpl.imce.oml.viewpoint
+
+import gov.nasa.jpl.imce.oml.model.terminologies.AspectSpecializationAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.Concept
+import gov.nasa.jpl.imce.oml.model.terminologies.ConceptSpecializationAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.Entity
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialRestrictionAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityRestrictionAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship
+import gov.nasa.jpl.imce.oml.model.terminologies.SpecializationAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBoxStatement
+import java.util.AbstractMap.SimpleEntry
+import java.util.HashSet
+import java.util.Map.Entry
+import java.util.Set
+import org.eclipse.sirius.diagram.DDiagram
+import org.eclipse.sirius.diagram.DSemanticDiagram
+
+class AspectConceptClassDiagramService {
+	
+	/*
+	 * Gets root {@link Entity} which the passed {@link DDiagram}
+	 * was created from
+	 * 
+	 * @param The diagram
+	 * @return The root {@link Entity}
+	 */
+	def Entity getRootConcept(DDiagram d){
+		return (d as DSemanticDiagram).target as Entity
+	}
+
+     /*
+	 * Gets all {@link EntityRelationship}s with the 
+	 * passed {@link} Concept as its relation domain
+	 * 
+	 * @param c The root Concept
+	 * @return Set of {@link ReifiedRelationship}s
+	 */
+	def Set<EntityRelationship> getVisualRelationshipsWithRootAsDomain(Concept c){
+		return c.tbox.boxStatements.
+		filter(EntityRelationship).
+		filter[f | f.source == c].
+		toSet
+	}
+	
+	/*
+	 * Gets all {@link ReifiedRelationship}s with the 
+	 * passed {@link} Concept as its relation range
+	 * 
+	 * @param c The root Concept
+	 * @return Set of {@link ReifiedRelationship}s
+	 */
+	def Set<ReifiedRelationship> getVisualRelationshipsWithRootAsRange(Concept c){
+		return c.tbox.boxStatements.
+		filter(ReifiedRelationship).
+		filter[f | f.target == c].
+		toSet
+	}	
+
+	/*
+	 * Gets all {@link Entity} that are directly connected (relationship/axiom)
+	 * to the passed {@link Entity}
+	 * @param e The entity which to find connections 
+	 */
+	def Set<Entity> getVisualEntities(Entity e){
+		val entities = new HashSet<Entity>
+		e.tbox.boxStatements.
+		forEach[t | 
+			 if(t instanceof SpecializationAxiom){
+				val n = (t as SpecializationAxiom).child
+				if(n == e){
+					entities.add((t as SpecializationAxiom).parent)
+				}
+		    } else if(t instanceof EntityRestrictionAxiom){
+				val n = (t as EntityRestrictionAxiom).restrictedDomain
+				if(n == e){
+					entities.add((t as EntityRestrictionAxiom).restrictedRange)
+				}
+			} else if(t instanceof EntityRelationship){
+				val n1 = (t as EntityRelationship).source
+				val n2 = (t as EntityRelationship).target
+				if(n1 == e){
+					entities.add(n2)
+				} else if(n2 == e){
+					entities.add(n1)
+				}
+		   }								
+		]
+		entities.add(e)
+		entities		
+	}
+	
+	/*
+	 * Gets all {@link AspectSpcializationAxiom}s that have the passed
+	 * {@link Entity} as its sub-Entity
+	 * 
+	 * @param e The root {@link Entity}
+	 * @return Set of {@link AspectSpecializationAxiom}s
+	 */
+	 def Set<AspectSpecializationAxiom> getVisualAspectAxioms(Entity e){
+	 	return e.tbox.boxStatements.
+	 	filter(AspectSpecializationAxiom).
+	 	filter[f | f.subEntity == e].
+	 	toSet
+	 }
+	
+	/*
+	 * Gets all {@link ConceptSpcializationAxiom}s that have the passed
+	 * {@link Concept} as its sub-Concept
+	 * 
+	 * @param c The root {@link Concept}
+	 * @return Set of {@link ConceptSpecializationAxiom}s
+	 */
+	 def Set<ConceptSpecializationAxiom> getVisualConceptAxioms(Concept e){
+	 	return e.tbox.boxStatements.
+	 	filter(ConceptSpecializationAxiom).
+	 	filter[f | f.subConcept == e].
+	 	toSet
+	 }
+	 
+	 /*
+	  * Gets all {@link EntityRestrictionAxiom}s that have the passed
+	  * {@link Entity} as its restricted Domain
+	  * 
+	  * @param The root Entity
+	  * @return Set of {@link EntityRestrictionAxiom}s
+	  */
+	  def Set<EntityRestrictionAxiom> getVisualRestrictionAxioms(Entity e){
+	  	return e.tbox.boxStatements.
+	  	filter(EntityRestrictionAxiom).
+	  	filter(f | f.restrictedDomain == e).
+	  	toSet
+	  }
+	  
+	  /*
+	   * Gets the label for the given {@link EntityRestrictionAxiom}
+	   * 
+	   * @param e The {@link EntityRestrictionAxiom}
+	   * @return '<<existential>>' or '<<universal>>'
+	   */
+	   def String getAxiomLabel(EntityRestrictionAxiom ax){
+	   	if(ax instanceof EntityExistentialRestrictionAxiom){
+	   	  return "<<existential>>"	
+	   	}
+	   	
+	   	  "<<universal>>" 
+	   }
+}
