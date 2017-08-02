@@ -141,7 +141,7 @@ public abstract class ConceptualEntitySingletonInstanceImpl extends TerminologyI
 			_iri=_descriptionBox.iri();
 		}
 		String _plus = (_iri + "#");
-		String _name = this.name();
+		Object _name = this.name();
 		return (_plus + _name);
 	}
 
@@ -163,7 +163,7 @@ public abstract class ConceptualEntitySingletonInstanceImpl extends TerminologyI
 			_elvis = "";
 		}
 		String _plus = (_elvis + ":");
-		String _name = this.name();
+		Object _name = this.name();
 		return (_plus + _name);
 	}
 
@@ -202,7 +202,7 @@ public abstract class ConceptualEntitySingletonInstanceImpl extends TerminologyI
 		if (_uuid!=null) {
 			_string=_uuid.toString();
 		}
-		String _name = this.name();
+		Object _name = this.name();
 		String _string_1 = null;
 		if (_name!=null) {
 			_string_1=_name.toString();

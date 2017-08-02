@@ -451,7 +451,7 @@ public class GraphsPackageImpl extends EPackageImpl implements GraphsPackage {
 		  (getConceptDesignationTerminologyAxiom__DesignationTerminologyGraph(), 
 		   source, 
 		   new String[] {
-			 "code", "extent.terminologyBoxOfTerminologyBoxAxiom.get(this) match {\n      case scala.Some(g: resolver.api.TerminologyGraph) => scala.Some(g)\n      case _ => scala.None\n    }"
+			 "code", "extent.terminologyBoxOfTerminologyBoxAxiom.get(this) match {\r\n      case scala.Some(g: resolver.api.TerminologyGraph) => scala.Some(g)\r\n      case _ => scala.None\r\n    }"
 		   });	
 		addAnnotation
 		  (getConceptDesignationTerminologyAxiom__Source(), 
@@ -463,7 +463,7 @@ public class GraphsPackageImpl extends EPackageImpl implements GraphsPackage {
 		  (getTerminologyNestingAxiom__NestedTerminology(), 
 		   source, 
 		   new String[] {
-			 "code", "extent.terminologyBoxOfTerminologyBoxAxiom.get(this) match {\n      case scala.Some(g: resolver.api.TerminologyGraph) => scala.Some(g)\n      case _ => scala.None\n    }"
+			 "code", "extent.terminologyBoxOfTerminologyBoxAxiom.get(this) match {\r\n      case scala.Some(g: resolver.api.TerminologyGraph) => scala.Some(g)\r\n      case _ => scala.None\r\n    }"
 		   });	
 		addAnnotation
 		  (getTerminologyNestingAxiom__Source(), 

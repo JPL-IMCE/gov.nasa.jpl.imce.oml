@@ -83,11 +83,17 @@ import gov.nasa.jpl.imce.oml.model.terminologies.TimeScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship;
 import java.util.Arrays;
 import java.util.function.Consumer;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtext.Assignment;
+import org.eclipse.xtext.Keyword;
+import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.formatting2.AbstractFormatter2;
 import org.eclipse.xtext.formatting2.IFormattableDocument;
 import org.eclipse.xtext.formatting2.IHiddenRegionFormatter;
 import org.eclipse.xtext.formatting2.regionaccess.ISemanticRegion;
+import org.eclipse.xtext.formatting2.regionaccess.ISemanticRegionsFinder;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
@@ -104,15 +110,20 @@ public class OMLFormatter extends AbstractFormatter2 {
       it.noSpace();
     };
     document.<Extent>prepend(extent, _function);
+    EList<AnnotationProperty> _annotationProperties = extent.getAnnotationProperties();
     final Consumer<AnnotationProperty> _function_1 = (AnnotationProperty it) -> {
+      AnnotationProperty _format = document.<AnnotationProperty>format(it);
       final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it_1) -> {
         it_1.setNewLines(2);
       };
-      document.<AnnotationProperty>append(document.<AnnotationProperty>format(it), _function_2);
+      document.<AnnotationProperty>append(_format, _function_2);
     };
-    extent.getAnnotationProperties().forEach(_function_1);
-    final Module lastM = IterableExtensions.<Module>last(extent.getModules());
+    _annotationProperties.forEach(_function_1);
+    EList<Module> _modules = extent.getModules();
+    final Module lastM = IterableExtensions.<Module>last(_modules);
+    EList<Module> _modules_1 = extent.getModules();
     final Consumer<Module> _function_2 = (Module m) -> {
+      Module _format = document.<Module>format(m);
       final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
         int _xifexpression = (int) 0;
         boolean _equals = Objects.equal(lastM, m);
@@ -123,49 +134,71 @@ public class OMLFormatter extends AbstractFormatter2 {
         }
         it.setNewLines(_xifexpression);
       };
-      document.<Module>append(document.<Module>format(m), _function_3);
+      document.<Module>append(_format, _function_3);
     };
-    extent.getModules().forEach(_function_2);
+    _modules_1.forEach(_function_2);
   }
   
   protected void _format(final AnnotationProperty annotationProperty, @Extension final IFormattableDocument document) {
+    ISemanticRegionsFinder _regionFor = this.textRegionExtensions.regionFor(annotationProperty);
+    ISemanticRegion _keyword = _regionFor.keyword("annotationProperty");
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(annotationProperty).keyword("annotationProperty"), _function);
+    document.append(_keyword, _function);
+    ISemanticRegionsFinder _regionFor_1 = this.textRegionExtensions.regionFor(annotationProperty);
+    ISemanticRegion _keyword_1 = _regionFor_1.keyword("=");
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.noSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(annotationProperty).keyword("="), _function_1);
+    document.surround(_keyword_1, _function_1);
   }
   
   protected void _format(final Annotation annotation, @Extension final IFormattableDocument document) {
+    ISemanticRegionsFinder _regionFor = this.textRegionExtensions.regionFor(annotation);
+    ISemanticRegion _keyword = _regionFor.keyword("@");
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.noSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(annotation).keyword("@"), _function);
+    document.append(_keyword, _function);
+    ISemanticRegionsFinder _regionFor_1 = this.textRegionExtensions.regionFor(annotation);
+    ISemanticRegion _keyword_1 = _regionFor_1.keyword("=");
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.noSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(annotation).keyword("="), _function_1);
-    this.textRegionExtensions.regionFor(annotation).ruleCall(this._oMLGrammarAccess.getAnnotationAccess().getValueSTRINGTerminalRuleCall_3_0());
+    document.surround(_keyword_1, _function_1);
+    ISemanticRegionsFinder _regionFor_2 = this.textRegionExtensions.regionFor(annotation);
+    OMLGrammarAccess.AnnotationElements _annotationAccess = this._oMLGrammarAccess.getAnnotationAccess();
+    RuleCall _valueSTRINGTerminalRuleCall_3_0 = _annotationAccess.getValueSTRINGTerminalRuleCall_3_0();
+    _regionFor_2.ruleCall(_valueSTRINGTerminalRuleCall_3_0);
   }
   
   protected void _format(final TerminologyGraph terminologyGraph, @Extension final IFormattableDocument document) {
+    ISemanticRegionsFinder _regionFor = this.textRegionExtensions.regionFor(terminologyGraph);
+    EAttribute _terminologyBox_Kind = TerminologiesPackage.eINSTANCE.getTerminologyBox_Kind();
+    ISemanticRegion _feature = _regionFor.feature(_terminologyBox_Kind);
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(terminologyGraph).feature(TerminologiesPackage.eINSTANCE.getTerminologyBox_Kind()), _function);
+    document.append(_feature, _function);
+    ISemanticRegionsFinder _regionFor_1 = this.textRegionExtensions.regionFor(terminologyGraph);
+    ISemanticRegion _keyword = _regionFor_1.keyword("terminology");
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(terminologyGraph).keyword("terminology"), _function_1);
+    document.surround(_keyword, _function_1);
+    ISemanticRegionsFinder _regionFor_2 = this.textRegionExtensions.regionFor(terminologyGraph);
+    OMLGrammarAccess.TerminologyGraphElements _terminologyGraphAccess = this._oMLGrammarAccess.getTerminologyGraphAccess();
+    RuleCall _iriIRITerminalRuleCall_3_0 = _terminologyGraphAccess.getIriIRITerminalRuleCall_3_0();
+    ISemanticRegion _ruleCall = _regionFor_2.ruleCall(_iriIRITerminalRuleCall_3_0);
     final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(terminologyGraph).ruleCall(this._oMLGrammarAccess.getTerminologyGraphAccess().getIriIRITerminalRuleCall_3_0()), _function_2);
-    final ISemanticRegion lcurly = this.textRegionExtensions.regionFor(terminologyGraph).keyword("{");
-    final ISemanticRegion rcurly = this.textRegionExtensions.regionFor(terminologyGraph).keyword("}");
+    document.surround(_ruleCall, _function_2);
+    ISemanticRegionsFinder _regionFor_3 = this.textRegionExtensions.regionFor(terminologyGraph);
+    final ISemanticRegion lcurly = _regionFor_3.keyword("{");
+    ISemanticRegionsFinder _regionFor_4 = this.textRegionExtensions.regionFor(terminologyGraph);
+    final ISemanticRegion rcurly = _regionFor_4.keyword("}");
     final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
@@ -178,44 +211,61 @@ public class OMLFormatter extends AbstractFormatter2 {
       it.indent();
     };
     document.<ISemanticRegion, ISemanticRegion>interior(lcurly, rcurly, _function_5);
+    EList<Annotation> _annotations = terminologyGraph.getAnnotations();
     final Consumer<Annotation> _function_6 = (Annotation it) -> {
+      Annotation _format = document.<Annotation>format(it);
       final Procedure1<IHiddenRegionFormatter> _function_7 = (IHiddenRegionFormatter it_1) -> {
         it_1.setNewLines(1);
       };
-      document.<Annotation>append(document.<Annotation>format(it), _function_7);
+      document.<Annotation>append(_format, _function_7);
     };
-    terminologyGraph.getAnnotations().forEach(_function_6);
+    _annotations.forEach(_function_6);
+    EList<TerminologyBoxAxiom> _boxAxioms = terminologyGraph.getBoxAxioms();
     final Consumer<TerminologyBoxAxiom> _function_7 = (TerminologyBoxAxiom it) -> {
+      TerminologyBoxAxiom _format = document.<TerminologyBoxAxiom>format(it);
       final Procedure1<IHiddenRegionFormatter> _function_8 = (IHiddenRegionFormatter it_1) -> {
         it_1.setNewLines(2);
       };
-      document.<TerminologyBoxAxiom>append(document.<TerminologyBoxAxiom>format(it), _function_8);
+      document.<TerminologyBoxAxiom>append(_format, _function_8);
     };
-    terminologyGraph.getBoxAxioms().forEach(_function_7);
+    _boxAxioms.forEach(_function_7);
+    EList<TerminologyBoxStatement> _boxStatements = terminologyGraph.getBoxStatements();
     final Consumer<TerminologyBoxStatement> _function_8 = (TerminologyBoxStatement it) -> {
+      TerminologyBoxStatement _format = document.<TerminologyBoxStatement>format(it);
       final Procedure1<IHiddenRegionFormatter> _function_9 = (IHiddenRegionFormatter it_1) -> {
         it_1.setNewLines(2);
       };
-      document.<TerminologyBoxStatement>append(document.<TerminologyBoxStatement>format(it), _function_9);
+      document.<TerminologyBoxStatement>append(_format, _function_9);
     };
-    terminologyGraph.getBoxStatements().forEach(_function_8);
+    _boxStatements.forEach(_function_8);
   }
   
   protected void _format(final Bundle bundle, @Extension final IFormattableDocument document) {
+    ISemanticRegionsFinder _regionFor = this.textRegionExtensions.regionFor(bundle);
+    EAttribute _terminologyBox_Kind = TerminologiesPackage.eINSTANCE.getTerminologyBox_Kind();
+    ISemanticRegion _feature = _regionFor.feature(_terminologyBox_Kind);
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(bundle).feature(TerminologiesPackage.eINSTANCE.getTerminologyBox_Kind()), _function);
+    document.append(_feature, _function);
+    ISemanticRegionsFinder _regionFor_1 = this.textRegionExtensions.regionFor(bundle);
+    ISemanticRegion _keyword = _regionFor_1.keyword("bundle");
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(bundle).keyword("bundle"), _function_1);
+    document.surround(_keyword, _function_1);
+    ISemanticRegionsFinder _regionFor_2 = this.textRegionExtensions.regionFor(bundle);
+    OMLGrammarAccess.BundleElements _bundleAccess = this._oMLGrammarAccess.getBundleAccess();
+    RuleCall _iriIRITerminalRuleCall_3_0 = _bundleAccess.getIriIRITerminalRuleCall_3_0();
+    ISemanticRegion _ruleCall = _regionFor_2.ruleCall(_iriIRITerminalRuleCall_3_0);
     final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(bundle).ruleCall(this._oMLGrammarAccess.getBundleAccess().getIriIRITerminalRuleCall_3_0()), _function_2);
-    final ISemanticRegion lcurly = this.textRegionExtensions.regionFor(bundle).keyword("{");
-    final ISemanticRegion rcurly = this.textRegionExtensions.regionFor(bundle).keyword("}");
+    document.surround(_ruleCall, _function_2);
+    ISemanticRegionsFinder _regionFor_3 = this.textRegionExtensions.regionFor(bundle);
+    final ISemanticRegion lcurly = _regionFor_3.keyword("{");
+    ISemanticRegionsFinder _regionFor_4 = this.textRegionExtensions.regionFor(bundle);
+    final ISemanticRegion rcurly = _regionFor_4.keyword("}");
     final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
@@ -228,58 +278,79 @@ public class OMLFormatter extends AbstractFormatter2 {
       it.indent();
     };
     document.<ISemanticRegion, ISemanticRegion>interior(lcurly, rcurly, _function_5);
+    EList<Annotation> _annotations = bundle.getAnnotations();
     final Consumer<Annotation> _function_6 = (Annotation it) -> {
+      Annotation _format = document.<Annotation>format(it);
       final Procedure1<IHiddenRegionFormatter> _function_7 = (IHiddenRegionFormatter it_1) -> {
         it_1.setNewLines(1);
       };
-      document.<Annotation>append(document.<Annotation>format(it), _function_7);
+      document.<Annotation>append(_format, _function_7);
     };
-    bundle.getAnnotations().forEach(_function_6);
+    _annotations.forEach(_function_6);
+    EList<TerminologyBoxAxiom> _boxAxioms = bundle.getBoxAxioms();
     final Consumer<TerminologyBoxAxiom> _function_7 = (TerminologyBoxAxiom it) -> {
+      TerminologyBoxAxiom _format = document.<TerminologyBoxAxiom>format(it);
       final Procedure1<IHiddenRegionFormatter> _function_8 = (IHiddenRegionFormatter it_1) -> {
         it_1.setNewLines(2);
       };
-      document.<TerminologyBoxAxiom>append(document.<TerminologyBoxAxiom>format(it), _function_8);
+      document.<TerminologyBoxAxiom>append(_format, _function_8);
     };
-    bundle.getBoxAxioms().forEach(_function_7);
+    _boxAxioms.forEach(_function_7);
+    EList<TerminologyBoxStatement> _boxStatements = bundle.getBoxStatements();
     final Consumer<TerminologyBoxStatement> _function_8 = (TerminologyBoxStatement it) -> {
+      TerminologyBoxStatement _format = document.<TerminologyBoxStatement>format(it);
       final Procedure1<IHiddenRegionFormatter> _function_9 = (IHiddenRegionFormatter it_1) -> {
         it_1.setNewLines(2);
       };
-      document.<TerminologyBoxStatement>append(document.<TerminologyBoxStatement>format(it), _function_9);
+      document.<TerminologyBoxStatement>append(_format, _function_9);
     };
-    bundle.getBoxStatements().forEach(_function_8);
+    _boxStatements.forEach(_function_8);
+    EList<TerminologyBundleAxiom> _bundleAxioms = bundle.getBundleAxioms();
     final Consumer<TerminologyBundleAxiom> _function_9 = (TerminologyBundleAxiom it) -> {
+      TerminologyBundleAxiom _format = document.<TerminologyBundleAxiom>format(it);
       final Procedure1<IHiddenRegionFormatter> _function_10 = (IHiddenRegionFormatter it_1) -> {
         it_1.setNewLines(2);
       };
-      document.<TerminologyBundleAxiom>append(document.<TerminologyBundleAxiom>format(it), _function_10);
+      document.<TerminologyBundleAxiom>append(_format, _function_10);
     };
-    bundle.getBundleAxioms().forEach(_function_9);
+    _bundleAxioms.forEach(_function_9);
+    EList<TerminologyBundleStatement> _bundleStatements = bundle.getBundleStatements();
     final Consumer<TerminologyBundleStatement> _function_10 = (TerminologyBundleStatement it) -> {
+      TerminologyBundleStatement _format = document.<TerminologyBundleStatement>format(it);
       final Procedure1<IHiddenRegionFormatter> _function_11 = (IHiddenRegionFormatter it_1) -> {
         it_1.setNewLines(2);
       };
-      document.<TerminologyBundleStatement>append(document.<TerminologyBundleStatement>format(it), _function_11);
+      document.<TerminologyBundleStatement>append(_format, _function_11);
     };
-    bundle.getBundleStatements().forEach(_function_10);
+    _bundleStatements.forEach(_function_10);
   }
   
   protected void _format(final DescriptionBox descriptionBox, @Extension final IFormattableDocument document) {
+    ISemanticRegionsFinder _regionFor = this.textRegionExtensions.regionFor(descriptionBox);
+    EAttribute _descriptionBox_Kind = DescriptionsPackage.eINSTANCE.getDescriptionBox_Kind();
+    ISemanticRegion _feature = _regionFor.feature(_descriptionBox_Kind);
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(descriptionBox).feature(DescriptionsPackage.eINSTANCE.getDescriptionBox_Kind()), _function);
+    document.append(_feature, _function);
+    ISemanticRegionsFinder _regionFor_1 = this.textRegionExtensions.regionFor(descriptionBox);
+    ISemanticRegion _keyword = _regionFor_1.keyword("descriptionBox");
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(descriptionBox).keyword("descriptionBox"), _function_1);
+    document.surround(_keyword, _function_1);
+    ISemanticRegionsFinder _regionFor_2 = this.textRegionExtensions.regionFor(descriptionBox);
+    OMLGrammarAccess.DescriptionBoxElements _descriptionBoxAccess = this._oMLGrammarAccess.getDescriptionBoxAccess();
+    RuleCall _iriIRITerminalRuleCall_3_0 = _descriptionBoxAccess.getIriIRITerminalRuleCall_3_0();
+    ISemanticRegion _ruleCall = _regionFor_2.ruleCall(_iriIRITerminalRuleCall_3_0);
     final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(descriptionBox).ruleCall(this._oMLGrammarAccess.getDescriptionBoxAccess().getIriIRITerminalRuleCall_3_0()), _function_2);
-    final ISemanticRegion lcurly = this.textRegionExtensions.regionFor(descriptionBox).keyword("{");
-    final ISemanticRegion rcurly = this.textRegionExtensions.regionFor(descriptionBox).keyword("}");
+    document.surround(_ruleCall, _function_2);
+    ISemanticRegionsFinder _regionFor_3 = this.textRegionExtensions.regionFor(descriptionBox);
+    final ISemanticRegion lcurly = _regionFor_3.keyword("{");
+    ISemanticRegionsFinder _regionFor_4 = this.textRegionExtensions.regionFor(descriptionBox);
+    final ISemanticRegion rcurly = _regionFor_4.keyword("}");
     final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
@@ -292,91 +363,125 @@ public class OMLFormatter extends AbstractFormatter2 {
       it.indent();
     };
     document.<ISemanticRegion, ISemanticRegion>interior(lcurly, rcurly, _function_5);
+    EList<Annotation> _annotations = descriptionBox.getAnnotations();
     final Consumer<Annotation> _function_6 = (Annotation it) -> {
+      Annotation _format = document.<Annotation>format(it);
       final Procedure1<IHiddenRegionFormatter> _function_7 = (IHiddenRegionFormatter it_1) -> {
         it_1.setNewLines(1);
       };
-      document.<Annotation>append(document.<Annotation>format(it), _function_7);
+      document.<Annotation>append(_format, _function_7);
     };
-    descriptionBox.getAnnotations().forEach(_function_6);
+    _annotations.forEach(_function_6);
+    EList<DescriptionBoxExtendsClosedWorldDefinitions> _closedWorldDefinitions = descriptionBox.getClosedWorldDefinitions();
     final Consumer<DescriptionBoxExtendsClosedWorldDefinitions> _function_7 = (DescriptionBoxExtendsClosedWorldDefinitions it) -> {
+      DescriptionBoxExtendsClosedWorldDefinitions _format = document.<DescriptionBoxExtendsClosedWorldDefinitions>format(it);
       final Procedure1<IHiddenRegionFormatter> _function_8 = (IHiddenRegionFormatter it_1) -> {
         it_1.setNewLines(2);
       };
-      document.<DescriptionBoxExtendsClosedWorldDefinitions>append(document.<DescriptionBoxExtendsClosedWorldDefinitions>format(it), _function_8);
+      document.<DescriptionBoxExtendsClosedWorldDefinitions>append(_format, _function_8);
     };
-    descriptionBox.getClosedWorldDefinitions().forEach(_function_7);
+    _closedWorldDefinitions.forEach(_function_7);
+    EList<DescriptionBoxRefinement> _descriptionBoxRefinements = descriptionBox.getDescriptionBoxRefinements();
     final Consumer<DescriptionBoxRefinement> _function_8 = (DescriptionBoxRefinement it) -> {
+      DescriptionBoxRefinement _format = document.<DescriptionBoxRefinement>format(it);
       final Procedure1<IHiddenRegionFormatter> _function_9 = (IHiddenRegionFormatter it_1) -> {
         it_1.setNewLines(2);
       };
-      document.<DescriptionBoxRefinement>append(document.<DescriptionBoxRefinement>format(it), _function_9);
+      document.<DescriptionBoxRefinement>append(_format, _function_9);
     };
-    descriptionBox.getDescriptionBoxRefinements().forEach(_function_8);
+    _descriptionBoxRefinements.forEach(_function_8);
+    EList<ConceptInstance> _conceptInstances = descriptionBox.getConceptInstances();
     final Consumer<ConceptInstance> _function_9 = (ConceptInstance it) -> {
+      ConceptInstance _format = document.<ConceptInstance>format(it);
       final Procedure1<IHiddenRegionFormatter> _function_10 = (IHiddenRegionFormatter it_1) -> {
         it_1.setNewLines(2);
       };
-      document.<ConceptInstance>append(document.<ConceptInstance>format(it), _function_10);
+      document.<ConceptInstance>append(_format, _function_10);
     };
-    descriptionBox.getConceptInstances().forEach(_function_9);
+    _conceptInstances.forEach(_function_9);
+    EList<ReifiedRelationshipInstance> _reifiedRelationshipInstances = descriptionBox.getReifiedRelationshipInstances();
     final Consumer<ReifiedRelationshipInstance> _function_10 = (ReifiedRelationshipInstance it) -> {
+      ReifiedRelationshipInstance _format = document.<ReifiedRelationshipInstance>format(it);
       final Procedure1<IHiddenRegionFormatter> _function_11 = (IHiddenRegionFormatter it_1) -> {
         it_1.setNewLines(2);
       };
-      document.<ReifiedRelationshipInstance>append(document.<ReifiedRelationshipInstance>format(it), _function_11);
+      document.<ReifiedRelationshipInstance>append(_format, _function_11);
     };
-    descriptionBox.getReifiedRelationshipInstances().forEach(_function_10);
+    _reifiedRelationshipInstances.forEach(_function_10);
+    EList<ReifiedRelationshipInstanceDomain> _reifiedRelationshipInstanceDomains = descriptionBox.getReifiedRelationshipInstanceDomains();
     final Consumer<ReifiedRelationshipInstanceDomain> _function_11 = (ReifiedRelationshipInstanceDomain it) -> {
+      ReifiedRelationshipInstanceDomain _format = document.<ReifiedRelationshipInstanceDomain>format(it);
       final Procedure1<IHiddenRegionFormatter> _function_12 = (IHiddenRegionFormatter it_1) -> {
         it_1.setNewLines(2);
       };
-      document.<ReifiedRelationshipInstanceDomain>append(document.<ReifiedRelationshipInstanceDomain>format(it), _function_12);
+      document.<ReifiedRelationshipInstanceDomain>append(_format, _function_12);
     };
-    descriptionBox.getReifiedRelationshipInstanceDomains().forEach(_function_11);
+    _reifiedRelationshipInstanceDomains.forEach(_function_11);
+    EList<ReifiedRelationshipInstanceRange> _reifiedRelationshipInstanceRanges = descriptionBox.getReifiedRelationshipInstanceRanges();
     final Consumer<ReifiedRelationshipInstanceRange> _function_12 = (ReifiedRelationshipInstanceRange it) -> {
+      ReifiedRelationshipInstanceRange _format = document.<ReifiedRelationshipInstanceRange>format(it);
       final Procedure1<IHiddenRegionFormatter> _function_13 = (IHiddenRegionFormatter it_1) -> {
         it_1.setNewLines(2);
       };
-      document.<ReifiedRelationshipInstanceRange>append(document.<ReifiedRelationshipInstanceRange>format(it), _function_13);
+      document.<ReifiedRelationshipInstanceRange>append(_format, _function_13);
     };
-    descriptionBox.getReifiedRelationshipInstanceRanges().forEach(_function_12);
+    _reifiedRelationshipInstanceRanges.forEach(_function_12);
+    EList<UnreifiedRelationshipInstanceTuple> _unreifiedRelationshipInstanceTuples = descriptionBox.getUnreifiedRelationshipInstanceTuples();
     final Consumer<UnreifiedRelationshipInstanceTuple> _function_13 = (UnreifiedRelationshipInstanceTuple it) -> {
+      UnreifiedRelationshipInstanceTuple _format = document.<UnreifiedRelationshipInstanceTuple>format(it);
       final Procedure1<IHiddenRegionFormatter> _function_14 = (IHiddenRegionFormatter it_1) -> {
         it_1.setNewLines(2);
       };
-      document.<UnreifiedRelationshipInstanceTuple>append(document.<UnreifiedRelationshipInstanceTuple>format(it), _function_14);
+      document.<UnreifiedRelationshipInstanceTuple>append(_format, _function_14);
     };
-    descriptionBox.getUnreifiedRelationshipInstanceTuples().forEach(_function_13);
+    _unreifiedRelationshipInstanceTuples.forEach(_function_13);
   }
   
   protected void _format(final Aspect aspect, @Extension final IFormattableDocument document) {
+    ISemanticRegionsFinder _regionFor = this.textRegionExtensions.regionFor(aspect);
+    ISemanticRegion _keyword = _regionFor.keyword("aspect");
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(aspect).keyword("aspect"), _function);
-    this.textRegionExtensions.regionFor(aspect).ruleCall(this._oMLGrammarAccess.getAspectAccess().getNameIDTerminalRuleCall_1_0());
+    document.append(_keyword, _function);
+    ISemanticRegionsFinder _regionFor_1 = this.textRegionExtensions.regionFor(aspect);
+    OMLGrammarAccess.AspectElements _aspectAccess = this._oMLGrammarAccess.getAspectAccess();
+    RuleCall _nameIDTerminalRuleCall_1_0 = _aspectAccess.getNameIDTerminalRuleCall_1_0();
+    _regionFor_1.ruleCall(_nameIDTerminalRuleCall_1_0);
   }
   
   protected void _format(final Concept concept, @Extension final IFormattableDocument document) {
+    ISemanticRegionsFinder _regionFor = this.textRegionExtensions.regionFor(concept);
+    ISemanticRegion _keyword = _regionFor.keyword("concept");
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(concept).keyword("concept"), _function);
-    this.textRegionExtensions.regionFor(concept).ruleCall(this._oMLGrammarAccess.getConceptAccess().getNameIDTerminalRuleCall_1_0());
+    document.append(_keyword, _function);
+    ISemanticRegionsFinder _regionFor_1 = this.textRegionExtensions.regionFor(concept);
+    OMLGrammarAccess.ConceptElements _conceptAccess = this._oMLGrammarAccess.getConceptAccess();
+    RuleCall _nameIDTerminalRuleCall_1_0 = _conceptAccess.getNameIDTerminalRuleCall_1_0();
+    _regionFor_1.ruleCall(_nameIDTerminalRuleCall_1_0);
   }
   
   protected void _format(final ReifiedRelationship rr, @Extension final IFormattableDocument document) {
+    ISemanticRegionsFinder _regionFor = this.textRegionExtensions.regionFor(rr);
+    ISemanticRegion _keyword = _regionFor.keyword("reifiedRelationship");
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(rr).keyword("reifiedRelationship"), _function);
+    document.append(_keyword, _function);
+    ISemanticRegionsFinder _regionFor_1 = this.textRegionExtensions.regionFor(rr);
+    OMLGrammarAccess.ReifiedRelationshipElements _reifiedRelationshipAccess = this._oMLGrammarAccess.getReifiedRelationshipAccess();
+    RuleCall _nameIDTerminalRuleCall_1_0 = _reifiedRelationshipAccess.getNameIDTerminalRuleCall_1_0();
+    ISemanticRegion _ruleCall = _regionFor_1.ruleCall(_nameIDTerminalRuleCall_1_0);
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(rr).ruleCall(this._oMLGrammarAccess.getReifiedRelationshipAccess().getNameIDTerminalRuleCall_1_0()), _function_1);
-    final ISemanticRegion lcurly = this.textRegionExtensions.regionFor(rr).keyword("{");
-    final ISemanticRegion rcurly = this.textRegionExtensions.regionFor(rr).keyword("}");
+    document.surround(_ruleCall, _function_1);
+    ISemanticRegionsFinder _regionFor_2 = this.textRegionExtensions.regionFor(rr);
+    final ISemanticRegion lcurly = _regionFor_2.keyword("{");
+    ISemanticRegionsFinder _regionFor_3 = this.textRegionExtensions.regionFor(rr);
+    final ISemanticRegion rcurly = _regionFor_3.keyword("}");
     final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
@@ -389,71 +494,105 @@ public class OMLFormatter extends AbstractFormatter2 {
       it.indent();
     };
     document.<ISemanticRegion, ISemanticRegion>interior(lcurly, rcurly, _function_4);
+    ISemanticRegionsFinder _regionFor_4 = this.textRegionExtensions.regionFor(rr);
+    ISemanticRegion _keyword_1 = _regionFor_4.keyword("functional");
     final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.prepend(this.textRegionExtensions.regionFor(rr).keyword("functional"), _function_5);
+    document.prepend(_keyword_1, _function_5);
+    ISemanticRegionsFinder _regionFor_5 = this.textRegionExtensions.regionFor(rr);
+    ISemanticRegion _keyword_2 = _regionFor_5.keyword("inverseFunctional");
     final Procedure1<IHiddenRegionFormatter> _function_6 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.prepend(this.textRegionExtensions.regionFor(rr).keyword("inverseFunctional"), _function_6);
+    document.prepend(_keyword_2, _function_6);
+    ISemanticRegionsFinder _regionFor_6 = this.textRegionExtensions.regionFor(rr);
+    ISemanticRegion _keyword_3 = _regionFor_6.keyword("essential");
     final Procedure1<IHiddenRegionFormatter> _function_7 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.prepend(this.textRegionExtensions.regionFor(rr).keyword("essential"), _function_7);
+    document.prepend(_keyword_3, _function_7);
+    ISemanticRegionsFinder _regionFor_7 = this.textRegionExtensions.regionFor(rr);
+    ISemanticRegion _keyword_4 = _regionFor_7.keyword("inverseEssential");
     final Procedure1<IHiddenRegionFormatter> _function_8 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.prepend(this.textRegionExtensions.regionFor(rr).keyword("inverseEssential"), _function_8);
+    document.prepend(_keyword_4, _function_8);
+    ISemanticRegionsFinder _regionFor_8 = this.textRegionExtensions.regionFor(rr);
+    ISemanticRegion _keyword_5 = _regionFor_8.keyword("symmetric");
     final Procedure1<IHiddenRegionFormatter> _function_9 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.prepend(this.textRegionExtensions.regionFor(rr).keyword("symmetric"), _function_9);
+    document.prepend(_keyword_5, _function_9);
+    ISemanticRegionsFinder _regionFor_9 = this.textRegionExtensions.regionFor(rr);
+    ISemanticRegion _keyword_6 = _regionFor_9.keyword("asymmetric");
     final Procedure1<IHiddenRegionFormatter> _function_10 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.prepend(this.textRegionExtensions.regionFor(rr).keyword("asymmetric"), _function_10);
+    document.prepend(_keyword_6, _function_10);
+    ISemanticRegionsFinder _regionFor_10 = this.textRegionExtensions.regionFor(rr);
+    ISemanticRegion _keyword_7 = _regionFor_10.keyword("reflexive");
     final Procedure1<IHiddenRegionFormatter> _function_11 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.prepend(this.textRegionExtensions.regionFor(rr).keyword("reflexive"), _function_11);
+    document.prepend(_keyword_7, _function_11);
+    ISemanticRegionsFinder _regionFor_11 = this.textRegionExtensions.regionFor(rr);
+    ISemanticRegion _keyword_8 = _regionFor_11.keyword("irreflexive");
     final Procedure1<IHiddenRegionFormatter> _function_12 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.prepend(this.textRegionExtensions.regionFor(rr).keyword("irreflexive"), _function_12);
+    document.prepend(_keyword_8, _function_12);
+    ISemanticRegionsFinder _regionFor_12 = this.textRegionExtensions.regionFor(rr);
+    ISemanticRegion _keyword_9 = _regionFor_12.keyword("transitive");
     final Procedure1<IHiddenRegionFormatter> _function_13 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.prepend(this.textRegionExtensions.regionFor(rr).keyword("transitive"), _function_13);
+    document.prepend(_keyword_9, _function_13);
+    ISemanticRegionsFinder _regionFor_13 = this.textRegionExtensions.regionFor(rr);
+    ISemanticRegion _keyword_10 = _regionFor_13.keyword("unreified");
     final Procedure1<IHiddenRegionFormatter> _function_14 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.prepend(this.textRegionExtensions.regionFor(rr).keyword("unreified"), _function_14);
+    document.prepend(_keyword_10, _function_14);
+    ISemanticRegionsFinder _regionFor_14 = this.textRegionExtensions.regionFor(rr);
+    ISemanticRegion _keyword_11 = _regionFor_14.keyword("inverse");
     final Procedure1<IHiddenRegionFormatter> _function_15 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.prepend(this.textRegionExtensions.regionFor(rr).keyword("inverse"), _function_15);
+    document.prepend(_keyword_11, _function_15);
+    ISemanticRegionsFinder _regionFor_15 = this.textRegionExtensions.regionFor(rr);
+    ISemanticRegion _keyword_12 = _regionFor_15.keyword("source");
     final Procedure1<IHiddenRegionFormatter> _function_16 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.prepend(this.textRegionExtensions.regionFor(rr).keyword("source"), _function_16);
+    document.prepend(_keyword_12, _function_16);
+    ISemanticRegionsFinder _regionFor_16 = this.textRegionExtensions.regionFor(rr);
+    ISemanticRegion _keyword_13 = _regionFor_16.keyword("target");
     final Procedure1<IHiddenRegionFormatter> _function_17 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.prepend(this.textRegionExtensions.regionFor(rr).keyword("target"), _function_17);
+    document.prepend(_keyword_13, _function_17);
   }
   
   protected void _format(final UnreifiedRelationship ur, @Extension final IFormattableDocument document) {
+    ISemanticRegionsFinder _regionFor = this.textRegionExtensions.regionFor(ur);
+    ISemanticRegion _keyword = _regionFor.keyword("unreifiedRelationship");
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(ur).keyword("unreifiedRelationship"), _function);
+    document.append(_keyword, _function);
+    ISemanticRegionsFinder _regionFor_1 = this.textRegionExtensions.regionFor(ur);
+    OMLGrammarAccess.UnreifiedRelationshipElements _unreifiedRelationshipAccess = this._oMLGrammarAccess.getUnreifiedRelationshipAccess();
+    RuleCall _nameIDTerminalRuleCall_1_0 = _unreifiedRelationshipAccess.getNameIDTerminalRuleCall_1_0();
+    ISemanticRegion _ruleCall = _regionFor_1.ruleCall(_nameIDTerminalRuleCall_1_0);
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(ur).ruleCall(this._oMLGrammarAccess.getUnreifiedRelationshipAccess().getNameIDTerminalRuleCall_1_0()), _function_1);
-    final ISemanticRegion lcurly = this.textRegionExtensions.regionFor(ur).keyword("{");
-    final ISemanticRegion rcurly = this.textRegionExtensions.regionFor(ur).keyword("}");
+    document.surround(_ruleCall, _function_1);
+    ISemanticRegionsFinder _regionFor_2 = this.textRegionExtensions.regionFor(ur);
+    final ISemanticRegion lcurly = _regionFor_2.keyword("{");
+    ISemanticRegionsFinder _regionFor_3 = this.textRegionExtensions.regionFor(ur);
+    final ISemanticRegion rcurly = _regionFor_3.keyword("}");
     final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
@@ -466,94 +605,130 @@ public class OMLFormatter extends AbstractFormatter2 {
       it.indent();
     };
     document.<ISemanticRegion, ISemanticRegion>interior(lcurly, rcurly, _function_4);
+    ISemanticRegionsFinder _regionFor_4 = this.textRegionExtensions.regionFor(ur);
+    ISemanticRegion _keyword_1 = _regionFor_4.keyword("functional");
     final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.prepend(this.textRegionExtensions.regionFor(ur).keyword("functional"), _function_5);
+    document.prepend(_keyword_1, _function_5);
+    ISemanticRegionsFinder _regionFor_5 = this.textRegionExtensions.regionFor(ur);
+    ISemanticRegion _keyword_2 = _regionFor_5.keyword("inverseFunctional");
     final Procedure1<IHiddenRegionFormatter> _function_6 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.prepend(this.textRegionExtensions.regionFor(ur).keyword("inverseFunctional"), _function_6);
+    document.prepend(_keyword_2, _function_6);
+    ISemanticRegionsFinder _regionFor_6 = this.textRegionExtensions.regionFor(ur);
+    ISemanticRegion _keyword_3 = _regionFor_6.keyword("essential");
     final Procedure1<IHiddenRegionFormatter> _function_7 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.prepend(this.textRegionExtensions.regionFor(ur).keyword("essential"), _function_7);
+    document.prepend(_keyword_3, _function_7);
+    ISemanticRegionsFinder _regionFor_7 = this.textRegionExtensions.regionFor(ur);
+    ISemanticRegion _keyword_4 = _regionFor_7.keyword("inverseEssential");
     final Procedure1<IHiddenRegionFormatter> _function_8 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.prepend(this.textRegionExtensions.regionFor(ur).keyword("inverseEssential"), _function_8);
+    document.prepend(_keyword_4, _function_8);
+    ISemanticRegionsFinder _regionFor_8 = this.textRegionExtensions.regionFor(ur);
+    ISemanticRegion _keyword_5 = _regionFor_8.keyword("symmetric");
     final Procedure1<IHiddenRegionFormatter> _function_9 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.prepend(this.textRegionExtensions.regionFor(ur).keyword("symmetric"), _function_9);
+    document.prepend(_keyword_5, _function_9);
+    ISemanticRegionsFinder _regionFor_9 = this.textRegionExtensions.regionFor(ur);
+    ISemanticRegion _keyword_6 = _regionFor_9.keyword("asymmetric");
     final Procedure1<IHiddenRegionFormatter> _function_10 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.prepend(this.textRegionExtensions.regionFor(ur).keyword("asymmetric"), _function_10);
+    document.prepend(_keyword_6, _function_10);
+    ISemanticRegionsFinder _regionFor_10 = this.textRegionExtensions.regionFor(ur);
+    ISemanticRegion _keyword_7 = _regionFor_10.keyword("reflexive");
     final Procedure1<IHiddenRegionFormatter> _function_11 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.prepend(this.textRegionExtensions.regionFor(ur).keyword("reflexive"), _function_11);
+    document.prepend(_keyword_7, _function_11);
+    ISemanticRegionsFinder _regionFor_11 = this.textRegionExtensions.regionFor(ur);
+    ISemanticRegion _keyword_8 = _regionFor_11.keyword("irreflexive");
     final Procedure1<IHiddenRegionFormatter> _function_12 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.prepend(this.textRegionExtensions.regionFor(ur).keyword("irreflexive"), _function_12);
+    document.prepend(_keyword_8, _function_12);
+    ISemanticRegionsFinder _regionFor_12 = this.textRegionExtensions.regionFor(ur);
+    ISemanticRegion _keyword_9 = _regionFor_12.keyword("transitive");
     final Procedure1<IHiddenRegionFormatter> _function_13 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.prepend(this.textRegionExtensions.regionFor(ur).keyword("transitive"), _function_13);
+    document.prepend(_keyword_9, _function_13);
+    ISemanticRegionsFinder _regionFor_13 = this.textRegionExtensions.regionFor(ur);
+    ISemanticRegion _keyword_10 = _regionFor_13.keyword("source");
     final Procedure1<IHiddenRegionFormatter> _function_14 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.prepend(this.textRegionExtensions.regionFor(ur).keyword("source"), _function_14);
+    document.prepend(_keyword_10, _function_14);
+    ISemanticRegionsFinder _regionFor_14 = this.textRegionExtensions.regionFor(ur);
+    ISemanticRegion _keyword_11 = _regionFor_14.keyword("target");
     final Procedure1<IHiddenRegionFormatter> _function_15 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.prepend(this.textRegionExtensions.regionFor(ur).keyword("target"), _function_15);
+    document.prepend(_keyword_11, _function_15);
   }
   
   protected void _format(final Scalar scalar, @Extension final IFormattableDocument document) {
+    ISemanticRegionsFinder _regionFor = this.textRegionExtensions.regionFor(scalar);
+    ISemanticRegion _keyword = _regionFor.keyword("scalar");
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(scalar).keyword("scalar"), _function);
+    document.append(_keyword, _function);
   }
   
   protected void _format(final Structure structure, @Extension final IFormattableDocument document) {
+    ISemanticRegionsFinder _regionFor = this.textRegionExtensions.regionFor(structure);
+    ISemanticRegion _keyword = _regionFor.keyword("structure");
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(structure).keyword("structure"), _function);
+    document.append(_keyword, _function);
   }
   
   protected void _format(final AspectSpecializationAxiom ax, @Extension final IFormattableDocument document) {
+    ISemanticRegionsFinder _regionFor = this.textRegionExtensions.regionFor(ax);
+    ISemanticRegion _keyword = _regionFor.keyword("extendsAspect");
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(ax).keyword("extendsAspect"), _function);
+    document.surround(_keyword, _function);
   }
   
   protected void _format(final ConceptSpecializationAxiom ax, @Extension final IFormattableDocument document) {
+    ISemanticRegionsFinder _regionFor = this.textRegionExtensions.regionFor(ax);
+    ISemanticRegion _keyword = _regionFor.keyword("extendsConcept");
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(ax).keyword("extendsConcept"), _function);
+    document.surround(_keyword, _function);
   }
   
   protected void _format(final ReifiedRelationshipSpecializationAxiom ax, @Extension final IFormattableDocument document) {
+    ISemanticRegionsFinder _regionFor = this.textRegionExtensions.regionFor(ax);
+    ISemanticRegion _keyword = _regionFor.keyword("extendsRelationship");
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(ax).keyword("extendsRelationship"), _function);
+    document.surround(_keyword, _function);
   }
   
   protected void _format(final ConceptDesignationTerminologyAxiom ax, @Extension final IFormattableDocument document) {
+    ISemanticRegionsFinder _regionFor = this.textRegionExtensions.regionFor(ax);
+    ISemanticRegion _keyword = _regionFor.keyword("conceptDesignationTerminologyAxiom");
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(ax).keyword("conceptDesignationTerminologyAxiom"), _function);
-    final ISemanticRegion lcurly = this.textRegionExtensions.regionFor(ax).keyword("{");
-    final ISemanticRegion rcurly = this.textRegionExtensions.regionFor(ax).keyword("}");
+    document.append(_keyword, _function);
+    ISemanticRegionsFinder _regionFor_1 = this.textRegionExtensions.regionFor(ax);
+    final ISemanticRegion lcurly = _regionFor_1.keyword("{");
+    ISemanticRegionsFinder _regionFor_2 = this.textRegionExtensions.regionFor(ax);
+    final ISemanticRegion rcurly = _regionFor_2.keyword("}");
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
@@ -566,38 +741,56 @@ public class OMLFormatter extends AbstractFormatter2 {
       it.indent();
     };
     document.<ISemanticRegion, ISemanticRegion>interior(lcurly, rcurly, _function_3);
+    ISemanticRegionsFinder _regionFor_3 = this.textRegionExtensions.regionFor(ax);
+    ISemanticRegion _keyword_1 = _regionFor_3.keyword("designatedTerminology");
     final Procedure1<IHiddenRegionFormatter> _function_4 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(ax).keyword("designatedTerminology"), _function_4);
+    document.append(_keyword_1, _function_4);
+    ISemanticRegionsFinder _regionFor_4 = this.textRegionExtensions.regionFor(ax);
+    OMLGrammarAccess.ConceptDesignationTerminologyAxiomElements _conceptDesignationTerminologyAxiomAccess = this._oMLGrammarAccess.getConceptDesignationTerminologyAxiomAccess();
+    RuleCall _designatedTerminologyTerminologyBoxExternalReferenceParserRuleCall_3_0_1 = _conceptDesignationTerminologyAxiomAccess.getDesignatedTerminologyTerminologyBoxExternalReferenceParserRuleCall_3_0_1();
+    ISemanticRegion _ruleCall = _regionFor_4.ruleCall(_designatedTerminologyTerminologyBoxExternalReferenceParserRuleCall_3_0_1);
     final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(ax).ruleCall(this._oMLGrammarAccess.getConceptDesignationTerminologyAxiomAccess().getDesignatedTerminologyTerminologyBoxExternalReferenceParserRuleCall_3_0_1()), _function_5);
+    document.append(_ruleCall, _function_5);
+    ISemanticRegionsFinder _regionFor_5 = this.textRegionExtensions.regionFor(ax);
+    ISemanticRegion _keyword_2 = _regionFor_5.keyword("designatedConcept");
     final Procedure1<IHiddenRegionFormatter> _function_6 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(ax).keyword("designatedConcept"), _function_6);
+    document.append(_keyword_2, _function_6);
+    ISemanticRegionsFinder _regionFor_6 = this.textRegionExtensions.regionFor(ax);
+    OMLGrammarAccess.ConceptDesignationTerminologyAxiomElements _conceptDesignationTerminologyAxiomAccess_1 = this._oMLGrammarAccess.getConceptDesignationTerminologyAxiomAccess();
+    RuleCall _designatedConceptConceptReferenceParserRuleCall_5_0_1 = _conceptDesignationTerminologyAxiomAccess_1.getDesignatedConceptConceptReferenceParserRuleCall_5_0_1();
+    ISemanticRegion _ruleCall_1 = _regionFor_6.ruleCall(_designatedConceptConceptReferenceParserRuleCall_5_0_1);
     final Procedure1<IHiddenRegionFormatter> _function_7 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(ax).ruleCall(this._oMLGrammarAccess.getConceptDesignationTerminologyAxiomAccess().getDesignatedConceptConceptReferenceParserRuleCall_5_0_1()), _function_7);
+    document.append(_ruleCall_1, _function_7);
   }
   
   protected void _format(final TerminologyExtensionAxiom ax, @Extension final IFormattableDocument document) {
+    ISemanticRegionsFinder _regionFor = this.textRegionExtensions.regionFor(ax);
+    ISemanticRegion _keyword = _regionFor.keyword("extends");
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(ax).keyword("extends"), _function);
+    document.append(_keyword, _function);
   }
   
   protected void _format(final TerminologyNestingAxiom ax, @Extension final IFormattableDocument document) {
+    ISemanticRegionsFinder _regionFor = this.textRegionExtensions.regionFor(ax);
+    ISemanticRegion _keyword = _regionFor.keyword("terminologyNestingAxiom");
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(ax).keyword("terminologyNestingAxiom"), _function);
-    final ISemanticRegion lcurly = this.textRegionExtensions.regionFor(ax).keyword("{");
-    final ISemanticRegion rcurly = this.textRegionExtensions.regionFor(ax).keyword("}");
+    document.append(_keyword, _function);
+    ISemanticRegionsFinder _regionFor_1 = this.textRegionExtensions.regionFor(ax);
+    final ISemanticRegion lcurly = _regionFor_1.keyword("{");
+    ISemanticRegionsFinder _regionFor_2 = this.textRegionExtensions.regionFor(ax);
+    final ISemanticRegion rcurly = _regionFor_2.keyword("}");
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
@@ -610,42 +803,64 @@ public class OMLFormatter extends AbstractFormatter2 {
       it.indent();
     };
     document.<ISemanticRegion, ISemanticRegion>interior(lcurly, rcurly, _function_3);
+    ISemanticRegionsFinder _regionFor_3 = this.textRegionExtensions.regionFor(ax);
+    ISemanticRegion _keyword_1 = _regionFor_3.keyword("nestingTerminology");
     final Procedure1<IHiddenRegionFormatter> _function_4 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(ax).keyword("nestingTerminology"), _function_4);
+    document.append(_keyword_1, _function_4);
+    ISemanticRegionsFinder _regionFor_4 = this.textRegionExtensions.regionFor(ax);
+    OMLGrammarAccess.TerminologyNestingAxiomElements _terminologyNestingAxiomAccess = this._oMLGrammarAccess.getTerminologyNestingAxiomAccess();
+    RuleCall _nestingTerminologyTerminologyBoxExternalReferenceParserRuleCall_3_0_1 = _terminologyNestingAxiomAccess.getNestingTerminologyTerminologyBoxExternalReferenceParserRuleCall_3_0_1();
+    ISemanticRegion _ruleCall = _regionFor_4.ruleCall(_nestingTerminologyTerminologyBoxExternalReferenceParserRuleCall_3_0_1);
     final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(ax).ruleCall(this._oMLGrammarAccess.getTerminologyNestingAxiomAccess().getNestingTerminologyTerminologyBoxExternalReferenceParserRuleCall_3_0_1()), _function_5);
+    document.append(_ruleCall, _function_5);
+    ISemanticRegionsFinder _regionFor_5 = this.textRegionExtensions.regionFor(ax);
+    ISemanticRegion _keyword_2 = _regionFor_5.keyword("nestingContext");
     final Procedure1<IHiddenRegionFormatter> _function_6 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(ax).keyword("nestingContext"), _function_6);
+    document.append(_keyword_2, _function_6);
+    ISemanticRegionsFinder _regionFor_6 = this.textRegionExtensions.regionFor(ax);
+    OMLGrammarAccess.TerminologyNestingAxiomElements _terminologyNestingAxiomAccess_1 = this._oMLGrammarAccess.getTerminologyNestingAxiomAccess();
+    RuleCall _nestingContextConceptReferenceParserRuleCall_5_0_1 = _terminologyNestingAxiomAccess_1.getNestingContextConceptReferenceParserRuleCall_5_0_1();
+    ISemanticRegion _ruleCall_1 = _regionFor_6.ruleCall(_nestingContextConceptReferenceParserRuleCall_5_0_1);
     final Procedure1<IHiddenRegionFormatter> _function_7 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(ax).ruleCall(this._oMLGrammarAccess.getTerminologyNestingAxiomAccess().getNestingContextConceptReferenceParserRuleCall_5_0_1()), _function_7);
+    document.append(_ruleCall_1, _function_7);
   }
   
   protected void _format(final BundledTerminologyAxiom ax, @Extension final IFormattableDocument document) {
+    ISemanticRegionsFinder _regionFor = this.textRegionExtensions.regionFor(ax);
+    ISemanticRegion _keyword = _regionFor.keyword("bundles");
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(ax).keyword("bundles"), _function);
+    document.append(_keyword, _function);
   }
   
   protected void _format(final EntityStructuredDataProperty t, @Extension final IFormattableDocument document) {
+    ISemanticRegionsFinder _regionFor = this.textRegionExtensions.regionFor(t);
+    ISemanticRegion _keyword = _regionFor.keyword("entityStructuredDataProperty");
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(t).keyword("entityStructuredDataProperty"), _function);
+    document.append(_keyword, _function);
+    ISemanticRegionsFinder _regionFor_1 = this.textRegionExtensions.regionFor(t);
+    OMLGrammarAccess.EntityStructuredDataPropertyElements _entityStructuredDataPropertyAccess = this._oMLGrammarAccess.getEntityStructuredDataPropertyAccess();
+    Assignment _isIdentityCriteriaAssignment_1 = _entityStructuredDataPropertyAccess.getIsIdentityCriteriaAssignment_1();
+    ISemanticRegion _assignment = _regionFor_1.assignment(_isIdentityCriteriaAssignment_1);
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(t).assignment(this._oMLGrammarAccess.getEntityStructuredDataPropertyAccess().getIsIdentityCriteriaAssignment_1()), _function_1);
-    final ISemanticRegion lcurly = this.textRegionExtensions.regionFor(t).keyword("{");
-    final ISemanticRegion rcurly = this.textRegionExtensions.regionFor(t).keyword("}");
+    document.surround(_assignment, _function_1);
+    ISemanticRegionsFinder _regionFor_2 = this.textRegionExtensions.regionFor(t);
+    final ISemanticRegion lcurly = _regionFor_2.keyword("{");
+    ISemanticRegionsFinder _regionFor_3 = this.textRegionExtensions.regionFor(t);
+    final ISemanticRegion rcurly = _regionFor_3.keyword("}");
     final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
@@ -658,35 +873,55 @@ public class OMLFormatter extends AbstractFormatter2 {
       it.indent();
     };
     document.<ISemanticRegion, ISemanticRegion>interior(lcurly, rcurly, _function_4);
+    ISemanticRegionsFinder _regionFor_4 = this.textRegionExtensions.regionFor(t);
+    ISemanticRegion _keyword_1 = _regionFor_4.keyword("domain");
     final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(t).keyword("domain"), _function_5);
+    document.append(_keyword_1, _function_5);
+    ISemanticRegionsFinder _regionFor_5 = this.textRegionExtensions.regionFor(t);
+    OMLGrammarAccess.EntityStructuredDataPropertyElements _entityStructuredDataPropertyAccess_1 = this._oMLGrammarAccess.getEntityStructuredDataPropertyAccess();
+    RuleCall _domainEntityReferenceParserRuleCall_5_0_1 = _entityStructuredDataPropertyAccess_1.getDomainEntityReferenceParserRuleCall_5_0_1();
+    ISemanticRegion _ruleCall = _regionFor_5.ruleCall(_domainEntityReferenceParserRuleCall_5_0_1);
     final Procedure1<IHiddenRegionFormatter> _function_6 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(t).ruleCall(this._oMLGrammarAccess.getEntityStructuredDataPropertyAccess().getDomainEntityReferenceParserRuleCall_5_0_1()), _function_6);
+    document.append(_ruleCall, _function_6);
+    ISemanticRegionsFinder _regionFor_6 = this.textRegionExtensions.regionFor(t);
+    ISemanticRegion _keyword_2 = _regionFor_6.keyword("range");
     final Procedure1<IHiddenRegionFormatter> _function_7 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(t).keyword("range"), _function_7);
+    document.append(_keyword_2, _function_7);
+    ISemanticRegionsFinder _regionFor_7 = this.textRegionExtensions.regionFor(t);
+    OMLGrammarAccess.EntityStructuredDataPropertyElements _entityStructuredDataPropertyAccess_2 = this._oMLGrammarAccess.getEntityStructuredDataPropertyAccess();
+    RuleCall _rangeStructureReferenceParserRuleCall_7_0_1 = _entityStructuredDataPropertyAccess_2.getRangeStructureReferenceParserRuleCall_7_0_1();
+    ISemanticRegion _ruleCall_1 = _regionFor_7.ruleCall(_rangeStructureReferenceParserRuleCall_7_0_1);
     final Procedure1<IHiddenRegionFormatter> _function_8 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(t).ruleCall(this._oMLGrammarAccess.getEntityStructuredDataPropertyAccess().getRangeStructureReferenceParserRuleCall_7_0_1()), _function_8);
+    document.append(_ruleCall_1, _function_8);
   }
   
   protected void _format(final EntityScalarDataProperty t, @Extension final IFormattableDocument document) {
+    ISemanticRegionsFinder _regionFor = this.textRegionExtensions.regionFor(t);
+    ISemanticRegion _keyword = _regionFor.keyword("entityScalarDataProperty");
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(t).keyword("entityScalarDataProperty"), _function);
+    document.append(_keyword, _function);
+    ISemanticRegionsFinder _regionFor_1 = this.textRegionExtensions.regionFor(t);
+    OMLGrammarAccess.EntityScalarDataPropertyElements _entityScalarDataPropertyAccess = this._oMLGrammarAccess.getEntityScalarDataPropertyAccess();
+    Assignment _isIdentityCriteriaAssignment_1 = _entityScalarDataPropertyAccess.getIsIdentityCriteriaAssignment_1();
+    ISemanticRegion _assignment = _regionFor_1.assignment(_isIdentityCriteriaAssignment_1);
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(t).assignment(this._oMLGrammarAccess.getEntityScalarDataPropertyAccess().getIsIdentityCriteriaAssignment_1()), _function_1);
-    final ISemanticRegion lcurly = this.textRegionExtensions.regionFor(t).keyword("{");
-    final ISemanticRegion rcurly = this.textRegionExtensions.regionFor(t).keyword("}");
+    document.surround(_assignment, _function_1);
+    ISemanticRegionsFinder _regionFor_2 = this.textRegionExtensions.regionFor(t);
+    final ISemanticRegion lcurly = _regionFor_2.keyword("{");
+    ISemanticRegionsFinder _regionFor_3 = this.textRegionExtensions.regionFor(t);
+    final ISemanticRegion rcurly = _regionFor_3.keyword("}");
     final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
@@ -699,35 +934,55 @@ public class OMLFormatter extends AbstractFormatter2 {
       it.indent();
     };
     document.<ISemanticRegion, ISemanticRegion>interior(lcurly, rcurly, _function_4);
+    ISemanticRegionsFinder _regionFor_4 = this.textRegionExtensions.regionFor(t);
+    ISemanticRegion _keyword_1 = _regionFor_4.keyword("domain");
     final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(t).keyword("domain"), _function_5);
+    document.append(_keyword_1, _function_5);
+    ISemanticRegionsFinder _regionFor_5 = this.textRegionExtensions.regionFor(t);
+    OMLGrammarAccess.EntityScalarDataPropertyElements _entityScalarDataPropertyAccess_1 = this._oMLGrammarAccess.getEntityScalarDataPropertyAccess();
+    RuleCall _domainEntityReferenceParserRuleCall_5_0_1 = _entityScalarDataPropertyAccess_1.getDomainEntityReferenceParserRuleCall_5_0_1();
+    ISemanticRegion _ruleCall = _regionFor_5.ruleCall(_domainEntityReferenceParserRuleCall_5_0_1);
     final Procedure1<IHiddenRegionFormatter> _function_6 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(t).ruleCall(this._oMLGrammarAccess.getEntityScalarDataPropertyAccess().getDomainEntityReferenceParserRuleCall_5_0_1()), _function_6);
+    document.append(_ruleCall, _function_6);
+    ISemanticRegionsFinder _regionFor_6 = this.textRegionExtensions.regionFor(t);
+    ISemanticRegion _keyword_2 = _regionFor_6.keyword("range");
     final Procedure1<IHiddenRegionFormatter> _function_7 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(t).keyword("range"), _function_7);
+    document.append(_keyword_2, _function_7);
+    ISemanticRegionsFinder _regionFor_7 = this.textRegionExtensions.regionFor(t);
+    OMLGrammarAccess.EntityScalarDataPropertyElements _entityScalarDataPropertyAccess_2 = this._oMLGrammarAccess.getEntityScalarDataPropertyAccess();
+    RuleCall _rangeDataRangeReferenceParserRuleCall_7_0_1 = _entityScalarDataPropertyAccess_2.getRangeDataRangeReferenceParserRuleCall_7_0_1();
+    ISemanticRegion _ruleCall_1 = _regionFor_7.ruleCall(_rangeDataRangeReferenceParserRuleCall_7_0_1);
     final Procedure1<IHiddenRegionFormatter> _function_8 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(t).ruleCall(this._oMLGrammarAccess.getEntityScalarDataPropertyAccess().getRangeDataRangeReferenceParserRuleCall_7_0_1()), _function_8);
+    document.append(_ruleCall_1, _function_8);
   }
   
   protected void _format(final StructuredDataProperty t, @Extension final IFormattableDocument document) {
+    ISemanticRegionsFinder _regionFor = this.textRegionExtensions.regionFor(t);
+    ISemanticRegion _keyword = _regionFor.keyword("structuredDataProperty");
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(t).keyword("structuredDataProperty"), _function);
+    document.append(_keyword, _function);
+    ISemanticRegionsFinder _regionFor_1 = this.textRegionExtensions.regionFor(t);
+    OMLGrammarAccess.StructuredDataPropertyElements _structuredDataPropertyAccess = this._oMLGrammarAccess.getStructuredDataPropertyAccess();
+    RuleCall _nameIDTerminalRuleCall_1_0 = _structuredDataPropertyAccess.getNameIDTerminalRuleCall_1_0();
+    ISemanticRegion _ruleCall = _regionFor_1.ruleCall(_nameIDTerminalRuleCall_1_0);
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(t).ruleCall(this._oMLGrammarAccess.getStructuredDataPropertyAccess().getNameIDTerminalRuleCall_1_0()), _function_1);
-    final ISemanticRegion lcurly = this.textRegionExtensions.regionFor(t).keyword("{");
-    final ISemanticRegion rcurly = this.textRegionExtensions.regionFor(t).keyword("}");
+    document.surround(_ruleCall, _function_1);
+    ISemanticRegionsFinder _regionFor_2 = this.textRegionExtensions.regionFor(t);
+    final ISemanticRegion lcurly = _regionFor_2.keyword("{");
+    ISemanticRegionsFinder _regionFor_3 = this.textRegionExtensions.regionFor(t);
+    final ISemanticRegion rcurly = _regionFor_3.keyword("}");
     final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
@@ -740,35 +995,59 @@ public class OMLFormatter extends AbstractFormatter2 {
       it.indent();
     };
     document.<ISemanticRegion, ISemanticRegion>interior(lcurly, rcurly, _function_4);
+    ISemanticRegionsFinder _regionFor_4 = this.textRegionExtensions.regionFor(t);
+    ISemanticRegion _keyword_1 = _regionFor_4.keyword("domain");
     final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(t).keyword("domain"), _function_5);
+    document.append(_keyword_1, _function_5);
+    ISemanticRegionsFinder _regionFor_5 = this.textRegionExtensions.regionFor(t);
+    OMLGrammarAccess.StructuredDataPropertyElements _structuredDataPropertyAccess_1 = this._oMLGrammarAccess.getStructuredDataPropertyAccess();
+    RuleCall _domainStructureReferenceParserRuleCall_4_0_1 = _structuredDataPropertyAccess_1.getDomainStructureReferenceParserRuleCall_4_0_1();
+    ISemanticRegion _ruleCall_1 = _regionFor_5.ruleCall(_domainStructureReferenceParserRuleCall_4_0_1);
     final Procedure1<IHiddenRegionFormatter> _function_6 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(t).ruleCall(this._oMLGrammarAccess.getStructuredDataPropertyAccess().getDomainStructureReferenceParserRuleCall_4_0_1()), _function_6);
+    document.append(_ruleCall_1, _function_6);
+    ISemanticRegionsFinder _regionFor_6 = this.textRegionExtensions.regionFor(t);
+    ISemanticRegion _keyword_2 = _regionFor_6.keyword("range");
     final Procedure1<IHiddenRegionFormatter> _function_7 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(t).keyword("range"), _function_7);
+    document.append(_keyword_2, _function_7);
+    ISemanticRegionsFinder _regionFor_7 = this.textRegionExtensions.regionFor(t);
+    OMLGrammarAccess.StructuredDataPropertyElements _structuredDataPropertyAccess_2 = this._oMLGrammarAccess.getStructuredDataPropertyAccess();
+    RuleCall _rangeStructureReferenceParserRuleCall_6_0_1 = _structuredDataPropertyAccess_2.getRangeStructureReferenceParserRuleCall_6_0_1();
+    ISemanticRegion _ruleCall_2 = _regionFor_7.ruleCall(_rangeStructureReferenceParserRuleCall_6_0_1);
     final Procedure1<IHiddenRegionFormatter> _function_8 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(t).ruleCall(this._oMLGrammarAccess.getStructuredDataPropertyAccess().getRangeStructureReferenceParserRuleCall_6_0_1()), _function_8);
+    document.append(_ruleCall_2, _function_8);
   }
   
   protected void _format(final ScalarDataProperty t, @Extension final IFormattableDocument document) {
+    ISemanticRegionsFinder _regionFor = this.textRegionExtensions.regionFor(t);
+    ISemanticRegion _keyword = _regionFor.keyword("scalarDataProperty");
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(t).keyword("scalarDataProperty"), _function);
+    document.append(_keyword, _function);
+    ISemanticRegionsFinder _regionFor_1 = this.textRegionExtensions.regionFor(t);
+    OMLGrammarAccess.ScalarDataPropertyElements _scalarDataPropertyAccess = this._oMLGrammarAccess.getScalarDataPropertyAccess();
+    RuleCall _nameIDTerminalRuleCall_1_0 = _scalarDataPropertyAccess.getNameIDTerminalRuleCall_1_0();
+    ISemanticRegion _ruleCall = _regionFor_1.ruleCall(_nameIDTerminalRuleCall_1_0);
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(t).ruleCall(this._oMLGrammarAccess.getScalarDataPropertyAccess().getNameIDTerminalRuleCall_1_0()), _function_1);
-    final ISemanticRegion lcurly = this.textRegionExtensions.regionFor(t).keyword(this._oMLGrammarAccess.getScalarDataPropertyAccess().getLeftCurlyBracketKeyword_2());
-    final ISemanticRegion rcurly = this.textRegionExtensions.regionFor(t).keyword(this._oMLGrammarAccess.getScalarDataPropertyAccess().getRightCurlyBracketKeyword_7());
+    document.surround(_ruleCall, _function_1);
+    ISemanticRegionsFinder _regionFor_2 = this.textRegionExtensions.regionFor(t);
+    OMLGrammarAccess.ScalarDataPropertyElements _scalarDataPropertyAccess_1 = this._oMLGrammarAccess.getScalarDataPropertyAccess();
+    Keyword _leftCurlyBracketKeyword_2 = _scalarDataPropertyAccess_1.getLeftCurlyBracketKeyword_2();
+    final ISemanticRegion lcurly = _regionFor_2.keyword(_leftCurlyBracketKeyword_2);
+    ISemanticRegionsFinder _regionFor_3 = this.textRegionExtensions.regionFor(t);
+    OMLGrammarAccess.ScalarDataPropertyElements _scalarDataPropertyAccess_2 = this._oMLGrammarAccess.getScalarDataPropertyAccess();
+    Keyword _rightCurlyBracketKeyword_7 = _scalarDataPropertyAccess_2.getRightCurlyBracketKeyword_7();
+    final ISemanticRegion rcurly = _regionFor_3.keyword(_rightCurlyBracketKeyword_7);
     final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
@@ -781,43 +1060,65 @@ public class OMLFormatter extends AbstractFormatter2 {
       it.indent();
     };
     document.<ISemanticRegion, ISemanticRegion>interior(lcurly, rcurly, _function_4);
+    ISemanticRegionsFinder _regionFor_4 = this.textRegionExtensions.regionFor(t);
+    ISemanticRegion _keyword_1 = _regionFor_4.keyword("domain");
     final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(t).keyword("domain"), _function_5);
+    document.append(_keyword_1, _function_5);
+    ISemanticRegionsFinder _regionFor_5 = this.textRegionExtensions.regionFor(t);
+    OMLGrammarAccess.ScalarDataPropertyElements _scalarDataPropertyAccess_3 = this._oMLGrammarAccess.getScalarDataPropertyAccess();
+    RuleCall _domainStructureReferenceParserRuleCall_4_0_1 = _scalarDataPropertyAccess_3.getDomainStructureReferenceParserRuleCall_4_0_1();
+    ISemanticRegion _ruleCall_1 = _regionFor_5.ruleCall(_domainStructureReferenceParserRuleCall_4_0_1);
     final Procedure1<IHiddenRegionFormatter> _function_6 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(t).ruleCall(this._oMLGrammarAccess.getScalarDataPropertyAccess().getDomainStructureReferenceParserRuleCall_4_0_1()), _function_6);
+    document.append(_ruleCall_1, _function_6);
+    ISemanticRegionsFinder _regionFor_6 = this.textRegionExtensions.regionFor(t);
+    ISemanticRegion _keyword_2 = _regionFor_6.keyword("range");
     final Procedure1<IHiddenRegionFormatter> _function_7 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(t).keyword("range"), _function_7);
+    document.append(_keyword_2, _function_7);
+    ISemanticRegionsFinder _regionFor_7 = this.textRegionExtensions.regionFor(t);
+    OMLGrammarAccess.ScalarDataPropertyElements _scalarDataPropertyAccess_4 = this._oMLGrammarAccess.getScalarDataPropertyAccess();
+    RuleCall _rangeDataRangeReferenceParserRuleCall_6_0_1 = _scalarDataPropertyAccess_4.getRangeDataRangeReferenceParserRuleCall_6_0_1();
+    ISemanticRegion _ruleCall_2 = _regionFor_7.ruleCall(_rangeDataRangeReferenceParserRuleCall_6_0_1);
     final Procedure1<IHiddenRegionFormatter> _function_8 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(t).ruleCall(this._oMLGrammarAccess.getScalarDataPropertyAccess().getRangeDataRangeReferenceParserRuleCall_6_0_1()), _function_8);
+    document.append(_ruleCall_2, _function_8);
   }
   
   protected void _format(final RootConceptTaxonomyAxiom ax, @Extension final IFormattableDocument document) {
+    ISemanticRegionsFinder _regionFor = this.textRegionExtensions.regionFor(ax);
+    ISemanticRegion _keyword = _regionFor.keyword("rootConceptTaxonomy");
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.noSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(ax).keyword("rootConceptTaxonomy"), _function);
+    document.append(_keyword, _function);
+    ISemanticRegionsFinder _regionFor_1 = this.textRegionExtensions.regionFor(ax);
+    ISemanticRegion _keyword_1 = _regionFor_1.keyword("(");
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.noSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(ax).keyword("("), _function_1);
+    document.surround(_keyword_1, _function_1);
+    ISemanticRegionsFinder _regionFor_2 = this.textRegionExtensions.regionFor(ax);
+    ISemanticRegion _keyword_2 = _regionFor_2.keyword(")");
     final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
       it.noSpace();
     };
-    document.prepend(this.textRegionExtensions.regionFor(ax).keyword(")"), _function_2);
+    document.prepend(_keyword_2, _function_2);
+    ISemanticRegionsFinder _regionFor_3 = this.textRegionExtensions.regionFor(ax);
+    ISemanticRegion _keyword_3 = _regionFor_3.keyword(")");
     final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(ax).keyword(")"), _function_3);
-    final ISemanticRegion lcurly = this.textRegionExtensions.regionFor(ax).keyword("{");
-    final ISemanticRegion rcurly = this.textRegionExtensions.regionFor(ax).keyword("}");
+    document.append(_keyword_3, _function_3);
+    ISemanticRegionsFinder _regionFor_4 = this.textRegionExtensions.regionFor(ax);
+    final ISemanticRegion lcurly = _regionFor_4.keyword("{");
+    ISemanticRegionsFinder _regionFor_5 = this.textRegionExtensions.regionFor(ax);
+    final ISemanticRegion rcurly = _regionFor_5.keyword("}");
     final Procedure1<IHiddenRegionFormatter> _function_4 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
@@ -830,38 +1131,52 @@ public class OMLFormatter extends AbstractFormatter2 {
       it.indent();
     };
     document.<ISemanticRegion, ISemanticRegion>interior(lcurly, rcurly, _function_6);
+    ISemanticRegionsFinder _regionFor_6 = this.textRegionExtensions.regionFor(ax);
+    ISemanticRegion _keyword_4 = _regionFor_6.keyword("root");
     final Procedure1<IHiddenRegionFormatter> _function_7 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(ax).keyword("root"), _function_7);
+    document.append(_keyword_4, _function_7);
+    EList<DisjointUnionOfConceptsAxiom> _disjunctions = ax.getDisjunctions();
     final Consumer<DisjointUnionOfConceptsAxiom> _function_8 = (DisjointUnionOfConceptsAxiom it) -> {
+      DisjointUnionOfConceptsAxiom _format = document.<DisjointUnionOfConceptsAxiom>format(it);
       final Procedure1<IHiddenRegionFormatter> _function_9 = (IHiddenRegionFormatter it_1) -> {
         it_1.newLine();
       };
-      document.<DisjointUnionOfConceptsAxiom>append(document.<DisjointUnionOfConceptsAxiom>format(it), _function_9);
+      document.<DisjointUnionOfConceptsAxiom>append(_format, _function_9);
     };
-    ax.getDisjunctions().forEach(_function_8);
+    _disjunctions.forEach(_function_8);
   }
   
   protected void _format(final AnonymousConceptUnionAxiom ax, @Extension final IFormattableDocument document) {
+    ISemanticRegionsFinder _regionFor = this.textRegionExtensions.regionFor(ax);
+    ISemanticRegion _keyword = _regionFor.keyword("anonymousConceptUnion");
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(ax).keyword("anonymousConceptUnion"), _function);
+    document.append(_keyword, _function);
+    ISemanticRegionsFinder _regionFor_1 = this.textRegionExtensions.regionFor(ax);
+    ISemanticRegion _keyword_1 = _regionFor_1.keyword("(");
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.noSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(ax).keyword("("), _function_1);
+    document.surround(_keyword_1, _function_1);
+    ISemanticRegionsFinder _regionFor_2 = this.textRegionExtensions.regionFor(ax);
+    ISemanticRegion _keyword_2 = _regionFor_2.keyword(")");
     final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
       it.noSpace();
     };
-    document.prepend(this.textRegionExtensions.regionFor(ax).keyword(")"), _function_2);
+    document.prepend(_keyword_2, _function_2);
+    ISemanticRegionsFinder _regionFor_3 = this.textRegionExtensions.regionFor(ax);
+    ISemanticRegion _keyword_3 = _regionFor_3.keyword(")");
     final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(ax).keyword(")"), _function_3);
-    final ISemanticRegion lcurly = this.textRegionExtensions.regionFor(ax).keyword("{");
-    final ISemanticRegion rcurly = this.textRegionExtensions.regionFor(ax).keyword("}");
+    document.append(_keyword_3, _function_3);
+    ISemanticRegionsFinder _regionFor_4 = this.textRegionExtensions.regionFor(ax);
+    final ISemanticRegion lcurly = _regionFor_4.keyword("{");
+    ISemanticRegionsFinder _regionFor_5 = this.textRegionExtensions.regionFor(ax);
+    final ISemanticRegion rcurly = _regionFor_5.keyword("}");
     final Procedure1<IHiddenRegionFormatter> _function_4 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
@@ -874,124 +1189,172 @@ public class OMLFormatter extends AbstractFormatter2 {
       it.indent();
     };
     document.<ISemanticRegion, ISemanticRegion>interior(lcurly, rcurly, _function_6);
+    ISemanticRegionsFinder _regionFor_6 = this.textRegionExtensions.regionFor(ax);
+    ISemanticRegion _keyword_4 = _regionFor_6.keyword("root");
     final Procedure1<IHiddenRegionFormatter> _function_7 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(ax).keyword("root"), _function_7);
+    document.append(_keyword_4, _function_7);
+    EList<DisjointUnionOfConceptsAxiom> _disjunctions = ax.getDisjunctions();
     final Consumer<DisjointUnionOfConceptsAxiom> _function_8 = (DisjointUnionOfConceptsAxiom it) -> {
+      DisjointUnionOfConceptsAxiom _format = document.<DisjointUnionOfConceptsAxiom>format(it);
       final Procedure1<IHiddenRegionFormatter> _function_9 = (IHiddenRegionFormatter it_1) -> {
         it_1.newLine();
       };
-      document.<DisjointUnionOfConceptsAxiom>append(document.<DisjointUnionOfConceptsAxiom>format(it), _function_9);
+      document.<DisjointUnionOfConceptsAxiom>append(_format, _function_9);
     };
-    ax.getDisjunctions().forEach(_function_8);
+    _disjunctions.forEach(_function_8);
   }
   
   protected void _format(final SpecificDisjointConceptAxiom ax, @Extension final IFormattableDocument document) {
+    ISemanticRegionsFinder _regionFor = this.textRegionExtensions.regionFor(ax);
+    ISemanticRegion _keyword = _regionFor.keyword("disjointLeaf");
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(ax).keyword("disjointLeaf"), _function);
+    document.append(_keyword, _function);
+    ISemanticRegionsFinder _regionFor_1 = this.textRegionExtensions.regionFor(ax);
+    ISemanticRegion _keyword_1 = _regionFor_1.keyword("(");
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.noSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(ax).keyword("("), _function_1);
+    document.surround(_keyword_1, _function_1);
+    ISemanticRegionsFinder _regionFor_2 = this.textRegionExtensions.regionFor(ax);
+    ISemanticRegion _keyword_2 = _regionFor_2.keyword(")");
     final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
       it.noSpace();
     };
-    document.prepend(this.textRegionExtensions.regionFor(ax).keyword(")"), _function_2);
+    document.prepend(_keyword_2, _function_2);
   }
   
   protected void _format(final EntityExistentialRestrictionAxiom ax, @Extension final IFormattableDocument document) {
+    ISemanticRegionsFinder _regionFor = this.textRegionExtensions.regionFor(ax);
+    ISemanticRegion _keyword = _regionFor.keyword("someEntities");
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(ax).keyword("someEntities"), _function);
+    document.append(_keyword, _function);
+    ISemanticRegionsFinder _regionFor_1 = this.textRegionExtensions.regionFor(ax);
+    ISemanticRegion _keyword_1 = _regionFor_1.keyword(".");
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(ax).keyword("."), _function_1);
+    document.surround(_keyword_1, _function_1);
+    ISemanticRegionsFinder _regionFor_2 = this.textRegionExtensions.regionFor(ax);
+    ISemanticRegion _keyword_2 = _regionFor_2.keyword("in");
     final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(ax).keyword("in"), _function_2);
+    document.surround(_keyword_2, _function_2);
   }
   
   protected void _format(final EntityUniversalRestrictionAxiom ax, @Extension final IFormattableDocument document) {
+    ISemanticRegionsFinder _regionFor = this.textRegionExtensions.regionFor(ax);
+    ISemanticRegion _keyword = _regionFor.keyword("allEntities");
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(ax).keyword("allEntities"), _function);
+    document.append(_keyword, _function);
+    ISemanticRegionsFinder _regionFor_1 = this.textRegionExtensions.regionFor(ax);
+    ISemanticRegion _keyword_1 = _regionFor_1.keyword(".");
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(ax).keyword("."), _function_1);
+    document.surround(_keyword_1, _function_1);
+    ISemanticRegionsFinder _regionFor_2 = this.textRegionExtensions.regionFor(ax);
+    ISemanticRegion _keyword_2 = _regionFor_2.keyword("in");
     final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(ax).keyword("in"), _function_2);
+    document.surround(_keyword_2, _function_2);
   }
   
   protected void _format(final EntityScalarDataPropertyExistentialRestrictionAxiom ax, @Extension final IFormattableDocument document) {
+    ISemanticRegionsFinder _regionFor = this.textRegionExtensions.regionFor(ax);
+    ISemanticRegion _keyword = _regionFor.keyword("someData");
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(ax).keyword("someData"), _function);
+    document.append(_keyword, _function);
+    ISemanticRegionsFinder _regionFor_1 = this.textRegionExtensions.regionFor(ax);
+    ISemanticRegion _keyword_1 = _regionFor_1.keyword(".");
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(ax).keyword("."), _function_1);
+    document.surround(_keyword_1, _function_1);
+    ISemanticRegionsFinder _regionFor_2 = this.textRegionExtensions.regionFor(ax);
+    ISemanticRegion _keyword_2 = _regionFor_2.keyword("in");
     final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(ax).keyword("in"), _function_2);
+    document.surround(_keyword_2, _function_2);
   }
   
   protected void _format(final EntityScalarDataPropertyParticularRestrictionAxiom ax, @Extension final IFormattableDocument document) {
+    ISemanticRegionsFinder _regionFor = this.textRegionExtensions.regionFor(ax);
+    ISemanticRegion _keyword = _regionFor.keyword("every");
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(ax).keyword("every"), _function);
+    document.append(_keyword, _function);
+    ISemanticRegionsFinder _regionFor_1 = this.textRegionExtensions.regionFor(ax);
+    ISemanticRegion _keyword_1 = _regionFor_1.keyword(".");
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(ax).keyword("."), _function_1);
+    document.surround(_keyword_1, _function_1);
+    ISemanticRegionsFinder _regionFor_2 = this.textRegionExtensions.regionFor(ax);
+    ISemanticRegion _keyword_2 = _regionFor_2.keyword("=");
     final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(ax).keyword("="), _function_2);
+    document.surround(_keyword_2, _function_2);
   }
   
   protected void _format(final EntityScalarDataPropertyUniversalRestrictionAxiom ax, @Extension final IFormattableDocument document) {
+    ISemanticRegionsFinder _regionFor = this.textRegionExtensions.regionFor(ax);
+    ISemanticRegion _keyword = _regionFor.keyword("allData");
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(ax).keyword("allData"), _function);
+    document.append(_keyword, _function);
+    ISemanticRegionsFinder _regionFor_1 = this.textRegionExtensions.regionFor(ax);
+    ISemanticRegion _keyword_1 = _regionFor_1.keyword(".");
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(ax).keyword("."), _function_1);
+    document.surround(_keyword_1, _function_1);
+    ISemanticRegionsFinder _regionFor_2 = this.textRegionExtensions.regionFor(ax);
+    ISemanticRegion _keyword_2 = _regionFor_2.keyword("in");
     final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(ax).keyword("in"), _function_2);
+    document.surround(_keyword_2, _function_2);
   }
   
   protected void _format(final EntityStructuredDataPropertyParticularRestrictionAxiom ax, @Extension final IFormattableDocument document) {
+    ISemanticRegionsFinder _regionFor = this.textRegionExtensions.regionFor(ax);
+    ISemanticRegion _keyword = _regionFor.keyword("every");
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(ax).keyword("every"), _function);
+    document.append(_keyword, _function);
+    ISemanticRegionsFinder _regionFor_1 = this.textRegionExtensions.regionFor(ax);
+    ISemanticRegion _keyword_1 = _regionFor_1.keyword(".");
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(ax).keyword("."), _function_1);
+    document.surround(_keyword_1, _function_1);
+    ISemanticRegionsFinder _regionFor_2 = this.textRegionExtensions.regionFor(ax);
+    ISemanticRegion _keyword_2 = _regionFor_2.keyword("=");
     final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(ax).keyword("="), _function_2);
-    final ISemanticRegion lcurly = this.textRegionExtensions.regionFor(ax).keyword("{");
-    final ISemanticRegion rcurly = this.textRegionExtensions.regionFor(ax).keyword("}");
+    document.surround(_keyword_2, _function_2);
+    ISemanticRegionsFinder _regionFor_3 = this.textRegionExtensions.regionFor(ax);
+    final ISemanticRegion lcurly = _regionFor_3.keyword("{");
+    ISemanticRegionsFinder _regionFor_4 = this.textRegionExtensions.regionFor(ax);
+    final ISemanticRegion rcurly = _regionFor_4.keyword("}");
     final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
@@ -1004,29 +1367,37 @@ public class OMLFormatter extends AbstractFormatter2 {
       it.indent();
     };
     document.<ISemanticRegion, ISemanticRegion>interior(lcurly, rcurly, _function_5);
+    EList<RestrictionStructuredDataPropertyTuple> _structuredPropertyTuples = ax.getStructuredPropertyTuples();
     final Consumer<RestrictionStructuredDataPropertyTuple> _function_6 = (RestrictionStructuredDataPropertyTuple it) -> {
+      RestrictionStructuredDataPropertyTuple _format = document.<RestrictionStructuredDataPropertyTuple>format(it);
       final Procedure1<IHiddenRegionFormatter> _function_7 = (IHiddenRegionFormatter it_1) -> {
         it_1.setNewLines(1);
       };
-      document.<RestrictionStructuredDataPropertyTuple>append(document.<RestrictionStructuredDataPropertyTuple>format(it), _function_7);
+      document.<RestrictionStructuredDataPropertyTuple>append(_format, _function_7);
     };
-    ax.getStructuredPropertyTuples().forEach(_function_6);
+    _structuredPropertyTuples.forEach(_function_6);
+    EList<RestrictionScalarDataPropertyValue> _scalarDataPropertyValues = ax.getScalarDataPropertyValues();
     final Consumer<RestrictionScalarDataPropertyValue> _function_7 = (RestrictionScalarDataPropertyValue it) -> {
+      RestrictionScalarDataPropertyValue _format = document.<RestrictionScalarDataPropertyValue>format(it);
       final Procedure1<IHiddenRegionFormatter> _function_8 = (IHiddenRegionFormatter it_1) -> {
         it_1.setNewLines(1);
       };
-      document.<RestrictionScalarDataPropertyValue>append(document.<RestrictionScalarDataPropertyValue>format(it), _function_8);
+      document.<RestrictionScalarDataPropertyValue>append(_format, _function_8);
     };
-    ax.getScalarDataPropertyValues().forEach(_function_7);
+    _scalarDataPropertyValues.forEach(_function_7);
   }
   
   protected void _format(final RestrictionStructuredDataPropertyTuple t, @Extension final IFormattableDocument document) {
+    ISemanticRegionsFinder _regionFor = this.textRegionExtensions.regionFor(t);
+    ISemanticRegion _keyword = _regionFor.keyword("=");
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(t).keyword("="), _function);
-    final ISemanticRegion lcurly = this.textRegionExtensions.regionFor(t).keyword("{");
-    final ISemanticRegion rcurly = this.textRegionExtensions.regionFor(t).keyword("}");
+    document.surround(_keyword, _function);
+    ISemanticRegionsFinder _regionFor_1 = this.textRegionExtensions.regionFor(t);
+    final ISemanticRegion lcurly = _regionFor_1.keyword("{");
+    ISemanticRegionsFinder _regionFor_2 = this.textRegionExtensions.regionFor(t);
+    final ISemanticRegion rcurly = _regionFor_2.keyword("}");
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
@@ -1039,44 +1410,60 @@ public class OMLFormatter extends AbstractFormatter2 {
       it.indent();
     };
     document.<ISemanticRegion, ISemanticRegion>interior(lcurly, rcurly, _function_3);
+    EList<RestrictionStructuredDataPropertyTuple> _structuredPropertyTuples = t.getStructuredPropertyTuples();
     final Consumer<RestrictionStructuredDataPropertyTuple> _function_4 = (RestrictionStructuredDataPropertyTuple it) -> {
+      RestrictionStructuredDataPropertyTuple _format = document.<RestrictionStructuredDataPropertyTuple>format(it);
       final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it_1) -> {
         it_1.setNewLines(1);
       };
-      document.<RestrictionStructuredDataPropertyTuple>append(document.<RestrictionStructuredDataPropertyTuple>format(it), _function_5);
+      document.<RestrictionStructuredDataPropertyTuple>append(_format, _function_5);
     };
-    t.getStructuredPropertyTuples().forEach(_function_4);
+    _structuredPropertyTuples.forEach(_function_4);
+    EList<RestrictionScalarDataPropertyValue> _scalarDataPropertyValues = t.getScalarDataPropertyValues();
     final Consumer<RestrictionScalarDataPropertyValue> _function_5 = (RestrictionScalarDataPropertyValue it) -> {
+      RestrictionScalarDataPropertyValue _format = document.<RestrictionScalarDataPropertyValue>format(it);
       final Procedure1<IHiddenRegionFormatter> _function_6 = (IHiddenRegionFormatter it_1) -> {
         it_1.setNewLines(1);
       };
-      document.<RestrictionScalarDataPropertyValue>append(document.<RestrictionScalarDataPropertyValue>format(it), _function_6);
+      document.<RestrictionScalarDataPropertyValue>append(_format, _function_6);
     };
-    t.getScalarDataPropertyValues().forEach(_function_5);
+    _scalarDataPropertyValues.forEach(_function_5);
   }
   
   protected void _format(final RestrictionScalarDataPropertyValue s, @Extension final IFormattableDocument document) {
+    ISemanticRegionsFinder _regionFor = this.textRegionExtensions.regionFor(s);
+    ISemanticRegion _keyword = _regionFor.keyword(".");
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(s).keyword("."), _function);
+    document.surround(_keyword, _function);
+    ISemanticRegionsFinder _regionFor_1 = this.textRegionExtensions.regionFor(s);
+    ISemanticRegion _keyword_1 = _regionFor_1.keyword("=");
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(s).keyword("="), _function_1);
+    document.surround(_keyword_1, _function_1);
   }
   
   protected void _format(final BinaryScalarRestriction sc, @Extension final IFormattableDocument document) {
+    ISemanticRegionsFinder _regionFor = this.textRegionExtensions.regionFor(sc);
+    ISemanticRegion _keyword = _regionFor.keyword("binaryScalarRestriction");
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).keyword("binaryScalarRestriction"), _function);
+    document.append(_keyword, _function);
+    ISemanticRegionsFinder _regionFor_1 = this.textRegionExtensions.regionFor(sc);
+    OMLGrammarAccess.BinaryScalarRestrictionElements _binaryScalarRestrictionAccess = this._oMLGrammarAccess.getBinaryScalarRestrictionAccess();
+    RuleCall _nameIDTerminalRuleCall_1_0 = _binaryScalarRestrictionAccess.getNameIDTerminalRuleCall_1_0();
+    ISemanticRegion _ruleCall = _regionFor_1.ruleCall(_nameIDTerminalRuleCall_1_0);
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getBinaryScalarRestrictionAccess().getNameIDTerminalRuleCall_1_0()), _function_1);
-    final ISemanticRegion lcurly = this.textRegionExtensions.regionFor(sc).keyword("{");
-    final ISemanticRegion rcurly = this.textRegionExtensions.regionFor(sc).keyword("}");
+    document.surround(_ruleCall, _function_1);
+    ISemanticRegionsFinder _regionFor_2 = this.textRegionExtensions.regionFor(sc);
+    final ISemanticRegion lcurly = _regionFor_2.keyword("{");
+    ISemanticRegionsFinder _regionFor_3 = this.textRegionExtensions.regionFor(sc);
+    final ISemanticRegion rcurly = _regionFor_3.keyword("}");
     final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
@@ -1089,51 +1476,83 @@ public class OMLFormatter extends AbstractFormatter2 {
       it.indent();
     };
     document.<ISemanticRegion, ISemanticRegion>interior(lcurly, rcurly, _function_4);
+    ISemanticRegionsFinder _regionFor_4 = this.textRegionExtensions.regionFor(sc);
+    ISemanticRegion _keyword_1 = _regionFor_4.keyword("length");
     final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).keyword("length"), _function_5);
+    document.append(_keyword_1, _function_5);
+    ISemanticRegionsFinder _regionFor_5 = this.textRegionExtensions.regionFor(sc);
+    OMLGrammarAccess.BinaryScalarRestrictionElements _binaryScalarRestrictionAccess_1 = this._oMLGrammarAccess.getBinaryScalarRestrictionAccess();
+    RuleCall _lengthINTTerminalRuleCall_3_0_1_0 = _binaryScalarRestrictionAccess_1.getLengthINTTerminalRuleCall_3_0_1_0();
+    ISemanticRegion _ruleCall_1 = _regionFor_5.ruleCall(_lengthINTTerminalRuleCall_3_0_1_0);
     final Procedure1<IHiddenRegionFormatter> _function_6 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getBinaryScalarRestrictionAccess().getLengthINTTerminalRuleCall_3_0_1_0()), _function_6);
+    document.append(_ruleCall_1, _function_6);
+    ISemanticRegionsFinder _regionFor_6 = this.textRegionExtensions.regionFor(sc);
+    ISemanticRegion _keyword_2 = _regionFor_6.keyword("minLength");
     final Procedure1<IHiddenRegionFormatter> _function_7 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).keyword("minLength"), _function_7);
+    document.append(_keyword_2, _function_7);
+    ISemanticRegionsFinder _regionFor_7 = this.textRegionExtensions.regionFor(sc);
+    OMLGrammarAccess.BinaryScalarRestrictionElements _binaryScalarRestrictionAccess_2 = this._oMLGrammarAccess.getBinaryScalarRestrictionAccess();
+    RuleCall _minLengthINTTerminalRuleCall_3_1_1_0 = _binaryScalarRestrictionAccess_2.getMinLengthINTTerminalRuleCall_3_1_1_0();
+    ISemanticRegion _ruleCall_2 = _regionFor_7.ruleCall(_minLengthINTTerminalRuleCall_3_1_1_0);
     final Procedure1<IHiddenRegionFormatter> _function_8 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getBinaryScalarRestrictionAccess().getMinLengthINTTerminalRuleCall_3_1_1_0()), _function_8);
+    document.append(_ruleCall_2, _function_8);
+    ISemanticRegionsFinder _regionFor_8 = this.textRegionExtensions.regionFor(sc);
+    ISemanticRegion _keyword_3 = _regionFor_8.keyword("maxLength");
     final Procedure1<IHiddenRegionFormatter> _function_9 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).keyword("maxLength"), _function_9);
+    document.append(_keyword_3, _function_9);
+    ISemanticRegionsFinder _regionFor_9 = this.textRegionExtensions.regionFor(sc);
+    OMLGrammarAccess.BinaryScalarRestrictionElements _binaryScalarRestrictionAccess_3 = this._oMLGrammarAccess.getBinaryScalarRestrictionAccess();
+    RuleCall _maxLengthINTTerminalRuleCall_3_2_1_0 = _binaryScalarRestrictionAccess_3.getMaxLengthINTTerminalRuleCall_3_2_1_0();
+    ISemanticRegion _ruleCall_3 = _regionFor_9.ruleCall(_maxLengthINTTerminalRuleCall_3_2_1_0);
     final Procedure1<IHiddenRegionFormatter> _function_10 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getBinaryScalarRestrictionAccess().getMaxLengthINTTerminalRuleCall_3_2_1_0()), _function_10);
+    document.append(_ruleCall_3, _function_10);
+    ISemanticRegionsFinder _regionFor_10 = this.textRegionExtensions.regionFor(sc);
+    ISemanticRegion _keyword_4 = _regionFor_10.keyword("restrictedRange");
     final Procedure1<IHiddenRegionFormatter> _function_11 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).keyword("restrictedRange"), _function_11);
+    document.append(_keyword_4, _function_11);
+    ISemanticRegionsFinder _regionFor_11 = this.textRegionExtensions.regionFor(sc);
+    OMLGrammarAccess.BinaryScalarRestrictionElements _binaryScalarRestrictionAccess_4 = this._oMLGrammarAccess.getBinaryScalarRestrictionAccess();
+    RuleCall _restrictedRangeDataRangeReferenceParserRuleCall_5_0_1 = _binaryScalarRestrictionAccess_4.getRestrictedRangeDataRangeReferenceParserRuleCall_5_0_1();
+    ISemanticRegion _ruleCall_4 = _regionFor_11.ruleCall(_restrictedRangeDataRangeReferenceParserRuleCall_5_0_1);
     final Procedure1<IHiddenRegionFormatter> _function_12 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getBinaryScalarRestrictionAccess().getRestrictedRangeDataRangeReferenceParserRuleCall_5_0_1()), _function_12);
+    document.append(_ruleCall_4, _function_12);
   }
   
   protected void _format(final IRIScalarRestriction sc, @Extension final IFormattableDocument document) {
+    ISemanticRegionsFinder _regionFor = this.textRegionExtensions.regionFor(sc);
+    ISemanticRegion _keyword = _regionFor.keyword("iriScalarRestriction");
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).keyword("iriScalarRestriction"), _function);
+    document.append(_keyword, _function);
+    ISemanticRegionsFinder _regionFor_1 = this.textRegionExtensions.regionFor(sc);
+    OMLGrammarAccess.IRIScalarRestrictionElements _iRIScalarRestrictionAccess = this._oMLGrammarAccess.getIRIScalarRestrictionAccess();
+    RuleCall _nameIDTerminalRuleCall_1_0 = _iRIScalarRestrictionAccess.getNameIDTerminalRuleCall_1_0();
+    ISemanticRegion _ruleCall = _regionFor_1.ruleCall(_nameIDTerminalRuleCall_1_0);
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getIRIScalarRestrictionAccess().getNameIDTerminalRuleCall_1_0()), _function_1);
-    final ISemanticRegion lcurly = this.textRegionExtensions.regionFor(sc).keyword("{");
-    final ISemanticRegion rcurly = this.textRegionExtensions.regionFor(sc).keyword("}");
+    document.surround(_ruleCall, _function_1);
+    ISemanticRegionsFinder _regionFor_2 = this.textRegionExtensions.regionFor(sc);
+    final ISemanticRegion lcurly = _regionFor_2.keyword("{");
+    ISemanticRegionsFinder _regionFor_3 = this.textRegionExtensions.regionFor(sc);
+    final ISemanticRegion rcurly = _regionFor_3.keyword("}");
     final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
@@ -1146,59 +1565,97 @@ public class OMLFormatter extends AbstractFormatter2 {
       it.indent();
     };
     document.<ISemanticRegion, ISemanticRegion>interior(lcurly, rcurly, _function_4);
+    ISemanticRegionsFinder _regionFor_4 = this.textRegionExtensions.regionFor(sc);
+    ISemanticRegion _keyword_1 = _regionFor_4.keyword("length");
     final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).keyword("length"), _function_5);
+    document.append(_keyword_1, _function_5);
+    ISemanticRegionsFinder _regionFor_5 = this.textRegionExtensions.regionFor(sc);
+    OMLGrammarAccess.IRIScalarRestrictionElements _iRIScalarRestrictionAccess_1 = this._oMLGrammarAccess.getIRIScalarRestrictionAccess();
+    RuleCall _lengthINTTerminalRuleCall_3_0_1_0 = _iRIScalarRestrictionAccess_1.getLengthINTTerminalRuleCall_3_0_1_0();
+    ISemanticRegion _ruleCall_1 = _regionFor_5.ruleCall(_lengthINTTerminalRuleCall_3_0_1_0);
     final Procedure1<IHiddenRegionFormatter> _function_6 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getIRIScalarRestrictionAccess().getLengthINTTerminalRuleCall_3_0_1_0()), _function_6);
+    document.append(_ruleCall_1, _function_6);
+    ISemanticRegionsFinder _regionFor_6 = this.textRegionExtensions.regionFor(sc);
+    ISemanticRegion _keyword_2 = _regionFor_6.keyword("minLength");
     final Procedure1<IHiddenRegionFormatter> _function_7 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).keyword("minLength"), _function_7);
+    document.append(_keyword_2, _function_7);
+    ISemanticRegionsFinder _regionFor_7 = this.textRegionExtensions.regionFor(sc);
+    OMLGrammarAccess.IRIScalarRestrictionElements _iRIScalarRestrictionAccess_2 = this._oMLGrammarAccess.getIRIScalarRestrictionAccess();
+    RuleCall _minLengthINTTerminalRuleCall_3_1_1_0 = _iRIScalarRestrictionAccess_2.getMinLengthINTTerminalRuleCall_3_1_1_0();
+    ISemanticRegion _ruleCall_2 = _regionFor_7.ruleCall(_minLengthINTTerminalRuleCall_3_1_1_0);
     final Procedure1<IHiddenRegionFormatter> _function_8 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getIRIScalarRestrictionAccess().getMinLengthINTTerminalRuleCall_3_1_1_0()), _function_8);
+    document.append(_ruleCall_2, _function_8);
+    ISemanticRegionsFinder _regionFor_8 = this.textRegionExtensions.regionFor(sc);
+    ISemanticRegion _keyword_3 = _regionFor_8.keyword("maxLength");
     final Procedure1<IHiddenRegionFormatter> _function_9 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).keyword("maxLength"), _function_9);
+    document.append(_keyword_3, _function_9);
+    ISemanticRegionsFinder _regionFor_9 = this.textRegionExtensions.regionFor(sc);
+    OMLGrammarAccess.IRIScalarRestrictionElements _iRIScalarRestrictionAccess_3 = this._oMLGrammarAccess.getIRIScalarRestrictionAccess();
+    RuleCall _maxLengthINTTerminalRuleCall_3_2_1_0 = _iRIScalarRestrictionAccess_3.getMaxLengthINTTerminalRuleCall_3_2_1_0();
+    ISemanticRegion _ruleCall_3 = _regionFor_9.ruleCall(_maxLengthINTTerminalRuleCall_3_2_1_0);
     final Procedure1<IHiddenRegionFormatter> _function_10 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getIRIScalarRestrictionAccess().getMaxLengthINTTerminalRuleCall_3_2_1_0()), _function_10);
+    document.append(_ruleCall_3, _function_10);
+    ISemanticRegionsFinder _regionFor_10 = this.textRegionExtensions.regionFor(sc);
+    ISemanticRegion _keyword_4 = _regionFor_10.keyword("pattern");
     final Procedure1<IHiddenRegionFormatter> _function_11 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).keyword("pattern"), _function_11);
+    document.append(_keyword_4, _function_11);
+    ISemanticRegionsFinder _regionFor_11 = this.textRegionExtensions.regionFor(sc);
+    OMLGrammarAccess.IRIScalarRestrictionElements _iRIScalarRestrictionAccess_4 = this._oMLGrammarAccess.getIRIScalarRestrictionAccess();
+    RuleCall _patternSTRINGTerminalRuleCall_3_3_1_0 = _iRIScalarRestrictionAccess_4.getPatternSTRINGTerminalRuleCall_3_3_1_0();
+    ISemanticRegion _ruleCall_4 = _regionFor_11.ruleCall(_patternSTRINGTerminalRuleCall_3_3_1_0);
     final Procedure1<IHiddenRegionFormatter> _function_12 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getIRIScalarRestrictionAccess().getPatternSTRINGTerminalRuleCall_3_3_1_0()), _function_12);
+    document.append(_ruleCall_4, _function_12);
+    ISemanticRegionsFinder _regionFor_12 = this.textRegionExtensions.regionFor(sc);
+    ISemanticRegion _keyword_5 = _regionFor_12.keyword("restrictedRange");
     final Procedure1<IHiddenRegionFormatter> _function_13 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).keyword("restrictedRange"), _function_13);
+    document.append(_keyword_5, _function_13);
+    ISemanticRegionsFinder _regionFor_13 = this.textRegionExtensions.regionFor(sc);
+    OMLGrammarAccess.IRIScalarRestrictionElements _iRIScalarRestrictionAccess_5 = this._oMLGrammarAccess.getIRIScalarRestrictionAccess();
+    RuleCall _restrictedRangeDataRangeReferenceParserRuleCall_5_0_1 = _iRIScalarRestrictionAccess_5.getRestrictedRangeDataRangeReferenceParserRuleCall_5_0_1();
+    ISemanticRegion _ruleCall_5 = _regionFor_13.ruleCall(_restrictedRangeDataRangeReferenceParserRuleCall_5_0_1);
     final Procedure1<IHiddenRegionFormatter> _function_14 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getIRIScalarRestrictionAccess().getRestrictedRangeDataRangeReferenceParserRuleCall_5_0_1()), _function_14);
+    document.append(_ruleCall_5, _function_14);
   }
   
   protected void _format(final NumericScalarRestriction sc, @Extension final IFormattableDocument document) {
+    ISemanticRegionsFinder _regionFor = this.textRegionExtensions.regionFor(sc);
+    ISemanticRegion _keyword = _regionFor.keyword("numericScalarRestriction");
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).keyword("numericScalarRestriction"), _function);
+    document.append(_keyword, _function);
+    ISemanticRegionsFinder _regionFor_1 = this.textRegionExtensions.regionFor(sc);
+    OMLGrammarAccess.NumericScalarRestrictionElements _numericScalarRestrictionAccess = this._oMLGrammarAccess.getNumericScalarRestrictionAccess();
+    RuleCall _nameIDTerminalRuleCall_1_0 = _numericScalarRestrictionAccess.getNameIDTerminalRuleCall_1_0();
+    ISemanticRegion _ruleCall = _regionFor_1.ruleCall(_nameIDTerminalRuleCall_1_0);
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getNumericScalarRestrictionAccess().getNameIDTerminalRuleCall_1_0()), _function_1);
-    final ISemanticRegion lcurly = this.textRegionExtensions.regionFor(sc).keyword("{");
-    final ISemanticRegion rcurly = this.textRegionExtensions.regionFor(sc).keyword("}");
+    document.surround(_ruleCall, _function_1);
+    ISemanticRegionsFinder _regionFor_2 = this.textRegionExtensions.regionFor(sc);
+    final ISemanticRegion lcurly = _regionFor_2.keyword("{");
+    ISemanticRegionsFinder _regionFor_3 = this.textRegionExtensions.regionFor(sc);
+    final ISemanticRegion rcurly = _regionFor_3.keyword("}");
     final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
@@ -1211,59 +1668,97 @@ public class OMLFormatter extends AbstractFormatter2 {
       it.indent();
     };
     document.<ISemanticRegion, ISemanticRegion>interior(lcurly, rcurly, _function_4);
+    ISemanticRegionsFinder _regionFor_4 = this.textRegionExtensions.regionFor(sc);
+    ISemanticRegion _keyword_1 = _regionFor_4.keyword("minInclusive");
     final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).keyword("minInclusive"), _function_5);
+    document.append(_keyword_1, _function_5);
+    ISemanticRegionsFinder _regionFor_5 = this.textRegionExtensions.regionFor(sc);
+    OMLGrammarAccess.NumericScalarRestrictionElements _numericScalarRestrictionAccess_1 = this._oMLGrammarAccess.getNumericScalarRestrictionAccess();
+    RuleCall _minInclusiveSTRINGTerminalRuleCall_3_0_1_0 = _numericScalarRestrictionAccess_1.getMinInclusiveSTRINGTerminalRuleCall_3_0_1_0();
+    ISemanticRegion _ruleCall_1 = _regionFor_5.ruleCall(_minInclusiveSTRINGTerminalRuleCall_3_0_1_0);
     final Procedure1<IHiddenRegionFormatter> _function_6 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getNumericScalarRestrictionAccess().getMinInclusiveSTRINGTerminalRuleCall_3_0_1_0()), _function_6);
+    document.append(_ruleCall_1, _function_6);
+    ISemanticRegionsFinder _regionFor_6 = this.textRegionExtensions.regionFor(sc);
+    ISemanticRegion _keyword_2 = _regionFor_6.keyword("maxInclusive");
     final Procedure1<IHiddenRegionFormatter> _function_7 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).keyword("maxInclusive"), _function_7);
+    document.append(_keyword_2, _function_7);
+    ISemanticRegionsFinder _regionFor_7 = this.textRegionExtensions.regionFor(sc);
+    OMLGrammarAccess.NumericScalarRestrictionElements _numericScalarRestrictionAccess_2 = this._oMLGrammarAccess.getNumericScalarRestrictionAccess();
+    RuleCall _maxInclusiveSTRINGTerminalRuleCall_3_1_1_0 = _numericScalarRestrictionAccess_2.getMaxInclusiveSTRINGTerminalRuleCall_3_1_1_0();
+    ISemanticRegion _ruleCall_2 = _regionFor_7.ruleCall(_maxInclusiveSTRINGTerminalRuleCall_3_1_1_0);
     final Procedure1<IHiddenRegionFormatter> _function_8 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getNumericScalarRestrictionAccess().getMaxInclusiveSTRINGTerminalRuleCall_3_1_1_0()), _function_8);
+    document.append(_ruleCall_2, _function_8);
+    ISemanticRegionsFinder _regionFor_8 = this.textRegionExtensions.regionFor(sc);
+    ISemanticRegion _keyword_3 = _regionFor_8.keyword("minExclusive");
     final Procedure1<IHiddenRegionFormatter> _function_9 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).keyword("minExclusive"), _function_9);
+    document.append(_keyword_3, _function_9);
+    ISemanticRegionsFinder _regionFor_9 = this.textRegionExtensions.regionFor(sc);
+    OMLGrammarAccess.NumericScalarRestrictionElements _numericScalarRestrictionAccess_3 = this._oMLGrammarAccess.getNumericScalarRestrictionAccess();
+    RuleCall _minExclusiveSTRINGTerminalRuleCall_3_2_1_0 = _numericScalarRestrictionAccess_3.getMinExclusiveSTRINGTerminalRuleCall_3_2_1_0();
+    ISemanticRegion _ruleCall_3 = _regionFor_9.ruleCall(_minExclusiveSTRINGTerminalRuleCall_3_2_1_0);
     final Procedure1<IHiddenRegionFormatter> _function_10 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getNumericScalarRestrictionAccess().getMinExclusiveSTRINGTerminalRuleCall_3_2_1_0()), _function_10);
+    document.append(_ruleCall_3, _function_10);
+    ISemanticRegionsFinder _regionFor_10 = this.textRegionExtensions.regionFor(sc);
+    ISemanticRegion _keyword_4 = _regionFor_10.keyword("maxExclusive");
     final Procedure1<IHiddenRegionFormatter> _function_11 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).keyword("maxExclusive"), _function_11);
+    document.append(_keyword_4, _function_11);
+    ISemanticRegionsFinder _regionFor_11 = this.textRegionExtensions.regionFor(sc);
+    OMLGrammarAccess.NumericScalarRestrictionElements _numericScalarRestrictionAccess_4 = this._oMLGrammarAccess.getNumericScalarRestrictionAccess();
+    RuleCall _maxExclusiveSTRINGTerminalRuleCall_3_3_1_0 = _numericScalarRestrictionAccess_4.getMaxExclusiveSTRINGTerminalRuleCall_3_3_1_0();
+    ISemanticRegion _ruleCall_4 = _regionFor_11.ruleCall(_maxExclusiveSTRINGTerminalRuleCall_3_3_1_0);
     final Procedure1<IHiddenRegionFormatter> _function_12 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getNumericScalarRestrictionAccess().getMaxExclusiveSTRINGTerminalRuleCall_3_3_1_0()), _function_12);
+    document.append(_ruleCall_4, _function_12);
+    ISemanticRegionsFinder _regionFor_12 = this.textRegionExtensions.regionFor(sc);
+    ISemanticRegion _keyword_5 = _regionFor_12.keyword("restrictedRange");
     final Procedure1<IHiddenRegionFormatter> _function_13 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).keyword("restrictedRange"), _function_13);
+    document.append(_keyword_5, _function_13);
+    ISemanticRegionsFinder _regionFor_13 = this.textRegionExtensions.regionFor(sc);
+    OMLGrammarAccess.NumericScalarRestrictionElements _numericScalarRestrictionAccess_5 = this._oMLGrammarAccess.getNumericScalarRestrictionAccess();
+    RuleCall _restrictedRangeDataRangeReferenceParserRuleCall_5_0_1 = _numericScalarRestrictionAccess_5.getRestrictedRangeDataRangeReferenceParserRuleCall_5_0_1();
+    ISemanticRegion _ruleCall_5 = _regionFor_13.ruleCall(_restrictedRangeDataRangeReferenceParserRuleCall_5_0_1);
     final Procedure1<IHiddenRegionFormatter> _function_14 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getNumericScalarRestrictionAccess().getRestrictedRangeDataRangeReferenceParserRuleCall_5_0_1()), _function_14);
+    document.append(_ruleCall_5, _function_14);
   }
   
   protected void _format(final PlainLiteralScalarRestriction sc, @Extension final IFormattableDocument document) {
+    ISemanticRegionsFinder _regionFor = this.textRegionExtensions.regionFor(sc);
+    ISemanticRegion _keyword = _regionFor.keyword("plainLiteralScalarRestriction");
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).keyword("plainLiteralScalarRestriction"), _function);
+    document.append(_keyword, _function);
+    ISemanticRegionsFinder _regionFor_1 = this.textRegionExtensions.regionFor(sc);
+    OMLGrammarAccess.IRIScalarRestrictionElements _iRIScalarRestrictionAccess = this._oMLGrammarAccess.getIRIScalarRestrictionAccess();
+    RuleCall _nameIDTerminalRuleCall_1_0 = _iRIScalarRestrictionAccess.getNameIDTerminalRuleCall_1_0();
+    ISemanticRegion _ruleCall = _regionFor_1.ruleCall(_nameIDTerminalRuleCall_1_0);
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getIRIScalarRestrictionAccess().getNameIDTerminalRuleCall_1_0()), _function_1);
-    final ISemanticRegion lcurly = this.textRegionExtensions.regionFor(sc).keyword("{");
-    final ISemanticRegion rcurly = this.textRegionExtensions.regionFor(sc).keyword("}");
+    document.surround(_ruleCall, _function_1);
+    ISemanticRegionsFinder _regionFor_2 = this.textRegionExtensions.regionFor(sc);
+    final ISemanticRegion lcurly = _regionFor_2.keyword("{");
+    ISemanticRegionsFinder _regionFor_3 = this.textRegionExtensions.regionFor(sc);
+    final ISemanticRegion rcurly = _regionFor_3.keyword("}");
     final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
@@ -1276,67 +1771,111 @@ public class OMLFormatter extends AbstractFormatter2 {
       it.indent();
     };
     document.<ISemanticRegion, ISemanticRegion>interior(lcurly, rcurly, _function_4);
+    ISemanticRegionsFinder _regionFor_4 = this.textRegionExtensions.regionFor(sc);
+    ISemanticRegion _keyword_1 = _regionFor_4.keyword("length");
     final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).keyword("length"), _function_5);
+    document.append(_keyword_1, _function_5);
+    ISemanticRegionsFinder _regionFor_5 = this.textRegionExtensions.regionFor(sc);
+    OMLGrammarAccess.PlainLiteralScalarRestrictionElements _plainLiteralScalarRestrictionAccess = this._oMLGrammarAccess.getPlainLiteralScalarRestrictionAccess();
+    RuleCall _lengthINTTerminalRuleCall_3_0_1_0 = _plainLiteralScalarRestrictionAccess.getLengthINTTerminalRuleCall_3_0_1_0();
+    ISemanticRegion _ruleCall_1 = _regionFor_5.ruleCall(_lengthINTTerminalRuleCall_3_0_1_0);
     final Procedure1<IHiddenRegionFormatter> _function_6 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getPlainLiteralScalarRestrictionAccess().getLengthINTTerminalRuleCall_3_0_1_0()), _function_6);
+    document.append(_ruleCall_1, _function_6);
+    ISemanticRegionsFinder _regionFor_6 = this.textRegionExtensions.regionFor(sc);
+    ISemanticRegion _keyword_2 = _regionFor_6.keyword("minLength");
     final Procedure1<IHiddenRegionFormatter> _function_7 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).keyword("minLength"), _function_7);
+    document.append(_keyword_2, _function_7);
+    ISemanticRegionsFinder _regionFor_7 = this.textRegionExtensions.regionFor(sc);
+    OMLGrammarAccess.PlainLiteralScalarRestrictionElements _plainLiteralScalarRestrictionAccess_1 = this._oMLGrammarAccess.getPlainLiteralScalarRestrictionAccess();
+    RuleCall _minLengthINTTerminalRuleCall_3_1_1_0 = _plainLiteralScalarRestrictionAccess_1.getMinLengthINTTerminalRuleCall_3_1_1_0();
+    ISemanticRegion _ruleCall_2 = _regionFor_7.ruleCall(_minLengthINTTerminalRuleCall_3_1_1_0);
     final Procedure1<IHiddenRegionFormatter> _function_8 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getPlainLiteralScalarRestrictionAccess().getMinLengthINTTerminalRuleCall_3_1_1_0()), _function_8);
+    document.append(_ruleCall_2, _function_8);
+    ISemanticRegionsFinder _regionFor_8 = this.textRegionExtensions.regionFor(sc);
+    ISemanticRegion _keyword_3 = _regionFor_8.keyword("maxLength");
     final Procedure1<IHiddenRegionFormatter> _function_9 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).keyword("maxLength"), _function_9);
+    document.append(_keyword_3, _function_9);
+    ISemanticRegionsFinder _regionFor_9 = this.textRegionExtensions.regionFor(sc);
+    OMLGrammarAccess.PlainLiteralScalarRestrictionElements _plainLiteralScalarRestrictionAccess_2 = this._oMLGrammarAccess.getPlainLiteralScalarRestrictionAccess();
+    RuleCall _maxLengthINTTerminalRuleCall_3_2_1_0 = _plainLiteralScalarRestrictionAccess_2.getMaxLengthINTTerminalRuleCall_3_2_1_0();
+    ISemanticRegion _ruleCall_3 = _regionFor_9.ruleCall(_maxLengthINTTerminalRuleCall_3_2_1_0);
     final Procedure1<IHiddenRegionFormatter> _function_10 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getPlainLiteralScalarRestrictionAccess().getMaxLengthINTTerminalRuleCall_3_2_1_0()), _function_10);
+    document.append(_ruleCall_3, _function_10);
+    ISemanticRegionsFinder _regionFor_10 = this.textRegionExtensions.regionFor(sc);
+    ISemanticRegion _keyword_4 = _regionFor_10.keyword("pattern");
     final Procedure1<IHiddenRegionFormatter> _function_11 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).keyword("pattern"), _function_11);
+    document.append(_keyword_4, _function_11);
+    ISemanticRegionsFinder _regionFor_11 = this.textRegionExtensions.regionFor(sc);
+    OMLGrammarAccess.PlainLiteralScalarRestrictionElements _plainLiteralScalarRestrictionAccess_3 = this._oMLGrammarAccess.getPlainLiteralScalarRestrictionAccess();
+    RuleCall _patternSTRINGTerminalRuleCall_3_3_1_0 = _plainLiteralScalarRestrictionAccess_3.getPatternSTRINGTerminalRuleCall_3_3_1_0();
+    ISemanticRegion _ruleCall_4 = _regionFor_11.ruleCall(_patternSTRINGTerminalRuleCall_3_3_1_0);
     final Procedure1<IHiddenRegionFormatter> _function_12 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getPlainLiteralScalarRestrictionAccess().getPatternSTRINGTerminalRuleCall_3_3_1_0()), _function_12);
+    document.append(_ruleCall_4, _function_12);
+    ISemanticRegionsFinder _regionFor_12 = this.textRegionExtensions.regionFor(sc);
+    ISemanticRegion _keyword_5 = _regionFor_12.keyword("langRange");
     final Procedure1<IHiddenRegionFormatter> _function_13 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).keyword("langRange"), _function_13);
+    document.append(_keyword_5, _function_13);
+    ISemanticRegionsFinder _regionFor_13 = this.textRegionExtensions.regionFor(sc);
+    OMLGrammarAccess.PlainLiteralScalarRestrictionElements _plainLiteralScalarRestrictionAccess_4 = this._oMLGrammarAccess.getPlainLiteralScalarRestrictionAccess();
+    RuleCall _langRangeSTRINGTerminalRuleCall_3_4_1_0 = _plainLiteralScalarRestrictionAccess_4.getLangRangeSTRINGTerminalRuleCall_3_4_1_0();
+    ISemanticRegion _ruleCall_5 = _regionFor_13.ruleCall(_langRangeSTRINGTerminalRuleCall_3_4_1_0);
     final Procedure1<IHiddenRegionFormatter> _function_14 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getPlainLiteralScalarRestrictionAccess().getLangRangeSTRINGTerminalRuleCall_3_4_1_0()), _function_14);
+    document.append(_ruleCall_5, _function_14);
+    ISemanticRegionsFinder _regionFor_14 = this.textRegionExtensions.regionFor(sc);
+    ISemanticRegion _keyword_6 = _regionFor_14.keyword("restrictedRange");
     final Procedure1<IHiddenRegionFormatter> _function_15 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).keyword("restrictedRange"), _function_15);
+    document.append(_keyword_6, _function_15);
+    ISemanticRegionsFinder _regionFor_15 = this.textRegionExtensions.regionFor(sc);
+    OMLGrammarAccess.PlainLiteralScalarRestrictionElements _plainLiteralScalarRestrictionAccess_5 = this._oMLGrammarAccess.getPlainLiteralScalarRestrictionAccess();
+    RuleCall _restrictedRangeDataRangeReferenceParserRuleCall_5_0_1 = _plainLiteralScalarRestrictionAccess_5.getRestrictedRangeDataRangeReferenceParserRuleCall_5_0_1();
+    ISemanticRegion _ruleCall_6 = _regionFor_15.ruleCall(_restrictedRangeDataRangeReferenceParserRuleCall_5_0_1);
     final Procedure1<IHiddenRegionFormatter> _function_16 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getPlainLiteralScalarRestrictionAccess().getRestrictedRangeDataRangeReferenceParserRuleCall_5_0_1()), _function_16);
+    document.append(_ruleCall_6, _function_16);
   }
   
   protected void _format(final ScalarOneOfRestriction sc, @Extension final IFormattableDocument document) {
+    ISemanticRegionsFinder _regionFor = this.textRegionExtensions.regionFor(sc);
+    ISemanticRegion _keyword = _regionFor.keyword("scalarOneOfRestriction");
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).keyword("scalarOneOfRestriction"), _function);
+    document.append(_keyword, _function);
+    ISemanticRegionsFinder _regionFor_1 = this.textRegionExtensions.regionFor(sc);
+    OMLGrammarAccess.ScalarOneOfRestrictionElements _scalarOneOfRestrictionAccess = this._oMLGrammarAccess.getScalarOneOfRestrictionAccess();
+    RuleCall _nameIDTerminalRuleCall_1_0 = _scalarOneOfRestrictionAccess.getNameIDTerminalRuleCall_1_0();
+    ISemanticRegion _ruleCall = _regionFor_1.ruleCall(_nameIDTerminalRuleCall_1_0);
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getScalarOneOfRestrictionAccess().getNameIDTerminalRuleCall_1_0()), _function_1);
-    final ISemanticRegion lcurly = this.textRegionExtensions.regionFor(sc).keyword("{");
-    final ISemanticRegion rcurly = this.textRegionExtensions.regionFor(sc).keyword("}");
+    document.surround(_ruleCall, _function_1);
+    ISemanticRegionsFinder _regionFor_2 = this.textRegionExtensions.regionFor(sc);
+    final ISemanticRegion lcurly = _regionFor_2.keyword("{");
+    ISemanticRegionsFinder _regionFor_3 = this.textRegionExtensions.regionFor(sc);
+    final ISemanticRegion rcurly = _regionFor_3.keyword("}");
     final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
@@ -1349,38 +1888,56 @@ public class OMLFormatter extends AbstractFormatter2 {
       it.indent();
     };
     document.<ISemanticRegion, ISemanticRegion>interior(lcurly, rcurly, _function_4);
+    ISemanticRegionsFinder _regionFor_4 = this.textRegionExtensions.regionFor(sc);
+    ISemanticRegion _keyword_1 = _regionFor_4.keyword("restrictedRange");
     final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).keyword("restrictedRange"), _function_5);
+    document.append(_keyword_1, _function_5);
+    ISemanticRegionsFinder _regionFor_5 = this.textRegionExtensions.regionFor(sc);
+    OMLGrammarAccess.ScalarOneOfRestrictionElements _scalarOneOfRestrictionAccess_1 = this._oMLGrammarAccess.getScalarOneOfRestrictionAccess();
+    RuleCall _restrictedRangeDataRangeReferenceParserRuleCall_4_0_1 = _scalarOneOfRestrictionAccess_1.getRestrictedRangeDataRangeReferenceParserRuleCall_4_0_1();
+    ISemanticRegion _ruleCall_1 = _regionFor_5.ruleCall(_restrictedRangeDataRangeReferenceParserRuleCall_4_0_1);
     final Procedure1<IHiddenRegionFormatter> _function_6 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getScalarOneOfRestrictionAccess().getRestrictedRangeDataRangeReferenceParserRuleCall_4_0_1()), _function_6);
+    document.append(_ruleCall_1, _function_6);
   }
   
   protected void _format(final ScalarOneOfLiteralAxiom sc, @Extension final IFormattableDocument document) {
+    ISemanticRegionsFinder _regionFor = this.textRegionExtensions.regionFor(sc);
+    ISemanticRegion _keyword = _regionFor.keyword("oneOf");
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).keyword("oneOf"), _function);
+    document.append(_keyword, _function);
+    ISemanticRegionsFinder _regionFor_1 = this.textRegionExtensions.regionFor(sc);
+    ISemanticRegion _keyword_1 = _regionFor_1.keyword("=");
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(sc).keyword("="), _function_1);
+    document.surround(_keyword_1, _function_1);
   }
   
   protected void _format(final StringScalarRestriction sc, @Extension final IFormattableDocument document) {
+    ISemanticRegionsFinder _regionFor = this.textRegionExtensions.regionFor(sc);
+    ISemanticRegion _keyword = _regionFor.keyword("stringScalarRestriction");
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).keyword("stringScalarRestriction"), _function);
+    document.append(_keyword, _function);
+    ISemanticRegionsFinder _regionFor_1 = this.textRegionExtensions.regionFor(sc);
+    OMLGrammarAccess.StringScalarRestrictionElements _stringScalarRestrictionAccess = this._oMLGrammarAccess.getStringScalarRestrictionAccess();
+    RuleCall _nameIDTerminalRuleCall_1_0 = _stringScalarRestrictionAccess.getNameIDTerminalRuleCall_1_0();
+    ISemanticRegion _ruleCall = _regionFor_1.ruleCall(_nameIDTerminalRuleCall_1_0);
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getStringScalarRestrictionAccess().getNameIDTerminalRuleCall_1_0()), _function_1);
-    final ISemanticRegion lcurly = this.textRegionExtensions.regionFor(sc).keyword("{");
-    final ISemanticRegion rcurly = this.textRegionExtensions.regionFor(sc).keyword("}");
+    document.surround(_ruleCall, _function_1);
+    ISemanticRegionsFinder _regionFor_2 = this.textRegionExtensions.regionFor(sc);
+    final ISemanticRegion lcurly = _regionFor_2.keyword("{");
+    ISemanticRegionsFinder _regionFor_3 = this.textRegionExtensions.regionFor(sc);
+    final ISemanticRegion rcurly = _regionFor_3.keyword("}");
     final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
@@ -1393,59 +1950,97 @@ public class OMLFormatter extends AbstractFormatter2 {
       it.indent();
     };
     document.<ISemanticRegion, ISemanticRegion>interior(lcurly, rcurly, _function_4);
+    ISemanticRegionsFinder _regionFor_4 = this.textRegionExtensions.regionFor(sc);
+    ISemanticRegion _keyword_1 = _regionFor_4.keyword("length");
     final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).keyword("length"), _function_5);
+    document.append(_keyword_1, _function_5);
+    ISemanticRegionsFinder _regionFor_5 = this.textRegionExtensions.regionFor(sc);
+    OMLGrammarAccess.StringScalarRestrictionElements _stringScalarRestrictionAccess_1 = this._oMLGrammarAccess.getStringScalarRestrictionAccess();
+    RuleCall _lengthINTTerminalRuleCall_3_0_1_0 = _stringScalarRestrictionAccess_1.getLengthINTTerminalRuleCall_3_0_1_0();
+    ISemanticRegion _ruleCall_1 = _regionFor_5.ruleCall(_lengthINTTerminalRuleCall_3_0_1_0);
     final Procedure1<IHiddenRegionFormatter> _function_6 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getStringScalarRestrictionAccess().getLengthINTTerminalRuleCall_3_0_1_0()), _function_6);
+    document.append(_ruleCall_1, _function_6);
+    ISemanticRegionsFinder _regionFor_6 = this.textRegionExtensions.regionFor(sc);
+    ISemanticRegion _keyword_2 = _regionFor_6.keyword("minLength");
     final Procedure1<IHiddenRegionFormatter> _function_7 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).keyword("minLength"), _function_7);
+    document.append(_keyword_2, _function_7);
+    ISemanticRegionsFinder _regionFor_7 = this.textRegionExtensions.regionFor(sc);
+    OMLGrammarAccess.StringScalarRestrictionElements _stringScalarRestrictionAccess_2 = this._oMLGrammarAccess.getStringScalarRestrictionAccess();
+    RuleCall _minLengthINTTerminalRuleCall_3_1_1_0 = _stringScalarRestrictionAccess_2.getMinLengthINTTerminalRuleCall_3_1_1_0();
+    ISemanticRegion _ruleCall_2 = _regionFor_7.ruleCall(_minLengthINTTerminalRuleCall_3_1_1_0);
     final Procedure1<IHiddenRegionFormatter> _function_8 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getStringScalarRestrictionAccess().getMinLengthINTTerminalRuleCall_3_1_1_0()), _function_8);
+    document.append(_ruleCall_2, _function_8);
+    ISemanticRegionsFinder _regionFor_8 = this.textRegionExtensions.regionFor(sc);
+    ISemanticRegion _keyword_3 = _regionFor_8.keyword("maxLength");
     final Procedure1<IHiddenRegionFormatter> _function_9 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).keyword("maxLength"), _function_9);
+    document.append(_keyword_3, _function_9);
+    ISemanticRegionsFinder _regionFor_9 = this.textRegionExtensions.regionFor(sc);
+    OMLGrammarAccess.StringScalarRestrictionElements _stringScalarRestrictionAccess_3 = this._oMLGrammarAccess.getStringScalarRestrictionAccess();
+    RuleCall _maxLengthINTTerminalRuleCall_3_2_1_0 = _stringScalarRestrictionAccess_3.getMaxLengthINTTerminalRuleCall_3_2_1_0();
+    ISemanticRegion _ruleCall_3 = _regionFor_9.ruleCall(_maxLengthINTTerminalRuleCall_3_2_1_0);
     final Procedure1<IHiddenRegionFormatter> _function_10 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getStringScalarRestrictionAccess().getMaxLengthINTTerminalRuleCall_3_2_1_0()), _function_10);
+    document.append(_ruleCall_3, _function_10);
+    ISemanticRegionsFinder _regionFor_10 = this.textRegionExtensions.regionFor(sc);
+    ISemanticRegion _keyword_4 = _regionFor_10.keyword("pattern");
     final Procedure1<IHiddenRegionFormatter> _function_11 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).keyword("pattern"), _function_11);
+    document.append(_keyword_4, _function_11);
+    ISemanticRegionsFinder _regionFor_11 = this.textRegionExtensions.regionFor(sc);
+    OMLGrammarAccess.StringScalarRestrictionElements _stringScalarRestrictionAccess_4 = this._oMLGrammarAccess.getStringScalarRestrictionAccess();
+    RuleCall _patternSTRINGTerminalRuleCall_3_3_1_0 = _stringScalarRestrictionAccess_4.getPatternSTRINGTerminalRuleCall_3_3_1_0();
+    ISemanticRegion _ruleCall_4 = _regionFor_11.ruleCall(_patternSTRINGTerminalRuleCall_3_3_1_0);
     final Procedure1<IHiddenRegionFormatter> _function_12 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getStringScalarRestrictionAccess().getPatternSTRINGTerminalRuleCall_3_3_1_0()), _function_12);
+    document.append(_ruleCall_4, _function_12);
+    ISemanticRegionsFinder _regionFor_12 = this.textRegionExtensions.regionFor(sc);
+    ISemanticRegion _keyword_5 = _regionFor_12.keyword("restrictedRange");
     final Procedure1<IHiddenRegionFormatter> _function_13 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).keyword("restrictedRange"), _function_13);
+    document.append(_keyword_5, _function_13);
+    ISemanticRegionsFinder _regionFor_13 = this.textRegionExtensions.regionFor(sc);
+    OMLGrammarAccess.StringScalarRestrictionElements _stringScalarRestrictionAccess_5 = this._oMLGrammarAccess.getStringScalarRestrictionAccess();
+    RuleCall _restrictedRangeDataRangeReferenceParserRuleCall_5_0_1 = _stringScalarRestrictionAccess_5.getRestrictedRangeDataRangeReferenceParserRuleCall_5_0_1();
+    ISemanticRegion _ruleCall_5 = _regionFor_13.ruleCall(_restrictedRangeDataRangeReferenceParserRuleCall_5_0_1);
     final Procedure1<IHiddenRegionFormatter> _function_14 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getStringScalarRestrictionAccess().getRestrictedRangeDataRangeReferenceParserRuleCall_5_0_1()), _function_14);
+    document.append(_ruleCall_5, _function_14);
   }
   
   protected void _format(final SynonymScalarRestriction sc, @Extension final IFormattableDocument document) {
+    ISemanticRegionsFinder _regionFor = this.textRegionExtensions.regionFor(sc);
+    ISemanticRegion _keyword = _regionFor.keyword("synonymScalarRestriction");
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).keyword("synonymScalarRestriction"), _function);
+    document.append(_keyword, _function);
+    ISemanticRegionsFinder _regionFor_1 = this.textRegionExtensions.regionFor(sc);
+    OMLGrammarAccess.SynonymScalarRestrictionElements _synonymScalarRestrictionAccess = this._oMLGrammarAccess.getSynonymScalarRestrictionAccess();
+    RuleCall _nameIDTerminalRuleCall_1_0 = _synonymScalarRestrictionAccess.getNameIDTerminalRuleCall_1_0();
+    ISemanticRegion _ruleCall = _regionFor_1.ruleCall(_nameIDTerminalRuleCall_1_0);
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getSynonymScalarRestrictionAccess().getNameIDTerminalRuleCall_1_0()), _function_1);
-    final ISemanticRegion lcurly = this.textRegionExtensions.regionFor(sc).keyword("{");
-    final ISemanticRegion rcurly = this.textRegionExtensions.regionFor(sc).keyword("}");
+    document.surround(_ruleCall, _function_1);
+    ISemanticRegionsFinder _regionFor_2 = this.textRegionExtensions.regionFor(sc);
+    final ISemanticRegion lcurly = _regionFor_2.keyword("{");
+    ISemanticRegionsFinder _regionFor_3 = this.textRegionExtensions.regionFor(sc);
+    final ISemanticRegion rcurly = _regionFor_3.keyword("}");
     final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
@@ -1458,27 +2053,41 @@ public class OMLFormatter extends AbstractFormatter2 {
       it.indent();
     };
     document.<ISemanticRegion, ISemanticRegion>interior(lcurly, rcurly, _function_4);
+    ISemanticRegionsFinder _regionFor_4 = this.textRegionExtensions.regionFor(sc);
+    ISemanticRegion _keyword_1 = _regionFor_4.keyword("restrictedRange");
     final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).keyword("restrictedRange"), _function_5);
+    document.append(_keyword_1, _function_5);
+    ISemanticRegionsFinder _regionFor_5 = this.textRegionExtensions.regionFor(sc);
+    OMLGrammarAccess.SynonymScalarRestrictionElements _synonymScalarRestrictionAccess_1 = this._oMLGrammarAccess.getSynonymScalarRestrictionAccess();
+    RuleCall _restrictedRangeDataRangeReferenceParserRuleCall_4_0_1 = _synonymScalarRestrictionAccess_1.getRestrictedRangeDataRangeReferenceParserRuleCall_4_0_1();
+    ISemanticRegion _ruleCall_1 = _regionFor_5.ruleCall(_restrictedRangeDataRangeReferenceParserRuleCall_4_0_1);
     final Procedure1<IHiddenRegionFormatter> _function_6 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getSynonymScalarRestrictionAccess().getRestrictedRangeDataRangeReferenceParserRuleCall_4_0_1()), _function_6);
+    document.append(_ruleCall_1, _function_6);
   }
   
   protected void _format(final TimeScalarRestriction sc, @Extension final IFormattableDocument document) {
+    ISemanticRegionsFinder _regionFor = this.textRegionExtensions.regionFor(sc);
+    ISemanticRegion _keyword = _regionFor.keyword("timeScalarRestriction");
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).keyword("timeScalarRestriction"), _function);
+    document.append(_keyword, _function);
+    ISemanticRegionsFinder _regionFor_1 = this.textRegionExtensions.regionFor(sc);
+    OMLGrammarAccess.TimeScalarRestrictionElements _timeScalarRestrictionAccess = this._oMLGrammarAccess.getTimeScalarRestrictionAccess();
+    RuleCall _nameIDTerminalRuleCall_1_0 = _timeScalarRestrictionAccess.getNameIDTerminalRuleCall_1_0();
+    ISemanticRegion _ruleCall = _regionFor_1.ruleCall(_nameIDTerminalRuleCall_1_0);
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getTimeScalarRestrictionAccess().getNameIDTerminalRuleCall_1_0()), _function_1);
-    final ISemanticRegion lcurly = this.textRegionExtensions.regionFor(sc).keyword("{");
-    final ISemanticRegion rcurly = this.textRegionExtensions.regionFor(sc).keyword("}");
+    document.surround(_ruleCall, _function_1);
+    ISemanticRegionsFinder _regionFor_2 = this.textRegionExtensions.regionFor(sc);
+    final ISemanticRegion lcurly = _regionFor_2.keyword("{");
+    ISemanticRegionsFinder _regionFor_3 = this.textRegionExtensions.regionFor(sc);
+    final ISemanticRegion rcurly = _regionFor_3.keyword("}");
     final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
@@ -1491,84 +2100,128 @@ public class OMLFormatter extends AbstractFormatter2 {
       it.indent();
     };
     document.<ISemanticRegion, ISemanticRegion>interior(lcurly, rcurly, _function_4);
+    ISemanticRegionsFinder _regionFor_4 = this.textRegionExtensions.regionFor(sc);
+    ISemanticRegion _keyword_1 = _regionFor_4.keyword("minInclusive");
     final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).keyword("minInclusive"), _function_5);
+    document.append(_keyword_1, _function_5);
+    ISemanticRegionsFinder _regionFor_5 = this.textRegionExtensions.regionFor(sc);
+    OMLGrammarAccess.TimeScalarRestrictionElements _timeScalarRestrictionAccess_1 = this._oMLGrammarAccess.getTimeScalarRestrictionAccess();
+    RuleCall _minInclusiveSTRINGTerminalRuleCall_3_0_1_0 = _timeScalarRestrictionAccess_1.getMinInclusiveSTRINGTerminalRuleCall_3_0_1_0();
+    ISemanticRegion _ruleCall_1 = _regionFor_5.ruleCall(_minInclusiveSTRINGTerminalRuleCall_3_0_1_0);
     final Procedure1<IHiddenRegionFormatter> _function_6 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getTimeScalarRestrictionAccess().getMinInclusiveSTRINGTerminalRuleCall_3_0_1_0()), _function_6);
+    document.append(_ruleCall_1, _function_6);
+    ISemanticRegionsFinder _regionFor_6 = this.textRegionExtensions.regionFor(sc);
+    ISemanticRegion _keyword_2 = _regionFor_6.keyword("maxInclusive");
     final Procedure1<IHiddenRegionFormatter> _function_7 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).keyword("maxInclusive"), _function_7);
+    document.append(_keyword_2, _function_7);
+    ISemanticRegionsFinder _regionFor_7 = this.textRegionExtensions.regionFor(sc);
+    OMLGrammarAccess.TimeScalarRestrictionElements _timeScalarRestrictionAccess_2 = this._oMLGrammarAccess.getTimeScalarRestrictionAccess();
+    RuleCall _maxInclusiveSTRINGTerminalRuleCall_3_1_1_0 = _timeScalarRestrictionAccess_2.getMaxInclusiveSTRINGTerminalRuleCall_3_1_1_0();
+    ISemanticRegion _ruleCall_2 = _regionFor_7.ruleCall(_maxInclusiveSTRINGTerminalRuleCall_3_1_1_0);
     final Procedure1<IHiddenRegionFormatter> _function_8 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getTimeScalarRestrictionAccess().getMaxInclusiveSTRINGTerminalRuleCall_3_1_1_0()), _function_8);
+    document.append(_ruleCall_2, _function_8);
+    ISemanticRegionsFinder _regionFor_8 = this.textRegionExtensions.regionFor(sc);
+    ISemanticRegion _keyword_3 = _regionFor_8.keyword("minExclusive");
     final Procedure1<IHiddenRegionFormatter> _function_9 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).keyword("minExclusive"), _function_9);
+    document.append(_keyword_3, _function_9);
+    ISemanticRegionsFinder _regionFor_9 = this.textRegionExtensions.regionFor(sc);
+    OMLGrammarAccess.TimeScalarRestrictionElements _timeScalarRestrictionAccess_3 = this._oMLGrammarAccess.getTimeScalarRestrictionAccess();
+    RuleCall _minExclusiveSTRINGTerminalRuleCall_3_2_1_0 = _timeScalarRestrictionAccess_3.getMinExclusiveSTRINGTerminalRuleCall_3_2_1_0();
+    ISemanticRegion _ruleCall_3 = _regionFor_9.ruleCall(_minExclusiveSTRINGTerminalRuleCall_3_2_1_0);
     final Procedure1<IHiddenRegionFormatter> _function_10 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getTimeScalarRestrictionAccess().getMinExclusiveSTRINGTerminalRuleCall_3_2_1_0()), _function_10);
+    document.append(_ruleCall_3, _function_10);
+    ISemanticRegionsFinder _regionFor_10 = this.textRegionExtensions.regionFor(sc);
+    ISemanticRegion _keyword_4 = _regionFor_10.keyword("maxExclusive");
     final Procedure1<IHiddenRegionFormatter> _function_11 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).keyword("maxExclusive"), _function_11);
+    document.append(_keyword_4, _function_11);
+    ISemanticRegionsFinder _regionFor_11 = this.textRegionExtensions.regionFor(sc);
+    OMLGrammarAccess.TimeScalarRestrictionElements _timeScalarRestrictionAccess_4 = this._oMLGrammarAccess.getTimeScalarRestrictionAccess();
+    RuleCall _maxExclusiveSTRINGTerminalRuleCall_3_3_1_0 = _timeScalarRestrictionAccess_4.getMaxExclusiveSTRINGTerminalRuleCall_3_3_1_0();
+    ISemanticRegion _ruleCall_4 = _regionFor_11.ruleCall(_maxExclusiveSTRINGTerminalRuleCall_3_3_1_0);
     final Procedure1<IHiddenRegionFormatter> _function_12 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getTimeScalarRestrictionAccess().getMaxExclusiveSTRINGTerminalRuleCall_3_3_1_0()), _function_12);
+    document.append(_ruleCall_4, _function_12);
+    ISemanticRegionsFinder _regionFor_12 = this.textRegionExtensions.regionFor(sc);
+    ISemanticRegion _keyword_5 = _regionFor_12.keyword("restrictedRange");
     final Procedure1<IHiddenRegionFormatter> _function_13 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).keyword("restrictedRange"), _function_13);
+    document.append(_keyword_5, _function_13);
+    ISemanticRegionsFinder _regionFor_13 = this.textRegionExtensions.regionFor(sc);
+    OMLGrammarAccess.TimeScalarRestrictionElements _timeScalarRestrictionAccess_5 = this._oMLGrammarAccess.getTimeScalarRestrictionAccess();
+    RuleCall _restrictedRangeDataRangeReferenceParserRuleCall_5_0_1 = _timeScalarRestrictionAccess_5.getRestrictedRangeDataRangeReferenceParserRuleCall_5_0_1();
+    ISemanticRegion _ruleCall_5 = _regionFor_13.ruleCall(_restrictedRangeDataRangeReferenceParserRuleCall_5_0_1);
     final Procedure1<IHiddenRegionFormatter> _function_14 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getTimeScalarRestrictionAccess().getRestrictedRangeDataRangeReferenceParserRuleCall_5_0_1()), _function_14);
+    document.append(_ruleCall_5, _function_14);
   }
   
   protected void _format(final DescriptionBoxExtendsClosedWorldDefinitions ax, @Extension final IFormattableDocument document) {
+    ISemanticRegionsFinder _regionFor = this.textRegionExtensions.regionFor(ax);
+    ISemanticRegion _keyword = _regionFor.keyword("extends");
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(ax).keyword("extends"), _function);
+    document.surround(_keyword, _function);
   }
   
   protected void _format(final DescriptionBoxRefinement ax, @Extension final IFormattableDocument document) {
+    ISemanticRegionsFinder _regionFor = this.textRegionExtensions.regionFor(ax);
+    ISemanticRegion _keyword = _regionFor.keyword("refines");
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(ax).keyword("refines"), _function);
+    document.surround(_keyword, _function);
   }
   
   protected void _format(final SingletonInstanceScalarDataPropertyValue s, @Extension final IFormattableDocument document) {
+    ISemanticRegionsFinder _regionFor = this.textRegionExtensions.regionFor(s);
+    ISemanticRegion _keyword = _regionFor.keyword(".");
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(s).keyword("."), _function);
+    document.surround(_keyword, _function);
+    ISemanticRegionsFinder _regionFor_1 = this.textRegionExtensions.regionFor(s);
+    ISemanticRegion _keyword_1 = _regionFor_1.keyword("=");
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(s).keyword("="), _function_1);
+    document.surround(_keyword_1, _function_1);
   }
   
   protected void _format(final SingletonInstanceStructuredDataPropertyValue s, @Extension final IFormattableDocument document) {
+    ISemanticRegionsFinder _regionFor = this.textRegionExtensions.regionFor(s);
+    ISemanticRegion _keyword = _regionFor.keyword(".");
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(s).keyword("."), _function);
+    document.surround(_keyword, _function);
+    ISemanticRegionsFinder _regionFor_1 = this.textRegionExtensions.regionFor(s);
+    ISemanticRegion _keyword_1 = _regionFor_1.keyword("=");
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(s).keyword("="), _function_1);
-    final ISemanticRegion lcurly = this.textRegionExtensions.regionFor(s).keyword("{");
-    final ISemanticRegion rcurly = this.textRegionExtensions.regionFor(s).keyword("}");
+    document.surround(_keyword_1, _function_1);
+    ISemanticRegionsFinder _regionFor_2 = this.textRegionExtensions.regionFor(s);
+    final ISemanticRegion lcurly = _regionFor_2.keyword("{");
+    ISemanticRegionsFinder _regionFor_3 = this.textRegionExtensions.regionFor(s);
+    final ISemanticRegion rcurly = _regionFor_3.keyword("}");
     final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
@@ -1581,29 +2234,37 @@ public class OMLFormatter extends AbstractFormatter2 {
       it.indent();
     };
     document.<ISemanticRegion, ISemanticRegion>interior(lcurly, rcurly, _function_4);
+    EList<StructuredDataPropertyTuple> _structuredPropertyTuples = s.getStructuredPropertyTuples();
     final Consumer<StructuredDataPropertyTuple> _function_5 = (StructuredDataPropertyTuple it) -> {
+      StructuredDataPropertyTuple _format = document.<StructuredDataPropertyTuple>format(it);
       final Procedure1<IHiddenRegionFormatter> _function_6 = (IHiddenRegionFormatter it_1) -> {
         it_1.setNewLines(1);
       };
-      document.<StructuredDataPropertyTuple>append(document.<StructuredDataPropertyTuple>format(it), _function_6);
+      document.<StructuredDataPropertyTuple>append(_format, _function_6);
     };
-    s.getStructuredPropertyTuples().forEach(_function_5);
+    _structuredPropertyTuples.forEach(_function_5);
+    EList<ScalarDataPropertyValue> _scalarDataPropertyValues = s.getScalarDataPropertyValues();
     final Consumer<ScalarDataPropertyValue> _function_6 = (ScalarDataPropertyValue it) -> {
+      ScalarDataPropertyValue _format = document.<ScalarDataPropertyValue>format(it);
       final Procedure1<IHiddenRegionFormatter> _function_7 = (IHiddenRegionFormatter it_1) -> {
         it_1.setNewLines(1);
       };
-      document.<ScalarDataPropertyValue>append(document.<ScalarDataPropertyValue>format(it), _function_7);
+      document.<ScalarDataPropertyValue>append(_format, _function_7);
     };
-    s.getScalarDataPropertyValues().forEach(_function_6);
+    _scalarDataPropertyValues.forEach(_function_6);
   }
   
   protected void _format(final StructuredDataPropertyTuple t, @Extension final IFormattableDocument document) {
+    ISemanticRegionsFinder _regionFor = this.textRegionExtensions.regionFor(t);
+    ISemanticRegion _keyword = _regionFor.keyword("=");
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(t).keyword("="), _function);
-    final ISemanticRegion lcurly = this.textRegionExtensions.regionFor(t).keyword("{");
-    final ISemanticRegion rcurly = this.textRegionExtensions.regionFor(t).keyword("}");
+    document.surround(_keyword, _function);
+    ISemanticRegionsFinder _regionFor_1 = this.textRegionExtensions.regionFor(t);
+    final ISemanticRegion lcurly = _regionFor_1.keyword("{");
+    ISemanticRegionsFinder _regionFor_2 = this.textRegionExtensions.regionFor(t);
+    final ISemanticRegion rcurly = _regionFor_2.keyword("}");
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
@@ -1616,77 +2277,105 @@ public class OMLFormatter extends AbstractFormatter2 {
       it.indent();
     };
     document.<ISemanticRegion, ISemanticRegion>interior(lcurly, rcurly, _function_3);
+    EList<StructuredDataPropertyTuple> _structuredPropertyTuples = t.getStructuredPropertyTuples();
     final Consumer<StructuredDataPropertyTuple> _function_4 = (StructuredDataPropertyTuple it) -> {
+      StructuredDataPropertyTuple _format = document.<StructuredDataPropertyTuple>format(it);
       final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it_1) -> {
         it_1.setNewLines(1);
       };
-      document.<StructuredDataPropertyTuple>append(document.<StructuredDataPropertyTuple>format(it), _function_5);
+      document.<StructuredDataPropertyTuple>append(_format, _function_5);
     };
-    t.getStructuredPropertyTuples().forEach(_function_4);
+    _structuredPropertyTuples.forEach(_function_4);
+    EList<ScalarDataPropertyValue> _scalarDataPropertyValues = t.getScalarDataPropertyValues();
     final Consumer<ScalarDataPropertyValue> _function_5 = (ScalarDataPropertyValue it) -> {
+      ScalarDataPropertyValue _format = document.<ScalarDataPropertyValue>format(it);
       final Procedure1<IHiddenRegionFormatter> _function_6 = (IHiddenRegionFormatter it_1) -> {
         it_1.setNewLines(1);
       };
-      document.<ScalarDataPropertyValue>append(document.<ScalarDataPropertyValue>format(it), _function_6);
+      document.<ScalarDataPropertyValue>append(_format, _function_6);
     };
-    t.getScalarDataPropertyValues().forEach(_function_5);
+    _scalarDataPropertyValues.forEach(_function_5);
   }
   
   protected void _format(final ScalarDataPropertyValue s, @Extension final IFormattableDocument document) {
+    ISemanticRegionsFinder _regionFor = this.textRegionExtensions.regionFor(s);
+    ISemanticRegion _keyword = _regionFor.keyword(".");
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(s).keyword("."), _function);
+    document.surround(_keyword, _function);
+    ISemanticRegionsFinder _regionFor_1 = this.textRegionExtensions.regionFor(s);
+    ISemanticRegion _keyword_1 = _regionFor_1.keyword("=");
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(s).keyword("="), _function_1);
+    document.surround(_keyword_1, _function_1);
   }
   
   protected void _format(final ConceptInstance i, @Extension final IFormattableDocument document) {
+    ISemanticRegionsFinder _regionFor = this.textRegionExtensions.regionFor(i);
+    ISemanticRegion _keyword = _regionFor.keyword("conceptInstance");
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.noSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(i).keyword("conceptInstance"), _function);
+    document.append(_keyword, _function);
+    ISemanticRegionsFinder _regionFor_1 = this.textRegionExtensions.regionFor(i);
+    ISemanticRegion _keyword_1 = _regionFor_1.keyword("(");
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.noSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(i).keyword("("), _function_1);
+    document.surround(_keyword_1, _function_1);
+    ISemanticRegionsFinder _regionFor_2 = this.textRegionExtensions.regionFor(i);
+    ISemanticRegion _keyword_2 = _regionFor_2.keyword("is-a");
     final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(i).keyword("is-a"), _function_2);
+    document.surround(_keyword_2, _function_2);
+    ISemanticRegionsFinder _regionFor_3 = this.textRegionExtensions.regionFor(i);
+    ISemanticRegion _keyword_3 = _regionFor_3.keyword(")");
     final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
       it.noSpace();
     };
-    document.prepend(this.textRegionExtensions.regionFor(i).keyword(")"), _function_3);
+    document.prepend(_keyword_3, _function_3);
+    ISemanticRegionsFinder _regionFor_4 = this.textRegionExtensions.regionFor(i);
+    ISemanticRegion _keyword_4 = _regionFor_4.keyword(")");
     final Procedure1<IHiddenRegionFormatter> _function_4 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(i).keyword(")"), _function_4);
+    document.append(_keyword_4, _function_4);
   }
   
   protected void _format(final ReifiedRelationshipInstance i, @Extension final IFormattableDocument document) {
+    ISemanticRegionsFinder _regionFor = this.textRegionExtensions.regionFor(i);
+    ISemanticRegion _keyword = _regionFor.keyword("reifiedRelationshipInstance");
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.noSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(i).keyword("reifiedRelationshipInstance"), _function);
+    document.append(_keyword, _function);
+    ISemanticRegionsFinder _regionFor_1 = this.textRegionExtensions.regionFor(i);
+    ISemanticRegion _keyword_1 = _regionFor_1.keyword("(");
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.noSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(i).keyword("("), _function_1);
+    document.surround(_keyword_1, _function_1);
+    ISemanticRegionsFinder _regionFor_2 = this.textRegionExtensions.regionFor(i);
+    ISemanticRegion _keyword_2 = _regionFor_2.keyword("is-a");
     final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(i).keyword("is-a"), _function_2);
+    document.surround(_keyword_2, _function_2);
+    ISemanticRegionsFinder _regionFor_3 = this.textRegionExtensions.regionFor(i);
+    ISemanticRegion _keyword_3 = _regionFor_3.keyword(")");
     final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
       it.noSpace();
     };
-    document.prepend(this.textRegionExtensions.regionFor(i).keyword(")"), _function_3);
+    document.prepend(_keyword_3, _function_3);
+    ISemanticRegionsFinder _regionFor_4 = this.textRegionExtensions.regionFor(i);
+    ISemanticRegion _keyword_4 = _regionFor_4.keyword(")");
     final Procedure1<IHiddenRegionFormatter> _function_4 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(this.textRegionExtensions.regionFor(i).keyword(")"), _function_4);
+    document.append(_keyword_4, _function_4);
   }
   
   public void format(final Object sc, final IFormattableDocument document) {

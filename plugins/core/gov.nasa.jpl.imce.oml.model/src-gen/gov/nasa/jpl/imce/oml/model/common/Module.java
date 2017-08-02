@@ -142,7 +142,7 @@ public interface Module extends Element, Resource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model dataType="gov.nasa.jpl.imce.oml.model.common.NamespacePrefix" unique="false" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%java.lang.String%> _iri = this.getIri();\n<%java.lang.String%> _substring = null;\nif (_iri!=null)\n{\n\tint _lastIndexOf = this.getIri().lastIndexOf(\"/\");\n\tint _plus = (1 + _lastIndexOf);\n\t_substring=_iri.substring(_plus);\n}\nreturn _substring;'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%java.lang.String%> _iri = this.getIri();\n<%java.lang.String%> _substring = null;\nif (_iri!=null)\n{\n\t<%java.lang.String%> _iri_1 = this.getIri();\n\tint _lastIndexOf = _iri_1.lastIndexOf(\"/\");\n\tint _plus = (1 + _lastIndexOf);\n\t_substring=_iri.substring(_plus);\n}\nreturn _substring;'"
 	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='iri.substring(1+iri.lastIndexOf(\'/\'))'"
 	 * @generated
 	 */

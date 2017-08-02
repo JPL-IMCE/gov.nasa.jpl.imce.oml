@@ -19,6 +19,7 @@ package gov.nasa.jpl.imce.oml.dsl.ui.converter;
 
 import gov.nasa.jpl.imce.oml.dsl.ui.converter.LiftOMLBundle2XcoreMetamodelWizard;
 import java.lang.reflect.Field;
+import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.swt.widgets.Composite;
@@ -52,15 +53,18 @@ public class LiftOMLBundle2XcoreNewProjectWizardPage extends WizardNewProjectCre
       {
         final IPath locationPath = this.getLocationPath();
         IPath _xifexpression_1 = null;
-        boolean _equals = Platform.getLocation().equals(locationPath);
+        IPath _location = Platform.getLocation();
+        boolean _equals = _location.equals(locationPath);
         if (_equals) {
           _xifexpression_1 = null;
         } else {
           _xifexpression_1 = locationPath;
         }
         this.wizard.setGenModelProjectLocation(_xifexpression_1);
-        final IPath projectPath = this.getProjectHandle().getFullPath();
-        this.wizard.setGenModelContainerPath(projectPath.append("src"));
+        IProject _projectHandle = this.getProjectHandle();
+        final IPath projectPath = _projectHandle.getFullPath();
+        IPath _append = projectPath.append("src");
+        this.wizard.setGenModelContainerPath(_append);
         _xblockexpression = true;
       }
       _xifexpression = _xblockexpression;

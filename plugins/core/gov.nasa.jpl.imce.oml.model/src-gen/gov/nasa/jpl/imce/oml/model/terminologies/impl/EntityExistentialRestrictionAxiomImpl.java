@@ -24,6 +24,7 @@ import gov.nasa.jpl.imce.oml.model.terminologies.Entity;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage;
+import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -68,7 +69,8 @@ public class EntityExistentialRestrictionAxiomImpl extends EntityRestrictionAxio
 	 * @generated
 	 */
 	public String uuid() {
-		String _uuid = this.getTbox().uuid();
+		TerminologyBox _tbox = this.getTbox();
+		String _uuid = _tbox.uuid();
 		Pair<String, String> _mappedTo = Pair.<String, String>of("tbox", _uuid);
 		EntityRelationship _restrictedRelation = this.getRestrictedRelation();
 		String _uuid_1 = null;
