@@ -257,7 +257,7 @@ public class ReifiedRelationshipInstanceDomainImpl extends TerminologyInstanceAs
 		}
 		Pair<String, String> _mappedTo = Pair.<String, String>of("descriptionBox", _string);
 		ReifiedRelationshipInstance _reifiedRelationshipInstance = this.getReifiedRelationshipInstance();
-		String _uuid_1 = null;
+		Object _uuid_1 = null;
 		if (_reifiedRelationshipInstance!=null) {
 			_uuid_1=_reifiedRelationshipInstance.uuid();
 		}
@@ -267,7 +267,7 @@ public class ReifiedRelationshipInstanceDomainImpl extends TerminologyInstanceAs
 		}
 		Pair<String, String> _mappedTo_1 = Pair.<String, String>of("reifiedRelationshipInstance", _string_1);
 		ConceptualEntitySingletonInstance _domain = this.getDomain();
-		String _uuid_2 = null;
+		Object _uuid_2 = null;
 		if (_domain!=null) {
 			_uuid_2=_domain.uuid();
 		}

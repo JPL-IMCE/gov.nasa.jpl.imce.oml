@@ -26,6 +26,8 @@ import gov.nasa.jpl.imce.oml.model.bundles.TerminologyBundleStatement;
 import gov.nasa.jpl.imce.oml.model.common.ModuleEdge;
 import gov.nasa.jpl.imce.oml.model.common.ModuleElement;
 
+import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBoxAxiom;
+
 import gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologyBoxImpl;
 
 import java.lang.reflect.InvocationTargetException;
@@ -130,8 +132,10 @@ public class BundleImpl extends TerminologyBoxImpl implements Bundle {
 		BasicEList<ModuleEdge> _xblockexpression = null;
 		{
 			final BasicEList<ModuleEdge> me = new BasicEList<ModuleEdge>();
-			me.addAll(this.getBoxAxioms());
-			me.addAll(this.getBundleAxioms());
+			EList<TerminologyBoxAxiom> _boxAxioms = this.getBoxAxioms();
+			me.addAll(_boxAxioms);
+			EList<TerminologyBundleAxiom> _bundleAxioms = this.getBundleAxioms();
+			me.addAll(_bundleAxioms);
 			_xblockexpression = me;
 		}
 		return _xblockexpression;

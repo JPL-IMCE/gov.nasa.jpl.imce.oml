@@ -26,7 +26,11 @@ import gov.nasa.jpl.imce.oml.model.common.ModuleElement;
 import gov.nasa.jpl.imce.oml.model.graphs.GraphsPackage;
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyGraph;
 
+import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBoxAxiom;
+
 import gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologyBoxImpl;
+
+import java.lang.Iterable;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -69,7 +73,9 @@ public class TerminologyGraphImpl extends TerminologyBoxImpl implements Terminol
 	 * @generated
 	 */
 	public EList<ModuleEdge> moduleEdges() {
-		return ECollections.<ModuleEdge>asEList(((ModuleEdge[])org.eclipse.xtext.xbase.lib.Conversions.unwrapArray(Iterables.<ModuleEdge>filter(this.getBoxAxioms(), ModuleEdge.class), ModuleEdge.class)));
+		EList<TerminologyBoxAxiom> _boxAxioms = this.getBoxAxioms();
+		Iterable<ModuleEdge> _filter = Iterables.<ModuleEdge>filter(_boxAxioms, ModuleEdge.class);
+		return ECollections.<ModuleEdge>asEList(((ModuleEdge[])org.eclipse.xtext.xbase.lib.Conversions.unwrapArray(_filter, ModuleEdge.class)));
 	}
 
 	/**
