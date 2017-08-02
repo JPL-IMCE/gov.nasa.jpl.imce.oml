@@ -28,6 +28,7 @@ import gov.nasa.jpl.imce.oml.model.bundles.BundledTerminologyAxiom;
 import gov.nasa.jpl.imce.oml.model.bundles.RootConceptTaxonomyAxiom;
 import gov.nasa.jpl.imce.oml.model.bundles.SpecificDisjointConceptAxiom;
 import gov.nasa.jpl.imce.oml.model.bundles.TerminologyBundleAxiom;
+import gov.nasa.jpl.imce.oml.model.common.Annotation;
 import gov.nasa.jpl.imce.oml.model.common.Element;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
 import gov.nasa.jpl.imce.oml.model.common.Module;
@@ -108,6 +109,8 @@ import org.eclipse.xtext.xbase.lib.Pair;
 
 @SuppressWarnings("all")
 public class OMLExtensions {
+  public final static String OML_CATALOG_XML = "oml.catalog.xml";
+  
   private final static String RESOURCE_SET_CATALOG_MANAGER = "RESOURCE_SET_CATALOG_MANAGER";
   
   private final static String RESOURCE_SET_CATALOG_RESOLVER = "RESOURCE_SET_CATALOG_RESOLVER";
@@ -197,8 +200,7 @@ public class OMLExtensions {
     URI current = path;
     while ((current.segmentCount() > 0)) {
       try {
-        System.out.println(("# Searching for OML catalog in: " + current));
-        final URI omlC = current.appendSegment("oml.catalog.xml");
+        final URI omlC = current.appendSegment(OMLExtensions.OML_CATALOG_XML);
         String _string = omlC.toString();
         final URL omlURL = new URL(_string);
         final InputStream omlS = omlURL.openStream();
@@ -209,7 +211,6 @@ public class OMLExtensions {
           String _string_1 = omlC.toString();
           URL _uRL = new URL(_string_1);
           c.parseCatalog(_uRL);
-          System.out.println(("# Found catalog: " + omlC));
         }
         return c;
       } catch (final Throwable _t) {
@@ -396,6 +397,46 @@ public class OMLExtensions {
       _xblockexpression = Generators.nameBasedGenerator(NameBasedGenerator.NAMESPACE_URL).generate(name);
     }
     return _xblockexpression;
+  }
+  
+  public static String getModuleNsURI(final Module it) {
+    String _elvis = null;
+    final Function1<Annotation, Boolean> _function = (Annotation a) -> {
+      String _iri = a.getProperty().getIri();
+      return Boolean.valueOf(Objects.equal(_iri, "http://imce.jpl.nasa.gov/oml/runtime#OML2EcoreNsURI"));
+    };
+    Annotation _findFirst = IterableExtensions.<Annotation>findFirst(it.getAnnotations(), _function);
+    String _value = null;
+    if (_findFirst!=null) {
+      _value=_findFirst.getValue();
+    }
+    if (_value != null) {
+      _elvis = _value;
+    } else {
+      String _iri = it.iri();
+      _elvis = _iri;
+    }
+    return _elvis;
+  }
+  
+  public static String getModuleNsPrefix(final Module it) {
+    String _elvis = null;
+    final Function1<Annotation, Boolean> _function = (Annotation a) -> {
+      String _iri = a.getProperty().getIri();
+      return Boolean.valueOf(Objects.equal(_iri, "http://imce.jpl.nasa.gov/oml/runtime#OML2EcoreNsPrefix"));
+    };
+    Annotation _findFirst = IterableExtensions.<Annotation>findFirst(it.getAnnotations(), _function);
+    String _value = null;
+    if (_findFirst!=null) {
+      _value=_findFirst.getValue();
+    }
+    if (_value != null) {
+      _elvis = _value;
+    } else {
+      String _name = it.name();
+      _elvis = _name;
+    }
+    return _elvis;
   }
   
   public Iterable<TerminologyBox> terminologies(final Extent it) {

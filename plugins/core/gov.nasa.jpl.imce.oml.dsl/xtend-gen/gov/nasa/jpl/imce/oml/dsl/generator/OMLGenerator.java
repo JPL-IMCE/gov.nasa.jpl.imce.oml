@@ -66,6 +66,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Consumer;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.emf.cdo.CDOObject;
@@ -97,6 +98,10 @@ import org.eclipse.xtext.xbase.lib.StringExtensions;
 @SuppressWarnings("all")
 public class OMLGenerator extends AbstractGenerator {
   private static class TerminologyToXcoreGenerator {
+    @Inject
+    @Extension
+    private OMLExtensions _oMLExtensions;
+    
     private final String XSD_NS = "http://www.w3.org/2001/XMLSchema#";
     
     private final Set<TerminologyBox> terminologies;
@@ -105,7 +110,13 @@ public class OMLGenerator extends AbstractGenerator {
     
     private final Map<String, String> imports;
     
+    private final Set<String> localNames;
+    
     private final OMLGenerator generator;
+    
+    private final String packageNsURI;
+    
+    private final String packageNsPrefix;
     
     private final String packageEQName;
     
@@ -125,6 +136,16 @@ public class OMLGenerator extends AbstractGenerator {
       this.terminology = terminology;
       HashMap<String, String> _hashMap = new HashMap<String, String>();
       this.imports = _hashMap;
+      HashSet<String> _hashSet_1 = new HashSet<String>();
+      this.localNames = _hashSet_1;
+      final Consumer<Entity> _function = (Entity it) -> {
+        this.localNames.add(it.name());
+      };
+      Iterables.<Entity>filter(terminology.getBoxStatements(), Entity.class).forEach(_function);
+      final Consumer<Structure> _function_1 = (Structure it) -> {
+        this.localNames.add(it.name());
+      };
+      Iterables.<Structure>filter(terminology.getBoxStatements(), Structure.class).forEach(_function_1);
       final IProject eInfo = generator.editProjectHandle;
       final IPath eLoc = eInfo.getFullPath();
       final String[] eSegs = eLoc.segments();
@@ -133,6 +154,8 @@ public class OMLGenerator extends AbstractGenerator {
       final String[] pSegs = pLoc.segments();
       this.packageEQName = IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(eSegs)), ".");
       this.packageQName = IterableExtensions.join(((Iterable<?>)Conversions.doWrapArray(pSegs)), ".");
+      this.packageNsURI = OMLExtensions.getModuleNsURI(terminology);
+      this.packageNsPrefix = OMLExtensions.getModuleNsPrefix(terminology);
       this.dsmlName = dsmlName;
       this.packageTName = OMLGenerator.validQName(terminology);
     }
@@ -145,21 +168,37 @@ public class OMLGenerator extends AbstractGenerator {
         int _minus = (_size - 1);
         final String simpleName = OMLGenerator.legalName(sections[_minus]);
         final String legalQName = OMLGenerator.legalName(qualifiedName);
-        String _get = this.imports.get(simpleName);
-        final String existing = _get;
-        boolean _matched = false;
-        if (Objects.equal(existing, null)) {
-          _matched=true;
-          this.imports.put(simpleName, legalQName);
-        }
-        if (!_matched) {
-          boolean _notEquals = (!Objects.equal(existing, legalQName));
-          if (_notEquals) {
+        String _xifexpression = null;
+        boolean _contains = this.localNames.contains(simpleName);
+        if (_contains) {
+          _xifexpression = legalQName;
+        } else {
+          String _switchResult = null;
+          String _get = this.imports.get(simpleName);
+          final String existing = _get;
+          boolean _matched = false;
+          if (Objects.equal(existing, null)) {
             _matched=true;
-            return legalQName;
+            String _xblockexpression_1 = null;
+            {
+              this.imports.put(simpleName, legalQName);
+              _xblockexpression_1 = simpleName;
+            }
+            _switchResult = _xblockexpression_1;
           }
+          if (!_matched) {
+            boolean _notEquals = (!Objects.equal(existing, legalQName));
+            if (_notEquals) {
+              _matched=true;
+              _switchResult = legalQName;
+            }
+          }
+          if (!_matched) {
+            _switchResult = existing;
+          }
+          _xifexpression = _switchResult;
         }
-        _xblockexpression = simpleName;
+        _xblockexpression = _xifexpression;
       }
       return _xblockexpression;
     }
@@ -315,35 +354,60 @@ public class OMLGenerator extends AbstractGenerator {
     
     protected CharSequence convertToPackage(final TerminologyBox terminology) {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("@GenModel(featureDelegation=\"None\",");
+      _builder.append("@Ecore(");
       _builder.newLine();
-      _builder.append("   ");
+      _builder.append("\t");
+      _builder.append("nsURI=\"");
+      _builder.append(this.packageNsURI, "\t");
+      _builder.append("\",");
+      _builder.newLineIfNotEmpty();
+      _builder.append("\t");
+      _builder.append("nsPrefix=\"");
+      _builder.append(this.packageNsPrefix, "\t");
+      _builder.append("\"");
+      _builder.newLineIfNotEmpty();
+      _builder.append(")");
+      _builder.newLine();
+      _builder.append("@GenModel(");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("copyrightText=\"\\nCopyright 2017 California Institute of Technology (\\\"Caltech\\\").\\nU.S. Government sponsorship acknowledged.\\n\\nLicensed under the Apache License, Version 2.0 (the \\\"License\\\");\\nyou may not use this file except in compliance with the License.\\nYou may obtain a copy of the License at\\n\\n     http://www.apache.org/licenses/LICENSE-2.0\\n\\nUnless required by applicable law or agreed to in writing, software\\ndistributed under the License is distributed on an \\\"AS IS\\\" BASIS,\\nWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\\nSee the License for the specific language governing permissions and\\nlimitations under the License.\\n\",");
+      _builder.newLine();
+      _builder.append("\t");
       _builder.append("modelPluginVariables=\"org.eclipse.xtext.xbase.lib org.eclipse.emf.ecore.xcore.lib org.eclipse.emf.cdo\",");
       _builder.newLine();
-      _builder.append("   ");
+      _builder.append("\t");
       _builder.append("rootExtendsClass=\"org.eclipse.emf.internal.cdo.CDOObjectImpl\",");
       _builder.newLine();
-      _builder.append("   ");
+      _builder.append("\t");
       _builder.append("rootExtendsInterface=\"org.eclipse.emf.cdo.CDOObject\",");
       _builder.newLine();
-      _builder.append("   ");
-      _builder.append("childCreationExtenders=\"true\", ");
+      _builder.append("\t");
+      _builder.append("childCreationExtenders=\"true\",");
       _builder.newLine();
-      _builder.append("   ");
-      _builder.append("modelName=\"");
-      _builder.append(this.dsmlName, "   ");
-      _builder.append("\",");
+      _builder.append("\t");
+      _builder.append("complianceLevel=\"8.0\",");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("featureDelegation=\"None\",");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("modelDirectory=\"/");
+      _builder.append(this.packageQName, "\t");
+      _builder.append("/src-gen/\",");
       _builder.newLineIfNotEmpty();
-      _builder.append("   ");
-      _builder.append("prefix=\"");
-      _builder.append(this.dsmlName, "   ");
-      _builder.append("\",");
-      _builder.newLineIfNotEmpty();
-      _builder.append("   ");
+      _builder.append("\t");
       _builder.append("editDirectory=\"/");
-      _builder.append(this.packageEQName, "   ");
-      _builder.append("/src-gen\")");
+      _builder.append(this.packageEQName, "\t");
+      _builder.append("/src-gen\",");
       _builder.newLineIfNotEmpty();
+      _builder.append("\t");
+      _builder.append("editPluginClass=\"");
+      _builder.append(this.packageEQName, "\t");
+      _builder.append(".BundleEditPlugin\"");
+      _builder.newLineIfNotEmpty();
+      _builder.append(")");
+      _builder.newLine();
       _builder.append("package ");
       _builder.append(this.packageTName);
       _builder.newLineIfNotEmpty();
@@ -877,6 +941,11 @@ public class OMLGenerator extends AbstractGenerator {
       return _builder;
     }
     
+    protected CharSequence _convertToType(final DataRelationship dr) {
+      StringConcatenation _builder = new StringConcatenation();
+      return _builder;
+    }
+    
     protected CharSequence _convertToType(final Term t) {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("// ");
@@ -968,6 +1037,12 @@ public class OMLGenerator extends AbstractGenerator {
       return _xblockexpression;
     }
     
+    /**
+     * For now, use the java datatype name as the type of a scalar data property:
+     * «property.range.lookupOML2JavaDatatypeBinding»[1] «property.validName»
+     * 
+     * Consider mapping OML DataRanges to corresponding Ecore datatypes.
+     */
     protected CharSequence _dataProperties(final Structure structure) {
       StringConcatenation _builder = new StringConcatenation();
       {
@@ -980,10 +1055,8 @@ public class OMLGenerator extends AbstractGenerator {
         };
         List<ScalarDataProperty> _sortBy = IterableExtensions.<ScalarDataProperty, String>sortBy(IterableExtensions.<ScalarDataProperty>filter(this.<ScalarDataProperty>allTBoxStatementsOfType(ScalarDataProperty.class), _function), _function_1);
         for(final ScalarDataProperty property : _sortBy) {
-          String _dataContainer = this.dataContainer(property);
-          _builder.append(_dataContainer);
-          String _imported = this.imported(property.getRange());
-          _builder.append(_imported);
+          String _lookupOML2JavaDatatypeBinding = this.lookupOML2JavaDatatypeBinding(property.getRange());
+          _builder.append(_lookupOML2JavaDatatypeBinding);
           _builder.append("[1] ");
           String _validName = OMLGenerator.validName(property);
           _builder.append(_validName);
@@ -1001,10 +1074,10 @@ public class OMLGenerator extends AbstractGenerator {
         List<StructuredDataProperty> _sortBy_1 = IterableExtensions.<StructuredDataProperty, String>sortBy(IterableExtensions.<StructuredDataProperty>filter(this.<StructuredDataProperty>allTBoxStatementsOfType(StructuredDataProperty.class), _function_2), _function_3);
         for(final StructuredDataProperty property_1 : _sortBy_1) {
           _builder.append("contains ");
-          String _dataContainer_1 = this.dataContainer(property_1);
-          _builder.append(_dataContainer_1);
-          String _imported_1 = this.imported(property_1.getRange());
-          _builder.append(_imported_1);
+          String _dataContainer = this.dataContainer(property_1);
+          _builder.append(_dataContainer);
+          String _imported = this.imported(property_1.getRange());
+          _builder.append(_imported);
           _builder.append("[1] ");
           String _validName_1 = OMLGenerator.validName(property_1);
           _builder.append(_validName_1);
@@ -1014,6 +1087,12 @@ public class OMLGenerator extends AbstractGenerator {
       return _builder;
     }
     
+    /**
+     * For now, use the java datatype name as the type of a scalar data property:
+     * «property.range.lookupOML2JavaDatatypeBinding»[1] «property.validName»
+     * 
+     * Consider mapping OML DataRanges to corresponding Ecore datatypes.
+     */
     protected CharSequence _dataProperties(final Entity entity) {
       StringConcatenation _builder = new StringConcatenation();
       {
@@ -1034,10 +1113,8 @@ public class OMLGenerator extends AbstractGenerator {
           _builder.append(_iri);
           _builder.append("\")");
           _builder.newLineIfNotEmpty();
-          String _dataContainer = this.dataContainer(property);
-          _builder.append(_dataContainer);
-          String _imported = this.imported(property.getRange());
-          _builder.append(_imported);
+          String _lookupOML2JavaDatatypeBinding = this.lookupOML2JavaDatatypeBinding(property.getRange());
+          _builder.append(_lookupOML2JavaDatatypeBinding);
           _builder.append("[1] ");
           String _validName = OMLGenerator.validName(property);
           _builder.append(_validName);
@@ -1063,10 +1140,10 @@ public class OMLGenerator extends AbstractGenerator {
           _builder.append("\")");
           _builder.newLineIfNotEmpty();
           _builder.append("contains ");
-          String _dataContainer_1 = this.dataContainer(property_1);
-          _builder.append(_dataContainer_1);
-          String _imported_1 = this.imported(property_1.getRange());
-          _builder.append(_imported_1);
+          String _dataContainer = this.dataContainer(property_1);
+          _builder.append(_dataContainer);
+          String _imported = this.imported(property_1.getRange());
+          _builder.append(_imported);
           _builder.append("[1] ");
           String _validName_1 = OMLGenerator.validName(property_1);
           _builder.append(_validName_1);
@@ -1358,8 +1435,8 @@ public class OMLGenerator extends AbstractGenerator {
     
     protected String targetName(final ReifiedRelationship relationship) {
       String _switchResult = null;
-      String _name = relationship.name();
-      final String s = _name;
+      String _unreifiedPropertyName = relationship.getUnreifiedPropertyName();
+      final String s = _unreifiedPropertyName;
       boolean _matched = false;
       if (Objects.equal(s, null)) {
         _matched=true;
@@ -1481,6 +1558,8 @@ public class OMLGenerator extends AbstractGenerator {
         return _convertToType((ReifiedRelationship)range);
       } else if (range instanceof Structure) {
         return _convertToType((Structure)range);
+      } else if (range instanceof DataRelationship) {
+        return _convertToType((DataRelationship)range);
       } else if (range != null) {
         return _convertToType(range);
       } else {
@@ -1691,7 +1770,6 @@ public class OMLGenerator extends AbstractGenerator {
                 String _validQName = OMLGenerator.validQName(terminology);
                 final String filename = (_validQName + ".xcore");
                 final CharSequence contents = new OMLGenerator.TerminologyToXcoreGenerator(this, allTboxes, terminology, this.dsmlName).doGenerate();
-                System.out.println(("generating: " + filename));
                 fsa.generateFile(filename, contents);
               }
             }
@@ -1784,11 +1862,11 @@ public class OMLGenerator extends AbstractGenerator {
     return OMLGenerator.legalName(terminology.name());
   }
   
-  protected static String validQName(final TerminologyBox terminology) {
+  protected static String validQName(final TerminologyBox t) {
     String _xblockexpression = null;
     {
-      final String iri = terminology.iri();
-      final String qname = OMLExtensions.convertIRItoNamespace(iri);
+      final String uri = OMLExtensions.getModuleNsURI(t);
+      final String qname = OMLExtensions.convertIRItoNamespace(uri);
       _xblockexpression = qname;
     }
     return _xblockexpression;

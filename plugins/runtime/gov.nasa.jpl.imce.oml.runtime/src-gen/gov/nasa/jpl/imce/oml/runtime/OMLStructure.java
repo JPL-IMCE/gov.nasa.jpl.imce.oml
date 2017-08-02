@@ -18,7 +18,6 @@
  */
 package gov.nasa.jpl.imce.oml.runtime;
 
-import org.eclipse.emf.cdo.CDOObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -32,8 +31,7 @@ import org.eclipse.emf.cdo.CDOObject;
  *
  * @see gov.nasa.jpl.imce.oml.runtime.OMLRuntimePackage#getOMLStructure()
  * @model
- * @extends CDOObject
  * @generated
  */
-public interface OMLStructure extends CDOObject {
+public interface OMLStructure extends OMLObject {
 } // OMLStructure

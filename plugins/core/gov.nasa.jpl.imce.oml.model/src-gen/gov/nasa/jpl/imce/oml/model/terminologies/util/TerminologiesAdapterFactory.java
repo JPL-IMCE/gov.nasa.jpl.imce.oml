@@ -258,6 +258,26 @@ public class TerminologiesAdapterFactory extends AdapterFactoryImpl {
 				return createEntityScalarDataPropertyParticularRestrictionAxiomAdapter();
 			}
 			@Override
+			public Adapter caseEntityStructuredDataPropertyRestrictionAxiom(EntityStructuredDataPropertyRestrictionAxiom object) {
+				return createEntityStructuredDataPropertyRestrictionAxiomAdapter();
+			}
+			@Override
+			public Adapter caseEntityStructuredDataPropertyParticularRestrictionAxiom(EntityStructuredDataPropertyParticularRestrictionAxiom object) {
+				return createEntityStructuredDataPropertyParticularRestrictionAxiomAdapter();
+			}
+			@Override
+			public Adapter caseRestrictionStructuredDataPropertyContext(RestrictionStructuredDataPropertyContext object) {
+				return createRestrictionStructuredDataPropertyContextAdapter();
+			}
+			@Override
+			public Adapter caseRestrictionStructuredDataPropertyTuple(RestrictionStructuredDataPropertyTuple object) {
+				return createRestrictionStructuredDataPropertyTupleAdapter();
+			}
+			@Override
+			public Adapter caseRestrictionScalarDataPropertyValue(RestrictionScalarDataPropertyValue object) {
+				return createRestrictionScalarDataPropertyValueAdapter();
+			}
+			@Override
 			public Adapter caseRestrictedDataRange(RestrictedDataRange object) {
 				return createRestrictedDataRangeAdapter();
 			}
@@ -922,6 +942,76 @@ public class TerminologiesAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createEntityScalarDataPropertyParticularRestrictionAxiomAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataPropertyRestrictionAxiom <em>Entity Structured Data Property Restriction Axiom</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataPropertyRestrictionAxiom
+	 * @generated
+	 */
+	public Adapter createEntityStructuredDataPropertyRestrictionAxiomAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataPropertyParticularRestrictionAxiom <em>Entity Structured Data Property Particular Restriction Axiom</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataPropertyParticularRestrictionAxiom
+	 * @generated
+	 */
+	public Adapter createEntityStructuredDataPropertyParticularRestrictionAxiomAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyContext <em>Restriction Structured Data Property Context</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyContext
+	 * @generated
+	 */
+	public Adapter createRestrictionStructuredDataPropertyContextAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple <em>Restriction Structured Data Property Tuple</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple
+	 * @generated
+	 */
+	public Adapter createRestrictionStructuredDataPropertyTupleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue <em>Restriction Scalar Data Property Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue
+	 * @generated
+	 */
+	public Adapter createRestrictionScalarDataPropertyValueAdapter() {
 		return null;
 	}
 

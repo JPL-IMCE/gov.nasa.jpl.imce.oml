@@ -92,6 +92,9 @@ public class TerminologiesFactoryImpl extends EFactoryImpl implements Terminolog
 			case TerminologiesPackage.ENTITY_SCALAR_DATA_PROPERTY_EXISTENTIAL_RESTRICTION_AXIOM: return (EObject)createEntityScalarDataPropertyExistentialRestrictionAxiom();
 			case TerminologiesPackage.ENTITY_SCALAR_DATA_PROPERTY_UNIVERSAL_RESTRICTION_AXIOM: return (EObject)createEntityScalarDataPropertyUniversalRestrictionAxiom();
 			case TerminologiesPackage.ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM: return (EObject)createEntityScalarDataPropertyParticularRestrictionAxiom();
+			case TerminologiesPackage.ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM: return (EObject)createEntityStructuredDataPropertyParticularRestrictionAxiom();
+			case TerminologiesPackage.RESTRICTION_STRUCTURED_DATA_PROPERTY_TUPLE: return (EObject)createRestrictionStructuredDataPropertyTuple();
+			case TerminologiesPackage.RESTRICTION_SCALAR_DATA_PROPERTY_VALUE: return (EObject)createRestrictionScalarDataPropertyValue();
 			case TerminologiesPackage.BINARY_SCALAR_RESTRICTION: return (EObject)createBinaryScalarRestriction();
 			case TerminologiesPackage.IRI_SCALAR_RESTRICTION: return (EObject)createIRIScalarRestriction();
 			case TerminologiesPackage.NUMERIC_SCALAR_RESTRICTION: return (EObject)createNumericScalarRestriction();
@@ -324,6 +327,36 @@ public class TerminologiesFactoryImpl extends EFactoryImpl implements Terminolog
 	public EntityScalarDataPropertyParticularRestrictionAxiom createEntityScalarDataPropertyParticularRestrictionAxiom() {
 		EntityScalarDataPropertyParticularRestrictionAxiomImpl entityScalarDataPropertyParticularRestrictionAxiom = new EntityScalarDataPropertyParticularRestrictionAxiomImpl();
 		return entityScalarDataPropertyParticularRestrictionAxiom;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EntityStructuredDataPropertyParticularRestrictionAxiom createEntityStructuredDataPropertyParticularRestrictionAxiom() {
+		EntityStructuredDataPropertyParticularRestrictionAxiomImpl entityStructuredDataPropertyParticularRestrictionAxiom = new EntityStructuredDataPropertyParticularRestrictionAxiomImpl();
+		return entityStructuredDataPropertyParticularRestrictionAxiom;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RestrictionStructuredDataPropertyTuple createRestrictionStructuredDataPropertyTuple() {
+		RestrictionStructuredDataPropertyTupleImpl restrictionStructuredDataPropertyTuple = new RestrictionStructuredDataPropertyTupleImpl();
+		return restrictionStructuredDataPropertyTuple;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RestrictionScalarDataPropertyValue createRestrictionScalarDataPropertyValue() {
+		RestrictionScalarDataPropertyValueImpl restrictionScalarDataPropertyValue = new RestrictionScalarDataPropertyValueImpl();
+		return restrictionScalarDataPropertyValue;
 	}
 
 	/**

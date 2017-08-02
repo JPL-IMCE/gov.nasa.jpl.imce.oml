@@ -43,6 +43,7 @@ import gov.nasa.jpl.imce.oml.model.common.FunctionalInterface
 import gov.nasa.jpl.imce.oml.model.common.Glossary
 import gov.nasa.jpl.imce.oml.model.common.ImplicitExtent
 import gov.nasa.jpl.imce.oml.model.common.IRI
+import gov.nasa.jpl.imce.oml.model.common.IRIReference
 import gov.nasa.jpl.imce.oml.model.common.LangRange
 import gov.nasa.jpl.imce.oml.model.common.LexicalNumber
 import gov.nasa.jpl.imce.oml.model.common.LexicalTime
@@ -167,11 +168,13 @@ abstract class TerminologyAxiom extends ModuleEdge {
 	/*
 	 * The target TerminologyBox
 	 */
-	@NotSchema
+	@IRIReference
+  	@NotSchema
 	@ImplicitExtent
 	op TerminologyBox[1] target()
 	
-	@NotSchema
+	@IRIReference
+  	@NotSchema
 	@ImplicitExtent
 	op Module[1] targetModule() { target() }
 }
@@ -201,6 +204,7 @@ class TerminologyExtensionAxiom extends TerminologyBoxAxiom {
 	@NotSchema
 	op TerminologyBox[?] extendingTerminology() { tbox }
 	
+	@IRIReference
   	refers TerminologyBox[1] extendedTerminology
   	
 	/*
@@ -214,7 +218,8 @@ class TerminologyExtensionAxiom extends TerminologyBoxAxiom {
 	/*
 	 * The extendedTerminology is the target
 	 */
-	@ImplicitExtent
+	@IRIReference
+  	@ImplicitExtent
 	@NotSchema
 	@Override
 	op TerminologyBox[1] target() { extendedTerminology }
@@ -876,6 +881,120 @@ extends EntityScalarDataPropertyRestrictionAxiom {
 		"tbox" -> tbox?.uuid(),
 		"restrictedEntity" -> restrictedEntity?.uuid()?.toString,
 		"scalarProperty" -> scalarProperty?.uuid()?.toString
+		)?.toString
+	}
+}
+
+/*
+ * An OML EntityStructuredDataPropertyRestrictionAxiom maps to
+ * some kind of OWL2 Object Property Restriction.
+ */
+@Glossary
+abstract class EntityStructuredDataPropertyRestrictionAxiom extends TermAxiom {
+	refers Entity[1] restrictedEntity
+}
+
+/**
+ * An OML EntityStructuredDataPropertyParticularRestrictionAxiom maps to an OWL2 ObjectHasValue restriction.
+ */
+@Glossary
+@DerivedUUID
+class EntityStructuredDataPropertyParticularRestrictionAxiom
+extends EntityStructuredDataPropertyRestrictionAxiom, RestrictionStructuredDataPropertyContext {
+  	
+	@ImplicitExtent
+	@NotSchema
+	@Override
+	op TerminologyBox[?] terminologyBox() { tbox }
+	
+	@NotFunctionalAPI
+	@NotSchema
+	op UUID[1] uuid() {
+		OMLExtensions.derivedUUID(
+		"EntityStructuredDataPropertyParticularRestrictionAxiom",
+		"tbox" -> tbox?.uuid(),
+		"restrictedEntity" -> restrictedEntity?.uuid()?.toString,
+		"structuredDataProperty" -> structuredDataProperty?.uuid()?.toString
+		)?.toString
+	}
+}
+
+/*
+ * An OML RestrictionStructuredDataPropertyContext defines the context of
+ * an OML DataRelationshipToStructure for an OML Entity restriction for specifying
+ * values of the OML DataRelationshipFromStructure properties
+ */
+@Glossary
+@DerivedUUID
+abstract class RestrictionStructuredDataPropertyContext extends Element {
+	
+	refers DataRelationshipToStructure[1] structuredDataProperty
+	
+	@Collection(kind="Set")
+	contains RestrictionStructuredDataPropertyTuple[] structuredPropertyTuples opposite structuredDataPropertyContext
+	
+	@Collection(kind="Set")
+	contains RestrictionScalarDataPropertyValue[] scalarDataPropertyValues opposite structuredDataPropertyContext
+	
+	@ImplicitExtent
+	@NotSchema
+	op TerminologyBox[?] terminologyBox()
+}
+
+/*
+ * An OML RestrictionStructuredDataPropertyTuple is an OML RestrictionStructuredDataPropertyContext
+ * nested in a container OML RestrictionStructuredDataPropertyContext.
+ */
+@Glossary
+@DerivedUUID
+class RestrictionStructuredDataPropertyTuple extends RestrictionStructuredDataPropertyContext {
+	
+	@Factory
+	container RestrictionStructuredDataPropertyContext[1] structuredDataPropertyContext opposite structuredPropertyTuples
+	
+	@Scala(code="extent.restrictionStructuredDataPropertyContextOfRestrictionStructuredDataPropertyTuple.get(this).flatMap(_.terminologyBox())")
+	@ImplicitExtent
+	@NotSchema
+	@Override
+	op TerminologyBox[?] terminologyBox() { structuredDataPropertyContext?.terminologyBox }
+	
+	@NotFunctionalAPI
+	@NotSchema
+	op UUID[1] uuid() {
+		OMLExtensions.derivedUUID(
+		"RestrictionStructuredDataPropertyTuple", 
+		"structuredDataPropertyContext" -> structuredDataPropertyContext?.uuid()?.toString(),
+		"structuredDataProperty" -> structuredDataProperty?.uuid()?.toString()
+		)?.toString
+	}
+}
+
+/*
+ * An OML RestrictionScalarDataPropertyValue specifies a literal string as the value of 
+ * an OML DataRelationshipToScalar in the scope of an OML RestrictionStructuredDataPropertyContext.
+ */
+@Glossary
+@DerivedUUID
+class RestrictionScalarDataPropertyValue extends Element {
+	
+	@Factory
+	container RestrictionStructuredDataPropertyContext[1] structuredDataPropertyContext opposite scalarDataPropertyValues
+	
+	refers DataRelationshipToScalar[1] scalarDataProperty
+	LexicalValue[1] scalarPropertyValue
+	
+	@Scala(code="extent.restrictionStructuredDataPropertyContextOfScalarDataPropertyValue.get(this).flatMap(_.terminologyBox())")
+	@ImplicitExtent
+	@NotSchema
+	op TerminologyBox[?] terminologyBox() { structuredDataPropertyContext?.terminologyBox }
+	
+	@NotFunctionalAPI
+	@NotSchema
+	op UUID[1] uuid() {
+		OMLExtensions.derivedUUID(
+		"RestrictionScalarDataPropertyValue", 
+		"structuredDataPropertyContext" -> structuredDataPropertyContext?.uuid()?.toString(),
+		"scalarDataProperty" -> scalarDataProperty?.uuid()?.toString()
 		)?.toString
 	}
 }

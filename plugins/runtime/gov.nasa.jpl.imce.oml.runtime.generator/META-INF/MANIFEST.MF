@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: gov.nasa.jpl.imce.oml.runtime.generator;singleton:=true
+Bundle-Version: 0.7.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: org.eclipse.xtext.xbase;bundle-version="2.11.0";visibility:=reexport,
+ org.eclipse.xtext;bundle-version="2.11.0";visibility:=reexport,
+ gov.nasa.jpl.imce.oml.model;bundle-version="0.7.0";visibility:=reexport,
+ gov.nasa.jpl.imce.oml.runtime;bundle-version="0.7.0";visibility:=reexport
+Export-Package: gov.nasa.jpl.imce.oml.runtime.generator
+Bundle-Vendor: %providerName
+Bundle-ActivationPolicy: lazy

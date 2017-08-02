@@ -451,6 +451,23 @@
         	</command>
     	</menuContribution>
     </extension>
+    <extension
+    	point="org.eclipse.ui.menus">
+    	<menuContribution locationURI="popup:org.eclipse.ui.navigator.ProjectExplorer#PopupMenu">
+        	<command
+            	commandId="gov.nasa.jpl.imce.oml.dsl.ui.converter.LiftOMLBundleToXcoreCommand"
+            	style="push">
+            	<visibleWhen checkEnabled="false">
+            		<iterate>
+       					<adapt type="org.eclipse.core.resources.IResource">
+          					<test property="org.eclipse.core.resources.name" value="*.oml"/>
+       					</adapt>
+    				</iterate>
+            	</visibleWhen>
+        	</command>
+    	</menuContribution>
+    </extension>
+    
     <extension point="org.eclipse.ui.menus">
     	<menuContribution locationURI="popup:#TextEditorContext?after=additions">
         	<command

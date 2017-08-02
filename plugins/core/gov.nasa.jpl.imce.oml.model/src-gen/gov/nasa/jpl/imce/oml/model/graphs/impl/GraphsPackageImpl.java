@@ -402,6 +402,8 @@ public class GraphsPackageImpl extends EPackageImpl implements GraphsPackage {
 		createOverrideAnnotations();
 		// http://imce.jpl.nasa.gov/oml/DerivedUUID
 		createDerivedUUIDAnnotations();
+		// http://imce.jpl.nasa.gov/oml/IRIReference
+		createIRIReferenceAnnotations();
 		// http://imce.jpl.nasa.gov/oml/NotFunctionalAPI
 		createNotFunctionalAPIAnnotations();
 	}
@@ -637,6 +639,36 @@ public class GraphsPackageImpl extends EPackageImpl implements GraphsPackage {
 		   });	
 		addAnnotation
 		  (terminologyNestingAxiomEClass, 
+		   source, 
+		   new String[] {
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://imce.jpl.nasa.gov/oml/IRIReference</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createIRIReferenceAnnotations() {
+		String source = "http://imce.jpl.nasa.gov/oml/IRIReference";	
+		addAnnotation
+		  (getConceptDesignationTerminologyAxiom__Target(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getConceptDesignationTerminologyAxiom_DesignatedTerminology(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getTerminologyNestingAxiom__Target(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getTerminologyNestingAxiom_NestingTerminology(), 
 		   source, 
 		   new String[] {
 		   });
