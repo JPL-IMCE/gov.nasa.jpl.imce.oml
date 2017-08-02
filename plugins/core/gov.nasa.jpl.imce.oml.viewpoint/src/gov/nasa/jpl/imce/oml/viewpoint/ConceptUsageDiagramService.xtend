@@ -1,21 +1,3 @@
-/*
- * Copyright 2017 California Institute of Technology ("Caltech").
- * U.S. Government sponsorship acknowledged.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * License Terms
- */
- 
 package gov.nasa.jpl.imce.oml.viewpoint
 
 import gov.nasa.jpl.imce.oml.model.terminologies.Aspect
@@ -40,33 +22,9 @@ import java.util.Queue
 import java.util.Set
 import org.eclipse.sirius.diagram.DDiagram
 import org.eclipse.sirius.diagram.DSemanticDiagram
-import gov.nasa.jpl.imce.oml.model.terminologies.AspectSpecializationAxiom
-import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataProperty
-import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataProperty
 
-/*
- * Used to query for visual elements in the 'Concept Usage Diagram'
- * 
- * The 'Concept Usage Diagram' will show all {@link ReifiedRelationship}s and
- * its domain and range if it is the selected root {@link Concept}.  Including
- * those which have an {@link Aspect} as its target (range) in which
- * the {@link Aspect} is a superAspect to the root {@link Concept}.
- * 
- * Will only show {@link ReifiedRelationship}s and {@link Concept}s
- * from this {@link TerminologyBox} only. * 
- * 
- * Containers: Concept
- * Edges: Reified/UnReified Relationships
- */
 class ConceptUsageDiagramService {
 	
-	/*
-	 * Gets root {@link Concept} which the passed {@link DDiagram}
-	 * was created from
-	 * 
-	 * @param The diagram
-	 * @return The root {@link Concept}
-	 */
 	def Concept getRootConcept(DDiagram d){
 		return (d as DSemanticDiagram).target as Concept
 	}	
@@ -78,9 +36,9 @@ class ConceptUsageDiagramService {
 	 * @param c The root Concept
 	 * @return Set of {@link ReifiedRelationship}s
 	 */
-	def Set<EntityRelationship> getDirectVisualRelationshipsWithRootAsDomain(Concept c){
+	def Set<ReifiedRelationship> getVisualRelationshipsWithRootAsDomain(Concept c){
 		return getUsageReltionships(c).
-		filter(EntityRelationship).
+		filter(ReifiedRelationship).
 		filter[f | f.source == c].
 		toSet
 	}
@@ -92,52 +50,12 @@ class ConceptUsageDiagramService {
 	 * @param c The root Concept
 	 * @return Set of {@link ReifiedRelationship}s
 	 */
-	def Set<ReifiedRelationship> getDirectVisualRelationshipsWithRootAsRange(Concept c){
+	def Set<ReifiedRelationship> getVisualRelationshipsWithRootAsRange(Concept c){
 		return getUsageReltionships(c).
 		filter(ReifiedRelationship).
-		filter[f | (f.target == c) && (f instanceof Concept)].
+		filter[f | f.target == c].
 		toSet
 	}	
-	
-	/*
-	 * Gets all {@link ReifiedRelationship}s with the 
-	 * passed {@link} Concept as its relation range
-	 * 
-	 * @param c The root Concept
-	 * @return Set of {@link ReifiedRelationship}s
-	 */
-	def Set<ReifiedRelationship> getDirectVisualRelationshipsWithAspectAsDomain(DDiagram d){
-		val c = getRootConcept(d)
-		return getUsageReltionships(c).
-		filter(ReifiedRelationship).
-		filter[f | (f.target == c) && (f.source instanceof Aspect)].
-		toSet
-	}
-	
-	/*
-	 * Gets equivalent {@link Concept} for the given
-	 * {@link ReifiedRelationship} which has an {@link Aspect}
-	 * as its domain
-	 * 
-	 * @param rel The {@link ReifiedRelationship}
-	 * @return Set of {@link Concept}s
-	 */
-	def Set<Concept> getConceptRoots(ReifiedRelationship rel)
-	{
-		val newRootConcepts = new HashSet<Concept>
-		val aspect = rel.source
-		
-		aspect.tbox.boxStatements.
-		filter(AspectSpecializationAxiom).
-		filter[f | 
-			(f.superAspect == aspect) && (f.subEntity instanceof Concept) 
-		].
-		forEach[ax |
-			newRootConcepts.add(ax.subEntity as Concept)
-		]
-		
-		newRootConcepts		
-	}
 	
 	/*
 	 * Gets all {@link ReifiedRelationship}s that are indirectly connected
