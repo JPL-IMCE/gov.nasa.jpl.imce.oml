@@ -72,8 +72,7 @@ public class AspectConceptClassDiagramService {
    * @param c The root Concept
    * @return Set of {@link ReifiedRelationship}s
    */
-  public Set<EntityRelationship> getVisualRelationshipsWithRootAsDomain(final DDiagram d) {
-    final Entity e = this.getRootEntity(d);
+  public Set<EntityRelationship> getVisualRelationshipsWithRootAsDomain(final Entity e) {
     final Function1<EntityRelationship, Boolean> _function = (EntityRelationship f) -> {
       Entity _source = f.getSource();
       return Boolean.valueOf(Objects.equal(_source, e));
@@ -88,8 +87,7 @@ public class AspectConceptClassDiagramService {
    * @param c The root Concept
    * @return Set of {@link ReifiedRelationship}s
    */
-  public Set<ReifiedRelationship> getVisualRelationshipsWithRootAsRange(final DDiagram d) {
-    final Entity e = this.getRootEntity(d);
+  public Set<ReifiedRelationship> getVisualRelationshipsWithRootAsRange(final Entity e) {
     final Function1<ReifiedRelationship, Boolean> _function = (ReifiedRelationship f) -> {
       Entity _target = f.getTarget();
       return Boolean.valueOf(Objects.equal(_target, e));
@@ -152,8 +150,7 @@ public class AspectConceptClassDiagramService {
    * @param e The root {@link Entity}
    * @return Set of {@link AspectSpecializationAxiom}s
    */
-  public Set<AspectSpecializationAxiom> getVisualAspectAxioms(final DDiagram d) {
-    final Entity e = this.getRootEntity(d);
+  public Set<AspectSpecializationAxiom> getVisualAspectAxioms(final Entity e) {
     final Function1<AspectSpecializationAxiom, Boolean> _function = (AspectSpecializationAxiom f) -> {
       Entity _subEntity = f.getSubEntity();
       return Boolean.valueOf(Objects.equal(_subEntity, e));
@@ -168,13 +165,12 @@ public class AspectConceptClassDiagramService {
    * @param c The root {@link Concept}
    * @return Set of {@link ConceptSpecializationAxiom}s
    */
-  public Set<ConceptSpecializationAxiom> getVisualConceptAxioms(final DDiagram d) {
-    final Entity c = this.getRootEntity(d);
+  public Set<ConceptSpecializationAxiom> getVisualConceptAxioms(final Concept e) {
     final Function1<ConceptSpecializationAxiom, Boolean> _function = (ConceptSpecializationAxiom f) -> {
       Concept _subConcept = f.getSubConcept();
       return Boolean.valueOf(Objects.equal(_subConcept, c));
     };
-    return IterableExtensions.<ConceptSpecializationAxiom>toSet(IterableExtensions.<ConceptSpecializationAxiom>filter(Iterables.<ConceptSpecializationAxiom>filter(c.getTbox().getBoxStatements(), ConceptSpecializationAxiom.class), _function));
+    return IterableExtensions.<ConceptSpecializationAxiom>toSet(IterableExtensions.<ConceptSpecializationAxiom>filter(Iterables.<ConceptSpecializationAxiom>filter(e.getTbox().getBoxStatements(), ConceptSpecializationAxiom.class), _function));
   }
   
   /**

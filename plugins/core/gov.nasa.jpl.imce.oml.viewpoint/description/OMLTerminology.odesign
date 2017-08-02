@@ -49,7 +49,7 @@
         </edgeMappings>
         <edgeMappings name="Reified  Relationship Specialization Axiom" semanticCandidatesExpression="feature:boxStatements" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@defaultLayer/@edgeMappings[name='Reified%20Relationship']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@defaultLayer/@edgeMappings[name='Reified%20Relationship']" targetFinderExpression="feature:superRelationship" sourceFinderExpression="feature:subRelationship" domainClass="terminologies.ReifiedRelationshipSpecializationAxiom" useDomainElement="true">
           <style targetArrow="InputClosedArrow" sizeComputationExpression="2">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='chocolate']"/>
             <centerLabelStyleDescription>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
             </centerLabelStyleDescription>
@@ -447,7 +447,7 @@
       <metamodel href="http://imce.jpl.nasa.gov/oml/bundles#/"/>
       <metamodel href="http://imce.jpl.nasa.gov/oml/graphs#/"/>
       <defaultLayer name="Default">
-        <edgeMappings name="Root as Source (Entity Relationship)" semanticCandidatesExpression="aql:self.getUsageReltionships()->filter(terminologies::ReifiedRelationship)->select(r | r.source = self )" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="terminologies.EntityRelationship" useDomainElement="true">
+        <edgeMappings name="Root as Source (Entity Relationship)" semanticCandidatesExpression="aql:self.getDirectVisualRelationshipsWithRootAsDomain()" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="terminologies.EntityRelationship" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelExpression="feature:name">
@@ -455,7 +455,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="Root as Target (Reified Relationship)" semanticCandidatesExpression="aql:self.getUsageReltionships()->filter(terminologies::ReifiedRelationship)->select(r | r.target = self)" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetFinderExpression="feature:source" sourceFinderExpression="feature:target" domainClass="terminologies.ReifiedRelationship" useDomainElement="true">
+        <edgeMappings name="Root as Target (Reified Relationship)" semanticCandidatesExpression="aql:self.getDirectVisualRelationshipsWithRootAsRange()" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetFinderExpression="feature:source" sourceFinderExpression="feature:target" domainClass="terminologies.ReifiedRelationship" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelExpression="feature:unreifiedInversePropertyName">
@@ -463,15 +463,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="Unreified Relationship" semanticCandidatesExpression="aql:self.getUsageReltionships()" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="terminologies.UnreifiedRelationship" useDomainElement="true">
-          <style sizeComputationExpression="2">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
-            <centerLabelStyleDescription labelExpression="feature:name">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            </centerLabelStyleDescription>
-          </style>
-        </edgeMappings>
-        <edgeMappings name="Entity Universal Restriction Axiom (Root as Source)" semanticCandidatesExpression="aql:self.getUsageReltionships()->filter(terminologies::EntityUniversalRestrictionAxiom)->select(a | a.restrictedRange = self)" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetFinderExpression="feature:restrictedDomain" sourceFinderExpression="feature:restrictedRange" domainClass="terminologies.EntityUniversalRestrictionAxiom" useDomainElement="true">
+        <edgeMappings name="Entity Universal Restriction Axiom (Root as Source)" semanticCandidatesExpression="aql:self.getUniversalAxiomWithRootAsSource()" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetFinderExpression="feature:restrictedDomain" sourceFinderExpression="feature:restrictedRange" domainClass="terminologies.EntityUniversalRestrictionAxiom" useDomainElement="true">
           <style targetArrow="InputClosedArrow" sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <beginLabelStyleDescription labelExpression="aql:self.restrictedRelation.name">
@@ -482,7 +474,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="Entity Universal Restriction Axiom (Root as Target)" semanticCandidatesExpression="aql:self.getUsageReltionships()->filter(terminologies::EntityUniversalRestrictionAxiom)->select(a | a.restrictedDomain = self)" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetFinderExpression="feature:restrictedDomain" sourceFinderExpression="feature:restrictedRange" domainClass="terminologies.EntityUniversalRestrictionAxiom" useDomainElement="true">
+        <edgeMappings name="Entity Universal Restriction Axiom (Root as Target)" semanticCandidatesExpression="aql:self.getUniversalAxiomWithRootAsTarget()" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetFinderExpression="feature:restrictedDomain" sourceFinderExpression="feature:restrictedRange" domainClass="terminologies.EntityUniversalRestrictionAxiom" useDomainElement="true">
           <style targetArrow="InputClosedArrow" sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <beginLabelStyleDescription labelExpression="aql:self.restrictedRelation.oclAsType(terminologies::ReifiedRelationship).unreifiedInversePropertyName">
@@ -493,7 +485,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="Entity Existential Restriction Axiom (Root as Source)" semanticCandidatesExpression="aql:self.getUsageReltionships()->filter(terminologies::EntityExistentialRestrictionAxiom)->select(a | a.restrictedRange = self)" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetFinderExpression="feature:restrictedDomain" sourceFinderExpression="feature:restrictedRange" domainClass="terminologies.EntityExistentialRestrictionAxiom" useDomainElement="true">
+        <edgeMappings name="Entity Existential Restriction Axiom (Root as Source)" semanticCandidatesExpression="aql:self.geEgetExistentialAxiomWithRootAsSource()" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetFinderExpression="feature:restrictedDomain" sourceFinderExpression="feature:restrictedRange" domainClass="terminologies.EntityExistentialRestrictionAxiom" useDomainElement="true">
           <style targetArrow="InputClosedArrow" sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <beginLabelStyleDescription labelExpression="aql:self.restrictedRelation.name">
@@ -504,7 +496,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="Entity Existential Restriction Axiom (Root as Target)" semanticCandidatesExpression="aql:self.getUsageReltionships()->filter(terminologies::EntityExistentialRestrictionAxiom)->select(a | a.restrictedDomain = self)" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetFinderExpression="feature:restrictedDomain" sourceFinderExpression="feature:restrictedRange" domainClass="terminologies.EntityExistentialRestrictionAxiom" useDomainElement="true">
+        <edgeMappings name="Entity Existential Restriction Axiom (Root as Target)" semanticCandidatesExpression="aql:self.getExistentialAxiomWithRootAsTarget()" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetFinderExpression="feature:restrictedDomain" sourceFinderExpression="feature:restrictedRange" domainClass="terminologies.EntityExistentialRestrictionAxiom" useDomainElement="true">
           <style targetArrow="InputClosedArrow" sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <beginLabelStyleDescription labelExpression="aql:self.restrictedRelation.name">
@@ -515,7 +507,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="Indirect Root as Source (Entity Relationship)" semanticCandidatesExpression="aql:self.getIndirectRelationshipsWithRootAsSource()" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetFinderExpression="feature:target" sourceFinderExpression="aql:diagram.oclAsType(diagram::DSemanticDiagram).target.oclAsType(terminologies::Concept)" domainClass="terminologies.ReifiedRelationship" useDomainElement="true">
+        <edgeMappings name="Indirect Root as Source (Entity Relationship)" semanticCandidatesExpression="aql:self.getIndirectRelationshipsWithRootAsSource()" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetFinderExpression="feature:target" sourceFinderExpression="aql:diagram.getRootConcept()" domainClass="terminologies.ReifiedRelationship" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelExpression="feature:name">
@@ -523,7 +515,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="Indirect Root as Target (Entity Relationship)" semanticCandidatesExpression="aql:self.getIndirectRelationshipsWithRootAsTarget()" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetFinderExpression="feature:source" sourceFinderExpression="aql:diagram.oclAsType(diagram::DSemanticDiagram).target.oclAsType(terminologies::Concept)" domainClass="terminologies.ReifiedRelationship" useDomainElement="true">
+        <edgeMappings name="Indirect Root as Target (Entity Relationship)" semanticCandidatesExpression="aql:self.getIndirectRelationshipsWithRootAsTarget()" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetFinderExpression="feature:source" sourceFinderExpression="aql:diagram.getRootConcept()" domainClass="terminologies.ReifiedRelationship" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelExpression="feature:unreifiedInversePropertyName">
@@ -531,7 +523,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="Aspect as Root" semanticCandidatesExpression="aql:diagram.eContainer()." sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetFinderExpression="aql:diagram.oclAsType(diagram::DSemanticDiagram).target.oclAsType(terminologies::Concept)" sourceFinderExpression="aql:self.tbox. boxStatements->filter(terminologies::AspectSpecializationAxiom)->select(s | s.superAspect = self.source)->select(s | s.subEntity.oclIsTypeOf(terminologies::Concept)).subEntity" domainClass="terminologies.ReifiedRelationship" useDomainElement="true">
+        <edgeMappings name="Aspect as Root" semanticCandidatesExpression="aql:diagram.getRootConcept().getDirectVisualRelationshipsWithAspectAsDomain()" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetFinderExpression="aql:diagram.getRootConcept()" sourceFinderExpression="aql:self.getConceptRoots()" domainClass="terminologies.ReifiedRelationship" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelExpression="feature:unreifiedInversePropertyName">
@@ -592,7 +584,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="Root as Source (Entity Relationship)" semanticCandidatesExpression="aql:diagram.getRootConcept().oclAsType(terminologies::Concept).getVisualRelationshipsWithRootAsDomain()" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Aspect%2FConcept%20Class%20Diagram']/@defaultLayer/@containerMappings[name='Concept'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Aspect%2FConcept%20Class%20Diagram']/@defaultLayer/@containerMappings[name='Aspect']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Aspect%2FConcept%20Class%20Diagram']/@defaultLayer/@containerMappings[name='Concept'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Aspect%2FConcept%20Class%20Diagram']/@defaultLayer/@containerMappings[name='Aspect']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="terminologies.EntityRelationship" useDomainElement="true">
+        <edgeMappings name="Root as Source (Entity Relationship)" semanticCandidatesExpression="aql:diagram.getRootConcept().getVisualRelationshipsWithRootAsDomain()" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Aspect%2FConcept%20Class%20Diagram']/@defaultLayer/@containerMappings[name='Concept'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Aspect%2FConcept%20Class%20Diagram']/@defaultLayer/@containerMappings[name='Aspect']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Aspect%2FConcept%20Class%20Diagram']/@defaultLayer/@containerMappings[name='Concept'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Aspect%2FConcept%20Class%20Diagram']/@defaultLayer/@containerMappings[name='Aspect']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="terminologies.EntityRelationship" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelExpression="feature:name">
@@ -600,7 +592,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="Root as Target (Reified Relationship)" semanticCandidatesExpression="aql:diagram.getRootConcept().oclAsType(terminologies::Concept).getVisualRelationshipsWithRootAsRange()" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Aspect%2FConcept%20Class%20Diagram']/@defaultLayer/@containerMappings[name='Concept'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Aspect%2FConcept%20Class%20Diagram']/@defaultLayer/@containerMappings[name='Aspect']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Aspect%2FConcept%20Class%20Diagram']/@defaultLayer/@containerMappings[name='Concept'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Aspect%2FConcept%20Class%20Diagram']/@defaultLayer/@containerMappings[name='Aspect']" targetFinderExpression="feature:source" sourceFinderExpression="feature:target" domainClass="terminologies.ReifiedRelationship" useDomainElement="true">
+        <edgeMappings name="Root as Target (Reified Relationship)" semanticCandidatesExpression="aql:diagram.getRootConcept().getVisualRelationshipsWithRootAsRange()" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Aspect%2FConcept%20Class%20Diagram']/@defaultLayer/@containerMappings[name='Concept'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Aspect%2FConcept%20Class%20Diagram']/@defaultLayer/@containerMappings[name='Aspect']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Aspect%2FConcept%20Class%20Diagram']/@defaultLayer/@containerMappings[name='Concept'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Aspect%2FConcept%20Class%20Diagram']/@defaultLayer/@containerMappings[name='Aspect']" targetFinderExpression="feature:source" sourceFinderExpression="feature:target" domainClass="terminologies.ReifiedRelationship" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelExpression="feature:unreifiedInversePropertyName">
@@ -698,5 +690,6 @@
     <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.common.tools.api.interpreter.StandardServices"/>
     <ownedJavaExtensions qualifiedClassName="gov.nasa.jpl.imce.oml.viewpoint.AspectConceptClassDiagramService"/>
     <ownedJavaExtensions qualifiedClassName="gov.nasa.jpl.imce.oml.viewpoint.TerminologyDiagramService"/>
+    <ownedJavaExtensions qualifiedClassName="gov.nasa.jpl.imce.oml.viewpoint.ConceptUsageDiagramService"/>
   </ownedViewpoints>
 </description:Group>

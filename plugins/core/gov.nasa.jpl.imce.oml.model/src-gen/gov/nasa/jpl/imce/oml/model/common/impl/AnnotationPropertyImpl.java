@@ -182,7 +182,8 @@ public class AnnotationPropertyImpl extends CDOObjectImpl implements AnnotationP
 	 * @generated
 	 */
 	public String getUuid() {
-		UUID _namespaceUUID = OMLExtensions.namespaceUUID(this.getIri());
+		String _iri = this.getIri();
+		UUID _namespaceUUID = OMLExtensions.namespaceUUID(_iri);
 		String _string = null;
 		if (_namespaceUUID!=null) {
 			_string=_namespaceUUID.toString();

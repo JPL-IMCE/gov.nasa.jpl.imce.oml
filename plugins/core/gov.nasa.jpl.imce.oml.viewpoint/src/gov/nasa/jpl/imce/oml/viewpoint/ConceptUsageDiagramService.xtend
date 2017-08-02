@@ -22,9 +22,17 @@ import java.util.Queue
 import java.util.Set
 import org.eclipse.sirius.diagram.DDiagram
 import org.eclipse.sirius.diagram.DSemanticDiagram
+import gov.nasa.jpl.imce.oml.model.terminologies.AspectSpecializationAxiom
 
 class ConceptUsageDiagramService {
 	
+	/*
+	 * Gets root {@link Concept} which the passed {@link DDiagram}
+	 * was created from
+	 * 
+	 * @param The diagram
+	 * @return The root {@link Concept}
+	 */
 	def Concept getRootConcept(DDiagram d){
 		return (d as DSemanticDiagram).target as Concept
 	}	
@@ -36,9 +44,9 @@ class ConceptUsageDiagramService {
 	 * @param c The root Concept
 	 * @return Set of {@link ReifiedRelationship}s
 	 */
-	def Set<ReifiedRelationship> getVisualRelationshipsWithRootAsDomain(Concept c){
+	def Set<EntityRelationship> getDirectVisualRelationshipsWithRootAsDomain(Concept c){
 		return getUsageReltionships(c).
-		filter(ReifiedRelationship).
+		filter(EntityRelationship).
 		filter[f | f.source == c].
 		toSet
 	}
@@ -50,12 +58,51 @@ class ConceptUsageDiagramService {
 	 * @param c The root Concept
 	 * @return Set of {@link ReifiedRelationship}s
 	 */
-	def Set<ReifiedRelationship> getVisualRelationshipsWithRootAsRange(Concept c){
+	def Set<ReifiedRelationship> getDirectVisualRelationshipsWithRootAsRange(Concept c){
 		return getUsageReltionships(c).
 		filter(ReifiedRelationship).
-		filter[f | f.target == c].
+		filter[f | (f.target == c) && (f instanceof Concept)].
 		toSet
 	}	
+	
+	/*
+	 * Gets all {@link ReifiedRelationship}s with the 
+	 * passed {@link} Concept as its relation range
+	 * 
+	 * @param c The root Concept
+	 * @return Set of {@link ReifiedRelationship}s
+	 */
+	def Set<ReifiedRelationship> getDirectVisualRelationshipsWithAspectAsDomain(Concept c){
+		return getUsageReltionships(c).
+		filter(ReifiedRelationship).
+		filter[f | (f.target == c) && (f.source instanceof Aspect)].
+		toSet
+	}
+	
+	/*
+	 * Gets equivalent {@link Concept} for the given
+	 * {@link ReifiedRelationship} which has an {@link Aspect}
+	 * as its domain
+	 * 
+	 * @param rel The {@link ReifiedRelationship}
+	 * @return Set of {@link Concept}s
+	 */
+	def Set<Concept> getConceptRoots(ReifiedRelationship rel)
+	{
+		val newRootConcepts = new HashSet<Concept>
+		val aspect = rel.source
+		
+		aspect.tbox.boxStatements.
+		filter(AspectSpecializationAxiom).
+		filter[f | 
+			(f.superAspect == aspect) && (f.subEntity instanceof Concept) 
+		].
+		forEach[ax |
+			newRootConcepts.add(ax.subEntity as Concept)
+		]
+		
+		newRootConcepts		
+	}
 	
 	/*
 	 * Gets all {@link ReifiedRelationship}s that are indirectly connected

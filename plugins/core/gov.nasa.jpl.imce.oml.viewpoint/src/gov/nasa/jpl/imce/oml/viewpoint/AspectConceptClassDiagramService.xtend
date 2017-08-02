@@ -66,8 +66,7 @@ class AspectConceptClassDiagramService {
 	 * @param c The root Concept
 	 * @return Set of {@link ReifiedRelationship}s
 	 */
-	def Set<EntityRelationship> getVisualRelationshipsWithRootAsDomain(DDiagram d){
-		val e = getRootEntity(d)
+	def Set<EntityRelationship> getVisualRelationshipsWithRootAsDomain(Entity e){
 		return e.tbox.boxStatements.
 		filter(EntityRelationship).
 		filter[f | f.source == e].
@@ -81,8 +80,7 @@ class AspectConceptClassDiagramService {
 	 * @param c The root Concept
 	 * @return Set of {@link ReifiedRelationship}s
 	 */
-	def Set<ReifiedRelationship> getVisualRelationshipsWithRootAsRange(DDiagram d){
-		val e = getRootEntity(d)
+	def Set<ReifiedRelationship> getVisualRelationshipsWithRootAsRange(Entity e){
 		return e.tbox.boxStatements.
 		filter(ReifiedRelationship).
 		filter[f | f.target == e].
