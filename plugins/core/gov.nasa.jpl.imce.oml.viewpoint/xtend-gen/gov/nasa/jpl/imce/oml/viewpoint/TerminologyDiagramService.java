@@ -25,6 +25,12 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 
+/**
+ * Used to query for visual elements in the 'Terminology Diagram'
+ * 
+ * The 'Terminology Diagram' will show all {@link Entity}s and
+ * {@link SpecializationAxiom}s for a given {@link TerminologyGraph}
+ */
 @SuppressWarnings("all")
 public class TerminologyDiagramService {
   /**
@@ -42,8 +48,10 @@ public class TerminologyDiagramService {
           }
           if ((statement instanceof SpecializationAxiom)) {
             final SpecializationAxiom temp = ((SpecializationAxiom) statement);
-            entities.add(temp.child());
-            entities.add(temp.parent());
+            Entity _child = temp.child();
+            entities.add(_child);
+            Entity _parent = temp.parent();
+            entities.add(_parent);
           }
         }
       }
