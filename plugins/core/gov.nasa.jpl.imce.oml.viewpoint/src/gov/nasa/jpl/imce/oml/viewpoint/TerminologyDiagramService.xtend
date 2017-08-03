@@ -24,6 +24,12 @@ import gov.nasa.jpl.imce.oml.model.terminologies.SpecializationAxiom
 import java.util.LinkedHashSet
 import java.util.Set
 
+/*
+ * Used to query for visual elements in the 'Terminology Diagram'
+ * 
+ * The 'Terminology Diagram' will show all {@link Entity}s and
+ * {@link SpecializationAxiom}s for a given {@link TerminologyGraph} 
+ */
 class TerminologyDiagramService {
 	
 	/*
