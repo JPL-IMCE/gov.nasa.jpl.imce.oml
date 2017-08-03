@@ -42,6 +42,14 @@ import org.eclipse.sirius.diagram.DDiagram
 import org.eclipse.sirius.diagram.DSemanticDiagram
 import gov.nasa.jpl.imce.oml.model.terminologies.AspectSpecializationAxiom
 
+/*
+ * Used to query for visual elements in the 'Concept Usage Diagram'
+ * 
+ * The 'Concept Usage Diagram' will show all {@link ReifiedRelationship}s and
+ * its domain and range if it is the selected root {@link Concept}.  Including
+ * those which have an {@link Aspect} as its target (range) in which
+ * the {@link Aspect} is a superAspect to the root {@link Concept}
+ */
 class ConceptUsageDiagramService {
 	
 	/*

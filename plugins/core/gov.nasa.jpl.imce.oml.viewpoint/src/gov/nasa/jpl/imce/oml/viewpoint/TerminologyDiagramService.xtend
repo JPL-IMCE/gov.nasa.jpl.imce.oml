@@ -38,15 +38,10 @@ import java.util.LinkedHashSet
 import java.util.Set
 
 /*
- * Used to query for visual elements in the "Terminology Diagram"
+ * Used to query for visual elements in the 'Terminology Diagram'
  * 
- * The "Terminology Diagram" will show all {@link Entity}s and
+ * The 'Terminology Diagram' will show all {@link Entity}s and
  * {@link SpecializationAxiom}s for a given {@link TerminologyGraph} 
- * 
- * 
- * Containers: Concept, Aspect, Structure, Scalar
- * Edges: Reified/UnReified Relationships, Restriction/Specialization Axioms
- * 
  */
 class TerminologyDiagramService {
 	
