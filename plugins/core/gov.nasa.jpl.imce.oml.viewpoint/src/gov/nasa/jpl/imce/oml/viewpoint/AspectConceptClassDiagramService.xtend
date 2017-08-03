@@ -32,6 +32,15 @@ import java.util.Set
 import org.eclipse.sirius.diagram.DDiagram
 import org.eclipse.sirius.diagram.DSemanticDiagram
 
+/*
+ * Used to query for visual elements for the 'Aspect/Concept Class Diagram'
+ * 
+ * The 'Aspect/Concept Class Diagram' will show all {@link ReifiedRelationship}s
+ * that have a selected root {@link Aspect} or {@link Concept} as its domain or range.
+ * It also shows {@link SpecializationAxiom}s that have the selected {@Aspect} or
+ * {@link Concept} as its child (superEntity/Concept/Aspect)
+ * 
+ */
 class AspectConceptClassDiagramService {
 	
 	/*
