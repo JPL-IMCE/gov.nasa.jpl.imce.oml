@@ -43,14 +43,10 @@ import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 /**
- * Used to query for visual elements in the "Terminology Diagram"
+ * Used to query for visual elements in the 'Terminology Diagram'
  * 
- * The "Terminology Diagram" will show all {@link Entity}s and
+ * The 'Terminology Diagram' will show all {@link Entity}s and
  * {@link SpecializationAxiom}s for a given {@link TerminologyGraph}
- * 
- * 
- * Containers: Concept, Aspect, Structure, Scalar
- * Edges: Reified/UnReified Relationships, Restriction/Specialization Axioms
  */
 @SuppressWarnings("all")
 public class TerminologyDiagramService {
@@ -69,8 +65,10 @@ public class TerminologyDiagramService {
           }
           if ((statement instanceof SpecializationAxiom)) {
             final SpecializationAxiom temp = ((SpecializationAxiom) statement);
-            entities.add(temp.child());
-            entities.add(temp.parent());
+            Entity _child = temp.child();
+            entities.add(_child);
+            Entity _parent = temp.parent();
+            entities.add(_parent);
           }
         }
       }
