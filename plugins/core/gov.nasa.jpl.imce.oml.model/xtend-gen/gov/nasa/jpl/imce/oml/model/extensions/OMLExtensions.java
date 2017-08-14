@@ -81,7 +81,6 @@ import gov.nasa.jpl.imce.oml.model.terminologies.Structure;
 import gov.nasa.jpl.imce.oml.model.terminologies.StructuredDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.SynonymScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox;
-import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBoxStatement;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyExtensionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.TimeScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship;
@@ -91,7 +90,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 import java.util.function.Consumer;
 import org.apache.xml.resolver.Catalog;
@@ -100,10 +98,8 @@ import org.apache.xml.resolver.tools.CatalogResolver;
 import org.eclipse.emf.common.CommonPlugin;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
@@ -124,8 +120,7 @@ public class OMLExtensions {
   
   public static CatalogManager getOrCreateCatalogManager(final ResourceSet rs) {
     Object _elvis = null;
-    Map<Object, Object> _loadOptions = rs.getLoadOptions();
-    Object _get = _loadOptions.get(OMLExtensions.RESOURCE_SET_CATALOG_MANAGER);
+    Object _get = rs.getLoadOptions().get(OMLExtensions.RESOURCE_SET_CATALOG_MANAGER);
     if (_get != null) {
       _elvis = _get;
     } else {
@@ -138,8 +133,7 @@ public class OMLExtensions {
       final OMLCatalogManager cm = OMLCatalogManager.class.cast(o);
       cm.setUseStaticCatalog(false);
       cm.setCatalogClassName("gov.nasa.jpl.imce.oml.extensions.OMLCatalog");
-      Map<Object, Object> _loadOptions_1 = rs.getLoadOptions();
-      _loadOptions_1.putIfAbsent(OMLExtensions.RESOURCE_SET_CATALOG_MANAGER, cm);
+      rs.getLoadOptions().putIfAbsent(OMLExtensions.RESOURCE_SET_CATALOG_MANAGER, cm);
       return cm;
     } else {
       return null;
@@ -148,8 +142,7 @@ public class OMLExtensions {
   
   public static CatalogResolver getOrCreateCatalogResolver(final ResourceSet rs) {
     Object _elvis = null;
-    Map<Object, Object> _loadOptions = rs.getLoadOptions();
-    Object _get = _loadOptions.get(OMLExtensions.RESOURCE_SET_CATALOG_RESOLVER);
+    Object _get = rs.getLoadOptions().get(OMLExtensions.RESOURCE_SET_CATALOG_RESOLVER);
     if (_get != null) {
       _elvis = _get;
     } else {
@@ -161,8 +154,7 @@ public class OMLExtensions {
     boolean _isInstance = CatalogResolver.class.isInstance(o);
     if (_isInstance) {
       final CatalogResolver cr = CatalogResolver.class.cast(o);
-      Map<Object, Object> _loadOptions_1 = rs.getLoadOptions();
-      _loadOptions_1.putIfAbsent(OMLExtensions.RESOURCE_SET_CATALOG_RESOLVER, cr);
+      rs.getLoadOptions().putIfAbsent(OMLExtensions.RESOURCE_SET_CATALOG_RESOLVER, cr);
       return cr;
     } else {
       return null;
@@ -171,21 +163,18 @@ public class OMLExtensions {
   
   public static OMLCatalog getCatalog(final ResourceSet rs) {
     Object _elvis = null;
-    Map<Object, Object> _loadOptions = rs.getLoadOptions();
-    Object _get = _loadOptions.get(OMLExtensions.RESOURCE_SET_CATALOG_INSTANCE);
+    Object _get = rs.getLoadOptions().get(OMLExtensions.RESOURCE_SET_CATALOG_INSTANCE);
     if (_get != null) {
       _elvis = _get;
     } else {
-      CatalogResolver _orCreateCatalogResolver = OMLExtensions.getOrCreateCatalogResolver(rs);
-      Catalog _catalog = _orCreateCatalogResolver.getCatalog();
+      Catalog _catalog = OMLExtensions.getOrCreateCatalogResolver(rs).getCatalog();
       _elvis = _catalog;
     }
     final Object o = _elvis;
     boolean _isInstance = OMLCatalog.class.isInstance(o);
     if (_isInstance) {
       final OMLCatalog c = OMLCatalog.class.cast(o);
-      Map<Object, Object> _loadOptions_1 = rs.getLoadOptions();
-      _loadOptions_1.putIfAbsent(OMLExtensions.RESOURCE_SET_CATALOG_INSTANCE, c);
+      rs.getLoadOptions().putIfAbsent(OMLExtensions.RESOURCE_SET_CATALOG_INSTANCE, c);
       return c;
     } else {
       return null;
@@ -196,13 +185,10 @@ public class OMLExtensions {
     OMLCatalog _xblockexpression = null;
     {
       final ResourceSet rs = r.getResourceSet();
-      URIConverter _uRIConverter = rs.getURIConverter();
-      URI _uRI = r.getURI();
-      final URI uri = _uRIConverter.normalize(_uRI);
+      final URI uri = rs.getURIConverter().normalize(r.getURI());
       final URI ruri = CommonPlugin.resolve(uri);
       final URI luri = CommonPlugin.asLocalURI(ruri);
-      URI _trimSegments = luri.trimSegments(1);
-      _xblockexpression = OMLExtensions.findCatalogIfExists(rs, _trimSegments);
+      _xblockexpression = OMLExtensions.findCatalogIfExists(rs, luri.trimSegments(1));
     }
     return _xblockexpression;
   }
@@ -231,8 +217,7 @@ public class OMLExtensions {
       } catch (final Throwable _t) {
         if (_t instanceof IOException) {
           final IOException ex = (IOException)_t;
-          URI _trimSegments = current.trimSegments(1);
-          current = _trimSegments;
+          current = current.trimSegments(1);
         } else {
           throw Exceptions.sneakyThrow(_t);
         }
@@ -254,9 +239,7 @@ public class OMLExtensions {
         _xifexpression = pname;
       }
       final String domain = _xifexpression;
-      String[] _split = domain.split("\\.");
-      List<String> _reverse = ListExtensions.<String>reverse(((List<String>)Conversions.doWrapArray(_split)));
-      final String qprefix = IterableExtensions.join(_reverse, ".");
+      final String qprefix = IterableExtensions.join(ListExtensions.<String>reverse(((List<String>)Conversions.doWrapArray(domain.split("\\.")))), ".");
       String _xifexpression_1 = null;
       if ((index2 > 0)) {
         _xifexpression_1 = pname.substring(index2);
@@ -317,11 +300,9 @@ public class OMLExtensions {
         }
         return (_plus + _elvis_1);
       };
-      List<String> _map = ListExtensions.<Pair<String, String>, String>map(((List<Pair<String, String>>)Conversions.doWrapArray(factors)), _function);
-      String _join = IterableExtensions.join(_map, ",");
+      String _join = IterableExtensions.join(ListExtensions.<Pair<String, String>, String>map(((List<Pair<String, String>>)Conversions.doWrapArray(factors)), _function), ",");
       final String name = (namespace + _join);
-      NameBasedGenerator _nameBasedGenerator = Generators.nameBasedGenerator(NameBasedGenerator.NAMESPACE_URL);
-      _xblockexpression = _nameBasedGenerator.generate(name);
+      _xblockexpression = Generators.nameBasedGenerator(NameBasedGenerator.NAMESPACE_URL).generate(name);
     }
     return _xblockexpression;
   }
@@ -412,11 +393,9 @@ public class OMLExtensions {
         }
         return (_plus + _elvis_1);
       };
-      List<String> _map = ListExtensions.<Pair<String, String>, String>map(((List<Pair<String, String>>)Conversions.doWrapArray(factors)), _function);
-      String _join = IterableExtensions.join(_map, ",");
+      String _join = IterableExtensions.join(ListExtensions.<Pair<String, String>, String>map(((List<Pair<String, String>>)Conversions.doWrapArray(factors)), _function), ",");
       final String name = (context + _join);
-      NameBasedGenerator _nameBasedGenerator = Generators.nameBasedGenerator(NameBasedGenerator.NAMESPACE_URL);
-      _xblockexpression = _nameBasedGenerator.generate(name);
+      _xblockexpression = Generators.nameBasedGenerator(NameBasedGenerator.NAMESPACE_URL).generate(name);
     }
     return _xblockexpression;
   }
@@ -462,42 +441,33 @@ public class OMLExtensions {
   }
   
   public Iterable<TerminologyBox> terminologies(final Extent it) {
-    EList<Module> _modules = it.getModules();
-    return Iterables.<TerminologyBox>filter(_modules, TerminologyBox.class);
+    return Iterables.<TerminologyBox>filter(it.getModules(), TerminologyBox.class);
   }
   
   public Iterable<TerminologyGraph> terminologyGraphs(final Extent it) {
-    EList<Module> _modules = it.getModules();
-    return Iterables.<TerminologyGraph>filter(_modules, TerminologyGraph.class);
+    return Iterables.<TerminologyGraph>filter(it.getModules(), TerminologyGraph.class);
   }
   
   public Iterable<DescriptionBox> descriptions(final Extent it) {
-    EList<Module> _modules = it.getModules();
-    return Iterables.<DescriptionBox>filter(_modules, DescriptionBox.class);
+    return Iterables.<DescriptionBox>filter(it.getModules(), DescriptionBox.class);
   }
   
   public Iterable<Bundle> bundles(final Extent it) {
-    EList<Module> _modules = it.getModules();
-    return Iterables.<Bundle>filter(_modules, Bundle.class);
+    return Iterables.<Bundle>filter(it.getModules(), Bundle.class);
   }
   
   public void phasedResolveAll(final Extent it) {
-    EList<Module> _modules = it.getModules();
     final Consumer<Module> _function = (Module it_1) -> {
-      EList<ModuleEdge> _moduleEdges = it_1.moduleEdges();
       final Consumer<ModuleEdge> _function_1 = (ModuleEdge it_2) -> {
-        Module _targetModule = it_2.targetModule();
-        EcoreUtil.resolveAll(_targetModule);
+        EcoreUtil.resolveAll(it_2.targetModule());
       };
-      _moduleEdges.forEach(_function_1);
+      it_1.moduleEdges().forEach(_function_1);
     };
-    _modules.forEach(_function);
+    it.getModules().forEach(_function);
   }
   
   public Iterable<TerminologyBox> allImportedTerminologies(final TerminologyBox it) {
-    ArrayList<TerminologyBox> _newArrayList = Lists.<TerminologyBox>newArrayList(it);
-    ArrayList<TerminologyBox> _newArrayList_1 = Lists.<TerminologyBox>newArrayList(it);
-    return this.collectAllImportedTerminologies(_newArrayList, _newArrayList_1);
+    return this.collectAllImportedTerminologies(Lists.<TerminologyBox>newArrayList(it), Lists.<TerminologyBox>newArrayList(it));
   }
   
   public final Iterable<TerminologyBox> collectAllImportedTerminologies(final ArrayList<TerminologyBox> queue, final ArrayList<TerminologyBox> acc) {
@@ -509,13 +479,10 @@ public class OMLExtensions {
       }
       final TerminologyBox tbox = IterableExtensions.<TerminologyBox>head(queue);
       queue.remove(tbox);
-      EList<ModuleEdge> _moduleEdges = tbox.moduleEdges();
       final Function1<ModuleEdge, Module> _function = (ModuleEdge it) -> {
         return it.targetModule();
       };
-      List<Module> _map = ListExtensions.<ModuleEdge, Module>map(_moduleEdges, _function);
-      Iterable<Module> _filterNull = IterableExtensions.<Module>filterNull(_map);
-      final Iterable<TerminologyBox> inc = Iterables.<TerminologyBox>filter(_filterNull, TerminologyBox.class);
+      final Iterable<TerminologyBox> inc = Iterables.<TerminologyBox>filter(IterableExtensions.<Module>filterNull(ListExtensions.<ModuleEdge, Module>map(tbox.moduleEdges(), _function)), TerminologyBox.class);
       Iterables.<TerminologyBox>addAll(queue, inc);
       Iterables.<TerminologyBox>addAll(acc, inc);
       _xblockexpression = this.collectAllImportedTerminologies(queue, acc);
@@ -524,9 +491,7 @@ public class OMLExtensions {
   }
   
   public Iterable<Module> allImportedModules(final Module it) {
-    ArrayList<Module> _newArrayList = Lists.<Module>newArrayList(it);
-    ArrayList<Module> _newArrayList_1 = Lists.<Module>newArrayList(it);
-    return this.collectAllImportedModules(_newArrayList, _newArrayList_1);
+    return this.collectAllImportedModules(Lists.<Module>newArrayList(it), Lists.<Module>newArrayList(it));
   }
   
   public final Iterable<Module> collectAllImportedModules(final ArrayList<Module> queue, final ArrayList<Module> acc) {
@@ -538,12 +503,10 @@ public class OMLExtensions {
       }
       final Module m = IterableExtensions.<Module>head(queue);
       queue.remove(m);
-      EList<ModuleEdge> _moduleEdges = m.moduleEdges();
       final Function1<ModuleEdge, Module> _function = (ModuleEdge it) -> {
         return it.targetModule();
       };
-      List<Module> _map = ListExtensions.<ModuleEdge, Module>map(_moduleEdges, _function);
-      final Iterable<Module> inc = IterableExtensions.<Module>filterNull(_map);
+      final Iterable<Module> inc = IterableExtensions.<Module>filterNull(ListExtensions.<ModuleEdge, Module>map(m.moduleEdges(), _function));
       Iterables.<Module>addAll(queue, inc);
       Iterables.<Module>addAll(acc, inc);
       _xblockexpression = this.collectAllImportedModules(queue, acc);
@@ -552,129 +515,104 @@ public class OMLExtensions {
   }
   
   public Iterable<Entity> localEntities(final TerminologyBox it) {
-    EList<TerminologyBoxStatement> _boxStatements = it.getBoxStatements();
-    return Iterables.<Entity>filter(_boxStatements, Entity.class);
+    return Iterables.<Entity>filter(it.getBoxStatements(), Entity.class);
   }
   
   public Iterable<Entity> allEntities(final TerminologyBox it) {
     Iterable<Entity> _localEntities = this.localEntities(it);
-    Iterable<TerminologyBox> _allImportedTerminologies = this.allImportedTerminologies(it);
     final Function1<TerminologyBox, Iterable<Entity>> _function = (TerminologyBox it_1) -> {
       return this.localEntities(it_1);
     };
-    Iterable<Iterable<Entity>> _map = IterableExtensions.<TerminologyBox, Iterable<Entity>>map(_allImportedTerminologies, _function);
-    Iterable<Entity> _flatten = Iterables.<Entity>concat(_map);
+    Iterable<Entity> _flatten = Iterables.<Entity>concat(IterableExtensions.<TerminologyBox, Iterable<Entity>>map(this.allImportedTerminologies(it), _function));
     return Iterables.<Entity>concat(_localEntities, _flatten);
   }
   
   public Iterable<Aspect> localAspects(final TerminologyBox it) {
-    EList<TerminologyBoxStatement> _boxStatements = it.getBoxStatements();
-    return Iterables.<Aspect>filter(_boxStatements, Aspect.class);
+    return Iterables.<Aspect>filter(it.getBoxStatements(), Aspect.class);
   }
   
   public Iterable<Aspect> allAspects(final TerminologyBox it) {
     Iterable<Aspect> _localAspects = this.localAspects(it);
-    Iterable<TerminologyBox> _allImportedTerminologies = this.allImportedTerminologies(it);
     final Function1<TerminologyBox, Iterable<Aspect>> _function = (TerminologyBox it_1) -> {
       return this.localAspects(it_1);
     };
-    Iterable<Iterable<Aspect>> _map = IterableExtensions.<TerminologyBox, Iterable<Aspect>>map(_allImportedTerminologies, _function);
-    Iterable<Aspect> _flatten = Iterables.<Aspect>concat(_map);
+    Iterable<Aspect> _flatten = Iterables.<Aspect>concat(IterableExtensions.<TerminologyBox, Iterable<Aspect>>map(this.allImportedTerminologies(it), _function));
     return Iterables.<Aspect>concat(_localAspects, _flatten);
   }
   
   public Iterable<Concept> localConcepts(final TerminologyBox it) {
-    EList<TerminologyBoxStatement> _boxStatements = it.getBoxStatements();
-    return Iterables.<Concept>filter(_boxStatements, Concept.class);
+    return Iterables.<Concept>filter(it.getBoxStatements(), Concept.class);
   }
   
   public Iterable<Concept> allConcepts(final TerminologyBox it) {
     Iterable<Concept> _localConcepts = this.localConcepts(it);
-    Iterable<TerminologyBox> _allImportedTerminologies = this.allImportedTerminologies(it);
     final Function1<TerminologyBox, Iterable<Concept>> _function = (TerminologyBox it_1) -> {
       return this.localConcepts(it_1);
     };
-    Iterable<Iterable<Concept>> _map = IterableExtensions.<TerminologyBox, Iterable<Concept>>map(_allImportedTerminologies, _function);
-    Iterable<Concept> _flatten = Iterables.<Concept>concat(_map);
+    Iterable<Concept> _flatten = Iterables.<Concept>concat(IterableExtensions.<TerminologyBox, Iterable<Concept>>map(this.allImportedTerminologies(it), _function));
     return Iterables.<Concept>concat(_localConcepts, _flatten);
   }
   
   public Iterable<ReifiedRelationship> localReifiedRelationships(final TerminologyBox it) {
-    EList<TerminologyBoxStatement> _boxStatements = it.getBoxStatements();
-    return Iterables.<ReifiedRelationship>filter(_boxStatements, ReifiedRelationship.class);
+    return Iterables.<ReifiedRelationship>filter(it.getBoxStatements(), ReifiedRelationship.class);
   }
   
   public Iterable<UnreifiedRelationship> localUnreifiedRelationships(final TerminologyBox it) {
-    EList<TerminologyBoxStatement> _boxStatements = it.getBoxStatements();
-    return Iterables.<UnreifiedRelationship>filter(_boxStatements, UnreifiedRelationship.class);
+    return Iterables.<UnreifiedRelationship>filter(it.getBoxStatements(), UnreifiedRelationship.class);
   }
   
   public Iterable<ReifiedRelationship> allReifiedRelationships(final TerminologyBox it) {
     Iterable<ReifiedRelationship> _localReifiedRelationships = this.localReifiedRelationships(it);
-    Iterable<TerminologyBox> _allImportedTerminologies = this.allImportedTerminologies(it);
     final Function1<TerminologyBox, Iterable<ReifiedRelationship>> _function = (TerminologyBox it_1) -> {
       return this.localReifiedRelationships(it_1);
     };
-    Iterable<Iterable<ReifiedRelationship>> _map = IterableExtensions.<TerminologyBox, Iterable<ReifiedRelationship>>map(_allImportedTerminologies, _function);
-    Iterable<ReifiedRelationship> _flatten = Iterables.<ReifiedRelationship>concat(_map);
+    Iterable<ReifiedRelationship> _flatten = Iterables.<ReifiedRelationship>concat(IterableExtensions.<TerminologyBox, Iterable<ReifiedRelationship>>map(this.allImportedTerminologies(it), _function));
     return Iterables.<ReifiedRelationship>concat(_localReifiedRelationships, _flatten);
   }
   
   public Iterable<EntityRelationship> localEntityRelationships(final TerminologyBox it) {
-    EList<TerminologyBoxStatement> _boxStatements = it.getBoxStatements();
-    return Iterables.<EntityRelationship>filter(_boxStatements, EntityRelationship.class);
+    return Iterables.<EntityRelationship>filter(it.getBoxStatements(), EntityRelationship.class);
   }
   
   public Iterable<EntityRelationship> allEntityRelationships(final TerminologyBox it) {
     Iterable<EntityRelationship> _localEntityRelationships = this.localEntityRelationships(it);
-    Iterable<TerminologyBox> _allImportedTerminologies = this.allImportedTerminologies(it);
     final Function1<TerminologyBox, Iterable<EntityRelationship>> _function = (TerminologyBox it_1) -> {
       return this.localEntityRelationships(it_1);
     };
-    Iterable<Iterable<EntityRelationship>> _map = IterableExtensions.<TerminologyBox, Iterable<EntityRelationship>>map(_allImportedTerminologies, _function);
-    Iterable<EntityRelationship> _flatten = Iterables.<EntityRelationship>concat(_map);
+    Iterable<EntityRelationship> _flatten = Iterables.<EntityRelationship>concat(IterableExtensions.<TerminologyBox, Iterable<EntityRelationship>>map(this.allImportedTerminologies(it), _function));
     return Iterables.<EntityRelationship>concat(_localEntityRelationships, _flatten);
   }
   
   public Iterable<DataRange> localRanges(final TerminologyBox it) {
-    EList<TerminologyBoxStatement> _boxStatements = it.getBoxStatements();
-    return Iterables.<DataRange>filter(_boxStatements, DataRange.class);
+    return Iterables.<DataRange>filter(it.getBoxStatements(), DataRange.class);
   }
   
   public Iterable<Structure> localStructures(final TerminologyBox it) {
-    EList<TerminologyBoxStatement> _boxStatements = it.getBoxStatements();
-    return Iterables.<Structure>filter(_boxStatements, Structure.class);
+    return Iterables.<Structure>filter(it.getBoxStatements(), Structure.class);
   }
   
   public Iterable<EntityScalarDataProperty> localEntityScalarDataProperties(final TerminologyBox it) {
-    EList<TerminologyBoxStatement> _boxStatements = it.getBoxStatements();
-    return Iterables.<EntityScalarDataProperty>filter(_boxStatements, EntityScalarDataProperty.class);
+    return Iterables.<EntityScalarDataProperty>filter(it.getBoxStatements(), EntityScalarDataProperty.class);
   }
   
   public Iterable<EntityStructuredDataProperty> localEntityStructuredDataProperties(final TerminologyBox it) {
-    EList<TerminologyBoxStatement> _boxStatements = it.getBoxStatements();
-    return Iterables.<EntityStructuredDataProperty>filter(_boxStatements, EntityStructuredDataProperty.class);
+    return Iterables.<EntityStructuredDataProperty>filter(it.getBoxStatements(), EntityStructuredDataProperty.class);
   }
   
   public Iterable<ScalarDataProperty> localScalarDataProperties(final TerminologyBox it) {
-    EList<TerminologyBoxStatement> _boxStatements = it.getBoxStatements();
-    return Iterables.<ScalarDataProperty>filter(_boxStatements, ScalarDataProperty.class);
+    return Iterables.<ScalarDataProperty>filter(it.getBoxStatements(), ScalarDataProperty.class);
   }
   
   public Iterable<StructuredDataProperty> localStructuredDataProperties(final TerminologyBox it) {
-    EList<TerminologyBoxStatement> _boxStatements = it.getBoxStatements();
-    return Iterables.<StructuredDataProperty>filter(_boxStatements, StructuredDataProperty.class);
+    return Iterables.<StructuredDataProperty>filter(it.getBoxStatements(), StructuredDataProperty.class);
   }
   
   public Iterable<ScalarOneOfRestriction> localScalarOneOfRestrictions(final TerminologyBox it) {
-    EList<TerminologyBoxStatement> _boxStatements = it.getBoxStatements();
-    return Iterables.<ScalarOneOfRestriction>filter(_boxStatements, ScalarOneOfRestriction.class);
+    return Iterables.<ScalarOneOfRestriction>filter(it.getBoxStatements(), ScalarOneOfRestriction.class);
   }
   
   public Iterable<Bundle> allImportedBundles(final Bundle it) {
-    ArrayList<Bundle> _newArrayList = Lists.<Bundle>newArrayList(it);
-    ArrayList<Bundle> _newArrayList_1 = Lists.<Bundle>newArrayList(it);
-    return this.collectAllImportedBundles(_newArrayList, _newArrayList_1);
+    return this.collectAllImportedBundles(Lists.<Bundle>newArrayList(it), Lists.<Bundle>newArrayList(it));
   }
   
   public final Iterable<Bundle> collectAllImportedBundles(final ArrayList<Bundle> queue, final ArrayList<Bundle> acc) {
@@ -686,12 +624,10 @@ public class OMLExtensions {
       }
       final Bundle bundle = IterableExtensions.<Bundle>head(queue);
       queue.remove(bundle);
-      EList<TerminologyBundleAxiom> _bundleAxioms = bundle.getBundleAxioms();
       final Function1<TerminologyBundleAxiom, TerminologyBox> _function = (TerminologyBundleAxiom it) -> {
         return it.target();
       };
-      List<TerminologyBox> _map = ListExtensions.<TerminologyBundleAxiom, TerminologyBox>map(_bundleAxioms, _function);
-      final Iterable<Bundle> inc = Iterables.<Bundle>filter(_map, Bundle.class);
+      final Iterable<Bundle> inc = Iterables.<Bundle>filter(ListExtensions.<TerminologyBundleAxiom, TerminologyBox>map(bundle.getBundleAxioms(), _function), Bundle.class);
       Iterables.<Bundle>addAll(queue, inc);
       Iterables.<Bundle>addAll(acc, inc);
       _xblockexpression = this.collectAllImportedBundles(queue, acc);
@@ -700,19 +636,15 @@ public class OMLExtensions {
   }
   
   public Iterable<AnonymousConceptUnionAxiom> localAnonymousConceptUnionAxioms(final Bundle it) {
-    EList<TerminologyBundleStatement> _bundleStatements = it.getBundleStatements();
-    return Iterables.<AnonymousConceptUnionAxiom>filter(_bundleStatements, AnonymousConceptUnionAxiom.class);
+    return Iterables.<AnonymousConceptUnionAxiom>filter(it.getBundleStatements(), AnonymousConceptUnionAxiom.class);
   }
   
   public Iterable<RootConceptTaxonomyAxiom> localRootConceptTaxonomyAxioms(final Bundle it) {
-    EList<TerminologyBundleStatement> _bundleStatements = it.getBundleStatements();
-    return Iterables.<RootConceptTaxonomyAxiom>filter(_bundleStatements, RootConceptTaxonomyAxiom.class);
+    return Iterables.<RootConceptTaxonomyAxiom>filter(it.getBundleStatements(), RootConceptTaxonomyAxiom.class);
   }
   
   public Iterable<TerminologyBox> allImportedTerminologiesFromDescription(final DescriptionBox it) {
-    ArrayList<DescriptionBox> _newArrayList = Lists.<DescriptionBox>newArrayList(it);
-    HashSet<TerminologyBox> _newHashSet = Sets.<TerminologyBox>newHashSet();
-    return this.collectAllImportedTerminologiesFromDescription(_newArrayList, _newHashSet);
+    return this.collectAllImportedTerminologiesFromDescription(Lists.<DescriptionBox>newArrayList(it), Sets.<TerminologyBox>newHashSet());
   }
   
   public final Iterable<TerminologyBox> collectAllImportedTerminologiesFromDescription(final ArrayList<DescriptionBox> queue, final HashSet<TerminologyBox> acc) {
@@ -724,22 +656,18 @@ public class OMLExtensions {
       }
       final DescriptionBox dbox = IterableExtensions.<DescriptionBox>head(queue);
       queue.remove(dbox);
-      EList<DescriptionBoxRefinement> _descriptionBoxRefinements = dbox.getDescriptionBoxRefinements();
       final Function1<DescriptionBoxRefinement, DescriptionBox> _function = (DescriptionBoxRefinement it) -> {
         return it.getRefinedDescriptionBox();
       };
-      final List<DescriptionBox> incd = ListExtensions.<DescriptionBoxRefinement, DescriptionBox>map(_descriptionBoxRefinements, _function);
+      final List<DescriptionBox> incd = ListExtensions.<DescriptionBoxRefinement, DescriptionBox>map(dbox.getDescriptionBoxRefinements(), _function);
       queue.addAll(incd);
-      EList<DescriptionBoxExtendsClosedWorldDefinitions> _closedWorldDefinitions = dbox.getClosedWorldDefinitions();
       final Function1<DescriptionBoxExtendsClosedWorldDefinitions, TerminologyBox> _function_1 = (DescriptionBoxExtendsClosedWorldDefinitions it) -> {
         return it.getClosedWorldDefinitions();
       };
-      List<TerminologyBox> _map = ListExtensions.<DescriptionBoxExtendsClosedWorldDefinitions, TerminologyBox>map(_closedWorldDefinitions, _function_1);
       final Function1<TerminologyBox, Iterable<TerminologyBox>> _function_2 = (TerminologyBox it) -> {
         return this.allImportedTerminologies(it);
       };
-      List<Iterable<TerminologyBox>> _map_1 = ListExtensions.<TerminologyBox, Iterable<TerminologyBox>>map(_map, _function_2);
-      final Iterable<TerminologyBox> inct = Iterables.<TerminologyBox>concat(_map_1);
+      final Iterable<TerminologyBox> inct = Iterables.<TerminologyBox>concat(ListExtensions.<TerminologyBox, Iterable<TerminologyBox>>map(ListExtensions.<DescriptionBoxExtendsClosedWorldDefinitions, TerminologyBox>map(dbox.getClosedWorldDefinitions(), _function_1), _function_2));
       Iterables.<TerminologyBox>addAll(acc, inct);
       _xblockexpression = this.collectAllImportedTerminologiesFromDescription(queue, acc);
     }
@@ -747,9 +675,7 @@ public class OMLExtensions {
   }
   
   public Iterable<DescriptionBox> allImportedDescriptions(final DescriptionBox it) {
-    ArrayList<DescriptionBox> _newArrayList = Lists.<DescriptionBox>newArrayList(it);
-    ArrayList<DescriptionBox> _newArrayList_1 = Lists.<DescriptionBox>newArrayList(it);
-    return this.collectAllImportedDescriptions(_newArrayList, _newArrayList_1);
+    return this.collectAllImportedDescriptions(Lists.<DescriptionBox>newArrayList(it), Lists.<DescriptionBox>newArrayList(it));
   }
   
   public final Iterable<DescriptionBox> collectAllImportedDescriptions(final ArrayList<DescriptionBox> queue, final ArrayList<DescriptionBox> acc) {
@@ -761,11 +687,10 @@ public class OMLExtensions {
       }
       final DescriptionBox dbox = IterableExtensions.<DescriptionBox>head(queue);
       queue.remove(dbox);
-      EList<DescriptionBoxRefinement> _descriptionBoxRefinements = dbox.getDescriptionBoxRefinements();
       final Function1<DescriptionBoxRefinement, DescriptionBox> _function = (DescriptionBoxRefinement it) -> {
         return it.getRefinedDescriptionBox();
       };
-      final List<DescriptionBox> inc = ListExtensions.<DescriptionBoxRefinement, DescriptionBox>map(_descriptionBoxRefinements, _function);
+      final List<DescriptionBox> inc = ListExtensions.<DescriptionBoxRefinement, DescriptionBox>map(dbox.getDescriptionBoxRefinements(), _function);
       queue.addAll(inc);
       acc.addAll(inc);
       _xblockexpression = this.collectAllImportedDescriptions(queue, acc);
@@ -1073,8 +998,7 @@ public class OMLExtensions {
       }
     }
     if (!_matched) {
-      EClass _eClass = e.eClass();
-      _switchResult = _eClass.getName();
+      _switchResult = e.eClass().getName();
     }
     return _switchResult;
   }

@@ -200,8 +200,7 @@ public abstract class ModuleImpl extends ElementImpl implements Module {
 		String _iri = this.getIri();
 		String _substring = null;
 		if (_iri!=null) {
-			String _iri_1 = this.getIri();
-			int _lastIndexOf = _iri_1.lastIndexOf("/");
+			int _lastIndexOf = this.getIri().lastIndexOf("/");
 			int _plus = (1 + _lastIndexOf);
 			_substring=_iri.substring(_plus);
 		}

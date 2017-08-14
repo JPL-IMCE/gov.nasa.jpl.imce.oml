@@ -186,8 +186,7 @@ public class ConceptDesignationTerminologyAxiomImpl extends TerminologyBoxAxiomI
 		boolean _matched = false;
 		if (_tbox instanceof TerminologyGraph) {
 			_matched=true;
-			TerminologyBox _tbox_1 = this.getTbox();
-			_switchResult = TerminologyGraph.class.cast(_tbox_1);
+			_switchResult = TerminologyGraph.class.cast(this.getTbox());
 		}
 		if (!_matched) {
 			_switchResult = null;
@@ -219,28 +218,26 @@ public class ConceptDesignationTerminologyAxiomImpl extends TerminologyBoxAxiomI
 	 * @generated
 	 */
 	public String uuid() {
-		TerminologyBox _tbox = this.getTbox();
-		String _uuid = _tbox.uuid();
-		String _string = _uuid.toString();
+		String _string = this.getTbox().uuid().toString();
 		Pair<String, String> _mappedTo = Pair.<String, String>of("tbox", _string);
 		Concept _designatedConcept = this.getDesignatedConcept();
-		String _uuid_1 = null;
+		String _uuid = null;
 		if (_designatedConcept!=null) {
-			_uuid_1=_designatedConcept.uuid();
+			_uuid=_designatedConcept.uuid();
 		}
 		String _string_1 = null;
-		if (_uuid_1!=null) {
-			_string_1=_uuid_1.toString();
+		if (_uuid!=null) {
+			_string_1=_uuid.toString();
 		}
 		Pair<String, String> _mappedTo_1 = Pair.<String, String>of("designatedConcept", _string_1);
 		TerminologyBox _designatedTerminology = this.getDesignatedTerminology();
-		String _uuid_2 = null;
+		String _uuid_1 = null;
 		if (_designatedTerminology!=null) {
-			_uuid_2=_designatedTerminology.uuid();
+			_uuid_1=_designatedTerminology.uuid();
 		}
 		String _string_2 = null;
-		if (_uuid_2!=null) {
-			_string_2=_uuid_2.toString();
+		if (_uuid_1!=null) {
+			_string_2=_uuid_1.toString();
 		}
 		Pair<String, String> _mappedTo_2 = Pair.<String, String>of("designatedTerminology", _string_2);
 		UUID _derivedUUID = OMLExtensions.derivedUUID(
