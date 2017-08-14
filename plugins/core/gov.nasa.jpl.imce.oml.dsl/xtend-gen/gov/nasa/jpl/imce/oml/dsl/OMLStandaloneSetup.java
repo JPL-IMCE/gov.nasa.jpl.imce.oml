@@ -32,8 +32,7 @@ import org.eclipse.emf.ecore.EPackage;
 @SuppressWarnings("all")
 public class OMLStandaloneSetup extends OMLStandaloneSetupGenerated {
   public static void doSetup() {
-    OMLStandaloneSetup _oMLStandaloneSetup = new OMLStandaloneSetup();
-    _oMLStandaloneSetup.createInjectorAndDoEMFRegistration();
+    new OMLStandaloneSetup().createInjectorAndDoEMFRegistration();
   }
   
   @Override

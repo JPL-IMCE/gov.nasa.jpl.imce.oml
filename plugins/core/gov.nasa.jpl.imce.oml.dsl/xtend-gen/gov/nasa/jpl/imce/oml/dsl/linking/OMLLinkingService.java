@@ -26,7 +26,6 @@ import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue;
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
 import gov.nasa.jpl.imce.oml.model.common.Element;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
-import gov.nasa.jpl.imce.oml.model.common.Module;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsPackage;
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
@@ -36,7 +35,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.function.Consumer;
 import org.apache.xml.resolver.Catalog;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
@@ -50,7 +48,6 @@ import org.eclipse.xtext.linking.impl.DefaultLinkingService;
 import org.eclipse.xtext.linking.impl.IllegalNodeException;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
-import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.ILeafNode;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.resource.IEObjectDescription;
@@ -77,8 +74,7 @@ public class OMLLinkingService extends DefaultLinkingService {
         return Collections.<EObject>emptyList();
       }
       if ((crossRefString.startsWith("<") && crossRefString.endsWith(">"))) {
-        Resource _eResource = context.eResource();
-        final ResourceSet rs = _eResource.getResourceSet();
+        final ResourceSet rs = context.eResource().getResourceSet();
         if ((null == rs)) {
           return Collections.<EObject>emptyList();
         }
@@ -107,8 +103,7 @@ public class OMLLinkingService extends DefaultLinkingService {
           throw new IllegalNodeException(node, 
             ("Cross-reference cannot specify a fragment OML Entity: " + crossRefIRI));
         }
-        Resource _eResource_1 = context.eResource();
-        final Catalog catalog = OMLExtensions.findCatalogIfExists(_eResource_1);
+        final Catalog catalog = OMLExtensions.findCatalogIfExists(context.eResource());
         if ((null == catalog)) {
           final EClassifier refType = ref.getEType();
           boolean _matched = false;
@@ -180,8 +175,7 @@ public class OMLLinkingService extends DefaultLinkingService {
           if (((null == resolvedIRI) || Objects.equal(resolvedIRI, resourceIRI))) {
             return Collections.<EObject>emptyList();
           }
-          URI _createURI = URI.createURI(resolvedIRI);
-          final Resource resolvedOML = rs.getResource(_createURI, true);
+          final Resource resolvedOML = rs.getResource(URI.createURI(resolvedIRI), true);
           final StringBuffer problems = new StringBuffer();
           final Consumer<Resource.Diagnostic> _function_6 = (Resource.Diagnostic e) -> {
             boolean _matched_1 = false;
