@@ -43,7 +43,7 @@ public interface TerminologyGraph extends TerminologyBox {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%org.eclipse.emf.common.util.EList%><<%gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBoxAxiom%>> _boxAxioms = this.getBoxAxioms();\n<%java.lang.Iterable%><<%gov.nasa.jpl.imce.oml.model.common.ModuleEdge%>> _filter = <%com.google.common.collect.Iterables%>.<<%gov.nasa.jpl.imce.oml.model.common.ModuleEdge%>>filter(_boxAxioms, <%gov.nasa.jpl.imce.oml.model.common.ModuleEdge%>.class);\nreturn <%org.eclipse.emf.common.util.ECollections%>.<<%gov.nasa.jpl.imce.oml.model.common.ModuleEdge%>>asEList(((<%gov.nasa.jpl.imce.oml.model.common.ModuleEdge%>[])org.eclipse.xtext.xbase.lib.Conversions.unwrapArray(_filter, <%gov.nasa.jpl.imce.oml.model.common.ModuleEdge%>.class)));'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return <%org.eclipse.emf.common.util.ECollections%>.<<%gov.nasa.jpl.imce.oml.model.common.ModuleEdge%>>asEList(((<%gov.nasa.jpl.imce.oml.model.common.ModuleEdge%>[])org.eclipse.xtext.xbase.lib.Conversions.unwrapArray(<%com.google.common.collect.Iterables%>.<<%gov.nasa.jpl.imce.oml.model.common.ModuleEdge%>>filter(this.getBoxAxioms(), <%gov.nasa.jpl.imce.oml.model.common.ModuleEdge%>.class), <%gov.nasa.jpl.imce.oml.model.common.ModuleEdge%>.class)));'"
 	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='extent.boxAxioms.getOrElse(this, scala.collection.immutable.Set.empty[resolver.api.ModuleEdge])'"
 	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
 	 * @generated

@@ -24,7 +24,6 @@ import gov.nasa.jpl.imce.oml.model.terminologies.Aspect;
 import gov.nasa.jpl.imce.oml.model.terminologies.AspectSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.Entity;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage;
-import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -196,8 +195,7 @@ public class AspectSpecializationAxiomImpl extends SpecializationAxiomImpl imple
 	 * @generated
 	 */
 	public String uuid() {
-		TerminologyBox _tbox = this.getTbox();
-		String _uuid = _tbox.uuid();
+		String _uuid = this.getTbox().uuid();
 		Pair<String, String> _mappedTo = Pair.<String, String>of("tbox", _uuid);
 		Aspect _superAspect = this.getSuperAspect();
 		String _uuid_1 = null;

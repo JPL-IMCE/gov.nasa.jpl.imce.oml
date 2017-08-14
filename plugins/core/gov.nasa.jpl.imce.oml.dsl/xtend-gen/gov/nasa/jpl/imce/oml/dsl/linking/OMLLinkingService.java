@@ -26,7 +26,6 @@ import gov.nasa.jpl.imce.oml.model.common.Annotation;
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
 import gov.nasa.jpl.imce.oml.model.common.Element;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
-import gov.nasa.jpl.imce.oml.model.common.Module;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsPackage;
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
@@ -36,7 +35,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.function.Consumer;
 import org.apache.xml.resolver.Catalog;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
@@ -50,7 +48,6 @@ import org.eclipse.xtext.linking.impl.DefaultLinkingService;
 import org.eclipse.xtext.linking.impl.IllegalNodeException;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
-import org.eclipse.xtext.nodemodel.ICompositeNode;
 import org.eclipse.xtext.nodemodel.ILeafNode;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.resource.IEObjectDescription;
@@ -77,8 +74,7 @@ public class OMLLinkingService extends DefaultLinkingService {
         return Collections.<EObject>emptyList();
       }
       if ((crossRefString.startsWith("<") && crossRefString.endsWith(">"))) {
-        Resource _eResource = context.eResource();
-        final ResourceSet rs = _eResource.getResourceSet();
+        final ResourceSet rs = context.eResource().getResourceSet();
         if ((null == rs)) {
           return Collections.<EObject>emptyList();
         }
@@ -107,8 +103,7 @@ public class OMLLinkingService extends DefaultLinkingService {
           throw new IllegalNodeException(node, 
             ("Cross-reference cannot specify a fragment OML Entity: " + crossRefIRI));
         }
-        Resource _eResource_1 = context.eResource();
-        final Catalog catalog = OMLExtensions.findCatalogIfExists(_eResource_1);
+        final Catalog catalog = OMLExtensions.findCatalogIfExists(context.eResource());
         if ((null == catalog)) {
           throw new IllegalNodeException(node, 
             (((("IRI Cross-reference resolution for " + crossRefString) + " requires an ") + 
@@ -118,10 +113,8 @@ public class OMLLinkingService extends DefaultLinkingService {
           if (((null == resolvedIRI) || Objects.equal(resolvedIRI, resourceIRI))) {
             return Collections.<EObject>emptyList();
           }
-          URI _createURI = URI.createURI(resolvedIRI);
-          final Resource resolvedOML = rs.getResource(_createURI, true);
+          final Resource resolvedOML = rs.getResource(URI.createURI(resolvedIRI), true);
           final StringBuffer problems = new StringBuffer();
-          EList<Resource.Diagnostic> _errors = resolvedOML.getErrors();
           final Consumer<Resource.Diagnostic> _function = (Resource.Diagnostic e) -> {
             boolean _matched = false;
             if (e instanceof Diagnostic) {
@@ -161,8 +154,7 @@ public class OMLLinkingService extends DefaultLinkingService {
               problems.append(_plus_6);
             }
           };
-          _errors.forEach(_function);
-          EList<Resource.Diagnostic> _warnings = resolvedOML.getWarnings();
+          resolvedOML.getErrors().forEach(_function);
           final Consumer<Resource.Diagnostic> _function_1 = (Resource.Diagnostic e) -> {
             boolean _matched = false;
             if (e instanceof Diagnostic) {
@@ -200,7 +192,7 @@ public class OMLLinkingService extends DefaultLinkingService {
               problems.append(_plus_5);
             }
           };
-          _warnings.forEach(_function_1);
+          resolvedOML.getWarnings().forEach(_function_1);
           if (((!resolvedOML.getErrors().isEmpty()) || (!resolvedOML.getWarnings().isEmpty()))) {
             String _string = problems.toString();
             String _plus = ((((("IRI cross reference problems\nCross reference:\n" + crossRefString) + 
@@ -213,24 +205,17 @@ public class OMLLinkingService extends DefaultLinkingService {
           EClass _bundle = BundlesPackage.eINSTANCE.getBundle();
           if (Objects.equal(refType, _bundle)) {
             _matched=true;
-            EList<Resource> _resources = rs.getResources();
             final Function1<Resource, Iterable<Bundle>> _function_2 = (Resource it) -> {
-              EList<EObject> _contents = it.getContents();
-              Iterable<Extent> _filter = Iterables.<Extent>filter(_contents, Extent.class);
               final Function1<Extent, Iterable<Bundle>> _function_3 = (Extent it_1) -> {
-                EList<Module> _modules = it_1.getModules();
-                return Iterables.<Bundle>filter(_modules, Bundle.class);
+                return Iterables.<Bundle>filter(it_1.getModules(), Bundle.class);
               };
-              Iterable<Iterable<Bundle>> _map = IterableExtensions.<Extent, Iterable<Bundle>>map(_filter, _function_3);
-              return Iterables.<Bundle>concat(_map);
+              return Iterables.<Bundle>concat(IterableExtensions.<Extent, Iterable<Bundle>>map(Iterables.<Extent>filter(it.getContents(), Extent.class), _function_3));
             };
-            List<Iterable<Bundle>> _map = ListExtensions.<Resource, Iterable<Bundle>>map(_resources, _function_2);
-            Iterable<Bundle> _flatten = Iterables.<Bundle>concat(_map);
             final Function1<Bundle, Boolean> _function_3 = (Bundle b) -> {
               String _iri = b.iri();
               return Boolean.valueOf(Objects.equal(_iri, refIRI));
             };
-            final Bundle bundle = IterableExtensions.<Bundle>findFirst(_flatten, _function_3);
+            final Bundle bundle = IterableExtensions.<Bundle>findFirst(Iterables.<Bundle>concat(ListExtensions.<Resource, Iterable<Bundle>>map(rs.getResources(), _function_2)), _function_3);
             List<EObject> _xifexpression_2 = null;
             if ((null == bundle)) {
               _xifexpression_2 = Collections.<EObject>emptyList();
@@ -243,24 +228,17 @@ public class OMLLinkingService extends DefaultLinkingService {
             EClass _terminologyBox = TerminologiesPackage.eINSTANCE.getTerminologyBox();
             if (Objects.equal(refType, _terminologyBox)) {
               _matched=true;
-              EList<Resource> _resources_1 = rs.getResources();
               final Function1<Resource, Iterable<TerminologyBox>> _function_4 = (Resource it) -> {
-                EList<EObject> _contents = it.getContents();
-                Iterable<Extent> _filter = Iterables.<Extent>filter(_contents, Extent.class);
                 final Function1<Extent, Iterable<TerminologyBox>> _function_5 = (Extent it_1) -> {
-                  EList<Module> _modules = it_1.getModules();
-                  return Iterables.<TerminologyBox>filter(_modules, TerminologyBox.class);
+                  return Iterables.<TerminologyBox>filter(it_1.getModules(), TerminologyBox.class);
                 };
-                Iterable<Iterable<TerminologyBox>> _map_1 = IterableExtensions.<Extent, Iterable<TerminologyBox>>map(_filter, _function_5);
-                return Iterables.<TerminologyBox>concat(_map_1);
+                return Iterables.<TerminologyBox>concat(IterableExtensions.<Extent, Iterable<TerminologyBox>>map(Iterables.<Extent>filter(it.getContents(), Extent.class), _function_5));
               };
-              List<Iterable<TerminologyBox>> _map_1 = ListExtensions.<Resource, Iterable<TerminologyBox>>map(_resources_1, _function_4);
-              Iterable<TerminologyBox> _flatten_1 = Iterables.<TerminologyBox>concat(_map_1);
               final Function1<TerminologyBox, Boolean> _function_5 = (TerminologyBox tbox) -> {
                 String _iri = tbox.iri();
                 return Boolean.valueOf(Objects.equal(_iri, refIRI));
               };
-              final TerminologyBox tbox = IterableExtensions.<TerminologyBox>findFirst(_flatten_1, _function_5);
+              final TerminologyBox tbox = IterableExtensions.<TerminologyBox>findFirst(Iterables.<TerminologyBox>concat(ListExtensions.<Resource, Iterable<TerminologyBox>>map(rs.getResources(), _function_4)), _function_5);
               List<EObject> _xifexpression_3 = null;
               if ((null == tbox)) {
                 _xifexpression_3 = Collections.<EObject>emptyList();
@@ -274,24 +252,17 @@ public class OMLLinkingService extends DefaultLinkingService {
             EClass _descriptionBox = DescriptionsPackage.eINSTANCE.getDescriptionBox();
             if (Objects.equal(refType, _descriptionBox)) {
               _matched=true;
-              EList<Resource> _resources_2 = rs.getResources();
               final Function1<Resource, Iterable<DescriptionBox>> _function_6 = (Resource it) -> {
-                EList<EObject> _contents = it.getContents();
-                Iterable<Extent> _filter = Iterables.<Extent>filter(_contents, Extent.class);
                 final Function1<Extent, Iterable<DescriptionBox>> _function_7 = (Extent it_1) -> {
-                  EList<Module> _modules = it_1.getModules();
-                  return Iterables.<DescriptionBox>filter(_modules, DescriptionBox.class);
+                  return Iterables.<DescriptionBox>filter(it_1.getModules(), DescriptionBox.class);
                 };
-                Iterable<Iterable<DescriptionBox>> _map_2 = IterableExtensions.<Extent, Iterable<DescriptionBox>>map(_filter, _function_7);
-                return Iterables.<DescriptionBox>concat(_map_2);
+                return Iterables.<DescriptionBox>concat(IterableExtensions.<Extent, Iterable<DescriptionBox>>map(Iterables.<Extent>filter(it.getContents(), Extent.class), _function_7));
               };
-              List<Iterable<DescriptionBox>> _map_2 = ListExtensions.<Resource, Iterable<DescriptionBox>>map(_resources_2, _function_6);
-              Iterable<DescriptionBox> _flatten_2 = Iterables.<DescriptionBox>concat(_map_2);
               final Function1<DescriptionBox, Boolean> _function_7 = (DescriptionBox dbox) -> {
                 String _iri = dbox.iri();
                 return Boolean.valueOf(Objects.equal(_iri, refIRI));
               };
-              final DescriptionBox dbox = IterableExtensions.<DescriptionBox>findFirst(_flatten_2, _function_7);
+              final DescriptionBox dbox = IterableExtensions.<DescriptionBox>findFirst(Iterables.<DescriptionBox>concat(ListExtensions.<Resource, Iterable<DescriptionBox>>map(rs.getResources(), _function_6)), _function_7);
               List<EObject> _xifexpression_4 = null;
               if ((null == dbox)) {
                 _xifexpression_4 = Collections.<EObject>emptyList();
@@ -306,11 +277,8 @@ public class OMLLinkingService extends DefaultLinkingService {
       }
       if ((Annotation.class.isInstance(context) && Objects.equal(ref, CommonPackage.eINSTANCE.getAnnotation_Property()))) {
         final Annotation aContext = Annotation.class.cast(context);
-        ICompositeNode _parent = node.getParent();
-        final INode nextNode = _parent.getNextSibling();
-        Iterable<ILeafNode> _leafNodes = nextNode.getLeafNodes();
-        ILeafNode _head = IterableExtensions.<ILeafNode>head(_leafNodes);
-        final EObject nextSE = _head.getSemanticElement();
+        final INode nextNode = node.getParent().getNextSibling();
+        final EObject nextSE = IterableExtensions.<ILeafNode>head(nextNode.getLeafNodes()).getSemanticElement();
         boolean _matched_1 = false;
         if (nextSE instanceof Element) {
           _matched_1=true;
@@ -321,13 +289,11 @@ public class OMLLinkingService extends DefaultLinkingService {
             _matched_1=true;
             final Iterable<ILeafNode> nextLeafNodes = nextNode.getLeafNodes();
             final Function1<ILeafNode, Boolean> _function_8 = (ILeafNode n) -> {
-              EObject _grammarElement = n.getGrammarElement();
-              return Boolean.valueOf(CrossReference.class.isInstance(_grammarElement));
+              return Boolean.valueOf(CrossReference.class.isInstance(n.getGrammarElement()));
             };
             final ILeafNode n1 = IterableExtensions.<ILeafNode>findFirst(nextLeafNodes, _function_8);
             this.getLinkedObjects(nextSE, ref, n1);
-            Element _subject = ((Annotation)nextSE).getSubject();
-            aContext.setSubject(_subject);
+            aContext.setSubject(((Annotation)nextSE).getSubject());
           }
         }
       }

@@ -59,13 +59,13 @@ public class LiftOMLBundle2XcoreMetamodelWizard extends EmptyXcoreProjectWizard 
     this.page1 = _liftOMLBundle2XcoreMetamodelWizardPage;
     this.addPage(this.page1);
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append(qname, "");
+    _builder.append(qname);
     _builder.append(".edit");
     LiftOMLBundle2XcoreNewProjectWizardPage _liftOMLBundle2XcoreNewProjectWizardPage = new LiftOMLBundle2XcoreNewProjectWizardPage(_builder.toString(), this);
     this.newProjectCreationPage1 = _liftOMLBundle2XcoreNewProjectWizardPage;
     this.addPage(this.newProjectCreationPage1);
     StringConcatenation _builder_1 = new StringConcatenation();
-    _builder_1.append(qname, "");
+    _builder_1.append(qname);
     _builder_1.append(".ecore");
     LiftOMLBundle2XcoreNewProjectWizardPage _liftOMLBundle2XcoreNewProjectWizardPage_1 = new LiftOMLBundle2XcoreNewProjectWizardPage(_builder_1.toString(), this);
     this.newProjectCreationPage = _liftOMLBundle2XcoreNewProjectWizardPage_1;
@@ -86,8 +86,7 @@ public class LiftOMLBundle2XcoreMetamodelWizard extends EmptyXcoreProjectWizard 
     if (_endsWith) {
       int _length = qname.length();
       int _minus = (_length - 6);
-      String _substring = qname.substring(0, _minus);
-      qname = _substring;
+      qname = qname.substring(0, _minus);
     }
   }
   

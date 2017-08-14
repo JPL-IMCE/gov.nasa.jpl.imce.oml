@@ -161,7 +161,7 @@ public class AnonymousConceptUnionAxiomImpl extends DisjointUnionOfConceptsAxiom
 		if (_uuid!=null) {
 			_string=_uuid.toString();
 		}
-		Object _name = this.getName();
+		String _name = this.getName();
 		String _string_1 = null;
 		if (_name!=null) {
 			_string_1=_name.toString();

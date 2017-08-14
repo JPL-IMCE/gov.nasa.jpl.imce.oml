@@ -196,7 +196,7 @@ public class SingletonInstanceStructuredDataPropertyValueImpl extends SingletonI
 		}
 		Pair<String, String> _mappedTo = Pair.<String, String>of("descriptionBox", _string);
 		ConceptualEntitySingletonInstance _singletonInstance = this.getSingletonInstance();
-		Object _uuid_1 = null;
+		String _uuid_1 = null;
 		if (_singletonInstance!=null) {
 			_uuid_1=_singletonInstance.uuid();
 		}

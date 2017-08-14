@@ -343,10 +343,8 @@ public class DescriptionBoxImpl extends ModuleImpl implements DescriptionBox {
 		BasicEList<ModuleEdge> _xblockexpression = null;
 		{
 			final BasicEList<ModuleEdge> me = new BasicEList<ModuleEdge>();
-			EList<DescriptionBoxRefinement> _descriptionBoxRefinements = this.getDescriptionBoxRefinements();
-			me.addAll(_descriptionBoxRefinements);
-			EList<DescriptionBoxExtendsClosedWorldDefinitions> _closedWorldDefinitions = this.getClosedWorldDefinitions();
-			me.addAll(_closedWorldDefinitions);
+			me.addAll(this.getDescriptionBoxRefinements());
+			me.addAll(this.getClosedWorldDefinitions());
 			_xblockexpression = me;
 		}
 		return _xblockexpression;

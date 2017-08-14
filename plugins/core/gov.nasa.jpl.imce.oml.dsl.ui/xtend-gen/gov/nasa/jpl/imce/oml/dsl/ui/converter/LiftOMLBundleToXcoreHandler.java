@@ -23,13 +23,11 @@ import gov.nasa.jpl.imce.oml.dsl.generator.OMLGenerator;
 import gov.nasa.jpl.imce.oml.dsl.ui.converter.LiftOMLBundle2XcoreMetamodelWizard;
 import gov.nasa.jpl.imce.oml.dsl.ui.converter.LiftOMLBundle2XcoreMetamodelWizardDialog;
 import gov.nasa.jpl.imce.oml.model.bundles.Bundle;
-import java.util.Map;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
-import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
@@ -38,7 +36,6 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.widgets.Shell;
-import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchWindow;
@@ -90,11 +87,8 @@ public class LiftOMLBundleToXcoreHandler extends AbstractHandler {
       Object _firstElement = sselection.getFirstElement();
       final IFile omlFile = ((IFile) _firstElement);
       if ((omlFile != null)) {
-        IPath _fullPath = omlFile.getFullPath();
-        String _string = _fullPath.toString();
-        final URI uri = URI.createPlatformResourceURI(_string, true);
-        IProject _project = omlFile.getProject();
-        final ResourceSet rs = this.resourceSetProvider.get(_project);
+        final URI uri = URI.createPlatformResourceURI(omlFile.getFullPath().toString(), true);
+        final ResourceSet rs = this.resourceSetProvider.get(omlFile.getProject());
         final Resource r = rs.getResource(uri, true);
         this.generate(wb, sselection, event, r, omlFile, fsa, generatorContext, monitor);
         return null;
@@ -104,8 +98,7 @@ public class LiftOMLBundleToXcoreHandler extends AbstractHandler {
     boolean _matched = false;
     if (activeEditor instanceof XtextEditor) {
       _matched=true;
-      IEditorInput _editorInput = ((XtextEditor)activeEditor).getEditorInput();
-      IFile _adapter = _editorInput.<IFile>getAdapter(IFile.class);
+      IFile _adapter = ((XtextEditor)activeEditor).getEditorInput().<IFile>getAdapter(IFile.class);
       final IFile omlFile_1 = _adapter;
       boolean _matched_1 = false;
       if (omlFile_1 instanceof IFile) {
@@ -191,8 +184,7 @@ public class LiftOMLBundleToXcoreHandler extends AbstractHandler {
     final String outDir = "model";
     fsa.setProject(metamodelProject);
     fsa.setOutputPath(outDir);
-    Map<String, OutputConfiguration> _outputConfigurations = fsa.getOutputConfigurations();
-    final OutputConfiguration outputConfig = _outputConfigurations.get(EclipseResourceFileSystemAccess2.DEFAULT_OUTPUT);
+    final OutputConfiguration outputConfig = fsa.getOutputConfigurations().get(EclipseResourceFileSystemAccess2.DEFAULT_OUTPUT);
     if ((outputConfig != null)) {
       outputConfig.setCreateOutputDirectory(true);
     } else {

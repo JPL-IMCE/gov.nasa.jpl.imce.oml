@@ -19,7 +19,6 @@ package gov.nasa.jpl.imce.oml.dsl.ui.converter;
 
 import gov.nasa.jpl.imce.oml.dsl.ui.converter.LiftOMLBundle2XcoreMetamodelWizard;
 import gov.nasa.jpl.imce.oml.dsl.ui.converter.LiftOMLBundle2XcoreMetamodelWizardPage;
-import gov.nasa.jpl.imce.oml.dsl.ui.converter.LiftOMLBundle2XcoreNewProjectWizardPage;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.WizardDialog;
@@ -74,15 +73,9 @@ public class LiftOMLBundle2XcoreMetamodelWizardDialog extends WizardDialog {
     if (_tripleEquals) {
       this.liftWizard.updateDsmlPluginNames();
     }
-    LiftOMLBundle2XcoreNewProjectWizardPage _liftOMLBundle2XcoreNewProjectWizardPage = this.liftWizard.getLiftOMLBundle2XcoreNewProjectWizardPage();
-    IProject _projectHandle = _liftOMLBundle2XcoreNewProjectWizardPage.getProjectHandle();
-    this.ecoreProjectHandle = _projectHandle;
-    LiftOMLBundle2XcoreNewProjectWizardPage _liftOMLBundle2XcoreNewProjectWizardPage1 = this.liftWizard.getLiftOMLBundle2XcoreNewProjectWizardPage1();
-    IProject _projectHandle_1 = _liftOMLBundle2XcoreNewProjectWizardPage1.getProjectHandle();
-    this.editProjectHandle = _projectHandle_1;
-    LiftOMLBundle2XcoreMetamodelWizardPage _liftOMLBundle2XcoreMetamodelWizardPage_1 = this.liftWizard.getLiftOMLBundle2XcoreMetamodelWizardPage();
-    String _dSLName = _liftOMLBundle2XcoreMetamodelWizardPage_1.getDSLName();
-    this.dsmlName = _dSLName;
+    this.ecoreProjectHandle = this.liftWizard.getLiftOMLBundle2XcoreNewProjectWizardPage().getProjectHandle();
+    this.editProjectHandle = this.liftWizard.getLiftOMLBundle2XcoreNewProjectWizardPage1().getProjectHandle();
+    this.dsmlName = this.liftWizard.getLiftOMLBundle2XcoreMetamodelWizardPage().getDSLName();
     super.finishPressed();
   }
   

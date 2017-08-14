@@ -29,8 +29,6 @@ import java.lang.reflect.InvocationTargetException;
 
 import java.util.Collection;
 
-import org.eclipse.emf.common.notify.Adapter;
-
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 
@@ -39,7 +37,6 @@ import org.eclipse.emf.ecore.EObject;
 
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
@@ -87,10 +84,8 @@ public abstract class OMLObjectImpl extends CDOObjectImpl implements OMLObject {
 	public <T extends OMLObject> EList<T> omlInverseReferencers(final Class<T> aType) {
 		EList<T> _xblockexpression = null;
 		{
-			Resource _eResource = this.eResource();
-			final ResourceSet resourceSet = _eResource.getResourceSet();
-			EList<Adapter> _eAdapters = resourceSet.eAdapters();
-			final Iterable<ECrossReferenceAdapter> adapters = Iterables.<ECrossReferenceAdapter>filter(_eAdapters, ECrossReferenceAdapter.class);
+			final ResourceSet resourceSet = this.eResource().getResourceSet();
+			final Iterable<ECrossReferenceAdapter> adapters = Iterables.<ECrossReferenceAdapter>filter(resourceSet.eAdapters(), ECrossReferenceAdapter.class);
 			EList<T> _xifexpression = null;
 			boolean _isEmpty = IterableExtensions.isEmpty(adapters);
 			if (_isEmpty) {
@@ -102,17 +97,12 @@ public abstract class OMLObjectImpl extends CDOObjectImpl implements OMLObject {
 							return it.getEObject();
 						}
 					};
-					Iterable<EObject> _map = IterableExtensions.<Setting, EObject>map(references, _function);
-					Iterable<T> _filter = Iterables.<T>filter(_map, aType);
-					_xblockexpression_1 = ECollections.<T>asEList(((T[])org.eclipse.xtext.xbase.lib.Conversions.unwrapArray(_filter, OMLObject.class)));
+					_xblockexpression_1 = ECollections.<T>asEList(((T[])org.eclipse.xtext.xbase.lib.Conversions.unwrapArray(Iterables.<T>filter(IterableExtensions.<Setting, EObject>map(references, _function), aType), OMLObject.class)));
 				}
 				_xifexpression = _xblockexpression_1;
 			}
 			else {
-				ECrossReferenceAdapter _get = ((ECrossReferenceAdapter[])org.eclipse.xtext.xbase.lib.Conversions.unwrapArray(adapters, ECrossReferenceAdapter.class))[0];
-				Collection<Setting> _inverseReferences = _get.getInverseReferences(this);
-				Iterable<T> _filter = Iterables.<T>filter(_inverseReferences, aType);
-				_xifexpression = ECollections.<T>asEList(((T[])org.eclipse.xtext.xbase.lib.Conversions.unwrapArray(_filter, OMLObject.class)));
+				_xifexpression = ECollections.<T>asEList(((T[])org.eclipse.xtext.xbase.lib.Conversions.unwrapArray(Iterables.<T>filter(((ECrossReferenceAdapter[])org.eclipse.xtext.xbase.lib.Conversions.unwrapArray(adapters, ECrossReferenceAdapter.class))[0].getInverseReferences(this), aType), OMLObject.class)));
 			}
 			_xblockexpression = _xifexpression;
 		}
