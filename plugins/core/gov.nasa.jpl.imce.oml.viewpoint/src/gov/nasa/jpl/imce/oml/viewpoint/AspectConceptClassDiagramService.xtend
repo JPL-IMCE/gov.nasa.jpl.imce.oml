@@ -34,6 +34,8 @@ import org.eclipse.sirius.diagram.DSemanticDiagram
 
 /*
  * Used to query for visual elements for the 'Aspect/Concept Class Diagram'
+ * Containers: Concept, Aspect
+ * Edges: ...
  * 
  * The 'Aspect/Concept Class Diagram' will show all {@link ReifiedRelationship}s
  * that have a selected root {@link Aspect} or {@link Concept} as its domain or range 
@@ -62,7 +64,8 @@ class AspectConceptClassDiagramService {
 	 * @param c The root Concept
 	 * @return Set of {@link ReifiedRelationship}s
 	 */
-	def Set<EntityRelationship> getVisualRelationshipsWithRootAsDomain(Entity e){
+	def Set<EntityRelationship> getVisualRelationshipsWithRootAsDomain(DDiagram d){
+		val e = getRootEntity(d)
 		return e.tbox.boxStatements.
 		filter(EntityRelationship).
 		filter[f | f.source == e].
@@ -76,7 +79,8 @@ class AspectConceptClassDiagramService {
 	 * @param c The root Concept
 	 * @return Set of {@link ReifiedRelationship}s
 	 */
-	def Set<ReifiedRelationship> getVisualRelationshipsWithRootAsRange(Entity e){
+	def Set<ReifiedRelationship> getVisualRelationshipsWithRootAsRange(DDiagram d){
+		val e = getRootEntity(d)
 		return e.tbox.boxStatements.
 		filter(ReifiedRelationship).
 		filter[f | f.target == e].
@@ -88,7 +92,8 @@ class AspectConceptClassDiagramService {
 	 * to the passed {@link Entity}
 	 * @param e The entity which to find connections 
 	 */
-	def Set<Entity> getVisualEntities(Entity e){
+	def Set<Entity> getVisualEntities(DDiagram d){
+		val e = getRootEntity(d)
 		val entities = new HashSet<Entity>
 		e.tbox.boxStatements.
 		forEach[t | 
@@ -123,7 +128,8 @@ class AspectConceptClassDiagramService {
 	 * @param e The root {@link Entity}
 	 * @return Set of {@link AspectSpecializationAxiom}s
 	 */
-	 def Set<AspectSpecializationAxiom> getVisualAspectAxioms(Entity e){
+	 def Set<AspectSpecializationAxiom> getVisualAspectAxioms(DDiagram d){
+	 	val e = getRootEntity(d)
 	 	return e.tbox.boxStatements.
 	 	filter(AspectSpecializationAxiom).
 	 	filter[f | f.subEntity == e].
@@ -137,10 +143,11 @@ class AspectConceptClassDiagramService {
 	 * @param c The root {@link Concept}
 	 * @return Set of {@link ConceptSpecializationAxiom}s
 	 */
-	 def Set<ConceptSpecializationAxiom> getVisualConceptAxioms(Concept e){
-	 	return e.tbox.boxStatements.
+	 def Set<ConceptSpecializationAxiom> getVisualConceptAxioms(DDiagram d){
+	 	val c = getRootEntity(d)
+	 	return c.tbox.boxStatements.
 	 	filter(ConceptSpecializationAxiom).
-	 	filter[f | f.subConcept == e].
+	 	filter[f | f.subConcept == c].
 	 	toSet
 	 }
 	 
