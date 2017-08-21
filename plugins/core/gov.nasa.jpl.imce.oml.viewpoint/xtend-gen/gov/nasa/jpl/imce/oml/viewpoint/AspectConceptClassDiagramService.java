@@ -28,12 +28,10 @@ import gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.SpecializationAxiom;
-import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBoxStatement;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Consumer;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
@@ -45,9 +43,13 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
  * 
  * The 'Aspect/Concept Class Diagram' will show all {@link ReifiedRelationship}s
  * that have a selected root {@link Aspect} or {@link Concept} as its domain or range
- * (from this {@link TerminologyBox} only) .
+ * (from this {@link TerminologyBox} only).
+ * 
  * It also shows {@link SpecializationAxiom}s that have the selected {@Aspect} or
  * {@link Concept} as its child (superEntity/Concept/Aspect)
+ * 
+ * Containers: Concept, Aspect
+ * Edges: Reified/UnReified Relationships, Specialization Axioms
  */
 @SuppressWarnings("all")
 public class AspectConceptClassDiagramService {
@@ -70,16 +72,13 @@ public class AspectConceptClassDiagramService {
    * @param c The root Concept
    * @return Set of {@link ReifiedRelationship}s
    */
-  public Set<EntityRelationship> getVisualRelationshipsWithRootAsDomain(final Entity e) {
-    TerminologyBox _tbox = e.getTbox();
-    EList<TerminologyBoxStatement> _boxStatements = _tbox.getBoxStatements();
-    Iterable<EntityRelationship> _filter = Iterables.<EntityRelationship>filter(_boxStatements, EntityRelationship.class);
+  public Set<EntityRelationship> getVisualRelationshipsWithRootAsDomain(final DDiagram d) {
+    final Entity e = this.getRootEntity(d);
     final Function1<EntityRelationship, Boolean> _function = (EntityRelationship f) -> {
       Entity _source = f.getSource();
       return Boolean.valueOf(Objects.equal(_source, e));
     };
-    Iterable<EntityRelationship> _filter_1 = IterableExtensions.<EntityRelationship>filter(_filter, _function);
-    return IterableExtensions.<EntityRelationship>toSet(_filter_1);
+    return IterableExtensions.<EntityRelationship>toSet(IterableExtensions.<EntityRelationship>filter(Iterables.<EntityRelationship>filter(e.getTbox().getBoxStatements(), EntityRelationship.class), _function));
   }
   
   /**
@@ -89,16 +88,13 @@ public class AspectConceptClassDiagramService {
    * @param c The root Concept
    * @return Set of {@link ReifiedRelationship}s
    */
-  public Set<ReifiedRelationship> getVisualRelationshipsWithRootAsRange(final Entity e) {
-    TerminologyBox _tbox = e.getTbox();
-    EList<TerminologyBoxStatement> _boxStatements = _tbox.getBoxStatements();
-    Iterable<ReifiedRelationship> _filter = Iterables.<ReifiedRelationship>filter(_boxStatements, ReifiedRelationship.class);
+  public Set<ReifiedRelationship> getVisualRelationshipsWithRootAsRange(final DDiagram d) {
+    final Entity e = this.getRootEntity(d);
     final Function1<ReifiedRelationship, Boolean> _function = (ReifiedRelationship f) -> {
       Entity _target = f.getTarget();
       return Boolean.valueOf(Objects.equal(_target, e));
     };
-    Iterable<ReifiedRelationship> _filter_1 = IterableExtensions.<ReifiedRelationship>filter(_filter, _function);
-    return IterableExtensions.<ReifiedRelationship>toSet(_filter_1);
+    return IterableExtensions.<ReifiedRelationship>toSet(IterableExtensions.<ReifiedRelationship>filter(Iterables.<ReifiedRelationship>filter(e.getTbox().getBoxStatements(), ReifiedRelationship.class), _function));
   }
   
   /**
@@ -106,27 +102,24 @@ public class AspectConceptClassDiagramService {
    * to the passed {@link Entity}
    * @param e The entity which to find connections
    */
-  public Set<Entity> getVisualEntities(final Entity e) {
+  public Set<Entity> getVisualEntities(final DDiagram d) {
     HashSet<Entity> _xblockexpression = null;
     {
+      final Entity e = this.getRootEntity(d);
       final HashSet<Entity> entities = new HashSet<Entity>();
-      TerminologyBox _tbox = e.getTbox();
-      EList<TerminologyBoxStatement> _boxStatements = _tbox.getBoxStatements();
       final Consumer<TerminologyBoxStatement> _function = (TerminologyBoxStatement t) -> {
         if ((t instanceof SpecializationAxiom)) {
           final Entity n = ((SpecializationAxiom) t).child();
           boolean _equals = Objects.equal(n, e);
           if (_equals) {
-            Entity _parent = ((SpecializationAxiom) t).parent();
-            entities.add(_parent);
+            entities.add(((SpecializationAxiom) t).parent());
           }
         } else {
           if ((t instanceof EntityRestrictionAxiom)) {
             final Entity n_1 = ((EntityRestrictionAxiom) t).getRestrictedDomain();
             boolean _equals_1 = Objects.equal(n_1, e);
             if (_equals_1) {
-              Entity _restrictedRange = ((EntityRestrictionAxiom) t).getRestrictedRange();
-              entities.add(_restrictedRange);
+              entities.add(((EntityRestrictionAxiom) t).getRestrictedRange());
             }
           } else {
             if ((t instanceof EntityRelationship)) {
@@ -145,7 +138,7 @@ public class AspectConceptClassDiagramService {
           }
         }
       };
-      _boxStatements.forEach(_function);
+      e.getTbox().getBoxStatements().forEach(_function);
       entities.add(e);
       _xblockexpression = entities;
     }
@@ -159,16 +152,13 @@ public class AspectConceptClassDiagramService {
    * @param e The root {@link Entity}
    * @return Set of {@link AspectSpecializationAxiom}s
    */
-  public Set<AspectSpecializationAxiom> getVisualAspectAxioms(final Entity e) {
-    TerminologyBox _tbox = e.getTbox();
-    EList<TerminologyBoxStatement> _boxStatements = _tbox.getBoxStatements();
-    Iterable<AspectSpecializationAxiom> _filter = Iterables.<AspectSpecializationAxiom>filter(_boxStatements, AspectSpecializationAxiom.class);
+  public Set<AspectSpecializationAxiom> getVisualAspectAxioms(final DDiagram d) {
+    final Entity e = this.getRootEntity(d);
     final Function1<AspectSpecializationAxiom, Boolean> _function = (AspectSpecializationAxiom f) -> {
       Entity _subEntity = f.getSubEntity();
       return Boolean.valueOf(Objects.equal(_subEntity, e));
     };
-    Iterable<AspectSpecializationAxiom> _filter_1 = IterableExtensions.<AspectSpecializationAxiom>filter(_filter, _function);
-    return IterableExtensions.<AspectSpecializationAxiom>toSet(_filter_1);
+    return IterableExtensions.<AspectSpecializationAxiom>toSet(IterableExtensions.<AspectSpecializationAxiom>filter(Iterables.<AspectSpecializationAxiom>filter(e.getTbox().getBoxStatements(), AspectSpecializationAxiom.class), _function));
   }
   
   /**
@@ -178,16 +168,13 @@ public class AspectConceptClassDiagramService {
    * @param c The root {@link Concept}
    * @return Set of {@link ConceptSpecializationAxiom}s
    */
-  public Set<ConceptSpecializationAxiom> getVisualConceptAxioms(final Concept e) {
-    TerminologyBox _tbox = e.getTbox();
-    EList<TerminologyBoxStatement> _boxStatements = _tbox.getBoxStatements();
-    Iterable<ConceptSpecializationAxiom> _filter = Iterables.<ConceptSpecializationAxiom>filter(_boxStatements, ConceptSpecializationAxiom.class);
+  public Set<ConceptSpecializationAxiom> getVisualConceptAxioms(final DDiagram d) {
+    final Entity c = this.getRootEntity(d);
     final Function1<ConceptSpecializationAxiom, Boolean> _function = (ConceptSpecializationAxiom f) -> {
       Concept _subConcept = f.getSubConcept();
-      return Boolean.valueOf(Objects.equal(_subConcept, e));
+      return Boolean.valueOf(Objects.equal(_subConcept, c));
     };
-    Iterable<ConceptSpecializationAxiom> _filter_1 = IterableExtensions.<ConceptSpecializationAxiom>filter(_filter, _function);
-    return IterableExtensions.<ConceptSpecializationAxiom>toSet(_filter_1);
+    return IterableExtensions.<ConceptSpecializationAxiom>toSet(IterableExtensions.<ConceptSpecializationAxiom>filter(Iterables.<ConceptSpecializationAxiom>filter(c.getTbox().getBoxStatements(), ConceptSpecializationAxiom.class), _function));
   }
   
   /**
@@ -198,15 +185,11 @@ public class AspectConceptClassDiagramService {
    * @return Set of {@link EntityRestrictionAxiom}s
    */
   public Set<EntityRestrictionAxiom> getVisualRestrictionAxioms(final Entity e) {
-    TerminologyBox _tbox = e.getTbox();
-    EList<TerminologyBoxStatement> _boxStatements = _tbox.getBoxStatements();
-    Iterable<EntityRestrictionAxiom> _filter = Iterables.<EntityRestrictionAxiom>filter(_boxStatements, EntityRestrictionAxiom.class);
     final Function1<EntityRestrictionAxiom, Boolean> _function = (EntityRestrictionAxiom f) -> {
       Entity _restrictedDomain = f.getRestrictedDomain();
       return Boolean.valueOf(Objects.equal(_restrictedDomain, e));
     };
-    Iterable<EntityRestrictionAxiom> _filter_1 = IterableExtensions.<EntityRestrictionAxiom>filter(_filter, _function);
-    return IterableExtensions.<EntityRestrictionAxiom>toSet(_filter_1);
+    return IterableExtensions.<EntityRestrictionAxiom>toSet(IterableExtensions.<EntityRestrictionAxiom>filter(Iterables.<EntityRestrictionAxiom>filter(e.getTbox().getBoxStatements(), EntityRestrictionAxiom.class), _function));
   }
   
   /**
