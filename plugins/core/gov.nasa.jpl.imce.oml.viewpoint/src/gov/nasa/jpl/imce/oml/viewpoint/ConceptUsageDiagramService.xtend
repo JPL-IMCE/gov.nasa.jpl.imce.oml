@@ -41,6 +41,8 @@ import java.util.Set
 import org.eclipse.sirius.diagram.DDiagram
 import org.eclipse.sirius.diagram.DSemanticDiagram
 import gov.nasa.jpl.imce.oml.model.terminologies.AspectSpecializationAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataProperty
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataProperty
 
 /*
  * Used to query for visual elements in the 'Concept Usage Diagram'
@@ -100,7 +102,8 @@ class ConceptUsageDiagramService {
 	 * @param c The root Concept
 	 * @return Set of {@link ReifiedRelationship}s
 	 */
-	def Set<ReifiedRelationship> getDirectVisualRelationshipsWithAspectAsDomain(Concept c){
+	def Set<ReifiedRelationship> getDirectVisualRelationshipsWithAspectAsDomain(DDiagram d){
+		val c = getRootConcept(d)
 		return getUsageReltionships(c).
 		filter(ReifiedRelationship).
 		filter[f | (f.target == c) && (f.source instanceof Aspect)].

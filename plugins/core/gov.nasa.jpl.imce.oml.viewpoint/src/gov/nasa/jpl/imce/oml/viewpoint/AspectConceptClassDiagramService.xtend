@@ -34,6 +34,8 @@ import org.eclipse.sirius.diagram.DSemanticDiagram
 
 /*
  * Used to query for visual elements for the 'Aspect/Concept Class Diagram'
+ * Containers: Concept, Aspect
+ * Edges: ...
  * 
  * The 'Aspect/Concept Class Diagram' will show all {@link ReifiedRelationship}s
  * that have a selected root {@link Aspect} or {@link Concept} as its domain or range 
@@ -62,7 +64,8 @@ class AspectConceptClassDiagramService {
 	 * @param c The root Concept
 	 * @return Set of {@link ReifiedRelationship}s
 	 */
-	def Set<EntityRelationship> getVisualRelationshipsWithRootAsDomain(Entity e){
+	def Set<EntityRelationship> getVisualRelationshipsWithRootAsDomain(DDiagram d){
+		val e = getRootEntity(d)
 		return e.tbox.boxStatements.
 		filter(EntityRelationship).
 		filter[f | f.source == e].
@@ -76,7 +79,8 @@ class AspectConceptClassDiagramService {
 	 * @param c The root Concept
 	 * @return Set of {@link ReifiedRelationship}s
 	 */
-	def Set<ReifiedRelationship> getVisualRelationshipsWithRootAsRange(Entity e){
+	def Set<ReifiedRelationship> getVisualRelationshipsWithRootAsRange(DDiagram d){
+		val e = getRootEntity(d)
 		return e.tbox.boxStatements.
 		filter(ReifiedRelationship).
 		filter[f | f.target == e].
