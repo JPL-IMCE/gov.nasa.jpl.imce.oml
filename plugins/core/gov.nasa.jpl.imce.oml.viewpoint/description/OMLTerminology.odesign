@@ -485,7 +485,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="Entity Existential Restriction Axiom (Root as Source)" semanticCandidatesExpression="aql:self.geEgetExistentialAxiomWithRootAsSource()" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetFinderExpression="feature:restrictedDomain" sourceFinderExpression="feature:restrictedRange" domainClass="terminologies.EntityExistentialRestrictionAxiom" useDomainElement="true">
+        <edgeMappings name="Entity Existential Restriction Axiom (Root as Source)" semanticCandidatesExpression="aql:self.getExistentialAxiomWithRootAsSource()" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Concept%20Usage%20Viewer']/@defaultLayer/@containerMappings[name='Concept']" targetFinderExpression="feature:restrictedDomain" sourceFinderExpression="feature:restrictedRange" domainClass="terminologies.EntityExistentialRestrictionAxiom" useDomainElement="true">
           <style targetArrow="InputClosedArrow" sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <beginLabelStyleDescription labelExpression="aql:self.restrictedRelation.name">
@@ -691,5 +691,6 @@
     <ownedJavaExtensions qualifiedClassName="gov.nasa.jpl.imce.oml.viewpoint.AspectConceptClassDiagramService"/>
     <ownedJavaExtensions qualifiedClassName="gov.nasa.jpl.imce.oml.viewpoint.TerminologyDiagramService"/>
     <ownedJavaExtensions qualifiedClassName="gov.nasa.jpl.imce.oml.viewpoint.ConceptUsageDiagramService"/>
+    <ownedJavaExtensions qualifiedClassName="gov.nasa.jpl.imce.oml.viewpoint.DiagramUtil"/>
   </ownedViewpoints>
 </description:Group>
