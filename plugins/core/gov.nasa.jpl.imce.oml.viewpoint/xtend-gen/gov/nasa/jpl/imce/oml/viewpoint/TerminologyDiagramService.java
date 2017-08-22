@@ -21,11 +21,11 @@ import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyGraph;
 import gov.nasa.jpl.imce.oml.model.terminologies.BinaryScalarRestriction;
-import gov.nasa.jpl.imce.oml.model.terminologies.DataRange;
 import gov.nasa.jpl.imce.oml.model.terminologies.Entity;
 import gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction;
+import gov.nasa.jpl.imce.oml.model.terminologies.RestrictedDataRange;
 import gov.nasa.jpl.imce.oml.model.terminologies.Scalar;
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfRestriction;
@@ -116,12 +116,8 @@ public class TerminologyDiagramService {
    * @param The Scalar
    * @return Set of {@link StringScalarRestriction}
    */
-  public Set<StringScalarRestriction> getContainedStringScalarRestrictions(final Scalar c) {
-    final Function1<StringScalarRestriction, Boolean> _function = (StringScalarRestriction f) -> {
-      DataRange _restrictedRange = f.getRestrictedRange();
-      return Boolean.valueOf(Objects.equal(_restrictedRange, c));
-    };
-    return IterableExtensions.<StringScalarRestriction>toSet(IterableExtensions.<StringScalarRestriction>filter(Iterables.<StringScalarRestriction>filter(c.getTbox().getBoxStatements(), StringScalarRestriction.class), _function));
+  public Set<StringScalarRestriction> getContainedStringScalarRestrictions(final TerminologyGraph c) {
+    return IterableExtensions.<StringScalarRestriction>toSet(Iterables.<StringScalarRestriction>filter(c.getBoxStatements(), StringScalarRestriction.class));
   }
   
   /**
@@ -131,12 +127,8 @@ public class TerminologyDiagramService {
    * @param The Scalar
    * @return Set of {@link NumericScalarRestriction}
    */
-  public Set<NumericScalarRestriction> getContainedNumericScalarRestrictions(final Scalar c) {
-    final Function1<NumericScalarRestriction, Boolean> _function = (NumericScalarRestriction f) -> {
-      DataRange _restrictedRange = f.getRestrictedRange();
-      return Boolean.valueOf(Objects.equal(_restrictedRange, c));
-    };
-    return IterableExtensions.<NumericScalarRestriction>toSet(IterableExtensions.<NumericScalarRestriction>filter(Iterables.<NumericScalarRestriction>filter(c.getTbox().getBoxStatements(), NumericScalarRestriction.class), _function));
+  public Set<NumericScalarRestriction> getContainedNumericScalarRestrictions(final TerminologyGraph c) {
+    return IterableExtensions.<NumericScalarRestriction>toSet(Iterables.<NumericScalarRestriction>filter(c.getBoxStatements(), NumericScalarRestriction.class));
   }
   
   /**
@@ -146,12 +138,8 @@ public class TerminologyDiagramService {
    * @param The Scalar
    * @return Set of {@link NumericScalarRestriction}
    */
-  public Set<BinaryScalarRestriction> getContainedBinaryScalarRestrictions(final Scalar c) {
-    final Function1<BinaryScalarRestriction, Boolean> _function = (BinaryScalarRestriction f) -> {
-      DataRange _restrictedRange = f.getRestrictedRange();
-      return Boolean.valueOf(Objects.equal(_restrictedRange, c));
-    };
-    return IterableExtensions.<BinaryScalarRestriction>toSet(IterableExtensions.<BinaryScalarRestriction>filter(Iterables.<BinaryScalarRestriction>filter(c.getTbox().getBoxStatements(), BinaryScalarRestriction.class), _function));
+  public Set<BinaryScalarRestriction> getContainedBinaryScalarRestrictions(final TerminologyGraph c) {
+    return IterableExtensions.<BinaryScalarRestriction>toSet(Iterables.<BinaryScalarRestriction>filter(c.getBoxStatements(), BinaryScalarRestriction.class));
   }
   
   /**
@@ -161,12 +149,8 @@ public class TerminologyDiagramService {
    * @param The Scalar
    * @return Set of {@link IRIScalarRestriction}
    */
-  public Set<IRIScalarRestriction> getContainedIRIScalarRestrictions(final Scalar c) {
-    final Function1<IRIScalarRestriction, Boolean> _function = (IRIScalarRestriction f) -> {
-      DataRange _restrictedRange = f.getRestrictedRange();
-      return Boolean.valueOf(Objects.equal(_restrictedRange, c));
-    };
-    return IterableExtensions.<IRIScalarRestriction>toSet(IterableExtensions.<IRIScalarRestriction>filter(Iterables.<IRIScalarRestriction>filter(c.getTbox().getBoxStatements(), IRIScalarRestriction.class), _function));
+  public Set<IRIScalarRestriction> getContainedIRIScalarRestrictions(final TerminologyGraph c) {
+    return IterableExtensions.<IRIScalarRestriction>toSet(Iterables.<IRIScalarRestriction>filter(c.getBoxStatements(), IRIScalarRestriction.class));
   }
   
   /**
@@ -176,12 +160,8 @@ public class TerminologyDiagramService {
    * @param The Scalar}
    * @return Set of {@link PlainLiteralScalarRestriction}
    */
-  public Set<PlainLiteralScalarRestriction> getContainedPlainLiteralScalarRestrictions(final Scalar c) {
-    final Function1<PlainLiteralScalarRestriction, Boolean> _function = (PlainLiteralScalarRestriction f) -> {
-      DataRange _restrictedRange = f.getRestrictedRange();
-      return Boolean.valueOf(Objects.equal(_restrictedRange, c));
-    };
-    return IterableExtensions.<PlainLiteralScalarRestriction>toSet(IterableExtensions.<PlainLiteralScalarRestriction>filter(Iterables.<PlainLiteralScalarRestriction>filter(c.getTbox().getBoxStatements(), PlainLiteralScalarRestriction.class), _function));
+  public Set<PlainLiteralScalarRestriction> getContainedPlainLiteralScalarRestrictions(final TerminologyGraph c) {
+    return IterableExtensions.<PlainLiteralScalarRestriction>toSet(Iterables.<PlainLiteralScalarRestriction>filter(c.getBoxStatements(), PlainLiteralScalarRestriction.class));
   }
   
   /**
@@ -191,12 +171,8 @@ public class TerminologyDiagramService {
    * @param The Scalar}
    * @return Set of {@link TimeScalarRestriction}
    */
-  public Set<TimeScalarRestriction> getContainedTimeScalarRestrictions(final Scalar c) {
-    final Function1<TimeScalarRestriction, Boolean> _function = (TimeScalarRestriction f) -> {
-      DataRange _restrictedRange = f.getRestrictedRange();
-      return Boolean.valueOf(Objects.equal(_restrictedRange, c));
-    };
-    return IterableExtensions.<TimeScalarRestriction>toSet(IterableExtensions.<TimeScalarRestriction>filter(Iterables.<TimeScalarRestriction>filter(c.getTbox().getBoxStatements(), TimeScalarRestriction.class), _function));
+  public Set<TimeScalarRestriction> getContainedTimeScalarRestrictions(final TerminologyGraph c) {
+    return IterableExtensions.<TimeScalarRestriction>toSet(Iterables.<TimeScalarRestriction>filter(c.getBoxStatements(), TimeScalarRestriction.class));
   }
   
   /**
@@ -206,12 +182,8 @@ public class TerminologyDiagramService {
    * @param The Scalar}
    * @return Set of {@link SynonymScalarRestriction}
    */
-  public Set<SynonymScalarRestriction> getContainedSynonymScalarRestrictions(final Scalar c) {
-    final Function1<SynonymScalarRestriction, Boolean> _function = (SynonymScalarRestriction f) -> {
-      DataRange _restrictedRange = f.getRestrictedRange();
-      return Boolean.valueOf(Objects.equal(_restrictedRange, c));
-    };
-    return IterableExtensions.<SynonymScalarRestriction>toSet(IterableExtensions.<SynonymScalarRestriction>filter(Iterables.<SynonymScalarRestriction>filter(c.getTbox().getBoxStatements(), SynonymScalarRestriction.class), _function));
+  public Set<SynonymScalarRestriction> getContainedSynonymScalarRestrictions(final TerminologyGraph c) {
+    return IterableExtensions.<SynonymScalarRestriction>toSet(Iterables.<SynonymScalarRestriction>filter(c.getBoxStatements(), SynonymScalarRestriction.class));
   }
   
   /**
@@ -221,11 +193,14 @@ public class TerminologyDiagramService {
    * @param The Scalar}
    * @return Set of {@link ScalarOneOfRestriction}
    */
-  public Set<ScalarOneOfRestriction> getContainedScalarOneOfRestrictions(final Scalar c) {
-    final Function1<ScalarOneOfRestriction, Boolean> _function = (ScalarOneOfRestriction f) -> {
-      DataRange _restrictedRange = f.getRestrictedRange();
-      return Boolean.valueOf(Objects.equal(_restrictedRange, c));
-    };
-    return IterableExtensions.<ScalarOneOfRestriction>toSet(IterableExtensions.<ScalarOneOfRestriction>filter(Iterables.<ScalarOneOfRestriction>filter(c.getTbox().getBoxStatements(), ScalarOneOfRestriction.class), _function));
+  public Set<ScalarOneOfRestriction> getContainedScalarOneOfRestrictions(final TerminologyGraph c) {
+    return IterableExtensions.<ScalarOneOfRestriction>toSet(Iterables.<ScalarOneOfRestriction>filter(c.getBoxStatements(), ScalarOneOfRestriction.class));
+  }
+  
+  public String getRestrictedRangeLabel(final RestrictedDataRange r) {
+    final String result = r.getClass().getSimpleName();
+    int _length = result.length();
+    int _minus = (_length - 4);
+    return result.substring(0, _minus);
   }
 }
