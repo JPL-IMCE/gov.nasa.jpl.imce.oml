@@ -43,9 +43,9 @@ import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 /**
- * Used to query for visual elements in the 'Terminology Diagram'
+ * Used to query for visual elements in the "Terminology Diagram"
  * 
- * The 'Terminology Diagram' will show all {@link Entity}s and
+ * The "Terminology Diagram" will show all {@link Entity}s and
  * {@link SpecializationAxiom}s for a given {@link TerminologyGraph}
  * 
  * 
@@ -197,10 +197,111 @@ public class TerminologyDiagramService {
     return IterableExtensions.<ScalarOneOfRestriction>toSet(Iterables.<ScalarOneOfRestriction>filter(c.getBoxStatements(), ScalarOneOfRestriction.class));
   }
   
+  /**
+   * Gets class name for a {@link RestrictedDataRange}
+   * 
+   * @return Name of implemented class
+   */
   public String getRestrictedRangeLabel(final RestrictedDataRange r) {
     final String result = r.getClass().getSimpleName();
     int _length = result.length();
     int _minus = (_length - 4);
     return result.substring(0, _minus);
+  }
+  
+  public String getDetailedLabel(final RestrictedDataRange r) {
+    String _xblockexpression = null;
+    {
+      StringBuilder label = new StringBuilder();
+      label.append(r.name());
+      if ((r instanceof StringScalarRestriction)) {
+        String _pattern = ((StringScalarRestriction) r).getPattern();
+        String _plus = ("\npattern: " + _pattern);
+        label.append(_plus);
+      }
+      if ((r instanceof IRIScalarRestriction)) {
+        String _pattern_1 = ((IRIScalarRestriction) r).getPattern();
+        String _plus_1 = ("\npattern: " + _pattern_1);
+        label.append(_plus_1);
+      }
+      if ((r instanceof PlainLiteralScalarRestriction)) {
+        String _pattern_2 = ((PlainLiteralScalarRestriction) r).getPattern();
+        String _plus_2 = ("\npattern: " + _pattern_2);
+        label.append(_plus_2);
+        String _langRange = ((PlainLiteralScalarRestriction) r).getLangRange();
+        String _plus_3 = ("\nlangRange: " + _langRange);
+        label.append(_plus_3);
+      }
+      if ((r instanceof NumericScalarRestriction)) {
+        String _minInclusive = ((NumericScalarRestriction) r).getMinInclusive();
+        boolean _tripleNotEquals = (_minInclusive != null);
+        if (_tripleNotEquals) {
+          String _minInclusive_1 = ((NumericScalarRestriction) r).getMinInclusive();
+          String _plus_4 = ("\n\nminInclusive: " + _minInclusive_1);
+          label.append(_plus_4);
+        }
+        String _maxInclusive = ((NumericScalarRestriction) r).getMaxInclusive();
+        boolean _tripleNotEquals_1 = (_maxInclusive != null);
+        if (_tripleNotEquals_1) {
+          String _maxInclusive_1 = ((NumericScalarRestriction) r).getMaxInclusive();
+          String _plus_5 = ("\nmaxInclusive: " + _maxInclusive_1);
+          label.append(_plus_5);
+        }
+        String _minExclusive = ((NumericScalarRestriction) r).getMinExclusive();
+        boolean _tripleNotEquals_2 = (_minExclusive != null);
+        if (_tripleNotEquals_2) {
+          String _minExclusive_1 = ((NumericScalarRestriction) r).getMinExclusive();
+          String _plus_6 = ("\nminExclusive: " + _minExclusive_1);
+          label.append(_plus_6);
+        }
+        String _maxExclusive = ((NumericScalarRestriction) r).getMaxExclusive();
+        boolean _tripleNotEquals_3 = (_maxExclusive != null);
+        if (_tripleNotEquals_3) {
+          String _maxExclusive_1 = ((NumericScalarRestriction) r).getMaxExclusive();
+          String _plus_7 = ("\nmaxExclusive: " + _maxExclusive_1);
+          label.append(_plus_7);
+        }
+      }
+      if ((r instanceof BinaryScalarRestriction)) {
+        int _minLength = ((BinaryScalarRestriction) r).getMinLength();
+        String _plus_8 = ("\n\nnmaxLength: " + Integer.valueOf(_minLength));
+        String _plus_9 = (_plus_8 + "\nmaxLength: ");
+        int _maxLength = ((BinaryScalarRestriction) r).getMaxLength();
+        String _plus_10 = (_plus_9 + Integer.valueOf(_maxLength));
+        label.append(_plus_10);
+      }
+      if ((r instanceof TimeScalarRestriction)) {
+        String _minInclusive_2 = ((TimeScalarRestriction) r).getMinInclusive();
+        boolean _tripleNotEquals_4 = (_minInclusive_2 != null);
+        if (_tripleNotEquals_4) {
+          String _minInclusive_3 = ((TimeScalarRestriction) r).getMinInclusive();
+          String _plus_11 = ("\n\nminInclusive: " + _minInclusive_3);
+          label.append(_plus_11);
+        }
+        String _maxInclusive_2 = ((TimeScalarRestriction) r).getMaxInclusive();
+        boolean _tripleNotEquals_5 = (_maxInclusive_2 != null);
+        if (_tripleNotEquals_5) {
+          String _maxInclusive_3 = ((TimeScalarRestriction) r).getMaxInclusive();
+          String _plus_12 = ("\nmaxInclusive: " + _maxInclusive_3);
+          label.append(_plus_12);
+        }
+        String _minExclusive_2 = ((TimeScalarRestriction) r).getMinExclusive();
+        boolean _tripleNotEquals_6 = (_minExclusive_2 != null);
+        if (_tripleNotEquals_6) {
+          String _minExclusive_3 = ((TimeScalarRestriction) r).getMinExclusive();
+          String _plus_13 = ("\nminExclusive: " + _minExclusive_3);
+          label.append(_plus_13);
+        }
+        String _maxExclusive_2 = ((TimeScalarRestriction) r).getMaxExclusive();
+        boolean _tripleNotEquals_7 = (_maxExclusive_2 != null);
+        if (_tripleNotEquals_7) {
+          String _maxExclusive_3 = ((TimeScalarRestriction) r).getMaxExclusive();
+          String _plus_14 = ("\nmaxExclusive: " + _maxExclusive_3);
+          label.append(_plus_14);
+        }
+      }
+      _xblockexpression = label.toString();
+    }
+    return _xblockexpression;
   }
 }
