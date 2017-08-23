@@ -28,7 +28,7 @@ import gov.nasa.jpl.imce.oml.model.bundles.BundledTerminologyAxiom;
 import gov.nasa.jpl.imce.oml.model.bundles.RootConceptTaxonomyAxiom;
 import gov.nasa.jpl.imce.oml.model.bundles.SpecificDisjointConceptAxiom;
 import gov.nasa.jpl.imce.oml.model.bundles.TerminologyBundleAxiom;
-import gov.nasa.jpl.imce.oml.model.common.Annotation;
+import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue;
 import gov.nasa.jpl.imce.oml.model.common.Element;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
 import gov.nasa.jpl.imce.oml.model.common.Module;
@@ -401,11 +401,11 @@ public class OMLExtensions {
   
   public static String getModuleNsURI(final Module it) {
     String _elvis = null;
-    final Function1<Annotation, Boolean> _function = (Annotation a) -> {
+    final Function1<AnnotationPropertyValue, Boolean> _function = (AnnotationPropertyValue a) -> {
       String _iri = a.getProperty().getIri();
       return Boolean.valueOf(Objects.equal(_iri, "http://imce.jpl.nasa.gov/oml/runtime#OML2EcoreNsURI"));
     };
-    Annotation _findFirst = IterableExtensions.<Annotation>findFirst(it.getAnnotations(), _function);
+    AnnotationPropertyValue _findFirst = IterableExtensions.<AnnotationPropertyValue>findFirst(it.getAnnotations(), _function);
     String _value = null;
     if (_findFirst!=null) {
       _value=_findFirst.getValue();
@@ -421,11 +421,11 @@ public class OMLExtensions {
   
   public static String getModuleNsPrefix(final Module it) {
     String _elvis = null;
-    final Function1<Annotation, Boolean> _function = (Annotation a) -> {
+    final Function1<AnnotationPropertyValue, Boolean> _function = (AnnotationPropertyValue a) -> {
       String _iri = a.getProperty().getIri();
       return Boolean.valueOf(Objects.equal(_iri, "http://imce.jpl.nasa.gov/oml/runtime#OML2EcoreNsPrefix"));
     };
-    Annotation _findFirst = IterableExtensions.<Annotation>findFirst(it.getAnnotations(), _function);
+    AnnotationPropertyValue _findFirst = IterableExtensions.<AnnotationPropertyValue>findFirst(it.getAnnotations(), _function);
     String _value = null;
     if (_findFirst!=null) {
       _value=_findFirst.getValue();

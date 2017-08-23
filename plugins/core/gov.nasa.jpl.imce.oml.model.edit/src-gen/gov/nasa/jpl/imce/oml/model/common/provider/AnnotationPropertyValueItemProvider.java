@@ -19,21 +19,18 @@
 package gov.nasa.jpl.imce.oml.model.common.provider;
 
 
-import gov.nasa.jpl.imce.oml.model.common.CommonFactory;
+import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue;
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
 
 import gov.nasa.jpl.imce.oml.model.edit.provider.OMLEditPlugin;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
-
-import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
@@ -42,16 +39,17 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link java.util.Map.Entry} object.
+ * This is the item provider adapter for a {@link gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class AnnotationPropertyTableItemProvider 
+public class AnnotationPropertyValueItemProvider 
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -65,7 +63,7 @@ public class AnnotationPropertyTableItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AnnotationPropertyTableItemProvider(AdapterFactory adapterFactory) {
+	public AnnotationPropertyValueItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -80,25 +78,50 @@ public class AnnotationPropertyTableItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addKeyPropertyDescriptor(object);
+			addUuidPropertyDescriptor(object);
+			addSubjectPropertyDescriptor(object);
+			addPropertyPropertyDescriptor(object);
+			addValuePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Key feature.
+	 * This adds a property descriptor for the Uuid feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addKeyPropertyDescriptor(Object object) {
+	protected void addUuidPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_AnnotationPropertyTable_key_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_AnnotationPropertyTable_key_feature", "_UI_AnnotationPropertyTable_type"),
-				 CommonPackage.Literals.ANNOTATION_PROPERTY_TABLE__KEY,
+				 getString("_UI_AnnotationPropertyValue_uuid_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_AnnotationPropertyValue_uuid_feature", "_UI_AnnotationPropertyValue_type"),
+				 CommonPackage.Literals.ANNOTATION_PROPERTY_VALUE__UUID,
+				 false,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Subject feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSubjectPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_AnnotationPropertyValue_subject_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_AnnotationPropertyValue_subject_feature", "_UI_AnnotationPropertyValue_type"),
+				 CommonPackage.Literals.ANNOTATION_PROPERTY_VALUE__SUBJECT,
 				 true,
 				 false,
 				 true,
@@ -108,44 +131,58 @@ public class AnnotationPropertyTableItemProvider
 	}
 
 	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * This adds a property descriptor for the Property feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(CommonPackage.Literals.ANNOTATION_PROPERTY_TABLE__VALUE);
-		}
-		return childrenFeatures;
+	protected void addPropertyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_AnnotationPropertyValue_property_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_AnnotationPropertyValue_property_feature", "_UI_AnnotationPropertyValue_type"),
+				 CommonPackage.Literals.ANNOTATION_PROPERTY_VALUE__PROPERTY,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
+	 * This adds a property descriptor for the Value feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
-
-		return super.getChildFeature(object, child);
+	protected void addValuePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_AnnotationPropertyValue_value_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_AnnotationPropertyValue_value_feature", "_UI_AnnotationPropertyValue_type"),
+				 CommonPackage.Literals.ANNOTATION_PROPERTY_VALUE__VALUE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
-	 * This returns AnnotationPropertyTable.gif.
+	 * This returns AnnotationPropertyValue.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/AnnotationPropertyTable"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/AnnotationPropertyValue"));
 	}
 
 	/**
@@ -156,8 +193,10 @@ public class AnnotationPropertyTableItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		Map.Entry<?, ?> annotationPropertyTable = (Map.Entry<?, ?>)object;
-		return "" + annotationPropertyTable.getKey() + " -> " + annotationPropertyTable.getValue();
+		String label = ((AnnotationPropertyValue)object).getUuid();
+		return label == null || label.length() == 0 ?
+			getString("_UI_AnnotationPropertyValue_type") :
+			getString("_UI_AnnotationPropertyValue_type") + " " + label;
 	}
 	
 
@@ -172,9 +211,10 @@ public class AnnotationPropertyTableItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(Map.Entry.class)) {
-			case CommonPackage.ANNOTATION_PROPERTY_TABLE__VALUE:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+		switch (notification.getFeatureID(AnnotationPropertyValue.class)) {
+			case CommonPackage.ANNOTATION_PROPERTY_VALUE__UUID:
+			case CommonPackage.ANNOTATION_PROPERTY_VALUE__VALUE:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
 		super.notifyChanged(notification);
@@ -190,11 +230,6 @@ public class AnnotationPropertyTableItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CommonPackage.Literals.ANNOTATION_PROPERTY_TABLE__VALUE,
-				 CommonFactory.eINSTANCE.createAnnotationEntry()));
 	}
 
 	/**

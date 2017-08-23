@@ -19,8 +19,8 @@ package gov.nasa.jpl.imce.oml.dsl.ui.labeling
 
 import com.google.inject.Inject
 import gov.nasa.jpl.imce.oml.model.bundles.Bundle
-import gov.nasa.jpl.imce.oml.model.common.Annotation
 import gov.nasa.jpl.imce.oml.model.common.AnnotationProperty
+import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue
 import gov.nasa.jpl.imce.oml.model.common.ModuleEdge
 import gov.nasa.jpl.imce.oml.model.descriptions.ConceptualEntitySingletonInstance
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox
@@ -61,7 +61,7 @@ class OMLLabelProvider extends DefaultEObjectLabelProvider {
 		'AnnotationProperty ' + e.abbrevIRI
 	}
 
-	def text(Annotation a) {
+	def text(AnnotationPropertyValue a) {
 		(doGetText(a.subject)?.toString ?: '') + '@' + (a.property?.abbrevIRI ?: '') + ' = ...'
 	}
 

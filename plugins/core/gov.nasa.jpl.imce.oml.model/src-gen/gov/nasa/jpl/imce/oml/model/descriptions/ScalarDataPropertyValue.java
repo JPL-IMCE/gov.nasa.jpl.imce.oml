@@ -19,6 +19,7 @@
 package gov.nasa.jpl.imce.oml.model.descriptions;
 
 import gov.nasa.jpl.imce.oml.model.common.Element;
+import gov.nasa.jpl.imce.oml.model.common.Module;
 
 import gov.nasa.jpl.imce.oml.model.terminologies.DataRelationshipToScalar;
 
@@ -144,5 +145,14 @@ public interface ScalarDataPropertyValue extends Element {
 	 * @generated
 	 */
 	String uuid();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return this.descriptionBox();'"
+	 * @generated
+	 */
+	Module moduleContext();
 
 } // ScalarDataPropertyValue

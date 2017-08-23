@@ -88,7 +88,7 @@ open terminology <http://example.org> {
 		val c = tbox.boxStatements.filter(Concept).head
 		c.name().assertEquals("PerformingElement")
 		
-		val a = tbox.annotations.head
+		val a = c.annotations.head
 		val a_prop = a.property
 		val a_subj = a.subject
 		val a_value = a.value

@@ -20,6 +20,7 @@ package gov.nasa.jpl.imce.oml.model.terminologies.impl;
 
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
 import gov.nasa.jpl.imce.oml.model.common.Element;
+import gov.nasa.jpl.imce.oml.model.common.ModuleElement;
 import gov.nasa.jpl.imce.oml.model.common.Resource;
 
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
@@ -34,6 +35,7 @@ import java.util.UUID;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -193,6 +195,15 @@ public abstract class TermImpl extends TerminologyBoxStatementImpl implements Te
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Element> allNestedElements() {
+		return ECollections.<Element>emptyEList();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -259,6 +270,12 @@ public abstract class TermImpl extends TerminologyBoxStatementImpl implements Te
 				default: return super.eDerivedOperationID(baseOperationID, baseClass);
 			}
 		}
+		if (baseClass == ModuleElement.class) {
+			switch (baseOperationID) {
+				case CommonPackage.MODULE_ELEMENT___ALL_NESTED_ELEMENTS: return TerminologiesPackage.TERM___ALL_NESTED_ELEMENTS;
+				default: return super.eDerivedOperationID(baseOperationID, baseClass);
+			}
+		}
 		if (baseClass == Resource.class) {
 			switch (baseOperationID) {
 				case CommonPackage.RESOURCE___IRI: return TerminologiesPackage.TERM___IRI;
@@ -286,6 +303,8 @@ public abstract class TermImpl extends TerminologyBoxStatementImpl implements Te
 				return name();
 			case TerminologiesPackage.TERM___UUID:
 				return uuid();
+			case TerminologiesPackage.TERM___ALL_NESTED_ELEMENTS:
+				return allNestedElements();
 		}
 		return super.eInvoke(operationID, arguments);
 	}

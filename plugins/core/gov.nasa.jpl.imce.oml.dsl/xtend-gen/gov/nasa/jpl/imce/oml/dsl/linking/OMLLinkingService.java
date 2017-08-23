@@ -22,7 +22,7 @@ import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import gov.nasa.jpl.imce.oml.model.bundles.Bundle;
 import gov.nasa.jpl.imce.oml.model.bundles.BundlesPackage;
-import gov.nasa.jpl.imce.oml.model.common.Annotation;
+import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue;
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
 import gov.nasa.jpl.imce.oml.model.common.Element;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
@@ -275,8 +275,8 @@ public class OMLLinkingService extends DefaultLinkingService {
           return Collections.<EObject>emptyList();
         }
       }
-      if ((Annotation.class.isInstance(context) && Objects.equal(ref, CommonPackage.eINSTANCE.getAnnotation_Property()))) {
-        final Annotation aContext = Annotation.class.cast(context);
+      if ((AnnotationPropertyValue.class.isInstance(context) && Objects.equal(ref, CommonPackage.eINSTANCE.getAnnotationPropertyValue_Property()))) {
+        final AnnotationPropertyValue aContext = AnnotationPropertyValue.class.cast(context);
         final INode nextNode = node.getParent().getNextSibling();
         final EObject nextSE = IterableExtensions.<ILeafNode>head(nextNode.getLeafNodes()).getSemanticElement();
         boolean _matched_1 = false;
@@ -285,7 +285,7 @@ public class OMLLinkingService extends DefaultLinkingService {
           aContext.setSubject(((Element)nextSE));
         }
         if (!_matched_1) {
-          if (nextSE instanceof Annotation) {
+          if (nextSE instanceof AnnotationPropertyValue) {
             _matched_1=true;
             final Iterable<ILeafNode> nextLeafNodes = nextNode.getLeafNodes();
             final Function1<ILeafNode, Boolean> _function_8 = (ILeafNode n) -> {
@@ -293,7 +293,7 @@ public class OMLLinkingService extends DefaultLinkingService {
             };
             final ILeafNode n1 = IterableExtensions.<ILeafNode>findFirst(nextLeafNodes, _function_8);
             this.getLinkedObjects(nextSE, ref, n1);
-            aContext.setSubject(((Annotation)nextSE).getSubject());
+            aContext.setSubject(((AnnotationPropertyValue)nextSE).getSubject());
           }
         }
       }

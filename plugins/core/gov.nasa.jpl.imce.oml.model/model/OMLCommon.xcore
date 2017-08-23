@@ -157,10 +157,44 @@ type AbbrevIRI wraps String
 
 type NamespacePrefix wraps String
 
+/* 
+ * For the OML tabular interchange representation,
+ * an OML AnnotationPropertyValue is a triple <S,P,V>
+ * where S is an OML Element, P an OML AnnotationProperty 
+ * and V is the value of P asserted about S by this triple.
+ * The UUID of an OML AnnotationPropertyValue is deterministically derived
+ * from its subject and property. This means that two OML AnnotationPropertyValues
+ * with the same subject and property must have the same value otherwise they would
+ * be structurally distinct triples with the same UUID, which would be ill-formed.
+ */
+@Glossary
+class AnnotationPropertyValue {
+	
+	@IsOrderingKey
+	derived UUID[1] uuid get {
+		OMLExtensions.derivedUUID(
+		"AnnotationPropertyValue", 
+		"subject" -> subject?.uuid()?.toString,
+		"property" -> property?.uuid?.toString
+		)?.toString
+	}
+
+	@Factory
+	container Element[1] subject opposite annotations
+	
+	refers AnnotationProperty[1] property
+	
+	String[1] value
+}
+
 /*
  * An OML Element is a logical abstraction
  * for everything involved in OML that
- * is globally identified by a version 5 namespace UUID.
+ * is globally identified by a version 5 namespace UUID deterministically 
+ * derived from essential information about the OML Element.
+ * An OML Element can be the subject of multiple OML AnnotationPropertyValues;
+ * however, there can be at most one OML AnnotationPropertyValue for a given
+ * pair of OML Element and OML AnnotationProperty.
  */
 abstract class Element {
 	
@@ -171,6 +205,15 @@ abstract class Element {
 	@NotFunctionalAPI
 	@NotSchema
 	op UUID[1] uuid()
+	
+	@Collection(kind="Seq")
+	@NotSchema
+	@ImplicitExtent
+	contains AnnotationPropertyValue[] annotations opposite subject
+	
+	@NotSchema
+	@ImplicitExtent
+	op Module[?] moduleContext()
 }
 
 /*
@@ -197,10 +240,16 @@ abstract class Resource {
 }
 
 /*
- * An OML ModuleElement is an OML Element defined in an OML Module
+ * An OML ModuleElement is an OML Element defined in the scope of an OML Module
  */
 @Glossary
-abstract class ModuleElement extends Element {}
+abstract class ModuleElement extends Element {
+	
+	@Collection(kind="Set")
+	@NotSchema
+	@ImplicitExtent
+	op Element[] allNestedElements()
+}
 
 /*
  * An OML ModuleEdge is a binary, directed relationship from one OML Module to another
@@ -216,12 +265,17 @@ abstract class ModuleEdge extends Element {
 	@NotSchema
 	@ImplicitExtent
 	op Module[1] targetModule()
+	
+	@NotSchema
+	@ImplicitExtent
+	op Module[?] moduleContext() { sourceModule }
 }
 
 /*
- * An OML AnnotationProperty maps to an [OWL2 AnnotationProperty] 
- * and is similarly a non-logical property for associating some information
- * to any OML TerminologyThing in an OML Module.
+ * An OML AnnotationProperty maps to a functional restriction of an [OWL2 AnnotationProperty].
+ * Like OWL2, an OML AnnotationProperty is a non-logical property for associating some information
+ * to an OML Element; unlike OWL2, an OML AnnotationProperty is functional in the sense
+ * that an OML Element can have at most one OML AnnotationPropertyValue for a given OML AnnotationProperty.
  */
 @Glossary
 @ExtentManaged
@@ -241,94 +295,6 @@ class AnnotationProperty {
 	IRI[1] iri
 	
 	id AbbrevIRI[1] abbrevIRI
-}
-
-/* 
- * For the OML tabular interchange representation,
- * an OML AnnotationPropertyTable pairs an OML AnnotationProperty key
- * with a set of OML AnnotationEntry values.
- */
-@Glossary
-@NotFunctionalAPI
-@NotSchema
-class AnnotationPropertyTable wraps java.util.Map$Entry {
-	
-	@IsOrderingKey
-	refers AnnotationProperty[1] key
-	
-	@Collection(kind="Set")
-	contains AnnotationEntry[] value
-}
-
-/*
- * For the OML tabular interchange representation,
- * an OML AnnotationEntry (for a given OML AnnotationProperty) is a triple:
- * - an OML Module in which the OML AnnotationEntry appears 
- * - an annotated OML TerminologyThing subject
- * - a String value as the representation of some information
- *   about the subject in that module.
- */
-@Glossary
-@ValueTable
-class AnnotationEntry {
-	
-	@IsOrderingKey
-	refers Module[1] module
-	
-	@IsOrderingKey 
-	refers Element[1] subject
-	
-	@IsOrderingKey
-	String[1] value
-}
-
-/* 
- * An OML AnnotationSubjectTable is an in-memory construct
- * pairing an OML TerminologyThing subject key with a set
- * of OML AnnotationSubjectPropertyValue tuples.
- */
-@Glossary
-@NotFunctionalAPI
-@NotSchema
-class AnnotationSubjectTable wraps java.util.Map$Entry {
-	refers Element[1] key
-	
-	contains AnnotationSubjectPropertyValue[] value
-}
-
-/*
- * An OML AnnotationSubjectPropertyValue is an in-memory construct
- * pairing an OML AnnotationProperty with a String value.
- */
-@Glossary
-@NotFunctionalAPI
-@NotSchema
-class AnnotationSubjectPropertyValue {
-	refers AnnotationProperty[1] property
-	String[1] value
-}
-
-/*
- * An OML Annotation maps to an [OWL2 Annotation] and is similarly
- * a non-logical statement in an OML Module
- * associating some information as the value of an
- * OML AnnotationProperty for describing a subject (an OML TerminologyThing).
- */
-@Glossary
-@NotSchema
-class Annotation {
-	
-	@Factory
-	container Module[1] module opposite annotations
-	
-	@IsOrderingKey
-	refers AnnotationProperty[1] property
-	
-	@IsOrderingKey
-	refers Element[1] subject
-	
-	@IsOrderingKey
-	String[1] value
 }
 
 /*
@@ -389,14 +355,19 @@ abstract class Module extends Element, Resource {
 	@NotSchema
 	op String[?] abbrevIRI() { nsPrefix }
 	
-	@Factory
-	@NotSchema
-	@Collection(kind="Set")
-	contains Annotation[] annotations opposite module
-	
 	@NotFunctionalAPI
 	@NotSchema
 	op UUID[1] uuid() {
 		OMLExtensions.namespaceUUID(iri()?:"")?.toString
 	}
+	
+	@Scala(code="scala.Some(this)")
+	@NotSchema
+	@ImplicitExtent
+	op Module[?] moduleContext() { this }
+	
+	@Collection(kind="Set")
+	@NotSchema
+	@ImplicitExtent
+	op ModuleElement[] moduleElements()
 }

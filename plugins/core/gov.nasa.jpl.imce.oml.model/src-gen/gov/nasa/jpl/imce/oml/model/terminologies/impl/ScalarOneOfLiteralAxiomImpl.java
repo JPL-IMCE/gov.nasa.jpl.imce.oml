@@ -18,6 +18,8 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies.impl;
 
+import gov.nasa.jpl.imce.oml.model.common.Element;
+
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
 
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom;
@@ -31,6 +33,7 @@ import java.util.UUID;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -204,6 +207,15 @@ public class ScalarOneOfLiteralAxiomImpl extends TermAxiomImpl implements Scalar
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Element> allNestedElements() {
+		return ECollections.<Element>emptyEList();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -278,6 +290,8 @@ public class ScalarOneOfLiteralAxiomImpl extends TermAxiomImpl implements Scalar
 		switch (operationID) {
 			case TerminologiesPackage.SCALAR_ONE_OF_LITERAL_AXIOM___UUID:
 				return uuid();
+			case TerminologiesPackage.SCALAR_ONE_OF_LITERAL_AXIOM___ALL_NESTED_ELEMENTS:
+				return allNestedElements();
 		}
 		return super.eInvoke(operationID, arguments);
 	}

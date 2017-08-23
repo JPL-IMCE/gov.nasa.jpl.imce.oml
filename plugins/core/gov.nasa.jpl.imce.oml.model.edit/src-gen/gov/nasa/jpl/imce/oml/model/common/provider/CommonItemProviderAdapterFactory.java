@@ -88,6 +88,29 @@ public class CommonItemProviderAdapterFactory extends CommonAdapterFactory imple
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected AnnotationPropertyValueItemProvider annotationPropertyValueItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createAnnotationPropertyValueAdapter() {
+		if (annotationPropertyValueItemProvider == null) {
+			annotationPropertyValueItemProvider = new AnnotationPropertyValueItemProvider(this);
+		}
+
+		return annotationPropertyValueItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.common.AnnotationProperty} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -108,121 +131,6 @@ public class CommonItemProviderAdapterFactory extends CommonAdapterFactory imple
 		}
 
 		return annotationPropertyItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link java.util.Map.Entry} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected AnnotationPropertyTableItemProvider annotationPropertyTableItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link java.util.Map.Entry}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createAnnotationPropertyTableAdapter() {
-		if (annotationPropertyTableItemProvider == null) {
-			annotationPropertyTableItemProvider = new AnnotationPropertyTableItemProvider(this);
-		}
-
-		return annotationPropertyTableItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.common.AnnotationEntry} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected AnnotationEntryItemProvider annotationEntryItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.common.AnnotationEntry}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createAnnotationEntryAdapter() {
-		if (annotationEntryItemProvider == null) {
-			annotationEntryItemProvider = new AnnotationEntryItemProvider(this);
-		}
-
-		return annotationEntryItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link java.util.Map.Entry} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected AnnotationSubjectTableItemProvider annotationSubjectTableItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link java.util.Map.Entry}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createAnnotationSubjectTableAdapter() {
-		if (annotationSubjectTableItemProvider == null) {
-			annotationSubjectTableItemProvider = new AnnotationSubjectTableItemProvider(this);
-		}
-
-		return annotationSubjectTableItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.common.AnnotationSubjectPropertyValue} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected AnnotationSubjectPropertyValueItemProvider annotationSubjectPropertyValueItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.common.AnnotationSubjectPropertyValue}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createAnnotationSubjectPropertyValueAdapter() {
-		if (annotationSubjectPropertyValueItemProvider == null) {
-			annotationSubjectPropertyValueItemProvider = new AnnotationSubjectPropertyValueItemProvider(this);
-		}
-
-		return annotationSubjectPropertyValueItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.common.Annotation} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected AnnotationItemProvider annotationItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.common.Annotation}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createAnnotationAdapter() {
-		if (annotationItemProvider == null) {
-			annotationItemProvider = new AnnotationItemProvider(this);
-		}
-
-		return annotationItemProvider;
 	}
 
 	/**
@@ -347,12 +255,8 @@ public class CommonItemProviderAdapterFactory extends CommonAdapterFactory imple
 	 * @generated
 	 */
 	public void dispose() {
+		if (annotationPropertyValueItemProvider != null) annotationPropertyValueItemProvider.dispose();
 		if (annotationPropertyItemProvider != null) annotationPropertyItemProvider.dispose();
-		if (annotationPropertyTableItemProvider != null) annotationPropertyTableItemProvider.dispose();
-		if (annotationEntryItemProvider != null) annotationEntryItemProvider.dispose();
-		if (annotationSubjectTableItemProvider != null) annotationSubjectTableItemProvider.dispose();
-		if (annotationSubjectPropertyValueItemProvider != null) annotationSubjectPropertyValueItemProvider.dispose();
-		if (annotationItemProvider != null) annotationItemProvider.dispose();
 		if (extentItemProvider != null) extentItemProvider.dispose();
 	}
 

@@ -25,7 +25,7 @@ import gov.nasa.jpl.imce.oml.model.bundles.BundlesPackage
 import gov.nasa.jpl.imce.oml.model.bundles.DisjointUnionOfConceptsAxiom
 import gov.nasa.jpl.imce.oml.model.bundles.RootConceptTaxonomyAxiom
 import gov.nasa.jpl.imce.oml.model.bundles.SpecificDisjointConceptAxiom
-import gov.nasa.jpl.imce.oml.model.common.Annotation
+import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage
 import gov.nasa.jpl.imce.oml.model.common.Extent
 import gov.nasa.jpl.imce.oml.model.common.ModuleEdge
@@ -135,8 +135,8 @@ class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespaceAware
  	override getScope(EObject context, EReference reference) {
  		var IScope scope = null
 		switch context {
- 			Annotation:
- 				if (reference == CommonPackage.eINSTANCE.annotation_Property) {
+ 			AnnotationPropertyValue:
+ 				if (reference == CommonPackage.eINSTANCE.annotationPropertyValue_Property) {
  					scope = scope_Annotation_property(context, reference)
 				}
 					
@@ -230,17 +230,17 @@ class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespaceAware
 					scope = context.tbox.allEntitiesScope
 				else if (reference == TerminologiesPackage.eINSTANCE.restrictionStructuredDataPropertyContext_StructuredDataProperty)
 					scope = context.tbox.allEntityStructuredDataPropertiesScope
-				else if (reference == TerminologiesPackage.eINSTANCE.restrictionStructuredDataPropertyContext_ScalarDataPropertyValues)
+				else if (reference == TerminologiesPackage.eINSTANCE.restrictionStructuredDataPropertyContext_ScalarDataPropertyRestrictions)
 					scope = context.tbox.allScalarDataPropertiesScope
-				else if (reference == TerminologiesPackage.eINSTANCE.restrictionStructuredDataPropertyContext_StructuredPropertyTuples)
+				else if (reference == TerminologiesPackage.eINSTANCE.restrictionStructuredDataPropertyContext_StructuredDataPropertyRestrictions)
 					scope = context.tbox.allStructuredDataPropertiesScope
 			
 			RestrictionStructuredDataPropertyTuple:
 				if (reference == TerminologiesPackage.eINSTANCE.restrictionStructuredDataPropertyContext_StructuredDataProperty)
 					scope = context.terminologyBox()?.allEntityStructuredDataPropertiesScope
-				else if (reference == TerminologiesPackage.eINSTANCE.restrictionStructuredDataPropertyContext_ScalarDataPropertyValues)
+				else if (reference == TerminologiesPackage.eINSTANCE.restrictionStructuredDataPropertyContext_ScalarDataPropertyRestrictions)
 					scope = context.terminologyBox()?.allScalarDataPropertiesScope
-				else if (reference == TerminologiesPackage.eINSTANCE.restrictionStructuredDataPropertyContext_StructuredPropertyTuples)
+				else if (reference == TerminologiesPackage.eINSTANCE.restrictionStructuredDataPropertyContext_StructuredDataPropertyRestrictions)
 					scope = context.terminologyBox()?.allStructuredDataPropertiesScope
 			
 			RestrictionScalarDataPropertyValue:
