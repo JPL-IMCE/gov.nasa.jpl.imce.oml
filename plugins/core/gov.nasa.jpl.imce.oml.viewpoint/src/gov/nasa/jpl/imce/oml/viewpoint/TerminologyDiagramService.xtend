@@ -38,9 +38,9 @@ import java.util.LinkedHashSet
 import java.util.Set
 
 /*
- * Used to query for visual elements in the 'Terminology Diagram'
+ * Used to query for visual elements in the "Terminology Diagram"
  * 
- * The 'Terminology Diagram' will show all {@link Entity}s and
+ * The "Terminology Diagram" will show all {@link Entity}s and
  * {@link SpecializationAxiom}s for a given {@link TerminologyGraph} 
  * 
  * 
@@ -203,8 +203,48 @@ class TerminologyDiagramService {
 	    toSet
 	}
 	
+	/*
+	 * Gets class name for a {@link RestrictedDataRange}
+	 * 
+	 * @return Name of implemented class
+	 */
 	def String getRestrictedRangeLabel(RestrictedDataRange r){
 		val result = r.class.simpleName
 		return result.substring(0, result.length-4)
 	}
+	
+	def String getDetailedLabel(RestrictedDataRange r){
+		
+		var label = new StringBuilder
+		label.append(r.name())
+		
+		if(r instanceof StringScalarRestriction){
+			label.append("\npattern: " + (r as StringScalarRestriction).pattern)
+		}
+		if(r instanceof IRIScalarRestriction){
+			label.append("\npattern: " + (r as IRIScalarRestriction).pattern)
+		}
+		if(r instanceof PlainLiteralScalarRestriction){
+			label.append("\npattern: " + (r as PlainLiteralScalarRestriction).pattern)
+			label.append("\nlangRange: " + (r as PlainLiteralScalarRestriction).langRange)
+		}
+		if(r instanceof NumericScalarRestriction){
+			if((r as NumericScalarRestriction).minInclusive !== null) label.append("\n\nminInclusive: " + (r as NumericScalarRestriction).minInclusive)
+			if((r as NumericScalarRestriction).maxInclusive !== null) label.append("\nmaxInclusive: " + (r as NumericScalarRestriction).maxInclusive) 
+			if((r as NumericScalarRestriction).minExclusive !== null) label.append("\nminExclusive: " + (r as NumericScalarRestriction).minExclusive) 
+		    if((r as NumericScalarRestriction).maxExclusive !== null) label.append("\nmaxExclusive: " + (r as NumericScalarRestriction).maxExclusive)
+		}
+		if(r instanceof BinaryScalarRestriction){
+			label.append( "\n\nnmaxLength: " + (r as BinaryScalarRestriction).minLength + "\nmaxLength: " + (r as BinaryScalarRestriction).maxLength)
+		}
+		if(r instanceof TimeScalarRestriction){
+			if((r as TimeScalarRestriction).minInclusive !== null) label.append("\n\nminInclusive: " + (r as TimeScalarRestriction).minInclusive)
+			if((r as TimeScalarRestriction).maxInclusive !== null) label.append("\nmaxInclusive: " + (r as TimeScalarRestriction).maxInclusive) 
+			if((r as TimeScalarRestriction).minExclusive !== null) label.append("\nminExclusive: " + (r as TimeScalarRestriction).minExclusive) 
+		    if((r as TimeScalarRestriction).maxExclusive !== null) label.append("\nmaxExclusive: " + (r as TimeScalarRestriction).maxExclusive)
+		}
+		
+		label.toString
+	}
+	
 }
