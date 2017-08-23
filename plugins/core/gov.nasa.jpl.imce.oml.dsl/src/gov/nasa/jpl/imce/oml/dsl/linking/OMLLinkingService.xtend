@@ -20,7 +20,7 @@ package gov.nasa.jpl.imce.oml.dsl.linking
 import com.google.inject.Inject
 import gov.nasa.jpl.imce.oml.model.bundles.Bundle
 import gov.nasa.jpl.imce.oml.model.bundles.BundlesPackage
-import gov.nasa.jpl.imce.oml.model.common.Annotation
+import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage
 import gov.nasa.jpl.imce.oml.model.common.Element
 import gov.nasa.jpl.imce.oml.model.common.Extent
@@ -148,9 +148,9 @@ class OMLLinkingService extends DefaultLinkingService {
 			}
 		}
 
-		if (Annotation.isInstance(context) && ref == CommonPackage.eINSTANCE.annotation_Property) {
+		if (AnnotationPropertyValue.isInstance(context) && ref == CommonPackage.eINSTANCE.annotationPropertyValue_Property) {
 			// Look for what the next node is...
-			val aContext = Annotation.cast(context)
+			val aContext = AnnotationPropertyValue.cast(context)
 			val nextNode = node.parent.nextSibling
 			val nextSE = nextNode.leafNodes.head.semanticElement
 			switch nextSE {
@@ -160,7 +160,7 @@ class OMLLinkingService extends DefaultLinkingService {
 					// <Element> == nextSE
 					aContext.subject = nextSE
 				}
-				Annotation: {
+				AnnotationPropertyValue: {
 					// In this case, the concrete syntax looks like this:
 					// <Annotation> == context
 					// <Annotation> == nextSE

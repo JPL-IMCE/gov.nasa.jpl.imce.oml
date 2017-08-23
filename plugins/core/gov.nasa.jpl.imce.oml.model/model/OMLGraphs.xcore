@@ -32,12 +32,15 @@
 )  
 package gov.nasa.jpl.imce.oml.model.graphs
 
+import org.eclipse.emf.common.util.BasicEList
+
 import gov.nasa.jpl.imce.oml.model.common.Collection
 import gov.nasa.jpl.imce.oml.model.common.DerivedUUID
 import gov.nasa.jpl.imce.oml.model.common.Glossary
 import gov.nasa.jpl.imce.oml.model.common.ImplicitExtent
 import gov.nasa.jpl.imce.oml.model.common.IRIReference
 import gov.nasa.jpl.imce.oml.model.common.ModuleEdge
+import gov.nasa.jpl.imce.oml.model.common.ModuleElement
 import gov.nasa.jpl.imce.oml.model.common.NotFunctionalAPI
 import gov.nasa.jpl.imce.oml.model.common.NotSchema
 import gov.nasa.jpl.imce.oml.model.common.Override
@@ -63,6 +66,15 @@ class TerminologyGraph extends TerminologyBox {
 		boxAxioms.filter(ModuleEdge).asEList
 	}
 	
+	@Scala(code="extent.lookupBoxStatements(this)")
+	@Collection(kind="Set")
+	@NotSchema
+	@ImplicitExtent
+	op ModuleElement[] moduleElements() {
+		val mes = new BasicEList<ModuleElement>()
+		mes.addAll(boxStatements)
+		mes
+	}
 }
 
 /*

@@ -32,6 +32,9 @@
 )
 package gov.nasa.jpl.imce.oml.model.terminologies
 
+import org.eclipse.emf.common.util.BasicEList
+import org.eclipse.emf.common.util.ECollections
+
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions
 
 import gov.nasa.jpl.imce.oml.model.common.Collection
@@ -146,6 +149,11 @@ abstract class TerminologyBoxStatement extends ModuleElement {
 	
 	@Factory
 	container TerminologyBox[1] tbox opposite boxStatements
+	
+	@Scala(code="extent.terminologyBoxOfTerminologyBoxStatement.get(this)")
+	@NotSchema
+	@ImplicitExtent
+	op Module[?] moduleContext() { tbox }
 }
 
 /*
@@ -266,6 +274,12 @@ abstract class Term extends TerminologyBoxStatement, Resource {
 	op UUID[1] uuid() {
 		OMLExtensions.namespaceUUID(tbox?.uuid(), "name" -> name()?.toString())?.toString
 	}
+	
+	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.Element]")
+	@Collection(kind="Set")
+	@NotSchema
+	@ImplicitExtent
+	op Element[] allNestedElements() { ECollections.emptyEList }
 }
 
 /*
@@ -454,7 +468,7 @@ abstract class DataRelationship extends Term, DirectedBinaryRelationshipKind {
  * for the domain of an OML DataRelationship
  */
 @Glossary
-abstract class DataRelationshipDomain extends Element, Resource {
+abstract class DataRelationshipDomain extends ModuleElement, Resource {
 }
 
 /*
@@ -490,7 +504,7 @@ abstract class DataRelationshipFromStructure extends DataRelationshipDomain {
  * for the range of an OML DataRelationship
  */
 @Glossary
-abstract class DataRelationshipRange extends Element, Resource {
+abstract class DataRelationshipRange extends ModuleElement, Resource {
 }
 
 /*
@@ -619,6 +633,12 @@ abstract class EntityRestrictionAxiom extends TermAxiom {
 	 refers Entity[1] restrictedRange
 
 	 refers Entity[1] restrictedDomain
+	 
+	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.Element]")
+	@Collection(kind="Set")
+	@NotSchema
+	@ImplicitExtent
+	op Element[] allNestedElements() { ECollections.emptyEList }
 }
 
 /*
@@ -680,6 +700,12 @@ abstract class SpecializationAxiom extends TermAxiom {
 	 */
 	@NotSchema
 	op Entity[1] parent()
+	
+	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.Element]")
+	@Collection(kind="Set")
+	@NotSchema
+	@ImplicitExtent
+	op Element[] allNestedElements() { ECollections.emptyEList }
 }
 
 /*
@@ -813,6 +839,12 @@ class ReifiedRelationshipSpecializationAxiom extends SpecializationAxiom {
 abstract class EntityScalarDataPropertyRestrictionAxiom extends TermAxiom {
 	refers Entity[1] restrictedEntity
   	refers EntityScalarDataProperty[1] scalarProperty
+  	
+	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.Element]")
+	@Collection(kind="Set")
+	@NotSchema
+	@ImplicitExtent
+	op Element[] allNestedElements() { ECollections.emptyEList }
 }
 
 /*
@@ -902,6 +934,7 @@ abstract class EntityStructuredDataPropertyRestrictionAxiom extends TermAxiom {
 class EntityStructuredDataPropertyParticularRestrictionAxiom
 extends EntityStructuredDataPropertyRestrictionAxiom, RestrictionStructuredDataPropertyContext {
   	
+  	@Scala(code="extent.terminologyBoxOfTerminologyBoxStatement.get(this)")
 	@ImplicitExtent
 	@NotSchema
 	@Override
@@ -917,6 +950,11 @@ extends EntityStructuredDataPropertyRestrictionAxiom, RestrictionStructuredDataP
 		"structuredDataProperty" -> structuredDataProperty?.uuid()?.toString
 		)?.toString
 	}
+	
+	@Collection(kind="Set")
+	@NotSchema
+	@ImplicitExtent
+	op Element[] allNestedElements() { allNestedRestrictionElements }
 }
 
 /*
@@ -926,19 +964,32 @@ extends EntityStructuredDataPropertyRestrictionAxiom, RestrictionStructuredDataP
  */
 @Glossary
 @DerivedUUID
-abstract class RestrictionStructuredDataPropertyContext extends Element {
+abstract class RestrictionStructuredDataPropertyContext extends ModuleElement {
 	
 	refers DataRelationshipToStructure[1] structuredDataProperty
 	
 	@Collection(kind="Set")
-	contains RestrictionStructuredDataPropertyTuple[] structuredPropertyTuples opposite structuredDataPropertyContext
+	contains RestrictionStructuredDataPropertyTuple[] structuredDataPropertyRestrictions opposite structuredDataPropertyContext
 	
 	@Collection(kind="Set")
-	contains RestrictionScalarDataPropertyValue[] scalarDataPropertyValues opposite structuredDataPropertyContext
+	contains RestrictionScalarDataPropertyValue[] scalarDataPropertyRestrictions opposite structuredDataPropertyContext
 	
 	@ImplicitExtent
 	@NotSchema
 	op TerminologyBox[?] terminologyBox()
+	
+	@Scala(code="extent.lookupStructuredDataPropertyRestrictions(this).flatMap{ r => scala.collection.immutable.Set.empty[resolver.api.Element] + r ++ r.allNestedRestrictionElements() } ++
+		extent.lookupScalarDataPropertyRestrictions(this)")
+	@Collection(kind="Set")
+	@NotSchema
+	@ImplicitExtent
+	op Element[] allNestedRestrictionElements() { 
+		val nres = new BasicEList<Element>()
+		nres.addAll(structuredDataPropertyRestrictions)
+		structuredDataPropertyRestrictions.forEach[ nres.addAll(allNestedRestrictionElements) ]
+		nres.addAll(scalarDataPropertyRestrictions)
+		nres
+	}
 }
 
 /*
@@ -950,7 +1001,7 @@ abstract class RestrictionStructuredDataPropertyContext extends Element {
 class RestrictionStructuredDataPropertyTuple extends RestrictionStructuredDataPropertyContext {
 	
 	@Factory
-	container RestrictionStructuredDataPropertyContext[1] structuredDataPropertyContext opposite structuredPropertyTuples
+	container RestrictionStructuredDataPropertyContext[1] structuredDataPropertyContext opposite structuredDataPropertyRestrictions
 	
 	@Scala(code="extent.restrictionStructuredDataPropertyContextOfRestrictionStructuredDataPropertyTuple.get(this).flatMap(_.terminologyBox())")
 	@ImplicitExtent
@@ -967,6 +1018,18 @@ class RestrictionStructuredDataPropertyTuple extends RestrictionStructuredDataPr
 		"structuredDataProperty" -> structuredDataProperty?.uuid()?.toString()
 		)?.toString
 	}
+	
+	@Scala(code="extent.restrictionStructuredDataPropertyContextOfRestrictionStructuredDataPropertyTuple.get(this).flatMap(_.moduleContext)")
+	@NotSchema
+	@ImplicitExtent
+	op Module[?] moduleContext() {
+		structuredDataPropertyContext?.moduleContext
+	}
+	
+	@Collection(kind="Set")
+	@NotSchema
+	@ImplicitExtent
+	op Element[] allNestedElements() { allNestedRestrictionElements }
 }
 
 /*
@@ -978,12 +1041,12 @@ class RestrictionStructuredDataPropertyTuple extends RestrictionStructuredDataPr
 class RestrictionScalarDataPropertyValue extends Element {
 	
 	@Factory
-	container RestrictionStructuredDataPropertyContext[1] structuredDataPropertyContext opposite scalarDataPropertyValues
+	container RestrictionStructuredDataPropertyContext[1] structuredDataPropertyContext opposite scalarDataPropertyRestrictions
 	
 	refers DataRelationshipToScalar[1] scalarDataProperty
 	LexicalValue[1] scalarPropertyValue
 	
-	@Scala(code="extent.restrictionStructuredDataPropertyContextOfScalarDataPropertyValue.get(this).flatMap(_.terminologyBox())")
+	@Scala(code="extent.restrictionStructuredDataPropertyContextOfRestrictionScalarDataPropertyValue.get(this).flatMap(_.terminologyBox())")
 	@ImplicitExtent
 	@NotSchema
 	op TerminologyBox[?] terminologyBox() { structuredDataPropertyContext?.terminologyBox }
@@ -996,6 +1059,13 @@ class RestrictionScalarDataPropertyValue extends Element {
 		"structuredDataPropertyContext" -> structuredDataPropertyContext?.uuid()?.toString(),
 		"scalarDataProperty" -> scalarDataProperty?.uuid()?.toString()
 		)?.toString
+	}
+	
+	@Scala(code="extent.restrictionStructuredDataPropertyContextOfRestrictionScalarDataPropertyValue.get(this).flatMap(_.moduleContext)")
+	@NotSchema
+	@ImplicitExtent
+	op Module[?] moduleContext() {
+		structuredDataPropertyContext?.moduleContext
 	}
 }
 
@@ -1283,4 +1353,10 @@ class ScalarOneOfLiteralAxiom extends TermAxiom {
 		"axiom" -> axiom?.uuid()?.toString
 		)?.toString
 	}
+	
+	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.Element]")
+	@Collection(kind="Set")
+	@NotSchema
+	@ImplicitExtent
+	op Element[] allNestedElements() { ECollections.emptyEList }
 }
