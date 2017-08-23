@@ -56,7 +56,7 @@ AnnotationProperty returns AnnotationProperty:
  * 
  * @see jpl.imce.oml.specification.linking.OMLLinkingService
  */
-Annotation returns Annotation:
+AnnotationPropertyValue returns AnnotationPropertyValue:
 	'@' property=[AnnotationProperty|ABBREV_IRI]
 	'=' value=STRING;
 	
@@ -69,21 +69,19 @@ TerminologyBox returns TerminologyBox:
 	Bundle | TerminologyGraph;
 
 TerminologyGraph returns TerminologyGraph:
-	( annotations+=Annotation )*
+	( annotations+=AnnotationPropertyValue )*
 	kind=TerminologyKind 'terminology' iri=IRI 
 	'{'
-	( annotations+=Annotation | 
-	  boxAxioms+=TerminologyBoxAxiom | 
+	( boxAxioms+=TerminologyBoxAxiom | 
 	  boxStatements+=TerminologyBoxStatement
 	)*
 	'}';
 
 Bundle returns Bundle:
-	( annotations+=Annotation )*
+	( annotations+=AnnotationPropertyValue )*
 	kind=TerminologyKind 'bundle' iri=IRI 
 	'{'
-	( annotations+=Annotation |
-	  boxAxioms+=TerminologyBoxAxiom |
+	( boxAxioms+=TerminologyBoxAxiom |
 	  boxStatements+=TerminologyBoxStatement |
 	  bundleStatements+=TerminologyBundleStatement |
 	  bundleAxioms+=TerminologyBundleAxiom
@@ -91,11 +89,10 @@ Bundle returns Bundle:
 	'}';
 	
 DescriptionBox returns DescriptionBox:
-	( annotations+=Annotation )*
+	( annotations+=AnnotationPropertyValue )*
 	kind=DescriptionKind 'descriptionBox' iri=IRI
 	'{'
-	( annotations+=Annotation |
-	  closedWorldDefinitions+=DescriptionBoxExtendsClosedWorldDefinitions |
+	( closedWorldDefinitions+=DescriptionBoxExtendsClosedWorldDefinitions |
 	  descriptionBoxRefinements+=DescriptionBoxRefinement |
 	  conceptInstances+=ConceptInstance |
 	  reifiedRelationshipInstances+=ReifiedRelationshipInstance |
@@ -116,11 +113,13 @@ TerminologyBoxAxiom returns TerminologyBoxAxiom:
 // 1 TerminologyBundleAxiom
 
 BundledTerminologyAxiom returns BundledTerminologyAxiom:
+	( annotations+=AnnotationPropertyValue )*
 	'bundles' bundledTerminology=[TerminologyBox|ExternalReference];
 
 // 3 TerminologyBoxAxioms
 
 ConceptDesignationTerminologyAxiom returns ConceptDesignationTerminologyAxiom:
+	( annotations+=AnnotationPropertyValue )*
 	'conceptDesignationTerminologyAxiom'
 	'{'
 		'designatedTerminology' designatedTerminology=[TerminologyBox|ExternalReference]
@@ -128,9 +127,11 @@ ConceptDesignationTerminologyAxiom returns ConceptDesignationTerminologyAxiom:
 	'}';
 
 TerminologyExtensionAxiom returns TerminologyExtensionAxiom:
+	( annotations+=AnnotationPropertyValue )*
 	'extends' extendedTerminology=[TerminologyBox|ExternalReference];
 
 TerminologyNestingAxiom returns TerminologyNestingAxiom:
+	( annotations+=AnnotationPropertyValue )*
 	'terminologyNestingAxiom'
 	'{'
 		'nestingTerminology' nestingTerminology=[TerminologyBox|ExternalReference]
@@ -225,14 +226,17 @@ enum TerminologyKind returns TerminologyKind:
 // 2 Atomic Entity Terms
 
 Aspect returns Aspect:
+	( annotations+=AnnotationPropertyValue )*
 	'aspect' name=ID;
 
 Concept returns Concept:
+	( annotations+=AnnotationPropertyValue )*
 	'concept' name=ID;
 
 // 2 EntityRelationship Terms
 
 ReifiedRelationship returns ReifiedRelationship:
+	( annotations+=AnnotationPropertyValue )*
 	'reifiedRelationship' name=ID '{'
 	( (isFunctional?='functional')? &
 	  (isInverseFunctional?='inverseFunctional')? &
@@ -250,6 +254,7 @@ ReifiedRelationship returns ReifiedRelationship:
 	'}';
 
 UnreifiedRelationship returns UnreifiedRelationship:
+	( annotations+=AnnotationPropertyValue )*
 	'unreifiedRelationship' name=ID '{'
 	( (isFunctional?='functional')? &
 	  (isInverseFunctional?='inverseFunctional')? &
@@ -267,32 +272,38 @@ UnreifiedRelationship returns UnreifiedRelationship:
 // 2 Datatypes
 
 Scalar returns Scalar:
+	( annotations+=AnnotationPropertyValue )*
 	'scalar' name=ID;
 
 Structure returns Structure:
+	( annotations+=AnnotationPropertyValue )*
 	'structure' name=ID;
 
 // 4 DataRelationship Terms
 
 EntityStructuredDataProperty returns EntityStructuredDataProperty:
+	( annotations+=AnnotationPropertyValue )*
 	'entityStructuredDataProperty' (isIdentityCriteria?='+')? name=ID '{'
 	'domain' domain=[Entity|Reference]
 	'range' range=[Structure|Reference]
 	'}';
 
 EntityScalarDataProperty returns EntityScalarDataProperty:
+	( annotations+=AnnotationPropertyValue )*
 	'entityScalarDataProperty' (isIdentityCriteria?='+')? name=ID '{'
 	'domain' domain=[Entity|Reference]
 	'range' range=[DataRange|Reference]
 	'}';
 
 StructuredDataProperty returns StructuredDataProperty:
+	( annotations+=AnnotationPropertyValue )*
 	'structuredDataProperty' name=ID '{'
 	'domain' domain=[Structure|Reference]
 	'range' range=[Structure|Reference]
 	'}';
 
 ScalarDataProperty returns ScalarDataProperty:
+	( annotations+=AnnotationPropertyValue )*
 	'scalarDataProperty' name=ID '{'
 	'domain' domain=[Structure|Reference]
 	'range' range=[DataRange|Reference]
@@ -302,22 +313,26 @@ ScalarDataProperty returns ScalarDataProperty:
 
 
 AnonymousConceptUnionAxiom returns AnonymousConceptUnionAxiom:
+	( annotations+=AnnotationPropertyValue )*
 	'anonymousConceptUnion' '(' name=ID ')' '{'
 		( disjunctions+=DisjointUnionOfConceptsAxiom)*
 	'}';
 
 RootConceptTaxonomyAxiom returns RootConceptTaxonomyAxiom:
+	( annotations+=AnnotationPropertyValue )*
 	'rootConceptTaxonomy' '(' root=[Concept|Reference] ')'
 	'{'
 		( disjunctions+=DisjointUnionOfConceptsAxiom)*
 	'}';
 
 SpecificDisjointConceptAxiom returns SpecificDisjointConceptAxiom:
+	( annotations+=AnnotationPropertyValue )*
 	'disjointLeaf' '(' disjointLeaf=[Concept|Reference] ')';
 
 // 2 EntityRestrictionAxioms
 
 EntityExistentialRestrictionAxiom returns EntityExistentialRestrictionAxiom:
+	( annotations+=AnnotationPropertyValue )*
 	'someEntities'
 	restrictedDomain=[Entity|Reference]
 	'.' 
@@ -325,6 +340,7 @@ EntityExistentialRestrictionAxiom returns EntityExistentialRestrictionAxiom:
 	'in' restrictedRange=[Entity|Reference];
 
 EntityUniversalRestrictionAxiom returns EntityUniversalRestrictionAxiom:
+	( annotations+=AnnotationPropertyValue )*
 	'allEntities'
 	restrictedDomain=[Entity|Reference]
 	'.' 
@@ -334,17 +350,21 @@ EntityUniversalRestrictionAxiom returns EntityUniversalRestrictionAxiom:
 // 3 SpecializationAxioms
 
 AspectSpecializationAxiom returns AspectSpecializationAxiom:
+	( annotations+=AnnotationPropertyValue )*
 	subEntity=[Entity|Reference] 'extendsAspect' superAspect=[Aspect|Reference];
 
 ConceptSpecializationAxiom returns ConceptSpecializationAxiom:
+	( annotations+=AnnotationPropertyValue )*
 	subConcept=[Concept|Reference] 'extendsConcept' superConcept=[Concept|Reference];
 
 ReifiedRelationshipSpecializationAxiom returns ReifiedRelationshipSpecializationAxiom:
+	( annotations+=AnnotationPropertyValue )*
 	subRelationship=[ReifiedRelationship|Reference] 'extendsRelationship' superRelationship=[ReifiedRelationship|Reference];
 
 // 3 EntityScalarDataPropertyRestrictionAxioms
 
 EntityScalarDataPropertyExistentialRestrictionAxiom returns EntityScalarDataPropertyExistentialRestrictionAxiom:
+	( annotations+=AnnotationPropertyValue )*
 	'someData'
 	restrictedEntity=[Entity|Reference]
 	'.'
@@ -352,12 +372,14 @@ EntityScalarDataPropertyExistentialRestrictionAxiom returns EntityScalarDataProp
 	'in' scalarRestriction=[DataRange|Reference];
 
 EntityScalarDataPropertyParticularRestrictionAxiom returns EntityScalarDataPropertyParticularRestrictionAxiom:
+	( annotations+=AnnotationPropertyValue )*
 	'every'
 	restrictedEntity=[Entity|Reference]
 	'.' scalarProperty=[EntityScalarDataProperty|Reference]
 	'=' literalValue=Value;
 	
 EntityScalarDataPropertyUniversalRestrictionAxiom returns EntityScalarDataPropertyUniversalRestrictionAxiom:
+	( annotations+=AnnotationPropertyValue )*
 	'allData'
 	restrictedEntity=[Entity|Reference]
 	'.' scalarProperty=[EntityScalarDataProperty|Reference]
@@ -365,24 +387,27 @@ EntityScalarDataPropertyUniversalRestrictionAxiom returns EntityScalarDataProper
 
 // 1 EntityStructuredDataPropertyRestrictionAxiom
 EntityStructuredDataPropertyParticularRestrictionAxiom returns EntityStructuredDataPropertyParticularRestrictionAxiom:
+	( annotations+=AnnotationPropertyValue )*
 	'every'
 	restrictedEntity=[Entity|Reference]
 	'.'
 	structuredDataProperty=[EntityStructuredDataProperty|Reference]
 	'='
 	'{'
-	( structuredPropertyTuples+=RestrictionStructuredDataPropertyTuple |
-	  scalarDataPropertyValues+=RestrictionScalarDataPropertyValue )*
+	( structuredDataPropertyRestrictions+=RestrictionStructuredDataPropertyTuple |
+	  scalarDataPropertyRestrictions+=RestrictionScalarDataPropertyValue )*
 	'}';
 	
 RestrictionStructuredDataPropertyTuple returns RestrictionStructuredDataPropertyTuple:
+	( annotations+=AnnotationPropertyValue )*
 	structuredDataProperty=[StructuredDataProperty|Reference]
 	'=' '{'
-	( structuredPropertyTuples+=RestrictionStructuredDataPropertyTuple |
-	  scalarDataPropertyValues+=RestrictionScalarDataPropertyValue )*
+	( structuredDataPropertyRestrictions+=RestrictionStructuredDataPropertyTuple |
+	  scalarDataPropertyRestrictions+=RestrictionScalarDataPropertyValue )*
     '}';
 
 RestrictionScalarDataPropertyValue returns RestrictionScalarDataPropertyValue:
+	( annotations+=AnnotationPropertyValue )*
 	scalarDataProperty=[ScalarDataProperty|Reference]
 	'=' 
 	scalarPropertyValue=Value;
@@ -390,6 +415,7 @@ RestrictionScalarDataPropertyValue returns RestrictionScalarDataPropertyValue:
 // 8 RestrictedDataRanges + 1 ScalarOneOfLiteralAxiom
 
 BinaryScalarRestriction returns BinaryScalarRestriction:
+	( annotations+=AnnotationPropertyValue )*
 	'binaryScalarRestriction' name=ID
 	'{'
 		( ('length' length=INT)? &
@@ -399,6 +425,7 @@ BinaryScalarRestriction returns BinaryScalarRestriction:
 	'}';
 
 IRIScalarRestriction returns IRIScalarRestriction:
+	( annotations+=AnnotationPropertyValue )*
 	'iriScalarRestriction' name=ID
 	'{'
 		( ('length' length=INT)? &
@@ -409,6 +436,7 @@ IRIScalarRestriction returns IRIScalarRestriction:
 	'}';
 
 NumericScalarRestriction returns NumericScalarRestriction:
+	( annotations+=AnnotationPropertyValue )*
 	'numericScalarRestriction' name=ID
 	'{'
 		( ('minInclusive' minInclusive=STRING)? &
@@ -419,6 +447,7 @@ NumericScalarRestriction returns NumericScalarRestriction:
 	'}';
 
 PlainLiteralScalarRestriction returns PlainLiteralScalarRestriction:
+	( annotations+=AnnotationPropertyValue )*
 	'plainLiteralScalarRestriction' name=ID
 	'{'
 		( ('length' length=INT)? &
@@ -430,17 +459,20 @@ PlainLiteralScalarRestriction returns PlainLiteralScalarRestriction:
 	'}';
 
 ScalarOneOfRestriction returns ScalarOneOfRestriction:
+	( annotations+=AnnotationPropertyValue )*
 	'scalarOneOfRestriction' name=ID
 	'{'
 		'restrictedRange' restrictedRange=[DataRange|Reference]
 	'}';
 
 ScalarOneOfLiteralAxiom returns ScalarOneOfLiteralAxiom:
+	( annotations+=AnnotationPropertyValue )*
 	'oneOf'
 	axiom=[ScalarOneOfRestriction|Reference]
 	'=' value=STRING;
 
 StringScalarRestriction returns StringScalarRestriction:
+	( annotations+=AnnotationPropertyValue )*
 	'stringScalarRestriction' name=ID
 	'{'
 		( ('length' length=INT)? &
@@ -451,12 +483,14 @@ StringScalarRestriction returns StringScalarRestriction:
 	'}';
 
 SynonymScalarRestriction returns SynonymScalarRestriction:
+	( annotations+=AnnotationPropertyValue )*
 	'synonymScalarRestriction' name=ID
 	'{'
 		'restrictedRange' restrictedRange=[DataRange|Reference]
 	'}';
 
 TimeScalarRestriction returns TimeScalarRestriction:
+	( annotations+=AnnotationPropertyValue )*
 	'timeScalarRestriction' name=ID
 	'{'
 		( ('minInclusive' minInclusive=STRING)? &
@@ -482,12 +516,15 @@ ConceptualEntitySingletonInstance returns ConceptualEntitySingletonInstance:
 	ReifiedRelationshipInstance;
 	
 DescriptionBoxExtendsClosedWorldDefinitions returns DescriptionBoxExtendsClosedWorldDefinitions:
+	( annotations+=AnnotationPropertyValue )*
 	'extends' closedWorldDefinitions=[TerminologyBox|ExternalReference];
 
 DescriptionBoxRefinement returns DescriptionBoxRefinement:
+	( annotations+=AnnotationPropertyValue )*
 	'refines' refinedDescriptionBox=[DescriptionBox|ExternalReference];
 
 SingletonInstanceScalarDataPropertyValue returns SingletonInstanceScalarDataPropertyValue:
+	( annotations+=AnnotationPropertyValue )*
 	singletonInstance=[ConceptualEntitySingletonInstance|Reference] 
 	'.' 
 	scalarDataProperty=[EntityScalarDataProperty|Reference] 
@@ -495,6 +532,7 @@ SingletonInstanceScalarDataPropertyValue returns SingletonInstanceScalarDataProp
 	scalarPropertyValue=Value;
 
 SingletonInstanceStructuredDataPropertyValue returns SingletonInstanceStructuredDataPropertyValue:
+	( annotations+=AnnotationPropertyValue )*
 	singletonInstance=[ConceptualEntitySingletonInstance|Reference] 
 	'.' 
 	structuredDataProperty=[DataRelationshipToStructure|Reference] 
@@ -504,6 +542,7 @@ SingletonInstanceStructuredDataPropertyValue returns SingletonInstanceStructured
 	'}';
 
 StructuredDataPropertyTuple returns StructuredDataPropertyTuple:
+	( annotations+=AnnotationPropertyValue )*
 	structuredDataProperty=[DataRelationshipToStructure|Reference] 
 	'=' '{'
 	( structuredPropertyTuples+=StructuredDataPropertyTuple |
@@ -511,27 +550,33 @@ StructuredDataPropertyTuple returns StructuredDataPropertyTuple:
 	'}';
 
 ScalarDataPropertyValue returns ScalarDataPropertyValue:
+	( annotations+=AnnotationPropertyValue )*
 	scalarDataProperty=[DataRelationshipToScalar|Reference]
 	'='
 	scalarPropertyValue=Value;
 
 ConceptInstance returns ConceptInstance:
+	( annotations+=AnnotationPropertyValue )*
 	'conceptInstance' '(' name=ID 'is-a' singletonConceptClassifier=[Concept|Reference] ')';
 
 ReifiedRelationshipInstance returns ReifiedRelationshipInstance:
+	( annotations+=AnnotationPropertyValue )*
 	'reifiedRelationshipInstance' '(' name=ID 'is-a' singletonReifiedRelationshipClassifier=[ReifiedRelationship|Reference] ')';
 
 ReifiedRelationshipInstanceDomain returns ReifiedRelationshipInstanceDomain:
+	( annotations+=AnnotationPropertyValue )*
 	'domain' 
 	'(' reifiedRelationshipInstance=[ReifiedRelationshipInstance|Reference] ')'
 	'=' domain=[ConceptualEntitySingletonInstance|Reference];
 
 ReifiedRelationshipInstanceRange returns ReifiedRelationshipInstanceRange:
+	( annotations+=AnnotationPropertyValue )*
 	'range'
 	'(' reifiedRelationshipInstance=[ReifiedRelationshipInstance|Reference] ')'
 	'=' range=[ConceptualEntitySingletonInstance|Reference];
 
 UnreifiedRelationshipInstanceTuple returns UnreifiedRelationshipInstanceTuple:
+	( annotations+=AnnotationPropertyValue )*
 	'tuple'
 	'{'
 		'unreifiedRelationship' unreifiedRelationship=[UnreifiedRelationship|Reference]

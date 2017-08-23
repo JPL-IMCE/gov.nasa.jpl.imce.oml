@@ -33,6 +33,7 @@
 package gov.nasa.jpl.imce.oml.model.bundles
 
 import org.eclipse.emf.common.util.BasicEList
+import org.eclipse.emf.common.util.ECollections
 
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions
 
@@ -46,6 +47,7 @@ import gov.nasa.jpl.imce.oml.model.common.Glossary
 import gov.nasa.jpl.imce.oml.model.common.ImplicitExtent
 import gov.nasa.jpl.imce.oml.model.common.IRIReference
 import gov.nasa.jpl.imce.oml.model.common.LocalName
+import gov.nasa.jpl.imce.oml.model.common.Module
 import gov.nasa.jpl.imce.oml.model.common.ModuleEdge
 import gov.nasa.jpl.imce.oml.model.common.ModuleElement
 import gov.nasa.jpl.imce.oml.model.common.NamespaceUUID
@@ -80,8 +82,7 @@ class Bundle extends TerminologyBox {
 	@Collection(kind="Set")
 	contains TerminologyBundleStatement[] bundleStatements opposite bundle
 	
-	
-	@Scala(code="extent.boxAxioms.getOrElse(this, scala.collection.immutable.Set.empty[resolver.api.ModuleEdge]) ++ extent.bundleAxioms.getOrElse(this, scala.collection.immutable.Set.empty[resolver.api.ModuleEdge])")
+	@Scala(code="extent.lookupBoxAxioms(this) ++ extent.lookupBundleAxioms(this)")
 	@Collection(kind="Set")
 	@ImplicitExtent
 	@NotSchema
@@ -93,6 +94,16 @@ class Bundle extends TerminologyBox {
 		me
 	}
 	
+	@Scala(code="extent.lookupBundleStatements(this) ++ extent.lookupBoxStatements(this)")
+	@Collection(kind="Set")
+	@NotSchema
+	@ImplicitExtent
+	op ModuleElement[] moduleElements() {
+		val mes = new BasicEList<ModuleElement>()
+		mes.addAll(boxStatements)
+		mes.addAll(bundleStatements)
+		mes
+	}
 }
 
 /*
@@ -104,6 +115,11 @@ abstract class TerminologyBundleStatement extends ModuleElement {
 	
 	@CopyConstructor
 	container Bundle[1] bundle opposite bundleStatements
+	
+	@Scala(code="extent.bundleOfTerminologyBundleStatement.get(this)")
+	@NotSchema
+	@ImplicitExtent
+	op Module[?] moduleContext() { bundle }
 }
 
 /*
@@ -131,6 +147,11 @@ abstract class ConceptTreeDisjunction extends Element {
 	@ImplicitExtent
 	@NotSchema
 	op Bundle[?] bundleContainer()
+	
+	@Collection(kind="Set")
+	@NotSchema
+	@ImplicitExtent
+	op Element[] allNestedDisjunctions()
 }
 
 /*
@@ -152,6 +173,15 @@ abstract class DisjointUnionOfConceptsAxiom extends Element {
 	@NotSchema
 	op ConceptTreeDisjunction[?] conceptTreeDisjunctionParent() { disjointTaxonomyParent }
 	
+	@Scala(code="conceptTreeDisjunctionParent().flatMap(_.bundleContainer())")
+	@NotSchema
+	@ImplicitExtent
+	op Module[?] moduleContext() { disjointTaxonomyParent?.bundleContainer }
+	
+	@Collection(kind="Set")
+	@NotSchema
+	@ImplicitExtent
+	op Element[] allNestedUnions()
 }
 
 /*
@@ -159,7 +189,7 @@ abstract class DisjointUnionOfConceptsAxiom extends Element {
  */
 @Glossary
 @DerivedUUID
-class SpecificDisjointConceptAxiom extends DisjointUnionOfConceptsAxiom, Element {
+class SpecificDisjointConceptAxiom extends DisjointUnionOfConceptsAxiom {
 	
 	/*
 	 * A Concept that is a disjoint leaf in a taxonomy tree.
@@ -175,6 +205,12 @@ class SpecificDisjointConceptAxiom extends DisjointUnionOfConceptsAxiom, Element
 		"disjointLeaf" -> disjointLeaf?.uuid()?.toString
 		)?.toString
 	}
+	
+	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.Element]")
+	@Collection(kind="Set")
+	@NotSchema
+	@ImplicitExtent
+	op Element[] allNestedUnions() { ECollections.emptyEList }
 }
 
 /*
@@ -184,7 +220,7 @@ class SpecificDisjointConceptAxiom extends DisjointUnionOfConceptsAxiom, Element
  */
 @Glossary
 @NamespaceUUID(namespace="disjointTaxonomyParent", factors="name")
-class AnonymousConceptUnionAxiom extends DisjointUnionOfConceptsAxiom, ConceptTreeDisjunction, Element {
+class AnonymousConceptUnionAxiom extends DisjointUnionOfConceptsAxiom, ConceptTreeDisjunction {
 	
 	LocalName[1] name
 	
@@ -199,6 +235,26 @@ class AnonymousConceptUnionAxiom extends DisjointUnionOfConceptsAxiom, ConceptTr
 	@ImplicitExtent
 	@Override
 	op Bundle[?] bundleContainer() { disjointTaxonomyParent?.bundleContainer() }
+	
+	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.Element]")
+	@Collection(kind="Set")
+	@NotSchema
+	@ImplicitExtent
+	op Element[] allNestedDisjunctions() { 
+		val nres = new BasicEList<Element>()
+		
+		nres
+	}
+	
+	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.Element]")
+	@Collection(kind="Set")
+	@NotSchema
+	@ImplicitExtent
+	op Element[] allNestedUnions() { 
+		val nres = new BasicEList<Element>()
+		
+		nres
+	}
 }
 
 /*
@@ -229,6 +285,22 @@ class RootConceptTaxonomyAxiom extends TerminologyBundleStatement, ConceptTreeDi
 	@ImplicitExtent
 	@Override
 	op Bundle[?] bundleContainer() { bundle }
+	
+	@Collection(kind="Set")
+	@NotSchema
+	@ImplicitExtent
+	op Element[] allNestedElements() { allNestedDisjunctions }
+	
+	@Scala(code="extent.lookupDisjunctions(this).flatMap{ d => scala.collection.immutable.Set.empty[resolver.api.Element] + d ++ d.allNestedUnions() }")
+	@Collection(kind="Set")
+	@NotSchema
+	@ImplicitExtent
+	op Element[] allNestedDisjunctions() {
+		val nres = new BasicEList<Element>()
+		nres.addAll(disjunctions)
+		disjunctions.forEach[ nres.addAll(allNestedUnions) ]
+		nres
+	}
 }
 
 /*
