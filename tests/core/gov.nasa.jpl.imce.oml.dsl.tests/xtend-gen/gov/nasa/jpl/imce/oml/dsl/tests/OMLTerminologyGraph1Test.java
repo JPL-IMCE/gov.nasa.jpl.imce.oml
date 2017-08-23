@@ -19,8 +19,8 @@ package gov.nasa.jpl.imce.oml.dsl.tests;
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import gov.nasa.jpl.imce.oml.dsl.tests.OMLInjectorProvider;
-import gov.nasa.jpl.imce.oml.model.common.Annotation;
 import gov.nasa.jpl.imce.oml.model.common.AnnotationProperty;
+import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue;
 import gov.nasa.jpl.imce.oml.model.common.Element;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
@@ -124,7 +124,7 @@ public class OMLTerminologyGraph1Test {
       Assert.assertEquals(tbox.nsPrefix(), "mission");
       final Concept c = IterableExtensions.<Concept>head(Iterables.<Concept>filter(tbox.getBoxStatements(), Concept.class));
       Assert.assertEquals(c.name(), "PerformingElement");
-      final Annotation a = IterableExtensions.<Annotation>head(tbox.getAnnotations());
+      final AnnotationPropertyValue a = IterableExtensions.<AnnotationPropertyValue>head(c.getAnnotations());
       final AnnotationProperty a_prop = a.getProperty();
       final Element a_subj = a.getSubject();
       final String a_value = a.getValue();

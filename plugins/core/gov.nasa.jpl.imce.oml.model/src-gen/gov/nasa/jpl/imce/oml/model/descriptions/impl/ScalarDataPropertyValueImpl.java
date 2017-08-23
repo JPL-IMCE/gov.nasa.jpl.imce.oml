@@ -18,6 +18,8 @@
  */
 package gov.nasa.jpl.imce.oml.model.descriptions.impl;
 
+import gov.nasa.jpl.imce.oml.model.common.Module;
+
 import gov.nasa.jpl.imce.oml.model.common.impl.ElementImpl;
 
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox;
@@ -277,6 +279,15 @@ public class ScalarDataPropertyValueImpl extends ElementImpl implements ScalarDa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Module moduleContext() {
+		return this.descriptionBox();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -408,6 +419,8 @@ public class ScalarDataPropertyValueImpl extends ElementImpl implements ScalarDa
 				return descriptionBox();
 			case DescriptionsPackage.SCALAR_DATA_PROPERTY_VALUE___UUID:
 				return uuid();
+			case DescriptionsPackage.SCALAR_DATA_PROPERTY_VALUE___MODULE_CONTEXT:
+				return moduleContext();
 		}
 		return super.eInvoke(operationID, arguments);
 	}

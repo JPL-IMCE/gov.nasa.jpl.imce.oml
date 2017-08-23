@@ -20,10 +20,6 @@ package gov.nasa.jpl.imce.oml.model.common.util;
 
 import gov.nasa.jpl.imce.oml.model.common.*;
 
-import java.util.Map;
-
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -86,6 +82,12 @@ public class CommonSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
+			case CommonPackage.ANNOTATION_PROPERTY_VALUE: {
+				AnnotationPropertyValue annotationPropertyValue = (AnnotationPropertyValue)theEObject;
+				T result = caseAnnotationPropertyValue(annotationPropertyValue);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case CommonPackage.ELEMENT: {
 				Element element = (Element)theEObject;
 				T result = caseElement(element);
@@ -118,36 +120,6 @@ public class CommonSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case CommonPackage.ANNOTATION_PROPERTY_TABLE: {
-				@SuppressWarnings("unchecked") Map.Entry<AnnotationProperty, EList<AnnotationEntry>> annotationPropertyTable = (Map.Entry<AnnotationProperty, EList<AnnotationEntry>>)theEObject;
-				T result = caseAnnotationPropertyTable(annotationPropertyTable);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case CommonPackage.ANNOTATION_ENTRY: {
-				AnnotationEntry annotationEntry = (AnnotationEntry)theEObject;
-				T result = caseAnnotationEntry(annotationEntry);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case CommonPackage.ANNOTATION_SUBJECT_TABLE: {
-				@SuppressWarnings("unchecked") Map.Entry<Element, EList<AnnotationSubjectPropertyValue>> annotationSubjectTable = (Map.Entry<Element, EList<AnnotationSubjectPropertyValue>>)theEObject;
-				T result = caseAnnotationSubjectTable(annotationSubjectTable);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case CommonPackage.ANNOTATION_SUBJECT_PROPERTY_VALUE: {
-				AnnotationSubjectPropertyValue annotationSubjectPropertyValue = (AnnotationSubjectPropertyValue)theEObject;
-				T result = caseAnnotationSubjectPropertyValue(annotationSubjectPropertyValue);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case CommonPackage.ANNOTATION: {
-				Annotation annotation = (Annotation)theEObject;
-				T result = caseAnnotation(annotation);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case CommonPackage.EXTENT: {
 				Extent extent = (Extent)theEObject;
 				T result = caseExtent(extent);
@@ -164,6 +136,21 @@ public class CommonSwitch<T> extends Switch<T> {
 			}
 			default: return defaultCase(theEObject);
 		}
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Annotation Property Value</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Annotation Property Value</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAnnotationPropertyValue(AnnotationPropertyValue object) {
+		return null;
 	}
 
 	/**
@@ -238,81 +225,6 @@ public class CommonSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseAnnotationProperty(AnnotationProperty object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Annotation Property Table</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Annotation Property Table</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseAnnotationPropertyTable(Map.Entry<AnnotationProperty, EList<AnnotationEntry>> object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Annotation Entry</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Annotation Entry</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseAnnotationEntry(AnnotationEntry object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Annotation Subject Table</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Annotation Subject Table</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseAnnotationSubjectTable(Map.Entry<Element, EList<AnnotationSubjectPropertyValue>> object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Annotation Subject Property Value</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Annotation Subject Property Value</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseAnnotationSubjectPropertyValue(AnnotationSubjectPropertyValue object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Annotation</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Annotation</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseAnnotation(Annotation object) {
 		return null;
 	}
 

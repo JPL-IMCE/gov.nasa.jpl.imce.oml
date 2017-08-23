@@ -18,6 +18,7 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies;
 
+import gov.nasa.jpl.imce.oml.model.common.Module;
 import gov.nasa.jpl.imce.oml.model.common.ModuleElement;
 
 /**
@@ -69,5 +70,15 @@ public interface TerminologyBoxStatement extends ModuleElement {
 	 * @generated
 	 */
 	void setTbox(TerminologyBox value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return this.getTbox();'"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='extent.terminologyBoxOfTerminologyBoxStatement.get(this)'"
+	 * @generated
+	 */
+	Module moduleContext();
 
 } // TerminologyBoxStatement

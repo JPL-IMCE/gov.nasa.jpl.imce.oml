@@ -19,8 +19,8 @@ package gov.nasa.jpl.imce.oml.dsl.ui.labeling;
 
 import com.google.inject.Inject;
 import gov.nasa.jpl.imce.oml.model.bundles.Bundle;
-import gov.nasa.jpl.imce.oml.model.common.Annotation;
 import gov.nasa.jpl.imce.oml.model.common.AnnotationProperty;
+import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue;
 import gov.nasa.jpl.imce.oml.model.common.Module;
 import gov.nasa.jpl.imce.oml.model.common.ModuleEdge;
 import gov.nasa.jpl.imce.oml.model.descriptions.ConceptualEntitySingletonInstance;
@@ -72,7 +72,7 @@ public class OMLLabelProvider extends DefaultEObjectLabelProvider {
     return ("AnnotationProperty " + _abbrevIRI);
   }
   
-  public String text(final Annotation a) {
+  public String text(final AnnotationPropertyValue a) {
     String _elvis = null;
     Object _doGetText = this.doGetText(a.getSubject());
     String _string = null;

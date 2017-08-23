@@ -26,6 +26,7 @@ import gov.nasa.jpl.imce.oml.model.bundles.RootConceptTaxonomyAxiom;
 
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
 import gov.nasa.jpl.imce.oml.model.common.Element;
+import gov.nasa.jpl.imce.oml.model.common.ModuleElement;
 
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
 
@@ -36,9 +37,12 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.UUID;
 
+import java.util.function.Consumer;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -205,6 +209,36 @@ public class RootConceptTaxonomyAxiomImpl extends TerminologyBundleStatementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Element> allNestedElements() {
+		return this.allNestedDisjunctions();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Element> allNestedDisjunctions() {
+		BasicEList<Element> _xblockexpression = null;
+		{
+			final BasicEList<Element> nres = new BasicEList<Element>();
+			nres.addAll(this.getDisjunctions());
+			final Consumer<DisjointUnionOfConceptsAxiom> _function = new Consumer<DisjointUnionOfConceptsAxiom>() {
+				public void accept(final DisjointUnionOfConceptsAxiom it) {
+					nres.addAll(it.allNestedUnions());
+				}
+			};
+			this.getDisjunctions().forEach(_function);
+			_xblockexpression = nres;
+		}
+		return _xblockexpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -345,9 +379,16 @@ public class RootConceptTaxonomyAxiomImpl extends TerminologyBundleStatementImpl
 				default: return super.eDerivedOperationID(baseOperationID, baseClass);
 			}
 		}
+		if (baseClass == ModuleElement.class) {
+			switch (baseOperationID) {
+				case CommonPackage.MODULE_ELEMENT___ALL_NESTED_ELEMENTS: return BundlesPackage.ROOT_CONCEPT_TAXONOMY_AXIOM___ALL_NESTED_ELEMENTS;
+				default: return super.eDerivedOperationID(baseOperationID, baseClass);
+			}
+		}
 		if (baseClass == ConceptTreeDisjunction.class) {
 			switch (baseOperationID) {
 				case BundlesPackage.CONCEPT_TREE_DISJUNCTION___BUNDLE_CONTAINER: return BundlesPackage.ROOT_CONCEPT_TAXONOMY_AXIOM___BUNDLE_CONTAINER;
+				case BundlesPackage.CONCEPT_TREE_DISJUNCTION___ALL_NESTED_DISJUNCTIONS: return BundlesPackage.ROOT_CONCEPT_TAXONOMY_AXIOM___ALL_NESTED_DISJUNCTIONS;
 				default: return -1;
 			}
 		}
@@ -366,6 +407,10 @@ public class RootConceptTaxonomyAxiomImpl extends TerminologyBundleStatementImpl
 				return uuid();
 			case BundlesPackage.ROOT_CONCEPT_TAXONOMY_AXIOM___BUNDLE_CONTAINER:
 				return bundleContainer();
+			case BundlesPackage.ROOT_CONCEPT_TAXONOMY_AXIOM___ALL_NESTED_ELEMENTS:
+				return allNestedElements();
+			case BundlesPackage.ROOT_CONCEPT_TAXONOMY_AXIOM___ALL_NESTED_DISJUNCTIONS:
+				return allNestedDisjunctions();
 		}
 		return super.eInvoke(operationID, arguments);
 	}

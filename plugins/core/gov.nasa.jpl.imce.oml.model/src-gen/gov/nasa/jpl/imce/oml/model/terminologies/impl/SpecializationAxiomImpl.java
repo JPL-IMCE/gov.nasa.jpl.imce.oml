@@ -18,12 +18,15 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies.impl;
 
+import gov.nasa.jpl.imce.oml.model.common.Element;
+
 import gov.nasa.jpl.imce.oml.model.terminologies.Entity;
 import gov.nasa.jpl.imce.oml.model.terminologies.SpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage;
 
 import java.lang.reflect.InvocationTargetException;
 
+import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -82,6 +85,15 @@ public abstract class SpecializationAxiomImpl extends TermAxiomImpl implements S
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Element> allNestedElements() {
+		return ECollections.<Element>emptyEList();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
@@ -89,6 +101,8 @@ public abstract class SpecializationAxiomImpl extends TermAxiomImpl implements S
 				return child();
 			case TerminologiesPackage.SPECIALIZATION_AXIOM___PARENT:
 				return parent();
+			case TerminologiesPackage.SPECIALIZATION_AXIOM___ALL_NESTED_ELEMENTS:
+				return allNestedElements();
 		}
 		return super.eInvoke(operationID, arguments);
 	}

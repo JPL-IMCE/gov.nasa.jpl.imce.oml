@@ -18,11 +18,14 @@
  */
 package gov.nasa.jpl.imce.oml.model.common.impl;
 
-import gov.nasa.jpl.imce.oml.model.common.Annotation;
 import gov.nasa.jpl.imce.oml.model.common.AnnotationProperty;
+import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue;
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
 import gov.nasa.jpl.imce.oml.model.common.Element;
-import gov.nasa.jpl.imce.oml.model.common.Module;
+
+import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
+
+import java.util.UUID;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -37,23 +40,35 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import org.eclipse.emf.internal.cdo.CDOObjectImpl;
 
+import org.eclipse.xtext.xbase.lib.Pair;
+
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Annotation</b></em>'.
+ * An implementation of the model object '<em><b>Annotation Property Value</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link gov.nasa.jpl.imce.oml.model.common.impl.AnnotationImpl#getModule <em>Module</em>}</li>
- *   <li>{@link gov.nasa.jpl.imce.oml.model.common.impl.AnnotationImpl#getProperty <em>Property</em>}</li>
- *   <li>{@link gov.nasa.jpl.imce.oml.model.common.impl.AnnotationImpl#getSubject <em>Subject</em>}</li>
- *   <li>{@link gov.nasa.jpl.imce.oml.model.common.impl.AnnotationImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.common.impl.AnnotationPropertyValueImpl#getUuid <em>Uuid</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.common.impl.AnnotationPropertyValueImpl#getSubject <em>Subject</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.common.impl.AnnotationPropertyValueImpl#getProperty <em>Property</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.common.impl.AnnotationPropertyValueImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class AnnotationImpl extends CDOObjectImpl implements Annotation {
+public class AnnotationPropertyValueImpl extends CDOObjectImpl implements AnnotationPropertyValue {
+	/**
+	 * The default value of the '{@link #getUuid() <em>Uuid</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUuid()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String UUID_EDEFAULT = null;
+
 	/**
 	 * The cached value of the '{@link #getProperty() <em>Property</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -63,16 +78,6 @@ public class AnnotationImpl extends CDOObjectImpl implements Annotation {
 	 * @ordered
 	 */
 	protected AnnotationProperty property;
-
-	/**
-	 * The cached value of the '{@link #getSubject() <em>Subject</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSubject()
-	 * @generated
-	 * @ordered
-	 */
-	protected Element subject;
 
 	/**
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
@@ -99,7 +104,7 @@ public class AnnotationImpl extends CDOObjectImpl implements Annotation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected AnnotationImpl() {
+	protected AnnotationPropertyValueImpl() {
 		super();
 	}
 
@@ -110,7 +115,7 @@ public class AnnotationImpl extends CDOObjectImpl implements Annotation {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return CommonPackage.Literals.ANNOTATION;
+		return CommonPackage.Literals.ANNOTATION_PROPERTY_VALUE;
 	}
 
 	/**
@@ -118,9 +123,34 @@ public class AnnotationImpl extends CDOObjectImpl implements Annotation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Module getModule() {
-		if (eContainerFeatureID() != CommonPackage.ANNOTATION__MODULE) return null;
-		return (Module)eContainer();
+	public String getUuid() {
+		Element _subject = this.getSubject();
+		String _uuid = null;
+		if (_subject!=null) {
+			_uuid=_subject.uuid();
+		}
+		String _string = null;
+		if (_uuid!=null) {
+			_string=_uuid.toString();
+		}
+		Pair<String, String> _mappedTo = Pair.<String, String>of("subject", _string);
+		AnnotationProperty _property = this.getProperty();
+		String _uuid_1 = null;
+		if (_property!=null) {
+			_uuid_1=_property.getUuid();
+		}
+		String _string_1 = null;
+		if (_uuid_1!=null) {
+			_string_1=_uuid_1.toString();
+		}
+		Pair<String, String> _mappedTo_1 = Pair.<String, String>of("property", _string_1);
+		UUID _derivedUUID = OMLExtensions.derivedUUID(
+			"AnnotationPropertyValue", _mappedTo, _mappedTo_1);
+		String _string_2 = null;
+		if (_derivedUUID!=null) {
+			_string_2=_derivedUUID.toString();
+		}
+		return _string_2;
 	}
 
 	/**
@@ -128,9 +158,9 @@ public class AnnotationImpl extends CDOObjectImpl implements Annotation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Module basicGetModule() {
-		if (eContainerFeatureID() != CommonPackage.ANNOTATION__MODULE) return null;
-		return (Module)eInternalContainer();
+	public Element getSubject() {
+		if (eContainerFeatureID() != CommonPackage.ANNOTATION_PROPERTY_VALUE__SUBJECT) return null;
+		return (Element)eContainer();
 	}
 
 	/**
@@ -138,8 +168,18 @@ public class AnnotationImpl extends CDOObjectImpl implements Annotation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetModule(Module newModule, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newModule, CommonPackage.ANNOTATION__MODULE, msgs);
+	public Element basicGetSubject() {
+		if (eContainerFeatureID() != CommonPackage.ANNOTATION_PROPERTY_VALUE__SUBJECT) return null;
+		return (Element)eInternalContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetSubject(Element newSubject, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newSubject, CommonPackage.ANNOTATION_PROPERTY_VALUE__SUBJECT, msgs);
 		return msgs;
 	}
 
@@ -148,20 +188,20 @@ public class AnnotationImpl extends CDOObjectImpl implements Annotation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setModule(Module newModule) {
-		if (newModule != eInternalContainer() || (eContainerFeatureID() != CommonPackage.ANNOTATION__MODULE && newModule != null)) {
-			if (EcoreUtil.isAncestor(this, (EObject)newModule))
+	public void setSubject(Element newSubject) {
+		if (newSubject != eInternalContainer() || (eContainerFeatureID() != CommonPackage.ANNOTATION_PROPERTY_VALUE__SUBJECT && newSubject != null)) {
+			if (EcoreUtil.isAncestor(this, (EObject)newSubject))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
-			if (newModule != null)
-				msgs = ((InternalEObject)newModule).eInverseAdd(this, CommonPackage.MODULE__ANNOTATIONS, Module.class, msgs);
-			msgs = basicSetModule(newModule, msgs);
+			if (newSubject != null)
+				msgs = ((InternalEObject)newSubject).eInverseAdd(this, CommonPackage.ELEMENT__ANNOTATIONS, Element.class, msgs);
+			msgs = basicSetSubject(newSubject, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CommonPackage.ANNOTATION__MODULE, newModule, newModule));
+			eNotify(new ENotificationImpl(this, Notification.SET, CommonPackage.ANNOTATION_PROPERTY_VALUE__SUBJECT, newSubject, newSubject));
 	}
 
 	/**
@@ -175,7 +215,7 @@ public class AnnotationImpl extends CDOObjectImpl implements Annotation {
 			property = (AnnotationProperty)eResolveProxy(oldProperty);
 			if (property != oldProperty) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CommonPackage.ANNOTATION__PROPERTY, oldProperty, property));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CommonPackage.ANNOTATION_PROPERTY_VALUE__PROPERTY, oldProperty, property));
 			}
 		}
 		return property;
@@ -199,45 +239,7 @@ public class AnnotationImpl extends CDOObjectImpl implements Annotation {
 		AnnotationProperty oldProperty = property;
 		property = newProperty;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CommonPackage.ANNOTATION__PROPERTY, oldProperty, property));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Element getSubject() {
-		if (subject != null && ((EObject)subject).eIsProxy()) {
-			InternalEObject oldSubject = (InternalEObject)subject;
-			subject = (Element)eResolveProxy(oldSubject);
-			if (subject != oldSubject) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CommonPackage.ANNOTATION__SUBJECT, oldSubject, subject));
-			}
-		}
-		return subject;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Element basicGetSubject() {
-		return subject;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setSubject(Element newSubject) {
-		Element oldSubject = subject;
-		subject = newSubject;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CommonPackage.ANNOTATION__SUBJECT, oldSubject, subject));
+			eNotify(new ENotificationImpl(this, Notification.SET, CommonPackage.ANNOTATION_PROPERTY_VALUE__PROPERTY, oldProperty, property));
 	}
 
 	/**
@@ -258,7 +260,7 @@ public class AnnotationImpl extends CDOObjectImpl implements Annotation {
 		String oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CommonPackage.ANNOTATION__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET, CommonPackage.ANNOTATION_PROPERTY_VALUE__VALUE, oldValue, value));
 	}
 
 	/**
@@ -269,10 +271,10 @@ public class AnnotationImpl extends CDOObjectImpl implements Annotation {
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case CommonPackage.ANNOTATION__MODULE:
+			case CommonPackage.ANNOTATION_PROPERTY_VALUE__SUBJECT:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetModule((Module)otherEnd, msgs);
+				return basicSetSubject((Element)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -285,8 +287,8 @@ public class AnnotationImpl extends CDOObjectImpl implements Annotation {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case CommonPackage.ANNOTATION__MODULE:
-				return basicSetModule(null, msgs);
+			case CommonPackage.ANNOTATION_PROPERTY_VALUE__SUBJECT:
+				return basicSetSubject(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -299,8 +301,8 @@ public class AnnotationImpl extends CDOObjectImpl implements Annotation {
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
-			case CommonPackage.ANNOTATION__MODULE:
-				return eInternalContainer().eInverseRemove(this, CommonPackage.MODULE__ANNOTATIONS, Module.class, msgs);
+			case CommonPackage.ANNOTATION_PROPERTY_VALUE__SUBJECT:
+				return eInternalContainer().eInverseRemove(this, CommonPackage.ELEMENT__ANNOTATIONS, Element.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
@@ -313,16 +315,15 @@ public class AnnotationImpl extends CDOObjectImpl implements Annotation {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case CommonPackage.ANNOTATION__MODULE:
-				if (resolve) return getModule();
-				return basicGetModule();
-			case CommonPackage.ANNOTATION__PROPERTY:
-				if (resolve) return getProperty();
-				return basicGetProperty();
-			case CommonPackage.ANNOTATION__SUBJECT:
+			case CommonPackage.ANNOTATION_PROPERTY_VALUE__UUID:
+				return getUuid();
+			case CommonPackage.ANNOTATION_PROPERTY_VALUE__SUBJECT:
 				if (resolve) return getSubject();
 				return basicGetSubject();
-			case CommonPackage.ANNOTATION__VALUE:
+			case CommonPackage.ANNOTATION_PROPERTY_VALUE__PROPERTY:
+				if (resolve) return getProperty();
+				return basicGetProperty();
+			case CommonPackage.ANNOTATION_PROPERTY_VALUE__VALUE:
 				return getValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -336,16 +337,13 @@ public class AnnotationImpl extends CDOObjectImpl implements Annotation {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case CommonPackage.ANNOTATION__MODULE:
-				setModule((Module)newValue);
-				return;
-			case CommonPackage.ANNOTATION__PROPERTY:
-				setProperty((AnnotationProperty)newValue);
-				return;
-			case CommonPackage.ANNOTATION__SUBJECT:
+			case CommonPackage.ANNOTATION_PROPERTY_VALUE__SUBJECT:
 				setSubject((Element)newValue);
 				return;
-			case CommonPackage.ANNOTATION__VALUE:
+			case CommonPackage.ANNOTATION_PROPERTY_VALUE__PROPERTY:
+				setProperty((AnnotationProperty)newValue);
+				return;
+			case CommonPackage.ANNOTATION_PROPERTY_VALUE__VALUE:
 				setValue((String)newValue);
 				return;
 		}
@@ -360,16 +358,13 @@ public class AnnotationImpl extends CDOObjectImpl implements Annotation {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case CommonPackage.ANNOTATION__MODULE:
-				setModule((Module)null);
-				return;
-			case CommonPackage.ANNOTATION__PROPERTY:
-				setProperty((AnnotationProperty)null);
-				return;
-			case CommonPackage.ANNOTATION__SUBJECT:
+			case CommonPackage.ANNOTATION_PROPERTY_VALUE__SUBJECT:
 				setSubject((Element)null);
 				return;
-			case CommonPackage.ANNOTATION__VALUE:
+			case CommonPackage.ANNOTATION_PROPERTY_VALUE__PROPERTY:
+				setProperty((AnnotationProperty)null);
+				return;
+			case CommonPackage.ANNOTATION_PROPERTY_VALUE__VALUE:
 				setValue(VALUE_EDEFAULT);
 				return;
 		}
@@ -384,13 +379,13 @@ public class AnnotationImpl extends CDOObjectImpl implements Annotation {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case CommonPackage.ANNOTATION__MODULE:
-				return basicGetModule() != null;
-			case CommonPackage.ANNOTATION__PROPERTY:
+			case CommonPackage.ANNOTATION_PROPERTY_VALUE__UUID:
+				return UUID_EDEFAULT == null ? getUuid() != null : !UUID_EDEFAULT.equals(getUuid());
+			case CommonPackage.ANNOTATION_PROPERTY_VALUE__SUBJECT:
+				return basicGetSubject() != null;
+			case CommonPackage.ANNOTATION_PROPERTY_VALUE__PROPERTY:
 				return property != null;
-			case CommonPackage.ANNOTATION__SUBJECT:
-				return subject != null;
-			case CommonPackage.ANNOTATION__VALUE:
+			case CommonPackage.ANNOTATION_PROPERTY_VALUE__VALUE:
 				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
 		}
 		return super.eIsSet(featureID);
@@ -412,4 +407,4 @@ public class AnnotationImpl extends CDOObjectImpl implements Annotation {
 		return result.toString();
 	}
 
-} //AnnotationImpl
+} //AnnotationPropertyValueImpl

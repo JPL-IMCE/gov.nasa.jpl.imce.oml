@@ -290,8 +290,9 @@ public class TerminologiesSwitch<T> extends Switch<T> {
 			case TerminologiesPackage.DATA_RELATIONSHIP_DOMAIN: {
 				DataRelationshipDomain dataRelationshipDomain = (DataRelationshipDomain)theEObject;
 				T result = caseDataRelationshipDomain(dataRelationshipDomain);
-				if (result == null) result = caseElement(dataRelationshipDomain);
+				if (result == null) result = caseModuleElement(dataRelationshipDomain);
 				if (result == null) result = caseResource(dataRelationshipDomain);
+				if (result == null) result = caseElement(dataRelationshipDomain);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -299,8 +300,9 @@ public class TerminologiesSwitch<T> extends Switch<T> {
 				DataRelationshipFromEntity dataRelationshipFromEntity = (DataRelationshipFromEntity)theEObject;
 				T result = caseDataRelationshipFromEntity(dataRelationshipFromEntity);
 				if (result == null) result = caseDataRelationshipDomain(dataRelationshipFromEntity);
-				if (result == null) result = caseElement(dataRelationshipFromEntity);
+				if (result == null) result = caseModuleElement(dataRelationshipFromEntity);
 				if (result == null) result = caseResource(dataRelationshipFromEntity);
+				if (result == null) result = caseElement(dataRelationshipFromEntity);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -308,16 +310,18 @@ public class TerminologiesSwitch<T> extends Switch<T> {
 				DataRelationshipFromStructure dataRelationshipFromStructure = (DataRelationshipFromStructure)theEObject;
 				T result = caseDataRelationshipFromStructure(dataRelationshipFromStructure);
 				if (result == null) result = caseDataRelationshipDomain(dataRelationshipFromStructure);
-				if (result == null) result = caseElement(dataRelationshipFromStructure);
+				if (result == null) result = caseModuleElement(dataRelationshipFromStructure);
 				if (result == null) result = caseResource(dataRelationshipFromStructure);
+				if (result == null) result = caseElement(dataRelationshipFromStructure);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case TerminologiesPackage.DATA_RELATIONSHIP_RANGE: {
 				DataRelationshipRange dataRelationshipRange = (DataRelationshipRange)theEObject;
 				T result = caseDataRelationshipRange(dataRelationshipRange);
-				if (result == null) result = caseElement(dataRelationshipRange);
+				if (result == null) result = caseModuleElement(dataRelationshipRange);
 				if (result == null) result = caseResource(dataRelationshipRange);
+				if (result == null) result = caseElement(dataRelationshipRange);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -325,8 +329,9 @@ public class TerminologiesSwitch<T> extends Switch<T> {
 				DataRelationshipToScalar dataRelationshipToScalar = (DataRelationshipToScalar)theEObject;
 				T result = caseDataRelationshipToScalar(dataRelationshipToScalar);
 				if (result == null) result = caseDataRelationshipRange(dataRelationshipToScalar);
-				if (result == null) result = caseElement(dataRelationshipToScalar);
+				if (result == null) result = caseModuleElement(dataRelationshipToScalar);
 				if (result == null) result = caseResource(dataRelationshipToScalar);
+				if (result == null) result = caseElement(dataRelationshipToScalar);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -334,8 +339,9 @@ public class TerminologiesSwitch<T> extends Switch<T> {
 				DataRelationshipToStructure dataRelationshipToStructure = (DataRelationshipToStructure)theEObject;
 				T result = caseDataRelationshipToStructure(dataRelationshipToStructure);
 				if (result == null) result = caseDataRelationshipRange(dataRelationshipToStructure);
-				if (result == null) result = caseElement(dataRelationshipToStructure);
+				if (result == null) result = caseModuleElement(dataRelationshipToStructure);
 				if (result == null) result = caseResource(dataRelationshipToStructure);
+				if (result == null) result = caseElement(dataRelationshipToStructure);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -572,6 +578,7 @@ public class TerminologiesSwitch<T> extends Switch<T> {
 			case TerminologiesPackage.RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT: {
 				RestrictionStructuredDataPropertyContext restrictionStructuredDataPropertyContext = (RestrictionStructuredDataPropertyContext)theEObject;
 				T result = caseRestrictionStructuredDataPropertyContext(restrictionStructuredDataPropertyContext);
+				if (result == null) result = caseModuleElement(restrictionStructuredDataPropertyContext);
 				if (result == null) result = caseElement(restrictionStructuredDataPropertyContext);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -580,6 +587,7 @@ public class TerminologiesSwitch<T> extends Switch<T> {
 				RestrictionStructuredDataPropertyTuple restrictionStructuredDataPropertyTuple = (RestrictionStructuredDataPropertyTuple)theEObject;
 				T result = caseRestrictionStructuredDataPropertyTuple(restrictionStructuredDataPropertyTuple);
 				if (result == null) result = caseRestrictionStructuredDataPropertyContext(restrictionStructuredDataPropertyTuple);
+				if (result == null) result = caseModuleElement(restrictionStructuredDataPropertyTuple);
 				if (result == null) result = caseElement(restrictionStructuredDataPropertyTuple);
 				if (result == null) result = defaultCase(theEObject);
 				return result;

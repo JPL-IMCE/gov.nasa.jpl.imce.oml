@@ -19,6 +19,7 @@
 package gov.nasa.jpl.imce.oml.model.terminologies;
 
 import gov.nasa.jpl.imce.oml.model.common.Element;
+import gov.nasa.jpl.imce.oml.model.common.ModuleElement;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -38,15 +39,15 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyContext#getStructuredDataProperty <em>Structured Data Property</em>}</li>
- *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyContext#getStructuredPropertyTuples <em>Structured Property Tuples</em>}</li>
- *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyContext#getScalarDataPropertyValues <em>Scalar Data Property Values</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyContext#getStructuredDataPropertyRestrictions <em>Structured Data Property Restrictions</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyContext#getScalarDataPropertyRestrictions <em>Scalar Data Property Restrictions</em>}</li>
  * </ul>
  *
  * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getRestrictionStructuredDataPropertyContext()
  * @model abstract="true"
  * @generated
  */
-public interface RestrictionStructuredDataPropertyContext extends Element {
+public interface RestrictionStructuredDataPropertyContext extends ModuleElement {
 	/**
 	 * Returns the value of the '<em><b>Structured Data Property</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -74,42 +75,42 @@ public interface RestrictionStructuredDataPropertyContext extends Element {
 	void setStructuredDataProperty(DataRelationshipToStructure value);
 
 	/**
-	 * Returns the value of the '<em><b>Structured Property Tuples</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Structured Data Property Restrictions</b></em>' containment reference list.
 	 * The list contents are of type {@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple}.
 	 * It is bidirectional and its opposite is '{@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple#getStructuredDataPropertyContext <em>Structured Data Property Context</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Structured Property Tuples</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Structured Data Property Restrictions</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Structured Property Tuples</em>' containment reference list.
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getRestrictionStructuredDataPropertyContext_StructuredPropertyTuples()
+	 * @return the value of the '<em>Structured Data Property Restrictions</em>' containment reference list.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getRestrictionStructuredDataPropertyContext_StructuredDataPropertyRestrictions()
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple#getStructuredDataPropertyContext
 	 * @model opposite="structuredDataPropertyContext" containment="true"
 	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
 	 * @generated
 	 */
-	EList<RestrictionStructuredDataPropertyTuple> getStructuredPropertyTuples();
+	EList<RestrictionStructuredDataPropertyTuple> getStructuredDataPropertyRestrictions();
 
 	/**
-	 * Returns the value of the '<em><b>Scalar Data Property Values</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Scalar Data Property Restrictions</b></em>' containment reference list.
 	 * The list contents are of type {@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue}.
 	 * It is bidirectional and its opposite is '{@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue#getStructuredDataPropertyContext <em>Structured Data Property Context</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Scalar Data Property Values</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Scalar Data Property Restrictions</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Scalar Data Property Values</em>' containment reference list.
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getRestrictionStructuredDataPropertyContext_ScalarDataPropertyValues()
+	 * @return the value of the '<em>Scalar Data Property Restrictions</em>' containment reference list.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getRestrictionStructuredDataPropertyContext_ScalarDataPropertyRestrictions()
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue#getStructuredDataPropertyContext
 	 * @model opposite="structuredDataPropertyContext" containment="true"
 	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
 	 * @generated
 	 */
-	EList<RestrictionScalarDataPropertyValue> getScalarDataPropertyValues();
+	EList<RestrictionScalarDataPropertyValue> getScalarDataPropertyRestrictions();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -118,5 +119,16 @@ public interface RestrictionStructuredDataPropertyContext extends Element {
 	 * @generated
 	 */
 	TerminologyBox terminologyBox();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%org.eclipse.emf.common.util.BasicEList%><<%gov.nasa.jpl.imce.oml.model.common.Element%>> _xblockexpression = null;\n{\n\tfinal <%org.eclipse.emf.common.util.BasicEList%><<%gov.nasa.jpl.imce.oml.model.common.Element%>> nres = new <%org.eclipse.emf.common.util.BasicEList%><<%gov.nasa.jpl.imce.oml.model.common.Element%>>();\n\tnres.addAll(this.getStructuredDataPropertyRestrictions());\n\tfinal <%java.util.function.Consumer%><<%gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple%>> _function = new <%java.util.function.Consumer%><<%gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple%>>()\n\t{\n\t\tpublic void accept(final <%gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple%> it)\n\t\t{\n\t\t\tnres.addAll(it.allNestedRestrictionElements());\n\t\t}\n\t};\n\tthis.getStructuredDataPropertyRestrictions().forEach(_function);\n\tnres.addAll(this.getScalarDataPropertyRestrictions());\n\t_xblockexpression = nres;\n}\nreturn _xblockexpression;'"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='extent.lookupStructuredDataPropertyRestrictions(this).flatMap{ r => scala.collection.immutable.Set.empty[resolver.api.Element] + r ++ r.allNestedRestrictionElements() } ++\n\t\textent.lookupScalarDataPropertyRestrictions(this)'"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
+	 * @generated
+	 */
+	EList<Element> allNestedRestrictionElements();
 
 } // RestrictionStructuredDataPropertyContext

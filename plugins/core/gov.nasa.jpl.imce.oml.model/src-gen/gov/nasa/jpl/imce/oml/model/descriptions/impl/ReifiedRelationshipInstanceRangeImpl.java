@@ -18,6 +18,9 @@
  */
 package gov.nasa.jpl.imce.oml.model.descriptions.impl;
 
+import gov.nasa.jpl.imce.oml.model.common.Element;
+import gov.nasa.jpl.imce.oml.model.common.Module;
+
 import gov.nasa.jpl.imce.oml.model.descriptions.ConceptualEntitySingletonInstance;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsPackage;
@@ -33,6 +36,7 @@ import java.util.UUID;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -286,6 +290,24 @@ public class ReifiedRelationshipInstanceRangeImpl extends TerminologyInstanceAss
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Module moduleContext() {
+		return this.descriptionBox();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Element> allNestedElements() {
+		return ECollections.<Element>emptyEList();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -418,6 +440,10 @@ public class ReifiedRelationshipInstanceRangeImpl extends TerminologyInstanceAss
 				return descriptionBox();
 			case DescriptionsPackage.REIFIED_RELATIONSHIP_INSTANCE_RANGE___UUID:
 				return uuid();
+			case DescriptionsPackage.REIFIED_RELATIONSHIP_INSTANCE_RANGE___MODULE_CONTEXT:
+				return moduleContext();
+			case DescriptionsPackage.REIFIED_RELATIONSHIP_INSTANCE_RANGE___ALL_NESTED_ELEMENTS:
+				return allNestedElements();
 		}
 		return super.eInvoke(operationID, arguments);
 	}
