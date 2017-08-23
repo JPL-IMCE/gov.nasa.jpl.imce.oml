@@ -213,6 +213,11 @@ class TerminologyDiagramService {
 		return result.substring(0, result.length-4)
 	}
 	
+	/*
+	 * Gets label for a {@link RestrictedDataRange} Node
+	 * 
+	 * @return String representation for Scalar Restriction
+	 */
 	def String getDetailedLabel(RestrictedDataRange r){
 		
 		var label = new StringBuilder
