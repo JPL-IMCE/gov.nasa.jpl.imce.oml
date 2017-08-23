@@ -18,7 +18,7 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies;
 
-import gov.nasa.jpl.imce.oml.model.common.Element;
+import gov.nasa.jpl.imce.oml.model.common.ModuleElement;
 import gov.nasa.jpl.imce.oml.model.common.Resource;
 
 /**
@@ -36,5 +36,5 @@ import gov.nasa.jpl.imce.oml.model.common.Resource;
  * @model abstract="true"
  * @generated
  */
-public interface DataRelationshipDomain extends Element, Resource {
+public interface DataRelationshipDomain extends ModuleElement, Resource {
 } // DataRelationshipDomain

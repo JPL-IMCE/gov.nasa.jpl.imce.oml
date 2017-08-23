@@ -18,6 +18,8 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies.impl;
 
+import gov.nasa.jpl.imce.oml.model.common.Module;
+
 import gov.nasa.jpl.imce.oml.model.common.impl.ElementImpl;
 
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
@@ -155,7 +157,7 @@ public class RestrictionScalarDataPropertyValueImpl extends ElementImpl implemen
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newStructuredDataPropertyContext != null)
-				msgs = ((InternalEObject)newStructuredDataPropertyContext).eInverseAdd(this, TerminologiesPackage.RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__SCALAR_DATA_PROPERTY_VALUES, RestrictionStructuredDataPropertyContext.class, msgs);
+				msgs = ((InternalEObject)newStructuredDataPropertyContext).eInverseAdd(this, TerminologiesPackage.RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__SCALAR_DATA_PROPERTY_RESTRICTIONS, RestrictionStructuredDataPropertyContext.class, msgs);
 			msgs = basicSetStructuredDataPropertyContext(newStructuredDataPropertyContext, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
@@ -276,6 +278,20 @@ public class RestrictionScalarDataPropertyValueImpl extends ElementImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Module moduleContext() {
+		RestrictionStructuredDataPropertyContext _structuredDataPropertyContext = this.getStructuredDataPropertyContext();
+		Module _moduleContext = null;
+		if (_structuredDataPropertyContext!=null) {
+			_moduleContext=_structuredDataPropertyContext.moduleContext();
+		}
+		return _moduleContext;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -310,7 +326,7 @@ public class RestrictionScalarDataPropertyValueImpl extends ElementImpl implemen
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
 			case TerminologiesPackage.RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__STRUCTURED_DATA_PROPERTY_CONTEXT:
-				return eInternalContainer().eInverseRemove(this, TerminologiesPackage.RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__SCALAR_DATA_PROPERTY_VALUES, RestrictionStructuredDataPropertyContext.class, msgs);
+				return eInternalContainer().eInverseRemove(this, TerminologiesPackage.RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__SCALAR_DATA_PROPERTY_RESTRICTIONS, RestrictionStructuredDataPropertyContext.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
@@ -407,6 +423,8 @@ public class RestrictionScalarDataPropertyValueImpl extends ElementImpl implemen
 				return terminologyBox();
 			case TerminologiesPackage.RESTRICTION_SCALAR_DATA_PROPERTY_VALUE___UUID:
 				return uuid();
+			case TerminologiesPackage.RESTRICTION_SCALAR_DATA_PROPERTY_VALUE___MODULE_CONTEXT:
+				return moduleContext();
 		}
 		return super.eInvoke(operationID, arguments);
 	}

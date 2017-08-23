@@ -113,6 +113,15 @@ public interface TerminologiesPackage extends EPackage {
 	int TERMINOLOGY_BOX__UUID = CommonPackage.MODULE__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TERMINOLOGY_BOX__ANNOTATIONS = CommonPackage.MODULE__ANNOTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Extent</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -129,15 +138,6 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int TERMINOLOGY_BOX__IRI = CommonPackage.MODULE__IRI;
-
-	/**
-	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TERMINOLOGY_BOX__ANNOTATIONS = CommonPackage.MODULE__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Kind</b></em>' attribute.
@@ -230,6 +230,24 @@ public interface TerminologiesPackage extends EPackage {
 	int TERMINOLOGY_BOX___UUID = CommonPackage.MODULE___UUID;
 
 	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TERMINOLOGY_BOX___MODULE_CONTEXT = CommonPackage.MODULE___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>Module Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TERMINOLOGY_BOX___MODULE_ELEMENTS = CommonPackage.MODULE___MODULE_ELEMENTS;
+
+	/**
 	 * The number of operations of the '<em>Terminology Box</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -256,6 +274,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int TERMINOLOGY_BOX_STATEMENT__UUID = CommonPackage.MODULE_ELEMENT__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TERMINOLOGY_BOX_STATEMENT__ANNOTATIONS = CommonPackage.MODULE_ELEMENT__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
@@ -285,13 +312,31 @@ public interface TerminologiesPackage extends EPackage {
 	int TERMINOLOGY_BOX_STATEMENT___UUID = CommonPackage.MODULE_ELEMENT___UUID;
 
 	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TERMINOLOGY_BOX_STATEMENT___ALL_NESTED_ELEMENTS = CommonPackage.MODULE_ELEMENT___ALL_NESTED_ELEMENTS;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TERMINOLOGY_BOX_STATEMENT___MODULE_CONTEXT = CommonPackage.MODULE_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>Terminology Box Statement</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TERMINOLOGY_BOX_STATEMENT_OPERATION_COUNT = CommonPackage.MODULE_ELEMENT_OPERATION_COUNT + 0;
+	int TERMINOLOGY_BOX_STATEMENT_OPERATION_COUNT = CommonPackage.MODULE_ELEMENT_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologyAxiomImpl <em>Terminology Axiom</em>}' class.
@@ -313,6 +358,15 @@ public interface TerminologiesPackage extends EPackage {
 	int TERMINOLOGY_AXIOM__UUID = CommonPackage.MODULE_EDGE__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TERMINOLOGY_AXIOM__ANNOTATIONS = CommonPackage.MODULE_EDGE__ANNOTATIONS;
+
+	/**
 	 * The number of structural features of the '<em>Terminology Axiom</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -329,6 +383,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int TERMINOLOGY_AXIOM___UUID = CommonPackage.MODULE_EDGE___UUID;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TERMINOLOGY_AXIOM___MODULE_CONTEXT = CommonPackage.MODULE_EDGE___MODULE_CONTEXT;
 
 	/**
 	 * The operation id for the '<em>Source</em>' operation.
@@ -395,6 +458,15 @@ public interface TerminologiesPackage extends EPackage {
 	int TERMINOLOGY_BOX_AXIOM__UUID = TERMINOLOGY_AXIOM__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TERMINOLOGY_BOX_AXIOM__ANNOTATIONS = TERMINOLOGY_AXIOM__ANNOTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -420,6 +492,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int TERMINOLOGY_BOX_AXIOM___UUID = TERMINOLOGY_AXIOM___UUID;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TERMINOLOGY_BOX_AXIOM___MODULE_CONTEXT = TERMINOLOGY_AXIOM___MODULE_CONTEXT;
 
 	/**
 	 * The operation id for the '<em>Source</em>' operation.
@@ -486,6 +567,15 @@ public interface TerminologiesPackage extends EPackage {
 	int TERMINOLOGY_EXTENSION_AXIOM__UUID = TERMINOLOGY_BOX_AXIOM__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TERMINOLOGY_EXTENSION_AXIOM__ANNOTATIONS = TERMINOLOGY_BOX_AXIOM__ANNOTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -511,6 +601,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int TERMINOLOGY_EXTENSION_AXIOM_FEATURE_COUNT = TERMINOLOGY_BOX_AXIOM_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TERMINOLOGY_EXTENSION_AXIOM___MODULE_CONTEXT = TERMINOLOGY_BOX_AXIOM___MODULE_CONTEXT;
 
 	/**
 	 * The operation id for the '<em>Source Module</em>' operation.
@@ -595,6 +694,15 @@ public interface TerminologiesPackage extends EPackage {
 	int TERM__UUID = TERMINOLOGY_BOX_STATEMENT__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TERM__ANNOTATIONS = TERMINOLOGY_BOX_STATEMENT__ANNOTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -620,6 +728,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int TERM_FEATURE_COUNT = TERMINOLOGY_BOX_STATEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TERM___MODULE_CONTEXT = TERMINOLOGY_BOX_STATEMENT___MODULE_CONTEXT;
 
 	/**
 	 * The operation id for the '<em>Iri</em>' operation.
@@ -658,13 +775,22 @@ public interface TerminologiesPackage extends EPackage {
 	int TERM___UUID = TERMINOLOGY_BOX_STATEMENT_OPERATION_COUNT + 6;
 
 	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TERM___ALL_NESTED_ELEMENTS = TERMINOLOGY_BOX_STATEMENT_OPERATION_COUNT + 7;
+
+	/**
 	 * The number of operations of the '<em>Term</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TERM_OPERATION_COUNT = TERMINOLOGY_BOX_STATEMENT_OPERATION_COUNT + 7;
+	int TERM_OPERATION_COUNT = TERMINOLOGY_BOX_STATEMENT_OPERATION_COUNT + 8;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.UnaryTermKindImpl <em>Unary Term Kind</em>}' class.
@@ -760,6 +886,15 @@ public interface TerminologiesPackage extends EPackage {
 	int ENTITY__UUID = TERM__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY__ANNOTATIONS = TERM__ANNOTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -785,6 +920,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int ENTITY_FEATURE_COUNT = TERM_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY___MODULE_CONTEXT = TERM___MODULE_CONTEXT;
 
 	/**
 	 * The operation id for the '<em>Iri</em>' operation.
@@ -821,6 +965,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int ENTITY___UUID = TERM___UUID;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY___ALL_NESTED_ELEMENTS = TERM___ALL_NESTED_ELEMENTS;
 
 	/**
 	 * The number of operations of the '<em>Entity</em>' class.
@@ -879,6 +1032,15 @@ public interface TerminologiesPackage extends EPackage {
 	int ASPECT__UUID = ENTITY__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASPECT__ANNOTATIONS = ENTITY__ANNOTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -904,6 +1066,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int ASPECT_FEATURE_COUNT = ENTITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASPECT___MODULE_CONTEXT = ENTITY___MODULE_CONTEXT;
 
 	/**
 	 * The operation id for the '<em>Iri</em>' operation.
@@ -942,6 +1113,15 @@ public interface TerminologiesPackage extends EPackage {
 	int ASPECT___UUID = ENTITY___UUID;
 
 	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASPECT___ALL_NESTED_ELEMENTS = ENTITY___ALL_NESTED_ELEMENTS;
+
+	/**
 	 * The number of operations of the '<em>Aspect</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -970,6 +1150,15 @@ public interface TerminologiesPackage extends EPackage {
 	int CONCEPT__UUID = ENTITY__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPT__ANNOTATIONS = ENTITY__ANNOTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -995,6 +1184,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONCEPT_FEATURE_COUNT = ENTITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPT___MODULE_CONTEXT = ENTITY___MODULE_CONTEXT;
 
 	/**
 	 * The operation id for the '<em>Iri</em>' operation.
@@ -1033,6 +1231,15 @@ public interface TerminologiesPackage extends EPackage {
 	int CONCEPT___UUID = ENTITY___UUID;
 
 	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPT___ALL_NESTED_ELEMENTS = ENTITY___ALL_NESTED_ELEMENTS;
+
+	/**
 	 * The number of operations of the '<em>Concept</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1059,6 +1266,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int ENTITY_RELATIONSHIP__UUID = TERM__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_RELATIONSHIP__ANNOTATIONS = TERM__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
@@ -1187,6 +1403,15 @@ public interface TerminologiesPackage extends EPackage {
 	int ENTITY_RELATIONSHIP_FEATURE_COUNT = TERM_FEATURE_COUNT + 11;
 
 	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_RELATIONSHIP___MODULE_CONTEXT = TERM___MODULE_CONTEXT;
+
+	/**
 	 * The operation id for the '<em>Iri</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1221,6 +1446,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int ENTITY_RELATIONSHIP___UUID = TERM___UUID;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_RELATIONSHIP___ALL_NESTED_ELEMENTS = TERM___ALL_NESTED_ELEMENTS;
 
 	/**
 	 * The operation id for the '<em>Relation Domain</em>' operation.
@@ -1267,6 +1501,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int REIFIED_RELATIONSHIP__UUID = ENTITY_RELATIONSHIP__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP__ANNOTATIONS = ENTITY_RELATIONSHIP__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
@@ -1413,6 +1656,15 @@ public interface TerminologiesPackage extends EPackage {
 	int REIFIED_RELATIONSHIP_FEATURE_COUNT = ENTITY_RELATIONSHIP_FEATURE_COUNT + 2;
 
 	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP___MODULE_CONTEXT = ENTITY_RELATIONSHIP___MODULE_CONTEXT;
+
+	/**
 	 * The operation id for the '<em>Iri</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1447,6 +1699,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int REIFIED_RELATIONSHIP___UUID = ENTITY_RELATIONSHIP___UUID;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP___ALL_NESTED_ELEMENTS = ENTITY_RELATIONSHIP___ALL_NESTED_ELEMENTS;
 
 	/**
 	 * The operation id for the '<em>Relation Domain</em>' operation.
@@ -1493,6 +1754,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int UNREIFIED_RELATIONSHIP__UUID = ENTITY_RELATIONSHIP__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNREIFIED_RELATIONSHIP__ANNOTATIONS = ENTITY_RELATIONSHIP__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
@@ -1621,6 +1891,15 @@ public interface TerminologiesPackage extends EPackage {
 	int UNREIFIED_RELATIONSHIP_FEATURE_COUNT = ENTITY_RELATIONSHIP_FEATURE_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNREIFIED_RELATIONSHIP___MODULE_CONTEXT = ENTITY_RELATIONSHIP___MODULE_CONTEXT;
+
+	/**
 	 * The operation id for the '<em>Iri</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1655,6 +1934,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int UNREIFIED_RELATIONSHIP___UUID = ENTITY_RELATIONSHIP___UUID;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNREIFIED_RELATIONSHIP___ALL_NESTED_ELEMENTS = ENTITY_RELATIONSHIP___ALL_NESTED_ELEMENTS;
 
 	/**
 	 * The operation id for the '<em>Relation Domain</em>' operation.
@@ -1703,6 +1991,15 @@ public interface TerminologiesPackage extends EPackage {
 	int DATATYPE__UUID = TERM__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATATYPE__ANNOTATIONS = TERM__ANNOTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1728,6 +2025,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int DATATYPE_FEATURE_COUNT = TERM_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATATYPE___MODULE_CONTEXT = TERM___MODULE_CONTEXT;
 
 	/**
 	 * The operation id for the '<em>Iri</em>' operation.
@@ -1766,6 +2072,15 @@ public interface TerminologiesPackage extends EPackage {
 	int DATATYPE___UUID = TERM___UUID;
 
 	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATATYPE___ALL_NESTED_ELEMENTS = TERM___ALL_NESTED_ELEMENTS;
+
+	/**
 	 * The number of operations of the '<em>Datatype</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1794,6 +2109,15 @@ public interface TerminologiesPackage extends EPackage {
 	int DATA_RANGE__UUID = DATATYPE__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RANGE__ANNOTATIONS = DATATYPE__ANNOTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1819,6 +2143,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int DATA_RANGE_FEATURE_COUNT = DATATYPE_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RANGE___MODULE_CONTEXT = DATATYPE___MODULE_CONTEXT;
 
 	/**
 	 * The operation id for the '<em>Iri</em>' operation.
@@ -1857,6 +2190,15 @@ public interface TerminologiesPackage extends EPackage {
 	int DATA_RANGE___UUID = DATATYPE___UUID;
 
 	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RANGE___ALL_NESTED_ELEMENTS = DATATYPE___ALL_NESTED_ELEMENTS;
+
+	/**
 	 * The number of operations of the '<em>Data Range</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1885,6 +2227,15 @@ public interface TerminologiesPackage extends EPackage {
 	int SCALAR__UUID = DATA_RANGE__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCALAR__ANNOTATIONS = DATA_RANGE__ANNOTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1910,6 +2261,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int SCALAR_FEATURE_COUNT = DATA_RANGE_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCALAR___MODULE_CONTEXT = DATA_RANGE___MODULE_CONTEXT;
 
 	/**
 	 * The operation id for the '<em>Iri</em>' operation.
@@ -1948,6 +2308,15 @@ public interface TerminologiesPackage extends EPackage {
 	int SCALAR___UUID = DATA_RANGE___UUID;
 
 	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCALAR___ALL_NESTED_ELEMENTS = DATA_RANGE___ALL_NESTED_ELEMENTS;
+
+	/**
 	 * The number of operations of the '<em>Scalar</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1976,6 +2345,15 @@ public interface TerminologiesPackage extends EPackage {
 	int DATA_RELATIONSHIP__UUID = TERM__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP__ANNOTATIONS = TERM__ANNOTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2001,6 +2379,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int DATA_RELATIONSHIP_FEATURE_COUNT = TERM_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP___MODULE_CONTEXT = TERM___MODULE_CONTEXT;
 
 	/**
 	 * The operation id for the '<em>Iri</em>' operation.
@@ -2037,6 +2424,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int DATA_RELATIONSHIP___UUID = TERM___UUID;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP___ALL_NESTED_ELEMENTS = TERM___ALL_NESTED_ELEMENTS;
 
 	/**
 	 * The operation id for the '<em>Source</em>' operation.
@@ -2100,7 +2496,16 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_RELATIONSHIP_DOMAIN__UUID = CommonPackage.ELEMENT__UUID;
+	int DATA_RELATIONSHIP_DOMAIN__UUID = CommonPackage.MODULE_ELEMENT__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_DOMAIN__ANNOTATIONS = CommonPackage.MODULE_ELEMENT__ANNOTATIONS;
 
 	/**
 	 * The number of structural features of the '<em>Data Relationship Domain</em>' class.
@@ -2109,7 +2514,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_RELATIONSHIP_DOMAIN_FEATURE_COUNT = CommonPackage.ELEMENT_FEATURE_COUNT + 0;
+	int DATA_RELATIONSHIP_DOMAIN_FEATURE_COUNT = CommonPackage.MODULE_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Uuid</em>' operation.
@@ -2118,7 +2523,25 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_RELATIONSHIP_DOMAIN___UUID = CommonPackage.ELEMENT___UUID;
+	int DATA_RELATIONSHIP_DOMAIN___UUID = CommonPackage.MODULE_ELEMENT___UUID;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_DOMAIN___MODULE_CONTEXT = CommonPackage.MODULE_ELEMENT___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_DOMAIN___ALL_NESTED_ELEMENTS = CommonPackage.MODULE_ELEMENT___ALL_NESTED_ELEMENTS;
 
 	/**
 	 * The operation id for the '<em>Iri</em>' operation.
@@ -2127,7 +2550,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_RELATIONSHIP_DOMAIN___IRI = CommonPackage.ELEMENT_OPERATION_COUNT + 0;
+	int DATA_RELATIONSHIP_DOMAIN___IRI = CommonPackage.MODULE_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Name</em>' operation.
@@ -2136,7 +2559,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_RELATIONSHIP_DOMAIN___NAME = CommonPackage.ELEMENT_OPERATION_COUNT + 1;
+	int DATA_RELATIONSHIP_DOMAIN___NAME = CommonPackage.MODULE_ELEMENT_OPERATION_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Abbrev IRI</em>' operation.
@@ -2145,7 +2568,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_RELATIONSHIP_DOMAIN___ABBREV_IRI = CommonPackage.ELEMENT_OPERATION_COUNT + 2;
+	int DATA_RELATIONSHIP_DOMAIN___ABBREV_IRI = CommonPackage.MODULE_ELEMENT_OPERATION_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Data Relationship Domain</em>' class.
@@ -2154,7 +2577,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_RELATIONSHIP_DOMAIN_OPERATION_COUNT = CommonPackage.ELEMENT_OPERATION_COUNT + 3;
+	int DATA_RELATIONSHIP_DOMAIN_OPERATION_COUNT = CommonPackage.MODULE_ELEMENT_OPERATION_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.DataRelationshipFromEntityImpl <em>Data Relationship From Entity</em>}' class.
@@ -2174,6 +2597,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int DATA_RELATIONSHIP_FROM_ENTITY__UUID = DATA_RELATIONSHIP_DOMAIN__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_FROM_ENTITY__ANNOTATIONS = DATA_RELATIONSHIP_DOMAIN__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Domain</b></em>' reference.
@@ -2210,6 +2642,24 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int DATA_RELATIONSHIP_FROM_ENTITY___UUID = DATA_RELATIONSHIP_DOMAIN___UUID;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_FROM_ENTITY___MODULE_CONTEXT = DATA_RELATIONSHIP_DOMAIN___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_FROM_ENTITY___ALL_NESTED_ELEMENTS = DATA_RELATIONSHIP_DOMAIN___ALL_NESTED_ELEMENTS;
 
 	/**
 	 * The operation id for the '<em>Iri</em>' operation.
@@ -2267,6 +2717,15 @@ public interface TerminologiesPackage extends EPackage {
 	int DATA_RELATIONSHIP_FROM_STRUCTURE__UUID = DATA_RELATIONSHIP_DOMAIN__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_FROM_STRUCTURE__ANNOTATIONS = DATA_RELATIONSHIP_DOMAIN__ANNOTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Domain</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2292,6 +2751,24 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int DATA_RELATIONSHIP_FROM_STRUCTURE___UUID = DATA_RELATIONSHIP_DOMAIN___UUID;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_FROM_STRUCTURE___MODULE_CONTEXT = DATA_RELATIONSHIP_DOMAIN___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_FROM_STRUCTURE___ALL_NESTED_ELEMENTS = DATA_RELATIONSHIP_DOMAIN___ALL_NESTED_ELEMENTS;
 
 	/**
 	 * The operation id for the '<em>Iri</em>' operation.
@@ -2346,7 +2823,16 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_RELATIONSHIP_RANGE__UUID = CommonPackage.ELEMENT__UUID;
+	int DATA_RELATIONSHIP_RANGE__UUID = CommonPackage.MODULE_ELEMENT__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_RANGE__ANNOTATIONS = CommonPackage.MODULE_ELEMENT__ANNOTATIONS;
 
 	/**
 	 * The number of structural features of the '<em>Data Relationship Range</em>' class.
@@ -2355,7 +2841,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_RELATIONSHIP_RANGE_FEATURE_COUNT = CommonPackage.ELEMENT_FEATURE_COUNT + 0;
+	int DATA_RELATIONSHIP_RANGE_FEATURE_COUNT = CommonPackage.MODULE_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Uuid</em>' operation.
@@ -2364,7 +2850,25 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_RELATIONSHIP_RANGE___UUID = CommonPackage.ELEMENT___UUID;
+	int DATA_RELATIONSHIP_RANGE___UUID = CommonPackage.MODULE_ELEMENT___UUID;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_RANGE___MODULE_CONTEXT = CommonPackage.MODULE_ELEMENT___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_RANGE___ALL_NESTED_ELEMENTS = CommonPackage.MODULE_ELEMENT___ALL_NESTED_ELEMENTS;
 
 	/**
 	 * The operation id for the '<em>Iri</em>' operation.
@@ -2373,7 +2877,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_RELATIONSHIP_RANGE___IRI = CommonPackage.ELEMENT_OPERATION_COUNT + 0;
+	int DATA_RELATIONSHIP_RANGE___IRI = CommonPackage.MODULE_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Name</em>' operation.
@@ -2382,7 +2886,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_RELATIONSHIP_RANGE___NAME = CommonPackage.ELEMENT_OPERATION_COUNT + 1;
+	int DATA_RELATIONSHIP_RANGE___NAME = CommonPackage.MODULE_ELEMENT_OPERATION_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Abbrev IRI</em>' operation.
@@ -2391,7 +2895,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_RELATIONSHIP_RANGE___ABBREV_IRI = CommonPackage.ELEMENT_OPERATION_COUNT + 2;
+	int DATA_RELATIONSHIP_RANGE___ABBREV_IRI = CommonPackage.MODULE_ELEMENT_OPERATION_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Data Relationship Range</em>' class.
@@ -2400,7 +2904,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_RELATIONSHIP_RANGE_OPERATION_COUNT = CommonPackage.ELEMENT_OPERATION_COUNT + 3;
+	int DATA_RELATIONSHIP_RANGE_OPERATION_COUNT = CommonPackage.MODULE_ELEMENT_OPERATION_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.DataRelationshipToScalarImpl <em>Data Relationship To Scalar</em>}' class.
@@ -2420,6 +2924,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int DATA_RELATIONSHIP_TO_SCALAR__UUID = DATA_RELATIONSHIP_RANGE__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_TO_SCALAR__ANNOTATIONS = DATA_RELATIONSHIP_RANGE__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Range</b></em>' reference.
@@ -2447,6 +2960,24 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int DATA_RELATIONSHIP_TO_SCALAR___UUID = DATA_RELATIONSHIP_RANGE___UUID;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_TO_SCALAR___MODULE_CONTEXT = DATA_RELATIONSHIP_RANGE___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_TO_SCALAR___ALL_NESTED_ELEMENTS = DATA_RELATIONSHIP_RANGE___ALL_NESTED_ELEMENTS;
 
 	/**
 	 * The operation id for the '<em>Iri</em>' operation.
@@ -2504,6 +3035,15 @@ public interface TerminologiesPackage extends EPackage {
 	int DATA_RELATIONSHIP_TO_STRUCTURE__UUID = DATA_RELATIONSHIP_RANGE__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_TO_STRUCTURE__ANNOTATIONS = DATA_RELATIONSHIP_RANGE__ANNOTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Range</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2529,6 +3069,24 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int DATA_RELATIONSHIP_TO_STRUCTURE___UUID = DATA_RELATIONSHIP_RANGE___UUID;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_TO_STRUCTURE___MODULE_CONTEXT = DATA_RELATIONSHIP_RANGE___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_TO_STRUCTURE___ALL_NESTED_ELEMENTS = DATA_RELATIONSHIP_RANGE___ALL_NESTED_ELEMENTS;
 
 	/**
 	 * The operation id for the '<em>Iri</em>' operation.
@@ -2586,6 +3144,15 @@ public interface TerminologiesPackage extends EPackage {
 	int ENTITY_STRUCTURED_DATA_PROPERTY__UUID = DATA_RELATIONSHIP__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_STRUCTURED_DATA_PROPERTY__ANNOTATIONS = DATA_RELATIONSHIP__ANNOTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2640,6 +3207,15 @@ public interface TerminologiesPackage extends EPackage {
 	int ENTITY_STRUCTURED_DATA_PROPERTY_FEATURE_COUNT = DATA_RELATIONSHIP_FEATURE_COUNT + 3;
 
 	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_STRUCTURED_DATA_PROPERTY___MODULE_CONTEXT = DATA_RELATIONSHIP___MODULE_CONTEXT;
+
+	/**
 	 * The operation id for the '<em>Iri</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2665,6 +3241,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int ENTITY_STRUCTURED_DATA_PROPERTY___NAME = DATA_RELATIONSHIP___NAME;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_STRUCTURED_DATA_PROPERTY___ALL_NESTED_ELEMENTS = DATA_RELATIONSHIP___ALL_NESTED_ELEMENTS;
 
 	/**
 	 * The operation id for the '<em>Relation Domain</em>' operation.
@@ -2740,6 +3325,15 @@ public interface TerminologiesPackage extends EPackage {
 	int ENTITY_SCALAR_DATA_PROPERTY__UUID = DATA_RELATIONSHIP__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_SCALAR_DATA_PROPERTY__ANNOTATIONS = DATA_RELATIONSHIP__ANNOTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2794,6 +3388,15 @@ public interface TerminologiesPackage extends EPackage {
 	int ENTITY_SCALAR_DATA_PROPERTY_FEATURE_COUNT = DATA_RELATIONSHIP_FEATURE_COUNT + 3;
 
 	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_SCALAR_DATA_PROPERTY___MODULE_CONTEXT = DATA_RELATIONSHIP___MODULE_CONTEXT;
+
+	/**
 	 * The operation id for the '<em>Iri</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2819,6 +3422,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int ENTITY_SCALAR_DATA_PROPERTY___NAME = DATA_RELATIONSHIP___NAME;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_SCALAR_DATA_PROPERTY___ALL_NESTED_ELEMENTS = DATA_RELATIONSHIP___ALL_NESTED_ELEMENTS;
 
 	/**
 	 * The operation id for the '<em>Relation Domain</em>' operation.
@@ -2894,6 +3506,15 @@ public interface TerminologiesPackage extends EPackage {
 	int STRUCTURED_DATA_PROPERTY__UUID = DATA_RELATIONSHIP__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRUCTURED_DATA_PROPERTY__ANNOTATIONS = DATA_RELATIONSHIP__ANNOTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2939,6 +3560,15 @@ public interface TerminologiesPackage extends EPackage {
 	int STRUCTURED_DATA_PROPERTY_FEATURE_COUNT = DATA_RELATIONSHIP_FEATURE_COUNT + 2;
 
 	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRUCTURED_DATA_PROPERTY___MODULE_CONTEXT = DATA_RELATIONSHIP___MODULE_CONTEXT;
+
+	/**
 	 * The operation id for the '<em>Iri</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2964,6 +3594,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int STRUCTURED_DATA_PROPERTY___NAME = DATA_RELATIONSHIP___NAME;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRUCTURED_DATA_PROPERTY___ALL_NESTED_ELEMENTS = DATA_RELATIONSHIP___ALL_NESTED_ELEMENTS;
 
 	/**
 	 * The operation id for the '<em>Relation Domain</em>' operation.
@@ -3039,6 +3678,15 @@ public interface TerminologiesPackage extends EPackage {
 	int SCALAR_DATA_PROPERTY__UUID = DATA_RELATIONSHIP__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCALAR_DATA_PROPERTY__ANNOTATIONS = DATA_RELATIONSHIP__ANNOTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3084,6 +3732,15 @@ public interface TerminologiesPackage extends EPackage {
 	int SCALAR_DATA_PROPERTY_FEATURE_COUNT = DATA_RELATIONSHIP_FEATURE_COUNT + 2;
 
 	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCALAR_DATA_PROPERTY___MODULE_CONTEXT = DATA_RELATIONSHIP___MODULE_CONTEXT;
+
+	/**
 	 * The operation id for the '<em>Iri</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3109,6 +3766,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int SCALAR_DATA_PROPERTY___NAME = DATA_RELATIONSHIP___NAME;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCALAR_DATA_PROPERTY___ALL_NESTED_ELEMENTS = DATA_RELATIONSHIP___ALL_NESTED_ELEMENTS;
 
 	/**
 	 * The operation id for the '<em>Relation Domain</em>' operation.
@@ -3184,6 +3850,15 @@ public interface TerminologiesPackage extends EPackage {
 	int STRUCTURE__UUID = DATATYPE__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRUCTURE__ANNOTATIONS = DATATYPE__ANNOTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3209,6 +3884,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int STRUCTURE_FEATURE_COUNT = DATATYPE_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRUCTURE___MODULE_CONTEXT = DATATYPE___MODULE_CONTEXT;
 
 	/**
 	 * The operation id for the '<em>Iri</em>' operation.
@@ -3247,6 +3931,15 @@ public interface TerminologiesPackage extends EPackage {
 	int STRUCTURE___UUID = DATATYPE___UUID;
 
 	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRUCTURE___ALL_NESTED_ELEMENTS = DATATYPE___ALL_NESTED_ELEMENTS;
+
+	/**
 	 * The number of operations of the '<em>Structure</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3273,6 +3966,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int TERM_AXIOM__UUID = TERMINOLOGY_BOX_STATEMENT__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TERM_AXIOM__ANNOTATIONS = TERMINOLOGY_BOX_STATEMENT__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
@@ -3302,6 +4004,24 @@ public interface TerminologiesPackage extends EPackage {
 	int TERM_AXIOM___UUID = TERMINOLOGY_BOX_STATEMENT___UUID;
 
 	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TERM_AXIOM___ALL_NESTED_ELEMENTS = TERMINOLOGY_BOX_STATEMENT___ALL_NESTED_ELEMENTS;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TERM_AXIOM___MODULE_CONTEXT = TERMINOLOGY_BOX_STATEMENT___MODULE_CONTEXT;
+
+	/**
 	 * The number of operations of the '<em>Term Axiom</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3328,6 +4048,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int ENTITY_RESTRICTION_AXIOM__UUID = TERM_AXIOM__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_RESTRICTION_AXIOM__ANNOTATIONS = TERM_AXIOM__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
@@ -3384,13 +4113,31 @@ public interface TerminologiesPackage extends EPackage {
 	int ENTITY_RESTRICTION_AXIOM___UUID = TERM_AXIOM___UUID;
 
 	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_RESTRICTION_AXIOM___MODULE_CONTEXT = TERM_AXIOM___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_RESTRICTION_AXIOM___ALL_NESTED_ELEMENTS = TERM_AXIOM_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>Entity Restriction Axiom</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY_RESTRICTION_AXIOM_OPERATION_COUNT = TERM_AXIOM_OPERATION_COUNT + 0;
+	int ENTITY_RESTRICTION_AXIOM_OPERATION_COUNT = TERM_AXIOM_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityExistentialRestrictionAxiomImpl <em>Entity Existential Restriction Axiom</em>}' class.
@@ -3410,6 +4157,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int ENTITY_EXISTENTIAL_RESTRICTION_AXIOM__UUID = ENTITY_RESTRICTION_AXIOM__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_EXISTENTIAL_RESTRICTION_AXIOM__ANNOTATIONS = ENTITY_RESTRICTION_AXIOM__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
@@ -3457,6 +4213,24 @@ public interface TerminologiesPackage extends EPackage {
 	int ENTITY_EXISTENTIAL_RESTRICTION_AXIOM_FEATURE_COUNT = ENTITY_RESTRICTION_AXIOM_FEATURE_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_EXISTENTIAL_RESTRICTION_AXIOM___MODULE_CONTEXT = ENTITY_RESTRICTION_AXIOM___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_EXISTENTIAL_RESTRICTION_AXIOM___ALL_NESTED_ELEMENTS = ENTITY_RESTRICTION_AXIOM___ALL_NESTED_ELEMENTS;
+
+	/**
 	 * The operation id for the '<em>Uuid</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3492,6 +4266,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int ENTITY_UNIVERSAL_RESTRICTION_AXIOM__UUID = ENTITY_RESTRICTION_AXIOM__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNIVERSAL_RESTRICTION_AXIOM__ANNOTATIONS = ENTITY_RESTRICTION_AXIOM__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
@@ -3539,6 +4322,24 @@ public interface TerminologiesPackage extends EPackage {
 	int ENTITY_UNIVERSAL_RESTRICTION_AXIOM_FEATURE_COUNT = ENTITY_RESTRICTION_AXIOM_FEATURE_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNIVERSAL_RESTRICTION_AXIOM___MODULE_CONTEXT = ENTITY_RESTRICTION_AXIOM___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNIVERSAL_RESTRICTION_AXIOM___ALL_NESTED_ELEMENTS = ENTITY_RESTRICTION_AXIOM___ALL_NESTED_ELEMENTS;
+
+	/**
 	 * The operation id for the '<em>Uuid</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3576,6 +4377,15 @@ public interface TerminologiesPackage extends EPackage {
 	int SPECIALIZATION_AXIOM__UUID = TERM_AXIOM__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIALIZATION_AXIOM__ANNOTATIONS = TERM_AXIOM__ANNOTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3603,6 +4413,15 @@ public interface TerminologiesPackage extends EPackage {
 	int SPECIALIZATION_AXIOM___UUID = TERM_AXIOM___UUID;
 
 	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIALIZATION_AXIOM___MODULE_CONTEXT = TERM_AXIOM___MODULE_CONTEXT;
+
+	/**
 	 * The operation id for the '<em>Child</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3621,13 +4440,22 @@ public interface TerminologiesPackage extends EPackage {
 	int SPECIALIZATION_AXIOM___PARENT = TERM_AXIOM_OPERATION_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIALIZATION_AXIOM___ALL_NESTED_ELEMENTS = TERM_AXIOM_OPERATION_COUNT + 2;
+
+	/**
 	 * The number of operations of the '<em>Specialization Axiom</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SPECIALIZATION_AXIOM_OPERATION_COUNT = TERM_AXIOM_OPERATION_COUNT + 2;
+	int SPECIALIZATION_AXIOM_OPERATION_COUNT = TERM_AXIOM_OPERATION_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.AspectSpecializationAxiomImpl <em>Aspect Specialization Axiom</em>}' class.
@@ -3647,6 +4475,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int ASPECT_SPECIALIZATION_AXIOM__UUID = SPECIALIZATION_AXIOM__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASPECT_SPECIALIZATION_AXIOM__ANNOTATIONS = SPECIALIZATION_AXIOM__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
@@ -3683,6 +4520,24 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int ASPECT_SPECIALIZATION_AXIOM_FEATURE_COUNT = SPECIALIZATION_AXIOM_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASPECT_SPECIALIZATION_AXIOM___MODULE_CONTEXT = SPECIALIZATION_AXIOM___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASPECT_SPECIALIZATION_AXIOM___ALL_NESTED_ELEMENTS = SPECIALIZATION_AXIOM___ALL_NESTED_ELEMENTS;
 
 	/**
 	 * The operation id for the '<em>Child</em>' operation.
@@ -3740,6 +4595,15 @@ public interface TerminologiesPackage extends EPackage {
 	int CONCEPT_SPECIALIZATION_AXIOM__UUID = SPECIALIZATION_AXIOM__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPT_SPECIALIZATION_AXIOM__ANNOTATIONS = SPECIALIZATION_AXIOM__ANNOTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3774,6 +4638,24 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONCEPT_SPECIALIZATION_AXIOM_FEATURE_COUNT = SPECIALIZATION_AXIOM_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPT_SPECIALIZATION_AXIOM___MODULE_CONTEXT = SPECIALIZATION_AXIOM___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPT_SPECIALIZATION_AXIOM___ALL_NESTED_ELEMENTS = SPECIALIZATION_AXIOM___ALL_NESTED_ELEMENTS;
 
 	/**
 	 * The operation id for the '<em>Child</em>' operation.
@@ -3831,6 +4713,15 @@ public interface TerminologiesPackage extends EPackage {
 	int REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM__UUID = SPECIALIZATION_AXIOM__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM__ANNOTATIONS = SPECIALIZATION_AXIOM__ANNOTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3865,6 +4756,24 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM_FEATURE_COUNT = SPECIALIZATION_AXIOM_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM___MODULE_CONTEXT = SPECIALIZATION_AXIOM___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM___ALL_NESTED_ELEMENTS = SPECIALIZATION_AXIOM___ALL_NESTED_ELEMENTS;
 
 	/**
 	 * The operation id for the '<em>Child</em>' operation.
@@ -3922,6 +4831,15 @@ public interface TerminologiesPackage extends EPackage {
 	int ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM__UUID = TERM_AXIOM__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM__ANNOTATIONS = TERM_AXIOM__ANNOTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3967,13 +4885,31 @@ public interface TerminologiesPackage extends EPackage {
 	int ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM___UUID = TERM_AXIOM___UUID;
 
 	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM___MODULE_CONTEXT = TERM_AXIOM___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM___ALL_NESTED_ELEMENTS = TERM_AXIOM_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>Entity Scalar Data Property Restriction Axiom</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM_OPERATION_COUNT = TERM_AXIOM_OPERATION_COUNT + 0;
+	int ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM_OPERATION_COUNT = TERM_AXIOM_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityScalarDataPropertyExistentialRestrictionAxiomImpl <em>Entity Scalar Data Property Existential Restriction Axiom</em>}' class.
@@ -3993,6 +4929,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int ENTITY_SCALAR_DATA_PROPERTY_EXISTENTIAL_RESTRICTION_AXIOM__UUID = ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_SCALAR_DATA_PROPERTY_EXISTENTIAL_RESTRICTION_AXIOM__ANNOTATIONS = ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
@@ -4040,6 +4985,24 @@ public interface TerminologiesPackage extends EPackage {
 	int ENTITY_SCALAR_DATA_PROPERTY_EXISTENTIAL_RESTRICTION_AXIOM_FEATURE_COUNT = ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM_FEATURE_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_SCALAR_DATA_PROPERTY_EXISTENTIAL_RESTRICTION_AXIOM___MODULE_CONTEXT = ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_SCALAR_DATA_PROPERTY_EXISTENTIAL_RESTRICTION_AXIOM___ALL_NESTED_ELEMENTS = ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM___ALL_NESTED_ELEMENTS;
+
+	/**
 	 * The operation id for the '<em>Uuid</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4075,6 +5038,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int ENTITY_SCALAR_DATA_PROPERTY_UNIVERSAL_RESTRICTION_AXIOM__UUID = ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_SCALAR_DATA_PROPERTY_UNIVERSAL_RESTRICTION_AXIOM__ANNOTATIONS = ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
@@ -4122,6 +5094,24 @@ public interface TerminologiesPackage extends EPackage {
 	int ENTITY_SCALAR_DATA_PROPERTY_UNIVERSAL_RESTRICTION_AXIOM_FEATURE_COUNT = ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM_FEATURE_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_SCALAR_DATA_PROPERTY_UNIVERSAL_RESTRICTION_AXIOM___MODULE_CONTEXT = ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_SCALAR_DATA_PROPERTY_UNIVERSAL_RESTRICTION_AXIOM___ALL_NESTED_ELEMENTS = ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM___ALL_NESTED_ELEMENTS;
+
+	/**
 	 * The operation id for the '<em>Uuid</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4157,6 +5147,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__UUID = ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__ANNOTATIONS = ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
@@ -4204,6 +5203,24 @@ public interface TerminologiesPackage extends EPackage {
 	int ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM_FEATURE_COUNT = ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM_FEATURE_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM___MODULE_CONTEXT = ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM___ALL_NESTED_ELEMENTS = ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM___ALL_NESTED_ELEMENTS;
+
+	/**
 	 * The operation id for the '<em>Uuid</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4239,6 +5256,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int ENTITY_STRUCTURED_DATA_PROPERTY_RESTRICTION_AXIOM__UUID = TERM_AXIOM__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_STRUCTURED_DATA_PROPERTY_RESTRICTION_AXIOM__ANNOTATIONS = TERM_AXIOM__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
@@ -4277,6 +5303,24 @@ public interface TerminologiesPackage extends EPackage {
 	int ENTITY_STRUCTURED_DATA_PROPERTY_RESTRICTION_AXIOM___UUID = TERM_AXIOM___UUID;
 
 	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_STRUCTURED_DATA_PROPERTY_RESTRICTION_AXIOM___ALL_NESTED_ELEMENTS = TERM_AXIOM___ALL_NESTED_ELEMENTS;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_STRUCTURED_DATA_PROPERTY_RESTRICTION_AXIOM___MODULE_CONTEXT = TERM_AXIOM___MODULE_CONTEXT;
+
+	/**
 	 * The number of operations of the '<em>Entity Structured Data Property Restriction Axiom</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4303,6 +5347,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__UUID = ENTITY_STRUCTURED_DATA_PROPERTY_RESTRICTION_AXIOM__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__ANNOTATIONS = ENTITY_STRUCTURED_DATA_PROPERTY_RESTRICTION_AXIOM__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
@@ -4332,22 +5385,22 @@ public interface TerminologiesPackage extends EPackage {
 	int ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__STRUCTURED_DATA_PROPERTY = ENTITY_STRUCTURED_DATA_PROPERTY_RESTRICTION_AXIOM_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Structured Property Tuples</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Structured Data Property Restrictions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__STRUCTURED_PROPERTY_TUPLES = ENTITY_STRUCTURED_DATA_PROPERTY_RESTRICTION_AXIOM_FEATURE_COUNT + 1;
+	int ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__STRUCTURED_DATA_PROPERTY_RESTRICTIONS = ENTITY_STRUCTURED_DATA_PROPERTY_RESTRICTION_AXIOM_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Scalar Data Property Values</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Scalar Data Property Restrictions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__SCALAR_DATA_PROPERTY_VALUES = ENTITY_STRUCTURED_DATA_PROPERTY_RESTRICTION_AXIOM_FEATURE_COUNT + 2;
+	int ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__SCALAR_DATA_PROPERTY_RESTRICTIONS = ENTITY_STRUCTURED_DATA_PROPERTY_RESTRICTION_AXIOM_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Entity Structured Data Property Particular Restriction Axiom</em>' class.
@@ -4359,13 +5412,31 @@ public interface TerminologiesPackage extends EPackage {
 	int ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM_FEATURE_COUNT = ENTITY_STRUCTURED_DATA_PROPERTY_RESTRICTION_AXIOM_FEATURE_COUNT + 3;
 
 	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM___MODULE_CONTEXT = ENTITY_STRUCTURED_DATA_PROPERTY_RESTRICTION_AXIOM___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>All Nested Restriction Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM___ALL_NESTED_RESTRICTION_ELEMENTS = ENTITY_STRUCTURED_DATA_PROPERTY_RESTRICTION_AXIOM_OPERATION_COUNT + 1;
+
+	/**
 	 * The operation id for the '<em>Terminology Box</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM___TERMINOLOGY_BOX = ENTITY_STRUCTURED_DATA_PROPERTY_RESTRICTION_AXIOM_OPERATION_COUNT + 1;
+	int ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM___TERMINOLOGY_BOX = ENTITY_STRUCTURED_DATA_PROPERTY_RESTRICTION_AXIOM_OPERATION_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Uuid</em>' operation.
@@ -4374,7 +5445,16 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM___UUID = ENTITY_STRUCTURED_DATA_PROPERTY_RESTRICTION_AXIOM_OPERATION_COUNT + 2;
+	int ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM___UUID = ENTITY_STRUCTURED_DATA_PROPERTY_RESTRICTION_AXIOM_OPERATION_COUNT + 3;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM___ALL_NESTED_ELEMENTS = ENTITY_STRUCTURED_DATA_PROPERTY_RESTRICTION_AXIOM_OPERATION_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Entity Structured Data Property Particular Restriction Axiom</em>' class.
@@ -4383,7 +5463,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM_OPERATION_COUNT = ENTITY_STRUCTURED_DATA_PROPERTY_RESTRICTION_AXIOM_OPERATION_COUNT + 3;
+	int ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM_OPERATION_COUNT = ENTITY_STRUCTURED_DATA_PROPERTY_RESTRICTION_AXIOM_OPERATION_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.RestrictionStructuredDataPropertyContextImpl <em>Restriction Structured Data Property Context</em>}' class.
@@ -4402,7 +5482,16 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__UUID = CommonPackage.ELEMENT__UUID;
+	int RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__UUID = CommonPackage.MODULE_ELEMENT__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__ANNOTATIONS = CommonPackage.MODULE_ELEMENT__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Structured Data Property</b></em>' reference.
@@ -4411,25 +5500,25 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__STRUCTURED_DATA_PROPERTY = CommonPackage.ELEMENT_FEATURE_COUNT + 0;
+	int RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__STRUCTURED_DATA_PROPERTY = CommonPackage.MODULE_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Structured Property Tuples</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Structured Data Property Restrictions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__STRUCTURED_PROPERTY_TUPLES = CommonPackage.ELEMENT_FEATURE_COUNT + 1;
+	int RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__STRUCTURED_DATA_PROPERTY_RESTRICTIONS = CommonPackage.MODULE_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Scalar Data Property Values</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Scalar Data Property Restrictions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__SCALAR_DATA_PROPERTY_VALUES = CommonPackage.ELEMENT_FEATURE_COUNT + 2;
+	int RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__SCALAR_DATA_PROPERTY_RESTRICTIONS = CommonPackage.MODULE_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Restriction Structured Data Property Context</em>' class.
@@ -4438,7 +5527,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT_FEATURE_COUNT = CommonPackage.ELEMENT_FEATURE_COUNT + 3;
+	int RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT_FEATURE_COUNT = CommonPackage.MODULE_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The operation id for the '<em>Uuid</em>' operation.
@@ -4447,7 +5536,25 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT___UUID = CommonPackage.ELEMENT___UUID;
+	int RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT___UUID = CommonPackage.MODULE_ELEMENT___UUID;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT___MODULE_CONTEXT = CommonPackage.MODULE_ELEMENT___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT___ALL_NESTED_ELEMENTS = CommonPackage.MODULE_ELEMENT___ALL_NESTED_ELEMENTS;
 
 	/**
 	 * The operation id for the '<em>Terminology Box</em>' operation.
@@ -4456,7 +5563,16 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT___TERMINOLOGY_BOX = CommonPackage.ELEMENT_OPERATION_COUNT + 0;
+	int RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT___TERMINOLOGY_BOX = CommonPackage.MODULE_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>All Nested Restriction Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT___ALL_NESTED_RESTRICTION_ELEMENTS = CommonPackage.MODULE_ELEMENT_OPERATION_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Restriction Structured Data Property Context</em>' class.
@@ -4465,7 +5581,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT_OPERATION_COUNT = CommonPackage.ELEMENT_OPERATION_COUNT + 1;
+	int RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT_OPERATION_COUNT = CommonPackage.MODULE_ELEMENT_OPERATION_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.RestrictionStructuredDataPropertyTupleImpl <em>Restriction Structured Data Property Tuple</em>}' class.
@@ -4487,6 +5603,15 @@ public interface TerminologiesPackage extends EPackage {
 	int RESTRICTION_STRUCTURED_DATA_PROPERTY_TUPLE__UUID = RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESTRICTION_STRUCTURED_DATA_PROPERTY_TUPLE__ANNOTATIONS = RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__ANNOTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Structured Data Property</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4496,22 +5621,22 @@ public interface TerminologiesPackage extends EPackage {
 	int RESTRICTION_STRUCTURED_DATA_PROPERTY_TUPLE__STRUCTURED_DATA_PROPERTY = RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__STRUCTURED_DATA_PROPERTY;
 
 	/**
-	 * The feature id for the '<em><b>Structured Property Tuples</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Structured Data Property Restrictions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESTRICTION_STRUCTURED_DATA_PROPERTY_TUPLE__STRUCTURED_PROPERTY_TUPLES = RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__STRUCTURED_PROPERTY_TUPLES;
+	int RESTRICTION_STRUCTURED_DATA_PROPERTY_TUPLE__STRUCTURED_DATA_PROPERTY_RESTRICTIONS = RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__STRUCTURED_DATA_PROPERTY_RESTRICTIONS;
 
 	/**
-	 * The feature id for the '<em><b>Scalar Data Property Values</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Scalar Data Property Restrictions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESTRICTION_STRUCTURED_DATA_PROPERTY_TUPLE__SCALAR_DATA_PROPERTY_VALUES = RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__SCALAR_DATA_PROPERTY_VALUES;
+	int RESTRICTION_STRUCTURED_DATA_PROPERTY_TUPLE__SCALAR_DATA_PROPERTY_RESTRICTIONS = RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__SCALAR_DATA_PROPERTY_RESTRICTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Structured Data Property Context</b></em>' container reference.
@@ -4532,6 +5657,15 @@ public interface TerminologiesPackage extends EPackage {
 	int RESTRICTION_STRUCTURED_DATA_PROPERTY_TUPLE_FEATURE_COUNT = RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT_FEATURE_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>All Nested Restriction Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESTRICTION_STRUCTURED_DATA_PROPERTY_TUPLE___ALL_NESTED_RESTRICTION_ELEMENTS = RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT___ALL_NESTED_RESTRICTION_ELEMENTS;
+
+	/**
 	 * The operation id for the '<em>Terminology Box</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4550,13 +5684,31 @@ public interface TerminologiesPackage extends EPackage {
 	int RESTRICTION_STRUCTURED_DATA_PROPERTY_TUPLE___UUID = RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT_OPERATION_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESTRICTION_STRUCTURED_DATA_PROPERTY_TUPLE___MODULE_CONTEXT = RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT_OPERATION_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESTRICTION_STRUCTURED_DATA_PROPERTY_TUPLE___ALL_NESTED_ELEMENTS = RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT_OPERATION_COUNT + 3;
+
+	/**
 	 * The number of operations of the '<em>Restriction Structured Data Property Tuple</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESTRICTION_STRUCTURED_DATA_PROPERTY_TUPLE_OPERATION_COUNT = RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT_OPERATION_COUNT + 2;
+	int RESTRICTION_STRUCTURED_DATA_PROPERTY_TUPLE_OPERATION_COUNT = RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT_OPERATION_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.RestrictionScalarDataPropertyValueImpl <em>Restriction Scalar Data Property Value</em>}' class.
@@ -4576,6 +5728,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__UUID = CommonPackage.ELEMENT__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__ANNOTATIONS = CommonPackage.ELEMENT__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Structured Data Property Context</b></em>' container reference.
@@ -4632,13 +5793,22 @@ public interface TerminologiesPackage extends EPackage {
 	int RESTRICTION_SCALAR_DATA_PROPERTY_VALUE___UUID = CommonPackage.ELEMENT_OPERATION_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESTRICTION_SCALAR_DATA_PROPERTY_VALUE___MODULE_CONTEXT = CommonPackage.ELEMENT_OPERATION_COUNT + 2;
+
+	/**
 	 * The number of operations of the '<em>Restriction Scalar Data Property Value</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESTRICTION_SCALAR_DATA_PROPERTY_VALUE_OPERATION_COUNT = CommonPackage.ELEMENT_OPERATION_COUNT + 2;
+	int RESTRICTION_SCALAR_DATA_PROPERTY_VALUE_OPERATION_COUNT = CommonPackage.ELEMENT_OPERATION_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.RestrictedDataRangeImpl <em>Restricted Data Range</em>}' class.
@@ -4658,6 +5828,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int RESTRICTED_DATA_RANGE__UUID = DATA_RANGE__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESTRICTED_DATA_RANGE__ANNOTATIONS = DATA_RANGE__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
@@ -4696,6 +5875,15 @@ public interface TerminologiesPackage extends EPackage {
 	int RESTRICTED_DATA_RANGE_FEATURE_COUNT = DATA_RANGE_FEATURE_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESTRICTED_DATA_RANGE___MODULE_CONTEXT = DATA_RANGE___MODULE_CONTEXT;
+
+	/**
 	 * The operation id for the '<em>Iri</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4732,6 +5920,15 @@ public interface TerminologiesPackage extends EPackage {
 	int RESTRICTED_DATA_RANGE___UUID = DATA_RANGE___UUID;
 
 	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESTRICTED_DATA_RANGE___ALL_NESTED_ELEMENTS = DATA_RANGE___ALL_NESTED_ELEMENTS;
+
+	/**
 	 * The number of operations of the '<em>Restricted Data Range</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4758,6 +5955,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int BINARY_SCALAR_RESTRICTION__UUID = RESTRICTED_DATA_RANGE__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_SCALAR_RESTRICTION__ANNOTATIONS = RESTRICTED_DATA_RANGE__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
@@ -4823,6 +6029,15 @@ public interface TerminologiesPackage extends EPackage {
 	int BINARY_SCALAR_RESTRICTION_FEATURE_COUNT = RESTRICTED_DATA_RANGE_FEATURE_COUNT + 3;
 
 	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_SCALAR_RESTRICTION___MODULE_CONTEXT = RESTRICTED_DATA_RANGE___MODULE_CONTEXT;
+
+	/**
 	 * The operation id for the '<em>Iri</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4859,6 +6074,15 @@ public interface TerminologiesPackage extends EPackage {
 	int BINARY_SCALAR_RESTRICTION___UUID = RESTRICTED_DATA_RANGE___UUID;
 
 	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_SCALAR_RESTRICTION___ALL_NESTED_ELEMENTS = RESTRICTED_DATA_RANGE___ALL_NESTED_ELEMENTS;
+
+	/**
 	 * The number of operations of the '<em>Binary Scalar Restriction</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4885,6 +6109,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int IRI_SCALAR_RESTRICTION__UUID = RESTRICTED_DATA_RANGE__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IRI_SCALAR_RESTRICTION__ANNOTATIONS = RESTRICTED_DATA_RANGE__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
@@ -4959,6 +6192,15 @@ public interface TerminologiesPackage extends EPackage {
 	int IRI_SCALAR_RESTRICTION_FEATURE_COUNT = RESTRICTED_DATA_RANGE_FEATURE_COUNT + 4;
 
 	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IRI_SCALAR_RESTRICTION___MODULE_CONTEXT = RESTRICTED_DATA_RANGE___MODULE_CONTEXT;
+
+	/**
 	 * The operation id for the '<em>Iri</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4995,6 +6237,15 @@ public interface TerminologiesPackage extends EPackage {
 	int IRI_SCALAR_RESTRICTION___UUID = RESTRICTED_DATA_RANGE___UUID;
 
 	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IRI_SCALAR_RESTRICTION___ALL_NESTED_ELEMENTS = RESTRICTED_DATA_RANGE___ALL_NESTED_ELEMENTS;
+
+	/**
 	 * The number of operations of the '<em>IRI Scalar Restriction</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5021,6 +6272,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int NUMERIC_SCALAR_RESTRICTION__UUID = RESTRICTED_DATA_RANGE__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NUMERIC_SCALAR_RESTRICTION__ANNOTATIONS = RESTRICTED_DATA_RANGE__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
@@ -5095,6 +6355,15 @@ public interface TerminologiesPackage extends EPackage {
 	int NUMERIC_SCALAR_RESTRICTION_FEATURE_COUNT = RESTRICTED_DATA_RANGE_FEATURE_COUNT + 4;
 
 	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NUMERIC_SCALAR_RESTRICTION___MODULE_CONTEXT = RESTRICTED_DATA_RANGE___MODULE_CONTEXT;
+
+	/**
 	 * The operation id for the '<em>Iri</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5131,6 +6400,15 @@ public interface TerminologiesPackage extends EPackage {
 	int NUMERIC_SCALAR_RESTRICTION___UUID = RESTRICTED_DATA_RANGE___UUID;
 
 	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NUMERIC_SCALAR_RESTRICTION___ALL_NESTED_ELEMENTS = RESTRICTED_DATA_RANGE___ALL_NESTED_ELEMENTS;
+
+	/**
 	 * The number of operations of the '<em>Numeric Scalar Restriction</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5157,6 +6435,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int PLAIN_LITERAL_SCALAR_RESTRICTION__UUID = RESTRICTED_DATA_RANGE__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLAIN_LITERAL_SCALAR_RESTRICTION__ANNOTATIONS = RESTRICTED_DATA_RANGE__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
@@ -5240,6 +6527,15 @@ public interface TerminologiesPackage extends EPackage {
 	int PLAIN_LITERAL_SCALAR_RESTRICTION_FEATURE_COUNT = RESTRICTED_DATA_RANGE_FEATURE_COUNT + 5;
 
 	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLAIN_LITERAL_SCALAR_RESTRICTION___MODULE_CONTEXT = RESTRICTED_DATA_RANGE___MODULE_CONTEXT;
+
+	/**
 	 * The operation id for the '<em>Iri</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5276,6 +6572,15 @@ public interface TerminologiesPackage extends EPackage {
 	int PLAIN_LITERAL_SCALAR_RESTRICTION___UUID = RESTRICTED_DATA_RANGE___UUID;
 
 	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLAIN_LITERAL_SCALAR_RESTRICTION___ALL_NESTED_ELEMENTS = RESTRICTED_DATA_RANGE___ALL_NESTED_ELEMENTS;
+
+	/**
 	 * The number of operations of the '<em>Plain Literal Scalar Restriction</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5302,6 +6607,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int STRING_SCALAR_RESTRICTION__UUID = RESTRICTED_DATA_RANGE__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRING_SCALAR_RESTRICTION__ANNOTATIONS = RESTRICTED_DATA_RANGE__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
@@ -5376,6 +6690,15 @@ public interface TerminologiesPackage extends EPackage {
 	int STRING_SCALAR_RESTRICTION_FEATURE_COUNT = RESTRICTED_DATA_RANGE_FEATURE_COUNT + 4;
 
 	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRING_SCALAR_RESTRICTION___MODULE_CONTEXT = RESTRICTED_DATA_RANGE___MODULE_CONTEXT;
+
+	/**
 	 * The operation id for the '<em>Iri</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5412,6 +6735,15 @@ public interface TerminologiesPackage extends EPackage {
 	int STRING_SCALAR_RESTRICTION___UUID = RESTRICTED_DATA_RANGE___UUID;
 
 	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRING_SCALAR_RESTRICTION___ALL_NESTED_ELEMENTS = RESTRICTED_DATA_RANGE___ALL_NESTED_ELEMENTS;
+
+	/**
 	 * The number of operations of the '<em>String Scalar Restriction</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5438,6 +6770,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int TIME_SCALAR_RESTRICTION__UUID = RESTRICTED_DATA_RANGE__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_SCALAR_RESTRICTION__ANNOTATIONS = RESTRICTED_DATA_RANGE__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
@@ -5512,6 +6853,15 @@ public interface TerminologiesPackage extends EPackage {
 	int TIME_SCALAR_RESTRICTION_FEATURE_COUNT = RESTRICTED_DATA_RANGE_FEATURE_COUNT + 4;
 
 	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_SCALAR_RESTRICTION___MODULE_CONTEXT = RESTRICTED_DATA_RANGE___MODULE_CONTEXT;
+
+	/**
 	 * The operation id for the '<em>Iri</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5548,6 +6898,15 @@ public interface TerminologiesPackage extends EPackage {
 	int TIME_SCALAR_RESTRICTION___UUID = RESTRICTED_DATA_RANGE___UUID;
 
 	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_SCALAR_RESTRICTION___ALL_NESTED_ELEMENTS = RESTRICTED_DATA_RANGE___ALL_NESTED_ELEMENTS;
+
+	/**
 	 * The number of operations of the '<em>Time Scalar Restriction</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5574,6 +6933,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int SYNONYM_SCALAR_RESTRICTION__UUID = RESTRICTED_DATA_RANGE__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYNONYM_SCALAR_RESTRICTION__ANNOTATIONS = RESTRICTED_DATA_RANGE__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
@@ -5612,6 +6980,15 @@ public interface TerminologiesPackage extends EPackage {
 	int SYNONYM_SCALAR_RESTRICTION_FEATURE_COUNT = RESTRICTED_DATA_RANGE_FEATURE_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYNONYM_SCALAR_RESTRICTION___MODULE_CONTEXT = RESTRICTED_DATA_RANGE___MODULE_CONTEXT;
+
+	/**
 	 * The operation id for the '<em>Iri</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5648,6 +7025,15 @@ public interface TerminologiesPackage extends EPackage {
 	int SYNONYM_SCALAR_RESTRICTION___UUID = RESTRICTED_DATA_RANGE___UUID;
 
 	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYNONYM_SCALAR_RESTRICTION___ALL_NESTED_ELEMENTS = RESTRICTED_DATA_RANGE___ALL_NESTED_ELEMENTS;
+
+	/**
 	 * The number of operations of the '<em>Synonym Scalar Restriction</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5674,6 +7060,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int SCALAR_ONE_OF_RESTRICTION__UUID = RESTRICTED_DATA_RANGE__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCALAR_ONE_OF_RESTRICTION__ANNOTATIONS = RESTRICTED_DATA_RANGE__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
@@ -5712,6 +7107,15 @@ public interface TerminologiesPackage extends EPackage {
 	int SCALAR_ONE_OF_RESTRICTION_FEATURE_COUNT = RESTRICTED_DATA_RANGE_FEATURE_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCALAR_ONE_OF_RESTRICTION___MODULE_CONTEXT = RESTRICTED_DATA_RANGE___MODULE_CONTEXT;
+
+	/**
 	 * The operation id for the '<em>Iri</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5748,6 +7152,15 @@ public interface TerminologiesPackage extends EPackage {
 	int SCALAR_ONE_OF_RESTRICTION___UUID = RESTRICTED_DATA_RANGE___UUID;
 
 	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCALAR_ONE_OF_RESTRICTION___ALL_NESTED_ELEMENTS = RESTRICTED_DATA_RANGE___ALL_NESTED_ELEMENTS;
+
+	/**
 	 * The number of operations of the '<em>Scalar One Of Restriction</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5774,6 +7187,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int SCALAR_ONE_OF_LITERAL_AXIOM__UUID = TERM_AXIOM__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCALAR_ONE_OF_LITERAL_AXIOM__ANNOTATIONS = TERM_AXIOM__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
@@ -5812,6 +7234,15 @@ public interface TerminologiesPackage extends EPackage {
 	int SCALAR_ONE_OF_LITERAL_AXIOM_FEATURE_COUNT = TERM_AXIOM_FEATURE_COUNT + 2;
 
 	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCALAR_ONE_OF_LITERAL_AXIOM___MODULE_CONTEXT = TERM_AXIOM___MODULE_CONTEXT;
+
+	/**
 	 * The operation id for the '<em>Uuid</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5821,13 +7252,22 @@ public interface TerminologiesPackage extends EPackage {
 	int SCALAR_ONE_OF_LITERAL_AXIOM___UUID = TERM_AXIOM_OPERATION_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCALAR_ONE_OF_LITERAL_AXIOM___ALL_NESTED_ELEMENTS = TERM_AXIOM_OPERATION_COUNT + 1;
+
+	/**
 	 * The number of operations of the '<em>Scalar One Of Literal Axiom</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCALAR_ONE_OF_LITERAL_AXIOM_OPERATION_COUNT = TERM_AXIOM_OPERATION_COUNT + 1;
+	int SCALAR_ONE_OF_LITERAL_AXIOM_OPERATION_COUNT = TERM_AXIOM_OPERATION_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.TerminologyKind <em>Terminology Kind</em>}' enum.
@@ -5903,6 +7343,16 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getTerminologyBoxStatement_Tbox();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBoxStatement#moduleContext() <em>Module Context</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Module Context</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBoxStatement#moduleContext()
+	 * @generated
+	 */
+	EOperation getTerminologyBoxStatement__ModuleContext();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.TerminologyAxiom <em>Terminology Axiom</em>}'.
@@ -6096,6 +7546,16 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getTerm__Uuid();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.Term#allNestedElements() <em>All Nested Elements</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>All Nested Elements</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.Term#allNestedElements()
+	 * @generated
+	 */
+	EOperation getTerm__AllNestedElements();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.UnaryTermKind <em>Unary Term Kind</em>}'.
@@ -6789,6 +8249,16 @@ public interface TerminologiesPackage extends EPackage {
 	EReference getEntityRestrictionAxiom_RestrictedDomain();
 
 	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityRestrictionAxiom#allNestedElements() <em>All Nested Elements</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>All Nested Elements</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.EntityRestrictionAxiom#allNestedElements()
+	 * @generated
+	 */
+	EOperation getEntityRestrictionAxiom__AllNestedElements();
+
+	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialRestrictionAxiom <em>Entity Existential Restriction Axiom</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6857,6 +8327,16 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getSpecializationAxiom__Parent();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.SpecializationAxiom#allNestedElements() <em>All Nested Elements</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>All Nested Elements</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.SpecializationAxiom#allNestedElements()
+	 * @generated
+	 */
+	EOperation getSpecializationAxiom__AllNestedElements();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.AspectSpecializationAxiom <em>Aspect Specialization Axiom</em>}'.
@@ -7077,6 +8557,16 @@ public interface TerminologiesPackage extends EPackage {
 	EReference getEntityScalarDataPropertyRestrictionAxiom_ScalarProperty();
 
 	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyRestrictionAxiom#allNestedElements() <em>All Nested Elements</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>All Nested Elements</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyRestrictionAxiom#allNestedElements()
+	 * @generated
+	 */
+	EOperation getEntityScalarDataPropertyRestrictionAxiom__AllNestedElements();
+
+	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyExistentialRestrictionAxiom <em>Entity Scalar Data Property Existential Restriction Axiom</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7221,6 +8711,16 @@ public interface TerminologiesPackage extends EPackage {
 	EOperation getEntityStructuredDataPropertyParticularRestrictionAxiom__Uuid();
 
 	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataPropertyParticularRestrictionAxiom#allNestedElements() <em>All Nested Elements</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>All Nested Elements</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataPropertyParticularRestrictionAxiom#allNestedElements()
+	 * @generated
+	 */
+	EOperation getEntityStructuredDataPropertyParticularRestrictionAxiom__AllNestedElements();
+
+	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyContext <em>Restriction Structured Data Property Context</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7242,26 +8742,26 @@ public interface TerminologiesPackage extends EPackage {
 	EReference getRestrictionStructuredDataPropertyContext_StructuredDataProperty();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyContext#getStructuredPropertyTuples <em>Structured Property Tuples</em>}'.
+	 * Returns the meta object for the containment reference list '{@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyContext#getStructuredDataPropertyRestrictions <em>Structured Data Property Restrictions</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Structured Property Tuples</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyContext#getStructuredPropertyTuples()
+	 * @return the meta object for the containment reference list '<em>Structured Data Property Restrictions</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyContext#getStructuredDataPropertyRestrictions()
 	 * @see #getRestrictionStructuredDataPropertyContext()
 	 * @generated
 	 */
-	EReference getRestrictionStructuredDataPropertyContext_StructuredPropertyTuples();
+	EReference getRestrictionStructuredDataPropertyContext_StructuredDataPropertyRestrictions();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyContext#getScalarDataPropertyValues <em>Scalar Data Property Values</em>}'.
+	 * Returns the meta object for the containment reference list '{@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyContext#getScalarDataPropertyRestrictions <em>Scalar Data Property Restrictions</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Scalar Data Property Values</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyContext#getScalarDataPropertyValues()
+	 * @return the meta object for the containment reference list '<em>Scalar Data Property Restrictions</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyContext#getScalarDataPropertyRestrictions()
 	 * @see #getRestrictionStructuredDataPropertyContext()
 	 * @generated
 	 */
-	EReference getRestrictionStructuredDataPropertyContext_ScalarDataPropertyValues();
+	EReference getRestrictionStructuredDataPropertyContext_ScalarDataPropertyRestrictions();
 
 	/**
 	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyContext#terminologyBox() <em>Terminology Box</em>}' operation.
@@ -7272,6 +8772,16 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getRestrictionStructuredDataPropertyContext__TerminologyBox();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyContext#allNestedRestrictionElements() <em>All Nested Restriction Elements</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>All Nested Restriction Elements</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyContext#allNestedRestrictionElements()
+	 * @generated
+	 */
+	EOperation getRestrictionStructuredDataPropertyContext__AllNestedRestrictionElements();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple <em>Restriction Structured Data Property Tuple</em>}'.
@@ -7313,6 +8823,26 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getRestrictionStructuredDataPropertyTuple__Uuid();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple#moduleContext() <em>Module Context</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Module Context</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple#moduleContext()
+	 * @generated
+	 */
+	EOperation getRestrictionStructuredDataPropertyTuple__ModuleContext();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple#allNestedElements() <em>All Nested Elements</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>All Nested Elements</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple#allNestedElements()
+	 * @generated
+	 */
+	EOperation getRestrictionStructuredDataPropertyTuple__AllNestedElements();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue <em>Restriction Scalar Data Property Value</em>}'.
@@ -7376,6 +8906,16 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getRestrictionScalarDataPropertyValue__Uuid();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue#moduleContext() <em>Module Context</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Module Context</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue#moduleContext()
+	 * @generated
+	 */
+	EOperation getRestrictionScalarDataPropertyValue__ModuleContext();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictedDataRange <em>Restricted Data Range</em>}'.
@@ -7785,6 +9325,16 @@ public interface TerminologiesPackage extends EPackage {
 	EOperation getScalarOneOfLiteralAxiom__Uuid();
 
 	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom#allNestedElements() <em>All Nested Elements</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>All Nested Elements</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom#allNestedElements()
+	 * @generated
+	 */
+	EOperation getScalarOneOfLiteralAxiom__AllNestedElements();
+
+	/**
 	 * Returns the meta object for enum '{@link gov.nasa.jpl.imce.oml.model.terminologies.TerminologyKind <em>Terminology Kind</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7868,6 +9418,14 @@ public interface TerminologiesPackage extends EPackage {
 		 * @generated
 		 */
 		EReference TERMINOLOGY_BOX_STATEMENT__TBOX = eINSTANCE.getTerminologyBoxStatement_Tbox();
+
+		/**
+		 * The meta object literal for the '<em><b>Module Context</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation TERMINOLOGY_BOX_STATEMENT___MODULE_CONTEXT = eINSTANCE.getTerminologyBoxStatement__ModuleContext();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologyAxiomImpl <em>Terminology Axiom</em>}' class.
@@ -8028,6 +9586,14 @@ public interface TerminologiesPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation TERM___UUID = eINSTANCE.getTerm__Uuid();
+
+		/**
+		 * The meta object literal for the '<em><b>All Nested Elements</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation TERM___ALL_NESTED_ELEMENTS = eINSTANCE.getTerm__AllNestedElements();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.UnaryTermKindImpl <em>Unary Term Kind</em>}' class.
@@ -8618,6 +10184,14 @@ public interface TerminologiesPackage extends EPackage {
 		EReference ENTITY_RESTRICTION_AXIOM__RESTRICTED_DOMAIN = eINSTANCE.getEntityRestrictionAxiom_RestrictedDomain();
 
 		/**
+		 * The meta object literal for the '<em><b>All Nested Elements</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ENTITY_RESTRICTION_AXIOM___ALL_NESTED_ELEMENTS = eINSTANCE.getEntityRestrictionAxiom__AllNestedElements();
+
+		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityExistentialRestrictionAxiomImpl <em>Entity Existential Restriction Axiom</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -8678,6 +10252,14 @@ public interface TerminologiesPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation SPECIALIZATION_AXIOM___PARENT = eINSTANCE.getSpecializationAxiom__Parent();
+
+		/**
+		 * The meta object literal for the '<em><b>All Nested Elements</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SPECIALIZATION_AXIOM___ALL_NESTED_ELEMENTS = eINSTANCE.getSpecializationAxiom__AllNestedElements();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.AspectSpecializationAxiomImpl <em>Aspect Specialization Axiom</em>}' class.
@@ -8856,6 +10438,14 @@ public interface TerminologiesPackage extends EPackage {
 		EReference ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM__SCALAR_PROPERTY = eINSTANCE.getEntityScalarDataPropertyRestrictionAxiom_ScalarProperty();
 
 		/**
+		 * The meta object literal for the '<em><b>All Nested Elements</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM___ALL_NESTED_ELEMENTS = eINSTANCE.getEntityScalarDataPropertyRestrictionAxiom__AllNestedElements();
+
+		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityScalarDataPropertyExistentialRestrictionAxiomImpl <em>Entity Scalar Data Property Existential Restriction Axiom</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -8978,6 +10568,14 @@ public interface TerminologiesPackage extends EPackage {
 		EOperation ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM___UUID = eINSTANCE.getEntityStructuredDataPropertyParticularRestrictionAxiom__Uuid();
 
 		/**
+		 * The meta object literal for the '<em><b>All Nested Elements</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM___ALL_NESTED_ELEMENTS = eINSTANCE.getEntityStructuredDataPropertyParticularRestrictionAxiom__AllNestedElements();
+
+		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.RestrictionStructuredDataPropertyContextImpl <em>Restriction Structured Data Property Context</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -8996,20 +10594,20 @@ public interface TerminologiesPackage extends EPackage {
 		EReference RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__STRUCTURED_DATA_PROPERTY = eINSTANCE.getRestrictionStructuredDataPropertyContext_StructuredDataProperty();
 
 		/**
-		 * The meta object literal for the '<em><b>Structured Property Tuples</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Structured Data Property Restrictions</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__STRUCTURED_PROPERTY_TUPLES = eINSTANCE.getRestrictionStructuredDataPropertyContext_StructuredPropertyTuples();
+		EReference RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__STRUCTURED_DATA_PROPERTY_RESTRICTIONS = eINSTANCE.getRestrictionStructuredDataPropertyContext_StructuredDataPropertyRestrictions();
 
 		/**
-		 * The meta object literal for the '<em><b>Scalar Data Property Values</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Scalar Data Property Restrictions</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__SCALAR_DATA_PROPERTY_VALUES = eINSTANCE.getRestrictionStructuredDataPropertyContext_ScalarDataPropertyValues();
+		EReference RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__SCALAR_DATA_PROPERTY_RESTRICTIONS = eINSTANCE.getRestrictionStructuredDataPropertyContext_ScalarDataPropertyRestrictions();
 
 		/**
 		 * The meta object literal for the '<em><b>Terminology Box</b></em>' operation.
@@ -9018,6 +10616,14 @@ public interface TerminologiesPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT___TERMINOLOGY_BOX = eINSTANCE.getRestrictionStructuredDataPropertyContext__TerminologyBox();
+
+		/**
+		 * The meta object literal for the '<em><b>All Nested Restriction Elements</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT___ALL_NESTED_RESTRICTION_ELEMENTS = eINSTANCE.getRestrictionStructuredDataPropertyContext__AllNestedRestrictionElements();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.RestrictionStructuredDataPropertyTupleImpl <em>Restriction Structured Data Property Tuple</em>}' class.
@@ -9052,6 +10658,22 @@ public interface TerminologiesPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation RESTRICTION_STRUCTURED_DATA_PROPERTY_TUPLE___UUID = eINSTANCE.getRestrictionStructuredDataPropertyTuple__Uuid();
+
+		/**
+		 * The meta object literal for the '<em><b>Module Context</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation RESTRICTION_STRUCTURED_DATA_PROPERTY_TUPLE___MODULE_CONTEXT = eINSTANCE.getRestrictionStructuredDataPropertyTuple__ModuleContext();
+
+		/**
+		 * The meta object literal for the '<em><b>All Nested Elements</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation RESTRICTION_STRUCTURED_DATA_PROPERTY_TUPLE___ALL_NESTED_ELEMENTS = eINSTANCE.getRestrictionStructuredDataPropertyTuple__AllNestedElements();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.RestrictionScalarDataPropertyValueImpl <em>Restriction Scalar Data Property Value</em>}' class.
@@ -9102,6 +10724,14 @@ public interface TerminologiesPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation RESTRICTION_SCALAR_DATA_PROPERTY_VALUE___UUID = eINSTANCE.getRestrictionScalarDataPropertyValue__Uuid();
+
+		/**
+		 * The meta object literal for the '<em><b>Module Context</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation RESTRICTION_SCALAR_DATA_PROPERTY_VALUE___MODULE_CONTEXT = eINSTANCE.getRestrictionScalarDataPropertyValue__ModuleContext();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.RestrictedDataRangeImpl <em>Restricted Data Range</em>}' class.
@@ -9426,6 +11056,14 @@ public interface TerminologiesPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation SCALAR_ONE_OF_LITERAL_AXIOM___UUID = eINSTANCE.getScalarOneOfLiteralAxiom__Uuid();
+
+		/**
+		 * The meta object literal for the '<em><b>All Nested Elements</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SCALAR_ONE_OF_LITERAL_AXIOM___ALL_NESTED_ELEMENTS = eINSTANCE.getScalarOneOfLiteralAxiom__AllNestedElements();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.TerminologyKind <em>Terminology Kind</em>}' enum.

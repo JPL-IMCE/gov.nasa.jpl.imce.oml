@@ -18,19 +18,18 @@
  */
 package gov.nasa.jpl.imce.oml.model.common.impl;
 
-import gov.nasa.jpl.imce.oml.model.common.Annotation;
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
 import gov.nasa.jpl.imce.oml.model.common.Element;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
 import gov.nasa.jpl.imce.oml.model.common.Module;
 import gov.nasa.jpl.imce.oml.model.common.ModuleEdge;
+import gov.nasa.jpl.imce.oml.model.common.ModuleElement;
 import gov.nasa.jpl.imce.oml.model.common.Resource;
 
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
 
 import java.lang.reflect.InvocationTargetException;
 
-import java.util.Collection;
 import java.util.UUID;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -44,9 +43,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -58,7 +55,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.common.impl.ModuleImpl#getExtent <em>Extent</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.common.impl.ModuleImpl#getIri <em>Iri</em>}</li>
- *   <li>{@link gov.nasa.jpl.imce.oml.model.common.impl.ModuleImpl#getAnnotations <em>Annotations</em>}</li>
  * </ul>
  *
  * @generated
@@ -83,16 +79,6 @@ public abstract class ModuleImpl extends ElementImpl implements Module {
 	 * @ordered
 	 */
 	protected String iri = IRI_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getAnnotations() <em>Annotations</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getAnnotations()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Annotation> annotations;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -190,18 +176,6 @@ public abstract class ModuleImpl extends ElementImpl implements Module {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Annotation> getAnnotations() {
-		if (annotations == null) {
-			annotations = new EObjectContainmentWithInverseEList<Annotation>(Annotation.class, this, CommonPackage.MODULE__ANNOTATIONS, CommonPackage.ANNOTATION__MODULE);
-		}
-		return annotations;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EList<ModuleEdge> moduleEdges() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -277,7 +251,26 @@ public abstract class ModuleImpl extends ElementImpl implements Module {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
+	public Module moduleContext() {
+		return this;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<ModuleElement> moduleElements() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -285,8 +278,6 @@ public abstract class ModuleImpl extends ElementImpl implements Module {
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetExtent((Extent)otherEnd, msgs);
-			case CommonPackage.MODULE__ANNOTATIONS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getAnnotations()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -301,8 +292,6 @@ public abstract class ModuleImpl extends ElementImpl implements Module {
 		switch (featureID) {
 			case CommonPackage.MODULE__EXTENT:
 				return basicSetExtent(null, msgs);
-			case CommonPackage.MODULE__ANNOTATIONS:
-				return ((InternalEList<?>)getAnnotations()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -334,8 +323,6 @@ public abstract class ModuleImpl extends ElementImpl implements Module {
 				return basicGetExtent();
 			case CommonPackage.MODULE__IRI:
 				return getIri();
-			case CommonPackage.MODULE__ANNOTATIONS:
-				return getAnnotations();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -345,7 +332,6 @@ public abstract class ModuleImpl extends ElementImpl implements Module {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -354,10 +340,6 @@ public abstract class ModuleImpl extends ElementImpl implements Module {
 				return;
 			case CommonPackage.MODULE__IRI:
 				setIri((String)newValue);
-				return;
-			case CommonPackage.MODULE__ANNOTATIONS:
-				getAnnotations().clear();
-				getAnnotations().addAll((Collection<? extends Annotation>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -377,9 +359,6 @@ public abstract class ModuleImpl extends ElementImpl implements Module {
 			case CommonPackage.MODULE__IRI:
 				setIri(IRI_EDEFAULT);
 				return;
-			case CommonPackage.MODULE__ANNOTATIONS:
-				getAnnotations().clear();
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -396,8 +375,6 @@ public abstract class ModuleImpl extends ElementImpl implements Module {
 				return basicGetExtent() != null;
 			case CommonPackage.MODULE__IRI:
 				return IRI_EDEFAULT == null ? iri != null : !IRI_EDEFAULT.equals(iri);
-			case CommonPackage.MODULE__ANNOTATIONS:
-				return annotations != null && !annotations.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -412,6 +389,7 @@ public abstract class ModuleImpl extends ElementImpl implements Module {
 		if (baseClass == Element.class) {
 			switch (baseOperationID) {
 				case CommonPackage.ELEMENT___UUID: return CommonPackage.MODULE___UUID;
+				case CommonPackage.ELEMENT___MODULE_CONTEXT: return CommonPackage.MODULE___MODULE_CONTEXT;
 				default: return super.eDerivedOperationID(baseOperationID, baseClass);
 			}
 		}
@@ -446,6 +424,10 @@ public abstract class ModuleImpl extends ElementImpl implements Module {
 				return abbrevIRI();
 			case CommonPackage.MODULE___UUID:
 				return uuid();
+			case CommonPackage.MODULE___MODULE_CONTEXT:
+				return moduleContext();
+			case CommonPackage.MODULE___MODULE_ELEMENTS:
+				return moduleElements();
 		}
 		return super.eInvoke(operationID, arguments);
 	}

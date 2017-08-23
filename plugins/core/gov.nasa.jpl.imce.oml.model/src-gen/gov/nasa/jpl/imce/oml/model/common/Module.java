@@ -37,7 +37,6 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.common.Module#getExtent <em>Extent</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.common.Module#getIri <em>Iri</em>}</li>
- *   <li>{@link gov.nasa.jpl.imce.oml.model.common.Module#getAnnotations <em>Annotations</em>}</li>
  * </ul>
  *
  * @see gov.nasa.jpl.imce.oml.model.common.CommonPackage#getModule()
@@ -101,25 +100,6 @@ public interface Module extends Element, Resource {
 	void setIri(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Annotations</b></em>' containment reference list.
-	 * The list contents are of type {@link gov.nasa.jpl.imce.oml.model.common.Annotation}.
-	 * It is bidirectional and its opposite is '{@link gov.nasa.jpl.imce.oml.model.common.Annotation#getModule <em>Module</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Annotations</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Annotations</em>' containment reference list.
-	 * @see gov.nasa.jpl.imce.oml.model.common.CommonPackage#getModule_Annotations()
-	 * @see gov.nasa.jpl.imce.oml.model.common.Annotation#getModule
-	 * @model opposite="module" containment="true"
-	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
-	 * @generated
-	 */
-	EList<Annotation> getAnnotations();
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
@@ -175,5 +155,24 @@ public interface Module extends Element, Resource {
 	 * @generated
 	 */
 	String uuid();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return this;'"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='scala.Some(this)'"
+	 * @generated
+	 */
+	Module moduleContext();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
+	 * @generated
+	 */
+	EList<ModuleElement> moduleElements();
 
 } // Module

@@ -37,6 +37,7 @@ import java.util.UUID;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -194,6 +195,34 @@ public class AnonymousConceptUnionAxiomImpl extends DisjointUnionOfConceptsAxiom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Element> allNestedDisjunctions() {
+		BasicEList<Element> _xblockexpression = null;
+		{
+			final BasicEList<Element> nres = new BasicEList<Element>();
+			_xblockexpression = nres;
+		}
+		return _xblockexpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Element> allNestedUnions() {
+		BasicEList<Element> _xblockexpression = null;
+		{
+			final BasicEList<Element> nres = new BasicEList<Element>();
+			_xblockexpression = nres;
+		}
+		return _xblockexpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -333,9 +362,16 @@ public class AnonymousConceptUnionAxiomImpl extends DisjointUnionOfConceptsAxiom
 				default: return super.eDerivedOperationID(baseOperationID, baseClass);
 			}
 		}
+		if (baseClass == DisjointUnionOfConceptsAxiom.class) {
+			switch (baseOperationID) {
+				case BundlesPackage.DISJOINT_UNION_OF_CONCEPTS_AXIOM___ALL_NESTED_UNIONS: return BundlesPackage.ANONYMOUS_CONCEPT_UNION_AXIOM___ALL_NESTED_UNIONS;
+				default: return super.eDerivedOperationID(baseOperationID, baseClass);
+			}
+		}
 		if (baseClass == ConceptTreeDisjunction.class) {
 			switch (baseOperationID) {
 				case BundlesPackage.CONCEPT_TREE_DISJUNCTION___BUNDLE_CONTAINER: return BundlesPackage.ANONYMOUS_CONCEPT_UNION_AXIOM___BUNDLE_CONTAINER;
+				case BundlesPackage.CONCEPT_TREE_DISJUNCTION___ALL_NESTED_DISJUNCTIONS: return BundlesPackage.ANONYMOUS_CONCEPT_UNION_AXIOM___ALL_NESTED_DISJUNCTIONS;
 				default: return -1;
 			}
 		}
@@ -354,6 +390,10 @@ public class AnonymousConceptUnionAxiomImpl extends DisjointUnionOfConceptsAxiom
 				return uuid();
 			case BundlesPackage.ANONYMOUS_CONCEPT_UNION_AXIOM___BUNDLE_CONTAINER:
 				return bundleContainer();
+			case BundlesPackage.ANONYMOUS_CONCEPT_UNION_AXIOM___ALL_NESTED_DISJUNCTIONS:
+				return allNestedDisjunctions();
+			case BundlesPackage.ANONYMOUS_CONCEPT_UNION_AXIOM___ALL_NESTED_UNIONS:
+				return allNestedUnions();
 		}
 		return super.eInvoke(operationID, arguments);
 	}

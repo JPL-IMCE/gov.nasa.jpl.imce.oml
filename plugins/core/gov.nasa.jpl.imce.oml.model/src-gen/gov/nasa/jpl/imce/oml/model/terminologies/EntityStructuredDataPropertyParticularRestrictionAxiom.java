@@ -18,6 +18,9 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies;
 
+import gov.nasa.jpl.imce.oml.model.common.Element;
+
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -40,6 +43,7 @@ public interface EntityStructuredDataPropertyParticularRestrictionAxiom extends 
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return this.getTbox();'"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='extent.terminologyBoxOfTerminologyBoxStatement.get(this)'"
 	 * @generated
 	 */
 	TerminologyBox terminologyBox();
@@ -52,5 +56,15 @@ public interface EntityStructuredDataPropertyParticularRestrictionAxiom extends 
 	 * @generated
 	 */
 	String uuid();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return this.allNestedRestrictionElements();'"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
+	 * @generated
+	 */
+	EList<Element> allNestedElements();
 
 } // EntityStructuredDataPropertyParticularRestrictionAxiom

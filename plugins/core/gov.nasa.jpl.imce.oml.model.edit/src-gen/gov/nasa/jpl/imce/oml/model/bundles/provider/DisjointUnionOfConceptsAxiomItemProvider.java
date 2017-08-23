@@ -21,9 +21,7 @@ package gov.nasa.jpl.imce.oml.model.bundles.provider;
 
 import gov.nasa.jpl.imce.oml.model.bundles.BundlesPackage;
 import gov.nasa.jpl.imce.oml.model.bundles.DisjointUnionOfConceptsAxiom;
-
 import gov.nasa.jpl.imce.oml.model.common.provider.ElementItemProvider;
-
 import gov.nasa.jpl.imce.oml.model.edit.provider.OMLEditPlugin;
 
 import java.util.Collection;

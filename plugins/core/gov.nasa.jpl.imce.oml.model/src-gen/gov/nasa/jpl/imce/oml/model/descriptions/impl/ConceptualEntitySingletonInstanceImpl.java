@@ -20,6 +20,7 @@ package gov.nasa.jpl.imce.oml.model.descriptions.impl;
 
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
 import gov.nasa.jpl.imce.oml.model.common.Element;
+import gov.nasa.jpl.imce.oml.model.common.Module;
 import gov.nasa.jpl.imce.oml.model.common.Resource;
 
 import gov.nasa.jpl.imce.oml.model.descriptions.ConceptualEntitySingletonInstance;
@@ -221,6 +222,15 @@ public abstract class ConceptualEntitySingletonInstanceImpl extends TerminologyI
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Module moduleContext() {
+		return this.descriptionBox();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -284,6 +294,7 @@ public abstract class ConceptualEntitySingletonInstanceImpl extends TerminologyI
 		if (baseClass == Element.class) {
 			switch (baseOperationID) {
 				case CommonPackage.ELEMENT___UUID: return DescriptionsPackage.CONCEPTUAL_ENTITY_SINGLETON_INSTANCE___UUID;
+				case CommonPackage.ELEMENT___MODULE_CONTEXT: return DescriptionsPackage.CONCEPTUAL_ENTITY_SINGLETON_INSTANCE___MODULE_CONTEXT;
 				default: return super.eDerivedOperationID(baseOperationID, baseClass);
 			}
 		}
@@ -318,6 +329,8 @@ public abstract class ConceptualEntitySingletonInstanceImpl extends TerminologyI
 				return conceptualEntitySingletonClassifier();
 			case DescriptionsPackage.CONCEPTUAL_ENTITY_SINGLETON_INSTANCE___UUID:
 				return uuid();
+			case DescriptionsPackage.CONCEPTUAL_ENTITY_SINGLETON_INSTANCE___MODULE_CONTEXT:
+				return moduleContext();
 		}
 		return super.eInvoke(operationID, arguments);
 	}

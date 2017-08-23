@@ -22,10 +22,16 @@ import gov.nasa.jpl.imce.oml.model.bundles.Bundle;
 import gov.nasa.jpl.imce.oml.model.bundles.BundlesPackage;
 import gov.nasa.jpl.imce.oml.model.bundles.TerminologyBundleStatement;
 
+import gov.nasa.jpl.imce.oml.model.common.Module;
+
 import gov.nasa.jpl.imce.oml.model.common.impl.ModuleElementImpl;
+
+import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -117,6 +123,15 @@ public abstract class TerminologyBundleStatementImpl extends ModuleElementImpl i
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, BundlesPackage.TERMINOLOGY_BUNDLE_STATEMENT__BUNDLE, newBundle, newBundle));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Module moduleContext() {
+		return this.getBundle();
 	}
 
 	/**
@@ -220,6 +235,20 @@ public abstract class TerminologyBundleStatementImpl extends ModuleElementImpl i
 				return basicGetBundle() != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case BundlesPackage.TERMINOLOGY_BUNDLE_STATEMENT___MODULE_CONTEXT:
+				return moduleContext();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 } //TerminologyBundleStatementImpl

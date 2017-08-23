@@ -19,6 +19,7 @@
 package gov.nasa.jpl.imce.oml.model.descriptions;
 
 import gov.nasa.jpl.imce.oml.model.common.Element;
+import gov.nasa.jpl.imce.oml.model.common.Module;
 
 import gov.nasa.jpl.imce.oml.model.terminologies.DataRelationshipToStructure;
 
@@ -121,5 +122,25 @@ public interface SingletonInstanceStructuredDataPropertyContext extends Element 
 	 * @generated
 	 */
 	DescriptionBox descriptionBox();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return this.descriptionBox();'"
+	 * @generated
+	 */
+	Module moduleContext();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%org.eclipse.emf.common.util.BasicEList%><<%gov.nasa.jpl.imce.oml.model.common.Element%>> _xblockexpression = null;\n{\n\tfinal <%org.eclipse.emf.common.util.BasicEList%><<%gov.nasa.jpl.imce.oml.model.common.Element%>> nres = new <%org.eclipse.emf.common.util.BasicEList%><<%gov.nasa.jpl.imce.oml.model.common.Element%>>();\n\tnres.addAll(this.getStructuredPropertyTuples());\n\tfinal <%java.util.function.Consumer%><<%gov.nasa.jpl.imce.oml.model.descriptions.StructuredDataPropertyTuple%>> _function = new <%java.util.function.Consumer%><<%gov.nasa.jpl.imce.oml.model.descriptions.StructuredDataPropertyTuple%>>()\n\t{\n\t\tpublic void accept(final <%gov.nasa.jpl.imce.oml.model.descriptions.StructuredDataPropertyTuple%> it)\n\t\t{\n\t\t\tnres.addAll(it.allNestedRestrictionElements());\n\t\t}\n\t};\n\tthis.getStructuredPropertyTuples().forEach(_function);\n\tnres.addAll(this.getScalarDataPropertyValues());\n\t_xblockexpression = nres;\n}\nreturn _xblockexpression;'"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='extent.lookupStructuredPropertyTuples(this).flatMap{ r => scala.collection.immutable.Set.empty[resolver.api.Element] + r ++ r.allNestedRestrictionElements() } ++\n\t\textent.lookupScalarDataPropertyValues(this)'"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
+	 * @generated
+	 */
+	EList<Element> allNestedRestrictionElements();
 
 } // SingletonInstanceStructuredDataPropertyContext

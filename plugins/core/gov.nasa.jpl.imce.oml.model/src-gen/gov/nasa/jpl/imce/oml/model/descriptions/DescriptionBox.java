@@ -20,6 +20,7 @@ package gov.nasa.jpl.imce.oml.model.descriptions;
 
 import gov.nasa.jpl.imce.oml.model.common.Module;
 import gov.nasa.jpl.imce.oml.model.common.ModuleEdge;
+import gov.nasa.jpl.imce.oml.model.common.ModuleElement;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -259,10 +260,21 @@ public interface DescriptionBox extends Module {
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%org.eclipse.emf.common.util.BasicEList%><<%gov.nasa.jpl.imce.oml.model.common.ModuleEdge%>> _xblockexpression = null;\n{\n\tfinal <%org.eclipse.emf.common.util.BasicEList%><<%gov.nasa.jpl.imce.oml.model.common.ModuleEdge%>> me = new <%org.eclipse.emf.common.util.BasicEList%><<%gov.nasa.jpl.imce.oml.model.common.ModuleEdge%>>();\n\tme.addAll(this.getDescriptionBoxRefinements());\n\tme.addAll(this.getClosedWorldDefinitions());\n\t_xblockexpression = me;\n}\nreturn _xblockexpression;'"
-	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='extent.descriptionBoxRefinements.getOrElse(this, scala.collection.immutable.Set.empty[resolver.api.ModuleEdge]) ++ extent.closedWorldDefinitions.getOrElse(this, scala.collection.immutable.Set.empty[resolver.api.ModuleEdge])'"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='extent.lookupDescriptionBoxRefinements(this) ++ extent.lookupClosedWorldDefinitions(this)'"
 	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
 	 * @generated
 	 */
 	EList<ModuleEdge> moduleEdges();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%org.eclipse.emf.common.util.BasicEList%><<%gov.nasa.jpl.imce.oml.model.common.ModuleElement%>> _xblockexpression = null;\n{\n\tfinal <%org.eclipse.emf.common.util.BasicEList%><<%gov.nasa.jpl.imce.oml.model.common.ModuleElement%>> mes = new <%org.eclipse.emf.common.util.BasicEList%><<%gov.nasa.jpl.imce.oml.model.common.ModuleElement%>>();\n\tmes.addAll(this.getConceptInstances());\n\tmes.addAll(this.getReifiedRelationshipInstances());\n\tmes.addAll(this.getReifiedRelationshipInstanceDomains());\n\tmes.addAll(this.getReifiedRelationshipInstanceRanges());\n\tmes.addAll(this.getUnreifiedRelationshipInstanceTuples());\n\tmes.addAll(this.getSingletonScalarDataPropertyValues());\n\tmes.addAll(this.getSingletonStructuredDataPropertyValues());\n\t_xblockexpression = mes;\n}\nreturn _xblockexpression;'"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='extent.lookupConceptInstances(this) ++\n\t\textent.lookupReifiedRelationshipInstances(this) ++\n\t\textent.lookupReifiedRelationshipInstanceDomains(this) ++\n\t\textent.lookupReifiedRelationshipInstanceRanges(this) ++\n\t\textent.lookupUnreifiedRelationshipInstanceTuples(this) ++\n\t\textent.lookupSingletonScalarDataPropertyValues(this) ++\n\t\textent.lookupSingletonStructuredDataPropertyValues(this)'"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
+	 * @generated
+	 */
+	EList<ModuleElement> moduleElements();
 
 } // DescriptionBox

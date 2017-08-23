@@ -18,6 +18,9 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies.impl;
 
+import gov.nasa.jpl.imce.oml.model.common.Element;
+import gov.nasa.jpl.imce.oml.model.common.Module;
+
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
 
 import gov.nasa.jpl.imce.oml.model.terminologies.DataRelationshipToStructure;
@@ -121,7 +124,7 @@ public class RestrictionStructuredDataPropertyTupleImpl extends RestrictionStruc
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newStructuredDataPropertyContext != null)
-				msgs = ((InternalEObject)newStructuredDataPropertyContext).eInverseAdd(this, TerminologiesPackage.RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__STRUCTURED_PROPERTY_TUPLES, RestrictionStructuredDataPropertyContext.class, msgs);
+				msgs = ((InternalEObject)newStructuredDataPropertyContext).eInverseAdd(this, TerminologiesPackage.RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__STRUCTURED_DATA_PROPERTY_RESTRICTIONS, RestrictionStructuredDataPropertyContext.class, msgs);
 			msgs = basicSetStructuredDataPropertyContext(newStructuredDataPropertyContext, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
@@ -183,6 +186,29 @@ public class RestrictionStructuredDataPropertyTupleImpl extends RestrictionStruc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Module moduleContext() {
+		RestrictionStructuredDataPropertyContext _structuredDataPropertyContext = this.getStructuredDataPropertyContext();
+		Module _moduleContext = null;
+		if (_structuredDataPropertyContext!=null) {
+			_moduleContext=_structuredDataPropertyContext.moduleContext();
+		}
+		return _moduleContext;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Element> allNestedElements() {
+		return this.allNestedRestrictionElements();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -217,7 +243,7 @@ public class RestrictionStructuredDataPropertyTupleImpl extends RestrictionStruc
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
 			case TerminologiesPackage.RESTRICTION_STRUCTURED_DATA_PROPERTY_TUPLE__STRUCTURED_DATA_PROPERTY_CONTEXT:
-				return eInternalContainer().eInverseRemove(this, TerminologiesPackage.RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__STRUCTURED_PROPERTY_TUPLES, RestrictionStructuredDataPropertyContext.class, msgs);
+				return eInternalContainer().eInverseRemove(this, TerminologiesPackage.RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__STRUCTURED_DATA_PROPERTY_RESTRICTIONS, RestrictionStructuredDataPropertyContext.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
@@ -293,6 +319,10 @@ public class RestrictionStructuredDataPropertyTupleImpl extends RestrictionStruc
 				return terminologyBox();
 			case TerminologiesPackage.RESTRICTION_STRUCTURED_DATA_PROPERTY_TUPLE___UUID:
 				return uuid();
+			case TerminologiesPackage.RESTRICTION_STRUCTURED_DATA_PROPERTY_TUPLE___MODULE_CONTEXT:
+				return moduleContext();
+			case TerminologiesPackage.RESTRICTION_STRUCTURED_DATA_PROPERTY_TUPLE___ALL_NESTED_ELEMENTS:
+				return allNestedElements();
 		}
 		return super.eInvoke(operationID, arguments);
 	}

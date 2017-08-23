@@ -18,10 +18,8 @@
  */
 package gov.nasa.jpl.imce.oml.model.common.impl;
 
-import gov.nasa.jpl.imce.oml.model.common.Annotation;
-import gov.nasa.jpl.imce.oml.model.common.AnnotationEntry;
 import gov.nasa.jpl.imce.oml.model.common.AnnotationProperty;
-import gov.nasa.jpl.imce.oml.model.common.AnnotationSubjectPropertyValue;
+import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue;
 import gov.nasa.jpl.imce.oml.model.common.CommonFactory;
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
 import gov.nasa.jpl.imce.oml.model.common.Element;
@@ -30,8 +28,6 @@ import gov.nasa.jpl.imce.oml.model.common.Module;
 import gov.nasa.jpl.imce.oml.model.common.ModuleEdge;
 import gov.nasa.jpl.imce.oml.model.common.ModuleElement;
 import gov.nasa.jpl.imce.oml.model.common.Resource;
-
-import java.util.Map;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -50,6 +46,13 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
  * @generated
  */
 public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass annotationPropertyValueEClass = null;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -84,41 +87,6 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	 * @generated
 	 */
 	private EClass annotationPropertyEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass annotationPropertyTableEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass annotationEntryEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass annotationSubjectTableEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass annotationSubjectPropertyValueEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass annotationEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -273,6 +241,51 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getAnnotationPropertyValue() {
+		return annotationPropertyValueEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAnnotationPropertyValue_Uuid() {
+		return (EAttribute)annotationPropertyValueEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAnnotationPropertyValue_Subject() {
+		return (EReference)annotationPropertyValueEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAnnotationPropertyValue_Property() {
+		return (EReference)annotationPropertyValueEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAnnotationPropertyValue_Value() {
+		return (EAttribute)annotationPropertyValueEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getElement() {
 		return elementEClass;
 	}
@@ -291,8 +304,26 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getElement_Annotations() {
+		return (EReference)elementEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EOperation getElement__Uuid() {
 		return elementEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getElement__ModuleContext() {
+		return elementEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -345,6 +376,15 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getModuleElement__AllNestedElements() {
+		return moduleElementEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getModuleEdge() {
 		return moduleEdgeEClass;
 	}
@@ -365,6 +405,15 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	 */
 	public EOperation getModuleEdge__TargetModule() {
 		return moduleEdgeEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getModuleEdge__ModuleContext() {
+		return moduleEdgeEClass.getEOperations().get(2);
 	}
 
 	/**
@@ -410,168 +459,6 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	 */
 	public EAttribute getAnnotationProperty_AbbrevIRI() {
 		return (EAttribute)annotationPropertyEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getAnnotationPropertyTable() {
-		return annotationPropertyTableEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getAnnotationPropertyTable_Key() {
-		return (EReference)annotationPropertyTableEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getAnnotationPropertyTable_Value() {
-		return (EReference)annotationPropertyTableEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getAnnotationEntry() {
-		return annotationEntryEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getAnnotationEntry_Module() {
-		return (EReference)annotationEntryEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getAnnotationEntry_Subject() {
-		return (EReference)annotationEntryEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getAnnotationEntry_Value() {
-		return (EAttribute)annotationEntryEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getAnnotationSubjectTable() {
-		return annotationSubjectTableEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getAnnotationSubjectTable_Key() {
-		return (EReference)annotationSubjectTableEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getAnnotationSubjectTable_Value() {
-		return (EReference)annotationSubjectTableEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getAnnotationSubjectPropertyValue() {
-		return annotationSubjectPropertyValueEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getAnnotationSubjectPropertyValue_Property() {
-		return (EReference)annotationSubjectPropertyValueEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getAnnotationSubjectPropertyValue_Value() {
-		return (EAttribute)annotationSubjectPropertyValueEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getAnnotation() {
-		return annotationEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getAnnotation_Module() {
-		return (EReference)annotationEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getAnnotation_Property() {
-		return (EReference)annotationEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getAnnotation_Subject() {
-		return (EReference)annotationEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getAnnotation_Value() {
-		return (EAttribute)annotationEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -633,15 +520,6 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getModule_Annotations() {
-		return (EReference)moduleEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EOperation getModule__ModuleEdges() {
 		return moduleEClass.getEOperations().get(0);
 	}
@@ -689,6 +567,24 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	 */
 	public EOperation getModule__Uuid() {
 		return moduleEClass.getEOperations().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getModule__ModuleContext() {
+		return moduleEClass.getEOperations().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getModule__ModuleElements() {
+		return moduleEClass.getEOperations().get(7);
 	}
 
 	/**
@@ -809,9 +705,17 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		isCreated = true;
 
 		// Create classes and their features
+		annotationPropertyValueEClass = createEClass(ANNOTATION_PROPERTY_VALUE);
+		createEAttribute(annotationPropertyValueEClass, ANNOTATION_PROPERTY_VALUE__UUID);
+		createEReference(annotationPropertyValueEClass, ANNOTATION_PROPERTY_VALUE__SUBJECT);
+		createEReference(annotationPropertyValueEClass, ANNOTATION_PROPERTY_VALUE__PROPERTY);
+		createEAttribute(annotationPropertyValueEClass, ANNOTATION_PROPERTY_VALUE__VALUE);
+
 		elementEClass = createEClass(ELEMENT);
 		createEAttribute(elementEClass, ELEMENT__UUID);
+		createEReference(elementEClass, ELEMENT__ANNOTATIONS);
 		createEOperation(elementEClass, ELEMENT___UUID);
+		createEOperation(elementEClass, ELEMENT___MODULE_CONTEXT);
 
 		resourceEClass = createEClass(RESOURCE);
 		createEOperation(resourceEClass, RESOURCE___IRI);
@@ -819,39 +723,18 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		createEOperation(resourceEClass, RESOURCE___ABBREV_IRI);
 
 		moduleElementEClass = createEClass(MODULE_ELEMENT);
+		createEOperation(moduleElementEClass, MODULE_ELEMENT___ALL_NESTED_ELEMENTS);
 
 		moduleEdgeEClass = createEClass(MODULE_EDGE);
 		createEOperation(moduleEdgeEClass, MODULE_EDGE___SOURCE_MODULE);
 		createEOperation(moduleEdgeEClass, MODULE_EDGE___TARGET_MODULE);
+		createEOperation(moduleEdgeEClass, MODULE_EDGE___MODULE_CONTEXT);
 
 		annotationPropertyEClass = createEClass(ANNOTATION_PROPERTY);
 		createEReference(annotationPropertyEClass, ANNOTATION_PROPERTY__EXTENT);
 		createEAttribute(annotationPropertyEClass, ANNOTATION_PROPERTY__UUID);
 		createEAttribute(annotationPropertyEClass, ANNOTATION_PROPERTY__IRI);
 		createEAttribute(annotationPropertyEClass, ANNOTATION_PROPERTY__ABBREV_IRI);
-
-		annotationPropertyTableEClass = createEClass(ANNOTATION_PROPERTY_TABLE);
-		createEReference(annotationPropertyTableEClass, ANNOTATION_PROPERTY_TABLE__KEY);
-		createEReference(annotationPropertyTableEClass, ANNOTATION_PROPERTY_TABLE__VALUE);
-
-		annotationEntryEClass = createEClass(ANNOTATION_ENTRY);
-		createEReference(annotationEntryEClass, ANNOTATION_ENTRY__MODULE);
-		createEReference(annotationEntryEClass, ANNOTATION_ENTRY__SUBJECT);
-		createEAttribute(annotationEntryEClass, ANNOTATION_ENTRY__VALUE);
-
-		annotationSubjectTableEClass = createEClass(ANNOTATION_SUBJECT_TABLE);
-		createEReference(annotationSubjectTableEClass, ANNOTATION_SUBJECT_TABLE__KEY);
-		createEReference(annotationSubjectTableEClass, ANNOTATION_SUBJECT_TABLE__VALUE);
-
-		annotationSubjectPropertyValueEClass = createEClass(ANNOTATION_SUBJECT_PROPERTY_VALUE);
-		createEReference(annotationSubjectPropertyValueEClass, ANNOTATION_SUBJECT_PROPERTY_VALUE__PROPERTY);
-		createEAttribute(annotationSubjectPropertyValueEClass, ANNOTATION_SUBJECT_PROPERTY_VALUE__VALUE);
-
-		annotationEClass = createEClass(ANNOTATION);
-		createEReference(annotationEClass, ANNOTATION__MODULE);
-		createEReference(annotationEClass, ANNOTATION__PROPERTY);
-		createEReference(annotationEClass, ANNOTATION__SUBJECT);
-		createEAttribute(annotationEClass, ANNOTATION__VALUE);
 
 		extentEClass = createEClass(EXTENT);
 		createEReference(extentEClass, EXTENT__MODULES);
@@ -860,13 +743,14 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		moduleEClass = createEClass(MODULE);
 		createEReference(moduleEClass, MODULE__EXTENT);
 		createEAttribute(moduleEClass, MODULE__IRI);
-		createEReference(moduleEClass, MODULE__ANNOTATIONS);
 		createEOperation(moduleEClass, MODULE___MODULE_EDGES);
 		createEOperation(moduleEClass, MODULE___IRI);
 		createEOperation(moduleEClass, MODULE___NS_PREFIX);
 		createEOperation(moduleEClass, MODULE___NAME);
 		createEOperation(moduleEClass, MODULE___ABBREV_IRI);
 		createEOperation(moduleEClass, MODULE___UUID);
+		createEOperation(moduleEClass, MODULE___MODULE_CONTEXT);
+		createEOperation(moduleEClass, MODULE___MODULE_ELEMENTS);
 
 		// Create data types
 		iriEDataType = createEDataType(IRI);
@@ -918,10 +802,19 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		moduleEClass.getESuperTypes().add(this.getResource());
 
 		// Initialize classes, features, and operations; add parameters
+		initEClass(annotationPropertyValueEClass, AnnotationPropertyValue.class, "AnnotationPropertyValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAnnotationPropertyValue_Uuid(), this.getUUID(), "uuid", null, 1, 1, AnnotationPropertyValue.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getAnnotationPropertyValue_Subject(), this.getElement(), this.getElement_Annotations(), "subject", null, 1, 1, AnnotationPropertyValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAnnotationPropertyValue_Property(), this.getAnnotationProperty(), null, "property", null, 1, 1, AnnotationPropertyValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAnnotationPropertyValue_Value(), theEcorePackage.getEString(), "value", null, 1, 1, AnnotationPropertyValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(elementEClass, Element.class, "Element", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getElement_Uuid(), this.getUUID(), "uuid", null, 1, 1, Element.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getElement_Annotations(), this.getAnnotationPropertyValue(), this.getAnnotationPropertyValue_Subject(), "annotations", null, 0, -1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getElement__Uuid(), this.getUUID(), "uuid", 1, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getElement__ModuleContext(), this.getModule(), "moduleContext", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(resourceEClass, Resource.class, "Resource", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -933,40 +826,21 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 
 		initEClass(moduleElementEClass, ModuleElement.class, "ModuleElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+		initEOperation(getModuleElement__AllNestedElements(), this.getElement(), "allNestedElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
+
 		initEClass(moduleEdgeEClass, ModuleEdge.class, "ModuleEdge", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEOperation(getModuleEdge__SourceModule(), this.getModule(), "sourceModule", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEOperation(getModuleEdge__TargetModule(), this.getModule(), "targetModule", 1, 1, !IS_UNIQUE, IS_ORDERED);
 
+		initEOperation(getModuleEdge__ModuleContext(), this.getModule(), "moduleContext", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
 		initEClass(annotationPropertyEClass, AnnotationProperty.class, "AnnotationProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAnnotationProperty_Extent(), this.getExtent(), this.getExtent_AnnotationProperties(), "extent", null, 1, 1, AnnotationProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAnnotationProperty_Uuid(), this.getUUID(), "uuid", null, 1, 1, AnnotationProperty.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAnnotationProperty_Iri(), this.getIRI(), "iri", null, 1, 1, AnnotationProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAnnotationProperty_AbbrevIRI(), this.getAbbrevIRI(), "abbrevIRI", null, 1, 1, AnnotationProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(annotationPropertyTableEClass, Map.Entry.class, "AnnotationPropertyTable", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAnnotationPropertyTable_Key(), this.getAnnotationProperty(), null, "key", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAnnotationPropertyTable_Value(), this.getAnnotationEntry(), null, "value", null, 0, -1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(annotationEntryEClass, AnnotationEntry.class, "AnnotationEntry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAnnotationEntry_Module(), this.getModule(), null, "module", null, 1, 1, AnnotationEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAnnotationEntry_Subject(), this.getElement(), null, "subject", null, 1, 1, AnnotationEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAnnotationEntry_Value(), theEcorePackage.getEString(), "value", null, 1, 1, AnnotationEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(annotationSubjectTableEClass, Map.Entry.class, "AnnotationSubjectTable", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAnnotationSubjectTable_Key(), this.getElement(), null, "key", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAnnotationSubjectTable_Value(), this.getAnnotationSubjectPropertyValue(), null, "value", null, 0, -1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(annotationSubjectPropertyValueEClass, AnnotationSubjectPropertyValue.class, "AnnotationSubjectPropertyValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAnnotationSubjectPropertyValue_Property(), this.getAnnotationProperty(), null, "property", null, 1, 1, AnnotationSubjectPropertyValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAnnotationSubjectPropertyValue_Value(), theEcorePackage.getEString(), "value", null, 1, 1, AnnotationSubjectPropertyValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(annotationEClass, Annotation.class, "Annotation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAnnotation_Module(), this.getModule(), this.getModule_Annotations(), "module", null, 1, 1, Annotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAnnotation_Property(), this.getAnnotationProperty(), null, "property", null, 1, 1, Annotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAnnotation_Subject(), this.getElement(), null, "subject", null, 1, 1, Annotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAnnotation_Value(), theEcorePackage.getEString(), "value", null, 1, 1, Annotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(extentEClass, Extent.class, "Extent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getExtent_Modules(), this.getModule(), this.getModule_Extent(), "modules", null, 0, -1, Extent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -975,7 +849,6 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		initEClass(moduleEClass, Module.class, "Module", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getModule_Extent(), this.getExtent(), this.getExtent_Modules(), "extent", null, 1, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getModule_Iri(), this.getIRI(), "iri", null, 1, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getModule_Annotations(), this.getAnnotation(), this.getAnnotation_Module(), "annotations", null, 0, -1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getModule__ModuleEdges(), this.getModuleEdge(), "moduleEdges", 0, -1, !IS_UNIQUE, IS_ORDERED);
 
@@ -988,6 +861,10 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		initEOperation(getModule__AbbrevIRI(), theEcorePackage.getEString(), "abbrevIRI", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEOperation(getModule__Uuid(), this.getUUID(), "uuid", 1, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getModule__ModuleContext(), this.getModule(), "moduleContext", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getModule__ModuleElements(), this.getModuleElement(), "moduleElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
 
 		// Initialize data types
 		initEDataType(iriEDataType, String.class, "IRI", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
@@ -1007,16 +884,20 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		// Create annotations
 		// http://www.eclipse.org/emf/2011/Xcore
 		createXcoreAnnotations();
+		// http://imce.jpl.nasa.gov/oml/Glossary
+		createGlossaryAnnotations();
+		// http://imce.jpl.nasa.gov/oml/IsOrderingKey
+		createIsOrderingKeyAnnotations();
+		// http://imce.jpl.nasa.gov/oml/Factory
+		createFactoryAnnotations();
 		// http://imce.jpl.nasa.gov/oml/NotFunctionalAPI
 		createNotFunctionalAPIAnnotations();
 		// http://imce.jpl.nasa.gov/oml/NotSchema
 		createNotSchemaAnnotations();
 		// http://imce.jpl.nasa.gov/oml/ImplicitExtent
 		createImplicitExtentAnnotations();
-		// http://imce.jpl.nasa.gov/oml/IsOrderingKey
-		createIsOrderingKeyAnnotations();
-		// http://imce.jpl.nasa.gov/oml/Glossary
-		createGlossaryAnnotations();
+		// http://imce.jpl.nasa.gov/oml/Collection
+		createCollectionAnnotations();
 		// http://imce.jpl.nasa.gov/oml/IRIReference
 		createIRIReferenceAnnotations();
 		// http://imce.jpl.nasa.gov/oml/ExtentManaged
@@ -1025,12 +906,6 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		createNamespaceUUIDAnnotations();
 		// http://imce.jpl.nasa.gov/oml/Scala
 		createScalaAnnotations();
-		// http://imce.jpl.nasa.gov/oml/Collection
-		createCollectionAnnotations();
-		// http://imce.jpl.nasa.gov/oml/ValueTable
-		createValueTableAnnotations();
-		// http://imce.jpl.nasa.gov/oml/Factory
-		createFactoryAnnotations();
 		// http://imce.jpl.nasa.gov/oml/ExtentContainer
 		createExtentContainerAnnotations();
 		// http://imce.jpl.nasa.gov/oml/ResolverAPI
@@ -1074,6 +949,91 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	}
 
 	/**
+	 * Initializes the annotations for <b>http://imce.jpl.nasa.gov/oml/Glossary</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createGlossaryAnnotations() {
+		String source = "http://imce.jpl.nasa.gov/oml/Glossary";	
+		addAnnotation
+		  (annotationPropertyValueEClass, 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (resourceEClass, 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (moduleElementEClass, 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (moduleEdgeEClass, 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (annotationPropertyEClass, 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (extentEClass, 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (moduleEClass, 
+		   source, 
+		   new String[] {
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://imce.jpl.nasa.gov/oml/IsOrderingKey</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createIsOrderingKeyAnnotations() {
+		String source = "http://imce.jpl.nasa.gov/oml/IsOrderingKey";	
+		addAnnotation
+		  (getAnnotationPropertyValue_Uuid(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getElement_Uuid(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getAnnotationProperty_Uuid(), 
+		   source, 
+		   new String[] {
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://imce.jpl.nasa.gov/oml/Factory</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createFactoryAnnotations() {
+		String source = "http://imce.jpl.nasa.gov/oml/Factory";	
+		addAnnotation
+		  (getAnnotationPropertyValue_Subject(), 
+		   source, 
+		   new String[] {
+		   });
+	}
+
+	/**
 	 * Initializes the annotations for <b>http://imce.jpl.nasa.gov/oml/NotFunctionalAPI</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1088,21 +1048,6 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		   });	
 		addAnnotation
 		  (getAnnotationProperty_Extent(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (annotationPropertyTableEClass, 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (annotationSubjectTableEClass, 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (annotationSubjectPropertyValueEClass, 
 		   source, 
 		   new String[] {
 		   });	
@@ -1142,6 +1087,16 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		   new String[] {
 		   });	
 		addAnnotation
+		  (getElement__ModuleContext(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getElement_Annotations(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
 		  (getResource__Iri(), 
 		   source, 
 		   new String[] {
@@ -1157,6 +1112,11 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		   new String[] {
 		   });	
 		addAnnotation
+		  (getModuleElement__AllNestedElements(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
 		  (getModuleEdge__SourceModule(), 
 		   source, 
 		   new String[] {
@@ -1167,27 +1127,12 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		   new String[] {
 		   });	
 		addAnnotation
+		  (getModuleEdge__ModuleContext(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
 		  (getAnnotationProperty_Extent(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (annotationPropertyTableEClass, 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (annotationSubjectTableEClass, 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (annotationSubjectPropertyValueEClass, 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (annotationEClass, 
 		   source, 
 		   new String[] {
 		   });	
@@ -1232,12 +1177,17 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		   new String[] {
 		   });	
 		addAnnotation
-		  (getModule_Extent(), 
+		  (getModule__ModuleContext(), 
 		   source, 
 		   new String[] {
 		   });	
 		addAnnotation
-		  (getModule_Annotations(), 
+		  (getModule__ModuleElements(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getModule_Extent(), 
 		   source, 
 		   new String[] {
 		   });
@@ -1252,7 +1202,17 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	protected void createImplicitExtentAnnotations() {
 		String source = "http://imce.jpl.nasa.gov/oml/ImplicitExtent";	
 		addAnnotation
+		  (getElement__ModuleContext(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
 		  (getElement_Uuid(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getElement_Annotations(), 
 		   source, 
 		   new String[] {
 		   });	
@@ -1267,12 +1227,22 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		   new String[] {
 		   });	
 		addAnnotation
+		  (getModuleElement__AllNestedElements(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
 		  (getModuleEdge__SourceModule(), 
 		   source, 
 		   new String[] {
 		   });	
 		addAnnotation
 		  (getModuleEdge__TargetModule(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getModuleEdge__ModuleContext(), 
 		   source, 
 		   new String[] {
 		   });	
@@ -1290,126 +1260,50 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		  (getModule__AbbrevIRI(), 
 		   source, 
 		   new String[] {
-		   });
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://imce.jpl.nasa.gov/oml/IsOrderingKey</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createIsOrderingKeyAnnotations() {
-		String source = "http://imce.jpl.nasa.gov/oml/IsOrderingKey";	
+		   });	
 		addAnnotation
-		  (getElement_Uuid(), 
+		  (getModule__ModuleContext(), 
 		   source, 
 		   new String[] {
 		   });	
 		addAnnotation
-		  (getAnnotationProperty_Uuid(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getAnnotationPropertyTable_Key(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getAnnotationEntry_Module(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getAnnotationEntry_Subject(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getAnnotationEntry_Value(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getAnnotation_Property(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getAnnotation_Subject(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getAnnotation_Value(), 
+		  (getModule__ModuleElements(), 
 		   source, 
 		   new String[] {
 		   });
 	}
 
 	/**
-	 * Initializes the annotations for <b>http://imce.jpl.nasa.gov/oml/Glossary</b>.
+	 * Initializes the annotations for <b>http://imce.jpl.nasa.gov/oml/Collection</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void createGlossaryAnnotations() {
-		String source = "http://imce.jpl.nasa.gov/oml/Glossary";	
+	protected void createCollectionAnnotations() {
+		String source = "http://imce.jpl.nasa.gov/oml/Collection";	
 		addAnnotation
-		  (resourceEClass, 
+		  (getElement_Annotations(), 
 		   source, 
 		   new String[] {
+			 "kind", "Seq"
 		   });	
 		addAnnotation
-		  (moduleElementEClass, 
+		  (getModuleElement__AllNestedElements(), 
 		   source, 
 		   new String[] {
+			 "kind", "Set"
 		   });	
 		addAnnotation
-		  (moduleEdgeEClass, 
+		  (getModule__ModuleEdges(), 
 		   source, 
 		   new String[] {
+			 "kind", "Set"
 		   });	
 		addAnnotation
-		  (annotationPropertyEClass, 
+		  (getModule__ModuleElements(), 
 		   source, 
 		   new String[] {
-		   });	
-		addAnnotation
-		  (annotationPropertyTableEClass, 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (annotationEntryEClass, 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (annotationSubjectTableEClass, 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (annotationSubjectPropertyValueEClass, 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (annotationEClass, 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (extentEClass, 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (moduleEClass, 
-		   source, 
-		   new String[] {
+			 "kind", "Set"
 		   });
 	}
 
@@ -1503,69 +1397,12 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		   source, 
 		   new String[] {
 			 "code", "scala.Some(nsPrefix)"
-		   });
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://imce.jpl.nasa.gov/oml/Collection</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createCollectionAnnotations() {
-		String source = "http://imce.jpl.nasa.gov/oml/Collection";	
-		addAnnotation
-		  (getAnnotationPropertyTable_Value(), 
-		   source, 
-		   new String[] {
-			 "kind", "Set"
 		   });	
 		addAnnotation
-		  (getModule__ModuleEdges(), 
+		  (getModule__ModuleContext(), 
 		   source, 
 		   new String[] {
-			 "kind", "Set"
-		   });	
-		addAnnotation
-		  (getModule_Annotations(), 
-		   source, 
-		   new String[] {
-			 "kind", "Set"
-		   });
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://imce.jpl.nasa.gov/oml/ValueTable</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createValueTableAnnotations() {
-		String source = "http://imce.jpl.nasa.gov/oml/ValueTable";	
-		addAnnotation
-		  (annotationEntryEClass, 
-		   source, 
-		   new String[] {
-		   });
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://imce.jpl.nasa.gov/oml/Factory</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createFactoryAnnotations() {
-		String source = "http://imce.jpl.nasa.gov/oml/Factory";	
-		addAnnotation
-		  (getAnnotation_Module(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getModule_Annotations(), 
-		   source, 
-		   new String[] {
+			 "code", "scala.Some(this)"
 		   });
 	}
 
