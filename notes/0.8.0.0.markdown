@@ -1,6 +1,6 @@
 gov.nasa.jpl.imce.oml.tycho 0.8.0.0 resolves major problems found in 0.7.1.2
 
-## Planned scope:
+## Planned scope & Issues resolved:
 
 - [#42 Viewpoint for OML](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/42)
 
