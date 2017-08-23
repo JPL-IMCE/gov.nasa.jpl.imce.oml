@@ -209,6 +209,11 @@ public class TerminologyDiagramService {
     return result.substring(0, _minus);
   }
   
+  /**
+   * Gets label for a {@link RestrictedDataRange} Node
+   * 
+   * @return String representation for Scalar Restriction
+   */
   public String getDetailedLabel(final RestrictedDataRange r) {
     String _xblockexpression = null;
     {
