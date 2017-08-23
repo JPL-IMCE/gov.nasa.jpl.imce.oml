@@ -146,42 +146,42 @@
       </additionalLayers>
       <additionalLayers name="DataRanges" activeByDefault="true">
         <nodeMappings name="String Scalar Restriction" semanticCandidatesExpression="aql:self.getContainedStringScalarRestrictions()" domainClass="terminologies.StringScalarRestriction">
-          <style xsi:type="style:DotDescription" labelPosition="node" resizeKind="NSEW">
+          <style xsi:type="style:DotDescription" labelExpression="aql:self.getDetailedLabel()" labelPosition="node" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
           </style>
         </nodeMappings>
         <nodeMappings name="Numeric Scalar Restriction" semanticCandidatesExpression="aql:self.getContainedNumericScalarRestrictions()" domainClass="terminologies.NumericScalarRestriction">
-          <style xsi:type="style:DotDescription" labelPosition="node" resizeKind="NSEW">
+          <style xsi:type="style:DotDescription" labelExpression="aql:self.getDetailedLabel()" labelPosition="node" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
           </style>
         </nodeMappings>
         <nodeMappings name="Binary Scalar Restriction" semanticCandidatesExpression="aql:self.getContainedBinaryScalarRestrictions()" domainClass="terminologies.BinaryScalarRestriction">
-          <style xsi:type="style:DotDescription" labelPosition="node" resizeKind="NSEW">
+          <style xsi:type="style:DotDescription" labelExpression="aql:self.getDetailedLabel()" labelPosition="node" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
           </style>
         </nodeMappings>
         <nodeMappings name="IRI Scalar Restriction" semanticCandidatesExpression="aql:self.getContainedIRIScalarRestrictions()" domainClass="terminologies.IRIScalarRestriction">
-          <style xsi:type="style:DotDescription" labelPosition="node" resizeKind="NSEW">
+          <style xsi:type="style:DotDescription" labelExpression="aql:self.name + '\npattern: ' + self.pattern" labelPosition="node" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
           </style>
         </nodeMappings>
         <nodeMappings name="Plain Literal Scalar Restriction" semanticCandidatesExpression="aql:self.getContainedPlainLiteralScalarRestrictions()" domainClass="terminologies.PlainLiteralScalarRestriction">
-          <style xsi:type="style:DotDescription" labelPosition="node" resizeKind="NSEW">
+          <style xsi:type="style:DotDescription" labelExpression="aql:self.name + '\npattern: ' + self.pattern + '\nlangRange: ' + self.langRange" labelPosition="node" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
           </style>
         </nodeMappings>
         <nodeMappings name="Time Scalar Restriction" semanticCandidatesExpression="aql:self.getContainedTimeScalarRestrictions()" domainClass="terminologies.TimeScalarRestriction">
-          <style xsi:type="style:DotDescription" labelPosition="node" resizeKind="NSEW">
+          <style xsi:type="style:DotDescription" labelExpression="aql:self.name + '\n\nminInclusive: ' + self.minInclusive + '\nmaxInclusive: ' + self.maxInclusive + '\nminExclusive: ' + self.minExclusive + '\nmaxExclusive: ' + self.maxExclusive" labelPosition="node" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
