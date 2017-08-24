@@ -18,7 +18,6 @@
 package gov.nasa.jpl.imce.oml.dsl
 
 import gov.nasa.jpl.imce.oml.dsl.formatting2.OMLFormatter
-import gov.nasa.jpl.imce.oml.dsl.generator.OMLGenerator
 import gov.nasa.jpl.imce.oml.dsl.scoping.OMLImportedNamespaceAwareLocalScopeProvider
 import gov.nasa.jpl.imce.oml.dsl.serializer.OMLCrossReferenceSerializer
 import gov.nasa.jpl.imce.oml.dsl.services.OMLGrammarAccess
@@ -71,8 +70,5 @@ class OMLRuntimeModule extends AbstractOMLRuntimeModule {
 	def Class<? extends ICrossReferenceSerializer> bindICrossReferenceSerializer() {
 		OMLCrossReferenceSerializer
 	}
-		
-	def Class<? extends OMLGenerator> bindOMLGenerator() {
-		OMLGenerator
-	}
+	
 }
