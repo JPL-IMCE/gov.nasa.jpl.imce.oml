@@ -19,7 +19,6 @@ package gov.nasa.jpl.imce.oml.dsl;
 
 import gov.nasa.jpl.imce.oml.dsl.AbstractOMLRuntimeModule;
 import gov.nasa.jpl.imce.oml.dsl.formatting2.OMLFormatter;
-import gov.nasa.jpl.imce.oml.dsl.generator.OMLGenerator;
 import gov.nasa.jpl.imce.oml.dsl.linking.OMLLinkingService;
 import gov.nasa.jpl.imce.oml.dsl.scoping.OMLImportedNamespaceAwareLocalScopeProvider;
 import gov.nasa.jpl.imce.oml.dsl.serializer.OMLCrossReferenceSerializer;
@@ -77,9 +76,5 @@ public class OMLRuntimeModule extends AbstractOMLRuntimeModule {
   
   public Class<? extends ICrossReferenceSerializer> bindICrossReferenceSerializer() {
     return OMLCrossReferenceSerializer.class;
-  }
-  
-  public Class<? extends OMLGenerator> bindOMLGenerator() {
-    return OMLGenerator.class;
   }
 }
