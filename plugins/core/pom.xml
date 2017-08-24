@@ -13,6 +13,7 @@
 	</parent>
 
 	<modules>
+		<module>gov.nasa.jpl.imce.oml.uuid</module>
 		<module>gov.nasa.jpl.imce.oml.model</module>
 		<module>gov.nasa.jpl.imce.oml.model.edit</module>
 		<module>gov.nasa.jpl.imce.oml.dsl</module>
