@@ -18,4 +18,8 @@ gov.nasa.jpl.imce.oml.tycho 0.8.0.0 resolves major problems found in 0.7.1.2
 
 - [#77 Remove the OML lifting transformation](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/77)
 
+  Removed `gov.nasa.jpl.imce.oml.dsl.ui.converters` (from `dsl.ui`)
+  Removed UI contributions for the Lifting transformation (in `dsl.ui/plugin.xml`)
+  Disabled generating `gov.nasa.jpl.imce.oml.dsl.generator.OMLGenerator` (in `dsl/GenerateOML.mwe2` and `dsl/OMLRuntmeModule.xtend`)
+  
 ## [Release process](releaseProcess.markdown)
