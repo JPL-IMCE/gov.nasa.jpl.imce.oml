@@ -217,6 +217,15 @@ public class BundlesPackageImpl extends EPackageImpl implements BundlesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getBundle__ModuleElements() {
+		return bundleEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getTerminologyBundleStatement() {
 		return terminologyBundleStatementEClass;
 	}
@@ -228,6 +237,15 @@ public class BundlesPackageImpl extends EPackageImpl implements BundlesPackage {
 	 */
 	public EReference getTerminologyBundleStatement_Bundle() {
 		return (EReference)terminologyBundleStatementEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getTerminologyBundleStatement__ModuleContext() {
+		return terminologyBundleStatementEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -280,6 +298,15 @@ public class BundlesPackageImpl extends EPackageImpl implements BundlesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getConceptTreeDisjunction__AllNestedDisjunctions() {
+		return conceptTreeDisjunctionEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getDisjointUnionOfConceptsAxiom() {
 		return disjointUnionOfConceptsAxiomEClass;
 	}
@@ -307,6 +334,24 @@ public class BundlesPackageImpl extends EPackageImpl implements BundlesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getDisjointUnionOfConceptsAxiom__ModuleContext() {
+		return disjointUnionOfConceptsAxiomEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDisjointUnionOfConceptsAxiom__AllNestedUnions() {
+		return disjointUnionOfConceptsAxiomEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getSpecificDisjointConceptAxiom() {
 		return specificDisjointConceptAxiomEClass;
 	}
@@ -327,6 +372,15 @@ public class BundlesPackageImpl extends EPackageImpl implements BundlesPackage {
 	 */
 	public EOperation getSpecificDisjointConceptAxiom__Uuid() {
 		return specificDisjointConceptAxiomEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getSpecificDisjointConceptAxiom__AllNestedUnions() {
+		return specificDisjointConceptAxiomEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -370,6 +424,24 @@ public class BundlesPackageImpl extends EPackageImpl implements BundlesPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getAnonymousConceptUnionAxiom__AllNestedDisjunctions() {
+		return anonymousConceptUnionAxiomEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getAnonymousConceptUnionAxiom__AllNestedUnions() {
+		return anonymousConceptUnionAxiomEClass.getEOperations().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getRootConceptTaxonomyAxiom() {
 		return rootConceptTaxonomyAxiomEClass;
 	}
@@ -399,6 +471,24 @@ public class BundlesPackageImpl extends EPackageImpl implements BundlesPackage {
 	 */
 	public EOperation getRootConceptTaxonomyAxiom__BundleContainer() {
 		return rootConceptTaxonomyAxiomEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getRootConceptTaxonomyAxiom__AllNestedElements() {
+		return rootConceptTaxonomyAxiomEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getRootConceptTaxonomyAxiom__AllNestedDisjunctions() {
+		return rootConceptTaxonomyAxiomEClass.getEOperations().get(3);
 	}
 
 	/**
@@ -478,9 +568,11 @@ public class BundlesPackageImpl extends EPackageImpl implements BundlesPackage {
 		createEReference(bundleEClass, BUNDLE__BUNDLE_AXIOMS);
 		createEReference(bundleEClass, BUNDLE__BUNDLE_STATEMENTS);
 		createEOperation(bundleEClass, BUNDLE___MODULE_EDGES);
+		createEOperation(bundleEClass, BUNDLE___MODULE_ELEMENTS);
 
 		terminologyBundleStatementEClass = createEClass(TERMINOLOGY_BUNDLE_STATEMENT);
 		createEReference(terminologyBundleStatementEClass, TERMINOLOGY_BUNDLE_STATEMENT__BUNDLE);
+		createEOperation(terminologyBundleStatementEClass, TERMINOLOGY_BUNDLE_STATEMENT___MODULE_CONTEXT);
 
 		terminologyBundleAxiomEClass = createEClass(TERMINOLOGY_BUNDLE_AXIOM);
 		createEReference(terminologyBundleAxiomEClass, TERMINOLOGY_BUNDLE_AXIOM__BUNDLE);
@@ -488,24 +580,32 @@ public class BundlesPackageImpl extends EPackageImpl implements BundlesPackage {
 		conceptTreeDisjunctionEClass = createEClass(CONCEPT_TREE_DISJUNCTION);
 		createEReference(conceptTreeDisjunctionEClass, CONCEPT_TREE_DISJUNCTION__DISJUNCTIONS);
 		createEOperation(conceptTreeDisjunctionEClass, CONCEPT_TREE_DISJUNCTION___BUNDLE_CONTAINER);
+		createEOperation(conceptTreeDisjunctionEClass, CONCEPT_TREE_DISJUNCTION___ALL_NESTED_DISJUNCTIONS);
 
 		disjointUnionOfConceptsAxiomEClass = createEClass(DISJOINT_UNION_OF_CONCEPTS_AXIOM);
 		createEReference(disjointUnionOfConceptsAxiomEClass, DISJOINT_UNION_OF_CONCEPTS_AXIOM__DISJOINT_TAXONOMY_PARENT);
 		createEOperation(disjointUnionOfConceptsAxiomEClass, DISJOINT_UNION_OF_CONCEPTS_AXIOM___CONCEPT_TREE_DISJUNCTION_PARENT);
+		createEOperation(disjointUnionOfConceptsAxiomEClass, DISJOINT_UNION_OF_CONCEPTS_AXIOM___MODULE_CONTEXT);
+		createEOperation(disjointUnionOfConceptsAxiomEClass, DISJOINT_UNION_OF_CONCEPTS_AXIOM___ALL_NESTED_UNIONS);
 
 		specificDisjointConceptAxiomEClass = createEClass(SPECIFIC_DISJOINT_CONCEPT_AXIOM);
 		createEReference(specificDisjointConceptAxiomEClass, SPECIFIC_DISJOINT_CONCEPT_AXIOM__DISJOINT_LEAF);
 		createEOperation(specificDisjointConceptAxiomEClass, SPECIFIC_DISJOINT_CONCEPT_AXIOM___UUID);
+		createEOperation(specificDisjointConceptAxiomEClass, SPECIFIC_DISJOINT_CONCEPT_AXIOM___ALL_NESTED_UNIONS);
 
 		anonymousConceptUnionAxiomEClass = createEClass(ANONYMOUS_CONCEPT_UNION_AXIOM);
 		createEAttribute(anonymousConceptUnionAxiomEClass, ANONYMOUS_CONCEPT_UNION_AXIOM__NAME);
 		createEOperation(anonymousConceptUnionAxiomEClass, ANONYMOUS_CONCEPT_UNION_AXIOM___UUID);
 		createEOperation(anonymousConceptUnionAxiomEClass, ANONYMOUS_CONCEPT_UNION_AXIOM___BUNDLE_CONTAINER);
+		createEOperation(anonymousConceptUnionAxiomEClass, ANONYMOUS_CONCEPT_UNION_AXIOM___ALL_NESTED_DISJUNCTIONS);
+		createEOperation(anonymousConceptUnionAxiomEClass, ANONYMOUS_CONCEPT_UNION_AXIOM___ALL_NESTED_UNIONS);
 
 		rootConceptTaxonomyAxiomEClass = createEClass(ROOT_CONCEPT_TAXONOMY_AXIOM);
 		createEReference(rootConceptTaxonomyAxiomEClass, ROOT_CONCEPT_TAXONOMY_AXIOM__ROOT);
 		createEOperation(rootConceptTaxonomyAxiomEClass, ROOT_CONCEPT_TAXONOMY_AXIOM___UUID);
 		createEOperation(rootConceptTaxonomyAxiomEClass, ROOT_CONCEPT_TAXONOMY_AXIOM___BUNDLE_CONTAINER);
+		createEOperation(rootConceptTaxonomyAxiomEClass, ROOT_CONCEPT_TAXONOMY_AXIOM___ALL_NESTED_ELEMENTS);
+		createEOperation(rootConceptTaxonomyAxiomEClass, ROOT_CONCEPT_TAXONOMY_AXIOM___ALL_NESTED_DISJUNCTIONS);
 
 		bundledTerminologyAxiomEClass = createEClass(BUNDLED_TERMINOLOGY_AXIOM);
 		createEReference(bundledTerminologyAxiomEClass, BUNDLED_TERMINOLOGY_AXIOM__BUNDLED_TERMINOLOGY);
@@ -552,10 +652,8 @@ public class BundlesPackageImpl extends EPackageImpl implements BundlesPackage {
 		conceptTreeDisjunctionEClass.getESuperTypes().add(theCommonPackage.getElement());
 		disjointUnionOfConceptsAxiomEClass.getESuperTypes().add(theCommonPackage.getElement());
 		specificDisjointConceptAxiomEClass.getESuperTypes().add(this.getDisjointUnionOfConceptsAxiom());
-		specificDisjointConceptAxiomEClass.getESuperTypes().add(theCommonPackage.getElement());
 		anonymousConceptUnionAxiomEClass.getESuperTypes().add(this.getDisjointUnionOfConceptsAxiom());
 		anonymousConceptUnionAxiomEClass.getESuperTypes().add(this.getConceptTreeDisjunction());
-		anonymousConceptUnionAxiomEClass.getESuperTypes().add(theCommonPackage.getElement());
 		rootConceptTaxonomyAxiomEClass.getESuperTypes().add(this.getTerminologyBundleStatement());
 		rootConceptTaxonomyAxiomEClass.getESuperTypes().add(this.getConceptTreeDisjunction());
 		bundledTerminologyAxiomEClass.getESuperTypes().add(this.getTerminologyBundleAxiom());
@@ -567,8 +665,12 @@ public class BundlesPackageImpl extends EPackageImpl implements BundlesPackage {
 
 		initEOperation(getBundle__ModuleEdges(), theCommonPackage.getModuleEdge(), "moduleEdges", 0, -1, !IS_UNIQUE, IS_ORDERED);
 
+		initEOperation(getBundle__ModuleElements(), theCommonPackage.getModuleElement(), "moduleElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
+
 		initEClass(terminologyBundleStatementEClass, TerminologyBundleStatement.class, "TerminologyBundleStatement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTerminologyBundleStatement_Bundle(), this.getBundle(), this.getBundle_BundleStatements(), "bundle", null, 1, 1, TerminologyBundleStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getTerminologyBundleStatement__ModuleContext(), theCommonPackage.getModule(), "moduleContext", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(terminologyBundleAxiomEClass, TerminologyBundleAxiom.class, "TerminologyBundleAxiom", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTerminologyBundleAxiom_Bundle(), this.getBundle(), this.getBundle_BundleAxioms(), "bundle", null, 1, 1, TerminologyBundleAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -578,15 +680,23 @@ public class BundlesPackageImpl extends EPackageImpl implements BundlesPackage {
 
 		initEOperation(getConceptTreeDisjunction__BundleContainer(), this.getBundle(), "bundleContainer", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
+		initEOperation(getConceptTreeDisjunction__AllNestedDisjunctions(), theCommonPackage.getElement(), "allNestedDisjunctions", 0, -1, !IS_UNIQUE, IS_ORDERED);
+
 		initEClass(disjointUnionOfConceptsAxiomEClass, DisjointUnionOfConceptsAxiom.class, "DisjointUnionOfConceptsAxiom", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDisjointUnionOfConceptsAxiom_DisjointTaxonomyParent(), this.getConceptTreeDisjunction(), this.getConceptTreeDisjunction_Disjunctions(), "disjointTaxonomyParent", null, 1, 1, DisjointUnionOfConceptsAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getDisjointUnionOfConceptsAxiom__ConceptTreeDisjunctionParent(), this.getConceptTreeDisjunction(), "conceptTreeDisjunctionParent", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
+		initEOperation(getDisjointUnionOfConceptsAxiom__ModuleContext(), theCommonPackage.getModule(), "moduleContext", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getDisjointUnionOfConceptsAxiom__AllNestedUnions(), theCommonPackage.getElement(), "allNestedUnions", 0, -1, !IS_UNIQUE, IS_ORDERED);
+
 		initEClass(specificDisjointConceptAxiomEClass, SpecificDisjointConceptAxiom.class, "SpecificDisjointConceptAxiom", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSpecificDisjointConceptAxiom_DisjointLeaf(), theTerminologiesPackage.getConcept(), null, "disjointLeaf", null, 1, 1, SpecificDisjointConceptAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getSpecificDisjointConceptAxiom__Uuid(), theCommonPackage.getUUID(), "uuid", 1, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getSpecificDisjointConceptAxiom__AllNestedUnions(), theCommonPackage.getElement(), "allNestedUnions", 0, -1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(anonymousConceptUnionAxiomEClass, AnonymousConceptUnionAxiom.class, "AnonymousConceptUnionAxiom", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAnonymousConceptUnionAxiom_Name(), theCommonPackage.getLocalName(), "name", null, 1, 1, AnonymousConceptUnionAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -595,12 +705,20 @@ public class BundlesPackageImpl extends EPackageImpl implements BundlesPackage {
 
 		initEOperation(getAnonymousConceptUnionAxiom__BundleContainer(), this.getBundle(), "bundleContainer", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
+		initEOperation(getAnonymousConceptUnionAxiom__AllNestedDisjunctions(), theCommonPackage.getElement(), "allNestedDisjunctions", 0, -1, !IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getAnonymousConceptUnionAxiom__AllNestedUnions(), theCommonPackage.getElement(), "allNestedUnions", 0, -1, !IS_UNIQUE, IS_ORDERED);
+
 		initEClass(rootConceptTaxonomyAxiomEClass, RootConceptTaxonomyAxiom.class, "RootConceptTaxonomyAxiom", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRootConceptTaxonomyAxiom_Root(), theTerminologiesPackage.getConcept(), null, "root", null, 1, 1, RootConceptTaxonomyAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getRootConceptTaxonomyAxiom__Uuid(), theCommonPackage.getUUID(), "uuid", 1, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEOperation(getRootConceptTaxonomyAxiom__BundleContainer(), this.getBundle(), "bundleContainer", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getRootConceptTaxonomyAxiom__AllNestedElements(), theCommonPackage.getElement(), "allNestedElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getRootConceptTaxonomyAxiom__AllNestedDisjunctions(), theCommonPackage.getElement(), "allNestedDisjunctions", 0, -1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(bundledTerminologyAxiomEClass, BundledTerminologyAxiom.class, "BundledTerminologyAxiom", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getBundledTerminologyAxiom_BundledTerminology(), theTerminologiesPackage.getTerminologyBox(), null, "bundledTerminology", null, 1, 1, BundledTerminologyAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -712,7 +830,19 @@ public class BundlesPackageImpl extends EPackageImpl implements BundlesPackage {
 		  (getBundle__ModuleEdges(), 
 		   source, 
 		   new String[] {
-			 "code", "extent.boxAxioms.getOrElse(this, scala.collection.immutable.Set.empty[resolver.api.ModuleEdge]) ++ extent.bundleAxioms.getOrElse(this, scala.collection.immutable.Set.empty[resolver.api.ModuleEdge])"
+			 "code", "extent.lookupBoxAxioms(this) ++ extent.lookupBundleAxioms(this)"
+		   });	
+		addAnnotation
+		  (getBundle__ModuleElements(), 
+		   source, 
+		   new String[] {
+			 "code", "extent.lookupBundleStatements(this) ++ extent.lookupBoxStatements(this)"
+		   });	
+		addAnnotation
+		  (getTerminologyBundleStatement__ModuleContext(), 
+		   source, 
+		   new String[] {
+			 "code", "extent.bundleOfTerminologyBundleStatement.get(this)"
 		   });	
 		addAnnotation
 		  (getDisjointUnionOfConceptsAxiom__ConceptTreeDisjunctionParent(), 
@@ -721,16 +851,46 @@ public class BundlesPackageImpl extends EPackageImpl implements BundlesPackage {
 			 "code", "extent.conceptTreeDisjunctionOfDisjointUnionOfConceptsAxiom.get(this)"
 		   });	
 		addAnnotation
+		  (getDisjointUnionOfConceptsAxiom__ModuleContext(), 
+		   source, 
+		   new String[] {
+			 "code", "conceptTreeDisjunctionParent().flatMap(_.bundleContainer())"
+		   });	
+		addAnnotation
+		  (getSpecificDisjointConceptAxiom__AllNestedUnions(), 
+		   source, 
+		   new String[] {
+			 "code", "scala.collection.immutable.Set.empty[resolver.api.Element]"
+		   });	
+		addAnnotation
 		  (getAnonymousConceptUnionAxiom__BundleContainer(), 
 		   source, 
 		   new String[] {
 			 "code", "conceptTreeDisjunctionParent().flatMap(_.bundleContainer())"
 		   });	
 		addAnnotation
+		  (getAnonymousConceptUnionAxiom__AllNestedDisjunctions(), 
+		   source, 
+		   new String[] {
+			 "code", "scala.collection.immutable.Set.empty[resolver.api.Element]"
+		   });	
+		addAnnotation
+		  (getAnonymousConceptUnionAxiom__AllNestedUnions(), 
+		   source, 
+		   new String[] {
+			 "code", "scala.collection.immutable.Set.empty[resolver.api.Element]"
+		   });	
+		addAnnotation
 		  (getRootConceptTaxonomyAxiom__BundleContainer(), 
 		   source, 
 		   new String[] {
 			 "code", "extent.bundleOfTerminologyBundleStatement.get(this)"
+		   });	
+		addAnnotation
+		  (getRootConceptTaxonomyAxiom__AllNestedDisjunctions(), 
+		   source, 
+		   new String[] {
+			 "code", "extent.lookupDisjunctions(this).flatMap{ d => scala.collection.immutable.Set.empty[resolver.api.Element] + d ++ d.allNestedUnions() }"
 		   });	
 		addAnnotation
 		  (getBundledTerminologyAxiom__Source(), 
@@ -755,6 +915,12 @@ public class BundlesPackageImpl extends EPackageImpl implements BundlesPackage {
 			 "kind", "Set"
 		   });	
 		addAnnotation
+		  (getBundle__ModuleElements(), 
+		   source, 
+		   new String[] {
+			 "kind", "Set"
+		   });	
+		addAnnotation
 		  (getBundle_BundleAxioms(), 
 		   source, 
 		   new String[] {
@@ -767,7 +933,49 @@ public class BundlesPackageImpl extends EPackageImpl implements BundlesPackage {
 			 "kind", "Set"
 		   });	
 		addAnnotation
+		  (getConceptTreeDisjunction__AllNestedDisjunctions(), 
+		   source, 
+		   new String[] {
+			 "kind", "Set"
+		   });	
+		addAnnotation
 		  (getConceptTreeDisjunction_Disjunctions(), 
+		   source, 
+		   new String[] {
+			 "kind", "Set"
+		   });	
+		addAnnotation
+		  (getDisjointUnionOfConceptsAxiom__AllNestedUnions(), 
+		   source, 
+		   new String[] {
+			 "kind", "Set"
+		   });	
+		addAnnotation
+		  (getSpecificDisjointConceptAxiom__AllNestedUnions(), 
+		   source, 
+		   new String[] {
+			 "kind", "Set"
+		   });	
+		addAnnotation
+		  (getAnonymousConceptUnionAxiom__AllNestedDisjunctions(), 
+		   source, 
+		   new String[] {
+			 "kind", "Set"
+		   });	
+		addAnnotation
+		  (getAnonymousConceptUnionAxiom__AllNestedUnions(), 
+		   source, 
+		   new String[] {
+			 "kind", "Set"
+		   });	
+		addAnnotation
+		  (getRootConceptTaxonomyAxiom__AllNestedElements(), 
+		   source, 
+		   new String[] {
+			 "kind", "Set"
+		   });	
+		addAnnotation
+		  (getRootConceptTaxonomyAxiom__AllNestedDisjunctions(), 
 		   source, 
 		   new String[] {
 			 "kind", "Set"
@@ -788,7 +996,22 @@ public class BundlesPackageImpl extends EPackageImpl implements BundlesPackage {
 		   new String[] {
 		   });	
 		addAnnotation
+		  (getBundle__ModuleElements(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getTerminologyBundleStatement__ModuleContext(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
 		  (getConceptTreeDisjunction__BundleContainer(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getConceptTreeDisjunction__AllNestedDisjunctions(), 
 		   source, 
 		   new String[] {
 		   });	
@@ -798,12 +1021,47 @@ public class BundlesPackageImpl extends EPackageImpl implements BundlesPackage {
 		   new String[] {
 		   });	
 		addAnnotation
+		  (getDisjointUnionOfConceptsAxiom__ModuleContext(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getDisjointUnionOfConceptsAxiom__AllNestedUnions(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getSpecificDisjointConceptAxiom__AllNestedUnions(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
 		  (getAnonymousConceptUnionAxiom__BundleContainer(), 
 		   source, 
 		   new String[] {
 		   });	
 		addAnnotation
+		  (getAnonymousConceptUnionAxiom__AllNestedDisjunctions(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getAnonymousConceptUnionAxiom__AllNestedUnions(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
 		  (getRootConceptTaxonomyAxiom__BundleContainer(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getRootConceptTaxonomyAxiom__AllNestedElements(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getRootConceptTaxonomyAxiom__AllNestedDisjunctions(), 
 		   source, 
 		   new String[] {
 		   });	
@@ -833,6 +1091,11 @@ public class BundlesPackageImpl extends EPackageImpl implements BundlesPackage {
 		   new String[] {
 		   });	
 		addAnnotation
+		  (getBundle__ModuleElements(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
 		  (getBundle_BundleAxioms(), 
 		   source, 
 		   new String[] {
@@ -843,7 +1106,17 @@ public class BundlesPackageImpl extends EPackageImpl implements BundlesPackage {
 		   new String[] {
 		   });	
 		addAnnotation
+		  (getTerminologyBundleStatement__ModuleContext(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
 		  (getConceptTreeDisjunction__BundleContainer(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getConceptTreeDisjunction__AllNestedDisjunctions(), 
 		   source, 
 		   new String[] {
 		   });	
@@ -853,12 +1126,47 @@ public class BundlesPackageImpl extends EPackageImpl implements BundlesPackage {
 		   new String[] {
 		   });	
 		addAnnotation
+		  (getDisjointUnionOfConceptsAxiom__ModuleContext(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getDisjointUnionOfConceptsAxiom__AllNestedUnions(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getSpecificDisjointConceptAxiom__AllNestedUnions(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
 		  (getAnonymousConceptUnionAxiom__BundleContainer(), 
 		   source, 
 		   new String[] {
 		   });	
 		addAnnotation
+		  (getAnonymousConceptUnionAxiom__AllNestedDisjunctions(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getAnonymousConceptUnionAxiom__AllNestedUnions(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
 		  (getRootConceptTaxonomyAxiom__BundleContainer(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getRootConceptTaxonomyAxiom__AllNestedElements(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getRootConceptTaxonomyAxiom__AllNestedDisjunctions(), 
 		   source, 
 		   new String[] {
 		   });	

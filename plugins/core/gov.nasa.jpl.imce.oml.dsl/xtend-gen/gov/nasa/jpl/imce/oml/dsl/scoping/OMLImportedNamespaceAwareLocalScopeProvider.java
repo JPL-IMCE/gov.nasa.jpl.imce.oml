@@ -28,8 +28,8 @@ import gov.nasa.jpl.imce.oml.model.bundles.DisjointUnionOfConceptsAxiom;
 import gov.nasa.jpl.imce.oml.model.bundles.RootConceptTaxonomyAxiom;
 import gov.nasa.jpl.imce.oml.model.bundles.SpecificDisjointConceptAxiom;
 import gov.nasa.jpl.imce.oml.model.bundles.TerminologyBundleAxiom;
-import gov.nasa.jpl.imce.oml.model.common.Annotation;
 import gov.nasa.jpl.imce.oml.model.common.AnnotationProperty;
+import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue;
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
 import gov.nasa.jpl.imce.oml.model.common.Module;
@@ -327,12 +327,12 @@ public class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespa
     {
       IScope scope = null;
       boolean _matched = false;
-      if (context instanceof Annotation) {
+      if (context instanceof AnnotationPropertyValue) {
         _matched=true;
-        EReference _annotation_Property = CommonPackage.eINSTANCE.getAnnotation_Property();
-        boolean _equals = Objects.equal(reference, _annotation_Property);
+        EReference _annotationPropertyValue_Property = CommonPackage.eINSTANCE.getAnnotationPropertyValue_Property();
+        boolean _equals = Objects.equal(reference, _annotationPropertyValue_Property);
         if (_equals) {
-          scope = this._oMLScopeExtensions.scope_Annotation_property(((Annotation)context), reference);
+          scope = this._oMLScopeExtensions.scope_Annotation_property(((AnnotationPropertyValue)context), reference);
         }
       }
       if (!_matched) {
@@ -571,13 +571,13 @@ public class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespa
             if (_equals_1) {
               scope = this._oMLScopeExtensions.allEntityStructuredDataPropertiesScope(((EntityStructuredDataPropertyParticularRestrictionAxiom)context).getTbox());
             } else {
-              EReference _restrictionStructuredDataPropertyContext_ScalarDataPropertyValues = TerminologiesPackage.eINSTANCE.getRestrictionStructuredDataPropertyContext_ScalarDataPropertyValues();
-              boolean _equals_2 = Objects.equal(reference, _restrictionStructuredDataPropertyContext_ScalarDataPropertyValues);
+              EReference _restrictionStructuredDataPropertyContext_ScalarDataPropertyRestrictions = TerminologiesPackage.eINSTANCE.getRestrictionStructuredDataPropertyContext_ScalarDataPropertyRestrictions();
+              boolean _equals_2 = Objects.equal(reference, _restrictionStructuredDataPropertyContext_ScalarDataPropertyRestrictions);
               if (_equals_2) {
                 scope = this._oMLScopeExtensions.allScalarDataPropertiesScope(((EntityStructuredDataPropertyParticularRestrictionAxiom)context).getTbox());
               } else {
-                EReference _restrictionStructuredDataPropertyContext_StructuredPropertyTuples = TerminologiesPackage.eINSTANCE.getRestrictionStructuredDataPropertyContext_StructuredPropertyTuples();
-                boolean _equals_3 = Objects.equal(reference, _restrictionStructuredDataPropertyContext_StructuredPropertyTuples);
+                EReference _restrictionStructuredDataPropertyContext_StructuredDataPropertyRestrictions = TerminologiesPackage.eINSTANCE.getRestrictionStructuredDataPropertyContext_StructuredDataPropertyRestrictions();
+                boolean _equals_3 = Objects.equal(reference, _restrictionStructuredDataPropertyContext_StructuredDataPropertyRestrictions);
                 if (_equals_3) {
                   scope = this._oMLScopeExtensions.allStructuredDataPropertiesScope(((EntityStructuredDataPropertyParticularRestrictionAxiom)context).getTbox());
                 }
@@ -599,8 +599,8 @@ public class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespa
             }
             scope = _allEntityStructuredDataPropertiesScope;
           } else {
-            EReference _restrictionStructuredDataPropertyContext_ScalarDataPropertyValues = TerminologiesPackage.eINSTANCE.getRestrictionStructuredDataPropertyContext_ScalarDataPropertyValues();
-            boolean _equals_1 = Objects.equal(reference, _restrictionStructuredDataPropertyContext_ScalarDataPropertyValues);
+            EReference _restrictionStructuredDataPropertyContext_ScalarDataPropertyRestrictions = TerminologiesPackage.eINSTANCE.getRestrictionStructuredDataPropertyContext_ScalarDataPropertyRestrictions();
+            boolean _equals_1 = Objects.equal(reference, _restrictionStructuredDataPropertyContext_ScalarDataPropertyRestrictions);
             if (_equals_1) {
               TerminologyBox _terminologyBox_1 = ((RestrictionStructuredDataPropertyTuple)context).terminologyBox();
               IScope _allScalarDataPropertiesScope = null;
@@ -609,8 +609,8 @@ public class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespa
               }
               scope = _allScalarDataPropertiesScope;
             } else {
-              EReference _restrictionStructuredDataPropertyContext_StructuredPropertyTuples = TerminologiesPackage.eINSTANCE.getRestrictionStructuredDataPropertyContext_StructuredPropertyTuples();
-              boolean _equals_2 = Objects.equal(reference, _restrictionStructuredDataPropertyContext_StructuredPropertyTuples);
+              EReference _restrictionStructuredDataPropertyContext_StructuredDataPropertyRestrictions = TerminologiesPackage.eINSTANCE.getRestrictionStructuredDataPropertyContext_StructuredDataPropertyRestrictions();
+              boolean _equals_2 = Objects.equal(reference, _restrictionStructuredDataPropertyContext_StructuredDataPropertyRestrictions);
               if (_equals_2) {
                 TerminologyBox _terminologyBox_2 = ((RestrictionStructuredDataPropertyTuple)context).terminologyBox();
                 IScope _allStructuredDataPropertiesScope = null;

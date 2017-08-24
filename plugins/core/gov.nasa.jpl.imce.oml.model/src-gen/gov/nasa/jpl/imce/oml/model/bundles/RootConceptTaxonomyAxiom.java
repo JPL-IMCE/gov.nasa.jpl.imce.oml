@@ -18,7 +18,11 @@
  */
 package gov.nasa.jpl.imce.oml.model.bundles;
 
+import gov.nasa.jpl.imce.oml.model.common.Element;
+
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
+
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -85,5 +89,26 @@ public interface RootConceptTaxonomyAxiom extends TerminologyBundleStatement, Co
 	 * @generated
 	 */
 	Bundle bundleContainer();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return this.allNestedDisjunctions();'"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
+	 * @generated
+	 */
+	EList<Element> allNestedElements();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%org.eclipse.emf.common.util.BasicEList%><<%gov.nasa.jpl.imce.oml.model.common.Element%>> _xblockexpression = null;\n{\n\tfinal <%org.eclipse.emf.common.util.BasicEList%><<%gov.nasa.jpl.imce.oml.model.common.Element%>> nres = new <%org.eclipse.emf.common.util.BasicEList%><<%gov.nasa.jpl.imce.oml.model.common.Element%>>();\n\tnres.addAll(this.getDisjunctions());\n\tfinal <%java.util.function.Consumer%><<%gov.nasa.jpl.imce.oml.model.bundles.DisjointUnionOfConceptsAxiom%>> _function = new <%java.util.function.Consumer%><<%gov.nasa.jpl.imce.oml.model.bundles.DisjointUnionOfConceptsAxiom%>>()\n\t{\n\t\tpublic void accept(final <%gov.nasa.jpl.imce.oml.model.bundles.DisjointUnionOfConceptsAxiom%> it)\n\t\t{\n\t\t\tnres.addAll(it.allNestedUnions());\n\t\t}\n\t};\n\tthis.getDisjunctions().forEach(_function);\n\t_xblockexpression = nres;\n}\nreturn _xblockexpression;'"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='extent.lookupDisjunctions(this).flatMap{ d => scala.collection.immutable.Set.empty[resolver.api.Element] + d ++ d.allNestedUnions() }'"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
+	 * @generated
+	 */
+	EList<Element> allNestedDisjunctions();
 
 } // RootConceptTaxonomyAxiom

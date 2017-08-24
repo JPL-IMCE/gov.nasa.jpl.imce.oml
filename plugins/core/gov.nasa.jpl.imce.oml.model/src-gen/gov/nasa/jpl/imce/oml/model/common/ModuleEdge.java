@@ -50,4 +50,13 @@ public interface ModuleEdge extends Element {
 	 */
 	Module targetModule();
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return this.sourceModule();'"
+	 * @generated
+	 */
+	Module moduleContext();
+
 } // ModuleEdge

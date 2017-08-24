@@ -38,6 +38,15 @@ public interface CommonFactory extends EFactory {
 	CommonFactory eINSTANCE = gov.nasa.jpl.imce.oml.model.common.impl.CommonFactoryImpl.init();
 
 	/**
+	 * Returns a new object of class '<em>Annotation Property Value</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Annotation Property Value</em>'.
+	 * @generated
+	 */
+	AnnotationPropertyValue createAnnotationPropertyValue();
+
+	/**
 	 * Returns a new object of class '<em>Annotation Property</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -45,33 +54,6 @@ public interface CommonFactory extends EFactory {
 	 * @generated
 	 */
 	AnnotationProperty createAnnotationProperty();
-
-	/**
-	 * Returns a new object of class '<em>Annotation Entry</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Annotation Entry</em>'.
-	 * @generated
-	 */
-	AnnotationEntry createAnnotationEntry();
-
-	/**
-	 * Returns a new object of class '<em>Annotation Subject Property Value</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Annotation Subject Property Value</em>'.
-	 * @generated
-	 */
-	AnnotationSubjectPropertyValue createAnnotationSubjectPropertyValue();
-
-	/**
-	 * Returns a new object of class '<em>Annotation</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Annotation</em>'.
-	 * @generated
-	 */
-	Annotation createAnnotation();
 
 	/**
 	 * Returns a new object of class '<em>Extent</em>'.

@@ -111,6 +111,15 @@ public interface GraphsPackage extends EPackage {
 	int TERMINOLOGY_GRAPH__UUID = TerminologiesPackage.TERMINOLOGY_BOX__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TERMINOLOGY_GRAPH__ANNOTATIONS = TerminologiesPackage.TERMINOLOGY_BOX__ANNOTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Extent</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -127,15 +136,6 @@ public interface GraphsPackage extends EPackage {
 	 * @ordered
 	 */
 	int TERMINOLOGY_GRAPH__IRI = TerminologiesPackage.TERMINOLOGY_BOX__IRI;
-
-	/**
-	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TERMINOLOGY_GRAPH__ANNOTATIONS = TerminologiesPackage.TERMINOLOGY_BOX__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Kind</b></em>' attribute.
@@ -219,6 +219,15 @@ public interface GraphsPackage extends EPackage {
 	int TERMINOLOGY_GRAPH___UUID = TerminologiesPackage.TERMINOLOGY_BOX___UUID;
 
 	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TERMINOLOGY_GRAPH___MODULE_CONTEXT = TerminologiesPackage.TERMINOLOGY_BOX___MODULE_CONTEXT;
+
+	/**
 	 * The operation id for the '<em>Module Edges</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -228,13 +237,22 @@ public interface GraphsPackage extends EPackage {
 	int TERMINOLOGY_GRAPH___MODULE_EDGES = TerminologiesPackage.TERMINOLOGY_BOX_OPERATION_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>Module Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TERMINOLOGY_GRAPH___MODULE_ELEMENTS = TerminologiesPackage.TERMINOLOGY_BOX_OPERATION_COUNT + 1;
+
+	/**
 	 * The number of operations of the '<em>Terminology Graph</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TERMINOLOGY_GRAPH_OPERATION_COUNT = TerminologiesPackage.TERMINOLOGY_BOX_OPERATION_COUNT + 1;
+	int TERMINOLOGY_GRAPH_OPERATION_COUNT = TerminologiesPackage.TERMINOLOGY_BOX_OPERATION_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.graphs.impl.ConceptDesignationTerminologyAxiomImpl <em>Concept Designation Terminology Axiom</em>}' class.
@@ -254,6 +272,15 @@ public interface GraphsPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONCEPT_DESIGNATION_TERMINOLOGY_AXIOM__UUID = TerminologiesPackage.TERMINOLOGY_BOX_AXIOM__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPT_DESIGNATION_TERMINOLOGY_AXIOM__ANNOTATIONS = TerminologiesPackage.TERMINOLOGY_BOX_AXIOM__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
@@ -290,6 +317,15 @@ public interface GraphsPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONCEPT_DESIGNATION_TERMINOLOGY_AXIOM_FEATURE_COUNT = TerminologiesPackage.TERMINOLOGY_BOX_AXIOM_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPT_DESIGNATION_TERMINOLOGY_AXIOM___MODULE_CONTEXT = TerminologiesPackage.TERMINOLOGY_BOX_AXIOM___MODULE_CONTEXT;
 
 	/**
 	 * The operation id for the '<em>Source Module</em>' operation.
@@ -374,6 +410,15 @@ public interface GraphsPackage extends EPackage {
 	int TERMINOLOGY_NESTING_AXIOM__UUID = TerminologiesPackage.TERMINOLOGY_BOX_AXIOM__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TERMINOLOGY_NESTING_AXIOM__ANNOTATIONS = TerminologiesPackage.TERMINOLOGY_BOX_AXIOM__ANNOTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -408,6 +453,15 @@ public interface GraphsPackage extends EPackage {
 	 * @ordered
 	 */
 	int TERMINOLOGY_NESTING_AXIOM_FEATURE_COUNT = TerminologiesPackage.TERMINOLOGY_BOX_AXIOM_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TERMINOLOGY_NESTING_AXIOM___MODULE_CONTEXT = TerminologiesPackage.TERMINOLOGY_BOX_AXIOM___MODULE_CONTEXT;
 
 	/**
 	 * The operation id for the '<em>Source Module</em>' operation.
@@ -492,6 +546,16 @@ public interface GraphsPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getTerminologyGraph__ModuleEdges();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.graphs.TerminologyGraph#moduleElements() <em>Module Elements</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Module Elements</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.graphs.TerminologyGraph#moduleElements()
+	 * @generated
+	 */
+	EOperation getTerminologyGraph__ModuleElements();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.graphs.ConceptDesignationTerminologyAxiom <em>Concept Designation Terminology Axiom</em>}'.
@@ -677,6 +741,14 @@ public interface GraphsPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation TERMINOLOGY_GRAPH___MODULE_EDGES = eINSTANCE.getTerminologyGraph__ModuleEdges();
+
+		/**
+		 * The meta object literal for the '<em><b>Module Elements</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation TERMINOLOGY_GRAPH___MODULE_ELEMENTS = eINSTANCE.getTerminologyGraph__ModuleElements();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.graphs.impl.ConceptDesignationTerminologyAxiomImpl <em>Concept Designation Terminology Axiom</em>}' class.

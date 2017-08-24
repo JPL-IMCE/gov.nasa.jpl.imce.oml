@@ -19,8 +19,7 @@
 package gov.nasa.jpl.imce.oml.model.terminologies.provider;
 
 
-import gov.nasa.jpl.imce.oml.model.common.provider.ElementItemProvider;
-
+import gov.nasa.jpl.imce.oml.model.common.provider.ModuleElementItemProvider;
 import gov.nasa.jpl.imce.oml.model.edit.provider.OMLEditPlugin;
 
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyContext;
@@ -47,7 +46,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class RestrictionStructuredDataPropertyContextItemProvider extends ElementItemProvider {
+public class RestrictionStructuredDataPropertyContextItemProvider extends ModuleElementItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -108,8 +107,8 @@ public class RestrictionStructuredDataPropertyContextItemProvider extends Elemen
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(TerminologiesPackage.Literals.RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__STRUCTURED_PROPERTY_TUPLES);
-			childrenFeatures.add(TerminologiesPackage.Literals.RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__SCALAR_DATA_PROPERTY_VALUES);
+			childrenFeatures.add(TerminologiesPackage.Literals.RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__STRUCTURED_DATA_PROPERTY_RESTRICTIONS);
+			childrenFeatures.add(TerminologiesPackage.Literals.RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__SCALAR_DATA_PROPERTY_RESTRICTIONS);
 		}
 		return childrenFeatures;
 	}
@@ -154,8 +153,8 @@ public class RestrictionStructuredDataPropertyContextItemProvider extends Elemen
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(RestrictionStructuredDataPropertyContext.class)) {
-			case TerminologiesPackage.RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__STRUCTURED_PROPERTY_TUPLES:
-			case TerminologiesPackage.RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__SCALAR_DATA_PROPERTY_VALUES:
+			case TerminologiesPackage.RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__STRUCTURED_DATA_PROPERTY_RESTRICTIONS:
+			case TerminologiesPackage.RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__SCALAR_DATA_PROPERTY_RESTRICTIONS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -175,12 +174,12 @@ public class RestrictionStructuredDataPropertyContextItemProvider extends Elemen
 
 		newChildDescriptors.add
 			(createChildParameter
-				(TerminologiesPackage.Literals.RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__STRUCTURED_PROPERTY_TUPLES,
+				(TerminologiesPackage.Literals.RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__STRUCTURED_DATA_PROPERTY_RESTRICTIONS,
 				 TerminologiesFactory.eINSTANCE.createRestrictionStructuredDataPropertyTuple()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(TerminologiesPackage.Literals.RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__SCALAR_DATA_PROPERTY_VALUES,
+				(TerminologiesPackage.Literals.RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__SCALAR_DATA_PROPERTY_RESTRICTIONS,
 				 TerminologiesFactory.eINSTANCE.createRestrictionScalarDataPropertyValue()));
 	}
 

@@ -72,4 +72,13 @@ public interface ConceptTreeDisjunction extends Element {
 	 */
 	Bundle bundleContainer();
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
+	 * @generated
+	 */
+	EList<Element> allNestedDisjunctions();
+
 } // ConceptTreeDisjunction

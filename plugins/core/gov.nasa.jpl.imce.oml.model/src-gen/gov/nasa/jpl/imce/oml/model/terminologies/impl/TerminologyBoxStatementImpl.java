@@ -18,14 +18,20 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies.impl;
 
+import gov.nasa.jpl.imce.oml.model.common.Module;
+
 import gov.nasa.jpl.imce.oml.model.common.impl.ModuleElementImpl;
 
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBoxStatement;
 
+import java.lang.reflect.InvocationTargetException;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -117,6 +123,15 @@ public abstract class TerminologyBoxStatementImpl extends ModuleElementImpl impl
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.TERMINOLOGY_BOX_STATEMENT__TBOX, newTbox, newTbox));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Module moduleContext() {
+		return this.getTbox();
 	}
 
 	/**
@@ -220,6 +235,20 @@ public abstract class TerminologyBoxStatementImpl extends ModuleElementImpl impl
 				return basicGetTbox() != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case TerminologiesPackage.TERMINOLOGY_BOX_STATEMENT___MODULE_CONTEXT:
+				return moduleContext();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 } //TerminologyBoxStatementImpl

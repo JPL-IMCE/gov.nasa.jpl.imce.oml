@@ -20,10 +20,6 @@ package gov.nasa.jpl.imce.oml.model.common.impl;
 
 import gov.nasa.jpl.imce.oml.model.common.*;
 
-import java.util.Map;
-
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
@@ -77,12 +73,8 @@ public class CommonFactoryImpl extends EFactoryImpl implements CommonFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
+			case CommonPackage.ANNOTATION_PROPERTY_VALUE: return (EObject)createAnnotationPropertyValue();
 			case CommonPackage.ANNOTATION_PROPERTY: return (EObject)createAnnotationProperty();
-			case CommonPackage.ANNOTATION_PROPERTY_TABLE: return (EObject)createAnnotationPropertyTable();
-			case CommonPackage.ANNOTATION_ENTRY: return (EObject)createAnnotationEntry();
-			case CommonPackage.ANNOTATION_SUBJECT_TABLE: return (EObject)createAnnotationSubjectTable();
-			case CommonPackage.ANNOTATION_SUBJECT_PROPERTY_VALUE: return (EObject)createAnnotationSubjectPropertyValue();
-			case CommonPackage.ANNOTATION: return (EObject)createAnnotation();
 			case CommonPackage.EXTENT: return (EObject)createExtent();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -160,59 +152,19 @@ public class CommonFactoryImpl extends EFactoryImpl implements CommonFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public AnnotationPropertyValue createAnnotationPropertyValue() {
+		AnnotationPropertyValueImpl annotationPropertyValue = new AnnotationPropertyValueImpl();
+		return annotationPropertyValue;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public AnnotationProperty createAnnotationProperty() {
 		AnnotationPropertyImpl annotationProperty = new AnnotationPropertyImpl();
 		return annotationProperty;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Map.Entry<AnnotationProperty, EList<AnnotationEntry>> createAnnotationPropertyTable() {
-		AnnotationPropertyTableImpl annotationPropertyTable = new AnnotationPropertyTableImpl();
-		return annotationPropertyTable;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public AnnotationEntry createAnnotationEntry() {
-		AnnotationEntryImpl annotationEntry = new AnnotationEntryImpl();
-		return annotationEntry;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Map.Entry<Element, EList<AnnotationSubjectPropertyValue>> createAnnotationSubjectTable() {
-		AnnotationSubjectTableImpl annotationSubjectTable = new AnnotationSubjectTableImpl();
-		return annotationSubjectTable;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public AnnotationSubjectPropertyValue createAnnotationSubjectPropertyValue() {
-		AnnotationSubjectPropertyValueImpl annotationSubjectPropertyValue = new AnnotationSubjectPropertyValueImpl();
-		return annotationSubjectPropertyValue;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Annotation createAnnotation() {
-		AnnotationImpl annotation = new AnnotationImpl();
-		return annotation;
 	}
 
 	/**

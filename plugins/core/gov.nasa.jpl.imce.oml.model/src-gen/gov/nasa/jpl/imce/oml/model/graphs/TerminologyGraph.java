@@ -19,6 +19,7 @@
 package gov.nasa.jpl.imce.oml.model.graphs;
 
 import gov.nasa.jpl.imce.oml.model.common.ModuleEdge;
+import gov.nasa.jpl.imce.oml.model.common.ModuleElement;
 
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox;
 
@@ -49,5 +50,16 @@ public interface TerminologyGraph extends TerminologyBox {
 	 * @generated
 	 */
 	EList<ModuleEdge> moduleEdges();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%org.eclipse.emf.common.util.BasicEList%><<%gov.nasa.jpl.imce.oml.model.common.ModuleElement%>> _xblockexpression = null;\n{\n\tfinal <%org.eclipse.emf.common.util.BasicEList%><<%gov.nasa.jpl.imce.oml.model.common.ModuleElement%>> mes = new <%org.eclipse.emf.common.util.BasicEList%><<%gov.nasa.jpl.imce.oml.model.common.ModuleElement%>>();\n\tmes.addAll(this.getBoxStatements());\n\t_xblockexpression = mes;\n}\nreturn _xblockexpression;'"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='extent.lookupBoxStatements(this)'"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
+	 * @generated
+	 */
+	EList<ModuleElement> moduleElements();
 
 } // TerminologyGraph

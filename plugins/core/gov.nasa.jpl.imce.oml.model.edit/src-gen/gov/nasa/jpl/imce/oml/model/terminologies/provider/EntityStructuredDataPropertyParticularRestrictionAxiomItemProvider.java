@@ -102,8 +102,8 @@ public class EntityStructuredDataPropertyParticularRestrictionAxiomItemProvider 
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(TerminologiesPackage.Literals.RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__STRUCTURED_PROPERTY_TUPLES);
-			childrenFeatures.add(TerminologiesPackage.Literals.RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__SCALAR_DATA_PROPERTY_VALUES);
+			childrenFeatures.add(TerminologiesPackage.Literals.RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__STRUCTURED_DATA_PROPERTY_RESTRICTIONS);
+			childrenFeatures.add(TerminologiesPackage.Literals.RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__SCALAR_DATA_PROPERTY_RESTRICTIONS);
 		}
 		return childrenFeatures;
 	}
@@ -159,8 +159,8 @@ public class EntityStructuredDataPropertyParticularRestrictionAxiomItemProvider 
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(EntityStructuredDataPropertyParticularRestrictionAxiom.class)) {
-			case TerminologiesPackage.ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__STRUCTURED_PROPERTY_TUPLES:
-			case TerminologiesPackage.ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__SCALAR_DATA_PROPERTY_VALUES:
+			case TerminologiesPackage.ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__STRUCTURED_DATA_PROPERTY_RESTRICTIONS:
+			case TerminologiesPackage.ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__SCALAR_DATA_PROPERTY_RESTRICTIONS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -180,12 +180,12 @@ public class EntityStructuredDataPropertyParticularRestrictionAxiomItemProvider 
 
 		newChildDescriptors.add
 			(createChildParameter
-				(TerminologiesPackage.Literals.RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__STRUCTURED_PROPERTY_TUPLES,
+				(TerminologiesPackage.Literals.RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__STRUCTURED_DATA_PROPERTY_RESTRICTIONS,
 				 TerminologiesFactory.eINSTANCE.createRestrictionStructuredDataPropertyTuple()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(TerminologiesPackage.Literals.RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__SCALAR_DATA_PROPERTY_VALUES,
+				(TerminologiesPackage.Literals.RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__SCALAR_DATA_PROPERTY_RESTRICTIONS,
 				 TerminologiesFactory.eINSTANCE.createRestrictionScalarDataPropertyValue()));
 	}
 

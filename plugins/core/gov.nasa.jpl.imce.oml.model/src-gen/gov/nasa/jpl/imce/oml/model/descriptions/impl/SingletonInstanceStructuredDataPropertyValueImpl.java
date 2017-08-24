@@ -18,9 +18,14 @@
  */
 package gov.nasa.jpl.imce.oml.model.descriptions.impl;
 
+import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
+import gov.nasa.jpl.imce.oml.model.common.Element;
+import gov.nasa.jpl.imce.oml.model.common.ModuleElement;
+
 import gov.nasa.jpl.imce.oml.model.descriptions.ConceptualEntitySingletonInstance;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsPackage;
+import gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceStructuredDataPropertyContext;
 import gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceStructuredDataPropertyValue;
 
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
@@ -216,7 +221,7 @@ public class SingletonInstanceStructuredDataPropertyValueImpl extends SingletonI
 		}
 		Pair<String, String> _mappedTo_2 = Pair.<String, String>of("structuredDataProperty", _string_2);
 		UUID _derivedUUID = OMLExtensions.derivedUUID(
-			"StructuredDataPropertyValue", _mappedTo, _mappedTo_1, _mappedTo_2);
+			"SingletonInstanceStructuredDataPropertyValue", _mappedTo, _mappedTo_1, _mappedTo_2);
 		String _string_3 = null;
 		if (_derivedUUID!=null) {
 			_string_3=_derivedUUID.toString();
@@ -231,6 +236,15 @@ public class SingletonInstanceStructuredDataPropertyValueImpl extends SingletonI
 	 */
 	public DescriptionBox descriptionBox() {
 		return this.getDescriptionBox();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Element> allNestedElements() {
+		return this.allNestedRestrictionElements();
 	}
 
 	/**
@@ -353,12 +367,42 @@ public class SingletonInstanceStructuredDataPropertyValueImpl extends SingletonI
 	 * @generated
 	 */
 	@Override
+	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
+		if (baseClass == Element.class) {
+			switch (baseOperationID) {
+				case CommonPackage.ELEMENT___UUID: return DescriptionsPackage.SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_VALUE___UUID;
+				default: return super.eDerivedOperationID(baseOperationID, baseClass);
+			}
+		}
+		if (baseClass == SingletonInstanceStructuredDataPropertyContext.class) {
+			switch (baseOperationID) {
+				case DescriptionsPackage.SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT___DESCRIPTION_BOX: return DescriptionsPackage.SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_VALUE___DESCRIPTION_BOX;
+				default: return super.eDerivedOperationID(baseOperationID, baseClass);
+			}
+		}
+		if (baseClass == ModuleElement.class) {
+			switch (baseOperationID) {
+				case CommonPackage.MODULE_ELEMENT___ALL_NESTED_ELEMENTS: return DescriptionsPackage.SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_VALUE___ALL_NESTED_ELEMENTS;
+				default: return -1;
+			}
+		}
+		return super.eDerivedOperationID(baseOperationID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
 			case DescriptionsPackage.SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_VALUE___UUID:
 				return uuid();
 			case DescriptionsPackage.SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_VALUE___DESCRIPTION_BOX:
 				return descriptionBox();
+			case DescriptionsPackage.SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_VALUE___ALL_NESTED_ELEMENTS:
+				return allNestedElements();
 		}
 		return super.eInvoke(operationID, arguments);
 	}

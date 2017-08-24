@@ -21,7 +21,7 @@ import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import gov.nasa.jpl.imce.oml.model.bundles.Bundle;
-import gov.nasa.jpl.imce.oml.model.common.Annotation;
+import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
 import gov.nasa.jpl.imce.oml.model.terminologies.Aspect;
@@ -488,10 +488,10 @@ public class OMLGenerator extends AbstractGenerator {
     
     public String lookupOML2JavaDatatypeBinding(final DataRange range) {
       String _elvis = null;
-      final Function1<Annotation, Boolean> _function = (Annotation it) -> {
+      final Function1<AnnotationPropertyValue, Boolean> _function = (AnnotationPropertyValue it) -> {
         return Boolean.valueOf((Objects.equal(it.getSubject(), range) && Objects.equal(it.getProperty().getIri(), "http://imce.jpl.nasa.gov/oml/runtime/OML2JavaDatatypeBinding")));
       };
-      Annotation _findFirst = IterableExtensions.<Annotation>findFirst(range.getTbox().getAnnotations(), _function);
+      AnnotationPropertyValue _findFirst = IterableExtensions.<AnnotationPropertyValue>findFirst(range.getTbox().getAnnotations(), _function);
       String _value = null;
       if (_findFirst!=null) {
         _value=_findFirst.getValue();

@@ -1,6 +1,6 @@
 gov.nasa.jpl.imce.oml.tycho 0.8.0.0 resolves major problems found in 0.7.1.2
 
-## Planned scope:
+## Planned scope & Issues resolved:
 
 - [#42 Viewpoint for OML](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/42)
 
@@ -8,10 +8,21 @@ gov.nasa.jpl.imce.oml.tycho 0.8.0.0 resolves major problems found in 0.7.1.2
 
 - [#72 Handling of Annotations for Items within Graphs](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/72)
 
+  The OML abstract syntax and OML concrete syntax had to be aligned with respect to the representation of annotations.
+  Before, an annotation was a quad: <module, subject, property, value>; each annotation was owned by a module.
+  The concrete syntax parser was deriving the subject based on the relative position of an annotation
+  before its annotated subject in the textual representation. This violated the Xtext serialization contract:
+  https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#serialization
+  The fix involves making an OML Element own the annotations that it is the subject of and that,
+  in the textual representation, are always serialized before the element itself.
+  The fix includes a unit test to verify Xtext serialization contract on a simple example (OMLAnnotationTest3).
+  
 - [#73 OML Plugins / Feature Fails to Install / Update via Eclipse "Install New Software..."](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/73)
 
 - [#74 Serialization problem for OML annotations](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/74)
 
+  See #72
+  
 - [#75 Simplify eclipse/tycho build](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/75)
 
 - [#76 Remove the oml runtime](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/76)

@@ -82,6 +82,15 @@ public abstract class ModuleEdgeImpl extends ElementImpl implements ModuleEdge {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Module moduleContext() {
+		return this.sourceModule();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
@@ -89,6 +98,8 @@ public abstract class ModuleEdgeImpl extends ElementImpl implements ModuleEdge {
 				return sourceModule();
 			case CommonPackage.MODULE_EDGE___TARGET_MODULE:
 				return targetModule();
+			case CommonPackage.MODULE_EDGE___MODULE_CONTEXT:
+				return moduleContext();
 		}
 		return super.eInvoke(operationID, arguments);
 	}

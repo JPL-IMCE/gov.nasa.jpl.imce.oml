@@ -18,6 +18,7 @@
  */
 package gov.nasa.jpl.imce.oml.model.common;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,7 +26,7 @@ package gov.nasa.jpl.imce.oml.model.common;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * An OML ModuleElement is an OML Element defined in an OML Module
+ * An OML ModuleElement is an OML Element defined in the scope of an OML Module
  * <!-- end-model-doc -->
  *
  *
@@ -34,4 +35,13 @@ package gov.nasa.jpl.imce.oml.model.common;
  * @generated
  */
 public interface ModuleElement extends Element {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
+	 * @generated
+	 */
+	EList<Element> allNestedElements();
+
 } // ModuleElement
