@@ -1,5 +1,16 @@
 # OML Viewpoints
 
+## Usage
+
+- Open the Eclipse Modeling perspective
+- For a project that contains *.oml files, use the project context menu: "Configure > Convert to Modeling Project"
+- Afterwards, the context menu on a project with *.oml files should have additional menus: 
+  - Viewpoint Selection
+  - 
+## Development
+
+Note: the OML viewpoints are defined in [description/OML.odesign](description/OML.odesign)
+
 The OML Viewpoints are graphical modeling workbenches developed using the [Sirius Eclipse Project](http://www.eclipse.org/sirius/doc/).  The views availble are as follows:
 
 | View Name | Type |Desciription |
