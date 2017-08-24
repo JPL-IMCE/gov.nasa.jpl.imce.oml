@@ -25,6 +25,7 @@
    <vm>
    </vm>
 
+
    <plugins>
       <plugin id="com.google.guava"/>
       <plugin id="com.google.inject"/>
@@ -239,6 +240,7 @@
 
    <features>
       <feature id="gov.nasa.jpl.imce.oml.core.feature" installMode="root"/>
+      <feature id="org.eclipse.equinox.sdk" version="3.12.0.v20170209-1843"/>
    </features>
 
    <configurations>
