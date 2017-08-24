@@ -46,7 +46,7 @@ import gov.nasa.jpl.imce.oml.model.common.Glossary
 import gov.nasa.jpl.imce.oml.model.common.ImplicitExtent
 import gov.nasa.jpl.imce.oml.model.common.IRI
 import gov.nasa.jpl.imce.oml.model.common.IRIReference
-import gov.nasa.jpl.imce.oml.model.common.LexicalValue
+import gov.nasa.jpl.imce.oml.model.common.LiteralValue
 import gov.nasa.jpl.imce.oml.model.common.LocalName
 import gov.nasa.jpl.imce.oml.model.common.Module
 import gov.nasa.jpl.imce.oml.model.common.ModuleEdge
@@ -268,7 +268,7 @@ class SingletonInstanceScalarDataPropertyValue extends ModuleElement {
 	refers ConceptualEntitySingletonInstance[1] singletonInstance
 	refers EntityScalarDataProperty[1] scalarDataProperty
 	
-	String[1] scalarPropertyValue
+	contains LiteralValue[1] scalarPropertyValue
 	
 	@NotFunctionalAPI
 	@NotSchema
@@ -413,7 +413,7 @@ class ScalarDataPropertyValue extends Element {
 	container SingletonInstanceStructuredDataPropertyContext[1] structuredDataPropertyContext opposite scalarDataPropertyValues
 	
 	refers DataRelationshipToScalar[1] scalarDataProperty
-	LexicalValue[1] scalarPropertyValue
+	contains LiteralValue[1] scalarPropertyValue
 	
 	@Scala(code="extent.singletonInstanceStructuredDataPropertyContextOfScalarDataPropertyValue.get(this).flatMap(_.descriptionBox())")
 	@ImplicitExtent

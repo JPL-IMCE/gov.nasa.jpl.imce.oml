@@ -18,13 +18,11 @@ package gov.nasa.jpl.imce.oml.dsl.tests
 
 import com.google.inject.Inject
 import com.google.inject.Provider
-import gov.nasa.jpl.imce.oml.model.common.AnnotationProperty
-import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue
 import gov.nasa.jpl.imce.oml.model.common.CommonFactory
-import gov.nasa.jpl.imce.oml.model.common.Element
 import gov.nasa.jpl.imce.oml.model.common.Extent
 import gov.nasa.jpl.imce.oml.model.descriptions.ConceptInstance
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox
+import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxExtendsClosedWorldDefinitions
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsFactory
 import gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceScalarDataPropertyValue
 import gov.nasa.jpl.imce.oml.model.graphs.GraphsFactory
@@ -56,82 +54,122 @@ class OMLDescriptionTest1 {
 	val commonF = CommonFactory.eINSTANCE
 	val terminologiesF = TerminologiesFactory.eINSTANCE
 	val graphsF = GraphsFactory.eINSTANCE
-
+	val descriptionsF = DescriptionsFactory.eINSTANCE
+	
 	@Test
 	def void test() {
 
 		val rs = resourceSetProvider.get
-		val r1 = rs.createResource(URI.createFileURI("file:OMLAnnoationTest2.oml"))
-
-		val Extent e = commonF.createExtent()
-		r1.getContents.add(e)
-
-		val AnnotationProperty ap1 = commonF.createAnnotationProperty
-		ap1.extent = e
-		ap1.abbrevIRI = "test:doc1"
-		ap1.iri = "http://www.example.org/OMLAnnotationTest2#doc1"
-
-		val AnnotationProperty ap2 = commonF.createAnnotationProperty
-		ap2.extent = e
-		ap2.abbrevIRI = "test:doc2"
-		ap2.iri = "http://www.example.org/OMLAnnotationTest2#doc2"
+		
+		val r1 = rs.createResource(URI.createFileURI("file:OMLDescriptionTest1A.oml"))
+		val Extent e1 = commonF.createExtent()
+		r1.getContents.add(e1)
 
 		val TerminologyGraph g = graphsF.createTerminologyGraph()
-		e.getModules.add(g)
-		g.setIri("http://www.example.org/OMLAnnotationTest2")
-		addAnnotation(g, ap1, "Un graphe...")
-		addAnnotation(g, ap2, "A graph...")
+		g.extent = e1
+		g.iri = "http://www.example.org/OMLDescriptionTest1A"
 
 		val Concept c = terminologiesF.createConcept
 		c.tbox = g
 		c.name = "Box"
-		addAnnotation(c, ap1, "Une boite...")
-		addAnnotation(c, ap2, "A box...")
 		
 		val Scalar sc = terminologiesF.createScalar
 		sc.tbox = g
 		sc.name = "String"
 		
-		val EntityScalarDataProperty dp = terminologiesF.createEntityScalarDataProperty
-		dp.tbox = g
-		dp.name = "name"
-		dp.domain = c
-		dp.range = sc
+		val Scalar sc_double = terminologiesF.createScalar
+		sc_double.tbox = g
+		sc_double.name = "Double"
+		
+		val EntityScalarDataProperty dp1 = terminologiesF.createEntityScalarDataProperty
+		dp1.tbox = g
+		dp1.name = "name"
+		dp1.domain = c
+		dp1.range = sc
+		
+		val EntityScalarDataProperty dp2 = terminologiesF.createEntityScalarDataProperty
+		dp2.tbox = g
+		dp2.name = "length"
+		dp2.domain = c
+		dp2.range = sc_double
 		
 		val String text1 = serialize(r1)
-		
-		
-		val String expected = '''
-			annotationProperty test:doc1=<http://www.example.org/OMLAnnotationTest2#doc1>
+		val String expected1 = '''
+			open terminology <http://www.example.org/OMLDescriptionTest1A> {
 			
-			annotationProperty test:doc2=<http://www.example.org/OMLAnnotationTest2#doc2>
-			
-			@test:doc1="Un graphe..."
-			@test:doc2="A graph..."
-			open terminology <http://www.example.org/OMLAnnotationTest2> {
-			
-				@test:doc1="Une boite..."
-				@test:doc2="A box..."
 				concept Box
 			
 				scalar String
+			
+				scalar Double
 			
 				entityScalarDataProperty name {
 					domain Box
 					range String
 				}
+
+				entityScalarDataProperty ^length {
+					domain Box
+					range Double
+				}
 			
 			}
 		'''
-
-		assertEquals(text1, expected)
-	}
-
-	def void addAnnotation(Element e, AnnotationProperty ap, String v) {
-		val AnnotationPropertyValue av = commonF.createAnnotationPropertyValue
-		e.annotations += av
-		av.property = ap
-		av.value = v
+		
+		assertEquals(text1, expected1)
+		
+		val r2 = rs.createResource(URI.createFileURI("file:OMLDescriptionTest1B.oml"))
+		val Extent e2 = commonF.createExtent()
+		r2.getContents.add(e2)
+		
+		val DescriptionBox db = descriptionsF.createDescriptionBox
+		db.extent = e2
+		db.iri = "http://www.example.org/OMLDescriptionTest1B"
+		
+		val DescriptionBoxExtendsClosedWorldDefinitions ext = descriptionsF.createDescriptionBoxExtendsClosedWorldDefinitions
+		ext.descriptionBox = db
+		ext.closedWorldDefinitions = g
+		
+		val ConceptInstance ci = descriptionsF.createConceptInstance
+		ci.descriptionBox = db
+		ci.name = "boite0"
+		ci.singletonConceptClassifier = c
+		
+		val SingletonInstanceScalarDataPropertyValue ci_name = descriptionsF.createSingletonInstanceScalarDataPropertyValue
+		ci_name.descriptionBox = db
+		ci_name.scalarDataProperty = dp1
+		ci_name.singletonInstance = ci
+		
+		val ci_name_lit = commonF.createLiteralString
+		ci_name_lit.value = 'box #0'
+		ci_name.scalarPropertyValue = ci_name_lit
+		
+		val SingletonInstanceScalarDataPropertyValue ci_length = descriptionsF.createSingletonInstanceScalarDataPropertyValue
+		ci_length.descriptionBox = db
+		ci_length.scalarDataProperty = dp2
+		ci_length.singletonInstance = ci
+		
+		val ci_length_lit = commonF.createLiteralNumber
+		ci_length_lit.value = '123.45'
+		ci_length.scalarPropertyValue = ci_length_lit
+		
+		val String text2 = serialize(r2)
+		val String expected2 =
+		'''
+		final descriptionBox <http://www.example.org/OMLDescriptionTest1B> {
+		
+			extends <http://www.example.org/OMLDescriptionTest1A>
+		
+			conceptInstance(boite0 is-a OMLDescriptionTest1A:Box)
+		
+			boite0 . OMLDescriptionTest1A:name = "box #0"
+		
+			boite0 . OMLDescriptionTest1A:length = 123.45
+		
+		}
+		'''
+		
+		assertEquals(text2, expected2)
 	}
 	
 	def String serialize(Resource r) {

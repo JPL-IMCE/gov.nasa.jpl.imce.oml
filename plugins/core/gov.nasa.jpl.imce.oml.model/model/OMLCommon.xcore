@@ -129,33 +129,79 @@ type IRI wraps String
  */
 type LocalName wraps String
 /*
- * A lexical value for a real, a decimal or an integer number
- */
-type LexicalValue wraps String
-/*
- * A lexical value for a real, a decimal or an integer number
- */
-type LexicalNumber wraps String
-/*
- * A lexical value for a time instant with and without time zone offsets
- */
-type LexicalTime wraps String
-/*
- * A regular expression for a string based on rule of xsd:pattern
- */
-type Pattern wraps String
-/*
- * An RFC-4122 UUID (either Version 4 (random) or Version 5 (SHA-1 hash & namespace) 
+ * An RFC-4122 Version 5 UUID (SHA-1 hash & namespace) 
  */
 type UUID wraps String
-/*
- * A language range based on RFC 5646
- */
-type LangRange wraps String
 
 type AbbrevIRI wraps String
 
 type NamespacePrefix wraps String
+
+/*
+ * https://www.w3.org/TR/xmlschema11-2/#dt-regex
+ */
+class LiteralPattern {
+	String[1] value
+}
+
+abstract class LiteralValue {}
+
+/*
+ * https://www.w3.org/TR/xmlschema11-2/#rf-lexicalMappings-datetime
+ * 
+ * dateTimeLexicalRep ::= yearFrag '-' monthFrag '-' dayFrag 'T' ((hourFrag ':' minuteFrag ':' secondFrag) | endOfDayFrag) timezoneFrag?  
+ * 
+ * [56]   yearFrag ::= '-'? (([1-9] digit digit digit+) | ('0' digit digit digit))
+ * [57]   monthFrag ::= ('0' [1-9]) | ('1' [0-2])
+ * [58]   dayFrag ::= ('0' [1-9]) | ([12] digit) | ('3' [01])
+ * [59]   hourFrag ::= ([01] digit) | ('2' [0-3])
+ * [60]   minuteFrag ::= [0-5] digit
+ * [61]   secondFrag ::= ([0-5] digit) ('.' digit+)?
+ * [62]   endOfDayFrag ::= '24:00:00' ('.' '0'+)?
+ * [63]   timezoneFrag ::= 'Z' | ('+' | '-') (('0' digit | '1' [0-3]) ':' minuteFrag | '14:00')
+ */
+class LiteralDateTime extends LiteralValue {
+	String[1] value
+}
+
+/*
+ * https://www.w3.org/TR/xmlschema11-2/#language
+ * https://tools.ietf.org/rfc/bcp/bcp47
+ * http://www.ietf.org/rfc/rfc4646.txt
+ * http://www.ietf.org/rfc/rfc4647.txt
+ * 
+ * [a-zA-Z]{1,8}(-[a-zA-Z0-9]{1,8})*
+ */
+class LiteralLanguageTag extends LiteralValue {
+	String[1] value
+}
+
+/*
+ * Wrapped around single quotes (inside, quotes are escaped using \" and \ is \\)
+ */
+class LiteralString extends LiteralValue {
+	String[1] value
+}
+
+/*
+ * An RFC-4122 Version 5 UUID (SHA-1 hash & namespace) 
+ */
+class LiteralUUID extends LiteralValue {
+	String[1] value
+}
+
+/*
+ * https://www.w3.org/TR/xmlschema11-2/#anyURI
+ * http://www.ietf.org/rfc/rfc3986.txt
+ * http://www.ietf.org/rfc/rfc3987.txt
+ */
+class LiteralURI extends LiteralValue {
+	String[1] value
+}
+
+class LiteralNumber extends LiteralValue {
+	String[1] value
+}
 
 /* 
  * For the OML tabular interchange representation,
