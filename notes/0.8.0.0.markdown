@@ -25,8 +25,15 @@ gov.nasa.jpl.imce.oml.tycho 0.8.0.0 resolves major problems found in 0.7.1.2
   
 - [#75 Simplify eclipse/tycho build](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/75)
 
+  See #76
+  
 - [#76 Remove the oml runtime](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/76)
 
+  Removed all `oml.runtime` plugins and features
+  Removed the `oml.platform.feature`
+  Removed the `oml.platform.updatesite`
+  Simplified the OML target platform (removed Sirius related features and Scala related features)
+  
 - [#77 Remove the OML lifting transformation](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/77)
 
   Removed `gov.nasa.jpl.imce.oml.dsl.ui.converters` (from `dsl.ui`)
