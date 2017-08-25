@@ -2,9 +2,18 @@
 
 set -e
 
-# Is this a travis deployment?
-if test -n "${TRAVIS_TAG}" && -n "${TRAVIS_SECURE_ENV_VARS}"; then
+# Get the tag for this commit
+t=$(git name-rev --tags --name-only $(git rev-parse HEAD));
 
+if test "undefined" != "$t"; then
+
+	# This is an untagged build.
+	mvn -e clean verify;
+	
+else
+
+	# This is a tagged build.
+	
     cat > ~/.m2/settings.xml << EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
@@ -23,20 +32,4 @@ EOF
 
     mvn -e deploy;
 
-else
-    
-    # Get the tag for this commit
-    t=$(git name-rev --tags --name-only $(git rev-parse HEAD));
-
-    if test "undefined" != "$t"; then
-
-	echo "# Tagged commits are reserved for deployment";
-       	exit -1;
-
-    else
-
-	mvn -e clean verify;
-
-    fi;
-  
 fi
