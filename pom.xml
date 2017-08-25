@@ -45,7 +45,7 @@
 						<artifact>
 							<groupId>gov.nasa.jpl.imce.oml</groupId>
 							<artifactId>gov.nasa.jpl.imce.oml.target</artifactId>
-							<version>0.8.0-SNAPSHOT</version>
+							<version>${oml.version}</version>
 						</artifact>
 					</target>					
 					<environments>

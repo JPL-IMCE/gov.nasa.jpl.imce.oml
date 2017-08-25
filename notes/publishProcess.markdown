@@ -7,7 +7,8 @@ git checkout releases/$V
 mvn org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=$V -Dtycho.mode=maven -Dproperties=oml.version 
 git add -A
 git commit -S -m"Release $V"
-git push -u origin releases/$V
+git tag -s -m"$V" $V
+git push -u origin releases/$V $V
 ```
 
 Verify the build on https://travis-ci.org/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho

@@ -2,6 +2,10 @@ gov.nasa.jpl.imce.oml.tycho 0.8.0.0 resolves major problems found in 0.7.1.2
 
 ## Planned scope & Issues resolved:
 
+- [#13 Branch builds fail on travis-ci](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/13)
+
+  Use the `${oml.version}` in the pom configuration avoids having to manually edit the pom file after setting the version.
+  
 - [#42 Viewpoint for OML](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/42)
 
 - [#71 Serialization of SingletonInstanceScalarDataPropertyValue not as expected](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/71)
