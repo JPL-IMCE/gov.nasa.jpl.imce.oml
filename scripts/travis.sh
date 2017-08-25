@@ -7,13 +7,13 @@ t=$(git name-rev --tags --name-only $(git rev-parse HEAD));
 
 if test "undefined" != "$t"; then
 
-	# This is an untagged build.
+	echo "#";
+	echo "# This is an untagged build.";
+	echo "#";
 	mvn -e clean verify;
 	
 else
 
-	# This is a tagged build.
-	
     cat > ~/.m2/settings.xml << EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
@@ -30,6 +30,9 @@ else
 </settings>
 EOF
 
+	echo "#";
+	echo "# This is a tagged build: $t (if successful, artifacts will be deployed)";
+	echo "#";
     mvn -e deploy;
 
 fi
