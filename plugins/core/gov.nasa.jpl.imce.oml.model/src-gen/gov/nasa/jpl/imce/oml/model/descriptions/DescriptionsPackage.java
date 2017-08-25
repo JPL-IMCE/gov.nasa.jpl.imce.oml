@@ -757,7 +757,7 @@ public interface DescriptionsPackage extends EPackage {
 	int SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE__SCALAR_DATA_PROPERTY = CommonPackage.MODULE_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Scalar Property Value</b></em>' attribute.
+	 * The feature id for the '<em><b>Scalar Property Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1229,7 +1229,7 @@ public interface DescriptionsPackage extends EPackage {
 	int SCALAR_DATA_PROPERTY_VALUE__SCALAR_DATA_PROPERTY = CommonPackage.ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Scalar Property Value</b></em>' attribute.
+	 * The feature id for the '<em><b>Scalar Property Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2394,15 +2394,15 @@ public interface DescriptionsPackage extends EPackage {
 	EReference getSingletonInstanceScalarDataPropertyValue_ScalarDataProperty();
 
 	/**
-	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceScalarDataPropertyValue#getScalarPropertyValue <em>Scalar Property Value</em>}'.
+	 * Returns the meta object for the containment reference '{@link gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceScalarDataPropertyValue#getScalarPropertyValue <em>Scalar Property Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Scalar Property Value</em>'.
+	 * @return the meta object for the containment reference '<em>Scalar Property Value</em>'.
 	 * @see gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceScalarDataPropertyValue#getScalarPropertyValue()
 	 * @see #getSingletonInstanceScalarDataPropertyValue()
 	 * @generated
 	 */
-	EAttribute getSingletonInstanceScalarDataPropertyValue_ScalarPropertyValue();
+	EReference getSingletonInstanceScalarDataPropertyValue_ScalarPropertyValue();
 
 	/**
 	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceScalarDataPropertyValue#uuid() <em>Uuid</em>}' operation.
@@ -2653,15 +2653,15 @@ public interface DescriptionsPackage extends EPackage {
 	EReference getScalarDataPropertyValue_ScalarDataProperty();
 
 	/**
-	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.descriptions.ScalarDataPropertyValue#getScalarPropertyValue <em>Scalar Property Value</em>}'.
+	 * Returns the meta object for the containment reference '{@link gov.nasa.jpl.imce.oml.model.descriptions.ScalarDataPropertyValue#getScalarPropertyValue <em>Scalar Property Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Scalar Property Value</em>'.
+	 * @return the meta object for the containment reference '<em>Scalar Property Value</em>'.
 	 * @see gov.nasa.jpl.imce.oml.model.descriptions.ScalarDataPropertyValue#getScalarPropertyValue()
 	 * @see #getScalarDataPropertyValue()
 	 * @generated
 	 */
-	EAttribute getScalarDataPropertyValue_ScalarPropertyValue();
+	EReference getScalarDataPropertyValue_ScalarPropertyValue();
 
 	/**
 	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.ScalarDataPropertyValue#descriptionBox() <em>Description Box</em>}' operation.
@@ -3478,12 +3478,12 @@ public interface DescriptionsPackage extends EPackage {
 		EReference SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE__SCALAR_DATA_PROPERTY = eINSTANCE.getSingletonInstanceScalarDataPropertyValue_ScalarDataProperty();
 
 		/**
-		 * The meta object literal for the '<em><b>Scalar Property Value</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Scalar Property Value</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE = eINSTANCE.getSingletonInstanceScalarDataPropertyValue_ScalarPropertyValue();
+		EReference SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE = eINSTANCE.getSingletonInstanceScalarDataPropertyValue_ScalarPropertyValue();
 
 		/**
 		 * The meta object literal for the '<em><b>Uuid</b></em>' operation.
@@ -3686,12 +3686,12 @@ public interface DescriptionsPackage extends EPackage {
 		EReference SCALAR_DATA_PROPERTY_VALUE__SCALAR_DATA_PROPERTY = eINSTANCE.getScalarDataPropertyValue_ScalarDataProperty();
 
 		/**
-		 * The meta object literal for the '<em><b>Scalar Property Value</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Scalar Property Value</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE = eINSTANCE.getScalarDataPropertyValue_ScalarPropertyValue();
+		EReference SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE = eINSTANCE.getScalarDataPropertyValue_ScalarPropertyValue();
 
 		/**
 		 * The meta object literal for the '<em><b>Description Box</b></em>' operation.

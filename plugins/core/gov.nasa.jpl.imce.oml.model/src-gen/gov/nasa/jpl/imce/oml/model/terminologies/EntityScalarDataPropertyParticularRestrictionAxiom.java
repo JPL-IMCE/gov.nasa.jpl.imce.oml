@@ -18,6 +18,7 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies;
 
+import gov.nasa.jpl.imce.oml.model.common.LiteralValue;
 
 /**
  * <!-- begin-user-doc -->
@@ -42,30 +43,30 @@ package gov.nasa.jpl.imce.oml.model.terminologies;
  */
 public interface EntityScalarDataPropertyParticularRestrictionAxiom extends EntityScalarDataPropertyRestrictionAxiom {
 	/**
-	 * Returns the value of the '<em><b>Literal Value</b></em>' attribute.
+	 * Returns the value of the '<em><b>Literal Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Literal Value</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Literal Value</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Literal Value</em>' attribute.
-	 * @see #setLiteralValue(String)
+	 * @return the value of the '<em>Literal Value</em>' containment reference.
+	 * @see #setLiteralValue(LiteralValue)
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getEntityScalarDataPropertyParticularRestrictionAxiom_LiteralValue()
-	 * @model unique="false" dataType="gov.nasa.jpl.imce.oml.model.common.LexicalValue" required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	String getLiteralValue();
+	LiteralValue getLiteralValue();
 
 	/**
-	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyParticularRestrictionAxiom#getLiteralValue <em>Literal Value</em>}' attribute.
+	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyParticularRestrictionAxiom#getLiteralValue <em>Literal Value</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Literal Value</em>' attribute.
+	 * @param value the new value of the '<em>Literal Value</em>' containment reference.
 	 * @see #getLiteralValue()
 	 * @generated
 	 */
-	void setLiteralValue(String value);
+	void setLiteralValue(LiteralValue value);
 
 	/**
 	 * <!-- begin-user-doc -->

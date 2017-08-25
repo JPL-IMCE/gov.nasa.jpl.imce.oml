@@ -51,7 +51,7 @@ public class BinaryScalarRestrictionImpl extends RestrictedDataRangeImpl impleme
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int LENGTH_EDEFAULT = 0;
+	protected static final String LENGTH_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getLength() <em>Length</em>}' attribute.
@@ -61,7 +61,7 @@ public class BinaryScalarRestrictionImpl extends RestrictedDataRangeImpl impleme
 	 * @generated
 	 * @ordered
 	 */
-	protected int length = LENGTH_EDEFAULT;
+	protected String length = LENGTH_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getMinLength() <em>Min Length</em>}' attribute.
@@ -71,7 +71,7 @@ public class BinaryScalarRestrictionImpl extends RestrictedDataRangeImpl impleme
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int MIN_LENGTH_EDEFAULT = 0;
+	protected static final String MIN_LENGTH_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getMinLength() <em>Min Length</em>}' attribute.
@@ -81,7 +81,7 @@ public class BinaryScalarRestrictionImpl extends RestrictedDataRangeImpl impleme
 	 * @generated
 	 * @ordered
 	 */
-	protected int minLength = MIN_LENGTH_EDEFAULT;
+	protected String minLength = MIN_LENGTH_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getMaxLength() <em>Max Length</em>}' attribute.
@@ -91,7 +91,7 @@ public class BinaryScalarRestrictionImpl extends RestrictedDataRangeImpl impleme
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int MAX_LENGTH_EDEFAULT = 0;
+	protected static final String MAX_LENGTH_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getMaxLength() <em>Max Length</em>}' attribute.
@@ -101,7 +101,7 @@ public class BinaryScalarRestrictionImpl extends RestrictedDataRangeImpl impleme
 	 * @generated
 	 * @ordered
 	 */
-	protected int maxLength = MAX_LENGTH_EDEFAULT;
+	protected String maxLength = MAX_LENGTH_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -127,7 +127,7 @@ public class BinaryScalarRestrictionImpl extends RestrictedDataRangeImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getLength() {
+	public String getLength() {
 		return length;
 	}
 
@@ -136,8 +136,8 @@ public class BinaryScalarRestrictionImpl extends RestrictedDataRangeImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setLength(int newLength) {
-		int oldLength = length;
+	public void setLength(String newLength) {
+		String oldLength = length;
 		length = newLength;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.BINARY_SCALAR_RESTRICTION__LENGTH, oldLength, length));
@@ -148,7 +148,7 @@ public class BinaryScalarRestrictionImpl extends RestrictedDataRangeImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getMinLength() {
+	public String getMinLength() {
 		return minLength;
 	}
 
@@ -157,8 +157,8 @@ public class BinaryScalarRestrictionImpl extends RestrictedDataRangeImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setMinLength(int newMinLength) {
-		int oldMinLength = minLength;
+	public void setMinLength(String newMinLength) {
+		String oldMinLength = minLength;
 		minLength = newMinLength;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.BINARY_SCALAR_RESTRICTION__MIN_LENGTH, oldMinLength, minLength));
@@ -169,7 +169,7 @@ public class BinaryScalarRestrictionImpl extends RestrictedDataRangeImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getMaxLength() {
+	public String getMaxLength() {
 		return maxLength;
 	}
 
@@ -178,8 +178,8 @@ public class BinaryScalarRestrictionImpl extends RestrictedDataRangeImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setMaxLength(int newMaxLength) {
-		int oldMaxLength = maxLength;
+	public void setMaxLength(String newMaxLength) {
+		String oldMaxLength = maxLength;
 		maxLength = newMaxLength;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.BINARY_SCALAR_RESTRICTION__MAX_LENGTH, oldMaxLength, maxLength));
@@ -212,13 +212,13 @@ public class BinaryScalarRestrictionImpl extends RestrictedDataRangeImpl impleme
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case TerminologiesPackage.BINARY_SCALAR_RESTRICTION__LENGTH:
-				setLength((Integer)newValue);
+				setLength((String)newValue);
 				return;
 			case TerminologiesPackage.BINARY_SCALAR_RESTRICTION__MIN_LENGTH:
-				setMinLength((Integer)newValue);
+				setMinLength((String)newValue);
 				return;
 			case TerminologiesPackage.BINARY_SCALAR_RESTRICTION__MAX_LENGTH:
-				setMaxLength((Integer)newValue);
+				setMaxLength((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -254,11 +254,11 @@ public class BinaryScalarRestrictionImpl extends RestrictedDataRangeImpl impleme
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case TerminologiesPackage.BINARY_SCALAR_RESTRICTION__LENGTH:
-				return length != LENGTH_EDEFAULT;
+				return LENGTH_EDEFAULT == null ? length != null : !LENGTH_EDEFAULT.equals(length);
 			case TerminologiesPackage.BINARY_SCALAR_RESTRICTION__MIN_LENGTH:
-				return minLength != MIN_LENGTH_EDEFAULT;
+				return MIN_LENGTH_EDEFAULT == null ? minLength != null : !MIN_LENGTH_EDEFAULT.equals(minLength);
 			case TerminologiesPackage.BINARY_SCALAR_RESTRICTION__MAX_LENGTH:
-				return maxLength != MAX_LENGTH_EDEFAULT;
+				return MAX_LENGTH_EDEFAULT == null ? maxLength != null : !MAX_LENGTH_EDEFAULT.equals(maxLength);
 		}
 		return super.eIsSet(featureID);
 	}

@@ -17,6 +17,7 @@
  */
 package gov.nasa.jpl.imce.oml.dsl.util;
 
+import com.google.common.base.Objects;
 import com.google.inject.Inject;
 import gov.nasa.jpl.imce.oml.dsl.util.OMLExternalReferenceValueConverter;
 import gov.nasa.jpl.imce.oml.dsl.util.OMLIRIValueConverter;
@@ -28,6 +29,7 @@ import org.eclipse.xtext.conversion.IValueConverter;
 import org.eclipse.xtext.conversion.ValueConverter;
 import org.eclipse.xtext.conversion.impl.KeywordAlternativeConverter;
 import org.eclipse.xtext.conversion.impl.QualifiedNameValueConverter;
+import org.eclipse.xtext.conversion.impl.STRINGValueConverter;
 
 @SuppressWarnings("all")
 public class OMLValueConverterService extends DefaultTerminalConverters {
@@ -51,6 +53,9 @@ public class OMLValueConverterService extends DefaultTerminalConverters {
   
   @Inject
   private KeywordAlternativeConverter validIDValueConverter;
+  
+  @Inject
+  private STRINGValueConverter stringValueConverter;
   
   @ValueConverter(rule = "Reference")
   public IValueConverter<String> Reference() {
@@ -85,5 +90,40 @@ public class OMLValueConverterService extends DefaultTerminalConverters {
   @ValueConverter(rule = "ValidID")
   public IValueConverter<String> ValidID() {
     return this.validIDValueConverter;
+  }
+  
+  @ValueConverter(rule = "UUID")
+  public IValueConverter<String> UUID() {
+    return this.stringValueConverter;
+  }
+  
+  @ValueConverter(rule = "STRING")
+  @Override
+  public IValueConverter<String> STRING() {
+    return this.stringValueConverter;
+  }
+  
+  @Override
+  public String toString(final Object value, final String lexerRule) {
+    String _xifexpression = null;
+    boolean _equals = Objects.equal("gov.nasa.jpl.imce.oml.dsl.OML.Value", lexerRule);
+    if (_equals) {
+      String _xblockexpression = null;
+      {
+        String _string = value.toString();
+        String _plus = ("\"" + _string);
+        final String result = (_plus + "\"");
+        _xblockexpression = result;
+      }
+      _xifexpression = _xblockexpression;
+    } else {
+      String _xblockexpression_1 = null;
+      {
+        final String result = super.toString(value, lexerRule);
+        _xblockexpression_1 = result;
+      }
+      _xifexpression = _xblockexpression_1;
+    }
+    return _xifexpression;
   }
 }

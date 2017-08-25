@@ -24,6 +24,14 @@ import gov.nasa.jpl.imce.oml.model.common.CommonFactory;
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
 import gov.nasa.jpl.imce.oml.model.common.Element;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
+import gov.nasa.jpl.imce.oml.model.common.LiteralDateTime;
+import gov.nasa.jpl.imce.oml.model.common.LiteralLanguageTag;
+import gov.nasa.jpl.imce.oml.model.common.LiteralNumber;
+import gov.nasa.jpl.imce.oml.model.common.LiteralPattern;
+import gov.nasa.jpl.imce.oml.model.common.LiteralString;
+import gov.nasa.jpl.imce.oml.model.common.LiteralURI;
+import gov.nasa.jpl.imce.oml.model.common.LiteralUUID;
+import gov.nasa.jpl.imce.oml.model.common.LiteralValue;
 import gov.nasa.jpl.imce.oml.model.common.Module;
 import gov.nasa.jpl.imce.oml.model.common.ModuleEdge;
 import gov.nasa.jpl.imce.oml.model.common.ModuleElement;
@@ -46,6 +54,62 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
  * @generated
  */
 public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass literalPatternEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass literalValueEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass literalDateTimeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass literalLanguageTagEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass literalStringEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass literalUUIDEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass literalURIEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass literalNumberEClass = null;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -121,42 +185,7 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EDataType lexicalValueEDataType = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EDataType lexicalNumberEDataType = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EDataType lexicalTimeEDataType = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EDataType patternEDataType = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EDataType uuidEDataType = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EDataType langRangeEDataType = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -234,6 +263,141 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(CommonPackage.eNS_URI, theCommonPackage);
 		return theCommonPackage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLiteralPattern() {
+		return literalPatternEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLiteralPattern_Value() {
+		return (EAttribute)literalPatternEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLiteralValue() {
+		return literalValueEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLiteralDateTime() {
+		return literalDateTimeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLiteralDateTime_Value() {
+		return (EAttribute)literalDateTimeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLiteralLanguageTag() {
+		return literalLanguageTagEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLiteralLanguageTag_Value() {
+		return (EAttribute)literalLanguageTagEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLiteralString() {
+		return literalStringEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLiteralString_Value() {
+		return (EAttribute)literalStringEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLiteralUUID() {
+		return literalUUIDEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLiteralUUID_Value() {
+		return (EAttribute)literalUUIDEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLiteralURI() {
+		return literalURIEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLiteralURI_Value() {
+		return (EAttribute)literalURIEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLiteralNumber() {
+		return literalNumberEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLiteralNumber_Value() {
+		return (EAttribute)literalNumberEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -610,53 +774,8 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EDataType getLexicalValue() {
-		return lexicalValueEDataType;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EDataType getLexicalNumber() {
-		return lexicalNumberEDataType;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EDataType getLexicalTime() {
-		return lexicalTimeEDataType;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EDataType getPattern() {
-		return patternEDataType;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EDataType getUUID() {
 		return uuidEDataType;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EDataType getLangRange() {
-		return langRangeEDataType;
 	}
 
 	/**
@@ -705,6 +824,29 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		isCreated = true;
 
 		// Create classes and their features
+		literalPatternEClass = createEClass(LITERAL_PATTERN);
+		createEAttribute(literalPatternEClass, LITERAL_PATTERN__VALUE);
+
+		literalValueEClass = createEClass(LITERAL_VALUE);
+
+		literalDateTimeEClass = createEClass(LITERAL_DATE_TIME);
+		createEAttribute(literalDateTimeEClass, LITERAL_DATE_TIME__VALUE);
+
+		literalLanguageTagEClass = createEClass(LITERAL_LANGUAGE_TAG);
+		createEAttribute(literalLanguageTagEClass, LITERAL_LANGUAGE_TAG__VALUE);
+
+		literalStringEClass = createEClass(LITERAL_STRING);
+		createEAttribute(literalStringEClass, LITERAL_STRING__VALUE);
+
+		literalUUIDEClass = createEClass(LITERAL_UUID);
+		createEAttribute(literalUUIDEClass, LITERAL_UUID__VALUE);
+
+		literalURIEClass = createEClass(LITERAL_URI);
+		createEAttribute(literalURIEClass, LITERAL_URI__VALUE);
+
+		literalNumberEClass = createEClass(LITERAL_NUMBER);
+		createEAttribute(literalNumberEClass, LITERAL_NUMBER__VALUE);
+
 		annotationPropertyValueEClass = createEClass(ANNOTATION_PROPERTY_VALUE);
 		createEAttribute(annotationPropertyValueEClass, ANNOTATION_PROPERTY_VALUE__UUID);
 		createEReference(annotationPropertyValueEClass, ANNOTATION_PROPERTY_VALUE__SUBJECT);
@@ -755,12 +897,7 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		// Create data types
 		iriEDataType = createEDataType(IRI);
 		localNameEDataType = createEDataType(LOCAL_NAME);
-		lexicalValueEDataType = createEDataType(LEXICAL_VALUE);
-		lexicalNumberEDataType = createEDataType(LEXICAL_NUMBER);
-		lexicalTimeEDataType = createEDataType(LEXICAL_TIME);
-		patternEDataType = createEDataType(PATTERN);
 		uuidEDataType = createEDataType(UUID);
-		langRangeEDataType = createEDataType(LANG_RANGE);
 		abbrevIRIEDataType = createEDataType(ABBREV_IRI);
 		namespacePrefixEDataType = createEDataType(NAMESPACE_PREFIX);
 	}
@@ -796,12 +933,41 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		literalDateTimeEClass.getESuperTypes().add(this.getLiteralValue());
+		literalLanguageTagEClass.getESuperTypes().add(this.getLiteralValue());
+		literalStringEClass.getESuperTypes().add(this.getLiteralValue());
+		literalUUIDEClass.getESuperTypes().add(this.getLiteralValue());
+		literalURIEClass.getESuperTypes().add(this.getLiteralValue());
+		literalNumberEClass.getESuperTypes().add(this.getLiteralValue());
 		moduleElementEClass.getESuperTypes().add(this.getElement());
 		moduleEdgeEClass.getESuperTypes().add(this.getElement());
 		moduleEClass.getESuperTypes().add(this.getElement());
 		moduleEClass.getESuperTypes().add(this.getResource());
 
 		// Initialize classes, features, and operations; add parameters
+		initEClass(literalPatternEClass, LiteralPattern.class, "LiteralPattern", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLiteralPattern_Value(), theEcorePackage.getEString(), "value", null, 1, 1, LiteralPattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(literalValueEClass, LiteralValue.class, "LiteralValue", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(literalDateTimeEClass, LiteralDateTime.class, "LiteralDateTime", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLiteralDateTime_Value(), theEcorePackage.getEString(), "value", null, 1, 1, LiteralDateTime.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(literalLanguageTagEClass, LiteralLanguageTag.class, "LiteralLanguageTag", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLiteralLanguageTag_Value(), theEcorePackage.getEString(), "value", null, 1, 1, LiteralLanguageTag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(literalStringEClass, LiteralString.class, "LiteralString", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLiteralString_Value(), theEcorePackage.getEString(), "value", null, 1, 1, LiteralString.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(literalUUIDEClass, LiteralUUID.class, "LiteralUUID", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLiteralUUID_Value(), theEcorePackage.getEString(), "value", null, 1, 1, LiteralUUID.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(literalURIEClass, LiteralURI.class, "LiteralURI", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLiteralURI_Value(), theEcorePackage.getEString(), "value", null, 1, 1, LiteralURI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(literalNumberEClass, LiteralNumber.class, "LiteralNumber", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLiteralNumber_Value(), theEcorePackage.getEString(), "value", null, 1, 1, LiteralNumber.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(annotationPropertyValueEClass, AnnotationPropertyValue.class, "AnnotationPropertyValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAnnotationPropertyValue_Uuid(), this.getUUID(), "uuid", null, 1, 1, AnnotationPropertyValue.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getAnnotationPropertyValue_Subject(), this.getElement(), this.getElement_Annotations(), "subject", null, 1, 1, AnnotationPropertyValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -869,12 +1035,7 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		// Initialize data types
 		initEDataType(iriEDataType, String.class, "IRI", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(localNameEDataType, String.class, "LocalName", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(lexicalValueEDataType, String.class, "LexicalValue", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(lexicalNumberEDataType, String.class, "LexicalNumber", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(lexicalTimeEDataType, String.class, "LexicalTime", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(patternEDataType, String.class, "Pattern", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(uuidEDataType, String.class, "UUID", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(langRangeEDataType, String.class, "LangRange", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(abbrevIRIEDataType, String.class, "AbbrevIRI", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(namespacePrefixEDataType, String.class, "NamespacePrefix", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
