@@ -4,4 +4,9 @@
       <category name="OMLWorkbench"/>
    </feature>
    <category-def name="OMLWorkbench" label="OML Workbench"/>
+   <repository-reference location="http://download.eclipse.org/eclipse/updates/4.6" enabled="true" />
+   <repository-reference location="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/" enabled="true" />
+   <repository-reference location="http://download.eclipse.org/releases/neon/" enabled="true" />
+   <repository-reference location="http://download.eclipse.org/tools/orbit/R-builds/R20170307180635/repository/" enabled="true" />
+   <repository-reference location="http://www.obeo.fr/download/release/designer/9.1/community/latest/repository" enabled="true" />
 </site>
