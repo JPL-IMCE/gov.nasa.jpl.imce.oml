@@ -23,8 +23,10 @@ if test "undefined" != "$t"; then
 </settings>
 EOF
 
+	ls -l ~/.m2
+	md5sum ~/.m2/settings.xml
 	echo "#";
-	echo "# This is a tagged build: $t (if successful, artifacts will be deployed)";
+	echo "# This is a tagged build: $t (if successful, artifacts will be deployed for $BINTRAY_USER)";
 	echo "#";
     mvn -e deploy;
 
