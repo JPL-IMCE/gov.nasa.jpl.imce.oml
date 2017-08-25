@@ -23,7 +23,7 @@
 	<distributionManagement>
 		<repository>
 			<id>bintray</id>
-			<url>https://api.bintray.com/content/jpl-imce/gov.nasa.jpl.imce/${project.name}/${project.version};publish=1</url>
+			<url>https://api.bintray.com/content/jpl-imce/gov.nasa.jpl.imce/${project.artifactId}/${project.version};publish=1</url>
 		</repository>
 	</distributionManagement>
 	
