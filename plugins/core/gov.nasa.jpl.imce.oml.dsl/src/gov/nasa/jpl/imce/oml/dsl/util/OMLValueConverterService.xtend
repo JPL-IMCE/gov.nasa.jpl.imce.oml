@@ -88,14 +88,4 @@ class OMLValueConverterService extends DefaultTerminalConverters {
 		stringValueConverter
 	}
 	
-	override toString(Object value, String lexerRule) {
-		if ("gov.nasa.jpl.imce.oml.dsl.OML.Value" == lexerRule) {
-			val result = '"' + value.toString + '"'
-			result
-		} else {
-		  val result = super.toString(value, lexerRule)
-		  result
-		}
-	}
-	
 }
