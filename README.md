@@ -1,4 +1,7 @@
-# Ontological Modeling Language (OML) Platform & Core Features [![Build Status](https://travis-ci.org/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho.svg?branch=master)](https://travis-ci.org/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho)
+# Ontological Modeling Language (OML) Platform & Core Features
+
+[![Build Status](https://travis-ci.org/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho.svg?branch=master)](https://travis-ci.org/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho)
+[ ![Download](https://api.bintray.com/packages/jpl-imce/gov.nasa.jpl.imce/gov.nasa.jpl.imce.oml/images/download.svg) ](https://bintray.com/jpl-imce/gov.nasa.jpl.imce/gov.nasa.jpl.imce.oml/_latestVersion)
 
 OML is a specification language designed to support rigorous ontological modeling in the context of model-based systems engineering.
 This multi-project is organized according to Eclipse Tycho guidelines.
