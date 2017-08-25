@@ -18,6 +18,7 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies;
 
+import gov.nasa.jpl.imce.oml.model.common.LiteralNumber;
 
 /**
  * <!-- begin-user-doc -->
@@ -71,103 +72,103 @@ package gov.nasa.jpl.imce.oml.model.terminologies;
  */
 public interface NumericScalarRestriction extends RestrictedDataRange {
 	/**
-	 * Returns the value of the '<em><b>Min Inclusive</b></em>' attribute.
+	 * Returns the value of the '<em><b>Min Inclusive</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The inclusive minimum value in the range
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Min Inclusive</em>' attribute.
-	 * @see #setMinInclusive(String)
+	 * @return the value of the '<em>Min Inclusive</em>' containment reference.
+	 * @see #setMinInclusive(LiteralNumber)
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getNumericScalarRestriction_MinInclusive()
-	 * @model unique="false" dataType="gov.nasa.jpl.imce.oml.model.common.LexicalNumber"
+	 * @model containment="true"
 	 * @generated
 	 */
-	String getMinInclusive();
+	LiteralNumber getMinInclusive();
 
 	/**
-	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction#getMinInclusive <em>Min Inclusive</em>}' attribute.
+	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction#getMinInclusive <em>Min Inclusive</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Min Inclusive</em>' attribute.
+	 * @param value the new value of the '<em>Min Inclusive</em>' containment reference.
 	 * @see #getMinInclusive()
 	 * @generated
 	 */
-	void setMinInclusive(String value);
+	void setMinInclusive(LiteralNumber value);
 
 	/**
-	 * Returns the value of the '<em><b>Max Inclusive</b></em>' attribute.
+	 * Returns the value of the '<em><b>Max Inclusive</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The inclusive maximum value in the range
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Max Inclusive</em>' attribute.
-	 * @see #setMaxInclusive(String)
+	 * @return the value of the '<em>Max Inclusive</em>' containment reference.
+	 * @see #setMaxInclusive(LiteralNumber)
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getNumericScalarRestriction_MaxInclusive()
-	 * @model unique="false" dataType="gov.nasa.jpl.imce.oml.model.common.LexicalNumber"
+	 * @model containment="true"
 	 * @generated
 	 */
-	String getMaxInclusive();
+	LiteralNumber getMaxInclusive();
 
 	/**
-	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction#getMaxInclusive <em>Max Inclusive</em>}' attribute.
+	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction#getMaxInclusive <em>Max Inclusive</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Max Inclusive</em>' attribute.
+	 * @param value the new value of the '<em>Max Inclusive</em>' containment reference.
 	 * @see #getMaxInclusive()
 	 * @generated
 	 */
-	void setMaxInclusive(String value);
+	void setMaxInclusive(LiteralNumber value);
 
 	/**
-	 * Returns the value of the '<em><b>Min Exclusive</b></em>' attribute.
+	 * Returns the value of the '<em><b>Min Exclusive</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The exclusive minimum value in the range
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Min Exclusive</em>' attribute.
-	 * @see #setMinExclusive(String)
+	 * @return the value of the '<em>Min Exclusive</em>' containment reference.
+	 * @see #setMinExclusive(LiteralNumber)
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getNumericScalarRestriction_MinExclusive()
-	 * @model unique="false" dataType="gov.nasa.jpl.imce.oml.model.common.LexicalNumber"
+	 * @model containment="true"
 	 * @generated
 	 */
-	String getMinExclusive();
+	LiteralNumber getMinExclusive();
 
 	/**
-	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction#getMinExclusive <em>Min Exclusive</em>}' attribute.
+	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction#getMinExclusive <em>Min Exclusive</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Min Exclusive</em>' attribute.
+	 * @param value the new value of the '<em>Min Exclusive</em>' containment reference.
 	 * @see #getMinExclusive()
 	 * @generated
 	 */
-	void setMinExclusive(String value);
+	void setMinExclusive(LiteralNumber value);
 
 	/**
-	 * Returns the value of the '<em><b>Max Exclusive</b></em>' attribute.
+	 * Returns the value of the '<em><b>Max Exclusive</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The exclusive maximum value in the range
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Max Exclusive</em>' attribute.
-	 * @see #setMaxExclusive(String)
+	 * @return the value of the '<em>Max Exclusive</em>' containment reference.
+	 * @see #setMaxExclusive(LiteralNumber)
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getNumericScalarRestriction_MaxExclusive()
-	 * @model unique="false" dataType="gov.nasa.jpl.imce.oml.model.common.LexicalNumber"
+	 * @model containment="true"
 	 * @generated
 	 */
-	String getMaxExclusive();
+	LiteralNumber getMaxExclusive();
 
 	/**
-	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction#getMaxExclusive <em>Max Exclusive</em>}' attribute.
+	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction#getMaxExclusive <em>Max Exclusive</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Max Exclusive</em>' attribute.
+	 * @param value the new value of the '<em>Max Exclusive</em>' containment reference.
 	 * @see #getMaxExclusive()
 	 * @generated
 	 */
-	void setMaxExclusive(String value);
+	void setMaxExclusive(LiteralNumber value);
 
 } // NumericScalarRestriction

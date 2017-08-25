@@ -348,6 +348,20 @@ public class OMLFormatter extends AbstractFormatter2 {
       document.<UnreifiedRelationshipInstanceTuple>append(document.<UnreifiedRelationshipInstanceTuple>format(it), _function_14);
     };
     descriptionBox.getUnreifiedRelationshipInstanceTuples().forEach(_function_13);
+    final Consumer<SingletonInstanceScalarDataPropertyValue> _function_14 = (SingletonInstanceScalarDataPropertyValue it) -> {
+      final Procedure1<IHiddenRegionFormatter> _function_15 = (IHiddenRegionFormatter it_1) -> {
+        it_1.setNewLines(2);
+      };
+      document.<SingletonInstanceScalarDataPropertyValue>append(document.<SingletonInstanceScalarDataPropertyValue>format(it), _function_15);
+    };
+    descriptionBox.getSingletonScalarDataPropertyValues().forEach(_function_14);
+    final Consumer<SingletonInstanceStructuredDataPropertyValue> _function_15 = (SingletonInstanceStructuredDataPropertyValue it) -> {
+      final Procedure1<IHiddenRegionFormatter> _function_16 = (IHiddenRegionFormatter it_1) -> {
+        it_1.setNewLines(2);
+      };
+      document.<SingletonInstanceStructuredDataPropertyValue>append(document.<SingletonInstanceStructuredDataPropertyValue>format(it), _function_16);
+    };
+    descriptionBox.getSingletonStructuredDataPropertyValues().forEach(_function_15);
   }
   
   protected void _format(final Aspect aspect, @Extension final IFormattableDocument document) {
@@ -1292,7 +1306,7 @@ public class OMLFormatter extends AbstractFormatter2 {
     final Procedure1<IHiddenRegionFormatter> _function_7 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getBinaryScalarRestrictionAccess().getLengthINTTerminalRuleCall_4_0_1_0()), _function_7);
+    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getBinaryScalarRestrictionAccess().getLengthDIGITSTerminalRuleCall_4_0_1_0()), _function_7);
     final Procedure1<IHiddenRegionFormatter> _function_8 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
@@ -1300,7 +1314,7 @@ public class OMLFormatter extends AbstractFormatter2 {
     final Procedure1<IHiddenRegionFormatter> _function_9 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getBinaryScalarRestrictionAccess().getMinLengthINTTerminalRuleCall_4_1_1_0()), _function_9);
+    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getBinaryScalarRestrictionAccess().getMinLengthDIGITSTerminalRuleCall_4_1_1_0()), _function_9);
     final Procedure1<IHiddenRegionFormatter> _function_10 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
@@ -1308,7 +1322,7 @@ public class OMLFormatter extends AbstractFormatter2 {
     final Procedure1<IHiddenRegionFormatter> _function_11 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getBinaryScalarRestrictionAccess().getMaxLengthINTTerminalRuleCall_4_2_1_0()), _function_11);
+    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getBinaryScalarRestrictionAccess().getMaxLengthDIGITSTerminalRuleCall_4_2_1_0()), _function_11);
     final Procedure1<IHiddenRegionFormatter> _function_12 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
@@ -1356,7 +1370,7 @@ public class OMLFormatter extends AbstractFormatter2 {
     final Procedure1<IHiddenRegionFormatter> _function_7 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getIRIScalarRestrictionAccess().getLengthINTTerminalRuleCall_4_0_1_0()), _function_7);
+    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getIRIScalarRestrictionAccess().getLengthDIGITSTerminalRuleCall_4_0_1_0()), _function_7);
     final Procedure1<IHiddenRegionFormatter> _function_8 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
@@ -1364,7 +1378,7 @@ public class OMLFormatter extends AbstractFormatter2 {
     final Procedure1<IHiddenRegionFormatter> _function_9 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getIRIScalarRestrictionAccess().getMinLengthINTTerminalRuleCall_4_1_1_0()), _function_9);
+    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getIRIScalarRestrictionAccess().getMinLengthDIGITSTerminalRuleCall_4_1_1_0()), _function_9);
     final Procedure1<IHiddenRegionFormatter> _function_10 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
@@ -1372,7 +1386,7 @@ public class OMLFormatter extends AbstractFormatter2 {
     final Procedure1<IHiddenRegionFormatter> _function_11 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getIRIScalarRestrictionAccess().getMaxLengthINTTerminalRuleCall_4_2_1_0()), _function_11);
+    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getIRIScalarRestrictionAccess().getMaxLengthDIGITSTerminalRuleCall_4_2_1_0()), _function_11);
     final Procedure1<IHiddenRegionFormatter> _function_12 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
@@ -1380,7 +1394,7 @@ public class OMLFormatter extends AbstractFormatter2 {
     final Procedure1<IHiddenRegionFormatter> _function_13 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getIRIScalarRestrictionAccess().getPatternSTRINGTerminalRuleCall_4_3_1_0()), _function_13);
+    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getIRIScalarRestrictionAccess().getPatternLiteralPatternParserRuleCall_4_3_1_0()), _function_13);
     final Procedure1<IHiddenRegionFormatter> _function_14 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
@@ -1428,7 +1442,7 @@ public class OMLFormatter extends AbstractFormatter2 {
     final Procedure1<IHiddenRegionFormatter> _function_7 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getNumericScalarRestrictionAccess().getMinInclusiveSTRINGTerminalRuleCall_4_0_1_0()), _function_7);
+    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getNumericScalarRestrictionAccess().getMinInclusiveLiteralNumberParserRuleCall_4_0_1_0()), _function_7);
     final Procedure1<IHiddenRegionFormatter> _function_8 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
@@ -1436,7 +1450,7 @@ public class OMLFormatter extends AbstractFormatter2 {
     final Procedure1<IHiddenRegionFormatter> _function_9 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getNumericScalarRestrictionAccess().getMaxInclusiveSTRINGTerminalRuleCall_4_1_1_0()), _function_9);
+    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getNumericScalarRestrictionAccess().getMaxInclusiveLiteralNumberParserRuleCall_4_1_1_0()), _function_9);
     final Procedure1<IHiddenRegionFormatter> _function_10 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
@@ -1444,7 +1458,7 @@ public class OMLFormatter extends AbstractFormatter2 {
     final Procedure1<IHiddenRegionFormatter> _function_11 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getNumericScalarRestrictionAccess().getMinExclusiveSTRINGTerminalRuleCall_4_2_1_0()), _function_11);
+    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getNumericScalarRestrictionAccess().getMinExclusiveLiteralNumberParserRuleCall_4_2_1_0()), _function_11);
     final Procedure1<IHiddenRegionFormatter> _function_12 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
@@ -1452,7 +1466,7 @@ public class OMLFormatter extends AbstractFormatter2 {
     final Procedure1<IHiddenRegionFormatter> _function_13 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getNumericScalarRestrictionAccess().getMaxExclusiveSTRINGTerminalRuleCall_4_3_1_0()), _function_13);
+    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getNumericScalarRestrictionAccess().getMaxExclusiveLiteralNumberParserRuleCall_4_3_1_0()), _function_13);
     final Procedure1<IHiddenRegionFormatter> _function_14 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
@@ -1500,7 +1514,7 @@ public class OMLFormatter extends AbstractFormatter2 {
     final Procedure1<IHiddenRegionFormatter> _function_7 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getPlainLiteralScalarRestrictionAccess().getLengthINTTerminalRuleCall_4_0_1_0()), _function_7);
+    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getPlainLiteralScalarRestrictionAccess().getLengthDIGITSTerminalRuleCall_4_0_1_0()), _function_7);
     final Procedure1<IHiddenRegionFormatter> _function_8 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
@@ -1508,7 +1522,7 @@ public class OMLFormatter extends AbstractFormatter2 {
     final Procedure1<IHiddenRegionFormatter> _function_9 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getPlainLiteralScalarRestrictionAccess().getMinLengthINTTerminalRuleCall_4_1_1_0()), _function_9);
+    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getPlainLiteralScalarRestrictionAccess().getMinLengthDIGITSTerminalRuleCall_4_1_1_0()), _function_9);
     final Procedure1<IHiddenRegionFormatter> _function_10 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
@@ -1516,7 +1530,7 @@ public class OMLFormatter extends AbstractFormatter2 {
     final Procedure1<IHiddenRegionFormatter> _function_11 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getPlainLiteralScalarRestrictionAccess().getMaxLengthINTTerminalRuleCall_4_2_1_0()), _function_11);
+    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getPlainLiteralScalarRestrictionAccess().getMaxLengthDIGITSTerminalRuleCall_4_2_1_0()), _function_11);
     final Procedure1<IHiddenRegionFormatter> _function_12 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
@@ -1524,7 +1538,7 @@ public class OMLFormatter extends AbstractFormatter2 {
     final Procedure1<IHiddenRegionFormatter> _function_13 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getPlainLiteralScalarRestrictionAccess().getPatternSTRINGTerminalRuleCall_4_3_1_0()), _function_13);
+    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getPlainLiteralScalarRestrictionAccess().getPatternLiteralPatternParserRuleCall_4_3_1_0()), _function_13);
     final Procedure1<IHiddenRegionFormatter> _function_14 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
@@ -1532,7 +1546,7 @@ public class OMLFormatter extends AbstractFormatter2 {
     final Procedure1<IHiddenRegionFormatter> _function_15 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getPlainLiteralScalarRestrictionAccess().getLangRangeSTRINGTerminalRuleCall_4_4_1_0()), _function_15);
+    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getPlainLiteralScalarRestrictionAccess().getLangRangeLiteralLanguageTagParserRuleCall_4_4_1_0()), _function_15);
     final Procedure1<IHiddenRegionFormatter> _function_16 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
@@ -1638,7 +1652,7 @@ public class OMLFormatter extends AbstractFormatter2 {
     final Procedure1<IHiddenRegionFormatter> _function_7 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getStringScalarRestrictionAccess().getLengthINTTerminalRuleCall_4_0_1_0()), _function_7);
+    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getStringScalarRestrictionAccess().getLengthDIGITSTerminalRuleCall_4_0_1_0()), _function_7);
     final Procedure1<IHiddenRegionFormatter> _function_8 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
@@ -1646,7 +1660,7 @@ public class OMLFormatter extends AbstractFormatter2 {
     final Procedure1<IHiddenRegionFormatter> _function_9 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getStringScalarRestrictionAccess().getMinLengthINTTerminalRuleCall_4_1_1_0()), _function_9);
+    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getStringScalarRestrictionAccess().getMinLengthDIGITSTerminalRuleCall_4_1_1_0()), _function_9);
     final Procedure1<IHiddenRegionFormatter> _function_10 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
@@ -1654,7 +1668,7 @@ public class OMLFormatter extends AbstractFormatter2 {
     final Procedure1<IHiddenRegionFormatter> _function_11 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getStringScalarRestrictionAccess().getMaxLengthINTTerminalRuleCall_4_2_1_0()), _function_11);
+    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getStringScalarRestrictionAccess().getMaxLengthDIGITSTerminalRuleCall_4_2_1_0()), _function_11);
     final Procedure1<IHiddenRegionFormatter> _function_12 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
@@ -1662,7 +1676,7 @@ public class OMLFormatter extends AbstractFormatter2 {
     final Procedure1<IHiddenRegionFormatter> _function_13 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getStringScalarRestrictionAccess().getPatternSTRINGTerminalRuleCall_4_3_1_0()), _function_13);
+    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getStringScalarRestrictionAccess().getPatternLiteralPatternParserRuleCall_4_3_1_0()), _function_13);
     final Procedure1<IHiddenRegionFormatter> _function_14 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
@@ -1750,7 +1764,7 @@ public class OMLFormatter extends AbstractFormatter2 {
     final Procedure1<IHiddenRegionFormatter> _function_7 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getTimeScalarRestrictionAccess().getMinInclusiveSTRINGTerminalRuleCall_4_0_1_0()), _function_7);
+    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getTimeScalarRestrictionAccess().getMinInclusiveLiteralDateTimeParserRuleCall_4_0_1_0()), _function_7);
     final Procedure1<IHiddenRegionFormatter> _function_8 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
@@ -1758,7 +1772,7 @@ public class OMLFormatter extends AbstractFormatter2 {
     final Procedure1<IHiddenRegionFormatter> _function_9 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getTimeScalarRestrictionAccess().getMaxInclusiveSTRINGTerminalRuleCall_4_1_1_0()), _function_9);
+    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getTimeScalarRestrictionAccess().getMaxInclusiveLiteralDateTimeParserRuleCall_4_1_1_0()), _function_9);
     final Procedure1<IHiddenRegionFormatter> _function_10 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
@@ -1766,7 +1780,7 @@ public class OMLFormatter extends AbstractFormatter2 {
     final Procedure1<IHiddenRegionFormatter> _function_11 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getTimeScalarRestrictionAccess().getMinExclusiveSTRINGTerminalRuleCall_4_2_1_0()), _function_11);
+    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getTimeScalarRestrictionAccess().getMinExclusiveLiteralDateTimeParserRuleCall_4_2_1_0()), _function_11);
     final Procedure1<IHiddenRegionFormatter> _function_12 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
@@ -1774,7 +1788,7 @@ public class OMLFormatter extends AbstractFormatter2 {
     final Procedure1<IHiddenRegionFormatter> _function_13 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getTimeScalarRestrictionAccess().getMaxExclusiveSTRINGTerminalRuleCall_4_3_1_0()), _function_13);
+    document.append(this.textRegionExtensions.regionFor(sc).ruleCall(this._oMLGrammarAccess.getTimeScalarRestrictionAccess().getMaxExclusiveLiteralDateTimeParserRuleCall_4_3_1_0()), _function_13);
     final Procedure1<IHiddenRegionFormatter> _function_14 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };

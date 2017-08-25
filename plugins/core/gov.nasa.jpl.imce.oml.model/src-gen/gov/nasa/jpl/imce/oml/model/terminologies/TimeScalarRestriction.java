@@ -18,6 +18,7 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies;
 
+import gov.nasa.jpl.imce.oml.model.common.LiteralDateTime;
 
 /**
  * <!-- begin-user-doc -->
@@ -55,103 +56,103 @@ package gov.nasa.jpl.imce.oml.model.terminologies;
  */
 public interface TimeScalarRestriction extends RestrictedDataRange {
 	/**
-	 * Returns the value of the '<em><b>Min Inclusive</b></em>' attribute.
+	 * Returns the value of the '<em><b>Min Inclusive</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The inclusive minimum value in the range
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Min Inclusive</em>' attribute.
-	 * @see #setMinInclusive(String)
+	 * @return the value of the '<em>Min Inclusive</em>' containment reference.
+	 * @see #setMinInclusive(LiteralDateTime)
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getTimeScalarRestriction_MinInclusive()
-	 * @model unique="false" dataType="gov.nasa.jpl.imce.oml.model.common.LexicalTime"
+	 * @model containment="true"
 	 * @generated
 	 */
-	String getMinInclusive();
+	LiteralDateTime getMinInclusive();
 
 	/**
-	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.TimeScalarRestriction#getMinInclusive <em>Min Inclusive</em>}' attribute.
+	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.TimeScalarRestriction#getMinInclusive <em>Min Inclusive</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Min Inclusive</em>' attribute.
+	 * @param value the new value of the '<em>Min Inclusive</em>' containment reference.
 	 * @see #getMinInclusive()
 	 * @generated
 	 */
-	void setMinInclusive(String value);
+	void setMinInclusive(LiteralDateTime value);
 
 	/**
-	 * Returns the value of the '<em><b>Max Inclusive</b></em>' attribute.
+	 * Returns the value of the '<em><b>Max Inclusive</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The inclusive maximum value in the range
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Max Inclusive</em>' attribute.
-	 * @see #setMaxInclusive(String)
+	 * @return the value of the '<em>Max Inclusive</em>' containment reference.
+	 * @see #setMaxInclusive(LiteralDateTime)
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getTimeScalarRestriction_MaxInclusive()
-	 * @model unique="false" dataType="gov.nasa.jpl.imce.oml.model.common.LexicalTime"
+	 * @model containment="true"
 	 * @generated
 	 */
-	String getMaxInclusive();
+	LiteralDateTime getMaxInclusive();
 
 	/**
-	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.TimeScalarRestriction#getMaxInclusive <em>Max Inclusive</em>}' attribute.
+	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.TimeScalarRestriction#getMaxInclusive <em>Max Inclusive</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Max Inclusive</em>' attribute.
+	 * @param value the new value of the '<em>Max Inclusive</em>' containment reference.
 	 * @see #getMaxInclusive()
 	 * @generated
 	 */
-	void setMaxInclusive(String value);
+	void setMaxInclusive(LiteralDateTime value);
 
 	/**
-	 * Returns the value of the '<em><b>Min Exclusive</b></em>' attribute.
+	 * Returns the value of the '<em><b>Min Exclusive</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The exclusive minimum value in the range
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Min Exclusive</em>' attribute.
-	 * @see #setMinExclusive(String)
+	 * @return the value of the '<em>Min Exclusive</em>' containment reference.
+	 * @see #setMinExclusive(LiteralDateTime)
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getTimeScalarRestriction_MinExclusive()
-	 * @model unique="false" dataType="gov.nasa.jpl.imce.oml.model.common.LexicalTime"
+	 * @model containment="true"
 	 * @generated
 	 */
-	String getMinExclusive();
+	LiteralDateTime getMinExclusive();
 
 	/**
-	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.TimeScalarRestriction#getMinExclusive <em>Min Exclusive</em>}' attribute.
+	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.TimeScalarRestriction#getMinExclusive <em>Min Exclusive</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Min Exclusive</em>' attribute.
+	 * @param value the new value of the '<em>Min Exclusive</em>' containment reference.
 	 * @see #getMinExclusive()
 	 * @generated
 	 */
-	void setMinExclusive(String value);
+	void setMinExclusive(LiteralDateTime value);
 
 	/**
-	 * Returns the value of the '<em><b>Max Exclusive</b></em>' attribute.
+	 * Returns the value of the '<em><b>Max Exclusive</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The exclusive maximum value in the range
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Max Exclusive</em>' attribute.
-	 * @see #setMaxExclusive(String)
+	 * @return the value of the '<em>Max Exclusive</em>' containment reference.
+	 * @see #setMaxExclusive(LiteralDateTime)
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getTimeScalarRestriction_MaxExclusive()
-	 * @model unique="false" dataType="gov.nasa.jpl.imce.oml.model.common.LexicalTime"
+	 * @model containment="true"
 	 * @generated
 	 */
-	String getMaxExclusive();
+	LiteralDateTime getMaxExclusive();
 
 	/**
-	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.TimeScalarRestriction#getMaxExclusive <em>Max Exclusive</em>}' attribute.
+	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.TimeScalarRestriction#getMaxExclusive <em>Max Exclusive</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Max Exclusive</em>' attribute.
+	 * @param value the new value of the '<em>Max Exclusive</em>' containment reference.
 	 * @see #getMaxExclusive()
 	 * @generated
 	 */
-	void setMaxExclusive(String value);
+	void setMaxExclusive(LiteralDateTime value);
 
 } // TimeScalarRestriction

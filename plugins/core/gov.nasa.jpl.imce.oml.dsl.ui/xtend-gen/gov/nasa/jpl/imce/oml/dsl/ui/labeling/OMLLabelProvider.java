@@ -21,6 +21,7 @@ import com.google.inject.Inject;
 import gov.nasa.jpl.imce.oml.model.bundles.Bundle;
 import gov.nasa.jpl.imce.oml.model.common.AnnotationProperty;
 import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue;
+import gov.nasa.jpl.imce.oml.model.common.LiteralValue;
 import gov.nasa.jpl.imce.oml.model.common.Module;
 import gov.nasa.jpl.imce.oml.model.common.ModuleEdge;
 import gov.nasa.jpl.imce.oml.model.descriptions.ConceptualEntitySingletonInstance;
@@ -406,7 +407,7 @@ public class OMLLabelProvider extends DefaultEObjectLabelProvider {
     Object _text = this.text(_elvis);
     String _plus = ("oneOf " + _text);
     String _plus_1 = (_plus + " = ");
-    String _value = ax.getValue();
+    LiteralValue _value = ax.getValue();
     return (_plus_1 + _value);
   }
   
@@ -494,7 +495,7 @@ public class OMLLabelProvider extends DefaultEObjectLabelProvider {
     }
     String _plus_1 = (_plus + _elvis_1);
     String _plus_2 = (_plus_1 + " = ");
-    String _scalarPropertyValue = e.getScalarPropertyValue();
+    LiteralValue _scalarPropertyValue = e.getScalarPropertyValue();
     return (_plus_2 + _scalarPropertyValue);
   }
   
@@ -536,7 +537,7 @@ public class OMLLabelProvider extends DefaultEObjectLabelProvider {
     }
     String _plus = (" . " + _elvis);
     String _plus_1 = (_plus + " = ");
-    String _scalarPropertyValue = e.getScalarPropertyValue();
+    LiteralValue _scalarPropertyValue = e.getScalarPropertyValue();
     return (_plus_1 + _scalarPropertyValue);
   }
   

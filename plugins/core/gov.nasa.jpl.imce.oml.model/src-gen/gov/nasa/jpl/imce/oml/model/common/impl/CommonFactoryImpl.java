@@ -73,6 +73,13 @@ public class CommonFactoryImpl extends EFactoryImpl implements CommonFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
+			case CommonPackage.LITERAL_PATTERN: return (EObject)createLiteralPattern();
+			case CommonPackage.LITERAL_DATE_TIME: return (EObject)createLiteralDateTime();
+			case CommonPackage.LITERAL_LANGUAGE_TAG: return (EObject)createLiteralLanguageTag();
+			case CommonPackage.LITERAL_STRING: return (EObject)createLiteralString();
+			case CommonPackage.LITERAL_UUID: return (EObject)createLiteralUUID();
+			case CommonPackage.LITERAL_URI: return (EObject)createLiteralURI();
+			case CommonPackage.LITERAL_NUMBER: return (EObject)createLiteralNumber();
 			case CommonPackage.ANNOTATION_PROPERTY_VALUE: return (EObject)createAnnotationPropertyValue();
 			case CommonPackage.ANNOTATION_PROPERTY: return (EObject)createAnnotationProperty();
 			case CommonPackage.EXTENT: return (EObject)createExtent();
@@ -93,18 +100,8 @@ public class CommonFactoryImpl extends EFactoryImpl implements CommonFactory {
 				return createIRIFromString(eDataType, initialValue);
 			case CommonPackage.LOCAL_NAME:
 				return createLocalNameFromString(eDataType, initialValue);
-			case CommonPackage.LEXICAL_VALUE:
-				return createLexicalValueFromString(eDataType, initialValue);
-			case CommonPackage.LEXICAL_NUMBER:
-				return createLexicalNumberFromString(eDataType, initialValue);
-			case CommonPackage.LEXICAL_TIME:
-				return createLexicalTimeFromString(eDataType, initialValue);
-			case CommonPackage.PATTERN:
-				return createPatternFromString(eDataType, initialValue);
 			case CommonPackage.UUID:
 				return createUUIDFromString(eDataType, initialValue);
-			case CommonPackage.LANG_RANGE:
-				return createLangRangeFromString(eDataType, initialValue);
 			case CommonPackage.ABBREV_IRI:
 				return createAbbrevIRIFromString(eDataType, initialValue);
 			case CommonPackage.NAMESPACE_PREFIX:
@@ -126,18 +123,8 @@ public class CommonFactoryImpl extends EFactoryImpl implements CommonFactory {
 				return convertIRIToString(eDataType, instanceValue);
 			case CommonPackage.LOCAL_NAME:
 				return convertLocalNameToString(eDataType, instanceValue);
-			case CommonPackage.LEXICAL_VALUE:
-				return convertLexicalValueToString(eDataType, instanceValue);
-			case CommonPackage.LEXICAL_NUMBER:
-				return convertLexicalNumberToString(eDataType, instanceValue);
-			case CommonPackage.LEXICAL_TIME:
-				return convertLexicalTimeToString(eDataType, instanceValue);
-			case CommonPackage.PATTERN:
-				return convertPatternToString(eDataType, instanceValue);
 			case CommonPackage.UUID:
 				return convertUUIDToString(eDataType, instanceValue);
-			case CommonPackage.LANG_RANGE:
-				return convertLangRangeToString(eDataType, instanceValue);
 			case CommonPackage.ABBREV_IRI:
 				return convertAbbrevIRIToString(eDataType, instanceValue);
 			case CommonPackage.NAMESPACE_PREFIX:
@@ -145,6 +132,76 @@ public class CommonFactoryImpl extends EFactoryImpl implements CommonFactory {
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LiteralPattern createLiteralPattern() {
+		LiteralPatternImpl literalPattern = new LiteralPatternImpl();
+		return literalPattern;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LiteralDateTime createLiteralDateTime() {
+		LiteralDateTimeImpl literalDateTime = new LiteralDateTimeImpl();
+		return literalDateTime;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LiteralLanguageTag createLiteralLanguageTag() {
+		LiteralLanguageTagImpl literalLanguageTag = new LiteralLanguageTagImpl();
+		return literalLanguageTag;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LiteralString createLiteralString() {
+		LiteralStringImpl literalString = new LiteralStringImpl();
+		return literalString;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LiteralUUID createLiteralUUID() {
+		LiteralUUIDImpl literalUUID = new LiteralUUIDImpl();
+		return literalUUID;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LiteralURI createLiteralURI() {
+		LiteralURIImpl literalURI = new LiteralURIImpl();
+		return literalURI;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LiteralNumber createLiteralNumber() {
+		LiteralNumberImpl literalNumber = new LiteralNumberImpl();
+		return literalNumber;
 	}
 
 	/**
@@ -218,78 +275,6 @@ public class CommonFactoryImpl extends EFactoryImpl implements CommonFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String createLexicalValueFromString(EDataType eDataType, String initialValue) {
-		return (String)super.createFromString(eDataType, initialValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertLexicalValueToString(EDataType eDataType, Object instanceValue) {
-		return super.convertToString(eDataType, instanceValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String createLexicalNumberFromString(EDataType eDataType, String initialValue) {
-		return (String)super.createFromString(eDataType, initialValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertLexicalNumberToString(EDataType eDataType, Object instanceValue) {
-		return super.convertToString(eDataType, instanceValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String createLexicalTimeFromString(EDataType eDataType, String initialValue) {
-		return (String)super.createFromString(eDataType, initialValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertLexicalTimeToString(EDataType eDataType, Object instanceValue) {
-		return super.convertToString(eDataType, instanceValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String createPatternFromString(EDataType eDataType, String initialValue) {
-		return (String)super.createFromString(eDataType, initialValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertPatternToString(EDataType eDataType, Object instanceValue) {
-		return super.convertToString(eDataType, instanceValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public String createUUIDFromString(EDataType eDataType, String initialValue) {
 		return (String)super.createFromString(eDataType, initialValue);
 	}
@@ -300,24 +285,6 @@ public class CommonFactoryImpl extends EFactoryImpl implements CommonFactory {
 	 * @generated
 	 */
 	public String convertUUIDToString(EDataType eDataType, Object instanceValue) {
-		return super.convertToString(eDataType, instanceValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String createLangRangeFromString(EDataType eDataType, String initialValue) {
-		return (String)super.createFromString(eDataType, initialValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertLangRangeToString(EDataType eDataType, Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 

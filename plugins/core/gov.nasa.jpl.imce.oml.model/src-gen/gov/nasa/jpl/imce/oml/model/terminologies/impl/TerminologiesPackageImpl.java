@@ -1761,8 +1761,8 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getEntityScalarDataPropertyParticularRestrictionAxiom_LiteralValue() {
-		return (EAttribute)entityScalarDataPropertyParticularRestrictionAxiomEClass.getEStructuralFeatures().get(0);
+	public EReference getEntityScalarDataPropertyParticularRestrictionAxiom_LiteralValue() {
+		return (EReference)entityScalarDataPropertyParticularRestrictionAxiomEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1968,8 +1968,8 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getRestrictionScalarDataPropertyValue_ScalarPropertyValue() {
-		return (EAttribute)restrictionScalarDataPropertyValueEClass.getEStructuralFeatures().get(2);
+	public EReference getRestrictionScalarDataPropertyValue_ScalarPropertyValue() {
+		return (EReference)restrictionScalarDataPropertyValueEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -2094,8 +2094,8 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getIRIScalarRestriction_Pattern() {
-		return (EAttribute)iriScalarRestrictionEClass.getEStructuralFeatures().get(3);
+	public EReference getIRIScalarRestriction_Pattern() {
+		return (EReference)iriScalarRestrictionEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -2112,8 +2112,8 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getNumericScalarRestriction_MinInclusive() {
-		return (EAttribute)numericScalarRestrictionEClass.getEStructuralFeatures().get(0);
+	public EReference getNumericScalarRestriction_MinInclusive() {
+		return (EReference)numericScalarRestrictionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -2121,8 +2121,8 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getNumericScalarRestriction_MaxInclusive() {
-		return (EAttribute)numericScalarRestrictionEClass.getEStructuralFeatures().get(1);
+	public EReference getNumericScalarRestriction_MaxInclusive() {
+		return (EReference)numericScalarRestrictionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -2130,8 +2130,8 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getNumericScalarRestriction_MinExclusive() {
-		return (EAttribute)numericScalarRestrictionEClass.getEStructuralFeatures().get(2);
+	public EReference getNumericScalarRestriction_MinExclusive() {
+		return (EReference)numericScalarRestrictionEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -2139,8 +2139,8 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getNumericScalarRestriction_MaxExclusive() {
-		return (EAttribute)numericScalarRestrictionEClass.getEStructuralFeatures().get(3);
+	public EReference getNumericScalarRestriction_MaxExclusive() {
+		return (EReference)numericScalarRestrictionEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -2184,8 +2184,8 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPlainLiteralScalarRestriction_Pattern() {
-		return (EAttribute)plainLiteralScalarRestrictionEClass.getEStructuralFeatures().get(3);
+	public EReference getPlainLiteralScalarRestriction_Pattern() {
+		return (EReference)plainLiteralScalarRestrictionEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -2193,8 +2193,8 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPlainLiteralScalarRestriction_LangRange() {
-		return (EAttribute)plainLiteralScalarRestrictionEClass.getEStructuralFeatures().get(4);
+	public EReference getPlainLiteralScalarRestriction_LangRange() {
+		return (EReference)plainLiteralScalarRestrictionEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -2238,8 +2238,8 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getStringScalarRestriction_Pattern() {
-		return (EAttribute)stringScalarRestrictionEClass.getEStructuralFeatures().get(3);
+	public EReference getStringScalarRestriction_Pattern() {
+		return (EReference)stringScalarRestrictionEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -2256,8 +2256,8 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTimeScalarRestriction_MinInclusive() {
-		return (EAttribute)timeScalarRestrictionEClass.getEStructuralFeatures().get(0);
+	public EReference getTimeScalarRestriction_MinInclusive() {
+		return (EReference)timeScalarRestrictionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -2265,8 +2265,8 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTimeScalarRestriction_MaxInclusive() {
-		return (EAttribute)timeScalarRestrictionEClass.getEStructuralFeatures().get(1);
+	public EReference getTimeScalarRestriction_MaxInclusive() {
+		return (EReference)timeScalarRestrictionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -2274,8 +2274,8 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTimeScalarRestriction_MinExclusive() {
-		return (EAttribute)timeScalarRestrictionEClass.getEStructuralFeatures().get(2);
+	public EReference getTimeScalarRestriction_MinExclusive() {
+		return (EReference)timeScalarRestrictionEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -2283,8 +2283,8 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTimeScalarRestriction_MaxExclusive() {
-		return (EAttribute)timeScalarRestrictionEClass.getEStructuralFeatures().get(3);
+	public EReference getTimeScalarRestriction_MaxExclusive() {
+		return (EReference)timeScalarRestrictionEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -2328,8 +2328,8 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getScalarOneOfLiteralAxiom_Value() {
-		return (EAttribute)scalarOneOfLiteralAxiomEClass.getEStructuralFeatures().get(1);
+	public EReference getScalarOneOfLiteralAxiom_Value() {
+		return (EReference)scalarOneOfLiteralAxiomEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -2560,7 +2560,7 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		createEOperation(entityScalarDataPropertyUniversalRestrictionAxiomEClass, ENTITY_SCALAR_DATA_PROPERTY_UNIVERSAL_RESTRICTION_AXIOM___UUID);
 
 		entityScalarDataPropertyParticularRestrictionAxiomEClass = createEClass(ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM);
-		createEAttribute(entityScalarDataPropertyParticularRestrictionAxiomEClass, ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__LITERAL_VALUE);
+		createEReference(entityScalarDataPropertyParticularRestrictionAxiomEClass, ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__LITERAL_VALUE);
 		createEOperation(entityScalarDataPropertyParticularRestrictionAxiomEClass, ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM___UUID);
 
 		entityStructuredDataPropertyRestrictionAxiomEClass = createEClass(ENTITY_STRUCTURED_DATA_PROPERTY_RESTRICTION_AXIOM);
@@ -2588,7 +2588,7 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		restrictionScalarDataPropertyValueEClass = createEClass(RESTRICTION_SCALAR_DATA_PROPERTY_VALUE);
 		createEReference(restrictionScalarDataPropertyValueEClass, RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__STRUCTURED_DATA_PROPERTY_CONTEXT);
 		createEReference(restrictionScalarDataPropertyValueEClass, RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__SCALAR_DATA_PROPERTY);
-		createEAttribute(restrictionScalarDataPropertyValueEClass, RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE);
+		createEReference(restrictionScalarDataPropertyValueEClass, RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE);
 		createEOperation(restrictionScalarDataPropertyValueEClass, RESTRICTION_SCALAR_DATA_PROPERTY_VALUE___TERMINOLOGY_BOX);
 		createEOperation(restrictionScalarDataPropertyValueEClass, RESTRICTION_SCALAR_DATA_PROPERTY_VALUE___UUID);
 		createEOperation(restrictionScalarDataPropertyValueEClass, RESTRICTION_SCALAR_DATA_PROPERTY_VALUE___MODULE_CONTEXT);
@@ -2605,32 +2605,32 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		createEAttribute(iriScalarRestrictionEClass, IRI_SCALAR_RESTRICTION__LENGTH);
 		createEAttribute(iriScalarRestrictionEClass, IRI_SCALAR_RESTRICTION__MIN_LENGTH);
 		createEAttribute(iriScalarRestrictionEClass, IRI_SCALAR_RESTRICTION__MAX_LENGTH);
-		createEAttribute(iriScalarRestrictionEClass, IRI_SCALAR_RESTRICTION__PATTERN);
+		createEReference(iriScalarRestrictionEClass, IRI_SCALAR_RESTRICTION__PATTERN);
 
 		numericScalarRestrictionEClass = createEClass(NUMERIC_SCALAR_RESTRICTION);
-		createEAttribute(numericScalarRestrictionEClass, NUMERIC_SCALAR_RESTRICTION__MIN_INCLUSIVE);
-		createEAttribute(numericScalarRestrictionEClass, NUMERIC_SCALAR_RESTRICTION__MAX_INCLUSIVE);
-		createEAttribute(numericScalarRestrictionEClass, NUMERIC_SCALAR_RESTRICTION__MIN_EXCLUSIVE);
-		createEAttribute(numericScalarRestrictionEClass, NUMERIC_SCALAR_RESTRICTION__MAX_EXCLUSIVE);
+		createEReference(numericScalarRestrictionEClass, NUMERIC_SCALAR_RESTRICTION__MIN_INCLUSIVE);
+		createEReference(numericScalarRestrictionEClass, NUMERIC_SCALAR_RESTRICTION__MAX_INCLUSIVE);
+		createEReference(numericScalarRestrictionEClass, NUMERIC_SCALAR_RESTRICTION__MIN_EXCLUSIVE);
+		createEReference(numericScalarRestrictionEClass, NUMERIC_SCALAR_RESTRICTION__MAX_EXCLUSIVE);
 
 		plainLiteralScalarRestrictionEClass = createEClass(PLAIN_LITERAL_SCALAR_RESTRICTION);
 		createEAttribute(plainLiteralScalarRestrictionEClass, PLAIN_LITERAL_SCALAR_RESTRICTION__LENGTH);
 		createEAttribute(plainLiteralScalarRestrictionEClass, PLAIN_LITERAL_SCALAR_RESTRICTION__MIN_LENGTH);
 		createEAttribute(plainLiteralScalarRestrictionEClass, PLAIN_LITERAL_SCALAR_RESTRICTION__MAX_LENGTH);
-		createEAttribute(plainLiteralScalarRestrictionEClass, PLAIN_LITERAL_SCALAR_RESTRICTION__PATTERN);
-		createEAttribute(plainLiteralScalarRestrictionEClass, PLAIN_LITERAL_SCALAR_RESTRICTION__LANG_RANGE);
+		createEReference(plainLiteralScalarRestrictionEClass, PLAIN_LITERAL_SCALAR_RESTRICTION__PATTERN);
+		createEReference(plainLiteralScalarRestrictionEClass, PLAIN_LITERAL_SCALAR_RESTRICTION__LANG_RANGE);
 
 		stringScalarRestrictionEClass = createEClass(STRING_SCALAR_RESTRICTION);
 		createEAttribute(stringScalarRestrictionEClass, STRING_SCALAR_RESTRICTION__LENGTH);
 		createEAttribute(stringScalarRestrictionEClass, STRING_SCALAR_RESTRICTION__MIN_LENGTH);
 		createEAttribute(stringScalarRestrictionEClass, STRING_SCALAR_RESTRICTION__MAX_LENGTH);
-		createEAttribute(stringScalarRestrictionEClass, STRING_SCALAR_RESTRICTION__PATTERN);
+		createEReference(stringScalarRestrictionEClass, STRING_SCALAR_RESTRICTION__PATTERN);
 
 		timeScalarRestrictionEClass = createEClass(TIME_SCALAR_RESTRICTION);
-		createEAttribute(timeScalarRestrictionEClass, TIME_SCALAR_RESTRICTION__MIN_INCLUSIVE);
-		createEAttribute(timeScalarRestrictionEClass, TIME_SCALAR_RESTRICTION__MAX_INCLUSIVE);
-		createEAttribute(timeScalarRestrictionEClass, TIME_SCALAR_RESTRICTION__MIN_EXCLUSIVE);
-		createEAttribute(timeScalarRestrictionEClass, TIME_SCALAR_RESTRICTION__MAX_EXCLUSIVE);
+		createEReference(timeScalarRestrictionEClass, TIME_SCALAR_RESTRICTION__MIN_INCLUSIVE);
+		createEReference(timeScalarRestrictionEClass, TIME_SCALAR_RESTRICTION__MAX_INCLUSIVE);
+		createEReference(timeScalarRestrictionEClass, TIME_SCALAR_RESTRICTION__MIN_EXCLUSIVE);
+		createEReference(timeScalarRestrictionEClass, TIME_SCALAR_RESTRICTION__MAX_EXCLUSIVE);
 
 		synonymScalarRestrictionEClass = createEClass(SYNONYM_SCALAR_RESTRICTION);
 
@@ -2638,7 +2638,7 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 
 		scalarOneOfLiteralAxiomEClass = createEClass(SCALAR_ONE_OF_LITERAL_AXIOM);
 		createEReference(scalarOneOfLiteralAxiomEClass, SCALAR_ONE_OF_LITERAL_AXIOM__AXIOM);
-		createEAttribute(scalarOneOfLiteralAxiomEClass, SCALAR_ONE_OF_LITERAL_AXIOM__VALUE);
+		createEReference(scalarOneOfLiteralAxiomEClass, SCALAR_ONE_OF_LITERAL_AXIOM__VALUE);
 		createEOperation(scalarOneOfLiteralAxiomEClass, SCALAR_ONE_OF_LITERAL_AXIOM___UUID);
 		createEOperation(scalarOneOfLiteralAxiomEClass, SCALAR_ONE_OF_LITERAL_AXIOM___ALL_NESTED_ELEMENTS);
 
@@ -2980,7 +2980,7 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		initEOperation(getEntityScalarDataPropertyUniversalRestrictionAxiom__Uuid(), theCommonPackage.getUUID(), "uuid", 1, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(entityScalarDataPropertyParticularRestrictionAxiomEClass, EntityScalarDataPropertyParticularRestrictionAxiom.class, "EntityScalarDataPropertyParticularRestrictionAxiom", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getEntityScalarDataPropertyParticularRestrictionAxiom_LiteralValue(), theCommonPackage.getLexicalValue(), "literalValue", null, 1, 1, EntityScalarDataPropertyParticularRestrictionAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEntityScalarDataPropertyParticularRestrictionAxiom_LiteralValue(), theCommonPackage.getLiteralValue(), null, "literalValue", null, 1, 1, EntityScalarDataPropertyParticularRestrictionAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getEntityScalarDataPropertyParticularRestrictionAxiom__Uuid(), theCommonPackage.getUUID(), "uuid", 1, 1, !IS_UNIQUE, IS_ORDERED);
 
@@ -3018,7 +3018,7 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		initEClass(restrictionScalarDataPropertyValueEClass, RestrictionScalarDataPropertyValue.class, "RestrictionScalarDataPropertyValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRestrictionScalarDataPropertyValue_StructuredDataPropertyContext(), this.getRestrictionStructuredDataPropertyContext(), this.getRestrictionStructuredDataPropertyContext_ScalarDataPropertyRestrictions(), "structuredDataPropertyContext", null, 1, 1, RestrictionScalarDataPropertyValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRestrictionScalarDataPropertyValue_ScalarDataProperty(), this.getDataRelationshipToScalar(), null, "scalarDataProperty", null, 1, 1, RestrictionScalarDataPropertyValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getRestrictionScalarDataPropertyValue_ScalarPropertyValue(), theCommonPackage.getLexicalValue(), "scalarPropertyValue", null, 1, 1, RestrictionScalarDataPropertyValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRestrictionScalarDataPropertyValue_ScalarPropertyValue(), theCommonPackage.getLiteralValue(), null, "scalarPropertyValue", null, 1, 1, RestrictionScalarDataPropertyValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getRestrictionScalarDataPropertyValue__TerminologyBox(), this.getTerminologyBox(), "terminologyBox", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
@@ -3030,40 +3030,40 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		initEReference(getRestrictedDataRange_RestrictedRange(), this.getDataRange(), null, "restrictedRange", null, 1, 1, RestrictedDataRange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(binaryScalarRestrictionEClass, BinaryScalarRestriction.class, "BinaryScalarRestriction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getBinaryScalarRestriction_Length(), theEcorePackage.getEInt(), "length", null, 0, 1, BinaryScalarRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getBinaryScalarRestriction_MinLength(), theEcorePackage.getEInt(), "minLength", null, 0, 1, BinaryScalarRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getBinaryScalarRestriction_MaxLength(), theEcorePackage.getEInt(), "maxLength", null, 0, 1, BinaryScalarRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getBinaryScalarRestriction_Length(), theEcorePackage.getEString(), "length", null, 0, 1, BinaryScalarRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getBinaryScalarRestriction_MinLength(), theEcorePackage.getEString(), "minLength", null, 0, 1, BinaryScalarRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getBinaryScalarRestriction_MaxLength(), theEcorePackage.getEString(), "maxLength", null, 0, 1, BinaryScalarRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(iriScalarRestrictionEClass, IRIScalarRestriction.class, "IRIScalarRestriction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getIRIScalarRestriction_Length(), theEcorePackage.getEInt(), "length", null, 0, 1, IRIScalarRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getIRIScalarRestriction_MinLength(), theEcorePackage.getEInt(), "minLength", null, 0, 1, IRIScalarRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getIRIScalarRestriction_MaxLength(), theEcorePackage.getEInt(), "maxLength", null, 0, 1, IRIScalarRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getIRIScalarRestriction_Pattern(), theCommonPackage.getPattern(), "pattern", null, 0, 1, IRIScalarRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getIRIScalarRestriction_Length(), theEcorePackage.getEString(), "length", null, 0, 1, IRIScalarRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getIRIScalarRestriction_MinLength(), theEcorePackage.getEString(), "minLength", null, 0, 1, IRIScalarRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getIRIScalarRestriction_MaxLength(), theEcorePackage.getEString(), "maxLength", null, 0, 1, IRIScalarRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getIRIScalarRestriction_Pattern(), theCommonPackage.getLiteralPattern(), null, "pattern", null, 0, 1, IRIScalarRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(numericScalarRestrictionEClass, NumericScalarRestriction.class, "NumericScalarRestriction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getNumericScalarRestriction_MinInclusive(), theCommonPackage.getLexicalNumber(), "minInclusive", null, 0, 1, NumericScalarRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getNumericScalarRestriction_MaxInclusive(), theCommonPackage.getLexicalNumber(), "maxInclusive", null, 0, 1, NumericScalarRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getNumericScalarRestriction_MinExclusive(), theCommonPackage.getLexicalNumber(), "minExclusive", null, 0, 1, NumericScalarRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getNumericScalarRestriction_MaxExclusive(), theCommonPackage.getLexicalNumber(), "maxExclusive", null, 0, 1, NumericScalarRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getNumericScalarRestriction_MinInclusive(), theCommonPackage.getLiteralNumber(), null, "minInclusive", null, 0, 1, NumericScalarRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getNumericScalarRestriction_MaxInclusive(), theCommonPackage.getLiteralNumber(), null, "maxInclusive", null, 0, 1, NumericScalarRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getNumericScalarRestriction_MinExclusive(), theCommonPackage.getLiteralNumber(), null, "minExclusive", null, 0, 1, NumericScalarRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getNumericScalarRestriction_MaxExclusive(), theCommonPackage.getLiteralNumber(), null, "maxExclusive", null, 0, 1, NumericScalarRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(plainLiteralScalarRestrictionEClass, PlainLiteralScalarRestriction.class, "PlainLiteralScalarRestriction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPlainLiteralScalarRestriction_Length(), theEcorePackage.getEInt(), "length", null, 0, 1, PlainLiteralScalarRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPlainLiteralScalarRestriction_MinLength(), theEcorePackage.getEInt(), "minLength", null, 0, 1, PlainLiteralScalarRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPlainLiteralScalarRestriction_MaxLength(), theEcorePackage.getEInt(), "maxLength", null, 0, 1, PlainLiteralScalarRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPlainLiteralScalarRestriction_Pattern(), theCommonPackage.getPattern(), "pattern", null, 0, 1, PlainLiteralScalarRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPlainLiteralScalarRestriction_LangRange(), theCommonPackage.getLangRange(), "langRange", null, 0, 1, PlainLiteralScalarRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPlainLiteralScalarRestriction_Length(), theEcorePackage.getEString(), "length", null, 0, 1, PlainLiteralScalarRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPlainLiteralScalarRestriction_MinLength(), theEcorePackage.getEString(), "minLength", null, 0, 1, PlainLiteralScalarRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPlainLiteralScalarRestriction_MaxLength(), theEcorePackage.getEString(), "maxLength", null, 0, 1, PlainLiteralScalarRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPlainLiteralScalarRestriction_Pattern(), theCommonPackage.getLiteralPattern(), null, "pattern", null, 0, 1, PlainLiteralScalarRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPlainLiteralScalarRestriction_LangRange(), theCommonPackage.getLiteralLanguageTag(), null, "langRange", null, 0, 1, PlainLiteralScalarRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(stringScalarRestrictionEClass, StringScalarRestriction.class, "StringScalarRestriction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getStringScalarRestriction_Length(), theEcorePackage.getEInt(), "length", null, 0, 1, StringScalarRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getStringScalarRestriction_MinLength(), theEcorePackage.getEInt(), "minLength", null, 0, 1, StringScalarRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getStringScalarRestriction_MaxLength(), theEcorePackage.getEInt(), "maxLength", null, 0, 1, StringScalarRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getStringScalarRestriction_Pattern(), theCommonPackage.getPattern(), "pattern", null, 0, 1, StringScalarRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStringScalarRestriction_Length(), theEcorePackage.getEString(), "length", null, 0, 1, StringScalarRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStringScalarRestriction_MinLength(), theEcorePackage.getEString(), "minLength", null, 0, 1, StringScalarRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStringScalarRestriction_MaxLength(), theEcorePackage.getEString(), "maxLength", null, 0, 1, StringScalarRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStringScalarRestriction_Pattern(), theCommonPackage.getLiteralPattern(), null, "pattern", null, 0, 1, StringScalarRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(timeScalarRestrictionEClass, TimeScalarRestriction.class, "TimeScalarRestriction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTimeScalarRestriction_MinInclusive(), theCommonPackage.getLexicalTime(), "minInclusive", null, 0, 1, TimeScalarRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTimeScalarRestriction_MaxInclusive(), theCommonPackage.getLexicalTime(), "maxInclusive", null, 0, 1, TimeScalarRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTimeScalarRestriction_MinExclusive(), theCommonPackage.getLexicalTime(), "minExclusive", null, 0, 1, TimeScalarRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTimeScalarRestriction_MaxExclusive(), theCommonPackage.getLexicalTime(), "maxExclusive", null, 0, 1, TimeScalarRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTimeScalarRestriction_MinInclusive(), theCommonPackage.getLiteralDateTime(), null, "minInclusive", null, 0, 1, TimeScalarRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTimeScalarRestriction_MaxInclusive(), theCommonPackage.getLiteralDateTime(), null, "maxInclusive", null, 0, 1, TimeScalarRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTimeScalarRestriction_MinExclusive(), theCommonPackage.getLiteralDateTime(), null, "minExclusive", null, 0, 1, TimeScalarRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTimeScalarRestriction_MaxExclusive(), theCommonPackage.getLiteralDateTime(), null, "maxExclusive", null, 0, 1, TimeScalarRestriction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(synonymScalarRestrictionEClass, SynonymScalarRestriction.class, "SynonymScalarRestriction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -3071,7 +3071,7 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 
 		initEClass(scalarOneOfLiteralAxiomEClass, ScalarOneOfLiteralAxiom.class, "ScalarOneOfLiteralAxiom", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getScalarOneOfLiteralAxiom_Axiom(), this.getScalarOneOfRestriction(), null, "axiom", null, 1, 1, ScalarOneOfLiteralAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getScalarOneOfLiteralAxiom_Value(), theCommonPackage.getLexicalValue(), "value", null, 1, 1, ScalarOneOfLiteralAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getScalarOneOfLiteralAxiom_Value(), theCommonPackage.getLiteralValue(), null, "value", null, 1, 1, ScalarOneOfLiteralAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getScalarOneOfLiteralAxiom__Uuid(), theCommonPackage.getUUID(), "uuid", 1, 1, !IS_UNIQUE, IS_ORDERED);
 

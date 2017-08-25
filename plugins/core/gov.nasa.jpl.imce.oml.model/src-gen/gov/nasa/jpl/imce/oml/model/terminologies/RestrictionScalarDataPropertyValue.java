@@ -19,6 +19,7 @@
 package gov.nasa.jpl.imce.oml.model.terminologies;
 
 import gov.nasa.jpl.imce.oml.model.common.Element;
+import gov.nasa.jpl.imce.oml.model.common.LiteralValue;
 import gov.nasa.jpl.imce.oml.model.common.Module;
 
 /**
@@ -100,30 +101,30 @@ public interface RestrictionScalarDataPropertyValue extends Element {
 	void setScalarDataProperty(DataRelationshipToScalar value);
 
 	/**
-	 * Returns the value of the '<em><b>Scalar Property Value</b></em>' attribute.
+	 * Returns the value of the '<em><b>Scalar Property Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Scalar Property Value</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Scalar Property Value</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Scalar Property Value</em>' attribute.
-	 * @see #setScalarPropertyValue(String)
+	 * @return the value of the '<em>Scalar Property Value</em>' containment reference.
+	 * @see #setScalarPropertyValue(LiteralValue)
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getRestrictionScalarDataPropertyValue_ScalarPropertyValue()
-	 * @model unique="false" dataType="gov.nasa.jpl.imce.oml.model.common.LexicalValue" required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	String getScalarPropertyValue();
+	LiteralValue getScalarPropertyValue();
 
 	/**
-	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue#getScalarPropertyValue <em>Scalar Property Value</em>}' attribute.
+	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue#getScalarPropertyValue <em>Scalar Property Value</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Scalar Property Value</em>' attribute.
+	 * @param value the new value of the '<em>Scalar Property Value</em>' containment reference.
 	 * @see #getScalarPropertyValue()
 	 * @generated
 	 */
-	void setScalarPropertyValue(String value);
+	void setScalarPropertyValue(LiteralValue value);
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -37,25 +37,6 @@ Extent returns Extent:
 AnnotationProperty returns AnnotationProperty:
 	'annotationProperty' abbrevIRI=ABBREV_IRI '=' iri=IRI;
 
-/*
- * Note that the concrete syntax for the Annotation.subject is defined implicitly
- * in the sense that the subject of an Annotation is always the preceding
- * TerminologyThing or the subject of the preceding Annotation.
- * 
- * For example, the following shows the concrete syntax for 2 Concepts, Foo and Bar
- * and of 3 Annotations; the first two Annotations have Foo as their subject because 
- * Foo is the first preceding TerminologyThing; the third Annotation has Bar as its subject
- * because it appears after the TerminologyThing Bar.
- * 
- * concept Foo
- * @rdfs:label = "foo"
- * @dc:description = "A Foo is ..."
- * 
- * concept Bar
- * @rdfs:label = "bar
- * 
- * @see jpl.imce.oml.specification.linking.OMLLinkingService
- */
 AnnotationPropertyValue returns AnnotationPropertyValue:
 	'@' property=[AnnotationProperty|ABBREV_IRI]
 	'=' value=STRING;
@@ -376,7 +357,7 @@ EntityScalarDataPropertyParticularRestrictionAxiom returns EntityScalarDataPrope
 	'every'
 	restrictedEntity=[Entity|Reference]
 	'.' scalarProperty=[EntityScalarDataProperty|Reference]
-	'=' literalValue=Value;
+	'=' literalValue=LiteralValue;
 	
 EntityScalarDataPropertyUniversalRestrictionAxiom returns EntityScalarDataPropertyUniversalRestrictionAxiom:
 	( annotations+=AnnotationPropertyValue )*
@@ -410,7 +391,7 @@ RestrictionScalarDataPropertyValue returns RestrictionScalarDataPropertyValue:
 	( annotations+=AnnotationPropertyValue )*
 	scalarDataProperty=[ScalarDataProperty|Reference]
 	'=' 
-	scalarPropertyValue=Value;
+	scalarPropertyValue=LiteralValue;
 
 // 8 RestrictedDataRanges + 1 ScalarOneOfLiteralAxiom
 
@@ -418,9 +399,9 @@ BinaryScalarRestriction returns BinaryScalarRestriction:
 	( annotations+=AnnotationPropertyValue )*
 	'binaryScalarRestriction' name=ID
 	'{'
-		( ('length' length=INT)? &
-		  ('minLength' minLength=INT)? &
-		  ('maxLength' maxLength=INT)? )
+		( ('length' length=DIGITS)? &
+		  ('minLength' minLength=DIGITS)? &
+		  ('maxLength' maxLength=DIGITS)? )
 		'restrictedRange' restrictedRange=[DataRange|Reference]
 	'}';
 
@@ -428,10 +409,10 @@ IRIScalarRestriction returns IRIScalarRestriction:
 	( annotations+=AnnotationPropertyValue )*
 	'iriScalarRestriction' name=ID
 	'{'
-		( ('length' length=INT)? &
-		  ('minLength' minLength=INT)? &
-		  ('maxLength' maxLength=INT)? &
-		  ('pattern' pattern=STRING)? )
+		( ('length' length=DIGITS)? &
+		  ('minLength' minLength=DIGITS)? &
+		  ('maxLength' maxLength=DIGITS)? &
+		  ('pattern' pattern=LiteralPattern)? )
 		'restrictedRange' restrictedRange=[DataRange|Reference]
 	'}';
 
@@ -439,10 +420,10 @@ NumericScalarRestriction returns NumericScalarRestriction:
 	( annotations+=AnnotationPropertyValue )*
 	'numericScalarRestriction' name=ID
 	'{'
-		( ('minInclusive' minInclusive=STRING)? &
-		  ('maxInclusive' maxInclusive=STRING)? &
-		  ('minExclusive' minExclusive=STRING)? &
-		  ('maxExclusive' maxExclusive=STRING)? )
+		( ('minInclusive' minInclusive=LiteralNumber)? &
+		  ('maxInclusive' maxInclusive=LiteralNumber)? &
+		  ('minExclusive' minExclusive=LiteralNumber)? &
+		  ('maxExclusive' maxExclusive=LiteralNumber)? )
 		'restrictedRange' restrictedRange=[DataRange|Reference]
 	'}';
 
@@ -450,11 +431,11 @@ PlainLiteralScalarRestriction returns PlainLiteralScalarRestriction:
 	( annotations+=AnnotationPropertyValue )*
 	'plainLiteralScalarRestriction' name=ID
 	'{'
-		( ('length' length=INT)? &
-		  ('minLength' minLength=INT)? &
-		  ('maxLength' maxLength=INT)? &
-		  ('pattern' pattern=STRING)? &
-		  ('langRange' langRange=STRING)? )
+		( ('length' length=DIGITS)? &
+		  ('minLength' minLength=DIGITS)? &
+		  ('maxLength' maxLength=DIGITS)? &
+		  ('pattern' pattern=LiteralPattern)? &
+		  ('langRange' langRange=LiteralLanguageTag)? )
 		'restrictedRange' restrictedRange=[DataRange|Reference]
 	'}';
 
@@ -469,16 +450,16 @@ ScalarOneOfLiteralAxiom returns ScalarOneOfLiteralAxiom:
 	( annotations+=AnnotationPropertyValue )*
 	'oneOf'
 	axiom=[ScalarOneOfRestriction|Reference]
-	'=' value=STRING;
+	'=' value=LiteralValue;
 
 StringScalarRestriction returns StringScalarRestriction:
 	( annotations+=AnnotationPropertyValue )*
 	'stringScalarRestriction' name=ID
 	'{'
-		( ('length' length=INT)? &
-		  ('minLength' minLength=INT)? &
-		  ('maxLength' maxLength=INT)? &
-		  ('pattern' pattern=STRING)? )
+		( ('length' length=DIGITS)? &
+		  ('minLength' minLength=DIGITS)? &
+		  ('maxLength' maxLength=DIGITS)? &
+		  ('pattern' pattern=LiteralPattern)? )
 		'restrictedRange' restrictedRange=[DataRange|Reference]
 	'}';
 
@@ -493,10 +474,10 @@ TimeScalarRestriction returns TimeScalarRestriction:
 	( annotations+=AnnotationPropertyValue )*
 	'timeScalarRestriction' name=ID
 	'{'
-		( ('minInclusive' minInclusive=STRING)? &
-		  ('maxInclusive' maxInclusive=STRING)? &
-		  ('minExclusive' minExclusive=STRING)? &
-		  ('maxExclusive' maxExclusive=STRING)? )
+		( ('minInclusive' minInclusive=LiteralDateTime)? &
+		  ('maxInclusive' maxInclusive=LiteralDateTime)? &
+		  ('minExclusive' minExclusive=LiteralDateTime)? &
+		  ('maxExclusive' maxExclusive=LiteralDateTime)? )
 		'restrictedRange' restrictedRange=[DataRange|Reference]
 	'}';
 //----------------------------
@@ -529,7 +510,7 @@ SingletonInstanceScalarDataPropertyValue returns SingletonInstanceScalarDataProp
 	'.' 
 	scalarDataProperty=[EntityScalarDataProperty|Reference] 
 	'=' 
-	scalarPropertyValue=Value;
+	scalarPropertyValue=LiteralValue;
 
 SingletonInstanceStructuredDataPropertyValue returns SingletonInstanceStructuredDataPropertyValue:
 	( annotations+=AnnotationPropertyValue )*
@@ -553,7 +534,7 @@ ScalarDataPropertyValue returns ScalarDataPropertyValue:
 	( annotations+=AnnotationPropertyValue )*
 	scalarDataProperty=[DataRelationshipToScalar|Reference]
 	'='
-	scalarPropertyValue=Value;
+	scalarPropertyValue=LiteralValue;
 
 ConceptInstance returns ConceptInstance:
 	( annotations+=AnnotationPropertyValue )*
@@ -598,10 +579,121 @@ QNAME:
 ValidID:
 	ID;
 	
-Value:
-	DECIMAL | INT | STRING | UUID | HEX | FLOAT;
-	
 //----------------------------
+
+LiteralPattern returns LiteralPattern:
+	{LiteralPattern} value=STRING
+;
+
+LiteralValue returns LiteralValue:
+	LiteralDateTime | LiteralLanguageTag | LiteralString | LiteralUUID | LiteralURI | LiteralNumber
+;
+
+LiteralDateTime returns LiteralDateTime:
+	{LiteralDateTime} value=DATE_TIME
+;
+
+LiteralLanguageTag returns LiteralLanguageTag:
+	{LiteralLanguageTag} value=LANG_TAG
+;
+
+LiteralString returns LiteralString:
+	{LiteralString} value=STRING
+;
+
+LiteralUUID returns LiteralUUID:
+	{LiteralUUID} value=UUID
+;
+
+LiteralURI returns LiteralURI:
+	{LiteralURI} value=URI
+;
+
+LiteralNumber returns LiteralNumber:
+	{LiteralNumber} value=(REAL_VALUE | RATIONAL | FLOAT | DECIMAL)
+;
+
+//----------------------------
+// https://www.w3.org/TR/xmlschema11-2/#rf-lexicalMappings-datetime
+
+terminal fragment DIGIT: 			'0'..'9';
+
+terminal fragment DIGIT19:			'1'..'9';
+
+terminal fragment DIGIT02:			'0'..'2';
+
+terminal fragment DIGIT03:			'0'..'3';
+
+terminal fragment DIGIT05:			'0'..'5';
+
+terminal fragment YEAR_FRAG:		'-'? ( (DIGIT19 DIGIT DIGIT DIGIT+) | ('0' DIGIT DIGIT DIGIT) );
+
+terminal fragment MONTH_FRAG:		('0' DIGIT19) | ('1' DIGIT02);
+
+terminal fragment DAY_FRAG:			('0' DIGIT19) | (('1'|'2') DIGIT) | ('3' ('0'|'1'));
+
+terminal fragment HOUR_FRAG:		(('0'|'1')DIGIT) | ('2'DIGIT03);
+
+terminal fragment MINUTE_FRAG:		DIGIT05 DIGIT;
+
+terminal fragment SECOND_FRAG:		DIGIT05 DIGIT ('.' DIGIT+)?;
+
+terminal fragment END_OF_DAY_FRAG:	'24:00:00' ('.' DIGIT+)?;
+
+terminal fragment TIMEZONE_FRAG:	'Z' | ('+'|'-') (('0' DIGIT | '1' DIGIT03) ':' MINUTE_FRAG | '14:00');
+
+//----------------------------
+// http://www.ietf.org/rfc/rfc3987.txt
+
+terminal fragment ALPHA:			('a'..'z'|'A'..'Z');
+
+terminal fragment SCHEME:			ALPHA ( ALPHA | DIGIT | '+' | '-' | '.' )*;
+
+terminal fragment PCT_ENCODED:		'%' HEX_DIGIT HEX_DIGIT;
+
+terminal fragment UNRESERVED:		ALPHA | DIGIT | '-' | '.' | '_' | '~';
+
+terminal fragment DIGIT04:			'0'..'4';
+
+terminal fragment DEC_OCTET:		( DIGIT | '1' DIGIT | '2' DIGIT04 DIGIT | '25' DIGIT05);
+
+terminal fragment IPV4_ADDRESS:		DEC_OCTET '.' DEC_OCTET '.' DEC_OCTET '.' DEC_OCTET;
+
+terminal fragment IUSER_PART:		( UNRESERVED | PCT_ENCODED )+;
+
+terminal fragment IUSER_INFO:		IUSER_PART (':' IUSER_PART)*;
+
+terminal fragment IUNRESERVED_PART:	ALPHA | DIGIT | '-' | '_' | '~';
+
+terminal fragment IUNRESERVED:		ALPHA IUNRESERVED_PART? ( '.' IUNRESERVED_PART )*;
+
+terminal fragment IHOST:			IPV4_ADDRESS | IUNRESERVED;
+
+terminal fragment PORT:				DIGIT+;
+
+terminal fragment IAUTHORITY:		( IUSER_INFO '@' )? IHOST ( ':' PORT )?;
+
+terminal fragment IPCHAR:			IUNRESERVED_PART | PCT_ENCODED;
+
+terminal fragment ISEGMENT:			IPCHAR+;
+
+terminal fragment IPATH:			ISEGMENT ('/' ISEGMENT)*;
+
+terminal fragment IHIER_PART:		'//' IAUTHORITY IPATH?;
+
+terminal fragment IFRAGMENT:		ISEGMENT;
+
+terminal URI_VALUE:					SCHEME ':' IHIER_PART ( '#' IFRAGMENT )?;
+
+URI returns ecore::EString:			URI_VALUE;
+
+//----------------------------
+
+terminal CONSTANT_NAME:				ALPHA ( ALPHA | DIGIT )*;
+
+terminal REAL_VALUE:				'{' ('-' | '+')? CONSTANT_NAME '}';
+
+REAL returns ecore::EString:		REAL_VALUE;
 
 @Override
 terminal STRING: 
@@ -609,46 +701,65 @@ terminal STRING:
 	"'" ( '\\' . /* ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') */ | !('\\'|"'") )* "'"?;
 
 
-terminal IRI:
-	'<' (!'>')* '>';
+terminal IRI:							'<' (!'>')* '>';
 
-terminal ABBREV_IRI:
-	('a'..'z'|'A'..'Z'|'_'|'0'..'9')('a'..'z'|'A'..'Z'|'_'|'-'|'.'|'0'..'9')* ':' ('a'..'z'|'A'..'Z'|'_'|'0'..'9')('a'..'z'|'A'..'Z'|'_'|'-'|'.'|'0'..'9')*;
+terminal fragment LETTER:				'a'..'z'|'A'..'Z';
+
+terminal fragment LETTER_DIGIT:			LETTER | DIGIT;
+
+terminal fragment LETTER_DIGIT_PREFIX:	LETTER_DIGIT | '_';
+
+terminal fragment LETTER_DIGIT_SUFFIX:	LETTER_DIGIT | '_' | '-' | '.';
+
+terminal ABBREV_IRI:					LETTER_DIGIT_PREFIX LETTER_DIGIT_SUFFIX* ':' LETTER_DIGIT_PREFIX LETTER_DIGIT_SUFFIX*;
 	
-terminal ID:
-	'^'? ('a'..'z'|'A'..'Z'|'_')('a'..'z'|'A'..'Z'|'_'|'-'|'.'|'0'..'9')*;
+terminal fragment ID_PREFIX: 			LETTER|'_';
 
-terminal UUID:
-	HEX_8DIGITS '-' HEX_4DIGITS '-' HEX_4DIGITS '-' HEX_4DIGITS '-' HEX_12DIGITS;
+terminal ID:							'^'? ID_PREFIX LETTER_DIGIT_SUFFIX*;
 
-terminal HEX_12DIGITS:
- 	HEX_8DIGITS HEX_4DIGITS;
+//----------------------------
+// https://www.w3.org/TR/xmlschema11-2/#language
 
-terminal HEX_8DIGITS:
- 	HEX_4DIGITS HEX_4DIGITS;
+terminal LANGUAGE_TAG:				'lang=' LETTER+('-'LETTER_DIGIT+)*;
 
-terminal HEX_4DIGITS:
- 	HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT;
+LANG_TAG returns ecore::EString:	LANGUAGE_TAG;
+    
+terminal DATETIME: 					YEAR_FRAG '-' MONTH_FRAG '-' DAY_FRAG 'T' ( (HOUR_FRAG ':' MINUTE_FRAG ':' SECOND_FRAG) | END_OF_DAY_FRAG ) TIMEZONE_FRAG?;
 
-terminal HEX_DIGIT:
-	('0'..'9'|'a'..'f'|'A'..'F');
+DATE_TIME returns ecore::EString:	DATETIME;	
+    
+terminal UUID:						HEX_8DIGITS '-' HEX_4DIGITS '-' HEX_4DIGITS '-' HEX_4DIGITS '-' HEX_12DIGITS;
 
-terminal HEX:
-	('0x'|'0X') ('0'..'9'|'a'..'f'|'A'..'F'|'_')+ 
+terminal fragment HEX_12DIGITS:		HEX_8DIGITS HEX_4DIGITS;
+
+terminal fragment HEX_8DIGITS:		HEX_4DIGITS HEX_4DIGITS;
+
+terminal fragment HEX_4DIGITS:		HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT;
+
+terminal fragment HEX_LETTER:		'a'..'f' | 'A'..'F';
+
+terminal fragment HEX_DIGIT:		DIGIT | HEX_LETTER;
+
+terminal fragment HEX:
+	('0x'|'0X') (HEX_DIGIT|'_')+ 
 	('#' (('b'|'B')('i'|'I') | ('l'|'L')))?;
 	
-terminal INT returns ecore::EInt:
-	('0'..'9')+; 
+terminal DIGITS:					DIGIT+;
 
-terminal DECIMAL:
-	INT 
-	(('e'|'E') ('+'|'-')? INT)? 
+terminal RATIONAL:					('-'|'+')? DIGITS '/' DIGITS;
+
+terminal fragment DEC:
+	'-'?
+	DIGIT+ 
+	(('e'|'E') ('+'|'-')? DIGIT+)? 
 	(('b'|'B')('i'|'I'|'d'|'D') | ('l'|'L'|'d'|'D'|'f'|'F'))?;
+
+terminal DECIMAL: DEC | HEX;
 
 terminal FLOAT:
 	'-'?
-	(('0'..'9')+ '.' ('0'..'9')+)
-    (('e' | 'E') ('+' | '-')? ('0'..'9')+)?;
+	(DIGIT+ '.' DIGIT+)
+    (('e' | 'E') ('+' | '-')? DIGIT+)?;
     
 terminal ML_COMMENT  : 
  	'/*' -> '*/';

@@ -28,6 +28,7 @@ import org.eclipse.xtext.conversion.IValueConverter;
 import org.eclipse.xtext.conversion.ValueConverter;
 import org.eclipse.xtext.conversion.impl.KeywordAlternativeConverter;
 import org.eclipse.xtext.conversion.impl.QualifiedNameValueConverter;
+import org.eclipse.xtext.conversion.impl.STRINGValueConverter;
 
 @SuppressWarnings("all")
 public class OMLValueConverterService extends DefaultTerminalConverters {
@@ -51,6 +52,9 @@ public class OMLValueConverterService extends DefaultTerminalConverters {
   
   @Inject
   private KeywordAlternativeConverter validIDValueConverter;
+  
+  @Inject
+  private STRINGValueConverter stringValueConverter;
   
   @ValueConverter(rule = "Reference")
   public IValueConverter<String> Reference() {
@@ -85,5 +89,16 @@ public class OMLValueConverterService extends DefaultTerminalConverters {
   @ValueConverter(rule = "ValidID")
   public IValueConverter<String> ValidID() {
     return this.validIDValueConverter;
+  }
+  
+  @ValueConverter(rule = "UUID")
+  public IValueConverter<String> UUID() {
+    return this.stringValueConverter;
+  }
+  
+  @ValueConverter(rule = "STRING")
+  @Override
+  public IValueConverter<String> STRING() {
+    return this.stringValueConverter;
   }
 }

@@ -38,6 +38,69 @@ public interface CommonFactory extends EFactory {
 	CommonFactory eINSTANCE = gov.nasa.jpl.imce.oml.model.common.impl.CommonFactoryImpl.init();
 
 	/**
+	 * Returns a new object of class '<em>Literal Pattern</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Literal Pattern</em>'.
+	 * @generated
+	 */
+	LiteralPattern createLiteralPattern();
+
+	/**
+	 * Returns a new object of class '<em>Literal Date Time</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Literal Date Time</em>'.
+	 * @generated
+	 */
+	LiteralDateTime createLiteralDateTime();
+
+	/**
+	 * Returns a new object of class '<em>Literal Language Tag</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Literal Language Tag</em>'.
+	 * @generated
+	 */
+	LiteralLanguageTag createLiteralLanguageTag();
+
+	/**
+	 * Returns a new object of class '<em>Literal String</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Literal String</em>'.
+	 * @generated
+	 */
+	LiteralString createLiteralString();
+
+	/**
+	 * Returns a new object of class '<em>Literal UUID</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Literal UUID</em>'.
+	 * @generated
+	 */
+	LiteralUUID createLiteralUUID();
+
+	/**
+	 * Returns a new object of class '<em>Literal URI</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Literal URI</em>'.
+	 * @generated
+	 */
+	LiteralURI createLiteralURI();
+
+	/**
+	 * Returns a new object of class '<em>Literal Number</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Literal Number</em>'.
+	 * @generated
+	 */
+	LiteralNumber createLiteralNumber();
+
+	/**
 	 * Returns a new object of class '<em>Annotation Property Value</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

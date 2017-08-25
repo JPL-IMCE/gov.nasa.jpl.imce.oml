@@ -28,6 +28,13 @@ import gov.nasa.jpl.imce.oml.model.common.AnnotationProperty;
 import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue;
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
+import gov.nasa.jpl.imce.oml.model.common.LiteralDateTime;
+import gov.nasa.jpl.imce.oml.model.common.LiteralLanguageTag;
+import gov.nasa.jpl.imce.oml.model.common.LiteralNumber;
+import gov.nasa.jpl.imce.oml.model.common.LiteralPattern;
+import gov.nasa.jpl.imce.oml.model.common.LiteralString;
+import gov.nasa.jpl.imce.oml.model.common.LiteralURI;
+import gov.nasa.jpl.imce.oml.model.common.LiteralUUID;
 import gov.nasa.jpl.imce.oml.model.descriptions.ConceptInstance;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxExtendsClosedWorldDefinitions;
@@ -128,6 +135,27 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				return; 
 			case CommonPackage.EXTENT:
 				sequence_Extent(context, (Extent) semanticObject); 
+				return; 
+			case CommonPackage.LITERAL_DATE_TIME:
+				sequence_LiteralDateTime(context, (LiteralDateTime) semanticObject); 
+				return; 
+			case CommonPackage.LITERAL_LANGUAGE_TAG:
+				sequence_LiteralLanguageTag(context, (LiteralLanguageTag) semanticObject); 
+				return; 
+			case CommonPackage.LITERAL_NUMBER:
+				sequence_LiteralNumber(context, (LiteralNumber) semanticObject); 
+				return; 
+			case CommonPackage.LITERAL_PATTERN:
+				sequence_LiteralPattern(context, (LiteralPattern) semanticObject); 
+				return; 
+			case CommonPackage.LITERAL_STRING:
+				sequence_LiteralString(context, (LiteralString) semanticObject); 
+				return; 
+			case CommonPackage.LITERAL_URI:
+				sequence_LiteralURI(context, (LiteralURI) semanticObject); 
+				return; 
+			case CommonPackage.LITERAL_UUID:
+				sequence_LiteralUUID(context, (LiteralUUID) semanticObject); 
 				return; 
 			}
 		else if (epackage == DescriptionsPackage.eINSTANCE)
@@ -377,7 +405,7 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     BinaryScalarRestriction returns BinaryScalarRestriction
 	 *
 	 * Constraint:
-	 *     (annotations+=AnnotationPropertyValue* name=ID (length=INT | minLength=INT | maxLength=INT)* restrictedRange=[DataRange|Reference])
+	 *     (annotations+=AnnotationPropertyValue* name=ID (length=DIGITS | minLength=DIGITS | maxLength=DIGITS)* restrictedRange=[DataRange|Reference])
 	 */
 	protected void sequence_BinaryScalarRestriction(ISerializationContext context, BinaryScalarRestriction semanticObject) {
 		genericSequencer.createSequence(context, (EObject) semanticObject);
@@ -582,7 +610,7 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *         annotations+=AnnotationPropertyValue* 
 	 *         restrictedEntity=[Entity|Reference] 
 	 *         scalarProperty=[EntityScalarDataProperty|Reference] 
-	 *         literalValue=Value
+	 *         literalValue=LiteralValue
 	 *     )
 	 */
 	protected void sequence_EntityScalarDataPropertyParticularRestrictionAxiom(ISerializationContext context, EntityScalarDataPropertyParticularRestrictionAxiom semanticObject) {
@@ -705,12 +733,138 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     (
 	 *         annotations+=AnnotationPropertyValue* 
 	 *         name=ID 
-	 *         (length=INT | minLength=INT | maxLength=INT | pattern=STRING)* 
+	 *         (length=DIGITS | minLength=DIGITS | maxLength=DIGITS | pattern=LiteralPattern)* 
 	 *         restrictedRange=[DataRange|Reference]
 	 *     )
 	 */
 	protected void sequence_IRIScalarRestriction(ISerializationContext context, IRIScalarRestriction semanticObject) {
 		genericSequencer.createSequence(context, (EObject) semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     LiteralValue returns LiteralDateTime
+	 *     LiteralDateTime returns LiteralDateTime
+	 *
+	 * Constraint:
+	 *     value=DATE_TIME
+	 */
+	protected void sequence_LiteralDateTime(ISerializationContext context, LiteralDateTime semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient((EObject) semanticObject, CommonPackage.Literals.LITERAL_DATE_TIME__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, CommonPackage.Literals.LITERAL_DATE_TIME__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, (EObject) semanticObject);
+		feeder.accept(grammarAccess.getLiteralDateTimeAccess().getValueDATE_TIMEParserRuleCall_1_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     LiteralValue returns LiteralLanguageTag
+	 *     LiteralLanguageTag returns LiteralLanguageTag
+	 *
+	 * Constraint:
+	 *     value=LANG_TAG
+	 */
+	protected void sequence_LiteralLanguageTag(ISerializationContext context, LiteralLanguageTag semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient((EObject) semanticObject, CommonPackage.Literals.LITERAL_LANGUAGE_TAG__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, CommonPackage.Literals.LITERAL_LANGUAGE_TAG__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, (EObject) semanticObject);
+		feeder.accept(grammarAccess.getLiteralLanguageTagAccess().getValueLANG_TAGParserRuleCall_1_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     LiteralValue returns LiteralNumber
+	 *     LiteralNumber returns LiteralNumber
+	 *
+	 * Constraint:
+	 *     (value=REAL_VALUE | value=RATIONAL | value=FLOAT | value=DECIMAL)
+	 */
+	protected void sequence_LiteralNumber(ISerializationContext context, LiteralNumber semanticObject) {
+		genericSequencer.createSequence(context, (EObject) semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     LiteralPattern returns LiteralPattern
+	 *
+	 * Constraint:
+	 *     value=STRING
+	 */
+	protected void sequence_LiteralPattern(ISerializationContext context, LiteralPattern semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient((EObject) semanticObject, CommonPackage.Literals.LITERAL_PATTERN__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, CommonPackage.Literals.LITERAL_PATTERN__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, (EObject) semanticObject);
+		feeder.accept(grammarAccess.getLiteralPatternAccess().getValueSTRINGTerminalRuleCall_1_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     LiteralValue returns LiteralString
+	 *     LiteralString returns LiteralString
+	 *
+	 * Constraint:
+	 *     value=STRING
+	 */
+	protected void sequence_LiteralString(ISerializationContext context, LiteralString semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient((EObject) semanticObject, CommonPackage.Literals.LITERAL_STRING__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, CommonPackage.Literals.LITERAL_STRING__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, (EObject) semanticObject);
+		feeder.accept(grammarAccess.getLiteralStringAccess().getValueSTRINGTerminalRuleCall_1_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     LiteralValue returns LiteralURI
+	 *     LiteralURI returns LiteralURI
+	 *
+	 * Constraint:
+	 *     value=URI
+	 */
+	protected void sequence_LiteralURI(ISerializationContext context, LiteralURI semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient((EObject) semanticObject, CommonPackage.Literals.LITERAL_URI__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, CommonPackage.Literals.LITERAL_URI__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, (EObject) semanticObject);
+		feeder.accept(grammarAccess.getLiteralURIAccess().getValueURIParserRuleCall_1_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     LiteralValue returns LiteralUUID
+	 *     LiteralUUID returns LiteralUUID
+	 *
+	 * Constraint:
+	 *     value=UUID
+	 */
+	protected void sequence_LiteralUUID(ISerializationContext context, LiteralUUID semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient((EObject) semanticObject, CommonPackage.Literals.LITERAL_UUID__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, CommonPackage.Literals.LITERAL_UUID__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, (EObject) semanticObject);
+		feeder.accept(grammarAccess.getLiteralUUIDAccess().getValueUUIDTerminalRuleCall_1_0(), semanticObject.getValue());
+		feeder.finish();
 	}
 	
 	
@@ -727,7 +881,7 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     (
 	 *         annotations+=AnnotationPropertyValue* 
 	 *         name=ID 
-	 *         (minInclusive=STRING | maxInclusive=STRING | minExclusive=STRING | maxExclusive=STRING)* 
+	 *         (minInclusive=LiteralNumber | maxInclusive=LiteralNumber | minExclusive=LiteralNumber | maxExclusive=LiteralNumber)* 
 	 *         restrictedRange=[DataRange|Reference]
 	 *     )
 	 */
@@ -749,7 +903,7 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     (
 	 *         annotations+=AnnotationPropertyValue* 
 	 *         name=ID 
-	 *         (length=INT | minLength=INT | maxLength=INT | pattern=STRING | langRange=STRING)* 
+	 *         (length=DIGITS | minLength=DIGITS | maxLength=DIGITS | pattern=LiteralPattern | langRange=LiteralLanguageTag)* 
 	 *         restrictedRange=[DataRange|Reference]
 	 *     )
 	 */
@@ -859,7 +1013,7 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     RestrictionScalarDataPropertyValue returns RestrictionScalarDataPropertyValue
 	 *
 	 * Constraint:
-	 *     (annotations+=AnnotationPropertyValue* scalarDataProperty=[ScalarDataProperty|Reference] scalarPropertyValue=Value)
+	 *     (annotations+=AnnotationPropertyValue* scalarDataProperty=[ScalarDataProperty|Reference] scalarPropertyValue=LiteralValue)
 	 */
 	protected void sequence_RestrictionScalarDataPropertyValue(ISerializationContext context, RestrictionScalarDataPropertyValue semanticObject) {
 		genericSequencer.createSequence(context, (EObject) semanticObject);
@@ -901,7 +1055,7 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     ScalarDataPropertyValue returns ScalarDataPropertyValue
 	 *
 	 * Constraint:
-	 *     (annotations+=AnnotationPropertyValue* scalarDataProperty=[DataRelationshipToScalar|Reference] scalarPropertyValue=Value)
+	 *     (annotations+=AnnotationPropertyValue* scalarDataProperty=[DataRelationshipToScalar|Reference] scalarPropertyValue=LiteralValue)
 	 */
 	protected void sequence_ScalarDataPropertyValue(ISerializationContext context, ScalarDataPropertyValue semanticObject) {
 		genericSequencer.createSequence(context, (EObject) semanticObject);
@@ -930,7 +1084,7 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     ScalarOneOfLiteralAxiom returns ScalarOneOfLiteralAxiom
 	 *
 	 * Constraint:
-	 *     (annotations+=AnnotationPropertyValue* axiom=[ScalarOneOfRestriction|Reference] value=STRING)
+	 *     (annotations+=AnnotationPropertyValue* axiom=[ScalarOneOfRestriction|Reference] value=LiteralValue)
 	 */
 	protected void sequence_ScalarOneOfLiteralAxiom(ISerializationContext context, ScalarOneOfLiteralAxiom semanticObject) {
 		genericSequencer.createSequence(context, (EObject) semanticObject);
@@ -979,7 +1133,7 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *         annotations+=AnnotationPropertyValue* 
 	 *         singletonInstance=[ConceptualEntitySingletonInstance|Reference] 
 	 *         scalarDataProperty=[EntityScalarDataProperty|Reference] 
-	 *         scalarPropertyValue=Value
+	 *         scalarPropertyValue=LiteralValue
 	 *     )
 	 */
 	protected void sequence_SingletonInstanceScalarDataPropertyValue(ISerializationContext context, SingletonInstanceScalarDataPropertyValue semanticObject) {
@@ -1030,7 +1184,7 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     (
 	 *         annotations+=AnnotationPropertyValue* 
 	 *         name=ID 
-	 *         (length=INT | minLength=INT | maxLength=INT | pattern=STRING)* 
+	 *         (length=DIGITS | minLength=DIGITS | maxLength=DIGITS | pattern=LiteralPattern)* 
 	 *         restrictedRange=[DataRange|Reference]
 	 *     )
 	 */
@@ -1155,7 +1309,7 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     (
 	 *         annotations+=AnnotationPropertyValue* 
 	 *         name=ID 
-	 *         (minInclusive=STRING | maxInclusive=STRING | minExclusive=STRING | maxExclusive=STRING)* 
+	 *         (minInclusive=LiteralDateTime | maxInclusive=LiteralDateTime | minExclusive=LiteralDateTime | maxExclusive=LiteralDateTime)* 
 	 *         restrictedRange=[DataRange|Reference]
 	 *     )
 	 */

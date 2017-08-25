@@ -23,6 +23,7 @@ import org.eclipse.xtext.conversion.IValueConverter
 import org.eclipse.xtext.conversion.ValueConverter
 import org.eclipse.xtext.conversion.impl.KeywordAlternativeConverter
 import org.eclipse.xtext.conversion.impl.QualifiedNameValueConverter
+import org.eclipse.xtext.conversion.impl.STRINGValueConverter
 
 class OMLValueConverterService extends DefaultTerminalConverters {
 
@@ -40,38 +41,51 @@ class OMLValueConverterService extends DefaultTerminalConverters {
 
 	@Inject KeywordAlternativeConverter validIDValueConverter
 
+	@Inject STRINGValueConverter stringValueConverter
+	
 	@ValueConverter(rule="Reference")
 	def IValueConverter<String> Reference() {
-		referenceValueConverter;
+		referenceValueConverter
 	}
 
 	@ValueConverter(rule="QNAME")
 	def IValueConverter<String> QNAME() {
-		qnameValueConverter;
+		qnameValueConverter
 	}
 
 	@ValueConverter(rule="QualifiedName")
 	def IValueConverter<String> QualifiedName() {
-		qualifiedNameValueConverter;
+		qualifiedNameValueConverter
 	}
 
 	@ValueConverter(rule="IRI")
 	def IValueConverter<String> IRI() {
-		iriValueConverter;
+		iriValueConverter
 	}
 
 	@ValueConverter(rule="ExternalReference")
 	def IValueConverter<String> ExternalReference() {
-		externalReferenceValueConverter;
+		externalReferenceValueConverter
 	}
 	
 	@ValueConverter(rule="SL_COMMENT")
 	def IValueConverter<String> SL_COMMENT() {
-		sl_CommentValueConverter;
+		sl_CommentValueConverter
 	}
 
 	@ValueConverter(rule="ValidID")
 	def IValueConverter<String> ValidID() {
-		validIDValueConverter;
+		validIDValueConverter
 	}
+	
+	@ValueConverter(rule="UUID")
+	def IValueConverter<String> UUID() {
+		stringValueConverter
+	}
+	
+	@ValueConverter(rule="STRING")
+	override def IValueConverter<String> STRING() {
+		stringValueConverter
+	}
+	
 }

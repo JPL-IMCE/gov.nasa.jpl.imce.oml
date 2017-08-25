@@ -18,12 +18,17 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies.impl;
 
+import gov.nasa.jpl.imce.oml.model.common.LiteralLanguageTag;
+import gov.nasa.jpl.imce.oml.model.common.LiteralPattern;
+
 import gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
@@ -53,7 +58,7 @@ public class PlainLiteralScalarRestrictionImpl extends RestrictedDataRangeImpl i
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int LENGTH_EDEFAULT = 0;
+	protected static final String LENGTH_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getLength() <em>Length</em>}' attribute.
@@ -63,7 +68,7 @@ public class PlainLiteralScalarRestrictionImpl extends RestrictedDataRangeImpl i
 	 * @generated
 	 * @ordered
 	 */
-	protected int length = LENGTH_EDEFAULT;
+	protected String length = LENGTH_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getMinLength() <em>Min Length</em>}' attribute.
@@ -73,7 +78,7 @@ public class PlainLiteralScalarRestrictionImpl extends RestrictedDataRangeImpl i
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int MIN_LENGTH_EDEFAULT = 0;
+	protected static final String MIN_LENGTH_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getMinLength() <em>Min Length</em>}' attribute.
@@ -83,7 +88,7 @@ public class PlainLiteralScalarRestrictionImpl extends RestrictedDataRangeImpl i
 	 * @generated
 	 * @ordered
 	 */
-	protected int minLength = MIN_LENGTH_EDEFAULT;
+	protected String minLength = MIN_LENGTH_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getMaxLength() <em>Max Length</em>}' attribute.
@@ -93,7 +98,7 @@ public class PlainLiteralScalarRestrictionImpl extends RestrictedDataRangeImpl i
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int MAX_LENGTH_EDEFAULT = 0;
+	protected static final String MAX_LENGTH_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getMaxLength() <em>Max Length</em>}' attribute.
@@ -103,47 +108,27 @@ public class PlainLiteralScalarRestrictionImpl extends RestrictedDataRangeImpl i
 	 * @generated
 	 * @ordered
 	 */
-	protected int maxLength = MAX_LENGTH_EDEFAULT;
+	protected String maxLength = MAX_LENGTH_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getPattern() <em>Pattern</em>}' attribute.
+	 * The cached value of the '{@link #getPattern() <em>Pattern</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getPattern()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String PATTERN_EDEFAULT = null;
+	protected LiteralPattern pattern;
 
 	/**
-	 * The cached value of the '{@link #getPattern() <em>Pattern</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPattern()
-	 * @generated
-	 * @ordered
-	 */
-	protected String pattern = PATTERN_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getLangRange() <em>Lang Range</em>}' attribute.
+	 * The cached value of the '{@link #getLangRange() <em>Lang Range</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getLangRange()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String LANG_RANGE_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getLangRange() <em>Lang Range</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getLangRange()
-	 * @generated
-	 * @ordered
-	 */
-	protected String langRange = LANG_RANGE_EDEFAULT;
+	protected LiteralLanguageTag langRange;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -169,7 +154,7 @@ public class PlainLiteralScalarRestrictionImpl extends RestrictedDataRangeImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getLength() {
+	public String getLength() {
 		return length;
 	}
 
@@ -178,8 +163,8 @@ public class PlainLiteralScalarRestrictionImpl extends RestrictedDataRangeImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setLength(int newLength) {
-		int oldLength = length;
+	public void setLength(String newLength) {
+		String oldLength = length;
 		length = newLength;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.PLAIN_LITERAL_SCALAR_RESTRICTION__LENGTH, oldLength, length));
@@ -190,7 +175,7 @@ public class PlainLiteralScalarRestrictionImpl extends RestrictedDataRangeImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getMinLength() {
+	public String getMinLength() {
 		return minLength;
 	}
 
@@ -199,8 +184,8 @@ public class PlainLiteralScalarRestrictionImpl extends RestrictedDataRangeImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setMinLength(int newMinLength) {
-		int oldMinLength = minLength;
+	public void setMinLength(String newMinLength) {
+		String oldMinLength = minLength;
 		minLength = newMinLength;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.PLAIN_LITERAL_SCALAR_RESTRICTION__MIN_LENGTH, oldMinLength, minLength));
@@ -211,7 +196,7 @@ public class PlainLiteralScalarRestrictionImpl extends RestrictedDataRangeImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getMaxLength() {
+	public String getMaxLength() {
 		return maxLength;
 	}
 
@@ -220,8 +205,8 @@ public class PlainLiteralScalarRestrictionImpl extends RestrictedDataRangeImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setMaxLength(int newMaxLength) {
-		int oldMaxLength = maxLength;
+	public void setMaxLength(String newMaxLength) {
+		String oldMaxLength = maxLength;
 		maxLength = newMaxLength;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.PLAIN_LITERAL_SCALAR_RESTRICTION__MAX_LENGTH, oldMaxLength, maxLength));
@@ -232,7 +217,7 @@ public class PlainLiteralScalarRestrictionImpl extends RestrictedDataRangeImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getPattern() {
+	public LiteralPattern getPattern() {
 		return pattern;
 	}
 
@@ -241,11 +226,14 @@ public class PlainLiteralScalarRestrictionImpl extends RestrictedDataRangeImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPattern(String newPattern) {
-		String oldPattern = pattern;
+	public NotificationChain basicSetPattern(LiteralPattern newPattern, NotificationChain msgs) {
+		LiteralPattern oldPattern = pattern;
 		pattern = newPattern;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.PLAIN_LITERAL_SCALAR_RESTRICTION__PATTERN, oldPattern, pattern));
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TerminologiesPackage.PLAIN_LITERAL_SCALAR_RESTRICTION__PATTERN, oldPattern, newPattern);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -253,7 +241,26 @@ public class PlainLiteralScalarRestrictionImpl extends RestrictedDataRangeImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getLangRange() {
+	public void setPattern(LiteralPattern newPattern) {
+		if (newPattern != pattern) {
+			NotificationChain msgs = null;
+			if (pattern != null)
+				msgs = ((InternalEObject)pattern).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TerminologiesPackage.PLAIN_LITERAL_SCALAR_RESTRICTION__PATTERN, null, msgs);
+			if (newPattern != null)
+				msgs = ((InternalEObject)newPattern).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TerminologiesPackage.PLAIN_LITERAL_SCALAR_RESTRICTION__PATTERN, null, msgs);
+			msgs = basicSetPattern(newPattern, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.PLAIN_LITERAL_SCALAR_RESTRICTION__PATTERN, newPattern, newPattern));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LiteralLanguageTag getLangRange() {
 		return langRange;
 	}
 
@@ -262,11 +269,49 @@ public class PlainLiteralScalarRestrictionImpl extends RestrictedDataRangeImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setLangRange(String newLangRange) {
-		String oldLangRange = langRange;
+	public NotificationChain basicSetLangRange(LiteralLanguageTag newLangRange, NotificationChain msgs) {
+		LiteralLanguageTag oldLangRange = langRange;
 		langRange = newLangRange;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.PLAIN_LITERAL_SCALAR_RESTRICTION__LANG_RANGE, oldLangRange, langRange));
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TerminologiesPackage.PLAIN_LITERAL_SCALAR_RESTRICTION__LANG_RANGE, oldLangRange, newLangRange);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setLangRange(LiteralLanguageTag newLangRange) {
+		if (newLangRange != langRange) {
+			NotificationChain msgs = null;
+			if (langRange != null)
+				msgs = ((InternalEObject)langRange).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TerminologiesPackage.PLAIN_LITERAL_SCALAR_RESTRICTION__LANG_RANGE, null, msgs);
+			if (newLangRange != null)
+				msgs = ((InternalEObject)newLangRange).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TerminologiesPackage.PLAIN_LITERAL_SCALAR_RESTRICTION__LANG_RANGE, null, msgs);
+			msgs = basicSetLangRange(newLangRange, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.PLAIN_LITERAL_SCALAR_RESTRICTION__LANG_RANGE, newLangRange, newLangRange));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case TerminologiesPackage.PLAIN_LITERAL_SCALAR_RESTRICTION__PATTERN:
+				return basicSetPattern(null, msgs);
+			case TerminologiesPackage.PLAIN_LITERAL_SCALAR_RESTRICTION__LANG_RANGE:
+				return basicSetLangRange(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -300,19 +345,19 @@ public class PlainLiteralScalarRestrictionImpl extends RestrictedDataRangeImpl i
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case TerminologiesPackage.PLAIN_LITERAL_SCALAR_RESTRICTION__LENGTH:
-				setLength((Integer)newValue);
+				setLength((String)newValue);
 				return;
 			case TerminologiesPackage.PLAIN_LITERAL_SCALAR_RESTRICTION__MIN_LENGTH:
-				setMinLength((Integer)newValue);
+				setMinLength((String)newValue);
 				return;
 			case TerminologiesPackage.PLAIN_LITERAL_SCALAR_RESTRICTION__MAX_LENGTH:
-				setMaxLength((Integer)newValue);
+				setMaxLength((String)newValue);
 				return;
 			case TerminologiesPackage.PLAIN_LITERAL_SCALAR_RESTRICTION__PATTERN:
-				setPattern((String)newValue);
+				setPattern((LiteralPattern)newValue);
 				return;
 			case TerminologiesPackage.PLAIN_LITERAL_SCALAR_RESTRICTION__LANG_RANGE:
-				setLangRange((String)newValue);
+				setLangRange((LiteralLanguageTag)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -336,10 +381,10 @@ public class PlainLiteralScalarRestrictionImpl extends RestrictedDataRangeImpl i
 				setMaxLength(MAX_LENGTH_EDEFAULT);
 				return;
 			case TerminologiesPackage.PLAIN_LITERAL_SCALAR_RESTRICTION__PATTERN:
-				setPattern(PATTERN_EDEFAULT);
+				setPattern((LiteralPattern)null);
 				return;
 			case TerminologiesPackage.PLAIN_LITERAL_SCALAR_RESTRICTION__LANG_RANGE:
-				setLangRange(LANG_RANGE_EDEFAULT);
+				setLangRange((LiteralLanguageTag)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -354,15 +399,15 @@ public class PlainLiteralScalarRestrictionImpl extends RestrictedDataRangeImpl i
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case TerminologiesPackage.PLAIN_LITERAL_SCALAR_RESTRICTION__LENGTH:
-				return length != LENGTH_EDEFAULT;
+				return LENGTH_EDEFAULT == null ? length != null : !LENGTH_EDEFAULT.equals(length);
 			case TerminologiesPackage.PLAIN_LITERAL_SCALAR_RESTRICTION__MIN_LENGTH:
-				return minLength != MIN_LENGTH_EDEFAULT;
+				return MIN_LENGTH_EDEFAULT == null ? minLength != null : !MIN_LENGTH_EDEFAULT.equals(minLength);
 			case TerminologiesPackage.PLAIN_LITERAL_SCALAR_RESTRICTION__MAX_LENGTH:
-				return maxLength != MAX_LENGTH_EDEFAULT;
+				return MAX_LENGTH_EDEFAULT == null ? maxLength != null : !MAX_LENGTH_EDEFAULT.equals(maxLength);
 			case TerminologiesPackage.PLAIN_LITERAL_SCALAR_RESTRICTION__PATTERN:
-				return PATTERN_EDEFAULT == null ? pattern != null : !PATTERN_EDEFAULT.equals(pattern);
+				return pattern != null;
 			case TerminologiesPackage.PLAIN_LITERAL_SCALAR_RESTRICTION__LANG_RANGE:
-				return LANG_RANGE_EDEFAULT == null ? langRange != null : !LANG_RANGE_EDEFAULT.equals(langRange);
+				return langRange != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -383,10 +428,6 @@ public class PlainLiteralScalarRestrictionImpl extends RestrictedDataRangeImpl i
 		result.append(minLength);
 		result.append(", maxLength: ");
 		result.append(maxLength);
-		result.append(", pattern: ");
-		result.append(pattern);
-		result.append(", langRange: ");
-		result.append(langRange);
 		result.append(')');
 		return result.toString();
 	}

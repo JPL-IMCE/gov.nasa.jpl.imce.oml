@@ -88,6 +88,167 @@ public class CommonItemProviderAdapterFactory extends CommonAdapterFactory imple
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.common.LiteralDateTime} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LiteralDateTimeItemProvider literalDateTimeItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.common.LiteralDateTime}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLiteralDateTimeAdapter() {
+		if (literalDateTimeItemProvider == null) {
+			literalDateTimeItemProvider = new LiteralDateTimeItemProvider(this);
+		}
+
+		return literalDateTimeItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.common.LiteralPattern} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LiteralPatternItemProvider literalPatternItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.common.LiteralPattern}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLiteralPatternAdapter() {
+		if (literalPatternItemProvider == null) {
+			literalPatternItemProvider = new LiteralPatternItemProvider(this);
+		}
+
+		return literalPatternItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.common.LiteralString} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LiteralStringItemProvider literalStringItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.common.LiteralString}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLiteralStringAdapter() {
+		if (literalStringItemProvider == null) {
+			literalStringItemProvider = new LiteralStringItemProvider(this);
+		}
+
+		return literalStringItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.common.LiteralLanguageTag} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LiteralLanguageTagItemProvider literalLanguageTagItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.common.LiteralLanguageTag}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLiteralLanguageTagAdapter() {
+		if (literalLanguageTagItemProvider == null) {
+			literalLanguageTagItemProvider = new LiteralLanguageTagItemProvider(this);
+		}
+
+		return literalLanguageTagItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.common.LiteralUUID} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LiteralUUIDItemProvider literalUUIDItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.common.LiteralUUID}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLiteralUUIDAdapter() {
+		if (literalUUIDItemProvider == null) {
+			literalUUIDItemProvider = new LiteralUUIDItemProvider(this);
+		}
+
+		return literalUUIDItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.common.LiteralURI} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LiteralURIItemProvider literalURIItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.common.LiteralURI}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLiteralURIAdapter() {
+		if (literalURIItemProvider == null) {
+			literalURIItemProvider = new LiteralURIItemProvider(this);
+		}
+
+		return literalURIItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.common.LiteralNumber} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LiteralNumberItemProvider literalNumberItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.common.LiteralNumber}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLiteralNumberAdapter() {
+		if (literalNumberItemProvider == null) {
+			literalNumberItemProvider = new LiteralNumberItemProvider(this);
+		}
+
+		return literalNumberItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -255,6 +416,13 @@ public class CommonItemProviderAdapterFactory extends CommonAdapterFactory imple
 	 * @generated
 	 */
 	public void dispose() {
+		if (literalPatternItemProvider != null) literalPatternItemProvider.dispose();
+		if (literalDateTimeItemProvider != null) literalDateTimeItemProvider.dispose();
+		if (literalLanguageTagItemProvider != null) literalLanguageTagItemProvider.dispose();
+		if (literalStringItemProvider != null) literalStringItemProvider.dispose();
+		if (literalUUIDItemProvider != null) literalUUIDItemProvider.dispose();
+		if (literalURIItemProvider != null) literalURIItemProvider.dispose();
+		if (literalNumberItemProvider != null) literalNumberItemProvider.dispose();
 		if (annotationPropertyValueItemProvider != null) annotationPropertyValueItemProvider.dispose();
 		if (annotationPropertyItemProvider != null) annotationPropertyItemProvider.dispose();
 		if (extentItemProvider != null) extentItemProvider.dispose();

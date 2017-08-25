@@ -122,25 +122,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cValueAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cValueSTRINGTerminalRuleCall_3_0 = (RuleCall)cValueAssignment_3.eContents().get(0);
 		
-		///*
-		// * Note that the concrete syntax for the Annotation.subject is defined implicitly
-		// * in the sense that the subject of an Annotation is always the preceding
-		// * TerminologyThing or the subject of the preceding Annotation.
-		// * 
-		// * For example, the following shows the concrete syntax for 2 Concepts, Foo and Bar
-		// * and of 3 Annotations; the first two Annotations have Foo as their subject because 
-		// * Foo is the first preceding TerminologyThing; the third Annotation has Bar as its subject
-		// * because it appears after the TerminologyThing Bar.
-		// * 
-		// * concept Foo
-		// * @rdfs:label = "foo"
-		// * @dc:description = "A Foo is ..."
-		// * 
-		// * concept Bar
-		// * @rdfs:label = "bar
-		// * 
-		// * @see jpl.imce.oml.specification.linking.OMLLinkingService
-		// */ AnnotationPropertyValue:
+		//AnnotationPropertyValue:
 		//	'@' property=[AnnotationProperty|ABBREV_IRI]
 		//	'=' value=STRING;
 		@Override public ParserRule getRule() { return rule; }
@@ -2490,18 +2472,18 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cScalarPropertyEntityScalarDataPropertyReferenceParserRuleCall_4_0_1 = (RuleCall)cScalarPropertyEntityScalarDataPropertyCrossReference_4_0.eContents().get(1);
 		private final Keyword cEqualsSignKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		private final Assignment cLiteralValueAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cLiteralValueValueParserRuleCall_6_0 = (RuleCall)cLiteralValueAssignment_6.eContents().get(0);
+		private final RuleCall cLiteralValueLiteralValueParserRuleCall_6_0 = (RuleCall)cLiteralValueAssignment_6.eContents().get(0);
 		
 		//EntityScalarDataPropertyParticularRestrictionAxiom:
 		//	annotations+=AnnotationPropertyValue*
 		//	'every'
 		//	restrictedEntity=[Entity|Reference]
 		//	'.' scalarProperty=[EntityScalarDataProperty|Reference]
-		//	'=' literalValue=Value;
+		//	'=' literalValue=LiteralValue;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//annotations+=AnnotationPropertyValue* 'every' restrictedEntity=[Entity|Reference] '.'
-		//scalarProperty=[EntityScalarDataProperty|Reference] '=' literalValue=Value
+		//scalarProperty=[EntityScalarDataProperty|Reference] '=' literalValue=LiteralValue
 		public Group getGroup() { return cGroup; }
 		
 		//annotations+=AnnotationPropertyValue*
@@ -2537,11 +2519,11 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//'='
 		public Keyword getEqualsSignKeyword_5() { return cEqualsSignKeyword_5; }
 		
-		//literalValue=Value
+		//literalValue=LiteralValue
 		public Assignment getLiteralValueAssignment_6() { return cLiteralValueAssignment_6; }
 		
-		//Value
-		public RuleCall getLiteralValueValueParserRuleCall_6_0() { return cLiteralValueValueParserRuleCall_6_0; }
+		//LiteralValue
+		public RuleCall getLiteralValueLiteralValueParserRuleCall_6_0() { return cLiteralValueLiteralValueParserRuleCall_6_0; }
 	}
 	public class EntityScalarDataPropertyUniversalRestrictionAxiomElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.EntityScalarDataPropertyUniversalRestrictionAxiom");
@@ -2791,16 +2773,17 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cScalarDataPropertyScalarDataPropertyReferenceParserRuleCall_1_0_1 = (RuleCall)cScalarDataPropertyScalarDataPropertyCrossReference_1_0.eContents().get(1);
 		private final Keyword cEqualsSignKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cScalarPropertyValueAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cScalarPropertyValueValueParserRuleCall_3_0 = (RuleCall)cScalarPropertyValueAssignment_3.eContents().get(0);
+		private final RuleCall cScalarPropertyValueLiteralValueParserRuleCall_3_0 = (RuleCall)cScalarPropertyValueAssignment_3.eContents().get(0);
 		
 		//RestrictionScalarDataPropertyValue:
 		//	annotations+=AnnotationPropertyValue*
 		//	scalarDataProperty=[ScalarDataProperty|Reference]
 		//	'='
-		//	scalarPropertyValue=Value;
+		//	scalarPropertyValue=LiteralValue;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//annotations+=AnnotationPropertyValue* scalarDataProperty=[ScalarDataProperty|Reference] '=' scalarPropertyValue=Value
+		//annotations+=AnnotationPropertyValue* scalarDataProperty=[ScalarDataProperty|Reference] '='
+		//scalarPropertyValue=LiteralValue
 		public Group getGroup() { return cGroup; }
 		
 		//annotations+=AnnotationPropertyValue*
@@ -2821,11 +2804,11 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//'='
 		public Keyword getEqualsSignKeyword_2() { return cEqualsSignKeyword_2; }
 		
-		//scalarPropertyValue=Value
+		//scalarPropertyValue=LiteralValue
 		public Assignment getScalarPropertyValueAssignment_3() { return cScalarPropertyValueAssignment_3; }
 		
-		//Value
-		public RuleCall getScalarPropertyValueValueParserRuleCall_3_0() { return cScalarPropertyValueValueParserRuleCall_3_0; }
+		//LiteralValue
+		public RuleCall getScalarPropertyValueLiteralValueParserRuleCall_3_0() { return cScalarPropertyValueLiteralValueParserRuleCall_3_0; }
 	}
 	public class BinaryScalarRestrictionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.BinaryScalarRestriction");
@@ -2840,15 +2823,15 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup_4_0 = (Group)cUnorderedGroup_4.eContents().get(0);
 		private final Keyword cLengthKeyword_4_0_0 = (Keyword)cGroup_4_0.eContents().get(0);
 		private final Assignment cLengthAssignment_4_0_1 = (Assignment)cGroup_4_0.eContents().get(1);
-		private final RuleCall cLengthINTTerminalRuleCall_4_0_1_0 = (RuleCall)cLengthAssignment_4_0_1.eContents().get(0);
+		private final RuleCall cLengthDIGITSTerminalRuleCall_4_0_1_0 = (RuleCall)cLengthAssignment_4_0_1.eContents().get(0);
 		private final Group cGroup_4_1 = (Group)cUnorderedGroup_4.eContents().get(1);
 		private final Keyword cMinLengthKeyword_4_1_0 = (Keyword)cGroup_4_1.eContents().get(0);
 		private final Assignment cMinLengthAssignment_4_1_1 = (Assignment)cGroup_4_1.eContents().get(1);
-		private final RuleCall cMinLengthINTTerminalRuleCall_4_1_1_0 = (RuleCall)cMinLengthAssignment_4_1_1.eContents().get(0);
+		private final RuleCall cMinLengthDIGITSTerminalRuleCall_4_1_1_0 = (RuleCall)cMinLengthAssignment_4_1_1.eContents().get(0);
 		private final Group cGroup_4_2 = (Group)cUnorderedGroup_4.eContents().get(2);
 		private final Keyword cMaxLengthKeyword_4_2_0 = (Keyword)cGroup_4_2.eContents().get(0);
 		private final Assignment cMaxLengthAssignment_4_2_1 = (Assignment)cGroup_4_2.eContents().get(1);
-		private final RuleCall cMaxLengthINTTerminalRuleCall_4_2_1_0 = (RuleCall)cMaxLengthAssignment_4_2_1.eContents().get(0);
+		private final RuleCall cMaxLengthDIGITSTerminalRuleCall_4_2_1_0 = (RuleCall)cMaxLengthAssignment_4_2_1.eContents().get(0);
 		private final Keyword cRestrictedRangeKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		private final Assignment cRestrictedRangeAssignment_6 = (Assignment)cGroup.eContents().get(6);
 		private final CrossReference cRestrictedRangeDataRangeCrossReference_6_0 = (CrossReference)cRestrictedRangeAssignment_6.eContents().get(0);
@@ -2859,13 +2842,13 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//BinaryScalarRestriction:
 		//	annotations+=AnnotationPropertyValue*
 		//	'binaryScalarRestriction' name=ID
-		//	'{' (('length' length=INT)? & ('minLength' minLength=INT)? & ('maxLength' maxLength=INT)?)
+		//	'{' (('length' length=DIGITS)? & ('minLength' minLength=DIGITS)? & ('maxLength' maxLength=DIGITS)?)
 		//	'restrictedRange' restrictedRange=[DataRange|Reference]
 		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//annotations+=AnnotationPropertyValue* 'binaryScalarRestriction' name=ID '{' (('length' length=INT)? & ('minLength'
-		//minLength=INT)? & ('maxLength' maxLength=INT)?) 'restrictedRange' restrictedRange=[DataRange|Reference] '}'
+		//annotations+=AnnotationPropertyValue* 'binaryScalarRestriction' name=ID '{' (('length' length=DIGITS)? & ('minLength'
+		//minLength=DIGITS)? & ('maxLength' maxLength=DIGITS)?) 'restrictedRange' restrictedRange=[DataRange|Reference] '}'
 		public Group getGroup() { return cGroup; }
 		
 		//annotations+=AnnotationPropertyValue*
@@ -2886,44 +2869,44 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
 		
-		//('length' length=INT)? & ('minLength' minLength=INT)? & ('maxLength' maxLength=INT)?
+		//('length' length=DIGITS)? & ('minLength' minLength=DIGITS)? & ('maxLength' maxLength=DIGITS)?
 		public UnorderedGroup getUnorderedGroup_4() { return cUnorderedGroup_4; }
 		
-		//('length' length=INT)?
+		//('length' length=DIGITS)?
 		public Group getGroup_4_0() { return cGroup_4_0; }
 		
 		//'length'
 		public Keyword getLengthKeyword_4_0_0() { return cLengthKeyword_4_0_0; }
 		
-		//length=INT
+		//length=DIGITS
 		public Assignment getLengthAssignment_4_0_1() { return cLengthAssignment_4_0_1; }
 		
-		//INT
-		public RuleCall getLengthINTTerminalRuleCall_4_0_1_0() { return cLengthINTTerminalRuleCall_4_0_1_0; }
+		//DIGITS
+		public RuleCall getLengthDIGITSTerminalRuleCall_4_0_1_0() { return cLengthDIGITSTerminalRuleCall_4_0_1_0; }
 		
-		//('minLength' minLength=INT)?
+		//('minLength' minLength=DIGITS)?
 		public Group getGroup_4_1() { return cGroup_4_1; }
 		
 		//'minLength'
 		public Keyword getMinLengthKeyword_4_1_0() { return cMinLengthKeyword_4_1_0; }
 		
-		//minLength=INT
+		//minLength=DIGITS
 		public Assignment getMinLengthAssignment_4_1_1() { return cMinLengthAssignment_4_1_1; }
 		
-		//INT
-		public RuleCall getMinLengthINTTerminalRuleCall_4_1_1_0() { return cMinLengthINTTerminalRuleCall_4_1_1_0; }
+		//DIGITS
+		public RuleCall getMinLengthDIGITSTerminalRuleCall_4_1_1_0() { return cMinLengthDIGITSTerminalRuleCall_4_1_1_0; }
 		
-		//('maxLength' maxLength=INT)?
+		//('maxLength' maxLength=DIGITS)?
 		public Group getGroup_4_2() { return cGroup_4_2; }
 		
 		//'maxLength'
 		public Keyword getMaxLengthKeyword_4_2_0() { return cMaxLengthKeyword_4_2_0; }
 		
-		//maxLength=INT
+		//maxLength=DIGITS
 		public Assignment getMaxLengthAssignment_4_2_1() { return cMaxLengthAssignment_4_2_1; }
 		
-		//INT
-		public RuleCall getMaxLengthINTTerminalRuleCall_4_2_1_0() { return cMaxLengthINTTerminalRuleCall_4_2_1_0; }
+		//DIGITS
+		public RuleCall getMaxLengthDIGITSTerminalRuleCall_4_2_1_0() { return cMaxLengthDIGITSTerminalRuleCall_4_2_1_0; }
 		
 		//'restrictedRange'
 		public Keyword getRestrictedRangeKeyword_5() { return cRestrictedRangeKeyword_5; }
@@ -2953,19 +2936,19 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup_4_0 = (Group)cUnorderedGroup_4.eContents().get(0);
 		private final Keyword cLengthKeyword_4_0_0 = (Keyword)cGroup_4_0.eContents().get(0);
 		private final Assignment cLengthAssignment_4_0_1 = (Assignment)cGroup_4_0.eContents().get(1);
-		private final RuleCall cLengthINTTerminalRuleCall_4_0_1_0 = (RuleCall)cLengthAssignment_4_0_1.eContents().get(0);
+		private final RuleCall cLengthDIGITSTerminalRuleCall_4_0_1_0 = (RuleCall)cLengthAssignment_4_0_1.eContents().get(0);
 		private final Group cGroup_4_1 = (Group)cUnorderedGroup_4.eContents().get(1);
 		private final Keyword cMinLengthKeyword_4_1_0 = (Keyword)cGroup_4_1.eContents().get(0);
 		private final Assignment cMinLengthAssignment_4_1_1 = (Assignment)cGroup_4_1.eContents().get(1);
-		private final RuleCall cMinLengthINTTerminalRuleCall_4_1_1_0 = (RuleCall)cMinLengthAssignment_4_1_1.eContents().get(0);
+		private final RuleCall cMinLengthDIGITSTerminalRuleCall_4_1_1_0 = (RuleCall)cMinLengthAssignment_4_1_1.eContents().get(0);
 		private final Group cGroup_4_2 = (Group)cUnorderedGroup_4.eContents().get(2);
 		private final Keyword cMaxLengthKeyword_4_2_0 = (Keyword)cGroup_4_2.eContents().get(0);
 		private final Assignment cMaxLengthAssignment_4_2_1 = (Assignment)cGroup_4_2.eContents().get(1);
-		private final RuleCall cMaxLengthINTTerminalRuleCall_4_2_1_0 = (RuleCall)cMaxLengthAssignment_4_2_1.eContents().get(0);
+		private final RuleCall cMaxLengthDIGITSTerminalRuleCall_4_2_1_0 = (RuleCall)cMaxLengthAssignment_4_2_1.eContents().get(0);
 		private final Group cGroup_4_3 = (Group)cUnorderedGroup_4.eContents().get(3);
 		private final Keyword cPatternKeyword_4_3_0 = (Keyword)cGroup_4_3.eContents().get(0);
 		private final Assignment cPatternAssignment_4_3_1 = (Assignment)cGroup_4_3.eContents().get(1);
-		private final RuleCall cPatternSTRINGTerminalRuleCall_4_3_1_0 = (RuleCall)cPatternAssignment_4_3_1.eContents().get(0);
+		private final RuleCall cPatternLiteralPatternParserRuleCall_4_3_1_0 = (RuleCall)cPatternAssignment_4_3_1.eContents().get(0);
 		private final Keyword cRestrictedRangeKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		private final Assignment cRestrictedRangeAssignment_6 = (Assignment)cGroup.eContents().get(6);
 		private final CrossReference cRestrictedRangeDataRangeCrossReference_6_0 = (CrossReference)cRestrictedRangeAssignment_6.eContents().get(0);
@@ -2975,14 +2958,14 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//IRIScalarRestriction:
 		//	annotations+=AnnotationPropertyValue*
 		//	'iriScalarRestriction' name=ID
-		//	'{' (('length' length=INT)? & ('minLength' minLength=INT)? & ('maxLength' maxLength=INT)? & ('pattern'
-		//	pattern=STRING)?)
+		//	'{' (('length' length=DIGITS)? & ('minLength' minLength=DIGITS)? & ('maxLength' maxLength=DIGITS)? & ('pattern'
+		//	pattern=LiteralPattern)?)
 		//	'restrictedRange' restrictedRange=[DataRange|Reference]
 		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//annotations+=AnnotationPropertyValue* 'iriScalarRestriction' name=ID '{' (('length' length=INT)? & ('minLength'
-		//minLength=INT)? & ('maxLength' maxLength=INT)? & ('pattern' pattern=STRING)?) 'restrictedRange'
+		//annotations+=AnnotationPropertyValue* 'iriScalarRestriction' name=ID '{' (('length' length=DIGITS)? & ('minLength'
+		//minLength=DIGITS)? & ('maxLength' maxLength=DIGITS)? & ('pattern' pattern=LiteralPattern)?) 'restrictedRange'
 		//restrictedRange=[DataRange|Reference] '}'
 		public Group getGroup() { return cGroup; }
 		
@@ -3004,56 +2987,57 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
 		
-		//('length' length=INT)? & ('minLength' minLength=INT)? & ('maxLength' maxLength=INT)? & ('pattern' pattern=STRING)?
+		//('length' length=DIGITS)? & ('minLength' minLength=DIGITS)? & ('maxLength' maxLength=DIGITS)? & ('pattern'
+		//pattern=LiteralPattern)?
 		public UnorderedGroup getUnorderedGroup_4() { return cUnorderedGroup_4; }
 		
-		//('length' length=INT)?
+		//('length' length=DIGITS)?
 		public Group getGroup_4_0() { return cGroup_4_0; }
 		
 		//'length'
 		public Keyword getLengthKeyword_4_0_0() { return cLengthKeyword_4_0_0; }
 		
-		//length=INT
+		//length=DIGITS
 		public Assignment getLengthAssignment_4_0_1() { return cLengthAssignment_4_0_1; }
 		
-		//INT
-		public RuleCall getLengthINTTerminalRuleCall_4_0_1_0() { return cLengthINTTerminalRuleCall_4_0_1_0; }
+		//DIGITS
+		public RuleCall getLengthDIGITSTerminalRuleCall_4_0_1_0() { return cLengthDIGITSTerminalRuleCall_4_0_1_0; }
 		
-		//('minLength' minLength=INT)?
+		//('minLength' minLength=DIGITS)?
 		public Group getGroup_4_1() { return cGroup_4_1; }
 		
 		//'minLength'
 		public Keyword getMinLengthKeyword_4_1_0() { return cMinLengthKeyword_4_1_0; }
 		
-		//minLength=INT
+		//minLength=DIGITS
 		public Assignment getMinLengthAssignment_4_1_1() { return cMinLengthAssignment_4_1_1; }
 		
-		//INT
-		public RuleCall getMinLengthINTTerminalRuleCall_4_1_1_0() { return cMinLengthINTTerminalRuleCall_4_1_1_0; }
+		//DIGITS
+		public RuleCall getMinLengthDIGITSTerminalRuleCall_4_1_1_0() { return cMinLengthDIGITSTerminalRuleCall_4_1_1_0; }
 		
-		//('maxLength' maxLength=INT)?
+		//('maxLength' maxLength=DIGITS)?
 		public Group getGroup_4_2() { return cGroup_4_2; }
 		
 		//'maxLength'
 		public Keyword getMaxLengthKeyword_4_2_0() { return cMaxLengthKeyword_4_2_0; }
 		
-		//maxLength=INT
+		//maxLength=DIGITS
 		public Assignment getMaxLengthAssignment_4_2_1() { return cMaxLengthAssignment_4_2_1; }
 		
-		//INT
-		public RuleCall getMaxLengthINTTerminalRuleCall_4_2_1_0() { return cMaxLengthINTTerminalRuleCall_4_2_1_0; }
+		//DIGITS
+		public RuleCall getMaxLengthDIGITSTerminalRuleCall_4_2_1_0() { return cMaxLengthDIGITSTerminalRuleCall_4_2_1_0; }
 		
-		//('pattern' pattern=STRING)?
+		//('pattern' pattern=LiteralPattern)?
 		public Group getGroup_4_3() { return cGroup_4_3; }
 		
 		//'pattern'
 		public Keyword getPatternKeyword_4_3_0() { return cPatternKeyword_4_3_0; }
 		
-		//pattern=STRING
+		//pattern=LiteralPattern
 		public Assignment getPatternAssignment_4_3_1() { return cPatternAssignment_4_3_1; }
 		
-		//STRING
-		public RuleCall getPatternSTRINGTerminalRuleCall_4_3_1_0() { return cPatternSTRINGTerminalRuleCall_4_3_1_0; }
+		//LiteralPattern
+		public RuleCall getPatternLiteralPatternParserRuleCall_4_3_1_0() { return cPatternLiteralPatternParserRuleCall_4_3_1_0; }
 		
 		//'restrictedRange'
 		public Keyword getRestrictedRangeKeyword_5() { return cRestrictedRangeKeyword_5; }
@@ -3083,19 +3067,19 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup_4_0 = (Group)cUnorderedGroup_4.eContents().get(0);
 		private final Keyword cMinInclusiveKeyword_4_0_0 = (Keyword)cGroup_4_0.eContents().get(0);
 		private final Assignment cMinInclusiveAssignment_4_0_1 = (Assignment)cGroup_4_0.eContents().get(1);
-		private final RuleCall cMinInclusiveSTRINGTerminalRuleCall_4_0_1_0 = (RuleCall)cMinInclusiveAssignment_4_0_1.eContents().get(0);
+		private final RuleCall cMinInclusiveLiteralNumberParserRuleCall_4_0_1_0 = (RuleCall)cMinInclusiveAssignment_4_0_1.eContents().get(0);
 		private final Group cGroup_4_1 = (Group)cUnorderedGroup_4.eContents().get(1);
 		private final Keyword cMaxInclusiveKeyword_4_1_0 = (Keyword)cGroup_4_1.eContents().get(0);
 		private final Assignment cMaxInclusiveAssignment_4_1_1 = (Assignment)cGroup_4_1.eContents().get(1);
-		private final RuleCall cMaxInclusiveSTRINGTerminalRuleCall_4_1_1_0 = (RuleCall)cMaxInclusiveAssignment_4_1_1.eContents().get(0);
+		private final RuleCall cMaxInclusiveLiteralNumberParserRuleCall_4_1_1_0 = (RuleCall)cMaxInclusiveAssignment_4_1_1.eContents().get(0);
 		private final Group cGroup_4_2 = (Group)cUnorderedGroup_4.eContents().get(2);
 		private final Keyword cMinExclusiveKeyword_4_2_0 = (Keyword)cGroup_4_2.eContents().get(0);
 		private final Assignment cMinExclusiveAssignment_4_2_1 = (Assignment)cGroup_4_2.eContents().get(1);
-		private final RuleCall cMinExclusiveSTRINGTerminalRuleCall_4_2_1_0 = (RuleCall)cMinExclusiveAssignment_4_2_1.eContents().get(0);
+		private final RuleCall cMinExclusiveLiteralNumberParserRuleCall_4_2_1_0 = (RuleCall)cMinExclusiveAssignment_4_2_1.eContents().get(0);
 		private final Group cGroup_4_3 = (Group)cUnorderedGroup_4.eContents().get(3);
 		private final Keyword cMaxExclusiveKeyword_4_3_0 = (Keyword)cGroup_4_3.eContents().get(0);
 		private final Assignment cMaxExclusiveAssignment_4_3_1 = (Assignment)cGroup_4_3.eContents().get(1);
-		private final RuleCall cMaxExclusiveSTRINGTerminalRuleCall_4_3_1_0 = (RuleCall)cMaxExclusiveAssignment_4_3_1.eContents().get(0);
+		private final RuleCall cMaxExclusiveLiteralNumberParserRuleCall_4_3_1_0 = (RuleCall)cMaxExclusiveAssignment_4_3_1.eContents().get(0);
 		private final Keyword cRestrictedRangeKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		private final Assignment cRestrictedRangeAssignment_6 = (Assignment)cGroup.eContents().get(6);
 		private final CrossReference cRestrictedRangeDataRangeCrossReference_6_0 = (CrossReference)cRestrictedRangeAssignment_6.eContents().get(0);
@@ -3105,15 +3089,16 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//NumericScalarRestriction:
 		//	annotations+=AnnotationPropertyValue*
 		//	'numericScalarRestriction' name=ID
-		//	'{' (('minInclusive' minInclusive=STRING)? & ('maxInclusive' maxInclusive=STRING)? & ('minExclusive'
-		//	minExclusive=STRING)? & ('maxExclusive' maxExclusive=STRING)?)
+		//	'{' (('minInclusive' minInclusive=LiteralNumber)? & ('maxInclusive' maxInclusive=LiteralNumber)? & ('minExclusive'
+		//	minExclusive=LiteralNumber)? & ('maxExclusive' maxExclusive=LiteralNumber)?)
 		//	'restrictedRange' restrictedRange=[DataRange|Reference]
 		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//annotations+=AnnotationPropertyValue* 'numericScalarRestriction' name=ID '{' (('minInclusive' minInclusive=STRING)? &
-		//('maxInclusive' maxInclusive=STRING)? & ('minExclusive' minExclusive=STRING)? & ('maxExclusive' maxExclusive=STRING)?)
-		//'restrictedRange' restrictedRange=[DataRange|Reference] '}'
+		//annotations+=AnnotationPropertyValue* 'numericScalarRestriction' name=ID '{' (('minInclusive'
+		//minInclusive=LiteralNumber)? & ('maxInclusive' maxInclusive=LiteralNumber)? & ('minExclusive'
+		//minExclusive=LiteralNumber)? & ('maxExclusive' maxExclusive=LiteralNumber)?) 'restrictedRange'
+		//restrictedRange=[DataRange|Reference] '}'
 		public Group getGroup() { return cGroup; }
 		
 		//annotations+=AnnotationPropertyValue*
@@ -3134,57 +3119,57 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
 		
-		//('minInclusive' minInclusive=STRING)? & ('maxInclusive' maxInclusive=STRING)? & ('minExclusive' minExclusive=STRING)? &
-		//('maxExclusive' maxExclusive=STRING)?
+		//('minInclusive' minInclusive=LiteralNumber)? & ('maxInclusive' maxInclusive=LiteralNumber)? & ('minExclusive'
+		//minExclusive=LiteralNumber)? & ('maxExclusive' maxExclusive=LiteralNumber)?
 		public UnorderedGroup getUnorderedGroup_4() { return cUnorderedGroup_4; }
 		
-		//('minInclusive' minInclusive=STRING)?
+		//('minInclusive' minInclusive=LiteralNumber)?
 		public Group getGroup_4_0() { return cGroup_4_0; }
 		
 		//'minInclusive'
 		public Keyword getMinInclusiveKeyword_4_0_0() { return cMinInclusiveKeyword_4_0_0; }
 		
-		//minInclusive=STRING
+		//minInclusive=LiteralNumber
 		public Assignment getMinInclusiveAssignment_4_0_1() { return cMinInclusiveAssignment_4_0_1; }
 		
-		//STRING
-		public RuleCall getMinInclusiveSTRINGTerminalRuleCall_4_0_1_0() { return cMinInclusiveSTRINGTerminalRuleCall_4_0_1_0; }
+		//LiteralNumber
+		public RuleCall getMinInclusiveLiteralNumberParserRuleCall_4_0_1_0() { return cMinInclusiveLiteralNumberParserRuleCall_4_0_1_0; }
 		
-		//('maxInclusive' maxInclusive=STRING)?
+		//('maxInclusive' maxInclusive=LiteralNumber)?
 		public Group getGroup_4_1() { return cGroup_4_1; }
 		
 		//'maxInclusive'
 		public Keyword getMaxInclusiveKeyword_4_1_0() { return cMaxInclusiveKeyword_4_1_0; }
 		
-		//maxInclusive=STRING
+		//maxInclusive=LiteralNumber
 		public Assignment getMaxInclusiveAssignment_4_1_1() { return cMaxInclusiveAssignment_4_1_1; }
 		
-		//STRING
-		public RuleCall getMaxInclusiveSTRINGTerminalRuleCall_4_1_1_0() { return cMaxInclusiveSTRINGTerminalRuleCall_4_1_1_0; }
+		//LiteralNumber
+		public RuleCall getMaxInclusiveLiteralNumberParserRuleCall_4_1_1_0() { return cMaxInclusiveLiteralNumberParserRuleCall_4_1_1_0; }
 		
-		//('minExclusive' minExclusive=STRING)?
+		//('minExclusive' minExclusive=LiteralNumber)?
 		public Group getGroup_4_2() { return cGroup_4_2; }
 		
 		//'minExclusive'
 		public Keyword getMinExclusiveKeyword_4_2_0() { return cMinExclusiveKeyword_4_2_0; }
 		
-		//minExclusive=STRING
+		//minExclusive=LiteralNumber
 		public Assignment getMinExclusiveAssignment_4_2_1() { return cMinExclusiveAssignment_4_2_1; }
 		
-		//STRING
-		public RuleCall getMinExclusiveSTRINGTerminalRuleCall_4_2_1_0() { return cMinExclusiveSTRINGTerminalRuleCall_4_2_1_0; }
+		//LiteralNumber
+		public RuleCall getMinExclusiveLiteralNumberParserRuleCall_4_2_1_0() { return cMinExclusiveLiteralNumberParserRuleCall_4_2_1_0; }
 		
-		//('maxExclusive' maxExclusive=STRING)?
+		//('maxExclusive' maxExclusive=LiteralNumber)?
 		public Group getGroup_4_3() { return cGroup_4_3; }
 		
 		//'maxExclusive'
 		public Keyword getMaxExclusiveKeyword_4_3_0() { return cMaxExclusiveKeyword_4_3_0; }
 		
-		//maxExclusive=STRING
+		//maxExclusive=LiteralNumber
 		public Assignment getMaxExclusiveAssignment_4_3_1() { return cMaxExclusiveAssignment_4_3_1; }
 		
-		//STRING
-		public RuleCall getMaxExclusiveSTRINGTerminalRuleCall_4_3_1_0() { return cMaxExclusiveSTRINGTerminalRuleCall_4_3_1_0; }
+		//LiteralNumber
+		public RuleCall getMaxExclusiveLiteralNumberParserRuleCall_4_3_1_0() { return cMaxExclusiveLiteralNumberParserRuleCall_4_3_1_0; }
 		
 		//'restrictedRange'
 		public Keyword getRestrictedRangeKeyword_5() { return cRestrictedRangeKeyword_5; }
@@ -3214,23 +3199,23 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup_4_0 = (Group)cUnorderedGroup_4.eContents().get(0);
 		private final Keyword cLengthKeyword_4_0_0 = (Keyword)cGroup_4_0.eContents().get(0);
 		private final Assignment cLengthAssignment_4_0_1 = (Assignment)cGroup_4_0.eContents().get(1);
-		private final RuleCall cLengthINTTerminalRuleCall_4_0_1_0 = (RuleCall)cLengthAssignment_4_0_1.eContents().get(0);
+		private final RuleCall cLengthDIGITSTerminalRuleCall_4_0_1_0 = (RuleCall)cLengthAssignment_4_0_1.eContents().get(0);
 		private final Group cGroup_4_1 = (Group)cUnorderedGroup_4.eContents().get(1);
 		private final Keyword cMinLengthKeyword_4_1_0 = (Keyword)cGroup_4_1.eContents().get(0);
 		private final Assignment cMinLengthAssignment_4_1_1 = (Assignment)cGroup_4_1.eContents().get(1);
-		private final RuleCall cMinLengthINTTerminalRuleCall_4_1_1_0 = (RuleCall)cMinLengthAssignment_4_1_1.eContents().get(0);
+		private final RuleCall cMinLengthDIGITSTerminalRuleCall_4_1_1_0 = (RuleCall)cMinLengthAssignment_4_1_1.eContents().get(0);
 		private final Group cGroup_4_2 = (Group)cUnorderedGroup_4.eContents().get(2);
 		private final Keyword cMaxLengthKeyword_4_2_0 = (Keyword)cGroup_4_2.eContents().get(0);
 		private final Assignment cMaxLengthAssignment_4_2_1 = (Assignment)cGroup_4_2.eContents().get(1);
-		private final RuleCall cMaxLengthINTTerminalRuleCall_4_2_1_0 = (RuleCall)cMaxLengthAssignment_4_2_1.eContents().get(0);
+		private final RuleCall cMaxLengthDIGITSTerminalRuleCall_4_2_1_0 = (RuleCall)cMaxLengthAssignment_4_2_1.eContents().get(0);
 		private final Group cGroup_4_3 = (Group)cUnorderedGroup_4.eContents().get(3);
 		private final Keyword cPatternKeyword_4_3_0 = (Keyword)cGroup_4_3.eContents().get(0);
 		private final Assignment cPatternAssignment_4_3_1 = (Assignment)cGroup_4_3.eContents().get(1);
-		private final RuleCall cPatternSTRINGTerminalRuleCall_4_3_1_0 = (RuleCall)cPatternAssignment_4_3_1.eContents().get(0);
+		private final RuleCall cPatternLiteralPatternParserRuleCall_4_3_1_0 = (RuleCall)cPatternAssignment_4_3_1.eContents().get(0);
 		private final Group cGroup_4_4 = (Group)cUnorderedGroup_4.eContents().get(4);
 		private final Keyword cLangRangeKeyword_4_4_0 = (Keyword)cGroup_4_4.eContents().get(0);
 		private final Assignment cLangRangeAssignment_4_4_1 = (Assignment)cGroup_4_4.eContents().get(1);
-		private final RuleCall cLangRangeSTRINGTerminalRuleCall_4_4_1_0 = (RuleCall)cLangRangeAssignment_4_4_1.eContents().get(0);
+		private final RuleCall cLangRangeLiteralLanguageTagParserRuleCall_4_4_1_0 = (RuleCall)cLangRangeAssignment_4_4_1.eContents().get(0);
 		private final Keyword cRestrictedRangeKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		private final Assignment cRestrictedRangeAssignment_6 = (Assignment)cGroup.eContents().get(6);
 		private final CrossReference cRestrictedRangeDataRangeCrossReference_6_0 = (CrossReference)cRestrictedRangeAssignment_6.eContents().get(0);
@@ -3240,15 +3225,15 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//PlainLiteralScalarRestriction:
 		//	annotations+=AnnotationPropertyValue*
 		//	'plainLiteralScalarRestriction' name=ID
-		//	'{' (('length' length=INT)? & ('minLength' minLength=INT)? & ('maxLength' maxLength=INT)? & ('pattern'
-		//	pattern=STRING)? & ('langRange' langRange=STRING)?)
+		//	'{' (('length' length=DIGITS)? & ('minLength' minLength=DIGITS)? & ('maxLength' maxLength=DIGITS)? & ('pattern'
+		//	pattern=LiteralPattern)? & ('langRange' langRange=LiteralLanguageTag)?)
 		//	'restrictedRange' restrictedRange=[DataRange|Reference]
 		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//annotations+=AnnotationPropertyValue* 'plainLiteralScalarRestriction' name=ID '{' (('length' length=INT)? & ('minLength'
-		//minLength=INT)? & ('maxLength' maxLength=INT)? & ('pattern' pattern=STRING)? & ('langRange' langRange=STRING)?)
-		//'restrictedRange' restrictedRange=[DataRange|Reference] '}'
+		//annotations+=AnnotationPropertyValue* 'plainLiteralScalarRestriction' name=ID '{' (('length' length=DIGITS)? &
+		//('minLength' minLength=DIGITS)? & ('maxLength' maxLength=DIGITS)? & ('pattern' pattern=LiteralPattern)? & ('langRange'
+		//langRange=LiteralLanguageTag)?) 'restrictedRange' restrictedRange=[DataRange|Reference] '}'
 		public Group getGroup() { return cGroup; }
 		
 		//annotations+=AnnotationPropertyValue*
@@ -3269,69 +3254,69 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
 		
-		//('length' length=INT)? & ('minLength' minLength=INT)? & ('maxLength' maxLength=INT)? & ('pattern' pattern=STRING)? &
-		//('langRange' langRange=STRING)?
+		//('length' length=DIGITS)? & ('minLength' minLength=DIGITS)? & ('maxLength' maxLength=DIGITS)? & ('pattern'
+		//pattern=LiteralPattern)? & ('langRange' langRange=LiteralLanguageTag)?
 		public UnorderedGroup getUnorderedGroup_4() { return cUnorderedGroup_4; }
 		
-		//('length' length=INT)?
+		//('length' length=DIGITS)?
 		public Group getGroup_4_0() { return cGroup_4_0; }
 		
 		//'length'
 		public Keyword getLengthKeyword_4_0_0() { return cLengthKeyword_4_0_0; }
 		
-		//length=INT
+		//length=DIGITS
 		public Assignment getLengthAssignment_4_0_1() { return cLengthAssignment_4_0_1; }
 		
-		//INT
-		public RuleCall getLengthINTTerminalRuleCall_4_0_1_0() { return cLengthINTTerminalRuleCall_4_0_1_0; }
+		//DIGITS
+		public RuleCall getLengthDIGITSTerminalRuleCall_4_0_1_0() { return cLengthDIGITSTerminalRuleCall_4_0_1_0; }
 		
-		//('minLength' minLength=INT)?
+		//('minLength' minLength=DIGITS)?
 		public Group getGroup_4_1() { return cGroup_4_1; }
 		
 		//'minLength'
 		public Keyword getMinLengthKeyword_4_1_0() { return cMinLengthKeyword_4_1_0; }
 		
-		//minLength=INT
+		//minLength=DIGITS
 		public Assignment getMinLengthAssignment_4_1_1() { return cMinLengthAssignment_4_1_1; }
 		
-		//INT
-		public RuleCall getMinLengthINTTerminalRuleCall_4_1_1_0() { return cMinLengthINTTerminalRuleCall_4_1_1_0; }
+		//DIGITS
+		public RuleCall getMinLengthDIGITSTerminalRuleCall_4_1_1_0() { return cMinLengthDIGITSTerminalRuleCall_4_1_1_0; }
 		
-		//('maxLength' maxLength=INT)?
+		//('maxLength' maxLength=DIGITS)?
 		public Group getGroup_4_2() { return cGroup_4_2; }
 		
 		//'maxLength'
 		public Keyword getMaxLengthKeyword_4_2_0() { return cMaxLengthKeyword_4_2_0; }
 		
-		//maxLength=INT
+		//maxLength=DIGITS
 		public Assignment getMaxLengthAssignment_4_2_1() { return cMaxLengthAssignment_4_2_1; }
 		
-		//INT
-		public RuleCall getMaxLengthINTTerminalRuleCall_4_2_1_0() { return cMaxLengthINTTerminalRuleCall_4_2_1_0; }
+		//DIGITS
+		public RuleCall getMaxLengthDIGITSTerminalRuleCall_4_2_1_0() { return cMaxLengthDIGITSTerminalRuleCall_4_2_1_0; }
 		
-		//('pattern' pattern=STRING)?
+		//('pattern' pattern=LiteralPattern)?
 		public Group getGroup_4_3() { return cGroup_4_3; }
 		
 		//'pattern'
 		public Keyword getPatternKeyword_4_3_0() { return cPatternKeyword_4_3_0; }
 		
-		//pattern=STRING
+		//pattern=LiteralPattern
 		public Assignment getPatternAssignment_4_3_1() { return cPatternAssignment_4_3_1; }
 		
-		//STRING
-		public RuleCall getPatternSTRINGTerminalRuleCall_4_3_1_0() { return cPatternSTRINGTerminalRuleCall_4_3_1_0; }
+		//LiteralPattern
+		public RuleCall getPatternLiteralPatternParserRuleCall_4_3_1_0() { return cPatternLiteralPatternParserRuleCall_4_3_1_0; }
 		
-		//('langRange' langRange=STRING)?
+		//('langRange' langRange=LiteralLanguageTag)?
 		public Group getGroup_4_4() { return cGroup_4_4; }
 		
 		//'langRange'
 		public Keyword getLangRangeKeyword_4_4_0() { return cLangRangeKeyword_4_4_0; }
 		
-		//langRange=STRING
+		//langRange=LiteralLanguageTag
 		public Assignment getLangRangeAssignment_4_4_1() { return cLangRangeAssignment_4_4_1; }
 		
-		//STRING
-		public RuleCall getLangRangeSTRINGTerminalRuleCall_4_4_1_0() { return cLangRangeSTRINGTerminalRuleCall_4_4_1_0; }
+		//LiteralLanguageTag
+		public RuleCall getLangRangeLiteralLanguageTagParserRuleCall_4_4_1_0() { return cLangRangeLiteralLanguageTagParserRuleCall_4_4_1_0; }
 		
 		//'restrictedRange'
 		public Keyword getRestrictedRangeKeyword_5() { return cRestrictedRangeKeyword_5; }
@@ -3419,16 +3404,16 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cAxiomScalarOneOfRestrictionReferenceParserRuleCall_2_0_1 = (RuleCall)cAxiomScalarOneOfRestrictionCrossReference_2_0.eContents().get(1);
 		private final Keyword cEqualsSignKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Assignment cValueAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cValueSTRINGTerminalRuleCall_4_0 = (RuleCall)cValueAssignment_4.eContents().get(0);
+		private final RuleCall cValueLiteralValueParserRuleCall_4_0 = (RuleCall)cValueAssignment_4.eContents().get(0);
 		
 		//ScalarOneOfLiteralAxiom:
 		//	annotations+=AnnotationPropertyValue*
 		//	'oneOf'
 		//	axiom=[ScalarOneOfRestriction|Reference]
-		//	'=' value=STRING;
+		//	'=' value=LiteralValue;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//annotations+=AnnotationPropertyValue* 'oneOf' axiom=[ScalarOneOfRestriction|Reference] '=' value=STRING
+		//annotations+=AnnotationPropertyValue* 'oneOf' axiom=[ScalarOneOfRestriction|Reference] '=' value=LiteralValue
 		public Group getGroup() { return cGroup; }
 		
 		//annotations+=AnnotationPropertyValue*
@@ -3452,11 +3437,11 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//'='
 		public Keyword getEqualsSignKeyword_3() { return cEqualsSignKeyword_3; }
 		
-		//value=STRING
+		//value=LiteralValue
 		public Assignment getValueAssignment_4() { return cValueAssignment_4; }
 		
-		//STRING
-		public RuleCall getValueSTRINGTerminalRuleCall_4_0() { return cValueSTRINGTerminalRuleCall_4_0; }
+		//LiteralValue
+		public RuleCall getValueLiteralValueParserRuleCall_4_0() { return cValueLiteralValueParserRuleCall_4_0; }
 	}
 	public class StringScalarRestrictionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.StringScalarRestriction");
@@ -3471,19 +3456,19 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup_4_0 = (Group)cUnorderedGroup_4.eContents().get(0);
 		private final Keyword cLengthKeyword_4_0_0 = (Keyword)cGroup_4_0.eContents().get(0);
 		private final Assignment cLengthAssignment_4_0_1 = (Assignment)cGroup_4_0.eContents().get(1);
-		private final RuleCall cLengthINTTerminalRuleCall_4_0_1_0 = (RuleCall)cLengthAssignment_4_0_1.eContents().get(0);
+		private final RuleCall cLengthDIGITSTerminalRuleCall_4_0_1_0 = (RuleCall)cLengthAssignment_4_0_1.eContents().get(0);
 		private final Group cGroup_4_1 = (Group)cUnorderedGroup_4.eContents().get(1);
 		private final Keyword cMinLengthKeyword_4_1_0 = (Keyword)cGroup_4_1.eContents().get(0);
 		private final Assignment cMinLengthAssignment_4_1_1 = (Assignment)cGroup_4_1.eContents().get(1);
-		private final RuleCall cMinLengthINTTerminalRuleCall_4_1_1_0 = (RuleCall)cMinLengthAssignment_4_1_1.eContents().get(0);
+		private final RuleCall cMinLengthDIGITSTerminalRuleCall_4_1_1_0 = (RuleCall)cMinLengthAssignment_4_1_1.eContents().get(0);
 		private final Group cGroup_4_2 = (Group)cUnorderedGroup_4.eContents().get(2);
 		private final Keyword cMaxLengthKeyword_4_2_0 = (Keyword)cGroup_4_2.eContents().get(0);
 		private final Assignment cMaxLengthAssignment_4_2_1 = (Assignment)cGroup_4_2.eContents().get(1);
-		private final RuleCall cMaxLengthINTTerminalRuleCall_4_2_1_0 = (RuleCall)cMaxLengthAssignment_4_2_1.eContents().get(0);
+		private final RuleCall cMaxLengthDIGITSTerminalRuleCall_4_2_1_0 = (RuleCall)cMaxLengthAssignment_4_2_1.eContents().get(0);
 		private final Group cGroup_4_3 = (Group)cUnorderedGroup_4.eContents().get(3);
 		private final Keyword cPatternKeyword_4_3_0 = (Keyword)cGroup_4_3.eContents().get(0);
 		private final Assignment cPatternAssignment_4_3_1 = (Assignment)cGroup_4_3.eContents().get(1);
-		private final RuleCall cPatternSTRINGTerminalRuleCall_4_3_1_0 = (RuleCall)cPatternAssignment_4_3_1.eContents().get(0);
+		private final RuleCall cPatternLiteralPatternParserRuleCall_4_3_1_0 = (RuleCall)cPatternAssignment_4_3_1.eContents().get(0);
 		private final Keyword cRestrictedRangeKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		private final Assignment cRestrictedRangeAssignment_6 = (Assignment)cGroup.eContents().get(6);
 		private final CrossReference cRestrictedRangeDataRangeCrossReference_6_0 = (CrossReference)cRestrictedRangeAssignment_6.eContents().get(0);
@@ -3493,14 +3478,14 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//StringScalarRestriction:
 		//	annotations+=AnnotationPropertyValue*
 		//	'stringScalarRestriction' name=ID
-		//	'{' (('length' length=INT)? & ('minLength' minLength=INT)? & ('maxLength' maxLength=INT)? & ('pattern'
-		//	pattern=STRING)?)
+		//	'{' (('length' length=DIGITS)? & ('minLength' minLength=DIGITS)? & ('maxLength' maxLength=DIGITS)? & ('pattern'
+		//	pattern=LiteralPattern)?)
 		//	'restrictedRange' restrictedRange=[DataRange|Reference]
 		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//annotations+=AnnotationPropertyValue* 'stringScalarRestriction' name=ID '{' (('length' length=INT)? & ('minLength'
-		//minLength=INT)? & ('maxLength' maxLength=INT)? & ('pattern' pattern=STRING)?) 'restrictedRange'
+		//annotations+=AnnotationPropertyValue* 'stringScalarRestriction' name=ID '{' (('length' length=DIGITS)? & ('minLength'
+		//minLength=DIGITS)? & ('maxLength' maxLength=DIGITS)? & ('pattern' pattern=LiteralPattern)?) 'restrictedRange'
 		//restrictedRange=[DataRange|Reference] '}'
 		public Group getGroup() { return cGroup; }
 		
@@ -3522,56 +3507,57 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
 		
-		//('length' length=INT)? & ('minLength' minLength=INT)? & ('maxLength' maxLength=INT)? & ('pattern' pattern=STRING)?
+		//('length' length=DIGITS)? & ('minLength' minLength=DIGITS)? & ('maxLength' maxLength=DIGITS)? & ('pattern'
+		//pattern=LiteralPattern)?
 		public UnorderedGroup getUnorderedGroup_4() { return cUnorderedGroup_4; }
 		
-		//('length' length=INT)?
+		//('length' length=DIGITS)?
 		public Group getGroup_4_0() { return cGroup_4_0; }
 		
 		//'length'
 		public Keyword getLengthKeyword_4_0_0() { return cLengthKeyword_4_0_0; }
 		
-		//length=INT
+		//length=DIGITS
 		public Assignment getLengthAssignment_4_0_1() { return cLengthAssignment_4_0_1; }
 		
-		//INT
-		public RuleCall getLengthINTTerminalRuleCall_4_0_1_0() { return cLengthINTTerminalRuleCall_4_0_1_0; }
+		//DIGITS
+		public RuleCall getLengthDIGITSTerminalRuleCall_4_0_1_0() { return cLengthDIGITSTerminalRuleCall_4_0_1_0; }
 		
-		//('minLength' minLength=INT)?
+		//('minLength' minLength=DIGITS)?
 		public Group getGroup_4_1() { return cGroup_4_1; }
 		
 		//'minLength'
 		public Keyword getMinLengthKeyword_4_1_0() { return cMinLengthKeyword_4_1_0; }
 		
-		//minLength=INT
+		//minLength=DIGITS
 		public Assignment getMinLengthAssignment_4_1_1() { return cMinLengthAssignment_4_1_1; }
 		
-		//INT
-		public RuleCall getMinLengthINTTerminalRuleCall_4_1_1_0() { return cMinLengthINTTerminalRuleCall_4_1_1_0; }
+		//DIGITS
+		public RuleCall getMinLengthDIGITSTerminalRuleCall_4_1_1_0() { return cMinLengthDIGITSTerminalRuleCall_4_1_1_0; }
 		
-		//('maxLength' maxLength=INT)?
+		//('maxLength' maxLength=DIGITS)?
 		public Group getGroup_4_2() { return cGroup_4_2; }
 		
 		//'maxLength'
 		public Keyword getMaxLengthKeyword_4_2_0() { return cMaxLengthKeyword_4_2_0; }
 		
-		//maxLength=INT
+		//maxLength=DIGITS
 		public Assignment getMaxLengthAssignment_4_2_1() { return cMaxLengthAssignment_4_2_1; }
 		
-		//INT
-		public RuleCall getMaxLengthINTTerminalRuleCall_4_2_1_0() { return cMaxLengthINTTerminalRuleCall_4_2_1_0; }
+		//DIGITS
+		public RuleCall getMaxLengthDIGITSTerminalRuleCall_4_2_1_0() { return cMaxLengthDIGITSTerminalRuleCall_4_2_1_0; }
 		
-		//('pattern' pattern=STRING)?
+		//('pattern' pattern=LiteralPattern)?
 		public Group getGroup_4_3() { return cGroup_4_3; }
 		
 		//'pattern'
 		public Keyword getPatternKeyword_4_3_0() { return cPatternKeyword_4_3_0; }
 		
-		//pattern=STRING
+		//pattern=LiteralPattern
 		public Assignment getPatternAssignment_4_3_1() { return cPatternAssignment_4_3_1; }
 		
-		//STRING
-		public RuleCall getPatternSTRINGTerminalRuleCall_4_3_1_0() { return cPatternSTRINGTerminalRuleCall_4_3_1_0; }
+		//LiteralPattern
+		public RuleCall getPatternLiteralPatternParserRuleCall_4_3_1_0() { return cPatternLiteralPatternParserRuleCall_4_3_1_0; }
 		
 		//'restrictedRange'
 		public Keyword getRestrictedRangeKeyword_5() { return cRestrictedRangeKeyword_5; }
@@ -3661,19 +3647,19 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup_4_0 = (Group)cUnorderedGroup_4.eContents().get(0);
 		private final Keyword cMinInclusiveKeyword_4_0_0 = (Keyword)cGroup_4_0.eContents().get(0);
 		private final Assignment cMinInclusiveAssignment_4_0_1 = (Assignment)cGroup_4_0.eContents().get(1);
-		private final RuleCall cMinInclusiveSTRINGTerminalRuleCall_4_0_1_0 = (RuleCall)cMinInclusiveAssignment_4_0_1.eContents().get(0);
+		private final RuleCall cMinInclusiveLiteralDateTimeParserRuleCall_4_0_1_0 = (RuleCall)cMinInclusiveAssignment_4_0_1.eContents().get(0);
 		private final Group cGroup_4_1 = (Group)cUnorderedGroup_4.eContents().get(1);
 		private final Keyword cMaxInclusiveKeyword_4_1_0 = (Keyword)cGroup_4_1.eContents().get(0);
 		private final Assignment cMaxInclusiveAssignment_4_1_1 = (Assignment)cGroup_4_1.eContents().get(1);
-		private final RuleCall cMaxInclusiveSTRINGTerminalRuleCall_4_1_1_0 = (RuleCall)cMaxInclusiveAssignment_4_1_1.eContents().get(0);
+		private final RuleCall cMaxInclusiveLiteralDateTimeParserRuleCall_4_1_1_0 = (RuleCall)cMaxInclusiveAssignment_4_1_1.eContents().get(0);
 		private final Group cGroup_4_2 = (Group)cUnorderedGroup_4.eContents().get(2);
 		private final Keyword cMinExclusiveKeyword_4_2_0 = (Keyword)cGroup_4_2.eContents().get(0);
 		private final Assignment cMinExclusiveAssignment_4_2_1 = (Assignment)cGroup_4_2.eContents().get(1);
-		private final RuleCall cMinExclusiveSTRINGTerminalRuleCall_4_2_1_0 = (RuleCall)cMinExclusiveAssignment_4_2_1.eContents().get(0);
+		private final RuleCall cMinExclusiveLiteralDateTimeParserRuleCall_4_2_1_0 = (RuleCall)cMinExclusiveAssignment_4_2_1.eContents().get(0);
 		private final Group cGroup_4_3 = (Group)cUnorderedGroup_4.eContents().get(3);
 		private final Keyword cMaxExclusiveKeyword_4_3_0 = (Keyword)cGroup_4_3.eContents().get(0);
 		private final Assignment cMaxExclusiveAssignment_4_3_1 = (Assignment)cGroup_4_3.eContents().get(1);
-		private final RuleCall cMaxExclusiveSTRINGTerminalRuleCall_4_3_1_0 = (RuleCall)cMaxExclusiveAssignment_4_3_1.eContents().get(0);
+		private final RuleCall cMaxExclusiveLiteralDateTimeParserRuleCall_4_3_1_0 = (RuleCall)cMaxExclusiveAssignment_4_3_1.eContents().get(0);
 		private final Keyword cRestrictedRangeKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		private final Assignment cRestrictedRangeAssignment_6 = (Assignment)cGroup.eContents().get(6);
 		private final CrossReference cRestrictedRangeDataRangeCrossReference_6_0 = (CrossReference)cRestrictedRangeAssignment_6.eContents().get(0);
@@ -3683,15 +3669,16 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//TimeScalarRestriction:
 		//	annotations+=AnnotationPropertyValue*
 		//	'timeScalarRestriction' name=ID
-		//	'{' (('minInclusive' minInclusive=STRING)? & ('maxInclusive' maxInclusive=STRING)? & ('minExclusive'
-		//	minExclusive=STRING)? & ('maxExclusive' maxExclusive=STRING)?)
+		//	'{' (('minInclusive' minInclusive=LiteralDateTime)? & ('maxInclusive' maxInclusive=LiteralDateTime)? & ('minExclusive'
+		//	minExclusive=LiteralDateTime)? & ('maxExclusive' maxExclusive=LiteralDateTime)?)
 		//	'restrictedRange' restrictedRange=[DataRange|Reference]
 		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//annotations+=AnnotationPropertyValue* 'timeScalarRestriction' name=ID '{' (('minInclusive' minInclusive=STRING)? &
-		//('maxInclusive' maxInclusive=STRING)? & ('minExclusive' minExclusive=STRING)? & ('maxExclusive' maxExclusive=STRING)?)
-		//'restrictedRange' restrictedRange=[DataRange|Reference] '}'
+		//annotations+=AnnotationPropertyValue* 'timeScalarRestriction' name=ID '{' (('minInclusive'
+		//minInclusive=LiteralDateTime)? & ('maxInclusive' maxInclusive=LiteralDateTime)? & ('minExclusive'
+		//minExclusive=LiteralDateTime)? & ('maxExclusive' maxExclusive=LiteralDateTime)?) 'restrictedRange'
+		//restrictedRange=[DataRange|Reference] '}'
 		public Group getGroup() { return cGroup; }
 		
 		//annotations+=AnnotationPropertyValue*
@@ -3712,57 +3699,57 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
 		
-		//('minInclusive' minInclusive=STRING)? & ('maxInclusive' maxInclusive=STRING)? & ('minExclusive' minExclusive=STRING)? &
-		//('maxExclusive' maxExclusive=STRING)?
+		//('minInclusive' minInclusive=LiteralDateTime)? & ('maxInclusive' maxInclusive=LiteralDateTime)? & ('minExclusive'
+		//minExclusive=LiteralDateTime)? & ('maxExclusive' maxExclusive=LiteralDateTime)?
 		public UnorderedGroup getUnorderedGroup_4() { return cUnorderedGroup_4; }
 		
-		//('minInclusive' minInclusive=STRING)?
+		//('minInclusive' minInclusive=LiteralDateTime)?
 		public Group getGroup_4_0() { return cGroup_4_0; }
 		
 		//'minInclusive'
 		public Keyword getMinInclusiveKeyword_4_0_0() { return cMinInclusiveKeyword_4_0_0; }
 		
-		//minInclusive=STRING
+		//minInclusive=LiteralDateTime
 		public Assignment getMinInclusiveAssignment_4_0_1() { return cMinInclusiveAssignment_4_0_1; }
 		
-		//STRING
-		public RuleCall getMinInclusiveSTRINGTerminalRuleCall_4_0_1_0() { return cMinInclusiveSTRINGTerminalRuleCall_4_0_1_0; }
+		//LiteralDateTime
+		public RuleCall getMinInclusiveLiteralDateTimeParserRuleCall_4_0_1_0() { return cMinInclusiveLiteralDateTimeParserRuleCall_4_0_1_0; }
 		
-		//('maxInclusive' maxInclusive=STRING)?
+		//('maxInclusive' maxInclusive=LiteralDateTime)?
 		public Group getGroup_4_1() { return cGroup_4_1; }
 		
 		//'maxInclusive'
 		public Keyword getMaxInclusiveKeyword_4_1_0() { return cMaxInclusiveKeyword_4_1_0; }
 		
-		//maxInclusive=STRING
+		//maxInclusive=LiteralDateTime
 		public Assignment getMaxInclusiveAssignment_4_1_1() { return cMaxInclusiveAssignment_4_1_1; }
 		
-		//STRING
-		public RuleCall getMaxInclusiveSTRINGTerminalRuleCall_4_1_1_0() { return cMaxInclusiveSTRINGTerminalRuleCall_4_1_1_0; }
+		//LiteralDateTime
+		public RuleCall getMaxInclusiveLiteralDateTimeParserRuleCall_4_1_1_0() { return cMaxInclusiveLiteralDateTimeParserRuleCall_4_1_1_0; }
 		
-		//('minExclusive' minExclusive=STRING)?
+		//('minExclusive' minExclusive=LiteralDateTime)?
 		public Group getGroup_4_2() { return cGroup_4_2; }
 		
 		//'minExclusive'
 		public Keyword getMinExclusiveKeyword_4_2_0() { return cMinExclusiveKeyword_4_2_0; }
 		
-		//minExclusive=STRING
+		//minExclusive=LiteralDateTime
 		public Assignment getMinExclusiveAssignment_4_2_1() { return cMinExclusiveAssignment_4_2_1; }
 		
-		//STRING
-		public RuleCall getMinExclusiveSTRINGTerminalRuleCall_4_2_1_0() { return cMinExclusiveSTRINGTerminalRuleCall_4_2_1_0; }
+		//LiteralDateTime
+		public RuleCall getMinExclusiveLiteralDateTimeParserRuleCall_4_2_1_0() { return cMinExclusiveLiteralDateTimeParserRuleCall_4_2_1_0; }
 		
-		//('maxExclusive' maxExclusive=STRING)?
+		//('maxExclusive' maxExclusive=LiteralDateTime)?
 		public Group getGroup_4_3() { return cGroup_4_3; }
 		
 		//'maxExclusive'
 		public Keyword getMaxExclusiveKeyword_4_3_0() { return cMaxExclusiveKeyword_4_3_0; }
 		
-		//maxExclusive=STRING
+		//maxExclusive=LiteralDateTime
 		public Assignment getMaxExclusiveAssignment_4_3_1() { return cMaxExclusiveAssignment_4_3_1; }
 		
-		//STRING
-		public RuleCall getMaxExclusiveSTRINGTerminalRuleCall_4_3_1_0() { return cMaxExclusiveSTRINGTerminalRuleCall_4_3_1_0; }
+		//LiteralDateTime
+		public RuleCall getMaxExclusiveLiteralDateTimeParserRuleCall_4_3_1_0() { return cMaxExclusiveLiteralDateTimeParserRuleCall_4_3_1_0; }
 		
 		//'restrictedRange'
 		public Keyword getRestrictedRangeKeyword_5() { return cRestrictedRangeKeyword_5; }
@@ -3913,7 +3900,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cScalarDataPropertyEntityScalarDataPropertyReferenceParserRuleCall_3_0_1 = (RuleCall)cScalarDataPropertyEntityScalarDataPropertyCrossReference_3_0.eContents().get(1);
 		private final Keyword cEqualsSignKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		private final Assignment cScalarPropertyValueAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cScalarPropertyValueValueParserRuleCall_5_0 = (RuleCall)cScalarPropertyValueAssignment_5.eContents().get(0);
+		private final RuleCall cScalarPropertyValueLiteralValueParserRuleCall_5_0 = (RuleCall)cScalarPropertyValueAssignment_5.eContents().get(0);
 		
 		//SingletonInstanceScalarDataPropertyValue:
 		//	annotations+=AnnotationPropertyValue*
@@ -3921,11 +3908,11 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//	'.'
 		//	scalarDataProperty=[EntityScalarDataProperty|Reference]
 		//	'='
-		//	scalarPropertyValue=Value;
+		//	scalarPropertyValue=LiteralValue;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//annotations+=AnnotationPropertyValue* singletonInstance=[ConceptualEntitySingletonInstance|Reference] '.'
-		//scalarDataProperty=[EntityScalarDataProperty|Reference] '=' scalarPropertyValue=Value
+		//scalarDataProperty=[EntityScalarDataProperty|Reference] '=' scalarPropertyValue=LiteralValue
 		public Group getGroup() { return cGroup; }
 		
 		//annotations+=AnnotationPropertyValue*
@@ -3958,11 +3945,11 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//'='
 		public Keyword getEqualsSignKeyword_4() { return cEqualsSignKeyword_4; }
 		
-		//scalarPropertyValue=Value
+		//scalarPropertyValue=LiteralValue
 		public Assignment getScalarPropertyValueAssignment_5() { return cScalarPropertyValueAssignment_5; }
 		
-		//Value
-		public RuleCall getScalarPropertyValueValueParserRuleCall_5_0() { return cScalarPropertyValueValueParserRuleCall_5_0; }
+		//LiteralValue
+		public RuleCall getScalarPropertyValueLiteralValueParserRuleCall_5_0() { return cScalarPropertyValueLiteralValueParserRuleCall_5_0; }
 	}
 	public class SingletonInstanceStructuredDataPropertyValueElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.SingletonInstanceStructuredDataPropertyValue");
@@ -4127,17 +4114,17 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cScalarDataPropertyDataRelationshipToScalarReferenceParserRuleCall_1_0_1 = (RuleCall)cScalarDataPropertyDataRelationshipToScalarCrossReference_1_0.eContents().get(1);
 		private final Keyword cEqualsSignKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cScalarPropertyValueAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cScalarPropertyValueValueParserRuleCall_3_0 = (RuleCall)cScalarPropertyValueAssignment_3.eContents().get(0);
+		private final RuleCall cScalarPropertyValueLiteralValueParserRuleCall_3_0 = (RuleCall)cScalarPropertyValueAssignment_3.eContents().get(0);
 		
 		//ScalarDataPropertyValue:
 		//	annotations+=AnnotationPropertyValue*
 		//	scalarDataProperty=[DataRelationshipToScalar|Reference]
 		//	'='
-		//	scalarPropertyValue=Value;
+		//	scalarPropertyValue=LiteralValue;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//annotations+=AnnotationPropertyValue* scalarDataProperty=[DataRelationshipToScalar|Reference] '='
-		//scalarPropertyValue=Value
+		//scalarPropertyValue=LiteralValue
 		public Group getGroup() { return cGroup; }
 		
 		//annotations+=AnnotationPropertyValue*
@@ -4158,11 +4145,11 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//'='
 		public Keyword getEqualsSignKeyword_2() { return cEqualsSignKeyword_2; }
 		
-		//scalarPropertyValue=Value
+		//scalarPropertyValue=LiteralValue
 		public Assignment getScalarPropertyValueAssignment_3() { return cScalarPropertyValueAssignment_3; }
 		
-		//Value
-		public RuleCall getScalarPropertyValueValueParserRuleCall_3_0() { return cScalarPropertyValueValueParserRuleCall_3_0; }
+		//LiteralValue
+		public RuleCall getScalarPropertyValueLiteralValueParserRuleCall_3_0() { return cScalarPropertyValueLiteralValueParserRuleCall_3_0; }
 	}
 	public class ConceptInstanceElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.ConceptInstance");
@@ -4553,40 +4540,262 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getIDTerminalRuleCall() { return cIDTerminalRuleCall; }
 	}
-	public class ValueElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.Value");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cDECIMALTerminalRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cINTTerminalRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cSTRINGTerminalRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		private final RuleCall cUUIDTerminalRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
-		private final RuleCall cHEXTerminalRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
-		private final RuleCall cFLOATTerminalRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
+	public class LiteralPatternElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.LiteralPattern");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cLiteralPatternAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cValueSTRINGTerminalRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
 		
-		//Value:
-		//	DECIMAL | INT | STRING | UUID | HEX | FLOAT;
+		////----------------------------
+		//LiteralPattern:
+		//	{LiteralPattern} value=STRING;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//DECIMAL | INT | STRING | UUID | HEX | FLOAT
-		public Alternatives getAlternatives() { return cAlternatives; }
+		//{LiteralPattern} value=STRING
+		public Group getGroup() { return cGroup; }
 		
-		//DECIMAL
-		public RuleCall getDECIMALTerminalRuleCall_0() { return cDECIMALTerminalRuleCall_0; }
+		//{LiteralPattern}
+		public Action getLiteralPatternAction_0() { return cLiteralPatternAction_0; }
 		
-		//INT
-		public RuleCall getINTTerminalRuleCall_1() { return cINTTerminalRuleCall_1; }
+		//value=STRING
+		public Assignment getValueAssignment_1() { return cValueAssignment_1; }
 		
 		//STRING
-		public RuleCall getSTRINGTerminalRuleCall_2() { return cSTRINGTerminalRuleCall_2; }
+		public RuleCall getValueSTRINGTerminalRuleCall_1_0() { return cValueSTRINGTerminalRuleCall_1_0; }
+	}
+	public class LiteralValueElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.LiteralValue");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cLiteralDateTimeParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cLiteralLanguageTagParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cLiteralStringParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cLiteralUUIDParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cLiteralURIParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
+		private final RuleCall cLiteralNumberParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
+		
+		//LiteralValue:
+		//	LiteralDateTime | LiteralLanguageTag | LiteralString | LiteralUUID | LiteralURI | LiteralNumber;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//LiteralDateTime | LiteralLanguageTag | LiteralString | LiteralUUID | LiteralURI | LiteralNumber
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//LiteralDateTime
+		public RuleCall getLiteralDateTimeParserRuleCall_0() { return cLiteralDateTimeParserRuleCall_0; }
+		
+		//LiteralLanguageTag
+		public RuleCall getLiteralLanguageTagParserRuleCall_1() { return cLiteralLanguageTagParserRuleCall_1; }
+		
+		//LiteralString
+		public RuleCall getLiteralStringParserRuleCall_2() { return cLiteralStringParserRuleCall_2; }
+		
+		//LiteralUUID
+		public RuleCall getLiteralUUIDParserRuleCall_3() { return cLiteralUUIDParserRuleCall_3; }
+		
+		//LiteralURI
+		public RuleCall getLiteralURIParserRuleCall_4() { return cLiteralURIParserRuleCall_4; }
+		
+		//LiteralNumber
+		public RuleCall getLiteralNumberParserRuleCall_5() { return cLiteralNumberParserRuleCall_5; }
+	}
+	public class LiteralDateTimeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.LiteralDateTime");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cLiteralDateTimeAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cValueDATE_TIMEParserRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
+		
+		//LiteralDateTime:
+		//	{LiteralDateTime} value=DATE_TIME;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{LiteralDateTime} value=DATE_TIME
+		public Group getGroup() { return cGroup; }
+		
+		//{LiteralDateTime}
+		public Action getLiteralDateTimeAction_0() { return cLiteralDateTimeAction_0; }
+		
+		//value=DATE_TIME
+		public Assignment getValueAssignment_1() { return cValueAssignment_1; }
+		
+		//DATE_TIME
+		public RuleCall getValueDATE_TIMEParserRuleCall_1_0() { return cValueDATE_TIMEParserRuleCall_1_0; }
+	}
+	public class LiteralLanguageTagElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.LiteralLanguageTag");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cLiteralLanguageTagAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cValueLANG_TAGParserRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
+		
+		//LiteralLanguageTag:
+		//	{LiteralLanguageTag} value=LANG_TAG;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{LiteralLanguageTag} value=LANG_TAG
+		public Group getGroup() { return cGroup; }
+		
+		//{LiteralLanguageTag}
+		public Action getLiteralLanguageTagAction_0() { return cLiteralLanguageTagAction_0; }
+		
+		//value=LANG_TAG
+		public Assignment getValueAssignment_1() { return cValueAssignment_1; }
+		
+		//LANG_TAG
+		public RuleCall getValueLANG_TAGParserRuleCall_1_0() { return cValueLANG_TAGParserRuleCall_1_0; }
+	}
+	public class LiteralStringElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.LiteralString");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cLiteralStringAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cValueSTRINGTerminalRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
+		
+		//LiteralString:
+		//	{LiteralString} value=STRING;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{LiteralString} value=STRING
+		public Group getGroup() { return cGroup; }
+		
+		//{LiteralString}
+		public Action getLiteralStringAction_0() { return cLiteralStringAction_0; }
+		
+		//value=STRING
+		public Assignment getValueAssignment_1() { return cValueAssignment_1; }
+		
+		//STRING
+		public RuleCall getValueSTRINGTerminalRuleCall_1_0() { return cValueSTRINGTerminalRuleCall_1_0; }
+	}
+	public class LiteralUUIDElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.LiteralUUID");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cLiteralUUIDAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cValueUUIDTerminalRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
+		
+		//LiteralUUID:
+		//	{LiteralUUID} value=UUID;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{LiteralUUID} value=UUID
+		public Group getGroup() { return cGroup; }
+		
+		//{LiteralUUID}
+		public Action getLiteralUUIDAction_0() { return cLiteralUUIDAction_0; }
+		
+		//value=UUID
+		public Assignment getValueAssignment_1() { return cValueAssignment_1; }
 		
 		//UUID
-		public RuleCall getUUIDTerminalRuleCall_3() { return cUUIDTerminalRuleCall_3; }
+		public RuleCall getValueUUIDTerminalRuleCall_1_0() { return cValueUUIDTerminalRuleCall_1_0; }
+	}
+	public class LiteralURIElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.LiteralURI");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cLiteralURIAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cValueURIParserRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
 		
-		//HEX
-		public RuleCall getHEXTerminalRuleCall_4() { return cHEXTerminalRuleCall_4; }
+		//LiteralURI:
+		//	{LiteralURI} value=URI;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{LiteralURI} value=URI
+		public Group getGroup() { return cGroup; }
+		
+		//{LiteralURI}
+		public Action getLiteralURIAction_0() { return cLiteralURIAction_0; }
+		
+		//value=URI
+		public Assignment getValueAssignment_1() { return cValueAssignment_1; }
+		
+		//URI
+		public RuleCall getValueURIParserRuleCall_1_0() { return cValueURIParserRuleCall_1_0; }
+	}
+	public class LiteralNumberElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.LiteralNumber");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cLiteralNumberAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final Alternatives cValueAlternatives_1_0 = (Alternatives)cValueAssignment_1.eContents().get(0);
+		private final RuleCall cValueREAL_VALUETerminalRuleCall_1_0_0 = (RuleCall)cValueAlternatives_1_0.eContents().get(0);
+		private final RuleCall cValueRATIONALTerminalRuleCall_1_0_1 = (RuleCall)cValueAlternatives_1_0.eContents().get(1);
+		private final RuleCall cValueFLOATTerminalRuleCall_1_0_2 = (RuleCall)cValueAlternatives_1_0.eContents().get(2);
+		private final RuleCall cValueDECIMALTerminalRuleCall_1_0_3 = (RuleCall)cValueAlternatives_1_0.eContents().get(3);
+		
+		//LiteralNumber:
+		//	{LiteralNumber} value=(REAL_VALUE | RATIONAL | FLOAT | DECIMAL);
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{LiteralNumber} value=(REAL_VALUE | RATIONAL | FLOAT | DECIMAL)
+		public Group getGroup() { return cGroup; }
+		
+		//{LiteralNumber}
+		public Action getLiteralNumberAction_0() { return cLiteralNumberAction_0; }
+		
+		//value=(REAL_VALUE | RATIONAL | FLOAT | DECIMAL)
+		public Assignment getValueAssignment_1() { return cValueAssignment_1; }
+		
+		//(REAL_VALUE | RATIONAL | FLOAT | DECIMAL)
+		public Alternatives getValueAlternatives_1_0() { return cValueAlternatives_1_0; }
+		
+		//REAL_VALUE
+		public RuleCall getValueREAL_VALUETerminalRuleCall_1_0_0() { return cValueREAL_VALUETerminalRuleCall_1_0_0; }
+		
+		//RATIONAL
+		public RuleCall getValueRATIONALTerminalRuleCall_1_0_1() { return cValueRATIONALTerminalRuleCall_1_0_1; }
 		
 		//FLOAT
-		public RuleCall getFLOATTerminalRuleCall_5() { return cFLOATTerminalRuleCall_5; }
+		public RuleCall getValueFLOATTerminalRuleCall_1_0_2() { return cValueFLOATTerminalRuleCall_1_0_2; }
+		
+		//DECIMAL
+		public RuleCall getValueDECIMALTerminalRuleCall_1_0_3() { return cValueDECIMALTerminalRuleCall_1_0_3; }
+	}
+	public class URIElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.URI");
+		private final RuleCall cURI_VALUETerminalRuleCall = (RuleCall)rule.eContents().get(1);
+		
+		//URI:
+		//	URI_VALUE;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//URI_VALUE
+		public RuleCall getURI_VALUETerminalRuleCall() { return cURI_VALUETerminalRuleCall; }
+	}
+	public class REALElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.REAL");
+		private final RuleCall cREAL_VALUETerminalRuleCall = (RuleCall)rule.eContents().get(1);
+		
+		//REAL:
+		//	REAL_VALUE;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//REAL_VALUE
+		public RuleCall getREAL_VALUETerminalRuleCall() { return cREAL_VALUETerminalRuleCall; }
+	}
+	public class LANG_TAGElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.LANG_TAG");
+		private final RuleCall cLANGUAGE_TAGTerminalRuleCall = (RuleCall)rule.eContents().get(1);
+		
+		//LANG_TAG:
+		//	LANGUAGE_TAG;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//LANGUAGE_TAG
+		public RuleCall getLANGUAGE_TAGTerminalRuleCall() { return cLANGUAGE_TAGTerminalRuleCall; }
+	}
+	public class DATE_TIMEElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.DATE_TIME");
+		private final RuleCall cDATETIMETerminalRuleCall = (RuleCall)rule.eContents().get(1);
+		
+		//DATE_TIME:
+		//	DATETIME;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//DATETIME
+		public RuleCall getDATETIMETerminalRuleCall() { return cDATETIMETerminalRuleCall; }
 	}
 	
 	public class TerminologyKindElements extends AbstractEnumRuleElementFinder {
@@ -4728,18 +4937,74 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	private final ExternalReferenceElements pExternalReference;
 	private final QNAMEElements pQNAME;
 	private final ValidIDElements pValidID;
-	private final ValueElements pValue;
+	private final LiteralPatternElements pLiteralPattern;
+	private final LiteralValueElements pLiteralValue;
+	private final LiteralDateTimeElements pLiteralDateTime;
+	private final LiteralLanguageTagElements pLiteralLanguageTag;
+	private final LiteralStringElements pLiteralString;
+	private final LiteralUUIDElements pLiteralUUID;
+	private final LiteralURIElements pLiteralURI;
+	private final LiteralNumberElements pLiteralNumber;
+	private final TerminalRule tDIGIT;
+	private final TerminalRule tDIGIT19;
+	private final TerminalRule tDIGIT02;
+	private final TerminalRule tDIGIT03;
+	private final TerminalRule tDIGIT05;
+	private final TerminalRule tYEAR_FRAG;
+	private final TerminalRule tMONTH_FRAG;
+	private final TerminalRule tDAY_FRAG;
+	private final TerminalRule tHOUR_FRAG;
+	private final TerminalRule tMINUTE_FRAG;
+	private final TerminalRule tSECOND_FRAG;
+	private final TerminalRule tEND_OF_DAY_FRAG;
+	private final TerminalRule tTIMEZONE_FRAG;
+	private final TerminalRule tALPHA;
+	private final TerminalRule tSCHEME;
+	private final TerminalRule tPCT_ENCODED;
+	private final TerminalRule tUNRESERVED;
+	private final TerminalRule tDIGIT04;
+	private final TerminalRule tDEC_OCTET;
+	private final TerminalRule tIPV4_ADDRESS;
+	private final TerminalRule tIUSER_PART;
+	private final TerminalRule tIUSER_INFO;
+	private final TerminalRule tIUNRESERVED_PART;
+	private final TerminalRule tIUNRESERVED;
+	private final TerminalRule tIHOST;
+	private final TerminalRule tPORT;
+	private final TerminalRule tIAUTHORITY;
+	private final TerminalRule tIPCHAR;
+	private final TerminalRule tISEGMENT;
+	private final TerminalRule tIPATH;
+	private final TerminalRule tIHIER_PART;
+	private final TerminalRule tIFRAGMENT;
+	private final TerminalRule tURI_VALUE;
+	private final URIElements pURI;
+	private final TerminalRule tCONSTANT_NAME;
+	private final TerminalRule tREAL_VALUE;
+	private final REALElements pREAL;
 	private final TerminalRule tSTRING;
 	private final TerminalRule tIRI;
+	private final TerminalRule tLETTER;
+	private final TerminalRule tLETTER_DIGIT;
+	private final TerminalRule tLETTER_DIGIT_PREFIX;
+	private final TerminalRule tLETTER_DIGIT_SUFFIX;
 	private final TerminalRule tABBREV_IRI;
+	private final TerminalRule tID_PREFIX;
 	private final TerminalRule tID;
+	private final TerminalRule tLANGUAGE_TAG;
+	private final LANG_TAGElements pLANG_TAG;
+	private final TerminalRule tDATETIME;
+	private final DATE_TIMEElements pDATE_TIME;
 	private final TerminalRule tUUID;
 	private final TerminalRule tHEX_12DIGITS;
 	private final TerminalRule tHEX_8DIGITS;
 	private final TerminalRule tHEX_4DIGITS;
+	private final TerminalRule tHEX_LETTER;
 	private final TerminalRule tHEX_DIGIT;
 	private final TerminalRule tHEX;
-	private final TerminalRule tINT;
+	private final TerminalRule tDIGITS;
+	private final TerminalRule tRATIONAL;
+	private final TerminalRule tDEC;
 	private final TerminalRule tDECIMAL;
 	private final TerminalRule tFLOAT;
 	private final TerminalRule tML_COMMENT;
@@ -4833,18 +5098,74 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		this.pExternalReference = new ExternalReferenceElements();
 		this.pQNAME = new QNAMEElements();
 		this.pValidID = new ValidIDElements();
-		this.pValue = new ValueElements();
+		this.pLiteralPattern = new LiteralPatternElements();
+		this.pLiteralValue = new LiteralValueElements();
+		this.pLiteralDateTime = new LiteralDateTimeElements();
+		this.pLiteralLanguageTag = new LiteralLanguageTagElements();
+		this.pLiteralString = new LiteralStringElements();
+		this.pLiteralUUID = new LiteralUUIDElements();
+		this.pLiteralURI = new LiteralURIElements();
+		this.pLiteralNumber = new LiteralNumberElements();
+		this.tDIGIT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.DIGIT");
+		this.tDIGIT19 = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.DIGIT19");
+		this.tDIGIT02 = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.DIGIT02");
+		this.tDIGIT03 = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.DIGIT03");
+		this.tDIGIT05 = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.DIGIT05");
+		this.tYEAR_FRAG = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.YEAR_FRAG");
+		this.tMONTH_FRAG = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.MONTH_FRAG");
+		this.tDAY_FRAG = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.DAY_FRAG");
+		this.tHOUR_FRAG = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.HOUR_FRAG");
+		this.tMINUTE_FRAG = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.MINUTE_FRAG");
+		this.tSECOND_FRAG = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.SECOND_FRAG");
+		this.tEND_OF_DAY_FRAG = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.END_OF_DAY_FRAG");
+		this.tTIMEZONE_FRAG = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.TIMEZONE_FRAG");
+		this.tALPHA = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.ALPHA");
+		this.tSCHEME = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.SCHEME");
+		this.tPCT_ENCODED = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.PCT_ENCODED");
+		this.tUNRESERVED = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.UNRESERVED");
+		this.tDIGIT04 = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.DIGIT04");
+		this.tDEC_OCTET = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.DEC_OCTET");
+		this.tIPV4_ADDRESS = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.IPV4_ADDRESS");
+		this.tIUSER_PART = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.IUSER_PART");
+		this.tIUSER_INFO = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.IUSER_INFO");
+		this.tIUNRESERVED_PART = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.IUNRESERVED_PART");
+		this.tIUNRESERVED = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.IUNRESERVED");
+		this.tIHOST = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.IHOST");
+		this.tPORT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.PORT");
+		this.tIAUTHORITY = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.IAUTHORITY");
+		this.tIPCHAR = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.IPCHAR");
+		this.tISEGMENT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.ISEGMENT");
+		this.tIPATH = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.IPATH");
+		this.tIHIER_PART = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.IHIER_PART");
+		this.tIFRAGMENT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.IFRAGMENT");
+		this.tURI_VALUE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.URI_VALUE");
+		this.pURI = new URIElements();
+		this.tCONSTANT_NAME = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.CONSTANT_NAME");
+		this.tREAL_VALUE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.REAL_VALUE");
+		this.pREAL = new REALElements();
 		this.tSTRING = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.STRING");
 		this.tIRI = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.IRI");
+		this.tLETTER = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.LETTER");
+		this.tLETTER_DIGIT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.LETTER_DIGIT");
+		this.tLETTER_DIGIT_PREFIX = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.LETTER_DIGIT_PREFIX");
+		this.tLETTER_DIGIT_SUFFIX = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.LETTER_DIGIT_SUFFIX");
 		this.tABBREV_IRI = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.ABBREV_IRI");
+		this.tID_PREFIX = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.ID_PREFIX");
 		this.tID = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.ID");
+		this.tLANGUAGE_TAG = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.LANGUAGE_TAG");
+		this.pLANG_TAG = new LANG_TAGElements();
+		this.tDATETIME = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.DATETIME");
+		this.pDATE_TIME = new DATE_TIMEElements();
 		this.tUUID = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.UUID");
 		this.tHEX_12DIGITS = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.HEX_12DIGITS");
 		this.tHEX_8DIGITS = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.HEX_8DIGITS");
 		this.tHEX_4DIGITS = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.HEX_4DIGITS");
+		this.tHEX_LETTER = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.HEX_LETTER");
 		this.tHEX_DIGIT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.HEX_DIGIT");
 		this.tHEX = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.HEX");
-		this.tINT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.INT");
+		this.tDIGITS = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.DIGITS");
+		this.tRATIONAL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.RATIONAL");
+		this.tDEC = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.DEC");
 		this.tDECIMAL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.DECIMAL");
 		this.tFLOAT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.FLOAT");
 		this.tML_COMMENT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.ML_COMMENT");
@@ -4896,25 +5217,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		return getAnnotationPropertyAccess().getRule();
 	}
 	
-	///*
-	// * Note that the concrete syntax for the Annotation.subject is defined implicitly
-	// * in the sense that the subject of an Annotation is always the preceding
-	// * TerminologyThing or the subject of the preceding Annotation.
-	// * 
-	// * For example, the following shows the concrete syntax for 2 Concepts, Foo and Bar
-	// * and of 3 Annotations; the first two Annotations have Foo as their subject because 
-	// * Foo is the first preceding TerminologyThing; the third Annotation has Bar as its subject
-	// * because it appears after the TerminologyThing Bar.
-	// * 
-	// * concept Foo
-	// * @rdfs:label = "foo"
-	// * @dc:description = "A Foo is ..."
-	// * 
-	// * concept Bar
-	// * @rdfs:label = "bar
-	// * 
-	// * @see jpl.imce.oml.specification.linking.OMLLinkingService
-	// */ AnnotationPropertyValue:
+	//AnnotationPropertyValue:
 	//	'@' property=[AnnotationProperty|ABBREV_IRI]
 	//	'=' value=STRING;
 	public AnnotationPropertyValueElements getAnnotationPropertyValueAccess() {
@@ -5504,7 +5807,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	//	'every'
 	//	restrictedEntity=[Entity|Reference]
 	//	'.' scalarProperty=[EntityScalarDataProperty|Reference]
-	//	'=' literalValue=Value;
+	//	'=' literalValue=LiteralValue;
 	public EntityScalarDataPropertyParticularRestrictionAxiomElements getEntityScalarDataPropertyParticularRestrictionAxiomAccess() {
 		return pEntityScalarDataPropertyParticularRestrictionAxiom;
 	}
@@ -5564,7 +5867,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	//	annotations+=AnnotationPropertyValue*
 	//	scalarDataProperty=[ScalarDataProperty|Reference]
 	//	'='
-	//	scalarPropertyValue=Value;
+	//	scalarPropertyValue=LiteralValue;
 	public RestrictionScalarDataPropertyValueElements getRestrictionScalarDataPropertyValueAccess() {
 		return pRestrictionScalarDataPropertyValue;
 	}
@@ -5577,7 +5880,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	//BinaryScalarRestriction:
 	//	annotations+=AnnotationPropertyValue*
 	//	'binaryScalarRestriction' name=ID
-	//	'{' (('length' length=INT)? & ('minLength' minLength=INT)? & ('maxLength' maxLength=INT)?)
+	//	'{' (('length' length=DIGITS)? & ('minLength' minLength=DIGITS)? & ('maxLength' maxLength=DIGITS)?)
 	//	'restrictedRange' restrictedRange=[DataRange|Reference]
 	//	'}';
 	public BinaryScalarRestrictionElements getBinaryScalarRestrictionAccess() {
@@ -5591,8 +5894,8 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	//IRIScalarRestriction:
 	//	annotations+=AnnotationPropertyValue*
 	//	'iriScalarRestriction' name=ID
-	//	'{' (('length' length=INT)? & ('minLength' minLength=INT)? & ('maxLength' maxLength=INT)? & ('pattern'
-	//	pattern=STRING)?)
+	//	'{' (('length' length=DIGITS)? & ('minLength' minLength=DIGITS)? & ('maxLength' maxLength=DIGITS)? & ('pattern'
+	//	pattern=LiteralPattern)?)
 	//	'restrictedRange' restrictedRange=[DataRange|Reference]
 	//	'}';
 	public IRIScalarRestrictionElements getIRIScalarRestrictionAccess() {
@@ -5606,8 +5909,8 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	//NumericScalarRestriction:
 	//	annotations+=AnnotationPropertyValue*
 	//	'numericScalarRestriction' name=ID
-	//	'{' (('minInclusive' minInclusive=STRING)? & ('maxInclusive' maxInclusive=STRING)? & ('minExclusive'
-	//	minExclusive=STRING)? & ('maxExclusive' maxExclusive=STRING)?)
+	//	'{' (('minInclusive' minInclusive=LiteralNumber)? & ('maxInclusive' maxInclusive=LiteralNumber)? & ('minExclusive'
+	//	minExclusive=LiteralNumber)? & ('maxExclusive' maxExclusive=LiteralNumber)?)
 	//	'restrictedRange' restrictedRange=[DataRange|Reference]
 	//	'}';
 	public NumericScalarRestrictionElements getNumericScalarRestrictionAccess() {
@@ -5621,8 +5924,8 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	//PlainLiteralScalarRestriction:
 	//	annotations+=AnnotationPropertyValue*
 	//	'plainLiteralScalarRestriction' name=ID
-	//	'{' (('length' length=INT)? & ('minLength' minLength=INT)? & ('maxLength' maxLength=INT)? & ('pattern'
-	//	pattern=STRING)? & ('langRange' langRange=STRING)?)
+	//	'{' (('length' length=DIGITS)? & ('minLength' minLength=DIGITS)? & ('maxLength' maxLength=DIGITS)? & ('pattern'
+	//	pattern=LiteralPattern)? & ('langRange' langRange=LiteralLanguageTag)?)
 	//	'restrictedRange' restrictedRange=[DataRange|Reference]
 	//	'}';
 	public PlainLiteralScalarRestrictionElements getPlainLiteralScalarRestrictionAccess() {
@@ -5651,7 +5954,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	//	annotations+=AnnotationPropertyValue*
 	//	'oneOf'
 	//	axiom=[ScalarOneOfRestriction|Reference]
-	//	'=' value=STRING;
+	//	'=' value=LiteralValue;
 	public ScalarOneOfLiteralAxiomElements getScalarOneOfLiteralAxiomAccess() {
 		return pScalarOneOfLiteralAxiom;
 	}
@@ -5663,8 +5966,8 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	//StringScalarRestriction:
 	//	annotations+=AnnotationPropertyValue*
 	//	'stringScalarRestriction' name=ID
-	//	'{' (('length' length=INT)? & ('minLength' minLength=INT)? & ('maxLength' maxLength=INT)? & ('pattern'
-	//	pattern=STRING)?)
+	//	'{' (('length' length=DIGITS)? & ('minLength' minLength=DIGITS)? & ('maxLength' maxLength=DIGITS)? & ('pattern'
+	//	pattern=LiteralPattern)?)
 	//	'restrictedRange' restrictedRange=[DataRange|Reference]
 	//	'}';
 	public StringScalarRestrictionElements getStringScalarRestrictionAccess() {
@@ -5692,8 +5995,8 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	//TimeScalarRestriction:
 	//	annotations+=AnnotationPropertyValue*
 	//	'timeScalarRestriction' name=ID
-	//	'{' (('minInclusive' minInclusive=STRING)? & ('maxInclusive' maxInclusive=STRING)? & ('minExclusive'
-	//	minExclusive=STRING)? & ('maxExclusive' maxExclusive=STRING)?)
+	//	'{' (('minInclusive' minInclusive=LiteralDateTime)? & ('maxInclusive' maxInclusive=LiteralDateTime)? & ('minExclusive'
+	//	minExclusive=LiteralDateTime)? & ('maxExclusive' maxExclusive=LiteralDateTime)?)
 	//	'restrictedRange' restrictedRange=[DataRange|Reference]
 	//	'}';
 	public TimeScalarRestrictionElements getTimeScalarRestrictionAccess() {
@@ -5764,7 +6067,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	//	'.'
 	//	scalarDataProperty=[EntityScalarDataProperty|Reference]
 	//	'='
-	//	scalarPropertyValue=Value;
+	//	scalarPropertyValue=LiteralValue;
 	public SingletonInstanceScalarDataPropertyValueElements getSingletonInstanceScalarDataPropertyValueAccess() {
 		return pSingletonInstanceScalarDataPropertyValue;
 	}
@@ -5805,7 +6108,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	//	annotations+=AnnotationPropertyValue*
 	//	scalarDataProperty=[DataRelationshipToScalar|Reference]
 	//	'='
-	//	scalarPropertyValue=Value;
+	//	scalarPropertyValue=LiteralValue;
 	public ScalarDataPropertyValueElements getScalarDataPropertyValueAccess() {
 		return pScalarDataPropertyValue;
 	}
@@ -5920,14 +6223,315 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		return getValidIDAccess().getRule();
 	}
 	
-	//Value:
-	//	DECIMAL | INT | STRING | UUID | HEX | FLOAT;
-	public ValueElements getValueAccess() {
-		return pValue;
+	////----------------------------
+	//LiteralPattern:
+	//	{LiteralPattern} value=STRING;
+	public LiteralPatternElements getLiteralPatternAccess() {
+		return pLiteralPattern;
 	}
 	
-	public ParserRule getValueRule() {
-		return getValueAccess().getRule();
+	public ParserRule getLiteralPatternRule() {
+		return getLiteralPatternAccess().getRule();
+	}
+	
+	//LiteralValue:
+	//	LiteralDateTime | LiteralLanguageTag | LiteralString | LiteralUUID | LiteralURI | LiteralNumber;
+	public LiteralValueElements getLiteralValueAccess() {
+		return pLiteralValue;
+	}
+	
+	public ParserRule getLiteralValueRule() {
+		return getLiteralValueAccess().getRule();
+	}
+	
+	//LiteralDateTime:
+	//	{LiteralDateTime} value=DATE_TIME;
+	public LiteralDateTimeElements getLiteralDateTimeAccess() {
+		return pLiteralDateTime;
+	}
+	
+	public ParserRule getLiteralDateTimeRule() {
+		return getLiteralDateTimeAccess().getRule();
+	}
+	
+	//LiteralLanguageTag:
+	//	{LiteralLanguageTag} value=LANG_TAG;
+	public LiteralLanguageTagElements getLiteralLanguageTagAccess() {
+		return pLiteralLanguageTag;
+	}
+	
+	public ParserRule getLiteralLanguageTagRule() {
+		return getLiteralLanguageTagAccess().getRule();
+	}
+	
+	//LiteralString:
+	//	{LiteralString} value=STRING;
+	public LiteralStringElements getLiteralStringAccess() {
+		return pLiteralString;
+	}
+	
+	public ParserRule getLiteralStringRule() {
+		return getLiteralStringAccess().getRule();
+	}
+	
+	//LiteralUUID:
+	//	{LiteralUUID} value=UUID;
+	public LiteralUUIDElements getLiteralUUIDAccess() {
+		return pLiteralUUID;
+	}
+	
+	public ParserRule getLiteralUUIDRule() {
+		return getLiteralUUIDAccess().getRule();
+	}
+	
+	//LiteralURI:
+	//	{LiteralURI} value=URI;
+	public LiteralURIElements getLiteralURIAccess() {
+		return pLiteralURI;
+	}
+	
+	public ParserRule getLiteralURIRule() {
+		return getLiteralURIAccess().getRule();
+	}
+	
+	//LiteralNumber:
+	//	{LiteralNumber} value=(REAL_VALUE | RATIONAL | FLOAT | DECIMAL);
+	public LiteralNumberElements getLiteralNumberAccess() {
+		return pLiteralNumber;
+	}
+	
+	public ParserRule getLiteralNumberRule() {
+		return getLiteralNumberAccess().getRule();
+	}
+	
+	//terminal fragment DIGIT:
+	//	'0'..'9';
+	public TerminalRule getDIGITRule() {
+		return tDIGIT;
+	}
+	
+	//terminal fragment DIGIT19:
+	//	'1'..'9';
+	public TerminalRule getDIGIT19Rule() {
+		return tDIGIT19;
+	}
+	
+	//terminal fragment DIGIT02:
+	//	'0'..'2';
+	public TerminalRule getDIGIT02Rule() {
+		return tDIGIT02;
+	}
+	
+	//terminal fragment DIGIT03:
+	//	'0'..'3';
+	public TerminalRule getDIGIT03Rule() {
+		return tDIGIT03;
+	}
+	
+	//terminal fragment DIGIT05:
+	//	'0'..'5';
+	public TerminalRule getDIGIT05Rule() {
+		return tDIGIT05;
+	}
+	
+	//terminal fragment YEAR_FRAG:
+	//	'-'? (DIGIT19 DIGIT DIGIT DIGIT+ | '0' DIGIT DIGIT DIGIT);
+	public TerminalRule getYEAR_FRAGRule() {
+		return tYEAR_FRAG;
+	}
+	
+	//terminal fragment MONTH_FRAG:
+	//	'0' DIGIT19 | '1' DIGIT02;
+	public TerminalRule getMONTH_FRAGRule() {
+		return tMONTH_FRAG;
+	}
+	
+	//terminal fragment DAY_FRAG:
+	//	'0' DIGIT19 | ('1' | '2') DIGIT | '3' ('0' | '1');
+	public TerminalRule getDAY_FRAGRule() {
+		return tDAY_FRAG;
+	}
+	
+	//terminal fragment HOUR_FRAG:
+	//	('0' | '1') DIGIT | '2' DIGIT03;
+	public TerminalRule getHOUR_FRAGRule() {
+		return tHOUR_FRAG;
+	}
+	
+	//terminal fragment MINUTE_FRAG:
+	//	DIGIT05 DIGIT;
+	public TerminalRule getMINUTE_FRAGRule() {
+		return tMINUTE_FRAG;
+	}
+	
+	//terminal fragment SECOND_FRAG:
+	//	DIGIT05 DIGIT ('.' DIGIT+)?;
+	public TerminalRule getSECOND_FRAGRule() {
+		return tSECOND_FRAG;
+	}
+	
+	//terminal fragment END_OF_DAY_FRAG:
+	//	'24:00:00' ('.' DIGIT+)?;
+	public TerminalRule getEND_OF_DAY_FRAGRule() {
+		return tEND_OF_DAY_FRAG;
+	}
+	
+	//terminal fragment TIMEZONE_FRAG:
+	//	'Z' | ('+' | '-') (('0' DIGIT | '1' DIGIT03) ':' MINUTE_FRAG | '14:00');
+	public TerminalRule getTIMEZONE_FRAGRule() {
+		return tTIMEZONE_FRAG;
+	}
+	
+	//terminal fragment ALPHA:
+	//	'a'..'z' | 'A'..'Z';
+	public TerminalRule getALPHARule() {
+		return tALPHA;
+	}
+	
+	//terminal fragment SCHEME:
+	//	ALPHA (ALPHA | DIGIT | '+' | '-' | '.')*;
+	public TerminalRule getSCHEMERule() {
+		return tSCHEME;
+	}
+	
+	//terminal fragment PCT_ENCODED:
+	//	'%' HEX_DIGIT HEX_DIGIT;
+	public TerminalRule getPCT_ENCODEDRule() {
+		return tPCT_ENCODED;
+	}
+	
+	//terminal fragment UNRESERVED:
+	//	ALPHA | DIGIT | '-' | '.' | '_' | '~';
+	public TerminalRule getUNRESERVEDRule() {
+		return tUNRESERVED;
+	}
+	
+	//terminal fragment DIGIT04:
+	//	'0'..'4';
+	public TerminalRule getDIGIT04Rule() {
+		return tDIGIT04;
+	}
+	
+	//terminal fragment DEC_OCTET:
+	//	DIGIT | '1' DIGIT | '2' DIGIT04 DIGIT | '25' DIGIT05;
+	public TerminalRule getDEC_OCTETRule() {
+		return tDEC_OCTET;
+	}
+	
+	//terminal fragment IPV4_ADDRESS:
+	//	DEC_OCTET '.' DEC_OCTET '.' DEC_OCTET '.' DEC_OCTET;
+	public TerminalRule getIPV4_ADDRESSRule() {
+		return tIPV4_ADDRESS;
+	}
+	
+	//terminal fragment IUSER_PART:
+	//	UNRESERVED | PCT_ENCODED+;
+	public TerminalRule getIUSER_PARTRule() {
+		return tIUSER_PART;
+	}
+	
+	//terminal fragment IUSER_INFO:
+	//	IUSER_PART (':' IUSER_PART)*;
+	public TerminalRule getIUSER_INFORule() {
+		return tIUSER_INFO;
+	}
+	
+	//terminal fragment IUNRESERVED_PART:
+	//	ALPHA | DIGIT | '-' | '_' | '~';
+	public TerminalRule getIUNRESERVED_PARTRule() {
+		return tIUNRESERVED_PART;
+	}
+	
+	//terminal fragment IUNRESERVED:
+	//	ALPHA IUNRESERVED_PART? ('.' IUNRESERVED_PART)*;
+	public TerminalRule getIUNRESERVEDRule() {
+		return tIUNRESERVED;
+	}
+	
+	//terminal fragment IHOST:
+	//	IPV4_ADDRESS | IUNRESERVED;
+	public TerminalRule getIHOSTRule() {
+		return tIHOST;
+	}
+	
+	//terminal fragment PORT:
+	//	DIGIT+;
+	public TerminalRule getPORTRule() {
+		return tPORT;
+	}
+	
+	//terminal fragment IAUTHORITY:
+	//	(IUSER_INFO '@')? IHOST (':' PORT)?;
+	public TerminalRule getIAUTHORITYRule() {
+		return tIAUTHORITY;
+	}
+	
+	//terminal fragment IPCHAR:
+	//	IUNRESERVED_PART | PCT_ENCODED;
+	public TerminalRule getIPCHARRule() {
+		return tIPCHAR;
+	}
+	
+	//terminal fragment ISEGMENT:
+	//	IPCHAR+;
+	public TerminalRule getISEGMENTRule() {
+		return tISEGMENT;
+	}
+	
+	//terminal fragment IPATH:
+	//	ISEGMENT ('/' ISEGMENT)*;
+	public TerminalRule getIPATHRule() {
+		return tIPATH;
+	}
+	
+	//terminal fragment IHIER_PART:
+	//	'//' IAUTHORITY IPATH?;
+	public TerminalRule getIHIER_PARTRule() {
+		return tIHIER_PART;
+	}
+	
+	//terminal fragment IFRAGMENT:
+	//	ISEGMENT;
+	public TerminalRule getIFRAGMENTRule() {
+		return tIFRAGMENT;
+	}
+	
+	//terminal URI_VALUE:
+	//	SCHEME ':' IHIER_PART ('#' IFRAGMENT)?;
+	public TerminalRule getURI_VALUERule() {
+		return tURI_VALUE;
+	}
+	
+	//URI:
+	//	URI_VALUE;
+	public URIElements getURIAccess() {
+		return pURI;
+	}
+	
+	public ParserRule getURIRule() {
+		return getURIAccess().getRule();
+	}
+	
+	//terminal CONSTANT_NAME:
+	//	ALPHA (ALPHA | DIGIT)*;
+	public TerminalRule getCONSTANT_NAMERule() {
+		return tCONSTANT_NAME;
+	}
+	
+	//terminal REAL_VALUE:
+	//	'{' ('-' | '+')? CONSTANT_NAME '}';
+	public TerminalRule getREAL_VALUERule() {
+		return tREAL_VALUE;
+	}
+	
+	//REAL:
+	//	REAL_VALUE;
+	public REALElements getREALAccess() {
+		return pREAL;
+	}
+	
+	public ParserRule getREALRule() {
+		return getREALAccess().getRule();
 	}
 	
 	//@ Override terminal STRING:
@@ -5943,17 +6547,79 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		return tIRI;
 	}
 	
+	//terminal fragment LETTER:
+	//	'a'..'z' | 'A'..'Z';
+	public TerminalRule getLETTERRule() {
+		return tLETTER;
+	}
+	
+	//terminal fragment LETTER_DIGIT:
+	//	LETTER | DIGIT;
+	public TerminalRule getLETTER_DIGITRule() {
+		return tLETTER_DIGIT;
+	}
+	
+	//terminal fragment LETTER_DIGIT_PREFIX:
+	//	LETTER_DIGIT | '_';
+	public TerminalRule getLETTER_DIGIT_PREFIXRule() {
+		return tLETTER_DIGIT_PREFIX;
+	}
+	
+	//terminal fragment LETTER_DIGIT_SUFFIX:
+	//	LETTER_DIGIT | '_' | '-' | '.';
+	public TerminalRule getLETTER_DIGIT_SUFFIXRule() {
+		return tLETTER_DIGIT_SUFFIX;
+	}
+	
 	//terminal ABBREV_IRI:
-	//	('a'..'z' | 'A'..'Z' | '_' | '0'..'9') ('a'..'z' | 'A'..'Z' | '_' | '-' | '.' | '0'..'9')* ':' ('a'..'z' | 'A'..'Z' |
-	//	'_' | '0'..'9') ('a'..'z' | 'A'..'Z' | '_' | '-' | '.' | '0'..'9')*;
+	//	LETTER_DIGIT_PREFIX LETTER_DIGIT_SUFFIX* ':' LETTER_DIGIT_PREFIX LETTER_DIGIT_SUFFIX*;
 	public TerminalRule getABBREV_IRIRule() {
 		return tABBREV_IRI;
 	}
 	
+	//terminal fragment ID_PREFIX:
+	//	LETTER | '_';
+	public TerminalRule getID_PREFIXRule() {
+		return tID_PREFIX;
+	}
+	
 	//terminal ID:
-	//	'^'? ('a'..'z' | 'A'..'Z' | '_') ('a'..'z' | 'A'..'Z' | '_' | '-' | '.' | '0'..'9')*;
+	//	'^'? ID_PREFIX LETTER_DIGIT_SUFFIX*;
 	public TerminalRule getIDRule() {
 		return tID;
+	}
+	
+	//terminal LANGUAGE_TAG:
+	//	'lang=' LETTER+ ('-' LETTER_DIGIT+)*;
+	public TerminalRule getLANGUAGE_TAGRule() {
+		return tLANGUAGE_TAG;
+	}
+	
+	//LANG_TAG:
+	//	LANGUAGE_TAG;
+	public LANG_TAGElements getLANG_TAGAccess() {
+		return pLANG_TAG;
+	}
+	
+	public ParserRule getLANG_TAGRule() {
+		return getLANG_TAGAccess().getRule();
+	}
+	
+	//terminal DATETIME:
+	//	YEAR_FRAG '-' MONTH_FRAG '-' DAY_FRAG 'T' (HOUR_FRAG ':' MINUTE_FRAG ':' SECOND_FRAG | END_OF_DAY_FRAG)
+	//	TIMEZONE_FRAG?;
+	public TerminalRule getDATETIMERule() {
+		return tDATETIME;
+	}
+	
+	//DATE_TIME:
+	//	DATETIME;
+	public DATE_TIMEElements getDATE_TIMEAccess() {
+		return pDATE_TIME;
+	}
+	
+	public ParserRule getDATE_TIMERule() {
+		return getDATE_TIMEAccess().getRule();
 	}
 	
 	//terminal UUID:
@@ -5962,50 +6628,70 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		return tUUID;
 	}
 	
-	//terminal HEX_12DIGITS:
+	//terminal fragment HEX_12DIGITS:
 	//	HEX_8DIGITS HEX_4DIGITS;
 	public TerminalRule getHEX_12DIGITSRule() {
 		return tHEX_12DIGITS;
 	}
 	
-	//terminal HEX_8DIGITS:
+	//terminal fragment HEX_8DIGITS:
 	//	HEX_4DIGITS HEX_4DIGITS;
 	public TerminalRule getHEX_8DIGITSRule() {
 		return tHEX_8DIGITS;
 	}
 	
-	//terminal HEX_4DIGITS:
+	//terminal fragment HEX_4DIGITS:
 	//	HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT;
 	public TerminalRule getHEX_4DIGITSRule() {
 		return tHEX_4DIGITS;
 	}
 	
-	//terminal HEX_DIGIT:
-	//	'0'..'9' | 'a'..'f' | 'A'..'F';
+	//terminal fragment HEX_LETTER:
+	//	'a'..'f' | 'A'..'F';
+	public TerminalRule getHEX_LETTERRule() {
+		return tHEX_LETTER;
+	}
+	
+	//terminal fragment HEX_DIGIT:
+	//	DIGIT | HEX_LETTER;
 	public TerminalRule getHEX_DIGITRule() {
 		return tHEX_DIGIT;
 	}
 	
-	//terminal HEX:
-	//	('0x' | '0X') ('0'..'9' | 'a'..'f' | 'A'..'F' | '_')+ ('#' (('b' | 'B') ('i' | 'I') | ('l' | 'L')))?;
+	//terminal fragment HEX:
+	//	('0x' | '0X') (HEX_DIGIT | '_')+ ('#' (('b' | 'B') ('i' | 'I') | ('l' | 'L')))?;
 	public TerminalRule getHEXRule() {
 		return tHEX;
 	}
 	
-	//terminal INT returns ecore::EInt:
-	//	'0'..'9'+;
-	public TerminalRule getINTRule() {
-		return tINT;
+	//terminal DIGITS:
+	//	DIGIT+;
+	public TerminalRule getDIGITSRule() {
+		return tDIGITS;
+	}
+	
+	//terminal RATIONAL:
+	//	('-' | '+')? DIGITS '/' DIGITS;
+	public TerminalRule getRATIONALRule() {
+		return tRATIONAL;
+	}
+	
+	//terminal fragment DEC:
+	//	'-'?
+	//	DIGIT+ (('e' | 'E') ('+' | '-')? DIGIT+)? (('b' | 'B') ('i' | 'I' | 'd' | 'D') | ('l' | 'L' | 'd' | 'D' | 'f' |
+	//	'F'))?;
+	public TerminalRule getDECRule() {
+		return tDEC;
 	}
 	
 	//terminal DECIMAL:
-	//	INT (('e' | 'E') ('+' | '-')? INT)? (('b' | 'B') ('i' | 'I' | 'd' | 'D') | ('l' | 'L' | 'd' | 'D' | 'f' | 'F'))?;
+	//	DEC | HEX;
 	public TerminalRule getDECIMALRule() {
 		return tDECIMAL;
 	}
 	
 	//terminal FLOAT:
-	//	'-'? ('0'..'9'+ '.' '0'..'9'+) (('e' | 'E') ('+' | '-')? '0'..'9'+)?;
+	//	'-'? (DIGIT+ '.' DIGIT+) (('e' | 'E') ('+' | '-')? DIGIT+)?;
 	public TerminalRule getFLOATRule() {
 		return tFLOAT;
 	}

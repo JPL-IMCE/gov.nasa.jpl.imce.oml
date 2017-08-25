@@ -544,8 +544,8 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSingletonInstanceScalarDataPropertyValue_ScalarPropertyValue() {
-		return (EAttribute)singletonInstanceScalarDataPropertyValueEClass.getEStructuralFeatures().get(3);
+	public EReference getSingletonInstanceScalarDataPropertyValue_ScalarPropertyValue() {
+		return (EReference)singletonInstanceScalarDataPropertyValueEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -769,8 +769,8 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getScalarDataPropertyValue_ScalarPropertyValue() {
-		return (EAttribute)scalarDataPropertyValueEClass.getEStructuralFeatures().get(2);
+	public EReference getScalarDataPropertyValue_ScalarPropertyValue() {
+		return (EReference)scalarDataPropertyValueEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -1289,7 +1289,7 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 		createEReference(singletonInstanceScalarDataPropertyValueEClass, SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE__DESCRIPTION_BOX);
 		createEReference(singletonInstanceScalarDataPropertyValueEClass, SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE__SINGLETON_INSTANCE);
 		createEReference(singletonInstanceScalarDataPropertyValueEClass, SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE__SCALAR_DATA_PROPERTY);
-		createEAttribute(singletonInstanceScalarDataPropertyValueEClass, SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE);
+		createEReference(singletonInstanceScalarDataPropertyValueEClass, SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE);
 		createEOperation(singletonInstanceScalarDataPropertyValueEClass, SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE___UUID);
 		createEOperation(singletonInstanceScalarDataPropertyValueEClass, SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE___DESCRIPTION_BOX);
 		createEOperation(singletonInstanceScalarDataPropertyValueEClass, SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE___MODULE_CONTEXT);
@@ -1318,7 +1318,7 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 		scalarDataPropertyValueEClass = createEClass(SCALAR_DATA_PROPERTY_VALUE);
 		createEReference(scalarDataPropertyValueEClass, SCALAR_DATA_PROPERTY_VALUE__STRUCTURED_DATA_PROPERTY_CONTEXT);
 		createEReference(scalarDataPropertyValueEClass, SCALAR_DATA_PROPERTY_VALUE__SCALAR_DATA_PROPERTY);
-		createEAttribute(scalarDataPropertyValueEClass, SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE);
+		createEReference(scalarDataPropertyValueEClass, SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE);
 		createEOperation(scalarDataPropertyValueEClass, SCALAR_DATA_PROPERTY_VALUE___DESCRIPTION_BOX);
 		createEOperation(scalarDataPropertyValueEClass, SCALAR_DATA_PROPERTY_VALUE___UUID);
 		createEOperation(scalarDataPropertyValueEClass, SCALAR_DATA_PROPERTY_VALUE___MODULE_CONTEXT);
@@ -1480,7 +1480,7 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 		initEReference(getSingletonInstanceScalarDataPropertyValue_DescriptionBox(), this.getDescriptionBox(), this.getDescriptionBox_SingletonScalarDataPropertyValues(), "descriptionBox", null, 1, 1, SingletonInstanceScalarDataPropertyValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSingletonInstanceScalarDataPropertyValue_SingletonInstance(), this.getConceptualEntitySingletonInstance(), null, "singletonInstance", null, 1, 1, SingletonInstanceScalarDataPropertyValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSingletonInstanceScalarDataPropertyValue_ScalarDataProperty(), theTerminologiesPackage.getEntityScalarDataProperty(), null, "scalarDataProperty", null, 1, 1, SingletonInstanceScalarDataPropertyValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSingletonInstanceScalarDataPropertyValue_ScalarPropertyValue(), theEcorePackage.getEString(), "scalarPropertyValue", null, 1, 1, SingletonInstanceScalarDataPropertyValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSingletonInstanceScalarDataPropertyValue_ScalarPropertyValue(), theCommonPackage.getLiteralValue(), null, "scalarPropertyValue", null, 1, 1, SingletonInstanceScalarDataPropertyValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getSingletonInstanceScalarDataPropertyValue__Uuid(), theCommonPackage.getUUID(), "uuid", 1, 1, !IS_UNIQUE, IS_ORDERED);
 
@@ -1521,7 +1521,7 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 		initEClass(scalarDataPropertyValueEClass, ScalarDataPropertyValue.class, "ScalarDataPropertyValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getScalarDataPropertyValue_StructuredDataPropertyContext(), this.getSingletonInstanceStructuredDataPropertyContext(), this.getSingletonInstanceStructuredDataPropertyContext_ScalarDataPropertyValues(), "structuredDataPropertyContext", null, 1, 1, ScalarDataPropertyValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getScalarDataPropertyValue_ScalarDataProperty(), theTerminologiesPackage.getDataRelationshipToScalar(), null, "scalarDataProperty", null, 1, 1, ScalarDataPropertyValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getScalarDataPropertyValue_ScalarPropertyValue(), theCommonPackage.getLexicalValue(), "scalarPropertyValue", null, 1, 1, ScalarDataPropertyValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getScalarDataPropertyValue_ScalarPropertyValue(), theCommonPackage.getLiteralValue(), null, "scalarPropertyValue", null, 1, 1, ScalarDataPropertyValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getScalarDataPropertyValue__DescriptionBox(), this.getDescriptionBox(), "descriptionBox", 0, 1, !IS_UNIQUE, IS_ORDERED);
 

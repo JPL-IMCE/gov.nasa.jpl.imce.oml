@@ -5185,7 +5185,7 @@ public interface TerminologiesPackage extends EPackage {
 	int ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__SCALAR_PROPERTY = ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM__SCALAR_PROPERTY;
 
 	/**
-	 * The feature id for the '<em><b>Literal Value</b></em>' attribute.
+	 * The feature id for the '<em><b>Literal Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -5757,7 +5757,7 @@ public interface TerminologiesPackage extends EPackage {
 	int RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__SCALAR_DATA_PROPERTY = CommonPackage.ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Scalar Property Value</b></em>' attribute.
+	 * The feature id for the '<em><b>Scalar Property Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -6174,7 +6174,7 @@ public interface TerminologiesPackage extends EPackage {
 	int IRI_SCALAR_RESTRICTION__MAX_LENGTH = RESTRICTED_DATA_RANGE_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Pattern</b></em>' attribute.
+	 * The feature id for the '<em><b>Pattern</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -6310,7 +6310,7 @@ public interface TerminologiesPackage extends EPackage {
 	int NUMERIC_SCALAR_RESTRICTION__RESTRICTED_RANGE = RESTRICTED_DATA_RANGE__RESTRICTED_RANGE;
 
 	/**
-	 * The feature id for the '<em><b>Min Inclusive</b></em>' attribute.
+	 * The feature id for the '<em><b>Min Inclusive</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -6319,7 +6319,7 @@ public interface TerminologiesPackage extends EPackage {
 	int NUMERIC_SCALAR_RESTRICTION__MIN_INCLUSIVE = RESTRICTED_DATA_RANGE_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Max Inclusive</b></em>' attribute.
+	 * The feature id for the '<em><b>Max Inclusive</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -6328,7 +6328,7 @@ public interface TerminologiesPackage extends EPackage {
 	int NUMERIC_SCALAR_RESTRICTION__MAX_INCLUSIVE = RESTRICTED_DATA_RANGE_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Min Exclusive</b></em>' attribute.
+	 * The feature id for the '<em><b>Min Exclusive</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -6337,7 +6337,7 @@ public interface TerminologiesPackage extends EPackage {
 	int NUMERIC_SCALAR_RESTRICTION__MIN_EXCLUSIVE = RESTRICTED_DATA_RANGE_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Max Exclusive</b></em>' attribute.
+	 * The feature id for the '<em><b>Max Exclusive</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -6500,7 +6500,7 @@ public interface TerminologiesPackage extends EPackage {
 	int PLAIN_LITERAL_SCALAR_RESTRICTION__MAX_LENGTH = RESTRICTED_DATA_RANGE_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Pattern</b></em>' attribute.
+	 * The feature id for the '<em><b>Pattern</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -6509,7 +6509,7 @@ public interface TerminologiesPackage extends EPackage {
 	int PLAIN_LITERAL_SCALAR_RESTRICTION__PATTERN = RESTRICTED_DATA_RANGE_FEATURE_COUNT + 3;
 
 	/**
-	 * The feature id for the '<em><b>Lang Range</b></em>' attribute.
+	 * The feature id for the '<em><b>Lang Range</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -6672,7 +6672,7 @@ public interface TerminologiesPackage extends EPackage {
 	int STRING_SCALAR_RESTRICTION__MAX_LENGTH = RESTRICTED_DATA_RANGE_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Pattern</b></em>' attribute.
+	 * The feature id for the '<em><b>Pattern</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -6808,7 +6808,7 @@ public interface TerminologiesPackage extends EPackage {
 	int TIME_SCALAR_RESTRICTION__RESTRICTED_RANGE = RESTRICTED_DATA_RANGE__RESTRICTED_RANGE;
 
 	/**
-	 * The feature id for the '<em><b>Min Inclusive</b></em>' attribute.
+	 * The feature id for the '<em><b>Min Inclusive</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -6817,7 +6817,7 @@ public interface TerminologiesPackage extends EPackage {
 	int TIME_SCALAR_RESTRICTION__MIN_INCLUSIVE = RESTRICTED_DATA_RANGE_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Max Inclusive</b></em>' attribute.
+	 * The feature id for the '<em><b>Max Inclusive</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -6826,7 +6826,7 @@ public interface TerminologiesPackage extends EPackage {
 	int TIME_SCALAR_RESTRICTION__MAX_INCLUSIVE = RESTRICTED_DATA_RANGE_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Min Exclusive</b></em>' attribute.
+	 * The feature id for the '<em><b>Min Exclusive</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -6835,7 +6835,7 @@ public interface TerminologiesPackage extends EPackage {
 	int TIME_SCALAR_RESTRICTION__MIN_EXCLUSIVE = RESTRICTED_DATA_RANGE_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Max Exclusive</b></em>' attribute.
+	 * The feature id for the '<em><b>Max Exclusive</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -7216,7 +7216,7 @@ public interface TerminologiesPackage extends EPackage {
 	int SCALAR_ONE_OF_LITERAL_AXIOM__AXIOM = TERM_AXIOM_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * The feature id for the '<em><b>Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -8639,15 +8639,15 @@ public interface TerminologiesPackage extends EPackage {
 	EClass getEntityScalarDataPropertyParticularRestrictionAxiom();
 
 	/**
-	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyParticularRestrictionAxiom#getLiteralValue <em>Literal Value</em>}'.
+	 * Returns the meta object for the containment reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyParticularRestrictionAxiom#getLiteralValue <em>Literal Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Literal Value</em>'.
+	 * @return the meta object for the containment reference '<em>Literal Value</em>'.
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyParticularRestrictionAxiom#getLiteralValue()
 	 * @see #getEntityScalarDataPropertyParticularRestrictionAxiom()
 	 * @generated
 	 */
-	EAttribute getEntityScalarDataPropertyParticularRestrictionAxiom_LiteralValue();
+	EReference getEntityScalarDataPropertyParticularRestrictionAxiom_LiteralValue();
 
 	/**
 	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyParticularRestrictionAxiom#uuid() <em>Uuid</em>}' operation.
@@ -8877,15 +8877,15 @@ public interface TerminologiesPackage extends EPackage {
 	EReference getRestrictionScalarDataPropertyValue_ScalarDataProperty();
 
 	/**
-	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue#getScalarPropertyValue <em>Scalar Property Value</em>}'.
+	 * Returns the meta object for the containment reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue#getScalarPropertyValue <em>Scalar Property Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Scalar Property Value</em>'.
+	 * @return the meta object for the containment reference '<em>Scalar Property Value</em>'.
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue#getScalarPropertyValue()
 	 * @see #getRestrictionScalarDataPropertyValue()
 	 * @generated
 	 */
-	EAttribute getRestrictionScalarDataPropertyValue_ScalarPropertyValue();
+	EReference getRestrictionScalarDataPropertyValue_ScalarPropertyValue();
 
 	/**
 	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue#terminologyBox() <em>Terminology Box</em>}' operation.
@@ -9025,15 +9025,15 @@ public interface TerminologiesPackage extends EPackage {
 	EAttribute getIRIScalarRestriction_MaxLength();
 
 	/**
-	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction#getPattern <em>Pattern</em>}'.
+	 * Returns the meta object for the containment reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction#getPattern <em>Pattern</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Pattern</em>'.
+	 * @return the meta object for the containment reference '<em>Pattern</em>'.
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction#getPattern()
 	 * @see #getIRIScalarRestriction()
 	 * @generated
 	 */
-	EAttribute getIRIScalarRestriction_Pattern();
+	EReference getIRIScalarRestriction_Pattern();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction <em>Numeric Scalar Restriction</em>}'.
@@ -9046,48 +9046,48 @@ public interface TerminologiesPackage extends EPackage {
 	EClass getNumericScalarRestriction();
 
 	/**
-	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction#getMinInclusive <em>Min Inclusive</em>}'.
+	 * Returns the meta object for the containment reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction#getMinInclusive <em>Min Inclusive</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Min Inclusive</em>'.
+	 * @return the meta object for the containment reference '<em>Min Inclusive</em>'.
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction#getMinInclusive()
 	 * @see #getNumericScalarRestriction()
 	 * @generated
 	 */
-	EAttribute getNumericScalarRestriction_MinInclusive();
+	EReference getNumericScalarRestriction_MinInclusive();
 
 	/**
-	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction#getMaxInclusive <em>Max Inclusive</em>}'.
+	 * Returns the meta object for the containment reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction#getMaxInclusive <em>Max Inclusive</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Max Inclusive</em>'.
+	 * @return the meta object for the containment reference '<em>Max Inclusive</em>'.
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction#getMaxInclusive()
 	 * @see #getNumericScalarRestriction()
 	 * @generated
 	 */
-	EAttribute getNumericScalarRestriction_MaxInclusive();
+	EReference getNumericScalarRestriction_MaxInclusive();
 
 	/**
-	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction#getMinExclusive <em>Min Exclusive</em>}'.
+	 * Returns the meta object for the containment reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction#getMinExclusive <em>Min Exclusive</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Min Exclusive</em>'.
+	 * @return the meta object for the containment reference '<em>Min Exclusive</em>'.
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction#getMinExclusive()
 	 * @see #getNumericScalarRestriction()
 	 * @generated
 	 */
-	EAttribute getNumericScalarRestriction_MinExclusive();
+	EReference getNumericScalarRestriction_MinExclusive();
 
 	/**
-	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction#getMaxExclusive <em>Max Exclusive</em>}'.
+	 * Returns the meta object for the containment reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction#getMaxExclusive <em>Max Exclusive</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Max Exclusive</em>'.
+	 * @return the meta object for the containment reference '<em>Max Exclusive</em>'.
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction#getMaxExclusive()
 	 * @see #getNumericScalarRestriction()
 	 * @generated
 	 */
-	EAttribute getNumericScalarRestriction_MaxExclusive();
+	EReference getNumericScalarRestriction_MaxExclusive();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction <em>Plain Literal Scalar Restriction</em>}'.
@@ -9133,26 +9133,26 @@ public interface TerminologiesPackage extends EPackage {
 	EAttribute getPlainLiteralScalarRestriction_MaxLength();
 
 	/**
-	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction#getPattern <em>Pattern</em>}'.
+	 * Returns the meta object for the containment reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction#getPattern <em>Pattern</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Pattern</em>'.
+	 * @return the meta object for the containment reference '<em>Pattern</em>'.
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction#getPattern()
 	 * @see #getPlainLiteralScalarRestriction()
 	 * @generated
 	 */
-	EAttribute getPlainLiteralScalarRestriction_Pattern();
+	EReference getPlainLiteralScalarRestriction_Pattern();
 
 	/**
-	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction#getLangRange <em>Lang Range</em>}'.
+	 * Returns the meta object for the containment reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction#getLangRange <em>Lang Range</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Lang Range</em>'.
+	 * @return the meta object for the containment reference '<em>Lang Range</em>'.
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction#getLangRange()
 	 * @see #getPlainLiteralScalarRestriction()
 	 * @generated
 	 */
-	EAttribute getPlainLiteralScalarRestriction_LangRange();
+	EReference getPlainLiteralScalarRestriction_LangRange();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.StringScalarRestriction <em>String Scalar Restriction</em>}'.
@@ -9198,15 +9198,15 @@ public interface TerminologiesPackage extends EPackage {
 	EAttribute getStringScalarRestriction_MaxLength();
 
 	/**
-	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.terminologies.StringScalarRestriction#getPattern <em>Pattern</em>}'.
+	 * Returns the meta object for the containment reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.StringScalarRestriction#getPattern <em>Pattern</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Pattern</em>'.
+	 * @return the meta object for the containment reference '<em>Pattern</em>'.
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.StringScalarRestriction#getPattern()
 	 * @see #getStringScalarRestriction()
 	 * @generated
 	 */
-	EAttribute getStringScalarRestriction_Pattern();
+	EReference getStringScalarRestriction_Pattern();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.TimeScalarRestriction <em>Time Scalar Restriction</em>}'.
@@ -9219,48 +9219,48 @@ public interface TerminologiesPackage extends EPackage {
 	EClass getTimeScalarRestriction();
 
 	/**
-	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.terminologies.TimeScalarRestriction#getMinInclusive <em>Min Inclusive</em>}'.
+	 * Returns the meta object for the containment reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.TimeScalarRestriction#getMinInclusive <em>Min Inclusive</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Min Inclusive</em>'.
+	 * @return the meta object for the containment reference '<em>Min Inclusive</em>'.
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.TimeScalarRestriction#getMinInclusive()
 	 * @see #getTimeScalarRestriction()
 	 * @generated
 	 */
-	EAttribute getTimeScalarRestriction_MinInclusive();
+	EReference getTimeScalarRestriction_MinInclusive();
 
 	/**
-	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.terminologies.TimeScalarRestriction#getMaxInclusive <em>Max Inclusive</em>}'.
+	 * Returns the meta object for the containment reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.TimeScalarRestriction#getMaxInclusive <em>Max Inclusive</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Max Inclusive</em>'.
+	 * @return the meta object for the containment reference '<em>Max Inclusive</em>'.
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.TimeScalarRestriction#getMaxInclusive()
 	 * @see #getTimeScalarRestriction()
 	 * @generated
 	 */
-	EAttribute getTimeScalarRestriction_MaxInclusive();
+	EReference getTimeScalarRestriction_MaxInclusive();
 
 	/**
-	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.terminologies.TimeScalarRestriction#getMinExclusive <em>Min Exclusive</em>}'.
+	 * Returns the meta object for the containment reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.TimeScalarRestriction#getMinExclusive <em>Min Exclusive</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Min Exclusive</em>'.
+	 * @return the meta object for the containment reference '<em>Min Exclusive</em>'.
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.TimeScalarRestriction#getMinExclusive()
 	 * @see #getTimeScalarRestriction()
 	 * @generated
 	 */
-	EAttribute getTimeScalarRestriction_MinExclusive();
+	EReference getTimeScalarRestriction_MinExclusive();
 
 	/**
-	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.terminologies.TimeScalarRestriction#getMaxExclusive <em>Max Exclusive</em>}'.
+	 * Returns the meta object for the containment reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.TimeScalarRestriction#getMaxExclusive <em>Max Exclusive</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Max Exclusive</em>'.
+	 * @return the meta object for the containment reference '<em>Max Exclusive</em>'.
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.TimeScalarRestriction#getMaxExclusive()
 	 * @see #getTimeScalarRestriction()
 	 * @generated
 	 */
-	EAttribute getTimeScalarRestriction_MaxExclusive();
+	EReference getTimeScalarRestriction_MaxExclusive();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.SynonymScalarRestriction <em>Synonym Scalar Restriction</em>}'.
@@ -9304,15 +9304,15 @@ public interface TerminologiesPackage extends EPackage {
 	EReference getScalarOneOfLiteralAxiom_Axiom();
 
 	/**
-	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom#getValue <em>Value</em>}'.
+	 * Returns the meta object for the containment reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @return the meta object for the containment reference '<em>Value</em>'.
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom#getValue()
 	 * @see #getScalarOneOfLiteralAxiom()
 	 * @generated
 	 */
-	EAttribute getScalarOneOfLiteralAxiom_Value();
+	EReference getScalarOneOfLiteralAxiom_Value();
 
 	/**
 	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom#uuid() <em>Uuid</em>}' operation.
@@ -10508,12 +10508,12 @@ public interface TerminologiesPackage extends EPackage {
 		EClass ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM = eINSTANCE.getEntityScalarDataPropertyParticularRestrictionAxiom();
 
 		/**
-		 * The meta object literal for the '<em><b>Literal Value</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Literal Value</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__LITERAL_VALUE = eINSTANCE.getEntityScalarDataPropertyParticularRestrictionAxiom_LiteralValue();
+		EReference ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__LITERAL_VALUE = eINSTANCE.getEntityScalarDataPropertyParticularRestrictionAxiom_LiteralValue();
 
 		/**
 		 * The meta object literal for the '<em><b>Uuid</b></em>' operation.
@@ -10702,12 +10702,12 @@ public interface TerminologiesPackage extends EPackage {
 		EReference RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__SCALAR_DATA_PROPERTY = eINSTANCE.getRestrictionScalarDataPropertyValue_ScalarDataProperty();
 
 		/**
-		 * The meta object literal for the '<em><b>Scalar Property Value</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Scalar Property Value</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE = eINSTANCE.getRestrictionScalarDataPropertyValue_ScalarPropertyValue();
+		EReference RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE = eINSTANCE.getRestrictionScalarDataPropertyValue_ScalarPropertyValue();
 
 		/**
 		 * The meta object literal for the '<em><b>Terminology Box</b></em>' operation.
@@ -10820,12 +10820,12 @@ public interface TerminologiesPackage extends EPackage {
 		EAttribute IRI_SCALAR_RESTRICTION__MAX_LENGTH = eINSTANCE.getIRIScalarRestriction_MaxLength();
 
 		/**
-		 * The meta object literal for the '<em><b>Pattern</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Pattern</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute IRI_SCALAR_RESTRICTION__PATTERN = eINSTANCE.getIRIScalarRestriction_Pattern();
+		EReference IRI_SCALAR_RESTRICTION__PATTERN = eINSTANCE.getIRIScalarRestriction_Pattern();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.NumericScalarRestrictionImpl <em>Numeric Scalar Restriction</em>}' class.
@@ -10838,36 +10838,36 @@ public interface TerminologiesPackage extends EPackage {
 		EClass NUMERIC_SCALAR_RESTRICTION = eINSTANCE.getNumericScalarRestriction();
 
 		/**
-		 * The meta object literal for the '<em><b>Min Inclusive</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Min Inclusive</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute NUMERIC_SCALAR_RESTRICTION__MIN_INCLUSIVE = eINSTANCE.getNumericScalarRestriction_MinInclusive();
+		EReference NUMERIC_SCALAR_RESTRICTION__MIN_INCLUSIVE = eINSTANCE.getNumericScalarRestriction_MinInclusive();
 
 		/**
-		 * The meta object literal for the '<em><b>Max Inclusive</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Max Inclusive</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute NUMERIC_SCALAR_RESTRICTION__MAX_INCLUSIVE = eINSTANCE.getNumericScalarRestriction_MaxInclusive();
+		EReference NUMERIC_SCALAR_RESTRICTION__MAX_INCLUSIVE = eINSTANCE.getNumericScalarRestriction_MaxInclusive();
 
 		/**
-		 * The meta object literal for the '<em><b>Min Exclusive</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Min Exclusive</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute NUMERIC_SCALAR_RESTRICTION__MIN_EXCLUSIVE = eINSTANCE.getNumericScalarRestriction_MinExclusive();
+		EReference NUMERIC_SCALAR_RESTRICTION__MIN_EXCLUSIVE = eINSTANCE.getNumericScalarRestriction_MinExclusive();
 
 		/**
-		 * The meta object literal for the '<em><b>Max Exclusive</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Max Exclusive</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute NUMERIC_SCALAR_RESTRICTION__MAX_EXCLUSIVE = eINSTANCE.getNumericScalarRestriction_MaxExclusive();
+		EReference NUMERIC_SCALAR_RESTRICTION__MAX_EXCLUSIVE = eINSTANCE.getNumericScalarRestriction_MaxExclusive();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.PlainLiteralScalarRestrictionImpl <em>Plain Literal Scalar Restriction</em>}' class.
@@ -10904,20 +10904,20 @@ public interface TerminologiesPackage extends EPackage {
 		EAttribute PLAIN_LITERAL_SCALAR_RESTRICTION__MAX_LENGTH = eINSTANCE.getPlainLiteralScalarRestriction_MaxLength();
 
 		/**
-		 * The meta object literal for the '<em><b>Pattern</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Pattern</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PLAIN_LITERAL_SCALAR_RESTRICTION__PATTERN = eINSTANCE.getPlainLiteralScalarRestriction_Pattern();
+		EReference PLAIN_LITERAL_SCALAR_RESTRICTION__PATTERN = eINSTANCE.getPlainLiteralScalarRestriction_Pattern();
 
 		/**
-		 * The meta object literal for the '<em><b>Lang Range</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Lang Range</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PLAIN_LITERAL_SCALAR_RESTRICTION__LANG_RANGE = eINSTANCE.getPlainLiteralScalarRestriction_LangRange();
+		EReference PLAIN_LITERAL_SCALAR_RESTRICTION__LANG_RANGE = eINSTANCE.getPlainLiteralScalarRestriction_LangRange();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.StringScalarRestrictionImpl <em>String Scalar Restriction</em>}' class.
@@ -10954,12 +10954,12 @@ public interface TerminologiesPackage extends EPackage {
 		EAttribute STRING_SCALAR_RESTRICTION__MAX_LENGTH = eINSTANCE.getStringScalarRestriction_MaxLength();
 
 		/**
-		 * The meta object literal for the '<em><b>Pattern</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Pattern</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute STRING_SCALAR_RESTRICTION__PATTERN = eINSTANCE.getStringScalarRestriction_Pattern();
+		EReference STRING_SCALAR_RESTRICTION__PATTERN = eINSTANCE.getStringScalarRestriction_Pattern();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.TimeScalarRestrictionImpl <em>Time Scalar Restriction</em>}' class.
@@ -10972,36 +10972,36 @@ public interface TerminologiesPackage extends EPackage {
 		EClass TIME_SCALAR_RESTRICTION = eINSTANCE.getTimeScalarRestriction();
 
 		/**
-		 * The meta object literal for the '<em><b>Min Inclusive</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Min Inclusive</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute TIME_SCALAR_RESTRICTION__MIN_INCLUSIVE = eINSTANCE.getTimeScalarRestriction_MinInclusive();
+		EReference TIME_SCALAR_RESTRICTION__MIN_INCLUSIVE = eINSTANCE.getTimeScalarRestriction_MinInclusive();
 
 		/**
-		 * The meta object literal for the '<em><b>Max Inclusive</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Max Inclusive</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute TIME_SCALAR_RESTRICTION__MAX_INCLUSIVE = eINSTANCE.getTimeScalarRestriction_MaxInclusive();
+		EReference TIME_SCALAR_RESTRICTION__MAX_INCLUSIVE = eINSTANCE.getTimeScalarRestriction_MaxInclusive();
 
 		/**
-		 * The meta object literal for the '<em><b>Min Exclusive</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Min Exclusive</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute TIME_SCALAR_RESTRICTION__MIN_EXCLUSIVE = eINSTANCE.getTimeScalarRestriction_MinExclusive();
+		EReference TIME_SCALAR_RESTRICTION__MIN_EXCLUSIVE = eINSTANCE.getTimeScalarRestriction_MinExclusive();
 
 		/**
-		 * The meta object literal for the '<em><b>Max Exclusive</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Max Exclusive</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute TIME_SCALAR_RESTRICTION__MAX_EXCLUSIVE = eINSTANCE.getTimeScalarRestriction_MaxExclusive();
+		EReference TIME_SCALAR_RESTRICTION__MAX_EXCLUSIVE = eINSTANCE.getTimeScalarRestriction_MaxExclusive();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.SynonymScalarRestrictionImpl <em>Synonym Scalar Restriction</em>}' class.
@@ -11042,12 +11042,12 @@ public interface TerminologiesPackage extends EPackage {
 		EReference SCALAR_ONE_OF_LITERAL_AXIOM__AXIOM = eINSTANCE.getScalarOneOfLiteralAxiom_Axiom();
 
 		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SCALAR_ONE_OF_LITERAL_AXIOM__VALUE = eINSTANCE.getScalarOneOfLiteralAxiom_Value();
+		EReference SCALAR_ONE_OF_LITERAL_AXIOM__VALUE = eINSTANCE.getScalarOneOfLiteralAxiom_Value();
 
 		/**
 		 * The meta object literal for the '<em><b>Uuid</b></em>' operation.

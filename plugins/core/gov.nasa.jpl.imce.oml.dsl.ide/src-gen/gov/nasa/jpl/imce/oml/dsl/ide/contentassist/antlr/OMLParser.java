@@ -73,7 +73,8 @@ public class OMLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getStructuredDataPropertyTupleAccess().getAlternatives_4(), "rule__StructuredDataPropertyTuple__Alternatives_4");
 					put(grammarAccess.getReferenceAccess().getAlternatives(), "rule__Reference__Alternatives");
 					put(grammarAccess.getQNAMEAccess().getAlternatives(), "rule__QNAME__Alternatives");
-					put(grammarAccess.getValueAccess().getAlternatives(), "rule__Value__Alternatives");
+					put(grammarAccess.getLiteralValueAccess().getAlternatives(), "rule__LiteralValue__Alternatives");
+					put(grammarAccess.getLiteralNumberAccess().getValueAlternatives_1_0(), "rule__LiteralNumber__ValueAlternatives_1_0");
 					put(grammarAccess.getTerminologyKindAccess().getAlternatives(), "rule__TerminologyKind__Alternatives");
 					put(grammarAccess.getDescriptionKindAccess().getAlternatives(), "rule__DescriptionKind__Alternatives");
 					put(grammarAccess.getExtentAccess().getGroup(), "rule__Extent__Group__0");
@@ -155,6 +156,13 @@ public class OMLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getReifiedRelationshipInstanceDomainAccess().getGroup(), "rule__ReifiedRelationshipInstanceDomain__Group__0");
 					put(grammarAccess.getReifiedRelationshipInstanceRangeAccess().getGroup(), "rule__ReifiedRelationshipInstanceRange__Group__0");
 					put(grammarAccess.getUnreifiedRelationshipInstanceTupleAccess().getGroup(), "rule__UnreifiedRelationshipInstanceTuple__Group__0");
+					put(grammarAccess.getLiteralPatternAccess().getGroup(), "rule__LiteralPattern__Group__0");
+					put(grammarAccess.getLiteralDateTimeAccess().getGroup(), "rule__LiteralDateTime__Group__0");
+					put(grammarAccess.getLiteralLanguageTagAccess().getGroup(), "rule__LiteralLanguageTag__Group__0");
+					put(grammarAccess.getLiteralStringAccess().getGroup(), "rule__LiteralString__Group__0");
+					put(grammarAccess.getLiteralUUIDAccess().getGroup(), "rule__LiteralUUID__Group__0");
+					put(grammarAccess.getLiteralURIAccess().getGroup(), "rule__LiteralURI__Group__0");
+					put(grammarAccess.getLiteralNumberAccess().getGroup(), "rule__LiteralNumber__Group__0");
 					put(grammarAccess.getExtentAccess().getAnnotationPropertiesAssignment_1_0(), "rule__Extent__AnnotationPropertiesAssignment_1_0");
 					put(grammarAccess.getExtentAccess().getModulesAssignment_1_1(), "rule__Extent__ModulesAssignment_1_1");
 					put(grammarAccess.getAnnotationPropertyAccess().getAbbrevIRIAssignment_1(), "rule__AnnotationProperty__AbbrevIRIAssignment_1");
@@ -385,6 +393,13 @@ public class OMLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getUnreifiedRelationshipInstanceTupleAccess().getUnreifiedRelationshipAssignment_4(), "rule__UnreifiedRelationshipInstanceTuple__UnreifiedRelationshipAssignment_4");
 					put(grammarAccess.getUnreifiedRelationshipInstanceTupleAccess().getDomainAssignment_6(), "rule__UnreifiedRelationshipInstanceTuple__DomainAssignment_6");
 					put(grammarAccess.getUnreifiedRelationshipInstanceTupleAccess().getRangeAssignment_8(), "rule__UnreifiedRelationshipInstanceTuple__RangeAssignment_8");
+					put(grammarAccess.getLiteralPatternAccess().getValueAssignment_1(), "rule__LiteralPattern__ValueAssignment_1");
+					put(grammarAccess.getLiteralDateTimeAccess().getValueAssignment_1(), "rule__LiteralDateTime__ValueAssignment_1");
+					put(grammarAccess.getLiteralLanguageTagAccess().getValueAssignment_1(), "rule__LiteralLanguageTag__ValueAssignment_1");
+					put(grammarAccess.getLiteralStringAccess().getValueAssignment_1(), "rule__LiteralString__ValueAssignment_1");
+					put(grammarAccess.getLiteralUUIDAccess().getValueAssignment_1(), "rule__LiteralUUID__ValueAssignment_1");
+					put(grammarAccess.getLiteralURIAccess().getValueAssignment_1(), "rule__LiteralURI__ValueAssignment_1");
+					put(grammarAccess.getLiteralNumberAccess().getValueAssignment_1(), "rule__LiteralNumber__ValueAssignment_1");
 					put(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), "rule__ReifiedRelationship__UnorderedGroup_4");
 					put(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), "rule__UnreifiedRelationship__UnorderedGroup_4");
 					put(grammarAccess.getBinaryScalarRestrictionAccess().getUnorderedGroup_4(), "rule__BinaryScalarRestriction__UnorderedGroup_4");

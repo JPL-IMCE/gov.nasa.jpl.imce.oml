@@ -39,6 +39,7 @@ import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions
 
 import gov.nasa.jpl.imce.oml.model.common.Collection
 import gov.nasa.jpl.imce.oml.model.common.CopyConstructor
+import gov.nasa.jpl.imce.oml.model.common.LiteralDateTime
 import gov.nasa.jpl.imce.oml.model.common.DerivedUUID
 import gov.nasa.jpl.imce.oml.model.common.Element
 import gov.nasa.jpl.imce.oml.model.common.Factory
@@ -47,10 +48,8 @@ import gov.nasa.jpl.imce.oml.model.common.Glossary
 import gov.nasa.jpl.imce.oml.model.common.ImplicitExtent
 import gov.nasa.jpl.imce.oml.model.common.IRI
 import gov.nasa.jpl.imce.oml.model.common.IRIReference
-import gov.nasa.jpl.imce.oml.model.common.LangRange
-import gov.nasa.jpl.imce.oml.model.common.LexicalNumber
-import gov.nasa.jpl.imce.oml.model.common.LexicalTime
-import gov.nasa.jpl.imce.oml.model.common.LexicalValue
+import gov.nasa.jpl.imce.oml.model.common.LiteralLanguageTag
+import gov.nasa.jpl.imce.oml.model.common.LiteralValue
 import gov.nasa.jpl.imce.oml.model.common.LocalName
 import gov.nasa.jpl.imce.oml.model.common.Module
 import gov.nasa.jpl.imce.oml.model.common.ModuleEdge
@@ -58,9 +57,10 @@ import gov.nasa.jpl.imce.oml.model.common.ModuleElement
 import gov.nasa.jpl.imce.oml.model.common.NamespaceUUID
 import gov.nasa.jpl.imce.oml.model.common.NotFunctionalAPI
 import gov.nasa.jpl.imce.oml.model.common.NotSchema
+import gov.nasa.jpl.imce.oml.model.common.LiteralNumber
 import gov.nasa.jpl.imce.oml.model.common.Override
 import gov.nasa.jpl.imce.oml.model.common.OverrideVal
-import gov.nasa.jpl.imce.oml.model.common.Pattern
+import gov.nasa.jpl.imce.oml.model.common.LiteralPattern
 import gov.nasa.jpl.imce.oml.model.common.Resource
 import gov.nasa.jpl.imce.oml.model.common.Scala
 import gov.nasa.jpl.imce.oml.model.common.UUID
@@ -903,7 +903,7 @@ extends EntityScalarDataPropertyRestrictionAxiom {
 class EntityScalarDataPropertyParticularRestrictionAxiom
 extends EntityScalarDataPropertyRestrictionAxiom {
 	
-	LexicalValue[1] literalValue
+	contains LiteralValue[1] literalValue
   	
 	@NotFunctionalAPI
 	@NotSchema
@@ -1044,7 +1044,7 @@ class RestrictionScalarDataPropertyValue extends Element {
 	container RestrictionStructuredDataPropertyContext[1] structuredDataPropertyContext opposite scalarDataPropertyRestrictions
 	
 	refers DataRelationshipToScalar[1] scalarDataProperty
-	LexicalValue[1] scalarPropertyValue
+	contains LiteralValue[1] scalarPropertyValue
 	
 	@Scala(code="extent.restrictionStructuredDataPropertyContextOfRestrictionScalarDataPropertyValue.get(this).flatMap(_.terminologyBox())")
 	@ImplicitExtent
@@ -1106,15 +1106,15 @@ class BinaryScalarRestriction extends RestrictedDataRange {
 	/*
 	 * The length of the binary data
 	 */
-	int[?] length
+	String[?] length
 	/*
 	 * The minimum length of the binary data
 	 */
-	int[?] minLength
+	String[?] minLength
 	/*
 	 * The maximum length of the binary data
 	 */
-	int[?] maxLength
+	String[?] maxLength
 }
 
 /*
@@ -1136,19 +1136,19 @@ class IRIScalarRestriction extends RestrictedDataRange {
 	/*
 	 * The length of the IRI
 	 */
-	int[?] length
+	String[?] length
 	/*
 	 * The minimum length of the IRI
 	 */
-	int[?] minLength
+	String[?] minLength
 	/*
 	 * The maximum length of the IRI
 	 */
-	int[?] maxLength
+	String[?] maxLength
 	/*
 	 * The pattern of the IRI (https://www.w3.org/TR/xmlschema-2/#regexs)
 	 */
-	Pattern[?] pattern
+	contains LiteralPattern[?] pattern
 }
 
 /*
@@ -1187,19 +1187,19 @@ class NumericScalarRestriction extends RestrictedDataRange {
 	/*
 	 * The inclusive minimum value in the range
 	 */
-	LexicalNumber[?] minInclusive
+	contains LiteralNumber[?] minInclusive
 	/*
 	 * The inclusive maximum value in the range
 	 */
-	LexicalNumber[?] maxInclusive
+	contains LiteralNumber[?] maxInclusive
 	/*
 	 * The exclusive minimum value in the range
 	 */
-	LexicalNumber[?] minExclusive
+	contains LiteralNumber[?] minExclusive
 	/*
 	 * The exclusive maximum value in the range
 	 */
-	LexicalNumber[?] maxExclusive
+	contains LiteralNumber[?] maxExclusive
 }
 
 /*
@@ -1222,23 +1222,23 @@ class PlainLiteralScalarRestriction extends RestrictedDataRange {
 	/*
 	 * The length of the plain literal
 	 */
-	int[?] length
+	String[?] length
 	/*
 	 * The minimum length of the plain literal
 	 */
-	int[?] minLength
+	String[?] minLength
 	/*
 	 * The maximum length of the plain literal
 	 */
-	int[?] maxLength
+	String[?] maxLength
 	/*
 	 * The pattern of the plain literal (https://www.w3.org/TR/xmlschema-2/#regexs)
 	 */
-	Pattern[?] pattern
+	contains LiteralPattern[?] pattern
 	/*
 	 * The language of the plain literal (http://www.rfc-editor.org/rfc/bcp/bcp47.txt)
 	 */
-	LangRange[?] langRange
+	contains LiteralLanguageTag[?] langRange
 }
 
 /*
@@ -1266,19 +1266,19 @@ class StringScalarRestriction extends RestrictedDataRange {
 	/*
 	 * The length of the string
 	 */
-	int[?] length
+	String[?] length
 	/*
 	 * The minimum length of the string
 	 */
-	int[?] minLength
+	String[?] minLength
 	/*
 	 * The maximum length of the string
 	 */
-	int[?] maxLength
+	String[?] maxLength
 	/*
 	 * The pattern of the string (https://www.w3.org/TR/xmlschema-2/#regexs)
 	 */
-	Pattern[?] pattern
+	contains LiteralPattern[?] pattern
 }
 
 /*
@@ -1301,19 +1301,19 @@ class TimeScalarRestriction extends RestrictedDataRange {
 	/*
 	 * The inclusive minimum value in the range
 	 */
-	LexicalTime[?] minInclusive
+	contains LiteralDateTime[?] minInclusive
 	/*
 	 * The inclusive maximum value in the range
 	 */
-	LexicalTime[?] maxInclusive
+	contains LiteralDateTime[?] maxInclusive
 	/*
 	 * The exclusive minimum value in the range
 	 */
-	LexicalTime[?] minExclusive
+	contains LiteralDateTime[?] minExclusive
 	/*
 	 * The exclusive maximum value in the range
 	 */
-	LexicalTime[?] maxExclusive
+	contains LiteralDateTime[?] maxExclusive
 }
 
 /*
@@ -1342,7 +1342,7 @@ class ScalarOneOfLiteralAxiom extends TermAxiom {
 	/*
 	 * The value of the literal from the restrictedScalar datatype
 	 */
-	LexicalValue[1] value
+	contains LiteralValue[1] value
 	
 	@NotFunctionalAPI
 	@NotSchema

@@ -84,6 +84,38 @@ public class CommonAdapterFactory extends AdapterFactoryImpl {
 	protected CommonSwitch<Adapter> modelSwitch =
 		new CommonSwitch<Adapter>() {
 			@Override
+			public Adapter caseLiteralPattern(LiteralPattern object) {
+				return createLiteralPatternAdapter();
+			}
+			@Override
+			public Adapter caseLiteralValue(LiteralValue object) {
+				return createLiteralValueAdapter();
+			}
+			@Override
+			public Adapter caseLiteralDateTime(LiteralDateTime object) {
+				return createLiteralDateTimeAdapter();
+			}
+			@Override
+			public Adapter caseLiteralLanguageTag(LiteralLanguageTag object) {
+				return createLiteralLanguageTagAdapter();
+			}
+			@Override
+			public Adapter caseLiteralString(LiteralString object) {
+				return createLiteralStringAdapter();
+			}
+			@Override
+			public Adapter caseLiteralUUID(LiteralUUID object) {
+				return createLiteralUUIDAdapter();
+			}
+			@Override
+			public Adapter caseLiteralURI(LiteralURI object) {
+				return createLiteralURIAdapter();
+			}
+			@Override
+			public Adapter caseLiteralNumber(LiteralNumber object) {
+				return createLiteralNumberAdapter();
+			}
+			@Override
 			public Adapter caseAnnotationPropertyValue(AnnotationPropertyValue object) {
 				return createAnnotationPropertyValueAdapter();
 			}
@@ -134,6 +166,118 @@ public class CommonAdapterFactory extends AdapterFactoryImpl {
 		return modelSwitch.doSwitch((EObject)target);
 	}
 
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.common.LiteralPattern <em>Literal Pattern</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralPattern
+	 * @generated
+	 */
+	public Adapter createLiteralPatternAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.common.LiteralValue <em>Literal Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralValue
+	 * @generated
+	 */
+	public Adapter createLiteralValueAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.common.LiteralDateTime <em>Literal Date Time</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralDateTime
+	 * @generated
+	 */
+	public Adapter createLiteralDateTimeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.common.LiteralLanguageTag <em>Literal Language Tag</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralLanguageTag
+	 * @generated
+	 */
+	public Adapter createLiteralLanguageTagAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.common.LiteralString <em>Literal String</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralString
+	 * @generated
+	 */
+	public Adapter createLiteralStringAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.common.LiteralUUID <em>Literal UUID</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralUUID
+	 * @generated
+	 */
+	public Adapter createLiteralUUIDAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.common.LiteralURI <em>Literal URI</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralURI
+	 * @generated
+	 */
+	public Adapter createLiteralURIAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.common.LiteralNumber <em>Literal Number</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralNumber
+	 * @generated
+	 */
+	public Adapter createLiteralNumberAdapter() {
+		return null;
+	}
 
 	/**
 	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue <em>Annotation Property Value</em>}'.

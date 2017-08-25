@@ -18,6 +18,8 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies.impl;
 
+import gov.nasa.jpl.imce.oml.model.common.LiteralValue;
+
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
 
 import gov.nasa.jpl.imce.oml.model.terminologies.Entity;
@@ -31,10 +33,12 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.UUID;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
@@ -55,24 +59,14 @@ import org.eclipse.xtext.xbase.lib.Pair;
  */
 public class EntityScalarDataPropertyParticularRestrictionAxiomImpl extends EntityScalarDataPropertyRestrictionAxiomImpl implements EntityScalarDataPropertyParticularRestrictionAxiom {
 	/**
-	 * The default value of the '{@link #getLiteralValue() <em>Literal Value</em>}' attribute.
+	 * The cached value of the '{@link #getLiteralValue() <em>Literal Value</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getLiteralValue()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String LITERAL_VALUE_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getLiteralValue() <em>Literal Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getLiteralValue()
-	 * @generated
-	 * @ordered
-	 */
-	protected String literalValue = LITERAL_VALUE_EDEFAULT;
+	protected LiteralValue literalValue;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -98,7 +92,7 @@ public class EntityScalarDataPropertyParticularRestrictionAxiomImpl extends Enti
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getLiteralValue() {
+	public LiteralValue getLiteralValue() {
 		return literalValue;
 	}
 
@@ -107,11 +101,33 @@ public class EntityScalarDataPropertyParticularRestrictionAxiomImpl extends Enti
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setLiteralValue(String newLiteralValue) {
-		String oldLiteralValue = literalValue;
+	public NotificationChain basicSetLiteralValue(LiteralValue newLiteralValue, NotificationChain msgs) {
+		LiteralValue oldLiteralValue = literalValue;
 		literalValue = newLiteralValue;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__LITERAL_VALUE, oldLiteralValue, literalValue));
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TerminologiesPackage.ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__LITERAL_VALUE, oldLiteralValue, newLiteralValue);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setLiteralValue(LiteralValue newLiteralValue) {
+		if (newLiteralValue != literalValue) {
+			NotificationChain msgs = null;
+			if (literalValue != null)
+				msgs = ((InternalEObject)literalValue).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TerminologiesPackage.ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__LITERAL_VALUE, null, msgs);
+			if (newLiteralValue != null)
+				msgs = ((InternalEObject)newLiteralValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TerminologiesPackage.ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__LITERAL_VALUE, null, msgs);
+			msgs = basicSetLiteralValue(newLiteralValue, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__LITERAL_VALUE, newLiteralValue, newLiteralValue));
 	}
 
 	/**
@@ -161,6 +177,20 @@ public class EntityScalarDataPropertyParticularRestrictionAxiomImpl extends Enti
 	 * @generated
 	 */
 	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case TerminologiesPackage.ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__LITERAL_VALUE:
+				return basicSetLiteralValue(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case TerminologiesPackage.ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__LITERAL_VALUE:
@@ -178,7 +208,7 @@ public class EntityScalarDataPropertyParticularRestrictionAxiomImpl extends Enti
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case TerminologiesPackage.ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__LITERAL_VALUE:
-				setLiteralValue((String)newValue);
+				setLiteralValue((LiteralValue)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -193,7 +223,7 @@ public class EntityScalarDataPropertyParticularRestrictionAxiomImpl extends Enti
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case TerminologiesPackage.ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__LITERAL_VALUE:
-				setLiteralValue(LITERAL_VALUE_EDEFAULT);
+				setLiteralValue((LiteralValue)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -208,7 +238,7 @@ public class EntityScalarDataPropertyParticularRestrictionAxiomImpl extends Enti
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case TerminologiesPackage.ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__LITERAL_VALUE:
-				return LITERAL_VALUE_EDEFAULT == null ? literalValue != null : !LITERAL_VALUE_EDEFAULT.equals(literalValue);
+				return literalValue != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -225,22 +255,6 @@ public class EntityScalarDataPropertyParticularRestrictionAxiomImpl extends Enti
 				return uuid();
 		}
 		return super.eInvoke(operationID, arguments);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (literalValue: ");
-		result.append(literalValue);
-		result.append(')');
-		return result.toString();
 	}
 
 } //EntityScalarDataPropertyParticularRestrictionAxiomImpl

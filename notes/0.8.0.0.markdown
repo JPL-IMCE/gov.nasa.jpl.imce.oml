@@ -6,6 +6,9 @@ gov.nasa.jpl.imce.oml.tycho 0.8.0.0 resolves major problems found in 0.7.1.2
 
 - [#71 Serialization of SingletonInstanceScalarDataPropertyValue not as expected](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/71)
 
+  OML abstract syntax includes several LiteralValue types that encapsulate different categories of values that can be parsed
+  via Xtext datatypes and context-free terminals; see: https://www.eclipse.org/Xtext/documentation/301_grammarlanguage.html#datatype-rules
+  
 - [#72 Handling of Annotations for Items within Graphs](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/72)
 
   The OML abstract syntax and OML concrete syntax had to be aligned with respect to the representation of annotations.
