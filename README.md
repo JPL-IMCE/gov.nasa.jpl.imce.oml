@@ -104,3 +104,27 @@ In `~/.m2/settings.xml` include, replacing `{BINTRAY USERNAME}` and `{BINTRAY AP
 </settings>
 ```
 
+## Eclipse/Tycho Notes
+
+### Problems with uploading P2 update sites with bintray's "explode=1" option
+
+See [releng/gov.nasa.jpl.imce.oml.updatesite/README.md](gov.nasa.jpl.imce.oml.updatesite)
+
+### Problems with Tycho's verbose log output
+
+Eclipse/Tycho produces too much output:
+
+```
+The log length has exceeded the limit of 4 MB (this usually means that the test suite is raising the same exception over and over).
+The job has been terminated
+```
+(see https://travis-ci.org/JPL-IMCE/gov.nasa.jpl.imce.oml/builds/268822997#L3010)
+
+By default, Eclipse/Tycho logs at INFO level; it is surprisingly very difficult to log at a different level, e.g, WARN:
+https://stackoverflow.com/questions/4782089/how-to-change-maven-logging-level-to-display-only-warning-and-errors
+
+For Travis-CI, the brute-force solution seems to be the simplest solution for now:
+https://stackoverflow.com/a/15317762/1009693
+
+The Eclipse/Tycho needs to be replaced with a build technology that is easier to configure; e.g. Gradle or SBT.
+
