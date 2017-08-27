@@ -2,7 +2,7 @@
 <feature
       id="gov.nasa.jpl.imce.oml.core.feature"
       label="%featureName"
-      version="0.8.0.qualifier"
+      version="0.8.0.0-M16"
       provider-name="%featureProvider">
 
    <description url="https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.core/blob/master/gov.nasa.jpl.imce.oml.feature/README.md">
