@@ -128,3 +128,16 @@ https://stackoverflow.com/a/15317762/1009693
 
 The Eclipse/Tycho needs to be replaced with a build technology that is easier to configure; e.g. Gradle or SBT.
 
+If this happens, get the "Raw log" from travis: https://api.travis-ci.org/jobs/<number>/log.txt?deansi=true
+
+This will show all output lines, even if there are special characters to erase them.
+For example, during deployment, there are lots of progress lines like this:
+
+```
+Progress (1): 29/659 kB
+Progress (1): 31/659 kB
+Progress (1): 33/659 kB
+Progress (1): 35/659 kB
+```
+
+Filtering these lines is essential to avoid the 4Mb output limit.

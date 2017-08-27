@@ -4,4 +4,4 @@ services:
   - docker
   
 script:
-- docker run --rm -v $(pwd):/root/sources -w /root/sources -e TRAVIS_TAG="${TRAVIS_TAG}" -e BINTRAY_USER="${BINTRAY_USER}" -e BINTRAY_APIKEY="${BINTRAY_APIKEY}" maven:3.5-jdk-8 ./scripts/travis.sh | egrep -v "(^\[INFO\]|^\[DEBUG\]|^Downloading:|^Uploading:|^Progress)"
+- docker run --rm -v $(pwd):/root/sources -w /root/sources -e TRAVIS_TAG="${TRAVIS_TAG}" -e BINTRAY_USER="${BINTRAY_USER}" -e BINTRAY_APIKEY="${BINTRAY_APIKEY}" maven:3.5-jdk-8 ./scripts/travis.sh | awk 'BEGIN {flag=0}/(Down|Up)loading: /{flag+=1;next}/(Down|Up)loaded: /{flag-=1;if(flag>0)print}{if(flag==0)print}'
