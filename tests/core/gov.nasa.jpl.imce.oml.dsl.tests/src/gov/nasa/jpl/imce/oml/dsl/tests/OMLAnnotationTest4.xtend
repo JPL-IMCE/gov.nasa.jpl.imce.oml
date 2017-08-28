@@ -41,7 +41,7 @@ import static org.junit.Assert.*
 
 @RunWith(XtextRunner)
 @InjectWith(OMLInjectorProvider)
-class OMLAnnotationTest3 {
+class OMLAnnotationTest4 {
 
 	@Inject
 	Provider<XtextResourceSet> resourceSetProvider
@@ -54,7 +54,7 @@ class OMLAnnotationTest3 {
 	def void test() {
 
 		val rs = resourceSetProvider.get
-		val r = rs.createResource(URI.createFileURI("file:OMLAnnoationTest3.oml"))
+		val r = rs.createResource(URI.createFileURI("file:OMLAnnoationTest4.oml"))
 
 		val Extent e = commonF.createExtent()
 		r.getContents.add(e)
@@ -62,25 +62,34 @@ class OMLAnnotationTest3 {
 		val AnnotationProperty ap1 = commonF.createAnnotationProperty
 		ap1.extent = e
 		ap1.abbrevIRI = "test:doc1"
-		ap1.iri = "http://www.example.org/OMLAnnotationTest3#doc1"
+		ap1.iri = "http://www.example.org/OMLAnnotationTest4#doc1"
 
 		val AnnotationProperty ap2 = commonF.createAnnotationProperty
 		ap2.extent = e
 		ap2.abbrevIRI = "test:doc2"
-		ap2.iri = "http://www.example.org/OMLAnnotationTest3#doc2"
+		ap2.iri = "http://www.example.org/OMLAnnotationTest4#doc2"
 
 		val TerminologyGraph g = graphsF.createTerminologyGraph()
 		e.getModules.add(g)
-		g.setIri("http://www.example.org/OMLAnnotationTest3")
+		g.setIri("http://www.example.org/OMLAnnotationTest4")
 		addAnnotation(g, ap1, "Un graphe...")
 		addAnnotation(g, ap2, "A graph...")
 
-		val Concept c = terminologiesF.createConcept
-		c.tbox = g
-		c.name = "Box"
-		addAnnotation(c, ap1, "Une boite...")
-		addAnnotation(c, ap2, "A box...")
+		val Concept c1 = terminologiesF.createConcept
+		c1.tbox = g
+		c1.name = "Box1"
+		addAnnotation(c1, ap1, "12341234-1234-1234-1234-123412341234")
 
+		val Concept c2 = terminologiesF.createConcept
+		c2.tbox = g
+		c2.name = "Box2"
+		addAnnotation(c2, ap1, "http://example.org")
+
+		val _string_ = terminologiesF.createScalar
+		_string_.tbox = g
+		_string_.name = "String"
+		addAnnotation(_string_, ap1, "java.lang.String")
+		
 		val ByteArrayOutputStream bos = new ByteArrayOutputStream()
 		val Builder builder = SaveOptions.newBuilder()
 		builder.format()
@@ -89,17 +98,22 @@ class OMLAnnotationTest3 {
 		val String text = bos.toString
 		
 		val String expected = '''
-			annotationProperty test:doc1=<http://www.example.org/OMLAnnotationTest3#doc1>
+			annotationProperty test:doc1=<http://www.example.org/OMLAnnotationTest4#doc1>
 			
-			annotationProperty test:doc2=<http://www.example.org/OMLAnnotationTest3#doc2>
+			annotationProperty test:doc2=<http://www.example.org/OMLAnnotationTest4#doc2>
 			
 			@test:doc1="Un graphe..."
 			@test:doc2="A graph..."
-			open terminology <http://www.example.org/OMLAnnotationTest3> {
+			open terminology <http://www.example.org/OMLAnnotationTest4> {
 			
-				@test:doc1="Une boite..."
-				@test:doc2="A box..."
-				concept Box
+				@test:doc1="12341234-1234-1234-1234-123412341234"
+				concept Box1
+			
+				@test:doc1="http://example.org"
+				concept Box2
+			
+				@test:doc1="java.lang.String"
+				scalar String
 			
 			}
 		'''

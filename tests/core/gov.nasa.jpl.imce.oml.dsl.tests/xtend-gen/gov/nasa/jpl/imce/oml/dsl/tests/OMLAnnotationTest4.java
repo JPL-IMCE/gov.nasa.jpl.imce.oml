@@ -27,6 +27,7 @@ import gov.nasa.jpl.imce.oml.model.common.Extent;
 import gov.nasa.jpl.imce.oml.model.graphs.GraphsFactory;
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyGraph;
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
+import gov.nasa.jpl.imce.oml.model.terminologies.Scalar;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesFactory;
 import java.io.ByteArrayOutputStream;
 import org.eclipse.emf.common.util.EList;
@@ -45,7 +46,7 @@ import org.junit.runner.RunWith;
 @RunWith(XtextRunner.class)
 @InjectWith(OMLInjectorProvider.class)
 @SuppressWarnings("all")
-public class OMLAnnotationTest3 {
+public class OMLAnnotationTest4 {
   @Inject
   private Provider<XtextResourceSet> resourceSetProvider;
   
@@ -59,27 +60,34 @@ public class OMLAnnotationTest3 {
   public void test() {
     try {
       final XtextResourceSet rs = this.resourceSetProvider.get();
-      final Resource r = rs.createResource(URI.createFileURI("file:OMLAnnoationTest3.oml"));
+      final Resource r = rs.createResource(URI.createFileURI("file:OMLAnnoationTest4.oml"));
       final Extent e = this.commonF.createExtent();
       r.getContents().add(e);
       final AnnotationProperty ap1 = this.commonF.createAnnotationProperty();
       ap1.setExtent(e);
       ap1.setAbbrevIRI("test:doc1");
-      ap1.setIri("http://www.example.org/OMLAnnotationTest3#doc1");
+      ap1.setIri("http://www.example.org/OMLAnnotationTest4#doc1");
       final AnnotationProperty ap2 = this.commonF.createAnnotationProperty();
       ap2.setExtent(e);
       ap2.setAbbrevIRI("test:doc2");
-      ap2.setIri("http://www.example.org/OMLAnnotationTest3#doc2");
+      ap2.setIri("http://www.example.org/OMLAnnotationTest4#doc2");
       final TerminologyGraph g = this.graphsF.createTerminologyGraph();
       e.getModules().add(g);
-      g.setIri("http://www.example.org/OMLAnnotationTest3");
+      g.setIri("http://www.example.org/OMLAnnotationTest4");
       this.addAnnotation(g, ap1, "Un graphe...");
       this.addAnnotation(g, ap2, "A graph...");
-      final Concept c = this.terminologiesF.createConcept();
-      c.setTbox(g);
-      c.setName("Box");
-      this.addAnnotation(c, ap1, "Une boite...");
-      this.addAnnotation(c, ap2, "A box...");
+      final Concept c1 = this.terminologiesF.createConcept();
+      c1.setTbox(g);
+      c1.setName("Box1");
+      this.addAnnotation(c1, ap1, "12341234-1234-1234-1234-123412341234");
+      final Concept c2 = this.terminologiesF.createConcept();
+      c2.setTbox(g);
+      c2.setName("Box2");
+      this.addAnnotation(c2, ap1, "http://example.org");
+      final Scalar _string_ = this.terminologiesF.createScalar();
+      _string_.setTbox(g);
+      _string_.setName("String");
+      this.addAnnotation(_string_, ap1, "java.lang.String");
       final ByteArrayOutputStream bos = new ByteArrayOutputStream();
       final SaveOptions.Builder builder = SaveOptions.newBuilder();
       builder.format();
@@ -87,27 +95,38 @@ public class OMLAnnotationTest3 {
       r.save(bos, s.toOptionsMap());
       final String text = bos.toString();
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("annotationProperty test:doc1=<http://www.example.org/OMLAnnotationTest3#doc1>");
+      _builder.append("annotationProperty test:doc1=<http://www.example.org/OMLAnnotationTest4#doc1>");
       _builder.newLine();
       _builder.newLine();
-      _builder.append("annotationProperty test:doc2=<http://www.example.org/OMLAnnotationTest3#doc2>");
+      _builder.append("annotationProperty test:doc2=<http://www.example.org/OMLAnnotationTest4#doc2>");
       _builder.newLine();
       _builder.newLine();
       _builder.append("@test:doc1=\"Un graphe...\"");
       _builder.newLine();
       _builder.append("@test:doc2=\"A graph...\"");
       _builder.newLine();
-      _builder.append("open terminology <http://www.example.org/OMLAnnotationTest3> {");
+      _builder.append("open terminology <http://www.example.org/OMLAnnotationTest4> {");
       _builder.newLine();
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("@test:doc1=\"Une boite...\"");
+      _builder.append("@test:doc1=\"12341234-1234-1234-1234-123412341234\"");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("@test:doc2=\"A box...\"");
+      _builder.append("concept Box1");
+      _builder.newLine();
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("concept Box");
+      _builder.append("@test:doc1=\"http://example.org\"");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("concept Box2");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("@test:doc1=\"java.lang.String\"");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("scalar String");
       _builder.newLine();
       _builder.newLine();
       _builder.append("}");
