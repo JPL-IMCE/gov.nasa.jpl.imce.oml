@@ -455,7 +455,7 @@
         </subItemMappings>
       </subItemMappings>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Concept Usage Viewer" initialisation="true" domainClass="terminologies.Concept">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Concept Usage Viewer" domainClass="terminologies.Concept">
       <metamodel href="http://imce.jpl.nasa.gov/oml/common#/"/>
       <metamodel href="http://imce.jpl.nasa.gov/oml/terminologies#/"/>
       <metamodel href="http://imce.jpl.nasa.gov/oml/bundles#/"/>
@@ -569,7 +569,7 @@
         </containerMappings>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Aspect/Concept Class Diagram" initialisation="true" domainClass="terminologies.UnaryTermKind">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Aspect/Concept Class Diagram" domainClass="terminologies.UnaryTermKind">
       <defaultLayer name="Default">
         <edgeMappings name="Aspect Specialization Axiom" semanticCandidatesExpression="aql:diagram.getVisualAspectAxioms()" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Aspect%2FConcept%20Class%20Diagram']/@defaultLayer/@containerMappings[name='Aspect'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Aspect%2FConcept%20Class%20Diagram']/@defaultLayer/@containerMappings[name='Concept']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Aspect%2FConcept%20Class%20Diagram']/@defaultLayer/@containerMappings[name='Aspect']" targetFinderExpression="feature:superAspect" sourceFinderExpression="feature:subEntity" domainClass="terminologies.AspectSpecializationAxiom" useDomainElement="true">
           <style targetArrow="InputClosedArrow" sizeComputationExpression="2">
