@@ -29,6 +29,7 @@ import gov.nasa.jpl.imce.oml.model.terminologies.EntityRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.SpecializationAxiom;
+import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBoxStatement;
 import java.util.AbstractMap;
 import java.util.ArrayList;

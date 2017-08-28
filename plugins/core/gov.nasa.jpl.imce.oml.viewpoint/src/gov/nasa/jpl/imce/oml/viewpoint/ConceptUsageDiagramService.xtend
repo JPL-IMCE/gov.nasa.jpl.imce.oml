@@ -19,6 +19,7 @@
 package gov.nasa.jpl.imce.oml.viewpoint
 
 import gov.nasa.jpl.imce.oml.model.terminologies.Aspect
+import gov.nasa.jpl.imce.oml.model.terminologies.AspectSpecializationAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept
 import gov.nasa.jpl.imce.oml.model.terminologies.Entity
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialRestrictionAxiom
@@ -27,6 +28,7 @@ import gov.nasa.jpl.imce.oml.model.terminologies.EntityRestrictionAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalRestrictionAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship
 import gov.nasa.jpl.imce.oml.model.terminologies.SpecializationAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBoxStatement
 import java.util.AbstractMap.SimpleEntry
 import java.util.ArrayList
@@ -40,9 +42,6 @@ import java.util.Queue
 import java.util.Set
 import org.eclipse.sirius.diagram.DDiagram
 import org.eclipse.sirius.diagram.DSemanticDiagram
-import gov.nasa.jpl.imce.oml.model.terminologies.AspectSpecializationAxiom
-import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataProperty
-import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataProperty
 
 /*
  * Used to query for visual elements in the 'Concept Usage Diagram'
