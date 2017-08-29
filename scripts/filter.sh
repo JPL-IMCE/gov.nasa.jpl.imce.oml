@@ -2,6 +2,7 @@
 
 awk '
 BEGIN {flag=0}
+/\[INFO\]\ Fetching\ /{next}
 /\[apply\]\ (\*|\{|\})/{next}
 /\[apply\]\ > (Host|Authorization|User-Agent|Accept|Content-Length|Expect):/{next}
 /\[apply\]\ < (Server|Date|Content-Type|Transfer-Enc.*|Connection):/{next}
