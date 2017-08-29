@@ -19,7 +19,6 @@
 package gov.nasa.jpl.imce.oml.model.terminologies.provider;
 
 
-import gov.nasa.jpl.imce.oml.model.common.CommonFactory;
 import gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage;
 
@@ -28,8 +27,6 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
@@ -66,6 +63,8 @@ public class PlainLiteralScalarRestrictionItemProvider extends RestrictedDataRan
 			addLengthPropertyDescriptor(object);
 			addMinLengthPropertyDescriptor(object);
 			addMaxLengthPropertyDescriptor(object);
+			addPatternPropertyDescriptor(object);
+			addLangRangePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -137,34 +136,47 @@ public class PlainLiteralScalarRestrictionItemProvider extends RestrictedDataRan
 	}
 
 	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * This adds a property descriptor for the Pattern feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(TerminologiesPackage.Literals.PLAIN_LITERAL_SCALAR_RESTRICTION__PATTERN);
-			childrenFeatures.add(TerminologiesPackage.Literals.PLAIN_LITERAL_SCALAR_RESTRICTION__LANG_RANGE);
-		}
-		return childrenFeatures;
+	protected void addPatternPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_PlainLiteralScalarRestriction_pattern_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_PlainLiteralScalarRestriction_pattern_feature", "_UI_PlainLiteralScalarRestriction_type"),
+				 TerminologiesPackage.Literals.PLAIN_LITERAL_SCALAR_RESTRICTION__PATTERN,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
+	 * This adds a property descriptor for the Lang Range feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
-
-		return super.getChildFeature(object, child);
+	protected void addLangRangePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_PlainLiteralScalarRestriction_langRange_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_PlainLiteralScalarRestriction_langRange_feature", "_UI_PlainLiteralScalarRestriction_type"),
+				 TerminologiesPackage.Literals.PLAIN_LITERAL_SCALAR_RESTRICTION__LANG_RANGE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -208,11 +220,9 @@ public class PlainLiteralScalarRestrictionItemProvider extends RestrictedDataRan
 			case TerminologiesPackage.PLAIN_LITERAL_SCALAR_RESTRICTION__LENGTH:
 			case TerminologiesPackage.PLAIN_LITERAL_SCALAR_RESTRICTION__MIN_LENGTH:
 			case TerminologiesPackage.PLAIN_LITERAL_SCALAR_RESTRICTION__MAX_LENGTH:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
 			case TerminologiesPackage.PLAIN_LITERAL_SCALAR_RESTRICTION__PATTERN:
 			case TerminologiesPackage.PLAIN_LITERAL_SCALAR_RESTRICTION__LANG_RANGE:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
 		super.notifyChanged(notification);
@@ -228,16 +238,6 @@ public class PlainLiteralScalarRestrictionItemProvider extends RestrictedDataRan
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(TerminologiesPackage.Literals.PLAIN_LITERAL_SCALAR_RESTRICTION__PATTERN,
-				 CommonFactory.eINSTANCE.createLiteralPattern()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(TerminologiesPackage.Literals.PLAIN_LITERAL_SCALAR_RESTRICTION__LANG_RANGE,
-				 CommonFactory.eINSTANCE.createLiteralLanguageTag()));
 	}
 
 }

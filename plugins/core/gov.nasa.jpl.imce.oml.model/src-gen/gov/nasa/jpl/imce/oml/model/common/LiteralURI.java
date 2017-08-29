@@ -18,23 +18,18 @@
  */
 package gov.nasa.jpl.imce.oml.model.common;
 
+import gov.nasa.jpl.imce.oml.model.datatypes.URIValue;
 
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Literal URI</b></em>'.
  * <!-- end-user-doc -->
  *
- * <!-- begin-model-doc -->
- * https://www.w3.org/TR/xmlschema11-2/#anyURI
- * http://www.ietf.org/rfc/rfc3986.txt
- * http://www.ietf.org/rfc/rfc3987.txt
- * <!-- end-model-doc -->
- *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link gov.nasa.jpl.imce.oml.model.common.LiteralURI#getValue <em>Value</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.common.LiteralURI#getUri <em>Uri</em>}</li>
  * </ul>
  *
  * @see gov.nasa.jpl.imce.oml.model.common.CommonPackage#getLiteralURI()
@@ -43,29 +38,29 @@ package gov.nasa.jpl.imce.oml.model.common;
  */
 public interface LiteralURI extends LiteralValue {
 	/**
-	 * Returns the value of the '<em><b>Value</b></em>' attribute.
+	 * Returns the value of the '<em><b>Uri</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Value</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Uri</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Value</em>' attribute.
-	 * @see #setValue(String)
-	 * @see gov.nasa.jpl.imce.oml.model.common.CommonPackage#getLiteralURI_Value()
-	 * @model unique="false" required="true"
+	 * @return the value of the '<em>Uri</em>' attribute.
+	 * @see #setUri(URIValue)
+	 * @see gov.nasa.jpl.imce.oml.model.common.CommonPackage#getLiteralURI_Uri()
+	 * @model unique="false" dataType="gov.nasa.jpl.imce.oml.model.common.URIDataType" required="true"
 	 * @generated
 	 */
-	String getValue();
+	URIValue getUri();
 
 	/**
-	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.common.LiteralURI#getValue <em>Value</em>}' attribute.
+	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.common.LiteralURI#getUri <em>Uri</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Value</em>' attribute.
-	 * @see #getValue()
+	 * @param value the new value of the '<em>Uri</em>' attribute.
+	 * @see #getUri()
 	 * @generated
 	 */
-	void setValue(String value);
+	void setUri(URIValue value);
 
 } // LiteralURI

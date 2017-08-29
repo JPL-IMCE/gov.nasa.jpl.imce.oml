@@ -80,6 +80,30 @@ class OMLLinkingService extends DefaultLinkingService {
 
 			val Catalog catalog = OMLExtensions.findCatalogIfExists(context.eResource)
 			if (null === catalog) {
+				
+				val refType = ref.EType
+				switch refType {
+					case BundlesPackage.eINSTANCE.bundle: {
+						val bundle = rs.resources.map[contents.filter(Extent).map[modules.filter(Bundle)].flatten].
+							flatten.findFirst[b|b.iri() == refIRI]
+						if (null !== bundle) return Collections.singletonList(bundle)
+					}
+					case TerminologiesPackage.eINSTANCE.terminologyBox: {
+						val tbox = rs.resources.map [
+							contents.filter(Extent).map[modules.filter(TerminologyBox)].flatten
+						].flatten.findFirst[tbox|tbox.iri() == refIRI]
+						if (null !== tbox) return Collections.singletonList(tbox)
+					}
+					case DescriptionsPackage.eINSTANCE.descriptionBox: {
+						val dbox = rs.resources.map [
+							contents.filter(Extent).map[modules.filter(DescriptionBox)].flatten
+						].flatten.findFirst[dbox|dbox.iri() == refIRI]
+						if (null !== dbox) return Collections.singletonList(dbox)
+					}
+					default:
+						{}
+				}
+				
 				throw new IllegalNodeException(node,
 					"IRI Cross-reference resolution for " + crossRefString + " requires an " +
 						OMLExtensions.OML_CATALOG_XML + " file; but no such catalog file was found!")

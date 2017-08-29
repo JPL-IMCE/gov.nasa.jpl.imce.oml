@@ -39,7 +39,7 @@ AnnotationProperty returns AnnotationProperty:
 
 AnnotationPropertyValue returns AnnotationPropertyValue:
 	'@' property=[AnnotationProperty|ABBREV_IRI]
-	'=' value=STRING;
+	'=' value=STRING_VALUE;
 	
 Module returns Module:
 	TerminologyBox | DescriptionBox;
@@ -399,9 +399,9 @@ BinaryScalarRestriction returns BinaryScalarRestriction:
 	( annotations+=AnnotationPropertyValue )*
 	'binaryScalarRestriction' name=ID
 	'{'
-		( ('length' length=DIGITS)? &
-		  ('minLength' minLength=DIGITS)? &
-		  ('maxLength' maxLength=DIGITS)? )
+		( ('length' length=PositiveIntegerLiteral)? &
+		  ('minLength' minLength=PositiveIntegerLiteral)? &
+		  ('maxLength' maxLength=PositiveIntegerLiteral)? )
 		'restrictedRange' restrictedRange=[DataRange|Reference]
 	'}';
 
@@ -409,10 +409,10 @@ IRIScalarRestriction returns IRIScalarRestriction:
 	( annotations+=AnnotationPropertyValue )*
 	'iriScalarRestriction' name=ID
 	'{'
-		( ('length' length=DIGITS)? &
-		  ('minLength' minLength=DIGITS)? &
-		  ('maxLength' maxLength=DIGITS)? &
-		  ('pattern' pattern=LiteralPattern)? )
+		( ('length' length=PositiveIntegerLiteral)? &
+		  ('minLength' minLength=PositiveIntegerLiteral)? &
+		  ('maxLength' maxLength=PositiveIntegerLiteral)? &
+		  ('pattern' pattern=PATTERN)? )
 		'restrictedRange' restrictedRange=[DataRange|Reference]
 	'}';
 
@@ -431,11 +431,11 @@ PlainLiteralScalarRestriction returns PlainLiteralScalarRestriction:
 	( annotations+=AnnotationPropertyValue )*
 	'plainLiteralScalarRestriction' name=ID
 	'{'
-		( ('length' length=DIGITS)? &
-		  ('minLength' minLength=DIGITS)? &
-		  ('maxLength' maxLength=DIGITS)? &
-		  ('pattern' pattern=LiteralPattern)? &
-		  ('langRange' langRange=LiteralLanguageTag)? )
+		( ('length' length=PositiveIntegerLiteral)? &
+		  ('minLength' minLength=PositiveIntegerLiteral)? &
+		  ('maxLength' maxLength=PositiveIntegerLiteral)? &
+		  ('pattern' pattern=PATTERN)? &
+		  ('langRange' langRange=LANG_TAG)? )
 		'restrictedRange' restrictedRange=[DataRange|Reference]
 	'}';
 
@@ -456,10 +456,10 @@ StringScalarRestriction returns StringScalarRestriction:
 	( annotations+=AnnotationPropertyValue )*
 	'stringScalarRestriction' name=ID
 	'{'
-		( ('length' length=DIGITS)? &
-		  ('minLength' minLength=DIGITS)? &
-		  ('maxLength' maxLength=DIGITS)? &
-		  ('pattern' pattern=LiteralPattern)? )
+		( ('length' length=PositiveIntegerLiteral)? &
+		  ('minLength' minLength=PositiveIntegerLiteral)? &
+		  ('maxLength' maxLength=PositiveIntegerLiteral)? &
+		  ('pattern' pattern=PATTERN)? )
 		'restrictedRange' restrictedRange=[DataRange|Reference]
 	'}';
 
@@ -567,205 +567,182 @@ UnreifiedRelationshipInstanceTuple returns UnreifiedRelationshipInstanceTuple:
 
 //----------------------------
 
-Reference:
-	IRI | QNAME;
+Reference:												IRI | QNAME;
 
-ExternalReference:
-	IRI;
+ExternalReference:										IRI;
 	
-QNAME:
-	ABBREV_IRI | ValidID;
+QNAME:													ABBREV_IRI | ValidID;
 
-ValidID:
-	ID;
+ValidID:												ID;
 	
 //----------------------------
 
-LiteralPattern returns LiteralPattern:
-	{LiteralPattern} value=STRING
-;
+LiteralValue returns LiteralValue:						LiteralDateTime | LiteralString | LiteralUUID | LiteralURI | LiteralNumber;
 
-LiteralValue returns LiteralValue:
-	LiteralDateTime | LiteralLanguageTag | LiteralString | LiteralUUID | LiteralURI | LiteralNumber
-;
+LiteralDateTime returns LiteralDateTime: 				{LiteralDateTime} dateTime=DATE_TIME;
 
-LiteralDateTime returns LiteralDateTime:
-	{LiteralDateTime} value=DATE_TIME
-;
+LiteralString returns LiteralString:					{LiteralString} string=STRING_VALUE;
 
-LiteralLanguageTag returns LiteralLanguageTag:
-	{LiteralLanguageTag} value=LANG_TAG
-;
+UUIDDataType returns UUIDDataType:						UUID;
 
-LiteralString returns LiteralString:
-	{LiteralString} value=STRING
-;
+LiteralUUID returns LiteralUUID:						{LiteralUUID} uuid=UUIDDataType;
 
-LiteralUUID returns LiteralUUID:
-	{LiteralUUID} value=UUID
-;
+URIDataType returns URIDataType:						URI;
 
-LiteralURI returns LiteralURI:
-	{LiteralURI} value=URI
-;
+LiteralURI returns LiteralURI:							{LiteralURI} uri=URIDataType;
 
-LiteralNumber returns LiteralNumber:
-	{LiteralNumber} value=(REAL_VALUE | RATIONAL | FLOAT | DECIMAL)
-;
+LiteralNumber returns LiteralNumber:					LiteralReal | LiteralRational | LiteralFloat | LiteralDecimal;
+
+LiteralReal returns LiteralReal:						{LiteralReal} real=REAL;
+
+LiteralRational returns LiteralRational:				{LiteralRational} rational=RationalDataType;
+
+RationalDataType returns RationalDataType:				RATIONAL;
+
+terminal RATIONAL returns RationalDataType:				'-'? DIGIT+ '/' DIGIT+;
+
+LiteralFloat returns LiteralFloat:						{LiteralFloat} float=FLOAT;
+
+LiteralDecimal returns LiteralDecimal:					{LiteralDecimal} decimal=DECIMAL;
+
+PositiveIntegerLiteral returns PositiveIntegerLiteral: 	DIGITS;
 
 //----------------------------
 // https://www.w3.org/TR/xmlschema11-2/#rf-lexicalMappings-datetime
 
-terminal fragment DIGIT: 			'0'..'9';
+terminal fragment DIGIT: 								'0'..'9';
 
-terminal fragment DIGIT19:			'1'..'9';
+terminal fragment DIGIT19:								'1'..'9';
 
-terminal fragment DIGIT02:			'0'..'2';
+terminal fragment DIGIT02:								'0'..'2';
 
-terminal fragment DIGIT03:			'0'..'3';
+terminal fragment DIGIT03:								'0'..'3';
 
-terminal fragment DIGIT05:			'0'..'5';
+terminal fragment DIGIT05:								'0'..'5';
 
-terminal fragment YEAR_FRAG:		'-'? ( (DIGIT19 DIGIT DIGIT DIGIT+) | ('0' DIGIT DIGIT DIGIT) );
+terminal fragment YEAR_FRAG:							'-'? ( (DIGIT19 DIGIT DIGIT DIGIT+) | ('0' DIGIT DIGIT DIGIT) );
 
-terminal fragment MONTH_FRAG:		('0' DIGIT19) | ('1' DIGIT02);
+terminal fragment MONTH_FRAG:							('0' DIGIT19) | ('1' DIGIT02);
 
-terminal fragment DAY_FRAG:			('0' DIGIT19) | (('1'|'2') DIGIT) | ('3' ('0'|'1'));
+terminal fragment DAY_FRAG:								('0' DIGIT19) | (('1'|'2') DIGIT) | ('3' ('0'|'1'));
 
-terminal fragment HOUR_FRAG:		(('0'|'1')DIGIT) | ('2'DIGIT03);
+terminal fragment HOUR_FRAG:							(('0'|'1')DIGIT) | ('2'DIGIT03);
 
-terminal fragment MINUTE_FRAG:		DIGIT05 DIGIT;
+terminal fragment MINUTE_FRAG:							DIGIT05 DIGIT;
 
-terminal fragment SECOND_FRAG:		DIGIT05 DIGIT ('.' DIGIT+)?;
+terminal fragment SECOND_FRAG:							DIGIT05 DIGIT ('.' DIGIT+)?;
 
-terminal fragment END_OF_DAY_FRAG:	'24:00:00' ('.' DIGIT+)?;
+terminal fragment END_OF_DAY_FRAG:						'24:00:00' ('.' DIGIT+)?;
 
-terminal fragment TIMEZONE_FRAG:	'Z' | ('+'|'-') (('0' DIGIT | '1' DIGIT03) ':' MINUTE_FRAG | '14:00');
+terminal fragment TIMEZONE_FRAG:						'Z' | ('+'|'-') (('0' DIGIT | '1' DIGIT03) ':' MINUTE_FRAG | '14:00');
 
 //----------------------------
 // http://www.ietf.org/rfc/rfc3987.txt
 
-terminal fragment ALPHA:			('a'..'z'|'A'..'Z');
+terminal fragment ALPHA:								('a'..'z'|'A'..'Z');
 
-terminal fragment SCHEME:			ALPHA ( ALPHA | DIGIT | '+' | '-' | '.' )*;
+terminal fragment SCHEME:								ALPHA ( ALPHA | DIGIT | '+' | '-' | '.' )*;
 
-terminal fragment PCT_ENCODED:		'%' HEX_DIGIT HEX_DIGIT;
+terminal fragment PCT_ENCODED:							'%' HEX_DIGIT HEX_DIGIT;
 
-terminal fragment UNRESERVED:		ALPHA | DIGIT | '-' | '.' | '_' | '~';
+terminal fragment UNRESERVED:							ALPHA | DIGIT | '-' | '.' | '_' | '~';
 
-terminal fragment DIGIT04:			'0'..'4';
+terminal fragment DIGIT04:								'0'..'4';
 
-terminal fragment DEC_OCTET:		( DIGIT | '1' DIGIT | '2' DIGIT04 DIGIT | '25' DIGIT05);
+terminal fragment DEC_OCTET:							( DIGIT | '1' DIGIT | '2' DIGIT04 DIGIT | '25' DIGIT05);
 
-terminal fragment IPV4_ADDRESS:		DEC_OCTET '.' DEC_OCTET '.' DEC_OCTET '.' DEC_OCTET;
+terminal fragment IPV4_ADDRESS:							DEC_OCTET '.' DEC_OCTET '.' DEC_OCTET '.' DEC_OCTET;
 
-terminal fragment IUSER_PART:		( UNRESERVED | PCT_ENCODED )+;
+terminal fragment IUSER_PART:							( UNRESERVED | PCT_ENCODED )+;
 
-terminal fragment IUSER_INFO:		IUSER_PART (':' IUSER_PART)*;
+terminal fragment IUSER_INFO:							IUSER_PART (':' IUSER_PART)*;
 
-terminal fragment IUNRESERVED_PART:	ALPHA | DIGIT | '-' | '_' | '~';
+terminal fragment IUNRESERVED_PART:						ALPHA | DIGIT | '-' | '_' | '~';
 
-terminal fragment IUNRESERVED:		ALPHA IUNRESERVED_PART? ( '.' IUNRESERVED_PART )*;
+terminal fragment IUNRESERVED:							ALPHA IUNRESERVED_PART? ( '.' IUNRESERVED_PART )*;
 
-terminal fragment IHOST:			IPV4_ADDRESS | IUNRESERVED;
+terminal fragment IHOST:								IPV4_ADDRESS | IUNRESERVED;
 
-terminal fragment PORT:				DIGIT+;
+terminal fragment PORT:									DIGIT+;
 
-terminal fragment IAUTHORITY:		( IUSER_INFO '@' )? IHOST ( ':' PORT )?;
+terminal fragment IAUTHORITY:							( IUSER_INFO '@' )? IHOST ( ':' PORT )?;
 
-terminal fragment IPCHAR:			IUNRESERVED_PART | PCT_ENCODED;
+terminal fragment IPCHAR:								IUNRESERVED_PART | PCT_ENCODED;
 
-terminal fragment ISEGMENT:			IPCHAR+;
+terminal fragment ISEGMENT:								IPCHAR+;
 
-terminal fragment IPATH:			ISEGMENT ('/' ISEGMENT)*;
+terminal fragment IPATH:								ISEGMENT ('/' ISEGMENT)*;
 
-terminal fragment IHIER_PART:		'//' IAUTHORITY IPATH?;
+terminal fragment IHIER_PART:							'//' IAUTHORITY IPATH?;
 
-terminal fragment IFRAGMENT:		ISEGMENT;
+terminal fragment IFRAGMENT:							ISEGMENT;
 
-terminal URI_VALUE:					SCHEME ':' IHIER_PART ( '#' IFRAGMENT )?;
-
-URI returns ecore::EString:			URI_VALUE;
+terminal URI returns URIDataType:						SCHEME ':' IHIER_PART ( '#' IFRAGMENT )?;
 
 //----------------------------
 
-terminal CONSTANT_NAME:				ALPHA ( ALPHA | DIGIT )*;
+terminal CONSTANT_NAME:									ALPHA ( ALPHA | DIGIT )*;
 
-terminal REAL_VALUE:				'{' ('-' | '+')? CONSTANT_NAME '}';
+terminal REAL returns RealDataType:						'{' ('-' | '+')? CONSTANT_NAME '}';
 
-REAL returns ecore::EString:		REAL_VALUE;
+terminal PATTERN returns LiteralPattern:				'/' ((! '/') | '\\/')* '/';
 
-@Override
-terminal STRING: 
-	'"' ( '\\' . /* ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') */ | !('\\'|'"') )* '"'? |
-	"'" ( '\\' . /* ('b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\') */ | !('\\'|"'") )* "'"?;
+terminal STRING_VALUE returns StringDataType: 			'"' ( '\\' . ('b'|'t'|'n'|'f'|'r'|'"'|"'"|'\\')| !('\\'|'"') )* '"';
 
+terminal IRI:											'<' (!'>')* '>';
 
-terminal IRI:							'<' (!'>')* '>';
+terminal fragment LETTER:								'a'..'z'|'A'..'Z';
 
-terminal fragment LETTER:				'a'..'z'|'A'..'Z';
+terminal fragment LETTER_DIGIT:							LETTER | DIGIT;
 
-terminal fragment LETTER_DIGIT:			LETTER | DIGIT;
+terminal fragment LETTER_DIGIT_PREFIX:					LETTER_DIGIT | '_';
 
-terminal fragment LETTER_DIGIT_PREFIX:	LETTER_DIGIT | '_';
+terminal fragment LETTER_DIGIT_SUFFIX:					LETTER_DIGIT | '_' | '-' | '.';
 
-terminal fragment LETTER_DIGIT_SUFFIX:	LETTER_DIGIT | '_' | '-' | '.';
-
-terminal ABBREV_IRI:					LETTER_DIGIT_PREFIX LETTER_DIGIT_SUFFIX* ':' LETTER_DIGIT_PREFIX LETTER_DIGIT_SUFFIX*;
+terminal ABBREV_IRI:									LETTER_DIGIT_PREFIX LETTER_DIGIT_SUFFIX* ':' LETTER_DIGIT_PREFIX LETTER_DIGIT_SUFFIX*;
 	
-terminal fragment ID_PREFIX: 			LETTER|'_';
+terminal fragment ID_PREFIX: 							LETTER|'_';
 
-terminal ID:							'^'? ID_PREFIX LETTER_DIGIT_SUFFIX*;
+terminal ID:											'^'? ID_PREFIX LETTER_DIGIT_SUFFIX*;
 
 //----------------------------
 // https://www.w3.org/TR/xmlschema11-2/#language
 
-terminal LANGUAGE_TAG:				'lang=' LETTER+('-'LETTER_DIGIT+)*;
-
-LANG_TAG returns ecore::EString:	LANGUAGE_TAG;
+terminal LANG_TAG returns LanguageTagDataType:			'lang=' LETTER+('-'LETTER_DIGIT+)*;
     
-terminal DATETIME: 					YEAR_FRAG '-' MONTH_FRAG '-' DAY_FRAG 'T' ( (HOUR_FRAG ':' MINUTE_FRAG ':' SECOND_FRAG) | END_OF_DAY_FRAG ) TIMEZONE_FRAG?;
+terminal DATE_TIME returns DateTimeDataType: 			'dateTime=' YEAR_FRAG '-' MONTH_FRAG '-' DAY_FRAG 'T' ( (HOUR_FRAG ':' MINUTE_FRAG ':' SECOND_FRAG) | END_OF_DAY_FRAG ) TIMEZONE_FRAG?;
 
-DATE_TIME returns ecore::EString:	DATETIME;	
-    
-terminal UUID:						HEX_8DIGITS '-' HEX_4DIGITS '-' HEX_4DIGITS '-' HEX_4DIGITS '-' HEX_12DIGITS;
+terminal UUID returns UUIDDataType:						'uuid=' HEX_8DIGITS '-' HEX_4DIGITS '-' HEX_4DIGITS '-' HEX_4DIGITS '-' HEX_12DIGITS;
 
-terminal fragment HEX_12DIGITS:		HEX_8DIGITS HEX_4DIGITS;
+terminal fragment HEX_12DIGITS:							HEX_8DIGITS HEX_4DIGITS;
 
-terminal fragment HEX_8DIGITS:		HEX_4DIGITS HEX_4DIGITS;
+terminal fragment HEX_8DIGITS:							HEX_4DIGITS HEX_4DIGITS;
 
-terminal fragment HEX_4DIGITS:		HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT;
+terminal fragment HEX_4DIGITS:							HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT;
 
-terminal fragment HEX_LETTER:		'a'..'f' | 'A'..'F';
+terminal fragment HEX_LETTER:							'a'..'f' | 'A'..'F';
 
-terminal fragment HEX_DIGIT:		DIGIT | HEX_LETTER;
+terminal fragment HEX_DIGIT:							DIGIT | HEX_LETTER;
 
-terminal fragment HEX:
-	('0x'|'0X') (HEX_DIGIT|'_')+ 
-	('#' (('b'|'B')('i'|'I') | ('l'|'L')))?;
+terminal fragment HEX:									('0x'|'0X') (HEX_DIGIT|'_')+ ('#' (('b'|'B')('i'|'I') | ('l'|'L')))?;
 	
-terminal DIGITS:					DIGIT+;
-
-terminal RATIONAL:					('-'|'+')? DIGITS '/' DIGITS;
+terminal DIGITS returns PositiveIntegerLiteral:			DIGIT+;
 
 terminal fragment DEC:
 	'-'?
-	DIGIT+ 
+	DIGIT+
 	(('e'|'E') ('+'|'-')? DIGIT+)? 
 	(('b'|'B')('i'|'I'|'d'|'D') | ('l'|'L'|'d'|'D'|'f'|'F'))?;
 
-terminal DECIMAL: DEC | HEX;
+terminal DECIMAL returns DecimalDataType: 				DEC | HEX;
 
-terminal FLOAT:
+terminal FLOAT returns FloatDataType:
 	'-'?
 	(DIGIT+ '.' DIGIT+)
     (('e' | 'E') ('+' | '-')? DIGIT+)?;
     
-terminal ML_COMMENT  : 
- 	'/*' -> '*/';
+terminal ML_COMMENT: 									'/*' -> '*/';
  
-terminal SL_COMMENT : 
- 	'//' !('\n'|'\r')* ('\r'? '\n')?;
+terminal SL_COMMENT:									'//' !('\n'|'\r')* ('\r'? '\n')?;
  
-terminal WS  : 
- 	(' '|'\t'|'\r'|'\n')+;
+terminal WS: 											(' '|'\t'|'\r'|'\n')+;

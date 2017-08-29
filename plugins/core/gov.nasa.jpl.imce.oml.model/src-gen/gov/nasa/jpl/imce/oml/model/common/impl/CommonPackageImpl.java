@@ -25,9 +25,11 @@ import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
 import gov.nasa.jpl.imce.oml.model.common.Element;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
 import gov.nasa.jpl.imce.oml.model.common.LiteralDateTime;
-import gov.nasa.jpl.imce.oml.model.common.LiteralLanguageTag;
+import gov.nasa.jpl.imce.oml.model.common.LiteralDecimal;
+import gov.nasa.jpl.imce.oml.model.common.LiteralFloat;
 import gov.nasa.jpl.imce.oml.model.common.LiteralNumber;
-import gov.nasa.jpl.imce.oml.model.common.LiteralPattern;
+import gov.nasa.jpl.imce.oml.model.common.LiteralRational;
+import gov.nasa.jpl.imce.oml.model.common.LiteralReal;
 import gov.nasa.jpl.imce.oml.model.common.LiteralString;
 import gov.nasa.jpl.imce.oml.model.common.LiteralURI;
 import gov.nasa.jpl.imce.oml.model.common.LiteralUUID;
@@ -36,6 +38,18 @@ import gov.nasa.jpl.imce.oml.model.common.Module;
 import gov.nasa.jpl.imce.oml.model.common.ModuleEdge;
 import gov.nasa.jpl.imce.oml.model.common.ModuleElement;
 import gov.nasa.jpl.imce.oml.model.common.Resource;
+
+import gov.nasa.jpl.imce.oml.model.datatypes.DateTimeValue;
+import gov.nasa.jpl.imce.oml.model.datatypes.DecimalValue;
+import gov.nasa.jpl.imce.oml.model.datatypes.FloatValue;
+import gov.nasa.jpl.imce.oml.model.datatypes.LanguageTagValue;
+import gov.nasa.jpl.imce.oml.model.datatypes.PatternValue;
+import gov.nasa.jpl.imce.oml.model.datatypes.PositiveIntegerValue;
+import gov.nasa.jpl.imce.oml.model.datatypes.RationalValue;
+import gov.nasa.jpl.imce.oml.model.datatypes.RealValue;
+import gov.nasa.jpl.imce.oml.model.datatypes.StringValue;
+import gov.nasa.jpl.imce.oml.model.datatypes.URIValue;
+import gov.nasa.jpl.imce.oml.model.datatypes.UUIDValue;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -59,13 +73,6 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass literalPatternEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass literalValueEClass = null;
 
 	/**
@@ -74,13 +81,6 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	 * @generated
 	 */
 	private EClass literalDateTimeEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass literalLanguageTagEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -109,6 +109,34 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	 * @generated
 	 */
 	private EClass literalNumberEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass literalRealEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass literalRationalEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass literalFloatEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass literalDecimalEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -202,6 +230,83 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	private EDataType namespacePrefixEDataType = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType positiveIntegerLiteralEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType literalPatternEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType realDataTypeEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType rationalDataTypeEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType floatDataTypeEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType decimalDataTypeEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType dateTimeDataTypeEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType languageTagDataTypeEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType stringDataTypeEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType uuidDataTypeEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType uriDataTypeEDataType = null;
+
+	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -270,24 +375,6 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getLiteralPattern() {
-		return literalPatternEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getLiteralPattern_Value() {
-		return (EAttribute)literalPatternEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getLiteralValue() {
 		return literalValueEClass;
 	}
@@ -306,26 +393,8 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLiteralDateTime_Value() {
+	public EAttribute getLiteralDateTime_DateTime() {
 		return (EAttribute)literalDateTimeEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getLiteralLanguageTag() {
-		return literalLanguageTagEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getLiteralLanguageTag_Value() {
-		return (EAttribute)literalLanguageTagEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -342,7 +411,7 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLiteralString_Value() {
+	public EAttribute getLiteralString_String() {
 		return (EAttribute)literalStringEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -360,7 +429,7 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLiteralUUID_Value() {
+	public EAttribute getLiteralUUID_Uuid() {
 		return (EAttribute)literalUUIDEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -378,7 +447,7 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLiteralURI_Value() {
+	public EAttribute getLiteralURI_Uri() {
 		return (EAttribute)literalURIEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -396,8 +465,71 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLiteralNumber_Value() {
-		return (EAttribute)literalNumberEClass.getEStructuralFeatures().get(0);
+	public EClass getLiteralReal() {
+		return literalRealEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLiteralReal_Real() {
+		return (EAttribute)literalRealEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLiteralRational() {
+		return literalRationalEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLiteralRational_Rational() {
+		return (EAttribute)literalRationalEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLiteralFloat() {
+		return literalFloatEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLiteralFloat_Float() {
+		return (EAttribute)literalFloatEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLiteralDecimal() {
+		return literalDecimalEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLiteralDecimal_Decimal() {
+		return (EAttribute)literalDecimalEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -801,6 +933,105 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EDataType getPositiveIntegerLiteral() {
+		return positiveIntegerLiteralEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getLiteralPattern() {
+		return literalPatternEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getRealDataType() {
+		return realDataTypeEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getRationalDataType() {
+		return rationalDataTypeEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getFloatDataType() {
+		return floatDataTypeEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getDecimalDataType() {
+		return decimalDataTypeEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getDateTimeDataType() {
+		return dateTimeDataTypeEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getLanguageTagDataType() {
+		return languageTagDataTypeEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getStringDataType() {
+		return stringDataTypeEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getUUIDDataType() {
+		return uuidDataTypeEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getURIDataType() {
+		return uriDataTypeEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public CommonFactory getCommonFactory() {
 		return (CommonFactory)getEFactoryInstance();
 	}
@@ -824,28 +1055,33 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		isCreated = true;
 
 		// Create classes and their features
-		literalPatternEClass = createEClass(LITERAL_PATTERN);
-		createEAttribute(literalPatternEClass, LITERAL_PATTERN__VALUE);
-
 		literalValueEClass = createEClass(LITERAL_VALUE);
 
 		literalDateTimeEClass = createEClass(LITERAL_DATE_TIME);
-		createEAttribute(literalDateTimeEClass, LITERAL_DATE_TIME__VALUE);
-
-		literalLanguageTagEClass = createEClass(LITERAL_LANGUAGE_TAG);
-		createEAttribute(literalLanguageTagEClass, LITERAL_LANGUAGE_TAG__VALUE);
+		createEAttribute(literalDateTimeEClass, LITERAL_DATE_TIME__DATE_TIME);
 
 		literalStringEClass = createEClass(LITERAL_STRING);
-		createEAttribute(literalStringEClass, LITERAL_STRING__VALUE);
+		createEAttribute(literalStringEClass, LITERAL_STRING__STRING);
 
 		literalUUIDEClass = createEClass(LITERAL_UUID);
-		createEAttribute(literalUUIDEClass, LITERAL_UUID__VALUE);
+		createEAttribute(literalUUIDEClass, LITERAL_UUID__UUID);
 
 		literalURIEClass = createEClass(LITERAL_URI);
-		createEAttribute(literalURIEClass, LITERAL_URI__VALUE);
+		createEAttribute(literalURIEClass, LITERAL_URI__URI);
 
 		literalNumberEClass = createEClass(LITERAL_NUMBER);
-		createEAttribute(literalNumberEClass, LITERAL_NUMBER__VALUE);
+
+		literalRealEClass = createEClass(LITERAL_REAL);
+		createEAttribute(literalRealEClass, LITERAL_REAL__REAL);
+
+		literalRationalEClass = createEClass(LITERAL_RATIONAL);
+		createEAttribute(literalRationalEClass, LITERAL_RATIONAL__RATIONAL);
+
+		literalFloatEClass = createEClass(LITERAL_FLOAT);
+		createEAttribute(literalFloatEClass, LITERAL_FLOAT__FLOAT);
+
+		literalDecimalEClass = createEClass(LITERAL_DECIMAL);
+		createEAttribute(literalDecimalEClass, LITERAL_DECIMAL__DECIMAL);
 
 		annotationPropertyValueEClass = createEClass(ANNOTATION_PROPERTY_VALUE);
 		createEAttribute(annotationPropertyValueEClass, ANNOTATION_PROPERTY_VALUE__UUID);
@@ -900,6 +1136,17 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		uuidEDataType = createEDataType(UUID);
 		abbrevIRIEDataType = createEDataType(ABBREV_IRI);
 		namespacePrefixEDataType = createEDataType(NAMESPACE_PREFIX);
+		positiveIntegerLiteralEDataType = createEDataType(POSITIVE_INTEGER_LITERAL);
+		literalPatternEDataType = createEDataType(LITERAL_PATTERN);
+		realDataTypeEDataType = createEDataType(REAL_DATA_TYPE);
+		rationalDataTypeEDataType = createEDataType(RATIONAL_DATA_TYPE);
+		floatDataTypeEDataType = createEDataType(FLOAT_DATA_TYPE);
+		decimalDataTypeEDataType = createEDataType(DECIMAL_DATA_TYPE);
+		dateTimeDataTypeEDataType = createEDataType(DATE_TIME_DATA_TYPE);
+		languageTagDataTypeEDataType = createEDataType(LANGUAGE_TAG_DATA_TYPE);
+		stringDataTypeEDataType = createEDataType(STRING_DATA_TYPE);
+		uuidDataTypeEDataType = createEDataType(UUID_DATA_TYPE);
+		uriDataTypeEDataType = createEDataType(URI_DATA_TYPE);
 	}
 
 	/**
@@ -934,45 +1181,53 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 
 		// Add supertypes to classes
 		literalDateTimeEClass.getESuperTypes().add(this.getLiteralValue());
-		literalLanguageTagEClass.getESuperTypes().add(this.getLiteralValue());
 		literalStringEClass.getESuperTypes().add(this.getLiteralValue());
 		literalUUIDEClass.getESuperTypes().add(this.getLiteralValue());
 		literalURIEClass.getESuperTypes().add(this.getLiteralValue());
 		literalNumberEClass.getESuperTypes().add(this.getLiteralValue());
+		literalRealEClass.getESuperTypes().add(this.getLiteralNumber());
+		literalRationalEClass.getESuperTypes().add(this.getLiteralNumber());
+		literalFloatEClass.getESuperTypes().add(this.getLiteralNumber());
+		literalDecimalEClass.getESuperTypes().add(this.getLiteralNumber());
 		moduleElementEClass.getESuperTypes().add(this.getElement());
 		moduleEdgeEClass.getESuperTypes().add(this.getElement());
 		moduleEClass.getESuperTypes().add(this.getElement());
 		moduleEClass.getESuperTypes().add(this.getResource());
 
 		// Initialize classes, features, and operations; add parameters
-		initEClass(literalPatternEClass, LiteralPattern.class, "LiteralPattern", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getLiteralPattern_Value(), theEcorePackage.getEString(), "value", null, 1, 1, LiteralPattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
 		initEClass(literalValueEClass, LiteralValue.class, "LiteralValue", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(literalDateTimeEClass, LiteralDateTime.class, "LiteralDateTime", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getLiteralDateTime_Value(), theEcorePackage.getEString(), "value", null, 1, 1, LiteralDateTime.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(literalLanguageTagEClass, LiteralLanguageTag.class, "LiteralLanguageTag", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getLiteralLanguageTag_Value(), theEcorePackage.getEString(), "value", null, 1, 1, LiteralLanguageTag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLiteralDateTime_DateTime(), this.getDateTimeDataType(), "dateTime", null, 1, 1, LiteralDateTime.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(literalStringEClass, LiteralString.class, "LiteralString", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getLiteralString_Value(), theEcorePackage.getEString(), "value", null, 1, 1, LiteralString.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLiteralString_String(), this.getStringDataType(), "string", null, 1, 1, LiteralString.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(literalUUIDEClass, LiteralUUID.class, "LiteralUUID", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getLiteralUUID_Value(), theEcorePackage.getEString(), "value", null, 1, 1, LiteralUUID.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLiteralUUID_Uuid(), this.getUUIDDataType(), "uuid", null, 1, 1, LiteralUUID.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(literalURIEClass, LiteralURI.class, "LiteralURI", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getLiteralURI_Value(), theEcorePackage.getEString(), "value", null, 1, 1, LiteralURI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLiteralURI_Uri(), this.getURIDataType(), "uri", null, 1, 1, LiteralURI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(literalNumberEClass, LiteralNumber.class, "LiteralNumber", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getLiteralNumber_Value(), theEcorePackage.getEString(), "value", null, 1, 1, LiteralNumber.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(literalNumberEClass, LiteralNumber.class, "LiteralNumber", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(literalRealEClass, LiteralReal.class, "LiteralReal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLiteralReal_Real(), this.getRealDataType(), "real", null, 1, 1, LiteralReal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(literalRationalEClass, LiteralRational.class, "LiteralRational", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLiteralRational_Rational(), this.getRationalDataType(), "rational", null, 1, 1, LiteralRational.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(literalFloatEClass, LiteralFloat.class, "LiteralFloat", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLiteralFloat_Float(), this.getFloatDataType(), "float", null, 1, 1, LiteralFloat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(literalDecimalEClass, LiteralDecimal.class, "LiteralDecimal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLiteralDecimal_Decimal(), this.getDecimalDataType(), "decimal", null, 1, 1, LiteralDecimal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(annotationPropertyValueEClass, AnnotationPropertyValue.class, "AnnotationPropertyValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAnnotationPropertyValue_Uuid(), this.getUUID(), "uuid", null, 1, 1, AnnotationPropertyValue.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getAnnotationPropertyValue_Subject(), this.getElement(), this.getElement_Annotations(), "subject", null, 1, 1, AnnotationPropertyValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAnnotationPropertyValue_Property(), this.getAnnotationProperty(), null, "property", null, 1, 1, AnnotationPropertyValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAnnotationPropertyValue_Value(), theEcorePackage.getEString(), "value", null, 1, 1, AnnotationPropertyValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAnnotationPropertyValue_Value(), this.getStringDataType(), "value", null, 1, 1, AnnotationPropertyValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(elementEClass, Element.class, "Element", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getElement_Uuid(), this.getUUID(), "uuid", null, 1, 1, Element.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, IS_DERIVED, IS_ORDERED);
@@ -1038,6 +1293,17 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		initEDataType(uuidEDataType, String.class, "UUID", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(abbrevIRIEDataType, String.class, "AbbrevIRI", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(namespacePrefixEDataType, String.class, "NamespacePrefix", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(positiveIntegerLiteralEDataType, PositiveIntegerValue.class, "PositiveIntegerLiteral", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(literalPatternEDataType, PatternValue.class, "LiteralPattern", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(realDataTypeEDataType, RealValue.class, "RealDataType", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(rationalDataTypeEDataType, RationalValue.class, "RationalDataType", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(floatDataTypeEDataType, FloatValue.class, "FloatDataType", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(decimalDataTypeEDataType, DecimalValue.class, "DecimalDataType", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(dateTimeDataTypeEDataType, DateTimeValue.class, "DateTimeDataType", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(languageTagDataTypeEDataType, LanguageTagValue.class, "LanguageTagDataType", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(stringDataTypeEDataType, StringValue.class, "StringDataType", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(uuidDataTypeEDataType, UUIDValue.class, "UUIDDataType", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(uriDataTypeEDataType, URIValue.class, "URIDataType", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

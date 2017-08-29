@@ -159,11 +159,6 @@ public class EntityScalarDataPropertyParticularRestrictionAxiomItemProvider exte
 		newChildDescriptors.add
 			(createChildParameter
 				(TerminologiesPackage.Literals.ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__LITERAL_VALUE,
-				 CommonFactory.eINSTANCE.createLiteralLanguageTag()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(TerminologiesPackage.Literals.ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__LITERAL_VALUE,
 				 CommonFactory.eINSTANCE.createLiteralString()));
 
 		newChildDescriptors.add
@@ -179,7 +174,22 @@ public class EntityScalarDataPropertyParticularRestrictionAxiomItemProvider exte
 		newChildDescriptors.add
 			(createChildParameter
 				(TerminologiesPackage.Literals.ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__LITERAL_VALUE,
-				 CommonFactory.eINSTANCE.createLiteralNumber()));
+				 CommonFactory.eINSTANCE.createLiteralReal()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TerminologiesPackage.Literals.ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__LITERAL_VALUE,
+				 CommonFactory.eINSTANCE.createLiteralRational()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TerminologiesPackage.Literals.ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__LITERAL_VALUE,
+				 CommonFactory.eINSTANCE.createLiteralFloat()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TerminologiesPackage.Literals.ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__LITERAL_VALUE,
+				 CommonFactory.eINSTANCE.createLiteralDecimal()));
 	}
 
 }

@@ -82,12 +82,6 @@ public class CommonSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case CommonPackage.LITERAL_PATTERN: {
-				LiteralPattern literalPattern = (LiteralPattern)theEObject;
-				T result = caseLiteralPattern(literalPattern);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case CommonPackage.LITERAL_VALUE: {
 				LiteralValue literalValue = (LiteralValue)theEObject;
 				T result = caseLiteralValue(literalValue);
@@ -98,13 +92,6 @@ public class CommonSwitch<T> extends Switch<T> {
 				LiteralDateTime literalDateTime = (LiteralDateTime)theEObject;
 				T result = caseLiteralDateTime(literalDateTime);
 				if (result == null) result = caseLiteralValue(literalDateTime);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case CommonPackage.LITERAL_LANGUAGE_TAG: {
-				LiteralLanguageTag literalLanguageTag = (LiteralLanguageTag)theEObject;
-				T result = caseLiteralLanguageTag(literalLanguageTag);
-				if (result == null) result = caseLiteralValue(literalLanguageTag);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -133,6 +120,38 @@ public class CommonSwitch<T> extends Switch<T> {
 				LiteralNumber literalNumber = (LiteralNumber)theEObject;
 				T result = caseLiteralNumber(literalNumber);
 				if (result == null) result = caseLiteralValue(literalNumber);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CommonPackage.LITERAL_REAL: {
+				LiteralReal literalReal = (LiteralReal)theEObject;
+				T result = caseLiteralReal(literalReal);
+				if (result == null) result = caseLiteralNumber(literalReal);
+				if (result == null) result = caseLiteralValue(literalReal);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CommonPackage.LITERAL_RATIONAL: {
+				LiteralRational literalRational = (LiteralRational)theEObject;
+				T result = caseLiteralRational(literalRational);
+				if (result == null) result = caseLiteralNumber(literalRational);
+				if (result == null) result = caseLiteralValue(literalRational);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CommonPackage.LITERAL_FLOAT: {
+				LiteralFloat literalFloat = (LiteralFloat)theEObject;
+				T result = caseLiteralFloat(literalFloat);
+				if (result == null) result = caseLiteralNumber(literalFloat);
+				if (result == null) result = caseLiteralValue(literalFloat);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CommonPackage.LITERAL_DECIMAL: {
+				LiteralDecimal literalDecimal = (LiteralDecimal)theEObject;
+				T result = caseLiteralDecimal(literalDecimal);
+				if (result == null) result = caseLiteralNumber(literalDecimal);
+				if (result == null) result = caseLiteralValue(literalDecimal);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -193,21 +212,6 @@ public class CommonSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Literal Pattern</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Literal Pattern</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseLiteralPattern(LiteralPattern object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Literal Value</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -234,21 +238,6 @@ public class CommonSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseLiteralDateTime(LiteralDateTime object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Literal Language Tag</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Literal Language Tag</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseLiteralLanguageTag(LiteralLanguageTag object) {
 		return null;
 	}
 
@@ -309,6 +298,66 @@ public class CommonSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseLiteralNumber(LiteralNumber object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Literal Real</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Literal Real</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLiteralReal(LiteralReal object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Literal Rational</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Literal Rational</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLiteralRational(LiteralRational object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Literal Float</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Literal Float</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLiteralFloat(LiteralFloat object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Literal Decimal</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Literal Decimal</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLiteralDecimal(LiteralDecimal object) {
 		return null;
 	}
 

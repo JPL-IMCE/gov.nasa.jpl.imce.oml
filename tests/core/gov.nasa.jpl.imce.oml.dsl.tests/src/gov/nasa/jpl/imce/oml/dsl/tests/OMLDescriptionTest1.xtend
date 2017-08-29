@@ -43,6 +43,8 @@ import org.junit.runner.RunWith
 
 import static org.junit.Assert.*
 import org.eclipse.emf.ecore.resource.Resource
+import gov.nasa.jpl.imce.oml.model.datatypes.StringValue
+import gov.nasa.jpl.imce.oml.model.datatypes.FloatValue
 
 @RunWith(XtextRunner)
 @InjectWith(OMLInjectorProvider)
@@ -141,7 +143,7 @@ class OMLDescriptionTest1 {
 		ci_name.singletonInstance = ci
 		
 		val ci_name_lit = commonF.createLiteralString
-		ci_name_lit.value = 'box #0'
+		ci_name_lit.string = new StringValue('box #0')
 		ci_name.scalarPropertyValue = ci_name_lit
 		
 		val SingletonInstanceScalarDataPropertyValue ci_length = descriptionsF.createSingletonInstanceScalarDataPropertyValue
@@ -149,8 +151,8 @@ class OMLDescriptionTest1 {
 		ci_length.scalarDataProperty = dp2
 		ci_length.singletonInstance = ci
 		
-		val ci_length_lit = commonF.createLiteralNumber
-		ci_length_lit.value = '123.45'
+		val ci_length_lit = commonF.createLiteralFloat
+		ci_length_lit.^float = new FloatValue('123.45')
 		ci_length.scalarPropertyValue = ci_length_lit
 		
 		val String text2 = serialize(r2)

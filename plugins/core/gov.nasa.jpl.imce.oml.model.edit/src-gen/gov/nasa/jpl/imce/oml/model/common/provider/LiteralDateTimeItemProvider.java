@@ -22,6 +22,7 @@ package gov.nasa.jpl.imce.oml.model.common.provider;
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
 import gov.nasa.jpl.imce.oml.model.common.LiteralDateTime;
 
+import gov.nasa.jpl.imce.oml.model.datatypes.DateTimeValue;
 import java.util.Collection;
 import java.util.List;
 
@@ -61,25 +62,25 @@ public class LiteralDateTimeItemProvider extends LiteralValueItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addValuePropertyDescriptor(object);
+			addDateTimePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Value feature.
+	 * This adds a property descriptor for the Date Time feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addValuePropertyDescriptor(Object object) {
+	protected void addDateTimePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_LiteralDateTime_value_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_LiteralDateTime_value_feature", "_UI_LiteralDateTime_type"),
-				 CommonPackage.Literals.LITERAL_DATE_TIME__VALUE,
+				 getString("_UI_LiteralDateTime_dateTime_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_LiteralDateTime_dateTime_feature", "_UI_LiteralDateTime_type"),
+				 CommonPackage.Literals.LITERAL_DATE_TIME__DATE_TIME,
 				 true,
 				 false,
 				 false,
@@ -107,7 +108,8 @@ public class LiteralDateTimeItemProvider extends LiteralValueItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((LiteralDateTime)object).getValue();
+		DateTimeValue labelValue = ((LiteralDateTime)object).getDateTime();
+		String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ?
 			getString("_UI_LiteralDateTime_type") :
 			getString("_UI_LiteralDateTime_type") + " " + label;
@@ -126,7 +128,7 @@ public class LiteralDateTimeItemProvider extends LiteralValueItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(LiteralDateTime.class)) {
-			case CommonPackage.LITERAL_DATE_TIME__VALUE:
+			case CommonPackage.LITERAL_DATE_TIME__DATE_TIME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

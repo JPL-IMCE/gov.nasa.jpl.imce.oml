@@ -38,15 +38,6 @@ public interface CommonFactory extends EFactory {
 	CommonFactory eINSTANCE = gov.nasa.jpl.imce.oml.model.common.impl.CommonFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Literal Pattern</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Literal Pattern</em>'.
-	 * @generated
-	 */
-	LiteralPattern createLiteralPattern();
-
-	/**
 	 * Returns a new object of class '<em>Literal Date Time</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -54,15 +45,6 @@ public interface CommonFactory extends EFactory {
 	 * @generated
 	 */
 	LiteralDateTime createLiteralDateTime();
-
-	/**
-	 * Returns a new object of class '<em>Literal Language Tag</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Literal Language Tag</em>'.
-	 * @generated
-	 */
-	LiteralLanguageTag createLiteralLanguageTag();
 
 	/**
 	 * Returns a new object of class '<em>Literal String</em>'.
@@ -92,13 +74,40 @@ public interface CommonFactory extends EFactory {
 	LiteralURI createLiteralURI();
 
 	/**
-	 * Returns a new object of class '<em>Literal Number</em>'.
+	 * Returns a new object of class '<em>Literal Real</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Literal Number</em>'.
+	 * @return a new object of class '<em>Literal Real</em>'.
 	 * @generated
 	 */
-	LiteralNumber createLiteralNumber();
+	LiteralReal createLiteralReal();
+
+	/**
+	 * Returns a new object of class '<em>Literal Rational</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Literal Rational</em>'.
+	 * @generated
+	 */
+	LiteralRational createLiteralRational();
+
+	/**
+	 * Returns a new object of class '<em>Literal Float</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Literal Float</em>'.
+	 * @generated
+	 */
+	LiteralFloat createLiteralFloat();
+
+	/**
+	 * Returns a new object of class '<em>Literal Decimal</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Literal Decimal</em>'.
+	 * @generated
+	 */
+	LiteralDecimal createLiteralDecimal();
 
 	/**
 	 * Returns a new object of class '<em>Annotation Property Value</em>'.

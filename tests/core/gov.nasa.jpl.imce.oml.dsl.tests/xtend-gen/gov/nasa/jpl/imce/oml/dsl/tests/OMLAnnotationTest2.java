@@ -23,6 +23,7 @@ import gov.nasa.jpl.imce.oml.model.common.AnnotationProperty;
 import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue;
 import gov.nasa.jpl.imce.oml.model.common.Element;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
+import gov.nasa.jpl.imce.oml.model.datatypes.StringValue;
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox;
 import java.util.function.Consumer;
@@ -81,13 +82,13 @@ public class OMLAnnotationTest2 {
       Assert.assertEquals(tbox.nsPrefix(), "mission");
       final Concept c = IterableExtensions.<Concept>head(Iterables.<Concept>filter(tbox.getBoxStatements(), Concept.class));
       Assert.assertEquals(c.name(), "PerformingElement");
-      final EList<AnnotationPropertyValue> ann = tbox.getAnnotations();
+      final EList<AnnotationPropertyValue> ann = c.getAnnotations();
       Assert.assertEquals(2, ann.size());
       final Consumer<AnnotationPropertyValue> _function = (AnnotationPropertyValue a) -> {
         final AnnotationProperty a_prop = a.getProperty();
         final Element a_subj = a.getSubject();
-        final String a_value = a.getValue();
-        Assert.assertTrue((a_value.equals("Performing Element") || a_value.equals("A performing element")));
+        final StringValue a_value = a.getValue();
+        Assert.assertTrue((a_value.value.equals("Performing Element") || a_value.value.equals("A performing element")));
         Assert.assertSame(ap, a_prop);
         Assert.assertSame(c, a_subj);
       };

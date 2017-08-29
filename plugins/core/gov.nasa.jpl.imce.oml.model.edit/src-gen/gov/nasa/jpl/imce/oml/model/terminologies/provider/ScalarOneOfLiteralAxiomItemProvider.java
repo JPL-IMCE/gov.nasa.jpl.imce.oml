@@ -183,11 +183,6 @@ public class ScalarOneOfLiteralAxiomItemProvider extends TermAxiomItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(TerminologiesPackage.Literals.SCALAR_ONE_OF_LITERAL_AXIOM__VALUE,
-				 CommonFactory.eINSTANCE.createLiteralLanguageTag()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(TerminologiesPackage.Literals.SCALAR_ONE_OF_LITERAL_AXIOM__VALUE,
 				 CommonFactory.eINSTANCE.createLiteralString()));
 
 		newChildDescriptors.add
@@ -203,7 +198,22 @@ public class ScalarOneOfLiteralAxiomItemProvider extends TermAxiomItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(TerminologiesPackage.Literals.SCALAR_ONE_OF_LITERAL_AXIOM__VALUE,
-				 CommonFactory.eINSTANCE.createLiteralNumber()));
+				 CommonFactory.eINSTANCE.createLiteralReal()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TerminologiesPackage.Literals.SCALAR_ONE_OF_LITERAL_AXIOM__VALUE,
+				 CommonFactory.eINSTANCE.createLiteralRational()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TerminologiesPackage.Literals.SCALAR_ONE_OF_LITERAL_AXIOM__VALUE,
+				 CommonFactory.eINSTANCE.createLiteralFloat()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TerminologiesPackage.Literals.SCALAR_ONE_OF_LITERAL_AXIOM__VALUE,
+				 CommonFactory.eINSTANCE.createLiteralDecimal()));
 	}
 
 }

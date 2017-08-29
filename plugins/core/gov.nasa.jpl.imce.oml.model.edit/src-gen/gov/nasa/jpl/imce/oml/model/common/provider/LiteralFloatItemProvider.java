@@ -20,41 +20,34 @@ package gov.nasa.jpl.imce.oml.model.common.provider;
 
 
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
-import gov.nasa.jpl.imce.oml.model.common.LiteralPattern;
+import gov.nasa.jpl.imce.oml.model.common.LiteralFloat;
 
-import gov.nasa.jpl.imce.oml.model.edit.provider.OMLEditPlugin;
+import gov.nasa.jpl.imce.oml.model.datatypes.FloatValue;
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
-import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link gov.nasa.jpl.imce.oml.model.common.LiteralPattern} object.
+ * This is the item provider adapter for a {@link gov.nasa.jpl.imce.oml.model.common.LiteralFloat} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class LiteralPatternItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class LiteralFloatItemProvider extends LiteralNumberItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LiteralPatternItemProvider(AdapterFactory adapterFactory) {
+	public LiteralFloatItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -69,25 +62,25 @@ public class LiteralPatternItemProvider extends ItemProviderAdapter implements I
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addValuePropertyDescriptor(object);
+			addFloatPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Value feature.
+	 * This adds a property descriptor for the Float feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addValuePropertyDescriptor(Object object) {
+	protected void addFloatPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_LiteralPattern_value_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_LiteralPattern_value_feature", "_UI_LiteralPattern_type"),
-				 CommonPackage.Literals.LITERAL_PATTERN__VALUE,
+				 getString("_UI_LiteralFloat_float_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_LiteralFloat_float_feature", "_UI_LiteralFloat_type"),
+				 CommonPackage.Literals.LITERAL_FLOAT__FLOAT,
 				 true,
 				 false,
 				 false,
@@ -97,14 +90,14 @@ public class LiteralPatternItemProvider extends ItemProviderAdapter implements I
 	}
 
 	/**
-	 * This returns LiteralPattern.gif.
+	 * This returns LiteralFloat.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/LiteralPattern"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/LiteralFloat"));
 	}
 
 	/**
@@ -115,10 +108,11 @@ public class LiteralPatternItemProvider extends ItemProviderAdapter implements I
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((LiteralPattern)object).getValue();
+		FloatValue labelValue = ((LiteralFloat)object).getFloat();
+		String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ?
-			getString("_UI_LiteralPattern_type") :
-			getString("_UI_LiteralPattern_type") + " " + label;
+			getString("_UI_LiteralFloat_type") :
+			getString("_UI_LiteralFloat_type") + " " + label;
 	}
 	
 
@@ -133,8 +127,8 @@ public class LiteralPatternItemProvider extends ItemProviderAdapter implements I
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(LiteralPattern.class)) {
-			case CommonPackage.LITERAL_PATTERN__VALUE:
+		switch (notification.getFeatureID(LiteralFloat.class)) {
+			case CommonPackage.LITERAL_FLOAT__FLOAT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
@@ -151,17 +145,6 @@ public class LiteralPatternItemProvider extends ItemProviderAdapter implements I
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-	}
-
-	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getResourceLocator() {
-		return OMLEditPlugin.INSTANCE;
 	}
 
 }

@@ -6174,7 +6174,7 @@ public interface TerminologiesPackage extends EPackage {
 	int IRI_SCALAR_RESTRICTION__MAX_LENGTH = RESTRICTED_DATA_RANGE_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Pattern</b></em>' containment reference.
+	 * The feature id for the '<em><b>Pattern</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -6500,7 +6500,7 @@ public interface TerminologiesPackage extends EPackage {
 	int PLAIN_LITERAL_SCALAR_RESTRICTION__MAX_LENGTH = RESTRICTED_DATA_RANGE_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Pattern</b></em>' containment reference.
+	 * The feature id for the '<em><b>Pattern</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -6509,7 +6509,7 @@ public interface TerminologiesPackage extends EPackage {
 	int PLAIN_LITERAL_SCALAR_RESTRICTION__PATTERN = RESTRICTED_DATA_RANGE_FEATURE_COUNT + 3;
 
 	/**
-	 * The feature id for the '<em><b>Lang Range</b></em>' containment reference.
+	 * The feature id for the '<em><b>Lang Range</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -6672,7 +6672,7 @@ public interface TerminologiesPackage extends EPackage {
 	int STRING_SCALAR_RESTRICTION__MAX_LENGTH = RESTRICTED_DATA_RANGE_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Pattern</b></em>' containment reference.
+	 * The feature id for the '<em><b>Pattern</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -9025,15 +9025,15 @@ public interface TerminologiesPackage extends EPackage {
 	EAttribute getIRIScalarRestriction_MaxLength();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction#getPattern <em>Pattern</em>}'.
+	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction#getPattern <em>Pattern</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Pattern</em>'.
+	 * @return the meta object for the attribute '<em>Pattern</em>'.
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction#getPattern()
 	 * @see #getIRIScalarRestriction()
 	 * @generated
 	 */
-	EReference getIRIScalarRestriction_Pattern();
+	EAttribute getIRIScalarRestriction_Pattern();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction <em>Numeric Scalar Restriction</em>}'.
@@ -9133,26 +9133,26 @@ public interface TerminologiesPackage extends EPackage {
 	EAttribute getPlainLiteralScalarRestriction_MaxLength();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction#getPattern <em>Pattern</em>}'.
+	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction#getPattern <em>Pattern</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Pattern</em>'.
+	 * @return the meta object for the attribute '<em>Pattern</em>'.
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction#getPattern()
 	 * @see #getPlainLiteralScalarRestriction()
 	 * @generated
 	 */
-	EReference getPlainLiteralScalarRestriction_Pattern();
+	EAttribute getPlainLiteralScalarRestriction_Pattern();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction#getLangRange <em>Lang Range</em>}'.
+	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction#getLangRange <em>Lang Range</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Lang Range</em>'.
+	 * @return the meta object for the attribute '<em>Lang Range</em>'.
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction#getLangRange()
 	 * @see #getPlainLiteralScalarRestriction()
 	 * @generated
 	 */
-	EReference getPlainLiteralScalarRestriction_LangRange();
+	EAttribute getPlainLiteralScalarRestriction_LangRange();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.StringScalarRestriction <em>String Scalar Restriction</em>}'.
@@ -9198,15 +9198,15 @@ public interface TerminologiesPackage extends EPackage {
 	EAttribute getStringScalarRestriction_MaxLength();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.StringScalarRestriction#getPattern <em>Pattern</em>}'.
+	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.terminologies.StringScalarRestriction#getPattern <em>Pattern</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Pattern</em>'.
+	 * @return the meta object for the attribute '<em>Pattern</em>'.
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.StringScalarRestriction#getPattern()
 	 * @see #getStringScalarRestriction()
 	 * @generated
 	 */
-	EReference getStringScalarRestriction_Pattern();
+	EAttribute getStringScalarRestriction_Pattern();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.TimeScalarRestriction <em>Time Scalar Restriction</em>}'.
@@ -10820,12 +10820,12 @@ public interface TerminologiesPackage extends EPackage {
 		EAttribute IRI_SCALAR_RESTRICTION__MAX_LENGTH = eINSTANCE.getIRIScalarRestriction_MaxLength();
 
 		/**
-		 * The meta object literal for the '<em><b>Pattern</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Pattern</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference IRI_SCALAR_RESTRICTION__PATTERN = eINSTANCE.getIRIScalarRestriction_Pattern();
+		EAttribute IRI_SCALAR_RESTRICTION__PATTERN = eINSTANCE.getIRIScalarRestriction_Pattern();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.NumericScalarRestrictionImpl <em>Numeric Scalar Restriction</em>}' class.
@@ -10904,20 +10904,20 @@ public interface TerminologiesPackage extends EPackage {
 		EAttribute PLAIN_LITERAL_SCALAR_RESTRICTION__MAX_LENGTH = eINSTANCE.getPlainLiteralScalarRestriction_MaxLength();
 
 		/**
-		 * The meta object literal for the '<em><b>Pattern</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Pattern</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PLAIN_LITERAL_SCALAR_RESTRICTION__PATTERN = eINSTANCE.getPlainLiteralScalarRestriction_Pattern();
+		EAttribute PLAIN_LITERAL_SCALAR_RESTRICTION__PATTERN = eINSTANCE.getPlainLiteralScalarRestriction_Pattern();
 
 		/**
-		 * The meta object literal for the '<em><b>Lang Range</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Lang Range</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PLAIN_LITERAL_SCALAR_RESTRICTION__LANG_RANGE = eINSTANCE.getPlainLiteralScalarRestriction_LangRange();
+		EAttribute PLAIN_LITERAL_SCALAR_RESTRICTION__LANG_RANGE = eINSTANCE.getPlainLiteralScalarRestriction_LangRange();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.StringScalarRestrictionImpl <em>String Scalar Restriction</em>}' class.
@@ -10954,12 +10954,12 @@ public interface TerminologiesPackage extends EPackage {
 		EAttribute STRING_SCALAR_RESTRICTION__MAX_LENGTH = eINSTANCE.getStringScalarRestriction_MaxLength();
 
 		/**
-		 * The meta object literal for the '<em><b>Pattern</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Pattern</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference STRING_SCALAR_RESTRICTION__PATTERN = eINSTANCE.getStringScalarRestriction_Pattern();
+		EAttribute STRING_SCALAR_RESTRICTION__PATTERN = eINSTANCE.getStringScalarRestriction_Pattern();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.TimeScalarRestrictionImpl <em>Time Scalar Restriction</em>}' class.

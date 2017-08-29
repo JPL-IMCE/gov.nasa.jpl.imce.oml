@@ -18,6 +18,8 @@
  */
 package gov.nasa.jpl.imce.oml.model.common;
 
+import gov.nasa.jpl.imce.oml.model.datatypes.StringValue;
+
 import org.eclipse.emf.cdo.CDOObject;
 
 /**
@@ -131,12 +133,12 @@ public interface AnnotationPropertyValue extends CDOObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Value</em>' attribute.
-	 * @see #setValue(String)
+	 * @see #setValue(StringValue)
 	 * @see gov.nasa.jpl.imce.oml.model.common.CommonPackage#getAnnotationPropertyValue_Value()
-	 * @model unique="false" required="true"
+	 * @model unique="false" dataType="gov.nasa.jpl.imce.oml.model.common.StringDataType" required="true"
 	 * @generated
 	 */
-	String getValue();
+	StringValue getValue();
 
 	/**
 	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue#getValue <em>Value</em>}' attribute.
@@ -146,6 +148,6 @@ public interface AnnotationPropertyValue extends CDOObject {
 	 * @see #getValue()
 	 * @generated
 	 */
-	void setValue(String value);
+	void setValue(StringValue value);
 
 } // AnnotationPropertyValue

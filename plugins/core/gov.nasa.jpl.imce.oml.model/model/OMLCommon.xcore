@@ -137,71 +137,61 @@ type AbbrevIRI wraps String
 
 type NamespacePrefix wraps String
 
-/*
- * https://www.w3.org/TR/xmlschema11-2/#dt-regex
- */
-class LiteralPattern {
-	String[1] value
-}
+type PositiveIntegerLiteral wraps gov.nasa.jpl.imce.oml.model.datatypes.PositiveIntegerValue
+
+type LiteralPattern wraps gov.nasa.jpl.imce.oml.model.datatypes.PatternValue
 
 abstract class LiteralValue {}
 
-/*
- * https://www.w3.org/TR/xmlschema11-2/#rf-lexicalMappings-datetime
- * 
- * dateTimeLexicalRep ::= yearFrag '-' monthFrag '-' dayFrag 'T' ((hourFrag ':' minuteFrag ':' secondFrag) | endOfDayFrag) timezoneFrag?  
- * 
- * [56]   yearFrag ::= '-'? (([1-9] digit digit digit+) | ('0' digit digit digit))
- * [57]   monthFrag ::= ('0' [1-9]) | ('1' [0-2])
- * [58]   dayFrag ::= ('0' [1-9]) | ([12] digit) | ('3' [01])
- * [59]   hourFrag ::= ([01] digit) | ('2' [0-3])
- * [60]   minuteFrag ::= [0-5] digit
- * [61]   secondFrag ::= ([0-5] digit) ('.' digit+)?
- * [62]   endOfDayFrag ::= '24:00:00' ('.' '0'+)?
- * [63]   timezoneFrag ::= 'Z' | ('+' | '-') (('0' digit | '1' [0-3]) ':' minuteFrag | '14:00')
- */
 class LiteralDateTime extends LiteralValue {
-	String[1] value
+	DateTimeDataType[1] dateTime
 }
 
-/*
- * https://www.w3.org/TR/xmlschema11-2/#language
- * https://tools.ietf.org/rfc/bcp/bcp47
- * http://www.ietf.org/rfc/rfc4646.txt
- * http://www.ietf.org/rfc/rfc4647.txt
- * 
- * [a-zA-Z]{1,8}(-[a-zA-Z0-9]{1,8})*
- */
-class LiteralLanguageTag extends LiteralValue {
-	String[1] value
-}
-
-/*
- * Wrapped around single quotes (inside, quotes are escaped using \" and \ is \\)
- */
 class LiteralString extends LiteralValue {
-	String[1] value
+	StringDataType[1] string
 }
-
-/*
- * An RFC-4122 Version 5 UUID (SHA-1 hash & namespace) 
- */
 class LiteralUUID extends LiteralValue {
-	String[1] value
+	UUIDDataType[1] uuid
 }
-
-/*
- * https://www.w3.org/TR/xmlschema11-2/#anyURI
- * http://www.ietf.org/rfc/rfc3986.txt
- * http://www.ietf.org/rfc/rfc3987.txt
- */
 class LiteralURI extends LiteralValue {
-	String[1] value
+	URIDataType[1] uri
 }
 
-class LiteralNumber extends LiteralValue {
-	String[1] value
+abstract class LiteralNumber extends LiteralValue {}
+
+type RealDataType wraps gov.nasa.jpl.imce.oml.model.datatypes.RealValue
+
+class LiteralReal extends LiteralNumber {
+	RealDataType[1] real
 }
+
+type RationalDataType wraps gov.nasa.jpl.imce.oml.model.datatypes.RationalValue
+
+class LiteralRational extends LiteralNumber {
+	RationalDataType[1] rational
+}
+
+type FloatDataType wraps gov.nasa.jpl.imce.oml.model.datatypes.FloatValue
+
+class LiteralFloat extends LiteralNumber {
+	FloatDataType[1] ^float
+}
+
+type DecimalDataType wraps gov.nasa.jpl.imce.oml.model.datatypes.DecimalValue
+
+class LiteralDecimal extends LiteralNumber {
+	DecimalDataType[1] decimal
+}
+
+type DateTimeDataType wraps gov.nasa.jpl.imce.oml.model.datatypes.DateTimeValue
+
+type LanguageTagDataType wraps gov.nasa.jpl.imce.oml.model.datatypes.LanguageTagValue
+
+type StringDataType wraps gov.nasa.jpl.imce.oml.model.datatypes.StringValue
+
+type UUIDDataType wraps gov.nasa.jpl.imce.oml.model.datatypes.UUIDValue 
+
+type URIDataType wraps gov.nasa.jpl.imce.oml.model.datatypes.URIValue
 
 /* 
  * For the OML tabular interchange representation,
@@ -230,7 +220,7 @@ class AnnotationPropertyValue {
 	
 	refers AnnotationProperty[1] property
 	
-	String[1] value
+	StringDataType[1] value
 }
 
 /*

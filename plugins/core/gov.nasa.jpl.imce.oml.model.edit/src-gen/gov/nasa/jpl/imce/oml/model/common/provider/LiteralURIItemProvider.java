@@ -22,6 +22,7 @@ package gov.nasa.jpl.imce.oml.model.common.provider;
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
 import gov.nasa.jpl.imce.oml.model.common.LiteralURI;
 
+import gov.nasa.jpl.imce.oml.model.datatypes.URIValue;
 import java.util.Collection;
 import java.util.List;
 
@@ -61,25 +62,25 @@ public class LiteralURIItemProvider extends LiteralValueItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addValuePropertyDescriptor(object);
+			addUriPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Value feature.
+	 * This adds a property descriptor for the Uri feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addValuePropertyDescriptor(Object object) {
+	protected void addUriPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_LiteralURI_value_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_LiteralURI_value_feature", "_UI_LiteralURI_type"),
-				 CommonPackage.Literals.LITERAL_URI__VALUE,
+				 getString("_UI_LiteralURI_uri_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_LiteralURI_uri_feature", "_UI_LiteralURI_type"),
+				 CommonPackage.Literals.LITERAL_URI__URI,
 				 true,
 				 false,
 				 false,
@@ -107,7 +108,8 @@ public class LiteralURIItemProvider extends LiteralValueItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((LiteralURI)object).getValue();
+		URIValue labelValue = ((LiteralURI)object).getUri();
+		String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ?
 			getString("_UI_LiteralURI_type") :
 			getString("_UI_LiteralURI_type") + " " + label;
@@ -126,7 +128,7 @@ public class LiteralURIItemProvider extends LiteralValueItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(LiteralURI.class)) {
-			case CommonPackage.LITERAL_URI__VALUE:
+			case CommonPackage.LITERAL_URI__URI:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

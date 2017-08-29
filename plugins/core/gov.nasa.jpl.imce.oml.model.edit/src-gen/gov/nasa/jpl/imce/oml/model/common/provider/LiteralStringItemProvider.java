@@ -22,6 +22,7 @@ package gov.nasa.jpl.imce.oml.model.common.provider;
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
 import gov.nasa.jpl.imce.oml.model.common.LiteralString;
 
+import gov.nasa.jpl.imce.oml.model.datatypes.StringValue;
 import java.util.Collection;
 import java.util.List;
 
@@ -61,25 +62,25 @@ public class LiteralStringItemProvider extends LiteralValueItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addValuePropertyDescriptor(object);
+			addStringPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Value feature.
+	 * This adds a property descriptor for the String feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addValuePropertyDescriptor(Object object) {
+	protected void addStringPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_LiteralString_value_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_LiteralString_value_feature", "_UI_LiteralString_type"),
-				 CommonPackage.Literals.LITERAL_STRING__VALUE,
+				 getString("_UI_LiteralString_string_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_LiteralString_string_feature", "_UI_LiteralString_type"),
+				 CommonPackage.Literals.LITERAL_STRING__STRING,
 				 true,
 				 false,
 				 false,
@@ -107,7 +108,8 @@ public class LiteralStringItemProvider extends LiteralValueItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((LiteralString)object).getValue();
+		StringValue labelValue = ((LiteralString)object).getString();
+		String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ?
 			getString("_UI_LiteralString_type") :
 			getString("_UI_LiteralString_type") + " " + label;
@@ -126,7 +128,7 @@ public class LiteralStringItemProvider extends LiteralValueItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(LiteralString.class)) {
-			case CommonPackage.LITERAL_STRING__VALUE:
+			case CommonPackage.LITERAL_STRING__STRING:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

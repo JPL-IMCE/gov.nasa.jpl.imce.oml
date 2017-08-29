@@ -21,6 +21,8 @@ package gov.nasa.jpl.imce.oml.model.common.impl;
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
 import gov.nasa.jpl.imce.oml.model.common.LiteralUUID;
 
+import gov.nasa.jpl.imce.oml.model.datatypes.UUIDValue;
+
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
@@ -35,31 +37,31 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralUUIDImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralUUIDImpl#getUuid <em>Uuid</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class LiteralUUIDImpl extends LiteralValueImpl implements LiteralUUID {
 	/**
-	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
+	 * The default value of the '{@link #getUuid() <em>Uuid</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getValue()
+	 * @see #getUuid()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String VALUE_EDEFAULT = null;
+	protected static final UUIDValue UUID_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
+	 * The cached value of the '{@link #getUuid() <em>Uuid</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getValue()
+	 * @see #getUuid()
 	 * @generated
 	 * @ordered
 	 */
-	protected String value = VALUE_EDEFAULT;
+	protected UUIDValue uuid = UUID_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -85,8 +87,8 @@ public class LiteralUUIDImpl extends LiteralValueImpl implements LiteralUUID {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getValue() {
-		return value;
+	public UUIDValue getUuid() {
+		return uuid;
 	}
 
 	/**
@@ -94,11 +96,11 @@ public class LiteralUUIDImpl extends LiteralValueImpl implements LiteralUUID {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setValue(String newValue) {
-		String oldValue = value;
-		value = newValue;
+	public void setUuid(UUIDValue newUuid) {
+		UUIDValue oldUuid = uuid;
+		uuid = newUuid;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CommonPackage.LITERAL_UUID__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET, CommonPackage.LITERAL_UUID__UUID, oldUuid, uuid));
 	}
 
 	/**
@@ -109,8 +111,8 @@ public class LiteralUUIDImpl extends LiteralValueImpl implements LiteralUUID {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case CommonPackage.LITERAL_UUID__VALUE:
-				return getValue();
+			case CommonPackage.LITERAL_UUID__UUID:
+				return getUuid();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -123,8 +125,8 @@ public class LiteralUUIDImpl extends LiteralValueImpl implements LiteralUUID {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case CommonPackage.LITERAL_UUID__VALUE:
-				setValue((String)newValue);
+			case CommonPackage.LITERAL_UUID__UUID:
+				setUuid((UUIDValue)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -138,8 +140,8 @@ public class LiteralUUIDImpl extends LiteralValueImpl implements LiteralUUID {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case CommonPackage.LITERAL_UUID__VALUE:
-				setValue(VALUE_EDEFAULT);
+			case CommonPackage.LITERAL_UUID__UUID:
+				setUuid(UUID_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -153,8 +155,8 @@ public class LiteralUUIDImpl extends LiteralValueImpl implements LiteralUUID {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case CommonPackage.LITERAL_UUID__VALUE:
-				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+			case CommonPackage.LITERAL_UUID__UUID:
+				return UUID_EDEFAULT == null ? uuid != null : !UUID_EDEFAULT.equals(uuid);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -169,8 +171,8 @@ public class LiteralUUIDImpl extends LiteralValueImpl implements LiteralUUID {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (value: ");
-		result.append(value);
+		result.append(" (uuid: ");
+		result.append(uuid);
 		result.append(')');
 		return result.toString();
 	}

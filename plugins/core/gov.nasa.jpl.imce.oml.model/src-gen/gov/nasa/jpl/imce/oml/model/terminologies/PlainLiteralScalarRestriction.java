@@ -18,8 +18,9 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies;
 
-import gov.nasa.jpl.imce.oml.model.common.LiteralLanguageTag;
-import gov.nasa.jpl.imce.oml.model.common.LiteralPattern;
+import gov.nasa.jpl.imce.oml.model.datatypes.LanguageTagValue;
+import gov.nasa.jpl.imce.oml.model.datatypes.PatternValue;
+import gov.nasa.jpl.imce.oml.model.datatypes.PositiveIntegerValue;
 
 /**
  * <!-- begin-user-doc -->
@@ -65,12 +66,12 @@ public interface PlainLiteralScalarRestriction extends RestrictedDataRange {
 	 * The length of the plain literal
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Length</em>' attribute.
-	 * @see #setLength(String)
+	 * @see #setLength(PositiveIntegerValue)
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getPlainLiteralScalarRestriction_Length()
-	 * @model unique="false"
+	 * @model unique="false" dataType="gov.nasa.jpl.imce.oml.model.common.PositiveIntegerLiteral"
 	 * @generated
 	 */
-	String getLength();
+	PositiveIntegerValue getLength();
 
 	/**
 	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction#getLength <em>Length</em>}' attribute.
@@ -80,7 +81,7 @@ public interface PlainLiteralScalarRestriction extends RestrictedDataRange {
 	 * @see #getLength()
 	 * @generated
 	 */
-	void setLength(String value);
+	void setLength(PositiveIntegerValue value);
 
 	/**
 	 * Returns the value of the '<em><b>Min Length</b></em>' attribute.
@@ -90,12 +91,12 @@ public interface PlainLiteralScalarRestriction extends RestrictedDataRange {
 	 * The minimum length of the plain literal
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Min Length</em>' attribute.
-	 * @see #setMinLength(String)
+	 * @see #setMinLength(PositiveIntegerValue)
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getPlainLiteralScalarRestriction_MinLength()
-	 * @model unique="false"
+	 * @model unique="false" dataType="gov.nasa.jpl.imce.oml.model.common.PositiveIntegerLiteral"
 	 * @generated
 	 */
-	String getMinLength();
+	PositiveIntegerValue getMinLength();
 
 	/**
 	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction#getMinLength <em>Min Length</em>}' attribute.
@@ -105,7 +106,7 @@ public interface PlainLiteralScalarRestriction extends RestrictedDataRange {
 	 * @see #getMinLength()
 	 * @generated
 	 */
-	void setMinLength(String value);
+	void setMinLength(PositiveIntegerValue value);
 
 	/**
 	 * Returns the value of the '<em><b>Max Length</b></em>' attribute.
@@ -115,12 +116,12 @@ public interface PlainLiteralScalarRestriction extends RestrictedDataRange {
 	 * The maximum length of the plain literal
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Max Length</em>' attribute.
-	 * @see #setMaxLength(String)
+	 * @see #setMaxLength(PositiveIntegerValue)
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getPlainLiteralScalarRestriction_MaxLength()
-	 * @model unique="false"
+	 * @model unique="false" dataType="gov.nasa.jpl.imce.oml.model.common.PositiveIntegerLiteral"
 	 * @generated
 	 */
-	String getMaxLength();
+	PositiveIntegerValue getMaxLength();
 
 	/**
 	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction#getMaxLength <em>Max Length</em>}' attribute.
@@ -130,56 +131,56 @@ public interface PlainLiteralScalarRestriction extends RestrictedDataRange {
 	 * @see #getMaxLength()
 	 * @generated
 	 */
-	void setMaxLength(String value);
+	void setMaxLength(PositiveIntegerValue value);
 
 	/**
-	 * Returns the value of the '<em><b>Pattern</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Pattern</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The pattern of the plain literal (https://www.w3.org/TR/xmlschema-2/#regexs)
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Pattern</em>' containment reference.
-	 * @see #setPattern(LiteralPattern)
+	 * @return the value of the '<em>Pattern</em>' attribute.
+	 * @see #setPattern(PatternValue)
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getPlainLiteralScalarRestriction_Pattern()
-	 * @model containment="true"
+	 * @model unique="false" dataType="gov.nasa.jpl.imce.oml.model.common.LiteralPattern"
 	 * @generated
 	 */
-	LiteralPattern getPattern();
+	PatternValue getPattern();
 
 	/**
-	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction#getPattern <em>Pattern</em>}' containment reference.
+	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction#getPattern <em>Pattern</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Pattern</em>' containment reference.
+	 * @param value the new value of the '<em>Pattern</em>' attribute.
 	 * @see #getPattern()
 	 * @generated
 	 */
-	void setPattern(LiteralPattern value);
+	void setPattern(PatternValue value);
 
 	/**
-	 * Returns the value of the '<em><b>Lang Range</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Lang Range</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The language of the plain literal (http://www.rfc-editor.org/rfc/bcp/bcp47.txt)
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Lang Range</em>' containment reference.
-	 * @see #setLangRange(LiteralLanguageTag)
+	 * @return the value of the '<em>Lang Range</em>' attribute.
+	 * @see #setLangRange(LanguageTagValue)
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getPlainLiteralScalarRestriction_LangRange()
-	 * @model containment="true"
+	 * @model unique="false" dataType="gov.nasa.jpl.imce.oml.model.common.LanguageTagDataType"
 	 * @generated
 	 */
-	LiteralLanguageTag getLangRange();
+	LanguageTagValue getLangRange();
 
 	/**
-	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction#getLangRange <em>Lang Range</em>}' containment reference.
+	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction#getLangRange <em>Lang Range</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Lang Range</em>' containment reference.
+	 * @param value the new value of the '<em>Lang Range</em>' attribute.
 	 * @see #getLangRange()
 	 * @generated
 	 */
-	void setLangRange(LiteralLanguageTag value);
+	void setLangRange(LanguageTagValue value);
 
 } // PlainLiteralScalarRestriction
