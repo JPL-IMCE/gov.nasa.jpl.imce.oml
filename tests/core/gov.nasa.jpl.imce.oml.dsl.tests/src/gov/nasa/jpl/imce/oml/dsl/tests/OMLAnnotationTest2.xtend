@@ -66,7 +66,7 @@ open terminology <http://imce.jpl.nasa.gov/foundation/mission/mission>
 		val c = tbox.boxStatements.filter(Concept).head
 		c.name().assertEquals("PerformingElement")
 		
-		val ann = tbox.annotations
+		val ann = c.annotations
 		assertEquals(2, ann.size)
 		ann.forEach[a |
 			
@@ -74,7 +74,7 @@ open terminology <http://imce.jpl.nasa.gov/foundation/mission/mission>
 			val a_subj = a.subject
 			val a_value = a.value
 		
-			assertTrue(a_value.equals("Performing Element") || a_value.equals("A performing element"))
+			assertTrue(a_value.value.equals("Performing Element") || a_value.value.equals("A performing element"))
 			ap.assertSame(a_prop)
 			c.assertSame(a_subj)
 		]

@@ -48,7 +48,7 @@ import gov.nasa.jpl.imce.oml.model.common.Glossary
 import gov.nasa.jpl.imce.oml.model.common.ImplicitExtent
 import gov.nasa.jpl.imce.oml.model.common.IRI
 import gov.nasa.jpl.imce.oml.model.common.IRIReference
-import gov.nasa.jpl.imce.oml.model.common.LiteralLanguageTag
+import gov.nasa.jpl.imce.oml.model.common.LanguageTagDataType
 import gov.nasa.jpl.imce.oml.model.common.LiteralValue
 import gov.nasa.jpl.imce.oml.model.common.LocalName
 import gov.nasa.jpl.imce.oml.model.common.Module
@@ -58,9 +58,10 @@ import gov.nasa.jpl.imce.oml.model.common.NamespaceUUID
 import gov.nasa.jpl.imce.oml.model.common.NotFunctionalAPI
 import gov.nasa.jpl.imce.oml.model.common.NotSchema
 import gov.nasa.jpl.imce.oml.model.common.LiteralNumber
+import gov.nasa.jpl.imce.oml.model.common.LiteralPattern
 import gov.nasa.jpl.imce.oml.model.common.Override
 import gov.nasa.jpl.imce.oml.model.common.OverrideVal
-import gov.nasa.jpl.imce.oml.model.common.LiteralPattern
+import gov.nasa.jpl.imce.oml.model.common.PositiveIntegerLiteral
 import gov.nasa.jpl.imce.oml.model.common.Resource
 import gov.nasa.jpl.imce.oml.model.common.Scala
 import gov.nasa.jpl.imce.oml.model.common.UUID
@@ -1106,15 +1107,15 @@ class BinaryScalarRestriction extends RestrictedDataRange {
 	/*
 	 * The length of the binary data
 	 */
-	String[?] length
+	PositiveIntegerLiteral[?] length
 	/*
 	 * The minimum length of the binary data
 	 */
-	String[?] minLength
+	PositiveIntegerLiteral[?] minLength
 	/*
 	 * The maximum length of the binary data
 	 */
-	String[?] maxLength
+	PositiveIntegerLiteral[?] maxLength
 }
 
 /*
@@ -1136,19 +1137,19 @@ class IRIScalarRestriction extends RestrictedDataRange {
 	/*
 	 * The length of the IRI
 	 */
-	String[?] length
+	PositiveIntegerLiteral[?] length
 	/*
 	 * The minimum length of the IRI
 	 */
-	String[?] minLength
+	PositiveIntegerLiteral[?] minLength
 	/*
 	 * The maximum length of the IRI
 	 */
-	String[?] maxLength
+	PositiveIntegerLiteral[?] maxLength
 	/*
 	 * The pattern of the IRI (https://www.w3.org/TR/xmlschema-2/#regexs)
 	 */
-	contains LiteralPattern[?] pattern
+	LiteralPattern[?] pattern
 }
 
 /*
@@ -1222,23 +1223,23 @@ class PlainLiteralScalarRestriction extends RestrictedDataRange {
 	/*
 	 * The length of the plain literal
 	 */
-	String[?] length
+	PositiveIntegerLiteral[?] length
 	/*
 	 * The minimum length of the plain literal
 	 */
-	String[?] minLength
+	PositiveIntegerLiteral[?] minLength
 	/*
 	 * The maximum length of the plain literal
 	 */
-	String[?] maxLength
+	PositiveIntegerLiteral[?] maxLength
 	/*
 	 * The pattern of the plain literal (https://www.w3.org/TR/xmlschema-2/#regexs)
 	 */
-	contains LiteralPattern[?] pattern
+	LiteralPattern[?] pattern
 	/*
 	 * The language of the plain literal (http://www.rfc-editor.org/rfc/bcp/bcp47.txt)
 	 */
-	contains LiteralLanguageTag[?] langRange
+	LanguageTagDataType[?] langRange
 }
 
 /*
@@ -1266,19 +1267,19 @@ class StringScalarRestriction extends RestrictedDataRange {
 	/*
 	 * The length of the string
 	 */
-	String[?] length
+	PositiveIntegerLiteral[?] length
 	/*
 	 * The minimum length of the string
 	 */
-	String[?] minLength
+	PositiveIntegerLiteral[?] minLength
 	/*
 	 * The maximum length of the string
 	 */
-	String[?] maxLength
+	PositiveIntegerLiteral[?] maxLength
 	/*
 	 * The pattern of the string (https://www.w3.org/TR/xmlschema-2/#regexs)
 	 */
-	contains LiteralPattern[?] pattern
+	LiteralPattern[?] pattern
 }
 
 /*

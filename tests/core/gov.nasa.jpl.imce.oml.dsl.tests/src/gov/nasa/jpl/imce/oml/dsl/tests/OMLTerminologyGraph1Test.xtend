@@ -93,7 +93,7 @@ open terminology <http://example.org> {
 		val a_subj = a.subject
 		val a_value = a.value
 		
-		"Performing Element".assertEquals(a_value)
+		"Performing Element".assertEquals(a_value.value)
 		ap.assertSame(a_prop)
 		c.assertSame(a_subj)
 		

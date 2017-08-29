@@ -38,6 +38,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 import static org.junit.Assert.*
+import gov.nasa.jpl.imce.oml.model.datatypes.StringValue
 
 @RunWith(XtextRunner)
 @InjectWith(OMLInjectorProvider)
@@ -111,6 +112,6 @@ class OMLAnnotationTest3 {
 		val AnnotationPropertyValue av = commonF.createAnnotationPropertyValue
 		e.annotations += av
 		av.property = ap
-		av.value = v
+		av.value = new StringValue(v)
 	}
 }

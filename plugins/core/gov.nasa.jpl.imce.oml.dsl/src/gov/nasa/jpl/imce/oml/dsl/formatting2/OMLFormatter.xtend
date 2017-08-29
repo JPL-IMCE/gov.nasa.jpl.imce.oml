@@ -93,7 +93,7 @@ class OMLFormatter extends AbstractFormatter2 {
 	def dispatch void format(AnnotationPropertyValue annotation, extension IFormattableDocument document) {
 		annotation.regionFor.keyword('@').append[noSpace]
 		annotation.regionFor.keyword('=').surround[noSpace]
-		annotation.regionFor.ruleCall(annotationPropertyValueAccess.valueSTRINGTerminalRuleCall_3_0)
+		annotation.regionFor.ruleCall(annotationPropertyValueAccess.valueSTRING_VALUETerminalRuleCall_3_0)
 	}
 	
 	def dispatch void format(TerminologyGraph terminologyGraph, extension IFormattableDocument document) {
@@ -479,11 +479,11 @@ class OMLFormatter extends AbstractFormatter2 {
 		interior(lcurly, rcurly)[indent]
 		
 		sc.regionFor.keyword('length').append[oneSpace]
-		sc.regionFor.ruleCall(binaryScalarRestrictionAccess.lengthDIGITSTerminalRuleCall_4_0_1_0).append[newLine]
+		sc.regionFor.ruleCall(binaryScalarRestrictionAccess.lengthPositiveIntegerLiteralParserRuleCall_4_0_1_0).append[newLine]
 		sc.regionFor.keyword('minLength').append[oneSpace]
-		sc.regionFor.ruleCall(binaryScalarRestrictionAccess.minLengthDIGITSTerminalRuleCall_4_1_1_0).append[newLine]
+		sc.regionFor.ruleCall(binaryScalarRestrictionAccess.minLengthPositiveIntegerLiteralParserRuleCall_4_1_1_0).append[newLine]
 		sc.regionFor.keyword('maxLength').append[oneSpace]
-		sc.regionFor.ruleCall(binaryScalarRestrictionAccess.maxLengthDIGITSTerminalRuleCall_4_2_1_0).append[newLine]
+		sc.regionFor.ruleCall(binaryScalarRestrictionAccess.maxLengthPositiveIntegerLiteralParserRuleCall_4_2_1_0).append[newLine]
 		sc.regionFor.keyword('restrictedRange').append[oneSpace]
 		sc.regionFor.ruleCall(binaryScalarRestrictionAccess.restrictedRangeDataRangeReferenceParserRuleCall_6_0_1).append[newLine]
 	}
@@ -500,13 +500,13 @@ class OMLFormatter extends AbstractFormatter2 {
 		interior(lcurly, rcurly)[indent]
 		
 		sc.regionFor.keyword('length').append[oneSpace]
-		sc.regionFor.ruleCall(IRIScalarRestrictionAccess.lengthDIGITSTerminalRuleCall_4_0_1_0).append[newLine]
+		sc.regionFor.ruleCall(IRIScalarRestrictionAccess.lengthPositiveIntegerLiteralParserRuleCall_4_0_1_0).append[newLine]
 		sc.regionFor.keyword('minLength').append[oneSpace]
-		sc.regionFor.ruleCall(IRIScalarRestrictionAccess.minLengthDIGITSTerminalRuleCall_4_1_1_0).append[newLine]
+		sc.regionFor.ruleCall(IRIScalarRestrictionAccess.minLengthPositiveIntegerLiteralParserRuleCall_4_1_1_0).append[newLine]
 		sc.regionFor.keyword('maxLength').append[oneSpace]
-		sc.regionFor.ruleCall(IRIScalarRestrictionAccess.maxLengthDIGITSTerminalRuleCall_4_2_1_0).append[newLine]
+		sc.regionFor.ruleCall(IRIScalarRestrictionAccess.maxLengthPositiveIntegerLiteralParserRuleCall_4_2_1_0).append[newLine]
 		sc.regionFor.keyword('pattern').append[oneSpace]
-		sc.regionFor.ruleCall(IRIScalarRestrictionAccess.patternLiteralPatternParserRuleCall_4_3_1_0).append[newLine]
+		sc.regionFor.ruleCall(IRIScalarRestrictionAccess.patternPATTERNTerminalRuleCall_4_3_1_0).append[newLine]
 		sc.regionFor.keyword('restrictedRange').append[oneSpace]
 		sc.regionFor.ruleCall(IRIScalarRestrictionAccess.restrictedRangeDataRangeReferenceParserRuleCall_6_0_1).append[newLine]
 	}
@@ -547,15 +547,15 @@ class OMLFormatter extends AbstractFormatter2 {
 		interior(lcurly, rcurly)[indent]
 		
 		sc.regionFor.keyword('length').append[oneSpace]
-		sc.regionFor.ruleCall(plainLiteralScalarRestrictionAccess.lengthDIGITSTerminalRuleCall_4_0_1_0).append[newLine]
+		sc.regionFor.ruleCall(plainLiteralScalarRestrictionAccess.lengthPositiveIntegerLiteralParserRuleCall_4_0_1_0).append[newLine]
 		sc.regionFor.keyword('minLength').append[oneSpace]
-		sc.regionFor.ruleCall(plainLiteralScalarRestrictionAccess.minLengthDIGITSTerminalRuleCall_4_1_1_0).append[newLine]
+		sc.regionFor.ruleCall(plainLiteralScalarRestrictionAccess.minLengthPositiveIntegerLiteralParserRuleCall_4_1_1_0).append[newLine]
 		sc.regionFor.keyword('maxLength').append[oneSpace]
-		sc.regionFor.ruleCall(plainLiteralScalarRestrictionAccess.maxLengthDIGITSTerminalRuleCall_4_2_1_0).append[newLine]
+		sc.regionFor.ruleCall(plainLiteralScalarRestrictionAccess.maxLengthPositiveIntegerLiteralParserRuleCall_4_2_1_0).append[newLine]
 		sc.regionFor.keyword('pattern').append[oneSpace]
-		sc.regionFor.ruleCall(plainLiteralScalarRestrictionAccess.patternLiteralPatternParserRuleCall_4_3_1_0).append[newLine]
+		sc.regionFor.ruleCall(plainLiteralScalarRestrictionAccess.patternPATTERNTerminalRuleCall_4_3_1_0).append[newLine]
 		sc.regionFor.keyword('langRange').append[oneSpace]
-		sc.regionFor.ruleCall(plainLiteralScalarRestrictionAccess.langRangeLiteralLanguageTagParserRuleCall_4_4_1_0).append[newLine]
+		sc.regionFor.ruleCall(plainLiteralScalarRestrictionAccess.langRangeLANG_TAGTerminalRuleCall_4_4_1_0).append[newLine]
 		sc.regionFor.keyword('restrictedRange').append[oneSpace]
 		sc.regionFor.ruleCall(plainLiteralScalarRestrictionAccess.restrictedRangeDataRangeReferenceParserRuleCall_6_0_1).append[newLine]
 	}
@@ -593,13 +593,13 @@ class OMLFormatter extends AbstractFormatter2 {
 		interior(lcurly, rcurly)[indent]
 		
 		sc.regionFor.keyword('length').append[oneSpace]
-		sc.regionFor.ruleCall(stringScalarRestrictionAccess.lengthDIGITSTerminalRuleCall_4_0_1_0).append[newLine]
+		sc.regionFor.ruleCall(stringScalarRestrictionAccess.lengthPositiveIntegerLiteralParserRuleCall_4_0_1_0).append[newLine]
 		sc.regionFor.keyword('minLength').append[oneSpace]
-		sc.regionFor.ruleCall(stringScalarRestrictionAccess.minLengthDIGITSTerminalRuleCall_4_1_1_0).append[newLine]
+		sc.regionFor.ruleCall(stringScalarRestrictionAccess.minLengthPositiveIntegerLiteralParserRuleCall_4_1_1_0).append[newLine]
 		sc.regionFor.keyword('maxLength').append[oneSpace]
-		sc.regionFor.ruleCall(stringScalarRestrictionAccess.maxLengthDIGITSTerminalRuleCall_4_2_1_0).append[newLine]
+		sc.regionFor.ruleCall(stringScalarRestrictionAccess.maxLengthPositiveIntegerLiteralParserRuleCall_4_2_1_0).append[newLine]
 		sc.regionFor.keyword('pattern').append[oneSpace]
-		sc.regionFor.ruleCall(stringScalarRestrictionAccess.patternLiteralPatternParserRuleCall_4_3_1_0).append[newLine]
+		sc.regionFor.ruleCall(stringScalarRestrictionAccess.patternPATTERNTerminalRuleCall_4_3_1_0).append[newLine]
 		sc.regionFor.keyword('restrictedRange').append[oneSpace]
 		sc.regionFor.ruleCall(stringScalarRestrictionAccess.restrictedRangeDataRangeReferenceParserRuleCall_6_0_1).append[newLine]
 	}

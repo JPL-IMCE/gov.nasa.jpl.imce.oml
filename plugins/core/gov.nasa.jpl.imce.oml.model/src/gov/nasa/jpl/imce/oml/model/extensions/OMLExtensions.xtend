@@ -286,11 +286,11 @@ public class OMLExtensions {
 	}
 
 	static def String getModuleNsURI(Module it) {
-		annotations.findFirst[a| a.property.iri == "http://imce.jpl.nasa.gov/oml/runtime#OML2EcoreNsURI"]?.value ?: iri()
+		annotations.findFirst[a| a.property.iri == "http://imce.jpl.nasa.gov/oml/runtime#OML2EcoreNsURI"]?.value.value ?: iri()
 	}
 	
 	static def String getModuleNsPrefix(Module it) {
-		annotations.findFirst[a| a.property.iri == "http://imce.jpl.nasa.gov/oml/runtime#OML2EcoreNsPrefix"]?.value ?: name()
+		annotations.findFirst[a| a.property.iri == "http://imce.jpl.nasa.gov/oml/runtime#OML2EcoreNsPrefix"]?.value.value ?: name()
 	}
 	
 	def Iterable<TerminologyBox> terminologies(Extent it) {
