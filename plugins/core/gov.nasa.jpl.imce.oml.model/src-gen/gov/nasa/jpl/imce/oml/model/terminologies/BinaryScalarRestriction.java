@@ -18,6 +18,7 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies;
 
+import gov.nasa.jpl.imce.oml.model.datatypes.PositiveIntegerValue;
 
 /**
  * <!-- begin-user-doc -->
@@ -60,12 +61,12 @@ public interface BinaryScalarRestriction extends RestrictedDataRange {
 	 * The length of the binary data
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Length</em>' attribute.
-	 * @see #setLength(String)
+	 * @see #setLength(PositiveIntegerValue)
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getBinaryScalarRestriction_Length()
-	 * @model unique="false"
+	 * @model unique="false" dataType="gov.nasa.jpl.imce.oml.model.common.PositiveIntegerLiteral"
 	 * @generated
 	 */
-	String getLength();
+	PositiveIntegerValue getLength();
 
 	/**
 	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.BinaryScalarRestriction#getLength <em>Length</em>}' attribute.
@@ -75,7 +76,7 @@ public interface BinaryScalarRestriction extends RestrictedDataRange {
 	 * @see #getLength()
 	 * @generated
 	 */
-	void setLength(String value);
+	void setLength(PositiveIntegerValue value);
 
 	/**
 	 * Returns the value of the '<em><b>Min Length</b></em>' attribute.
@@ -85,12 +86,12 @@ public interface BinaryScalarRestriction extends RestrictedDataRange {
 	 * The minimum length of the binary data
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Min Length</em>' attribute.
-	 * @see #setMinLength(String)
+	 * @see #setMinLength(PositiveIntegerValue)
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getBinaryScalarRestriction_MinLength()
-	 * @model unique="false"
+	 * @model unique="false" dataType="gov.nasa.jpl.imce.oml.model.common.PositiveIntegerLiteral"
 	 * @generated
 	 */
-	String getMinLength();
+	PositiveIntegerValue getMinLength();
 
 	/**
 	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.BinaryScalarRestriction#getMinLength <em>Min Length</em>}' attribute.
@@ -100,7 +101,7 @@ public interface BinaryScalarRestriction extends RestrictedDataRange {
 	 * @see #getMinLength()
 	 * @generated
 	 */
-	void setMinLength(String value);
+	void setMinLength(PositiveIntegerValue value);
 
 	/**
 	 * Returns the value of the '<em><b>Max Length</b></em>' attribute.
@@ -110,12 +111,12 @@ public interface BinaryScalarRestriction extends RestrictedDataRange {
 	 * The maximum length of the binary data
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Max Length</em>' attribute.
-	 * @see #setMaxLength(String)
+	 * @see #setMaxLength(PositiveIntegerValue)
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getBinaryScalarRestriction_MaxLength()
-	 * @model unique="false"
+	 * @model unique="false" dataType="gov.nasa.jpl.imce.oml.model.common.PositiveIntegerLiteral"
 	 * @generated
 	 */
-	String getMaxLength();
+	PositiveIntegerValue getMaxLength();
 
 	/**
 	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.BinaryScalarRestriction#getMaxLength <em>Max Length</em>}' attribute.
@@ -125,6 +126,6 @@ public interface BinaryScalarRestriction extends RestrictedDataRange {
 	 * @see #getMaxLength()
 	 * @generated
 	 */
-	void setMaxLength(String value);
+	void setMaxLength(PositiveIntegerValue value);
 
 } // BinaryScalarRestriction

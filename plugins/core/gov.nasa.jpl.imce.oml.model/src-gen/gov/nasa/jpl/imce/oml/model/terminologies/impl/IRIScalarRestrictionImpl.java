@@ -18,16 +18,15 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies.impl;
 
-import gov.nasa.jpl.imce.oml.model.common.LiteralPattern;
+import gov.nasa.jpl.imce.oml.model.datatypes.PatternValue;
+import gov.nasa.jpl.imce.oml.model.datatypes.PositiveIntegerValue;
 
 import gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
@@ -56,7 +55,7 @@ public class IRIScalarRestrictionImpl extends RestrictedDataRangeImpl implements
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String LENGTH_EDEFAULT = null;
+	protected static final PositiveIntegerValue LENGTH_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getLength() <em>Length</em>}' attribute.
@@ -66,7 +65,7 @@ public class IRIScalarRestrictionImpl extends RestrictedDataRangeImpl implements
 	 * @generated
 	 * @ordered
 	 */
-	protected String length = LENGTH_EDEFAULT;
+	protected PositiveIntegerValue length = LENGTH_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getMinLength() <em>Min Length</em>}' attribute.
@@ -76,7 +75,7 @@ public class IRIScalarRestrictionImpl extends RestrictedDataRangeImpl implements
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String MIN_LENGTH_EDEFAULT = null;
+	protected static final PositiveIntegerValue MIN_LENGTH_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getMinLength() <em>Min Length</em>}' attribute.
@@ -86,7 +85,7 @@ public class IRIScalarRestrictionImpl extends RestrictedDataRangeImpl implements
 	 * @generated
 	 * @ordered
 	 */
-	protected String minLength = MIN_LENGTH_EDEFAULT;
+	protected PositiveIntegerValue minLength = MIN_LENGTH_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getMaxLength() <em>Max Length</em>}' attribute.
@@ -96,7 +95,7 @@ public class IRIScalarRestrictionImpl extends RestrictedDataRangeImpl implements
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String MAX_LENGTH_EDEFAULT = null;
+	protected static final PositiveIntegerValue MAX_LENGTH_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getMaxLength() <em>Max Length</em>}' attribute.
@@ -106,17 +105,27 @@ public class IRIScalarRestrictionImpl extends RestrictedDataRangeImpl implements
 	 * @generated
 	 * @ordered
 	 */
-	protected String maxLength = MAX_LENGTH_EDEFAULT;
+	protected PositiveIntegerValue maxLength = MAX_LENGTH_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getPattern() <em>Pattern</em>}' containment reference.
+	 * The default value of the '{@link #getPattern() <em>Pattern</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getPattern()
 	 * @generated
 	 * @ordered
 	 */
-	protected LiteralPattern pattern;
+	protected static final PatternValue PATTERN_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getPattern() <em>Pattern</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPattern()
+	 * @generated
+	 * @ordered
+	 */
+	protected PatternValue pattern = PATTERN_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -142,7 +151,7 @@ public class IRIScalarRestrictionImpl extends RestrictedDataRangeImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getLength() {
+	public PositiveIntegerValue getLength() {
 		return length;
 	}
 
@@ -151,8 +160,8 @@ public class IRIScalarRestrictionImpl extends RestrictedDataRangeImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setLength(String newLength) {
-		String oldLength = length;
+	public void setLength(PositiveIntegerValue newLength) {
+		PositiveIntegerValue oldLength = length;
 		length = newLength;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.IRI_SCALAR_RESTRICTION__LENGTH, oldLength, length));
@@ -163,7 +172,7 @@ public class IRIScalarRestrictionImpl extends RestrictedDataRangeImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getMinLength() {
+	public PositiveIntegerValue getMinLength() {
 		return minLength;
 	}
 
@@ -172,8 +181,8 @@ public class IRIScalarRestrictionImpl extends RestrictedDataRangeImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setMinLength(String newMinLength) {
-		String oldMinLength = minLength;
+	public void setMinLength(PositiveIntegerValue newMinLength) {
+		PositiveIntegerValue oldMinLength = minLength;
 		minLength = newMinLength;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.IRI_SCALAR_RESTRICTION__MIN_LENGTH, oldMinLength, minLength));
@@ -184,7 +193,7 @@ public class IRIScalarRestrictionImpl extends RestrictedDataRangeImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getMaxLength() {
+	public PositiveIntegerValue getMaxLength() {
 		return maxLength;
 	}
 
@@ -193,8 +202,8 @@ public class IRIScalarRestrictionImpl extends RestrictedDataRangeImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setMaxLength(String newMaxLength) {
-		String oldMaxLength = maxLength;
+	public void setMaxLength(PositiveIntegerValue newMaxLength) {
+		PositiveIntegerValue oldMaxLength = maxLength;
 		maxLength = newMaxLength;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.IRI_SCALAR_RESTRICTION__MAX_LENGTH, oldMaxLength, maxLength));
@@ -205,7 +214,7 @@ public class IRIScalarRestrictionImpl extends RestrictedDataRangeImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LiteralPattern getPattern() {
+	public PatternValue getPattern() {
 		return pattern;
 	}
 
@@ -214,47 +223,11 @@ public class IRIScalarRestrictionImpl extends RestrictedDataRangeImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetPattern(LiteralPattern newPattern, NotificationChain msgs) {
-		LiteralPattern oldPattern = pattern;
+	public void setPattern(PatternValue newPattern) {
+		PatternValue oldPattern = pattern;
 		pattern = newPattern;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TerminologiesPackage.IRI_SCALAR_RESTRICTION__PATTERN, oldPattern, newPattern);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setPattern(LiteralPattern newPattern) {
-		if (newPattern != pattern) {
-			NotificationChain msgs = null;
-			if (pattern != null)
-				msgs = ((InternalEObject)pattern).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TerminologiesPackage.IRI_SCALAR_RESTRICTION__PATTERN, null, msgs);
-			if (newPattern != null)
-				msgs = ((InternalEObject)newPattern).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TerminologiesPackage.IRI_SCALAR_RESTRICTION__PATTERN, null, msgs);
-			msgs = basicSetPattern(newPattern, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.IRI_SCALAR_RESTRICTION__PATTERN, newPattern, newPattern));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case TerminologiesPackage.IRI_SCALAR_RESTRICTION__PATTERN:
-				return basicSetPattern(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.IRI_SCALAR_RESTRICTION__PATTERN, oldPattern, pattern));
 	}
 
 	/**
@@ -286,16 +259,16 @@ public class IRIScalarRestrictionImpl extends RestrictedDataRangeImpl implements
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case TerminologiesPackage.IRI_SCALAR_RESTRICTION__LENGTH:
-				setLength((String)newValue);
+				setLength((PositiveIntegerValue)newValue);
 				return;
 			case TerminologiesPackage.IRI_SCALAR_RESTRICTION__MIN_LENGTH:
-				setMinLength((String)newValue);
+				setMinLength((PositiveIntegerValue)newValue);
 				return;
 			case TerminologiesPackage.IRI_SCALAR_RESTRICTION__MAX_LENGTH:
-				setMaxLength((String)newValue);
+				setMaxLength((PositiveIntegerValue)newValue);
 				return;
 			case TerminologiesPackage.IRI_SCALAR_RESTRICTION__PATTERN:
-				setPattern((LiteralPattern)newValue);
+				setPattern((PatternValue)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -319,7 +292,7 @@ public class IRIScalarRestrictionImpl extends RestrictedDataRangeImpl implements
 				setMaxLength(MAX_LENGTH_EDEFAULT);
 				return;
 			case TerminologiesPackage.IRI_SCALAR_RESTRICTION__PATTERN:
-				setPattern((LiteralPattern)null);
+				setPattern(PATTERN_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -340,7 +313,7 @@ public class IRIScalarRestrictionImpl extends RestrictedDataRangeImpl implements
 			case TerminologiesPackage.IRI_SCALAR_RESTRICTION__MAX_LENGTH:
 				return MAX_LENGTH_EDEFAULT == null ? maxLength != null : !MAX_LENGTH_EDEFAULT.equals(maxLength);
 			case TerminologiesPackage.IRI_SCALAR_RESTRICTION__PATTERN:
-				return pattern != null;
+				return PATTERN_EDEFAULT == null ? pattern != null : !PATTERN_EDEFAULT.equals(pattern);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -361,6 +334,8 @@ public class IRIScalarRestrictionImpl extends RestrictedDataRangeImpl implements
 		result.append(minLength);
 		result.append(", maxLength: ");
 		result.append(maxLength);
+		result.append(", pattern: ");
+		result.append(pattern);
 		result.append(')');
 		return result.toString();
 	}

@@ -211,11 +211,6 @@ public class ScalarDataPropertyValueItemProvider extends ElementItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(DescriptionsPackage.Literals.SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE,
-				 CommonFactory.eINSTANCE.createLiteralLanguageTag()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(DescriptionsPackage.Literals.SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE,
 				 CommonFactory.eINSTANCE.createLiteralString()));
 
 		newChildDescriptors.add
@@ -231,7 +226,22 @@ public class ScalarDataPropertyValueItemProvider extends ElementItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(DescriptionsPackage.Literals.SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE,
-				 CommonFactory.eINSTANCE.createLiteralNumber()));
+				 CommonFactory.eINSTANCE.createLiteralReal()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(DescriptionsPackage.Literals.SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE,
+				 CommonFactory.eINSTANCE.createLiteralRational()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(DescriptionsPackage.Literals.SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE,
+				 CommonFactory.eINSTANCE.createLiteralFloat()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(DescriptionsPackage.Literals.SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE,
+				 CommonFactory.eINSTANCE.createLiteralDecimal()));
 	}
 
 	/**

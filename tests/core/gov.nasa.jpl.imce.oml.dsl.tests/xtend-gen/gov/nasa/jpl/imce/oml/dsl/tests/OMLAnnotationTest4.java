@@ -24,6 +24,7 @@ import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue;
 import gov.nasa.jpl.imce.oml.model.common.CommonFactory;
 import gov.nasa.jpl.imce.oml.model.common.Element;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
+import gov.nasa.jpl.imce.oml.model.datatypes.StringValue;
 import gov.nasa.jpl.imce.oml.model.graphs.GraphsFactory;
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyGraph;
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
@@ -143,6 +144,7 @@ public class OMLAnnotationTest4 {
     EList<AnnotationPropertyValue> _annotations = e.getAnnotations();
     _annotations.add(av);
     av.setProperty(ap);
-    av.setValue(v);
+    StringValue _stringValue = new StringValue(v);
+    av.setValue(_stringValue);
   }
 }

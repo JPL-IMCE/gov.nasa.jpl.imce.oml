@@ -19,7 +19,9 @@
 package gov.nasa.jpl.imce.oml.model.common.impl;
 
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
-import gov.nasa.jpl.imce.oml.model.common.LiteralPattern;
+import gov.nasa.jpl.imce.oml.model.common.LiteralDecimal;
+
+import gov.nasa.jpl.imce.oml.model.datatypes.DecimalValue;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -27,48 +29,46 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.internal.cdo.CDOObjectImpl;
-
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Literal Pattern</b></em>'.
+ * An implementation of the model object '<em><b>Literal Decimal</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralPatternImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralDecimalImpl#getDecimal <em>Decimal</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class LiteralPatternImpl extends CDOObjectImpl implements LiteralPattern {
+public class LiteralDecimalImpl extends LiteralNumberImpl implements LiteralDecimal {
 	/**
-	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
+	 * The default value of the '{@link #getDecimal() <em>Decimal</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getValue()
+	 * @see #getDecimal()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String VALUE_EDEFAULT = null;
+	protected static final DecimalValue DECIMAL_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
+	 * The cached value of the '{@link #getDecimal() <em>Decimal</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getValue()
+	 * @see #getDecimal()
 	 * @generated
 	 * @ordered
 	 */
-	protected String value = VALUE_EDEFAULT;
+	protected DecimalValue decimal = DECIMAL_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected LiteralPatternImpl() {
+	protected LiteralDecimalImpl() {
 		super();
 	}
 
@@ -79,7 +79,7 @@ public class LiteralPatternImpl extends CDOObjectImpl implements LiteralPattern 
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return CommonPackage.Literals.LITERAL_PATTERN;
+		return CommonPackage.Literals.LITERAL_DECIMAL;
 	}
 
 	/**
@@ -87,8 +87,8 @@ public class LiteralPatternImpl extends CDOObjectImpl implements LiteralPattern 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getValue() {
-		return value;
+	public DecimalValue getDecimal() {
+		return decimal;
 	}
 
 	/**
@@ -96,11 +96,11 @@ public class LiteralPatternImpl extends CDOObjectImpl implements LiteralPattern 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setValue(String newValue) {
-		String oldValue = value;
-		value = newValue;
+	public void setDecimal(DecimalValue newDecimal) {
+		DecimalValue oldDecimal = decimal;
+		decimal = newDecimal;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CommonPackage.LITERAL_PATTERN__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET, CommonPackage.LITERAL_DECIMAL__DECIMAL, oldDecimal, decimal));
 	}
 
 	/**
@@ -111,8 +111,8 @@ public class LiteralPatternImpl extends CDOObjectImpl implements LiteralPattern 
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case CommonPackage.LITERAL_PATTERN__VALUE:
-				return getValue();
+			case CommonPackage.LITERAL_DECIMAL__DECIMAL:
+				return getDecimal();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -125,8 +125,8 @@ public class LiteralPatternImpl extends CDOObjectImpl implements LiteralPattern 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case CommonPackage.LITERAL_PATTERN__VALUE:
-				setValue((String)newValue);
+			case CommonPackage.LITERAL_DECIMAL__DECIMAL:
+				setDecimal((DecimalValue)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -140,8 +140,8 @@ public class LiteralPatternImpl extends CDOObjectImpl implements LiteralPattern 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case CommonPackage.LITERAL_PATTERN__VALUE:
-				setValue(VALUE_EDEFAULT);
+			case CommonPackage.LITERAL_DECIMAL__DECIMAL:
+				setDecimal(DECIMAL_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -155,8 +155,8 @@ public class LiteralPatternImpl extends CDOObjectImpl implements LiteralPattern 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case CommonPackage.LITERAL_PATTERN__VALUE:
-				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+			case CommonPackage.LITERAL_DECIMAL__DECIMAL:
+				return DECIMAL_EDEFAULT == null ? decimal != null : !DECIMAL_EDEFAULT.equals(decimal);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -171,10 +171,10 @@ public class LiteralPatternImpl extends CDOObjectImpl implements LiteralPattern 
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (value: ");
-		result.append(value);
+		result.append(" (decimal: ");
+		result.append(decimal);
 		result.append(')');
 		return result.toString();
 	}
 
-} //LiteralPatternImpl
+} //LiteralDecimalImpl

@@ -18,21 +18,18 @@
  */
 package gov.nasa.jpl.imce.oml.model.common;
 
+import gov.nasa.jpl.imce.oml.model.datatypes.UUIDValue;
 
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Literal UUID</b></em>'.
  * <!-- end-user-doc -->
  *
- * <!-- begin-model-doc -->
- * An RFC-4122 Version 5 UUID (SHA-1 hash & namespace)
- * <!-- end-model-doc -->
- *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link gov.nasa.jpl.imce.oml.model.common.LiteralUUID#getValue <em>Value</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.common.LiteralUUID#getUuid <em>Uuid</em>}</li>
  * </ul>
  *
  * @see gov.nasa.jpl.imce.oml.model.common.CommonPackage#getLiteralUUID()
@@ -41,29 +38,29 @@ package gov.nasa.jpl.imce.oml.model.common;
  */
 public interface LiteralUUID extends LiteralValue {
 	/**
-	 * Returns the value of the '<em><b>Value</b></em>' attribute.
+	 * Returns the value of the '<em><b>Uuid</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Value</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Uuid</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Value</em>' attribute.
-	 * @see #setValue(String)
-	 * @see gov.nasa.jpl.imce.oml.model.common.CommonPackage#getLiteralUUID_Value()
-	 * @model unique="false" required="true"
+	 * @return the value of the '<em>Uuid</em>' attribute.
+	 * @see #setUuid(UUIDValue)
+	 * @see gov.nasa.jpl.imce.oml.model.common.CommonPackage#getLiteralUUID_Uuid()
+	 * @model unique="false" dataType="gov.nasa.jpl.imce.oml.model.common.UUIDDataType" required="true"
 	 * @generated
 	 */
-	String getValue();
+	UUIDValue getUuid();
 
 	/**
-	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.common.LiteralUUID#getValue <em>Value</em>}' attribute.
+	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.common.LiteralUUID#getUuid <em>Uuid</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Value</em>' attribute.
-	 * @see #getValue()
+	 * @param value the new value of the '<em>Uuid</em>' attribute.
+	 * @see #getUuid()
 	 * @generated
 	 */
-	void setValue(String value);
+	void setUuid(UUIDValue value);
 
 } // LiteralUUID

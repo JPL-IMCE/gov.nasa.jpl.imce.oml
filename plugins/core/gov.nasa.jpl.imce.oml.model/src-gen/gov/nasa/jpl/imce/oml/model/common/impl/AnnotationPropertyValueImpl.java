@@ -23,6 +23,8 @@ import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue;
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
 import gov.nasa.jpl.imce.oml.model.common.Element;
 
+import gov.nasa.jpl.imce.oml.model.datatypes.StringValue;
+
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
 
 import java.util.UUID;
@@ -87,7 +89,7 @@ public class AnnotationPropertyValueImpl extends CDOObjectImpl implements Annota
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String VALUE_EDEFAULT = null;
+	protected static final StringValue VALUE_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
@@ -97,7 +99,7 @@ public class AnnotationPropertyValueImpl extends CDOObjectImpl implements Annota
 	 * @generated
 	 * @ordered
 	 */
-	protected String value = VALUE_EDEFAULT;
+	protected StringValue value = VALUE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -247,7 +249,7 @@ public class AnnotationPropertyValueImpl extends CDOObjectImpl implements Annota
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getValue() {
+	public StringValue getValue() {
 		return value;
 	}
 
@@ -256,8 +258,8 @@ public class AnnotationPropertyValueImpl extends CDOObjectImpl implements Annota
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setValue(String newValue) {
-		String oldValue = value;
+	public void setValue(StringValue newValue) {
+		StringValue oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CommonPackage.ANNOTATION_PROPERTY_VALUE__VALUE, oldValue, value));
@@ -344,7 +346,7 @@ public class AnnotationPropertyValueImpl extends CDOObjectImpl implements Annota
 				setProperty((AnnotationProperty)newValue);
 				return;
 			case CommonPackage.ANNOTATION_PROPERTY_VALUE__VALUE:
-				setValue((String)newValue);
+				setValue((StringValue)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

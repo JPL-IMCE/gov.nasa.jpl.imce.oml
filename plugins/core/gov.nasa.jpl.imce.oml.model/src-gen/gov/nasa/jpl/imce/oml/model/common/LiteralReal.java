@@ -18,54 +18,49 @@
  */
 package gov.nasa.jpl.imce.oml.model.common;
 
-import org.eclipse.emf.cdo.CDOObject;
+import gov.nasa.jpl.imce.oml.model.datatypes.RealValue;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Literal Pattern</b></em>'.
+ * A representation of the model object '<em><b>Literal Real</b></em>'.
  * <!-- end-user-doc -->
- *
- * <!-- begin-model-doc -->
- * https://www.w3.org/TR/xmlschema11-2/#dt-regex
- * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link gov.nasa.jpl.imce.oml.model.common.LiteralPattern#getValue <em>Value</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.common.LiteralReal#getReal <em>Real</em>}</li>
  * </ul>
  *
- * @see gov.nasa.jpl.imce.oml.model.common.CommonPackage#getLiteralPattern()
+ * @see gov.nasa.jpl.imce.oml.model.common.CommonPackage#getLiteralReal()
  * @model
- * @extends CDOObject
  * @generated
  */
-public interface LiteralPattern extends CDOObject {
+public interface LiteralReal extends LiteralNumber {
 	/**
-	 * Returns the value of the '<em><b>Value</b></em>' attribute.
+	 * Returns the value of the '<em><b>Real</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Value</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Real</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Value</em>' attribute.
-	 * @see #setValue(String)
-	 * @see gov.nasa.jpl.imce.oml.model.common.CommonPackage#getLiteralPattern_Value()
-	 * @model unique="false" required="true"
+	 * @return the value of the '<em>Real</em>' attribute.
+	 * @see #setReal(RealValue)
+	 * @see gov.nasa.jpl.imce.oml.model.common.CommonPackage#getLiteralReal_Real()
+	 * @model unique="false" dataType="gov.nasa.jpl.imce.oml.model.common.RealDataType" required="true"
 	 * @generated
 	 */
-	String getValue();
+	RealValue getReal();
 
 	/**
-	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.common.LiteralPattern#getValue <em>Value</em>}' attribute.
+	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.common.LiteralReal#getReal <em>Real</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Value</em>' attribute.
-	 * @see #getValue()
+	 * @param value the new value of the '<em>Real</em>' attribute.
+	 * @see #getReal()
 	 * @generated
 	 */
-	void setValue(String value);
+	void setReal(RealValue value);
 
-} // LiteralPattern
+} // LiteralReal

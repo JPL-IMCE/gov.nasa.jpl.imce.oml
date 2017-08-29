@@ -20,8 +20,9 @@ package gov.nasa.jpl.imce.oml.model.common.provider;
 
 
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
-import gov.nasa.jpl.imce.oml.model.common.LiteralLanguageTag;
+import gov.nasa.jpl.imce.oml.model.common.LiteralRational;
 
+import gov.nasa.jpl.imce.oml.model.datatypes.RationalValue;
 import java.util.Collection;
 import java.util.List;
 
@@ -34,19 +35,19 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link gov.nasa.jpl.imce.oml.model.common.LiteralLanguageTag} object.
+ * This is the item provider adapter for a {@link gov.nasa.jpl.imce.oml.model.common.LiteralRational} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class LiteralLanguageTagItemProvider extends LiteralValueItemProvider {
+public class LiteralRationalItemProvider extends LiteralNumberItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LiteralLanguageTagItemProvider(AdapterFactory adapterFactory) {
+	public LiteralRationalItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -61,25 +62,25 @@ public class LiteralLanguageTagItemProvider extends LiteralValueItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addValuePropertyDescriptor(object);
+			addRationalPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Value feature.
+	 * This adds a property descriptor for the Rational feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addValuePropertyDescriptor(Object object) {
+	protected void addRationalPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_LiteralLanguageTag_value_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_LiteralLanguageTag_value_feature", "_UI_LiteralLanguageTag_type"),
-				 CommonPackage.Literals.LITERAL_LANGUAGE_TAG__VALUE,
+				 getString("_UI_LiteralRational_rational_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_LiteralRational_rational_feature", "_UI_LiteralRational_type"),
+				 CommonPackage.Literals.LITERAL_RATIONAL__RATIONAL,
 				 true,
 				 false,
 				 false,
@@ -89,14 +90,14 @@ public class LiteralLanguageTagItemProvider extends LiteralValueItemProvider {
 	}
 
 	/**
-	 * This returns LiteralLanguageTag.gif.
+	 * This returns LiteralRational.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/LiteralLanguageTag"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/LiteralRational"));
 	}
 
 	/**
@@ -107,10 +108,11 @@ public class LiteralLanguageTagItemProvider extends LiteralValueItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((LiteralLanguageTag)object).getValue();
+		RationalValue labelValue = ((LiteralRational)object).getRational();
+		String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ?
-			getString("_UI_LiteralLanguageTag_type") :
-			getString("_UI_LiteralLanguageTag_type") + " " + label;
+			getString("_UI_LiteralRational_type") :
+			getString("_UI_LiteralRational_type") + " " + label;
 	}
 	
 
@@ -125,8 +127,8 @@ public class LiteralLanguageTagItemProvider extends LiteralValueItemProvider {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(LiteralLanguageTag.class)) {
-			case CommonPackage.LITERAL_LANGUAGE_TAG__VALUE:
+		switch (notification.getFeatureID(LiteralRational.class)) {
+			case CommonPackage.LITERAL_RATIONAL__RATIONAL:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

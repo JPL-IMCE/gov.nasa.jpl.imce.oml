@@ -19,7 +19,9 @@
 package gov.nasa.jpl.imce.oml.model.common.impl;
 
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
-import gov.nasa.jpl.imce.oml.model.common.LiteralLanguageTag;
+import gov.nasa.jpl.imce.oml.model.common.LiteralFloat;
+
+import gov.nasa.jpl.imce.oml.model.datatypes.FloatValue;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -29,44 +31,44 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Literal Language Tag</b></em>'.
+ * An implementation of the model object '<em><b>Literal Float</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralLanguageTagImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralFloatImpl#getFloat <em>Float</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class LiteralLanguageTagImpl extends LiteralValueImpl implements LiteralLanguageTag {
+public class LiteralFloatImpl extends LiteralNumberImpl implements LiteralFloat {
 	/**
-	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
+	 * The default value of the '{@link #getFloat() <em>Float</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getValue()
+	 * @see #getFloat()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String VALUE_EDEFAULT = null;
+	protected static final FloatValue FLOAT_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
+	 * The cached value of the '{@link #getFloat() <em>Float</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getValue()
+	 * @see #getFloat()
 	 * @generated
 	 * @ordered
 	 */
-	protected String value = VALUE_EDEFAULT;
+	protected FloatValue float_ = FLOAT_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected LiteralLanguageTagImpl() {
+	protected LiteralFloatImpl() {
 		super();
 	}
 
@@ -77,7 +79,7 @@ public class LiteralLanguageTagImpl extends LiteralValueImpl implements LiteralL
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return CommonPackage.Literals.LITERAL_LANGUAGE_TAG;
+		return CommonPackage.Literals.LITERAL_FLOAT;
 	}
 
 	/**
@@ -85,8 +87,8 @@ public class LiteralLanguageTagImpl extends LiteralValueImpl implements LiteralL
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getValue() {
-		return value;
+	public FloatValue getFloat() {
+		return float_;
 	}
 
 	/**
@@ -94,11 +96,11 @@ public class LiteralLanguageTagImpl extends LiteralValueImpl implements LiteralL
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setValue(String newValue) {
-		String oldValue = value;
-		value = newValue;
+	public void setFloat(FloatValue newFloat) {
+		FloatValue oldFloat = float_;
+		float_ = newFloat;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CommonPackage.LITERAL_LANGUAGE_TAG__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET, CommonPackage.LITERAL_FLOAT__FLOAT, oldFloat, float_));
 	}
 
 	/**
@@ -109,8 +111,8 @@ public class LiteralLanguageTagImpl extends LiteralValueImpl implements LiteralL
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case CommonPackage.LITERAL_LANGUAGE_TAG__VALUE:
-				return getValue();
+			case CommonPackage.LITERAL_FLOAT__FLOAT:
+				return getFloat();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -123,8 +125,8 @@ public class LiteralLanguageTagImpl extends LiteralValueImpl implements LiteralL
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case CommonPackage.LITERAL_LANGUAGE_TAG__VALUE:
-				setValue((String)newValue);
+			case CommonPackage.LITERAL_FLOAT__FLOAT:
+				setFloat((FloatValue)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -138,8 +140,8 @@ public class LiteralLanguageTagImpl extends LiteralValueImpl implements LiteralL
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case CommonPackage.LITERAL_LANGUAGE_TAG__VALUE:
-				setValue(VALUE_EDEFAULT);
+			case CommonPackage.LITERAL_FLOAT__FLOAT:
+				setFloat(FLOAT_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -153,8 +155,8 @@ public class LiteralLanguageTagImpl extends LiteralValueImpl implements LiteralL
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case CommonPackage.LITERAL_LANGUAGE_TAG__VALUE:
-				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+			case CommonPackage.LITERAL_FLOAT__FLOAT:
+				return FLOAT_EDEFAULT == null ? float_ != null : !FLOAT_EDEFAULT.equals(float_);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -169,10 +171,10 @@ public class LiteralLanguageTagImpl extends LiteralValueImpl implements LiteralL
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (value: ");
-		result.append(value);
+		result.append(" (float: ");
+		result.append(float_);
 		result.append(')');
 		return result.toString();
 	}
 
-} //LiteralLanguageTagImpl
+} //LiteralFloatImpl

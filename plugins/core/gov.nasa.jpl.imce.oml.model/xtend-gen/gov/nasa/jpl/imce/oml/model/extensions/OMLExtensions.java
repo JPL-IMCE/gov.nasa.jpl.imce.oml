@@ -33,6 +33,7 @@ import gov.nasa.jpl.imce.oml.model.common.Element;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
 import gov.nasa.jpl.imce.oml.model.common.Module;
 import gov.nasa.jpl.imce.oml.model.common.ModuleEdge;
+import gov.nasa.jpl.imce.oml.model.datatypes.StringValue;
 import gov.nasa.jpl.imce.oml.model.descriptions.ConceptInstance;
 import gov.nasa.jpl.imce.oml.model.descriptions.ConceptualEntitySingletonInstance;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox;
@@ -406,12 +407,12 @@ public class OMLExtensions {
       return Boolean.valueOf(Objects.equal(_iri, "http://imce.jpl.nasa.gov/oml/runtime#OML2EcoreNsURI"));
     };
     AnnotationPropertyValue _findFirst = IterableExtensions.<AnnotationPropertyValue>findFirst(it.getAnnotations(), _function);
-    String _value = null;
+    StringValue _value = null;
     if (_findFirst!=null) {
       _value=_findFirst.getValue();
     }
-    if (_value != null) {
-      _elvis = _value;
+    if (_value.value != null) {
+      _elvis = _value.value;
     } else {
       String _iri = it.iri();
       _elvis = _iri;
@@ -426,12 +427,12 @@ public class OMLExtensions {
       return Boolean.valueOf(Objects.equal(_iri, "http://imce.jpl.nasa.gov/oml/runtime#OML2EcoreNsPrefix"));
     };
     AnnotationPropertyValue _findFirst = IterableExtensions.<AnnotationPropertyValue>findFirst(it.getAnnotations(), _function);
-    String _value = null;
+    StringValue _value = null;
     if (_findFirst!=null) {
       _value=_findFirst.getValue();
     }
-    if (_value != null) {
-      _elvis = _value;
+    if (_value.value != null) {
+      _elvis = _value.value;
     } else {
       String _name = it.name();
       _elvis = _name;

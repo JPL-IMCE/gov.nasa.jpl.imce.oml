@@ -23,6 +23,7 @@ import gov.nasa.jpl.imce.oml.model.common.AnnotationProperty;
 import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue;
 import gov.nasa.jpl.imce.oml.model.common.Element;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
+import gov.nasa.jpl.imce.oml.model.datatypes.StringValue;
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox;
 import org.eclipse.emf.common.util.EList;
@@ -127,8 +128,8 @@ public class OMLTerminologyGraph1Test {
       final AnnotationPropertyValue a = IterableExtensions.<AnnotationPropertyValue>head(c.getAnnotations());
       final AnnotationProperty a_prop = a.getProperty();
       final Element a_subj = a.getSubject();
-      final String a_value = a.getValue();
-      Assert.assertEquals("Performing Element", a_value);
+      final StringValue a_value = a.getValue();
+      Assert.assertEquals("Performing Element", a_value.value);
       Assert.assertSame(ap, a_prop);
       Assert.assertSame(c, a_subj);
       String _name = this.getClass().getName();

@@ -21,6 +21,8 @@ package gov.nasa.jpl.imce.oml.model.common.impl;
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
 import gov.nasa.jpl.imce.oml.model.common.LiteralString;
 
+import gov.nasa.jpl.imce.oml.model.datatypes.StringValue;
+
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
@@ -35,31 +37,31 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralStringImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralStringImpl#getString <em>String</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class LiteralStringImpl extends LiteralValueImpl implements LiteralString {
 	/**
-	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
+	 * The default value of the '{@link #getString() <em>String</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getValue()
+	 * @see #getString()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String VALUE_EDEFAULT = null;
+	protected static final StringValue STRING_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
+	 * The cached value of the '{@link #getString() <em>String</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getValue()
+	 * @see #getString()
 	 * @generated
 	 * @ordered
 	 */
-	protected String value = VALUE_EDEFAULT;
+	protected StringValue string = STRING_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -85,8 +87,8 @@ public class LiteralStringImpl extends LiteralValueImpl implements LiteralString
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getValue() {
-		return value;
+	public StringValue getString() {
+		return string;
 	}
 
 	/**
@@ -94,11 +96,11 @@ public class LiteralStringImpl extends LiteralValueImpl implements LiteralString
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setValue(String newValue) {
-		String oldValue = value;
-		value = newValue;
+	public void setString(StringValue newString) {
+		StringValue oldString = string;
+		string = newString;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CommonPackage.LITERAL_STRING__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET, CommonPackage.LITERAL_STRING__STRING, oldString, string));
 	}
 
 	/**
@@ -109,8 +111,8 @@ public class LiteralStringImpl extends LiteralValueImpl implements LiteralString
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case CommonPackage.LITERAL_STRING__VALUE:
-				return getValue();
+			case CommonPackage.LITERAL_STRING__STRING:
+				return getString();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -123,8 +125,8 @@ public class LiteralStringImpl extends LiteralValueImpl implements LiteralString
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case CommonPackage.LITERAL_STRING__VALUE:
-				setValue((String)newValue);
+			case CommonPackage.LITERAL_STRING__STRING:
+				setString((StringValue)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -138,8 +140,8 @@ public class LiteralStringImpl extends LiteralValueImpl implements LiteralString
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case CommonPackage.LITERAL_STRING__VALUE:
-				setValue(VALUE_EDEFAULT);
+			case CommonPackage.LITERAL_STRING__STRING:
+				setString(STRING_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -153,8 +155,8 @@ public class LiteralStringImpl extends LiteralValueImpl implements LiteralString
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case CommonPackage.LITERAL_STRING__VALUE:
-				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+			case CommonPackage.LITERAL_STRING__STRING:
+				return STRING_EDEFAULT == null ? string != null : !STRING_EDEFAULT.equals(string);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -169,8 +171,8 @@ public class LiteralStringImpl extends LiteralValueImpl implements LiteralString
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (value: ");
-		result.append(value);
+		result.append(" (string: ");
+		result.append(string);
 		result.append(')');
 		return result.toString();
 	}

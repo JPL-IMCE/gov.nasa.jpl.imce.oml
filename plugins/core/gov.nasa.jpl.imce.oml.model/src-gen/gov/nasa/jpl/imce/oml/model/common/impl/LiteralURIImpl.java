@@ -21,6 +21,8 @@ package gov.nasa.jpl.imce.oml.model.common.impl;
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
 import gov.nasa.jpl.imce.oml.model.common.LiteralURI;
 
+import gov.nasa.jpl.imce.oml.model.datatypes.URIValue;
+
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
@@ -35,31 +37,31 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralURIImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralURIImpl#getUri <em>Uri</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class LiteralURIImpl extends LiteralValueImpl implements LiteralURI {
 	/**
-	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
+	 * The default value of the '{@link #getUri() <em>Uri</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getValue()
+	 * @see #getUri()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String VALUE_EDEFAULT = null;
+	protected static final URIValue URI_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
+	 * The cached value of the '{@link #getUri() <em>Uri</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getValue()
+	 * @see #getUri()
 	 * @generated
 	 * @ordered
 	 */
-	protected String value = VALUE_EDEFAULT;
+	protected URIValue uri = URI_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -85,8 +87,8 @@ public class LiteralURIImpl extends LiteralValueImpl implements LiteralURI {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getValue() {
-		return value;
+	public URIValue getUri() {
+		return uri;
 	}
 
 	/**
@@ -94,11 +96,11 @@ public class LiteralURIImpl extends LiteralValueImpl implements LiteralURI {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setValue(String newValue) {
-		String oldValue = value;
-		value = newValue;
+	public void setUri(URIValue newUri) {
+		URIValue oldUri = uri;
+		uri = newUri;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CommonPackage.LITERAL_URI__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET, CommonPackage.LITERAL_URI__URI, oldUri, uri));
 	}
 
 	/**
@@ -109,8 +111,8 @@ public class LiteralURIImpl extends LiteralValueImpl implements LiteralURI {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case CommonPackage.LITERAL_URI__VALUE:
-				return getValue();
+			case CommonPackage.LITERAL_URI__URI:
+				return getUri();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -123,8 +125,8 @@ public class LiteralURIImpl extends LiteralValueImpl implements LiteralURI {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case CommonPackage.LITERAL_URI__VALUE:
-				setValue((String)newValue);
+			case CommonPackage.LITERAL_URI__URI:
+				setUri((URIValue)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -138,8 +140,8 @@ public class LiteralURIImpl extends LiteralValueImpl implements LiteralURI {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case CommonPackage.LITERAL_URI__VALUE:
-				setValue(VALUE_EDEFAULT);
+			case CommonPackage.LITERAL_URI__URI:
+				setUri(URI_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -153,8 +155,8 @@ public class LiteralURIImpl extends LiteralValueImpl implements LiteralURI {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case CommonPackage.LITERAL_URI__VALUE:
-				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+			case CommonPackage.LITERAL_URI__URI:
+				return URI_EDEFAULT == null ? uri != null : !URI_EDEFAULT.equals(uri);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -169,8 +171,8 @@ public class LiteralURIImpl extends LiteralValueImpl implements LiteralURI {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (value: ");
-		result.append(value);
+		result.append(" (uri: ");
+		result.append(uri);
 		result.append(')');
 		return result.toString();
 	}

@@ -21,6 +21,8 @@ package gov.nasa.jpl.imce.oml.model.common.impl;
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
 import gov.nasa.jpl.imce.oml.model.common.LiteralDateTime;
 
+import gov.nasa.jpl.imce.oml.model.datatypes.DateTimeValue;
+
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
@@ -35,31 +37,31 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralDateTimeImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralDateTimeImpl#getDateTime <em>Date Time</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class LiteralDateTimeImpl extends LiteralValueImpl implements LiteralDateTime {
 	/**
-	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
+	 * The default value of the '{@link #getDateTime() <em>Date Time</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getValue()
+	 * @see #getDateTime()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String VALUE_EDEFAULT = null;
+	protected static final DateTimeValue DATE_TIME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
+	 * The cached value of the '{@link #getDateTime() <em>Date Time</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getValue()
+	 * @see #getDateTime()
 	 * @generated
 	 * @ordered
 	 */
-	protected String value = VALUE_EDEFAULT;
+	protected DateTimeValue dateTime = DATE_TIME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -85,8 +87,8 @@ public class LiteralDateTimeImpl extends LiteralValueImpl implements LiteralDate
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getValue() {
-		return value;
+	public DateTimeValue getDateTime() {
+		return dateTime;
 	}
 
 	/**
@@ -94,11 +96,11 @@ public class LiteralDateTimeImpl extends LiteralValueImpl implements LiteralDate
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setValue(String newValue) {
-		String oldValue = value;
-		value = newValue;
+	public void setDateTime(DateTimeValue newDateTime) {
+		DateTimeValue oldDateTime = dateTime;
+		dateTime = newDateTime;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CommonPackage.LITERAL_DATE_TIME__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET, CommonPackage.LITERAL_DATE_TIME__DATE_TIME, oldDateTime, dateTime));
 	}
 
 	/**
@@ -109,8 +111,8 @@ public class LiteralDateTimeImpl extends LiteralValueImpl implements LiteralDate
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case CommonPackage.LITERAL_DATE_TIME__VALUE:
-				return getValue();
+			case CommonPackage.LITERAL_DATE_TIME__DATE_TIME:
+				return getDateTime();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -123,8 +125,8 @@ public class LiteralDateTimeImpl extends LiteralValueImpl implements LiteralDate
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case CommonPackage.LITERAL_DATE_TIME__VALUE:
-				setValue((String)newValue);
+			case CommonPackage.LITERAL_DATE_TIME__DATE_TIME:
+				setDateTime((DateTimeValue)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -138,8 +140,8 @@ public class LiteralDateTimeImpl extends LiteralValueImpl implements LiteralDate
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case CommonPackage.LITERAL_DATE_TIME__VALUE:
-				setValue(VALUE_EDEFAULT);
+			case CommonPackage.LITERAL_DATE_TIME__DATE_TIME:
+				setDateTime(DATE_TIME_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -153,8 +155,8 @@ public class LiteralDateTimeImpl extends LiteralValueImpl implements LiteralDate
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case CommonPackage.LITERAL_DATE_TIME__VALUE:
-				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+			case CommonPackage.LITERAL_DATE_TIME__DATE_TIME:
+				return DATE_TIME_EDEFAULT == null ? dateTime != null : !DATE_TIME_EDEFAULT.equals(dateTime);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -169,8 +171,8 @@ public class LiteralDateTimeImpl extends LiteralValueImpl implements LiteralDate
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (value: ");
-		result.append(value);
+		result.append(" (dateTime: ");
+		result.append(dateTime);
 		result.append(')');
 		return result.toString();
 	}

@@ -29,9 +29,10 @@ import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue;
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
 import gov.nasa.jpl.imce.oml.model.common.LiteralDateTime;
-import gov.nasa.jpl.imce.oml.model.common.LiteralLanguageTag;
-import gov.nasa.jpl.imce.oml.model.common.LiteralNumber;
-import gov.nasa.jpl.imce.oml.model.common.LiteralPattern;
+import gov.nasa.jpl.imce.oml.model.common.LiteralDecimal;
+import gov.nasa.jpl.imce.oml.model.common.LiteralFloat;
+import gov.nasa.jpl.imce.oml.model.common.LiteralRational;
+import gov.nasa.jpl.imce.oml.model.common.LiteralReal;
 import gov.nasa.jpl.imce.oml.model.common.LiteralString;
 import gov.nasa.jpl.imce.oml.model.common.LiteralURI;
 import gov.nasa.jpl.imce.oml.model.common.LiteralUUID;
@@ -139,14 +140,17 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case CommonPackage.LITERAL_DATE_TIME:
 				sequence_LiteralDateTime(context, (LiteralDateTime) semanticObject); 
 				return; 
-			case CommonPackage.LITERAL_LANGUAGE_TAG:
-				sequence_LiteralLanguageTag(context, (LiteralLanguageTag) semanticObject); 
+			case CommonPackage.LITERAL_DECIMAL:
+				sequence_LiteralDecimal(context, (LiteralDecimal) semanticObject); 
 				return; 
-			case CommonPackage.LITERAL_NUMBER:
-				sequence_LiteralNumber(context, (LiteralNumber) semanticObject); 
+			case CommonPackage.LITERAL_FLOAT:
+				sequence_LiteralFloat(context, (LiteralFloat) semanticObject); 
 				return; 
-			case CommonPackage.LITERAL_PATTERN:
-				sequence_LiteralPattern(context, (LiteralPattern) semanticObject); 
+			case CommonPackage.LITERAL_RATIONAL:
+				sequence_LiteralRational(context, (LiteralRational) semanticObject); 
+				return; 
+			case CommonPackage.LITERAL_REAL:
+				sequence_LiteralReal(context, (LiteralReal) semanticObject); 
 				return; 
 			case CommonPackage.LITERAL_STRING:
 				sequence_LiteralString(context, (LiteralString) semanticObject); 
@@ -314,7 +318,7 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     AnnotationPropertyValue returns AnnotationPropertyValue
 	 *
 	 * Constraint:
-	 *     (property=[AnnotationProperty|ABBREV_IRI] value=STRING)
+	 *     (property=[AnnotationProperty|ABBREV_IRI] value=STRING_VALUE)
 	 */
 	protected void sequence_AnnotationPropertyValue(ISerializationContext context, AnnotationPropertyValue semanticObject) {
 		if (errorAcceptor != null) {
@@ -325,7 +329,7 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, (EObject) semanticObject);
 		feeder.accept(grammarAccess.getAnnotationPropertyValueAccess().getPropertyAnnotationPropertyABBREV_IRITerminalRuleCall_1_0_1(), semanticObject.eGet(CommonPackage.Literals.ANNOTATION_PROPERTY_VALUE__PROPERTY, false));
-		feeder.accept(grammarAccess.getAnnotationPropertyValueAccess().getValueSTRINGTerminalRuleCall_3_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getAnnotationPropertyValueAccess().getValueSTRING_VALUETerminalRuleCall_3_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -405,7 +409,12 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     BinaryScalarRestriction returns BinaryScalarRestriction
 	 *
 	 * Constraint:
-	 *     (annotations+=AnnotationPropertyValue* name=ID (length=DIGITS | minLength=DIGITS | maxLength=DIGITS)* restrictedRange=[DataRange|Reference])
+	 *     (
+	 *         annotations+=AnnotationPropertyValue* 
+	 *         name=ID 
+	 *         (length=PositiveIntegerLiteral | minLength=PositiveIntegerLiteral | maxLength=PositiveIntegerLiteral)* 
+	 *         restrictedRange=[DataRange|Reference]
+	 *     )
 	 */
 	protected void sequence_BinaryScalarRestriction(ISerializationContext context, BinaryScalarRestriction semanticObject) {
 		genericSequencer.createSequence(context, (EObject) semanticObject);
@@ -733,7 +742,7 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     (
 	 *         annotations+=AnnotationPropertyValue* 
 	 *         name=ID 
-	 *         (length=DIGITS | minLength=DIGITS | maxLength=DIGITS | pattern=LiteralPattern)* 
+	 *         (length=PositiveIntegerLiteral | minLength=PositiveIntegerLiteral | maxLength=PositiveIntegerLiteral | pattern=PATTERN)* 
 	 *         restrictedRange=[DataRange|Reference]
 	 *     )
 	 */
@@ -748,65 +757,95 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     LiteralDateTime returns LiteralDateTime
 	 *
 	 * Constraint:
-	 *     value=DATE_TIME
+	 *     dateTime=DATE_TIME
 	 */
 	protected void sequence_LiteralDateTime(ISerializationContext context, LiteralDateTime semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient((EObject) semanticObject, CommonPackage.Literals.LITERAL_DATE_TIME__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, CommonPackage.Literals.LITERAL_DATE_TIME__VALUE));
+			if (transientValues.isValueTransient((EObject) semanticObject, CommonPackage.Literals.LITERAL_DATE_TIME__DATE_TIME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, CommonPackage.Literals.LITERAL_DATE_TIME__DATE_TIME));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, (EObject) semanticObject);
-		feeder.accept(grammarAccess.getLiteralDateTimeAccess().getValueDATE_TIMEParserRuleCall_1_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getLiteralDateTimeAccess().getDateTimeDATE_TIMETerminalRuleCall_1_0(), semanticObject.getDateTime());
 		feeder.finish();
 	}
 	
 	
 	/**
 	 * Contexts:
-	 *     LiteralValue returns LiteralLanguageTag
-	 *     LiteralLanguageTag returns LiteralLanguageTag
+	 *     LiteralValue returns LiteralDecimal
+	 *     LiteralNumber returns LiteralDecimal
+	 *     LiteralDecimal returns LiteralDecimal
 	 *
 	 * Constraint:
-	 *     value=LANG_TAG
+	 *     decimal=DECIMAL
 	 */
-	protected void sequence_LiteralLanguageTag(ISerializationContext context, LiteralLanguageTag semanticObject) {
+	protected void sequence_LiteralDecimal(ISerializationContext context, LiteralDecimal semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient((EObject) semanticObject, CommonPackage.Literals.LITERAL_LANGUAGE_TAG__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, CommonPackage.Literals.LITERAL_LANGUAGE_TAG__VALUE));
+			if (transientValues.isValueTransient((EObject) semanticObject, CommonPackage.Literals.LITERAL_DECIMAL__DECIMAL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, CommonPackage.Literals.LITERAL_DECIMAL__DECIMAL));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, (EObject) semanticObject);
-		feeder.accept(grammarAccess.getLiteralLanguageTagAccess().getValueLANG_TAGParserRuleCall_1_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getLiteralDecimalAccess().getDecimalDECIMALTerminalRuleCall_1_0(), semanticObject.getDecimal());
 		feeder.finish();
 	}
 	
 	
 	/**
 	 * Contexts:
-	 *     LiteralValue returns LiteralNumber
-	 *     LiteralNumber returns LiteralNumber
+	 *     LiteralValue returns LiteralFloat
+	 *     LiteralNumber returns LiteralFloat
+	 *     LiteralFloat returns LiteralFloat
 	 *
 	 * Constraint:
-	 *     (value=REAL_VALUE | value=RATIONAL | value=FLOAT | value=DECIMAL)
+	 *     float=FLOAT
 	 */
-	protected void sequence_LiteralNumber(ISerializationContext context, LiteralNumber semanticObject) {
-		genericSequencer.createSequence(context, (EObject) semanticObject);
+	protected void sequence_LiteralFloat(ISerializationContext context, LiteralFloat semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient((EObject) semanticObject, CommonPackage.Literals.LITERAL_FLOAT__FLOAT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, CommonPackage.Literals.LITERAL_FLOAT__FLOAT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, (EObject) semanticObject);
+		feeder.accept(grammarAccess.getLiteralFloatAccess().getFloatFLOATTerminalRuleCall_1_0(), semanticObject.getFloat());
+		feeder.finish();
 	}
 	
 	
 	/**
 	 * Contexts:
-	 *     LiteralPattern returns LiteralPattern
+	 *     LiteralValue returns LiteralRational
+	 *     LiteralNumber returns LiteralRational
+	 *     LiteralRational returns LiteralRational
 	 *
 	 * Constraint:
-	 *     value=STRING
+	 *     rational=RationalDataType
 	 */
-	protected void sequence_LiteralPattern(ISerializationContext context, LiteralPattern semanticObject) {
+	protected void sequence_LiteralRational(ISerializationContext context, LiteralRational semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient((EObject) semanticObject, CommonPackage.Literals.LITERAL_PATTERN__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, CommonPackage.Literals.LITERAL_PATTERN__VALUE));
+			if (transientValues.isValueTransient((EObject) semanticObject, CommonPackage.Literals.LITERAL_RATIONAL__RATIONAL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, CommonPackage.Literals.LITERAL_RATIONAL__RATIONAL));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, (EObject) semanticObject);
-		feeder.accept(grammarAccess.getLiteralPatternAccess().getValueSTRINGTerminalRuleCall_1_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getLiteralRationalAccess().getRationalRationalDataTypeParserRuleCall_1_0(), semanticObject.getRational());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     LiteralValue returns LiteralReal
+	 *     LiteralNumber returns LiteralReal
+	 *     LiteralReal returns LiteralReal
+	 *
+	 * Constraint:
+	 *     real=REAL
+	 */
+	protected void sequence_LiteralReal(ISerializationContext context, LiteralReal semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient((EObject) semanticObject, CommonPackage.Literals.LITERAL_REAL__REAL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, CommonPackage.Literals.LITERAL_REAL__REAL));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, (EObject) semanticObject);
+		feeder.accept(grammarAccess.getLiteralRealAccess().getRealREALTerminalRuleCall_1_0(), semanticObject.getReal());
 		feeder.finish();
 	}
 	
@@ -817,15 +856,15 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     LiteralString returns LiteralString
 	 *
 	 * Constraint:
-	 *     value=STRING
+	 *     string=STRING_VALUE
 	 */
 	protected void sequence_LiteralString(ISerializationContext context, LiteralString semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient((EObject) semanticObject, CommonPackage.Literals.LITERAL_STRING__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, CommonPackage.Literals.LITERAL_STRING__VALUE));
+			if (transientValues.isValueTransient((EObject) semanticObject, CommonPackage.Literals.LITERAL_STRING__STRING) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, CommonPackage.Literals.LITERAL_STRING__STRING));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, (EObject) semanticObject);
-		feeder.accept(grammarAccess.getLiteralStringAccess().getValueSTRINGTerminalRuleCall_1_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getLiteralStringAccess().getStringSTRING_VALUETerminalRuleCall_1_0(), semanticObject.getString());
 		feeder.finish();
 	}
 	
@@ -836,15 +875,15 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     LiteralURI returns LiteralURI
 	 *
 	 * Constraint:
-	 *     value=URI
+	 *     uri=URIDataType
 	 */
 	protected void sequence_LiteralURI(ISerializationContext context, LiteralURI semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient((EObject) semanticObject, CommonPackage.Literals.LITERAL_URI__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, CommonPackage.Literals.LITERAL_URI__VALUE));
+			if (transientValues.isValueTransient((EObject) semanticObject, CommonPackage.Literals.LITERAL_URI__URI) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, CommonPackage.Literals.LITERAL_URI__URI));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, (EObject) semanticObject);
-		feeder.accept(grammarAccess.getLiteralURIAccess().getValueURIParserRuleCall_1_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getLiteralURIAccess().getUriURIDataTypeParserRuleCall_1_0(), semanticObject.getUri());
 		feeder.finish();
 	}
 	
@@ -855,15 +894,15 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     LiteralUUID returns LiteralUUID
 	 *
 	 * Constraint:
-	 *     value=UUID
+	 *     uuid=UUIDDataType
 	 */
 	protected void sequence_LiteralUUID(ISerializationContext context, LiteralUUID semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient((EObject) semanticObject, CommonPackage.Literals.LITERAL_UUID__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, CommonPackage.Literals.LITERAL_UUID__VALUE));
+			if (transientValues.isValueTransient((EObject) semanticObject, CommonPackage.Literals.LITERAL_UUID__UUID) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, CommonPackage.Literals.LITERAL_UUID__UUID));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, (EObject) semanticObject);
-		feeder.accept(grammarAccess.getLiteralUUIDAccess().getValueUUIDTerminalRuleCall_1_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getLiteralUUIDAccess().getUuidUUIDDataTypeParserRuleCall_1_0(), semanticObject.getUuid());
 		feeder.finish();
 	}
 	
@@ -903,7 +942,7 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     (
 	 *         annotations+=AnnotationPropertyValue* 
 	 *         name=ID 
-	 *         (length=DIGITS | minLength=DIGITS | maxLength=DIGITS | pattern=LiteralPattern | langRange=LiteralLanguageTag)* 
+	 *         (length=PositiveIntegerLiteral | minLength=PositiveIntegerLiteral | maxLength=PositiveIntegerLiteral | pattern=PATTERN | langRange=LANG_TAG)* 
 	 *         restrictedRange=[DataRange|Reference]
 	 *     )
 	 */
@@ -1184,7 +1223,7 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     (
 	 *         annotations+=AnnotationPropertyValue* 
 	 *         name=ID 
-	 *         (length=DIGITS | minLength=DIGITS | maxLength=DIGITS | pattern=LiteralPattern)* 
+	 *         (length=PositiveIntegerLiteral | minLength=PositiveIntegerLiteral | maxLength=PositiveIntegerLiteral | pattern=PATTERN)* 
 	 *         restrictedRange=[DataRange|Reference]
 	 *     )
 	 */

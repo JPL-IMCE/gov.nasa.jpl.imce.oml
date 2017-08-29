@@ -160,22 +160,82 @@ public class NumericScalarRestrictionItemProvider extends RestrictedDataRangeIte
 		newChildDescriptors.add
 			(createChildParameter
 				(TerminologiesPackage.Literals.NUMERIC_SCALAR_RESTRICTION__MIN_INCLUSIVE,
-				 CommonFactory.eINSTANCE.createLiteralNumber()));
+				 CommonFactory.eINSTANCE.createLiteralReal()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TerminologiesPackage.Literals.NUMERIC_SCALAR_RESTRICTION__MIN_INCLUSIVE,
+				 CommonFactory.eINSTANCE.createLiteralRational()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TerminologiesPackage.Literals.NUMERIC_SCALAR_RESTRICTION__MIN_INCLUSIVE,
+				 CommonFactory.eINSTANCE.createLiteralFloat()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TerminologiesPackage.Literals.NUMERIC_SCALAR_RESTRICTION__MIN_INCLUSIVE,
+				 CommonFactory.eINSTANCE.createLiteralDecimal()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(TerminologiesPackage.Literals.NUMERIC_SCALAR_RESTRICTION__MAX_INCLUSIVE,
-				 CommonFactory.eINSTANCE.createLiteralNumber()));
+				 CommonFactory.eINSTANCE.createLiteralReal()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TerminologiesPackage.Literals.NUMERIC_SCALAR_RESTRICTION__MAX_INCLUSIVE,
+				 CommonFactory.eINSTANCE.createLiteralRational()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TerminologiesPackage.Literals.NUMERIC_SCALAR_RESTRICTION__MAX_INCLUSIVE,
+				 CommonFactory.eINSTANCE.createLiteralFloat()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TerminologiesPackage.Literals.NUMERIC_SCALAR_RESTRICTION__MAX_INCLUSIVE,
+				 CommonFactory.eINSTANCE.createLiteralDecimal()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(TerminologiesPackage.Literals.NUMERIC_SCALAR_RESTRICTION__MIN_EXCLUSIVE,
-				 CommonFactory.eINSTANCE.createLiteralNumber()));
+				 CommonFactory.eINSTANCE.createLiteralReal()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TerminologiesPackage.Literals.NUMERIC_SCALAR_RESTRICTION__MIN_EXCLUSIVE,
+				 CommonFactory.eINSTANCE.createLiteralRational()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TerminologiesPackage.Literals.NUMERIC_SCALAR_RESTRICTION__MIN_EXCLUSIVE,
+				 CommonFactory.eINSTANCE.createLiteralFloat()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TerminologiesPackage.Literals.NUMERIC_SCALAR_RESTRICTION__MIN_EXCLUSIVE,
+				 CommonFactory.eINSTANCE.createLiteralDecimal()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(TerminologiesPackage.Literals.NUMERIC_SCALAR_RESTRICTION__MAX_EXCLUSIVE,
-				 CommonFactory.eINSTANCE.createLiteralNumber()));
+				 CommonFactory.eINSTANCE.createLiteralReal()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TerminologiesPackage.Literals.NUMERIC_SCALAR_RESTRICTION__MAX_EXCLUSIVE,
+				 CommonFactory.eINSTANCE.createLiteralRational()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TerminologiesPackage.Literals.NUMERIC_SCALAR_RESTRICTION__MAX_EXCLUSIVE,
+				 CommonFactory.eINSTANCE.createLiteralFloat()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TerminologiesPackage.Literals.NUMERIC_SCALAR_RESTRICTION__MAX_EXCLUSIVE,
+				 CommonFactory.eINSTANCE.createLiteralDecimal()));
 	}
 
 	/**

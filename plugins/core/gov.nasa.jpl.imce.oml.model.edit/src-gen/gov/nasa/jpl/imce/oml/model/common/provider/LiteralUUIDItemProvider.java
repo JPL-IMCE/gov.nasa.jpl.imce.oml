@@ -22,6 +22,7 @@ package gov.nasa.jpl.imce.oml.model.common.provider;
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
 import gov.nasa.jpl.imce.oml.model.common.LiteralUUID;
 
+import gov.nasa.jpl.imce.oml.model.datatypes.UUIDValue;
 import java.util.Collection;
 import java.util.List;
 
@@ -61,25 +62,25 @@ public class LiteralUUIDItemProvider extends LiteralValueItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addValuePropertyDescriptor(object);
+			addUuidPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Value feature.
+	 * This adds a property descriptor for the Uuid feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addValuePropertyDescriptor(Object object) {
+	protected void addUuidPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_LiteralUUID_value_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_LiteralUUID_value_feature", "_UI_LiteralUUID_type"),
-				 CommonPackage.Literals.LITERAL_UUID__VALUE,
+				 getString("_UI_LiteralUUID_uuid_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_LiteralUUID_uuid_feature", "_UI_LiteralUUID_type"),
+				 CommonPackage.Literals.LITERAL_UUID__UUID,
 				 true,
 				 false,
 				 false,
@@ -107,7 +108,8 @@ public class LiteralUUIDItemProvider extends LiteralValueItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((LiteralUUID)object).getValue();
+		UUIDValue labelValue = ((LiteralUUID)object).getUuid();
+		String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ?
 			getString("_UI_LiteralUUID_type") :
 			getString("_UI_LiteralUUID_type") + " " + label;
@@ -126,7 +128,7 @@ public class LiteralUUIDItemProvider extends LiteralValueItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(LiteralUUID.class)) {
-			case CommonPackage.LITERAL_UUID__VALUE:
+			case CommonPackage.LITERAL_UUID__UUID:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
