@@ -141,3 +141,15 @@ Progress (1): 35/659 kB
 ```
 
 Filtering these lines is essential to avoid the 4Mb output limit.
+
+### Troubleshooting P2 repository problems.
+
+If the Java security permissions allow, use the Java WebStart Launcher.
+Otherwise: 
+
+- Clone the [P2 Browser](https://github.com/ifedorenko/p2-browser)
+- Build it locally (`mvn clean package`)
+- Launch from `com.ifedorenko.p2browser.rcp/target/products/com.ifedorenko.p2browser.rcp`
+
+The P2 Browser is a simple UI; under the "Repositories" panel, click "Add..." and enter the URL of a P2 repo.
+The left panel shows a tree explorer for the contents of repositories added.
