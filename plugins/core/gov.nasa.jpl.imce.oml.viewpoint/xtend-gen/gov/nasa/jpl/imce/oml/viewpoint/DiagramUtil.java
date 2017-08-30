@@ -2,24 +2,17 @@ package gov.nasa.jpl.imce.oml.viewpoint;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
-import com.google.inject.Inject;
-import gov.nasa.jpl.imce.oml.dsl.scoping.OMLScopeExtensions;
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
 import gov.nasa.jpl.imce.oml.model.terminologies.Entity;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.Term;
 import java.util.Set;
-import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
 public class DiagramUtil {
-  @Inject
-  @Extension
-  private OMLScopeExtensions _oMLScopeExtensions;
-  
   /**
    * Returns a set of {@link EntityStructuredDataProperty}s that have the passed
    * {@link Concept} as its domain
