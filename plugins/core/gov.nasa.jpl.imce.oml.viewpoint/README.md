@@ -29,6 +29,36 @@ The views *Aspect/Concept Class Diagram* and *Sub Heiarchy* are incomplete
 
 ## Eclipse/Sirus
 
-- The 'version' attribute in the 'descirption' tag must be 11.1.1.201610211630.  When saving, this may be automatically updated to a higher version and you will not be able to load the models in the runtime
+- Launching a runtime eclipse and editing the `/gov.nasa.jpl.imce.oml.viewpoint/description/OML.odesign` file
 
-- All queries for 'Terminology Diagram', 'Aspect/Concept Diagram' and 'ConceptUsageDiagram' are in service methods in the gov.nasa.jpl.imce.oml.viewpoint package.
+Launch a runtime eclipse using the [OML WB launch configuration](/gov.nasa.jpl.imce.oml.tycho/launchers/OML WB.launch)
+
+Editing the [OML.odesign](/gov.nasa.jpl.imce.oml.viewpoint/description/OML.odesign) is particularly useful for several reasons:
+	- Making adjustments to the OML viewpoint notation for the Sirius nodes, containers, or edges
+	    - Add/Edit nodes, containers, edges and aql queries
+	    - Add new views (diagram, table, ect.)
+	    - When changing the  [query methods](gov.nasa.jpl.imce.oml.viewpoint) you must shutdown the runtime and restart it in order to see the changes.  The query methods must be changed outside of the runtime or the changes will not be saved.
+
+The 'version' attribute in the 'description:Group' tag of the [OML.odesign](/gov.nasa.jpl.imce.oml.viewpoint/description/OML.odesign) must be 11.1.1.201610211630.  
+When saving, this may be automatically updated to a higher version, resulting in an error like this:
+
+```
+java.lang.RuntimeException: The modeling project "gov.nasa.jpl.imce.caesar.demo.ontologies" is invalid: Problem during loading models: The viewpoint specification model (platform:/plugin/gov.nasa.jpl.imce.oml.viewpoint/description/OML.odesign) can not be loaded because it comes from a more recent Sirius release.
+VSM version is: 12.0.0.2017041100
+Last Sirius migration version is: 11.1.1.201610211630
+	at org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.OpenRepresentationsFileJob.runInWorkspace(OpenRepresentationsFileJob.java:136)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: org.eclipse.sirius.business.api.migration.DescriptionResourceVersionMismatchException: The viewpoint specification model (platform:/plugin/gov.nasa.jpl.imce.oml.viewpoint/description/OML.odesign) can not be loaded because it comes from a more recent Sirius release.
+VSM version is: 12.0.0.2017041100
+Last Sirius migration version is: 11.1.1.201610211630
+	at org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl.checkResourceErrors(DAnalysisSessionImpl.java:1225)
+	at org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl.open(DAnalysisSessionImpl.java:1191)
+	at org.eclipse.sirius.business.internal.session.SessionManagerImpl.openSession(SessionManagerImpl.java:390)
+	at org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.OpenRepresentationsFileJob.performOpenSession(OpenRepresentationsFileJob.java:157)
+	at org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.OpenRepresentationsFileJob.runInWorkspace(OpenRepresentationsFileJob.java:126)
+	... 2 more
+```
+If this happens, open [OML.odesign](/gov.nasa.jpl.imce.oml.viewpoint/description/OML.odesign) in a text editor and change the 'version' attribute of the 'description:Group' tag back to 11.1.1.201610211630
+
+- All queries for 'Terminology Diagram', 'Aspect/Concept Diagram' and 'ConceptUsageDiagram' are defined in service methods in the gov.nasa.jpl.imce.oml.viewpoint package.
