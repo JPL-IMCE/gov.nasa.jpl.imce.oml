@@ -284,7 +284,7 @@ class ConceptUsageDiagramService {
 		
 		// Search graph for connected concepts along path
 		// of root concept passed as method arg
-		while(queue.peek() != null){
+		while(queue.peek() !== null){
 			val node = queue.poll()
 			// Check for entity relationships to Concepts
 			var foundConnnection = false
@@ -373,7 +373,7 @@ class ConceptUsageDiagramService {
 		
 		// Search graph for connected concepts along path
 		// of root concept passed as method arg
-		while(queue.peek() != null){
+		while(queue.peek() !== null){
 			val node = queue.poll()
 			// Check for entity relationships to Concepts
 			var foundConnnection = false
@@ -424,7 +424,7 @@ class ConceptUsageDiagramService {
 		//c.tbox.allEntitiesScope.allElements.filter(TerminologyBoxStatement).
 		forEach[relOrAx |
 			val entry = getSourceAndTarget(relOrAx)
-			if(entry != null){
+			if(entry !== null){
 				val source = entry.key
 				val target = entry.value
 				// Put in source entry
