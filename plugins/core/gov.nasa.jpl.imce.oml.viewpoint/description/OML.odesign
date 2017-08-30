@@ -8,7 +8,7 @@
       <metamodel href="http://imce.jpl.nasa.gov/oml/graphs#/"/>
       <defaultLayer name="Default" reusedMappings="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@defaultLayer/@edgeMappings[name='Reified%20%20Relationship%20Specialization%20Axiom']">
         <edgeMappings name="Entity Existential Restriction Axiom" semanticCandidatesExpression="feature:boxStatements" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@additionalLayers[name='Aspects']/@containerMappings[name='Aspect'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@additionalLayers[name='Concepts']/@containerMappings[name='Concept']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@additionalLayers[name='Aspects']/@containerMappings[name='Aspect'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@additionalLayers[name='Concepts']/@containerMappings[name='Concept']" targetFinderExpression="feature:restrictedRange" sourceFinderExpression="feature:restrictedDomain" domainClass="terminologies.EntityExistentialRestrictionAxiom" useDomainElement="true">
-          <style targetArrow="InputClosedArrow" sizeComputationExpression="2">
+          <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
             <beginLabelStyleDescription labelExpression="aql:self.restrictedRelation.name">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -19,7 +19,7 @@
           </style>
         </edgeMappings>
         <edgeMappings name="Entity Universal Restriction Axiom" semanticCandidatesExpression="feature:boxStatements" sourceMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@additionalLayers[name='Aspects']/@containerMappings[name='Aspect'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@additionalLayers[name='Concepts']/@containerMappings[name='Concept']" targetMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@additionalLayers[name='Aspects']/@containerMappings[name='Aspect'] //@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminolgy%20Diagram']/@additionalLayers[name='Concepts']/@containerMappings[name='Concept']" targetFinderExpression="feature:restrictedRange" sourceFinderExpression="feature:restrictedDomain" domainClass="terminologies.EntityUniversalRestrictionAxiom" useDomainElement="true">
-          <style targetArrow="InputClosedArrow" sizeComputationExpression="2">
+          <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <beginLabelStyleDescription labelExpression="aql:self.restrictedRelation.name">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

@@ -26,3 +26,9 @@ The OML Viewpoints are graphical modeling workbenches developed using the [Siriu
 | Reified Relationship Diagram | Diagram | Displays a *ReifiedRelationship* and its doamin and range|
 
 The views *Aspect/Concept Class Diagram* and *Sub Heiarchy* are incomplete
+
+## Eclipse/Sirus
+
+- The 'version' attribute in the 'descirption' tag must be 11.1.1.201610211630.  When saving, this may be automatically updated to a higher version and you will not be able to load the models in the runtime
+
+- All queries for 'Terminology Diagram', 'Aspect/Concept Diagram' and 'ConceptUsageDiagram' are in service methods in the gov.nasa.jpl.imce.oml.viewpoint package.
