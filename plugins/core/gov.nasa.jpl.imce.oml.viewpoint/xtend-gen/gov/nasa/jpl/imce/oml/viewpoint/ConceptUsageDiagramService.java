@@ -294,7 +294,7 @@ public class ConceptUsageDiagramService {
       };
       graph.get(c).forEach(_function);
       visited.add(c);
-      while ((!Objects.equal(queue.peek(), null))) {
+      while ((queue.peek() != null)) {
         {
           final Entity node = queue.poll();
           boolean foundConnnection = false;
@@ -375,7 +375,7 @@ public class ConceptUsageDiagramService {
       };
       graph.get(c).forEach(_function);
       visited.add(c);
-      while ((!Objects.equal(queue.peek(), null))) {
+      while ((queue.peek() != null)) {
         {
           final Entity node = queue.poll();
           boolean foundConnnection = false;
@@ -419,8 +419,7 @@ public class ConceptUsageDiagramService {
       final HashMap<Entity, List<Map.Entry<Entity, TerminologyBoxStatement>>> graph = new HashMap<Entity, List<Map.Entry<Entity, TerminologyBoxStatement>>>();
       final Consumer<TerminologyBoxStatement> _function = (TerminologyBoxStatement relOrAx) -> {
         final Map.Entry<Entity, Entity> entry = this.getSourceAndTarget(relOrAx);
-        boolean _notEquals = (!Objects.equal(entry, null));
-        if (_notEquals) {
+        if ((entry != null)) {
           final Entity source = entry.getKey();
           final Entity target = entry.getValue();
           boolean _containsKey = graph.containsKey(source);
