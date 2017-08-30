@@ -73,12 +73,21 @@ public class AspectConceptClassDiagramService {
    * @return Set of {@link ReifiedRelationship}s
    */
   public Set<EntityRelationship> getVisualRelationshipsWithRootAsDomain(final DDiagram d) {
-    final Entity e = this.getRootEntity(d);
-    final Function1<EntityRelationship, Boolean> _function = (EntityRelationship f) -> {
-      Entity _source = f.getSource();
-      return Boolean.valueOf(Objects.equal(_source, e));
-    };
-    return IterableExtensions.<EntityRelationship>toSet(IterableExtensions.<EntityRelationship>filter(Iterables.<EntityRelationship>filter(e.getTbox().getBoxStatements(), EntityRelationship.class), _function));
+    Set<EntityRelationship> _xblockexpression = null;
+    {
+      final Entity e = this.getRootEntity(d);
+      final Set<EntityRelationship> set = IterableExtensions.<EntityRelationship>toSet(Iterables.<EntityRelationship>filter(e.getTbox().getBoxStatements(), EntityRelationship.class));
+      boolean _isEmpty = set.isEmpty();
+      if (_isEmpty) {
+        return set;
+      }
+      final Function1<EntityRelationship, Boolean> _function = (EntityRelationship f) -> {
+        Entity _source = f.getSource();
+        return Boolean.valueOf(Objects.equal(_source, e));
+      };
+      _xblockexpression = IterableExtensions.<EntityRelationship>toSet(IterableExtensions.<EntityRelationship>filter(set, _function));
+    }
+    return _xblockexpression;
   }
   
   /**
@@ -89,12 +98,21 @@ public class AspectConceptClassDiagramService {
    * @return Set of {@link ReifiedRelationship}s
    */
   public Set<ReifiedRelationship> getVisualRelationshipsWithRootAsRange(final DDiagram d) {
-    final Entity e = this.getRootEntity(d);
-    final Function1<ReifiedRelationship, Boolean> _function = (ReifiedRelationship f) -> {
-      Entity _target = f.getTarget();
-      return Boolean.valueOf(Objects.equal(_target, e));
-    };
-    return IterableExtensions.<ReifiedRelationship>toSet(IterableExtensions.<ReifiedRelationship>filter(Iterables.<ReifiedRelationship>filter(e.getTbox().getBoxStatements(), ReifiedRelationship.class), _function));
+    Set<ReifiedRelationship> _xblockexpression = null;
+    {
+      final Entity e = this.getRootEntity(d);
+      final Set<ReifiedRelationship> set = IterableExtensions.<ReifiedRelationship>toSet(Iterables.<ReifiedRelationship>filter(e.getTbox().getBoxStatements(), ReifiedRelationship.class));
+      boolean _isEmpty = set.isEmpty();
+      if (_isEmpty) {
+        return set;
+      }
+      final Function1<ReifiedRelationship, Boolean> _function = (ReifiedRelationship f) -> {
+        Entity _target = f.getTarget();
+        return Boolean.valueOf(Objects.equal(_target, e));
+      };
+      _xblockexpression = IterableExtensions.<ReifiedRelationship>toSet(IterableExtensions.<ReifiedRelationship>filter(set, _function));
+    }
+    return _xblockexpression;
   }
   
   /**
@@ -153,12 +171,21 @@ public class AspectConceptClassDiagramService {
    * @return Set of {@link AspectSpecializationAxiom}s
    */
   public Set<AspectSpecializationAxiom> getVisualAspectAxioms(final DDiagram d) {
-    final Entity e = this.getRootEntity(d);
-    final Function1<AspectSpecializationAxiom, Boolean> _function = (AspectSpecializationAxiom f) -> {
-      Entity _subEntity = f.getSubEntity();
-      return Boolean.valueOf(Objects.equal(_subEntity, e));
-    };
-    return IterableExtensions.<AspectSpecializationAxiom>toSet(IterableExtensions.<AspectSpecializationAxiom>filter(Iterables.<AspectSpecializationAxiom>filter(e.getTbox().getBoxStatements(), AspectSpecializationAxiom.class), _function));
+    Set<AspectSpecializationAxiom> _xblockexpression = null;
+    {
+      final Entity e = this.getRootEntity(d);
+      final Set<AspectSpecializationAxiom> set = IterableExtensions.<AspectSpecializationAxiom>toSet(Iterables.<AspectSpecializationAxiom>filter(e.getTbox().getBoxStatements(), AspectSpecializationAxiom.class));
+      boolean _isEmpty = set.isEmpty();
+      if (_isEmpty) {
+        return set;
+      }
+      final Function1<AspectSpecializationAxiom, Boolean> _function = (AspectSpecializationAxiom f) -> {
+        Entity _subEntity = f.getSubEntity();
+        return Boolean.valueOf(Objects.equal(_subEntity, e));
+      };
+      _xblockexpression = IterableExtensions.<AspectSpecializationAxiom>toSet(IterableExtensions.<AspectSpecializationAxiom>filter(set, _function));
+    }
+    return _xblockexpression;
   }
   
   /**
@@ -169,12 +196,21 @@ public class AspectConceptClassDiagramService {
    * @return Set of {@link ConceptSpecializationAxiom}s
    */
   public Set<ConceptSpecializationAxiom> getVisualConceptAxioms(final DDiagram d) {
-    final Entity c = this.getRootEntity(d);
-    final Function1<ConceptSpecializationAxiom, Boolean> _function = (ConceptSpecializationAxiom f) -> {
-      Concept _subConcept = f.getSubConcept();
-      return Boolean.valueOf(Objects.equal(_subConcept, c));
-    };
-    return IterableExtensions.<ConceptSpecializationAxiom>toSet(IterableExtensions.<ConceptSpecializationAxiom>filter(Iterables.<ConceptSpecializationAxiom>filter(c.getTbox().getBoxStatements(), ConceptSpecializationAxiom.class), _function));
+    Set<ConceptSpecializationAxiom> _xblockexpression = null;
+    {
+      final Entity c = this.getRootEntity(d);
+      final Set<ConceptSpecializationAxiom> set = IterableExtensions.<ConceptSpecializationAxiom>toSet(Iterables.<ConceptSpecializationAxiom>filter(c.getTbox().getBoxStatements(), ConceptSpecializationAxiom.class));
+      boolean _isEmpty = set.isEmpty();
+      if (_isEmpty) {
+        return set;
+      }
+      final Function1<ConceptSpecializationAxiom, Boolean> _function = (ConceptSpecializationAxiom f) -> {
+        Concept _subConcept = f.getSubConcept();
+        return Boolean.valueOf(Objects.equal(_subConcept, c));
+      };
+      _xblockexpression = IterableExtensions.<ConceptSpecializationAxiom>toSet(IterableExtensions.<ConceptSpecializationAxiom>filter(set, _function));
+    }
+    return _xblockexpression;
   }
   
   /**
@@ -185,11 +221,20 @@ public class AspectConceptClassDiagramService {
    * @return Set of {@link EntityRestrictionAxiom}s
    */
   public Set<EntityRestrictionAxiom> getVisualRestrictionAxioms(final Entity e) {
-    final Function1<EntityRestrictionAxiom, Boolean> _function = (EntityRestrictionAxiom f) -> {
-      Entity _restrictedDomain = f.getRestrictedDomain();
-      return Boolean.valueOf(Objects.equal(_restrictedDomain, e));
-    };
-    return IterableExtensions.<EntityRestrictionAxiom>toSet(IterableExtensions.<EntityRestrictionAxiom>filter(Iterables.<EntityRestrictionAxiom>filter(e.getTbox().getBoxStatements(), EntityRestrictionAxiom.class), _function));
+    Set<EntityRestrictionAxiom> _xblockexpression = null;
+    {
+      final Set<EntityRestrictionAxiom> set = IterableExtensions.<EntityRestrictionAxiom>toSet(Iterables.<EntityRestrictionAxiom>filter(e.getTbox().getBoxStatements(), EntityRestrictionAxiom.class));
+      boolean _isEmpty = set.isEmpty();
+      if (_isEmpty) {
+        return set;
+      }
+      final Function1<EntityRestrictionAxiom, Boolean> _function = (EntityRestrictionAxiom f) -> {
+        Entity _restrictedDomain = f.getRestrictedDomain();
+        return Boolean.valueOf(Objects.equal(_restrictedDomain, e));
+      };
+      _xblockexpression = IterableExtensions.<EntityRestrictionAxiom>toSet(IterableExtensions.<EntityRestrictionAxiom>filter(set, _function));
+    }
+    return _xblockexpression;
   }
   
   /**

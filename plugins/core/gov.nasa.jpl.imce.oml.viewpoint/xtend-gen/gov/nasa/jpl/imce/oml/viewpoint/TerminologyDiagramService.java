@@ -87,11 +87,20 @@ public class TerminologyDiagramService {
    * @return Set of {@link ScalarDataProperty}
    */
   public Set<ScalarDataProperty> getContainedScalarDataProperties(final Structure c) {
-    final Function1<ScalarDataProperty, Boolean> _function = (ScalarDataProperty f) -> {
-      Structure _domain = f.getDomain();
-      return Boolean.valueOf(Objects.equal(_domain, c));
-    };
-    return IterableExtensions.<ScalarDataProperty>toSet(IterableExtensions.<ScalarDataProperty>filter(Iterables.<ScalarDataProperty>filter(c.getTbox().getBoxStatements(), ScalarDataProperty.class), _function));
+    Set<ScalarDataProperty> _xblockexpression = null;
+    {
+      final Set<ScalarDataProperty> set = IterableExtensions.<ScalarDataProperty>toSet(Iterables.<ScalarDataProperty>filter(c.getTbox().getBoxStatements(), ScalarDataProperty.class));
+      boolean _isEmpty = set.isEmpty();
+      if (_isEmpty) {
+        return set;
+      }
+      final Function1<ScalarDataProperty, Boolean> _function = (ScalarDataProperty f) -> {
+        Structure _domain = f.getDomain();
+        return Boolean.valueOf(Objects.equal(_domain, c));
+      };
+      _xblockexpression = IterableExtensions.<ScalarDataProperty>toSet(IterableExtensions.<ScalarDataProperty>filter(set, _function));
+    }
+    return _xblockexpression;
   }
   
   /**
@@ -102,11 +111,20 @@ public class TerminologyDiagramService {
    * @return Set of {@link StucturedDataProperty}
    */
   public Set<StructuredDataProperty> getContainedStructuredDataProperties(final Structure c) {
-    final Function1<StructuredDataProperty, Boolean> _function = (StructuredDataProperty f) -> {
-      Structure _domain = f.getDomain();
-      return Boolean.valueOf(Objects.equal(_domain, c));
-    };
-    return IterableExtensions.<StructuredDataProperty>toSet(IterableExtensions.<StructuredDataProperty>filter(Iterables.<StructuredDataProperty>filter(c.getTbox().getBoxStatements(), StructuredDataProperty.class), _function));
+    Set<StructuredDataProperty> _xblockexpression = null;
+    {
+      final Set<StructuredDataProperty> set = IterableExtensions.<StructuredDataProperty>toSet(Iterables.<StructuredDataProperty>filter(c.getTbox().getBoxStatements(), StructuredDataProperty.class));
+      boolean _isEmpty = set.isEmpty();
+      if (_isEmpty) {
+        return set;
+      }
+      final Function1<StructuredDataProperty, Boolean> _function = (StructuredDataProperty f) -> {
+        Structure _domain = f.getDomain();
+        return Boolean.valueOf(Objects.equal(_domain, c));
+      };
+      _xblockexpression = IterableExtensions.<StructuredDataProperty>toSet(IterableExtensions.<StructuredDataProperty>filter(set, _function));
+    }
+    return _xblockexpression;
   }
   
   /**

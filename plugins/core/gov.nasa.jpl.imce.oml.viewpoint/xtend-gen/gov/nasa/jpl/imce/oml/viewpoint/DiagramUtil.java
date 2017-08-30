@@ -28,11 +28,20 @@ public class DiagramUtil {
    * @return Set of {@link EntityStructuredDataProperty}
    */
   public Set<EntityStructuredDataProperty> getContainedEntityStructuredDataProperties(final Entity c) {
-    final Function1<EntityStructuredDataProperty, Boolean> _function = (EntityStructuredDataProperty f) -> {
-      Term _relationDomain = f.relationDomain();
-      return Boolean.valueOf(Objects.equal(_relationDomain, c));
-    };
-    return IterableExtensions.<EntityStructuredDataProperty>toSet(IterableExtensions.<EntityStructuredDataProperty>filter(Iterables.<EntityStructuredDataProperty>filter(this._oMLScopeExtensions.allEntityStructuredDataPropertiesScope(c.getTbox()).getAllElements(), EntityStructuredDataProperty.class), _function));
+    Set<EntityStructuredDataProperty> _xblockexpression = null;
+    {
+      final Set<EntityStructuredDataProperty> set = IterableExtensions.<EntityStructuredDataProperty>toSet(Iterables.<EntityStructuredDataProperty>filter(c.getTbox().getBoxStatements(), EntityStructuredDataProperty.class));
+      boolean _isEmpty = set.isEmpty();
+      if (_isEmpty) {
+        return set;
+      }
+      final Function1<EntityStructuredDataProperty, Boolean> _function = (EntityStructuredDataProperty f) -> {
+        Term _relationDomain = f.relationDomain();
+        return Boolean.valueOf(Objects.equal(_relationDomain, c));
+      };
+      _xblockexpression = IterableExtensions.<EntityStructuredDataProperty>toSet(IterableExtensions.<EntityStructuredDataProperty>filter(set, _function));
+    }
+    return _xblockexpression;
   }
   
   /**
@@ -43,10 +52,19 @@ public class DiagramUtil {
    * @return Set of {@link EntityScalarDataProperty}
    */
   public Set<EntityScalarDataProperty> getContainedEntityScalarDataProperties(final Entity c) {
-    final Function1<EntityScalarDataProperty, Boolean> _function = (EntityScalarDataProperty f) -> {
-      Term _relationDomain = f.relationDomain();
-      return Boolean.valueOf(Objects.equal(_relationDomain, c));
-    };
-    return IterableExtensions.<EntityScalarDataProperty>toSet(IterableExtensions.<EntityScalarDataProperty>filter(Iterables.<EntityScalarDataProperty>filter(c.getTbox().getBoxStatements(), EntityScalarDataProperty.class), _function));
+    Set<EntityScalarDataProperty> _xblockexpression = null;
+    {
+      final Set<EntityScalarDataProperty> set = IterableExtensions.<EntityScalarDataProperty>toSet(Iterables.<EntityScalarDataProperty>filter(c.getTbox().getBoxStatements(), EntityScalarDataProperty.class));
+      boolean _isEmpty = set.isEmpty();
+      if (_isEmpty) {
+        return set;
+      }
+      final Function1<EntityScalarDataProperty, Boolean> _function = (EntityScalarDataProperty f) -> {
+        Term _relationDomain = f.relationDomain();
+        return Boolean.valueOf(Objects.equal(_relationDomain, c));
+      };
+      _xblockexpression = IterableExtensions.<EntityScalarDataProperty>toSet(IterableExtensions.<EntityScalarDataProperty>filter(set, _function));
+    }
+    return _xblockexpression;
   }
 }
