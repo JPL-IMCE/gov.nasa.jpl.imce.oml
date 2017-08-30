@@ -68,9 +68,13 @@ class AspectConceptClassDiagramService {
 	 */
 	def Set<EntityRelationship> getVisualRelationshipsWithRootAsDomain(DDiagram d){
 		val e = getRootEntity(d)
-		return e.tbox.boxStatements.
+		val set = e.tbox.boxStatements.
 		filter(EntityRelationship).
-		filter[f | f.source == e].
+		toSet
+		
+		if(set.empty) return set;
+		
+		set.filter[f | f.source == e].
 		toSet
 	}
 	
@@ -83,9 +87,13 @@ class AspectConceptClassDiagramService {
 	 */
 	def Set<ReifiedRelationship> getVisualRelationshipsWithRootAsRange(DDiagram d){
 		val e = getRootEntity(d)
-		return e.tbox.boxStatements.
+		val set = e.tbox.boxStatements.
 		filter(ReifiedRelationship).
-		filter[f | f.target == e].
+		toSet
+		
+		if(set.empty) return set;
+		
+		set.filter[f | f.target == e].
 		toSet
 	}	
 
@@ -132,9 +140,13 @@ class AspectConceptClassDiagramService {
 	 */
 	 def Set<AspectSpecializationAxiom> getVisualAspectAxioms(DDiagram d){
 	 	val e = getRootEntity(d)
-	 	return e.tbox.boxStatements.
+	 	val set = e.tbox.boxStatements.
 	 	filter(AspectSpecializationAxiom).
-	 	filter[f | f.subEntity == e].
+	 	toSet
+	 	
+	 	if(set.isEmpty) return set;
+	 	
+	 	set.filter[f | f.subEntity == e].
 	 	toSet
 	 }
 	
@@ -147,9 +159,13 @@ class AspectConceptClassDiagramService {
 	 */
 	 def Set<ConceptSpecializationAxiom> getVisualConceptAxioms(DDiagram d){
 	 	val c = getRootEntity(d)
-	 	return c.tbox.boxStatements.
+	 	val set = c.tbox.boxStatements.
 	 	filter(ConceptSpecializationAxiom).
-	 	filter[f | f.subConcept == c].
+	 	toSet
+	 	
+	 	if(set.isEmpty) return set;
+	 	
+	 	set.filter[f | f.subConcept == c].
 	 	toSet
 	 }
 	 
@@ -161,9 +177,13 @@ class AspectConceptClassDiagramService {
 	  * @return Set of {@link EntityRestrictionAxiom}s
 	  */
 	  def Set<EntityRestrictionAxiom> getVisualRestrictionAxioms(Entity e){
-	  	return e.tbox.boxStatements.
+	  	val set = e.tbox.boxStatements.
 	  	filter(EntityRestrictionAxiom).
-	  	filter(f | f.restrictedDomain == e).
+	  	toSet
+	  	
+	  	if(set.isEmpty) return set;
+	  	
+	  	set.filter(f | f.restrictedDomain == e).
 	  	toSet
 	  }
 	  
