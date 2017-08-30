@@ -78,9 +78,13 @@ class TerminologyDiagramService {
 	 * @return Set of {@link ScalarDataProperty}
 	 */
 	def Set<ScalarDataProperty> getContainedScalarDataProperties(Structure c){
-	    return c.tbox.boxStatements.
+	    val set = c.tbox.boxStatements.
 	    filter(ScalarDataProperty).
-	    filter[f | f.domain == c].
+	    toSet
+	    
+	    if(set.isEmpty) return set;
+	    
+	    set.filter[f | f.domain == c].
 	    toSet
 	}	
 	
@@ -92,9 +96,13 @@ class TerminologyDiagramService {
 	 * @return Set of {@link StucturedDataProperty}
 	 */
 	def Set<StructuredDataProperty> getContainedStructuredDataProperties(Structure c){
-	    return c.tbox.boxStatements.
+	    val set = c.tbox.boxStatements.
 	    filter(StructuredDataProperty).
-	    filter[f | f.domain == c].
+	    toSet
+	    
+	    if(set.isEmpty) return set;
+	    
+	    set.filter[f | f.domain == c].
 	    toSet
 	}
 	

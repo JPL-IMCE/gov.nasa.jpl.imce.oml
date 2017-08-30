@@ -20,9 +20,13 @@ class DiagramUtil {
 	 * @return Set of {@link EntityStructuredDataProperty}
 	 */
 	def Set<EntityStructuredDataProperty> getContainedEntityStructuredDataProperties(Entity c){
-	    return c.tbox.allEntityStructuredDataPropertiesScope.allElements.
-	    filter(EntityStructuredDataProperty).
-	    filter[f | f.relationDomain == c].
+	   // return c.tbox.allEntityStructuredDataPropertiesScope.allElements.
+	    val set = c.tbox.boxStatements.
+	    filter(EntityStructuredDataProperty).toSet
+	    
+	    if(set.isEmpty) return set;
+	    
+	    set.filter[f | f.relationDomain == c].
 	    toSet
 	}
 	
@@ -35,9 +39,12 @@ class DiagramUtil {
 	 */
 	def Set<EntityScalarDataProperty> getContainedEntityScalarDataProperties(Entity c){
 		// aql:diagram.oclAsType(diagram::DSemanticDiagram).target.oclAsType(graphs::TerminologyGraph).boxStatements->filter(terminologies::EntityScalarDataProperty)->select(s | s.relationDomain() = self)
-	    return c.tbox.boxStatements.
-	    filter(EntityScalarDataProperty).
-	    filter[f | f.relationDomain == c].
+	    val set = c.tbox.boxStatements.
+	    filter(EntityScalarDataProperty).toSet
+	    
+	    if(set.isEmpty) return set;
+	    
+	    set.filter[f | f.relationDomain == c].
 	    toSet
 	}
 }
