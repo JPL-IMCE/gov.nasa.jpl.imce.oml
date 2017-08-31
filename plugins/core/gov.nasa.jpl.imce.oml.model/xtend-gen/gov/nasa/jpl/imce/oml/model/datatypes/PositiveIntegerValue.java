@@ -21,6 +21,10 @@ package gov.nasa.jpl.imce.oml.model.datatypes;
 public class PositiveIntegerValue {
   public int value;
   
+  public PositiveIntegerValue(final String value) {
+    this.value = Integer.parseInt(value);
+  }
+  
   public PositiveIntegerValue(final int value) {
     this.value = value;
   }
