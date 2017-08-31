@@ -58,4 +58,10 @@ gov.nasa.jpl.imce.oml.tycho 0.8.0.0 resolves major problems found in 0.7.1.2
 - [#86 "No viable alternative at input" for LiteralNumber values that are positive integers](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/86)
 
   Refactored OML's metamodel and grammar to use explicitly-defined datatypes to take advantage of Xtext's support for context-sensitive datatype parsing
+
+- [#89 "The Value [X] is Invalid" Error When Parsing PositiveIntegerLiterals](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/89)
+
+  Xtext's datatype value conversion expects a datatype to have a constructor with a single String argument.
+  The PositiveIntegerValue datatype was missing such a constructor.
+  
 ## [Release & Publish process](publishProcess.markdown)
