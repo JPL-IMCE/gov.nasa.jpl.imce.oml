@@ -55,6 +55,13 @@ open terminology <http://imce.jpl.nasa.gov/foundation/mission/mission>
 
 	concept Foo-Bar
 	
+	scalar decimal
+	
+	stringScalarRestriction integer {
+		maxLength 10
+		pattern /[\\\\-+]?[0-9]+/
+		restrictedRange decimal
+	}
 }
 
 open terminology <http://purl.org/dc/elements/1.1/> {

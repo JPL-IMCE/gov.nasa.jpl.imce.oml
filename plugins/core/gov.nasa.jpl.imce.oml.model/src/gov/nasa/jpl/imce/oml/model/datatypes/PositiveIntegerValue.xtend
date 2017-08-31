@@ -21,6 +21,10 @@ class PositiveIntegerValue {
 	
 	public int value
 	
+	new(String value) {
+		this.value = Integer.parseInt(value)
+	}
+	
 	new(int value) {
 		this.value = value
 	}
