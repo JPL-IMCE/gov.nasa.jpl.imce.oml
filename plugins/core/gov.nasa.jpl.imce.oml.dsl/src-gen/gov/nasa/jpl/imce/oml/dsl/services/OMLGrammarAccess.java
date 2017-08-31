@@ -4799,20 +4799,32 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	public class LiteralDecimalElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.LiteralDecimal");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cLiteralDecimalAction_0 = (Action)cGroup.eContents().get(0);
-		private final Assignment cDecimalAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
+		private final Action cLiteralDecimalAction_0_0 = (Action)cGroup_0.eContents().get(0);
+		private final Assignment cDecimalAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
+		private final RuleCall cDecimalDIGITSTerminalRuleCall_0_1_0 = (RuleCall)cDecimalAssignment_0_1.eContents().get(0);
+		private final Assignment cDecimalAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
 		private final RuleCall cDecimalDECIMALTerminalRuleCall_1_0 = (RuleCall)cDecimalAssignment_1.eContents().get(0);
 		
 		//LiteralDecimal:
-		//	{LiteralDecimal} decimal=DECIMAL;
+		//	{LiteralDecimal} decimal=DIGITS | decimal=DECIMAL;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{LiteralDecimal} decimal=DECIMAL
-		public Group getGroup() { return cGroup; }
+		//{LiteralDecimal} decimal=DIGITS | decimal=DECIMAL
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//{LiteralDecimal} decimal=DIGITS
+		public Group getGroup_0() { return cGroup_0; }
 		
 		//{LiteralDecimal}
-		public Action getLiteralDecimalAction_0() { return cLiteralDecimalAction_0; }
+		public Action getLiteralDecimalAction_0_0() { return cLiteralDecimalAction_0_0; }
+		
+		//decimal=DIGITS
+		public Assignment getDecimalAssignment_0_1() { return cDecimalAssignment_0_1; }
+		
+		//DIGITS
+		public RuleCall getDecimalDIGITSTerminalRuleCall_0_1_0() { return cDecimalDIGITSTerminalRuleCall_0_1_0; }
 		
 		//decimal=DECIMAL
 		public Assignment getDecimalAssignment_1() { return cDecimalAssignment_1; }
@@ -6392,7 +6404,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//LiteralDecimal:
-	//	{LiteralDecimal} decimal=DECIMAL;
+	//	{LiteralDecimal} decimal=DIGITS | decimal=DECIMAL;
 	public LiteralDecimalElements getLiteralDecimalAccess() {
 		return pLiteralDecimal;
 	}
@@ -6628,8 +6640,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//terminal STRING_VALUE returns StringDataType:
-	//	'"' ('\\' . | !('\\' | '"'))* '"'? |
-	//	"'" ('\\' . | !('\\' | "'"))* "'"?;
+	//	'"' ('\\' . ('b' | 't' | 'n' | 'f' | 'r' | '"' | "'" | '\\') | !('\\' | '"'))* '"';
 	public TerminalRule getSTRING_VALUERule() {
 		return tSTRING_VALUE;
 	}

@@ -17,16 +17,10 @@
  */
 package gov.nasa.jpl.imce.oml.model.datatypes
 
-class PositiveIntegerValue {
-	
-	public int value
+class PositiveIntegerValue extends DecimalValue {
 	
 	new(String value) {
-		this.value = Integer.parseInt(value)
-	}
-	
-	new(int value) {
-		this.value = value
+		super(value)
 	}
 	
 	override def boolean equals(Object that) {
