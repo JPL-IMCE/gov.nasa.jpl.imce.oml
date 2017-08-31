@@ -7967,17 +7967,38 @@ ruleLiteralDecimal returns [EObject current=null]
 }:
 	(
 		(
-			{
-				$current = forceCreateModelElement(
-					grammarAccess.getLiteralDecimalAccess().getLiteralDecimalAction_0(),
-					$current);
-			}
+			(
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getLiteralDecimalAccess().getLiteralDecimalAction_0_0(),
+						$current);
+				}
+			)
+			(
+				(
+					lv_decimal_1_0=RULE_DIGITS
+					{
+						newLeafNode(lv_decimal_1_0, grammarAccess.getLiteralDecimalAccess().getDecimalDIGITSTerminalRuleCall_0_1_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getLiteralDecimalRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"decimal",
+							lv_decimal_1_0,
+							"gov.nasa.jpl.imce.oml.dsl.OML.DIGITS");
+					}
+				)
+			)
 		)
+		    |
 		(
 			(
-				lv_decimal_1_0=RULE_DECIMAL
+				lv_decimal_2_0=RULE_DECIMAL
 				{
-					newLeafNode(lv_decimal_1_0, grammarAccess.getLiteralDecimalAccess().getDecimalDECIMALTerminalRuleCall_1_0());
+					newLeafNode(lv_decimal_2_0, grammarAccess.getLiteralDecimalAccess().getDecimalDECIMALTerminalRuleCall_1_0());
 				}
 				{
 					if ($current==null) {
@@ -7986,7 +8007,7 @@ ruleLiteralDecimal returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"decimal",
-						lv_decimal_1_0,
+						lv_decimal_2_0,
 						"gov.nasa.jpl.imce.oml.dsl.OML.DECIMAL");
 				}
 			)
@@ -8146,7 +8167,7 @@ RULE_REAL : '{' ('-'|'+')? RULE_CONSTANT_NAME '}';
 
 RULE_PATTERN : '/' (~('/')|'\\/')* '/';
 
-RULE_STRING_VALUE : ('"' ('\\' .|~(('\\'|'"')))* '"'?|'\'' ('\\' .|~(('\\'|'\'')))* '\''?);
+RULE_STRING_VALUE : '"' ('\\' . ('b'|'t'|'n'|'f'|'r'|'"'|'\''|'\\')|~(('\\'|'"')))* '"';
 
 RULE_IRI : '<' ~('>')* '>';
 

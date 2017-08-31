@@ -31,12 +31,11 @@ public class PositiveIntegerValueConverter extends GenericValueConverter<Positiv
   
   @Override
   public String toEscapedString(final PositiveIntegerValue value) {
-    return Integer.valueOf(value.value).toString();
+    return value.value.toString();
   }
   
   @Override
   public PositiveIntegerValue toValue(final String string, final INode node) throws ValueConverterException {
-    int _parseInt = Integer.parseInt(string);
-    return new PositiveIntegerValue(_parseInt);
+    return new PositiveIntegerValue(string);
   }
 }

@@ -777,16 +777,10 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     LiteralDecimal returns LiteralDecimal
 	 *
 	 * Constraint:
-	 *     decimal=DECIMAL
+	 *     (decimal=DIGITS | decimal=DECIMAL)
 	 */
 	protected void sequence_LiteralDecimal(ISerializationContext context, LiteralDecimal semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient((EObject) semanticObject, CommonPackage.Literals.LITERAL_DECIMAL__DECIMAL) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, CommonPackage.Literals.LITERAL_DECIMAL__DECIMAL));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, (EObject) semanticObject);
-		feeder.accept(grammarAccess.getLiteralDecimalAccess().getDecimalDECIMALTerminalRuleCall_1_0(), semanticObject.getDecimal());
-		feeder.finish();
+		genericSequencer.createSequence(context, (EObject) semanticObject);
 	}
 	
 	

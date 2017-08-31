@@ -75,6 +75,7 @@ public class OMLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getQNAMEAccess().getAlternatives(), "rule__QNAME__Alternatives");
 					put(grammarAccess.getLiteralValueAccess().getAlternatives(), "rule__LiteralValue__Alternatives");
 					put(grammarAccess.getLiteralNumberAccess().getAlternatives(), "rule__LiteralNumber__Alternatives");
+					put(grammarAccess.getLiteralDecimalAccess().getAlternatives(), "rule__LiteralDecimal__Alternatives");
 					put(grammarAccess.getTerminologyKindAccess().getAlternatives(), "rule__TerminologyKind__Alternatives");
 					put(grammarAccess.getDescriptionKindAccess().getAlternatives(), "rule__DescriptionKind__Alternatives");
 					put(grammarAccess.getExtentAccess().getGroup(), "rule__Extent__Group__0");
@@ -163,7 +164,7 @@ public class OMLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getLiteralRealAccess().getGroup(), "rule__LiteralReal__Group__0");
 					put(grammarAccess.getLiteralRationalAccess().getGroup(), "rule__LiteralRational__Group__0");
 					put(grammarAccess.getLiteralFloatAccess().getGroup(), "rule__LiteralFloat__Group__0");
-					put(grammarAccess.getLiteralDecimalAccess().getGroup(), "rule__LiteralDecimal__Group__0");
+					put(grammarAccess.getLiteralDecimalAccess().getGroup_0(), "rule__LiteralDecimal__Group_0__0");
 					put(grammarAccess.getExtentAccess().getAnnotationPropertiesAssignment_1_0(), "rule__Extent__AnnotationPropertiesAssignment_1_0");
 					put(grammarAccess.getExtentAccess().getModulesAssignment_1_1(), "rule__Extent__ModulesAssignment_1_1");
 					put(grammarAccess.getAnnotationPropertyAccess().getAbbrevIRIAssignment_1(), "rule__AnnotationProperty__AbbrevIRIAssignment_1");
@@ -401,6 +402,7 @@ public class OMLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getLiteralRealAccess().getRealAssignment_1(), "rule__LiteralReal__RealAssignment_1");
 					put(grammarAccess.getLiteralRationalAccess().getRationalAssignment_1(), "rule__LiteralRational__RationalAssignment_1");
 					put(grammarAccess.getLiteralFloatAccess().getFloatAssignment_1(), "rule__LiteralFloat__FloatAssignment_1");
+					put(grammarAccess.getLiteralDecimalAccess().getDecimalAssignment_0_1(), "rule__LiteralDecimal__DecimalAssignment_0_1");
 					put(grammarAccess.getLiteralDecimalAccess().getDecimalAssignment_1(), "rule__LiteralDecimal__DecimalAssignment_1");
 					put(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), "rule__ReifiedRelationship__UnorderedGroup_4");
 					put(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), "rule__UnreifiedRelationship__UnorderedGroup_4");

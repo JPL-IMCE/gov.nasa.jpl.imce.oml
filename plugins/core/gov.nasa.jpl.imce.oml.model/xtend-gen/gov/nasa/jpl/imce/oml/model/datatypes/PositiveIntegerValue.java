@@ -17,16 +17,13 @@
  */
 package gov.nasa.jpl.imce.oml.model.datatypes;
 
+import com.google.common.base.Objects;
+import gov.nasa.jpl.imce.oml.model.datatypes.DecimalValue;
+
 @SuppressWarnings("all")
-public class PositiveIntegerValue {
-  public int value;
-  
+public class PositiveIntegerValue extends DecimalValue {
   public PositiveIntegerValue(final String value) {
-    this.value = Integer.parseInt(value);
-  }
-  
-  public PositiveIntegerValue(final int value) {
-    this.value = value;
+    super(value);
   }
   
   @Override
@@ -35,7 +32,7 @@ public class PositiveIntegerValue {
     boolean _matched = false;
     if (that instanceof PositiveIntegerValue) {
       _matched=true;
-      _switchResult = (this.value == ((PositiveIntegerValue)that).value);
+      _switchResult = Objects.equal(this.value, ((PositiveIntegerValue)that).value);
     }
     if (!_matched) {
       _switchResult = false;

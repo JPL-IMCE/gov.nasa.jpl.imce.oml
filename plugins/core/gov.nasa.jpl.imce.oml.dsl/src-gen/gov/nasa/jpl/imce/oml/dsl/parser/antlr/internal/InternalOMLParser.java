@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalOMLParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ABBREV_IRI", "RULE_IRI", "RULE_STRING_VALUE", "RULE_ID", "RULE_PATTERN", "RULE_LANG_TAG", "RULE_DATE_TIME", "RULE_UUID", "RULE_URI", "RULE_REAL", "RULE_RATIONAL", "RULE_FLOAT", "RULE_DECIMAL", "RULE_DIGITS", "RULE_DIGIT", "RULE_DIGIT19", "RULE_DIGIT02", "RULE_DIGIT03", "RULE_DIGIT05", "RULE_YEAR_FRAG", "RULE_MONTH_FRAG", "RULE_DAY_FRAG", "RULE_HOUR_FRAG", "RULE_MINUTE_FRAG", "RULE_SECOND_FRAG", "RULE_END_OF_DAY_FRAG", "RULE_TIMEZONE_FRAG", "RULE_ALPHA", "RULE_SCHEME", "RULE_HEX_DIGIT", "RULE_PCT_ENCODED", "RULE_UNRESERVED", "RULE_DIGIT04", "RULE_DEC_OCTET", "RULE_IPV4_ADDRESS", "RULE_IUSER_PART", "RULE_IUSER_INFO", "RULE_IUNRESERVED_PART", "RULE_IUNRESERVED", "RULE_IHOST", "RULE_PORT", "RULE_IAUTHORITY", "RULE_IPCHAR", "RULE_ISEGMENT", "RULE_IPATH", "RULE_IHIER_PART", "RULE_IFRAGMENT", "RULE_CONSTANT_NAME", "RULE_LETTER", "RULE_LETTER_DIGIT", "RULE_LETTER_DIGIT_PREFIX", "RULE_LETTER_DIGIT_SUFFIX", "RULE_ID_PREFIX", "RULE_HEX_8DIGITS", "RULE_HEX_4DIGITS", "RULE_HEX_12DIGITS", "RULE_HEX_LETTER", "RULE_HEX", "RULE_DEC", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "'annotationProperty'", "'='", "'@'", "'terminology'", "'{'", "'}'", "'bundle'", "'descriptionBox'", "'bundles'", "'conceptDesignationTerminologyAxiom'", "'designatedTerminology'", "'designatedConcept'", "'extends'", "'terminologyNestingAxiom'", "'nestingTerminology'", "'nestingContext'", "'aspect'", "'concept'", "'reifiedRelationship'", "'functional'", "'inverseFunctional'", "'essential'", "'inverseEssential'", "'symmetric'", "'asymmetric'", "'reflexive'", "'irreflexive'", "'transitive'", "'unreified'", "'inverse'", "'source'", "'target'", "'unreifiedRelationship'", "'scalar'", "'structure'", "'entityStructuredDataProperty'", "'+'", "'domain'", "'range'", "'entityScalarDataProperty'", "'structuredDataProperty'", "'scalarDataProperty'", "'anonymousConceptUnion'", "'('", "')'", "'rootConceptTaxonomy'", "'disjointLeaf'", "'someEntities'", "'.'", "'in'", "'allEntities'", "'extendsAspect'", "'extendsConcept'", "'extendsRelationship'", "'someData'", "'every'", "'allData'", "'binaryScalarRestriction'", "'length'", "'minLength'", "'maxLength'", "'restrictedRange'", "'iriScalarRestriction'", "'pattern'", "'numericScalarRestriction'", "'minInclusive'", "'maxInclusive'", "'minExclusive'", "'maxExclusive'", "'plainLiteralScalarRestriction'", "'langRange'", "'scalarOneOfRestriction'", "'oneOf'", "'stringScalarRestriction'", "'synonymScalarRestriction'", "'timeScalarRestriction'", "'refines'", "'conceptInstance'", "'is-a'", "'reifiedRelationshipInstance'", "'tuple'", "'open'", "'closed'", "'final'", "'partial'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ABBREV_IRI", "RULE_IRI", "RULE_STRING_VALUE", "RULE_ID", "RULE_PATTERN", "RULE_LANG_TAG", "RULE_DATE_TIME", "RULE_UUID", "RULE_URI", "RULE_REAL", "RULE_RATIONAL", "RULE_FLOAT", "RULE_DIGITS", "RULE_DECIMAL", "RULE_DIGIT", "RULE_DIGIT19", "RULE_DIGIT02", "RULE_DIGIT03", "RULE_DIGIT05", "RULE_YEAR_FRAG", "RULE_MONTH_FRAG", "RULE_DAY_FRAG", "RULE_HOUR_FRAG", "RULE_MINUTE_FRAG", "RULE_SECOND_FRAG", "RULE_END_OF_DAY_FRAG", "RULE_TIMEZONE_FRAG", "RULE_ALPHA", "RULE_SCHEME", "RULE_HEX_DIGIT", "RULE_PCT_ENCODED", "RULE_UNRESERVED", "RULE_DIGIT04", "RULE_DEC_OCTET", "RULE_IPV4_ADDRESS", "RULE_IUSER_PART", "RULE_IUSER_INFO", "RULE_IUNRESERVED_PART", "RULE_IUNRESERVED", "RULE_IHOST", "RULE_PORT", "RULE_IAUTHORITY", "RULE_IPCHAR", "RULE_ISEGMENT", "RULE_IPATH", "RULE_IHIER_PART", "RULE_IFRAGMENT", "RULE_CONSTANT_NAME", "RULE_LETTER", "RULE_LETTER_DIGIT", "RULE_LETTER_DIGIT_PREFIX", "RULE_LETTER_DIGIT_SUFFIX", "RULE_ID_PREFIX", "RULE_HEX_8DIGITS", "RULE_HEX_4DIGITS", "RULE_HEX_12DIGITS", "RULE_HEX_LETTER", "RULE_HEX", "RULE_DEC", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "'annotationProperty'", "'='", "'@'", "'terminology'", "'{'", "'}'", "'bundle'", "'descriptionBox'", "'bundles'", "'conceptDesignationTerminologyAxiom'", "'designatedTerminology'", "'designatedConcept'", "'extends'", "'terminologyNestingAxiom'", "'nestingTerminology'", "'nestingContext'", "'aspect'", "'concept'", "'reifiedRelationship'", "'functional'", "'inverseFunctional'", "'essential'", "'inverseEssential'", "'symmetric'", "'asymmetric'", "'reflexive'", "'irreflexive'", "'transitive'", "'unreified'", "'inverse'", "'source'", "'target'", "'unreifiedRelationship'", "'scalar'", "'structure'", "'entityStructuredDataProperty'", "'+'", "'domain'", "'range'", "'entityScalarDataProperty'", "'structuredDataProperty'", "'scalarDataProperty'", "'anonymousConceptUnion'", "'('", "')'", "'rootConceptTaxonomy'", "'disjointLeaf'", "'someEntities'", "'.'", "'in'", "'allEntities'", "'extendsAspect'", "'extendsConcept'", "'extendsRelationship'", "'someData'", "'every'", "'allData'", "'binaryScalarRestriction'", "'length'", "'minLength'", "'maxLength'", "'restrictedRange'", "'iriScalarRestriction'", "'pattern'", "'numericScalarRestriction'", "'minInclusive'", "'maxInclusive'", "'minExclusive'", "'maxExclusive'", "'plainLiteralScalarRestriction'", "'langRange'", "'scalarOneOfRestriction'", "'oneOf'", "'stringScalarRestriction'", "'synonymScalarRestriction'", "'timeScalarRestriction'", "'refines'", "'conceptInstance'", "'is-a'", "'reifiedRelationshipInstance'", "'tuple'", "'open'", "'closed'", "'final'", "'partial'"
     };
     public static final int T__144=144;
     public static final int T__143=143;
@@ -106,7 +106,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
     public static final int RULE_LETTER_DIGIT=53;
     public static final int RULE_ID_PREFIX=56;
     public static final int RULE_IUNRESERVED_PART=41;
-    public static final int RULE_DECIMAL=16;
+    public static final int RULE_DECIMAL=17;
     public static final int RULE_URI=12;
     public static final int RULE_MONTH_FRAG=24;
     public static final int RULE_CONSTANT_NAME=51;
@@ -122,7 +122,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
     public static final int T__123=123;
     public static final int RULE_PORT=44;
     public static final int T__120=120;
-    public static final int RULE_DIGITS=17;
+    public static final int RULE_DIGITS=16;
     public static final int RULE_SL_COMMENT=64;
     public static final int RULE_END_OF_DAY_FRAG=29;
     public static final int T__77=77;
@@ -18333,6 +18333,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
             case RULE_REAL:
             case RULE_RATIONAL:
             case RULE_FLOAT:
+            case RULE_DIGITS:
             case RULE_DECIMAL:
                 {
                 alt92=5;
@@ -19145,6 +19146,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
                 alt93=3;
                 }
                 break;
+            case RULE_DIGITS:
             case RULE_DECIMAL:
                 {
                 alt93=4;
@@ -19707,59 +19709,118 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLiteralDecimal"
-    // InternalOML.g:7961:1: ruleLiteralDecimal returns [EObject current=null] : ( () ( (lv_decimal_1_0= RULE_DECIMAL ) ) ) ;
+    // InternalOML.g:7961:1: ruleLiteralDecimal returns [EObject current=null] : ( ( () ( (lv_decimal_1_0= RULE_DIGITS ) ) ) | ( (lv_decimal_2_0= RULE_DECIMAL ) ) ) ;
     public final EObject ruleLiteralDecimal() throws RecognitionException {
         EObject current = null;
 
         Token lv_decimal_1_0=null;
+        Token lv_decimal_2_0=null;
 
 
         	enterRule();
 
         try {
-            // InternalOML.g:7967:2: ( ( () ( (lv_decimal_1_0= RULE_DECIMAL ) ) ) )
-            // InternalOML.g:7968:2: ( () ( (lv_decimal_1_0= RULE_DECIMAL ) ) )
+            // InternalOML.g:7967:2: ( ( ( () ( (lv_decimal_1_0= RULE_DIGITS ) ) ) | ( (lv_decimal_2_0= RULE_DECIMAL ) ) ) )
+            // InternalOML.g:7968:2: ( ( () ( (lv_decimal_1_0= RULE_DIGITS ) ) ) | ( (lv_decimal_2_0= RULE_DECIMAL ) ) )
             {
-            // InternalOML.g:7968:2: ( () ( (lv_decimal_1_0= RULE_DECIMAL ) ) )
-            // InternalOML.g:7969:3: () ( (lv_decimal_1_0= RULE_DECIMAL ) )
-            {
-            // InternalOML.g:7969:3: ()
-            // InternalOML.g:7970:4: 
-            {
+            // InternalOML.g:7968:2: ( ( () ( (lv_decimal_1_0= RULE_DIGITS ) ) ) | ( (lv_decimal_2_0= RULE_DECIMAL ) ) )
+            int alt94=2;
+            int LA94_0 = input.LA(1);
 
-            				current = forceCreateModelElement(
-            					grammarAccess.getLiteralDecimalAccess().getLiteralDecimalAction_0(),
-            					current);
-            			
-
+            if ( (LA94_0==RULE_DIGITS) ) {
+                alt94=1;
             }
-
-            // InternalOML.g:7976:3: ( (lv_decimal_1_0= RULE_DECIMAL ) )
-            // InternalOML.g:7977:4: (lv_decimal_1_0= RULE_DECIMAL )
-            {
-            // InternalOML.g:7977:4: (lv_decimal_1_0= RULE_DECIMAL )
-            // InternalOML.g:7978:5: lv_decimal_1_0= RULE_DECIMAL
-            {
-            lv_decimal_1_0=(Token)match(input,RULE_DECIMAL,FOLLOW_2); 
-
-            					newLeafNode(lv_decimal_1_0, grammarAccess.getLiteralDecimalAccess().getDecimalDECIMALTerminalRuleCall_1_0());
-            				
-
-            					if (current==null) {
-            						current = createModelElement(grammarAccess.getLiteralDecimalRule());
-            					}
-            					setWithLastConsumed(
-            						current,
-            						"decimal",
-            						lv_decimal_1_0,
-            						"gov.nasa.jpl.imce.oml.dsl.OML.DECIMAL");
-            				
-
+            else if ( (LA94_0==RULE_DECIMAL) ) {
+                alt94=2;
             }
+            else {
+                NoViableAltException nvae =
+                    new NoViableAltException("", 94, 0, input);
 
-
+                throw nvae;
             }
+            switch (alt94) {
+                case 1 :
+                    // InternalOML.g:7969:3: ( () ( (lv_decimal_1_0= RULE_DIGITS ) ) )
+                    {
+                    // InternalOML.g:7969:3: ( () ( (lv_decimal_1_0= RULE_DIGITS ) ) )
+                    // InternalOML.g:7970:4: () ( (lv_decimal_1_0= RULE_DIGITS ) )
+                    {
+                    // InternalOML.g:7970:4: ()
+                    // InternalOML.g:7971:5: 
+                    {
 
+                    					current = forceCreateModelElement(
+                    						grammarAccess.getLiteralDecimalAccess().getLiteralDecimalAction_0_0(),
+                    						current);
+                    				
+
+                    }
+
+                    // InternalOML.g:7977:4: ( (lv_decimal_1_0= RULE_DIGITS ) )
+                    // InternalOML.g:7978:5: (lv_decimal_1_0= RULE_DIGITS )
+                    {
+                    // InternalOML.g:7978:5: (lv_decimal_1_0= RULE_DIGITS )
+                    // InternalOML.g:7979:6: lv_decimal_1_0= RULE_DIGITS
+                    {
+                    lv_decimal_1_0=(Token)match(input,RULE_DIGITS,FOLLOW_2); 
+
+                    						newLeafNode(lv_decimal_1_0, grammarAccess.getLiteralDecimalAccess().getDecimalDIGITSTerminalRuleCall_0_1_0());
+                    					
+
+                    						if (current==null) {
+                    							current = createModelElement(grammarAccess.getLiteralDecimalRule());
+                    						}
+                    						setWithLastConsumed(
+                    							current,
+                    							"decimal",
+                    							lv_decimal_1_0,
+                    							"gov.nasa.jpl.imce.oml.dsl.OML.DIGITS");
+                    					
+
+                    }
+
+
+                    }
+
+
+                    }
+
+
+                    }
+                    break;
+                case 2 :
+                    // InternalOML.g:7997:3: ( (lv_decimal_2_0= RULE_DECIMAL ) )
+                    {
+                    // InternalOML.g:7997:3: ( (lv_decimal_2_0= RULE_DECIMAL ) )
+                    // InternalOML.g:7998:4: (lv_decimal_2_0= RULE_DECIMAL )
+                    {
+                    // InternalOML.g:7998:4: (lv_decimal_2_0= RULE_DECIMAL )
+                    // InternalOML.g:7999:5: lv_decimal_2_0= RULE_DECIMAL
+                    {
+                    lv_decimal_2_0=(Token)match(input,RULE_DECIMAL,FOLLOW_2); 
+
+                    					newLeafNode(lv_decimal_2_0, grammarAccess.getLiteralDecimalAccess().getDecimalDECIMALTerminalRuleCall_1_0());
+                    				
+
+                    					if (current==null) {
+                    						current = createModelElement(grammarAccess.getLiteralDecimalRule());
+                    					}
+                    					setWithLastConsumed(
+                    						current,
+                    						"decimal",
+                    						lv_decimal_2_0,
+                    						"gov.nasa.jpl.imce.oml.dsl.OML.DECIMAL");
+                    				
+
+                    }
+
+
+                    }
+
+
+                    }
+                    break;
 
             }
 
@@ -19783,7 +19844,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulePositiveIntegerLiteral"
-    // InternalOML.g:7998:1: entryRulePositiveIntegerLiteral returns [String current=null] : iv_rulePositiveIntegerLiteral= rulePositiveIntegerLiteral EOF ;
+    // InternalOML.g:8019:1: entryRulePositiveIntegerLiteral returns [String current=null] : iv_rulePositiveIntegerLiteral= rulePositiveIntegerLiteral EOF ;
     public final String entryRulePositiveIntegerLiteral() throws RecognitionException {
         String current = null;
 
@@ -19791,8 +19852,8 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalOML.g:7998:62: (iv_rulePositiveIntegerLiteral= rulePositiveIntegerLiteral EOF )
-            // InternalOML.g:7999:2: iv_rulePositiveIntegerLiteral= rulePositiveIntegerLiteral EOF
+            // InternalOML.g:8019:62: (iv_rulePositiveIntegerLiteral= rulePositiveIntegerLiteral EOF )
+            // InternalOML.g:8020:2: iv_rulePositiveIntegerLiteral= rulePositiveIntegerLiteral EOF
             {
              newCompositeNode(grammarAccess.getPositiveIntegerLiteralRule()); 
             pushFollow(FOLLOW_1);
@@ -19819,7 +19880,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePositiveIntegerLiteral"
-    // InternalOML.g:8005:1: rulePositiveIntegerLiteral returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_DIGITS_0= RULE_DIGITS ;
+    // InternalOML.g:8026:1: rulePositiveIntegerLiteral returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_DIGITS_0= RULE_DIGITS ;
     public final AntlrDatatypeRuleToken rulePositiveIntegerLiteral() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -19829,8 +19890,8 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalOML.g:8011:2: (this_DIGITS_0= RULE_DIGITS )
-            // InternalOML.g:8012:2: this_DIGITS_0= RULE_DIGITS
+            // InternalOML.g:8032:2: (this_DIGITS_0= RULE_DIGITS )
+            // InternalOML.g:8033:2: this_DIGITS_0= RULE_DIGITS
             {
             this_DIGITS_0=(Token)match(input,RULE_DIGITS,FOLLOW_2); 
 
@@ -19859,7 +19920,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleTerminologyKind"
-    // InternalOML.g:8022:1: ruleTerminologyKind returns [Enumerator current=null] : ( (enumLiteral_0= 'open' ) | (enumLiteral_1= 'closed' ) ) ;
+    // InternalOML.g:8043:1: ruleTerminologyKind returns [Enumerator current=null] : ( (enumLiteral_0= 'open' ) | (enumLiteral_1= 'closed' ) ) ;
     public final Enumerator ruleTerminologyKind() throws RecognitionException {
         Enumerator current = null;
 
@@ -19870,31 +19931,31 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalOML.g:8028:2: ( ( (enumLiteral_0= 'open' ) | (enumLiteral_1= 'closed' ) ) )
-            // InternalOML.g:8029:2: ( (enumLiteral_0= 'open' ) | (enumLiteral_1= 'closed' ) )
+            // InternalOML.g:8049:2: ( ( (enumLiteral_0= 'open' ) | (enumLiteral_1= 'closed' ) ) )
+            // InternalOML.g:8050:2: ( (enumLiteral_0= 'open' ) | (enumLiteral_1= 'closed' ) )
             {
-            // InternalOML.g:8029:2: ( (enumLiteral_0= 'open' ) | (enumLiteral_1= 'closed' ) )
-            int alt94=2;
-            int LA94_0 = input.LA(1);
+            // InternalOML.g:8050:2: ( (enumLiteral_0= 'open' ) | (enumLiteral_1= 'closed' ) )
+            int alt95=2;
+            int LA95_0 = input.LA(1);
 
-            if ( (LA94_0==147) ) {
-                alt94=1;
+            if ( (LA95_0==147) ) {
+                alt95=1;
             }
-            else if ( (LA94_0==148) ) {
-                alt94=2;
+            else if ( (LA95_0==148) ) {
+                alt95=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 94, 0, input);
+                    new NoViableAltException("", 95, 0, input);
 
                 throw nvae;
             }
-            switch (alt94) {
+            switch (alt95) {
                 case 1 :
-                    // InternalOML.g:8030:3: (enumLiteral_0= 'open' )
+                    // InternalOML.g:8051:3: (enumLiteral_0= 'open' )
                     {
-                    // InternalOML.g:8030:3: (enumLiteral_0= 'open' )
-                    // InternalOML.g:8031:4: enumLiteral_0= 'open'
+                    // InternalOML.g:8051:3: (enumLiteral_0= 'open' )
+                    // InternalOML.g:8052:4: enumLiteral_0= 'open'
                     {
                     enumLiteral_0=(Token)match(input,147,FOLLOW_2); 
 
@@ -19908,10 +19969,10 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalOML.g:8038:3: (enumLiteral_1= 'closed' )
+                    // InternalOML.g:8059:3: (enumLiteral_1= 'closed' )
                     {
-                    // InternalOML.g:8038:3: (enumLiteral_1= 'closed' )
-                    // InternalOML.g:8039:4: enumLiteral_1= 'closed'
+                    // InternalOML.g:8059:3: (enumLiteral_1= 'closed' )
+                    // InternalOML.g:8060:4: enumLiteral_1= 'closed'
                     {
                     enumLiteral_1=(Token)match(input,148,FOLLOW_2); 
 
@@ -19947,7 +20008,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleDescriptionKind"
-    // InternalOML.g:8049:1: ruleDescriptionKind returns [Enumerator current=null] : ( (enumLiteral_0= 'final' ) | (enumLiteral_1= 'partial' ) ) ;
+    // InternalOML.g:8070:1: ruleDescriptionKind returns [Enumerator current=null] : ( (enumLiteral_0= 'final' ) | (enumLiteral_1= 'partial' ) ) ;
     public final Enumerator ruleDescriptionKind() throws RecognitionException {
         Enumerator current = null;
 
@@ -19958,31 +20019,31 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalOML.g:8055:2: ( ( (enumLiteral_0= 'final' ) | (enumLiteral_1= 'partial' ) ) )
-            // InternalOML.g:8056:2: ( (enumLiteral_0= 'final' ) | (enumLiteral_1= 'partial' ) )
+            // InternalOML.g:8076:2: ( ( (enumLiteral_0= 'final' ) | (enumLiteral_1= 'partial' ) ) )
+            // InternalOML.g:8077:2: ( (enumLiteral_0= 'final' ) | (enumLiteral_1= 'partial' ) )
             {
-            // InternalOML.g:8056:2: ( (enumLiteral_0= 'final' ) | (enumLiteral_1= 'partial' ) )
-            int alt95=2;
-            int LA95_0 = input.LA(1);
+            // InternalOML.g:8077:2: ( (enumLiteral_0= 'final' ) | (enumLiteral_1= 'partial' ) )
+            int alt96=2;
+            int LA96_0 = input.LA(1);
 
-            if ( (LA95_0==149) ) {
-                alt95=1;
+            if ( (LA96_0==149) ) {
+                alt96=1;
             }
-            else if ( (LA95_0==150) ) {
-                alt95=2;
+            else if ( (LA96_0==150) ) {
+                alt96=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 95, 0, input);
+                    new NoViableAltException("", 96, 0, input);
 
                 throw nvae;
             }
-            switch (alt95) {
+            switch (alt96) {
                 case 1 :
-                    // InternalOML.g:8057:3: (enumLiteral_0= 'final' )
+                    // InternalOML.g:8078:3: (enumLiteral_0= 'final' )
                     {
-                    // InternalOML.g:8057:3: (enumLiteral_0= 'final' )
-                    // InternalOML.g:8058:4: enumLiteral_0= 'final'
+                    // InternalOML.g:8078:3: (enumLiteral_0= 'final' )
+                    // InternalOML.g:8079:4: enumLiteral_0= 'final'
                     {
                     enumLiteral_0=(Token)match(input,149,FOLLOW_2); 
 
@@ -19996,10 +20057,10 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalOML.g:8065:3: (enumLiteral_1= 'partial' )
+                    // InternalOML.g:8086:3: (enumLiteral_1= 'partial' )
                     {
-                    // InternalOML.g:8065:3: (enumLiteral_1= 'partial' )
-                    // InternalOML.g:8066:4: enumLiteral_1= 'partial'
+                    // InternalOML.g:8086:3: (enumLiteral_1= 'partial' )
+                    // InternalOML.g:8087:4: enumLiteral_1= 'partial'
                     {
                     enumLiteral_1=(Token)match(input,150,FOLLOW_2); 
 
@@ -20104,13 +20165,13 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
     static final String dfa_7s = "\11\uffff";
     static final String dfa_8s = "\1\104\1\4\2\105\1\103\2\uffff\1\6\1\104";
     static final String dfa_9s = "\1\u0094\1\4\2\110\1\103\2\uffff\1\6\1\u0094";
-    static final String dfa_10s = "\5\uffff\1\2\1\1\2\uffff";
+    static final String dfa_10s = "\5\uffff\1\1\1\2\2\uffff";
     static final String dfa_11s = "\11\uffff}>";
     static final String[] dfa_12s = {
             "\1\1\116\uffff\1\2\1\3",
             "\1\4",
-            "\1\5\2\uffff\1\6",
-            "\1\5\2\uffff\1\6",
+            "\1\6\2\uffff\1\5",
+            "\1\6\2\uffff\1\5",
             "\1\7",
             "",
             "",
@@ -20250,7 +20311,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
             "\1\24",
             "\1\24",
             "\1\13\1\12\1\uffff\1\14\74\uffff\1\2\11\uffff\1\3\30\uffff\1\7\1\10\45\uffff\1\4\1\5\1\uffff\1\6\1\11",
-            "\1\26\3\uffff\7\26\65\uffff\1\25",
+            "\1\26\3\uffff\10\26\64\uffff\1\25",
             "",
             ""
     };
@@ -20598,7 +20659,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
             "\1\21",
             "\1\21",
             "\1\21",
-            "\1\3\3\uffff\7\3\65\uffff\1\22",
+            "\1\3\3\uffff\10\3\64\uffff\1\22",
             ""
     };
 
@@ -20929,7 +20990,7 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
             "\1\7",
             "\1\7",
             "\1\10",
-            "\1\12\3\uffff\7\12\65\uffff\1\11",
+            "\1\12\3\uffff\10\12\64\uffff\1\11",
             "\1\13",
             "",
             "",
@@ -21106,12 +21167,12 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_58 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
     public static final BitSet FOLLOW_59 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000010L});
     public static final BitSet FOLLOW_60 = new BitSet(new long[]{0x0000000000000000L,0x0200000000000010L});
-    public static final BitSet FOLLOW_61 = new BitSet(new long[]{0x000000000001FC40L});
+    public static final BitSet FOLLOW_61 = new BitSet(new long[]{0x000000000003FC40L});
     public static final BitSet FOLLOW_62 = new BitSet(new long[]{0x0000000000000000L,0x0400000000000010L});
     public static final BitSet FOLLOW_63 = new BitSet(new long[]{0x00000000000000B0L,0x0000000000000090L});
     public static final BitSet FOLLOW_64 = new BitSet(new long[]{0x0000000000000000L,0x0800000000000010L});
     public static final BitSet FOLLOW_65 = new BitSet(new long[]{0x0000000000000000L,0xF000000000000000L});
-    public static final BitSet FOLLOW_66 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_66 = new BitSet(new long[]{0x0000000000010000L});
     public static final BitSet FOLLOW_67 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000010L,0x0000000000000001L});
     public static final BitSet FOLLOW_68 = new BitSet(new long[]{0x0000000000000000L,0xF000000000000000L,0x0000000000000002L});
     public static final BitSet FOLLOW_69 = new BitSet(new long[]{0x0000000000000100L});
