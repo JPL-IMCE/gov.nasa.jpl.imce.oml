@@ -62,6 +62,12 @@ open terminology <http://imce.jpl.nasa.gov/foundation/mission/mission>
 		pattern /[\\\\-+]?[0-9]+/
 		restrictedRange decimal
 	}
+	
+	numericScalarRestriction XSDlong {
+		minInclusive -9223372036854775808
+		maxInclusive 9223372036854775807
+		restrictedRange decimal
+	}
 }
 
 open terminology <http://purl.org/dc/elements/1.1/> {

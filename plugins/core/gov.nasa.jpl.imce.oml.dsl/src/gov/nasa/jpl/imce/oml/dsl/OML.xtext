@@ -603,7 +603,7 @@ terminal RATIONAL returns RationalDataType:				'-'? DIGIT+ '/' DIGIT+;
 
 LiteralFloat returns LiteralFloat:						{LiteralFloat} float=FLOAT;
 
-LiteralDecimal returns LiteralDecimal:					{LiteralDecimal} decimal=DECIMAL;
+LiteralDecimal returns LiteralDecimal:					{LiteralDecimal} decimal=DIGITS | decimal=DECIMAL;
 
 PositiveIntegerLiteral returns PositiveIntegerLiteral: 	DIGITS;
 

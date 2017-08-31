@@ -33,7 +33,7 @@ class PositiveIntegerValueConverter extends GenericValueConverter<PositiveIntege
 	}
 	
 	override toValue(String string, INode node) throws ValueConverterException {
-		new PositiveIntegerValue(Integer.parseInt(string))
+		new PositiveIntegerValue(string)
 	}
 	
 }
