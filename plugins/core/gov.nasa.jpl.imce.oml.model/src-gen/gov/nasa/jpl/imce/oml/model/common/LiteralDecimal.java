@@ -18,7 +18,7 @@
  */
 package gov.nasa.jpl.imce.oml.model.common;
 
-import gov.nasa.jpl.imce.oml.model.datatypes.DecimalValue;
+import gov.nasa.jpl.imce.oml.model.datatypes.AbstractDecimalValue;
 
 /**
  * <!-- begin-user-doc -->
@@ -46,12 +46,12 @@ public interface LiteralDecimal extends LiteralNumber {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Decimal</em>' attribute.
-	 * @see #setDecimal(DecimalValue)
+	 * @see #setDecimal(AbstractDecimalValue)
 	 * @see gov.nasa.jpl.imce.oml.model.common.CommonPackage#getLiteralDecimal_Decimal()
-	 * @model unique="false" dataType="gov.nasa.jpl.imce.oml.model.common.DecimalDataType" required="true"
+	 * @model unique="false" dataType="gov.nasa.jpl.imce.oml.model.common.AbstractDecimalDataType" required="true"
 	 * @generated
 	 */
-	DecimalValue getDecimal();
+	AbstractDecimalValue getDecimal();
 
 	/**
 	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.common.LiteralDecimal#getDecimal <em>Decimal</em>}' attribute.
@@ -61,6 +61,6 @@ public interface LiteralDecimal extends LiteralNumber {
 	 * @see #getDecimal()
 	 * @generated
 	 */
-	void setDecimal(DecimalValue value);
+	void setDecimal(AbstractDecimalValue value);
 
 } // LiteralDecimal

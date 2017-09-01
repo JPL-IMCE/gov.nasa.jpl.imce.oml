@@ -18,10 +18,15 @@
 package gov.nasa.jpl.imce.oml.model.datatypes;
 
 import com.google.common.base.Objects;
-import gov.nasa.jpl.imce.oml.model.datatypes.DecimalValue;
+import gov.nasa.jpl.imce.oml.model.datatypes.AbstractDecimalValue;
 
+/**
+ * Corresponds to the tokens resulting from DIGITS where:
+ * 
+ * terminal DIGITS returns PositiveIntegerLiteral:			DIGIT+;
+ */
 @SuppressWarnings("all")
-public class PositiveIntegerValue extends DecimalValue {
+public class PositiveIntegerValue extends AbstractDecimalValue {
   public PositiveIntegerValue(final String value) {
     super(value);
   }

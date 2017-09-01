@@ -21,7 +21,7 @@ package gov.nasa.jpl.imce.oml.model.common.impl;
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
 import gov.nasa.jpl.imce.oml.model.common.LiteralDecimal;
 
-import gov.nasa.jpl.imce.oml.model.datatypes.DecimalValue;
+import gov.nasa.jpl.imce.oml.model.datatypes.AbstractDecimalValue;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -51,7 +51,7 @@ public class LiteralDecimalImpl extends LiteralNumberImpl implements LiteralDeci
 	 * @generated
 	 * @ordered
 	 */
-	protected static final DecimalValue DECIMAL_EDEFAULT = null;
+	protected static final AbstractDecimalValue DECIMAL_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getDecimal() <em>Decimal</em>}' attribute.
@@ -61,7 +61,7 @@ public class LiteralDecimalImpl extends LiteralNumberImpl implements LiteralDeci
 	 * @generated
 	 * @ordered
 	 */
-	protected DecimalValue decimal = DECIMAL_EDEFAULT;
+	protected AbstractDecimalValue decimal = DECIMAL_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -87,7 +87,7 @@ public class LiteralDecimalImpl extends LiteralNumberImpl implements LiteralDeci
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DecimalValue getDecimal() {
+	public AbstractDecimalValue getDecimal() {
 		return decimal;
 	}
 
@@ -96,8 +96,8 @@ public class LiteralDecimalImpl extends LiteralNumberImpl implements LiteralDeci
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setDecimal(DecimalValue newDecimal) {
-		DecimalValue oldDecimal = decimal;
+	public void setDecimal(AbstractDecimalValue newDecimal) {
+		AbstractDecimalValue oldDecimal = decimal;
 		decimal = newDecimal;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CommonPackage.LITERAL_DECIMAL__DECIMAL, oldDecimal, decimal));
@@ -126,7 +126,7 @@ public class LiteralDecimalImpl extends LiteralNumberImpl implements LiteralDeci
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CommonPackage.LITERAL_DECIMAL__DECIMAL:
-				setDecimal((DecimalValue)newValue);
+				setDecimal((AbstractDecimalValue)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
