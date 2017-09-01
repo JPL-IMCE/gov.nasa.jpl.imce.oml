@@ -20,6 +20,7 @@ package gov.nasa.jpl.imce.oml.model.common.impl;
 
 import gov.nasa.jpl.imce.oml.model.common.*;
 
+import gov.nasa.jpl.imce.oml.model.datatypes.AbstractDecimalValue;
 import gov.nasa.jpl.imce.oml.model.datatypes.DateTimeValue;
 import gov.nasa.jpl.imce.oml.model.datatypes.DecimalValue;
 import gov.nasa.jpl.imce.oml.model.datatypes.FloatValue;
@@ -129,6 +130,8 @@ public class CommonFactoryImpl extends EFactoryImpl implements CommonFactory {
 				return createRationalDataTypeFromString(eDataType, initialValue);
 			case CommonPackage.FLOAT_DATA_TYPE:
 				return createFloatDataTypeFromString(eDataType, initialValue);
+			case CommonPackage.ABSTRACT_DECIMAL_DATA_TYPE:
+				return createAbstractDecimalDataTypeFromString(eDataType, initialValue);
 			case CommonPackage.DECIMAL_DATA_TYPE:
 				return createDecimalDataTypeFromString(eDataType, initialValue);
 			case CommonPackage.DATE_TIME_DATA_TYPE:
@@ -174,6 +177,8 @@ public class CommonFactoryImpl extends EFactoryImpl implements CommonFactory {
 				return convertRationalDataTypeToString(eDataType, instanceValue);
 			case CommonPackage.FLOAT_DATA_TYPE:
 				return convertFloatDataTypeToString(eDataType, instanceValue);
+			case CommonPackage.ABSTRACT_DECIMAL_DATA_TYPE:
+				return convertAbstractDecimalDataTypeToString(eDataType, instanceValue);
 			case CommonPackage.DECIMAL_DATA_TYPE:
 				return convertDecimalDataTypeToString(eDataType, instanceValue);
 			case CommonPackage.DATE_TIME_DATA_TYPE:
@@ -478,6 +483,24 @@ public class CommonFactoryImpl extends EFactoryImpl implements CommonFactory {
 	 * @generated
 	 */
 	public String convertFloatDataTypeToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AbstractDecimalValue createAbstractDecimalDataTypeFromString(EDataType eDataType, String initialValue) {
+		return (AbstractDecimalValue)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertAbstractDecimalDataTypeToString(EDataType eDataType, Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 

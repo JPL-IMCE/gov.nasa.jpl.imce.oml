@@ -67,4 +67,6 @@ gov.nasa.jpl.imce.oml.tycho 0.8.0.0 resolves major problems found in 0.7.1.2
   Xtext's datatype value conversion expects a datatype to have a constructor with a single String argument.
   The PositiveIntegerValue datatype was missing such a constructor.
   
+- [#91 Conversion of DecimalValue Fails During Serialization](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/91)
+
 ## [Release & Publish process](publishProcess.markdown)

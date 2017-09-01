@@ -177,10 +177,12 @@ class LiteralFloat extends LiteralNumber {
 	FloatDataType[1] ^float
 }
 
+type AbstractDecimalDataType wraps gov.nasa.jpl.imce.oml.model.datatypes.AbstractDecimalValue
+
 type DecimalDataType wraps gov.nasa.jpl.imce.oml.model.datatypes.DecimalValue
 
 class LiteralDecimal extends LiteralNumber {
-	DecimalDataType[1] decimal
+	AbstractDecimalDataType[1] decimal
 }
 
 type DateTimeDataType wraps gov.nasa.jpl.imce.oml.model.datatypes.DateTimeValue

@@ -18,22 +18,18 @@
 package gov.nasa.jpl.imce.oml.model.datatypes
 
 /**
- * Corresponds to the tokens resulting from DIGITS where:
+ * Corresponds to the tokens resulting from the disjoint union of DIGITS + DECIMAL where:
  * 
  * terminal DIGITS returns PositiveIntegerLiteral:			DIGIT+;
+ * terminal DECIMAL returns DecimalDataType: 				DEC | HEX;
+ *
+ * DIGITS has higher priority than DECIMAL because it is defined before the latter in the grammar.
  */
-class PositiveIntegerValue extends AbstractDecimalValue {
+abstract class AbstractDecimalValue {
+	
+	public String value
 	
 	new(String value) {
-		super(value)
-	}
-	
-	override def boolean equals(Object that) {
-		switch that {
-			PositiveIntegerValue:
-				this.value == that.value
-			default:
-				false
-		}
+		this.value = value
 	}
 }

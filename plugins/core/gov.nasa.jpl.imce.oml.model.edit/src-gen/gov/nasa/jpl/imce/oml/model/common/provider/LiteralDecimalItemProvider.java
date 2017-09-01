@@ -21,8 +21,7 @@ package gov.nasa.jpl.imce.oml.model.common.provider;
 
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
 import gov.nasa.jpl.imce.oml.model.common.LiteralDecimal;
-
-import gov.nasa.jpl.imce.oml.model.datatypes.DecimalValue;
+import gov.nasa.jpl.imce.oml.model.datatypes.AbstractDecimalValue;
 import java.util.Collection;
 import java.util.List;
 
@@ -108,7 +107,7 @@ public class LiteralDecimalItemProvider extends LiteralNumberItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		DecimalValue labelValue = ((LiteralDecimal)object).getDecimal();
+		AbstractDecimalValue labelValue = ((LiteralDecimal)object).getDecimal();
 		String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ?
 			getString("_UI_LiteralDecimal_type") :

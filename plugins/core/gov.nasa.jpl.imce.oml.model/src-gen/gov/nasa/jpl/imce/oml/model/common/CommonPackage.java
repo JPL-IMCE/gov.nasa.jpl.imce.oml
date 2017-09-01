@@ -1129,6 +1129,16 @@ public interface CommonPackage extends EPackage {
 	int FLOAT_DATA_TYPE = 27;
 
 	/**
+	 * The meta object id for the '<em>Abstract Decimal Data Type</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.datatypes.AbstractDecimalValue
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getAbstractDecimalDataType()
+	 * @generated
+	 */
+	int ABSTRACT_DECIMAL_DATA_TYPE = 28;
+
+	/**
 	 * The meta object id for the '<em>Decimal Data Type</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1136,7 +1146,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getDecimalDataType()
 	 * @generated
 	 */
-	int DECIMAL_DATA_TYPE = 28;
+	int DECIMAL_DATA_TYPE = 29;
 
 	/**
 	 * The meta object id for the '<em>Date Time Data Type</em>' data type.
@@ -1146,7 +1156,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getDateTimeDataType()
 	 * @generated
 	 */
-	int DATE_TIME_DATA_TYPE = 29;
+	int DATE_TIME_DATA_TYPE = 30;
 
 	/**
 	 * The meta object id for the '<em>Language Tag Data Type</em>' data type.
@@ -1156,7 +1166,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLanguageTagDataType()
 	 * @generated
 	 */
-	int LANGUAGE_TAG_DATA_TYPE = 30;
+	int LANGUAGE_TAG_DATA_TYPE = 31;
 
 	/**
 	 * The meta object id for the '<em>String Data Type</em>' data type.
@@ -1166,7 +1176,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getStringDataType()
 	 * @generated
 	 */
-	int STRING_DATA_TYPE = 31;
+	int STRING_DATA_TYPE = 32;
 
 	/**
 	 * The meta object id for the '<em>UUID Data Type</em>' data type.
@@ -1176,7 +1186,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getUUIDDataType()
 	 * @generated
 	 */
-	int UUID_DATA_TYPE = 32;
+	int UUID_DATA_TYPE = 33;
 
 	/**
 	 * The meta object id for the '<em>URI Data Type</em>' data type.
@@ -1186,7 +1196,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getURIDataType()
 	 * @generated
 	 */
-	int URI_DATA_TYPE = 33;
+	int URI_DATA_TYPE = 34;
 
 
 	/**
@@ -1892,6 +1902,17 @@ public interface CommonPackage extends EPackage {
 	EDataType getFloatDataType();
 
 	/**
+	 * Returns the meta object for data type '{@link gov.nasa.jpl.imce.oml.model.datatypes.AbstractDecimalValue <em>Abstract Decimal Data Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Abstract Decimal Data Type</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.datatypes.AbstractDecimalValue
+	 * @model instanceClass="gov.nasa.jpl.imce.oml.model.datatypes.AbstractDecimalValue"
+	 * @generated
+	 */
+	EDataType getAbstractDecimalDataType();
+
+	/**
 	 * Returns the meta object for data type '{@link gov.nasa.jpl.imce.oml.model.datatypes.DecimalValue <em>Decimal Data Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2571,6 +2592,16 @@ public interface CommonPackage extends EPackage {
 		 * @generated
 		 */
 		EDataType FLOAT_DATA_TYPE = eINSTANCE.getFloatDataType();
+
+		/**
+		 * The meta object literal for the '<em>Abstract Decimal Data Type</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.datatypes.AbstractDecimalValue
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getAbstractDecimalDataType()
+		 * @generated
+		 */
+		EDataType ABSTRACT_DECIMAL_DATA_TYPE = eINSTANCE.getAbstractDecimalDataType();
 
 		/**
 		 * The meta object literal for the '<em>Decimal Data Type</em>' data type.

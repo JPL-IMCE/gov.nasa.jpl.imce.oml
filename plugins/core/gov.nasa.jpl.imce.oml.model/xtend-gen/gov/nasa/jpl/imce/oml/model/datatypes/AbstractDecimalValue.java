@@ -17,11 +17,8 @@
  */
 package gov.nasa.jpl.imce.oml.model.datatypes;
 
-import com.google.common.base.Objects;
-import gov.nasa.jpl.imce.oml.model.datatypes.AbstractDecimalValue;
-
 /**
- * Corresponds to the tokens resulting from DECIMAL - DIGITS where:
+ * Corresponds to the tokens resulting from the disjoint union of DIGITS + DECIMAL where:
  * 
  * terminal DIGITS returns PositiveIntegerLiteral:			DIGIT+;
  * terminal DECIMAL returns DecimalDataType: 				DEC | HEX;
@@ -29,26 +26,10 @@ import gov.nasa.jpl.imce.oml.model.datatypes.AbstractDecimalValue;
  * DIGITS has higher priority than DECIMAL because it is defined before the latter in the grammar.
  */
 @SuppressWarnings("all")
-public class DecimalValue extends AbstractDecimalValue {
-  public DecimalValue(final String value) {
-    super(value);
-    boolean _matches = value.matches("[0-9]+");
-    if (_matches) {
-      throw new IllegalArgumentException((("Construct the AbstractDecimalValue " + value) + " as a PositiveIntegerValue instead of a DecimalValue"));
-    }
-  }
+public abstract class AbstractDecimalValue {
+  public String value;
   
-  @Override
-  public boolean equals(final Object that) {
-    boolean _switchResult = false;
-    boolean _matched = false;
-    if (that instanceof DecimalValue) {
-      _matched=true;
-      _switchResult = Objects.equal(this.value, ((DecimalValue)that).value);
-    }
-    if (!_matched) {
-      _switchResult = false;
-    }
-    return _switchResult;
+  public AbstractDecimalValue(final String value) {
+    this.value = value;
   }
 }

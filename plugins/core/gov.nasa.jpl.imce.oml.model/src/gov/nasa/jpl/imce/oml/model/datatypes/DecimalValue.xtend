@@ -17,12 +17,20 @@
  */
 package gov.nasa.jpl.imce.oml.model.datatypes
 
-class DecimalValue {
-	
-	public String value
+/**
+ * Corresponds to the tokens resulting from DECIMAL - DIGITS where:
+ * 
+ * terminal DIGITS returns PositiveIntegerLiteral:			DIGIT+;
+ * terminal DECIMAL returns DecimalDataType: 				DEC | HEX;
+ *
+ * DIGITS has higher priority than DECIMAL because it is defined before the latter in the grammar.
+ */
+class DecimalValue extends AbstractDecimalValue {
 	
 	new(String value) {
-		this.value = value
+		super(value)
+		if (value.matches("[0-9]+"))
+			throw new java.lang.IllegalArgumentException("Construct the AbstractDecimalValue "+value+" as a PositiveIntegerValue instead of a DecimalValue")
 	}
 	
 	override def boolean equals(Object that) {

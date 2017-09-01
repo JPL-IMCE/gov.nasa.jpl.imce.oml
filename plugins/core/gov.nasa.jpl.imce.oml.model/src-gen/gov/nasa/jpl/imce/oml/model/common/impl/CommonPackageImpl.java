@@ -39,6 +39,7 @@ import gov.nasa.jpl.imce.oml.model.common.ModuleEdge;
 import gov.nasa.jpl.imce.oml.model.common.ModuleElement;
 import gov.nasa.jpl.imce.oml.model.common.Resource;
 
+import gov.nasa.jpl.imce.oml.model.datatypes.AbstractDecimalValue;
 import gov.nasa.jpl.imce.oml.model.datatypes.DateTimeValue;
 import gov.nasa.jpl.imce.oml.model.datatypes.DecimalValue;
 import gov.nasa.jpl.imce.oml.model.datatypes.FloatValue;
@@ -263,6 +264,13 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	 * @generated
 	 */
 	private EDataType floatDataTypeEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType abstractDecimalDataTypeEDataType = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -978,6 +986,15 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EDataType getAbstractDecimalDataType() {
+		return abstractDecimalDataTypeEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EDataType getDecimalDataType() {
 		return decimalDataTypeEDataType;
 	}
@@ -1141,6 +1158,7 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		realDataTypeEDataType = createEDataType(REAL_DATA_TYPE);
 		rationalDataTypeEDataType = createEDataType(RATIONAL_DATA_TYPE);
 		floatDataTypeEDataType = createEDataType(FLOAT_DATA_TYPE);
+		abstractDecimalDataTypeEDataType = createEDataType(ABSTRACT_DECIMAL_DATA_TYPE);
 		decimalDataTypeEDataType = createEDataType(DECIMAL_DATA_TYPE);
 		dateTimeDataTypeEDataType = createEDataType(DATE_TIME_DATA_TYPE);
 		languageTagDataTypeEDataType = createEDataType(LANGUAGE_TAG_DATA_TYPE);
@@ -1221,7 +1239,7 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		initEAttribute(getLiteralFloat_Float(), this.getFloatDataType(), "float", null, 1, 1, LiteralFloat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(literalDecimalEClass, LiteralDecimal.class, "LiteralDecimal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getLiteralDecimal_Decimal(), this.getDecimalDataType(), "decimal", null, 1, 1, LiteralDecimal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLiteralDecimal_Decimal(), this.getAbstractDecimalDataType(), "decimal", null, 1, 1, LiteralDecimal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(annotationPropertyValueEClass, AnnotationPropertyValue.class, "AnnotationPropertyValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAnnotationPropertyValue_Uuid(), this.getUUID(), "uuid", null, 1, 1, AnnotationPropertyValue.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, IS_DERIVED, IS_ORDERED);
@@ -1298,6 +1316,7 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		initEDataType(realDataTypeEDataType, RealValue.class, "RealDataType", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(rationalDataTypeEDataType, RationalValue.class, "RationalDataType", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(floatDataTypeEDataType, FloatValue.class, "FloatDataType", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(abstractDecimalDataTypeEDataType, AbstractDecimalValue.class, "AbstractDecimalDataType", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(decimalDataTypeEDataType, DecimalValue.class, "DecimalDataType", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(dateTimeDataTypeEDataType, DateTimeValue.class, "DateTimeDataType", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(languageTagDataTypeEDataType, LanguageTagValue.class, "LanguageTagDataType", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
