@@ -45,6 +45,7 @@ import static org.junit.Assert.*
 import org.eclipse.emf.ecore.resource.Resource
 import gov.nasa.jpl.imce.oml.model.datatypes.StringValue
 import gov.nasa.jpl.imce.oml.model.datatypes.FloatValue
+import gov.nasa.jpl.imce.oml.model.datatypes.PositiveIntegerValue
 
 @RunWith(XtextRunner)
 @InjectWith(OMLInjectorProvider)
@@ -83,6 +84,15 @@ class OMLDescriptionTest1 {
 		sc_double.tbox = g
 		sc_double.name = "Double"
 		
+		val zero = commonF.createLiteralDecimal
+		zero.decimal = new PositiveIntegerValue("0")
+		
+		val sc_positive_double = terminologiesF.createNumericScalarRestriction
+		sc_positive_double.tbox = g
+		sc_positive_double.name = "PositiveDouble"
+		sc_positive_double.restrictedRange = sc_double
+		sc_positive_double.minInclusive = zero
+		
 		val EntityScalarDataProperty dp1 = terminologiesF.createEntityScalarDataProperty
 		dp1.tbox = g
 		dp1.name = "name"
@@ -105,6 +115,11 @@ class OMLDescriptionTest1 {
 			
 				scalar Double
 			
+				numericScalarRestriction PositiveDouble {
+					minInclusive 0
+					restrictedRange Double
+				}
+			
 				entityScalarDataProperty name {
 					domain Box
 					range String
@@ -118,6 +133,7 @@ class OMLDescriptionTest1 {
 			}
 		'''
 		
+		System.out.println(text1)
 		assertEquals(text1, expected1)
 		
 		val r2 = rs.createResource(URI.createFileURI("file:OMLDescriptionTest1B.oml"))

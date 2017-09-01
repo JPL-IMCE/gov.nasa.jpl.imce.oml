@@ -247,13 +247,11 @@ class OMLFormatter extends AbstractFormatter2 {
 		val lcurly = ax.regionFor.keyword('{')
 		val rcurly = ax.regionFor.keyword('}')
 		lcurly.prepend[oneSpace]
-		lcurly.append[newLine]
+		rcurly.prepend[newLine]
 		interior(lcurly, rcurly)[indent]
 		
-		ax.regionFor.keyword('designatedTerminology').append[oneSpace]
-		ax.regionFor.ruleCall(conceptDesignationTerminologyAxiomAccess.designatedTerminologyTerminologyBoxExternalReferenceParserRuleCall_4_0_1).append[newLine]
-		ax.regionFor.keyword('designatedConcept').append[oneSpace]
-		ax.regionFor.ruleCall(conceptDesignationTerminologyAxiomAccess.designatedConceptConceptReferenceParserRuleCall_6_0_1).append[newLine]
+		ax.regionFor.keyword('designatedTerminology').append[oneSpace].prepend[newLine]
+		ax.regionFor.keyword('designatedConcept').append[oneSpace].prepend[newLine]
 	}
 	
 	def dispatch void format(TerminologyExtensionAxiom ax, extension IFormattableDocument document) {
@@ -268,13 +266,11 @@ class OMLFormatter extends AbstractFormatter2 {
 		val lcurly = ax.regionFor.keyword('{')
 		val rcurly = ax.regionFor.keyword('}')
 		lcurly.prepend[oneSpace]
-		lcurly.append[newLine]
+		rcurly.prepend[newLine]
 		interior(lcurly, rcurly)[indent]
 		
-		ax.regionFor.keyword('nestingTerminology').append[oneSpace]
-		ax.regionFor.ruleCall(terminologyNestingAxiomAccess.nestingTerminologyTerminologyBoxExternalReferenceParserRuleCall_4_0_1).append[newLine]
-		ax.regionFor.keyword('nestingContext').append[oneSpace]
-		ax.regionFor.ruleCall(terminologyNestingAxiomAccess.nestingContextConceptReferenceParserRuleCall_6_0_1).append[newLine]
+		ax.regionFor.keyword('nestingTerminology').append[oneSpace].prepend[newLine]
+		ax.regionFor.keyword('nestingContext').append[oneSpace].prepend[newLine]
 	}
 	
 	def dispatch void format(BundledTerminologyAxiom ax, extension IFormattableDocument document) {
@@ -290,13 +286,11 @@ class OMLFormatter extends AbstractFormatter2 {
 		val lcurly = t.regionFor.keyword('{')
 		val rcurly = t.regionFor.keyword('}')
 		lcurly.prepend[oneSpace]
-		lcurly.append[newLine]
+		rcurly.prepend[newLine]
 		interior(lcurly, rcurly)[indent]
 		
-		t.regionFor.keyword('domain').append[oneSpace]
-		t.regionFor.ruleCall(entityStructuredDataPropertyAccess.domainEntityReferenceParserRuleCall_6_0_1).append[newLine]
-		t.regionFor.keyword('range').append[oneSpace]
-		t.regionFor.ruleCall(entityStructuredDataPropertyAccess.rangeStructureReferenceParserRuleCall_8_0_1).append[newLine]
+		t.regionFor.keyword('domain').append[oneSpace].prepend[newLine]
+		t.regionFor.keyword('range').append[oneSpace].prepend[newLine]
 	}
 	
 	def dispatch void format(EntityScalarDataProperty t, extension IFormattableDocument document) {
@@ -307,13 +301,11 @@ class OMLFormatter extends AbstractFormatter2 {
 		val lcurly = t.regionFor.keyword('{')
 		val rcurly = t.regionFor.keyword('}')
 		lcurly.prepend[oneSpace]
-		lcurly.append[newLine]
+		rcurly.prepend[newLine]
 		interior(lcurly, rcurly)[indent]
 		
-		t.regionFor.keyword('domain').append[oneSpace]
-		t.regionFor.ruleCall(entityScalarDataPropertyAccess.domainEntityReferenceParserRuleCall_6_0_1).append[newLine]
-		t.regionFor.keyword('range').append[oneSpace]
-		t.regionFor.ruleCall(entityScalarDataPropertyAccess.rangeDataRangeReferenceParserRuleCall_8_0_1).append[newLine]
+		t.regionFor.keyword('domain').append[oneSpace].prepend[newLine]
+		t.regionFor.keyword('range').append[oneSpace].prepend[newLine]
 	}
 	
 	def dispatch void format(StructuredDataProperty t, extension IFormattableDocument document) {
@@ -324,13 +316,11 @@ class OMLFormatter extends AbstractFormatter2 {
 		val lcurly = t.regionFor.keyword('{')
 		val rcurly = t.regionFor.keyword('}')
 		lcurly.prepend[oneSpace]
-		lcurly.append[newLine]
+		rcurly.prepend[newLine]
 		interior(lcurly, rcurly)[indent]
 		
-		t.regionFor.keyword('domain').append[oneSpace]
-		t.regionFor.ruleCall(structuredDataPropertyAccess.domainStructureReferenceParserRuleCall_5_0_1).append[newLine]
-		t.regionFor.keyword('range').append[oneSpace]
-		t.regionFor.ruleCall(structuredDataPropertyAccess.rangeStructureReferenceParserRuleCall_7_0_1).append[newLine]
+		t.regionFor.keyword('domain').append[oneSpace].prepend[newLine]
+		t.regionFor.keyword('range').append[oneSpace].prepend[newLine]
 	}
 	
 	def dispatch void format(ScalarDataProperty t, extension IFormattableDocument document) {
@@ -341,13 +331,11 @@ class OMLFormatter extends AbstractFormatter2 {
 		val lcurly = t.regionFor.keyword(scalarDataPropertyAccess.leftCurlyBracketKeyword_3)
 		val rcurly = t.regionFor.keyword(scalarDataPropertyAccess.rightCurlyBracketKeyword_8)
 		lcurly.prepend[oneSpace]
-		lcurly.append[newLine]
+		rcurly.prepend[newLine]
 		interior(lcurly, rcurly)[indent]
 		
-		t.regionFor.keyword('domain').append[oneSpace]
-		t.regionFor.ruleCall(scalarDataPropertyAccess.domainStructureReferenceParserRuleCall_5_0_1).append[newLine]
-		t.regionFor.keyword('range').append[oneSpace]
-		t.regionFor.ruleCall(scalarDataPropertyAccess.rangeDataRangeReferenceParserRuleCall_7_0_1).append[newLine]
+		t.regionFor.keyword('domain').append[oneSpace].prepend[newLine]
+		t.regionFor.keyword('range').append[oneSpace].prepend[newLine]
 	}
 	
 	def dispatch void format(RootConceptTaxonomyAxiom ax, extension IFormattableDocument document) {
@@ -475,17 +463,13 @@ class OMLFormatter extends AbstractFormatter2 {
 		val lcurly = sc.regionFor.keyword('{')
 		val rcurly = sc.regionFor.keyword('}')
 		lcurly.prepend[oneSpace]
-		lcurly.append[newLine]
+		rcurly.prepend[newLine]
 		interior(lcurly, rcurly)[indent]
 		
-		sc.regionFor.keyword('length').append[oneSpace]
-		sc.regionFor.ruleCall(binaryScalarRestrictionAccess.lengthPositiveIntegerLiteralParserRuleCall_4_0_1_0).append[newLine]
-		sc.regionFor.keyword('minLength').append[oneSpace]
-		sc.regionFor.ruleCall(binaryScalarRestrictionAccess.minLengthPositiveIntegerLiteralParserRuleCall_4_1_1_0).append[newLine]
-		sc.regionFor.keyword('maxLength').append[oneSpace]
-		sc.regionFor.ruleCall(binaryScalarRestrictionAccess.maxLengthPositiveIntegerLiteralParserRuleCall_4_2_1_0).append[newLine]
-		sc.regionFor.keyword('restrictedRange').append[oneSpace]
-		sc.regionFor.ruleCall(binaryScalarRestrictionAccess.restrictedRangeDataRangeReferenceParserRuleCall_6_0_1).append[newLine]
+		sc.regionFor.keyword('length').append[oneSpace].prepend[newLine]
+		sc.regionFor.keyword('minLength').append[oneSpace].prepend[newLine]
+		sc.regionFor.keyword('maxLength').append[oneSpace].prepend[newLine]
+		sc.regionFor.keyword('restrictedRange').append[oneSpace].prepend[newLine]
 	}
 	
 	def dispatch void format(IRIScalarRestriction sc, extension IFormattableDocument document) {
@@ -496,19 +480,14 @@ class OMLFormatter extends AbstractFormatter2 {
 		val lcurly = sc.regionFor.keyword('{')
 		val rcurly = sc.regionFor.keyword('}')
 		lcurly.prepend[oneSpace]
-		lcurly.append[newLine]
+		rcurly.prepend[newLine]
 		interior(lcurly, rcurly)[indent]
 		
-		sc.regionFor.keyword('length').append[oneSpace]
-		sc.regionFor.ruleCall(IRIScalarRestrictionAccess.lengthPositiveIntegerLiteralParserRuleCall_4_0_1_0).append[newLine]
-		sc.regionFor.keyword('minLength').append[oneSpace]
-		sc.regionFor.ruleCall(IRIScalarRestrictionAccess.minLengthPositiveIntegerLiteralParserRuleCall_4_1_1_0).append[newLine]
-		sc.regionFor.keyword('maxLength').append[oneSpace]
-		sc.regionFor.ruleCall(IRIScalarRestrictionAccess.maxLengthPositiveIntegerLiteralParserRuleCall_4_2_1_0).append[newLine]
-		sc.regionFor.keyword('pattern').append[oneSpace]
-		sc.regionFor.ruleCall(IRIScalarRestrictionAccess.patternPATTERNTerminalRuleCall_4_3_1_0).append[newLine]
-		sc.regionFor.keyword('restrictedRange').append[oneSpace]
-		sc.regionFor.ruleCall(IRIScalarRestrictionAccess.restrictedRangeDataRangeReferenceParserRuleCall_6_0_1).append[newLine]
+		sc.regionFor.keyword('length').append[oneSpace].prepend[newLine]
+		sc.regionFor.keyword('minLength').append[oneSpace].prepend[newLine]
+		sc.regionFor.keyword('maxLength').append[oneSpace].prepend[newLine]
+		sc.regionFor.keyword('pattern').append[oneSpace].prepend[newLine]
+		sc.regionFor.keyword('restrictedRange').append[oneSpace].prepend[newLine]
 	}
 	
 	def dispatch void format(NumericScalarRestriction sc, extension IFormattableDocument document) {
@@ -519,19 +498,14 @@ class OMLFormatter extends AbstractFormatter2 {
 		val lcurly = sc.regionFor.keyword('{')
 		val rcurly = sc.regionFor.keyword('}')
 		lcurly.prepend[oneSpace]
-		lcurly.append[newLine]
+		rcurly.prepend[newLine]
 		interior(lcurly, rcurly)[indent]
 		
-		sc.regionFor.keyword('minInclusive').append[oneSpace]
-		sc.regionFor.ruleCall(numericScalarRestrictionAccess.minInclusiveLiteralNumberParserRuleCall_4_0_1_0).append[newLine]
-		sc.regionFor.keyword('maxInclusive').append[oneSpace]
-		sc.regionFor.ruleCall(numericScalarRestrictionAccess.maxInclusiveLiteralNumberParserRuleCall_4_1_1_0).append[newLine]
-		sc.regionFor.keyword('minExclusive').append[oneSpace]
-		sc.regionFor.ruleCall(numericScalarRestrictionAccess.minExclusiveLiteralNumberParserRuleCall_4_2_1_0).append[newLine]
-		sc.regionFor.keyword('maxExclusive').append[oneSpace]
-		sc.regionFor.ruleCall(numericScalarRestrictionAccess.maxExclusiveLiteralNumberParserRuleCall_4_3_1_0).append[newLine]
-		sc.regionFor.keyword('restrictedRange').append[oneSpace]
-		sc.regionFor.ruleCall(numericScalarRestrictionAccess.restrictedRangeDataRangeReferenceParserRuleCall_6_0_1).append[newLine]
+		sc.regionFor.keyword('minInclusive').append[oneSpace].prepend[newLine]
+		sc.regionFor.keyword('maxInclusive').append[oneSpace].prepend[newLine]
+		sc.regionFor.keyword('minExclusive').append[oneSpace].prepend[newLine]
+		sc.regionFor.keyword('maxExclusive').append[oneSpace].prepend[newLine]
+		sc.regionFor.keyword('restrictedRange').append[oneSpace].prepend[newLine]
 	}
 	
 	
@@ -543,21 +517,15 @@ class OMLFormatter extends AbstractFormatter2 {
 		val lcurly = sc.regionFor.keyword('{')
 		val rcurly = sc.regionFor.keyword('}')
 		lcurly.prepend[oneSpace]
-		lcurly.append[newLine]
+		rcurly.prepend[newLine]
 		interior(lcurly, rcurly)[indent]
 		
-		sc.regionFor.keyword('length').append[oneSpace]
-		sc.regionFor.ruleCall(plainLiteralScalarRestrictionAccess.lengthPositiveIntegerLiteralParserRuleCall_4_0_1_0).append[newLine]
-		sc.regionFor.keyword('minLength').append[oneSpace]
-		sc.regionFor.ruleCall(plainLiteralScalarRestrictionAccess.minLengthPositiveIntegerLiteralParserRuleCall_4_1_1_0).append[newLine]
-		sc.regionFor.keyword('maxLength').append[oneSpace]
-		sc.regionFor.ruleCall(plainLiteralScalarRestrictionAccess.maxLengthPositiveIntegerLiteralParserRuleCall_4_2_1_0).append[newLine]
-		sc.regionFor.keyword('pattern').append[oneSpace]
-		sc.regionFor.ruleCall(plainLiteralScalarRestrictionAccess.patternPATTERNTerminalRuleCall_4_3_1_0).append[newLine]
-		sc.regionFor.keyword('langRange').append[oneSpace]
-		sc.regionFor.ruleCall(plainLiteralScalarRestrictionAccess.langRangeLANG_TAGTerminalRuleCall_4_4_1_0).append[newLine]
-		sc.regionFor.keyword('restrictedRange').append[oneSpace]
-		sc.regionFor.ruleCall(plainLiteralScalarRestrictionAccess.restrictedRangeDataRangeReferenceParserRuleCall_6_0_1).append[newLine]
+		sc.regionFor.keyword('length').append[oneSpace].prepend[newLine]
+		sc.regionFor.keyword('minLength').append[oneSpace].prepend[newLine]
+		sc.regionFor.keyword('maxLength').append[oneSpace].prepend[newLine]
+		sc.regionFor.keyword('pattern').append[oneSpace].prepend[newLine]
+		sc.regionFor.keyword('langRange').append[oneSpace].prepend[newLine]
+		sc.regionFor.keyword('restrictedRange').append[oneSpace].prepend[newLine]
 	}
 	
 	def dispatch void format(ScalarOneOfRestriction sc, extension IFormattableDocument document) {
@@ -568,11 +536,10 @@ class OMLFormatter extends AbstractFormatter2 {
 		val lcurly = sc.regionFor.keyword('{')
 		val rcurly = sc.regionFor.keyword('}')
 		lcurly.prepend[oneSpace]
-		lcurly.append[newLine]
+		rcurly.prepend[newLine]
 		interior(lcurly, rcurly)[indent]
 		
-		sc.regionFor.keyword('restrictedRange').append[oneSpace]
-		sc.regionFor.ruleCall(scalarOneOfRestrictionAccess.restrictedRangeDataRangeReferenceParserRuleCall_5_0_1).append[newLine]
+		sc.regionFor.keyword('restrictedRange').append[oneSpace].prepend[newLine]
 	}
 	
 	def dispatch void format(ScalarOneOfLiteralAxiom sc, extension IFormattableDocument document) {
@@ -589,19 +556,14 @@ class OMLFormatter extends AbstractFormatter2 {
 		val lcurly = sc.regionFor.keyword('{')
 		val rcurly = sc.regionFor.keyword('}')
 		lcurly.prepend[oneSpace]
-		lcurly.append[newLine]
+		rcurly.prepend[newLine]
 		interior(lcurly, rcurly)[indent]
 		
-		sc.regionFor.keyword('length').append[oneSpace]
-		sc.regionFor.ruleCall(stringScalarRestrictionAccess.lengthPositiveIntegerLiteralParserRuleCall_4_0_1_0).append[newLine]
-		sc.regionFor.keyword('minLength').append[oneSpace]
-		sc.regionFor.ruleCall(stringScalarRestrictionAccess.minLengthPositiveIntegerLiteralParserRuleCall_4_1_1_0).append[newLine]
-		sc.regionFor.keyword('maxLength').append[oneSpace]
-		sc.regionFor.ruleCall(stringScalarRestrictionAccess.maxLengthPositiveIntegerLiteralParserRuleCall_4_2_1_0).append[newLine]
-		sc.regionFor.keyword('pattern').append[oneSpace]
-		sc.regionFor.ruleCall(stringScalarRestrictionAccess.patternPATTERNTerminalRuleCall_4_3_1_0).append[newLine]
-		sc.regionFor.keyword('restrictedRange').append[oneSpace]
-		sc.regionFor.ruleCall(stringScalarRestrictionAccess.restrictedRangeDataRangeReferenceParserRuleCall_6_0_1).append[newLine]
+		sc.regionFor.keyword('length').append[oneSpace].prepend[newLine]
+		sc.regionFor.keyword('minLength').append[oneSpace].prepend[newLine]
+		sc.regionFor.keyword('maxLength').append[oneSpace].prepend[newLine]
+		sc.regionFor.keyword('pattern').append[oneSpace].prepend[newLine]
+		sc.regionFor.keyword('restrictedRange').append[oneSpace].prepend[newLine]
 	}
 	
 	def dispatch void format(SynonymScalarRestriction sc, extension IFormattableDocument document) {
@@ -612,11 +574,10 @@ class OMLFormatter extends AbstractFormatter2 {
 		val lcurly = sc.regionFor.keyword('{')
 		val rcurly = sc.regionFor.keyword('}')
 		lcurly.prepend[oneSpace]
-		lcurly.append[newLine]
+		rcurly.prepend[newLine]
 		interior(lcurly, rcurly)[indent]
 		
-		sc.regionFor.keyword('restrictedRange').append[oneSpace]
-		sc.regionFor.ruleCall(synonymScalarRestrictionAccess.restrictedRangeDataRangeReferenceParserRuleCall_5_0_1).append[newLine]
+		sc.regionFor.keyword('restrictedRange').append[oneSpace].prepend[newLine]
 	}
 	
 	def dispatch void format(TimeScalarRestriction sc, extension IFormattableDocument document) {
@@ -627,19 +588,14 @@ class OMLFormatter extends AbstractFormatter2 {
 		val lcurly = sc.regionFor.keyword('{')
 		val rcurly = sc.regionFor.keyword('}')
 		lcurly.prepend[oneSpace]
-		lcurly.append[newLine]
+		rcurly.prepend[newLine]
 		interior(lcurly, rcurly)[indent]
 		
-		sc.regionFor.keyword('minInclusive').append[oneSpace]
-		sc.regionFor.ruleCall(timeScalarRestrictionAccess.minInclusiveLiteralDateTimeParserRuleCall_4_0_1_0).append[newLine]
-		sc.regionFor.keyword('maxInclusive').append[oneSpace]
-		sc.regionFor.ruleCall(timeScalarRestrictionAccess.maxInclusiveLiteralDateTimeParserRuleCall_4_1_1_0).append[newLine]
-		sc.regionFor.keyword('minExclusive').append[oneSpace]
-		sc.regionFor.ruleCall(timeScalarRestrictionAccess.minExclusiveLiteralDateTimeParserRuleCall_4_2_1_0).append[newLine]
-		sc.regionFor.keyword('maxExclusive').append[oneSpace]
-		sc.regionFor.ruleCall(timeScalarRestrictionAccess.maxExclusiveLiteralDateTimeParserRuleCall_4_3_1_0).append[newLine]
-		sc.regionFor.keyword('restrictedRange').append[oneSpace]
-		sc.regionFor.ruleCall(timeScalarRestrictionAccess.restrictedRangeDataRangeReferenceParserRuleCall_6_0_1).append[newLine]
+		sc.regionFor.keyword('minInclusive').append[oneSpace].prepend[newLine]
+		sc.regionFor.keyword('maxInclusive').append[oneSpace].prepend[newLine]
+		sc.regionFor.keyword('minExclusive').append[oneSpace].prepend[newLine]
+		sc.regionFor.keyword('maxExclusive').append[oneSpace].prepend[newLine]
+		sc.regionFor.keyword('restrictedRange').append[oneSpace].prepend[newLine]
 	}
 	
 	def dispatch void format(DescriptionBoxExtendsClosedWorldDefinitions ax, extension IFormattableDocument document) {
