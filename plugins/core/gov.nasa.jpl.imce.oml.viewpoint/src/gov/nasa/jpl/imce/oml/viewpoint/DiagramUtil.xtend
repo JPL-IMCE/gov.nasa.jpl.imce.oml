@@ -34,7 +34,7 @@ class DiagramUtil {
 	 * @return Set of {@link EntityScalarDataProperty}
 	 */
 	def Set<EntityScalarDataProperty> getContainedEntityScalarDataProperties(Entity c){
-		// aql:diagram.oclAsType(diagram::DSemanticDiagram).target.oclAsType(graphs::TerminologyGraph).boxStatements->filter(terminologies::EntityScalarDataProperty)->select(s | s.relationDomain() = self)
+		
 	    val set = c.tbox.boxStatements.
 	    filter(EntityScalarDataProperty).toSet
 	    
