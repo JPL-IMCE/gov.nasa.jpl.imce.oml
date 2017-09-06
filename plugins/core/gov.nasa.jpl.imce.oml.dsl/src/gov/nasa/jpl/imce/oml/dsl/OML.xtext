@@ -577,7 +577,9 @@ ValidID:												ID;
 	
 //----------------------------
 
-LiteralValue returns LiteralValue:						LiteralDateTime | LiteralString | LiteralUUID | LiteralURI | LiteralNumber;
+LiteralValue returns LiteralValue:						LiteralBoolean | LiteralDateTime | LiteralString | LiteralUUID | LiteralURI | LiteralNumber;
+
+LiteralBoolean returns LiteralBoolean:					{LiteralBoolean} value=BOOLEAN;
 
 LiteralDateTime returns LiteralDateTime: 				{LiteralDateTime} dateTime=DATE_TIME;
 
@@ -606,6 +608,9 @@ LiteralFloat returns LiteralFloat:						{LiteralFloat} float=FLOAT;
 LiteralDecimal returns LiteralDecimal:					{LiteralDecimal} decimal=DIGITS | decimal=DECIMAL;
 
 PositiveIntegerLiteral returns PositiveIntegerLiteral: 	DIGITS;
+
+//----------------------------
+terminal BOOLEAN returns ecore::EBoolean:				'true' | 'false';
 
 //----------------------------
 // https://www.w3.org/TR/xmlschema11-2/#rf-lexicalMappings-datetime

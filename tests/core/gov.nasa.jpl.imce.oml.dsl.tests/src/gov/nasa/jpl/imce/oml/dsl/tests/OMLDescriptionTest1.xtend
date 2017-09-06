@@ -84,6 +84,10 @@ class OMLDescriptionTest1 {
 		sc_double.tbox = g
 		sc_double.name = "Double"
 		
+		val Scalar sc_boolean = terminologiesF.createScalar
+		sc_boolean.tbox = g
+		sc_boolean.name = "Boolean"
+		
 		val zero = commonF.createLiteralDecimal
 		zero.decimal = new PositiveIntegerValue("0")
 		
@@ -105,6 +109,12 @@ class OMLDescriptionTest1 {
 		dp2.domain = c
 		dp2.range = sc_double
 		
+		val EntityScalarDataProperty dp3 = terminologiesF.createEntityScalarDataProperty
+		dp3.tbox = g
+		dp3.name = "isSmall"
+		dp3.domain = c
+		dp3.range = sc_boolean
+		
 		val String text1 = serialize(r1)
 		val String expected1 = '''
 			open terminology <http://www.example.org/OMLDescriptionTest1A> {
@@ -114,6 +124,8 @@ class OMLDescriptionTest1 {
 				scalar String
 			
 				scalar Double
+			
+				scalar Boolean
 			
 				numericScalarRestriction PositiveDouble {
 					minInclusive 0
@@ -128,6 +140,11 @@ class OMLDescriptionTest1 {
 				entityScalarDataProperty ^length {
 					domain Box
 					range Double
+				}
+			
+				entityScalarDataProperty isSmall {
+					domain Box
+					range Boolean
 				}
 			
 			}
@@ -171,6 +188,15 @@ class OMLDescriptionTest1 {
 		ci_length_lit.^float = new FloatValue('123.45')
 		ci_length.scalarPropertyValue = ci_length_lit
 		
+		val SingletonInstanceScalarDataPropertyValue ci_isSmall = descriptionsF.createSingletonInstanceScalarDataPropertyValue
+		ci_isSmall.descriptionBox = db
+		ci_isSmall.scalarDataProperty = dp3
+		ci_isSmall.singletonInstance = ci
+		
+		val ci_isSmall_lit = commonF.createLiteralBoolean
+		ci_isSmall_lit.value = false
+		ci_isSmall.scalarPropertyValue = ci_isSmall_lit
+		
 		val String text2 = serialize(r2)
 		val String expected2 =
 		'''
@@ -183,6 +209,8 @@ class OMLDescriptionTest1 {
 			boite0 . OMLDescriptionTest1A:name = "box #0"
 		
 			boite0 . OMLDescriptionTest1A:length = 123.45
+		
+			boite0 . OMLDescriptionTest1A:isSmall = false
 		
 		}
 		'''
