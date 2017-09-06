@@ -58,7 +58,7 @@ public class AspectConceptClassDiagramService {
    * was created from
    * 
    * @param The diagram
-   * @return The root {@link Entity}
+   * @return The Diagram
    */
   public Entity getRootEntity(final DDiagram d) {
     EObject _target = ((DSemanticDiagram) d).getTarget();
@@ -66,10 +66,11 @@ public class AspectConceptClassDiagramService {
   }
   
   /**
-   * Gets all {@link EntityRelationship}s with the
-   * passed {@link} Concept as its relation domain
+   * Gets all {@link EntityRelationship}s within the {@link TeminologyBox}
+   * which have as its relationDomain the root {@link Entity} associated
+   * with the passed {@link DDiagram}
    * 
-   * @param c The root Concept
+   * @param d The Diagram
    * @return Set of {@link ReifiedRelationship}s
    */
   public Set<EntityRelationship> getVisualRelationshipsWithRootAsDomain(final DDiagram d) {
@@ -91,10 +92,11 @@ public class AspectConceptClassDiagramService {
   }
   
   /**
-   * Gets all {@link ReifiedRelationship}s with the
-   * passed {@link} Concept as its relation range
+   * Gets all {@link EntityRelationship}s within the {@link TeminologyBox}
+   * which have as its relation range the root {@link Entity} associated
+   * with the passed {@link DDiagram}
    * 
-   * @param c The root Concept
+   * @param d The Diagram
    * @return Set of {@link ReifiedRelationship}s
    */
   public Set<ReifiedRelationship> getVisualRelationshipsWithRootAsRange(final DDiagram d) {
@@ -116,9 +118,12 @@ public class AspectConceptClassDiagramService {
   }
   
   /**
-   * Gets all {@link Entity} that are directly connected (relationship/axiom)
-   * to the passed {@link Entity}
-   * @param e The entity which to find connections
+   * Gets all {@link Entity}s in this {@link TerminologyBox} that are directly connected
+   * (relationship/axiom) to the root {@link Entity} associated
+   * with the passed {@link DDiagram}
+   * 
+   *  @param d The Diagram
+   *  @return Set of {@link Entity}s
    */
   public Set<Entity> getVisualEntities(final DDiagram d) {
     HashSet<Entity> _xblockexpression = null;
@@ -164,10 +169,11 @@ public class AspectConceptClassDiagramService {
   }
   
   /**
-   * Gets all {@link AspectSpcializationAxiom}s that have the passed
-   * {@link Entity} as its sub-Entity
+   * Gets all {@link AspectSpcializationAxiom}s in this {@link TerminologyBox}
+   * that have to the root {@link Entity} associated
+   * with the passed {@link DDiagram} as its sub-Entity
    * 
-   * @param e The root {@link Entity}
+   * @param d The diagram
    * @return Set of {@link AspectSpecializationAxiom}s
    */
   public Set<AspectSpecializationAxiom> getVisualAspectAxioms(final DDiagram d) {
@@ -189,10 +195,11 @@ public class AspectConceptClassDiagramService {
   }
   
   /**
-   * Gets all {@link ConceptSpcializationAxiom}s that have the passed
-   * {@link Concept} as its sub-Concept
+   * Gets all {@link ConceptSpcializationAxiom}s in this {@link TerminologyBox}
+   * that have to the root {@link Entity} associated with the passed
+   * {@link DDiagram} as its sub-Concept
    * 
-   * @param c The root {@link Concept}
+   * @paramd The Diagram
    * @return Set of {@link ConceptSpecializationAxiom}s
    */
   public Set<ConceptSpecializationAxiom> getVisualConceptAxioms(final DDiagram d) {
@@ -214,8 +221,9 @@ public class AspectConceptClassDiagramService {
   }
   
   /**
-   * Gets all {@link EntityRestrictionAxiom}s that have the passed
-   * {@link Entity} as its restricted Domain
+   * Gets all {@link EntityRestrictionAxiom}s in this {@link TerminologyBox}
+   * that have to the root {@link Entity} associated with the passed
+   * {@link DDiagram} as its restricted Domain
    * 
    * @param The root Entity
    * @return Set of {@link EntityRestrictionAxiom}s
