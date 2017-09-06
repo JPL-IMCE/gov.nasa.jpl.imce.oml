@@ -21,7 +21,7 @@ public class DiagramUtil {
    * @param The Entity
    * @return Set of {@link EntityStructuredDataProperty}
    */
-  public Set<EntityStructuredDataProperty> getContainedEntityStructuredDataProperties0(final Entity c) {
+  public Set<EntityStructuredDataProperty> getContainedEntityStructuredDataProperties(final Entity c) {
     Set<EntityStructuredDataProperty> _xblockexpression = null;
     {
       final Set<EntityStructuredDataProperty> set = IterableExtensions.<EntityStructuredDataProperty>toSet(Iterables.<EntityStructuredDataProperty>filter(c.getTbox().getBoxStatements(), EntityStructuredDataProperty.class));
