@@ -88,6 +88,29 @@ public class CommonItemProviderAdapterFactory extends CommonAdapterFactory imple
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.common.LiteralBoolean} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LiteralBooleanItemProvider literalBooleanItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.common.LiteralBoolean}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLiteralBooleanAdapter() {
+		if (literalBooleanItemProvider == null) {
+			literalBooleanItemProvider = new LiteralBooleanItemProvider(this);
+		}
+
+		return literalBooleanItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.common.LiteralDateTime} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -439,6 +462,7 @@ public class CommonItemProviderAdapterFactory extends CommonAdapterFactory imple
 	 * @generated
 	 */
 	public void dispose() {
+		if (literalBooleanItemProvider != null) literalBooleanItemProvider.dispose();
 		if (literalDateTimeItemProvider != null) literalDateTimeItemProvider.dispose();
 		if (literalStringItemProvider != null) literalStringItemProvider.dispose();
 		if (literalUUIDItemProvider != null) literalUUIDItemProvider.dispose();

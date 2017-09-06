@@ -88,6 +88,13 @@ public class CommonSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case CommonPackage.LITERAL_BOOLEAN: {
+				LiteralBoolean literalBoolean = (LiteralBoolean)theEObject;
+				T result = caseLiteralBoolean(literalBoolean);
+				if (result == null) result = caseLiteralValue(literalBoolean);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case CommonPackage.LITERAL_DATE_TIME: {
 				LiteralDateTime literalDateTime = (LiteralDateTime)theEObject;
 				T result = caseLiteralDateTime(literalDateTime);
@@ -223,6 +230,21 @@ public class CommonSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseLiteralValue(LiteralValue object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Literal Boolean</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Literal Boolean</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLiteralBoolean(LiteralBoolean object) {
 		return null;
 	}
 

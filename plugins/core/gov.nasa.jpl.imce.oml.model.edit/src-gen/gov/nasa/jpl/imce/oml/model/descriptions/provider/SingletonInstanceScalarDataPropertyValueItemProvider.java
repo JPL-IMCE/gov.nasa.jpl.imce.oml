@@ -230,6 +230,11 @@ public class SingletonInstanceScalarDataPropertyValueItemProvider extends Module
 		newChildDescriptors.add
 			(createChildParameter
 				(DescriptionsPackage.Literals.SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE,
+				 CommonFactory.eINSTANCE.createLiteralBoolean()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(DescriptionsPackage.Literals.SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE,
 				 CommonFactory.eINSTANCE.createLiteralDateTime()));
 
 		newChildDescriptors.add

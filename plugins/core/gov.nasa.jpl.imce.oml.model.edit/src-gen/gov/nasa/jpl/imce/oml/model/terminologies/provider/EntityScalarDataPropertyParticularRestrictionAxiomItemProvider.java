@@ -154,6 +154,11 @@ public class EntityScalarDataPropertyParticularRestrictionAxiomItemProvider exte
 		newChildDescriptors.add
 			(createChildParameter
 				(TerminologiesPackage.Literals.ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__LITERAL_VALUE,
+				 CommonFactory.eINSTANCE.createLiteralBoolean()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TerminologiesPackage.Literals.ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__LITERAL_VALUE,
 				 CommonFactory.eINSTANCE.createLiteralDateTime()));
 
 		newChildDescriptors.add

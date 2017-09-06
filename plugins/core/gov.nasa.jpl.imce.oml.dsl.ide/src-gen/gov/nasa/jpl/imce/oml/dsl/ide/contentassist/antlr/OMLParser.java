@@ -157,6 +157,7 @@ public class OMLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getReifiedRelationshipInstanceDomainAccess().getGroup(), "rule__ReifiedRelationshipInstanceDomain__Group__0");
 					put(grammarAccess.getReifiedRelationshipInstanceRangeAccess().getGroup(), "rule__ReifiedRelationshipInstanceRange__Group__0");
 					put(grammarAccess.getUnreifiedRelationshipInstanceTupleAccess().getGroup(), "rule__UnreifiedRelationshipInstanceTuple__Group__0");
+					put(grammarAccess.getLiteralBooleanAccess().getGroup(), "rule__LiteralBoolean__Group__0");
 					put(grammarAccess.getLiteralDateTimeAccess().getGroup(), "rule__LiteralDateTime__Group__0");
 					put(grammarAccess.getLiteralStringAccess().getGroup(), "rule__LiteralString__Group__0");
 					put(grammarAccess.getLiteralUUIDAccess().getGroup(), "rule__LiteralUUID__Group__0");
@@ -395,6 +396,7 @@ public class OMLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getUnreifiedRelationshipInstanceTupleAccess().getUnreifiedRelationshipAssignment_4(), "rule__UnreifiedRelationshipInstanceTuple__UnreifiedRelationshipAssignment_4");
 					put(grammarAccess.getUnreifiedRelationshipInstanceTupleAccess().getDomainAssignment_6(), "rule__UnreifiedRelationshipInstanceTuple__DomainAssignment_6");
 					put(grammarAccess.getUnreifiedRelationshipInstanceTupleAccess().getRangeAssignment_8(), "rule__UnreifiedRelationshipInstanceTuple__RangeAssignment_8");
+					put(grammarAccess.getLiteralBooleanAccess().getValueAssignment_1(), "rule__LiteralBoolean__ValueAssignment_1");
 					put(grammarAccess.getLiteralDateTimeAccess().getDateTimeAssignment_1(), "rule__LiteralDateTime__DateTimeAssignment_1");
 					put(grammarAccess.getLiteralStringAccess().getStringAssignment_1(), "rule__LiteralString__StringAssignment_1");
 					put(grammarAccess.getLiteralUUIDAccess().getUuidAssignment_1(), "rule__LiteralUUID__UuidAssignment_1");

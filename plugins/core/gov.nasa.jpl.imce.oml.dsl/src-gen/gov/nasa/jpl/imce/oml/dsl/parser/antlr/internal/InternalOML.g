@@ -7467,49 +7467,102 @@ ruleLiteralValue returns [EObject current=null]
 }:
 	(
 		{
-			newCompositeNode(grammarAccess.getLiteralValueAccess().getLiteralDateTimeParserRuleCall_0());
+			newCompositeNode(grammarAccess.getLiteralValueAccess().getLiteralBooleanParserRuleCall_0());
 		}
-		this_LiteralDateTime_0=ruleLiteralDateTime
+		this_LiteralBoolean_0=ruleLiteralBoolean
 		{
-			$current = $this_LiteralDateTime_0.current;
+			$current = $this_LiteralBoolean_0.current;
 			afterParserOrEnumRuleCall();
 		}
 		    |
 		{
-			newCompositeNode(grammarAccess.getLiteralValueAccess().getLiteralStringParserRuleCall_1());
+			newCompositeNode(grammarAccess.getLiteralValueAccess().getLiteralDateTimeParserRuleCall_1());
 		}
-		this_LiteralString_1=ruleLiteralString
+		this_LiteralDateTime_1=ruleLiteralDateTime
 		{
-			$current = $this_LiteralString_1.current;
+			$current = $this_LiteralDateTime_1.current;
 			afterParserOrEnumRuleCall();
 		}
 		    |
 		{
-			newCompositeNode(grammarAccess.getLiteralValueAccess().getLiteralUUIDParserRuleCall_2());
+			newCompositeNode(grammarAccess.getLiteralValueAccess().getLiteralStringParserRuleCall_2());
 		}
-		this_LiteralUUID_2=ruleLiteralUUID
+		this_LiteralString_2=ruleLiteralString
 		{
-			$current = $this_LiteralUUID_2.current;
+			$current = $this_LiteralString_2.current;
 			afterParserOrEnumRuleCall();
 		}
 		    |
 		{
-			newCompositeNode(grammarAccess.getLiteralValueAccess().getLiteralURIParserRuleCall_3());
+			newCompositeNode(grammarAccess.getLiteralValueAccess().getLiteralUUIDParserRuleCall_3());
 		}
-		this_LiteralURI_3=ruleLiteralURI
+		this_LiteralUUID_3=ruleLiteralUUID
 		{
-			$current = $this_LiteralURI_3.current;
+			$current = $this_LiteralUUID_3.current;
 			afterParserOrEnumRuleCall();
 		}
 		    |
 		{
-			newCompositeNode(grammarAccess.getLiteralValueAccess().getLiteralNumberParserRuleCall_4());
+			newCompositeNode(grammarAccess.getLiteralValueAccess().getLiteralURIParserRuleCall_4());
 		}
-		this_LiteralNumber_4=ruleLiteralNumber
+		this_LiteralURI_4=ruleLiteralURI
 		{
-			$current = $this_LiteralNumber_4.current;
+			$current = $this_LiteralURI_4.current;
 			afterParserOrEnumRuleCall();
 		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getLiteralValueAccess().getLiteralNumberParserRuleCall_5());
+		}
+		this_LiteralNumber_5=ruleLiteralNumber
+		{
+			$current = $this_LiteralNumber_5.current;
+			afterParserOrEnumRuleCall();
+		}
+	)
+;
+
+// Entry rule entryRuleLiteralBoolean
+entryRuleLiteralBoolean returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getLiteralBooleanRule()); }
+	iv_ruleLiteralBoolean=ruleLiteralBoolean
+	{ $current=$iv_ruleLiteralBoolean.current; }
+	EOF;
+
+// Rule LiteralBoolean
+ruleLiteralBoolean returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getLiteralBooleanAccess().getLiteralBooleanAction_0(),
+					$current);
+			}
+		)
+		(
+			(
+				lv_value_1_0=RULE_BOOLEAN
+				{
+					newLeafNode(lv_value_1_0, grammarAccess.getLiteralBooleanAccess().getValueBOOLEANTerminalRuleCall_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getLiteralBooleanRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"value",
+						lv_value_1_0,
+						"gov.nasa.jpl.imce.oml.dsl.OML.BOOLEAN");
+				}
+			)
+		)
 	)
 ;
 
@@ -8094,6 +8147,8 @@ ruleDescriptionKind returns [Enumerator current=null]
 ;
 
 RULE_RATIONAL : '-'? RULE_DIGIT+ '/' RULE_DIGIT+;
+
+RULE_BOOLEAN : ('true'|'false');
 
 fragment RULE_DIGIT : '0'..'9';
 
