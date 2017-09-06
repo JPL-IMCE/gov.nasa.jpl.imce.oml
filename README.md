@@ -104,74 +104,12 @@ In `~/.m2/settings.xml` include, replacing `{BINTRAY USERNAME}` and `{BINTRAY AP
 </settings>
 ```
 
-## Eclipse/Tycho Notes
+## Development Notes
 
-### Eclipse Neon.3 Development Notes
-
-#### Launching the OML Workbench from the Eclipse IDE
-
-- Do not launch the [releng/gov.nasa.jpl.imce.oml.product/gov.nasa.jpl.imce.oml.rcp.product](releng/gov.nasa.jpl.imce.oml.product/gov.nasa.jpl.imce.oml.rcp.product)
-
-	This will fail because of supposedly missing dependencies. 
-	
-- Use instead this [launcher](launchers/gov.nasa.jpl.imce.oml.rcp.product.launch)
-	
-	- 1) Open the [launcher](launchers/gov.nasa.jpl.imce.oml.rcp.product.launch)
-	
-	- 2) Under the "Plug-Ins" tab, click "Add Required" (this will modify the file to include platform-specific dependencies); Apply.
-
-	- 3) Verify that all dependencies are satisfied
-	
-	- 4) Run or Debug
-	
-- Note: When shutting down the runtime OML Workbench, the following NPE may happen: https://bugs.eclipse.org/bugs/show_bug.cgi?id=522075
-
-	These NPEs do not happen when shuttting down an installation of the OML Workbench; that is, these NPEs seem to be a behavior that is specific to launching the OML Workbench as a runtime Eclipse.
-
-### Problems with uploading P2 update sites with bintray's "explode=1" option
-
-See [releng/gov.nasa.jpl.imce.oml.updatesite/README.md](gov.nasa.jpl.imce.oml.updatesite)
-
-### Problems with Tycho's verbose log output
-
-Eclipse/Tycho produces too much output:
-
-```
-The log length has exceeded the limit of 4 MB (this usually means that the test suite is raising the same exception over and over).
-The job has been terminated
-```
-(see https://travis-ci.org/JPL-IMCE/gov.nasa.jpl.imce.oml/builds/268822997#L3010)
-
-By default, Eclipse/Tycho logs at INFO level; it is surprisingly very difficult to log at a different level, e.g, WARN:
-https://stackoverflow.com/questions/4782089/how-to-change-maven-logging-level-to-display-only-warning-and-errors
-
-For Travis-CI, the brute-force solution seems to be the simplest solution for now:
-https://stackoverflow.com/a/15317762/1009693
-
-The Eclipse/Tycho needs to be replaced with a build technology that is easier to configure; e.g. Gradle or SBT.
-
-If this happens, get the "Raw log" from travis: https://api.travis-ci.org/jobs/<number>/log.txt?deansi=true
-
-This will show all output lines, even if there are special characters to erase them.
-For example, during deployment, there are lots of progress lines like this:
-
-```
-Progress (1): 29/659 kB
-Progress (1): 31/659 kB
-Progress (1): 33/659 kB
-Progress (1): 35/659 kB
-```
-
-Filtering these lines is essential to avoid the 4Mb output limit.
-
-### Troubleshooting P2 repository problems.
-
-If the Java security permissions allow, use the Java WebStart Launcher.
-Otherwise: 
-
-- Clone the [P2 Browser](https://github.com/ifedorenko/p2-browser)
-- Build it locally (`mvn clean package`)
-- Launch from `com.ifedorenko.p2browser.rcp/target/products/com.ifedorenko.p2browser.rcp`
-
-The P2 Browser is a simple UI; under the "Repositories" panel, click "Add..." and enter the URL of a P2 repo.
-The left panel shows a tree explorer for the contents of repositories added.
+### Using Windows 64-bit
+In order to make sure your eclipse installation is running a particular version of Java, the eclipse configuration file must be edited.
+The following must be added to 'eclipse.ini' located in your Eclipse installation folder before the line that contains '-vmargs'
+'''
+-vm
+PATH_TO_JAVA/bin
+'''
