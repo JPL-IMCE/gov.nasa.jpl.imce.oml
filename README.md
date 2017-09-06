@@ -85,3 +85,12 @@ In `~/.m2/settings.xml` include, replacing `{BINTRAY USERNAME}` and `{BINTRAY AP
 </settings>
 ```
 
+## Development Notes
+
+### Using Windows 64-bit
+In order to make sure your eclipse installation is running a particular version of Java, the eclipse configuration file must be edited.
+The following must be added to 'eclipse.ini' located in your Eclipse installation folder before the line that contains '-vmargs'
+'''
+-vm
+PATH_TO_JAVA/bin
+'''
