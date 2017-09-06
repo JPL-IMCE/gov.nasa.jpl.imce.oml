@@ -16,7 +16,7 @@ class DiagramUtil {
 	 * @return Set of {@link EntityStructuredDataProperty}
 	 */
 
-	def Set<EntityStructuredDataProperty> getContainedEntityStructuredDataProperties0(Entity c){
+	def Set<EntityStructuredDataProperty> getContainedEntityStructuredDataProperties(Entity c){
 	   // return c.tbox.allEntityStructuredDataPropertiesScope.allElements.
 	    val set = c.tbox.boxStatements.
 	    filter(EntityStructuredDataProperty).toSet
