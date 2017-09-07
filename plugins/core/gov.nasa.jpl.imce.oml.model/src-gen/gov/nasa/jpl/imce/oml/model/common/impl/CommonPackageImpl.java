@@ -24,6 +24,7 @@ import gov.nasa.jpl.imce.oml.model.common.CommonFactory;
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
 import gov.nasa.jpl.imce.oml.model.common.Element;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
+import gov.nasa.jpl.imce.oml.model.common.LiteralBoolean;
 import gov.nasa.jpl.imce.oml.model.common.LiteralDateTime;
 import gov.nasa.jpl.imce.oml.model.common.LiteralDecimal;
 import gov.nasa.jpl.imce.oml.model.common.LiteralFloat;
@@ -75,6 +76,13 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	 * @generated
 	 */
 	private EClass literalValueEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass literalBooleanEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -385,6 +393,24 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	 */
 	public EClass getLiteralValue() {
 		return literalValueEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLiteralBoolean() {
+		return literalBooleanEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLiteralBoolean_Value() {
+		return (EAttribute)literalBooleanEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1074,6 +1100,9 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		// Create classes and their features
 		literalValueEClass = createEClass(LITERAL_VALUE);
 
+		literalBooleanEClass = createEClass(LITERAL_BOOLEAN);
+		createEAttribute(literalBooleanEClass, LITERAL_BOOLEAN__VALUE);
+
 		literalDateTimeEClass = createEClass(LITERAL_DATE_TIME);
 		createEAttribute(literalDateTimeEClass, LITERAL_DATE_TIME__DATE_TIME);
 
@@ -1198,6 +1227,7 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		literalBooleanEClass.getESuperTypes().add(this.getLiteralValue());
 		literalDateTimeEClass.getESuperTypes().add(this.getLiteralValue());
 		literalStringEClass.getESuperTypes().add(this.getLiteralValue());
 		literalUUIDEClass.getESuperTypes().add(this.getLiteralValue());
@@ -1214,6 +1244,9 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(literalValueEClass, LiteralValue.class, "LiteralValue", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(literalBooleanEClass, LiteralBoolean.class, "LiteralBoolean", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLiteralBoolean_Value(), theEcorePackage.getEBoolean(), "value", null, 0, 1, LiteralBoolean.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(literalDateTimeEClass, LiteralDateTime.class, "LiteralDateTime", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLiteralDateTime_DateTime(), this.getDateTimeDataType(), "dateTime", null, 1, 1, LiteralDateTime.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

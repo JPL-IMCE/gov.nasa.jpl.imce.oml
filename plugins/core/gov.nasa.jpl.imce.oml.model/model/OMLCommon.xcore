@@ -143,6 +143,10 @@ type LiteralPattern wraps gov.nasa.jpl.imce.oml.model.datatypes.PatternValue
 
 abstract class LiteralValue {}
 
+class LiteralBoolean extends LiteralValue {
+	boolean value
+}
+
 class LiteralDateTime extends LiteralValue {
 	DateTimeDataType[1] dateTime
 }
@@ -150,6 +154,7 @@ class LiteralDateTime extends LiteralValue {
 class LiteralString extends LiteralValue {
 	StringDataType[1] string
 }
+
 class LiteralUUID extends LiteralValue {
 	UUIDDataType[1] uuid
 }

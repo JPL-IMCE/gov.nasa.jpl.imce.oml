@@ -206,6 +206,11 @@ public class RestrictionScalarDataPropertyValueItemProvider extends ElementItemP
 		newChildDescriptors.add
 			(createChildParameter
 				(TerminologiesPackage.Literals.RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE,
+				 CommonFactory.eINSTANCE.createLiteralBoolean()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TerminologiesPackage.Literals.RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE,
 				 CommonFactory.eINSTANCE.createLiteralDateTime()));
 
 		newChildDescriptors.add

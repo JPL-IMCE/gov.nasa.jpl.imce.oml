@@ -28,6 +28,7 @@ import gov.nasa.jpl.imce.oml.model.common.AnnotationProperty;
 import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue;
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
+import gov.nasa.jpl.imce.oml.model.common.LiteralBoolean;
 import gov.nasa.jpl.imce.oml.model.common.LiteralDateTime;
 import gov.nasa.jpl.imce.oml.model.common.LiteralDecimal;
 import gov.nasa.jpl.imce.oml.model.common.LiteralFloat;
@@ -136,6 +137,9 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				return; 
 			case CommonPackage.EXTENT:
 				sequence_Extent(context, (Extent) semanticObject); 
+				return; 
+			case CommonPackage.LITERAL_BOOLEAN:
+				sequence_LiteralBoolean(context, (LiteralBoolean) semanticObject); 
 				return; 
 			case CommonPackage.LITERAL_DATE_TIME:
 				sequence_LiteralDateTime(context, (LiteralDateTime) semanticObject); 
@@ -748,6 +752,25 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 */
 	protected void sequence_IRIScalarRestriction(ISerializationContext context, IRIScalarRestriction semanticObject) {
 		genericSequencer.createSequence(context, (EObject) semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     LiteralValue returns LiteralBoolean
+	 *     LiteralBoolean returns LiteralBoolean
+	 *
+	 * Constraint:
+	 *     value=BOOLEAN
+	 */
+	protected void sequence_LiteralBoolean(ISerializationContext context, LiteralBoolean semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient((EObject) semanticObject, CommonPackage.Literals.LITERAL_BOOLEAN__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, CommonPackage.Literals.LITERAL_BOOLEAN__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, (EObject) semanticObject);
+		feeder.accept(grammarAccess.getLiteralBooleanAccess().getValueBOOLEANTerminalRuleCall_1_0(), semanticObject.isValue());
+		feeder.finish();
 	}
 	
 	

@@ -38,6 +38,15 @@ public interface CommonFactory extends EFactory {
 	CommonFactory eINSTANCE = gov.nasa.jpl.imce.oml.model.common.impl.CommonFactoryImpl.init();
 
 	/**
+	 * Returns a new object of class '<em>Literal Boolean</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Literal Boolean</em>'.
+	 * @generated
+	 */
+	LiteralBoolean createLiteralBoolean();
+
+	/**
 	 * Returns a new object of class '<em>Literal Date Time</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -86,6 +86,7 @@ public class CommonFactoryImpl extends EFactoryImpl implements CommonFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
+			case CommonPackage.LITERAL_BOOLEAN: return (EObject)createLiteralBoolean();
 			case CommonPackage.LITERAL_DATE_TIME: return (EObject)createLiteralDateTime();
 			case CommonPackage.LITERAL_STRING: return (EObject)createLiteralString();
 			case CommonPackage.LITERAL_UUID: return (EObject)createLiteralUUID();
@@ -194,6 +195,16 @@ public class CommonFactoryImpl extends EFactoryImpl implements CommonFactory {
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LiteralBoolean createLiteralBoolean() {
+		LiteralBooleanImpl literalBoolean = new LiteralBooleanImpl();
+		return literalBoolean;
 	}
 
 	/**

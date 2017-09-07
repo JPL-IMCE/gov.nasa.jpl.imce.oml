@@ -88,6 +88,10 @@ public class CommonAdapterFactory extends AdapterFactoryImpl {
 				return createLiteralValueAdapter();
 			}
 			@Override
+			public Adapter caseLiteralBoolean(LiteralBoolean object) {
+				return createLiteralBooleanAdapter();
+			}
+			@Override
 			public Adapter caseLiteralDateTime(LiteralDateTime object) {
 				return createLiteralDateTimeAdapter();
 			}
@@ -186,6 +190,20 @@ public class CommonAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createLiteralValueAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.common.LiteralBoolean <em>Literal Boolean</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralBoolean
+	 * @generated
+	 */
+	public Adapter createLiteralBooleanAdapter() {
 		return null;
 	}
 

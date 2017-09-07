@@ -69,4 +69,6 @@ gov.nasa.jpl.imce.oml.tycho 0.8.0.0 resolves major problems found in 0.7.1.2
   
 - [#91 Conversion of DecimalValue Fails During Serialization](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/91)
 
+- [#94 Add Support for Boolean Data Type Values / LiteralBoolean](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/94)
+
 ## [Release & Publish process](publishProcess.markdown)
