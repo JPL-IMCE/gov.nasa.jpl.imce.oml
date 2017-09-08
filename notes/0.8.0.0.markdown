@@ -71,4 +71,10 @@ gov.nasa.jpl.imce.oml.tycho 0.8.0.0 resolves major problems found in 0.7.1.2
 
 - [#94 Add Support for Boolean Data Type Values / LiteralBoolean](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/94)
 
+- [#95 Cannot start OML Workbench](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/95)
+
+  See [OML Product README](../releng/gov.nasa.jpl.imce.oml.product/README.md) for the workaround to this issue: https://bugs.eclipse.org/bugs/show_bug.cgi?id=463117
+  
+  Note that launching the OML Workbench as a runtime Eclipse may result in NPEs during shutdown as reported in this issue: https://bugs.eclipse.org/bugs/show_bug.cgi?id=522075
+  
 ## [Release & Publish process](publishProcess.markdown)

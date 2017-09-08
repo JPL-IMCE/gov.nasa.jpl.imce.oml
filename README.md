@@ -106,6 +106,28 @@ In `~/.m2/settings.xml` include, replacing `{BINTRAY USERNAME}` and `{BINTRAY AP
 
 ## Eclipse/Tycho Notes
 
+### Eclipse Neon.3 Development Notes
+
+#### Launching the OML Workbench from the Eclipse IDE
+
+- Do not launch the [releng/gov.nasa.jpl.imce.oml.product/gov.nasa.jpl.imce.oml.rcp.product](releng/gov.nasa.jpl.imce.oml.product/gov.nasa.jpl.imce.oml.rcp.product)
+
+	This will fail because of supposedly missing dependencies. 
+	
+- Use instead this [launcher](launchers/gov.nasa.jpl.imce.oml.rcp.product.launch)
+	
+	- 1) Open the [launcher](launchers/gov.nasa.jpl.imce.oml.rcp.product.launch)
+	
+	- 2) Under the "Plug-Ins" tab, click "Add Required" (this will modify the file to include platform-specific dependencies); Apply.
+
+	- 3) Verify that all dependencies are satisfied
+	
+	- 4) Run or Debug
+	
+- Note: When shutting down the runtime OML Workbench, the following NPE may happen: https://bugs.eclipse.org/bugs/show_bug.cgi?id=522075
+
+	These NPEs do not happen when shuttting down an installation of the OML Workbench; that is, these NPEs seem to be a behavior that is specific to launching the OML Workbench as a runtime Eclipse.
+
 ### Problems with uploading P2 update sites with bintray's "explode=1" option
 
 See [releng/gov.nasa.jpl.imce.oml.updatesite/README.md](gov.nasa.jpl.imce.oml.updatesite)
