@@ -3,17 +3,21 @@
 
 <product name="OML Workbench" uid="gov.nasa.jpl.imce.oml.rcp.product" id="gov.nasa.jpl.imce.oml.rcp.product" application="org.eclipse.ui.ide.workbench" version="0.8.0.qualifier" useFeatures="true" includeLaunchers="true">
 
+
    <configIni use="default">
    </configIni>
 
    <launcherArgs>
       <programArgs>-clearPersistedState
       </programArgs>
+      <vmArgs>-Dorg.eclipse.update.reconcile=false
+      </vmArgs>
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
       </vmArgsMac>
    </launcherArgs>
 
    <windowImages/>
+
 
    <launcher name="OML Workbench">
       <solaris/>
@@ -21,6 +25,7 @@
          <bmp/>
       </win>
    </launcher>
+
 
    <vm>
    </vm>
@@ -240,7 +245,24 @@
 
    <features>
       <feature id="gov.nasa.jpl.imce.oml.core.feature" installMode="root"/>
-      <feature id="org.eclipse.equinox.sdk" version="3.12.0.v20170209-1843"/>
+      <feature id="org.eclipse.platform" version="4.6.3.v20170301-0400"/>
+      <feature id="org.eclipse.emf.ecore"/>
+      <feature id="org.eclipse.equinox.p2.user.ui"/>
+      <feature id="org.eclipse.ecf.filetransfer.httpclient4.feature"/>
+      <feature id="org.eclipse.help"/>
+      <feature id="org.eclipse.ecf.filetransfer.httpclient4.ssl.feature"/>
+      <feature id="org.eclipse.equinox.p2.extras.feature"/>
+      <feature id="org.eclipse.rcp"/>
+      <feature id="org.eclipse.emf.common"/>
+      <feature id="org.eclipse.equinox.p2.core.feature"/>
+      <feature id="org.eclipse.ecf.core.feature"/>
+      <feature id="org.eclipse.equinox.p2.rcp.feature"/>
+      <feature id="org.eclipse.ecf.filetransfer.feature"/>
+      <feature id="org.eclipse.ecf.core.ssl.feature"/>
+      <feature id="org.eclipse.ecf.filetransfer.ssl.feature"/>
+      <feature id="org.eclipse.e4.rcp"/>
+      <feature id="org.eclipse.egit" version="4.6.1.201703071140-r"/>
+      <feature id="org.eclipse.jgit" version="4.6.1.201703071140-r"/>
    </features>
 
    <configurations>
