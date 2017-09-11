@@ -128,7 +128,7 @@
       </additionalLayers>
       <additionalLayers name="Structures" activeByDefault="true">
         <containerMappings name="Structure" semanticCandidatesExpression="aql:self.boxStatements" domainClass="terminologies.Structure" childrenPresentation="List">
-          <subNodeMappings name="Structured Data Property" semanticCandidatesExpression="aql:self.getContainedStructuredDataProperties0()" domainClass="terminologies.StructuredDataProperty">
+          <subNodeMappings name="Structured Data Property" semanticCandidatesExpression="aql:self.getContainedStructuredDataProperties()" domainClass="terminologies.StructuredDataProperty">
             <style xsi:type="style:LozengeNodeDescription" showIcon="false" labelExpression="aql:self.name + ' : ' + self.range.name" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

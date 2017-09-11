@@ -127,7 +127,7 @@ class OMLScopeExtensions {
 	) {
 		val ArrayList<IEObjectDescription> result = Lists.newArrayList()
 		result.addAll(Scopes.scopedElementsFor(localScopeFunction.apply(tbox)))
-		result.addAll(tbox.allImportedTerminologies.map[importedTbox|
+		result.addAll(OMLExtensions.allImportedTerminologies(tbox).map[importedTbox|
 			Scopes.scopedElementsFor(
 				localScopeFunction.apply(importedTbox), 
 				[importedThing| nameFunction.apply(Pair.of(importedTbox, importedThing)) ]
@@ -208,7 +208,7 @@ class OMLScopeExtensions {
 		
 		val Set<TerminologyBox> allTBoxes = Sets.newHashSet()
 		allTBoxes.addAll(allBundles)
-		allTBoxes.addAll(allBundles.map[allImportedTerminologies].flatten)
+		allTBoxes.addAll(allBundles.map[b|OMLExtensions.allImportedTerminologies(b)].flatten)
 		result.addAll(allTBoxes.map[tbox|
 			Scopes.scopedElementsFor(
 				localScopeFunction.apply(tbox), 

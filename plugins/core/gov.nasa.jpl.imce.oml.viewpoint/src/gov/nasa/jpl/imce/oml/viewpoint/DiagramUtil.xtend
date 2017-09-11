@@ -5,6 +5,7 @@ import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox
 import java.util.Set
+import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions
 
 class DiagramUtil {
 	/*
@@ -16,13 +17,22 @@ class DiagramUtil {
 	 * @return Set of {@link EntityStructuredDataProperty}
 	 */
 
-	def Set<EntityStructuredDataProperty> getContainedEntityStructuredDataProperties(Entity c){
-	    val set = c.tbox.boxStatements.
+	def Set<EntityStructuredDataProperty> getContainedEntityStructuredDataProperties(Entity e){
+
+//      OMLExtensions.allImportedTerminologies(e.tbox)
+//      .map[boxStatements]
+//      .flatten
+//      .filterNull
+//	  .filter(EntityStructuredDataProperty)
+//	  .filter[f | f.relationDomain == e]
+//	  .toSet
+	  
+	    val set = e.tbox.boxStatements.
 	    filter(EntityStructuredDataProperty).toSet
 	    
 	    if(set.isEmpty) return set;
 	    
-	    set.filter[f | f.relationDomain == c].
+	    set.filter[f | f.relationDomain == e].
 	    toSet
 	}
 	
@@ -33,14 +43,22 @@ class DiagramUtil {
 	 * @param The Entity
 	 * @return Set of {@link EntityScalarDataProperty}
 	 */
-	def Set<EntityScalarDataProperty> getContainedEntityScalarDataProperties(Entity c){
+	def Set<EntityScalarDataProperty> getContainedEntityScalarDataProperties(Entity e){
 		
-	    val set = c.tbox.boxStatements.
+//	  OMLExtensions.allImportedTerminologies(e.tbox)
+//	  .map[boxStatements]
+//	  .flatten
+//      .filterNull
+//	  .filter(EntityScalarDataProperty)
+//	  .filter[f | f.relationDomain == e]
+//	  .toSet
+	  
+	    val set = e.tbox.boxStatements.
 	    filter(EntityScalarDataProperty).toSet
 	    
 	    if(set.isEmpty) return set;
 	    
-	    set.filter[f | f.relationDomain == c].
+	    set.filter[f | f.relationDomain == e].
 	    toSet
 	}
 }
