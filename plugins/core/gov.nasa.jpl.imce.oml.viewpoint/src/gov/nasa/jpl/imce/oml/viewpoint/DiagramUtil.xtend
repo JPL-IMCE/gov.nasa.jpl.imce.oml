@@ -6,6 +6,7 @@ import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox
 import java.util.Set
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions
+import java.util.HashSet
 
 class DiagramUtil {
 	/*
@@ -18,22 +19,24 @@ class DiagramUtil {
 	 */
 
 	def Set<EntityStructuredDataProperty> getContainedEntityStructuredDataProperties(Entity e){
-
-//      OMLExtensions.allImportedTerminologies(e.tbox)
-//      .map[boxStatements]
-//      .flatten
-//      .filterNull
-//	  .filter(EntityStructuredDataProperty)
-//	  .filter[f | f.relationDomain == e]
-//	  .toSet
+		
+		if(e.tbox === null) return new HashSet<EntityStructuredDataProperty>()
+		
+		OMLExtensions.allImportedTerminologies(e.tbox)
+        .map[boxStatements]
+        .flatten
+        .filterNull
+	    .filter(EntityStructuredDataProperty)
+	    .filter[f | f.relationDomain == e]
+	    .toSet
 	  
-	    val set = e.tbox.boxStatements.
-	    filter(EntityStructuredDataProperty).toSet
-	    
-	    if(set.isEmpty) return set;
-	    
-	    set.filter[f | f.relationDomain == e].
-	    toSet
+//	    val set = e.tbox.boxStatements.
+//	    filter(EntityStructuredDataProperty).toSet
+//	    
+//	    if(set.isEmpty) return set;
+//	    
+//	    set.filter[f | f.relationDomain == e].
+//	    toSet
 	}
 	
 	/*
@@ -43,22 +46,25 @@ class DiagramUtil {
 	 * @param The Entity
 	 * @return Set of {@link EntityScalarDataProperty}
 	 */
-	def Set<EntityScalarDataProperty> getContainedEntityScalarDataProperties(Entity e){
+	def Set<EntityScalarDataProperty> getContainedEntityScalarDataProperties(Entity e){		
 		
-//	  OMLExtensions.allImportedTerminologies(e.tbox)
-//	  .map[boxStatements]
-//	  .flatten
-//      .filterNull
-//	  .filter(EntityScalarDataProperty)
-//	  .filter[f | f.relationDomain == e]
-//	  .toSet
-	  
-	    val set = e.tbox.boxStatements.
-	    filter(EntityScalarDataProperty).toSet
-	    
-	    if(set.isEmpty) return set;
-	    
-	    set.filter[f | f.relationDomain == e].
-	    toSet
+		if(e.tbox === null) return new HashSet<EntityScalarDataProperty>()
+		
+		OMLExtensions.allImportedTerminologies(e.tbox)
+		.map[boxStatements]
+	    .flatten
+        .filterNull
+	    .filter(EntityScalarDataProperty)
+	    .filter[f | f.relationDomain == e]
+	    .toSet
+
+//        val set = e?.tbox?.boxStatements	  
+//	    .filter(EntityScalarDataProperty)
+//	    .toSet
+//	    
+//	    if(set.isEmpty) return set;
+//	    
+//	    set.filter[f | f.relationDomain == e].
+//	    toSet
 	}
 }

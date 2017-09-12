@@ -6,12 +6,12 @@
 - For a project that contains *.oml files, use the project context menu: "Configure > Convert to Modeling Project"
 - Afterwards, the context menu on a project with *.oml files should have additional menus: 
   - Viewpoint Selection
-  - 
+  
 ## Development
 
 Note: the OML viewpoints are defined in [description/OML.odesign](description/OML.odesign)
 
-The OML Viewpoints are graphical modeling workbenches developed using the [Sirius Eclipse Project](http://www.eclipse.org/sirius/doc/).  The views availble are as follows:
+The OML Viewpoints are graphical modeling workbenches developed using the [Sirius Eclipse Project](http://www.eclipse.org/sirius/doc/).  The views available are as follows:
 
 | View Name | Type |Desciription |
 |----------|-------|-----------|
@@ -29,15 +29,13 @@ The views *Aspect/Concept Class Diagram* and *Sub Heiarchy* are incomplete
 
 ## Eclipse/Sirus
 
-- Launching a runtime eclipse and editing the `/gov.nasa.jpl.imce.oml.viewpoint/description/OML.odesign` file
+- Launch a runtime eclipse using the [OML WB launch configuration](/gov.nasa.jpl.imce.oml.tycho/launchers/OML WB.launch)
 
-Launch a runtime eclipse using the [OML WB launch configuration](/gov.nasa.jpl.imce.oml.tycho/launchers/OML WB.launch)
-
-Editing the [OML.odesign](/gov.nasa.jpl.imce.oml.viewpoint/description/OML.odesign) is particularly useful for several reasons:
-	- Making adjustments to the OML viewpoint notation for the Sirius nodes, containers, or edges
-	    - Add/Edit nodes, containers, edges and aql queries
-	    - Add new views (diagram, table, ect.)
-	    - When changing the  [query methods](gov.nasa.jpl.imce.oml.viewpoint) you must shutdown the runtime and restart it in order to see the changes.  The query methods must be changed outside of the runtime or the changes will not be saved.
+- Editing the [OML.odesign](/gov.nasa.jpl.imce.oml.viewpoint/description/OML.odesign) is particularly useful for several reasons:
+    - Make adjustments to the OML viewpoint notation for the Sirius nodes, containers, or edges
+    - Add/Edit nodes, containers, edges and aql queries
+    - Add new views (diagram, table, ect.)
+    - When changing the  [query methods](gov.nasa.jpl.imce.oml.viewpoint) you must shutdown the runtime and restart it in order to see the changes.  The query methods must be changed outside of the runtime or the changes will not be saved.
 
 The 'version' attribute in the 'description:Group' tag of the [OML.odesign](/gov.nasa.jpl.imce.oml.viewpoint/description/OML.odesign) must be 11.1.1.201610211630.  
 When saving, this may be automatically updated to a higher version, resulting in an error like this:
