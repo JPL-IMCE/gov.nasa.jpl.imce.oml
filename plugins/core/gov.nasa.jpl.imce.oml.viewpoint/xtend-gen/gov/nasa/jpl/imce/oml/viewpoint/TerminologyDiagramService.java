@@ -19,6 +19,11 @@ package gov.nasa.jpl.imce.oml.viewpoint;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
+import gov.nasa.jpl.imce.oml.model.common.LiteralDateTime;
+import gov.nasa.jpl.imce.oml.model.common.LiteralNumber;
+import gov.nasa.jpl.imce.oml.model.datatypes.LanguageTagValue;
+import gov.nasa.jpl.imce.oml.model.datatypes.PatternValue;
+import gov.nasa.jpl.imce.oml.model.datatypes.PositiveIntegerValue;
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyGraph;
 import gov.nasa.jpl.imce.oml.model.terminologies.BinaryScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.Entity;
@@ -238,87 +243,87 @@ public class TerminologyDiagramService {
       StringBuilder label = new StringBuilder();
       label.append(r.name());
       if ((r instanceof StringScalarRestriction)) {
-        String _pattern = ((StringScalarRestriction) r).getPattern();
+        PatternValue _pattern = ((StringScalarRestriction) r).getPattern();
         String _plus = ("\npattern: " + _pattern);
         label.append(_plus);
       }
       if ((r instanceof IRIScalarRestriction)) {
-        String _pattern_1 = ((IRIScalarRestriction) r).getPattern();
+        PatternValue _pattern_1 = ((IRIScalarRestriction) r).getPattern();
         String _plus_1 = ("\npattern: " + _pattern_1);
         label.append(_plus_1);
       }
       if ((r instanceof PlainLiteralScalarRestriction)) {
-        String _pattern_2 = ((PlainLiteralScalarRestriction) r).getPattern();
+        PatternValue _pattern_2 = ((PlainLiteralScalarRestriction) r).getPattern();
         String _plus_2 = ("\npattern: " + _pattern_2);
         label.append(_plus_2);
-        String _langRange = ((PlainLiteralScalarRestriction) r).getLangRange();
+        LanguageTagValue _langRange = ((PlainLiteralScalarRestriction) r).getLangRange();
         String _plus_3 = ("\nlangRange: " + _langRange);
         label.append(_plus_3);
       }
       if ((r instanceof NumericScalarRestriction)) {
-        String _minInclusive = ((NumericScalarRestriction) r).getMinInclusive();
+        LiteralNumber _minInclusive = ((NumericScalarRestriction) r).getMinInclusive();
         boolean _tripleNotEquals = (_minInclusive != null);
         if (_tripleNotEquals) {
-          String _minInclusive_1 = ((NumericScalarRestriction) r).getMinInclusive();
+          LiteralNumber _minInclusive_1 = ((NumericScalarRestriction) r).getMinInclusive();
           String _plus_4 = ("\n\nminInclusive: " + _minInclusive_1);
           label.append(_plus_4);
         }
-        String _maxInclusive = ((NumericScalarRestriction) r).getMaxInclusive();
+        LiteralNumber _maxInclusive = ((NumericScalarRestriction) r).getMaxInclusive();
         boolean _tripleNotEquals_1 = (_maxInclusive != null);
         if (_tripleNotEquals_1) {
-          String _maxInclusive_1 = ((NumericScalarRestriction) r).getMaxInclusive();
+          LiteralNumber _maxInclusive_1 = ((NumericScalarRestriction) r).getMaxInclusive();
           String _plus_5 = ("\nmaxInclusive: " + _maxInclusive_1);
           label.append(_plus_5);
         }
-        String _minExclusive = ((NumericScalarRestriction) r).getMinExclusive();
+        LiteralNumber _minExclusive = ((NumericScalarRestriction) r).getMinExclusive();
         boolean _tripleNotEquals_2 = (_minExclusive != null);
         if (_tripleNotEquals_2) {
-          String _minExclusive_1 = ((NumericScalarRestriction) r).getMinExclusive();
+          LiteralNumber _minExclusive_1 = ((NumericScalarRestriction) r).getMinExclusive();
           String _plus_6 = ("\nminExclusive: " + _minExclusive_1);
           label.append(_plus_6);
         }
-        String _maxExclusive = ((NumericScalarRestriction) r).getMaxExclusive();
+        LiteralNumber _maxExclusive = ((NumericScalarRestriction) r).getMaxExclusive();
         boolean _tripleNotEquals_3 = (_maxExclusive != null);
         if (_tripleNotEquals_3) {
-          String _maxExclusive_1 = ((NumericScalarRestriction) r).getMaxExclusive();
+          LiteralNumber _maxExclusive_1 = ((NumericScalarRestriction) r).getMaxExclusive();
           String _plus_7 = ("\nmaxExclusive: " + _maxExclusive_1);
           label.append(_plus_7);
         }
       }
       if ((r instanceof BinaryScalarRestriction)) {
-        int _minLength = ((BinaryScalarRestriction) r).getMinLength();
-        String _plus_8 = ("\n\nnmaxLength: " + Integer.valueOf(_minLength));
+        PositiveIntegerValue _minLength = ((BinaryScalarRestriction) r).getMinLength();
+        String _plus_8 = ("\n\nnmaxLength: " + _minLength);
         String _plus_9 = (_plus_8 + "\nmaxLength: ");
-        int _maxLength = ((BinaryScalarRestriction) r).getMaxLength();
-        String _plus_10 = (_plus_9 + Integer.valueOf(_maxLength));
+        PositiveIntegerValue _maxLength = ((BinaryScalarRestriction) r).getMaxLength();
+        String _plus_10 = (_plus_9 + _maxLength);
         label.append(_plus_10);
       }
       if ((r instanceof TimeScalarRestriction)) {
-        String _minInclusive_2 = ((TimeScalarRestriction) r).getMinInclusive();
+        LiteralDateTime _minInclusive_2 = ((TimeScalarRestriction) r).getMinInclusive();
         boolean _tripleNotEquals_4 = (_minInclusive_2 != null);
         if (_tripleNotEquals_4) {
-          String _minInclusive_3 = ((TimeScalarRestriction) r).getMinInclusive();
+          LiteralDateTime _minInclusive_3 = ((TimeScalarRestriction) r).getMinInclusive();
           String _plus_11 = ("\n\nminInclusive: " + _minInclusive_3);
           label.append(_plus_11);
         }
-        String _maxInclusive_2 = ((TimeScalarRestriction) r).getMaxInclusive();
+        LiteralDateTime _maxInclusive_2 = ((TimeScalarRestriction) r).getMaxInclusive();
         boolean _tripleNotEquals_5 = (_maxInclusive_2 != null);
         if (_tripleNotEquals_5) {
-          String _maxInclusive_3 = ((TimeScalarRestriction) r).getMaxInclusive();
+          LiteralDateTime _maxInclusive_3 = ((TimeScalarRestriction) r).getMaxInclusive();
           String _plus_12 = ("\nmaxInclusive: " + _maxInclusive_3);
           label.append(_plus_12);
         }
-        String _minExclusive_2 = ((TimeScalarRestriction) r).getMinExclusive();
+        LiteralDateTime _minExclusive_2 = ((TimeScalarRestriction) r).getMinExclusive();
         boolean _tripleNotEquals_6 = (_minExclusive_2 != null);
         if (_tripleNotEquals_6) {
-          String _minExclusive_3 = ((TimeScalarRestriction) r).getMinExclusive();
+          LiteralDateTime _minExclusive_3 = ((TimeScalarRestriction) r).getMinExclusive();
           String _plus_13 = ("\nminExclusive: " + _minExclusive_3);
           label.append(_plus_13);
         }
-        String _maxExclusive_2 = ((TimeScalarRestriction) r).getMaxExclusive();
+        LiteralDateTime _maxExclusive_2 = ((TimeScalarRestriction) r).getMaxExclusive();
         boolean _tripleNotEquals_7 = (_maxExclusive_2 != null);
         if (_tripleNotEquals_7) {
-          String _maxExclusive_3 = ((TimeScalarRestriction) r).getMaxExclusive();
+          LiteralDateTime _maxExclusive_3 = ((TimeScalarRestriction) r).getMaxExclusive();
           String _plus_14 = ("\nmaxExclusive: " + _maxExclusive_3);
           label.append(_plus_14);
         }

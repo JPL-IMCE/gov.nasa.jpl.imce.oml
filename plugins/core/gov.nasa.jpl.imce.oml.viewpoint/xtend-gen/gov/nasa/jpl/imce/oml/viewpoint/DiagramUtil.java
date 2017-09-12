@@ -2,12 +2,16 @@ package gov.nasa.jpl.imce.oml.viewpoint;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
+import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
 import gov.nasa.jpl.imce.oml.model.terminologies.Entity;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.Term;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox;
+import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBoxStatement;
+import java.util.HashSet;
 import java.util.Set;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
@@ -21,19 +25,22 @@ public class DiagramUtil {
    * @param The Entity
    * @return Set of {@link EntityStructuredDataProperty}
    */
-  public Set<EntityStructuredDataProperty> getContainedEntityStructuredDataProperties(final Entity c) {
+  public Set<EntityStructuredDataProperty> getContainedEntityStructuredDataProperties(final Entity e) {
     Set<EntityStructuredDataProperty> _xblockexpression = null;
     {
-      final Set<EntityStructuredDataProperty> set = IterableExtensions.<EntityStructuredDataProperty>toSet(Iterables.<EntityStructuredDataProperty>filter(c.getTbox().getBoxStatements(), EntityStructuredDataProperty.class));
-      boolean _isEmpty = set.isEmpty();
-      if (_isEmpty) {
-        return set;
+      TerminologyBox _tbox = e.getTbox();
+      boolean _tripleEquals = (_tbox == null);
+      if (_tripleEquals) {
+        return new HashSet<EntityStructuredDataProperty>();
       }
-      final Function1<EntityStructuredDataProperty, Boolean> _function = (EntityStructuredDataProperty f) -> {
-        Term _relationDomain = f.relationDomain();
-        return Boolean.valueOf(Objects.equal(_relationDomain, c));
+      final Function1<TerminologyBox, EList<TerminologyBoxStatement>> _function = (TerminologyBox it) -> {
+        return it.getBoxStatements();
       };
-      _xblockexpression = IterableExtensions.<EntityStructuredDataProperty>toSet(IterableExtensions.<EntityStructuredDataProperty>filter(set, _function));
+      final Function1<EntityStructuredDataProperty, Boolean> _function_1 = (EntityStructuredDataProperty f) -> {
+        Term _relationDomain = f.relationDomain();
+        return Boolean.valueOf(Objects.equal(_relationDomain, e));
+      };
+      _xblockexpression = IterableExtensions.<EntityStructuredDataProperty>toSet(IterableExtensions.<EntityStructuredDataProperty>filter(Iterables.<EntityStructuredDataProperty>filter(IterableExtensions.<TerminologyBoxStatement>filterNull(Iterables.<TerminologyBoxStatement>concat(IterableExtensions.<TerminologyBox, EList<TerminologyBoxStatement>>map(OMLExtensions.allImportedTerminologies(e.getTbox()), _function))), EntityStructuredDataProperty.class), _function_1));
     }
     return _xblockexpression;
   }
@@ -45,19 +52,22 @@ public class DiagramUtil {
    * @param The Entity
    * @return Set of {@link EntityScalarDataProperty}
    */
-  public Set<EntityScalarDataProperty> getContainedEntityScalarDataProperties(final Entity c) {
+  public Set<EntityScalarDataProperty> getContainedEntityScalarDataProperties(final Entity e) {
     Set<EntityScalarDataProperty> _xblockexpression = null;
     {
-      final Set<EntityScalarDataProperty> set = IterableExtensions.<EntityScalarDataProperty>toSet(Iterables.<EntityScalarDataProperty>filter(c.getTbox().getBoxStatements(), EntityScalarDataProperty.class));
-      boolean _isEmpty = set.isEmpty();
-      if (_isEmpty) {
-        return set;
+      TerminologyBox _tbox = e.getTbox();
+      boolean _tripleEquals = (_tbox == null);
+      if (_tripleEquals) {
+        return new HashSet<EntityScalarDataProperty>();
       }
-      final Function1<EntityScalarDataProperty, Boolean> _function = (EntityScalarDataProperty f) -> {
-        Term _relationDomain = f.relationDomain();
-        return Boolean.valueOf(Objects.equal(_relationDomain, c));
+      final Function1<TerminologyBox, EList<TerminologyBoxStatement>> _function = (TerminologyBox it) -> {
+        return it.getBoxStatements();
       };
-      _xblockexpression = IterableExtensions.<EntityScalarDataProperty>toSet(IterableExtensions.<EntityScalarDataProperty>filter(set, _function));
+      final Function1<EntityScalarDataProperty, Boolean> _function_1 = (EntityScalarDataProperty f) -> {
+        Term _relationDomain = f.relationDomain();
+        return Boolean.valueOf(Objects.equal(_relationDomain, e));
+      };
+      _xblockexpression = IterableExtensions.<EntityScalarDataProperty>toSet(IterableExtensions.<EntityScalarDataProperty>filter(Iterables.<EntityScalarDataProperty>filter(IterableExtensions.<TerminologyBoxStatement>filterNull(Iterables.<TerminologyBoxStatement>concat(IterableExtensions.<TerminologyBox, EList<TerminologyBoxStatement>>map(OMLExtensions.allImportedTerminologies(e.getTbox()), _function))), EntityScalarDataProperty.class), _function_1));
     }
     return _xblockexpression;
   }
