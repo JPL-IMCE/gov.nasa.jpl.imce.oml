@@ -31,6 +31,7 @@ import java.util.HashSet
 import java.util.Set
 import org.eclipse.sirius.diagram.DDiagram
 import org.eclipse.sirius.diagram.DSemanticDiagram
+import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions
 
 /*
  * Used to query for visual elements for the 'Aspect/Concept Class Diagram'
@@ -69,14 +70,17 @@ class AspectConceptClassDiagramService {
 	 */
 	def Set<EntityRelationship> getVisualRelationshipsWithRootAsDomain(DDiagram d){
 		val e = getRootEntity(d)
-		val set = e?.tbox?.boxStatements?.filterNull.
-		filter(EntityRelationship).
-		toSet
 		
-		if(set.empty) return set;
+		if(e.tbox === null) return new HashSet<EntityRelationship>()
 		
-		set.filter[f | f.source == e].
-		toSet
+		OMLExtensions.allImportedTerminologies(e.tbox)
+        .map[boxStatements]
+        .flatten
+        .filterNull
+		.filter(EntityRelationship)
+		.filter[f | f.source == e]
+		.toSet
+		
 	}
 	
 	/*
@@ -89,14 +93,17 @@ class AspectConceptClassDiagramService {
 	 */
 	def Set<ReifiedRelationship> getVisualRelationshipsWithRootAsRange(DDiagram d){
 		val e = getRootEntity(d)
-		val set = e?.tbox?.boxStatements?.filterNull.
-		filter(ReifiedRelationship).
-		toSet
 		
-		if(set.empty) return set;
 		
-		set.filter[f | f.target == e].
-		toSet
+		if(e.tbox === null) return new HashSet<ReifiedRelationship>()
+		
+		OMLExtensions.allImportedTerminologies(e.tbox)
+        .map[boxStatements]
+        .flatten
+        .filterNull
+		.filter(ReifiedRelationship)
+		.filter[f | f.target == e]
+		.toSet
 	}	
 
 	/*
@@ -110,8 +117,14 @@ class AspectConceptClassDiagramService {
 	def Set<Entity> getVisualEntities(DDiagram d){
 		val e = getRootEntity(d)
 		val entities = new HashSet<Entity>
-		e?.tbox?.boxStatements?.filterNull.
-		forEach[t | 
+		
+		if(e.tbox === null) return entities
+		
+		OMLExtensions.allImportedTerminologies(e.tbox)
+        .map[boxStatements]
+        .flatten
+        .filterNull
+		.forEach[t | 
 			 if(t instanceof SpecializationAxiom){
 				val n = (t as SpecializationAxiom).child
 				if(n == e){
@@ -146,14 +159,16 @@ class AspectConceptClassDiagramService {
 	 */
 	 def Set<AspectSpecializationAxiom> getVisualAspectAxioms(DDiagram d){
 	 	val e = getRootEntity(d)
-	 	val set = e?.tbox?.boxStatements?.filterNull.
-	 	filter(AspectSpecializationAxiom).
-	 	toSet
 	 	
-	 	if(set.isEmpty) return set;
-	 	
-	 	set.filter[f | f.subEntity == e].
-	 	toSet
+	 	if(e.tbox === null) return new HashSet<AspectSpecializationAxiom>()
+		
+		OMLExtensions.allImportedTerminologies(e.tbox)
+        .map[boxStatements]
+        .flatten
+        .filterNull
+	 	.filter(AspectSpecializationAxiom)
+	 	.filter[f | f.subEntity == e]
+	 	.toSet
 	 }
 	
 	/*
@@ -166,14 +181,16 @@ class AspectConceptClassDiagramService {
 	 */
 	 def Set<ConceptSpecializationAxiom> getVisualConceptAxioms(DDiagram d){
 	 	val c = getRootEntity(d)
-	 	val set = c?.tbox?.boxStatements?.filterNull.
-	 	filter(ConceptSpecializationAxiom).
-	 	toSet
 	 	
-	 	if(set.isEmpty) return set;
-	 	
-	 	set.filter[f | f.subConcept == c].
-	 	toSet
+	 	if(c.tbox === null) return new HashSet<ConceptSpecializationAxiom>()
+		
+		OMLExtensions.allImportedTerminologies(c.tbox)
+        .map[boxStatements]
+        .flatten
+        .filterNull
+	 	.filter(ConceptSpecializationAxiom)
+	 	.filter[f | f.subConcept == c]
+	 	.toSet
 	 }
 	 
 	 /*
@@ -185,14 +202,16 @@ class AspectConceptClassDiagramService {
 	  * @return Set of {@link EntityRestrictionAxiom}s
 	  */
 	  def Set<EntityRestrictionAxiom> getVisualRestrictionAxioms(Entity e){
-	  	val set = e?.tbox?.boxStatements?.filterNull.
-	  	filter(EntityRestrictionAxiom).
-	  	toSet
-	  	
-	  	if(set.isEmpty) return set;
-	  	
-	  	set.filter(f | f.restrictedDomain == e).
-	  	toSet
+	  	if(e.tbox === null) return new HashSet<EntityRestrictionAxiom>()
+		
+		OMLExtensions.allImportedTerminologies(e.tbox)
+        .map[boxStatements]
+        .flatten
+        .filterNull
+	  	.filter(EntityRestrictionAxiom)
+	  	.filter(f | f.restrictedDomain == e)
+	  	.filter(f | f.restrictedDomain == e)
+	  	.toSet
 	  }
 	  
 	  /*
@@ -202,6 +221,7 @@ class AspectConceptClassDiagramService {
 	   * @return '<<existential>>' or '<<universal>>'
 	   */
 	   def String getAxiomLabel(EntityRestrictionAxiom ax){
+	   	
 	   	if(ax instanceof EntityExistentialRestrictionAxiom){
 	   	  return "<<existential>>"	
 	   	}
