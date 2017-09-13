@@ -210,7 +210,6 @@ class AspectConceptClassDiagramService {
         .filterNull
 	  	.filter(EntityRestrictionAxiom)
 	  	.filter(f | f.restrictedDomain == e)
-	  	.filter(f | f.restrictedDomain == e)
 	  	.toSet
 	  }
 	  
