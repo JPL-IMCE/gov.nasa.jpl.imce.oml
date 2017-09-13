@@ -69,7 +69,7 @@ class AspectConceptClassDiagramService {
 	 */
 	def Set<EntityRelationship> getVisualRelationshipsWithRootAsDomain(DDiagram d){
 		val e = getRootEntity(d)
-		val set = e.tbox.boxStatements.
+		val set = e?.tbox?.boxStatements?.filterNull.
 		filter(EntityRelationship).
 		toSet
 		
@@ -89,7 +89,7 @@ class AspectConceptClassDiagramService {
 	 */
 	def Set<ReifiedRelationship> getVisualRelationshipsWithRootAsRange(DDiagram d){
 		val e = getRootEntity(d)
-		val set = e.tbox.boxStatements.
+		val set = e?.tbox?.boxStatements?.filterNull.
 		filter(ReifiedRelationship).
 		toSet
 		
@@ -110,7 +110,7 @@ class AspectConceptClassDiagramService {
 	def Set<Entity> getVisualEntities(DDiagram d){
 		val e = getRootEntity(d)
 		val entities = new HashSet<Entity>
-		e.tbox.boxStatements.
+		e?.tbox?.boxStatements?.filterNull.
 		forEach[t | 
 			 if(t instanceof SpecializationAxiom){
 				val n = (t as SpecializationAxiom).child
@@ -146,7 +146,7 @@ class AspectConceptClassDiagramService {
 	 */
 	 def Set<AspectSpecializationAxiom> getVisualAspectAxioms(DDiagram d){
 	 	val e = getRootEntity(d)
-	 	val set = e.tbox.boxStatements.
+	 	val set = e?.tbox?.boxStatements?.filterNull.
 	 	filter(AspectSpecializationAxiom).
 	 	toSet
 	 	
@@ -166,7 +166,7 @@ class AspectConceptClassDiagramService {
 	 */
 	 def Set<ConceptSpecializationAxiom> getVisualConceptAxioms(DDiagram d){
 	 	val c = getRootEntity(d)
-	 	val set = c.tbox.boxStatements.
+	 	val set = c?.tbox?.boxStatements?.filterNull.
 	 	filter(ConceptSpecializationAxiom).
 	 	toSet
 	 	
@@ -185,7 +185,7 @@ class AspectConceptClassDiagramService {
 	  * @return Set of {@link EntityRestrictionAxiom}s
 	  */
 	  def Set<EntityRestrictionAxiom> getVisualRestrictionAxioms(Entity e){
-	  	val set = e.tbox.boxStatements.
+	  	val set = e?.tbox?.boxStatements?.filterNull.
 	  	filter(EntityRestrictionAxiom).
 	  	toSet
 	  	

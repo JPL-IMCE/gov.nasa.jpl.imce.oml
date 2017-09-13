@@ -56,7 +56,7 @@ class TerminologyDiagramService {
 	def Set<Entity> getVisualEntities(TerminologyGraph tg){
 		val entities  = new LinkedHashSet<Entity>()
 		
-		for(statement : tg.boxStatements){
+		for(statement : tg?.boxStatements){
 			if (statement instanceof Entity){
 				entities.add(statement as Entity)
 			}
@@ -78,13 +78,13 @@ class TerminologyDiagramService {
 	 * @return Set of {@link ScalarDataProperty}
 	 */
 	def Set<ScalarDataProperty> getContainedScalarDataProperties(Structure c){
-	    val set = c.tbox.boxStatements.
+	    val set = c?.tbox?.boxStatements?.
 	    filter(ScalarDataProperty).
 	    toSet
 	    
 	    if(set.isEmpty) return set;
 	    
-	    set.filter[f | f.domain == c].
+	    set.filterNull.filter[f | f.domain == c].
 	    toSet
 	}	
 	
@@ -96,13 +96,13 @@ class TerminologyDiagramService {
 	 * @return Set of {@link StucturedDataProperty}
 	 */
 	def Set<StructuredDataProperty> getContainedStructuredDataProperties(Structure c){
-	    val set = c.tbox.boxStatements.
+	    val set = c?.tbox?.boxStatements?.
 	    filter(StructuredDataProperty).
 	    toSet
 	    
 	    if(set.isEmpty) return set;
 	    
-	    set.filter[f | f.domain == c].
+	    set.filterNull.filter[f | f.domain == c].
 	    toSet
 	}
 	
@@ -114,8 +114,8 @@ class TerminologyDiagramService {
 	 * @return Set of {@link StringScalarRestriction}
 	 */
 	def Set<StringScalarRestriction> getContainedStringScalarRestrictions(TerminologyGraph c){
-	    return c.boxStatements.
-	    filter(StringScalarRestriction).
+	    return c?.boxStatements?.
+	    filterNull.filter(StringScalarRestriction).
 	    toSet
 	}	
 	
@@ -127,8 +127,8 @@ class TerminologyDiagramService {
 	 * @return Set of {@link NumericScalarRestriction}
 	 */
 	def Set<NumericScalarRestriction> getContainedNumericScalarRestrictions(TerminologyGraph c){
-	    return c.boxStatements.
-	    filter(NumericScalarRestriction).
+	    return c?.boxStatements?.
+	    filterNull.filter(NumericScalarRestriction).
 	    toSet
 	}
 	
@@ -140,8 +140,8 @@ class TerminologyDiagramService {
 	 * @return Set of {@link NumericScalarRestriction}
 	 */
 	def Set<BinaryScalarRestriction> getContainedBinaryScalarRestrictions(TerminologyGraph c){
-	    return c.boxStatements.
-	    filter(BinaryScalarRestriction).
+	    return c?.boxStatements?.
+	    filterNull.filter(BinaryScalarRestriction).
 	    toSet
 	}
 	
@@ -153,8 +153,8 @@ class TerminologyDiagramService {
 	 * @return Set of {@link IRIScalarRestriction}
 	 */
 	def Set<IRIScalarRestriction> getContainedIRIScalarRestrictions(TerminologyGraph c){
-	    return c.boxStatements.
-	    filter(IRIScalarRestriction).
+	    return c?.boxStatements?.
+	    filterNull.filter(IRIScalarRestriction).
 	    toSet
 	}
 	
@@ -166,8 +166,8 @@ class TerminologyDiagramService {
 	 * @return Set of {@link PlainLiteralScalarRestriction}
 	 */
 	def Set<PlainLiteralScalarRestriction> getContainedPlainLiteralScalarRestrictions(TerminologyGraph c){
-	    return c.boxStatements.
-	    filter(PlainLiteralScalarRestriction).
+	    return c?.boxStatements?.
+	    filterNull.filter(PlainLiteralScalarRestriction).
 	    toSet
 	}
 	
@@ -180,8 +180,8 @@ class TerminologyDiagramService {
 	 * @return Set of {@link TimeScalarRestriction}
 	 */
 	def Set<TimeScalarRestriction> getContainedTimeScalarRestrictions(TerminologyGraph c){
-	    return c.boxStatements.
-	    filter(TimeScalarRestriction).
+	    return c?.boxStatements?.
+	    filterNull.filter(TimeScalarRestriction).
 	    toSet
 	}
 	
@@ -193,8 +193,8 @@ class TerminologyDiagramService {
 	 * @return Set of {@link SynonymScalarRestriction}
 	 */
 	def Set<SynonymScalarRestriction> getContainedSynonymScalarRestrictions(TerminologyGraph c){
-	    return c.boxStatements.
-	    filter(SynonymScalarRestriction).
+	    return c?.boxStatements?.
+	    filterNull.filter(SynonymScalarRestriction).
 	    toSet
 	}
 	
@@ -206,8 +206,8 @@ class TerminologyDiagramService {
 	 * @return Set of {@link ScalarOneOfRestriction}
 	 */
 	def Set<ScalarOneOfRestriction> getContainedScalarOneOfRestrictions(TerminologyGraph c){
-	    return c.boxStatements.
-	    filter(ScalarOneOfRestriction).
+	    return c?.boxStatements?.
+	    filterNull.filter(ScalarOneOfRestriction).
 	    toSet
 	}
 	

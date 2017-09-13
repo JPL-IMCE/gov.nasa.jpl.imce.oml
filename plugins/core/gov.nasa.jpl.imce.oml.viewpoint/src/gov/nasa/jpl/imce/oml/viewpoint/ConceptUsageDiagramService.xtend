@@ -126,7 +126,8 @@ class ConceptUsageDiagramService {
 		val newRootConcepts = new HashSet<Concept>
 		val aspect = rel.source
 		
-		aspect.tbox.boxStatements.
+		aspect?.tbox?.boxStatements?.filterNull.
+		filterNull.
 		filter(AspectSpecializationAxiom).
 		filter[f | 
 			(f.superAspect == aspect) && (f.subEntity instanceof Concept) 
@@ -420,8 +421,7 @@ class ConceptUsageDiagramService {
 		val graph = new HashMap<Entity,List<Entry<Entity,TerminologyBoxStatement>>>
 		
 		// Build graph
-		c.tbox.boxStatements.
-		//c.tbox.allEntitiesScope.allElements.filter(TerminologyBoxStatement).
+		c?.tbox?.boxStatements?.filterNull.
 		forEach[relOrAx |
 			val entry = getSourceAndTarget(relOrAx)
 			if(entry !== null){
