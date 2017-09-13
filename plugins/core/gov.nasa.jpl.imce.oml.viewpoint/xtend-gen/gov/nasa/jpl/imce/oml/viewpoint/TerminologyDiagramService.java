@@ -39,6 +39,7 @@ import gov.nasa.jpl.imce.oml.model.terminologies.StringScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.Structure;
 import gov.nasa.jpl.imce.oml.model.terminologies.StructuredDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.SynonymScalarRestriction;
+import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBoxStatement;
 import gov.nasa.jpl.imce.oml.model.terminologies.TimeScalarRestriction;
 import java.util.LinkedHashSet;
@@ -66,7 +67,10 @@ public class TerminologyDiagramService {
     LinkedHashSet<Entity> _xblockexpression = null;
     {
       final LinkedHashSet<Entity> entities = new LinkedHashSet<Entity>();
-      EList<TerminologyBoxStatement> _boxStatements = tg.getBoxStatements();
+      EList<TerminologyBoxStatement> _boxStatements = null;
+      if (tg!=null) {
+        _boxStatements=tg.getBoxStatements();
+      }
       for (final TerminologyBoxStatement statement : _boxStatements) {
         {
           if ((statement instanceof Entity)) {
@@ -94,7 +98,19 @@ public class TerminologyDiagramService {
   public Set<ScalarDataProperty> getContainedScalarDataProperties(final Structure c) {
     Set<ScalarDataProperty> _xblockexpression = null;
     {
-      final Set<ScalarDataProperty> set = IterableExtensions.<ScalarDataProperty>toSet(Iterables.<ScalarDataProperty>filter(c.getTbox().getBoxStatements(), ScalarDataProperty.class));
+      TerminologyBox _tbox = null;
+      if (c!=null) {
+        _tbox=c.getTbox();
+      }
+      EList<TerminologyBoxStatement> _boxStatements = null;
+      if (_tbox!=null) {
+        _boxStatements=_tbox.getBoxStatements();
+      }
+      Iterable<ScalarDataProperty> _filter = null;
+      if (_boxStatements!=null) {
+        _filter=Iterables.<ScalarDataProperty>filter(_boxStatements, ScalarDataProperty.class);
+      }
+      final Set<ScalarDataProperty> set = IterableExtensions.<ScalarDataProperty>toSet(_filter);
       boolean _isEmpty = set.isEmpty();
       if (_isEmpty) {
         return set;
@@ -103,7 +119,7 @@ public class TerminologyDiagramService {
         Structure _domain = f.getDomain();
         return Boolean.valueOf(Objects.equal(_domain, c));
       };
-      _xblockexpression = IterableExtensions.<ScalarDataProperty>toSet(IterableExtensions.<ScalarDataProperty>filter(set, _function));
+      _xblockexpression = IterableExtensions.<ScalarDataProperty>toSet(IterableExtensions.<ScalarDataProperty>filter(IterableExtensions.<ScalarDataProperty>filterNull(set), _function));
     }
     return _xblockexpression;
   }
@@ -118,7 +134,19 @@ public class TerminologyDiagramService {
   public Set<StructuredDataProperty> getContainedStructuredDataProperties(final Structure c) {
     Set<StructuredDataProperty> _xblockexpression = null;
     {
-      final Set<StructuredDataProperty> set = IterableExtensions.<StructuredDataProperty>toSet(Iterables.<StructuredDataProperty>filter(c.getTbox().getBoxStatements(), StructuredDataProperty.class));
+      TerminologyBox _tbox = null;
+      if (c!=null) {
+        _tbox=c.getTbox();
+      }
+      EList<TerminologyBoxStatement> _boxStatements = null;
+      if (_tbox!=null) {
+        _boxStatements=_tbox.getBoxStatements();
+      }
+      Iterable<StructuredDataProperty> _filter = null;
+      if (_boxStatements!=null) {
+        _filter=Iterables.<StructuredDataProperty>filter(_boxStatements, StructuredDataProperty.class);
+      }
+      final Set<StructuredDataProperty> set = IterableExtensions.<StructuredDataProperty>toSet(_filter);
       boolean _isEmpty = set.isEmpty();
       if (_isEmpty) {
         return set;
@@ -127,7 +155,7 @@ public class TerminologyDiagramService {
         Structure _domain = f.getDomain();
         return Boolean.valueOf(Objects.equal(_domain, c));
       };
-      _xblockexpression = IterableExtensions.<StructuredDataProperty>toSet(IterableExtensions.<StructuredDataProperty>filter(set, _function));
+      _xblockexpression = IterableExtensions.<StructuredDataProperty>toSet(IterableExtensions.<StructuredDataProperty>filter(IterableExtensions.<StructuredDataProperty>filterNull(set), _function));
     }
     return _xblockexpression;
   }
@@ -140,7 +168,15 @@ public class TerminologyDiagramService {
    * @return Set of {@link StringScalarRestriction}
    */
   public Set<StringScalarRestriction> getContainedStringScalarRestrictions(final TerminologyGraph c) {
-    return IterableExtensions.<StringScalarRestriction>toSet(Iterables.<StringScalarRestriction>filter(c.getBoxStatements(), StringScalarRestriction.class));
+    EList<TerminologyBoxStatement> _boxStatements = null;
+    if (c!=null) {
+      _boxStatements=c.getBoxStatements();
+    }
+    Iterable<TerminologyBoxStatement> _filterNull = null;
+    if (_boxStatements!=null) {
+      _filterNull=IterableExtensions.<TerminologyBoxStatement>filterNull(_boxStatements);
+    }
+    return IterableExtensions.<StringScalarRestriction>toSet(Iterables.<StringScalarRestriction>filter(_filterNull, StringScalarRestriction.class));
   }
   
   /**
@@ -151,7 +187,15 @@ public class TerminologyDiagramService {
    * @return Set of {@link NumericScalarRestriction}
    */
   public Set<NumericScalarRestriction> getContainedNumericScalarRestrictions(final TerminologyGraph c) {
-    return IterableExtensions.<NumericScalarRestriction>toSet(Iterables.<NumericScalarRestriction>filter(c.getBoxStatements(), NumericScalarRestriction.class));
+    EList<TerminologyBoxStatement> _boxStatements = null;
+    if (c!=null) {
+      _boxStatements=c.getBoxStatements();
+    }
+    Iterable<TerminologyBoxStatement> _filterNull = null;
+    if (_boxStatements!=null) {
+      _filterNull=IterableExtensions.<TerminologyBoxStatement>filterNull(_boxStatements);
+    }
+    return IterableExtensions.<NumericScalarRestriction>toSet(Iterables.<NumericScalarRestriction>filter(_filterNull, NumericScalarRestriction.class));
   }
   
   /**
@@ -162,7 +206,15 @@ public class TerminologyDiagramService {
    * @return Set of {@link NumericScalarRestriction}
    */
   public Set<BinaryScalarRestriction> getContainedBinaryScalarRestrictions(final TerminologyGraph c) {
-    return IterableExtensions.<BinaryScalarRestriction>toSet(Iterables.<BinaryScalarRestriction>filter(c.getBoxStatements(), BinaryScalarRestriction.class));
+    EList<TerminologyBoxStatement> _boxStatements = null;
+    if (c!=null) {
+      _boxStatements=c.getBoxStatements();
+    }
+    Iterable<TerminologyBoxStatement> _filterNull = null;
+    if (_boxStatements!=null) {
+      _filterNull=IterableExtensions.<TerminologyBoxStatement>filterNull(_boxStatements);
+    }
+    return IterableExtensions.<BinaryScalarRestriction>toSet(Iterables.<BinaryScalarRestriction>filter(_filterNull, BinaryScalarRestriction.class));
   }
   
   /**
@@ -173,7 +225,15 @@ public class TerminologyDiagramService {
    * @return Set of {@link IRIScalarRestriction}
    */
   public Set<IRIScalarRestriction> getContainedIRIScalarRestrictions(final TerminologyGraph c) {
-    return IterableExtensions.<IRIScalarRestriction>toSet(Iterables.<IRIScalarRestriction>filter(c.getBoxStatements(), IRIScalarRestriction.class));
+    EList<TerminologyBoxStatement> _boxStatements = null;
+    if (c!=null) {
+      _boxStatements=c.getBoxStatements();
+    }
+    Iterable<TerminologyBoxStatement> _filterNull = null;
+    if (_boxStatements!=null) {
+      _filterNull=IterableExtensions.<TerminologyBoxStatement>filterNull(_boxStatements);
+    }
+    return IterableExtensions.<IRIScalarRestriction>toSet(Iterables.<IRIScalarRestriction>filter(_filterNull, IRIScalarRestriction.class));
   }
   
   /**
@@ -184,7 +244,15 @@ public class TerminologyDiagramService {
    * @return Set of {@link PlainLiteralScalarRestriction}
    */
   public Set<PlainLiteralScalarRestriction> getContainedPlainLiteralScalarRestrictions(final TerminologyGraph c) {
-    return IterableExtensions.<PlainLiteralScalarRestriction>toSet(Iterables.<PlainLiteralScalarRestriction>filter(c.getBoxStatements(), PlainLiteralScalarRestriction.class));
+    EList<TerminologyBoxStatement> _boxStatements = null;
+    if (c!=null) {
+      _boxStatements=c.getBoxStatements();
+    }
+    Iterable<TerminologyBoxStatement> _filterNull = null;
+    if (_boxStatements!=null) {
+      _filterNull=IterableExtensions.<TerminologyBoxStatement>filterNull(_boxStatements);
+    }
+    return IterableExtensions.<PlainLiteralScalarRestriction>toSet(Iterables.<PlainLiteralScalarRestriction>filter(_filterNull, PlainLiteralScalarRestriction.class));
   }
   
   /**
@@ -195,7 +263,15 @@ public class TerminologyDiagramService {
    * @return Set of {@link TimeScalarRestriction}
    */
   public Set<TimeScalarRestriction> getContainedTimeScalarRestrictions(final TerminologyGraph c) {
-    return IterableExtensions.<TimeScalarRestriction>toSet(Iterables.<TimeScalarRestriction>filter(c.getBoxStatements(), TimeScalarRestriction.class));
+    EList<TerminologyBoxStatement> _boxStatements = null;
+    if (c!=null) {
+      _boxStatements=c.getBoxStatements();
+    }
+    Iterable<TerminologyBoxStatement> _filterNull = null;
+    if (_boxStatements!=null) {
+      _filterNull=IterableExtensions.<TerminologyBoxStatement>filterNull(_boxStatements);
+    }
+    return IterableExtensions.<TimeScalarRestriction>toSet(Iterables.<TimeScalarRestriction>filter(_filterNull, TimeScalarRestriction.class));
   }
   
   /**
@@ -206,7 +282,15 @@ public class TerminologyDiagramService {
    * @return Set of {@link SynonymScalarRestriction}
    */
   public Set<SynonymScalarRestriction> getContainedSynonymScalarRestrictions(final TerminologyGraph c) {
-    return IterableExtensions.<SynonymScalarRestriction>toSet(Iterables.<SynonymScalarRestriction>filter(c.getBoxStatements(), SynonymScalarRestriction.class));
+    EList<TerminologyBoxStatement> _boxStatements = null;
+    if (c!=null) {
+      _boxStatements=c.getBoxStatements();
+    }
+    Iterable<TerminologyBoxStatement> _filterNull = null;
+    if (_boxStatements!=null) {
+      _filterNull=IterableExtensions.<TerminologyBoxStatement>filterNull(_boxStatements);
+    }
+    return IterableExtensions.<SynonymScalarRestriction>toSet(Iterables.<SynonymScalarRestriction>filter(_filterNull, SynonymScalarRestriction.class));
   }
   
   /**
@@ -217,7 +301,15 @@ public class TerminologyDiagramService {
    * @return Set of {@link ScalarOneOfRestriction}
    */
   public Set<ScalarOneOfRestriction> getContainedScalarOneOfRestrictions(final TerminologyGraph c) {
-    return IterableExtensions.<ScalarOneOfRestriction>toSet(Iterables.<ScalarOneOfRestriction>filter(c.getBoxStatements(), ScalarOneOfRestriction.class));
+    EList<TerminologyBoxStatement> _boxStatements = null;
+    if (c!=null) {
+      _boxStatements=c.getBoxStatements();
+    }
+    Iterable<TerminologyBoxStatement> _filterNull = null;
+    if (_boxStatements!=null) {
+      _filterNull=IterableExtensions.<TerminologyBoxStatement>filterNull(_boxStatements);
+    }
+    return IterableExtensions.<ScalarOneOfRestriction>toSet(Iterables.<ScalarOneOfRestriction>filter(_filterNull, ScalarOneOfRestriction.class));
   }
   
   /**

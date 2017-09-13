@@ -41,6 +41,7 @@ import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
 import java.util.function.Consumer;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
@@ -132,6 +133,18 @@ public class ConceptUsageDiagramService {
     {
       final HashSet<Concept> newRootConcepts = new HashSet<Concept>();
       final Entity aspect = rel.getSource();
+      TerminologyBox _tbox = null;
+      if (aspect!=null) {
+        _tbox=aspect.getTbox();
+      }
+      EList<TerminologyBoxStatement> _boxStatements = null;
+      if (_tbox!=null) {
+        _boxStatements=_tbox.getBoxStatements();
+      }
+      Iterable<TerminologyBoxStatement> _filterNull = null;
+      if (_boxStatements!=null) {
+        _filterNull=IterableExtensions.<TerminologyBoxStatement>filterNull(_boxStatements);
+      }
       final Function1<AspectSpecializationAxiom, Boolean> _function = (AspectSpecializationAxiom f) -> {
         return Boolean.valueOf((Objects.equal(f.getSuperAspect(), aspect) && (f.getSubEntity() instanceof Concept)));
       };
@@ -139,7 +152,7 @@ public class ConceptUsageDiagramService {
         Entity _subEntity = ax.getSubEntity();
         newRootConcepts.add(((Concept) _subEntity));
       };
-      IterableExtensions.<AspectSpecializationAxiom>filter(Iterables.<AspectSpecializationAxiom>filter(aspect.getTbox().getBoxStatements(), AspectSpecializationAxiom.class), _function).forEach(_function_1);
+      IterableExtensions.<AspectSpecializationAxiom>filter(Iterables.<AspectSpecializationAxiom>filter(IterableExtensions.<TerminologyBoxStatement>filterNull(_filterNull), AspectSpecializationAxiom.class), _function).forEach(_function_1);
       _xblockexpression = newRootConcepts;
     }
     return _xblockexpression;
@@ -417,6 +430,18 @@ public class ConceptUsageDiagramService {
     HashMap<Entity, List<Map.Entry<Entity, TerminologyBoxStatement>>> _xblockexpression = null;
     {
       final HashMap<Entity, List<Map.Entry<Entity, TerminologyBoxStatement>>> graph = new HashMap<Entity, List<Map.Entry<Entity, TerminologyBoxStatement>>>();
+      TerminologyBox _tbox = null;
+      if (c!=null) {
+        _tbox=c.getTbox();
+      }
+      EList<TerminologyBoxStatement> _boxStatements = null;
+      if (_tbox!=null) {
+        _boxStatements=_tbox.getBoxStatements();
+      }
+      Iterable<TerminologyBoxStatement> _filterNull = null;
+      if (_boxStatements!=null) {
+        _filterNull=IterableExtensions.<TerminologyBoxStatement>filterNull(_boxStatements);
+      }
       final Consumer<TerminologyBoxStatement> _function = (TerminologyBoxStatement relOrAx) -> {
         final Map.Entry<Entity, Entity> entry = this.getSourceAndTarget(relOrAx);
         if ((entry != null)) {
@@ -444,7 +469,7 @@ public class ConceptUsageDiagramService {
           }
         }
       };
-      c.getTbox().getBoxStatements().forEach(_function);
+      _filterNull.forEach(_function);
       _xblockexpression = graph;
     }
     return _xblockexpression;

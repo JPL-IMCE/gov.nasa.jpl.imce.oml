@@ -28,10 +28,12 @@ import gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.SpecializationAxiom;
+import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBoxStatement;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Consumer;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
@@ -77,7 +79,19 @@ public class AspectConceptClassDiagramService {
     Set<EntityRelationship> _xblockexpression = null;
     {
       final Entity e = this.getRootEntity(d);
-      final Set<EntityRelationship> set = IterableExtensions.<EntityRelationship>toSet(Iterables.<EntityRelationship>filter(e.getTbox().getBoxStatements(), EntityRelationship.class));
+      TerminologyBox _tbox = null;
+      if (e!=null) {
+        _tbox=e.getTbox();
+      }
+      EList<TerminologyBoxStatement> _boxStatements = null;
+      if (_tbox!=null) {
+        _boxStatements=_tbox.getBoxStatements();
+      }
+      Iterable<TerminologyBoxStatement> _filterNull = null;
+      if (_boxStatements!=null) {
+        _filterNull=IterableExtensions.<TerminologyBoxStatement>filterNull(_boxStatements);
+      }
+      final Set<EntityRelationship> set = IterableExtensions.<EntityRelationship>toSet(Iterables.<EntityRelationship>filter(_filterNull, EntityRelationship.class));
       boolean _isEmpty = set.isEmpty();
       if (_isEmpty) {
         return set;
@@ -103,7 +117,19 @@ public class AspectConceptClassDiagramService {
     Set<ReifiedRelationship> _xblockexpression = null;
     {
       final Entity e = this.getRootEntity(d);
-      final Set<ReifiedRelationship> set = IterableExtensions.<ReifiedRelationship>toSet(Iterables.<ReifiedRelationship>filter(e.getTbox().getBoxStatements(), ReifiedRelationship.class));
+      TerminologyBox _tbox = null;
+      if (e!=null) {
+        _tbox=e.getTbox();
+      }
+      EList<TerminologyBoxStatement> _boxStatements = null;
+      if (_tbox!=null) {
+        _boxStatements=_tbox.getBoxStatements();
+      }
+      Iterable<TerminologyBoxStatement> _filterNull = null;
+      if (_boxStatements!=null) {
+        _filterNull=IterableExtensions.<TerminologyBoxStatement>filterNull(_boxStatements);
+      }
+      final Set<ReifiedRelationship> set = IterableExtensions.<ReifiedRelationship>toSet(Iterables.<ReifiedRelationship>filter(_filterNull, ReifiedRelationship.class));
       boolean _isEmpty = set.isEmpty();
       if (_isEmpty) {
         return set;
@@ -130,6 +156,18 @@ public class AspectConceptClassDiagramService {
     {
       final Entity e = this.getRootEntity(d);
       final HashSet<Entity> entities = new HashSet<Entity>();
+      TerminologyBox _tbox = null;
+      if (e!=null) {
+        _tbox=e.getTbox();
+      }
+      EList<TerminologyBoxStatement> _boxStatements = null;
+      if (_tbox!=null) {
+        _boxStatements=_tbox.getBoxStatements();
+      }
+      Iterable<TerminologyBoxStatement> _filterNull = null;
+      if (_boxStatements!=null) {
+        _filterNull=IterableExtensions.<TerminologyBoxStatement>filterNull(_boxStatements);
+      }
       final Consumer<TerminologyBoxStatement> _function = (TerminologyBoxStatement t) -> {
         if ((t instanceof SpecializationAxiom)) {
           final Entity n = ((SpecializationAxiom) t).child();
@@ -161,7 +199,7 @@ public class AspectConceptClassDiagramService {
           }
         }
       };
-      e.getTbox().getBoxStatements().forEach(_function);
+      _filterNull.forEach(_function);
       entities.add(e);
       _xblockexpression = entities;
     }
@@ -180,7 +218,19 @@ public class AspectConceptClassDiagramService {
     Set<AspectSpecializationAxiom> _xblockexpression = null;
     {
       final Entity e = this.getRootEntity(d);
-      final Set<AspectSpecializationAxiom> set = IterableExtensions.<AspectSpecializationAxiom>toSet(Iterables.<AspectSpecializationAxiom>filter(e.getTbox().getBoxStatements(), AspectSpecializationAxiom.class));
+      TerminologyBox _tbox = null;
+      if (e!=null) {
+        _tbox=e.getTbox();
+      }
+      EList<TerminologyBoxStatement> _boxStatements = null;
+      if (_tbox!=null) {
+        _boxStatements=_tbox.getBoxStatements();
+      }
+      Iterable<TerminologyBoxStatement> _filterNull = null;
+      if (_boxStatements!=null) {
+        _filterNull=IterableExtensions.<TerminologyBoxStatement>filterNull(_boxStatements);
+      }
+      final Set<AspectSpecializationAxiom> set = IterableExtensions.<AspectSpecializationAxiom>toSet(Iterables.<AspectSpecializationAxiom>filter(_filterNull, AspectSpecializationAxiom.class));
       boolean _isEmpty = set.isEmpty();
       if (_isEmpty) {
         return set;
@@ -206,7 +256,19 @@ public class AspectConceptClassDiagramService {
     Set<ConceptSpecializationAxiom> _xblockexpression = null;
     {
       final Entity c = this.getRootEntity(d);
-      final Set<ConceptSpecializationAxiom> set = IterableExtensions.<ConceptSpecializationAxiom>toSet(Iterables.<ConceptSpecializationAxiom>filter(c.getTbox().getBoxStatements(), ConceptSpecializationAxiom.class));
+      TerminologyBox _tbox = null;
+      if (c!=null) {
+        _tbox=c.getTbox();
+      }
+      EList<TerminologyBoxStatement> _boxStatements = null;
+      if (_tbox!=null) {
+        _boxStatements=_tbox.getBoxStatements();
+      }
+      Iterable<TerminologyBoxStatement> _filterNull = null;
+      if (_boxStatements!=null) {
+        _filterNull=IterableExtensions.<TerminologyBoxStatement>filterNull(_boxStatements);
+      }
+      final Set<ConceptSpecializationAxiom> set = IterableExtensions.<ConceptSpecializationAxiom>toSet(Iterables.<ConceptSpecializationAxiom>filter(_filterNull, ConceptSpecializationAxiom.class));
       boolean _isEmpty = set.isEmpty();
       if (_isEmpty) {
         return set;
@@ -231,7 +293,19 @@ public class AspectConceptClassDiagramService {
   public Set<EntityRestrictionAxiom> getVisualRestrictionAxioms(final Entity e) {
     Set<EntityRestrictionAxiom> _xblockexpression = null;
     {
-      final Set<EntityRestrictionAxiom> set = IterableExtensions.<EntityRestrictionAxiom>toSet(Iterables.<EntityRestrictionAxiom>filter(e.getTbox().getBoxStatements(), EntityRestrictionAxiom.class));
+      TerminologyBox _tbox = null;
+      if (e!=null) {
+        _tbox=e.getTbox();
+      }
+      EList<TerminologyBoxStatement> _boxStatements = null;
+      if (_tbox!=null) {
+        _boxStatements=_tbox.getBoxStatements();
+      }
+      Iterable<TerminologyBoxStatement> _filterNull = null;
+      if (_boxStatements!=null) {
+        _filterNull=IterableExtensions.<TerminologyBoxStatement>filterNull(_boxStatements);
+      }
+      final Set<EntityRestrictionAxiom> set = IterableExtensions.<EntityRestrictionAxiom>toSet(Iterables.<EntityRestrictionAxiom>filter(_filterNull, EntityRestrictionAxiom.class));
       boolean _isEmpty = set.isEmpty();
       if (_isEmpty) {
         return set;
