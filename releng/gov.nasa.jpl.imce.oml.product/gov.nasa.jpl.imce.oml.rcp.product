@@ -265,7 +265,7 @@ License Terms
 
    <features>
       <feature id="gov.nasa.jpl.imce.oml.core.feature" installMode="root"/>
-      <feature id="gov.nasa.jpl.imce.oml.ui.feature" version="0.8.0.qualifier"/>
+      <feature id="gov.nasa.jpl.imce.oml.ui.feature" installMode="root"/>
       <feature id="org.eclipse.platform" version="4.6.3.v20170301-0400"/>
       <feature id="org.eclipse.emf.ecore"/>
       <feature id="org.eclipse.equinox.p2.user.ui"/>

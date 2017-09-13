@@ -34,6 +34,18 @@ for p in ${projects[*]}; do
 done
 }
 
+
+function psl() {
+for p in ${projects[*]}; do
+
+    echo "#";
+    echo "# => $p";
+    echo "#";
+    jfrog bt ps jpl-imce/gov.nasa.jpl.imce.oml/$p | grep '\"\(name\|latest_version\)\"'
+    
+done
+}
+
 declare -a projects
 
 projects[0]=gov.nasa.jpl.imce.oml.root
@@ -60,6 +72,9 @@ projects[19]=gov.nasa.jpl.imce.oml.product
 if test $# -eq 1 && test "$1" = "ps"; then
     echo "# Package Show...";
     ps;
+elif test $# -eq 1 && test "$1" = "psl"; then
+    echo "# Package Show (latest version)...";
+    psl;
 elif test $# -eq 2 && test "$1" = "vd"; then
     vd $2;
 elif test $# -eq 2 && test "$1" = "vp"; then
