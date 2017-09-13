@@ -2,14 +2,17 @@
 <project>
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>gov.nasa.jpl.imce.oml</groupId>
-	<artifactId>gov.nasa.jpl.imce.oml.updatesite</artifactId>
+	<artifactId>gov.nasa.jpl.imce.oml.features.ui</artifactId>
 	<version>0.8.0-SNAPSHOT</version>
-	<packaging>eclipse-repository</packaging>
-
+	<packaging>pom</packaging>
+	
 	<parent>
 		<groupId>gov.nasa.jpl.imce.oml</groupId>
-		<artifactId>gov.nasa.jpl.imce.oml.releng</artifactId>
+		<artifactId>gov.nasa.jpl.imce.oml.features</artifactId>
 		<version>0.8.0-SNAPSHOT</version>
 	</parent>
-	
+
+	<modules>
+		<module>gov.nasa.jpl.imce.oml.ui.feature</module>
+	</modules>
 </project>
