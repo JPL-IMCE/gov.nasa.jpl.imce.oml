@@ -30,6 +30,7 @@ import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship
 import gov.nasa.jpl.imce.oml.model.terminologies.SpecializationAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBoxStatement
+import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions
 import java.util.AbstractMap.SimpleEntry
 import java.util.ArrayList
 import java.util.HashMap
@@ -126,9 +127,13 @@ class ConceptUsageDiagramService {
 		val newRootConcepts = new HashSet<Concept>
 		val aspect = rel.source
 		
-		aspect?.tbox?.boxStatements?.filterNull.
-		filterNull.
-		filter(AspectSpecializationAxiom).
+		if(aspect.tbox === null) return newRootConcepts
+		
+		OMLExtensions.allImportedTerminologies(aspect.tbox)
+        .map[boxStatements]
+        .flatten
+        .filterNull
+		.filter(AspectSpecializationAxiom).
 		filter[f | 
 			(f.superAspect == aspect) && (f.subEntity instanceof Concept) 
 		].
@@ -414,15 +419,19 @@ class ConceptUsageDiagramService {
 		relationships
 	}
 	
-	private def Map<Entity,List<Entry<Entity,TerminologyBoxStatement>>> buildEntityGraph(Entity c){
+	private def Map<Entity,List<Entry<Entity,TerminologyBoxStatement>>> buildEntityGraph(Entity e){
 				
 		// Key: Entity
 		// Value: List of Entity, Relationship/Axiom pairs
 		val graph = new HashMap<Entity,List<Entry<Entity,TerminologyBoxStatement>>>
 		
+		if(e.tbox === null) return graph
 		// Build graph
-		c?.tbox?.boxStatements?.filterNull.
-		forEach[relOrAx |
+		 OMLExtensions.allImportedTerminologies(e.tbox)
+        .map[boxStatements]
+        .flatten
+        .filterNull
+		.forEach[relOrAx |
 			val entry = getSourceAndTarget(relOrAx)
 			if(entry !== null){
 				val source = entry.key
