@@ -19,6 +19,7 @@ package gov.nasa.jpl.imce.oml.viewpoint;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
+import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
 import gov.nasa.jpl.imce.oml.model.terminologies.Aspect;
 import gov.nasa.jpl.imce.oml.model.terminologies.AspectSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
@@ -133,26 +134,22 @@ public class ConceptUsageDiagramService {
     {
       final HashSet<Concept> newRootConcepts = new HashSet<Concept>();
       final Entity aspect = rel.getSource();
-      TerminologyBox _tbox = null;
-      if (aspect!=null) {
-        _tbox=aspect.getTbox();
+      TerminologyBox _tbox = aspect.getTbox();
+      boolean _tripleEquals = (_tbox == null);
+      if (_tripleEquals) {
+        return newRootConcepts;
       }
-      EList<TerminologyBoxStatement> _boxStatements = null;
-      if (_tbox!=null) {
-        _boxStatements=_tbox.getBoxStatements();
-      }
-      Iterable<TerminologyBoxStatement> _filterNull = null;
-      if (_boxStatements!=null) {
-        _filterNull=IterableExtensions.<TerminologyBoxStatement>filterNull(_boxStatements);
-      }
-      final Function1<AspectSpecializationAxiom, Boolean> _function = (AspectSpecializationAxiom f) -> {
+      final Function1<TerminologyBox, EList<TerminologyBoxStatement>> _function = (TerminologyBox it) -> {
+        return it.getBoxStatements();
+      };
+      final Function1<AspectSpecializationAxiom, Boolean> _function_1 = (AspectSpecializationAxiom f) -> {
         return Boolean.valueOf((Objects.equal(f.getSuperAspect(), aspect) && (f.getSubEntity() instanceof Concept)));
       };
-      final Consumer<AspectSpecializationAxiom> _function_1 = (AspectSpecializationAxiom ax) -> {
+      final Consumer<AspectSpecializationAxiom> _function_2 = (AspectSpecializationAxiom ax) -> {
         Entity _subEntity = ax.getSubEntity();
         newRootConcepts.add(((Concept) _subEntity));
       };
-      IterableExtensions.<AspectSpecializationAxiom>filter(Iterables.<AspectSpecializationAxiom>filter(IterableExtensions.<TerminologyBoxStatement>filterNull(_filterNull), AspectSpecializationAxiom.class), _function).forEach(_function_1);
+      IterableExtensions.<AspectSpecializationAxiom>filter(Iterables.<AspectSpecializationAxiom>filter(IterableExtensions.<TerminologyBoxStatement>filterNull(Iterables.<TerminologyBoxStatement>concat(IterableExtensions.<TerminologyBox, EList<TerminologyBoxStatement>>map(OMLExtensions.allImportedTerminologies(aspect.getTbox()), _function))), AspectSpecializationAxiom.class), _function_1).forEach(_function_2);
       _xblockexpression = newRootConcepts;
     }
     return _xblockexpression;
@@ -426,23 +423,19 @@ public class ConceptUsageDiagramService {
     return _xblockexpression;
   }
   
-  private Map<Entity, List<Map.Entry<Entity, TerminologyBoxStatement>>> buildEntityGraph(final Entity c) {
+  private Map<Entity, List<Map.Entry<Entity, TerminologyBoxStatement>>> buildEntityGraph(final Entity e) {
     HashMap<Entity, List<Map.Entry<Entity, TerminologyBoxStatement>>> _xblockexpression = null;
     {
       final HashMap<Entity, List<Map.Entry<Entity, TerminologyBoxStatement>>> graph = new HashMap<Entity, List<Map.Entry<Entity, TerminologyBoxStatement>>>();
-      TerminologyBox _tbox = null;
-      if (c!=null) {
-        _tbox=c.getTbox();
+      TerminologyBox _tbox = e.getTbox();
+      boolean _tripleEquals = (_tbox == null);
+      if (_tripleEquals) {
+        return graph;
       }
-      EList<TerminologyBoxStatement> _boxStatements = null;
-      if (_tbox!=null) {
-        _boxStatements=_tbox.getBoxStatements();
-      }
-      Iterable<TerminologyBoxStatement> _filterNull = null;
-      if (_boxStatements!=null) {
-        _filterNull=IterableExtensions.<TerminologyBoxStatement>filterNull(_boxStatements);
-      }
-      final Consumer<TerminologyBoxStatement> _function = (TerminologyBoxStatement relOrAx) -> {
+      final Function1<TerminologyBox, EList<TerminologyBoxStatement>> _function = (TerminologyBox it) -> {
+        return it.getBoxStatements();
+      };
+      final Consumer<TerminologyBoxStatement> _function_1 = (TerminologyBoxStatement relOrAx) -> {
         final Map.Entry<Entity, Entity> entry = this.getSourceAndTarget(relOrAx);
         if ((entry != null)) {
           final Entity source = entry.getKey();
@@ -469,7 +462,7 @@ public class ConceptUsageDiagramService {
           }
         }
       };
-      _filterNull.forEach(_function);
+      IterableExtensions.<TerminologyBoxStatement>filterNull(Iterables.<TerminologyBoxStatement>concat(IterableExtensions.<TerminologyBox, EList<TerminologyBoxStatement>>map(OMLExtensions.allImportedTerminologies(e.getTbox()), _function))).forEach(_function_1);
       _xblockexpression = graph;
     }
     return _xblockexpression;

@@ -19,6 +19,7 @@ package gov.nasa.jpl.imce.oml.viewpoint;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
+import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
 import gov.nasa.jpl.imce.oml.model.terminologies.AspectSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptSpecializationAxiom;
@@ -79,28 +80,19 @@ public class AspectConceptClassDiagramService {
     Set<EntityRelationship> _xblockexpression = null;
     {
       final Entity e = this.getRootEntity(d);
-      TerminologyBox _tbox = null;
-      if (e!=null) {
-        _tbox=e.getTbox();
+      TerminologyBox _tbox = e.getTbox();
+      boolean _tripleEquals = (_tbox == null);
+      if (_tripleEquals) {
+        return new HashSet<EntityRelationship>();
       }
-      EList<TerminologyBoxStatement> _boxStatements = null;
-      if (_tbox!=null) {
-        _boxStatements=_tbox.getBoxStatements();
-      }
-      Iterable<TerminologyBoxStatement> _filterNull = null;
-      if (_boxStatements!=null) {
-        _filterNull=IterableExtensions.<TerminologyBoxStatement>filterNull(_boxStatements);
-      }
-      final Set<EntityRelationship> set = IterableExtensions.<EntityRelationship>toSet(Iterables.<EntityRelationship>filter(_filterNull, EntityRelationship.class));
-      boolean _isEmpty = set.isEmpty();
-      if (_isEmpty) {
-        return set;
-      }
-      final Function1<EntityRelationship, Boolean> _function = (EntityRelationship f) -> {
+      final Function1<TerminologyBox, EList<TerminologyBoxStatement>> _function = (TerminologyBox it) -> {
+        return it.getBoxStatements();
+      };
+      final Function1<EntityRelationship, Boolean> _function_1 = (EntityRelationship f) -> {
         Entity _source = f.getSource();
         return Boolean.valueOf(Objects.equal(_source, e));
       };
-      _xblockexpression = IterableExtensions.<EntityRelationship>toSet(IterableExtensions.<EntityRelationship>filter(set, _function));
+      _xblockexpression = IterableExtensions.<EntityRelationship>toSet(IterableExtensions.<EntityRelationship>filter(Iterables.<EntityRelationship>filter(IterableExtensions.<TerminologyBoxStatement>filterNull(Iterables.<TerminologyBoxStatement>concat(IterableExtensions.<TerminologyBox, EList<TerminologyBoxStatement>>map(OMLExtensions.allImportedTerminologies(e.getTbox()), _function))), EntityRelationship.class), _function_1));
     }
     return _xblockexpression;
   }
@@ -117,28 +109,19 @@ public class AspectConceptClassDiagramService {
     Set<ReifiedRelationship> _xblockexpression = null;
     {
       final Entity e = this.getRootEntity(d);
-      TerminologyBox _tbox = null;
-      if (e!=null) {
-        _tbox=e.getTbox();
+      TerminologyBox _tbox = e.getTbox();
+      boolean _tripleEquals = (_tbox == null);
+      if (_tripleEquals) {
+        return new HashSet<ReifiedRelationship>();
       }
-      EList<TerminologyBoxStatement> _boxStatements = null;
-      if (_tbox!=null) {
-        _boxStatements=_tbox.getBoxStatements();
-      }
-      Iterable<TerminologyBoxStatement> _filterNull = null;
-      if (_boxStatements!=null) {
-        _filterNull=IterableExtensions.<TerminologyBoxStatement>filterNull(_boxStatements);
-      }
-      final Set<ReifiedRelationship> set = IterableExtensions.<ReifiedRelationship>toSet(Iterables.<ReifiedRelationship>filter(_filterNull, ReifiedRelationship.class));
-      boolean _isEmpty = set.isEmpty();
-      if (_isEmpty) {
-        return set;
-      }
-      final Function1<ReifiedRelationship, Boolean> _function = (ReifiedRelationship f) -> {
+      final Function1<TerminologyBox, EList<TerminologyBoxStatement>> _function = (TerminologyBox it) -> {
+        return it.getBoxStatements();
+      };
+      final Function1<ReifiedRelationship, Boolean> _function_1 = (ReifiedRelationship f) -> {
         Entity _target = f.getTarget();
         return Boolean.valueOf(Objects.equal(_target, e));
       };
-      _xblockexpression = IterableExtensions.<ReifiedRelationship>toSet(IterableExtensions.<ReifiedRelationship>filter(set, _function));
+      _xblockexpression = IterableExtensions.<ReifiedRelationship>toSet(IterableExtensions.<ReifiedRelationship>filter(Iterables.<ReifiedRelationship>filter(IterableExtensions.<TerminologyBoxStatement>filterNull(Iterables.<TerminologyBoxStatement>concat(IterableExtensions.<TerminologyBox, EList<TerminologyBoxStatement>>map(OMLExtensions.allImportedTerminologies(e.getTbox()), _function))), ReifiedRelationship.class), _function_1));
     }
     return _xblockexpression;
   }
@@ -156,19 +139,15 @@ public class AspectConceptClassDiagramService {
     {
       final Entity e = this.getRootEntity(d);
       final HashSet<Entity> entities = new HashSet<Entity>();
-      TerminologyBox _tbox = null;
-      if (e!=null) {
-        _tbox=e.getTbox();
+      TerminologyBox _tbox = e.getTbox();
+      boolean _tripleEquals = (_tbox == null);
+      if (_tripleEquals) {
+        return entities;
       }
-      EList<TerminologyBoxStatement> _boxStatements = null;
-      if (_tbox!=null) {
-        _boxStatements=_tbox.getBoxStatements();
-      }
-      Iterable<TerminologyBoxStatement> _filterNull = null;
-      if (_boxStatements!=null) {
-        _filterNull=IterableExtensions.<TerminologyBoxStatement>filterNull(_boxStatements);
-      }
-      final Consumer<TerminologyBoxStatement> _function = (TerminologyBoxStatement t) -> {
+      final Function1<TerminologyBox, EList<TerminologyBoxStatement>> _function = (TerminologyBox it) -> {
+        return it.getBoxStatements();
+      };
+      final Consumer<TerminologyBoxStatement> _function_1 = (TerminologyBoxStatement t) -> {
         if ((t instanceof SpecializationAxiom)) {
           final Entity n = ((SpecializationAxiom) t).child();
           boolean _equals = Objects.equal(n, e);
@@ -199,7 +178,7 @@ public class AspectConceptClassDiagramService {
           }
         }
       };
-      _filterNull.forEach(_function);
+      IterableExtensions.<TerminologyBoxStatement>filterNull(Iterables.<TerminologyBoxStatement>concat(IterableExtensions.<TerminologyBox, EList<TerminologyBoxStatement>>map(OMLExtensions.allImportedTerminologies(e.getTbox()), _function))).forEach(_function_1);
       entities.add(e);
       _xblockexpression = entities;
     }
@@ -218,28 +197,19 @@ public class AspectConceptClassDiagramService {
     Set<AspectSpecializationAxiom> _xblockexpression = null;
     {
       final Entity e = this.getRootEntity(d);
-      TerminologyBox _tbox = null;
-      if (e!=null) {
-        _tbox=e.getTbox();
+      TerminologyBox _tbox = e.getTbox();
+      boolean _tripleEquals = (_tbox == null);
+      if (_tripleEquals) {
+        return new HashSet<AspectSpecializationAxiom>();
       }
-      EList<TerminologyBoxStatement> _boxStatements = null;
-      if (_tbox!=null) {
-        _boxStatements=_tbox.getBoxStatements();
-      }
-      Iterable<TerminologyBoxStatement> _filterNull = null;
-      if (_boxStatements!=null) {
-        _filterNull=IterableExtensions.<TerminologyBoxStatement>filterNull(_boxStatements);
-      }
-      final Set<AspectSpecializationAxiom> set = IterableExtensions.<AspectSpecializationAxiom>toSet(Iterables.<AspectSpecializationAxiom>filter(_filterNull, AspectSpecializationAxiom.class));
-      boolean _isEmpty = set.isEmpty();
-      if (_isEmpty) {
-        return set;
-      }
-      final Function1<AspectSpecializationAxiom, Boolean> _function = (AspectSpecializationAxiom f) -> {
+      final Function1<TerminologyBox, EList<TerminologyBoxStatement>> _function = (TerminologyBox it) -> {
+        return it.getBoxStatements();
+      };
+      final Function1<AspectSpecializationAxiom, Boolean> _function_1 = (AspectSpecializationAxiom f) -> {
         Entity _subEntity = f.getSubEntity();
         return Boolean.valueOf(Objects.equal(_subEntity, e));
       };
-      _xblockexpression = IterableExtensions.<AspectSpecializationAxiom>toSet(IterableExtensions.<AspectSpecializationAxiom>filter(set, _function));
+      _xblockexpression = IterableExtensions.<AspectSpecializationAxiom>toSet(IterableExtensions.<AspectSpecializationAxiom>filter(Iterables.<AspectSpecializationAxiom>filter(IterableExtensions.<TerminologyBoxStatement>filterNull(Iterables.<TerminologyBoxStatement>concat(IterableExtensions.<TerminologyBox, EList<TerminologyBoxStatement>>map(OMLExtensions.allImportedTerminologies(e.getTbox()), _function))), AspectSpecializationAxiom.class), _function_1));
     }
     return _xblockexpression;
   }
@@ -256,28 +226,19 @@ public class AspectConceptClassDiagramService {
     Set<ConceptSpecializationAxiom> _xblockexpression = null;
     {
       final Entity c = this.getRootEntity(d);
-      TerminologyBox _tbox = null;
-      if (c!=null) {
-        _tbox=c.getTbox();
+      TerminologyBox _tbox = c.getTbox();
+      boolean _tripleEquals = (_tbox == null);
+      if (_tripleEquals) {
+        return new HashSet<ConceptSpecializationAxiom>();
       }
-      EList<TerminologyBoxStatement> _boxStatements = null;
-      if (_tbox!=null) {
-        _boxStatements=_tbox.getBoxStatements();
-      }
-      Iterable<TerminologyBoxStatement> _filterNull = null;
-      if (_boxStatements!=null) {
-        _filterNull=IterableExtensions.<TerminologyBoxStatement>filterNull(_boxStatements);
-      }
-      final Set<ConceptSpecializationAxiom> set = IterableExtensions.<ConceptSpecializationAxiom>toSet(Iterables.<ConceptSpecializationAxiom>filter(_filterNull, ConceptSpecializationAxiom.class));
-      boolean _isEmpty = set.isEmpty();
-      if (_isEmpty) {
-        return set;
-      }
-      final Function1<ConceptSpecializationAxiom, Boolean> _function = (ConceptSpecializationAxiom f) -> {
+      final Function1<TerminologyBox, EList<TerminologyBoxStatement>> _function = (TerminologyBox it) -> {
+        return it.getBoxStatements();
+      };
+      final Function1<ConceptSpecializationAxiom, Boolean> _function_1 = (ConceptSpecializationAxiom f) -> {
         Concept _subConcept = f.getSubConcept();
         return Boolean.valueOf(Objects.equal(_subConcept, c));
       };
-      _xblockexpression = IterableExtensions.<ConceptSpecializationAxiom>toSet(IterableExtensions.<ConceptSpecializationAxiom>filter(set, _function));
+      _xblockexpression = IterableExtensions.<ConceptSpecializationAxiom>toSet(IterableExtensions.<ConceptSpecializationAxiom>filter(Iterables.<ConceptSpecializationAxiom>filter(IterableExtensions.<TerminologyBoxStatement>filterNull(Iterables.<TerminologyBoxStatement>concat(IterableExtensions.<TerminologyBox, EList<TerminologyBoxStatement>>map(OMLExtensions.allImportedTerminologies(c.getTbox()), _function))), ConceptSpecializationAxiom.class), _function_1));
     }
     return _xblockexpression;
   }
@@ -293,28 +254,19 @@ public class AspectConceptClassDiagramService {
   public Set<EntityRestrictionAxiom> getVisualRestrictionAxioms(final Entity e) {
     Set<EntityRestrictionAxiom> _xblockexpression = null;
     {
-      TerminologyBox _tbox = null;
-      if (e!=null) {
-        _tbox=e.getTbox();
+      TerminologyBox _tbox = e.getTbox();
+      boolean _tripleEquals = (_tbox == null);
+      if (_tripleEquals) {
+        return new HashSet<EntityRestrictionAxiom>();
       }
-      EList<TerminologyBoxStatement> _boxStatements = null;
-      if (_tbox!=null) {
-        _boxStatements=_tbox.getBoxStatements();
-      }
-      Iterable<TerminologyBoxStatement> _filterNull = null;
-      if (_boxStatements!=null) {
-        _filterNull=IterableExtensions.<TerminologyBoxStatement>filterNull(_boxStatements);
-      }
-      final Set<EntityRestrictionAxiom> set = IterableExtensions.<EntityRestrictionAxiom>toSet(Iterables.<EntityRestrictionAxiom>filter(_filterNull, EntityRestrictionAxiom.class));
-      boolean _isEmpty = set.isEmpty();
-      if (_isEmpty) {
-        return set;
-      }
-      final Function1<EntityRestrictionAxiom, Boolean> _function = (EntityRestrictionAxiom f) -> {
+      final Function1<TerminologyBox, EList<TerminologyBoxStatement>> _function = (TerminologyBox it) -> {
+        return it.getBoxStatements();
+      };
+      final Function1<EntityRestrictionAxiom, Boolean> _function_1 = (EntityRestrictionAxiom f) -> {
         Entity _restrictedDomain = f.getRestrictedDomain();
         return Boolean.valueOf(Objects.equal(_restrictedDomain, e));
       };
-      _xblockexpression = IterableExtensions.<EntityRestrictionAxiom>toSet(IterableExtensions.<EntityRestrictionAxiom>filter(set, _function));
+      _xblockexpression = IterableExtensions.<EntityRestrictionAxiom>toSet(IterableExtensions.<EntityRestrictionAxiom>filter(Iterables.<EntityRestrictionAxiom>filter(IterableExtensions.<TerminologyBoxStatement>filterNull(Iterables.<TerminologyBoxStatement>concat(IterableExtensions.<TerminologyBox, EList<TerminologyBoxStatement>>map(OMLExtensions.allImportedTerminologies(e.getTbox()), _function))), EntityRestrictionAxiom.class), _function_1));
     }
     return _xblockexpression;
   }
