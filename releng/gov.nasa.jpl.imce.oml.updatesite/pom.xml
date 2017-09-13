@@ -1,133 +1,15 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project>
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>gov.nasa.jpl.imce.oml</groupId>
-	<artifactId>gov.nasa.jpl.imce.oml.updatesite</artifactId>
-	<version>0.8.0-SNAPSHOT</version>
-	<packaging>eclipse-repository</packaging>
-
-	<properties>
-		<maven-antrun-plugin.version>1.7</maven-antrun-plugin.version>
-		<bintray.owner>jpl-imce</bintray.owner>
-		<bintray.repo>gov.nasa.jpl.imce.oml</bintray.repo>
-		<bintray.package>gov.nasa.jpl.imce.oml.updatesite</bintray.package>
-		<bintray.releases.path>gov/nasa/jpl/imce/oml/gov.nasa.jpl.imce.oml.updatesite</bintray.releases.path>
-		<bintray.composite.path>gov/nasa/jpl/imce/oml/gov.nasa.jpl.imce.oml.updatesite</bintray.composite.path>
-		<site.label>OML Workbench Update Site</site.label>
-	</properties>
-	
-	<parent>
-		<groupId>gov.nasa.jpl.imce.oml</groupId>
-		<artifactId>gov.nasa.jpl.imce.oml.releng</artifactId>
-		<version>0.8.0-SNAPSHOT</version>
-	</parent>
-	
-	<profiles>
-		<!-- 
-	 	Copied from http://www.lorenzobettini.it/2016/02/publish-an-eclipse-p2-composite-repository-on-bintray/
-	 	-->
-		<profile>
-			<id>release-composite</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<build>
-				<plugins>
-					<plugin>
-						<artifactId>maven-antrun-plugin</artifactId>
-						<version>${maven-antrun-plugin.version}</version>
-						<executions>
-							<execution>
-								<!-- Retrieve possibly existing remote composite metadata -->
-								<id>update-local-repository</id>
-								<phase>prepare-package</phase>
-								<configuration>
-									<target>
-										<ant antfile="${basedir}/bintray.ant" target="get-composite-metadata">
-										</ant>
-									</target>
-								</configuration>
-								<goals>
-									<goal>run</goal>
-								</goals>
-							</execution>
-							
-							<execution>
-								<!-- Deploy p2 repository, p2 composite updated metadata and zipped p2 repository -->
-								<id>deploy-repository</id>
-								<phase>verify</phase>
-								<configuration>
-									<target>
-										<ant antfile="${basedir}/bintray.ant" target="push-to-bintray">
-										</ant>
-									</target>
-								</configuration>
-								<goals>
-									<goal>run</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-
-					<plugin>
-						<groupId>org.eclipse.tycho.extras</groupId>
-						<artifactId>tycho-eclipserun-plugin</artifactId>
-						<version>${tycho.version}</version>
-						<configuration>
-							<!-- Update p2 composite metadata or create it -->
-							<!-- IMPORTANT: DO NOT split the arg line -->
-							<appArgLine>-application org.eclipse.ant.core.antRunner -buildfile packaging-p2composite.ant p2.composite.add -Dsite.label="${site.label}" -Dproject.build.directory=${project.build.directory} -DunqualifiedVersion=${unqualifiedVersion} -DbuildQualifier=${buildQualifier} -Dchild.repository.path.prefix="${child.repository.path.prefix}"</appArgLine>
-							<repositories>
-								<repository>
-									<id>neon</id>
-									<layout>p2</layout>
-									<url>http://download.eclipse.org/releases/neon</url>
-								</repository>
-								<repository>
-									<id>xtext</id>
-									<layout>p2</layout>
-									<url>http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/</url>
-								</repository>
-							</repositories>
-							<dependencies>
-								<dependency>
-									<artifactId>org.eclipse.ant.core</artifactId>
-									<type>eclipse-plugin</type>
-								</dependency>
-								<dependency>
-									<artifactId>org.apache.ant</artifactId>
-									<type>eclipse-plugin</type>
-								</dependency>
-								<dependency>
-									<artifactId>org.eclipse.equinox.p2.repository.tools</artifactId>
-									<type>eclipse-plugin</type>
-								</dependency>
-								<dependency>
-									<artifactId>org.eclipse.equinox.p2.core.feature</artifactId>
-									<type>eclipse-feature</type>
-								</dependency>
-								<dependency>
-									<artifactId>org.eclipse.equinox.p2.extras.feature</artifactId>
-									<type>eclipse-feature</type>
-								</dependency>
-								<dependency>
-									<artifactId>org.eclipse.equinox.ds</artifactId>
-									<type>eclipse-plugin</type>
-								</dependency>
-							</dependencies>
-						</configuration>
-						<executions>
-							<execution>
-								<id>add-p2-composite-repository</id>
-								<phase>package</phase>
-								<goals>
-									<goal>eclipse-run</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>gov.nasa.jpl.imce.oml</groupId>
+    <artifactId>gov.nasa.jpl.imce.oml.tycho</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <relativePath>../../</relativePath>
+  </parent>
+  <groupId>gov.nasa.jpl.imce.oml</groupId>
+  <artifactId>gov.nasa.jpl.imce.oml.updatesite</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>eclipse-repository</packaging>
 </project>

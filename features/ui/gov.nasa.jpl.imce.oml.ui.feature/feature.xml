@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="gov.nasa.jpl.imce.oml.ui.feature"
+      label="%featureName"
+      version="0.8.0.qualifier"
+      provider-name="%featureProvider">
+
+   <description url="https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/tree/master/features/ui/gov.nasa.jpl.imce.oml.ui.feature/README.md">
+      Eclipse UI features for the Ontological Modeling Language
+   </description>
+
+   <copyright>
+      Copyright 2016 California Institute of Technology (&quot;Caltech&quot;).
+U.S. Government sponsorship acknowledged.
+Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+or implied.
+See the License for the specific language governing permissions
+and
+limitations under the License.
+License Terms
+   </copyright>
+
+   <license url="http://www.apache.org/licenses/LICENSE-2.0.html">
+      Copyright 2016 California Institute of Technology (&quot;Caltech&quot;).
+U.S. Government sponsorship acknowledged.
+
+Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+License Terms
+   </license>
+
+   <requires>
+      <import feature="gov.nasa.jpl.imce.oml.core.feature" version="0.8.0.qualifier"/>
+      <import plugin="org.apache.log4j" version="1.2.15" match="compatible"/>
+      <import plugin="org.eclipse.xtext.ui" version="2.11.0" match="compatible"/>
+      <import plugin="org.eclipse.xtext.ui.codetemplates.ui" version="2.11.0" match="compatible"/>
+      <import plugin="org.eclipse.xtext.ui.shared" version="2.11.0" match="compatible"/>
+      <import plugin="org.eclipse.xtext.builder" version="2.11.0" match="compatible"/>
+      <import plugin="org.eclipse.ui.editors" version="3.10.1" match="compatible"/>
+      <import plugin="org.eclipse.ui.ide" version="3.12.3" match="compatible"/>
+      <import plugin="org.eclipse.ui" version="3.108.1" match="compatible"/>
+      <import plugin="org.eclipse.emf.edit.ui" version="2.12.0" match="compatible"/>
+      <import plugin="org.eclipse.emf.edit" version="2.12.0" match="compatible"/>
+      <import plugin="org.eclipse.compare" version="3.7.1" match="compatible"/>
+      <import plugin="org.eclipse.xtend.lib" version="2.11.0" match="compatible"/>
+      <import plugin="org.eclipse.xtext.xbase.lib" version="2.11.0" match="compatible"/>
+      <import plugin="org.eclipse.emf.codegen.ecore.ui" version="2.12.0" match="compatible"/>
+      <import plugin="org.eclipse.emf.ecore.xcore.ui" version="1.4.0" match="compatible"/>
+      <import plugin="gov.nasa.jpl.imce.oml.model"/>
+      <import plugin="gov.nasa.jpl.imce.oml.dsl"/>
+      <import plugin="gov.nasa.jpl.imce.oml.dsl.ide"/>
+      <import plugin="org.eclipse.core.runtime" version="3.12.0" match="compatible"/>
+      <import plugin="org.eclipse.core.resources" version="3.11.1" match="compatible"/>
+   </requires>
+
+   <plugin
+         id="gov.nasa.jpl.imce.oml.dsl.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>
