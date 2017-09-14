@@ -61,9 +61,11 @@ class AspectConceptClassDiagramService {
 	}
 
      /*
-	 * Gets all {@link EntityRelationship}s within the {@link TeminologyBox} 
-	 * which have as its relationDomain the root {@link Entity} associated 
-	 * with the passed {@link DDiagram} 
+	 * Gets all {@link EntityRelationship}s whose relation domain 
+	 * is the root {@link Entity} associated 
+	 * with the passed {@link DDiagram} and that are found
+	 * in the transitive closure of imports from the {@link TeminologyBox} associated 
+	 * with the passed {@link DDiagram}.
 	 * 
 	 * @param d The Diagram
 	 * @return Set of {@link ReifiedRelationship}s
@@ -84,9 +86,11 @@ class AspectConceptClassDiagramService {
 	}
 	
 	/*
-	 * Gets all {@link EntityRelationship}s within the {@link TeminologyBox} 
-	 * which have as its relation range the root {@link Entity} associated 
-	 * with the passed {@link DDiagram} 
+	 * Gets all {@link EntityRelationship}s whose relation range 
+	 * is the root {@link Entity} associated 
+	 * with the passed {@link DDiagram} and that are found
+	 * in the transitive closure of imports from the {@link TeminologyBox} associated 
+	 * with the passed {@link DDiagram}.
 	 * 
 	 * @param d The Diagram
 	 * @return Set of {@link ReifiedRelationship}s
@@ -107,9 +111,11 @@ class AspectConceptClassDiagramService {
 	}	
 
 	/*
-	 * Gets all {@link Entity}s in this {@link TerminologyBox} that are directly connected 
+	 * Gets all {@link Entity}s that are directly connected 
 	 * (relationship/axiom) to the root {@link Entity} associated 
-	 * with the passed {@link DDiagram} 
+	 * with the passed {@link DDiagram} and that are found
+	 * in the transitive closure of imports from the {@link TeminologyBox} associated 
+	 * with the passed {@link DDiagram}.
 	 * 
 	 *  @param d The Diagram
 	 *  @return Set of {@link Entity}s
@@ -125,34 +131,39 @@ class AspectConceptClassDiagramService {
         .flatten
         .filterNull
 		.forEach[t | 
-			 if(t instanceof SpecializationAxiom){
-				val n = (t as SpecializationAxiom).child
-				if(n == e){
-					entities.add((t as SpecializationAxiom).parent)
-				}
-		    } else if(t instanceof EntityRestrictionAxiom){
-				val n = (t as EntityRestrictionAxiom).restrictedDomain
-				if(n == e){
-					entities.add((t as EntityRestrictionAxiom).restrictedRange)
-				}
-			} else if(t instanceof EntityRelationship){
-				val n1 = (t as EntityRelationship).source
-				val n2 = (t as EntityRelationship).target
-				if(n1 == e){
-					entities.add(n2)
-				} else if(n2 == e){
-					entities.add(n1)
-				}
-		   }								
+			switch t{
+				SpecializationAxiom: {
+					val n = t.child
+					if(n == e){
+					entities.add(t.parent)
+					}
+			    }
+			    EntityRestrictionAxiom:{
+			    	val n = t.restrictedDomain
+				    if(n == e){
+					entities.add(t.restrictedRange)
+				    }
+			    }
+			    EntityRelationship:{
+			    	val n1 = (t as EntityRelationship).source
+				    val n2 = (t as EntityRelationship).target
+				    if(n1 == e){
+				    	entities.add(n2)
+				    } else if(n2 == e){
+					    entities.add(n1)
+				    }
+			    }
+			}					
 		]
 		entities.add(e)
 		entities		
 	}
 	
 	/*
-	 * Gets all {@link AspectSpcializationAxiom}s in this {@link TerminologyBox}
-	 * that have to the root {@link Entity} associated 
-	 * with the passed {@link DDiagram} as its sub-Entity
+	 * Gets all {@link AspectSpcializationAxiom}s that have to the root {@link Entity} associated 
+	 * with the passed {@link DDiagram} as its sub-Entity and that are found
+	 * in the transitive closure of imports from the {@link TeminologyBox} associated 
+	 * with the passed {@link DDiagram}.
 	 * 
 	 * @param d The diagram
 	 * @return Set of {@link AspectSpecializationAxiom}s
@@ -172,9 +183,11 @@ class AspectConceptClassDiagramService {
 	 }
 	
 	/*
-	 * Gets all {@link ConceptSpcializationAxiom}s in this {@link TerminologyBox}
+	 * Gets all {@link ConceptSpcializationAxiom}s
 	 * that have to the root {@link Entity} associated with the passed 
-	 * {@link DDiagram} as its sub-Concept
+	 * {@link DDiagram} as its sub-Concept and that are found
+	 * in the transitive closure of imports from the {@link TeminologyBox} associated 
+	 * with the passed {@link DDiagram}.
 	 * 
 	 * @paramd The Diagram
 	 * @return Set of {@link ConceptSpecializationAxiom}s
@@ -194,9 +207,11 @@ class AspectConceptClassDiagramService {
 	 }
 	 
 	 /*
-	  * Gets all {@link EntityRestrictionAxiom}s in this {@link TerminologyBox}
-	 * that have to the root {@link Entity} associated with the passed 
-	 * {@link DDiagram} as its restricted Domain
+	  * Gets all {@link EntityRestrictionAxiom}s 
+	  * that have to the root {@link Entity} associated with the passed 
+	  * {@link DDiagram} as its restricted Domain and that are found
+	  * in the transitive closure of imports from the {@link TeminologyBox} associated 
+	  * with the passed {@link DDiagram}.
 	  * 
 	  * @param The root Entity
 	  * @return Set of {@link EntityRestrictionAxiom}s

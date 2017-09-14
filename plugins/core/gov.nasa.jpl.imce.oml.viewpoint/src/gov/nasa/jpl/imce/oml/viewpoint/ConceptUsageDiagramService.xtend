@@ -79,10 +79,10 @@ class ConceptUsageDiagramService {
 	 * @return Set of {@link ReifiedRelationship}s
 	 */
 	def Set<EntityRelationship> getDirectVisualRelationshipsWithRootAsDomain(Concept c){
-		return getUsageReltionships(c).
-		filter(EntityRelationship).
-		filter[f | f.source == c].
-		toSet
+		return getUsageReltionships(c)
+		.filter(EntityRelationship)
+		.filter[f | f.source == c]
+		.toSet
 	}
 	
 	/*
@@ -93,10 +93,10 @@ class ConceptUsageDiagramService {
 	 * @return Set of {@link ReifiedRelationship}s
 	 */
 	def Set<ReifiedRelationship> getDirectVisualRelationshipsWithRootAsRange(Concept c){
-		return getUsageReltionships(c).
-		filter(ReifiedRelationship).
-		filter[f | (f.target == c) && (f instanceof Concept)].
-		toSet
+		return getUsageReltionships(c)
+		.filter(ReifiedRelationship)
+		.filter[f | (f.target == c) && (f instanceof Concept)]
+		.toSet
 	}	
 	
 	/*
@@ -108,16 +108,18 @@ class ConceptUsageDiagramService {
 	 */
 	def Set<ReifiedRelationship> getDirectVisualRelationshipsWithAspectAsDomain(DDiagram d){
 		val c = getRootConcept(d)
-		return getUsageReltionships(c).
-		filter(ReifiedRelationship).
-		filter[f | (f.target == c) && (f.source instanceof Aspect)].
-		toSet
+		return getUsageReltionships(c)
+		.filter(ReifiedRelationship)
+		.filter[f | (f.target == c) && (f.source instanceof Aspect)]
+		.toSet
 	}
 	
 	/*
 	 * Gets equivalent {@link Concept} for the given
 	 * {@link ReifiedRelationship} which has an {@link Aspect}
-	 * as its domain
+	 * as its domain that are found in the transitive closure 
+	 * of imports from the {@link TeminologyBox} associated 
+	   with the passed {@link ReifiedRelationship}
 	 * 
 	 * @param rel The {@link ReifiedRelationship}
 	 * @return Set of {@link Concept}s
@@ -133,11 +135,11 @@ class ConceptUsageDiagramService {
         .map[boxStatements]
         .flatten
         .filterNull
-		.filter(AspectSpecializationAxiom).
-		filter[f | 
+		.filter(AspectSpecializationAxiom)
+		.filter[f | 
 			(f.superAspect == aspect) && (f.subEntity instanceof Concept) 
-		].
-		forEach[ax |
+		]
+		.forEach[ax |
 			newRootConcepts.add(ax.subEntity as Concept)
 		]
 		
@@ -154,10 +156,10 @@ class ConceptUsageDiagramService {
 	def Set<ReifiedRelationship> getIndirectRelationshipsWithRootAsSource(Concept c){
 		val relationships = new HashSet<ReifiedRelationship>
 		
-        getUsageReltionships(c).
-		filter(ReifiedRelationship).
-		filter[f | f.source instanceof Aspect].
-		forEach[t | 
+        getUsageReltionships(c)
+		.filter(ReifiedRelationship)
+		.filter[f | f.source instanceof Aspect]
+		.forEach[t | 
 			relationships.add(t as ReifiedRelationship)
 		]
 		
@@ -174,10 +176,10 @@ class ConceptUsageDiagramService {
 	def Set<ReifiedRelationship> getIndirectRelationshipsWithRootAsTarget(Concept c){
 	    val relationships = new HashSet<ReifiedRelationship>
 		
-        getUsageReltionships(c).
-		filter(ReifiedRelationship).
-		filter[f | f.target instanceof Aspect].
-		forEach[t | 
+        getUsageReltionships(c)
+		.filter(ReifiedRelationship)
+		.filter[f | f.target instanceof Aspect]
+		.forEach[t | 
 			relationships.add(t as ReifiedRelationship)
 		]
 		
@@ -192,10 +194,10 @@ class ConceptUsageDiagramService {
 	 * @return Set of {@link EntityUniversalRestrictionAxioms}s
 	 */
 	def Set<EntityUniversalRestrictionAxiom> getUniversalAxiomWithRootAsSource(Concept c){
-		return getUsageReltionships(c).
-		filter(EntityUniversalRestrictionAxiom).
-		filter[f | f.restrictedDomain == c].
-		toSet
+		return getUsageReltionships(c)
+		.filter(EntityUniversalRestrictionAxiom)
+		.filter[f | f.restrictedDomain == c]
+		.toSet
 	}
 
 	/*
@@ -206,10 +208,10 @@ class ConceptUsageDiagramService {
 	 * @return Set of {@link EntityUniversalRestrictionAxioms}s
 	 */
 	def Set<EntityUniversalRestrictionAxiom> getUniversalAxiomWithRootAsTarget(Concept c){
-		return getUsageReltionships(c).
-		filter(EntityUniversalRestrictionAxiom).
-		filter[f | f.restrictedRange == c].
-		toSet
+		return getUsageReltionships(c)
+		.filter(EntityUniversalRestrictionAxiom)
+		.filter[f | f.restrictedRange == c]
+		.toSet
 	}	
 	
 	/*
@@ -220,10 +222,10 @@ class ConceptUsageDiagramService {
 	 * @return Set of {@link EntityExistentialRestrictionAxioms}s
 	 */
 	def Set<EntityExistentialRestrictionAxiom> getExistentialAxiomWithRootAsSource(Concept c){
-		return getUsageReltionships(c).
-		filter(EntityExistentialRestrictionAxiom).
-		filter[f | f.restrictedDomain == c].
-		toSet
+		return getUsageReltionships(c)
+		.filter(EntityExistentialRestrictionAxiom)
+		.filter[f | f.restrictedDomain == c]
+		.toSet
 	}
 	
 	/*
@@ -234,10 +236,10 @@ class ConceptUsageDiagramService {
 	 * @return Set of {@link EntityExistentialRestrictionAxioms}s
 	 */
 	def Set<EntityExistentialRestrictionAxiom> getExistentialAxiomWithRootAsTarget(Concept c){
-		return getUsageReltionships(c).
-		filter(EntityExistentialRestrictionAxiom).
-		filter[f | f.restrictedRange == c].
-		toSet
+		return getUsageReltionships(c)
+		.filter(EntityExistentialRestrictionAxiom)
+		.filter[f | f.restrictedRange == c]
+		.toSet
 	}	
 	
 	/*
@@ -264,26 +266,30 @@ class ConceptUsageDiagramService {
 			val entity = e.key
 			val relOrAx = e.value			
 			visited.add(entity)
-			if(relOrAx instanceof EntityRelationship){
-				if(entity instanceof Concept){
-					// Concept is connected
-				    concepts.add(entity as Concept)
-				}
-				else if(entity instanceof Aspect){
-					// Add 'Concepts' connected to this Aspect
-					graph.get(entity).forEach[t |
-						val node = t.key
-						if((node instanceof Concept) && (t.value instanceof SpecializationAxiom)){
-							concepts.add(node as Concept)
-							visited.add(node)
-						}
-					]
-				}
-				
-			} else {
-				// Put axiom nodes on queue
-				// Put Aspects on queue to travel
-				queue.add(entity)
+			switch relOrAx{
+			    EntityRelationship:{
+				    switch entity{
+				        Concept:{
+					        // Concept is connected
+				            concepts.add(entity)
+				        }
+				        Aspect:{
+					        // Add 'Concepts' connected to this Aspect
+					        graph.get(entity).forEach[t |
+  						        val node = t.key
+						        if((node instanceof Concept) && (t.value instanceof SpecializationAxiom)){
+							        concepts.add(node as Concept)
+							        visited.add(node)
+						        }
+					        ]
+				        }
+				    } 
+			    }
+			    default: {
+				    // Put axiom nodes on queue
+ 				    // Put Aspects on queue to travel
+				    queue.add(entity)
+			    }
 			}			
 		]
 		visited.add(c)		
@@ -298,7 +304,10 @@ class ConceptUsageDiagramService {
 				// node <relOrAx> n
 				val n = e.key
 				val relOrAx = e.value
-				if((relOrAx instanceof EntityRelationship) && (n instanceof Concept)){
+				val isRelOrAxAnEntityRelationship = relOrAx instanceof EntityRelationship
+				val isN_AConcept = n instanceof Concept
+				
+				if(isRelOrAxAnEntityRelationship && isN_AConcept){
 					    concepts.add(n as Concept)
 					    visited.add(n)
 					    // No need to go further. 
@@ -309,7 +318,7 @@ class ConceptUsageDiagramService {
 			    		// Already found connection
 			    		visited.add(n)
 			    	}
-			    	else if(!(relOrAx instanceof EntityRelationship) && (n instanceof Concept)){
+			    	else if(!isRelOrAxAnEntityRelationship && isN_AConcept){
 			    		// Axiom to Concept
 					    visited.add(n)
 			        } else {
@@ -352,28 +361,32 @@ class ConceptUsageDiagramService {
 			val entity = e.key
 			val relOrAx = e.value			
 			visited.add(entity)
-			if(relOrAx instanceof EntityRelationship){
-				if(entity instanceof Concept){
-					// Concept is connected
-				    relationships.add(relOrAx)
-				}
-				else if(entity instanceof Aspect){
-					// Add 'Concepts' connected to this Aspect
-					graph.get(entity).forEach[t |
-						// t <edge> node
-						val node = t.key
-						if(node instanceof Concept){
-							relationships.add(relOrAx)
-							visited.add(node)
-						}
-					]
-				}
-				
-			} else {
-				// Put axiom nodes on queue
-				// Put Aspects on queue to travel
-				queue.add(entity)
-			}			
+			switch relOrAx{
+			    EntityRelationship:{
+			    	switch entity{
+				        Concept:{
+					        // Concept is connected
+				            relationships.add(relOrAx)
+				        }
+				        Aspect:{
+					        // Add 'Concepts' connected to this Aspect
+					        graph.get(entity).forEach[t |
+ 						        // t <edge> node
+						        val node = t.key
+						        if(node instanceof Concept){
+							        relationships.add(relOrAx)
+							        visited.add(node)
+						        }
+					        ]
+				        }
+				    }
+			    }
+			    default: {
+				    // Put axiom nodes on queue
+   				    // Put Aspects on queue to travel
+				    queue.add(entity)
+			    }	
+			}		
 		]
 		visited.add(c)		
 		
@@ -387,7 +400,10 @@ class ConceptUsageDiagramService {
 				// node <relOrAx> n
 				val n = e.key
 				val relOrAx = e.value
-				if(((relOrAx instanceof EntityRelationship) || (relOrAx instanceof EntityRestrictionAxiom)) && 
+				val isEntityRelationship = relOrAx instanceof EntityRelationship
+				val isEntityRestrictionAxiom = relOrAx instanceof EntityRestrictionAxiom
+				
+				if((isEntityRelationship || isEntityRestrictionAxiom) && 
 					(n instanceof Concept)
 				){
 					    relationships.add(relOrAx)
@@ -400,7 +416,7 @@ class ConceptUsageDiagramService {
 			    		// Already found connection
 			    		visited.add(n)
 			    	}
-			    	else if(!((relOrAx instanceof EntityRelationship) || (relOrAx instanceof EntityRestrictionAxiom)) && 
+			    	else if(!(isEntityRelationship || isEntityRestrictionAxiom) && 
 			    		(n instanceof Concept)){
 			    		// Axiom to Concept
 					    visited.add(n)
@@ -463,18 +479,22 @@ class ConceptUsageDiagramService {
 	}
 	
 	private def Entry<Entity, Entity> getSourceAndTarget(TerminologyBoxStatement t){
-		if(t instanceof EntityRestrictionAxiom){
-				val n1 = (t as EntityRestrictionAxiom).restrictedRange
-				val n2 = (t as EntityRestrictionAxiom).restrictedDomain
+		switch t {
+			EntityRestrictionAxiom:{
+				val n1 = t.restrictedRange
+				val n2 = t.restrictedDomain
 				return new SimpleEntry(n1,n2)
-		} else if(t instanceof SpecializationAxiom){
-				val n1 = (t as SpecializationAxiom).child
-				val n2 = (t as SpecializationAxiom).parent
+		    } 
+		    SpecializationAxiom:{
+				val n1 = t.child
+				val n2 = t.parent
 				return new SimpleEntry(n1,n2)
-		} else if(t instanceof EntityRelationship){
-				val n1 = (t as EntityRelationship).source
-				val n2 = (t as EntityRelationship).target
+		    } 
+		    EntityRelationship:{
+				val n1 = t.source
+				val n2 = t.target
 				return new SimpleEntry(n1,n2)
+		    }
 		}
 		null
 	}

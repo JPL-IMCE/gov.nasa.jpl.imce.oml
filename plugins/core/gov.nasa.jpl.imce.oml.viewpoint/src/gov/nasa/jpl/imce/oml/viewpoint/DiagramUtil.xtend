@@ -29,14 +29,6 @@ class DiagramUtil {
 	    .filter(EntityStructuredDataProperty)
 	    .filter[f | f.relationDomain == e]
 	    .toSet
-	  
-//	    val set = e.tbox.boxStatements.
-//	    filter(EntityStructuredDataProperty).toSet
-//	    
-//	    if(set.isEmpty) return set;
-//	    
-//	    set.filter[f | f.relationDomain == e].
-//	    toSet
 	}
 	
 	/*
@@ -57,14 +49,5 @@ class DiagramUtil {
 	    .filter(EntityScalarDataProperty)
 	    .filter[f | f.relationDomain == e]
 	    .toSet
-
-//        val set = e?.tbox?.boxStatements	  
-//	    .filter(EntityScalarDataProperty)
-//	    .toSet
-//	    
-//	    if(set.isEmpty) return set;
-//	    
-//	    set.filter[f | f.relationDomain == e].
-//	    toSet
 	}
 }

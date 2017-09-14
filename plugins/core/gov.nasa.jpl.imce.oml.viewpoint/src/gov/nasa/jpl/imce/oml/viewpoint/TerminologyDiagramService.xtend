@@ -57,53 +57,66 @@ class TerminologyDiagramService {
 		val entities  = new LinkedHashSet<Entity>()
 		
 		for(statement : tg?.boxStatements){
-			if (statement instanceof Entity){
-				entities.add(statement as Entity)
-			}
-			if(statement instanceof SpecializationAxiom){
-				val temp = statement as SpecializationAxiom
-				entities.add(temp.child)
-				entities.add(temp.parent)
-			}
+			switch statement{
+			    Entity:{
+				    entities.add(statement)
+			    }
+			    SpecializationAxiom:{
+				    entities.add(statement.child)
+				    entities.add(statement.parent)
+			    }
+		    }
 		}
-		
 		entities
 	}		
 	
 	/*
 	 * Returns a set of {@link ScalarDataProperty}s that have the passed
-	 * {@link Structure} as its domain
+	 * {@link Structure} as its domain that are found
+	 * in the transitive closure of imports from the {@link TeminologyBox} associated 
+	 * with the passed {@link Structure}.
+	 
 	 * 
 	 * @param The Structure
 	 * @return Set of {@link ScalarDataProperty}
 	 */
 	def Set<ScalarDataProperty> getContainedScalarDataProperties(Structure c){
-	    val set = c?.tbox?.boxStatements?.
-	    filter(ScalarDataProperty).
-	    toSet
+	    val set = c
+	    ?.tbox
+	    ?.boxStatements
+	    ?.filter(ScalarDataProperty)
+	    ?.toSet
 	    
 	    if(set.isEmpty) return set;
 	    
-	    set.filterNull.filter[f | f.domain == c].
-	    toSet
+	    set
+	    .filterNull
+	    .filter[f | f.domain == c]
+	    .toSet
 	}	
 	
 	/*
 	 * Returns a set of {@link StructuredDataProperty}s that have the passed
-	 * {@link Structure} as its domain
+	 * {@link Structure} as its domain that are found
+	 * in the transitive closure of imports from the {@link TeminologyBox} associated 
+	 * with the passed {@link Structure}.
 	 * 
 	 * @param The Structure
 	 * @return Set of {@link StucturedDataProperty}
 	 */
 	def Set<StructuredDataProperty> getContainedStructuredDataProperties(Structure c){
-	    val set = c?.tbox?.boxStatements?.
-	    filter(StructuredDataProperty).
-	    toSet
+	    val set = c
+	    ?.tbox
+	    ?.boxStatements
+	    ?.filter(StructuredDataProperty)
+	    ?.toSet
 	    
 	    if(set.isEmpty) return set;
 	    
-	    set.filterNull.filter[f | f.domain == c].
-	    toSet
+	    set
+	    .filterNull
+	    .filter[f | f.domain == c]
+	    .toSet
 	}
 	
 	/*
@@ -114,9 +127,11 @@ class TerminologyDiagramService {
 	 * @return Set of {@link StringScalarRestriction}
 	 */
 	def Set<StringScalarRestriction> getContainedStringScalarRestrictions(TerminologyGraph c){
-	    return c?.boxStatements?.
-	    filterNull.filter(StringScalarRestriction).
-	    toSet
+	    return c
+	    .boxStatements
+	    .filterNull
+	    .filter(StringScalarRestriction)
+	    .toSet
 	}	
 	
 	/*
@@ -127,9 +142,11 @@ class TerminologyDiagramService {
 	 * @return Set of {@link NumericScalarRestriction}
 	 */
 	def Set<NumericScalarRestriction> getContainedNumericScalarRestrictions(TerminologyGraph c){
-	    return c?.boxStatements?.
-	    filterNull.filter(NumericScalarRestriction).
-	    toSet
+	    return c
+	    .boxStatements
+	    .filterNull
+	    .filter(NumericScalarRestriction)
+	    .toSet
 	}
 	
 	/*
@@ -140,9 +157,11 @@ class TerminologyDiagramService {
 	 * @return Set of {@link NumericScalarRestriction}
 	 */
 	def Set<BinaryScalarRestriction> getContainedBinaryScalarRestrictions(TerminologyGraph c){
-	    return c?.boxStatements?.
-	    filterNull.filter(BinaryScalarRestriction).
-	    toSet
+	    return c
+	    .boxStatements
+	    .filterNull
+	    .filter(BinaryScalarRestriction)
+	    .toSet
 	}
 	
 	/*
@@ -153,9 +172,11 @@ class TerminologyDiagramService {
 	 * @return Set of {@link IRIScalarRestriction}
 	 */
 	def Set<IRIScalarRestriction> getContainedIRIScalarRestrictions(TerminologyGraph c){
-	    return c?.boxStatements?.
-	    filterNull.filter(IRIScalarRestriction).
-	    toSet
+	    return c
+	    .boxStatements
+	    .filterNull
+	    .filter(IRIScalarRestriction)
+	    .toSet
 	}
 	
 	/*
@@ -166,9 +187,11 @@ class TerminologyDiagramService {
 	 * @return Set of {@link PlainLiteralScalarRestriction}
 	 */
 	def Set<PlainLiteralScalarRestriction> getContainedPlainLiteralScalarRestrictions(TerminologyGraph c){
-	    return c?.boxStatements?.
-	    filterNull.filter(PlainLiteralScalarRestriction).
-	    toSet
+	    return c
+	    .boxStatements
+	    .filterNull
+	    .filter(PlainLiteralScalarRestriction)
+	    .toSet
 	}
 	
 	
@@ -180,9 +203,11 @@ class TerminologyDiagramService {
 	 * @return Set of {@link TimeScalarRestriction}
 	 */
 	def Set<TimeScalarRestriction> getContainedTimeScalarRestrictions(TerminologyGraph c){
-	    return c?.boxStatements?.
-	    filterNull.filter(TimeScalarRestriction).
-	    toSet
+	    return c
+	    .boxStatements
+	    .filterNull
+	    .filter(TimeScalarRestriction)
+	    .toSet
 	}
 	
 	/*
@@ -193,9 +218,11 @@ class TerminologyDiagramService {
 	 * @return Set of {@link SynonymScalarRestriction}
 	 */
 	def Set<SynonymScalarRestriction> getContainedSynonymScalarRestrictions(TerminologyGraph c){
-	    return c?.boxStatements?.
-	    filterNull.filter(SynonymScalarRestriction).
-	    toSet
+	    return c
+	    .boxStatements
+	    .filterNull
+	    .filter(SynonymScalarRestriction)
+	    .toSet
 	}
 	
 	/*
@@ -206,9 +233,11 @@ class TerminologyDiagramService {
 	 * @return Set of {@link ScalarOneOfRestriction}
 	 */
 	def Set<ScalarOneOfRestriction> getContainedScalarOneOfRestrictions(TerminologyGraph c){
-	    return c?.boxStatements?.
-	    filterNull.filter(ScalarOneOfRestriction).
-	    toSet
+	    return c
+	    .boxStatements
+	    .filterNull
+	    .filter(ScalarOneOfRestriction)
+	    .toSet
 	}
 	
 	/*
@@ -231,32 +260,24 @@ class TerminologyDiagramService {
 		var label = new StringBuilder
 		label.append(r.name())
 		
-		if(r instanceof StringScalarRestriction){
-			label.append("\npattern: " + (r as StringScalarRestriction).pattern)
+		switch r {
+			StringScalarRestriction:{
+				label.append("\npattern: " + r.pattern)	
+			}
+			IRIScalarRestriction: {
+				label.append("\npattern: " + r.pattern)	
+			}
+			PlainLiteralScalarRestriction:{
+				label.append("\npattern: " + r.pattern)
+			    label.append("\nlangRange: " + r.langRange)
+			}
+			NumericScalarRestriction:{
+				if(r.minInclusive !== null) label.append("\n\nminInclusive: " + r.minInclusive)
+			    if(r.maxInclusive !== null) label.append("\nmaxInclusive: " + r.maxInclusive) 
+			    if(r.minExclusive !== null) label.append("\nminExclusive: " + r.minExclusive) 
+		        if(r.maxExclusive !== null) label.append("\nmaxExclusive: " + r.maxExclusive)	
+			}
 		}
-		if(r instanceof IRIScalarRestriction){
-			label.append("\npattern: " + (r as IRIScalarRestriction).pattern)
-		}
-		if(r instanceof PlainLiteralScalarRestriction){
-			label.append("\npattern: " + (r as PlainLiteralScalarRestriction).pattern)
-			label.append("\nlangRange: " + (r as PlainLiteralScalarRestriction).langRange)
-		}
-		if(r instanceof NumericScalarRestriction){
-			if((r as NumericScalarRestriction).minInclusive !== null) label.append("\n\nminInclusive: " + (r as NumericScalarRestriction).minInclusive)
-			if((r as NumericScalarRestriction).maxInclusive !== null) label.append("\nmaxInclusive: " + (r as NumericScalarRestriction).maxInclusive) 
-			if((r as NumericScalarRestriction).minExclusive !== null) label.append("\nminExclusive: " + (r as NumericScalarRestriction).minExclusive) 
-		    if((r as NumericScalarRestriction).maxExclusive !== null) label.append("\nmaxExclusive: " + (r as NumericScalarRestriction).maxExclusive)
-		}
-		if(r instanceof BinaryScalarRestriction){
-			label.append( "\n\nnmaxLength: " + (r as BinaryScalarRestriction).minLength + "\nmaxLength: " + (r as BinaryScalarRestriction).maxLength)
-		}
-		if(r instanceof TimeScalarRestriction){
-			if((r as TimeScalarRestriction).minInclusive !== null) label.append("\n\nminInclusive: " + (r as TimeScalarRestriction).minInclusive)
-			if((r as TimeScalarRestriction).maxInclusive !== null) label.append("\nmaxInclusive: " + (r as TimeScalarRestriction).maxInclusive) 
-			if((r as TimeScalarRestriction).minExclusive !== null) label.append("\nminExclusive: " + (r as TimeScalarRestriction).minExclusive) 
-		    if((r as TimeScalarRestriction).maxExclusive !== null) label.append("\nmaxExclusive: " + (r as TimeScalarRestriction).maxExclusive)
-		}
-		
 		label.toString
 	}
 	
