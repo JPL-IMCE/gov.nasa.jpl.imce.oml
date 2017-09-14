@@ -13,6 +13,8 @@ The [OML Workbench](releng/gov.nasa.jpl.imce.oml.product/README.md) is an Eclips
 
 ## OML Development Process notes
 
+- Make sure the Eclipse/Workspace "Text file encoding" is set to UTF-8
+
 - Publish a new version:
 
 	Execute `./scripts/publishProcess.sh`.
