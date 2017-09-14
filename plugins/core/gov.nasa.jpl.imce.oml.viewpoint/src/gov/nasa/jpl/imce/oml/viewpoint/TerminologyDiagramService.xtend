@@ -36,6 +36,7 @@ import gov.nasa.jpl.imce.oml.model.terminologies.SynonymScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.TimeScalarRestriction
 import java.util.LinkedHashSet
 import java.util.Set
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship
 
 /*
  * Used to query for visual elements in the "Terminology Diagram"
@@ -58,12 +59,17 @@ class TerminologyDiagramService {
 		
 		for(statement : tg?.boxStatements){
 			switch statement{
-			    Entity:{
-				    entities.add(statement)
-			    }
+				EntityRelationship:{
+					entities.add(statement.source)
+					entities.add(statement.target)
+				}
+			   
 			    SpecializationAxiom:{
 				    entities.add(statement.child)
 				    entities.add(statement.parent)
+			    } 
+			    Entity:{
+				    entities.add(statement)
 			    }
 		    }
 		}
