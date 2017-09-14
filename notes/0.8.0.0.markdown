@@ -77,4 +77,7 @@ gov.nasa.jpl.imce.oml.tycho 0.8.0.0 resolves major problems found in 0.7.1.2
   
   Note that launching the OML Workbench as a runtime Eclipse may result in NPEs during shutdown as reported in this issue: https://bugs.eclipse.org/bugs/show_bug.cgi?id=522075
   
+- [#100 Separation of OML API vs UI Concerns](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/100)
+
+  
 ## [Release & Publish process](publishProcess.markdown)
