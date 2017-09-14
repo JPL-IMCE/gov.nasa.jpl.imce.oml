@@ -19,11 +19,9 @@ package gov.nasa.jpl.imce.oml.viewpoint;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
-import gov.nasa.jpl.imce.oml.model.common.LiteralDateTime;
 import gov.nasa.jpl.imce.oml.model.common.LiteralNumber;
 import gov.nasa.jpl.imce.oml.model.datatypes.LanguageTagValue;
 import gov.nasa.jpl.imce.oml.model.datatypes.PatternValue;
-import gov.nasa.jpl.imce.oml.model.datatypes.PositiveIntegerValue;
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyGraph;
 import gov.nasa.jpl.imce.oml.model.terminologies.BinaryScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.Entity;
@@ -72,14 +70,16 @@ public class TerminologyDiagramService {
         _boxStatements=tg.getBoxStatements();
       }
       for (final TerminologyBoxStatement statement : _boxStatements) {
-        {
-          if ((statement instanceof Entity)) {
-            entities.add(((Entity) statement));
-          }
-          if ((statement instanceof SpecializationAxiom)) {
-            final SpecializationAxiom temp = ((SpecializationAxiom) statement);
-            entities.add(temp.child());
-            entities.add(temp.parent());
+        boolean _matched = false;
+        if (statement instanceof Entity) {
+          _matched=true;
+          entities.add(((Entity)statement));
+        }
+        if (!_matched) {
+          if (statement instanceof SpecializationAxiom) {
+            _matched=true;
+            entities.add(((SpecializationAxiom)statement).child());
+            entities.add(((SpecializationAxiom)statement).parent());
           }
         }
       }
@@ -90,7 +90,10 @@ public class TerminologyDiagramService {
   
   /**
    * Returns a set of {@link ScalarDataProperty}s that have the passed
-   * {@link Structure} as its domain
+   * {@link Structure} as its domain that are found
+   * in the transitive closure of imports from the {@link TeminologyBox} associated
+   * with the passed {@link Structure}.
+   * 
    * 
    * @param The Structure
    * @return Set of {@link ScalarDataProperty}
@@ -110,7 +113,11 @@ public class TerminologyDiagramService {
       if (_boxStatements!=null) {
         _filter=Iterables.<ScalarDataProperty>filter(_boxStatements, ScalarDataProperty.class);
       }
-      final Set<ScalarDataProperty> set = IterableExtensions.<ScalarDataProperty>toSet(_filter);
+      Set<ScalarDataProperty> _set = null;
+      if (_filter!=null) {
+        _set=IterableExtensions.<ScalarDataProperty>toSet(_filter);
+      }
+      final Set<ScalarDataProperty> set = _set;
       boolean _isEmpty = set.isEmpty();
       if (_isEmpty) {
         return set;
@@ -126,7 +133,9 @@ public class TerminologyDiagramService {
   
   /**
    * Returns a set of {@link StructuredDataProperty}s that have the passed
-   * {@link Structure} as its domain
+   * {@link Structure} as its domain that are found
+   * in the transitive closure of imports from the {@link TeminologyBox} associated
+   * with the passed {@link Structure}.
    * 
    * @param The Structure
    * @return Set of {@link StucturedDataProperty}
@@ -146,7 +155,11 @@ public class TerminologyDiagramService {
       if (_boxStatements!=null) {
         _filter=Iterables.<StructuredDataProperty>filter(_boxStatements, StructuredDataProperty.class);
       }
-      final Set<StructuredDataProperty> set = IterableExtensions.<StructuredDataProperty>toSet(_filter);
+      Set<StructuredDataProperty> _set = null;
+      if (_filter!=null) {
+        _set=IterableExtensions.<StructuredDataProperty>toSet(_filter);
+      }
+      final Set<StructuredDataProperty> set = _set;
       boolean _isEmpty = set.isEmpty();
       if (_isEmpty) {
         return set;
@@ -168,15 +181,7 @@ public class TerminologyDiagramService {
    * @return Set of {@link StringScalarRestriction}
    */
   public Set<StringScalarRestriction> getContainedStringScalarRestrictions(final TerminologyGraph c) {
-    EList<TerminologyBoxStatement> _boxStatements = null;
-    if (c!=null) {
-      _boxStatements=c.getBoxStatements();
-    }
-    Iterable<TerminologyBoxStatement> _filterNull = null;
-    if (_boxStatements!=null) {
-      _filterNull=IterableExtensions.<TerminologyBoxStatement>filterNull(_boxStatements);
-    }
-    return IterableExtensions.<StringScalarRestriction>toSet(Iterables.<StringScalarRestriction>filter(_filterNull, StringScalarRestriction.class));
+    return IterableExtensions.<StringScalarRestriction>toSet(Iterables.<StringScalarRestriction>filter(IterableExtensions.<TerminologyBoxStatement>filterNull(c.getBoxStatements()), StringScalarRestriction.class));
   }
   
   /**
@@ -187,15 +192,7 @@ public class TerminologyDiagramService {
    * @return Set of {@link NumericScalarRestriction}
    */
   public Set<NumericScalarRestriction> getContainedNumericScalarRestrictions(final TerminologyGraph c) {
-    EList<TerminologyBoxStatement> _boxStatements = null;
-    if (c!=null) {
-      _boxStatements=c.getBoxStatements();
-    }
-    Iterable<TerminologyBoxStatement> _filterNull = null;
-    if (_boxStatements!=null) {
-      _filterNull=IterableExtensions.<TerminologyBoxStatement>filterNull(_boxStatements);
-    }
-    return IterableExtensions.<NumericScalarRestriction>toSet(Iterables.<NumericScalarRestriction>filter(_filterNull, NumericScalarRestriction.class));
+    return IterableExtensions.<NumericScalarRestriction>toSet(Iterables.<NumericScalarRestriction>filter(IterableExtensions.<TerminologyBoxStatement>filterNull(c.getBoxStatements()), NumericScalarRestriction.class));
   }
   
   /**
@@ -206,15 +203,7 @@ public class TerminologyDiagramService {
    * @return Set of {@link NumericScalarRestriction}
    */
   public Set<BinaryScalarRestriction> getContainedBinaryScalarRestrictions(final TerminologyGraph c) {
-    EList<TerminologyBoxStatement> _boxStatements = null;
-    if (c!=null) {
-      _boxStatements=c.getBoxStatements();
-    }
-    Iterable<TerminologyBoxStatement> _filterNull = null;
-    if (_boxStatements!=null) {
-      _filterNull=IterableExtensions.<TerminologyBoxStatement>filterNull(_boxStatements);
-    }
-    return IterableExtensions.<BinaryScalarRestriction>toSet(Iterables.<BinaryScalarRestriction>filter(_filterNull, BinaryScalarRestriction.class));
+    return IterableExtensions.<BinaryScalarRestriction>toSet(Iterables.<BinaryScalarRestriction>filter(IterableExtensions.<TerminologyBoxStatement>filterNull(c.getBoxStatements()), BinaryScalarRestriction.class));
   }
   
   /**
@@ -225,15 +214,7 @@ public class TerminologyDiagramService {
    * @return Set of {@link IRIScalarRestriction}
    */
   public Set<IRIScalarRestriction> getContainedIRIScalarRestrictions(final TerminologyGraph c) {
-    EList<TerminologyBoxStatement> _boxStatements = null;
-    if (c!=null) {
-      _boxStatements=c.getBoxStatements();
-    }
-    Iterable<TerminologyBoxStatement> _filterNull = null;
-    if (_boxStatements!=null) {
-      _filterNull=IterableExtensions.<TerminologyBoxStatement>filterNull(_boxStatements);
-    }
-    return IterableExtensions.<IRIScalarRestriction>toSet(Iterables.<IRIScalarRestriction>filter(_filterNull, IRIScalarRestriction.class));
+    return IterableExtensions.<IRIScalarRestriction>toSet(Iterables.<IRIScalarRestriction>filter(IterableExtensions.<TerminologyBoxStatement>filterNull(c.getBoxStatements()), IRIScalarRestriction.class));
   }
   
   /**
@@ -244,15 +225,7 @@ public class TerminologyDiagramService {
    * @return Set of {@link PlainLiteralScalarRestriction}
    */
   public Set<PlainLiteralScalarRestriction> getContainedPlainLiteralScalarRestrictions(final TerminologyGraph c) {
-    EList<TerminologyBoxStatement> _boxStatements = null;
-    if (c!=null) {
-      _boxStatements=c.getBoxStatements();
-    }
-    Iterable<TerminologyBoxStatement> _filterNull = null;
-    if (_boxStatements!=null) {
-      _filterNull=IterableExtensions.<TerminologyBoxStatement>filterNull(_boxStatements);
-    }
-    return IterableExtensions.<PlainLiteralScalarRestriction>toSet(Iterables.<PlainLiteralScalarRestriction>filter(_filterNull, PlainLiteralScalarRestriction.class));
+    return IterableExtensions.<PlainLiteralScalarRestriction>toSet(Iterables.<PlainLiteralScalarRestriction>filter(IterableExtensions.<TerminologyBoxStatement>filterNull(c.getBoxStatements()), PlainLiteralScalarRestriction.class));
   }
   
   /**
@@ -263,15 +236,7 @@ public class TerminologyDiagramService {
    * @return Set of {@link TimeScalarRestriction}
    */
   public Set<TimeScalarRestriction> getContainedTimeScalarRestrictions(final TerminologyGraph c) {
-    EList<TerminologyBoxStatement> _boxStatements = null;
-    if (c!=null) {
-      _boxStatements=c.getBoxStatements();
-    }
-    Iterable<TerminologyBoxStatement> _filterNull = null;
-    if (_boxStatements!=null) {
-      _filterNull=IterableExtensions.<TerminologyBoxStatement>filterNull(_boxStatements);
-    }
-    return IterableExtensions.<TimeScalarRestriction>toSet(Iterables.<TimeScalarRestriction>filter(_filterNull, TimeScalarRestriction.class));
+    return IterableExtensions.<TimeScalarRestriction>toSet(Iterables.<TimeScalarRestriction>filter(IterableExtensions.<TerminologyBoxStatement>filterNull(c.getBoxStatements()), TimeScalarRestriction.class));
   }
   
   /**
@@ -282,15 +247,7 @@ public class TerminologyDiagramService {
    * @return Set of {@link SynonymScalarRestriction}
    */
   public Set<SynonymScalarRestriction> getContainedSynonymScalarRestrictions(final TerminologyGraph c) {
-    EList<TerminologyBoxStatement> _boxStatements = null;
-    if (c!=null) {
-      _boxStatements=c.getBoxStatements();
-    }
-    Iterable<TerminologyBoxStatement> _filterNull = null;
-    if (_boxStatements!=null) {
-      _filterNull=IterableExtensions.<TerminologyBoxStatement>filterNull(_boxStatements);
-    }
-    return IterableExtensions.<SynonymScalarRestriction>toSet(Iterables.<SynonymScalarRestriction>filter(_filterNull, SynonymScalarRestriction.class));
+    return IterableExtensions.<SynonymScalarRestriction>toSet(Iterables.<SynonymScalarRestriction>filter(IterableExtensions.<TerminologyBoxStatement>filterNull(c.getBoxStatements()), SynonymScalarRestriction.class));
   }
   
   /**
@@ -301,15 +258,7 @@ public class TerminologyDiagramService {
    * @return Set of {@link ScalarOneOfRestriction}
    */
   public Set<ScalarOneOfRestriction> getContainedScalarOneOfRestrictions(final TerminologyGraph c) {
-    EList<TerminologyBoxStatement> _boxStatements = null;
-    if (c!=null) {
-      _boxStatements=c.getBoxStatements();
-    }
-    Iterable<TerminologyBoxStatement> _filterNull = null;
-    if (_boxStatements!=null) {
-      _filterNull=IterableExtensions.<TerminologyBoxStatement>filterNull(_boxStatements);
-    }
-    return IterableExtensions.<ScalarOneOfRestriction>toSet(Iterables.<ScalarOneOfRestriction>filter(_filterNull, ScalarOneOfRestriction.class));
+    return IterableExtensions.<ScalarOneOfRestriction>toSet(Iterables.<ScalarOneOfRestriction>filter(IterableExtensions.<TerminologyBoxStatement>filterNull(c.getBoxStatements()), ScalarOneOfRestriction.class));
   }
   
   /**
@@ -334,90 +283,63 @@ public class TerminologyDiagramService {
     {
       StringBuilder label = new StringBuilder();
       label.append(r.name());
-      if ((r instanceof StringScalarRestriction)) {
-        PatternValue _pattern = ((StringScalarRestriction) r).getPattern();
+      boolean _matched = false;
+      if (r instanceof StringScalarRestriction) {
+        _matched=true;
+        PatternValue _pattern = ((StringScalarRestriction)r).getPattern();
         String _plus = ("\npattern: " + _pattern);
         label.append(_plus);
       }
-      if ((r instanceof IRIScalarRestriction)) {
-        PatternValue _pattern_1 = ((IRIScalarRestriction) r).getPattern();
-        String _plus_1 = ("\npattern: " + _pattern_1);
-        label.append(_plus_1);
-      }
-      if ((r instanceof PlainLiteralScalarRestriction)) {
-        PatternValue _pattern_2 = ((PlainLiteralScalarRestriction) r).getPattern();
-        String _plus_2 = ("\npattern: " + _pattern_2);
-        label.append(_plus_2);
-        LanguageTagValue _langRange = ((PlainLiteralScalarRestriction) r).getLangRange();
-        String _plus_3 = ("\nlangRange: " + _langRange);
-        label.append(_plus_3);
-      }
-      if ((r instanceof NumericScalarRestriction)) {
-        LiteralNumber _minInclusive = ((NumericScalarRestriction) r).getMinInclusive();
-        boolean _tripleNotEquals = (_minInclusive != null);
-        if (_tripleNotEquals) {
-          LiteralNumber _minInclusive_1 = ((NumericScalarRestriction) r).getMinInclusive();
-          String _plus_4 = ("\n\nminInclusive: " + _minInclusive_1);
-          label.append(_plus_4);
-        }
-        LiteralNumber _maxInclusive = ((NumericScalarRestriction) r).getMaxInclusive();
-        boolean _tripleNotEquals_1 = (_maxInclusive != null);
-        if (_tripleNotEquals_1) {
-          LiteralNumber _maxInclusive_1 = ((NumericScalarRestriction) r).getMaxInclusive();
-          String _plus_5 = ("\nmaxInclusive: " + _maxInclusive_1);
-          label.append(_plus_5);
-        }
-        LiteralNumber _minExclusive = ((NumericScalarRestriction) r).getMinExclusive();
-        boolean _tripleNotEquals_2 = (_minExclusive != null);
-        if (_tripleNotEquals_2) {
-          LiteralNumber _minExclusive_1 = ((NumericScalarRestriction) r).getMinExclusive();
-          String _plus_6 = ("\nminExclusive: " + _minExclusive_1);
-          label.append(_plus_6);
-        }
-        LiteralNumber _maxExclusive = ((NumericScalarRestriction) r).getMaxExclusive();
-        boolean _tripleNotEquals_3 = (_maxExclusive != null);
-        if (_tripleNotEquals_3) {
-          LiteralNumber _maxExclusive_1 = ((NumericScalarRestriction) r).getMaxExclusive();
-          String _plus_7 = ("\nmaxExclusive: " + _maxExclusive_1);
-          label.append(_plus_7);
+      if (!_matched) {
+        if (r instanceof IRIScalarRestriction) {
+          _matched=true;
+          PatternValue _pattern = ((IRIScalarRestriction)r).getPattern();
+          String _plus = ("\npattern: " + _pattern);
+          label.append(_plus);
         }
       }
-      if ((r instanceof BinaryScalarRestriction)) {
-        PositiveIntegerValue _minLength = ((BinaryScalarRestriction) r).getMinLength();
-        String _plus_8 = ("\n\nnmaxLength: " + _minLength);
-        String _plus_9 = (_plus_8 + "\nmaxLength: ");
-        PositiveIntegerValue _maxLength = ((BinaryScalarRestriction) r).getMaxLength();
-        String _plus_10 = (_plus_9 + _maxLength);
-        label.append(_plus_10);
+      if (!_matched) {
+        if (r instanceof PlainLiteralScalarRestriction) {
+          _matched=true;
+          PatternValue _pattern = ((PlainLiteralScalarRestriction)r).getPattern();
+          String _plus = ("\npattern: " + _pattern);
+          label.append(_plus);
+          LanguageTagValue _langRange = ((PlainLiteralScalarRestriction)r).getLangRange();
+          String _plus_1 = ("\nlangRange: " + _langRange);
+          label.append(_plus_1);
+        }
       }
-      if ((r instanceof TimeScalarRestriction)) {
-        LiteralDateTime _minInclusive_2 = ((TimeScalarRestriction) r).getMinInclusive();
-        boolean _tripleNotEquals_4 = (_minInclusive_2 != null);
-        if (_tripleNotEquals_4) {
-          LiteralDateTime _minInclusive_3 = ((TimeScalarRestriction) r).getMinInclusive();
-          String _plus_11 = ("\n\nminInclusive: " + _minInclusive_3);
-          label.append(_plus_11);
-        }
-        LiteralDateTime _maxInclusive_2 = ((TimeScalarRestriction) r).getMaxInclusive();
-        boolean _tripleNotEquals_5 = (_maxInclusive_2 != null);
-        if (_tripleNotEquals_5) {
-          LiteralDateTime _maxInclusive_3 = ((TimeScalarRestriction) r).getMaxInclusive();
-          String _plus_12 = ("\nmaxInclusive: " + _maxInclusive_3);
-          label.append(_plus_12);
-        }
-        LiteralDateTime _minExclusive_2 = ((TimeScalarRestriction) r).getMinExclusive();
-        boolean _tripleNotEquals_6 = (_minExclusive_2 != null);
-        if (_tripleNotEquals_6) {
-          LiteralDateTime _minExclusive_3 = ((TimeScalarRestriction) r).getMinExclusive();
-          String _plus_13 = ("\nminExclusive: " + _minExclusive_3);
-          label.append(_plus_13);
-        }
-        LiteralDateTime _maxExclusive_2 = ((TimeScalarRestriction) r).getMaxExclusive();
-        boolean _tripleNotEquals_7 = (_maxExclusive_2 != null);
-        if (_tripleNotEquals_7) {
-          LiteralDateTime _maxExclusive_3 = ((TimeScalarRestriction) r).getMaxExclusive();
-          String _plus_14 = ("\nmaxExclusive: " + _maxExclusive_3);
-          label.append(_plus_14);
+      if (!_matched) {
+        if (r instanceof NumericScalarRestriction) {
+          _matched=true;
+          LiteralNumber _minInclusive = ((NumericScalarRestriction)r).getMinInclusive();
+          boolean _tripleNotEquals = (_minInclusive != null);
+          if (_tripleNotEquals) {
+            LiteralNumber _minInclusive_1 = ((NumericScalarRestriction)r).getMinInclusive();
+            String _plus = ("\n\nminInclusive: " + _minInclusive_1);
+            label.append(_plus);
+          }
+          LiteralNumber _maxInclusive = ((NumericScalarRestriction)r).getMaxInclusive();
+          boolean _tripleNotEquals_1 = (_maxInclusive != null);
+          if (_tripleNotEquals_1) {
+            LiteralNumber _maxInclusive_1 = ((NumericScalarRestriction)r).getMaxInclusive();
+            String _plus_1 = ("\nmaxInclusive: " + _maxInclusive_1);
+            label.append(_plus_1);
+          }
+          LiteralNumber _minExclusive = ((NumericScalarRestriction)r).getMinExclusive();
+          boolean _tripleNotEquals_2 = (_minExclusive != null);
+          if (_tripleNotEquals_2) {
+            LiteralNumber _minExclusive_1 = ((NumericScalarRestriction)r).getMinExclusive();
+            String _plus_2 = ("\nminExclusive: " + _minExclusive_1);
+            label.append(_plus_2);
+          }
+          LiteralNumber _maxExclusive = ((NumericScalarRestriction)r).getMaxExclusive();
+          boolean _tripleNotEquals_3 = (_maxExclusive != null);
+          if (_tripleNotEquals_3) {
+            LiteralNumber _maxExclusive_1 = ((NumericScalarRestriction)r).getMaxExclusive();
+            String _plus_3 = ("\nmaxExclusive: " + _maxExclusive_1);
+            label.append(_plus_3);
+          }
         }
       }
       _xblockexpression = label.toString();

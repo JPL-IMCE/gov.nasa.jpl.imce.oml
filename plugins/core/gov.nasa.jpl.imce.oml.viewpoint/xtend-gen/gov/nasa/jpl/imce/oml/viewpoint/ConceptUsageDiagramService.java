@@ -124,7 +124,9 @@ public class ConceptUsageDiagramService {
   /**
    * Gets equivalent {@link Concept} for the given
    * {@link ReifiedRelationship} which has an {@link Aspect}
-   * as its domain
+   * as its domain that are found in the transitive closure
+   * of imports from the {@link TeminologyBox} associated
+   * with the passed {@link ReifiedRelationship}
    * 
    * @param rel The {@link ReifiedRelationship}
    * @return Set of {@link Concept}s
@@ -283,11 +285,17 @@ public class ConceptUsageDiagramService {
         final Entity entity = e.getKey();
         final TerminologyBoxStatement relOrAx = e.getValue();
         visited.add(entity);
-        if ((relOrAx instanceof EntityRelationship)) {
-          if ((entity instanceof Concept)) {
-            concepts.add(((Concept) entity));
-          } else {
-            if ((entity instanceof Aspect)) {
+        boolean _matched = false;
+        if (relOrAx instanceof EntityRelationship) {
+          _matched=true;
+          boolean _matched_1 = false;
+          if (entity instanceof Concept) {
+            _matched_1=true;
+            concepts.add(((Concept)entity));
+          }
+          if (!_matched_1) {
+            if (entity instanceof Aspect) {
+              _matched_1=true;
               final Consumer<Map.Entry<Entity, TerminologyBoxStatement>> _function_1 = (Map.Entry<Entity, TerminologyBoxStatement> t) -> {
                 final Entity node = t.getKey();
                 if (((node instanceof Concept) && (t.getValue() instanceof SpecializationAxiom))) {
@@ -298,7 +306,8 @@ public class ConceptUsageDiagramService {
               graph.get(entity).forEach(_function_1);
             }
           }
-        } else {
+        }
+        if (!_matched) {
           queue.add(entity);
         }
       };
@@ -313,7 +322,9 @@ public class ConceptUsageDiagramService {
             {
               final Entity n = e.getKey();
               final TerminologyBoxStatement relOrAx = e.getValue();
-              if (((relOrAx instanceof EntityRelationship) && (n instanceof Concept))) {
+              final boolean isRelOrAxAnEntityRelationship = (relOrAx instanceof EntityRelationship);
+              final boolean isN_AConcept = (n instanceof Concept);
+              if ((isRelOrAxAnEntityRelationship && isN_AConcept)) {
                 concepts.add(((Concept) n));
                 visited.add(n);
                 foundConnnection = true;
@@ -321,7 +332,7 @@ public class ConceptUsageDiagramService {
                 if (foundConnnection) {
                   visited.add(n);
                 } else {
-                  if (((!(relOrAx instanceof EntityRelationship)) && (n instanceof Concept))) {
+                  if (((!isRelOrAxAnEntityRelationship) && isN_AConcept)) {
                     visited.add(n);
                   } else {
                     boolean _contains = visited.contains(n);
@@ -364,11 +375,17 @@ public class ConceptUsageDiagramService {
         final Entity entity = e.getKey();
         final TerminologyBoxStatement relOrAx = e.getValue();
         visited.add(entity);
-        if ((relOrAx instanceof EntityRelationship)) {
-          if ((entity instanceof Concept)) {
+        boolean _matched = false;
+        if (relOrAx instanceof EntityRelationship) {
+          _matched=true;
+          boolean _matched_1 = false;
+          if (entity instanceof Concept) {
+            _matched_1=true;
             relationships.add(relOrAx);
-          } else {
-            if ((entity instanceof Aspect)) {
+          }
+          if (!_matched_1) {
+            if (entity instanceof Aspect) {
+              _matched_1=true;
               final Consumer<Map.Entry<Entity, TerminologyBoxStatement>> _function_1 = (Map.Entry<Entity, TerminologyBoxStatement> t) -> {
                 final Entity node = t.getKey();
                 if ((node instanceof Concept)) {
@@ -379,7 +396,8 @@ public class ConceptUsageDiagramService {
               graph.get(entity).forEach(_function_1);
             }
           }
-        } else {
+        }
+        if (!_matched) {
           queue.add(entity);
         }
       };
@@ -394,7 +412,9 @@ public class ConceptUsageDiagramService {
             {
               final Entity n = e.getKey();
               final TerminologyBoxStatement relOrAx = e.getValue();
-              if ((((relOrAx instanceof EntityRelationship) || (relOrAx instanceof EntityRestrictionAxiom)) && (n instanceof Concept))) {
+              final boolean isEntityRelationship = (relOrAx instanceof EntityRelationship);
+              final boolean isEntityRestrictionAxiom = (relOrAx instanceof EntityRestrictionAxiom);
+              if (((isEntityRelationship || isEntityRestrictionAxiom) && (n instanceof Concept))) {
                 relationships.add(relOrAx);
                 visited.add(n);
                 foundConnnection = true;
@@ -402,7 +422,7 @@ public class ConceptUsageDiagramService {
                 if (foundConnnection) {
                   visited.add(n);
                 } else {
-                  if (((!((relOrAx instanceof EntityRelationship) || (relOrAx instanceof EntityRestrictionAxiom))) && (n instanceof Concept))) {
+                  if (((!(isEntityRelationship || isEntityRestrictionAxiom)) && (n instanceof Concept))) {
                     visited.add(n);
                   } else {
                     boolean _contains = visited.contains(n);
@@ -471,21 +491,27 @@ public class ConceptUsageDiagramService {
   private Map.Entry<Entity, Entity> getSourceAndTarget(final TerminologyBoxStatement t) {
     Object _xblockexpression = null;
     {
-      if ((t instanceof EntityRestrictionAxiom)) {
-        final Entity n1 = ((EntityRestrictionAxiom) t).getRestrictedRange();
-        final Entity n2 = ((EntityRestrictionAxiom) t).getRestrictedDomain();
+      boolean _matched = false;
+      if (t instanceof EntityRestrictionAxiom) {
+        _matched=true;
+        final Entity n1 = ((EntityRestrictionAxiom)t).getRestrictedRange();
+        final Entity n2 = ((EntityRestrictionAxiom)t).getRestrictedDomain();
         return new AbstractMap.SimpleEntry<Entity, Entity>(n1, n2);
-      } else {
-        if ((t instanceof SpecializationAxiom)) {
-          final Entity n1_1 = ((SpecializationAxiom) t).child();
-          final Entity n2_1 = ((SpecializationAxiom) t).parent();
-          return new AbstractMap.SimpleEntry<Entity, Entity>(n1_1, n2_1);
-        } else {
-          if ((t instanceof EntityRelationship)) {
-            final Entity n1_2 = ((EntityRelationship) t).getSource();
-            final Entity n2_2 = ((EntityRelationship) t).getTarget();
-            return new AbstractMap.SimpleEntry<Entity, Entity>(n1_2, n2_2);
-          }
+      }
+      if (!_matched) {
+        if (t instanceof SpecializationAxiom) {
+          _matched=true;
+          final Entity n1 = ((SpecializationAxiom)t).child();
+          final Entity n2 = ((SpecializationAxiom)t).parent();
+          return new AbstractMap.SimpleEntry<Entity, Entity>(n1, n2);
+        }
+      }
+      if (!_matched) {
+        if (t instanceof EntityRelationship) {
+          _matched=true;
+          final Entity n1 = ((EntityRelationship)t).getSource();
+          final Entity n2 = ((EntityRelationship)t).getTarget();
+          return new AbstractMap.SimpleEntry<Entity, Entity>(n1, n2);
         }
       }
       _xblockexpression = null;

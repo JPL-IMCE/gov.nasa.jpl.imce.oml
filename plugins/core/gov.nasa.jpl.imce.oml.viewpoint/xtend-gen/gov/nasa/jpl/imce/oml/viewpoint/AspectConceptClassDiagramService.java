@@ -69,9 +69,11 @@ public class AspectConceptClassDiagramService {
   }
   
   /**
-   * Gets all {@link EntityRelationship}s within the {@link TeminologyBox}
-   * which have as its relationDomain the root {@link Entity} associated
-   * with the passed {@link DDiagram}
+   * Gets all {@link EntityRelationship}s whose relation domain
+   * is the root {@link Entity} associated
+   * with the passed {@link DDiagram} and that are found
+   * in the transitive closure of imports from the {@link TeminologyBox} associated
+   * with the passed {@link DDiagram}.
    * 
    * @param d The Diagram
    * @return Set of {@link ReifiedRelationship}s
@@ -98,9 +100,11 @@ public class AspectConceptClassDiagramService {
   }
   
   /**
-   * Gets all {@link EntityRelationship}s within the {@link TeminologyBox}
-   * which have as its relation range the root {@link Entity} associated
-   * with the passed {@link DDiagram}
+   * Gets all {@link EntityRelationship}s whose relation range
+   * is the root {@link Entity} associated
+   * with the passed {@link DDiagram} and that are found
+   * in the transitive closure of imports from the {@link TeminologyBox} associated
+   * with the passed {@link DDiagram}.
    * 
    * @param d The Diagram
    * @return Set of {@link ReifiedRelationship}s
@@ -127,9 +131,11 @@ public class AspectConceptClassDiagramService {
   }
   
   /**
-   * Gets all {@link Entity}s in this {@link TerminologyBox} that are directly connected
+   * Gets all {@link Entity}s that are directly connected
    * (relationship/axiom) to the root {@link Entity} associated
-   * with the passed {@link DDiagram}
+   * with the passed {@link DDiagram} and that are found
+   * in the transitive closure of imports from the {@link TeminologyBox} associated
+   * with the passed {@link DDiagram}.
    * 
    *  @param d The Diagram
    *  @return Set of {@link Entity}s
@@ -148,31 +154,37 @@ public class AspectConceptClassDiagramService {
         return it.getBoxStatements();
       };
       final Consumer<TerminologyBoxStatement> _function_1 = (TerminologyBoxStatement t) -> {
-        if ((t instanceof SpecializationAxiom)) {
-          final Entity n = ((SpecializationAxiom) t).child();
+        boolean _matched = false;
+        if (t instanceof SpecializationAxiom) {
+          _matched=true;
+          final Entity n = ((SpecializationAxiom)t).child();
           boolean _equals = Objects.equal(n, e);
           if (_equals) {
-            entities.add(((SpecializationAxiom) t).parent());
+            entities.add(((SpecializationAxiom)t).parent());
           }
-        } else {
-          if ((t instanceof EntityRestrictionAxiom)) {
-            final Entity n_1 = ((EntityRestrictionAxiom) t).getRestrictedDomain();
-            boolean _equals_1 = Objects.equal(n_1, e);
-            if (_equals_1) {
-              entities.add(((EntityRestrictionAxiom) t).getRestrictedRange());
+        }
+        if (!_matched) {
+          if (t instanceof EntityRestrictionAxiom) {
+            _matched=true;
+            final Entity n = ((EntityRestrictionAxiom)t).getRestrictedDomain();
+            boolean _equals = Objects.equal(n, e);
+            if (_equals) {
+              entities.add(((EntityRestrictionAxiom)t).getRestrictedRange());
             }
-          } else {
-            if ((t instanceof EntityRelationship)) {
-              final Entity n1 = ((EntityRelationship) t).getSource();
-              final Entity n2 = ((EntityRelationship) t).getTarget();
-              boolean _equals_2 = Objects.equal(n1, e);
-              if (_equals_2) {
-                entities.add(n2);
-              } else {
-                boolean _equals_3 = Objects.equal(n2, e);
-                if (_equals_3) {
-                  entities.add(n1);
-                }
+          }
+        }
+        if (!_matched) {
+          if (t instanceof EntityRelationship) {
+            _matched=true;
+            final Entity n1 = ((EntityRelationship) t).getSource();
+            final Entity n2 = ((EntityRelationship) t).getTarget();
+            boolean _equals = Objects.equal(n1, e);
+            if (_equals) {
+              entities.add(n2);
+            } else {
+              boolean _equals_1 = Objects.equal(n2, e);
+              if (_equals_1) {
+                entities.add(n1);
               }
             }
           }
@@ -186,9 +198,10 @@ public class AspectConceptClassDiagramService {
   }
   
   /**
-   * Gets all {@link AspectSpcializationAxiom}s in this {@link TerminologyBox}
-   * that have to the root {@link Entity} associated
-   * with the passed {@link DDiagram} as its sub-Entity
+   * Gets all {@link AspectSpcializationAxiom}s that have to the root {@link Entity} associated
+   * with the passed {@link DDiagram} as its sub-Entity and that are found
+   * in the transitive closure of imports from the {@link TeminologyBox} associated
+   * with the passed {@link DDiagram}.
    * 
    * @param d The diagram
    * @return Set of {@link AspectSpecializationAxiom}s
@@ -215,9 +228,11 @@ public class AspectConceptClassDiagramService {
   }
   
   /**
-   * Gets all {@link ConceptSpcializationAxiom}s in this {@link TerminologyBox}
+   * Gets all {@link ConceptSpcializationAxiom}s
    * that have to the root {@link Entity} associated with the passed
-   * {@link DDiagram} as its sub-Concept
+   * {@link DDiagram} as its sub-Concept and that are found
+   * in the transitive closure of imports from the {@link TeminologyBox} associated
+   * with the passed {@link DDiagram}.
    * 
    * @paramd The Diagram
    * @return Set of {@link ConceptSpecializationAxiom}s
@@ -244,9 +259,11 @@ public class AspectConceptClassDiagramService {
   }
   
   /**
-   * Gets all {@link EntityRestrictionAxiom}s in this {@link TerminologyBox}
+   * Gets all {@link EntityRestrictionAxiom}s
    * that have to the root {@link Entity} associated with the passed
-   * {@link DDiagram} as its restricted Domain
+   * {@link DDiagram} as its restricted Domain and that are found
+   * in the transitive closure of imports from the {@link TeminologyBox} associated
+   * with the passed {@link DDiagram}.
    * 
    * @param The root Entity
    * @return Set of {@link EntityRestrictionAxiom}s
