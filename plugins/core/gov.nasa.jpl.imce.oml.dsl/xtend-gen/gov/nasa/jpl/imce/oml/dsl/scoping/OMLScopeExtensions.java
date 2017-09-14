@@ -255,7 +255,7 @@ public class OMLScopeExtensions {
           localScopeFunction.apply(importedTbox), _function_1);
       };
       Iterables.<IEObjectDescription>addAll(result, 
-        Iterables.<IEObjectDescription>concat(IterableExtensions.<TerminologyBox, Iterable<IEObjectDescription>>map(this._oMLExtensions.allImportedTerminologies(tbox), _function)));
+        Iterables.<IEObjectDescription>concat(IterableExtensions.<TerminologyBox, Iterable<IEObjectDescription>>map(OMLExtensions.allImportedTerminologies(tbox), _function)));
       _xblockexpression = new SimpleScope(result);
     }
     return _xblockexpression;
@@ -414,8 +414,8 @@ public class OMLScopeExtensions {
       Iterables.<Bundle>addAll(allBundles, this._oMLExtensions.allImportedBundles(bundle));
       final Set<TerminologyBox> allTBoxes = Sets.<TerminologyBox>newHashSet();
       allTBoxes.addAll(allBundles);
-      final Function1<Bundle, Iterable<TerminologyBox>> _function = (Bundle it) -> {
-        return this._oMLExtensions.allImportedTerminologies(it);
+      final Function1<Bundle, Iterable<TerminologyBox>> _function = (Bundle b) -> {
+        return OMLExtensions.allImportedTerminologies(b);
       };
       Iterables.<TerminologyBox>addAll(allTBoxes, Iterables.<TerminologyBox>concat(IterableExtensions.<Bundle, Iterable<TerminologyBox>>map(allBundles, _function)));
       final Function1<TerminologyBox, Iterable<IEObjectDescription>> _function_1 = (TerminologyBox tbox) -> {

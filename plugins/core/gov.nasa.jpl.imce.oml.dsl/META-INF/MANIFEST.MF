@@ -19,7 +19,6 @@ Require-Bundle: org.eclipse.xtext;bundle-version="[2.11.0,3.0.0)",
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: gov.nasa.jpl.imce.oml.dsl,
  gov.nasa.jpl.imce.oml.dsl.formatting2,
- gov.nasa.jpl.imce.oml.dsl.generator,
  gov.nasa.jpl.imce.oml.dsl.linking,
  gov.nasa.jpl.imce.oml.dsl.parser.antlr,
  gov.nasa.jpl.imce.oml.dsl.parser.antlr.internal,

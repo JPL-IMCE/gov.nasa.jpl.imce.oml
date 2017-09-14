@@ -317,11 +317,11 @@ public class OMLExtensions {
 		]
 	}
 
-	def Iterable<TerminologyBox> allImportedTerminologies(TerminologyBox it) {
+	static def Iterable<TerminologyBox> allImportedTerminologies(TerminologyBox it) {
 		collectAllImportedTerminologies(Lists.newArrayList(it), Lists.newArrayList(it))
 	}
 
-	final def Iterable<TerminologyBox> collectAllImportedTerminologies(
+	static final def Iterable<TerminologyBox> collectAllImportedTerminologies(
 		ArrayList<TerminologyBox> queue,
 		ArrayList<TerminologyBox> acc
 	) {
