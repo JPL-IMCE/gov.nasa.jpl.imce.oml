@@ -25,6 +25,7 @@ import gov.nasa.jpl.imce.oml.model.datatypes.PatternValue;
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyGraph;
 import gov.nasa.jpl.imce.oml.model.terminologies.BinaryScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.Entity;
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction;
@@ -71,15 +72,22 @@ public class TerminologyDiagramService {
       }
       for (final TerminologyBoxStatement statement : _boxStatements) {
         boolean _matched = false;
-        if (statement instanceof Entity) {
+        if (statement instanceof EntityRelationship) {
           _matched=true;
-          entities.add(((Entity)statement));
+          entities.add(((EntityRelationship)statement).getSource());
+          entities.add(((EntityRelationship)statement).getTarget());
         }
         if (!_matched) {
           if (statement instanceof SpecializationAxiom) {
             _matched=true;
             entities.add(((SpecializationAxiom)statement).child());
             entities.add(((SpecializationAxiom)statement).parent());
+          }
+        }
+        if (!_matched) {
+          if (statement instanceof Entity) {
+            _matched=true;
+            entities.add(((Entity)statement));
           }
         }
       }
