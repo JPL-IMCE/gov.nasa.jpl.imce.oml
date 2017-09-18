@@ -14,7 +14,7 @@
 
 	<!--  TODO: git mv the core plugins to the ui folder -->
 	<modules>
-		<module>../core/gov.nasa.jpl.imce.oml.rcp</module>
+		<module>gov.nasa.jpl.imce.oml.rcp</module>
 		<module>gov.nasa.jpl.imce.oml.dsl.ide</module>
 		<module>../core/gov.nasa.jpl.imce.oml.dsl.ui</module>
 		<module>../core/gov.nasa.jpl.imce.oml.viewpoint</module>
