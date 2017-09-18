@@ -12,11 +12,10 @@
 		<version>0.8.0-SNAPSHOT</version>
 	</parent>
 
-	<!--  TODO: git mv the core plugins to the ui folder -->
 	<modules>
 		<module>gov.nasa.jpl.imce.oml.rcp</module>
 		<module>gov.nasa.jpl.imce.oml.dsl.ide</module>
 		<module>gov.nasa.jpl.imce.oml.dsl.ui</module>
-		<module>../core/gov.nasa.jpl.imce.oml.viewpoint</module>
+		<module>gov.nasa.jpl.imce.oml.viewpoint</module>
 	</modules>
 </project>
