@@ -16,7 +16,7 @@ if test -z "${TRAVIS_TAG}"; then
                 echo "#";
                 echo "# This is an untagged build.";
                 echo "#";
-                mvn -e clean verify;
+                mvn -e clean verify | ./scripts/filter.sh;
         fi;
 
 else
@@ -42,7 +42,7 @@ EOF
                echo "#";
                echo "# This is a tagged build: $t (if successful, artifacts will be deployed under $BINTRAY_USER)";
                echo "#";	       
-               mvn -e deploy;
+               mvn -e deploy | ./scripts/filter.s;
 
         else
 
