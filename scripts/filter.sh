@@ -6,5 +6,4 @@ BEGIN {flag=1}
 /(Down|Up)loading:/{flag+=1;next}
 /Downloaded:/{flag-=1;next}
 /Uploaded:/{flag-=1;if(flag>0)print}
-/Progress.*/{next}
 {if(flag==0) print; else next;}'
