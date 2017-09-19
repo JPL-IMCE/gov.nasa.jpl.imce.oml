@@ -48,26 +48,34 @@ done
 
 declare -a projects
 
-projects[0]=gov.nasa.jpl.imce.oml.root
-projects[1]=gov.nasa.jpl.imce.oml.plugins
-projects[2]=gov.nasa.jpl.imce.oml.plugins.core
-projects[3]=gov.nasa.jpl.imce.oml.uuid
-projects[4]=gov.nasa.jpl.imce.oml.model
-projects[5]=gov.nasa.jpl.imce.oml.model.edit
-projects[6]=gov.nasa.jpl.imce.oml.dsl
-projects[7]=gov.nasa.jpl.imce.oml.dsl.ide
-projects[8]=gov.nasa.jpl.imce.oml.dsl.ui
-projects[9]=gov.nasa.jpl.imce.oml.rcp
-projects[10]=gov.nasa.jpl.imce.oml.features
-projects[11]=gov.nasa.jpl.imce.oml.features.core
-projects[12]=gov.nasa.jpl.imce.oml.core.feature
-projects[13]=gov.nasa.jpl.imce.oml.tests
-projects[14]=gov.nasa.jpl.imce.oml.tests.core
-projects[15]=gov.nasa.jpl.imce.oml.dsl.tests
-projects[16]=gov.nasa.jpl.imce.oml.releng
+# The list below needs to reflect the output of this query:
+#
+# curl -u <user>:<apikey> https://api.bintray.com/repos/jpl-imce/gov.nasa.jpl.imce.oml/packages  | jq .[].name
+
+projects[0]=gov.nasa.jpl.imce.oml.core.feature
+projects[1]=gov.nasa.jpl.imce.oml.dsl
+projects[2]=gov.nasa.jpl.imce.oml.dsl.ide
+projects[3]=gov.nasa.jpl.imce.oml.dsl.tests
+projects[4]=gov.nasa.jpl.imce.oml.dsl.ui
+projects[5]=gov.nasa.jpl.imce.oml.features
+projects[6]=gov.nasa.jpl.imce.oml.features.core
+projects[7]=gov.nasa.jpl.imce.oml.features.ui
+projects[8]=gov.nasa.jpl.imce.oml.model
+projects[9]=gov.nasa.jpl.imce.oml.model.edit
+projects[10]=gov.nasa.jpl.imce.oml.plugins
+projects[11]=gov.nasa.jpl.imce.oml.plugins.core
+projects[12]=gov.nasa.jpl.imce.oml.plugins.ui
+projects[13]=gov.nasa.jpl.imce.oml.product
+projects[14]=gov.nasa.jpl.imce.oml.rcp
+projects[15]=gov.nasa.jpl.imce.oml.releng
+projects[16]=gov.nasa.jpl.imce.oml.root
 projects[17]=gov.nasa.jpl.imce.oml.target
-projects[18]=gov.nasa.jpl.imce.oml.updatesite
-projects[19]=gov.nasa.jpl.imce.oml.product
+projects[18]=gov.nasa.jpl.imce.oml.tests
+projects[19]=gov.nasa.jpl.imce.oml.tests.core
+projects[20]=gov.nasa.jpl.imce.oml.ui.feature
+projects[21]=gov.nasa.jpl.imce.oml.updatesite
+projects[22]=gov.nasa.jpl.imce.oml.uuid
+projects[23]=gov.nasa.jpl.imce.oml.viewpoint
 
 if test $# -eq 1 && test "$1" = "ps"; then
     echo "# Package Show...";
