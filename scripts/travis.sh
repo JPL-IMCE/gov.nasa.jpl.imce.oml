@@ -42,7 +42,7 @@ EOF
                echo "#";
                echo "# This is a tagged build: $t (if successful, artifacts will be deployed under $BINTRAY_USER)";
                echo "#";	       
-               mvn -e deploy | ./scripts/filter.s;
+               mvn -e deploy | ./scripts/filter.sh;
 
         else
 
