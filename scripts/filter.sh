@@ -2,7 +2,7 @@
 
 awk '
 BEGIN {flag=0}
-/Progress\ \([1-9][0-9]*\):/{next}
+/Progress\ :/{next}
 /\[INFO\]\ Fetching\ /{next}
 /\[INFO\]\ Resolving\ /{next}
 /\[apply\]\ (\*|\{|\})/{next}
