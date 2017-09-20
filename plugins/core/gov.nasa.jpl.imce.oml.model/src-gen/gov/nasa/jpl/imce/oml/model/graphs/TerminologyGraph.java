@@ -44,7 +44,7 @@ public interface TerminologyGraph extends TerminologyBox {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return <%org.eclipse.emf.common.util.ECollections%>.<<%gov.nasa.jpl.imce.oml.model.common.ModuleEdge%>>asEList(((<%gov.nasa.jpl.imce.oml.model.common.ModuleEdge%>[])org.eclipse.xtext.xbase.lib.Conversions.unwrapArray(<%com.google.common.collect.Iterables%>.<<%gov.nasa.jpl.imce.oml.model.common.ModuleEdge%>>filter(this.getBoxAxioms(), <%gov.nasa.jpl.imce.oml.model.common.ModuleEdge%>.class), <%gov.nasa.jpl.imce.oml.model.common.ModuleEdge%>.class)));'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return &lt;%org.eclipse.emf.common.util.ECollections%&gt;.&lt;&lt;%gov.nasa.jpl.imce.oml.model.common.ModuleEdge%&gt;&gt;asEList(((&lt;%gov.nasa.jpl.imce.oml.model.common.ModuleEdge%&gt;[])org.eclipse.xtext.xbase.lib.Conversions.unwrapArray(&lt;%com.google.common.collect.Iterables%&gt;.&lt;&lt;%gov.nasa.jpl.imce.oml.model.common.ModuleEdge%&gt;&gt;filter(this.getBoxAxioms(), &lt;%gov.nasa.jpl.imce.oml.model.common.ModuleEdge%&gt;.class), &lt;%gov.nasa.jpl.imce.oml.model.common.ModuleEdge%&gt;.class)));'"
 	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='extent.boxAxioms.getOrElse(this, scala.collection.immutable.Set.empty[resolver.api.ModuleEdge])'"
 	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
 	 * @generated
@@ -55,7 +55,7 @@ public interface TerminologyGraph extends TerminologyBox {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%org.eclipse.emf.common.util.BasicEList%><<%gov.nasa.jpl.imce.oml.model.common.ModuleElement%>> _xblockexpression = null;\n{\n\tfinal <%org.eclipse.emf.common.util.BasicEList%><<%gov.nasa.jpl.imce.oml.model.common.ModuleElement%>> mes = new <%org.eclipse.emf.common.util.BasicEList%><<%gov.nasa.jpl.imce.oml.model.common.ModuleElement%>>();\n\tmes.addAll(this.getBoxStatements());\n\t_xblockexpression = mes;\n}\nreturn _xblockexpression;'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.emf.common.util.BasicEList%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.common.ModuleElement%&gt;&gt; _xblockexpression = null;\n{\n\tfinal &lt;%org.eclipse.emf.common.util.BasicEList%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.common.ModuleElement%&gt;&gt; mes = new &lt;%org.eclipse.emf.common.util.BasicEList%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.common.ModuleElement%&gt;&gt;();\n\tmes.addAll(this.getBoxStatements());\n\t_xblockexpression = mes;\n}\nreturn _xblockexpression;'"
 	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='extent.lookupBoxStatements(this)'"
 	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
 	 * @generated
