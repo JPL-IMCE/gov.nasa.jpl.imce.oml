@@ -88,7 +88,7 @@ public interface AnnotationProperty extends CDOObject {
 	 * @see gov.nasa.jpl.imce.oml.model.common.CommonPackage#getAnnotationProperty_Uuid()
 	 * @model unique="false" dataType="gov.nasa.jpl.imce.oml.model.common.UUID" required="true" transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='com.fasterxml.uuid.Generators.nameBasedGenerator(com.fasterxml.uuid.impl.NameBasedGenerator.NAMESPACE_URL).generate(iri)'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='<%java.util.UUID%> _namespaceUUID = <%gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions%>.namespaceUUID(this.getIri());\n<%java.lang.String%> _string = null;\nif (_namespaceUUID!=null)\n{\n\t_string=_namespaceUUID.toString();\n}\nreturn _string;'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='&lt;%java.util.UUID%&gt; _namespaceUUID = &lt;%gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions%&gt;.namespaceUUID(this.getIri());\n&lt;%java.lang.String%&gt; _string = null;\nif (_namespaceUUID!=null)\n{\n\t_string=_namespaceUUID.toString();\n}\nreturn _string;'"
 	 * @generated
 	 */
 	String getUuid();

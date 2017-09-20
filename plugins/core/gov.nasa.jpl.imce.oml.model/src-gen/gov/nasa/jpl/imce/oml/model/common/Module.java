@@ -122,7 +122,7 @@ public interface Module extends Element, Resource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model dataType="gov.nasa.jpl.imce.oml.model.common.NamespacePrefix" unique="false" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%java.lang.String%> _iri = this.getIri();\n<%java.lang.String%> _substring = null;\nif (_iri!=null)\n{\n\tint _lastIndexOf = this.getIri().lastIndexOf(\"/\");\n\tint _plus = (1 + _lastIndexOf);\n\t_substring=_iri.substring(_plus);\n}\nreturn _substring;'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%java.lang.String%&gt; _iri = this.getIri();\n&lt;%java.lang.String%&gt; _substring = null;\nif (_iri!=null)\n{\n\tint _lastIndexOf = this.getIri().lastIndexOf(\"/\");\n\tint _plus = (1 + _lastIndexOf);\n\t_substring=_iri.substring(_plus);\n}\nreturn _substring;'"
 	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='iri.substring(1+iri.lastIndexOf(\'/\'))'"
 	 * @generated
 	 */
@@ -151,7 +151,7 @@ public interface Module extends Element, Resource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model dataType="gov.nasa.jpl.imce.oml.model.common.UUID" unique="false" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%java.lang.String%> _elvis = null;\n<%java.lang.String%> _iri = this.iri();\nif (_iri != null)\n{\n\t_elvis = _iri;\n} else\n{\n\t_elvis = \"\";\n}\n<%java.util.UUID%> _namespaceUUID = <%gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions%>.namespaceUUID(_elvis);\n<%java.lang.String%> _string = null;\nif (_namespaceUUID!=null)\n{\n\t_string=_namespaceUUID.toString();\n}\nreturn _string;'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%java.lang.String%&gt; _elvis = null;\n&lt;%java.lang.String%&gt; _iri = this.iri();\nif (_iri != null)\n{\n\t_elvis = _iri;\n} else\n{\n\t_elvis = \"\";\n}\n&lt;%java.util.UUID%&gt; _namespaceUUID = &lt;%gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions%&gt;.namespaceUUID(_elvis);\n&lt;%java.lang.String%&gt; _string = null;\nif (_namespaceUUID!=null)\n{\n\t_string=_namespaceUUID.toString();\n}\nreturn _string;'"
 	 * @generated
 	 */
 	String uuid();
