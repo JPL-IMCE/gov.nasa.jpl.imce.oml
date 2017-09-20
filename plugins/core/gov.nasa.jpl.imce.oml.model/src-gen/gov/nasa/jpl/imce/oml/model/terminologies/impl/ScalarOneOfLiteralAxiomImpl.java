@@ -18,6 +18,9 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies.impl;
 
+import gov.nasa.jpl.imce.oml.model.common.Element;
+import gov.nasa.jpl.imce.oml.model.common.LiteralValue;
+
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
 
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom;
@@ -30,7 +33,9 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.UUID;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -67,24 +72,14 @@ public class ScalarOneOfLiteralAxiomImpl extends TermAxiomImpl implements Scalar
 	protected ScalarOneOfRestriction axiom;
 
 	/**
-	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
+	 * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getValue()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String VALUE_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getValue()
-	 * @generated
-	 * @ordered
-	 */
-	protected String value = VALUE_EDEFAULT;
+	protected LiteralValue value;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -148,7 +143,7 @@ public class ScalarOneOfLiteralAxiomImpl extends TermAxiomImpl implements Scalar
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getValue() {
+	public LiteralValue getValue() {
 		return value;
 	}
 
@@ -157,11 +152,33 @@ public class ScalarOneOfLiteralAxiomImpl extends TermAxiomImpl implements Scalar
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setValue(String newValue) {
-		String oldValue = value;
+	public NotificationChain basicSetValue(LiteralValue newValue, NotificationChain msgs) {
+		LiteralValue oldValue = value;
 		value = newValue;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.SCALAR_ONE_OF_LITERAL_AXIOM__VALUE, oldValue, value));
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TerminologiesPackage.SCALAR_ONE_OF_LITERAL_AXIOM__VALUE, oldValue, newValue);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setValue(LiteralValue newValue) {
+		if (newValue != value) {
+			NotificationChain msgs = null;
+			if (value != null)
+				msgs = ((InternalEObject)value).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TerminologiesPackage.SCALAR_ONE_OF_LITERAL_AXIOM__VALUE, null, msgs);
+			if (newValue != null)
+				msgs = ((InternalEObject)newValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TerminologiesPackage.SCALAR_ONE_OF_LITERAL_AXIOM__VALUE, null, msgs);
+			msgs = basicSetValue(newValue, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.SCALAR_ONE_OF_LITERAL_AXIOM__VALUE, newValue, newValue));
 	}
 
 	/**
@@ -204,6 +221,29 @@ public class ScalarOneOfLiteralAxiomImpl extends TermAxiomImpl implements Scalar
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Element> allNestedElements() {
+		return ECollections.<Element>emptyEList();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case TerminologiesPackage.SCALAR_ONE_OF_LITERAL_AXIOM__VALUE:
+				return basicSetValue(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -228,7 +268,7 @@ public class ScalarOneOfLiteralAxiomImpl extends TermAxiomImpl implements Scalar
 				setAxiom((ScalarOneOfRestriction)newValue);
 				return;
 			case TerminologiesPackage.SCALAR_ONE_OF_LITERAL_AXIOM__VALUE:
-				setValue((String)newValue);
+				setValue((LiteralValue)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -246,7 +286,7 @@ public class ScalarOneOfLiteralAxiomImpl extends TermAxiomImpl implements Scalar
 				setAxiom((ScalarOneOfRestriction)null);
 				return;
 			case TerminologiesPackage.SCALAR_ONE_OF_LITERAL_AXIOM__VALUE:
-				setValue(VALUE_EDEFAULT);
+				setValue((LiteralValue)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -263,7 +303,7 @@ public class ScalarOneOfLiteralAxiomImpl extends TermAxiomImpl implements Scalar
 			case TerminologiesPackage.SCALAR_ONE_OF_LITERAL_AXIOM__AXIOM:
 				return axiom != null;
 			case TerminologiesPackage.SCALAR_ONE_OF_LITERAL_AXIOM__VALUE:
-				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+				return value != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -278,24 +318,10 @@ public class ScalarOneOfLiteralAxiomImpl extends TermAxiomImpl implements Scalar
 		switch (operationID) {
 			case TerminologiesPackage.SCALAR_ONE_OF_LITERAL_AXIOM___UUID:
 				return uuid();
+			case TerminologiesPackage.SCALAR_ONE_OF_LITERAL_AXIOM___ALL_NESTED_ELEMENTS:
+				return allNestedElements();
 		}
 		return super.eInvoke(operationID, arguments);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (value: ");
-		result.append(value);
-		result.append(')');
-		return result.toString();
 	}
 
 } //ScalarOneOfLiteralAxiomImpl

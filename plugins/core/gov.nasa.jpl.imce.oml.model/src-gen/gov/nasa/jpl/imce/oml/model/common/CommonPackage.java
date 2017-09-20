@@ -93,6 +93,459 @@ public interface CommonPackage extends EPackage {
 	CommonPackage eINSTANCE = gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl.init();
 
 	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralValueImpl <em>Literal Value</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.LiteralValueImpl
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLiteralValue()
+	 * @generated
+	 */
+	int LITERAL_VALUE = 0;
+
+	/**
+	 * The number of structural features of the '<em>Literal Value</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_VALUE_FEATURE_COUNT = 0;
+
+	/**
+	 * The number of operations of the '<em>Literal Value</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_VALUE_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralBooleanImpl <em>Literal Boolean</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.LiteralBooleanImpl
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLiteralBoolean()
+	 * @generated
+	 */
+	int LITERAL_BOOLEAN = 1;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_BOOLEAN__VALUE = LITERAL_VALUE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Literal Boolean</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_BOOLEAN_FEATURE_COUNT = LITERAL_VALUE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Literal Boolean</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_BOOLEAN_OPERATION_COUNT = LITERAL_VALUE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralDateTimeImpl <em>Literal Date Time</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.LiteralDateTimeImpl
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLiteralDateTime()
+	 * @generated
+	 */
+	int LITERAL_DATE_TIME = 2;
+
+	/**
+	 * The feature id for the '<em><b>Date Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_DATE_TIME__DATE_TIME = LITERAL_VALUE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Literal Date Time</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_DATE_TIME_FEATURE_COUNT = LITERAL_VALUE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Literal Date Time</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_DATE_TIME_OPERATION_COUNT = LITERAL_VALUE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralStringImpl <em>Literal String</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.LiteralStringImpl
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLiteralString()
+	 * @generated
+	 */
+	int LITERAL_STRING = 3;
+
+	/**
+	 * The feature id for the '<em><b>String</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_STRING__STRING = LITERAL_VALUE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Literal String</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_STRING_FEATURE_COUNT = LITERAL_VALUE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Literal String</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_STRING_OPERATION_COUNT = LITERAL_VALUE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralUUIDImpl <em>Literal UUID</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.LiteralUUIDImpl
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLiteralUUID()
+	 * @generated
+	 */
+	int LITERAL_UUID = 4;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_UUID__UUID = LITERAL_VALUE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Literal UUID</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_UUID_FEATURE_COUNT = LITERAL_VALUE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Literal UUID</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_UUID_OPERATION_COUNT = LITERAL_VALUE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralURIImpl <em>Literal URI</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.LiteralURIImpl
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLiteralURI()
+	 * @generated
+	 */
+	int LITERAL_URI = 5;
+
+	/**
+	 * The feature id for the '<em><b>Uri</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_URI__URI = LITERAL_VALUE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Literal URI</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_URI_FEATURE_COUNT = LITERAL_VALUE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Literal URI</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_URI_OPERATION_COUNT = LITERAL_VALUE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralNumberImpl <em>Literal Number</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.LiteralNumberImpl
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLiteralNumber()
+	 * @generated
+	 */
+	int LITERAL_NUMBER = 6;
+
+	/**
+	 * The number of structural features of the '<em>Literal Number</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_NUMBER_FEATURE_COUNT = LITERAL_VALUE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Literal Number</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_NUMBER_OPERATION_COUNT = LITERAL_VALUE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralRealImpl <em>Literal Real</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.LiteralRealImpl
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLiteralReal()
+	 * @generated
+	 */
+	int LITERAL_REAL = 7;
+
+	/**
+	 * The feature id for the '<em><b>Real</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_REAL__REAL = LITERAL_NUMBER_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Literal Real</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_REAL_FEATURE_COUNT = LITERAL_NUMBER_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Literal Real</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_REAL_OPERATION_COUNT = LITERAL_NUMBER_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralRationalImpl <em>Literal Rational</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.LiteralRationalImpl
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLiteralRational()
+	 * @generated
+	 */
+	int LITERAL_RATIONAL = 8;
+
+	/**
+	 * The feature id for the '<em><b>Rational</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_RATIONAL__RATIONAL = LITERAL_NUMBER_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Literal Rational</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_RATIONAL_FEATURE_COUNT = LITERAL_NUMBER_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Literal Rational</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_RATIONAL_OPERATION_COUNT = LITERAL_NUMBER_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralFloatImpl <em>Literal Float</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.LiteralFloatImpl
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLiteralFloat()
+	 * @generated
+	 */
+	int LITERAL_FLOAT = 9;
+
+	/**
+	 * The feature id for the '<em><b>Float</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_FLOAT__FLOAT = LITERAL_NUMBER_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Literal Float</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_FLOAT_FEATURE_COUNT = LITERAL_NUMBER_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Literal Float</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_FLOAT_OPERATION_COUNT = LITERAL_NUMBER_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralDecimalImpl <em>Literal Decimal</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.LiteralDecimalImpl
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLiteralDecimal()
+	 * @generated
+	 */
+	int LITERAL_DECIMAL = 10;
+
+	/**
+	 * The feature id for the '<em><b>Decimal</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_DECIMAL__DECIMAL = LITERAL_NUMBER_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Literal Decimal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_DECIMAL_FEATURE_COUNT = LITERAL_NUMBER_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Literal Decimal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_DECIMAL_OPERATION_COUNT = LITERAL_NUMBER_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.AnnotationPropertyValueImpl <em>Annotation Property Value</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.AnnotationPropertyValueImpl
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getAnnotationPropertyValue()
+	 * @generated
+	 */
+	int ANNOTATION_PROPERTY_VALUE = 11;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_PROPERTY_VALUE__UUID = 0;
+
+	/**
+	 * The feature id for the '<em><b>Subject</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_PROPERTY_VALUE__SUBJECT = 1;
+
+	/**
+	 * The feature id for the '<em><b>Property</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_PROPERTY_VALUE__PROPERTY = 2;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_PROPERTY_VALUE__VALUE = 3;
+
+	/**
+	 * The number of structural features of the '<em>Annotation Property Value</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_PROPERTY_VALUE_FEATURE_COUNT = 4;
+
+	/**
+	 * The number of operations of the '<em>Annotation Property Value</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_PROPERTY_VALUE_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.ElementImpl <em>Element</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -100,7 +553,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getElement()
 	 * @generated
 	 */
-	int ELEMENT = 0;
+	int ELEMENT = 12;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -112,13 +565,22 @@ public interface CommonPackage extends EPackage {
 	int ELEMENT__UUID = 0;
 
 	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ELEMENT__ANNOTATIONS = 1;
+
+	/**
 	 * The number of structural features of the '<em>Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_FEATURE_COUNT = 1;
+	int ELEMENT_FEATURE_COUNT = 2;
 
 	/**
 	 * The operation id for the '<em>Uuid</em>' operation.
@@ -130,13 +592,22 @@ public interface CommonPackage extends EPackage {
 	int ELEMENT___UUID = 0;
 
 	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ELEMENT___MODULE_CONTEXT = 1;
+
+	/**
 	 * The number of operations of the '<em>Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_OPERATION_COUNT = 1;
+	int ELEMENT_OPERATION_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.ResourceImpl <em>Resource</em>}' class.
@@ -146,7 +617,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getResource()
 	 * @generated
 	 */
-	int RESOURCE = 1;
+	int RESOURCE = 13;
 
 	/**
 	 * The number of structural features of the '<em>Resource</em>' class.
@@ -201,7 +672,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getModuleElement()
 	 * @generated
 	 */
-	int MODULE_ELEMENT = 2;
+	int MODULE_ELEMENT = 14;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -211,6 +682,15 @@ public interface CommonPackage extends EPackage {
 	 * @ordered
 	 */
 	int MODULE_ELEMENT__UUID = ELEMENT__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODULE_ELEMENT__ANNOTATIONS = ELEMENT__ANNOTATIONS;
 
 	/**
 	 * The number of structural features of the '<em>Module Element</em>' class.
@@ -231,13 +711,31 @@ public interface CommonPackage extends EPackage {
 	int MODULE_ELEMENT___UUID = ELEMENT___UUID;
 
 	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODULE_ELEMENT___MODULE_CONTEXT = ELEMENT___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODULE_ELEMENT___ALL_NESTED_ELEMENTS = ELEMENT_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>Module Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE_ELEMENT_OPERATION_COUNT = ELEMENT_OPERATION_COUNT + 0;
+	int MODULE_ELEMENT_OPERATION_COUNT = ELEMENT_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.ModuleEdgeImpl <em>Module Edge</em>}' class.
@@ -247,7 +745,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getModuleEdge()
 	 * @generated
 	 */
-	int MODULE_EDGE = 3;
+	int MODULE_EDGE = 15;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -257,6 +755,15 @@ public interface CommonPackage extends EPackage {
 	 * @ordered
 	 */
 	int MODULE_EDGE__UUID = ELEMENT__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODULE_EDGE__ANNOTATIONS = ELEMENT__ANNOTATIONS;
 
 	/**
 	 * The number of structural features of the '<em>Module Edge</em>' class.
@@ -295,13 +802,22 @@ public interface CommonPackage extends EPackage {
 	int MODULE_EDGE___TARGET_MODULE = ELEMENT_OPERATION_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODULE_EDGE___MODULE_CONTEXT = ELEMENT_OPERATION_COUNT + 2;
+
+	/**
 	 * The number of operations of the '<em>Module Edge</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE_EDGE_OPERATION_COUNT = ELEMENT_OPERATION_COUNT + 2;
+	int MODULE_EDGE_OPERATION_COUNT = ELEMENT_OPERATION_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.AnnotationPropertyImpl <em>Annotation Property</em>}' class.
@@ -311,7 +827,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getAnnotationProperty()
 	 * @generated
 	 */
-	int ANNOTATION_PROPERTY = 4;
+	int ANNOTATION_PROPERTY = 16;
 
 	/**
 	 * The feature id for the '<em><b>Extent</b></em>' container reference.
@@ -368,263 +884,6 @@ public interface CommonPackage extends EPackage {
 	int ANNOTATION_PROPERTY_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.AnnotationPropertyTableImpl <em>Annotation Property Table</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see gov.nasa.jpl.imce.oml.model.common.impl.AnnotationPropertyTableImpl
-	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getAnnotationPropertyTable()
-	 * @generated
-	 */
-	int ANNOTATION_PROPERTY_TABLE = 5;
-
-	/**
-	 * The feature id for the '<em><b>Key</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANNOTATION_PROPERTY_TABLE__KEY = 0;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANNOTATION_PROPERTY_TABLE__VALUE = 1;
-
-	/**
-	 * The number of structural features of the '<em>Annotation Property Table</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANNOTATION_PROPERTY_TABLE_FEATURE_COUNT = 2;
-
-	/**
-	 * The number of operations of the '<em>Annotation Property Table</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANNOTATION_PROPERTY_TABLE_OPERATION_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.AnnotationEntryImpl <em>Annotation Entry</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see gov.nasa.jpl.imce.oml.model.common.impl.AnnotationEntryImpl
-	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getAnnotationEntry()
-	 * @generated
-	 */
-	int ANNOTATION_ENTRY = 6;
-
-	/**
-	 * The feature id for the '<em><b>Module</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANNOTATION_ENTRY__MODULE = 0;
-
-	/**
-	 * The feature id for the '<em><b>Subject</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANNOTATION_ENTRY__SUBJECT = 1;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANNOTATION_ENTRY__VALUE = 2;
-
-	/**
-	 * The number of structural features of the '<em>Annotation Entry</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANNOTATION_ENTRY_FEATURE_COUNT = 3;
-
-	/**
-	 * The number of operations of the '<em>Annotation Entry</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANNOTATION_ENTRY_OPERATION_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.AnnotationSubjectTableImpl <em>Annotation Subject Table</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see gov.nasa.jpl.imce.oml.model.common.impl.AnnotationSubjectTableImpl
-	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getAnnotationSubjectTable()
-	 * @generated
-	 */
-	int ANNOTATION_SUBJECT_TABLE = 7;
-
-	/**
-	 * The feature id for the '<em><b>Key</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANNOTATION_SUBJECT_TABLE__KEY = 0;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANNOTATION_SUBJECT_TABLE__VALUE = 1;
-
-	/**
-	 * The number of structural features of the '<em>Annotation Subject Table</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANNOTATION_SUBJECT_TABLE_FEATURE_COUNT = 2;
-
-	/**
-	 * The number of operations of the '<em>Annotation Subject Table</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANNOTATION_SUBJECT_TABLE_OPERATION_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.AnnotationSubjectPropertyValueImpl <em>Annotation Subject Property Value</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see gov.nasa.jpl.imce.oml.model.common.impl.AnnotationSubjectPropertyValueImpl
-	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getAnnotationSubjectPropertyValue()
-	 * @generated
-	 */
-	int ANNOTATION_SUBJECT_PROPERTY_VALUE = 8;
-
-	/**
-	 * The feature id for the '<em><b>Property</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANNOTATION_SUBJECT_PROPERTY_VALUE__PROPERTY = 0;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANNOTATION_SUBJECT_PROPERTY_VALUE__VALUE = 1;
-
-	/**
-	 * The number of structural features of the '<em>Annotation Subject Property Value</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANNOTATION_SUBJECT_PROPERTY_VALUE_FEATURE_COUNT = 2;
-
-	/**
-	 * The number of operations of the '<em>Annotation Subject Property Value</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANNOTATION_SUBJECT_PROPERTY_VALUE_OPERATION_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.AnnotationImpl <em>Annotation</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see gov.nasa.jpl.imce.oml.model.common.impl.AnnotationImpl
-	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getAnnotation()
-	 * @generated
-	 */
-	int ANNOTATION = 9;
-
-	/**
-	 * The feature id for the '<em><b>Module</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANNOTATION__MODULE = 0;
-
-	/**
-	 * The feature id for the '<em><b>Property</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANNOTATION__PROPERTY = 1;
-
-	/**
-	 * The feature id for the '<em><b>Subject</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANNOTATION__SUBJECT = 2;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANNOTATION__VALUE = 3;
-
-	/**
-	 * The number of structural features of the '<em>Annotation</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANNOTATION_FEATURE_COUNT = 4;
-
-	/**
-	 * The number of operations of the '<em>Annotation</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANNOTATION_OPERATION_COUNT = 0;
-
-	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.ExtentImpl <em>Extent</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -632,7 +891,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getExtent()
 	 * @generated
 	 */
-	int EXTENT = 10;
+	int EXTENT = 17;
 
 	/**
 	 * The feature id for the '<em><b>Modules</b></em>' containment reference list.
@@ -678,7 +937,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getModule()
 	 * @generated
 	 */
-	int MODULE = 11;
+	int MODULE = 18;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -688,6 +947,15 @@ public interface CommonPackage extends EPackage {
 	 * @ordered
 	 */
 	int MODULE__UUID = ELEMENT__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODULE__ANNOTATIONS = ELEMENT__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Extent</b></em>' container reference.
@@ -708,22 +976,13 @@ public interface CommonPackage extends EPackage {
 	int MODULE__IRI = ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODULE__ANNOTATIONS = ELEMENT_FEATURE_COUNT + 2;
-
-	/**
 	 * The number of structural features of the '<em>Module</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 3;
+	int MODULE_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Module Edges</em>' operation.
@@ -780,13 +1039,31 @@ public interface CommonPackage extends EPackage {
 	int MODULE___UUID = ELEMENT_OPERATION_COUNT + 8;
 
 	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODULE___MODULE_CONTEXT = ELEMENT_OPERATION_COUNT + 9;
+
+	/**
+	 * The operation id for the '<em>Module Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODULE___MODULE_ELEMENTS = ELEMENT_OPERATION_COUNT + 10;
+
+	/**
 	 * The number of operations of the '<em>Module</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE_OPERATION_COUNT = ELEMENT_OPERATION_COUNT + 9;
+	int MODULE_OPERATION_COUNT = ELEMENT_OPERATION_COUNT + 11;
 
 	/**
 	 * The meta object id for the '<em>IRI</em>' data type.
@@ -796,7 +1073,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getIRI()
 	 * @generated
 	 */
-	int IRI = 12;
+	int IRI = 19;
 
 	/**
 	 * The meta object id for the '<em>Local Name</em>' data type.
@@ -806,47 +1083,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLocalName()
 	 * @generated
 	 */
-	int LOCAL_NAME = 13;
-
-	/**
-	 * The meta object id for the '<em>Lexical Value</em>' data type.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see java.lang.String
-	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLexicalValue()
-	 * @generated
-	 */
-	int LEXICAL_VALUE = 14;
-
-	/**
-	 * The meta object id for the '<em>Lexical Number</em>' data type.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see java.lang.String
-	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLexicalNumber()
-	 * @generated
-	 */
-	int LEXICAL_NUMBER = 15;
-
-	/**
-	 * The meta object id for the '<em>Lexical Time</em>' data type.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see java.lang.String
-	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLexicalTime()
-	 * @generated
-	 */
-	int LEXICAL_TIME = 16;
-
-	/**
-	 * The meta object id for the '<em>Pattern</em>' data type.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see java.lang.String
-	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getPattern()
-	 * @generated
-	 */
-	int PATTERN = 17;
+	int LOCAL_NAME = 20;
 
 	/**
 	 * The meta object id for the '<em>UUID</em>' data type.
@@ -856,17 +1093,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getUUID()
 	 * @generated
 	 */
-	int UUID = 18;
-
-	/**
-	 * The meta object id for the '<em>Lang Range</em>' data type.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see java.lang.String
-	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLangRange()
-	 * @generated
-	 */
-	int LANG_RANGE = 19;
+	int UUID = 21;
 
 	/**
 	 * The meta object id for the '<em>Abbrev IRI</em>' data type.
@@ -876,7 +1103,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getAbbrevIRI()
 	 * @generated
 	 */
-	int ABBREV_IRI = 20;
+	int ABBREV_IRI = 22;
 
 	/**
 	 * The meta object id for the '<em>Namespace Prefix</em>' data type.
@@ -886,8 +1113,391 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getNamespacePrefix()
 	 * @generated
 	 */
-	int NAMESPACE_PREFIX = 21;
+	int NAMESPACE_PREFIX = 23;
 
+	/**
+	 * The meta object id for the '<em>Positive Integer Literal</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.datatypes.PositiveIntegerValue
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getPositiveIntegerLiteral()
+	 * @generated
+	 */
+	int POSITIVE_INTEGER_LITERAL = 24;
+
+	/**
+	 * The meta object id for the '<em>Literal Pattern</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.datatypes.PatternValue
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLiteralPattern()
+	 * @generated
+	 */
+	int LITERAL_PATTERN = 25;
+
+	/**
+	 * The meta object id for the '<em>Real Data Type</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.datatypes.RealValue
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getRealDataType()
+	 * @generated
+	 */
+	int REAL_DATA_TYPE = 26;
+
+	/**
+	 * The meta object id for the '<em>Rational Data Type</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.datatypes.RationalValue
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getRationalDataType()
+	 * @generated
+	 */
+	int RATIONAL_DATA_TYPE = 27;
+
+	/**
+	 * The meta object id for the '<em>Float Data Type</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.datatypes.FloatValue
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getFloatDataType()
+	 * @generated
+	 */
+	int FLOAT_DATA_TYPE = 28;
+
+	/**
+	 * The meta object id for the '<em>Abstract Decimal Data Type</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.datatypes.AbstractDecimalValue
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getAbstractDecimalDataType()
+	 * @generated
+	 */
+	int ABSTRACT_DECIMAL_DATA_TYPE = 29;
+
+	/**
+	 * The meta object id for the '<em>Decimal Data Type</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.datatypes.DecimalValue
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getDecimalDataType()
+	 * @generated
+	 */
+	int DECIMAL_DATA_TYPE = 30;
+
+	/**
+	 * The meta object id for the '<em>Date Time Data Type</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.datatypes.DateTimeValue
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getDateTimeDataType()
+	 * @generated
+	 */
+	int DATE_TIME_DATA_TYPE = 31;
+
+	/**
+	 * The meta object id for the '<em>Language Tag Data Type</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.datatypes.LanguageTagValue
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLanguageTagDataType()
+	 * @generated
+	 */
+	int LANGUAGE_TAG_DATA_TYPE = 32;
+
+	/**
+	 * The meta object id for the '<em>String Data Type</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.datatypes.StringValue
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getStringDataType()
+	 * @generated
+	 */
+	int STRING_DATA_TYPE = 33;
+
+	/**
+	 * The meta object id for the '<em>UUID Data Type</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.datatypes.UUIDValue
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getUUIDDataType()
+	 * @generated
+	 */
+	int UUID_DATA_TYPE = 34;
+
+	/**
+	 * The meta object id for the '<em>URI Data Type</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.datatypes.URIValue
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getURIDataType()
+	 * @generated
+	 */
+	int URI_DATA_TYPE = 35;
+
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.common.LiteralValue <em>Literal Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Literal Value</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralValue
+	 * @generated
+	 */
+	EClass getLiteralValue();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.common.LiteralBoolean <em>Literal Boolean</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Literal Boolean</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralBoolean
+	 * @generated
+	 */
+	EClass getLiteralBoolean();
+
+	/**
+	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.common.LiteralBoolean#isValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralBoolean#isValue()
+	 * @see #getLiteralBoolean()
+	 * @generated
+	 */
+	EAttribute getLiteralBoolean_Value();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.common.LiteralDateTime <em>Literal Date Time</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Literal Date Time</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralDateTime
+	 * @generated
+	 */
+	EClass getLiteralDateTime();
+
+	/**
+	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.common.LiteralDateTime#getDateTime <em>Date Time</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Date Time</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralDateTime#getDateTime()
+	 * @see #getLiteralDateTime()
+	 * @generated
+	 */
+	EAttribute getLiteralDateTime_DateTime();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.common.LiteralString <em>Literal String</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Literal String</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralString
+	 * @generated
+	 */
+	EClass getLiteralString();
+
+	/**
+	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.common.LiteralString#getString <em>String</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>String</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralString#getString()
+	 * @see #getLiteralString()
+	 * @generated
+	 */
+	EAttribute getLiteralString_String();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.common.LiteralUUID <em>Literal UUID</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Literal UUID</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralUUID
+	 * @generated
+	 */
+	EClass getLiteralUUID();
+
+	/**
+	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.common.LiteralUUID#getUuid <em>Uuid</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Uuid</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralUUID#getUuid()
+	 * @see #getLiteralUUID()
+	 * @generated
+	 */
+	EAttribute getLiteralUUID_Uuid();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.common.LiteralURI <em>Literal URI</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Literal URI</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralURI
+	 * @generated
+	 */
+	EClass getLiteralURI();
+
+	/**
+	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.common.LiteralURI#getUri <em>Uri</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Uri</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralURI#getUri()
+	 * @see #getLiteralURI()
+	 * @generated
+	 */
+	EAttribute getLiteralURI_Uri();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.common.LiteralNumber <em>Literal Number</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Literal Number</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralNumber
+	 * @generated
+	 */
+	EClass getLiteralNumber();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.common.LiteralReal <em>Literal Real</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Literal Real</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralReal
+	 * @generated
+	 */
+	EClass getLiteralReal();
+
+	/**
+	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.common.LiteralReal#getReal <em>Real</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Real</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralReal#getReal()
+	 * @see #getLiteralReal()
+	 * @generated
+	 */
+	EAttribute getLiteralReal_Real();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.common.LiteralRational <em>Literal Rational</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Literal Rational</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralRational
+	 * @generated
+	 */
+	EClass getLiteralRational();
+
+	/**
+	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.common.LiteralRational#getRational <em>Rational</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Rational</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralRational#getRational()
+	 * @see #getLiteralRational()
+	 * @generated
+	 */
+	EAttribute getLiteralRational_Rational();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.common.LiteralFloat <em>Literal Float</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Literal Float</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralFloat
+	 * @generated
+	 */
+	EClass getLiteralFloat();
+
+	/**
+	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.common.LiteralFloat#getFloat <em>Float</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Float</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralFloat#getFloat()
+	 * @see #getLiteralFloat()
+	 * @generated
+	 */
+	EAttribute getLiteralFloat_Float();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.common.LiteralDecimal <em>Literal Decimal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Literal Decimal</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralDecimal
+	 * @generated
+	 */
+	EClass getLiteralDecimal();
+
+	/**
+	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.common.LiteralDecimal#getDecimal <em>Decimal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Decimal</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralDecimal#getDecimal()
+	 * @see #getLiteralDecimal()
+	 * @generated
+	 */
+	EAttribute getLiteralDecimal_Decimal();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue <em>Annotation Property Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Annotation Property Value</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue
+	 * @generated
+	 */
+	EClass getAnnotationPropertyValue();
+
+	/**
+	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue#getUuid <em>Uuid</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Uuid</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue#getUuid()
+	 * @see #getAnnotationPropertyValue()
+	 * @generated
+	 */
+	EAttribute getAnnotationPropertyValue_Uuid();
+
+	/**
+	 * Returns the meta object for the container reference '{@link gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue#getSubject <em>Subject</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Subject</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue#getSubject()
+	 * @see #getAnnotationPropertyValue()
+	 * @generated
+	 */
+	EReference getAnnotationPropertyValue_Subject();
+
+	/**
+	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue#getProperty <em>Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Property</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue#getProperty()
+	 * @see #getAnnotationPropertyValue()
+	 * @generated
+	 */
+	EReference getAnnotationPropertyValue_Property();
+
+	/**
+	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue#getValue()
+	 * @see #getAnnotationPropertyValue()
+	 * @generated
+	 */
+	EAttribute getAnnotationPropertyValue_Value();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.common.Element <em>Element</em>}'.
@@ -911,6 +1521,17 @@ public interface CommonPackage extends EPackage {
 	EAttribute getElement_Uuid();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link gov.nasa.jpl.imce.oml.model.common.Element#getAnnotations <em>Annotations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Annotations</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.common.Element#getAnnotations()
+	 * @see #getElement()
+	 * @generated
+	 */
+	EReference getElement_Annotations();
+
+	/**
 	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.common.Element#uuid() <em>Uuid</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -919,6 +1540,16 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getElement__Uuid();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.common.Element#moduleContext() <em>Module Context</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Module Context</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.common.Element#moduleContext()
+	 * @generated
+	 */
+	EOperation getElement__ModuleContext();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.common.Resource <em>Resource</em>}'.
@@ -971,6 +1602,16 @@ public interface CommonPackage extends EPackage {
 	EClass getModuleElement();
 
 	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.common.ModuleElement#allNestedElements() <em>All Nested Elements</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>All Nested Elements</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.common.ModuleElement#allNestedElements()
+	 * @generated
+	 */
+	EOperation getModuleElement__AllNestedElements();
+
+	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.common.ModuleEdge <em>Module Edge</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -999,6 +1640,16 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getModuleEdge__TargetModule();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.common.ModuleEdge#moduleContext() <em>Module Context</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Module Context</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.common.ModuleEdge#moduleContext()
+	 * @generated
+	 */
+	EOperation getModuleEdge__ModuleContext();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.common.AnnotationProperty <em>Annotation Property</em>}'.
@@ -1053,204 +1704,6 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getAnnotationProperty_AbbrevIRI();
-
-	/**
-	 * Returns the meta object for class '{@link java.util.Map.Entry <em>Annotation Property Table</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Annotation Property Table</em>'.
-	 * @see java.util.Map.Entry
-	 * @model keyType="gov.nasa.jpl.imce.oml.model.common.AnnotationProperty" keyRequired="true"
-	 *        valueType="gov.nasa.jpl.imce.oml.model.common.AnnotationEntry" valueContainment="true" valueMany="true"
-	 *        valueAnnotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
-	 * @generated
-	 */
-	EClass getAnnotationPropertyTable();
-
-	/**
-	 * Returns the meta object for the reference '{@link java.util.Map.Entry <em>Key</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Key</em>'.
-	 * @see java.util.Map.Entry
-	 * @see #getAnnotationPropertyTable()
-	 * @generated
-	 */
-	EReference getAnnotationPropertyTable_Key();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link java.util.Map.Entry <em>Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Value</em>'.
-	 * @see java.util.Map.Entry
-	 * @see #getAnnotationPropertyTable()
-	 * @generated
-	 */
-	EReference getAnnotationPropertyTable_Value();
-
-	/**
-	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.common.AnnotationEntry <em>Annotation Entry</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Annotation Entry</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.common.AnnotationEntry
-	 * @generated
-	 */
-	EClass getAnnotationEntry();
-
-	/**
-	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.common.AnnotationEntry#getModule <em>Module</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Module</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.common.AnnotationEntry#getModule()
-	 * @see #getAnnotationEntry()
-	 * @generated
-	 */
-	EReference getAnnotationEntry_Module();
-
-	/**
-	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.common.AnnotationEntry#getSubject <em>Subject</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Subject</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.common.AnnotationEntry#getSubject()
-	 * @see #getAnnotationEntry()
-	 * @generated
-	 */
-	EReference getAnnotationEntry_Subject();
-
-	/**
-	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.common.AnnotationEntry#getValue <em>Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.common.AnnotationEntry#getValue()
-	 * @see #getAnnotationEntry()
-	 * @generated
-	 */
-	EAttribute getAnnotationEntry_Value();
-
-	/**
-	 * Returns the meta object for class '{@link java.util.Map.Entry <em>Annotation Subject Table</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Annotation Subject Table</em>'.
-	 * @see java.util.Map.Entry
-	 * @model keyType="gov.nasa.jpl.imce.oml.model.common.Element" keyRequired="true"
-	 *        valueType="gov.nasa.jpl.imce.oml.model.common.AnnotationSubjectPropertyValue" valueContainment="true" valueMany="true"
-	 * @generated
-	 */
-	EClass getAnnotationSubjectTable();
-
-	/**
-	 * Returns the meta object for the reference '{@link java.util.Map.Entry <em>Key</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Key</em>'.
-	 * @see java.util.Map.Entry
-	 * @see #getAnnotationSubjectTable()
-	 * @generated
-	 */
-	EReference getAnnotationSubjectTable_Key();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link java.util.Map.Entry <em>Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Value</em>'.
-	 * @see java.util.Map.Entry
-	 * @see #getAnnotationSubjectTable()
-	 * @generated
-	 */
-	EReference getAnnotationSubjectTable_Value();
-
-	/**
-	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.common.AnnotationSubjectPropertyValue <em>Annotation Subject Property Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Annotation Subject Property Value</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.common.AnnotationSubjectPropertyValue
-	 * @generated
-	 */
-	EClass getAnnotationSubjectPropertyValue();
-
-	/**
-	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.common.AnnotationSubjectPropertyValue#getProperty <em>Property</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Property</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.common.AnnotationSubjectPropertyValue#getProperty()
-	 * @see #getAnnotationSubjectPropertyValue()
-	 * @generated
-	 */
-	EReference getAnnotationSubjectPropertyValue_Property();
-
-	/**
-	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.common.AnnotationSubjectPropertyValue#getValue <em>Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.common.AnnotationSubjectPropertyValue#getValue()
-	 * @see #getAnnotationSubjectPropertyValue()
-	 * @generated
-	 */
-	EAttribute getAnnotationSubjectPropertyValue_Value();
-
-	/**
-	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.common.Annotation <em>Annotation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Annotation</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.common.Annotation
-	 * @generated
-	 */
-	EClass getAnnotation();
-
-	/**
-	 * Returns the meta object for the container reference '{@link gov.nasa.jpl.imce.oml.model.common.Annotation#getModule <em>Module</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Module</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.common.Annotation#getModule()
-	 * @see #getAnnotation()
-	 * @generated
-	 */
-	EReference getAnnotation_Module();
-
-	/**
-	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.common.Annotation#getProperty <em>Property</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Property</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.common.Annotation#getProperty()
-	 * @see #getAnnotation()
-	 * @generated
-	 */
-	EReference getAnnotation_Property();
-
-	/**
-	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.common.Annotation#getSubject <em>Subject</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Subject</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.common.Annotation#getSubject()
-	 * @see #getAnnotation()
-	 * @generated
-	 */
-	EReference getAnnotation_Subject();
-
-	/**
-	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.common.Annotation#getValue <em>Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.common.Annotation#getValue()
-	 * @see #getAnnotation()
-	 * @generated
-	 */
-	EAttribute getAnnotation_Value();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.common.Extent <em>Extent</em>}'.
@@ -1317,17 +1770,6 @@ public interface CommonPackage extends EPackage {
 	EAttribute getModule_Iri();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link gov.nasa.jpl.imce.oml.model.common.Module#getAnnotations <em>Annotations</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Annotations</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.common.Module#getAnnotations()
-	 * @see #getModule()
-	 * @generated
-	 */
-	EReference getModule_Annotations();
-
-	/**
 	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.common.Module#moduleEdges() <em>Module Edges</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1388,6 +1830,26 @@ public interface CommonPackage extends EPackage {
 	EOperation getModule__Uuid();
 
 	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.common.Module#moduleContext() <em>Module Context</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Module Context</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.common.Module#moduleContext()
+	 * @generated
+	 */
+	EOperation getModule__ModuleContext();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.common.Module#moduleElements() <em>Module Elements</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Module Elements</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.common.Module#moduleElements()
+	 * @generated
+	 */
+	EOperation getModule__ModuleElements();
+
+	/**
 	 * Returns the meta object for data type '{@link java.lang.String <em>IRI</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1410,50 +1872,6 @@ public interface CommonPackage extends EPackage {
 	EDataType getLocalName();
 
 	/**
-	 * Returns the meta object for data type '{@link java.lang.String <em>Lexical Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for data type '<em>Lexical Value</em>'.
-	 * @see java.lang.String
-	 * @model instanceClass="java.lang.String"
-	 * @generated
-	 */
-	EDataType getLexicalValue();
-
-	/**
-	 * Returns the meta object for data type '{@link java.lang.String <em>Lexical Number</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for data type '<em>Lexical Number</em>'.
-	 * @see java.lang.String
-	 * @model instanceClass="java.lang.String"
-	 * @generated
-	 */
-	EDataType getLexicalNumber();
-
-	/**
-	 * Returns the meta object for data type '{@link java.lang.String <em>Lexical Time</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for data type '<em>Lexical Time</em>'.
-	 * @see java.lang.String
-	 * @model instanceClass="java.lang.String"
-	 * @generated
-	 */
-	EDataType getLexicalTime();
-
-	/**
-	 * Returns the meta object for data type '{@link java.lang.String <em>Pattern</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for data type '<em>Pattern</em>'.
-	 * @see java.lang.String
-	 * @model instanceClass="java.lang.String"
-	 * @generated
-	 */
-	EDataType getPattern();
-
-	/**
 	 * Returns the meta object for data type '{@link java.lang.String <em>UUID</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1463,17 +1881,6 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 */
 	EDataType getUUID();
-
-	/**
-	 * Returns the meta object for data type '{@link java.lang.String <em>Lang Range</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for data type '<em>Lang Range</em>'.
-	 * @see java.lang.String
-	 * @model instanceClass="java.lang.String"
-	 * @generated
-	 */
-	EDataType getLangRange();
 
 	/**
 	 * Returns the meta object for data type '{@link java.lang.String <em>Abbrev IRI</em>}'.
@@ -1496,6 +1903,138 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 */
 	EDataType getNamespacePrefix();
+
+	/**
+	 * Returns the meta object for data type '{@link gov.nasa.jpl.imce.oml.model.datatypes.PositiveIntegerValue <em>Positive Integer Literal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Positive Integer Literal</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.datatypes.PositiveIntegerValue
+	 * @model instanceClass="gov.nasa.jpl.imce.oml.model.datatypes.PositiveIntegerValue"
+	 * @generated
+	 */
+	EDataType getPositiveIntegerLiteral();
+
+	/**
+	 * Returns the meta object for data type '{@link gov.nasa.jpl.imce.oml.model.datatypes.PatternValue <em>Literal Pattern</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Literal Pattern</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.datatypes.PatternValue
+	 * @model instanceClass="gov.nasa.jpl.imce.oml.model.datatypes.PatternValue"
+	 * @generated
+	 */
+	EDataType getLiteralPattern();
+
+	/**
+	 * Returns the meta object for data type '{@link gov.nasa.jpl.imce.oml.model.datatypes.RealValue <em>Real Data Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Real Data Type</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.datatypes.RealValue
+	 * @model instanceClass="gov.nasa.jpl.imce.oml.model.datatypes.RealValue"
+	 * @generated
+	 */
+	EDataType getRealDataType();
+
+	/**
+	 * Returns the meta object for data type '{@link gov.nasa.jpl.imce.oml.model.datatypes.RationalValue <em>Rational Data Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Rational Data Type</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.datatypes.RationalValue
+	 * @model instanceClass="gov.nasa.jpl.imce.oml.model.datatypes.RationalValue"
+	 * @generated
+	 */
+	EDataType getRationalDataType();
+
+	/**
+	 * Returns the meta object for data type '{@link gov.nasa.jpl.imce.oml.model.datatypes.FloatValue <em>Float Data Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Float Data Type</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.datatypes.FloatValue
+	 * @model instanceClass="gov.nasa.jpl.imce.oml.model.datatypes.FloatValue"
+	 * @generated
+	 */
+	EDataType getFloatDataType();
+
+	/**
+	 * Returns the meta object for data type '{@link gov.nasa.jpl.imce.oml.model.datatypes.AbstractDecimalValue <em>Abstract Decimal Data Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Abstract Decimal Data Type</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.datatypes.AbstractDecimalValue
+	 * @model instanceClass="gov.nasa.jpl.imce.oml.model.datatypes.AbstractDecimalValue"
+	 * @generated
+	 */
+	EDataType getAbstractDecimalDataType();
+
+	/**
+	 * Returns the meta object for data type '{@link gov.nasa.jpl.imce.oml.model.datatypes.DecimalValue <em>Decimal Data Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Decimal Data Type</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.datatypes.DecimalValue
+	 * @model instanceClass="gov.nasa.jpl.imce.oml.model.datatypes.DecimalValue"
+	 * @generated
+	 */
+	EDataType getDecimalDataType();
+
+	/**
+	 * Returns the meta object for data type '{@link gov.nasa.jpl.imce.oml.model.datatypes.DateTimeValue <em>Date Time Data Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Date Time Data Type</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.datatypes.DateTimeValue
+	 * @model instanceClass="gov.nasa.jpl.imce.oml.model.datatypes.DateTimeValue"
+	 * @generated
+	 */
+	EDataType getDateTimeDataType();
+
+	/**
+	 * Returns the meta object for data type '{@link gov.nasa.jpl.imce.oml.model.datatypes.LanguageTagValue <em>Language Tag Data Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Language Tag Data Type</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.datatypes.LanguageTagValue
+	 * @model instanceClass="gov.nasa.jpl.imce.oml.model.datatypes.LanguageTagValue"
+	 * @generated
+	 */
+	EDataType getLanguageTagDataType();
+
+	/**
+	 * Returns the meta object for data type '{@link gov.nasa.jpl.imce.oml.model.datatypes.StringValue <em>String Data Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>String Data Type</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.datatypes.StringValue
+	 * @model instanceClass="gov.nasa.jpl.imce.oml.model.datatypes.StringValue"
+	 * @generated
+	 */
+	EDataType getStringDataType();
+
+	/**
+	 * Returns the meta object for data type '{@link gov.nasa.jpl.imce.oml.model.datatypes.UUIDValue <em>UUID Data Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>UUID Data Type</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.datatypes.UUIDValue
+	 * @model instanceClass="gov.nasa.jpl.imce.oml.model.datatypes.UUIDValue"
+	 * @generated
+	 */
+	EDataType getUUIDDataType();
+
+	/**
+	 * Returns the meta object for data type '{@link gov.nasa.jpl.imce.oml.model.datatypes.URIValue <em>URI Data Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>URI Data Type</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.datatypes.URIValue
+	 * @model instanceClass="gov.nasa.jpl.imce.oml.model.datatypes.URIValue"
+	 * @generated
+	 */
+	EDataType getURIDataType();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1521,6 +2060,230 @@ public interface CommonPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralValueImpl <em>Literal Value</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.LiteralValueImpl
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLiteralValue()
+		 * @generated
+		 */
+		EClass LITERAL_VALUE = eINSTANCE.getLiteralValue();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralBooleanImpl <em>Literal Boolean</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.LiteralBooleanImpl
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLiteralBoolean()
+		 * @generated
+		 */
+		EClass LITERAL_BOOLEAN = eINSTANCE.getLiteralBoolean();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LITERAL_BOOLEAN__VALUE = eINSTANCE.getLiteralBoolean_Value();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralDateTimeImpl <em>Literal Date Time</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.LiteralDateTimeImpl
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLiteralDateTime()
+		 * @generated
+		 */
+		EClass LITERAL_DATE_TIME = eINSTANCE.getLiteralDateTime();
+
+		/**
+		 * The meta object literal for the '<em><b>Date Time</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LITERAL_DATE_TIME__DATE_TIME = eINSTANCE.getLiteralDateTime_DateTime();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralStringImpl <em>Literal String</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.LiteralStringImpl
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLiteralString()
+		 * @generated
+		 */
+		EClass LITERAL_STRING = eINSTANCE.getLiteralString();
+
+		/**
+		 * The meta object literal for the '<em><b>String</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LITERAL_STRING__STRING = eINSTANCE.getLiteralString_String();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralUUIDImpl <em>Literal UUID</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.LiteralUUIDImpl
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLiteralUUID()
+		 * @generated
+		 */
+		EClass LITERAL_UUID = eINSTANCE.getLiteralUUID();
+
+		/**
+		 * The meta object literal for the '<em><b>Uuid</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LITERAL_UUID__UUID = eINSTANCE.getLiteralUUID_Uuid();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralURIImpl <em>Literal URI</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.LiteralURIImpl
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLiteralURI()
+		 * @generated
+		 */
+		EClass LITERAL_URI = eINSTANCE.getLiteralURI();
+
+		/**
+		 * The meta object literal for the '<em><b>Uri</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LITERAL_URI__URI = eINSTANCE.getLiteralURI_Uri();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralNumberImpl <em>Literal Number</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.LiteralNumberImpl
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLiteralNumber()
+		 * @generated
+		 */
+		EClass LITERAL_NUMBER = eINSTANCE.getLiteralNumber();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralRealImpl <em>Literal Real</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.LiteralRealImpl
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLiteralReal()
+		 * @generated
+		 */
+		EClass LITERAL_REAL = eINSTANCE.getLiteralReal();
+
+		/**
+		 * The meta object literal for the '<em><b>Real</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LITERAL_REAL__REAL = eINSTANCE.getLiteralReal_Real();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralRationalImpl <em>Literal Rational</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.LiteralRationalImpl
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLiteralRational()
+		 * @generated
+		 */
+		EClass LITERAL_RATIONAL = eINSTANCE.getLiteralRational();
+
+		/**
+		 * The meta object literal for the '<em><b>Rational</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LITERAL_RATIONAL__RATIONAL = eINSTANCE.getLiteralRational_Rational();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralFloatImpl <em>Literal Float</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.LiteralFloatImpl
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLiteralFloat()
+		 * @generated
+		 */
+		EClass LITERAL_FLOAT = eINSTANCE.getLiteralFloat();
+
+		/**
+		 * The meta object literal for the '<em><b>Float</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LITERAL_FLOAT__FLOAT = eINSTANCE.getLiteralFloat_Float();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralDecimalImpl <em>Literal Decimal</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.LiteralDecimalImpl
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLiteralDecimal()
+		 * @generated
+		 */
+		EClass LITERAL_DECIMAL = eINSTANCE.getLiteralDecimal();
+
+		/**
+		 * The meta object literal for the '<em><b>Decimal</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LITERAL_DECIMAL__DECIMAL = eINSTANCE.getLiteralDecimal_Decimal();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.AnnotationPropertyValueImpl <em>Annotation Property Value</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.AnnotationPropertyValueImpl
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getAnnotationPropertyValue()
+		 * @generated
+		 */
+		EClass ANNOTATION_PROPERTY_VALUE = eINSTANCE.getAnnotationPropertyValue();
+
+		/**
+		 * The meta object literal for the '<em><b>Uuid</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ANNOTATION_PROPERTY_VALUE__UUID = eINSTANCE.getAnnotationPropertyValue_Uuid();
+
+		/**
+		 * The meta object literal for the '<em><b>Subject</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ANNOTATION_PROPERTY_VALUE__SUBJECT = eINSTANCE.getAnnotationPropertyValue_Subject();
+
+		/**
+		 * The meta object literal for the '<em><b>Property</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ANNOTATION_PROPERTY_VALUE__PROPERTY = eINSTANCE.getAnnotationPropertyValue_Property();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ANNOTATION_PROPERTY_VALUE__VALUE = eINSTANCE.getAnnotationPropertyValue_Value();
+
+		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.ElementImpl <em>Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1539,12 +2302,28 @@ public interface CommonPackage extends EPackage {
 		EAttribute ELEMENT__UUID = eINSTANCE.getElement_Uuid();
 
 		/**
+		 * The meta object literal for the '<em><b>Annotations</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ELEMENT__ANNOTATIONS = eINSTANCE.getElement_Annotations();
+
+		/**
 		 * The meta object literal for the '<em><b>Uuid</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EOperation ELEMENT___UUID = eINSTANCE.getElement__Uuid();
+
+		/**
+		 * The meta object literal for the '<em><b>Module Context</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ELEMENT___MODULE_CONTEXT = eINSTANCE.getElement__ModuleContext();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.ResourceImpl <em>Resource</em>}' class.
@@ -1591,6 +2370,14 @@ public interface CommonPackage extends EPackage {
 		EClass MODULE_ELEMENT = eINSTANCE.getModuleElement();
 
 		/**
+		 * The meta object literal for the '<em><b>All Nested Elements</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation MODULE_ELEMENT___ALL_NESTED_ELEMENTS = eINSTANCE.getModuleElement__AllNestedElements();
+
+		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.ModuleEdgeImpl <em>Module Edge</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1615,6 +2402,14 @@ public interface CommonPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation MODULE_EDGE___TARGET_MODULE = eINSTANCE.getModuleEdge__TargetModule();
+
+		/**
+		 * The meta object literal for the '<em><b>Module Context</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation MODULE_EDGE___MODULE_CONTEXT = eINSTANCE.getModuleEdge__ModuleContext();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.AnnotationPropertyImpl <em>Annotation Property</em>}' class.
@@ -1657,160 +2452,6 @@ public interface CommonPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ANNOTATION_PROPERTY__ABBREV_IRI = eINSTANCE.getAnnotationProperty_AbbrevIRI();
-
-		/**
-		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.AnnotationPropertyTableImpl <em>Annotation Property Table</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see gov.nasa.jpl.imce.oml.model.common.impl.AnnotationPropertyTableImpl
-		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getAnnotationPropertyTable()
-		 * @generated
-		 */
-		EClass ANNOTATION_PROPERTY_TABLE = eINSTANCE.getAnnotationPropertyTable();
-
-		/**
-		 * The meta object literal for the '<em><b>Key</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ANNOTATION_PROPERTY_TABLE__KEY = eINSTANCE.getAnnotationPropertyTable_Key();
-
-		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ANNOTATION_PROPERTY_TABLE__VALUE = eINSTANCE.getAnnotationPropertyTable_Value();
-
-		/**
-		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.AnnotationEntryImpl <em>Annotation Entry</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see gov.nasa.jpl.imce.oml.model.common.impl.AnnotationEntryImpl
-		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getAnnotationEntry()
-		 * @generated
-		 */
-		EClass ANNOTATION_ENTRY = eINSTANCE.getAnnotationEntry();
-
-		/**
-		 * The meta object literal for the '<em><b>Module</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ANNOTATION_ENTRY__MODULE = eINSTANCE.getAnnotationEntry_Module();
-
-		/**
-		 * The meta object literal for the '<em><b>Subject</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ANNOTATION_ENTRY__SUBJECT = eINSTANCE.getAnnotationEntry_Subject();
-
-		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ANNOTATION_ENTRY__VALUE = eINSTANCE.getAnnotationEntry_Value();
-
-		/**
-		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.AnnotationSubjectTableImpl <em>Annotation Subject Table</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see gov.nasa.jpl.imce.oml.model.common.impl.AnnotationSubjectTableImpl
-		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getAnnotationSubjectTable()
-		 * @generated
-		 */
-		EClass ANNOTATION_SUBJECT_TABLE = eINSTANCE.getAnnotationSubjectTable();
-
-		/**
-		 * The meta object literal for the '<em><b>Key</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ANNOTATION_SUBJECT_TABLE__KEY = eINSTANCE.getAnnotationSubjectTable_Key();
-
-		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ANNOTATION_SUBJECT_TABLE__VALUE = eINSTANCE.getAnnotationSubjectTable_Value();
-
-		/**
-		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.AnnotationSubjectPropertyValueImpl <em>Annotation Subject Property Value</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see gov.nasa.jpl.imce.oml.model.common.impl.AnnotationSubjectPropertyValueImpl
-		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getAnnotationSubjectPropertyValue()
-		 * @generated
-		 */
-		EClass ANNOTATION_SUBJECT_PROPERTY_VALUE = eINSTANCE.getAnnotationSubjectPropertyValue();
-
-		/**
-		 * The meta object literal for the '<em><b>Property</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ANNOTATION_SUBJECT_PROPERTY_VALUE__PROPERTY = eINSTANCE.getAnnotationSubjectPropertyValue_Property();
-
-		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ANNOTATION_SUBJECT_PROPERTY_VALUE__VALUE = eINSTANCE.getAnnotationSubjectPropertyValue_Value();
-
-		/**
-		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.AnnotationImpl <em>Annotation</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see gov.nasa.jpl.imce.oml.model.common.impl.AnnotationImpl
-		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getAnnotation()
-		 * @generated
-		 */
-		EClass ANNOTATION = eINSTANCE.getAnnotation();
-
-		/**
-		 * The meta object literal for the '<em><b>Module</b></em>' container reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ANNOTATION__MODULE = eINSTANCE.getAnnotation_Module();
-
-		/**
-		 * The meta object literal for the '<em><b>Property</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ANNOTATION__PROPERTY = eINSTANCE.getAnnotation_Property();
-
-		/**
-		 * The meta object literal for the '<em><b>Subject</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ANNOTATION__SUBJECT = eINSTANCE.getAnnotation_Subject();
-
-		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ANNOTATION__VALUE = eINSTANCE.getAnnotation_Value();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.ExtentImpl <em>Extent</em>}' class.
@@ -1865,14 +2506,6 @@ public interface CommonPackage extends EPackage {
 		EAttribute MODULE__IRI = eINSTANCE.getModule_Iri();
 
 		/**
-		 * The meta object literal for the '<em><b>Annotations</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference MODULE__ANNOTATIONS = eINSTANCE.getModule_Annotations();
-
-		/**
 		 * The meta object literal for the '<em><b>Module Edges</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1921,6 +2554,22 @@ public interface CommonPackage extends EPackage {
 		EOperation MODULE___UUID = eINSTANCE.getModule__Uuid();
 
 		/**
+		 * The meta object literal for the '<em><b>Module Context</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation MODULE___MODULE_CONTEXT = eINSTANCE.getModule__ModuleContext();
+
+		/**
+		 * The meta object literal for the '<em><b>Module Elements</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation MODULE___MODULE_ELEMENTS = eINSTANCE.getModule__ModuleElements();
+
+		/**
 		 * The meta object literal for the '<em>IRI</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1941,46 +2590,6 @@ public interface CommonPackage extends EPackage {
 		EDataType LOCAL_NAME = eINSTANCE.getLocalName();
 
 		/**
-		 * The meta object literal for the '<em>Lexical Value</em>' data type.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see java.lang.String
-		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLexicalValue()
-		 * @generated
-		 */
-		EDataType LEXICAL_VALUE = eINSTANCE.getLexicalValue();
-
-		/**
-		 * The meta object literal for the '<em>Lexical Number</em>' data type.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see java.lang.String
-		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLexicalNumber()
-		 * @generated
-		 */
-		EDataType LEXICAL_NUMBER = eINSTANCE.getLexicalNumber();
-
-		/**
-		 * The meta object literal for the '<em>Lexical Time</em>' data type.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see java.lang.String
-		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLexicalTime()
-		 * @generated
-		 */
-		EDataType LEXICAL_TIME = eINSTANCE.getLexicalTime();
-
-		/**
-		 * The meta object literal for the '<em>Pattern</em>' data type.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see java.lang.String
-		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getPattern()
-		 * @generated
-		 */
-		EDataType PATTERN = eINSTANCE.getPattern();
-
-		/**
 		 * The meta object literal for the '<em>UUID</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1989,16 +2598,6 @@ public interface CommonPackage extends EPackage {
 		 * @generated
 		 */
 		EDataType UUID = eINSTANCE.getUUID();
-
-		/**
-		 * The meta object literal for the '<em>Lang Range</em>' data type.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see java.lang.String
-		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLangRange()
-		 * @generated
-		 */
-		EDataType LANG_RANGE = eINSTANCE.getLangRange();
 
 		/**
 		 * The meta object literal for the '<em>Abbrev IRI</em>' data type.
@@ -2019,6 +2618,126 @@ public interface CommonPackage extends EPackage {
 		 * @generated
 		 */
 		EDataType NAMESPACE_PREFIX = eINSTANCE.getNamespacePrefix();
+
+		/**
+		 * The meta object literal for the '<em>Positive Integer Literal</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.datatypes.PositiveIntegerValue
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getPositiveIntegerLiteral()
+		 * @generated
+		 */
+		EDataType POSITIVE_INTEGER_LITERAL = eINSTANCE.getPositiveIntegerLiteral();
+
+		/**
+		 * The meta object literal for the '<em>Literal Pattern</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.datatypes.PatternValue
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLiteralPattern()
+		 * @generated
+		 */
+		EDataType LITERAL_PATTERN = eINSTANCE.getLiteralPattern();
+
+		/**
+		 * The meta object literal for the '<em>Real Data Type</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.datatypes.RealValue
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getRealDataType()
+		 * @generated
+		 */
+		EDataType REAL_DATA_TYPE = eINSTANCE.getRealDataType();
+
+		/**
+		 * The meta object literal for the '<em>Rational Data Type</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.datatypes.RationalValue
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getRationalDataType()
+		 * @generated
+		 */
+		EDataType RATIONAL_DATA_TYPE = eINSTANCE.getRationalDataType();
+
+		/**
+		 * The meta object literal for the '<em>Float Data Type</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.datatypes.FloatValue
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getFloatDataType()
+		 * @generated
+		 */
+		EDataType FLOAT_DATA_TYPE = eINSTANCE.getFloatDataType();
+
+		/**
+		 * The meta object literal for the '<em>Abstract Decimal Data Type</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.datatypes.AbstractDecimalValue
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getAbstractDecimalDataType()
+		 * @generated
+		 */
+		EDataType ABSTRACT_DECIMAL_DATA_TYPE = eINSTANCE.getAbstractDecimalDataType();
+
+		/**
+		 * The meta object literal for the '<em>Decimal Data Type</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.datatypes.DecimalValue
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getDecimalDataType()
+		 * @generated
+		 */
+		EDataType DECIMAL_DATA_TYPE = eINSTANCE.getDecimalDataType();
+
+		/**
+		 * The meta object literal for the '<em>Date Time Data Type</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.datatypes.DateTimeValue
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getDateTimeDataType()
+		 * @generated
+		 */
+		EDataType DATE_TIME_DATA_TYPE = eINSTANCE.getDateTimeDataType();
+
+		/**
+		 * The meta object literal for the '<em>Language Tag Data Type</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.datatypes.LanguageTagValue
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLanguageTagDataType()
+		 * @generated
+		 */
+		EDataType LANGUAGE_TAG_DATA_TYPE = eINSTANCE.getLanguageTagDataType();
+
+		/**
+		 * The meta object literal for the '<em>String Data Type</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.datatypes.StringValue
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getStringDataType()
+		 * @generated
+		 */
+		EDataType STRING_DATA_TYPE = eINSTANCE.getStringDataType();
+
+		/**
+		 * The meta object literal for the '<em>UUID Data Type</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.datatypes.UUIDValue
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getUUIDDataType()
+		 * @generated
+		 */
+		EDataType UUID_DATA_TYPE = eINSTANCE.getUUIDDataType();
+
+		/**
+		 * The meta object literal for the '<em>URI Data Type</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.datatypes.URIValue
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getURIDataType()
+		 * @generated
+		 */
+		EDataType URI_DATA_TYPE = eINSTANCE.getURIDataType();
 
 	}
 

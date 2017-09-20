@@ -113,6 +113,15 @@ public interface DescriptionsPackage extends EPackage {
 	int DESCRIPTION_BOX__UUID = CommonPackage.MODULE__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DESCRIPTION_BOX__ANNOTATIONS = CommonPackage.MODULE__ANNOTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Extent</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -129,15 +138,6 @@ public interface DescriptionsPackage extends EPackage {
 	 * @ordered
 	 */
 	int DESCRIPTION_BOX__IRI = CommonPackage.MODULE__IRI;
-
-	/**
-	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DESCRIPTION_BOX__ANNOTATIONS = CommonPackage.MODULE__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Kind</b></em>' attribute.
@@ -284,6 +284,15 @@ public interface DescriptionsPackage extends EPackage {
 	int DESCRIPTION_BOX___UUID = CommonPackage.MODULE___UUID;
 
 	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DESCRIPTION_BOX___MODULE_CONTEXT = CommonPackage.MODULE___MODULE_CONTEXT;
+
+	/**
 	 * The operation id for the '<em>Module Edges</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -293,13 +302,22 @@ public interface DescriptionsPackage extends EPackage {
 	int DESCRIPTION_BOX___MODULE_EDGES = CommonPackage.MODULE_OPERATION_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>Module Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DESCRIPTION_BOX___MODULE_ELEMENTS = CommonPackage.MODULE_OPERATION_COUNT + 1;
+
+	/**
 	 * The number of operations of the '<em>Description Box</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DESCRIPTION_BOX_OPERATION_COUNT = CommonPackage.MODULE_OPERATION_COUNT + 1;
+	int DESCRIPTION_BOX_OPERATION_COUNT = CommonPackage.MODULE_OPERATION_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.DescriptionBoxRelationshipImpl <em>Description Box Relationship</em>}' class.
@@ -319,6 +337,15 @@ public interface DescriptionsPackage extends EPackage {
 	 * @ordered
 	 */
 	int DESCRIPTION_BOX_RELATIONSHIP__UUID = CommonPackage.MODULE_EDGE__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DESCRIPTION_BOX_RELATIONSHIP__ANNOTATIONS = CommonPackage.MODULE_EDGE__ANNOTATIONS;
 
 	/**
 	 * The number of structural features of the '<em>Description Box Relationship</em>' class.
@@ -346,6 +373,15 @@ public interface DescriptionsPackage extends EPackage {
 	 * @ordered
 	 */
 	int DESCRIPTION_BOX_RELATIONSHIP___TARGET_MODULE = CommonPackage.MODULE_EDGE___TARGET_MODULE;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DESCRIPTION_BOX_RELATIONSHIP___MODULE_CONTEXT = CommonPackage.MODULE_EDGE___MODULE_CONTEXT;
 
 	/**
 	 * The operation id for the '<em>Description Domain</em>' operation.
@@ -394,6 +430,15 @@ public interface DescriptionsPackage extends EPackage {
 	int DESCRIPTION_BOX_EXTENDS_CLOSED_WORLD_DEFINITIONS__UUID = DESCRIPTION_BOX_RELATIONSHIP__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DESCRIPTION_BOX_EXTENDS_CLOSED_WORLD_DEFINITIONS__ANNOTATIONS = DESCRIPTION_BOX_RELATIONSHIP__ANNOTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Description Box</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -419,6 +464,15 @@ public interface DescriptionsPackage extends EPackage {
 	 * @ordered
 	 */
 	int DESCRIPTION_BOX_EXTENDS_CLOSED_WORLD_DEFINITIONS_FEATURE_COUNT = DESCRIPTION_BOX_RELATIONSHIP_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DESCRIPTION_BOX_EXTENDS_CLOSED_WORLD_DEFINITIONS___MODULE_CONTEXT = DESCRIPTION_BOX_RELATIONSHIP___MODULE_CONTEXT;
 
 	/**
 	 * The operation id for the '<em>Source Module</em>' operation.
@@ -485,6 +539,15 @@ public interface DescriptionsPackage extends EPackage {
 	int DESCRIPTION_BOX_REFINEMENT__UUID = DESCRIPTION_BOX_RELATIONSHIP__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DESCRIPTION_BOX_REFINEMENT__ANNOTATIONS = DESCRIPTION_BOX_RELATIONSHIP__ANNOTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Refining Description Box</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -510,6 +573,15 @@ public interface DescriptionsPackage extends EPackage {
 	 * @ordered
 	 */
 	int DESCRIPTION_BOX_REFINEMENT_FEATURE_COUNT = DESCRIPTION_BOX_RELATIONSHIP_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DESCRIPTION_BOX_REFINEMENT___MODULE_CONTEXT = DESCRIPTION_BOX_RELATIONSHIP___MODULE_CONTEXT;
 
 	/**
 	 * The operation id for the '<em>Source Module</em>' operation.
@@ -576,6 +648,15 @@ public interface DescriptionsPackage extends EPackage {
 	int TERMINOLOGY_INSTANCE_ASSERTION__UUID = CommonPackage.MODULE_ELEMENT__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TERMINOLOGY_INSTANCE_ASSERTION__ANNOTATIONS = CommonPackage.MODULE_ELEMENT__ANNOTATIONS;
+
+	/**
 	 * The number of structural features of the '<em>Terminology Instance Assertion</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -592,6 +673,24 @@ public interface DescriptionsPackage extends EPackage {
 	 * @ordered
 	 */
 	int TERMINOLOGY_INSTANCE_ASSERTION___UUID = CommonPackage.MODULE_ELEMENT___UUID;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TERMINOLOGY_INSTANCE_ASSERTION___MODULE_CONTEXT = CommonPackage.MODULE_ELEMENT___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TERMINOLOGY_INSTANCE_ASSERTION___ALL_NESTED_ELEMENTS = CommonPackage.MODULE_ELEMENT___ALL_NESTED_ELEMENTS;
 
 	/**
 	 * The number of operations of the '<em>Terminology Instance Assertion</em>' class.
@@ -622,6 +721,15 @@ public interface DescriptionsPackage extends EPackage {
 	int SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE__UUID = CommonPackage.MODULE_ELEMENT__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE__ANNOTATIONS = CommonPackage.MODULE_ELEMENT__ANNOTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Description Box</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -649,7 +757,7 @@ public interface DescriptionsPackage extends EPackage {
 	int SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE__SCALAR_DATA_PROPERTY = CommonPackage.MODULE_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Scalar Property Value</b></em>' attribute.
+	 * The feature id for the '<em><b>Scalar Property Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -685,13 +793,31 @@ public interface DescriptionsPackage extends EPackage {
 	int SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE___DESCRIPTION_BOX = CommonPackage.MODULE_ELEMENT_OPERATION_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE___MODULE_CONTEXT = CommonPackage.MODULE_ELEMENT_OPERATION_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE___ALL_NESTED_ELEMENTS = CommonPackage.MODULE_ELEMENT_OPERATION_COUNT + 3;
+
+	/**
 	 * The number of operations of the '<em>Singleton Instance Scalar Data Property Value</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE_OPERATION_COUNT = CommonPackage.MODULE_ELEMENT_OPERATION_COUNT + 2;
+	int SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE_OPERATION_COUNT = CommonPackage.MODULE_ELEMENT_OPERATION_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.SingletonInstanceStructuredDataPropertyContextImpl <em>Singleton Instance Structured Data Property Context</em>}' class.
@@ -711,6 +837,15 @@ public interface DescriptionsPackage extends EPackage {
 	 * @ordered
 	 */
 	int SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT__UUID = CommonPackage.ELEMENT__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT__ANNOTATIONS = CommonPackage.ELEMENT__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Structured Data Property</b></em>' reference.
@@ -767,13 +902,31 @@ public interface DescriptionsPackage extends EPackage {
 	int SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT___DESCRIPTION_BOX = CommonPackage.ELEMENT_OPERATION_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT___MODULE_CONTEXT = CommonPackage.ELEMENT_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>All Nested Restriction Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT___ALL_NESTED_RESTRICTION_ELEMENTS = CommonPackage.ELEMENT_OPERATION_COUNT + 2;
+
+	/**
 	 * The number of operations of the '<em>Singleton Instance Structured Data Property Context</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT_OPERATION_COUNT = CommonPackage.ELEMENT_OPERATION_COUNT + 1;
+	int SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT_OPERATION_COUNT = CommonPackage.ELEMENT_OPERATION_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.SingletonInstanceStructuredDataPropertyValueImpl <em>Singleton Instance Structured Data Property Value</em>}' class.
@@ -793,6 +946,15 @@ public interface DescriptionsPackage extends EPackage {
 	 * @ordered
 	 */
 	int SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_VALUE__UUID = SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_VALUE__ANNOTATIONS = SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Structured Data Property</b></em>' reference.
@@ -849,13 +1011,31 @@ public interface DescriptionsPackage extends EPackage {
 	int SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_VALUE_FEATURE_COUNT = SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT_FEATURE_COUNT + 2;
 
 	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_VALUE___MODULE_CONTEXT = SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>All Nested Restriction Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_VALUE___ALL_NESTED_RESTRICTION_ELEMENTS = SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT___ALL_NESTED_RESTRICTION_ELEMENTS;
+
+	/**
 	 * The operation id for the '<em>Uuid</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_VALUE___UUID = SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT_OPERATION_COUNT + 0;
+	int SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_VALUE___UUID = SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT_OPERATION_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Description Box</em>' operation.
@@ -864,7 +1044,16 @@ public interface DescriptionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_VALUE___DESCRIPTION_BOX = SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT_OPERATION_COUNT + 1;
+	int SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_VALUE___DESCRIPTION_BOX = SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT_OPERATION_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_VALUE___ALL_NESTED_ELEMENTS = SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT_OPERATION_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Singleton Instance Structured Data Property Value</em>' class.
@@ -873,7 +1062,7 @@ public interface DescriptionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_VALUE_OPERATION_COUNT = SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT_OPERATION_COUNT + 2;
+	int SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_VALUE_OPERATION_COUNT = SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT_OPERATION_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.StructuredDataPropertyTupleImpl <em>Structured Data Property Tuple</em>}' class.
@@ -893,6 +1082,15 @@ public interface DescriptionsPackage extends EPackage {
 	 * @ordered
 	 */
 	int STRUCTURED_DATA_PROPERTY_TUPLE__UUID = SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRUCTURED_DATA_PROPERTY_TUPLE__ANNOTATIONS = SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Structured Data Property</b></em>' reference.
@@ -938,6 +1136,24 @@ public interface DescriptionsPackage extends EPackage {
 	 * @ordered
 	 */
 	int STRUCTURED_DATA_PROPERTY_TUPLE_FEATURE_COUNT = SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRUCTURED_DATA_PROPERTY_TUPLE___MODULE_CONTEXT = SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>All Nested Restriction Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRUCTURED_DATA_PROPERTY_TUPLE___ALL_NESTED_RESTRICTION_ELEMENTS = SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT___ALL_NESTED_RESTRICTION_ELEMENTS;
 
 	/**
 	 * The operation id for the '<em>Description Box</em>' operation.
@@ -986,6 +1202,15 @@ public interface DescriptionsPackage extends EPackage {
 	int SCALAR_DATA_PROPERTY_VALUE__UUID = CommonPackage.ELEMENT__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCALAR_DATA_PROPERTY_VALUE__ANNOTATIONS = CommonPackage.ELEMENT__ANNOTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Structured Data Property Context</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1004,7 +1229,7 @@ public interface DescriptionsPackage extends EPackage {
 	int SCALAR_DATA_PROPERTY_VALUE__SCALAR_DATA_PROPERTY = CommonPackage.ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Scalar Property Value</b></em>' attribute.
+	 * The feature id for the '<em><b>Scalar Property Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1040,13 +1265,22 @@ public interface DescriptionsPackage extends EPackage {
 	int SCALAR_DATA_PROPERTY_VALUE___UUID = CommonPackage.ELEMENT_OPERATION_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCALAR_DATA_PROPERTY_VALUE___MODULE_CONTEXT = CommonPackage.ELEMENT_OPERATION_COUNT + 2;
+
+	/**
 	 * The number of operations of the '<em>Scalar Data Property Value</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCALAR_DATA_PROPERTY_VALUE_OPERATION_COUNT = CommonPackage.ELEMENT_OPERATION_COUNT + 2;
+	int SCALAR_DATA_PROPERTY_VALUE_OPERATION_COUNT = CommonPackage.ELEMENT_OPERATION_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.ConceptualEntitySingletonInstanceImpl <em>Conceptual Entity Singleton Instance</em>}' class.
@@ -1068,6 +1302,15 @@ public interface DescriptionsPackage extends EPackage {
 	int CONCEPTUAL_ENTITY_SINGLETON_INSTANCE__UUID = TERMINOLOGY_INSTANCE_ASSERTION__UUID;
 
 	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPTUAL_ENTITY_SINGLETON_INSTANCE__ANNOTATIONS = TERMINOLOGY_INSTANCE_ASSERTION__ANNOTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1084,6 +1327,15 @@ public interface DescriptionsPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONCEPTUAL_ENTITY_SINGLETON_INSTANCE_FEATURE_COUNT = TERMINOLOGY_INSTANCE_ASSERTION_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPTUAL_ENTITY_SINGLETON_INSTANCE___ALL_NESTED_ELEMENTS = TERMINOLOGY_INSTANCE_ASSERTION___ALL_NESTED_ELEMENTS;
 
 	/**
 	 * The operation id for the '<em>Description Box</em>' operation.
@@ -1140,13 +1392,22 @@ public interface DescriptionsPackage extends EPackage {
 	int CONCEPTUAL_ENTITY_SINGLETON_INSTANCE___UUID = TERMINOLOGY_INSTANCE_ASSERTION_OPERATION_COUNT + 8;
 
 	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPTUAL_ENTITY_SINGLETON_INSTANCE___MODULE_CONTEXT = TERMINOLOGY_INSTANCE_ASSERTION_OPERATION_COUNT + 9;
+
+	/**
 	 * The number of operations of the '<em>Conceptual Entity Singleton Instance</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONCEPTUAL_ENTITY_SINGLETON_INSTANCE_OPERATION_COUNT = TERMINOLOGY_INSTANCE_ASSERTION_OPERATION_COUNT + 9;
+	int CONCEPTUAL_ENTITY_SINGLETON_INSTANCE_OPERATION_COUNT = TERMINOLOGY_INSTANCE_ASSERTION_OPERATION_COUNT + 10;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.ConceptInstanceImpl <em>Concept Instance</em>}' class.
@@ -1166,6 +1427,15 @@ public interface DescriptionsPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONCEPT_INSTANCE__UUID = CONCEPTUAL_ENTITY_SINGLETON_INSTANCE__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPT_INSTANCE__ANNOTATIONS = CONCEPTUAL_ENTITY_SINGLETON_INSTANCE__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1240,6 +1510,15 @@ public interface DescriptionsPackage extends EPackage {
 	int CONCEPT_INSTANCE___UUID = CONCEPTUAL_ENTITY_SINGLETON_INSTANCE___UUID;
 
 	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPT_INSTANCE___MODULE_CONTEXT = CONCEPTUAL_ENTITY_SINGLETON_INSTANCE___MODULE_CONTEXT;
+
+	/**
 	 * The operation id for the '<em>Conceptual Entity Singleton Classifier</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1258,13 +1537,22 @@ public interface DescriptionsPackage extends EPackage {
 	int CONCEPT_INSTANCE___DESCRIPTION_BOX = CONCEPTUAL_ENTITY_SINGLETON_INSTANCE_OPERATION_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPT_INSTANCE___ALL_NESTED_ELEMENTS = CONCEPTUAL_ENTITY_SINGLETON_INSTANCE_OPERATION_COUNT + 2;
+
+	/**
 	 * The number of operations of the '<em>Concept Instance</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONCEPT_INSTANCE_OPERATION_COUNT = CONCEPTUAL_ENTITY_SINGLETON_INSTANCE_OPERATION_COUNT + 2;
+	int CONCEPT_INSTANCE_OPERATION_COUNT = CONCEPTUAL_ENTITY_SINGLETON_INSTANCE_OPERATION_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.ReifiedRelationshipInstanceImpl <em>Reified Relationship Instance</em>}' class.
@@ -1284,6 +1572,15 @@ public interface DescriptionsPackage extends EPackage {
 	 * @ordered
 	 */
 	int REIFIED_RELATIONSHIP_INSTANCE__UUID = CONCEPTUAL_ENTITY_SINGLETON_INSTANCE__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_INSTANCE__ANNOTATIONS = CONCEPTUAL_ENTITY_SINGLETON_INSTANCE__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1358,6 +1655,15 @@ public interface DescriptionsPackage extends EPackage {
 	int REIFIED_RELATIONSHIP_INSTANCE___UUID = CONCEPTUAL_ENTITY_SINGLETON_INSTANCE___UUID;
 
 	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_INSTANCE___MODULE_CONTEXT = CONCEPTUAL_ENTITY_SINGLETON_INSTANCE___MODULE_CONTEXT;
+
+	/**
 	 * The operation id for the '<em>Conceptual Entity Singleton Classifier</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1376,13 +1682,22 @@ public interface DescriptionsPackage extends EPackage {
 	int REIFIED_RELATIONSHIP_INSTANCE___DESCRIPTION_BOX = CONCEPTUAL_ENTITY_SINGLETON_INSTANCE_OPERATION_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_INSTANCE___ALL_NESTED_ELEMENTS = CONCEPTUAL_ENTITY_SINGLETON_INSTANCE_OPERATION_COUNT + 2;
+
+	/**
 	 * The number of operations of the '<em>Reified Relationship Instance</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REIFIED_RELATIONSHIP_INSTANCE_OPERATION_COUNT = CONCEPTUAL_ENTITY_SINGLETON_INSTANCE_OPERATION_COUNT + 2;
+	int REIFIED_RELATIONSHIP_INSTANCE_OPERATION_COUNT = CONCEPTUAL_ENTITY_SINGLETON_INSTANCE_OPERATION_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.ReifiedRelationshipInstanceDomainImpl <em>Reified Relationship Instance Domain</em>}' class.
@@ -1402,6 +1717,15 @@ public interface DescriptionsPackage extends EPackage {
 	 * @ordered
 	 */
 	int REIFIED_RELATIONSHIP_INSTANCE_DOMAIN__UUID = TERMINOLOGY_INSTANCE_ASSERTION__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_INSTANCE_DOMAIN__ANNOTATIONS = TERMINOLOGY_INSTANCE_ASSERTION__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Description Box</b></em>' container reference.
@@ -1458,13 +1782,31 @@ public interface DescriptionsPackage extends EPackage {
 	int REIFIED_RELATIONSHIP_INSTANCE_DOMAIN___UUID = TERMINOLOGY_INSTANCE_ASSERTION_OPERATION_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_INSTANCE_DOMAIN___MODULE_CONTEXT = TERMINOLOGY_INSTANCE_ASSERTION_OPERATION_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_INSTANCE_DOMAIN___ALL_NESTED_ELEMENTS = TERMINOLOGY_INSTANCE_ASSERTION_OPERATION_COUNT + 3;
+
+	/**
 	 * The number of operations of the '<em>Reified Relationship Instance Domain</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REIFIED_RELATIONSHIP_INSTANCE_DOMAIN_OPERATION_COUNT = TERMINOLOGY_INSTANCE_ASSERTION_OPERATION_COUNT + 2;
+	int REIFIED_RELATIONSHIP_INSTANCE_DOMAIN_OPERATION_COUNT = TERMINOLOGY_INSTANCE_ASSERTION_OPERATION_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.ReifiedRelationshipInstanceRangeImpl <em>Reified Relationship Instance Range</em>}' class.
@@ -1484,6 +1826,15 @@ public interface DescriptionsPackage extends EPackage {
 	 * @ordered
 	 */
 	int REIFIED_RELATIONSHIP_INSTANCE_RANGE__UUID = TERMINOLOGY_INSTANCE_ASSERTION__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_INSTANCE_RANGE__ANNOTATIONS = TERMINOLOGY_INSTANCE_ASSERTION__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Description Box</b></em>' container reference.
@@ -1540,13 +1891,31 @@ public interface DescriptionsPackage extends EPackage {
 	int REIFIED_RELATIONSHIP_INSTANCE_RANGE___UUID = TERMINOLOGY_INSTANCE_ASSERTION_OPERATION_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_INSTANCE_RANGE___MODULE_CONTEXT = TERMINOLOGY_INSTANCE_ASSERTION_OPERATION_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_INSTANCE_RANGE___ALL_NESTED_ELEMENTS = TERMINOLOGY_INSTANCE_ASSERTION_OPERATION_COUNT + 3;
+
+	/**
 	 * The number of operations of the '<em>Reified Relationship Instance Range</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REIFIED_RELATIONSHIP_INSTANCE_RANGE_OPERATION_COUNT = TERMINOLOGY_INSTANCE_ASSERTION_OPERATION_COUNT + 2;
+	int REIFIED_RELATIONSHIP_INSTANCE_RANGE_OPERATION_COUNT = TERMINOLOGY_INSTANCE_ASSERTION_OPERATION_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.UnreifiedRelationshipInstanceTupleImpl <em>Unreified Relationship Instance Tuple</em>}' class.
@@ -1566,6 +1935,15 @@ public interface DescriptionsPackage extends EPackage {
 	 * @ordered
 	 */
 	int UNREIFIED_RELATIONSHIP_INSTANCE_TUPLE__UUID = TERMINOLOGY_INSTANCE_ASSERTION__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNREIFIED_RELATIONSHIP_INSTANCE_TUPLE__ANNOTATIONS = TERMINOLOGY_INSTANCE_ASSERTION__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Description Box</b></em>' container reference.
@@ -1631,13 +2009,31 @@ public interface DescriptionsPackage extends EPackage {
 	int UNREIFIED_RELATIONSHIP_INSTANCE_TUPLE___UUID = TERMINOLOGY_INSTANCE_ASSERTION_OPERATION_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNREIFIED_RELATIONSHIP_INSTANCE_TUPLE___MODULE_CONTEXT = TERMINOLOGY_INSTANCE_ASSERTION_OPERATION_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNREIFIED_RELATIONSHIP_INSTANCE_TUPLE___ALL_NESTED_ELEMENTS = TERMINOLOGY_INSTANCE_ASSERTION_OPERATION_COUNT + 3;
+
+	/**
 	 * The number of operations of the '<em>Unreified Relationship Instance Tuple</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int UNREIFIED_RELATIONSHIP_INSTANCE_TUPLE_OPERATION_COUNT = TERMINOLOGY_INSTANCE_ASSERTION_OPERATION_COUNT + 2;
+	int UNREIFIED_RELATIONSHIP_INSTANCE_TUPLE_OPERATION_COUNT = TERMINOLOGY_INSTANCE_ASSERTION_OPERATION_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.DescriptionKind <em>Description Kind</em>}' enum.
@@ -1779,6 +2175,16 @@ public interface DescriptionsPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getDescriptionBox__ModuleEdges();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox#moduleElements() <em>Module Elements</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Module Elements</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox#moduleElements()
+	 * @generated
+	 */
+	EOperation getDescriptionBox__ModuleElements();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxRelationship <em>Description Box Relationship</em>}'.
@@ -1988,15 +2394,15 @@ public interface DescriptionsPackage extends EPackage {
 	EReference getSingletonInstanceScalarDataPropertyValue_ScalarDataProperty();
 
 	/**
-	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceScalarDataPropertyValue#getScalarPropertyValue <em>Scalar Property Value</em>}'.
+	 * Returns the meta object for the containment reference '{@link gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceScalarDataPropertyValue#getScalarPropertyValue <em>Scalar Property Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Scalar Property Value</em>'.
+	 * @return the meta object for the containment reference '<em>Scalar Property Value</em>'.
 	 * @see gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceScalarDataPropertyValue#getScalarPropertyValue()
 	 * @see #getSingletonInstanceScalarDataPropertyValue()
 	 * @generated
 	 */
-	EAttribute getSingletonInstanceScalarDataPropertyValue_ScalarPropertyValue();
+	EReference getSingletonInstanceScalarDataPropertyValue_ScalarPropertyValue();
 
 	/**
 	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceScalarDataPropertyValue#uuid() <em>Uuid</em>}' operation.
@@ -2017,6 +2423,26 @@ public interface DescriptionsPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getSingletonInstanceScalarDataPropertyValue__DescriptionBox();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceScalarDataPropertyValue#moduleContext() <em>Module Context</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Module Context</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceScalarDataPropertyValue#moduleContext()
+	 * @generated
+	 */
+	EOperation getSingletonInstanceScalarDataPropertyValue__ModuleContext();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceScalarDataPropertyValue#allNestedElements() <em>All Nested Elements</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>All Nested Elements</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceScalarDataPropertyValue#allNestedElements()
+	 * @generated
+	 */
+	EOperation getSingletonInstanceScalarDataPropertyValue__AllNestedElements();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceStructuredDataPropertyContext <em>Singleton Instance Structured Data Property Context</em>}'.
@@ -2072,6 +2498,26 @@ public interface DescriptionsPackage extends EPackage {
 	EOperation getSingletonInstanceStructuredDataPropertyContext__DescriptionBox();
 
 	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceStructuredDataPropertyContext#moduleContext() <em>Module Context</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Module Context</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceStructuredDataPropertyContext#moduleContext()
+	 * @generated
+	 */
+	EOperation getSingletonInstanceStructuredDataPropertyContext__ModuleContext();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceStructuredDataPropertyContext#allNestedRestrictionElements() <em>All Nested Restriction Elements</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>All Nested Restriction Elements</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceStructuredDataPropertyContext#allNestedRestrictionElements()
+	 * @generated
+	 */
+	EOperation getSingletonInstanceStructuredDataPropertyContext__AllNestedRestrictionElements();
+
+	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceStructuredDataPropertyValue <em>Singleton Instance Structured Data Property Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2122,6 +2568,16 @@ public interface DescriptionsPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getSingletonInstanceStructuredDataPropertyValue__DescriptionBox();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceStructuredDataPropertyValue#allNestedElements() <em>All Nested Elements</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>All Nested Elements</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceStructuredDataPropertyValue#allNestedElements()
+	 * @generated
+	 */
+	EOperation getSingletonInstanceStructuredDataPropertyValue__AllNestedElements();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.descriptions.StructuredDataPropertyTuple <em>Structured Data Property Tuple</em>}'.
@@ -2197,15 +2653,15 @@ public interface DescriptionsPackage extends EPackage {
 	EReference getScalarDataPropertyValue_ScalarDataProperty();
 
 	/**
-	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.descriptions.ScalarDataPropertyValue#getScalarPropertyValue <em>Scalar Property Value</em>}'.
+	 * Returns the meta object for the containment reference '{@link gov.nasa.jpl.imce.oml.model.descriptions.ScalarDataPropertyValue#getScalarPropertyValue <em>Scalar Property Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Scalar Property Value</em>'.
+	 * @return the meta object for the containment reference '<em>Scalar Property Value</em>'.
 	 * @see gov.nasa.jpl.imce.oml.model.descriptions.ScalarDataPropertyValue#getScalarPropertyValue()
 	 * @see #getScalarDataPropertyValue()
 	 * @generated
 	 */
-	EAttribute getScalarDataPropertyValue_ScalarPropertyValue();
+	EReference getScalarDataPropertyValue_ScalarPropertyValue();
 
 	/**
 	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.ScalarDataPropertyValue#descriptionBox() <em>Description Box</em>}' operation.
@@ -2226,6 +2682,16 @@ public interface DescriptionsPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getScalarDataPropertyValue__Uuid();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.ScalarDataPropertyValue#moduleContext() <em>Module Context</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Module Context</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.ScalarDataPropertyValue#moduleContext()
+	 * @generated
+	 */
+	EOperation getScalarDataPropertyValue__ModuleContext();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.descriptions.ConceptualEntitySingletonInstance <em>Conceptual Entity Singleton Instance</em>}'.
@@ -2309,6 +2775,16 @@ public interface DescriptionsPackage extends EPackage {
 	EOperation getConceptualEntitySingletonInstance__Uuid();
 
 	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.ConceptualEntitySingletonInstance#moduleContext() <em>Module Context</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Module Context</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.ConceptualEntitySingletonInstance#moduleContext()
+	 * @generated
+	 */
+	EOperation getConceptualEntitySingletonInstance__ModuleContext();
+
+	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.descriptions.ConceptInstance <em>Concept Instance</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2361,6 +2837,16 @@ public interface DescriptionsPackage extends EPackage {
 	EOperation getConceptInstance__DescriptionBox();
 
 	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.ConceptInstance#allNestedElements() <em>All Nested Elements</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>All Nested Elements</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.ConceptInstance#allNestedElements()
+	 * @generated
+	 */
+	EOperation getConceptInstance__AllNestedElements();
+
+	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstance <em>Reified Relationship Instance</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2411,6 +2897,16 @@ public interface DescriptionsPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getReifiedRelationshipInstance__DescriptionBox();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstance#allNestedElements() <em>All Nested Elements</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>All Nested Elements</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstance#allNestedElements()
+	 * @generated
+	 */
+	EOperation getReifiedRelationshipInstance__AllNestedElements();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstanceDomain <em>Reified Relationship Instance Domain</em>}'.
@@ -2476,6 +2972,26 @@ public interface DescriptionsPackage extends EPackage {
 	EOperation getReifiedRelationshipInstanceDomain__Uuid();
 
 	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstanceDomain#moduleContext() <em>Module Context</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Module Context</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstanceDomain#moduleContext()
+	 * @generated
+	 */
+	EOperation getReifiedRelationshipInstanceDomain__ModuleContext();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstanceDomain#allNestedElements() <em>All Nested Elements</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>All Nested Elements</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstanceDomain#allNestedElements()
+	 * @generated
+	 */
+	EOperation getReifiedRelationshipInstanceDomain__AllNestedElements();
+
+	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstanceRange <em>Reified Relationship Instance Range</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2537,6 +3053,26 @@ public interface DescriptionsPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getReifiedRelationshipInstanceRange__Uuid();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstanceRange#moduleContext() <em>Module Context</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Module Context</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstanceRange#moduleContext()
+	 * @generated
+	 */
+	EOperation getReifiedRelationshipInstanceRange__ModuleContext();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstanceRange#allNestedElements() <em>All Nested Elements</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>All Nested Elements</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstanceRange#allNestedElements()
+	 * @generated
+	 */
+	EOperation getReifiedRelationshipInstanceRange__AllNestedElements();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.descriptions.UnreifiedRelationshipInstanceTuple <em>Unreified Relationship Instance Tuple</em>}'.
@@ -2611,6 +3147,26 @@ public interface DescriptionsPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getUnreifiedRelationshipInstanceTuple__Uuid();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.UnreifiedRelationshipInstanceTuple#moduleContext() <em>Module Context</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Module Context</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.UnreifiedRelationshipInstanceTuple#moduleContext()
+	 * @generated
+	 */
+	EOperation getUnreifiedRelationshipInstanceTuple__ModuleContext();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.UnreifiedRelationshipInstanceTuple#allNestedElements() <em>All Nested Elements</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>All Nested Elements</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.UnreifiedRelationshipInstanceTuple#allNestedElements()
+	 * @generated
+	 */
+	EOperation getUnreifiedRelationshipInstanceTuple__AllNestedElements();
 
 	/**
 	 * Returns the meta object for enum '{@link gov.nasa.jpl.imce.oml.model.descriptions.DescriptionKind <em>Description Kind</em>}'.
@@ -2742,6 +3298,14 @@ public interface DescriptionsPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation DESCRIPTION_BOX___MODULE_EDGES = eINSTANCE.getDescriptionBox__ModuleEdges();
+
+		/**
+		 * The meta object literal for the '<em><b>Module Elements</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DESCRIPTION_BOX___MODULE_ELEMENTS = eINSTANCE.getDescriptionBox__ModuleElements();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.DescriptionBoxRelationshipImpl <em>Description Box Relationship</em>}' class.
@@ -2914,12 +3478,12 @@ public interface DescriptionsPackage extends EPackage {
 		EReference SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE__SCALAR_DATA_PROPERTY = eINSTANCE.getSingletonInstanceScalarDataPropertyValue_ScalarDataProperty();
 
 		/**
-		 * The meta object literal for the '<em><b>Scalar Property Value</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Scalar Property Value</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE = eINSTANCE.getSingletonInstanceScalarDataPropertyValue_ScalarPropertyValue();
+		EReference SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE = eINSTANCE.getSingletonInstanceScalarDataPropertyValue_ScalarPropertyValue();
 
 		/**
 		 * The meta object literal for the '<em><b>Uuid</b></em>' operation.
@@ -2936,6 +3500,22 @@ public interface DescriptionsPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE___DESCRIPTION_BOX = eINSTANCE.getSingletonInstanceScalarDataPropertyValue__DescriptionBox();
+
+		/**
+		 * The meta object literal for the '<em><b>Module Context</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE___MODULE_CONTEXT = eINSTANCE.getSingletonInstanceScalarDataPropertyValue__ModuleContext();
+
+		/**
+		 * The meta object literal for the '<em><b>All Nested Elements</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE___ALL_NESTED_ELEMENTS = eINSTANCE.getSingletonInstanceScalarDataPropertyValue__AllNestedElements();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.SingletonInstanceStructuredDataPropertyContextImpl <em>Singleton Instance Structured Data Property Context</em>}' class.
@@ -2980,6 +3560,22 @@ public interface DescriptionsPackage extends EPackage {
 		EOperation SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT___DESCRIPTION_BOX = eINSTANCE.getSingletonInstanceStructuredDataPropertyContext__DescriptionBox();
 
 		/**
+		 * The meta object literal for the '<em><b>Module Context</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT___MODULE_CONTEXT = eINSTANCE.getSingletonInstanceStructuredDataPropertyContext__ModuleContext();
+
+		/**
+		 * The meta object literal for the '<em><b>All Nested Restriction Elements</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT___ALL_NESTED_RESTRICTION_ELEMENTS = eINSTANCE.getSingletonInstanceStructuredDataPropertyContext__AllNestedRestrictionElements();
+
+		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.SingletonInstanceStructuredDataPropertyValueImpl <em>Singleton Instance Structured Data Property Value</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3020,6 +3616,14 @@ public interface DescriptionsPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_VALUE___DESCRIPTION_BOX = eINSTANCE.getSingletonInstanceStructuredDataPropertyValue__DescriptionBox();
+
+		/**
+		 * The meta object literal for the '<em><b>All Nested Elements</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_VALUE___ALL_NESTED_ELEMENTS = eINSTANCE.getSingletonInstanceStructuredDataPropertyValue__AllNestedElements();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.StructuredDataPropertyTupleImpl <em>Structured Data Property Tuple</em>}' class.
@@ -3082,12 +3686,12 @@ public interface DescriptionsPackage extends EPackage {
 		EReference SCALAR_DATA_PROPERTY_VALUE__SCALAR_DATA_PROPERTY = eINSTANCE.getScalarDataPropertyValue_ScalarDataProperty();
 
 		/**
-		 * The meta object literal for the '<em><b>Scalar Property Value</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Scalar Property Value</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE = eINSTANCE.getScalarDataPropertyValue_ScalarPropertyValue();
+		EReference SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE = eINSTANCE.getScalarDataPropertyValue_ScalarPropertyValue();
 
 		/**
 		 * The meta object literal for the '<em><b>Description Box</b></em>' operation.
@@ -3104,6 +3708,14 @@ public interface DescriptionsPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation SCALAR_DATA_PROPERTY_VALUE___UUID = eINSTANCE.getScalarDataPropertyValue__Uuid();
+
+		/**
+		 * The meta object literal for the '<em><b>Module Context</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SCALAR_DATA_PROPERTY_VALUE___MODULE_CONTEXT = eINSTANCE.getScalarDataPropertyValue__ModuleContext();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.ConceptualEntitySingletonInstanceImpl <em>Conceptual Entity Singleton Instance</em>}' class.
@@ -3172,6 +3784,14 @@ public interface DescriptionsPackage extends EPackage {
 		EOperation CONCEPTUAL_ENTITY_SINGLETON_INSTANCE___UUID = eINSTANCE.getConceptualEntitySingletonInstance__Uuid();
 
 		/**
+		 * The meta object literal for the '<em><b>Module Context</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CONCEPTUAL_ENTITY_SINGLETON_INSTANCE___MODULE_CONTEXT = eINSTANCE.getConceptualEntitySingletonInstance__ModuleContext();
+
+		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.ConceptInstanceImpl <em>Concept Instance</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3214,6 +3834,14 @@ public interface DescriptionsPackage extends EPackage {
 		EOperation CONCEPT_INSTANCE___DESCRIPTION_BOX = eINSTANCE.getConceptInstance__DescriptionBox();
 
 		/**
+		 * The meta object literal for the '<em><b>All Nested Elements</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CONCEPT_INSTANCE___ALL_NESTED_ELEMENTS = eINSTANCE.getConceptInstance__AllNestedElements();
+
+		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.ReifiedRelationshipInstanceImpl <em>Reified Relationship Instance</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3254,6 +3882,14 @@ public interface DescriptionsPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation REIFIED_RELATIONSHIP_INSTANCE___DESCRIPTION_BOX = eINSTANCE.getReifiedRelationshipInstance__DescriptionBox();
+
+		/**
+		 * The meta object literal for the '<em><b>All Nested Elements</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation REIFIED_RELATIONSHIP_INSTANCE___ALL_NESTED_ELEMENTS = eINSTANCE.getReifiedRelationshipInstance__AllNestedElements();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.ReifiedRelationshipInstanceDomainImpl <em>Reified Relationship Instance Domain</em>}' class.
@@ -3306,6 +3942,22 @@ public interface DescriptionsPackage extends EPackage {
 		EOperation REIFIED_RELATIONSHIP_INSTANCE_DOMAIN___UUID = eINSTANCE.getReifiedRelationshipInstanceDomain__Uuid();
 
 		/**
+		 * The meta object literal for the '<em><b>Module Context</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation REIFIED_RELATIONSHIP_INSTANCE_DOMAIN___MODULE_CONTEXT = eINSTANCE.getReifiedRelationshipInstanceDomain__ModuleContext();
+
+		/**
+		 * The meta object literal for the '<em><b>All Nested Elements</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation REIFIED_RELATIONSHIP_INSTANCE_DOMAIN___ALL_NESTED_ELEMENTS = eINSTANCE.getReifiedRelationshipInstanceDomain__AllNestedElements();
+
+		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.ReifiedRelationshipInstanceRangeImpl <em>Reified Relationship Instance Range</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3354,6 +4006,22 @@ public interface DescriptionsPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation REIFIED_RELATIONSHIP_INSTANCE_RANGE___UUID = eINSTANCE.getReifiedRelationshipInstanceRange__Uuid();
+
+		/**
+		 * The meta object literal for the '<em><b>Module Context</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation REIFIED_RELATIONSHIP_INSTANCE_RANGE___MODULE_CONTEXT = eINSTANCE.getReifiedRelationshipInstanceRange__ModuleContext();
+
+		/**
+		 * The meta object literal for the '<em><b>All Nested Elements</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation REIFIED_RELATIONSHIP_INSTANCE_RANGE___ALL_NESTED_ELEMENTS = eINSTANCE.getReifiedRelationshipInstanceRange__AllNestedElements();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.UnreifiedRelationshipInstanceTupleImpl <em>Unreified Relationship Instance Tuple</em>}' class.
@@ -3412,6 +4080,22 @@ public interface DescriptionsPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation UNREIFIED_RELATIONSHIP_INSTANCE_TUPLE___UUID = eINSTANCE.getUnreifiedRelationshipInstanceTuple__Uuid();
+
+		/**
+		 * The meta object literal for the '<em><b>Module Context</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation UNREIFIED_RELATIONSHIP_INSTANCE_TUPLE___MODULE_CONTEXT = eINSTANCE.getUnreifiedRelationshipInstanceTuple__ModuleContext();
+
+		/**
+		 * The meta object literal for the '<em><b>All Nested Elements</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation UNREIFIED_RELATIONSHIP_INSTANCE_TUPLE___ALL_NESTED_ELEMENTS = eINSTANCE.getUnreifiedRelationshipInstanceTuple__AllNestedElements();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.DescriptionKind <em>Description Kind</em>}' enum.

@@ -18,6 +18,8 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies;
 
+import gov.nasa.jpl.imce.oml.model.datatypes.PatternValue;
+import gov.nasa.jpl.imce.oml.model.datatypes.PositiveIntegerValue;
 
 /**
  * <!-- begin-user-doc -->
@@ -61,12 +63,12 @@ public interface IRIScalarRestriction extends RestrictedDataRange {
 	 * The length of the IRI
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Length</em>' attribute.
-	 * @see #setLength(int)
+	 * @see #setLength(PositiveIntegerValue)
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getIRIScalarRestriction_Length()
-	 * @model unique="false"
+	 * @model unique="false" dataType="gov.nasa.jpl.imce.oml.model.common.PositiveIntegerLiteral"
 	 * @generated
 	 */
-	int getLength();
+	PositiveIntegerValue getLength();
 
 	/**
 	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction#getLength <em>Length</em>}' attribute.
@@ -76,7 +78,7 @@ public interface IRIScalarRestriction extends RestrictedDataRange {
 	 * @see #getLength()
 	 * @generated
 	 */
-	void setLength(int value);
+	void setLength(PositiveIntegerValue value);
 
 	/**
 	 * Returns the value of the '<em><b>Min Length</b></em>' attribute.
@@ -86,12 +88,12 @@ public interface IRIScalarRestriction extends RestrictedDataRange {
 	 * The minimum length of the IRI
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Min Length</em>' attribute.
-	 * @see #setMinLength(int)
+	 * @see #setMinLength(PositiveIntegerValue)
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getIRIScalarRestriction_MinLength()
-	 * @model unique="false"
+	 * @model unique="false" dataType="gov.nasa.jpl.imce.oml.model.common.PositiveIntegerLiteral"
 	 * @generated
 	 */
-	int getMinLength();
+	PositiveIntegerValue getMinLength();
 
 	/**
 	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction#getMinLength <em>Min Length</em>}' attribute.
@@ -101,7 +103,7 @@ public interface IRIScalarRestriction extends RestrictedDataRange {
 	 * @see #getMinLength()
 	 * @generated
 	 */
-	void setMinLength(int value);
+	void setMinLength(PositiveIntegerValue value);
 
 	/**
 	 * Returns the value of the '<em><b>Max Length</b></em>' attribute.
@@ -111,12 +113,12 @@ public interface IRIScalarRestriction extends RestrictedDataRange {
 	 * The maximum length of the IRI
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Max Length</em>' attribute.
-	 * @see #setMaxLength(int)
+	 * @see #setMaxLength(PositiveIntegerValue)
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getIRIScalarRestriction_MaxLength()
-	 * @model unique="false"
+	 * @model unique="false" dataType="gov.nasa.jpl.imce.oml.model.common.PositiveIntegerLiteral"
 	 * @generated
 	 */
-	int getMaxLength();
+	PositiveIntegerValue getMaxLength();
 
 	/**
 	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction#getMaxLength <em>Max Length</em>}' attribute.
@@ -126,7 +128,7 @@ public interface IRIScalarRestriction extends RestrictedDataRange {
 	 * @see #getMaxLength()
 	 * @generated
 	 */
-	void setMaxLength(int value);
+	void setMaxLength(PositiveIntegerValue value);
 
 	/**
 	 * Returns the value of the '<em><b>Pattern</b></em>' attribute.
@@ -136,12 +138,12 @@ public interface IRIScalarRestriction extends RestrictedDataRange {
 	 * The pattern of the IRI (https://www.w3.org/TR/xmlschema-2/#regexs)
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Pattern</em>' attribute.
-	 * @see #setPattern(String)
+	 * @see #setPattern(PatternValue)
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getIRIScalarRestriction_Pattern()
-	 * @model unique="false" dataType="gov.nasa.jpl.imce.oml.model.common.Pattern"
+	 * @model unique="false" dataType="gov.nasa.jpl.imce.oml.model.common.LiteralPattern"
 	 * @generated
 	 */
-	String getPattern();
+	PatternValue getPattern();
 
 	/**
 	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction#getPattern <em>Pattern</em>}' attribute.
@@ -151,6 +153,6 @@ public interface IRIScalarRestriction extends RestrictedDataRange {
 	 * @see #getPattern()
 	 * @generated
 	 */
-	void setPattern(String value);
+	void setPattern(PatternValue value);
 
 } // IRIScalarRestriction

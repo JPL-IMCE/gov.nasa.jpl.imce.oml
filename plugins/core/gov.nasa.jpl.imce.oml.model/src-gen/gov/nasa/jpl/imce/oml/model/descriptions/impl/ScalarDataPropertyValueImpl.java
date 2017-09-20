@@ -18,6 +18,9 @@
  */
 package gov.nasa.jpl.imce.oml.model.descriptions.impl;
 
+import gov.nasa.jpl.imce.oml.model.common.LiteralValue;
+import gov.nasa.jpl.imce.oml.model.common.Module;
+
 import gov.nasa.jpl.imce.oml.model.common.impl.ElementImpl;
 
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox;
@@ -75,24 +78,14 @@ public class ScalarDataPropertyValueImpl extends ElementImpl implements ScalarDa
 	protected DataRelationshipToScalar scalarDataProperty;
 
 	/**
-	 * The default value of the '{@link #getScalarPropertyValue() <em>Scalar Property Value</em>}' attribute.
+	 * The cached value of the '{@link #getScalarPropertyValue() <em>Scalar Property Value</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getScalarPropertyValue()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String SCALAR_PROPERTY_VALUE_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getScalarPropertyValue() <em>Scalar Property Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getScalarPropertyValue()
-	 * @generated
-	 * @ordered
-	 */
-	protected String scalarPropertyValue = SCALAR_PROPERTY_VALUE_EDEFAULT;
+	protected LiteralValue scalarPropertyValue;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -207,7 +200,7 @@ public class ScalarDataPropertyValueImpl extends ElementImpl implements ScalarDa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getScalarPropertyValue() {
+	public LiteralValue getScalarPropertyValue() {
 		return scalarPropertyValue;
 	}
 
@@ -216,11 +209,33 @@ public class ScalarDataPropertyValueImpl extends ElementImpl implements ScalarDa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setScalarPropertyValue(String newScalarPropertyValue) {
-		String oldScalarPropertyValue = scalarPropertyValue;
+	public NotificationChain basicSetScalarPropertyValue(LiteralValue newScalarPropertyValue, NotificationChain msgs) {
+		LiteralValue oldScalarPropertyValue = scalarPropertyValue;
 		scalarPropertyValue = newScalarPropertyValue;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DescriptionsPackage.SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE, oldScalarPropertyValue, scalarPropertyValue));
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionsPackage.SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE, oldScalarPropertyValue, newScalarPropertyValue);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setScalarPropertyValue(LiteralValue newScalarPropertyValue) {
+		if (newScalarPropertyValue != scalarPropertyValue) {
+			NotificationChain msgs = null;
+			if (scalarPropertyValue != null)
+				msgs = ((InternalEObject)scalarPropertyValue).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionsPackage.SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE, null, msgs);
+			if (newScalarPropertyValue != null)
+				msgs = ((InternalEObject)newScalarPropertyValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionsPackage.SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE, null, msgs);
+			msgs = basicSetScalarPropertyValue(newScalarPropertyValue, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DescriptionsPackage.SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE, newScalarPropertyValue, newScalarPropertyValue));
 	}
 
 	/**
@@ -277,6 +292,15 @@ public class ScalarDataPropertyValueImpl extends ElementImpl implements ScalarDa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Module moduleContext() {
+		return this.descriptionBox();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -298,6 +322,8 @@ public class ScalarDataPropertyValueImpl extends ElementImpl implements ScalarDa
 		switch (featureID) {
 			case DescriptionsPackage.SCALAR_DATA_PROPERTY_VALUE__STRUCTURED_DATA_PROPERTY_CONTEXT:
 				return basicSetStructuredDataPropertyContext(null, msgs);
+			case DescriptionsPackage.SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE:
+				return basicSetScalarPropertyValue(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -351,7 +377,7 @@ public class ScalarDataPropertyValueImpl extends ElementImpl implements ScalarDa
 				setScalarDataProperty((DataRelationshipToScalar)newValue);
 				return;
 			case DescriptionsPackage.SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE:
-				setScalarPropertyValue((String)newValue);
+				setScalarPropertyValue((LiteralValue)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -372,7 +398,7 @@ public class ScalarDataPropertyValueImpl extends ElementImpl implements ScalarDa
 				setScalarDataProperty((DataRelationshipToScalar)null);
 				return;
 			case DescriptionsPackage.SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE:
-				setScalarPropertyValue(SCALAR_PROPERTY_VALUE_EDEFAULT);
+				setScalarPropertyValue((LiteralValue)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -391,7 +417,7 @@ public class ScalarDataPropertyValueImpl extends ElementImpl implements ScalarDa
 			case DescriptionsPackage.SCALAR_DATA_PROPERTY_VALUE__SCALAR_DATA_PROPERTY:
 				return scalarDataProperty != null;
 			case DescriptionsPackage.SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE:
-				return SCALAR_PROPERTY_VALUE_EDEFAULT == null ? scalarPropertyValue != null : !SCALAR_PROPERTY_VALUE_EDEFAULT.equals(scalarPropertyValue);
+				return scalarPropertyValue != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -408,24 +434,10 @@ public class ScalarDataPropertyValueImpl extends ElementImpl implements ScalarDa
 				return descriptionBox();
 			case DescriptionsPackage.SCALAR_DATA_PROPERTY_VALUE___UUID:
 				return uuid();
+			case DescriptionsPackage.SCALAR_DATA_PROPERTY_VALUE___MODULE_CONTEXT:
+				return moduleContext();
 		}
 		return super.eInvoke(operationID, arguments);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (scalarPropertyValue: ");
-		result.append(scalarPropertyValue);
-		result.append(')');
-		return result.toString();
 	}
 
 } //ScalarDataPropertyValueImpl

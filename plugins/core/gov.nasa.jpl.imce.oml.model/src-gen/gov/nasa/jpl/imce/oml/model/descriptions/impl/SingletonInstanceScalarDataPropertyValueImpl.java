@@ -18,6 +18,10 @@
  */
 package gov.nasa.jpl.imce.oml.model.descriptions.impl;
 
+import gov.nasa.jpl.imce.oml.model.common.Element;
+import gov.nasa.jpl.imce.oml.model.common.LiteralValue;
+import gov.nasa.jpl.imce.oml.model.common.Module;
+
 import gov.nasa.jpl.imce.oml.model.common.impl.ModuleElementImpl;
 
 import gov.nasa.jpl.imce.oml.model.descriptions.ConceptualEntitySingletonInstance;
@@ -36,6 +40,7 @@ import java.util.UUID;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -86,24 +91,14 @@ public class SingletonInstanceScalarDataPropertyValueImpl extends ModuleElementI
 	protected EntityScalarDataProperty scalarDataProperty;
 
 	/**
-	 * The default value of the '{@link #getScalarPropertyValue() <em>Scalar Property Value</em>}' attribute.
+	 * The cached value of the '{@link #getScalarPropertyValue() <em>Scalar Property Value</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getScalarPropertyValue()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String SCALAR_PROPERTY_VALUE_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getScalarPropertyValue() <em>Scalar Property Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getScalarPropertyValue()
-	 * @generated
-	 * @ordered
-	 */
-	protected String scalarPropertyValue = SCALAR_PROPERTY_VALUE_EDEFAULT;
+	protected LiteralValue scalarPropertyValue;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -256,7 +251,7 @@ public class SingletonInstanceScalarDataPropertyValueImpl extends ModuleElementI
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getScalarPropertyValue() {
+	public LiteralValue getScalarPropertyValue() {
 		return scalarPropertyValue;
 	}
 
@@ -265,11 +260,33 @@ public class SingletonInstanceScalarDataPropertyValueImpl extends ModuleElementI
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setScalarPropertyValue(String newScalarPropertyValue) {
-		String oldScalarPropertyValue = scalarPropertyValue;
+	public NotificationChain basicSetScalarPropertyValue(LiteralValue newScalarPropertyValue, NotificationChain msgs) {
+		LiteralValue oldScalarPropertyValue = scalarPropertyValue;
 		scalarPropertyValue = newScalarPropertyValue;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DescriptionsPackage.SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE, oldScalarPropertyValue, scalarPropertyValue));
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionsPackage.SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE, oldScalarPropertyValue, newScalarPropertyValue);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setScalarPropertyValue(LiteralValue newScalarPropertyValue) {
+		if (newScalarPropertyValue != scalarPropertyValue) {
+			NotificationChain msgs = null;
+			if (scalarPropertyValue != null)
+				msgs = ((InternalEObject)scalarPropertyValue).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DescriptionsPackage.SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE, null, msgs);
+			if (newScalarPropertyValue != null)
+				msgs = ((InternalEObject)newScalarPropertyValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DescriptionsPackage.SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE, null, msgs);
+			msgs = basicSetScalarPropertyValue(newScalarPropertyValue, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DescriptionsPackage.SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE, newScalarPropertyValue, newScalarPropertyValue));
 	}
 
 	/**
@@ -331,6 +348,24 @@ public class SingletonInstanceScalarDataPropertyValueImpl extends ModuleElementI
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Module moduleContext() {
+		return this.descriptionBox();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Element> allNestedElements() {
+		return ECollections.<Element>emptyEList();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -352,6 +387,8 @@ public class SingletonInstanceScalarDataPropertyValueImpl extends ModuleElementI
 		switch (featureID) {
 			case DescriptionsPackage.SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE__DESCRIPTION_BOX:
 				return basicSetDescriptionBox(null, msgs);
+			case DescriptionsPackage.SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE:
+				return basicSetScalarPropertyValue(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -411,7 +448,7 @@ public class SingletonInstanceScalarDataPropertyValueImpl extends ModuleElementI
 				setScalarDataProperty((EntityScalarDataProperty)newValue);
 				return;
 			case DescriptionsPackage.SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE:
-				setScalarPropertyValue((String)newValue);
+				setScalarPropertyValue((LiteralValue)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -435,7 +472,7 @@ public class SingletonInstanceScalarDataPropertyValueImpl extends ModuleElementI
 				setScalarDataProperty((EntityScalarDataProperty)null);
 				return;
 			case DescriptionsPackage.SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE:
-				setScalarPropertyValue(SCALAR_PROPERTY_VALUE_EDEFAULT);
+				setScalarPropertyValue((LiteralValue)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -456,7 +493,7 @@ public class SingletonInstanceScalarDataPropertyValueImpl extends ModuleElementI
 			case DescriptionsPackage.SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE__SCALAR_DATA_PROPERTY:
 				return scalarDataProperty != null;
 			case DescriptionsPackage.SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE:
-				return SCALAR_PROPERTY_VALUE_EDEFAULT == null ? scalarPropertyValue != null : !SCALAR_PROPERTY_VALUE_EDEFAULT.equals(scalarPropertyValue);
+				return scalarPropertyValue != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -473,24 +510,12 @@ public class SingletonInstanceScalarDataPropertyValueImpl extends ModuleElementI
 				return uuid();
 			case DescriptionsPackage.SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE___DESCRIPTION_BOX:
 				return descriptionBox();
+			case DescriptionsPackage.SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE___MODULE_CONTEXT:
+				return moduleContext();
+			case DescriptionsPackage.SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE___ALL_NESTED_ELEMENTS:
+				return allNestedElements();
 		}
 		return super.eInvoke(operationID, arguments);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (scalarPropertyValue: ");
-		result.append(scalarPropertyValue);
-		result.append(')');
-		return result.toString();
 	}
 
 } //SingletonInstanceScalarDataPropertyValueImpl

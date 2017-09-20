@@ -69,12 +69,12 @@ open terminology <http://imce.jpl.nasa.gov/foundation/mission/mission>
 		val c = tbox.boxStatements.filter(Concept).head
 		c.name().assertEquals("PerformingElement")
 		
-		val a = tbox.annotations.head
+		val a = c.annotations.head
 		val a_prop = a.property
 		val a_subj = a.subject
 		val a_value = a.value
 		
-		"Performing Element".assertEquals(a_value)
+		"Performing Element".assertEquals(a_value.value)
 		ap.assertSame(a_prop)
 		c.assertSame(a_subj)
 		

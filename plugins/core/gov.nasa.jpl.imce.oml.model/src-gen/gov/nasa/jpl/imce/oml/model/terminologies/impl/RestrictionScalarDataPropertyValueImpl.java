@@ -18,6 +18,9 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies.impl;
 
+import gov.nasa.jpl.imce.oml.model.common.LiteralValue;
+import gov.nasa.jpl.imce.oml.model.common.Module;
+
 import gov.nasa.jpl.imce.oml.model.common.impl.ElementImpl;
 
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
@@ -74,24 +77,14 @@ public class RestrictionScalarDataPropertyValueImpl extends ElementImpl implemen
 	protected DataRelationshipToScalar scalarDataProperty;
 
 	/**
-	 * The default value of the '{@link #getScalarPropertyValue() <em>Scalar Property Value</em>}' attribute.
+	 * The cached value of the '{@link #getScalarPropertyValue() <em>Scalar Property Value</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getScalarPropertyValue()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String SCALAR_PROPERTY_VALUE_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getScalarPropertyValue() <em>Scalar Property Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getScalarPropertyValue()
-	 * @generated
-	 * @ordered
-	 */
-	protected String scalarPropertyValue = SCALAR_PROPERTY_VALUE_EDEFAULT;
+	protected LiteralValue scalarPropertyValue;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -155,7 +148,7 @@ public class RestrictionScalarDataPropertyValueImpl extends ElementImpl implemen
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newStructuredDataPropertyContext != null)
-				msgs = ((InternalEObject)newStructuredDataPropertyContext).eInverseAdd(this, TerminologiesPackage.RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__SCALAR_DATA_PROPERTY_VALUES, RestrictionStructuredDataPropertyContext.class, msgs);
+				msgs = ((InternalEObject)newStructuredDataPropertyContext).eInverseAdd(this, TerminologiesPackage.RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__SCALAR_DATA_PROPERTY_RESTRICTIONS, RestrictionStructuredDataPropertyContext.class, msgs);
 			msgs = basicSetStructuredDataPropertyContext(newStructuredDataPropertyContext, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
@@ -206,7 +199,7 @@ public class RestrictionScalarDataPropertyValueImpl extends ElementImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getScalarPropertyValue() {
+	public LiteralValue getScalarPropertyValue() {
 		return scalarPropertyValue;
 	}
 
@@ -215,11 +208,33 @@ public class RestrictionScalarDataPropertyValueImpl extends ElementImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setScalarPropertyValue(String newScalarPropertyValue) {
-		String oldScalarPropertyValue = scalarPropertyValue;
+	public NotificationChain basicSetScalarPropertyValue(LiteralValue newScalarPropertyValue, NotificationChain msgs) {
+		LiteralValue oldScalarPropertyValue = scalarPropertyValue;
 		scalarPropertyValue = newScalarPropertyValue;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE, oldScalarPropertyValue, scalarPropertyValue));
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TerminologiesPackage.RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE, oldScalarPropertyValue, newScalarPropertyValue);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setScalarPropertyValue(LiteralValue newScalarPropertyValue) {
+		if (newScalarPropertyValue != scalarPropertyValue) {
+			NotificationChain msgs = null;
+			if (scalarPropertyValue != null)
+				msgs = ((InternalEObject)scalarPropertyValue).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TerminologiesPackage.RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE, null, msgs);
+			if (newScalarPropertyValue != null)
+				msgs = ((InternalEObject)newScalarPropertyValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TerminologiesPackage.RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE, null, msgs);
+			msgs = basicSetScalarPropertyValue(newScalarPropertyValue, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE, newScalarPropertyValue, newScalarPropertyValue));
 	}
 
 	/**
@@ -276,6 +291,20 @@ public class RestrictionScalarDataPropertyValueImpl extends ElementImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Module moduleContext() {
+		RestrictionStructuredDataPropertyContext _structuredDataPropertyContext = this.getStructuredDataPropertyContext();
+		Module _moduleContext = null;
+		if (_structuredDataPropertyContext!=null) {
+			_moduleContext=_structuredDataPropertyContext.moduleContext();
+		}
+		return _moduleContext;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -297,6 +326,8 @@ public class RestrictionScalarDataPropertyValueImpl extends ElementImpl implemen
 		switch (featureID) {
 			case TerminologiesPackage.RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__STRUCTURED_DATA_PROPERTY_CONTEXT:
 				return basicSetStructuredDataPropertyContext(null, msgs);
+			case TerminologiesPackage.RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE:
+				return basicSetScalarPropertyValue(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -310,7 +341,7 @@ public class RestrictionScalarDataPropertyValueImpl extends ElementImpl implemen
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
 			case TerminologiesPackage.RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__STRUCTURED_DATA_PROPERTY_CONTEXT:
-				return eInternalContainer().eInverseRemove(this, TerminologiesPackage.RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__SCALAR_DATA_PROPERTY_VALUES, RestrictionStructuredDataPropertyContext.class, msgs);
+				return eInternalContainer().eInverseRemove(this, TerminologiesPackage.RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT__SCALAR_DATA_PROPERTY_RESTRICTIONS, RestrictionStructuredDataPropertyContext.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
@@ -350,7 +381,7 @@ public class RestrictionScalarDataPropertyValueImpl extends ElementImpl implemen
 				setScalarDataProperty((DataRelationshipToScalar)newValue);
 				return;
 			case TerminologiesPackage.RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE:
-				setScalarPropertyValue((String)newValue);
+				setScalarPropertyValue((LiteralValue)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -371,7 +402,7 @@ public class RestrictionScalarDataPropertyValueImpl extends ElementImpl implemen
 				setScalarDataProperty((DataRelationshipToScalar)null);
 				return;
 			case TerminologiesPackage.RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE:
-				setScalarPropertyValue(SCALAR_PROPERTY_VALUE_EDEFAULT);
+				setScalarPropertyValue((LiteralValue)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -390,7 +421,7 @@ public class RestrictionScalarDataPropertyValueImpl extends ElementImpl implemen
 			case TerminologiesPackage.RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__SCALAR_DATA_PROPERTY:
 				return scalarDataProperty != null;
 			case TerminologiesPackage.RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE:
-				return SCALAR_PROPERTY_VALUE_EDEFAULT == null ? scalarPropertyValue != null : !SCALAR_PROPERTY_VALUE_EDEFAULT.equals(scalarPropertyValue);
+				return scalarPropertyValue != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -407,24 +438,10 @@ public class RestrictionScalarDataPropertyValueImpl extends ElementImpl implemen
 				return terminologyBox();
 			case TerminologiesPackage.RESTRICTION_SCALAR_DATA_PROPERTY_VALUE___UUID:
 				return uuid();
+			case TerminologiesPackage.RESTRICTION_SCALAR_DATA_PROPERTY_VALUE___MODULE_CONTEXT:
+				return moduleContext();
 		}
 		return super.eInvoke(operationID, arguments);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (scalarPropertyValue: ");
-		result.append(scalarPropertyValue);
-		result.append(')');
-		return result.toString();
 	}
 
 } //RestrictionScalarDataPropertyValueImpl

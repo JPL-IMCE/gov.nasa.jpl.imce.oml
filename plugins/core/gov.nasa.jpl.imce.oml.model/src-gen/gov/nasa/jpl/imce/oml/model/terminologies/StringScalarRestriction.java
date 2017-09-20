@@ -18,6 +18,8 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies;
 
+import gov.nasa.jpl.imce.oml.model.datatypes.PatternValue;
+import gov.nasa.jpl.imce.oml.model.datatypes.PositiveIntegerValue;
 
 /**
  * <!-- begin-user-doc -->
@@ -67,12 +69,12 @@ public interface StringScalarRestriction extends RestrictedDataRange {
 	 * The length of the string
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Length</em>' attribute.
-	 * @see #setLength(int)
+	 * @see #setLength(PositiveIntegerValue)
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getStringScalarRestriction_Length()
-	 * @model unique="false"
+	 * @model unique="false" dataType="gov.nasa.jpl.imce.oml.model.common.PositiveIntegerLiteral"
 	 * @generated
 	 */
-	int getLength();
+	PositiveIntegerValue getLength();
 
 	/**
 	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.StringScalarRestriction#getLength <em>Length</em>}' attribute.
@@ -82,7 +84,7 @@ public interface StringScalarRestriction extends RestrictedDataRange {
 	 * @see #getLength()
 	 * @generated
 	 */
-	void setLength(int value);
+	void setLength(PositiveIntegerValue value);
 
 	/**
 	 * Returns the value of the '<em><b>Min Length</b></em>' attribute.
@@ -92,12 +94,12 @@ public interface StringScalarRestriction extends RestrictedDataRange {
 	 * The minimum length of the string
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Min Length</em>' attribute.
-	 * @see #setMinLength(int)
+	 * @see #setMinLength(PositiveIntegerValue)
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getStringScalarRestriction_MinLength()
-	 * @model unique="false"
+	 * @model unique="false" dataType="gov.nasa.jpl.imce.oml.model.common.PositiveIntegerLiteral"
 	 * @generated
 	 */
-	int getMinLength();
+	PositiveIntegerValue getMinLength();
 
 	/**
 	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.StringScalarRestriction#getMinLength <em>Min Length</em>}' attribute.
@@ -107,7 +109,7 @@ public interface StringScalarRestriction extends RestrictedDataRange {
 	 * @see #getMinLength()
 	 * @generated
 	 */
-	void setMinLength(int value);
+	void setMinLength(PositiveIntegerValue value);
 
 	/**
 	 * Returns the value of the '<em><b>Max Length</b></em>' attribute.
@@ -117,12 +119,12 @@ public interface StringScalarRestriction extends RestrictedDataRange {
 	 * The maximum length of the string
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Max Length</em>' attribute.
-	 * @see #setMaxLength(int)
+	 * @see #setMaxLength(PositiveIntegerValue)
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getStringScalarRestriction_MaxLength()
-	 * @model unique="false"
+	 * @model unique="false" dataType="gov.nasa.jpl.imce.oml.model.common.PositiveIntegerLiteral"
 	 * @generated
 	 */
-	int getMaxLength();
+	PositiveIntegerValue getMaxLength();
 
 	/**
 	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.StringScalarRestriction#getMaxLength <em>Max Length</em>}' attribute.
@@ -132,7 +134,7 @@ public interface StringScalarRestriction extends RestrictedDataRange {
 	 * @see #getMaxLength()
 	 * @generated
 	 */
-	void setMaxLength(int value);
+	void setMaxLength(PositiveIntegerValue value);
 
 	/**
 	 * Returns the value of the '<em><b>Pattern</b></em>' attribute.
@@ -142,12 +144,12 @@ public interface StringScalarRestriction extends RestrictedDataRange {
 	 * The pattern of the string (https://www.w3.org/TR/xmlschema-2/#regexs)
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Pattern</em>' attribute.
-	 * @see #setPattern(String)
+	 * @see #setPattern(PatternValue)
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getStringScalarRestriction_Pattern()
-	 * @model unique="false" dataType="gov.nasa.jpl.imce.oml.model.common.Pattern"
+	 * @model unique="false" dataType="gov.nasa.jpl.imce.oml.model.common.LiteralPattern"
 	 * @generated
 	 */
-	String getPattern();
+	PatternValue getPattern();
 
 	/**
 	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.StringScalarRestriction#getPattern <em>Pattern</em>}' attribute.
@@ -157,6 +159,6 @@ public interface StringScalarRestriction extends RestrictedDataRange {
 	 * @see #getPattern()
 	 * @generated
 	 */
-	void setPattern(String value);
+	void setPattern(PatternValue value);
 
 } // StringScalarRestriction

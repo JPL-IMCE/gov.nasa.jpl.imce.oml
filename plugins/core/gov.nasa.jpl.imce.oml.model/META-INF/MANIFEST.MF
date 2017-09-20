@@ -5,7 +5,7 @@ Bundle-Localization: plugin
 Bundle-Vendor: %providerName
 Bundle-Name: %pluginName
 Bundle-SymbolicName: gov.nasa.jpl.imce.oml.model;singleton:=true
-Bundle-Version: 0.7.0.qualifier
+Bundle-Version: 0.8.0.qualifier
 Bundle-ClassPath: .
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: gov.nasa.jpl.imce.oml.model.bundles,
@@ -14,6 +14,7 @@ Export-Package: gov.nasa.jpl.imce.oml.model.bundles,
  gov.nasa.jpl.imce.oml.model.common,
  gov.nasa.jpl.imce.oml.model.common.impl,
  gov.nasa.jpl.imce.oml.model.common.util,
+ gov.nasa.jpl.imce.oml.model.datatypes,
  gov.nasa.jpl.imce.oml.model.descriptions,
  gov.nasa.jpl.imce.oml.model.descriptions.impl,
  gov.nasa.jpl.imce.oml.model.descriptions.util,
@@ -24,7 +25,7 @@ Export-Package: gov.nasa.jpl.imce.oml.model.bundles,
  gov.nasa.jpl.imce.oml.model.terminologies,
  gov.nasa.jpl.imce.oml.model.terminologies.impl,
  gov.nasa.jpl.imce.oml.model.terminologies.util
-Require-Bundle: gov.nasa.jpl.imce.oml.uuid;bundle-version="[0.7.0,1.0.0)";visibility:=reexport,
+Require-Bundle: gov.nasa.jpl.imce.oml.uuid;visibility:=reexport,
  org.eclipse.core.runtime;bundle-version="[3.12.0,4.0.0)";visibility:=reexport,
  org.eclipse.core.resources;bundle-version="[3.11.1,4.0.0)";visibility:=reexport,
  org.eclipse.emf.ecore;bundle-version="[2.12.0,3.0.0)";visibility:=reexport,
@@ -32,7 +33,7 @@ Require-Bundle: gov.nasa.jpl.imce.oml.uuid;bundle-version="[0.7.0,1.0.0)";visibi
  org.eclipse.emf.ecore.xcore.lib;bundle-version="[1.1.100,2.0.0)";visibility:=reexport,
  org.eclipse.emf.ecore.xcore;bundle-version="[1.4.0,2.0.0)";visibility:=reexport,
  org.eclipse.emf.cdo;bundle-version="[4.5.0,5.0.0)";visibility:=reexport,
- gov.nasa.jpl.imce.oml.model;bundle-version="[0.7.0,1.0.0)";visibility:=reexport,
+ gov.nasa.jpl.imce.oml.model;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;bundle-version="[2.12.0,3.0.0)";visibility:=reexport,
  org.apache.log4j;bundle-version="[1.2.15,2.0.0)";visibility:=reexport,
  org.eclipse.emf.codegen.ecore;bundle-version="[2.12.0,3.0.0)";visibility:=reexport

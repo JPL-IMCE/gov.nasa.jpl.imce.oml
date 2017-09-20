@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="OML Workbench" uid="gov.nasa.jpl.imce.oml.rcp.product" id="gov.nasa.jpl.imce.oml.rcp.product" application="org.eclipse.ui.ide.workbench" version="0.7.0.qualifier" useFeatures="true" includeLaunchers="true">
+<product name="OML Workbench" uid="gov.nasa.jpl.imce.oml.rcp.product" id="gov.nasa.jpl.imce.oml.rcp.product" application="org.eclipse.ui.ide.workbench" version="0.8.0.qualifier" useFeatures="true" includeLaunchers="true">
+
+   <aboutInfo>
+      <text>
+         Jet Propulsion Laboratory&apos;s Ontological Modeling Language (OML) Workbench
+      </text>
+   </aboutInfo>
 
    <configIni use="default">
    </configIni>
@@ -9,6 +15,8 @@
    <launcherArgs>
       <programArgs>-clearPersistedState
       </programArgs>
+      <vmArgs>-Dorg.eclipse.update.reconcile=false
+      </vmArgs>
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
       </vmArgsMac>
    </launcherArgs>
@@ -22,8 +30,30 @@
       </win>
    </launcher>
 
+
    <vm>
    </vm>
+
+   <license>
+        <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+        <text>
+   Copyright 2016 California Institute of Technology (&quot;Caltech&quot;).
+U.S. Government sponsorship acknowledged.
+
+Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+License Terms
+         </text>
+   </license>
 
    <plugins>
       <plugin id="com.google.guava"/>
@@ -239,8 +269,25 @@
 
    <features>
       <feature id="gov.nasa.jpl.imce.oml.core.feature" installMode="root"/>
-      <feature id="gov.nasa.jpl.imce.oml.runtime.feature" installMode="root"/>
-      <feature id="gov.nasa.jpl.imce.oml.platform.feature"/>
+      <feature id="gov.nasa.jpl.imce.oml.ui.feature" installMode="root"/>
+      <feature id="org.eclipse.platform" version="4.6.3.v20170301-0400"/>
+      <feature id="org.eclipse.emf.ecore"/>
+      <feature id="org.eclipse.equinox.p2.user.ui"/>
+      <feature id="org.eclipse.ecf.filetransfer.httpclient4.feature"/>
+      <feature id="org.eclipse.help"/>
+      <feature id="org.eclipse.ecf.filetransfer.httpclient4.ssl.feature"/>
+      <feature id="org.eclipse.equinox.p2.extras.feature"/>
+      <feature id="org.eclipse.rcp"/>
+      <feature id="org.eclipse.emf.common"/>
+      <feature id="org.eclipse.equinox.p2.core.feature"/>
+      <feature id="org.eclipse.ecf.core.feature"/>
+      <feature id="org.eclipse.equinox.p2.rcp.feature"/>
+      <feature id="org.eclipse.ecf.filetransfer.feature"/>
+      <feature id="org.eclipse.ecf.core.ssl.feature"/>
+      <feature id="org.eclipse.ecf.filetransfer.ssl.feature"/>
+      <feature id="org.eclipse.e4.rcp"/>
+      <feature id="org.eclipse.egit" version="4.6.1.201703071140-r"/>
+      <feature id="org.eclipse.jgit" version="4.6.1.201703071140-r"/>
    </features>
 
    <configurations>

@@ -3,12 +3,12 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>gov.nasa.jpl.imce.oml</groupId>
 	<artifactId>gov.nasa.jpl.imce.oml.root</artifactId>
-	<version>0.7.0-SNAPSHOT</version>
+	<version>0.8.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	
 	<properties>
 		<tycho.version>0.26.0</tycho.version>
-		<oml.version>0.7.0-SNAPSHOT</oml.version>
+		<oml.version>0.8.0-SNAPSHOT</oml.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<neon-repo.url>http://download.eclipse.org/releases/neon</neon-repo.url>
 	</properties>
@@ -21,23 +21,10 @@
 	</modules>
 		
 	<distributionManagement>
-		<!-- 
-		Don't publish snapshot builds to bintray
-		
 		<repository>
 			<id>bintray</id>
-			<url>https://api.bintray.com/content/jpl-imce/gov.nasa.jpl.imce/${project.name}/${project.version};publish=1</url>
+			<url>https://api.bintray.com/content/jpl-imce/gov.nasa.jpl.imce.oml/${project.artifactId}/${project.version};publish=1</url>
 		</repository>
-		-->
-		
-		<repository>
-			<id>artifactory</id>
-			<url>https://cae-artifactory.jpl.nasa.gov/artifactory/maven-libs-release-local</url>
-		</repository>
-		<snapshotRepository>
-			<id>artifactory</id>
-			<url>https://cae-artifactory.jpl.nasa.gov/artifactory/maven-libs-snapshot-local</url>
-		</snapshotRepository>
 	</distributionManagement>
 	
 	<build>
@@ -58,7 +45,7 @@
 						<artifact>
 							<groupId>gov.nasa.jpl.imce.oml</groupId>
 							<artifactId>gov.nasa.jpl.imce.oml.target</artifactId>
-							<version>0.7.0-SNAPSHOT</version>
+							<version>${oml.version}</version>
 						</artifact>
 					</target>					
 					<environments>

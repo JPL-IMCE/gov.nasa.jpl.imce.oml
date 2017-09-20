@@ -1,0 +1,94 @@
+gov.nasa.jpl.imce.oml.tycho 0.8.0.0 resolves major problems found in 0.7.1.2
+
+## Planned scope & Issues resolved:
+
+- [#13 Branch builds fail on travis-ci](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/13)
+
+  Use the `${oml.version}` in the pom configuration avoids having to manually edit the pom file after setting the version.
+  
+- [#42 Viewpoint for OML](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/42)
+
+- [#71 Serialization of SingletonInstanceScalarDataPropertyValue not as expected](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/71)
+
+  OML abstract syntax includes several LiteralValue types that encapsulate different categories of values that can be parsed
+  via Xtext datatypes and context-free terminals; see: https://www.eclipse.org/Xtext/documentation/301_grammarlanguage.html#datatype-rules
+  
+- [#72 Handling of Annotations for Items within Graphs](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/72)
+
+  The OML abstract syntax and OML concrete syntax had to be aligned with respect to the representation of annotations.
+  Before, an annotation was a quad: <module, subject, property, value>; each annotation was owned by a module.
+  The concrete syntax parser was deriving the subject based on the relative position of an annotation
+  before its annotated subject in the textual representation. This violated the Xtext serialization contract:
+  https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#serialization
+  The fix involves making an OML Element own the annotations that it is the subject of and that,
+  in the textual representation, are always serialized before the element itself.
+  The fix includes a unit test to verify Xtext serialization contract on a simple example (OMLAnnotationTest3).
+  
+- [#73 OML Plugins / Feature Fails to Install / Update via Eclipse "Install New Software..."](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/73)
+
+  Added all the repositories used in the target definition as additional repositories for the update site.
+  
+- [#74 Serialization problem for OML annotations](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/74)
+
+  See #72
+  
+- [#75 Simplify eclipse/tycho build](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/75)
+
+  See #76
+  
+- [#76 Remove the oml runtime](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/76)
+
+  Removed all `oml.runtime` plugins and features
+  Removed the `oml.platform.feature`
+  Removed the `oml.platform.updatesite`
+  Simplified the OML target platform (removed Sirius related features and Scala related features)
+  
+- [#77 Remove the OML lifting transformation](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho/issues/77)
+
+  Removed `gov.nasa.jpl.imce.oml.dsl.ui.converters` (from `dsl.ui`)
+  Removed UI contributions for the Lifting transformation (in `dsl.ui/plugin.xml`)
+  Disabled generating `gov.nasa.jpl.imce.oml.dsl.generator.OMLGenerator` (in `dsl/GenerateOML.mwe2` and `dsl/OMLRuntmeModule.xtend`)
+  
+- [#82 Conversion of String Values for AnnotationPropertyValues Fails](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/82)
+
+  Added unit tests to verify the annotation property values are properly serialized.
+  
+- [#83 Publish an OML P2 update site on bintray](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/83)
+
+- [#86 "No viable alternative at input" for LiteralNumber values that are positive integers](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/86)
+
+  Refactored OML's metamodel and grammar to use explicitly-defined datatypes to take advantage of Xtext's support for context-sensitive datatype parsing.
+  Context-sensitive datatype parsing really requires defining hierarchies of datatypes such that the set of context-free lexical rules that produce compatible
+  datatypes can be interpreted as a context-sensitive way of parsing the union of lexical tokens corresponding a hierarchy of datatypes.
+   
+
+- [#89 "The Value [X] is Invalid" Error When Parsing PositiveIntegerLiterals](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/89)
+
+  Xtext's datatype value conversion expects a datatype to have a constructor with a single String argument.
+  The PositiveIntegerValue datatype was missing such a constructor.
+  
+- [#91 Conversion of DecimalValue Fails During Serialization](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/91)
+
+- [#94 Add Support for Boolean Data Type Values / LiteralBoolean](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/94)
+
+- [#95 Cannot start OML Workbench](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/95)
+
+  See [OML Product README](../releng/gov.nasa.jpl.imce.oml.product/README.md) for the workaround to this issue: https://bugs.eclipse.org/bugs/show_bug.cgi?id=463117
+  
+  Note that launching the OML Workbench as a runtime Eclipse may result in NPEs during shutdown as reported in this issue: https://bugs.eclipse.org/bugs/show_bug.cgi?id=522075
+  
+- [#100 Separation of OML API vs UI Concerns](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/100)
+
+- [#105 Configure the Sirius Interpreter view to work w/ OML models.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/105)
+
+- [#109 Refactor OMF plugins/features w.r.t. core vs. ui](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/109)
+
+- [#113 OML WB Viewpoints NPE](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/113)
+
+  This problem is a consequence of [#114](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/114)
+  
+- [#114 Caused by: java.lang.IllegalStateException: Cannot modify resource set without a write transaction](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/114)
+
+  Don't mix `*.xsd` and `*.oml` in the same project!
+  
+## [Release & Publish process](publishProcess.markdown)

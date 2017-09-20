@@ -1,7 +1,19 @@
-# Ontological Modeling Language (OML) Platform & Core Features [![Build Status](https://travis-ci.org/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho.svg?branch=master)](https://travis-ci.org/JPL-IMCE/gov.nasa.jpl.imce.oml.tycho)
+# Ontological Modeling Language (OML) Platform & Core Features
+
+[![Build Status](https://travis-ci.org/JPL-IMCE/gov.nasa.jpl.imce.oml.svg?branch=master)](https://travis-ci.org/JPL-IMCE/gov.nasa.jpl.imce.oml)
+
+## [Quick OML Workbench Introduction](doc/QuickIntroduction.md)
+
+## Download the OML Workbench
+
+Eclipse-based OML Workbench:  [ ![Download](https://api.bintray.com/packages/jpl-imce/gov.nasa.jpl.imce.oml/gov.nasa.jpl.imce.oml.product/images/download.svg) ](https://bintray.com/jpl-imce/gov.nasa.jpl.imce.oml/gov.nasa.jpl.imce.oml.product/_latestVersion)
 
 OML is a specification language designed to support rigorous ontological modeling in the context of model-based systems engineering.
 This multi-project is organized according to Eclipse Tycho guidelines.
+
+## OML Update Site
+
+The [OML Update Site](releng/gov.nasa.jpl.imce.oml.updatesite/README.md) explains how to add the OML features into an existing Eclipse installation.
 
 ## OML Workbench
 
@@ -9,6 +21,23 @@ The [OML Workbench](releng/gov.nasa.jpl.imce.oml.product/README.md) is an Eclips
 
 ## OML Development Process notes
 
+- Make sure the Eclipse/Workspace "Text file encoding" is set to UTF-8
+
+- Publish a new version:
+
+	Execute `./scripts/publishProcess.sh`.
+	
+	This will prompt for a new version -- enter a string of the form `<major>.<minor>.<patch/build>`.
+	This creates a version-specific release branch and tag.
+	This also pushes the release branch and tag to origin, which should trigger the travis-ci job that will build the release and deploy it to bintray.
+	
+- Managing versions on bintray:
+
+    OML is a collection of multiple packages, each with its own versioned artifacts; see: https://bintray.com/jpl-imce/gov.nasa.jpl.imce.oml
+    To operate on all OML packages, see the utility: [scripts/btOMLProjectsDo.sh](scripts/btOMLProjectsDo.sh)
+    
+    Execute `./scripts/btOMLProjectsDo.sh` to get command-line usage information.
+     
 ## GIT
 
 Xtext compiles a grammar file, `*.xtext` into a corresponding binary in the `src-gen` folder as `*.xtextbin`.
@@ -85,3 +114,13 @@ In `~/.m2/settings.xml` include, replacing `{BINTRAY USERNAME}` and `{BINTRAY AP
 </settings>
 ```
 
+## Development Notes
+
+### Using Windows 64-bit
+In order to make sure your eclipse installation is running a particular version of Java, the eclipse configuration file must be edited.
+The following must be added to 'eclipse.ini' located in your Eclipse installation folder before the line that contains '-vmargs':
+
+```
+-vm
+PATH_TO_JAVA/bin
+```

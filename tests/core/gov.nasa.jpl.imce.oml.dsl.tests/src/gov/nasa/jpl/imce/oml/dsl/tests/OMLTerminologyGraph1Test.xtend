@@ -55,6 +55,19 @@ open terminology <http://imce.jpl.nasa.gov/foundation/mission/mission>
 
 	concept Foo-Bar
 	
+	scalar decimal
+	
+	stringScalarRestriction integer {
+		maxLength 10
+		pattern /[\\\\-+]?[0-9]+/
+		restrictedRange decimal
+	}
+	
+	numericScalarRestriction XSDlong {
+		minInclusive -9223372036854775808
+		maxInclusive 9223372036854775807
+		restrictedRange decimal
+	}
 }
 
 open terminology <http://purl.org/dc/elements/1.1/> {
@@ -88,12 +101,12 @@ open terminology <http://example.org> {
 		val c = tbox.boxStatements.filter(Concept).head
 		c.name().assertEquals("PerformingElement")
 		
-		val a = tbox.annotations.head
+		val a = c.annotations.head
 		val a_prop = a.property
 		val a_subj = a.subject
 		val a_value = a.value
 		
-		"Performing Element".assertEquals(a_value)
+		"Performing Element".assertEquals(a_value.value)
 		ap.assertSame(a_prop)
 		c.assertSame(a_subj)
 		

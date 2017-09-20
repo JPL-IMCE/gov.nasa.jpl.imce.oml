@@ -23,6 +23,18 @@ import org.eclipse.xtext.conversion.IValueConverter
 import org.eclipse.xtext.conversion.ValueConverter
 import org.eclipse.xtext.conversion.impl.KeywordAlternativeConverter
 import org.eclipse.xtext.conversion.impl.QualifiedNameValueConverter
+import gov.nasa.jpl.imce.oml.model.datatypes.FloatValue
+import gov.nasa.jpl.imce.oml.model.datatypes.DateTimeValue
+import gov.nasa.jpl.imce.oml.model.datatypes.DecimalValue
+import gov.nasa.jpl.imce.oml.model.datatypes.PositiveIntegerValue
+import gov.nasa.jpl.imce.oml.model.datatypes.LanguageTagValue
+import gov.nasa.jpl.imce.oml.model.datatypes.PatternValue
+import gov.nasa.jpl.imce.oml.model.datatypes.RealValue
+import gov.nasa.jpl.imce.oml.model.datatypes.URIValue
+import gov.nasa.jpl.imce.oml.model.datatypes.UUIDValue
+import gov.nasa.jpl.imce.oml.model.datatypes.StringValue
+import org.eclipse.xtext.conversion.ValueConverterException
+import org.eclipse.xtext.nodemodel.INode
 
 class OMLValueConverterService extends DefaultTerminalConverters {
 
@@ -40,38 +52,119 @@ class OMLValueConverterService extends DefaultTerminalConverters {
 
 	@Inject KeywordAlternativeConverter validIDValueConverter
 
+	@Inject FloatValueConverter floatValueConverter
+	
+	@Inject DecimalValueConverter decimalValueConverter
+	
+	@Inject PositiveIntegerValueConverter positiveIntegerValueConverter
+	
+	@Inject DateTimeValueConverter dateTimeValueConverter
+	
+	@Inject LanguageTagValueConverter langTagValueConverter
+	
+	@Inject PatternValueConverter patternValueConverter
+	
+	@Inject RealValueConverter realValueConverter
+	
+	@Inject URIValueConverter uriValueConverter
+	
+	@Inject UUIDValueConverter uuidValueConverter
+	
+	@Inject StringValueConverter stringValueConverter
+	
 	@ValueConverter(rule="Reference")
 	def IValueConverter<String> Reference() {
-		referenceValueConverter;
+		referenceValueConverter
 	}
 
 	@ValueConverter(rule="QNAME")
 	def IValueConverter<String> QNAME() {
-		qnameValueConverter;
+		qnameValueConverter
 	}
 
 	@ValueConverter(rule="QualifiedName")
 	def IValueConverter<String> QualifiedName() {
-		qualifiedNameValueConverter;
+		qualifiedNameValueConverter
 	}
 
 	@ValueConverter(rule="IRI")
 	def IValueConverter<String> IRI() {
-		iriValueConverter;
+		iriValueConverter
 	}
 
 	@ValueConverter(rule="ExternalReference")
 	def IValueConverter<String> ExternalReference() {
-		externalReferenceValueConverter;
+		externalReferenceValueConverter
 	}
 	
 	@ValueConverter(rule="SL_COMMENT")
 	def IValueConverter<String> SL_COMMENT() {
-		sl_CommentValueConverter;
+		sl_CommentValueConverter
 	}
 
 	@ValueConverter(rule="ValidID")
 	def IValueConverter<String> ValidID() {
-		validIDValueConverter;
+		validIDValueConverter
 	}
+	
+	@ValueConverter(rule="STRING_VALUE")
+	def IValueConverter<StringValue> String() {
+		stringValueConverter
+	}
+	
+	@ValueConverter(rule="FLOAT")
+	def IValueConverter<FloatValue> FloatValue() {
+		floatValueConverter
+	}
+	
+	@ValueConverter(rule="DECIMAL")
+	def IValueConverter<DecimalValue> DecimalValue() {
+		decimalValueConverter
+	}
+	
+	@ValueConverter(rule="DIGITS")
+	def IValueConverter<PositiveIntegerValue> PositiveIntegerValue() {
+		positiveIntegerValueConverter
+	}
+	
+	@ValueConverter(rule="DATE_TIME")
+	def IValueConverter<DateTimeValue> DateTimeValue() {
+		dateTimeValueConverter
+	}
+	
+	@ValueConverter(rule="LANG_TAG")
+	def IValueConverter<LanguageTagValue> LanguageTagValue() {
+		langTagValueConverter
+	}
+	
+	@ValueConverter(rule="PATTERN")
+	def IValueConverter<PatternValue> PatternValue() {
+		patternValueConverter
+	}
+	
+	@ValueConverter(rule="REAL")
+	def IValueConverter<RealValue> RealValue() {
+		realValueConverter
+	}
+	
+	@ValueConverter(rule="URI")
+	def IValueConverter<URIValue> URIValue() {
+		uriValueConverter
+	}
+	
+	@ValueConverter(rule="UUID")
+	def IValueConverter<UUIDValue> UUIDValue() {
+		uuidValueConverter
+	}
+	
+	override def String toString(Object value, String lexerRule) {
+		val conv = getConverter(lexerRule)
+		return conv.toString(value);
+	}
+
+	override def Object toValue(String string, String lexerRule, INode node) throws ValueConverterException {
+		val conv = getConverter(lexerRule)
+		return conv.toValue(string, node);
+	}
+	
 }

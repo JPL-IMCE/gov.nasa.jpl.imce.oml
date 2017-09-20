@@ -23,7 +23,7 @@ import com.google.common.collect.Sets
 import com.google.inject.Inject
 import gov.nasa.jpl.imce.oml.model.bundles.Bundle
 import gov.nasa.jpl.imce.oml.model.bundles.BundledTerminologyAxiom
-import gov.nasa.jpl.imce.oml.model.common.Annotation
+import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue
 import gov.nasa.jpl.imce.oml.model.common.Element
 import gov.nasa.jpl.imce.oml.model.common.Extent
 import gov.nasa.jpl.imce.oml.model.common.Resource
@@ -54,9 +54,10 @@ class OMLScopeExtensions {
 	 * 
 	 * This scope computation accounts for possible parsing errors resulting in EFeature values being null.
 	 */
-	def scope_Annotation_property(Annotation annotation, EReference eRef) {
+	def scope_Annotation_property(AnnotationPropertyValue annotation, EReference eRef) {
 		val extents =
-			annotation.module?. // may be null!
+			annotation.subject?. // may be null!
+			moduleContext?. // may be null!
 			allImportedModules?. // may be null!
 			map[extent]?. // may be null!
 			filterNull // remove nulls!
@@ -126,7 +127,7 @@ class OMLScopeExtensions {
 	) {
 		val ArrayList<IEObjectDescription> result = Lists.newArrayList()
 		result.addAll(Scopes.scopedElementsFor(localScopeFunction.apply(tbox)))
-		result.addAll(tbox.allImportedTerminologies.map[importedTbox|
+		result.addAll(OMLExtensions.allImportedTerminologies(tbox).map[importedTbox|
 			Scopes.scopedElementsFor(
 				localScopeFunction.apply(importedTbox), 
 				[importedThing| nameFunction.apply(Pair.of(importedTbox, importedThing)) ]
@@ -207,7 +208,7 @@ class OMLScopeExtensions {
 		
 		val Set<TerminologyBox> allTBoxes = Sets.newHashSet()
 		allTBoxes.addAll(allBundles)
-		allTBoxes.addAll(allBundles.map[allImportedTerminologies].flatten)
+		allTBoxes.addAll(allBundles.map[b|OMLExtensions.allImportedTerminologies(b)].flatten)
 		result.addAll(allTBoxes.map[tbox|
 			Scopes.scopedElementsFor(
 				localScopeFunction.apply(tbox), 

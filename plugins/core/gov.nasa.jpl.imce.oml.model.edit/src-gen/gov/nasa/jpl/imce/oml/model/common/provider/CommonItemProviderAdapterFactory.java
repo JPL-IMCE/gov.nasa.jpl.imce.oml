@@ -88,6 +88,236 @@ public class CommonItemProviderAdapterFactory extends CommonAdapterFactory imple
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.common.LiteralBoolean} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LiteralBooleanItemProvider literalBooleanItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.common.LiteralBoolean}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLiteralBooleanAdapter() {
+		if (literalBooleanItemProvider == null) {
+			literalBooleanItemProvider = new LiteralBooleanItemProvider(this);
+		}
+
+		return literalBooleanItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.common.LiteralDateTime} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LiteralDateTimeItemProvider literalDateTimeItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.common.LiteralDateTime}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLiteralDateTimeAdapter() {
+		if (literalDateTimeItemProvider == null) {
+			literalDateTimeItemProvider = new LiteralDateTimeItemProvider(this);
+		}
+
+		return literalDateTimeItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.common.LiteralString} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LiteralStringItemProvider literalStringItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.common.LiteralString}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLiteralStringAdapter() {
+		if (literalStringItemProvider == null) {
+			literalStringItemProvider = new LiteralStringItemProvider(this);
+		}
+
+		return literalStringItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.common.LiteralUUID} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LiteralUUIDItemProvider literalUUIDItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.common.LiteralUUID}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLiteralUUIDAdapter() {
+		if (literalUUIDItemProvider == null) {
+			literalUUIDItemProvider = new LiteralUUIDItemProvider(this);
+		}
+
+		return literalUUIDItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.common.LiteralURI} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LiteralURIItemProvider literalURIItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.common.LiteralURI}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLiteralURIAdapter() {
+		if (literalURIItemProvider == null) {
+			literalURIItemProvider = new LiteralURIItemProvider(this);
+		}
+
+		return literalURIItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.common.LiteralReal} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LiteralRealItemProvider literalRealItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.common.LiteralReal}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLiteralRealAdapter() {
+		if (literalRealItemProvider == null) {
+			literalRealItemProvider = new LiteralRealItemProvider(this);
+		}
+
+		return literalRealItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.common.LiteralRational} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LiteralRationalItemProvider literalRationalItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.common.LiteralRational}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLiteralRationalAdapter() {
+		if (literalRationalItemProvider == null) {
+			literalRationalItemProvider = new LiteralRationalItemProvider(this);
+		}
+
+		return literalRationalItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.common.LiteralFloat} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LiteralFloatItemProvider literalFloatItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.common.LiteralFloat}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLiteralFloatAdapter() {
+		if (literalFloatItemProvider == null) {
+			literalFloatItemProvider = new LiteralFloatItemProvider(this);
+		}
+
+		return literalFloatItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.common.LiteralDecimal} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LiteralDecimalItemProvider literalDecimalItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.common.LiteralDecimal}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLiteralDecimalAdapter() {
+		if (literalDecimalItemProvider == null) {
+			literalDecimalItemProvider = new LiteralDecimalItemProvider(this);
+		}
+
+		return literalDecimalItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected AnnotationPropertyValueItemProvider annotationPropertyValueItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createAnnotationPropertyValueAdapter() {
+		if (annotationPropertyValueItemProvider == null) {
+			annotationPropertyValueItemProvider = new AnnotationPropertyValueItemProvider(this);
+		}
+
+		return annotationPropertyValueItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.common.AnnotationProperty} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -108,121 +338,6 @@ public class CommonItemProviderAdapterFactory extends CommonAdapterFactory imple
 		}
 
 		return annotationPropertyItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link java.util.Map.Entry} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected AnnotationPropertyTableItemProvider annotationPropertyTableItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link java.util.Map.Entry}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createAnnotationPropertyTableAdapter() {
-		if (annotationPropertyTableItemProvider == null) {
-			annotationPropertyTableItemProvider = new AnnotationPropertyTableItemProvider(this);
-		}
-
-		return annotationPropertyTableItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.common.AnnotationEntry} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected AnnotationEntryItemProvider annotationEntryItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.common.AnnotationEntry}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createAnnotationEntryAdapter() {
-		if (annotationEntryItemProvider == null) {
-			annotationEntryItemProvider = new AnnotationEntryItemProvider(this);
-		}
-
-		return annotationEntryItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link java.util.Map.Entry} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected AnnotationSubjectTableItemProvider annotationSubjectTableItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link java.util.Map.Entry}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createAnnotationSubjectTableAdapter() {
-		if (annotationSubjectTableItemProvider == null) {
-			annotationSubjectTableItemProvider = new AnnotationSubjectTableItemProvider(this);
-		}
-
-		return annotationSubjectTableItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.common.AnnotationSubjectPropertyValue} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected AnnotationSubjectPropertyValueItemProvider annotationSubjectPropertyValueItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.common.AnnotationSubjectPropertyValue}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createAnnotationSubjectPropertyValueAdapter() {
-		if (annotationSubjectPropertyValueItemProvider == null) {
-			annotationSubjectPropertyValueItemProvider = new AnnotationSubjectPropertyValueItemProvider(this);
-		}
-
-		return annotationSubjectPropertyValueItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.common.Annotation} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected AnnotationItemProvider annotationItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.common.Annotation}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createAnnotationAdapter() {
-		if (annotationItemProvider == null) {
-			annotationItemProvider = new AnnotationItemProvider(this);
-		}
-
-		return annotationItemProvider;
 	}
 
 	/**
@@ -347,12 +462,17 @@ public class CommonItemProviderAdapterFactory extends CommonAdapterFactory imple
 	 * @generated
 	 */
 	public void dispose() {
+		if (literalBooleanItemProvider != null) literalBooleanItemProvider.dispose();
+		if (literalDateTimeItemProvider != null) literalDateTimeItemProvider.dispose();
+		if (literalStringItemProvider != null) literalStringItemProvider.dispose();
+		if (literalUUIDItemProvider != null) literalUUIDItemProvider.dispose();
+		if (literalURIItemProvider != null) literalURIItemProvider.dispose();
+		if (literalRealItemProvider != null) literalRealItemProvider.dispose();
+		if (literalRationalItemProvider != null) literalRationalItemProvider.dispose();
+		if (literalFloatItemProvider != null) literalFloatItemProvider.dispose();
+		if (literalDecimalItemProvider != null) literalDecimalItemProvider.dispose();
+		if (annotationPropertyValueItemProvider != null) annotationPropertyValueItemProvider.dispose();
 		if (annotationPropertyItemProvider != null) annotationPropertyItemProvider.dispose();
-		if (annotationPropertyTableItemProvider != null) annotationPropertyTableItemProvider.dispose();
-		if (annotationEntryItemProvider != null) annotationEntryItemProvider.dispose();
-		if (annotationSubjectTableItemProvider != null) annotationSubjectTableItemProvider.dispose();
-		if (annotationSubjectPropertyValueItemProvider != null) annotationSubjectPropertyValueItemProvider.dispose();
-		if (annotationItemProvider != null) annotationItemProvider.dispose();
 		if (extentItemProvider != null) extentItemProvider.dispose();
 	}
 

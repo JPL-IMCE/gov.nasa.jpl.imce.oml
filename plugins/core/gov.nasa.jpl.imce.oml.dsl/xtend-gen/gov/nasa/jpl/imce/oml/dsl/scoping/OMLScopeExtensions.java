@@ -24,8 +24,8 @@ import com.google.common.collect.Sets;
 import com.google.inject.Inject;
 import gov.nasa.jpl.imce.oml.model.bundles.Bundle;
 import gov.nasa.jpl.imce.oml.model.bundles.BundledTerminologyAxiom;
-import gov.nasa.jpl.imce.oml.model.common.Annotation;
 import gov.nasa.jpl.imce.oml.model.common.AnnotationProperty;
+import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue;
 import gov.nasa.jpl.imce.oml.model.common.Element;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
 import gov.nasa.jpl.imce.oml.model.common.Module;
@@ -82,13 +82,17 @@ public class OMLScopeExtensions {
    * 
    * This scope computation accounts for possible parsing errors resulting in EFeature values being null.
    */
-  public IScope scope_Annotation_property(final Annotation annotation, final EReference eRef) {
+  public IScope scope_Annotation_property(final AnnotationPropertyValue annotation, final EReference eRef) {
     IScope _xblockexpression = null;
     {
-      Module _module = annotation.getModule();
+      Element _subject = annotation.getSubject();
+      Module _moduleContext = null;
+      if (_subject!=null) {
+        _moduleContext=_subject.moduleContext();
+      }
       Iterable<Module> _allImportedModules = null;
-      if (_module!=null) {
-        _allImportedModules=this._oMLExtensions.allImportedModules(_module);
+      if (_moduleContext!=null) {
+        _allImportedModules=this._oMLExtensions.allImportedModules(_moduleContext);
       }
       Iterable<Extent> _map = null;
       if (_allImportedModules!=null) {
@@ -251,7 +255,7 @@ public class OMLScopeExtensions {
           localScopeFunction.apply(importedTbox), _function_1);
       };
       Iterables.<IEObjectDescription>addAll(result, 
-        Iterables.<IEObjectDescription>concat(IterableExtensions.<TerminologyBox, Iterable<IEObjectDescription>>map(this._oMLExtensions.allImportedTerminologies(tbox), _function)));
+        Iterables.<IEObjectDescription>concat(IterableExtensions.<TerminologyBox, Iterable<IEObjectDescription>>map(OMLExtensions.allImportedTerminologies(tbox), _function)));
       _xblockexpression = new SimpleScope(result);
     }
     return _xblockexpression;
@@ -410,8 +414,8 @@ public class OMLScopeExtensions {
       Iterables.<Bundle>addAll(allBundles, this._oMLExtensions.allImportedBundles(bundle));
       final Set<TerminologyBox> allTBoxes = Sets.<TerminologyBox>newHashSet();
       allTBoxes.addAll(allBundles);
-      final Function1<Bundle, Iterable<TerminologyBox>> _function = (Bundle it) -> {
-        return this._oMLExtensions.allImportedTerminologies(it);
+      final Function1<Bundle, Iterable<TerminologyBox>> _function = (Bundle b) -> {
+        return OMLExtensions.allImportedTerminologies(b);
       };
       Iterables.<TerminologyBox>addAll(allTBoxes, Iterables.<TerminologyBox>concat(IterableExtensions.<Bundle, Iterable<TerminologyBox>>map(allBundles, _function)));
       final Function1<TerminologyBox, Iterable<IEObjectDescription>> _function_1 = (TerminologyBox tbox) -> {

@@ -18,20 +18,40 @@
  */
 package gov.nasa.jpl.imce.oml.model.common.impl;
 
-import gov.nasa.jpl.imce.oml.model.common.Annotation;
-import gov.nasa.jpl.imce.oml.model.common.AnnotationEntry;
 import gov.nasa.jpl.imce.oml.model.common.AnnotationProperty;
-import gov.nasa.jpl.imce.oml.model.common.AnnotationSubjectPropertyValue;
+import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue;
 import gov.nasa.jpl.imce.oml.model.common.CommonFactory;
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
 import gov.nasa.jpl.imce.oml.model.common.Element;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
+import gov.nasa.jpl.imce.oml.model.common.LiteralBoolean;
+import gov.nasa.jpl.imce.oml.model.common.LiteralDateTime;
+import gov.nasa.jpl.imce.oml.model.common.LiteralDecimal;
+import gov.nasa.jpl.imce.oml.model.common.LiteralFloat;
+import gov.nasa.jpl.imce.oml.model.common.LiteralNumber;
+import gov.nasa.jpl.imce.oml.model.common.LiteralRational;
+import gov.nasa.jpl.imce.oml.model.common.LiteralReal;
+import gov.nasa.jpl.imce.oml.model.common.LiteralString;
+import gov.nasa.jpl.imce.oml.model.common.LiteralURI;
+import gov.nasa.jpl.imce.oml.model.common.LiteralUUID;
+import gov.nasa.jpl.imce.oml.model.common.LiteralValue;
 import gov.nasa.jpl.imce.oml.model.common.Module;
 import gov.nasa.jpl.imce.oml.model.common.ModuleEdge;
 import gov.nasa.jpl.imce.oml.model.common.ModuleElement;
 import gov.nasa.jpl.imce.oml.model.common.Resource;
 
-import java.util.Map;
+import gov.nasa.jpl.imce.oml.model.datatypes.AbstractDecimalValue;
+import gov.nasa.jpl.imce.oml.model.datatypes.DateTimeValue;
+import gov.nasa.jpl.imce.oml.model.datatypes.DecimalValue;
+import gov.nasa.jpl.imce.oml.model.datatypes.FloatValue;
+import gov.nasa.jpl.imce.oml.model.datatypes.LanguageTagValue;
+import gov.nasa.jpl.imce.oml.model.datatypes.PatternValue;
+import gov.nasa.jpl.imce.oml.model.datatypes.PositiveIntegerValue;
+import gov.nasa.jpl.imce.oml.model.datatypes.RationalValue;
+import gov.nasa.jpl.imce.oml.model.datatypes.RealValue;
+import gov.nasa.jpl.imce.oml.model.datatypes.StringValue;
+import gov.nasa.jpl.imce.oml.model.datatypes.URIValue;
+import gov.nasa.jpl.imce.oml.model.datatypes.UUIDValue;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -50,6 +70,90 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
  * @generated
  */
 public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass literalValueEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass literalBooleanEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass literalDateTimeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass literalStringEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass literalUUIDEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass literalURIEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass literalNumberEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass literalRealEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass literalRationalEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass literalFloatEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass literalDecimalEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass annotationPropertyValueEClass = null;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -90,41 +194,6 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass annotationPropertyTableEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass annotationEntryEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass annotationSubjectTableEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass annotationSubjectPropertyValueEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass annotationEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass extentEClass = null;
 
 	/**
@@ -153,42 +222,7 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EDataType lexicalValueEDataType = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EDataType lexicalNumberEDataType = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EDataType lexicalTimeEDataType = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EDataType patternEDataType = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EDataType uuidEDataType = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EDataType langRangeEDataType = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -203,6 +237,90 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	 * @generated
 	 */
 	private EDataType namespacePrefixEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType positiveIntegerLiteralEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType literalPatternEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType realDataTypeEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType rationalDataTypeEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType floatDataTypeEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType abstractDecimalDataTypeEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType decimalDataTypeEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType dateTimeDataTypeEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType languageTagDataTypeEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType stringDataTypeEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType uuidDataTypeEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType uriDataTypeEDataType = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -273,6 +391,231 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getLiteralValue() {
+		return literalValueEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLiteralBoolean() {
+		return literalBooleanEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLiteralBoolean_Value() {
+		return (EAttribute)literalBooleanEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLiteralDateTime() {
+		return literalDateTimeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLiteralDateTime_DateTime() {
+		return (EAttribute)literalDateTimeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLiteralString() {
+		return literalStringEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLiteralString_String() {
+		return (EAttribute)literalStringEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLiteralUUID() {
+		return literalUUIDEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLiteralUUID_Uuid() {
+		return (EAttribute)literalUUIDEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLiteralURI() {
+		return literalURIEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLiteralURI_Uri() {
+		return (EAttribute)literalURIEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLiteralNumber() {
+		return literalNumberEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLiteralReal() {
+		return literalRealEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLiteralReal_Real() {
+		return (EAttribute)literalRealEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLiteralRational() {
+		return literalRationalEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLiteralRational_Rational() {
+		return (EAttribute)literalRationalEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLiteralFloat() {
+		return literalFloatEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLiteralFloat_Float() {
+		return (EAttribute)literalFloatEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLiteralDecimal() {
+		return literalDecimalEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getLiteralDecimal_Decimal() {
+		return (EAttribute)literalDecimalEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getAnnotationPropertyValue() {
+		return annotationPropertyValueEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAnnotationPropertyValue_Uuid() {
+		return (EAttribute)annotationPropertyValueEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAnnotationPropertyValue_Subject() {
+		return (EReference)annotationPropertyValueEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAnnotationPropertyValue_Property() {
+		return (EReference)annotationPropertyValueEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAnnotationPropertyValue_Value() {
+		return (EAttribute)annotationPropertyValueEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getElement() {
 		return elementEClass;
 	}
@@ -291,8 +634,26 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getElement_Annotations() {
+		return (EReference)elementEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EOperation getElement__Uuid() {
 		return elementEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getElement__ModuleContext() {
+		return elementEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -345,6 +706,15 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getModuleElement__AllNestedElements() {
+		return moduleElementEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getModuleEdge() {
 		return moduleEdgeEClass;
 	}
@@ -365,6 +735,15 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	 */
 	public EOperation getModuleEdge__TargetModule() {
 		return moduleEdgeEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getModuleEdge__ModuleContext() {
+		return moduleEdgeEClass.getEOperations().get(2);
 	}
 
 	/**
@@ -410,168 +789,6 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	 */
 	public EAttribute getAnnotationProperty_AbbrevIRI() {
 		return (EAttribute)annotationPropertyEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getAnnotationPropertyTable() {
-		return annotationPropertyTableEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getAnnotationPropertyTable_Key() {
-		return (EReference)annotationPropertyTableEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getAnnotationPropertyTable_Value() {
-		return (EReference)annotationPropertyTableEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getAnnotationEntry() {
-		return annotationEntryEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getAnnotationEntry_Module() {
-		return (EReference)annotationEntryEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getAnnotationEntry_Subject() {
-		return (EReference)annotationEntryEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getAnnotationEntry_Value() {
-		return (EAttribute)annotationEntryEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getAnnotationSubjectTable() {
-		return annotationSubjectTableEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getAnnotationSubjectTable_Key() {
-		return (EReference)annotationSubjectTableEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getAnnotationSubjectTable_Value() {
-		return (EReference)annotationSubjectTableEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getAnnotationSubjectPropertyValue() {
-		return annotationSubjectPropertyValueEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getAnnotationSubjectPropertyValue_Property() {
-		return (EReference)annotationSubjectPropertyValueEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getAnnotationSubjectPropertyValue_Value() {
-		return (EAttribute)annotationSubjectPropertyValueEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getAnnotation() {
-		return annotationEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getAnnotation_Module() {
-		return (EReference)annotationEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getAnnotation_Property() {
-		return (EReference)annotationEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getAnnotation_Subject() {
-		return (EReference)annotationEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getAnnotation_Value() {
-		return (EAttribute)annotationEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -633,15 +850,6 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getModule_Annotations() {
-		return (EReference)moduleEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EOperation getModule__ModuleEdges() {
 		return moduleEClass.getEOperations().get(0);
 	}
@@ -696,6 +904,24 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getModule__ModuleContext() {
+		return moduleEClass.getEOperations().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getModule__ModuleElements() {
+		return moduleEClass.getEOperations().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EDataType getIRI() {
 		return iriEDataType;
 	}
@@ -714,53 +940,8 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EDataType getLexicalValue() {
-		return lexicalValueEDataType;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EDataType getLexicalNumber() {
-		return lexicalNumberEDataType;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EDataType getLexicalTime() {
-		return lexicalTimeEDataType;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EDataType getPattern() {
-		return patternEDataType;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EDataType getUUID() {
 		return uuidEDataType;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EDataType getLangRange() {
-		return langRangeEDataType;
 	}
 
 	/**
@@ -779,6 +960,114 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	 */
 	public EDataType getNamespacePrefix() {
 		return namespacePrefixEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getPositiveIntegerLiteral() {
+		return positiveIntegerLiteralEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getLiteralPattern() {
+		return literalPatternEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getRealDataType() {
+		return realDataTypeEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getRationalDataType() {
+		return rationalDataTypeEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getFloatDataType() {
+		return floatDataTypeEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getAbstractDecimalDataType() {
+		return abstractDecimalDataTypeEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getDecimalDataType() {
+		return decimalDataTypeEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getDateTimeDataType() {
+		return dateTimeDataTypeEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getLanguageTagDataType() {
+		return languageTagDataTypeEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getStringDataType() {
+		return stringDataTypeEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getUUIDDataType() {
+		return uuidDataTypeEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getURIDataType() {
+		return uriDataTypeEDataType;
 	}
 
 	/**
@@ -809,9 +1098,48 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		isCreated = true;
 
 		// Create classes and their features
+		literalValueEClass = createEClass(LITERAL_VALUE);
+
+		literalBooleanEClass = createEClass(LITERAL_BOOLEAN);
+		createEAttribute(literalBooleanEClass, LITERAL_BOOLEAN__VALUE);
+
+		literalDateTimeEClass = createEClass(LITERAL_DATE_TIME);
+		createEAttribute(literalDateTimeEClass, LITERAL_DATE_TIME__DATE_TIME);
+
+		literalStringEClass = createEClass(LITERAL_STRING);
+		createEAttribute(literalStringEClass, LITERAL_STRING__STRING);
+
+		literalUUIDEClass = createEClass(LITERAL_UUID);
+		createEAttribute(literalUUIDEClass, LITERAL_UUID__UUID);
+
+		literalURIEClass = createEClass(LITERAL_URI);
+		createEAttribute(literalURIEClass, LITERAL_URI__URI);
+
+		literalNumberEClass = createEClass(LITERAL_NUMBER);
+
+		literalRealEClass = createEClass(LITERAL_REAL);
+		createEAttribute(literalRealEClass, LITERAL_REAL__REAL);
+
+		literalRationalEClass = createEClass(LITERAL_RATIONAL);
+		createEAttribute(literalRationalEClass, LITERAL_RATIONAL__RATIONAL);
+
+		literalFloatEClass = createEClass(LITERAL_FLOAT);
+		createEAttribute(literalFloatEClass, LITERAL_FLOAT__FLOAT);
+
+		literalDecimalEClass = createEClass(LITERAL_DECIMAL);
+		createEAttribute(literalDecimalEClass, LITERAL_DECIMAL__DECIMAL);
+
+		annotationPropertyValueEClass = createEClass(ANNOTATION_PROPERTY_VALUE);
+		createEAttribute(annotationPropertyValueEClass, ANNOTATION_PROPERTY_VALUE__UUID);
+		createEReference(annotationPropertyValueEClass, ANNOTATION_PROPERTY_VALUE__SUBJECT);
+		createEReference(annotationPropertyValueEClass, ANNOTATION_PROPERTY_VALUE__PROPERTY);
+		createEAttribute(annotationPropertyValueEClass, ANNOTATION_PROPERTY_VALUE__VALUE);
+
 		elementEClass = createEClass(ELEMENT);
 		createEAttribute(elementEClass, ELEMENT__UUID);
+		createEReference(elementEClass, ELEMENT__ANNOTATIONS);
 		createEOperation(elementEClass, ELEMENT___UUID);
+		createEOperation(elementEClass, ELEMENT___MODULE_CONTEXT);
 
 		resourceEClass = createEClass(RESOURCE);
 		createEOperation(resourceEClass, RESOURCE___IRI);
@@ -819,39 +1147,18 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		createEOperation(resourceEClass, RESOURCE___ABBREV_IRI);
 
 		moduleElementEClass = createEClass(MODULE_ELEMENT);
+		createEOperation(moduleElementEClass, MODULE_ELEMENT___ALL_NESTED_ELEMENTS);
 
 		moduleEdgeEClass = createEClass(MODULE_EDGE);
 		createEOperation(moduleEdgeEClass, MODULE_EDGE___SOURCE_MODULE);
 		createEOperation(moduleEdgeEClass, MODULE_EDGE___TARGET_MODULE);
+		createEOperation(moduleEdgeEClass, MODULE_EDGE___MODULE_CONTEXT);
 
 		annotationPropertyEClass = createEClass(ANNOTATION_PROPERTY);
 		createEReference(annotationPropertyEClass, ANNOTATION_PROPERTY__EXTENT);
 		createEAttribute(annotationPropertyEClass, ANNOTATION_PROPERTY__UUID);
 		createEAttribute(annotationPropertyEClass, ANNOTATION_PROPERTY__IRI);
 		createEAttribute(annotationPropertyEClass, ANNOTATION_PROPERTY__ABBREV_IRI);
-
-		annotationPropertyTableEClass = createEClass(ANNOTATION_PROPERTY_TABLE);
-		createEReference(annotationPropertyTableEClass, ANNOTATION_PROPERTY_TABLE__KEY);
-		createEReference(annotationPropertyTableEClass, ANNOTATION_PROPERTY_TABLE__VALUE);
-
-		annotationEntryEClass = createEClass(ANNOTATION_ENTRY);
-		createEReference(annotationEntryEClass, ANNOTATION_ENTRY__MODULE);
-		createEReference(annotationEntryEClass, ANNOTATION_ENTRY__SUBJECT);
-		createEAttribute(annotationEntryEClass, ANNOTATION_ENTRY__VALUE);
-
-		annotationSubjectTableEClass = createEClass(ANNOTATION_SUBJECT_TABLE);
-		createEReference(annotationSubjectTableEClass, ANNOTATION_SUBJECT_TABLE__KEY);
-		createEReference(annotationSubjectTableEClass, ANNOTATION_SUBJECT_TABLE__VALUE);
-
-		annotationSubjectPropertyValueEClass = createEClass(ANNOTATION_SUBJECT_PROPERTY_VALUE);
-		createEReference(annotationSubjectPropertyValueEClass, ANNOTATION_SUBJECT_PROPERTY_VALUE__PROPERTY);
-		createEAttribute(annotationSubjectPropertyValueEClass, ANNOTATION_SUBJECT_PROPERTY_VALUE__VALUE);
-
-		annotationEClass = createEClass(ANNOTATION);
-		createEReference(annotationEClass, ANNOTATION__MODULE);
-		createEReference(annotationEClass, ANNOTATION__PROPERTY);
-		createEReference(annotationEClass, ANNOTATION__SUBJECT);
-		createEAttribute(annotationEClass, ANNOTATION__VALUE);
 
 		extentEClass = createEClass(EXTENT);
 		createEReference(extentEClass, EXTENT__MODULES);
@@ -860,25 +1167,33 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		moduleEClass = createEClass(MODULE);
 		createEReference(moduleEClass, MODULE__EXTENT);
 		createEAttribute(moduleEClass, MODULE__IRI);
-		createEReference(moduleEClass, MODULE__ANNOTATIONS);
 		createEOperation(moduleEClass, MODULE___MODULE_EDGES);
 		createEOperation(moduleEClass, MODULE___IRI);
 		createEOperation(moduleEClass, MODULE___NS_PREFIX);
 		createEOperation(moduleEClass, MODULE___NAME);
 		createEOperation(moduleEClass, MODULE___ABBREV_IRI);
 		createEOperation(moduleEClass, MODULE___UUID);
+		createEOperation(moduleEClass, MODULE___MODULE_CONTEXT);
+		createEOperation(moduleEClass, MODULE___MODULE_ELEMENTS);
 
 		// Create data types
 		iriEDataType = createEDataType(IRI);
 		localNameEDataType = createEDataType(LOCAL_NAME);
-		lexicalValueEDataType = createEDataType(LEXICAL_VALUE);
-		lexicalNumberEDataType = createEDataType(LEXICAL_NUMBER);
-		lexicalTimeEDataType = createEDataType(LEXICAL_TIME);
-		patternEDataType = createEDataType(PATTERN);
 		uuidEDataType = createEDataType(UUID);
-		langRangeEDataType = createEDataType(LANG_RANGE);
 		abbrevIRIEDataType = createEDataType(ABBREV_IRI);
 		namespacePrefixEDataType = createEDataType(NAMESPACE_PREFIX);
+		positiveIntegerLiteralEDataType = createEDataType(POSITIVE_INTEGER_LITERAL);
+		literalPatternEDataType = createEDataType(LITERAL_PATTERN);
+		realDataTypeEDataType = createEDataType(REAL_DATA_TYPE);
+		rationalDataTypeEDataType = createEDataType(RATIONAL_DATA_TYPE);
+		floatDataTypeEDataType = createEDataType(FLOAT_DATA_TYPE);
+		abstractDecimalDataTypeEDataType = createEDataType(ABSTRACT_DECIMAL_DATA_TYPE);
+		decimalDataTypeEDataType = createEDataType(DECIMAL_DATA_TYPE);
+		dateTimeDataTypeEDataType = createEDataType(DATE_TIME_DATA_TYPE);
+		languageTagDataTypeEDataType = createEDataType(LANGUAGE_TAG_DATA_TYPE);
+		stringDataTypeEDataType = createEDataType(STRING_DATA_TYPE);
+		uuidDataTypeEDataType = createEDataType(UUID_DATA_TYPE);
+		uriDataTypeEDataType = createEDataType(URI_DATA_TYPE);
 	}
 
 	/**
@@ -912,16 +1227,66 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		literalBooleanEClass.getESuperTypes().add(this.getLiteralValue());
+		literalDateTimeEClass.getESuperTypes().add(this.getLiteralValue());
+		literalStringEClass.getESuperTypes().add(this.getLiteralValue());
+		literalUUIDEClass.getESuperTypes().add(this.getLiteralValue());
+		literalURIEClass.getESuperTypes().add(this.getLiteralValue());
+		literalNumberEClass.getESuperTypes().add(this.getLiteralValue());
+		literalRealEClass.getESuperTypes().add(this.getLiteralNumber());
+		literalRationalEClass.getESuperTypes().add(this.getLiteralNumber());
+		literalFloatEClass.getESuperTypes().add(this.getLiteralNumber());
+		literalDecimalEClass.getESuperTypes().add(this.getLiteralNumber());
 		moduleElementEClass.getESuperTypes().add(this.getElement());
 		moduleEdgeEClass.getESuperTypes().add(this.getElement());
 		moduleEClass.getESuperTypes().add(this.getElement());
 		moduleEClass.getESuperTypes().add(this.getResource());
 
 		// Initialize classes, features, and operations; add parameters
+		initEClass(literalValueEClass, LiteralValue.class, "LiteralValue", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(literalBooleanEClass, LiteralBoolean.class, "LiteralBoolean", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLiteralBoolean_Value(), theEcorePackage.getEBoolean(), "value", null, 0, 1, LiteralBoolean.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(literalDateTimeEClass, LiteralDateTime.class, "LiteralDateTime", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLiteralDateTime_DateTime(), this.getDateTimeDataType(), "dateTime", null, 1, 1, LiteralDateTime.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(literalStringEClass, LiteralString.class, "LiteralString", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLiteralString_String(), this.getStringDataType(), "string", null, 1, 1, LiteralString.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(literalUUIDEClass, LiteralUUID.class, "LiteralUUID", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLiteralUUID_Uuid(), this.getUUIDDataType(), "uuid", null, 1, 1, LiteralUUID.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(literalURIEClass, LiteralURI.class, "LiteralURI", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLiteralURI_Uri(), this.getURIDataType(), "uri", null, 1, 1, LiteralURI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(literalNumberEClass, LiteralNumber.class, "LiteralNumber", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(literalRealEClass, LiteralReal.class, "LiteralReal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLiteralReal_Real(), this.getRealDataType(), "real", null, 1, 1, LiteralReal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(literalRationalEClass, LiteralRational.class, "LiteralRational", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLiteralRational_Rational(), this.getRationalDataType(), "rational", null, 1, 1, LiteralRational.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(literalFloatEClass, LiteralFloat.class, "LiteralFloat", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLiteralFloat_Float(), this.getFloatDataType(), "float", null, 1, 1, LiteralFloat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(literalDecimalEClass, LiteralDecimal.class, "LiteralDecimal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLiteralDecimal_Decimal(), this.getAbstractDecimalDataType(), "decimal", null, 1, 1, LiteralDecimal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(annotationPropertyValueEClass, AnnotationPropertyValue.class, "AnnotationPropertyValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAnnotationPropertyValue_Uuid(), this.getUUID(), "uuid", null, 1, 1, AnnotationPropertyValue.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getAnnotationPropertyValue_Subject(), this.getElement(), this.getElement_Annotations(), "subject", null, 1, 1, AnnotationPropertyValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAnnotationPropertyValue_Property(), this.getAnnotationProperty(), null, "property", null, 1, 1, AnnotationPropertyValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAnnotationPropertyValue_Value(), this.getStringDataType(), "value", null, 1, 1, AnnotationPropertyValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(elementEClass, Element.class, "Element", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getElement_Uuid(), this.getUUID(), "uuid", null, 1, 1, Element.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getElement_Annotations(), this.getAnnotationPropertyValue(), this.getAnnotationPropertyValue_Subject(), "annotations", null, 0, -1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getElement__Uuid(), this.getUUID(), "uuid", 1, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getElement__ModuleContext(), this.getModule(), "moduleContext", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(resourceEClass, Resource.class, "Resource", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -933,40 +1298,21 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 
 		initEClass(moduleElementEClass, ModuleElement.class, "ModuleElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+		initEOperation(getModuleElement__AllNestedElements(), this.getElement(), "allNestedElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
+
 		initEClass(moduleEdgeEClass, ModuleEdge.class, "ModuleEdge", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEOperation(getModuleEdge__SourceModule(), this.getModule(), "sourceModule", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEOperation(getModuleEdge__TargetModule(), this.getModule(), "targetModule", 1, 1, !IS_UNIQUE, IS_ORDERED);
 
+		initEOperation(getModuleEdge__ModuleContext(), this.getModule(), "moduleContext", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
 		initEClass(annotationPropertyEClass, AnnotationProperty.class, "AnnotationProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAnnotationProperty_Extent(), this.getExtent(), this.getExtent_AnnotationProperties(), "extent", null, 1, 1, AnnotationProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAnnotationProperty_Uuid(), this.getUUID(), "uuid", null, 1, 1, AnnotationProperty.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAnnotationProperty_Iri(), this.getIRI(), "iri", null, 1, 1, AnnotationProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAnnotationProperty_AbbrevIRI(), this.getAbbrevIRI(), "abbrevIRI", null, 1, 1, AnnotationProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(annotationPropertyTableEClass, Map.Entry.class, "AnnotationPropertyTable", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAnnotationPropertyTable_Key(), this.getAnnotationProperty(), null, "key", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAnnotationPropertyTable_Value(), this.getAnnotationEntry(), null, "value", null, 0, -1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(annotationEntryEClass, AnnotationEntry.class, "AnnotationEntry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAnnotationEntry_Module(), this.getModule(), null, "module", null, 1, 1, AnnotationEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAnnotationEntry_Subject(), this.getElement(), null, "subject", null, 1, 1, AnnotationEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAnnotationEntry_Value(), theEcorePackage.getEString(), "value", null, 1, 1, AnnotationEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(annotationSubjectTableEClass, Map.Entry.class, "AnnotationSubjectTable", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAnnotationSubjectTable_Key(), this.getElement(), null, "key", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAnnotationSubjectTable_Value(), this.getAnnotationSubjectPropertyValue(), null, "value", null, 0, -1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(annotationSubjectPropertyValueEClass, AnnotationSubjectPropertyValue.class, "AnnotationSubjectPropertyValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAnnotationSubjectPropertyValue_Property(), this.getAnnotationProperty(), null, "property", null, 1, 1, AnnotationSubjectPropertyValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAnnotationSubjectPropertyValue_Value(), theEcorePackage.getEString(), "value", null, 1, 1, AnnotationSubjectPropertyValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(annotationEClass, Annotation.class, "Annotation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAnnotation_Module(), this.getModule(), this.getModule_Annotations(), "module", null, 1, 1, Annotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAnnotation_Property(), this.getAnnotationProperty(), null, "property", null, 1, 1, Annotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAnnotation_Subject(), this.getElement(), null, "subject", null, 1, 1, Annotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAnnotation_Value(), theEcorePackage.getEString(), "value", null, 1, 1, Annotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(extentEClass, Extent.class, "Extent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getExtent_Modules(), this.getModule(), this.getModule_Extent(), "modules", null, 0, -1, Extent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -975,7 +1321,6 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		initEClass(moduleEClass, Module.class, "Module", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getModule_Extent(), this.getExtent(), this.getExtent_Modules(), "extent", null, 1, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getModule_Iri(), this.getIRI(), "iri", null, 1, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getModule_Annotations(), this.getAnnotation(), this.getAnnotation_Module(), "annotations", null, 0, -1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getModule__ModuleEdges(), this.getModuleEdge(), "moduleEdges", 0, -1, !IS_UNIQUE, IS_ORDERED);
 
@@ -989,17 +1334,28 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 
 		initEOperation(getModule__Uuid(), this.getUUID(), "uuid", 1, 1, !IS_UNIQUE, IS_ORDERED);
 
+		initEOperation(getModule__ModuleContext(), this.getModule(), "moduleContext", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getModule__ModuleElements(), this.getModuleElement(), "moduleElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
+
 		// Initialize data types
 		initEDataType(iriEDataType, String.class, "IRI", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(localNameEDataType, String.class, "LocalName", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(lexicalValueEDataType, String.class, "LexicalValue", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(lexicalNumberEDataType, String.class, "LexicalNumber", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(lexicalTimeEDataType, String.class, "LexicalTime", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(patternEDataType, String.class, "Pattern", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(uuidEDataType, String.class, "UUID", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(langRangeEDataType, String.class, "LangRange", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(abbrevIRIEDataType, String.class, "AbbrevIRI", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(namespacePrefixEDataType, String.class, "NamespacePrefix", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(positiveIntegerLiteralEDataType, PositiveIntegerValue.class, "PositiveIntegerLiteral", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(literalPatternEDataType, PatternValue.class, "LiteralPattern", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(realDataTypeEDataType, RealValue.class, "RealDataType", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(rationalDataTypeEDataType, RationalValue.class, "RationalDataType", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(floatDataTypeEDataType, FloatValue.class, "FloatDataType", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(abstractDecimalDataTypeEDataType, AbstractDecimalValue.class, "AbstractDecimalDataType", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(decimalDataTypeEDataType, DecimalValue.class, "DecimalDataType", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(dateTimeDataTypeEDataType, DateTimeValue.class, "DateTimeDataType", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(languageTagDataTypeEDataType, LanguageTagValue.class, "LanguageTagDataType", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(stringDataTypeEDataType, StringValue.class, "StringDataType", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(uuidDataTypeEDataType, UUIDValue.class, "UUIDDataType", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(uriDataTypeEDataType, URIValue.class, "URIDataType", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -1007,16 +1363,20 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		// Create annotations
 		// http://www.eclipse.org/emf/2011/Xcore
 		createXcoreAnnotations();
+		// http://imce.jpl.nasa.gov/oml/Glossary
+		createGlossaryAnnotations();
+		// http://imce.jpl.nasa.gov/oml/IsOrderingKey
+		createIsOrderingKeyAnnotations();
+		// http://imce.jpl.nasa.gov/oml/Factory
+		createFactoryAnnotations();
 		// http://imce.jpl.nasa.gov/oml/NotFunctionalAPI
 		createNotFunctionalAPIAnnotations();
 		// http://imce.jpl.nasa.gov/oml/NotSchema
 		createNotSchemaAnnotations();
 		// http://imce.jpl.nasa.gov/oml/ImplicitExtent
 		createImplicitExtentAnnotations();
-		// http://imce.jpl.nasa.gov/oml/IsOrderingKey
-		createIsOrderingKeyAnnotations();
-		// http://imce.jpl.nasa.gov/oml/Glossary
-		createGlossaryAnnotations();
+		// http://imce.jpl.nasa.gov/oml/Collection
+		createCollectionAnnotations();
 		// http://imce.jpl.nasa.gov/oml/IRIReference
 		createIRIReferenceAnnotations();
 		// http://imce.jpl.nasa.gov/oml/ExtentManaged
@@ -1025,12 +1385,6 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		createNamespaceUUIDAnnotations();
 		// http://imce.jpl.nasa.gov/oml/Scala
 		createScalaAnnotations();
-		// http://imce.jpl.nasa.gov/oml/Collection
-		createCollectionAnnotations();
-		// http://imce.jpl.nasa.gov/oml/ValueTable
-		createValueTableAnnotations();
-		// http://imce.jpl.nasa.gov/oml/Factory
-		createFactoryAnnotations();
 		// http://imce.jpl.nasa.gov/oml/ExtentContainer
 		createExtentContainerAnnotations();
 		// http://imce.jpl.nasa.gov/oml/ResolverAPI
@@ -1074,6 +1428,91 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	}
 
 	/**
+	 * Initializes the annotations for <b>http://imce.jpl.nasa.gov/oml/Glossary</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createGlossaryAnnotations() {
+		String source = "http://imce.jpl.nasa.gov/oml/Glossary";	
+		addAnnotation
+		  (annotationPropertyValueEClass, 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (resourceEClass, 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (moduleElementEClass, 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (moduleEdgeEClass, 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (annotationPropertyEClass, 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (extentEClass, 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (moduleEClass, 
+		   source, 
+		   new String[] {
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://imce.jpl.nasa.gov/oml/IsOrderingKey</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createIsOrderingKeyAnnotations() {
+		String source = "http://imce.jpl.nasa.gov/oml/IsOrderingKey";	
+		addAnnotation
+		  (getAnnotationPropertyValue_Uuid(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getElement_Uuid(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getAnnotationProperty_Uuid(), 
+		   source, 
+		   new String[] {
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://imce.jpl.nasa.gov/oml/Factory</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createFactoryAnnotations() {
+		String source = "http://imce.jpl.nasa.gov/oml/Factory";	
+		addAnnotation
+		  (getAnnotationPropertyValue_Subject(), 
+		   source, 
+		   new String[] {
+		   });
+	}
+
+	/**
 	 * Initializes the annotations for <b>http://imce.jpl.nasa.gov/oml/NotFunctionalAPI</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1088,21 +1527,6 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		   });	
 		addAnnotation
 		  (getAnnotationProperty_Extent(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (annotationPropertyTableEClass, 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (annotationSubjectTableEClass, 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (annotationSubjectPropertyValueEClass, 
 		   source, 
 		   new String[] {
 		   });	
@@ -1142,6 +1566,16 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		   new String[] {
 		   });	
 		addAnnotation
+		  (getElement__ModuleContext(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getElement_Annotations(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
 		  (getResource__Iri(), 
 		   source, 
 		   new String[] {
@@ -1157,6 +1591,11 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		   new String[] {
 		   });	
 		addAnnotation
+		  (getModuleElement__AllNestedElements(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
 		  (getModuleEdge__SourceModule(), 
 		   source, 
 		   new String[] {
@@ -1167,27 +1606,12 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		   new String[] {
 		   });	
 		addAnnotation
+		  (getModuleEdge__ModuleContext(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
 		  (getAnnotationProperty_Extent(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (annotationPropertyTableEClass, 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (annotationSubjectTableEClass, 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (annotationSubjectPropertyValueEClass, 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (annotationEClass, 
 		   source, 
 		   new String[] {
 		   });	
@@ -1232,12 +1656,17 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		   new String[] {
 		   });	
 		addAnnotation
-		  (getModule_Extent(), 
+		  (getModule__ModuleContext(), 
 		   source, 
 		   new String[] {
 		   });	
 		addAnnotation
-		  (getModule_Annotations(), 
+		  (getModule__ModuleElements(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getModule_Extent(), 
 		   source, 
 		   new String[] {
 		   });
@@ -1252,7 +1681,17 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	protected void createImplicitExtentAnnotations() {
 		String source = "http://imce.jpl.nasa.gov/oml/ImplicitExtent";	
 		addAnnotation
+		  (getElement__ModuleContext(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
 		  (getElement_Uuid(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getElement_Annotations(), 
 		   source, 
 		   new String[] {
 		   });	
@@ -1267,12 +1706,22 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		   new String[] {
 		   });	
 		addAnnotation
+		  (getModuleElement__AllNestedElements(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
 		  (getModuleEdge__SourceModule(), 
 		   source, 
 		   new String[] {
 		   });	
 		addAnnotation
 		  (getModuleEdge__TargetModule(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getModuleEdge__ModuleContext(), 
 		   source, 
 		   new String[] {
 		   });	
@@ -1290,126 +1739,50 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		  (getModule__AbbrevIRI(), 
 		   source, 
 		   new String[] {
-		   });
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://imce.jpl.nasa.gov/oml/IsOrderingKey</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createIsOrderingKeyAnnotations() {
-		String source = "http://imce.jpl.nasa.gov/oml/IsOrderingKey";	
+		   });	
 		addAnnotation
-		  (getElement_Uuid(), 
+		  (getModule__ModuleContext(), 
 		   source, 
 		   new String[] {
 		   });	
 		addAnnotation
-		  (getAnnotationProperty_Uuid(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getAnnotationPropertyTable_Key(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getAnnotationEntry_Module(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getAnnotationEntry_Subject(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getAnnotationEntry_Value(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getAnnotation_Property(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getAnnotation_Subject(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getAnnotation_Value(), 
+		  (getModule__ModuleElements(), 
 		   source, 
 		   new String[] {
 		   });
 	}
 
 	/**
-	 * Initializes the annotations for <b>http://imce.jpl.nasa.gov/oml/Glossary</b>.
+	 * Initializes the annotations for <b>http://imce.jpl.nasa.gov/oml/Collection</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void createGlossaryAnnotations() {
-		String source = "http://imce.jpl.nasa.gov/oml/Glossary";	
+	protected void createCollectionAnnotations() {
+		String source = "http://imce.jpl.nasa.gov/oml/Collection";	
 		addAnnotation
-		  (resourceEClass, 
+		  (getElement_Annotations(), 
 		   source, 
 		   new String[] {
+			 "kind", "Seq"
 		   });	
 		addAnnotation
-		  (moduleElementEClass, 
+		  (getModuleElement__AllNestedElements(), 
 		   source, 
 		   new String[] {
+			 "kind", "Set"
 		   });	
 		addAnnotation
-		  (moduleEdgeEClass, 
+		  (getModule__ModuleEdges(), 
 		   source, 
 		   new String[] {
+			 "kind", "Set"
 		   });	
 		addAnnotation
-		  (annotationPropertyEClass, 
+		  (getModule__ModuleElements(), 
 		   source, 
 		   new String[] {
-		   });	
-		addAnnotation
-		  (annotationPropertyTableEClass, 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (annotationEntryEClass, 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (annotationSubjectTableEClass, 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (annotationSubjectPropertyValueEClass, 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (annotationEClass, 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (extentEClass, 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (moduleEClass, 
-		   source, 
-		   new String[] {
+			 "kind", "Set"
 		   });
 	}
 
@@ -1503,69 +1876,12 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		   source, 
 		   new String[] {
 			 "code", "scala.Some(nsPrefix)"
-		   });
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://imce.jpl.nasa.gov/oml/Collection</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createCollectionAnnotations() {
-		String source = "http://imce.jpl.nasa.gov/oml/Collection";	
-		addAnnotation
-		  (getAnnotationPropertyTable_Value(), 
-		   source, 
-		   new String[] {
-			 "kind", "Set"
 		   });	
 		addAnnotation
-		  (getModule__ModuleEdges(), 
+		  (getModule__ModuleContext(), 
 		   source, 
 		   new String[] {
-			 "kind", "Set"
-		   });	
-		addAnnotation
-		  (getModule_Annotations(), 
-		   source, 
-		   new String[] {
-			 "kind", "Set"
-		   });
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://imce.jpl.nasa.gov/oml/ValueTable</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createValueTableAnnotations() {
-		String source = "http://imce.jpl.nasa.gov/oml/ValueTable";	
-		addAnnotation
-		  (annotationEntryEClass, 
-		   source, 
-		   new String[] {
-		   });
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://imce.jpl.nasa.gov/oml/Factory</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createFactoryAnnotations() {
-		String source = "http://imce.jpl.nasa.gov/oml/Factory";	
-		addAnnotation
-		  (getAnnotation_Module(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getModule_Annotations(), 
-		   source, 
-		   new String[] {
+			 "code", "scala.Some(this)"
 		   });
 	}
 

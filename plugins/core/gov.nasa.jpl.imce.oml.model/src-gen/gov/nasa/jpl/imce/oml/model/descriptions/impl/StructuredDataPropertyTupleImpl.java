@@ -171,7 +171,7 @@ public class StructuredDataPropertyTupleImpl extends SingletonInstanceStructured
 		}
 		Pair<String, String> _mappedTo_1 = Pair.<String, String>of("structuredDataProperty", _string_1);
 		UUID _derivedUUID = OMLExtensions.derivedUUID(
-			"DataStructureTuple", _mappedTo, _mappedTo_1);
+			"StructuredDataPropertyTuple", _mappedTo, _mappedTo_1);
 		String _string_2 = null;
 		if (_derivedUUID!=null) {
 			_string_2=_derivedUUID.toString();

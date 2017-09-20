@@ -21,7 +21,7 @@ package gov.nasa.jpl.imce.oml.model.terminologies.impl;
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
 import gov.nasa.jpl.imce.oml.model.common.Resource;
 
-import gov.nasa.jpl.imce.oml.model.common.impl.ElementImpl;
+import gov.nasa.jpl.imce.oml.model.common.impl.ModuleElementImpl;
 
 import gov.nasa.jpl.imce.oml.model.terminologies.DataRelationshipRange;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage;
@@ -39,7 +39,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public abstract class DataRelationshipRangeImpl extends ElementImpl implements DataRelationshipRange {
+public abstract class DataRelationshipRangeImpl extends ModuleElementImpl implements DataRelationshipRange {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

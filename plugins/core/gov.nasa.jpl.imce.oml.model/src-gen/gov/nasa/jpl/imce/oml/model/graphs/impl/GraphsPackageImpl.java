@@ -150,6 +150,15 @@ public class GraphsPackageImpl extends EPackageImpl implements GraphsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getTerminologyGraph__ModuleElements() {
+		return terminologyGraphEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getConceptDesignationTerminologyAxiom() {
 		return conceptDesignationTerminologyAxiomEClass;
 	}
@@ -301,6 +310,7 @@ public class GraphsPackageImpl extends EPackageImpl implements GraphsPackage {
 		// Create classes and their features
 		terminologyGraphEClass = createEClass(TERMINOLOGY_GRAPH);
 		createEOperation(terminologyGraphEClass, TERMINOLOGY_GRAPH___MODULE_EDGES);
+		createEOperation(terminologyGraphEClass, TERMINOLOGY_GRAPH___MODULE_ELEMENTS);
 
 		conceptDesignationTerminologyAxiomEClass = createEClass(CONCEPT_DESIGNATION_TERMINOLOGY_AXIOM);
 		createEReference(conceptDesignationTerminologyAxiomEClass, CONCEPT_DESIGNATION_TERMINOLOGY_AXIOM__DESIGNATED_TERMINOLOGY);
@@ -359,6 +369,8 @@ public class GraphsPackageImpl extends EPackageImpl implements GraphsPackage {
 		initEClass(terminologyGraphEClass, TerminologyGraph.class, "TerminologyGraph", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEOperation(getTerminologyGraph__ModuleEdges(), theCommonPackage.getModuleEdge(), "moduleEdges", 0, -1, !IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getTerminologyGraph__ModuleElements(), theCommonPackage.getModuleElement(), "moduleElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(conceptDesignationTerminologyAxiomEClass, ConceptDesignationTerminologyAxiom.class, "ConceptDesignationTerminologyAxiom", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getConceptDesignationTerminologyAxiom_DesignatedTerminology(), theTerminologiesPackage.getTerminologyBox(), null, "designatedTerminology", null, 1, 1, ConceptDesignationTerminologyAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -448,6 +460,12 @@ public class GraphsPackageImpl extends EPackageImpl implements GraphsPackage {
 			 "code", "extent.boxAxioms.getOrElse(this, scala.collection.immutable.Set.empty[resolver.api.ModuleEdge])"
 		   });	
 		addAnnotation
+		  (getTerminologyGraph__ModuleElements(), 
+		   source, 
+		   new String[] {
+			 "code", "extent.lookupBoxStatements(this)"
+		   });	
+		addAnnotation
 		  (getConceptDesignationTerminologyAxiom__DesignationTerminologyGraph(), 
 		   source, 
 		   new String[] {
@@ -486,6 +504,12 @@ public class GraphsPackageImpl extends EPackageImpl implements GraphsPackage {
 		   source, 
 		   new String[] {
 			 "kind", "Set"
+		   });	
+		addAnnotation
+		  (getTerminologyGraph__ModuleElements(), 
+		   source, 
+		   new String[] {
+			 "kind", "Set"
 		   });
 	}
 
@@ -499,6 +523,11 @@ public class GraphsPackageImpl extends EPackageImpl implements GraphsPackage {
 		String source = "http://imce.jpl.nasa.gov/oml/ImplicitExtent";	
 		addAnnotation
 		  (getTerminologyGraph__ModuleEdges(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getTerminologyGraph__ModuleElements(), 
 		   source, 
 		   new String[] {
 		   });	
@@ -544,6 +573,11 @@ public class GraphsPackageImpl extends EPackageImpl implements GraphsPackage {
 		String source = "http://imce.jpl.nasa.gov/oml/NotSchema";	
 		addAnnotation
 		  (getTerminologyGraph__ModuleEdges(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getTerminologyGraph__ModuleElements(), 
 		   source, 
 		   new String[] {
 		   });	

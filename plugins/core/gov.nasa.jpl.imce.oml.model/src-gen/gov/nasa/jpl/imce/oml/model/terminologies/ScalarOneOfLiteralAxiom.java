@@ -18,6 +18,10 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies;
 
+import gov.nasa.jpl.imce.oml.model.common.Element;
+import gov.nasa.jpl.imce.oml.model.common.LiteralValue;
+
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -68,29 +72,29 @@ public interface ScalarOneOfLiteralAxiom extends TermAxiom {
 	void setAxiom(ScalarOneOfRestriction value);
 
 	/**
-	 * Returns the value of the '<em><b>Value</b></em>' attribute.
+	 * Returns the value of the '<em><b>Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The value of the literal from the restrictedScalar datatype
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Value</em>' attribute.
-	 * @see #setValue(String)
+	 * @return the value of the '<em>Value</em>' containment reference.
+	 * @see #setValue(LiteralValue)
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getScalarOneOfLiteralAxiom_Value()
-	 * @model unique="false" dataType="gov.nasa.jpl.imce.oml.model.common.LexicalValue" required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	String getValue();
+	LiteralValue getValue();
 
 	/**
-	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom#getValue <em>Value</em>}' attribute.
+	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom#getValue <em>Value</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Value</em>' attribute.
+	 * @param value the new value of the '<em>Value</em>' containment reference.
 	 * @see #getValue()
 	 * @generated
 	 */
-	void setValue(String value);
+	void setValue(LiteralValue value);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -100,5 +104,16 @@ public interface ScalarOneOfLiteralAxiom extends TermAxiom {
 	 * @generated
 	 */
 	String uuid();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return <%org.eclipse.emf.common.util.ECollections%>.<<%gov.nasa.jpl.imce.oml.model.common.Element%>>emptyEList();'"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='scala.collection.immutable.Set.empty[resolver.api.Element]'"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
+	 * @generated
+	 */
+	EList<Element> allNestedElements();
 
 } // ScalarOneOfLiteralAxiom

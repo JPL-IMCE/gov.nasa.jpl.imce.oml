@@ -38,6 +38,96 @@ public interface CommonFactory extends EFactory {
 	CommonFactory eINSTANCE = gov.nasa.jpl.imce.oml.model.common.impl.CommonFactoryImpl.init();
 
 	/**
+	 * Returns a new object of class '<em>Literal Boolean</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Literal Boolean</em>'.
+	 * @generated
+	 */
+	LiteralBoolean createLiteralBoolean();
+
+	/**
+	 * Returns a new object of class '<em>Literal Date Time</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Literal Date Time</em>'.
+	 * @generated
+	 */
+	LiteralDateTime createLiteralDateTime();
+
+	/**
+	 * Returns a new object of class '<em>Literal String</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Literal String</em>'.
+	 * @generated
+	 */
+	LiteralString createLiteralString();
+
+	/**
+	 * Returns a new object of class '<em>Literal UUID</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Literal UUID</em>'.
+	 * @generated
+	 */
+	LiteralUUID createLiteralUUID();
+
+	/**
+	 * Returns a new object of class '<em>Literal URI</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Literal URI</em>'.
+	 * @generated
+	 */
+	LiteralURI createLiteralURI();
+
+	/**
+	 * Returns a new object of class '<em>Literal Real</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Literal Real</em>'.
+	 * @generated
+	 */
+	LiteralReal createLiteralReal();
+
+	/**
+	 * Returns a new object of class '<em>Literal Rational</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Literal Rational</em>'.
+	 * @generated
+	 */
+	LiteralRational createLiteralRational();
+
+	/**
+	 * Returns a new object of class '<em>Literal Float</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Literal Float</em>'.
+	 * @generated
+	 */
+	LiteralFloat createLiteralFloat();
+
+	/**
+	 * Returns a new object of class '<em>Literal Decimal</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Literal Decimal</em>'.
+	 * @generated
+	 */
+	LiteralDecimal createLiteralDecimal();
+
+	/**
+	 * Returns a new object of class '<em>Annotation Property Value</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Annotation Property Value</em>'.
+	 * @generated
+	 */
+	AnnotationPropertyValue createAnnotationPropertyValue();
+
+	/**
 	 * Returns a new object of class '<em>Annotation Property</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -45,33 +135,6 @@ public interface CommonFactory extends EFactory {
 	 * @generated
 	 */
 	AnnotationProperty createAnnotationProperty();
-
-	/**
-	 * Returns a new object of class '<em>Annotation Entry</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Annotation Entry</em>'.
-	 * @generated
-	 */
-	AnnotationEntry createAnnotationEntry();
-
-	/**
-	 * Returns a new object of class '<em>Annotation Subject Property Value</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Annotation Subject Property Value</em>'.
-	 * @generated
-	 */
-	AnnotationSubjectPropertyValue createAnnotationSubjectPropertyValue();
-
-	/**
-	 * Returns a new object of class '<em>Annotation</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Annotation</em>'.
-	 * @generated
-	 */
-	Annotation createAnnotation();
 
 	/**
 	 * Returns a new object of class '<em>Extent</em>'.

@@ -19,6 +19,8 @@
 package gov.nasa.jpl.imce.oml.model.terminologies;
 
 import gov.nasa.jpl.imce.oml.model.common.Element;
+import gov.nasa.jpl.imce.oml.model.common.LiteralValue;
+import gov.nasa.jpl.imce.oml.model.common.Module;
 
 /**
  * <!-- begin-user-doc -->
@@ -46,7 +48,7 @@ import gov.nasa.jpl.imce.oml.model.common.Element;
 public interface RestrictionScalarDataPropertyValue extends Element {
 	/**
 	 * Returns the value of the '<em><b>Structured Data Property Context</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyContext#getScalarDataPropertyValues <em>Scalar Data Property Values</em>}'.
+	 * It is bidirectional and its opposite is '{@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyContext#getScalarDataPropertyRestrictions <em>Scalar Data Property Restrictions</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Structured Data Property Context</em>' container reference isn't clear,
@@ -56,8 +58,8 @@ public interface RestrictionScalarDataPropertyValue extends Element {
 	 * @return the value of the '<em>Structured Data Property Context</em>' container reference.
 	 * @see #setStructuredDataPropertyContext(RestrictionStructuredDataPropertyContext)
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getRestrictionScalarDataPropertyValue_StructuredDataPropertyContext()
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyContext#getScalarDataPropertyValues
-	 * @model opposite="scalarDataPropertyValues" required="true" transient="false"
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyContext#getScalarDataPropertyRestrictions
+	 * @model opposite="scalarDataPropertyRestrictions" required="true" transient="false"
 	 * @generated
 	 */
 	RestrictionStructuredDataPropertyContext getStructuredDataPropertyContext();
@@ -99,37 +101,37 @@ public interface RestrictionScalarDataPropertyValue extends Element {
 	void setScalarDataProperty(DataRelationshipToScalar value);
 
 	/**
-	 * Returns the value of the '<em><b>Scalar Property Value</b></em>' attribute.
+	 * Returns the value of the '<em><b>Scalar Property Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Scalar Property Value</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Scalar Property Value</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Scalar Property Value</em>' attribute.
-	 * @see #setScalarPropertyValue(String)
+	 * @return the value of the '<em>Scalar Property Value</em>' containment reference.
+	 * @see #setScalarPropertyValue(LiteralValue)
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getRestrictionScalarDataPropertyValue_ScalarPropertyValue()
-	 * @model unique="false" dataType="gov.nasa.jpl.imce.oml.model.common.LexicalValue" required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	String getScalarPropertyValue();
+	LiteralValue getScalarPropertyValue();
 
 	/**
-	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue#getScalarPropertyValue <em>Scalar Property Value</em>}' attribute.
+	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue#getScalarPropertyValue <em>Scalar Property Value</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Scalar Property Value</em>' attribute.
+	 * @param value the new value of the '<em>Scalar Property Value</em>' containment reference.
 	 * @see #getScalarPropertyValue()
 	 * @generated
 	 */
-	void setScalarPropertyValue(String value);
+	void setScalarPropertyValue(LiteralValue value);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyContext%> _structuredDataPropertyContext = this.getStructuredDataPropertyContext();\n<%gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox%> _terminologyBox = null;\nif (_structuredDataPropertyContext!=null)\n{\n\t_terminologyBox=_structuredDataPropertyContext.terminologyBox();\n}\nreturn _terminologyBox;'"
-	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='extent.restrictionStructuredDataPropertyContextOfScalarDataPropertyValue.get(this).flatMap(_.terminologyBox())'"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='extent.restrictionStructuredDataPropertyContextOfRestrictionScalarDataPropertyValue.get(this).flatMap(_.terminologyBox())'"
 	 * @generated
 	 */
 	TerminologyBox terminologyBox();
@@ -142,5 +144,15 @@ public interface RestrictionScalarDataPropertyValue extends Element {
 	 * @generated
 	 */
 	String uuid();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyContext%> _structuredDataPropertyContext = this.getStructuredDataPropertyContext();\n<%gov.nasa.jpl.imce.oml.model.common.Module%> _moduleContext = null;\nif (_structuredDataPropertyContext!=null)\n{\n\t_moduleContext=_structuredDataPropertyContext.moduleContext();\n}\nreturn _moduleContext;'"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='extent.restrictionStructuredDataPropertyContextOfRestrictionScalarDataPropertyValue.get(this).flatMap(_.moduleContext)'"
+	 * @generated
+	 */
+	Module moduleContext();
 
 } // RestrictionScalarDataPropertyValue

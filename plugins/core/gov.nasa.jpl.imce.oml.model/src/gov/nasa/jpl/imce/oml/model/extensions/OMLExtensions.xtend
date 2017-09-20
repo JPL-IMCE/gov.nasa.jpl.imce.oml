@@ -64,7 +64,6 @@ import gov.nasa.jpl.imce.oml.model.terminologies.Scalar
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarDataProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfRestriction
-import gov.nasa.jpl.imce.oml.model.terminologies.SpecializationAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.StringScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.Structure
 import gov.nasa.jpl.imce.oml.model.terminologies.StructuredDataProperty
@@ -287,11 +286,11 @@ public class OMLExtensions {
 	}
 
 	static def String getModuleNsURI(Module it) {
-		annotations.findFirst[a| a.property.iri == "http://imce.jpl.nasa.gov/oml/runtime#OML2EcoreNsURI"]?.value ?: iri()
+		annotations.findFirst[a| a.property.iri == "http://imce.jpl.nasa.gov/oml/runtime#OML2EcoreNsURI"]?.value.value ?: iri()
 	}
 	
 	static def String getModuleNsPrefix(Module it) {
-		annotations.findFirst[a| a.property.iri == "http://imce.jpl.nasa.gov/oml/runtime#OML2EcoreNsPrefix"]?.value ?: name()
+		annotations.findFirst[a| a.property.iri == "http://imce.jpl.nasa.gov/oml/runtime#OML2EcoreNsPrefix"]?.value.value ?: name()
 	}
 	
 	def Iterable<TerminologyBox> terminologies(Extent it) {
@@ -318,11 +317,11 @@ public class OMLExtensions {
 		]
 	}
 
-	def Iterable<TerminologyBox> allImportedTerminologies(TerminologyBox it) {
+	static def Iterable<TerminologyBox> allImportedTerminologies(TerminologyBox it) {
 		collectAllImportedTerminologies(Lists.newArrayList(it), Lists.newArrayList(it))
 	}
 
-	final def Iterable<TerminologyBox> collectAllImportedTerminologies(
+	static final def Iterable<TerminologyBox> collectAllImportedTerminologies(
 		ArrayList<TerminologyBox> queue,
 		ArrayList<TerminologyBox> acc
 	) {

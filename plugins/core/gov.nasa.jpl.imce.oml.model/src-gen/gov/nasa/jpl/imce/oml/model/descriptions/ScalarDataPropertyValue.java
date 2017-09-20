@@ -19,6 +19,8 @@
 package gov.nasa.jpl.imce.oml.model.descriptions;
 
 import gov.nasa.jpl.imce.oml.model.common.Element;
+import gov.nasa.jpl.imce.oml.model.common.LiteralValue;
+import gov.nasa.jpl.imce.oml.model.common.Module;
 
 import gov.nasa.jpl.imce.oml.model.terminologies.DataRelationshipToScalar;
 
@@ -101,30 +103,30 @@ public interface ScalarDataPropertyValue extends Element {
 	void setScalarDataProperty(DataRelationshipToScalar value);
 
 	/**
-	 * Returns the value of the '<em><b>Scalar Property Value</b></em>' attribute.
+	 * Returns the value of the '<em><b>Scalar Property Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Scalar Property Value</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Scalar Property Value</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Scalar Property Value</em>' attribute.
-	 * @see #setScalarPropertyValue(String)
+	 * @return the value of the '<em>Scalar Property Value</em>' containment reference.
+	 * @see #setScalarPropertyValue(LiteralValue)
 	 * @see gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsPackage#getScalarDataPropertyValue_ScalarPropertyValue()
-	 * @model unique="false" dataType="gov.nasa.jpl.imce.oml.model.common.LexicalValue" required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	String getScalarPropertyValue();
+	LiteralValue getScalarPropertyValue();
 
 	/**
-	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.descriptions.ScalarDataPropertyValue#getScalarPropertyValue <em>Scalar Property Value</em>}' attribute.
+	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.descriptions.ScalarDataPropertyValue#getScalarPropertyValue <em>Scalar Property Value</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Scalar Property Value</em>' attribute.
+	 * @param value the new value of the '<em>Scalar Property Value</em>' containment reference.
 	 * @see #getScalarPropertyValue()
 	 * @generated
 	 */
-	void setScalarPropertyValue(String value);
+	void setScalarPropertyValue(LiteralValue value);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -144,5 +146,14 @@ public interface ScalarDataPropertyValue extends Element {
 	 * @generated
 	 */
 	String uuid();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return this.descriptionBox();'"
+	 * @generated
+	 */
+	Module moduleContext();
 
 } // ScalarDataPropertyValue

@@ -28,11 +28,12 @@ import gov.nasa.jpl.imce.oml.model.bundles.BundledTerminologyAxiom;
 import gov.nasa.jpl.imce.oml.model.bundles.RootConceptTaxonomyAxiom;
 import gov.nasa.jpl.imce.oml.model.bundles.SpecificDisjointConceptAxiom;
 import gov.nasa.jpl.imce.oml.model.bundles.TerminologyBundleAxiom;
-import gov.nasa.jpl.imce.oml.model.common.Annotation;
+import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue;
 import gov.nasa.jpl.imce.oml.model.common.Element;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
 import gov.nasa.jpl.imce.oml.model.common.Module;
 import gov.nasa.jpl.imce.oml.model.common.ModuleEdge;
+import gov.nasa.jpl.imce.oml.model.datatypes.StringValue;
 import gov.nasa.jpl.imce.oml.model.descriptions.ConceptInstance;
 import gov.nasa.jpl.imce.oml.model.descriptions.ConceptualEntitySingletonInstance;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox;
@@ -401,17 +402,17 @@ public class OMLExtensions {
   
   public static String getModuleNsURI(final Module it) {
     String _elvis = null;
-    final Function1<Annotation, Boolean> _function = (Annotation a) -> {
+    final Function1<AnnotationPropertyValue, Boolean> _function = (AnnotationPropertyValue a) -> {
       String _iri = a.getProperty().getIri();
       return Boolean.valueOf(Objects.equal(_iri, "http://imce.jpl.nasa.gov/oml/runtime#OML2EcoreNsURI"));
     };
-    Annotation _findFirst = IterableExtensions.<Annotation>findFirst(it.getAnnotations(), _function);
-    String _value = null;
+    AnnotationPropertyValue _findFirst = IterableExtensions.<AnnotationPropertyValue>findFirst(it.getAnnotations(), _function);
+    StringValue _value = null;
     if (_findFirst!=null) {
       _value=_findFirst.getValue();
     }
-    if (_value != null) {
-      _elvis = _value;
+    if (_value.value != null) {
+      _elvis = _value.value;
     } else {
       String _iri = it.iri();
       _elvis = _iri;
@@ -421,17 +422,17 @@ public class OMLExtensions {
   
   public static String getModuleNsPrefix(final Module it) {
     String _elvis = null;
-    final Function1<Annotation, Boolean> _function = (Annotation a) -> {
+    final Function1<AnnotationPropertyValue, Boolean> _function = (AnnotationPropertyValue a) -> {
       String _iri = a.getProperty().getIri();
       return Boolean.valueOf(Objects.equal(_iri, "http://imce.jpl.nasa.gov/oml/runtime#OML2EcoreNsPrefix"));
     };
-    Annotation _findFirst = IterableExtensions.<Annotation>findFirst(it.getAnnotations(), _function);
-    String _value = null;
+    AnnotationPropertyValue _findFirst = IterableExtensions.<AnnotationPropertyValue>findFirst(it.getAnnotations(), _function);
+    StringValue _value = null;
     if (_findFirst!=null) {
       _value=_findFirst.getValue();
     }
-    if (_value != null) {
-      _elvis = _value;
+    if (_value.value != null) {
+      _elvis = _value.value;
     } else {
       String _name = it.name();
       _elvis = _name;
@@ -465,11 +466,11 @@ public class OMLExtensions {
     it.getModules().forEach(_function);
   }
   
-  public Iterable<TerminologyBox> allImportedTerminologies(final TerminologyBox it) {
-    return this.collectAllImportedTerminologies(Lists.<TerminologyBox>newArrayList(it), Lists.<TerminologyBox>newArrayList(it));
+  public static Iterable<TerminologyBox> allImportedTerminologies(final TerminologyBox it) {
+    return OMLExtensions.collectAllImportedTerminologies(Lists.<TerminologyBox>newArrayList(it), Lists.<TerminologyBox>newArrayList(it));
   }
   
-  public final Iterable<TerminologyBox> collectAllImportedTerminologies(final ArrayList<TerminologyBox> queue, final ArrayList<TerminologyBox> acc) {
+  public static final Iterable<TerminologyBox> collectAllImportedTerminologies(final ArrayList<TerminologyBox> queue, final ArrayList<TerminologyBox> acc) {
     Iterable<TerminologyBox> _xblockexpression = null;
     {
       boolean _isEmpty = queue.isEmpty();
@@ -484,7 +485,7 @@ public class OMLExtensions {
       final Iterable<TerminologyBox> inc = Iterables.<TerminologyBox>filter(IterableExtensions.<Module>filterNull(ListExtensions.<ModuleEdge, Module>map(tbox.moduleEdges(), _function)), TerminologyBox.class);
       Iterables.<TerminologyBox>addAll(queue, inc);
       Iterables.<TerminologyBox>addAll(acc, inc);
-      _xblockexpression = this.collectAllImportedTerminologies(queue, acc);
+      _xblockexpression = OMLExtensions.collectAllImportedTerminologies(queue, acc);
     }
     return _xblockexpression;
   }
@@ -522,7 +523,7 @@ public class OMLExtensions {
     final Function1<TerminologyBox, Iterable<Entity>> _function = (TerminologyBox it_1) -> {
       return this.localEntities(it_1);
     };
-    Iterable<Entity> _flatten = Iterables.<Entity>concat(IterableExtensions.<TerminologyBox, Iterable<Entity>>map(this.allImportedTerminologies(it), _function));
+    Iterable<Entity> _flatten = Iterables.<Entity>concat(IterableExtensions.<TerminologyBox, Iterable<Entity>>map(OMLExtensions.allImportedTerminologies(it), _function));
     return Iterables.<Entity>concat(_localEntities, _flatten);
   }
   
@@ -535,7 +536,7 @@ public class OMLExtensions {
     final Function1<TerminologyBox, Iterable<Aspect>> _function = (TerminologyBox it_1) -> {
       return this.localAspects(it_1);
     };
-    Iterable<Aspect> _flatten = Iterables.<Aspect>concat(IterableExtensions.<TerminologyBox, Iterable<Aspect>>map(this.allImportedTerminologies(it), _function));
+    Iterable<Aspect> _flatten = Iterables.<Aspect>concat(IterableExtensions.<TerminologyBox, Iterable<Aspect>>map(OMLExtensions.allImportedTerminologies(it), _function));
     return Iterables.<Aspect>concat(_localAspects, _flatten);
   }
   
@@ -548,7 +549,7 @@ public class OMLExtensions {
     final Function1<TerminologyBox, Iterable<Concept>> _function = (TerminologyBox it_1) -> {
       return this.localConcepts(it_1);
     };
-    Iterable<Concept> _flatten = Iterables.<Concept>concat(IterableExtensions.<TerminologyBox, Iterable<Concept>>map(this.allImportedTerminologies(it), _function));
+    Iterable<Concept> _flatten = Iterables.<Concept>concat(IterableExtensions.<TerminologyBox, Iterable<Concept>>map(OMLExtensions.allImportedTerminologies(it), _function));
     return Iterables.<Concept>concat(_localConcepts, _flatten);
   }
   
@@ -565,7 +566,7 @@ public class OMLExtensions {
     final Function1<TerminologyBox, Iterable<ReifiedRelationship>> _function = (TerminologyBox it_1) -> {
       return this.localReifiedRelationships(it_1);
     };
-    Iterable<ReifiedRelationship> _flatten = Iterables.<ReifiedRelationship>concat(IterableExtensions.<TerminologyBox, Iterable<ReifiedRelationship>>map(this.allImportedTerminologies(it), _function));
+    Iterable<ReifiedRelationship> _flatten = Iterables.<ReifiedRelationship>concat(IterableExtensions.<TerminologyBox, Iterable<ReifiedRelationship>>map(OMLExtensions.allImportedTerminologies(it), _function));
     return Iterables.<ReifiedRelationship>concat(_localReifiedRelationships, _flatten);
   }
   
@@ -578,7 +579,7 @@ public class OMLExtensions {
     final Function1<TerminologyBox, Iterable<EntityRelationship>> _function = (TerminologyBox it_1) -> {
       return this.localEntityRelationships(it_1);
     };
-    Iterable<EntityRelationship> _flatten = Iterables.<EntityRelationship>concat(IterableExtensions.<TerminologyBox, Iterable<EntityRelationship>>map(this.allImportedTerminologies(it), _function));
+    Iterable<EntityRelationship> _flatten = Iterables.<EntityRelationship>concat(IterableExtensions.<TerminologyBox, Iterable<EntityRelationship>>map(OMLExtensions.allImportedTerminologies(it), _function));
     return Iterables.<EntityRelationship>concat(_localEntityRelationships, _flatten);
   }
   
@@ -664,7 +665,7 @@ public class OMLExtensions {
         return it.getClosedWorldDefinitions();
       };
       final Function1<TerminologyBox, Iterable<TerminologyBox>> _function_2 = (TerminologyBox it) -> {
-        return this.allImportedTerminologies(it);
+        return OMLExtensions.allImportedTerminologies(it);
       };
       final Iterable<TerminologyBox> inct = Iterables.<TerminologyBox>concat(ListExtensions.<TerminologyBox, Iterable<TerminologyBox>>map(ListExtensions.<DescriptionBoxExtendsClosedWorldDefinitions, TerminologyBox>map(dbox.getClosedWorldDefinitions(), _function_1), _function_2));
       Iterables.<TerminologyBox>addAll(acc, inct);

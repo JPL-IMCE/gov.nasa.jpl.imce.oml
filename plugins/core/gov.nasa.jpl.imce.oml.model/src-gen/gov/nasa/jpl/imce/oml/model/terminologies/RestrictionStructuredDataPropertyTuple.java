@@ -18,6 +18,10 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies;
 
+import gov.nasa.jpl.imce.oml.model.common.Element;
+import gov.nasa.jpl.imce.oml.model.common.Module;
+
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -43,7 +47,7 @@ package gov.nasa.jpl.imce.oml.model.terminologies;
 public interface RestrictionStructuredDataPropertyTuple extends RestrictionStructuredDataPropertyContext {
 	/**
 	 * Returns the value of the '<em><b>Structured Data Property Context</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyContext#getStructuredPropertyTuples <em>Structured Property Tuples</em>}'.
+	 * It is bidirectional and its opposite is '{@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyContext#getStructuredDataPropertyRestrictions <em>Structured Data Property Restrictions</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Structured Data Property Context</em>' container reference isn't clear,
@@ -53,8 +57,8 @@ public interface RestrictionStructuredDataPropertyTuple extends RestrictionStruc
 	 * @return the value of the '<em>Structured Data Property Context</em>' container reference.
 	 * @see #setStructuredDataPropertyContext(RestrictionStructuredDataPropertyContext)
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getRestrictionStructuredDataPropertyTuple_StructuredDataPropertyContext()
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyContext#getStructuredPropertyTuples
-	 * @model opposite="structuredPropertyTuples" required="true" transient="false"
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyContext#getStructuredDataPropertyRestrictions
+	 * @model opposite="structuredDataPropertyRestrictions" required="true" transient="false"
 	 * @generated
 	 */
 	RestrictionStructuredDataPropertyContext getStructuredDataPropertyContext();
@@ -87,5 +91,25 @@ public interface RestrictionStructuredDataPropertyTuple extends RestrictionStruc
 	 * @generated
 	 */
 	String uuid();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyContext%> _structuredDataPropertyContext = this.getStructuredDataPropertyContext();\n<%gov.nasa.jpl.imce.oml.model.common.Module%> _moduleContext = null;\nif (_structuredDataPropertyContext!=null)\n{\n\t_moduleContext=_structuredDataPropertyContext.moduleContext();\n}\nreturn _moduleContext;'"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='extent.restrictionStructuredDataPropertyContextOfRestrictionStructuredDataPropertyTuple.get(this).flatMap(_.moduleContext)'"
+	 * @generated
+	 */
+	Module moduleContext();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return this.allNestedRestrictionElements();'"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
+	 * @generated
+	 */
+	EList<Element> allNestedElements();
 
 } // RestrictionStructuredDataPropertyTuple

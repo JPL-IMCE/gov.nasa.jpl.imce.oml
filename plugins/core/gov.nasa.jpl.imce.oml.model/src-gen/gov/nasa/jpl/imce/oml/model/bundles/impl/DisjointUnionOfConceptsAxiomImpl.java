@@ -18,9 +18,13 @@
  */
 package gov.nasa.jpl.imce.oml.model.bundles.impl;
 
+import gov.nasa.jpl.imce.oml.model.bundles.Bundle;
 import gov.nasa.jpl.imce.oml.model.bundles.BundlesPackage;
 import gov.nasa.jpl.imce.oml.model.bundles.ConceptTreeDisjunction;
 import gov.nasa.jpl.imce.oml.model.bundles.DisjointUnionOfConceptsAxiom;
+
+import gov.nasa.jpl.imce.oml.model.common.Element;
+import gov.nasa.jpl.imce.oml.model.common.Module;
 
 import gov.nasa.jpl.imce.oml.model.common.impl.ElementImpl;
 
@@ -137,6 +141,31 @@ public abstract class DisjointUnionOfConceptsAxiomImpl extends ElementImpl imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Module moduleContext() {
+		ConceptTreeDisjunction _disjointTaxonomyParent = this.getDisjointTaxonomyParent();
+		Bundle _bundleContainer = null;
+		if (_disjointTaxonomyParent!=null) {
+			_bundleContainer=_disjointTaxonomyParent.bundleContainer();
+		}
+		return _bundleContainer;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Element> allNestedUnions() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -245,6 +274,10 @@ public abstract class DisjointUnionOfConceptsAxiomImpl extends ElementImpl imple
 		switch (operationID) {
 			case BundlesPackage.DISJOINT_UNION_OF_CONCEPTS_AXIOM___CONCEPT_TREE_DISJUNCTION_PARENT:
 				return conceptTreeDisjunctionParent();
+			case BundlesPackage.DISJOINT_UNION_OF_CONCEPTS_AXIOM___MODULE_CONTEXT:
+				return moduleContext();
+			case BundlesPackage.DISJOINT_UNION_OF_CONCEPTS_AXIOM___ALL_NESTED_UNIONS:
+				return allNestedUnions();
 		}
 		return super.eInvoke(operationID, arguments);
 	}

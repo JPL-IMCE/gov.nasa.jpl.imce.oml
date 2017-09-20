@@ -23,6 +23,8 @@ import gov.nasa.jpl.imce.oml.model.bundles.BundlesPackage;
 import gov.nasa.jpl.imce.oml.model.bundles.ConceptTreeDisjunction;
 import gov.nasa.jpl.imce.oml.model.bundles.DisjointUnionOfConceptsAxiom;
 
+import gov.nasa.jpl.imce.oml.model.common.Element;
+
 import gov.nasa.jpl.imce.oml.model.common.impl.ElementImpl;
 
 import java.lang.reflect.InvocationTargetException;
@@ -100,6 +102,17 @@ public abstract class ConceptTreeDisjunctionImpl extends ElementImpl implements 
 	 * @generated
 	 */
 	public Bundle bundleContainer() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Element> allNestedDisjunctions() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
@@ -204,6 +217,8 @@ public abstract class ConceptTreeDisjunctionImpl extends ElementImpl implements 
 		switch (operationID) {
 			case BundlesPackage.CONCEPT_TREE_DISJUNCTION___BUNDLE_CONTAINER:
 				return bundleContainer();
+			case BundlesPackage.CONCEPT_TREE_DISJUNCTION___ALL_NESTED_DISJUNCTIONS:
+				return allNestedDisjunctions();
 		}
 		return super.eInvoke(operationID, arguments);
 	}

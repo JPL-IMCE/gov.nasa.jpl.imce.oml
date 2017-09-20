@@ -18,6 +18,7 @@
  */
 package gov.nasa.jpl.imce.oml.model.descriptions;
 
+import gov.nasa.jpl.imce.oml.model.common.Module;
 import gov.nasa.jpl.imce.oml.model.common.Resource;
 
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptualEntity;
@@ -132,5 +133,14 @@ public interface ConceptualEntitySingletonInstance extends TerminologyInstanceAs
 	 * @generated
 	 */
 	String uuid();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return this.descriptionBox();'"
+	 * @generated
+	 */
+	Module moduleContext();
 
 } // ConceptualEntitySingletonInstance

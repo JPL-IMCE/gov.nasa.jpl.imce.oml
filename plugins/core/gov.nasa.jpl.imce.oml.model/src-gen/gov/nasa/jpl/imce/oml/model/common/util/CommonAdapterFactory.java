@@ -20,14 +20,10 @@ package gov.nasa.jpl.imce.oml.model.common.util;
 
 import gov.nasa.jpl.imce.oml.model.common.*;
 
-import java.util.Map;
-
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -88,6 +84,54 @@ public class CommonAdapterFactory extends AdapterFactoryImpl {
 	protected CommonSwitch<Adapter> modelSwitch =
 		new CommonSwitch<Adapter>() {
 			@Override
+			public Adapter caseLiteralValue(LiteralValue object) {
+				return createLiteralValueAdapter();
+			}
+			@Override
+			public Adapter caseLiteralBoolean(LiteralBoolean object) {
+				return createLiteralBooleanAdapter();
+			}
+			@Override
+			public Adapter caseLiteralDateTime(LiteralDateTime object) {
+				return createLiteralDateTimeAdapter();
+			}
+			@Override
+			public Adapter caseLiteralString(LiteralString object) {
+				return createLiteralStringAdapter();
+			}
+			@Override
+			public Adapter caseLiteralUUID(LiteralUUID object) {
+				return createLiteralUUIDAdapter();
+			}
+			@Override
+			public Adapter caseLiteralURI(LiteralURI object) {
+				return createLiteralURIAdapter();
+			}
+			@Override
+			public Adapter caseLiteralNumber(LiteralNumber object) {
+				return createLiteralNumberAdapter();
+			}
+			@Override
+			public Adapter caseLiteralReal(LiteralReal object) {
+				return createLiteralRealAdapter();
+			}
+			@Override
+			public Adapter caseLiteralRational(LiteralRational object) {
+				return createLiteralRationalAdapter();
+			}
+			@Override
+			public Adapter caseLiteralFloat(LiteralFloat object) {
+				return createLiteralFloatAdapter();
+			}
+			@Override
+			public Adapter caseLiteralDecimal(LiteralDecimal object) {
+				return createLiteralDecimalAdapter();
+			}
+			@Override
+			public Adapter caseAnnotationPropertyValue(AnnotationPropertyValue object) {
+				return createAnnotationPropertyValueAdapter();
+			}
+			@Override
 			public Adapter caseElement(Element object) {
 				return createElementAdapter();
 			}
@@ -106,26 +150,6 @@ public class CommonAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseAnnotationProperty(AnnotationProperty object) {
 				return createAnnotationPropertyAdapter();
-			}
-			@Override
-			public Adapter caseAnnotationPropertyTable(Map.Entry<AnnotationProperty, EList<AnnotationEntry>> object) {
-				return createAnnotationPropertyTableAdapter();
-			}
-			@Override
-			public Adapter caseAnnotationEntry(AnnotationEntry object) {
-				return createAnnotationEntryAdapter();
-			}
-			@Override
-			public Adapter caseAnnotationSubjectTable(Map.Entry<Element, EList<AnnotationSubjectPropertyValue>> object) {
-				return createAnnotationSubjectTableAdapter();
-			}
-			@Override
-			public Adapter caseAnnotationSubjectPropertyValue(AnnotationSubjectPropertyValue object) {
-				return createAnnotationSubjectPropertyValueAdapter();
-			}
-			@Override
-			public Adapter caseAnnotation(Annotation object) {
-				return createAnnotationAdapter();
 			}
 			@Override
 			public Adapter caseExtent(Extent object) {
@@ -154,6 +178,174 @@ public class CommonAdapterFactory extends AdapterFactoryImpl {
 		return modelSwitch.doSwitch((EObject)target);
 	}
 
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.common.LiteralValue <em>Literal Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralValue
+	 * @generated
+	 */
+	public Adapter createLiteralValueAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.common.LiteralBoolean <em>Literal Boolean</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralBoolean
+	 * @generated
+	 */
+	public Adapter createLiteralBooleanAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.common.LiteralDateTime <em>Literal Date Time</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralDateTime
+	 * @generated
+	 */
+	public Adapter createLiteralDateTimeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.common.LiteralString <em>Literal String</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralString
+	 * @generated
+	 */
+	public Adapter createLiteralStringAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.common.LiteralUUID <em>Literal UUID</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralUUID
+	 * @generated
+	 */
+	public Adapter createLiteralUUIDAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.common.LiteralURI <em>Literal URI</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralURI
+	 * @generated
+	 */
+	public Adapter createLiteralURIAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.common.LiteralNumber <em>Literal Number</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralNumber
+	 * @generated
+	 */
+	public Adapter createLiteralNumberAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.common.LiteralReal <em>Literal Real</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralReal
+	 * @generated
+	 */
+	public Adapter createLiteralRealAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.common.LiteralRational <em>Literal Rational</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralRational
+	 * @generated
+	 */
+	public Adapter createLiteralRationalAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.common.LiteralFloat <em>Literal Float</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralFloat
+	 * @generated
+	 */
+	public Adapter createLiteralFloatAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.common.LiteralDecimal <em>Literal Decimal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralDecimal
+	 * @generated
+	 */
+	public Adapter createLiteralDecimalAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue <em>Annotation Property Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue
+	 * @generated
+	 */
+	public Adapter createAnnotationPropertyValueAdapter() {
+		return null;
+	}
 
 	/**
 	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.common.Element <em>Element</em>}'.
@@ -222,76 +414,6 @@ public class CommonAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAnnotationPropertyAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>Annotation Property Table</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see java.util.Map.Entry
-	 * @generated
-	 */
-	public Adapter createAnnotationPropertyTableAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.common.AnnotationEntry <em>Annotation Entry</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see gov.nasa.jpl.imce.oml.model.common.AnnotationEntry
-	 * @generated
-	 */
-	public Adapter createAnnotationEntryAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>Annotation Subject Table</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see java.util.Map.Entry
-	 * @generated
-	 */
-	public Adapter createAnnotationSubjectTableAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.common.AnnotationSubjectPropertyValue <em>Annotation Subject Property Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see gov.nasa.jpl.imce.oml.model.common.AnnotationSubjectPropertyValue
-	 * @generated
-	 */
-	public Adapter createAnnotationSubjectPropertyValueAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.common.Annotation <em>Annotation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see gov.nasa.jpl.imce.oml.model.common.Annotation
-	 * @generated
-	 */
-	public Adapter createAnnotationAdapter() {
 		return null;
 	}
 

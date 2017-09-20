@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<site>
-   <feature url="features/gov.nasa.jpl.imce.oml.platform.feature_0.7.0.qualifier.jar" id="gov.nasa.jpl.imce.oml.platform.feature" version="0.7.0.qualifier">
-      <category name="oml.platform.category"/>
-   </feature>
-   <category-def name="oml.platform.category" label="OML Eclipse Platform"/>
-</site>

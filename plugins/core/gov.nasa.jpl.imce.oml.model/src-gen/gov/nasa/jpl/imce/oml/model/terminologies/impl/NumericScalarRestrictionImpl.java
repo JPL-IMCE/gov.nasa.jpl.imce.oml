@@ -18,12 +18,16 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies.impl;
 
+import gov.nasa.jpl.imce.oml.model.common.LiteralNumber;
+
 import gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
@@ -45,84 +49,44 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class NumericScalarRestrictionImpl extends RestrictedDataRangeImpl implements NumericScalarRestriction {
 	/**
-	 * The default value of the '{@link #getMinInclusive() <em>Min Inclusive</em>}' attribute.
+	 * The cached value of the '{@link #getMinInclusive() <em>Min Inclusive</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getMinInclusive()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String MIN_INCLUSIVE_EDEFAULT = null;
+	protected LiteralNumber minInclusive;
 
 	/**
-	 * The cached value of the '{@link #getMinInclusive() <em>Min Inclusive</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMinInclusive()
-	 * @generated
-	 * @ordered
-	 */
-	protected String minInclusive = MIN_INCLUSIVE_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getMaxInclusive() <em>Max Inclusive</em>}' attribute.
+	 * The cached value of the '{@link #getMaxInclusive() <em>Max Inclusive</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getMaxInclusive()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String MAX_INCLUSIVE_EDEFAULT = null;
+	protected LiteralNumber maxInclusive;
 
 	/**
-	 * The cached value of the '{@link #getMaxInclusive() <em>Max Inclusive</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMaxInclusive()
-	 * @generated
-	 * @ordered
-	 */
-	protected String maxInclusive = MAX_INCLUSIVE_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getMinExclusive() <em>Min Exclusive</em>}' attribute.
+	 * The cached value of the '{@link #getMinExclusive() <em>Min Exclusive</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getMinExclusive()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String MIN_EXCLUSIVE_EDEFAULT = null;
+	protected LiteralNumber minExclusive;
 
 	/**
-	 * The cached value of the '{@link #getMinExclusive() <em>Min Exclusive</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMinExclusive()
-	 * @generated
-	 * @ordered
-	 */
-	protected String minExclusive = MIN_EXCLUSIVE_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getMaxExclusive() <em>Max Exclusive</em>}' attribute.
+	 * The cached value of the '{@link #getMaxExclusive() <em>Max Exclusive</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getMaxExclusive()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String MAX_EXCLUSIVE_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getMaxExclusive() <em>Max Exclusive</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMaxExclusive()
-	 * @generated
-	 * @ordered
-	 */
-	protected String maxExclusive = MAX_EXCLUSIVE_EDEFAULT;
+	protected LiteralNumber maxExclusive;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -148,7 +112,7 @@ public class NumericScalarRestrictionImpl extends RestrictedDataRangeImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getMinInclusive() {
+	public LiteralNumber getMinInclusive() {
 		return minInclusive;
 	}
 
@@ -157,11 +121,14 @@ public class NumericScalarRestrictionImpl extends RestrictedDataRangeImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setMinInclusive(String newMinInclusive) {
-		String oldMinInclusive = minInclusive;
+	public NotificationChain basicSetMinInclusive(LiteralNumber newMinInclusive, NotificationChain msgs) {
+		LiteralNumber oldMinInclusive = minInclusive;
 		minInclusive = newMinInclusive;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.NUMERIC_SCALAR_RESTRICTION__MIN_INCLUSIVE, oldMinInclusive, minInclusive));
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TerminologiesPackage.NUMERIC_SCALAR_RESTRICTION__MIN_INCLUSIVE, oldMinInclusive, newMinInclusive);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -169,7 +136,26 @@ public class NumericScalarRestrictionImpl extends RestrictedDataRangeImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getMaxInclusive() {
+	public void setMinInclusive(LiteralNumber newMinInclusive) {
+		if (newMinInclusive != minInclusive) {
+			NotificationChain msgs = null;
+			if (minInclusive != null)
+				msgs = ((InternalEObject)minInclusive).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TerminologiesPackage.NUMERIC_SCALAR_RESTRICTION__MIN_INCLUSIVE, null, msgs);
+			if (newMinInclusive != null)
+				msgs = ((InternalEObject)newMinInclusive).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TerminologiesPackage.NUMERIC_SCALAR_RESTRICTION__MIN_INCLUSIVE, null, msgs);
+			msgs = basicSetMinInclusive(newMinInclusive, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.NUMERIC_SCALAR_RESTRICTION__MIN_INCLUSIVE, newMinInclusive, newMinInclusive));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LiteralNumber getMaxInclusive() {
 		return maxInclusive;
 	}
 
@@ -178,11 +164,14 @@ public class NumericScalarRestrictionImpl extends RestrictedDataRangeImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setMaxInclusive(String newMaxInclusive) {
-		String oldMaxInclusive = maxInclusive;
+	public NotificationChain basicSetMaxInclusive(LiteralNumber newMaxInclusive, NotificationChain msgs) {
+		LiteralNumber oldMaxInclusive = maxInclusive;
 		maxInclusive = newMaxInclusive;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.NUMERIC_SCALAR_RESTRICTION__MAX_INCLUSIVE, oldMaxInclusive, maxInclusive));
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TerminologiesPackage.NUMERIC_SCALAR_RESTRICTION__MAX_INCLUSIVE, oldMaxInclusive, newMaxInclusive);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -190,7 +179,26 @@ public class NumericScalarRestrictionImpl extends RestrictedDataRangeImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getMinExclusive() {
+	public void setMaxInclusive(LiteralNumber newMaxInclusive) {
+		if (newMaxInclusive != maxInclusive) {
+			NotificationChain msgs = null;
+			if (maxInclusive != null)
+				msgs = ((InternalEObject)maxInclusive).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TerminologiesPackage.NUMERIC_SCALAR_RESTRICTION__MAX_INCLUSIVE, null, msgs);
+			if (newMaxInclusive != null)
+				msgs = ((InternalEObject)newMaxInclusive).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TerminologiesPackage.NUMERIC_SCALAR_RESTRICTION__MAX_INCLUSIVE, null, msgs);
+			msgs = basicSetMaxInclusive(newMaxInclusive, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.NUMERIC_SCALAR_RESTRICTION__MAX_INCLUSIVE, newMaxInclusive, newMaxInclusive));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LiteralNumber getMinExclusive() {
 		return minExclusive;
 	}
 
@@ -199,11 +207,14 @@ public class NumericScalarRestrictionImpl extends RestrictedDataRangeImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setMinExclusive(String newMinExclusive) {
-		String oldMinExclusive = minExclusive;
+	public NotificationChain basicSetMinExclusive(LiteralNumber newMinExclusive, NotificationChain msgs) {
+		LiteralNumber oldMinExclusive = minExclusive;
 		minExclusive = newMinExclusive;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.NUMERIC_SCALAR_RESTRICTION__MIN_EXCLUSIVE, oldMinExclusive, minExclusive));
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TerminologiesPackage.NUMERIC_SCALAR_RESTRICTION__MIN_EXCLUSIVE, oldMinExclusive, newMinExclusive);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -211,7 +222,26 @@ public class NumericScalarRestrictionImpl extends RestrictedDataRangeImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getMaxExclusive() {
+	public void setMinExclusive(LiteralNumber newMinExclusive) {
+		if (newMinExclusive != minExclusive) {
+			NotificationChain msgs = null;
+			if (minExclusive != null)
+				msgs = ((InternalEObject)minExclusive).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TerminologiesPackage.NUMERIC_SCALAR_RESTRICTION__MIN_EXCLUSIVE, null, msgs);
+			if (newMinExclusive != null)
+				msgs = ((InternalEObject)newMinExclusive).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TerminologiesPackage.NUMERIC_SCALAR_RESTRICTION__MIN_EXCLUSIVE, null, msgs);
+			msgs = basicSetMinExclusive(newMinExclusive, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.NUMERIC_SCALAR_RESTRICTION__MIN_EXCLUSIVE, newMinExclusive, newMinExclusive));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LiteralNumber getMaxExclusive() {
 		return maxExclusive;
 	}
 
@@ -220,11 +250,53 @@ public class NumericScalarRestrictionImpl extends RestrictedDataRangeImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setMaxExclusive(String newMaxExclusive) {
-		String oldMaxExclusive = maxExclusive;
+	public NotificationChain basicSetMaxExclusive(LiteralNumber newMaxExclusive, NotificationChain msgs) {
+		LiteralNumber oldMaxExclusive = maxExclusive;
 		maxExclusive = newMaxExclusive;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.NUMERIC_SCALAR_RESTRICTION__MAX_EXCLUSIVE, oldMaxExclusive, maxExclusive));
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TerminologiesPackage.NUMERIC_SCALAR_RESTRICTION__MAX_EXCLUSIVE, oldMaxExclusive, newMaxExclusive);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMaxExclusive(LiteralNumber newMaxExclusive) {
+		if (newMaxExclusive != maxExclusive) {
+			NotificationChain msgs = null;
+			if (maxExclusive != null)
+				msgs = ((InternalEObject)maxExclusive).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TerminologiesPackage.NUMERIC_SCALAR_RESTRICTION__MAX_EXCLUSIVE, null, msgs);
+			if (newMaxExclusive != null)
+				msgs = ((InternalEObject)newMaxExclusive).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TerminologiesPackage.NUMERIC_SCALAR_RESTRICTION__MAX_EXCLUSIVE, null, msgs);
+			msgs = basicSetMaxExclusive(newMaxExclusive, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.NUMERIC_SCALAR_RESTRICTION__MAX_EXCLUSIVE, newMaxExclusive, newMaxExclusive));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case TerminologiesPackage.NUMERIC_SCALAR_RESTRICTION__MIN_INCLUSIVE:
+				return basicSetMinInclusive(null, msgs);
+			case TerminologiesPackage.NUMERIC_SCALAR_RESTRICTION__MAX_INCLUSIVE:
+				return basicSetMaxInclusive(null, msgs);
+			case TerminologiesPackage.NUMERIC_SCALAR_RESTRICTION__MIN_EXCLUSIVE:
+				return basicSetMinExclusive(null, msgs);
+			case TerminologiesPackage.NUMERIC_SCALAR_RESTRICTION__MAX_EXCLUSIVE:
+				return basicSetMaxExclusive(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -256,16 +328,16 @@ public class NumericScalarRestrictionImpl extends RestrictedDataRangeImpl implem
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case TerminologiesPackage.NUMERIC_SCALAR_RESTRICTION__MIN_INCLUSIVE:
-				setMinInclusive((String)newValue);
+				setMinInclusive((LiteralNumber)newValue);
 				return;
 			case TerminologiesPackage.NUMERIC_SCALAR_RESTRICTION__MAX_INCLUSIVE:
-				setMaxInclusive((String)newValue);
+				setMaxInclusive((LiteralNumber)newValue);
 				return;
 			case TerminologiesPackage.NUMERIC_SCALAR_RESTRICTION__MIN_EXCLUSIVE:
-				setMinExclusive((String)newValue);
+				setMinExclusive((LiteralNumber)newValue);
 				return;
 			case TerminologiesPackage.NUMERIC_SCALAR_RESTRICTION__MAX_EXCLUSIVE:
-				setMaxExclusive((String)newValue);
+				setMaxExclusive((LiteralNumber)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -280,16 +352,16 @@ public class NumericScalarRestrictionImpl extends RestrictedDataRangeImpl implem
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case TerminologiesPackage.NUMERIC_SCALAR_RESTRICTION__MIN_INCLUSIVE:
-				setMinInclusive(MIN_INCLUSIVE_EDEFAULT);
+				setMinInclusive((LiteralNumber)null);
 				return;
 			case TerminologiesPackage.NUMERIC_SCALAR_RESTRICTION__MAX_INCLUSIVE:
-				setMaxInclusive(MAX_INCLUSIVE_EDEFAULT);
+				setMaxInclusive((LiteralNumber)null);
 				return;
 			case TerminologiesPackage.NUMERIC_SCALAR_RESTRICTION__MIN_EXCLUSIVE:
-				setMinExclusive(MIN_EXCLUSIVE_EDEFAULT);
+				setMinExclusive((LiteralNumber)null);
 				return;
 			case TerminologiesPackage.NUMERIC_SCALAR_RESTRICTION__MAX_EXCLUSIVE:
-				setMaxExclusive(MAX_EXCLUSIVE_EDEFAULT);
+				setMaxExclusive((LiteralNumber)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -304,37 +376,15 @@ public class NumericScalarRestrictionImpl extends RestrictedDataRangeImpl implem
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case TerminologiesPackage.NUMERIC_SCALAR_RESTRICTION__MIN_INCLUSIVE:
-				return MIN_INCLUSIVE_EDEFAULT == null ? minInclusive != null : !MIN_INCLUSIVE_EDEFAULT.equals(minInclusive);
+				return minInclusive != null;
 			case TerminologiesPackage.NUMERIC_SCALAR_RESTRICTION__MAX_INCLUSIVE:
-				return MAX_INCLUSIVE_EDEFAULT == null ? maxInclusive != null : !MAX_INCLUSIVE_EDEFAULT.equals(maxInclusive);
+				return maxInclusive != null;
 			case TerminologiesPackage.NUMERIC_SCALAR_RESTRICTION__MIN_EXCLUSIVE:
-				return MIN_EXCLUSIVE_EDEFAULT == null ? minExclusive != null : !MIN_EXCLUSIVE_EDEFAULT.equals(minExclusive);
+				return minExclusive != null;
 			case TerminologiesPackage.NUMERIC_SCALAR_RESTRICTION__MAX_EXCLUSIVE:
-				return MAX_EXCLUSIVE_EDEFAULT == null ? maxExclusive != null : !MAX_EXCLUSIVE_EDEFAULT.equals(maxExclusive);
+				return maxExclusive != null;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (minInclusive: ");
-		result.append(minInclusive);
-		result.append(", maxInclusive: ");
-		result.append(maxInclusive);
-		result.append(", minExclusive: ");
-		result.append(minExclusive);
-		result.append(", maxExclusive: ");
-		result.append(maxExclusive);
-		result.append(')');
-		return result.toString();
 	}
 
 } //NumericScalarRestrictionImpl

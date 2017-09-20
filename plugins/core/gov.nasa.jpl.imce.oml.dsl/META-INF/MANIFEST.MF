@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-Vendor: %providerName
-Bundle-Version: 0.7.0.qualifier
+Bundle-Version: 0.8.0.qualifier
 Bundle-SymbolicName: gov.nasa.jpl.imce.oml.dsl; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext;bundle-version="[2.11.0,3.0.0)",
@@ -10,16 +10,15 @@ Require-Bundle: org.eclipse.xtext;bundle-version="[2.11.0,3.0.0)",
  org.eclipse.equinox.common;bundle-version="[3.5.0,4.0.0)",
  org.eclipse.emf.ecore;bundle-version="[2.12.0,3.0.0)",
  org.eclipse.xtext.xbase.lib;bundle-version="[2.11.0,3.0.0)",
- org.antlr.runtime;bundle-version="[4.3.0,5.0.0)",
  org.eclipse.xtext.util;bundle-version="[2.11.0,3.0.0)",
  org.eclipse.xtend.lib;bundle-version="[2.11.0,3.0.0)",
  org.eclipse.emf.common,
  gov.nasa.jpl.imce.oml.model,
- gov.nasa.jpl.imce.oml.runtime
+ gov.nasa.jpl.imce.oml.uuid,
+ org.antlr.runtime
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: gov.nasa.jpl.imce.oml.dsl,
  gov.nasa.jpl.imce.oml.dsl.formatting2,
- gov.nasa.jpl.imce.oml.dsl.generator,
  gov.nasa.jpl.imce.oml.dsl.linking,
  gov.nasa.jpl.imce.oml.dsl.parser.antlr,
  gov.nasa.jpl.imce.oml.dsl.parser.antlr.internal,

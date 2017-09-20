@@ -18,6 +18,9 @@
  */
 package gov.nasa.jpl.imce.oml.model.descriptions.impl;
 
+import gov.nasa.jpl.imce.oml.model.common.Element;
+import gov.nasa.jpl.imce.oml.model.common.Module;
+
 import gov.nasa.jpl.imce.oml.model.common.impl.ElementImpl;
 
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox;
@@ -32,9 +35,12 @@ import java.lang.reflect.InvocationTargetException;
 
 import java.util.Collection;
 
+import java.util.function.Consumer;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -189,6 +195,37 @@ public abstract class SingletonInstanceStructuredDataPropertyContextImpl extends
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Module moduleContext() {
+		return this.descriptionBox();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Element> allNestedRestrictionElements() {
+		BasicEList<Element> _xblockexpression = null;
+		{
+			final BasicEList<Element> nres = new BasicEList<Element>();
+			nres.addAll(this.getStructuredPropertyTuples());
+			final Consumer<StructuredDataPropertyTuple> _function = new Consumer<StructuredDataPropertyTuple>() {
+				public void accept(final StructuredDataPropertyTuple it) {
+					nres.addAll(it.allNestedRestrictionElements());
+				}
+			};
+			this.getStructuredPropertyTuples().forEach(_function);
+			nres.addAll(this.getScalarDataPropertyValues());
+			_xblockexpression = nres;
+		}
+		return _xblockexpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -309,6 +346,10 @@ public abstract class SingletonInstanceStructuredDataPropertyContextImpl extends
 		switch (operationID) {
 			case DescriptionsPackage.SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT___DESCRIPTION_BOX:
 				return descriptionBox();
+			case DescriptionsPackage.SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT___MODULE_CONTEXT:
+				return moduleContext();
+			case DescriptionsPackage.SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT___ALL_NESTED_RESTRICTION_ELEMENTS:
+				return allNestedRestrictionElements();
 		}
 		return super.eInvoke(operationID, arguments);
 	}

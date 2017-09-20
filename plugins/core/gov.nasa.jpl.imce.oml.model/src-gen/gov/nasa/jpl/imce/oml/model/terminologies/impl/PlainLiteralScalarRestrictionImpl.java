@@ -18,6 +18,10 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies.impl;
 
+import gov.nasa.jpl.imce.oml.model.datatypes.LanguageTagValue;
+import gov.nasa.jpl.imce.oml.model.datatypes.PatternValue;
+import gov.nasa.jpl.imce.oml.model.datatypes.PositiveIntegerValue;
+
 import gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage;
 
@@ -53,7 +57,7 @@ public class PlainLiteralScalarRestrictionImpl extends RestrictedDataRangeImpl i
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int LENGTH_EDEFAULT = 0;
+	protected static final PositiveIntegerValue LENGTH_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getLength() <em>Length</em>}' attribute.
@@ -63,7 +67,7 @@ public class PlainLiteralScalarRestrictionImpl extends RestrictedDataRangeImpl i
 	 * @generated
 	 * @ordered
 	 */
-	protected int length = LENGTH_EDEFAULT;
+	protected PositiveIntegerValue length = LENGTH_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getMinLength() <em>Min Length</em>}' attribute.
@@ -73,7 +77,7 @@ public class PlainLiteralScalarRestrictionImpl extends RestrictedDataRangeImpl i
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int MIN_LENGTH_EDEFAULT = 0;
+	protected static final PositiveIntegerValue MIN_LENGTH_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getMinLength() <em>Min Length</em>}' attribute.
@@ -83,7 +87,7 @@ public class PlainLiteralScalarRestrictionImpl extends RestrictedDataRangeImpl i
 	 * @generated
 	 * @ordered
 	 */
-	protected int minLength = MIN_LENGTH_EDEFAULT;
+	protected PositiveIntegerValue minLength = MIN_LENGTH_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getMaxLength() <em>Max Length</em>}' attribute.
@@ -93,7 +97,7 @@ public class PlainLiteralScalarRestrictionImpl extends RestrictedDataRangeImpl i
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int MAX_LENGTH_EDEFAULT = 0;
+	protected static final PositiveIntegerValue MAX_LENGTH_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getMaxLength() <em>Max Length</em>}' attribute.
@@ -103,7 +107,7 @@ public class PlainLiteralScalarRestrictionImpl extends RestrictedDataRangeImpl i
 	 * @generated
 	 * @ordered
 	 */
-	protected int maxLength = MAX_LENGTH_EDEFAULT;
+	protected PositiveIntegerValue maxLength = MAX_LENGTH_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getPattern() <em>Pattern</em>}' attribute.
@@ -113,7 +117,7 @@ public class PlainLiteralScalarRestrictionImpl extends RestrictedDataRangeImpl i
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String PATTERN_EDEFAULT = null;
+	protected static final PatternValue PATTERN_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getPattern() <em>Pattern</em>}' attribute.
@@ -123,7 +127,7 @@ public class PlainLiteralScalarRestrictionImpl extends RestrictedDataRangeImpl i
 	 * @generated
 	 * @ordered
 	 */
-	protected String pattern = PATTERN_EDEFAULT;
+	protected PatternValue pattern = PATTERN_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getLangRange() <em>Lang Range</em>}' attribute.
@@ -133,7 +137,7 @@ public class PlainLiteralScalarRestrictionImpl extends RestrictedDataRangeImpl i
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String LANG_RANGE_EDEFAULT = null;
+	protected static final LanguageTagValue LANG_RANGE_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getLangRange() <em>Lang Range</em>}' attribute.
@@ -143,7 +147,7 @@ public class PlainLiteralScalarRestrictionImpl extends RestrictedDataRangeImpl i
 	 * @generated
 	 * @ordered
 	 */
-	protected String langRange = LANG_RANGE_EDEFAULT;
+	protected LanguageTagValue langRange = LANG_RANGE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -169,7 +173,7 @@ public class PlainLiteralScalarRestrictionImpl extends RestrictedDataRangeImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getLength() {
+	public PositiveIntegerValue getLength() {
 		return length;
 	}
 
@@ -178,8 +182,8 @@ public class PlainLiteralScalarRestrictionImpl extends RestrictedDataRangeImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setLength(int newLength) {
-		int oldLength = length;
+	public void setLength(PositiveIntegerValue newLength) {
+		PositiveIntegerValue oldLength = length;
 		length = newLength;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.PLAIN_LITERAL_SCALAR_RESTRICTION__LENGTH, oldLength, length));
@@ -190,7 +194,7 @@ public class PlainLiteralScalarRestrictionImpl extends RestrictedDataRangeImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getMinLength() {
+	public PositiveIntegerValue getMinLength() {
 		return minLength;
 	}
 
@@ -199,8 +203,8 @@ public class PlainLiteralScalarRestrictionImpl extends RestrictedDataRangeImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setMinLength(int newMinLength) {
-		int oldMinLength = minLength;
+	public void setMinLength(PositiveIntegerValue newMinLength) {
+		PositiveIntegerValue oldMinLength = minLength;
 		minLength = newMinLength;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.PLAIN_LITERAL_SCALAR_RESTRICTION__MIN_LENGTH, oldMinLength, minLength));
@@ -211,7 +215,7 @@ public class PlainLiteralScalarRestrictionImpl extends RestrictedDataRangeImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getMaxLength() {
+	public PositiveIntegerValue getMaxLength() {
 		return maxLength;
 	}
 
@@ -220,8 +224,8 @@ public class PlainLiteralScalarRestrictionImpl extends RestrictedDataRangeImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setMaxLength(int newMaxLength) {
-		int oldMaxLength = maxLength;
+	public void setMaxLength(PositiveIntegerValue newMaxLength) {
+		PositiveIntegerValue oldMaxLength = maxLength;
 		maxLength = newMaxLength;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.PLAIN_LITERAL_SCALAR_RESTRICTION__MAX_LENGTH, oldMaxLength, maxLength));
@@ -232,7 +236,7 @@ public class PlainLiteralScalarRestrictionImpl extends RestrictedDataRangeImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getPattern() {
+	public PatternValue getPattern() {
 		return pattern;
 	}
 
@@ -241,8 +245,8 @@ public class PlainLiteralScalarRestrictionImpl extends RestrictedDataRangeImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPattern(String newPattern) {
-		String oldPattern = pattern;
+	public void setPattern(PatternValue newPattern) {
+		PatternValue oldPattern = pattern;
 		pattern = newPattern;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.PLAIN_LITERAL_SCALAR_RESTRICTION__PATTERN, oldPattern, pattern));
@@ -253,7 +257,7 @@ public class PlainLiteralScalarRestrictionImpl extends RestrictedDataRangeImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getLangRange() {
+	public LanguageTagValue getLangRange() {
 		return langRange;
 	}
 
@@ -262,8 +266,8 @@ public class PlainLiteralScalarRestrictionImpl extends RestrictedDataRangeImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setLangRange(String newLangRange) {
-		String oldLangRange = langRange;
+	public void setLangRange(LanguageTagValue newLangRange) {
+		LanguageTagValue oldLangRange = langRange;
 		langRange = newLangRange;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.PLAIN_LITERAL_SCALAR_RESTRICTION__LANG_RANGE, oldLangRange, langRange));
@@ -300,19 +304,19 @@ public class PlainLiteralScalarRestrictionImpl extends RestrictedDataRangeImpl i
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case TerminologiesPackage.PLAIN_LITERAL_SCALAR_RESTRICTION__LENGTH:
-				setLength((Integer)newValue);
+				setLength((PositiveIntegerValue)newValue);
 				return;
 			case TerminologiesPackage.PLAIN_LITERAL_SCALAR_RESTRICTION__MIN_LENGTH:
-				setMinLength((Integer)newValue);
+				setMinLength((PositiveIntegerValue)newValue);
 				return;
 			case TerminologiesPackage.PLAIN_LITERAL_SCALAR_RESTRICTION__MAX_LENGTH:
-				setMaxLength((Integer)newValue);
+				setMaxLength((PositiveIntegerValue)newValue);
 				return;
 			case TerminologiesPackage.PLAIN_LITERAL_SCALAR_RESTRICTION__PATTERN:
-				setPattern((String)newValue);
+				setPattern((PatternValue)newValue);
 				return;
 			case TerminologiesPackage.PLAIN_LITERAL_SCALAR_RESTRICTION__LANG_RANGE:
-				setLangRange((String)newValue);
+				setLangRange((LanguageTagValue)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -354,11 +358,11 @@ public class PlainLiteralScalarRestrictionImpl extends RestrictedDataRangeImpl i
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case TerminologiesPackage.PLAIN_LITERAL_SCALAR_RESTRICTION__LENGTH:
-				return length != LENGTH_EDEFAULT;
+				return LENGTH_EDEFAULT == null ? length != null : !LENGTH_EDEFAULT.equals(length);
 			case TerminologiesPackage.PLAIN_LITERAL_SCALAR_RESTRICTION__MIN_LENGTH:
-				return minLength != MIN_LENGTH_EDEFAULT;
+				return MIN_LENGTH_EDEFAULT == null ? minLength != null : !MIN_LENGTH_EDEFAULT.equals(minLength);
 			case TerminologiesPackage.PLAIN_LITERAL_SCALAR_RESTRICTION__MAX_LENGTH:
-				return maxLength != MAX_LENGTH_EDEFAULT;
+				return MAX_LENGTH_EDEFAULT == null ? maxLength != null : !MAX_LENGTH_EDEFAULT.equals(maxLength);
 			case TerminologiesPackage.PLAIN_LITERAL_SCALAR_RESTRICTION__PATTERN:
 				return PATTERN_EDEFAULT == null ? pattern != null : !PATTERN_EDEFAULT.equals(pattern);
 			case TerminologiesPackage.PLAIN_LITERAL_SCALAR_RESTRICTION__LANG_RANGE:

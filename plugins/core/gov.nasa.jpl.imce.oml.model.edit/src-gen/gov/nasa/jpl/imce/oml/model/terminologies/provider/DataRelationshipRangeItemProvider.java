@@ -19,8 +19,7 @@
 package gov.nasa.jpl.imce.oml.model.terminologies.provider;
 
 
-import gov.nasa.jpl.imce.oml.model.common.provider.ElementItemProvider;
-
+import gov.nasa.jpl.imce.oml.model.common.provider.ModuleElementItemProvider;
 import gov.nasa.jpl.imce.oml.model.edit.provider.OMLEditPlugin;
 
 import gov.nasa.jpl.imce.oml.model.terminologies.DataRelationshipRange;
@@ -41,7 +40,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
  * <!-- end-user-doc -->
  * @generated
  */
-public class DataRelationshipRangeItemProvider extends ElementItemProvider {
+public class DataRelationshipRangeItemProvider extends ModuleElementItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

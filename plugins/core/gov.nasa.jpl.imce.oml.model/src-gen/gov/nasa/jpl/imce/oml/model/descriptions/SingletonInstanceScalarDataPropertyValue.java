@@ -18,9 +18,14 @@
  */
 package gov.nasa.jpl.imce.oml.model.descriptions;
 
+import gov.nasa.jpl.imce.oml.model.common.Element;
+import gov.nasa.jpl.imce.oml.model.common.LiteralValue;
+import gov.nasa.jpl.imce.oml.model.common.Module;
 import gov.nasa.jpl.imce.oml.model.common.ModuleElement;
 
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataProperty;
+
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -128,30 +133,30 @@ public interface SingletonInstanceScalarDataPropertyValue extends ModuleElement 
 	void setScalarDataProperty(EntityScalarDataProperty value);
 
 	/**
-	 * Returns the value of the '<em><b>Scalar Property Value</b></em>' attribute.
+	 * Returns the value of the '<em><b>Scalar Property Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Scalar Property Value</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Scalar Property Value</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Scalar Property Value</em>' attribute.
-	 * @see #setScalarPropertyValue(String)
+	 * @return the value of the '<em>Scalar Property Value</em>' containment reference.
+	 * @see #setScalarPropertyValue(LiteralValue)
 	 * @see gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsPackage#getSingletonInstanceScalarDataPropertyValue_ScalarPropertyValue()
-	 * @model unique="false" required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	String getScalarPropertyValue();
+	LiteralValue getScalarPropertyValue();
 
 	/**
-	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceScalarDataPropertyValue#getScalarPropertyValue <em>Scalar Property Value</em>}' attribute.
+	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceScalarDataPropertyValue#getScalarPropertyValue <em>Scalar Property Value</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Scalar Property Value</em>' attribute.
+	 * @param value the new value of the '<em>Scalar Property Value</em>' containment reference.
 	 * @see #getScalarPropertyValue()
 	 * @generated
 	 */
-	void setScalarPropertyValue(String value);
+	void setScalarPropertyValue(LiteralValue value);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -171,5 +176,25 @@ public interface SingletonInstanceScalarDataPropertyValue extends ModuleElement 
 	 * @generated
 	 */
 	DescriptionBox descriptionBox();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return this.descriptionBox();'"
+	 * @generated
+	 */
+	Module moduleContext();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return <%org.eclipse.emf.common.util.ECollections%>.<<%gov.nasa.jpl.imce.oml.model.common.Element%>>emptyEList();'"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='scala.collection.immutable.Set.empty[resolver.api.Element]'"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
+	 * @generated
+	 */
+	EList<Element> allNestedElements();
 
 } // SingletonInstanceScalarDataPropertyValue
