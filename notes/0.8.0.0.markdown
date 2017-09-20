@@ -79,5 +79,5 @@ gov.nasa.jpl.imce.oml.tycho 0.8.0.0 resolves major problems found in 0.7.1.2
   
 - [#100 Separation of OML API vs UI Concerns](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/100)
 
-  
+  [#111 Update to Eclipse Oxygen](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/111)
 ## [Release & Publish process](publishProcess.markdown)
