@@ -7,6 +7,10 @@ Eclipse-based OML Workbench:  [ ![Download](https://api.bintray.com/packages/jpl
 OML is a specification language designed to support rigorous ontological modeling in the context of model-based systems engineering.
 This multi-project is organized according to Eclipse Tycho guidelines.
 
+## OML Update Site
+
+The [OML Update Site](releng/gov.nasa.jpl.imce.oml.updatesite/README.md) explains how to add the OML features into an existing Eclipse installation.
+
 ## OML Workbench
 
 The [OML Workbench](releng/gov.nasa.jpl.imce.oml.product/README.md) is an Eclipse-based RCP application.

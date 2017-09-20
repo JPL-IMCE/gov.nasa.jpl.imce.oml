@@ -44,6 +44,30 @@ limitations under the License.
 License Terms
    </license>
 
+   <includes
+         id="org.eclipse.emf.cdo"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.xtext.redist"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.xtext.runtime"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.e4.rcp"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.pde"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.emf.mwe2.launcher"
+         version="0.0.0"/>
+
    <requires>
       <import plugin="org.eclipse.xtext" version="2.11.0" match="compatible"/>
       <import plugin="org.eclipse.xtext.xbase" version="2.11.0" match="compatible"/>
@@ -55,8 +79,6 @@ License Terms
       <import plugin="org.eclipse.emf.common"/>
       <import plugin="org.antlr.runtime"/>
       <import plugin="org.apache.log4j"/>
-      <import plugin="org.eclipse.xtext.ide" version="2.11.0" match="compatible"/>
-      <import plugin="org.eclipse.xtext.xbase.ide" version="2.11.0" match="compatible"/>
       <import plugin="org.eclipse.core.runtime" version="3.12.0" match="compatible"/>
       <import plugin="org.eclipse.core.resources" version="3.11.1" match="compatible"/>
       <import plugin="org.eclipse.emf.ecore.xcore.lib" version="1.1.100" match="compatible"/>
@@ -66,18 +88,28 @@ License Terms
       <import plugin="org.apache.log4j" version="1.2.15" match="compatible"/>
       <import plugin="org.eclipse.emf.codegen.ecore" version="2.12.0" match="compatible"/>
       <import plugin="org.apache.xml.resolver" version="1.2.0" match="compatible"/>
-      <import plugin="javax.inject" version="1.0.0" match="compatible"/>
-      <import plugin="org.eclipse.swt" version="3.105.3" match="compatible"/>
-      <import plugin="org.eclipse.e4.ui.model.workbench" version="1.2.0" match="compatible"/>
-      <import plugin="org.eclipse.jface" version="3.12.2" match="compatible"/>
-      <import plugin="org.eclipse.e4.ui.services" version="1.2.100" match="compatible"/>
-      <import plugin="org.eclipse.e4.ui.workbench" version="1.4.0" match="compatible"/>
-      <import plugin="org.eclipse.e4.core.di" version="1.6.1" match="compatible"/>
-      <import plugin="org.eclipse.e4.ui.di" version="1.1.100" match="compatible"/>
-      <import plugin="org.eclipse.e4.core.contexts" version="1.5.1" match="compatible"/>
-      <import plugin="org.eclipse.e4.core.di.extensions" version="0.14.0" match="compatible"/>
-      <import plugin="javax.annotation"/>
       <import plugin="org.eclipse.emf.edit" version="2.12.0" match="compatible"/>
+      <import plugin="org.antlr.runtime" version="3.2.0" match="perfect"/>
+      <import plugin="org.eclipse.core.runtime" version="3.6.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.ecore" version="2.10.2" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext.common.types"/>
+      <import plugin="org.eclipse.xtext.smap"/>
+      <import plugin="org.eclipse.xtend.lib.macro"/>
+      <import plugin="org.eclipse.xtext.junit4"/>
+      <import plugin="com.google.inject" version="3.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext.xbase.junit"/>
+      <import plugin="org.apache.log4j" version="1.2.15" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.jdt.core" version="3.6.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.codegen" version="2.10.0" match="greaterOrEqual"/>
+      <import plugin="org.apache.commons.cli"/>
+      <import plugin="org.eclipse.emf.mwe2.runtime" version="2.9.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.mwe.utils" version="1.3.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.net4j.util" version="3.0.0" match="compatible"/>
+      <import plugin="org.eclipse.core.runtime" version="3.5.0" match="compatible"/>
+      <import plugin="org.eclipse.net4j.db.jdbc" version="4.0.0" match="compatible"/>
+      <import plugin="org.eclipse.net4j.db" version="4.0.0" match="compatible"/>
+      <import plugin="org.eclipse.net4j" version="4.0.0" match="compatible"/>
+      <import plugin="org.eclipse.net4j.util" version="3.4.0" match="compatible"/>
    </requires>
 
    <plugin
@@ -102,6 +134,139 @@ License Terms
 
    <plugin
          id="gov.nasa.jpl.imce.oml.model.edit"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.google.guava"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.google.inject"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.xpand"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.xtend"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.xtend.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.xtend.lib"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.xtend.standalone"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.xtend.typesystem.emf"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.mwe.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.mwe.utils"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.mwe2.lib"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.mwe2.runtime"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.net4j"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.net4j.db"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.net4j.db.h2"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.net4j.jvm"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.net4j.util"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.net4j.tcp"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.net4j.db.jdbc"
          download-size="0"
          install-size="0"
          version="0.0.0"

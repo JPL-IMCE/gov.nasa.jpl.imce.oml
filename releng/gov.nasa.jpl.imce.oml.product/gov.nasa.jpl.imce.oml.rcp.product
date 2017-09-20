@@ -3,7 +3,6 @@
 
 <product name="OML Workbench" uid="gov.nasa.jpl.imce.oml.rcp.product" id="gov.nasa.jpl.imce.oml.rcp.product" application="org.eclipse.ui.ide.workbench" version="0.8.0.qualifier" useFeatures="true" includeLaunchers="true">
 
-
    <configIni use="default">
    </configIni>
 
@@ -18,14 +17,12 @@
 
    <windowImages/>
 
-
    <launcher name="OML Workbench">
       <solaris/>
       <win useIco="false">
          <bmp/>
       </win>
    </launcher>
-
 
    <vm>
    </vm>
