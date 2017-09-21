@@ -2,7 +2,7 @@
 <feature
       id="gov.nasa.jpl.imce.oml.ui.feature"
       label="%featureName"
-      version="0.9.0.qualifier"
+      version="0.9.0.0-M01"
       provider-name="%featureProvider">
 
    <description url="https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/tree/master/features/ui/gov.nasa.jpl.imce.oml.ui.feature/README.md">
@@ -430,21 +430,21 @@ License Terms
          id="gov.nasa.jpl.imce.oml.dsl.ui"
          download-size="0"
          install-size="0"
-         version="0.9.0.qualifier"
+         version="0.9.0.0-M01"
          unpack="false"/>
 
    <plugin
          id="gov.nasa.jpl.imce.oml.dsl.ide"
          download-size="0"
          install-size="0"
-         version="0.9.0.qualifier"
+         version="0.9.0.0-M01"
          unpack="false"/>
 
    <plugin
          id="gov.nasa.jpl.imce.oml.rcp"
          download-size="0"
          install-size="0"
-         version="0.9.0.qualifier"
+         version="0.9.0.0-M01"
          unpack="false"/>
 
    <plugin
