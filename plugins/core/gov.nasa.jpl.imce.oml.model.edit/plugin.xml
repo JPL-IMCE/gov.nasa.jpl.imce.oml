@@ -57,7 +57,7 @@
             uri="http://imce.jpl.nasa.gov/oml/common"
             class="gov.nasa.jpl.imce.oml.model.graphs.provider.GraphsItemProviderAdapterFactory$CommonChildCreationExtender"/>
    </extension>
-   
+
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated OMLBundles -->
       <factory
