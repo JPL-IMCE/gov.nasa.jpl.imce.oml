@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: gov.nasa.jpl.imce.oml.model.edit;singleton:=true
-Bundle-Version: 0.8.0.qualifier
+Bundle-Version: 0.9.0.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: gov.nasa.jpl.imce.oml.model.edit.provider.OMLEditPlugin$Implementation
 Bundle-Vendor: %providerName
@@ -14,9 +14,9 @@ Export-Package: gov.nasa.jpl.imce.oml.model.common.provider,
  gov.nasa.jpl.imce.oml.model.bundles.provider,
  gov.nasa.jpl.imce.oml.model.terminologies.provider,
  gov.nasa.jpl.imce.oml.model.descriptions.provider
-Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.12.0,4.0.0)",
- gov.nasa.jpl.imce.oml.model;visibility:=reexport,
+Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.13.0,4.0.0)",
+ org.eclipse.emf.ecore;bundle-version="[2.13.0,3.0.0)";visibility:=reexport,
  org.eclipse.emf.edit;bundle-version="[2.12.0,3.0.0)";visibility:=reexport,
- gov.nasa.jpl.imce.oml.model.edit;visibility:=reexport,
- org.eclipse.emf.ecore;bundle-version="[2.12.0,3.0.0)";visibility:=reexport
+ gov.nasa.jpl.imce.oml.model;visibility:=reexport,
+ gov.nasa.jpl.imce.oml.model.edit;visibility:=reexport
 Bundle-ActivationPolicy: lazy
