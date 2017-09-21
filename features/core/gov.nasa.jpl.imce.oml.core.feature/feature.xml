@@ -70,7 +70,7 @@ License Terms
 
    <requires>
       <import plugin="org.eclipse.xtext" version="2.12.0" match="compatible"/>
-      <import plugin="org.antlr.runtime" version="3.2.0" match="compatible"/>
+      <import plugin="org.antlr.runtime" version="3.2.0.v201101311130" match="compatible"/>
       <import plugin="org.apache.log4j"/>
       <import plugin="org.eclipse.emf.ecore.xcore.lib" version="1.1.100" match="compatible"/>
       <import plugin="org.apache.xml.resolver" version="1.2.0" match="compatible"/>
@@ -108,7 +108,7 @@ License Terms
       <import plugin="org.eclipse.emf.ecore.xmi" version="2.13.0" match="compatible"/>
       <import plugin="org.apache.log4j" version="1.2.15" match="compatible"/>
       <import plugin="org.eclipse.emf.codegen.ecore" version="2.13.0" match="compatible"/>
-      <import plugin="org.antlr.runtime" version="3.2.0" match="perfect"/>
+      <import plugin="org.antlr.runtime" version="3.2.0" match="compatible"/>
       <import plugin="org.eclipse.emf.mwe2.runtime" version="2.9.1" match="greaterOrEqual"/>
       <import plugin="org.eclipse.emf.mwe.utils" version="1.3.1" match="greaterOrEqual"/>
    </requires>
