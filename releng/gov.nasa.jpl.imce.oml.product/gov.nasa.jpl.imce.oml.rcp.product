@@ -13,11 +13,13 @@
    </configIni>
 
    <launcherArgs>
-      <programArgs>-clearPersistedState
+      <programArgs>-console
+-clearPersistedState
       </programArgs>
       <vmArgs>-Dorg.eclipse.update.reconcile=false
       </vmArgs>
-      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
+      <vmArgsMac>-XstartOnFirstThread
+-Dorg.eclipse.swt.internal.carbon.smallFonts
       </vmArgsMac>
    </launcherArgs>
 
@@ -266,8 +268,6 @@ License Terms
    </plugins>
 
    <features>
-      <feature id="gov.nasa.jpl.imce.oml.core.feature" installMode="root"/>
-      <feature id="gov.nasa.jpl.imce.oml.ui.feature" installMode="root"/>
       <feature id="org.eclipse.platform"/>
       <feature id="org.eclipse.emf.ecore"/>
       <feature id="org.eclipse.equinox.p2.user.ui"/>
@@ -286,22 +286,29 @@ License Terms
       <feature id="org.eclipse.e4.rcp"/>
       <feature id="org.eclipse.egit" version="4.8.0.201706111038-r"/>
       <feature id="org.eclipse.jgit" version="4.8.0.201706111038-r"/>
+      <feature id="gov.nasa.jpl.imce.oml.core.feature" version="0.8.0.qualifier"/>
+      <feature id="gov.nasa.jpl.imce.oml.ui.feature" version="0.8.0.qualifier"/>
    </features>
 
    <configurations>
-      <plugin id="gov.nasa.jpl.imce.oml.dsl" autoStart="true" startLevel="0" />
-      <plugin id="gov.nasa.jpl.imce.oml.dsl.ide" autoStart="true" startLevel="0" />
-      <plugin id="gov.nasa.jpl.imce.oml.dsl.ui" autoStart="true" startLevel="0" />
-      <plugin id="gov.nasa.jpl.imce.oml.model" autoStart="true" startLevel="0" />
-      <plugin id="gov.nasa.jpl.imce.oml.model.edit" autoStart="true" startLevel="0" />
-      <plugin id="gov.nasa.jpl.imce.oml.rcp" autoStart="true" startLevel="0" />
-      <plugin id="gov.nasa.jpl.imce.oml.uuid" autoStart="true" startLevel="0" />
-      <plugin id="gov.nasa.jpl.imce.oml.viewpoint" autoStart="true" startLevel="0" />
+      <plugin id="gov.nasa.jpl.imce.oml.dsl" autoStart="false" startLevel="0" />
+      <plugin id="gov.nasa.jpl.imce.oml.dsl.ide" autoStart="false" startLevel="0" />
+      <plugin id="gov.nasa.jpl.imce.oml.dsl.ui" autoStart="false" startLevel="0" />
+      <plugin id="gov.nasa.jpl.imce.oml.model" autoStart="false" startLevel="0" />
+      <plugin id="gov.nasa.jpl.imce.oml.model.edit" autoStart="false" startLevel="0" />
+      <plugin id="gov.nasa.jpl.imce.oml.rcp" autoStart="false" startLevel="0" />
+      <plugin id="gov.nasa.jpl.imce.oml.uuid" autoStart="false" startLevel="0" />
+      <plugin id="gov.nasa.jpl.imce.oml.viewpoint" autoStart="false" startLevel="6" />
       <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.e4.ui.services" autoStart="true" startLevel="4" />
+      <plugin id="org.eclipse.e4.ui.workbench" autoStart="true" startLevel="4" />
+      <plugin id="org.eclipse.e4.ui.workbench.swt" autoStart="true" startLevel="4" />
       <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="2" />
       <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="2" />
       <plugin id="org.eclipse.equinox.event" autoStart="true" startLevel="2" />
       <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="1" />
+      <plugin id="org.eclipse.sirius.editor" autoStart="false" startLevel="5" />
+      <plugin id="org.eclipse.ui" autoStart="true" startLevel="4" />
    </configurations>
 
    <preferencesInfo>
