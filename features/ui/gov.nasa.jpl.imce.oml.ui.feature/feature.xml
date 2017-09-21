@@ -141,19 +141,7 @@ License Terms
          version="0.0.0"/>
 
    <includes
-         id="org.eclipse.emf.mwe2.language.sdk"
-         version="0.0.0"/>
-
-   <includes
-         id="org.eclipse.emf.mwe2.runtime.sdk"
-         version="0.0.0"/>
-
-   <includes
          id="org.eclipse.emf.cdo"
-         version="0.0.0"/>
-
-   <includes
-         id="org.eclipse.xtend.sdk"
          version="0.0.0"/>
 
    <includes
@@ -631,6 +619,48 @@ License Terms
 
    <plugin
          id="gov.nasa.jpl.imce.oml.viewpoint"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.mwe2.language"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.mwe2.runtime"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.xtend.ide"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.xtend.ide.common"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.xtend.m2e"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.xtext.ui.testing"
          download-size="0"
          install-size="0"
          version="0.0.0"
