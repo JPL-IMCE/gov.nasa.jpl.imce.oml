@@ -14,9 +14,12 @@ In Eclipse, add update sites for:
 - Xtext 2.11 (http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/)
 	- Make sure Xtext 2.11 is installed properly before trying to install the OML Workbench.
 
+- Sirius 4.1.6 http://download.eclipse.org/sirius/updates/releases/4.1.6/neon
+    - See: https://wiki.eclipse.org/Sirius/Update_Sites
+    
 - The OML Workbench; either:
 	- a local update side archive downloaded from here: https://bintray.com/jpl-imce/gov.nasa.jpl.imce.oml/gov.nasa.jpl.imce.oml.updatesite
-	- the direct OML Workbench UpdateSite where the archive has been "exploded" on deployment here: https://dl.bintray.com/jpl-imce/gov.nasa.jpl.imce.oml/gov/nasa/jpl/imce/oml/gov.nasa.jpl.imce.oml.updatesite/
+	- the direct OML Workbench UpdateSite where the archive has been "exploded" on deployment here: https://dl.bintray.com/jpl-imce/gov.nasa.jpl.imce.oml
 	
 ## Development/Deployment notes
 

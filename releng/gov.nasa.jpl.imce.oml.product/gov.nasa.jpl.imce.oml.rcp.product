@@ -3,6 +3,12 @@
 
 <product name="OML Workbench" uid="gov.nasa.jpl.imce.oml.rcp.product" id="gov.nasa.jpl.imce.oml.rcp.product" application="org.eclipse.ui.ide.workbench" version="0.8.0.qualifier" useFeatures="true" includeLaunchers="true">
 
+   <aboutInfo>
+      <text>
+         Jet Propulsion Laboratory&apos;s Ontological Modeling Language (OML) Workbench
+      </text>
+   </aboutInfo>
+
    <configIni use="default">
    </configIni>
 

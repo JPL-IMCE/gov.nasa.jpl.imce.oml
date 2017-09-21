@@ -79,5 +79,16 @@ gov.nasa.jpl.imce.oml.tycho 0.8.0.0 resolves major problems found in 0.7.1.2
   
 - [#100 Separation of OML API vs UI Concerns](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/100)
 
-  [#111 Update to Eclipse Oxygen](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/111)
+- [#105 Configure the Sirius Interpreter view to work w/ OML models.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/105)
+
+- [#109 Refactor OMF plugins/features w.r.t. core vs. ui](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/109)
+
+- [#113 OML WB Viewpoints NPE](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/113)
+
+  This problem is a consequence of [#114](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/114)
+  
+- [#114 Caused by: java.lang.IllegalStateException: Cannot modify resource set without a write transaction](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/114)
+
+  Don't mix `*.xsd` and `*.oml` in the same project!
+  
 ## [Release & Publish process](publishProcess.markdown)

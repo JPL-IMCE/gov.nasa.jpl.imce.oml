@@ -12,6 +12,10 @@
                name="appName"
                value="OML Workbench">
          </property>
+         <property
+               name="aboutText"
+               value="Jet Propulsion Laboratory&apos;s Ontological Modeling Language (OML) Workbench">
+         </property>
       </product>
    </extension>
 

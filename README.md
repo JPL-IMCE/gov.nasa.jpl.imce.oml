@@ -2,10 +2,18 @@
 
 [![Build Status](https://travis-ci.org/JPL-IMCE/gov.nasa.jpl.imce.oml.svg?branch=master)](https://travis-ci.org/JPL-IMCE/gov.nasa.jpl.imce.oml)
 
+## [Quick OML Workbench Introduction](doc/QuickIntroduction.md)
+
+## Download the OML Workbench
+
 Eclipse-based OML Workbench:  [ ![Download](https://api.bintray.com/packages/jpl-imce/gov.nasa.jpl.imce.oml/gov.nasa.jpl.imce.oml.product/images/download.svg) ](https://bintray.com/jpl-imce/gov.nasa.jpl.imce.oml/gov.nasa.jpl.imce.oml.product/_latestVersion)
 
 OML is a specification language designed to support rigorous ontological modeling in the context of model-based systems engineering.
 This multi-project is organized according to Eclipse Tycho guidelines.
+
+## OML Update Site
+
+The [OML Update Site](releng/gov.nasa.jpl.imce.oml.updatesite/README.md) explains how to add the OML features into an existing Eclipse installation.
 
 ## OML Workbench
 
