@@ -1,48 +1,44 @@
 # Eclipse P2 Update Site for the Ontological Modeling Language Workbench
 
-The OML Workbench update site is compatible with Eclipse Neon.3 packages that do *NOT* include EMF Parsley 1.1.1.
-EMF Parsley 1.1.1 is a feature included in the Eclipse Neon.3 Modeling package which includes Xtext 2.10.
+The OML Workbench update site is compatible with Eclipse Oxygen packages.
 
-However, OML Workbench requires Xtext 2.11. Since there is no available version of EMF Parsley for Xtext 2.11,
-trying to install Xtext 2.11 or the OML Workbench into the Eclipse Neon.3 Modeling package will result in a conflict between:
-- EMF Parsley 1.1.1 which requires Xtext 2.10
-- OML Workbench which requires Xtext 2.11
 
 ## Update Site locations
 
-In Eclipse, add update sites for:
-- Xtext 2.11 (http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/)
-	- Make sure Xtext 2.11 is installed properly before trying to install the OML Workbench.
+In Eclipse, add update sites for either:
+- The OML Workbench update site: http://dl.bintray.com/jpl-imce/gov.nasa.jpl.imce.oml/0.9
+- A local archive of the OML Workbench update site available from: https://bintray.com/jpl-imce/gov.nasa.jpl.imce.oml/gov.nasa.jpl.imce.oml.updatesite
 
-- Sirius 4.1.6 http://download.eclipse.org/sirius/updates/releases/4.1.6/neon
-    - See: https://wiki.eclipse.org/Sirius/Update_Sites
-    
-- The OML Workbench; either:
-	- a local update side archive downloaded from here: https://bintray.com/jpl-imce/gov.nasa.jpl.imce.oml/gov.nasa.jpl.imce.oml.updatesite
-	- the direct OML Workbench UpdateSite where the archive has been "exploded" on deployment here: https://dl.bintray.com/jpl-imce/gov.nasa.jpl.imce.oml
-	
 ## Development/Deployment notes
 
 Bintray has the capability of "exploding" an archive on upload.
 See: https://bintray.com/docs/api/#_content_uploading_publishing
-	
-Unfortunately, a side-effect of this is that, while uploading an archive does result in exploding its contents on bintray,
-uploading a non-archive file results in http 400 (Bad Request).
-See for example: https://travis-ci.org/JPL-IMCE/gov.nasa.jpl.imce.oml/builds/268745668#L2859
-	
-These errors happened with the [pom.xml](pom.xml) configured with the following:
+
+Unfortunately, there is currently no support in Eclipse/Tycho for configuring
+`distributionManagement` for different kinds of artifacts to upload (archives vs. non-archives).
+See: https://bugs.eclipse.org/bugs/show_bug.cgi?id=521444
+
+The workaround is the following:
+
+1) Let Eclipse/Tycho upload a zip archive of the update site: https://bintray.com/jpl-imce/gov.nasa.jpl.imce.oml/gov.nasa.jpl.imce.oml.updatesite
+
+2) Download the update site archive
+
+3) Re-zip the update site archive to include a version-specific folder
+
+e.g.:
 
 ```
-	<distributionManagement>
-		<repository>
-			<id>bintray</id>
-			<url>https://api.bintray.com/content/jpl-imce/gov.nasa.jpl.imce.oml/${project.artifactId}/${project.version};publish=1;override=0;explode=1</url>
-		</repository>
-	</distributionManagement>
+mkdir 0.9
+unzip ~/Downloads/gov.nasa.jpl.imce.oml.updatesite-0.9.0.0-M10.zip
+zip -r gov.nasa.jpl.imce.oml.updatesite-0.9.0.0-M10.zip 0.9
 ```
 
-Unfortunately, it is very difficult to find whether there is a way to use Maven and/or Eclipse/Tycho to deploy artifact files
-to different repositories according to whether the file is an archive (i.e., use a bintray repository with the "explode=1" option)
-or not (i.e., use a bintray repository with the "explode=0" option).
+Use the [JFrog CLI](https://www.jfrog.com/getcli/) to upload and explode the rezipped archive *without* the override flag
 
-So, for now, the solution involves uploading the P2 update site archive outside of Eclipse/Tycho using Bintray's "explode=1" option.
+```
+jfrog bt u --explode true --publish true gov.nasa.jpl.imce.oml.updatesite-0.9.0.0-M10.zip jpl-imce/gov.nasa.jpl.imce.oml/gov.nasa.jpl.imce.oml.updatesite/0.9.0.0-M10
+```
+
+Adding the override flag will result in deleting the existing artifacts (ie., the update site archive).
+Without the override flag, the update site will be published in both archived and exploded forms.
