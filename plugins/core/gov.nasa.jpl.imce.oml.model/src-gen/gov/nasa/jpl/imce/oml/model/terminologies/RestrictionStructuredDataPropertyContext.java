@@ -1,20 +1,4 @@
 /**
- * 
- * Copyright 2017 California Institute of Technology ("Caltech").
- * U.S. Government sponsorship acknowledged.
- * 
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * 
- *      http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * 
  */
 package gov.nasa.jpl.imce.oml.model.terminologies;
 
@@ -124,9 +108,9 @@ public interface RestrictionStructuredDataPropertyContext extends ModuleElement 
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.emf.common.util.BasicEList%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.common.Element%&gt;&gt; _xblockexpression = null;\n{\n\tfinal &lt;%org.eclipse.emf.common.util.BasicEList%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.common.Element%&gt;&gt; nres = new &lt;%org.eclipse.emf.common.util.BasicEList%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.common.Element%&gt;&gt;();\n\tnres.addAll(this.getStructuredDataPropertyRestrictions());\n\tfinal &lt;%java.util.function.Consumer%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple%&gt;&gt; _function = new &lt;%java.util.function.Consumer%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple%&gt;&gt;()\n\t{\n\t\tpublic void accept(final &lt;%gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple%&gt; it)\n\t\t{\n\t\t\tnres.addAll(it.allNestedRestrictionElements());\n\t\t}\n\t};\n\tthis.getStructuredDataPropertyRestrictions().forEach(_function);\n\tnres.addAll(this.getScalarDataPropertyRestrictions());\n\t_xblockexpression = nres;\n}\nreturn _xblockexpression;'"
 	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='extent.lookupStructuredDataPropertyRestrictions(this).flatMap{ r =&gt; scala.collection.immutable.Set.empty[resolver.api.Element] + r ++ r.allNestedRestrictionElements() } ++\n\t\textent.lookupScalarDataPropertyRestrictions(this)'"
 	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.emf.common.util.BasicEList%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.common.Element%&gt;&gt; _xblockexpression = null;\n{\n\tfinal &lt;%org.eclipse.emf.common.util.BasicEList%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.common.Element%&gt;&gt; nres = new &lt;%org.eclipse.emf.common.util.BasicEList%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.common.Element%&gt;&gt;();\n\tnres.addAll(this.getStructuredDataPropertyRestrictions());\n\tfinal &lt;%java.util.function.Consumer%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple%&gt;&gt; _function = new &lt;%java.util.function.Consumer%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple%&gt;&gt;()\n\t{\n\t\tpublic void accept(final &lt;%gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple%&gt; it)\n\t\t{\n\t\t\tnres.addAll(it.allNestedRestrictionElements());\n\t\t}\n\t};\n\tthis.getStructuredDataPropertyRestrictions().forEach(_function);\n\tnres.addAll(this.getScalarDataPropertyRestrictions());\n\t_xblockexpression = nres;\n}\nreturn _xblockexpression;'"
 	 * @generated
 	 */
 	EList<Element> allNestedRestrictionElements();

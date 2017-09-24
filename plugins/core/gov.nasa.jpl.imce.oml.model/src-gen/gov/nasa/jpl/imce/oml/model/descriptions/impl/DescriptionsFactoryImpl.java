@@ -1,20 +1,4 @@
 /**
- * 
- * Copyright 2017 California Institute of Technology ("Caltech").
- * U.S. Government sponsorship acknowledged.
- * 
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * 
- *      http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * 
  */
 package gov.nasa.jpl.imce.oml.model.descriptions.impl;
 
@@ -73,18 +57,18 @@ public class DescriptionsFactoryImpl extends EFactoryImpl implements Description
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case DescriptionsPackage.DESCRIPTION_BOX: return (EObject)createDescriptionBox();
-			case DescriptionsPackage.DESCRIPTION_BOX_EXTENDS_CLOSED_WORLD_DEFINITIONS: return (EObject)createDescriptionBoxExtendsClosedWorldDefinitions();
-			case DescriptionsPackage.DESCRIPTION_BOX_REFINEMENT: return (EObject)createDescriptionBoxRefinement();
-			case DescriptionsPackage.SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE: return (EObject)createSingletonInstanceScalarDataPropertyValue();
-			case DescriptionsPackage.SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_VALUE: return (EObject)createSingletonInstanceStructuredDataPropertyValue();
-			case DescriptionsPackage.STRUCTURED_DATA_PROPERTY_TUPLE: return (EObject)createStructuredDataPropertyTuple();
-			case DescriptionsPackage.SCALAR_DATA_PROPERTY_VALUE: return (EObject)createScalarDataPropertyValue();
-			case DescriptionsPackage.CONCEPT_INSTANCE: return (EObject)createConceptInstance();
-			case DescriptionsPackage.REIFIED_RELATIONSHIP_INSTANCE: return (EObject)createReifiedRelationshipInstance();
-			case DescriptionsPackage.REIFIED_RELATIONSHIP_INSTANCE_DOMAIN: return (EObject)createReifiedRelationshipInstanceDomain();
-			case DescriptionsPackage.REIFIED_RELATIONSHIP_INSTANCE_RANGE: return (EObject)createReifiedRelationshipInstanceRange();
-			case DescriptionsPackage.UNREIFIED_RELATIONSHIP_INSTANCE_TUPLE: return (EObject)createUnreifiedRelationshipInstanceTuple();
+			case DescriptionsPackage.DESCRIPTION_BOX: return createDescriptionBox();
+			case DescriptionsPackage.DESCRIPTION_BOX_EXTENDS_CLOSED_WORLD_DEFINITIONS: return createDescriptionBoxExtendsClosedWorldDefinitions();
+			case DescriptionsPackage.DESCRIPTION_BOX_REFINEMENT: return createDescriptionBoxRefinement();
+			case DescriptionsPackage.SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE: return createSingletonInstanceScalarDataPropertyValue();
+			case DescriptionsPackage.SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_VALUE: return createSingletonInstanceStructuredDataPropertyValue();
+			case DescriptionsPackage.STRUCTURED_DATA_PROPERTY_TUPLE: return createStructuredDataPropertyTuple();
+			case DescriptionsPackage.SCALAR_DATA_PROPERTY_VALUE: return createScalarDataPropertyValue();
+			case DescriptionsPackage.CONCEPT_INSTANCE: return createConceptInstance();
+			case DescriptionsPackage.REIFIED_RELATIONSHIP_INSTANCE: return createReifiedRelationshipInstance();
+			case DescriptionsPackage.REIFIED_RELATIONSHIP_INSTANCE_DOMAIN: return createReifiedRelationshipInstanceDomain();
+			case DescriptionsPackage.REIFIED_RELATIONSHIP_INSTANCE_RANGE: return createReifiedRelationshipInstanceRange();
+			case DescriptionsPackage.UNREIFIED_RELATIONSHIP_INSTANCE_TUPLE: return createUnreifiedRelationshipInstanceTuple();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}

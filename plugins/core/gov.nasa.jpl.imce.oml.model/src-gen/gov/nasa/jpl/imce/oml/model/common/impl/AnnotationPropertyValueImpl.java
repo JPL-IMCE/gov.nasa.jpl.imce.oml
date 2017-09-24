@@ -1,20 +1,4 @@
 /**
- * 
- * Copyright 2017 California Institute of Technology ("Caltech").
- * U.S. Government sponsorship acknowledged.
- * 
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * 
- *      http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * 
  */
 package gov.nasa.jpl.imce.oml.model.common.impl;
 
@@ -33,14 +17,12 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
-import org.eclipse.emf.internal.cdo.CDOObjectImpl;
 
 import org.eclipse.xtext.xbase.lib.Pair;
 
@@ -60,7 +42,7 @@ import org.eclipse.xtext.xbase.lib.Pair;
  *
  * @generated
  */
-public class AnnotationPropertyValueImpl extends CDOObjectImpl implements AnnotationPropertyValue {
+public class AnnotationPropertyValueImpl extends MinimalEObjectImpl.Container implements AnnotationPropertyValue {
 	/**
 	 * The default value of the '{@link #getUuid() <em>Uuid</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -192,7 +174,7 @@ public class AnnotationPropertyValueImpl extends CDOObjectImpl implements Annota
 	 */
 	public void setSubject(Element newSubject) {
 		if (newSubject != eInternalContainer() || (eContainerFeatureID() != CommonPackage.ANNOTATION_PROPERTY_VALUE__SUBJECT && newSubject != null)) {
-			if (EcoreUtil.isAncestor(this, (EObject)newSubject))
+			if (EcoreUtil.isAncestor(this, newSubject))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
@@ -212,7 +194,7 @@ public class AnnotationPropertyValueImpl extends CDOObjectImpl implements Annota
 	 * @generated
 	 */
 	public AnnotationProperty getProperty() {
-		if (property != null && ((EObject)property).eIsProxy()) {
+		if (property != null && property.eIsProxy()) {
 			InternalEObject oldProperty = (InternalEObject)property;
 			property = (AnnotationProperty)eResolveProxy(oldProperty);
 			if (property != oldProperty) {

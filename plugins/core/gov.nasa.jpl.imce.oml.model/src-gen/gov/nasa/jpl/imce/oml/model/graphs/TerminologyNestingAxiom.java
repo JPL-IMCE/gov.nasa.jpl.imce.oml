@@ -1,20 +1,4 @@
 /**
- * 
- * Copyright 2017 California Institute of Technology ("Caltech").
- * U.S. Government sponsorship acknowledged.
- * 
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * 
- *      http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * 
  */
 package gov.nasa.jpl.imce.oml.model.graphs;
 
@@ -104,8 +88,8 @@ public interface TerminologyNestingAxiom extends TerminologyBoxAxiom {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%gov.nasa.jpl.imce.oml.model.graphs.TerminologyGraph%&gt; _switchResult = null;\n&lt;%gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox%&gt; _tbox = this.getTbox();\nboolean _matched = false;\nif (_tbox instanceof &lt;%gov.nasa.jpl.imce.oml.model.graphs.TerminologyGraph%&gt;)\n{\n\t_matched=true;\n\t_switchResult = &lt;%gov.nasa.jpl.imce.oml.model.graphs.TerminologyGraph%&gt;.class.cast(this.getTbox());\n}\nif (!_matched)\n{\n\t_switchResult = null;\n}\nreturn _switchResult;'"
 	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='extent.terminologyBoxOfTerminologyBoxAxiom.get(this) match {\n      case scala.Some(g: resolver.api.TerminologyGraph) =&gt; scala.Some(g)\n      case _ =&gt; scala.None\n    }'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%gov.nasa.jpl.imce.oml.model.graphs.TerminologyGraph%&gt; _switchResult = null;\n&lt;%gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox%&gt; _tbox = this.getTbox();\nboolean _matched = false;\nif (_tbox instanceof &lt;%gov.nasa.jpl.imce.oml.model.graphs.TerminologyGraph%&gt;)\n{\n\t_matched=true;\n\t_switchResult = &lt;%gov.nasa.jpl.imce.oml.model.graphs.TerminologyGraph%&gt;.class.cast(this.getTbox());\n}\nif (!_matched)\n{\n\t_switchResult = null;\n}\nreturn _switchResult;'"
 	 * @generated
 	 */
 	TerminologyGraph nestedTerminology();

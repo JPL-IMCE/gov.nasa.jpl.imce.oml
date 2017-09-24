@@ -1,20 +1,4 @@
 /**
- * 
- * Copyright 2017 California Institute of Technology ("Caltech").
- * U.S. Government sponsorship acknowledged.
- * 
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * 
- *      http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * 
  */
 package gov.nasa.jpl.imce.oml.model.bundles.impl;
 
@@ -72,11 +56,11 @@ public class BundlesFactoryImpl extends EFactoryImpl implements BundlesFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case BundlesPackage.BUNDLE: return (EObject)createBundle();
-			case BundlesPackage.SPECIFIC_DISJOINT_CONCEPT_AXIOM: return (EObject)createSpecificDisjointConceptAxiom();
-			case BundlesPackage.ANONYMOUS_CONCEPT_UNION_AXIOM: return (EObject)createAnonymousConceptUnionAxiom();
-			case BundlesPackage.ROOT_CONCEPT_TAXONOMY_AXIOM: return (EObject)createRootConceptTaxonomyAxiom();
-			case BundlesPackage.BUNDLED_TERMINOLOGY_AXIOM: return (EObject)createBundledTerminologyAxiom();
+			case BundlesPackage.BUNDLE: return createBundle();
+			case BundlesPackage.SPECIFIC_DISJOINT_CONCEPT_AXIOM: return createSpecificDisjointConceptAxiom();
+			case BundlesPackage.ANONYMOUS_CONCEPT_UNION_AXIOM: return createAnonymousConceptUnionAxiom();
+			case BundlesPackage.ROOT_CONCEPT_TAXONOMY_AXIOM: return createRootConceptTaxonomyAxiom();
+			case BundlesPackage.BUNDLED_TERMINOLOGY_AXIOM: return createBundledTerminologyAxiom();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}

@@ -1,20 +1,4 @@
 /**
- * 
- * Copyright 2017 California Institute of Technology ("Caltech").
- * U.S. Government sponsorship acknowledged.
- * 
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * 
- *      http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * 
  */
 package gov.nasa.jpl.imce.oml.model.descriptions;
 
@@ -259,9 +243,9 @@ public interface DescriptionBox extends Module {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.emf.common.util.BasicEList%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.common.ModuleEdge%&gt;&gt; _xblockexpression = null;\n{\n\tfinal &lt;%org.eclipse.emf.common.util.BasicEList%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.common.ModuleEdge%&gt;&gt; me = new &lt;%org.eclipse.emf.common.util.BasicEList%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.common.ModuleEdge%&gt;&gt;();\n\tme.addAll(this.getDescriptionBoxRefinements());\n\tme.addAll(this.getClosedWorldDefinitions());\n\t_xblockexpression = me;\n}\nreturn _xblockexpression;'"
 	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='extent.lookupDescriptionBoxRefinements(this) ++ extent.lookupClosedWorldDefinitions(this)'"
 	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.emf.common.util.BasicEList%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.common.ModuleEdge%&gt;&gt; _xblockexpression = null;\n{\n\tfinal &lt;%org.eclipse.emf.common.util.BasicEList%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.common.ModuleEdge%&gt;&gt; me = new &lt;%org.eclipse.emf.common.util.BasicEList%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.common.ModuleEdge%&gt;&gt;();\n\tme.addAll(this.getDescriptionBoxRefinements());\n\tme.addAll(this.getClosedWorldDefinitions());\n\t_xblockexpression = me;\n}\nreturn _xblockexpression;'"
 	 * @generated
 	 */
 	EList<ModuleEdge> moduleEdges();
@@ -270,9 +254,9 @@ public interface DescriptionBox extends Module {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.emf.common.util.BasicEList%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.common.ModuleElement%&gt;&gt; _xblockexpression = null;\n{\n\tfinal &lt;%org.eclipse.emf.common.util.BasicEList%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.common.ModuleElement%&gt;&gt; mes = new &lt;%org.eclipse.emf.common.util.BasicEList%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.common.ModuleElement%&gt;&gt;();\n\tmes.addAll(this.getConceptInstances());\n\tmes.addAll(this.getReifiedRelationshipInstances());\n\tmes.addAll(this.getReifiedRelationshipInstanceDomains());\n\tmes.addAll(this.getReifiedRelationshipInstanceRanges());\n\tmes.addAll(this.getUnreifiedRelationshipInstanceTuples());\n\tmes.addAll(this.getSingletonScalarDataPropertyValues());\n\tmes.addAll(this.getSingletonStructuredDataPropertyValues());\n\t_xblockexpression = mes;\n}\nreturn _xblockexpression;'"
 	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='extent.lookupConceptInstances(this) ++\n\t\textent.lookupReifiedRelationshipInstances(this) ++\n\t\textent.lookupReifiedRelationshipInstanceDomains(this) ++\n\t\textent.lookupReifiedRelationshipInstanceRanges(this) ++\n\t\textent.lookupUnreifiedRelationshipInstanceTuples(this) ++\n\t\textent.lookupSingletonScalarDataPropertyValues(this) ++\n\t\textent.lookupSingletonStructuredDataPropertyValues(this)'"
 	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.emf.common.util.BasicEList%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.common.ModuleElement%&gt;&gt; _xblockexpression = null;\n{\n\tfinal &lt;%org.eclipse.emf.common.util.BasicEList%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.common.ModuleElement%&gt;&gt; mes = new &lt;%org.eclipse.emf.common.util.BasicEList%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.common.ModuleElement%&gt;&gt;();\n\tmes.addAll(this.getConceptInstances());\n\tmes.addAll(this.getReifiedRelationshipInstances());\n\tmes.addAll(this.getReifiedRelationshipInstanceDomains());\n\tmes.addAll(this.getReifiedRelationshipInstanceRanges());\n\tmes.addAll(this.getUnreifiedRelationshipInstanceTuples());\n\tmes.addAll(this.getSingletonScalarDataPropertyValues());\n\tmes.addAll(this.getSingletonStructuredDataPropertyValues());\n\t_xblockexpression = mes;\n}\nreturn _xblockexpression;'"
 	 * @generated
 	 */
 	EList<ModuleElement> moduleElements();

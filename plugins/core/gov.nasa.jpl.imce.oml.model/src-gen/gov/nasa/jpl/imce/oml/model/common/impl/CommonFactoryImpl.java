@@ -1,20 +1,4 @@
 /**
- * 
- * Copyright 2017 California Institute of Technology ("Caltech").
- * U.S. Government sponsorship acknowledged.
- * 
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * 
- *      http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * 
  */
 package gov.nasa.jpl.imce.oml.model.common.impl;
 
@@ -86,18 +70,18 @@ public class CommonFactoryImpl extends EFactoryImpl implements CommonFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case CommonPackage.LITERAL_BOOLEAN: return (EObject)createLiteralBoolean();
-			case CommonPackage.LITERAL_DATE_TIME: return (EObject)createLiteralDateTime();
-			case CommonPackage.LITERAL_STRING: return (EObject)createLiteralString();
-			case CommonPackage.LITERAL_UUID: return (EObject)createLiteralUUID();
-			case CommonPackage.LITERAL_URI: return (EObject)createLiteralURI();
-			case CommonPackage.LITERAL_REAL: return (EObject)createLiteralReal();
-			case CommonPackage.LITERAL_RATIONAL: return (EObject)createLiteralRational();
-			case CommonPackage.LITERAL_FLOAT: return (EObject)createLiteralFloat();
-			case CommonPackage.LITERAL_DECIMAL: return (EObject)createLiteralDecimal();
-			case CommonPackage.ANNOTATION_PROPERTY_VALUE: return (EObject)createAnnotationPropertyValue();
-			case CommonPackage.ANNOTATION_PROPERTY: return (EObject)createAnnotationProperty();
-			case CommonPackage.EXTENT: return (EObject)createExtent();
+			case CommonPackage.LITERAL_BOOLEAN: return createLiteralBoolean();
+			case CommonPackage.LITERAL_DATE_TIME: return createLiteralDateTime();
+			case CommonPackage.LITERAL_STRING: return createLiteralString();
+			case CommonPackage.LITERAL_UUID: return createLiteralUUID();
+			case CommonPackage.LITERAL_URI: return createLiteralURI();
+			case CommonPackage.LITERAL_REAL: return createLiteralReal();
+			case CommonPackage.LITERAL_RATIONAL: return createLiteralRational();
+			case CommonPackage.LITERAL_FLOAT: return createLiteralFloat();
+			case CommonPackage.LITERAL_DECIMAL: return createLiteralDecimal();
+			case CommonPackage.ANNOTATION_PROPERTY_VALUE: return createAnnotationPropertyValue();
+			case CommonPackage.ANNOTATION_PROPERTY: return createAnnotationProperty();
+			case CommonPackage.EXTENT: return createExtent();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}

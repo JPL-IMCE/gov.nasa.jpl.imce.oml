@@ -1,20 +1,4 @@
 /**
- * 
- * Copyright 2017 California Institute of Technology ("Caltech").
- * U.S. Government sponsorship acknowledged.
- * 
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * 
- *      http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * 
  */
 package gov.nasa.jpl.imce.oml.model.descriptions.impl;
 
@@ -41,7 +25,6 @@ import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -153,7 +136,7 @@ public class UnreifiedRelationshipInstanceTupleImpl extends TerminologyInstanceA
 	 */
 	public void setDescriptionBox(DescriptionBox newDescriptionBox) {
 		if (newDescriptionBox != eInternalContainer() || (eContainerFeatureID() != DescriptionsPackage.UNREIFIED_RELATIONSHIP_INSTANCE_TUPLE__DESCRIPTION_BOX && newDescriptionBox != null)) {
-			if (EcoreUtil.isAncestor(this, (EObject)newDescriptionBox))
+			if (EcoreUtil.isAncestor(this, newDescriptionBox))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
@@ -173,7 +156,7 @@ public class UnreifiedRelationshipInstanceTupleImpl extends TerminologyInstanceA
 	 * @generated
 	 */
 	public UnreifiedRelationship getUnreifiedRelationship() {
-		if (unreifiedRelationship != null && ((EObject)unreifiedRelationship).eIsProxy()) {
+		if (unreifiedRelationship != null && unreifiedRelationship.eIsProxy()) {
 			InternalEObject oldUnreifiedRelationship = (InternalEObject)unreifiedRelationship;
 			unreifiedRelationship = (UnreifiedRelationship)eResolveProxy(oldUnreifiedRelationship);
 			if (unreifiedRelationship != oldUnreifiedRelationship) {
@@ -211,7 +194,7 @@ public class UnreifiedRelationshipInstanceTupleImpl extends TerminologyInstanceA
 	 * @generated
 	 */
 	public ConceptualEntitySingletonInstance getDomain() {
-		if (domain != null && ((EObject)domain).eIsProxy()) {
+		if (domain != null && domain.eIsProxy()) {
 			InternalEObject oldDomain = (InternalEObject)domain;
 			domain = (ConceptualEntitySingletonInstance)eResolveProxy(oldDomain);
 			if (domain != oldDomain) {
@@ -249,7 +232,7 @@ public class UnreifiedRelationshipInstanceTupleImpl extends TerminologyInstanceA
 	 * @generated
 	 */
 	public ConceptualEntitySingletonInstance getRange() {
-		if (range != null && ((EObject)range).eIsProxy()) {
+		if (range != null && range.eIsProxy()) {
 			InternalEObject oldRange = (InternalEObject)range;
 			range = (ConceptualEntitySingletonInstance)eResolveProxy(oldRange);
 			if (range != oldRange) {
