@@ -23,9 +23,7 @@ import gov.nasa.jpl.imce.oml.model.edit.provider.OMLEditPlugin;
 
 import gov.nasa.jpl.imce.oml.model.graphs.GraphsPackage;
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyNestingAxiom;
-
 import gov.nasa.jpl.imce.oml.model.terminologies.provider.TerminologyBoxAxiomItemProvider;
-
 import java.util.Collection;
 import java.util.List;
 

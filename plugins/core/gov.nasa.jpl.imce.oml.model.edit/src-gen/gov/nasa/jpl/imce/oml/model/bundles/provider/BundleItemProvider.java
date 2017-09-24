@@ -22,11 +22,8 @@ package gov.nasa.jpl.imce.oml.model.bundles.provider;
 import gov.nasa.jpl.imce.oml.model.bundles.Bundle;
 import gov.nasa.jpl.imce.oml.model.bundles.BundlesFactory;
 import gov.nasa.jpl.imce.oml.model.bundles.BundlesPackage;
-
 import gov.nasa.jpl.imce.oml.model.edit.provider.OMLEditPlugin;
-
 import gov.nasa.jpl.imce.oml.model.terminologies.provider.TerminologyBoxItemProvider;
-
 import java.util.Collection;
 import java.util.List;
 
@@ -36,7 +33,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 

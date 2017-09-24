@@ -2106,14 +2106,14 @@ public class OMLFormatter extends AbstractFormatter2 {
     } else if (sc instanceof StructuredDataPropertyTuple) {
       _format((StructuredDataPropertyTuple)sc, document);
       return;
-    } else if (sc instanceof XtextResource) {
-      _format((XtextResource)sc, document);
-      return;
     } else if (sc instanceof ScalarDataPropertyValue) {
       _format((ScalarDataPropertyValue)sc, document);
       return;
     } else if (sc instanceof RestrictionScalarDataPropertyValue) {
       _format((RestrictionScalarDataPropertyValue)sc, document);
+      return;
+    } else if (sc instanceof XtextResource) {
+      _format((XtextResource)sc, document);
       return;
     } else if (sc instanceof AnnotationProperty) {
       _format((AnnotationProperty)sc, document);
