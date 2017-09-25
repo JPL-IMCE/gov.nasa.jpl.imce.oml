@@ -425,29 +425,29 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_3:TreeDescription" name="Sub Hiearchy" domainClass="graphs.TerminologyGraph">
       <subItemMappings name="Terminology" domainClass="terminologies.TerminologyBox" semanticCandidatesExpression="var:self">
-        <defaultStyle labelExpression="feature: iri">
+        <defaultStyle labelSize="12" labelExpression="feature: iri">
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
         </defaultStyle>
-        <subItemMappings name="Concept" domainClass="terminologies.Concept" semanticCandidatesExpression="aql:container.oclAsType(terminologies::TerminologyBox)->collect(t|t.boxStatements->filter(terminologies::Concept)->union(t.boxStatements->filter(terminologies::ConceptSpecializationAxiom).superConcept)->select(e|e.eInverse()->filter(terminologies::SpecializationAxiom)->select(a|a.child() = e)->isEmpty()))">
-          <defaultStyle labelExpression="aql:self.abbrevIRI()">
+        <subItemMappings name="Concept" domainClass="terminologies.Concept" semanticCandidatesExpression="feature:boxStatements">
+          <defaultStyle labelSize="12" labelExpression="aql:self.abbrevIRI()">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </defaultStyle>
-          <subItemMappings name="Sub Concept" domainClass="terminologies.Concept" semanticCandidatesExpression="aql:tree.target.oclAsType(terminologies::TerminologyBox)->collect(t|t.boxStatements->filter(terminologies::ConceptSpecializationAxiom)->select(a|a.superConcept = self).subConcept->union(t.boxStatements->filter(terminologies::AspectSpecializationAxiom)->select(a|a.superAspect = self).subEntity))">
-            <defaultStyle>
+          <subItemMappings name="Sub Concept" domainClass="terminologies.Concept" semanticCandidatesExpression="aql:container.oclAsType(terminologies::Concept).getSubConcepts()">
+            <defaultStyle labelSize="12">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </defaultStyle>
           </subItemMappings>
         </subItemMappings>
         <subItemMappings name="Aspect" domainClass="terminologies.Aspect" semanticCandidatesExpression="aql:container.oclAsType(terminologies::TerminologyBox)->collect(t|t.boxStatements->filter(terminologies::Aspect)->union(t.boxStatements->filter(terminologies::AspectSpecializationAxiom).superAspect)->select(e|e.eInverse()->filter(terminologies::SpecializationAxiom)->select(a|a.child() = e)->isEmpty()))">
-          <defaultStyle labelExpression="aql:self.abbrevIRI()">
+          <defaultStyle labelSize="12" labelExpression="aql:self.abbrevIRI()">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </defaultStyle>
-          <subItemMappings name="Sub Aspect" domainClass="terminologies.Aspect" semanticCandidatesExpression="aql:tree.target.oclAsType(terminologies::TerminologyBox)->collect(t|t.boxStatements->filter(terminologies::AspectSpecializationAxiom)->select(a|a.superAspect = self).subEntity)">
-            <defaultStyle>
+          <subItemMappings name="Sub Entity" domainClass="terminologies.Entity" semanticCandidatesExpression="aql:container.oclAsType(terminologies::Aspect).getSubEntities()">
+            <defaultStyle labelSize="12">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </defaultStyle>
@@ -706,5 +706,6 @@
     <ownedJavaExtensions qualifiedClassName="gov.nasa.jpl.imce.oml.viewpoint.TerminologyDiagramService"/>
     <ownedJavaExtensions qualifiedClassName="gov.nasa.jpl.imce.oml.viewpoint.ConceptUsageDiagramService"/>
     <ownedJavaExtensions qualifiedClassName="gov.nasa.jpl.imce.oml.viewpoint.DiagramUtil"/>
+    <ownedJavaExtensions qualifiedClassName="gov.nasa.jpl.imce.oml.viewpoint.SubHeirarchyService"/>
   </ownedViewpoints>
 </description:Group>
