@@ -13,12 +13,12 @@ The OML Viewpoints are graphical modeling workbenches developed using the [Siriu
 | Terminology Aspects | Table | Displays all of the *Aspects* and which *Entites* have said *Entities* as a *Specialization* |
 | Terminology Properties | Table | Displays all of the *Data Properties* in this *Terminology Graph* |
 | Terminology Concepts | Table | Displays all of the *Concepts* and which *Concepts* have said *Concept* as a *Specialization* in a tabular format |
-| Sub Hierarchy | Tree | Displays all of the *Concepts* and *Aspects* in a tree format |
+| Sub Hierarchy | Tree | Displays all of the *Concepts* and *Aspects* in a tree format. The children are subConcepts from *ConceptSepcializationAxioms* and subEnitites for *AspecSpecializationAxioms* |
 | Concept Usage Diagram | Diagram | Displays all of the *Concepts* that have the root *Concept* as its domain or range (directly or indirectly) |
 | Aspect/Concept Class Diagram | Diagram | Displays all *Aspects/Concepts* that have the root *Aspect/Concept* as its domain or range (relationships) or its parent (*Specializations*)|
 | Reified Relationship Diagram | Diagram | Displays a *ReifiedRelationship* and its domain and range|
 
-The views *Aspect/Concept Class Diagram* and *Sub Heiarchy* are incomplete
+The *Aspect/Concept Class Diagram* is incomplete
 
 ### Usage
 
@@ -57,4 +57,4 @@ Last Sirius migration version is: 11.1.1.201610211630
 ```
 If this happens, open [OML.odesign](/gov.nasa.jpl.imce.oml.viewpoint/description/OML.odesign) in a text editor and change the 'version' attribute of the 'description:Group' tag back to 11.1.1.201610211630
 
-- All queries for 'Terminology Diagram', 'Aspect/Concept Diagram' and 'ConceptUsageDiagram' are defined in service methods in the gov.nasa.jpl.imce.oml.viewpoint package.
+- All queries for 'Terminology Diagram', 'Aspect/Concept Diagram', 'Sub Hierarchy' and 'ConceptUsageDiagram' are defined in service methods in the gov.nasa.jpl.imce.oml.viewpoint package.
