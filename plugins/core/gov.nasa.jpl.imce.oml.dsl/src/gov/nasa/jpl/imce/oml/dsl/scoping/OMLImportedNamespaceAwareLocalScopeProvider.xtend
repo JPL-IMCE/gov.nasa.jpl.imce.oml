@@ -73,6 +73,18 @@ import org.eclipse.xtext.scoping.impl.ImportedNamespaceAwareLocalScopeProvider
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataPropertyParticularRestrictionAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue
+import gov.nasa.jpl.imce.oml.model.terminologies.ChainRule
+import gov.nasa.jpl.imce.oml.model.terminologies.AspectPredicate
+import gov.nasa.jpl.imce.oml.model.terminologies.ConceptPredicate
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPredicate
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPropertyPredicate
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipInversePropertyPredicate
+import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipInversePropertyPredicate
+import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipPropertyPredicate
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetInversePropertyPredicate
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetPropertyPredicate
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourceInversePropertyPredicate
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourcePropertyPredicate
 
 class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespaceAwareLocalScopeProvider {
 	
@@ -194,6 +206,54 @@ class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespaceAware
 					scope = context.tbox.allStructuresScope
 				else if (reference == TerminologiesPackage.eINSTANCE.dataRelationshipToStructure_Range)
 					scope = context.tbox.allStructuresScope
+				
+			ChainRule:
+				if (reference == TerminologiesPackage.eINSTANCE.chainRule_Head)
+					scope = context.tbox.allEntityRelationshipsScope
+					
+			AspectPredicate:
+				if (reference == TerminologiesPackage.eINSTANCE.aspectPredicate_Aspect)
+					scope = context.getBodySegment?.chainRule?.tbox?.allAspectsScope
+					
+			ConceptPredicate:
+				if (reference == TerminologiesPackage.eINSTANCE.conceptPredicate_Concept)
+					scope = context.getBodySegment?.chainRule?.tbox?.allConceptsScope
+					
+			ReifiedRelationshipPredicate:
+				if (reference == TerminologiesPackage.eINSTANCE.reifiedRelationshipPredicate_ReifiedRelationship)
+					scope = context.getBodySegment?.chainRule?.tbox?.allEntityRelationshipsScope
+					
+			ReifiedRelationshipPropertyPredicate:
+				if (reference == TerminologiesPackage.eINSTANCE.reifiedRelationshipPropertyPredicate_ReifiedRelationship)
+					scope = context.getBodySegment?.chainRule?.tbox?.allEntityRelationshipsScope
+					
+			ReifiedRelationshipInversePropertyPredicate:
+				if (reference == TerminologiesPackage.eINSTANCE.reifiedRelationshipInversePropertyPredicate_ReifiedRelationship)
+					scope = context.getBodySegment?.chainRule?.tbox?.allEntityRelationshipsScope
+					
+			ReifiedRelationshipSourcePropertyPredicate:
+				if (reference == TerminologiesPackage.eINSTANCE.reifiedRelationshipSourcePropertyPredicate_ReifiedRelationship)
+					scope = context.getBodySegment?.chainRule?.tbox?.allEntityRelationshipsScope
+					
+			ReifiedRelationshipSourceInversePropertyPredicate:
+				if (reference == TerminologiesPackage.eINSTANCE.reifiedRelationshipSourceInversePropertyPredicate_ReifiedRelationship)
+					scope = context.getBodySegment?.chainRule?.tbox?.allEntityRelationshipsScope
+					
+			ReifiedRelationshipTargetPropertyPredicate:
+				if (reference == TerminologiesPackage.eINSTANCE.reifiedRelationshipTargetPropertyPredicate_ReifiedRelationship)
+					scope = context.getBodySegment?.chainRule?.tbox?.allEntityRelationshipsScope
+					
+			ReifiedRelationshipTargetInversePropertyPredicate:
+				if (reference == TerminologiesPackage.eINSTANCE.reifiedRelationshipTargetInversePropertyPredicate_ReifiedRelationship)
+					scope = context.getBodySegment?.chainRule?.tbox?.allEntityRelationshipsScope
+					
+			UnreifiedRelationshipPropertyPredicate:
+				if (reference == TerminologiesPackage.eINSTANCE.unreifiedRelationshipPropertyPredicate_UnreifiedRelationship)
+					scope = context.getBodySegment?.chainRule?.tbox?.allEntityRelationshipsScope
+				
+			UnreifiedRelationshipInversePropertyPredicate:
+				if (reference == TerminologiesPackage.eINSTANCE.unreifiedRelationshipInversePropertyPredicate_UnreifiedRelationship)
+					scope = context.getBodySegment?.chainRule?.tbox?.allEntityRelationshipsScope
 				
 			EntityRestrictionAxiom:
 				if (reference == TerminologiesPackage.eINSTANCE.entityRestrictionAxiom_RestrictedRelation)

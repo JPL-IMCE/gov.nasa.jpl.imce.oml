@@ -222,7 +222,6 @@ class AnnotationPropertyValue {
 		)?.toString
 	}
 
-	@Factory
 	container Element[1] subject opposite annotations
 	
 	refers AnnotationProperty[1] property

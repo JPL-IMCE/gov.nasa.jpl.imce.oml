@@ -617,6 +617,454 @@ class ScalarDataProperty extends DataRelationship, DataRelationshipFromStructure
 class Structure extends Datatype, UnaryTermKind {}
 
 /*
+ * An OML Rule corresponds to a labelled SWRL rule.
+ */
+@Glossary
+abstract class Rule extends Term {}
+
+/*
+ * An OML ChainRule corresponds to a named SWRL implication rule 
+ * whose consequent head is a single OML UnreifiedRelationship, `ur`,
+ * and whose antecedent body consists of at least 1 OML RuleBodySegment
+ * possibly followed by other OML RuleBodySegment(s).
+ * 
+ * SWRL variables are implicit in OML in the following sense:
+ * - The consequent head, `ur` is a binary predicate: `ur(?d, ?r)` 
+ *   where `?d` and `?r` are variables corresponding to, respectively,
+ *   the domain and range of the OML UnreifiedRelationship `ur`.
+ * - `?d` is the first variable of the OML Term used as the `termPredicate` of the `firstSegment`;
+ * - `?r` is the last variable of the OML Term used as the `termPredicate` of the last OML RuleBodySegment;
+ * - for an OML RuleBodySegment at `position` `i` that has a `nextSegment` at `position` `i+1`,
+ *   the last variable of the OML Term used as the `termPredicate` at `i` must be identical
+ *   to the first variable of the OML Term used as the `termPredicate` at `i+1;
+ * - for an OML RuleBodySegment whose `segmentPrediccate` is an OML UnarySegmentPredicate,
+ *   the `termPredicate` is unary and its unique variable plays the roles of both first and last variables;
+ * - for an OML RuleBodySegment whose `segmentPredicate` is an OML BinarySegmentForwardPropertyPredicate,
+ *   the `termPredicate` is binary and its first and second variables correspond respectively 
+ *   to the domain and range of the property interpreted in the forward direction from its domain to its range;
+ * - for an OML RuleBodySegment whose `segmentPredicate` is an OML BinarySegmentReversePropertyPredicate,
+ *   the `termPredicate` is binary and its first and second variables correspond respectively 
+ *   to the range and domain of the property interpreted in the reverse direction from its range to its domain.
+ */
+@Glossary
+class ChainRule extends Rule {
+	
+	refers UnreifiedRelationship[1] head
+	
+	contains RuleBodySegment[1] firstSegment opposite rule
+	
+}
+
+/*
+ * An OML RuleBodySegment corresponds to a predicate in the body of a SWRL rule.
+ * The `position` of an OML RuleBodySegment is 1 for the firstBodySegment of an OML ChainRule.
+ * If the `position` of the current OML RuleBodySegment is `p`, 
+ * then the `position` of the `nextSegment`, if defined, is `p+1`.
+ */
+@Glossary
+class RuleBodySegment extends Element {
+	
+	contains SegmentPredicate[1] predicate opposite bodySegment
+	
+	contains RuleBodySegment[?] nextSegment opposite previousSegment
+	
+	container RuleBodySegment[?] previousSegment opposite nextSegment
+	
+	container ChainRule[?] rule opposite firstSegment
+	
+	@Scala(code="previousSegment match { 
+					case scala.None => 
+						1
+					case scala.Some(prev) => 
+						1 + prev.position()
+				}")
+	@NotSchema
+	op int[1] position() { 
+		if (null === previousSegment) 1
+		else 1 + previousSegment.position
+	}
+	
+	@Scala(code="rule match {
+					case scala.Some(r) =>
+						r
+					case scala.None =>
+						previousSegment match {
+							case scala.Some(prev) =>
+								prev.chainRule()
+							case scala.None =>
+								throw new java.lang.IllegalArgumentException(\"chainRule() must be well-defined\")
+						}				}")
+	@NotSchema
+	op ChainRule[1] chainRule() {
+		rule?:previousSegment?.chainRule
+	}
+	
+	@Scala(code="namespaceUUID(\"RuleBodySegment\",  
+		\"chainRule\" -> 
+			rule.fold[scala.Predef.String]{ 
+			  previousSegment.fold[scala.Predef.String]{ throw new java.lang.IllegalArgumentException(\"rule or previousSegment must be non-empty\") }{ prev => 
+				prev.chainRule().uuid.toString
+			  } 
+			}{ r => 
+			  r.uuid.toString },
+		\"position\" -> 
+			previousSegment.fold[scala.Predef.String] { 
+			  \"1\" 
+			}{ prev => 
+			  prev.position().toString 
+			})")
+	@FunctionalInterface
+	@OverrideVal
+	op UUID[1] uuid() {
+		OMLExtensions.derivedUUID(
+		"RuleBodySegment",
+		"chainRule" -> chainRule?.uuid()?.toString,
+		"position" -> position.toString
+		)?.toString
+	}
+	
+	@Scala(code="chainRule().moduleContext()")
+	@NotSchema
+	@ImplicitExtent
+	op Module[?] moduleContext() { rule?.moduleContext() }
+}
+
+/*
+ * An OML SegmentPredicate wraps a reference to an OML Term used as a predicate for an OML ChainRule.
+ */
+@Glossary
+abstract class SegmentPredicate extends Element {
+	
+	container RuleBodySegment[1] bodySegment opposite predicate
+	
+	@NotSchema
+	op Term[1] termPredicate()
+	
+	@NotSchema
+	@ImplicitExtent
+	op Module[?] moduleContext() { bodySegment.moduleContext() }
+}
+
+/*
+ * An OML UnarySegmentPredicate wraps a reference to an OML Term used as a unary predicate for an OML ChainRule.
+ */
+@Glossary
+abstract class UnarySegmentPredicate extends SegmentPredicate {}
+
+/*
+ * An OML AspectPredicate wraps a reference 
+ * to an OML Aspect as a unary predicate for an OML ChainRule.
+ * This unary predicate is satisfied when its implicit variable is bound 
+ * to an instance of the referenced OML Aspect.
+ */
+@Glossary
+class AspectPredicate extends UnarySegmentPredicate {
+	
+	refers Aspect[1] aspect
+	
+	@NotSchema
+	@Override
+	op Term[1] termPredicate() { aspect }
+	
+	@FunctionalInterface
+	@OverrideVal
+	op UUID[1] uuid() {
+		OMLExtensions.derivedUUID(
+		"AspectPredicate",
+		"aspect" -> aspect?.uuid()?.toString,
+		"bodySegment" -> bodySegment?.uuid()?.toString
+		)?.toString
+	}
+}
+
+/*
+ * An OML ConceptPredicate wraps a reference 
+ * to an OML Concept as a unary predicate for an OML ChainRule.
+ * This unary predicate is satisfied when its implicit variable is bound 
+ * to an instance of the referenced OML Concept.
+ */
+@Glossary
+class ConceptPredicate extends UnarySegmentPredicate {
+	
+	refers Concept[1] concept
+	
+	@NotSchema
+	@Override
+	op Term[1] termPredicate() { concept }
+	
+	@FunctionalInterface
+	@OverrideVal
+	op UUID[1] uuid() {
+		OMLExtensions.derivedUUID(
+		"ConceptPredicate",
+		"bodySegment" -> bodySegment?.uuid()?.toString,
+		"concept" -> concept?.uuid()?.toString
+		)?.toString
+	}
+}
+
+/*
+ * An OML ReifiedRelationshipPredicate wraps a reference 
+ * to an OML ReifiedRelationship as a unary predicate for an OML ChainRule.
+ * This unary predicate is satisfied when its implicit variable is bound 
+ * to an instance of the referenced OML ReifiedRelationship.
+ */
+@Glossary
+class ReifiedRelationshipPredicate extends UnarySegmentPredicate {
+	
+	refers ReifiedRelationship[1] reifiedRelationship
+	
+	@NotSchema
+	@Override
+	op Term[1] termPredicate() { reifiedRelationship }
+	
+	@FunctionalInterface
+	@OverrideVal
+	op UUID[1] uuid() {
+		OMLExtensions.derivedUUID(
+		"ReifiedRelationshipPredicate",
+		"bodySegment" -> bodySegment?.uuid()?.toString,
+		"reifiedRelationship" -> reifiedRelationship?.uuid()?.toString
+		)?.toString
+	}
+}
+
+/*
+ * An OML BinarySegmentPredicate wraps a reference to an OML Term used as a binary predicate for an OML ChainRule.
+ */
+@Glossary
+abstract class BinarySegmentPropertyPredicate extends SegmentPredicate {}
+
+/*
+ * An OML BinarySegmentForwardPropertyPredicate wraps a reference to an OML Term used as a binary property predicate for an OML ChainRule
+ * in the forward direction, that is, the first and second variables of this predicate correspond respectively
+ * to the domain and range of the binary property predicate.
+ */
+@Glossary
+abstract class BinarySegmentForwardPropertyPredicate extends BinarySegmentPropertyPredicate {}
+
+/*
+ * An OML BinarySegmentReversePropertyPredicate wraps a reference to an OML Term used as a binary property predicate for an OML ChainRule
+ * in the reverse direction, that is, the first and second variables of this predicate correspond respectively
+ * to the range and domain of the binary property predicate.
+ */
+@Glossary
+abstract class BinarySegmentReversePropertyPredicate extends BinarySegmentPropertyPredicate {}
+
+/*
+ * An OML ReifiedRelationshipPropertyPredicate wraps a reference 
+ * to an OML ReifiedRelationship as a binary predicate for an OML ChainRule.
+ * This binary predicate is satisfied when the pair of its implicit variables are bound as follows:
+ * - the first variable is bound to an instance suitable for the domain of the OML ReifiedRelationship;
+ * - the second variable is bound to an instance suitable for the range of the OML ReifiedRelationship;
+ * - there must be an instance of the OML ReifiedRelationship relating the first variable (domain) to the second variable (range).
+ */
+@Glossary
+class ReifiedRelationshipPropertyPredicate extends BinarySegmentForwardPropertyPredicate {
+	
+	refers ReifiedRelationship[1] reifiedRelationship
+	
+	@NotSchema
+	@Override
+	op Term[1] termPredicate() { reifiedRelationship }
+	
+	@FunctionalInterface
+	@OverrideVal
+	op UUID[1] uuid() {
+		OMLExtensions.derivedUUID(
+		"ReifiedRelationshipPropertyPredicate",
+		"bodySegment" -> getBodySegment?.uuid()?.toString,
+		"reifiedRelationship" -> getReifiedRelationship?.uuid()?.toString
+		)?.toString
+	}
+}
+
+/*
+ * An OML ReifiedRelationshipInversePropertyPredicate wraps a reference 
+ * to an OML ReifiedRelationship as a binary predicate for an OML ChainRule.
+ * This binary predicate is satisfied when the pair of its implicit variables are bound as follows:
+ * - the first variable is bound to an instance suitable for the range of the OML ReifiedRelationship;
+ * - the second variable is bound to an instance suitable for the domain of the OML ReifiedRelationship;
+ * - there must be an instance of the OML ReifiedRelationship relating the second variable (domain) to the first variable (range).
+ */
+@Glossary
+class ReifiedRelationshipInversePropertyPredicate extends BinarySegmentReversePropertyPredicate {
+	
+	refers ReifiedRelationship[1] reifiedRelationship
+	
+	@NotSchema
+	@Override
+	op Term[1] termPredicate() { reifiedRelationship }
+	
+	@FunctionalInterface
+	@OverrideVal
+	op UUID[1] uuid() {
+		OMLExtensions.derivedUUID(
+		"ReifiedRelationshipInversePropertyPredicate",
+		"bodySegment" -> getBodySegment?.uuid()?.toString,
+		"reifiedRelationship" -> getReifiedRelationship?.uuid()?.toString
+		)?.toString
+	}
+}
+
+/*
+ * An OML ReifiedRelationshipSourcePropertyPredicate wraps a reference 
+ * to an OML ReifiedRelationship as a binary predicate for an OML ChainRule.
+ * This binary predicate is satisfied when the pair of its implicit variables are bound as follows:
+ * - the first variable is bound to an instance of the OML ReifiedRelationship;
+ * - the second variable is bound to an instance suitable for the domain of the OML ReifiedRelationship.
+ */
+@Glossary
+class ReifiedRelationshipSourcePropertyPredicate extends BinarySegmentForwardPropertyPredicate {
+	
+	refers ReifiedRelationship[1] reifiedRelationship
+	
+	@NotSchema
+	@Override
+	op Term[1] termPredicate() { reifiedRelationship }
+	
+	@FunctionalInterface
+	@OverrideVal
+	op UUID[1] uuid() {
+		OMLExtensions.derivedUUID(
+		"ReifiedRelationshipSourcePropertyPredicate",
+		"bodySegment" -> getBodySegment?.uuid()?.toString,
+		"reifiedRelationship" -> getReifiedRelationship?.uuid()?.toString
+		)?.toString
+	}
+}
+
+/*
+ * An OML ReifiedRelationshipSourceInversePropertyPredicate wraps a reference 
+ * to an OML ReifiedRelationship as a binary predicate for an OML ChainRule.
+ * This binary predicate is satisfied when the pair of its implicit variables are bound as follows:
+ * - the first variable is bound to an instance suitable for the domain of the OML ReifiedRelationship;
+ * - the second variable is bound to an instance of the OML ReifiedRelationship.
+ */
+@Glossary
+class ReifiedRelationshipSourceInversePropertyPredicate extends BinarySegmentReversePropertyPredicate {
+	refers ReifiedRelationship[1] reifiedRelationship
+	
+	@NotSchema
+	@Override
+	op Term[1] termPredicate() { reifiedRelationship }
+	
+	@FunctionalInterface
+	@OverrideVal
+	op UUID[1] uuid() {
+		OMLExtensions.derivedUUID(
+		"ReifiedRelationshipSourceInversePropertyPredicate",
+		"bodySegment" -> getBodySegment?.uuid()?.toString,
+		"reifiedRelationship" -> getReifiedRelationship?.uuid()?.toString
+		)?.toString
+	}
+}
+
+/*
+ * An OML ReifiedRelationshipTargetPropertyPredicate wraps a reference 
+ * to an OML ReifiedRelationship as a binary predicate for an OML ChainRule.
+ * This binary predicate is satisfied when the pair of its implicit variables are bound as follows:
+ * - the first variable is bound to an instance of the OML ReifiedRelationship;
+ * - the second variable is bound to an instance suitable for the range of the OML ReifiedRelationship.
+ */
+@Glossary
+class ReifiedRelationshipTargetPropertyPredicate extends BinarySegmentForwardPropertyPredicate {
+	refers ReifiedRelationship[1] reifiedRelationship
+	
+	@NotSchema
+	@Override
+	op Term[1] termPredicate() { reifiedRelationship }
+	
+	@FunctionalInterface
+	@OverrideVal
+	op UUID[1] uuid() {
+		OMLExtensions.derivedUUID(
+		"ReifiedRelationshipTargetPropertyPredicate",
+		"bodySegment" -> getBodySegment?.uuid()?.toString,
+		"reifiedRelationship" -> getReifiedRelationship?.uuid()?.toString
+		)?.toString
+	}
+}
+
+/*
+ * An OML ReifiedRelationshipTargetInversePropertyPredicate wraps a reference 
+ * to an OML ReifiedRelationship as a binary predicate for an OML ChainRule.
+ * This binary predicate is satisfied when the pair of its implicit variables are bound as follows:
+ * - the first variable is bound to an instance suitable for the range of the OML ReifiedRelationship;
+ * - the second variable is bound to an instance of the OML ReifiedRelationship.
+ */
+@Glossary
+class ReifiedRelationshipTargetInversePropertyPredicate extends BinarySegmentReversePropertyPredicate {
+	refers ReifiedRelationship[1] reifiedRelationship
+	
+	@NotSchema
+	@Override
+	op Term[1] termPredicate() { reifiedRelationship }
+	
+	@FunctionalInterface
+	@OverrideVal
+	op UUID[1] uuid() {
+		OMLExtensions.derivedUUID(
+		"ReifiedRelationshipTargetInversePropertyPredicate",
+		"bodySegment" -> getBodySegment?.uuid()?.toString,
+		"reifiedRelationship" -> getReifiedRelationship?.uuid()?.toString
+		)?.toString
+	}
+}
+
+/*
+ * An OML UnreifiedRelationshipPropertyPredicate wraps a reference 
+ * to an OML UnreifiedReifiedRelationship as a binary predicate for an OML ChainRule.
+ * This binary predicate is satisfied when the pair of its implicit variables are bound as follows:
+ * - the first variable is bound to an instance suitable for the domain of the OML UnreifiedRelationship;
+ * - the second variable is bound to an instance suitable for the range of the OML UnreifiedRelationship.
+ */
+@Glossary
+class UnreifiedRelationshipPropertyPredicate extends BinarySegmentForwardPropertyPredicate {
+	refers UnreifiedRelationship[1] unreifiedRelationship
+	
+	@NotSchema
+	@Override
+	op Term[1] termPredicate() { unreifiedRelationship }
+	
+	@FunctionalInterface
+	@OverrideVal
+	op UUID[1] uuid() {
+		OMLExtensions.derivedUUID(
+		"UnreifiedRelationshipPropertyPredicate",
+		"bodySegment" -> getBodySegment?.uuid()?.toString,
+		"unreifiedRelationship" -> getUnreifiedRelationship?.uuid()?.toString
+		)?.toString
+	}
+}
+
+/*
+ * An OML UnreifiedRelationshipInversePropertyPredicate wraps a reference 
+ * to an OML UnreifiedReifiedRelationship as a binary predicate for an OML ChainRule.
+ * This binary predicate is satisfied when the pair of its implicit variables are bound as follows:
+ * - the first variable is bound to an instance suitable for the range of the OML UnreifiedRelationship;
+ * - the second variable is bound to an instance suitable for the domain of the OML UnreifiedRelationship.
+ */
+@Glossary
+class UnreifiedRelationshipInversePropertyPredicate extends BinarySegmentReversePropertyPredicate {
+	refers UnreifiedRelationship[1] unreifiedRelationship
+	
+	@NotSchema
+	@Override
+	op Term[1] termPredicate() { unreifiedRelationship }
+	
+	@FunctionalInterface
+	@OverrideVal
+	op UUID[1] uuid() {
+		OMLExtensions.derivedUUID(
+		"UnreifiedRelationshipInversePropertyPredicate",
+		"bodySegment" -> getBodySegment?.uuid()?.toString,
+		"unreifiedRelationship" -> getUnreifiedRelationship?.uuid()?.toString
+		)?.toString
+	}	
+}
+
+/*
  * An OML TermAxiom is a logical axiom about an OML Term.
  */
 @Glossary
