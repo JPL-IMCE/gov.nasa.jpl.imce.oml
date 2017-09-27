@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_3="http://www.eclipse.org/sirius/tree/description/1.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="viewpoint" version="11.1.1.201610211630">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_3="http://www.eclipse.org/sirius/tree/description/1.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="viewpoint" version="12.0.0.2017041100">
   <ownedViewpoints name="OML Modeling" modelFileExtension="oml">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Terminolgy Diagram" domainClass="graphs.TerminologyGraph">
       <metamodel href="http://imce.jpl.nasa.gov/oml/common#/"/>
@@ -423,30 +423,18 @@
       <ownedColumnMappings name="Concept" headerLabelExpression="feature:name" domainClass="terminologies.Concept" semanticCandidatesExpression="feature:boxStatements"/>
       <intersection name="Concept Specialization" lineMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminology%20Concepts']/@ownedLineMappings[name='Terminology']/@ownedSubLines[name='Concept']" columnMapping="//@ownedViewpoints[name='OML%20Modeling']/@ownedRepresentations[name='Terminology%20Concepts']/@ownedColumnMappings.0" labelExpression="X" useDomainClass="true" columnFinderExpression="aql:self.superConcept" lineFinderExpression="aql:self.subConcept" semanticCandidatesExpression="feature:boxStatements" domainClass="terminologies.ConceptSpecializationAxiom"/>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_3:TreeDescription" name="Sub Hiearchy" domainClass="graphs.TerminologyGraph">
+    <ownedRepresentations xsi:type="description_3:TreeDescription" name="Specialization Hiearchy" domainClass="graphs.TerminologyGraph">
       <subItemMappings name="Terminology" domainClass="terminologies.TerminologyBox" semanticCandidatesExpression="var:self">
-        <defaultStyle labelSize="12" labelExpression="feature: iri">
+        <defaultStyle labelSize="12" labelExpression="feature: name">
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
         </defaultStyle>
-        <subItemMappings name="Concept" domainClass="terminologies.Concept" semanticCandidatesExpression="feature:boxStatements">
+        <subItemMappings name="Entities" domainClass="terminologies.Entity" semanticCandidatesExpression="service:getVisualTreeItems()">
           <defaultStyle labelSize="12" labelExpression="aql:self.abbrevIRI()">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </defaultStyle>
-          <subItemMappings name="Sub Concept" domainClass="terminologies.Concept" semanticCandidatesExpression="aql:container.oclAsType(terminologies::Concept).getSubConcepts()">
-            <defaultStyle labelSize="12">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </defaultStyle>
-          </subItemMappings>
-        </subItemMappings>
-        <subItemMappings name="Aspect" domainClass="terminologies.Aspect" semanticCandidatesExpression="aql:container.oclAsType(terminologies::TerminologyBox)->collect(t|t.boxStatements->filter(terminologies::Aspect)->union(t.boxStatements->filter(terminologies::AspectSpecializationAxiom).superAspect)->select(e|e.eInverse()->filter(terminologies::SpecializationAxiom)->select(a|a.child() = e)->isEmpty()))">
-          <defaultStyle labelSize="12" labelExpression="aql:self.abbrevIRI()">
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-          </defaultStyle>
-          <subItemMappings name="Sub Entity" domainClass="terminologies.Entity" semanticCandidatesExpression="aql:container.oclAsType(terminologies::Aspect).getSubEntities()">
+          <subItemMappings name="Sub Entity" domainClass="terminologies.Entity" semanticCandidatesExpression="service:getSubEntities(tree)">
             <defaultStyle labelSize="12">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -706,6 +694,6 @@
     <ownedJavaExtensions qualifiedClassName="gov.nasa.jpl.imce.oml.viewpoint.TerminologyDiagramService"/>
     <ownedJavaExtensions qualifiedClassName="gov.nasa.jpl.imce.oml.viewpoint.ConceptUsageDiagramService"/>
     <ownedJavaExtensions qualifiedClassName="gov.nasa.jpl.imce.oml.viewpoint.DiagramUtil"/>
-    <ownedJavaExtensions qualifiedClassName="gov.nasa.jpl.imce.oml.viewpoint.SubHeirarchyService"/>
+    <ownedJavaExtensions qualifiedClassName="gov.nasa.jpl.imce.oml.viewpoint.SpecializationHierarchyService"/>
   </ownedViewpoints>
 </description:Group>

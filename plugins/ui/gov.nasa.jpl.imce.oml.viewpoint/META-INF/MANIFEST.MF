@@ -14,7 +14,8 @@ Require-Bundle: org.eclipse.core.runtime;bundle-version="3.13.0";visibility:=ree
  org.eclipse.sirius.diagram;bundle-version="5.0.1";visibility:=reexport,
  org.eclipse.sirius.common.acceleo.aql;bundle-version="5.0.1";visibility:=reexport,
  gov.nasa.jpl.imce.oml.model,
- gov.nasa.jpl.imce.oml.dsl
+ gov.nasa.jpl.imce.oml.dsl,
+ org.eclipse.sirius.tree;bundle-version="5.0.1"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: %providerName
