@@ -18,54 +18,51 @@
 
 package gov.nasa.jpl.imce.oml.viewpoint
 
+import gov.nasa.jpl.imce.oml.model.graphs.TerminologyGraph
 import gov.nasa.jpl.imce.oml.model.terminologies.Aspect
-import gov.nasa.jpl.imce.oml.model.terminologies.AspectSpecializationAxiom
-import gov.nasa.jpl.imce.oml.model.terminologies.Concept
-import gov.nasa.jpl.imce.oml.model.terminologies.ConceptSpecializationAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.Entity
+import gov.nasa.jpl.imce.oml.model.terminologies.SpecializationAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox
 import java.util.HashSet
 import java.util.Set
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.sirius.tree.DTree
 
-class SubHeirarchyService {
-	
-	/**
-	 * Returns all of the {@link Concept}s which have the passed {@link Concept} c
-	 * as its superConcept for all {@link ConceptSpecializationAxiom}s in this
-	 * {@link TerminologyBox}
-	 * 
-	 * @param c The {@Concept} which is the superConcept
-	 * @return Set of {@link Concept}s that are subConcepts to the passed {@link Concept}
-	 */
-	def Set<Concept> getSubConcepts(Concept c){
-		
-		val concepts  = new HashSet<Concept>()
-		
-		c?.tbox
-		?.boxStatements
-		.filter(ConceptSpecializationAxiom)
-		.filter[cs | cs.superConcept == c]
-		.forEach[cs | concepts.add(cs.subConcept)]
-		
-		return concepts
-	}
+class SpecializationHierarchyService {
 	
 	/**
 	 * Returns all of the {@link Entity}s which have the passed {@link Aspect} c
-	 * as its superAspect for all {@link AspectSpecializationAxiom}s in this
+	 * as its superAspect for all {@link SpecializationAxiom}s in this
 	 * {@link TerminologyBox}
 	 * 
-	 * @param c The {@Concept} which is the superConcept
-	 * @return Set of {@link Entity}s that are subEntites to the passed {@link Aspect}
+	 * @param c The {@link Entity} which is the superConcept
+	 * @return Set of {@link Entity}s that are children to the passed {@link Entity}
 	 */
-	def Set<Entity> getSubEntities(Aspect a){
+	def Set<Entity> getSubEntities(Entity e, DTree tree){
 		
 		val entities  = new HashSet<Entity>()
 		
-		a?.tbox
-		?.boxStatements
-		.filter(AspectSpecializationAxiom)
-		.filter[cs | cs.superAspect == a]
-		.forEach[s | entities.add(s.subEntity)]
+		val tb = tree.target as TerminologyGraph
+         tb.boxStatements
+		.filter(SpecializationAxiom)
+		.filter[s | s.parent == e]
+		.forEach[s | entities.add(s.child)]
+		
+		return entities
+	}
+	
+	/**
+	 * 
+	 */
+	def Set<Entity> getVisualTreeItems(EObject eObj){
+		
+		val entities  = new HashSet<Entity>()
+		
+		val tb = eObj as TerminologyBox
+		
+		tb.boxStatements
+		.filter(SpecializationAxiom)
+		.forEach[s | entities.add(s.parent)]
 		
 		return entities
 	}
