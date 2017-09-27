@@ -341,6 +341,305 @@ public class TerminologiesItemProviderAdapterFactory extends TerminologiesAdapte
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.terminologies.ChainRule} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ChainRuleItemProvider chainRuleItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.terminologies.ChainRule}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createChainRuleAdapter() {
+		if (chainRuleItemProvider == null) {
+			chainRuleItemProvider = new ChainRuleItemProvider(this);
+		}
+
+		return chainRuleItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.terminologies.RuleBodySegment} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected RuleBodySegmentItemProvider ruleBodySegmentItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.terminologies.RuleBodySegment}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createRuleBodySegmentAdapter() {
+		if (ruleBodySegmentItemProvider == null) {
+			ruleBodySegmentItemProvider = new RuleBodySegmentItemProvider(this);
+		}
+
+		return ruleBodySegmentItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.terminologies.AspectPredicate} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected AspectPredicateItemProvider aspectPredicateItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.terminologies.AspectPredicate}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createAspectPredicateAdapter() {
+		if (aspectPredicateItemProvider == null) {
+			aspectPredicateItemProvider = new AspectPredicateItemProvider(this);
+		}
+
+		return aspectPredicateItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.terminologies.ConceptPredicate} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ConceptPredicateItemProvider conceptPredicateItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.terminologies.ConceptPredicate}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createConceptPredicateAdapter() {
+		if (conceptPredicateItemProvider == null) {
+			conceptPredicateItemProvider = new ConceptPredicateItemProvider(this);
+		}
+
+		return conceptPredicateItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPredicate} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ReifiedRelationshipPredicateItemProvider reifiedRelationshipPredicateItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPredicate}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createReifiedRelationshipPredicateAdapter() {
+		if (reifiedRelationshipPredicateItemProvider == null) {
+			reifiedRelationshipPredicateItemProvider = new ReifiedRelationshipPredicateItemProvider(this);
+		}
+
+		return reifiedRelationshipPredicateItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPropertyPredicate} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ReifiedRelationshipPropertyPredicateItemProvider reifiedRelationshipPropertyPredicateItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPropertyPredicate}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createReifiedRelationshipPropertyPredicateAdapter() {
+		if (reifiedRelationshipPropertyPredicateItemProvider == null) {
+			reifiedRelationshipPropertyPredicateItemProvider = new ReifiedRelationshipPropertyPredicateItemProvider(this);
+		}
+
+		return reifiedRelationshipPropertyPredicateItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipInversePropertyPredicate} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ReifiedRelationshipInversePropertyPredicateItemProvider reifiedRelationshipInversePropertyPredicateItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipInversePropertyPredicate}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createReifiedRelationshipInversePropertyPredicateAdapter() {
+		if (reifiedRelationshipInversePropertyPredicateItemProvider == null) {
+			reifiedRelationshipInversePropertyPredicateItemProvider = new ReifiedRelationshipInversePropertyPredicateItemProvider(this);
+		}
+
+		return reifiedRelationshipInversePropertyPredicateItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourcePropertyPredicate} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ReifiedRelationshipSourcePropertyPredicateItemProvider reifiedRelationshipSourcePropertyPredicateItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourcePropertyPredicate}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createReifiedRelationshipSourcePropertyPredicateAdapter() {
+		if (reifiedRelationshipSourcePropertyPredicateItemProvider == null) {
+			reifiedRelationshipSourcePropertyPredicateItemProvider = new ReifiedRelationshipSourcePropertyPredicateItemProvider(this);
+		}
+
+		return reifiedRelationshipSourcePropertyPredicateItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourceInversePropertyPredicate} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ReifiedRelationshipSourceInversePropertyPredicateItemProvider reifiedRelationshipSourceInversePropertyPredicateItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourceInversePropertyPredicate}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createReifiedRelationshipSourceInversePropertyPredicateAdapter() {
+		if (reifiedRelationshipSourceInversePropertyPredicateItemProvider == null) {
+			reifiedRelationshipSourceInversePropertyPredicateItemProvider = new ReifiedRelationshipSourceInversePropertyPredicateItemProvider(this);
+		}
+
+		return reifiedRelationshipSourceInversePropertyPredicateItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetPropertyPredicate} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ReifiedRelationshipTargetPropertyPredicateItemProvider reifiedRelationshipTargetPropertyPredicateItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetPropertyPredicate}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createReifiedRelationshipTargetPropertyPredicateAdapter() {
+		if (reifiedRelationshipTargetPropertyPredicateItemProvider == null) {
+			reifiedRelationshipTargetPropertyPredicateItemProvider = new ReifiedRelationshipTargetPropertyPredicateItemProvider(this);
+		}
+
+		return reifiedRelationshipTargetPropertyPredicateItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetInversePropertyPredicate} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ReifiedRelationshipTargetInversePropertyPredicateItemProvider reifiedRelationshipTargetInversePropertyPredicateItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetInversePropertyPredicate}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createReifiedRelationshipTargetInversePropertyPredicateAdapter() {
+		if (reifiedRelationshipTargetInversePropertyPredicateItemProvider == null) {
+			reifiedRelationshipTargetInversePropertyPredicateItemProvider = new ReifiedRelationshipTargetInversePropertyPredicateItemProvider(this);
+		}
+
+		return reifiedRelationshipTargetInversePropertyPredicateItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipPropertyPredicate} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected UnreifiedRelationshipPropertyPredicateItemProvider unreifiedRelationshipPropertyPredicateItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipPropertyPredicate}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createUnreifiedRelationshipPropertyPredicateAdapter() {
+		if (unreifiedRelationshipPropertyPredicateItemProvider == null) {
+			unreifiedRelationshipPropertyPredicateItemProvider = new UnreifiedRelationshipPropertyPredicateItemProvider(this);
+		}
+
+		return unreifiedRelationshipPropertyPredicateItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipInversePropertyPredicate} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected UnreifiedRelationshipInversePropertyPredicateItemProvider unreifiedRelationshipInversePropertyPredicateItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipInversePropertyPredicate}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createUnreifiedRelationshipInversePropertyPredicateAdapter() {
+		if (unreifiedRelationshipInversePropertyPredicateItemProvider == null) {
+			unreifiedRelationshipInversePropertyPredicateItemProvider = new UnreifiedRelationshipInversePropertyPredicateItemProvider(this);
+		}
+
+		return unreifiedRelationshipInversePropertyPredicateItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialRestrictionAxiom} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -910,6 +1209,19 @@ public class TerminologiesItemProviderAdapterFactory extends TerminologiesAdapte
 		if (structuredDataPropertyItemProvider != null) structuredDataPropertyItemProvider.dispose();
 		if (scalarDataPropertyItemProvider != null) scalarDataPropertyItemProvider.dispose();
 		if (structureItemProvider != null) structureItemProvider.dispose();
+		if (chainRuleItemProvider != null) chainRuleItemProvider.dispose();
+		if (ruleBodySegmentItemProvider != null) ruleBodySegmentItemProvider.dispose();
+		if (aspectPredicateItemProvider != null) aspectPredicateItemProvider.dispose();
+		if (conceptPredicateItemProvider != null) conceptPredicateItemProvider.dispose();
+		if (reifiedRelationshipPredicateItemProvider != null) reifiedRelationshipPredicateItemProvider.dispose();
+		if (reifiedRelationshipPropertyPredicateItemProvider != null) reifiedRelationshipPropertyPredicateItemProvider.dispose();
+		if (reifiedRelationshipInversePropertyPredicateItemProvider != null) reifiedRelationshipInversePropertyPredicateItemProvider.dispose();
+		if (reifiedRelationshipSourcePropertyPredicateItemProvider != null) reifiedRelationshipSourcePropertyPredicateItemProvider.dispose();
+		if (reifiedRelationshipSourceInversePropertyPredicateItemProvider != null) reifiedRelationshipSourceInversePropertyPredicateItemProvider.dispose();
+		if (reifiedRelationshipTargetPropertyPredicateItemProvider != null) reifiedRelationshipTargetPropertyPredicateItemProvider.dispose();
+		if (reifiedRelationshipTargetInversePropertyPredicateItemProvider != null) reifiedRelationshipTargetInversePropertyPredicateItemProvider.dispose();
+		if (unreifiedRelationshipPropertyPredicateItemProvider != null) unreifiedRelationshipPropertyPredicateItemProvider.dispose();
+		if (unreifiedRelationshipInversePropertyPredicateItemProvider != null) unreifiedRelationshipInversePropertyPredicateItemProvider.dispose();
 		if (entityExistentialRestrictionAxiomItemProvider != null) entityExistentialRestrictionAxiomItemProvider.dispose();
 		if (entityUniversalRestrictionAxiomItemProvider != null) entityUniversalRestrictionAxiomItemProvider.dispose();
 		if (aspectSpecializationAxiomItemProvider != null) aspectSpecializationAxiomItemProvider.dispose();
