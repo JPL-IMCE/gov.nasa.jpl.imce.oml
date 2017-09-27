@@ -19,77 +19,51 @@ package gov.nasa.jpl.imce.oml.viewpoint;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
+import gov.nasa.jpl.imce.oml.model.graphs.TerminologyGraph;
 import gov.nasa.jpl.imce.oml.model.terminologies.Aspect;
-import gov.nasa.jpl.imce.oml.model.terminologies.AspectSpecializationAxiom;
-import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
-import gov.nasa.jpl.imce.oml.model.terminologies.ConceptSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.Entity;
+import gov.nasa.jpl.imce.oml.model.terminologies.SpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox;
-import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBoxStatement;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Consumer;
-import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.tree.DTree;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
-public class SubHeirarchyService {
-  /**
-   * Returns all of the {@link Concept}s which have the passed {@link Concept} c
-   * as its superConcept for all {@link ConceptSpecializationAxiom}s in this
-   * {@link TerminologyBox}
-   * 
-   * @param c The {@Concept} which is the superConcept
-   * @return Set of {@link Concept}s that are subConcepts to the passed {@link Concept}
-   */
-  public Set<Concept> getSubConcepts(final Concept c) {
-    final HashSet<Concept> concepts = new HashSet<Concept>();
-    TerminologyBox _tbox = null;
-    if (c!=null) {
-      _tbox=c.getTbox();
-    }
-    EList<TerminologyBoxStatement> _boxStatements = null;
-    if (_tbox!=null) {
-      _boxStatements=_tbox.getBoxStatements();
-    }
-    final Function1<ConceptSpecializationAxiom, Boolean> _function = (ConceptSpecializationAxiom cs) -> {
-      Concept _superConcept = cs.getSuperConcept();
-      return Boolean.valueOf(Objects.equal(_superConcept, c));
-    };
-    final Consumer<ConceptSpecializationAxiom> _function_1 = (ConceptSpecializationAxiom cs) -> {
-      concepts.add(cs.getSubConcept());
-    };
-    IterableExtensions.<ConceptSpecializationAxiom>filter(Iterables.<ConceptSpecializationAxiom>filter(_boxStatements, ConceptSpecializationAxiom.class), _function).forEach(_function_1);
-    return concepts;
-  }
-  
+public class SpecializationHierarchyService {
   /**
    * Returns all of the {@link Entity}s which have the passed {@link Aspect} c
-   * as its superAspect for all {@link AspectSpecializationAxiom}s in this
+   * as its superAspect for all {@link SpecializationAxiom}s in this
    * {@link TerminologyBox}
    * 
-   * @param c The {@Concept} which is the superConcept
-   * @return Set of {@link Entity}s that are subEntites to the passed {@link Aspect}
+   * @param c The {@link Entity} which is the superConcept
+   * @return Set of {@link Entity}s that are children to the passed {@link Entity}
    */
-  public Set<Entity> getSubEntities(final Aspect a) {
+  public Set<Entity> getSubEntities(final Entity e, final DTree tree) {
     final HashSet<Entity> entities = new HashSet<Entity>();
-    TerminologyBox _tbox = null;
-    if (a!=null) {
-      _tbox=a.getTbox();
-    }
-    EList<TerminologyBoxStatement> _boxStatements = null;
-    if (_tbox!=null) {
-      _boxStatements=_tbox.getBoxStatements();
-    }
-    final Function1<AspectSpecializationAxiom, Boolean> _function = (AspectSpecializationAxiom cs) -> {
-      Aspect _superAspect = cs.getSuperAspect();
-      return Boolean.valueOf(Objects.equal(_superAspect, a));
+    EObject _target = tree.getTarget();
+    final TerminologyGraph tb = ((TerminologyGraph) _target);
+    final Function1<SpecializationAxiom, Boolean> _function = (SpecializationAxiom s) -> {
+      Entity _parent = s.parent();
+      return Boolean.valueOf(Objects.equal(_parent, e));
     };
-    final Consumer<AspectSpecializationAxiom> _function_1 = (AspectSpecializationAxiom s) -> {
-      entities.add(s.getSubEntity());
+    final Consumer<SpecializationAxiom> _function_1 = (SpecializationAxiom s) -> {
+      entities.add(s.child());
     };
-    IterableExtensions.<AspectSpecializationAxiom>filter(Iterables.<AspectSpecializationAxiom>filter(_boxStatements, AspectSpecializationAxiom.class), _function).forEach(_function_1);
+    IterableExtensions.<SpecializationAxiom>filter(Iterables.<SpecializationAxiom>filter(tb.getBoxStatements(), SpecializationAxiom.class), _function).forEach(_function_1);
+    return entities;
+  }
+  
+  public Set<Entity> getVisualTreeItems(final EObject eObj) {
+    final HashSet<Entity> entities = new HashSet<Entity>();
+    final TerminologyBox tb = ((TerminologyBox) eObj);
+    final Consumer<SpecializationAxiom> _function = (SpecializationAxiom s) -> {
+      entities.add(s.parent());
+    };
+    Iterables.<SpecializationAxiom>filter(tb.getBoxStatements(), SpecializationAxiom.class).forEach(_function);
     return entities;
   }
 }
