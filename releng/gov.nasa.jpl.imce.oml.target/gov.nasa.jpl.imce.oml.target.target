@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.8"?><target name="gov.nasa.jpl.imce.oml.target" sequenceNumber="42">
+<?pde version="3.8"?><target name="gov.nasa.jpl.imce.oml.target" sequenceNumber="43">
 <locations>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.acceleo.feature.group" version="3.7.1.201705121344"/>
@@ -54,6 +54,10 @@
 <unit id="org.eclipse.acceleo.query.source.feature.group" version="6.0.1.201705121344"/>
 <unit id="org.eclipse.acceleo.ui.interpreter.feature.group" version="3.7.1.201705121344"/>
 <unit id="org.eclipse.acceleo.ui.interpreter.source.feature.group" version="3.7.1.201705121344"/>
+<unit id="org.eclipse.eef.ext.widgets.reference.feature.feature.group" version="2.0.0.201705311515"/>
+<unit id="org.eclipse.eef.ext.widgets.reference.feature.source.feature.group" version="2.0.0.201705311515"/>
+<unit id="org.eclipse.eef.sdk.feature.feature.group" version="2.0.0.201705311515"/>
+<unit id="org.eclipse.eef.sdk.feature.source.feature.group" version="2.0.0.201705311515"/>
 <unit id="org.eclipse.sirius.aql.feature.group" version="5.0.1.201706290936"/>
 <unit id="org.eclipse.sirius.aql.source.feature.group" version="5.0.1.201706290936"/>
 <unit id="org.eclipse.sirius.doc.feature.feature.group" version="5.0.1.201706290936"/>
