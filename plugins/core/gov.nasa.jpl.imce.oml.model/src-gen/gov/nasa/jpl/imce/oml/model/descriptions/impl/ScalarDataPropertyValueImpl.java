@@ -30,6 +30,7 @@ import gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceStructuredDataP
 
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
 
+import gov.nasa.jpl.imce.oml.model.terminologies.DataRange;
 import gov.nasa.jpl.imce.oml.model.terminologies.DataRelationshipToScalar;
 
 import java.lang.reflect.InvocationTargetException;
@@ -62,6 +63,7 @@ import org.eclipse.xtext.xbase.lib.Pair;
  *   <li>{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.ScalarDataPropertyValueImpl#getStructuredDataPropertyContext <em>Structured Data Property Context</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.ScalarDataPropertyValueImpl#getScalarDataProperty <em>Scalar Data Property</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.ScalarDataPropertyValueImpl#getScalarPropertyValue <em>Scalar Property Value</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.ScalarDataPropertyValueImpl#getValueType <em>Value Type</em>}</li>
  * </ul>
  *
  * @generated
@@ -86,6 +88,16 @@ public class ScalarDataPropertyValueImpl extends ElementImpl implements ScalarDa
 	 * @ordered
 	 */
 	protected LiteralValue scalarPropertyValue;
+
+	/**
+	 * The cached value of the '{@link #getValueType() <em>Value Type</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValueType()
+	 * @generated
+	 * @ordered
+	 */
+	protected DataRange valueType;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -243,6 +255,44 @@ public class ScalarDataPropertyValueImpl extends ElementImpl implements ScalarDa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public DataRange getValueType() {
+		if (valueType != null && ((EObject)valueType).eIsProxy()) {
+			InternalEObject oldValueType = (InternalEObject)valueType;
+			valueType = (DataRange)eResolveProxy(oldValueType);
+			if (valueType != oldValueType) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DescriptionsPackage.SCALAR_DATA_PROPERTY_VALUE__VALUE_TYPE, oldValueType, valueType));
+			}
+		}
+		return valueType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DataRange basicGetValueType() {
+		return valueType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setValueType(DataRange newValueType) {
+		DataRange oldValueType = valueType;
+		valueType = newValueType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DescriptionsPackage.SCALAR_DATA_PROPERTY_VALUE__VALUE_TYPE, oldValueType, valueType));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public DescriptionBox descriptionBox() {
 		SingletonInstanceStructuredDataPropertyContext _structuredDataPropertyContext = this.getStructuredDataPropertyContext();
 		DescriptionBox _descriptionBox = null;
@@ -358,6 +408,9 @@ public class ScalarDataPropertyValueImpl extends ElementImpl implements ScalarDa
 				return basicGetScalarDataProperty();
 			case DescriptionsPackage.SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE:
 				return getScalarPropertyValue();
+			case DescriptionsPackage.SCALAR_DATA_PROPERTY_VALUE__VALUE_TYPE:
+				if (resolve) return getValueType();
+				return basicGetValueType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -378,6 +431,9 @@ public class ScalarDataPropertyValueImpl extends ElementImpl implements ScalarDa
 				return;
 			case DescriptionsPackage.SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE:
 				setScalarPropertyValue((LiteralValue)newValue);
+				return;
+			case DescriptionsPackage.SCALAR_DATA_PROPERTY_VALUE__VALUE_TYPE:
+				setValueType((DataRange)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -400,6 +456,9 @@ public class ScalarDataPropertyValueImpl extends ElementImpl implements ScalarDa
 			case DescriptionsPackage.SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE:
 				setScalarPropertyValue((LiteralValue)null);
 				return;
+			case DescriptionsPackage.SCALAR_DATA_PROPERTY_VALUE__VALUE_TYPE:
+				setValueType((DataRange)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -418,6 +477,8 @@ public class ScalarDataPropertyValueImpl extends ElementImpl implements ScalarDa
 				return scalarDataProperty != null;
 			case DescriptionsPackage.SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE:
 				return scalarPropertyValue != null;
+			case DescriptionsPackage.SCALAR_DATA_PROPERTY_VALUE__VALUE_TYPE:
+				return valueType != null;
 		}
 		return super.eIsSet(featureID);
 	}

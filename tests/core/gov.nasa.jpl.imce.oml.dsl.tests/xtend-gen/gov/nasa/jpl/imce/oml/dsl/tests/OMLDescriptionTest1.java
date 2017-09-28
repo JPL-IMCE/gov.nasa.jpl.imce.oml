@@ -188,7 +188,6 @@ public class OMLDescriptionTest1 {
     _builder.append("}");
     _builder.newLine();
     final String expected1 = _builder.toString();
-    System.out.println(text1);
     Assert.assertEquals(text1, expected1);
     final Resource r2 = rs.createResource(URI.createFileURI("file:OMLDescriptionTest1B.oml"));
     final Extent e2 = this.commonF.createExtent();

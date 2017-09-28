@@ -84,6 +84,19 @@ public class TerminologiesFactoryImpl extends EFactoryImpl implements Terminolog
 			case TerminologiesPackage.STRUCTURED_DATA_PROPERTY: return (EObject)createStructuredDataProperty();
 			case TerminologiesPackage.SCALAR_DATA_PROPERTY: return (EObject)createScalarDataProperty();
 			case TerminologiesPackage.STRUCTURE: return (EObject)createStructure();
+			case TerminologiesPackage.CHAIN_RULE: return (EObject)createChainRule();
+			case TerminologiesPackage.RULE_BODY_SEGMENT: return (EObject)createRuleBodySegment();
+			case TerminologiesPackage.ASPECT_PREDICATE: return (EObject)createAspectPredicate();
+			case TerminologiesPackage.CONCEPT_PREDICATE: return (EObject)createConceptPredicate();
+			case TerminologiesPackage.REIFIED_RELATIONSHIP_PREDICATE: return (EObject)createReifiedRelationshipPredicate();
+			case TerminologiesPackage.REIFIED_RELATIONSHIP_PROPERTY_PREDICATE: return (EObject)createReifiedRelationshipPropertyPredicate();
+			case TerminologiesPackage.REIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE: return (EObject)createReifiedRelationshipInversePropertyPredicate();
+			case TerminologiesPackage.REIFIED_RELATIONSHIP_SOURCE_PROPERTY_PREDICATE: return (EObject)createReifiedRelationshipSourcePropertyPredicate();
+			case TerminologiesPackage.REIFIED_RELATIONSHIP_SOURCE_INVERSE_PROPERTY_PREDICATE: return (EObject)createReifiedRelationshipSourceInversePropertyPredicate();
+			case TerminologiesPackage.REIFIED_RELATIONSHIP_TARGET_PROPERTY_PREDICATE: return (EObject)createReifiedRelationshipTargetPropertyPredicate();
+			case TerminologiesPackage.REIFIED_RELATIONSHIP_TARGET_INVERSE_PROPERTY_PREDICATE: return (EObject)createReifiedRelationshipTargetInversePropertyPredicate();
+			case TerminologiesPackage.UNREIFIED_RELATIONSHIP_PROPERTY_PREDICATE: return (EObject)createUnreifiedRelationshipPropertyPredicate();
+			case TerminologiesPackage.UNREIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE: return (EObject)createUnreifiedRelationshipInversePropertyPredicate();
 			case TerminologiesPackage.ENTITY_EXISTENTIAL_RESTRICTION_AXIOM: return (EObject)createEntityExistentialRestrictionAxiom();
 			case TerminologiesPackage.ENTITY_UNIVERSAL_RESTRICTION_AXIOM: return (EObject)createEntityUniversalRestrictionAxiom();
 			case TerminologiesPackage.ASPECT_SPECIALIZATION_AXIOM: return (EObject)createAspectSpecializationAxiom();
@@ -247,6 +260,136 @@ public class TerminologiesFactoryImpl extends EFactoryImpl implements Terminolog
 	public Structure createStructure() {
 		StructureImpl structure = new StructureImpl();
 		return structure;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ChainRule createChainRule() {
+		ChainRuleImpl chainRule = new ChainRuleImpl();
+		return chainRule;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RuleBodySegment createRuleBodySegment() {
+		RuleBodySegmentImpl ruleBodySegment = new RuleBodySegmentImpl();
+		return ruleBodySegment;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AspectPredicate createAspectPredicate() {
+		AspectPredicateImpl aspectPredicate = new AspectPredicateImpl();
+		return aspectPredicate;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ConceptPredicate createConceptPredicate() {
+		ConceptPredicateImpl conceptPredicate = new ConceptPredicateImpl();
+		return conceptPredicate;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ReifiedRelationshipPredicate createReifiedRelationshipPredicate() {
+		ReifiedRelationshipPredicateImpl reifiedRelationshipPredicate = new ReifiedRelationshipPredicateImpl();
+		return reifiedRelationshipPredicate;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ReifiedRelationshipPropertyPredicate createReifiedRelationshipPropertyPredicate() {
+		ReifiedRelationshipPropertyPredicateImpl reifiedRelationshipPropertyPredicate = new ReifiedRelationshipPropertyPredicateImpl();
+		return reifiedRelationshipPropertyPredicate;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ReifiedRelationshipInversePropertyPredicate createReifiedRelationshipInversePropertyPredicate() {
+		ReifiedRelationshipInversePropertyPredicateImpl reifiedRelationshipInversePropertyPredicate = new ReifiedRelationshipInversePropertyPredicateImpl();
+		return reifiedRelationshipInversePropertyPredicate;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ReifiedRelationshipSourcePropertyPredicate createReifiedRelationshipSourcePropertyPredicate() {
+		ReifiedRelationshipSourcePropertyPredicateImpl reifiedRelationshipSourcePropertyPredicate = new ReifiedRelationshipSourcePropertyPredicateImpl();
+		return reifiedRelationshipSourcePropertyPredicate;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ReifiedRelationshipSourceInversePropertyPredicate createReifiedRelationshipSourceInversePropertyPredicate() {
+		ReifiedRelationshipSourceInversePropertyPredicateImpl reifiedRelationshipSourceInversePropertyPredicate = new ReifiedRelationshipSourceInversePropertyPredicateImpl();
+		return reifiedRelationshipSourceInversePropertyPredicate;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ReifiedRelationshipTargetPropertyPredicate createReifiedRelationshipTargetPropertyPredicate() {
+		ReifiedRelationshipTargetPropertyPredicateImpl reifiedRelationshipTargetPropertyPredicate = new ReifiedRelationshipTargetPropertyPredicateImpl();
+		return reifiedRelationshipTargetPropertyPredicate;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ReifiedRelationshipTargetInversePropertyPredicate createReifiedRelationshipTargetInversePropertyPredicate() {
+		ReifiedRelationshipTargetInversePropertyPredicateImpl reifiedRelationshipTargetInversePropertyPredicate = new ReifiedRelationshipTargetInversePropertyPredicateImpl();
+		return reifiedRelationshipTargetInversePropertyPredicate;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public UnreifiedRelationshipPropertyPredicate createUnreifiedRelationshipPropertyPredicate() {
+		UnreifiedRelationshipPropertyPredicateImpl unreifiedRelationshipPropertyPredicate = new UnreifiedRelationshipPropertyPredicateImpl();
+		return unreifiedRelationshipPropertyPredicate;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public UnreifiedRelationshipInversePropertyPredicate createUnreifiedRelationshipInversePropertyPredicate() {
+		UnreifiedRelationshipInversePropertyPredicateImpl unreifiedRelationshipInversePropertyPredicate = new UnreifiedRelationshipInversePropertyPredicateImpl();
+		return unreifiedRelationshipInversePropertyPredicate;
 	}
 
 	/**

@@ -210,6 +210,82 @@ public class TerminologiesAdapterFactory extends AdapterFactoryImpl {
 				return createStructureAdapter();
 			}
 			@Override
+			public Adapter caseRule(Rule object) {
+				return createRuleAdapter();
+			}
+			@Override
+			public Adapter caseChainRule(ChainRule object) {
+				return createChainRuleAdapter();
+			}
+			@Override
+			public Adapter caseRuleBodySegment(RuleBodySegment object) {
+				return createRuleBodySegmentAdapter();
+			}
+			@Override
+			public Adapter caseSegmentPredicate(SegmentPredicate object) {
+				return createSegmentPredicateAdapter();
+			}
+			@Override
+			public Adapter caseUnarySegmentPredicate(UnarySegmentPredicate object) {
+				return createUnarySegmentPredicateAdapter();
+			}
+			@Override
+			public Adapter caseAspectPredicate(AspectPredicate object) {
+				return createAspectPredicateAdapter();
+			}
+			@Override
+			public Adapter caseConceptPredicate(ConceptPredicate object) {
+				return createConceptPredicateAdapter();
+			}
+			@Override
+			public Adapter caseReifiedRelationshipPredicate(ReifiedRelationshipPredicate object) {
+				return createReifiedRelationshipPredicateAdapter();
+			}
+			@Override
+			public Adapter caseBinarySegmentPropertyPredicate(BinarySegmentPropertyPredicate object) {
+				return createBinarySegmentPropertyPredicateAdapter();
+			}
+			@Override
+			public Adapter caseBinarySegmentForwardPropertyPredicate(BinarySegmentForwardPropertyPredicate object) {
+				return createBinarySegmentForwardPropertyPredicateAdapter();
+			}
+			@Override
+			public Adapter caseBinarySegmentReversePropertyPredicate(BinarySegmentReversePropertyPredicate object) {
+				return createBinarySegmentReversePropertyPredicateAdapter();
+			}
+			@Override
+			public Adapter caseReifiedRelationshipPropertyPredicate(ReifiedRelationshipPropertyPredicate object) {
+				return createReifiedRelationshipPropertyPredicateAdapter();
+			}
+			@Override
+			public Adapter caseReifiedRelationshipInversePropertyPredicate(ReifiedRelationshipInversePropertyPredicate object) {
+				return createReifiedRelationshipInversePropertyPredicateAdapter();
+			}
+			@Override
+			public Adapter caseReifiedRelationshipSourcePropertyPredicate(ReifiedRelationshipSourcePropertyPredicate object) {
+				return createReifiedRelationshipSourcePropertyPredicateAdapter();
+			}
+			@Override
+			public Adapter caseReifiedRelationshipSourceInversePropertyPredicate(ReifiedRelationshipSourceInversePropertyPredicate object) {
+				return createReifiedRelationshipSourceInversePropertyPredicateAdapter();
+			}
+			@Override
+			public Adapter caseReifiedRelationshipTargetPropertyPredicate(ReifiedRelationshipTargetPropertyPredicate object) {
+				return createReifiedRelationshipTargetPropertyPredicateAdapter();
+			}
+			@Override
+			public Adapter caseReifiedRelationshipTargetInversePropertyPredicate(ReifiedRelationshipTargetInversePropertyPredicate object) {
+				return createReifiedRelationshipTargetInversePropertyPredicateAdapter();
+			}
+			@Override
+			public Adapter caseUnreifiedRelationshipPropertyPredicate(UnreifiedRelationshipPropertyPredicate object) {
+				return createUnreifiedRelationshipPropertyPredicateAdapter();
+			}
+			@Override
+			public Adapter caseUnreifiedRelationshipInversePropertyPredicate(UnreifiedRelationshipInversePropertyPredicate object) {
+				return createUnreifiedRelationshipInversePropertyPredicateAdapter();
+			}
+			@Override
 			public Adapter caseTermAxiom(TermAxiom object) {
 				return createTermAxiomAdapter();
 			}
@@ -774,6 +850,272 @@ public class TerminologiesAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createStructureAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.terminologies.Rule <em>Rule</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.Rule
+	 * @generated
+	 */
+	public Adapter createRuleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.terminologies.ChainRule <em>Chain Rule</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ChainRule
+	 * @generated
+	 */
+	public Adapter createChainRuleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.terminologies.RuleBodySegment <em>Rule Body Segment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.RuleBodySegment
+	 * @generated
+	 */
+	public Adapter createRuleBodySegmentAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.terminologies.SegmentPredicate <em>Segment Predicate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.SegmentPredicate
+	 * @generated
+	 */
+	public Adapter createSegmentPredicateAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.terminologies.UnarySegmentPredicate <em>Unary Segment Predicate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.UnarySegmentPredicate
+	 * @generated
+	 */
+	public Adapter createUnarySegmentPredicateAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.terminologies.AspectPredicate <em>Aspect Predicate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.AspectPredicate
+	 * @generated
+	 */
+	public Adapter createAspectPredicateAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.terminologies.ConceptPredicate <em>Concept Predicate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ConceptPredicate
+	 * @generated
+	 */
+	public Adapter createConceptPredicateAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPredicate <em>Reified Relationship Predicate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPredicate
+	 * @generated
+	 */
+	public Adapter createReifiedRelationshipPredicateAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.terminologies.BinarySegmentPropertyPredicate <em>Binary Segment Property Predicate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.BinarySegmentPropertyPredicate
+	 * @generated
+	 */
+	public Adapter createBinarySegmentPropertyPredicateAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.terminologies.BinarySegmentForwardPropertyPredicate <em>Binary Segment Forward Property Predicate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.BinarySegmentForwardPropertyPredicate
+	 * @generated
+	 */
+	public Adapter createBinarySegmentForwardPropertyPredicateAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.terminologies.BinarySegmentReversePropertyPredicate <em>Binary Segment Reverse Property Predicate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.BinarySegmentReversePropertyPredicate
+	 * @generated
+	 */
+	public Adapter createBinarySegmentReversePropertyPredicateAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPropertyPredicate <em>Reified Relationship Property Predicate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPropertyPredicate
+	 * @generated
+	 */
+	public Adapter createReifiedRelationshipPropertyPredicateAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipInversePropertyPredicate <em>Reified Relationship Inverse Property Predicate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipInversePropertyPredicate
+	 * @generated
+	 */
+	public Adapter createReifiedRelationshipInversePropertyPredicateAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourcePropertyPredicate <em>Reified Relationship Source Property Predicate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourcePropertyPredicate
+	 * @generated
+	 */
+	public Adapter createReifiedRelationshipSourcePropertyPredicateAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourceInversePropertyPredicate <em>Reified Relationship Source Inverse Property Predicate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourceInversePropertyPredicate
+	 * @generated
+	 */
+	public Adapter createReifiedRelationshipSourceInversePropertyPredicateAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetPropertyPredicate <em>Reified Relationship Target Property Predicate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetPropertyPredicate
+	 * @generated
+	 */
+	public Adapter createReifiedRelationshipTargetPropertyPredicateAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetInversePropertyPredicate <em>Reified Relationship Target Inverse Property Predicate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetInversePropertyPredicate
+	 * @generated
+	 */
+	public Adapter createReifiedRelationshipTargetInversePropertyPredicateAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipPropertyPredicate <em>Unreified Relationship Property Predicate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipPropertyPredicate
+	 * @generated
+	 */
+	public Adapter createUnreifiedRelationshipPropertyPredicateAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipInversePropertyPredicate <em>Unreified Relationship Inverse Property Predicate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipInversePropertyPredicate
+	 * @generated
+	 */
+	public Adapter createUnreifiedRelationshipInversePropertyPredicateAdapter() {
 		return null;
 	}
 

@@ -127,7 +127,8 @@ Term returns Term:
 	AtomicEntity |
 	EntityRelationship |
 	Datatype |
-	DataRelationship;
+	DataRelationship |
+	Rule;
 	
 AtomicEntity returns Entity:
 	Aspect | 
@@ -290,6 +291,30 @@ ScalarDataProperty returns ScalarDataProperty:
 	'range' range=[DataRange|Reference]
 	'}';
 
+// 5 Rules
+
+Rule returns Rule:
+	ChainRule;
+	
+ChainRule returns ChainRule:
+	'rule' name=ID 'infers' head=[UnreifiedRelationship|Reference] 'if' firstSegment=RuleBodySegment;
+
+RuleBodySegment returns RuleBodySegment:
+	predicate=SegmentPredicate ('&&' nextSegment=RuleBodySegment)?;
+
+SegmentPredicate returns SegmentPredicate: 
+	'aspect' '(' {AspectPredicate} aspect=[Aspect|Reference] ')' |
+	'concept' '(' {ConceptPredicate} concept=[Concept|Reference] ')' |
+	'reifiedRelationship' '(' {ReifiedRelationshipPredicate} reifiedRelationship=[ReifiedRelationship|Reference] ')' |
+	'property' '(' {ReifiedRelationshipPropertyPredicate} reifiedRelationship=[ReifiedRelationship|Reference] ')' |
+	'inv' '(' 'property' '(' {ReifiedRelationshipInversePropertyPredicate} reifiedRelationship=[ReifiedRelationship|Reference] ')' ')' |
+	'source' '(' {ReifiedRelationshipSourcePropertyPredicate} reifiedRelationship=[ReifiedRelationship|Reference] ')' | 
+	'inv' '(' 'source' '(' {ReifiedRelationshipSourceInversePropertyPredicate} reifiedRelationship=[ReifiedRelationship|Reference] ')' ')' | 
+	'target' '(' {ReifiedRelationshipTargetPropertyPredicate} reifiedRelationship=[ReifiedRelationship|Reference] ')' | 
+	'inv' '(' 'target' '(' {ReifiedRelationshipTargetInversePropertyPredicate} reifiedRelationship=[ReifiedRelationship|Reference] ')' ')' | 
+	{UnreifiedRelationshipPropertyPredicate} unreifiedRelationship=[UnreifiedRelationship|Reference] |
+	'inv' '(' {UnreifiedRelationshipInversePropertyPredicate} unreifiedRelationship=[UnreifiedRelationship|Reference] ')' ;
+
 // ConceptTreeDisjunctions and DisjointUnionOfConceptsAxioms
 
 
@@ -317,7 +342,7 @@ EntityExistentialRestrictionAxiom returns EntityExistentialRestrictionAxiom:
 	'someEntities'
 	restrictedDomain=[Entity|Reference]
 	'.' 
-	restrictedRelation=[ReifiedRelationship|Reference]
+	restrictedRelation=[EntityRelationship|Reference]
 	'in' restrictedRange=[Entity|Reference];
 
 EntityUniversalRestrictionAxiom returns EntityUniversalRestrictionAxiom:
@@ -325,7 +350,7 @@ EntityUniversalRestrictionAxiom returns EntityUniversalRestrictionAxiom:
 	'allEntities'
 	restrictedDomain=[Entity|Reference]
 	'.' 
-	restrictedRelation=[ReifiedRelationship|Reference]
+	restrictedRelation=[EntityRelationship|Reference]
 	'in' restrictedRange=[Entity|Reference];
 
 // 3 SpecializationAxioms
@@ -357,7 +382,7 @@ EntityScalarDataPropertyParticularRestrictionAxiom returns EntityScalarDataPrope
 	'every'
 	restrictedEntity=[Entity|Reference]
 	'.' scalarProperty=[EntityScalarDataProperty|Reference]
-	'=' literalValue=LiteralValue;
+	'=' literalValue=LiteralValue ('^^' valueType=[DataRange|Reference])?;
 	
 EntityScalarDataPropertyUniversalRestrictionAxiom returns EntityScalarDataPropertyUniversalRestrictionAxiom:
 	( annotations+=AnnotationPropertyValue )*
@@ -391,7 +416,7 @@ RestrictionScalarDataPropertyValue returns RestrictionScalarDataPropertyValue:
 	( annotations+=AnnotationPropertyValue )*
 	scalarDataProperty=[ScalarDataProperty|Reference]
 	'=' 
-	scalarPropertyValue=LiteralValue;
+	scalarPropertyValue=LiteralValue ('^^' valueType=[DataRange|Reference])?;
 
 // 8 RestrictedDataRanges + 1 ScalarOneOfLiteralAxiom
 
@@ -450,7 +475,7 @@ ScalarOneOfLiteralAxiom returns ScalarOneOfLiteralAxiom:
 	( annotations+=AnnotationPropertyValue )*
 	'oneOf'
 	axiom=[ScalarOneOfRestriction|Reference]
-	'=' value=LiteralValue;
+	'=' value=LiteralValue ('^^' valueType=[DataRange|Reference])?;
 
 StringScalarRestriction returns StringScalarRestriction:
 	( annotations+=AnnotationPropertyValue )*
@@ -480,6 +505,7 @@ TimeScalarRestriction returns TimeScalarRestriction:
 		  ('maxExclusive' maxExclusive=LiteralDateTime)? )
 		'restrictedRange' restrictedRange=[DataRange|Reference]
 	'}';
+
 //----------------------------
 
 enum DescriptionKind returns DescriptionKind:
@@ -510,7 +536,7 @@ SingletonInstanceScalarDataPropertyValue returns SingletonInstanceScalarDataProp
 	'.' 
 	scalarDataProperty=[EntityScalarDataProperty|Reference] 
 	'=' 
-	scalarPropertyValue=LiteralValue;
+	scalarPropertyValue=LiteralValue ('^^' valueType=[DataRange|Reference])?;
 
 SingletonInstanceStructuredDataPropertyValue returns SingletonInstanceStructuredDataPropertyValue:
 	( annotations+=AnnotationPropertyValue )*
@@ -534,7 +560,7 @@ ScalarDataPropertyValue returns ScalarDataPropertyValue:
 	( annotations+=AnnotationPropertyValue )*
 	scalarDataProperty=[DataRelationshipToScalar|Reference]
 	'='
-	scalarPropertyValue=LiteralValue;
+	scalarPropertyValue=LiteralValue ('^^' valueType=[DataRange|Reference])?;
 
 ConceptInstance returns ConceptInstance:
 	( annotations+=AnnotationPropertyValue )*
@@ -579,7 +605,7 @@ ValidID:												ID;
 
 LiteralValue returns LiteralValue:						LiteralBoolean | LiteralDateTime | LiteralString | LiteralUUID | LiteralURI | LiteralNumber;
 
-LiteralBoolean returns LiteralBoolean:					{LiteralBoolean} value=BOOLEAN;
+LiteralBoolean returns LiteralBoolean:					{LiteralBoolean} value=(TRUE|FALSE);
 
 LiteralDateTime returns LiteralDateTime: 				{LiteralDateTime} dateTime=DATE_TIME;
 
@@ -610,7 +636,8 @@ LiteralDecimal returns LiteralDecimal:					{LiteralDecimal} decimal=DIGITS | dec
 PositiveIntegerLiteral returns PositiveIntegerLiteral: 	DIGITS;
 
 //----------------------------
-terminal BOOLEAN returns ecore::EBoolean:				'true' | 'false';
+terminal FALSE returns ecore::EBoolean:					'false';
+terminal TRUE returns ecore::EBoolean:					'true';
 
 //----------------------------
 // https://www.w3.org/TR/xmlschema11-2/#rf-lexicalMappings-datetime

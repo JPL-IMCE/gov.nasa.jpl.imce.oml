@@ -38,6 +38,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom#getAxiom <em>Axiom</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom#getValue <em>Value</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom#getValueType <em>Value Type</em>}</li>
  * </ul>
  *
  * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getScalarOneOfLiteralAxiom()
@@ -95,6 +96,32 @@ public interface ScalarOneOfLiteralAxiom extends TermAxiom {
 	 * @generated
 	 */
 	void setValue(LiteralValue value);
+
+	/**
+	 * Returns the value of the '<em><b>Value Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Value Type</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Value Type</em>' reference.
+	 * @see #setValueType(DataRange)
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getScalarOneOfLiteralAxiom_ValueType()
+	 * @model
+	 * @generated
+	 */
+	DataRange getValueType();
+
+	/**
+	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom#getValueType <em>Value Type</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Value Type</em>' reference.
+	 * @see #getValueType()
+	 * @generated
+	 */
+	void setValueType(DataRange value);
 
 	/**
 	 * <!-- begin-user-doc -->

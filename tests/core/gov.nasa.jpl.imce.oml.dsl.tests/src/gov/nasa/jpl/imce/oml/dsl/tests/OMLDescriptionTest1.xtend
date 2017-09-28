@@ -150,7 +150,6 @@ class OMLDescriptionTest1 {
 			}
 		'''
 		
-		System.out.println(text1)
 		assertEquals(text1, expected1)
 		
 		val r2 = rs.createResource(URI.createFileURI("file:OMLDescriptionTest1B.oml"))

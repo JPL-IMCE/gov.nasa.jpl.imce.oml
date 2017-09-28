@@ -3933,6 +3933,1789 @@ public interface TerminologiesPackage extends EPackage {
 	int STRUCTURE_OPERATION_COUNT = DATATYPE_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.RuleImpl <em>Rule</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.RuleImpl
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getRule()
+	 * @generated
+	 */
+	int RULE = 30;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RULE__UUID = TERM__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RULE__ANNOTATIONS = TERM__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RULE__TBOX = TERM__TBOX;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RULE__NAME = TERM__NAME;
+
+	/**
+	 * The number of structural features of the '<em>Rule</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RULE_FEATURE_COUNT = TERM_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RULE___MODULE_CONTEXT = TERM___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>Iri</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RULE___IRI = TERM___IRI;
+
+	/**
+	 * The operation id for the '<em>Abbrev IRI</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RULE___ABBREV_IRI = TERM___ABBREV_IRI;
+
+	/**
+	 * The operation id for the '<em>Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RULE___NAME = TERM___NAME;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RULE___UUID = TERM___UUID;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RULE___ALL_NESTED_ELEMENTS = TERM___ALL_NESTED_ELEMENTS;
+
+	/**
+	 * The number of operations of the '<em>Rule</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RULE_OPERATION_COUNT = TERM_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ChainRuleImpl <em>Chain Rule</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.ChainRuleImpl
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getChainRule()
+	 * @generated
+	 */
+	int CHAIN_RULE = 31;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHAIN_RULE__UUID = RULE__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHAIN_RULE__ANNOTATIONS = RULE__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHAIN_RULE__TBOX = RULE__TBOX;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHAIN_RULE__NAME = RULE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Head</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHAIN_RULE__HEAD = RULE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>First Segment</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHAIN_RULE__FIRST_SEGMENT = RULE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Chain Rule</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHAIN_RULE_FEATURE_COUNT = RULE_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHAIN_RULE___MODULE_CONTEXT = RULE___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>Iri</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHAIN_RULE___IRI = RULE___IRI;
+
+	/**
+	 * The operation id for the '<em>Abbrev IRI</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHAIN_RULE___ABBREV_IRI = RULE___ABBREV_IRI;
+
+	/**
+	 * The operation id for the '<em>Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHAIN_RULE___NAME = RULE___NAME;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHAIN_RULE___UUID = RULE___UUID;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHAIN_RULE___ALL_NESTED_ELEMENTS = RULE___ALL_NESTED_ELEMENTS;
+
+	/**
+	 * The number of operations of the '<em>Chain Rule</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHAIN_RULE_OPERATION_COUNT = RULE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.RuleBodySegmentImpl <em>Rule Body Segment</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.RuleBodySegmentImpl
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getRuleBodySegment()
+	 * @generated
+	 */
+	int RULE_BODY_SEGMENT = 32;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RULE_BODY_SEGMENT__UUID = CommonPackage.ELEMENT__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RULE_BODY_SEGMENT__ANNOTATIONS = CommonPackage.ELEMENT__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Predicate</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RULE_BODY_SEGMENT__PREDICATE = CommonPackage.ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Next Segment</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RULE_BODY_SEGMENT__NEXT_SEGMENT = CommonPackage.ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Previous Segment</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RULE_BODY_SEGMENT__PREVIOUS_SEGMENT = CommonPackage.ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Rule</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RULE_BODY_SEGMENT__RULE = CommonPackage.ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Rule Body Segment</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RULE_BODY_SEGMENT_FEATURE_COUNT = CommonPackage.ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The operation id for the '<em>Position</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RULE_BODY_SEGMENT___POSITION = CommonPackage.ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Chain Rule</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RULE_BODY_SEGMENT___CHAIN_RULE = CommonPackage.ELEMENT_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RULE_BODY_SEGMENT___UUID = CommonPackage.ELEMENT_OPERATION_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RULE_BODY_SEGMENT___MODULE_CONTEXT = CommonPackage.ELEMENT_OPERATION_COUNT + 3;
+
+	/**
+	 * The number of operations of the '<em>Rule Body Segment</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RULE_BODY_SEGMENT_OPERATION_COUNT = CommonPackage.ELEMENT_OPERATION_COUNT + 4;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.SegmentPredicateImpl <em>Segment Predicate</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.SegmentPredicateImpl
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getSegmentPredicate()
+	 * @generated
+	 */
+	int SEGMENT_PREDICATE = 33;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEGMENT_PREDICATE__UUID = CommonPackage.ELEMENT__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEGMENT_PREDICATE__ANNOTATIONS = CommonPackage.ELEMENT__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Body Segment</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEGMENT_PREDICATE__BODY_SEGMENT = CommonPackage.ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Segment Predicate</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEGMENT_PREDICATE_FEATURE_COUNT = CommonPackage.ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEGMENT_PREDICATE___UUID = CommonPackage.ELEMENT___UUID;
+
+	/**
+	 * The operation id for the '<em>Term Predicate</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEGMENT_PREDICATE___TERM_PREDICATE = CommonPackage.ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEGMENT_PREDICATE___MODULE_CONTEXT = CommonPackage.ELEMENT_OPERATION_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Segment Predicate</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEGMENT_PREDICATE_OPERATION_COUNT = CommonPackage.ELEMENT_OPERATION_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.UnarySegmentPredicateImpl <em>Unary Segment Predicate</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.UnarySegmentPredicateImpl
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getUnarySegmentPredicate()
+	 * @generated
+	 */
+	int UNARY_SEGMENT_PREDICATE = 34;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNARY_SEGMENT_PREDICATE__UUID = SEGMENT_PREDICATE__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNARY_SEGMENT_PREDICATE__ANNOTATIONS = SEGMENT_PREDICATE__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Body Segment</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNARY_SEGMENT_PREDICATE__BODY_SEGMENT = SEGMENT_PREDICATE__BODY_SEGMENT;
+
+	/**
+	 * The number of structural features of the '<em>Unary Segment Predicate</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNARY_SEGMENT_PREDICATE_FEATURE_COUNT = SEGMENT_PREDICATE_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNARY_SEGMENT_PREDICATE___UUID = SEGMENT_PREDICATE___UUID;
+
+	/**
+	 * The operation id for the '<em>Term Predicate</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNARY_SEGMENT_PREDICATE___TERM_PREDICATE = SEGMENT_PREDICATE___TERM_PREDICATE;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNARY_SEGMENT_PREDICATE___MODULE_CONTEXT = SEGMENT_PREDICATE___MODULE_CONTEXT;
+
+	/**
+	 * The number of operations of the '<em>Unary Segment Predicate</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNARY_SEGMENT_PREDICATE_OPERATION_COUNT = SEGMENT_PREDICATE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.AspectPredicateImpl <em>Aspect Predicate</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.AspectPredicateImpl
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getAspectPredicate()
+	 * @generated
+	 */
+	int ASPECT_PREDICATE = 35;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASPECT_PREDICATE__UUID = UNARY_SEGMENT_PREDICATE__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASPECT_PREDICATE__ANNOTATIONS = UNARY_SEGMENT_PREDICATE__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Body Segment</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASPECT_PREDICATE__BODY_SEGMENT = UNARY_SEGMENT_PREDICATE__BODY_SEGMENT;
+
+	/**
+	 * The feature id for the '<em><b>Aspect</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASPECT_PREDICATE__ASPECT = UNARY_SEGMENT_PREDICATE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Aspect Predicate</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASPECT_PREDICATE_FEATURE_COUNT = UNARY_SEGMENT_PREDICATE_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASPECT_PREDICATE___MODULE_CONTEXT = UNARY_SEGMENT_PREDICATE___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>Term Predicate</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASPECT_PREDICATE___TERM_PREDICATE = UNARY_SEGMENT_PREDICATE_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASPECT_PREDICATE___UUID = UNARY_SEGMENT_PREDICATE_OPERATION_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Aspect Predicate</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASPECT_PREDICATE_OPERATION_COUNT = UNARY_SEGMENT_PREDICATE_OPERATION_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ConceptPredicateImpl <em>Concept Predicate</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.ConceptPredicateImpl
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getConceptPredicate()
+	 * @generated
+	 */
+	int CONCEPT_PREDICATE = 36;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPT_PREDICATE__UUID = UNARY_SEGMENT_PREDICATE__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPT_PREDICATE__ANNOTATIONS = UNARY_SEGMENT_PREDICATE__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Body Segment</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPT_PREDICATE__BODY_SEGMENT = UNARY_SEGMENT_PREDICATE__BODY_SEGMENT;
+
+	/**
+	 * The feature id for the '<em><b>Concept</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPT_PREDICATE__CONCEPT = UNARY_SEGMENT_PREDICATE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Concept Predicate</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPT_PREDICATE_FEATURE_COUNT = UNARY_SEGMENT_PREDICATE_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPT_PREDICATE___MODULE_CONTEXT = UNARY_SEGMENT_PREDICATE___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>Term Predicate</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPT_PREDICATE___TERM_PREDICATE = UNARY_SEGMENT_PREDICATE_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPT_PREDICATE___UUID = UNARY_SEGMENT_PREDICATE_OPERATION_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Concept Predicate</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPT_PREDICATE_OPERATION_COUNT = UNARY_SEGMENT_PREDICATE_OPERATION_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipPredicateImpl <em>Reified Relationship Predicate</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipPredicateImpl
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getReifiedRelationshipPredicate()
+	 * @generated
+	 */
+	int REIFIED_RELATIONSHIP_PREDICATE = 37;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_PREDICATE__UUID = UNARY_SEGMENT_PREDICATE__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_PREDICATE__ANNOTATIONS = UNARY_SEGMENT_PREDICATE__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Body Segment</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_PREDICATE__BODY_SEGMENT = UNARY_SEGMENT_PREDICATE__BODY_SEGMENT;
+
+	/**
+	 * The feature id for the '<em><b>Reified Relationship</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_PREDICATE__REIFIED_RELATIONSHIP = UNARY_SEGMENT_PREDICATE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Reified Relationship Predicate</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_PREDICATE_FEATURE_COUNT = UNARY_SEGMENT_PREDICATE_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_PREDICATE___MODULE_CONTEXT = UNARY_SEGMENT_PREDICATE___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>Term Predicate</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_PREDICATE___TERM_PREDICATE = UNARY_SEGMENT_PREDICATE_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_PREDICATE___UUID = UNARY_SEGMENT_PREDICATE_OPERATION_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Reified Relationship Predicate</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_PREDICATE_OPERATION_COUNT = UNARY_SEGMENT_PREDICATE_OPERATION_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.BinarySegmentPropertyPredicateImpl <em>Binary Segment Property Predicate</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.BinarySegmentPropertyPredicateImpl
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getBinarySegmentPropertyPredicate()
+	 * @generated
+	 */
+	int BINARY_SEGMENT_PROPERTY_PREDICATE = 38;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_SEGMENT_PROPERTY_PREDICATE__UUID = SEGMENT_PREDICATE__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_SEGMENT_PROPERTY_PREDICATE__ANNOTATIONS = SEGMENT_PREDICATE__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Body Segment</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_SEGMENT_PROPERTY_PREDICATE__BODY_SEGMENT = SEGMENT_PREDICATE__BODY_SEGMENT;
+
+	/**
+	 * The number of structural features of the '<em>Binary Segment Property Predicate</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_SEGMENT_PROPERTY_PREDICATE_FEATURE_COUNT = SEGMENT_PREDICATE_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_SEGMENT_PROPERTY_PREDICATE___UUID = SEGMENT_PREDICATE___UUID;
+
+	/**
+	 * The operation id for the '<em>Term Predicate</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_SEGMENT_PROPERTY_PREDICATE___TERM_PREDICATE = SEGMENT_PREDICATE___TERM_PREDICATE;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_SEGMENT_PROPERTY_PREDICATE___MODULE_CONTEXT = SEGMENT_PREDICATE___MODULE_CONTEXT;
+
+	/**
+	 * The number of operations of the '<em>Binary Segment Property Predicate</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_SEGMENT_PROPERTY_PREDICATE_OPERATION_COUNT = SEGMENT_PREDICATE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.BinarySegmentForwardPropertyPredicateImpl <em>Binary Segment Forward Property Predicate</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.BinarySegmentForwardPropertyPredicateImpl
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getBinarySegmentForwardPropertyPredicate()
+	 * @generated
+	 */
+	int BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE = 39;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE__UUID = BINARY_SEGMENT_PROPERTY_PREDICATE__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE__ANNOTATIONS = BINARY_SEGMENT_PROPERTY_PREDICATE__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Body Segment</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE__BODY_SEGMENT = BINARY_SEGMENT_PROPERTY_PREDICATE__BODY_SEGMENT;
+
+	/**
+	 * The number of structural features of the '<em>Binary Segment Forward Property Predicate</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE_FEATURE_COUNT = BINARY_SEGMENT_PROPERTY_PREDICATE_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE___UUID = BINARY_SEGMENT_PROPERTY_PREDICATE___UUID;
+
+	/**
+	 * The operation id for the '<em>Term Predicate</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE___TERM_PREDICATE = BINARY_SEGMENT_PROPERTY_PREDICATE___TERM_PREDICATE;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE___MODULE_CONTEXT = BINARY_SEGMENT_PROPERTY_PREDICATE___MODULE_CONTEXT;
+
+	/**
+	 * The number of operations of the '<em>Binary Segment Forward Property Predicate</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE_OPERATION_COUNT = BINARY_SEGMENT_PROPERTY_PREDICATE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.BinarySegmentReversePropertyPredicateImpl <em>Binary Segment Reverse Property Predicate</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.BinarySegmentReversePropertyPredicateImpl
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getBinarySegmentReversePropertyPredicate()
+	 * @generated
+	 */
+	int BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE = 40;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE__UUID = BINARY_SEGMENT_PROPERTY_PREDICATE__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE__ANNOTATIONS = BINARY_SEGMENT_PROPERTY_PREDICATE__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Body Segment</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE__BODY_SEGMENT = BINARY_SEGMENT_PROPERTY_PREDICATE__BODY_SEGMENT;
+
+	/**
+	 * The number of structural features of the '<em>Binary Segment Reverse Property Predicate</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE_FEATURE_COUNT = BINARY_SEGMENT_PROPERTY_PREDICATE_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE___UUID = BINARY_SEGMENT_PROPERTY_PREDICATE___UUID;
+
+	/**
+	 * The operation id for the '<em>Term Predicate</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE___TERM_PREDICATE = BINARY_SEGMENT_PROPERTY_PREDICATE___TERM_PREDICATE;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE___MODULE_CONTEXT = BINARY_SEGMENT_PROPERTY_PREDICATE___MODULE_CONTEXT;
+
+	/**
+	 * The number of operations of the '<em>Binary Segment Reverse Property Predicate</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE_OPERATION_COUNT = BINARY_SEGMENT_PROPERTY_PREDICATE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipPropertyPredicateImpl <em>Reified Relationship Property Predicate</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipPropertyPredicateImpl
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getReifiedRelationshipPropertyPredicate()
+	 * @generated
+	 */
+	int REIFIED_RELATIONSHIP_PROPERTY_PREDICATE = 41;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_PROPERTY_PREDICATE__UUID = BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_PROPERTY_PREDICATE__ANNOTATIONS = BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Body Segment</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_PROPERTY_PREDICATE__BODY_SEGMENT = BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE__BODY_SEGMENT;
+
+	/**
+	 * The feature id for the '<em><b>Reified Relationship</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_PROPERTY_PREDICATE__REIFIED_RELATIONSHIP = BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Reified Relationship Property Predicate</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_PROPERTY_PREDICATE_FEATURE_COUNT = BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_PROPERTY_PREDICATE___MODULE_CONTEXT = BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>Term Predicate</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_PROPERTY_PREDICATE___TERM_PREDICATE = BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_PROPERTY_PREDICATE___UUID = BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE_OPERATION_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Reified Relationship Property Predicate</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_PROPERTY_PREDICATE_OPERATION_COUNT = BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE_OPERATION_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipInversePropertyPredicateImpl <em>Reified Relationship Inverse Property Predicate</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipInversePropertyPredicateImpl
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getReifiedRelationshipInversePropertyPredicate()
+	 * @generated
+	 */
+	int REIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE = 42;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE__UUID = BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE__ANNOTATIONS = BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Body Segment</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE__BODY_SEGMENT = BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE__BODY_SEGMENT;
+
+	/**
+	 * The feature id for the '<em><b>Reified Relationship</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE__REIFIED_RELATIONSHIP = BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Reified Relationship Inverse Property Predicate</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE_FEATURE_COUNT = BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE___MODULE_CONTEXT = BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>Term Predicate</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE___TERM_PREDICATE = BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE___UUID = BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE_OPERATION_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Reified Relationship Inverse Property Predicate</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE_OPERATION_COUNT = BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE_OPERATION_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipSourcePropertyPredicateImpl <em>Reified Relationship Source Property Predicate</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipSourcePropertyPredicateImpl
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getReifiedRelationshipSourcePropertyPredicate()
+	 * @generated
+	 */
+	int REIFIED_RELATIONSHIP_SOURCE_PROPERTY_PREDICATE = 43;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_SOURCE_PROPERTY_PREDICATE__UUID = BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_SOURCE_PROPERTY_PREDICATE__ANNOTATIONS = BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Body Segment</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_SOURCE_PROPERTY_PREDICATE__BODY_SEGMENT = BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE__BODY_SEGMENT;
+
+	/**
+	 * The feature id for the '<em><b>Reified Relationship</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_SOURCE_PROPERTY_PREDICATE__REIFIED_RELATIONSHIP = BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Reified Relationship Source Property Predicate</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_SOURCE_PROPERTY_PREDICATE_FEATURE_COUNT = BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_SOURCE_PROPERTY_PREDICATE___MODULE_CONTEXT = BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>Term Predicate</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_SOURCE_PROPERTY_PREDICATE___TERM_PREDICATE = BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_SOURCE_PROPERTY_PREDICATE___UUID = BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE_OPERATION_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Reified Relationship Source Property Predicate</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_SOURCE_PROPERTY_PREDICATE_OPERATION_COUNT = BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE_OPERATION_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipSourceInversePropertyPredicateImpl <em>Reified Relationship Source Inverse Property Predicate</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipSourceInversePropertyPredicateImpl
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getReifiedRelationshipSourceInversePropertyPredicate()
+	 * @generated
+	 */
+	int REIFIED_RELATIONSHIP_SOURCE_INVERSE_PROPERTY_PREDICATE = 44;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_SOURCE_INVERSE_PROPERTY_PREDICATE__UUID = BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_SOURCE_INVERSE_PROPERTY_PREDICATE__ANNOTATIONS = BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Body Segment</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_SOURCE_INVERSE_PROPERTY_PREDICATE__BODY_SEGMENT = BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE__BODY_SEGMENT;
+
+	/**
+	 * The feature id for the '<em><b>Reified Relationship</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_SOURCE_INVERSE_PROPERTY_PREDICATE__REIFIED_RELATIONSHIP = BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Reified Relationship Source Inverse Property Predicate</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_SOURCE_INVERSE_PROPERTY_PREDICATE_FEATURE_COUNT = BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_SOURCE_INVERSE_PROPERTY_PREDICATE___MODULE_CONTEXT = BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>Term Predicate</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_SOURCE_INVERSE_PROPERTY_PREDICATE___TERM_PREDICATE = BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_SOURCE_INVERSE_PROPERTY_PREDICATE___UUID = BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE_OPERATION_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Reified Relationship Source Inverse Property Predicate</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_SOURCE_INVERSE_PROPERTY_PREDICATE_OPERATION_COUNT = BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE_OPERATION_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipTargetPropertyPredicateImpl <em>Reified Relationship Target Property Predicate</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipTargetPropertyPredicateImpl
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getReifiedRelationshipTargetPropertyPredicate()
+	 * @generated
+	 */
+	int REIFIED_RELATIONSHIP_TARGET_PROPERTY_PREDICATE = 45;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_TARGET_PROPERTY_PREDICATE__UUID = BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_TARGET_PROPERTY_PREDICATE__ANNOTATIONS = BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Body Segment</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_TARGET_PROPERTY_PREDICATE__BODY_SEGMENT = BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE__BODY_SEGMENT;
+
+	/**
+	 * The feature id for the '<em><b>Reified Relationship</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_TARGET_PROPERTY_PREDICATE__REIFIED_RELATIONSHIP = BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Reified Relationship Target Property Predicate</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_TARGET_PROPERTY_PREDICATE_FEATURE_COUNT = BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_TARGET_PROPERTY_PREDICATE___MODULE_CONTEXT = BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>Term Predicate</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_TARGET_PROPERTY_PREDICATE___TERM_PREDICATE = BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_TARGET_PROPERTY_PREDICATE___UUID = BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE_OPERATION_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Reified Relationship Target Property Predicate</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_TARGET_PROPERTY_PREDICATE_OPERATION_COUNT = BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE_OPERATION_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipTargetInversePropertyPredicateImpl <em>Reified Relationship Target Inverse Property Predicate</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipTargetInversePropertyPredicateImpl
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getReifiedRelationshipTargetInversePropertyPredicate()
+	 * @generated
+	 */
+	int REIFIED_RELATIONSHIP_TARGET_INVERSE_PROPERTY_PREDICATE = 46;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_TARGET_INVERSE_PROPERTY_PREDICATE__UUID = BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_TARGET_INVERSE_PROPERTY_PREDICATE__ANNOTATIONS = BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Body Segment</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_TARGET_INVERSE_PROPERTY_PREDICATE__BODY_SEGMENT = BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE__BODY_SEGMENT;
+
+	/**
+	 * The feature id for the '<em><b>Reified Relationship</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_TARGET_INVERSE_PROPERTY_PREDICATE__REIFIED_RELATIONSHIP = BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Reified Relationship Target Inverse Property Predicate</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_TARGET_INVERSE_PROPERTY_PREDICATE_FEATURE_COUNT = BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_TARGET_INVERSE_PROPERTY_PREDICATE___MODULE_CONTEXT = BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>Term Predicate</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_TARGET_INVERSE_PROPERTY_PREDICATE___TERM_PREDICATE = BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_TARGET_INVERSE_PROPERTY_PREDICATE___UUID = BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE_OPERATION_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Reified Relationship Target Inverse Property Predicate</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_TARGET_INVERSE_PROPERTY_PREDICATE_OPERATION_COUNT = BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE_OPERATION_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.UnreifiedRelationshipPropertyPredicateImpl <em>Unreified Relationship Property Predicate</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.UnreifiedRelationshipPropertyPredicateImpl
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getUnreifiedRelationshipPropertyPredicate()
+	 * @generated
+	 */
+	int UNREIFIED_RELATIONSHIP_PROPERTY_PREDICATE = 47;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNREIFIED_RELATIONSHIP_PROPERTY_PREDICATE__UUID = BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNREIFIED_RELATIONSHIP_PROPERTY_PREDICATE__ANNOTATIONS = BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Body Segment</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNREIFIED_RELATIONSHIP_PROPERTY_PREDICATE__BODY_SEGMENT = BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE__BODY_SEGMENT;
+
+	/**
+	 * The feature id for the '<em><b>Unreified Relationship</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNREIFIED_RELATIONSHIP_PROPERTY_PREDICATE__UNREIFIED_RELATIONSHIP = BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Unreified Relationship Property Predicate</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNREIFIED_RELATIONSHIP_PROPERTY_PREDICATE_FEATURE_COUNT = BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNREIFIED_RELATIONSHIP_PROPERTY_PREDICATE___MODULE_CONTEXT = BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>Term Predicate</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNREIFIED_RELATIONSHIP_PROPERTY_PREDICATE___TERM_PREDICATE = BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNREIFIED_RELATIONSHIP_PROPERTY_PREDICATE___UUID = BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE_OPERATION_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Unreified Relationship Property Predicate</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNREIFIED_RELATIONSHIP_PROPERTY_PREDICATE_OPERATION_COUNT = BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE_OPERATION_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.UnreifiedRelationshipInversePropertyPredicateImpl <em>Unreified Relationship Inverse Property Predicate</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.UnreifiedRelationshipInversePropertyPredicateImpl
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getUnreifiedRelationshipInversePropertyPredicate()
+	 * @generated
+	 */
+	int UNREIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE = 48;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNREIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE__UUID = BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNREIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE__ANNOTATIONS = BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Body Segment</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNREIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE__BODY_SEGMENT = BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE__BODY_SEGMENT;
+
+	/**
+	 * The feature id for the '<em><b>Unreified Relationship</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNREIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE__UNREIFIED_RELATIONSHIP = BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Unreified Relationship Inverse Property Predicate</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNREIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE_FEATURE_COUNT = BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNREIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE___MODULE_CONTEXT = BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>Term Predicate</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNREIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE___TERM_PREDICATE = BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNREIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE___UUID = BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE_OPERATION_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Unreified Relationship Inverse Property Predicate</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNREIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE_OPERATION_COUNT = BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE_OPERATION_COUNT + 2;
+
+	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.TermAxiomImpl <em>Term Axiom</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3940,7 +5723,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getTermAxiom()
 	 * @generated
 	 */
-	int TERM_AXIOM = 30;
+	int TERM_AXIOM = 49;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -4022,7 +5805,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityRestrictionAxiom()
 	 * @generated
 	 */
-	int ENTITY_RESTRICTION_AXIOM = 31;
+	int ENTITY_RESTRICTION_AXIOM = 50;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -4131,7 +5914,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityExistentialRestrictionAxiom()
 	 * @generated
 	 */
-	int ENTITY_EXISTENTIAL_RESTRICTION_AXIOM = 32;
+	int ENTITY_EXISTENTIAL_RESTRICTION_AXIOM = 51;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -4240,7 +6023,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityUniversalRestrictionAxiom()
 	 * @generated
 	 */
-	int ENTITY_UNIVERSAL_RESTRICTION_AXIOM = 33;
+	int ENTITY_UNIVERSAL_RESTRICTION_AXIOM = 52;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -4349,7 +6132,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getSpecializationAxiom()
 	 * @generated
 	 */
-	int SPECIALIZATION_AXIOM = 34;
+	int SPECIALIZATION_AXIOM = 53;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -4449,7 +6232,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getAspectSpecializationAxiom()
 	 * @generated
 	 */
-	int ASPECT_SPECIALIZATION_AXIOM = 35;
+	int ASPECT_SPECIALIZATION_AXIOM = 54;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -4567,7 +6350,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getConceptSpecializationAxiom()
 	 * @generated
 	 */
-	int CONCEPT_SPECIALIZATION_AXIOM = 36;
+	int CONCEPT_SPECIALIZATION_AXIOM = 55;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -4685,7 +6468,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getReifiedRelationshipSpecializationAxiom()
 	 * @generated
 	 */
-	int REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM = 37;
+	int REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM = 56;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -4803,7 +6586,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityScalarDataPropertyRestrictionAxiom()
 	 * @generated
 	 */
-	int ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM = 38;
+	int ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM = 57;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -4903,7 +6686,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityScalarDataPropertyExistentialRestrictionAxiom()
 	 * @generated
 	 */
-	int ENTITY_SCALAR_DATA_PROPERTY_EXISTENTIAL_RESTRICTION_AXIOM = 39;
+	int ENTITY_SCALAR_DATA_PROPERTY_EXISTENTIAL_RESTRICTION_AXIOM = 58;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -5012,7 +6795,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityScalarDataPropertyUniversalRestrictionAxiom()
 	 * @generated
 	 */
-	int ENTITY_SCALAR_DATA_PROPERTY_UNIVERSAL_RESTRICTION_AXIOM = 40;
+	int ENTITY_SCALAR_DATA_PROPERTY_UNIVERSAL_RESTRICTION_AXIOM = 59;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -5121,7 +6904,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityScalarDataPropertyParticularRestrictionAxiom()
 	 * @generated
 	 */
-	int ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM = 41;
+	int ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM = 60;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -5178,13 +6961,22 @@ public interface TerminologiesPackage extends EPackage {
 	int ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__LITERAL_VALUE = ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Value Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__VALUE_TYPE = ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Entity Scalar Data Property Particular Restriction Axiom</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM_FEATURE_COUNT = ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM_FEATURE_COUNT + 1;
+	int ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM_FEATURE_COUNT = ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Module Context</em>' operation.
@@ -5230,7 +7022,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityStructuredDataPropertyRestrictionAxiom()
 	 * @generated
 	 */
-	int ENTITY_STRUCTURED_DATA_PROPERTY_RESTRICTION_AXIOM = 42;
+	int ENTITY_STRUCTURED_DATA_PROPERTY_RESTRICTION_AXIOM = 61;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -5321,7 +7113,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityStructuredDataPropertyParticularRestrictionAxiom()
 	 * @generated
 	 */
-	int ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM = 43;
+	int ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM = 62;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -5457,7 +7249,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getRestrictionStructuredDataPropertyContext()
 	 * @generated
 	 */
-	int RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT = 44;
+	int RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT = 63;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -5575,7 +7367,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getRestrictionStructuredDataPropertyTuple()
 	 * @generated
 	 */
-	int RESTRICTION_STRUCTURED_DATA_PROPERTY_TUPLE = 45;
+	int RESTRICTION_STRUCTURED_DATA_PROPERTY_TUPLE = 64;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -5702,7 +7494,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getRestrictionScalarDataPropertyValue()
 	 * @generated
 	 */
-	int RESTRICTION_SCALAR_DATA_PROPERTY_VALUE = 46;
+	int RESTRICTION_SCALAR_DATA_PROPERTY_VALUE = 65;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -5750,13 +7542,22 @@ public interface TerminologiesPackage extends EPackage {
 	int RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE = CommonPackage.ELEMENT_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Value Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__VALUE_TYPE = CommonPackage.ELEMENT_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Restriction Scalar Data Property Value</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESTRICTION_SCALAR_DATA_PROPERTY_VALUE_FEATURE_COUNT = CommonPackage.ELEMENT_FEATURE_COUNT + 3;
+	int RESTRICTION_SCALAR_DATA_PROPERTY_VALUE_FEATURE_COUNT = CommonPackage.ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The operation id for the '<em>Terminology Box</em>' operation.
@@ -5802,7 +7603,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getRestrictedDataRange()
 	 * @generated
 	 */
-	int RESTRICTED_DATA_RANGE = 47;
+	int RESTRICTED_DATA_RANGE = 66;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -5929,7 +7730,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getBinaryScalarRestriction()
 	 * @generated
 	 */
-	int BINARY_SCALAR_RESTRICTION = 48;
+	int BINARY_SCALAR_RESTRICTION = 67;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -6083,7 +7884,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getIRIScalarRestriction()
 	 * @generated
 	 */
-	int IRI_SCALAR_RESTRICTION = 49;
+	int IRI_SCALAR_RESTRICTION = 68;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -6246,7 +8047,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getNumericScalarRestriction()
 	 * @generated
 	 */
-	int NUMERIC_SCALAR_RESTRICTION = 50;
+	int NUMERIC_SCALAR_RESTRICTION = 69;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -6409,7 +8210,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getPlainLiteralScalarRestriction()
 	 * @generated
 	 */
-	int PLAIN_LITERAL_SCALAR_RESTRICTION = 51;
+	int PLAIN_LITERAL_SCALAR_RESTRICTION = 70;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -6581,7 +8382,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getStringScalarRestriction()
 	 * @generated
 	 */
-	int STRING_SCALAR_RESTRICTION = 52;
+	int STRING_SCALAR_RESTRICTION = 71;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -6744,7 +8545,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getTimeScalarRestriction()
 	 * @generated
 	 */
-	int TIME_SCALAR_RESTRICTION = 53;
+	int TIME_SCALAR_RESTRICTION = 72;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -6907,7 +8708,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getSynonymScalarRestriction()
 	 * @generated
 	 */
-	int SYNONYM_SCALAR_RESTRICTION = 54;
+	int SYNONYM_SCALAR_RESTRICTION = 73;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -7034,7 +8835,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getScalarOneOfRestriction()
 	 * @generated
 	 */
-	int SCALAR_ONE_OF_RESTRICTION = 55;
+	int SCALAR_ONE_OF_RESTRICTION = 74;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -7161,7 +8962,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getScalarOneOfLiteralAxiom()
 	 * @generated
 	 */
-	int SCALAR_ONE_OF_LITERAL_AXIOM = 56;
+	int SCALAR_ONE_OF_LITERAL_AXIOM = 75;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -7209,13 +9010,22 @@ public interface TerminologiesPackage extends EPackage {
 	int SCALAR_ONE_OF_LITERAL_AXIOM__VALUE = TERM_AXIOM_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Value Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCALAR_ONE_OF_LITERAL_AXIOM__VALUE_TYPE = TERM_AXIOM_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Scalar One Of Literal Axiom</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCALAR_ONE_OF_LITERAL_AXIOM_FEATURE_COUNT = TERM_AXIOM_FEATURE_COUNT + 2;
+	int SCALAR_ONE_OF_LITERAL_AXIOM_FEATURE_COUNT = TERM_AXIOM_FEATURE_COUNT + 3;
 
 	/**
 	 * The operation id for the '<em>Module Context</em>' operation.
@@ -7261,7 +9071,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getTerminologyKind()
 	 * @generated
 	 */
-	int TERMINOLOGY_KIND = 57;
+	int TERMINOLOGY_KIND = 76;
 
 
 	/**
@@ -8180,6 +9990,674 @@ public interface TerminologiesPackage extends EPackage {
 	EClass getStructure();
 
 	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.Rule <em>Rule</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Rule</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.Rule
+	 * @generated
+	 */
+	EClass getRule();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.ChainRule <em>Chain Rule</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Chain Rule</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ChainRule
+	 * @generated
+	 */
+	EClass getChainRule();
+
+	/**
+	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.ChainRule#getHead <em>Head</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Head</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ChainRule#getHead()
+	 * @see #getChainRule()
+	 * @generated
+	 */
+	EReference getChainRule_Head();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.ChainRule#getFirstSegment <em>First Segment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>First Segment</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ChainRule#getFirstSegment()
+	 * @see #getChainRule()
+	 * @generated
+	 */
+	EReference getChainRule_FirstSegment();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.RuleBodySegment <em>Rule Body Segment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Rule Body Segment</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.RuleBodySegment
+	 * @generated
+	 */
+	EClass getRuleBodySegment();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.RuleBodySegment#getPredicate <em>Predicate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Predicate</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.RuleBodySegment#getPredicate()
+	 * @see #getRuleBodySegment()
+	 * @generated
+	 */
+	EReference getRuleBodySegment_Predicate();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.RuleBodySegment#getNextSegment <em>Next Segment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Next Segment</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.RuleBodySegment#getNextSegment()
+	 * @see #getRuleBodySegment()
+	 * @generated
+	 */
+	EReference getRuleBodySegment_NextSegment();
+
+	/**
+	 * Returns the meta object for the container reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.RuleBodySegment#getPreviousSegment <em>Previous Segment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Previous Segment</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.RuleBodySegment#getPreviousSegment()
+	 * @see #getRuleBodySegment()
+	 * @generated
+	 */
+	EReference getRuleBodySegment_PreviousSegment();
+
+	/**
+	 * Returns the meta object for the container reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.RuleBodySegment#getRule <em>Rule</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Rule</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.RuleBodySegment#getRule()
+	 * @see #getRuleBodySegment()
+	 * @generated
+	 */
+	EReference getRuleBodySegment_Rule();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.RuleBodySegment#position() <em>Position</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Position</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.RuleBodySegment#position()
+	 * @generated
+	 */
+	EOperation getRuleBodySegment__Position();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.RuleBodySegment#chainRule() <em>Chain Rule</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Chain Rule</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.RuleBodySegment#chainRule()
+	 * @generated
+	 */
+	EOperation getRuleBodySegment__ChainRule();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.RuleBodySegment#uuid() <em>Uuid</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Uuid</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.RuleBodySegment#uuid()
+	 * @generated
+	 */
+	EOperation getRuleBodySegment__Uuid();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.RuleBodySegment#moduleContext() <em>Module Context</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Module Context</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.RuleBodySegment#moduleContext()
+	 * @generated
+	 */
+	EOperation getRuleBodySegment__ModuleContext();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.SegmentPredicate <em>Segment Predicate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Segment Predicate</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.SegmentPredicate
+	 * @generated
+	 */
+	EClass getSegmentPredicate();
+
+	/**
+	 * Returns the meta object for the container reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.SegmentPredicate#getBodySegment <em>Body Segment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Body Segment</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.SegmentPredicate#getBodySegment()
+	 * @see #getSegmentPredicate()
+	 * @generated
+	 */
+	EReference getSegmentPredicate_BodySegment();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.SegmentPredicate#termPredicate() <em>Term Predicate</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Term Predicate</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.SegmentPredicate#termPredicate()
+	 * @generated
+	 */
+	EOperation getSegmentPredicate__TermPredicate();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.SegmentPredicate#moduleContext() <em>Module Context</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Module Context</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.SegmentPredicate#moduleContext()
+	 * @generated
+	 */
+	EOperation getSegmentPredicate__ModuleContext();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.UnarySegmentPredicate <em>Unary Segment Predicate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Unary Segment Predicate</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.UnarySegmentPredicate
+	 * @generated
+	 */
+	EClass getUnarySegmentPredicate();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.AspectPredicate <em>Aspect Predicate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Aspect Predicate</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.AspectPredicate
+	 * @generated
+	 */
+	EClass getAspectPredicate();
+
+	/**
+	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.AspectPredicate#getAspect <em>Aspect</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Aspect</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.AspectPredicate#getAspect()
+	 * @see #getAspectPredicate()
+	 * @generated
+	 */
+	EReference getAspectPredicate_Aspect();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.AspectPredicate#termPredicate() <em>Term Predicate</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Term Predicate</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.AspectPredicate#termPredicate()
+	 * @generated
+	 */
+	EOperation getAspectPredicate__TermPredicate();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.AspectPredicate#uuid() <em>Uuid</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Uuid</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.AspectPredicate#uuid()
+	 * @generated
+	 */
+	EOperation getAspectPredicate__Uuid();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.ConceptPredicate <em>Concept Predicate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Concept Predicate</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ConceptPredicate
+	 * @generated
+	 */
+	EClass getConceptPredicate();
+
+	/**
+	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.ConceptPredicate#getConcept <em>Concept</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Concept</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ConceptPredicate#getConcept()
+	 * @see #getConceptPredicate()
+	 * @generated
+	 */
+	EReference getConceptPredicate_Concept();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ConceptPredicate#termPredicate() <em>Term Predicate</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Term Predicate</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ConceptPredicate#termPredicate()
+	 * @generated
+	 */
+	EOperation getConceptPredicate__TermPredicate();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ConceptPredicate#uuid() <em>Uuid</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Uuid</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ConceptPredicate#uuid()
+	 * @generated
+	 */
+	EOperation getConceptPredicate__Uuid();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPredicate <em>Reified Relationship Predicate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Reified Relationship Predicate</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPredicate
+	 * @generated
+	 */
+	EClass getReifiedRelationshipPredicate();
+
+	/**
+	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPredicate#getReifiedRelationship <em>Reified Relationship</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Reified Relationship</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPredicate#getReifiedRelationship()
+	 * @see #getReifiedRelationshipPredicate()
+	 * @generated
+	 */
+	EReference getReifiedRelationshipPredicate_ReifiedRelationship();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPredicate#termPredicate() <em>Term Predicate</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Term Predicate</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPredicate#termPredicate()
+	 * @generated
+	 */
+	EOperation getReifiedRelationshipPredicate__TermPredicate();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPredicate#uuid() <em>Uuid</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Uuid</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPredicate#uuid()
+	 * @generated
+	 */
+	EOperation getReifiedRelationshipPredicate__Uuid();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.BinarySegmentPropertyPredicate <em>Binary Segment Property Predicate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Binary Segment Property Predicate</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.BinarySegmentPropertyPredicate
+	 * @generated
+	 */
+	EClass getBinarySegmentPropertyPredicate();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.BinarySegmentForwardPropertyPredicate <em>Binary Segment Forward Property Predicate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Binary Segment Forward Property Predicate</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.BinarySegmentForwardPropertyPredicate
+	 * @generated
+	 */
+	EClass getBinarySegmentForwardPropertyPredicate();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.BinarySegmentReversePropertyPredicate <em>Binary Segment Reverse Property Predicate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Binary Segment Reverse Property Predicate</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.BinarySegmentReversePropertyPredicate
+	 * @generated
+	 */
+	EClass getBinarySegmentReversePropertyPredicate();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPropertyPredicate <em>Reified Relationship Property Predicate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Reified Relationship Property Predicate</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPropertyPredicate
+	 * @generated
+	 */
+	EClass getReifiedRelationshipPropertyPredicate();
+
+	/**
+	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPropertyPredicate#getReifiedRelationship <em>Reified Relationship</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Reified Relationship</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPropertyPredicate#getReifiedRelationship()
+	 * @see #getReifiedRelationshipPropertyPredicate()
+	 * @generated
+	 */
+	EReference getReifiedRelationshipPropertyPredicate_ReifiedRelationship();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPropertyPredicate#termPredicate() <em>Term Predicate</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Term Predicate</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPropertyPredicate#termPredicate()
+	 * @generated
+	 */
+	EOperation getReifiedRelationshipPropertyPredicate__TermPredicate();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPropertyPredicate#uuid() <em>Uuid</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Uuid</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPropertyPredicate#uuid()
+	 * @generated
+	 */
+	EOperation getReifiedRelationshipPropertyPredicate__Uuid();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipInversePropertyPredicate <em>Reified Relationship Inverse Property Predicate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Reified Relationship Inverse Property Predicate</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipInversePropertyPredicate
+	 * @generated
+	 */
+	EClass getReifiedRelationshipInversePropertyPredicate();
+
+	/**
+	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipInversePropertyPredicate#getReifiedRelationship <em>Reified Relationship</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Reified Relationship</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipInversePropertyPredicate#getReifiedRelationship()
+	 * @see #getReifiedRelationshipInversePropertyPredicate()
+	 * @generated
+	 */
+	EReference getReifiedRelationshipInversePropertyPredicate_ReifiedRelationship();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipInversePropertyPredicate#termPredicate() <em>Term Predicate</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Term Predicate</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipInversePropertyPredicate#termPredicate()
+	 * @generated
+	 */
+	EOperation getReifiedRelationshipInversePropertyPredicate__TermPredicate();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipInversePropertyPredicate#uuid() <em>Uuid</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Uuid</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipInversePropertyPredicate#uuid()
+	 * @generated
+	 */
+	EOperation getReifiedRelationshipInversePropertyPredicate__Uuid();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourcePropertyPredicate <em>Reified Relationship Source Property Predicate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Reified Relationship Source Property Predicate</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourcePropertyPredicate
+	 * @generated
+	 */
+	EClass getReifiedRelationshipSourcePropertyPredicate();
+
+	/**
+	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourcePropertyPredicate#getReifiedRelationship <em>Reified Relationship</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Reified Relationship</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourcePropertyPredicate#getReifiedRelationship()
+	 * @see #getReifiedRelationshipSourcePropertyPredicate()
+	 * @generated
+	 */
+	EReference getReifiedRelationshipSourcePropertyPredicate_ReifiedRelationship();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourcePropertyPredicate#termPredicate() <em>Term Predicate</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Term Predicate</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourcePropertyPredicate#termPredicate()
+	 * @generated
+	 */
+	EOperation getReifiedRelationshipSourcePropertyPredicate__TermPredicate();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourcePropertyPredicate#uuid() <em>Uuid</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Uuid</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourcePropertyPredicate#uuid()
+	 * @generated
+	 */
+	EOperation getReifiedRelationshipSourcePropertyPredicate__Uuid();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourceInversePropertyPredicate <em>Reified Relationship Source Inverse Property Predicate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Reified Relationship Source Inverse Property Predicate</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourceInversePropertyPredicate
+	 * @generated
+	 */
+	EClass getReifiedRelationshipSourceInversePropertyPredicate();
+
+	/**
+	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourceInversePropertyPredicate#getReifiedRelationship <em>Reified Relationship</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Reified Relationship</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourceInversePropertyPredicate#getReifiedRelationship()
+	 * @see #getReifiedRelationshipSourceInversePropertyPredicate()
+	 * @generated
+	 */
+	EReference getReifiedRelationshipSourceInversePropertyPredicate_ReifiedRelationship();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourceInversePropertyPredicate#termPredicate() <em>Term Predicate</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Term Predicate</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourceInversePropertyPredicate#termPredicate()
+	 * @generated
+	 */
+	EOperation getReifiedRelationshipSourceInversePropertyPredicate__TermPredicate();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourceInversePropertyPredicate#uuid() <em>Uuid</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Uuid</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourceInversePropertyPredicate#uuid()
+	 * @generated
+	 */
+	EOperation getReifiedRelationshipSourceInversePropertyPredicate__Uuid();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetPropertyPredicate <em>Reified Relationship Target Property Predicate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Reified Relationship Target Property Predicate</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetPropertyPredicate
+	 * @generated
+	 */
+	EClass getReifiedRelationshipTargetPropertyPredicate();
+
+	/**
+	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetPropertyPredicate#getReifiedRelationship <em>Reified Relationship</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Reified Relationship</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetPropertyPredicate#getReifiedRelationship()
+	 * @see #getReifiedRelationshipTargetPropertyPredicate()
+	 * @generated
+	 */
+	EReference getReifiedRelationshipTargetPropertyPredicate_ReifiedRelationship();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetPropertyPredicate#termPredicate() <em>Term Predicate</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Term Predicate</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetPropertyPredicate#termPredicate()
+	 * @generated
+	 */
+	EOperation getReifiedRelationshipTargetPropertyPredicate__TermPredicate();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetPropertyPredicate#uuid() <em>Uuid</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Uuid</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetPropertyPredicate#uuid()
+	 * @generated
+	 */
+	EOperation getReifiedRelationshipTargetPropertyPredicate__Uuid();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetInversePropertyPredicate <em>Reified Relationship Target Inverse Property Predicate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Reified Relationship Target Inverse Property Predicate</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetInversePropertyPredicate
+	 * @generated
+	 */
+	EClass getReifiedRelationshipTargetInversePropertyPredicate();
+
+	/**
+	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetInversePropertyPredicate#getReifiedRelationship <em>Reified Relationship</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Reified Relationship</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetInversePropertyPredicate#getReifiedRelationship()
+	 * @see #getReifiedRelationshipTargetInversePropertyPredicate()
+	 * @generated
+	 */
+	EReference getReifiedRelationshipTargetInversePropertyPredicate_ReifiedRelationship();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetInversePropertyPredicate#termPredicate() <em>Term Predicate</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Term Predicate</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetInversePropertyPredicate#termPredicate()
+	 * @generated
+	 */
+	EOperation getReifiedRelationshipTargetInversePropertyPredicate__TermPredicate();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetInversePropertyPredicate#uuid() <em>Uuid</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Uuid</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetInversePropertyPredicate#uuid()
+	 * @generated
+	 */
+	EOperation getReifiedRelationshipTargetInversePropertyPredicate__Uuid();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipPropertyPredicate <em>Unreified Relationship Property Predicate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Unreified Relationship Property Predicate</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipPropertyPredicate
+	 * @generated
+	 */
+	EClass getUnreifiedRelationshipPropertyPredicate();
+
+	/**
+	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipPropertyPredicate#getUnreifiedRelationship <em>Unreified Relationship</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Unreified Relationship</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipPropertyPredicate#getUnreifiedRelationship()
+	 * @see #getUnreifiedRelationshipPropertyPredicate()
+	 * @generated
+	 */
+	EReference getUnreifiedRelationshipPropertyPredicate_UnreifiedRelationship();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipPropertyPredicate#termPredicate() <em>Term Predicate</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Term Predicate</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipPropertyPredicate#termPredicate()
+	 * @generated
+	 */
+	EOperation getUnreifiedRelationshipPropertyPredicate__TermPredicate();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipPropertyPredicate#uuid() <em>Uuid</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Uuid</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipPropertyPredicate#uuid()
+	 * @generated
+	 */
+	EOperation getUnreifiedRelationshipPropertyPredicate__Uuid();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipInversePropertyPredicate <em>Unreified Relationship Inverse Property Predicate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Unreified Relationship Inverse Property Predicate</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipInversePropertyPredicate
+	 * @generated
+	 */
+	EClass getUnreifiedRelationshipInversePropertyPredicate();
+
+	/**
+	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipInversePropertyPredicate#getUnreifiedRelationship <em>Unreified Relationship</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Unreified Relationship</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipInversePropertyPredicate#getUnreifiedRelationship()
+	 * @see #getUnreifiedRelationshipInversePropertyPredicate()
+	 * @generated
+	 */
+	EReference getUnreifiedRelationshipInversePropertyPredicate_UnreifiedRelationship();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipInversePropertyPredicate#termPredicate() <em>Term Predicate</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Term Predicate</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipInversePropertyPredicate#termPredicate()
+	 * @generated
+	 */
+	EOperation getUnreifiedRelationshipInversePropertyPredicate__TermPredicate();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipInversePropertyPredicate#uuid() <em>Uuid</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Uuid</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipInversePropertyPredicate#uuid()
+	 * @generated
+	 */
+	EOperation getUnreifiedRelationshipInversePropertyPredicate__Uuid();
+
+	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.TermAxiom <em>Term Axiom</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8634,6 +11112,17 @@ public interface TerminologiesPackage extends EPackage {
 	EReference getEntityScalarDataPropertyParticularRestrictionAxiom_LiteralValue();
 
 	/**
+	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyParticularRestrictionAxiom#getValueType <em>Value Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Value Type</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyParticularRestrictionAxiom#getValueType()
+	 * @see #getEntityScalarDataPropertyParticularRestrictionAxiom()
+	 * @generated
+	 */
+	EReference getEntityScalarDataPropertyParticularRestrictionAxiom_ValueType();
+
+	/**
 	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyParticularRestrictionAxiom#uuid() <em>Uuid</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8870,6 +11359,17 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getRestrictionScalarDataPropertyValue_ScalarPropertyValue();
+
+	/**
+	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue#getValueType <em>Value Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Value Type</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue#getValueType()
+	 * @see #getRestrictionScalarDataPropertyValue()
+	 * @generated
+	 */
+	EReference getRestrictionScalarDataPropertyValue_ValueType();
 
 	/**
 	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue#terminologyBox() <em>Terminology Box</em>}' operation.
@@ -9297,6 +11797,17 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getScalarOneOfLiteralAxiom_Value();
+
+	/**
+	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom#getValueType <em>Value Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Value Type</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom#getValueType()
+	 * @see #getScalarOneOfLiteralAxiom()
+	 * @generated
+	 */
+	EReference getScalarOneOfLiteralAxiom_ValueType();
 
 	/**
 	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom#uuid() <em>Uuid</em>}' operation.
@@ -10124,6 +12635,564 @@ public interface TerminologiesPackage extends EPackage {
 		EClass STRUCTURE = eINSTANCE.getStructure();
 
 		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.RuleImpl <em>Rule</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.RuleImpl
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getRule()
+		 * @generated
+		 */
+		EClass RULE = eINSTANCE.getRule();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ChainRuleImpl <em>Chain Rule</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.ChainRuleImpl
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getChainRule()
+		 * @generated
+		 */
+		EClass CHAIN_RULE = eINSTANCE.getChainRule();
+
+		/**
+		 * The meta object literal for the '<em><b>Head</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CHAIN_RULE__HEAD = eINSTANCE.getChainRule_Head();
+
+		/**
+		 * The meta object literal for the '<em><b>First Segment</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CHAIN_RULE__FIRST_SEGMENT = eINSTANCE.getChainRule_FirstSegment();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.RuleBodySegmentImpl <em>Rule Body Segment</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.RuleBodySegmentImpl
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getRuleBodySegment()
+		 * @generated
+		 */
+		EClass RULE_BODY_SEGMENT = eINSTANCE.getRuleBodySegment();
+
+		/**
+		 * The meta object literal for the '<em><b>Predicate</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RULE_BODY_SEGMENT__PREDICATE = eINSTANCE.getRuleBodySegment_Predicate();
+
+		/**
+		 * The meta object literal for the '<em><b>Next Segment</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RULE_BODY_SEGMENT__NEXT_SEGMENT = eINSTANCE.getRuleBodySegment_NextSegment();
+
+		/**
+		 * The meta object literal for the '<em><b>Previous Segment</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RULE_BODY_SEGMENT__PREVIOUS_SEGMENT = eINSTANCE.getRuleBodySegment_PreviousSegment();
+
+		/**
+		 * The meta object literal for the '<em><b>Rule</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RULE_BODY_SEGMENT__RULE = eINSTANCE.getRuleBodySegment_Rule();
+
+		/**
+		 * The meta object literal for the '<em><b>Position</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation RULE_BODY_SEGMENT___POSITION = eINSTANCE.getRuleBodySegment__Position();
+
+		/**
+		 * The meta object literal for the '<em><b>Chain Rule</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation RULE_BODY_SEGMENT___CHAIN_RULE = eINSTANCE.getRuleBodySegment__ChainRule();
+
+		/**
+		 * The meta object literal for the '<em><b>Uuid</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation RULE_BODY_SEGMENT___UUID = eINSTANCE.getRuleBodySegment__Uuid();
+
+		/**
+		 * The meta object literal for the '<em><b>Module Context</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation RULE_BODY_SEGMENT___MODULE_CONTEXT = eINSTANCE.getRuleBodySegment__ModuleContext();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.SegmentPredicateImpl <em>Segment Predicate</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.SegmentPredicateImpl
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getSegmentPredicate()
+		 * @generated
+		 */
+		EClass SEGMENT_PREDICATE = eINSTANCE.getSegmentPredicate();
+
+		/**
+		 * The meta object literal for the '<em><b>Body Segment</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SEGMENT_PREDICATE__BODY_SEGMENT = eINSTANCE.getSegmentPredicate_BodySegment();
+
+		/**
+		 * The meta object literal for the '<em><b>Term Predicate</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SEGMENT_PREDICATE___TERM_PREDICATE = eINSTANCE.getSegmentPredicate__TermPredicate();
+
+		/**
+		 * The meta object literal for the '<em><b>Module Context</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SEGMENT_PREDICATE___MODULE_CONTEXT = eINSTANCE.getSegmentPredicate__ModuleContext();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.UnarySegmentPredicateImpl <em>Unary Segment Predicate</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.UnarySegmentPredicateImpl
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getUnarySegmentPredicate()
+		 * @generated
+		 */
+		EClass UNARY_SEGMENT_PREDICATE = eINSTANCE.getUnarySegmentPredicate();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.AspectPredicateImpl <em>Aspect Predicate</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.AspectPredicateImpl
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getAspectPredicate()
+		 * @generated
+		 */
+		EClass ASPECT_PREDICATE = eINSTANCE.getAspectPredicate();
+
+		/**
+		 * The meta object literal for the '<em><b>Aspect</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ASPECT_PREDICATE__ASPECT = eINSTANCE.getAspectPredicate_Aspect();
+
+		/**
+		 * The meta object literal for the '<em><b>Term Predicate</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ASPECT_PREDICATE___TERM_PREDICATE = eINSTANCE.getAspectPredicate__TermPredicate();
+
+		/**
+		 * The meta object literal for the '<em><b>Uuid</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ASPECT_PREDICATE___UUID = eINSTANCE.getAspectPredicate__Uuid();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ConceptPredicateImpl <em>Concept Predicate</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.ConceptPredicateImpl
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getConceptPredicate()
+		 * @generated
+		 */
+		EClass CONCEPT_PREDICATE = eINSTANCE.getConceptPredicate();
+
+		/**
+		 * The meta object literal for the '<em><b>Concept</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONCEPT_PREDICATE__CONCEPT = eINSTANCE.getConceptPredicate_Concept();
+
+		/**
+		 * The meta object literal for the '<em><b>Term Predicate</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CONCEPT_PREDICATE___TERM_PREDICATE = eINSTANCE.getConceptPredicate__TermPredicate();
+
+		/**
+		 * The meta object literal for the '<em><b>Uuid</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CONCEPT_PREDICATE___UUID = eINSTANCE.getConceptPredicate__Uuid();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipPredicateImpl <em>Reified Relationship Predicate</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipPredicateImpl
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getReifiedRelationshipPredicate()
+		 * @generated
+		 */
+		EClass REIFIED_RELATIONSHIP_PREDICATE = eINSTANCE.getReifiedRelationshipPredicate();
+
+		/**
+		 * The meta object literal for the '<em><b>Reified Relationship</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REIFIED_RELATIONSHIP_PREDICATE__REIFIED_RELATIONSHIP = eINSTANCE.getReifiedRelationshipPredicate_ReifiedRelationship();
+
+		/**
+		 * The meta object literal for the '<em><b>Term Predicate</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation REIFIED_RELATIONSHIP_PREDICATE___TERM_PREDICATE = eINSTANCE.getReifiedRelationshipPredicate__TermPredicate();
+
+		/**
+		 * The meta object literal for the '<em><b>Uuid</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation REIFIED_RELATIONSHIP_PREDICATE___UUID = eINSTANCE.getReifiedRelationshipPredicate__Uuid();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.BinarySegmentPropertyPredicateImpl <em>Binary Segment Property Predicate</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.BinarySegmentPropertyPredicateImpl
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getBinarySegmentPropertyPredicate()
+		 * @generated
+		 */
+		EClass BINARY_SEGMENT_PROPERTY_PREDICATE = eINSTANCE.getBinarySegmentPropertyPredicate();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.BinarySegmentForwardPropertyPredicateImpl <em>Binary Segment Forward Property Predicate</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.BinarySegmentForwardPropertyPredicateImpl
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getBinarySegmentForwardPropertyPredicate()
+		 * @generated
+		 */
+		EClass BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE = eINSTANCE.getBinarySegmentForwardPropertyPredicate();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.BinarySegmentReversePropertyPredicateImpl <em>Binary Segment Reverse Property Predicate</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.BinarySegmentReversePropertyPredicateImpl
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getBinarySegmentReversePropertyPredicate()
+		 * @generated
+		 */
+		EClass BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE = eINSTANCE.getBinarySegmentReversePropertyPredicate();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipPropertyPredicateImpl <em>Reified Relationship Property Predicate</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipPropertyPredicateImpl
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getReifiedRelationshipPropertyPredicate()
+		 * @generated
+		 */
+		EClass REIFIED_RELATIONSHIP_PROPERTY_PREDICATE = eINSTANCE.getReifiedRelationshipPropertyPredicate();
+
+		/**
+		 * The meta object literal for the '<em><b>Reified Relationship</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REIFIED_RELATIONSHIP_PROPERTY_PREDICATE__REIFIED_RELATIONSHIP = eINSTANCE.getReifiedRelationshipPropertyPredicate_ReifiedRelationship();
+
+		/**
+		 * The meta object literal for the '<em><b>Term Predicate</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation REIFIED_RELATIONSHIP_PROPERTY_PREDICATE___TERM_PREDICATE = eINSTANCE.getReifiedRelationshipPropertyPredicate__TermPredicate();
+
+		/**
+		 * The meta object literal for the '<em><b>Uuid</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation REIFIED_RELATIONSHIP_PROPERTY_PREDICATE___UUID = eINSTANCE.getReifiedRelationshipPropertyPredicate__Uuid();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipInversePropertyPredicateImpl <em>Reified Relationship Inverse Property Predicate</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipInversePropertyPredicateImpl
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getReifiedRelationshipInversePropertyPredicate()
+		 * @generated
+		 */
+		EClass REIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE = eINSTANCE.getReifiedRelationshipInversePropertyPredicate();
+
+		/**
+		 * The meta object literal for the '<em><b>Reified Relationship</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE__REIFIED_RELATIONSHIP = eINSTANCE.getReifiedRelationshipInversePropertyPredicate_ReifiedRelationship();
+
+		/**
+		 * The meta object literal for the '<em><b>Term Predicate</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation REIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE___TERM_PREDICATE = eINSTANCE.getReifiedRelationshipInversePropertyPredicate__TermPredicate();
+
+		/**
+		 * The meta object literal for the '<em><b>Uuid</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation REIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE___UUID = eINSTANCE.getReifiedRelationshipInversePropertyPredicate__Uuid();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipSourcePropertyPredicateImpl <em>Reified Relationship Source Property Predicate</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipSourcePropertyPredicateImpl
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getReifiedRelationshipSourcePropertyPredicate()
+		 * @generated
+		 */
+		EClass REIFIED_RELATIONSHIP_SOURCE_PROPERTY_PREDICATE = eINSTANCE.getReifiedRelationshipSourcePropertyPredicate();
+
+		/**
+		 * The meta object literal for the '<em><b>Reified Relationship</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REIFIED_RELATIONSHIP_SOURCE_PROPERTY_PREDICATE__REIFIED_RELATIONSHIP = eINSTANCE.getReifiedRelationshipSourcePropertyPredicate_ReifiedRelationship();
+
+		/**
+		 * The meta object literal for the '<em><b>Term Predicate</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation REIFIED_RELATIONSHIP_SOURCE_PROPERTY_PREDICATE___TERM_PREDICATE = eINSTANCE.getReifiedRelationshipSourcePropertyPredicate__TermPredicate();
+
+		/**
+		 * The meta object literal for the '<em><b>Uuid</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation REIFIED_RELATIONSHIP_SOURCE_PROPERTY_PREDICATE___UUID = eINSTANCE.getReifiedRelationshipSourcePropertyPredicate__Uuid();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipSourceInversePropertyPredicateImpl <em>Reified Relationship Source Inverse Property Predicate</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipSourceInversePropertyPredicateImpl
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getReifiedRelationshipSourceInversePropertyPredicate()
+		 * @generated
+		 */
+		EClass REIFIED_RELATIONSHIP_SOURCE_INVERSE_PROPERTY_PREDICATE = eINSTANCE.getReifiedRelationshipSourceInversePropertyPredicate();
+
+		/**
+		 * The meta object literal for the '<em><b>Reified Relationship</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REIFIED_RELATIONSHIP_SOURCE_INVERSE_PROPERTY_PREDICATE__REIFIED_RELATIONSHIP = eINSTANCE.getReifiedRelationshipSourceInversePropertyPredicate_ReifiedRelationship();
+
+		/**
+		 * The meta object literal for the '<em><b>Term Predicate</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation REIFIED_RELATIONSHIP_SOURCE_INVERSE_PROPERTY_PREDICATE___TERM_PREDICATE = eINSTANCE.getReifiedRelationshipSourceInversePropertyPredicate__TermPredicate();
+
+		/**
+		 * The meta object literal for the '<em><b>Uuid</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation REIFIED_RELATIONSHIP_SOURCE_INVERSE_PROPERTY_PREDICATE___UUID = eINSTANCE.getReifiedRelationshipSourceInversePropertyPredicate__Uuid();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipTargetPropertyPredicateImpl <em>Reified Relationship Target Property Predicate</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipTargetPropertyPredicateImpl
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getReifiedRelationshipTargetPropertyPredicate()
+		 * @generated
+		 */
+		EClass REIFIED_RELATIONSHIP_TARGET_PROPERTY_PREDICATE = eINSTANCE.getReifiedRelationshipTargetPropertyPredicate();
+
+		/**
+		 * The meta object literal for the '<em><b>Reified Relationship</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REIFIED_RELATIONSHIP_TARGET_PROPERTY_PREDICATE__REIFIED_RELATIONSHIP = eINSTANCE.getReifiedRelationshipTargetPropertyPredicate_ReifiedRelationship();
+
+		/**
+		 * The meta object literal for the '<em><b>Term Predicate</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation REIFIED_RELATIONSHIP_TARGET_PROPERTY_PREDICATE___TERM_PREDICATE = eINSTANCE.getReifiedRelationshipTargetPropertyPredicate__TermPredicate();
+
+		/**
+		 * The meta object literal for the '<em><b>Uuid</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation REIFIED_RELATIONSHIP_TARGET_PROPERTY_PREDICATE___UUID = eINSTANCE.getReifiedRelationshipTargetPropertyPredicate__Uuid();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipTargetInversePropertyPredicateImpl <em>Reified Relationship Target Inverse Property Predicate</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipTargetInversePropertyPredicateImpl
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getReifiedRelationshipTargetInversePropertyPredicate()
+		 * @generated
+		 */
+		EClass REIFIED_RELATIONSHIP_TARGET_INVERSE_PROPERTY_PREDICATE = eINSTANCE.getReifiedRelationshipTargetInversePropertyPredicate();
+
+		/**
+		 * The meta object literal for the '<em><b>Reified Relationship</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REIFIED_RELATIONSHIP_TARGET_INVERSE_PROPERTY_PREDICATE__REIFIED_RELATIONSHIP = eINSTANCE.getReifiedRelationshipTargetInversePropertyPredicate_ReifiedRelationship();
+
+		/**
+		 * The meta object literal for the '<em><b>Term Predicate</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation REIFIED_RELATIONSHIP_TARGET_INVERSE_PROPERTY_PREDICATE___TERM_PREDICATE = eINSTANCE.getReifiedRelationshipTargetInversePropertyPredicate__TermPredicate();
+
+		/**
+		 * The meta object literal for the '<em><b>Uuid</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation REIFIED_RELATIONSHIP_TARGET_INVERSE_PROPERTY_PREDICATE___UUID = eINSTANCE.getReifiedRelationshipTargetInversePropertyPredicate__Uuid();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.UnreifiedRelationshipPropertyPredicateImpl <em>Unreified Relationship Property Predicate</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.UnreifiedRelationshipPropertyPredicateImpl
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getUnreifiedRelationshipPropertyPredicate()
+		 * @generated
+		 */
+		EClass UNREIFIED_RELATIONSHIP_PROPERTY_PREDICATE = eINSTANCE.getUnreifiedRelationshipPropertyPredicate();
+
+		/**
+		 * The meta object literal for the '<em><b>Unreified Relationship</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference UNREIFIED_RELATIONSHIP_PROPERTY_PREDICATE__UNREIFIED_RELATIONSHIP = eINSTANCE.getUnreifiedRelationshipPropertyPredicate_UnreifiedRelationship();
+
+		/**
+		 * The meta object literal for the '<em><b>Term Predicate</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation UNREIFIED_RELATIONSHIP_PROPERTY_PREDICATE___TERM_PREDICATE = eINSTANCE.getUnreifiedRelationshipPropertyPredicate__TermPredicate();
+
+		/**
+		 * The meta object literal for the '<em><b>Uuid</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation UNREIFIED_RELATIONSHIP_PROPERTY_PREDICATE___UUID = eINSTANCE.getUnreifiedRelationshipPropertyPredicate__Uuid();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.UnreifiedRelationshipInversePropertyPredicateImpl <em>Unreified Relationship Inverse Property Predicate</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.UnreifiedRelationshipInversePropertyPredicateImpl
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getUnreifiedRelationshipInversePropertyPredicate()
+		 * @generated
+		 */
+		EClass UNREIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE = eINSTANCE.getUnreifiedRelationshipInversePropertyPredicate();
+
+		/**
+		 * The meta object literal for the '<em><b>Unreified Relationship</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference UNREIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE__UNREIFIED_RELATIONSHIP = eINSTANCE.getUnreifiedRelationshipInversePropertyPredicate_UnreifiedRelationship();
+
+		/**
+		 * The meta object literal for the '<em><b>Term Predicate</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation UNREIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE___TERM_PREDICATE = eINSTANCE.getUnreifiedRelationshipInversePropertyPredicate__TermPredicate();
+
+		/**
+		 * The meta object literal for the '<em><b>Uuid</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation UNREIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE___UUID = eINSTANCE.getUnreifiedRelationshipInversePropertyPredicate__Uuid();
+
+		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.TermAxiomImpl <em>Term Axiom</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -10500,6 +13569,14 @@ public interface TerminologiesPackage extends EPackage {
 		EReference ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__LITERAL_VALUE = eINSTANCE.getEntityScalarDataPropertyParticularRestrictionAxiom_LiteralValue();
 
 		/**
+		 * The meta object literal for the '<em><b>Value Type</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__VALUE_TYPE = eINSTANCE.getEntityScalarDataPropertyParticularRestrictionAxiom_ValueType();
+
+		/**
 		 * The meta object literal for the '<em><b>Uuid</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -10692,6 +13769,14 @@ public interface TerminologiesPackage extends EPackage {
 		 * @generated
 		 */
 		EReference RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE = eINSTANCE.getRestrictionScalarDataPropertyValue_ScalarPropertyValue();
+
+		/**
+		 * The meta object literal for the '<em><b>Value Type</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__VALUE_TYPE = eINSTANCE.getRestrictionScalarDataPropertyValue_ValueType();
 
 		/**
 		 * The meta object literal for the '<em><b>Terminology Box</b></em>' operation.
@@ -11032,6 +14117,14 @@ public interface TerminologiesPackage extends EPackage {
 		 * @generated
 		 */
 		EReference SCALAR_ONE_OF_LITERAL_AXIOM__VALUE = eINSTANCE.getScalarOneOfLiteralAxiom_Value();
+
+		/**
+		 * The meta object literal for the '<em><b>Value Type</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SCALAR_ONE_OF_LITERAL_AXIOM__VALUE_TYPE = eINSTANCE.getScalarOneOfLiteralAxiom_ValueType();
 
 		/**
 		 * The meta object literal for the '<em><b>Uuid</b></em>' operation.

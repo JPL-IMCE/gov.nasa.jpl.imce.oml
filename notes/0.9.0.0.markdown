@@ -7,3 +7,5 @@ gov.nasa.jpl.imce.oml.tycho 0.9.0.0 resolves major problems found in 0.8.0.1
 - [#107 Add support for OML entity relationship chains](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/107)
 
 - [#111 Update to Eclipse Oxygen](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/111)
+
+- [#124 Add Eclipse EEF widgets to the OML target platform](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/124)

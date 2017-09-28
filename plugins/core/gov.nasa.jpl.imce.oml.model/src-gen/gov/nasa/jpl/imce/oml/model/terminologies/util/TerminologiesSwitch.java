@@ -426,6 +426,184 @@ public class TerminologiesSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case TerminologiesPackage.RULE: {
+				Rule rule = (Rule)theEObject;
+				T result = caseRule(rule);
+				if (result == null) result = caseTerm(rule);
+				if (result == null) result = caseTerminologyBoxStatement(rule);
+				if (result == null) result = caseResource(rule);
+				if (result == null) result = caseModuleElement(rule);
+				if (result == null) result = caseElement(rule);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TerminologiesPackage.CHAIN_RULE: {
+				ChainRule chainRule = (ChainRule)theEObject;
+				T result = caseChainRule(chainRule);
+				if (result == null) result = caseRule(chainRule);
+				if (result == null) result = caseTerm(chainRule);
+				if (result == null) result = caseTerminologyBoxStatement(chainRule);
+				if (result == null) result = caseResource(chainRule);
+				if (result == null) result = caseModuleElement(chainRule);
+				if (result == null) result = caseElement(chainRule);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TerminologiesPackage.RULE_BODY_SEGMENT: {
+				RuleBodySegment ruleBodySegment = (RuleBodySegment)theEObject;
+				T result = caseRuleBodySegment(ruleBodySegment);
+				if (result == null) result = caseElement(ruleBodySegment);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TerminologiesPackage.SEGMENT_PREDICATE: {
+				SegmentPredicate segmentPredicate = (SegmentPredicate)theEObject;
+				T result = caseSegmentPredicate(segmentPredicate);
+				if (result == null) result = caseElement(segmentPredicate);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TerminologiesPackage.UNARY_SEGMENT_PREDICATE: {
+				UnarySegmentPredicate unarySegmentPredicate = (UnarySegmentPredicate)theEObject;
+				T result = caseUnarySegmentPredicate(unarySegmentPredicate);
+				if (result == null) result = caseSegmentPredicate(unarySegmentPredicate);
+				if (result == null) result = caseElement(unarySegmentPredicate);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TerminologiesPackage.ASPECT_PREDICATE: {
+				AspectPredicate aspectPredicate = (AspectPredicate)theEObject;
+				T result = caseAspectPredicate(aspectPredicate);
+				if (result == null) result = caseUnarySegmentPredicate(aspectPredicate);
+				if (result == null) result = caseSegmentPredicate(aspectPredicate);
+				if (result == null) result = caseElement(aspectPredicate);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TerminologiesPackage.CONCEPT_PREDICATE: {
+				ConceptPredicate conceptPredicate = (ConceptPredicate)theEObject;
+				T result = caseConceptPredicate(conceptPredicate);
+				if (result == null) result = caseUnarySegmentPredicate(conceptPredicate);
+				if (result == null) result = caseSegmentPredicate(conceptPredicate);
+				if (result == null) result = caseElement(conceptPredicate);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TerminologiesPackage.REIFIED_RELATIONSHIP_PREDICATE: {
+				ReifiedRelationshipPredicate reifiedRelationshipPredicate = (ReifiedRelationshipPredicate)theEObject;
+				T result = caseReifiedRelationshipPredicate(reifiedRelationshipPredicate);
+				if (result == null) result = caseUnarySegmentPredicate(reifiedRelationshipPredicate);
+				if (result == null) result = caseSegmentPredicate(reifiedRelationshipPredicate);
+				if (result == null) result = caseElement(reifiedRelationshipPredicate);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TerminologiesPackage.BINARY_SEGMENT_PROPERTY_PREDICATE: {
+				BinarySegmentPropertyPredicate binarySegmentPropertyPredicate = (BinarySegmentPropertyPredicate)theEObject;
+				T result = caseBinarySegmentPropertyPredicate(binarySegmentPropertyPredicate);
+				if (result == null) result = caseSegmentPredicate(binarySegmentPropertyPredicate);
+				if (result == null) result = caseElement(binarySegmentPropertyPredicate);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TerminologiesPackage.BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE: {
+				BinarySegmentForwardPropertyPredicate binarySegmentForwardPropertyPredicate = (BinarySegmentForwardPropertyPredicate)theEObject;
+				T result = caseBinarySegmentForwardPropertyPredicate(binarySegmentForwardPropertyPredicate);
+				if (result == null) result = caseBinarySegmentPropertyPredicate(binarySegmentForwardPropertyPredicate);
+				if (result == null) result = caseSegmentPredicate(binarySegmentForwardPropertyPredicate);
+				if (result == null) result = caseElement(binarySegmentForwardPropertyPredicate);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TerminologiesPackage.BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE: {
+				BinarySegmentReversePropertyPredicate binarySegmentReversePropertyPredicate = (BinarySegmentReversePropertyPredicate)theEObject;
+				T result = caseBinarySegmentReversePropertyPredicate(binarySegmentReversePropertyPredicate);
+				if (result == null) result = caseBinarySegmentPropertyPredicate(binarySegmentReversePropertyPredicate);
+				if (result == null) result = caseSegmentPredicate(binarySegmentReversePropertyPredicate);
+				if (result == null) result = caseElement(binarySegmentReversePropertyPredicate);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TerminologiesPackage.REIFIED_RELATIONSHIP_PROPERTY_PREDICATE: {
+				ReifiedRelationshipPropertyPredicate reifiedRelationshipPropertyPredicate = (ReifiedRelationshipPropertyPredicate)theEObject;
+				T result = caseReifiedRelationshipPropertyPredicate(reifiedRelationshipPropertyPredicate);
+				if (result == null) result = caseBinarySegmentForwardPropertyPredicate(reifiedRelationshipPropertyPredicate);
+				if (result == null) result = caseBinarySegmentPropertyPredicate(reifiedRelationshipPropertyPredicate);
+				if (result == null) result = caseSegmentPredicate(reifiedRelationshipPropertyPredicate);
+				if (result == null) result = caseElement(reifiedRelationshipPropertyPredicate);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TerminologiesPackage.REIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE: {
+				ReifiedRelationshipInversePropertyPredicate reifiedRelationshipInversePropertyPredicate = (ReifiedRelationshipInversePropertyPredicate)theEObject;
+				T result = caseReifiedRelationshipInversePropertyPredicate(reifiedRelationshipInversePropertyPredicate);
+				if (result == null) result = caseBinarySegmentReversePropertyPredicate(reifiedRelationshipInversePropertyPredicate);
+				if (result == null) result = caseBinarySegmentPropertyPredicate(reifiedRelationshipInversePropertyPredicate);
+				if (result == null) result = caseSegmentPredicate(reifiedRelationshipInversePropertyPredicate);
+				if (result == null) result = caseElement(reifiedRelationshipInversePropertyPredicate);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TerminologiesPackage.REIFIED_RELATIONSHIP_SOURCE_PROPERTY_PREDICATE: {
+				ReifiedRelationshipSourcePropertyPredicate reifiedRelationshipSourcePropertyPredicate = (ReifiedRelationshipSourcePropertyPredicate)theEObject;
+				T result = caseReifiedRelationshipSourcePropertyPredicate(reifiedRelationshipSourcePropertyPredicate);
+				if (result == null) result = caseBinarySegmentForwardPropertyPredicate(reifiedRelationshipSourcePropertyPredicate);
+				if (result == null) result = caseBinarySegmentPropertyPredicate(reifiedRelationshipSourcePropertyPredicate);
+				if (result == null) result = caseSegmentPredicate(reifiedRelationshipSourcePropertyPredicate);
+				if (result == null) result = caseElement(reifiedRelationshipSourcePropertyPredicate);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TerminologiesPackage.REIFIED_RELATIONSHIP_SOURCE_INVERSE_PROPERTY_PREDICATE: {
+				ReifiedRelationshipSourceInversePropertyPredicate reifiedRelationshipSourceInversePropertyPredicate = (ReifiedRelationshipSourceInversePropertyPredicate)theEObject;
+				T result = caseReifiedRelationshipSourceInversePropertyPredicate(reifiedRelationshipSourceInversePropertyPredicate);
+				if (result == null) result = caseBinarySegmentReversePropertyPredicate(reifiedRelationshipSourceInversePropertyPredicate);
+				if (result == null) result = caseBinarySegmentPropertyPredicate(reifiedRelationshipSourceInversePropertyPredicate);
+				if (result == null) result = caseSegmentPredicate(reifiedRelationshipSourceInversePropertyPredicate);
+				if (result == null) result = caseElement(reifiedRelationshipSourceInversePropertyPredicate);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TerminologiesPackage.REIFIED_RELATIONSHIP_TARGET_PROPERTY_PREDICATE: {
+				ReifiedRelationshipTargetPropertyPredicate reifiedRelationshipTargetPropertyPredicate = (ReifiedRelationshipTargetPropertyPredicate)theEObject;
+				T result = caseReifiedRelationshipTargetPropertyPredicate(reifiedRelationshipTargetPropertyPredicate);
+				if (result == null) result = caseBinarySegmentForwardPropertyPredicate(reifiedRelationshipTargetPropertyPredicate);
+				if (result == null) result = caseBinarySegmentPropertyPredicate(reifiedRelationshipTargetPropertyPredicate);
+				if (result == null) result = caseSegmentPredicate(reifiedRelationshipTargetPropertyPredicate);
+				if (result == null) result = caseElement(reifiedRelationshipTargetPropertyPredicate);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TerminologiesPackage.REIFIED_RELATIONSHIP_TARGET_INVERSE_PROPERTY_PREDICATE: {
+				ReifiedRelationshipTargetInversePropertyPredicate reifiedRelationshipTargetInversePropertyPredicate = (ReifiedRelationshipTargetInversePropertyPredicate)theEObject;
+				T result = caseReifiedRelationshipTargetInversePropertyPredicate(reifiedRelationshipTargetInversePropertyPredicate);
+				if (result == null) result = caseBinarySegmentReversePropertyPredicate(reifiedRelationshipTargetInversePropertyPredicate);
+				if (result == null) result = caseBinarySegmentPropertyPredicate(reifiedRelationshipTargetInversePropertyPredicate);
+				if (result == null) result = caseSegmentPredicate(reifiedRelationshipTargetInversePropertyPredicate);
+				if (result == null) result = caseElement(reifiedRelationshipTargetInversePropertyPredicate);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TerminologiesPackage.UNREIFIED_RELATIONSHIP_PROPERTY_PREDICATE: {
+				UnreifiedRelationshipPropertyPredicate unreifiedRelationshipPropertyPredicate = (UnreifiedRelationshipPropertyPredicate)theEObject;
+				T result = caseUnreifiedRelationshipPropertyPredicate(unreifiedRelationshipPropertyPredicate);
+				if (result == null) result = caseBinarySegmentForwardPropertyPredicate(unreifiedRelationshipPropertyPredicate);
+				if (result == null) result = caseBinarySegmentPropertyPredicate(unreifiedRelationshipPropertyPredicate);
+				if (result == null) result = caseSegmentPredicate(unreifiedRelationshipPropertyPredicate);
+				if (result == null) result = caseElement(unreifiedRelationshipPropertyPredicate);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TerminologiesPackage.UNREIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE: {
+				UnreifiedRelationshipInversePropertyPredicate unreifiedRelationshipInversePropertyPredicate = (UnreifiedRelationshipInversePropertyPredicate)theEObject;
+				T result = caseUnreifiedRelationshipInversePropertyPredicate(unreifiedRelationshipInversePropertyPredicate);
+				if (result == null) result = caseBinarySegmentReversePropertyPredicate(unreifiedRelationshipInversePropertyPredicate);
+				if (result == null) result = caseBinarySegmentPropertyPredicate(unreifiedRelationshipInversePropertyPredicate);
+				if (result == null) result = caseSegmentPredicate(unreifiedRelationshipInversePropertyPredicate);
+				if (result == null) result = caseElement(unreifiedRelationshipInversePropertyPredicate);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case TerminologiesPackage.TERM_AXIOM: {
 				TermAxiom termAxiom = (TermAxiom)theEObject;
 				T result = caseTermAxiom(termAxiom);
@@ -1185,6 +1363,291 @@ public class TerminologiesSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseStructure(Structure object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Rule</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Rule</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRule(Rule object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Chain Rule</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Chain Rule</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseChainRule(ChainRule object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Rule Body Segment</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Rule Body Segment</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRuleBodySegment(RuleBodySegment object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Segment Predicate</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Segment Predicate</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSegmentPredicate(SegmentPredicate object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Unary Segment Predicate</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Unary Segment Predicate</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseUnarySegmentPredicate(UnarySegmentPredicate object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Aspect Predicate</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Aspect Predicate</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAspectPredicate(AspectPredicate object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Concept Predicate</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Concept Predicate</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseConceptPredicate(ConceptPredicate object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Reified Relationship Predicate</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Reified Relationship Predicate</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseReifiedRelationshipPredicate(ReifiedRelationshipPredicate object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Binary Segment Property Predicate</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Binary Segment Property Predicate</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseBinarySegmentPropertyPredicate(BinarySegmentPropertyPredicate object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Binary Segment Forward Property Predicate</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Binary Segment Forward Property Predicate</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseBinarySegmentForwardPropertyPredicate(BinarySegmentForwardPropertyPredicate object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Binary Segment Reverse Property Predicate</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Binary Segment Reverse Property Predicate</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseBinarySegmentReversePropertyPredicate(BinarySegmentReversePropertyPredicate object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Reified Relationship Property Predicate</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Reified Relationship Property Predicate</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseReifiedRelationshipPropertyPredicate(ReifiedRelationshipPropertyPredicate object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Reified Relationship Inverse Property Predicate</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Reified Relationship Inverse Property Predicate</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseReifiedRelationshipInversePropertyPredicate(ReifiedRelationshipInversePropertyPredicate object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Reified Relationship Source Property Predicate</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Reified Relationship Source Property Predicate</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseReifiedRelationshipSourcePropertyPredicate(ReifiedRelationshipSourcePropertyPredicate object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Reified Relationship Source Inverse Property Predicate</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Reified Relationship Source Inverse Property Predicate</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseReifiedRelationshipSourceInversePropertyPredicate(ReifiedRelationshipSourceInversePropertyPredicate object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Reified Relationship Target Property Predicate</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Reified Relationship Target Property Predicate</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseReifiedRelationshipTargetPropertyPredicate(ReifiedRelationshipTargetPropertyPredicate object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Reified Relationship Target Inverse Property Predicate</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Reified Relationship Target Inverse Property Predicate</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseReifiedRelationshipTargetInversePropertyPredicate(ReifiedRelationshipTargetInversePropertyPredicate object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Unreified Relationship Property Predicate</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Unreified Relationship Property Predicate</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseUnreifiedRelationshipPropertyPredicate(UnreifiedRelationshipPropertyPredicate object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Unreified Relationship Inverse Property Predicate</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Unreified Relationship Inverse Property Predicate</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseUnreifiedRelationshipInversePropertyPredicate(UnreifiedRelationshipInversePropertyPredicate object) {
 		return null;
 	}
 

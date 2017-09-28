@@ -25,6 +25,7 @@ import gov.nasa.jpl.imce.oml.model.common.impl.ElementImpl;
 
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
 
+import gov.nasa.jpl.imce.oml.model.terminologies.DataRange;
 import gov.nasa.jpl.imce.oml.model.terminologies.DataRelationshipToScalar;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyContext;
@@ -61,6 +62,7 @@ import org.eclipse.xtext.xbase.lib.Pair;
  *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.RestrictionScalarDataPropertyValueImpl#getStructuredDataPropertyContext <em>Structured Data Property Context</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.RestrictionScalarDataPropertyValueImpl#getScalarDataProperty <em>Scalar Data Property</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.RestrictionScalarDataPropertyValueImpl#getScalarPropertyValue <em>Scalar Property Value</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.RestrictionScalarDataPropertyValueImpl#getValueType <em>Value Type</em>}</li>
  * </ul>
  *
  * @generated
@@ -85,6 +87,16 @@ public class RestrictionScalarDataPropertyValueImpl extends ElementImpl implemen
 	 * @ordered
 	 */
 	protected LiteralValue scalarPropertyValue;
+
+	/**
+	 * The cached value of the '{@link #getValueType() <em>Value Type</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValueType()
+	 * @generated
+	 * @ordered
+	 */
+	protected DataRange valueType;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -242,6 +254,44 @@ public class RestrictionScalarDataPropertyValueImpl extends ElementImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public DataRange getValueType() {
+		if (valueType != null && ((EObject)valueType).eIsProxy()) {
+			InternalEObject oldValueType = (InternalEObject)valueType;
+			valueType = (DataRange)eResolveProxy(oldValueType);
+			if (valueType != oldValueType) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, TerminologiesPackage.RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__VALUE_TYPE, oldValueType, valueType));
+			}
+		}
+		return valueType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DataRange basicGetValueType() {
+		return valueType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setValueType(DataRange newValueType) {
+		DataRange oldValueType = valueType;
+		valueType = newValueType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__VALUE_TYPE, oldValueType, valueType));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public TerminologyBox terminologyBox() {
 		RestrictionStructuredDataPropertyContext _structuredDataPropertyContext = this.getStructuredDataPropertyContext();
 		TerminologyBox _terminologyBox = null;
@@ -362,6 +412,9 @@ public class RestrictionScalarDataPropertyValueImpl extends ElementImpl implemen
 				return basicGetScalarDataProperty();
 			case TerminologiesPackage.RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE:
 				return getScalarPropertyValue();
+			case TerminologiesPackage.RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__VALUE_TYPE:
+				if (resolve) return getValueType();
+				return basicGetValueType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -382,6 +435,9 @@ public class RestrictionScalarDataPropertyValueImpl extends ElementImpl implemen
 				return;
 			case TerminologiesPackage.RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE:
 				setScalarPropertyValue((LiteralValue)newValue);
+				return;
+			case TerminologiesPackage.RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__VALUE_TYPE:
+				setValueType((DataRange)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -404,6 +460,9 @@ public class RestrictionScalarDataPropertyValueImpl extends ElementImpl implemen
 			case TerminologiesPackage.RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE:
 				setScalarPropertyValue((LiteralValue)null);
 				return;
+			case TerminologiesPackage.RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__VALUE_TYPE:
+				setValueType((DataRange)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -422,6 +481,8 @@ public class RestrictionScalarDataPropertyValueImpl extends ElementImpl implemen
 				return scalarDataProperty != null;
 			case TerminologiesPackage.RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE:
 				return scalarPropertyValue != null;
+			case TerminologiesPackage.RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__VALUE_TYPE:
+				return valueType != null;
 		}
 		return super.eIsSet(featureID);
 	}
