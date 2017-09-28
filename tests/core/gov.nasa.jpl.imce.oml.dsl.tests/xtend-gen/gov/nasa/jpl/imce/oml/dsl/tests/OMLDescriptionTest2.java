@@ -39,6 +39,7 @@ import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.Scalar;
+import gov.nasa.jpl.imce.oml.model.terminologies.StringScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesFactory;
 import java.io.ByteArrayOutputStream;
 import org.eclipse.emf.common.util.URI;
@@ -56,7 +57,7 @@ import org.junit.runner.RunWith;
 @RunWith(XtextRunner.class)
 @InjectWith(OMLInjectorProvider.class)
 @SuppressWarnings("all")
-public class OMLDescriptionTest1 {
+public class OMLDescriptionTest2 {
   @Inject
   private Provider<XtextResourceSet> resourceSetProvider;
   
@@ -71,18 +72,24 @@ public class OMLDescriptionTest1 {
   @Test
   public void test() {
     final XtextResourceSet rs = this.resourceSetProvider.get();
-    final Resource r1 = rs.createResource(URI.createFileURI("file:OMLDescriptionTest1A.oml"));
+    final Resource r1 = rs.createResource(URI.createFileURI("file:OMLDescriptionTest2A.oml"));
     final Extent e1 = this.commonF.createExtent();
     r1.getContents().add(e1);
     final TerminologyGraph g = this.graphsF.createTerminologyGraph();
     g.setExtent(e1);
-    g.setIri("http://www.example.org/OMLDescriptionTest1A");
+    g.setIri("http://www.example.org/OMLDescriptionTest2A");
     final Concept c = this.terminologiesF.createConcept();
     c.setTbox(g);
     c.setName("Box");
     final Scalar sc = this.terminologiesF.createScalar();
     sc.setTbox(g);
     sc.setName("String");
+    final StringScalarRestriction scr = this.terminologiesF.createStringScalarRestriction();
+    scr.setTbox(g);
+    scr.setName("NonEmptyString");
+    scr.setRestrictedRange(sc);
+    PositiveIntegerValue _positiveIntegerValue = new PositiveIntegerValue("1");
+    scr.setMinLength(_positiveIntegerValue);
     final Scalar sc_double = this.terminologiesF.createScalar();
     sc_double.setTbox(g);
     sc_double.setName("Double");
@@ -90,8 +97,8 @@ public class OMLDescriptionTest1 {
     sc_boolean.setTbox(g);
     sc_boolean.setName("Boolean");
     final LiteralDecimal zero = this.commonF.createLiteralDecimal();
-    PositiveIntegerValue _positiveIntegerValue = new PositiveIntegerValue("0");
-    zero.setDecimal(_positiveIntegerValue);
+    PositiveIntegerValue _positiveIntegerValue_1 = new PositiveIntegerValue("0");
+    zero.setDecimal(_positiveIntegerValue_1);
     final NumericScalarRestriction sc_positive_double = this.terminologiesF.createNumericScalarRestriction();
     sc_positive_double.setTbox(g);
     sc_positive_double.setName("PositiveDouble");
@@ -106,7 +113,7 @@ public class OMLDescriptionTest1 {
     dp2.setTbox(g);
     dp2.setName("length");
     dp2.setDomain(c);
-    dp2.setRange(sc_double);
+    dp2.setRange(sc_positive_double);
     final EntityScalarDataProperty dp3 = this.terminologiesF.createEntityScalarDataProperty();
     dp3.setTbox(g);
     dp3.setName("isSmall");
@@ -114,7 +121,7 @@ public class OMLDescriptionTest1 {
     dp3.setRange(sc_boolean);
     final String text1 = this.serialize(r1);
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("open terminology <http://www.example.org/OMLDescriptionTest1A> {");
+    _builder.append("open terminology <http://www.example.org/OMLDescriptionTest2A> {");
     _builder.newLine();
     _builder.newLine();
     _builder.append("\t");
@@ -123,6 +130,19 @@ public class OMLDescriptionTest1 {
     _builder.newLine();
     _builder.append("\t");
     _builder.append("scalar String");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("stringScalarRestriction NonEmptyString {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("minLength 1");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("restrictedRange String");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
     _builder.newLine();
     _builder.newLine();
     _builder.append("\t");
@@ -166,7 +186,7 @@ public class OMLDescriptionTest1 {
     _builder.append("domain Box");
     _builder.newLine();
     _builder.append("\t\t");
-    _builder.append("range Double");
+    _builder.append("range PositiveDouble");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("}");
@@ -189,12 +209,12 @@ public class OMLDescriptionTest1 {
     _builder.newLine();
     final String expected1 = _builder.toString();
     Assert.assertEquals(text1, expected1);
-    final Resource r2 = rs.createResource(URI.createFileURI("file:OMLDescriptionTest1B.oml"));
+    final Resource r2 = rs.createResource(URI.createFileURI("file:OMLDescriptionTest2B.oml"));
     final Extent e2 = this.commonF.createExtent();
     r2.getContents().add(e2);
     final DescriptionBox db = this.descriptionsF.createDescriptionBox();
     db.setExtent(e2);
-    db.setIri("http://www.example.org/OMLDescriptionTest1B");
+    db.setIri("http://www.example.org/OMLDescriptionTest2B");
     final DescriptionBoxExtendsClosedWorldDefinitions ext = this.descriptionsF.createDescriptionBoxExtendsClosedWorldDefinitions();
     ext.setDescriptionBox(db);
     ext.setClosedWorldDefinitions(g);
@@ -209,6 +229,7 @@ public class OMLDescriptionTest1 {
     final LiteralString ci_name_lit = this.commonF.createLiteralString();
     StringValue _stringValue = new StringValue("box #0");
     ci_name_lit.setString(_stringValue);
+    ci_name.setValueType(scr);
     ci_name.setScalarPropertyValue(ci_name_lit);
     final SingletonInstanceScalarDataPropertyValue ci_length = this.descriptionsF.createSingletonInstanceScalarDataPropertyValue();
     ci_length.setDescriptionBox(db);
@@ -218,6 +239,7 @@ public class OMLDescriptionTest1 {
     FloatValue _floatValue = new FloatValue("123.45");
     ci_length_lit.setFloat(_floatValue);
     ci_length.setScalarPropertyValue(ci_length_lit);
+    ci_length.setValueType(sc_positive_double);
     final SingletonInstanceScalarDataPropertyValue ci_isSmall = this.descriptionsF.createSingletonInstanceScalarDataPropertyValue();
     ci_isSmall.setDescriptionBox(db);
     ci_isSmall.setScalarDataProperty(dp3);
@@ -227,27 +249,27 @@ public class OMLDescriptionTest1 {
     ci_isSmall.setScalarPropertyValue(ci_isSmall_lit);
     final String text2 = this.serialize(r2);
     StringConcatenation _builder_1 = new StringConcatenation();
-    _builder_1.append("final descriptionBox <http://www.example.org/OMLDescriptionTest1B> {");
+    _builder_1.append("final descriptionBox <http://www.example.org/OMLDescriptionTest2B> {");
     _builder_1.newLine();
     _builder_1.newLine();
     _builder_1.append("\t");
-    _builder_1.append("extends <http://www.example.org/OMLDescriptionTest1A>");
+    _builder_1.append("extends <http://www.example.org/OMLDescriptionTest2A>");
     _builder_1.newLine();
     _builder_1.newLine();
     _builder_1.append("\t");
-    _builder_1.append("conceptInstance(boite0 is-a OMLDescriptionTest1A:Box)");
+    _builder_1.append("conceptInstance(boite0 is-a OMLDescriptionTest2A:Box)");
     _builder_1.newLine();
     _builder_1.newLine();
     _builder_1.append("\t");
-    _builder_1.append("boite0 . OMLDescriptionTest1A:name = \"box #0\"");
+    _builder_1.append("boite0 . OMLDescriptionTest2A:name = \"box #0\" ^^ OMLDescriptionTest2A:NonEmptyString");
     _builder_1.newLine();
     _builder_1.newLine();
     _builder_1.append("\t");
-    _builder_1.append("boite0 . OMLDescriptionTest1A:length = 123.45");
+    _builder_1.append("boite0 . OMLDescriptionTest2A:length = 123.45 ^^ OMLDescriptionTest2A:PositiveDouble");
     _builder_1.newLine();
     _builder_1.newLine();
     _builder_1.append("\t");
-    _builder_1.append("boite0 . OMLDescriptionTest1A:isSmall = false");
+    _builder_1.append("boite0 . OMLDescriptionTest2A:isSmall = false");
     _builder_1.newLine();
     _builder_1.newLine();
     _builder_1.append("}");

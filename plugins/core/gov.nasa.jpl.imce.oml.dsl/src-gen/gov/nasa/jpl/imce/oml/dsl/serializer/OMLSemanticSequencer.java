@@ -702,7 +702,8 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *         annotations+=AnnotationPropertyValue* 
 	 *         restrictedEntity=[Entity|Reference] 
 	 *         scalarProperty=[EntityScalarDataProperty|Reference] 
-	 *         literalValue=LiteralValue
+	 *         literalValue=LiteralValue 
+	 *         valueType=[DataRange|Reference]?
 	 *     )
 	 */
 	protected void sequence_EntityScalarDataPropertyParticularRestrictionAxiom(ISerializationContext context, EntityScalarDataPropertyParticularRestrictionAxiom semanticObject) {
@@ -1142,7 +1143,12 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     RestrictionScalarDataPropertyValue returns RestrictionScalarDataPropertyValue
 	 *
 	 * Constraint:
-	 *     (annotations+=AnnotationPropertyValue* scalarDataProperty=[ScalarDataProperty|Reference] scalarPropertyValue=LiteralValue)
+	 *     (
+	 *         annotations+=AnnotationPropertyValue* 
+	 *         scalarDataProperty=[ScalarDataProperty|Reference] 
+	 *         scalarPropertyValue=LiteralValue 
+	 *         valueType=[DataRange|Reference]?
+	 *     )
 	 */
 	protected void sequence_RestrictionScalarDataPropertyValue(ISerializationContext context, RestrictionScalarDataPropertyValue semanticObject) {
 		genericSequencer.createSequence(context, (EObject) semanticObject);
@@ -1196,7 +1202,12 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     ScalarDataPropertyValue returns ScalarDataPropertyValue
 	 *
 	 * Constraint:
-	 *     (annotations+=AnnotationPropertyValue* scalarDataProperty=[DataRelationshipToScalar|Reference] scalarPropertyValue=LiteralValue)
+	 *     (
+	 *         annotations+=AnnotationPropertyValue* 
+	 *         scalarDataProperty=[DataRelationshipToScalar|Reference] 
+	 *         scalarPropertyValue=LiteralValue 
+	 *         valueType=[DataRange|Reference]?
+	 *     )
 	 */
 	protected void sequence_ScalarDataPropertyValue(ISerializationContext context, ScalarDataPropertyValue semanticObject) {
 		genericSequencer.createSequence(context, (EObject) semanticObject);
@@ -1225,7 +1236,7 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     ScalarOneOfLiteralAxiom returns ScalarOneOfLiteralAxiom
 	 *
 	 * Constraint:
-	 *     (annotations+=AnnotationPropertyValue* axiom=[ScalarOneOfRestriction|Reference] value=LiteralValue)
+	 *     (annotations+=AnnotationPropertyValue* axiom=[ScalarOneOfRestriction|Reference] value=LiteralValue valueType=[DataRange|Reference]?)
 	 */
 	protected void sequence_ScalarOneOfLiteralAxiom(ISerializationContext context, ScalarOneOfLiteralAxiom semanticObject) {
 		genericSequencer.createSequence(context, (EObject) semanticObject);
@@ -1472,7 +1483,8 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *         annotations+=AnnotationPropertyValue* 
 	 *         singletonInstance=[ConceptualEntitySingletonInstance|Reference] 
 	 *         scalarDataProperty=[EntityScalarDataProperty|Reference] 
-	 *         scalarPropertyValue=LiteralValue
+	 *         scalarPropertyValue=LiteralValue 
+	 *         valueType=[DataRange|Reference]?
 	 *     )
 	 */
 	protected void sequence_SingletonInstanceScalarDataPropertyValue(ISerializationContext context, SingletonInstanceScalarDataPropertyValue semanticObject) {

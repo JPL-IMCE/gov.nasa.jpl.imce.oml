@@ -2989,17 +2989,23 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cEqualsSignKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		private final Assignment cLiteralValueAssignment_6 = (Assignment)cGroup.eContents().get(6);
 		private final RuleCall cLiteralValueLiteralValueParserRuleCall_6_0 = (RuleCall)cLiteralValueAssignment_6.eContents().get(0);
+		private final Group cGroup_7 = (Group)cGroup.eContents().get(7);
+		private final Keyword cCircumflexAccentCircumflexAccentKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
+		private final Assignment cValueTypeAssignment_7_1 = (Assignment)cGroup_7.eContents().get(1);
+		private final CrossReference cValueTypeDataRangeCrossReference_7_1_0 = (CrossReference)cValueTypeAssignment_7_1.eContents().get(0);
+		private final RuleCall cValueTypeDataRangeReferenceParserRuleCall_7_1_0_1 = (RuleCall)cValueTypeDataRangeCrossReference_7_1_0.eContents().get(1);
 		
 		//EntityScalarDataPropertyParticularRestrictionAxiom:
 		//	annotations+=AnnotationPropertyValue*
 		//	'every'
 		//	restrictedEntity=[Entity|Reference]
 		//	'.' scalarProperty=[EntityScalarDataProperty|Reference]
-		//	'=' literalValue=LiteralValue;
+		//	'=' literalValue=LiteralValue ('^^' valueType=[DataRange|Reference])?;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//annotations+=AnnotationPropertyValue* 'every' restrictedEntity=[Entity|Reference] '.'
-		//scalarProperty=[EntityScalarDataProperty|Reference] '=' literalValue=LiteralValue
+		//scalarProperty=[EntityScalarDataProperty|Reference] '=' literalValue=LiteralValue ('^^'
+		//valueType=[DataRange|Reference])?
 		public Group getGroup() { return cGroup; }
 		
 		//annotations+=AnnotationPropertyValue*
@@ -3040,6 +3046,21 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//LiteralValue
 		public RuleCall getLiteralValueLiteralValueParserRuleCall_6_0() { return cLiteralValueLiteralValueParserRuleCall_6_0; }
+		
+		//('^^' valueType=[DataRange|Reference])?
+		public Group getGroup_7() { return cGroup_7; }
+		
+		//'^^'
+		public Keyword getCircumflexAccentCircumflexAccentKeyword_7_0() { return cCircumflexAccentCircumflexAccentKeyword_7_0; }
+		
+		//valueType=[DataRange|Reference]
+		public Assignment getValueTypeAssignment_7_1() { return cValueTypeAssignment_7_1; }
+		
+		//[DataRange|Reference]
+		public CrossReference getValueTypeDataRangeCrossReference_7_1_0() { return cValueTypeDataRangeCrossReference_7_1_0; }
+		
+		//Reference
+		public RuleCall getValueTypeDataRangeReferenceParserRuleCall_7_1_0_1() { return cValueTypeDataRangeReferenceParserRuleCall_7_1_0_1; }
 	}
 	public class EntityScalarDataPropertyUniversalRestrictionAxiomElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.EntityScalarDataPropertyUniversalRestrictionAxiom");
@@ -3290,16 +3311,21 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cEqualsSignKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cScalarPropertyValueAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cScalarPropertyValueLiteralValueParserRuleCall_3_0 = (RuleCall)cScalarPropertyValueAssignment_3.eContents().get(0);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Keyword cCircumflexAccentCircumflexAccentKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Assignment cValueTypeAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final CrossReference cValueTypeDataRangeCrossReference_4_1_0 = (CrossReference)cValueTypeAssignment_4_1.eContents().get(0);
+		private final RuleCall cValueTypeDataRangeReferenceParserRuleCall_4_1_0_1 = (RuleCall)cValueTypeDataRangeCrossReference_4_1_0.eContents().get(1);
 		
 		//RestrictionScalarDataPropertyValue:
 		//	annotations+=AnnotationPropertyValue*
 		//	scalarDataProperty=[ScalarDataProperty|Reference]
 		//	'='
-		//	scalarPropertyValue=LiteralValue;
+		//	scalarPropertyValue=LiteralValue ('^^' valueType=[DataRange|Reference])?;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//annotations+=AnnotationPropertyValue* scalarDataProperty=[ScalarDataProperty|Reference] '='
-		//scalarPropertyValue=LiteralValue
+		//scalarPropertyValue=LiteralValue ('^^' valueType=[DataRange|Reference])?
 		public Group getGroup() { return cGroup; }
 		
 		//annotations+=AnnotationPropertyValue*
@@ -3325,6 +3351,21 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//LiteralValue
 		public RuleCall getScalarPropertyValueLiteralValueParserRuleCall_3_0() { return cScalarPropertyValueLiteralValueParserRuleCall_3_0; }
+		
+		//('^^' valueType=[DataRange|Reference])?
+		public Group getGroup_4() { return cGroup_4; }
+		
+		//'^^'
+		public Keyword getCircumflexAccentCircumflexAccentKeyword_4_0() { return cCircumflexAccentCircumflexAccentKeyword_4_0; }
+		
+		//valueType=[DataRange|Reference]
+		public Assignment getValueTypeAssignment_4_1() { return cValueTypeAssignment_4_1; }
+		
+		//[DataRange|Reference]
+		public CrossReference getValueTypeDataRangeCrossReference_4_1_0() { return cValueTypeDataRangeCrossReference_4_1_0; }
+		
+		//Reference
+		public RuleCall getValueTypeDataRangeReferenceParserRuleCall_4_1_0_1() { return cValueTypeDataRangeReferenceParserRuleCall_4_1_0_1; }
 	}
 	public class BinaryScalarRestrictionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.BinaryScalarRestriction");
@@ -3925,15 +3966,21 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cEqualsSignKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Assignment cValueAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cValueLiteralValueParserRuleCall_4_0 = (RuleCall)cValueAssignment_4.eContents().get(0);
+		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
+		private final Keyword cCircumflexAccentCircumflexAccentKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
+		private final Assignment cValueTypeAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
+		private final CrossReference cValueTypeDataRangeCrossReference_5_1_0 = (CrossReference)cValueTypeAssignment_5_1.eContents().get(0);
+		private final RuleCall cValueTypeDataRangeReferenceParserRuleCall_5_1_0_1 = (RuleCall)cValueTypeDataRangeCrossReference_5_1_0.eContents().get(1);
 		
 		//ScalarOneOfLiteralAxiom:
 		//	annotations+=AnnotationPropertyValue*
 		//	'oneOf'
 		//	axiom=[ScalarOneOfRestriction|Reference]
-		//	'=' value=LiteralValue;
+		//	'=' value=LiteralValue ('^^' valueType=[DataRange|Reference])?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//annotations+=AnnotationPropertyValue* 'oneOf' axiom=[ScalarOneOfRestriction|Reference] '=' value=LiteralValue
+		//annotations+=AnnotationPropertyValue* 'oneOf' axiom=[ScalarOneOfRestriction|Reference] '=' value=LiteralValue ('^^'
+		//valueType=[DataRange|Reference])?
 		public Group getGroup() { return cGroup; }
 		
 		//annotations+=AnnotationPropertyValue*
@@ -3962,6 +4009,21 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//LiteralValue
 		public RuleCall getValueLiteralValueParserRuleCall_4_0() { return cValueLiteralValueParserRuleCall_4_0; }
+		
+		//('^^' valueType=[DataRange|Reference])?
+		public Group getGroup_5() { return cGroup_5; }
+		
+		//'^^'
+		public Keyword getCircumflexAccentCircumflexAccentKeyword_5_0() { return cCircumflexAccentCircumflexAccentKeyword_5_0; }
+		
+		//valueType=[DataRange|Reference]
+		public Assignment getValueTypeAssignment_5_1() { return cValueTypeAssignment_5_1; }
+		
+		//[DataRange|Reference]
+		public CrossReference getValueTypeDataRangeCrossReference_5_1_0() { return cValueTypeDataRangeCrossReference_5_1_0; }
+		
+		//Reference
+		public RuleCall getValueTypeDataRangeReferenceParserRuleCall_5_1_0_1() { return cValueTypeDataRangeReferenceParserRuleCall_5_1_0_1; }
 	}
 	public class StringScalarRestrictionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.StringScalarRestriction");
@@ -4421,6 +4483,11 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cEqualsSignKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		private final Assignment cScalarPropertyValueAssignment_5 = (Assignment)cGroup.eContents().get(5);
 		private final RuleCall cScalarPropertyValueLiteralValueParserRuleCall_5_0 = (RuleCall)cScalarPropertyValueAssignment_5.eContents().get(0);
+		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
+		private final Keyword cCircumflexAccentCircumflexAccentKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
+		private final Assignment cValueTypeAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
+		private final CrossReference cValueTypeDataRangeCrossReference_6_1_0 = (CrossReference)cValueTypeAssignment_6_1.eContents().get(0);
+		private final RuleCall cValueTypeDataRangeReferenceParserRuleCall_6_1_0_1 = (RuleCall)cValueTypeDataRangeCrossReference_6_1_0.eContents().get(1);
 		
 		//SingletonInstanceScalarDataPropertyValue:
 		//	annotations+=AnnotationPropertyValue*
@@ -4428,11 +4495,12 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//	'.'
 		//	scalarDataProperty=[EntityScalarDataProperty|Reference]
 		//	'='
-		//	scalarPropertyValue=LiteralValue;
+		//	scalarPropertyValue=LiteralValue ('^^' valueType=[DataRange|Reference])?;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//annotations+=AnnotationPropertyValue* singletonInstance=[ConceptualEntitySingletonInstance|Reference] '.'
-		//scalarDataProperty=[EntityScalarDataProperty|Reference] '=' scalarPropertyValue=LiteralValue
+		//scalarDataProperty=[EntityScalarDataProperty|Reference] '=' scalarPropertyValue=LiteralValue ('^^'
+		//valueType=[DataRange|Reference])?
 		public Group getGroup() { return cGroup; }
 		
 		//annotations+=AnnotationPropertyValue*
@@ -4470,6 +4538,21 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//LiteralValue
 		public RuleCall getScalarPropertyValueLiteralValueParserRuleCall_5_0() { return cScalarPropertyValueLiteralValueParserRuleCall_5_0; }
+		
+		//('^^' valueType=[DataRange|Reference])?
+		public Group getGroup_6() { return cGroup_6; }
+		
+		//'^^'
+		public Keyword getCircumflexAccentCircumflexAccentKeyword_6_0() { return cCircumflexAccentCircumflexAccentKeyword_6_0; }
+		
+		//valueType=[DataRange|Reference]
+		public Assignment getValueTypeAssignment_6_1() { return cValueTypeAssignment_6_1; }
+		
+		//[DataRange|Reference]
+		public CrossReference getValueTypeDataRangeCrossReference_6_1_0() { return cValueTypeDataRangeCrossReference_6_1_0; }
+		
+		//Reference
+		public RuleCall getValueTypeDataRangeReferenceParserRuleCall_6_1_0_1() { return cValueTypeDataRangeReferenceParserRuleCall_6_1_0_1; }
 	}
 	public class SingletonInstanceStructuredDataPropertyValueElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.SingletonInstanceStructuredDataPropertyValue");
@@ -4635,16 +4718,21 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cEqualsSignKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cScalarPropertyValueAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cScalarPropertyValueLiteralValueParserRuleCall_3_0 = (RuleCall)cScalarPropertyValueAssignment_3.eContents().get(0);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Keyword cCircumflexAccentCircumflexAccentKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Assignment cValueTypeAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final CrossReference cValueTypeDataRangeCrossReference_4_1_0 = (CrossReference)cValueTypeAssignment_4_1.eContents().get(0);
+		private final RuleCall cValueTypeDataRangeReferenceParserRuleCall_4_1_0_1 = (RuleCall)cValueTypeDataRangeCrossReference_4_1_0.eContents().get(1);
 		
 		//ScalarDataPropertyValue:
 		//	annotations+=AnnotationPropertyValue*
 		//	scalarDataProperty=[DataRelationshipToScalar|Reference]
 		//	'='
-		//	scalarPropertyValue=LiteralValue;
+		//	scalarPropertyValue=LiteralValue ('^^' valueType=[DataRange|Reference])?;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//annotations+=AnnotationPropertyValue* scalarDataProperty=[DataRelationshipToScalar|Reference] '='
-		//scalarPropertyValue=LiteralValue
+		//scalarPropertyValue=LiteralValue ('^^' valueType=[DataRange|Reference])?
 		public Group getGroup() { return cGroup; }
 		
 		//annotations+=AnnotationPropertyValue*
@@ -4670,6 +4758,21 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//LiteralValue
 		public RuleCall getScalarPropertyValueLiteralValueParserRuleCall_3_0() { return cScalarPropertyValueLiteralValueParserRuleCall_3_0; }
+		
+		//('^^' valueType=[DataRange|Reference])?
+		public Group getGroup_4() { return cGroup_4; }
+		
+		//'^^'
+		public Keyword getCircumflexAccentCircumflexAccentKeyword_4_0() { return cCircumflexAccentCircumflexAccentKeyword_4_0; }
+		
+		//valueType=[DataRange|Reference]
+		public Assignment getValueTypeAssignment_4_1() { return cValueTypeAssignment_4_1; }
+		
+		//[DataRange|Reference]
+		public CrossReference getValueTypeDataRangeCrossReference_4_1_0() { return cValueTypeDataRangeCrossReference_4_1_0; }
+		
+		//Reference
+		public RuleCall getValueTypeDataRangeReferenceParserRuleCall_4_1_0_1() { return cValueTypeDataRangeReferenceParserRuleCall_4_1_0_1; }
 	}
 	public class ConceptInstanceElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.ConceptInstance");
@@ -6478,7 +6581,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	//	'every'
 	//	restrictedEntity=[Entity|Reference]
 	//	'.' scalarProperty=[EntityScalarDataProperty|Reference]
-	//	'=' literalValue=LiteralValue;
+	//	'=' literalValue=LiteralValue ('^^' valueType=[DataRange|Reference])?;
 	public EntityScalarDataPropertyParticularRestrictionAxiomElements getEntityScalarDataPropertyParticularRestrictionAxiomAccess() {
 		return pEntityScalarDataPropertyParticularRestrictionAxiom;
 	}
@@ -6538,7 +6641,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	//	annotations+=AnnotationPropertyValue*
 	//	scalarDataProperty=[ScalarDataProperty|Reference]
 	//	'='
-	//	scalarPropertyValue=LiteralValue;
+	//	scalarPropertyValue=LiteralValue ('^^' valueType=[DataRange|Reference])?;
 	public RestrictionScalarDataPropertyValueElements getRestrictionScalarDataPropertyValueAccess() {
 		return pRestrictionScalarDataPropertyValue;
 	}
@@ -6626,7 +6729,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	//	annotations+=AnnotationPropertyValue*
 	//	'oneOf'
 	//	axiom=[ScalarOneOfRestriction|Reference]
-	//	'=' value=LiteralValue;
+	//	'=' value=LiteralValue ('^^' valueType=[DataRange|Reference])?;
 	public ScalarOneOfLiteralAxiomElements getScalarOneOfLiteralAxiomAccess() {
 		return pScalarOneOfLiteralAxiom;
 	}
@@ -6739,7 +6842,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	//	'.'
 	//	scalarDataProperty=[EntityScalarDataProperty|Reference]
 	//	'='
-	//	scalarPropertyValue=LiteralValue;
+	//	scalarPropertyValue=LiteralValue ('^^' valueType=[DataRange|Reference])?;
 	public SingletonInstanceScalarDataPropertyValueElements getSingletonInstanceScalarDataPropertyValueAccess() {
 		return pSingletonInstanceScalarDataPropertyValue;
 	}
@@ -6780,7 +6883,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	//	annotations+=AnnotationPropertyValue*
 	//	scalarDataProperty=[DataRelationshipToScalar|Reference]
 	//	'='
-	//	scalarPropertyValue=LiteralValue;
+	//	scalarPropertyValue=LiteralValue ('^^' valueType=[DataRange|Reference])?;
 	public ScalarDataPropertyValueElements getScalarDataPropertyValueAccess() {
 		return pScalarDataPropertyValue;
 	}

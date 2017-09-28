@@ -6961,13 +6961,22 @@ public interface TerminologiesPackage extends EPackage {
 	int ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__LITERAL_VALUE = ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Value Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__VALUE_TYPE = ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Entity Scalar Data Property Particular Restriction Axiom</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM_FEATURE_COUNT = ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM_FEATURE_COUNT + 1;
+	int ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM_FEATURE_COUNT = ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Module Context</em>' operation.
@@ -7533,13 +7542,22 @@ public interface TerminologiesPackage extends EPackage {
 	int RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE = CommonPackage.ELEMENT_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Value Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__VALUE_TYPE = CommonPackage.ELEMENT_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Restriction Scalar Data Property Value</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESTRICTION_SCALAR_DATA_PROPERTY_VALUE_FEATURE_COUNT = CommonPackage.ELEMENT_FEATURE_COUNT + 3;
+	int RESTRICTION_SCALAR_DATA_PROPERTY_VALUE_FEATURE_COUNT = CommonPackage.ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The operation id for the '<em>Terminology Box</em>' operation.
@@ -8992,13 +9010,22 @@ public interface TerminologiesPackage extends EPackage {
 	int SCALAR_ONE_OF_LITERAL_AXIOM__VALUE = TERM_AXIOM_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Value Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCALAR_ONE_OF_LITERAL_AXIOM__VALUE_TYPE = TERM_AXIOM_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Scalar One Of Literal Axiom</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCALAR_ONE_OF_LITERAL_AXIOM_FEATURE_COUNT = TERM_AXIOM_FEATURE_COUNT + 2;
+	int SCALAR_ONE_OF_LITERAL_AXIOM_FEATURE_COUNT = TERM_AXIOM_FEATURE_COUNT + 3;
 
 	/**
 	 * The operation id for the '<em>Module Context</em>' operation.
@@ -11085,6 +11112,17 @@ public interface TerminologiesPackage extends EPackage {
 	EReference getEntityScalarDataPropertyParticularRestrictionAxiom_LiteralValue();
 
 	/**
+	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyParticularRestrictionAxiom#getValueType <em>Value Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Value Type</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyParticularRestrictionAxiom#getValueType()
+	 * @see #getEntityScalarDataPropertyParticularRestrictionAxiom()
+	 * @generated
+	 */
+	EReference getEntityScalarDataPropertyParticularRestrictionAxiom_ValueType();
+
+	/**
 	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyParticularRestrictionAxiom#uuid() <em>Uuid</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11321,6 +11359,17 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getRestrictionScalarDataPropertyValue_ScalarPropertyValue();
+
+	/**
+	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue#getValueType <em>Value Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Value Type</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue#getValueType()
+	 * @see #getRestrictionScalarDataPropertyValue()
+	 * @generated
+	 */
+	EReference getRestrictionScalarDataPropertyValue_ValueType();
 
 	/**
 	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue#terminologyBox() <em>Terminology Box</em>}' operation.
@@ -11748,6 +11797,17 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getScalarOneOfLiteralAxiom_Value();
+
+	/**
+	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom#getValueType <em>Value Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Value Type</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom#getValueType()
+	 * @see #getScalarOneOfLiteralAxiom()
+	 * @generated
+	 */
+	EReference getScalarOneOfLiteralAxiom_ValueType();
 
 	/**
 	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom#uuid() <em>Uuid</em>}' operation.
@@ -13509,6 +13569,14 @@ public interface TerminologiesPackage extends EPackage {
 		EReference ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__LITERAL_VALUE = eINSTANCE.getEntityScalarDataPropertyParticularRestrictionAxiom_LiteralValue();
 
 		/**
+		 * The meta object literal for the '<em><b>Value Type</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__VALUE_TYPE = eINSTANCE.getEntityScalarDataPropertyParticularRestrictionAxiom_ValueType();
+
+		/**
 		 * The meta object literal for the '<em><b>Uuid</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -13701,6 +13769,14 @@ public interface TerminologiesPackage extends EPackage {
 		 * @generated
 		 */
 		EReference RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE = eINSTANCE.getRestrictionScalarDataPropertyValue_ScalarPropertyValue();
+
+		/**
+		 * The meta object literal for the '<em><b>Value Type</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__VALUE_TYPE = eINSTANCE.getRestrictionScalarDataPropertyValue_ValueType();
 
 		/**
 		 * The meta object literal for the '<em><b>Terminology Box</b></em>' operation.
@@ -14041,6 +14117,14 @@ public interface TerminologiesPackage extends EPackage {
 		 * @generated
 		 */
 		EReference SCALAR_ONE_OF_LITERAL_AXIOM__VALUE = eINSTANCE.getScalarOneOfLiteralAxiom_Value();
+
+		/**
+		 * The meta object literal for the '<em><b>Value Type</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SCALAR_ONE_OF_LITERAL_AXIOM__VALUE_TYPE = eINSTANCE.getScalarOneOfLiteralAxiom_ValueType();
 
 		/**
 		 * The meta object literal for the '<em><b>Uuid</b></em>' operation.

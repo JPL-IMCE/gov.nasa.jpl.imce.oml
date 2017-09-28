@@ -2508,6 +2508,15 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getEntityScalarDataPropertyParticularRestrictionAxiom_ValueType() {
+		return (EReference)entityScalarDataPropertyParticularRestrictionAxiomEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EOperation getEntityScalarDataPropertyParticularRestrictionAxiom__Uuid() {
 		return entityScalarDataPropertyParticularRestrictionAxiomEClass.getEOperations().get(0);
 	}
@@ -2708,6 +2717,15 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 */
 	public EReference getRestrictionScalarDataPropertyValue_ScalarPropertyValue() {
 		return (EReference)restrictionScalarDataPropertyValueEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getRestrictionScalarDataPropertyValue_ValueType() {
+		return (EReference)restrictionScalarDataPropertyValueEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -3075,6 +3093,15 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getScalarOneOfLiteralAxiom_ValueType() {
+		return (EReference)scalarOneOfLiteralAxiomEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EOperation getScalarOneOfLiteralAxiom__Uuid() {
 		return scalarOneOfLiteralAxiomEClass.getEOperations().get(0);
 	}
@@ -3383,6 +3410,7 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 
 		entityScalarDataPropertyParticularRestrictionAxiomEClass = createEClass(ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM);
 		createEReference(entityScalarDataPropertyParticularRestrictionAxiomEClass, ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__LITERAL_VALUE);
+		createEReference(entityScalarDataPropertyParticularRestrictionAxiomEClass, ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__VALUE_TYPE);
 		createEOperation(entityScalarDataPropertyParticularRestrictionAxiomEClass, ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM___UUID);
 
 		entityStructuredDataPropertyRestrictionAxiomEClass = createEClass(ENTITY_STRUCTURED_DATA_PROPERTY_RESTRICTION_AXIOM);
@@ -3411,6 +3439,7 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		createEReference(restrictionScalarDataPropertyValueEClass, RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__STRUCTURED_DATA_PROPERTY_CONTEXT);
 		createEReference(restrictionScalarDataPropertyValueEClass, RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__SCALAR_DATA_PROPERTY);
 		createEReference(restrictionScalarDataPropertyValueEClass, RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE);
+		createEReference(restrictionScalarDataPropertyValueEClass, RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__VALUE_TYPE);
 		createEOperation(restrictionScalarDataPropertyValueEClass, RESTRICTION_SCALAR_DATA_PROPERTY_VALUE___TERMINOLOGY_BOX);
 		createEOperation(restrictionScalarDataPropertyValueEClass, RESTRICTION_SCALAR_DATA_PROPERTY_VALUE___UUID);
 		createEOperation(restrictionScalarDataPropertyValueEClass, RESTRICTION_SCALAR_DATA_PROPERTY_VALUE___MODULE_CONTEXT);
@@ -3461,6 +3490,7 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		scalarOneOfLiteralAxiomEClass = createEClass(SCALAR_ONE_OF_LITERAL_AXIOM);
 		createEReference(scalarOneOfLiteralAxiomEClass, SCALAR_ONE_OF_LITERAL_AXIOM__AXIOM);
 		createEReference(scalarOneOfLiteralAxiomEClass, SCALAR_ONE_OF_LITERAL_AXIOM__VALUE);
+		createEReference(scalarOneOfLiteralAxiomEClass, SCALAR_ONE_OF_LITERAL_AXIOM__VALUE_TYPE);
 		createEOperation(scalarOneOfLiteralAxiomEClass, SCALAR_ONE_OF_LITERAL_AXIOM___UUID);
 		createEOperation(scalarOneOfLiteralAxiomEClass, SCALAR_ONE_OF_LITERAL_AXIOM___ALL_NESTED_ELEMENTS);
 
@@ -3934,6 +3964,7 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 
 		initEClass(entityScalarDataPropertyParticularRestrictionAxiomEClass, EntityScalarDataPropertyParticularRestrictionAxiom.class, "EntityScalarDataPropertyParticularRestrictionAxiom", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEntityScalarDataPropertyParticularRestrictionAxiom_LiteralValue(), theCommonPackage.getLiteralValue(), null, "literalValue", null, 1, 1, EntityScalarDataPropertyParticularRestrictionAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEntityScalarDataPropertyParticularRestrictionAxiom_ValueType(), this.getDataRange(), null, "valueType", null, 0, 1, EntityScalarDataPropertyParticularRestrictionAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getEntityScalarDataPropertyParticularRestrictionAxiom__Uuid(), theCommonPackage.getUUID(), "uuid", 1, 1, !IS_UNIQUE, IS_ORDERED);
 
@@ -3972,6 +4003,7 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		initEReference(getRestrictionScalarDataPropertyValue_StructuredDataPropertyContext(), this.getRestrictionStructuredDataPropertyContext(), this.getRestrictionStructuredDataPropertyContext_ScalarDataPropertyRestrictions(), "structuredDataPropertyContext", null, 1, 1, RestrictionScalarDataPropertyValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRestrictionScalarDataPropertyValue_ScalarDataProperty(), this.getDataRelationshipToScalar(), null, "scalarDataProperty", null, 1, 1, RestrictionScalarDataPropertyValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRestrictionScalarDataPropertyValue_ScalarPropertyValue(), theCommonPackage.getLiteralValue(), null, "scalarPropertyValue", null, 1, 1, RestrictionScalarDataPropertyValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRestrictionScalarDataPropertyValue_ValueType(), this.getDataRange(), null, "valueType", null, 0, 1, RestrictionScalarDataPropertyValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getRestrictionScalarDataPropertyValue__TerminologyBox(), this.getTerminologyBox(), "terminologyBox", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
@@ -4025,6 +4057,7 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		initEClass(scalarOneOfLiteralAxiomEClass, ScalarOneOfLiteralAxiom.class, "ScalarOneOfLiteralAxiom", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getScalarOneOfLiteralAxiom_Axiom(), this.getScalarOneOfRestriction(), null, "axiom", null, 1, 1, ScalarOneOfLiteralAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getScalarOneOfLiteralAxiom_Value(), theCommonPackage.getLiteralValue(), null, "value", null, 1, 1, ScalarOneOfLiteralAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getScalarOneOfLiteralAxiom_ValueType(), this.getDataRange(), null, "valueType", null, 0, 1, ScalarOneOfLiteralAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getScalarOneOfLiteralAxiom__Uuid(), theCommonPackage.getUUID(), "uuid", 1, 1, !IS_UNIQUE, IS_ORDERED);
 

@@ -750,13 +750,22 @@ public interface DescriptionsPackage extends EPackage {
 	int SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE = CommonPackage.MODULE_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Value Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE__VALUE_TYPE = CommonPackage.MODULE_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Singleton Instance Scalar Data Property Value</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE_FEATURE_COUNT = CommonPackage.MODULE_ELEMENT_FEATURE_COUNT + 4;
+	int SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE_FEATURE_COUNT = CommonPackage.MODULE_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The operation id for the '<em>Uuid</em>' operation.
@@ -1222,13 +1231,22 @@ public interface DescriptionsPackage extends EPackage {
 	int SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE = CommonPackage.ELEMENT_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Value Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCALAR_DATA_PROPERTY_VALUE__VALUE_TYPE = CommonPackage.ELEMENT_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Scalar Data Property Value</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCALAR_DATA_PROPERTY_VALUE_FEATURE_COUNT = CommonPackage.ELEMENT_FEATURE_COUNT + 3;
+	int SCALAR_DATA_PROPERTY_VALUE_FEATURE_COUNT = CommonPackage.ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The operation id for the '<em>Description Box</em>' operation.
@@ -2389,6 +2407,17 @@ public interface DescriptionsPackage extends EPackage {
 	EReference getSingletonInstanceScalarDataPropertyValue_ScalarPropertyValue();
 
 	/**
+	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceScalarDataPropertyValue#getValueType <em>Value Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Value Type</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceScalarDataPropertyValue#getValueType()
+	 * @see #getSingletonInstanceScalarDataPropertyValue()
+	 * @generated
+	 */
+	EReference getSingletonInstanceScalarDataPropertyValue_ValueType();
+
+	/**
 	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceScalarDataPropertyValue#uuid() <em>Uuid</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2646,6 +2675,17 @@ public interface DescriptionsPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getScalarDataPropertyValue_ScalarPropertyValue();
+
+	/**
+	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.descriptions.ScalarDataPropertyValue#getValueType <em>Value Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Value Type</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.ScalarDataPropertyValue#getValueType()
+	 * @see #getScalarDataPropertyValue()
+	 * @generated
+	 */
+	EReference getScalarDataPropertyValue_ValueType();
 
 	/**
 	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.ScalarDataPropertyValue#descriptionBox() <em>Description Box</em>}' operation.
@@ -3470,6 +3510,14 @@ public interface DescriptionsPackage extends EPackage {
 		EReference SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE = eINSTANCE.getSingletonInstanceScalarDataPropertyValue_ScalarPropertyValue();
 
 		/**
+		 * The meta object literal for the '<em><b>Value Type</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE__VALUE_TYPE = eINSTANCE.getSingletonInstanceScalarDataPropertyValue_ValueType();
+
+		/**
 		 * The meta object literal for the '<em><b>Uuid</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3676,6 +3724,14 @@ public interface DescriptionsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE = eINSTANCE.getScalarDataPropertyValue_ScalarPropertyValue();
+
+		/**
+		 * The meta object literal for the '<em><b>Value Type</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SCALAR_DATA_PROPERTY_VALUE__VALUE_TYPE = eINSTANCE.getScalarDataPropertyValue_ValueType();
 
 		/**
 		 * The meta object literal for the '<em><b>Description Box</b></em>' operation.

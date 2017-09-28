@@ -4854,6 +4854,28 @@ ruleEntityScalarDataPropertyParticularRestrictionAxiom returns [EObject current=
 				}
 			)
 		)
+		(
+			otherlv_7='^^'
+			{
+				newLeafNode(otherlv_7, grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomAccess().getCircumflexAccentCircumflexAccentKeyword_7_0());
+			}
+			(
+				(
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomRule());
+						}
+					}
+					{
+						newCompositeNode(grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomAccess().getValueTypeDataRangeCrossReference_7_1_0());
+					}
+					ruleReference
+					{
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)?
 	)
 ;
 
@@ -5267,6 +5289,28 @@ ruleRestrictionScalarDataPropertyValue returns [EObject current=null]
 				}
 			)
 		)
+		(
+			otherlv_4='^^'
+			{
+				newLeafNode(otherlv_4, grammarAccess.getRestrictionScalarDataPropertyValueAccess().getCircumflexAccentCircumflexAccentKeyword_4_0());
+			}
+			(
+				(
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getRestrictionScalarDataPropertyValueRule());
+						}
+					}
+					{
+						newCompositeNode(grammarAccess.getRestrictionScalarDataPropertyValueAccess().getValueTypeDataRangeCrossReference_4_1_0());
+					}
+					ruleReference
+					{
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)?
 	)
 ;
 
@@ -6385,6 +6429,28 @@ ruleScalarOneOfLiteralAxiom returns [EObject current=null]
 				}
 			)
 		)
+		(
+			otherlv_5='^^'
+			{
+				newLeafNode(otherlv_5, grammarAccess.getScalarOneOfLiteralAxiomAccess().getCircumflexAccentCircumflexAccentKeyword_5_0());
+			}
+			(
+				(
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getScalarOneOfLiteralAxiomRule());
+						}
+					}
+					{
+						newCompositeNode(grammarAccess.getScalarOneOfLiteralAxiomAccess().getValueTypeDataRangeCrossReference_5_1_0());
+					}
+					ruleReference
+					{
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)?
 	)
 ;
 
@@ -7197,6 +7263,28 @@ ruleSingletonInstanceScalarDataPropertyValue returns [EObject current=null]
 				}
 			)
 		)
+		(
+			otherlv_6='^^'
+			{
+				newLeafNode(otherlv_6, grammarAccess.getSingletonInstanceScalarDataPropertyValueAccess().getCircumflexAccentCircumflexAccentKeyword_6_0());
+			}
+			(
+				(
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getSingletonInstanceScalarDataPropertyValueRule());
+						}
+					}
+					{
+						newCompositeNode(grammarAccess.getSingletonInstanceScalarDataPropertyValueAccess().getValueTypeDataRangeCrossReference_6_1_0());
+					}
+					ruleReference
+					{
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)?
 	)
 ;
 
@@ -7508,6 +7596,28 @@ ruleScalarDataPropertyValue returns [EObject current=null]
 				}
 			)
 		)
+		(
+			otherlv_4='^^'
+			{
+				newLeafNode(otherlv_4, grammarAccess.getScalarDataPropertyValueAccess().getCircumflexAccentCircumflexAccentKeyword_4_0());
+			}
+			(
+				(
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getScalarDataPropertyValueRule());
+						}
+					}
+					{
+						newCompositeNode(grammarAccess.getScalarDataPropertyValueAccess().getValueTypeDataRangeCrossReference_4_1_0());
+					}
+					ruleReference
+					{
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)?
 	)
 ;
 

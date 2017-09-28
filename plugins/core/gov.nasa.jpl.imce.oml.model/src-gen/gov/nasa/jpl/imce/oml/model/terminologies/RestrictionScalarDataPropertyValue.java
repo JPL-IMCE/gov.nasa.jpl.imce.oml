@@ -39,6 +39,7 @@ import gov.nasa.jpl.imce.oml.model.common.Module;
  *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue#getStructuredDataPropertyContext <em>Structured Data Property Context</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue#getScalarDataProperty <em>Scalar Data Property</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue#getScalarPropertyValue <em>Scalar Property Value</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue#getValueType <em>Value Type</em>}</li>
  * </ul>
  *
  * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getRestrictionScalarDataPropertyValue()
@@ -125,6 +126,32 @@ public interface RestrictionScalarDataPropertyValue extends Element {
 	 * @generated
 	 */
 	void setScalarPropertyValue(LiteralValue value);
+
+	/**
+	 * Returns the value of the '<em><b>Value Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Value Type</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Value Type</em>' reference.
+	 * @see #setValueType(DataRange)
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getRestrictionScalarDataPropertyValue_ValueType()
+	 * @model
+	 * @generated
+	 */
+	DataRange getValueType();
+
+	/**
+	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue#getValueType <em>Value Type</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Value Type</em>' reference.
+	 * @see #getValueType()
+	 * @generated
+	 */
+	void setValueType(DataRange value);
 
 	/**
 	 * <!-- begin-user-doc -->

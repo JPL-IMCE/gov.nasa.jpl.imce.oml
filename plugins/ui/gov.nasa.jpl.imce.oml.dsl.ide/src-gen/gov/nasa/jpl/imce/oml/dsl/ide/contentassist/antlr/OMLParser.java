@@ -125,10 +125,12 @@ public class OMLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getReifiedRelationshipSpecializationAxiomAccess().getGroup(), "rule__ReifiedRelationshipSpecializationAxiom__Group__0");
 					put(grammarAccess.getEntityScalarDataPropertyExistentialRestrictionAxiomAccess().getGroup(), "rule__EntityScalarDataPropertyExistentialRestrictionAxiom__Group__0");
 					put(grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomAccess().getGroup(), "rule__EntityScalarDataPropertyParticularRestrictionAxiom__Group__0");
+					put(grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomAccess().getGroup_7(), "rule__EntityScalarDataPropertyParticularRestrictionAxiom__Group_7__0");
 					put(grammarAccess.getEntityScalarDataPropertyUniversalRestrictionAxiomAccess().getGroup(), "rule__EntityScalarDataPropertyUniversalRestrictionAxiom__Group__0");
 					put(grammarAccess.getEntityStructuredDataPropertyParticularRestrictionAxiomAccess().getGroup(), "rule__EntityStructuredDataPropertyParticularRestrictionAxiom__Group__0");
 					put(grammarAccess.getRestrictionStructuredDataPropertyTupleAccess().getGroup(), "rule__RestrictionStructuredDataPropertyTuple__Group__0");
 					put(grammarAccess.getRestrictionScalarDataPropertyValueAccess().getGroup(), "rule__RestrictionScalarDataPropertyValue__Group__0");
+					put(grammarAccess.getRestrictionScalarDataPropertyValueAccess().getGroup_4(), "rule__RestrictionScalarDataPropertyValue__Group_4__0");
 					put(grammarAccess.getBinaryScalarRestrictionAccess().getGroup(), "rule__BinaryScalarRestriction__Group__0");
 					put(grammarAccess.getBinaryScalarRestrictionAccess().getGroup_4_0(), "rule__BinaryScalarRestriction__Group_4_0__0");
 					put(grammarAccess.getBinaryScalarRestrictionAccess().getGroup_4_1(), "rule__BinaryScalarRestriction__Group_4_1__0");
@@ -151,6 +153,7 @@ public class OMLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getPlainLiteralScalarRestrictionAccess().getGroup_4_4(), "rule__PlainLiteralScalarRestriction__Group_4_4__0");
 					put(grammarAccess.getScalarOneOfRestrictionAccess().getGroup(), "rule__ScalarOneOfRestriction__Group__0");
 					put(grammarAccess.getScalarOneOfLiteralAxiomAccess().getGroup(), "rule__ScalarOneOfLiteralAxiom__Group__0");
+					put(grammarAccess.getScalarOneOfLiteralAxiomAccess().getGroup_5(), "rule__ScalarOneOfLiteralAxiom__Group_5__0");
 					put(grammarAccess.getStringScalarRestrictionAccess().getGroup(), "rule__StringScalarRestriction__Group__0");
 					put(grammarAccess.getStringScalarRestrictionAccess().getGroup_4_0(), "rule__StringScalarRestriction__Group_4_0__0");
 					put(grammarAccess.getStringScalarRestrictionAccess().getGroup_4_1(), "rule__StringScalarRestriction__Group_4_1__0");
@@ -165,9 +168,11 @@ public class OMLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getDescriptionBoxExtendsClosedWorldDefinitionsAccess().getGroup(), "rule__DescriptionBoxExtendsClosedWorldDefinitions__Group__0");
 					put(grammarAccess.getDescriptionBoxRefinementAccess().getGroup(), "rule__DescriptionBoxRefinement__Group__0");
 					put(grammarAccess.getSingletonInstanceScalarDataPropertyValueAccess().getGroup(), "rule__SingletonInstanceScalarDataPropertyValue__Group__0");
+					put(grammarAccess.getSingletonInstanceScalarDataPropertyValueAccess().getGroup_6(), "rule__SingletonInstanceScalarDataPropertyValue__Group_6__0");
 					put(grammarAccess.getSingletonInstanceStructuredDataPropertyValueAccess().getGroup(), "rule__SingletonInstanceStructuredDataPropertyValue__Group__0");
 					put(grammarAccess.getStructuredDataPropertyTupleAccess().getGroup(), "rule__StructuredDataPropertyTuple__Group__0");
 					put(grammarAccess.getScalarDataPropertyValueAccess().getGroup(), "rule__ScalarDataPropertyValue__Group__0");
+					put(grammarAccess.getScalarDataPropertyValueAccess().getGroup_4(), "rule__ScalarDataPropertyValue__Group_4__0");
 					put(grammarAccess.getConceptInstanceAccess().getGroup(), "rule__ConceptInstance__Group__0");
 					put(grammarAccess.getReifiedRelationshipInstanceAccess().getGroup(), "rule__ReifiedRelationshipInstance__Group__0");
 					put(grammarAccess.getReifiedRelationshipInstanceDomainAccess().getGroup(), "rule__ReifiedRelationshipInstanceDomain__Group__0");
@@ -325,6 +330,7 @@ public class OMLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomAccess().getRestrictedEntityAssignment_2(), "rule__EntityScalarDataPropertyParticularRestrictionAxiom__RestrictedEntityAssignment_2");
 					put(grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomAccess().getScalarPropertyAssignment_4(), "rule__EntityScalarDataPropertyParticularRestrictionAxiom__ScalarPropertyAssignment_4");
 					put(grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomAccess().getLiteralValueAssignment_6(), "rule__EntityScalarDataPropertyParticularRestrictionAxiom__LiteralValueAssignment_6");
+					put(grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomAccess().getValueTypeAssignment_7_1(), "rule__EntityScalarDataPropertyParticularRestrictionAxiom__ValueTypeAssignment_7_1");
 					put(grammarAccess.getEntityScalarDataPropertyUniversalRestrictionAxiomAccess().getAnnotationsAssignment_0(), "rule__EntityScalarDataPropertyUniversalRestrictionAxiom__AnnotationsAssignment_0");
 					put(grammarAccess.getEntityScalarDataPropertyUniversalRestrictionAxiomAccess().getRestrictedEntityAssignment_2(), "rule__EntityScalarDataPropertyUniversalRestrictionAxiom__RestrictedEntityAssignment_2");
 					put(grammarAccess.getEntityScalarDataPropertyUniversalRestrictionAxiomAccess().getScalarPropertyAssignment_4(), "rule__EntityScalarDataPropertyUniversalRestrictionAxiom__ScalarPropertyAssignment_4");
@@ -341,6 +347,7 @@ public class OMLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getRestrictionScalarDataPropertyValueAccess().getAnnotationsAssignment_0(), "rule__RestrictionScalarDataPropertyValue__AnnotationsAssignment_0");
 					put(grammarAccess.getRestrictionScalarDataPropertyValueAccess().getScalarDataPropertyAssignment_1(), "rule__RestrictionScalarDataPropertyValue__ScalarDataPropertyAssignment_1");
 					put(grammarAccess.getRestrictionScalarDataPropertyValueAccess().getScalarPropertyValueAssignment_3(), "rule__RestrictionScalarDataPropertyValue__ScalarPropertyValueAssignment_3");
+					put(grammarAccess.getRestrictionScalarDataPropertyValueAccess().getValueTypeAssignment_4_1(), "rule__RestrictionScalarDataPropertyValue__ValueTypeAssignment_4_1");
 					put(grammarAccess.getBinaryScalarRestrictionAccess().getAnnotationsAssignment_0(), "rule__BinaryScalarRestriction__AnnotationsAssignment_0");
 					put(grammarAccess.getBinaryScalarRestrictionAccess().getNameAssignment_2(), "rule__BinaryScalarRestriction__NameAssignment_2");
 					put(grammarAccess.getBinaryScalarRestrictionAccess().getLengthAssignment_4_0_1(), "rule__BinaryScalarRestriction__LengthAssignment_4_0_1");
@@ -375,6 +382,7 @@ public class OMLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getScalarOneOfLiteralAxiomAccess().getAnnotationsAssignment_0(), "rule__ScalarOneOfLiteralAxiom__AnnotationsAssignment_0");
 					put(grammarAccess.getScalarOneOfLiteralAxiomAccess().getAxiomAssignment_2(), "rule__ScalarOneOfLiteralAxiom__AxiomAssignment_2");
 					put(grammarAccess.getScalarOneOfLiteralAxiomAccess().getValueAssignment_4(), "rule__ScalarOneOfLiteralAxiom__ValueAssignment_4");
+					put(grammarAccess.getScalarOneOfLiteralAxiomAccess().getValueTypeAssignment_5_1(), "rule__ScalarOneOfLiteralAxiom__ValueTypeAssignment_5_1");
 					put(grammarAccess.getStringScalarRestrictionAccess().getAnnotationsAssignment_0(), "rule__StringScalarRestriction__AnnotationsAssignment_0");
 					put(grammarAccess.getStringScalarRestrictionAccess().getNameAssignment_2(), "rule__StringScalarRestriction__NameAssignment_2");
 					put(grammarAccess.getStringScalarRestrictionAccess().getLengthAssignment_4_0_1(), "rule__StringScalarRestriction__LengthAssignment_4_0_1");
@@ -400,6 +408,7 @@ public class OMLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getSingletonInstanceScalarDataPropertyValueAccess().getSingletonInstanceAssignment_1(), "rule__SingletonInstanceScalarDataPropertyValue__SingletonInstanceAssignment_1");
 					put(grammarAccess.getSingletonInstanceScalarDataPropertyValueAccess().getScalarDataPropertyAssignment_3(), "rule__SingletonInstanceScalarDataPropertyValue__ScalarDataPropertyAssignment_3");
 					put(grammarAccess.getSingletonInstanceScalarDataPropertyValueAccess().getScalarPropertyValueAssignment_5(), "rule__SingletonInstanceScalarDataPropertyValue__ScalarPropertyValueAssignment_5");
+					put(grammarAccess.getSingletonInstanceScalarDataPropertyValueAccess().getValueTypeAssignment_6_1(), "rule__SingletonInstanceScalarDataPropertyValue__ValueTypeAssignment_6_1");
 					put(grammarAccess.getSingletonInstanceStructuredDataPropertyValueAccess().getAnnotationsAssignment_0(), "rule__SingletonInstanceStructuredDataPropertyValue__AnnotationsAssignment_0");
 					put(grammarAccess.getSingletonInstanceStructuredDataPropertyValueAccess().getSingletonInstanceAssignment_1(), "rule__SingletonInstanceStructuredDataPropertyValue__SingletonInstanceAssignment_1");
 					put(grammarAccess.getSingletonInstanceStructuredDataPropertyValueAccess().getStructuredDataPropertyAssignment_3(), "rule__SingletonInstanceStructuredDataPropertyValue__StructuredDataPropertyAssignment_3");
@@ -412,6 +421,7 @@ public class OMLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getScalarDataPropertyValueAccess().getAnnotationsAssignment_0(), "rule__ScalarDataPropertyValue__AnnotationsAssignment_0");
 					put(grammarAccess.getScalarDataPropertyValueAccess().getScalarDataPropertyAssignment_1(), "rule__ScalarDataPropertyValue__ScalarDataPropertyAssignment_1");
 					put(grammarAccess.getScalarDataPropertyValueAccess().getScalarPropertyValueAssignment_3(), "rule__ScalarDataPropertyValue__ScalarPropertyValueAssignment_3");
+					put(grammarAccess.getScalarDataPropertyValueAccess().getValueTypeAssignment_4_1(), "rule__ScalarDataPropertyValue__ValueTypeAssignment_4_1");
 					put(grammarAccess.getConceptInstanceAccess().getAnnotationsAssignment_0(), "rule__ConceptInstance__AnnotationsAssignment_0");
 					put(grammarAccess.getConceptInstanceAccess().getNameAssignment_3(), "rule__ConceptInstance__NameAssignment_3");
 					put(grammarAccess.getConceptInstanceAccess().getSingletonConceptClassifierAssignment_5(), "rule__ConceptInstance__SingletonConceptClassifierAssignment_5");

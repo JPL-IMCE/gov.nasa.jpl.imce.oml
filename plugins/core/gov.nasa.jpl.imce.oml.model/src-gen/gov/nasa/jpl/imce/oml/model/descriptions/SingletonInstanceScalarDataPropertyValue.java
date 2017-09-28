@@ -23,6 +23,7 @@ import gov.nasa.jpl.imce.oml.model.common.LiteralValue;
 import gov.nasa.jpl.imce.oml.model.common.Module;
 import gov.nasa.jpl.imce.oml.model.common.ModuleElement;
 
+import gov.nasa.jpl.imce.oml.model.terminologies.DataRange;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataProperty;
 
 import org.eclipse.emf.common.util.EList;
@@ -45,6 +46,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceScalarDataPropertyValue#getSingletonInstance <em>Singleton Instance</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceScalarDataPropertyValue#getScalarDataProperty <em>Scalar Data Property</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceScalarDataPropertyValue#getScalarPropertyValue <em>Scalar Property Value</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceScalarDataPropertyValue#getValueType <em>Value Type</em>}</li>
  * </ul>
  *
  * @see gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsPackage#getSingletonInstanceScalarDataPropertyValue()
@@ -157,6 +159,32 @@ public interface SingletonInstanceScalarDataPropertyValue extends ModuleElement 
 	 * @generated
 	 */
 	void setScalarPropertyValue(LiteralValue value);
+
+	/**
+	 * Returns the value of the '<em><b>Value Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Value Type</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Value Type</em>' reference.
+	 * @see #setValueType(DataRange)
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsPackage#getSingletonInstanceScalarDataPropertyValue_ValueType()
+	 * @model
+	 * @generated
+	 */
+	DataRange getValueType();
+
+	/**
+	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceScalarDataPropertyValue#getValueType <em>Value Type</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Value Type</em>' reference.
+	 * @see #getValueType()
+	 * @generated
+	 */
+	void setValueType(DataRange value);
 
 	/**
 	 * <!-- begin-user-doc -->

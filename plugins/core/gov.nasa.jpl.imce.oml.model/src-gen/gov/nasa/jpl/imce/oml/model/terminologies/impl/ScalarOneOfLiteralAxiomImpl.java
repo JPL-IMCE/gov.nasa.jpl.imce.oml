@@ -23,6 +23,7 @@ import gov.nasa.jpl.imce.oml.model.common.LiteralValue;
 
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
 
+import gov.nasa.jpl.imce.oml.model.terminologies.DataRange;
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage;
@@ -56,6 +57,7 @@ import org.eclipse.xtext.xbase.lib.Pair;
  * <ul>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ScalarOneOfLiteralAxiomImpl#getAxiom <em>Axiom</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ScalarOneOfLiteralAxiomImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ScalarOneOfLiteralAxiomImpl#getValueType <em>Value Type</em>}</li>
  * </ul>
  *
  * @generated
@@ -80,6 +82,16 @@ public class ScalarOneOfLiteralAxiomImpl extends TermAxiomImpl implements Scalar
 	 * @ordered
 	 */
 	protected LiteralValue value;
+
+	/**
+	 * The cached value of the '{@link #getValueType() <em>Value Type</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValueType()
+	 * @generated
+	 * @ordered
+	 */
+	protected DataRange valueType;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -186,6 +198,44 @@ public class ScalarOneOfLiteralAxiomImpl extends TermAxiomImpl implements Scalar
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public DataRange getValueType() {
+		if (valueType != null && ((EObject)valueType).eIsProxy()) {
+			InternalEObject oldValueType = (InternalEObject)valueType;
+			valueType = (DataRange)eResolveProxy(oldValueType);
+			if (valueType != oldValueType) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, TerminologiesPackage.SCALAR_ONE_OF_LITERAL_AXIOM__VALUE_TYPE, oldValueType, valueType));
+			}
+		}
+		return valueType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DataRange basicGetValueType() {
+		return valueType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setValueType(DataRange newValueType) {
+		DataRange oldValueType = valueType;
+		valueType = newValueType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.SCALAR_ONE_OF_LITERAL_AXIOM__VALUE_TYPE, oldValueType, valueType));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String uuid() {
 		TerminologyBox _tbox = this.getTbox();
 		String _uuid = null;
@@ -252,6 +302,9 @@ public class ScalarOneOfLiteralAxiomImpl extends TermAxiomImpl implements Scalar
 				return basicGetAxiom();
 			case TerminologiesPackage.SCALAR_ONE_OF_LITERAL_AXIOM__VALUE:
 				return getValue();
+			case TerminologiesPackage.SCALAR_ONE_OF_LITERAL_AXIOM__VALUE_TYPE:
+				if (resolve) return getValueType();
+				return basicGetValueType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -269,6 +322,9 @@ public class ScalarOneOfLiteralAxiomImpl extends TermAxiomImpl implements Scalar
 				return;
 			case TerminologiesPackage.SCALAR_ONE_OF_LITERAL_AXIOM__VALUE:
 				setValue((LiteralValue)newValue);
+				return;
+			case TerminologiesPackage.SCALAR_ONE_OF_LITERAL_AXIOM__VALUE_TYPE:
+				setValueType((DataRange)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -288,6 +344,9 @@ public class ScalarOneOfLiteralAxiomImpl extends TermAxiomImpl implements Scalar
 			case TerminologiesPackage.SCALAR_ONE_OF_LITERAL_AXIOM__VALUE:
 				setValue((LiteralValue)null);
 				return;
+			case TerminologiesPackage.SCALAR_ONE_OF_LITERAL_AXIOM__VALUE_TYPE:
+				setValueType((DataRange)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -304,6 +363,8 @@ public class ScalarOneOfLiteralAxiomImpl extends TermAxiomImpl implements Scalar
 				return axiom != null;
 			case TerminologiesPackage.SCALAR_ONE_OF_LITERAL_AXIOM__VALUE:
 				return value != null;
+			case TerminologiesPackage.SCALAR_ONE_OF_LITERAL_AXIOM__VALUE_TYPE:
+				return valueType != null;
 		}
 		return super.eIsSet(featureID);
 	}
