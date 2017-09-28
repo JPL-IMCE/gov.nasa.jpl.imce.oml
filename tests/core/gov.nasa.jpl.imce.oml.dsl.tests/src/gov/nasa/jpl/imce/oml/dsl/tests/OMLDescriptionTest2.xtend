@@ -46,10 +46,11 @@ import org.eclipse.emf.ecore.resource.Resource
 import gov.nasa.jpl.imce.oml.model.datatypes.StringValue
 import gov.nasa.jpl.imce.oml.model.datatypes.FloatValue
 import gov.nasa.jpl.imce.oml.model.datatypes.PositiveIntegerValue
+import gov.nasa.jpl.imce.oml.model.terminologies.StringScalarRestriction
 
 @RunWith(XtextRunner)
 @InjectWith(OMLInjectorProvider)
-class OMLDescriptionTest1 {
+class OMLDescriptionTest2 {
 	
 	@Inject
 	Provider<XtextResourceSet> resourceSetProvider
@@ -64,13 +65,13 @@ class OMLDescriptionTest1 {
 
 		val rs = resourceSetProvider.get
 		
-		val r1 = rs.createResource(URI.createFileURI("file:OMLDescriptionTest1A.oml"))
+		val r1 = rs.createResource(URI.createFileURI("file:OMLDescriptionTest2A.oml"))
 		val Extent e1 = commonF.createExtent()
 		r1.getContents.add(e1)
 
 		val TerminologyGraph g = graphsF.createTerminologyGraph()
 		g.extent = e1
-		g.iri = "http://www.example.org/OMLDescriptionTest1A"
+		g.iri = "http://www.example.org/OMLDescriptionTest2A"
 
 		val Concept c = terminologiesF.createConcept
 		c.tbox = g
@@ -79,6 +80,12 @@ class OMLDescriptionTest1 {
 		val Scalar sc = terminologiesF.createScalar
 		sc.tbox = g
 		sc.name = "String"
+		
+		val StringScalarRestriction scr = terminologiesF.createStringScalarRestriction
+		scr.tbox = g
+		scr.name = "NonEmptyString"
+		scr.restrictedRange = sc
+		scr.minLength = new PositiveIntegerValue("1")
 		
 		val Scalar sc_double = terminologiesF.createScalar
 		sc_double.tbox = g
@@ -107,7 +114,7 @@ class OMLDescriptionTest1 {
 		dp2.tbox = g
 		dp2.name = "length"
 		dp2.domain = c
-		dp2.range = sc_double
+		dp2.range = sc_positive_double
 		
 		val EntityScalarDataProperty dp3 = terminologiesF.createEntityScalarDataProperty
 		dp3.tbox = g
@@ -117,11 +124,16 @@ class OMLDescriptionTest1 {
 		
 		val String text1 = serialize(r1)
 		val String expected1 = '''
-			open terminology <http://www.example.org/OMLDescriptionTest1A> {
+			open terminology <http://www.example.org/OMLDescriptionTest2A> {
 			
 				concept Box
 			
 				scalar String
+			
+				stringScalarRestriction NonEmptyString {
+					minLength 1
+					restrictedRange String
+				}
 			
 				scalar Double
 			
@@ -139,7 +151,7 @@ class OMLDescriptionTest1 {
 
 				entityScalarDataProperty ^length {
 					domain Box
-					range Double
+					range PositiveDouble
 				}
 			
 				entityScalarDataProperty isSmall {
@@ -152,13 +164,13 @@ class OMLDescriptionTest1 {
 		
 		assertEquals(text1, expected1)
 		
-		val r2 = rs.createResource(URI.createFileURI("file:OMLDescriptionTest1B.oml"))
+		val r2 = rs.createResource(URI.createFileURI("file:OMLDescriptionTest2B.oml"))
 		val Extent e2 = commonF.createExtent()
 		r2.getContents.add(e2)
 		
 		val DescriptionBox db = descriptionsF.createDescriptionBox
 		db.extent = e2
-		db.iri = "http://www.example.org/OMLDescriptionTest1B"
+		db.iri = "http://www.example.org/OMLDescriptionTest2B"
 		
 		val DescriptionBoxExtendsClosedWorldDefinitions ext = descriptionsF.createDescriptionBoxExtendsClosedWorldDefinitions
 		ext.descriptionBox = db
@@ -176,6 +188,8 @@ class OMLDescriptionTest1 {
 		
 		val ci_name_lit = commonF.createLiteralString
 		ci_name_lit.string = new StringValue('box #0')
+		
+		ci_name.valueType = scr
 		ci_name.scalarPropertyValue = ci_name_lit
 		
 		val SingletonInstanceScalarDataPropertyValue ci_length = descriptionsF.createSingletonInstanceScalarDataPropertyValue
@@ -185,7 +199,9 @@ class OMLDescriptionTest1 {
 		
 		val ci_length_lit = commonF.createLiteralFloat
 		ci_length_lit.^float = new FloatValue('123.45')
+		
 		ci_length.scalarPropertyValue = ci_length_lit
+		ci_length.valueType = sc_positive_double
 		
 		val SingletonInstanceScalarDataPropertyValue ci_isSmall = descriptionsF.createSingletonInstanceScalarDataPropertyValue
 		ci_isSmall.descriptionBox = db
@@ -199,17 +215,17 @@ class OMLDescriptionTest1 {
 		val String text2 = serialize(r2)
 		val String expected2 =
 		'''
-		final descriptionBox <http://www.example.org/OMLDescriptionTest1B> {
+		final descriptionBox <http://www.example.org/OMLDescriptionTest2B> {
 		
-			extends <http://www.example.org/OMLDescriptionTest1A>
+			extends <http://www.example.org/OMLDescriptionTest2A>
 		
-			conceptInstance(boite0 is-a OMLDescriptionTest1A:Box)
+			conceptInstance(boite0 is-a OMLDescriptionTest2A:Box)
 		
-			boite0 . OMLDescriptionTest1A:name = "box #0"
+			boite0 . OMLDescriptionTest2A:name = "box #0" ^^ OMLDescriptionTest2A:NonEmptyString
 		
-			boite0 . OMLDescriptionTest1A:length = 123.45
+			boite0 . OMLDescriptionTest2A:length = 123.45 ^^ OMLDescriptionTest2A:PositiveDouble
 		
-			boite0 . OMLDescriptionTest1A:isSmall = false
+			boite0 . OMLDescriptionTest2A:isSmall = false
 		
 		}
 		'''

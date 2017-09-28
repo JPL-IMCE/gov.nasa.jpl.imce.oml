@@ -382,7 +382,7 @@ EntityScalarDataPropertyParticularRestrictionAxiom returns EntityScalarDataPrope
 	'every'
 	restrictedEntity=[Entity|Reference]
 	'.' scalarProperty=[EntityScalarDataProperty|Reference]
-	'=' literalValue=LiteralValue;
+	'=' literalValue=LiteralValue ('^^' valueType=[DataRange|Reference])?;
 	
 EntityScalarDataPropertyUniversalRestrictionAxiom returns EntityScalarDataPropertyUniversalRestrictionAxiom:
 	( annotations+=AnnotationPropertyValue )*
@@ -416,7 +416,7 @@ RestrictionScalarDataPropertyValue returns RestrictionScalarDataPropertyValue:
 	( annotations+=AnnotationPropertyValue )*
 	scalarDataProperty=[ScalarDataProperty|Reference]
 	'=' 
-	scalarPropertyValue=LiteralValue;
+	scalarPropertyValue=LiteralValue ('^^' valueType=[DataRange|Reference])?;
 
 // 8 RestrictedDataRanges + 1 ScalarOneOfLiteralAxiom
 
@@ -475,7 +475,7 @@ ScalarOneOfLiteralAxiom returns ScalarOneOfLiteralAxiom:
 	( annotations+=AnnotationPropertyValue )*
 	'oneOf'
 	axiom=[ScalarOneOfRestriction|Reference]
-	'=' value=LiteralValue;
+	'=' value=LiteralValue ('^^' valueType=[DataRange|Reference])?;
 
 StringScalarRestriction returns StringScalarRestriction:
 	( annotations+=AnnotationPropertyValue )*
@@ -505,6 +505,7 @@ TimeScalarRestriction returns TimeScalarRestriction:
 		  ('maxExclusive' maxExclusive=LiteralDateTime)? )
 		'restrictedRange' restrictedRange=[DataRange|Reference]
 	'}';
+
 //----------------------------
 
 enum DescriptionKind returns DescriptionKind:
@@ -535,7 +536,7 @@ SingletonInstanceScalarDataPropertyValue returns SingletonInstanceScalarDataProp
 	'.' 
 	scalarDataProperty=[EntityScalarDataProperty|Reference] 
 	'=' 
-	scalarPropertyValue=LiteralValue;
+	scalarPropertyValue=LiteralValue ('^^' valueType=[DataRange|Reference])?;
 
 SingletonInstanceStructuredDataPropertyValue returns SingletonInstanceStructuredDataPropertyValue:
 	( annotations+=AnnotationPropertyValue )*
@@ -559,7 +560,7 @@ ScalarDataPropertyValue returns ScalarDataPropertyValue:
 	( annotations+=AnnotationPropertyValue )*
 	scalarDataProperty=[DataRelationshipToScalar|Reference]
 	'='
-	scalarPropertyValue=LiteralValue;
+	scalarPropertyValue=LiteralValue ('^^' valueType=[DataRange|Reference])?;
 
 ConceptInstance returns ConceptInstance:
 	( annotations+=AnnotationPropertyValue )*

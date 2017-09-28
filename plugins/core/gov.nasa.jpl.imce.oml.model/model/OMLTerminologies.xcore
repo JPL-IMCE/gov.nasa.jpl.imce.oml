@@ -1353,7 +1353,8 @@ class EntityScalarDataPropertyParticularRestrictionAxiom
 extends EntityScalarDataPropertyRestrictionAxiom {
 	
 	contains LiteralValue[1] literalValue
-  	
+  	refers DataRange[?] valueType
+	
 	@NotFunctionalAPI
 	@NotSchema
 	op UUID[1] uuid() {
@@ -1494,6 +1495,7 @@ class RestrictionScalarDataPropertyValue extends Element {
 	
 	refers DataRelationshipToScalar[1] scalarDataProperty
 	contains LiteralValue[1] scalarPropertyValue
+	refers DataRange[?] valueType
 	
 	@Scala(code="extent.restrictionStructuredDataPropertyContextOfRestrictionScalarDataPropertyValue.get(this).flatMap(_.terminologyBox())")
 	@ImplicitExtent
@@ -1792,6 +1794,7 @@ class ScalarOneOfLiteralAxiom extends TermAxiom {
 	 * The value of the literal from the restrictedScalar datatype
 	 */
 	contains LiteralValue[1] value
+	refers DataRange[?] valueType
 	
 	@NotFunctionalAPI
 	@NotSchema

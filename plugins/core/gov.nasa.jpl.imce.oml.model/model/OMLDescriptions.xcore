@@ -60,6 +60,7 @@ import gov.nasa.jpl.imce.oml.model.common.Scala
 import gov.nasa.jpl.imce.oml.model.common.UUID
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptualEntity
+import gov.nasa.jpl.imce.oml.model.terminologies.DataRange
 import gov.nasa.jpl.imce.oml.model.terminologies.DataRelationshipToScalar
 import gov.nasa.jpl.imce.oml.model.terminologies.DataRelationshipToStructure
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship
@@ -269,6 +270,7 @@ class SingletonInstanceScalarDataPropertyValue extends ModuleElement {
 	refers EntityScalarDataProperty[1] scalarDataProperty
 	
 	contains LiteralValue[1] scalarPropertyValue
+	refers DataRange[?] valueType
 	
 	@NotFunctionalAPI
 	@NotSchema
@@ -414,6 +416,7 @@ class ScalarDataPropertyValue extends Element {
 	
 	refers DataRelationshipToScalar[1] scalarDataProperty
 	contains LiteralValue[1] scalarPropertyValue
+	refers DataRange[?] valueType
 	
 	@Scala(code="extent.singletonInstanceStructuredDataPropertyContextOfScalarDataPropertyValue.get(this).flatMap(_.descriptionBox())")
 	@ImplicitExtent
