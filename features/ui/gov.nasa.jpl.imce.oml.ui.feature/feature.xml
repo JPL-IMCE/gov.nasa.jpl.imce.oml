@@ -77,10 +77,6 @@ License Terms
          version="0.0.0"/>
 
    <includes
-         id="org.eclipse.sirius.runtime.aql"
-         version="0.0.0"/>
-
-   <includes
          id="org.eclipse.sirius.runtime.ide.ui.acceleo"
          version="0.0.0"/>
 
@@ -161,10 +157,6 @@ License Terms
          version="0.0.0"/>
 
    <includes
-         id="org.eclipse.emf.ecore.xcore.ui"
-         version="0.0.0"/>
-
-   <includes
          id="org.eclipse.emf.databinding"
          version="0.0.0"/>
 
@@ -206,10 +198,6 @@ License Terms
 
    <includes
          id="org.eclipse.emf.compare.egit"
-         version="0.0.0"/>
-
-   <includes
-         id="org.eclipse.emf.compare.ide.ui"
          version="0.0.0"/>
 
    <includes
@@ -290,6 +278,7 @@ License Terms
       <import plugin="gov.nasa.jpl.imce.oml.dsl"/>
       <import plugin="org.eclipse.xtext.ide" version="2.12.0" match="compatible"/>
       <import plugin="org.eclipse.xtext.xbase.ide" version="2.12.0" match="compatible"/>
+      <import plugin="org.antlr.runtime"/>
       <import plugin="javax.inject" version="1.0.0" match="compatible"/>
       <import plugin="org.eclipse.swt" version="3.106.0" match="compatible"/>
       <import plugin="org.eclipse.e4.ui.model.workbench" version="2.0.0" match="equivalent"/>
@@ -327,7 +316,6 @@ License Terms
       <import plugin="org.eclipse.core.databinding" version="1.3.100" match="greaterOrEqual"/>
       <import plugin="org.eclipse.core.databinding.property" version="1.3.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.core.databinding.beans" version="1.2.100" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.emf.ecore" version="2.13.0" match="compatible"/>
       <import plugin="org.eclipse.net4j" version="4.0.0" match="compatible"/>
       <import plugin="org.eclipse.ui" version="3.6.0" match="compatible"/>
       <import plugin="org.eclipse.net4j.util" version="3.1.0" match="compatible"/>
@@ -397,7 +385,7 @@ License Terms
       <import plugin="org.eclipse.xtext.builder.standalone"/>
       <import plugin="com.google.guava" version="14.0.0"/>
       <import plugin="com.google.inject" version="3.0.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.xtext.ui.testing"/>
+      <import plugin="org.eclipse.xtext.junit4"/>
       <import plugin="org.eclipse.emf.edit.ui" version="2.3.1" match="greaterOrEqual"/>
       <import plugin="org.eclipse.sirius.properties" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.sirius.properties.edit" version="1.0.0" match="greaterOrEqual"/>
@@ -412,6 +400,7 @@ License Terms
       <import plugin="org.eclipse.ui" version="3.109.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.xtext.xbase" version="2.12.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.sirius" version="5.0.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.sirius.ui" version="5.0.1" match="greaterOrEqual"/>
       <import plugin="org.eclipse.sirius.diagram" version="5.0.1" match="greaterOrEqual"/>
       <import plugin="org.eclipse.sirius.common.acceleo.aql" version="5.0.1" match="greaterOrEqual"/>
       <import feature="gov.nasa.jpl.imce.oml.core.feature" version="0.8.0.qualifier"/>
@@ -421,9 +410,67 @@ License Terms
       <import feature="org.eclipse.emf.compare.diagram.gmf" version="3.3.0.201611041634"/>
       <import feature="org.eclipse.emf.compare.diagram.sirius" version="3.3.0.201611041634"/>
       <import feature="org.eclipse.emf.compare.ide.ui" version="3.3.0.201611041634"/>
-      <import plugin="org.antlr.runtime"/>
-      <import plugin="org.eclipse.xtext.junit4"/>
-      <import plugin="org.eclipse.sirius.ui" version="5.0.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.common"/>
+      <import plugin="org.eclipse.emf.mwe2.runtime" version="2.9.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.equinox.common" version="3.6.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext" version="2.8.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext.common.types" version="2.8.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtend.core"/>
+      <import plugin="org.eclipse.xtext.common.types.ui"/>
+      <import plugin="org.eclipse.xtext.xbase.ui"/>
+      <import plugin="org.eclipse.ui" version="3.6.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.jdt.core" version="3.6.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.ide" version="3.6.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.console" version="3.4.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.filesystem" version="1.2.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.jdt.ui" version="3.6.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.compare" version="3.5.101" match="greaterOrEqual"/>
+      <import plugin="org.apache.commons.lang" version="2.1.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.jdt.launching" version="3.5.200" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.jdt.debug.ui" version="3.5.2" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.editors" version="3.6.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.resources" version="3.6.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.equinox.registry" version="3.4.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.runtime" version="3.7.0" match="compatible"/>
+      <import plugin="org.eclipse.emf.ecore" version="2.8.0" match="compatible"/>
+      <import plugin="org.eclipse.core.runtime" version="3.0.0" match="compatible"/>
+      <import plugin="org.eclipse.emf.common" version="2.8.0" match="compatible"/>
+      <import plugin="org.eclipse.ui" version="3.0.0" match="compatible"/>
+      <import plugin="org.eclipse.ui.forms" version="3.5.0" match="compatible"/>
+      <import plugin="org.eclipse.eef.common" version="2.0.0" match="compatible"/>
+      <import plugin="org.eclipse.emf.edit" version="2.8.0" match="compatible"/>
+      <import plugin="org.eclipse.eef" version="2.0.0" match="compatible"/>
+      <import plugin="org.eclipse.emf.ecore.edit" version="2.8.0" match="compatible"/>
+      <import plugin="org.eclipse.swt" version="3.0.0" match="compatible"/>
+      <import plugin="org.eclipse.ui.forms" version="3.5.200" match="compatible"/>
+      <import plugin="org.eclipse.jface" version="3.1.0" match="compatible"/>
+      <import plugin="org.eclipse.ui.workbench" version="3.0.0" match="compatible"/>
+      <import plugin="org.eclipse.emf.common.ui" version="2.7.0" match="compatible"/>
+      <import plugin="org.eclipse.eef.core" version="2.0.0" match="compatible"/>
+      <import plugin="org.eclipse.eef.common.ui" version="2.0.0" match="compatible"/>
+      <import plugin="org.eclipse.eef.ide" version="2.0.0" match="compatible"/>
+      <import plugin="org.eclipse.emf.edit.ui" version="2.8.0" match="compatible"/>
+      <import plugin="org.eclipse.core.resources" version="3.7.0" match="compatible"/>
+      <import plugin="org.eclipse.eef.properties.ui" version="2.0.0" match="compatible"/>
+      <import plugin="org.eclipse.eef.ide.ui" version="2.0.0" match="compatible"/>
+      <import plugin="org.eclipse.jface" version="3.0.0" match="compatible"/>
+      <import plugin="org.eclipse.ui.views" version="3.0.0" match="compatible"/>
+      <import plugin="org.eclipse.ui.views" version="3.5.0" match="compatible"/>
+      <import plugin="org.eclipse.ui.forms" version="3.4.0" match="compatible"/>
+      <import plugin="org.eclipse.ui" version="3.8.2" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.help" version="3.6.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.sirius" version="2.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.sirius.diagram" version="2.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.sirius.diagram.ui" version="2.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.gmf.runtime.diagram.ui" version="1.6.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.sirius.table" version="2.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.views.properties.tabbed" version="3.5.0" match="compatible"/>
+      <import plugin="org.eclipse.eef.ext.widgets.reference" version="2.0.0" match="compatible"/>
+      <import plugin="org.eclipse.eef.core.ext.widgets.reference" version="2.0.0" match="compatible"/>
+      <import plugin="org.eclipse.ui.forms" version="3.6.0" match="compatible"/>
+      <import plugin="org.eclipse.ui" version="3.8.0" match="compatible"/>
+      <import plugin="org.eclipse.core.runtime" version="3.8.0" match="compatible"/>
+      <import plugin="org.eclipse.emf.common.ui" version="2.8.0" match="compatible"/>
    </requires>
 
    <plugin
@@ -486,28 +533,14 @@ License Terms
          id="org.eclipse.emf.compare.rcp"
          download-size="0"
          install-size="0"
-         version="2.5.1.201706130827"
+         version="2.5.1.201709090201"
          unpack="false"/>
 
    <plugin
          id="org.eclipse.emf.compare.rcp.ui"
          download-size="0"
          install-size="0"
-         version="4.4.0.201706130827"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.xsd"
-         download-size="0"
-         install-size="0"
-         version="2.13.0.v20170609-0928"
-         unpack="false"/>
-
-   <plugin
-         id="org.eclipse.xsd.edit"
-         download-size="0"
-         install-size="0"
-         version="2.8.0.v20170609-0928"
+         version="4.4.1.201709090201"
          unpack="false"/>
 
    <plugin
