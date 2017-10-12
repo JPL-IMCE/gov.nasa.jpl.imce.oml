@@ -9,3 +9,7 @@ gov.nasa.jpl.imce.oml.tycho 0.9.0.0 resolves major problems found in 0.8.0.1
 - [#111 Update to Eclipse Oxygen](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/111)
 
 - [#124 Add Eclipse EEF widgets to the OML target platform](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/124)
+
+- [#127 Fix UUID generation logic for Eclipse for RuleBodySegment](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/127)
+
+- [#128 OML WB Builds are broken after Oxygen.1 update](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/128)

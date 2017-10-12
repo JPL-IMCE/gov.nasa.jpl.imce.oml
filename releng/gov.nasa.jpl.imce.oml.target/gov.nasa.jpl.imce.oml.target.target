@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.8"?><target name="gov.nasa.jpl.imce.oml.target" sequenceNumber="64">
+<?pde version="3.8"?><target name="gov.nasa.jpl.imce.oml.target" sequenceNumber="65">
 <locations>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.acceleo.query.source.feature.group" version="6.0.1.201705121344"/>
@@ -52,7 +52,6 @@
 <repository location="http://download.eclipse.org/tools/orbit/R-builds/R20170516192513/repository"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.acceleo.feature.group" version="3.7.1.201705121344"/>
 <unit id="org.eclipse.e4.core.tools.feature.source.feature.group" version="4.7.0.v20170515-1617"/>
 <unit id="org.eclipse.e4.rcp.feature.group" version="1.6.1.v20170829-0553"/>
 <unit id="org.eclipse.e4.rcp.source.feature.group" version="1.6.1.v20170829-0553"/>
@@ -114,6 +113,10 @@
 <unit id="org.eclipse.xtext.xbase.feature.group" version="2.12.0.v20170519-1412"/>
 <unit id="org.eclipse.xtext.xbase.lib.feature.group" version="2.12.0.v20170518-0758"/>
 <repository location="http://download.eclipse.org/releases/oxygen/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.acceleo.feature.group" version="3.7.1.201705121344"/>
+<repository location="http://download.eclipse.org/acceleo/updates/releases/3.7/R201705121344/"/>
 </location>
 </locations>
 </target>

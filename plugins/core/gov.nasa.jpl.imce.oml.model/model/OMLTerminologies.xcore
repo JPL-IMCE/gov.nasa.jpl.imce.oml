@@ -718,7 +718,10 @@ class RuleBodySegment extends Element {
 	op UUID[1] uuid() {
 		OMLExtensions.derivedUUID(
 		"RuleBodySegment",
-		"chainRule" -> chainRule?.uuid()?.toString,
+		"chainRule" -> if (null === previousSegment)
+			chainRule?.uuid()?.toString
+		else 
+			previousSegment.uuid()?.toString,
 		"position" -> position.toString
 		)?.toString
 	}

@@ -338,25 +338,39 @@ public class RuleBodySegmentImpl extends ElementImpl implements RuleBodySegment 
 	 * @generated
 	 */
 	public String uuid() {
-		ChainRule _chainRule = this.chainRule();
-		String _uuid = null;
-		if (_chainRule!=null) {
-			_uuid=_chainRule.uuid();
+		String _xifexpression = null;
+		RuleBodySegment _previousSegment = this.getPreviousSegment();
+		boolean _tripleEquals = (null == _previousSegment);
+		if (_tripleEquals) {
+			ChainRule _chainRule = this.chainRule();
+			String _uuid = null;
+			if (_chainRule!=null) {
+				_uuid=_chainRule.uuid();
+			}
+			String _string = null;
+			if (_uuid!=null) {
+				_string=_uuid.toString();
+			}
+			_xifexpression = _string;
 		}
-		String _string = null;
-		if (_uuid!=null) {
-			_string=_uuid.toString();
+		else {
+			String _uuid_1 = this.getPreviousSegment().uuid();
+			String _string_1 = null;
+			if (_uuid_1!=null) {
+				_string_1=_uuid_1.toString();
+			}
+			_xifexpression = _string_1;
 		}
-		Pair<String, String> _mappedTo = Pair.<String, String>of("chainRule", _string);
-		String _string_1 = Integer.valueOf(this.position()).toString();
-		Pair<String, String> _mappedTo_1 = Pair.<String, String>of("position", _string_1);
+		Pair<String, String> _mappedTo = Pair.<String, String>of("chainRule", _xifexpression);
+		String _string_2 = Integer.valueOf(this.position()).toString();
+		Pair<String, String> _mappedTo_1 = Pair.<String, String>of("position", _string_2);
 		UUID _derivedUUID = OMLExtensions.derivedUUID(
 			"RuleBodySegment", _mappedTo, _mappedTo_1);
-		String _string_2 = null;
+		String _string_3 = null;
 		if (_derivedUUID!=null) {
-			_string_2=_derivedUUID.toString();
+			_string_3=_derivedUUID.toString();
 		}
-		return _string_2;
+		return _string_3;
 	}
 
 	/**
