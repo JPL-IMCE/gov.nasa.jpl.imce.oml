@@ -249,56 +249,56 @@ class OMLFormatter extends AbstractFormatter2 {
 	def dispatch void format(RuleBodySegment tailSegment, extension IFormattableDocument document) {
 		tailSegment.annotations.forEach[format.append[setNewLines(1)]]
 		tailSegment.predicate?.format
-		tailSegment.regionFor.keyword('&&').prepend[newLine].prepend[indent].append[oneSpace].append[oneSpace]
+		tailSegment.regionFor.keyword('&&').prepend[newLine].prepend[indent].append[oneSpace]
 		tailSegment.nextSegment?.format
 	}
 	
 	def dispatch void format(AspectPredicate ep, extension IFormattableDocument document) {
-		ep.regionFor.keyword('aspect').surround[noSpace]
+		ep.regionFor.keyword('aspect').append[noSpace]
 		ep.regionFor.keyword('(').surround[noSpace]
 		ep.regionFor.keyword(')').surround[noSpace]
 	}
 	
 	def dispatch void format(ConceptPredicate ep, extension IFormattableDocument document) {
-		ep.regionFor.keyword('aspect').surround[noSpace]
+		ep.regionFor.keyword('aspect').append[noSpace]
 		ep.regionFor.keyword('(').surround[noSpace]
 		ep.regionFor.keyword(')').surround[noSpace]
 	}
 	
 	def dispatch void format(ReifiedRelationshipPredicate ep, extension IFormattableDocument document) {
-		ep.regionFor.keyword('reifiedRelationship').surround[noSpace]
+		ep.regionFor.keyword('reifiedRelationship').append[noSpace]
 		ep.regionFor.keyword('(').surround[noSpace]
 		ep.regionFor.keyword(')').surround[noSpace]
 	}
 	
 	def dispatch void format(ReifiedRelationshipPropertyPredicate ep, extension IFormattableDocument document) {
-		ep.regionFor.keyword('property').surround[noSpace]
+		ep.regionFor.keyword('property').append[noSpace]
 		ep.regionFor.keyword('(').surround[noSpace]
 		ep.regionFor.keyword(')').surround[noSpace]
 	}
 	
 	def dispatch void format(ReifiedRelationshipInversePropertyPredicate ep, extension IFormattableDocument document) {
-		ep.regionFor.keyword('inv').surround[noSpace]
+		ep.regionFor.keyword('inv').append[noSpace]
 		ep.regionFor.keyword('property').surround[noSpace]
 		ep.regionFor.keyword('(').surround[noSpace]
 		ep.regionFor.keyword(')').surround[noSpace]
 	}
 	
 	def dispatch void format(ReifiedRelationshipSourcePropertyPredicate ep, extension IFormattableDocument document) {
-		ep.regionFor.keyword('source').surround[noSpace]
+		ep.regionFor.keyword('source').append[noSpace]
 		ep.regionFor.keyword('(').surround[noSpace]
 		ep.regionFor.keyword(')').surround[noSpace]
 	}
 	
 	def dispatch void format(ReifiedRelationshipSourceInversePropertyPredicate ep, extension IFormattableDocument document) {
-		ep.regionFor.keyword('inv').surround[noSpace]
+		ep.regionFor.keyword('inv').append[noSpace]
 		ep.regionFor.keyword('source').surround[noSpace]
 		ep.regionFor.keyword('(').surround[noSpace]
 		ep.regionFor.keyword(')').surround[noSpace]
 	}
 	
 	def dispatch void format(ReifiedRelationshipTargetPropertyPredicate ep, extension IFormattableDocument document) {
-		ep.regionFor.keyword('target').surround[noSpace]
+		ep.regionFor.keyword('target').append[noSpace]
 		ep.regionFor.keyword('(').surround[noSpace]
 		ep.regionFor.keyword(')').surround[noSpace]
 	}
@@ -314,7 +314,7 @@ class OMLFormatter extends AbstractFormatter2 {
 	}
 	
 	def dispatch void format(UnreifiedRelationshipInversePropertyPredicate ep, extension IFormattableDocument document) {
-		ep.regionFor.keyword('inv').surround[noSpace]
+		ep.regionFor.keyword('inv').append[noSpace]
 		ep.regionFor.keyword('(').surround[noSpace]
 		ep.regionFor.keyword(')').surround[noSpace]
 	}
