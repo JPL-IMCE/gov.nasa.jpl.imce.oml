@@ -5053,7 +5053,7 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		  (getRuleBodySegment__Uuid(), 
 		   source, 
 		   new String[] {
-			 "code", "namespaceUUID(\"RuleBodySegment\",  \n\t\t\"chainRule\" -> \n\t\t\trule.fold[scala.Predef.String]{ \n\t\t\t  previousSegment.fold[scala.Predef.String]{ throw new java.lang.IllegalArgumentException(\"rule or previousSegment must be non-empty\") }{ prev => \n\t\t\t\tprev.chainRule().uuid.toString\n\t\t\t  } \n\t\t\t}{ r => \n\t\t\t  r.uuid.toString },\n\t\t\"position\" -> \n\t\t\tpreviousSegment.fold[scala.Predef.String] { \n\t\t\t  \"1\" \n\t\t\t}{ prev => \n\t\t\t  prev.position().toString \n\t\t\t})"
+			 "code", "namespaceUUID(\"RuleBodySegment\",  \n\t\t\"chainRule\" -> \n\t\t\trule.fold[scala.Predef.String]{ \n\t\t\t  previousSegment.fold[scala.Predef.String]{ throw new java.lang.IllegalArgumentException(\"rule or previousSegment must be non-empty\") }{ prev => \n\t\t\t\tprev.chainRule().uuid.toString\n\t\t\t  } \n\t\t\t}{ r => \n\t\t\t  r.uuid.toString },\n\t\t\"position\" -> \n\t\t\tposition().toString \n\t`   )"
 		   });	
 		addAnnotation
 		  (getRuleBodySegment__ModuleContext(), 
