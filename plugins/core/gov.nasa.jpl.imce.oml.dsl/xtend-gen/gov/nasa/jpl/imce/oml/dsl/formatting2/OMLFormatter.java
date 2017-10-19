@@ -649,10 +649,7 @@ public class OMLFormatter extends AbstractFormatter2 {
     final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    final Procedure1<IHiddenRegionFormatter> _function_4 = (IHiddenRegionFormatter it) -> {
-      it.oneSpace();
-    };
-    document.append(document.append(document.prepend(document.prepend(this.textRegionExtensions.regionFor(tailSegment).keyword("&&"), _function_1), _function_2), _function_3), _function_4);
+    document.append(document.prepend(document.prepend(this.textRegionExtensions.regionFor(tailSegment).keyword("&&"), _function_1), _function_2), _function_3);
     RuleBodySegment _nextSegment = tailSegment.getNextSegment();
     if (_nextSegment!=null) {
       document.<RuleBodySegment>format(_nextSegment);
@@ -663,7 +660,7 @@ public class OMLFormatter extends AbstractFormatter2 {
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.noSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(ep).keyword("aspect"), _function);
+    document.append(this.textRegionExtensions.regionFor(ep).keyword("aspect"), _function);
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.noSpace();
     };
@@ -678,7 +675,7 @@ public class OMLFormatter extends AbstractFormatter2 {
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.noSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(ep).keyword("aspect"), _function);
+    document.append(this.textRegionExtensions.regionFor(ep).keyword("aspect"), _function);
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.noSpace();
     };
@@ -693,7 +690,7 @@ public class OMLFormatter extends AbstractFormatter2 {
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.noSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(ep).keyword("reifiedRelationship"), _function);
+    document.append(this.textRegionExtensions.regionFor(ep).keyword("reifiedRelationship"), _function);
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.noSpace();
     };
@@ -708,7 +705,7 @@ public class OMLFormatter extends AbstractFormatter2 {
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.noSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(ep).keyword("property"), _function);
+    document.append(this.textRegionExtensions.regionFor(ep).keyword("property"), _function);
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.noSpace();
     };
@@ -723,7 +720,7 @@ public class OMLFormatter extends AbstractFormatter2 {
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.noSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(ep).keyword("inv"), _function);
+    document.append(this.textRegionExtensions.regionFor(ep).keyword("inv"), _function);
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.noSpace();
     };
@@ -742,7 +739,7 @@ public class OMLFormatter extends AbstractFormatter2 {
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.noSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(ep).keyword("source"), _function);
+    document.append(this.textRegionExtensions.regionFor(ep).keyword("source"), _function);
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.noSpace();
     };
@@ -757,7 +754,7 @@ public class OMLFormatter extends AbstractFormatter2 {
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.noSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(ep).keyword("inv"), _function);
+    document.append(this.textRegionExtensions.regionFor(ep).keyword("inv"), _function);
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.noSpace();
     };
@@ -776,7 +773,7 @@ public class OMLFormatter extends AbstractFormatter2 {
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.noSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(ep).keyword("target"), _function);
+    document.append(this.textRegionExtensions.regionFor(ep).keyword("target"), _function);
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.noSpace();
     };
@@ -813,7 +810,7 @@ public class OMLFormatter extends AbstractFormatter2 {
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.noSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(ep).keyword("inv"), _function);
+    document.append(this.textRegionExtensions.regionFor(ep).keyword("inv"), _function);
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.noSpace();
     };
