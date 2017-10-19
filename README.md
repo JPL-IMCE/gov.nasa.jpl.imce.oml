@@ -72,47 +72,7 @@ Check with `git status` and/or `git diff` to confirm the changes.
 
 ## Deployment
 
-TODO: Explore using maven profiles to decouple deployment info.
-
-### Artifactory publishing
-
-In `~/.m2/settings.xml` include, replacing `{ARTIFACTORY USERNAME}` and `{ARTIFACTORY APIKEY}` with appropriate credentials.
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
-                      http://maven.apache.org/xsd/settings-1.0.0.xsd/"> 
-  <servers>
-    <server>
-      <id>artifactory</id>
-      <username>{ARTIFACTORY USERNAME}</username>
-      <password>{ARTIFACTORY APIKEY}</password>
-    </server>
-  </servers>
-</settings>
-```
-
-## Bintray publishing (currently disabled because some artifacts exceed the size limit on bintray)
-
-In `~/.m2/settings.xml` include, replacing `{BINTRAY USERNAME}` and `{BINTRAY APIKEY}` with appropriate credentials.
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
-                      http://maven.apache.org/xsd/settings-1.0.0.xsd/"> 
-  <servers>
-    <server>
-      <id>bintray</id>
-      <username>{BINTRAY USERNAME}</username>
-      <password>{BINTRAY APIKEY}</password>
-    </server>
-  </servers>
-</settings>
-```
+See [scripts/travis.sh](scripts/travis.sh)
 
 ## Development Notes
 

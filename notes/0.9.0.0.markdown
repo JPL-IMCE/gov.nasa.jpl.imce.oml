@@ -1,0 +1,19 @@
+gov.nasa.jpl.imce.oml.tycho 0.9.0.0 resolves major problems found in 0.8.0.1
+
+## Planned scope & Issues resolved:
+
+- [#98 OML LiteralValue needs to include support for data range restrictions](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/98)
+
+- [#107 Add support for OML entity relationship chains](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/107)
+
+- [#111 Update to Eclipse Oxygen](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/111)
+
+- [#124 Add Eclipse EEF widgets to the OML target platform](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/124)
+
+- [#127 Fix UUID generation logic for Eclipse for RuleBodySegment](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/127)
+
+- [#128 OML WB Builds are broken after Oxygen.1 update](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/128)
+
+- [#130 Formatting ambiguity for ChainRules](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/130)
+
+- [#131 Incorrect RuleBodySegment.position() calculation](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/131)

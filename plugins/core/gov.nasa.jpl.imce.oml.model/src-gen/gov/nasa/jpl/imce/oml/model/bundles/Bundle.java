@@ -89,9 +89,9 @@ public interface Bundle extends TerminologyBox {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%org.eclipse.emf.common.util.BasicEList%><<%gov.nasa.jpl.imce.oml.model.common.ModuleEdge%>> _xblockexpression = null;\n{\n\tfinal <%org.eclipse.emf.common.util.BasicEList%><<%gov.nasa.jpl.imce.oml.model.common.ModuleEdge%>> me = new <%org.eclipse.emf.common.util.BasicEList%><<%gov.nasa.jpl.imce.oml.model.common.ModuleEdge%>>();\n\tme.addAll(this.getBoxAxioms());\n\tme.addAll(this.getBundleAxioms());\n\t_xblockexpression = me;\n}\nreturn _xblockexpression;'"
 	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='extent.lookupBoxAxioms(this) ++ extent.lookupBundleAxioms(this)'"
 	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.emf.common.util.BasicEList%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.common.ModuleEdge%&gt;&gt; _xblockexpression = null;\n{\n\tfinal &lt;%org.eclipse.emf.common.util.BasicEList%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.common.ModuleEdge%&gt;&gt; me = new &lt;%org.eclipse.emf.common.util.BasicEList%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.common.ModuleEdge%&gt;&gt;();\n\tme.addAll(this.getBoxAxioms());\n\tme.addAll(this.getBundleAxioms());\n\t_xblockexpression = me;\n}\nreturn _xblockexpression;'"
 	 * @generated
 	 */
 	EList<ModuleEdge> moduleEdges();
@@ -100,9 +100,9 @@ public interface Bundle extends TerminologyBox {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%org.eclipse.emf.common.util.BasicEList%><<%gov.nasa.jpl.imce.oml.model.common.ModuleElement%>> _xblockexpression = null;\n{\n\tfinal <%org.eclipse.emf.common.util.BasicEList%><<%gov.nasa.jpl.imce.oml.model.common.ModuleElement%>> mes = new <%org.eclipse.emf.common.util.BasicEList%><<%gov.nasa.jpl.imce.oml.model.common.ModuleElement%>>();\n\tmes.addAll(this.getBoxStatements());\n\tmes.addAll(this.getBundleStatements());\n\t_xblockexpression = mes;\n}\nreturn _xblockexpression;'"
 	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='extent.lookupBundleStatements(this) ++ extent.lookupBoxStatements(this)'"
 	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.emf.common.util.BasicEList%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.common.ModuleElement%&gt;&gt; _xblockexpression = null;\n{\n\tfinal &lt;%org.eclipse.emf.common.util.BasicEList%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.common.ModuleElement%&gt;&gt; mes = new &lt;%org.eclipse.emf.common.util.BasicEList%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.common.ModuleElement%&gt;&gt;();\n\tmes.addAll(this.getBoxStatements());\n\tmes.addAll(this.getBundleStatements());\n\t_xblockexpression = mes;\n}\nreturn _xblockexpression;'"
 	 * @generated
 	 */
 	EList<ModuleElement> moduleElements();

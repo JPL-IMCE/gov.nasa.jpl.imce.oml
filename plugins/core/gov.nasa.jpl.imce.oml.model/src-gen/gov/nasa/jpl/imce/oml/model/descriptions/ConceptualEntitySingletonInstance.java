@@ -92,8 +92,8 @@ public interface ConceptualEntitySingletonInstance extends TerminologyInstanceAs
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model dataType="gov.nasa.jpl.imce.oml.model.common.IRI" unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox%> _descriptionBox = this.descriptionBox();\n<%java.lang.String%> _iri = null;\nif (_descriptionBox!=null)\n{\n\t_iri=_descriptionBox.iri();\n}\n<%java.lang.String%> _plus = (_iri + \"#\");\n<%java.lang.String%> _name = this.name();\nreturn (_plus + _name);'"
 	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='descriptionBox().flatMap(_.iri())'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox%&gt; _descriptionBox = this.descriptionBox();\n&lt;%java.lang.String%&gt; _iri = null;\nif (_descriptionBox!=null)\n{\n\t_iri=_descriptionBox.iri();\n}\n&lt;%java.lang.String%&gt; _plus = (_iri + \"#\");\n&lt;%java.lang.String%&gt; _name = this.name();\nreturn (_plus + _name);'"
 	 * @generated
 	 */
 	String iri();
@@ -102,8 +102,8 @@ public interface ConceptualEntitySingletonInstance extends TerminologyInstanceAs
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%java.lang.String%> _elvis = null;\n<%gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox%> _descriptionBox = this.descriptionBox();\n<%java.lang.String%> _nsPrefix = null;\nif (_descriptionBox!=null)\n{\n\t_nsPrefix=_descriptionBox.nsPrefix();\n}\nif (_nsPrefix != null)\n{\n\t_elvis = _nsPrefix;\n} else\n{\n\t_elvis = \"\";\n}\n<%java.lang.String%> _plus = (_elvis + \":\");\n<%java.lang.String%> _name = this.name();\nreturn (_plus + _name);'"
-	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='descriptionBox().map(dbox => dbox.nsPrefix+\":\"+name)'"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='descriptionBox().map(dbox =&gt; dbox.nsPrefix+\":\"+name)'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%java.lang.String%&gt; _elvis = null;\n&lt;%gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox%&gt; _descriptionBox = this.descriptionBox();\n&lt;%java.lang.String%&gt; _nsPrefix = null;\nif (_descriptionBox!=null)\n{\n\t_nsPrefix=_descriptionBox.nsPrefix();\n}\nif (_nsPrefix != null)\n{\n\t_elvis = _nsPrefix;\n} else\n{\n\t_elvis = \"\";\n}\n&lt;%java.lang.String%&gt; _plus = (_elvis + \":\");\n&lt;%java.lang.String%&gt; _name = this.name();\nreturn (_plus + _name);'"
 	 * @generated
 	 */
 	String abbrevIRI();
@@ -129,7 +129,7 @@ public interface ConceptualEntitySingletonInstance extends TerminologyInstanceAs
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model dataType="gov.nasa.jpl.imce.oml.model.common.UUID" unique="false" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox%> _descriptionBox = this.descriptionBox();\n<%java.lang.String%> _uuid = null;\nif (_descriptionBox!=null)\n{\n\t_uuid=_descriptionBox.uuid();\n}\n<%java.lang.String%> _string = null;\nif (_uuid!=null)\n{\n\t_string=_uuid.toString();\n}\n<%java.lang.String%> _name = this.name();\n<%java.lang.String%> _string_1 = null;\nif (_name!=null)\n{\n\t_string_1=_name.toString();\n}\n<%org.eclipse.xtext.xbase.lib.Pair%><<%java.lang.String%>, <%java.lang.String%>> _mappedTo = <%org.eclipse.xtext.xbase.lib.Pair%>.<<%java.lang.String%>, <%java.lang.String%>>of(\"name\", _string_1);\n<%java.util.UUID%> _namespaceUUID = <%gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions%>.namespaceUUID(_string, _mappedTo);\n<%java.lang.String%> _string_2 = null;\nif (_namespaceUUID!=null)\n{\n\t_string_2=_namespaceUUID.toString();\n}\nreturn _string_2;'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox%&gt; _descriptionBox = this.descriptionBox();\n&lt;%java.lang.String%&gt; _uuid = null;\nif (_descriptionBox!=null)\n{\n\t_uuid=_descriptionBox.uuid();\n}\n&lt;%java.lang.String%&gt; _string = null;\nif (_uuid!=null)\n{\n\t_string=_uuid.toString();\n}\n&lt;%java.lang.String%&gt; _name = this.name();\n&lt;%java.lang.String%&gt; _string_1 = null;\nif (_name!=null)\n{\n\t_string_1=_name.toString();\n}\n&lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt; _mappedTo = &lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;.&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt;of(\"name\", _string_1);\n&lt;%java.util.UUID%&gt; _namespaceUUID = &lt;%gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions%&gt;.namespaceUUID(_string, _mappedTo);\n&lt;%java.lang.String%&gt; _string_2 = null;\nif (_namespaceUUID!=null)\n{\n\t_string_2=_namespaceUUID.toString();\n}\nreturn _string_2;'"
 	 * @generated
 	 */
 	String uuid();

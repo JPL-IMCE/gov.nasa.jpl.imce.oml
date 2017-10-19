@@ -48,9 +48,12 @@ import gov.nasa.jpl.imce.oml.model.graphs.ConceptDesignationTerminologyAxiom;
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyGraph;
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyNestingAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.Aspect;
+import gov.nasa.jpl.imce.oml.model.terminologies.AspectPredicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.AspectSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.BinaryScalarRestriction;
+import gov.nasa.jpl.imce.oml.model.terminologies.ChainRule;
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
+import gov.nasa.jpl.imce.oml.model.terminologies.ConceptPredicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataProperty;
@@ -64,13 +67,22 @@ import gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship;
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipInversePropertyPredicate;
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPredicate;
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPropertyPredicate;
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourceInversePropertyPredicate;
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourcePropertyPredicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom;
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetInversePropertyPredicate;
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetPropertyPredicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple;
+import gov.nasa.jpl.imce.oml.model.terminologies.RuleBodySegment;
 import gov.nasa.jpl.imce.oml.model.terminologies.Scalar;
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfRestriction;
+import gov.nasa.jpl.imce.oml.model.terminologies.SegmentPredicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.StringScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.Structure;
 import gov.nasa.jpl.imce.oml.model.terminologies.StructuredDataProperty;
@@ -81,6 +93,8 @@ import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBoxStatement;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyExtensionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.TimeScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship;
+import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipInversePropertyPredicate;
+import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipPropertyPredicate;
 import java.util.Arrays;
 import java.util.function.Consumer;
 import org.eclipse.emf.ecore.EObject;
@@ -580,6 +594,231 @@ public class OMLFormatter extends AbstractFormatter2 {
       it.oneSpace();
     };
     document.append(this.textRegionExtensions.regionFor(structure).keyword("structure"), _function_1);
+  }
+  
+  protected void _format(final ChainRule chainRule, @Extension final IFormattableDocument document) {
+    final Consumer<AnnotationPropertyValue> _function = (AnnotationPropertyValue it) -> {
+      final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it_1) -> {
+        it_1.setNewLines(1);
+      };
+      document.<AnnotationPropertyValue>append(document.<AnnotationPropertyValue>format(it), _function_1);
+    };
+    chainRule.getAnnotations().forEach(_function);
+    final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
+      it.oneSpace();
+    };
+    document.append(this.textRegionExtensions.regionFor(chainRule).keyword("rule"), _function_1);
+    final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
+      it.oneSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(chainRule).keyword("infers"), _function_2);
+    final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
+      it.newLine();
+    };
+    final Procedure1<IHiddenRegionFormatter> _function_4 = (IHiddenRegionFormatter it) -> {
+      it.indent();
+    };
+    final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it) -> {
+      it.oneSpace();
+    };
+    document.append(document.prepend(document.prepend(this.textRegionExtensions.regionFor(chainRule).keyword("if"), _function_3), _function_4), _function_5);
+    RuleBodySegment _firstSegment = chainRule.getFirstSegment();
+    if (_firstSegment!=null) {
+      document.<RuleBodySegment>format(_firstSegment);
+    }
+  }
+  
+  protected void _format(final RuleBodySegment tailSegment, @Extension final IFormattableDocument document) {
+    final Consumer<AnnotationPropertyValue> _function = (AnnotationPropertyValue it) -> {
+      final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it_1) -> {
+        it_1.setNewLines(1);
+      };
+      document.<AnnotationPropertyValue>append(document.<AnnotationPropertyValue>format(it), _function_1);
+    };
+    tailSegment.getAnnotations().forEach(_function);
+    SegmentPredicate _predicate = tailSegment.getPredicate();
+    if (_predicate!=null) {
+      document.<SegmentPredicate>format(_predicate);
+    }
+    final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
+      it.newLine();
+    };
+    final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
+      it.indent();
+    };
+    final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
+      it.oneSpace();
+    };
+    document.append(document.prepend(document.prepend(this.textRegionExtensions.regionFor(tailSegment).keyword("&&"), _function_1), _function_2), _function_3);
+    RuleBodySegment _nextSegment = tailSegment.getNextSegment();
+    if (_nextSegment!=null) {
+      document.<RuleBodySegment>format(_nextSegment);
+    }
+  }
+  
+  protected void _format(final AspectPredicate ep, @Extension final IFormattableDocument document) {
+    final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
+      it.noSpace();
+    };
+    document.append(this.textRegionExtensions.regionFor(ep).keyword("aspect"), _function);
+    final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
+      it.noSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(ep).keyword("("), _function_1);
+    final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
+      it.noSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(ep).keyword(")"), _function_2);
+  }
+  
+  protected void _format(final ConceptPredicate ep, @Extension final IFormattableDocument document) {
+    final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
+      it.noSpace();
+    };
+    document.append(this.textRegionExtensions.regionFor(ep).keyword("aspect"), _function);
+    final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
+      it.noSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(ep).keyword("("), _function_1);
+    final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
+      it.noSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(ep).keyword(")"), _function_2);
+  }
+  
+  protected void _format(final ReifiedRelationshipPredicate ep, @Extension final IFormattableDocument document) {
+    final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
+      it.noSpace();
+    };
+    document.append(this.textRegionExtensions.regionFor(ep).keyword("reifiedRelationship"), _function);
+    final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
+      it.noSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(ep).keyword("("), _function_1);
+    final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
+      it.noSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(ep).keyword(")"), _function_2);
+  }
+  
+  protected void _format(final ReifiedRelationshipPropertyPredicate ep, @Extension final IFormattableDocument document) {
+    final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
+      it.noSpace();
+    };
+    document.append(this.textRegionExtensions.regionFor(ep).keyword("property"), _function);
+    final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
+      it.noSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(ep).keyword("("), _function_1);
+    final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
+      it.noSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(ep).keyword(")"), _function_2);
+  }
+  
+  protected void _format(final ReifiedRelationshipInversePropertyPredicate ep, @Extension final IFormattableDocument document) {
+    final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
+      it.noSpace();
+    };
+    document.append(this.textRegionExtensions.regionFor(ep).keyword("inv"), _function);
+    final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
+      it.noSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(ep).keyword("property"), _function_1);
+    final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
+      it.noSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(ep).keyword("("), _function_2);
+    final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
+      it.noSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(ep).keyword(")"), _function_3);
+  }
+  
+  protected void _format(final ReifiedRelationshipSourcePropertyPredicate ep, @Extension final IFormattableDocument document) {
+    final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
+      it.noSpace();
+    };
+    document.append(this.textRegionExtensions.regionFor(ep).keyword("source"), _function);
+    final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
+      it.noSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(ep).keyword("("), _function_1);
+    final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
+      it.noSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(ep).keyword(")"), _function_2);
+  }
+  
+  protected void _format(final ReifiedRelationshipSourceInversePropertyPredicate ep, @Extension final IFormattableDocument document) {
+    final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
+      it.noSpace();
+    };
+    document.append(this.textRegionExtensions.regionFor(ep).keyword("inv"), _function);
+    final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
+      it.noSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(ep).keyword("source"), _function_1);
+    final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
+      it.noSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(ep).keyword("("), _function_2);
+    final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
+      it.noSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(ep).keyword(")"), _function_3);
+  }
+  
+  protected void _format(final ReifiedRelationshipTargetPropertyPredicate ep, @Extension final IFormattableDocument document) {
+    final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
+      it.noSpace();
+    };
+    document.append(this.textRegionExtensions.regionFor(ep).keyword("target"), _function);
+    final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
+      it.noSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(ep).keyword("("), _function_1);
+    final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
+      it.noSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(ep).keyword(")"), _function_2);
+  }
+  
+  protected void _format(final ReifiedRelationshipTargetInversePropertyPredicate ep, @Extension final IFormattableDocument document) {
+    final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
+      it.noSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(ep).keyword("inv"), _function);
+    final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
+      it.noSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(ep).keyword("target"), _function_1);
+    final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
+      it.noSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(ep).keyword("("), _function_2);
+    final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
+      it.noSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(ep).keyword(")"), _function_3);
+  }
+  
+  protected void _format(final UnreifiedRelationshipPropertyPredicate ep, @Extension final IFormattableDocument document) {
+  }
+  
+  protected void _format(final UnreifiedRelationshipInversePropertyPredicate ep, @Extension final IFormattableDocument document) {
+    final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
+      it.noSpace();
+    };
+    document.append(this.textRegionExtensions.regionFor(ep).keyword("inv"), _function);
+    final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
+      it.noSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(ep).keyword("("), _function_1);
+    final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
+      it.noSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(ep).keyword(")"), _function_2);
   }
   
   protected void _format(final AspectSpecializationAxiom ax, @Extension final IFormattableDocument document) {
@@ -2001,6 +2240,9 @@ public class OMLFormatter extends AbstractFormatter2 {
     } else if (sc instanceof AspectSpecializationAxiom) {
       _format((AspectSpecializationAxiom)sc, document);
       return;
+    } else if (sc instanceof ChainRule) {
+      _format((ChainRule)sc, document);
+      return;
     } else if (sc instanceof Concept) {
       _format((Concept)sc, document);
       return;
@@ -2064,11 +2306,35 @@ public class OMLFormatter extends AbstractFormatter2 {
     } else if (sc instanceof TerminologyNestingAxiom) {
       _format((TerminologyNestingAxiom)sc, document);
       return;
+    } else if (sc instanceof ReifiedRelationshipInversePropertyPredicate) {
+      _format((ReifiedRelationshipInversePropertyPredicate)sc, document);
+      return;
+    } else if (sc instanceof ReifiedRelationshipPropertyPredicate) {
+      _format((ReifiedRelationshipPropertyPredicate)sc, document);
+      return;
+    } else if (sc instanceof ReifiedRelationshipSourceInversePropertyPredicate) {
+      _format((ReifiedRelationshipSourceInversePropertyPredicate)sc, document);
+      return;
+    } else if (sc instanceof ReifiedRelationshipSourcePropertyPredicate) {
+      _format((ReifiedRelationshipSourcePropertyPredicate)sc, document);
+      return;
+    } else if (sc instanceof ReifiedRelationshipTargetInversePropertyPredicate) {
+      _format((ReifiedRelationshipTargetInversePropertyPredicate)sc, document);
+      return;
+    } else if (sc instanceof ReifiedRelationshipTargetPropertyPredicate) {
+      _format((ReifiedRelationshipTargetPropertyPredicate)sc, document);
+      return;
     } else if (sc instanceof ScalarOneOfLiteralAxiom) {
       _format((ScalarOneOfLiteralAxiom)sc, document);
       return;
     } else if (sc instanceof TerminologyExtensionAxiom) {
       _format((TerminologyExtensionAxiom)sc, document);
+      return;
+    } else if (sc instanceof UnreifiedRelationshipInversePropertyPredicate) {
+      _format((UnreifiedRelationshipInversePropertyPredicate)sc, document);
+      return;
+    } else if (sc instanceof UnreifiedRelationshipPropertyPredicate) {
+      _format((UnreifiedRelationshipPropertyPredicate)sc, document);
       return;
     } else if (sc instanceof Bundle) {
       _format((Bundle)sc, document);
@@ -2084,6 +2350,15 @@ public class OMLFormatter extends AbstractFormatter2 {
       return;
     } else if (sc instanceof TerminologyGraph) {
       _format((TerminologyGraph)sc, document);
+      return;
+    } else if (sc instanceof AspectPredicate) {
+      _format((AspectPredicate)sc, document);
+      return;
+    } else if (sc instanceof ConceptPredicate) {
+      _format((ConceptPredicate)sc, document);
+      return;
+    } else if (sc instanceof ReifiedRelationshipPredicate) {
+      _format((ReifiedRelationshipPredicate)sc, document);
       return;
     } else if (sc instanceof RestrictionStructuredDataPropertyTuple) {
       _format((RestrictionStructuredDataPropertyTuple)sc, document);
@@ -2111,6 +2386,9 @@ public class OMLFormatter extends AbstractFormatter2 {
       return;
     } else if (sc instanceof RestrictionScalarDataPropertyValue) {
       _format((RestrictionScalarDataPropertyValue)sc, document);
+      return;
+    } else if (sc instanceof RuleBodySegment) {
+      _format((RuleBodySegment)sc, document);
       return;
     } else if (sc instanceof XtextResource) {
       _format((XtextResource)sc, document);

@@ -31,6 +31,7 @@ import gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceScalarDataPrope
 
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
 
+import gov.nasa.jpl.imce.oml.model.terminologies.DataRange;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataProperty;
 
 import java.lang.reflect.InvocationTargetException;
@@ -65,6 +66,7 @@ import org.eclipse.xtext.xbase.lib.Pair;
  *   <li>{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.SingletonInstanceScalarDataPropertyValueImpl#getSingletonInstance <em>Singleton Instance</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.SingletonInstanceScalarDataPropertyValueImpl#getScalarDataProperty <em>Scalar Data Property</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.SingletonInstanceScalarDataPropertyValueImpl#getScalarPropertyValue <em>Scalar Property Value</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.SingletonInstanceScalarDataPropertyValueImpl#getValueType <em>Value Type</em>}</li>
  * </ul>
  *
  * @generated
@@ -99,6 +101,16 @@ public class SingletonInstanceScalarDataPropertyValueImpl extends ModuleElementI
 	 * @ordered
 	 */
 	protected LiteralValue scalarPropertyValue;
+
+	/**
+	 * The cached value of the '{@link #getValueType() <em>Value Type</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValueType()
+	 * @generated
+	 * @ordered
+	 */
+	protected DataRange valueType;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -294,6 +306,44 @@ public class SingletonInstanceScalarDataPropertyValueImpl extends ModuleElementI
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public DataRange getValueType() {
+		if (valueType != null && ((EObject)valueType).eIsProxy()) {
+			InternalEObject oldValueType = (InternalEObject)valueType;
+			valueType = (DataRange)eResolveProxy(oldValueType);
+			if (valueType != oldValueType) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DescriptionsPackage.SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE__VALUE_TYPE, oldValueType, valueType));
+			}
+		}
+		return valueType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DataRange basicGetValueType() {
+		return valueType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setValueType(DataRange newValueType) {
+		DataRange oldValueType = valueType;
+		valueType = newValueType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DescriptionsPackage.SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE__VALUE_TYPE, oldValueType, valueType));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String uuid() {
 		DescriptionBox _descriptionBox = this.getDescriptionBox();
 		String _uuid = null;
@@ -426,6 +476,9 @@ public class SingletonInstanceScalarDataPropertyValueImpl extends ModuleElementI
 				return basicGetScalarDataProperty();
 			case DescriptionsPackage.SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE:
 				return getScalarPropertyValue();
+			case DescriptionsPackage.SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE__VALUE_TYPE:
+				if (resolve) return getValueType();
+				return basicGetValueType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -449,6 +502,9 @@ public class SingletonInstanceScalarDataPropertyValueImpl extends ModuleElementI
 				return;
 			case DescriptionsPackage.SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE:
 				setScalarPropertyValue((LiteralValue)newValue);
+				return;
+			case DescriptionsPackage.SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE__VALUE_TYPE:
+				setValueType((DataRange)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -474,6 +530,9 @@ public class SingletonInstanceScalarDataPropertyValueImpl extends ModuleElementI
 			case DescriptionsPackage.SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE:
 				setScalarPropertyValue((LiteralValue)null);
 				return;
+			case DescriptionsPackage.SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE__VALUE_TYPE:
+				setValueType((DataRange)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -494,6 +553,8 @@ public class SingletonInstanceScalarDataPropertyValueImpl extends ModuleElementI
 				return scalarDataProperty != null;
 			case DescriptionsPackage.SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE:
 				return scalarPropertyValue != null;
+			case DescriptionsPackage.SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE__VALUE_TYPE:
+				return valueType != null;
 		}
 		return super.eIsSet(featureID);
 	}

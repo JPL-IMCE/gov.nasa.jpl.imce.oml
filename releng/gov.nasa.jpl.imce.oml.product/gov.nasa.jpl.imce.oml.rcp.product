@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="OML Workbench" uid="gov.nasa.jpl.imce.oml.rcp.product" id="gov.nasa.jpl.imce.oml.rcp.product" application="org.eclipse.ui.ide.workbench" version="0.8.0.qualifier" useFeatures="true" includeLaunchers="true">
+<product name="OML Workbench" uid="gov.nasa.jpl.imce.oml.rcp.product" id="gov.nasa.jpl.imce.oml.rcp.product" application="org.eclipse.ui.ide.workbench" version="0.9.0.qualifier" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
       <text>
@@ -13,18 +13,19 @@
    </configIni>
 
    <launcherArgs>
-      <programArgs>-clearPersistedState
+      <programArgs>-console
       </programArgs>
       <vmArgs>-Dorg.eclipse.update.reconcile=false
       </vmArgs>
-      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
+      <vmArgsMac>-XstartOnFirstThread
+-Dorg.eclipse.swt.internal.carbon.smallFonts
       </vmArgsMac>
    </launcherArgs>
 
    <windowImages/>
 
+
    <launcher name="OML Workbench">
-      <solaris/>
       <win useIco="false">
          <bmp/>
       </win>
@@ -268,9 +269,7 @@ License Terms
    </plugins>
 
    <features>
-      <feature id="gov.nasa.jpl.imce.oml.core.feature" installMode="root"/>
-      <feature id="gov.nasa.jpl.imce.oml.ui.feature" installMode="root"/>
-      <feature id="org.eclipse.platform" version="4.6.3.v20170301-0400"/>
+      <feature id="org.eclipse.platform"/>
       <feature id="org.eclipse.emf.ecore"/>
       <feature id="org.eclipse.equinox.p2.user.ui"/>
       <feature id="org.eclipse.ecf.filetransfer.httpclient4.feature"/>
@@ -286,16 +285,32 @@ License Terms
       <feature id="org.eclipse.ecf.core.ssl.feature"/>
       <feature id="org.eclipse.ecf.filetransfer.ssl.feature"/>
       <feature id="org.eclipse.e4.rcp"/>
-      <feature id="org.eclipse.egit" version="4.6.1.201703071140-r"/>
-      <feature id="org.eclipse.jgit" version="4.6.1.201703071140-r"/>
+      <feature id="org.eclipse.egit" version="4.8.0.201706111038-r"/>
+      <feature id="org.eclipse.jgit" version="4.8.0.201706111038-r"/>
+      <feature id="gov.nasa.jpl.imce.oml.core.feature" version="0.9.0.qualifier"/>
+      <feature id="gov.nasa.jpl.imce.oml.ui.feature" version="0.9.0.qualifier"/>
    </features>
 
    <configurations>
-      <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="2" />
+      <plugin id="gov.nasa.jpl.imce.oml.dsl" autoStart="false" startLevel="0" />
+      <plugin id="gov.nasa.jpl.imce.oml.dsl.ide" autoStart="false" startLevel="0" />
+      <plugin id="gov.nasa.jpl.imce.oml.dsl.ui" autoStart="false" startLevel="0" />
+      <plugin id="gov.nasa.jpl.imce.oml.model" autoStart="false" startLevel="0" />
+      <plugin id="gov.nasa.jpl.imce.oml.model.edit" autoStart="false" startLevel="0" />
+      <plugin id="gov.nasa.jpl.imce.oml.rcp" autoStart="false" startLevel="0" />
+      <plugin id="gov.nasa.jpl.imce.oml.uuid" autoStart="false" startLevel="0" />
+      <plugin id="gov.nasa.jpl.imce.oml.viewpoint" autoStart="false" startLevel="6" />
+      <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.e4.ui.services" autoStart="true" startLevel="4" />
+      <plugin id="org.eclipse.e4.ui.workbench" autoStart="true" startLevel="4" />
+      <plugin id="org.eclipse.e4.ui.workbench.swt" autoStart="true" startLevel="4" />
       <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="2" />
-      <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="3" />
-      <plugin id="org.eclipse.equinox.event" autoStart="true" startLevel="3" />
+      <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.event" autoStart="true" startLevel="2" />
       <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="1" />
+      <plugin id="org.eclipse.sirius.editor" autoStart="false" startLevel="6" />
+      <plugin id="org.eclipse.ui" autoStart="true" startLevel="4" />
+      <plugin id="org.eclipse.ui.workbench" autoStart="false" startLevel="5" />
    </configurations>
 
    <preferencesInfo>

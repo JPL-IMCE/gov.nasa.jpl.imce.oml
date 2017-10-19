@@ -69,6 +69,7 @@ public class RestrictionScalarDataPropertyValueItemProvider extends ElementItemP
 
 			addStructuredDataPropertyContextPropertyDescriptor(object);
 			addScalarDataPropertyPropertyDescriptor(object);
+			addValueTypePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -109,6 +110,28 @@ public class RestrictionScalarDataPropertyValueItemProvider extends ElementItemP
 				 getString("_UI_RestrictionScalarDataPropertyValue_scalarDataProperty_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_RestrictionScalarDataPropertyValue_scalarDataProperty_feature", "_UI_RestrictionScalarDataPropertyValue_type"),
 				 TerminologiesPackage.Literals.RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__SCALAR_DATA_PROPERTY,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Value Type feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addValueTypePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_RestrictionScalarDataPropertyValue_valueType_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_RestrictionScalarDataPropertyValue_valueType_feature", "_UI_RestrictionScalarDataPropertyValue_type"),
+				 TerminologiesPackage.Literals.RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__VALUE_TYPE,
 				 true,
 				 false,
 				 true,

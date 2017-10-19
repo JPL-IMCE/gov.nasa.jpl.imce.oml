@@ -26,7 +26,6 @@ import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsPackage;
 import gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceScalarDataPropertyValue;
 
 import gov.nasa.jpl.imce.oml.model.edit.provider.OMLEditPlugin;
-
 import java.util.Collection;
 import java.util.List;
 
@@ -71,6 +70,7 @@ public class SingletonInstanceScalarDataPropertyValueItemProvider extends Module
 			addDescriptionBoxPropertyDescriptor(object);
 			addSingletonInstancePropertyDescriptor(object);
 			addScalarDataPropertyPropertyDescriptor(object);
+			addValueTypePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -133,6 +133,28 @@ public class SingletonInstanceScalarDataPropertyValueItemProvider extends Module
 				 getString("_UI_SingletonInstanceScalarDataPropertyValue_scalarDataProperty_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_SingletonInstanceScalarDataPropertyValue_scalarDataProperty_feature", "_UI_SingletonInstanceScalarDataPropertyValue_type"),
 				 DescriptionsPackage.Literals.SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE__SCALAR_DATA_PROPERTY,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Value Type feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addValueTypePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SingletonInstanceScalarDataPropertyValue_valueType_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SingletonInstanceScalarDataPropertyValue_valueType_feature", "_UI_SingletonInstanceScalarDataPropertyValue_type"),
+				 DescriptionsPackage.Literals.SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE__VALUE_TYPE,
 				 true,
 				 false,
 				 true,

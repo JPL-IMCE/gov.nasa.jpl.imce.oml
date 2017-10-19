@@ -63,6 +63,7 @@ public class ScalarOneOfLiteralAxiomItemProvider extends TermAxiomItemProvider {
 			super.getPropertyDescriptors(object);
 
 			addAxiomPropertyDescriptor(object);
+			addValueTypePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -81,6 +82,28 @@ public class ScalarOneOfLiteralAxiomItemProvider extends TermAxiomItemProvider {
 				 getString("_UI_ScalarOneOfLiteralAxiom_axiom_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_ScalarOneOfLiteralAxiom_axiom_feature", "_UI_ScalarOneOfLiteralAxiom_type"),
 				 TerminologiesPackage.Literals.SCALAR_ONE_OF_LITERAL_AXIOM__AXIOM,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Value Type feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addValueTypePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ScalarOneOfLiteralAxiom_valueType_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ScalarOneOfLiteralAxiom_valueType_feature", "_UI_ScalarOneOfLiteralAxiom_type"),
+				 TerminologiesPackage.Literals.SCALAR_ONE_OF_LITERAL_AXIOM__VALUE_TYPE,
 				 true,
 				 false,
 				 true,

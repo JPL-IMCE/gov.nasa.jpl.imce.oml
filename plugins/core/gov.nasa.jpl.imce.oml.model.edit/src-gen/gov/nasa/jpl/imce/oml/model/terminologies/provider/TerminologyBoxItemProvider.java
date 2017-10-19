@@ -235,6 +235,11 @@ public class TerminologyBoxItemProvider extends ModuleItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(TerminologiesPackage.Literals.TERMINOLOGY_BOX__BOX_STATEMENTS,
+				 TerminologiesFactory.eINSTANCE.createChainRule()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TerminologiesPackage.Literals.TERMINOLOGY_BOX__BOX_STATEMENTS,
 				 TerminologiesFactory.eINSTANCE.createEntityExistentialRestrictionAxiom()));
 
 		newChildDescriptors.add

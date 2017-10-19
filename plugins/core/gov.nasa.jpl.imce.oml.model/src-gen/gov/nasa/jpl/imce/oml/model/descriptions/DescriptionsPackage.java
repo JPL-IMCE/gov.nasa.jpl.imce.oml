@@ -39,22 +39,6 @@ import org.eclipse.emf.ecore.EReference;
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * <!-- begin-model-doc -->
- * *
- * Copyright 2017 California Institute of Technology (\"Caltech\").
- * U.S. Government sponsorship acknowledged.
- * 
- * Licensed under the Apache License, Version 2.0 (the \"License\")
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * 
- * 		http://www.apache.org/licenses/LICENSE-2.0
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an \"AS IS\" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * <!-- end-model-doc -->
  * @see gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsFactory
  * @model kind="package"
  *        annotation="http://www.eclipse.org/emf/2002/GenModel copyrightText='\nCopyright 2017 California Institute of Technology (\"Caltech\").\nU.S. Government sponsorship acknowledged.\n\nLicensed under the Apache License, Version 2.0 (the \"License\");\nyou may not use this file except in compliance with the License.\nYou may obtain a copy of the License at\n\n     http://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software\ndistributed under the License is distributed on an \"AS IS\" BASIS,\nWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and\nlimitations under the License.\n' modelPluginVariables='org.eclipse.xtext.xbase.lib org.eclipse.emf.ecore.xcore.lib org.eclipse.emf.cdo' rootExtendsClass='org.eclipse.emf.internal.cdo.CDOObjectImpl' rootExtendsInterface='org.eclipse.emf.cdo.CDOObject' childCreationExtenders='true' complianceLevel='8.0' featureDelegation='None' modelDirectory='/gov.nasa.jpl.imce.oml.model/src-gen/' editDirectory='/gov.nasa.jpl.imce.oml.model.edit/src-gen/' editPluginClass='gov.nasa.jpl.imce.oml.model.edit.provider.OMLEditPlugin' basePackage='gov.nasa.jpl.imce.oml.model'"
@@ -766,13 +750,22 @@ public interface DescriptionsPackage extends EPackage {
 	int SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE = CommonPackage.MODULE_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Value Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE__VALUE_TYPE = CommonPackage.MODULE_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Singleton Instance Scalar Data Property Value</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE_FEATURE_COUNT = CommonPackage.MODULE_ELEMENT_FEATURE_COUNT + 4;
+	int SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE_FEATURE_COUNT = CommonPackage.MODULE_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The operation id for the '<em>Uuid</em>' operation.
@@ -1238,13 +1231,22 @@ public interface DescriptionsPackage extends EPackage {
 	int SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE = CommonPackage.ELEMENT_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Value Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCALAR_DATA_PROPERTY_VALUE__VALUE_TYPE = CommonPackage.ELEMENT_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Scalar Data Property Value</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCALAR_DATA_PROPERTY_VALUE_FEATURE_COUNT = CommonPackage.ELEMENT_FEATURE_COUNT + 3;
+	int SCALAR_DATA_PROPERTY_VALUE_FEATURE_COUNT = CommonPackage.ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The operation id for the '<em>Description Box</em>' operation.
@@ -2405,6 +2407,17 @@ public interface DescriptionsPackage extends EPackage {
 	EReference getSingletonInstanceScalarDataPropertyValue_ScalarPropertyValue();
 
 	/**
+	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceScalarDataPropertyValue#getValueType <em>Value Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Value Type</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceScalarDataPropertyValue#getValueType()
+	 * @see #getSingletonInstanceScalarDataPropertyValue()
+	 * @generated
+	 */
+	EReference getSingletonInstanceScalarDataPropertyValue_ValueType();
+
+	/**
 	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceScalarDataPropertyValue#uuid() <em>Uuid</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2662,6 +2675,17 @@ public interface DescriptionsPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getScalarDataPropertyValue_ScalarPropertyValue();
+
+	/**
+	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.descriptions.ScalarDataPropertyValue#getValueType <em>Value Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Value Type</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.ScalarDataPropertyValue#getValueType()
+	 * @see #getScalarDataPropertyValue()
+	 * @generated
+	 */
+	EReference getScalarDataPropertyValue_ValueType();
 
 	/**
 	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.ScalarDataPropertyValue#descriptionBox() <em>Description Box</em>}' operation.
@@ -3486,6 +3510,14 @@ public interface DescriptionsPackage extends EPackage {
 		EReference SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE = eINSTANCE.getSingletonInstanceScalarDataPropertyValue_ScalarPropertyValue();
 
 		/**
+		 * The meta object literal for the '<em><b>Value Type</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE__VALUE_TYPE = eINSTANCE.getSingletonInstanceScalarDataPropertyValue_ValueType();
+
+		/**
 		 * The meta object literal for the '<em><b>Uuid</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3692,6 +3724,14 @@ public interface DescriptionsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE = eINSTANCE.getScalarDataPropertyValue_ScalarPropertyValue();
+
+		/**
+		 * The meta object literal for the '<em><b>Value Type</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SCALAR_DATA_PROPERTY_VALUE__VALUE_TYPE = eINSTANCE.getScalarDataPropertyValue_ValueType();
 
 		/**
 		 * The meta object literal for the '<em><b>Description Box</b></em>' operation.

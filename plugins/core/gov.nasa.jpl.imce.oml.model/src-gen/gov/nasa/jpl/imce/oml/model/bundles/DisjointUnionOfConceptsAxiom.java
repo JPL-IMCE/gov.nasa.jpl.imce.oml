@@ -77,8 +77,8 @@ public interface DisjointUnionOfConceptsAxiom extends Element {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return this.getDisjointTaxonomyParent();'"
 	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='extent.conceptTreeDisjunctionOfDisjointUnionOfConceptsAxiom.get(this)'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return this.getDisjointTaxonomyParent();'"
 	 * @generated
 	 */
 	ConceptTreeDisjunction conceptTreeDisjunctionParent();
@@ -87,8 +87,8 @@ public interface DisjointUnionOfConceptsAxiom extends Element {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%gov.nasa.jpl.imce.oml.model.bundles.ConceptTreeDisjunction%> _disjointTaxonomyParent = this.getDisjointTaxonomyParent();\n<%gov.nasa.jpl.imce.oml.model.bundles.Bundle%> _bundleContainer = null;\nif (_disjointTaxonomyParent!=null)\n{\n\t_bundleContainer=_disjointTaxonomyParent.bundleContainer();\n}\nreturn _bundleContainer;'"
 	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='conceptTreeDisjunctionParent().flatMap(_.bundleContainer())'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%gov.nasa.jpl.imce.oml.model.bundles.ConceptTreeDisjunction%&gt; _disjointTaxonomyParent = this.getDisjointTaxonomyParent();\n&lt;%gov.nasa.jpl.imce.oml.model.bundles.Bundle%&gt; _bundleContainer = null;\nif (_disjointTaxonomyParent!=null)\n{\n\t_bundleContainer=_disjointTaxonomyParent.bundleContainer();\n}\nreturn _bundleContainer;'"
 	 * @generated
 	 */
 	Module moduleContext();

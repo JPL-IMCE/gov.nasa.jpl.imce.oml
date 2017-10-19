@@ -55,6 +55,7 @@ import gov.nasa.jpl.imce.oml.model.graphs.TerminologyNestingAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.Aspect;
 import gov.nasa.jpl.imce.oml.model.terminologies.AspectSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.BinaryScalarRestriction;
+import gov.nasa.jpl.imce.oml.model.terminologies.ChainRule;
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.DataRange;
@@ -711,290 +712,296 @@ public class OMLExtensions {
   public static String kind(final Element e) {
     String _switchResult = null;
     boolean _matched = false;
-    if (Objects.equal(e, DescriptionBox.class)) {
+    if (e instanceof DescriptionBox) {
       _matched=true;
       _switchResult = "DescriptionBox";
     }
     if (!_matched) {
-      if (Objects.equal(e, TerminologyGraph.class)) {
+      if (e instanceof TerminologyGraph) {
         _matched=true;
         _switchResult = "TerminologyGraph";
       }
     }
     if (!_matched) {
-      if (Objects.equal(e, Bundle.class)) {
+      if (e instanceof Bundle) {
         _matched=true;
         _switchResult = "Bundle";
       }
     }
     if (!_matched) {
-      if (Objects.equal(e, DescriptionBoxExtendsClosedWorldDefinitions.class)) {
+      if (e instanceof DescriptionBoxExtendsClosedWorldDefinitions) {
         _matched=true;
         _switchResult = "DescriptionBoxExtendsClosedWorldDefinitions";
       }
     }
     if (!_matched) {
-      if (Objects.equal(e, DescriptionBoxRefinement.class)) {
+      if (e instanceof DescriptionBoxRefinement) {
         _matched=true;
         _switchResult = "DescriptionBoxRefinement";
       }
     }
     if (!_matched) {
-      if (Objects.equal(e, ConceptDesignationTerminologyAxiom.class)) {
+      if (e instanceof ConceptDesignationTerminologyAxiom) {
         _matched=true;
         _switchResult = "ConceptDesignationTerminologyAxiom";
       }
     }
     if (!_matched) {
-      if (Objects.equal(e, TerminologyExtensionAxiom.class)) {
+      if (e instanceof TerminologyExtensionAxiom) {
         _matched=true;
         _switchResult = "TerminologyExtensionAxiom";
       }
     }
     if (!_matched) {
-      if (Objects.equal(e, TerminologyNestingAxiom.class)) {
+      if (e instanceof TerminologyNestingAxiom) {
         _matched=true;
         _switchResult = "TerminologyNestingAxiom";
       }
     }
     if (!_matched) {
-      if (Objects.equal(e, BundledTerminologyAxiom.class)) {
+      if (e instanceof BundledTerminologyAxiom) {
         _matched=true;
         _switchResult = "BundledTerminologyAxiom";
       }
     }
     if (!_matched) {
-      if (Objects.equal(e, EntityExistentialRestrictionAxiom.class)) {
+      if (e instanceof EntityExistentialRestrictionAxiom) {
         _matched=true;
         _switchResult = "EntityExistentialRestrictionAxiom";
       }
     }
     if (!_matched) {
-      if (Objects.equal(e, EntityUniversalRestrictionAxiom.class)) {
+      if (e instanceof EntityUniversalRestrictionAxiom) {
         _matched=true;
         _switchResult = "EntityUniversalRestrictionAxiom";
       }
     }
     if (!_matched) {
-      if (Objects.equal(e, EntityScalarDataPropertyExistentialRestrictionAxiom.class)) {
+      if (e instanceof EntityScalarDataPropertyExistentialRestrictionAxiom) {
         _matched=true;
         _switchResult = "EntityScalarDataPropertyExistentialRestrictionAxiom";
       }
     }
     if (!_matched) {
-      if (Objects.equal(e, EntityScalarDataPropertyParticularRestrictionAxiom.class)) {
+      if (e instanceof EntityScalarDataPropertyParticularRestrictionAxiom) {
         _matched=true;
         _switchResult = "EntityScalarDataPropertyParticularRestrictionAxiom";
       }
     }
     if (!_matched) {
-      if (Objects.equal(e, EntityScalarDataPropertyUniversalRestrictionAxiom.class)) {
+      if (e instanceof EntityScalarDataPropertyUniversalRestrictionAxiom) {
         _matched=true;
         _switchResult = "EntityScalarDataPropertyUniversalRestrictionAxiom";
       }
     }
     if (!_matched) {
-      if (Objects.equal(e, ScalarOneOfLiteralAxiom.class)) {
+      if (e instanceof ScalarOneOfLiteralAxiom) {
         _matched=true;
         _switchResult = "ScalarOneOfLiteralAxiom";
       }
     }
     if (!_matched) {
-      if (Objects.equal(e, AspectSpecializationAxiom.class)) {
+      if (e instanceof AspectSpecializationAxiom) {
         _matched=true;
         _switchResult = "AspectSpecializationAxiom";
       }
     }
     if (!_matched) {
-      if (Objects.equal(e, ConceptSpecializationAxiom.class)) {
+      if (e instanceof ConceptSpecializationAxiom) {
         _matched=true;
         _switchResult = "ConceptSpecializationAxiom";
       }
     }
     if (!_matched) {
-      if (Objects.equal(e, ReifiedRelationshipSpecializationAxiom.class)) {
+      if (e instanceof ReifiedRelationshipSpecializationAxiom) {
         _matched=true;
         _switchResult = "ReifiedRelationshipSpecializationAxiom";
       }
     }
     if (!_matched) {
-      if (Objects.equal(e, AnonymousConceptUnionAxiom.class)) {
+      if (e instanceof AnonymousConceptUnionAxiom) {
         _matched=true;
         _switchResult = "AnonymousConceptTaxonomyAxiom";
       }
     }
     if (!_matched) {
-      if (Objects.equal(e, SpecificDisjointConceptAxiom.class)) {
+      if (e instanceof SpecificDisjointConceptAxiom) {
         _matched=true;
         _switchResult = "SpecificDisjointConceptAxiom";
       }
     }
     if (!_matched) {
-      if (Objects.equal(e, RootConceptTaxonomyAxiom.class)) {
+      if (e instanceof RootConceptTaxonomyAxiom) {
         _matched=true;
         _switchResult = "RootConceptTaxonomyAxiom";
       }
     }
     if (!_matched) {
-      if (Objects.equal(e, ReifiedRelationshipInstanceDomain.class)) {
+      if (e instanceof ReifiedRelationshipInstanceDomain) {
         _matched=true;
         _switchResult = "ReifiedRelationshipInstanceDomain";
       }
     }
     if (!_matched) {
-      if (Objects.equal(e, ReifiedRelationshipInstanceRange.class)) {
+      if (e instanceof ReifiedRelationshipInstanceRange) {
         _matched=true;
         _switchResult = "ReifiedRelationshipInstanceRange";
       }
     }
     if (!_matched) {
-      if (Objects.equal(e, SingletonInstanceScalarDataPropertyValue.class)) {
+      if (e instanceof SingletonInstanceScalarDataPropertyValue) {
         _matched=true;
         _switchResult = "SingletonInstanceScalarDataPropertyValue";
       }
     }
     if (!_matched) {
-      if (Objects.equal(e, ConceptInstance.class)) {
+      if (e instanceof ConceptInstance) {
         _matched=true;
         _switchResult = "ConceptInstance";
       }
     }
     if (!_matched) {
-      if (Objects.equal(e, ReifiedRelationshipInstance.class)) {
+      if (e instanceof ReifiedRelationshipInstance) {
         _matched=true;
         _switchResult = "ReifiedRelationshipInstance";
       }
     }
     if (!_matched) {
-      if (Objects.equal(e, StructuredDataPropertyTuple.class)) {
+      if (e instanceof StructuredDataPropertyTuple) {
         _matched=true;
         _switchResult = "StructuredDataPropertyTuple";
       }
     }
     if (!_matched) {
-      if (Objects.equal(e, ScalarDataPropertyValue.class)) {
+      if (e instanceof ScalarDataPropertyValue) {
         _matched=true;
         _switchResult = "ScalarDataPropertyValue";
       }
     }
     if (!_matched) {
-      if (Objects.equal(e, SingletonInstanceStructuredDataPropertyValue.class)) {
+      if (e instanceof SingletonInstanceStructuredDataPropertyValue) {
         _matched=true;
         _switchResult = "SingletonInstanceStructuredDataPropertyValue";
       }
     }
     if (!_matched) {
-      if (Objects.equal(e, UnreifiedRelationshipInstanceTuple.class)) {
+      if (e instanceof UnreifiedRelationshipInstanceTuple) {
         _matched=true;
         _switchResult = "UnreifiedRelationshipInstanceTuple";
       }
     }
     if (!_matched) {
-      if (Objects.equal(e, EntityScalarDataProperty.class)) {
+      if (e instanceof EntityScalarDataProperty) {
         _matched=true;
         _switchResult = "EntityScalarDataProperty";
       }
     }
     if (!_matched) {
-      if (Objects.equal(e, EntityStructuredDataProperty.class)) {
+      if (e instanceof EntityStructuredDataProperty) {
         _matched=true;
         _switchResult = "EntityStructuredDataProperty";
       }
     }
     if (!_matched) {
-      if (Objects.equal(e, ScalarDataProperty.class)) {
+      if (e instanceof ScalarDataProperty) {
         _matched=true;
         _switchResult = "ScalarDataProperty";
       }
     }
     if (!_matched) {
-      if (Objects.equal(e, StructuredDataProperty.class)) {
+      if (e instanceof StructuredDataProperty) {
         _matched=true;
         _switchResult = "StructuredDataProperty";
       }
     }
     if (!_matched) {
-      if (Objects.equal(e, BinaryScalarRestriction.class)) {
+      if (e instanceof BinaryScalarRestriction) {
         _matched=true;
         _switchResult = "BinaryScalarRestriction";
       }
     }
     if (!_matched) {
-      if (Objects.equal(e, IRIScalarRestriction.class)) {
+      if (e instanceof IRIScalarRestriction) {
         _matched=true;
         _switchResult = "IRIScalarRestriction";
       }
     }
     if (!_matched) {
-      if (Objects.equal(e, NumericScalarRestriction.class)) {
+      if (e instanceof NumericScalarRestriction) {
         _matched=true;
         _switchResult = "NumericScalarRestriction";
       }
     }
     if (!_matched) {
-      if (Objects.equal(e, PlainLiteralScalarRestriction.class)) {
+      if (e instanceof PlainLiteralScalarRestriction) {
         _matched=true;
         _switchResult = "PlainLiteralScalarRestriction";
       }
     }
     if (!_matched) {
-      if (Objects.equal(e, ScalarOneOfRestriction.class)) {
+      if (e instanceof ScalarOneOfRestriction) {
         _matched=true;
         _switchResult = "ScalarOneOfRestriction";
       }
     }
     if (!_matched) {
-      if (Objects.equal(e, StringScalarRestriction.class)) {
+      if (e instanceof StringScalarRestriction) {
         _matched=true;
         _switchResult = "StringScalarRestriction";
       }
     }
     if (!_matched) {
-      if (Objects.equal(e, SynonymScalarRestriction.class)) {
+      if (e instanceof SynonymScalarRestriction) {
         _matched=true;
         _switchResult = "SynonymScalarRestriction";
       }
     }
     if (!_matched) {
-      if (Objects.equal(e, TimeScalarRestriction.class)) {
+      if (e instanceof TimeScalarRestriction) {
         _matched=true;
         _switchResult = "TimeScalarRestriction";
       }
     }
     if (!_matched) {
-      if (Objects.equal(e, Scalar.class)) {
+      if (e instanceof Scalar) {
         _matched=true;
         _switchResult = "Scalar";
       }
     }
     if (!_matched) {
-      if (Objects.equal(e, Structure.class)) {
+      if (e instanceof Structure) {
         _matched=true;
         _switchResult = "Structure";
       }
     }
     if (!_matched) {
-      if (Objects.equal(e, Aspect.class)) {
+      if (e instanceof Aspect) {
         _matched=true;
         _switchResult = "Aspect";
       }
     }
     if (!_matched) {
-      if (Objects.equal(e, Concept.class)) {
+      if (e instanceof Concept) {
         _matched=true;
         _switchResult = "Concept";
       }
     }
     if (!_matched) {
-      if (Objects.equal(e, ReifiedRelationship.class)) {
+      if (e instanceof ReifiedRelationship) {
         _matched=true;
         _switchResult = "ReifiedRelationship";
       }
     }
     if (!_matched) {
-      if (Objects.equal(e, UnreifiedRelationship.class)) {
+      if (e instanceof UnreifiedRelationship) {
         _matched=true;
         _switchResult = "UnreifiedRelationship";
+      }
+    }
+    if (!_matched) {
+      if (e instanceof ChainRule) {
+        _matched=true;
+        _switchResult = "ChainRule";
       }
     }
     if (!_matched) {

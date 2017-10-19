@@ -90,6 +90,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.emf.ecore.util.EcoreUtil
 import com.google.common.collect.Sets
 import java.util.HashSet
+import gov.nasa.jpl.imce.oml.model.terminologies.ChainRule
 
 public class OMLExtensions {
 
@@ -514,102 +515,104 @@ public class OMLExtensions {
 
 	static def String kind(Element e) {
 		switch e {
-			case DescriptionBox:
+			DescriptionBox:
 				'DescriptionBox'
-			case TerminologyGraph:
+			TerminologyGraph:
 				'TerminologyGraph'
-			case Bundle:
+			Bundle:
 				'Bundle'
-			case DescriptionBoxExtendsClosedWorldDefinitions:
+			DescriptionBoxExtendsClosedWorldDefinitions:
 				'DescriptionBoxExtendsClosedWorldDefinitions'
-			case DescriptionBoxRefinement:
+			DescriptionBoxRefinement:
 				'DescriptionBoxRefinement'
-			case ConceptDesignationTerminologyAxiom:
+			ConceptDesignationTerminologyAxiom:
 				'ConceptDesignationTerminologyAxiom'
-			case TerminologyExtensionAxiom:
+			TerminologyExtensionAxiom:
 				'TerminologyExtensionAxiom'
-			case TerminologyNestingAxiom:
+			TerminologyNestingAxiom:
 				'TerminologyNestingAxiom'
-			case BundledTerminologyAxiom:
+			BundledTerminologyAxiom:
 				'BundledTerminologyAxiom'
-			case EntityExistentialRestrictionAxiom:
+			EntityExistentialRestrictionAxiom:
 				'EntityExistentialRestrictionAxiom'
-			case EntityUniversalRestrictionAxiom:
+			EntityUniversalRestrictionAxiom:
 				'EntityUniversalRestrictionAxiom'
-			case EntityScalarDataPropertyExistentialRestrictionAxiom:
+			EntityScalarDataPropertyExistentialRestrictionAxiom:
 				'EntityScalarDataPropertyExistentialRestrictionAxiom'
-			case EntityScalarDataPropertyParticularRestrictionAxiom:
+			EntityScalarDataPropertyParticularRestrictionAxiom:
 				'EntityScalarDataPropertyParticularRestrictionAxiom'
-			case EntityScalarDataPropertyUniversalRestrictionAxiom:
+			EntityScalarDataPropertyUniversalRestrictionAxiom:
 				'EntityScalarDataPropertyUniversalRestrictionAxiom'
-			case ScalarOneOfLiteralAxiom:
+			ScalarOneOfLiteralAxiom:
 				'ScalarOneOfLiteralAxiom'
-			case AspectSpecializationAxiom:
+			AspectSpecializationAxiom:
 				'AspectSpecializationAxiom'
-			case ConceptSpecializationAxiom:
+			ConceptSpecializationAxiom:
 				'ConceptSpecializationAxiom'
-			case ReifiedRelationshipSpecializationAxiom:
+			ReifiedRelationshipSpecializationAxiom:
 				'ReifiedRelationshipSpecializationAxiom'
-			case AnonymousConceptUnionAxiom:
+			AnonymousConceptUnionAxiom:
 				'AnonymousConceptTaxonomyAxiom'
-			case SpecificDisjointConceptAxiom:
+			SpecificDisjointConceptAxiom:
 				'SpecificDisjointConceptAxiom'
-			case RootConceptTaxonomyAxiom:
+			RootConceptTaxonomyAxiom:
 				'RootConceptTaxonomyAxiom'
-			case ReifiedRelationshipInstanceDomain:
+			ReifiedRelationshipInstanceDomain:
 				'ReifiedRelationshipInstanceDomain'
-			case ReifiedRelationshipInstanceRange:
+			ReifiedRelationshipInstanceRange:
 				'ReifiedRelationshipInstanceRange'
-			case SingletonInstanceScalarDataPropertyValue:
+			SingletonInstanceScalarDataPropertyValue:
 				'SingletonInstanceScalarDataPropertyValue'
-			case ConceptInstance:
+			ConceptInstance:
 				'ConceptInstance'
-			case ReifiedRelationshipInstance:
+			ReifiedRelationshipInstance:
 				'ReifiedRelationshipInstance'
-			case StructuredDataPropertyTuple:
+			StructuredDataPropertyTuple:
 				'StructuredDataPropertyTuple'
-			case ScalarDataPropertyValue:
+			ScalarDataPropertyValue:
 				'ScalarDataPropertyValue'
-			case SingletonInstanceStructuredDataPropertyValue:
+			SingletonInstanceStructuredDataPropertyValue:
 				'SingletonInstanceStructuredDataPropertyValue'
-			case UnreifiedRelationshipInstanceTuple:
+			UnreifiedRelationshipInstanceTuple:
 				'UnreifiedRelationshipInstanceTuple'
-			case EntityScalarDataProperty:
+			EntityScalarDataProperty:
 				'EntityScalarDataProperty'
-			case EntityStructuredDataProperty:
+			EntityStructuredDataProperty:
 				'EntityStructuredDataProperty'
-			case ScalarDataProperty:
+			ScalarDataProperty:
 				'ScalarDataProperty'
-			case StructuredDataProperty:
+			StructuredDataProperty:
 				'StructuredDataProperty'
-			case BinaryScalarRestriction:
+			BinaryScalarRestriction:
 				'BinaryScalarRestriction'
-			case IRIScalarRestriction:
+			IRIScalarRestriction:
 				'IRIScalarRestriction'
-			case NumericScalarRestriction:
+			NumericScalarRestriction:
 				'NumericScalarRestriction'
-			case PlainLiteralScalarRestriction:
+			PlainLiteralScalarRestriction:
 				'PlainLiteralScalarRestriction'
-			case ScalarOneOfRestriction:
+			ScalarOneOfRestriction:
 				'ScalarOneOfRestriction'
-			case StringScalarRestriction:
+			StringScalarRestriction:
 				'StringScalarRestriction'
-			case SynonymScalarRestriction:
+			SynonymScalarRestriction:
 				'SynonymScalarRestriction'
-			case TimeScalarRestriction:
+			TimeScalarRestriction:
 				'TimeScalarRestriction'
-			case Scalar:
+			Scalar:
 				'Scalar'
-			case Structure:
+			Structure:
 				'Structure'
-			case Aspect:
+			Aspect:
 				'Aspect'
-			case Concept:
+			Concept:
 				'Concept'
-			case ReifiedRelationship:
+			ReifiedRelationship:
 				'ReifiedRelationship'
-			case UnreifiedRelationship:
+			UnreifiedRelationship:
 				'UnreifiedRelationship'
+			ChainRule:
+				'ChainRule'
 			default:
 				e.eClass.name
 		}

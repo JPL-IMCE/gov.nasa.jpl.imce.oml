@@ -1,20 +1,4 @@
 /**
- * 
- * Copyright 2017 California Institute of Technology ("Caltech").
- * U.S. Government sponsorship acknowledged.
- * 
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * 
- *      http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * 
  */
 package gov.nasa.jpl.imce.fm.impl;
 
@@ -81,16 +65,16 @@ public class FmFactoryImpl extends EFactoryImpl implements FmFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case FmPackage.BOOLEAN: return (EObject)createBoolean();
-			case FmPackage.STRING: return (EObject)createString();
-			case FmPackage.INTEGER: return (EObject)createInteger();
-			case FmPackage.NATURAL_INTEGER: return (EObject)createNaturalInteger();
-			case FmPackage.VALUE: return (EObject)createValue();
-			case FmPackage.ENTITY: return (EObject)createEntity();
-			case FmPackage.EXTENT: return (EObject)createExtent();
-			case FmPackage.BINARY_COMPOSITE_ASSOCIATION: return (EObject)createBinaryCompositeAssociation();
-			case FmPackage.ESSENTIAL_REFERENCE: return (EObject)createEssentialReference();
-			case FmPackage.ESSENTIAL_ATTRIBUTE: return (EObject)createEssentialAttribute();
+			case FmPackage.BOOLEAN: return createBoolean();
+			case FmPackage.STRING: return createString();
+			case FmPackage.INTEGER: return createInteger();
+			case FmPackage.NATURAL_INTEGER: return createNaturalInteger();
+			case FmPackage.VALUE: return createValue();
+			case FmPackage.ENTITY: return createEntity();
+			case FmPackage.EXTENT: return createExtent();
+			case FmPackage.BINARY_COMPOSITE_ASSOCIATION: return createBinaryCompositeAssociation();
+			case FmPackage.ESSENTIAL_REFERENCE: return createEssentialReference();
+			case FmPackage.ESSENTIAL_ATTRIBUTE: return createEssentialAttribute();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}

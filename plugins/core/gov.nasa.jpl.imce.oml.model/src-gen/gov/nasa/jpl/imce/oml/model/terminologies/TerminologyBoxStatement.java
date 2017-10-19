@@ -75,8 +75,8 @@ public interface TerminologyBoxStatement extends ModuleElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return this.getTbox();'"
 	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='extent.terminologyBoxOfTerminologyBoxStatement.get(this)'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return this.getTbox();'"
 	 * @generated
 	 */
 	Module moduleContext();

@@ -1367,8 +1367,6 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		createGlossaryAnnotations();
 		// http://imce.jpl.nasa.gov/oml/IsOrderingKey
 		createIsOrderingKeyAnnotations();
-		// http://imce.jpl.nasa.gov/oml/Factory
-		createFactoryAnnotations();
 		// http://imce.jpl.nasa.gov/oml/NotFunctionalAPI
 		createNotFunctionalAPIAnnotations();
 		// http://imce.jpl.nasa.gov/oml/NotSchema
@@ -1492,21 +1490,6 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		   });	
 		addAnnotation
 		  (getAnnotationProperty_Uuid(), 
-		   source, 
-		   new String[] {
-		   });
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://imce.jpl.nasa.gov/oml/Factory</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createFactoryAnnotations() {
-		String source = "http://imce.jpl.nasa.gov/oml/Factory";	
-		addAnnotation
-		  (getAnnotationPropertyValue_Subject(), 
 		   source, 
 		   new String[] {
 		   });

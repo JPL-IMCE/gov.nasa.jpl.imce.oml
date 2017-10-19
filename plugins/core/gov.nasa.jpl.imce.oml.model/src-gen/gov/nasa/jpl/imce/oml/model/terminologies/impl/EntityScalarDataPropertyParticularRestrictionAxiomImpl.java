@@ -22,6 +22,7 @@ import gov.nasa.jpl.imce.oml.model.common.LiteralValue;
 
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
 
+import gov.nasa.jpl.imce.oml.model.terminologies.DataRange;
 import gov.nasa.jpl.imce.oml.model.terminologies.Entity;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyParticularRestrictionAxiom;
@@ -38,6 +39,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -53,6 +55,7 @@ import org.eclipse.xtext.xbase.lib.Pair;
  * </p>
  * <ul>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityScalarDataPropertyParticularRestrictionAxiomImpl#getLiteralValue <em>Literal Value</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityScalarDataPropertyParticularRestrictionAxiomImpl#getValueType <em>Value Type</em>}</li>
  * </ul>
  *
  * @generated
@@ -67,6 +70,16 @@ public class EntityScalarDataPropertyParticularRestrictionAxiomImpl extends Enti
 	 * @ordered
 	 */
 	protected LiteralValue literalValue;
+
+	/**
+	 * The cached value of the '{@link #getValueType() <em>Value Type</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getValueType()
+	 * @generated
+	 * @ordered
+	 */
+	protected DataRange valueType;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -135,6 +148,44 @@ public class EntityScalarDataPropertyParticularRestrictionAxiomImpl extends Enti
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public DataRange getValueType() {
+		if (valueType != null && ((EObject)valueType).eIsProxy()) {
+			InternalEObject oldValueType = (InternalEObject)valueType;
+			valueType = (DataRange)eResolveProxy(oldValueType);
+			if (valueType != oldValueType) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, TerminologiesPackage.ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__VALUE_TYPE, oldValueType, valueType));
+			}
+		}
+		return valueType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DataRange basicGetValueType() {
+		return valueType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setValueType(DataRange newValueType) {
+		DataRange oldValueType = valueType;
+		valueType = newValueType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__VALUE_TYPE, oldValueType, valueType));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String uuid() {
 		TerminologyBox _tbox = this.getTbox();
 		String _uuid = null;
@@ -195,6 +246,9 @@ public class EntityScalarDataPropertyParticularRestrictionAxiomImpl extends Enti
 		switch (featureID) {
 			case TerminologiesPackage.ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__LITERAL_VALUE:
 				return getLiteralValue();
+			case TerminologiesPackage.ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__VALUE_TYPE:
+				if (resolve) return getValueType();
+				return basicGetValueType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -209,6 +263,9 @@ public class EntityScalarDataPropertyParticularRestrictionAxiomImpl extends Enti
 		switch (featureID) {
 			case TerminologiesPackage.ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__LITERAL_VALUE:
 				setLiteralValue((LiteralValue)newValue);
+				return;
+			case TerminologiesPackage.ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__VALUE_TYPE:
+				setValueType((DataRange)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -225,6 +282,9 @@ public class EntityScalarDataPropertyParticularRestrictionAxiomImpl extends Enti
 			case TerminologiesPackage.ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__LITERAL_VALUE:
 				setLiteralValue((LiteralValue)null);
 				return;
+			case TerminologiesPackage.ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__VALUE_TYPE:
+				setValueType((DataRange)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -239,6 +299,8 @@ public class EntityScalarDataPropertyParticularRestrictionAxiomImpl extends Enti
 		switch (featureID) {
 			case TerminologiesPackage.ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__LITERAL_VALUE:
 				return literalValue != null;
+			case TerminologiesPackage.ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM__VALUE_TYPE:
+				return valueType != null;
 		}
 		return super.eIsSet(featureID);
 	}

@@ -73,6 +73,19 @@ import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataPropertyPar
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple
 import gov.nasa.jpl.imce.oml.model.descriptions.ScalarDataPropertyValue
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue
+import gov.nasa.jpl.imce.oml.model.terminologies.ChainRule
+import gov.nasa.jpl.imce.oml.model.terminologies.AspectPredicate
+import gov.nasa.jpl.imce.oml.model.terminologies.ConceptPredicate
+import gov.nasa.jpl.imce.oml.model.terminologies.RuleBodySegment
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPredicate
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPropertyPredicate
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipInversePropertyPredicate
+import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipInversePropertyPredicate
+import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipPropertyPredicate
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetInversePropertyPredicate
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetPropertyPredicate
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourceInversePropertyPredicate
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourcePropertyPredicate
 
 class OMLFormatter extends AbstractFormatter2 {
 	
@@ -223,6 +236,87 @@ class OMLFormatter extends AbstractFormatter2 {
 	def dispatch void format(Structure structure, extension IFormattableDocument document) {
 		structure.annotations.forEach[format.append[setNewLines(1)]]
 		structure.regionFor.keyword('structure').append[oneSpace]
+	}
+	
+	def dispatch void format(ChainRule chainRule, extension IFormattableDocument document) {
+		chainRule.annotations.forEach[format.append[setNewLines(1)]]
+		chainRule.regionFor.keyword('rule').append[oneSpace]
+		chainRule.regionFor.keyword('infers').surround[oneSpace]
+		chainRule.regionFor.keyword('if').prepend[newLine].prepend[indent].append[oneSpace]
+		chainRule.getFirstSegment?.format
+	}
+	
+	def dispatch void format(RuleBodySegment tailSegment, extension IFormattableDocument document) {
+		tailSegment.annotations.forEach[format.append[setNewLines(1)]]
+		tailSegment.predicate?.format
+		tailSegment.regionFor.keyword('&&').prepend[newLine].prepend[indent].append[oneSpace]
+		tailSegment.nextSegment?.format
+	}
+	
+	def dispatch void format(AspectPredicate ep, extension IFormattableDocument document) {
+		ep.regionFor.keyword('aspect').append[noSpace]
+		ep.regionFor.keyword('(').surround[noSpace]
+		ep.regionFor.keyword(')').surround[noSpace]
+	}
+	
+	def dispatch void format(ConceptPredicate ep, extension IFormattableDocument document) {
+		ep.regionFor.keyword('aspect').append[noSpace]
+		ep.regionFor.keyword('(').surround[noSpace]
+		ep.regionFor.keyword(')').surround[noSpace]
+	}
+	
+	def dispatch void format(ReifiedRelationshipPredicate ep, extension IFormattableDocument document) {
+		ep.regionFor.keyword('reifiedRelationship').append[noSpace]
+		ep.regionFor.keyword('(').surround[noSpace]
+		ep.regionFor.keyword(')').surround[noSpace]
+	}
+	
+	def dispatch void format(ReifiedRelationshipPropertyPredicate ep, extension IFormattableDocument document) {
+		ep.regionFor.keyword('property').append[noSpace]
+		ep.regionFor.keyword('(').surround[noSpace]
+		ep.regionFor.keyword(')').surround[noSpace]
+	}
+	
+	def dispatch void format(ReifiedRelationshipInversePropertyPredicate ep, extension IFormattableDocument document) {
+		ep.regionFor.keyword('inv').append[noSpace]
+		ep.regionFor.keyword('property').surround[noSpace]
+		ep.regionFor.keyword('(').surround[noSpace]
+		ep.regionFor.keyword(')').surround[noSpace]
+	}
+	
+	def dispatch void format(ReifiedRelationshipSourcePropertyPredicate ep, extension IFormattableDocument document) {
+		ep.regionFor.keyword('source').append[noSpace]
+		ep.regionFor.keyword('(').surround[noSpace]
+		ep.regionFor.keyword(')').surround[noSpace]
+	}
+	
+	def dispatch void format(ReifiedRelationshipSourceInversePropertyPredicate ep, extension IFormattableDocument document) {
+		ep.regionFor.keyword('inv').append[noSpace]
+		ep.regionFor.keyword('source').surround[noSpace]
+		ep.regionFor.keyword('(').surround[noSpace]
+		ep.regionFor.keyword(')').surround[noSpace]
+	}
+	
+	def dispatch void format(ReifiedRelationshipTargetPropertyPredicate ep, extension IFormattableDocument document) {
+		ep.regionFor.keyword('target').append[noSpace]
+		ep.regionFor.keyword('(').surround[noSpace]
+		ep.regionFor.keyword(')').surround[noSpace]
+	}
+	
+	def dispatch void format(ReifiedRelationshipTargetInversePropertyPredicate ep, extension IFormattableDocument document) {
+		ep.regionFor.keyword('inv').surround[noSpace]
+		ep.regionFor.keyword('target').surround[noSpace]
+		ep.regionFor.keyword('(').surround[noSpace]
+		ep.regionFor.keyword(')').surround[noSpace]
+	}
+	
+	def dispatch void format(UnreifiedRelationshipPropertyPredicate ep, extension IFormattableDocument document) {
+	}
+	
+	def dispatch void format(UnreifiedRelationshipInversePropertyPredicate ep, extension IFormattableDocument document) {
+		ep.regionFor.keyword('inv').append[noSpace]
+		ep.regionFor.keyword('(').surround[noSpace]
+		ep.regionFor.keyword(')').surround[noSpace]
 	}
 	
 	def dispatch void format(AspectSpecializationAxiom ax, extension IFormattableDocument document) {

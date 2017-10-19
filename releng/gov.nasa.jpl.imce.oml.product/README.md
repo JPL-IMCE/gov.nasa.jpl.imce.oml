@@ -23,16 +23,3 @@ Note that on MacOSX, running the OML Workbench requires disabling Apple security
 	1 Open a new terminal
 	2 Type the following command: sudo spctl --master-disable - you will be prompted for a superuser password
 	3 Follow the steps above for El Capitan - the command from step 2 will let the "Anywhere" option reappear.
-	
-# Eclipse Neon.3 development notes
-
-## [org.eclipse.update.configurator logs "A bundle is already installed"](https://bugs.eclipse.org/bugs/show_bug.cgi?id=463117)
-
-The key to avoid this bug is to make sure that the OML product and any OML launch configuration includes {{-Dorg.eclipse.update.reconcile=false}} in the "VM Arguments" under the "Launch Configuration" tab.
-
-## Launching
-
-Launching the [OML Product](gov.nasa.jpl.imce.oml.rcp.product) fails because of missing bundles.
-However, the tycho build produces a valid product that launches just fine.
-
-To debug the OML Product, use this [launcher](../../launchers/gov.nasa.jpl.imce.oml.rcp.product.launch).
