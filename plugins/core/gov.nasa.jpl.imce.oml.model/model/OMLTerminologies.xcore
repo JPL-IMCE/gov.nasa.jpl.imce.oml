@@ -708,11 +708,8 @@ class RuleBodySegment extends Element {
 			}{ r => 
 			  r.uuid.toString },
 		\"position\" -> 
-			previousSegment.fold[scala.Predef.String] { 
-			  \"1\" 
-			}{ prev => 
-			  prev.position().toString 
-			})")
+			position().toString 
+	`   )")
 	@FunctionalInterface
 	@OverrideVal
 	op UUID[1] uuid() {
