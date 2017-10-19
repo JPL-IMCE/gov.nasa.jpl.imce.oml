@@ -362,15 +362,24 @@ public class RuleBodySegmentImpl extends ElementImpl implements RuleBodySegment 
 			_xifexpression = _string_1;
 		}
 		Pair<String, String> _mappedTo = Pair.<String, String>of("chainRule", _xifexpression);
-		String _string_2 = Integer.valueOf(this.position()).toString();
-		Pair<String, String> _mappedTo_1 = Pair.<String, String>of("position", _string_2);
+		String _xifexpression_1 = null;
+		RuleBodySegment _previousSegment_1 = this.getPreviousSegment();
+		boolean _tripleEquals_1 = (null == _previousSegment_1);
+		if (_tripleEquals_1) {
+			_xifexpression_1 = "1";
+		}
+		else {
+			int _position = this.getPreviousSegment().position();
+			_xifexpression_1 = Integer.valueOf((1 + _position)).toString();
+		}
+		Pair<String, String> _mappedTo_1 = Pair.<String, String>of("position", _xifexpression_1);
 		UUID _derivedUUID = OMLExtensions.derivedUUID(
 			"RuleBodySegment", _mappedTo, _mappedTo_1);
-		String _string_3 = null;
+		String _string_2 = null;
 		if (_derivedUUID!=null) {
-			_string_3=_derivedUUID.toString();
+			_string_2=_derivedUUID.toString();
 		}
-		return _string_3;
+		return _string_2;
 	}
 
 	/**

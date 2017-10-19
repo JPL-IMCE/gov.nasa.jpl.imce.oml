@@ -711,7 +711,7 @@ class RuleBodySegment extends Element {
 			previousSegment.fold[scala.Predef.String] { 
 			  \"1\" 
 			}{ prev => 
-			  prev.position().toString 
+			  (1 + prev.position()).toString 
 			})")
 	@FunctionalInterface
 	@OverrideVal
@@ -722,7 +722,10 @@ class RuleBodySegment extends Element {
 			chainRule?.uuid()?.toString
 		else 
 			previousSegment.uuid()?.toString,
-		"position" -> position.toString
+		"position" -> if (null === previousSegment) 
+			"1"
+			else
+				(1 + previousSegment.position()).toString
 		)?.toString
 	}
 	
