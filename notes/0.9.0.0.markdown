@@ -19,3 +19,5 @@ gov.nasa.jpl.imce.oml.tycho 0.9.0.0 resolves major problems found in 0.8.0.1
 - [#131 Incorrect RuleBodySegment.position() calculation](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/131)
 
 - [#134 Missing toString for several OML datatypes](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/134)
+
+- [#136 Need syntax for arbitrary string values possibly spanning multiple lines](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/136)
