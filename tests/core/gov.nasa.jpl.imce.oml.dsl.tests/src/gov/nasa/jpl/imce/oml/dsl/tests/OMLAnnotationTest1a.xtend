@@ -32,7 +32,7 @@ import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox
 
 @RunWith(XtextRunner)
 @InjectWith(OMLInjectorProvider)
-class OMLAnnotationTest1 {
+class OMLAnnotationTest1a {
 
 	@Inject
 	ParseHelper<Extent> parseHelper

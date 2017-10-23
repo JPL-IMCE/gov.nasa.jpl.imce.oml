@@ -719,7 +719,8 @@ terminal REAL returns RealDataType:						'{' ('-' | '+')? CONSTANT_NAME '}';
 
 terminal PATTERN returns LiteralPattern:				'/' ((! '/') | '\\/')* '/';
 
-terminal STRING_VALUE returns StringDataType: 			'"' ( '\\' . ('b'|'t'|'n'|'f'|'r'|'"'|"'"|'\\')| !('\\'|'"') )* '"';
+terminal STRING_VALUE returns StringDataType: 			'"' ( '\\' . ('b'|'t'|'n'|'f'|'r'|'"'|"'"|'\\')| !('\\'|'"') )* '"' |
+														'"""' -> '"""';
 
 terminal IRI:											'<' (!'>')* '>';
 
