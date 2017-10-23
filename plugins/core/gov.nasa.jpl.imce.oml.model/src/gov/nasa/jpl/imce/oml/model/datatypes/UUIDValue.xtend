@@ -36,4 +36,9 @@ class UUIDValue {
 				false
 		}
 	}
+	
+	override toString() {
+		value
+	}
+	
 }

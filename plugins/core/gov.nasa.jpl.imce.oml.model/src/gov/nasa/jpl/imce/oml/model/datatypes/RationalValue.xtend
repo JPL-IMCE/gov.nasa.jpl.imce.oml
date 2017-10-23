@@ -33,4 +33,9 @@ class RationalValue {
 				false
 		}
 	}
+	
+	override toString() {
+		value
+	}
+	
 }

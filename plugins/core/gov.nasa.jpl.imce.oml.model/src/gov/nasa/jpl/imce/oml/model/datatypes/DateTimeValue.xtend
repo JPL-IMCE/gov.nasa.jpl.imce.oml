@@ -47,4 +47,9 @@ class DateTimeValue {
 				false
 		}
 	}
+	
+	override toString() {
+		value
+	}
+	
 }

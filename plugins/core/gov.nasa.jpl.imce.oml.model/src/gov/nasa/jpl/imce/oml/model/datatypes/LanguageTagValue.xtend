@@ -41,4 +41,9 @@ class LanguageTagValue {
 				false
 		}
 	}
+	
+	override toString() {
+		value
+	}
+	
 }

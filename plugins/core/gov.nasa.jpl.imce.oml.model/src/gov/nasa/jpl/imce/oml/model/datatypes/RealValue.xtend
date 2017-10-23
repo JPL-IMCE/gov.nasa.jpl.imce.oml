@@ -33,4 +33,9 @@ class RealValue {
 				false
 		}
 	}
+	
+	override toString() {
+		value
+	}
+	
 }

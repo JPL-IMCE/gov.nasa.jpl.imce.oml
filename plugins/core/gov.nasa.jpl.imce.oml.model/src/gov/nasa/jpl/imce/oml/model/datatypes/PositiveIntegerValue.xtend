@@ -36,9 +36,4 @@ class PositiveIntegerValue extends AbstractDecimalValue {
 				false
 		}
 	}
-	
-	override toString() {
-		value
-	}
-	
 }

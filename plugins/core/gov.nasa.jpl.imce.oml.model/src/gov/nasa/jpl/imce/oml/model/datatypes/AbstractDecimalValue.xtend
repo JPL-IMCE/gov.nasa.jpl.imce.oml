@@ -32,4 +32,9 @@ abstract class AbstractDecimalValue {
 	new(String value) {
 		this.value = value
 	}
+	
+	override toString() {
+		value
+	}
+	
 }

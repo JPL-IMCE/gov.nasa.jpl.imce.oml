@@ -38,4 +38,9 @@ class URIValue {
 				false
 		}
 	}
+	
+	override toString() {
+		value
+	}
+	
 }
