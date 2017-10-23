@@ -22986,7 +22986,7 @@ RULE_REAL : '{' ('-'|'+')? RULE_CONSTANT_NAME '}';
 
 RULE_PATTERN : '/' (~('/')|'\\/')* '/';
 
-RULE_STRING_VALUE : '"' ('\\' . ('b'|'t'|'n'|'f'|'r'|'"'|'\''|'\\')|~(('\\'|'"')))* '"';
+RULE_STRING_VALUE : ('"' ('\\' . ('b'|'t'|'n'|'f'|'r'|'"'|'\''|'\\')|~(('\\'|'"')))* '"'|'"""' ( options {greedy=false;} : . )*'"""');
 
 RULE_IRI : '<' ~('>')* '>';
 

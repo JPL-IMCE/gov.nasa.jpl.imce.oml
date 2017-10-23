@@ -7384,7 +7384,8 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//terminal STRING_VALUE returns StringDataType:
-	//	'"' ('\\' . ('b' | 't' | 'n' | 'f' | 'r' | '"' | "'" | '\\') | !('\\' | '"'))* '"';
+	//	'"' ('\\' . ('b' | 't' | 'n' | 'f' | 'r' | '"' | "'" | '\\') | !('\\' | '"'))* '"' |
+	//	'"""'->'"""';
 	public TerminalRule getSTRING_VALUERule() {
 		return tSTRING_VALUE;
 	}

@@ -23,7 +23,6 @@ import gov.nasa.jpl.imce.oml.model.common.AnnotationProperty;
 import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue;
 import gov.nasa.jpl.imce.oml.model.common.Element;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
-import gov.nasa.jpl.imce.oml.model.datatypes.StringValue;
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -43,7 +42,7 @@ import org.junit.runner.RunWith;
 @RunWith(XtextRunner.class)
 @InjectWith(OMLInjectorProvider.class)
 @SuppressWarnings("all")
-public class OMLAnnotationTest1 {
+public class OMLAnnotationTest1b {
   @Inject
   private ParseHelper<Extent> parseHelper;
   
@@ -65,7 +64,23 @@ public class OMLAnnotationTest1 {
       _builder.append("    ");
       _builder.newLine();
       _builder.append("    ");
-      _builder.append("@rdfs:label = \"Performing Element\"");
+      _builder.append("@rdfs:label = \"\"\"Performing Element");
+      _builder.newLine();
+      _builder.append("    ");
+      _builder.append("This is a long description...");
+      _builder.newLine();
+      _builder.append("    ");
+      _builder.append("</foo>");
+      _builder.newLine();
+      _builder.append("    ");
+      _builder.newLine();
+      _builder.append("    ");
+      _builder.append("\"string\"");
+      _builder.newLine();
+      _builder.append("     ");
+      _builder.newLine();
+      _builder.append("    ");
+      _builder.append("\"\"\"");
       _builder.newLine();
       _builder.append("    ");
       _builder.append("concept PerformingElement");
@@ -73,7 +88,8 @@ public class OMLAnnotationTest1 {
       _builder.newLine();
       _builder.append("}");
       _builder.newLine();
-      final Extent result = this.parseHelper.parse(_builder);
+      final String input = _builder.toString();
+      final Extent result = this.parseHelper.parse(input);
       Assert.assertNotNull(result);
       this._validationTestHelper.assertNoErrors(result);
       final Resource r = result.eResource();
@@ -86,8 +102,10 @@ public class OMLAnnotationTest1 {
       final AnnotationPropertyValue a = IterableExtensions.<AnnotationPropertyValue>head(c.getAnnotations());
       final AnnotationProperty a_prop = a.getProperty();
       final Element a_subj = a.getSubject();
-      final StringValue a_value = a.getValue();
-      Assert.assertEquals("Performing Element", a_value.value);
+      final String a_value = a.getValue().value;
+      Assert.assertTrue(a_value.contains("Performing Element"));
+      Assert.assertTrue(a_value.contains("</foo>"));
+      Assert.assertTrue(a_value.contains("\"string\""));
       Assert.assertSame(ap, a_prop);
       Assert.assertSame(c, a_subj);
       String _name = this.getClass().getName();
