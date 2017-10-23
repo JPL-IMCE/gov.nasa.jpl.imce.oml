@@ -48,4 +48,9 @@ public class LanguageTagValue {
     }
     return _switchResult;
   }
+  
+  @Override
+  public String toString() {
+    return this.value;
+  }
 }

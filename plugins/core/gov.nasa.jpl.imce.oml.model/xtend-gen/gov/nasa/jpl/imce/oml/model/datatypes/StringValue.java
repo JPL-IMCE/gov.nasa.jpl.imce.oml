@@ -43,4 +43,9 @@ public class StringValue {
     }
     return _switchResult;
   }
+  
+  @Override
+  public String toString() {
+    return this.value;
+  }
 }

@@ -36,4 +36,9 @@ class StringValue {
 				false
 		}
 	}
+	
+	override toString() {
+		value
+	}
+	
 }

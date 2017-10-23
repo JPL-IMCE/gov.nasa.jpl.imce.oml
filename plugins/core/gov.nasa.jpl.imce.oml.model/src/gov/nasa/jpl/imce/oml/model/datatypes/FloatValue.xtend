@@ -33,4 +33,9 @@ class FloatValue {
 				false
 		}
 	}
+	
+	override toString() {
+		value
+	}
+	
 }

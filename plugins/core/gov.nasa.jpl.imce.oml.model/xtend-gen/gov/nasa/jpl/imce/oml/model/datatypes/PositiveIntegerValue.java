@@ -44,9 +44,4 @@ public class PositiveIntegerValue extends AbstractDecimalValue {
     }
     return _switchResult;
   }
-  
-  @Override
-  public String toString() {
-    return this.value;
-  }
 }

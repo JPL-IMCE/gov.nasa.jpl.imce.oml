@@ -36,4 +36,9 @@ class PatternValue {
 				false
 		}
 	}
+	
+	override toString() {
+		value
+	}
+	
 }
