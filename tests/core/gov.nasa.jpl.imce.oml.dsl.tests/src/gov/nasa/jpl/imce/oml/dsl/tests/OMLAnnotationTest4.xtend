@@ -38,7 +38,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 import static org.junit.Assert.*
-import gov.nasa.jpl.imce.oml.model.datatypes.StringValue
+import gov.nasa.jpl.imce.oml.model.datatypes.QuotedStringValue
 
 @RunWith(XtextRunner)
 @InjectWith(OMLInjectorProvider)
@@ -126,6 +126,8 @@ class OMLAnnotationTest4 {
 		val AnnotationPropertyValue av = commonF.createAnnotationPropertyValue
 		e.annotations += av
 		av.property = ap
-		av.value = new StringValue(v)
+		val s = commonF.createLiteralQuotedString()
+		s.string = new QuotedStringValue(v)
+		av.value = s
 	}
 }

@@ -17,35 +17,14 @@
  */
 package gov.nasa.jpl.imce.oml.model.datatypes;
 
-import com.google.common.base.Objects;
-
 /**
- * Wrapped around single quotes (inside, quotes are escaped using \\b  \\t  \\n  \\f  \\r  \\\"  \\'  \\\\)
+ * Abstraction of QuotedStringValue or RawStringValue
  */
 @SuppressWarnings("all")
-public class StringValue {
+public abstract class StringValue {
   public String value;
   
   public StringValue(final String value) {
     this.value = value;
-  }
-  
-  @Override
-  public boolean equals(final Object that) {
-    boolean _switchResult = false;
-    boolean _matched = false;
-    if (that instanceof StringValue) {
-      _matched=true;
-      _switchResult = Objects.equal(this.value, ((StringValue)that).value);
-    }
-    if (!_matched) {
-      _switchResult = false;
-    }
-    return _switchResult;
-  }
-  
-  @Override
-  public String toString() {
-    return this.value;
   }
 }

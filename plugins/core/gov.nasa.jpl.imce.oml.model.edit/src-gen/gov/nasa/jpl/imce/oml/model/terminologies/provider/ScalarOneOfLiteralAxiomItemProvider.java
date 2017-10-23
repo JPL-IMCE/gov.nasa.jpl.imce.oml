@@ -211,7 +211,12 @@ public class ScalarOneOfLiteralAxiomItemProvider extends TermAxiomItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(TerminologiesPackage.Literals.SCALAR_ONE_OF_LITERAL_AXIOM__VALUE,
-				 CommonFactory.eINSTANCE.createLiteralString()));
+				 CommonFactory.eINSTANCE.createLiteralQuotedString()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TerminologiesPackage.Literals.SCALAR_ONE_OF_LITERAL_AXIOM__VALUE,
+				 CommonFactory.eINSTANCE.createLiteralRawString()));
 
 		newChildDescriptors.add
 			(createChildParameter

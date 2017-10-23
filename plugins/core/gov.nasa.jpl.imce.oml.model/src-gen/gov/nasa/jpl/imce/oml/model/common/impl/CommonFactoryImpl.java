@@ -27,7 +27,9 @@ import gov.nasa.jpl.imce.oml.model.datatypes.FloatValue;
 import gov.nasa.jpl.imce.oml.model.datatypes.LanguageTagValue;
 import gov.nasa.jpl.imce.oml.model.datatypes.PatternValue;
 import gov.nasa.jpl.imce.oml.model.datatypes.PositiveIntegerValue;
+import gov.nasa.jpl.imce.oml.model.datatypes.QuotedStringValue;
 import gov.nasa.jpl.imce.oml.model.datatypes.RationalValue;
+import gov.nasa.jpl.imce.oml.model.datatypes.RawStringValue;
 import gov.nasa.jpl.imce.oml.model.datatypes.RealValue;
 import gov.nasa.jpl.imce.oml.model.datatypes.StringValue;
 import gov.nasa.jpl.imce.oml.model.datatypes.URIValue;
@@ -88,7 +90,8 @@ public class CommonFactoryImpl extends EFactoryImpl implements CommonFactory {
 		switch (eClass.getClassifierID()) {
 			case CommonPackage.LITERAL_BOOLEAN: return (EObject)createLiteralBoolean();
 			case CommonPackage.LITERAL_DATE_TIME: return (EObject)createLiteralDateTime();
-			case CommonPackage.LITERAL_STRING: return (EObject)createLiteralString();
+			case CommonPackage.LITERAL_QUOTED_STRING: return (EObject)createLiteralQuotedString();
+			case CommonPackage.LITERAL_RAW_STRING: return (EObject)createLiteralRawString();
 			case CommonPackage.LITERAL_UUID: return (EObject)createLiteralUUID();
 			case CommonPackage.LITERAL_URI: return (EObject)createLiteralURI();
 			case CommonPackage.LITERAL_REAL: return (EObject)createLiteralReal();
@@ -141,6 +144,10 @@ public class CommonFactoryImpl extends EFactoryImpl implements CommonFactory {
 				return createLanguageTagDataTypeFromString(eDataType, initialValue);
 			case CommonPackage.STRING_DATA_TYPE:
 				return createStringDataTypeFromString(eDataType, initialValue);
+			case CommonPackage.RAW_STRING_DATA_TYPE:
+				return createRawStringDataTypeFromString(eDataType, initialValue);
+			case CommonPackage.QUOTED_STRING_DATA_TYPE:
+				return createQuotedStringDataTypeFromString(eDataType, initialValue);
 			case CommonPackage.UUID_DATA_TYPE:
 				return createUUIDDataTypeFromString(eDataType, initialValue);
 			case CommonPackage.URI_DATA_TYPE:
@@ -188,6 +195,10 @@ public class CommonFactoryImpl extends EFactoryImpl implements CommonFactory {
 				return convertLanguageTagDataTypeToString(eDataType, instanceValue);
 			case CommonPackage.STRING_DATA_TYPE:
 				return convertStringDataTypeToString(eDataType, instanceValue);
+			case CommonPackage.RAW_STRING_DATA_TYPE:
+				return convertRawStringDataTypeToString(eDataType, instanceValue);
+			case CommonPackage.QUOTED_STRING_DATA_TYPE:
+				return convertQuotedStringDataTypeToString(eDataType, instanceValue);
 			case CommonPackage.UUID_DATA_TYPE:
 				return convertUUIDDataTypeToString(eDataType, instanceValue);
 			case CommonPackage.URI_DATA_TYPE:
@@ -222,9 +233,19 @@ public class CommonFactoryImpl extends EFactoryImpl implements CommonFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LiteralString createLiteralString() {
-		LiteralStringImpl literalString = new LiteralStringImpl();
-		return literalString;
+	public LiteralQuotedString createLiteralQuotedString() {
+		LiteralQuotedStringImpl literalQuotedString = new LiteralQuotedStringImpl();
+		return literalQuotedString;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LiteralRawString createLiteralRawString() {
+		LiteralRawStringImpl literalRawString = new LiteralRawStringImpl();
+		return literalRawString;
 	}
 
 	/**
@@ -584,6 +605,42 @@ public class CommonFactoryImpl extends EFactoryImpl implements CommonFactory {
 	 * @generated
 	 */
 	public String convertStringDataTypeToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RawStringValue createRawStringDataTypeFromString(EDataType eDataType, String initialValue) {
+		return (RawStringValue)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertRawStringDataTypeToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public QuotedStringValue createQuotedStringDataTypeFromString(EDataType eDataType, String initialValue) {
+		return (QuotedStringValue)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertQuotedStringDataTypeToString(EDataType eDataType, Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 

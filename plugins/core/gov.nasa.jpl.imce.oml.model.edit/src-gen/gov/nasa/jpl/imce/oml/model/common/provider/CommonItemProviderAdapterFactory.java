@@ -134,26 +134,49 @@ public class CommonItemProviderAdapterFactory extends CommonAdapterFactory imple
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.common.LiteralString} instances.
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.common.LiteralQuotedString} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected LiteralStringItemProvider literalStringItemProvider;
+	protected LiteralQuotedStringItemProvider literalQuotedStringItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.common.LiteralString}.
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.common.LiteralQuotedString}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createLiteralStringAdapter() {
-		if (literalStringItemProvider == null) {
-			literalStringItemProvider = new LiteralStringItemProvider(this);
+	public Adapter createLiteralQuotedStringAdapter() {
+		if (literalQuotedStringItemProvider == null) {
+			literalQuotedStringItemProvider = new LiteralQuotedStringItemProvider(this);
 		}
 
-		return literalStringItemProvider;
+		return literalQuotedStringItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.common.LiteralRawString} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LiteralRawStringItemProvider literalRawStringItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.common.LiteralRawString}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLiteralRawStringAdapter() {
+		if (literalRawStringItemProvider == null) {
+			literalRawStringItemProvider = new LiteralRawStringItemProvider(this);
+		}
+
+		return literalRawStringItemProvider;
 	}
 
 	/**
@@ -464,7 +487,8 @@ public class CommonItemProviderAdapterFactory extends CommonAdapterFactory imple
 	public void dispose() {
 		if (literalBooleanItemProvider != null) literalBooleanItemProvider.dispose();
 		if (literalDateTimeItemProvider != null) literalDateTimeItemProvider.dispose();
-		if (literalStringItemProvider != null) literalStringItemProvider.dispose();
+		if (literalQuotedStringItemProvider != null) literalQuotedStringItemProvider.dispose();
+		if (literalRawStringItemProvider != null) literalRawStringItemProvider.dispose();
 		if (literalUUIDItemProvider != null) literalUUIDItemProvider.dispose();
 		if (literalURIItemProvider != null) literalURIItemProvider.dispose();
 		if (literalRealItemProvider != null) literalRealItemProvider.dispose();

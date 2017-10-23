@@ -39,7 +39,7 @@ AnnotationProperty returns AnnotationProperty:
 
 AnnotationPropertyValue returns AnnotationPropertyValue:
 	'@' property=[AnnotationProperty|ABBREV_IRI]
-	'=' value=STRING_VALUE;
+	'=' value=LiteralString;
 	
 Module returns Module:
 	TerminologyBox | DescriptionBox;
@@ -593,31 +593,35 @@ UnreifiedRelationshipInstanceTuple returns UnreifiedRelationshipInstanceTuple:
 
 //----------------------------
 
-Reference:												IRI | QNAME;
+Reference:											IRI | QNAME;
 
-ExternalReference:										IRI;
+ExternalReference:									IRI;
 	
-QNAME:													ABBREV_IRI | ValidID;
+QNAME:												ABBREV_IRI | ValidID;
 
 ValidID:												ID;
 	
 //----------------------------
 
-LiteralValue returns LiteralValue:						LiteralBoolean | LiteralDateTime | LiteralString | LiteralUUID | LiteralURI | LiteralNumber;
+LiteralValue returns LiteralValue:					LiteralBoolean | LiteralDateTime | LiteralString | LiteralUUID | LiteralURI | LiteralNumber;
 
-LiteralBoolean returns LiteralBoolean:					{LiteralBoolean} value=(TRUE|FALSE);
+LiteralBoolean returns LiteralBoolean:				{LiteralBoolean} value=(TRUE|FALSE);
 
-LiteralDateTime returns LiteralDateTime: 				{LiteralDateTime} dateTime=DATE_TIME;
+LiteralDateTime returns LiteralDateTime: 			{LiteralDateTime} dateTime=DATE_TIME;
 
-LiteralString returns LiteralString:					{LiteralString} string=STRING_VALUE;
+LiteralString returns LiteralString:					LiteralQuotedString | LiteralRawString;
 
-UUIDDataType returns UUIDDataType:						UUID;
+LiteralQuotedString returns LiteralQuotedString:		{LiteralQuotedString} string=QUOTED_STRING_VALUE;
+
+LiteralRawString returns LiteralRawString:			{LiteralRawString} string=RAW_STRING_VALUE;
+
+UUIDDataType returns UUIDDataType:					UUID;
 
 LiteralUUID returns LiteralUUID:						{LiteralUUID} uuid=UUIDDataType;
 
 URIDataType returns URIDataType:						URI;
 
-LiteralURI returns LiteralURI:							{LiteralURI} uri=URIDataType;
+LiteralURI returns LiteralURI:						{LiteralURI} uri=URIDataType;
 
 LiteralNumber returns LiteralNumber:					LiteralReal | LiteralRational | LiteralFloat | LiteralDecimal;
 
@@ -719,7 +723,9 @@ terminal REAL returns RealDataType:						'{' ('-' | '+')? CONSTANT_NAME '}';
 
 terminal PATTERN returns LiteralPattern:				'/' ((! '/') | '\\/')* '/';
 
-terminal STRING_VALUE returns StringDataType: 			'"' ( '\\' . ('b'|'t'|'n'|'f'|'r'|'"'|"'"|'\\')| !('\\'|'"') )* '"';
+terminal QUOTED_STRING_VALUE returns QuotedStringDataType: 	'"' ( '\\' . ('b'|'t'|'n'|'f'|'r'|'"'|"'"|'\\')| !('\\'|'"') )* '"';
+
+terminal RAW_STRING_VALUE returns RawStringDataType:			'"""' -> '"""';
 
 terminal IRI:											'<' (!'>')* '>';
 

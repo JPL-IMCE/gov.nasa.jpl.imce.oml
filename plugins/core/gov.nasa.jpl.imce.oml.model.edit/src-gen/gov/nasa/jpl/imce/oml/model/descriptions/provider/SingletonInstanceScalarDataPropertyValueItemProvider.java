@@ -21,7 +21,6 @@ package gov.nasa.jpl.imce.oml.model.descriptions.provider;
 
 import gov.nasa.jpl.imce.oml.model.common.CommonFactory;
 import gov.nasa.jpl.imce.oml.model.common.provider.ModuleElementItemProvider;
-
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsPackage;
 import gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceScalarDataPropertyValue;
 
@@ -262,7 +261,12 @@ public class SingletonInstanceScalarDataPropertyValueItemProvider extends Module
 		newChildDescriptors.add
 			(createChildParameter
 				(DescriptionsPackage.Literals.SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE,
-				 CommonFactory.eINSTANCE.createLiteralString()));
+				 CommonFactory.eINSTANCE.createLiteralQuotedString()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(DescriptionsPackage.Literals.SINGLETON_INSTANCE_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE,
+				 CommonFactory.eINSTANCE.createLiteralRawString()));
 
 		newChildDescriptors.add
 			(createChildParameter

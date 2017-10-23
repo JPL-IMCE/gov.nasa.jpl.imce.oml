@@ -23,7 +23,7 @@ import gov.nasa.jpl.imce.oml.model.common.AnnotationProperty;
 import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue;
 import gov.nasa.jpl.imce.oml.model.common.Element;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
-import gov.nasa.jpl.imce.oml.model.datatypes.StringValue;
+import gov.nasa.jpl.imce.oml.model.common.LiteralString;
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -43,7 +43,7 @@ import org.junit.runner.RunWith;
 @RunWith(XtextRunner.class)
 @InjectWith(OMLInjectorProvider.class)
 @SuppressWarnings("all")
-public class OMLAnnotationTest1 {
+public class OMLAnnotationTest1a {
   @Inject
   private ParseHelper<Extent> parseHelper;
   
@@ -86,8 +86,8 @@ public class OMLAnnotationTest1 {
       final AnnotationPropertyValue a = IterableExtensions.<AnnotationPropertyValue>head(c.getAnnotations());
       final AnnotationProperty a_prop = a.getProperty();
       final Element a_subj = a.getSubject();
-      final StringValue a_value = a.getValue();
-      Assert.assertEquals("Performing Element", a_value.value);
+      final LiteralString a_value = a.getValue();
+      Assert.assertEquals("Performing Element", a_value.value());
       Assert.assertSame(ap, a_prop);
       Assert.assertSame(c, a_subj);
       String _name = this.getClass().getName();

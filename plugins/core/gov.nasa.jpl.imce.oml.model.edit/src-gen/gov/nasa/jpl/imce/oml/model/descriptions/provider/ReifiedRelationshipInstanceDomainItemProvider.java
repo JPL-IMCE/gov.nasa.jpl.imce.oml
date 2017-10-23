@@ -21,7 +21,6 @@ package gov.nasa.jpl.imce.oml.model.descriptions.provider;
 
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsPackage;
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstanceDomain;
-
 import java.util.Collection;
 import java.util.List;
 

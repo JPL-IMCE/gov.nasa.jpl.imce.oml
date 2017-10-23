@@ -18,27 +18,14 @@
 package gov.nasa.jpl.imce.oml.model.datatypes
 
 /*
- * Wrapped around single quotes (inside, quotes are escaped using \\b  \\t  \\n  \\f  \\r  \\\"  \\'  \\\\)
+ * Abstraction of QuotedStringValue or RawStringValue
  */
-class StringValue {
+abstract class StringValue {
 	
 	public String value
 	
 	new(String value) {
 		this.value = value
-	}
-	
-	override def boolean equals(Object that) {
-		switch that {
-			StringValue:
-				this.value == that.value
-			default:
-				false
-		}
-	}
-	
-	override toString() {
-		value
 	}
 	
 }

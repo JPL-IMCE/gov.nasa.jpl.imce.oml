@@ -76,6 +76,7 @@ public class OMLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getQNAMEAccess().getAlternatives(), "rule__QNAME__Alternatives");
 					put(grammarAccess.getLiteralValueAccess().getAlternatives(), "rule__LiteralValue__Alternatives");
 					put(grammarAccess.getLiteralBooleanAccess().getValueAlternatives_1_0(), "rule__LiteralBoolean__ValueAlternatives_1_0");
+					put(grammarAccess.getLiteralStringAccess().getAlternatives(), "rule__LiteralString__Alternatives");
 					put(grammarAccess.getLiteralNumberAccess().getAlternatives(), "rule__LiteralNumber__Alternatives");
 					put(grammarAccess.getLiteralDecimalAccess().getAlternatives(), "rule__LiteralDecimal__Alternatives");
 					put(grammarAccess.getTerminologyKindAccess().getAlternatives(), "rule__TerminologyKind__Alternatives");
@@ -180,7 +181,8 @@ public class OMLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getUnreifiedRelationshipInstanceTupleAccess().getGroup(), "rule__UnreifiedRelationshipInstanceTuple__Group__0");
 					put(grammarAccess.getLiteralBooleanAccess().getGroup(), "rule__LiteralBoolean__Group__0");
 					put(grammarAccess.getLiteralDateTimeAccess().getGroup(), "rule__LiteralDateTime__Group__0");
-					put(grammarAccess.getLiteralStringAccess().getGroup(), "rule__LiteralString__Group__0");
+					put(grammarAccess.getLiteralQuotedStringAccess().getGroup(), "rule__LiteralQuotedString__Group__0");
+					put(grammarAccess.getLiteralRawStringAccess().getGroup(), "rule__LiteralRawString__Group__0");
 					put(grammarAccess.getLiteralUUIDAccess().getGroup(), "rule__LiteralUUID__Group__0");
 					put(grammarAccess.getLiteralURIAccess().getGroup(), "rule__LiteralURI__Group__0");
 					put(grammarAccess.getLiteralRealAccess().getGroup(), "rule__LiteralReal__Group__0");
@@ -440,7 +442,8 @@ public class OMLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getUnreifiedRelationshipInstanceTupleAccess().getRangeAssignment_8(), "rule__UnreifiedRelationshipInstanceTuple__RangeAssignment_8");
 					put(grammarAccess.getLiteralBooleanAccess().getValueAssignment_1(), "rule__LiteralBoolean__ValueAssignment_1");
 					put(grammarAccess.getLiteralDateTimeAccess().getDateTimeAssignment_1(), "rule__LiteralDateTime__DateTimeAssignment_1");
-					put(grammarAccess.getLiteralStringAccess().getStringAssignment_1(), "rule__LiteralString__StringAssignment_1");
+					put(grammarAccess.getLiteralQuotedStringAccess().getStringAssignment_1(), "rule__LiteralQuotedString__StringAssignment_1");
+					put(grammarAccess.getLiteralRawStringAccess().getStringAssignment_1(), "rule__LiteralRawString__StringAssignment_1");
 					put(grammarAccess.getLiteralUUIDAccess().getUuidAssignment_1(), "rule__LiteralUUID__UuidAssignment_1");
 					put(grammarAccess.getLiteralURIAccess().getUriAssignment_1(), "rule__LiteralURI__UriAssignment_1");
 					put(grammarAccess.getLiteralRealAccess().getRealAssignment_1(), "rule__LiteralReal__RealAssignment_1");

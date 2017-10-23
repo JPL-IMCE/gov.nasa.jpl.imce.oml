@@ -29,8 +29,9 @@ import gov.nasa.jpl.imce.oml.dsl.util.OMLReferenceValueConverter;
 import gov.nasa.jpl.imce.oml.dsl.util.OMLSL_COMMENTValueConverter;
 import gov.nasa.jpl.imce.oml.dsl.util.PatternValueConverter;
 import gov.nasa.jpl.imce.oml.dsl.util.PositiveIntegerValueConverter;
+import gov.nasa.jpl.imce.oml.dsl.util.QuotedStringValueConverter;
+import gov.nasa.jpl.imce.oml.dsl.util.RawStringValueConverter;
 import gov.nasa.jpl.imce.oml.dsl.util.RealValueConverter;
-import gov.nasa.jpl.imce.oml.dsl.util.StringValueConverter;
 import gov.nasa.jpl.imce.oml.dsl.util.URIValueConverter;
 import gov.nasa.jpl.imce.oml.dsl.util.UUIDValueConverter;
 import gov.nasa.jpl.imce.oml.model.datatypes.DateTimeValue;
@@ -39,8 +40,9 @@ import gov.nasa.jpl.imce.oml.model.datatypes.FloatValue;
 import gov.nasa.jpl.imce.oml.model.datatypes.LanguageTagValue;
 import gov.nasa.jpl.imce.oml.model.datatypes.PatternValue;
 import gov.nasa.jpl.imce.oml.model.datatypes.PositiveIntegerValue;
+import gov.nasa.jpl.imce.oml.model.datatypes.QuotedStringValue;
+import gov.nasa.jpl.imce.oml.model.datatypes.RawStringValue;
 import gov.nasa.jpl.imce.oml.model.datatypes.RealValue;
-import gov.nasa.jpl.imce.oml.model.datatypes.StringValue;
 import gov.nasa.jpl.imce.oml.model.datatypes.URIValue;
 import gov.nasa.jpl.imce.oml.model.datatypes.UUIDValue;
 import org.eclipse.xtext.common.services.DefaultTerminalConverters;
@@ -102,7 +104,10 @@ public class OMLValueConverterService extends DefaultTerminalConverters {
   private UUIDValueConverter uuidValueConverter;
   
   @Inject
-  private StringValueConverter stringValueConverter;
+  private QuotedStringValueConverter quotedStringValueConverter;
+  
+  @Inject
+  private RawStringValueConverter rawStringValueConverter;
   
   @ValueConverter(rule = "Reference")
   public IValueConverter<String> Reference() {
@@ -139,9 +144,14 @@ public class OMLValueConverterService extends DefaultTerminalConverters {
     return this.validIDValueConverter;
   }
   
-  @ValueConverter(rule = "STRING_VALUE")
-  public IValueConverter<StringValue> String() {
-    return this.stringValueConverter;
+  @ValueConverter(rule = "QUOTED_STRING_VALUE")
+  public IValueConverter<QuotedStringValue> QuotedString() {
+    return this.quotedStringValueConverter;
+  }
+  
+  @ValueConverter(rule = "RAW_STRING_VALUE")
+  public IValueConverter<RawStringValue> RawString() {
+    return this.rawStringValueConverter;
   }
   
   @ValueConverter(rule = "FLOAT")

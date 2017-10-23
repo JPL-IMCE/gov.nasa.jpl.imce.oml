@@ -21,7 +21,6 @@ package gov.nasa.jpl.imce.oml.model.bundles.provider;
 
 import gov.nasa.jpl.imce.oml.model.bundles.BundlesPackage;
 import gov.nasa.jpl.imce.oml.model.bundles.SpecificDisjointConceptAxiom;
-
 import java.util.Collection;
 import java.util.List;
 

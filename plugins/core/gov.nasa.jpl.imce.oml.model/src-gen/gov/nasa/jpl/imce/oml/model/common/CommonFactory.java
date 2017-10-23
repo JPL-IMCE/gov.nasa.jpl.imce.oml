@@ -56,13 +56,22 @@ public interface CommonFactory extends EFactory {
 	LiteralDateTime createLiteralDateTime();
 
 	/**
-	 * Returns a new object of class '<em>Literal String</em>'.
+	 * Returns a new object of class '<em>Literal Quoted String</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Literal String</em>'.
+	 * @return a new object of class '<em>Literal Quoted String</em>'.
 	 * @generated
 	 */
-	LiteralString createLiteralString();
+	LiteralQuotedString createLiteralQuotedString();
+
+	/**
+	 * Returns a new object of class '<em>Literal Raw String</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Literal Raw String</em>'.
+	 * @generated
+	 */
+	LiteralRawString createLiteralRawString();
 
 	/**
 	 * Returns a new object of class '<em>Literal UUID</em>'.

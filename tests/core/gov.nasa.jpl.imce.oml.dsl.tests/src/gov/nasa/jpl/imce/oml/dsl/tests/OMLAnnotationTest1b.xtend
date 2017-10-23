@@ -32,7 +32,7 @@ import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox
 
 @RunWith(XtextRunner)
 @InjectWith(OMLInjectorProvider)
-class OMLAnnotationTest1 {
+class OMLAnnotationTest1b {
 
 	@Inject
 	ParseHelper<Extent> parseHelper
@@ -43,18 +43,25 @@ class OMLAnnotationTest1 {
 	@Test 
 	def void test() {
 		
-		val result = parseHelper.parse(
+		val input =
 '''
 annotationProperty rdfs:label=<http://www.w3.org/2000/01/rdf-schema#label>
 
 open terminology <http://imce.jpl.nasa.gov/foundation/mission/mission>
 {	
     
-    @rdfs:label = "Performing Element"
+    @rdfs:label = """Performing Element
+    This is a long description...
+    </foo>
+    
+    "string"
+     
+    """
     concept PerformingElement
 
 }
-''')
+'''
+		val result = parseHelper.parse(input)
 		assertNotNull(result)
 		result.assertNoErrors
 		
@@ -72,9 +79,11 @@ open terminology <http://imce.jpl.nasa.gov/foundation/mission/mission>
 		val a = c.annotations.head
 		val a_prop = a.property
 		val a_subj = a.subject
-		val a_value = a.value
+		val a_value = a.value.value.value
 		
-		"Performing Element".assertEquals(a_value.value)
+		assertTrue(a_value.contains("Performing Element"))
+		assertTrue(a_value.contains("</foo>"))
+		assertTrue(a_value.contains("\"string\""))
 		ap.assertSame(a_prop)
 		c.assertSame(a_subj)
 		

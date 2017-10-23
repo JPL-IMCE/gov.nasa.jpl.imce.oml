@@ -21,20 +21,20 @@ import com.google.inject.Inject
 import org.eclipse.xtext.conversion.IValueConverterService
 import org.eclipse.xtext.conversion.ValueConverterException
 import org.eclipse.xtext.nodemodel.INode
-import gov.nasa.jpl.imce.oml.model.datatypes.StringValue
 import org.eclipse.xtext.util.Strings
 import org.eclipse.xtext.conversion.ValueConverterWithValueException
+import gov.nasa.jpl.imce.oml.model.datatypes.QuotedStringValue
 
-class StringValueConverter extends GenericValueConverter<StringValue> {
+class QuotedStringValueConverter extends GenericValueConverter<QuotedStringValue> {
 	
 	@Inject
 	protected IValueConverterService valueConverterService;
 
-	override def String toEscapedString(StringValue value) {
+	override def String toEscapedString(QuotedStringValue value) {
 		return "\"" + value.value + "\""
 	}
 	
-	override def StringValue toValue(String string, INode node) {
+	override def QuotedStringValue toValue(String string, INode node) {
 		if (string === null)
 			return null
 		try {
@@ -42,7 +42,7 @@ class StringValueConverter extends GenericValueConverter<StringValue> {
 				throw new ValueConverterWithValueException(getStringNotClosedMessage(), node, "", null)
 			}
 			val s = convertFromString(string, node)
-			new StringValue(s)
+			new QuotedStringValue(s)
 		} catch (IllegalArgumentException e) {
 			throw new ValueConverterException(e.getMessage(), node, e);
 		}
@@ -52,14 +52,14 @@ class StringValueConverter extends GenericValueConverter<StringValue> {
 	 * @since 2.7
 	 */
 	protected def String getInvalidEscapeSequenceMessage() {
-		return "Invalid escape sequence (valid ones are  \\b  \\t  \\n  \\f  \\r  \\\"  \\'  \\\\ )";
+		return "Invalid escape sequence for QuotedString (valid ones are  \\b  \\t  \\n  \\f  \\r  \\\"  \\'  \\\\ )";
 	}
 	
 	/**
 	 * @since 2.7
 	 */
 	protected def String getStringNotClosedMessage() {
-		return "String literal is not properly closed";
+		return "QuotedString literal is not properly closed";
 	}
 
 	/**

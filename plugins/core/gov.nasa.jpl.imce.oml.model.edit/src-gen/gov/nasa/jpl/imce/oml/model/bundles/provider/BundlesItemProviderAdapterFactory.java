@@ -19,32 +19,21 @@
 package gov.nasa.jpl.imce.oml.model.bundles.provider;
 
 import gov.nasa.jpl.imce.oml.model.bundles.BundlesFactory;
-
 import gov.nasa.jpl.imce.oml.model.bundles.util.BundlesAdapterFactory;
-
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
-
 import gov.nasa.jpl.imce.oml.model.common.util.CommonSwitch;
-
 import gov.nasa.jpl.imce.oml.model.edit.provider.OMLEditPlugin;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.edit.command.CommandParameter;
-
 import org.eclipse.emf.edit.domain.EditingDomain;
-
 import org.eclipse.emf.edit.provider.ChangeNotifier;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;

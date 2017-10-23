@@ -28,3 +28,4 @@ Export-Package: gov.nasa.jpl.imce.oml.dsl,
  gov.nasa.jpl.imce.oml.dsl.util,
  gov.nasa.jpl.imce.oml.dsl.validation
 Bundle-Localization: plugin
+Import-Package: org.apache.log4j

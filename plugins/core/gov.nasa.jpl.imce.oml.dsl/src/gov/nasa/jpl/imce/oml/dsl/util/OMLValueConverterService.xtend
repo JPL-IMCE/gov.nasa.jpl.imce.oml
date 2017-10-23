@@ -32,9 +32,10 @@ import gov.nasa.jpl.imce.oml.model.datatypes.PatternValue
 import gov.nasa.jpl.imce.oml.model.datatypes.RealValue
 import gov.nasa.jpl.imce.oml.model.datatypes.URIValue
 import gov.nasa.jpl.imce.oml.model.datatypes.UUIDValue
-import gov.nasa.jpl.imce.oml.model.datatypes.StringValue
 import org.eclipse.xtext.conversion.ValueConverterException
 import org.eclipse.xtext.nodemodel.INode
+import gov.nasa.jpl.imce.oml.model.datatypes.QuotedStringValue
+import gov.nasa.jpl.imce.oml.model.datatypes.RawStringValue
 
 class OMLValueConverterService extends DefaultTerminalConverters {
 
@@ -70,7 +71,9 @@ class OMLValueConverterService extends DefaultTerminalConverters {
 	
 	@Inject UUIDValueConverter uuidValueConverter
 	
-	@Inject StringValueConverter stringValueConverter
+	@Inject QuotedStringValueConverter quotedStringValueConverter
+	
+	@Inject RawStringValueConverter rawStringValueConverter
 	
 	@ValueConverter(rule="Reference")
 	def IValueConverter<String> Reference() {
@@ -107,9 +110,14 @@ class OMLValueConverterService extends DefaultTerminalConverters {
 		validIDValueConverter
 	}
 	
-	@ValueConverter(rule="STRING_VALUE")
-	def IValueConverter<StringValue> String() {
-		stringValueConverter
+	@ValueConverter(rule="QUOTED_STRING_VALUE")
+	def IValueConverter<QuotedStringValue> QuotedString() {
+		quotedStringValueConverter
+	}
+	
+	@ValueConverter(rule="RAW_STRING_VALUE")
+	def IValueConverter<RawStringValue> RawString() {
+		rawStringValueConverter
 	}
 	
 	@ValueConverter(rule="FLOAT")

@@ -20,7 +20,6 @@ package gov.nasa.jpl.imce.oml.model.terminologies.provider;
 
 
 import gov.nasa.jpl.imce.oml.model.terminologies.SpecializationAxiom;
-
 import java.util.Collection;
 import java.util.List;
 

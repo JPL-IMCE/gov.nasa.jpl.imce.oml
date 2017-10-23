@@ -23,7 +23,7 @@ import gov.nasa.jpl.imce.oml.model.common.AnnotationProperty;
 import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue;
 import gov.nasa.jpl.imce.oml.model.common.Element;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
-import gov.nasa.jpl.imce.oml.model.datatypes.StringValue;
+import gov.nasa.jpl.imce.oml.model.common.LiteralString;
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox;
 import java.util.function.Consumer;
@@ -87,8 +87,8 @@ public class OMLAnnotationTest2 {
       final Consumer<AnnotationPropertyValue> _function = (AnnotationPropertyValue a) -> {
         final AnnotationProperty a_prop = a.getProperty();
         final Element a_subj = a.getSubject();
-        final StringValue a_value = a.getValue();
-        Assert.assertTrue((a_value.value.equals("Performing Element") || a_value.value.equals("A performing element")));
+        final LiteralString a_value = a.getValue();
+        Assert.assertTrue((a_value.value().value.equals("Performing Element") || a_value.value().value.equals("A performing element")));
         Assert.assertSame(ap, a_prop);
         Assert.assertSame(c, a_subj);
       };

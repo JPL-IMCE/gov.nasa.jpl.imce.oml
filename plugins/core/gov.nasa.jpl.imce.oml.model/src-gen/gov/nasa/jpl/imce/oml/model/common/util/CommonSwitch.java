@@ -109,6 +109,22 @@ public class CommonSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case CommonPackage.LITERAL_QUOTED_STRING: {
+				LiteralQuotedString literalQuotedString = (LiteralQuotedString)theEObject;
+				T result = caseLiteralQuotedString(literalQuotedString);
+				if (result == null) result = caseLiteralString(literalQuotedString);
+				if (result == null) result = caseLiteralValue(literalQuotedString);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CommonPackage.LITERAL_RAW_STRING: {
+				LiteralRawString literalRawString = (LiteralRawString)theEObject;
+				T result = caseLiteralRawString(literalRawString);
+				if (result == null) result = caseLiteralString(literalRawString);
+				if (result == null) result = caseLiteralValue(literalRawString);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case CommonPackage.LITERAL_UUID: {
 				LiteralUUID literalUUID = (LiteralUUID)theEObject;
 				T result = caseLiteralUUID(literalUUID);
@@ -275,6 +291,36 @@ public class CommonSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseLiteralString(LiteralString object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Literal Quoted String</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Literal Quoted String</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLiteralQuotedString(LiteralQuotedString object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Literal Raw String</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Literal Raw String</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLiteralRawString(LiteralRawString object) {
 		return null;
 	}
 
