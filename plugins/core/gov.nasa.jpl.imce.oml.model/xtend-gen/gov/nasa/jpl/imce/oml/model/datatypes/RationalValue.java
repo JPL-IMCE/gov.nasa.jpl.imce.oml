@@ -40,4 +40,9 @@ public class RationalValue {
     }
     return _switchResult;
   }
+  
+  @Override
+  public String toString() {
+    return this.value;
+  }
 }

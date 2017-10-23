@@ -43,4 +43,9 @@ public class UUIDValue {
     }
     return _switchResult;
   }
+  
+  @Override
+  public String toString() {
+    return this.value;
+  }
 }
