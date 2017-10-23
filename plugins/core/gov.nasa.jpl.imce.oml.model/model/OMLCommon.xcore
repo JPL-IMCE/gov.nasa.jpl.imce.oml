@@ -151,9 +151,22 @@ class LiteralDateTime extends LiteralValue {
 	DateTimeDataType[1] dateTime
 }
 
-class LiteralString extends LiteralValue {
-	StringDataType[1] string
+abstract class LiteralString extends LiteralValue {
+	op StringDataType[1] value()
 }
+
+class LiteralQuotedString extends LiteralString {
+	QuotedStringDataType[1] string
+	
+	op StringDataType[1] value() { string }
+}
+
+class LiteralRawString extends LiteralString {
+	RawStringDataType[1] string
+	
+	op StringDataType[1] value() { string }
+}
+
 
 class LiteralUUID extends LiteralValue {
 	UUIDDataType[1] uuid
@@ -196,6 +209,10 @@ type LanguageTagDataType wraps gov.nasa.jpl.imce.oml.model.datatypes.LanguageTag
 
 type StringDataType wraps gov.nasa.jpl.imce.oml.model.datatypes.StringValue
 
+type RawStringDataType wraps gov.nasa.jpl.imce.oml.model.datatypes.RawStringValue
+
+type QuotedStringDataType wraps gov.nasa.jpl.imce.oml.model.datatypes.QuotedStringValue
+
 type UUIDDataType wraps gov.nasa.jpl.imce.oml.model.datatypes.UUIDValue 
 
 type URIDataType wraps gov.nasa.jpl.imce.oml.model.datatypes.URIValue
@@ -226,7 +243,7 @@ class AnnotationPropertyValue {
 	
 	refers AnnotationProperty[1] property
 	
-	StringDataType[1] value
+	contains LiteralString[1] value
 }
 
 /*

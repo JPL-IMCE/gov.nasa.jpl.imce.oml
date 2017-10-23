@@ -106,7 +106,6 @@ class OMLFormatter extends AbstractFormatter2 {
 	def dispatch void format(AnnotationPropertyValue annotation, extension IFormattableDocument document) {
 		annotation.regionFor.keyword('@').append[noSpace]
 		annotation.regionFor.keyword('=').surround[noSpace]
-		annotation.regionFor.ruleCall(annotationPropertyValueAccess.valueSTRING_VALUETerminalRuleCall_3_0)
 	}
 	
 	def dispatch void format(TerminologyGraph terminologyGraph, extension IFormattableDocument document) {

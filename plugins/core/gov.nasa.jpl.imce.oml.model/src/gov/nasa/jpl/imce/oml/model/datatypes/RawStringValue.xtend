@@ -18,14 +18,25 @@
 package gov.nasa.jpl.imce.oml.model.datatypes
 
 /*
- * Abstraction of QuotedStringValue or RawStringValue
+ * Wrapped around triple quotes: """....""". Anything except a triple quote is allowed inside.
  */
-abstract class StringValue {
-	
-	public String value
+class RawStringValue extends StringValue {
 	
 	new(String value) {
-		this.value = value
+		super(value)
+	}
+	
+	override def boolean equals(Object that) {
+		switch that {
+			RawStringValue:
+				this.value == that.value
+			default:
+				false
+		}
+	}
+	
+	override toString() {
+		value
 	}
 	
 }

@@ -43,10 +43,10 @@ import org.junit.runner.RunWith
 
 import static org.junit.Assert.*
 import org.eclipse.emf.ecore.resource.Resource
-import gov.nasa.jpl.imce.oml.model.datatypes.StringValue
 import gov.nasa.jpl.imce.oml.model.datatypes.FloatValue
 import gov.nasa.jpl.imce.oml.model.datatypes.PositiveIntegerValue
 import gov.nasa.jpl.imce.oml.model.terminologies.StringScalarRestriction
+import gov.nasa.jpl.imce.oml.model.datatypes.QuotedStringValue
 
 @RunWith(XtextRunner)
 @InjectWith(OMLInjectorProvider)
@@ -186,8 +186,8 @@ class OMLDescriptionTest2 {
 		ci_name.scalarDataProperty = dp1
 		ci_name.singletonInstance = ci
 		
-		val ci_name_lit = commonF.createLiteralString
-		ci_name_lit.string = new StringValue('box #0')
+		val ci_name_lit = commonF.createLiteralQuotedString
+		ci_name_lit.string = new QuotedStringValue('box #0')
 		
 		ci_name.valueType = scr
 		ci_name.scalarPropertyValue = ci_name_lit
