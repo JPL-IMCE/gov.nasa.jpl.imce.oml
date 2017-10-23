@@ -77,7 +77,7 @@
             uri="http://imce.jpl.nasa.gov/oml/common"
             class="gov.nasa.jpl.imce.oml.model.bundles.provider.BundlesItemProviderAdapterFactory$CommonChildCreationExtender"/>
    </extension>
-   
+
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated OMLTerminologies -->
       <factory
@@ -110,5 +110,5 @@
             uri="http://imce.jpl.nasa.gov/oml/common"
             class="gov.nasa.jpl.imce.oml.model.descriptions.provider.DescriptionsItemProviderAdapterFactory$CommonChildCreationExtender"/>
    </extension>
-   
+
 </plugin>

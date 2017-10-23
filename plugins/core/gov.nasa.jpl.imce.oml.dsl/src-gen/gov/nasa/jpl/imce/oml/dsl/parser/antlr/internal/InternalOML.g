@@ -243,19 +243,20 @@ ruleAnnotationPropertyValue returns [EObject current=null]
 		}
 		(
 			(
-				lv_value_3_0=RULE_STRING_VALUE
 				{
-					newLeafNode(lv_value_3_0, grammarAccess.getAnnotationPropertyValueAccess().getValueSTRING_VALUETerminalRuleCall_3_0());
+					newCompositeNode(grammarAccess.getAnnotationPropertyValueAccess().getValueLiteralStringParserRuleCall_3_0());
 				}
+				lv_value_3_0=ruleLiteralString
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getAnnotationPropertyValueRule());
+						$current = createModelElementForParent(grammarAccess.getAnnotationPropertyValueRule());
 					}
-					setWithLastConsumed(
+					set(
 						$current,
 						"value",
 						lv_value_3_0,
-						"gov.nasa.jpl.imce.oml.dsl.OML.STRING_VALUE");
+						"gov.nasa.jpl.imce.oml.dsl.OML.LiteralString");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
@@ -8394,28 +8395,108 @@ ruleLiteralString returns [EObject current=null]
 	leaveRule();
 }:
 	(
+		{
+			newCompositeNode(grammarAccess.getLiteralStringAccess().getLiteralQuotedStringParserRuleCall_0());
+		}
+		this_LiteralQuotedString_0=ruleLiteralQuotedString
+		{
+			$current = $this_LiteralQuotedString_0.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getLiteralStringAccess().getLiteralRawStringParserRuleCall_1());
+		}
+		this_LiteralRawString_1=ruleLiteralRawString
+		{
+			$current = $this_LiteralRawString_1.current;
+			afterParserOrEnumRuleCall();
+		}
+	)
+;
+
+// Entry rule entryRuleLiteralQuotedString
+entryRuleLiteralQuotedString returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getLiteralQuotedStringRule()); }
+	iv_ruleLiteralQuotedString=ruleLiteralQuotedString
+	{ $current=$iv_ruleLiteralQuotedString.current; }
+	EOF;
+
+// Rule LiteralQuotedString
+ruleLiteralQuotedString returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
 		(
 			{
 				$current = forceCreateModelElement(
-					grammarAccess.getLiteralStringAccess().getLiteralStringAction_0(),
+					grammarAccess.getLiteralQuotedStringAccess().getLiteralQuotedStringAction_0(),
 					$current);
 			}
 		)
 		(
 			(
-				lv_string_1_0=RULE_STRING_VALUE
+				lv_string_1_0=RULE_QUOTED_STRING_VALUE
 				{
-					newLeafNode(lv_string_1_0, grammarAccess.getLiteralStringAccess().getStringSTRING_VALUETerminalRuleCall_1_0());
+					newLeafNode(lv_string_1_0, grammarAccess.getLiteralQuotedStringAccess().getStringQUOTED_STRING_VALUETerminalRuleCall_1_0());
 				}
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getLiteralStringRule());
+						$current = createModelElement(grammarAccess.getLiteralQuotedStringRule());
 					}
 					setWithLastConsumed(
 						$current,
 						"string",
 						lv_string_1_0,
-						"gov.nasa.jpl.imce.oml.dsl.OML.STRING_VALUE");
+						"gov.nasa.jpl.imce.oml.dsl.OML.QUOTED_STRING_VALUE");
+				}
+			)
+		)
+	)
+;
+
+// Entry rule entryRuleLiteralRawString
+entryRuleLiteralRawString returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getLiteralRawStringRule()); }
+	iv_ruleLiteralRawString=ruleLiteralRawString
+	{ $current=$iv_ruleLiteralRawString.current; }
+	EOF;
+
+// Rule LiteralRawString
+ruleLiteralRawString returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{
+				$current = forceCreateModelElement(
+					grammarAccess.getLiteralRawStringAccess().getLiteralRawStringAction_0(),
+					$current);
+			}
+		)
+		(
+			(
+				lv_string_1_0=RULE_RAW_STRING_VALUE
+				{
+					newLeafNode(lv_string_1_0, grammarAccess.getLiteralRawStringAccess().getStringRAW_STRING_VALUETerminalRuleCall_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getLiteralRawStringRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"string",
+						lv_string_1_0,
+						"gov.nasa.jpl.imce.oml.dsl.OML.RAW_STRING_VALUE");
 				}
 			)
 		)
@@ -8992,7 +9073,9 @@ RULE_REAL : '{' ('-'|'+')? RULE_CONSTANT_NAME '}';
 
 RULE_PATTERN : '/' (~('/')|'\\/')* '/';
 
-RULE_STRING_VALUE : ('"' ('\\' . ('b'|'t'|'n'|'f'|'r'|'"'|'\''|'\\')|~(('\\'|'"')))* '"'|'"""' ( options {greedy=false;} : . )*'"""');
+RULE_QUOTED_STRING_VALUE : '"' ('\\' . ('b'|'t'|'n'|'f'|'r'|'"'|'\''|'\\')|~(('\\'|'"')))* '"';
+
+RULE_RAW_STRING_VALUE : '"""' ( options {greedy=false;} : . )*'"""';
 
 RULE_IRI : '<' ~('>')* '>';
 

@@ -102,7 +102,7 @@ public class OMLAnnotationTest1b {
       final AnnotationPropertyValue a = IterableExtensions.<AnnotationPropertyValue>head(c.getAnnotations());
       final AnnotationProperty a_prop = a.getProperty();
       final Element a_subj = a.getSubject();
-      final String a_value = a.getValue().value;
+      final String a_value = a.getValue().value().value;
       Assert.assertTrue(a_value.contains("Performing Element"));
       Assert.assertTrue(a_value.contains("</foo>"));
       Assert.assertTrue(a_value.contains("\"string\""));

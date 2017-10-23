@@ -24,7 +24,10 @@ import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue;
 import gov.nasa.jpl.imce.oml.model.common.CommonFactory;
 import gov.nasa.jpl.imce.oml.model.common.Element;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
-import gov.nasa.jpl.imce.oml.model.datatypes.StringValue;
+import gov.nasa.jpl.imce.oml.model.common.LiteralQuotedString;
+import gov.nasa.jpl.imce.oml.model.common.LiteralRawString;
+import gov.nasa.jpl.imce.oml.model.datatypes.QuotedStringValue;
+import gov.nasa.jpl.imce.oml.model.datatypes.RawStringValue;
 import gov.nasa.jpl.imce.oml.model.graphs.GraphsFactory;
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyGraph;
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
@@ -46,7 +49,7 @@ import org.junit.runner.RunWith;
 @RunWith(XtextRunner.class)
 @InjectWith(OMLInjectorProvider.class)
 @SuppressWarnings("all")
-public class OMLAnnotationTest3 {
+public class OMLAnnotationTest3b {
   @Inject
   private Provider<XtextResourceSet> resourceSetProvider;
   
@@ -74,58 +77,102 @@ public class OMLAnnotationTest3 {
       final TerminologyGraph g = this.graphsF.createTerminologyGraph();
       e.getModules().add(g);
       g.setIri("http://www.example.org/OMLAnnotationTest3");
-      this.addAnnotation(g, ap1, "Un graphe...");
-      this.addAnnotation(g, ap2, "A graph...");
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("Un graphe...");
+      _builder.newLine();
+      _builder.append("    ");
+      _builder.append("Ceci est une description tres longue...");
+      _builder.newLine();
+      _builder.append("    ");
+      _builder.append("</foo>");
+      _builder.newLine();
+      _builder.append("    ");
+      _builder.newLine();
+      _builder.append("    ");
+      _builder.append("\"string\"");
+      _builder.newLine();
+      _builder.append("    ");
+      _builder.newLine();
+      this.addRawAnnotation(g, ap1, _builder.toString());
+      this.addQuotedAnnotation(g, ap2, "A graph...");
       final Concept c = this.terminologiesF.createConcept();
       c.setTbox(g);
       c.setName("Box");
-      this.addAnnotation(c, ap1, "Une boite...");
-      this.addAnnotation(c, ap2, "A box...");
+      this.addQuotedAnnotation(c, ap1, "Une boite...");
+      this.addQuotedAnnotation(c, ap2, "A box...");
       final ByteArrayOutputStream bos = new ByteArrayOutputStream();
       final SaveOptions.Builder builder = SaveOptions.newBuilder();
       builder.format();
       final SaveOptions s = builder.getOptions();
       r.save(bos, s.toOptionsMap());
       final String text = bos.toString();
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("annotationProperty test:doc1=<http://www.example.org/OMLAnnotationTest3#doc1>");
-      _builder.newLine();
-      _builder.newLine();
-      _builder.append("annotationProperty test:doc2=<http://www.example.org/OMLAnnotationTest3#doc2>");
-      _builder.newLine();
-      _builder.newLine();
-      _builder.append("@test:doc1=\"Un graphe...\"");
-      _builder.newLine();
-      _builder.append("@test:doc2=\"A graph...\"");
-      _builder.newLine();
-      _builder.append("open terminology <http://www.example.org/OMLAnnotationTest3> {");
-      _builder.newLine();
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("@test:doc1=\"Une boite...\"");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("@test:doc2=\"A box...\"");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("concept Box");
-      _builder.newLine();
-      _builder.newLine();
-      _builder.append("}");
-      _builder.newLine();
-      final String expected = _builder.toString();
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("annotationProperty test:doc1=<http://www.example.org/OMLAnnotationTest3#doc1>");
+      _builder_1.newLine();
+      _builder_1.newLine();
+      _builder_1.append("annotationProperty test:doc2=<http://www.example.org/OMLAnnotationTest3#doc2>");
+      _builder_1.newLine();
+      _builder_1.newLine();
+      _builder_1.append("@test:doc1=\"\"\"Un graphe...");
+      _builder_1.newLine();
+      _builder_1.append("    ");
+      _builder_1.append("Ceci est une description tres longue...");
+      _builder_1.newLine();
+      _builder_1.append("    ");
+      _builder_1.append("</foo>");
+      _builder_1.newLine();
+      _builder_1.append("    ");
+      _builder_1.newLine();
+      _builder_1.append("    ");
+      _builder_1.append("\"string\"");
+      _builder_1.newLine();
+      _builder_1.append("    ");
+      _builder_1.newLine();
+      _builder_1.append("\"\"\"");
+      _builder_1.newLine();
+      _builder_1.append("@test:doc2=\"A graph...\"");
+      _builder_1.newLine();
+      _builder_1.append("open terminology <http://www.example.org/OMLAnnotationTest3> {");
+      _builder_1.newLine();
+      _builder_1.newLine();
+      _builder_1.append("\t");
+      _builder_1.append("@test:doc1=\"Une boite...\"");
+      _builder_1.newLine();
+      _builder_1.append("\t");
+      _builder_1.append("@test:doc2=\"A box...\"");
+      _builder_1.newLine();
+      _builder_1.append("\t");
+      _builder_1.append("concept Box");
+      _builder_1.newLine();
+      _builder_1.newLine();
+      _builder_1.append("}");
+      _builder_1.newLine();
+      final String expected = _builder_1.toString();
       Assert.assertEquals(text, expected);
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
   
-  public void addAnnotation(final Element e, final AnnotationProperty ap, final String v) {
+  public void addQuotedAnnotation(final Element e, final AnnotationProperty ap, final String v) {
     final AnnotationPropertyValue av = this.commonF.createAnnotationPropertyValue();
     EList<AnnotationPropertyValue> _annotations = e.getAnnotations();
     _annotations.add(av);
     av.setProperty(ap);
-    StringValue _stringValue = new StringValue(v);
-    av.setValue(_stringValue);
+    final LiteralQuotedString s = this.commonF.createLiteralQuotedString();
+    QuotedStringValue _quotedStringValue = new QuotedStringValue(v);
+    s.setString(_quotedStringValue);
+    av.setValue(s);
+  }
+  
+  public void addRawAnnotation(final Element e, final AnnotationProperty ap, final String v) {
+    final AnnotationPropertyValue av = this.commonF.createAnnotationPropertyValue();
+    EList<AnnotationPropertyValue> _annotations = e.getAnnotations();
+    _annotations.add(av);
+    av.setProperty(ap);
+    final LiteralRawString s = this.commonF.createLiteralRawString();
+    RawStringValue _rawStringValue = new RawStringValue(v);
+    s.setString(_rawStringValue);
+    av.setValue(s);
   }
 }

@@ -32,9 +32,10 @@ import gov.nasa.jpl.imce.oml.model.common.LiteralBoolean;
 import gov.nasa.jpl.imce.oml.model.common.LiteralDateTime;
 import gov.nasa.jpl.imce.oml.model.common.LiteralDecimal;
 import gov.nasa.jpl.imce.oml.model.common.LiteralFloat;
+import gov.nasa.jpl.imce.oml.model.common.LiteralQuotedString;
 import gov.nasa.jpl.imce.oml.model.common.LiteralRational;
+import gov.nasa.jpl.imce.oml.model.common.LiteralRawString;
 import gov.nasa.jpl.imce.oml.model.common.LiteralReal;
-import gov.nasa.jpl.imce.oml.model.common.LiteralString;
 import gov.nasa.jpl.imce.oml.model.common.LiteralURI;
 import gov.nasa.jpl.imce.oml.model.common.LiteralUUID;
 import gov.nasa.jpl.imce.oml.model.descriptions.ConceptInstance;
@@ -163,14 +164,17 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case CommonPackage.LITERAL_FLOAT:
 				sequence_LiteralFloat(context, (LiteralFloat) semanticObject); 
 				return; 
+			case CommonPackage.LITERAL_QUOTED_STRING:
+				sequence_LiteralQuotedString(context, (LiteralQuotedString) semanticObject); 
+				return; 
 			case CommonPackage.LITERAL_RATIONAL:
 				sequence_LiteralRational(context, (LiteralRational) semanticObject); 
 				return; 
+			case CommonPackage.LITERAL_RAW_STRING:
+				sequence_LiteralRawString(context, (LiteralRawString) semanticObject); 
+				return; 
 			case CommonPackage.LITERAL_REAL:
 				sequence_LiteralReal(context, (LiteralReal) semanticObject); 
-				return; 
-			case CommonPackage.LITERAL_STRING:
-				sequence_LiteralString(context, (LiteralString) semanticObject); 
 				return; 
 			case CommonPackage.LITERAL_URI:
 				sequence_LiteralURI(context, (LiteralURI) semanticObject); 
@@ -374,7 +378,7 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     AnnotationPropertyValue returns AnnotationPropertyValue
 	 *
 	 * Constraint:
-	 *     (property=[AnnotationProperty|ABBREV_IRI] value=STRING_VALUE)
+	 *     (property=[AnnotationProperty|ABBREV_IRI] value=LiteralString)
 	 */
 	protected void sequence_AnnotationPropertyValue(ISerializationContext context, AnnotationPropertyValue semanticObject) {
 		if (errorAcceptor != null) {
@@ -385,7 +389,7 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, (EObject) semanticObject);
 		feeder.accept(grammarAccess.getAnnotationPropertyValueAccess().getPropertyAnnotationPropertyABBREV_IRITerminalRuleCall_1_0_1(), semanticObject.eGet(CommonPackage.Literals.ANNOTATION_PROPERTY_VALUE__PROPERTY, false));
-		feeder.accept(grammarAccess.getAnnotationPropertyValueAccess().getValueSTRING_VALUETerminalRuleCall_3_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getAnnotationPropertyValueAccess().getValueLiteralStringParserRuleCall_3_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -903,6 +907,26 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
+	 *     LiteralValue returns LiteralQuotedString
+	 *     LiteralString returns LiteralQuotedString
+	 *     LiteralQuotedString returns LiteralQuotedString
+	 *
+	 * Constraint:
+	 *     string=QUOTED_STRING_VALUE
+	 */
+	protected void sequence_LiteralQuotedString(ISerializationContext context, LiteralQuotedString semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient((EObject) semanticObject, CommonPackage.Literals.LITERAL_QUOTED_STRING__STRING) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, CommonPackage.Literals.LITERAL_QUOTED_STRING__STRING));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, (EObject) semanticObject);
+		feeder.accept(grammarAccess.getLiteralQuotedStringAccess().getStringQUOTED_STRING_VALUETerminalRuleCall_1_0(), semanticObject.getString());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     LiteralValue returns LiteralRational
 	 *     LiteralNumber returns LiteralRational
 	 *     LiteralRational returns LiteralRational
@@ -923,6 +947,26 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
+	 *     LiteralValue returns LiteralRawString
+	 *     LiteralString returns LiteralRawString
+	 *     LiteralRawString returns LiteralRawString
+	 *
+	 * Constraint:
+	 *     string=RAW_STRING_VALUE
+	 */
+	protected void sequence_LiteralRawString(ISerializationContext context, LiteralRawString semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient((EObject) semanticObject, CommonPackage.Literals.LITERAL_RAW_STRING__STRING) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, CommonPackage.Literals.LITERAL_RAW_STRING__STRING));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, (EObject) semanticObject);
+		feeder.accept(grammarAccess.getLiteralRawStringAccess().getStringRAW_STRING_VALUETerminalRuleCall_1_0(), semanticObject.getString());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     LiteralValue returns LiteralReal
 	 *     LiteralNumber returns LiteralReal
 	 *     LiteralReal returns LiteralReal
@@ -937,25 +981,6 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, (EObject) semanticObject);
 		feeder.accept(grammarAccess.getLiteralRealAccess().getRealREALTerminalRuleCall_1_0(), semanticObject.getReal());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     LiteralValue returns LiteralString
-	 *     LiteralString returns LiteralString
-	 *
-	 * Constraint:
-	 *     string=STRING_VALUE
-	 */
-	protected void sequence_LiteralString(ISerializationContext context, LiteralString semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient((EObject) semanticObject, CommonPackage.Literals.LITERAL_STRING__STRING) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, CommonPackage.Literals.LITERAL_STRING__STRING));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, (EObject) semanticObject);
-		feeder.accept(grammarAccess.getLiteralStringAccess().getStringSTRING_VALUETerminalRuleCall_1_0(), semanticObject.getString());
 		feeder.finish();
 	}
 	

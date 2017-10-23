@@ -31,14 +31,6 @@
    </extension>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated OMLCommon -->
-      <package
-            uri="http://imce.jpl.nasa.gov/oml/common"
-            class="gov.nasa.jpl.imce.oml.model.common.CommonPackage"
-            genModel="model/OMLCommon.xcore"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated OMLGraphs -->
       <package
             uri="http://imce.jpl.nasa.gov/oml/graphs"
@@ -60,6 +52,14 @@
             uri="http://imce.jpl.nasa.gov/oml/terminologies"
             class="gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage"
             genModel="model/OMLTerminologies.xcore"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated OMLCommon -->
+      <package
+            uri="http://imce.jpl.nasa.gov/oml/common"
+            class="gov.nasa.jpl.imce.oml.model.common.CommonPackage"
+            genModel="model/OMLCommon.xcore"/>
    </extension>
 
 </plugin>

@@ -31,6 +31,7 @@ import gov.nasa.jpl.imce.oml.model.bundles.TerminologyBundleAxiom;
 import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue;
 import gov.nasa.jpl.imce.oml.model.common.Element;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
+import gov.nasa.jpl.imce.oml.model.common.LiteralString;
 import gov.nasa.jpl.imce.oml.model.common.Module;
 import gov.nasa.jpl.imce.oml.model.common.ModuleEdge;
 import gov.nasa.jpl.imce.oml.model.datatypes.StringValue;
@@ -408,12 +409,20 @@ public class OMLExtensions {
       return Boolean.valueOf(Objects.equal(_iri, "http://imce.jpl.nasa.gov/oml/runtime#OML2EcoreNsURI"));
     };
     AnnotationPropertyValue _findFirst = IterableExtensions.<AnnotationPropertyValue>findFirst(it.getAnnotations(), _function);
-    StringValue _value = null;
+    LiteralString _value = null;
     if (_findFirst!=null) {
       _value=_findFirst.getValue();
     }
-    if (_value.value != null) {
-      _elvis = _value.value;
+    StringValue _value_1 = null;
+    if (_value!=null) {
+      _value_1=_value.value();
+    }
+    String _value_2 = null;
+    if (_value_1!=null) {
+      _value_2=_value_1.value;
+    }
+    if (_value_2 != null) {
+      _elvis = _value_2;
     } else {
       String _iri = it.iri();
       _elvis = _iri;
@@ -428,12 +437,20 @@ public class OMLExtensions {
       return Boolean.valueOf(Objects.equal(_iri, "http://imce.jpl.nasa.gov/oml/runtime#OML2EcoreNsPrefix"));
     };
     AnnotationPropertyValue _findFirst = IterableExtensions.<AnnotationPropertyValue>findFirst(it.getAnnotations(), _function);
-    StringValue _value = null;
+    LiteralString _value = null;
     if (_findFirst!=null) {
       _value=_findFirst.getValue();
     }
-    if (_value.value != null) {
-      _elvis = _value.value;
+    StringValue _value_1 = null;
+    if (_value!=null) {
+      _value_1=_value.value();
+    }
+    String _value_2 = null;
+    if (_value_1!=null) {
+      _value_2=_value_1.value;
+    }
+    if (_value_2 != null) {
+      _elvis = _value_2;
     } else {
       String _name = it.name();
       _elvis = _name;

@@ -20,7 +20,6 @@ package gov.nasa.jpl.imce.oml.model.terminologies.provider;
 
 
 import gov.nasa.jpl.imce.oml.model.terminologies.UnarySegmentPredicate;
-
 import java.util.Collection;
 import java.util.List;
 

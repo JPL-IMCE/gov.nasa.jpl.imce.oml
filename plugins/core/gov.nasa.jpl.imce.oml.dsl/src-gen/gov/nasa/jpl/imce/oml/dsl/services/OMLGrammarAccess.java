@@ -120,14 +120,14 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cPropertyAnnotationPropertyABBREV_IRITerminalRuleCall_1_0_1 = (RuleCall)cPropertyAnnotationPropertyCrossReference_1_0.eContents().get(1);
 		private final Keyword cEqualsSignKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cValueAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cValueSTRING_VALUETerminalRuleCall_3_0 = (RuleCall)cValueAssignment_3.eContents().get(0);
+		private final RuleCall cValueLiteralStringParserRuleCall_3_0 = (RuleCall)cValueAssignment_3.eContents().get(0);
 		
 		//AnnotationPropertyValue:
 		//	'@' property=[AnnotationProperty|ABBREV_IRI]
-		//	'=' value=STRING_VALUE;
+		//	'=' value=LiteralString;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'@' property=[AnnotationProperty|ABBREV_IRI] '=' value=STRING_VALUE
+		//'@' property=[AnnotationProperty|ABBREV_IRI] '=' value=LiteralString
 		public Group getGroup() { return cGroup; }
 		
 		//'@'
@@ -145,11 +145,11 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//'='
 		public Keyword getEqualsSignKeyword_2() { return cEqualsSignKeyword_2; }
 		
-		//value=STRING_VALUE
+		//value=LiteralString
 		public Assignment getValueAssignment_3() { return cValueAssignment_3; }
 		
-		//STRING_VALUE
-		public RuleCall getValueSTRING_VALUETerminalRuleCall_3_0() { return cValueSTRING_VALUETerminalRuleCall_3_0; }
+		//LiteralString
+		public RuleCall getValueLiteralStringParserRuleCall_3_0() { return cValueLiteralStringParserRuleCall_3_0; }
 	}
 	public class ModuleElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.Module");
@@ -5255,26 +5255,68 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	public class LiteralStringElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.LiteralString");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cLiteralStringAction_0 = (Action)cGroup.eContents().get(0);
-		private final Assignment cStringAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cStringSTRING_VALUETerminalRuleCall_1_0 = (RuleCall)cStringAssignment_1.eContents().get(0);
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cLiteralQuotedStringParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cLiteralRawStringParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
 		//LiteralString:
-		//	{LiteralString} string=STRING_VALUE;
+		//	LiteralQuotedString | LiteralRawString;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{LiteralString} string=STRING_VALUE
+		//LiteralQuotedString | LiteralRawString
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//LiteralQuotedString
+		public RuleCall getLiteralQuotedStringParserRuleCall_0() { return cLiteralQuotedStringParserRuleCall_0; }
+		
+		//LiteralRawString
+		public RuleCall getLiteralRawStringParserRuleCall_1() { return cLiteralRawStringParserRuleCall_1; }
+	}
+	public class LiteralQuotedStringElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.LiteralQuotedString");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cLiteralQuotedStringAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cStringAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cStringQUOTED_STRING_VALUETerminalRuleCall_1_0 = (RuleCall)cStringAssignment_1.eContents().get(0);
+		
+		//LiteralQuotedString:
+		//	{LiteralQuotedString} string=QUOTED_STRING_VALUE;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{LiteralQuotedString} string=QUOTED_STRING_VALUE
 		public Group getGroup() { return cGroup; }
 		
-		//{LiteralString}
-		public Action getLiteralStringAction_0() { return cLiteralStringAction_0; }
+		//{LiteralQuotedString}
+		public Action getLiteralQuotedStringAction_0() { return cLiteralQuotedStringAction_0; }
 		
-		//string=STRING_VALUE
+		//string=QUOTED_STRING_VALUE
 		public Assignment getStringAssignment_1() { return cStringAssignment_1; }
 		
-		//STRING_VALUE
-		public RuleCall getStringSTRING_VALUETerminalRuleCall_1_0() { return cStringSTRING_VALUETerminalRuleCall_1_0; }
+		//QUOTED_STRING_VALUE
+		public RuleCall getStringQUOTED_STRING_VALUETerminalRuleCall_1_0() { return cStringQUOTED_STRING_VALUETerminalRuleCall_1_0; }
+	}
+	public class LiteralRawStringElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.LiteralRawString");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cLiteralRawStringAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cStringAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cStringRAW_STRING_VALUETerminalRuleCall_1_0 = (RuleCall)cStringAssignment_1.eContents().get(0);
+		
+		//LiteralRawString:
+		//	{LiteralRawString} string=RAW_STRING_VALUE;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{LiteralRawString} string=RAW_STRING_VALUE
+		public Group getGroup() { return cGroup; }
+		
+		//{LiteralRawString}
+		public Action getLiteralRawStringAction_0() { return cLiteralRawStringAction_0; }
+		
+		//string=RAW_STRING_VALUE
+		public Assignment getStringAssignment_1() { return cStringAssignment_1; }
+		
+		//RAW_STRING_VALUE
+		public RuleCall getStringRAW_STRING_VALUETerminalRuleCall_1_0() { return cStringRAW_STRING_VALUETerminalRuleCall_1_0; }
 	}
 	public class UUIDDataTypeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.UUIDDataType");
@@ -5645,6 +5687,8 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	private final LiteralBooleanElements pLiteralBoolean;
 	private final LiteralDateTimeElements pLiteralDateTime;
 	private final LiteralStringElements pLiteralString;
+	private final LiteralQuotedStringElements pLiteralQuotedString;
+	private final LiteralRawStringElements pLiteralRawString;
 	private final UUIDDataTypeElements pUUIDDataType;
 	private final LiteralUUIDElements pLiteralUUID;
 	private final URIDataTypeElements pURIDataType;
@@ -5695,7 +5739,8 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	private final TerminalRule tCONSTANT_NAME;
 	private final TerminalRule tREAL;
 	private final TerminalRule tPATTERN;
-	private final TerminalRule tSTRING_VALUE;
+	private final TerminalRule tQUOTED_STRING_VALUE;
+	private final TerminalRule tRAW_STRING_VALUE;
 	private final TerminalRule tIRI;
 	private final TerminalRule tLETTER;
 	private final TerminalRule tLETTER_DIGIT;
@@ -5816,6 +5861,8 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		this.pLiteralBoolean = new LiteralBooleanElements();
 		this.pLiteralDateTime = new LiteralDateTimeElements();
 		this.pLiteralString = new LiteralStringElements();
+		this.pLiteralQuotedString = new LiteralQuotedStringElements();
+		this.pLiteralRawString = new LiteralRawStringElements();
 		this.pUUIDDataType = new UUIDDataTypeElements();
 		this.pLiteralUUID = new LiteralUUIDElements();
 		this.pURIDataType = new URIDataTypeElements();
@@ -5866,7 +5913,8 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		this.tCONSTANT_NAME = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.CONSTANT_NAME");
 		this.tREAL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.REAL");
 		this.tPATTERN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.PATTERN");
-		this.tSTRING_VALUE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.STRING_VALUE");
+		this.tQUOTED_STRING_VALUE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.QUOTED_STRING_VALUE");
+		this.tRAW_STRING_VALUE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.RAW_STRING_VALUE");
 		this.tIRI = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.IRI");
 		this.tLETTER = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.LETTER");
 		this.tLETTER_DIGIT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.LETTER_DIGIT");
@@ -5939,7 +5987,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//AnnotationPropertyValue:
 	//	'@' property=[AnnotationProperty|ABBREV_IRI]
-	//	'=' value=STRING_VALUE;
+	//	'=' value=LiteralString;
 	public AnnotationPropertyValueElements getAnnotationPropertyValueAccess() {
 		return pAnnotationPropertyValue;
 	}
@@ -7030,13 +7078,33 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//LiteralString:
-	//	{LiteralString} string=STRING_VALUE;
+	//	LiteralQuotedString | LiteralRawString;
 	public LiteralStringElements getLiteralStringAccess() {
 		return pLiteralString;
 	}
 	
 	public ParserRule getLiteralStringRule() {
 		return getLiteralStringAccess().getRule();
+	}
+	
+	//LiteralQuotedString:
+	//	{LiteralQuotedString} string=QUOTED_STRING_VALUE;
+	public LiteralQuotedStringElements getLiteralQuotedStringAccess() {
+		return pLiteralQuotedString;
+	}
+	
+	public ParserRule getLiteralQuotedStringRule() {
+		return getLiteralQuotedStringAccess().getRule();
+	}
+	
+	//LiteralRawString:
+	//	{LiteralRawString} string=RAW_STRING_VALUE;
+	public LiteralRawStringElements getLiteralRawStringAccess() {
+		return pLiteralRawString;
+	}
+	
+	public ParserRule getLiteralRawStringRule() {
+		return getLiteralRawStringAccess().getRule();
 	}
 	
 	//UUIDDataType UUIDDataType:
@@ -7383,11 +7451,16 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		return tPATTERN;
 	}
 	
-	//terminal STRING_VALUE returns StringDataType:
-	//	'"' ('\\' . ('b' | 't' | 'n' | 'f' | 'r' | '"' | "'" | '\\') | !('\\' | '"'))* '"' |
+	//terminal QUOTED_STRING_VALUE returns QuotedStringDataType:
+	//	'"' ('\\' . ('b' | 't' | 'n' | 'f' | 'r' | '"' | "'" | '\\') | !('\\' | '"'))* '"';
+	public TerminalRule getQUOTED_STRING_VALUERule() {
+		return tQUOTED_STRING_VALUE;
+	}
+	
+	//terminal RAW_STRING_VALUE returns RawStringDataType:
 	//	'"""'->'"""';
-	public TerminalRule getSTRING_VALUERule() {
-		return tSTRING_VALUE;
+	public TerminalRule getRAW_STRING_VALUERule() {
+		return tRAW_STRING_VALUE;
 	}
 	
 	//terminal IRI:

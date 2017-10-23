@@ -21,7 +21,6 @@ package gov.nasa.jpl.imce.oml.model.terminologies.provider;
 
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBoxAxiom;
-
 import java.util.Collection;
 import java.util.List;
 

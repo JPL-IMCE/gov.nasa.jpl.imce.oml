@@ -100,6 +100,14 @@ public class CommonAdapterFactory extends AdapterFactoryImpl {
 				return createLiteralStringAdapter();
 			}
 			@Override
+			public Adapter caseLiteralQuotedString(LiteralQuotedString object) {
+				return createLiteralQuotedStringAdapter();
+			}
+			@Override
+			public Adapter caseLiteralRawString(LiteralRawString object) {
+				return createLiteralRawStringAdapter();
+			}
+			@Override
 			public Adapter caseLiteralUUID(LiteralUUID object) {
 				return createLiteralUUIDAdapter();
 			}
@@ -232,6 +240,34 @@ public class CommonAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createLiteralStringAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.common.LiteralQuotedString <em>Literal Quoted String</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralQuotedString
+	 * @generated
+	 */
+	public Adapter createLiteralQuotedStringAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.common.LiteralRawString <em>Literal Raw String</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralRawString
+	 * @generated
+	 */
+	public Adapter createLiteralRawStringAdapter() {
 		return null;
 	}
 

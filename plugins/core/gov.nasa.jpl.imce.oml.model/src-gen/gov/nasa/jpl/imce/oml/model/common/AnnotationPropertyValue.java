@@ -18,8 +18,6 @@
  */
 package gov.nasa.jpl.imce.oml.model.common;
 
-import gov.nasa.jpl.imce.oml.model.datatypes.StringValue;
-
 import org.eclipse.emf.cdo.CDOObject;
 
 /**
@@ -125,29 +123,29 @@ public interface AnnotationPropertyValue extends CDOObject {
 	void setProperty(AnnotationProperty value);
 
 	/**
-	 * Returns the value of the '<em><b>Value</b></em>' attribute.
+	 * Returns the value of the '<em><b>Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Value</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Value</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Value</em>' attribute.
-	 * @see #setValue(StringValue)
+	 * @return the value of the '<em>Value</em>' containment reference.
+	 * @see #setValue(LiteralString)
 	 * @see gov.nasa.jpl.imce.oml.model.common.CommonPackage#getAnnotationPropertyValue_Value()
-	 * @model unique="false" dataType="gov.nasa.jpl.imce.oml.model.common.StringDataType" required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	StringValue getValue();
+	LiteralString getValue();
 
 	/**
-	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue#getValue <em>Value</em>}' attribute.
+	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue#getValue <em>Value</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Value</em>' attribute.
+	 * @param value the new value of the '<em>Value</em>' containment reference.
 	 * @see #getValue()
 	 * @generated
 	 */
-	void setValue(StringValue value);
+	void setValue(LiteralString value);
 
 } // AnnotationPropertyValue

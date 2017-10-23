@@ -20,7 +20,6 @@ package gov.nasa.jpl.imce.oml.model.descriptions.provider;
 
 
 import gov.nasa.jpl.imce.oml.model.common.provider.ModuleItemProvider;
-
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsFactory;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsPackage;

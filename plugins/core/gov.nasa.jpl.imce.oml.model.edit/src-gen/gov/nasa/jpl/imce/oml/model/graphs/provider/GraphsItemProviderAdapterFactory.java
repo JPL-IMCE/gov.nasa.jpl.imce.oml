@@ -20,9 +20,7 @@ package gov.nasa.jpl.imce.oml.model.graphs.provider;
 
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
-
 import gov.nasa.jpl.imce.oml.model.common.util.CommonSwitch;
-
 import gov.nasa.jpl.imce.oml.model.edit.provider.OMLEditPlugin;
 
 import gov.nasa.jpl.imce.oml.model.graphs.GraphsFactory;

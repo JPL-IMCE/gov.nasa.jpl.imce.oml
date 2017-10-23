@@ -22,8 +22,7 @@ import gov.nasa.jpl.imce.oml.model.common.AnnotationProperty;
 import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue;
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
 import gov.nasa.jpl.imce.oml.model.common.Element;
-
-import gov.nasa.jpl.imce.oml.model.datatypes.StringValue;
+import gov.nasa.jpl.imce.oml.model.common.LiteralString;
 
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
 
@@ -82,24 +81,14 @@ public class AnnotationPropertyValueImpl extends CDOObjectImpl implements Annota
 	protected AnnotationProperty property;
 
 	/**
-	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
+	 * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getValue()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final StringValue VALUE_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getValue()
-	 * @generated
-	 * @ordered
-	 */
-	protected StringValue value = VALUE_EDEFAULT;
+	protected LiteralString value;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -249,7 +238,7 @@ public class AnnotationPropertyValueImpl extends CDOObjectImpl implements Annota
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public StringValue getValue() {
+	public LiteralString getValue() {
 		return value;
 	}
 
@@ -258,11 +247,33 @@ public class AnnotationPropertyValueImpl extends CDOObjectImpl implements Annota
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setValue(StringValue newValue) {
-		StringValue oldValue = value;
+	public NotificationChain basicSetValue(LiteralString newValue, NotificationChain msgs) {
+		LiteralString oldValue = value;
 		value = newValue;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CommonPackage.ANNOTATION_PROPERTY_VALUE__VALUE, oldValue, value));
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CommonPackage.ANNOTATION_PROPERTY_VALUE__VALUE, oldValue, newValue);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setValue(LiteralString newValue) {
+		if (newValue != value) {
+			NotificationChain msgs = null;
+			if (value != null)
+				msgs = ((InternalEObject)value).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CommonPackage.ANNOTATION_PROPERTY_VALUE__VALUE, null, msgs);
+			if (newValue != null)
+				msgs = ((InternalEObject)newValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CommonPackage.ANNOTATION_PROPERTY_VALUE__VALUE, null, msgs);
+			msgs = basicSetValue(newValue, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CommonPackage.ANNOTATION_PROPERTY_VALUE__VALUE, newValue, newValue));
 	}
 
 	/**
@@ -291,6 +302,8 @@ public class AnnotationPropertyValueImpl extends CDOObjectImpl implements Annota
 		switch (featureID) {
 			case CommonPackage.ANNOTATION_PROPERTY_VALUE__SUBJECT:
 				return basicSetSubject(null, msgs);
+			case CommonPackage.ANNOTATION_PROPERTY_VALUE__VALUE:
+				return basicSetValue(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -346,7 +359,7 @@ public class AnnotationPropertyValueImpl extends CDOObjectImpl implements Annota
 				setProperty((AnnotationProperty)newValue);
 				return;
 			case CommonPackage.ANNOTATION_PROPERTY_VALUE__VALUE:
-				setValue((StringValue)newValue);
+				setValue((LiteralString)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -367,7 +380,7 @@ public class AnnotationPropertyValueImpl extends CDOObjectImpl implements Annota
 				setProperty((AnnotationProperty)null);
 				return;
 			case CommonPackage.ANNOTATION_PROPERTY_VALUE__VALUE:
-				setValue(VALUE_EDEFAULT);
+				setValue((LiteralString)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -388,25 +401,9 @@ public class AnnotationPropertyValueImpl extends CDOObjectImpl implements Annota
 			case CommonPackage.ANNOTATION_PROPERTY_VALUE__PROPERTY:
 				return property != null;
 			case CommonPackage.ANNOTATION_PROPERTY_VALUE__VALUE:
-				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+				return value != null;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (value: ");
-		result.append(value);
-		result.append(')');
-		return result.toString();
 	}
 
 } //AnnotationPropertyValueImpl

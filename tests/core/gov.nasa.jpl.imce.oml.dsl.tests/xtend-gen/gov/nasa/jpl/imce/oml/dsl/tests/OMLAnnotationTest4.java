@@ -24,7 +24,8 @@ import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue;
 import gov.nasa.jpl.imce.oml.model.common.CommonFactory;
 import gov.nasa.jpl.imce.oml.model.common.Element;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
-import gov.nasa.jpl.imce.oml.model.datatypes.StringValue;
+import gov.nasa.jpl.imce.oml.model.common.LiteralQuotedString;
+import gov.nasa.jpl.imce.oml.model.datatypes.QuotedStringValue;
 import gov.nasa.jpl.imce.oml.model.graphs.GraphsFactory;
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyGraph;
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
@@ -144,7 +145,9 @@ public class OMLAnnotationTest4 {
     EList<AnnotationPropertyValue> _annotations = e.getAnnotations();
     _annotations.add(av);
     av.setProperty(ap);
-    StringValue _stringValue = new StringValue(v);
-    av.setValue(_stringValue);
+    final LiteralQuotedString s = this.commonF.createLiteralQuotedString();
+    QuotedStringValue _quotedStringValue = new QuotedStringValue(v);
+    s.setString(_quotedStringValue);
+    av.setValue(s);
   }
 }

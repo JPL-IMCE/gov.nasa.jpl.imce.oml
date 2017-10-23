@@ -162,7 +162,6 @@ public class OMLFormatter extends AbstractFormatter2 {
       it.noSpace();
     };
     document.surround(this.textRegionExtensions.regionFor(annotation).keyword("="), _function_1);
-    this.textRegionExtensions.regionFor(annotation).ruleCall(this._oMLGrammarAccess.getAnnotationPropertyValueAccess().getValueSTRING_VALUETerminalRuleCall_3_0());
   }
   
   protected void _format(final TerminologyGraph terminologyGraph, @Extension final IFormattableDocument document) {

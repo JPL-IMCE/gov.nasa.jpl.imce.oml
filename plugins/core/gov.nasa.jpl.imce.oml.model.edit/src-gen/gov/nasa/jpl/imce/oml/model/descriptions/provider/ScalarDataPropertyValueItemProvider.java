@@ -238,7 +238,12 @@ public class ScalarDataPropertyValueItemProvider extends ElementItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(DescriptionsPackage.Literals.SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE,
-				 CommonFactory.eINSTANCE.createLiteralString()));
+				 CommonFactory.eINSTANCE.createLiteralQuotedString()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(DescriptionsPackage.Literals.SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE,
+				 CommonFactory.eINSTANCE.createLiteralRawString()));
 
 		newChildDescriptors.add
 			(createChildParameter

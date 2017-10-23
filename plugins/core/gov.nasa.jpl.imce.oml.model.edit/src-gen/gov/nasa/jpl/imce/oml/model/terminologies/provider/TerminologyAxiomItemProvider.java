@@ -20,11 +20,8 @@ package gov.nasa.jpl.imce.oml.model.terminologies.provider;
 
 
 import gov.nasa.jpl.imce.oml.model.common.provider.ModuleEdgeItemProvider;
-
 import gov.nasa.jpl.imce.oml.model.edit.provider.OMLEditPlugin;
-
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyAxiom;
-
 import java.util.Collection;
 import java.util.List;
 

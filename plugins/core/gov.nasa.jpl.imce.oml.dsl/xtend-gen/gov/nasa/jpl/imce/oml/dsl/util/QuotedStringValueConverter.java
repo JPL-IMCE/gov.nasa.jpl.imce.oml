@@ -20,7 +20,7 @@ package gov.nasa.jpl.imce.oml.dsl.util;
 import com.google.common.base.Objects;
 import com.google.inject.Inject;
 import gov.nasa.jpl.imce.oml.dsl.util.GenericValueConverter;
-import gov.nasa.jpl.imce.oml.model.datatypes.StringValue;
+import gov.nasa.jpl.imce.oml.model.datatypes.QuotedStringValue;
 import org.eclipse.xtext.conversion.IValueConverterService;
 import org.eclipse.xtext.conversion.ValueConverterException;
 import org.eclipse.xtext.conversion.ValueConverterWithValueException;
@@ -29,25 +29,25 @@ import org.eclipse.xtext.util.Strings;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 
 @SuppressWarnings("all")
-public class StringValueConverter extends GenericValueConverter<StringValue> {
+public class QuotedStringValueConverter extends GenericValueConverter<QuotedStringValue> {
   @Inject
   protected IValueConverterService valueConverterService;
   
   @Override
-  public String toEscapedString(final StringValue value) {
+  public String toEscapedString(final QuotedStringValue value) {
     return (("\"" + value.value) + "\"");
   }
   
   @Override
-  public StringValue toValue(final String string, final INode node) {
-    StringValue _xblockexpression = null;
+  public QuotedStringValue toValue(final String string, final INode node) {
+    QuotedStringValue _xblockexpression = null;
     {
       if ((string == null)) {
         return null;
       }
-      StringValue _xtrycatchfinallyexpression = null;
+      QuotedStringValue _xtrycatchfinallyexpression = null;
       try {
-        StringValue _xblockexpression_1 = null;
+        QuotedStringValue _xblockexpression_1 = null;
         {
           int _length = string.length();
           boolean _equals = (_length == 1);
@@ -56,7 +56,7 @@ public class StringValueConverter extends GenericValueConverter<StringValue> {
             throw new ValueConverterWithValueException(_stringNotClosedMessage, node, "", null);
           }
           final String s = this.convertFromString(string, node);
-          _xblockexpression_1 = new StringValue(s);
+          _xblockexpression_1 = new QuotedStringValue(s);
         }
         _xtrycatchfinallyexpression = _xblockexpression_1;
       } catch (final Throwable _t) {
@@ -77,14 +77,14 @@ public class StringValueConverter extends GenericValueConverter<StringValue> {
    * @since 2.7
    */
   protected String getInvalidEscapeSequenceMessage() {
-    return "Invalid escape sequence (valid ones are  \\b  \\t  \\n  \\f  \\r  \\\"  \\\'  \\\\ )";
+    return "Invalid escape sequence for QuotedString (valid ones are  \\b  \\t  \\n  \\f  \\r  \\\"  \\\'  \\\\ )";
   }
   
   /**
    * @since 2.7
    */
   protected String getStringNotClosedMessage() {
-    return "String literal is not properly closed";
+    return "QuotedString literal is not properly closed";
   }
   
   /**

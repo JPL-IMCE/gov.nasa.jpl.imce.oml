@@ -189,22 +189,22 @@ public interface CommonPackage extends EPackage {
 	int LITERAL_STRING = 3;
 
 	/**
-	 * The feature id for the '<em><b>String</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LITERAL_STRING__STRING = LITERAL_VALUE_FEATURE_COUNT + 0;
-
-	/**
 	 * The number of structural features of the '<em>Literal String</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LITERAL_STRING_FEATURE_COUNT = LITERAL_VALUE_FEATURE_COUNT + 1;
+	int LITERAL_STRING_FEATURE_COUNT = LITERAL_VALUE_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Value</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_STRING___VALUE = LITERAL_VALUE_OPERATION_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Literal String</em>' class.
@@ -213,7 +213,99 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LITERAL_STRING_OPERATION_COUNT = LITERAL_VALUE_OPERATION_COUNT + 0;
+	int LITERAL_STRING_OPERATION_COUNT = LITERAL_VALUE_OPERATION_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralQuotedStringImpl <em>Literal Quoted String</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.LiteralQuotedStringImpl
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLiteralQuotedString()
+	 * @generated
+	 */
+	int LITERAL_QUOTED_STRING = 4;
+
+	/**
+	 * The feature id for the '<em><b>String</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_QUOTED_STRING__STRING = LITERAL_STRING_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Literal Quoted String</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_QUOTED_STRING_FEATURE_COUNT = LITERAL_STRING_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Value</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_QUOTED_STRING___VALUE = LITERAL_STRING_OPERATION_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Literal Quoted String</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_QUOTED_STRING_OPERATION_COUNT = LITERAL_STRING_OPERATION_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralRawStringImpl <em>Literal Raw String</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.LiteralRawStringImpl
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLiteralRawString()
+	 * @generated
+	 */
+	int LITERAL_RAW_STRING = 5;
+
+	/**
+	 * The feature id for the '<em><b>String</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_RAW_STRING__STRING = LITERAL_STRING_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Literal Raw String</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_RAW_STRING_FEATURE_COUNT = LITERAL_STRING_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Value</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_RAW_STRING___VALUE = LITERAL_STRING_OPERATION_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Literal Raw String</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_RAW_STRING_OPERATION_COUNT = LITERAL_STRING_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralUUIDImpl <em>Literal UUID</em>}' class.
@@ -223,7 +315,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLiteralUUID()
 	 * @generated
 	 */
-	int LITERAL_UUID = 4;
+	int LITERAL_UUID = 6;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -260,7 +352,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLiteralURI()
 	 * @generated
 	 */
-	int LITERAL_URI = 5;
+	int LITERAL_URI = 7;
 
 	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
@@ -297,7 +389,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLiteralNumber()
 	 * @generated
 	 */
-	int LITERAL_NUMBER = 6;
+	int LITERAL_NUMBER = 8;
 
 	/**
 	 * The number of structural features of the '<em>Literal Number</em>' class.
@@ -325,7 +417,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLiteralReal()
 	 * @generated
 	 */
-	int LITERAL_REAL = 7;
+	int LITERAL_REAL = 9;
 
 	/**
 	 * The feature id for the '<em><b>Real</b></em>' attribute.
@@ -362,7 +454,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLiteralRational()
 	 * @generated
 	 */
-	int LITERAL_RATIONAL = 8;
+	int LITERAL_RATIONAL = 10;
 
 	/**
 	 * The feature id for the '<em><b>Rational</b></em>' attribute.
@@ -399,7 +491,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLiteralFloat()
 	 * @generated
 	 */
-	int LITERAL_FLOAT = 9;
+	int LITERAL_FLOAT = 11;
 
 	/**
 	 * The feature id for the '<em><b>Float</b></em>' attribute.
@@ -436,7 +528,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLiteralDecimal()
 	 * @generated
 	 */
-	int LITERAL_DECIMAL = 10;
+	int LITERAL_DECIMAL = 12;
 
 	/**
 	 * The feature id for the '<em><b>Decimal</b></em>' attribute.
@@ -473,7 +565,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getAnnotationPropertyValue()
 	 * @generated
 	 */
-	int ANNOTATION_PROPERTY_VALUE = 11;
+	int ANNOTATION_PROPERTY_VALUE = 13;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -503,7 +595,7 @@ public interface CommonPackage extends EPackage {
 	int ANNOTATION_PROPERTY_VALUE__PROPERTY = 2;
 
 	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * The feature id for the '<em><b>Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -537,7 +629,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getElement()
 	 * @generated
 	 */
-	int ELEMENT = 12;
+	int ELEMENT = 14;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -601,7 +693,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getResource()
 	 * @generated
 	 */
-	int RESOURCE = 13;
+	int RESOURCE = 15;
 
 	/**
 	 * The number of structural features of the '<em>Resource</em>' class.
@@ -656,7 +748,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getModuleElement()
 	 * @generated
 	 */
-	int MODULE_ELEMENT = 14;
+	int MODULE_ELEMENT = 16;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -729,7 +821,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getModuleEdge()
 	 * @generated
 	 */
-	int MODULE_EDGE = 15;
+	int MODULE_EDGE = 17;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -811,7 +903,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getAnnotationProperty()
 	 * @generated
 	 */
-	int ANNOTATION_PROPERTY = 16;
+	int ANNOTATION_PROPERTY = 18;
 
 	/**
 	 * The feature id for the '<em><b>Extent</b></em>' container reference.
@@ -875,7 +967,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getExtent()
 	 * @generated
 	 */
-	int EXTENT = 17;
+	int EXTENT = 19;
 
 	/**
 	 * The feature id for the '<em><b>Modules</b></em>' containment reference list.
@@ -921,7 +1013,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getModule()
 	 * @generated
 	 */
-	int MODULE = 18;
+	int MODULE = 20;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -1057,7 +1149,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getIRI()
 	 * @generated
 	 */
-	int IRI = 19;
+	int IRI = 21;
 
 	/**
 	 * The meta object id for the '<em>Local Name</em>' data type.
@@ -1067,7 +1159,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLocalName()
 	 * @generated
 	 */
-	int LOCAL_NAME = 20;
+	int LOCAL_NAME = 22;
 
 	/**
 	 * The meta object id for the '<em>UUID</em>' data type.
@@ -1077,7 +1169,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getUUID()
 	 * @generated
 	 */
-	int UUID = 21;
+	int UUID = 23;
 
 	/**
 	 * The meta object id for the '<em>Abbrev IRI</em>' data type.
@@ -1087,7 +1179,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getAbbrevIRI()
 	 * @generated
 	 */
-	int ABBREV_IRI = 22;
+	int ABBREV_IRI = 24;
 
 	/**
 	 * The meta object id for the '<em>Namespace Prefix</em>' data type.
@@ -1097,7 +1189,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getNamespacePrefix()
 	 * @generated
 	 */
-	int NAMESPACE_PREFIX = 23;
+	int NAMESPACE_PREFIX = 25;
 
 	/**
 	 * The meta object id for the '<em>Positive Integer Literal</em>' data type.
@@ -1107,7 +1199,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getPositiveIntegerLiteral()
 	 * @generated
 	 */
-	int POSITIVE_INTEGER_LITERAL = 24;
+	int POSITIVE_INTEGER_LITERAL = 26;
 
 	/**
 	 * The meta object id for the '<em>Literal Pattern</em>' data type.
@@ -1117,7 +1209,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLiteralPattern()
 	 * @generated
 	 */
-	int LITERAL_PATTERN = 25;
+	int LITERAL_PATTERN = 27;
 
 	/**
 	 * The meta object id for the '<em>Real Data Type</em>' data type.
@@ -1127,7 +1219,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getRealDataType()
 	 * @generated
 	 */
-	int REAL_DATA_TYPE = 26;
+	int REAL_DATA_TYPE = 28;
 
 	/**
 	 * The meta object id for the '<em>Rational Data Type</em>' data type.
@@ -1137,7 +1229,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getRationalDataType()
 	 * @generated
 	 */
-	int RATIONAL_DATA_TYPE = 27;
+	int RATIONAL_DATA_TYPE = 29;
 
 	/**
 	 * The meta object id for the '<em>Float Data Type</em>' data type.
@@ -1147,7 +1239,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getFloatDataType()
 	 * @generated
 	 */
-	int FLOAT_DATA_TYPE = 28;
+	int FLOAT_DATA_TYPE = 30;
 
 	/**
 	 * The meta object id for the '<em>Abstract Decimal Data Type</em>' data type.
@@ -1157,7 +1249,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getAbstractDecimalDataType()
 	 * @generated
 	 */
-	int ABSTRACT_DECIMAL_DATA_TYPE = 29;
+	int ABSTRACT_DECIMAL_DATA_TYPE = 31;
 
 	/**
 	 * The meta object id for the '<em>Decimal Data Type</em>' data type.
@@ -1167,7 +1259,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getDecimalDataType()
 	 * @generated
 	 */
-	int DECIMAL_DATA_TYPE = 30;
+	int DECIMAL_DATA_TYPE = 32;
 
 	/**
 	 * The meta object id for the '<em>Date Time Data Type</em>' data type.
@@ -1177,7 +1269,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getDateTimeDataType()
 	 * @generated
 	 */
-	int DATE_TIME_DATA_TYPE = 31;
+	int DATE_TIME_DATA_TYPE = 33;
 
 	/**
 	 * The meta object id for the '<em>Language Tag Data Type</em>' data type.
@@ -1187,7 +1279,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLanguageTagDataType()
 	 * @generated
 	 */
-	int LANGUAGE_TAG_DATA_TYPE = 32;
+	int LANGUAGE_TAG_DATA_TYPE = 34;
 
 	/**
 	 * The meta object id for the '<em>String Data Type</em>' data type.
@@ -1197,7 +1289,27 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getStringDataType()
 	 * @generated
 	 */
-	int STRING_DATA_TYPE = 33;
+	int STRING_DATA_TYPE = 35;
+
+	/**
+	 * The meta object id for the '<em>Raw String Data Type</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.datatypes.RawStringValue
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getRawStringDataType()
+	 * @generated
+	 */
+	int RAW_STRING_DATA_TYPE = 36;
+
+	/**
+	 * The meta object id for the '<em>Quoted String Data Type</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.datatypes.QuotedStringValue
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getQuotedStringDataType()
+	 * @generated
+	 */
+	int QUOTED_STRING_DATA_TYPE = 37;
 
 	/**
 	 * The meta object id for the '<em>UUID Data Type</em>' data type.
@@ -1207,7 +1319,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getUUIDDataType()
 	 * @generated
 	 */
-	int UUID_DATA_TYPE = 34;
+	int UUID_DATA_TYPE = 38;
 
 	/**
 	 * The meta object id for the '<em>URI Data Type</em>' data type.
@@ -1217,7 +1329,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getURIDataType()
 	 * @generated
 	 */
-	int URI_DATA_TYPE = 35;
+	int URI_DATA_TYPE = 39;
 
 
 	/**
@@ -1283,15 +1395,76 @@ public interface CommonPackage extends EPackage {
 	EClass getLiteralString();
 
 	/**
-	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.common.LiteralString#getString <em>String</em>}'.
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.common.LiteralString#value() <em>Value</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Value</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralString#value()
+	 * @generated
+	 */
+	EOperation getLiteralString__Value();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.common.LiteralQuotedString <em>Literal Quoted String</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Literal Quoted String</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralQuotedString
+	 * @generated
+	 */
+	EClass getLiteralQuotedString();
+
+	/**
+	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.common.LiteralQuotedString#getString <em>String</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>String</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralString#getString()
-	 * @see #getLiteralString()
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralQuotedString#getString()
+	 * @see #getLiteralQuotedString()
 	 * @generated
 	 */
-	EAttribute getLiteralString_String();
+	EAttribute getLiteralQuotedString_String();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.common.LiteralQuotedString#value() <em>Value</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Value</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralQuotedString#value()
+	 * @generated
+	 */
+	EOperation getLiteralQuotedString__Value();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.common.LiteralRawString <em>Literal Raw String</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Literal Raw String</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralRawString
+	 * @generated
+	 */
+	EClass getLiteralRawString();
+
+	/**
+	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.common.LiteralRawString#getString <em>String</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>String</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralRawString#getString()
+	 * @see #getLiteralRawString()
+	 * @generated
+	 */
+	EAttribute getLiteralRawString_String();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.common.LiteralRawString#value() <em>Value</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Value</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralRawString#value()
+	 * @generated
+	 */
+	EOperation getLiteralRawString__Value();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.common.LiteralUUID <em>Literal UUID</em>}'.
@@ -1473,15 +1646,15 @@ public interface CommonPackage extends EPackage {
 	EReference getAnnotationPropertyValue_Property();
 
 	/**
-	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue#getValue <em>Value</em>}'.
+	 * Returns the meta object for the containment reference '{@link gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @return the meta object for the containment reference '<em>Value</em>'.
 	 * @see gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue#getValue()
 	 * @see #getAnnotationPropertyValue()
 	 * @generated
 	 */
-	EAttribute getAnnotationPropertyValue_Value();
+	EReference getAnnotationPropertyValue_Value();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.common.Element <em>Element</em>}'.
@@ -1999,6 +2172,28 @@ public interface CommonPackage extends EPackage {
 	EDataType getStringDataType();
 
 	/**
+	 * Returns the meta object for data type '{@link gov.nasa.jpl.imce.oml.model.datatypes.RawStringValue <em>Raw String Data Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Raw String Data Type</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.datatypes.RawStringValue
+	 * @model instanceClass="gov.nasa.jpl.imce.oml.model.datatypes.RawStringValue"
+	 * @generated
+	 */
+	EDataType getRawStringDataType();
+
+	/**
+	 * Returns the meta object for data type '{@link gov.nasa.jpl.imce.oml.model.datatypes.QuotedStringValue <em>Quoted String Data Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Quoted String Data Type</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.datatypes.QuotedStringValue
+	 * @model instanceClass="gov.nasa.jpl.imce.oml.model.datatypes.QuotedStringValue"
+	 * @generated
+	 */
+	EDataType getQuotedStringDataType();
+
+	/**
 	 * Returns the meta object for data type '{@link gov.nasa.jpl.imce.oml.model.datatypes.UUIDValue <em>UUID Data Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2100,12 +2295,64 @@ public interface CommonPackage extends EPackage {
 		EClass LITERAL_STRING = eINSTANCE.getLiteralString();
 
 		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation LITERAL_STRING___VALUE = eINSTANCE.getLiteralString__Value();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralQuotedStringImpl <em>Literal Quoted String</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.LiteralQuotedStringImpl
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLiteralQuotedString()
+		 * @generated
+		 */
+		EClass LITERAL_QUOTED_STRING = eINSTANCE.getLiteralQuotedString();
+
+		/**
 		 * The meta object literal for the '<em><b>String</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute LITERAL_STRING__STRING = eINSTANCE.getLiteralString_String();
+		EAttribute LITERAL_QUOTED_STRING__STRING = eINSTANCE.getLiteralQuotedString_String();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation LITERAL_QUOTED_STRING___VALUE = eINSTANCE.getLiteralQuotedString__Value();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralRawStringImpl <em>Literal Raw String</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.LiteralRawStringImpl
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLiteralRawString()
+		 * @generated
+		 */
+		EClass LITERAL_RAW_STRING = eINSTANCE.getLiteralRawString();
+
+		/**
+		 * The meta object literal for the '<em><b>String</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LITERAL_RAW_STRING__STRING = eINSTANCE.getLiteralRawString_String();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation LITERAL_RAW_STRING___VALUE = eINSTANCE.getLiteralRawString__Value();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralUUIDImpl <em>Literal UUID</em>}' class.
@@ -2260,12 +2507,12 @@ public interface CommonPackage extends EPackage {
 		EReference ANNOTATION_PROPERTY_VALUE__PROPERTY = eINSTANCE.getAnnotationPropertyValue_Property();
 
 		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ANNOTATION_PROPERTY_VALUE__VALUE = eINSTANCE.getAnnotationPropertyValue_Value();
+		EReference ANNOTATION_PROPERTY_VALUE__VALUE = eINSTANCE.getAnnotationPropertyValue_Value();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.ElementImpl <em>Element</em>}' class.
@@ -2702,6 +2949,26 @@ public interface CommonPackage extends EPackage {
 		 * @generated
 		 */
 		EDataType STRING_DATA_TYPE = eINSTANCE.getStringDataType();
+
+		/**
+		 * The meta object literal for the '<em>Raw String Data Type</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.datatypes.RawStringValue
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getRawStringDataType()
+		 * @generated
+		 */
+		EDataType RAW_STRING_DATA_TYPE = eINSTANCE.getRawStringDataType();
+
+		/**
+		 * The meta object literal for the '<em>Quoted String Data Type</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.datatypes.QuotedStringValue
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getQuotedStringDataType()
+		 * @generated
+		 */
+		EDataType QUOTED_STRING_DATA_TYPE = eINSTANCE.getQuotedStringDataType();
 
 		/**
 		 * The meta object literal for the '<em>UUID Data Type</em>' data type.

@@ -20,9 +20,7 @@ package gov.nasa.jpl.imce.oml.model.descriptions.provider;
 
 
 import gov.nasa.jpl.imce.oml.model.common.provider.ModuleEdgeItemProvider;
-
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxRelationship;
-
 import gov.nasa.jpl.imce.oml.model.edit.provider.OMLEditPlugin;
 
 import java.util.Collection;
