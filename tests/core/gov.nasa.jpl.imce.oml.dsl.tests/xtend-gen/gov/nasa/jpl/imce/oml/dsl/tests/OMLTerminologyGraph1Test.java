@@ -166,7 +166,7 @@ public class OMLTerminologyGraph1Test {
       final AnnotationProperty a_prop = a.getProperty();
       final Element a_subj = a.getSubject();
       final LiteralString a_value = a.getValue();
-      Assert.assertEquals("Performing Element", a_value.value());
+      Assert.assertEquals("Performing Element", a_value.value().value);
       Assert.assertSame(ap, a_prop);
       Assert.assertSame(c, a_subj);
       String _name = this.getClass().getName();
