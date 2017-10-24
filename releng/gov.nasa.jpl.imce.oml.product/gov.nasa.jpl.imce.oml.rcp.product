@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="OML Workbench" uid="gov.nasa.jpl.imce.oml.rcp.product" id="gov.nasa.jpl.imce.oml.rcp.product" application="org.eclipse.ui.ide.workbench" version="0.9.0.qualifier" useFeatures="true" includeLaunchers="true">
+<product name="OML Workbench" uid="gov.nasa.jpl.imce.oml.rcp.product" id="gov.nasa.jpl.imce.oml.rcp.product" application="org.eclipse.ui.ide.workbench" version="0.9.0.0-M13" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
       <text>
@@ -287,8 +287,8 @@ License Terms
       <feature id="org.eclipse.e4.rcp"/>
       <feature id="org.eclipse.egit" version="4.8.0.201706111038-r"/>
       <feature id="org.eclipse.jgit" version="4.8.0.201706111038-r"/>
-      <feature id="gov.nasa.jpl.imce.oml.core.feature" version="0.9.0.qualifier"/>
-      <feature id="gov.nasa.jpl.imce.oml.ui.feature" version="0.9.0.qualifier"/>
+      <feature id="gov.nasa.jpl.imce.oml.core.feature" version="0.9.0.0-M13"/>
+      <feature id="gov.nasa.jpl.imce.oml.ui.feature" version="0.9.0.0-M13"/>
    </features>
 
    <configurations>
