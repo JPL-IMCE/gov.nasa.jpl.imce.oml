@@ -138,26 +138,26 @@ public class UnreifiedRelationshipPropertyPredicateImpl extends BinarySegmentFor
 	 * @generated
 	 */
 	public String uuid() {
-		RuleBodySegment _bodySegment = this.getBodySegment();
+		UnreifiedRelationship _unreifiedRelationship = this.getUnreifiedRelationship();
 		String _uuid = null;
-		if (_bodySegment!=null) {
-			_uuid=_bodySegment.uuid();
+		if (_unreifiedRelationship!=null) {
+			_uuid=_unreifiedRelationship.uuid();
 		}
 		String _string = null;
 		if (_uuid!=null) {
 			_string=_uuid.toString();
 		}
-		Pair<String, String> _mappedTo = Pair.<String, String>of("bodySegment", _string);
-		UnreifiedRelationship _unreifiedRelationship = this.getUnreifiedRelationship();
+		Pair<String, String> _mappedTo = Pair.<String, String>of("unreifiedRelationship", _string);
+		RuleBodySegment _bodySegment = this.getBodySegment();
 		String _uuid_1 = null;
-		if (_unreifiedRelationship!=null) {
-			_uuid_1=_unreifiedRelationship.uuid();
+		if (_bodySegment!=null) {
+			_uuid_1=_bodySegment.uuid();
 		}
 		String _string_1 = null;
 		if (_uuid_1!=null) {
 			_string_1=_uuid_1.toString();
 		}
-		Pair<String, String> _mappedTo_1 = Pair.<String, String>of("unreifiedRelationship", _string_1);
+		Pair<String, String> _mappedTo_1 = Pair.<String, String>of("bodySegment", _string_1);
 		UUID _derivedUUID = OMLExtensions.derivedUUID(
 			"UnreifiedRelationshipPropertyPredicate", _mappedTo, _mappedTo_1);
 		String _string_2 = null;

@@ -27,3 +27,5 @@ gov.nasa.jpl.imce.oml.tycho 0.9.0.0 resolves major problems found in 0.8.0.1
 	- RawString is a multi-line string between triple double-quote characters without support for escaping; e.g. """ ..... """"
 	
 - [#143 Incorrect Xcore logic for RuleBodySegment.uuid()](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/143)
+
+- [#144 Incorrect Xcore logic for UnreifiedRelationshipPropertyPredicate.uuid()](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/145)
