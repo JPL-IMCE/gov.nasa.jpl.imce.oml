@@ -354,10 +354,10 @@ public class RuleBodySegmentImpl extends ElementImpl implements RuleBodySegment 
 			_xifexpression = _string;
 		}
 		else {
-			String _uuid_1 = this.getPreviousSegment().uuid();
+			ChainRule _chainRule_1 = this.getPreviousSegment().chainRule();
 			String _string_1 = null;
-			if (_uuid_1!=null) {
-				_string_1=_uuid_1.toString();
+			if (_chainRule_1!=null) {
+				_string_1=_chainRule_1.toString();
 			}
 			_xifexpression = _string_1;
 		}
