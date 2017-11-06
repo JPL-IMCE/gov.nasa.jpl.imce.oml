@@ -1792,6 +1792,7 @@ class ScalarOneOfRestriction extends RestrictedDataRange {
  * An OML ScalarOneOfLiteralAxiom specifies a literal in a ScalarOneOfRestriction data range.
  */
 @Glossary
+@DerivedUUID
 class ScalarOneOfLiteralAxiom extends TermAxiom {
 	
 	refers ScalarOneOfRestriction[1] axiom

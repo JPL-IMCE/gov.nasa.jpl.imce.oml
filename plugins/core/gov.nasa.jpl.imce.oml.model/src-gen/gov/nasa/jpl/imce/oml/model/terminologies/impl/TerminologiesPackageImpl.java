@@ -5405,6 +5405,11 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		  (restrictionScalarDataPropertyValueEClass, 
 		   source, 
 		   new String[] {
+		   });	
+		addAnnotation
+		  (scalarOneOfLiteralAxiomEClass, 
+		   source, 
+		   new String[] {
 		   });
 	}
 
