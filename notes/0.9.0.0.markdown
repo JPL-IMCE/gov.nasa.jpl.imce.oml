@@ -33,3 +33,5 @@ gov.nasa.jpl.imce.oml.tycho 0.9.0.0 resolves major problems found in 0.8.0.1
 - [#147 ScalarOneOfLiteralAxiom needs @DerivedUUID annotation](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/147)
 
 - [#150 Incorrect fix for RuleBodySegment.uuid()](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/150)
+
+- [#152 OML TerminologyBox viewpoint lacks edges to/from ReifiedRelationship](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/152)
