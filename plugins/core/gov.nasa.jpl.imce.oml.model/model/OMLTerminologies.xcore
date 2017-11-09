@@ -721,7 +721,7 @@ class RuleBodySegment extends Element {
 		"chainRule" -> if (null === previousSegment)
 			chainRule?.uuid()?.toString
 		else 
-			previousSegment.chainRule()?.toString,
+			previousSegment.chainRule()?.uuid()?.toString,
 		"position" -> if (null === previousSegment) 
 			"1"
 			else
