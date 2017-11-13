@@ -416,6 +416,40 @@
 		</fileTypes>
 	</extension>
 
+	<!-- OML Normalization -->
+	
+	<extension
+		point="org.eclipse.ui.commands">
+		<command
+			description="Normalize the order of OML elements within the current OML Module (TerminologyGraph, Bundle or DescriptionBox)"
+			id="gov.nasa.jpl.imce.oml.dsl.ui.commands.NormalizeOMLContentsOrder"
+			name="Normalize OML Contents Order">
+		</command>
+	</extension>
+	<extension point="org.eclipse.ui.handlers">
+		<handler 
+			class="gov.nasa.jpl.imce.oml.dsl.ui.handlers.NormalizeOMLContentsOrder"
+			commandId="gov.nasa.jpl.imce.oml.dsl.ui.commands.NormalizeOMLContentsOrder">
+			<activeWhen>
+				<reference
+					definitionId="gov.nasa.jpl.imce.oml.dsl.OML.Editor.opened">
+				</reference>
+			</activeWhen>
+		</handler>
+	</extension>
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution
+			locationURI="popup:#TextEditorContext?after=group.edit">
+			<command commandId="gov.nasa.jpl.imce.oml.dsl.ui.commands.NormalizeOMLContentsOrder"
+				style="push">
+				<visibleWhen checkEnabled="false">
+					<reference
+						definitionId="gov.nasa.jpl.imce.oml.dsl.OML.Editor.opened">
+					</reference>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
 	<!-- Converter -->
 	
     
