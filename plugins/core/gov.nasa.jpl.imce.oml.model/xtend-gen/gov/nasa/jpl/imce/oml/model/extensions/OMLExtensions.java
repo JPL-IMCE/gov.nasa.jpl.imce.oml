@@ -141,9 +141,11 @@ import org.eclipse.emf.common.CommonPlugin;
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
@@ -1771,7 +1773,22 @@ public class OMLExtensions {
     return list;
   }
   
+  public static void removeAllINodes(final List<EObject> queue) {
+    boolean _isEmpty = queue.isEmpty();
+    boolean _not = (!_isEmpty);
+    if (_not) {
+      final EObject e = queue.remove(0);
+      final List<INode> nodes = IterableExtensions.<INode>toList(Iterables.<INode>filter(e.eAdapters(), INode.class));
+      e.eAdapters().removeAll(nodes);
+      queue.addAll(e.eContents());
+      OMLExtensions.removeAllINodes(queue);
+    }
+  }
+  
   protected static void _normalize(final Extent ext) {
+    final ArrayList<EObject> queue = new ArrayList<EObject>();
+    queue.add(ext);
+    OMLExtensions.removeAllINodes(queue);
     final Function1<AnnotationProperty, String> _function = (AnnotationProperty it) -> {
       return it.getAbbrevIRI();
     };

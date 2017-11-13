@@ -57,6 +57,7 @@ public class NormalizeOMLContentsOrder extends AbstractHandler {
         OMLExtensions.normalize(ext);
       };
       Iterables.<Extent>filter(state.getContents(), Extent.class).forEach(_function);
+      state.setModified(true);
     }
   };
 }
