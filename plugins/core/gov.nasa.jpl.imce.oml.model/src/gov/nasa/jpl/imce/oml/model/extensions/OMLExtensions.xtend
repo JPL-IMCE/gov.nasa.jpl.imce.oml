@@ -91,6 +91,50 @@ import org.eclipse.emf.ecore.util.EcoreUtil
 import com.google.common.collect.Sets
 import java.util.HashSet
 import gov.nasa.jpl.imce.oml.model.terminologies.ChainRule
+import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBoxAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.AspectPredicate
+import gov.nasa.jpl.imce.oml.model.terminologies.ConceptPredicate
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipInversePropertyPredicate
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPredicate
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPropertyPredicate
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourceInversePropertyPredicate
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourcePropertyPredicate
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetInversePropertyPredicate
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetPropertyPredicate
+import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue
+import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple
+import gov.nasa.jpl.imce.oml.model.terminologies.RuleBodySegment
+import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipInversePropertyPredicate
+import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipPropertyPredicate
+import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBoxStatement
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataPropertyParticularRestrictionAxiom
+import gov.nasa.jpl.imce.oml.model.bundles.TerminologyBundleAxiom
+import gov.nasa.jpl.imce.oml.model.bundles.TerminologyBundleStatement
+import gov.nasa.jpl.imce.oml.model.common.ModuleEdge
+import gov.nasa.jpl.imce.oml.model.terminologies.Term
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityRestrictionAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyRestrictionAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.SpecializationAxiom
+import gov.nasa.jpl.imce.oml.model.common.LiteralValue
+import gov.nasa.jpl.imce.oml.model.common.LiteralDateTime
+import gov.nasa.jpl.imce.oml.model.common.LiteralBoolean
+import gov.nasa.jpl.imce.oml.model.common.LiteralDecimal
+import gov.nasa.jpl.imce.oml.model.common.LiteralUUID
+import gov.nasa.jpl.imce.oml.model.common.LiteralURI
+import gov.nasa.jpl.imce.oml.model.common.LiteralReal
+import gov.nasa.jpl.imce.oml.model.common.LiteralFloat
+import gov.nasa.jpl.imce.oml.model.common.LiteralRational
+import gov.nasa.jpl.imce.oml.model.common.LiteralQuotedString
+import gov.nasa.jpl.imce.oml.model.common.LiteralRawString
+import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue
+import org.eclipse.emf.common.util.ECollections
+import java.util.Comparator
+import org.eclipse.xtext.xbase.lib.Functions.Function1
+import static com.google.common.base.Preconditions.checkNotNull
+import org.eclipse.emf.common.util.EList
+import java.util.List
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.xtext.nodemodel.INode
 
 public class OMLExtensions {
 
@@ -151,7 +195,7 @@ public class OMLExtensions {
 		var current = path
 		while (current.segmentCount > 0) {
 			try {
-				//System.out.println("# Searching for OML catalog in: " + current)
+				// System.out.println("# Searching for OML catalog in: " + current)
 				val omlC = current.appendSegment(OML_CATALOG_XML)
 				val omlURL = new URL(omlC.toString)
 
@@ -161,7 +205,7 @@ public class OMLExtensions {
 
 				if (!c.hasParsedCatalog(omlURL)) {
 					c.parseCatalog(new URL(omlC.toString))
-					//System.out.println("# Found catalog: " + omlC)
+				// System.out.println("# Found catalog: " + omlC)
 				}
 
 				return c
@@ -287,13 +331,15 @@ public class OMLExtensions {
 	}
 
 	static def String getModuleNsURI(Module it) {
-		annotations.findFirst[a| a.property.iri == "http://imce.jpl.nasa.gov/oml/runtime#OML2EcoreNsURI"]?.value?.value?.value ?: iri()
+		annotations.findFirst[a|a.property.iri == "http://imce.jpl.nasa.gov/oml/runtime#OML2EcoreNsURI"]?.value?.value?.
+			value ?: iri()
 	}
-	
+
 	static def String getModuleNsPrefix(Module it) {
-		annotations.findFirst[a| a.property.iri == "http://imce.jpl.nasa.gov/oml/runtime#OML2EcoreNsPrefix"]?.value?.value?.value ?: name()
+		annotations.findFirst[a|a.property.iri == "http://imce.jpl.nasa.gov/oml/runtime#OML2EcoreNsPrefix"]?.value?.
+			value?.value ?: name()
 	}
-	
+
 	def Iterable<TerminologyBox> terminologies(Extent it) {
 		it.modules.filter(TerminologyBox)
 	}
@@ -515,106 +561,644 @@ public class OMLExtensions {
 
 	static def String kind(Element e) {
 		switch e {
-			DescriptionBox:
-				'DescriptionBox'
-			TerminologyGraph:
-				'TerminologyGraph'
+			AnonymousConceptUnionAxiom:
+				'AnonymousConceptUnionAxiom'
+			Aspect:
+				'Aspect'
+			AspectPredicate:
+				'AspectPredicate'
+			AspectSpecializationAxiom:
+				'AspectSpecializationAxiom'
+			BinaryScalarRestriction:
+				'BinaryScalarRestriction'
 			Bundle:
 				'Bundle'
+			BundledTerminologyAxiom:
+				'BundledTerminologyAxiom'
+			ChainRule:
+				'ChainRule'
+			Concept:
+				'Concept'
+			ConceptDesignationTerminologyAxiom:
+				'ConceptDesignationTerminologyAxiom'
+			ConceptInstance:
+				'ConceptInstance'
+			ConceptPredicate:
+				'ConceptPredicate'
+			ConceptSpecializationAxiom:
+				'ConceptSpecializationAxiom'
+			DescriptionBox:
+				'DescriptionBox'
 			DescriptionBoxExtendsClosedWorldDefinitions:
 				'DescriptionBoxExtendsClosedWorldDefinitions'
 			DescriptionBoxRefinement:
 				'DescriptionBoxRefinement'
-			ConceptDesignationTerminologyAxiom:
-				'ConceptDesignationTerminologyAxiom'
-			TerminologyExtensionAxiom:
-				'TerminologyExtensionAxiom'
-			TerminologyNestingAxiom:
-				'TerminologyNestingAxiom'
-			BundledTerminologyAxiom:
-				'BundledTerminologyAxiom'
 			EntityExistentialRestrictionAxiom:
 				'EntityExistentialRestrictionAxiom'
-			EntityUniversalRestrictionAxiom:
-				'EntityUniversalRestrictionAxiom'
+			EntityScalarDataProperty:
+				'EntityScalarDataProperty'
 			EntityScalarDataPropertyExistentialRestrictionAxiom:
 				'EntityScalarDataPropertyExistentialRestrictionAxiom'
 			EntityScalarDataPropertyParticularRestrictionAxiom:
 				'EntityScalarDataPropertyParticularRestrictionAxiom'
 			EntityScalarDataPropertyUniversalRestrictionAxiom:
 				'EntityScalarDataPropertyUniversalRestrictionAxiom'
-			ScalarOneOfLiteralAxiom:
-				'ScalarOneOfLiteralAxiom'
-			AspectSpecializationAxiom:
-				'AspectSpecializationAxiom'
-			ConceptSpecializationAxiom:
-				'ConceptSpecializationAxiom'
-			ReifiedRelationshipSpecializationAxiom:
-				'ReifiedRelationshipSpecializationAxiom'
-			AnonymousConceptUnionAxiom:
-				'AnonymousConceptTaxonomyAxiom'
-			SpecificDisjointConceptAxiom:
-				'SpecificDisjointConceptAxiom'
-			RootConceptTaxonomyAxiom:
-				'RootConceptTaxonomyAxiom'
-			ReifiedRelationshipInstanceDomain:
-				'ReifiedRelationshipInstanceDomain'
-			ReifiedRelationshipInstanceRange:
-				'ReifiedRelationshipInstanceRange'
-			SingletonInstanceScalarDataPropertyValue:
-				'SingletonInstanceScalarDataPropertyValue'
-			ConceptInstance:
-				'ConceptInstance'
-			ReifiedRelationshipInstance:
-				'ReifiedRelationshipInstance'
-			StructuredDataPropertyTuple:
-				'StructuredDataPropertyTuple'
-			ScalarDataPropertyValue:
-				'ScalarDataPropertyValue'
-			SingletonInstanceStructuredDataPropertyValue:
-				'SingletonInstanceStructuredDataPropertyValue'
-			UnreifiedRelationshipInstanceTuple:
-				'UnreifiedRelationshipInstanceTuple'
-			EntityScalarDataProperty:
-				'EntityScalarDataProperty'
 			EntityStructuredDataProperty:
 				'EntityStructuredDataProperty'
-			ScalarDataProperty:
-				'ScalarDataProperty'
-			StructuredDataProperty:
-				'StructuredDataProperty'
-			BinaryScalarRestriction:
-				'BinaryScalarRestriction'
+			EntityUniversalRestrictionAxiom:
+				'EntityUniversalRestrictionAxiom'
 			IRIScalarRestriction:
 				'IRIScalarRestriction'
 			NumericScalarRestriction:
 				'NumericScalarRestriction'
 			PlainLiteralScalarRestriction:
 				'PlainLiteralScalarRestriction'
-			ScalarOneOfRestriction:
-				'ScalarOneOfRestriction'
-			StringScalarRestriction:
-				'StringScalarRestriction'
-			SynonymScalarRestriction:
-				'SynonymScalarRestriction'
-			TimeScalarRestriction:
-				'TimeScalarRestriction'
-			Scalar:
-				'Scalar'
-			Structure:
-				'Structure'
-			Aspect:
-				'Aspect'
-			Concept:
-				'Concept'
 			ReifiedRelationship:
 				'ReifiedRelationship'
+			ReifiedRelationshipInstance:
+				'ReifiedRelationshipInstance'
+			ReifiedRelationshipInstanceDomain:
+				'ReifiedRelationshipInstanceDomain'
+			ReifiedRelationshipInstanceRange:
+				'ReifiedRelationshipInstanceRange'
+			ReifiedRelationshipInversePropertyPredicate:
+				'ReifiedRelationshipInversePropertyPredicate'
+			ReifiedRelationshipPredicate:
+				'ReifiedRelationshipPredicate'
+			ReifiedRelationshipPropertyPredicate:
+				'ReifiedRelationshipPropertyPredicate'
+			ReifiedRelationshipSourceInversePropertyPredicate:
+				'ReifiedRelationshipSourceInversePropertyPredicate'
+			ReifiedRelationshipSourcePropertyPredicate:
+				'ReifiedRelationshipSourcePropertyPredicate'
+			ReifiedRelationshipSpecializationAxiom:
+				'ReifiedRelationshipSpecializationAxiom'
+			ReifiedRelationshipTargetInversePropertyPredicate:
+				'ReifiedRelationshipTargetInversePropertyPredicate'
+			ReifiedRelationshipTargetPropertyPredicate:
+				'ReifiedRelationshipTargetPropertyPredicate'
+			RestrictionScalarDataPropertyValue:
+				'RestrictionScalarDataPropertyValue'
+			RestrictionStructuredDataPropertyTuple:
+				'RestrictionStructuredDataPropertyTuple'
+			RootConceptTaxonomyAxiom:
+				'RootConceptTaxonomyAxiom'
+			RuleBodySegment:
+				'RuleBodySegment'
+			Scalar:
+				'Scalar'
+			ScalarDataProperty:
+				'ScalarDataProperty'
+			ScalarDataPropertyValue:
+				'ScalarDataPropertyValue'
+			ScalarOneOfLiteralAxiom:
+				'ScalarOneOfLiteralAxiom'
+			ScalarOneOfRestriction:
+				'ScalarOneOfRestriction'
+			SingletonInstanceScalarDataPropertyValue:
+				'SingletonInstanceScalarDataPropertyValue'
+			SingletonInstanceStructuredDataPropertyValue:
+				'SingletonInstanceStructuredDataPropertyValue'
+			SpecificDisjointConceptAxiom:
+				'SpecificDisjointConceptAxiom'
+			StringScalarRestriction:
+				'StringScalarRestriction'
+			Structure:
+				'Structure'
+			StructuredDataProperty:
+				'StructuredDataProperty'
+			StructuredDataPropertyTuple:
+				'StructuredDataPropertyTuple'
+			SynonymScalarRestriction:
+				'SynonymScalarRestriction'
+			TerminologyExtensionAxiom:
+				'TerminologyExtensionAxiom'
+			TerminologyGraph:
+				'TerminologyGraph'
+			TerminologyNestingAxiom:
+				'TerminologyNestingAxiom'
+			TimeScalarRestriction:
+				'TimeScalarRestriction'
 			UnreifiedRelationship:
 				'UnreifiedRelationship'
-			ChainRule:
-				'ChainRule'
+			UnreifiedRelationshipInstanceTuple:
+				'UnreifiedRelationshipInstanceTuple'
+			UnreifiedRelationshipInversePropertyPredicate:
+				'UnreifiedRelationshipInversePropertyPredicate'
+			UnreifiedRelationshipPropertyPredicate:
+				'UnreifiedRelationshipPropertyPredicate'
 			default:
 				e.eClass.name
 		}
+	}
+
+	static def int kindOrder(TerminologyBoxStatement e) {
+		switch e {
+			Aspect:
+				10000
+			Concept:
+				10020
+			ConceptSpecializationAxiom:
+				10021
+			ReifiedRelationship:
+				10030
+			ReifiedRelationshipSpecializationAxiom:
+				10031
+			AspectSpecializationAxiom:
+				10040
+			UnreifiedRelationship:
+				10050
+			ChainRule:
+				10060
+			Structure:
+				10070
+			Scalar:
+				10071
+			BinaryScalarRestriction:
+				10072
+			IRIScalarRestriction:
+				10073
+			NumericScalarRestriction:
+				10074
+			PlainLiteralScalarRestriction:
+				10075
+			StringScalarRestriction:
+				10076
+			SynonymScalarRestriction:
+				10077
+			TimeScalarRestriction:
+				10078
+			ScalarOneOfRestriction:
+				10079
+			ScalarOneOfLiteralAxiom:
+				10080
+			EntityScalarDataProperty:
+				10090
+			EntityStructuredDataProperty:
+				10091
+			ScalarDataProperty:
+				10092
+			StructuredDataProperty:
+				10093
+			EntityExistentialRestrictionAxiom:
+				10100
+			EntityUniversalRestrictionAxiom:
+				10101
+			EntityScalarDataPropertyExistentialRestrictionAxiom:
+				10102
+			EntityScalarDataPropertyParticularRestrictionAxiom:
+				10103
+			EntityScalarDataPropertyUniversalRestrictionAxiom:
+				10104
+			EntityStructuredDataPropertyParticularRestrictionAxiom:
+				10105
+			default:
+				0
+		}
+	}
+
+	static def int kindOrder(TerminologyBoxAxiom e) {
+		switch e {
+			TerminologyExtensionAxiom:
+				1
+			TerminologyNestingAxiom:
+				2
+			ConceptDesignationTerminologyAxiom:
+				3
+			default:
+				0
+		}
+	}
+
+	static def int kindOrder(TerminologyBundleAxiom e) {
+		switch e {
+			BundledTerminologyAxiom:
+				1
+			default:
+				0
+		}
+	}
+
+	static def int kindOrder(TerminologyBundleStatement e) {
+		switch e {
+			RootConceptTaxonomyAxiom:
+				1
+			default:
+				0
+		}
+	}
+
+	static def String nestedKindOrder(Element e) {
+		switch e {
+			TerminologyGraph:
+				"00000-"
+			Bundle:
+				"00001-"
+			DescriptionBox:
+				"00002-"
+			Aspect:
+				"00010-"
+			Concept:
+				"00011-"
+			ReifiedRelationship:
+				"00012-"
+			UnreifiedRelationship:
+				"00013-"
+			ChainRule:
+				"00014-"
+			ConceptSpecializationAxiom:
+				"00020-"
+			ReifiedRelationshipSpecializationAxiom:
+				"00021-"
+			AspectSpecializationAxiom:
+				"00022-"
+			Structure:
+				"00030-"
+			Scalar:
+				"00031-"
+			BinaryScalarRestriction:
+				"00032-"
+			IRIScalarRestriction:
+				"00033-"
+			NumericScalarRestriction:
+				"00034-"
+			PlainLiteralScalarRestriction:
+				"00035-"
+			StringScalarRestriction:
+				"00036-"
+			SynonymScalarRestriction:
+				"00037-"
+			TimeScalarRestriction:
+				"00038-"
+			ScalarOneOfRestriction:
+				"00039-"
+			ScalarOneOfLiteralAxiom:
+				"00040-"
+			EntityScalarDataProperty:
+				"00050-"
+			EntityStructuredDataProperty:
+				"00051-"
+			ScalarDataProperty:
+				"00052-"
+			StructuredDataProperty:
+				"00053-"
+			EntityExistentialRestrictionAxiom:
+				"00060-"
+			EntityUniversalRestrictionAxiom:
+				"00061-"
+			EntityScalarDataPropertyExistentialRestrictionAxiom:
+				"00062-"
+			EntityScalarDataPropertyParticularRestrictionAxiom:
+				"00063-"
+			EntityScalarDataPropertyUniversalRestrictionAxiom:
+				"00064-"
+			EntityStructuredDataPropertyParticularRestrictionAxiom:
+				"00065-"
+			RootConceptTaxonomyAxiom:
+				"00070-"
+			SpecificDisjointConceptAxiom:
+				"00071-"
+			AnonymousConceptUnionAxiom:
+				"00072-"
+			RuleBodySegment:
+				"00080"
+			AspectPredicate:
+				"00090"
+			ConceptPredicate:
+				"00091"
+			ReifiedRelationshipPredicate:
+				"00092"
+			ReifiedRelationshipPropertyPredicate:
+				"00100"
+			ReifiedRelationshipSourcePropertyPredicate:
+				"00101"
+			ReifiedRelationshipTargetPropertyPredicate:
+				"00102"
+			UnreifiedRelationshipPropertyPredicate:
+				"00103"
+			ReifiedRelationshipInversePropertyPredicate:
+				"00110"
+			ReifiedRelationshipSourceInversePropertyPredicate:
+				"00111"
+			ReifiedRelationshipTargetInversePropertyPredicate:
+				"00112"
+			UnreifiedRelationshipInversePropertyPredicate:
+				"00113"
+			SingletonInstanceStructuredDataPropertyValue:
+				"00120"
+			StructuredDataPropertyTuple:
+				"00121"
+			ScalarDataPropertyValue:
+				"00122"
+			RestrictionScalarDataPropertyValue:
+				"00130"
+			RestrictionStructuredDataPropertyTuple:
+				"00131"
+			ConceptInstance:
+				"00140"
+			ReifiedRelationshipInstance:
+				"00141"
+			ReifiedRelationshipInstanceDomain:
+				"00142"
+			ReifiedRelationshipInstanceRange:
+				"00143"
+			UnreifiedRelationshipInstanceTuple:
+				"00144"
+			default:
+				"0"
+		}
+
+	}
+
+	// Workaround to https://github.com/eclipse/xtext-lib/issues/65
+	public static final class KeyComparator<T, C extends Comparable<? super C>> implements Comparator<T> {
+		private final Function1<? super T, C> keyFunction;
+
+		/**
+		 * @param keyFunction
+		 *            the key function to use for comparing objects. May not be <code>null</code>
+		 */
+		public new(Function1<? super T, C> keyFunction) {
+			this.keyFunction = checkNotNull(keyFunction, "keyFunction");
+		}
+
+		override public def int compare(T a, T b) {
+			val C c1 = keyFunction.apply(a);
+			val C c2 = keyFunction.apply(b);
+			if (c1 == c2) {
+				return 0
+			} else if (c1 !== null) {
+				return c1.compareTo(c2)
+			} else {
+				return -c2.compareTo(c1)
+			}
+		}
+	}
+
+	// Workaround to https://github.com/eclipse/xtext-lib/issues/65
+	static def <T, C extends Comparable<? super C>> EList<T> sortInplaceBy(EList<T> list,
+		Functions.Function1<? super T, C> key) {
+		if (key === null)
+			throw new NullPointerException("key")
+		ECollections.sort(list, new KeyComparator<T, C>(key));
+		return list;
+	}
+
+	// @TODO: Remove when switching from XText 2.12 => 2.13.
+	// @see https://github.com/eclipse/xtext-core/issues/543#issuecomment-343945809
+	static def void removeAllINodes(List<EObject> queue) {
+		if (!queue.empty) {
+			val e = queue.remove(0)
+			val List<INode> nodes = e.eAdapters().filter(INode).toList
+			e.eAdapters.removeAll(nodes)
+			queue.addAll(e.eContents)
+			removeAllINodes(queue)
+		}
+	}
+	
+	// XText 2.12 workaround for https://github.com/eclipse/xtext-core/issues/543
+	// Delete previous concrete syntax INodes before changing the order of elements.
+	// This is important as subsequent serialization will trigger formatting the contents.
+	// During that process, XText would use cached INodes, if available and doing so could produce incorrectly formatted text 
+	// that can be ill-formed according to the grammar.
+	static def dispatch void normalize(Extent ext) {
+		
+		val queue = new ArrayList<EObject>()
+		queue.add(ext)
+		removeAllINodes(queue)
+				
+		sortInplaceBy(ext.annotationProperties, [abbrevIRI])
+		sortInplaceBy(ext.modules, [abbrevIRI])
+		ext.modules.forEach [ m |
+			normalize(m)
+		]
+	}
+
+	/**
+	 * Normalizes the order of OML Elements recursively within an OML TerminologyGraph.
+	 */
+	static def dispatch void normalize(TerminologyGraph it) {
+		normalizeTerminologyBoxCollections
+		eContents.filter(Element).forEach [ e |
+			normalizeAnnotations(e)
+			normalizeSubElements(e)
+		]
+	}
+
+	/**
+	 * Normalizes the order of OML Elements recursively within an OML Bundle.
+	 */
+	static def dispatch void normalize(Bundle it) {
+		normalizeBundleCollections
+		eContents.filter(Element).forEach [ e |
+			normalizeAnnotations(e)
+			normalizeSubElements(e)
+		]
+	}
+
+	/**
+	 * Normalizes the order of OML Elements recursively within an OML DescriptionBox.
+	 */
+	static def dispatch void normalize(DescriptionBox it) {
+		sortInplaceBy(descriptionBoxRefinements, [sortingCriteria])
+		sortInplaceBy(closedWorldDefinitions, [sortingCriteria])
+		sortInplaceBy(conceptInstances, [sortingCriteria])
+		sortInplaceBy(reifiedRelationshipInstances, [sortingCriteria])
+		sortInplaceBy(reifiedRelationshipInstanceDomains, [sortingCriteria])
+		sortInplaceBy(reifiedRelationshipInstanceRanges, [sortingCriteria])
+		sortInplaceBy(unreifiedRelationshipInstanceTuples, [sortingCriteria])
+		sortInplaceBy(singletonScalarDataPropertyValues, [sortingCriteria])
+		sortInplaceBy(singletonStructuredDataPropertyValues, [sortingCriteria])
+		eContents.filter(Element).forEach [ e |
+			normalizeAnnotations(e)
+			normalizeSubElements(e)
+		]
+	}
+
+	protected static def void normalizeTerminologyBoxCollections(TerminologyBox it) {
+		ECollections.sort(boxAxioms, terminologyBoxAxiomComparator)
+		ECollections.sort(boxStatements, terminologyBoxStatementComparator)
+	}
+
+	protected static def void normalizeBundleCollections(Bundle it) {
+		normalizeTerminologyBoxCollections
+		ECollections.sort(bundleAxioms, bundleAxiomComparator)
+		ECollections.sort(bundleStatements, bundleStatementComparator)
+	}
+
+	protected static def normalizeAnnotations(Element e) {
+		sortInplaceBy(e.annotations, [sortingCriteria])
+	}
+
+	protected static def dispatch void normalizeSubElements(RootConceptTaxonomyAxiom e) {
+		normalizeAnnotations(e.root)
+		sortInplaceBy(e.disjunctions, [sortingCriteria])
+		e.disjunctions.forEach[d|normalizeSubElements(d)]
+	}
+
+	protected static def dispatch void normalizeSubElements(AnonymousConceptUnionAxiom e) {
+		sortInplaceBy(e.disjunctions, [sortingCriteria])
+	}
+
+	protected static def dispatch void normalizeSubElements(SpecificDisjointConceptAxiom e) {
+		normalizeAnnotations(e.disjointLeaf)
+	}
+
+	protected static def dispatch void normalizeSubElements(ModuleEdge e) {
+	}
+	
+	protected static def dispatch void normalizeSubElements(TerminologyBoxStatement e) {
+	}
+	
+	static val terminologyBoxStatementComparator = new java.util.Comparator<TerminologyBoxStatement> {
+		override int compare(TerminologyBoxStatement o1, TerminologyBoxStatement o2) {
+			val k1 = o1.kindOrder
+			val k2 = o2.kindOrder
+			if (k1 == 0)
+				throw new IllegalArgumentException("terminologyBoxStatementComparator: cannot handle " + o1)
+			if (k2 == 0)
+				throw new IllegalArgumentException("terminologyBoxStatementComparator: cannot handle " + o2)
+			if (k1 < k2)
+				-1
+			else if (k1 > k2)
+				1
+			else {
+				val u1 = o1.sortingCriteria
+				val u2 = o2.sortingCriteria
+				u1.compareTo(u2)
+			}
+		}
+	}
+
+	static val terminologyBoxAxiomComparator = new java.util.Comparator<TerminologyBoxAxiom> {
+		override int compare(TerminologyBoxAxiom o1, TerminologyBoxAxiom o2) {
+			val k1 = o1.kindOrder
+			val k2 = o2.kindOrder
+			if (k1 == 0)
+				throw new IllegalArgumentException("terminologyBoxAxiomComparator: cannot handle " + o1)
+			if (k2 == 0)
+				throw new IllegalArgumentException("terminologyBoxAxiomComparator: cannot handle " + o2)
+			if (k1 < k2)
+				-1
+			else if (k1 > k2)
+				1
+			else {
+				val u1 = o1.sortingCriteria
+				val u2 = o2.sortingCriteria
+				u1.compareTo(u2)
+			}
+		}
+	}
+
+	static val bundleStatementComparator = new java.util.Comparator<TerminologyBundleStatement> {
+		override int compare(TerminologyBundleStatement o1, TerminologyBundleStatement o2) {
+			val k1 = o1.kindOrder
+			val k2 = o2.kindOrder
+			if (k1 == 0)
+				throw new IllegalArgumentException("terminologyBoxStatementComparator: cannot handle " + o1)
+			if (k2 == 0)
+				throw new IllegalArgumentException("terminologyBoxStatementComparator: cannot handle " + o2)
+			if (k1 < k2)
+				-1
+			else if (k1 > k2)
+				1
+			else {
+				val u1 = o1.sortingCriteria
+				val u2 = o2.sortingCriteria
+				u1.compareTo(u2)
+			}
+		}
+	}
+
+	static val bundleAxiomComparator = new java.util.Comparator<TerminologyBundleAxiom> {
+		override int compare(TerminologyBundleAxiom o1, TerminologyBundleAxiom o2) {
+			val k1 = o1.kindOrder
+			val k2 = o2.kindOrder
+			if (k1 == 0)
+				throw new IllegalArgumentException("TerminologyBundleAxiom: cannot handle " + o1)
+			if (k2 == 0)
+				throw new IllegalArgumentException("TerminologyBundleAxiom: cannot handle " + o2)
+			if (k1 < k2)
+				-1
+			else if (k1 > k2)
+				1
+			else {
+				val u1 = o1.sortingCriteria
+				val u2 = o2.sortingCriteria
+				u1.compareTo(u2)
+			}
+		}
+	}
+
+	static def String sortingCriteria(Element e) {
+		val c = switch e {
+			Module:
+				e.abbrevIRI
+			ModuleEdge:
+				(e.sourceModule?.abbrevIRI ?: e.uuid().toString) + "." +
+					(e?.targetModule.abbrevIRI ?: e.uuid().toString)
+			AnonymousConceptUnionAxiom:
+				e.name
+			RootConceptTaxonomyAxiom:
+				e.root?.abbrevIRI ?: e.uuid().toString
+			SpecificDisjointConceptAxiom:
+				e.disjointLeaf?.abbrevIRI ?: e.uuid().toString
+			Term:
+				e.abbrevIRI
+			EntityRestrictionAxiom:
+				(e.restrictedDomain?.abbrevIRI ?: e.uuid().toString) + "." +
+					(e.restrictedRelation?.abbrevIRI ?: e.uuid().toString)
+			EntityScalarDataPropertyRestrictionAxiom:
+				(e.restrictedEntity?.abbrevIRI ?: e.uuid().toString) + "." +
+					(e.scalarProperty?.abbrevIRI ?: e.uuid().toString)
+			EntityStructuredDataPropertyParticularRestrictionAxiom:
+				(e.restrictedEntity?.abbrevIRI ?: e.uuid().toString) + "." +
+					(e.structuredDataProperty?.abbrevIRI ?: e.uuid().toString)
+			ScalarOneOfLiteralAxiom:
+				(e.axiom?.abbrevIRI ?: e.uuid().toString) + "." + (e.value?.sortingCriteria ?: e.uuid().toString)
+			SpecializationAxiom:
+				(e.child?.abbrevIRI ?: e.uuid().toString) + "." + (e.parent?.abbrevIRI ?: e.uuid().toString)
+			ConceptualEntitySingletonInstance:
+				e.abbrevIRI
+			ReifiedRelationshipInstanceDomain:
+				(e.reifiedRelationshipInstance?.abbrevIRI ?: e.uuid().toString) + "." +
+					(e.domain?.abbrevIRI ?: e.uuid().toString)
+			ReifiedRelationshipInstanceRange:
+				(e.reifiedRelationshipInstance?.abbrevIRI ?: e.uuid().toString) + "." +
+					(e.range?.abbrevIRI ?: e.uuid().toString)
+			UnreifiedRelationshipInstanceTuple:
+				(e.unreifiedRelationship?.abbrevIRI ?: e.uuid().toString) + "." +
+					(e.domain?.abbrevIRI ?: e.uuid().toString) + "." + (e.range?.abbrevIRI ?: e.uuid().toString)
+		}
+		nestedKindOrder(e) + c
+	}
+
+	static def String sortingCriteria(LiteralValue e) {
+		switch e {
+			LiteralBoolean:
+				e.value.toString
+			LiteralDateTime:
+				e.dateTime.value
+			LiteralDecimal:
+				e.decimal.value
+			LiteralFloat:
+				e.float.value
+			LiteralRational:
+				e.rational.value
+			LiteralReal:
+				e.real.value
+			LiteralQuotedString:
+				e.string.value
+			LiteralRawString:
+				e.string.value
+			LiteralURI:
+				e.uri.value
+			LiteralUUID:
+				e.uuid.value
+		}
+	}
+
+	static def String sortingCriteria(AnnotationPropertyValue e) {
+		e.property?.abbrevIRI ?: e.uuid
 	}
 }

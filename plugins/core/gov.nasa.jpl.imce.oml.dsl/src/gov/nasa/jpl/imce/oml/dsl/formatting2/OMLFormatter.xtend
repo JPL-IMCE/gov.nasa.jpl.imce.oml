@@ -119,9 +119,18 @@ class OMLFormatter extends AbstractFormatter2 {
 		lcurly.append[setNewLines(2)]
 		interior(lcurly, rcurly)[indent]
 		
-		terminologyGraph.annotations.forEach[format.append[setNewLines(1)]]
-		terminologyGraph.boxAxioms.forEach[format.append[setNewLines(2)]]
-		terminologyGraph.boxStatements.forEach[format.append[setNewLines(2)]]
+		terminologyGraph.annotations.forEach[ax|
+			format(ax, document)
+			ax.append[setNewLines(1)]
+		]
+		terminologyGraph.boxAxioms.forEach[ax|
+			format(ax, document)
+			ax.append[setNewLines(2)]
+		]
+		terminologyGraph.boxStatements.forEach[ax|
+			format(ax, document)
+			ax.append[setNewLines(2)]
+		]
 	}
 	
 	def dispatch void format(Bundle bundle, extension IFormattableDocument document) {
@@ -167,14 +176,12 @@ class OMLFormatter extends AbstractFormatter2 {
 
 	def dispatch void format(Aspect aspect, extension IFormattableDocument document) {
 		aspect.annotations.forEach[format.append[setNewLines(1)]]
-		aspect.regionFor.keyword('aspect').append[oneSpace]
-		aspect.regionFor.ruleCall(aspectAccess.nameIDTerminalRuleCall_2_0)
+		aspect.regionFor.keyword('aspect').prepend[newLine].append[oneSpace]
 	}
 		
 	def dispatch void format(Concept concept, extension IFormattableDocument document) {
 		concept.annotations.forEach[format.append[setNewLines(1)]]
-		concept.regionFor.keyword('concept').append[oneSpace]
-		concept.regionFor.ruleCall(conceptAccess.nameIDTerminalRuleCall_2_0)
+		concept.regionFor.keyword('concept').prepend[newLine].append[oneSpace]
 	}
 	
 	def dispatch void format(ReifiedRelationship rr, extension IFormattableDocument document) {
@@ -320,17 +327,26 @@ class OMLFormatter extends AbstractFormatter2 {
 	
 	def dispatch void format(AspectSpecializationAxiom ax, extension IFormattableDocument document) {
 		ax.annotations.forEach[format.append[setNewLines(1)]]
+		ax.regionFor.ruleCall(aspectSpecializationAxiomAccess.subEntityEntityReferenceParserRuleCall_1_0_1).prepend[setNewLines(1)]
 		ax.regionFor.keyword('extendsAspect').surround[oneSpace]
+		ax.regionFor.ruleCall(aspectSpecializationAxiomAccess.superAspectAspectReferenceParserRuleCall_3_0_1).append[setNewLines(2)]
+		//ax.append[setNewLines(2)]
 	}
 	
 	def dispatch void format(ConceptSpecializationAxiom ax, extension IFormattableDocument document) {
 		ax.annotations.forEach[format.append[setNewLines(1)]]
+		ax.regionFor.ruleCall(conceptSpecializationAxiomAccess.subConceptConceptReferenceParserRuleCall_1_0_1).prepend[setNewLines(1)]
 		ax.regionFor.keyword('extendsConcept').surround[oneSpace]
+		ax.regionFor.ruleCall(conceptSpecializationAxiomAccess.superConceptConceptReferenceParserRuleCall_3_0_1).append[setNewLines(2)]
+		//ax.append[setNewLines(2)]
 	}
 	
 	def dispatch void format(ReifiedRelationshipSpecializationAxiom ax, extension IFormattableDocument document) {
 		ax.annotations.forEach[format.append[setNewLines(1)]]
+		ax.regionFor.ruleCall(reifiedRelationshipSpecializationAxiomAccess.subRelationshipReifiedRelationshipReferenceParserRuleCall_1_0_1).prepend[setNewLines(1)]
 		ax.regionFor.keyword('extendsRelationship').surround[oneSpace]
+		ax.regionFor.ruleCall(reifiedRelationshipSpecializationAxiomAccess.superRelationshipReifiedRelationshipReferenceParserRuleCall_3_0_1).append[setNewLines(2)]
+		//ax.append[setNewLines(2)]
 	}
 	
 	def dispatch void format(ConceptDesignationTerminologyAxiom ax, extension IFormattableDocument document) {
