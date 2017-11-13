@@ -27,28 +27,27 @@ import org.eclipse.xtext.resource.XtextResource
 import org.eclipse.xtext.util.concurrent.IUnitOfWork
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions
 import gov.nasa.jpl.imce.oml.model.common.Extent
+import org.eclipse.xtext.ui.editor.model.IXtextDocument
 
 public class NormalizeOMLContentsOrder extends AbstractHandler {
 	
 	override def Object execute(ExecutionEvent event) throws ExecutionException {
 		val XtextEditor editor = EditorUtils.getActiveXtextEditor(event)
-		val doc = editor?.document
+		val IXtextDocument doc = editor?.document
 		if (null !== doc) {
 			doc.modify(normalizeOMLResource)
 		}
 		null
 	}
 	
-	protected static val IUnitOfWork.Void<XtextResource> normalizeOMLResource = 
-	new IUnitOfWork.Void<XtextResource>() {
-		
+	protected static val IUnitOfWork.Void<XtextResource> normalizeOMLResource = new IUnitOfWork.Void<XtextResource>() {
+
 		override def void process(XtextResource state) throws Exception {
-			state
-			.contents
-			.filter(Extent)
-			.forEach[ext|
+			state.contents.filter(Extent).forEach [ ext |
 				OMLExtensions.normalize(ext)
 			]
+			state.modified = true
 		}
 	}
+	
 }

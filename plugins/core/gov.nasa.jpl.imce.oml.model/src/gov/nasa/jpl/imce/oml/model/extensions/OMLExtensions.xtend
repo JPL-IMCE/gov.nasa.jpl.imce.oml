@@ -132,6 +132,9 @@ import java.util.Comparator
 import org.eclipse.xtext.xbase.lib.Functions.Function1
 import static com.google.common.base.Preconditions.checkNotNull
 import org.eclipse.emf.common.util.EList
+import java.util.List
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.xtext.nodemodel.INode
 
 public class OMLExtensions {
 
@@ -941,7 +944,29 @@ public class OMLExtensions {
 		return list;
 	}
 
+	// @TODO: Remove when switching from XText 2.12 => 2.13.
+	// @see https://github.com/eclipse/xtext-core/issues/543#issuecomment-343945809
+	static def void removeAllINodes(List<EObject> queue) {
+		if (!queue.empty) {
+			val e = queue.remove(0)
+			val List<INode> nodes = e.eAdapters().filter(INode).toList
+			e.eAdapters.removeAll(nodes)
+			queue.addAll(e.eContents)
+			removeAllINodes(queue)
+		}
+	}
+	
+	// XText 2.12 workaround for https://github.com/eclipse/xtext-core/issues/543
+	// Delete previous concrete syntax INodes before changing the order of elements.
+	// This is important as subsequent serialization will trigger formatting the contents.
+	// During that process, XText would use cached INodes, if available and doing so could produce incorrectly formatted text 
+	// that can be ill-formed according to the grammar.
 	static def dispatch void normalize(Extent ext) {
+		
+		val queue = new ArrayList<EObject>()
+		queue.add(ext)
+		removeAllINodes(queue)
+				
 		sortInplaceBy(ext.annotationProperties, [abbrevIRI])
 		sortInplaceBy(ext.modules, [abbrevIRI])
 		ext.modules.forEach [ m |
