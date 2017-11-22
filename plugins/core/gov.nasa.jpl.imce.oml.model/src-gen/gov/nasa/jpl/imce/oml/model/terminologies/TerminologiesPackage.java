@@ -2480,7 +2480,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_RELATIONSHIP_DOMAIN__UUID = CommonPackage.MODULE_ELEMENT__UUID;
+	int DATA_RELATIONSHIP_DOMAIN__UUID = DATA_RELATIONSHIP__UUID;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -2489,7 +2489,25 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_RELATIONSHIP_DOMAIN__ANNOTATIONS = CommonPackage.MODULE_ELEMENT__ANNOTATIONS;
+	int DATA_RELATIONSHIP_DOMAIN__ANNOTATIONS = DATA_RELATIONSHIP__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_DOMAIN__TBOX = DATA_RELATIONSHIP__TBOX;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_DOMAIN__NAME = DATA_RELATIONSHIP__NAME;
 
 	/**
 	 * The number of structural features of the '<em>Data Relationship Domain</em>' class.
@@ -2498,16 +2516,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_RELATIONSHIP_DOMAIN_FEATURE_COUNT = CommonPackage.MODULE_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Uuid</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_RELATIONSHIP_DOMAIN___UUID = CommonPackage.MODULE_ELEMENT___UUID;
+	int DATA_RELATIONSHIP_DOMAIN_FEATURE_COUNT = DATA_RELATIONSHIP_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Module Context</em>' operation.
@@ -2516,16 +2525,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_RELATIONSHIP_DOMAIN___MODULE_CONTEXT = CommonPackage.MODULE_ELEMENT___MODULE_CONTEXT;
-
-	/**
-	 * The operation id for the '<em>All Nested Elements</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_RELATIONSHIP_DOMAIN___ALL_NESTED_ELEMENTS = CommonPackage.MODULE_ELEMENT___ALL_NESTED_ELEMENTS;
+	int DATA_RELATIONSHIP_DOMAIN___MODULE_CONTEXT = DATA_RELATIONSHIP___MODULE_CONTEXT;
 
 	/**
 	 * The operation id for the '<em>Iri</em>' operation.
@@ -2534,16 +2534,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_RELATIONSHIP_DOMAIN___IRI = CommonPackage.MODULE_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Name</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_RELATIONSHIP_DOMAIN___NAME = CommonPackage.MODULE_ELEMENT_OPERATION_COUNT + 1;
+	int DATA_RELATIONSHIP_DOMAIN___IRI = DATA_RELATIONSHIP___IRI;
 
 	/**
 	 * The operation id for the '<em>Abbrev IRI</em>' operation.
@@ -2552,7 +2543,70 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_RELATIONSHIP_DOMAIN___ABBREV_IRI = CommonPackage.MODULE_ELEMENT_OPERATION_COUNT + 2;
+	int DATA_RELATIONSHIP_DOMAIN___ABBREV_IRI = DATA_RELATIONSHIP___ABBREV_IRI;
+
+	/**
+	 * The operation id for the '<em>Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_DOMAIN___NAME = DATA_RELATIONSHIP___NAME;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_DOMAIN___UUID = DATA_RELATIONSHIP___UUID;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_DOMAIN___ALL_NESTED_ELEMENTS = DATA_RELATIONSHIP___ALL_NESTED_ELEMENTS;
+
+	/**
+	 * The operation id for the '<em>Source</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_DOMAIN___SOURCE = DATA_RELATIONSHIP___SOURCE;
+
+	/**
+	 * The operation id for the '<em>Relation Domain</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_DOMAIN___RELATION_DOMAIN = DATA_RELATIONSHIP___RELATION_DOMAIN;
+
+	/**
+	 * The operation id for the '<em>Target</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_DOMAIN___TARGET = DATA_RELATIONSHIP___TARGET;
+
+	/**
+	 * The operation id for the '<em>Relation Range</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_DOMAIN___RELATION_RANGE = DATA_RELATIONSHIP___RELATION_RANGE;
 
 	/**
 	 * The number of operations of the '<em>Data Relationship Domain</em>' class.
@@ -2561,7 +2615,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_RELATIONSHIP_DOMAIN_OPERATION_COUNT = CommonPackage.MODULE_ELEMENT_OPERATION_COUNT + 3;
+	int DATA_RELATIONSHIP_DOMAIN_OPERATION_COUNT = DATA_RELATIONSHIP_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.DataRelationshipFromEntityImpl <em>Data Relationship From Entity</em>}' class.
@@ -2592,6 +2646,24 @@ public interface TerminologiesPackage extends EPackage {
 	int DATA_RELATIONSHIP_FROM_ENTITY__ANNOTATIONS = DATA_RELATIONSHIP_DOMAIN__ANNOTATIONS;
 
 	/**
+	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_FROM_ENTITY__TBOX = DATA_RELATIONSHIP_DOMAIN__TBOX;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_FROM_ENTITY__NAME = DATA_RELATIONSHIP_DOMAIN__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Domain</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2619,15 +2691,6 @@ public interface TerminologiesPackage extends EPackage {
 	int DATA_RELATIONSHIP_FROM_ENTITY_FEATURE_COUNT = DATA_RELATIONSHIP_DOMAIN_FEATURE_COUNT + 2;
 
 	/**
-	 * The operation id for the '<em>Uuid</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_RELATIONSHIP_FROM_ENTITY___UUID = DATA_RELATIONSHIP_DOMAIN___UUID;
-
-	/**
 	 * The operation id for the '<em>Module Context</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2635,15 +2698,6 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int DATA_RELATIONSHIP_FROM_ENTITY___MODULE_CONTEXT = DATA_RELATIONSHIP_DOMAIN___MODULE_CONTEXT;
-
-	/**
-	 * The operation id for the '<em>All Nested Elements</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_RELATIONSHIP_FROM_ENTITY___ALL_NESTED_ELEMENTS = DATA_RELATIONSHIP_DOMAIN___ALL_NESTED_ELEMENTS;
 
 	/**
 	 * The operation id for the '<em>Iri</em>' operation.
@@ -2655,6 +2709,15 @@ public interface TerminologiesPackage extends EPackage {
 	int DATA_RELATIONSHIP_FROM_ENTITY___IRI = DATA_RELATIONSHIP_DOMAIN___IRI;
 
 	/**
+	 * The operation id for the '<em>Abbrev IRI</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_FROM_ENTITY___ABBREV_IRI = DATA_RELATIONSHIP_DOMAIN___ABBREV_IRI;
+
+	/**
 	 * The operation id for the '<em>Name</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2664,13 +2727,58 @@ public interface TerminologiesPackage extends EPackage {
 	int DATA_RELATIONSHIP_FROM_ENTITY___NAME = DATA_RELATIONSHIP_DOMAIN___NAME;
 
 	/**
-	 * The operation id for the '<em>Abbrev IRI</em>' operation.
+	 * The operation id for the '<em>Uuid</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_RELATIONSHIP_FROM_ENTITY___ABBREV_IRI = DATA_RELATIONSHIP_DOMAIN___ABBREV_IRI;
+	int DATA_RELATIONSHIP_FROM_ENTITY___UUID = DATA_RELATIONSHIP_DOMAIN___UUID;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_FROM_ENTITY___ALL_NESTED_ELEMENTS = DATA_RELATIONSHIP_DOMAIN___ALL_NESTED_ELEMENTS;
+
+	/**
+	 * The operation id for the '<em>Source</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_FROM_ENTITY___SOURCE = DATA_RELATIONSHIP_DOMAIN___SOURCE;
+
+	/**
+	 * The operation id for the '<em>Relation Domain</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_FROM_ENTITY___RELATION_DOMAIN = DATA_RELATIONSHIP_DOMAIN___RELATION_DOMAIN;
+
+	/**
+	 * The operation id for the '<em>Target</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_FROM_ENTITY___TARGET = DATA_RELATIONSHIP_DOMAIN___TARGET;
+
+	/**
+	 * The operation id for the '<em>Relation Range</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_FROM_ENTITY___RELATION_RANGE = DATA_RELATIONSHIP_DOMAIN___RELATION_RANGE;
 
 	/**
 	 * The number of operations of the '<em>Data Relationship From Entity</em>' class.
@@ -2710,6 +2818,24 @@ public interface TerminologiesPackage extends EPackage {
 	int DATA_RELATIONSHIP_FROM_STRUCTURE__ANNOTATIONS = DATA_RELATIONSHIP_DOMAIN__ANNOTATIONS;
 
 	/**
+	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_FROM_STRUCTURE__TBOX = DATA_RELATIONSHIP_DOMAIN__TBOX;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_FROM_STRUCTURE__NAME = DATA_RELATIONSHIP_DOMAIN__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Domain</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2728,15 +2854,6 @@ public interface TerminologiesPackage extends EPackage {
 	int DATA_RELATIONSHIP_FROM_STRUCTURE_FEATURE_COUNT = DATA_RELATIONSHIP_DOMAIN_FEATURE_COUNT + 1;
 
 	/**
-	 * The operation id for the '<em>Uuid</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_RELATIONSHIP_FROM_STRUCTURE___UUID = DATA_RELATIONSHIP_DOMAIN___UUID;
-
-	/**
 	 * The operation id for the '<em>Module Context</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2744,15 +2861,6 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int DATA_RELATIONSHIP_FROM_STRUCTURE___MODULE_CONTEXT = DATA_RELATIONSHIP_DOMAIN___MODULE_CONTEXT;
-
-	/**
-	 * The operation id for the '<em>All Nested Elements</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_RELATIONSHIP_FROM_STRUCTURE___ALL_NESTED_ELEMENTS = DATA_RELATIONSHIP_DOMAIN___ALL_NESTED_ELEMENTS;
 
 	/**
 	 * The operation id for the '<em>Iri</em>' operation.
@@ -2764,6 +2872,15 @@ public interface TerminologiesPackage extends EPackage {
 	int DATA_RELATIONSHIP_FROM_STRUCTURE___IRI = DATA_RELATIONSHIP_DOMAIN___IRI;
 
 	/**
+	 * The operation id for the '<em>Abbrev IRI</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_FROM_STRUCTURE___ABBREV_IRI = DATA_RELATIONSHIP_DOMAIN___ABBREV_IRI;
+
+	/**
 	 * The operation id for the '<em>Name</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2773,13 +2890,58 @@ public interface TerminologiesPackage extends EPackage {
 	int DATA_RELATIONSHIP_FROM_STRUCTURE___NAME = DATA_RELATIONSHIP_DOMAIN___NAME;
 
 	/**
-	 * The operation id for the '<em>Abbrev IRI</em>' operation.
+	 * The operation id for the '<em>Uuid</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_RELATIONSHIP_FROM_STRUCTURE___ABBREV_IRI = DATA_RELATIONSHIP_DOMAIN___ABBREV_IRI;
+	int DATA_RELATIONSHIP_FROM_STRUCTURE___UUID = DATA_RELATIONSHIP_DOMAIN___UUID;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_FROM_STRUCTURE___ALL_NESTED_ELEMENTS = DATA_RELATIONSHIP_DOMAIN___ALL_NESTED_ELEMENTS;
+
+	/**
+	 * The operation id for the '<em>Source</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_FROM_STRUCTURE___SOURCE = DATA_RELATIONSHIP_DOMAIN___SOURCE;
+
+	/**
+	 * The operation id for the '<em>Relation Domain</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_FROM_STRUCTURE___RELATION_DOMAIN = DATA_RELATIONSHIP_DOMAIN___RELATION_DOMAIN;
+
+	/**
+	 * The operation id for the '<em>Target</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_FROM_STRUCTURE___TARGET = DATA_RELATIONSHIP_DOMAIN___TARGET;
+
+	/**
+	 * The operation id for the '<em>Relation Range</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_FROM_STRUCTURE___RELATION_RANGE = DATA_RELATIONSHIP_DOMAIN___RELATION_RANGE;
 
 	/**
 	 * The number of operations of the '<em>Data Relationship From Structure</em>' class.
@@ -2807,7 +2969,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_RELATIONSHIP_RANGE__UUID = CommonPackage.MODULE_ELEMENT__UUID;
+	int DATA_RELATIONSHIP_RANGE__UUID = DATA_RELATIONSHIP__UUID;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -2816,7 +2978,25 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_RELATIONSHIP_RANGE__ANNOTATIONS = CommonPackage.MODULE_ELEMENT__ANNOTATIONS;
+	int DATA_RELATIONSHIP_RANGE__ANNOTATIONS = DATA_RELATIONSHIP__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_RANGE__TBOX = DATA_RELATIONSHIP__TBOX;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_RANGE__NAME = DATA_RELATIONSHIP__NAME;
 
 	/**
 	 * The number of structural features of the '<em>Data Relationship Range</em>' class.
@@ -2825,16 +3005,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_RELATIONSHIP_RANGE_FEATURE_COUNT = CommonPackage.MODULE_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Uuid</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_RELATIONSHIP_RANGE___UUID = CommonPackage.MODULE_ELEMENT___UUID;
+	int DATA_RELATIONSHIP_RANGE_FEATURE_COUNT = DATA_RELATIONSHIP_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Module Context</em>' operation.
@@ -2843,16 +3014,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_RELATIONSHIP_RANGE___MODULE_CONTEXT = CommonPackage.MODULE_ELEMENT___MODULE_CONTEXT;
-
-	/**
-	 * The operation id for the '<em>All Nested Elements</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_RELATIONSHIP_RANGE___ALL_NESTED_ELEMENTS = CommonPackage.MODULE_ELEMENT___ALL_NESTED_ELEMENTS;
+	int DATA_RELATIONSHIP_RANGE___MODULE_CONTEXT = DATA_RELATIONSHIP___MODULE_CONTEXT;
 
 	/**
 	 * The operation id for the '<em>Iri</em>' operation.
@@ -2861,16 +3023,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_RELATIONSHIP_RANGE___IRI = CommonPackage.MODULE_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Name</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_RELATIONSHIP_RANGE___NAME = CommonPackage.MODULE_ELEMENT_OPERATION_COUNT + 1;
+	int DATA_RELATIONSHIP_RANGE___IRI = DATA_RELATIONSHIP___IRI;
 
 	/**
 	 * The operation id for the '<em>Abbrev IRI</em>' operation.
@@ -2879,7 +3032,70 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_RELATIONSHIP_RANGE___ABBREV_IRI = CommonPackage.MODULE_ELEMENT_OPERATION_COUNT + 2;
+	int DATA_RELATIONSHIP_RANGE___ABBREV_IRI = DATA_RELATIONSHIP___ABBREV_IRI;
+
+	/**
+	 * The operation id for the '<em>Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_RANGE___NAME = DATA_RELATIONSHIP___NAME;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_RANGE___UUID = DATA_RELATIONSHIP___UUID;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_RANGE___ALL_NESTED_ELEMENTS = DATA_RELATIONSHIP___ALL_NESTED_ELEMENTS;
+
+	/**
+	 * The operation id for the '<em>Source</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_RANGE___SOURCE = DATA_RELATIONSHIP___SOURCE;
+
+	/**
+	 * The operation id for the '<em>Relation Domain</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_RANGE___RELATION_DOMAIN = DATA_RELATIONSHIP___RELATION_DOMAIN;
+
+	/**
+	 * The operation id for the '<em>Target</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_RANGE___TARGET = DATA_RELATIONSHIP___TARGET;
+
+	/**
+	 * The operation id for the '<em>Relation Range</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_RANGE___RELATION_RANGE = DATA_RELATIONSHIP___RELATION_RANGE;
 
 	/**
 	 * The number of operations of the '<em>Data Relationship Range</em>' class.
@@ -2888,7 +3104,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_RELATIONSHIP_RANGE_OPERATION_COUNT = CommonPackage.MODULE_ELEMENT_OPERATION_COUNT + 3;
+	int DATA_RELATIONSHIP_RANGE_OPERATION_COUNT = DATA_RELATIONSHIP_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.DataRelationshipToScalarImpl <em>Data Relationship To Scalar</em>}' class.
@@ -2919,6 +3135,24 @@ public interface TerminologiesPackage extends EPackage {
 	int DATA_RELATIONSHIP_TO_SCALAR__ANNOTATIONS = DATA_RELATIONSHIP_RANGE__ANNOTATIONS;
 
 	/**
+	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_TO_SCALAR__TBOX = DATA_RELATIONSHIP_RANGE__TBOX;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_TO_SCALAR__NAME = DATA_RELATIONSHIP_RANGE__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Range</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2937,15 +3171,6 @@ public interface TerminologiesPackage extends EPackage {
 	int DATA_RELATIONSHIP_TO_SCALAR_FEATURE_COUNT = DATA_RELATIONSHIP_RANGE_FEATURE_COUNT + 1;
 
 	/**
-	 * The operation id for the '<em>Uuid</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_RELATIONSHIP_TO_SCALAR___UUID = DATA_RELATIONSHIP_RANGE___UUID;
-
-	/**
 	 * The operation id for the '<em>Module Context</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2953,15 +3178,6 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int DATA_RELATIONSHIP_TO_SCALAR___MODULE_CONTEXT = DATA_RELATIONSHIP_RANGE___MODULE_CONTEXT;
-
-	/**
-	 * The operation id for the '<em>All Nested Elements</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_RELATIONSHIP_TO_SCALAR___ALL_NESTED_ELEMENTS = DATA_RELATIONSHIP_RANGE___ALL_NESTED_ELEMENTS;
 
 	/**
 	 * The operation id for the '<em>Iri</em>' operation.
@@ -2973,6 +3189,15 @@ public interface TerminologiesPackage extends EPackage {
 	int DATA_RELATIONSHIP_TO_SCALAR___IRI = DATA_RELATIONSHIP_RANGE___IRI;
 
 	/**
+	 * The operation id for the '<em>Abbrev IRI</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_TO_SCALAR___ABBREV_IRI = DATA_RELATIONSHIP_RANGE___ABBREV_IRI;
+
+	/**
 	 * The operation id for the '<em>Name</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2982,13 +3207,58 @@ public interface TerminologiesPackage extends EPackage {
 	int DATA_RELATIONSHIP_TO_SCALAR___NAME = DATA_RELATIONSHIP_RANGE___NAME;
 
 	/**
-	 * The operation id for the '<em>Abbrev IRI</em>' operation.
+	 * The operation id for the '<em>Uuid</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_RELATIONSHIP_TO_SCALAR___ABBREV_IRI = DATA_RELATIONSHIP_RANGE___ABBREV_IRI;
+	int DATA_RELATIONSHIP_TO_SCALAR___UUID = DATA_RELATIONSHIP_RANGE___UUID;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_TO_SCALAR___ALL_NESTED_ELEMENTS = DATA_RELATIONSHIP_RANGE___ALL_NESTED_ELEMENTS;
+
+	/**
+	 * The operation id for the '<em>Source</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_TO_SCALAR___SOURCE = DATA_RELATIONSHIP_RANGE___SOURCE;
+
+	/**
+	 * The operation id for the '<em>Relation Domain</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_TO_SCALAR___RELATION_DOMAIN = DATA_RELATIONSHIP_RANGE___RELATION_DOMAIN;
+
+	/**
+	 * The operation id for the '<em>Target</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_TO_SCALAR___TARGET = DATA_RELATIONSHIP_RANGE___TARGET;
+
+	/**
+	 * The operation id for the '<em>Relation Range</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_TO_SCALAR___RELATION_RANGE = DATA_RELATIONSHIP_RANGE___RELATION_RANGE;
 
 	/**
 	 * The number of operations of the '<em>Data Relationship To Scalar</em>' class.
@@ -3028,6 +3298,24 @@ public interface TerminologiesPackage extends EPackage {
 	int DATA_RELATIONSHIP_TO_STRUCTURE__ANNOTATIONS = DATA_RELATIONSHIP_RANGE__ANNOTATIONS;
 
 	/**
+	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_TO_STRUCTURE__TBOX = DATA_RELATIONSHIP_RANGE__TBOX;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_TO_STRUCTURE__NAME = DATA_RELATIONSHIP_RANGE__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Range</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3046,15 +3334,6 @@ public interface TerminologiesPackage extends EPackage {
 	int DATA_RELATIONSHIP_TO_STRUCTURE_FEATURE_COUNT = DATA_RELATIONSHIP_RANGE_FEATURE_COUNT + 1;
 
 	/**
-	 * The operation id for the '<em>Uuid</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_RELATIONSHIP_TO_STRUCTURE___UUID = DATA_RELATIONSHIP_RANGE___UUID;
-
-	/**
 	 * The operation id for the '<em>Module Context</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3062,15 +3341,6 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int DATA_RELATIONSHIP_TO_STRUCTURE___MODULE_CONTEXT = DATA_RELATIONSHIP_RANGE___MODULE_CONTEXT;
-
-	/**
-	 * The operation id for the '<em>All Nested Elements</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_RELATIONSHIP_TO_STRUCTURE___ALL_NESTED_ELEMENTS = DATA_RELATIONSHIP_RANGE___ALL_NESTED_ELEMENTS;
 
 	/**
 	 * The operation id for the '<em>Iri</em>' operation.
@@ -3082,6 +3352,15 @@ public interface TerminologiesPackage extends EPackage {
 	int DATA_RELATIONSHIP_TO_STRUCTURE___IRI = DATA_RELATIONSHIP_RANGE___IRI;
 
 	/**
+	 * The operation id for the '<em>Abbrev IRI</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_TO_STRUCTURE___ABBREV_IRI = DATA_RELATIONSHIP_RANGE___ABBREV_IRI;
+
+	/**
 	 * The operation id for the '<em>Name</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3091,13 +3370,58 @@ public interface TerminologiesPackage extends EPackage {
 	int DATA_RELATIONSHIP_TO_STRUCTURE___NAME = DATA_RELATIONSHIP_RANGE___NAME;
 
 	/**
-	 * The operation id for the '<em>Abbrev IRI</em>' operation.
+	 * The operation id for the '<em>Uuid</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_RELATIONSHIP_TO_STRUCTURE___ABBREV_IRI = DATA_RELATIONSHIP_RANGE___ABBREV_IRI;
+	int DATA_RELATIONSHIP_TO_STRUCTURE___UUID = DATA_RELATIONSHIP_RANGE___UUID;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_TO_STRUCTURE___ALL_NESTED_ELEMENTS = DATA_RELATIONSHIP_RANGE___ALL_NESTED_ELEMENTS;
+
+	/**
+	 * The operation id for the '<em>Source</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_TO_STRUCTURE___SOURCE = DATA_RELATIONSHIP_RANGE___SOURCE;
+
+	/**
+	 * The operation id for the '<em>Relation Domain</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_TO_STRUCTURE___RELATION_DOMAIN = DATA_RELATIONSHIP_RANGE___RELATION_DOMAIN;
+
+	/**
+	 * The operation id for the '<em>Target</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_TO_STRUCTURE___TARGET = DATA_RELATIONSHIP_RANGE___TARGET;
+
+	/**
+	 * The operation id for the '<em>Relation Range</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_RELATIONSHIP_TO_STRUCTURE___RELATION_RANGE = DATA_RELATIONSHIP_RANGE___RELATION_RANGE;
 
 	/**
 	 * The number of operations of the '<em>Data Relationship To Structure</em>' class.

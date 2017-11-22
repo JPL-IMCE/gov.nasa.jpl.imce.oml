@@ -2240,6 +2240,12 @@ public class OMLFormatter extends AbstractFormatter2 {
     if (sc instanceof BinaryScalarRestriction) {
       _format((BinaryScalarRestriction)sc, document);
       return;
+    } else if (sc instanceof EntityScalarDataProperty) {
+      _format((EntityScalarDataProperty)sc, document);
+      return;
+    } else if (sc instanceof EntityStructuredDataProperty) {
+      _format((EntityStructuredDataProperty)sc, document);
+      return;
     } else if (sc instanceof IRIScalarRestriction) {
       _format((IRIScalarRestriction)sc, document);
       return;
@@ -2249,11 +2255,17 @@ public class OMLFormatter extends AbstractFormatter2 {
     } else if (sc instanceof PlainLiteralScalarRestriction) {
       _format((PlainLiteralScalarRestriction)sc, document);
       return;
+    } else if (sc instanceof ScalarDataProperty) {
+      _format((ScalarDataProperty)sc, document);
+      return;
     } else if (sc instanceof ScalarOneOfRestriction) {
       _format((ScalarOneOfRestriction)sc, document);
       return;
     } else if (sc instanceof StringScalarRestriction) {
       _format((StringScalarRestriction)sc, document);
+      return;
+    } else if (sc instanceof StructuredDataProperty) {
+      _format((StructuredDataProperty)sc, document);
       return;
     } else if (sc instanceof SynonymScalarRestriction) {
       _format((SynonymScalarRestriction)sc, document);
@@ -2282,9 +2294,6 @@ public class OMLFormatter extends AbstractFormatter2 {
     } else if (sc instanceof EntityExistentialRestrictionAxiom) {
       _format((EntityExistentialRestrictionAxiom)sc, document);
       return;
-    } else if (sc instanceof EntityScalarDataProperty) {
-      _format((EntityScalarDataProperty)sc, document);
-      return;
     } else if (sc instanceof EntityScalarDataPropertyExistentialRestrictionAxiom) {
       _format((EntityScalarDataPropertyExistentialRestrictionAxiom)sc, document);
       return;
@@ -2293,9 +2302,6 @@ public class OMLFormatter extends AbstractFormatter2 {
       return;
     } else if (sc instanceof EntityScalarDataPropertyUniversalRestrictionAxiom) {
       _format((EntityScalarDataPropertyUniversalRestrictionAxiom)sc, document);
-      return;
-    } else if (sc instanceof EntityStructuredDataProperty) {
-      _format((EntityStructuredDataProperty)sc, document);
       return;
     } else if (sc instanceof EntityStructuredDataPropertyParticularRestrictionAxiom) {
       _format((EntityStructuredDataPropertyParticularRestrictionAxiom)sc, document);
@@ -2309,14 +2315,8 @@ public class OMLFormatter extends AbstractFormatter2 {
     } else if (sc instanceof ReifiedRelationshipSpecializationAxiom) {
       _format((ReifiedRelationshipSpecializationAxiom)sc, document);
       return;
-    } else if (sc instanceof ScalarDataProperty) {
-      _format((ScalarDataProperty)sc, document);
-      return;
     } else if (sc instanceof Structure) {
       _format((Structure)sc, document);
-      return;
-    } else if (sc instanceof StructuredDataProperty) {
-      _format((StructuredDataProperty)sc, document);
       return;
     } else if (sc instanceof UnreifiedRelationship) {
       _format((UnreifiedRelationship)sc, document);
