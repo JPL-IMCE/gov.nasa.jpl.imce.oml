@@ -290,8 +290,12 @@ public class TerminologiesSwitch<T> extends Switch<T> {
 			case TerminologiesPackage.DATA_RELATIONSHIP_DOMAIN: {
 				DataRelationshipDomain dataRelationshipDomain = (DataRelationshipDomain)theEObject;
 				T result = caseDataRelationshipDomain(dataRelationshipDomain);
-				if (result == null) result = caseModuleElement(dataRelationshipDomain);
+				if (result == null) result = caseDataRelationship(dataRelationshipDomain);
+				if (result == null) result = caseTerm(dataRelationshipDomain);
+				if (result == null) result = caseDirectedBinaryRelationshipKind(dataRelationshipDomain);
+				if (result == null) result = caseTerminologyBoxStatement(dataRelationshipDomain);
 				if (result == null) result = caseResource(dataRelationshipDomain);
+				if (result == null) result = caseModuleElement(dataRelationshipDomain);
 				if (result == null) result = caseElement(dataRelationshipDomain);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -300,8 +304,12 @@ public class TerminologiesSwitch<T> extends Switch<T> {
 				DataRelationshipFromEntity dataRelationshipFromEntity = (DataRelationshipFromEntity)theEObject;
 				T result = caseDataRelationshipFromEntity(dataRelationshipFromEntity);
 				if (result == null) result = caseDataRelationshipDomain(dataRelationshipFromEntity);
-				if (result == null) result = caseModuleElement(dataRelationshipFromEntity);
+				if (result == null) result = caseDataRelationship(dataRelationshipFromEntity);
+				if (result == null) result = caseTerm(dataRelationshipFromEntity);
+				if (result == null) result = caseDirectedBinaryRelationshipKind(dataRelationshipFromEntity);
+				if (result == null) result = caseTerminologyBoxStatement(dataRelationshipFromEntity);
 				if (result == null) result = caseResource(dataRelationshipFromEntity);
+				if (result == null) result = caseModuleElement(dataRelationshipFromEntity);
 				if (result == null) result = caseElement(dataRelationshipFromEntity);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -310,8 +318,12 @@ public class TerminologiesSwitch<T> extends Switch<T> {
 				DataRelationshipFromStructure dataRelationshipFromStructure = (DataRelationshipFromStructure)theEObject;
 				T result = caseDataRelationshipFromStructure(dataRelationshipFromStructure);
 				if (result == null) result = caseDataRelationshipDomain(dataRelationshipFromStructure);
-				if (result == null) result = caseModuleElement(dataRelationshipFromStructure);
+				if (result == null) result = caseDataRelationship(dataRelationshipFromStructure);
+				if (result == null) result = caseTerm(dataRelationshipFromStructure);
+				if (result == null) result = caseDirectedBinaryRelationshipKind(dataRelationshipFromStructure);
+				if (result == null) result = caseTerminologyBoxStatement(dataRelationshipFromStructure);
 				if (result == null) result = caseResource(dataRelationshipFromStructure);
+				if (result == null) result = caseModuleElement(dataRelationshipFromStructure);
 				if (result == null) result = caseElement(dataRelationshipFromStructure);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -319,8 +331,12 @@ public class TerminologiesSwitch<T> extends Switch<T> {
 			case TerminologiesPackage.DATA_RELATIONSHIP_RANGE: {
 				DataRelationshipRange dataRelationshipRange = (DataRelationshipRange)theEObject;
 				T result = caseDataRelationshipRange(dataRelationshipRange);
-				if (result == null) result = caseModuleElement(dataRelationshipRange);
+				if (result == null) result = caseDataRelationship(dataRelationshipRange);
+				if (result == null) result = caseTerm(dataRelationshipRange);
+				if (result == null) result = caseDirectedBinaryRelationshipKind(dataRelationshipRange);
+				if (result == null) result = caseTerminologyBoxStatement(dataRelationshipRange);
 				if (result == null) result = caseResource(dataRelationshipRange);
+				if (result == null) result = caseModuleElement(dataRelationshipRange);
 				if (result == null) result = caseElement(dataRelationshipRange);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -329,8 +345,12 @@ public class TerminologiesSwitch<T> extends Switch<T> {
 				DataRelationshipToScalar dataRelationshipToScalar = (DataRelationshipToScalar)theEObject;
 				T result = caseDataRelationshipToScalar(dataRelationshipToScalar);
 				if (result == null) result = caseDataRelationshipRange(dataRelationshipToScalar);
-				if (result == null) result = caseModuleElement(dataRelationshipToScalar);
+				if (result == null) result = caseDataRelationship(dataRelationshipToScalar);
+				if (result == null) result = caseTerm(dataRelationshipToScalar);
+				if (result == null) result = caseDirectedBinaryRelationshipKind(dataRelationshipToScalar);
+				if (result == null) result = caseTerminologyBoxStatement(dataRelationshipToScalar);
 				if (result == null) result = caseResource(dataRelationshipToScalar);
+				if (result == null) result = caseModuleElement(dataRelationshipToScalar);
 				if (result == null) result = caseElement(dataRelationshipToScalar);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -339,8 +359,12 @@ public class TerminologiesSwitch<T> extends Switch<T> {
 				DataRelationshipToStructure dataRelationshipToStructure = (DataRelationshipToStructure)theEObject;
 				T result = caseDataRelationshipToStructure(dataRelationshipToStructure);
 				if (result == null) result = caseDataRelationshipRange(dataRelationshipToStructure);
-				if (result == null) result = caseModuleElement(dataRelationshipToStructure);
+				if (result == null) result = caseDataRelationship(dataRelationshipToStructure);
+				if (result == null) result = caseTerm(dataRelationshipToStructure);
+				if (result == null) result = caseDirectedBinaryRelationshipKind(dataRelationshipToStructure);
+				if (result == null) result = caseTerminologyBoxStatement(dataRelationshipToStructure);
 				if (result == null) result = caseResource(dataRelationshipToStructure);
+				if (result == null) result = caseModuleElement(dataRelationshipToStructure);
 				if (result == null) result = caseElement(dataRelationshipToStructure);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -348,13 +372,13 @@ public class TerminologiesSwitch<T> extends Switch<T> {
 			case TerminologiesPackage.ENTITY_STRUCTURED_DATA_PROPERTY: {
 				EntityStructuredDataProperty entityStructuredDataProperty = (EntityStructuredDataProperty)theEObject;
 				T result = caseEntityStructuredDataProperty(entityStructuredDataProperty);
-				if (result == null) result = caseDataRelationship(entityStructuredDataProperty);
 				if (result == null) result = caseDataRelationshipFromEntity(entityStructuredDataProperty);
 				if (result == null) result = caseDataRelationshipToStructure(entityStructuredDataProperty);
 				if (result == null) result = caseTerm(entityStructuredDataProperty);
 				if (result == null) result = caseDirectedBinaryRelationshipKind(entityStructuredDataProperty);
 				if (result == null) result = caseDataRelationshipDomain(entityStructuredDataProperty);
 				if (result == null) result = caseDataRelationshipRange(entityStructuredDataProperty);
+				if (result == null) result = caseDataRelationship(entityStructuredDataProperty);
 				if (result == null) result = caseTerminologyBoxStatement(entityStructuredDataProperty);
 				if (result == null) result = caseResource(entityStructuredDataProperty);
 				if (result == null) result = caseModuleElement(entityStructuredDataProperty);
@@ -365,13 +389,13 @@ public class TerminologiesSwitch<T> extends Switch<T> {
 			case TerminologiesPackage.ENTITY_SCALAR_DATA_PROPERTY: {
 				EntityScalarDataProperty entityScalarDataProperty = (EntityScalarDataProperty)theEObject;
 				T result = caseEntityScalarDataProperty(entityScalarDataProperty);
-				if (result == null) result = caseDataRelationship(entityScalarDataProperty);
 				if (result == null) result = caseDataRelationshipFromEntity(entityScalarDataProperty);
 				if (result == null) result = caseDataRelationshipToScalar(entityScalarDataProperty);
 				if (result == null) result = caseTerm(entityScalarDataProperty);
 				if (result == null) result = caseDirectedBinaryRelationshipKind(entityScalarDataProperty);
 				if (result == null) result = caseDataRelationshipDomain(entityScalarDataProperty);
 				if (result == null) result = caseDataRelationshipRange(entityScalarDataProperty);
+				if (result == null) result = caseDataRelationship(entityScalarDataProperty);
 				if (result == null) result = caseTerminologyBoxStatement(entityScalarDataProperty);
 				if (result == null) result = caseResource(entityScalarDataProperty);
 				if (result == null) result = caseModuleElement(entityScalarDataProperty);
@@ -382,13 +406,13 @@ public class TerminologiesSwitch<T> extends Switch<T> {
 			case TerminologiesPackage.STRUCTURED_DATA_PROPERTY: {
 				StructuredDataProperty structuredDataProperty = (StructuredDataProperty)theEObject;
 				T result = caseStructuredDataProperty(structuredDataProperty);
-				if (result == null) result = caseDataRelationship(structuredDataProperty);
 				if (result == null) result = caseDataRelationshipFromStructure(structuredDataProperty);
 				if (result == null) result = caseDataRelationshipToStructure(structuredDataProperty);
 				if (result == null) result = caseTerm(structuredDataProperty);
 				if (result == null) result = caseDirectedBinaryRelationshipKind(structuredDataProperty);
 				if (result == null) result = caseDataRelationshipDomain(structuredDataProperty);
 				if (result == null) result = caseDataRelationshipRange(structuredDataProperty);
+				if (result == null) result = caseDataRelationship(structuredDataProperty);
 				if (result == null) result = caseTerminologyBoxStatement(structuredDataProperty);
 				if (result == null) result = caseResource(structuredDataProperty);
 				if (result == null) result = caseModuleElement(structuredDataProperty);
@@ -399,13 +423,13 @@ public class TerminologiesSwitch<T> extends Switch<T> {
 			case TerminologiesPackage.SCALAR_DATA_PROPERTY: {
 				ScalarDataProperty scalarDataProperty = (ScalarDataProperty)theEObject;
 				T result = caseScalarDataProperty(scalarDataProperty);
-				if (result == null) result = caseDataRelationship(scalarDataProperty);
 				if (result == null) result = caseDataRelationshipFromStructure(scalarDataProperty);
 				if (result == null) result = caseDataRelationshipToScalar(scalarDataProperty);
 				if (result == null) result = caseTerm(scalarDataProperty);
 				if (result == null) result = caseDirectedBinaryRelationshipKind(scalarDataProperty);
 				if (result == null) result = caseDataRelationshipDomain(scalarDataProperty);
 				if (result == null) result = caseDataRelationshipRange(scalarDataProperty);
+				if (result == null) result = caseDataRelationship(scalarDataProperty);
 				if (result == null) result = caseTerminologyBoxStatement(scalarDataProperty);
 				if (result == null) result = caseResource(scalarDataProperty);
 				if (result == null) result = caseModuleElement(scalarDataProperty);

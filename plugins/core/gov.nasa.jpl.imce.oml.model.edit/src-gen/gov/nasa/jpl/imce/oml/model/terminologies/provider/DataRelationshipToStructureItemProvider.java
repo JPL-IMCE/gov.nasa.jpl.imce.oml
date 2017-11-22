@@ -94,7 +94,7 @@ public class DataRelationshipToStructureItemProvider extends DataRelationshipRan
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((DataRelationshipToStructure)object).getUuid();
+		String label = ((DataRelationshipToStructure)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_DataRelationshipToStructure_type") :
 			getString("_UI_DataRelationshipToStructure_type") + " " + label;

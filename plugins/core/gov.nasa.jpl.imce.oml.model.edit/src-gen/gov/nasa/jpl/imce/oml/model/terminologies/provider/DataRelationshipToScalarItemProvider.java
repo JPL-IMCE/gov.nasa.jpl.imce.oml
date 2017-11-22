@@ -94,7 +94,7 @@ public class DataRelationshipToScalarItemProvider extends DataRelationshipRangeI
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((DataRelationshipToScalar)object).getUuid();
+		String label = ((DataRelationshipToScalar)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_DataRelationshipToScalar_type") :
 			getString("_UI_DataRelationshipToScalar_type") + " " + label;

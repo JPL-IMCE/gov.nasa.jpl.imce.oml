@@ -3555,12 +3555,10 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		scalarEClass.getESuperTypes().add(this.getUnaryTermKind());
 		dataRelationshipEClass.getESuperTypes().add(this.getTerm());
 		dataRelationshipEClass.getESuperTypes().add(this.getDirectedBinaryRelationshipKind());
-		dataRelationshipDomainEClass.getESuperTypes().add(theCommonPackage.getModuleElement());
-		dataRelationshipDomainEClass.getESuperTypes().add(theCommonPackage.getResource());
+		dataRelationshipDomainEClass.getESuperTypes().add(this.getDataRelationship());
 		dataRelationshipFromEntityEClass.getESuperTypes().add(this.getDataRelationshipDomain());
 		dataRelationshipFromStructureEClass.getESuperTypes().add(this.getDataRelationshipDomain());
-		dataRelationshipRangeEClass.getESuperTypes().add(theCommonPackage.getModuleElement());
-		dataRelationshipRangeEClass.getESuperTypes().add(theCommonPackage.getResource());
+		dataRelationshipRangeEClass.getESuperTypes().add(this.getDataRelationship());
 		dataRelationshipToScalarEClass.getESuperTypes().add(this.getDataRelationshipRange());
 		dataRelationshipToStructureEClass.getESuperTypes().add(this.getDataRelationshipRange());
 		entityStructuredDataPropertyEClass.getESuperTypes().add(this.getDataRelationship());

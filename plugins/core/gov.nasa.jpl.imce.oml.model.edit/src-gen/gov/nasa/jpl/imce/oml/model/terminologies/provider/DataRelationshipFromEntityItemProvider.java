@@ -119,7 +119,7 @@ public class DataRelationshipFromEntityItemProvider extends DataRelationshipDoma
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((DataRelationshipFromEntity)object).getUuid();
+		String label = ((DataRelationshipFromEntity)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_DataRelationshipFromEntity_type") :
 			getString("_UI_DataRelationshipFromEntity_type") + " " + label;

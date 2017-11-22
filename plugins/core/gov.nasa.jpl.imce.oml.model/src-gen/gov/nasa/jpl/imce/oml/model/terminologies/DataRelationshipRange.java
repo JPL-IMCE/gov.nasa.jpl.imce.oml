@@ -18,8 +18,6 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies;
 
-import gov.nasa.jpl.imce.oml.model.common.ModuleElement;
-import gov.nasa.jpl.imce.oml.model.common.Resource;
 
 /**
  * <!-- begin-user-doc -->
@@ -36,5 +34,5 @@ import gov.nasa.jpl.imce.oml.model.common.Resource;
  * @model abstract="true"
  * @generated
  */
-public interface DataRelationshipRange extends ModuleElement, Resource {
+public interface DataRelationshipRange extends DataRelationship {
 } // DataRelationshipRange
