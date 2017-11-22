@@ -469,7 +469,7 @@ abstract class DataRelationship extends Term, DirectedBinaryRelationshipKind {
  * for the domain of an OML DataRelationship
  */
 @Glossary
-abstract class DataRelationshipDomain extends ModuleElement, Resource {
+abstract class DataRelationshipDomain extends DataRelationship {
 }
 
 /*
@@ -505,7 +505,7 @@ abstract class DataRelationshipFromStructure extends DataRelationshipDomain {
  * for the range of an OML DataRelationship
  */
 @Glossary
-abstract class DataRelationshipRange extends ModuleElement, Resource {
+abstract class DataRelationshipRange extends DataRelationship {
 }
 
 /*
