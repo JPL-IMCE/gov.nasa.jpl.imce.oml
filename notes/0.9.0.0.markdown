@@ -35,3 +35,5 @@ gov.nasa.jpl.imce.oml.tycho 0.9.0.0 resolves major problems found in 0.8.0.1
 - [#150 Incorrect fix for RuleBodySegment.uuid()](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/150)
 
 - [#155 Provide an OML Normalization API for the OML/EMF-based representation](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/155)
+
+- [#158 Make DataRelationship[Domain|Range] a kind of DataRelationship](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/158)
