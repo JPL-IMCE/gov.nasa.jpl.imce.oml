@@ -696,13 +696,49 @@ public interface CommonPackage extends EPackage {
 	int RESOURCE = 15;
 
 	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE__UUID = ELEMENT__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE__ANNOTATIONS = ELEMENT__ANNOTATIONS;
+
+	/**
 	 * The number of structural features of the '<em>Resource</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_FEATURE_COUNT = 0;
+	int RESOURCE_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE___UUID = ELEMENT___UUID;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE___MODULE_CONTEXT = ELEMENT___MODULE_CONTEXT;
 
 	/**
 	 * The operation id for the '<em>Iri</em>' operation.
@@ -711,7 +747,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE___IRI = 0;
+	int RESOURCE___IRI = ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Name</em>' operation.
@@ -720,7 +756,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE___NAME = 1;
+	int RESOURCE___NAME = ELEMENT_OPERATION_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Abbrev IRI</em>' operation.
@@ -729,7 +765,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE___ABBREV_IRI = 2;
+	int RESOURCE___ABBREV_IRI = ELEMENT_OPERATION_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Resource</em>' class.
@@ -738,7 +774,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_OPERATION_COUNT = 3;
+	int RESOURCE_OPERATION_COUNT = ELEMENT_OPERATION_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.ModuleElementImpl <em>Module Element</em>}' class.
@@ -1022,7 +1058,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE__UUID = ELEMENT__UUID;
+	int MODULE__UUID = RESOURCE__UUID;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -1031,7 +1067,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE__ANNOTATIONS = ELEMENT__ANNOTATIONS;
+	int MODULE__ANNOTATIONS = RESOURCE__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Extent</b></em>' container reference.
@@ -1040,7 +1076,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE__EXTENT = ELEMENT_FEATURE_COUNT + 0;
+	int MODULE__EXTENT = RESOURCE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Iri</b></em>' attribute.
@@ -1049,7 +1085,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE__IRI = ELEMENT_FEATURE_COUNT + 1;
+	int MODULE__IRI = RESOURCE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Module</em>' class.
@@ -1058,7 +1094,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 2;
+	int MODULE_FEATURE_COUNT = RESOURCE_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Module Edges</em>' operation.
@@ -1067,7 +1103,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE___MODULE_EDGES = ELEMENT_OPERATION_COUNT + 3;
+	int MODULE___MODULE_EDGES = RESOURCE_OPERATION_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Iri</em>' operation.
@@ -1076,7 +1112,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE___IRI = ELEMENT_OPERATION_COUNT + 4;
+	int MODULE___IRI = RESOURCE_OPERATION_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Ns Prefix</em>' operation.
@@ -1085,7 +1121,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE___NS_PREFIX = ELEMENT_OPERATION_COUNT + 5;
+	int MODULE___NS_PREFIX = RESOURCE_OPERATION_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Name</em>' operation.
@@ -1094,7 +1130,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE___NAME = ELEMENT_OPERATION_COUNT + 6;
+	int MODULE___NAME = RESOURCE_OPERATION_COUNT + 3;
 
 	/**
 	 * The operation id for the '<em>Abbrev IRI</em>' operation.
@@ -1103,7 +1139,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE___ABBREV_IRI = ELEMENT_OPERATION_COUNT + 7;
+	int MODULE___ABBREV_IRI = RESOURCE_OPERATION_COUNT + 4;
 
 	/**
 	 * The operation id for the '<em>Uuid</em>' operation.
@@ -1112,7 +1148,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE___UUID = ELEMENT_OPERATION_COUNT + 8;
+	int MODULE___UUID = RESOURCE_OPERATION_COUNT + 5;
 
 	/**
 	 * The operation id for the '<em>Module Context</em>' operation.
@@ -1121,7 +1157,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE___MODULE_CONTEXT = ELEMENT_OPERATION_COUNT + 9;
+	int MODULE___MODULE_CONTEXT = RESOURCE_OPERATION_COUNT + 6;
 
 	/**
 	 * The operation id for the '<em>Module Elements</em>' operation.
@@ -1130,7 +1166,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE___MODULE_ELEMENTS = ELEMENT_OPERATION_COUNT + 10;
+	int MODULE___MODULE_ELEMENTS = RESOURCE_OPERATION_COUNT + 7;
 
 	/**
 	 * The number of operations of the '<em>Module</em>' class.
@@ -1139,7 +1175,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE_OPERATION_COUNT = ELEMENT_OPERATION_COUNT + 11;
+	int MODULE_OPERATION_COUNT = RESOURCE_OPERATION_COUNT + 8;
 
 	/**
 	 * The meta object id for the '<em>IRI</em>' data type.

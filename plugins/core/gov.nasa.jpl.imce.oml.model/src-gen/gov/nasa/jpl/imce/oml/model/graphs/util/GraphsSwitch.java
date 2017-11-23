@@ -96,8 +96,8 @@ public class GraphsSwitch<T> extends Switch<T> {
 				T result = caseTerminologyGraph(terminologyGraph);
 				if (result == null) result = caseTerminologyBox(terminologyGraph);
 				if (result == null) result = caseModule(terminologyGraph);
-				if (result == null) result = caseElement(terminologyGraph);
 				if (result == null) result = caseResource(terminologyGraph);
+				if (result == null) result = caseElement(terminologyGraph);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}

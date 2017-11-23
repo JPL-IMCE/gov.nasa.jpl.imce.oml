@@ -30,7 +30,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class ConceptImpl extends EntityImpl implements Concept {
+public class ConceptImpl extends ConceptualEntityImpl implements Concept {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

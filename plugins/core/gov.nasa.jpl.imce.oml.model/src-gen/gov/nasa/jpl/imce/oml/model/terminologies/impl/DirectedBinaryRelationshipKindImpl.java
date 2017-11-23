@@ -28,8 +28,6 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.internal.cdo.CDOObjectImpl;
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Directed Binary Relationship Kind</b></em>'.
@@ -37,7 +35,7 @@ import org.eclipse.emf.internal.cdo.CDOObjectImpl;
  *
  * @generated
  */
-public abstract class DirectedBinaryRelationshipKindImpl extends CDOObjectImpl implements DirectedBinaryRelationshipKind {
+public abstract class DirectedBinaryRelationshipKindImpl extends TermImpl implements DirectedBinaryRelationshipKind {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

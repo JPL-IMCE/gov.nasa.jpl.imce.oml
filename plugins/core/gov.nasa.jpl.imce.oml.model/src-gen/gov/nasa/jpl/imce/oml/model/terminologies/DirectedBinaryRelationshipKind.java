@@ -18,7 +18,6 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies;
 
-import org.eclipse.emf.cdo.CDOObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -34,10 +33,9 @@ import org.eclipse.emf.cdo.CDOObject;
  *
  * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getDirectedBinaryRelationshipKind()
  * @model abstract="true"
- * @extends CDOObject
  * @generated
  */
-public interface DirectedBinaryRelationshipKind extends CDOObject {
+public interface DirectedBinaryRelationshipKind extends Term {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -44,7 +44,7 @@ import org.eclipse.emf.common.util.EList;
  *        annotation="http://imce.jpl.nasa.gov/oml/NamespaceUUID namespace='iri' factors=''"
  * @generated
  */
-public interface Module extends Element, Resource {
+public interface Module extends Resource {
 	/**
 	 * Returns the value of the '<em><b>Extent</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link gov.nasa.jpl.imce.oml.model.common.Extent#getModules <em>Modules</em>}'.
@@ -122,7 +122,7 @@ public interface Module extends Element, Resource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model dataType="gov.nasa.jpl.imce.oml.model.common.NamespacePrefix" unique="false" required="true"
-	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='iri.substring(1+iri.lastIndexOf(\'/\'))'"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='gov.nasa.jpl.imce.oml.tables.taggedTypes.namespacePrefix(iri.substring(1+iri.lastIndexOf(\'/\')))'"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%java.lang.String%&gt; _iri = this.getIri();\n&lt;%java.lang.String%&gt; _substring = null;\nif (_iri!=null)\n{\n\tint _lastIndexOf = this.getIri().lastIndexOf(\"/\");\n\tint _plus = (1 + _lastIndexOf);\n\t_substring=_iri.substring(_plus);\n}\nreturn _substring;'"
 	 * @generated
 	 */
@@ -132,6 +132,7 @@ public interface Module extends Element, Resource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model dataType="gov.nasa.jpl.imce.oml.model.common.LocalName" unique="false" required="true"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='gov.nasa.jpl.imce.oml.tables.taggedTypes.localName(nsPrefix)'"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return this.nsPrefix();'"
 	 * @generated
 	 */

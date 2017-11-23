@@ -2236,214 +2236,214 @@ public class OMLFormatter extends AbstractFormatter2 {
     document.append(this.textRegionExtensions.regionFor(i).keyword(")"), _function_5);
   }
   
-  public void format(final Object sc, final IFormattableDocument document) {
-    if (sc instanceof BinaryScalarRestriction) {
-      _format((BinaryScalarRestriction)sc, document);
+  public void format(final Object t, final IFormattableDocument document) {
+    if (t instanceof EntityScalarDataProperty) {
+      _format((EntityScalarDataProperty)t, document);
       return;
-    } else if (sc instanceof EntityScalarDataProperty) {
-      _format((EntityScalarDataProperty)sc, document);
+    } else if (t instanceof EntityStructuredDataProperty) {
+      _format((EntityStructuredDataProperty)t, document);
       return;
-    } else if (sc instanceof EntityStructuredDataProperty) {
-      _format((EntityStructuredDataProperty)sc, document);
+    } else if (t instanceof ScalarDataProperty) {
+      _format((ScalarDataProperty)t, document);
       return;
-    } else if (sc instanceof IRIScalarRestriction) {
-      _format((IRIScalarRestriction)sc, document);
+    } else if (t instanceof StructuredDataProperty) {
+      _format((StructuredDataProperty)t, document);
       return;
-    } else if (sc instanceof NumericScalarRestriction) {
-      _format((NumericScalarRestriction)sc, document);
+    } else if (t instanceof BinaryScalarRestriction) {
+      _format((BinaryScalarRestriction)t, document);
       return;
-    } else if (sc instanceof PlainLiteralScalarRestriction) {
-      _format((PlainLiteralScalarRestriction)sc, document);
+    } else if (t instanceof IRIScalarRestriction) {
+      _format((IRIScalarRestriction)t, document);
       return;
-    } else if (sc instanceof ScalarDataProperty) {
-      _format((ScalarDataProperty)sc, document);
+    } else if (t instanceof NumericScalarRestriction) {
+      _format((NumericScalarRestriction)t, document);
       return;
-    } else if (sc instanceof ScalarOneOfRestriction) {
-      _format((ScalarOneOfRestriction)sc, document);
+    } else if (t instanceof PlainLiteralScalarRestriction) {
+      _format((PlainLiteralScalarRestriction)t, document);
       return;
-    } else if (sc instanceof StringScalarRestriction) {
-      _format((StringScalarRestriction)sc, document);
+    } else if (t instanceof ScalarOneOfRestriction) {
+      _format((ScalarOneOfRestriction)t, document);
       return;
-    } else if (sc instanceof StructuredDataProperty) {
-      _format((StructuredDataProperty)sc, document);
+    } else if (t instanceof StringScalarRestriction) {
+      _format((StringScalarRestriction)t, document);
       return;
-    } else if (sc instanceof SynonymScalarRestriction) {
-      _format((SynonymScalarRestriction)sc, document);
+    } else if (t instanceof SynonymScalarRestriction) {
+      _format((SynonymScalarRestriction)t, document);
       return;
-    } else if (sc instanceof TimeScalarRestriction) {
-      _format((TimeScalarRestriction)sc, document);
+    } else if (t instanceof TimeScalarRestriction) {
+      _format((TimeScalarRestriction)t, document);
       return;
-    } else if (sc instanceof Scalar) {
-      _format((Scalar)sc, document);
+    } else if (t instanceof Concept) {
+      _format((Concept)t, document);
       return;
-    } else if (sc instanceof Aspect) {
-      _format((Aspect)sc, document);
+    } else if (t instanceof ReifiedRelationship) {
+      _format((ReifiedRelationship)t, document);
       return;
-    } else if (sc instanceof AspectSpecializationAxiom) {
-      _format((AspectSpecializationAxiom)sc, document);
+    } else if (t instanceof Scalar) {
+      _format((Scalar)t, document);
       return;
-    } else if (sc instanceof ChainRule) {
-      _format((ChainRule)sc, document);
+    } else if (t instanceof UnreifiedRelationship) {
+      _format((UnreifiedRelationship)t, document);
       return;
-    } else if (sc instanceof Concept) {
-      _format((Concept)sc, document);
+    } else if (t instanceof Aspect) {
+      _format((Aspect)t, document);
       return;
-    } else if (sc instanceof ConceptSpecializationAxiom) {
-      _format((ConceptSpecializationAxiom)sc, document);
+    } else if (t instanceof AspectSpecializationAxiom) {
+      _format((AspectSpecializationAxiom)t, document);
       return;
-    } else if (sc instanceof EntityExistentialRestrictionAxiom) {
-      _format((EntityExistentialRestrictionAxiom)sc, document);
+    } else if (t instanceof ChainRule) {
+      _format((ChainRule)t, document);
       return;
-    } else if (sc instanceof EntityScalarDataPropertyExistentialRestrictionAxiom) {
-      _format((EntityScalarDataPropertyExistentialRestrictionAxiom)sc, document);
+    } else if (t instanceof ConceptSpecializationAxiom) {
+      _format((ConceptSpecializationAxiom)t, document);
       return;
-    } else if (sc instanceof EntityScalarDataPropertyParticularRestrictionAxiom) {
-      _format((EntityScalarDataPropertyParticularRestrictionAxiom)sc, document);
+    } else if (t instanceof EntityExistentialRestrictionAxiom) {
+      _format((EntityExistentialRestrictionAxiom)t, document);
       return;
-    } else if (sc instanceof EntityScalarDataPropertyUniversalRestrictionAxiom) {
-      _format((EntityScalarDataPropertyUniversalRestrictionAxiom)sc, document);
+    } else if (t instanceof EntityScalarDataPropertyExistentialRestrictionAxiom) {
+      _format((EntityScalarDataPropertyExistentialRestrictionAxiom)t, document);
       return;
-    } else if (sc instanceof EntityStructuredDataPropertyParticularRestrictionAxiom) {
-      _format((EntityStructuredDataPropertyParticularRestrictionAxiom)sc, document);
+    } else if (t instanceof EntityScalarDataPropertyParticularRestrictionAxiom) {
+      _format((EntityScalarDataPropertyParticularRestrictionAxiom)t, document);
       return;
-    } else if (sc instanceof EntityUniversalRestrictionAxiom) {
-      _format((EntityUniversalRestrictionAxiom)sc, document);
+    } else if (t instanceof EntityScalarDataPropertyUniversalRestrictionAxiom) {
+      _format((EntityScalarDataPropertyUniversalRestrictionAxiom)t, document);
       return;
-    } else if (sc instanceof ReifiedRelationship) {
-      _format((ReifiedRelationship)sc, document);
+    } else if (t instanceof EntityStructuredDataPropertyParticularRestrictionAxiom) {
+      _format((EntityStructuredDataPropertyParticularRestrictionAxiom)t, document);
       return;
-    } else if (sc instanceof ReifiedRelationshipSpecializationAxiom) {
-      _format((ReifiedRelationshipSpecializationAxiom)sc, document);
+    } else if (t instanceof EntityUniversalRestrictionAxiom) {
+      _format((EntityUniversalRestrictionAxiom)t, document);
       return;
-    } else if (sc instanceof Structure) {
-      _format((Structure)sc, document);
+    } else if (t instanceof ReifiedRelationshipSpecializationAxiom) {
+      _format((ReifiedRelationshipSpecializationAxiom)t, document);
       return;
-    } else if (sc instanceof UnreifiedRelationship) {
-      _format((UnreifiedRelationship)sc, document);
+    } else if (t instanceof Structure) {
+      _format((Structure)t, document);
       return;
-    } else if (sc instanceof BundledTerminologyAxiom) {
-      _format((BundledTerminologyAxiom)sc, document);
+    } else if (t instanceof Bundle) {
+      _format((Bundle)t, document);
       return;
-    } else if (sc instanceof ConceptInstance) {
-      _format((ConceptInstance)sc, document);
+    } else if (t instanceof BundledTerminologyAxiom) {
+      _format((BundledTerminologyAxiom)t, document);
       return;
-    } else if (sc instanceof ReifiedRelationshipInstance) {
-      _format((ReifiedRelationshipInstance)sc, document);
+    } else if (t instanceof ConceptInstance) {
+      _format((ConceptInstance)t, document);
       return;
-    } else if (sc instanceof ConceptDesignationTerminologyAxiom) {
-      _format((ConceptDesignationTerminologyAxiom)sc, document);
+    } else if (t instanceof ReifiedRelationshipInstance) {
+      _format((ReifiedRelationshipInstance)t, document);
       return;
-    } else if (sc instanceof TerminologyNestingAxiom) {
-      _format((TerminologyNestingAxiom)sc, document);
+    } else if (t instanceof ConceptDesignationTerminologyAxiom) {
+      _format((ConceptDesignationTerminologyAxiom)t, document);
       return;
-    } else if (sc instanceof ReifiedRelationshipInversePropertyPredicate) {
-      _format((ReifiedRelationshipInversePropertyPredicate)sc, document);
+    } else if (t instanceof TerminologyGraph) {
+      _format((TerminologyGraph)t, document);
       return;
-    } else if (sc instanceof ReifiedRelationshipPropertyPredicate) {
-      _format((ReifiedRelationshipPropertyPredicate)sc, document);
+    } else if (t instanceof TerminologyNestingAxiom) {
+      _format((TerminologyNestingAxiom)t, document);
       return;
-    } else if (sc instanceof ReifiedRelationshipSourceInversePropertyPredicate) {
-      _format((ReifiedRelationshipSourceInversePropertyPredicate)sc, document);
+    } else if (t instanceof ReifiedRelationshipInversePropertyPredicate) {
+      _format((ReifiedRelationshipInversePropertyPredicate)t, document);
       return;
-    } else if (sc instanceof ReifiedRelationshipSourcePropertyPredicate) {
-      _format((ReifiedRelationshipSourcePropertyPredicate)sc, document);
+    } else if (t instanceof ReifiedRelationshipPropertyPredicate) {
+      _format((ReifiedRelationshipPropertyPredicate)t, document);
       return;
-    } else if (sc instanceof ReifiedRelationshipTargetInversePropertyPredicate) {
-      _format((ReifiedRelationshipTargetInversePropertyPredicate)sc, document);
+    } else if (t instanceof ReifiedRelationshipSourceInversePropertyPredicate) {
+      _format((ReifiedRelationshipSourceInversePropertyPredicate)t, document);
       return;
-    } else if (sc instanceof ReifiedRelationshipTargetPropertyPredicate) {
-      _format((ReifiedRelationshipTargetPropertyPredicate)sc, document);
+    } else if (t instanceof ReifiedRelationshipSourcePropertyPredicate) {
+      _format((ReifiedRelationshipSourcePropertyPredicate)t, document);
       return;
-    } else if (sc instanceof ScalarOneOfLiteralAxiom) {
-      _format((ScalarOneOfLiteralAxiom)sc, document);
+    } else if (t instanceof ReifiedRelationshipTargetInversePropertyPredicate) {
+      _format((ReifiedRelationshipTargetInversePropertyPredicate)t, document);
       return;
-    } else if (sc instanceof TerminologyExtensionAxiom) {
-      _format((TerminologyExtensionAxiom)sc, document);
+    } else if (t instanceof ReifiedRelationshipTargetPropertyPredicate) {
+      _format((ReifiedRelationshipTargetPropertyPredicate)t, document);
       return;
-    } else if (sc instanceof UnreifiedRelationshipInversePropertyPredicate) {
-      _format((UnreifiedRelationshipInversePropertyPredicate)sc, document);
+    } else if (t instanceof ScalarOneOfLiteralAxiom) {
+      _format((ScalarOneOfLiteralAxiom)t, document);
       return;
-    } else if (sc instanceof UnreifiedRelationshipPropertyPredicate) {
-      _format((UnreifiedRelationshipPropertyPredicate)sc, document);
+    } else if (t instanceof TerminologyExtensionAxiom) {
+      _format((TerminologyExtensionAxiom)t, document);
       return;
-    } else if (sc instanceof Bundle) {
-      _format((Bundle)sc, document);
+    } else if (t instanceof UnreifiedRelationshipInversePropertyPredicate) {
+      _format((UnreifiedRelationshipInversePropertyPredicate)t, document);
       return;
-    } else if (sc instanceof RootConceptTaxonomyAxiom) {
-      _format((RootConceptTaxonomyAxiom)sc, document);
+    } else if (t instanceof UnreifiedRelationshipPropertyPredicate) {
+      _format((UnreifiedRelationshipPropertyPredicate)t, document);
       return;
-    } else if (sc instanceof DescriptionBoxExtendsClosedWorldDefinitions) {
-      _format((DescriptionBoxExtendsClosedWorldDefinitions)sc, document);
+    } else if (t instanceof RootConceptTaxonomyAxiom) {
+      _format((RootConceptTaxonomyAxiom)t, document);
       return;
-    } else if (sc instanceof DescriptionBoxRefinement) {
-      _format((DescriptionBoxRefinement)sc, document);
+    } else if (t instanceof DescriptionBox) {
+      _format((DescriptionBox)t, document);
       return;
-    } else if (sc instanceof TerminologyGraph) {
-      _format((TerminologyGraph)sc, document);
+    } else if (t instanceof DescriptionBoxExtendsClosedWorldDefinitions) {
+      _format((DescriptionBoxExtendsClosedWorldDefinitions)t, document);
       return;
-    } else if (sc instanceof AspectPredicate) {
-      _format((AspectPredicate)sc, document);
+    } else if (t instanceof DescriptionBoxRefinement) {
+      _format((DescriptionBoxRefinement)t, document);
       return;
-    } else if (sc instanceof ConceptPredicate) {
-      _format((ConceptPredicate)sc, document);
+    } else if (t instanceof AspectPredicate) {
+      _format((AspectPredicate)t, document);
       return;
-    } else if (sc instanceof ReifiedRelationshipPredicate) {
-      _format((ReifiedRelationshipPredicate)sc, document);
+    } else if (t instanceof ConceptPredicate) {
+      _format((ConceptPredicate)t, document);
       return;
-    } else if (sc instanceof RestrictionStructuredDataPropertyTuple) {
-      _format((RestrictionStructuredDataPropertyTuple)sc, document);
+    } else if (t instanceof ReifiedRelationshipPredicate) {
+      _format((ReifiedRelationshipPredicate)t, document);
       return;
-    } else if (sc instanceof AnonymousConceptUnionAxiom) {
-      _format((AnonymousConceptUnionAxiom)sc, document);
+    } else if (t instanceof RestrictionStructuredDataPropertyTuple) {
+      _format((RestrictionStructuredDataPropertyTuple)t, document);
       return;
-    } else if (sc instanceof SpecificDisjointConceptAxiom) {
-      _format((SpecificDisjointConceptAxiom)sc, document);
+    } else if (t instanceof AnonymousConceptUnionAxiom) {
+      _format((AnonymousConceptUnionAxiom)t, document);
       return;
-    } else if (sc instanceof DescriptionBox) {
-      _format((DescriptionBox)sc, document);
+    } else if (t instanceof SpecificDisjointConceptAxiom) {
+      _format((SpecificDisjointConceptAxiom)t, document);
       return;
-    } else if (sc instanceof SingletonInstanceScalarDataPropertyValue) {
-      _format((SingletonInstanceScalarDataPropertyValue)sc, document);
+    } else if (t instanceof SingletonInstanceScalarDataPropertyValue) {
+      _format((SingletonInstanceScalarDataPropertyValue)t, document);
       return;
-    } else if (sc instanceof SingletonInstanceStructuredDataPropertyValue) {
-      _format((SingletonInstanceStructuredDataPropertyValue)sc, document);
+    } else if (t instanceof SingletonInstanceStructuredDataPropertyValue) {
+      _format((SingletonInstanceStructuredDataPropertyValue)t, document);
       return;
-    } else if (sc instanceof StructuredDataPropertyTuple) {
-      _format((StructuredDataPropertyTuple)sc, document);
+    } else if (t instanceof StructuredDataPropertyTuple) {
+      _format((StructuredDataPropertyTuple)t, document);
       return;
-    } else if (sc instanceof ScalarDataPropertyValue) {
-      _format((ScalarDataPropertyValue)sc, document);
+    } else if (t instanceof ScalarDataPropertyValue) {
+      _format((ScalarDataPropertyValue)t, document);
       return;
-    } else if (sc instanceof RestrictionScalarDataPropertyValue) {
-      _format((RestrictionScalarDataPropertyValue)sc, document);
+    } else if (t instanceof RestrictionScalarDataPropertyValue) {
+      _format((RestrictionScalarDataPropertyValue)t, document);
       return;
-    } else if (sc instanceof RuleBodySegment) {
-      _format((RuleBodySegment)sc, document);
+    } else if (t instanceof RuleBodySegment) {
+      _format((RuleBodySegment)t, document);
       return;
-    } else if (sc instanceof XtextResource) {
-      _format((XtextResource)sc, document);
+    } else if (t instanceof XtextResource) {
+      _format((XtextResource)t, document);
       return;
-    } else if (sc instanceof AnnotationProperty) {
-      _format((AnnotationProperty)sc, document);
+    } else if (t instanceof AnnotationProperty) {
+      _format((AnnotationProperty)t, document);
       return;
-    } else if (sc instanceof AnnotationPropertyValue) {
-      _format((AnnotationPropertyValue)sc, document);
+    } else if (t instanceof AnnotationPropertyValue) {
+      _format((AnnotationPropertyValue)t, document);
       return;
-    } else if (sc instanceof Extent) {
-      _format((Extent)sc, document);
+    } else if (t instanceof Extent) {
+      _format((Extent)t, document);
       return;
-    } else if (sc instanceof EObject) {
-      _format((EObject)sc, document);
+    } else if (t instanceof EObject) {
+      _format((EObject)t, document);
       return;
-    } else if (sc == null) {
+    } else if (t == null) {
       _format((Void)null, document);
       return;
-    } else if (sc != null) {
-      _format(sc, document);
+    } else if (t != null) {
+      _format(t, document);
       return;
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(sc, document).toString());
+        Arrays.<Object>asList(t, document).toString());
     }
   }
 }

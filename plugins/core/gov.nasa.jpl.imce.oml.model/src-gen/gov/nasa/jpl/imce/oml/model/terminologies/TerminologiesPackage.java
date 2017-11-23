@@ -787,13 +787,103 @@ public interface TerminologiesPackage extends EPackage {
 	int UNARY_TERM_KIND = 6;
 
 	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNARY_TERM_KIND__UUID = TERM__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNARY_TERM_KIND__ANNOTATIONS = TERM__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNARY_TERM_KIND__TBOX = TERM__TBOX;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNARY_TERM_KIND__NAME = TERM__NAME;
+
+	/**
 	 * The number of structural features of the '<em>Unary Term Kind</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int UNARY_TERM_KIND_FEATURE_COUNT = 0;
+	int UNARY_TERM_KIND_FEATURE_COUNT = TERM_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNARY_TERM_KIND___MODULE_CONTEXT = TERM___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>Iri</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNARY_TERM_KIND___IRI = TERM___IRI;
+
+	/**
+	 * The operation id for the '<em>Abbrev IRI</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNARY_TERM_KIND___ABBREV_IRI = TERM___ABBREV_IRI;
+
+	/**
+	 * The operation id for the '<em>Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNARY_TERM_KIND___NAME = TERM___NAME;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNARY_TERM_KIND___UUID = TERM___UUID;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNARY_TERM_KIND___ALL_NESTED_ELEMENTS = TERM___ALL_NESTED_ELEMENTS;
 
 	/**
 	 * The number of operations of the '<em>Unary Term Kind</em>' class.
@@ -802,7 +892,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int UNARY_TERM_KIND_OPERATION_COUNT = 0;
+	int UNARY_TERM_KIND_OPERATION_COUNT = TERM_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.DirectedBinaryRelationshipKindImpl <em>Directed Binary Relationship Kind</em>}' class.
@@ -815,13 +905,103 @@ public interface TerminologiesPackage extends EPackage {
 	int DIRECTED_BINARY_RELATIONSHIP_KIND = 7;
 
 	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECTED_BINARY_RELATIONSHIP_KIND__UUID = TERM__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECTED_BINARY_RELATIONSHIP_KIND__ANNOTATIONS = TERM__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECTED_BINARY_RELATIONSHIP_KIND__TBOX = TERM__TBOX;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECTED_BINARY_RELATIONSHIP_KIND__NAME = TERM__NAME;
+
+	/**
 	 * The number of structural features of the '<em>Directed Binary Relationship Kind</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DIRECTED_BINARY_RELATIONSHIP_KIND_FEATURE_COUNT = 0;
+	int DIRECTED_BINARY_RELATIONSHIP_KIND_FEATURE_COUNT = TERM_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECTED_BINARY_RELATIONSHIP_KIND___MODULE_CONTEXT = TERM___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>Iri</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECTED_BINARY_RELATIONSHIP_KIND___IRI = TERM___IRI;
+
+	/**
+	 * The operation id for the '<em>Abbrev IRI</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECTED_BINARY_RELATIONSHIP_KIND___ABBREV_IRI = TERM___ABBREV_IRI;
+
+	/**
+	 * The operation id for the '<em>Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECTED_BINARY_RELATIONSHIP_KIND___NAME = TERM___NAME;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECTED_BINARY_RELATIONSHIP_KIND___UUID = TERM___UUID;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECTED_BINARY_RELATIONSHIP_KIND___ALL_NESTED_ELEMENTS = TERM___ALL_NESTED_ELEMENTS;
 
 	/**
 	 * The operation id for the '<em>Relation Domain</em>' operation.
@@ -830,7 +1010,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DIRECTED_BINARY_RELATIONSHIP_KIND___RELATION_DOMAIN = 0;
+	int DIRECTED_BINARY_RELATIONSHIP_KIND___RELATION_DOMAIN = TERM_OPERATION_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Relation Range</em>' operation.
@@ -839,7 +1019,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DIRECTED_BINARY_RELATIONSHIP_KIND___RELATION_RANGE = 1;
+	int DIRECTED_BINARY_RELATIONSHIP_KIND___RELATION_RANGE = TERM_OPERATION_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Directed Binary Relationship Kind</em>' class.
@@ -848,7 +1028,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DIRECTED_BINARY_RELATIONSHIP_KIND_OPERATION_COUNT = 2;
+	int DIRECTED_BINARY_RELATIONSHIP_KIND_OPERATION_COUNT = TERM_OPERATION_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityImpl <em>Entity</em>}' class.
@@ -979,13 +1159,103 @@ public interface TerminologiesPackage extends EPackage {
 	int CONCEPTUAL_ENTITY = 9;
 
 	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPTUAL_ENTITY__UUID = ENTITY__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPTUAL_ENTITY__ANNOTATIONS = ENTITY__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPTUAL_ENTITY__TBOX = ENTITY__TBOX;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPTUAL_ENTITY__NAME = ENTITY__NAME;
+
+	/**
 	 * The number of structural features of the '<em>Conceptual Entity</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONCEPTUAL_ENTITY_FEATURE_COUNT = 0;
+	int CONCEPTUAL_ENTITY_FEATURE_COUNT = ENTITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPTUAL_ENTITY___MODULE_CONTEXT = ENTITY___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>Iri</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPTUAL_ENTITY___IRI = ENTITY___IRI;
+
+	/**
+	 * The operation id for the '<em>Abbrev IRI</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPTUAL_ENTITY___ABBREV_IRI = ENTITY___ABBREV_IRI;
+
+	/**
+	 * The operation id for the '<em>Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPTUAL_ENTITY___NAME = ENTITY___NAME;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPTUAL_ENTITY___UUID = ENTITY___UUID;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPTUAL_ENTITY___ALL_NESTED_ELEMENTS = ENTITY___ALL_NESTED_ELEMENTS;
 
 	/**
 	 * The number of operations of the '<em>Conceptual Entity</em>' class.
@@ -994,7 +1264,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCEPTUAL_ENTITY_OPERATION_COUNT = 0;
+	int CONCEPTUAL_ENTITY_OPERATION_COUNT = ENTITY_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.AspectImpl <em>Aspect</em>}' class.
@@ -1131,7 +1401,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCEPT__UUID = ENTITY__UUID;
+	int CONCEPT__UUID = CONCEPTUAL_ENTITY__UUID;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -1140,7 +1410,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCEPT__ANNOTATIONS = ENTITY__ANNOTATIONS;
+	int CONCEPT__ANNOTATIONS = CONCEPTUAL_ENTITY__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
@@ -1149,7 +1419,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCEPT__TBOX = ENTITY__TBOX;
+	int CONCEPT__TBOX = CONCEPTUAL_ENTITY__TBOX;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1158,7 +1428,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCEPT__NAME = ENTITY__NAME;
+	int CONCEPT__NAME = CONCEPTUAL_ENTITY__NAME;
 
 	/**
 	 * The number of structural features of the '<em>Concept</em>' class.
@@ -1167,7 +1437,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCEPT_FEATURE_COUNT = ENTITY_FEATURE_COUNT + 0;
+	int CONCEPT_FEATURE_COUNT = CONCEPTUAL_ENTITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Module Context</em>' operation.
@@ -1176,7 +1446,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCEPT___MODULE_CONTEXT = ENTITY___MODULE_CONTEXT;
+	int CONCEPT___MODULE_CONTEXT = CONCEPTUAL_ENTITY___MODULE_CONTEXT;
 
 	/**
 	 * The operation id for the '<em>Iri</em>' operation.
@@ -1185,7 +1455,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCEPT___IRI = ENTITY___IRI;
+	int CONCEPT___IRI = CONCEPTUAL_ENTITY___IRI;
 
 	/**
 	 * The operation id for the '<em>Abbrev IRI</em>' operation.
@@ -1194,7 +1464,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCEPT___ABBREV_IRI = ENTITY___ABBREV_IRI;
+	int CONCEPT___ABBREV_IRI = CONCEPTUAL_ENTITY___ABBREV_IRI;
 
 	/**
 	 * The operation id for the '<em>Name</em>' operation.
@@ -1203,7 +1473,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCEPT___NAME = ENTITY___NAME;
+	int CONCEPT___NAME = CONCEPTUAL_ENTITY___NAME;
 
 	/**
 	 * The operation id for the '<em>Uuid</em>' operation.
@@ -1212,7 +1482,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCEPT___UUID = ENTITY___UUID;
+	int CONCEPT___UUID = CONCEPTUAL_ENTITY___UUID;
 
 	/**
 	 * The operation id for the '<em>All Nested Elements</em>' operation.
@@ -1221,7 +1491,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCEPT___ALL_NESTED_ELEMENTS = ENTITY___ALL_NESTED_ELEMENTS;
+	int CONCEPT___ALL_NESTED_ELEMENTS = CONCEPTUAL_ENTITY___ALL_NESTED_ELEMENTS;
 
 	/**
 	 * The number of operations of the '<em>Concept</em>' class.
@@ -1230,7 +1500,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCEPT_OPERATION_COUNT = ENTITY_OPERATION_COUNT + 0;
+	int CONCEPT_OPERATION_COUNT = CONCEPTUAL_ENTITY_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityRelationshipImpl <em>Entity Relationship</em>}' class.

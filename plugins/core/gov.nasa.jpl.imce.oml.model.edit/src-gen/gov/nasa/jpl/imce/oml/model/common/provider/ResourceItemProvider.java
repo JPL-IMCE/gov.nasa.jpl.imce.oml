@@ -19,23 +19,13 @@
 package gov.nasa.jpl.imce.oml.model.common.provider;
 
 
-import gov.nasa.jpl.imce.oml.model.edit.provider.OMLEditPlugin;
-
+import gov.nasa.jpl.imce.oml.model.common.Resource;
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.ResourceLocator;
-
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 
 /**
  * This is the item provider adapter for a {@link gov.nasa.jpl.imce.oml.model.common.Resource} object.
@@ -44,13 +34,7 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
  * @generated
  */
 public class ResourceItemProvider 
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+	extends ElementItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -84,7 +68,10 @@ public class ResourceItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_Resource_type");
+		String label = ((Resource)object).getUuid();
+		return label == null || label.length() == 0 ?
+			getString("_UI_Resource_type") :
+			getString("_UI_Resource_type") + " " + label;
 	}
 	
 
@@ -111,17 +98,6 @@ public class ResourceItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-	}
-
-	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getResourceLocator() {
-		return OMLEditPlugin.INSTANCE;
 	}
 
 }

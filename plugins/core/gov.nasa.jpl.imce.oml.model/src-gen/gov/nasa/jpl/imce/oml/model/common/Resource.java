@@ -18,7 +18,6 @@
  */
 package gov.nasa.jpl.imce.oml.model.common;
 
-import org.eclipse.emf.cdo.CDOObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -37,10 +36,9 @@ import org.eclipse.emf.cdo.CDOObject;
  *
  * @see gov.nasa.jpl.imce.oml.model.common.CommonPackage#getResource()
  * @model abstract="true"
- * @extends CDOObject
  * @generated
  */
-public interface Resource extends CDOObject {
+public interface Resource extends Element {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

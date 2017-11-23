@@ -23,8 +23,6 @@ import gov.nasa.jpl.imce.oml.model.terminologies.UnaryTermKind;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.internal.cdo.CDOObjectImpl;
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Unary Term Kind</b></em>'.
@@ -32,7 +30,7 @@ import org.eclipse.emf.internal.cdo.CDOObjectImpl;
  *
  * @generated
  */
-public abstract class UnaryTermKindImpl extends CDOObjectImpl implements UnaryTermKind {
+public abstract class UnaryTermKindImpl extends TermImpl implements UnaryTermKind {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
