@@ -3537,16 +3537,17 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		terminologyExtensionAxiomEClass.getESuperTypes().add(this.getTerminologyBoxAxiom());
 		termEClass.getESuperTypes().add(this.getTerminologyBoxStatement());
 		termEClass.getESuperTypes().add(theCommonPackage.getResource());
+		unaryTermKindEClass.getESuperTypes().add(this.getTerm());
+		directedBinaryRelationshipKindEClass.getESuperTypes().add(this.getTerm());
 		entityEClass.getESuperTypes().add(this.getTerm());
+		conceptualEntityEClass.getESuperTypes().add(this.getEntity());
 		aspectEClass.getESuperTypes().add(this.getEntity());
 		aspectEClass.getESuperTypes().add(this.getUnaryTermKind());
-		conceptEClass.getESuperTypes().add(this.getEntity());
 		conceptEClass.getESuperTypes().add(this.getConceptualEntity());
 		conceptEClass.getESuperTypes().add(this.getUnaryTermKind());
 		entityRelationshipEClass.getESuperTypes().add(this.getTerm());
 		entityRelationshipEClass.getESuperTypes().add(this.getDirectedBinaryRelationshipKind());
 		reifiedRelationshipEClass.getESuperTypes().add(this.getEntityRelationship());
-		reifiedRelationshipEClass.getESuperTypes().add(this.getEntity());
 		reifiedRelationshipEClass.getESuperTypes().add(this.getConceptualEntity());
 		unreifiedRelationshipEClass.getESuperTypes().add(this.getEntityRelationship());
 		datatypeEClass.getESuperTypes().add(this.getTerm());
@@ -5021,7 +5022,7 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		  (getTerm__Iri(), 
 		   source, 
 		   new String[] {
-			 "code", "extent.terminologyBoxOfTerminologyBoxStatement.get(this).flatMap(_.iri().map(_ + \"#\" + name))"
+			 "code", "extent.terminologyBoxOfTerminologyBoxStatement.get(this).flatMap(tbox => tbox.iri().map(i =>  gov.nasa.jpl.imce.oml.tables.taggedTypes.iri(i + \"#\" + name)))"
 		   });	
 		addAnnotation
 		  (getTerm__AbbrevIRI(), 

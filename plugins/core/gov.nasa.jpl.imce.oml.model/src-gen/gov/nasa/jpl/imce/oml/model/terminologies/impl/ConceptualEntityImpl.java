@@ -23,8 +23,6 @@ import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.internal.cdo.CDOObjectImpl;
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Conceptual Entity</b></em>'.
@@ -32,7 +30,7 @@ import org.eclipse.emf.internal.cdo.CDOObjectImpl;
  *
  * @generated
  */
-public abstract class ConceptualEntityImpl extends CDOObjectImpl implements ConceptualEntity {
+public abstract class ConceptualEntityImpl extends EntityImpl implements ConceptualEntity {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

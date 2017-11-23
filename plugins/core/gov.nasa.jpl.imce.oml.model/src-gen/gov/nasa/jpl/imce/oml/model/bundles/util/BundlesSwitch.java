@@ -96,8 +96,8 @@ public class BundlesSwitch<T> extends Switch<T> {
 				T result = caseBundle(bundle);
 				if (result == null) result = caseTerminologyBox(bundle);
 				if (result == null) result = caseModule(bundle);
-				if (result == null) result = caseElement(bundle);
 				if (result == null) result = caseResource(bundle);
+				if (result == null) result = caseElement(bundle);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}

@@ -44,7 +44,7 @@ package gov.nasa.jpl.imce.oml.model.terminologies;
  * @model
  * @generated
  */
-public interface ReifiedRelationship extends EntityRelationship, Entity, ConceptualEntity {
+public interface ReifiedRelationship extends EntityRelationship, ConceptualEntity {
 	/**
 	 * Returns the value of the '<em><b>Unreified Property Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->

@@ -1353,9 +1353,9 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		literalRationalEClass.getESuperTypes().add(this.getLiteralNumber());
 		literalFloatEClass.getESuperTypes().add(this.getLiteralNumber());
 		literalDecimalEClass.getESuperTypes().add(this.getLiteralNumber());
+		resourceEClass.getESuperTypes().add(this.getElement());
 		moduleElementEClass.getESuperTypes().add(this.getElement());
 		moduleEdgeEClass.getESuperTypes().add(this.getElement());
-		moduleEClass.getESuperTypes().add(this.getElement());
 		moduleEClass.getESuperTypes().add(this.getResource());
 
 		// Initialize classes, features, and operations; add parameters
@@ -1981,7 +1981,13 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		  (getModule__NsPrefix(), 
 		   source, 
 		   new String[] {
-			 "code", "iri.substring(1+iri.lastIndexOf(\'/\'))"
+			 "code", "gov.nasa.jpl.imce.oml.tables.taggedTypes.namespacePrefix(iri.substring(1+iri.lastIndexOf(\'/\')))"
+		   });	
+		addAnnotation
+		  (getModule__Name(), 
+		   source, 
+		   new String[] {
+			 "code", "gov.nasa.jpl.imce.oml.tables.taggedTypes.localName(nsPrefix)"
 		   });	
 		addAnnotation
 		  (getModule__AbbrevIRI(), 

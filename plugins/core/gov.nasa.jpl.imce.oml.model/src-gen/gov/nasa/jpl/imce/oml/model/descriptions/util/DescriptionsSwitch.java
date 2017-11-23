@@ -92,8 +92,8 @@ public class DescriptionsSwitch<T> extends Switch<T> {
 				DescriptionBox descriptionBox = (DescriptionBox)theEObject;
 				T result = caseDescriptionBox(descriptionBox);
 				if (result == null) result = caseModule(descriptionBox);
-				if (result == null) result = caseElement(descriptionBox);
 				if (result == null) result = caseResource(descriptionBox);
+				if (result == null) result = caseElement(descriptionBox);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}

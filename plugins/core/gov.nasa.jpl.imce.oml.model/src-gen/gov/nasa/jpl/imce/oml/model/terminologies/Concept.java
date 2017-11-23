@@ -33,5 +33,5 @@ package gov.nasa.jpl.imce.oml.model.terminologies;
  * @model
  * @generated
  */
-public interface Concept extends Entity, ConceptualEntity, UnaryTermKind {
+public interface Concept extends ConceptualEntity, UnaryTermKind {
 } // Concept

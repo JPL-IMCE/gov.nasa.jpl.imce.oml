@@ -251,7 +251,7 @@ class TerminologyExtensionAxiom extends TerminologyBoxAxiom {
 @NamespaceUUID(namespace="tbox", factors="name")
 abstract class Term extends TerminologyBoxStatement, Resource {
 	
-	@Scala(code="extent.terminologyBoxOfTerminologyBoxStatement.get(this).flatMap(_.iri().map(_ + \"#\" + name))")
+	@Scala(code="extent.terminologyBoxOfTerminologyBoxStatement.get(this).flatMap(tbox => tbox.iri().map(i =>  gov.nasa.jpl.imce.oml.tables.taggedTypes.iri(i + \"#\" + name)))")
 	@ImplicitExtent
 	@NotSchema
 	@Override
@@ -288,7 +288,7 @@ abstract class Term extends TerminologyBoxStatement, Resource {
  * that are relationships with arity 1
  */
 @Glossary
-abstract class UnaryTermKind {}
+abstract class UnaryTermKind extends Term {}
 
 /*
  * An OML DirectedBinaryRelationshipKind is an abstraction 
@@ -296,7 +296,7 @@ abstract class UnaryTermKind {}
  * that are relationships with arity 2
  */
 @Glossary
-abstract class DirectedBinaryRelationshipKind {
+abstract class DirectedBinaryRelationshipKind extends Term {
 	
 	@NotSchema
 	op Term[1] relationDomain()
@@ -322,7 +322,7 @@ abstract class Entity extends Term {}
  * an OML TerminologyInstanceAssertion specifying its reference or value respectively.
  */
 @Glossary
-abstract class ConceptualEntity {}
+abstract class ConceptualEntity extends Entity {}
 
 /*
  * An OML Aspect is a kind of OML Entity of OML UnaryTermKind.
@@ -336,7 +336,7 @@ class Aspect extends Entity, UnaryTermKind {}
  * An OML Concept is an OML ConceptualEntity of OML UnaryTermKind.
  */
 @Glossary
-class Concept extends Entity, ConceptualEntity, UnaryTermKind {}
+class Concept extends ConceptualEntity, UnaryTermKind {}
 
 /*
  * An OML EntityRelationship is a kind of OML Term that
@@ -404,7 +404,7 @@ abstract class EntityRelationship extends Term, DirectedBinaryRelationshipKind {
  * domain of an OML DataRelationshipFromEntity.
  */
 @Glossary
-class ReifiedRelationship extends EntityRelationship, Entity, ConceptualEntity {
+class ReifiedRelationship extends EntityRelationship, ConceptualEntity {
 
 	LocalName[1] unreifiedPropertyName
 	LocalName[?] unreifiedInversePropertyName

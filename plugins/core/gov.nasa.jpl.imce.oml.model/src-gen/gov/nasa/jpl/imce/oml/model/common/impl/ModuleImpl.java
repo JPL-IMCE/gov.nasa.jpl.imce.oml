@@ -19,12 +19,10 @@
 package gov.nasa.jpl.imce.oml.model.common.impl;
 
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
-import gov.nasa.jpl.imce.oml.model.common.Element;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
 import gov.nasa.jpl.imce.oml.model.common.Module;
 import gov.nasa.jpl.imce.oml.model.common.ModuleEdge;
 import gov.nasa.jpl.imce.oml.model.common.ModuleElement;
-import gov.nasa.jpl.imce.oml.model.common.Resource;
 
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
 
@@ -59,7 +57,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  *
  * @generated
  */
-public abstract class ModuleImpl extends ElementImpl implements Module {
+public abstract class ModuleImpl extends ResourceImpl implements Module {
 	/**
 	 * The default value of the '{@link #getIri() <em>Iri</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -377,31 +375,6 @@ public abstract class ModuleImpl extends ElementImpl implements Module {
 				return IRI_EDEFAULT == null ? iri != null : !IRI_EDEFAULT.equals(iri);
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
-		if (baseClass == Element.class) {
-			switch (baseOperationID) {
-				case CommonPackage.ELEMENT___UUID: return CommonPackage.MODULE___UUID;
-				case CommonPackage.ELEMENT___MODULE_CONTEXT: return CommonPackage.MODULE___MODULE_CONTEXT;
-				default: return super.eDerivedOperationID(baseOperationID, baseClass);
-			}
-		}
-		if (baseClass == Resource.class) {
-			switch (baseOperationID) {
-				case CommonPackage.RESOURCE___IRI: return CommonPackage.MODULE___IRI;
-				case CommonPackage.RESOURCE___NAME: return CommonPackage.MODULE___NAME;
-				case CommonPackage.RESOURCE___ABBREV_IRI: return CommonPackage.MODULE___ABBREV_IRI;
-				default: return -1;
-			}
-		}
-		return super.eDerivedOperationID(baseOperationID, baseClass);
 	}
 
 	/**

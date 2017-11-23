@@ -18,7 +18,6 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies;
 
-import org.eclipse.emf.cdo.CDOObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -36,8 +35,7 @@ import org.eclipse.emf.cdo.CDOObject;
  *
  * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getConceptualEntity()
  * @model abstract="true"
- * @extends CDOObject
  * @generated
  */
-public interface ConceptualEntity extends CDOObject {
+public interface ConceptualEntity extends Entity {
 } // ConceptualEntity

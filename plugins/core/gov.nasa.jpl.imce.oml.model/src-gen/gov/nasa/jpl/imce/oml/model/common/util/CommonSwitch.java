@@ -193,6 +193,7 @@ public class CommonSwitch<T> extends Switch<T> {
 			case CommonPackage.RESOURCE: {
 				Resource resource = (Resource)theEObject;
 				T result = caseResource(resource);
+				if (result == null) result = caseElement(resource);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -225,8 +226,8 @@ public class CommonSwitch<T> extends Switch<T> {
 			case CommonPackage.MODULE: {
 				Module module = (Module)theEObject;
 				T result = caseModule(module);
-				if (result == null) result = caseElement(module);
 				if (result == null) result = caseResource(module);
+				if (result == null) result = caseElement(module);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}

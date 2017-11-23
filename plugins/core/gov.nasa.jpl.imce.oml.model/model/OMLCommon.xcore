@@ -284,7 +284,7 @@ abstract class Element {
  * between its name and its IRI depend on what kind of OML Resource it is.
  */
 @Glossary
-abstract class Resource {
+abstract class Resource extends Element {
 	
 	@ImplicitExtent
 	@NotSchema
@@ -383,7 +383,7 @@ class Extent {
 @Glossary
 @ExtentManaged
 @NamespaceUUID(namespace="iri", factors="")
-abstract class Module extends Element, Resource {
+abstract class Module extends Resource {
 	
 	@NotFunctionalAPI
 	@NotSchema
@@ -402,10 +402,11 @@ abstract class Module extends Element, Resource {
 	@Override
 	op IRI[?] iri() { getIri }
 	
-	@Scala(code="iri.substring(1+iri.lastIndexOf('/'))")
+	@Scala(code="gov.nasa.jpl.imce.oml.tables.taggedTypes.namespacePrefix(iri.substring(1+iri.lastIndexOf('/')))")
 	@NotSchema
  	op NamespacePrefix[1] nsPrefix() { getIri()?.substring(1+getIri().lastIndexOf('/')) }
 	
+	@Scala(code="gov.nasa.jpl.imce.oml.tables.taggedTypes.localName(nsPrefix)")
 	@NotSchema
 	op LocalName[1] name() { nsPrefix }
 	

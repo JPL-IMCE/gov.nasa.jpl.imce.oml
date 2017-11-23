@@ -35,7 +35,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ConceptItemProvider extends EntityItemProvider {
+public class ConceptItemProvider extends ConceptualEntityItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

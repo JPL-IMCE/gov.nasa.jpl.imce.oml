@@ -75,7 +75,7 @@ public interface Term extends TerminologyBoxStatement, Resource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model dataType="gov.nasa.jpl.imce.oml.model.common.IRI" unique="false"
-	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='extent.terminologyBoxOfTerminologyBoxStatement.get(this).flatMap(_.iri().map(_ + \"#\" + name))'"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='extent.terminologyBoxOfTerminologyBoxStatement.get(this).flatMap(tbox =&gt; tbox.iri().map(i =&gt;  gov.nasa.jpl.imce.oml.tables.taggedTypes.iri(i + \"#\" + name)))'"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox%&gt; _tbox = this.getTbox();\n&lt;%java.lang.String%&gt; _iri = null;\nif (_tbox!=null)\n{\n\t_iri=_tbox.iri();\n}\n&lt;%java.lang.String%&gt; _plus = (_iri + \"#\");\n&lt;%java.lang.String%&gt; _name = this.name();\nreturn (_plus + _name);'"
 	 * @generated
 	 */
