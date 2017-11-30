@@ -2,6 +2,11 @@
 
 [![Build Status](https://travis-ci.org/JPL-IMCE/gov.nasa.jpl.imce.oml.svg?branch=master)](https://travis-ci.org/JPL-IMCE/gov.nasa.jpl.imce.oml)
 
+## What is OML?
+
+See the [OML Specification Document](https://www.gitbook.com/book/omf/ontological-modeling-language-specification/details)
+published from https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml.doc using [GitBook](https://gitbook.com/).
+
 ## [Quick OML Workbench Introduction](doc/QuickIntroduction.md)
 
 ## Download the OML Workbench
