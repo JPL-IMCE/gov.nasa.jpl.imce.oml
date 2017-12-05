@@ -23,9 +23,9 @@ import gov.nasa.jpl.imce.oml.model.bundles.BundlesPackage;
 import gov.nasa.jpl.imce.oml.model.bundles.ConceptTreeDisjunction;
 import gov.nasa.jpl.imce.oml.model.bundles.DisjointUnionOfConceptsAxiom;
 
-import gov.nasa.jpl.imce.oml.model.common.Element;
+import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
 
-import gov.nasa.jpl.imce.oml.model.common.impl.ElementImpl;
+import gov.nasa.jpl.imce.oml.model.common.impl.ElementCrossReferenceTupleImpl;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -54,7 +54,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public abstract class ConceptTreeDisjunctionImpl extends ElementImpl implements ConceptTreeDisjunction {
+public abstract class ConceptTreeDisjunctionImpl extends ElementCrossReferenceTupleImpl implements ConceptTreeDisjunction {
 	/**
 	 * The cached value of the '{@link #getDisjunctions() <em>Disjunctions</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -112,7 +112,7 @@ public abstract class ConceptTreeDisjunctionImpl extends ElementImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Element> allNestedDisjunctions() {
+	public EList<LogicalElement> allNestedElements() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
@@ -217,8 +217,8 @@ public abstract class ConceptTreeDisjunctionImpl extends ElementImpl implements 
 		switch (operationID) {
 			case BundlesPackage.CONCEPT_TREE_DISJUNCTION___BUNDLE_CONTAINER:
 				return bundleContainer();
-			case BundlesPackage.CONCEPT_TREE_DISJUNCTION___ALL_NESTED_DISJUNCTIONS:
-				return allNestedDisjunctions();
+			case BundlesPackage.CONCEPT_TREE_DISJUNCTION___ALL_NESTED_ELEMENTS:
+				return allNestedElements();
 		}
 		return super.eInvoke(operationID, arguments);
 	}

@@ -18,7 +18,8 @@
  */
 package gov.nasa.jpl.imce.oml.model.bundles;
 
-import gov.nasa.jpl.imce.oml.model.common.Element;
+import gov.nasa.jpl.imce.oml.model.common.ElementCrossReferenceTuple;
+import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -44,7 +45,7 @@ import org.eclipse.emf.common.util.EList;
  * @model abstract="true"
  * @generated
  */
-public interface ConceptTreeDisjunction extends Element {
+public interface ConceptTreeDisjunction extends ElementCrossReferenceTuple {
 	/**
 	 * Returns the value of the '<em><b>Disjunctions</b></em>' containment reference list.
 	 * The list contents are of type {@link gov.nasa.jpl.imce.oml.model.bundles.DisjointUnionOfConceptsAxiom}.
@@ -79,6 +80,6 @@ public interface ConceptTreeDisjunction extends Element {
 	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
 	 * @generated
 	 */
-	EList<Element> allNestedDisjunctions();
+	EList<LogicalElement> allNestedElements();
 
 } // ConceptTreeDisjunction

@@ -33,7 +33,7 @@ package gov.nasa.jpl.imce.oml.model.common;
  * @model abstract="true"
  * @generated
  */
-public interface ModuleEdge extends Element {
+public interface ModuleEdge extends ElementCrossReferenceTuple {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

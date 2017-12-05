@@ -26,11 +26,10 @@ package gov.nasa.jpl.imce.oml.model.common;
  *
  * <!-- begin-model-doc -->
  * An OML Resource is an abstraction for
- * everything in a vocabulary that is identifiable
- * locally by name within the vocabulary and
- * globally by an IRI across multiple vocabularies.
- * For a particular OML Resource, the constraints
- * between its name and its IRI depend on what kind of OML Resource it is.
+ * a kind of an OML Element that has intrinsic identity
+ * based on a single identity criteria: an IRI.
+ * An OML Resource has a name; the relationship between
+ * the name and IRI depends on the kind of OML Resource.
  * <!-- end-model-doc -->
  *
  *
@@ -38,15 +37,7 @@ package gov.nasa.jpl.imce.oml.model.common;
  * @model abstract="true"
  * @generated
  */
-public interface Resource extends Element {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model dataType="gov.nasa.jpl.imce.oml.model.common.IRI" unique="false"
-	 * @generated
-	 */
-	String iri();
-
+public interface Resource extends LogicalElement, IntrinsicIdentityKind {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

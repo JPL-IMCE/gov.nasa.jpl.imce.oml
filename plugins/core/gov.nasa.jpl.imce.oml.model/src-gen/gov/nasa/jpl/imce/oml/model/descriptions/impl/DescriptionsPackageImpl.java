@@ -1440,18 +1440,23 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 		descriptionBoxRefinementEClass.getESuperTypes().add(this.getDescriptionBoxRelationship());
 		terminologyInstanceAssertionEClass.getESuperTypes().add(theCommonPackage.getModuleElement());
 		singletonInstanceScalarDataPropertyValueEClass.getESuperTypes().add(theCommonPackage.getModuleElement());
-		singletonInstanceStructuredDataPropertyContextEClass.getESuperTypes().add(theCommonPackage.getElement());
+		singletonInstanceScalarDataPropertyValueEClass.getESuperTypes().add(theCommonPackage.getValueCrossReferenceTuple());
+		singletonInstanceStructuredDataPropertyContextEClass.getESuperTypes().add(theCommonPackage.getElementCrossReferenceTuple());
 		singletonInstanceStructuredDataPropertyValueEClass.getESuperTypes().add(this.getSingletonInstanceStructuredDataPropertyContext());
 		singletonInstanceStructuredDataPropertyValueEClass.getESuperTypes().add(theCommonPackage.getModuleElement());
 		structuredDataPropertyTupleEClass.getESuperTypes().add(this.getSingletonInstanceStructuredDataPropertyContext());
-		scalarDataPropertyValueEClass.getESuperTypes().add(theCommonPackage.getElement());
+		scalarDataPropertyValueEClass.getESuperTypes().add(theCommonPackage.getLogicalElement());
+		scalarDataPropertyValueEClass.getESuperTypes().add(theCommonPackage.getValueCrossReferenceTuple());
 		conceptualEntitySingletonInstanceEClass.getESuperTypes().add(this.getTerminologyInstanceAssertion());
 		conceptualEntitySingletonInstanceEClass.getESuperTypes().add(theCommonPackage.getResource());
 		conceptInstanceEClass.getESuperTypes().add(this.getConceptualEntitySingletonInstance());
 		reifiedRelationshipInstanceEClass.getESuperTypes().add(this.getConceptualEntitySingletonInstance());
 		reifiedRelationshipInstanceDomainEClass.getESuperTypes().add(this.getTerminologyInstanceAssertion());
+		reifiedRelationshipInstanceDomainEClass.getESuperTypes().add(theCommonPackage.getElementCrossReferenceTuple());
 		reifiedRelationshipInstanceRangeEClass.getESuperTypes().add(this.getTerminologyInstanceAssertion());
+		reifiedRelationshipInstanceRangeEClass.getESuperTypes().add(theCommonPackage.getElementCrossReferenceTuple());
 		unreifiedRelationshipInstanceTupleEClass.getESuperTypes().add(this.getTerminologyInstanceAssertion());
+		unreifiedRelationshipInstanceTupleEClass.getESuperTypes().add(theCommonPackage.getElementCrossReferenceTuple());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(descriptionBoxEClass, DescriptionBox.class, "DescriptionBox", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1511,7 +1516,7 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 
 		initEOperation(getSingletonInstanceScalarDataPropertyValue__ModuleContext(), theCommonPackage.getModule(), "moduleContext", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getSingletonInstanceScalarDataPropertyValue__AllNestedElements(), theCommonPackage.getElement(), "allNestedElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getSingletonInstanceScalarDataPropertyValue__AllNestedElements(), theCommonPackage.getLogicalElement(), "allNestedElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(singletonInstanceStructuredDataPropertyContextEClass, SingletonInstanceStructuredDataPropertyContext.class, "SingletonInstanceStructuredDataPropertyContext", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSingletonInstanceStructuredDataPropertyContext_StructuredDataProperty(), theTerminologiesPackage.getDataRelationshipToStructure(), null, "structuredDataProperty", null, 1, 1, SingletonInstanceStructuredDataPropertyContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1522,7 +1527,7 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 
 		initEOperation(getSingletonInstanceStructuredDataPropertyContext__ModuleContext(), theCommonPackage.getModule(), "moduleContext", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getSingletonInstanceStructuredDataPropertyContext__AllNestedRestrictionElements(), theCommonPackage.getElement(), "allNestedRestrictionElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getSingletonInstanceStructuredDataPropertyContext__AllNestedRestrictionElements(), theCommonPackage.getLogicalElement(), "allNestedRestrictionElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(singletonInstanceStructuredDataPropertyValueEClass, SingletonInstanceStructuredDataPropertyValue.class, "SingletonInstanceStructuredDataPropertyValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSingletonInstanceStructuredDataPropertyValue_DescriptionBox(), this.getDescriptionBox(), this.getDescriptionBox_SingletonStructuredDataPropertyValues(), "descriptionBox", null, 1, 1, SingletonInstanceStructuredDataPropertyValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1532,7 +1537,7 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 
 		initEOperation(getSingletonInstanceStructuredDataPropertyValue__DescriptionBox(), this.getDescriptionBox(), "descriptionBox", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getSingletonInstanceStructuredDataPropertyValue__AllNestedElements(), theCommonPackage.getElement(), "allNestedElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getSingletonInstanceStructuredDataPropertyValue__AllNestedElements(), theCommonPackage.getLogicalElement(), "allNestedElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(structuredDataPropertyTupleEClass, StructuredDataPropertyTuple.class, "StructuredDataPropertyTuple", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getStructuredDataPropertyTuple_StructuredDataPropertyContext(), this.getSingletonInstanceStructuredDataPropertyContext(), this.getSingletonInstanceStructuredDataPropertyContext_StructuredPropertyTuples(), "structuredDataPropertyContext", null, 1, 1, StructuredDataPropertyTuple.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1578,7 +1583,7 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 
 		initEOperation(getConceptInstance__DescriptionBox(), this.getDescriptionBox(), "descriptionBox", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getConceptInstance__AllNestedElements(), theCommonPackage.getElement(), "allNestedElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getConceptInstance__AllNestedElements(), theCommonPackage.getLogicalElement(), "allNestedElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(reifiedRelationshipInstanceEClass, ReifiedRelationshipInstance.class, "ReifiedRelationshipInstance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getReifiedRelationshipInstance_DescriptionBox(), this.getDescriptionBox(), this.getDescriptionBox_ReifiedRelationshipInstances(), "descriptionBox", null, 1, 1, ReifiedRelationshipInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1588,7 +1593,7 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 
 		initEOperation(getReifiedRelationshipInstance__DescriptionBox(), this.getDescriptionBox(), "descriptionBox", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getReifiedRelationshipInstance__AllNestedElements(), theCommonPackage.getElement(), "allNestedElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getReifiedRelationshipInstance__AllNestedElements(), theCommonPackage.getLogicalElement(), "allNestedElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(reifiedRelationshipInstanceDomainEClass, ReifiedRelationshipInstanceDomain.class, "ReifiedRelationshipInstanceDomain", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getReifiedRelationshipInstanceDomain_DescriptionBox(), this.getDescriptionBox(), this.getDescriptionBox_ReifiedRelationshipInstanceDomains(), "descriptionBox", null, 1, 1, ReifiedRelationshipInstanceDomain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1601,7 +1606,7 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 
 		initEOperation(getReifiedRelationshipInstanceDomain__ModuleContext(), theCommonPackage.getModule(), "moduleContext", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getReifiedRelationshipInstanceDomain__AllNestedElements(), theCommonPackage.getElement(), "allNestedElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getReifiedRelationshipInstanceDomain__AllNestedElements(), theCommonPackage.getLogicalElement(), "allNestedElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(reifiedRelationshipInstanceRangeEClass, ReifiedRelationshipInstanceRange.class, "ReifiedRelationshipInstanceRange", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getReifiedRelationshipInstanceRange_DescriptionBox(), this.getDescriptionBox(), this.getDescriptionBox_ReifiedRelationshipInstanceRanges(), "descriptionBox", null, 1, 1, ReifiedRelationshipInstanceRange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1614,7 +1619,7 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 
 		initEOperation(getReifiedRelationshipInstanceRange__ModuleContext(), theCommonPackage.getModule(), "moduleContext", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getReifiedRelationshipInstanceRange__AllNestedElements(), theCommonPackage.getElement(), "allNestedElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getReifiedRelationshipInstanceRange__AllNestedElements(), theCommonPackage.getLogicalElement(), "allNestedElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(unreifiedRelationshipInstanceTupleEClass, UnreifiedRelationshipInstanceTuple.class, "UnreifiedRelationshipInstanceTuple", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getUnreifiedRelationshipInstanceTuple_DescriptionBox(), this.getDescriptionBox(), this.getDescriptionBox_UnreifiedRelationshipInstanceTuples(), "descriptionBox", null, 1, 1, UnreifiedRelationshipInstanceTuple.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1628,7 +1633,7 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 
 		initEOperation(getUnreifiedRelationshipInstanceTuple__ModuleContext(), theCommonPackage.getModule(), "moduleContext", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getUnreifiedRelationshipInstanceTuple__AllNestedElements(), theCommonPackage.getElement(), "allNestedElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getUnreifiedRelationshipInstanceTuple__AllNestedElements(), theCommonPackage.getLogicalElement(), "allNestedElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(descriptionKindEEnum, DescriptionKind.class, "DescriptionKind");
@@ -1802,13 +1807,13 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 		  (getSingletonInstanceScalarDataPropertyValue__AllNestedElements(), 
 		   source, 
 		   new String[] {
-			 "code", "scala.collection.immutable.Set.empty[resolver.api.Element]"
+			 "code", "scala.collection.immutable.Set.empty[resolver.api.LogicalElement]"
 		   });	
 		addAnnotation
 		  (getSingletonInstanceStructuredDataPropertyContext__AllNestedRestrictionElements(), 
 		   source, 
 		   new String[] {
-			 "code", "extent.lookupStructuredPropertyTuples(this).flatMap{ r => scala.collection.immutable.Set.empty[resolver.api.Element] + r ++ r.allNestedRestrictionElements() } ++\n\t\textent.lookupScalarDataPropertyValues(this)"
+			 "code", "extent.lookupStructuredPropertyTuples(this).flatMap{ r => scala.collection.immutable.Set.empty[resolver.api.LogicalElement] + r ++ r.allNestedRestrictionElements() } ++\n\t\textent.lookupScalarDataPropertyValues(this)"
 		   });	
 		addAnnotation
 		  (getSingletonInstanceStructuredDataPropertyValue__DescriptionBox(), 
@@ -1850,7 +1855,7 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 		  (getConceptInstance__AllNestedElements(), 
 		   source, 
 		   new String[] {
-			 "code", "scala.collection.immutable.Set.empty[resolver.api.Element]"
+			 "code", "scala.collection.immutable.Set.empty[resolver.api.LogicalElement]"
 		   });	
 		addAnnotation
 		  (getReifiedRelationshipInstance__DescriptionBox(), 
@@ -1862,7 +1867,7 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 		  (getReifiedRelationshipInstance__AllNestedElements(), 
 		   source, 
 		   new String[] {
-			 "code", "scala.collection.immutable.Set.empty[resolver.api.Element]"
+			 "code", "scala.collection.immutable.Set.empty[resolver.api.LogicalElement]"
 		   });	
 		addAnnotation
 		  (getReifiedRelationshipInstanceDomain__DescriptionBox(), 
@@ -1874,7 +1879,7 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 		  (getReifiedRelationshipInstanceDomain__AllNestedElements(), 
 		   source, 
 		   new String[] {
-			 "code", "scala.collection.immutable.Set.empty[resolver.api.Element]"
+			 "code", "scala.collection.immutable.Set.empty[resolver.api.LogicalElement]"
 		   });	
 		addAnnotation
 		  (getReifiedRelationshipInstanceRange__DescriptionBox(), 
@@ -1886,7 +1891,7 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 		  (getReifiedRelationshipInstanceRange__AllNestedElements(), 
 		   source, 
 		   new String[] {
-			 "code", "scala.collection.immutable.Set.empty[resolver.api.Element]"
+			 "code", "scala.collection.immutable.Set.empty[resolver.api.LogicalElement]"
 		   });	
 		addAnnotation
 		  (getUnreifiedRelationshipInstanceTuple__DescriptionBox(), 
@@ -1898,7 +1903,7 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 		  (getUnreifiedRelationshipInstanceTuple__AllNestedElements(), 
 		   source, 
 		   new String[] {
-			 "code", "scala.collection.immutable.Set.empty[resolver.api.Element]"
+			 "code", "scala.collection.immutable.Set.empty[resolver.api.LogicalElement]"
 		   });
 	}
 

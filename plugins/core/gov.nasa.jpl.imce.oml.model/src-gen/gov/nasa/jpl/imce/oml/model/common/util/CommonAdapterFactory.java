@@ -136,12 +136,44 @@ public class CommonAdapterFactory extends AdapterFactoryImpl {
 				return createLiteralDecimalAdapter();
 			}
 			@Override
-			public Adapter caseAnnotationPropertyValue(AnnotationPropertyValue object) {
-				return createAnnotationPropertyValueAdapter();
+			public Adapter caseCrossReferencabilityKind(CrossReferencabilityKind object) {
+				return createCrossReferencabilityKindAdapter();
 			}
 			@Override
-			public Adapter caseElement(Element object) {
-				return createElementAdapter();
+			public Adapter caseCrossReferencableKind(CrossReferencableKind object) {
+				return createCrossReferencableKindAdapter();
+			}
+			@Override
+			public Adapter caseNonCrossReferencableKind(NonCrossReferencableKind object) {
+				return createNonCrossReferencableKindAdapter();
+			}
+			@Override
+			public Adapter caseIdentityKind(IdentityKind object) {
+				return createIdentityKindAdapter();
+			}
+			@Override
+			public Adapter caseIntrinsicIdentityKind(IntrinsicIdentityKind object) {
+				return createIntrinsicIdentityKindAdapter();
+			}
+			@Override
+			public Adapter caseExtrinsicIdentityKind(ExtrinsicIdentityKind object) {
+				return createExtrinsicIdentityKindAdapter();
+			}
+			@Override
+			public Adapter caseElementCrossReferenceTuple(ElementCrossReferenceTuple object) {
+				return createElementCrossReferenceTupleAdapter();
+			}
+			@Override
+			public Adapter caseValueCrossReferenceTuple(ValueCrossReferenceTuple object) {
+				return createValueCrossReferenceTupleAdapter();
+			}
+			@Override
+			public Adapter caseLogicalElement(LogicalElement object) {
+				return createLogicalElementAdapter();
+			}
+			@Override
+			public Adapter caseNonLogicalElement(NonLogicalElement object) {
+				return createNonLogicalElementAdapter();
 			}
 			@Override
 			public Adapter caseResource(Resource object) {
@@ -158,6 +190,10 @@ public class CommonAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseAnnotationProperty(AnnotationProperty object) {
 				return createAnnotationPropertyAdapter();
+			}
+			@Override
+			public Adapter caseAnnotationPropertyValue(AnnotationPropertyValue object) {
+				return createAnnotationPropertyValueAdapter();
 			}
 			@Override
 			public Adapter caseExtent(Extent object) {
@@ -370,30 +406,142 @@ public class CommonAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue <em>Annotation Property Value</em>}'.
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.common.CrossReferencabilityKind <em>Cross Referencability Kind</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue
+	 * @see gov.nasa.jpl.imce.oml.model.common.CrossReferencabilityKind
 	 * @generated
 	 */
-	public Adapter createAnnotationPropertyValueAdapter() {
+	public Adapter createCrossReferencabilityKindAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.common.Element <em>Element</em>}'.
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.common.CrossReferencableKind <em>Cross Referencable Kind</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see gov.nasa.jpl.imce.oml.model.common.Element
+	 * @see gov.nasa.jpl.imce.oml.model.common.CrossReferencableKind
 	 * @generated
 	 */
-	public Adapter createElementAdapter() {
+	public Adapter createCrossReferencableKindAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.common.NonCrossReferencableKind <em>Non Cross Referencable Kind</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.common.NonCrossReferencableKind
+	 * @generated
+	 */
+	public Adapter createNonCrossReferencableKindAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.common.IdentityKind <em>Identity Kind</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.common.IdentityKind
+	 * @generated
+	 */
+	public Adapter createIdentityKindAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.common.IntrinsicIdentityKind <em>Intrinsic Identity Kind</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.common.IntrinsicIdentityKind
+	 * @generated
+	 */
+	public Adapter createIntrinsicIdentityKindAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.common.ExtrinsicIdentityKind <em>Extrinsic Identity Kind</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.common.ExtrinsicIdentityKind
+	 * @generated
+	 */
+	public Adapter createExtrinsicIdentityKindAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.common.ElementCrossReferenceTuple <em>Element Cross Reference Tuple</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.common.ElementCrossReferenceTuple
+	 * @generated
+	 */
+	public Adapter createElementCrossReferenceTupleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.common.ValueCrossReferenceTuple <em>Value Cross Reference Tuple</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.common.ValueCrossReferenceTuple
+	 * @generated
+	 */
+	public Adapter createValueCrossReferenceTupleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.common.LogicalElement <em>Logical Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LogicalElement
+	 * @generated
+	 */
+	public Adapter createLogicalElementAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.common.NonLogicalElement <em>Non Logical Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.common.NonLogicalElement
+	 * @generated
+	 */
+	public Adapter createNonLogicalElementAdapter() {
 		return null;
 	}
 
@@ -450,6 +598,20 @@ public class CommonAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAnnotationPropertyAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue <em>Annotation Property Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue
+	 * @generated
+	 */
+	public Adapter createAnnotationPropertyValueAdapter() {
 		return null;
 	}
 

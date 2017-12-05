@@ -27,7 +27,6 @@ import gov.nasa.jpl.imce.oml.model.bundles.RootConceptTaxonomyAxiom
 import gov.nasa.jpl.imce.oml.model.bundles.SpecificDisjointConceptAxiom
 import gov.nasa.jpl.imce.oml.model.bundles.AnonymousConceptUnionAxiom
 import gov.nasa.jpl.imce.oml.model.common.Module
-import gov.nasa.jpl.imce.oml.model.common.Element
 import gov.nasa.jpl.imce.oml.model.common.Extent
 import gov.nasa.jpl.imce.oml.model.descriptions.ConceptInstance
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox
@@ -135,6 +134,7 @@ import org.eclipse.emf.common.util.EList
 import java.util.List
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.nodemodel.INode
+import gov.nasa.jpl.imce.oml.model.common.LogicalElement
 
 public class OMLExtensions {
 
@@ -331,13 +331,11 @@ public class OMLExtensions {
 	}
 
 	static def String getModuleNsURI(Module it) {
-		annotations.findFirst[a|a.property.iri == "http://imce.jpl.nasa.gov/oml/runtime#OML2EcoreNsURI"]?.value?.value?.
-			value ?: iri()
+		annotations.findFirst[a|a.property.iri() == "http://imce.jpl.nasa.gov/oml/runtime#OML2EcoreNsURI"]?.value?.stringValue?.value ?: iri()
 	}
 
 	static def String getModuleNsPrefix(Module it) {
-		annotations.findFirst[a|a.property.iri == "http://imce.jpl.nasa.gov/oml/runtime#OML2EcoreNsPrefix"]?.value?.
-			value?.value ?: name()
+		annotations.findFirst[a|a.property.iri() == "http://imce.jpl.nasa.gov/oml/runtime#OML2EcoreNsPrefix"]?.value?.stringValue?.value ?: name()
 	}
 
 	def Iterable<TerminologyBox> terminologies(Extent it) {
@@ -559,7 +557,7 @@ public class OMLExtensions {
 		reifiedRelationshipInstances
 	}
 
-	static def String kind(Element e) {
+	static def String kind(LogicalElement e) {
 		switch e {
 			AnonymousConceptUnionAxiom:
 				'AnonymousConceptUnionAxiom'
@@ -788,7 +786,7 @@ public class OMLExtensions {
 		}
 	}
 
-	static def String nestedKindOrder(Element e) {
+	static def String nestedKindOrder(LogicalElement e) {
 		switch e {
 			TerminologyGraph:
 				"00000-"
@@ -979,7 +977,7 @@ public class OMLExtensions {
 	 */
 	static def dispatch void normalize(TerminologyGraph it) {
 		normalizeTerminologyBoxCollections
-		eContents.filter(Element).forEach [ e |
+		eContents.filter(gov.nasa.jpl.imce.oml.model.common.LogicalElement).forEach [ e |
 			normalizeAnnotations(e)
 			normalizeSubElements(e)
 		]
@@ -990,7 +988,7 @@ public class OMLExtensions {
 	 */
 	static def dispatch void normalize(Bundle it) {
 		normalizeBundleCollections
-		eContents.filter(Element).forEach [ e |
+		eContents.filter(gov.nasa.jpl.imce.oml.model.common.LogicalElement).forEach [ e |
 			normalizeAnnotations(e)
 			normalizeSubElements(e)
 		]
@@ -1009,7 +1007,7 @@ public class OMLExtensions {
 		sortInplaceBy(unreifiedRelationshipInstanceTuples, [sortingCriteria])
 		sortInplaceBy(singletonScalarDataPropertyValues, [sortingCriteria])
 		sortInplaceBy(singletonStructuredDataPropertyValues, [sortingCriteria])
-		eContents.filter(Element).forEach [ e |
+		eContents.filter(LogicalElement).forEach [ e |
 			normalizeAnnotations(e)
 			normalizeSubElements(e)
 		]
@@ -1026,7 +1024,7 @@ public class OMLExtensions {
 		ECollections.sort(bundleStatements, bundleStatementComparator)
 	}
 
-	protected static def normalizeAnnotations(Element e) {
+	protected static def normalizeAnnotations(LogicalElement e) {
 		sortInplaceBy(e.annotations, [sortingCriteria])
 	}
 
@@ -1130,7 +1128,7 @@ public class OMLExtensions {
 		}
 	}
 
-	static def String sortingCriteria(Element e) {
+	static def String sortingCriteria(LogicalElement e) {
 		val c = switch e {
 			Module:
 				e.abbrevIRI
@@ -1199,6 +1197,6 @@ public class OMLExtensions {
 	}
 
 	static def String sortingCriteria(AnnotationPropertyValue e) {
-		e.property?.abbrevIRI ?: e.uuid
+		e.property?.abbrevIRI ?: e.uuid()
 	}
 }

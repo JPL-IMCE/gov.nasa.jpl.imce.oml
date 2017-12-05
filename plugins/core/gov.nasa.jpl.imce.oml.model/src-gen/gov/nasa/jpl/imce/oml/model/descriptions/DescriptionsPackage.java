@@ -829,7 +829,7 @@ public interface DescriptionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT__UUID = CommonPackage.ELEMENT__UUID;
+	int SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT__UUID = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE__UUID;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -838,7 +838,7 @@ public interface DescriptionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT__ANNOTATIONS = CommonPackage.ELEMENT__ANNOTATIONS;
+	int SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT__ANNOTATIONS = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Structured Data Property</b></em>' reference.
@@ -847,7 +847,7 @@ public interface DescriptionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT__STRUCTURED_DATA_PROPERTY = CommonPackage.ELEMENT_FEATURE_COUNT + 0;
+	int SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT__STRUCTURED_DATA_PROPERTY = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Structured Property Tuples</b></em>' containment reference list.
@@ -856,7 +856,7 @@ public interface DescriptionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT__STRUCTURED_PROPERTY_TUPLES = CommonPackage.ELEMENT_FEATURE_COUNT + 1;
+	int SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT__STRUCTURED_PROPERTY_TUPLES = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Scalar Data Property Values</b></em>' containment reference list.
@@ -865,7 +865,7 @@ public interface DescriptionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT__SCALAR_DATA_PROPERTY_VALUES = CommonPackage.ELEMENT_FEATURE_COUNT + 2;
+	int SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT__SCALAR_DATA_PROPERTY_VALUES = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Singleton Instance Structured Data Property Context</em>' class.
@@ -874,7 +874,7 @@ public interface DescriptionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT_FEATURE_COUNT = CommonPackage.ELEMENT_FEATURE_COUNT + 3;
+	int SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT_FEATURE_COUNT = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The operation id for the '<em>Uuid</em>' operation.
@@ -883,7 +883,7 @@ public interface DescriptionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT___UUID = CommonPackage.ELEMENT___UUID;
+	int SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT___UUID = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE___UUID;
 
 	/**
 	 * The operation id for the '<em>Description Box</em>' operation.
@@ -892,7 +892,7 @@ public interface DescriptionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT___DESCRIPTION_BOX = CommonPackage.ELEMENT_OPERATION_COUNT + 0;
+	int SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT___DESCRIPTION_BOX = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE_OPERATION_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Module Context</em>' operation.
@@ -901,7 +901,7 @@ public interface DescriptionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT___MODULE_CONTEXT = CommonPackage.ELEMENT_OPERATION_COUNT + 1;
+	int SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT___MODULE_CONTEXT = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE_OPERATION_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>All Nested Restriction Elements</em>' operation.
@@ -910,7 +910,7 @@ public interface DescriptionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT___ALL_NESTED_RESTRICTION_ELEMENTS = CommonPackage.ELEMENT_OPERATION_COUNT + 2;
+	int SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT___ALL_NESTED_RESTRICTION_ELEMENTS = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE_OPERATION_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Singleton Instance Structured Data Property Context</em>' class.
@@ -919,7 +919,7 @@ public interface DescriptionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT_OPERATION_COUNT = CommonPackage.ELEMENT_OPERATION_COUNT + 3;
+	int SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT_OPERATION_COUNT = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE_OPERATION_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.SingletonInstanceStructuredDataPropertyValueImpl <em>Singleton Instance Structured Data Property Value</em>}' class.
@@ -1192,7 +1192,7 @@ public interface DescriptionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SCALAR_DATA_PROPERTY_VALUE__UUID = CommonPackage.ELEMENT__UUID;
+	int SCALAR_DATA_PROPERTY_VALUE__UUID = CommonPackage.LOGICAL_ELEMENT__UUID;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -1201,7 +1201,7 @@ public interface DescriptionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SCALAR_DATA_PROPERTY_VALUE__ANNOTATIONS = CommonPackage.ELEMENT__ANNOTATIONS;
+	int SCALAR_DATA_PROPERTY_VALUE__ANNOTATIONS = CommonPackage.LOGICAL_ELEMENT__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Structured Data Property Context</b></em>' container reference.
@@ -1210,7 +1210,7 @@ public interface DescriptionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SCALAR_DATA_PROPERTY_VALUE__STRUCTURED_DATA_PROPERTY_CONTEXT = CommonPackage.ELEMENT_FEATURE_COUNT + 0;
+	int SCALAR_DATA_PROPERTY_VALUE__STRUCTURED_DATA_PROPERTY_CONTEXT = CommonPackage.LOGICAL_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Scalar Data Property</b></em>' reference.
@@ -1219,7 +1219,7 @@ public interface DescriptionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SCALAR_DATA_PROPERTY_VALUE__SCALAR_DATA_PROPERTY = CommonPackage.ELEMENT_FEATURE_COUNT + 1;
+	int SCALAR_DATA_PROPERTY_VALUE__SCALAR_DATA_PROPERTY = CommonPackage.LOGICAL_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Scalar Property Value</b></em>' containment reference.
@@ -1228,7 +1228,7 @@ public interface DescriptionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE = CommonPackage.ELEMENT_FEATURE_COUNT + 2;
+	int SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE = CommonPackage.LOGICAL_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Value Type</b></em>' reference.
@@ -1237,7 +1237,7 @@ public interface DescriptionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SCALAR_DATA_PROPERTY_VALUE__VALUE_TYPE = CommonPackage.ELEMENT_FEATURE_COUNT + 3;
+	int SCALAR_DATA_PROPERTY_VALUE__VALUE_TYPE = CommonPackage.LOGICAL_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Scalar Data Property Value</em>' class.
@@ -1246,7 +1246,7 @@ public interface DescriptionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SCALAR_DATA_PROPERTY_VALUE_FEATURE_COUNT = CommonPackage.ELEMENT_FEATURE_COUNT + 4;
+	int SCALAR_DATA_PROPERTY_VALUE_FEATURE_COUNT = CommonPackage.LOGICAL_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The operation id for the '<em>Description Box</em>' operation.
@@ -1255,7 +1255,7 @@ public interface DescriptionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SCALAR_DATA_PROPERTY_VALUE___DESCRIPTION_BOX = CommonPackage.ELEMENT_OPERATION_COUNT + 0;
+	int SCALAR_DATA_PROPERTY_VALUE___DESCRIPTION_BOX = CommonPackage.LOGICAL_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Uuid</em>' operation.
@@ -1264,7 +1264,7 @@ public interface DescriptionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SCALAR_DATA_PROPERTY_VALUE___UUID = CommonPackage.ELEMENT_OPERATION_COUNT + 1;
+	int SCALAR_DATA_PROPERTY_VALUE___UUID = CommonPackage.LOGICAL_ELEMENT_OPERATION_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Module Context</em>' operation.
@@ -1273,7 +1273,7 @@ public interface DescriptionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SCALAR_DATA_PROPERTY_VALUE___MODULE_CONTEXT = CommonPackage.ELEMENT_OPERATION_COUNT + 2;
+	int SCALAR_DATA_PROPERTY_VALUE___MODULE_CONTEXT = CommonPackage.LOGICAL_ELEMENT_OPERATION_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Scalar Data Property Value</em>' class.
@@ -1282,7 +1282,7 @@ public interface DescriptionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SCALAR_DATA_PROPERTY_VALUE_OPERATION_COUNT = CommonPackage.ELEMENT_OPERATION_COUNT + 3;
+	int SCALAR_DATA_PROPERTY_VALUE_OPERATION_COUNT = CommonPackage.LOGICAL_ELEMENT_OPERATION_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.ConceptualEntitySingletonInstanceImpl <em>Conceptual Entity Singleton Instance</em>}' class.

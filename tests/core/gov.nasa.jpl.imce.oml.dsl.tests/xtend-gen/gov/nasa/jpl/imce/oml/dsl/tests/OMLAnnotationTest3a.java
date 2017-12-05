@@ -22,9 +22,9 @@ import gov.nasa.jpl.imce.oml.dsl.tests.OMLInjectorProvider;
 import gov.nasa.jpl.imce.oml.model.common.AnnotationProperty;
 import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue;
 import gov.nasa.jpl.imce.oml.model.common.CommonFactory;
-import gov.nasa.jpl.imce.oml.model.common.Element;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
 import gov.nasa.jpl.imce.oml.model.common.LiteralQuotedString;
+import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
 import gov.nasa.jpl.imce.oml.model.datatypes.QuotedStringValue;
 import gov.nasa.jpl.imce.oml.model.graphs.GraphsFactory;
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyGraph;
@@ -121,7 +121,7 @@ public class OMLAnnotationTest3a {
     }
   }
   
-  public void addAnnotation(final Element e, final AnnotationProperty ap, final String v) {
+  public void addAnnotation(final LogicalElement e, final AnnotationProperty ap, final String v) {
     final AnnotationPropertyValue av = this.commonF.createAnnotationPropertyValue();
     EList<AnnotationPropertyValue> _annotations = e.getAnnotations();
     _annotations.add(av);

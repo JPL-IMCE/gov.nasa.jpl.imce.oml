@@ -18,7 +18,7 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies;
 
-import gov.nasa.jpl.imce.oml.model.common.Element;
+import gov.nasa.jpl.imce.oml.model.common.ElementCrossReferenceTuple;
 import gov.nasa.jpl.imce.oml.model.common.Module;
 
 /**
@@ -41,7 +41,7 @@ import gov.nasa.jpl.imce.oml.model.common.Module;
  * @model abstract="true"
  * @generated
  */
-public interface SegmentPredicate extends Element {
+public interface SegmentPredicate extends ElementCrossReferenceTuple {
 	/**
 	 * Returns the value of the '<em><b>Body Segment</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link gov.nasa.jpl.imce.oml.model.terminologies.RuleBodySegment#getPredicate <em>Predicate</em>}'.

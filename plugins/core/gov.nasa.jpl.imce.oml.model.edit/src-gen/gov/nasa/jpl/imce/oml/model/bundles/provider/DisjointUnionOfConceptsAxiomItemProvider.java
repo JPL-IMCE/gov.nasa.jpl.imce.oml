@@ -21,7 +21,7 @@ package gov.nasa.jpl.imce.oml.model.bundles.provider;
 
 import gov.nasa.jpl.imce.oml.model.bundles.BundlesPackage;
 import gov.nasa.jpl.imce.oml.model.bundles.DisjointUnionOfConceptsAxiom;
-import gov.nasa.jpl.imce.oml.model.common.provider.ElementItemProvider;
+import gov.nasa.jpl.imce.oml.model.common.provider.ElementCrossReferenceTupleItemProvider;
 import gov.nasa.jpl.imce.oml.model.edit.provider.OMLEditPlugin;
 
 import java.util.Collection;
@@ -40,7 +40,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
  * <!-- end-user-doc -->
  * @generated
  */
-public class DisjointUnionOfConceptsAxiomItemProvider extends ElementItemProvider {
+public class DisjointUnionOfConceptsAxiomItemProvider extends ElementCrossReferenceTupleItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

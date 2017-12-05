@@ -18,6 +18,7 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies;
 
+import gov.nasa.jpl.imce.oml.model.common.ElementCrossReferenceTuple;
 
 /**
  * <!-- begin-user-doc -->
@@ -40,7 +41,7 @@ package gov.nasa.jpl.imce.oml.model.terminologies;
  * @model abstract="true"
  * @generated
  */
-public interface EntityStructuredDataPropertyRestrictionAxiom extends TermAxiom {
+public interface EntityStructuredDataPropertyRestrictionAxiom extends TermAxiom, ElementCrossReferenceTuple {
 	/**
 	 * Returns the value of the '<em><b>Restricted Entity</b></em>' reference.
 	 * <!-- begin-user-doc -->

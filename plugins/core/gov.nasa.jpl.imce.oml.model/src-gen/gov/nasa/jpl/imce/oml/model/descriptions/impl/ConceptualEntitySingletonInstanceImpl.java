@@ -19,7 +19,10 @@
 package gov.nasa.jpl.imce.oml.model.descriptions.impl;
 
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
-import gov.nasa.jpl.imce.oml.model.common.Element;
+import gov.nasa.jpl.imce.oml.model.common.CrossReferencabilityKind;
+import gov.nasa.jpl.imce.oml.model.common.CrossReferencableKind;
+import gov.nasa.jpl.imce.oml.model.common.IntrinsicIdentityKind;
+import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
 import gov.nasa.jpl.imce.oml.model.common.Module;
 import gov.nasa.jpl.imce.oml.model.common.Resource;
 
@@ -291,16 +294,31 @@ public abstract class ConceptualEntitySingletonInstanceImpl extends TerminologyI
 	 */
 	@Override
 	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
-		if (baseClass == Element.class) {
+		if (baseClass == CrossReferencabilityKind.class) {
 			switch (baseOperationID) {
-				case CommonPackage.ELEMENT___UUID: return DescriptionsPackage.CONCEPTUAL_ENTITY_SINGLETON_INSTANCE___UUID;
-				case CommonPackage.ELEMENT___MODULE_CONTEXT: return DescriptionsPackage.CONCEPTUAL_ENTITY_SINGLETON_INSTANCE___MODULE_CONTEXT;
+				case CommonPackage.CROSS_REFERENCABILITY_KIND___UUID: return DescriptionsPackage.CONCEPTUAL_ENTITY_SINGLETON_INSTANCE___UUID;
 				default: return super.eDerivedOperationID(baseOperationID, baseClass);
+			}
+		}
+		if (baseClass == LogicalElement.class) {
+			switch (baseOperationID) {
+				case CommonPackage.LOGICAL_ELEMENT___MODULE_CONTEXT: return DescriptionsPackage.CONCEPTUAL_ENTITY_SINGLETON_INSTANCE___MODULE_CONTEXT;
+				default: return super.eDerivedOperationID(baseOperationID, baseClass);
+			}
+		}
+		if (baseClass == CrossReferencableKind.class) {
+			switch (baseOperationID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == IntrinsicIdentityKind.class) {
+			switch (baseOperationID) {
+				case CommonPackage.INTRINSIC_IDENTITY_KIND___IRI: return DescriptionsPackage.CONCEPTUAL_ENTITY_SINGLETON_INSTANCE___IRI;
+				default: return -1;
 			}
 		}
 		if (baseClass == Resource.class) {
 			switch (baseOperationID) {
-				case CommonPackage.RESOURCE___IRI: return DescriptionsPackage.CONCEPTUAL_ENTITY_SINGLETON_INSTANCE___IRI;
 				case CommonPackage.RESOURCE___NAME: return DescriptionsPackage.CONCEPTUAL_ENTITY_SINGLETON_INSTANCE___NAME;
 				case CommonPackage.RESOURCE___ABBREV_IRI: return DescriptionsPackage.CONCEPTUAL_ENTITY_SINGLETON_INSTANCE___ABBREV_IRI;
 				default: return -1;

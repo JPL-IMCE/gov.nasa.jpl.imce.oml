@@ -18,7 +18,7 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies;
 
-import gov.nasa.jpl.imce.oml.model.common.Element;
+import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
 import gov.nasa.jpl.imce.oml.model.common.Module;
 
 import org.eclipse.emf.common.util.EList;
@@ -110,6 +110,6 @@ public interface RestrictionStructuredDataPropertyTuple extends RestrictionStruc
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return this.allNestedRestrictionElements();'"
 	 * @generated
 	 */
-	EList<Element> allNestedElements();
+	EList<LogicalElement> allNestedElements();
 
 } // RestrictionStructuredDataPropertyTuple

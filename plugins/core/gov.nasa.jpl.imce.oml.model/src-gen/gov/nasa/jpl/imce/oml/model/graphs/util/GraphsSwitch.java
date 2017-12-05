@@ -18,7 +18,13 @@
  */
 package gov.nasa.jpl.imce.oml.model.graphs.util;
 
-import gov.nasa.jpl.imce.oml.model.common.Element;
+import gov.nasa.jpl.imce.oml.model.common.CrossReferencabilityKind;
+import gov.nasa.jpl.imce.oml.model.common.CrossReferencableKind;
+import gov.nasa.jpl.imce.oml.model.common.ElementCrossReferenceTuple;
+import gov.nasa.jpl.imce.oml.model.common.ExtrinsicIdentityKind;
+import gov.nasa.jpl.imce.oml.model.common.IdentityKind;
+import gov.nasa.jpl.imce.oml.model.common.IntrinsicIdentityKind;
+import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
 import gov.nasa.jpl.imce.oml.model.common.Module;
 import gov.nasa.jpl.imce.oml.model.common.ModuleEdge;
 import gov.nasa.jpl.imce.oml.model.common.Resource;
@@ -97,7 +103,11 @@ public class GraphsSwitch<T> extends Switch<T> {
 				if (result == null) result = caseTerminologyBox(terminologyGraph);
 				if (result == null) result = caseModule(terminologyGraph);
 				if (result == null) result = caseResource(terminologyGraph);
-				if (result == null) result = caseElement(terminologyGraph);
+				if (result == null) result = caseLogicalElement(terminologyGraph);
+				if (result == null) result = caseIntrinsicIdentityKind(terminologyGraph);
+				if (result == null) result = caseIdentityKind(terminologyGraph);
+				if (result == null) result = caseCrossReferencableKind(terminologyGraph);
+				if (result == null) result = caseCrossReferencabilityKind(terminologyGraph);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -107,7 +117,12 @@ public class GraphsSwitch<T> extends Switch<T> {
 				if (result == null) result = caseTerminologyBoxAxiom(conceptDesignationTerminologyAxiom);
 				if (result == null) result = caseTerminologyAxiom(conceptDesignationTerminologyAxiom);
 				if (result == null) result = caseModuleEdge(conceptDesignationTerminologyAxiom);
-				if (result == null) result = caseElement(conceptDesignationTerminologyAxiom);
+				if (result == null) result = caseElementCrossReferenceTuple(conceptDesignationTerminologyAxiom);
+				if (result == null) result = caseExtrinsicIdentityKind(conceptDesignationTerminologyAxiom);
+				if (result == null) result = caseCrossReferencableKind(conceptDesignationTerminologyAxiom);
+				if (result == null) result = caseLogicalElement(conceptDesignationTerminologyAxiom);
+				if (result == null) result = caseIdentityKind(conceptDesignationTerminologyAxiom);
+				if (result == null) result = caseCrossReferencabilityKind(conceptDesignationTerminologyAxiom);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -117,7 +132,12 @@ public class GraphsSwitch<T> extends Switch<T> {
 				if (result == null) result = caseTerminologyBoxAxiom(terminologyNestingAxiom);
 				if (result == null) result = caseTerminologyAxiom(terminologyNestingAxiom);
 				if (result == null) result = caseModuleEdge(terminologyNestingAxiom);
-				if (result == null) result = caseElement(terminologyNestingAxiom);
+				if (result == null) result = caseElementCrossReferenceTuple(terminologyNestingAxiom);
+				if (result == null) result = caseExtrinsicIdentityKind(terminologyNestingAxiom);
+				if (result == null) result = caseCrossReferencableKind(terminologyNestingAxiom);
+				if (result == null) result = caseLogicalElement(terminologyNestingAxiom);
+				if (result == null) result = caseIdentityKind(terminologyNestingAxiom);
+				if (result == null) result = caseCrossReferencabilityKind(terminologyNestingAxiom);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -171,17 +191,77 @@ public class GraphsSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Element</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Cross Referencability Kind</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Element</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Cross Referencability Kind</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseElement(Element object) {
+	public T caseCrossReferencabilityKind(CrossReferencabilityKind object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Identity Kind</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Identity Kind</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIdentityKind(IdentityKind object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Logical Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Logical Element</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLogicalElement(LogicalElement object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Cross Referencable Kind</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Cross Referencable Kind</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCrossReferencableKind(CrossReferencableKind object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Intrinsic Identity Kind</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Intrinsic Identity Kind</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIntrinsicIdentityKind(IntrinsicIdentityKind object) {
 		return null;
 	}
 
@@ -227,6 +307,36 @@ public class GraphsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseTerminologyBox(TerminologyBox object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Extrinsic Identity Kind</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Extrinsic Identity Kind</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseExtrinsicIdentityKind(ExtrinsicIdentityKind object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Element Cross Reference Tuple</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Element Cross Reference Tuple</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseElementCrossReferenceTuple(ElementCrossReferenceTuple object) {
 		return null;
 	}
 

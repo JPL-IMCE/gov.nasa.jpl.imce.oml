@@ -79,7 +79,7 @@ open terminology <http://imce.jpl.nasa.gov/foundation/mission/mission>
 		val a = c.annotations.head
 		val a_prop = a.property
 		val a_subj = a.subject
-		val a_value = a.value.value.value
+		val a_value = a.value.stringValue.value
 		
 		assertTrue(a_value.contains("Performing Element"))
 		assertTrue(a_value.contains("</foo>"))

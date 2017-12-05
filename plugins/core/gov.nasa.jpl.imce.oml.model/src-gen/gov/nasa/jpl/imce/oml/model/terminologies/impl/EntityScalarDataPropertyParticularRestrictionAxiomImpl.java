@@ -213,8 +213,14 @@ public class EntityScalarDataPropertyParticularRestrictionAxiomImpl extends Enti
 			_string_1=_uuid_2.toString();
 		}
 		Pair<String, String> _mappedTo_2 = Pair.<String, String>of("scalarProperty", _string_1);
+		LiteralValue _literalValue = this.getLiteralValue();
+		String _value = null;
+		if (_literalValue!=null) {
+			_value=_literalValue.value();
+		}
+		Pair<String, String> _mappedTo_3 = Pair.<String, String>of("literalValue", _value);
 		UUID _derivedUUID = OMLExtensions.derivedUUID(
-			"EntityScalarDataPropertyParticularRestrictionAxiom", _mappedTo, _mappedTo_1, _mappedTo_2);
+			"EntityScalarDataPropertyParticularRestrictionAxiom", _mappedTo, _mappedTo_1, _mappedTo_2, _mappedTo_3);
 		String _string_2 = null;
 		if (_derivedUUID!=null) {
 			_string_2=_derivedUUID.toString();

@@ -40,13 +40,14 @@ import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions
 import gov.nasa.jpl.imce.oml.model.common.Collection
 import gov.nasa.jpl.imce.oml.model.common.CopyConstructor
 import gov.nasa.jpl.imce.oml.model.common.DerivedUUID
-import gov.nasa.jpl.imce.oml.model.common.Element
+import gov.nasa.jpl.imce.oml.model.common.ElementCrossReferenceTuple
 import gov.nasa.jpl.imce.oml.model.common.Factory
 import gov.nasa.jpl.imce.oml.model.common.FunctionalInterface
 import gov.nasa.jpl.imce.oml.model.common.Glossary
 import gov.nasa.jpl.imce.oml.model.common.ImplicitExtent
 import gov.nasa.jpl.imce.oml.model.common.IRIReference
 import gov.nasa.jpl.imce.oml.model.common.LocalName
+import gov.nasa.jpl.imce.oml.model.common.LogicalElement
 import gov.nasa.jpl.imce.oml.model.common.Module
 import gov.nasa.jpl.imce.oml.model.common.ModuleEdge
 import gov.nasa.jpl.imce.oml.model.common.ModuleElement
@@ -139,7 +140,7 @@ abstract class TerminologyBundleAxiom extends TerminologyAxiom {
  * - Non-leaf nodes are AnonymousConceptTaxonomyAxioms.
  */
 @Glossary
-abstract class ConceptTreeDisjunction extends Element {
+abstract class ConceptTreeDisjunction extends ElementCrossReferenceTuple {
 	
 	@Collection(kind="Set")
 	contains DisjointUnionOfConceptsAxiom[] disjunctions opposite disjointTaxonomyParent
@@ -151,7 +152,7 @@ abstract class ConceptTreeDisjunction extends Element {
 	@Collection(kind="Set")
 	@NotSchema
 	@ImplicitExtent
-	op Element[] allNestedDisjunctions()
+	op LogicalElement[] allNestedElements()
 }
 
 /*
@@ -160,7 +161,7 @@ abstract class ConceptTreeDisjunction extends Element {
  * - Each leaf nodes is an OML SpecificDisjointConceptAxiom.
  */
 @Glossary
-abstract class DisjointUnionOfConceptsAxiom extends Element {
+abstract class DisjointUnionOfConceptsAxiom extends ElementCrossReferenceTuple {
 	
 	/*
 	 * The parent of this node in a disjoint concept taxonomy tree.
@@ -181,7 +182,7 @@ abstract class DisjointUnionOfConceptsAxiom extends Element {
 	@Collection(kind="Set")
 	@NotSchema
 	@ImplicitExtent
-	op Element[] allNestedUnions()
+	op LogicalElement[] allNestedElements()
 }
 
 /*
@@ -206,11 +207,11 @@ class SpecificDisjointConceptAxiom extends DisjointUnionOfConceptsAxiom {
 		)?.toString
 	}
 	
-	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.Element]")
+	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.LogicalElement]")
 	@Collection(kind="Set")
 	@NotSchema
 	@ImplicitExtent
-	op Element[] allNestedUnions() { ECollections.emptyEList }
+	op LogicalElement[] allNestedElements() { ECollections.emptyEList }
 }
 
 /*
@@ -236,25 +237,17 @@ class AnonymousConceptUnionAxiom extends DisjointUnionOfConceptsAxiom, ConceptTr
 	@Override
 	op Bundle[?] bundleContainer() { disjointTaxonomyParent?.bundleContainer() }
 	
-	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.Element]")
+	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.ElementCrossReferenceTuple]")
 	@Collection(kind="Set")
 	@NotSchema
 	@ImplicitExtent
-	op Element[] allNestedDisjunctions() { 
-		val nres = new BasicEList<Element>()
-		
-		nres
+	op LogicalElement[] allNestedElements() {
+		val nes = new BasicEList<LogicalElement>()
+		nes.addAll(disjunctions)
+		disjunctions.forEach[d| nes.addAll(d.allNestedElements) ]
+		nes
 	}
 	
-	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.Element]")
-	@Collection(kind="Set")
-	@NotSchema
-	@ImplicitExtent
-	op Element[] allNestedUnions() { 
-		val nres = new BasicEList<Element>()
-		
-		nres
-	}
 }
 
 /*
@@ -286,21 +279,17 @@ class RootConceptTaxonomyAxiom extends TerminologyBundleStatement, ConceptTreeDi
 	@Override
 	op Bundle[?] bundleContainer() { bundle }
 	
+	@Scala(code="extent.lookupDisjunctions(this).flatMap{ d => scala.collection.immutable.Set.empty[resolver.api.LogicalElement] + d ++ d.allNestedElements() }")
 	@Collection(kind="Set")
 	@NotSchema
 	@ImplicitExtent
-	op Element[] allNestedElements() { allNestedDisjunctions }
-	
-	@Scala(code="extent.lookupDisjunctions(this).flatMap{ d => scala.collection.immutable.Set.empty[resolver.api.Element] + d ++ d.allNestedUnions() }")
-	@Collection(kind="Set")
-	@NotSchema
-	@ImplicitExtent
-	op Element[] allNestedDisjunctions() {
-		val nres = new BasicEList<Element>()
-		nres.addAll(disjunctions)
-		disjunctions.forEach[ nres.addAll(allNestedUnions) ]
-		nres
+	op LogicalElement[] allNestedElements() {
+		val nes = new BasicEList<LogicalElement>()
+		nes.addAll(disjunctions)
+		disjunctions.forEach[d| nes.addAll(d.allNestedElements)]
+		nes
 	}
+	
 }
 
 /*

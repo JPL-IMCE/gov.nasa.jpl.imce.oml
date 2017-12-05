@@ -21,7 +21,11 @@ package gov.nasa.jpl.imce.oml.model.common.impl;
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
 import gov.nasa.jpl.imce.oml.model.common.LiteralBoolean;
 
+import java.lang.reflect.InvocationTargetException;
+
 import org.eclipse.emf.common.notify.Notification;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -35,31 +39,31 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralBooleanImpl#isValue <em>Value</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralBooleanImpl#isBool <em>Bool</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class LiteralBooleanImpl extends LiteralValueImpl implements LiteralBoolean {
 	/**
-	 * The default value of the '{@link #isValue() <em>Value</em>}' attribute.
+	 * The default value of the '{@link #isBool() <em>Bool</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isValue()
+	 * @see #isBool()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean VALUE_EDEFAULT = false;
+	protected static final boolean BOOL_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isValue() <em>Value</em>}' attribute.
+	 * The cached value of the '{@link #isBool() <em>Bool</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isValue()
+	 * @see #isBool()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean value = VALUE_EDEFAULT;
+	protected boolean bool = BOOL_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -85,8 +89,8 @@ public class LiteralBooleanImpl extends LiteralValueImpl implements LiteralBoole
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isValue() {
-		return value;
+	public boolean isBool() {
+		return bool;
 	}
 
 	/**
@@ -94,11 +98,20 @@ public class LiteralBooleanImpl extends LiteralValueImpl implements LiteralBoole
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setValue(boolean newValue) {
-		boolean oldValue = value;
-		value = newValue;
+	public void setBool(boolean newBool) {
+		boolean oldBool = bool;
+		bool = newBool;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CommonPackage.LITERAL_BOOLEAN__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET, CommonPackage.LITERAL_BOOLEAN__BOOL, oldBool, bool));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String value() {
+		return Boolean.valueOf(this.isBool()).toString();
 	}
 
 	/**
@@ -109,8 +122,8 @@ public class LiteralBooleanImpl extends LiteralValueImpl implements LiteralBoole
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case CommonPackage.LITERAL_BOOLEAN__VALUE:
-				return isValue();
+			case CommonPackage.LITERAL_BOOLEAN__BOOL:
+				return isBool();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -123,8 +136,8 @@ public class LiteralBooleanImpl extends LiteralValueImpl implements LiteralBoole
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case CommonPackage.LITERAL_BOOLEAN__VALUE:
-				setValue((Boolean)newValue);
+			case CommonPackage.LITERAL_BOOLEAN__BOOL:
+				setBool((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -138,8 +151,8 @@ public class LiteralBooleanImpl extends LiteralValueImpl implements LiteralBoole
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case CommonPackage.LITERAL_BOOLEAN__VALUE:
-				setValue(VALUE_EDEFAULT);
+			case CommonPackage.LITERAL_BOOLEAN__BOOL:
+				setBool(BOOL_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -153,10 +166,24 @@ public class LiteralBooleanImpl extends LiteralValueImpl implements LiteralBoole
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case CommonPackage.LITERAL_BOOLEAN__VALUE:
-				return value != VALUE_EDEFAULT;
+			case CommonPackage.LITERAL_BOOLEAN__BOOL:
+				return bool != BOOL_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case CommonPackage.LITERAL_BOOLEAN___VALUE:
+				return value();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**
@@ -169,8 +196,8 @@ public class LiteralBooleanImpl extends LiteralValueImpl implements LiteralBoole
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (value: ");
-		result.append(value);
+		result.append(" (bool: ");
+		result.append(bool);
 		result.append(')');
 		return result.toString();
 	}

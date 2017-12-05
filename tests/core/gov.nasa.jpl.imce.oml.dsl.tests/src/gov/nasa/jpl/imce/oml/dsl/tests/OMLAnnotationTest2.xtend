@@ -74,7 +74,7 @@ open terminology <http://imce.jpl.nasa.gov/foundation/mission/mission>
 			val a_subj = a.subject
 			val a_value = a.value
 		
-			assertTrue(a_value.value.value.equals("Performing Element") || a_value.value.value.equals("A performing element"))
+			assertTrue(a_value.stringValue.value.equals("Performing Element") || a_value.stringValue.value.equals("A performing element"))
 			ap.assertSame(a_prop)
 			c.assertSame(a_subj)
 		]

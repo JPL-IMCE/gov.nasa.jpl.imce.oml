@@ -23,10 +23,10 @@ import gov.nasa.jpl.imce.oml.model.bundles.BundlesPackage;
 import gov.nasa.jpl.imce.oml.model.bundles.ConceptTreeDisjunction;
 import gov.nasa.jpl.imce.oml.model.bundles.DisjointUnionOfConceptsAxiom;
 
-import gov.nasa.jpl.imce.oml.model.common.Element;
+import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
 import gov.nasa.jpl.imce.oml.model.common.Module;
 
-import gov.nasa.jpl.imce.oml.model.common.impl.ElementImpl;
+import gov.nasa.jpl.imce.oml.model.common.impl.ElementCrossReferenceTupleImpl;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -56,7 +56,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  *
  * @generated
  */
-public abstract class DisjointUnionOfConceptsAxiomImpl extends ElementImpl implements DisjointUnionOfConceptsAxiom {
+public abstract class DisjointUnionOfConceptsAxiomImpl extends ElementCrossReferenceTupleImpl implements DisjointUnionOfConceptsAxiom {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -155,7 +155,7 @@ public abstract class DisjointUnionOfConceptsAxiomImpl extends ElementImpl imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Element> allNestedUnions() {
+	public EList<LogicalElement> allNestedElements() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
@@ -276,8 +276,8 @@ public abstract class DisjointUnionOfConceptsAxiomImpl extends ElementImpl imple
 				return conceptTreeDisjunctionParent();
 			case BundlesPackage.DISJOINT_UNION_OF_CONCEPTS_AXIOM___MODULE_CONTEXT:
 				return moduleContext();
-			case BundlesPackage.DISJOINT_UNION_OF_CONCEPTS_AXIOM___ALL_NESTED_UNIONS:
-				return allNestedUnions();
+			case BundlesPackage.DISJOINT_UNION_OF_CONCEPTS_AXIOM___ALL_NESTED_ELEMENTS:
+				return allNestedElements();
 		}
 		return super.eInvoke(operationID, arguments);
 	}

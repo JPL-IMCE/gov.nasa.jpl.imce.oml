@@ -1,3 +1,4 @@
+
 @Ecore(
 	nsPrefix="omlt", 
 	nsURI="http://imce.jpl.nasa.gov/oml/terminologies"
@@ -15,56 +16,41 @@
 	editPluginClass="gov.nasa.jpl.imce.oml.model.edit.provider.OMLEditPlugin"
 )
 package gov.nasa.jpl.imce.oml.model.terminologies
-/**
- * Copyright 2017 California Institute of Technology (\"Caltech\").
- * U.S. Government sponsorship acknowledged.
- * 
- * Licensed under the Apache License, Version 2.0 (the \"License\")
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * 
- * 		http://www.apache.org/licenses/LICENSE-2.0
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an \"AS IS\" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * 
- */
-
-import org.eclipse.emf.common.util.BasicEList
-import org.eclipse.emf.common.util.ECollections
-
-import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions
 
 import gov.nasa.jpl.imce.oml.model.common.Collection
 import gov.nasa.jpl.imce.oml.model.common.CopyConstructor
-import gov.nasa.jpl.imce.oml.model.common.LiteralDateTime
 import gov.nasa.jpl.imce.oml.model.common.DerivedUUID
-import gov.nasa.jpl.imce.oml.model.common.Element
+import gov.nasa.jpl.imce.oml.model.common.ElementCrossReferenceTuple
+import gov.nasa.jpl.imce.oml.model.common.ExtrinsicIdentityKind
 import gov.nasa.jpl.imce.oml.model.common.Factory
 import gov.nasa.jpl.imce.oml.model.common.FunctionalInterface
 import gov.nasa.jpl.imce.oml.model.common.Glossary
-import gov.nasa.jpl.imce.oml.model.common.ImplicitExtent
 import gov.nasa.jpl.imce.oml.model.common.IRI
 import gov.nasa.jpl.imce.oml.model.common.IRIReference
+import gov.nasa.jpl.imce.oml.model.common.ImplicitExtent
 import gov.nasa.jpl.imce.oml.model.common.LanguageTagDataType
+import gov.nasa.jpl.imce.oml.model.common.LiteralDateTime
+import gov.nasa.jpl.imce.oml.model.common.LiteralNumber
+import gov.nasa.jpl.imce.oml.model.common.LiteralPattern
 import gov.nasa.jpl.imce.oml.model.common.LiteralValue
 import gov.nasa.jpl.imce.oml.model.common.LocalName
+import gov.nasa.jpl.imce.oml.model.common.LogicalElement
 import gov.nasa.jpl.imce.oml.model.common.Module
 import gov.nasa.jpl.imce.oml.model.common.ModuleEdge
 import gov.nasa.jpl.imce.oml.model.common.ModuleElement
 import gov.nasa.jpl.imce.oml.model.common.NamespaceUUID
 import gov.nasa.jpl.imce.oml.model.common.NotFunctionalAPI
 import gov.nasa.jpl.imce.oml.model.common.NotSchema
-import gov.nasa.jpl.imce.oml.model.common.LiteralNumber
-import gov.nasa.jpl.imce.oml.model.common.LiteralPattern
 import gov.nasa.jpl.imce.oml.model.common.Override
 import gov.nasa.jpl.imce.oml.model.common.OverrideVal
 import gov.nasa.jpl.imce.oml.model.common.PositiveIntegerLiteral
 import gov.nasa.jpl.imce.oml.model.common.Resource
 import gov.nasa.jpl.imce.oml.model.common.Scala
 import gov.nasa.jpl.imce.oml.model.common.UUID
+import gov.nasa.jpl.imce.oml.model.common.ValueCrossReferenceTuple
+import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions
+import org.eclipse.emf.common.util.BasicEList
+import org.eclipse.emf.common.util.ECollections
 
 
 /*
@@ -276,11 +262,11 @@ abstract class Term extends TerminologyBoxStatement, Resource {
 		OMLExtensions.namespaceUUID(tbox?.uuid(), "name" -> name()?.toString())?.toString
 	}
 	
-	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.Element]")
+	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.LogicalElement]")
 	@Collection(kind="Set")
 	@NotSchema
 	@ImplicitExtent
-	op Element[] allNestedElements() { ECollections.emptyEList }
+	op LogicalElement[] allNestedElements() { ECollections.emptyEList }
 }
 
 /*
@@ -662,7 +648,7 @@ class ChainRule extends Rule {
  * then the `position` of the `nextSegment`, if defined, is `p+1`.
  */
 @Glossary
-class RuleBodySegment extends Element {
+class RuleBodySegment extends ElementCrossReferenceTuple {
 	
 	contains SegmentPredicate[1] predicate opposite bodySegment
 	
@@ -739,7 +725,7 @@ class RuleBodySegment extends Element {
  * An OML SegmentPredicate wraps a reference to an OML Term used as a predicate for an OML ChainRule.
  */
 @Glossary
-abstract class SegmentPredicate extends Element {
+abstract class SegmentPredicate extends ElementCrossReferenceTuple {
 	
 	container RuleBodySegment[1] bodySegment opposite predicate
 	
@@ -1081,7 +1067,7 @@ abstract class TermAxiom extends TerminologyBoxStatement {}
  * for an OML EntityRelationship.
  */
 @Glossary
-abstract class EntityRestrictionAxiom extends TermAxiom {
+abstract class EntityRestrictionAxiom extends TermAxiom, ElementCrossReferenceTuple {
 
 	 refers EntityRelationship[1] restrictedRelation
 
@@ -1089,11 +1075,11 @@ abstract class EntityRestrictionAxiom extends TermAxiom {
 
 	 refers Entity[1] restrictedDomain
 	 
-	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.Element]")
+	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.LogicalElement]")
 	@Collection(kind="Set")
 	@NotSchema
 	@ImplicitExtent
-	op Element[] allNestedElements() { ECollections.emptyEList }
+	op LogicalElement[] allNestedElements() { ECollections.emptyEList }
 }
 
 /*
@@ -1144,7 +1130,7 @@ class EntityUniversalRestrictionAxiom extends EntityRestrictionAxiom {
  * about a taxonomic relationship between a specific and a general OML Entity.
  */
 @Glossary
-abstract class SpecializationAxiom extends TermAxiom {
+abstract class SpecializationAxiom extends TermAxiom, ElementCrossReferenceTuple {
 	/*
 	 * Get the sub (child) entity
 	 */
@@ -1156,11 +1142,11 @@ abstract class SpecializationAxiom extends TermAxiom {
 	@NotSchema
 	op Entity[1] parent()
 	
-	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.Element]")
+	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.LogicalElement]")
 	@Collection(kind="Set")
 	@NotSchema
 	@ImplicitExtent
-	op Element[] allNestedElements() { ECollections.emptyEList }
+	op LogicalElement[] allNestedElements() { ECollections.emptyEList }
 }
 
 /*
@@ -1291,15 +1277,15 @@ class ReifiedRelationshipSpecializationAxiom extends SpecializationAxiom {
  * some kind of OWL2 Data Property Restriction.
  */
 @Glossary
-abstract class EntityScalarDataPropertyRestrictionAxiom extends TermAxiom {
+abstract class EntityScalarDataPropertyRestrictionAxiom extends TermAxiom, ExtrinsicIdentityKind {
 	refers Entity[1] restrictedEntity
   	refers EntityScalarDataProperty[1] scalarProperty
   	
-	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.Element]")
+	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.LogicalElement]")
 	@Collection(kind="Set")
 	@NotSchema
 	@ImplicitExtent
-	op Element[] allNestedElements() { ECollections.emptyEList }
+	op LogicalElement[] allNestedElements() { ECollections.emptyEList }
 }
 
 /*
@@ -1309,7 +1295,7 @@ abstract class EntityScalarDataPropertyRestrictionAxiom extends TermAxiom {
 @Glossary
 @DerivedUUID
 class EntityScalarDataPropertyExistentialRestrictionAxiom 
-extends EntityScalarDataPropertyRestrictionAxiom {
+extends EntityScalarDataPropertyRestrictionAxiom, ElementCrossReferenceTuple {
 	
   	refers DataRange[1] scalarRestriction
   	
@@ -1333,7 +1319,7 @@ extends EntityScalarDataPropertyRestrictionAxiom {
 @Glossary
 @DerivedUUID
 class EntityScalarDataPropertyUniversalRestrictionAxiom 
-extends EntityScalarDataPropertyRestrictionAxiom {
+extends EntityScalarDataPropertyRestrictionAxiom, ElementCrossReferenceTuple {
 	
   	refers DataRange[1] scalarRestriction
   	
@@ -1356,7 +1342,7 @@ extends EntityScalarDataPropertyRestrictionAxiom {
 @Glossary
 @DerivedUUID
 class EntityScalarDataPropertyParticularRestrictionAxiom
-extends EntityScalarDataPropertyRestrictionAxiom {
+extends EntityScalarDataPropertyRestrictionAxiom, ValueCrossReferenceTuple {
 	
 	contains LiteralValue[1] literalValue
   	refers DataRange[?] valueType
@@ -1368,7 +1354,8 @@ extends EntityScalarDataPropertyRestrictionAxiom {
 		"EntityScalarDataPropertyParticularRestrictionAxiom",
 		"tbox" -> tbox?.uuid(),
 		"restrictedEntity" -> restrictedEntity?.uuid()?.toString,
-		"scalarProperty" -> scalarProperty?.uuid()?.toString
+		"scalarProperty" -> scalarProperty?.uuid()?.toString,
+		"literalValue" -> literalValue?.value
 		)?.toString
 	}
 }
@@ -1378,7 +1365,7 @@ extends EntityScalarDataPropertyRestrictionAxiom {
  * some kind of OWL2 Object Property Restriction.
  */
 @Glossary
-abstract class EntityStructuredDataPropertyRestrictionAxiom extends TermAxiom {
+abstract class EntityStructuredDataPropertyRestrictionAxiom extends TermAxiom, ElementCrossReferenceTuple {
 	refers Entity[1] restrictedEntity
 }
 
@@ -1387,8 +1374,7 @@ abstract class EntityStructuredDataPropertyRestrictionAxiom extends TermAxiom {
  */
 @Glossary
 @DerivedUUID
-class EntityStructuredDataPropertyParticularRestrictionAxiom
-extends EntityStructuredDataPropertyRestrictionAxiom, RestrictionStructuredDataPropertyContext {
+class EntityStructuredDataPropertyParticularRestrictionAxiom extends EntityStructuredDataPropertyRestrictionAxiom, RestrictionStructuredDataPropertyContext {
   	
   	@Scala(code="extent.terminologyBoxOfTerminologyBoxStatement.get(this)")
 	@ImplicitExtent
@@ -1410,7 +1396,7 @@ extends EntityStructuredDataPropertyRestrictionAxiom, RestrictionStructuredDataP
 	@Collection(kind="Set")
 	@NotSchema
 	@ImplicitExtent
-	op Element[] allNestedElements() { allNestedRestrictionElements }
+	op LogicalElement[] allNestedElements() { allNestedRestrictionElements }
 }
 
 /*
@@ -1420,7 +1406,7 @@ extends EntityStructuredDataPropertyRestrictionAxiom, RestrictionStructuredDataP
  */
 @Glossary
 @DerivedUUID
-abstract class RestrictionStructuredDataPropertyContext extends ModuleElement {
+abstract class RestrictionStructuredDataPropertyContext extends ModuleElement, ElementCrossReferenceTuple {
 	
 	refers DataRelationshipToStructure[1] structuredDataProperty
 	
@@ -1434,13 +1420,13 @@ abstract class RestrictionStructuredDataPropertyContext extends ModuleElement {
 	@NotSchema
 	op TerminologyBox[?] terminologyBox()
 	
-	@Scala(code="extent.lookupStructuredDataPropertyRestrictions(this).flatMap{ r => scala.collection.immutable.Set.empty[resolver.api.Element] + r ++ r.allNestedRestrictionElements() } ++
+	@Scala(code="extent.lookupStructuredDataPropertyRestrictions(this).flatMap{ r => scala.collection.immutable.Set.empty[resolver.api.LogicalElement] + r ++ r.allNestedRestrictionElements() } ++
 		extent.lookupScalarDataPropertyRestrictions(this)")
 	@Collection(kind="Set")
 	@NotSchema
 	@ImplicitExtent
-	op Element[] allNestedRestrictionElements() { 
-		val nres = new BasicEList<Element>()
+	op LogicalElement[] allNestedRestrictionElements() { 
+		val nres = new BasicEList<LogicalElement>()
 		nres.addAll(structuredDataPropertyRestrictions)
 		structuredDataPropertyRestrictions.forEach[ nres.addAll(allNestedRestrictionElements) ]
 		nres.addAll(scalarDataPropertyRestrictions)
@@ -1485,7 +1471,7 @@ class RestrictionStructuredDataPropertyTuple extends RestrictionStructuredDataPr
 	@Collection(kind="Set")
 	@NotSchema
 	@ImplicitExtent
-	op Element[] allNestedElements() { allNestedRestrictionElements }
+	op LogicalElement[] allNestedElements() { allNestedRestrictionElements }
 }
 
 /*
@@ -1494,7 +1480,7 @@ class RestrictionStructuredDataPropertyTuple extends RestrictionStructuredDataPr
  */
 @Glossary
 @DerivedUUID
-class RestrictionScalarDataPropertyValue extends Element {
+class RestrictionScalarDataPropertyValue extends LogicalElement, ValueCrossReferenceTuple {
 	
 	@Factory
 	container RestrictionStructuredDataPropertyContext[1] structuredDataPropertyContext opposite scalarDataPropertyRestrictions
@@ -1514,6 +1500,7 @@ class RestrictionScalarDataPropertyValue extends Element {
 		OMLExtensions.derivedUUID(
 		"RestrictionScalarDataPropertyValue", 
 		"structuredDataPropertyContext" -> structuredDataPropertyContext?.uuid()?.toString(),
+		"scalarPropertyValue" -> scalarPropertyValue?.value,
 		"scalarDataProperty" -> scalarDataProperty?.uuid()?.toString()
 		)?.toString
 	}
@@ -1793,7 +1780,7 @@ class ScalarOneOfRestriction extends RestrictedDataRange {
  */
 @Glossary
 @DerivedUUID
-class ScalarOneOfLiteralAxiom extends TermAxiom {
+class ScalarOneOfLiteralAxiom extends TermAxiom, ValueCrossReferenceTuple {
 	
 	refers ScalarOneOfRestriction[1] axiom
 	
@@ -1809,13 +1796,14 @@ class ScalarOneOfLiteralAxiom extends TermAxiom {
 		OMLExtensions.derivedUUID(
 		"ScalarOneOfLiteralAxiom",
 		"tbox" -> tbox?.uuid()?.toString,
-		"axiom" -> axiom?.uuid()?.toString
+		"axiom" -> axiom?.uuid()?.toString,
+		"value" -> value?.value
 		)?.toString
 	}
 	
-	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.Element]")
+	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.LogicalElement]")
 	@Collection(kind="Set")
 	@NotSchema
 	@ImplicitExtent
-	op Element[] allNestedElements() { ECollections.emptyEList }
+	op LogicalElement[] allNestedElements() { ECollections.emptyEList }
 }

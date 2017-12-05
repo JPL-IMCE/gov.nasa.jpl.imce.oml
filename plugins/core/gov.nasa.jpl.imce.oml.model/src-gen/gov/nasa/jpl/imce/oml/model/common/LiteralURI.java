@@ -63,4 +63,13 @@ public interface LiteralURI extends LiteralValue {
 	 */
 	void setUri(URIValue value);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false" required="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return this.getUri().toString();'"
+	 * @generated
+	 */
+	String value();
+
 } // LiteralURI

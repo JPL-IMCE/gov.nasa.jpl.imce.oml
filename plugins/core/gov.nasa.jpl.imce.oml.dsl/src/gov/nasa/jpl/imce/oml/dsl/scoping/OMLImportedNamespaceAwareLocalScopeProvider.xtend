@@ -95,10 +95,10 @@ class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespaceAware
 		switch context {
 			Extent:
 				for (ap : context.annotationProperties)
-					res.add(new OMLImportNormalizer(qnc.toQualifiedName(ap.iri), ap.abbrevIRI))
+					res.add(new OMLImportNormalizer(qnc.toQualifiedName(ap.iri()), ap.abbrevIRI))
 			Bundle: {
 				for (ap : context.extent.annotationProperties) {
-					res.add(new OMLImportNormalizer(qnc.toQualifiedName(ap.iri), ap.abbrevIRI))
+					res.add(new OMLImportNormalizer(qnc.toQualifiedName(ap.iri()), ap.abbrevIRI))
 				}
 				for (e : context.boxAxioms) {
 					res.add(new OMLImportNormalizer(qnc.toQualifiedName(e?.target?.iri()?:""), e.target?.name?:""))
@@ -109,7 +109,7 @@ class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespaceAware
 			}
 			TerminologyGraph: {
 				for (ap : context.extent.annotationProperties) {
-					res.add(new OMLImportNormalizer(qnc.toQualifiedName(ap.iri), ap.abbrevIRI))
+					res.add(new OMLImportNormalizer(qnc.toQualifiedName(ap.iri()), ap.abbrevIRI))
 				}
 				for (e : context.boxAxioms) {
 					res.add(new OMLImportNormalizer(qnc.toQualifiedName(e?.target?.iri()?:""), e.target?.name?:""))
@@ -117,7 +117,7 @@ class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespaceAware
 			}
 			DescriptionBox: {
 				for (ap : context.extent.annotationProperties) {
-					res.add(new OMLImportNormalizer(qnc.toQualifiedName(ap.iri), ap.abbrevIRI))
+					res.add(new OMLImportNormalizer(qnc.toQualifiedName(ap.iri()), ap.abbrevIRI))
 				}
 				for (e : context.closedWorldDefinitions) {
 					res.add(new OMLImportNormalizer(qnc.toQualifiedName(e?.closedWorldDefinitions?.iri()?:""), e.closedWorldDefinitions?.name?:""))

@@ -26,8 +26,8 @@ import gov.nasa.jpl.imce.oml.model.bundles.Bundle;
 import gov.nasa.jpl.imce.oml.model.bundles.BundledTerminologyAxiom;
 import gov.nasa.jpl.imce.oml.model.common.AnnotationProperty;
 import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue;
-import gov.nasa.jpl.imce.oml.model.common.Element;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
+import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
 import gov.nasa.jpl.imce.oml.model.common.Module;
 import gov.nasa.jpl.imce.oml.model.descriptions.ConceptualEntitySingletonInstance;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox;
@@ -85,7 +85,7 @@ public class OMLScopeExtensions {
   public IScope scope_Annotation_property(final AnnotationPropertyValue annotation, final EReference eRef) {
     IScope _xblockexpression = null;
     {
-      Element _subject = annotation.getSubject();
+      LogicalElement _subject = annotation.getSubject();
       Module _moduleContext = null;
       if (_subject!=null) {
         _moduleContext=_subject.moduleContext();
@@ -242,7 +242,7 @@ public class OMLScopeExtensions {
   /**
    * Computes an IScope for
    */
-  public <T extends Element> IScope terminologyScope(final TerminologyBox tbox, final Function<TerminologyBox, Iterable<T>> localScopeFunction, final Function<Pair<TerminologyBox, T>, QualifiedName> nameFunction) {
+  public <T extends LogicalElement> IScope terminologyScope(final TerminologyBox tbox, final Function<TerminologyBox, Iterable<T>> localScopeFunction, final Function<Pair<TerminologyBox, T>, QualifiedName> nameFunction) {
     SimpleScope _xblockexpression = null;
     {
       final ArrayList<IEObjectDescription> result = Lists.<IEObjectDescription>newArrayList();
@@ -405,7 +405,7 @@ public class OMLScopeExtensions {
     return this.<ScalarOneOfRestriction>terminologyScope(tbox, _function, _function_1);
   }
   
-  public <T extends Element> IScope bundleScope(final Bundle bundle, final Function<TerminologyBox, Iterable<T>> localScopeFunction, final Function<Pair<TerminologyBox, T>, QualifiedName> nameFunction) {
+  public <T extends LogicalElement> IScope bundleScope(final Bundle bundle, final Function<TerminologyBox, Iterable<T>> localScopeFunction, final Function<Pair<TerminologyBox, T>, QualifiedName> nameFunction) {
     SimpleScope _xblockexpression = null;
     {
       final ArrayList<IEObjectDescription> result = Lists.<IEObjectDescription>newArrayList();
@@ -442,7 +442,7 @@ public class OMLScopeExtensions {
     return this.<Concept>bundleScope(b, _function, _function_1);
   }
   
-  public <T extends Element> IScope descriptionScope(final DescriptionBox dbox, final Function<DescriptionBox, Iterable<T>> localScopeFunction, final Function<Pair<DescriptionBox, T>, QualifiedName> nameFunction) {
+  public <T extends LogicalElement> IScope descriptionScope(final DescriptionBox dbox, final Function<DescriptionBox, Iterable<T>> localScopeFunction, final Function<Pair<DescriptionBox, T>, QualifiedName> nameFunction) {
     SimpleScope _xblockexpression = null;
     {
       final ArrayList<IEObjectDescription> result = Lists.<IEObjectDescription>newArrayList();

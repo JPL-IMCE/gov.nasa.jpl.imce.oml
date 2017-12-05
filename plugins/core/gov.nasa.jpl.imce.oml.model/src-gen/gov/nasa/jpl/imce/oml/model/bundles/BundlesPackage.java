@@ -467,7 +467,7 @@ public interface BundlesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCEPT_TREE_DISJUNCTION__UUID = CommonPackage.ELEMENT__UUID;
+	int CONCEPT_TREE_DISJUNCTION__UUID = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE__UUID;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -476,7 +476,7 @@ public interface BundlesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCEPT_TREE_DISJUNCTION__ANNOTATIONS = CommonPackage.ELEMENT__ANNOTATIONS;
+	int CONCEPT_TREE_DISJUNCTION__ANNOTATIONS = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Disjunctions</b></em>' containment reference list.
@@ -485,7 +485,7 @@ public interface BundlesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCEPT_TREE_DISJUNCTION__DISJUNCTIONS = CommonPackage.ELEMENT_FEATURE_COUNT + 0;
+	int CONCEPT_TREE_DISJUNCTION__DISJUNCTIONS = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Concept Tree Disjunction</em>' class.
@@ -494,7 +494,7 @@ public interface BundlesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCEPT_TREE_DISJUNCTION_FEATURE_COUNT = CommonPackage.ELEMENT_FEATURE_COUNT + 1;
+	int CONCEPT_TREE_DISJUNCTION_FEATURE_COUNT = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Uuid</em>' operation.
@@ -503,7 +503,7 @@ public interface BundlesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCEPT_TREE_DISJUNCTION___UUID = CommonPackage.ELEMENT___UUID;
+	int CONCEPT_TREE_DISJUNCTION___UUID = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE___UUID;
 
 	/**
 	 * The operation id for the '<em>Module Context</em>' operation.
@@ -512,7 +512,7 @@ public interface BundlesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCEPT_TREE_DISJUNCTION___MODULE_CONTEXT = CommonPackage.ELEMENT___MODULE_CONTEXT;
+	int CONCEPT_TREE_DISJUNCTION___MODULE_CONTEXT = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE___MODULE_CONTEXT;
 
 	/**
 	 * The operation id for the '<em>Bundle Container</em>' operation.
@@ -521,16 +521,16 @@ public interface BundlesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCEPT_TREE_DISJUNCTION___BUNDLE_CONTAINER = CommonPackage.ELEMENT_OPERATION_COUNT + 0;
+	int CONCEPT_TREE_DISJUNCTION___BUNDLE_CONTAINER = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE_OPERATION_COUNT + 0;
 
 	/**
-	 * The operation id for the '<em>All Nested Disjunctions</em>' operation.
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONCEPT_TREE_DISJUNCTION___ALL_NESTED_DISJUNCTIONS = CommonPackage.ELEMENT_OPERATION_COUNT + 1;
+	int CONCEPT_TREE_DISJUNCTION___ALL_NESTED_ELEMENTS = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE_OPERATION_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Concept Tree Disjunction</em>' class.
@@ -539,7 +539,7 @@ public interface BundlesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCEPT_TREE_DISJUNCTION_OPERATION_COUNT = CommonPackage.ELEMENT_OPERATION_COUNT + 2;
+	int CONCEPT_TREE_DISJUNCTION_OPERATION_COUNT = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE_OPERATION_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.bundles.impl.DisjointUnionOfConceptsAxiomImpl <em>Disjoint Union Of Concepts Axiom</em>}' class.
@@ -558,7 +558,7 @@ public interface BundlesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISJOINT_UNION_OF_CONCEPTS_AXIOM__UUID = CommonPackage.ELEMENT__UUID;
+	int DISJOINT_UNION_OF_CONCEPTS_AXIOM__UUID = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE__UUID;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -567,7 +567,7 @@ public interface BundlesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISJOINT_UNION_OF_CONCEPTS_AXIOM__ANNOTATIONS = CommonPackage.ELEMENT__ANNOTATIONS;
+	int DISJOINT_UNION_OF_CONCEPTS_AXIOM__ANNOTATIONS = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Disjoint Taxonomy Parent</b></em>' container reference.
@@ -576,7 +576,7 @@ public interface BundlesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISJOINT_UNION_OF_CONCEPTS_AXIOM__DISJOINT_TAXONOMY_PARENT = CommonPackage.ELEMENT_FEATURE_COUNT + 0;
+	int DISJOINT_UNION_OF_CONCEPTS_AXIOM__DISJOINT_TAXONOMY_PARENT = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Disjoint Union Of Concepts Axiom</em>' class.
@@ -585,7 +585,7 @@ public interface BundlesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISJOINT_UNION_OF_CONCEPTS_AXIOM_FEATURE_COUNT = CommonPackage.ELEMENT_FEATURE_COUNT + 1;
+	int DISJOINT_UNION_OF_CONCEPTS_AXIOM_FEATURE_COUNT = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Uuid</em>' operation.
@@ -594,7 +594,7 @@ public interface BundlesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISJOINT_UNION_OF_CONCEPTS_AXIOM___UUID = CommonPackage.ELEMENT___UUID;
+	int DISJOINT_UNION_OF_CONCEPTS_AXIOM___UUID = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE___UUID;
 
 	/**
 	 * The operation id for the '<em>Concept Tree Disjunction Parent</em>' operation.
@@ -603,7 +603,7 @@ public interface BundlesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISJOINT_UNION_OF_CONCEPTS_AXIOM___CONCEPT_TREE_DISJUNCTION_PARENT = CommonPackage.ELEMENT_OPERATION_COUNT + 0;
+	int DISJOINT_UNION_OF_CONCEPTS_AXIOM___CONCEPT_TREE_DISJUNCTION_PARENT = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE_OPERATION_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Module Context</em>' operation.
@@ -612,16 +612,16 @@ public interface BundlesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISJOINT_UNION_OF_CONCEPTS_AXIOM___MODULE_CONTEXT = CommonPackage.ELEMENT_OPERATION_COUNT + 1;
+	int DISJOINT_UNION_OF_CONCEPTS_AXIOM___MODULE_CONTEXT = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE_OPERATION_COUNT + 1;
 
 	/**
-	 * The operation id for the '<em>All Nested Unions</em>' operation.
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DISJOINT_UNION_OF_CONCEPTS_AXIOM___ALL_NESTED_UNIONS = CommonPackage.ELEMENT_OPERATION_COUNT + 2;
+	int DISJOINT_UNION_OF_CONCEPTS_AXIOM___ALL_NESTED_ELEMENTS = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE_OPERATION_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Disjoint Union Of Concepts Axiom</em>' class.
@@ -630,7 +630,7 @@ public interface BundlesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DISJOINT_UNION_OF_CONCEPTS_AXIOM_OPERATION_COUNT = CommonPackage.ELEMENT_OPERATION_COUNT + 3;
+	int DISJOINT_UNION_OF_CONCEPTS_AXIOM_OPERATION_COUNT = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE_OPERATION_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.bundles.impl.SpecificDisjointConceptAxiomImpl <em>Specific Disjoint Concept Axiom</em>}' class.
@@ -715,13 +715,13 @@ public interface BundlesPackage extends EPackage {
 	int SPECIFIC_DISJOINT_CONCEPT_AXIOM___UUID = DISJOINT_UNION_OF_CONCEPTS_AXIOM_OPERATION_COUNT + 0;
 
 	/**
-	 * The operation id for the '<em>All Nested Unions</em>' operation.
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SPECIFIC_DISJOINT_CONCEPT_AXIOM___ALL_NESTED_UNIONS = DISJOINT_UNION_OF_CONCEPTS_AXIOM_OPERATION_COUNT + 1;
+	int SPECIFIC_DISJOINT_CONCEPT_AXIOM___ALL_NESTED_ELEMENTS = DISJOINT_UNION_OF_CONCEPTS_AXIOM_OPERATION_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Specific Disjoint Concept Axiom</em>' class.
@@ -833,22 +833,13 @@ public interface BundlesPackage extends EPackage {
 	int ANONYMOUS_CONCEPT_UNION_AXIOM___BUNDLE_CONTAINER = DISJOINT_UNION_OF_CONCEPTS_AXIOM_OPERATION_COUNT + 3;
 
 	/**
-	 * The operation id for the '<em>All Nested Disjunctions</em>' operation.
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ANONYMOUS_CONCEPT_UNION_AXIOM___ALL_NESTED_DISJUNCTIONS = DISJOINT_UNION_OF_CONCEPTS_AXIOM_OPERATION_COUNT + 4;
-
-	/**
-	 * The operation id for the '<em>All Nested Unions</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANONYMOUS_CONCEPT_UNION_AXIOM___ALL_NESTED_UNIONS = DISJOINT_UNION_OF_CONCEPTS_AXIOM_OPERATION_COUNT + 5;
+	int ANONYMOUS_CONCEPT_UNION_AXIOM___ALL_NESTED_ELEMENTS = DISJOINT_UNION_OF_CONCEPTS_AXIOM_OPERATION_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Anonymous Concept Union Axiom</em>' class.
@@ -857,7 +848,7 @@ public interface BundlesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ANONYMOUS_CONCEPT_UNION_AXIOM_OPERATION_COUNT = DISJOINT_UNION_OF_CONCEPTS_AXIOM_OPERATION_COUNT + 6;
+	int ANONYMOUS_CONCEPT_UNION_AXIOM_OPERATION_COUNT = DISJOINT_UNION_OF_CONCEPTS_AXIOM_OPERATION_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.bundles.impl.RootConceptTaxonomyAxiomImpl <em>Root Concept Taxonomy Axiom</em>}' class.
@@ -960,22 +951,13 @@ public interface BundlesPackage extends EPackage {
 	int ROOT_CONCEPT_TAXONOMY_AXIOM___ALL_NESTED_ELEMENTS = TERMINOLOGY_BUNDLE_STATEMENT_OPERATION_COUNT + 4;
 
 	/**
-	 * The operation id for the '<em>All Nested Disjunctions</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ROOT_CONCEPT_TAXONOMY_AXIOM___ALL_NESTED_DISJUNCTIONS = TERMINOLOGY_BUNDLE_STATEMENT_OPERATION_COUNT + 5;
-
-	/**
 	 * The number of operations of the '<em>Root Concept Taxonomy Axiom</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ROOT_CONCEPT_TAXONOMY_AXIOM_OPERATION_COUNT = TERMINOLOGY_BUNDLE_STATEMENT_OPERATION_COUNT + 6;
+	int ROOT_CONCEPT_TAXONOMY_AXIOM_OPERATION_COUNT = TERMINOLOGY_BUNDLE_STATEMENT_OPERATION_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.bundles.impl.BundledTerminologyAxiomImpl <em>Bundled Terminology Axiom</em>}' class.
@@ -1232,14 +1214,14 @@ public interface BundlesPackage extends EPackage {
 	EOperation getConceptTreeDisjunction__BundleContainer();
 
 	/**
-	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.bundles.ConceptTreeDisjunction#allNestedDisjunctions() <em>All Nested Disjunctions</em>}' operation.
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.bundles.ConceptTreeDisjunction#allNestedElements() <em>All Nested Elements</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>All Nested Disjunctions</em>' operation.
-	 * @see gov.nasa.jpl.imce.oml.model.bundles.ConceptTreeDisjunction#allNestedDisjunctions()
+	 * @return the meta object for the '<em>All Nested Elements</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.bundles.ConceptTreeDisjunction#allNestedElements()
 	 * @generated
 	 */
-	EOperation getConceptTreeDisjunction__AllNestedDisjunctions();
+	EOperation getConceptTreeDisjunction__AllNestedElements();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.bundles.DisjointUnionOfConceptsAxiom <em>Disjoint Union Of Concepts Axiom</em>}'.
@@ -1283,14 +1265,14 @@ public interface BundlesPackage extends EPackage {
 	EOperation getDisjointUnionOfConceptsAxiom__ModuleContext();
 
 	/**
-	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.bundles.DisjointUnionOfConceptsAxiom#allNestedUnions() <em>All Nested Unions</em>}' operation.
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.bundles.DisjointUnionOfConceptsAxiom#allNestedElements() <em>All Nested Elements</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>All Nested Unions</em>' operation.
-	 * @see gov.nasa.jpl.imce.oml.model.bundles.DisjointUnionOfConceptsAxiom#allNestedUnions()
+	 * @return the meta object for the '<em>All Nested Elements</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.bundles.DisjointUnionOfConceptsAxiom#allNestedElements()
 	 * @generated
 	 */
-	EOperation getDisjointUnionOfConceptsAxiom__AllNestedUnions();
+	EOperation getDisjointUnionOfConceptsAxiom__AllNestedElements();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.bundles.SpecificDisjointConceptAxiom <em>Specific Disjoint Concept Axiom</em>}'.
@@ -1324,14 +1306,14 @@ public interface BundlesPackage extends EPackage {
 	EOperation getSpecificDisjointConceptAxiom__Uuid();
 
 	/**
-	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.bundles.SpecificDisjointConceptAxiom#allNestedUnions() <em>All Nested Unions</em>}' operation.
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.bundles.SpecificDisjointConceptAxiom#allNestedElements() <em>All Nested Elements</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>All Nested Unions</em>' operation.
-	 * @see gov.nasa.jpl.imce.oml.model.bundles.SpecificDisjointConceptAxiom#allNestedUnions()
+	 * @return the meta object for the '<em>All Nested Elements</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.bundles.SpecificDisjointConceptAxiom#allNestedElements()
 	 * @generated
 	 */
-	EOperation getSpecificDisjointConceptAxiom__AllNestedUnions();
+	EOperation getSpecificDisjointConceptAxiom__AllNestedElements();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.bundles.AnonymousConceptUnionAxiom <em>Anonymous Concept Union Axiom</em>}'.
@@ -1375,24 +1357,14 @@ public interface BundlesPackage extends EPackage {
 	EOperation getAnonymousConceptUnionAxiom__BundleContainer();
 
 	/**
-	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.bundles.AnonymousConceptUnionAxiom#allNestedDisjunctions() <em>All Nested Disjunctions</em>}' operation.
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.bundles.AnonymousConceptUnionAxiom#allNestedElements() <em>All Nested Elements</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>All Nested Disjunctions</em>' operation.
-	 * @see gov.nasa.jpl.imce.oml.model.bundles.AnonymousConceptUnionAxiom#allNestedDisjunctions()
+	 * @return the meta object for the '<em>All Nested Elements</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.bundles.AnonymousConceptUnionAxiom#allNestedElements()
 	 * @generated
 	 */
-	EOperation getAnonymousConceptUnionAxiom__AllNestedDisjunctions();
-
-	/**
-	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.bundles.AnonymousConceptUnionAxiom#allNestedUnions() <em>All Nested Unions</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>All Nested Unions</em>' operation.
-	 * @see gov.nasa.jpl.imce.oml.model.bundles.AnonymousConceptUnionAxiom#allNestedUnions()
-	 * @generated
-	 */
-	EOperation getAnonymousConceptUnionAxiom__AllNestedUnions();
+	EOperation getAnonymousConceptUnionAxiom__AllNestedElements();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.bundles.RootConceptTaxonomyAxiom <em>Root Concept Taxonomy Axiom</em>}'.
@@ -1444,16 +1416,6 @@ public interface BundlesPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getRootConceptTaxonomyAxiom__AllNestedElements();
-
-	/**
-	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.bundles.RootConceptTaxonomyAxiom#allNestedDisjunctions() <em>All Nested Disjunctions</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>All Nested Disjunctions</em>' operation.
-	 * @see gov.nasa.jpl.imce.oml.model.bundles.RootConceptTaxonomyAxiom#allNestedDisjunctions()
-	 * @generated
-	 */
-	EOperation getRootConceptTaxonomyAxiom__AllNestedDisjunctions();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.bundles.BundledTerminologyAxiom <em>Bundled Terminology Axiom</em>}'.
@@ -1642,12 +1604,12 @@ public interface BundlesPackage extends EPackage {
 		EOperation CONCEPT_TREE_DISJUNCTION___BUNDLE_CONTAINER = eINSTANCE.getConceptTreeDisjunction__BundleContainer();
 
 		/**
-		 * The meta object literal for the '<em><b>All Nested Disjunctions</b></em>' operation.
+		 * The meta object literal for the '<em><b>All Nested Elements</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation CONCEPT_TREE_DISJUNCTION___ALL_NESTED_DISJUNCTIONS = eINSTANCE.getConceptTreeDisjunction__AllNestedDisjunctions();
+		EOperation CONCEPT_TREE_DISJUNCTION___ALL_NESTED_ELEMENTS = eINSTANCE.getConceptTreeDisjunction__AllNestedElements();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.bundles.impl.DisjointUnionOfConceptsAxiomImpl <em>Disjoint Union Of Concepts Axiom</em>}' class.
@@ -1684,12 +1646,12 @@ public interface BundlesPackage extends EPackage {
 		EOperation DISJOINT_UNION_OF_CONCEPTS_AXIOM___MODULE_CONTEXT = eINSTANCE.getDisjointUnionOfConceptsAxiom__ModuleContext();
 
 		/**
-		 * The meta object literal for the '<em><b>All Nested Unions</b></em>' operation.
+		 * The meta object literal for the '<em><b>All Nested Elements</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation DISJOINT_UNION_OF_CONCEPTS_AXIOM___ALL_NESTED_UNIONS = eINSTANCE.getDisjointUnionOfConceptsAxiom__AllNestedUnions();
+		EOperation DISJOINT_UNION_OF_CONCEPTS_AXIOM___ALL_NESTED_ELEMENTS = eINSTANCE.getDisjointUnionOfConceptsAxiom__AllNestedElements();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.bundles.impl.SpecificDisjointConceptAxiomImpl <em>Specific Disjoint Concept Axiom</em>}' class.
@@ -1718,12 +1680,12 @@ public interface BundlesPackage extends EPackage {
 		EOperation SPECIFIC_DISJOINT_CONCEPT_AXIOM___UUID = eINSTANCE.getSpecificDisjointConceptAxiom__Uuid();
 
 		/**
-		 * The meta object literal for the '<em><b>All Nested Unions</b></em>' operation.
+		 * The meta object literal for the '<em><b>All Nested Elements</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation SPECIFIC_DISJOINT_CONCEPT_AXIOM___ALL_NESTED_UNIONS = eINSTANCE.getSpecificDisjointConceptAxiom__AllNestedUnions();
+		EOperation SPECIFIC_DISJOINT_CONCEPT_AXIOM___ALL_NESTED_ELEMENTS = eINSTANCE.getSpecificDisjointConceptAxiom__AllNestedElements();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.bundles.impl.AnonymousConceptUnionAxiomImpl <em>Anonymous Concept Union Axiom</em>}' class.
@@ -1760,20 +1722,12 @@ public interface BundlesPackage extends EPackage {
 		EOperation ANONYMOUS_CONCEPT_UNION_AXIOM___BUNDLE_CONTAINER = eINSTANCE.getAnonymousConceptUnionAxiom__BundleContainer();
 
 		/**
-		 * The meta object literal for the '<em><b>All Nested Disjunctions</b></em>' operation.
+		 * The meta object literal for the '<em><b>All Nested Elements</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation ANONYMOUS_CONCEPT_UNION_AXIOM___ALL_NESTED_DISJUNCTIONS = eINSTANCE.getAnonymousConceptUnionAxiom__AllNestedDisjunctions();
-
-		/**
-		 * The meta object literal for the '<em><b>All Nested Unions</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation ANONYMOUS_CONCEPT_UNION_AXIOM___ALL_NESTED_UNIONS = eINSTANCE.getAnonymousConceptUnionAxiom__AllNestedUnions();
+		EOperation ANONYMOUS_CONCEPT_UNION_AXIOM___ALL_NESTED_ELEMENTS = eINSTANCE.getAnonymousConceptUnionAxiom__AllNestedElements();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.bundles.impl.RootConceptTaxonomyAxiomImpl <em>Root Concept Taxonomy Axiom</em>}' class.
@@ -1816,14 +1770,6 @@ public interface BundlesPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation ROOT_CONCEPT_TAXONOMY_AXIOM___ALL_NESTED_ELEMENTS = eINSTANCE.getRootConceptTaxonomyAxiom__AllNestedElements();
-
-		/**
-		 * The meta object literal for the '<em><b>All Nested Disjunctions</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation ROOT_CONCEPT_TAXONOMY_AXIOM___ALL_NESTED_DISJUNCTIONS = eINSTANCE.getRootConceptTaxonomyAxiom__AllNestedDisjunctions();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.bundles.impl.BundledTerminologyAxiomImpl <em>Bundled Terminology Axiom</em>}' class.

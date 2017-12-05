@@ -18,6 +18,7 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies;
 
+import gov.nasa.jpl.imce.oml.model.common.ElementCrossReferenceTuple;
 
 /**
  * <!-- begin-user-doc -->
@@ -40,7 +41,7 @@ package gov.nasa.jpl.imce.oml.model.terminologies;
  * @model
  * @generated
  */
-public interface EntityScalarDataPropertyUniversalRestrictionAxiom extends EntityScalarDataPropertyRestrictionAxiom {
+public interface EntityScalarDataPropertyUniversalRestrictionAxiom extends EntityScalarDataPropertyRestrictionAxiom, ElementCrossReferenceTuple {
 	/**
 	 * Returns the value of the '<em><b>Scalar Restriction</b></em>' reference.
 	 * <!-- begin-user-doc -->

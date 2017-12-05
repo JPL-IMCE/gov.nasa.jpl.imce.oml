@@ -24,7 +24,6 @@ import com.google.inject.Inject
 import gov.nasa.jpl.imce.oml.model.bundles.Bundle
 import gov.nasa.jpl.imce.oml.model.bundles.BundledTerminologyAxiom
 import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue
-import gov.nasa.jpl.imce.oml.model.common.Element
 import gov.nasa.jpl.imce.oml.model.common.Extent
 import gov.nasa.jpl.imce.oml.model.common.Resource
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox
@@ -40,6 +39,7 @@ import org.eclipse.xtext.resource.IEObjectDescription
 import org.eclipse.xtext.scoping.IScope
 import org.eclipse.xtext.scoping.Scopes
 import org.eclipse.xtext.scoping.impl.SimpleScope
+import gov.nasa.jpl.imce.oml.model.common.LogicalElement
 
 class OMLScopeExtensions {
 	
@@ -120,7 +120,7 @@ class OMLScopeExtensions {
 	/*
 	 * Computes an IScope for 
 	 */
-	def <T extends Element> IScope terminologyScope(
+	def <T extends LogicalElement> IScope terminologyScope(
 		TerminologyBox tbox,
 		Function<TerminologyBox, Iterable<T>> localScopeFunction,
 		Function<Pair<TerminologyBox, T>, QualifiedName> nameFunction
@@ -196,7 +196,7 @@ class OMLScopeExtensions {
 		terminologyScope(tbox, [localScalarOneOfRestrictions], [importedResourceNameFunction])
 	}
 	
-	def <T extends Element> IScope bundleScope(
+	def <T extends LogicalElement> IScope bundleScope(
 		Bundle bundle,
 		Function<TerminologyBox, Iterable<T>> localScopeFunction,
 		Function<Pair<TerminologyBox, T>, QualifiedName> nameFunction
@@ -224,7 +224,7 @@ class OMLScopeExtensions {
 	
 	// =================================================
 	
-	def <T extends Element> IScope descriptionScope(
+	def <T extends LogicalElement> IScope descriptionScope(
 		DescriptionBox dbox,
 		Function<DescriptionBox, Iterable<T>> localScopeFunction,
 		Function<Pair<DescriptionBox, T>, QualifiedName> nameFunction

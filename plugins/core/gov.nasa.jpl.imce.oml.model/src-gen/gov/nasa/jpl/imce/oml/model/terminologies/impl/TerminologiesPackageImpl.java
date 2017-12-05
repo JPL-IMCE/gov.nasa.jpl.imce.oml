@@ -3578,8 +3578,8 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		structureEClass.getESuperTypes().add(this.getUnaryTermKind());
 		ruleEClass.getESuperTypes().add(this.getTerm());
 		chainRuleEClass.getESuperTypes().add(this.getRule());
-		ruleBodySegmentEClass.getESuperTypes().add(theCommonPackage.getElement());
-		segmentPredicateEClass.getESuperTypes().add(theCommonPackage.getElement());
+		ruleBodySegmentEClass.getESuperTypes().add(theCommonPackage.getElementCrossReferenceTuple());
+		segmentPredicateEClass.getESuperTypes().add(theCommonPackage.getElementCrossReferenceTuple());
 		unarySegmentPredicateEClass.getESuperTypes().add(this.getSegmentPredicate());
 		aspectPredicateEClass.getESuperTypes().add(this.getUnarySegmentPredicate());
 		conceptPredicateEClass.getESuperTypes().add(this.getUnarySegmentPredicate());
@@ -3597,22 +3597,31 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		unreifiedRelationshipInversePropertyPredicateEClass.getESuperTypes().add(this.getBinarySegmentReversePropertyPredicate());
 		termAxiomEClass.getESuperTypes().add(this.getTerminologyBoxStatement());
 		entityRestrictionAxiomEClass.getESuperTypes().add(this.getTermAxiom());
+		entityRestrictionAxiomEClass.getESuperTypes().add(theCommonPackage.getElementCrossReferenceTuple());
 		entityExistentialRestrictionAxiomEClass.getESuperTypes().add(this.getEntityRestrictionAxiom());
 		entityUniversalRestrictionAxiomEClass.getESuperTypes().add(this.getEntityRestrictionAxiom());
 		specializationAxiomEClass.getESuperTypes().add(this.getTermAxiom());
+		specializationAxiomEClass.getESuperTypes().add(theCommonPackage.getElementCrossReferenceTuple());
 		aspectSpecializationAxiomEClass.getESuperTypes().add(this.getSpecializationAxiom());
 		conceptSpecializationAxiomEClass.getESuperTypes().add(this.getSpecializationAxiom());
 		reifiedRelationshipSpecializationAxiomEClass.getESuperTypes().add(this.getSpecializationAxiom());
 		entityScalarDataPropertyRestrictionAxiomEClass.getESuperTypes().add(this.getTermAxiom());
+		entityScalarDataPropertyRestrictionAxiomEClass.getESuperTypes().add(theCommonPackage.getExtrinsicIdentityKind());
 		entityScalarDataPropertyExistentialRestrictionAxiomEClass.getESuperTypes().add(this.getEntityScalarDataPropertyRestrictionAxiom());
+		entityScalarDataPropertyExistentialRestrictionAxiomEClass.getESuperTypes().add(theCommonPackage.getElementCrossReferenceTuple());
 		entityScalarDataPropertyUniversalRestrictionAxiomEClass.getESuperTypes().add(this.getEntityScalarDataPropertyRestrictionAxiom());
+		entityScalarDataPropertyUniversalRestrictionAxiomEClass.getESuperTypes().add(theCommonPackage.getElementCrossReferenceTuple());
 		entityScalarDataPropertyParticularRestrictionAxiomEClass.getESuperTypes().add(this.getEntityScalarDataPropertyRestrictionAxiom());
+		entityScalarDataPropertyParticularRestrictionAxiomEClass.getESuperTypes().add(theCommonPackage.getValueCrossReferenceTuple());
 		entityStructuredDataPropertyRestrictionAxiomEClass.getESuperTypes().add(this.getTermAxiom());
+		entityStructuredDataPropertyRestrictionAxiomEClass.getESuperTypes().add(theCommonPackage.getElementCrossReferenceTuple());
 		entityStructuredDataPropertyParticularRestrictionAxiomEClass.getESuperTypes().add(this.getEntityStructuredDataPropertyRestrictionAxiom());
 		entityStructuredDataPropertyParticularRestrictionAxiomEClass.getESuperTypes().add(this.getRestrictionStructuredDataPropertyContext());
 		restrictionStructuredDataPropertyContextEClass.getESuperTypes().add(theCommonPackage.getModuleElement());
+		restrictionStructuredDataPropertyContextEClass.getESuperTypes().add(theCommonPackage.getElementCrossReferenceTuple());
 		restrictionStructuredDataPropertyTupleEClass.getESuperTypes().add(this.getRestrictionStructuredDataPropertyContext());
-		restrictionScalarDataPropertyValueEClass.getESuperTypes().add(theCommonPackage.getElement());
+		restrictionScalarDataPropertyValueEClass.getESuperTypes().add(theCommonPackage.getLogicalElement());
+		restrictionScalarDataPropertyValueEClass.getESuperTypes().add(theCommonPackage.getValueCrossReferenceTuple());
 		restrictedDataRangeEClass.getESuperTypes().add(this.getDataRange());
 		binaryScalarRestrictionEClass.getESuperTypes().add(this.getRestrictedDataRange());
 		iriScalarRestrictionEClass.getESuperTypes().add(this.getRestrictedDataRange());
@@ -3623,6 +3632,7 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		synonymScalarRestrictionEClass.getESuperTypes().add(this.getRestrictedDataRange());
 		scalarOneOfRestrictionEClass.getESuperTypes().add(this.getRestrictedDataRange());
 		scalarOneOfLiteralAxiomEClass.getESuperTypes().add(this.getTermAxiom());
+		scalarOneOfLiteralAxiomEClass.getESuperTypes().add(theCommonPackage.getValueCrossReferenceTuple());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(terminologyBoxEClass, TerminologyBox.class, "TerminologyBox", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -3670,7 +3680,7 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 
 		initEOperation(getTerm__Uuid(), theCommonPackage.getUUID(), "uuid", 1, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getTerm__AllNestedElements(), theCommonPackage.getElement(), "allNestedElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getTerm__AllNestedElements(), theCommonPackage.getLogicalElement(), "allNestedElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(unaryTermKindEClass, UnaryTermKind.class, "UnaryTermKind", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -3897,7 +3907,7 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		initEReference(getEntityRestrictionAxiom_RestrictedRange(), this.getEntity(), null, "restrictedRange", null, 1, 1, EntityRestrictionAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEntityRestrictionAxiom_RestrictedDomain(), this.getEntity(), null, "restrictedDomain", null, 1, 1, EntityRestrictionAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getEntityRestrictionAxiom__AllNestedElements(), theCommonPackage.getElement(), "allNestedElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getEntityRestrictionAxiom__AllNestedElements(), theCommonPackage.getLogicalElement(), "allNestedElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(entityExistentialRestrictionAxiomEClass, EntityExistentialRestrictionAxiom.class, "EntityExistentialRestrictionAxiom", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -3913,7 +3923,7 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 
 		initEOperation(getSpecializationAxiom__Parent(), this.getEntity(), "parent", 1, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getSpecializationAxiom__AllNestedElements(), theCommonPackage.getElement(), "allNestedElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getSpecializationAxiom__AllNestedElements(), theCommonPackage.getLogicalElement(), "allNestedElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(aspectSpecializationAxiomEClass, AspectSpecializationAxiom.class, "AspectSpecializationAxiom", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAspectSpecializationAxiom_SubEntity(), this.getEntity(), null, "subEntity", null, 1, 1, AspectSpecializationAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3949,7 +3959,7 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		initEReference(getEntityScalarDataPropertyRestrictionAxiom_RestrictedEntity(), this.getEntity(), null, "restrictedEntity", null, 1, 1, EntityScalarDataPropertyRestrictionAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEntityScalarDataPropertyRestrictionAxiom_ScalarProperty(), this.getEntityScalarDataProperty(), null, "scalarProperty", null, 1, 1, EntityScalarDataPropertyRestrictionAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getEntityScalarDataPropertyRestrictionAxiom__AllNestedElements(), theCommonPackage.getElement(), "allNestedElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getEntityScalarDataPropertyRestrictionAxiom__AllNestedElements(), theCommonPackage.getLogicalElement(), "allNestedElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(entityScalarDataPropertyExistentialRestrictionAxiomEClass, EntityScalarDataPropertyExistentialRestrictionAxiom.class, "EntityScalarDataPropertyExistentialRestrictionAxiom", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEntityScalarDataPropertyExistentialRestrictionAxiom_ScalarRestriction(), this.getDataRange(), null, "scalarRestriction", null, 1, 1, EntityScalarDataPropertyExistentialRestrictionAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3976,7 +3986,7 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 
 		initEOperation(getEntityStructuredDataPropertyParticularRestrictionAxiom__Uuid(), theCommonPackage.getUUID(), "uuid", 1, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getEntityStructuredDataPropertyParticularRestrictionAxiom__AllNestedElements(), theCommonPackage.getElement(), "allNestedElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getEntityStructuredDataPropertyParticularRestrictionAxiom__AllNestedElements(), theCommonPackage.getLogicalElement(), "allNestedElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(restrictionStructuredDataPropertyContextEClass, RestrictionStructuredDataPropertyContext.class, "RestrictionStructuredDataPropertyContext", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRestrictionStructuredDataPropertyContext_StructuredDataProperty(), this.getDataRelationshipToStructure(), null, "structuredDataProperty", null, 1, 1, RestrictionStructuredDataPropertyContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3985,7 +3995,7 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 
 		initEOperation(getRestrictionStructuredDataPropertyContext__TerminologyBox(), this.getTerminologyBox(), "terminologyBox", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getRestrictionStructuredDataPropertyContext__AllNestedRestrictionElements(), theCommonPackage.getElement(), "allNestedRestrictionElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getRestrictionStructuredDataPropertyContext__AllNestedRestrictionElements(), theCommonPackage.getLogicalElement(), "allNestedRestrictionElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(restrictionStructuredDataPropertyTupleEClass, RestrictionStructuredDataPropertyTuple.class, "RestrictionStructuredDataPropertyTuple", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRestrictionStructuredDataPropertyTuple_StructuredDataPropertyContext(), this.getRestrictionStructuredDataPropertyContext(), this.getRestrictionStructuredDataPropertyContext_StructuredDataPropertyRestrictions(), "structuredDataPropertyContext", null, 1, 1, RestrictionStructuredDataPropertyTuple.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3996,7 +4006,7 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 
 		initEOperation(getRestrictionStructuredDataPropertyTuple__ModuleContext(), theCommonPackage.getModule(), "moduleContext", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getRestrictionStructuredDataPropertyTuple__AllNestedElements(), theCommonPackage.getElement(), "allNestedElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getRestrictionStructuredDataPropertyTuple__AllNestedElements(), theCommonPackage.getLogicalElement(), "allNestedElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(restrictionScalarDataPropertyValueEClass, RestrictionScalarDataPropertyValue.class, "RestrictionScalarDataPropertyValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRestrictionScalarDataPropertyValue_StructuredDataPropertyContext(), this.getRestrictionStructuredDataPropertyContext(), this.getRestrictionStructuredDataPropertyContext_ScalarDataPropertyRestrictions(), "structuredDataPropertyContext", null, 1, 1, RestrictionScalarDataPropertyValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4060,7 +4070,7 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 
 		initEOperation(getScalarOneOfLiteralAxiom__Uuid(), theCommonPackage.getUUID(), "uuid", 1, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getScalarOneOfLiteralAxiom__AllNestedElements(), theCommonPackage.getElement(), "allNestedElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getScalarOneOfLiteralAxiom__AllNestedElements(), theCommonPackage.getLogicalElement(), "allNestedElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(terminologyKindEEnum, TerminologyKind.class, "TerminologyKind");
@@ -5034,7 +5044,7 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		  (getTerm__AllNestedElements(), 
 		   source, 
 		   new String[] {
-			 "code", "scala.collection.immutable.Set.empty[resolver.api.Element]"
+			 "code", "scala.collection.immutable.Set.empty[resolver.api.LogicalElement]"
 		   });	
 		addAnnotation
 		  (getRuleBodySegment__Position(), 
@@ -5064,19 +5074,19 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		  (getEntityRestrictionAxiom__AllNestedElements(), 
 		   source, 
 		   new String[] {
-			 "code", "scala.collection.immutable.Set.empty[resolver.api.Element]"
+			 "code", "scala.collection.immutable.Set.empty[resolver.api.LogicalElement]"
 		   });	
 		addAnnotation
 		  (getSpecializationAxiom__AllNestedElements(), 
 		   source, 
 		   new String[] {
-			 "code", "scala.collection.immutable.Set.empty[resolver.api.Element]"
+			 "code", "scala.collection.immutable.Set.empty[resolver.api.LogicalElement]"
 		   });	
 		addAnnotation
 		  (getEntityScalarDataPropertyRestrictionAxiom__AllNestedElements(), 
 		   source, 
 		   new String[] {
-			 "code", "scala.collection.immutable.Set.empty[resolver.api.Element]"
+			 "code", "scala.collection.immutable.Set.empty[resolver.api.LogicalElement]"
 		   });	
 		addAnnotation
 		  (getEntityStructuredDataPropertyParticularRestrictionAxiom__TerminologyBox(), 
@@ -5088,7 +5098,7 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		  (getRestrictionStructuredDataPropertyContext__AllNestedRestrictionElements(), 
 		   source, 
 		   new String[] {
-			 "code", "extent.lookupStructuredDataPropertyRestrictions(this).flatMap{ r => scala.collection.immutable.Set.empty[resolver.api.Element] + r ++ r.allNestedRestrictionElements() } ++\n\t\textent.lookupScalarDataPropertyRestrictions(this)"
+			 "code", "extent.lookupStructuredDataPropertyRestrictions(this).flatMap{ r => scala.collection.immutable.Set.empty[resolver.api.LogicalElement] + r ++ r.allNestedRestrictionElements() } ++\n\t\textent.lookupScalarDataPropertyRestrictions(this)"
 		   });	
 		addAnnotation
 		  (getRestrictionStructuredDataPropertyTuple__TerminologyBox(), 
@@ -5118,7 +5128,7 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		  (getScalarOneOfLiteralAxiom__AllNestedElements(), 
 		   source, 
 		   new String[] {
-			 "code", "scala.collection.immutable.Set.empty[resolver.api.Element]"
+			 "code", "scala.collection.immutable.Set.empty[resolver.api.LogicalElement]"
 		   });
 	}
 

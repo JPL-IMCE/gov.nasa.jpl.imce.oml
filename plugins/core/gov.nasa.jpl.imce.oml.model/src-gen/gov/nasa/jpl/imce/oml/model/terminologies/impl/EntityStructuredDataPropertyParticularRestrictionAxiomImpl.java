@@ -19,7 +19,8 @@
 package gov.nasa.jpl.imce.oml.model.terminologies.impl;
 
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
-import gov.nasa.jpl.imce.oml.model.common.Element;
+import gov.nasa.jpl.imce.oml.model.common.CrossReferencabilityKind;
+import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
 import gov.nasa.jpl.imce.oml.model.common.ModuleElement;
 
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
@@ -239,7 +240,7 @@ public class EntityStructuredDataPropertyParticularRestrictionAxiomImpl extends 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Element> allNestedElements() {
+	public EList<LogicalElement> allNestedElements() {
 		return this.allNestedRestrictionElements();
 	}
 
@@ -248,10 +249,10 @@ public class EntityStructuredDataPropertyParticularRestrictionAxiomImpl extends 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Element> allNestedRestrictionElements() {
-		BasicEList<Element> _xblockexpression = null;
+	public EList<LogicalElement> allNestedRestrictionElements() {
+		BasicEList<LogicalElement> _xblockexpression = null;
 		{
-			final BasicEList<Element> nres = new BasicEList<Element>();
+			final BasicEList<LogicalElement> nres = new BasicEList<LogicalElement>();
 			nres.addAll(this.getStructuredDataPropertyRestrictions());
 			final Consumer<RestrictionStructuredDataPropertyTuple> _function = new Consumer<RestrictionStructuredDataPropertyTuple>() {
 				public void accept(final RestrictionStructuredDataPropertyTuple it) {
@@ -423,9 +424,9 @@ public class EntityStructuredDataPropertyParticularRestrictionAxiomImpl extends 
 	 */
 	@Override
 	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
-		if (baseClass == Element.class) {
+		if (baseClass == CrossReferencabilityKind.class) {
 			switch (baseOperationID) {
-				case CommonPackage.ELEMENT___UUID: return TerminologiesPackage.ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM___UUID;
+				case CommonPackage.CROSS_REFERENCABILITY_KIND___UUID: return TerminologiesPackage.ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM___UUID;
 				default: return super.eDerivedOperationID(baseOperationID, baseClass);
 			}
 		}

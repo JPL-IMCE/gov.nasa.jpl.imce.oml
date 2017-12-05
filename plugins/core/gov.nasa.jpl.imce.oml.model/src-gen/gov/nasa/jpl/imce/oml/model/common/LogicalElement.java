@@ -18,13 +18,11 @@
  */
 package gov.nasa.jpl.imce.oml.model.common;
 
-import org.eclipse.emf.cdo.CDOObject;
-
 import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Element</b></em>'.
+ * A representation of the model object '<em><b>Logical Element</b></em>'.
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
@@ -41,32 +39,14 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link gov.nasa.jpl.imce.oml.model.common.Element#getUuid <em>Uuid</em>}</li>
- *   <li>{@link gov.nasa.jpl.imce.oml.model.common.Element#getAnnotations <em>Annotations</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.common.LogicalElement#getAnnotations <em>Annotations</em>}</li>
  * </ul>
  *
- * @see gov.nasa.jpl.imce.oml.model.common.CommonPackage#getElement()
+ * @see gov.nasa.jpl.imce.oml.model.common.CommonPackage#getLogicalElement()
  * @model abstract="true"
- * @extends CDOObject
  * @generated
  */
-public interface Element extends CDOObject {
-	/**
-	 * Returns the value of the '<em><b>Uuid</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Uuid</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Uuid</em>' attribute.
-	 * @see gov.nasa.jpl.imce.oml.model.common.CommonPackage#getElement_Uuid()
-	 * @model unique="false" dataType="gov.nasa.jpl.imce.oml.model.common.UUID" required="true" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='return this.uuid();'"
-	 * @generated
-	 */
-	String getUuid();
-
+public interface LogicalElement extends IdentityKind {
 	/**
 	 * Returns the value of the '<em><b>Annotations</b></em>' containment reference list.
 	 * The list contents are of type {@link gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue}.
@@ -78,7 +58,7 @@ public interface Element extends CDOObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Annotations</em>' containment reference list.
-	 * @see gov.nasa.jpl.imce.oml.model.common.CommonPackage#getElement_Annotations()
+	 * @see gov.nasa.jpl.imce.oml.model.common.CommonPackage#getLogicalElement_Annotations()
 	 * @see gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue#getSubject
 	 * @model opposite="subject" containment="true"
 	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Seq'"
@@ -89,17 +69,9 @@ public interface Element extends CDOObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model dataType="gov.nasa.jpl.imce.oml.model.common.UUID" unique="false" required="true"
-	 * @generated
-	 */
-	String uuid();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @model unique="false"
 	 * @generated
 	 */
 	Module moduleContext();
 
-} // Element
+} // LogicalElement

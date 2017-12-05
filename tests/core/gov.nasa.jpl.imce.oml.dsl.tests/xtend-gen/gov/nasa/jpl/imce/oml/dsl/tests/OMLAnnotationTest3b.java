@@ -22,10 +22,10 @@ import gov.nasa.jpl.imce.oml.dsl.tests.OMLInjectorProvider;
 import gov.nasa.jpl.imce.oml.model.common.AnnotationProperty;
 import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue;
 import gov.nasa.jpl.imce.oml.model.common.CommonFactory;
-import gov.nasa.jpl.imce.oml.model.common.Element;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
 import gov.nasa.jpl.imce.oml.model.common.LiteralQuotedString;
 import gov.nasa.jpl.imce.oml.model.common.LiteralRawString;
+import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
 import gov.nasa.jpl.imce.oml.model.datatypes.QuotedStringValue;
 import gov.nasa.jpl.imce.oml.model.datatypes.RawStringValue;
 import gov.nasa.jpl.imce.oml.model.graphs.GraphsFactory;
@@ -154,7 +154,7 @@ public class OMLAnnotationTest3b {
     }
   }
   
-  public void addQuotedAnnotation(final Element e, final AnnotationProperty ap, final String v) {
+  public void addQuotedAnnotation(final LogicalElement e, final AnnotationProperty ap, final String v) {
     final AnnotationPropertyValue av = this.commonF.createAnnotationPropertyValue();
     EList<AnnotationPropertyValue> _annotations = e.getAnnotations();
     _annotations.add(av);
@@ -165,7 +165,7 @@ public class OMLAnnotationTest3b {
     av.setValue(s);
   }
   
-  public void addRawAnnotation(final Element e, final AnnotationProperty ap, final String v) {
+  public void addRawAnnotation(final LogicalElement e, final AnnotationProperty ap, final String v) {
     final AnnotationPropertyValue av = this.commonF.createAnnotationPropertyValue();
     EList<AnnotationPropertyValue> _annotations = e.getAnnotations();
     _annotations.add(av);

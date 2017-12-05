@@ -25,7 +25,11 @@ import gov.nasa.jpl.imce.oml.model.bundles.DisjointUnionOfConceptsAxiom;
 import gov.nasa.jpl.imce.oml.model.bundles.RootConceptTaxonomyAxiom;
 
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
-import gov.nasa.jpl.imce.oml.model.common.Element;
+import gov.nasa.jpl.imce.oml.model.common.CrossReferencabilityKind;
+import gov.nasa.jpl.imce.oml.model.common.CrossReferencableKind;
+import gov.nasa.jpl.imce.oml.model.common.ElementCrossReferenceTuple;
+import gov.nasa.jpl.imce.oml.model.common.ExtrinsicIdentityKind;
+import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
 import gov.nasa.jpl.imce.oml.model.common.ModuleElement;
 
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
@@ -209,27 +213,18 @@ public class RootConceptTaxonomyAxiomImpl extends TerminologyBundleStatementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Element> allNestedElements() {
-		return this.allNestedDisjunctions();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<Element> allNestedDisjunctions() {
-		BasicEList<Element> _xblockexpression = null;
+	public EList<LogicalElement> allNestedElements() {
+		BasicEList<LogicalElement> _xblockexpression = null;
 		{
-			final BasicEList<Element> nres = new BasicEList<Element>();
-			nres.addAll(this.getDisjunctions());
+			final BasicEList<LogicalElement> nes = new BasicEList<LogicalElement>();
+			nes.addAll(this.getDisjunctions());
 			final Consumer<DisjointUnionOfConceptsAxiom> _function = new Consumer<DisjointUnionOfConceptsAxiom>() {
-				public void accept(final DisjointUnionOfConceptsAxiom it) {
-					nres.addAll(it.allNestedUnions());
+				public void accept(final DisjointUnionOfConceptsAxiom d) {
+					nes.addAll(d.allNestedElements());
 				}
 			};
 			this.getDisjunctions().forEach(_function);
-			_xblockexpression = nres;
+			_xblockexpression = nes;
 		}
 		return _xblockexpression;
 	}
@@ -341,6 +336,21 @@ public class RootConceptTaxonomyAxiomImpl extends TerminologyBundleStatementImpl
 	 */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == ExtrinsicIdentityKind.class) {
+			switch (derivedFeatureID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == CrossReferencableKind.class) {
+			switch (derivedFeatureID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == ElementCrossReferenceTuple.class) {
+			switch (derivedFeatureID) {
+				default: return -1;
+			}
+		}
 		if (baseClass == ConceptTreeDisjunction.class) {
 			switch (derivedFeatureID) {
 				case BundlesPackage.ROOT_CONCEPT_TAXONOMY_AXIOM__DISJUNCTIONS: return BundlesPackage.CONCEPT_TREE_DISJUNCTION__DISJUNCTIONS;
@@ -357,6 +367,21 @@ public class RootConceptTaxonomyAxiomImpl extends TerminologyBundleStatementImpl
 	 */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == ExtrinsicIdentityKind.class) {
+			switch (baseFeatureID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == CrossReferencableKind.class) {
+			switch (baseFeatureID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == ElementCrossReferenceTuple.class) {
+			switch (baseFeatureID) {
+				default: return -1;
+			}
+		}
 		if (baseClass == ConceptTreeDisjunction.class) {
 			switch (baseFeatureID) {
 				case BundlesPackage.CONCEPT_TREE_DISJUNCTION__DISJUNCTIONS: return BundlesPackage.ROOT_CONCEPT_TAXONOMY_AXIOM__DISJUNCTIONS;
@@ -373,9 +398,9 @@ public class RootConceptTaxonomyAxiomImpl extends TerminologyBundleStatementImpl
 	 */
 	@Override
 	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
-		if (baseClass == Element.class) {
+		if (baseClass == CrossReferencabilityKind.class) {
 			switch (baseOperationID) {
-				case CommonPackage.ELEMENT___UUID: return BundlesPackage.ROOT_CONCEPT_TAXONOMY_AXIOM___UUID;
+				case CommonPackage.CROSS_REFERENCABILITY_KIND___UUID: return BundlesPackage.ROOT_CONCEPT_TAXONOMY_AXIOM___UUID;
 				default: return super.eDerivedOperationID(baseOperationID, baseClass);
 			}
 		}
@@ -385,10 +410,25 @@ public class RootConceptTaxonomyAxiomImpl extends TerminologyBundleStatementImpl
 				default: return super.eDerivedOperationID(baseOperationID, baseClass);
 			}
 		}
+		if (baseClass == ExtrinsicIdentityKind.class) {
+			switch (baseOperationID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == CrossReferencableKind.class) {
+			switch (baseOperationID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == ElementCrossReferenceTuple.class) {
+			switch (baseOperationID) {
+				default: return -1;
+			}
+		}
 		if (baseClass == ConceptTreeDisjunction.class) {
 			switch (baseOperationID) {
 				case BundlesPackage.CONCEPT_TREE_DISJUNCTION___BUNDLE_CONTAINER: return BundlesPackage.ROOT_CONCEPT_TAXONOMY_AXIOM___BUNDLE_CONTAINER;
-				case BundlesPackage.CONCEPT_TREE_DISJUNCTION___ALL_NESTED_DISJUNCTIONS: return BundlesPackage.ROOT_CONCEPT_TAXONOMY_AXIOM___ALL_NESTED_DISJUNCTIONS;
+				case BundlesPackage.CONCEPT_TREE_DISJUNCTION___ALL_NESTED_ELEMENTS: return BundlesPackage.ROOT_CONCEPT_TAXONOMY_AXIOM___ALL_NESTED_ELEMENTS;
 				default: return -1;
 			}
 		}
@@ -409,8 +449,6 @@ public class RootConceptTaxonomyAxiomImpl extends TerminologyBundleStatementImpl
 				return bundleContainer();
 			case BundlesPackage.ROOT_CONCEPT_TAXONOMY_AXIOM___ALL_NESTED_ELEMENTS:
 				return allNestedElements();
-			case BundlesPackage.ROOT_CONCEPT_TAXONOMY_AXIOM___ALL_NESTED_DISJUNCTIONS:
-				return allNestedDisjunctions();
 		}
 		return super.eInvoke(operationID, arguments);
 	}

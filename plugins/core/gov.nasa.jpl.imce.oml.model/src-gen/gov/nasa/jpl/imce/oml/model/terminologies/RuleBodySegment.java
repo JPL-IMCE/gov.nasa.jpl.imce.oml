@@ -18,7 +18,7 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies;
 
-import gov.nasa.jpl.imce.oml.model.common.Element;
+import gov.nasa.jpl.imce.oml.model.common.ElementCrossReferenceTuple;
 import gov.nasa.jpl.imce.oml.model.common.Module;
 
 /**
@@ -47,7 +47,7 @@ import gov.nasa.jpl.imce.oml.model.common.Module;
  * @model
  * @generated
  */
-public interface RuleBodySegment extends Element {
+public interface RuleBodySegment extends ElementCrossReferenceTuple {
 	/**
 	 * Returns the value of the '<em><b>Predicate</b></em>' containment reference.
 	 * It is bidirectional and its opposite is '{@link gov.nasa.jpl.imce.oml.model.terminologies.SegmentPredicate#getBodySegment <em>Body Segment</em>}'.

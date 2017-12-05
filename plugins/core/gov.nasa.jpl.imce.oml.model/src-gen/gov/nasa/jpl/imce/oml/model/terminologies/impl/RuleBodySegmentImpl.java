@@ -20,7 +20,7 @@ package gov.nasa.jpl.imce.oml.model.terminologies.impl;
 
 import gov.nasa.jpl.imce.oml.model.common.Module;
 
-import gov.nasa.jpl.imce.oml.model.common.impl.ElementImpl;
+import gov.nasa.jpl.imce.oml.model.common.impl.ElementCrossReferenceTupleImpl;
 
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
 
@@ -64,7 +64,7 @@ import org.eclipse.xtext.xbase.lib.Pair;
  *
  * @generated
  */
-public class RuleBodySegmentImpl extends ElementImpl implements RuleBodySegment {
+public class RuleBodySegmentImpl extends ElementCrossReferenceTupleImpl implements RuleBodySegment {
 	/**
 	 * The cached value of the '{@link #getPredicate() <em>Predicate</em>}' containment reference.
 	 * <!-- begin-user-doc -->

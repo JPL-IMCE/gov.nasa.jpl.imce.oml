@@ -18,7 +18,7 @@
  */
 package gov.nasa.jpl.imce.oml.model.descriptions;
 
-import gov.nasa.jpl.imce.oml.model.common.Element;
+import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
 import gov.nasa.jpl.imce.oml.model.common.ModuleElement;
 
 import org.eclipse.emf.common.util.EList;
@@ -127,6 +127,6 @@ public interface SingletonInstanceStructuredDataPropertyValue extends SingletonI
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return this.allNestedRestrictionElements();'"
 	 * @generated
 	 */
-	EList<Element> allNestedElements();
+	EList<LogicalElement> allNestedElements();
 
 } // SingletonInstanceStructuredDataPropertyValue

@@ -178,42 +178,139 @@ public class CommonSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case CommonPackage.ANNOTATION_PROPERTY_VALUE: {
-				AnnotationPropertyValue annotationPropertyValue = (AnnotationPropertyValue)theEObject;
-				T result = caseAnnotationPropertyValue(annotationPropertyValue);
+			case CommonPackage.CROSS_REFERENCABILITY_KIND: {
+				CrossReferencabilityKind crossReferencabilityKind = (CrossReferencabilityKind)theEObject;
+				T result = caseCrossReferencabilityKind(crossReferencabilityKind);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case CommonPackage.ELEMENT: {
-				Element element = (Element)theEObject;
-				T result = caseElement(element);
+			case CommonPackage.CROSS_REFERENCABLE_KIND: {
+				CrossReferencableKind crossReferencableKind = (CrossReferencableKind)theEObject;
+				T result = caseCrossReferencableKind(crossReferencableKind);
+				if (result == null) result = caseCrossReferencabilityKind(crossReferencableKind);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CommonPackage.NON_CROSS_REFERENCABLE_KIND: {
+				NonCrossReferencableKind nonCrossReferencableKind = (NonCrossReferencableKind)theEObject;
+				T result = caseNonCrossReferencableKind(nonCrossReferencableKind);
+				if (result == null) result = caseCrossReferencabilityKind(nonCrossReferencableKind);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CommonPackage.IDENTITY_KIND: {
+				IdentityKind identityKind = (IdentityKind)theEObject;
+				T result = caseIdentityKind(identityKind);
+				if (result == null) result = caseCrossReferencabilityKind(identityKind);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CommonPackage.INTRINSIC_IDENTITY_KIND: {
+				IntrinsicIdentityKind intrinsicIdentityKind = (IntrinsicIdentityKind)theEObject;
+				T result = caseIntrinsicIdentityKind(intrinsicIdentityKind);
+				if (result == null) result = caseIdentityKind(intrinsicIdentityKind);
+				if (result == null) result = caseCrossReferencableKind(intrinsicIdentityKind);
+				if (result == null) result = caseCrossReferencabilityKind(intrinsicIdentityKind);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CommonPackage.EXTRINSIC_IDENTITY_KIND: {
+				ExtrinsicIdentityKind extrinsicIdentityKind = (ExtrinsicIdentityKind)theEObject;
+				T result = caseExtrinsicIdentityKind(extrinsicIdentityKind);
+				if (result == null) result = caseIdentityKind(extrinsicIdentityKind);
+				if (result == null) result = caseCrossReferencabilityKind(extrinsicIdentityKind);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE: {
+				ElementCrossReferenceTuple elementCrossReferenceTuple = (ElementCrossReferenceTuple)theEObject;
+				T result = caseElementCrossReferenceTuple(elementCrossReferenceTuple);
+				if (result == null) result = caseExtrinsicIdentityKind(elementCrossReferenceTuple);
+				if (result == null) result = caseCrossReferencableKind(elementCrossReferenceTuple);
+				if (result == null) result = caseLogicalElement(elementCrossReferenceTuple);
+				if (result == null) result = caseIdentityKind(elementCrossReferenceTuple);
+				if (result == null) result = caseCrossReferencabilityKind(elementCrossReferenceTuple);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CommonPackage.VALUE_CROSS_REFERENCE_TUPLE: {
+				ValueCrossReferenceTuple valueCrossReferenceTuple = (ValueCrossReferenceTuple)theEObject;
+				T result = caseValueCrossReferenceTuple(valueCrossReferenceTuple);
+				if (result == null) result = caseExtrinsicIdentityKind(valueCrossReferenceTuple);
+				if (result == null) result = caseNonCrossReferencableKind(valueCrossReferenceTuple);
+				if (result == null) result = caseIdentityKind(valueCrossReferenceTuple);
+				if (result == null) result = caseCrossReferencabilityKind(valueCrossReferenceTuple);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CommonPackage.LOGICAL_ELEMENT: {
+				LogicalElement logicalElement = (LogicalElement)theEObject;
+				T result = caseLogicalElement(logicalElement);
+				if (result == null) result = caseIdentityKind(logicalElement);
+				if (result == null) result = caseCrossReferencabilityKind(logicalElement);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CommonPackage.NON_LOGICAL_ELEMENT: {
+				NonLogicalElement nonLogicalElement = (NonLogicalElement)theEObject;
+				T result = caseNonLogicalElement(nonLogicalElement);
+				if (result == null) result = caseIdentityKind(nonLogicalElement);
+				if (result == null) result = caseCrossReferencabilityKind(nonLogicalElement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case CommonPackage.RESOURCE: {
 				Resource resource = (Resource)theEObject;
 				T result = caseResource(resource);
-				if (result == null) result = caseElement(resource);
+				if (result == null) result = caseLogicalElement(resource);
+				if (result == null) result = caseIntrinsicIdentityKind(resource);
+				if (result == null) result = caseIdentityKind(resource);
+				if (result == null) result = caseCrossReferencableKind(resource);
+				if (result == null) result = caseCrossReferencabilityKind(resource);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case CommonPackage.MODULE_ELEMENT: {
 				ModuleElement moduleElement = (ModuleElement)theEObject;
 				T result = caseModuleElement(moduleElement);
-				if (result == null) result = caseElement(moduleElement);
+				if (result == null) result = caseLogicalElement(moduleElement);
+				if (result == null) result = caseIdentityKind(moduleElement);
+				if (result == null) result = caseCrossReferencabilityKind(moduleElement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case CommonPackage.MODULE_EDGE: {
 				ModuleEdge moduleEdge = (ModuleEdge)theEObject;
 				T result = caseModuleEdge(moduleEdge);
-				if (result == null) result = caseElement(moduleEdge);
+				if (result == null) result = caseElementCrossReferenceTuple(moduleEdge);
+				if (result == null) result = caseExtrinsicIdentityKind(moduleEdge);
+				if (result == null) result = caseCrossReferencableKind(moduleEdge);
+				if (result == null) result = caseLogicalElement(moduleEdge);
+				if (result == null) result = caseIdentityKind(moduleEdge);
+				if (result == null) result = caseCrossReferencabilityKind(moduleEdge);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case CommonPackage.ANNOTATION_PROPERTY: {
 				AnnotationProperty annotationProperty = (AnnotationProperty)theEObject;
 				T result = caseAnnotationProperty(annotationProperty);
+				if (result == null) result = caseIntrinsicIdentityKind(annotationProperty);
+				if (result == null) result = caseNonLogicalElement(annotationProperty);
+				if (result == null) result = caseIdentityKind(annotationProperty);
+				if (result == null) result = caseCrossReferencableKind(annotationProperty);
+				if (result == null) result = caseCrossReferencabilityKind(annotationProperty);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CommonPackage.ANNOTATION_PROPERTY_VALUE: {
+				AnnotationPropertyValue annotationPropertyValue = (AnnotationPropertyValue)theEObject;
+				T result = caseAnnotationPropertyValue(annotationPropertyValue);
+				if (result == null) result = caseValueCrossReferenceTuple(annotationPropertyValue);
+				if (result == null) result = caseNonLogicalElement(annotationPropertyValue);
+				if (result == null) result = caseExtrinsicIdentityKind(annotationPropertyValue);
+				if (result == null) result = caseNonCrossReferencableKind(annotationPropertyValue);
+				if (result == null) result = caseIdentityKind(annotationPropertyValue);
+				if (result == null) result = caseCrossReferencabilityKind(annotationPropertyValue);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -227,7 +324,11 @@ public class CommonSwitch<T> extends Switch<T> {
 				Module module = (Module)theEObject;
 				T result = caseModule(module);
 				if (result == null) result = caseResource(module);
-				if (result == null) result = caseElement(module);
+				if (result == null) result = caseLogicalElement(module);
+				if (result == null) result = caseIntrinsicIdentityKind(module);
+				if (result == null) result = caseIdentityKind(module);
+				if (result == null) result = caseCrossReferencableKind(module);
+				if (result == null) result = caseCrossReferencabilityKind(module);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -431,32 +532,152 @@ public class CommonSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Annotation Property Value</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Cross Referencability Kind</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Annotation Property Value</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Cross Referencability Kind</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseAnnotationPropertyValue(AnnotationPropertyValue object) {
+	public T caseCrossReferencabilityKind(CrossReferencabilityKind object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Element</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Cross Referencable Kind</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Element</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Cross Referencable Kind</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseElement(Element object) {
+	public T caseCrossReferencableKind(CrossReferencableKind object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Non Cross Referencable Kind</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Non Cross Referencable Kind</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseNonCrossReferencableKind(NonCrossReferencableKind object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Identity Kind</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Identity Kind</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIdentityKind(IdentityKind object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Intrinsic Identity Kind</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Intrinsic Identity Kind</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIntrinsicIdentityKind(IntrinsicIdentityKind object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Extrinsic Identity Kind</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Extrinsic Identity Kind</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseExtrinsicIdentityKind(ExtrinsicIdentityKind object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Element Cross Reference Tuple</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Element Cross Reference Tuple</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseElementCrossReferenceTuple(ElementCrossReferenceTuple object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Value Cross Reference Tuple</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Value Cross Reference Tuple</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseValueCrossReferenceTuple(ValueCrossReferenceTuple object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Logical Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Logical Element</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLogicalElement(LogicalElement object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Non Logical Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Non Logical Element</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseNonLogicalElement(NonLogicalElement object) {
 		return null;
 	}
 
@@ -517,6 +738,21 @@ public class CommonSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseAnnotationProperty(AnnotationProperty object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Annotation Property Value</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Annotation Property Value</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAnnotationPropertyValue(AnnotationPropertyValue object) {
 		return null;
 	}
 

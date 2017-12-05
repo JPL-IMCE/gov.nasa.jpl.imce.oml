@@ -23,7 +23,11 @@ import gov.nasa.jpl.imce.oml.model.common.LiteralDateTime;
 
 import gov.nasa.jpl.imce.oml.model.datatypes.DateTimeValue;
 
+import java.lang.reflect.InvocationTargetException;
+
 import org.eclipse.emf.common.notify.Notification;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -108,6 +112,15 @@ public class LiteralDateTimeImpl extends LiteralValueImpl implements LiteralDate
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String value() {
+		return this.getDateTime().toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -159,6 +172,20 @@ public class LiteralDateTimeImpl extends LiteralValueImpl implements LiteralDate
 				return DATE_TIME_EDEFAULT == null ? dateTime != null : !DATE_TIME_EDEFAULT.equals(dateTime);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case CommonPackage.LITERAL_DATE_TIME___VALUE:
+				return value();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

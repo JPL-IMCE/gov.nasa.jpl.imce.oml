@@ -128,15 +128,6 @@ public interface CommonFactory extends EFactory {
 	LiteralDecimal createLiteralDecimal();
 
 	/**
-	 * Returns a new object of class '<em>Annotation Property Value</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Annotation Property Value</em>'.
-	 * @generated
-	 */
-	AnnotationPropertyValue createAnnotationPropertyValue();
-
-	/**
 	 * Returns a new object of class '<em>Annotation Property</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -144,6 +135,15 @@ public interface CommonFactory extends EFactory {
 	 * @generated
 	 */
 	AnnotationProperty createAnnotationProperty();
+
+	/**
+	 * Returns a new object of class '<em>Annotation Property Value</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Annotation Property Value</em>'.
+	 * @generated
+	 */
+	AnnotationPropertyValue createAnnotationPropertyValue();
 
 	/**
 	 * Returns a new object of class '<em>Extent</em>'.

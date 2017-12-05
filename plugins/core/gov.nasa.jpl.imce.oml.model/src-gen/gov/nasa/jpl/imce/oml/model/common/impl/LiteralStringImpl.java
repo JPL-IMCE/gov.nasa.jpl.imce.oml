@@ -61,7 +61,7 @@ public abstract class LiteralStringImpl extends LiteralValueImpl implements Lite
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public StringValue value() {
+	public StringValue stringValue() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
@@ -72,9 +72,20 @@ public abstract class LiteralStringImpl extends LiteralValueImpl implements Lite
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String value() {
+		return this.stringValue().toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
+			case CommonPackage.LITERAL_STRING___STRING_VALUE:
+				return stringValue();
 			case CommonPackage.LITERAL_STRING___VALUE:
 				return value();
 		}

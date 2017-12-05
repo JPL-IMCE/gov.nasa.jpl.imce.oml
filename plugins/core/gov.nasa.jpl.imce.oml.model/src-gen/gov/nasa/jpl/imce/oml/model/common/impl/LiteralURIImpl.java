@@ -23,7 +23,11 @@ import gov.nasa.jpl.imce.oml.model.common.LiteralURI;
 
 import gov.nasa.jpl.imce.oml.model.datatypes.URIValue;
 
+import java.lang.reflect.InvocationTargetException;
+
 import org.eclipse.emf.common.notify.Notification;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -108,6 +112,15 @@ public class LiteralURIImpl extends LiteralValueImpl implements LiteralURI {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String value() {
+		return this.getUri().toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -159,6 +172,20 @@ public class LiteralURIImpl extends LiteralValueImpl implements LiteralURI {
 				return URI_EDEFAULT == null ? uri != null : !URI_EDEFAULT.equals(uri);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case CommonPackage.LITERAL_URI___VALUE:
+				return value();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

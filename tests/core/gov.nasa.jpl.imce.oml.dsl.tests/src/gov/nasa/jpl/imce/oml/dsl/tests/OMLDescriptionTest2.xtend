@@ -209,7 +209,7 @@ class OMLDescriptionTest2 {
 		ci_isSmall.singletonInstance = ci
 		
 		val ci_isSmall_lit = commonF.createLiteralBoolean
-		ci_isSmall_lit.value = false
+		ci_isSmall_lit.bool = false
 		ci_isSmall.scalarPropertyValue = ci_isSmall_lit
 		
 		val String text2 = serialize(r2)

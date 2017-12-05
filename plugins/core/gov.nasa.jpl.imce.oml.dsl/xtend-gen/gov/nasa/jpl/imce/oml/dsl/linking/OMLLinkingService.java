@@ -24,8 +24,8 @@ import gov.nasa.jpl.imce.oml.model.bundles.Bundle;
 import gov.nasa.jpl.imce.oml.model.bundles.BundlesPackage;
 import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue;
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
-import gov.nasa.jpl.imce.oml.model.common.Element;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
+import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsPackage;
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
@@ -342,9 +342,9 @@ public class OMLLinkingService extends DefaultLinkingService {
         final INode nextNode = node.getParent().getNextSibling();
         final EObject nextSE = IterableExtensions.<ILeafNode>head(nextNode.getLeafNodes()).getSemanticElement();
         boolean _matched_2 = false;
-        if (nextSE instanceof Element) {
+        if (nextSE instanceof LogicalElement) {
           _matched_2=true;
-          aContext.setSubject(((Element)nextSE));
+          aContext.setSubject(((LogicalElement)nextSE));
         }
         if (!_matched_2) {
           if (nextSE instanceof AnnotationPropertyValue) {

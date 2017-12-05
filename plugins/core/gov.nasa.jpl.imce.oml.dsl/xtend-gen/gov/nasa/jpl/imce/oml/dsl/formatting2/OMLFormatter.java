@@ -2285,6 +2285,15 @@ public class OMLFormatter extends AbstractFormatter2 {
     } else if (t instanceof UnreifiedRelationship) {
       _format((UnreifiedRelationship)t, document);
       return;
+    } else if (t instanceof BundledTerminologyAxiom) {
+      _format((BundledTerminologyAxiom)t, document);
+      return;
+    } else if (t instanceof ConceptDesignationTerminologyAxiom) {
+      _format((ConceptDesignationTerminologyAxiom)t, document);
+      return;
+    } else if (t instanceof TerminologyNestingAxiom) {
+      _format((TerminologyNestingAxiom)t, document);
+      return;
     } else if (t instanceof Aspect) {
       _format((Aspect)t, document);
       return;
@@ -2315,33 +2324,6 @@ public class OMLFormatter extends AbstractFormatter2 {
     } else if (t instanceof EntityUniversalRestrictionAxiom) {
       _format((EntityUniversalRestrictionAxiom)t, document);
       return;
-    } else if (t instanceof ReifiedRelationshipSpecializationAxiom) {
-      _format((ReifiedRelationshipSpecializationAxiom)t, document);
-      return;
-    } else if (t instanceof Structure) {
-      _format((Structure)t, document);
-      return;
-    } else if (t instanceof Bundle) {
-      _format((Bundle)t, document);
-      return;
-    } else if (t instanceof BundledTerminologyAxiom) {
-      _format((BundledTerminologyAxiom)t, document);
-      return;
-    } else if (t instanceof ConceptInstance) {
-      _format((ConceptInstance)t, document);
-      return;
-    } else if (t instanceof ReifiedRelationshipInstance) {
-      _format((ReifiedRelationshipInstance)t, document);
-      return;
-    } else if (t instanceof ConceptDesignationTerminologyAxiom) {
-      _format((ConceptDesignationTerminologyAxiom)t, document);
-      return;
-    } else if (t instanceof TerminologyGraph) {
-      _format((TerminologyGraph)t, document);
-      return;
-    } else if (t instanceof TerminologyNestingAxiom) {
-      _format((TerminologyNestingAxiom)t, document);
-      return;
     } else if (t instanceof ReifiedRelationshipInversePropertyPredicate) {
       _format((ReifiedRelationshipInversePropertyPredicate)t, document);
       return;
@@ -2354,14 +2336,17 @@ public class OMLFormatter extends AbstractFormatter2 {
     } else if (t instanceof ReifiedRelationshipSourcePropertyPredicate) {
       _format((ReifiedRelationshipSourcePropertyPredicate)t, document);
       return;
+    } else if (t instanceof ReifiedRelationshipSpecializationAxiom) {
+      _format((ReifiedRelationshipSpecializationAxiom)t, document);
+      return;
     } else if (t instanceof ReifiedRelationshipTargetInversePropertyPredicate) {
       _format((ReifiedRelationshipTargetInversePropertyPredicate)t, document);
       return;
     } else if (t instanceof ReifiedRelationshipTargetPropertyPredicate) {
       _format((ReifiedRelationshipTargetPropertyPredicate)t, document);
       return;
-    } else if (t instanceof ScalarOneOfLiteralAxiom) {
-      _format((ScalarOneOfLiteralAxiom)t, document);
+    } else if (t instanceof Structure) {
+      _format((Structure)t, document);
       return;
     } else if (t instanceof TerminologyExtensionAxiom) {
       _format((TerminologyExtensionAxiom)t, document);
@@ -2372,17 +2357,23 @@ public class OMLFormatter extends AbstractFormatter2 {
     } else if (t instanceof UnreifiedRelationshipPropertyPredicate) {
       _format((UnreifiedRelationshipPropertyPredicate)t, document);
       return;
-    } else if (t instanceof RootConceptTaxonomyAxiom) {
-      _format((RootConceptTaxonomyAxiom)t, document);
+    } else if (t instanceof Bundle) {
+      _format((Bundle)t, document);
       return;
-    } else if (t instanceof DescriptionBox) {
-      _format((DescriptionBox)t, document);
+    } else if (t instanceof ConceptInstance) {
+      _format((ConceptInstance)t, document);
       return;
     } else if (t instanceof DescriptionBoxExtendsClosedWorldDefinitions) {
       _format((DescriptionBoxExtendsClosedWorldDefinitions)t, document);
       return;
     } else if (t instanceof DescriptionBoxRefinement) {
       _format((DescriptionBoxRefinement)t, document);
+      return;
+    } else if (t instanceof ReifiedRelationshipInstance) {
+      _format((ReifiedRelationshipInstance)t, document);
+      return;
+    } else if (t instanceof TerminologyGraph) {
+      _format((TerminologyGraph)t, document);
       return;
     } else if (t instanceof AspectPredicate) {
       _format((AspectPredicate)t, document);
@@ -2393,17 +2384,20 @@ public class OMLFormatter extends AbstractFormatter2 {
     } else if (t instanceof ReifiedRelationshipPredicate) {
       _format((ReifiedRelationshipPredicate)t, document);
       return;
-    } else if (t instanceof RestrictionStructuredDataPropertyTuple) {
-      _format((RestrictionStructuredDataPropertyTuple)t, document);
+    } else if (t instanceof ScalarOneOfLiteralAxiom) {
+      _format((ScalarOneOfLiteralAxiom)t, document);
       return;
     } else if (t instanceof AnonymousConceptUnionAxiom) {
       _format((AnonymousConceptUnionAxiom)t, document);
       return;
+    } else if (t instanceof RootConceptTaxonomyAxiom) {
+      _format((RootConceptTaxonomyAxiom)t, document);
+      return;
     } else if (t instanceof SpecificDisjointConceptAxiom) {
       _format((SpecificDisjointConceptAxiom)t, document);
       return;
-    } else if (t instanceof SingletonInstanceScalarDataPropertyValue) {
-      _format((SingletonInstanceScalarDataPropertyValue)t, document);
+    } else if (t instanceof DescriptionBox) {
+      _format((DescriptionBox)t, document);
       return;
     } else if (t instanceof SingletonInstanceStructuredDataPropertyValue) {
       _format((SingletonInstanceStructuredDataPropertyValue)t, document);
@@ -2411,8 +2405,17 @@ public class OMLFormatter extends AbstractFormatter2 {
     } else if (t instanceof StructuredDataPropertyTuple) {
       _format((StructuredDataPropertyTuple)t, document);
       return;
+    } else if (t instanceof RestrictionStructuredDataPropertyTuple) {
+      _format((RestrictionStructuredDataPropertyTuple)t, document);
+      return;
+    } else if (t instanceof AnnotationPropertyValue) {
+      _format((AnnotationPropertyValue)t, document);
+      return;
     } else if (t instanceof ScalarDataPropertyValue) {
       _format((ScalarDataPropertyValue)t, document);
+      return;
+    } else if (t instanceof SingletonInstanceScalarDataPropertyValue) {
+      _format((SingletonInstanceScalarDataPropertyValue)t, document);
       return;
     } else if (t instanceof RestrictionScalarDataPropertyValue) {
       _format((RestrictionScalarDataPropertyValue)t, document);
@@ -2420,14 +2423,11 @@ public class OMLFormatter extends AbstractFormatter2 {
     } else if (t instanceof RuleBodySegment) {
       _format((RuleBodySegment)t, document);
       return;
-    } else if (t instanceof XtextResource) {
-      _format((XtextResource)t, document);
-      return;
     } else if (t instanceof AnnotationProperty) {
       _format((AnnotationProperty)t, document);
       return;
-    } else if (t instanceof AnnotationPropertyValue) {
-      _format((AnnotationPropertyValue)t, document);
+    } else if (t instanceof XtextResource) {
+      _format((XtextResource)t, document);
       return;
     } else if (t instanceof Extent) {
       _format((Extent)t, document);

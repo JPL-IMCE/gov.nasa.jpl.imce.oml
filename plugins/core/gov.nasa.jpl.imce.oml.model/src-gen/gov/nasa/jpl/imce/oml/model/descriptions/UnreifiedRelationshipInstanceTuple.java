@@ -18,7 +18,8 @@
  */
 package gov.nasa.jpl.imce.oml.model.descriptions;
 
-import gov.nasa.jpl.imce.oml.model.common.Element;
+import gov.nasa.jpl.imce.oml.model.common.ElementCrossReferenceTuple;
+import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
 import gov.nasa.jpl.imce.oml.model.common.Module;
 
 import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship;
@@ -53,7 +54,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface UnreifiedRelationshipInstanceTuple extends TerminologyInstanceAssertion {
+public interface UnreifiedRelationshipInstanceTuple extends TerminologyInstanceAssertion, ElementCrossReferenceTuple {
 	/**
 	 * Returns the value of the '<em><b>Description Box</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox#getUnreifiedRelationshipInstanceTuples <em>Unreified Relationship Instance Tuples</em>}'.
@@ -192,11 +193,11 @@ public interface UnreifiedRelationshipInstanceTuple extends TerminologyInstanceA
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
-	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='scala.collection.immutable.Set.empty[resolver.api.Element]'"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='scala.collection.immutable.Set.empty[resolver.api.LogicalElement]'"
 	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return &lt;%org.eclipse.emf.common.util.ECollections%&gt;.&lt;&lt;%gov.nasa.jpl.imce.oml.model.common.Element%&gt;&gt;emptyEList();'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return &lt;%org.eclipse.emf.common.util.ECollections%&gt;.&lt;&lt;%gov.nasa.jpl.imce.oml.model.common.LogicalElement%&gt;&gt;emptyEList();'"
 	 * @generated
 	 */
-	EList<Element> allNestedElements();
+	EList<LogicalElement> allNestedElements();
 
 } // UnreifiedRelationshipInstanceTuple

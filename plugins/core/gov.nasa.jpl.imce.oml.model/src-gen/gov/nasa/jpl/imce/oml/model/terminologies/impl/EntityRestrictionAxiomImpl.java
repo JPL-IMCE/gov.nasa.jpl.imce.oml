@@ -18,7 +18,7 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies.impl;
 
-import gov.nasa.jpl.imce.oml.model.common.Element;
+import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
 
 import gov.nasa.jpl.imce.oml.model.terminologies.Entity;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship;
@@ -222,8 +222,8 @@ public abstract class EntityRestrictionAxiomImpl extends TermAxiomImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Element> allNestedElements() {
-		return ECollections.<Element>emptyEList();
+	public EList<LogicalElement> allNestedElements() {
+		return ECollections.<LogicalElement>emptyEList();
 	}
 
 	/**

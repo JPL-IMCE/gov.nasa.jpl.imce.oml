@@ -21,7 +21,6 @@ import com.google.inject.Provider
 import gov.nasa.jpl.imce.oml.model.common.AnnotationProperty
 import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue
 import gov.nasa.jpl.imce.oml.model.common.CommonFactory
-import gov.nasa.jpl.imce.oml.model.common.Element
 import gov.nasa.jpl.imce.oml.model.common.Extent
 import gov.nasa.jpl.imce.oml.model.graphs.GraphsFactory
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyGraph
@@ -41,6 +40,7 @@ import static org.junit.Assert.*
 import gov.nasa.jpl.imce.oml.model.datatypes.QuotedStringValue
 import gov.nasa.jpl.imce.oml.model.common.LiteralQuotedString
 import gov.nasa.jpl.imce.oml.model.datatypes.RawStringValue
+import gov.nasa.jpl.imce.oml.model.common.LogicalElement
 
 @RunWith(XtextRunner)
 @InjectWith(OMLInjectorProvider)
@@ -122,7 +122,7 @@ class OMLAnnotationTest3b {
 		assertEquals(text, expected)
 	}
 
-	def void addQuotedAnnotation(Element e, AnnotationProperty ap, String v) {
+	def void addQuotedAnnotation(LogicalElement e, AnnotationProperty ap, String v) {
 		val AnnotationPropertyValue av = commonF.createAnnotationPropertyValue
 		e.annotations += av
 		av.property = ap
@@ -132,7 +132,7 @@ class OMLAnnotationTest3b {
 	}
 	
 	
-	def void addRawAnnotation(Element e, AnnotationProperty ap, String v) {
+	def void addRawAnnotation(LogicalElement e, AnnotationProperty ap, String v) {
 		val AnnotationPropertyValue av = commonF.createAnnotationPropertyValue
 		e.annotations += av
 		av.property = ap

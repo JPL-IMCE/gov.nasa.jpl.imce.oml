@@ -19,6 +19,8 @@
 package gov.nasa.jpl.imce.oml.model.common.impl;
 
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
+import gov.nasa.jpl.imce.oml.model.common.CrossReferencableKind;
+import gov.nasa.jpl.imce.oml.model.common.IntrinsicIdentityKind;
 import gov.nasa.jpl.imce.oml.model.common.Resource;
 
 import java.lang.reflect.InvocationTargetException;
@@ -34,7 +36,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public abstract class ResourceImpl extends ElementImpl implements Resource {
+public abstract class ResourceImpl extends LogicalElementImpl implements Resource {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -52,17 +54,6 @@ public abstract class ResourceImpl extends ElementImpl implements Resource {
 	@Override
 	protected EClass eStaticClass() {
 		return CommonPackage.Literals.RESOURCE;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String iri() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -92,15 +83,47 @@ public abstract class ResourceImpl extends ElementImpl implements Resource {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String iri() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
+		if (baseClass == CrossReferencableKind.class) {
+			switch (baseOperationID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == IntrinsicIdentityKind.class) {
+			switch (baseOperationID) {
+				case CommonPackage.INTRINSIC_IDENTITY_KIND___IRI: return CommonPackage.RESOURCE___IRI;
+				default: return -1;
+			}
+		}
+		return super.eDerivedOperationID(baseOperationID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case CommonPackage.RESOURCE___IRI:
-				return iri();
 			case CommonPackage.RESOURCE___NAME:
 				return name();
 			case CommonPackage.RESOURCE___ABBREV_IRI:
 				return abbrevIRI();
+			case CommonPackage.RESOURCE___IRI:
+				return iri();
 		}
 		return super.eInvoke(operationID, arguments);
 	}

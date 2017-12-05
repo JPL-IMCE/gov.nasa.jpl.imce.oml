@@ -34,7 +34,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
  * @generated
  */
 public class ResourceItemProvider 
-	extends ElementItemProvider {
+	extends LogicalElementItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

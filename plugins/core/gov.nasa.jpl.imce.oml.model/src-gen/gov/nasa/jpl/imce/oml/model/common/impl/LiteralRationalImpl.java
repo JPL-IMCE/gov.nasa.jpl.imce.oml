@@ -23,7 +23,11 @@ import gov.nasa.jpl.imce.oml.model.common.LiteralRational;
 
 import gov.nasa.jpl.imce.oml.model.datatypes.RationalValue;
 
+import java.lang.reflect.InvocationTargetException;
+
 import org.eclipse.emf.common.notify.Notification;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -108,6 +112,15 @@ public class LiteralRationalImpl extends LiteralNumberImpl implements LiteralRat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String value() {
+		return this.getRational().toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -159,6 +172,20 @@ public class LiteralRationalImpl extends LiteralNumberImpl implements LiteralRat
 				return RATIONAL_EDEFAULT == null ? rational != null : !RATIONAL_EDEFAULT.equals(rational);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case CommonPackage.LITERAL_RATIONAL___VALUE:
+				return value();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

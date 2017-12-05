@@ -18,7 +18,7 @@
  */
 package gov.nasa.jpl.imce.oml.model.descriptions.impl;
 
-import gov.nasa.jpl.imce.oml.model.common.Element;
+import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
 import gov.nasa.jpl.imce.oml.model.common.Module;
 
 import gov.nasa.jpl.imce.oml.model.descriptions.ConceptualEntitySingletonInstance;
@@ -299,8 +299,8 @@ public class ReifiedRelationshipInstanceRangeImpl extends TerminologyInstanceAss
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Element> allNestedElements() {
-		return ECollections.<Element>emptyEList();
+	public EList<LogicalElement> allNestedElements() {
+		return ECollections.<LogicalElement>emptyEList();
 	}
 
 	/**

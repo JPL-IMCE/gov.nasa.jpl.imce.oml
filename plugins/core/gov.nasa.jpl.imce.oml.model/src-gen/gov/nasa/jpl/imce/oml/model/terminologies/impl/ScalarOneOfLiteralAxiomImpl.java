@@ -18,8 +18,8 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies.impl;
 
-import gov.nasa.jpl.imce.oml.model.common.Element;
 import gov.nasa.jpl.imce.oml.model.common.LiteralValue;
+import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
 
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
 
@@ -257,8 +257,14 @@ public class ScalarOneOfLiteralAxiomImpl extends TermAxiomImpl implements Scalar
 			_string_1=_uuid_1.toString();
 		}
 		Pair<String, String> _mappedTo_1 = Pair.<String, String>of("axiom", _string_1);
+		LiteralValue _value = this.getValue();
+		String _value_1 = null;
+		if (_value!=null) {
+			_value_1=_value.value();
+		}
+		Pair<String, String> _mappedTo_2 = Pair.<String, String>of("value", _value_1);
 		UUID _derivedUUID = OMLExtensions.derivedUUID(
-			"ScalarOneOfLiteralAxiom", _mappedTo, _mappedTo_1);
+			"ScalarOneOfLiteralAxiom", _mappedTo, _mappedTo_1, _mappedTo_2);
 		String _string_2 = null;
 		if (_derivedUUID!=null) {
 			_string_2=_derivedUUID.toString();
@@ -271,8 +277,8 @@ public class ScalarOneOfLiteralAxiomImpl extends TermAxiomImpl implements Scalar
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Element> allNestedElements() {
-		return ECollections.<Element>emptyEList();
+	public EList<LogicalElement> allNestedElements() {
+		return ECollections.<LogicalElement>emptyEList();
 	}
 
 	/**

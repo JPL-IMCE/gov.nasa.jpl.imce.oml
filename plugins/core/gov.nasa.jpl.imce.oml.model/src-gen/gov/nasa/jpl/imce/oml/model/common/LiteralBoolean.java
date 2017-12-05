@@ -28,7 +28,7 @@ package gov.nasa.jpl.imce.oml.model.common;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link gov.nasa.jpl.imce.oml.model.common.LiteralBoolean#isValue <em>Value</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.common.LiteralBoolean#isBool <em>Bool</em>}</li>
  * </ul>
  *
  * @see gov.nasa.jpl.imce.oml.model.common.CommonPackage#getLiteralBoolean()
@@ -37,29 +37,38 @@ package gov.nasa.jpl.imce.oml.model.common;
  */
 public interface LiteralBoolean extends LiteralValue {
 	/**
-	 * Returns the value of the '<em><b>Value</b></em>' attribute.
+	 * Returns the value of the '<em><b>Bool</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Value</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Bool</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Value</em>' attribute.
-	 * @see #setValue(boolean)
-	 * @see gov.nasa.jpl.imce.oml.model.common.CommonPackage#getLiteralBoolean_Value()
+	 * @return the value of the '<em>Bool</em>' attribute.
+	 * @see #setBool(boolean)
+	 * @see gov.nasa.jpl.imce.oml.model.common.CommonPackage#getLiteralBoolean_Bool()
 	 * @model unique="false"
 	 * @generated
 	 */
-	boolean isValue();
+	boolean isBool();
 
 	/**
-	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.common.LiteralBoolean#isValue <em>Value</em>}' attribute.
+	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.common.LiteralBoolean#isBool <em>Bool</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Value</em>' attribute.
-	 * @see #isValue()
+	 * @param value the new value of the '<em>Bool</em>' attribute.
+	 * @see #isBool()
 	 * @generated
 	 */
-	void setValue(boolean value);
+	void setBool(boolean value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false" required="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return &lt;%java.lang.Boolean%&gt;.valueOf(this.isBool()).toString();'"
+	 * @generated
+	 */
+	String value();
 
 } // LiteralBoolean

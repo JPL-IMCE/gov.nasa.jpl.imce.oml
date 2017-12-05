@@ -20,7 +20,9 @@ package gov.nasa.jpl.imce.oml.model.common.impl;
 
 import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue;
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
-import gov.nasa.jpl.imce.oml.model.common.Element;
+import gov.nasa.jpl.imce.oml.model.common.CrossReferencableKind;
+import gov.nasa.jpl.imce.oml.model.common.ElementCrossReferenceTuple;
+import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
 import gov.nasa.jpl.imce.oml.model.common.Module;
 
 import java.lang.reflect.InvocationTargetException;
@@ -37,33 +39,20 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.eclipse.emf.internal.cdo.CDOObjectImpl;
-
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Element</b></em>'.
+ * An implementation of the model object '<em><b>Element Cross Reference Tuple</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link gov.nasa.jpl.imce.oml.model.common.impl.ElementImpl#getUuid <em>Uuid</em>}</li>
- *   <li>{@link gov.nasa.jpl.imce.oml.model.common.impl.ElementImpl#getAnnotations <em>Annotations</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.common.impl.ElementCrossReferenceTupleImpl#getAnnotations <em>Annotations</em>}</li>
  * </ul>
  *
  * @generated
  */
-public abstract class ElementImpl extends CDOObjectImpl implements Element {
-	/**
-	 * The default value of the '{@link #getUuid() <em>Uuid</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getUuid()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String UUID_EDEFAULT = null;
-
+public abstract class ElementCrossReferenceTupleImpl extends ExtrinsicIdentityKindImpl implements ElementCrossReferenceTuple {
 	/**
 	 * The cached value of the '{@link #getAnnotations() <em>Annotations</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -79,7 +68,7 @@ public abstract class ElementImpl extends CDOObjectImpl implements Element {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ElementImpl() {
+	protected ElementCrossReferenceTupleImpl() {
 		super();
 	}
 
@@ -90,16 +79,7 @@ public abstract class ElementImpl extends CDOObjectImpl implements Element {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return CommonPackage.Literals.ELEMENT;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getUuid() {
-		return this.uuid();
+		return CommonPackage.Literals.ELEMENT_CROSS_REFERENCE_TUPLE;
 	}
 
 	/**
@@ -109,20 +89,9 @@ public abstract class ElementImpl extends CDOObjectImpl implements Element {
 	 */
 	public EList<AnnotationPropertyValue> getAnnotations() {
 		if (annotations == null) {
-			annotations = new EObjectContainmentWithInverseEList<AnnotationPropertyValue>(AnnotationPropertyValue.class, this, CommonPackage.ELEMENT__ANNOTATIONS, CommonPackage.ANNOTATION_PROPERTY_VALUE__SUBJECT);
+			annotations = new EObjectContainmentWithInverseEList<AnnotationPropertyValue>(AnnotationPropertyValue.class, this, CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE__ANNOTATIONS, CommonPackage.ANNOTATION_PROPERTY_VALUE__SUBJECT);
 		}
 		return annotations;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String uuid() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -145,7 +114,7 @@ public abstract class ElementImpl extends CDOObjectImpl implements Element {
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case CommonPackage.ELEMENT__ANNOTATIONS:
+			case CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE__ANNOTATIONS:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getAnnotations()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -159,7 +128,7 @@ public abstract class ElementImpl extends CDOObjectImpl implements Element {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case CommonPackage.ELEMENT__ANNOTATIONS:
+			case CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE__ANNOTATIONS:
 				return ((InternalEList<?>)getAnnotations()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -173,9 +142,7 @@ public abstract class ElementImpl extends CDOObjectImpl implements Element {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case CommonPackage.ELEMENT__UUID:
-				return getUuid();
-			case CommonPackage.ELEMENT__ANNOTATIONS:
+			case CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE__ANNOTATIONS:
 				return getAnnotations();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -190,7 +157,7 @@ public abstract class ElementImpl extends CDOObjectImpl implements Element {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case CommonPackage.ELEMENT__ANNOTATIONS:
+			case CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE__ANNOTATIONS:
 				getAnnotations().clear();
 				getAnnotations().addAll((Collection<? extends AnnotationPropertyValue>)newValue);
 				return;
@@ -206,7 +173,7 @@ public abstract class ElementImpl extends CDOObjectImpl implements Element {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case CommonPackage.ELEMENT__ANNOTATIONS:
+			case CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE__ANNOTATIONS:
 				getAnnotations().clear();
 				return;
 		}
@@ -221,9 +188,7 @@ public abstract class ElementImpl extends CDOObjectImpl implements Element {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case CommonPackage.ELEMENT__UUID:
-				return UUID_EDEFAULT == null ? getUuid() != null : !UUID_EDEFAULT.equals(getUuid());
-			case CommonPackage.ELEMENT__ANNOTATIONS:
+			case CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE__ANNOTATIONS:
 				return annotations != null && !annotations.isEmpty();
 		}
 		return super.eIsSet(featureID);
@@ -235,14 +200,75 @@ public abstract class ElementImpl extends CDOObjectImpl implements Element {
 	 * @generated
 	 */
 	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == CrossReferencableKind.class) {
+			switch (derivedFeatureID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == LogicalElement.class) {
+			switch (derivedFeatureID) {
+				case CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE__ANNOTATIONS: return CommonPackage.LOGICAL_ELEMENT__ANNOTATIONS;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == CrossReferencableKind.class) {
+			switch (baseFeatureID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == LogicalElement.class) {
+			switch (baseFeatureID) {
+				case CommonPackage.LOGICAL_ELEMENT__ANNOTATIONS: return CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE__ANNOTATIONS;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
+		if (baseClass == CrossReferencableKind.class) {
+			switch (baseOperationID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == LogicalElement.class) {
+			switch (baseOperationID) {
+				case CommonPackage.LOGICAL_ELEMENT___MODULE_CONTEXT: return CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE___MODULE_CONTEXT;
+				default: return -1;
+			}
+		}
+		return super.eDerivedOperationID(baseOperationID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case CommonPackage.ELEMENT___UUID:
-				return uuid();
-			case CommonPackage.ELEMENT___MODULE_CONTEXT:
+			case CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE___MODULE_CONTEXT:
 				return moduleContext();
 		}
 		return super.eInvoke(operationID, arguments);
 	}
 
-} //ElementImpl
+} //ElementCrossReferenceTupleImpl

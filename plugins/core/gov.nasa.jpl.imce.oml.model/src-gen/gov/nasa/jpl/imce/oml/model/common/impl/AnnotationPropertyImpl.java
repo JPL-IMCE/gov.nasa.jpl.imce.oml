@@ -24,10 +24,14 @@ import gov.nasa.jpl.imce.oml.model.common.Extent;
 
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
 
+import java.lang.reflect.InvocationTargetException;
+
 import java.util.UUID;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -36,8 +40,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
-import org.eclipse.emf.internal.cdo.CDOObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -48,24 +50,13 @@ import org.eclipse.emf.internal.cdo.CDOObjectImpl;
  * </p>
  * <ul>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.common.impl.AnnotationPropertyImpl#getExtent <em>Extent</em>}</li>
- *   <li>{@link gov.nasa.jpl.imce.oml.model.common.impl.AnnotationPropertyImpl#getUuid <em>Uuid</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.common.impl.AnnotationPropertyImpl#getIri <em>Iri</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.common.impl.AnnotationPropertyImpl#getAbbrevIRI <em>Abbrev IRI</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class AnnotationPropertyImpl extends CDOObjectImpl implements AnnotationProperty {
-	/**
-	 * The default value of the '{@link #getUuid() <em>Uuid</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getUuid()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String UUID_EDEFAULT = null;
-
+public class AnnotationPropertyImpl extends IntrinsicIdentityKindImpl implements AnnotationProperty {
 	/**
 	 * The default value of the '{@link #getIri() <em>Iri</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -181,20 +172,6 @@ public class AnnotationPropertyImpl extends CDOObjectImpl implements AnnotationP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getUuid() {
-		UUID _namespaceUUID = OMLExtensions.namespaceUUID(this.getIri());
-		String _string = null;
-		if (_namespaceUUID!=null) {
-			_string=_namespaceUUID.toString();
-		}
-		return _string;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public String getIri() {
 		return iri;
 	}
@@ -230,6 +207,29 @@ public class AnnotationPropertyImpl extends CDOObjectImpl implements AnnotationP
 		abbrevIRI = newAbbrevIRI;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CommonPackage.ANNOTATION_PROPERTY__ABBREV_IRI, oldAbbrevIRI, abbrevIRI));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String uuid() {
+		UUID _namespaceUUID = OMLExtensions.namespaceUUID(this.iri());
+		String _string = null;
+		if (_namespaceUUID!=null) {
+			_string=_namespaceUUID.toString();
+		}
+		return _string;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String iri() {
+		return this.getIri();
 	}
 
 	/**
@@ -287,8 +287,6 @@ public class AnnotationPropertyImpl extends CDOObjectImpl implements AnnotationP
 			case CommonPackage.ANNOTATION_PROPERTY__EXTENT:
 				if (resolve) return getExtent();
 				return basicGetExtent();
-			case CommonPackage.ANNOTATION_PROPERTY__UUID:
-				return getUuid();
 			case CommonPackage.ANNOTATION_PROPERTY__IRI:
 				return getIri();
 			case CommonPackage.ANNOTATION_PROPERTY__ABBREV_IRI:
@@ -349,14 +347,28 @@ public class AnnotationPropertyImpl extends CDOObjectImpl implements AnnotationP
 		switch (featureID) {
 			case CommonPackage.ANNOTATION_PROPERTY__EXTENT:
 				return basicGetExtent() != null;
-			case CommonPackage.ANNOTATION_PROPERTY__UUID:
-				return UUID_EDEFAULT == null ? getUuid() != null : !UUID_EDEFAULT.equals(getUuid());
 			case CommonPackage.ANNOTATION_PROPERTY__IRI:
 				return IRI_EDEFAULT == null ? iri != null : !IRI_EDEFAULT.equals(iri);
 			case CommonPackage.ANNOTATION_PROPERTY__ABBREV_IRI:
 				return ABBREV_IRI_EDEFAULT == null ? abbrevIRI != null : !ABBREV_IRI_EDEFAULT.equals(abbrevIRI);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case CommonPackage.ANNOTATION_PROPERTY___UUID:
+				return uuid();
+			case CommonPackage.ANNOTATION_PROPERTY___IRI:
+				return iri();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

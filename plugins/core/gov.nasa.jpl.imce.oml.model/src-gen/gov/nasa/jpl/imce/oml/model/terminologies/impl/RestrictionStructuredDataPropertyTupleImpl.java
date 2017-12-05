@@ -18,7 +18,7 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies.impl;
 
-import gov.nasa.jpl.imce.oml.model.common.Element;
+import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
 import gov.nasa.jpl.imce.oml.model.common.Module;
 
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
@@ -200,7 +200,7 @@ public class RestrictionStructuredDataPropertyTupleImpl extends RestrictionStruc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Element> allNestedElements() {
+	public EList<LogicalElement> allNestedElements() {
 		return this.allNestedRestrictionElements();
 	}
 
