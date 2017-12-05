@@ -389,12 +389,9 @@ public class OMLFormatter extends AbstractFormatter2 {
     };
     aspect.getAnnotations().forEach(_function);
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
-      it.newLine();
-    };
-    final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(document.prepend(this.textRegionExtensions.regionFor(aspect).keyword("aspect"), _function_1), _function_2);
+    document.append(this.textRegionExtensions.regionFor(aspect).keyword("aspect"), _function_1);
   }
   
   protected void _format(final Concept concept, @Extension final IFormattableDocument document) {
@@ -406,12 +403,9 @@ public class OMLFormatter extends AbstractFormatter2 {
     };
     concept.getAnnotations().forEach(_function);
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
-      it.newLine();
-    };
-    final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.append(document.prepend(this.textRegionExtensions.regionFor(concept).keyword("concept"), _function_1), _function_2);
+    document.append(this.textRegionExtensions.regionFor(concept).keyword("concept"), _function_1);
   }
   
   protected void _format(final ReifiedRelationship rr, @Extension final IFormattableDocument document) {
