@@ -35,7 +35,7 @@ class OMLQualifiedNameProvider extends DefaultDeclarativeQualifiedNameProvider {
 	@Inject IQualifiedNameConverter qnc
 
 	def QualifiedName qualifiedName(AnnotationProperty ap) {
-		return qnc.toQualifiedName('AnnotationProperty<'+ap.iri+'>')
+		return qnc.toQualifiedName('AnnotationProperty<'+ap.iri()+'>')
 	}
 	
 	def QualifiedName qualifiedName(Term term) {

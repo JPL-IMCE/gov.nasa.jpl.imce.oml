@@ -37,7 +37,7 @@ public class OMLQualifiedNameProvider extends DefaultDeclarativeQualifiedNamePro
   private IQualifiedNameConverter qnc;
   
   public QualifiedName qualifiedName(final AnnotationProperty ap) {
-    String _iri = ap.getIri();
+    String _iri = ap.iri();
     String _plus = ("AnnotationProperty<" + _iri);
     String _plus_1 = (_plus + ">");
     return this.qnc.toQualifiedName(_plus_1);

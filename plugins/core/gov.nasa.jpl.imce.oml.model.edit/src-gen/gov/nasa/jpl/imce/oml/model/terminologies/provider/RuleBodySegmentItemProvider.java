@@ -19,7 +19,7 @@
 package gov.nasa.jpl.imce.oml.model.terminologies.provider;
 
 
-import gov.nasa.jpl.imce.oml.model.common.provider.ElementItemProvider;
+import gov.nasa.jpl.imce.oml.model.common.provider.ElementCrossReferenceTupleItemProvider;
 import gov.nasa.jpl.imce.oml.model.edit.provider.OMLEditPlugin;
 import gov.nasa.jpl.imce.oml.model.terminologies.RuleBodySegment;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesFactory;
@@ -43,7 +43,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class RuleBodySegmentItemProvider extends ElementItemProvider {
+public class RuleBodySegmentItemProvider extends ElementCrossReferenceTupleItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

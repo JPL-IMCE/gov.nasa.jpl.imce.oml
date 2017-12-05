@@ -21,44 +21,24 @@ package gov.nasa.jpl.imce.oml.model.common.provider;
 
 import gov.nasa.jpl.imce.oml.model.common.CommonFactory;
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
-import gov.nasa.jpl.imce.oml.model.common.Element;
-
-import gov.nasa.jpl.imce.oml.model.edit.provider.OMLEditPlugin;
-
+import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link gov.nasa.jpl.imce.oml.model.common.Element} object.
+ * This is the item provider adapter for a {@link gov.nasa.jpl.imce.oml.model.common.LogicalElement} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
 public class ElementItemProvider 
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+	extends IdentityKindItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -80,31 +60,8 @@ public class ElementItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addUuidPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Uuid feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addUuidPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Element_uuid_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Element_uuid_feature", "_UI_Element_type"),
-				 CommonPackage.Literals.ELEMENT__UUID,
-				 false,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
 	}
 
 	/**
@@ -119,7 +76,7 @@ public class ElementItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(CommonPackage.Literals.ELEMENT__ANNOTATIONS);
+			childrenFeatures.add(CommonPackage.Literals.LOGICAL_ELEMENT__ANNOTATIONS);
 		}
 		return childrenFeatures;
 	}
@@ -145,7 +102,7 @@ public class ElementItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Element)object).getUuid();
+		String label = ((LogicalElement)object).getUuid();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Element_type") :
 			getString("_UI_Element_type") + " " + label;
@@ -163,11 +120,8 @@ public class ElementItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(Element.class)) {
-			case CommonPackage.ELEMENT__UUID:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-			case CommonPackage.ELEMENT__ANNOTATIONS:
+		switch (notification.getFeatureID(LogicalElement.class)) {
+			case CommonPackage.LOGICAL_ELEMENT__ANNOTATIONS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -187,19 +141,8 @@ public class ElementItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(CommonPackage.Literals.ELEMENT__ANNOTATIONS,
+				(CommonPackage.Literals.LOGICAL_ELEMENT__ANNOTATIONS,
 				 CommonFactory.eINSTANCE.createAnnotationPropertyValue()));
-	}
-
-	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getResourceLocator() {
-		return OMLEditPlugin.INSTANCE;
 	}
 
 }

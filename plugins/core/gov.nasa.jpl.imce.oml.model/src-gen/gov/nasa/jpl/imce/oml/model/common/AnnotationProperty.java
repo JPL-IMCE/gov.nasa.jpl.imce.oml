@@ -18,7 +18,6 @@
  */
 package gov.nasa.jpl.imce.oml.model.common;
 
-import org.eclipse.emf.cdo.CDOObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -37,17 +36,15 @@ import org.eclipse.emf.cdo.CDOObject;
  * </p>
  * <ul>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.common.AnnotationProperty#getExtent <em>Extent</em>}</li>
- *   <li>{@link gov.nasa.jpl.imce.oml.model.common.AnnotationProperty#getUuid <em>Uuid</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.common.AnnotationProperty#getIri <em>Iri</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.common.AnnotationProperty#getAbbrevIRI <em>Abbrev IRI</em>}</li>
  * </ul>
  *
  * @see gov.nasa.jpl.imce.oml.model.common.CommonPackage#getAnnotationProperty()
  * @model annotation="http://imce.jpl.nasa.gov/oml/NamespaceUUID namespace='iri' factors=''"
- * @extends CDOObject
  * @generated
  */
-public interface AnnotationProperty extends CDOObject {
+public interface AnnotationProperty extends IntrinsicIdentityKind, NonLogicalElement {
 	/**
 	 * Returns the value of the '<em><b>Extent</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link gov.nasa.jpl.imce.oml.model.common.Extent#getAnnotationProperties <em>Annotation Properties</em>}'.
@@ -75,23 +72,6 @@ public interface AnnotationProperty extends CDOObject {
 	 * @generated
 	 */
 	void setExtent(Extent value);
-
-	/**
-	 * Returns the value of the '<em><b>Uuid</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Uuid</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Uuid</em>' attribute.
-	 * @see gov.nasa.jpl.imce.oml.model.common.CommonPackage#getAnnotationProperty_Uuid()
-	 * @model unique="false" dataType="gov.nasa.jpl.imce.oml.model.common.UUID" required="true" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='com.fasterxml.uuid.Generators.nameBasedGenerator(com.fasterxml.uuid.impl.NameBasedGenerator.NAMESPACE_URL).generate(iri)'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='&lt;%java.util.UUID%&gt; _namespaceUUID = &lt;%gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions%&gt;.namespaceUUID(this.getIri());\n&lt;%java.lang.String%&gt; _string = null;\nif (_namespaceUUID!=null)\n{\n\t_string=_namespaceUUID.toString();\n}\nreturn _string;'"
-	 * @generated
-	 */
-	String getUuid();
 
 	/**
 	 * Returns the value of the '<em><b>Iri</b></em>' attribute.
@@ -144,5 +124,25 @@ public interface AnnotationProperty extends CDOObject {
 	 * @generated
 	 */
 	void setAbbrevIRI(String value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model dataType="gov.nasa.jpl.imce.oml.model.common.UUID" unique="false" required="true"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='com.fasterxml.uuid.Generators.nameBasedGenerator(com.fasterxml.uuid.impl.NameBasedGenerator.NAMESPACE_URL).generate(iri)'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%java.util.UUID%&gt; _namespaceUUID = &lt;%gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions%&gt;.namespaceUUID(this.iri());\n&lt;%java.lang.String%&gt; _string = null;\nif (_namespaceUUID!=null)\n{\n\t_string=_namespaceUUID.toString();\n}\nreturn _string;'"
+	 * @generated
+	 */
+	String uuid();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model dataType="gov.nasa.jpl.imce.oml.model.common.IRI" unique="false"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='scala.Some(iri)'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return this.getIri();'"
+	 * @generated
+	 */
+	String iri();
 
 } // AnnotationProperty

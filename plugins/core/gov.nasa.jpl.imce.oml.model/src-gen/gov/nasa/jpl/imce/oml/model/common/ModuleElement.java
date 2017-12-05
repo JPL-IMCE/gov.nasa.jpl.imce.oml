@@ -34,7 +34,7 @@ import org.eclipse.emf.common.util.EList;
  * @model abstract="true"
  * @generated
  */
-public interface ModuleElement extends Element {
+public interface ModuleElement extends LogicalElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -42,6 +42,6 @@ public interface ModuleElement extends Element {
 	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
 	 * @generated
 	 */
-	EList<Element> allNestedElements();
+	EList<LogicalElement> allNestedElements();
 
 } // ModuleElement

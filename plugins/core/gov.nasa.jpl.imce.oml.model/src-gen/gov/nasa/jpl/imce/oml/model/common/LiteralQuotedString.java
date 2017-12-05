@@ -71,6 +71,6 @@ public interface LiteralQuotedString extends LiteralString {
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return this.getString();'"
 	 * @generated
 	 */
-	StringValue value();
+	StringValue stringValue();
 
 } // LiteralQuotedString

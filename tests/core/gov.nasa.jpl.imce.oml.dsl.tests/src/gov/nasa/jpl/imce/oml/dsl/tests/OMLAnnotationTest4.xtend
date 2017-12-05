@@ -21,7 +21,6 @@ import com.google.inject.Provider
 import gov.nasa.jpl.imce.oml.model.common.AnnotationProperty
 import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue
 import gov.nasa.jpl.imce.oml.model.common.CommonFactory
-import gov.nasa.jpl.imce.oml.model.common.Element
 import gov.nasa.jpl.imce.oml.model.common.Extent
 import gov.nasa.jpl.imce.oml.model.graphs.GraphsFactory
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyGraph
@@ -39,6 +38,7 @@ import org.junit.runner.RunWith
 
 import static org.junit.Assert.*
 import gov.nasa.jpl.imce.oml.model.datatypes.QuotedStringValue
+import gov.nasa.jpl.imce.oml.model.common.LogicalElement
 
 @RunWith(XtextRunner)
 @InjectWith(OMLInjectorProvider)
@@ -122,7 +122,7 @@ class OMLAnnotationTest4 {
 		assertEquals(text, expected)
 	}
 
-	def void addAnnotation(Element e, AnnotationProperty ap, String v) {
+	def void addAnnotation(LogicalElement e, AnnotationProperty ap, String v) {
 		val AnnotationPropertyValue av = commonF.createAnnotationPropertyValue
 		e.annotations += av
 		av.property = ap

@@ -19,7 +19,8 @@
 package gov.nasa.jpl.imce.oml.model.descriptions.impl;
 
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
-import gov.nasa.jpl.imce.oml.model.common.Element;
+import gov.nasa.jpl.imce.oml.model.common.CrossReferencabilityKind;
+import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
 import gov.nasa.jpl.imce.oml.model.common.ModuleElement;
 
 import gov.nasa.jpl.imce.oml.model.descriptions.ConceptualEntitySingletonInstance;
@@ -243,7 +244,7 @@ public class SingletonInstanceStructuredDataPropertyValueImpl extends SingletonI
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Element> allNestedElements() {
+	public EList<LogicalElement> allNestedElements() {
 		return this.allNestedRestrictionElements();
 	}
 
@@ -368,9 +369,9 @@ public class SingletonInstanceStructuredDataPropertyValueImpl extends SingletonI
 	 */
 	@Override
 	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
-		if (baseClass == Element.class) {
+		if (baseClass == CrossReferencabilityKind.class) {
 			switch (baseOperationID) {
-				case CommonPackage.ELEMENT___UUID: return DescriptionsPackage.SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_VALUE___UUID;
+				case CommonPackage.CROSS_REFERENCABILITY_KIND___UUID: return DescriptionsPackage.SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_VALUE___UUID;
 				default: return super.eDerivedOperationID(baseOperationID, baseClass);
 			}
 		}

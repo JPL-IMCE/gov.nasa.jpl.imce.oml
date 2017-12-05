@@ -113,7 +113,7 @@ public class LiteralRawStringImpl extends LiteralStringImpl implements LiteralRa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public StringValue value() {
+	public StringValue stringValue() {
 		return this.getString();
 	}
 
@@ -183,8 +183,8 @@ public class LiteralRawStringImpl extends LiteralStringImpl implements LiteralRa
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case CommonPackage.LITERAL_RAW_STRING___VALUE:
-				return value();
+			case CommonPackage.LITERAL_RAW_STRING___STRING_VALUE:
+				return stringValue();
 		}
 		return super.eInvoke(operationID, arguments);
 	}

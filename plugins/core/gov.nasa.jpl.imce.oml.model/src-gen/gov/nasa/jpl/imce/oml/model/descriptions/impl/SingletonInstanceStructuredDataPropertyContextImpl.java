@@ -18,10 +18,10 @@
  */
 package gov.nasa.jpl.imce.oml.model.descriptions.impl;
 
-import gov.nasa.jpl.imce.oml.model.common.Element;
+import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
 import gov.nasa.jpl.imce.oml.model.common.Module;
 
-import gov.nasa.jpl.imce.oml.model.common.impl.ElementImpl;
+import gov.nasa.jpl.imce.oml.model.common.impl.ElementCrossReferenceTupleImpl;
 
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsPackage;
@@ -67,7 +67,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public abstract class SingletonInstanceStructuredDataPropertyContextImpl extends ElementImpl implements SingletonInstanceStructuredDataPropertyContext {
+public abstract class SingletonInstanceStructuredDataPropertyContextImpl extends ElementCrossReferenceTupleImpl implements SingletonInstanceStructuredDataPropertyContext {
 	/**
 	 * The cached value of the '{@link #getStructuredDataProperty() <em>Structured Data Property</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -204,10 +204,10 @@ public abstract class SingletonInstanceStructuredDataPropertyContextImpl extends
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Element> allNestedRestrictionElements() {
-		BasicEList<Element> _xblockexpression = null;
+	public EList<LogicalElement> allNestedRestrictionElements() {
+		BasicEList<LogicalElement> _xblockexpression = null;
 		{
-			final BasicEList<Element> nres = new BasicEList<Element>();
+			final BasicEList<LogicalElement> nres = new BasicEList<LogicalElement>();
 			nres.addAll(this.getStructuredPropertyTuples());
 			final Consumer<StructuredDataPropertyTuple> _function = new Consumer<StructuredDataPropertyTuple>() {
 				public void accept(final StructuredDataPropertyTuple it) {

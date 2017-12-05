@@ -33,7 +33,6 @@ import gov.nasa.jpl.imce.oml.model.bundles.TerminologyBundleAxiom;
 import gov.nasa.jpl.imce.oml.model.bundles.TerminologyBundleStatement;
 import gov.nasa.jpl.imce.oml.model.common.AnnotationProperty;
 import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue;
-import gov.nasa.jpl.imce.oml.model.common.Element;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
 import gov.nasa.jpl.imce.oml.model.common.LiteralBoolean;
 import gov.nasa.jpl.imce.oml.model.common.LiteralDateTime;
@@ -47,6 +46,7 @@ import gov.nasa.jpl.imce.oml.model.common.LiteralString;
 import gov.nasa.jpl.imce.oml.model.common.LiteralURI;
 import gov.nasa.jpl.imce.oml.model.common.LiteralUUID;
 import gov.nasa.jpl.imce.oml.model.common.LiteralValue;
+import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
 import gov.nasa.jpl.imce.oml.model.common.Module;
 import gov.nasa.jpl.imce.oml.model.common.ModuleEdge;
 import gov.nasa.jpl.imce.oml.model.datatypes.StringValue;
@@ -477,7 +477,7 @@ public class OMLExtensions {
   public static String getModuleNsURI(final Module it) {
     String _elvis = null;
     final Function1<AnnotationPropertyValue, Boolean> _function = (AnnotationPropertyValue a) -> {
-      String _iri = a.getProperty().getIri();
+      String _iri = a.getProperty().iri();
       return Boolean.valueOf(Objects.equal(_iri, "http://imce.jpl.nasa.gov/oml/runtime#OML2EcoreNsURI"));
     };
     AnnotationPropertyValue _findFirst = IterableExtensions.<AnnotationPropertyValue>findFirst(it.getAnnotations(), _function);
@@ -485,16 +485,16 @@ public class OMLExtensions {
     if (_findFirst!=null) {
       _value=_findFirst.getValue();
     }
-    StringValue _value_1 = null;
+    StringValue _stringValue = null;
     if (_value!=null) {
-      _value_1=_value.value();
+      _stringValue=_value.stringValue();
     }
-    String _value_2 = null;
-    if (_value_1!=null) {
-      _value_2=_value_1.value;
+    String _value_1 = null;
+    if (_stringValue!=null) {
+      _value_1=_stringValue.value;
     }
-    if (_value_2 != null) {
-      _elvis = _value_2;
+    if (_value_1 != null) {
+      _elvis = _value_1;
     } else {
       String _iri = it.iri();
       _elvis = _iri;
@@ -505,7 +505,7 @@ public class OMLExtensions {
   public static String getModuleNsPrefix(final Module it) {
     String _elvis = null;
     final Function1<AnnotationPropertyValue, Boolean> _function = (AnnotationPropertyValue a) -> {
-      String _iri = a.getProperty().getIri();
+      String _iri = a.getProperty().iri();
       return Boolean.valueOf(Objects.equal(_iri, "http://imce.jpl.nasa.gov/oml/runtime#OML2EcoreNsPrefix"));
     };
     AnnotationPropertyValue _findFirst = IterableExtensions.<AnnotationPropertyValue>findFirst(it.getAnnotations(), _function);
@@ -513,16 +513,16 @@ public class OMLExtensions {
     if (_findFirst!=null) {
       _value=_findFirst.getValue();
     }
-    StringValue _value_1 = null;
+    StringValue _stringValue = null;
     if (_value!=null) {
-      _value_1=_value.value();
+      _stringValue=_value.stringValue();
     }
-    String _value_2 = null;
-    if (_value_1!=null) {
-      _value_2=_value_1.value;
+    String _value_1 = null;
+    if (_stringValue!=null) {
+      _value_1=_stringValue.value;
     }
-    if (_value_2 != null) {
-      _elvis = _value_2;
+    if (_value_1 != null) {
+      _elvis = _value_1;
     } else {
       String _name = it.name();
       _elvis = _name;
@@ -798,7 +798,7 @@ public class OMLExtensions {
     return it.getReifiedRelationshipInstances();
   }
   
-  public static String kind(final Element e) {
+  public static String kind(final LogicalElement e) {
     String _switchResult = null;
     boolean _matched = false;
     if (e instanceof AnonymousConceptUnionAxiom) {
@@ -1415,7 +1415,7 @@ public class OMLExtensions {
     return _switchResult;
   }
   
-  public static String nestedKindOrder(final Element e) {
+  public static String nestedKindOrder(final LogicalElement e) {
     String _switchResult = null;
     boolean _matched = false;
     if (e instanceof TerminologyGraph) {
@@ -1808,11 +1808,11 @@ public class OMLExtensions {
    */
   protected static void _normalize(final TerminologyGraph it) {
     OMLExtensions.normalizeTerminologyBoxCollections(it);
-    final Consumer<Element> _function = (Element e) -> {
+    final Consumer<LogicalElement> _function = (LogicalElement e) -> {
       OMLExtensions.normalizeAnnotations(e);
       OMLExtensions.normalizeSubElements(e);
     };
-    Iterables.<Element>filter(it.eContents(), Element.class).forEach(_function);
+    Iterables.<LogicalElement>filter(it.eContents(), LogicalElement.class).forEach(_function);
   }
   
   /**
@@ -1820,11 +1820,11 @@ public class OMLExtensions {
    */
   protected static void _normalize(final Bundle it) {
     OMLExtensions.normalizeBundleCollections(it);
-    final Consumer<Element> _function = (Element e) -> {
+    final Consumer<LogicalElement> _function = (LogicalElement e) -> {
       OMLExtensions.normalizeAnnotations(e);
       OMLExtensions.normalizeSubElements(e);
     };
-    Iterables.<Element>filter(it.eContents(), Element.class).forEach(_function);
+    Iterables.<LogicalElement>filter(it.eContents(), LogicalElement.class).forEach(_function);
   }
   
   /**
@@ -1867,11 +1867,11 @@ public class OMLExtensions {
       return OMLExtensions.sortingCriteria(it_1);
     };
     OMLExtensions.<SingletonInstanceStructuredDataPropertyValue, String>sortInplaceBy(it.getSingletonStructuredDataPropertyValues(), _function_8);
-    final Consumer<Element> _function_9 = (Element e) -> {
+    final Consumer<LogicalElement> _function_9 = (LogicalElement e) -> {
       OMLExtensions.normalizeAnnotations(e);
       OMLExtensions.normalizeSubElements(e);
     };
-    Iterables.<Element>filter(it.eContents(), Element.class).forEach(_function_9);
+    Iterables.<LogicalElement>filter(it.eContents(), LogicalElement.class).forEach(_function_9);
   }
   
   protected static void normalizeTerminologyBoxCollections(final TerminologyBox it) {
@@ -1885,7 +1885,7 @@ public class OMLExtensions {
     ECollections.<TerminologyBundleStatement>sort(it.getBundleStatements(), OMLExtensions.bundleStatementComparator);
   }
   
-  protected static EList<AnnotationPropertyValue> normalizeAnnotations(final Element e) {
+  protected static EList<AnnotationPropertyValue> normalizeAnnotations(final LogicalElement e) {
     final Function1<AnnotationPropertyValue, String> _function = (AnnotationPropertyValue it) -> {
       return OMLExtensions.sortingCriteria(it);
     };
@@ -2069,7 +2069,7 @@ public class OMLExtensions {
     }
   };
   
-  public static String sortingCriteria(final Element e) {
+  public static String sortingCriteria(final LogicalElement e) {
     String _xblockexpression = null;
     {
       String _switchResult = null;
@@ -2437,7 +2437,7 @@ public class OMLExtensions {
     boolean _matched = false;
     if (e instanceof LiteralBoolean) {
       _matched=true;
-      _switchResult = Boolean.valueOf(((LiteralBoolean)e).isValue()).toString();
+      _switchResult = ((LiteralBoolean)e).value().toString();
     }
     if (!_matched) {
       if (e instanceof LiteralDateTime) {
@@ -2506,7 +2506,7 @@ public class OMLExtensions {
     if (_abbrevIRI != null) {
       _elvis = _abbrevIRI;
     } else {
-      String _uuid = e.getUuid();
+      String _uuid = e.uuid();
       _elvis = _uuid;
     }
     return _elvis;
@@ -2531,21 +2531,21 @@ public class OMLExtensions {
     }
   }
   
-  protected static void normalizeSubElements(final Element e) {
-    if (e instanceof RootConceptTaxonomyAxiom) {
-      _normalizeSubElements((RootConceptTaxonomyAxiom)e);
-      return;
-    } else if (e instanceof AnonymousConceptUnionAxiom) {
+  protected static void normalizeSubElements(final LogicalElement e) {
+    if (e instanceof AnonymousConceptUnionAxiom) {
       _normalizeSubElements((AnonymousConceptUnionAxiom)e);
+      return;
+    } else if (e instanceof RootConceptTaxonomyAxiom) {
+      _normalizeSubElements((RootConceptTaxonomyAxiom)e);
       return;
     } else if (e instanceof SpecificDisjointConceptAxiom) {
       _normalizeSubElements((SpecificDisjointConceptAxiom)e);
       return;
-    } else if (e instanceof TerminologyBoxStatement) {
-      _normalizeSubElements((TerminologyBoxStatement)e);
-      return;
     } else if (e instanceof ModuleEdge) {
       _normalizeSubElements((ModuleEdge)e);
+      return;
+    } else if (e instanceof TerminologyBoxStatement) {
+      _normalizeSubElements((TerminologyBoxStatement)e);
       return;
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +

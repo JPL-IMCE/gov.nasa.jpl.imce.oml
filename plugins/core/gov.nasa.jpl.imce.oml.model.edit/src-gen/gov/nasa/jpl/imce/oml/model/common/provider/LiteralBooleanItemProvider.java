@@ -61,25 +61,25 @@ public class LiteralBooleanItemProvider extends LiteralValueItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addValuePropertyDescriptor(object);
+			addBoolPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Value feature.
+	 * This adds a property descriptor for the Bool feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addValuePropertyDescriptor(Object object) {
+	protected void addBoolPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_LiteralBoolean_value_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_LiteralBoolean_value_feature", "_UI_LiteralBoolean_type"),
-				 CommonPackage.Literals.LITERAL_BOOLEAN__VALUE,
+				 getString("_UI_LiteralBoolean_bool_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_LiteralBoolean_bool_feature", "_UI_LiteralBoolean_type"),
+				 CommonPackage.Literals.LITERAL_BOOLEAN__BOOL,
 				 true,
 				 false,
 				 false,
@@ -108,7 +108,7 @@ public class LiteralBooleanItemProvider extends LiteralValueItemProvider {
 	@Override
 	public String getText(Object object) {
 		LiteralBoolean literalBoolean = (LiteralBoolean)object;
-		return getString("_UI_LiteralBoolean_type") + " " + literalBoolean.isValue();
+		return getString("_UI_LiteralBoolean_type") + " " + literalBoolean.isBool();
 	}
 	
 
@@ -124,7 +124,7 @@ public class LiteralBooleanItemProvider extends LiteralValueItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(LiteralBoolean.class)) {
-			case CommonPackage.LITERAL_BOOLEAN__VALUE:
+			case CommonPackage.LITERAL_BOOLEAN__BOOL:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

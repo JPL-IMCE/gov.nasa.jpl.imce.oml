@@ -18,7 +18,8 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies;
 
-import gov.nasa.jpl.imce.oml.model.common.Element;
+import gov.nasa.jpl.imce.oml.model.common.ElementCrossReferenceTuple;
+import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
 import gov.nasa.jpl.imce.oml.model.common.ModuleElement;
 
 import org.eclipse.emf.common.util.EList;
@@ -47,7 +48,7 @@ import org.eclipse.emf.common.util.EList;
  * @model abstract="true"
  * @generated
  */
-public interface RestrictionStructuredDataPropertyContext extends ModuleElement {
+public interface RestrictionStructuredDataPropertyContext extends ModuleElement, ElementCrossReferenceTuple {
 	/**
 	 * Returns the value of the '<em><b>Structured Data Property</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -124,11 +125,11 @@ public interface RestrictionStructuredDataPropertyContext extends ModuleElement 
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
-	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='extent.lookupStructuredDataPropertyRestrictions(this).flatMap{ r =&gt; scala.collection.immutable.Set.empty[resolver.api.Element] + r ++ r.allNestedRestrictionElements() } ++\n\t\textent.lookupScalarDataPropertyRestrictions(this)'"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='extent.lookupStructuredDataPropertyRestrictions(this).flatMap{ r =&gt; scala.collection.immutable.Set.empty[resolver.api.LogicalElement] + r ++ r.allNestedRestrictionElements() } ++\n\t\textent.lookupScalarDataPropertyRestrictions(this)'"
 	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.emf.common.util.BasicEList%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.common.Element%&gt;&gt; _xblockexpression = null;\n{\n\tfinal &lt;%org.eclipse.emf.common.util.BasicEList%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.common.Element%&gt;&gt; nres = new &lt;%org.eclipse.emf.common.util.BasicEList%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.common.Element%&gt;&gt;();\n\tnres.addAll(this.getStructuredDataPropertyRestrictions());\n\tfinal &lt;%java.util.function.Consumer%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple%&gt;&gt; _function = new &lt;%java.util.function.Consumer%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple%&gt;&gt;()\n\t{\n\t\tpublic void accept(final &lt;%gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple%&gt; it)\n\t\t{\n\t\t\tnres.addAll(it.allNestedRestrictionElements());\n\t\t}\n\t};\n\tthis.getStructuredDataPropertyRestrictions().forEach(_function);\n\tnres.addAll(this.getScalarDataPropertyRestrictions());\n\t_xblockexpression = nres;\n}\nreturn _xblockexpression;'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.emf.common.util.BasicEList%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.common.LogicalElement%&gt;&gt; _xblockexpression = null;\n{\n\tfinal &lt;%org.eclipse.emf.common.util.BasicEList%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.common.LogicalElement%&gt;&gt; nres = new &lt;%org.eclipse.emf.common.util.BasicEList%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.common.LogicalElement%&gt;&gt;();\n\tnres.addAll(this.getStructuredDataPropertyRestrictions());\n\tfinal &lt;%java.util.function.Consumer%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple%&gt;&gt; _function = new &lt;%java.util.function.Consumer%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple%&gt;&gt;()\n\t{\n\t\tpublic void accept(final &lt;%gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple%&gt; it)\n\t\t{\n\t\t\tnres.addAll(it.allNestedRestrictionElements());\n\t\t}\n\t};\n\tthis.getStructuredDataPropertyRestrictions().forEach(_function);\n\tnres.addAll(this.getScalarDataPropertyRestrictions());\n\t_xblockexpression = nres;\n}\nreturn _xblockexpression;'"
 	 * @generated
 	 */
-	EList<Element> allNestedRestrictionElements();
+	EList<LogicalElement> allNestedRestrictionElements();
 
 } // RestrictionStructuredDataPropertyContext

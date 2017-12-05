@@ -63,4 +63,13 @@ public interface LiteralFloat extends LiteralNumber {
 	 */
 	void setFloat(FloatValue value);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false" required="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return this.getFloat().toString();'"
+	 * @generated
+	 */
+	String value();
+
 } // LiteralFloat

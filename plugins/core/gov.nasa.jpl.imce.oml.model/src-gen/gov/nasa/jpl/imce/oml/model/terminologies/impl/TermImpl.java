@@ -19,7 +19,10 @@
 package gov.nasa.jpl.imce.oml.model.terminologies.impl;
 
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
-import gov.nasa.jpl.imce.oml.model.common.Element;
+import gov.nasa.jpl.imce.oml.model.common.CrossReferencabilityKind;
+import gov.nasa.jpl.imce.oml.model.common.CrossReferencableKind;
+import gov.nasa.jpl.imce.oml.model.common.IntrinsicIdentityKind;
+import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
 import gov.nasa.jpl.imce.oml.model.common.ModuleElement;
 import gov.nasa.jpl.imce.oml.model.common.Resource;
 
@@ -195,8 +198,8 @@ public abstract class TermImpl extends TerminologyBoxStatementImpl implements Te
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Element> allNestedElements() {
-		return ECollections.<Element>emptyEList();
+	public EList<LogicalElement> allNestedElements() {
+		return ECollections.<LogicalElement>emptyEList();
 	}
 
 	/**
@@ -264,9 +267,9 @@ public abstract class TermImpl extends TerminologyBoxStatementImpl implements Te
 	 */
 	@Override
 	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
-		if (baseClass == Element.class) {
+		if (baseClass == CrossReferencabilityKind.class) {
 			switch (baseOperationID) {
-				case CommonPackage.ELEMENT___UUID: return TerminologiesPackage.TERM___UUID;
+				case CommonPackage.CROSS_REFERENCABILITY_KIND___UUID: return TerminologiesPackage.TERM___UUID;
 				default: return super.eDerivedOperationID(baseOperationID, baseClass);
 			}
 		}
@@ -276,9 +279,19 @@ public abstract class TermImpl extends TerminologyBoxStatementImpl implements Te
 				default: return super.eDerivedOperationID(baseOperationID, baseClass);
 			}
 		}
+		if (baseClass == CrossReferencableKind.class) {
+			switch (baseOperationID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == IntrinsicIdentityKind.class) {
+			switch (baseOperationID) {
+				case CommonPackage.INTRINSIC_IDENTITY_KIND___IRI: return TerminologiesPackage.TERM___IRI;
+				default: return -1;
+			}
+		}
 		if (baseClass == Resource.class) {
 			switch (baseOperationID) {
-				case CommonPackage.RESOURCE___IRI: return TerminologiesPackage.TERM___IRI;
 				case CommonPackage.RESOURCE___NAME: return TerminologiesPackage.TERM___NAME;
 				case CommonPackage.RESOURCE___ABBREV_IRI: return TerminologiesPackage.TERM___ABBREV_IRI;
 				default: return -1;

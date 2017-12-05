@@ -245,7 +245,7 @@ public class OMLDescriptionTest2 {
     ci_isSmall.setScalarDataProperty(dp3);
     ci_isSmall.setSingletonInstance(ci);
     final LiteralBoolean ci_isSmall_lit = this.commonF.createLiteralBoolean();
-    ci_isSmall_lit.setValue(false);
+    ci_isSmall_lit.setBool(false);
     ci_isSmall.setScalarPropertyValue(ci_isSmall_lit);
     final String text2 = this.serialize(r2);
     StringConcatenation _builder_1 = new StringConcatenation();

@@ -21,9 +21,9 @@ import com.google.inject.Inject;
 import gov.nasa.jpl.imce.oml.dsl.tests.OMLInjectorProvider;
 import gov.nasa.jpl.imce.oml.model.common.AnnotationProperty;
 import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue;
-import gov.nasa.jpl.imce.oml.model.common.Element;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
 import gov.nasa.jpl.imce.oml.model.common.LiteralString;
+import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox;
 import java.util.function.Consumer;
@@ -86,9 +86,9 @@ public class OMLAnnotationTest2 {
       Assert.assertEquals(2, ann.size());
       final Consumer<AnnotationPropertyValue> _function = (AnnotationPropertyValue a) -> {
         final AnnotationProperty a_prop = a.getProperty();
-        final Element a_subj = a.getSubject();
+        final LogicalElement a_subj = a.getSubject();
         final LiteralString a_value = a.getValue();
-        Assert.assertTrue((a_value.value().value.equals("Performing Element") || a_value.value().value.equals("A performing element")));
+        Assert.assertTrue((a_value.stringValue().value.equals("Performing Element") || a_value.stringValue().value.equals("A performing element")));
         Assert.assertSame(ap, a_prop);
         Assert.assertSame(c, a_subj);
       };

@@ -21,15 +21,19 @@ package gov.nasa.jpl.imce.oml.model.common.impl;
 import gov.nasa.jpl.imce.oml.model.common.AnnotationProperty;
 import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue;
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
-import gov.nasa.jpl.imce.oml.model.common.Element;
 import gov.nasa.jpl.imce.oml.model.common.LiteralString;
+import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
 
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
+
+import java.lang.reflect.InvocationTargetException;
 
 import java.util.UUID;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -38,8 +42,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
-import org.eclipse.emf.internal.cdo.CDOObjectImpl;
 
 import org.eclipse.xtext.xbase.lib.Pair;
 
@@ -51,7 +53,6 @@ import org.eclipse.xtext.xbase.lib.Pair;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link gov.nasa.jpl.imce.oml.model.common.impl.AnnotationPropertyValueImpl#getUuid <em>Uuid</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.common.impl.AnnotationPropertyValueImpl#getSubject <em>Subject</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.common.impl.AnnotationPropertyValueImpl#getProperty <em>Property</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.common.impl.AnnotationPropertyValueImpl#getValue <em>Value</em>}</li>
@@ -59,17 +60,7 @@ import org.eclipse.xtext.xbase.lib.Pair;
  *
  * @generated
  */
-public class AnnotationPropertyValueImpl extends CDOObjectImpl implements AnnotationPropertyValue {
-	/**
-	 * The default value of the '{@link #getUuid() <em>Uuid</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getUuid()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String UUID_EDEFAULT = null;
-
+public class AnnotationPropertyValueImpl extends ValueCrossReferenceTupleImpl implements AnnotationPropertyValue {
 	/**
 	 * The cached value of the '{@link #getProperty() <em>Property</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -114,44 +105,9 @@ public class AnnotationPropertyValueImpl extends CDOObjectImpl implements Annota
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getUuid() {
-		Element _subject = this.getSubject();
-		String _uuid = null;
-		if (_subject!=null) {
-			_uuid=_subject.uuid();
-		}
-		String _string = null;
-		if (_uuid!=null) {
-			_string=_uuid.toString();
-		}
-		Pair<String, String> _mappedTo = Pair.<String, String>of("subject", _string);
-		AnnotationProperty _property = this.getProperty();
-		String _uuid_1 = null;
-		if (_property!=null) {
-			_uuid_1=_property.getUuid();
-		}
-		String _string_1 = null;
-		if (_uuid_1!=null) {
-			_string_1=_uuid_1.toString();
-		}
-		Pair<String, String> _mappedTo_1 = Pair.<String, String>of("property", _string_1);
-		UUID _derivedUUID = OMLExtensions.derivedUUID(
-			"AnnotationPropertyValue", _mappedTo, _mappedTo_1);
-		String _string_2 = null;
-		if (_derivedUUID!=null) {
-			_string_2=_derivedUUID.toString();
-		}
-		return _string_2;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Element getSubject() {
+	public LogicalElement getSubject() {
 		if (eContainerFeatureID() != CommonPackage.ANNOTATION_PROPERTY_VALUE__SUBJECT) return null;
-		return (Element)eContainer();
+		return (LogicalElement)eContainer();
 	}
 
 	/**
@@ -159,9 +115,9 @@ public class AnnotationPropertyValueImpl extends CDOObjectImpl implements Annota
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Element basicGetSubject() {
+	public LogicalElement basicGetSubject() {
 		if (eContainerFeatureID() != CommonPackage.ANNOTATION_PROPERTY_VALUE__SUBJECT) return null;
-		return (Element)eInternalContainer();
+		return (LogicalElement)eInternalContainer();
 	}
 
 	/**
@@ -169,7 +125,7 @@ public class AnnotationPropertyValueImpl extends CDOObjectImpl implements Annota
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetSubject(Element newSubject, NotificationChain msgs) {
+	public NotificationChain basicSetSubject(LogicalElement newSubject, NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject)newSubject, CommonPackage.ANNOTATION_PROPERTY_VALUE__SUBJECT, msgs);
 		return msgs;
 	}
@@ -179,7 +135,7 @@ public class AnnotationPropertyValueImpl extends CDOObjectImpl implements Annota
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSubject(Element newSubject) {
+	public void setSubject(LogicalElement newSubject) {
 		if (newSubject != eInternalContainer() || (eContainerFeatureID() != CommonPackage.ANNOTATION_PROPERTY_VALUE__SUBJECT && newSubject != null)) {
 			if (EcoreUtil.isAncestor(this, (EObject)newSubject))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
@@ -187,7 +143,7 @@ public class AnnotationPropertyValueImpl extends CDOObjectImpl implements Annota
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newSubject != null)
-				msgs = ((InternalEObject)newSubject).eInverseAdd(this, CommonPackage.ELEMENT__ANNOTATIONS, Element.class, msgs);
+				msgs = ((InternalEObject)newSubject).eInverseAdd(this, CommonPackage.LOGICAL_ELEMENT__ANNOTATIONS, LogicalElement.class, msgs);
 			msgs = basicSetSubject(newSubject, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
@@ -281,13 +237,54 @@ public class AnnotationPropertyValueImpl extends CDOObjectImpl implements Annota
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String uuid() {
+		LogicalElement _subject = this.getSubject();
+		String _uuid = null;
+		if (_subject!=null) {
+			_uuid=_subject.uuid();
+		}
+		String _string = null;
+		if (_uuid!=null) {
+			_string=_uuid.toString();
+		}
+		Pair<String, String> _mappedTo = Pair.<String, String>of("subject", _string);
+		AnnotationProperty _property = this.getProperty();
+		String _uuid_1 = null;
+		if (_property!=null) {
+			_uuid_1=_property.uuid();
+		}
+		String _string_1 = null;
+		if (_uuid_1!=null) {
+			_string_1=_uuid_1.toString();
+		}
+		Pair<String, String> _mappedTo_1 = Pair.<String, String>of("property", _string_1);
+		LiteralString _value = this.getValue();
+		String _value_1 = null;
+		if (_value!=null) {
+			_value_1=_value.value();
+		}
+		Pair<String, String> _mappedTo_2 = Pair.<String, String>of("value", _value_1);
+		UUID _derivedUUID = OMLExtensions.derivedUUID(
+			"AnnotationPropertyValue", _mappedTo, _mappedTo_1, _mappedTo_2);
+		String _string_2 = null;
+		if (_derivedUUID!=null) {
+			_string_2=_derivedUUID.toString();
+		}
+		return _string_2;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case CommonPackage.ANNOTATION_PROPERTY_VALUE__SUBJECT:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetSubject((Element)otherEnd, msgs);
+				return basicSetSubject((LogicalElement)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -317,7 +314,7 @@ public class AnnotationPropertyValueImpl extends CDOObjectImpl implements Annota
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
 			case CommonPackage.ANNOTATION_PROPERTY_VALUE__SUBJECT:
-				return eInternalContainer().eInverseRemove(this, CommonPackage.ELEMENT__ANNOTATIONS, Element.class, msgs);
+				return eInternalContainer().eInverseRemove(this, CommonPackage.LOGICAL_ELEMENT__ANNOTATIONS, LogicalElement.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
@@ -330,8 +327,6 @@ public class AnnotationPropertyValueImpl extends CDOObjectImpl implements Annota
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case CommonPackage.ANNOTATION_PROPERTY_VALUE__UUID:
-				return getUuid();
 			case CommonPackage.ANNOTATION_PROPERTY_VALUE__SUBJECT:
 				if (resolve) return getSubject();
 				return basicGetSubject();
@@ -353,7 +348,7 @@ public class AnnotationPropertyValueImpl extends CDOObjectImpl implements Annota
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case CommonPackage.ANNOTATION_PROPERTY_VALUE__SUBJECT:
-				setSubject((Element)newValue);
+				setSubject((LogicalElement)newValue);
 				return;
 			case CommonPackage.ANNOTATION_PROPERTY_VALUE__PROPERTY:
 				setProperty((AnnotationProperty)newValue);
@@ -374,7 +369,7 @@ public class AnnotationPropertyValueImpl extends CDOObjectImpl implements Annota
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case CommonPackage.ANNOTATION_PROPERTY_VALUE__SUBJECT:
-				setSubject((Element)null);
+				setSubject((LogicalElement)null);
 				return;
 			case CommonPackage.ANNOTATION_PROPERTY_VALUE__PROPERTY:
 				setProperty((AnnotationProperty)null);
@@ -394,8 +389,6 @@ public class AnnotationPropertyValueImpl extends CDOObjectImpl implements Annota
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case CommonPackage.ANNOTATION_PROPERTY_VALUE__UUID:
-				return UUID_EDEFAULT == null ? getUuid() != null : !UUID_EDEFAULT.equals(getUuid());
 			case CommonPackage.ANNOTATION_PROPERTY_VALUE__SUBJECT:
 				return basicGetSubject() != null;
 			case CommonPackage.ANNOTATION_PROPERTY_VALUE__PROPERTY:
@@ -404,6 +397,20 @@ public class AnnotationPropertyValueImpl extends CDOObjectImpl implements Annota
 				return value != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case CommonPackage.ANNOTATION_PROPERTY_VALUE___UUID:
+				return uuid();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 } //AnnotationPropertyValueImpl

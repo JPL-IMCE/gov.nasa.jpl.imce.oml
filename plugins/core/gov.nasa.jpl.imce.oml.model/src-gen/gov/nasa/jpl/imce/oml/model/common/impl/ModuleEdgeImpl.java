@@ -35,7 +35,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public abstract class ModuleEdgeImpl extends ElementImpl implements ModuleEdge {
+public abstract class ModuleEdgeImpl extends ElementCrossReferenceTupleImpl implements ModuleEdge {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

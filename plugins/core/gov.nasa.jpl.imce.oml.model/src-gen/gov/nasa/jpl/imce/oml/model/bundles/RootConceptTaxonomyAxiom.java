@@ -18,7 +18,7 @@
  */
 package gov.nasa.jpl.imce.oml.model.bundles;
 
-import gov.nasa.jpl.imce.oml.model.common.Element;
+import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
 
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
 
@@ -94,21 +94,11 @@ public interface RootConceptTaxonomyAxiom extends TerminologyBundleStatement, Co
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='extent.lookupDisjunctions(this).flatMap{ d =&gt; scala.collection.immutable.Set.empty[resolver.api.LogicalElement] + d ++ d.allNestedElements() }'"
 	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return this.allNestedDisjunctions();'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.emf.common.util.BasicEList%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.common.LogicalElement%&gt;&gt; _xblockexpression = null;\n{\n\tfinal &lt;%org.eclipse.emf.common.util.BasicEList%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.common.LogicalElement%&gt;&gt; nes = new &lt;%org.eclipse.emf.common.util.BasicEList%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.common.LogicalElement%&gt;&gt;();\n\tnes.addAll(this.getDisjunctions());\n\tfinal &lt;%java.util.function.Consumer%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.bundles.DisjointUnionOfConceptsAxiom%&gt;&gt; _function = new &lt;%java.util.function.Consumer%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.bundles.DisjointUnionOfConceptsAxiom%&gt;&gt;()\n\t{\n\t\tpublic void accept(final &lt;%gov.nasa.jpl.imce.oml.model.bundles.DisjointUnionOfConceptsAxiom%&gt; d)\n\t\t{\n\t\t\tnes.addAll(d.allNestedElements());\n\t\t}\n\t};\n\tthis.getDisjunctions().forEach(_function);\n\t_xblockexpression = nes;\n}\nreturn _xblockexpression;'"
 	 * @generated
 	 */
-	EList<Element> allNestedElements();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model unique="false"
-	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='extent.lookupDisjunctions(this).flatMap{ d =&gt; scala.collection.immutable.Set.empty[resolver.api.Element] + d ++ d.allNestedUnions() }'"
-	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.emf.common.util.BasicEList%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.common.Element%&gt;&gt; _xblockexpression = null;\n{\n\tfinal &lt;%org.eclipse.emf.common.util.BasicEList%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.common.Element%&gt;&gt; nres = new &lt;%org.eclipse.emf.common.util.BasicEList%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.common.Element%&gt;&gt;();\n\tnres.addAll(this.getDisjunctions());\n\tfinal &lt;%java.util.function.Consumer%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.bundles.DisjointUnionOfConceptsAxiom%&gt;&gt; _function = new &lt;%java.util.function.Consumer%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.bundles.DisjointUnionOfConceptsAxiom%&gt;&gt;()\n\t{\n\t\tpublic void accept(final &lt;%gov.nasa.jpl.imce.oml.model.bundles.DisjointUnionOfConceptsAxiom%&gt; it)\n\t\t{\n\t\t\tnres.addAll(it.allNestedUnions());\n\t\t}\n\t};\n\tthis.getDisjunctions().forEach(_function);\n\t_xblockexpression = nres;\n}\nreturn _xblockexpression;'"
-	 * @generated
-	 */
-	EList<Element> allNestedDisjunctions();
+	EList<LogicalElement> allNestedElements();
 
 } // RootConceptTaxonomyAxiom

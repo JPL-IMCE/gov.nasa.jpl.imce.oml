@@ -20,7 +20,7 @@ package gov.nasa.jpl.imce.oml.model.terminologies.impl;
 
 import gov.nasa.jpl.imce.oml.model.common.Module;
 
-import gov.nasa.jpl.imce.oml.model.common.impl.ElementImpl;
+import gov.nasa.jpl.imce.oml.model.common.impl.ElementCrossReferenceTupleImpl;
 
 import gov.nasa.jpl.imce.oml.model.terminologies.RuleBodySegment;
 import gov.nasa.jpl.imce.oml.model.terminologies.SegmentPredicate;
@@ -55,7 +55,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  *
  * @generated
  */
-public abstract class SegmentPredicateImpl extends ElementImpl implements SegmentPredicate {
+public abstract class SegmentPredicateImpl extends ElementCrossReferenceTupleImpl implements SegmentPredicate {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

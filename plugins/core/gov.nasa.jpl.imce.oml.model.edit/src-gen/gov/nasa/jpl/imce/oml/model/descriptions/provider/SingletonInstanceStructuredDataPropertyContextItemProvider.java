@@ -19,7 +19,7 @@
 package gov.nasa.jpl.imce.oml.model.descriptions.provider;
 
 
-import gov.nasa.jpl.imce.oml.model.common.provider.ElementItemProvider;
+import gov.nasa.jpl.imce.oml.model.common.provider.ElementCrossReferenceTupleItemProvider;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsFactory;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsPackage;
 import gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceStructuredDataPropertyContext;
@@ -46,7 +46,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class SingletonInstanceStructuredDataPropertyContextItemProvider extends ElementItemProvider {
+public class SingletonInstanceStructuredDataPropertyContextItemProvider extends ElementCrossReferenceTupleItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

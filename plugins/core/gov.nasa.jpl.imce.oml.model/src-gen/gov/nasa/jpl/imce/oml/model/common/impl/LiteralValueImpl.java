@@ -21,6 +21,10 @@ package gov.nasa.jpl.imce.oml.model.common.impl;
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
 import gov.nasa.jpl.imce.oml.model.common.LiteralValue;
 
+import java.lang.reflect.InvocationTargetException;
+
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.internal.cdo.CDOObjectImpl;
@@ -50,6 +54,31 @@ public abstract class LiteralValueImpl extends CDOObjectImpl implements LiteralV
 	@Override
 	protected EClass eStaticClass() {
 		return CommonPackage.Literals.LITERAL_VALUE;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String value() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case CommonPackage.LITERAL_VALUE___VALUE:
+				return value();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 } //LiteralValueImpl

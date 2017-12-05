@@ -20,7 +20,13 @@ package gov.nasa.jpl.imce.oml.model.bundles.util;
 
 import gov.nasa.jpl.imce.oml.model.bundles.*;
 
-import gov.nasa.jpl.imce.oml.model.common.Element;
+import gov.nasa.jpl.imce.oml.model.common.CrossReferencabilityKind;
+import gov.nasa.jpl.imce.oml.model.common.CrossReferencableKind;
+import gov.nasa.jpl.imce.oml.model.common.ElementCrossReferenceTuple;
+import gov.nasa.jpl.imce.oml.model.common.ExtrinsicIdentityKind;
+import gov.nasa.jpl.imce.oml.model.common.IdentityKind;
+import gov.nasa.jpl.imce.oml.model.common.IntrinsicIdentityKind;
+import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
 import gov.nasa.jpl.imce.oml.model.common.Module;
 import gov.nasa.jpl.imce.oml.model.common.ModuleEdge;
 import gov.nasa.jpl.imce.oml.model.common.ModuleElement;
@@ -97,7 +103,11 @@ public class BundlesSwitch<T> extends Switch<T> {
 				if (result == null) result = caseTerminologyBox(bundle);
 				if (result == null) result = caseModule(bundle);
 				if (result == null) result = caseResource(bundle);
-				if (result == null) result = caseElement(bundle);
+				if (result == null) result = caseLogicalElement(bundle);
+				if (result == null) result = caseIntrinsicIdentityKind(bundle);
+				if (result == null) result = caseIdentityKind(bundle);
+				if (result == null) result = caseCrossReferencableKind(bundle);
+				if (result == null) result = caseCrossReferencabilityKind(bundle);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -105,7 +115,9 @@ public class BundlesSwitch<T> extends Switch<T> {
 				TerminologyBundleStatement terminologyBundleStatement = (TerminologyBundleStatement)theEObject;
 				T result = caseTerminologyBundleStatement(terminologyBundleStatement);
 				if (result == null) result = caseModuleElement(terminologyBundleStatement);
-				if (result == null) result = caseElement(terminologyBundleStatement);
+				if (result == null) result = caseLogicalElement(terminologyBundleStatement);
+				if (result == null) result = caseIdentityKind(terminologyBundleStatement);
+				if (result == null) result = caseCrossReferencabilityKind(terminologyBundleStatement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -114,21 +126,36 @@ public class BundlesSwitch<T> extends Switch<T> {
 				T result = caseTerminologyBundleAxiom(terminologyBundleAxiom);
 				if (result == null) result = caseTerminologyAxiom(terminologyBundleAxiom);
 				if (result == null) result = caseModuleEdge(terminologyBundleAxiom);
-				if (result == null) result = caseElement(terminologyBundleAxiom);
+				if (result == null) result = caseElementCrossReferenceTuple(terminologyBundleAxiom);
+				if (result == null) result = caseExtrinsicIdentityKind(terminologyBundleAxiom);
+				if (result == null) result = caseCrossReferencableKind(terminologyBundleAxiom);
+				if (result == null) result = caseLogicalElement(terminologyBundleAxiom);
+				if (result == null) result = caseIdentityKind(terminologyBundleAxiom);
+				if (result == null) result = caseCrossReferencabilityKind(terminologyBundleAxiom);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case BundlesPackage.CONCEPT_TREE_DISJUNCTION: {
 				ConceptTreeDisjunction conceptTreeDisjunction = (ConceptTreeDisjunction)theEObject;
 				T result = caseConceptTreeDisjunction(conceptTreeDisjunction);
-				if (result == null) result = caseElement(conceptTreeDisjunction);
+				if (result == null) result = caseElementCrossReferenceTuple(conceptTreeDisjunction);
+				if (result == null) result = caseExtrinsicIdentityKind(conceptTreeDisjunction);
+				if (result == null) result = caseCrossReferencableKind(conceptTreeDisjunction);
+				if (result == null) result = caseLogicalElement(conceptTreeDisjunction);
+				if (result == null) result = caseIdentityKind(conceptTreeDisjunction);
+				if (result == null) result = caseCrossReferencabilityKind(conceptTreeDisjunction);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case BundlesPackage.DISJOINT_UNION_OF_CONCEPTS_AXIOM: {
 				DisjointUnionOfConceptsAxiom disjointUnionOfConceptsAxiom = (DisjointUnionOfConceptsAxiom)theEObject;
 				T result = caseDisjointUnionOfConceptsAxiom(disjointUnionOfConceptsAxiom);
-				if (result == null) result = caseElement(disjointUnionOfConceptsAxiom);
+				if (result == null) result = caseElementCrossReferenceTuple(disjointUnionOfConceptsAxiom);
+				if (result == null) result = caseExtrinsicIdentityKind(disjointUnionOfConceptsAxiom);
+				if (result == null) result = caseCrossReferencableKind(disjointUnionOfConceptsAxiom);
+				if (result == null) result = caseLogicalElement(disjointUnionOfConceptsAxiom);
+				if (result == null) result = caseIdentityKind(disjointUnionOfConceptsAxiom);
+				if (result == null) result = caseCrossReferencabilityKind(disjointUnionOfConceptsAxiom);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -136,7 +163,12 @@ public class BundlesSwitch<T> extends Switch<T> {
 				SpecificDisjointConceptAxiom specificDisjointConceptAxiom = (SpecificDisjointConceptAxiom)theEObject;
 				T result = caseSpecificDisjointConceptAxiom(specificDisjointConceptAxiom);
 				if (result == null) result = caseDisjointUnionOfConceptsAxiom(specificDisjointConceptAxiom);
-				if (result == null) result = caseElement(specificDisjointConceptAxiom);
+				if (result == null) result = caseElementCrossReferenceTuple(specificDisjointConceptAxiom);
+				if (result == null) result = caseExtrinsicIdentityKind(specificDisjointConceptAxiom);
+				if (result == null) result = caseCrossReferencableKind(specificDisjointConceptAxiom);
+				if (result == null) result = caseLogicalElement(specificDisjointConceptAxiom);
+				if (result == null) result = caseIdentityKind(specificDisjointConceptAxiom);
+				if (result == null) result = caseCrossReferencabilityKind(specificDisjointConceptAxiom);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -145,7 +177,12 @@ public class BundlesSwitch<T> extends Switch<T> {
 				T result = caseAnonymousConceptUnionAxiom(anonymousConceptUnionAxiom);
 				if (result == null) result = caseDisjointUnionOfConceptsAxiom(anonymousConceptUnionAxiom);
 				if (result == null) result = caseConceptTreeDisjunction(anonymousConceptUnionAxiom);
-				if (result == null) result = caseElement(anonymousConceptUnionAxiom);
+				if (result == null) result = caseElementCrossReferenceTuple(anonymousConceptUnionAxiom);
+				if (result == null) result = caseExtrinsicIdentityKind(anonymousConceptUnionAxiom);
+				if (result == null) result = caseCrossReferencableKind(anonymousConceptUnionAxiom);
+				if (result == null) result = caseLogicalElement(anonymousConceptUnionAxiom);
+				if (result == null) result = caseIdentityKind(anonymousConceptUnionAxiom);
+				if (result == null) result = caseCrossReferencabilityKind(anonymousConceptUnionAxiom);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -155,7 +192,12 @@ public class BundlesSwitch<T> extends Switch<T> {
 				if (result == null) result = caseTerminologyBundleStatement(rootConceptTaxonomyAxiom);
 				if (result == null) result = caseConceptTreeDisjunction(rootConceptTaxonomyAxiom);
 				if (result == null) result = caseModuleElement(rootConceptTaxonomyAxiom);
-				if (result == null) result = caseElement(rootConceptTaxonomyAxiom);
+				if (result == null) result = caseElementCrossReferenceTuple(rootConceptTaxonomyAxiom);
+				if (result == null) result = caseLogicalElement(rootConceptTaxonomyAxiom);
+				if (result == null) result = caseExtrinsicIdentityKind(rootConceptTaxonomyAxiom);
+				if (result == null) result = caseCrossReferencableKind(rootConceptTaxonomyAxiom);
+				if (result == null) result = caseIdentityKind(rootConceptTaxonomyAxiom);
+				if (result == null) result = caseCrossReferencabilityKind(rootConceptTaxonomyAxiom);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -165,7 +207,12 @@ public class BundlesSwitch<T> extends Switch<T> {
 				if (result == null) result = caseTerminologyBundleAxiom(bundledTerminologyAxiom);
 				if (result == null) result = caseTerminologyAxiom(bundledTerminologyAxiom);
 				if (result == null) result = caseModuleEdge(bundledTerminologyAxiom);
-				if (result == null) result = caseElement(bundledTerminologyAxiom);
+				if (result == null) result = caseElementCrossReferenceTuple(bundledTerminologyAxiom);
+				if (result == null) result = caseExtrinsicIdentityKind(bundledTerminologyAxiom);
+				if (result == null) result = caseCrossReferencableKind(bundledTerminologyAxiom);
+				if (result == null) result = caseLogicalElement(bundledTerminologyAxiom);
+				if (result == null) result = caseIdentityKind(bundledTerminologyAxiom);
+				if (result == null) result = caseCrossReferencabilityKind(bundledTerminologyAxiom);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -309,17 +356,77 @@ public class BundlesSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Element</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Cross Referencability Kind</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Element</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Cross Referencability Kind</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseElement(Element object) {
+	public T caseCrossReferencabilityKind(CrossReferencabilityKind object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Identity Kind</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Identity Kind</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIdentityKind(IdentityKind object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Logical Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Logical Element</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLogicalElement(LogicalElement object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Cross Referencable Kind</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Cross Referencable Kind</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCrossReferencableKind(CrossReferencableKind object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Intrinsic Identity Kind</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Intrinsic Identity Kind</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIntrinsicIdentityKind(IntrinsicIdentityKind object) {
 		return null;
 	}
 
@@ -380,6 +487,36 @@ public class BundlesSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseModuleElement(ModuleElement object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Extrinsic Identity Kind</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Extrinsic Identity Kind</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseExtrinsicIdentityKind(ExtrinsicIdentityKind object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Element Cross Reference Tuple</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Element Cross Reference Tuple</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseElementCrossReferenceTuple(ElementCrossReferenceTuple object) {
 		return null;
 	}
 

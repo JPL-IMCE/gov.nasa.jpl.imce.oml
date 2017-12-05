@@ -21,7 +21,7 @@ package gov.nasa.jpl.imce.oml.model.terminologies.impl;
 import gov.nasa.jpl.imce.oml.model.common.LiteralValue;
 import gov.nasa.jpl.imce.oml.model.common.Module;
 
-import gov.nasa.jpl.imce.oml.model.common.impl.ElementImpl;
+import gov.nasa.jpl.imce.oml.model.common.impl.LogicalElementImpl;
 
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
 
@@ -67,7 +67,7 @@ import org.eclipse.xtext.xbase.lib.Pair;
  *
  * @generated
  */
-public class RestrictionScalarDataPropertyValueImpl extends ElementImpl implements RestrictionScalarDataPropertyValue {
+public class RestrictionScalarDataPropertyValueImpl extends LogicalElementImpl implements RestrictionScalarDataPropertyValue {
 	/**
 	 * The cached value of the '{@link #getScalarDataProperty() <em>Scalar Data Property</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -317,6 +317,12 @@ public class RestrictionScalarDataPropertyValueImpl extends ElementImpl implemen
 			_string=_uuid.toString();
 		}
 		Pair<String, String> _mappedTo = Pair.<String, String>of("structuredDataPropertyContext", _string);
+		LiteralValue _scalarPropertyValue = this.getScalarPropertyValue();
+		String _value = null;
+		if (_scalarPropertyValue!=null) {
+			_value=_scalarPropertyValue.value();
+		}
+		Pair<String, String> _mappedTo_1 = Pair.<String, String>of("scalarPropertyValue", _value);
 		DataRelationshipToScalar _scalarDataProperty = this.getScalarDataProperty();
 		String _uuid_1 = null;
 		if (_scalarDataProperty!=null) {
@@ -326,9 +332,9 @@ public class RestrictionScalarDataPropertyValueImpl extends ElementImpl implemen
 		if (_uuid_1!=null) {
 			_string_1=_uuid_1.toString();
 		}
-		Pair<String, String> _mappedTo_1 = Pair.<String, String>of("scalarDataProperty", _string_1);
+		Pair<String, String> _mappedTo_2 = Pair.<String, String>of("scalarDataProperty", _string_1);
 		UUID _derivedUUID = OMLExtensions.derivedUUID(
-			"RestrictionScalarDataPropertyValue", _mappedTo, _mappedTo_1);
+			"RestrictionScalarDataPropertyValue", _mappedTo, _mappedTo_1, _mappedTo_2);
 		String _string_2 = null;
 		if (_derivedUUID!=null) {
 			_string_2=_derivedUUID.toString();

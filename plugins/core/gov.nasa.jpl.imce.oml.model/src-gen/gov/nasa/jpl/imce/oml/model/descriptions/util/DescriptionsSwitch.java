@@ -18,11 +18,19 @@
  */
 package gov.nasa.jpl.imce.oml.model.descriptions.util;
 
-import gov.nasa.jpl.imce.oml.model.common.Element;
+import gov.nasa.jpl.imce.oml.model.common.CrossReferencabilityKind;
+import gov.nasa.jpl.imce.oml.model.common.CrossReferencableKind;
+import gov.nasa.jpl.imce.oml.model.common.ElementCrossReferenceTuple;
+import gov.nasa.jpl.imce.oml.model.common.ExtrinsicIdentityKind;
+import gov.nasa.jpl.imce.oml.model.common.IdentityKind;
+import gov.nasa.jpl.imce.oml.model.common.IntrinsicIdentityKind;
+import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
 import gov.nasa.jpl.imce.oml.model.common.Module;
 import gov.nasa.jpl.imce.oml.model.common.ModuleEdge;
 import gov.nasa.jpl.imce.oml.model.common.ModuleElement;
+import gov.nasa.jpl.imce.oml.model.common.NonCrossReferencableKind;
 import gov.nasa.jpl.imce.oml.model.common.Resource;
+import gov.nasa.jpl.imce.oml.model.common.ValueCrossReferenceTuple;
 
 import gov.nasa.jpl.imce.oml.model.descriptions.*;
 
@@ -93,7 +101,11 @@ public class DescriptionsSwitch<T> extends Switch<T> {
 				T result = caseDescriptionBox(descriptionBox);
 				if (result == null) result = caseModule(descriptionBox);
 				if (result == null) result = caseResource(descriptionBox);
-				if (result == null) result = caseElement(descriptionBox);
+				if (result == null) result = caseLogicalElement(descriptionBox);
+				if (result == null) result = caseIntrinsicIdentityKind(descriptionBox);
+				if (result == null) result = caseIdentityKind(descriptionBox);
+				if (result == null) result = caseCrossReferencableKind(descriptionBox);
+				if (result == null) result = caseCrossReferencabilityKind(descriptionBox);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -101,7 +113,12 @@ public class DescriptionsSwitch<T> extends Switch<T> {
 				DescriptionBoxRelationship descriptionBoxRelationship = (DescriptionBoxRelationship)theEObject;
 				T result = caseDescriptionBoxRelationship(descriptionBoxRelationship);
 				if (result == null) result = caseModuleEdge(descriptionBoxRelationship);
-				if (result == null) result = caseElement(descriptionBoxRelationship);
+				if (result == null) result = caseElementCrossReferenceTuple(descriptionBoxRelationship);
+				if (result == null) result = caseExtrinsicIdentityKind(descriptionBoxRelationship);
+				if (result == null) result = caseCrossReferencableKind(descriptionBoxRelationship);
+				if (result == null) result = caseLogicalElement(descriptionBoxRelationship);
+				if (result == null) result = caseIdentityKind(descriptionBoxRelationship);
+				if (result == null) result = caseCrossReferencabilityKind(descriptionBoxRelationship);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -110,7 +127,12 @@ public class DescriptionsSwitch<T> extends Switch<T> {
 				T result = caseDescriptionBoxExtendsClosedWorldDefinitions(descriptionBoxExtendsClosedWorldDefinitions);
 				if (result == null) result = caseDescriptionBoxRelationship(descriptionBoxExtendsClosedWorldDefinitions);
 				if (result == null) result = caseModuleEdge(descriptionBoxExtendsClosedWorldDefinitions);
-				if (result == null) result = caseElement(descriptionBoxExtendsClosedWorldDefinitions);
+				if (result == null) result = caseElementCrossReferenceTuple(descriptionBoxExtendsClosedWorldDefinitions);
+				if (result == null) result = caseExtrinsicIdentityKind(descriptionBoxExtendsClosedWorldDefinitions);
+				if (result == null) result = caseCrossReferencableKind(descriptionBoxExtendsClosedWorldDefinitions);
+				if (result == null) result = caseLogicalElement(descriptionBoxExtendsClosedWorldDefinitions);
+				if (result == null) result = caseIdentityKind(descriptionBoxExtendsClosedWorldDefinitions);
+				if (result == null) result = caseCrossReferencabilityKind(descriptionBoxExtendsClosedWorldDefinitions);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -119,7 +141,12 @@ public class DescriptionsSwitch<T> extends Switch<T> {
 				T result = caseDescriptionBoxRefinement(descriptionBoxRefinement);
 				if (result == null) result = caseDescriptionBoxRelationship(descriptionBoxRefinement);
 				if (result == null) result = caseModuleEdge(descriptionBoxRefinement);
-				if (result == null) result = caseElement(descriptionBoxRefinement);
+				if (result == null) result = caseElementCrossReferenceTuple(descriptionBoxRefinement);
+				if (result == null) result = caseExtrinsicIdentityKind(descriptionBoxRefinement);
+				if (result == null) result = caseCrossReferencableKind(descriptionBoxRefinement);
+				if (result == null) result = caseLogicalElement(descriptionBoxRefinement);
+				if (result == null) result = caseIdentityKind(descriptionBoxRefinement);
+				if (result == null) result = caseCrossReferencabilityKind(descriptionBoxRefinement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -127,7 +154,9 @@ public class DescriptionsSwitch<T> extends Switch<T> {
 				TerminologyInstanceAssertion terminologyInstanceAssertion = (TerminologyInstanceAssertion)theEObject;
 				T result = caseTerminologyInstanceAssertion(terminologyInstanceAssertion);
 				if (result == null) result = caseModuleElement(terminologyInstanceAssertion);
-				if (result == null) result = caseElement(terminologyInstanceAssertion);
+				if (result == null) result = caseLogicalElement(terminologyInstanceAssertion);
+				if (result == null) result = caseIdentityKind(terminologyInstanceAssertion);
+				if (result == null) result = caseCrossReferencabilityKind(terminologyInstanceAssertion);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -135,14 +164,24 @@ public class DescriptionsSwitch<T> extends Switch<T> {
 				SingletonInstanceScalarDataPropertyValue singletonInstanceScalarDataPropertyValue = (SingletonInstanceScalarDataPropertyValue)theEObject;
 				T result = caseSingletonInstanceScalarDataPropertyValue(singletonInstanceScalarDataPropertyValue);
 				if (result == null) result = caseModuleElement(singletonInstanceScalarDataPropertyValue);
-				if (result == null) result = caseElement(singletonInstanceScalarDataPropertyValue);
+				if (result == null) result = caseValueCrossReferenceTuple(singletonInstanceScalarDataPropertyValue);
+				if (result == null) result = caseLogicalElement(singletonInstanceScalarDataPropertyValue);
+				if (result == null) result = caseExtrinsicIdentityKind(singletonInstanceScalarDataPropertyValue);
+				if (result == null) result = caseNonCrossReferencableKind(singletonInstanceScalarDataPropertyValue);
+				if (result == null) result = caseIdentityKind(singletonInstanceScalarDataPropertyValue);
+				if (result == null) result = caseCrossReferencabilityKind(singletonInstanceScalarDataPropertyValue);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case DescriptionsPackage.SINGLETON_INSTANCE_STRUCTURED_DATA_PROPERTY_CONTEXT: {
 				SingletonInstanceStructuredDataPropertyContext singletonInstanceStructuredDataPropertyContext = (SingletonInstanceStructuredDataPropertyContext)theEObject;
 				T result = caseSingletonInstanceStructuredDataPropertyContext(singletonInstanceStructuredDataPropertyContext);
-				if (result == null) result = caseElement(singletonInstanceStructuredDataPropertyContext);
+				if (result == null) result = caseElementCrossReferenceTuple(singletonInstanceStructuredDataPropertyContext);
+				if (result == null) result = caseExtrinsicIdentityKind(singletonInstanceStructuredDataPropertyContext);
+				if (result == null) result = caseCrossReferencableKind(singletonInstanceStructuredDataPropertyContext);
+				if (result == null) result = caseLogicalElement(singletonInstanceStructuredDataPropertyContext);
+				if (result == null) result = caseIdentityKind(singletonInstanceStructuredDataPropertyContext);
+				if (result == null) result = caseCrossReferencabilityKind(singletonInstanceStructuredDataPropertyContext);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -151,7 +190,12 @@ public class DescriptionsSwitch<T> extends Switch<T> {
 				T result = caseSingletonInstanceStructuredDataPropertyValue(singletonInstanceStructuredDataPropertyValue);
 				if (result == null) result = caseSingletonInstanceStructuredDataPropertyContext(singletonInstanceStructuredDataPropertyValue);
 				if (result == null) result = caseModuleElement(singletonInstanceStructuredDataPropertyValue);
-				if (result == null) result = caseElement(singletonInstanceStructuredDataPropertyValue);
+				if (result == null) result = caseElementCrossReferenceTuple(singletonInstanceStructuredDataPropertyValue);
+				if (result == null) result = caseExtrinsicIdentityKind(singletonInstanceStructuredDataPropertyValue);
+				if (result == null) result = caseCrossReferencableKind(singletonInstanceStructuredDataPropertyValue);
+				if (result == null) result = caseLogicalElement(singletonInstanceStructuredDataPropertyValue);
+				if (result == null) result = caseIdentityKind(singletonInstanceStructuredDataPropertyValue);
+				if (result == null) result = caseCrossReferencabilityKind(singletonInstanceStructuredDataPropertyValue);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -159,14 +203,24 @@ public class DescriptionsSwitch<T> extends Switch<T> {
 				StructuredDataPropertyTuple structuredDataPropertyTuple = (StructuredDataPropertyTuple)theEObject;
 				T result = caseStructuredDataPropertyTuple(structuredDataPropertyTuple);
 				if (result == null) result = caseSingletonInstanceStructuredDataPropertyContext(structuredDataPropertyTuple);
-				if (result == null) result = caseElement(structuredDataPropertyTuple);
+				if (result == null) result = caseElementCrossReferenceTuple(structuredDataPropertyTuple);
+				if (result == null) result = caseExtrinsicIdentityKind(structuredDataPropertyTuple);
+				if (result == null) result = caseCrossReferencableKind(structuredDataPropertyTuple);
+				if (result == null) result = caseLogicalElement(structuredDataPropertyTuple);
+				if (result == null) result = caseIdentityKind(structuredDataPropertyTuple);
+				if (result == null) result = caseCrossReferencabilityKind(structuredDataPropertyTuple);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case DescriptionsPackage.SCALAR_DATA_PROPERTY_VALUE: {
 				ScalarDataPropertyValue scalarDataPropertyValue = (ScalarDataPropertyValue)theEObject;
 				T result = caseScalarDataPropertyValue(scalarDataPropertyValue);
-				if (result == null) result = caseElement(scalarDataPropertyValue);
+				if (result == null) result = caseLogicalElement(scalarDataPropertyValue);
+				if (result == null) result = caseValueCrossReferenceTuple(scalarDataPropertyValue);
+				if (result == null) result = caseExtrinsicIdentityKind(scalarDataPropertyValue);
+				if (result == null) result = caseNonCrossReferencableKind(scalarDataPropertyValue);
+				if (result == null) result = caseIdentityKind(scalarDataPropertyValue);
+				if (result == null) result = caseCrossReferencabilityKind(scalarDataPropertyValue);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -176,7 +230,11 @@ public class DescriptionsSwitch<T> extends Switch<T> {
 				if (result == null) result = caseTerminologyInstanceAssertion(conceptualEntitySingletonInstance);
 				if (result == null) result = caseResource(conceptualEntitySingletonInstance);
 				if (result == null) result = caseModuleElement(conceptualEntitySingletonInstance);
-				if (result == null) result = caseElement(conceptualEntitySingletonInstance);
+				if (result == null) result = caseIntrinsicIdentityKind(conceptualEntitySingletonInstance);
+				if (result == null) result = caseLogicalElement(conceptualEntitySingletonInstance);
+				if (result == null) result = caseCrossReferencableKind(conceptualEntitySingletonInstance);
+				if (result == null) result = caseIdentityKind(conceptualEntitySingletonInstance);
+				if (result == null) result = caseCrossReferencabilityKind(conceptualEntitySingletonInstance);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -187,7 +245,11 @@ public class DescriptionsSwitch<T> extends Switch<T> {
 				if (result == null) result = caseTerminologyInstanceAssertion(conceptInstance);
 				if (result == null) result = caseResource(conceptInstance);
 				if (result == null) result = caseModuleElement(conceptInstance);
-				if (result == null) result = caseElement(conceptInstance);
+				if (result == null) result = caseIntrinsicIdentityKind(conceptInstance);
+				if (result == null) result = caseLogicalElement(conceptInstance);
+				if (result == null) result = caseCrossReferencableKind(conceptInstance);
+				if (result == null) result = caseIdentityKind(conceptInstance);
+				if (result == null) result = caseCrossReferencabilityKind(conceptInstance);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -198,7 +260,11 @@ public class DescriptionsSwitch<T> extends Switch<T> {
 				if (result == null) result = caseTerminologyInstanceAssertion(reifiedRelationshipInstance);
 				if (result == null) result = caseResource(reifiedRelationshipInstance);
 				if (result == null) result = caseModuleElement(reifiedRelationshipInstance);
-				if (result == null) result = caseElement(reifiedRelationshipInstance);
+				if (result == null) result = caseIntrinsicIdentityKind(reifiedRelationshipInstance);
+				if (result == null) result = caseLogicalElement(reifiedRelationshipInstance);
+				if (result == null) result = caseCrossReferencableKind(reifiedRelationshipInstance);
+				if (result == null) result = caseIdentityKind(reifiedRelationshipInstance);
+				if (result == null) result = caseCrossReferencabilityKind(reifiedRelationshipInstance);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -206,8 +272,13 @@ public class DescriptionsSwitch<T> extends Switch<T> {
 				ReifiedRelationshipInstanceDomain reifiedRelationshipInstanceDomain = (ReifiedRelationshipInstanceDomain)theEObject;
 				T result = caseReifiedRelationshipInstanceDomain(reifiedRelationshipInstanceDomain);
 				if (result == null) result = caseTerminologyInstanceAssertion(reifiedRelationshipInstanceDomain);
+				if (result == null) result = caseElementCrossReferenceTuple(reifiedRelationshipInstanceDomain);
 				if (result == null) result = caseModuleElement(reifiedRelationshipInstanceDomain);
-				if (result == null) result = caseElement(reifiedRelationshipInstanceDomain);
+				if (result == null) result = caseExtrinsicIdentityKind(reifiedRelationshipInstanceDomain);
+				if (result == null) result = caseCrossReferencableKind(reifiedRelationshipInstanceDomain);
+				if (result == null) result = caseLogicalElement(reifiedRelationshipInstanceDomain);
+				if (result == null) result = caseIdentityKind(reifiedRelationshipInstanceDomain);
+				if (result == null) result = caseCrossReferencabilityKind(reifiedRelationshipInstanceDomain);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -215,8 +286,13 @@ public class DescriptionsSwitch<T> extends Switch<T> {
 				ReifiedRelationshipInstanceRange reifiedRelationshipInstanceRange = (ReifiedRelationshipInstanceRange)theEObject;
 				T result = caseReifiedRelationshipInstanceRange(reifiedRelationshipInstanceRange);
 				if (result == null) result = caseTerminologyInstanceAssertion(reifiedRelationshipInstanceRange);
+				if (result == null) result = caseElementCrossReferenceTuple(reifiedRelationshipInstanceRange);
 				if (result == null) result = caseModuleElement(reifiedRelationshipInstanceRange);
-				if (result == null) result = caseElement(reifiedRelationshipInstanceRange);
+				if (result == null) result = caseExtrinsicIdentityKind(reifiedRelationshipInstanceRange);
+				if (result == null) result = caseCrossReferencableKind(reifiedRelationshipInstanceRange);
+				if (result == null) result = caseLogicalElement(reifiedRelationshipInstanceRange);
+				if (result == null) result = caseIdentityKind(reifiedRelationshipInstanceRange);
+				if (result == null) result = caseCrossReferencabilityKind(reifiedRelationshipInstanceRange);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -224,8 +300,13 @@ public class DescriptionsSwitch<T> extends Switch<T> {
 				UnreifiedRelationshipInstanceTuple unreifiedRelationshipInstanceTuple = (UnreifiedRelationshipInstanceTuple)theEObject;
 				T result = caseUnreifiedRelationshipInstanceTuple(unreifiedRelationshipInstanceTuple);
 				if (result == null) result = caseTerminologyInstanceAssertion(unreifiedRelationshipInstanceTuple);
+				if (result == null) result = caseElementCrossReferenceTuple(unreifiedRelationshipInstanceTuple);
 				if (result == null) result = caseModuleElement(unreifiedRelationshipInstanceTuple);
-				if (result == null) result = caseElement(unreifiedRelationshipInstanceTuple);
+				if (result == null) result = caseExtrinsicIdentityKind(unreifiedRelationshipInstanceTuple);
+				if (result == null) result = caseCrossReferencableKind(unreifiedRelationshipInstanceTuple);
+				if (result == null) result = caseLogicalElement(unreifiedRelationshipInstanceTuple);
+				if (result == null) result = caseIdentityKind(unreifiedRelationshipInstanceTuple);
+				if (result == null) result = caseCrossReferencabilityKind(unreifiedRelationshipInstanceTuple);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -474,17 +555,77 @@ public class DescriptionsSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Element</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Cross Referencability Kind</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Element</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Cross Referencability Kind</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseElement(Element object) {
+	public T caseCrossReferencabilityKind(CrossReferencabilityKind object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Identity Kind</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Identity Kind</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIdentityKind(IdentityKind object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Logical Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Logical Element</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLogicalElement(LogicalElement object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Cross Referencable Kind</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Cross Referencable Kind</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCrossReferencableKind(CrossReferencableKind object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Intrinsic Identity Kind</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Intrinsic Identity Kind</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIntrinsicIdentityKind(IntrinsicIdentityKind object) {
 		return null;
 	}
 
@@ -519,6 +660,36 @@ public class DescriptionsSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Extrinsic Identity Kind</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Extrinsic Identity Kind</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseExtrinsicIdentityKind(ExtrinsicIdentityKind object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Element Cross Reference Tuple</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Element Cross Reference Tuple</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseElementCrossReferenceTuple(ElementCrossReferenceTuple object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Module Edge</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -545,6 +716,36 @@ public class DescriptionsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseModuleElement(ModuleElement object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Non Cross Referencable Kind</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Non Cross Referencable Kind</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseNonCrossReferencableKind(NonCrossReferencableKind object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Value Cross Reference Tuple</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Value Cross Reference Tuple</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseValueCrossReferenceTuple(ValueCrossReferenceTuple object) {
 		return null;
 	}
 

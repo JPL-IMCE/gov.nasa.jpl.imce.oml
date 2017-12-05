@@ -40,7 +40,7 @@ import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions
 import gov.nasa.jpl.imce.oml.model.common.Collection
 import gov.nasa.jpl.imce.oml.model.common.CopyConstructor
 import gov.nasa.jpl.imce.oml.model.common.DerivedUUID
-import gov.nasa.jpl.imce.oml.model.common.Element
+import gov.nasa.jpl.imce.oml.model.common.ElementCrossReferenceTuple
 import gov.nasa.jpl.imce.oml.model.common.Factory
 import gov.nasa.jpl.imce.oml.model.common.Glossary
 import gov.nasa.jpl.imce.oml.model.common.ImplicitExtent
@@ -48,6 +48,7 @@ import gov.nasa.jpl.imce.oml.model.common.IRI
 import gov.nasa.jpl.imce.oml.model.common.IRIReference
 import gov.nasa.jpl.imce.oml.model.common.LiteralValue
 import gov.nasa.jpl.imce.oml.model.common.LocalName
+import gov.nasa.jpl.imce.oml.model.common.LogicalElement
 import gov.nasa.jpl.imce.oml.model.common.Module
 import gov.nasa.jpl.imce.oml.model.common.ModuleEdge
 import gov.nasa.jpl.imce.oml.model.common.ModuleElement
@@ -58,6 +59,7 @@ import gov.nasa.jpl.imce.oml.model.common.Override
 import gov.nasa.jpl.imce.oml.model.common.Resource
 import gov.nasa.jpl.imce.oml.model.common.Scala
 import gov.nasa.jpl.imce.oml.model.common.UUID
+import gov.nasa.jpl.imce.oml.model.common.ValueCrossReferenceTuple
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptualEntity
 import gov.nasa.jpl.imce.oml.model.terminologies.DataRange
@@ -261,7 +263,7 @@ abstract class TerminologyInstanceAssertion extends ModuleElement {}
  */
 @Glossary
 @DerivedUUID
-class SingletonInstanceScalarDataPropertyValue extends ModuleElement {
+class SingletonInstanceScalarDataPropertyValue extends ModuleElement, ValueCrossReferenceTuple {
 	
 	@Factory
 	container DescriptionBox[1] descriptionBox opposite singletonScalarDataPropertyValues 
@@ -279,7 +281,8 @@ class SingletonInstanceScalarDataPropertyValue extends ModuleElement {
 		"ScalarDataPropertyValue", 
 		"descriptionBox" -> getDescriptionBox?.uuid()?.toString(),
 		"singletonInstance" -> getSingletonInstance?.uuid()?.toString(),
-		"scalarDataProperty" -> getScalarDataProperty?.uuid()?.toString()
+		"scalarDataProperty" -> getScalarDataProperty?.uuid()?.toString(),
+		"scalarPropertyValue" -> scalarPropertyValue?.value
 		)?.toString
 	}
 	
@@ -292,11 +295,11 @@ class SingletonInstanceScalarDataPropertyValue extends ModuleElement {
 	@ImplicitExtent
 	op Module[?] moduleContext() { descriptionBox() }
 	
-	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.Element]")
+	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.LogicalElement]")
 	@Collection(kind="Set")
 	@NotSchema
 	@ImplicitExtent
-	op Element[] allNestedElements() { ECollections.emptyEList }
+	op LogicalElement[] allNestedElements() { ECollections.emptyEList }
 }
 
 /*
@@ -307,7 +310,7 @@ class SingletonInstanceScalarDataPropertyValue extends ModuleElement {
  */
 @Glossary
 @DerivedUUID
-abstract class SingletonInstanceStructuredDataPropertyContext extends Element {
+abstract class SingletonInstanceStructuredDataPropertyContext extends ElementCrossReferenceTuple {
 	
 	refers DataRelationshipToStructure[1] structuredDataProperty
 	
@@ -325,13 +328,13 @@ abstract class SingletonInstanceStructuredDataPropertyContext extends Element {
 	@ImplicitExtent
 	op Module[?] moduleContext() { descriptionBox }
 	
-	@Scala(code="extent.lookupStructuredPropertyTuples(this).flatMap{ r => scala.collection.immutable.Set.empty[resolver.api.Element] + r ++ r.allNestedRestrictionElements() } ++
+	@Scala(code="extent.lookupStructuredPropertyTuples(this).flatMap{ r => scala.collection.immutable.Set.empty[resolver.api.LogicalElement] + r ++ r.allNestedRestrictionElements() } ++
 		extent.lookupScalarDataPropertyValues(this)")
 	@Collection(kind="Set")
 	@NotSchema
 	@ImplicitExtent
-	op Element[] allNestedRestrictionElements() { 
-		val nres = new BasicEList<Element>()
+	op LogicalElement[] allNestedRestrictionElements() { 
+		val nres = new BasicEList<LogicalElement>()
 		nres.addAll(structuredPropertyTuples)
 		structuredPropertyTuples.forEach[ nres.addAll(allNestedRestrictionElements) ]
 		nres.addAll(scalarDataPropertyValues)
@@ -372,7 +375,7 @@ class SingletonInstanceStructuredDataPropertyValue extends SingletonInstanceStru
 	@Collection(kind="Set")
 	@NotSchema
 	@ImplicitExtent
-	op Element[] allNestedElements() { allNestedRestrictionElements }
+	op LogicalElement[] allNestedElements() { allNestedRestrictionElements }
 }
 
 /*
@@ -409,7 +412,7 @@ class StructuredDataPropertyTuple extends SingletonInstanceStructuredDataPropert
  */
 @Glossary
 @DerivedUUID
-class ScalarDataPropertyValue extends Element {
+class ScalarDataPropertyValue extends LogicalElement, ValueCrossReferenceTuple {
 	
 	@Factory
 	container SingletonInstanceStructuredDataPropertyContext[1] structuredDataPropertyContext opposite scalarDataPropertyValues
@@ -429,6 +432,7 @@ class ScalarDataPropertyValue extends Element {
 		OMLExtensions.derivedUUID(
 		"ScalarDataPropertyValue", 
 		"structuredDataPropertyContext" -> structuredDataPropertyContext?.uuid()?.toString(),
+		"scalarPropertyValue" -> scalarPropertyValue?.value,
 		"scalarDataProperty" -> scalarDataProperty?.uuid()?.toString()
 		)?.toString
 	}
@@ -511,11 +515,11 @@ class ConceptInstance extends ConceptualEntitySingletonInstance {
 	@NotSchema
 	op DescriptionBox[?] descriptionBox() { getDescriptionBox }
 	
-	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.Element]")
+	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.LogicalElement]")
 	@Collection(kind="Set")
 	@NotSchema
 	@ImplicitExtent
-	op Element[] allNestedElements() { ECollections.emptyEList }
+	op LogicalElement[] allNestedElements() { ECollections.emptyEList }
 }
 
 /*
@@ -538,11 +542,11 @@ class ReifiedRelationshipInstance extends ConceptualEntitySingletonInstance {
 	@NotSchema
 	op DescriptionBox[?] descriptionBox() { getDescriptionBox }
 	
-	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.Element]")
+	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.LogicalElement]")
 	@Collection(kind="Set")
 	@NotSchema
 	@ImplicitExtent
-	op Element[] allNestedElements() { ECollections.emptyEList }
+	op LogicalElement[] allNestedElements() { ECollections.emptyEList }
 }
 
 /*
@@ -554,7 +558,7 @@ class ReifiedRelationshipInstance extends ConceptualEntitySingletonInstance {
  */
 @Glossary
 @DerivedUUID
-class ReifiedRelationshipInstanceDomain extends TerminologyInstanceAssertion {
+class ReifiedRelationshipInstanceDomain extends TerminologyInstanceAssertion, ElementCrossReferenceTuple {
 	
 	@Factory
 	container DescriptionBox[1] descriptionBox opposite reifiedRelationshipInstanceDomains
@@ -583,11 +587,11 @@ class ReifiedRelationshipInstanceDomain extends TerminologyInstanceAssertion {
 	@ImplicitExtent
 	op Module[?] moduleContext() { descriptionBox() }
 	
-	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.Element]")
+	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.LogicalElement]")
 	@Collection(kind="Set")
 	@NotSchema
 	@ImplicitExtent
-	op Element[] allNestedElements() { ECollections.emptyEList }
+	op LogicalElement[] allNestedElements() { ECollections.emptyEList }
 }
 
 /*
@@ -599,7 +603,7 @@ class ReifiedRelationshipInstanceDomain extends TerminologyInstanceAssertion {
  */
 @Glossary
 @DerivedUUID
-class ReifiedRelationshipInstanceRange extends TerminologyInstanceAssertion {
+class ReifiedRelationshipInstanceRange extends TerminologyInstanceAssertion, ElementCrossReferenceTuple {
 	
 	@Factory
 	container DescriptionBox[1] descriptionBox opposite reifiedRelationshipInstanceRanges
@@ -628,11 +632,11 @@ class ReifiedRelationshipInstanceRange extends TerminologyInstanceAssertion {
 	@ImplicitExtent
 	op Module[?] moduleContext() { descriptionBox() }
 	
-	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.Element]")
+	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.LogicalElement]")
 	@Collection(kind="Set")
 	@NotSchema
 	@ImplicitExtent
-	op Element[] allNestedElements() { ECollections.emptyEList }
+	op LogicalElement[] allNestedElements() { ECollections.emptyEList }
 }
 
 /*
@@ -645,7 +649,7 @@ class ReifiedRelationshipInstanceRange extends TerminologyInstanceAssertion {
  */
 @Glossary
 @DerivedUUID
-class UnreifiedRelationshipInstanceTuple extends TerminologyInstanceAssertion {
+class UnreifiedRelationshipInstanceTuple extends TerminologyInstanceAssertion, ElementCrossReferenceTuple {
 	
 	@Factory
 	container DescriptionBox[1] descriptionBox opposite unreifiedRelationshipInstanceTuples
@@ -677,9 +681,9 @@ class UnreifiedRelationshipInstanceTuple extends TerminologyInstanceAssertion {
 	@ImplicitExtent
 	op Module[?] moduleContext() { descriptionBox() }
 	
-	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.Element]")
+	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.LogicalElement]")
 	@Collection(kind="Set")
 	@NotSchema
 	@ImplicitExtent
-	op Element[] allNestedElements() { ECollections.emptyEList }
+	op LogicalElement[] allNestedElements() { ECollections.emptyEList }
 }

@@ -20,7 +20,6 @@ package gov.nasa.jpl.imce.oml.model.common.provider;
 
 
 import gov.nasa.jpl.imce.oml.model.common.ModuleEdge;
-
 import java.util.Collection;
 import java.util.List;
 
@@ -35,7 +34,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ModuleEdgeItemProvider extends ElementItemProvider {
+public class ModuleEdgeItemProvider extends ElementCrossReferenceTupleItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

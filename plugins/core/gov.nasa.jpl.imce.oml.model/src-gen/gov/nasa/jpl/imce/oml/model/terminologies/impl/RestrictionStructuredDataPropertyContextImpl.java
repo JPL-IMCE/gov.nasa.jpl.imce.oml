@@ -18,7 +18,7 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies.impl;
 
-import gov.nasa.jpl.imce.oml.model.common.Element;
+import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
 
 import gov.nasa.jpl.imce.oml.model.common.impl.ModuleElementImpl;
 
@@ -193,10 +193,10 @@ public abstract class RestrictionStructuredDataPropertyContextImpl extends Modul
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Element> allNestedRestrictionElements() {
-		BasicEList<Element> _xblockexpression = null;
+	public EList<LogicalElement> allNestedRestrictionElements() {
+		BasicEList<LogicalElement> _xblockexpression = null;
 		{
-			final BasicEList<Element> nres = new BasicEList<Element>();
+			final BasicEList<LogicalElement> nres = new BasicEList<LogicalElement>();
 			nres.addAll(this.getStructuredDataPropertyRestrictions());
 			final Consumer<RestrictionStructuredDataPropertyTuple> _function = new Consumer<RestrictionStructuredDataPropertyTuple>() {
 				public void accept(final RestrictionStructuredDataPropertyTuple it) {

@@ -18,7 +18,6 @@
  */
 package gov.nasa.jpl.imce.oml.model.common;
 
-import org.eclipse.emf.cdo.CDOObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -40,7 +39,6 @@ import org.eclipse.emf.cdo.CDOObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue#getUuid <em>Uuid</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue#getSubject <em>Subject</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue#getProperty <em>Property</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue#getValue <em>Value</em>}</li>
@@ -48,29 +46,12 @@ import org.eclipse.emf.cdo.CDOObject;
  *
  * @see gov.nasa.jpl.imce.oml.model.common.CommonPackage#getAnnotationPropertyValue()
  * @model
- * @extends CDOObject
  * @generated
  */
-public interface AnnotationPropertyValue extends CDOObject {
-	/**
-	 * Returns the value of the '<em><b>Uuid</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Uuid</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Uuid</em>' attribute.
-	 * @see gov.nasa.jpl.imce.oml.model.common.CommonPackage#getAnnotationPropertyValue_Uuid()
-	 * @model unique="false" dataType="gov.nasa.jpl.imce.oml.model.common.UUID" required="true" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='&lt;%gov.nasa.jpl.imce.oml.model.common.Element%&gt; _subject = this.getSubject();\n&lt;%java.lang.String%&gt; _uuid = null;\nif (_subject!=null)\n{\n\t_uuid=_subject.uuid();\n}\n&lt;%java.lang.String%&gt; _string = null;\nif (_uuid!=null)\n{\n\t_string=_uuid.toString();\n}\n&lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt; _mappedTo = &lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;.&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt;of(\"subject\", _string);\n&lt;%gov.nasa.jpl.imce.oml.model.common.AnnotationProperty%&gt; _property = this.getProperty();\n&lt;%java.lang.String%&gt; _uuid_1 = null;\nif (_property!=null)\n{\n\t_uuid_1=_property.getUuid();\n}\n&lt;%java.lang.String%&gt; _string_1 = null;\nif (_uuid_1!=null)\n{\n\t_string_1=_uuid_1.toString();\n}\n&lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt; _mappedTo_1 = &lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;.&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt;of(\"property\", _string_1);\n&lt;%java.util.UUID%&gt; _derivedUUID = &lt;%gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions%&gt;.derivedUUID(\n\t\"AnnotationPropertyValue\", _mappedTo, _mappedTo_1);\n&lt;%java.lang.String%&gt; _string_2 = null;\nif (_derivedUUID!=null)\n{\n\t_string_2=_derivedUUID.toString();\n}\nreturn _string_2;'"
-	 * @generated
-	 */
-	String getUuid();
-
+public interface AnnotationPropertyValue extends ValueCrossReferenceTuple, NonLogicalElement {
 	/**
 	 * Returns the value of the '<em><b>Subject</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link gov.nasa.jpl.imce.oml.model.common.Element#getAnnotations <em>Annotations</em>}'.
+	 * It is bidirectional and its opposite is '{@link gov.nasa.jpl.imce.oml.model.common.LogicalElement#getAnnotations <em>Annotations</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Subject</em>' container reference isn't clear,
@@ -78,13 +59,13 @@ public interface AnnotationPropertyValue extends CDOObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Subject</em>' container reference.
-	 * @see #setSubject(Element)
+	 * @see #setSubject(LogicalElement)
 	 * @see gov.nasa.jpl.imce.oml.model.common.CommonPackage#getAnnotationPropertyValue_Subject()
-	 * @see gov.nasa.jpl.imce.oml.model.common.Element#getAnnotations
+	 * @see gov.nasa.jpl.imce.oml.model.common.LogicalElement#getAnnotations
 	 * @model opposite="annotations" required="true" transient="false"
 	 * @generated
 	 */
-	Element getSubject();
+	LogicalElement getSubject();
 
 	/**
 	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue#getSubject <em>Subject</em>}' container reference.
@@ -94,7 +75,7 @@ public interface AnnotationPropertyValue extends CDOObject {
 	 * @see #getSubject()
 	 * @generated
 	 */
-	void setSubject(Element value);
+	void setSubject(LogicalElement value);
 
 	/**
 	 * Returns the value of the '<em><b>Property</b></em>' reference.
@@ -147,5 +128,14 @@ public interface AnnotationPropertyValue extends CDOObject {
 	 * @generated
 	 */
 	void setValue(LiteralString value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model dataType="gov.nasa.jpl.imce.oml.model.common.UUID" unique="false" required="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%gov.nasa.jpl.imce.oml.model.common.LogicalElement%&gt; _subject = this.getSubject();\n&lt;%java.lang.String%&gt; _uuid = null;\nif (_subject!=null)\n{\n\t_uuid=_subject.uuid();\n}\n&lt;%java.lang.String%&gt; _string = null;\nif (_uuid!=null)\n{\n\t_string=_uuid.toString();\n}\n&lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt; _mappedTo = &lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;.&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt;of(\"subject\", _string);\n&lt;%gov.nasa.jpl.imce.oml.model.common.AnnotationProperty%&gt; _property = this.getProperty();\n&lt;%java.lang.String%&gt; _uuid_1 = null;\nif (_property!=null)\n{\n\t_uuid_1=_property.uuid();\n}\n&lt;%java.lang.String%&gt; _string_1 = null;\nif (_uuid_1!=null)\n{\n\t_string_1=_uuid_1.toString();\n}\n&lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt; _mappedTo_1 = &lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;.&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt;of(\"property\", _string_1);\n&lt;%gov.nasa.jpl.imce.oml.model.common.LiteralString%&gt; _value = this.getValue();\n&lt;%java.lang.String%&gt; _value_1 = null;\nif (_value!=null)\n{\n\t_value_1=_value.value();\n}\n&lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt; _mappedTo_2 = &lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;.&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt;of(\"value\", _value_1);\n&lt;%java.util.UUID%&gt; _derivedUUID = &lt;%gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions%&gt;.derivedUUID(\n\t\"AnnotationPropertyValue\", _mappedTo, _mappedTo_1, _mappedTo_2);\n&lt;%java.lang.String%&gt; _string_2 = null;\nif (_derivedUUID!=null)\n{\n\t_string_2=_derivedUUID.toString();\n}\nreturn _string_2;'"
+	 * @generated
+	 */
+	String uuid();
 
 } // AnnotationPropertyValue

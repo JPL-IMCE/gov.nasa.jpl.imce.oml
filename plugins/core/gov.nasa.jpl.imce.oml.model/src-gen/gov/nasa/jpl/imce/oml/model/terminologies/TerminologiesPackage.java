@@ -4797,7 +4797,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RULE_BODY_SEGMENT__UUID = CommonPackage.ELEMENT__UUID;
+	int RULE_BODY_SEGMENT__UUID = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE__UUID;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -4806,7 +4806,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RULE_BODY_SEGMENT__ANNOTATIONS = CommonPackage.ELEMENT__ANNOTATIONS;
+	int RULE_BODY_SEGMENT__ANNOTATIONS = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Predicate</b></em>' containment reference.
@@ -4815,7 +4815,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RULE_BODY_SEGMENT__PREDICATE = CommonPackage.ELEMENT_FEATURE_COUNT + 0;
+	int RULE_BODY_SEGMENT__PREDICATE = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Next Segment</b></em>' containment reference.
@@ -4824,7 +4824,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RULE_BODY_SEGMENT__NEXT_SEGMENT = CommonPackage.ELEMENT_FEATURE_COUNT + 1;
+	int RULE_BODY_SEGMENT__NEXT_SEGMENT = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Previous Segment</b></em>' container reference.
@@ -4833,7 +4833,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RULE_BODY_SEGMENT__PREVIOUS_SEGMENT = CommonPackage.ELEMENT_FEATURE_COUNT + 2;
+	int RULE_BODY_SEGMENT__PREVIOUS_SEGMENT = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Rule</b></em>' container reference.
@@ -4842,7 +4842,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RULE_BODY_SEGMENT__RULE = CommonPackage.ELEMENT_FEATURE_COUNT + 3;
+	int RULE_BODY_SEGMENT__RULE = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Rule Body Segment</em>' class.
@@ -4851,7 +4851,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RULE_BODY_SEGMENT_FEATURE_COUNT = CommonPackage.ELEMENT_FEATURE_COUNT + 4;
+	int RULE_BODY_SEGMENT_FEATURE_COUNT = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE_FEATURE_COUNT + 4;
 
 	/**
 	 * The operation id for the '<em>Position</em>' operation.
@@ -4860,7 +4860,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RULE_BODY_SEGMENT___POSITION = CommonPackage.ELEMENT_OPERATION_COUNT + 0;
+	int RULE_BODY_SEGMENT___POSITION = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE_OPERATION_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Chain Rule</em>' operation.
@@ -4869,7 +4869,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RULE_BODY_SEGMENT___CHAIN_RULE = CommonPackage.ELEMENT_OPERATION_COUNT + 1;
+	int RULE_BODY_SEGMENT___CHAIN_RULE = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE_OPERATION_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Uuid</em>' operation.
@@ -4878,7 +4878,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RULE_BODY_SEGMENT___UUID = CommonPackage.ELEMENT_OPERATION_COUNT + 2;
+	int RULE_BODY_SEGMENT___UUID = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE_OPERATION_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Module Context</em>' operation.
@@ -4887,7 +4887,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RULE_BODY_SEGMENT___MODULE_CONTEXT = CommonPackage.ELEMENT_OPERATION_COUNT + 3;
+	int RULE_BODY_SEGMENT___MODULE_CONTEXT = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE_OPERATION_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Rule Body Segment</em>' class.
@@ -4896,7 +4896,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RULE_BODY_SEGMENT_OPERATION_COUNT = CommonPackage.ELEMENT_OPERATION_COUNT + 4;
+	int RULE_BODY_SEGMENT_OPERATION_COUNT = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE_OPERATION_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.SegmentPredicateImpl <em>Segment Predicate</em>}' class.
@@ -4915,7 +4915,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SEGMENT_PREDICATE__UUID = CommonPackage.ELEMENT__UUID;
+	int SEGMENT_PREDICATE__UUID = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE__UUID;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -4924,7 +4924,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SEGMENT_PREDICATE__ANNOTATIONS = CommonPackage.ELEMENT__ANNOTATIONS;
+	int SEGMENT_PREDICATE__ANNOTATIONS = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Body Segment</b></em>' container reference.
@@ -4933,7 +4933,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SEGMENT_PREDICATE__BODY_SEGMENT = CommonPackage.ELEMENT_FEATURE_COUNT + 0;
+	int SEGMENT_PREDICATE__BODY_SEGMENT = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Segment Predicate</em>' class.
@@ -4942,7 +4942,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SEGMENT_PREDICATE_FEATURE_COUNT = CommonPackage.ELEMENT_FEATURE_COUNT + 1;
+	int SEGMENT_PREDICATE_FEATURE_COUNT = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Uuid</em>' operation.
@@ -4951,7 +4951,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SEGMENT_PREDICATE___UUID = CommonPackage.ELEMENT___UUID;
+	int SEGMENT_PREDICATE___UUID = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE___UUID;
 
 	/**
 	 * The operation id for the '<em>Term Predicate</em>' operation.
@@ -4960,7 +4960,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SEGMENT_PREDICATE___TERM_PREDICATE = CommonPackage.ELEMENT_OPERATION_COUNT + 0;
+	int SEGMENT_PREDICATE___TERM_PREDICATE = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE_OPERATION_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Module Context</em>' operation.
@@ -4969,7 +4969,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SEGMENT_PREDICATE___MODULE_CONTEXT = CommonPackage.ELEMENT_OPERATION_COUNT + 1;
+	int SEGMENT_PREDICATE___MODULE_CONTEXT = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE_OPERATION_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Segment Predicate</em>' class.
@@ -4978,7 +4978,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SEGMENT_PREDICATE_OPERATION_COUNT = CommonPackage.ELEMENT_OPERATION_COUNT + 2;
+	int SEGMENT_PREDICATE_OPERATION_COUNT = CommonPackage.ELEMENT_CROSS_REFERENCE_TUPLE_OPERATION_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.UnarySegmentPredicateImpl <em>Unary Segment Predicate</em>}' class.
@@ -8097,7 +8097,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__UUID = CommonPackage.ELEMENT__UUID;
+	int RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__UUID = CommonPackage.LOGICAL_ELEMENT__UUID;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -8106,7 +8106,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__ANNOTATIONS = CommonPackage.ELEMENT__ANNOTATIONS;
+	int RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__ANNOTATIONS = CommonPackage.LOGICAL_ELEMENT__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Structured Data Property Context</b></em>' container reference.
@@ -8115,7 +8115,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__STRUCTURED_DATA_PROPERTY_CONTEXT = CommonPackage.ELEMENT_FEATURE_COUNT + 0;
+	int RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__STRUCTURED_DATA_PROPERTY_CONTEXT = CommonPackage.LOGICAL_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Scalar Data Property</b></em>' reference.
@@ -8124,7 +8124,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__SCALAR_DATA_PROPERTY = CommonPackage.ELEMENT_FEATURE_COUNT + 1;
+	int RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__SCALAR_DATA_PROPERTY = CommonPackage.LOGICAL_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Scalar Property Value</b></em>' containment reference.
@@ -8133,7 +8133,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE = CommonPackage.ELEMENT_FEATURE_COUNT + 2;
+	int RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__SCALAR_PROPERTY_VALUE = CommonPackage.LOGICAL_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Value Type</b></em>' reference.
@@ -8142,7 +8142,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__VALUE_TYPE = CommonPackage.ELEMENT_FEATURE_COUNT + 3;
+	int RESTRICTION_SCALAR_DATA_PROPERTY_VALUE__VALUE_TYPE = CommonPackage.LOGICAL_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Restriction Scalar Data Property Value</em>' class.
@@ -8151,7 +8151,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESTRICTION_SCALAR_DATA_PROPERTY_VALUE_FEATURE_COUNT = CommonPackage.ELEMENT_FEATURE_COUNT + 4;
+	int RESTRICTION_SCALAR_DATA_PROPERTY_VALUE_FEATURE_COUNT = CommonPackage.LOGICAL_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The operation id for the '<em>Terminology Box</em>' operation.
@@ -8160,7 +8160,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESTRICTION_SCALAR_DATA_PROPERTY_VALUE___TERMINOLOGY_BOX = CommonPackage.ELEMENT_OPERATION_COUNT + 0;
+	int RESTRICTION_SCALAR_DATA_PROPERTY_VALUE___TERMINOLOGY_BOX = CommonPackage.LOGICAL_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Uuid</em>' operation.
@@ -8169,7 +8169,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESTRICTION_SCALAR_DATA_PROPERTY_VALUE___UUID = CommonPackage.ELEMENT_OPERATION_COUNT + 1;
+	int RESTRICTION_SCALAR_DATA_PROPERTY_VALUE___UUID = CommonPackage.LOGICAL_ELEMENT_OPERATION_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Module Context</em>' operation.
@@ -8178,7 +8178,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESTRICTION_SCALAR_DATA_PROPERTY_VALUE___MODULE_CONTEXT = CommonPackage.ELEMENT_OPERATION_COUNT + 2;
+	int RESTRICTION_SCALAR_DATA_PROPERTY_VALUE___MODULE_CONTEXT = CommonPackage.LOGICAL_ELEMENT_OPERATION_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Restriction Scalar Data Property Value</em>' class.
@@ -8187,7 +8187,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESTRICTION_SCALAR_DATA_PROPERTY_VALUE_OPERATION_COUNT = CommonPackage.ELEMENT_OPERATION_COUNT + 3;
+	int RESTRICTION_SCALAR_DATA_PROPERTY_VALUE_OPERATION_COUNT = CommonPackage.LOGICAL_ELEMENT_OPERATION_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.RestrictedDataRangeImpl <em>Restricted Data Range</em>}' class.

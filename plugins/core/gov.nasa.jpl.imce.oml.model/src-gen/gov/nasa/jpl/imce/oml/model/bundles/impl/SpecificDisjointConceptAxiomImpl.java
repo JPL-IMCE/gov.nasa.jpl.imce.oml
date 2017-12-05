@@ -22,7 +22,7 @@ import gov.nasa.jpl.imce.oml.model.bundles.BundlesPackage;
 import gov.nasa.jpl.imce.oml.model.bundles.ConceptTreeDisjunction;
 import gov.nasa.jpl.imce.oml.model.bundles.SpecificDisjointConceptAxiom;
 
-import gov.nasa.jpl.imce.oml.model.common.Element;
+import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
 
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
 
@@ -166,8 +166,8 @@ public class SpecificDisjointConceptAxiomImpl extends DisjointUnionOfConceptsAxi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Element> allNestedUnions() {
-		return ECollections.<Element>emptyEList();
+	public EList<LogicalElement> allNestedElements() {
+		return ECollections.<LogicalElement>emptyEList();
 	}
 
 	/**
@@ -239,8 +239,8 @@ public class SpecificDisjointConceptAxiomImpl extends DisjointUnionOfConceptsAxi
 		switch (operationID) {
 			case BundlesPackage.SPECIFIC_DISJOINT_CONCEPT_AXIOM___UUID:
 				return uuid();
-			case BundlesPackage.SPECIFIC_DISJOINT_CONCEPT_AXIOM___ALL_NESTED_UNIONS:
-				return allNestedUnions();
+			case BundlesPackage.SPECIFIC_DISJOINT_CONCEPT_AXIOM___ALL_NESTED_ELEMENTS:
+				return allNestedElements();
 		}
 		return super.eInvoke(operationID, arguments);
 	}

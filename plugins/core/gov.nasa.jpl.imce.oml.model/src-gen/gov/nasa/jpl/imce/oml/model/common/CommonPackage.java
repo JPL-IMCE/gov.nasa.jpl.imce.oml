@@ -96,13 +96,22 @@ public interface CommonPackage extends EPackage {
 	int LITERAL_VALUE_FEATURE_COUNT = 0;
 
 	/**
+	 * The operation id for the '<em>Value</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_VALUE___VALUE = 0;
+
+	/**
 	 * The number of operations of the '<em>Literal Value</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LITERAL_VALUE_OPERATION_COUNT = 0;
+	int LITERAL_VALUE_OPERATION_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralBooleanImpl <em>Literal Boolean</em>}' class.
@@ -115,13 +124,13 @@ public interface CommonPackage extends EPackage {
 	int LITERAL_BOOLEAN = 1;
 
 	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * The feature id for the '<em><b>Bool</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LITERAL_BOOLEAN__VALUE = LITERAL_VALUE_FEATURE_COUNT + 0;
+	int LITERAL_BOOLEAN__BOOL = LITERAL_VALUE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Literal Boolean</em>' class.
@@ -133,13 +142,22 @@ public interface CommonPackage extends EPackage {
 	int LITERAL_BOOLEAN_FEATURE_COUNT = LITERAL_VALUE_FEATURE_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Value</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_BOOLEAN___VALUE = LITERAL_VALUE_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>Literal Boolean</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LITERAL_BOOLEAN_OPERATION_COUNT = LITERAL_VALUE_OPERATION_COUNT + 0;
+	int LITERAL_BOOLEAN_OPERATION_COUNT = LITERAL_VALUE_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralDateTimeImpl <em>Literal Date Time</em>}' class.
@@ -170,13 +188,22 @@ public interface CommonPackage extends EPackage {
 	int LITERAL_DATE_TIME_FEATURE_COUNT = LITERAL_VALUE_FEATURE_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Value</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_DATE_TIME___VALUE = LITERAL_VALUE_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>Literal Date Time</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LITERAL_DATE_TIME_OPERATION_COUNT = LITERAL_VALUE_OPERATION_COUNT + 0;
+	int LITERAL_DATE_TIME_OPERATION_COUNT = LITERAL_VALUE_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralStringImpl <em>Literal String</em>}' class.
@@ -198,13 +225,22 @@ public interface CommonPackage extends EPackage {
 	int LITERAL_STRING_FEATURE_COUNT = LITERAL_VALUE_FEATURE_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>String Value</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_STRING___STRING_VALUE = LITERAL_VALUE_OPERATION_COUNT + 0;
+
+	/**
 	 * The operation id for the '<em>Value</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LITERAL_STRING___VALUE = LITERAL_VALUE_OPERATION_COUNT + 0;
+	int LITERAL_STRING___VALUE = LITERAL_VALUE_OPERATION_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Literal String</em>' class.
@@ -213,7 +249,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LITERAL_STRING_OPERATION_COUNT = LITERAL_VALUE_OPERATION_COUNT + 1;
+	int LITERAL_STRING_OPERATION_COUNT = LITERAL_VALUE_OPERATION_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralQuotedStringImpl <em>Literal Quoted String</em>}' class.
@@ -250,7 +286,16 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LITERAL_QUOTED_STRING___VALUE = LITERAL_STRING_OPERATION_COUNT + 0;
+	int LITERAL_QUOTED_STRING___VALUE = LITERAL_STRING___VALUE;
+
+	/**
+	 * The operation id for the '<em>String Value</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_QUOTED_STRING___STRING_VALUE = LITERAL_STRING_OPERATION_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Literal Quoted String</em>' class.
@@ -296,7 +341,16 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LITERAL_RAW_STRING___VALUE = LITERAL_STRING_OPERATION_COUNT + 0;
+	int LITERAL_RAW_STRING___VALUE = LITERAL_STRING___VALUE;
+
+	/**
+	 * The operation id for the '<em>String Value</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_RAW_STRING___STRING_VALUE = LITERAL_STRING_OPERATION_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Literal Raw String</em>' class.
@@ -336,13 +390,22 @@ public interface CommonPackage extends EPackage {
 	int LITERAL_UUID_FEATURE_COUNT = LITERAL_VALUE_FEATURE_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Value</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_UUID___VALUE = LITERAL_VALUE_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>Literal UUID</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LITERAL_UUID_OPERATION_COUNT = LITERAL_VALUE_OPERATION_COUNT + 0;
+	int LITERAL_UUID_OPERATION_COUNT = LITERAL_VALUE_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralURIImpl <em>Literal URI</em>}' class.
@@ -373,13 +436,22 @@ public interface CommonPackage extends EPackage {
 	int LITERAL_URI_FEATURE_COUNT = LITERAL_VALUE_FEATURE_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Value</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_URI___VALUE = LITERAL_VALUE_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>Literal URI</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LITERAL_URI_OPERATION_COUNT = LITERAL_VALUE_OPERATION_COUNT + 0;
+	int LITERAL_URI_OPERATION_COUNT = LITERAL_VALUE_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralNumberImpl <em>Literal Number</em>}' class.
@@ -399,6 +471,15 @@ public interface CommonPackage extends EPackage {
 	 * @ordered
 	 */
 	int LITERAL_NUMBER_FEATURE_COUNT = LITERAL_VALUE_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Value</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_NUMBER___VALUE = LITERAL_VALUE___VALUE;
 
 	/**
 	 * The number of operations of the '<em>Literal Number</em>' class.
@@ -438,13 +519,22 @@ public interface CommonPackage extends EPackage {
 	int LITERAL_REAL_FEATURE_COUNT = LITERAL_NUMBER_FEATURE_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Value</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_REAL___VALUE = LITERAL_NUMBER_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>Literal Real</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LITERAL_REAL_OPERATION_COUNT = LITERAL_NUMBER_OPERATION_COUNT + 0;
+	int LITERAL_REAL_OPERATION_COUNT = LITERAL_NUMBER_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralRationalImpl <em>Literal Rational</em>}' class.
@@ -475,13 +565,22 @@ public interface CommonPackage extends EPackage {
 	int LITERAL_RATIONAL_FEATURE_COUNT = LITERAL_NUMBER_FEATURE_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Value</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_RATIONAL___VALUE = LITERAL_NUMBER_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>Literal Rational</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LITERAL_RATIONAL_OPERATION_COUNT = LITERAL_NUMBER_OPERATION_COUNT + 0;
+	int LITERAL_RATIONAL_OPERATION_COUNT = LITERAL_NUMBER_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralFloatImpl <em>Literal Float</em>}' class.
@@ -512,13 +611,22 @@ public interface CommonPackage extends EPackage {
 	int LITERAL_FLOAT_FEATURE_COUNT = LITERAL_NUMBER_FEATURE_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Value</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_FLOAT___VALUE = LITERAL_NUMBER_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>Literal Float</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LITERAL_FLOAT_OPERATION_COUNT = LITERAL_NUMBER_OPERATION_COUNT + 0;
+	int LITERAL_FLOAT_OPERATION_COUNT = LITERAL_NUMBER_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralDecimalImpl <em>Literal Decimal</em>}' class.
@@ -549,87 +657,32 @@ public interface CommonPackage extends EPackage {
 	int LITERAL_DECIMAL_FEATURE_COUNT = LITERAL_NUMBER_FEATURE_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Value</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_DECIMAL___VALUE = LITERAL_NUMBER_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>Literal Decimal</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LITERAL_DECIMAL_OPERATION_COUNT = LITERAL_NUMBER_OPERATION_COUNT + 0;
+	int LITERAL_DECIMAL_OPERATION_COUNT = LITERAL_NUMBER_OPERATION_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.AnnotationPropertyValueImpl <em>Annotation Property Value</em>}' class.
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.CrossReferencabilityKindImpl <em>Cross Referencability Kind</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see gov.nasa.jpl.imce.oml.model.common.impl.AnnotationPropertyValueImpl
-	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getAnnotationPropertyValue()
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CrossReferencabilityKindImpl
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getCrossReferencabilityKind()
 	 * @generated
 	 */
-	int ANNOTATION_PROPERTY_VALUE = 13;
-
-	/**
-	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANNOTATION_PROPERTY_VALUE__UUID = 0;
-
-	/**
-	 * The feature id for the '<em><b>Subject</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANNOTATION_PROPERTY_VALUE__SUBJECT = 1;
-
-	/**
-	 * The feature id for the '<em><b>Property</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANNOTATION_PROPERTY_VALUE__PROPERTY = 2;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANNOTATION_PROPERTY_VALUE__VALUE = 3;
-
-	/**
-	 * The number of structural features of the '<em>Annotation Property Value</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANNOTATION_PROPERTY_VALUE_FEATURE_COUNT = 4;
-
-	/**
-	 * The number of operations of the '<em>Annotation Property Value</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANNOTATION_PROPERTY_VALUE_OPERATION_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.ElementImpl <em>Element</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see gov.nasa.jpl.imce.oml.model.common.impl.ElementImpl
-	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getElement()
-	 * @generated
-	 */
-	int ELEMENT = 14;
+	int CROSS_REFERENCABILITY_KIND = 13;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -638,25 +691,16 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT__UUID = 0;
+	int CROSS_REFERENCABILITY_KIND__UUID = 0;
 
 	/**
-	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * The number of structural features of the '<em>Cross Referencability Kind</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT__ANNOTATIONS = 1;
-
-	/**
-	 * The number of structural features of the '<em>Element</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ELEMENT_FEATURE_COUNT = 2;
+	int CROSS_REFERENCABILITY_KIND_FEATURE_COUNT = 1;
 
 	/**
 	 * The operation id for the '<em>Uuid</em>' operation.
@@ -665,7 +709,301 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT___UUID = 0;
+	int CROSS_REFERENCABILITY_KIND___UUID = 0;
+
+	/**
+	 * The number of operations of the '<em>Cross Referencability Kind</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CROSS_REFERENCABILITY_KIND_OPERATION_COUNT = 1;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.CrossReferencableKindImpl <em>Cross Referencable Kind</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CrossReferencableKindImpl
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getCrossReferencableKind()
+	 * @generated
+	 */
+	int CROSS_REFERENCABLE_KIND = 14;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CROSS_REFERENCABLE_KIND__UUID = CROSS_REFERENCABILITY_KIND__UUID;
+
+	/**
+	 * The number of structural features of the '<em>Cross Referencable Kind</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CROSS_REFERENCABLE_KIND_FEATURE_COUNT = CROSS_REFERENCABILITY_KIND_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CROSS_REFERENCABLE_KIND___UUID = CROSS_REFERENCABILITY_KIND___UUID;
+
+	/**
+	 * The number of operations of the '<em>Cross Referencable Kind</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CROSS_REFERENCABLE_KIND_OPERATION_COUNT = CROSS_REFERENCABILITY_KIND_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.NonCrossReferencableKindImpl <em>Non Cross Referencable Kind</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.NonCrossReferencableKindImpl
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getNonCrossReferencableKind()
+	 * @generated
+	 */
+	int NON_CROSS_REFERENCABLE_KIND = 15;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NON_CROSS_REFERENCABLE_KIND__UUID = CROSS_REFERENCABILITY_KIND__UUID;
+
+	/**
+	 * The number of structural features of the '<em>Non Cross Referencable Kind</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NON_CROSS_REFERENCABLE_KIND_FEATURE_COUNT = CROSS_REFERENCABILITY_KIND_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NON_CROSS_REFERENCABLE_KIND___UUID = CROSS_REFERENCABILITY_KIND___UUID;
+
+	/**
+	 * The number of operations of the '<em>Non Cross Referencable Kind</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NON_CROSS_REFERENCABLE_KIND_OPERATION_COUNT = CROSS_REFERENCABILITY_KIND_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.IdentityKindImpl <em>Identity Kind</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.IdentityKindImpl
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getIdentityKind()
+	 * @generated
+	 */
+	int IDENTITY_KIND = 16;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTITY_KIND__UUID = CROSS_REFERENCABILITY_KIND__UUID;
+
+	/**
+	 * The number of structural features of the '<em>Identity Kind</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTITY_KIND_FEATURE_COUNT = CROSS_REFERENCABILITY_KIND_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTITY_KIND___UUID = CROSS_REFERENCABILITY_KIND___UUID;
+
+	/**
+	 * The number of operations of the '<em>Identity Kind</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTITY_KIND_OPERATION_COUNT = CROSS_REFERENCABILITY_KIND_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.IntrinsicIdentityKindImpl <em>Intrinsic Identity Kind</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.IntrinsicIdentityKindImpl
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getIntrinsicIdentityKind()
+	 * @generated
+	 */
+	int INTRINSIC_IDENTITY_KIND = 17;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTRINSIC_IDENTITY_KIND__UUID = IDENTITY_KIND__UUID;
+
+	/**
+	 * The number of structural features of the '<em>Intrinsic Identity Kind</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTRINSIC_IDENTITY_KIND_FEATURE_COUNT = IDENTITY_KIND_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTRINSIC_IDENTITY_KIND___UUID = IDENTITY_KIND___UUID;
+
+	/**
+	 * The operation id for the '<em>Iri</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTRINSIC_IDENTITY_KIND___IRI = IDENTITY_KIND_OPERATION_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Intrinsic Identity Kind</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTRINSIC_IDENTITY_KIND_OPERATION_COUNT = IDENTITY_KIND_OPERATION_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.ExtrinsicIdentityKindImpl <em>Extrinsic Identity Kind</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.ExtrinsicIdentityKindImpl
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getExtrinsicIdentityKind()
+	 * @generated
+	 */
+	int EXTRINSIC_IDENTITY_KIND = 18;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTRINSIC_IDENTITY_KIND__UUID = IDENTITY_KIND__UUID;
+
+	/**
+	 * The number of structural features of the '<em>Extrinsic Identity Kind</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTRINSIC_IDENTITY_KIND_FEATURE_COUNT = IDENTITY_KIND_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTRINSIC_IDENTITY_KIND___UUID = IDENTITY_KIND___UUID;
+
+	/**
+	 * The number of operations of the '<em>Extrinsic Identity Kind</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXTRINSIC_IDENTITY_KIND_OPERATION_COUNT = IDENTITY_KIND_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.ElementCrossReferenceTupleImpl <em>Element Cross Reference Tuple</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.ElementCrossReferenceTupleImpl
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getElementCrossReferenceTuple()
+	 * @generated
+	 */
+	int ELEMENT_CROSS_REFERENCE_TUPLE = 19;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ELEMENT_CROSS_REFERENCE_TUPLE__UUID = EXTRINSIC_IDENTITY_KIND__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ELEMENT_CROSS_REFERENCE_TUPLE__ANNOTATIONS = EXTRINSIC_IDENTITY_KIND_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Element Cross Reference Tuple</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ELEMENT_CROSS_REFERENCE_TUPLE_FEATURE_COUNT = EXTRINSIC_IDENTITY_KIND_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ELEMENT_CROSS_REFERENCE_TUPLE___UUID = EXTRINSIC_IDENTITY_KIND___UUID;
 
 	/**
 	 * The operation id for the '<em>Module Context</em>' operation.
@@ -674,16 +1012,172 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT___MODULE_CONTEXT = 1;
+	int ELEMENT_CROSS_REFERENCE_TUPLE___MODULE_CONTEXT = EXTRINSIC_IDENTITY_KIND_OPERATION_COUNT + 0;
 
 	/**
-	 * The number of operations of the '<em>Element</em>' class.
+	 * The number of operations of the '<em>Element Cross Reference Tuple</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ELEMENT_OPERATION_COUNT = 2;
+	int ELEMENT_CROSS_REFERENCE_TUPLE_OPERATION_COUNT = EXTRINSIC_IDENTITY_KIND_OPERATION_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.ValueCrossReferenceTupleImpl <em>Value Cross Reference Tuple</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.ValueCrossReferenceTupleImpl
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getValueCrossReferenceTuple()
+	 * @generated
+	 */
+	int VALUE_CROSS_REFERENCE_TUPLE = 20;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_CROSS_REFERENCE_TUPLE__UUID = EXTRINSIC_IDENTITY_KIND__UUID;
+
+	/**
+	 * The number of structural features of the '<em>Value Cross Reference Tuple</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_CROSS_REFERENCE_TUPLE_FEATURE_COUNT = EXTRINSIC_IDENTITY_KIND_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_CROSS_REFERENCE_TUPLE___UUID = EXTRINSIC_IDENTITY_KIND___UUID;
+
+	/**
+	 * The number of operations of the '<em>Value Cross Reference Tuple</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_CROSS_REFERENCE_TUPLE_OPERATION_COUNT = EXTRINSIC_IDENTITY_KIND_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.LogicalElementImpl <em>Logical Element</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.LogicalElementImpl
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLogicalElement()
+	 * @generated
+	 */
+	int LOGICAL_ELEMENT = 21;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOGICAL_ELEMENT__UUID = IDENTITY_KIND__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOGICAL_ELEMENT__ANNOTATIONS = IDENTITY_KIND_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Logical Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOGICAL_ELEMENT_FEATURE_COUNT = IDENTITY_KIND_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOGICAL_ELEMENT___UUID = IDENTITY_KIND___UUID;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOGICAL_ELEMENT___MODULE_CONTEXT = IDENTITY_KIND_OPERATION_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Logical Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOGICAL_ELEMENT_OPERATION_COUNT = IDENTITY_KIND_OPERATION_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.NonLogicalElementImpl <em>Non Logical Element</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.NonLogicalElementImpl
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getNonLogicalElement()
+	 * @generated
+	 */
+	int NON_LOGICAL_ELEMENT = 22;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NON_LOGICAL_ELEMENT__UUID = IDENTITY_KIND__UUID;
+
+	/**
+	 * The number of structural features of the '<em>Non Logical Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NON_LOGICAL_ELEMENT_FEATURE_COUNT = IDENTITY_KIND_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NON_LOGICAL_ELEMENT___UUID = IDENTITY_KIND___UUID;
+
+	/**
+	 * The number of operations of the '<em>Non Logical Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NON_LOGICAL_ELEMENT_OPERATION_COUNT = IDENTITY_KIND_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.ResourceImpl <em>Resource</em>}' class.
@@ -693,7 +1187,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getResource()
 	 * @generated
 	 */
-	int RESOURCE = 15;
+	int RESOURCE = 23;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -702,7 +1196,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE__UUID = ELEMENT__UUID;
+	int RESOURCE__UUID = LOGICAL_ELEMENT__UUID;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -711,7 +1205,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE__ANNOTATIONS = ELEMENT__ANNOTATIONS;
+	int RESOURCE__ANNOTATIONS = LOGICAL_ELEMENT__ANNOTATIONS;
 
 	/**
 	 * The number of structural features of the '<em>Resource</em>' class.
@@ -720,7 +1214,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 0;
+	int RESOURCE_FEATURE_COUNT = LOGICAL_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Uuid</em>' operation.
@@ -729,7 +1223,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE___UUID = ELEMENT___UUID;
+	int RESOURCE___UUID = LOGICAL_ELEMENT___UUID;
 
 	/**
 	 * The operation id for the '<em>Module Context</em>' operation.
@@ -738,7 +1232,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE___MODULE_CONTEXT = ELEMENT___MODULE_CONTEXT;
+	int RESOURCE___MODULE_CONTEXT = LOGICAL_ELEMENT___MODULE_CONTEXT;
 
 	/**
 	 * The operation id for the '<em>Iri</em>' operation.
@@ -747,7 +1241,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE___IRI = ELEMENT_OPERATION_COUNT + 0;
+	int RESOURCE___IRI = LOGICAL_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Name</em>' operation.
@@ -756,7 +1250,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE___NAME = ELEMENT_OPERATION_COUNT + 1;
+	int RESOURCE___NAME = LOGICAL_ELEMENT_OPERATION_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Abbrev IRI</em>' operation.
@@ -765,7 +1259,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE___ABBREV_IRI = ELEMENT_OPERATION_COUNT + 2;
+	int RESOURCE___ABBREV_IRI = LOGICAL_ELEMENT_OPERATION_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Resource</em>' class.
@@ -774,7 +1268,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_OPERATION_COUNT = ELEMENT_OPERATION_COUNT + 3;
+	int RESOURCE_OPERATION_COUNT = LOGICAL_ELEMENT_OPERATION_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.ModuleElementImpl <em>Module Element</em>}' class.
@@ -784,7 +1278,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getModuleElement()
 	 * @generated
 	 */
-	int MODULE_ELEMENT = 16;
+	int MODULE_ELEMENT = 24;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -793,7 +1287,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE_ELEMENT__UUID = ELEMENT__UUID;
+	int MODULE_ELEMENT__UUID = LOGICAL_ELEMENT__UUID;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -802,7 +1296,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE_ELEMENT__ANNOTATIONS = ELEMENT__ANNOTATIONS;
+	int MODULE_ELEMENT__ANNOTATIONS = LOGICAL_ELEMENT__ANNOTATIONS;
 
 	/**
 	 * The number of structural features of the '<em>Module Element</em>' class.
@@ -811,7 +1305,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE_ELEMENT_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 0;
+	int MODULE_ELEMENT_FEATURE_COUNT = LOGICAL_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Uuid</em>' operation.
@@ -820,7 +1314,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE_ELEMENT___UUID = ELEMENT___UUID;
+	int MODULE_ELEMENT___UUID = LOGICAL_ELEMENT___UUID;
 
 	/**
 	 * The operation id for the '<em>Module Context</em>' operation.
@@ -829,7 +1323,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE_ELEMENT___MODULE_CONTEXT = ELEMENT___MODULE_CONTEXT;
+	int MODULE_ELEMENT___MODULE_CONTEXT = LOGICAL_ELEMENT___MODULE_CONTEXT;
 
 	/**
 	 * The operation id for the '<em>All Nested Elements</em>' operation.
@@ -838,7 +1332,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE_ELEMENT___ALL_NESTED_ELEMENTS = ELEMENT_OPERATION_COUNT + 0;
+	int MODULE_ELEMENT___ALL_NESTED_ELEMENTS = LOGICAL_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Module Element</em>' class.
@@ -847,7 +1341,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE_ELEMENT_OPERATION_COUNT = ELEMENT_OPERATION_COUNT + 1;
+	int MODULE_ELEMENT_OPERATION_COUNT = LOGICAL_ELEMENT_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.ModuleEdgeImpl <em>Module Edge</em>}' class.
@@ -857,7 +1351,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getModuleEdge()
 	 * @generated
 	 */
-	int MODULE_EDGE = 17;
+	int MODULE_EDGE = 25;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -866,7 +1360,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE_EDGE__UUID = ELEMENT__UUID;
+	int MODULE_EDGE__UUID = ELEMENT_CROSS_REFERENCE_TUPLE__UUID;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -875,7 +1369,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE_EDGE__ANNOTATIONS = ELEMENT__ANNOTATIONS;
+	int MODULE_EDGE__ANNOTATIONS = ELEMENT_CROSS_REFERENCE_TUPLE__ANNOTATIONS;
 
 	/**
 	 * The number of structural features of the '<em>Module Edge</em>' class.
@@ -884,7 +1378,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE_EDGE_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 0;
+	int MODULE_EDGE_FEATURE_COUNT = ELEMENT_CROSS_REFERENCE_TUPLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Uuid</em>' operation.
@@ -893,7 +1387,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE_EDGE___UUID = ELEMENT___UUID;
+	int MODULE_EDGE___UUID = ELEMENT_CROSS_REFERENCE_TUPLE___UUID;
 
 	/**
 	 * The operation id for the '<em>Source Module</em>' operation.
@@ -902,7 +1396,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE_EDGE___SOURCE_MODULE = ELEMENT_OPERATION_COUNT + 0;
+	int MODULE_EDGE___SOURCE_MODULE = ELEMENT_CROSS_REFERENCE_TUPLE_OPERATION_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Target Module</em>' operation.
@@ -911,7 +1405,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE_EDGE___TARGET_MODULE = ELEMENT_OPERATION_COUNT + 1;
+	int MODULE_EDGE___TARGET_MODULE = ELEMENT_CROSS_REFERENCE_TUPLE_OPERATION_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Module Context</em>' operation.
@@ -920,7 +1414,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE_EDGE___MODULE_CONTEXT = ELEMENT_OPERATION_COUNT + 2;
+	int MODULE_EDGE___MODULE_CONTEXT = ELEMENT_CROSS_REFERENCE_TUPLE_OPERATION_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Module Edge</em>' class.
@@ -929,7 +1423,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE_EDGE_OPERATION_COUNT = ELEMENT_OPERATION_COUNT + 3;
+	int MODULE_EDGE_OPERATION_COUNT = ELEMENT_CROSS_REFERENCE_TUPLE_OPERATION_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.AnnotationPropertyImpl <em>Annotation Property</em>}' class.
@@ -939,16 +1433,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getAnnotationProperty()
 	 * @generated
 	 */
-	int ANNOTATION_PROPERTY = 18;
-
-	/**
-	 * The feature id for the '<em><b>Extent</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANNOTATION_PROPERTY__EXTENT = 0;
+	int ANNOTATION_PROPERTY = 26;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -957,7 +1442,16 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ANNOTATION_PROPERTY__UUID = 1;
+	int ANNOTATION_PROPERTY__UUID = INTRINSIC_IDENTITY_KIND__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Extent</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_PROPERTY__EXTENT = INTRINSIC_IDENTITY_KIND_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Iri</b></em>' attribute.
@@ -966,7 +1460,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ANNOTATION_PROPERTY__IRI = 2;
+	int ANNOTATION_PROPERTY__IRI = INTRINSIC_IDENTITY_KIND_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Abbrev IRI</b></em>' attribute.
@@ -975,7 +1469,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ANNOTATION_PROPERTY__ABBREV_IRI = 3;
+	int ANNOTATION_PROPERTY__ABBREV_IRI = INTRINSIC_IDENTITY_KIND_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Annotation Property</em>' class.
@@ -984,7 +1478,25 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ANNOTATION_PROPERTY_FEATURE_COUNT = 4;
+	int ANNOTATION_PROPERTY_FEATURE_COUNT = INTRINSIC_IDENTITY_KIND_FEATURE_COUNT + 3;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_PROPERTY___UUID = INTRINSIC_IDENTITY_KIND_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Iri</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_PROPERTY___IRI = INTRINSIC_IDENTITY_KIND_OPERATION_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Annotation Property</em>' class.
@@ -993,7 +1505,80 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ANNOTATION_PROPERTY_OPERATION_COUNT = 0;
+	int ANNOTATION_PROPERTY_OPERATION_COUNT = INTRINSIC_IDENTITY_KIND_OPERATION_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.AnnotationPropertyValueImpl <em>Annotation Property Value</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.AnnotationPropertyValueImpl
+	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getAnnotationPropertyValue()
+	 * @generated
+	 */
+	int ANNOTATION_PROPERTY_VALUE = 27;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_PROPERTY_VALUE__UUID = VALUE_CROSS_REFERENCE_TUPLE__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Subject</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_PROPERTY_VALUE__SUBJECT = VALUE_CROSS_REFERENCE_TUPLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Property</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_PROPERTY_VALUE__PROPERTY = VALUE_CROSS_REFERENCE_TUPLE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_PROPERTY_VALUE__VALUE = VALUE_CROSS_REFERENCE_TUPLE_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Annotation Property Value</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_PROPERTY_VALUE_FEATURE_COUNT = VALUE_CROSS_REFERENCE_TUPLE_FEATURE_COUNT + 3;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_PROPERTY_VALUE___UUID = VALUE_CROSS_REFERENCE_TUPLE_OPERATION_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Annotation Property Value</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_PROPERTY_VALUE_OPERATION_COUNT = VALUE_CROSS_REFERENCE_TUPLE_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.ExtentImpl <em>Extent</em>}' class.
@@ -1003,7 +1588,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getExtent()
 	 * @generated
 	 */
-	int EXTENT = 19;
+	int EXTENT = 28;
 
 	/**
 	 * The feature id for the '<em><b>Modules</b></em>' containment reference list.
@@ -1049,7 +1634,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getModule()
 	 * @generated
 	 */
-	int MODULE = 20;
+	int MODULE = 29;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -1185,7 +1770,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getIRI()
 	 * @generated
 	 */
-	int IRI = 21;
+	int IRI = 30;
 
 	/**
 	 * The meta object id for the '<em>Local Name</em>' data type.
@@ -1195,7 +1780,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLocalName()
 	 * @generated
 	 */
-	int LOCAL_NAME = 22;
+	int LOCAL_NAME = 31;
 
 	/**
 	 * The meta object id for the '<em>UUID</em>' data type.
@@ -1205,7 +1790,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getUUID()
 	 * @generated
 	 */
-	int UUID = 23;
+	int UUID = 32;
 
 	/**
 	 * The meta object id for the '<em>Abbrev IRI</em>' data type.
@@ -1215,7 +1800,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getAbbrevIRI()
 	 * @generated
 	 */
-	int ABBREV_IRI = 24;
+	int ABBREV_IRI = 33;
 
 	/**
 	 * The meta object id for the '<em>Namespace Prefix</em>' data type.
@@ -1225,7 +1810,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getNamespacePrefix()
 	 * @generated
 	 */
-	int NAMESPACE_PREFIX = 25;
+	int NAMESPACE_PREFIX = 34;
 
 	/**
 	 * The meta object id for the '<em>Positive Integer Literal</em>' data type.
@@ -1235,7 +1820,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getPositiveIntegerLiteral()
 	 * @generated
 	 */
-	int POSITIVE_INTEGER_LITERAL = 26;
+	int POSITIVE_INTEGER_LITERAL = 35;
 
 	/**
 	 * The meta object id for the '<em>Literal Pattern</em>' data type.
@@ -1245,7 +1830,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLiteralPattern()
 	 * @generated
 	 */
-	int LITERAL_PATTERN = 27;
+	int LITERAL_PATTERN = 36;
 
 	/**
 	 * The meta object id for the '<em>Real Data Type</em>' data type.
@@ -1255,7 +1840,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getRealDataType()
 	 * @generated
 	 */
-	int REAL_DATA_TYPE = 28;
+	int REAL_DATA_TYPE = 37;
 
 	/**
 	 * The meta object id for the '<em>Rational Data Type</em>' data type.
@@ -1265,7 +1850,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getRationalDataType()
 	 * @generated
 	 */
-	int RATIONAL_DATA_TYPE = 29;
+	int RATIONAL_DATA_TYPE = 38;
 
 	/**
 	 * The meta object id for the '<em>Float Data Type</em>' data type.
@@ -1275,7 +1860,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getFloatDataType()
 	 * @generated
 	 */
-	int FLOAT_DATA_TYPE = 30;
+	int FLOAT_DATA_TYPE = 39;
 
 	/**
 	 * The meta object id for the '<em>Abstract Decimal Data Type</em>' data type.
@@ -1285,7 +1870,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getAbstractDecimalDataType()
 	 * @generated
 	 */
-	int ABSTRACT_DECIMAL_DATA_TYPE = 31;
+	int ABSTRACT_DECIMAL_DATA_TYPE = 40;
 
 	/**
 	 * The meta object id for the '<em>Decimal Data Type</em>' data type.
@@ -1295,7 +1880,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getDecimalDataType()
 	 * @generated
 	 */
-	int DECIMAL_DATA_TYPE = 32;
+	int DECIMAL_DATA_TYPE = 41;
 
 	/**
 	 * The meta object id for the '<em>Date Time Data Type</em>' data type.
@@ -1305,7 +1890,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getDateTimeDataType()
 	 * @generated
 	 */
-	int DATE_TIME_DATA_TYPE = 33;
+	int DATE_TIME_DATA_TYPE = 42;
 
 	/**
 	 * The meta object id for the '<em>Language Tag Data Type</em>' data type.
@@ -1315,7 +1900,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLanguageTagDataType()
 	 * @generated
 	 */
-	int LANGUAGE_TAG_DATA_TYPE = 34;
+	int LANGUAGE_TAG_DATA_TYPE = 43;
 
 	/**
 	 * The meta object id for the '<em>String Data Type</em>' data type.
@@ -1325,7 +1910,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getStringDataType()
 	 * @generated
 	 */
-	int STRING_DATA_TYPE = 35;
+	int STRING_DATA_TYPE = 44;
 
 	/**
 	 * The meta object id for the '<em>Raw String Data Type</em>' data type.
@@ -1335,7 +1920,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getRawStringDataType()
 	 * @generated
 	 */
-	int RAW_STRING_DATA_TYPE = 36;
+	int RAW_STRING_DATA_TYPE = 45;
 
 	/**
 	 * The meta object id for the '<em>Quoted String Data Type</em>' data type.
@@ -1345,7 +1930,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getQuotedStringDataType()
 	 * @generated
 	 */
-	int QUOTED_STRING_DATA_TYPE = 37;
+	int QUOTED_STRING_DATA_TYPE = 46;
 
 	/**
 	 * The meta object id for the '<em>UUID Data Type</em>' data type.
@@ -1355,7 +1940,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getUUIDDataType()
 	 * @generated
 	 */
-	int UUID_DATA_TYPE = 38;
+	int UUID_DATA_TYPE = 47;
 
 	/**
 	 * The meta object id for the '<em>URI Data Type</em>' data type.
@@ -1365,7 +1950,7 @@ public interface CommonPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getURIDataType()
 	 * @generated
 	 */
-	int URI_DATA_TYPE = 39;
+	int URI_DATA_TYPE = 48;
 
 
 	/**
@@ -1379,6 +1964,16 @@ public interface CommonPackage extends EPackage {
 	EClass getLiteralValue();
 
 	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.common.LiteralValue#value() <em>Value</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Value</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralValue#value()
+	 * @generated
+	 */
+	EOperation getLiteralValue__Value();
+
+	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.common.LiteralBoolean <em>Literal Boolean</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1389,15 +1984,25 @@ public interface CommonPackage extends EPackage {
 	EClass getLiteralBoolean();
 
 	/**
-	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.common.LiteralBoolean#isValue <em>Value</em>}'.
+	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.common.LiteralBoolean#isBool <em>Bool</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralBoolean#isValue()
+	 * @return the meta object for the attribute '<em>Bool</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralBoolean#isBool()
 	 * @see #getLiteralBoolean()
 	 * @generated
 	 */
-	EAttribute getLiteralBoolean_Value();
+	EAttribute getLiteralBoolean_Bool();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.common.LiteralBoolean#value() <em>Value</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Value</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralBoolean#value()
+	 * @generated
+	 */
+	EOperation getLiteralBoolean__Value();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.common.LiteralDateTime <em>Literal Date Time</em>}'.
@@ -1421,6 +2026,16 @@ public interface CommonPackage extends EPackage {
 	EAttribute getLiteralDateTime_DateTime();
 
 	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.common.LiteralDateTime#value() <em>Value</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Value</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralDateTime#value()
+	 * @generated
+	 */
+	EOperation getLiteralDateTime__Value();
+
+	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.common.LiteralString <em>Literal String</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1429,6 +2044,16 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getLiteralString();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.common.LiteralString#stringValue() <em>String Value</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>String Value</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralString#stringValue()
+	 * @generated
+	 */
+	EOperation getLiteralString__StringValue();
 
 	/**
 	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.common.LiteralString#value() <em>Value</em>}' operation.
@@ -1462,14 +2087,14 @@ public interface CommonPackage extends EPackage {
 	EAttribute getLiteralQuotedString_String();
 
 	/**
-	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.common.LiteralQuotedString#value() <em>Value</em>}' operation.
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.common.LiteralQuotedString#stringValue() <em>String Value</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Value</em>' operation.
-	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralQuotedString#value()
+	 * @return the meta object for the '<em>String Value</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralQuotedString#stringValue()
 	 * @generated
 	 */
-	EOperation getLiteralQuotedString__Value();
+	EOperation getLiteralQuotedString__StringValue();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.common.LiteralRawString <em>Literal Raw String</em>}'.
@@ -1493,14 +2118,14 @@ public interface CommonPackage extends EPackage {
 	EAttribute getLiteralRawString_String();
 
 	/**
-	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.common.LiteralRawString#value() <em>Value</em>}' operation.
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.common.LiteralRawString#stringValue() <em>String Value</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Value</em>' operation.
-	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralRawString#value()
+	 * @return the meta object for the '<em>String Value</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralRawString#stringValue()
 	 * @generated
 	 */
-	EOperation getLiteralRawString__Value();
+	EOperation getLiteralRawString__StringValue();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.common.LiteralUUID <em>Literal UUID</em>}'.
@@ -1524,6 +2149,16 @@ public interface CommonPackage extends EPackage {
 	EAttribute getLiteralUUID_Uuid();
 
 	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.common.LiteralUUID#value() <em>Value</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Value</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralUUID#value()
+	 * @generated
+	 */
+	EOperation getLiteralUUID__Value();
+
+	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.common.LiteralURI <em>Literal URI</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1543,6 +2178,16 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getLiteralURI_Uri();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.common.LiteralURI#value() <em>Value</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Value</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralURI#value()
+	 * @generated
+	 */
+	EOperation getLiteralURI__Value();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.common.LiteralNumber <em>Literal Number</em>}'.
@@ -1576,6 +2221,16 @@ public interface CommonPackage extends EPackage {
 	EAttribute getLiteralReal_Real();
 
 	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.common.LiteralReal#value() <em>Value</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Value</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralReal#value()
+	 * @generated
+	 */
+	EOperation getLiteralReal__Value();
+
+	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.common.LiteralRational <em>Literal Rational</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1595,6 +2250,16 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getLiteralRational_Rational();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.common.LiteralRational#value() <em>Value</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Value</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralRational#value()
+	 * @generated
+	 */
+	EOperation getLiteralRational__Value();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.common.LiteralFloat <em>Literal Float</em>}'.
@@ -1618,6 +2283,16 @@ public interface CommonPackage extends EPackage {
 	EAttribute getLiteralFloat_Float();
 
 	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.common.LiteralFloat#value() <em>Value</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Value</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralFloat#value()
+	 * @generated
+	 */
+	EOperation getLiteralFloat__Value();
+
+	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.common.LiteralDecimal <em>Literal Decimal</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1639,110 +2314,166 @@ public interface CommonPackage extends EPackage {
 	EAttribute getLiteralDecimal_Decimal();
 
 	/**
-	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue <em>Annotation Property Value</em>}'.
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.common.LiteralDecimal#value() <em>Value</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Annotation Property Value</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue
+	 * @return the meta object for the '<em>Value</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LiteralDecimal#value()
 	 * @generated
 	 */
-	EClass getAnnotationPropertyValue();
+	EOperation getLiteralDecimal__Value();
 
 	/**
-	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue#getUuid <em>Uuid</em>}'.
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.common.CrossReferencabilityKind <em>Cross Referencability Kind</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Uuid</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue#getUuid()
-	 * @see #getAnnotationPropertyValue()
+	 * @return the meta object for class '<em>Cross Referencability Kind</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.common.CrossReferencabilityKind
 	 * @generated
 	 */
-	EAttribute getAnnotationPropertyValue_Uuid();
+	EClass getCrossReferencabilityKind();
 
 	/**
-	 * Returns the meta object for the container reference '{@link gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue#getSubject <em>Subject</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Subject</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue#getSubject()
-	 * @see #getAnnotationPropertyValue()
-	 * @generated
-	 */
-	EReference getAnnotationPropertyValue_Subject();
-
-	/**
-	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue#getProperty <em>Property</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Property</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue#getProperty()
-	 * @see #getAnnotationPropertyValue()
-	 * @generated
-	 */
-	EReference getAnnotationPropertyValue_Property();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue#getValue <em>Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Value</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue#getValue()
-	 * @see #getAnnotationPropertyValue()
-	 * @generated
-	 */
-	EReference getAnnotationPropertyValue_Value();
-
-	/**
-	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.common.Element <em>Element</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Element</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.common.Element
-	 * @generated
-	 */
-	EClass getElement();
-
-	/**
-	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.common.Element#getUuid <em>Uuid</em>}'.
+	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.common.CrossReferencabilityKind#getUuid <em>Uuid</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Uuid</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.common.Element#getUuid()
-	 * @see #getElement()
+	 * @see gov.nasa.jpl.imce.oml.model.common.CrossReferencabilityKind#getUuid()
+	 * @see #getCrossReferencabilityKind()
 	 * @generated
 	 */
-	EAttribute getElement_Uuid();
+	EAttribute getCrossReferencabilityKind_Uuid();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link gov.nasa.jpl.imce.oml.model.common.Element#getAnnotations <em>Annotations</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Annotations</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.common.Element#getAnnotations()
-	 * @see #getElement()
-	 * @generated
-	 */
-	EReference getElement_Annotations();
-
-	/**
-	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.common.Element#uuid() <em>Uuid</em>}' operation.
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.common.CrossReferencabilityKind#uuid() <em>Uuid</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Uuid</em>' operation.
-	 * @see gov.nasa.jpl.imce.oml.model.common.Element#uuid()
+	 * @see gov.nasa.jpl.imce.oml.model.common.CrossReferencabilityKind#uuid()
 	 * @generated
 	 */
-	EOperation getElement__Uuid();
+	EOperation getCrossReferencabilityKind__Uuid();
 
 	/**
-	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.common.Element#moduleContext() <em>Module Context</em>}' operation.
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.common.CrossReferencableKind <em>Cross Referencable Kind</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Cross Referencable Kind</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.common.CrossReferencableKind
+	 * @generated
+	 */
+	EClass getCrossReferencableKind();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.common.NonCrossReferencableKind <em>Non Cross Referencable Kind</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Non Cross Referencable Kind</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.common.NonCrossReferencableKind
+	 * @generated
+	 */
+	EClass getNonCrossReferencableKind();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.common.IdentityKind <em>Identity Kind</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Identity Kind</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.common.IdentityKind
+	 * @generated
+	 */
+	EClass getIdentityKind();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.common.IntrinsicIdentityKind <em>Intrinsic Identity Kind</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Intrinsic Identity Kind</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.common.IntrinsicIdentityKind
+	 * @generated
+	 */
+	EClass getIntrinsicIdentityKind();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.common.IntrinsicIdentityKind#iri() <em>Iri</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Iri</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.common.IntrinsicIdentityKind#iri()
+	 * @generated
+	 */
+	EOperation getIntrinsicIdentityKind__Iri();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.common.ExtrinsicIdentityKind <em>Extrinsic Identity Kind</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Extrinsic Identity Kind</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.common.ExtrinsicIdentityKind
+	 * @generated
+	 */
+	EClass getExtrinsicIdentityKind();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.common.ElementCrossReferenceTuple <em>Element Cross Reference Tuple</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Element Cross Reference Tuple</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.common.ElementCrossReferenceTuple
+	 * @generated
+	 */
+	EClass getElementCrossReferenceTuple();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.common.ValueCrossReferenceTuple <em>Value Cross Reference Tuple</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Value Cross Reference Tuple</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.common.ValueCrossReferenceTuple
+	 * @generated
+	 */
+	EClass getValueCrossReferenceTuple();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.common.LogicalElement <em>Logical Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Logical Element</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LogicalElement
+	 * @generated
+	 */
+	EClass getLogicalElement();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link gov.nasa.jpl.imce.oml.model.common.LogicalElement#getAnnotations <em>Annotations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Annotations</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.common.LogicalElement#getAnnotations()
+	 * @see #getLogicalElement()
+	 * @generated
+	 */
+	EReference getLogicalElement_Annotations();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.common.LogicalElement#moduleContext() <em>Module Context</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Module Context</em>' operation.
-	 * @see gov.nasa.jpl.imce.oml.model.common.Element#moduleContext()
+	 * @see gov.nasa.jpl.imce.oml.model.common.LogicalElement#moduleContext()
 	 * @generated
 	 */
-	EOperation getElement__ModuleContext();
+	EOperation getLogicalElement__ModuleContext();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.common.NonLogicalElement <em>Non Logical Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Non Logical Element</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.common.NonLogicalElement
+	 * @generated
+	 */
+	EClass getNonLogicalElement();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.common.Resource <em>Resource</em>}'.
@@ -1753,16 +2484,6 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getResource();
-
-	/**
-	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.common.Resource#iri() <em>Iri</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Iri</em>' operation.
-	 * @see gov.nasa.jpl.imce.oml.model.common.Resource#iri()
-	 * @generated
-	 */
-	EOperation getResource__Iri();
 
 	/**
 	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.common.Resource#name() <em>Name</em>}' operation.
@@ -1866,17 +2587,6 @@ public interface CommonPackage extends EPackage {
 	EReference getAnnotationProperty_Extent();
 
 	/**
-	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.common.AnnotationProperty#getUuid <em>Uuid</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Uuid</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.common.AnnotationProperty#getUuid()
-	 * @see #getAnnotationProperty()
-	 * @generated
-	 */
-	EAttribute getAnnotationProperty_Uuid();
-
-	/**
 	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.common.AnnotationProperty#getIri <em>Iri</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1897,6 +2607,79 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getAnnotationProperty_AbbrevIRI();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.common.AnnotationProperty#uuid() <em>Uuid</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Uuid</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.common.AnnotationProperty#uuid()
+	 * @generated
+	 */
+	EOperation getAnnotationProperty__Uuid();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.common.AnnotationProperty#iri() <em>Iri</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Iri</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.common.AnnotationProperty#iri()
+	 * @generated
+	 */
+	EOperation getAnnotationProperty__Iri();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue <em>Annotation Property Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Annotation Property Value</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue
+	 * @generated
+	 */
+	EClass getAnnotationPropertyValue();
+
+	/**
+	 * Returns the meta object for the container reference '{@link gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue#getSubject <em>Subject</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Subject</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue#getSubject()
+	 * @see #getAnnotationPropertyValue()
+	 * @generated
+	 */
+	EReference getAnnotationPropertyValue_Subject();
+
+	/**
+	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue#getProperty <em>Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Property</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue#getProperty()
+	 * @see #getAnnotationPropertyValue()
+	 * @generated
+	 */
+	EReference getAnnotationPropertyValue_Property();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Value</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue#getValue()
+	 * @see #getAnnotationPropertyValue()
+	 * @generated
+	 */
+	EReference getAnnotationPropertyValue_Value();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue#uuid() <em>Uuid</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Uuid</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue#uuid()
+	 * @generated
+	 */
+	EOperation getAnnotationPropertyValue__Uuid();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.common.Extent <em>Extent</em>}'.
@@ -2285,6 +3068,14 @@ public interface CommonPackage extends EPackage {
 		EClass LITERAL_VALUE = eINSTANCE.getLiteralValue();
 
 		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation LITERAL_VALUE___VALUE = eINSTANCE.getLiteralValue__Value();
+
+		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralBooleanImpl <em>Literal Boolean</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2295,12 +3086,20 @@ public interface CommonPackage extends EPackage {
 		EClass LITERAL_BOOLEAN = eINSTANCE.getLiteralBoolean();
 
 		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Bool</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute LITERAL_BOOLEAN__VALUE = eINSTANCE.getLiteralBoolean_Value();
+		EAttribute LITERAL_BOOLEAN__BOOL = eINSTANCE.getLiteralBoolean_Bool();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation LITERAL_BOOLEAN___VALUE = eINSTANCE.getLiteralBoolean__Value();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralDateTimeImpl <em>Literal Date Time</em>}' class.
@@ -2321,6 +3120,14 @@ public interface CommonPackage extends EPackage {
 		EAttribute LITERAL_DATE_TIME__DATE_TIME = eINSTANCE.getLiteralDateTime_DateTime();
 
 		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation LITERAL_DATE_TIME___VALUE = eINSTANCE.getLiteralDateTime__Value();
+
+		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralStringImpl <em>Literal String</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2329,6 +3136,14 @@ public interface CommonPackage extends EPackage {
 		 * @generated
 		 */
 		EClass LITERAL_STRING = eINSTANCE.getLiteralString();
+
+		/**
+		 * The meta object literal for the '<em><b>String Value</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation LITERAL_STRING___STRING_VALUE = eINSTANCE.getLiteralString__StringValue();
 
 		/**
 		 * The meta object literal for the '<em><b>Value</b></em>' operation.
@@ -2357,12 +3172,12 @@ public interface CommonPackage extends EPackage {
 		EAttribute LITERAL_QUOTED_STRING__STRING = eINSTANCE.getLiteralQuotedString_String();
 
 		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' operation.
+		 * The meta object literal for the '<em><b>String Value</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation LITERAL_QUOTED_STRING___VALUE = eINSTANCE.getLiteralQuotedString__Value();
+		EOperation LITERAL_QUOTED_STRING___STRING_VALUE = eINSTANCE.getLiteralQuotedString__StringValue();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralRawStringImpl <em>Literal Raw String</em>}' class.
@@ -2383,12 +3198,12 @@ public interface CommonPackage extends EPackage {
 		EAttribute LITERAL_RAW_STRING__STRING = eINSTANCE.getLiteralRawString_String();
 
 		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' operation.
+		 * The meta object literal for the '<em><b>String Value</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation LITERAL_RAW_STRING___VALUE = eINSTANCE.getLiteralRawString__Value();
+		EOperation LITERAL_RAW_STRING___STRING_VALUE = eINSTANCE.getLiteralRawString__StringValue();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralUUIDImpl <em>Literal UUID</em>}' class.
@@ -2409,6 +3224,14 @@ public interface CommonPackage extends EPackage {
 		EAttribute LITERAL_UUID__UUID = eINSTANCE.getLiteralUUID_Uuid();
 
 		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation LITERAL_UUID___VALUE = eINSTANCE.getLiteralUUID__Value();
+
+		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralURIImpl <em>Literal URI</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2425,6 +3248,14 @@ public interface CommonPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute LITERAL_URI__URI = eINSTANCE.getLiteralURI_Uri();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation LITERAL_URI___VALUE = eINSTANCE.getLiteralURI__Value();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralNumberImpl <em>Literal Number</em>}' class.
@@ -2455,6 +3286,14 @@ public interface CommonPackage extends EPackage {
 		EAttribute LITERAL_REAL__REAL = eINSTANCE.getLiteralReal_Real();
 
 		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation LITERAL_REAL___VALUE = eINSTANCE.getLiteralReal__Value();
+
+		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralRationalImpl <em>Literal Rational</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2471,6 +3310,14 @@ public interface CommonPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute LITERAL_RATIONAL__RATIONAL = eINSTANCE.getLiteralRational_Rational();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation LITERAL_RATIONAL___VALUE = eINSTANCE.getLiteralRational__Value();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralFloatImpl <em>Literal Float</em>}' class.
@@ -2491,6 +3338,14 @@ public interface CommonPackage extends EPackage {
 		EAttribute LITERAL_FLOAT__FLOAT = eINSTANCE.getLiteralFloat_Float();
 
 		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation LITERAL_FLOAT___VALUE = eINSTANCE.getLiteralFloat__Value();
+
+		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.LiteralDecimalImpl <em>Literal Decimal</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2509,14 +3364,22 @@ public interface CommonPackage extends EPackage {
 		EAttribute LITERAL_DECIMAL__DECIMAL = eINSTANCE.getLiteralDecimal_Decimal();
 
 		/**
-		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.AnnotationPropertyValueImpl <em>Annotation Property Value</em>}' class.
+		 * The meta object literal for the '<em><b>Value</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see gov.nasa.jpl.imce.oml.model.common.impl.AnnotationPropertyValueImpl
-		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getAnnotationPropertyValue()
 		 * @generated
 		 */
-		EClass ANNOTATION_PROPERTY_VALUE = eINSTANCE.getAnnotationPropertyValue();
+		EOperation LITERAL_DECIMAL___VALUE = eINSTANCE.getLiteralDecimal__Value();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.CrossReferencabilityKindImpl <em>Cross Referencability Kind</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CrossReferencabilityKindImpl
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getCrossReferencabilityKind()
+		 * @generated
+		 */
+		EClass CROSS_REFERENCABILITY_KIND = eINSTANCE.getCrossReferencabilityKind();
 
 		/**
 		 * The meta object literal for the '<em><b>Uuid</b></em>' attribute feature.
@@ -2524,57 +3387,7 @@ public interface CommonPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ANNOTATION_PROPERTY_VALUE__UUID = eINSTANCE.getAnnotationPropertyValue_Uuid();
-
-		/**
-		 * The meta object literal for the '<em><b>Subject</b></em>' container reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ANNOTATION_PROPERTY_VALUE__SUBJECT = eINSTANCE.getAnnotationPropertyValue_Subject();
-
-		/**
-		 * The meta object literal for the '<em><b>Property</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ANNOTATION_PROPERTY_VALUE__PROPERTY = eINSTANCE.getAnnotationPropertyValue_Property();
-
-		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ANNOTATION_PROPERTY_VALUE__VALUE = eINSTANCE.getAnnotationPropertyValue_Value();
-
-		/**
-		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.ElementImpl <em>Element</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see gov.nasa.jpl.imce.oml.model.common.impl.ElementImpl
-		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getElement()
-		 * @generated
-		 */
-		EClass ELEMENT = eINSTANCE.getElement();
-
-		/**
-		 * The meta object literal for the '<em><b>Uuid</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ELEMENT__UUID = eINSTANCE.getElement_Uuid();
-
-		/**
-		 * The meta object literal for the '<em><b>Annotations</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ELEMENT__ANNOTATIONS = eINSTANCE.getElement_Annotations();
+		EAttribute CROSS_REFERENCABILITY_KIND__UUID = eINSTANCE.getCrossReferencabilityKind_Uuid();
 
 		/**
 		 * The meta object literal for the '<em><b>Uuid</b></em>' operation.
@@ -2582,7 +3395,103 @@ public interface CommonPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation ELEMENT___UUID = eINSTANCE.getElement__Uuid();
+		EOperation CROSS_REFERENCABILITY_KIND___UUID = eINSTANCE.getCrossReferencabilityKind__Uuid();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.CrossReferencableKindImpl <em>Cross Referencable Kind</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CrossReferencableKindImpl
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getCrossReferencableKind()
+		 * @generated
+		 */
+		EClass CROSS_REFERENCABLE_KIND = eINSTANCE.getCrossReferencableKind();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.NonCrossReferencableKindImpl <em>Non Cross Referencable Kind</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.NonCrossReferencableKindImpl
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getNonCrossReferencableKind()
+		 * @generated
+		 */
+		EClass NON_CROSS_REFERENCABLE_KIND = eINSTANCE.getNonCrossReferencableKind();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.IdentityKindImpl <em>Identity Kind</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.IdentityKindImpl
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getIdentityKind()
+		 * @generated
+		 */
+		EClass IDENTITY_KIND = eINSTANCE.getIdentityKind();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.IntrinsicIdentityKindImpl <em>Intrinsic Identity Kind</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.IntrinsicIdentityKindImpl
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getIntrinsicIdentityKind()
+		 * @generated
+		 */
+		EClass INTRINSIC_IDENTITY_KIND = eINSTANCE.getIntrinsicIdentityKind();
+
+		/**
+		 * The meta object literal for the '<em><b>Iri</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INTRINSIC_IDENTITY_KIND___IRI = eINSTANCE.getIntrinsicIdentityKind__Iri();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.ExtrinsicIdentityKindImpl <em>Extrinsic Identity Kind</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.ExtrinsicIdentityKindImpl
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getExtrinsicIdentityKind()
+		 * @generated
+		 */
+		EClass EXTRINSIC_IDENTITY_KIND = eINSTANCE.getExtrinsicIdentityKind();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.ElementCrossReferenceTupleImpl <em>Element Cross Reference Tuple</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.ElementCrossReferenceTupleImpl
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getElementCrossReferenceTuple()
+		 * @generated
+		 */
+		EClass ELEMENT_CROSS_REFERENCE_TUPLE = eINSTANCE.getElementCrossReferenceTuple();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.ValueCrossReferenceTupleImpl <em>Value Cross Reference Tuple</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.ValueCrossReferenceTupleImpl
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getValueCrossReferenceTuple()
+		 * @generated
+		 */
+		EClass VALUE_CROSS_REFERENCE_TUPLE = eINSTANCE.getValueCrossReferenceTuple();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.LogicalElementImpl <em>Logical Element</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.LogicalElementImpl
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getLogicalElement()
+		 * @generated
+		 */
+		EClass LOGICAL_ELEMENT = eINSTANCE.getLogicalElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Annotations</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LOGICAL_ELEMENT__ANNOTATIONS = eINSTANCE.getLogicalElement_Annotations();
 
 		/**
 		 * The meta object literal for the '<em><b>Module Context</b></em>' operation.
@@ -2590,7 +3499,17 @@ public interface CommonPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation ELEMENT___MODULE_CONTEXT = eINSTANCE.getElement__ModuleContext();
+		EOperation LOGICAL_ELEMENT___MODULE_CONTEXT = eINSTANCE.getLogicalElement__ModuleContext();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.NonLogicalElementImpl <em>Non Logical Element</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.NonLogicalElementImpl
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getNonLogicalElement()
+		 * @generated
+		 */
+		EClass NON_LOGICAL_ELEMENT = eINSTANCE.getNonLogicalElement();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.ResourceImpl <em>Resource</em>}' class.
@@ -2601,14 +3520,6 @@ public interface CommonPackage extends EPackage {
 		 * @generated
 		 */
 		EClass RESOURCE = eINSTANCE.getResource();
-
-		/**
-		 * The meta object literal for the '<em><b>Iri</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation RESOURCE___IRI = eINSTANCE.getResource__Iri();
 
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' operation.
@@ -2697,14 +3608,6 @@ public interface CommonPackage extends EPackage {
 		EReference ANNOTATION_PROPERTY__EXTENT = eINSTANCE.getAnnotationProperty_Extent();
 
 		/**
-		 * The meta object literal for the '<em><b>Uuid</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ANNOTATION_PROPERTY__UUID = eINSTANCE.getAnnotationProperty_Uuid();
-
-		/**
 		 * The meta object literal for the '<em><b>Iri</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2719,6 +3622,64 @@ public interface CommonPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ANNOTATION_PROPERTY__ABBREV_IRI = eINSTANCE.getAnnotationProperty_AbbrevIRI();
+
+		/**
+		 * The meta object literal for the '<em><b>Uuid</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ANNOTATION_PROPERTY___UUID = eINSTANCE.getAnnotationProperty__Uuid();
+
+		/**
+		 * The meta object literal for the '<em><b>Iri</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ANNOTATION_PROPERTY___IRI = eINSTANCE.getAnnotationProperty__Iri();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.AnnotationPropertyValueImpl <em>Annotation Property Value</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.AnnotationPropertyValueImpl
+		 * @see gov.nasa.jpl.imce.oml.model.common.impl.CommonPackageImpl#getAnnotationPropertyValue()
+		 * @generated
+		 */
+		EClass ANNOTATION_PROPERTY_VALUE = eINSTANCE.getAnnotationPropertyValue();
+
+		/**
+		 * The meta object literal for the '<em><b>Subject</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ANNOTATION_PROPERTY_VALUE__SUBJECT = eINSTANCE.getAnnotationPropertyValue_Subject();
+
+		/**
+		 * The meta object literal for the '<em><b>Property</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ANNOTATION_PROPERTY_VALUE__PROPERTY = eINSTANCE.getAnnotationPropertyValue_Property();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ANNOTATION_PROPERTY_VALUE__VALUE = eINSTANCE.getAnnotationPropertyValue_Value();
+
+		/**
+		 * The meta object literal for the '<em><b>Uuid</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ANNOTATION_PROPERTY_VALUE___UUID = eINSTANCE.getAnnotationPropertyValue__Uuid();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.ExtentImpl <em>Extent</em>}' class.

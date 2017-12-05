@@ -20,7 +20,6 @@ package gov.nasa.jpl.imce.oml.model.common.provider;
 
 
 import gov.nasa.jpl.imce.oml.model.common.ModuleElement;
-
 import java.util.Collection;
 import java.util.List;
 
@@ -35,7 +34,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ModuleElementItemProvider extends ElementItemProvider {
+public class ModuleElementItemProvider extends LogicalElementItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->

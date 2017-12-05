@@ -20,7 +20,6 @@ package gov.nasa.jpl.imce.oml.model.graphs.provider;
 
 
 import gov.nasa.jpl.imce.oml.model.edit.provider.OMLEditPlugin;
-
 import gov.nasa.jpl.imce.oml.model.graphs.GraphsFactory;
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyGraph;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage;

@@ -18,7 +18,8 @@
  */
 package gov.nasa.jpl.imce.oml.model.bundles;
 
-import gov.nasa.jpl.imce.oml.model.common.Element;
+import gov.nasa.jpl.imce.oml.model.common.ElementCrossReferenceTuple;
+import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
 import gov.nasa.jpl.imce.oml.model.common.Module;
 
 import org.eclipse.emf.common.util.EList;
@@ -45,7 +46,7 @@ import org.eclipse.emf.common.util.EList;
  * @model abstract="true"
  * @generated
  */
-public interface DisjointUnionOfConceptsAxiom extends Element {
+public interface DisjointUnionOfConceptsAxiom extends ElementCrossReferenceTuple {
 	/**
 	 * Returns the value of the '<em><b>Disjoint Taxonomy Parent</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link gov.nasa.jpl.imce.oml.model.bundles.ConceptTreeDisjunction#getDisjunctions <em>Disjunctions</em>}'.
@@ -100,6 +101,6 @@ public interface DisjointUnionOfConceptsAxiom extends Element {
 	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
 	 * @generated
 	 */
-	EList<Element> allNestedUnions();
+	EList<LogicalElement> allNestedElements();
 
 } // DisjointUnionOfConceptsAxiom

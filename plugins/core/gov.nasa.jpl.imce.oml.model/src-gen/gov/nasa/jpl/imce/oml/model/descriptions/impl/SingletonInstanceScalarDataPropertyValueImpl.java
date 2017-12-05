@@ -18,8 +18,8 @@
  */
 package gov.nasa.jpl.imce.oml.model.descriptions.impl;
 
-import gov.nasa.jpl.imce.oml.model.common.Element;
 import gov.nasa.jpl.imce.oml.model.common.LiteralValue;
+import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
 import gov.nasa.jpl.imce.oml.model.common.Module;
 
 import gov.nasa.jpl.imce.oml.model.common.impl.ModuleElementImpl;
@@ -375,8 +375,14 @@ public class SingletonInstanceScalarDataPropertyValueImpl extends ModuleElementI
 			_string_2=_uuid_2.toString();
 		}
 		Pair<String, String> _mappedTo_2 = Pair.<String, String>of("scalarDataProperty", _string_2);
+		LiteralValue _scalarPropertyValue = this.getScalarPropertyValue();
+		String _value = null;
+		if (_scalarPropertyValue!=null) {
+			_value=_scalarPropertyValue.value();
+		}
+		Pair<String, String> _mappedTo_3 = Pair.<String, String>of("scalarPropertyValue", _value);
 		UUID _derivedUUID = OMLExtensions.derivedUUID(
-			"ScalarDataPropertyValue", _mappedTo, _mappedTo_1, _mappedTo_2);
+			"ScalarDataPropertyValue", _mappedTo, _mappedTo_1, _mappedTo_2, _mappedTo_3);
 		String _string_3 = null;
 		if (_derivedUUID!=null) {
 			_string_3=_derivedUUID.toString();
@@ -407,8 +413,8 @@ public class SingletonInstanceScalarDataPropertyValueImpl extends ModuleElementI
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Element> allNestedElements() {
-		return ECollections.<Element>emptyEList();
+	public EList<LogicalElement> allNestedElements() {
+		return ECollections.<LogicalElement>emptyEList();
 	}
 
 	/**

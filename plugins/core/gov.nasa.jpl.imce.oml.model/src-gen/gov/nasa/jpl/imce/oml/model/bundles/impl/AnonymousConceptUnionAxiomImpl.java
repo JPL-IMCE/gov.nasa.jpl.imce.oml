@@ -25,7 +25,8 @@ import gov.nasa.jpl.imce.oml.model.bundles.ConceptTreeDisjunction;
 import gov.nasa.jpl.imce.oml.model.bundles.DisjointUnionOfConceptsAxiom;
 
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
-import gov.nasa.jpl.imce.oml.model.common.Element;
+import gov.nasa.jpl.imce.oml.model.common.CrossReferencabilityKind;
+import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
 
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
 
@@ -33,6 +34,8 @@ import java.lang.reflect.InvocationTargetException;
 
 import java.util.Collection;
 import java.util.UUID;
+
+import java.util.function.Consumer;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -195,25 +198,18 @@ public class AnonymousConceptUnionAxiomImpl extends DisjointUnionOfConceptsAxiom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Element> allNestedDisjunctions() {
-		BasicEList<Element> _xblockexpression = null;
+	public EList<LogicalElement> allNestedElements() {
+		BasicEList<LogicalElement> _xblockexpression = null;
 		{
-			final BasicEList<Element> nres = new BasicEList<Element>();
-			_xblockexpression = nres;
-		}
-		return _xblockexpression;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<Element> allNestedUnions() {
-		BasicEList<Element> _xblockexpression = null;
-		{
-			final BasicEList<Element> nres = new BasicEList<Element>();
-			_xblockexpression = nres;
+			final BasicEList<LogicalElement> nes = new BasicEList<LogicalElement>();
+			nes.addAll(this.getDisjunctions());
+			final Consumer<DisjointUnionOfConceptsAxiom> _function = new Consumer<DisjointUnionOfConceptsAxiom>() {
+				public void accept(final DisjointUnionOfConceptsAxiom d) {
+					nes.addAll(d.allNestedElements());
+				}
+			};
+			this.getDisjunctions().forEach(_function);
+			_xblockexpression = nes;
 		}
 		return _xblockexpression;
 	}
@@ -356,22 +352,22 @@ public class AnonymousConceptUnionAxiomImpl extends DisjointUnionOfConceptsAxiom
 	 */
 	@Override
 	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
-		if (baseClass == Element.class) {
+		if (baseClass == CrossReferencabilityKind.class) {
 			switch (baseOperationID) {
-				case CommonPackage.ELEMENT___UUID: return BundlesPackage.ANONYMOUS_CONCEPT_UNION_AXIOM___UUID;
+				case CommonPackage.CROSS_REFERENCABILITY_KIND___UUID: return BundlesPackage.ANONYMOUS_CONCEPT_UNION_AXIOM___UUID;
 				default: return super.eDerivedOperationID(baseOperationID, baseClass);
 			}
 		}
 		if (baseClass == DisjointUnionOfConceptsAxiom.class) {
 			switch (baseOperationID) {
-				case BundlesPackage.DISJOINT_UNION_OF_CONCEPTS_AXIOM___ALL_NESTED_UNIONS: return BundlesPackage.ANONYMOUS_CONCEPT_UNION_AXIOM___ALL_NESTED_UNIONS;
+				case BundlesPackage.DISJOINT_UNION_OF_CONCEPTS_AXIOM___ALL_NESTED_ELEMENTS: return BundlesPackage.ANONYMOUS_CONCEPT_UNION_AXIOM___ALL_NESTED_ELEMENTS;
 				default: return super.eDerivedOperationID(baseOperationID, baseClass);
 			}
 		}
 		if (baseClass == ConceptTreeDisjunction.class) {
 			switch (baseOperationID) {
 				case BundlesPackage.CONCEPT_TREE_DISJUNCTION___BUNDLE_CONTAINER: return BundlesPackage.ANONYMOUS_CONCEPT_UNION_AXIOM___BUNDLE_CONTAINER;
-				case BundlesPackage.CONCEPT_TREE_DISJUNCTION___ALL_NESTED_DISJUNCTIONS: return BundlesPackage.ANONYMOUS_CONCEPT_UNION_AXIOM___ALL_NESTED_DISJUNCTIONS;
+				case BundlesPackage.CONCEPT_TREE_DISJUNCTION___ALL_NESTED_ELEMENTS: return BundlesPackage.ANONYMOUS_CONCEPT_UNION_AXIOM___ALL_NESTED_ELEMENTS;
 				default: return -1;
 			}
 		}
@@ -390,10 +386,8 @@ public class AnonymousConceptUnionAxiomImpl extends DisjointUnionOfConceptsAxiom
 				return uuid();
 			case BundlesPackage.ANONYMOUS_CONCEPT_UNION_AXIOM___BUNDLE_CONTAINER:
 				return bundleContainer();
-			case BundlesPackage.ANONYMOUS_CONCEPT_UNION_AXIOM___ALL_NESTED_DISJUNCTIONS:
-				return allNestedDisjunctions();
-			case BundlesPackage.ANONYMOUS_CONCEPT_UNION_AXIOM___ALL_NESTED_UNIONS:
-				return allNestedUnions();
+			case BundlesPackage.ANONYMOUS_CONCEPT_UNION_AXIOM___ALL_NESTED_ELEMENTS:
+				return allNestedElements();
 		}
 		return super.eInvoke(operationID, arguments);
 	}

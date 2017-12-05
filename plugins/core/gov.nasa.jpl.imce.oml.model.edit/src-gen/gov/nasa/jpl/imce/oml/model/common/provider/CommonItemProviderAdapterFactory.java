@@ -495,8 +495,8 @@ public class CommonItemProviderAdapterFactory extends CommonAdapterFactory imple
 		if (literalRationalItemProvider != null) literalRationalItemProvider.dispose();
 		if (literalFloatItemProvider != null) literalFloatItemProvider.dispose();
 		if (literalDecimalItemProvider != null) literalDecimalItemProvider.dispose();
-		if (annotationPropertyValueItemProvider != null) annotationPropertyValueItemProvider.dispose();
 		if (annotationPropertyItemProvider != null) annotationPropertyItemProvider.dispose();
+		if (annotationPropertyValueItemProvider != null) annotationPropertyValueItemProvider.dispose();
 		if (extentItemProvider != null) extentItemProvider.dispose();
 	}
 

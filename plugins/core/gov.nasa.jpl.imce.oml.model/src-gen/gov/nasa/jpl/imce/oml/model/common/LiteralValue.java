@@ -32,4 +32,12 @@ import org.eclipse.emf.cdo.CDOObject;
  * @generated
  */
 public interface LiteralValue extends CDOObject {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false" required="true"
+	 * @generated
+	 */
+	String value();
+
 } // LiteralValue

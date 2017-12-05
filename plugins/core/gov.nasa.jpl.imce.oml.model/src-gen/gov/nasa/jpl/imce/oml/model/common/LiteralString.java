@@ -37,6 +37,15 @@ public interface LiteralString extends LiteralValue {
 	 * @model dataType="gov.nasa.jpl.imce.oml.model.common.StringDataType" unique="false" required="true"
 	 * @generated
 	 */
-	StringValue value();
+	StringValue stringValue();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false" required="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return this.stringValue().toString();'"
+	 * @generated
+	 */
+	String value();
 
 } // LiteralString

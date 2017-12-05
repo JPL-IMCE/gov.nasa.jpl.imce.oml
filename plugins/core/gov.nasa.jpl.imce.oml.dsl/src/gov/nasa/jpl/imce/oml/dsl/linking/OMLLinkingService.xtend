@@ -22,7 +22,6 @@ import gov.nasa.jpl.imce.oml.model.bundles.Bundle
 import gov.nasa.jpl.imce.oml.model.bundles.BundlesPackage
 import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage
-import gov.nasa.jpl.imce.oml.model.common.Element
 import gov.nasa.jpl.imce.oml.model.common.Extent
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsPackage
@@ -44,6 +43,7 @@ import org.eclipse.xtext.naming.QualifiedName
 import org.eclipse.xtext.nodemodel.INode
 import org.eclipse.xtext.resource.IEObjectDescription
 import org.eclipse.xtext.scoping.IScope
+import gov.nasa.jpl.imce.oml.model.common.LogicalElement
 
 class OMLLinkingService extends DefaultLinkingService {
 
@@ -178,7 +178,7 @@ class OMLLinkingService extends DefaultLinkingService {
 			val nextNode = node.parent.nextSibling
 			val nextSE = nextNode.leafNodes.head.semanticElement
 			switch nextSE {
-				Element: {
+				LogicalElement: {
 					// In this case, the concrete syntax looks like this:
 					// <Annotation> == context
 					// <Element> == nextSE

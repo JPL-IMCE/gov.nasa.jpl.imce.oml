@@ -110,7 +110,7 @@ public class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespa
       _matched=true;
       EList<AnnotationProperty> _annotationProperties = ((Extent)context).getAnnotationProperties();
       for (final AnnotationProperty ap : _annotationProperties) {
-        QualifiedName _qualifiedName = this.qnc.toQualifiedName(ap.getIri());
+        QualifiedName _qualifiedName = this.qnc.toQualifiedName(ap.iri());
         String _abbrevIRI = ap.getAbbrevIRI();
         OMLImportNormalizer _oMLImportNormalizer = new OMLImportNormalizer(_qualifiedName, _abbrevIRI);
         res.add(_oMLImportNormalizer);
@@ -121,7 +121,7 @@ public class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespa
         _matched=true;
         EList<AnnotationProperty> _annotationProperties = ((Bundle)context).getExtent().getAnnotationProperties();
         for (final AnnotationProperty ap : _annotationProperties) {
-          QualifiedName _qualifiedName = this.qnc.toQualifiedName(ap.getIri());
+          QualifiedName _qualifiedName = this.qnc.toQualifiedName(ap.iri());
           String _abbrevIRI = ap.getAbbrevIRI();
           OMLImportNormalizer _oMLImportNormalizer = new OMLImportNormalizer(_qualifiedName, _abbrevIRI);
           res.add(_oMLImportNormalizer);
@@ -195,7 +195,7 @@ public class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespa
         _matched=true;
         EList<AnnotationProperty> _annotationProperties = ((TerminologyGraph)context).getExtent().getAnnotationProperties();
         for (final AnnotationProperty ap : _annotationProperties) {
-          QualifiedName _qualifiedName = this.qnc.toQualifiedName(ap.getIri());
+          QualifiedName _qualifiedName = this.qnc.toQualifiedName(ap.iri());
           String _abbrevIRI = ap.getAbbrevIRI();
           OMLImportNormalizer _oMLImportNormalizer = new OMLImportNormalizer(_qualifiedName, _abbrevIRI);
           res.add(_oMLImportNormalizer);
@@ -238,7 +238,7 @@ public class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespa
         _matched=true;
         EList<AnnotationProperty> _annotationProperties = ((DescriptionBox)context).getExtent().getAnnotationProperties();
         for (final AnnotationProperty ap : _annotationProperties) {
-          QualifiedName _qualifiedName = this.qnc.toQualifiedName(ap.getIri());
+          QualifiedName _qualifiedName = this.qnc.toQualifiedName(ap.iri());
           String _abbrevIRI = ap.getAbbrevIRI();
           OMLImportNormalizer _oMLImportNormalizer = new OMLImportNormalizer(_qualifiedName, _abbrevIRI);
           res.add(_oMLImportNormalizer);

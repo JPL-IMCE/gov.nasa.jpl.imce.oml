@@ -98,8 +98,8 @@ public class CommonFactoryImpl extends EFactoryImpl implements CommonFactory {
 			case CommonPackage.LITERAL_RATIONAL: return (EObject)createLiteralRational();
 			case CommonPackage.LITERAL_FLOAT: return (EObject)createLiteralFloat();
 			case CommonPackage.LITERAL_DECIMAL: return (EObject)createLiteralDecimal();
-			case CommonPackage.ANNOTATION_PROPERTY_VALUE: return (EObject)createAnnotationPropertyValue();
 			case CommonPackage.ANNOTATION_PROPERTY: return (EObject)createAnnotationProperty();
+			case CommonPackage.ANNOTATION_PROPERTY_VALUE: return (EObject)createAnnotationPropertyValue();
 			case CommonPackage.EXTENT: return (EObject)createExtent();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -313,9 +313,9 @@ public class CommonFactoryImpl extends EFactoryImpl implements CommonFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AnnotationPropertyValue createAnnotationPropertyValue() {
-		AnnotationPropertyValueImpl annotationPropertyValue = new AnnotationPropertyValueImpl();
-		return annotationPropertyValue;
+	public AnnotationProperty createAnnotationProperty() {
+		AnnotationPropertyImpl annotationProperty = new AnnotationPropertyImpl();
+		return annotationProperty;
 	}
 
 	/**
@@ -323,9 +323,9 @@ public class CommonFactoryImpl extends EFactoryImpl implements CommonFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AnnotationProperty createAnnotationProperty() {
-		AnnotationPropertyImpl annotationProperty = new AnnotationPropertyImpl();
-		return annotationProperty;
+	public AnnotationPropertyValue createAnnotationPropertyValue() {
+		AnnotationPropertyValueImpl annotationPropertyValue = new AnnotationPropertyValueImpl();
+		return annotationPropertyValue;
 	}
 
 	/**

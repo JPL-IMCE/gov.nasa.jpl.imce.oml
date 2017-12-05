@@ -19,7 +19,7 @@
 package gov.nasa.jpl.imce.oml.model.common.impl;
 
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
-import gov.nasa.jpl.imce.oml.model.common.Element;
+import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
 import gov.nasa.jpl.imce.oml.model.common.ModuleElement;
 
 import java.lang.reflect.InvocationTargetException;
@@ -35,7 +35,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public abstract class ModuleElementImpl extends ElementImpl implements ModuleElement {
+public abstract class ModuleElementImpl extends LogicalElementImpl implements ModuleElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -60,7 +60,7 @@ public abstract class ModuleElementImpl extends ElementImpl implements ModuleEle
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Element> allNestedElements() {
+	public EList<LogicalElement> allNestedElements() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
