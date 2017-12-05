@@ -176,12 +176,12 @@ class OMLFormatter extends AbstractFormatter2 {
 
 	def dispatch void format(Aspect aspect, extension IFormattableDocument document) {
 		aspect.annotations.forEach[format.append[setNewLines(1)]]
-		aspect.regionFor.keyword('aspect').prepend[newLine].append[oneSpace]
+		aspect.regionFor.keyword('aspect').append[oneSpace]
 	}
 		
 	def dispatch void format(Concept concept, extension IFormattableDocument document) {
 		concept.annotations.forEach[format.append[setNewLines(1)]]
-		concept.regionFor.keyword('concept').prepend[newLine].append[oneSpace]
+		concept.regionFor.keyword('concept').append[oneSpace]
 	}
 	
 	def dispatch void format(ReifiedRelationship rr, extension IFormattableDocument document) {
