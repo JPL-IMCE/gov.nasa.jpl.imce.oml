@@ -830,17 +830,9 @@ public class OMLFormatter extends AbstractFormatter2 {
     };
     ax.getAnnotations().forEach(_function);
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
-      it.setNewLines(1);
-    };
-    document.prepend(this.textRegionExtensions.regionFor(ax).ruleCall(this._oMLGrammarAccess.getAspectSpecializationAxiomAccess().getSubEntityEntityReferenceParserRuleCall_1_0_1()), _function_1);
-    final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(ax).keyword("extendsAspect"), _function_2);
-    final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
-      it.setNewLines(2);
-    };
-    document.append(this.textRegionExtensions.regionFor(ax).ruleCall(this._oMLGrammarAccess.getAspectSpecializationAxiomAccess().getSuperAspectAspectReferenceParserRuleCall_3_0_1()), _function_3);
+    document.surround(this.textRegionExtensions.regionFor(ax).keyword("extendsAspect"), _function_1);
   }
   
   protected void _format(final ConceptSpecializationAxiom ax, @Extension final IFormattableDocument document) {
@@ -852,17 +844,9 @@ public class OMLFormatter extends AbstractFormatter2 {
     };
     ax.getAnnotations().forEach(_function);
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
-      it.setNewLines(1);
-    };
-    document.prepend(this.textRegionExtensions.regionFor(ax).ruleCall(this._oMLGrammarAccess.getConceptSpecializationAxiomAccess().getSubConceptConceptReferenceParserRuleCall_1_0_1()), _function_1);
-    final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(ax).keyword("extendsConcept"), _function_2);
-    final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
-      it.setNewLines(2);
-    };
-    document.append(this.textRegionExtensions.regionFor(ax).ruleCall(this._oMLGrammarAccess.getConceptSpecializationAxiomAccess().getSuperConceptConceptReferenceParserRuleCall_3_0_1()), _function_3);
+    document.surround(this.textRegionExtensions.regionFor(ax).keyword("extendsConcept"), _function_1);
   }
   
   protected void _format(final ReifiedRelationshipSpecializationAxiom ax, @Extension final IFormattableDocument document) {
@@ -874,17 +858,9 @@ public class OMLFormatter extends AbstractFormatter2 {
     };
     ax.getAnnotations().forEach(_function);
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
-      it.setNewLines(1);
-    };
-    document.prepend(this.textRegionExtensions.regionFor(ax).ruleCall(this._oMLGrammarAccess.getReifiedRelationshipSpecializationAxiomAccess().getSubRelationshipReifiedRelationshipReferenceParserRuleCall_1_0_1()), _function_1);
-    final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(ax).keyword("extendsRelationship"), _function_2);
-    final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
-      it.setNewLines(2);
-    };
-    document.append(this.textRegionExtensions.regionFor(ax).ruleCall(this._oMLGrammarAccess.getReifiedRelationshipSpecializationAxiomAccess().getSuperRelationshipReifiedRelationshipReferenceParserRuleCall_3_0_1()), _function_3);
+    document.surround(this.textRegionExtensions.regionFor(ax).keyword("extendsRelationship"), _function_1);
   }
   
   protected void _format(final ConceptDesignationTerminologyAxiom ax, @Extension final IFormattableDocument document) {
