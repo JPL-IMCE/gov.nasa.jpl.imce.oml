@@ -8300,9 +8300,9 @@ ruleLiteralBoolean returns [EObject current=null]
 		(
 			(
 				(
-					lv_value_1_1=RULE_TRUE
+					lv_bool_1_1=RULE_TRUE
 					{
-						newLeafNode(lv_value_1_1, grammarAccess.getLiteralBooleanAccess().getValueTRUETerminalRuleCall_1_0_0());
+						newLeafNode(lv_bool_1_1, grammarAccess.getLiteralBooleanAccess().getBoolTRUETerminalRuleCall_1_0_0());
 					}
 					{
 						if ($current==null) {
@@ -8310,14 +8310,14 @@ ruleLiteralBoolean returns [EObject current=null]
 						}
 						setWithLastConsumed(
 							$current,
-							"value",
-							lv_value_1_1,
+							"bool",
+							lv_bool_1_1,
 							"gov.nasa.jpl.imce.oml.dsl.OML.TRUE");
 					}
 					    |
-					lv_value_1_2=RULE_FALSE
+					lv_bool_1_2=RULE_FALSE
 					{
-						newLeafNode(lv_value_1_2, grammarAccess.getLiteralBooleanAccess().getValueFALSETerminalRuleCall_1_0_1());
+						newLeafNode(lv_bool_1_2, grammarAccess.getLiteralBooleanAccess().getBoolFALSETerminalRuleCall_1_0_1());
 					}
 					{
 						if ($current==null) {
@@ -8325,8 +8325,8 @@ ruleLiteralBoolean returns [EObject current=null]
 						}
 						setWithLastConsumed(
 							$current,
-							"value",
-							lv_value_1_2,
+							"bool",
+							lv_bool_1_2,
 							"gov.nasa.jpl.imce.oml.dsl.OML.FALSE");
 					}
 				)

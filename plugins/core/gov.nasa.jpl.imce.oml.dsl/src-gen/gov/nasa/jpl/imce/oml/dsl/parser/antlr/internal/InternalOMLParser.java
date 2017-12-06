@@ -20061,22 +20061,22 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLiteralBoolean"
-    // InternalOML.g:8285:1: ruleLiteralBoolean returns [EObject current=null] : ( () ( ( (lv_value_1_1= RULE_TRUE | lv_value_1_2= RULE_FALSE ) ) ) ) ;
+    // InternalOML.g:8285:1: ruleLiteralBoolean returns [EObject current=null] : ( () ( ( (lv_bool_1_1= RULE_TRUE | lv_bool_1_2= RULE_FALSE ) ) ) ) ;
     public final EObject ruleLiteralBoolean() throws RecognitionException {
         EObject current = null;
 
-        Token lv_value_1_1=null;
-        Token lv_value_1_2=null;
+        Token lv_bool_1_1=null;
+        Token lv_bool_1_2=null;
 
 
         	enterRule();
 
         try {
-            // InternalOML.g:8291:2: ( ( () ( ( (lv_value_1_1= RULE_TRUE | lv_value_1_2= RULE_FALSE ) ) ) ) )
-            // InternalOML.g:8292:2: ( () ( ( (lv_value_1_1= RULE_TRUE | lv_value_1_2= RULE_FALSE ) ) ) )
+            // InternalOML.g:8291:2: ( ( () ( ( (lv_bool_1_1= RULE_TRUE | lv_bool_1_2= RULE_FALSE ) ) ) ) )
+            // InternalOML.g:8292:2: ( () ( ( (lv_bool_1_1= RULE_TRUE | lv_bool_1_2= RULE_FALSE ) ) ) )
             {
-            // InternalOML.g:8292:2: ( () ( ( (lv_value_1_1= RULE_TRUE | lv_value_1_2= RULE_FALSE ) ) ) )
-            // InternalOML.g:8293:3: () ( ( (lv_value_1_1= RULE_TRUE | lv_value_1_2= RULE_FALSE ) ) )
+            // InternalOML.g:8292:2: ( () ( ( (lv_bool_1_1= RULE_TRUE | lv_bool_1_2= RULE_FALSE ) ) ) )
+            // InternalOML.g:8293:3: () ( ( (lv_bool_1_1= RULE_TRUE | lv_bool_1_2= RULE_FALSE ) ) )
             {
             // InternalOML.g:8293:3: ()
             // InternalOML.g:8294:4: 
@@ -20089,13 +20089,13 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalOML.g:8300:3: ( ( (lv_value_1_1= RULE_TRUE | lv_value_1_2= RULE_FALSE ) ) )
-            // InternalOML.g:8301:4: ( (lv_value_1_1= RULE_TRUE | lv_value_1_2= RULE_FALSE ) )
+            // InternalOML.g:8300:3: ( ( (lv_bool_1_1= RULE_TRUE | lv_bool_1_2= RULE_FALSE ) ) )
+            // InternalOML.g:8301:4: ( (lv_bool_1_1= RULE_TRUE | lv_bool_1_2= RULE_FALSE ) )
             {
-            // InternalOML.g:8301:4: ( (lv_value_1_1= RULE_TRUE | lv_value_1_2= RULE_FALSE ) )
-            // InternalOML.g:8302:5: (lv_value_1_1= RULE_TRUE | lv_value_1_2= RULE_FALSE )
+            // InternalOML.g:8301:4: ( (lv_bool_1_1= RULE_TRUE | lv_bool_1_2= RULE_FALSE ) )
+            // InternalOML.g:8302:5: (lv_bool_1_1= RULE_TRUE | lv_bool_1_2= RULE_FALSE )
             {
-            // InternalOML.g:8302:5: (lv_value_1_1= RULE_TRUE | lv_value_1_2= RULE_FALSE )
+            // InternalOML.g:8302:5: (lv_bool_1_1= RULE_TRUE | lv_bool_1_2= RULE_FALSE )
             int alt100=2;
             int LA100_0 = input.LA(1);
 
@@ -20113,11 +20113,11 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
             }
             switch (alt100) {
                 case 1 :
-                    // InternalOML.g:8303:6: lv_value_1_1= RULE_TRUE
+                    // InternalOML.g:8303:6: lv_bool_1_1= RULE_TRUE
                     {
-                    lv_value_1_1=(Token)match(input,RULE_TRUE,FOLLOW_2); 
+                    lv_bool_1_1=(Token)match(input,RULE_TRUE,FOLLOW_2); 
 
-                    						newLeafNode(lv_value_1_1, grammarAccess.getLiteralBooleanAccess().getValueTRUETerminalRuleCall_1_0_0());
+                    						newLeafNode(lv_bool_1_1, grammarAccess.getLiteralBooleanAccess().getBoolTRUETerminalRuleCall_1_0_0());
                     					
 
                     						if (current==null) {
@@ -20125,19 +20125,19 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
                     						}
                     						setWithLastConsumed(
                     							current,
-                    							"value",
-                    							lv_value_1_1,
+                    							"bool",
+                    							lv_bool_1_1,
                     							"gov.nasa.jpl.imce.oml.dsl.OML.TRUE");
                     					
 
                     }
                     break;
                 case 2 :
-                    // InternalOML.g:8318:6: lv_value_1_2= RULE_FALSE
+                    // InternalOML.g:8318:6: lv_bool_1_2= RULE_FALSE
                     {
-                    lv_value_1_2=(Token)match(input,RULE_FALSE,FOLLOW_2); 
+                    lv_bool_1_2=(Token)match(input,RULE_FALSE,FOLLOW_2); 
 
-                    						newLeafNode(lv_value_1_2, grammarAccess.getLiteralBooleanAccess().getValueFALSETerminalRuleCall_1_0_1());
+                    						newLeafNode(lv_bool_1_2, grammarAccess.getLiteralBooleanAccess().getBoolFALSETerminalRuleCall_1_0_1());
                     					
 
                     						if (current==null) {
@@ -20145,8 +20145,8 @@ public class InternalOMLParser extends AbstractInternalAntlrParser {
                     						}
                     						setWithLastConsumed(
                     							current,
-                    							"value",
-                    							lv_value_1_2,
+                    							"bool",
+                    							lv_bool_1_2,
                     							"gov.nasa.jpl.imce.oml.dsl.OML.FALSE");
                     					
 

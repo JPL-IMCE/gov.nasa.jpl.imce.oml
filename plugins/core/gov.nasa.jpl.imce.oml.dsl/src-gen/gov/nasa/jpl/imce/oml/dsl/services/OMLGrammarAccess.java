@@ -5203,32 +5203,32 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.LiteralBoolean");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cLiteralBooleanAction_0 = (Action)cGroup.eContents().get(0);
-		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final Alternatives cValueAlternatives_1_0 = (Alternatives)cValueAssignment_1.eContents().get(0);
-		private final RuleCall cValueTRUETerminalRuleCall_1_0_0 = (RuleCall)cValueAlternatives_1_0.eContents().get(0);
-		private final RuleCall cValueFALSETerminalRuleCall_1_0_1 = (RuleCall)cValueAlternatives_1_0.eContents().get(1);
+		private final Assignment cBoolAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final Alternatives cBoolAlternatives_1_0 = (Alternatives)cBoolAssignment_1.eContents().get(0);
+		private final RuleCall cBoolTRUETerminalRuleCall_1_0_0 = (RuleCall)cBoolAlternatives_1_0.eContents().get(0);
+		private final RuleCall cBoolFALSETerminalRuleCall_1_0_1 = (RuleCall)cBoolAlternatives_1_0.eContents().get(1);
 		
 		//LiteralBoolean:
-		//	{LiteralBoolean} value=(TRUE | FALSE);
+		//	{LiteralBoolean} bool=(TRUE | FALSE);
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{LiteralBoolean} value=(TRUE | FALSE)
+		//{LiteralBoolean} bool=(TRUE | FALSE)
 		public Group getGroup() { return cGroup; }
 		
 		//{LiteralBoolean}
 		public Action getLiteralBooleanAction_0() { return cLiteralBooleanAction_0; }
 		
-		//value=(TRUE | FALSE)
-		public Assignment getValueAssignment_1() { return cValueAssignment_1; }
+		//bool=(TRUE | FALSE)
+		public Assignment getBoolAssignment_1() { return cBoolAssignment_1; }
 		
 		//(TRUE | FALSE)
-		public Alternatives getValueAlternatives_1_0() { return cValueAlternatives_1_0; }
+		public Alternatives getBoolAlternatives_1_0() { return cBoolAlternatives_1_0; }
 		
 		//TRUE
-		public RuleCall getValueTRUETerminalRuleCall_1_0_0() { return cValueTRUETerminalRuleCall_1_0_0; }
+		public RuleCall getBoolTRUETerminalRuleCall_1_0_0() { return cBoolTRUETerminalRuleCall_1_0_0; }
 		
 		//FALSE
-		public RuleCall getValueFALSETerminalRuleCall_1_0_1() { return cValueFALSETerminalRuleCall_1_0_1; }
+		public RuleCall getBoolFALSETerminalRuleCall_1_0_1() { return cBoolFALSETerminalRuleCall_1_0_1; }
 	}
 	public class LiteralDateTimeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.LiteralDateTime");
@@ -7058,7 +7058,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//LiteralBoolean:
-	//	{LiteralBoolean} value=(TRUE | FALSE);
+	//	{LiteralBoolean} bool=(TRUE | FALSE);
 	public LiteralBooleanElements getLiteralBooleanAccess() {
 		return pLiteralBoolean;
 	}

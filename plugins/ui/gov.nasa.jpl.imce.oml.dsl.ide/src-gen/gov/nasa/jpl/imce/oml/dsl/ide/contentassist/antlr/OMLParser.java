@@ -75,7 +75,7 @@ public class OMLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getReferenceAccess().getAlternatives(), "rule__Reference__Alternatives");
 					put(grammarAccess.getQNAMEAccess().getAlternatives(), "rule__QNAME__Alternatives");
 					put(grammarAccess.getLiteralValueAccess().getAlternatives(), "rule__LiteralValue__Alternatives");
-					put(grammarAccess.getLiteralBooleanAccess().getValueAlternatives_1_0(), "rule__LiteralBoolean__ValueAlternatives_1_0");
+					put(grammarAccess.getLiteralBooleanAccess().getBoolAlternatives_1_0(), "rule__LiteralBoolean__BoolAlternatives_1_0");
 					put(grammarAccess.getLiteralStringAccess().getAlternatives(), "rule__LiteralString__Alternatives");
 					put(grammarAccess.getLiteralNumberAccess().getAlternatives(), "rule__LiteralNumber__Alternatives");
 					put(grammarAccess.getLiteralDecimalAccess().getAlternatives(), "rule__LiteralDecimal__Alternatives");
@@ -440,7 +440,7 @@ public class OMLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getUnreifiedRelationshipInstanceTupleAccess().getUnreifiedRelationshipAssignment_4(), "rule__UnreifiedRelationshipInstanceTuple__UnreifiedRelationshipAssignment_4");
 					put(grammarAccess.getUnreifiedRelationshipInstanceTupleAccess().getDomainAssignment_6(), "rule__UnreifiedRelationshipInstanceTuple__DomainAssignment_6");
 					put(grammarAccess.getUnreifiedRelationshipInstanceTupleAccess().getRangeAssignment_8(), "rule__UnreifiedRelationshipInstanceTuple__RangeAssignment_8");
-					put(grammarAccess.getLiteralBooleanAccess().getValueAssignment_1(), "rule__LiteralBoolean__ValueAssignment_1");
+					put(grammarAccess.getLiteralBooleanAccess().getBoolAssignment_1(), "rule__LiteralBoolean__BoolAssignment_1");
 					put(grammarAccess.getLiteralDateTimeAccess().getDateTimeAssignment_1(), "rule__LiteralDateTime__DateTimeAssignment_1");
 					put(grammarAccess.getLiteralQuotedStringAccess().getStringAssignment_1(), "rule__LiteralQuotedString__StringAssignment_1");
 					put(grammarAccess.getLiteralRawStringAccess().getStringAssignment_1(), "rule__LiteralRawString__StringAssignment_1");

@@ -845,7 +845,7 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     LiteralBoolean returns LiteralBoolean
 	 *
 	 * Constraint:
-	 *     (value=TRUE | value=FALSE)
+	 *     (bool=TRUE | bool=FALSE)
 	 */
 	protected void sequence_LiteralBoolean(ISerializationContext context, LiteralBoolean semanticObject) {
 		genericSequencer.createSequence(context, (EObject) semanticObject);
