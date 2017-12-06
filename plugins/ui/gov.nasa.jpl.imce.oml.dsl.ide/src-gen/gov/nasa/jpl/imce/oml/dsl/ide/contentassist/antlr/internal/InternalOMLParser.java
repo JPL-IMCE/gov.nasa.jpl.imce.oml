@@ -10796,9 +10796,9 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__LiteralValue__Alternatives"
 
 
-    // $ANTLR start "rule__LiteralBoolean__ValueAlternatives_1_0"
-    // InternalOML.g:3415:1: rule__LiteralBoolean__ValueAlternatives_1_0 : ( ( RULE_TRUE ) | ( RULE_FALSE ) );
-    public final void rule__LiteralBoolean__ValueAlternatives_1_0() throws RecognitionException {
+    // $ANTLR start "rule__LiteralBoolean__BoolAlternatives_1_0"
+    // InternalOML.g:3415:1: rule__LiteralBoolean__BoolAlternatives_1_0 : ( ( RULE_TRUE ) | ( RULE_FALSE ) );
+    public final void rule__LiteralBoolean__BoolAlternatives_1_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
@@ -10826,9 +10826,9 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                     // InternalOML.g:3420:2: ( RULE_TRUE )
                     // InternalOML.g:3421:3: RULE_TRUE
                     {
-                     before(grammarAccess.getLiteralBooleanAccess().getValueTRUETerminalRuleCall_1_0_0()); 
+                     before(grammarAccess.getLiteralBooleanAccess().getBoolTRUETerminalRuleCall_1_0_0()); 
                     match(input,RULE_TRUE,FOLLOW_2); 
-                     after(grammarAccess.getLiteralBooleanAccess().getValueTRUETerminalRuleCall_1_0_0()); 
+                     after(grammarAccess.getLiteralBooleanAccess().getBoolTRUETerminalRuleCall_1_0_0()); 
 
                     }
 
@@ -10841,9 +10841,9 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                     // InternalOML.g:3426:2: ( RULE_FALSE )
                     // InternalOML.g:3427:3: RULE_FALSE
                     {
-                     before(grammarAccess.getLiteralBooleanAccess().getValueFALSETerminalRuleCall_1_0_1()); 
+                     before(grammarAccess.getLiteralBooleanAccess().getBoolFALSETerminalRuleCall_1_0_1()); 
                     match(input,RULE_FALSE,FOLLOW_2); 
-                     after(grammarAccess.getLiteralBooleanAccess().getValueFALSETerminalRuleCall_1_0_1()); 
+                     after(grammarAccess.getLiteralBooleanAccess().getBoolFALSETerminalRuleCall_1_0_1()); 
 
                     }
 
@@ -10864,7 +10864,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__LiteralBoolean__ValueAlternatives_1_0"
+    // $ANTLR end "rule__LiteralBoolean__BoolAlternatives_1_0"
 
 
     // $ANTLR start "rule__LiteralString__Alternatives"
@@ -51211,31 +51211,31 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__LiteralBoolean__Group__1__Impl"
-    // InternalOML.g:16821:1: rule__LiteralBoolean__Group__1__Impl : ( ( rule__LiteralBoolean__ValueAssignment_1 ) ) ;
+    // InternalOML.g:16821:1: rule__LiteralBoolean__Group__1__Impl : ( ( rule__LiteralBoolean__BoolAssignment_1 ) ) ;
     public final void rule__LiteralBoolean__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOML.g:16825:1: ( ( ( rule__LiteralBoolean__ValueAssignment_1 ) ) )
-            // InternalOML.g:16826:1: ( ( rule__LiteralBoolean__ValueAssignment_1 ) )
+            // InternalOML.g:16825:1: ( ( ( rule__LiteralBoolean__BoolAssignment_1 ) ) )
+            // InternalOML.g:16826:1: ( ( rule__LiteralBoolean__BoolAssignment_1 ) )
             {
-            // InternalOML.g:16826:1: ( ( rule__LiteralBoolean__ValueAssignment_1 ) )
-            // InternalOML.g:16827:2: ( rule__LiteralBoolean__ValueAssignment_1 )
+            // InternalOML.g:16826:1: ( ( rule__LiteralBoolean__BoolAssignment_1 ) )
+            // InternalOML.g:16827:2: ( rule__LiteralBoolean__BoolAssignment_1 )
             {
-             before(grammarAccess.getLiteralBooleanAccess().getValueAssignment_1()); 
-            // InternalOML.g:16828:2: ( rule__LiteralBoolean__ValueAssignment_1 )
-            // InternalOML.g:16828:3: rule__LiteralBoolean__ValueAssignment_1
+             before(grammarAccess.getLiteralBooleanAccess().getBoolAssignment_1()); 
+            // InternalOML.g:16828:2: ( rule__LiteralBoolean__BoolAssignment_1 )
+            // InternalOML.g:16828:3: rule__LiteralBoolean__BoolAssignment_1
             {
             pushFollow(FOLLOW_2);
-            rule__LiteralBoolean__ValueAssignment_1();
+            rule__LiteralBoolean__BoolAssignment_1();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getLiteralBooleanAccess().getValueAssignment_1()); 
+             after(grammarAccess.getLiteralBooleanAccess().getBoolAssignment_1()); 
 
             }
 
@@ -68641,32 +68641,32 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__UnreifiedRelationshipInstanceTuple__RangeAssignment_8"
 
 
-    // $ANTLR start "rule__LiteralBoolean__ValueAssignment_1"
-    // InternalOML.g:22886:1: rule__LiteralBoolean__ValueAssignment_1 : ( ( rule__LiteralBoolean__ValueAlternatives_1_0 ) ) ;
-    public final void rule__LiteralBoolean__ValueAssignment_1() throws RecognitionException {
+    // $ANTLR start "rule__LiteralBoolean__BoolAssignment_1"
+    // InternalOML.g:22886:1: rule__LiteralBoolean__BoolAssignment_1 : ( ( rule__LiteralBoolean__BoolAlternatives_1_0 ) ) ;
+    public final void rule__LiteralBoolean__BoolAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOML.g:22890:1: ( ( ( rule__LiteralBoolean__ValueAlternatives_1_0 ) ) )
-            // InternalOML.g:22891:2: ( ( rule__LiteralBoolean__ValueAlternatives_1_0 ) )
+            // InternalOML.g:22890:1: ( ( ( rule__LiteralBoolean__BoolAlternatives_1_0 ) ) )
+            // InternalOML.g:22891:2: ( ( rule__LiteralBoolean__BoolAlternatives_1_0 ) )
             {
-            // InternalOML.g:22891:2: ( ( rule__LiteralBoolean__ValueAlternatives_1_0 ) )
-            // InternalOML.g:22892:3: ( rule__LiteralBoolean__ValueAlternatives_1_0 )
+            // InternalOML.g:22891:2: ( ( rule__LiteralBoolean__BoolAlternatives_1_0 ) )
+            // InternalOML.g:22892:3: ( rule__LiteralBoolean__BoolAlternatives_1_0 )
             {
-             before(grammarAccess.getLiteralBooleanAccess().getValueAlternatives_1_0()); 
-            // InternalOML.g:22893:3: ( rule__LiteralBoolean__ValueAlternatives_1_0 )
-            // InternalOML.g:22893:4: rule__LiteralBoolean__ValueAlternatives_1_0
+             before(grammarAccess.getLiteralBooleanAccess().getBoolAlternatives_1_0()); 
+            // InternalOML.g:22893:3: ( rule__LiteralBoolean__BoolAlternatives_1_0 )
+            // InternalOML.g:22893:4: rule__LiteralBoolean__BoolAlternatives_1_0
             {
             pushFollow(FOLLOW_2);
-            rule__LiteralBoolean__ValueAlternatives_1_0();
+            rule__LiteralBoolean__BoolAlternatives_1_0();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getLiteralBooleanAccess().getValueAlternatives_1_0()); 
+             after(grammarAccess.getLiteralBooleanAccess().getBoolAlternatives_1_0()); 
 
             }
 
@@ -68685,7 +68685,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__LiteralBoolean__ValueAssignment_1"
+    // $ANTLR end "rule__LiteralBoolean__BoolAssignment_1"
 
 
     // $ANTLR start "rule__LiteralDateTime__DateTimeAssignment_1"

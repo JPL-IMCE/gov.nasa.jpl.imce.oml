@@ -19,6 +19,8 @@ package gov.nasa.jpl.imce.oml.dsl.tests
 import com.google.inject.Inject
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept
 import gov.nasa.jpl.imce.oml.model.common.Extent
+import org.eclipse.xtext.resource.SaveOptions
+import org.eclipse.xtext.resource.SaveOptions.Builder
 import org.eclipse.xtext.testing.InjectWith
 import org.eclipse.xtext.testing.XtextRunner
 import org.eclipse.xtext.testing.util.ParseHelper
@@ -29,10 +31,11 @@ import org.junit.runner.RunWith
 import static extension org.junit.Assert.*
 import org.eclipse.emf.ecore.util.EcoreUtil
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox
+import java.io.ByteArrayOutputStream
 
 @RunWith(XtextRunner)
 @InjectWith(OMLInjectorProvider)
-class OMLAnnotationTest1a {
+class OMLAnnotationTest2a {
 
 	@Inject
 	ParseHelper<Extent> parseHelper
@@ -77,6 +80,15 @@ open terminology <http://imce.jpl.nasa.gov/foundation/mission/mission>
 		"Performing Element".assertEquals(a_value.stringValue.value)
 		ap.assertSame(a_prop)
 		c.assertSame(a_subj)
+		
+		val ByteArrayOutputStream bos = new ByteArrayOutputStream()
+		
+		val Builder builder = SaveOptions.newBuilder()
+		builder.format()
+
+		val SaveOptions s = builder.getOptions()
+
+		r.save(bos, s.toOptionsMap())
 		
 		System.out.println(this.class.name + " OK!")
 	}

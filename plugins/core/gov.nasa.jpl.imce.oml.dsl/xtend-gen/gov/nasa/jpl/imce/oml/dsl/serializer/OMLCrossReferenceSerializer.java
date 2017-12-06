@@ -2,7 +2,7 @@ package gov.nasa.jpl.imce.oml.dsl.serializer;
 
 import com.google.common.base.Objects;
 import com.google.inject.Inject;
-import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox;
+import gov.nasa.jpl.imce.oml.model.common.Module;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.CrossReference;
 import org.eclipse.xtext.linking.impl.LinkingHelper;
@@ -30,9 +30,9 @@ public class OMLCrossReferenceSerializer extends CrossReferenceSerializer {
       if (_equals) {
         String _switchResult = null;
         boolean _matched = false;
-        if (target instanceof TerminologyBox) {
+        if (target instanceof Module) {
           _matched=true;
-          String _iri = ((TerminologyBox)target).iri();
+          String _iri = ((Module)target).iri();
           String _plus = ("<" + _iri);
           _switchResult = (_plus + ">");
         }
@@ -43,7 +43,7 @@ public class OMLCrossReferenceSerializer extends CrossReferenceSerializer {
           } else {
             _xifexpression_1 = target.eClass().getName();
           }
-          String _plus = ("OntologicalModelingLanguageCrossReferenceSerializer.serializeCrossRef(..., \'ExternalReference\', target, ...): target must be a TerminologyBox, not: " + _xifexpression_1);
+          String _plus = ("OntologicalModelingLanguageCrossReferenceSerializer.serializeCrossRef(..., \'ExternalReference\', target, ...): target must be a Module, not: " + _xifexpression_1);
           throw new IllegalArgumentException(_plus);
         }
         _xifexpression = _switchResult;

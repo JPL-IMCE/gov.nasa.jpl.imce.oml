@@ -47,3 +47,10 @@ gov.nasa.jpl.imce.oml.tycho 0.9.0.0 resolves major problems found in 0.8.0.1
 - [#166 Add abstractions for OML cross-references (entity only & entity+value)](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/166)
 
 - [#167 ConflictingRegionsException when invoking formatter](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/167)
+
+- [#170 Relax OMLCrossReferenceSerializer for any kind of OML Module](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/170)
+
+- [#172 OML Serialization problem](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/172)
+
+  This problem seems to have been due to stale generated XText code.
+

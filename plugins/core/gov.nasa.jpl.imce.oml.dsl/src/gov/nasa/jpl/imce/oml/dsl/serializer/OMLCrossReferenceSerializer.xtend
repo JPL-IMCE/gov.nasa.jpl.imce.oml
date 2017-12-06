@@ -1,7 +1,7 @@
 package gov.nasa.jpl.imce.oml.dsl.serializer
 
 import com.google.inject.Inject
-import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox
+import gov.nasa.jpl.imce.oml.model.common.Module
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.CrossReference
 import org.eclipse.xtext.linking.impl.LinkingHelper
@@ -23,11 +23,11 @@ class OMLCrossReferenceSerializer extends CrossReferenceSerializer {
 		val ruleName = linkingHelper.getRuleNameFrom(crossref)
 		if ("ExternalReference" == ruleName) {
 			switch target {
-				TerminologyBox:
+				Module:
 					'<'+target.iri()+'>'
 				default:
 					throw new IllegalArgumentException(
-					"OntologicalModelingLanguageCrossReferenceSerializer.serializeCrossRef(..., 'ExternalReference', target, ...): target must be a TerminologyBox, not: "+
+					"OntologicalModelingLanguageCrossReferenceSerializer.serializeCrossRef(..., 'ExternalReference', target, ...): target must be a Module, not: "+
 					(if (null === target) "<null>" else target.eClass.name))
 			}
 		} else {

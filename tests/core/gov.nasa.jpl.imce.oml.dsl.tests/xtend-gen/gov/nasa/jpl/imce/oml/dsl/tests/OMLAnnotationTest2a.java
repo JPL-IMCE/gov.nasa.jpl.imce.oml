@@ -26,9 +26,11 @@ import gov.nasa.jpl.imce.oml.model.common.LiteralString;
 import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox;
+import java.io.ByteArrayOutputStream;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.resource.SaveOptions;
 import org.eclipse.xtext.testing.InjectWith;
 import org.eclipse.xtext.testing.XtextRunner;
 import org.eclipse.xtext.testing.util.ParseHelper;
@@ -43,7 +45,7 @@ import org.junit.runner.RunWith;
 @RunWith(XtextRunner.class)
 @InjectWith(OMLInjectorProvider.class)
 @SuppressWarnings("all")
-public class OMLAnnotationTest1a {
+public class OMLAnnotationTest2a {
   @Inject
   private ParseHelper<Extent> parseHelper;
   
@@ -90,6 +92,11 @@ public class OMLAnnotationTest1a {
       Assert.assertEquals("Performing Element", a_value.stringValue().value);
       Assert.assertSame(ap, a_prop);
       Assert.assertSame(c, a_subj);
+      final ByteArrayOutputStream bos = new ByteArrayOutputStream();
+      final SaveOptions.Builder builder = SaveOptions.newBuilder();
+      builder.format();
+      final SaveOptions s = builder.getOptions();
+      r.save(bos, s.toOptionsMap());
       String _name = this.getClass().getName();
       String _plus = (_name + " OK!");
       System.out.println(_plus);
