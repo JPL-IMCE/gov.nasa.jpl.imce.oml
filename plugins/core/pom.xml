@@ -17,5 +17,6 @@
 		<module>gov.nasa.jpl.imce.oml.model</module>
 		<module>gov.nasa.jpl.imce.oml.model.edit</module>
 		<module>gov.nasa.jpl.imce.oml.dsl</module>
+		<module>gov.nasa.jpl.imce.oml.zip</module>
 	</modules>
 </project>

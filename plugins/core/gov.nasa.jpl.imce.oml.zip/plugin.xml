@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.emf.ecore.extension_parser">
+      <parser
+            class="gov.nasa.jpl.imce.oml.zip.OMLZipResourceFactory"
+            type="gov.nasa.jpl.imce.oml.zip">
+      </parser>
+   </extension>
+   <extension
+         id="gov.nasa.jpl.imce.omlzip"
+         name="OML Zip"
+         point="org.eclipse.core.contenttype.contentTypes">
+      <file-association
+            content-type="gov.nasa.jpl.imce.oml.zip.file-association"
+            file-extensions="omlzip">
+      </file-association>
+   </extension>
+   <extension
+         point="org.eclipse.emf.ecore.content_parser">
+      <parser
+            class="gov.nasa.jpl.imce.oml.zip.OMLZipResourceFactory"
+            contentTypeIdentifier="gov.nasa.jpl.imce.oml.zip">
+      </parser>
+   </extension>
+
+</plugin>

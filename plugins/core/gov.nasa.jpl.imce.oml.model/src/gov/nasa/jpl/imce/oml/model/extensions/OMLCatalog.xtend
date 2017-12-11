@@ -14,7 +14,7 @@ class OMLCatalog extends Catalog {
 		parsedCatalogs.contains(aUrl)
 	}
 	
-	override void parseCatalog(URL aUrl) throws IOException {
+	synchronized override void parseCatalog(URL aUrl) throws IOException {
 		if (parsedCatalogs.add(aUrl))	
 			super.parseCatalog(aUrl)
 	}
