@@ -1659,7 +1659,12 @@ public class OMLSpecificationTables {
       pw.print(it.getLiteralValue().value());
       pw.print("\",");
       pw.print("\"valueTypeUUID\":\"");
-      pw.print(it.getValueType().uuid());
+      DataRange _valueType = it.getValueType();
+      String _uuid = null;
+      if (_valueType!=null) {
+        _uuid=_valueType.uuid();
+      }
+      pw.print(_uuid);
       pw.println("\"}");
     };
     OMLTables.entityScalarDataPropertyParticularRestrictionAxioms(e).forEach(_function);
@@ -1711,7 +1716,12 @@ public class OMLSpecificationTables {
       pw.print(it.getValue().value());
       pw.print("\",");
       pw.print("\"valueTypeUUID\":\"");
-      pw.print(it.getValueType().uuid());
+      DataRange _valueType = it.getValueType();
+      String _uuid = null;
+      if (_valueType!=null) {
+        _uuid=_valueType.uuid();
+      }
+      pw.print(_uuid);
       pw.println("\"}");
     };
     OMLTables.scalarOneOfLiteralAxioms(e).forEach(_function);
@@ -2218,7 +2228,12 @@ public class OMLSpecificationTables {
       pw.print(it.getStructuredDataPropertyContext().uuid());
       pw.print("\",");
       pw.print("\"valueTypeUUID\":\"");
-      pw.print(it.getValueType().uuid());
+      DataRange _valueType = it.getValueType();
+      String _uuid = null;
+      if (_valueType!=null) {
+        _uuid=_valueType.uuid();
+      }
+      pw.print(_uuid);
       pw.println("\"}");
     };
     OMLTables.restrictionScalarDataPropertyValues(e).forEach(_function);
@@ -2255,10 +2270,20 @@ public class OMLSpecificationTables {
       pw.print(it.uuid());
       pw.print("\",");
       pw.print("\"previousSegmentUUID\":\"");
-      pw.print(it.getPreviousSegment().uuid());
+      RuleBodySegment _previousSegment = it.getPreviousSegment();
+      String _uuid = null;
+      if (_previousSegment!=null) {
+        _uuid=_previousSegment.uuid();
+      }
+      pw.print(_uuid);
       pw.print("\",");
       pw.print("\"ruleUUID\":\"");
-      pw.print(it.getRule().uuid());
+      ChainRule _rule = it.getRule();
+      String _uuid_1 = null;
+      if (_rule!=null) {
+        _uuid_1=_rule.uuid();
+      }
+      pw.print(_uuid_1);
       pw.println("\"}");
     };
     OMLTables.ruleBodySegments(e).forEach(_function);
@@ -2284,7 +2309,12 @@ public class OMLSpecificationTables {
       pw.print(it.getStructuredDataPropertyContext().uuid());
       pw.print("\",");
       pw.print("\"valueTypeUUID\":\"");
-      pw.print(it.getValueType().uuid());
+      DataRange _valueType = it.getValueType();
+      String _uuid = null;
+      if (_valueType!=null) {
+        _uuid=_valueType.uuid();
+      }
+      pw.print(_uuid);
       pw.println("\"}");
     };
     OMLTables.scalarDataPropertyValues(e).forEach(_function);
@@ -2313,7 +2343,12 @@ public class OMLSpecificationTables {
       pw.print(it.getScalarPropertyValue().value());
       pw.print("\",");
       pw.print("\"valueTypeUUID\":\"");
-      pw.print(it.getValueType().uuid());
+      DataRange _valueType = it.getValueType();
+      String _uuid = null;
+      if (_valueType!=null) {
+        _uuid=_valueType.uuid();
+      }
+      pw.print(_uuid);
       pw.println("\"}");
     };
     OMLTables.singletonInstanceScalarDataPropertyValues(e).forEach(_function);
