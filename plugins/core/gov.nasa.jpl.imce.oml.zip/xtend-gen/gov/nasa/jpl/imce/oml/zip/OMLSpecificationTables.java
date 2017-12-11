@@ -475,333 +475,531 @@ public class OMLSpecificationTables {
       ZipArchiveEntry _zipArchiveEntry = new ZipArchiveEntry("AnnotationProperties.json");
       entry = _zipArchiveEntry;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.annotationPropertiesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.annotationPropertiesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_1 = new ZipArchiveEntry("TerminologyGraphs.json");
       entry = _zipArchiveEntry_1;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.terminologyGraphsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.terminologyGraphsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_2 = new ZipArchiveEntry("Bundles.json");
       entry = _zipArchiveEntry_2;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.bundlesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.bundlesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_3 = new ZipArchiveEntry("ConceptDesignationTerminologyAxioms.json");
       entry = _zipArchiveEntry_3;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.conceptDesignationTerminologyAxiomsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.conceptDesignationTerminologyAxiomsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_4 = new ZipArchiveEntry("TerminologyExtensionAxioms.json");
       entry = _zipArchiveEntry_4;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.terminologyExtensionAxiomsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.terminologyExtensionAxiomsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_5 = new ZipArchiveEntry("TerminologyNestingAxioms.json");
       entry = _zipArchiveEntry_5;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.terminologyNestingAxiomsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.terminologyNestingAxiomsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_6 = new ZipArchiveEntry("Aspects.json");
       entry = _zipArchiveEntry_6;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.aspectsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.aspectsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_7 = new ZipArchiveEntry("Concepts.json");
       entry = _zipArchiveEntry_7;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.conceptsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.conceptsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_8 = new ZipArchiveEntry("ReifiedRelationships.json");
       entry = _zipArchiveEntry_8;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.reifiedRelationshipsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.reifiedRelationshipsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_9 = new ZipArchiveEntry("UnreifiedRelationships.json");
       entry = _zipArchiveEntry_9;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.unreifiedRelationshipsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.unreifiedRelationshipsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_10 = new ZipArchiveEntry("Scalars.json");
       entry = _zipArchiveEntry_10;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.scalarsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.scalarsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_11 = new ZipArchiveEntry("Structures.json");
       entry = _zipArchiveEntry_11;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.structuresByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.structuresByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_12 = new ZipArchiveEntry("BinaryScalarRestrictions.json");
       entry = _zipArchiveEntry_12;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.binaryScalarRestrictionsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.binaryScalarRestrictionsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_13 = new ZipArchiveEntry("IRIScalarRestrictions.json");
       entry = _zipArchiveEntry_13;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.iriScalarRestrictionsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.iriScalarRestrictionsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_14 = new ZipArchiveEntry("NumericScalarRestrictions.json");
       entry = _zipArchiveEntry_14;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.numericScalarRestrictionsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.numericScalarRestrictionsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_15 = new ZipArchiveEntry("PlainLiteralScalarRestrictions.json");
       entry = _zipArchiveEntry_15;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.plainLiteralScalarRestrictionsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.plainLiteralScalarRestrictionsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_16 = new ZipArchiveEntry("ScalarOneOfRestrictions.json");
       entry = _zipArchiveEntry_16;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.scalarOneOfRestrictionsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.scalarOneOfRestrictionsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_17 = new ZipArchiveEntry("StringScalarRestrictions.json");
       entry = _zipArchiveEntry_17;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.stringScalarRestrictionsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.stringScalarRestrictionsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_18 = new ZipArchiveEntry("SynonymScalarRestrictions.json");
       entry = _zipArchiveEntry_18;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.synonymScalarRestrictionsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.synonymScalarRestrictionsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_19 = new ZipArchiveEntry("TimeScalarRestrictions.json");
       entry = _zipArchiveEntry_19;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.timeScalarRestrictionsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.timeScalarRestrictionsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_20 = new ZipArchiveEntry("EntityScalarDataProperties.json");
       entry = _zipArchiveEntry_20;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.entityScalarDataPropertiesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.entityScalarDataPropertiesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_21 = new ZipArchiveEntry("EntityStructuredDataProperties.json");
       entry = _zipArchiveEntry_21;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.entityStructuredDataPropertiesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.entityStructuredDataPropertiesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_22 = new ZipArchiveEntry("ScalarDataProperties.json");
       entry = _zipArchiveEntry_22;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.scalarDataPropertiesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.scalarDataPropertiesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_23 = new ZipArchiveEntry("StructuredDataProperties.json");
       entry = _zipArchiveEntry_23;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.structuredDataPropertiesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.structuredDataPropertiesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_24 = new ZipArchiveEntry("AspectSpecializationAxioms.json");
       entry = _zipArchiveEntry_24;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.aspectSpecializationAxiomsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.aspectSpecializationAxiomsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_25 = new ZipArchiveEntry("ConceptSpecializationAxioms.json");
       entry = _zipArchiveEntry_25;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.conceptSpecializationAxiomsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.conceptSpecializationAxiomsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_26 = new ZipArchiveEntry("ReifiedRelationshipSpecializationAxioms.json");
       entry = _zipArchiveEntry_26;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.reifiedRelationshipSpecializationAxiomsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.reifiedRelationshipSpecializationAxiomsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_27 = new ZipArchiveEntry("EntityExistentialRestrictionAxioms.json");
       entry = _zipArchiveEntry_27;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.entityExistentialRestrictionAxiomsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.entityExistentialRestrictionAxiomsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_28 = new ZipArchiveEntry("EntityUniversalRestrictionAxioms.json");
       entry = _zipArchiveEntry_28;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.entityUniversalRestrictionAxiomsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.entityUniversalRestrictionAxiomsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_29 = new ZipArchiveEntry("EntityScalarDataPropertyExistentialRestrictionAxioms.json");
       entry = _zipArchiveEntry_29;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.entityScalarDataPropertyExistentialRestrictionAxiomsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.entityScalarDataPropertyExistentialRestrictionAxiomsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_30 = new ZipArchiveEntry("EntityScalarDataPropertyParticularRestrictionAxioms.json");
       entry = _zipArchiveEntry_30;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.entityScalarDataPropertyParticularRestrictionAxiomsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.entityScalarDataPropertyParticularRestrictionAxiomsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_31 = new ZipArchiveEntry("EntityScalarDataPropertyUniversalRestrictionAxioms.json");
       entry = _zipArchiveEntry_31;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.entityScalarDataPropertyUniversalRestrictionAxiomsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.entityScalarDataPropertyUniversalRestrictionAxiomsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_32 = new ZipArchiveEntry("ScalarOneOfLiteralAxioms.json");
       entry = _zipArchiveEntry_32;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.scalarOneOfLiteralAxiomsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.scalarOneOfLiteralAxiomsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_33 = new ZipArchiveEntry("BundledTerminologyAxioms.json");
       entry = _zipArchiveEntry_33;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.bundledTerminologyAxiomsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.bundledTerminologyAxiomsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_34 = new ZipArchiveEntry("RootConceptTaxonomyAxioms.json");
       entry = _zipArchiveEntry_34;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.rootConceptTaxonomyAxiomsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.rootConceptTaxonomyAxiomsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_35 = new ZipArchiveEntry("SpecificDisjointConceptAxioms.json");
       entry = _zipArchiveEntry_35;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.specificDisjointConceptAxiomsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.specificDisjointConceptAxiomsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_36 = new ZipArchiveEntry("AnnotationPropertyValues.json");
       entry = _zipArchiveEntry_36;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.annotationPropertyValuesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.annotationPropertyValuesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_37 = new ZipArchiveEntry("AnonymousConceptUnionAxioms.json");
       entry = _zipArchiveEntry_37;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.anonymousConceptUnionAxiomsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.anonymousConceptUnionAxiomsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_38 = new ZipArchiveEntry("AspectPredicates.json");
       entry = _zipArchiveEntry_38;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.aspectPredicatesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.aspectPredicatesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_39 = new ZipArchiveEntry("ChainRules.json");
       entry = _zipArchiveEntry_39;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.chainRulesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.chainRulesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_40 = new ZipArchiveEntry("ConceptInstances.json");
       entry = _zipArchiveEntry_40;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.conceptInstancesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.conceptInstancesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_41 = new ZipArchiveEntry("ConceptPredicates.json");
       entry = _zipArchiveEntry_41;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.conceptPredicatesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.conceptPredicatesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_42 = new ZipArchiveEntry("DescriptionBoxes.json");
       entry = _zipArchiveEntry_42;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.descriptionBoxesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.descriptionBoxesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_43 = new ZipArchiveEntry("DescriptionBoxExtendsClosedWorldDefinitions.json");
       entry = _zipArchiveEntry_43;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.descriptionBoxExtendsClosedWorldDefinitionsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.descriptionBoxExtendsClosedWorldDefinitionsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_44 = new ZipArchiveEntry("DescriptionBoxRefinements.json");
       entry = _zipArchiveEntry_44;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.descriptionBoxRefinementsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.descriptionBoxRefinementsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_45 = new ZipArchiveEntry("EntityStructuredDataPropertyParticularRestrictionAxioms.json");
       entry = _zipArchiveEntry_45;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.entityStructuredDataPropertyParticularRestrictionAxiomsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.entityStructuredDataPropertyParticularRestrictionAxiomsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_46 = new ZipArchiveEntry("ReifiedRelationshipInstances.json");
       entry = _zipArchiveEntry_46;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.reifiedRelationshipInstancesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.reifiedRelationshipInstancesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_47 = new ZipArchiveEntry("ReifiedRelationshipInstanceDomains.json");
       entry = _zipArchiveEntry_47;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.reifiedRelationshipInstanceDomainsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.reifiedRelationshipInstanceDomainsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_48 = new ZipArchiveEntry("ReifiedRelationshipInstanceRanges.json");
       entry = _zipArchiveEntry_48;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.reifiedRelationshipInstanceRangesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.reifiedRelationshipInstanceRangesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_49 = new ZipArchiveEntry("ReifiedRelationshipInversePropertyPredicates.json");
       entry = _zipArchiveEntry_49;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.reifiedRelationshipInversePropertyPredicatesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.reifiedRelationshipInversePropertyPredicatesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_50 = new ZipArchiveEntry("ReifiedRelationshipPredicates.json");
       entry = _zipArchiveEntry_50;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.reifiedRelationshipPredicatesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.reifiedRelationshipPredicatesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_51 = new ZipArchiveEntry("ReifiedRelationshipPropertyPredicates.json");
       entry = _zipArchiveEntry_51;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.reifiedRelationshipPropertyPredicatesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.reifiedRelationshipPropertyPredicatesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_52 = new ZipArchiveEntry("ReifiedRelationshipSourceInversePropertyPredicates.json");
       entry = _zipArchiveEntry_52;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.reifiedRelationshipSourceInversePropertyPredicatesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.reifiedRelationshipSourceInversePropertyPredicatesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_53 = new ZipArchiveEntry("ReifiedRelationshipSourcePropertyPredicates.json");
       entry = _zipArchiveEntry_53;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.reifiedRelationshipSourcePropertyPredicatesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.reifiedRelationshipSourcePropertyPredicatesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_54 = new ZipArchiveEntry("ReifiedRelationshipTargetInversePropertyPredicates.json");
       entry = _zipArchiveEntry_54;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.reifiedRelationshipTargetInversePropertyPredicatesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.reifiedRelationshipTargetInversePropertyPredicatesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_55 = new ZipArchiveEntry("ReifiedRelationshipTargetPropertyPredicates.json");
       entry = _zipArchiveEntry_55;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.reifiedRelationshipTargetPropertyPredicatesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.reifiedRelationshipTargetPropertyPredicatesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_56 = new ZipArchiveEntry("RestrictionScalarDataPropertyValues.json");
       entry = _zipArchiveEntry_56;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.restrictionScalarDataPropertyValuesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.restrictionScalarDataPropertyValuesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_57 = new ZipArchiveEntry("RestrictionStructuredDataPropertyTuples.json");
       entry = _zipArchiveEntry_57;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.restrictionStructuredDataPropertyTuplesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.restrictionStructuredDataPropertyTuplesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_58 = new ZipArchiveEntry("RuleBodySegments.json");
       entry = _zipArchiveEntry_58;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.ruleBodySegmentsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.ruleBodySegmentsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_59 = new ZipArchiveEntry("ScalarDataPropertyValues.json");
       entry = _zipArchiveEntry_59;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.scalarDataPropertyValuesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.scalarDataPropertyValuesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_60 = new ZipArchiveEntry("SingletonInstanceScalarDataPropertyValues.json");
       entry = _zipArchiveEntry_60;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.singletonInstanceScalarDataPropertyValuesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.singletonInstanceScalarDataPropertyValuesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_61 = new ZipArchiveEntry("SingletonInstanceStructuredDataPropertyValues.json");
       entry = _zipArchiveEntry_61;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.singletonInstanceStructuredDataPropertyValuesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.singletonInstanceStructuredDataPropertyValuesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_62 = new ZipArchiveEntry("StructuredDataPropertyTuples.json");
       entry = _zipArchiveEntry_62;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.structuredDataPropertyTuplesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.structuredDataPropertyTuplesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_63 = new ZipArchiveEntry("UnreifiedRelationshipInstanceTuples.json");
       entry = _zipArchiveEntry_63;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.unreifiedRelationshipInstanceTuplesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.unreifiedRelationshipInstanceTuplesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_64 = new ZipArchiveEntry("UnreifiedRelationshipInversePropertyPredicates.json");
       entry = _zipArchiveEntry_64;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.unreifiedRelationshipInversePropertyPredicatesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.unreifiedRelationshipInversePropertyPredicatesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_65 = new ZipArchiveEntry("UnreifiedRelationshipPropertyPredicates.json");
       entry = _zipArchiveEntry_65;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.unreifiedRelationshipPropertyPredicatesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.unreifiedRelationshipPropertyPredicatesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
