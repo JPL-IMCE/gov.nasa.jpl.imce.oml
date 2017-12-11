@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: gov.nasa.jpl.imce.oml.zip;singleton:=true
+Bundle-Version: 0.9.0.qualifier
+Bundle-Vendor: %providerName
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: gov.nasa.jpl.imce.oml.model;visibility:=reexport,
+ org.apache.commons.compress;bundle-version="1.6.0";visibility:=reexport,
+ gov.nasa.jpl.imce.oml.dsl;visibility:=reexport
+Export-Package: gov.nasa.jpl.imce.oml.zip
