@@ -304,333 +304,531 @@ class OMLSpecificationTables {
     // AnnotationProperty
     entry = new ZipArchiveEntry("AnnotationProperties.json")
     zos.putArchiveEntry(entry)
-    zos.write(annotationPropertiesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(annotationPropertiesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // TerminologyGraph
     entry = new ZipArchiveEntry("TerminologyGraphs.json")
     zos.putArchiveEntry(entry)
-    zos.write(terminologyGraphsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(terminologyGraphsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // Bundle
     entry = new ZipArchiveEntry("Bundles.json")
     zos.putArchiveEntry(entry)
-    zos.write(bundlesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(bundlesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // ConceptDesignationTerminologyAxiom
     entry = new ZipArchiveEntry("ConceptDesignationTerminologyAxioms.json")
     zos.putArchiveEntry(entry)
-    zos.write(conceptDesignationTerminologyAxiomsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(conceptDesignationTerminologyAxiomsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // TerminologyExtensionAxiom
     entry = new ZipArchiveEntry("TerminologyExtensionAxioms.json")
     zos.putArchiveEntry(entry)
-    zos.write(terminologyExtensionAxiomsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(terminologyExtensionAxiomsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // TerminologyNestingAxiom
     entry = new ZipArchiveEntry("TerminologyNestingAxioms.json")
     zos.putArchiveEntry(entry)
-    zos.write(terminologyNestingAxiomsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(terminologyNestingAxiomsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // Aspect
     entry = new ZipArchiveEntry("Aspects.json")
     zos.putArchiveEntry(entry)
-    zos.write(aspectsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(aspectsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // Concept
     entry = new ZipArchiveEntry("Concepts.json")
     zos.putArchiveEntry(entry)
-    zos.write(conceptsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(conceptsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // ReifiedRelationship
     entry = new ZipArchiveEntry("ReifiedRelationships.json")
     zos.putArchiveEntry(entry)
-    zos.write(reifiedRelationshipsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(reifiedRelationshipsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // UnreifiedRelationship
     entry = new ZipArchiveEntry("UnreifiedRelationships.json")
     zos.putArchiveEntry(entry)
-    zos.write(unreifiedRelationshipsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(unreifiedRelationshipsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // Scalar
     entry = new ZipArchiveEntry("Scalars.json")
     zos.putArchiveEntry(entry)
-    zos.write(scalarsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(scalarsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // Structure
     entry = new ZipArchiveEntry("Structures.json")
     zos.putArchiveEntry(entry)
-    zos.write(structuresByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(structuresByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // BinaryScalarRestriction
     entry = new ZipArchiveEntry("BinaryScalarRestrictions.json")
     zos.putArchiveEntry(entry)
-    zos.write(binaryScalarRestrictionsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(binaryScalarRestrictionsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // IRIScalarRestriction
     entry = new ZipArchiveEntry("IRIScalarRestrictions.json")
     zos.putArchiveEntry(entry)
-    zos.write(iriScalarRestrictionsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(iriScalarRestrictionsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // NumericScalarRestriction
     entry = new ZipArchiveEntry("NumericScalarRestrictions.json")
     zos.putArchiveEntry(entry)
-    zos.write(numericScalarRestrictionsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(numericScalarRestrictionsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // PlainLiteralScalarRestriction
     entry = new ZipArchiveEntry("PlainLiteralScalarRestrictions.json")
     zos.putArchiveEntry(entry)
-    zos.write(plainLiteralScalarRestrictionsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(plainLiteralScalarRestrictionsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // ScalarOneOfRestriction
     entry = new ZipArchiveEntry("ScalarOneOfRestrictions.json")
     zos.putArchiveEntry(entry)
-    zos.write(scalarOneOfRestrictionsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(scalarOneOfRestrictionsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // StringScalarRestriction
     entry = new ZipArchiveEntry("StringScalarRestrictions.json")
     zos.putArchiveEntry(entry)
-    zos.write(stringScalarRestrictionsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(stringScalarRestrictionsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // SynonymScalarRestriction
     entry = new ZipArchiveEntry("SynonymScalarRestrictions.json")
     zos.putArchiveEntry(entry)
-    zos.write(synonymScalarRestrictionsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(synonymScalarRestrictionsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // TimeScalarRestriction
     entry = new ZipArchiveEntry("TimeScalarRestrictions.json")
     zos.putArchiveEntry(entry)
-    zos.write(timeScalarRestrictionsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(timeScalarRestrictionsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // EntityScalarDataProperty
     entry = new ZipArchiveEntry("EntityScalarDataProperties.json")
     zos.putArchiveEntry(entry)
-    zos.write(entityScalarDataPropertiesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(entityScalarDataPropertiesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // EntityStructuredDataProperty
     entry = new ZipArchiveEntry("EntityStructuredDataProperties.json")
     zos.putArchiveEntry(entry)
-    zos.write(entityStructuredDataPropertiesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(entityStructuredDataPropertiesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // ScalarDataProperty
     entry = new ZipArchiveEntry("ScalarDataProperties.json")
     zos.putArchiveEntry(entry)
-    zos.write(scalarDataPropertiesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(scalarDataPropertiesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // StructuredDataProperty
     entry = new ZipArchiveEntry("StructuredDataProperties.json")
     zos.putArchiveEntry(entry)
-    zos.write(structuredDataPropertiesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(structuredDataPropertiesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // AspectSpecializationAxiom
     entry = new ZipArchiveEntry("AspectSpecializationAxioms.json")
     zos.putArchiveEntry(entry)
-    zos.write(aspectSpecializationAxiomsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(aspectSpecializationAxiomsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // ConceptSpecializationAxiom
     entry = new ZipArchiveEntry("ConceptSpecializationAxioms.json")
     zos.putArchiveEntry(entry)
-    zos.write(conceptSpecializationAxiomsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(conceptSpecializationAxiomsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // ReifiedRelationshipSpecializationAxiom
     entry = new ZipArchiveEntry("ReifiedRelationshipSpecializationAxioms.json")
     zos.putArchiveEntry(entry)
-    zos.write(reifiedRelationshipSpecializationAxiomsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(reifiedRelationshipSpecializationAxiomsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // EntityExistentialRestrictionAxiom
     entry = new ZipArchiveEntry("EntityExistentialRestrictionAxioms.json")
     zos.putArchiveEntry(entry)
-    zos.write(entityExistentialRestrictionAxiomsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(entityExistentialRestrictionAxiomsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // EntityUniversalRestrictionAxiom
     entry = new ZipArchiveEntry("EntityUniversalRestrictionAxioms.json")
     zos.putArchiveEntry(entry)
-    zos.write(entityUniversalRestrictionAxiomsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(entityUniversalRestrictionAxiomsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // EntityScalarDataPropertyExistentialRestrictionAxiom
     entry = new ZipArchiveEntry("EntityScalarDataPropertyExistentialRestrictionAxioms.json")
     zos.putArchiveEntry(entry)
-    zos.write(entityScalarDataPropertyExistentialRestrictionAxiomsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(entityScalarDataPropertyExistentialRestrictionAxiomsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // EntityScalarDataPropertyParticularRestrictionAxiom
     entry = new ZipArchiveEntry("EntityScalarDataPropertyParticularRestrictionAxioms.json")
     zos.putArchiveEntry(entry)
-    zos.write(entityScalarDataPropertyParticularRestrictionAxiomsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(entityScalarDataPropertyParticularRestrictionAxiomsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // EntityScalarDataPropertyUniversalRestrictionAxiom
     entry = new ZipArchiveEntry("EntityScalarDataPropertyUniversalRestrictionAxioms.json")
     zos.putArchiveEntry(entry)
-    zos.write(entityScalarDataPropertyUniversalRestrictionAxiomsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(entityScalarDataPropertyUniversalRestrictionAxiomsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // ScalarOneOfLiteralAxiom
     entry = new ZipArchiveEntry("ScalarOneOfLiteralAxioms.json")
     zos.putArchiveEntry(entry)
-    zos.write(scalarOneOfLiteralAxiomsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(scalarOneOfLiteralAxiomsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // BundledTerminologyAxiom
     entry = new ZipArchiveEntry("BundledTerminologyAxioms.json")
     zos.putArchiveEntry(entry)
-    zos.write(bundledTerminologyAxiomsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(bundledTerminologyAxiomsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // RootConceptTaxonomyAxiom
     entry = new ZipArchiveEntry("RootConceptTaxonomyAxioms.json")
     zos.putArchiveEntry(entry)
-    zos.write(rootConceptTaxonomyAxiomsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(rootConceptTaxonomyAxiomsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // SpecificDisjointConceptAxiom
     entry = new ZipArchiveEntry("SpecificDisjointConceptAxioms.json")
     zos.putArchiveEntry(entry)
-    zos.write(specificDisjointConceptAxiomsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(specificDisjointConceptAxiomsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // AnnotationPropertyValue
     entry = new ZipArchiveEntry("AnnotationPropertyValues.json")
     zos.putArchiveEntry(entry)
-    zos.write(annotationPropertyValuesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(annotationPropertyValuesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // AnonymousConceptUnionAxiom
     entry = new ZipArchiveEntry("AnonymousConceptUnionAxioms.json")
     zos.putArchiveEntry(entry)
-    zos.write(anonymousConceptUnionAxiomsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(anonymousConceptUnionAxiomsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // AspectPredicate
     entry = new ZipArchiveEntry("AspectPredicates.json")
     zos.putArchiveEntry(entry)
-    zos.write(aspectPredicatesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(aspectPredicatesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // ChainRule
     entry = new ZipArchiveEntry("ChainRules.json")
     zos.putArchiveEntry(entry)
-    zos.write(chainRulesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(chainRulesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // ConceptInstance
     entry = new ZipArchiveEntry("ConceptInstances.json")
     zos.putArchiveEntry(entry)
-    zos.write(conceptInstancesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(conceptInstancesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // ConceptPredicate
     entry = new ZipArchiveEntry("ConceptPredicates.json")
     zos.putArchiveEntry(entry)
-    zos.write(conceptPredicatesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(conceptPredicatesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // DescriptionBox
     entry = new ZipArchiveEntry("DescriptionBoxes.json")
     zos.putArchiveEntry(entry)
-    zos.write(descriptionBoxesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(descriptionBoxesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // DescriptionBoxExtendsClosedWorldDefinitions
     entry = new ZipArchiveEntry("DescriptionBoxExtendsClosedWorldDefinitions.json")
     zos.putArchiveEntry(entry)
-    zos.write(descriptionBoxExtendsClosedWorldDefinitionsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(descriptionBoxExtendsClosedWorldDefinitionsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // DescriptionBoxRefinement
     entry = new ZipArchiveEntry("DescriptionBoxRefinements.json")
     zos.putArchiveEntry(entry)
-    zos.write(descriptionBoxRefinementsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(descriptionBoxRefinementsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // EntityStructuredDataPropertyParticularRestrictionAxiom
     entry = new ZipArchiveEntry("EntityStructuredDataPropertyParticularRestrictionAxioms.json")
     zos.putArchiveEntry(entry)
-    zos.write(entityStructuredDataPropertyParticularRestrictionAxiomsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(entityStructuredDataPropertyParticularRestrictionAxiomsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // ReifiedRelationshipInstance
     entry = new ZipArchiveEntry("ReifiedRelationshipInstances.json")
     zos.putArchiveEntry(entry)
-    zos.write(reifiedRelationshipInstancesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(reifiedRelationshipInstancesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // ReifiedRelationshipInstanceDomain
     entry = new ZipArchiveEntry("ReifiedRelationshipInstanceDomains.json")
     zos.putArchiveEntry(entry)
-    zos.write(reifiedRelationshipInstanceDomainsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(reifiedRelationshipInstanceDomainsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // ReifiedRelationshipInstanceRange
     entry = new ZipArchiveEntry("ReifiedRelationshipInstanceRanges.json")
     zos.putArchiveEntry(entry)
-    zos.write(reifiedRelationshipInstanceRangesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(reifiedRelationshipInstanceRangesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // ReifiedRelationshipInversePropertyPredicate
     entry = new ZipArchiveEntry("ReifiedRelationshipInversePropertyPredicates.json")
     zos.putArchiveEntry(entry)
-    zos.write(reifiedRelationshipInversePropertyPredicatesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(reifiedRelationshipInversePropertyPredicatesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // ReifiedRelationshipPredicate
     entry = new ZipArchiveEntry("ReifiedRelationshipPredicates.json")
     zos.putArchiveEntry(entry)
-    zos.write(reifiedRelationshipPredicatesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(reifiedRelationshipPredicatesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // ReifiedRelationshipPropertyPredicate
     entry = new ZipArchiveEntry("ReifiedRelationshipPropertyPredicates.json")
     zos.putArchiveEntry(entry)
-    zos.write(reifiedRelationshipPropertyPredicatesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(reifiedRelationshipPropertyPredicatesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // ReifiedRelationshipSourceInversePropertyPredicate
     entry = new ZipArchiveEntry("ReifiedRelationshipSourceInversePropertyPredicates.json")
     zos.putArchiveEntry(entry)
-    zos.write(reifiedRelationshipSourceInversePropertyPredicatesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(reifiedRelationshipSourceInversePropertyPredicatesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // ReifiedRelationshipSourcePropertyPredicate
     entry = new ZipArchiveEntry("ReifiedRelationshipSourcePropertyPredicates.json")
     zos.putArchiveEntry(entry)
-    zos.write(reifiedRelationshipSourcePropertyPredicatesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(reifiedRelationshipSourcePropertyPredicatesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // ReifiedRelationshipTargetInversePropertyPredicate
     entry = new ZipArchiveEntry("ReifiedRelationshipTargetInversePropertyPredicates.json")
     zos.putArchiveEntry(entry)
-    zos.write(reifiedRelationshipTargetInversePropertyPredicatesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(reifiedRelationshipTargetInversePropertyPredicatesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // ReifiedRelationshipTargetPropertyPredicate
     entry = new ZipArchiveEntry("ReifiedRelationshipTargetPropertyPredicates.json")
     zos.putArchiveEntry(entry)
-    zos.write(reifiedRelationshipTargetPropertyPredicatesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(reifiedRelationshipTargetPropertyPredicatesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // RestrictionScalarDataPropertyValue
     entry = new ZipArchiveEntry("RestrictionScalarDataPropertyValues.json")
     zos.putArchiveEntry(entry)
-    zos.write(restrictionScalarDataPropertyValuesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(restrictionScalarDataPropertyValuesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // RestrictionStructuredDataPropertyTuple
     entry = new ZipArchiveEntry("RestrictionStructuredDataPropertyTuples.json")
     zos.putArchiveEntry(entry)
-    zos.write(restrictionStructuredDataPropertyTuplesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(restrictionStructuredDataPropertyTuplesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // RuleBodySegment
     entry = new ZipArchiveEntry("RuleBodySegments.json")
     zos.putArchiveEntry(entry)
-    zos.write(ruleBodySegmentsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(ruleBodySegmentsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // ScalarDataPropertyValue
     entry = new ZipArchiveEntry("ScalarDataPropertyValues.json")
     zos.putArchiveEntry(entry)
-    zos.write(scalarDataPropertyValuesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(scalarDataPropertyValuesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // SingletonInstanceScalarDataPropertyValue
     entry = new ZipArchiveEntry("SingletonInstanceScalarDataPropertyValues.json")
     zos.putArchiveEntry(entry)
-    zos.write(singletonInstanceScalarDataPropertyValuesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(singletonInstanceScalarDataPropertyValuesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // SingletonInstanceStructuredDataPropertyValue
     entry = new ZipArchiveEntry("SingletonInstanceStructuredDataPropertyValues.json")
     zos.putArchiveEntry(entry)
-    zos.write(singletonInstanceStructuredDataPropertyValuesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(singletonInstanceStructuredDataPropertyValuesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // StructuredDataPropertyTuple
     entry = new ZipArchiveEntry("StructuredDataPropertyTuples.json")
     zos.putArchiveEntry(entry)
-    zos.write(structuredDataPropertyTuplesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(structuredDataPropertyTuplesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // UnreifiedRelationshipInstanceTuple
     entry = new ZipArchiveEntry("UnreifiedRelationshipInstanceTuples.json")
     zos.putArchiveEntry(entry)
-    zos.write(unreifiedRelationshipInstanceTuplesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(unreifiedRelationshipInstanceTuplesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // UnreifiedRelationshipInversePropertyPredicate
     entry = new ZipArchiveEntry("UnreifiedRelationshipInversePropertyPredicates.json")
     zos.putArchiveEntry(entry)
-    zos.write(unreifiedRelationshipInversePropertyPredicatesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(unreifiedRelationshipInversePropertyPredicatesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // UnreifiedRelationshipPropertyPredicate
     entry = new ZipArchiveEntry("UnreifiedRelationshipPropertyPredicates.json")
     zos.putArchiveEntry(entry)
-    zos.write(unreifiedRelationshipPropertyPredicatesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(unreifiedRelationshipPropertyPredicatesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
   }
   
   static def byte[] annotationPropertiesByteArray(Extent e) {
