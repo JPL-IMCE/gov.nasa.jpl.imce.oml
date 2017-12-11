@@ -36,7 +36,6 @@ import java.util.List;
 import java.util.function.Consumer;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.xtext.util.Files;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Extension;
@@ -65,12 +64,11 @@ public abstract class OMLSaveLoadComparisonTest {
   @Extension
   protected static DescriptionsFactory _descriptionsFactory = DescriptionsFactory.eINSTANCE;
   
-  protected static File deleteAndCreateOMLFolder(final Path path) {
+  protected static File createOMLFolder(final Path path) {
     try {
       File _xblockexpression = null;
       {
         final File d = path.toFile();
-        Files.sweepFolder(d);
         d.mkdirs();
         final File c = path.resolve("oml.catalog.xml").toFile();
         FileOutputStream _fileOutputStream = new FileOutputStream(c);
@@ -97,7 +95,9 @@ public abstract class OMLSaveLoadComparisonTest {
   public OMLSaveLoadComparisonTest() {
     try {
       OMLZipResourceSet.doSetup();
-      this.omlCatalogFile = OMLSaveLoadComparisonTest.deleteAndCreateOMLFolder(Paths.get("./target/oml"));
+      long _currentTimeMillis = System.currentTimeMillis();
+      String _plus = ("./target/oml/" + Long.valueOf(_currentTimeMillis));
+      this.omlCatalogFile = OMLSaveLoadComparisonTest.createOMLFolder(Paths.get(_plus));
       URL _uRL = this.omlCatalogFile.toURI().toURL();
       OMLZipResourceSet _oMLZipResourceSet = new OMLZipResourceSet(_uRL);
       this.rs1 = _oMLZipResourceSet;

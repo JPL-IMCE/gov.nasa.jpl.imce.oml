@@ -26,9 +26,12 @@ import gov.nasa.jpl.imce.oml.serialization.tests.OMLSaveLoadComparisonTest;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.xtext.xbase.lib.Pair;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.BlockJUnit4ClassRunner;
 
+@RunWith(BlockJUnit4ClassRunner.class)
 @SuppressWarnings("all")
-public class OMLZipTests extends OMLSaveLoadComparisonTest {
+public class OMLZip1Test extends OMLSaveLoadComparisonTest {
   public static Pair<URI, Extent>[] example1() {
     final Extent extent = OMLSaveLoadComparisonTest._commonFactory.createExtent();
     final TerminologyGraph tbox1 = OMLSaveLoadComparisonTest._graphsFactory.createTerminologyGraph();
@@ -44,7 +47,7 @@ public class OMLZipTests extends OMLSaveLoadComparisonTest {
   
   @Test
   public void test1() {
-    this.compareSavedAndLoaded(OMLZipTests.example1());
+    this.compareSavedAndLoaded(OMLZip1Test.example1());
   }
   
   public static Pair<URI, Extent>[] example2() {
@@ -78,6 +81,6 @@ public class OMLZipTests extends OMLSaveLoadComparisonTest {
   
   @Test
   public void test2() {
-    this.compareSavedAndLoaded(OMLZipTests.example2());
+    this.compareSavedAndLoaded(OMLZip1Test.example2());
   }
 }
