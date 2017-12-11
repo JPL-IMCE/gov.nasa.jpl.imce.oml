@@ -1455,7 +1455,7 @@ class OMLSpecificationTables {
       pw.print(it.literalValue.value)
       pw.print("\",")
       pw.print("\"valueTypeUUID\":\"")
-      pw.print(it.valueType.uuid())
+      pw.print(it.valueType?.uuid())
       pw.println("\"}")
     ]
     pw.close()
@@ -1505,7 +1505,7 @@ class OMLSpecificationTables {
       pw.print(it.value.value)
       pw.print("\",")
       pw.print("\"valueTypeUUID\":\"")
-      pw.print(it.valueType.uuid())
+      pw.print(it.valueType?.uuid())
       pw.println("\"}")
     ]
     pw.close()
@@ -1988,7 +1988,7 @@ class OMLSpecificationTables {
       pw.print(it.structuredDataPropertyContext.uuid())
       pw.print("\",")
       pw.print("\"valueTypeUUID\":\"")
-      pw.print(it.valueType.uuid())
+      pw.print(it.valueType?.uuid())
       pw.println("\"}")
     ]
     pw.close()
@@ -2023,10 +2023,10 @@ class OMLSpecificationTables {
       pw.print(it.uuid())
       pw.print("\",")
       pw.print("\"previousSegmentUUID\":\"")
-      pw.print(it.previousSegment.uuid())
+      pw.print(it.previousSegment?.uuid())
       pw.print("\",")
       pw.print("\"ruleUUID\":\"")
-      pw.print(it.rule.uuid())
+      pw.print(it.rule?.uuid())
       pw.println("\"}")
     ]
     pw.close()
@@ -2051,7 +2051,7 @@ class OMLSpecificationTables {
       pw.print(it.structuredDataPropertyContext.uuid())
       pw.print("\",")
       pw.print("\"valueTypeUUID\":\"")
-      pw.print(it.valueType.uuid())
+      pw.print(it.valueType?.uuid())
       pw.println("\"}")
     ]
     pw.close()
@@ -2079,7 +2079,7 @@ class OMLSpecificationTables {
       pw.print(it.scalarPropertyValue.value)
       pw.print("\",")
       pw.print("\"valueTypeUUID\":\"")
-      pw.print(it.valueType.uuid())
+      pw.print(it.valueType?.uuid())
       pw.println("\"}")
     ]
     pw.close()
