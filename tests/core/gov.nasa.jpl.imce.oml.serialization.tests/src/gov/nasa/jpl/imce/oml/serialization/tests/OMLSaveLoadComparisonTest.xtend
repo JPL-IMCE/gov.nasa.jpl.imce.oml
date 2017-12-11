@@ -20,17 +20,18 @@ package gov.nasa.jpl.imce.oml.serialization.tests
 import java.io.File
 import java.io.FileOutputStream
 import java.io.PrintWriter
-import gov.nasa.jpl.imce.oml.zip.OMLZipResourceSet
+import java.lang.System
 import java.nio.file.Path
 import java.nio.file.Paths
 import org.eclipse.emf.common.util.URI
+
 import gov.nasa.jpl.imce.oml.model.common.Extent
 import gov.nasa.jpl.imce.oml.model.common.CommonFactory
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesFactory
 import gov.nasa.jpl.imce.oml.model.graphs.GraphsFactory
 import gov.nasa.jpl.imce.oml.model.bundles.BundlesFactory
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsFactory
-import org.eclipse.xtext.util.Files
+import gov.nasa.jpl.imce.oml.zip.OMLZipResourceSet
 
 /**
  * Convenience class for writing OMLZip Save/Load Comparison Tests.
@@ -46,9 +47,9 @@ abstract class OMLSaveLoadComparisonTest {
     protected static extension BundlesFactory = BundlesFactory.eINSTANCE
     protected static extension DescriptionsFactory = DescriptionsFactory.eINSTANCE
     
-    protected static def File deleteAndCreateOMLFolder(Path path) {
+    protected static def File createOMLFolder(Path path) {
     		val d = path.toFile
-    		Files.sweepFolder(d)
+    		
     		d.mkdirs
     		
     		val c = path.resolve("oml.catalog.xml").toFile
@@ -68,7 +69,7 @@ abstract class OMLSaveLoadComparisonTest {
 	
 	new() {
 		OMLZipResourceSet.doSetup()
-		omlCatalogFile = deleteAndCreateOMLFolder(Paths.get("./target/oml"))
+		omlCatalogFile = createOMLFolder(Paths.get("./target/oml/"+System.currentTimeMillis()))
 		rs1 = new OMLZipResourceSet(omlCatalogFile.toURI.toURL)
 		rs2 = new OMLZipResourceSet(omlCatalogFile.toURI.toURL)
 	}

@@ -17,12 +17,16 @@
  */
 package gov.nasa.jpl.imce.oml.serialization.tests
 
-import gov.nasa.jpl.imce.oml.model.common.Extent
 import org.eclipse.emf.common.util.URI
 
 import org.junit.Test
+import org.junit.runners.BlockJUnit4ClassRunner
+import org.junit.runner.RunWith
 
-class OMLZipTests extends OMLSaveLoadComparisonTest {
+import gov.nasa.jpl.imce.oml.model.common.Extent
+
+@RunWith(BlockJUnit4ClassRunner)
+class OMLZip1Test extends OMLSaveLoadComparisonTest {
 	
 	static def Pair<URI,Extent>[] example1() {
         val extent = createExtent
