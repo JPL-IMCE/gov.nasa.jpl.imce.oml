@@ -31,7 +31,6 @@ import java.util.Map;
 import java.util.function.Consumer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Stream;
 import org.apache.commons.compress.archivers.zip.ZipArchiveOutputStream;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.common.util.URI;
@@ -154,9 +153,9 @@ public class OMLZipResource extends ResourceImpl {
     }
   }
   
-  protected final static Pattern KeyValue = Pattern.compile("\"([^\"]*)\":\"(.*?)\",?");
+  protected final static Pattern KeyValue = Pattern.compile("\"([^\"]*)\":(null|\".*?\"|\\{\"literalType\":\"[^\"]*\",\"value\":\".*?\"\\}),?");
   
-  protected static List<Map<String, String>> lines2tuples(final Stream<String> lines) {
+  protected static List<Map<String, String>> lines2tuples(final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> list = new ArrayList<Map<String, String>>();
     final Consumer<String> _function = (String line) -> {
       final HashMap<String, String> map = new HashMap<String, String>();

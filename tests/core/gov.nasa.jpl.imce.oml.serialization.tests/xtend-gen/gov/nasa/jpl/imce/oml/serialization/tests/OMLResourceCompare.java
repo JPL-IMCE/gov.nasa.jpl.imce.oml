@@ -20,6 +20,20 @@ package gov.nasa.jpl.imce.oml.serialization.tests;
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import gov.nasa.jpl.imce.oml.model.common.CrossReferencabilityKind;
+import gov.nasa.jpl.imce.oml.model.common.LiteralBoolean;
+import gov.nasa.jpl.imce.oml.model.common.LiteralDateTime;
+import gov.nasa.jpl.imce.oml.model.common.LiteralDecimal;
+import gov.nasa.jpl.imce.oml.model.common.LiteralFloat;
+import gov.nasa.jpl.imce.oml.model.common.LiteralNumber;
+import gov.nasa.jpl.imce.oml.model.common.LiteralRational;
+import gov.nasa.jpl.imce.oml.model.common.LiteralReal;
+import gov.nasa.jpl.imce.oml.model.common.LiteralString;
+import gov.nasa.jpl.imce.oml.model.common.LiteralURI;
+import gov.nasa.jpl.imce.oml.model.common.LiteralUUID;
+import gov.nasa.jpl.imce.oml.model.common.LiteralValue;
+import gov.nasa.jpl.imce.oml.model.datatypes.DateTimeValue;
+import gov.nasa.jpl.imce.oml.model.datatypes.URIValue;
+import gov.nasa.jpl.imce.oml.model.datatypes.UUIDValue;
 import gov.nasa.jpl.imce.oml.zip.OMLZipResource;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -34,6 +48,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.ETypedElement;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
@@ -164,6 +179,433 @@ public class OMLResourceCompare {
     throw new IllegalArgumentException(_plus_2);
   }
   
+  protected static void _compareReferences(final String path, final EReference f, final EClass t, final EObject e1, final LiteralNumber v1, final EObject e2, final LiteralNumber v2) throws IllegalArgumentException {
+    boolean _matched = false;
+    if (v1 instanceof LiteralDecimal) {
+      _matched=true;
+      boolean _matched_1 = false;
+      if (v2 instanceof LiteralDecimal) {
+        _matched_1=true;
+        boolean _notEquals = (!Objects.equal(((LiteralDecimal)v1).getDecimal().value, ((LiteralDecimal)v2).getDecimal().value));
+        if (_notEquals) {
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("compareReferences(");
+          _builder.append(path);
+          _builder.append(") LiteralDecimal value mismatch \'");
+          String _name = f.getName();
+          _builder.append(_name);
+          _builder.append(": ");
+          String _name_1 = t.getName();
+          _builder.append(_name_1);
+          _builder.append(" (");
+          _builder.append(((LiteralDecimal)v1).getDecimal().value);
+          _builder.append(" vs. ");
+          _builder.append(((LiteralDecimal)v2).getDecimal().value);
+          _builder.append(")");
+          throw new IllegalArgumentException(_builder.toString());
+        }
+      }
+      if (!_matched_1) {
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("compareReferences(");
+        _builder.append(path);
+        _builder.append(") LiteralDecimal type mismatch ");
+        String _name = f.getName();
+        _builder.append(_name);
+        _builder.append(": ");
+        String _name_1 = t.getName();
+        _builder.append(_name_1);
+        _builder.append(" (mismatch with: ");
+        _builder.append(v2);
+        _builder.append(")");
+        throw new IllegalArgumentException(_builder.toString());
+      }
+    }
+    if (!_matched) {
+      if (v1 instanceof LiteralFloat) {
+        _matched=true;
+        boolean _matched_1 = false;
+        if (v2 instanceof LiteralFloat) {
+          _matched_1=true;
+          boolean _notEquals = (!Objects.equal(((LiteralFloat)v1).getFloat().value, ((LiteralFloat)v2).getFloat().value));
+          if (_notEquals) {
+            StringConcatenation _builder = new StringConcatenation();
+            _builder.append("compareReferences(");
+            _builder.append(path);
+            _builder.append(") LiteralFloat value mismatch \'");
+            String _name = f.getName();
+            _builder.append(_name);
+            _builder.append(": ");
+            String _name_1 = t.getName();
+            _builder.append(_name_1);
+            _builder.append(" (");
+            _builder.append(((LiteralFloat)v1).getFloat().value);
+            _builder.append(" vs. ");
+            _builder.append(((LiteralFloat)v2).getFloat().value);
+            _builder.append(")");
+            throw new IllegalArgumentException(_builder.toString());
+          }
+        }
+        if (!_matched_1) {
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("compareReferences(");
+          _builder.append(path);
+          _builder.append(") LiteralFloat type mismatch ");
+          String _name = f.getName();
+          _builder.append(_name);
+          _builder.append(": ");
+          String _name_1 = t.getName();
+          _builder.append(_name_1);
+          _builder.append(" (mismatch with: ");
+          _builder.append(v2);
+          _builder.append(")");
+          throw new IllegalArgumentException(_builder.toString());
+        }
+      }
+    }
+    if (!_matched) {
+      if (v1 instanceof LiteralRational) {
+        _matched=true;
+        boolean _matched_1 = false;
+        if (v2 instanceof LiteralRational) {
+          _matched_1=true;
+          boolean _notEquals = (!Objects.equal(((LiteralRational)v1).getRational().value, ((LiteralRational)v2).getRational().value));
+          if (_notEquals) {
+            StringConcatenation _builder = new StringConcatenation();
+            _builder.append("compareReferences(");
+            _builder.append(path);
+            _builder.append(") LiteralRational value mismatch \'");
+            String _name = f.getName();
+            _builder.append(_name);
+            _builder.append(": ");
+            String _name_1 = t.getName();
+            _builder.append(_name_1);
+            _builder.append(" (");
+            _builder.append(((LiteralRational)v1).getRational().value);
+            _builder.append(" vs. ");
+            _builder.append(((LiteralRational)v2).getRational().value);
+            _builder.append(")");
+            throw new IllegalArgumentException(_builder.toString());
+          }
+        }
+        if (!_matched_1) {
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("compareReferences(");
+          _builder.append(path);
+          _builder.append(") LiteralRational type mismatch ");
+          String _name = f.getName();
+          _builder.append(_name);
+          _builder.append(": ");
+          String _name_1 = t.getName();
+          _builder.append(_name_1);
+          _builder.append(" (mismatch with: ");
+          _builder.append(v2);
+          _builder.append(")");
+          throw new IllegalArgumentException(_builder.toString());
+        }
+      }
+    }
+    if (!_matched) {
+      if (v1 instanceof LiteralReal) {
+        _matched=true;
+        boolean _matched_1 = false;
+        if (v2 instanceof LiteralReal) {
+          _matched_1=true;
+          boolean _notEquals = (!Objects.equal(((LiteralReal)v1).getReal().value, ((LiteralReal)v2).getReal().value));
+          if (_notEquals) {
+            StringConcatenation _builder = new StringConcatenation();
+            _builder.append("compareReferences(");
+            _builder.append(path);
+            _builder.append(") LiteralReal value mismatch \'");
+            String _name = f.getName();
+            _builder.append(_name);
+            _builder.append(": ");
+            String _name_1 = t.getName();
+            _builder.append(_name_1);
+            _builder.append(" (");
+            _builder.append(((LiteralReal)v1).getReal().value);
+            _builder.append(" vs. ");
+            _builder.append(((LiteralReal)v2).getReal().value);
+            _builder.append(")");
+            throw new IllegalArgumentException(_builder.toString());
+          }
+        }
+        if (!_matched_1) {
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("compareReferences(");
+          _builder.append(path);
+          _builder.append(") LiteralReal type mismatch ");
+          String _name = f.getName();
+          _builder.append(_name);
+          _builder.append(": ");
+          String _name_1 = t.getName();
+          _builder.append(_name_1);
+          _builder.append(" (mismatch with: ");
+          _builder.append(v2);
+          _builder.append(")");
+          throw new IllegalArgumentException(_builder.toString());
+        }
+      }
+    }
+  }
+  
+  protected static void _compareReferences(final String path, final EReference f, final EClass t, final EObject e1, final LiteralValue v1, final EObject e2, final LiteralValue v2) throws IllegalArgumentException {
+    boolean _matched = false;
+    if (v1 instanceof LiteralBoolean) {
+      _matched=true;
+      boolean _matched_1 = false;
+      if (v2 instanceof LiteralBoolean) {
+        _matched_1=true;
+        boolean _isBool = ((LiteralBoolean)v1).isBool();
+        boolean _isBool_1 = ((LiteralBoolean)v2).isBool();
+        boolean _notEquals = (_isBool != _isBool_1);
+        if (_notEquals) {
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("compareReferences(");
+          _builder.append(path);
+          _builder.append(") LiteralBoolean value mismatch \'");
+          String _name = f.getName();
+          _builder.append(_name);
+          _builder.append(": ");
+          String _name_1 = t.getName();
+          _builder.append(_name_1);
+          _builder.append(" (");
+          boolean _isBool_2 = ((LiteralBoolean)v1).isBool();
+          _builder.append(_isBool_2);
+          _builder.append(" vs. ");
+          boolean _isBool_3 = ((LiteralBoolean)v2).isBool();
+          _builder.append(_isBool_3);
+          _builder.append(")");
+          throw new IllegalArgumentException(_builder.toString());
+        }
+      }
+      if (!_matched_1) {
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("compareReferences(");
+        _builder.append(path);
+        _builder.append(") LiteralBoolean type mismatch ");
+        String _name = f.getName();
+        _builder.append(_name);
+        _builder.append(": ");
+        String _name_1 = t.getName();
+        _builder.append(_name_1);
+        _builder.append(" (mismatch with: ");
+        _builder.append(v2);
+        _builder.append(")");
+        throw new IllegalArgumentException(_builder.toString());
+      }
+    }
+    if (!_matched) {
+      if (v1 instanceof LiteralDateTime) {
+        _matched=true;
+        boolean _matched_1 = false;
+        if (v2 instanceof LiteralDateTime) {
+          _matched_1=true;
+          DateTimeValue _dateTime = ((LiteralDateTime)v1).getDateTime();
+          DateTimeValue _dateTime_1 = ((LiteralDateTime)v2).getDateTime();
+          boolean _notEquals = (!Objects.equal(_dateTime, _dateTime_1));
+          if (_notEquals) {
+            StringConcatenation _builder = new StringConcatenation();
+            _builder.append("compareReferences(");
+            _builder.append(path);
+            _builder.append(") LiteralDateTime value mismatch \'");
+            String _name = f.getName();
+            _builder.append(_name);
+            _builder.append(": ");
+            String _name_1 = t.getName();
+            _builder.append(_name_1);
+            _builder.append(" (");
+            DateTimeValue _dateTime_2 = ((LiteralDateTime)v1).getDateTime();
+            _builder.append(_dateTime_2);
+            _builder.append(" vs. ");
+            DateTimeValue _dateTime_3 = ((LiteralDateTime)v2).getDateTime();
+            _builder.append(_dateTime_3);
+            _builder.append(")");
+            throw new IllegalArgumentException(_builder.toString());
+          }
+        }
+        if (!_matched_1) {
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("compareReferences(");
+          _builder.append(path);
+          _builder.append(") LiteralBoolean type mismatch ");
+          String _name = f.getName();
+          _builder.append(_name);
+          _builder.append(": ");
+          String _name_1 = t.getName();
+          _builder.append(_name_1);
+          _builder.append(" (mismatch with: ");
+          _builder.append(v2);
+          _builder.append(")");
+          throw new IllegalArgumentException(_builder.toString());
+        }
+      }
+    }
+    if (!_matched) {
+      if (v1 instanceof LiteralString) {
+        _matched=true;
+        boolean _matched_1 = false;
+        if (v2 instanceof LiteralString) {
+          _matched_1=true;
+          String _value = ((LiteralString)v1).value();
+          String _value_1 = ((LiteralString)v2).value();
+          boolean _notEquals = (!Objects.equal(_value, _value_1));
+          if (_notEquals) {
+            StringConcatenation _builder = new StringConcatenation();
+            _builder.append("compareReferences(");
+            _builder.append(path);
+            _builder.append(") LiteralString value mismatch \'");
+            String _name = f.getName();
+            _builder.append(_name);
+            _builder.append(": ");
+            String _name_1 = t.getName();
+            _builder.append(_name_1);
+            _builder.append(" (");
+            String _value_2 = ((LiteralString)v1).value();
+            _builder.append(_value_2);
+            _builder.append(" vs. ");
+            String _value_3 = ((LiteralString)v2).value();
+            _builder.append(_value_3);
+            _builder.append(")");
+            throw new IllegalArgumentException(_builder.toString());
+          }
+        }
+        if (!_matched_1) {
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("compareReferences(");
+          _builder.append(path);
+          _builder.append(") LiteralString type mismatch ");
+          String _name = f.getName();
+          _builder.append(_name);
+          _builder.append(": ");
+          String _name_1 = t.getName();
+          _builder.append(_name_1);
+          _builder.append(" (mismatch with: ");
+          _builder.append(v2);
+          _builder.append(")");
+          throw new IllegalArgumentException(_builder.toString());
+        }
+      }
+    }
+    if (!_matched) {
+      if (v1 instanceof LiteralURI) {
+        _matched=true;
+        boolean _matched_1 = false;
+        if (v2 instanceof LiteralURI) {
+          _matched_1=true;
+          URIValue _uri = ((LiteralURI)v1).getUri();
+          URIValue _uri_1 = ((LiteralURI)v2).getUri();
+          boolean _notEquals = (!Objects.equal(_uri, _uri_1));
+          if (_notEquals) {
+            StringConcatenation _builder = new StringConcatenation();
+            _builder.append("compareReferences(");
+            _builder.append(path);
+            _builder.append(") LiteralURI value mismatch \'");
+            String _name = f.getName();
+            _builder.append(_name);
+            _builder.append(": ");
+            String _name_1 = t.getName();
+            _builder.append(_name_1);
+            _builder.append(" (");
+            URIValue _uri_2 = ((LiteralURI)v1).getUri();
+            _builder.append(_uri_2);
+            _builder.append(" vs. ");
+            URIValue _uri_3 = ((LiteralURI)v2).getUri();
+            _builder.append(_uri_3);
+            _builder.append(")");
+            throw new IllegalArgumentException(_builder.toString());
+          }
+        }
+        if (!_matched_1) {
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("compareReferences(");
+          _builder.append(path);
+          _builder.append(") LiteralURI type mismatch ");
+          String _name = f.getName();
+          _builder.append(_name);
+          _builder.append(": ");
+          String _name_1 = t.getName();
+          _builder.append(_name_1);
+          _builder.append(" (mismatch with: ");
+          _builder.append(v2);
+          _builder.append(")");
+          throw new IllegalArgumentException(_builder.toString());
+        }
+      }
+    }
+    if (!_matched) {
+      if (v1 instanceof LiteralUUID) {
+        _matched=true;
+        boolean _matched_1 = false;
+        if (v2 instanceof LiteralUUID) {
+          _matched_1=true;
+          UUIDValue _uuid = ((LiteralUUID)v1).getUuid();
+          UUIDValue _uuid_1 = ((LiteralUUID)v2).getUuid();
+          boolean _notEquals = (!Objects.equal(_uuid, _uuid_1));
+          if (_notEquals) {
+            StringConcatenation _builder = new StringConcatenation();
+            _builder.append("compareReferences(");
+            _builder.append(path);
+            _builder.append(") LiteralUUID value mismatch \'");
+            String _name = f.getName();
+            _builder.append(_name);
+            _builder.append(": ");
+            String _name_1 = t.getName();
+            _builder.append(_name_1);
+            _builder.append(" (");
+            UUIDValue _uuid_2 = ((LiteralUUID)v1).getUuid();
+            _builder.append(_uuid_2);
+            _builder.append(" vs. ");
+            UUIDValue _uuid_3 = ((LiteralUUID)v2).getUuid();
+            _builder.append(_uuid_3);
+            _builder.append(")");
+            throw new IllegalArgumentException(_builder.toString());
+          }
+        }
+        if (!_matched_1) {
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("compareReferences(");
+          _builder.append(path);
+          _builder.append(") LiteralUUID type mismatch ");
+          String _name = f.getName();
+          _builder.append(_name);
+          _builder.append(": ");
+          String _name_1 = t.getName();
+          _builder.append(_name_1);
+          _builder.append(" (mismatch with: ");
+          _builder.append(v2);
+          _builder.append(")");
+          throw new IllegalArgumentException(_builder.toString());
+        }
+      }
+    }
+    if (!_matched) {
+      if (v1 instanceof LiteralNumber) {
+        _matched=true;
+        boolean _matched_1 = false;
+        if (v2 instanceof LiteralNumber) {
+          _matched_1=true;
+          OMLResourceCompare.compareReferences(path, f, t, e1, v1, e2, v2);
+        }
+        if (!_matched_1) {
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("compareReferences(");
+          _builder.append(path);
+          _builder.append(") LiteralNumber type mismatch ");
+          String _name = f.getName();
+          _builder.append(_name);
+          _builder.append(": ");
+          String _name_1 = t.getName();
+          _builder.append(_name_1);
+          _builder.append(" (mismatch with: ");
+          _builder.append(v2);
+          _builder.append(")");
+          throw new IllegalArgumentException(_builder.toString());
+        }
+      }
+    }
+  }
+  
   /**
    * Reference comparison for OML CrossReferencabilityKinds.
    */
@@ -221,9 +663,17 @@ public class OMLResourceCompare {
   }
   
   protected static void compareReferences(final String path, final EReference f, final EClass t, final EObject e1, final Object v1, final EObject e2, final Object v2) throws IllegalArgumentException {
-    if (v1 instanceof CrossReferencabilityKind
+    if (v1 instanceof LiteralNumber
+         && v2 instanceof LiteralNumber) {
+      _compareReferences(path, f, t, e1, (LiteralNumber)v1, e2, (LiteralNumber)v2);
+      return;
+    } else if (v1 instanceof CrossReferencabilityKind
          && v2 instanceof CrossReferencabilityKind) {
       _compareReferences(path, f, t, e1, (CrossReferencabilityKind)v1, e2, (CrossReferencabilityKind)v2);
+      return;
+    } else if (v1 instanceof LiteralValue
+         && v2 instanceof LiteralValue) {
+      _compareReferences(path, f, t, e1, (LiteralValue)v1, e2, (LiteralValue)v2);
       return;
     } else if (v1 instanceof EList
          && v2 instanceof EList) {

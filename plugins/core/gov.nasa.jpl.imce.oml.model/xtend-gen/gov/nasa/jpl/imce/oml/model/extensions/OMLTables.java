@@ -1,3 +1,20 @@
+/**
+ * Copyright 2016 California Institute of Technology ("Caltech").
+ * U.S. Government sponsorship acknowledged.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * License Terms
+ */
 package gov.nasa.jpl.imce.oml.model.extensions;
 
 import com.google.common.collect.Iterables;
@@ -11,16 +28,29 @@ import gov.nasa.jpl.imce.oml.model.common.AnnotationProperty;
 import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue;
 import gov.nasa.jpl.imce.oml.model.common.CommonFactory;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
+import gov.nasa.jpl.imce.oml.model.common.LiteralBoolean;
 import gov.nasa.jpl.imce.oml.model.common.LiteralDateTime;
+import gov.nasa.jpl.imce.oml.model.common.LiteralDecimal;
+import gov.nasa.jpl.imce.oml.model.common.LiteralFloat;
 import gov.nasa.jpl.imce.oml.model.common.LiteralNumber;
+import gov.nasa.jpl.imce.oml.model.common.LiteralRational;
 import gov.nasa.jpl.imce.oml.model.common.LiteralRawString;
+import gov.nasa.jpl.imce.oml.model.common.LiteralReal;
 import gov.nasa.jpl.imce.oml.model.common.LiteralString;
+import gov.nasa.jpl.imce.oml.model.common.LiteralURI;
+import gov.nasa.jpl.imce.oml.model.common.LiteralUUID;
 import gov.nasa.jpl.imce.oml.model.common.LiteralValue;
+import gov.nasa.jpl.imce.oml.model.datatypes.AbstractDecimalValue;
 import gov.nasa.jpl.imce.oml.model.datatypes.DateTimeValue;
+import gov.nasa.jpl.imce.oml.model.datatypes.DecimalValue;
+import gov.nasa.jpl.imce.oml.model.datatypes.FloatValue;
 import gov.nasa.jpl.imce.oml.model.datatypes.LanguageTagValue;
 import gov.nasa.jpl.imce.oml.model.datatypes.PatternValue;
 import gov.nasa.jpl.imce.oml.model.datatypes.PositiveIntegerValue;
+import gov.nasa.jpl.imce.oml.model.datatypes.RationalValue;
 import gov.nasa.jpl.imce.oml.model.datatypes.RawStringValue;
+import gov.nasa.jpl.imce.oml.model.datatypes.RealValue;
+import gov.nasa.jpl.imce.oml.model.datatypes.URIValue;
 import gov.nasa.jpl.imce.oml.model.descriptions.ConceptInstance;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxExtendsClosedWorldDefinitions;
@@ -84,15 +114,18 @@ import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipInversePropertyPredicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipPropertyPredicate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 
 /**
- * OMLTables is a collection of extension queries for OML Extent
- * and of value conversion methods.
+ * OMLTables is a collection of extension queries for OML Extent and conversion methods for OML values.
  * 
  * These queries are used in OMLSpecificationTables.save(Extent, ZipArchiveOutputStream).
  * The value conversion methods are used in several OMLSpecificationTables.read*(Stream<String>) methods.
@@ -1274,6 +1307,159 @@ public class OMLTables {
     return _xblockexpression;
   }
   
+  protected static String _toString(final String value) {
+    String _replaceAll = value.replaceAll("\"", "\\\"");
+    String _plus = ("\"" + _replaceAll);
+    return (_plus + "\"");
+  }
+  
+  protected static String _toString(final PositiveIntegerValue value) {
+    return (("\"" + value.value) + "\"");
+  }
+  
+  protected static String _toString(final LiteralNumber value) {
+    String _switchResult = null;
+    boolean _matched = false;
+    if (value instanceof LiteralDecimal) {
+      _matched=true;
+      String _switchResult_1 = null;
+      AbstractDecimalValue _decimal = ((LiteralDecimal)value).getDecimal();
+      boolean _matched_1 = false;
+      if (_decimal instanceof DecimalValue) {
+        _matched_1=true;
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("{\"literalType\":\"LiteralDecimalType\",\"value\":\"");
+        String _value = ((LiteralDecimal)value).value();
+        _builder.append(_value);
+        _builder.append("\"}");
+        _switchResult_1 = _builder.toString();
+      }
+      if (!_matched_1) {
+        if (_decimal instanceof PositiveIntegerValue) {
+          _matched_1=true;
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("{\"literalType\":\"LiteralPositiveIntegerType\",\"value\":\"");
+          String _value = ((LiteralDecimal)value).value();
+          _builder.append(_value);
+          _builder.append("\"}");
+          _switchResult_1 = _builder.toString();
+        }
+      }
+      _switchResult = _switchResult_1;
+    }
+    if (!_matched) {
+      if (value instanceof LiteralFloat) {
+        _matched=true;
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("{\"literalType\":\"LiteralFloatType\",\"value\":\"");
+        String _value = ((LiteralFloat)value).value();
+        _builder.append(_value);
+        _builder.append("\"}");
+        _switchResult = _builder.toString();
+      }
+    }
+    if (!_matched) {
+      if (value instanceof LiteralRational) {
+        _matched=true;
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("{\"literalType\":\"LiteralRationalType\",\"value\":\"");
+        String _value = ((LiteralRational)value).value();
+        _builder.append(_value);
+        _builder.append("\"}");
+        _switchResult = _builder.toString();
+      }
+    }
+    if (!_matched) {
+      if (value instanceof LiteralReal) {
+        _matched=true;
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("{\"literalType\":\"LiteralRealType\",\"value\":\"");
+        String _value = ((LiteralReal)value).value();
+        _builder.append(_value);
+        _builder.append("\"}");
+        _switchResult = _builder.toString();
+      }
+    }
+    return _switchResult;
+  }
+  
+  protected static String _toString(final LiteralValue value) {
+    String _switchResult = null;
+    boolean _matched = false;
+    if (value instanceof LiteralBoolean) {
+      _matched=true;
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("{\"literalType\":\"LiteralBooleanType\",\"value\":\"");
+      String _value = ((LiteralBoolean)value).value();
+      _builder.append(_value);
+      _builder.append("\"}");
+      _switchResult = _builder.toString();
+    }
+    if (!_matched) {
+      if (value instanceof LiteralDateTime) {
+        _matched=true;
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("{\"literalType\":\"LiteralDateTimeType\",\"value\":\"");
+        String _value = ((LiteralDateTime)value).value();
+        _builder.append(_value);
+        _builder.append("\"}");
+        _switchResult = _builder.toString();
+      }
+    }
+    if (!_matched) {
+      if (value instanceof LiteralString) {
+        _matched=true;
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("{\"literalType\":\"LiteralStringType\",\"value\":\"");
+        String _value = ((LiteralString)value).value();
+        _builder.append(_value);
+        _builder.append("\"}");
+        _switchResult = _builder.toString();
+      }
+    }
+    if (!_matched) {
+      if (value instanceof LiteralUUID) {
+        _matched=true;
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("{\"literalType\":\"LiteralUUIDType\",\"value\":\"");
+        String _value = ((LiteralUUID)value).value();
+        _builder.append(_value);
+        _builder.append("\"}");
+        _switchResult = _builder.toString();
+      }
+    }
+    if (!_matched) {
+      if (value instanceof LiteralURI) {
+        _matched=true;
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("{\"literalType\":\"LiteralURIType\",\"value\":\"");
+        String _value = ((LiteralURI)value).value();
+        _builder.append(_value);
+        _builder.append("\"}");
+        _switchResult = _builder.toString();
+      }
+    }
+    if (!_matched) {
+      if (value instanceof LiteralNumber) {
+        _matched=true;
+        _switchResult = OMLTables.toString(value);
+      }
+    }
+    return _switchResult;
+  }
+  
+  protected static String _toString(final DescriptionKind value) {
+    String _string = value.toString();
+    String _plus = ("\"" + _string);
+    return (_plus + "\"");
+  }
+  
+  protected static String _toString(final TerminologyKind value) {
+    String _string = value.toString();
+    String _plus = ("\"" + _string);
+    return (_plus + "\"");
+  }
+  
   public static Boolean toEBoolean(final String value) {
     return Boolean.valueOf(Boolean.parseBoolean(value));
   }
@@ -1309,10 +1495,6 @@ public class OMLTables {
     return lit;
   }
   
-  public static LiteralNumber toLiteralNumber(final String value) {
-    throw new UnsupportedOperationException("TODO: auto-generated method stub");
-  }
-  
   public static LiteralString toLiteralString(final String value) {
     final LiteralRawString lit = CommonFactory.eINSTANCE.createLiteralRawString();
     RawStringValue _rawStringValue = new RawStringValue(value);
@@ -1320,16 +1502,225 @@ public class OMLTables {
     return lit;
   }
   
+  protected final static Pattern LiteralNumberOrValue = Pattern.compile("\\{\"literalType\":\"(.*)\",\"value\":\"(.*)\"\\}");
+  
+  public static LiteralNumber toLiteralNumber(final String value) {
+    LiteralNumber _xblockexpression = null;
+    {
+      final Matcher m = OMLTables.LiteralNumberOrValue.matcher(value);
+      LiteralNumber _xifexpression = null;
+      boolean _find = m.find();
+      if (_find) {
+        LiteralNumber _xblockexpression_1 = null;
+        {
+          final String litType = m.group(1);
+          final String litValue = m.group(2);
+          LiteralNumber _switchResult = null;
+          if (litType != null) {
+            switch (litType) {
+              case "LiteralDecimalType":
+                LiteralDecimal _xblockexpression_2 = null;
+                {
+                  final LiteralDecimal lit = CommonFactory.eINSTANCE.createLiteralDecimal();
+                  DecimalValue _decimalValue = new DecimalValue(litValue);
+                  lit.setDecimal(_decimalValue);
+                  _xblockexpression_2 = lit;
+                }
+                _switchResult = _xblockexpression_2;
+                break;
+              case "LiteralPositiveIntegerType":
+                LiteralDecimal _xblockexpression_3 = null;
+                {
+                  final LiteralDecimal lit = CommonFactory.eINSTANCE.createLiteralDecimal();
+                  PositiveIntegerValue _positiveIntegerValue = new PositiveIntegerValue(litValue);
+                  lit.setDecimal(_positiveIntegerValue);
+                  _xblockexpression_3 = lit;
+                }
+                _switchResult = _xblockexpression_3;
+                break;
+              case "LiteralFloatType":
+                LiteralFloat _xblockexpression_4 = null;
+                {
+                  final LiteralFloat lit = CommonFactory.eINSTANCE.createLiteralFloat();
+                  FloatValue _floatValue = new FloatValue(litValue);
+                  lit.setFloat(_floatValue);
+                  _xblockexpression_4 = lit;
+                }
+                _switchResult = _xblockexpression_4;
+                break;
+              case "LiteralRationalType":
+                LiteralRational _xblockexpression_5 = null;
+                {
+                  final LiteralRational lit = CommonFactory.eINSTANCE.createLiteralRational();
+                  RationalValue _rationalValue = new RationalValue(litValue);
+                  lit.setRational(_rationalValue);
+                  _xblockexpression_5 = lit;
+                }
+                _switchResult = _xblockexpression_5;
+                break;
+              case "LiteralRealType":
+                LiteralReal _xblockexpression_6 = null;
+                {
+                  final LiteralReal lit = CommonFactory.eINSTANCE.createLiteralReal();
+                  RealValue _realValue = new RealValue(litValue);
+                  lit.setReal(_realValue);
+                  _xblockexpression_6 = lit;
+                }
+                _switchResult = _xblockexpression_6;
+                break;
+              default:
+                throw new IllegalArgumentException(("OMLTables.toLiteralNumber(value): unrecognized type: " + litType));
+            }
+          } else {
+            throw new IllegalArgumentException(("OMLTables.toLiteralNumber(value): unrecognized type: " + litType));
+          }
+          _xblockexpression_1 = _switchResult;
+        }
+        _xifexpression = _xblockexpression_1;
+      } else {
+        throw new IllegalArgumentException(("OMLTables.toLiteralNumber(value): ill-formed value=" + value));
+      }
+      _xblockexpression = _xifexpression;
+    }
+    return _xblockexpression;
+  }
+  
   public static LiteralValue toLiteralValue(final String value) {
-    throw new UnsupportedOperationException("TODO: auto-generated method stub");
+    LiteralValue _xblockexpression = null;
+    {
+      final Matcher m = OMLTables.LiteralNumberOrValue.matcher(value);
+      LiteralValue _xifexpression = null;
+      boolean _find = m.find();
+      if (_find) {
+        LiteralValue _xblockexpression_1 = null;
+        {
+          final String litType = m.group(1);
+          final String litValue = m.group(2);
+          LiteralValue _switchResult = null;
+          if (litType != null) {
+            switch (litType) {
+              case "LiteralBooleanType":
+                LiteralBoolean _xblockexpression_2 = null;
+                {
+                  final LiteralBoolean lit = CommonFactory.eINSTANCE.createLiteralBoolean();
+                  lit.setBool(Boolean.parseBoolean(litValue));
+                  _xblockexpression_2 = lit;
+                }
+                _switchResult = _xblockexpression_2;
+                break;
+              case "LiteralDateTimeType":
+                LiteralDateTime _xblockexpression_3 = null;
+                {
+                  final LiteralDateTime lit = CommonFactory.eINSTANCE.createLiteralDateTime();
+                  DateTimeValue _dateTimeValue = new DateTimeValue(litValue);
+                  lit.setDateTime(_dateTimeValue);
+                  _xblockexpression_3 = lit;
+                }
+                _switchResult = _xblockexpression_3;
+                break;
+              case "LiteralStringType":
+                LiteralRawString _xblockexpression_4 = null;
+                {
+                  final LiteralRawString lit = CommonFactory.eINSTANCE.createLiteralRawString();
+                  RawStringValue _rawStringValue = new RawStringValue(litValue);
+                  lit.setString(_rawStringValue);
+                  _xblockexpression_4 = lit;
+                }
+                _switchResult = _xblockexpression_4;
+                break;
+              case "LiteralUUIDType":
+                LiteralRawString _xblockexpression_5 = null;
+                {
+                  final LiteralRawString lit = CommonFactory.eINSTANCE.createLiteralRawString();
+                  RawStringValue _rawStringValue = new RawStringValue(litValue);
+                  lit.setString(_rawStringValue);
+                  _xblockexpression_5 = lit;
+                }
+                _switchResult = _xblockexpression_5;
+                break;
+              case "LiteralURIType":
+                LiteralURI _xblockexpression_6 = null;
+                {
+                  final LiteralURI lit = CommonFactory.eINSTANCE.createLiteralURI();
+                  URIValue _uRIValue = new URIValue(litValue);
+                  lit.setUri(_uRIValue);
+                  _xblockexpression_6 = lit;
+                }
+                _switchResult = _xblockexpression_6;
+                break;
+              case "LiteralDecimalType":
+                LiteralDecimal _xblockexpression_7 = null;
+                {
+                  final LiteralDecimal lit = CommonFactory.eINSTANCE.createLiteralDecimal();
+                  DecimalValue _decimalValue = new DecimalValue(litValue);
+                  lit.setDecimal(_decimalValue);
+                  _xblockexpression_7 = lit;
+                }
+                _switchResult = _xblockexpression_7;
+                break;
+              case "LiteralPositiveIntegerType":
+                LiteralDecimal _xblockexpression_8 = null;
+                {
+                  final LiteralDecimal lit = CommonFactory.eINSTANCE.createLiteralDecimal();
+                  PositiveIntegerValue _positiveIntegerValue = new PositiveIntegerValue(litValue);
+                  lit.setDecimal(_positiveIntegerValue);
+                  _xblockexpression_8 = lit;
+                }
+                _switchResult = _xblockexpression_8;
+                break;
+              case "LiteralFloatType":
+                LiteralFloat _xblockexpression_9 = null;
+                {
+                  final LiteralFloat lit = CommonFactory.eINSTANCE.createLiteralFloat();
+                  FloatValue _floatValue = new FloatValue(litValue);
+                  lit.setFloat(_floatValue);
+                  _xblockexpression_9 = lit;
+                }
+                _switchResult = _xblockexpression_9;
+                break;
+              case "LiteralRationalType":
+                LiteralRational _xblockexpression_10 = null;
+                {
+                  final LiteralRational lit = CommonFactory.eINSTANCE.createLiteralRational();
+                  RationalValue _rationalValue = new RationalValue(litValue);
+                  lit.setRational(_rationalValue);
+                  _xblockexpression_10 = lit;
+                }
+                _switchResult = _xblockexpression_10;
+                break;
+              case "LiteralRealType":
+                LiteralReal _xblockexpression_11 = null;
+                {
+                  final LiteralReal lit = CommonFactory.eINSTANCE.createLiteralReal();
+                  RealValue _realValue = new RealValue(litValue);
+                  lit.setReal(_realValue);
+                  _xblockexpression_11 = lit;
+                }
+                _switchResult = _xblockexpression_11;
+                break;
+              default:
+                throw new IllegalArgumentException(("OMLTables.toLiteralValue(value): unrecognized type: " + litType));
+            }
+          } else {
+            throw new IllegalArgumentException(("OMLTables.toLiteralValue(value): unrecognized type: " + litType));
+          }
+          _xblockexpression_1 = _switchResult;
+        }
+        _xifexpression = _xblockexpression_1;
+      } else {
+        throw new IllegalArgumentException(("OMLTables.toLiteralValue(value): ill-formed value=" + value));
+      }
+      _xblockexpression = _xifexpression;
+    }
+    return _xblockexpression;
   }
   
   public static DescriptionKind toDescriptionKind(final String value) {
     if (value != null) {
       switch (value) {
-        case "Partial":
+        case "\"Partial\"":
           return DescriptionKind.PARTIAL;
-        case "Final":
+        case "\"Final\"":
           return DescriptionKind.FINAL;
         default:
           throw new IllegalArgumentException((value + " is not a legal DescriptionKind"));
@@ -1342,15 +1733,34 @@ public class OMLTables {
   public static TerminologyKind toTerminologyKind(final String value) {
     if (value != null) {
       switch (value) {
-        case "OpenWorldDefinitions":
+        case "\"OpenWorldDefinitions\"":
           return TerminologyKind.OPEN_WORLD_DEFINITIONS;
-        case "ClosedWorldDesignations":
+        case "\"ClosedWorldDesignations\"":
           return TerminologyKind.CLOSED_WORLD_DESIGNATIONS;
         default:
           throw new IllegalArgumentException((value + " is not a legal TerminologyKind"));
       }
     } else {
       throw new IllegalArgumentException((value + " is not a legal TerminologyKind"));
+    }
+  }
+  
+  public static String toString(final Object value) {
+    if (value instanceof LiteralNumber) {
+      return _toString((LiteralNumber)value);
+    } else if (value instanceof LiteralValue) {
+      return _toString((LiteralValue)value);
+    } else if (value instanceof DescriptionKind) {
+      return _toString((DescriptionKind)value);
+    } else if (value instanceof TerminologyKind) {
+      return _toString((TerminologyKind)value);
+    } else if (value instanceof PositiveIntegerValue) {
+      return _toString((PositiveIntegerValue)value);
+    } else if (value instanceof String) {
+      return _toString((String)value);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(value).toString());
     }
   }
 }
