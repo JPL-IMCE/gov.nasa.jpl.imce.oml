@@ -69,13 +69,15 @@ projects[13]=gov.nasa.jpl.imce.oml.product
 projects[14]=gov.nasa.jpl.imce.oml.rcp
 projects[15]=gov.nasa.jpl.imce.oml.releng
 projects[16]=gov.nasa.jpl.imce.oml.root
-projects[17]=gov.nasa.jpl.imce.oml.target
-projects[18]=gov.nasa.jpl.imce.oml.tests
-projects[19]=gov.nasa.jpl.imce.oml.tests.core
-projects[20]=gov.nasa.jpl.imce.oml.ui.feature
-projects[21]=gov.nasa.jpl.imce.oml.updatesite
-projects[22]=gov.nasa.jpl.imce.oml.uuid
-projects[23]=gov.nasa.jpl.imce.oml.viewpoint
+projects[17]=gov.nasa.jpl.imce.oml.serialization.tests
+projects[18]=gov.nasa.jpl.imce.oml.target
+projects[19]=gov.nasa.jpl.imce.oml.tests
+projects[20]=gov.nasa.jpl.imce.oml.tests.core
+projects[21]=gov.nasa.jpl.imce.oml.ui.feature
+projects[22]=gov.nasa.jpl.imce.oml.updatesite
+projects[23]=gov.nasa.jpl.imce.oml.uuid
+projects[24]=gov.nasa.jpl.imce.oml.viewpoint
+projects[25]=gov.nasa.jpl.imce.oml.zip
 
 if test $# -eq 1 && test "$1" = "ps"; then
     echo "# Package Show...";
