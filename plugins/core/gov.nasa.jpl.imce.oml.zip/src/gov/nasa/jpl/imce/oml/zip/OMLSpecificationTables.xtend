@@ -26,10 +26,10 @@ import java.io.InputStreamReader
 import java.io.PrintWriter
 import java.lang.IllegalArgumentException
 import java.nio.charset.StandardCharsets
+import java.util.ArrayList
 import java.util.Collections
 import java.util.HashMap
 import java.util.Map
-import java.util.stream.Stream
 import org.apache.commons.compress.archivers.zip.ZipArchiveEntry
 import org.apache.commons.compress.archivers.zip.ZipArchiveOutputStream
 import org.apache.commons.compress.archivers.zip.ZipFile
@@ -304,333 +304,531 @@ class OMLSpecificationTables {
     // AnnotationProperty
     entry = new ZipArchiveEntry("AnnotationProperties.json")
     zos.putArchiveEntry(entry)
-    zos.write(annotationPropertiesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(annotationPropertiesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // TerminologyGraph
     entry = new ZipArchiveEntry("TerminologyGraphs.json")
     zos.putArchiveEntry(entry)
-    zos.write(terminologyGraphsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(terminologyGraphsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // Bundle
     entry = new ZipArchiveEntry("Bundles.json")
     zos.putArchiveEntry(entry)
-    zos.write(bundlesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(bundlesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // ConceptDesignationTerminologyAxiom
     entry = new ZipArchiveEntry("ConceptDesignationTerminologyAxioms.json")
     zos.putArchiveEntry(entry)
-    zos.write(conceptDesignationTerminologyAxiomsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(conceptDesignationTerminologyAxiomsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // TerminologyExtensionAxiom
     entry = new ZipArchiveEntry("TerminologyExtensionAxioms.json")
     zos.putArchiveEntry(entry)
-    zos.write(terminologyExtensionAxiomsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(terminologyExtensionAxiomsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // TerminologyNestingAxiom
     entry = new ZipArchiveEntry("TerminologyNestingAxioms.json")
     zos.putArchiveEntry(entry)
-    zos.write(terminologyNestingAxiomsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(terminologyNestingAxiomsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // Aspect
     entry = new ZipArchiveEntry("Aspects.json")
     zos.putArchiveEntry(entry)
-    zos.write(aspectsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(aspectsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // Concept
     entry = new ZipArchiveEntry("Concepts.json")
     zos.putArchiveEntry(entry)
-    zos.write(conceptsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(conceptsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // ReifiedRelationship
     entry = new ZipArchiveEntry("ReifiedRelationships.json")
     zos.putArchiveEntry(entry)
-    zos.write(reifiedRelationshipsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(reifiedRelationshipsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // UnreifiedRelationship
     entry = new ZipArchiveEntry("UnreifiedRelationships.json")
     zos.putArchiveEntry(entry)
-    zos.write(unreifiedRelationshipsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(unreifiedRelationshipsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // Scalar
     entry = new ZipArchiveEntry("Scalars.json")
     zos.putArchiveEntry(entry)
-    zos.write(scalarsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(scalarsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // Structure
     entry = new ZipArchiveEntry("Structures.json")
     zos.putArchiveEntry(entry)
-    zos.write(structuresByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(structuresByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // BinaryScalarRestriction
     entry = new ZipArchiveEntry("BinaryScalarRestrictions.json")
     zos.putArchiveEntry(entry)
-    zos.write(binaryScalarRestrictionsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(binaryScalarRestrictionsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // IRIScalarRestriction
     entry = new ZipArchiveEntry("IRIScalarRestrictions.json")
     zos.putArchiveEntry(entry)
-    zos.write(iriScalarRestrictionsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(iriScalarRestrictionsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // NumericScalarRestriction
     entry = new ZipArchiveEntry("NumericScalarRestrictions.json")
     zos.putArchiveEntry(entry)
-    zos.write(numericScalarRestrictionsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(numericScalarRestrictionsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // PlainLiteralScalarRestriction
     entry = new ZipArchiveEntry("PlainLiteralScalarRestrictions.json")
     zos.putArchiveEntry(entry)
-    zos.write(plainLiteralScalarRestrictionsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(plainLiteralScalarRestrictionsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // ScalarOneOfRestriction
     entry = new ZipArchiveEntry("ScalarOneOfRestrictions.json")
     zos.putArchiveEntry(entry)
-    zos.write(scalarOneOfRestrictionsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(scalarOneOfRestrictionsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // StringScalarRestriction
     entry = new ZipArchiveEntry("StringScalarRestrictions.json")
     zos.putArchiveEntry(entry)
-    zos.write(stringScalarRestrictionsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(stringScalarRestrictionsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // SynonymScalarRestriction
     entry = new ZipArchiveEntry("SynonymScalarRestrictions.json")
     zos.putArchiveEntry(entry)
-    zos.write(synonymScalarRestrictionsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(synonymScalarRestrictionsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // TimeScalarRestriction
     entry = new ZipArchiveEntry("TimeScalarRestrictions.json")
     zos.putArchiveEntry(entry)
-    zos.write(timeScalarRestrictionsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(timeScalarRestrictionsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // EntityScalarDataProperty
     entry = new ZipArchiveEntry("EntityScalarDataProperties.json")
     zos.putArchiveEntry(entry)
-    zos.write(entityScalarDataPropertiesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(entityScalarDataPropertiesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // EntityStructuredDataProperty
     entry = new ZipArchiveEntry("EntityStructuredDataProperties.json")
     zos.putArchiveEntry(entry)
-    zos.write(entityStructuredDataPropertiesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(entityStructuredDataPropertiesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // ScalarDataProperty
     entry = new ZipArchiveEntry("ScalarDataProperties.json")
     zos.putArchiveEntry(entry)
-    zos.write(scalarDataPropertiesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(scalarDataPropertiesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // StructuredDataProperty
     entry = new ZipArchiveEntry("StructuredDataProperties.json")
     zos.putArchiveEntry(entry)
-    zos.write(structuredDataPropertiesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(structuredDataPropertiesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // AspectSpecializationAxiom
     entry = new ZipArchiveEntry("AspectSpecializationAxioms.json")
     zos.putArchiveEntry(entry)
-    zos.write(aspectSpecializationAxiomsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(aspectSpecializationAxiomsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // ConceptSpecializationAxiom
     entry = new ZipArchiveEntry("ConceptSpecializationAxioms.json")
     zos.putArchiveEntry(entry)
-    zos.write(conceptSpecializationAxiomsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(conceptSpecializationAxiomsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // ReifiedRelationshipSpecializationAxiom
     entry = new ZipArchiveEntry("ReifiedRelationshipSpecializationAxioms.json")
     zos.putArchiveEntry(entry)
-    zos.write(reifiedRelationshipSpecializationAxiomsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(reifiedRelationshipSpecializationAxiomsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // EntityExistentialRestrictionAxiom
     entry = new ZipArchiveEntry("EntityExistentialRestrictionAxioms.json")
     zos.putArchiveEntry(entry)
-    zos.write(entityExistentialRestrictionAxiomsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(entityExistentialRestrictionAxiomsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // EntityUniversalRestrictionAxiom
     entry = new ZipArchiveEntry("EntityUniversalRestrictionAxioms.json")
     zos.putArchiveEntry(entry)
-    zos.write(entityUniversalRestrictionAxiomsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(entityUniversalRestrictionAxiomsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // EntityScalarDataPropertyExistentialRestrictionAxiom
     entry = new ZipArchiveEntry("EntityScalarDataPropertyExistentialRestrictionAxioms.json")
     zos.putArchiveEntry(entry)
-    zos.write(entityScalarDataPropertyExistentialRestrictionAxiomsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(entityScalarDataPropertyExistentialRestrictionAxiomsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // EntityScalarDataPropertyParticularRestrictionAxiom
     entry = new ZipArchiveEntry("EntityScalarDataPropertyParticularRestrictionAxioms.json")
     zos.putArchiveEntry(entry)
-    zos.write(entityScalarDataPropertyParticularRestrictionAxiomsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(entityScalarDataPropertyParticularRestrictionAxiomsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // EntityScalarDataPropertyUniversalRestrictionAxiom
     entry = new ZipArchiveEntry("EntityScalarDataPropertyUniversalRestrictionAxioms.json")
     zos.putArchiveEntry(entry)
-    zos.write(entityScalarDataPropertyUniversalRestrictionAxiomsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(entityScalarDataPropertyUniversalRestrictionAxiomsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // ScalarOneOfLiteralAxiom
     entry = new ZipArchiveEntry("ScalarOneOfLiteralAxioms.json")
     zos.putArchiveEntry(entry)
-    zos.write(scalarOneOfLiteralAxiomsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(scalarOneOfLiteralAxiomsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // BundledTerminologyAxiom
     entry = new ZipArchiveEntry("BundledTerminologyAxioms.json")
     zos.putArchiveEntry(entry)
-    zos.write(bundledTerminologyAxiomsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(bundledTerminologyAxiomsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // RootConceptTaxonomyAxiom
     entry = new ZipArchiveEntry("RootConceptTaxonomyAxioms.json")
     zos.putArchiveEntry(entry)
-    zos.write(rootConceptTaxonomyAxiomsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(rootConceptTaxonomyAxiomsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // SpecificDisjointConceptAxiom
     entry = new ZipArchiveEntry("SpecificDisjointConceptAxioms.json")
     zos.putArchiveEntry(entry)
-    zos.write(specificDisjointConceptAxiomsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(specificDisjointConceptAxiomsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // AnnotationPropertyValue
     entry = new ZipArchiveEntry("AnnotationPropertyValues.json")
     zos.putArchiveEntry(entry)
-    zos.write(annotationPropertyValuesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(annotationPropertyValuesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // AnonymousConceptUnionAxiom
     entry = new ZipArchiveEntry("AnonymousConceptUnionAxioms.json")
     zos.putArchiveEntry(entry)
-    zos.write(anonymousConceptUnionAxiomsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(anonymousConceptUnionAxiomsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // AspectPredicate
     entry = new ZipArchiveEntry("AspectPredicates.json")
     zos.putArchiveEntry(entry)
-    zos.write(aspectPredicatesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(aspectPredicatesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // ChainRule
     entry = new ZipArchiveEntry("ChainRules.json")
     zos.putArchiveEntry(entry)
-    zos.write(chainRulesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(chainRulesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // ConceptInstance
     entry = new ZipArchiveEntry("ConceptInstances.json")
     zos.putArchiveEntry(entry)
-    zos.write(conceptInstancesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(conceptInstancesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // ConceptPredicate
     entry = new ZipArchiveEntry("ConceptPredicates.json")
     zos.putArchiveEntry(entry)
-    zos.write(conceptPredicatesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(conceptPredicatesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // DescriptionBox
     entry = new ZipArchiveEntry("DescriptionBoxes.json")
     zos.putArchiveEntry(entry)
-    zos.write(descriptionBoxesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(descriptionBoxesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // DescriptionBoxExtendsClosedWorldDefinitions
     entry = new ZipArchiveEntry("DescriptionBoxExtendsClosedWorldDefinitions.json")
     zos.putArchiveEntry(entry)
-    zos.write(descriptionBoxExtendsClosedWorldDefinitionsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(descriptionBoxExtendsClosedWorldDefinitionsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // DescriptionBoxRefinement
     entry = new ZipArchiveEntry("DescriptionBoxRefinements.json")
     zos.putArchiveEntry(entry)
-    zos.write(descriptionBoxRefinementsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(descriptionBoxRefinementsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // EntityStructuredDataPropertyParticularRestrictionAxiom
     entry = new ZipArchiveEntry("EntityStructuredDataPropertyParticularRestrictionAxioms.json")
     zos.putArchiveEntry(entry)
-    zos.write(entityStructuredDataPropertyParticularRestrictionAxiomsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(entityStructuredDataPropertyParticularRestrictionAxiomsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // ReifiedRelationshipInstance
     entry = new ZipArchiveEntry("ReifiedRelationshipInstances.json")
     zos.putArchiveEntry(entry)
-    zos.write(reifiedRelationshipInstancesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(reifiedRelationshipInstancesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // ReifiedRelationshipInstanceDomain
     entry = new ZipArchiveEntry("ReifiedRelationshipInstanceDomains.json")
     zos.putArchiveEntry(entry)
-    zos.write(reifiedRelationshipInstanceDomainsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(reifiedRelationshipInstanceDomainsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // ReifiedRelationshipInstanceRange
     entry = new ZipArchiveEntry("ReifiedRelationshipInstanceRanges.json")
     zos.putArchiveEntry(entry)
-    zos.write(reifiedRelationshipInstanceRangesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(reifiedRelationshipInstanceRangesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // ReifiedRelationshipInversePropertyPredicate
     entry = new ZipArchiveEntry("ReifiedRelationshipInversePropertyPredicates.json")
     zos.putArchiveEntry(entry)
-    zos.write(reifiedRelationshipInversePropertyPredicatesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(reifiedRelationshipInversePropertyPredicatesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // ReifiedRelationshipPredicate
     entry = new ZipArchiveEntry("ReifiedRelationshipPredicates.json")
     zos.putArchiveEntry(entry)
-    zos.write(reifiedRelationshipPredicatesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(reifiedRelationshipPredicatesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // ReifiedRelationshipPropertyPredicate
     entry = new ZipArchiveEntry("ReifiedRelationshipPropertyPredicates.json")
     zos.putArchiveEntry(entry)
-    zos.write(reifiedRelationshipPropertyPredicatesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(reifiedRelationshipPropertyPredicatesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // ReifiedRelationshipSourceInversePropertyPredicate
     entry = new ZipArchiveEntry("ReifiedRelationshipSourceInversePropertyPredicates.json")
     zos.putArchiveEntry(entry)
-    zos.write(reifiedRelationshipSourceInversePropertyPredicatesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(reifiedRelationshipSourceInversePropertyPredicatesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // ReifiedRelationshipSourcePropertyPredicate
     entry = new ZipArchiveEntry("ReifiedRelationshipSourcePropertyPredicates.json")
     zos.putArchiveEntry(entry)
-    zos.write(reifiedRelationshipSourcePropertyPredicatesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(reifiedRelationshipSourcePropertyPredicatesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // ReifiedRelationshipTargetInversePropertyPredicate
     entry = new ZipArchiveEntry("ReifiedRelationshipTargetInversePropertyPredicates.json")
     zos.putArchiveEntry(entry)
-    zos.write(reifiedRelationshipTargetInversePropertyPredicatesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(reifiedRelationshipTargetInversePropertyPredicatesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // ReifiedRelationshipTargetPropertyPredicate
     entry = new ZipArchiveEntry("ReifiedRelationshipTargetPropertyPredicates.json")
     zos.putArchiveEntry(entry)
-    zos.write(reifiedRelationshipTargetPropertyPredicatesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(reifiedRelationshipTargetPropertyPredicatesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // RestrictionScalarDataPropertyValue
     entry = new ZipArchiveEntry("RestrictionScalarDataPropertyValues.json")
     zos.putArchiveEntry(entry)
-    zos.write(restrictionScalarDataPropertyValuesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(restrictionScalarDataPropertyValuesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // RestrictionStructuredDataPropertyTuple
     entry = new ZipArchiveEntry("RestrictionStructuredDataPropertyTuples.json")
     zos.putArchiveEntry(entry)
-    zos.write(restrictionStructuredDataPropertyTuplesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(restrictionStructuredDataPropertyTuplesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // RuleBodySegment
     entry = new ZipArchiveEntry("RuleBodySegments.json")
     zos.putArchiveEntry(entry)
-    zos.write(ruleBodySegmentsByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(ruleBodySegmentsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // ScalarDataPropertyValue
     entry = new ZipArchiveEntry("ScalarDataPropertyValues.json")
     zos.putArchiveEntry(entry)
-    zos.write(scalarDataPropertyValuesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(scalarDataPropertyValuesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // SingletonInstanceScalarDataPropertyValue
     entry = new ZipArchiveEntry("SingletonInstanceScalarDataPropertyValues.json")
     zos.putArchiveEntry(entry)
-    zos.write(singletonInstanceScalarDataPropertyValuesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(singletonInstanceScalarDataPropertyValuesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // SingletonInstanceStructuredDataPropertyValue
     entry = new ZipArchiveEntry("SingletonInstanceStructuredDataPropertyValues.json")
     zos.putArchiveEntry(entry)
-    zos.write(singletonInstanceStructuredDataPropertyValuesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(singletonInstanceStructuredDataPropertyValuesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // StructuredDataPropertyTuple
     entry = new ZipArchiveEntry("StructuredDataPropertyTuples.json")
     zos.putArchiveEntry(entry)
-    zos.write(structuredDataPropertyTuplesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(structuredDataPropertyTuplesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // UnreifiedRelationshipInstanceTuple
     entry = new ZipArchiveEntry("UnreifiedRelationshipInstanceTuples.json")
     zos.putArchiveEntry(entry)
-    zos.write(unreifiedRelationshipInstanceTuplesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(unreifiedRelationshipInstanceTuplesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // UnreifiedRelationshipInversePropertyPredicate
     entry = new ZipArchiveEntry("UnreifiedRelationshipInversePropertyPredicates.json")
     zos.putArchiveEntry(entry)
-    zos.write(unreifiedRelationshipInversePropertyPredicatesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(unreifiedRelationshipInversePropertyPredicatesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // UnreifiedRelationshipPropertyPredicate
     entry = new ZipArchiveEntry("UnreifiedRelationshipPropertyPredicates.json")
     zos.putArchiveEntry(entry)
-    zos.write(unreifiedRelationshipPropertyPredicatesByteArray(e))
-    zos.closeArchiveEntry()
+    try {
+      zos.write(unreifiedRelationshipPropertyPredicatesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
   }
   
   static def byte[] annotationPropertiesByteArray(Extent e) {
@@ -638,15 +836,17 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.annotationProperties(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"iri\":\"")
-      pw.print(it.iri())
-      pw.print("\",")
-      pw.print("\"abbrevIRI\":\"")
-      pw.print(it.abbrevIRI)
-      pw.println("\"}")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"iri\":")
+      pw.print(OMLTables.toString(it.iri()))
+      pw.print(",")
+      pw.print("\"abbrevIRI\":")
+      pw.print(OMLTables.toString(it.abbrevIRI))
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -657,15 +857,17 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.terminologyGraphs(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"kind\":\"")
-      pw.print(it.kind)
-      pw.print("\",")
-      pw.print("\"iri\":\"")
-      pw.print(it.iri())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"kind\":")
+      pw.print(OMLTables.toString(it.kind))
+      pw.print(",")
+      pw.print("\"iri\":")
+      pw.print(OMLTables.toString(it.iri()))
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -676,15 +878,17 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.bundles(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"kind\":\"")
-      pw.print(it.kind)
-      pw.print("\",")
-      pw.print("\"iri\":\"")
-      pw.print(it.iri())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"kind\":")
+      pw.print(OMLTables.toString(it.kind))
+      pw.print(",")
+      pw.print("\"iri\":")
+      pw.print(OMLTables.toString(it.iri()))
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -695,18 +899,26 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.conceptDesignationTerminologyAxioms(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"tboxUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"tboxUUID\":")
+      pw.print("\"")
       pw.print(it.tbox.uuid())
-      pw.print("\",")
-      pw.print("\"designatedConceptUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"designatedConceptUUID\":")
+      pw.print("\"")
       pw.print(it.designatedConcept.uuid())
-      pw.print("\",")
-      pw.print("\"designatedTerminologyIRI\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"designatedTerminologyIRI\":")
+      pw.print("\"")
       pw.print(it.designatedTerminology.iri())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -717,15 +929,21 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.terminologyExtensionAxioms(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"tboxUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"tboxUUID\":")
+      pw.print("\"")
       pw.print(it.tbox.uuid())
-      pw.print("\",")
-      pw.print("\"extendedTerminologyIRI\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"extendedTerminologyIRI\":")
+      pw.print("\"")
       pw.print(it.extendedTerminology.iri())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -736,18 +954,26 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.terminologyNestingAxioms(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"tboxUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"tboxUUID\":")
+      pw.print("\"")
       pw.print(it.tbox.uuid())
-      pw.print("\",")
-      pw.print("\"nestingContextUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"nestingContextUUID\":")
+      pw.print("\"")
       pw.print(it.nestingContext.uuid())
-      pw.print("\",")
-      pw.print("\"nestingTerminologyIRI\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"nestingTerminologyIRI\":")
+      pw.print("\"")
       pw.print(it.nestingTerminology.iri())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -758,15 +984,19 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.aspects(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"tboxUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"tboxUUID\":")
+      pw.print("\"")
       pw.print(it.tbox.uuid())
-      pw.print("\",")
-      pw.print("\"name\":\"")
-      pw.print(it.name())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"name\":")
+      pw.print(OMLTables.toString(it.name()))
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -777,15 +1007,19 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.concepts(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"tboxUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"tboxUUID\":")
+      pw.print("\"")
       pw.print(it.tbox.uuid())
-      pw.print("\",")
-      pw.print("\"name\":\"")
-      pw.print(it.name())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"name\":")
+      pw.print(OMLTables.toString(it.name()))
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -796,54 +1030,62 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.reifiedRelationships(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"tboxUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"tboxUUID\":")
+      pw.print("\"")
       pw.print(it.tbox.uuid())
-      pw.print("\",")
-      pw.print("\"sourceUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"sourceUUID\":")
+      pw.print("\"")
       pw.print(it.source.uuid())
-      pw.print("\",")
-      pw.print("\"targetUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"targetUUID\":")
+      pw.print("\"")
       pw.print(it.target.uuid())
-      pw.print("\",")
-      pw.print("\"isAsymmetric\":\"")
-      pw.print(it.isAsymmetric)
-      pw.print("\",")
-      pw.print("\"isEssential\":\"")
-      pw.print(it.isEssential)
-      pw.print("\",")
-      pw.print("\"isFunctional\":\"")
-      pw.print(it.isFunctional)
-      pw.print("\",")
-      pw.print("\"isInverseEssential\":\"")
-      pw.print(it.isInverseEssential)
-      pw.print("\",")
-      pw.print("\"isInverseFunctional\":\"")
-      pw.print(it.isInverseFunctional)
-      pw.print("\",")
-      pw.print("\"isIrreflexive\":\"")
-      pw.print(it.isIrreflexive)
-      pw.print("\",")
-      pw.print("\"isReflexive\":\"")
-      pw.print(it.isReflexive)
-      pw.print("\",")
-      pw.print("\"isSymmetric\":\"")
-      pw.print(it.isSymmetric)
-      pw.print("\",")
-      pw.print("\"isTransitive\":\"")
-      pw.print(it.isTransitive)
-      pw.print("\",")
-      pw.print("\"name\":\"")
-      pw.print(it.name())
-      pw.print("\",")
-      pw.print("\"unreifiedPropertyName\":\"")
-      pw.print(it.unreifiedPropertyName)
-      pw.print("\",")
-      pw.print("\"unreifiedInversePropertyName\":\"")
-      pw.print(it.unreifiedInversePropertyName)
-      pw.println("\"}")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"isAsymmetric\":")
+      pw.print(OMLTables.toString(it.isAsymmetric))
+      pw.print(",")
+      pw.print("\"isEssential\":")
+      pw.print(OMLTables.toString(it.isEssential))
+      pw.print(",")
+      pw.print("\"isFunctional\":")
+      pw.print(OMLTables.toString(it.isFunctional))
+      pw.print(",")
+      pw.print("\"isInverseEssential\":")
+      pw.print(OMLTables.toString(it.isInverseEssential))
+      pw.print(",")
+      pw.print("\"isInverseFunctional\":")
+      pw.print(OMLTables.toString(it.isInverseFunctional))
+      pw.print(",")
+      pw.print("\"isIrreflexive\":")
+      pw.print(OMLTables.toString(it.isIrreflexive))
+      pw.print(",")
+      pw.print("\"isReflexive\":")
+      pw.print(OMLTables.toString(it.isReflexive))
+      pw.print(",")
+      pw.print("\"isSymmetric\":")
+      pw.print(OMLTables.toString(it.isSymmetric))
+      pw.print(",")
+      pw.print("\"isTransitive\":")
+      pw.print(OMLTables.toString(it.isTransitive))
+      pw.print(",")
+      pw.print("\"name\":")
+      pw.print(OMLTables.toString(it.name()))
+      pw.print(",")
+      pw.print("\"unreifiedPropertyName\":")
+      pw.print(OMLTables.toString(it.unreifiedPropertyName))
+      pw.print(",")
+      pw.print("\"unreifiedInversePropertyName\":")
+      pw.print(OMLTables.toString(it.unreifiedInversePropertyName))
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -854,48 +1096,56 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.unreifiedRelationships(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"tboxUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"tboxUUID\":")
+      pw.print("\"")
       pw.print(it.tbox.uuid())
-      pw.print("\",")
-      pw.print("\"sourceUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"sourceUUID\":")
+      pw.print("\"")
       pw.print(it.source.uuid())
-      pw.print("\",")
-      pw.print("\"targetUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"targetUUID\":")
+      pw.print("\"")
       pw.print(it.target.uuid())
-      pw.print("\",")
-      pw.print("\"isAsymmetric\":\"")
-      pw.print(it.isAsymmetric)
-      pw.print("\",")
-      pw.print("\"isEssential\":\"")
-      pw.print(it.isEssential)
-      pw.print("\",")
-      pw.print("\"isFunctional\":\"")
-      pw.print(it.isFunctional)
-      pw.print("\",")
-      pw.print("\"isInverseEssential\":\"")
-      pw.print(it.isInverseEssential)
-      pw.print("\",")
-      pw.print("\"isInverseFunctional\":\"")
-      pw.print(it.isInverseFunctional)
-      pw.print("\",")
-      pw.print("\"isIrreflexive\":\"")
-      pw.print(it.isIrreflexive)
-      pw.print("\",")
-      pw.print("\"isReflexive\":\"")
-      pw.print(it.isReflexive)
-      pw.print("\",")
-      pw.print("\"isSymmetric\":\"")
-      pw.print(it.isSymmetric)
-      pw.print("\",")
-      pw.print("\"isTransitive\":\"")
-      pw.print(it.isTransitive)
-      pw.print("\",")
-      pw.print("\"name\":\"")
-      pw.print(it.name())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"isAsymmetric\":")
+      pw.print(OMLTables.toString(it.isAsymmetric))
+      pw.print(",")
+      pw.print("\"isEssential\":")
+      pw.print(OMLTables.toString(it.isEssential))
+      pw.print(",")
+      pw.print("\"isFunctional\":")
+      pw.print(OMLTables.toString(it.isFunctional))
+      pw.print(",")
+      pw.print("\"isInverseEssential\":")
+      pw.print(OMLTables.toString(it.isInverseEssential))
+      pw.print(",")
+      pw.print("\"isInverseFunctional\":")
+      pw.print(OMLTables.toString(it.isInverseFunctional))
+      pw.print(",")
+      pw.print("\"isIrreflexive\":")
+      pw.print(OMLTables.toString(it.isIrreflexive))
+      pw.print(",")
+      pw.print("\"isReflexive\":")
+      pw.print(OMLTables.toString(it.isReflexive))
+      pw.print(",")
+      pw.print("\"isSymmetric\":")
+      pw.print(OMLTables.toString(it.isSymmetric))
+      pw.print(",")
+      pw.print("\"isTransitive\":")
+      pw.print(OMLTables.toString(it.isTransitive))
+      pw.print(",")
+      pw.print("\"name\":")
+      pw.print(OMLTables.toString(it.name()))
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -906,15 +1156,19 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.scalars(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"tboxUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"tboxUUID\":")
+      pw.print("\"")
       pw.print(it.tbox.uuid())
-      pw.print("\",")
-      pw.print("\"name\":\"")
-      pw.print(it.name())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"name\":")
+      pw.print(OMLTables.toString(it.name()))
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -925,15 +1179,19 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.structures(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"tboxUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"tboxUUID\":")
+      pw.print("\"")
       pw.print(it.tbox.uuid())
-      pw.print("\",")
-      pw.print("\"name\":\"")
-      pw.print(it.name())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"name\":")
+      pw.print(OMLTables.toString(it.name()))
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -944,27 +1202,33 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.binaryScalarRestrictions(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"tboxUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"tboxUUID\":")
+      pw.print("\"")
       pw.print(it.tbox.uuid())
-      pw.print("\",")
-      pw.print("\"restrictedRangeUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"restrictedRangeUUID\":")
+      pw.print("\"")
       pw.print(it.restrictedRange.uuid())
-      pw.print("\",")
-      pw.print("\"length\":\"")
-      pw.print(it.length)
-      pw.print("\",")
-      pw.print("\"minLength\":\"")
-      pw.print(it.minLength)
-      pw.print("\",")
-      pw.print("\"maxLength\":\"")
-      pw.print(it.maxLength)
-      pw.print("\",")
-      pw.print("\"name\":\"")
-      pw.print(it.name())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"length\":")
+      pw.print(OMLTables.toString(it.length))
+      pw.print(",")
+      pw.print("\"minLength\":")
+      pw.print(OMLTables.toString(it.minLength))
+      pw.print(",")
+      pw.print("\"maxLength\":")
+      pw.print(OMLTables.toString(it.maxLength))
+      pw.print(",")
+      pw.print("\"name\":")
+      pw.print(OMLTables.toString(it.name()))
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -975,30 +1239,36 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.iriScalarRestrictions(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"tboxUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"tboxUUID\":")
+      pw.print("\"")
       pw.print(it.tbox.uuid())
-      pw.print("\",")
-      pw.print("\"restrictedRangeUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"restrictedRangeUUID\":")
+      pw.print("\"")
       pw.print(it.restrictedRange.uuid())
-      pw.print("\",")
-      pw.print("\"length\":\"")
-      pw.print(it.length)
-      pw.print("\",")
-      pw.print("\"minLength\":\"")
-      pw.print(it.minLength)
-      pw.print("\",")
-      pw.print("\"maxLength\":\"")
-      pw.print(it.maxLength)
-      pw.print("\",")
-      pw.print("\"name\":\"")
-      pw.print(it.name())
-      pw.print("\",")
-      pw.print("\"pattern\":\"")
-      pw.print(it.pattern)
-      pw.println("\"}")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"length\":")
+      pw.print(OMLTables.toString(it.length))
+      pw.print(",")
+      pw.print("\"minLength\":")
+      pw.print(OMLTables.toString(it.minLength))
+      pw.print(",")
+      pw.print("\"maxLength\":")
+      pw.print(OMLTables.toString(it.maxLength))
+      pw.print(",")
+      pw.print("\"name\":")
+      pw.print(OMLTables.toString(it.name()))
+      pw.print(",")
+      pw.print("\"pattern\":")
+      pw.print(OMLTables.toString(it.pattern))
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -1009,30 +1279,36 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.numericScalarRestrictions(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"tboxUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"tboxUUID\":")
+      pw.print("\"")
       pw.print(it.tbox.uuid())
-      pw.print("\",")
-      pw.print("\"restrictedRangeUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"restrictedRangeUUID\":")
+      pw.print("\"")
       pw.print(it.restrictedRange.uuid())
-      pw.print("\",")
-      pw.print("\"minExclusive\":\"")
-      pw.print(it.minExclusive.value)
-      pw.print("\",")
-      pw.print("\"minInclusive\":\"")
-      pw.print(it.minInclusive.value)
-      pw.print("\",")
-      pw.print("\"maxExclusive\":\"")
-      pw.print(it.maxExclusive.value)
-      pw.print("\",")
-      pw.print("\"maxInclusive\":\"")
-      pw.print(it.maxInclusive.value)
-      pw.print("\",")
-      pw.print("\"name\":\"")
-      pw.print(it.name())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"minExclusive\":")
+      pw.print(OMLTables.toString(it.minExclusive))
+      pw.print(",")
+      pw.print("\"minInclusive\":")
+      pw.print(OMLTables.toString(it.minInclusive))
+      pw.print(",")
+      pw.print("\"maxExclusive\":")
+      pw.print(OMLTables.toString(it.maxExclusive))
+      pw.print(",")
+      pw.print("\"maxInclusive\":")
+      pw.print(OMLTables.toString(it.maxInclusive))
+      pw.print(",")
+      pw.print("\"name\":")
+      pw.print(OMLTables.toString(it.name()))
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -1043,33 +1319,39 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.plainLiteralScalarRestrictions(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"tboxUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"tboxUUID\":")
+      pw.print("\"")
       pw.print(it.tbox.uuid())
-      pw.print("\",")
-      pw.print("\"restrictedRangeUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"restrictedRangeUUID\":")
+      pw.print("\"")
       pw.print(it.restrictedRange.uuid())
-      pw.print("\",")
-      pw.print("\"length\":\"")
-      pw.print(it.length)
-      pw.print("\",")
-      pw.print("\"minLength\":\"")
-      pw.print(it.minLength)
-      pw.print("\",")
-      pw.print("\"maxLength\":\"")
-      pw.print(it.maxLength)
-      pw.print("\",")
-      pw.print("\"name\":\"")
-      pw.print(it.name())
-      pw.print("\",")
-      pw.print("\"langRange\":\"")
-      pw.print(it.langRange)
-      pw.print("\",")
-      pw.print("\"pattern\":\"")
-      pw.print(it.pattern)
-      pw.println("\"}")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"length\":")
+      pw.print(OMLTables.toString(it.length))
+      pw.print(",")
+      pw.print("\"minLength\":")
+      pw.print(OMLTables.toString(it.minLength))
+      pw.print(",")
+      pw.print("\"maxLength\":")
+      pw.print(OMLTables.toString(it.maxLength))
+      pw.print(",")
+      pw.print("\"name\":")
+      pw.print(OMLTables.toString(it.name()))
+      pw.print(",")
+      pw.print("\"langRange\":")
+      pw.print(OMLTables.toString(it.langRange))
+      pw.print(",")
+      pw.print("\"pattern\":")
+      pw.print(OMLTables.toString(it.pattern))
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -1080,18 +1362,24 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.scalarOneOfRestrictions(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"tboxUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"tboxUUID\":")
+      pw.print("\"")
       pw.print(it.tbox.uuid())
-      pw.print("\",")
-      pw.print("\"restrictedRangeUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"restrictedRangeUUID\":")
+      pw.print("\"")
       pw.print(it.restrictedRange.uuid())
-      pw.print("\",")
-      pw.print("\"name\":\"")
-      pw.print(it.name())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"name\":")
+      pw.print(OMLTables.toString(it.name()))
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -1102,30 +1390,36 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.stringScalarRestrictions(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"tboxUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"tboxUUID\":")
+      pw.print("\"")
       pw.print(it.tbox.uuid())
-      pw.print("\",")
-      pw.print("\"restrictedRangeUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"restrictedRangeUUID\":")
+      pw.print("\"")
       pw.print(it.restrictedRange.uuid())
-      pw.print("\",")
-      pw.print("\"length\":\"")
-      pw.print(it.length)
-      pw.print("\",")
-      pw.print("\"minLength\":\"")
-      pw.print(it.minLength)
-      pw.print("\",")
-      pw.print("\"maxLength\":\"")
-      pw.print(it.maxLength)
-      pw.print("\",")
-      pw.print("\"name\":\"")
-      pw.print(it.name())
-      pw.print("\",")
-      pw.print("\"pattern\":\"")
-      pw.print(it.pattern)
-      pw.println("\"}")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"length\":")
+      pw.print(OMLTables.toString(it.length))
+      pw.print(",")
+      pw.print("\"minLength\":")
+      pw.print(OMLTables.toString(it.minLength))
+      pw.print(",")
+      pw.print("\"maxLength\":")
+      pw.print(OMLTables.toString(it.maxLength))
+      pw.print(",")
+      pw.print("\"name\":")
+      pw.print(OMLTables.toString(it.name()))
+      pw.print(",")
+      pw.print("\"pattern\":")
+      pw.print(OMLTables.toString(it.pattern))
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -1136,18 +1430,24 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.synonymScalarRestrictions(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"tboxUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"tboxUUID\":")
+      pw.print("\"")
       pw.print(it.tbox.uuid())
-      pw.print("\",")
-      pw.print("\"restrictedRangeUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"restrictedRangeUUID\":")
+      pw.print("\"")
       pw.print(it.restrictedRange.uuid())
-      pw.print("\",")
-      pw.print("\"name\":\"")
-      pw.print(it.name())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"name\":")
+      pw.print(OMLTables.toString(it.name()))
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -1158,30 +1458,36 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.timeScalarRestrictions(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"tboxUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"tboxUUID\":")
+      pw.print("\"")
       pw.print(it.tbox.uuid())
-      pw.print("\",")
-      pw.print("\"restrictedRangeUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"restrictedRangeUUID\":")
+      pw.print("\"")
       pw.print(it.restrictedRange.uuid())
-      pw.print("\",")
-      pw.print("\"minExclusive\":\"")
-      pw.print(it.minExclusive.value)
-      pw.print("\",")
-      pw.print("\"minInclusive\":\"")
-      pw.print(it.minInclusive.value)
-      pw.print("\",")
-      pw.print("\"maxExclusive\":\"")
-      pw.print(it.maxExclusive.value)
-      pw.print("\",")
-      pw.print("\"maxInclusive\":\"")
-      pw.print(it.maxInclusive.value)
-      pw.print("\",")
-      pw.print("\"name\":\"")
-      pw.print(it.name())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"minExclusive\":")
+      pw.print(OMLTables.toString(it.minExclusive))
+      pw.print(",")
+      pw.print("\"minInclusive\":")
+      pw.print(OMLTables.toString(it.minInclusive))
+      pw.print(",")
+      pw.print("\"maxExclusive\":")
+      pw.print(OMLTables.toString(it.maxExclusive))
+      pw.print(",")
+      pw.print("\"maxInclusive\":")
+      pw.print(OMLTables.toString(it.maxInclusive))
+      pw.print(",")
+      pw.print("\"name\":")
+      pw.print(OMLTables.toString(it.name()))
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -1192,24 +1498,32 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.entityScalarDataProperties(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"tboxUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"tboxUUID\":")
+      pw.print("\"")
       pw.print(it.tbox.uuid())
-      pw.print("\",")
-      pw.print("\"domainUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"domainUUID\":")
+      pw.print("\"")
       pw.print(it.domain.uuid())
-      pw.print("\",")
-      pw.print("\"rangeUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"rangeUUID\":")
+      pw.print("\"")
       pw.print(it.range.uuid())
-      pw.print("\",")
-      pw.print("\"isIdentityCriteria\":\"")
-      pw.print(it.isIdentityCriteria)
-      pw.print("\",")
-      pw.print("\"name\":\"")
-      pw.print(it.name())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"isIdentityCriteria\":")
+      pw.print(OMLTables.toString(it.isIdentityCriteria))
+      pw.print(",")
+      pw.print("\"name\":")
+      pw.print(OMLTables.toString(it.name()))
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -1220,24 +1534,32 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.entityStructuredDataProperties(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"tboxUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"tboxUUID\":")
+      pw.print("\"")
       pw.print(it.tbox.uuid())
-      pw.print("\",")
-      pw.print("\"domainUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"domainUUID\":")
+      pw.print("\"")
       pw.print(it.domain.uuid())
-      pw.print("\",")
-      pw.print("\"rangeUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"rangeUUID\":")
+      pw.print("\"")
       pw.print(it.range.uuid())
-      pw.print("\",")
-      pw.print("\"isIdentityCriteria\":\"")
-      pw.print(it.isIdentityCriteria)
-      pw.print("\",")
-      pw.print("\"name\":\"")
-      pw.print(it.name())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"isIdentityCriteria\":")
+      pw.print(OMLTables.toString(it.isIdentityCriteria))
+      pw.print(",")
+      pw.print("\"name\":")
+      pw.print(OMLTables.toString(it.name()))
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -1248,21 +1570,29 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.scalarDataProperties(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"tboxUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"tboxUUID\":")
+      pw.print("\"")
       pw.print(it.tbox.uuid())
-      pw.print("\",")
-      pw.print("\"domainUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"domainUUID\":")
+      pw.print("\"")
       pw.print(it.domain.uuid())
-      pw.print("\",")
-      pw.print("\"rangeUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"rangeUUID\":")
+      pw.print("\"")
       pw.print(it.range.uuid())
-      pw.print("\",")
-      pw.print("\"name\":\"")
-      pw.print(it.name())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"name\":")
+      pw.print(OMLTables.toString(it.name()))
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -1273,21 +1603,29 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.structuredDataProperties(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"tboxUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"tboxUUID\":")
+      pw.print("\"")
       pw.print(it.tbox.uuid())
-      pw.print("\",")
-      pw.print("\"domainUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"domainUUID\":")
+      pw.print("\"")
       pw.print(it.domain.uuid())
-      pw.print("\",")
-      pw.print("\"rangeUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"rangeUUID\":")
+      pw.print("\"")
       pw.print(it.range.uuid())
-      pw.print("\",")
-      pw.print("\"name\":\"")
-      pw.print(it.name())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"name\":")
+      pw.print(OMLTables.toString(it.name()))
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -1298,18 +1636,26 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.aspectSpecializationAxioms(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"tboxUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"tboxUUID\":")
+      pw.print("\"")
       pw.print(it.tbox.uuid())
-      pw.print("\",")
-      pw.print("\"superAspectUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"superAspectUUID\":")
+      pw.print("\"")
       pw.print(it.superAspect.uuid())
-      pw.print("\",")
-      pw.print("\"subEntityUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"subEntityUUID\":")
+      pw.print("\"")
       pw.print(it.subEntity.uuid())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -1320,18 +1666,26 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.conceptSpecializationAxioms(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"tboxUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"tboxUUID\":")
+      pw.print("\"")
       pw.print(it.tbox.uuid())
-      pw.print("\",")
-      pw.print("\"superConceptUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"superConceptUUID\":")
+      pw.print("\"")
       pw.print(it.superConcept.uuid())
-      pw.print("\",")
-      pw.print("\"subConceptUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"subConceptUUID\":")
+      pw.print("\"")
       pw.print(it.subConcept.uuid())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -1342,18 +1696,26 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.reifiedRelationshipSpecializationAxioms(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"tboxUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"tboxUUID\":")
+      pw.print("\"")
       pw.print(it.tbox.uuid())
-      pw.print("\",")
-      pw.print("\"superRelationshipUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"superRelationshipUUID\":")
+      pw.print("\"")
       pw.print(it.superRelationship.uuid())
-      pw.print("\",")
-      pw.print("\"subRelationshipUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"subRelationshipUUID\":")
+      pw.print("\"")
       pw.print(it.subRelationship.uuid())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -1364,21 +1726,31 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.entityExistentialRestrictionAxioms(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"tboxUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"tboxUUID\":")
+      pw.print("\"")
       pw.print(it.tbox.uuid())
-      pw.print("\",")
-      pw.print("\"restrictedRelationUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"restrictedRelationUUID\":")
+      pw.print("\"")
       pw.print(it.restrictedRelation.uuid())
-      pw.print("\",")
-      pw.print("\"restrictedDomainUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"restrictedDomainUUID\":")
+      pw.print("\"")
       pw.print(it.restrictedDomain.uuid())
-      pw.print("\",")
-      pw.print("\"restrictedRangeUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"restrictedRangeUUID\":")
+      pw.print("\"")
       pw.print(it.restrictedRange.uuid())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -1389,21 +1761,31 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.entityUniversalRestrictionAxioms(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"tboxUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"tboxUUID\":")
+      pw.print("\"")
       pw.print(it.tbox.uuid())
-      pw.print("\",")
-      pw.print("\"restrictedRelationUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"restrictedRelationUUID\":")
+      pw.print("\"")
       pw.print(it.restrictedRelation.uuid())
-      pw.print("\",")
-      pw.print("\"restrictedDomainUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"restrictedDomainUUID\":")
+      pw.print("\"")
       pw.print(it.restrictedDomain.uuid())
-      pw.print("\",")
-      pw.print("\"restrictedRangeUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"restrictedRangeUUID\":")
+      pw.print("\"")
       pw.print(it.restrictedRange.uuid())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -1414,21 +1796,31 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.entityScalarDataPropertyExistentialRestrictionAxioms(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"tboxUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"tboxUUID\":")
+      pw.print("\"")
       pw.print(it.tbox.uuid())
-      pw.print("\",")
-      pw.print("\"restrictedEntityUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"restrictedEntityUUID\":")
+      pw.print("\"")
       pw.print(it.restrictedEntity.uuid())
-      pw.print("\",")
-      pw.print("\"scalarPropertyUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"scalarPropertyUUID\":")
+      pw.print("\"")
       pw.print(it.scalarProperty.uuid())
-      pw.print("\",")
-      pw.print("\"scalarRestrictionUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"scalarRestrictionUUID\":")
+      pw.print("\"")
       pw.print(it.scalarRestriction.uuid())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -1439,24 +1831,37 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.entityScalarDataPropertyParticularRestrictionAxioms(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"tboxUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"tboxUUID\":")
+      pw.print("\"")
       pw.print(it.tbox.uuid())
-      pw.print("\",")
-      pw.print("\"restrictedEntityUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"restrictedEntityUUID\":")
+      pw.print("\"")
       pw.print(it.restrictedEntity.uuid())
-      pw.print("\",")
-      pw.print("\"scalarPropertyUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"scalarPropertyUUID\":")
+      pw.print("\"")
       pw.print(it.scalarProperty.uuid())
-      pw.print("\",")
-      pw.print("\"literalValue\":\"")
-      pw.print(it.literalValue.value)
-      pw.print("\",")
-      pw.print("\"valueTypeUUID\":\"")
-      pw.print(it.valueType.uuid())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"literalValue\":")
+      pw.print(OMLTables.toString(it.literalValue))
+      pw.print(",")
+      pw.print("\"valueTypeUUID\":")
+      if (null !== valueType) {
+        pw.print("\"")
+        pw.print(it.valueType?.uuid())
+        pw.print("\"")
+      } else
+        pw.print("null")
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -1467,21 +1872,31 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.entityScalarDataPropertyUniversalRestrictionAxioms(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"tboxUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"tboxUUID\":")
+      pw.print("\"")
       pw.print(it.tbox.uuid())
-      pw.print("\",")
-      pw.print("\"restrictedEntityUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"restrictedEntityUUID\":")
+      pw.print("\"")
       pw.print(it.restrictedEntity.uuid())
-      pw.print("\",")
-      pw.print("\"scalarPropertyUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"scalarPropertyUUID\":")
+      pw.print("\"")
       pw.print(it.scalarProperty.uuid())
-      pw.print("\",")
-      pw.print("\"scalarRestrictionUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"scalarRestrictionUUID\":")
+      pw.print("\"")
       pw.print(it.scalarRestriction.uuid())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -1492,21 +1907,32 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.scalarOneOfLiteralAxioms(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"tboxUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"tboxUUID\":")
+      pw.print("\"")
       pw.print(it.tbox.uuid())
-      pw.print("\",")
-      pw.print("\"axiomUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"axiomUUID\":")
+      pw.print("\"")
       pw.print(it.axiom.uuid())
-      pw.print("\",")
-      pw.print("\"value\":\"")
-      pw.print(it.value.value)
-      pw.print("\",")
-      pw.print("\"valueTypeUUID\":\"")
-      pw.print(it.valueType.uuid())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"value\":")
+      pw.print(OMLTables.toString(it.value))
+      pw.print(",")
+      pw.print("\"valueTypeUUID\":")
+      if (null !== valueType) {
+        pw.print("\"")
+        pw.print(it.valueType?.uuid())
+        pw.print("\"")
+      } else
+        pw.print("null")
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -1517,15 +1943,21 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.bundledTerminologyAxioms(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"bundleUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"bundleUUID\":")
+      pw.print("\"")
       pw.print(it.bundle.uuid())
-      pw.print("\",")
-      pw.print("\"bundledTerminologyIRI\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"bundledTerminologyIRI\":")
+      pw.print("\"")
       pw.print(it.bundledTerminology.iri())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -1536,15 +1968,21 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.rootConceptTaxonomyAxioms(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"bundleUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"bundleUUID\":")
+      pw.print("\"")
       pw.print(it.bundle.uuid())
-      pw.print("\",")
-      pw.print("\"rootUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"rootUUID\":")
+      pw.print("\"")
       pw.print(it.root.uuid())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -1555,15 +1993,21 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.specificDisjointConceptAxioms(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"disjointTaxonomyParentUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"disjointTaxonomyParentUUID\":")
+      pw.print("\"")
       pw.print(it.disjointTaxonomyParent.uuid())
-      pw.print("\",")
-      pw.print("\"disjointLeafUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"disjointLeafUUID\":")
+      pw.print("\"")
       pw.print(it.disjointLeaf.uuid())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -1574,18 +2018,24 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.annotationPropertyValues(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"subjectUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"subjectUUID\":")
+      pw.print("\"")
       pw.print(it.subject.uuid())
-      pw.print("\",")
-      pw.print("\"propertyUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"propertyUUID\":")
+      pw.print("\"")
       pw.print(it.property.uuid())
-      pw.print("\",")
-      pw.print("\"value\":\"")
-      pw.print(it.value.value)
-      pw.println("\"}")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"value\":")
+      pw.print(OMLTables.toString(it.value))
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -1596,15 +2046,19 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.anonymousConceptUnionAxioms(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"disjointTaxonomyParentUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"disjointTaxonomyParentUUID\":")
+      pw.print("\"")
       pw.print(it.disjointTaxonomyParent.uuid())
-      pw.print("\",")
-      pw.print("\"name\":\"")
-      pw.print(it.name)
-      pw.println("\"}")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"name\":")
+      pw.print(OMLTables.toString(it.name))
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -1615,15 +2069,21 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.aspectPredicates(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"aspectUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"aspectUUID\":")
+      pw.print("\"")
       pw.print(it.aspect.uuid())
-      pw.print("\",")
-      pw.print("\"bodySegmentUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"bodySegmentUUID\":")
+      pw.print("\"")
       pw.print(it.bodySegment.uuid())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -1634,18 +2094,24 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.chainRules(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"tboxUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"tboxUUID\":")
+      pw.print("\"")
       pw.print(it.tbox.uuid())
-      pw.print("\",")
-      pw.print("\"name\":\"")
-      pw.print(it.name())
-      pw.print("\",")
-      pw.print("\"headUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"name\":")
+      pw.print(OMLTables.toString(it.name()))
+      pw.print(",")
+      pw.print("\"headUUID\":")
+      pw.print("\"")
       pw.print(it.head.uuid())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -1656,18 +2122,24 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.conceptInstances(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"descriptionBoxUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"descriptionBoxUUID\":")
+      pw.print("\"")
       pw.print(it.descriptionBox().uuid())
-      pw.print("\",")
-      pw.print("\"singletonConceptClassifierUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"singletonConceptClassifierUUID\":")
+      pw.print("\"")
       pw.print(it.singletonConceptClassifier.uuid())
-      pw.print("\",")
-      pw.print("\"name\":\"")
-      pw.print(it.name())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"name\":")
+      pw.print(OMLTables.toString(it.name()))
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -1678,15 +2150,21 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.conceptPredicates(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"bodySegmentUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"bodySegmentUUID\":")
+      pw.print("\"")
       pw.print(it.bodySegment.uuid())
-      pw.print("\",")
-      pw.print("\"conceptUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"conceptUUID\":")
+      pw.print("\"")
       pw.print(it.concept.uuid())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -1697,15 +2175,17 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.descriptionBoxes(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"kind\":\"")
-      pw.print(it.kind)
-      pw.print("\",")
-      pw.print("\"iri\":\"")
-      pw.print(it.iri())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"kind\":")
+      pw.print(OMLTables.toString(it.kind))
+      pw.print(",")
+      pw.print("\"iri\":")
+      pw.print(OMLTables.toString(it.iri()))
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -1716,15 +2196,21 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.descriptionBoxExtendsClosedWorldDefinitions(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"descriptionBoxUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"descriptionBoxUUID\":")
+      pw.print("\"")
       pw.print(it.descriptionBox.uuid())
-      pw.print("\",")
-      pw.print("\"closedWorldDefinitionsIRI\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"closedWorldDefinitionsIRI\":")
+      pw.print("\"")
       pw.print(it.closedWorldDefinitions.iri())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -1735,15 +2221,21 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.descriptionBoxRefinements(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"refiningDescriptionBoxUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"refiningDescriptionBoxUUID\":")
+      pw.print("\"")
       pw.print(it.refiningDescriptionBox.uuid())
-      pw.print("\",")
-      pw.print("\"refinedDescriptionBoxIRI\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"refinedDescriptionBoxIRI\":")
+      pw.print("\"")
       pw.print(it.refinedDescriptionBox.iri())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -1754,18 +2246,26 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.entityStructuredDataPropertyParticularRestrictionAxioms(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"tboxUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"tboxUUID\":")
+      pw.print("\"")
       pw.print(it.tbox.uuid())
-      pw.print("\",")
-      pw.print("\"structuredDataPropertyUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"structuredDataPropertyUUID\":")
+      pw.print("\"")
       pw.print(it.structuredDataProperty.uuid())
-      pw.print("\",")
-      pw.print("\"restrictedEntityUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"restrictedEntityUUID\":")
+      pw.print("\"")
       pw.print(it.restrictedEntity.uuid())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -1776,18 +2276,24 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.reifiedRelationshipInstances(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"descriptionBoxUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"descriptionBoxUUID\":")
+      pw.print("\"")
       pw.print(it.descriptionBox().uuid())
-      pw.print("\",")
-      pw.print("\"singletonReifiedRelationshipClassifierUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"singletonReifiedRelationshipClassifierUUID\":")
+      pw.print("\"")
       pw.print(it.singletonReifiedRelationshipClassifier.uuid())
-      pw.print("\",")
-      pw.print("\"name\":\"")
-      pw.print(it.name())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"name\":")
+      pw.print(OMLTables.toString(it.name()))
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -1798,18 +2304,26 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.reifiedRelationshipInstanceDomains(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"descriptionBoxUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"descriptionBoxUUID\":")
+      pw.print("\"")
       pw.print(it.descriptionBox().uuid())
-      pw.print("\",")
-      pw.print("\"reifiedRelationshipInstanceUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"reifiedRelationshipInstanceUUID\":")
+      pw.print("\"")
       pw.print(it.reifiedRelationshipInstance.uuid())
-      pw.print("\",")
-      pw.print("\"domainUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"domainUUID\":")
+      pw.print("\"")
       pw.print(it.domain.uuid())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -1820,18 +2334,26 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.reifiedRelationshipInstanceRanges(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"descriptionBoxUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"descriptionBoxUUID\":")
+      pw.print("\"")
       pw.print(it.descriptionBox().uuid())
-      pw.print("\",")
-      pw.print("\"reifiedRelationshipInstanceUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"reifiedRelationshipInstanceUUID\":")
+      pw.print("\"")
       pw.print(it.reifiedRelationshipInstance.uuid())
-      pw.print("\",")
-      pw.print("\"rangeUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"rangeUUID\":")
+      pw.print("\"")
       pw.print(it.range.uuid())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -1842,15 +2364,21 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.reifiedRelationshipInversePropertyPredicates(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"bodySegmentUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"bodySegmentUUID\":")
+      pw.print("\"")
       pw.print(it.bodySegment.uuid())
-      pw.print("\",")
-      pw.print("\"reifiedRelationshipUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"reifiedRelationshipUUID\":")
+      pw.print("\"")
       pw.print(it.reifiedRelationship.uuid())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -1861,15 +2389,21 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.reifiedRelationshipPredicates(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"bodySegmentUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"bodySegmentUUID\":")
+      pw.print("\"")
       pw.print(it.bodySegment.uuid())
-      pw.print("\",")
-      pw.print("\"reifiedRelationshipUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"reifiedRelationshipUUID\":")
+      pw.print("\"")
       pw.print(it.reifiedRelationship.uuid())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -1880,15 +2414,21 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.reifiedRelationshipPropertyPredicates(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"bodySegmentUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"bodySegmentUUID\":")
+      pw.print("\"")
       pw.print(it.bodySegment.uuid())
-      pw.print("\",")
-      pw.print("\"reifiedRelationshipUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"reifiedRelationshipUUID\":")
+      pw.print("\"")
       pw.print(it.reifiedRelationship.uuid())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -1899,15 +2439,21 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.reifiedRelationshipSourceInversePropertyPredicates(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"bodySegmentUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"bodySegmentUUID\":")
+      pw.print("\"")
       pw.print(it.bodySegment.uuid())
-      pw.print("\",")
-      pw.print("\"reifiedRelationshipUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"reifiedRelationshipUUID\":")
+      pw.print("\"")
       pw.print(it.reifiedRelationship.uuid())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -1918,15 +2464,21 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.reifiedRelationshipSourcePropertyPredicates(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"bodySegmentUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"bodySegmentUUID\":")
+      pw.print("\"")
       pw.print(it.bodySegment.uuid())
-      pw.print("\",")
-      pw.print("\"reifiedRelationshipUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"reifiedRelationshipUUID\":")
+      pw.print("\"")
       pw.print(it.reifiedRelationship.uuid())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -1937,15 +2489,21 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.reifiedRelationshipTargetInversePropertyPredicates(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"bodySegmentUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"bodySegmentUUID\":")
+      pw.print("\"")
       pw.print(it.bodySegment.uuid())
-      pw.print("\",")
-      pw.print("\"reifiedRelationshipUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"reifiedRelationshipUUID\":")
+      pw.print("\"")
       pw.print(it.reifiedRelationship.uuid())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -1956,15 +2514,21 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.reifiedRelationshipTargetPropertyPredicates(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"bodySegmentUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"bodySegmentUUID\":")
+      pw.print("\"")
       pw.print(it.bodySegment.uuid())
-      pw.print("\",")
-      pw.print("\"reifiedRelationshipUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"reifiedRelationshipUUID\":")
+      pw.print("\"")
       pw.print(it.reifiedRelationship.uuid())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -1975,21 +2539,32 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.restrictionScalarDataPropertyValues(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"scalarDataPropertyUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"scalarDataPropertyUUID\":")
+      pw.print("\"")
       pw.print(it.scalarDataProperty.uuid())
-      pw.print("\",")
-      pw.print("\"scalarPropertyValue\":\"")
-      pw.print(it.scalarPropertyValue.value)
-      pw.print("\",")
-      pw.print("\"structuredDataPropertyContextUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"scalarPropertyValue\":")
+      pw.print(OMLTables.toString(it.scalarPropertyValue))
+      pw.print(",")
+      pw.print("\"structuredDataPropertyContextUUID\":")
+      pw.print("\"")
       pw.print(it.structuredDataPropertyContext.uuid())
-      pw.print("\",")
-      pw.print("\"valueTypeUUID\":\"")
-      pw.print(it.valueType.uuid())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"valueTypeUUID\":")
+      if (null !== valueType) {
+        pw.print("\"")
+        pw.print(it.valueType?.uuid())
+        pw.print("\"")
+      } else
+        pw.print("null")
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -2000,15 +2575,21 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.restrictionStructuredDataPropertyTuples(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"structuredDataPropertyUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"structuredDataPropertyUUID\":")
+      pw.print("\"")
       pw.print(it.structuredDataProperty.uuid())
-      pw.print("\",")
-      pw.print("\"structuredDataPropertyContextUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"structuredDataPropertyContextUUID\":")
+      pw.print("\"")
       pw.print(it.structuredDataPropertyContext.uuid())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -2019,15 +2600,27 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.ruleBodySegments(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"previousSegmentUUID\":\"")
-      pw.print(it.previousSegment.uuid())
-      pw.print("\",")
-      pw.print("\"ruleUUID\":\"")
-      pw.print(it.rule.uuid())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"previousSegmentUUID\":")
+      if (null !== previousSegment) {
+        pw.print("\"")
+        pw.print(it.previousSegment?.uuid())
+        pw.print("\"")
+      } else
+        pw.print("null")
+      pw.print(",")
+      pw.print("\"ruleUUID\":")
+      if (null !== rule) {
+        pw.print("\"")
+        pw.print(it.rule?.uuid())
+        pw.print("\"")
+      } else
+        pw.print("null")
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -2038,21 +2631,32 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.scalarDataPropertyValues(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"scalarDataPropertyUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"scalarDataPropertyUUID\":")
+      pw.print("\"")
       pw.print(it.scalarDataProperty.uuid())
-      pw.print("\",")
-      pw.print("\"scalarPropertyValue\":\"")
-      pw.print(it.scalarPropertyValue.value)
-      pw.print("\",")
-      pw.print("\"structuredDataPropertyContextUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"scalarPropertyValue\":")
+      pw.print(OMLTables.toString(it.scalarPropertyValue))
+      pw.print(",")
+      pw.print("\"structuredDataPropertyContextUUID\":")
+      pw.print("\"")
       pw.print(it.structuredDataPropertyContext.uuid())
-      pw.print("\",")
-      pw.print("\"valueTypeUUID\":\"")
-      pw.print(it.valueType.uuid())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"valueTypeUUID\":")
+      if (null !== valueType) {
+        pw.print("\"")
+        pw.print(it.valueType?.uuid())
+        pw.print("\"")
+      } else
+        pw.print("null")
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -2063,24 +2667,37 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.singletonInstanceScalarDataPropertyValues(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"descriptionBoxUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"descriptionBoxUUID\":")
+      pw.print("\"")
       pw.print(it.descriptionBox().uuid())
-      pw.print("\",")
-      pw.print("\"singletonInstanceUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"singletonInstanceUUID\":")
+      pw.print("\"")
       pw.print(it.singletonInstance.uuid())
-      pw.print("\",")
-      pw.print("\"scalarDataPropertyUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"scalarDataPropertyUUID\":")
+      pw.print("\"")
       pw.print(it.scalarDataProperty.uuid())
-      pw.print("\",")
-      pw.print("\"scalarPropertyValue\":\"")
-      pw.print(it.scalarPropertyValue.value)
-      pw.print("\",")
-      pw.print("\"valueTypeUUID\":\"")
-      pw.print(it.valueType.uuid())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"scalarPropertyValue\":")
+      pw.print(OMLTables.toString(it.scalarPropertyValue))
+      pw.print(",")
+      pw.print("\"valueTypeUUID\":")
+      if (null !== valueType) {
+        pw.print("\"")
+        pw.print(it.valueType?.uuid())
+        pw.print("\"")
+      } else
+        pw.print("null")
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -2091,18 +2708,26 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.singletonInstanceStructuredDataPropertyValues(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"descriptionBoxUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"descriptionBoxUUID\":")
+      pw.print("\"")
       pw.print(it.descriptionBox().uuid())
-      pw.print("\",")
-      pw.print("\"singletonInstanceUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"singletonInstanceUUID\":")
+      pw.print("\"")
       pw.print(it.singletonInstance.uuid())
-      pw.print("\",")
-      pw.print("\"structuredDataPropertyUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"structuredDataPropertyUUID\":")
+      pw.print("\"")
       pw.print(it.structuredDataProperty.uuid())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -2113,15 +2738,21 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.structuredDataPropertyTuples(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"structuredDataPropertyUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"structuredDataPropertyUUID\":")
+      pw.print("\"")
       pw.print(it.structuredDataProperty.uuid())
-      pw.print("\",")
-      pw.print("\"structuredDataPropertyContextUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"structuredDataPropertyContextUUID\":")
+      pw.print("\"")
       pw.print(it.structuredDataPropertyContext.uuid())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -2132,21 +2763,31 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.unreifiedRelationshipInstanceTuples(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"descriptionBoxUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"descriptionBoxUUID\":")
+      pw.print("\"")
       pw.print(it.descriptionBox().uuid())
-      pw.print("\",")
-      pw.print("\"unreifiedRelationshipUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"unreifiedRelationshipUUID\":")
+      pw.print("\"")
       pw.print(it.unreifiedRelationship.uuid())
-      pw.print("\",")
-      pw.print("\"domainUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"domainUUID\":")
+      pw.print("\"")
       pw.print(it.domain.uuid())
-      pw.print("\",")
-      pw.print("\"rangeUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"rangeUUID\":")
+      pw.print("\"")
       pw.print(it.range.uuid())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -2157,15 +2798,21 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.unreifiedRelationshipInversePropertyPredicates(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"unreifiedRelationshipUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"unreifiedRelationshipUUID\":")
+      pw.print("\"")
       pw.print(it.unreifiedRelationship.uuid())
-      pw.print("\",")
-      pw.print("\"bodySegmentUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"bodySegmentUUID\":")
+      pw.print("\"")
       pw.print(it.bodySegment.uuid())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -2176,15 +2823,21 @@ class OMLSpecificationTables {
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.unreifiedRelationshipPropertyPredicates(e).forEach[it |
   	  pw.print("{")
-      pw.print("\"uuid\":\"")
+      pw.print("\"uuid\":")
+      pw.print("\"")
       pw.print(it.uuid())
-      pw.print("\",")
-      pw.print("\"unreifiedRelationshipUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"unreifiedRelationshipUUID\":")
+      pw.print("\"")
       pw.print(it.unreifiedRelationship.uuid())
-      pw.print("\",")
-      pw.print("\"bodySegmentUUID\":\"")
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"bodySegmentUUID\":")
+      pw.print("\"")
       pw.print(it.bodySegment.uuid())
-      pw.println("\"}")
+      pw.print("\"")
+      pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
@@ -2199,7 +2852,8 @@ class OMLSpecificationTables {
   	Collections.list(zip.entries).forEach[ze | 
       val is = zip.getInputStream(ze)
       val buffer = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))
-      val lines = buffer.lines()
+      val lines = new ArrayList<String>()
+      lines.addAll(buffer.lines().iterator.toIterable)
       switch ze.name {
   	    case "AnnotationProperties.json":
   	      tables.readAnnotationProperties(lines)
@@ -2340,7 +2994,7 @@ class OMLSpecificationTables {
     tables.resolve(rs, r)
   }
 
-  protected def void readAnnotationProperties(Stream<String> lines) {
+  protected def void readAnnotationProperties(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createAnnotationProperty()
@@ -2352,7 +3006,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readTerminologyGraphs(Stream<String> lines) {
+  protected def void readTerminologyGraphs(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createTerminologyGraph()
@@ -2364,7 +3018,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readBundles(Stream<String> lines) {
+  protected def void readBundles(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createBundle()
@@ -2376,7 +3030,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readConceptDesignationTerminologyAxioms(Stream<String> lines) {
+  protected def void readConceptDesignationTerminologyAxioms(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createConceptDesignationTerminologyAxiom()
@@ -2386,7 +3040,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readTerminologyExtensionAxioms(Stream<String> lines) {
+  protected def void readTerminologyExtensionAxioms(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createTerminologyExtensionAxiom()
@@ -2396,7 +3050,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readTerminologyNestingAxioms(Stream<String> lines) {
+  protected def void readTerminologyNestingAxioms(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createTerminologyNestingAxiom()
@@ -2406,7 +3060,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readAspects(Stream<String> lines) {
+  protected def void readAspects(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createAspect()
@@ -2417,7 +3071,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readConcepts(Stream<String> lines) {
+  protected def void readConcepts(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createConcept()
@@ -2428,7 +3082,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readReifiedRelationships(Stream<String> lines) {
+  protected def void readReifiedRelationships(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createReifiedRelationship()
@@ -2450,7 +3104,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readUnreifiedRelationships(Stream<String> lines) {
+  protected def void readUnreifiedRelationships(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createUnreifiedRelationship()
@@ -2470,7 +3124,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readScalars(Stream<String> lines) {
+  protected def void readScalars(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createScalar()
@@ -2481,7 +3135,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readStructures(Stream<String> lines) {
+  protected def void readStructures(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createStructure()
@@ -2492,7 +3146,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readBinaryScalarRestrictions(Stream<String> lines) {
+  protected def void readBinaryScalarRestrictions(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createBinaryScalarRestriction()
@@ -2506,7 +3160,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readIRIScalarRestrictions(Stream<String> lines) {
+  protected def void readIRIScalarRestrictions(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createIRIScalarRestriction()
@@ -2521,7 +3175,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readNumericScalarRestrictions(Stream<String> lines) {
+  protected def void readNumericScalarRestrictions(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createNumericScalarRestriction()
@@ -2536,7 +3190,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readPlainLiteralScalarRestrictions(Stream<String> lines) {
+  protected def void readPlainLiteralScalarRestrictions(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createPlainLiteralScalarRestriction()
@@ -2552,7 +3206,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readScalarOneOfRestrictions(Stream<String> lines) {
+  protected def void readScalarOneOfRestrictions(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createScalarOneOfRestriction()
@@ -2563,7 +3217,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readStringScalarRestrictions(Stream<String> lines) {
+  protected def void readStringScalarRestrictions(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createStringScalarRestriction()
@@ -2578,7 +3232,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readSynonymScalarRestrictions(Stream<String> lines) {
+  protected def void readSynonymScalarRestrictions(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createSynonymScalarRestriction()
@@ -2589,7 +3243,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readTimeScalarRestrictions(Stream<String> lines) {
+  protected def void readTimeScalarRestrictions(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createTimeScalarRestriction()
@@ -2604,7 +3258,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readEntityScalarDataProperties(Stream<String> lines) {
+  protected def void readEntityScalarDataProperties(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createEntityScalarDataProperty()
@@ -2616,7 +3270,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readEntityStructuredDataProperties(Stream<String> lines) {
+  protected def void readEntityStructuredDataProperties(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createEntityStructuredDataProperty()
@@ -2628,7 +3282,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readScalarDataProperties(Stream<String> lines) {
+  protected def void readScalarDataProperties(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createScalarDataProperty()
@@ -2639,7 +3293,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readStructuredDataProperties(Stream<String> lines) {
+  protected def void readStructuredDataProperties(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createStructuredDataProperty()
@@ -2650,7 +3304,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readAspectSpecializationAxioms(Stream<String> lines) {
+  protected def void readAspectSpecializationAxioms(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createAspectSpecializationAxiom()
@@ -2660,7 +3314,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readConceptSpecializationAxioms(Stream<String> lines) {
+  protected def void readConceptSpecializationAxioms(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createConceptSpecializationAxiom()
@@ -2670,7 +3324,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readReifiedRelationshipSpecializationAxioms(Stream<String> lines) {
+  protected def void readReifiedRelationshipSpecializationAxioms(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createReifiedRelationshipSpecializationAxiom()
@@ -2680,7 +3334,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readEntityExistentialRestrictionAxioms(Stream<String> lines) {
+  protected def void readEntityExistentialRestrictionAxioms(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createEntityExistentialRestrictionAxiom()
@@ -2690,7 +3344,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readEntityUniversalRestrictionAxioms(Stream<String> lines) {
+  protected def void readEntityUniversalRestrictionAxioms(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createEntityUniversalRestrictionAxiom()
@@ -2700,7 +3354,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readEntityScalarDataPropertyExistentialRestrictionAxioms(Stream<String> lines) {
+  protected def void readEntityScalarDataPropertyExistentialRestrictionAxioms(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createEntityScalarDataPropertyExistentialRestrictionAxiom()
@@ -2710,7 +3364,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readEntityScalarDataPropertyParticularRestrictionAxioms(Stream<String> lines) {
+  protected def void readEntityScalarDataPropertyParticularRestrictionAxioms(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createEntityScalarDataPropertyParticularRestrictionAxiom()
@@ -2721,7 +3375,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readEntityScalarDataPropertyUniversalRestrictionAxioms(Stream<String> lines) {
+  protected def void readEntityScalarDataPropertyUniversalRestrictionAxioms(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createEntityScalarDataPropertyUniversalRestrictionAxiom()
@@ -2731,7 +3385,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readScalarOneOfLiteralAxioms(Stream<String> lines) {
+  protected def void readScalarOneOfLiteralAxioms(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createScalarOneOfLiteralAxiom()
@@ -2742,7 +3396,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readBundledTerminologyAxioms(Stream<String> lines) {
+  protected def void readBundledTerminologyAxioms(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createBundledTerminologyAxiom()
@@ -2752,7 +3406,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readRootConceptTaxonomyAxioms(Stream<String> lines) {
+  protected def void readRootConceptTaxonomyAxioms(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createRootConceptTaxonomyAxiom()
@@ -2762,7 +3416,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readSpecificDisjointConceptAxioms(Stream<String> lines) {
+  protected def void readSpecificDisjointConceptAxioms(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createSpecificDisjointConceptAxiom()
@@ -2772,7 +3426,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readAnnotationPropertyValues(Stream<String> lines) {
+  protected def void readAnnotationPropertyValues(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createAnnotationPropertyValue()
@@ -2783,7 +3437,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readAnonymousConceptUnionAxioms(Stream<String> lines) {
+  protected def void readAnonymousConceptUnionAxioms(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createAnonymousConceptUnionAxiom()
@@ -2794,7 +3448,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readAspectPredicates(Stream<String> lines) {
+  protected def void readAspectPredicates(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createAspectPredicate()
@@ -2804,7 +3458,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readChainRules(Stream<String> lines) {
+  protected def void readChainRules(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createChainRule()
@@ -2815,7 +3469,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readConceptInstances(Stream<String> lines) {
+  protected def void readConceptInstances(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createConceptInstance()
@@ -2826,7 +3480,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readConceptPredicates(Stream<String> lines) {
+  protected def void readConceptPredicates(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createConceptPredicate()
@@ -2836,7 +3490,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readDescriptionBoxes(Stream<String> lines) {
+  protected def void readDescriptionBoxes(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createDescriptionBox()
@@ -2848,7 +3502,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readDescriptionBoxExtendsClosedWorldDefinitions(Stream<String> lines) {
+  protected def void readDescriptionBoxExtendsClosedWorldDefinitions(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createDescriptionBoxExtendsClosedWorldDefinitions()
@@ -2858,7 +3512,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readDescriptionBoxRefinements(Stream<String> lines) {
+  protected def void readDescriptionBoxRefinements(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createDescriptionBoxRefinement()
@@ -2868,7 +3522,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readEntityStructuredDataPropertyParticularRestrictionAxioms(Stream<String> lines) {
+  protected def void readEntityStructuredDataPropertyParticularRestrictionAxioms(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createEntityStructuredDataPropertyParticularRestrictionAxiom()
@@ -2878,7 +3532,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readReifiedRelationshipInstances(Stream<String> lines) {
+  protected def void readReifiedRelationshipInstances(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createReifiedRelationshipInstance()
@@ -2889,7 +3543,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readReifiedRelationshipInstanceDomains(Stream<String> lines) {
+  protected def void readReifiedRelationshipInstanceDomains(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createReifiedRelationshipInstanceDomain()
@@ -2899,7 +3553,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readReifiedRelationshipInstanceRanges(Stream<String> lines) {
+  protected def void readReifiedRelationshipInstanceRanges(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createReifiedRelationshipInstanceRange()
@@ -2909,7 +3563,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readReifiedRelationshipInversePropertyPredicates(Stream<String> lines) {
+  protected def void readReifiedRelationshipInversePropertyPredicates(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createReifiedRelationshipInversePropertyPredicate()
@@ -2919,7 +3573,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readReifiedRelationshipPredicates(Stream<String> lines) {
+  protected def void readReifiedRelationshipPredicates(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createReifiedRelationshipPredicate()
@@ -2929,7 +3583,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readReifiedRelationshipPropertyPredicates(Stream<String> lines) {
+  protected def void readReifiedRelationshipPropertyPredicates(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createReifiedRelationshipPropertyPredicate()
@@ -2939,7 +3593,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readReifiedRelationshipSourceInversePropertyPredicates(Stream<String> lines) {
+  protected def void readReifiedRelationshipSourceInversePropertyPredicates(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createReifiedRelationshipSourceInversePropertyPredicate()
@@ -2949,7 +3603,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readReifiedRelationshipSourcePropertyPredicates(Stream<String> lines) {
+  protected def void readReifiedRelationshipSourcePropertyPredicates(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createReifiedRelationshipSourcePropertyPredicate()
@@ -2959,7 +3613,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readReifiedRelationshipTargetInversePropertyPredicates(Stream<String> lines) {
+  protected def void readReifiedRelationshipTargetInversePropertyPredicates(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createReifiedRelationshipTargetInversePropertyPredicate()
@@ -2969,7 +3623,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readReifiedRelationshipTargetPropertyPredicates(Stream<String> lines) {
+  protected def void readReifiedRelationshipTargetPropertyPredicates(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createReifiedRelationshipTargetPropertyPredicate()
@@ -2979,7 +3633,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readRestrictionScalarDataPropertyValues(Stream<String> lines) {
+  protected def void readRestrictionScalarDataPropertyValues(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createRestrictionScalarDataPropertyValue()
@@ -2990,7 +3644,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readRestrictionStructuredDataPropertyTuples(Stream<String> lines) {
+  protected def void readRestrictionStructuredDataPropertyTuples(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createRestrictionStructuredDataPropertyTuple()
@@ -3000,7 +3654,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readRuleBodySegments(Stream<String> lines) {
+  protected def void readRuleBodySegments(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createRuleBodySegment()
@@ -3010,7 +3664,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readScalarDataPropertyValues(Stream<String> lines) {
+  protected def void readScalarDataPropertyValues(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createScalarDataPropertyValue()
@@ -3021,7 +3675,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readSingletonInstanceScalarDataPropertyValues(Stream<String> lines) {
+  protected def void readSingletonInstanceScalarDataPropertyValues(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createSingletonInstanceScalarDataPropertyValue()
@@ -3032,7 +3686,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readSingletonInstanceStructuredDataPropertyValues(Stream<String> lines) {
+  protected def void readSingletonInstanceStructuredDataPropertyValues(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createSingletonInstanceStructuredDataPropertyValue()
@@ -3042,7 +3696,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readStructuredDataPropertyTuples(Stream<String> lines) {
+  protected def void readStructuredDataPropertyTuples(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createStructuredDataPropertyTuple()
@@ -3052,7 +3706,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readUnreifiedRelationshipInstanceTuples(Stream<String> lines) {
+  protected def void readUnreifiedRelationshipInstanceTuples(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createUnreifiedRelationshipInstanceTuple()
@@ -3062,7 +3716,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readUnreifiedRelationshipInversePropertyPredicates(Stream<String> lines) {
+  protected def void readUnreifiedRelationshipInversePropertyPredicates(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createUnreifiedRelationshipInversePropertyPredicate()
@@ -3072,7 +3726,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readUnreifiedRelationshipPropertyPredicates(Stream<String> lines) {
+  protected def void readUnreifiedRelationshipPropertyPredicates(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
   	  val oml = createUnreifiedRelationshipPropertyPredicate()
@@ -3875,10 +4529,12 @@ class OMLSpecificationTables {
   	      throw new IllegalArgumentException("Null cross-reference lookup for scalarProperty in entityScalarDataPropertyParticularRestrictionAxioms")
   	    oml.scalarProperty = scalarPropertyPair.key
   	    val String valueTypeXRef = kv.remove("valueTypeUUID")
-  	    val Pair<DataRange, Map<String, String>> valueTypePair = dataRanges.get(valueTypeXRef)
-  	    if (null === valueTypePair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for valueType in entityScalarDataPropertyParticularRestrictionAxioms")
-  	    oml.valueType = valueTypePair.key
+  	    if ("null" != valueTypeXRef) {
+  	      val Pair<DataRange, Map<String, String>> valueTypePair = dataRanges.get(valueTypeXRef)
+  	      if (null === valueTypePair)
+  	        throw new IllegalArgumentException("Null cross-reference lookup for valueType in entityScalarDataPropertyParticularRestrictionAxioms")
+  	      oml.valueType = valueTypePair.key
+  	    }
   	  }
   	]
   }
@@ -3928,10 +4584,12 @@ class OMLSpecificationTables {
   	      throw new IllegalArgumentException("Null cross-reference lookup for axiom in scalarOneOfLiteralAxioms")
   	    oml.axiom = axiomPair.key
   	    val String valueTypeXRef = kv.remove("valueTypeUUID")
-  	    val Pair<DataRange, Map<String, String>> valueTypePair = dataRanges.get(valueTypeXRef)
-  	    if (null === valueTypePair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for valueType in scalarOneOfLiteralAxioms")
-  	    oml.valueType = valueTypePair.key
+  	    if ("null" != valueTypeXRef) {
+  	      val Pair<DataRange, Map<String, String>> valueTypePair = dataRanges.get(valueTypeXRef)
+  	      if (null === valueTypePair)
+  	        throw new IllegalArgumentException("Null cross-reference lookup for valueType in scalarOneOfLiteralAxioms")
+  	      oml.valueType = valueTypePair.key
+  	    }
   	  }
   	]
   }
@@ -4383,10 +5041,12 @@ class OMLSpecificationTables {
   	      throw new IllegalArgumentException("Null cross-reference lookup for structuredDataPropertyContext in restrictionScalarDataPropertyValues")
   	    oml.structuredDataPropertyContext = structuredDataPropertyContextPair.key
   	    val String valueTypeXRef = kv.remove("valueTypeUUID")
-  	    val Pair<DataRange, Map<String, String>> valueTypePair = dataRanges.get(valueTypeXRef)
-  	    if (null === valueTypePair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for valueType in restrictionScalarDataPropertyValues")
-  	    oml.valueType = valueTypePair.key
+  	    if ("null" != valueTypeXRef) {
+  	      val Pair<DataRange, Map<String, String>> valueTypePair = dataRanges.get(valueTypeXRef)
+  	      if (null === valueTypePair)
+  	        throw new IllegalArgumentException("Null cross-reference lookup for valueType in restrictionScalarDataPropertyValues")
+  	      oml.valueType = valueTypePair.key
+  	    }
   	  }
   	]
   }
@@ -4416,15 +5076,19 @@ class OMLSpecificationTables {
   	  val Map<String, String> kv = oml_kv.value
   	  if (!kv.empty) {
   	    val String previousSegmentXRef = kv.remove("previousSegmentUUID")
-  	    val Pair<RuleBodySegment, Map<String, String>> previousSegmentPair = ruleBodySegments.get(previousSegmentXRef)
-  	    if (null === previousSegmentPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for previousSegment in ruleBodySegments")
-  	    oml.previousSegment = previousSegmentPair.key
+  	    if ("null" != previousSegmentXRef) {
+  	      val Pair<RuleBodySegment, Map<String, String>> previousSegmentPair = ruleBodySegments.get(previousSegmentXRef)
+  	      if (null === previousSegmentPair)
+  	        throw new IllegalArgumentException("Null cross-reference lookup for previousSegment in ruleBodySegments")
+  	      oml.previousSegment = previousSegmentPair.key
+  	    }
   	    val String ruleXRef = kv.remove("ruleUUID")
-  	    val Pair<ChainRule, Map<String, String>> rulePair = chainRules.get(ruleXRef)
-  	    if (null === rulePair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for rule in ruleBodySegments")
-  	    oml.rule = rulePair.key
+  	    if ("null" != ruleXRef) {
+  	      val Pair<ChainRule, Map<String, String>> rulePair = chainRules.get(ruleXRef)
+  	      if (null === rulePair)
+  	        throw new IllegalArgumentException("Null cross-reference lookup for rule in ruleBodySegments")
+  	      oml.rule = rulePair.key
+  	    }
   	  }
   	]
   }
@@ -4445,10 +5109,12 @@ class OMLSpecificationTables {
   	      throw new IllegalArgumentException("Null cross-reference lookup for structuredDataPropertyContext in scalarDataPropertyValues")
   	    oml.structuredDataPropertyContext = structuredDataPropertyContextPair.key
   	    val String valueTypeXRef = kv.remove("valueTypeUUID")
-  	    val Pair<DataRange, Map<String, String>> valueTypePair = dataRanges.get(valueTypeXRef)
-  	    if (null === valueTypePair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for valueType in scalarDataPropertyValues")
-  	    oml.valueType = valueTypePair.key
+  	    if ("null" != valueTypeXRef) {
+  	      val Pair<DataRange, Map<String, String>> valueTypePair = dataRanges.get(valueTypeXRef)
+  	      if (null === valueTypePair)
+  	        throw new IllegalArgumentException("Null cross-reference lookup for valueType in scalarDataPropertyValues")
+  	      oml.valueType = valueTypePair.key
+  	    }
   	  }
   	]
   }
@@ -4474,10 +5140,12 @@ class OMLSpecificationTables {
   	      throw new IllegalArgumentException("Null cross-reference lookup for scalarDataProperty in singletonInstanceScalarDataPropertyValues")
   	    oml.scalarDataProperty = scalarDataPropertyPair.key
   	    val String valueTypeXRef = kv.remove("valueTypeUUID")
-  	    val Pair<DataRange, Map<String, String>> valueTypePair = dataRanges.get(valueTypeXRef)
-  	    if (null === valueTypePair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for valueType in singletonInstanceScalarDataPropertyValues")
-  	    oml.valueType = valueTypePair.key
+  	    if ("null" != valueTypeXRef) {
+  	      val Pair<DataRange, Map<String, String>> valueTypePair = dataRanges.get(valueTypeXRef)
+  	      if (null === valueTypePair)
+  	        throw new IllegalArgumentException("Null cross-reference lookup for valueType in singletonInstanceScalarDataPropertyValues")
+  	      oml.valueType = valueTypePair.key
+  	    }
   	  }
   	]
   }

@@ -17,6 +17,7 @@
  */
 package gov.nasa.jpl.imce.oml.zip;
 
+import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import gov.nasa.jpl.imce.oml.model.bundles.AnonymousConceptUnionAxiom;
 import gov.nasa.jpl.imce.oml.model.bundles.Bundle;
@@ -112,13 +113,13 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
-import java.util.stream.Stream;
 import org.apache.commons.compress.archivers.zip.ZipArchiveEntry;
 import org.apache.commons.compress.archivers.zip.ZipArchiveOutputStream;
 import org.apache.commons.compress.archivers.zip.ZipFile;
@@ -475,333 +476,531 @@ public class OMLSpecificationTables {
       ZipArchiveEntry _zipArchiveEntry = new ZipArchiveEntry("AnnotationProperties.json");
       entry = _zipArchiveEntry;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.annotationPropertiesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.annotationPropertiesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_1 = new ZipArchiveEntry("TerminologyGraphs.json");
       entry = _zipArchiveEntry_1;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.terminologyGraphsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.terminologyGraphsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_2 = new ZipArchiveEntry("Bundles.json");
       entry = _zipArchiveEntry_2;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.bundlesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.bundlesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_3 = new ZipArchiveEntry("ConceptDesignationTerminologyAxioms.json");
       entry = _zipArchiveEntry_3;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.conceptDesignationTerminologyAxiomsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.conceptDesignationTerminologyAxiomsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_4 = new ZipArchiveEntry("TerminologyExtensionAxioms.json");
       entry = _zipArchiveEntry_4;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.terminologyExtensionAxiomsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.terminologyExtensionAxiomsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_5 = new ZipArchiveEntry("TerminologyNestingAxioms.json");
       entry = _zipArchiveEntry_5;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.terminologyNestingAxiomsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.terminologyNestingAxiomsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_6 = new ZipArchiveEntry("Aspects.json");
       entry = _zipArchiveEntry_6;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.aspectsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.aspectsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_7 = new ZipArchiveEntry("Concepts.json");
       entry = _zipArchiveEntry_7;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.conceptsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.conceptsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_8 = new ZipArchiveEntry("ReifiedRelationships.json");
       entry = _zipArchiveEntry_8;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.reifiedRelationshipsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.reifiedRelationshipsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_9 = new ZipArchiveEntry("UnreifiedRelationships.json");
       entry = _zipArchiveEntry_9;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.unreifiedRelationshipsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.unreifiedRelationshipsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_10 = new ZipArchiveEntry("Scalars.json");
       entry = _zipArchiveEntry_10;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.scalarsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.scalarsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_11 = new ZipArchiveEntry("Structures.json");
       entry = _zipArchiveEntry_11;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.structuresByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.structuresByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_12 = new ZipArchiveEntry("BinaryScalarRestrictions.json");
       entry = _zipArchiveEntry_12;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.binaryScalarRestrictionsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.binaryScalarRestrictionsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_13 = new ZipArchiveEntry("IRIScalarRestrictions.json");
       entry = _zipArchiveEntry_13;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.iriScalarRestrictionsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.iriScalarRestrictionsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_14 = new ZipArchiveEntry("NumericScalarRestrictions.json");
       entry = _zipArchiveEntry_14;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.numericScalarRestrictionsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.numericScalarRestrictionsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_15 = new ZipArchiveEntry("PlainLiteralScalarRestrictions.json");
       entry = _zipArchiveEntry_15;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.plainLiteralScalarRestrictionsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.plainLiteralScalarRestrictionsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_16 = new ZipArchiveEntry("ScalarOneOfRestrictions.json");
       entry = _zipArchiveEntry_16;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.scalarOneOfRestrictionsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.scalarOneOfRestrictionsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_17 = new ZipArchiveEntry("StringScalarRestrictions.json");
       entry = _zipArchiveEntry_17;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.stringScalarRestrictionsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.stringScalarRestrictionsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_18 = new ZipArchiveEntry("SynonymScalarRestrictions.json");
       entry = _zipArchiveEntry_18;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.synonymScalarRestrictionsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.synonymScalarRestrictionsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_19 = new ZipArchiveEntry("TimeScalarRestrictions.json");
       entry = _zipArchiveEntry_19;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.timeScalarRestrictionsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.timeScalarRestrictionsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_20 = new ZipArchiveEntry("EntityScalarDataProperties.json");
       entry = _zipArchiveEntry_20;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.entityScalarDataPropertiesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.entityScalarDataPropertiesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_21 = new ZipArchiveEntry("EntityStructuredDataProperties.json");
       entry = _zipArchiveEntry_21;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.entityStructuredDataPropertiesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.entityStructuredDataPropertiesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_22 = new ZipArchiveEntry("ScalarDataProperties.json");
       entry = _zipArchiveEntry_22;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.scalarDataPropertiesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.scalarDataPropertiesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_23 = new ZipArchiveEntry("StructuredDataProperties.json");
       entry = _zipArchiveEntry_23;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.structuredDataPropertiesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.structuredDataPropertiesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_24 = new ZipArchiveEntry("AspectSpecializationAxioms.json");
       entry = _zipArchiveEntry_24;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.aspectSpecializationAxiomsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.aspectSpecializationAxiomsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_25 = new ZipArchiveEntry("ConceptSpecializationAxioms.json");
       entry = _zipArchiveEntry_25;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.conceptSpecializationAxiomsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.conceptSpecializationAxiomsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_26 = new ZipArchiveEntry("ReifiedRelationshipSpecializationAxioms.json");
       entry = _zipArchiveEntry_26;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.reifiedRelationshipSpecializationAxiomsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.reifiedRelationshipSpecializationAxiomsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_27 = new ZipArchiveEntry("EntityExistentialRestrictionAxioms.json");
       entry = _zipArchiveEntry_27;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.entityExistentialRestrictionAxiomsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.entityExistentialRestrictionAxiomsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_28 = new ZipArchiveEntry("EntityUniversalRestrictionAxioms.json");
       entry = _zipArchiveEntry_28;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.entityUniversalRestrictionAxiomsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.entityUniversalRestrictionAxiomsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_29 = new ZipArchiveEntry("EntityScalarDataPropertyExistentialRestrictionAxioms.json");
       entry = _zipArchiveEntry_29;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.entityScalarDataPropertyExistentialRestrictionAxiomsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.entityScalarDataPropertyExistentialRestrictionAxiomsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_30 = new ZipArchiveEntry("EntityScalarDataPropertyParticularRestrictionAxioms.json");
       entry = _zipArchiveEntry_30;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.entityScalarDataPropertyParticularRestrictionAxiomsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.entityScalarDataPropertyParticularRestrictionAxiomsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_31 = new ZipArchiveEntry("EntityScalarDataPropertyUniversalRestrictionAxioms.json");
       entry = _zipArchiveEntry_31;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.entityScalarDataPropertyUniversalRestrictionAxiomsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.entityScalarDataPropertyUniversalRestrictionAxiomsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_32 = new ZipArchiveEntry("ScalarOneOfLiteralAxioms.json");
       entry = _zipArchiveEntry_32;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.scalarOneOfLiteralAxiomsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.scalarOneOfLiteralAxiomsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_33 = new ZipArchiveEntry("BundledTerminologyAxioms.json");
       entry = _zipArchiveEntry_33;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.bundledTerminologyAxiomsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.bundledTerminologyAxiomsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_34 = new ZipArchiveEntry("RootConceptTaxonomyAxioms.json");
       entry = _zipArchiveEntry_34;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.rootConceptTaxonomyAxiomsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.rootConceptTaxonomyAxiomsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_35 = new ZipArchiveEntry("SpecificDisjointConceptAxioms.json");
       entry = _zipArchiveEntry_35;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.specificDisjointConceptAxiomsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.specificDisjointConceptAxiomsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_36 = new ZipArchiveEntry("AnnotationPropertyValues.json");
       entry = _zipArchiveEntry_36;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.annotationPropertyValuesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.annotationPropertyValuesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_37 = new ZipArchiveEntry("AnonymousConceptUnionAxioms.json");
       entry = _zipArchiveEntry_37;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.anonymousConceptUnionAxiomsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.anonymousConceptUnionAxiomsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_38 = new ZipArchiveEntry("AspectPredicates.json");
       entry = _zipArchiveEntry_38;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.aspectPredicatesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.aspectPredicatesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_39 = new ZipArchiveEntry("ChainRules.json");
       entry = _zipArchiveEntry_39;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.chainRulesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.chainRulesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_40 = new ZipArchiveEntry("ConceptInstances.json");
       entry = _zipArchiveEntry_40;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.conceptInstancesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.conceptInstancesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_41 = new ZipArchiveEntry("ConceptPredicates.json");
       entry = _zipArchiveEntry_41;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.conceptPredicatesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.conceptPredicatesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_42 = new ZipArchiveEntry("DescriptionBoxes.json");
       entry = _zipArchiveEntry_42;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.descriptionBoxesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.descriptionBoxesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_43 = new ZipArchiveEntry("DescriptionBoxExtendsClosedWorldDefinitions.json");
       entry = _zipArchiveEntry_43;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.descriptionBoxExtendsClosedWorldDefinitionsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.descriptionBoxExtendsClosedWorldDefinitionsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_44 = new ZipArchiveEntry("DescriptionBoxRefinements.json");
       entry = _zipArchiveEntry_44;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.descriptionBoxRefinementsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.descriptionBoxRefinementsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_45 = new ZipArchiveEntry("EntityStructuredDataPropertyParticularRestrictionAxioms.json");
       entry = _zipArchiveEntry_45;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.entityStructuredDataPropertyParticularRestrictionAxiomsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.entityStructuredDataPropertyParticularRestrictionAxiomsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_46 = new ZipArchiveEntry("ReifiedRelationshipInstances.json");
       entry = _zipArchiveEntry_46;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.reifiedRelationshipInstancesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.reifiedRelationshipInstancesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_47 = new ZipArchiveEntry("ReifiedRelationshipInstanceDomains.json");
       entry = _zipArchiveEntry_47;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.reifiedRelationshipInstanceDomainsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.reifiedRelationshipInstanceDomainsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_48 = new ZipArchiveEntry("ReifiedRelationshipInstanceRanges.json");
       entry = _zipArchiveEntry_48;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.reifiedRelationshipInstanceRangesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.reifiedRelationshipInstanceRangesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_49 = new ZipArchiveEntry("ReifiedRelationshipInversePropertyPredicates.json");
       entry = _zipArchiveEntry_49;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.reifiedRelationshipInversePropertyPredicatesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.reifiedRelationshipInversePropertyPredicatesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_50 = new ZipArchiveEntry("ReifiedRelationshipPredicates.json");
       entry = _zipArchiveEntry_50;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.reifiedRelationshipPredicatesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.reifiedRelationshipPredicatesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_51 = new ZipArchiveEntry("ReifiedRelationshipPropertyPredicates.json");
       entry = _zipArchiveEntry_51;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.reifiedRelationshipPropertyPredicatesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.reifiedRelationshipPropertyPredicatesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_52 = new ZipArchiveEntry("ReifiedRelationshipSourceInversePropertyPredicates.json");
       entry = _zipArchiveEntry_52;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.reifiedRelationshipSourceInversePropertyPredicatesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.reifiedRelationshipSourceInversePropertyPredicatesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_53 = new ZipArchiveEntry("ReifiedRelationshipSourcePropertyPredicates.json");
       entry = _zipArchiveEntry_53;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.reifiedRelationshipSourcePropertyPredicatesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.reifiedRelationshipSourcePropertyPredicatesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_54 = new ZipArchiveEntry("ReifiedRelationshipTargetInversePropertyPredicates.json");
       entry = _zipArchiveEntry_54;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.reifiedRelationshipTargetInversePropertyPredicatesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.reifiedRelationshipTargetInversePropertyPredicatesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_55 = new ZipArchiveEntry("ReifiedRelationshipTargetPropertyPredicates.json");
       entry = _zipArchiveEntry_55;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.reifiedRelationshipTargetPropertyPredicatesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.reifiedRelationshipTargetPropertyPredicatesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_56 = new ZipArchiveEntry("RestrictionScalarDataPropertyValues.json");
       entry = _zipArchiveEntry_56;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.restrictionScalarDataPropertyValuesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.restrictionScalarDataPropertyValuesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_57 = new ZipArchiveEntry("RestrictionStructuredDataPropertyTuples.json");
       entry = _zipArchiveEntry_57;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.restrictionStructuredDataPropertyTuplesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.restrictionStructuredDataPropertyTuplesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_58 = new ZipArchiveEntry("RuleBodySegments.json");
       entry = _zipArchiveEntry_58;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.ruleBodySegmentsByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.ruleBodySegmentsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_59 = new ZipArchiveEntry("ScalarDataPropertyValues.json");
       entry = _zipArchiveEntry_59;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.scalarDataPropertyValuesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.scalarDataPropertyValuesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_60 = new ZipArchiveEntry("SingletonInstanceScalarDataPropertyValues.json");
       entry = _zipArchiveEntry_60;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.singletonInstanceScalarDataPropertyValuesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.singletonInstanceScalarDataPropertyValuesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_61 = new ZipArchiveEntry("SingletonInstanceStructuredDataPropertyValues.json");
       entry = _zipArchiveEntry_61;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.singletonInstanceStructuredDataPropertyValuesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.singletonInstanceStructuredDataPropertyValuesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_62 = new ZipArchiveEntry("StructuredDataPropertyTuples.json");
       entry = _zipArchiveEntry_62;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.structuredDataPropertyTuplesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.structuredDataPropertyTuplesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_63 = new ZipArchiveEntry("UnreifiedRelationshipInstanceTuples.json");
       entry = _zipArchiveEntry_63;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.unreifiedRelationshipInstanceTuplesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.unreifiedRelationshipInstanceTuplesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_64 = new ZipArchiveEntry("UnreifiedRelationshipInversePropertyPredicates.json");
       entry = _zipArchiveEntry_64;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.unreifiedRelationshipInversePropertyPredicatesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.unreifiedRelationshipInversePropertyPredicatesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
       ZipArchiveEntry _zipArchiveEntry_65 = new ZipArchiveEntry("UnreifiedRelationshipPropertyPredicates.json");
       entry = _zipArchiveEntry_65;
       zos.putArchiveEntry(entry);
-      zos.write(OMLSpecificationTables.unreifiedRelationshipPropertyPredicatesByteArray(e));
-      zos.closeArchiveEntry();
+      try {
+        zos.write(OMLSpecificationTables.unreifiedRelationshipPropertyPredicatesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -812,15 +1011,17 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<AnnotationProperty> _function = (AnnotationProperty it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"iri\":\"");
-      pw.print(it.iri());
-      pw.print("\",");
-      pw.print("\"abbrevIRI\":\"");
-      pw.print(it.getAbbrevIRI());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"iri\":");
+      pw.print(OMLTables.toString(it.iri()));
+      pw.print(",");
+      pw.print("\"abbrevIRI\":");
+      pw.print(OMLTables.toString(it.getAbbrevIRI()));
+      pw.println("}");
     };
     OMLTables.annotationProperties(e).forEach(_function);
     pw.close();
@@ -832,15 +1033,17 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<TerminologyGraph> _function = (TerminologyGraph it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"kind\":\"");
-      pw.print(it.getKind());
-      pw.print("\",");
-      pw.print("\"iri\":\"");
-      pw.print(it.iri());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"kind\":");
+      pw.print(OMLTables.toString(it.getKind()));
+      pw.print(",");
+      pw.print("\"iri\":");
+      pw.print(OMLTables.toString(it.iri()));
+      pw.println("}");
     };
     OMLTables.terminologyGraphs(e).forEach(_function);
     pw.close();
@@ -852,15 +1055,17 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<Bundle> _function = (Bundle it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"kind\":\"");
-      pw.print(it.getKind());
-      pw.print("\",");
-      pw.print("\"iri\":\"");
-      pw.print(it.iri());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"kind\":");
+      pw.print(OMLTables.toString(it.getKind()));
+      pw.print(",");
+      pw.print("\"iri\":");
+      pw.print(OMLTables.toString(it.iri()));
+      pw.println("}");
     };
     OMLTables.bundles(e).forEach(_function);
     pw.close();
@@ -872,18 +1077,26 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<ConceptDesignationTerminologyAxiom> _function = (ConceptDesignationTerminologyAxiom it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"tboxUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"tboxUUID\":");
+      pw.print("\"");
       pw.print(it.getTbox().uuid());
-      pw.print("\",");
-      pw.print("\"designatedConceptUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"designatedConceptUUID\":");
+      pw.print("\"");
       pw.print(it.getDesignatedConcept().uuid());
-      pw.print("\",");
-      pw.print("\"designatedTerminologyIRI\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"designatedTerminologyIRI\":");
+      pw.print("\"");
       pw.print(it.getDesignatedTerminology().iri());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.println("}");
     };
     OMLTables.conceptDesignationTerminologyAxioms(e).forEach(_function);
     pw.close();
@@ -895,15 +1108,21 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<TerminologyExtensionAxiom> _function = (TerminologyExtensionAxiom it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"tboxUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"tboxUUID\":");
+      pw.print("\"");
       pw.print(it.getTbox().uuid());
-      pw.print("\",");
-      pw.print("\"extendedTerminologyIRI\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"extendedTerminologyIRI\":");
+      pw.print("\"");
       pw.print(it.getExtendedTerminology().iri());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.println("}");
     };
     OMLTables.terminologyExtensionAxioms(e).forEach(_function);
     pw.close();
@@ -915,18 +1134,26 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<TerminologyNestingAxiom> _function = (TerminologyNestingAxiom it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"tboxUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"tboxUUID\":");
+      pw.print("\"");
       pw.print(it.getTbox().uuid());
-      pw.print("\",");
-      pw.print("\"nestingContextUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"nestingContextUUID\":");
+      pw.print("\"");
       pw.print(it.getNestingContext().uuid());
-      pw.print("\",");
-      pw.print("\"nestingTerminologyIRI\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"nestingTerminologyIRI\":");
+      pw.print("\"");
       pw.print(it.getNestingTerminology().iri());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.println("}");
     };
     OMLTables.terminologyNestingAxioms(e).forEach(_function);
     pw.close();
@@ -938,15 +1165,19 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<Aspect> _function = (Aspect it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"tboxUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"tboxUUID\":");
+      pw.print("\"");
       pw.print(it.getTbox().uuid());
-      pw.print("\",");
-      pw.print("\"name\":\"");
-      pw.print(it.name());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"name\":");
+      pw.print(OMLTables.toString(it.name()));
+      pw.println("}");
     };
     OMLTables.aspects(e).forEach(_function);
     pw.close();
@@ -958,15 +1189,19 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<Concept> _function = (Concept it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"tboxUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"tboxUUID\":");
+      pw.print("\"");
       pw.print(it.getTbox().uuid());
-      pw.print("\",");
-      pw.print("\"name\":\"");
-      pw.print(it.name());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"name\":");
+      pw.print(OMLTables.toString(it.name()));
+      pw.println("}");
     };
     OMLTables.concepts(e).forEach(_function);
     pw.close();
@@ -978,54 +1213,62 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<ReifiedRelationship> _function = (ReifiedRelationship it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"tboxUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"tboxUUID\":");
+      pw.print("\"");
       pw.print(it.getTbox().uuid());
-      pw.print("\",");
-      pw.print("\"sourceUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"sourceUUID\":");
+      pw.print("\"");
       pw.print(it.getSource().uuid());
-      pw.print("\",");
-      pw.print("\"targetUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"targetUUID\":");
+      pw.print("\"");
       pw.print(it.getTarget().uuid());
-      pw.print("\",");
-      pw.print("\"isAsymmetric\":\"");
-      pw.print(it.isIsAsymmetric());
-      pw.print("\",");
-      pw.print("\"isEssential\":\"");
-      pw.print(it.isIsEssential());
-      pw.print("\",");
-      pw.print("\"isFunctional\":\"");
-      pw.print(it.isIsFunctional());
-      pw.print("\",");
-      pw.print("\"isInverseEssential\":\"");
-      pw.print(it.isIsInverseEssential());
-      pw.print("\",");
-      pw.print("\"isInverseFunctional\":\"");
-      pw.print(it.isIsInverseFunctional());
-      pw.print("\",");
-      pw.print("\"isIrreflexive\":\"");
-      pw.print(it.isIsIrreflexive());
-      pw.print("\",");
-      pw.print("\"isReflexive\":\"");
-      pw.print(it.isIsReflexive());
-      pw.print("\",");
-      pw.print("\"isSymmetric\":\"");
-      pw.print(it.isIsSymmetric());
-      pw.print("\",");
-      pw.print("\"isTransitive\":\"");
-      pw.print(it.isIsTransitive());
-      pw.print("\",");
-      pw.print("\"name\":\"");
-      pw.print(it.name());
-      pw.print("\",");
-      pw.print("\"unreifiedPropertyName\":\"");
-      pw.print(it.getUnreifiedPropertyName());
-      pw.print("\",");
-      pw.print("\"unreifiedInversePropertyName\":\"");
-      pw.print(it.getUnreifiedInversePropertyName());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"isAsymmetric\":");
+      pw.print(OMLTables.toString(Boolean.valueOf(it.isIsAsymmetric())));
+      pw.print(",");
+      pw.print("\"isEssential\":");
+      pw.print(OMLTables.toString(Boolean.valueOf(it.isIsEssential())));
+      pw.print(",");
+      pw.print("\"isFunctional\":");
+      pw.print(OMLTables.toString(Boolean.valueOf(it.isIsFunctional())));
+      pw.print(",");
+      pw.print("\"isInverseEssential\":");
+      pw.print(OMLTables.toString(Boolean.valueOf(it.isIsInverseEssential())));
+      pw.print(",");
+      pw.print("\"isInverseFunctional\":");
+      pw.print(OMLTables.toString(Boolean.valueOf(it.isIsInverseFunctional())));
+      pw.print(",");
+      pw.print("\"isIrreflexive\":");
+      pw.print(OMLTables.toString(Boolean.valueOf(it.isIsIrreflexive())));
+      pw.print(",");
+      pw.print("\"isReflexive\":");
+      pw.print(OMLTables.toString(Boolean.valueOf(it.isIsReflexive())));
+      pw.print(",");
+      pw.print("\"isSymmetric\":");
+      pw.print(OMLTables.toString(Boolean.valueOf(it.isIsSymmetric())));
+      pw.print(",");
+      pw.print("\"isTransitive\":");
+      pw.print(OMLTables.toString(Boolean.valueOf(it.isIsTransitive())));
+      pw.print(",");
+      pw.print("\"name\":");
+      pw.print(OMLTables.toString(it.name()));
+      pw.print(",");
+      pw.print("\"unreifiedPropertyName\":");
+      pw.print(OMLTables.toString(it.getUnreifiedPropertyName()));
+      pw.print(",");
+      pw.print("\"unreifiedInversePropertyName\":");
+      pw.print(OMLTables.toString(it.getUnreifiedInversePropertyName()));
+      pw.println("}");
     };
     OMLTables.reifiedRelationships(e).forEach(_function);
     pw.close();
@@ -1037,48 +1280,56 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<UnreifiedRelationship> _function = (UnreifiedRelationship it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"tboxUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"tboxUUID\":");
+      pw.print("\"");
       pw.print(it.getTbox().uuid());
-      pw.print("\",");
-      pw.print("\"sourceUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"sourceUUID\":");
+      pw.print("\"");
       pw.print(it.getSource().uuid());
-      pw.print("\",");
-      pw.print("\"targetUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"targetUUID\":");
+      pw.print("\"");
       pw.print(it.getTarget().uuid());
-      pw.print("\",");
-      pw.print("\"isAsymmetric\":\"");
-      pw.print(it.isIsAsymmetric());
-      pw.print("\",");
-      pw.print("\"isEssential\":\"");
-      pw.print(it.isIsEssential());
-      pw.print("\",");
-      pw.print("\"isFunctional\":\"");
-      pw.print(it.isIsFunctional());
-      pw.print("\",");
-      pw.print("\"isInverseEssential\":\"");
-      pw.print(it.isIsInverseEssential());
-      pw.print("\",");
-      pw.print("\"isInverseFunctional\":\"");
-      pw.print(it.isIsInverseFunctional());
-      pw.print("\",");
-      pw.print("\"isIrreflexive\":\"");
-      pw.print(it.isIsIrreflexive());
-      pw.print("\",");
-      pw.print("\"isReflexive\":\"");
-      pw.print(it.isIsReflexive());
-      pw.print("\",");
-      pw.print("\"isSymmetric\":\"");
-      pw.print(it.isIsSymmetric());
-      pw.print("\",");
-      pw.print("\"isTransitive\":\"");
-      pw.print(it.isIsTransitive());
-      pw.print("\",");
-      pw.print("\"name\":\"");
-      pw.print(it.name());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"isAsymmetric\":");
+      pw.print(OMLTables.toString(Boolean.valueOf(it.isIsAsymmetric())));
+      pw.print(",");
+      pw.print("\"isEssential\":");
+      pw.print(OMLTables.toString(Boolean.valueOf(it.isIsEssential())));
+      pw.print(",");
+      pw.print("\"isFunctional\":");
+      pw.print(OMLTables.toString(Boolean.valueOf(it.isIsFunctional())));
+      pw.print(",");
+      pw.print("\"isInverseEssential\":");
+      pw.print(OMLTables.toString(Boolean.valueOf(it.isIsInverseEssential())));
+      pw.print(",");
+      pw.print("\"isInverseFunctional\":");
+      pw.print(OMLTables.toString(Boolean.valueOf(it.isIsInverseFunctional())));
+      pw.print(",");
+      pw.print("\"isIrreflexive\":");
+      pw.print(OMLTables.toString(Boolean.valueOf(it.isIsIrreflexive())));
+      pw.print(",");
+      pw.print("\"isReflexive\":");
+      pw.print(OMLTables.toString(Boolean.valueOf(it.isIsReflexive())));
+      pw.print(",");
+      pw.print("\"isSymmetric\":");
+      pw.print(OMLTables.toString(Boolean.valueOf(it.isIsSymmetric())));
+      pw.print(",");
+      pw.print("\"isTransitive\":");
+      pw.print(OMLTables.toString(Boolean.valueOf(it.isIsTransitive())));
+      pw.print(",");
+      pw.print("\"name\":");
+      pw.print(OMLTables.toString(it.name()));
+      pw.println("}");
     };
     OMLTables.unreifiedRelationships(e).forEach(_function);
     pw.close();
@@ -1090,15 +1341,19 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<Scalar> _function = (Scalar it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"tboxUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"tboxUUID\":");
+      pw.print("\"");
       pw.print(it.getTbox().uuid());
-      pw.print("\",");
-      pw.print("\"name\":\"");
-      pw.print(it.name());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"name\":");
+      pw.print(OMLTables.toString(it.name()));
+      pw.println("}");
     };
     OMLTables.scalars(e).forEach(_function);
     pw.close();
@@ -1110,15 +1365,19 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<Structure> _function = (Structure it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"tboxUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"tboxUUID\":");
+      pw.print("\"");
       pw.print(it.getTbox().uuid());
-      pw.print("\",");
-      pw.print("\"name\":\"");
-      pw.print(it.name());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"name\":");
+      pw.print(OMLTables.toString(it.name()));
+      pw.println("}");
     };
     OMLTables.structures(e).forEach(_function);
     pw.close();
@@ -1130,27 +1389,33 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<BinaryScalarRestriction> _function = (BinaryScalarRestriction it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"tboxUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"tboxUUID\":");
+      pw.print("\"");
       pw.print(it.getTbox().uuid());
-      pw.print("\",");
-      pw.print("\"restrictedRangeUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"restrictedRangeUUID\":");
+      pw.print("\"");
       pw.print(it.getRestrictedRange().uuid());
-      pw.print("\",");
-      pw.print("\"length\":\"");
-      pw.print(it.getLength());
-      pw.print("\",");
-      pw.print("\"minLength\":\"");
-      pw.print(it.getMinLength());
-      pw.print("\",");
-      pw.print("\"maxLength\":\"");
-      pw.print(it.getMaxLength());
-      pw.print("\",");
-      pw.print("\"name\":\"");
-      pw.print(it.name());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"length\":");
+      pw.print(OMLTables.toString(it.getLength()));
+      pw.print(",");
+      pw.print("\"minLength\":");
+      pw.print(OMLTables.toString(it.getMinLength()));
+      pw.print(",");
+      pw.print("\"maxLength\":");
+      pw.print(OMLTables.toString(it.getMaxLength()));
+      pw.print(",");
+      pw.print("\"name\":");
+      pw.print(OMLTables.toString(it.name()));
+      pw.println("}");
     };
     OMLTables.binaryScalarRestrictions(e).forEach(_function);
     pw.close();
@@ -1162,30 +1427,36 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<IRIScalarRestriction> _function = (IRIScalarRestriction it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"tboxUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"tboxUUID\":");
+      pw.print("\"");
       pw.print(it.getTbox().uuid());
-      pw.print("\",");
-      pw.print("\"restrictedRangeUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"restrictedRangeUUID\":");
+      pw.print("\"");
       pw.print(it.getRestrictedRange().uuid());
-      pw.print("\",");
-      pw.print("\"length\":\"");
-      pw.print(it.getLength());
-      pw.print("\",");
-      pw.print("\"minLength\":\"");
-      pw.print(it.getMinLength());
-      pw.print("\",");
-      pw.print("\"maxLength\":\"");
-      pw.print(it.getMaxLength());
-      pw.print("\",");
-      pw.print("\"name\":\"");
-      pw.print(it.name());
-      pw.print("\",");
-      pw.print("\"pattern\":\"");
-      pw.print(it.getPattern());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"length\":");
+      pw.print(OMLTables.toString(it.getLength()));
+      pw.print(",");
+      pw.print("\"minLength\":");
+      pw.print(OMLTables.toString(it.getMinLength()));
+      pw.print(",");
+      pw.print("\"maxLength\":");
+      pw.print(OMLTables.toString(it.getMaxLength()));
+      pw.print(",");
+      pw.print("\"name\":");
+      pw.print(OMLTables.toString(it.name()));
+      pw.print(",");
+      pw.print("\"pattern\":");
+      pw.print(OMLTables.toString(it.getPattern()));
+      pw.println("}");
     };
     OMLTables.iriScalarRestrictions(e).forEach(_function);
     pw.close();
@@ -1197,30 +1468,36 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<NumericScalarRestriction> _function = (NumericScalarRestriction it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"tboxUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"tboxUUID\":");
+      pw.print("\"");
       pw.print(it.getTbox().uuid());
-      pw.print("\",");
-      pw.print("\"restrictedRangeUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"restrictedRangeUUID\":");
+      pw.print("\"");
       pw.print(it.getRestrictedRange().uuid());
-      pw.print("\",");
-      pw.print("\"minExclusive\":\"");
-      pw.print(it.getMinExclusive().value());
-      pw.print("\",");
-      pw.print("\"minInclusive\":\"");
-      pw.print(it.getMinInclusive().value());
-      pw.print("\",");
-      pw.print("\"maxExclusive\":\"");
-      pw.print(it.getMaxExclusive().value());
-      pw.print("\",");
-      pw.print("\"maxInclusive\":\"");
-      pw.print(it.getMaxInclusive().value());
-      pw.print("\",");
-      pw.print("\"name\":\"");
-      pw.print(it.name());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"minExclusive\":");
+      pw.print(OMLTables.toString(it.getMinExclusive()));
+      pw.print(",");
+      pw.print("\"minInclusive\":");
+      pw.print(OMLTables.toString(it.getMinInclusive()));
+      pw.print(",");
+      pw.print("\"maxExclusive\":");
+      pw.print(OMLTables.toString(it.getMaxExclusive()));
+      pw.print(",");
+      pw.print("\"maxInclusive\":");
+      pw.print(OMLTables.toString(it.getMaxInclusive()));
+      pw.print(",");
+      pw.print("\"name\":");
+      pw.print(OMLTables.toString(it.name()));
+      pw.println("}");
     };
     OMLTables.numericScalarRestrictions(e).forEach(_function);
     pw.close();
@@ -1232,33 +1509,39 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<PlainLiteralScalarRestriction> _function = (PlainLiteralScalarRestriction it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"tboxUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"tboxUUID\":");
+      pw.print("\"");
       pw.print(it.getTbox().uuid());
-      pw.print("\",");
-      pw.print("\"restrictedRangeUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"restrictedRangeUUID\":");
+      pw.print("\"");
       pw.print(it.getRestrictedRange().uuid());
-      pw.print("\",");
-      pw.print("\"length\":\"");
-      pw.print(it.getLength());
-      pw.print("\",");
-      pw.print("\"minLength\":\"");
-      pw.print(it.getMinLength());
-      pw.print("\",");
-      pw.print("\"maxLength\":\"");
-      pw.print(it.getMaxLength());
-      pw.print("\",");
-      pw.print("\"name\":\"");
-      pw.print(it.name());
-      pw.print("\",");
-      pw.print("\"langRange\":\"");
-      pw.print(it.getLangRange());
-      pw.print("\",");
-      pw.print("\"pattern\":\"");
-      pw.print(it.getPattern());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"length\":");
+      pw.print(OMLTables.toString(it.getLength()));
+      pw.print(",");
+      pw.print("\"minLength\":");
+      pw.print(OMLTables.toString(it.getMinLength()));
+      pw.print(",");
+      pw.print("\"maxLength\":");
+      pw.print(OMLTables.toString(it.getMaxLength()));
+      pw.print(",");
+      pw.print("\"name\":");
+      pw.print(OMLTables.toString(it.name()));
+      pw.print(",");
+      pw.print("\"langRange\":");
+      pw.print(OMLTables.toString(it.getLangRange()));
+      pw.print(",");
+      pw.print("\"pattern\":");
+      pw.print(OMLTables.toString(it.getPattern()));
+      pw.println("}");
     };
     OMLTables.plainLiteralScalarRestrictions(e).forEach(_function);
     pw.close();
@@ -1270,18 +1553,24 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<ScalarOneOfRestriction> _function = (ScalarOneOfRestriction it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"tboxUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"tboxUUID\":");
+      pw.print("\"");
       pw.print(it.getTbox().uuid());
-      pw.print("\",");
-      pw.print("\"restrictedRangeUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"restrictedRangeUUID\":");
+      pw.print("\"");
       pw.print(it.getRestrictedRange().uuid());
-      pw.print("\",");
-      pw.print("\"name\":\"");
-      pw.print(it.name());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"name\":");
+      pw.print(OMLTables.toString(it.name()));
+      pw.println("}");
     };
     OMLTables.scalarOneOfRestrictions(e).forEach(_function);
     pw.close();
@@ -1293,30 +1582,36 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<StringScalarRestriction> _function = (StringScalarRestriction it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"tboxUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"tboxUUID\":");
+      pw.print("\"");
       pw.print(it.getTbox().uuid());
-      pw.print("\",");
-      pw.print("\"restrictedRangeUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"restrictedRangeUUID\":");
+      pw.print("\"");
       pw.print(it.getRestrictedRange().uuid());
-      pw.print("\",");
-      pw.print("\"length\":\"");
-      pw.print(it.getLength());
-      pw.print("\",");
-      pw.print("\"minLength\":\"");
-      pw.print(it.getMinLength());
-      pw.print("\",");
-      pw.print("\"maxLength\":\"");
-      pw.print(it.getMaxLength());
-      pw.print("\",");
-      pw.print("\"name\":\"");
-      pw.print(it.name());
-      pw.print("\",");
-      pw.print("\"pattern\":\"");
-      pw.print(it.getPattern());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"length\":");
+      pw.print(OMLTables.toString(it.getLength()));
+      pw.print(",");
+      pw.print("\"minLength\":");
+      pw.print(OMLTables.toString(it.getMinLength()));
+      pw.print(",");
+      pw.print("\"maxLength\":");
+      pw.print(OMLTables.toString(it.getMaxLength()));
+      pw.print(",");
+      pw.print("\"name\":");
+      pw.print(OMLTables.toString(it.name()));
+      pw.print(",");
+      pw.print("\"pattern\":");
+      pw.print(OMLTables.toString(it.getPattern()));
+      pw.println("}");
     };
     OMLTables.stringScalarRestrictions(e).forEach(_function);
     pw.close();
@@ -1328,18 +1623,24 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<SynonymScalarRestriction> _function = (SynonymScalarRestriction it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"tboxUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"tboxUUID\":");
+      pw.print("\"");
       pw.print(it.getTbox().uuid());
-      pw.print("\",");
-      pw.print("\"restrictedRangeUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"restrictedRangeUUID\":");
+      pw.print("\"");
       pw.print(it.getRestrictedRange().uuid());
-      pw.print("\",");
-      pw.print("\"name\":\"");
-      pw.print(it.name());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"name\":");
+      pw.print(OMLTables.toString(it.name()));
+      pw.println("}");
     };
     OMLTables.synonymScalarRestrictions(e).forEach(_function);
     pw.close();
@@ -1351,30 +1652,36 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<TimeScalarRestriction> _function = (TimeScalarRestriction it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"tboxUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"tboxUUID\":");
+      pw.print("\"");
       pw.print(it.getTbox().uuid());
-      pw.print("\",");
-      pw.print("\"restrictedRangeUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"restrictedRangeUUID\":");
+      pw.print("\"");
       pw.print(it.getRestrictedRange().uuid());
-      pw.print("\",");
-      pw.print("\"minExclusive\":\"");
-      pw.print(it.getMinExclusive().value());
-      pw.print("\",");
-      pw.print("\"minInclusive\":\"");
-      pw.print(it.getMinInclusive().value());
-      pw.print("\",");
-      pw.print("\"maxExclusive\":\"");
-      pw.print(it.getMaxExclusive().value());
-      pw.print("\",");
-      pw.print("\"maxInclusive\":\"");
-      pw.print(it.getMaxInclusive().value());
-      pw.print("\",");
-      pw.print("\"name\":\"");
-      pw.print(it.name());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"minExclusive\":");
+      pw.print(OMLTables.toString(it.getMinExclusive()));
+      pw.print(",");
+      pw.print("\"minInclusive\":");
+      pw.print(OMLTables.toString(it.getMinInclusive()));
+      pw.print(",");
+      pw.print("\"maxExclusive\":");
+      pw.print(OMLTables.toString(it.getMaxExclusive()));
+      pw.print(",");
+      pw.print("\"maxInclusive\":");
+      pw.print(OMLTables.toString(it.getMaxInclusive()));
+      pw.print(",");
+      pw.print("\"name\":");
+      pw.print(OMLTables.toString(it.name()));
+      pw.println("}");
     };
     OMLTables.timeScalarRestrictions(e).forEach(_function);
     pw.close();
@@ -1386,24 +1693,32 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<EntityScalarDataProperty> _function = (EntityScalarDataProperty it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"tboxUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"tboxUUID\":");
+      pw.print("\"");
       pw.print(it.getTbox().uuid());
-      pw.print("\",");
-      pw.print("\"domainUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"domainUUID\":");
+      pw.print("\"");
       pw.print(it.getDomain().uuid());
-      pw.print("\",");
-      pw.print("\"rangeUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"rangeUUID\":");
+      pw.print("\"");
       pw.print(it.getRange().uuid());
-      pw.print("\",");
-      pw.print("\"isIdentityCriteria\":\"");
-      pw.print(it.isIsIdentityCriteria());
-      pw.print("\",");
-      pw.print("\"name\":\"");
-      pw.print(it.name());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"isIdentityCriteria\":");
+      pw.print(OMLTables.toString(Boolean.valueOf(it.isIsIdentityCriteria())));
+      pw.print(",");
+      pw.print("\"name\":");
+      pw.print(OMLTables.toString(it.name()));
+      pw.println("}");
     };
     OMLTables.entityScalarDataProperties(e).forEach(_function);
     pw.close();
@@ -1415,24 +1730,32 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<EntityStructuredDataProperty> _function = (EntityStructuredDataProperty it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"tboxUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"tboxUUID\":");
+      pw.print("\"");
       pw.print(it.getTbox().uuid());
-      pw.print("\",");
-      pw.print("\"domainUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"domainUUID\":");
+      pw.print("\"");
       pw.print(it.getDomain().uuid());
-      pw.print("\",");
-      pw.print("\"rangeUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"rangeUUID\":");
+      pw.print("\"");
       pw.print(it.getRange().uuid());
-      pw.print("\",");
-      pw.print("\"isIdentityCriteria\":\"");
-      pw.print(it.isIsIdentityCriteria());
-      pw.print("\",");
-      pw.print("\"name\":\"");
-      pw.print(it.name());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"isIdentityCriteria\":");
+      pw.print(OMLTables.toString(Boolean.valueOf(it.isIsIdentityCriteria())));
+      pw.print(",");
+      pw.print("\"name\":");
+      pw.print(OMLTables.toString(it.name()));
+      pw.println("}");
     };
     OMLTables.entityStructuredDataProperties(e).forEach(_function);
     pw.close();
@@ -1444,21 +1767,29 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<ScalarDataProperty> _function = (ScalarDataProperty it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"tboxUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"tboxUUID\":");
+      pw.print("\"");
       pw.print(it.getTbox().uuid());
-      pw.print("\",");
-      pw.print("\"domainUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"domainUUID\":");
+      pw.print("\"");
       pw.print(it.getDomain().uuid());
-      pw.print("\",");
-      pw.print("\"rangeUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"rangeUUID\":");
+      pw.print("\"");
       pw.print(it.getRange().uuid());
-      pw.print("\",");
-      pw.print("\"name\":\"");
-      pw.print(it.name());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"name\":");
+      pw.print(OMLTables.toString(it.name()));
+      pw.println("}");
     };
     OMLTables.scalarDataProperties(e).forEach(_function);
     pw.close();
@@ -1470,21 +1801,29 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<StructuredDataProperty> _function = (StructuredDataProperty it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"tboxUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"tboxUUID\":");
+      pw.print("\"");
       pw.print(it.getTbox().uuid());
-      pw.print("\",");
-      pw.print("\"domainUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"domainUUID\":");
+      pw.print("\"");
       pw.print(it.getDomain().uuid());
-      pw.print("\",");
-      pw.print("\"rangeUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"rangeUUID\":");
+      pw.print("\"");
       pw.print(it.getRange().uuid());
-      pw.print("\",");
-      pw.print("\"name\":\"");
-      pw.print(it.name());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"name\":");
+      pw.print(OMLTables.toString(it.name()));
+      pw.println("}");
     };
     OMLTables.structuredDataProperties(e).forEach(_function);
     pw.close();
@@ -1496,18 +1835,26 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<AspectSpecializationAxiom> _function = (AspectSpecializationAxiom it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"tboxUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"tboxUUID\":");
+      pw.print("\"");
       pw.print(it.getTbox().uuid());
-      pw.print("\",");
-      pw.print("\"superAspectUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"superAspectUUID\":");
+      pw.print("\"");
       pw.print(it.getSuperAspect().uuid());
-      pw.print("\",");
-      pw.print("\"subEntityUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"subEntityUUID\":");
+      pw.print("\"");
       pw.print(it.getSubEntity().uuid());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.println("}");
     };
     OMLTables.aspectSpecializationAxioms(e).forEach(_function);
     pw.close();
@@ -1519,18 +1866,26 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<ConceptSpecializationAxiom> _function = (ConceptSpecializationAxiom it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"tboxUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"tboxUUID\":");
+      pw.print("\"");
       pw.print(it.getTbox().uuid());
-      pw.print("\",");
-      pw.print("\"superConceptUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"superConceptUUID\":");
+      pw.print("\"");
       pw.print(it.getSuperConcept().uuid());
-      pw.print("\",");
-      pw.print("\"subConceptUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"subConceptUUID\":");
+      pw.print("\"");
       pw.print(it.getSubConcept().uuid());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.println("}");
     };
     OMLTables.conceptSpecializationAxioms(e).forEach(_function);
     pw.close();
@@ -1542,18 +1897,26 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<ReifiedRelationshipSpecializationAxiom> _function = (ReifiedRelationshipSpecializationAxiom it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"tboxUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"tboxUUID\":");
+      pw.print("\"");
       pw.print(it.getTbox().uuid());
-      pw.print("\",");
-      pw.print("\"superRelationshipUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"superRelationshipUUID\":");
+      pw.print("\"");
       pw.print(it.getSuperRelationship().uuid());
-      pw.print("\",");
-      pw.print("\"subRelationshipUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"subRelationshipUUID\":");
+      pw.print("\"");
       pw.print(it.getSubRelationship().uuid());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.println("}");
     };
     OMLTables.reifiedRelationshipSpecializationAxioms(e).forEach(_function);
     pw.close();
@@ -1565,21 +1928,31 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<EntityExistentialRestrictionAxiom> _function = (EntityExistentialRestrictionAxiom it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"tboxUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"tboxUUID\":");
+      pw.print("\"");
       pw.print(it.getTbox().uuid());
-      pw.print("\",");
-      pw.print("\"restrictedRelationUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"restrictedRelationUUID\":");
+      pw.print("\"");
       pw.print(it.getRestrictedRelation().uuid());
-      pw.print("\",");
-      pw.print("\"restrictedDomainUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"restrictedDomainUUID\":");
+      pw.print("\"");
       pw.print(it.getRestrictedDomain().uuid());
-      pw.print("\",");
-      pw.print("\"restrictedRangeUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"restrictedRangeUUID\":");
+      pw.print("\"");
       pw.print(it.getRestrictedRange().uuid());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.println("}");
     };
     OMLTables.entityExistentialRestrictionAxioms(e).forEach(_function);
     pw.close();
@@ -1591,21 +1964,31 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<EntityUniversalRestrictionAxiom> _function = (EntityUniversalRestrictionAxiom it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"tboxUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"tboxUUID\":");
+      pw.print("\"");
       pw.print(it.getTbox().uuid());
-      pw.print("\",");
-      pw.print("\"restrictedRelationUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"restrictedRelationUUID\":");
+      pw.print("\"");
       pw.print(it.getRestrictedRelation().uuid());
-      pw.print("\",");
-      pw.print("\"restrictedDomainUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"restrictedDomainUUID\":");
+      pw.print("\"");
       pw.print(it.getRestrictedDomain().uuid());
-      pw.print("\",");
-      pw.print("\"restrictedRangeUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"restrictedRangeUUID\":");
+      pw.print("\"");
       pw.print(it.getRestrictedRange().uuid());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.println("}");
     };
     OMLTables.entityUniversalRestrictionAxioms(e).forEach(_function);
     pw.close();
@@ -1617,21 +2000,31 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<EntityScalarDataPropertyExistentialRestrictionAxiom> _function = (EntityScalarDataPropertyExistentialRestrictionAxiom it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"tboxUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"tboxUUID\":");
+      pw.print("\"");
       pw.print(it.getTbox().uuid());
-      pw.print("\",");
-      pw.print("\"restrictedEntityUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"restrictedEntityUUID\":");
+      pw.print("\"");
       pw.print(it.getRestrictedEntity().uuid());
-      pw.print("\",");
-      pw.print("\"scalarPropertyUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"scalarPropertyUUID\":");
+      pw.print("\"");
       pw.print(it.getScalarProperty().uuid());
-      pw.print("\",");
-      pw.print("\"scalarRestrictionUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"scalarRestrictionUUID\":");
+      pw.print("\"");
       pw.print(it.getScalarRestriction().uuid());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.println("}");
     };
     OMLTables.entityScalarDataPropertyExistentialRestrictionAxioms(e).forEach(_function);
     pw.close();
@@ -1643,24 +2036,45 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<EntityScalarDataPropertyParticularRestrictionAxiom> _function = (EntityScalarDataPropertyParticularRestrictionAxiom it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"tboxUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"tboxUUID\":");
+      pw.print("\"");
       pw.print(it.getTbox().uuid());
-      pw.print("\",");
-      pw.print("\"restrictedEntityUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"restrictedEntityUUID\":");
+      pw.print("\"");
       pw.print(it.getRestrictedEntity().uuid());
-      pw.print("\",");
-      pw.print("\"scalarPropertyUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"scalarPropertyUUID\":");
+      pw.print("\"");
       pw.print(it.getScalarProperty().uuid());
-      pw.print("\",");
-      pw.print("\"literalValue\":\"");
-      pw.print(it.getLiteralValue().value());
-      pw.print("\",");
-      pw.print("\"valueTypeUUID\":\"");
-      pw.print(it.getValueType().uuid());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"literalValue\":");
+      pw.print(OMLTables.toString(it.getLiteralValue()));
+      pw.print(",");
+      pw.print("\"valueTypeUUID\":");
+      DataRange _valueType = it.getValueType();
+      boolean _tripleNotEquals = (null != _valueType);
+      if (_tripleNotEquals) {
+        pw.print("\"");
+        DataRange _valueType_1 = it.getValueType();
+        String _uuid = null;
+        if (_valueType_1!=null) {
+          _uuid=_valueType_1.uuid();
+        }
+        pw.print(_uuid);
+        pw.print("\"");
+      } else {
+        pw.print("null");
+      }
+      pw.println("}");
     };
     OMLTables.entityScalarDataPropertyParticularRestrictionAxioms(e).forEach(_function);
     pw.close();
@@ -1672,21 +2086,31 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<EntityScalarDataPropertyUniversalRestrictionAxiom> _function = (EntityScalarDataPropertyUniversalRestrictionAxiom it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"tboxUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"tboxUUID\":");
+      pw.print("\"");
       pw.print(it.getTbox().uuid());
-      pw.print("\",");
-      pw.print("\"restrictedEntityUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"restrictedEntityUUID\":");
+      pw.print("\"");
       pw.print(it.getRestrictedEntity().uuid());
-      pw.print("\",");
-      pw.print("\"scalarPropertyUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"scalarPropertyUUID\":");
+      pw.print("\"");
       pw.print(it.getScalarProperty().uuid());
-      pw.print("\",");
-      pw.print("\"scalarRestrictionUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"scalarRestrictionUUID\":");
+      pw.print("\"");
       pw.print(it.getScalarRestriction().uuid());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.println("}");
     };
     OMLTables.entityScalarDataPropertyUniversalRestrictionAxioms(e).forEach(_function);
     pw.close();
@@ -1698,21 +2122,40 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<ScalarOneOfLiteralAxiom> _function = (ScalarOneOfLiteralAxiom it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"tboxUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"tboxUUID\":");
+      pw.print("\"");
       pw.print(it.getTbox().uuid());
-      pw.print("\",");
-      pw.print("\"axiomUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"axiomUUID\":");
+      pw.print("\"");
       pw.print(it.getAxiom().uuid());
-      pw.print("\",");
-      pw.print("\"value\":\"");
-      pw.print(it.getValue().value());
-      pw.print("\",");
-      pw.print("\"valueTypeUUID\":\"");
-      pw.print(it.getValueType().uuid());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"value\":");
+      pw.print(OMLTables.toString(it.getValue()));
+      pw.print(",");
+      pw.print("\"valueTypeUUID\":");
+      DataRange _valueType = it.getValueType();
+      boolean _tripleNotEquals = (null != _valueType);
+      if (_tripleNotEquals) {
+        pw.print("\"");
+        DataRange _valueType_1 = it.getValueType();
+        String _uuid = null;
+        if (_valueType_1!=null) {
+          _uuid=_valueType_1.uuid();
+        }
+        pw.print(_uuid);
+        pw.print("\"");
+      } else {
+        pw.print("null");
+      }
+      pw.println("}");
     };
     OMLTables.scalarOneOfLiteralAxioms(e).forEach(_function);
     pw.close();
@@ -1724,15 +2167,21 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<BundledTerminologyAxiom> _function = (BundledTerminologyAxiom it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"bundleUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"bundleUUID\":");
+      pw.print("\"");
       pw.print(it.getBundle().uuid());
-      pw.print("\",");
-      pw.print("\"bundledTerminologyIRI\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"bundledTerminologyIRI\":");
+      pw.print("\"");
       pw.print(it.getBundledTerminology().iri());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.println("}");
     };
     OMLTables.bundledTerminologyAxioms(e).forEach(_function);
     pw.close();
@@ -1744,15 +2193,21 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<RootConceptTaxonomyAxiom> _function = (RootConceptTaxonomyAxiom it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"bundleUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"bundleUUID\":");
+      pw.print("\"");
       pw.print(it.getBundle().uuid());
-      pw.print("\",");
-      pw.print("\"rootUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"rootUUID\":");
+      pw.print("\"");
       pw.print(it.getRoot().uuid());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.println("}");
     };
     OMLTables.rootConceptTaxonomyAxioms(e).forEach(_function);
     pw.close();
@@ -1764,15 +2219,21 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<SpecificDisjointConceptAxiom> _function = (SpecificDisjointConceptAxiom it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"disjointTaxonomyParentUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"disjointTaxonomyParentUUID\":");
+      pw.print("\"");
       pw.print(it.getDisjointTaxonomyParent().uuid());
-      pw.print("\",");
-      pw.print("\"disjointLeafUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"disjointLeafUUID\":");
+      pw.print("\"");
       pw.print(it.getDisjointLeaf().uuid());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.println("}");
     };
     OMLTables.specificDisjointConceptAxioms(e).forEach(_function);
     pw.close();
@@ -1784,18 +2245,24 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<AnnotationPropertyValue> _function = (AnnotationPropertyValue it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"subjectUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"subjectUUID\":");
+      pw.print("\"");
       pw.print(it.getSubject().uuid());
-      pw.print("\",");
-      pw.print("\"propertyUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"propertyUUID\":");
+      pw.print("\"");
       pw.print(it.getProperty().uuid());
-      pw.print("\",");
-      pw.print("\"value\":\"");
-      pw.print(it.getValue().value());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"value\":");
+      pw.print(OMLTables.toString(it.getValue()));
+      pw.println("}");
     };
     OMLTables.annotationPropertyValues(e).forEach(_function);
     pw.close();
@@ -1807,15 +2274,19 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<AnonymousConceptUnionAxiom> _function = (AnonymousConceptUnionAxiom it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"disjointTaxonomyParentUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"disjointTaxonomyParentUUID\":");
+      pw.print("\"");
       pw.print(it.getDisjointTaxonomyParent().uuid());
-      pw.print("\",");
-      pw.print("\"name\":\"");
-      pw.print(it.getName());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"name\":");
+      pw.print(OMLTables.toString(it.getName()));
+      pw.println("}");
     };
     OMLTables.anonymousConceptUnionAxioms(e).forEach(_function);
     pw.close();
@@ -1827,15 +2298,21 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<AspectPredicate> _function = (AspectPredicate it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"aspectUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"aspectUUID\":");
+      pw.print("\"");
       pw.print(it.getAspect().uuid());
-      pw.print("\",");
-      pw.print("\"bodySegmentUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"bodySegmentUUID\":");
+      pw.print("\"");
       pw.print(it.getBodySegment().uuid());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.println("}");
     };
     OMLTables.aspectPredicates(e).forEach(_function);
     pw.close();
@@ -1847,18 +2324,24 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<ChainRule> _function = (ChainRule it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"tboxUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"tboxUUID\":");
+      pw.print("\"");
       pw.print(it.getTbox().uuid());
-      pw.print("\",");
-      pw.print("\"name\":\"");
-      pw.print(it.name());
-      pw.print("\",");
-      pw.print("\"headUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"name\":");
+      pw.print(OMLTables.toString(it.name()));
+      pw.print(",");
+      pw.print("\"headUUID\":");
+      pw.print("\"");
       pw.print(it.getHead().uuid());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.println("}");
     };
     OMLTables.chainRules(e).forEach(_function);
     pw.close();
@@ -1870,18 +2353,24 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<ConceptInstance> _function = (ConceptInstance it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"descriptionBoxUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"descriptionBoxUUID\":");
+      pw.print("\"");
       pw.print(it.descriptionBox().uuid());
-      pw.print("\",");
-      pw.print("\"singletonConceptClassifierUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"singletonConceptClassifierUUID\":");
+      pw.print("\"");
       pw.print(it.getSingletonConceptClassifier().uuid());
-      pw.print("\",");
-      pw.print("\"name\":\"");
-      pw.print(it.name());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"name\":");
+      pw.print(OMLTables.toString(it.name()));
+      pw.println("}");
     };
     OMLTables.conceptInstances(e).forEach(_function);
     pw.close();
@@ -1893,15 +2382,21 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<ConceptPredicate> _function = (ConceptPredicate it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"bodySegmentUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"bodySegmentUUID\":");
+      pw.print("\"");
       pw.print(it.getBodySegment().uuid());
-      pw.print("\",");
-      pw.print("\"conceptUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"conceptUUID\":");
+      pw.print("\"");
       pw.print(it.getConcept().uuid());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.println("}");
     };
     OMLTables.conceptPredicates(e).forEach(_function);
     pw.close();
@@ -1913,15 +2408,17 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<DescriptionBox> _function = (DescriptionBox it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"kind\":\"");
-      pw.print(it.getKind());
-      pw.print("\",");
-      pw.print("\"iri\":\"");
-      pw.print(it.iri());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"kind\":");
+      pw.print(OMLTables.toString(it.getKind()));
+      pw.print(",");
+      pw.print("\"iri\":");
+      pw.print(OMLTables.toString(it.iri()));
+      pw.println("}");
     };
     OMLTables.descriptionBoxes(e).forEach(_function);
     pw.close();
@@ -1933,15 +2430,21 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<DescriptionBoxExtendsClosedWorldDefinitions> _function = (DescriptionBoxExtendsClosedWorldDefinitions it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"descriptionBoxUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"descriptionBoxUUID\":");
+      pw.print("\"");
       pw.print(it.getDescriptionBox().uuid());
-      pw.print("\",");
-      pw.print("\"closedWorldDefinitionsIRI\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"closedWorldDefinitionsIRI\":");
+      pw.print("\"");
       pw.print(it.getClosedWorldDefinitions().iri());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.println("}");
     };
     OMLTables.descriptionBoxExtendsClosedWorldDefinitions(e).forEach(_function);
     pw.close();
@@ -1953,15 +2456,21 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<DescriptionBoxRefinement> _function = (DescriptionBoxRefinement it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"refiningDescriptionBoxUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"refiningDescriptionBoxUUID\":");
+      pw.print("\"");
       pw.print(it.getRefiningDescriptionBox().uuid());
-      pw.print("\",");
-      pw.print("\"refinedDescriptionBoxIRI\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"refinedDescriptionBoxIRI\":");
+      pw.print("\"");
       pw.print(it.getRefinedDescriptionBox().iri());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.println("}");
     };
     OMLTables.descriptionBoxRefinements(e).forEach(_function);
     pw.close();
@@ -1973,18 +2482,26 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<EntityStructuredDataPropertyParticularRestrictionAxiom> _function = (EntityStructuredDataPropertyParticularRestrictionAxiom it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"tboxUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"tboxUUID\":");
+      pw.print("\"");
       pw.print(it.getTbox().uuid());
-      pw.print("\",");
-      pw.print("\"structuredDataPropertyUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"structuredDataPropertyUUID\":");
+      pw.print("\"");
       pw.print(it.getStructuredDataProperty().uuid());
-      pw.print("\",");
-      pw.print("\"restrictedEntityUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"restrictedEntityUUID\":");
+      pw.print("\"");
       pw.print(it.getRestrictedEntity().uuid());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.println("}");
     };
     OMLTables.entityStructuredDataPropertyParticularRestrictionAxioms(e).forEach(_function);
     pw.close();
@@ -1996,18 +2513,24 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<ReifiedRelationshipInstance> _function = (ReifiedRelationshipInstance it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"descriptionBoxUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"descriptionBoxUUID\":");
+      pw.print("\"");
       pw.print(it.descriptionBox().uuid());
-      pw.print("\",");
-      pw.print("\"singletonReifiedRelationshipClassifierUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"singletonReifiedRelationshipClassifierUUID\":");
+      pw.print("\"");
       pw.print(it.getSingletonReifiedRelationshipClassifier().uuid());
-      pw.print("\",");
-      pw.print("\"name\":\"");
-      pw.print(it.name());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"name\":");
+      pw.print(OMLTables.toString(it.name()));
+      pw.println("}");
     };
     OMLTables.reifiedRelationshipInstances(e).forEach(_function);
     pw.close();
@@ -2019,18 +2542,26 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<ReifiedRelationshipInstanceDomain> _function = (ReifiedRelationshipInstanceDomain it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"descriptionBoxUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"descriptionBoxUUID\":");
+      pw.print("\"");
       pw.print(it.descriptionBox().uuid());
-      pw.print("\",");
-      pw.print("\"reifiedRelationshipInstanceUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"reifiedRelationshipInstanceUUID\":");
+      pw.print("\"");
       pw.print(it.getReifiedRelationshipInstance().uuid());
-      pw.print("\",");
-      pw.print("\"domainUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"domainUUID\":");
+      pw.print("\"");
       pw.print(it.getDomain().uuid());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.println("}");
     };
     OMLTables.reifiedRelationshipInstanceDomains(e).forEach(_function);
     pw.close();
@@ -2042,18 +2573,26 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<ReifiedRelationshipInstanceRange> _function = (ReifiedRelationshipInstanceRange it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"descriptionBoxUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"descriptionBoxUUID\":");
+      pw.print("\"");
       pw.print(it.descriptionBox().uuid());
-      pw.print("\",");
-      pw.print("\"reifiedRelationshipInstanceUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"reifiedRelationshipInstanceUUID\":");
+      pw.print("\"");
       pw.print(it.getReifiedRelationshipInstance().uuid());
-      pw.print("\",");
-      pw.print("\"rangeUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"rangeUUID\":");
+      pw.print("\"");
       pw.print(it.getRange().uuid());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.println("}");
     };
     OMLTables.reifiedRelationshipInstanceRanges(e).forEach(_function);
     pw.close();
@@ -2065,15 +2604,21 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<ReifiedRelationshipInversePropertyPredicate> _function = (ReifiedRelationshipInversePropertyPredicate it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"bodySegmentUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"bodySegmentUUID\":");
+      pw.print("\"");
       pw.print(it.getBodySegment().uuid());
-      pw.print("\",");
-      pw.print("\"reifiedRelationshipUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"reifiedRelationshipUUID\":");
+      pw.print("\"");
       pw.print(it.getReifiedRelationship().uuid());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.println("}");
     };
     OMLTables.reifiedRelationshipInversePropertyPredicates(e).forEach(_function);
     pw.close();
@@ -2085,15 +2630,21 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<ReifiedRelationshipPredicate> _function = (ReifiedRelationshipPredicate it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"bodySegmentUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"bodySegmentUUID\":");
+      pw.print("\"");
       pw.print(it.getBodySegment().uuid());
-      pw.print("\",");
-      pw.print("\"reifiedRelationshipUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"reifiedRelationshipUUID\":");
+      pw.print("\"");
       pw.print(it.getReifiedRelationship().uuid());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.println("}");
     };
     OMLTables.reifiedRelationshipPredicates(e).forEach(_function);
     pw.close();
@@ -2105,15 +2656,21 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<ReifiedRelationshipPropertyPredicate> _function = (ReifiedRelationshipPropertyPredicate it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"bodySegmentUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"bodySegmentUUID\":");
+      pw.print("\"");
       pw.print(it.getBodySegment().uuid());
-      pw.print("\",");
-      pw.print("\"reifiedRelationshipUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"reifiedRelationshipUUID\":");
+      pw.print("\"");
       pw.print(it.getReifiedRelationship().uuid());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.println("}");
     };
     OMLTables.reifiedRelationshipPropertyPredicates(e).forEach(_function);
     pw.close();
@@ -2125,15 +2682,21 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<ReifiedRelationshipSourceInversePropertyPredicate> _function = (ReifiedRelationshipSourceInversePropertyPredicate it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"bodySegmentUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"bodySegmentUUID\":");
+      pw.print("\"");
       pw.print(it.getBodySegment().uuid());
-      pw.print("\",");
-      pw.print("\"reifiedRelationshipUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"reifiedRelationshipUUID\":");
+      pw.print("\"");
       pw.print(it.getReifiedRelationship().uuid());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.println("}");
     };
     OMLTables.reifiedRelationshipSourceInversePropertyPredicates(e).forEach(_function);
     pw.close();
@@ -2145,15 +2708,21 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<ReifiedRelationshipSourcePropertyPredicate> _function = (ReifiedRelationshipSourcePropertyPredicate it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"bodySegmentUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"bodySegmentUUID\":");
+      pw.print("\"");
       pw.print(it.getBodySegment().uuid());
-      pw.print("\",");
-      pw.print("\"reifiedRelationshipUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"reifiedRelationshipUUID\":");
+      pw.print("\"");
       pw.print(it.getReifiedRelationship().uuid());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.println("}");
     };
     OMLTables.reifiedRelationshipSourcePropertyPredicates(e).forEach(_function);
     pw.close();
@@ -2165,15 +2734,21 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<ReifiedRelationshipTargetInversePropertyPredicate> _function = (ReifiedRelationshipTargetInversePropertyPredicate it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"bodySegmentUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"bodySegmentUUID\":");
+      pw.print("\"");
       pw.print(it.getBodySegment().uuid());
-      pw.print("\",");
-      pw.print("\"reifiedRelationshipUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"reifiedRelationshipUUID\":");
+      pw.print("\"");
       pw.print(it.getReifiedRelationship().uuid());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.println("}");
     };
     OMLTables.reifiedRelationshipTargetInversePropertyPredicates(e).forEach(_function);
     pw.close();
@@ -2185,15 +2760,21 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<ReifiedRelationshipTargetPropertyPredicate> _function = (ReifiedRelationshipTargetPropertyPredicate it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"bodySegmentUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"bodySegmentUUID\":");
+      pw.print("\"");
       pw.print(it.getBodySegment().uuid());
-      pw.print("\",");
-      pw.print("\"reifiedRelationshipUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"reifiedRelationshipUUID\":");
+      pw.print("\"");
       pw.print(it.getReifiedRelationship().uuid());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.println("}");
     };
     OMLTables.reifiedRelationshipTargetPropertyPredicates(e).forEach(_function);
     pw.close();
@@ -2205,21 +2786,40 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<RestrictionScalarDataPropertyValue> _function = (RestrictionScalarDataPropertyValue it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"scalarDataPropertyUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"scalarDataPropertyUUID\":");
+      pw.print("\"");
       pw.print(it.getScalarDataProperty().uuid());
-      pw.print("\",");
-      pw.print("\"scalarPropertyValue\":\"");
-      pw.print(it.getScalarPropertyValue().value());
-      pw.print("\",");
-      pw.print("\"structuredDataPropertyContextUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"scalarPropertyValue\":");
+      pw.print(OMLTables.toString(it.getScalarPropertyValue()));
+      pw.print(",");
+      pw.print("\"structuredDataPropertyContextUUID\":");
+      pw.print("\"");
       pw.print(it.getStructuredDataPropertyContext().uuid());
-      pw.print("\",");
-      pw.print("\"valueTypeUUID\":\"");
-      pw.print(it.getValueType().uuid());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"valueTypeUUID\":");
+      DataRange _valueType = it.getValueType();
+      boolean _tripleNotEquals = (null != _valueType);
+      if (_tripleNotEquals) {
+        pw.print("\"");
+        DataRange _valueType_1 = it.getValueType();
+        String _uuid = null;
+        if (_valueType_1!=null) {
+          _uuid=_valueType_1.uuid();
+        }
+        pw.print(_uuid);
+        pw.print("\"");
+      } else {
+        pw.print("null");
+      }
+      pw.println("}");
     };
     OMLTables.restrictionScalarDataPropertyValues(e).forEach(_function);
     pw.close();
@@ -2231,15 +2831,21 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<RestrictionStructuredDataPropertyTuple> _function = (RestrictionStructuredDataPropertyTuple it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"structuredDataPropertyUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"structuredDataPropertyUUID\":");
+      pw.print("\"");
       pw.print(it.getStructuredDataProperty().uuid());
-      pw.print("\",");
-      pw.print("\"structuredDataPropertyContextUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"structuredDataPropertyContextUUID\":");
+      pw.print("\"");
       pw.print(it.getStructuredDataPropertyContext().uuid());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.println("}");
     };
     OMLTables.restrictionStructuredDataPropertyTuples(e).forEach(_function);
     pw.close();
@@ -2251,15 +2857,43 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<RuleBodySegment> _function = (RuleBodySegment it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"previousSegmentUUID\":\"");
-      pw.print(it.getPreviousSegment().uuid());
-      pw.print("\",");
-      pw.print("\"ruleUUID\":\"");
-      pw.print(it.getRule().uuid());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"previousSegmentUUID\":");
+      RuleBodySegment _previousSegment = it.getPreviousSegment();
+      boolean _tripleNotEquals = (null != _previousSegment);
+      if (_tripleNotEquals) {
+        pw.print("\"");
+        RuleBodySegment _previousSegment_1 = it.getPreviousSegment();
+        String _uuid = null;
+        if (_previousSegment_1!=null) {
+          _uuid=_previousSegment_1.uuid();
+        }
+        pw.print(_uuid);
+        pw.print("\"");
+      } else {
+        pw.print("null");
+      }
+      pw.print(",");
+      pw.print("\"ruleUUID\":");
+      ChainRule _rule = it.getRule();
+      boolean _tripleNotEquals_1 = (null != _rule);
+      if (_tripleNotEquals_1) {
+        pw.print("\"");
+        ChainRule _rule_1 = it.getRule();
+        String _uuid_1 = null;
+        if (_rule_1!=null) {
+          _uuid_1=_rule_1.uuid();
+        }
+        pw.print(_uuid_1);
+        pw.print("\"");
+      } else {
+        pw.print("null");
+      }
+      pw.println("}");
     };
     OMLTables.ruleBodySegments(e).forEach(_function);
     pw.close();
@@ -2271,21 +2905,40 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<ScalarDataPropertyValue> _function = (ScalarDataPropertyValue it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"scalarDataPropertyUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"scalarDataPropertyUUID\":");
+      pw.print("\"");
       pw.print(it.getScalarDataProperty().uuid());
-      pw.print("\",");
-      pw.print("\"scalarPropertyValue\":\"");
-      pw.print(it.getScalarPropertyValue().value());
-      pw.print("\",");
-      pw.print("\"structuredDataPropertyContextUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"scalarPropertyValue\":");
+      pw.print(OMLTables.toString(it.getScalarPropertyValue()));
+      pw.print(",");
+      pw.print("\"structuredDataPropertyContextUUID\":");
+      pw.print("\"");
       pw.print(it.getStructuredDataPropertyContext().uuid());
-      pw.print("\",");
-      pw.print("\"valueTypeUUID\":\"");
-      pw.print(it.getValueType().uuid());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"valueTypeUUID\":");
+      DataRange _valueType = it.getValueType();
+      boolean _tripleNotEquals = (null != _valueType);
+      if (_tripleNotEquals) {
+        pw.print("\"");
+        DataRange _valueType_1 = it.getValueType();
+        String _uuid = null;
+        if (_valueType_1!=null) {
+          _uuid=_valueType_1.uuid();
+        }
+        pw.print(_uuid);
+        pw.print("\"");
+      } else {
+        pw.print("null");
+      }
+      pw.println("}");
     };
     OMLTables.scalarDataPropertyValues(e).forEach(_function);
     pw.close();
@@ -2297,24 +2950,45 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<SingletonInstanceScalarDataPropertyValue> _function = (SingletonInstanceScalarDataPropertyValue it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"descriptionBoxUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"descriptionBoxUUID\":");
+      pw.print("\"");
       pw.print(it.descriptionBox().uuid());
-      pw.print("\",");
-      pw.print("\"singletonInstanceUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"singletonInstanceUUID\":");
+      pw.print("\"");
       pw.print(it.getSingletonInstance().uuid());
-      pw.print("\",");
-      pw.print("\"scalarDataPropertyUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"scalarDataPropertyUUID\":");
+      pw.print("\"");
       pw.print(it.getScalarDataProperty().uuid());
-      pw.print("\",");
-      pw.print("\"scalarPropertyValue\":\"");
-      pw.print(it.getScalarPropertyValue().value());
-      pw.print("\",");
-      pw.print("\"valueTypeUUID\":\"");
-      pw.print(it.getValueType().uuid());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"scalarPropertyValue\":");
+      pw.print(OMLTables.toString(it.getScalarPropertyValue()));
+      pw.print(",");
+      pw.print("\"valueTypeUUID\":");
+      DataRange _valueType = it.getValueType();
+      boolean _tripleNotEquals = (null != _valueType);
+      if (_tripleNotEquals) {
+        pw.print("\"");
+        DataRange _valueType_1 = it.getValueType();
+        String _uuid = null;
+        if (_valueType_1!=null) {
+          _uuid=_valueType_1.uuid();
+        }
+        pw.print(_uuid);
+        pw.print("\"");
+      } else {
+        pw.print("null");
+      }
+      pw.println("}");
     };
     OMLTables.singletonInstanceScalarDataPropertyValues(e).forEach(_function);
     pw.close();
@@ -2326,18 +3000,26 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<SingletonInstanceStructuredDataPropertyValue> _function = (SingletonInstanceStructuredDataPropertyValue it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"descriptionBoxUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"descriptionBoxUUID\":");
+      pw.print("\"");
       pw.print(it.descriptionBox().uuid());
-      pw.print("\",");
-      pw.print("\"singletonInstanceUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"singletonInstanceUUID\":");
+      pw.print("\"");
       pw.print(it.getSingletonInstance().uuid());
-      pw.print("\",");
-      pw.print("\"structuredDataPropertyUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"structuredDataPropertyUUID\":");
+      pw.print("\"");
       pw.print(it.getStructuredDataProperty().uuid());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.println("}");
     };
     OMLTables.singletonInstanceStructuredDataPropertyValues(e).forEach(_function);
     pw.close();
@@ -2349,15 +3031,21 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<StructuredDataPropertyTuple> _function = (StructuredDataPropertyTuple it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"structuredDataPropertyUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"structuredDataPropertyUUID\":");
+      pw.print("\"");
       pw.print(it.getStructuredDataProperty().uuid());
-      pw.print("\",");
-      pw.print("\"structuredDataPropertyContextUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"structuredDataPropertyContextUUID\":");
+      pw.print("\"");
       pw.print(it.getStructuredDataPropertyContext().uuid());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.println("}");
     };
     OMLTables.structuredDataPropertyTuples(e).forEach(_function);
     pw.close();
@@ -2369,21 +3057,31 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<UnreifiedRelationshipInstanceTuple> _function = (UnreifiedRelationshipInstanceTuple it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"descriptionBoxUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"descriptionBoxUUID\":");
+      pw.print("\"");
       pw.print(it.descriptionBox().uuid());
-      pw.print("\",");
-      pw.print("\"unreifiedRelationshipUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"unreifiedRelationshipUUID\":");
+      pw.print("\"");
       pw.print(it.getUnreifiedRelationship().uuid());
-      pw.print("\",");
-      pw.print("\"domainUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"domainUUID\":");
+      pw.print("\"");
       pw.print(it.getDomain().uuid());
-      pw.print("\",");
-      pw.print("\"rangeUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"rangeUUID\":");
+      pw.print("\"");
       pw.print(it.getRange().uuid());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.println("}");
     };
     OMLTables.unreifiedRelationshipInstanceTuples(e).forEach(_function);
     pw.close();
@@ -2395,15 +3093,21 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<UnreifiedRelationshipInversePropertyPredicate> _function = (UnreifiedRelationshipInversePropertyPredicate it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"unreifiedRelationshipUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"unreifiedRelationshipUUID\":");
+      pw.print("\"");
       pw.print(it.getUnreifiedRelationship().uuid());
-      pw.print("\",");
-      pw.print("\"bodySegmentUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"bodySegmentUUID\":");
+      pw.print("\"");
       pw.print(it.getBodySegment().uuid());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.println("}");
     };
     OMLTables.unreifiedRelationshipInversePropertyPredicates(e).forEach(_function);
     pw.close();
@@ -2415,15 +3119,21 @@ public class OMLSpecificationTables {
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<UnreifiedRelationshipPropertyPredicate> _function = (UnreifiedRelationshipPropertyPredicate it) -> {
       pw.print("{");
-      pw.print("\"uuid\":\"");
+      pw.print("\"uuid\":");
+      pw.print("\"");
       pw.print(it.uuid());
-      pw.print("\",");
-      pw.print("\"unreifiedRelationshipUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"unreifiedRelationshipUUID\":");
+      pw.print("\"");
       pw.print(it.getUnreifiedRelationship().uuid());
-      pw.print("\",");
-      pw.print("\"bodySegmentUUID\":\"");
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"bodySegmentUUID\":");
+      pw.print("\"");
       pw.print(it.getBodySegment().uuid());
-      pw.println("\"}");
+      pw.print("\"");
+      pw.println("}");
     };
     OMLTables.unreifiedRelationshipPropertyPredicates(e).forEach(_function);
     pw.close();
@@ -2439,7 +3149,8 @@ public class OMLSpecificationTables {
           final InputStream is = zip.getInputStream(ze);
           InputStreamReader _inputStreamReader = new InputStreamReader(is, StandardCharsets.UTF_8);
           final BufferedReader buffer = new BufferedReader(_inputStreamReader);
-          final Stream<String> lines = buffer.lines();
+          final ArrayList<String> lines = new ArrayList<String>();
+          Iterables.<String>addAll(lines, IteratorExtensions.<String>toIterable(buffer.lines().iterator()));
           String _name = ze.getName();
           if (_name != null) {
             switch (_name) {
@@ -2662,7 +3373,7 @@ public class OMLSpecificationTables {
     }
   }
   
-  protected void readAnnotationProperties(final Stream<String> lines) {
+  protected void readAnnotationProperties(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final AnnotationProperty oml = this.omlCommonFactory.createAnnotationProperty();
@@ -2675,7 +3386,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readTerminologyGraphs(final Stream<String> lines) {
+  protected void readTerminologyGraphs(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final TerminologyGraph oml = this.omlGraphsFactory.createTerminologyGraph();
@@ -2688,7 +3399,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readBundles(final Stream<String> lines) {
+  protected void readBundles(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final Bundle oml = this.omlBundlesFactory.createBundle();
@@ -2701,7 +3412,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readConceptDesignationTerminologyAxioms(final Stream<String> lines) {
+  protected void readConceptDesignationTerminologyAxioms(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final ConceptDesignationTerminologyAxiom oml = this.omlGraphsFactory.createConceptDesignationTerminologyAxiom();
@@ -2712,7 +3423,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readTerminologyExtensionAxioms(final Stream<String> lines) {
+  protected void readTerminologyExtensionAxioms(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final TerminologyExtensionAxiom oml = this.omlTerminologiesFactory.createTerminologyExtensionAxiom();
@@ -2723,7 +3434,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readTerminologyNestingAxioms(final Stream<String> lines) {
+  protected void readTerminologyNestingAxioms(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final TerminologyNestingAxiom oml = this.omlGraphsFactory.createTerminologyNestingAxiom();
@@ -2734,7 +3445,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readAspects(final Stream<String> lines) {
+  protected void readAspects(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final Aspect oml = this.omlTerminologiesFactory.createAspect();
@@ -2746,7 +3457,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readConcepts(final Stream<String> lines) {
+  protected void readConcepts(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final Concept oml = this.omlTerminologiesFactory.createConcept();
@@ -2758,7 +3469,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readReifiedRelationships(final Stream<String> lines) {
+  protected void readReifiedRelationships(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final ReifiedRelationship oml = this.omlTerminologiesFactory.createReifiedRelationship();
@@ -2781,7 +3492,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readUnreifiedRelationships(final Stream<String> lines) {
+  protected void readUnreifiedRelationships(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final UnreifiedRelationship oml = this.omlTerminologiesFactory.createUnreifiedRelationship();
@@ -2802,7 +3513,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readScalars(final Stream<String> lines) {
+  protected void readScalars(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final Scalar oml = this.omlTerminologiesFactory.createScalar();
@@ -2814,7 +3525,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readStructures(final Stream<String> lines) {
+  protected void readStructures(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final Structure oml = this.omlTerminologiesFactory.createStructure();
@@ -2826,7 +3537,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readBinaryScalarRestrictions(final Stream<String> lines) {
+  protected void readBinaryScalarRestrictions(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final BinaryScalarRestriction oml = this.omlTerminologiesFactory.createBinaryScalarRestriction();
@@ -2841,7 +3552,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readIRIScalarRestrictions(final Stream<String> lines) {
+  protected void readIRIScalarRestrictions(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final IRIScalarRestriction oml = this.omlTerminologiesFactory.createIRIScalarRestriction();
@@ -2857,7 +3568,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readNumericScalarRestrictions(final Stream<String> lines) {
+  protected void readNumericScalarRestrictions(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final NumericScalarRestriction oml = this.omlTerminologiesFactory.createNumericScalarRestriction();
@@ -2873,7 +3584,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readPlainLiteralScalarRestrictions(final Stream<String> lines) {
+  protected void readPlainLiteralScalarRestrictions(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final PlainLiteralScalarRestriction oml = this.omlTerminologiesFactory.createPlainLiteralScalarRestriction();
@@ -2890,7 +3601,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readScalarOneOfRestrictions(final Stream<String> lines) {
+  protected void readScalarOneOfRestrictions(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final ScalarOneOfRestriction oml = this.omlTerminologiesFactory.createScalarOneOfRestriction();
@@ -2902,7 +3613,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readStringScalarRestrictions(final Stream<String> lines) {
+  protected void readStringScalarRestrictions(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final StringScalarRestriction oml = this.omlTerminologiesFactory.createStringScalarRestriction();
@@ -2918,7 +3629,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readSynonymScalarRestrictions(final Stream<String> lines) {
+  protected void readSynonymScalarRestrictions(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final SynonymScalarRestriction oml = this.omlTerminologiesFactory.createSynonymScalarRestriction();
@@ -2930,7 +3641,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readTimeScalarRestrictions(final Stream<String> lines) {
+  protected void readTimeScalarRestrictions(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final TimeScalarRestriction oml = this.omlTerminologiesFactory.createTimeScalarRestriction();
@@ -2946,7 +3657,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readEntityScalarDataProperties(final Stream<String> lines) {
+  protected void readEntityScalarDataProperties(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final EntityScalarDataProperty oml = this.omlTerminologiesFactory.createEntityScalarDataProperty();
@@ -2959,7 +3670,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readEntityStructuredDataProperties(final Stream<String> lines) {
+  protected void readEntityStructuredDataProperties(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final EntityStructuredDataProperty oml = this.omlTerminologiesFactory.createEntityStructuredDataProperty();
@@ -2972,7 +3683,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readScalarDataProperties(final Stream<String> lines) {
+  protected void readScalarDataProperties(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final ScalarDataProperty oml = this.omlTerminologiesFactory.createScalarDataProperty();
@@ -2984,7 +3695,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readStructuredDataProperties(final Stream<String> lines) {
+  protected void readStructuredDataProperties(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final StructuredDataProperty oml = this.omlTerminologiesFactory.createStructuredDataProperty();
@@ -2996,7 +3707,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readAspectSpecializationAxioms(final Stream<String> lines) {
+  protected void readAspectSpecializationAxioms(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final AspectSpecializationAxiom oml = this.omlTerminologiesFactory.createAspectSpecializationAxiom();
@@ -3007,7 +3718,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readConceptSpecializationAxioms(final Stream<String> lines) {
+  protected void readConceptSpecializationAxioms(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final ConceptSpecializationAxiom oml = this.omlTerminologiesFactory.createConceptSpecializationAxiom();
@@ -3018,7 +3729,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readReifiedRelationshipSpecializationAxioms(final Stream<String> lines) {
+  protected void readReifiedRelationshipSpecializationAxioms(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final ReifiedRelationshipSpecializationAxiom oml = this.omlTerminologiesFactory.createReifiedRelationshipSpecializationAxiom();
@@ -3029,7 +3740,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readEntityExistentialRestrictionAxioms(final Stream<String> lines) {
+  protected void readEntityExistentialRestrictionAxioms(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final EntityExistentialRestrictionAxiom oml = this.omlTerminologiesFactory.createEntityExistentialRestrictionAxiom();
@@ -3040,7 +3751,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readEntityUniversalRestrictionAxioms(final Stream<String> lines) {
+  protected void readEntityUniversalRestrictionAxioms(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final EntityUniversalRestrictionAxiom oml = this.omlTerminologiesFactory.createEntityUniversalRestrictionAxiom();
@@ -3051,7 +3762,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readEntityScalarDataPropertyExistentialRestrictionAxioms(final Stream<String> lines) {
+  protected void readEntityScalarDataPropertyExistentialRestrictionAxioms(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final EntityScalarDataPropertyExistentialRestrictionAxiom oml = this.omlTerminologiesFactory.createEntityScalarDataPropertyExistentialRestrictionAxiom();
@@ -3062,7 +3773,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readEntityScalarDataPropertyParticularRestrictionAxioms(final Stream<String> lines) {
+  protected void readEntityScalarDataPropertyParticularRestrictionAxioms(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final EntityScalarDataPropertyParticularRestrictionAxiom oml = this.omlTerminologiesFactory.createEntityScalarDataPropertyParticularRestrictionAxiom();
@@ -3074,7 +3785,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readEntityScalarDataPropertyUniversalRestrictionAxioms(final Stream<String> lines) {
+  protected void readEntityScalarDataPropertyUniversalRestrictionAxioms(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final EntityScalarDataPropertyUniversalRestrictionAxiom oml = this.omlTerminologiesFactory.createEntityScalarDataPropertyUniversalRestrictionAxiom();
@@ -3085,7 +3796,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readScalarOneOfLiteralAxioms(final Stream<String> lines) {
+  protected void readScalarOneOfLiteralAxioms(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final ScalarOneOfLiteralAxiom oml = this.omlTerminologiesFactory.createScalarOneOfLiteralAxiom();
@@ -3097,7 +3808,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readBundledTerminologyAxioms(final Stream<String> lines) {
+  protected void readBundledTerminologyAxioms(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final BundledTerminologyAxiom oml = this.omlBundlesFactory.createBundledTerminologyAxiom();
@@ -3108,7 +3819,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readRootConceptTaxonomyAxioms(final Stream<String> lines) {
+  protected void readRootConceptTaxonomyAxioms(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final RootConceptTaxonomyAxiom oml = this.omlBundlesFactory.createRootConceptTaxonomyAxiom();
@@ -3119,7 +3830,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readSpecificDisjointConceptAxioms(final Stream<String> lines) {
+  protected void readSpecificDisjointConceptAxioms(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final SpecificDisjointConceptAxiom oml = this.omlBundlesFactory.createSpecificDisjointConceptAxiom();
@@ -3130,7 +3841,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readAnnotationPropertyValues(final Stream<String> lines) {
+  protected void readAnnotationPropertyValues(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final AnnotationPropertyValue oml = this.omlCommonFactory.createAnnotationPropertyValue();
@@ -3142,7 +3853,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readAnonymousConceptUnionAxioms(final Stream<String> lines) {
+  protected void readAnonymousConceptUnionAxioms(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final AnonymousConceptUnionAxiom oml = this.omlBundlesFactory.createAnonymousConceptUnionAxiom();
@@ -3154,7 +3865,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readAspectPredicates(final Stream<String> lines) {
+  protected void readAspectPredicates(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final AspectPredicate oml = this.omlTerminologiesFactory.createAspectPredicate();
@@ -3165,7 +3876,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readChainRules(final Stream<String> lines) {
+  protected void readChainRules(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final ChainRule oml = this.omlTerminologiesFactory.createChainRule();
@@ -3177,7 +3888,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readConceptInstances(final Stream<String> lines) {
+  protected void readConceptInstances(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final ConceptInstance oml = this.omlDescriptionsFactory.createConceptInstance();
@@ -3189,7 +3900,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readConceptPredicates(final Stream<String> lines) {
+  protected void readConceptPredicates(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final ConceptPredicate oml = this.omlTerminologiesFactory.createConceptPredicate();
@@ -3200,7 +3911,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readDescriptionBoxes(final Stream<String> lines) {
+  protected void readDescriptionBoxes(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final DescriptionBox oml = this.omlDescriptionsFactory.createDescriptionBox();
@@ -3213,7 +3924,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readDescriptionBoxExtendsClosedWorldDefinitions(final Stream<String> lines) {
+  protected void readDescriptionBoxExtendsClosedWorldDefinitions(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final DescriptionBoxExtendsClosedWorldDefinitions oml = this.omlDescriptionsFactory.createDescriptionBoxExtendsClosedWorldDefinitions();
@@ -3224,7 +3935,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readDescriptionBoxRefinements(final Stream<String> lines) {
+  protected void readDescriptionBoxRefinements(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final DescriptionBoxRefinement oml = this.omlDescriptionsFactory.createDescriptionBoxRefinement();
@@ -3235,7 +3946,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readEntityStructuredDataPropertyParticularRestrictionAxioms(final Stream<String> lines) {
+  protected void readEntityStructuredDataPropertyParticularRestrictionAxioms(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final EntityStructuredDataPropertyParticularRestrictionAxiom oml = this.omlTerminologiesFactory.createEntityStructuredDataPropertyParticularRestrictionAxiom();
@@ -3246,7 +3957,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readReifiedRelationshipInstances(final Stream<String> lines) {
+  protected void readReifiedRelationshipInstances(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final ReifiedRelationshipInstance oml = this.omlDescriptionsFactory.createReifiedRelationshipInstance();
@@ -3258,7 +3969,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readReifiedRelationshipInstanceDomains(final Stream<String> lines) {
+  protected void readReifiedRelationshipInstanceDomains(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final ReifiedRelationshipInstanceDomain oml = this.omlDescriptionsFactory.createReifiedRelationshipInstanceDomain();
@@ -3269,7 +3980,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readReifiedRelationshipInstanceRanges(final Stream<String> lines) {
+  protected void readReifiedRelationshipInstanceRanges(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final ReifiedRelationshipInstanceRange oml = this.omlDescriptionsFactory.createReifiedRelationshipInstanceRange();
@@ -3280,7 +3991,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readReifiedRelationshipInversePropertyPredicates(final Stream<String> lines) {
+  protected void readReifiedRelationshipInversePropertyPredicates(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final ReifiedRelationshipInversePropertyPredicate oml = this.omlTerminologiesFactory.createReifiedRelationshipInversePropertyPredicate();
@@ -3291,7 +4002,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readReifiedRelationshipPredicates(final Stream<String> lines) {
+  protected void readReifiedRelationshipPredicates(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final ReifiedRelationshipPredicate oml = this.omlTerminologiesFactory.createReifiedRelationshipPredicate();
@@ -3302,7 +4013,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readReifiedRelationshipPropertyPredicates(final Stream<String> lines) {
+  protected void readReifiedRelationshipPropertyPredicates(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final ReifiedRelationshipPropertyPredicate oml = this.omlTerminologiesFactory.createReifiedRelationshipPropertyPredicate();
@@ -3313,7 +4024,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readReifiedRelationshipSourceInversePropertyPredicates(final Stream<String> lines) {
+  protected void readReifiedRelationshipSourceInversePropertyPredicates(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final ReifiedRelationshipSourceInversePropertyPredicate oml = this.omlTerminologiesFactory.createReifiedRelationshipSourceInversePropertyPredicate();
@@ -3324,7 +4035,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readReifiedRelationshipSourcePropertyPredicates(final Stream<String> lines) {
+  protected void readReifiedRelationshipSourcePropertyPredicates(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final ReifiedRelationshipSourcePropertyPredicate oml = this.omlTerminologiesFactory.createReifiedRelationshipSourcePropertyPredicate();
@@ -3335,7 +4046,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readReifiedRelationshipTargetInversePropertyPredicates(final Stream<String> lines) {
+  protected void readReifiedRelationshipTargetInversePropertyPredicates(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final ReifiedRelationshipTargetInversePropertyPredicate oml = this.omlTerminologiesFactory.createReifiedRelationshipTargetInversePropertyPredicate();
@@ -3346,7 +4057,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readReifiedRelationshipTargetPropertyPredicates(final Stream<String> lines) {
+  protected void readReifiedRelationshipTargetPropertyPredicates(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final ReifiedRelationshipTargetPropertyPredicate oml = this.omlTerminologiesFactory.createReifiedRelationshipTargetPropertyPredicate();
@@ -3357,7 +4068,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readRestrictionScalarDataPropertyValues(final Stream<String> lines) {
+  protected void readRestrictionScalarDataPropertyValues(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final RestrictionScalarDataPropertyValue oml = this.omlTerminologiesFactory.createRestrictionScalarDataPropertyValue();
@@ -3369,7 +4080,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readRestrictionStructuredDataPropertyTuples(final Stream<String> lines) {
+  protected void readRestrictionStructuredDataPropertyTuples(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final RestrictionStructuredDataPropertyTuple oml = this.omlTerminologiesFactory.createRestrictionStructuredDataPropertyTuple();
@@ -3380,7 +4091,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readRuleBodySegments(final Stream<String> lines) {
+  protected void readRuleBodySegments(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final RuleBodySegment oml = this.omlTerminologiesFactory.createRuleBodySegment();
@@ -3391,7 +4102,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readScalarDataPropertyValues(final Stream<String> lines) {
+  protected void readScalarDataPropertyValues(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final ScalarDataPropertyValue oml = this.omlDescriptionsFactory.createScalarDataPropertyValue();
@@ -3403,7 +4114,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readSingletonInstanceScalarDataPropertyValues(final Stream<String> lines) {
+  protected void readSingletonInstanceScalarDataPropertyValues(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final SingletonInstanceScalarDataPropertyValue oml = this.omlDescriptionsFactory.createSingletonInstanceScalarDataPropertyValue();
@@ -3415,7 +4126,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readSingletonInstanceStructuredDataPropertyValues(final Stream<String> lines) {
+  protected void readSingletonInstanceStructuredDataPropertyValues(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final SingletonInstanceStructuredDataPropertyValue oml = this.omlDescriptionsFactory.createSingletonInstanceStructuredDataPropertyValue();
@@ -3426,7 +4137,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readStructuredDataPropertyTuples(final Stream<String> lines) {
+  protected void readStructuredDataPropertyTuples(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final StructuredDataPropertyTuple oml = this.omlDescriptionsFactory.createStructuredDataPropertyTuple();
@@ -3437,7 +4148,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readUnreifiedRelationshipInstanceTuples(final Stream<String> lines) {
+  protected void readUnreifiedRelationshipInstanceTuples(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final UnreifiedRelationshipInstanceTuple oml = this.omlDescriptionsFactory.createUnreifiedRelationshipInstanceTuple();
@@ -3448,7 +4159,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readUnreifiedRelationshipInversePropertyPredicates(final Stream<String> lines) {
+  protected void readUnreifiedRelationshipInversePropertyPredicates(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final UnreifiedRelationshipInversePropertyPredicate oml = this.omlTerminologiesFactory.createUnreifiedRelationshipInversePropertyPredicate();
@@ -3459,7 +4170,7 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readUnreifiedRelationshipPropertyPredicates(final Stream<String> lines) {
+  protected void readUnreifiedRelationshipPropertyPredicates(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
       final UnreifiedRelationshipPropertyPredicate oml = this.omlTerminologiesFactory.createUnreifiedRelationshipPropertyPredicate();
@@ -4410,11 +5121,14 @@ public class OMLSpecificationTables {
         }
         oml.setScalarProperty(scalarPropertyPair.getKey());
         final String valueTypeXRef = kv.remove("valueTypeUUID");
-        final Pair<DataRange, Map<String, String>> valueTypePair = this.dataRanges.get(valueTypeXRef);
-        if ((null == valueTypePair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for valueType in entityScalarDataPropertyParticularRestrictionAxioms");
+        boolean _notEquals = (!Objects.equal("null", valueTypeXRef));
+        if (_notEquals) {
+          final Pair<DataRange, Map<String, String>> valueTypePair = this.dataRanges.get(valueTypeXRef);
+          if ((null == valueTypePair)) {
+            throw new IllegalArgumentException("Null cross-reference lookup for valueType in entityScalarDataPropertyParticularRestrictionAxioms");
+          }
+          oml.setValueType(valueTypePair.getKey());
         }
-        oml.setValueType(valueTypePair.getKey());
       }
     };
     this.entityScalarDataPropertyParticularRestrictionAxioms.forEach(_function);
@@ -4476,11 +5190,14 @@ public class OMLSpecificationTables {
         }
         oml.setAxiom(axiomPair.getKey());
         final String valueTypeXRef = kv.remove("valueTypeUUID");
-        final Pair<DataRange, Map<String, String>> valueTypePair = this.dataRanges.get(valueTypeXRef);
-        if ((null == valueTypePair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for valueType in scalarOneOfLiteralAxioms");
+        boolean _notEquals = (!Objects.equal("null", valueTypeXRef));
+        if (_notEquals) {
+          final Pair<DataRange, Map<String, String>> valueTypePair = this.dataRanges.get(valueTypeXRef);
+          if ((null == valueTypePair)) {
+            throw new IllegalArgumentException("Null cross-reference lookup for valueType in scalarOneOfLiteralAxioms");
+          }
+          oml.setValueType(valueTypePair.getKey());
         }
-        oml.setValueType(valueTypePair.getKey());
       }
     };
     this.scalarOneOfLiteralAxioms.forEach(_function);
@@ -5049,11 +5766,14 @@ public class OMLSpecificationTables {
         }
         oml.setStructuredDataPropertyContext(structuredDataPropertyContextPair.getKey());
         final String valueTypeXRef = kv.remove("valueTypeUUID");
-        final Pair<DataRange, Map<String, String>> valueTypePair = this.dataRanges.get(valueTypeXRef);
-        if ((null == valueTypePair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for valueType in restrictionScalarDataPropertyValues");
+        boolean _notEquals = (!Objects.equal("null", valueTypeXRef));
+        if (_notEquals) {
+          final Pair<DataRange, Map<String, String>> valueTypePair = this.dataRanges.get(valueTypeXRef);
+          if ((null == valueTypePair)) {
+            throw new IllegalArgumentException("Null cross-reference lookup for valueType in restrictionScalarDataPropertyValues");
+          }
+          oml.setValueType(valueTypePair.getKey());
         }
-        oml.setValueType(valueTypePair.getKey());
       }
     };
     this.restrictionScalarDataPropertyValues.forEach(_function);
@@ -5091,17 +5811,23 @@ public class OMLSpecificationTables {
       boolean _not = (!_isEmpty);
       if (_not) {
         final String previousSegmentXRef = kv.remove("previousSegmentUUID");
-        final Pair<RuleBodySegment, Map<String, String>> previousSegmentPair = this.ruleBodySegments.get(previousSegmentXRef);
-        if ((null == previousSegmentPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for previousSegment in ruleBodySegments");
+        boolean _notEquals = (!Objects.equal("null", previousSegmentXRef));
+        if (_notEquals) {
+          final Pair<RuleBodySegment, Map<String, String>> previousSegmentPair = this.ruleBodySegments.get(previousSegmentXRef);
+          if ((null == previousSegmentPair)) {
+            throw new IllegalArgumentException("Null cross-reference lookup for previousSegment in ruleBodySegments");
+          }
+          oml.setPreviousSegment(previousSegmentPair.getKey());
         }
-        oml.setPreviousSegment(previousSegmentPair.getKey());
         final String ruleXRef = kv.remove("ruleUUID");
-        final Pair<ChainRule, Map<String, String>> rulePair = this.chainRules.get(ruleXRef);
-        if ((null == rulePair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for rule in ruleBodySegments");
+        boolean _notEquals_1 = (!Objects.equal("null", ruleXRef));
+        if (_notEquals_1) {
+          final Pair<ChainRule, Map<String, String>> rulePair = this.chainRules.get(ruleXRef);
+          if ((null == rulePair)) {
+            throw new IllegalArgumentException("Null cross-reference lookup for rule in ruleBodySegments");
+          }
+          oml.setRule(rulePair.getKey());
         }
-        oml.setRule(rulePair.getKey());
       }
     };
     this.ruleBodySegments.forEach(_function);
@@ -5127,11 +5853,14 @@ public class OMLSpecificationTables {
         }
         oml.setStructuredDataPropertyContext(structuredDataPropertyContextPair.getKey());
         final String valueTypeXRef = kv.remove("valueTypeUUID");
-        final Pair<DataRange, Map<String, String>> valueTypePair = this.dataRanges.get(valueTypeXRef);
-        if ((null == valueTypePair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for valueType in scalarDataPropertyValues");
+        boolean _notEquals = (!Objects.equal("null", valueTypeXRef));
+        if (_notEquals) {
+          final Pair<DataRange, Map<String, String>> valueTypePair = this.dataRanges.get(valueTypeXRef);
+          if ((null == valueTypePair)) {
+            throw new IllegalArgumentException("Null cross-reference lookup for valueType in scalarDataPropertyValues");
+          }
+          oml.setValueType(valueTypePair.getKey());
         }
-        oml.setValueType(valueTypePair.getKey());
       }
     };
     this.scalarDataPropertyValues.forEach(_function);
@@ -5163,11 +5892,14 @@ public class OMLSpecificationTables {
         }
         oml.setScalarDataProperty(scalarDataPropertyPair.getKey());
         final String valueTypeXRef = kv.remove("valueTypeUUID");
-        final Pair<DataRange, Map<String, String>> valueTypePair = this.dataRanges.get(valueTypeXRef);
-        if ((null == valueTypePair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for valueType in singletonInstanceScalarDataPropertyValues");
+        boolean _notEquals = (!Objects.equal("null", valueTypeXRef));
+        if (_notEquals) {
+          final Pair<DataRange, Map<String, String>> valueTypePair = this.dataRanges.get(valueTypeXRef);
+          if ((null == valueTypePair)) {
+            throw new IllegalArgumentException("Null cross-reference lookup for valueType in singletonInstanceScalarDataPropertyValues");
+          }
+          oml.setValueType(valueTypePair.getKey());
         }
-        oml.setValueType(valueTypePair.getKey());
       }
     };
     this.singletonInstanceScalarDataPropertyValues.forEach(_function);
