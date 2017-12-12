@@ -153,7 +153,7 @@ public class OMLZipResource extends ResourceImpl {
     }
   }
   
-  protected final static Pattern KeyValue = Pattern.compile("\"([^\"]*)\":(null|\".*?\"|\\{\"literalType\":\"[^\"]*\",\"value\":\".*?\"\\}),?");
+  protected final static Pattern KeyValue = Pattern.compile("\"([^\"]*)\":(null|\"(.*?)\"|\\{\"literalType\":\"[^\"]*\",\"value\":\".*?\"\\}),?");
   
   protected static List<Map<String, String>> lines2tuples(final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> list = new ArrayList<Map<String, String>>();
@@ -168,7 +168,15 @@ public class OMLZipResource extends ResourceImpl {
       while (m.find()) {
         {
           final String key = m.group(1);
-          final String value = m.group(2);
+          String _elvis = null;
+          String _group = m.group(3);
+          if (_group != null) {
+            _elvis = _group;
+          } else {
+            String _group_1 = m.group(2);
+            _elvis = _group_1;
+          }
+          final String value = _elvis;
           map.put(key, value);
         }
       }
