@@ -1,20 +1,60 @@
+/*
+ * Copyright 2016 California Institute of Technology ("Caltech").
+ * U.S. Government sponsorship acknowledged.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * License Terms
+ */
 package gov.nasa.jpl.imce.oml.model.extensions
 
 import java.util.ArrayList
 import java.util.List
+import java.util.regex.Pattern
 import gov.nasa.jpl.imce.oml.model.bundles.AnonymousConceptUnionAxiom
 import gov.nasa.jpl.imce.oml.model.bundles.Bundle
 import gov.nasa.jpl.imce.oml.model.bundles.BundledTerminologyAxiom
 import gov.nasa.jpl.imce.oml.model.bundles.RootConceptTaxonomyAxiom
 import gov.nasa.jpl.imce.oml.model.bundles.SpecificDisjointConceptAxiom
-import gov.nasa.jpl.imce.oml.model.common.CommonFactory
 import gov.nasa.jpl.imce.oml.model.common.AnnotationProperty
 import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue
+import gov.nasa.jpl.imce.oml.model.common.CommonFactory
 import gov.nasa.jpl.imce.oml.model.common.Extent
+import gov.nasa.jpl.imce.oml.model.common.LiteralBoolean
+import gov.nasa.jpl.imce.oml.model.common.LiteralDateTime
+import gov.nasa.jpl.imce.oml.model.common.LiteralDecimal
+import gov.nasa.jpl.imce.oml.model.common.LiteralFloat
+import gov.nasa.jpl.imce.oml.model.common.LiteralNumber
+import gov.nasa.jpl.imce.oml.model.common.LiteralRational
+import gov.nasa.jpl.imce.oml.model.common.LiteralReal
+import gov.nasa.jpl.imce.oml.model.common.LiteralString
+import gov.nasa.jpl.imce.oml.model.common.LiteralURI
+import gov.nasa.jpl.imce.oml.model.common.LiteralUUID
+import gov.nasa.jpl.imce.oml.model.common.LiteralValue
+import gov.nasa.jpl.imce.oml.model.datatypes.DateTimeValue
+import gov.nasa.jpl.imce.oml.model.datatypes.DecimalValue
+import gov.nasa.jpl.imce.oml.model.datatypes.FloatValue
+import gov.nasa.jpl.imce.oml.model.datatypes.LanguageTagValue
+import gov.nasa.jpl.imce.oml.model.datatypes.PatternValue
+import gov.nasa.jpl.imce.oml.model.datatypes.PositiveIntegerValue
+import gov.nasa.jpl.imce.oml.model.datatypes.RationalValue
+import gov.nasa.jpl.imce.oml.model.datatypes.RawStringValue
+import gov.nasa.jpl.imce.oml.model.datatypes.RealValue
+import gov.nasa.jpl.imce.oml.model.datatypes.URIValue
 import gov.nasa.jpl.imce.oml.model.descriptions.ConceptInstance
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxExtendsClosedWorldDefinitions
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxRefinement
+import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionKind
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstance
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstanceDomain
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstanceRange
@@ -67,25 +107,14 @@ import gov.nasa.jpl.imce.oml.model.terminologies.StructuredDataProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.SynonymScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyExtensionAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyKind
 import gov.nasa.jpl.imce.oml.model.terminologies.TimeScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship
 import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipInversePropertyPredicate
 import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipPropertyPredicate
-import gov.nasa.jpl.imce.oml.model.common.LiteralString
-import gov.nasa.jpl.imce.oml.model.common.LiteralValue
-import gov.nasa.jpl.imce.oml.model.common.LiteralNumber
-import gov.nasa.jpl.imce.oml.model.common.LiteralDateTime
-import gov.nasa.jpl.imce.oml.model.datatypes.PositiveIntegerValue
-import gov.nasa.jpl.imce.oml.model.datatypes.PatternValue
-import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyKind
-import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionKind
-import gov.nasa.jpl.imce.oml.model.datatypes.LanguageTagValue
-import gov.nasa.jpl.imce.oml.model.datatypes.DateTimeValue
-import gov.nasa.jpl.imce.oml.model.datatypes.RawStringValue
 
 /**
- * OMLTables is a collection of extension queries for OML Extent
- * and of value conversion methods.
+ * OMLTables is a collection of extension queries for OML Extent and conversion methods for OML values.
  * 
  * These queries are used in OMLSpecificationTables.save(Extent, ZipArchiveOutputStream).
  * The value conversion methods are used in several OMLSpecificationTables.read*(Stream<String>) methods.
@@ -616,6 +645,57 @@ class OMLTables {
   	result
   }
 	
+  static def dispatch String toString(String value) {
+  	"\"" + value.replaceAll("\"", "\\\"") + "\""
+  }
+  
+  static def dispatch String toString(PositiveIntegerValue value) {
+  	"\"" + value.value + "\""
+  }
+  
+  static def dispatch String toString(LiteralNumber value) {
+  	switch value {
+  		LiteralDecimal:
+  		  switch value.decimal {
+  		  	DecimalValue:
+  		  		'''{"literalType":"LiteralDecimalType","value":"«value.value»"}'''
+  		  	PositiveIntegerValue:
+  		  		'''{"literalType":"LiteralPositiveIntegerType","value":"«value.value»"}'''
+  		  }
+  		LiteralFloat:
+  		  '''{"literalType":"LiteralFloatType","value":"«value.value»"}'''
+  		LiteralRational:
+  		  '''{"literalType":"LiteralRationalType","value":"«value.value»"}'''
+  		LiteralReal:
+  		  '''{"literalType":"LiteralRealType","value":"«value.value»"}'''
+  	}
+  }
+  
+  static def dispatch String toString(LiteralValue value) {
+  	switch value {
+  		LiteralBoolean:
+  			 '''{"literalType":"LiteralBooleanType","value":"«value.value»"}'''
+  		LiteralDateTime:
+  			 '''{"literalType":"LiteralDateTimeType","value":"«value.value»"}'''
+  		LiteralString:
+  			 '''{"literalType":"LiteralStringType","value":"«value.value»"}'''
+  		LiteralUUID:
+  			 '''{"literalType":"LiteralUUIDType","value":"«value.value»"}'''
+  		LiteralURI:
+  			 '''{"literalType":"LiteralURIType","value":"«value.value»"}'''
+  		LiteralNumber:
+  			toString(value)
+  	}
+  }
+  
+  static def dispatch String toString(DescriptionKind value) {
+  	"\"" + value.toString + "\""
+  }
+  
+  static def dispatch String toString(TerminologyKind value) {
+  	"\"" + value.toString + "\""
+  }
+  
   static def Boolean toEBoolean(String value) {
 	return Boolean.parseBoolean(value)
   }
@@ -650,25 +730,122 @@ class OMLTables {
 	return lit
   }
   
-  static def LiteralNumber toLiteralNumber(String value) {
-	throw new UnsupportedOperationException("TODO: auto-generated method stub")
-  }
-  
   static def LiteralString toLiteralString(String value) {
 	val lit = CommonFactory.eINSTANCE.createLiteralRawString()
 	lit.string = new RawStringValue(value)
 	return lit
   }
   
-  static def LiteralValue toLiteralValue(String value) {
-	throw new UnsupportedOperationException("TODO: auto-generated method stub")
+  //protected static val Pattern LiteralNumberOrValue = Pattern.compile("{\"literalType\":\"(.*)\",\"value\":\"(.*)\"}")
+   
+  protected static val Pattern LiteralNumberOrValue = Pattern.compile("\\{\"literalType\":\"(.*)\",\"value\":\"(.*)\"\\}")
+    
+  static def LiteralNumber toLiteralNumber(String value) {
+  	val m = LiteralNumberOrValue.matcher(value)
+  	if (m.find) {
+  		val litType = m.group(1)
+  		val litValue = m.group(2)
+  		switch litType {
+  			case "LiteralDecimalType": {
+  				val lit = CommonFactory.eINSTANCE.createLiteralDecimal
+  				lit.decimal = new DecimalValue(litValue)
+  				lit
+  				}
+  			case "LiteralPositiveIntegerType": {
+  				val lit = CommonFactory.eINSTANCE.createLiteralDecimal
+  				lit.decimal = new PositiveIntegerValue(litValue)
+  				lit
+  				}
+  		  	case "LiteralFloatType": {
+  		  		val lit = CommonFactory.eINSTANCE.createLiteralFloat
+  				lit.float = new FloatValue(litValue)
+  				lit
+  		  		}
+  		  	case "LiteralRationalType": {
+  		  		val lit = CommonFactory.eINSTANCE.createLiteralRational
+  				lit.rational = new RationalValue(litValue)
+  				lit
+  		  		}
+  			case "LiteralRealType": {
+  				val lit = CommonFactory.eINSTANCE.createLiteralReal
+  				lit.real = new RealValue(litValue)
+  				lit
+  				}
+  			default:
+ 				throw new IllegalArgumentException("OMLTables.toLiteralNumber(value): unrecognized type: "+litType)
+  		}
+  	} else
+		throw new IllegalArgumentException("OMLTables.toLiteralNumber(value): ill-formed value="+value)
   }
+  
+  static def LiteralValue toLiteralValue(String value) {
+  	val m = LiteralNumberOrValue.matcher(value)
+  	if (m.find) {
+  		val litType = m.group(1)
+  		val litValue = m.group(2)
+  		switch litType {
+  			case "LiteralBooleanType": {
+  				val lit = CommonFactory.eINSTANCE.createLiteralBoolean
+  				lit.bool = Boolean.parseBoolean(litValue)
+  				lit
+  				}
+  		 	case "LiteralDateTimeType": {
+  		 		val lit = CommonFactory.eINSTANCE.createLiteralDateTime
+  				lit.dateTime = new DateTimeValue(litValue)
+  				lit
+  		 		}
+  			case "LiteralStringType": {
+  				val lit = CommonFactory.eINSTANCE.createLiteralRawString
+  				lit.string = new RawStringValue(litValue)
+  				lit
+  				}
+  			case "LiteralUUIDType": {
+  				val lit = CommonFactory.eINSTANCE.createLiteralRawString
+  				lit.string = new RawStringValue(litValue)
+  				lit
+  				}
+  			case "LiteralURIType": {
+  				val lit = CommonFactory.eINSTANCE.createLiteralURI
+  				lit.uri = new URIValue(litValue)
+  				lit
+  				}
+  			case "LiteralDecimalType": {
+  				val lit = CommonFactory.eINSTANCE.createLiteralDecimal
+  				lit.decimal = new DecimalValue(litValue)
+  				lit
+  				}
+  			case "LiteralPositiveIntegerType": {
+  				val lit = CommonFactory.eINSTANCE.createLiteralDecimal
+  				lit.decimal = new PositiveIntegerValue(litValue)
+  				lit
+  				}
+  		  	case "LiteralFloatType": {
+  		  		val lit = CommonFactory.eINSTANCE.createLiteralFloat
+  				lit.float = new FloatValue(litValue)
+  				lit
+  		  		}
+  		  	case "LiteralRationalType": {
+  		  		val lit = CommonFactory.eINSTANCE.createLiteralRational
+  				lit.rational = new RationalValue(litValue)
+  				lit
+  		  		}
+  			case "LiteralRealType": {
+  				val lit = CommonFactory.eINSTANCE.createLiteralReal
+  				lit.real = new RealValue(litValue)
+  				lit
+  				}
+  			default:
+ 				throw new IllegalArgumentException("OMLTables.toLiteralValue(value): unrecognized type: "+litType)
+  		}
+  	} else
+		throw new IllegalArgumentException("OMLTables.toLiteralValue(value): ill-formed value="+value)
+ }
   
   static def DescriptionKind toDescriptionKind(String value) {
   	switch value {
-  		case "Partial":
+  		case "\"Partial\"":
   			return DescriptionKind.PARTIAL
-  		case "Final":
+  		case "\"Final\"":
   			return DescriptionKind.FINAL
   		default:
   			throw new IllegalArgumentException(value +" is not a legal DescriptionKind")
@@ -677,9 +854,9 @@ class OMLTables {
   
   static def TerminologyKind toTerminologyKind(String value) {
   	switch value {
-  		case "OpenWorldDefinitions":
+  		case "\"OpenWorldDefinitions\"":
   			return TerminologyKind.OPEN_WORLD_DEFINITIONS
-  		case "ClosedWorldDesignations":
+  		case "\"ClosedWorldDesignations\"":
   			return TerminologyKind.CLOSED_WORLD_DESIGNATIONS
   		default:
   			throw new IllegalArgumentException(value +" is not a legal TerminologyKind")

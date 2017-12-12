@@ -27,6 +27,17 @@ import gov.nasa.jpl.imce.oml.model.common.CrossReferencabilityKind
 import java.util.Map
 import java.util.HashMap
 import gov.nasa.jpl.imce.oml.zip.OMLZipResource
+import gov.nasa.jpl.imce.oml.model.common.LiteralValue
+import gov.nasa.jpl.imce.oml.model.common.LiteralBoolean
+import gov.nasa.jpl.imce.oml.model.common.LiteralDateTime
+import gov.nasa.jpl.imce.oml.model.common.LiteralString
+import gov.nasa.jpl.imce.oml.model.common.LiteralURI
+import gov.nasa.jpl.imce.oml.model.common.LiteralUUID
+import gov.nasa.jpl.imce.oml.model.common.LiteralNumber
+import gov.nasa.jpl.imce.oml.model.common.LiteralDecimal
+import gov.nasa.jpl.imce.oml.model.common.LiteralFloat
+import gov.nasa.jpl.imce.oml.model.common.LiteralRational
+import gov.nasa.jpl.imce.oml.model.common.LiteralReal
 
 /**
  * Reflection-based OML Resource Comparison.
@@ -112,6 +123,100 @@ class OMLResourceCompare {
 	throws IllegalArgumentException {
 		throw new IllegalArgumentException("compareReferences("+path+") unhandled case for '"+f.name+": "+t.name)
 	}
+	
+	static protected def dispatch void compareReferences
+	(String path, EReference f, EClass t, EObject e1, LiteralNumber v1, EObject e2, LiteralNumber v2)
+	throws IllegalArgumentException {
+		switch v1 {
+			LiteralDecimal:
+				switch v2 {
+					LiteralDecimal:
+						if (v1.decimal.value != v2.decimal.value)
+							throw new IllegalArgumentException('''compareReferences(«path») LiteralDecimal value mismatch '«f.name»: «t.name» («v1.decimal.value» vs. «v2.decimal.value»)''')
+					default:
+						throw new IllegalArgumentException('''compareReferences(«path») LiteralDecimal type mismatch «f.name»: «t.name» (mismatch with: «v2»)''')
+				}
+			LiteralFloat:
+				switch v2 {
+					LiteralFloat:
+						if (v1.float.value != v2.float.value)
+							throw new IllegalArgumentException('''compareReferences(«path») LiteralFloat value mismatch '«f.name»: «t.name» («v1.float.value» vs. «v2.float.value»)''')
+					default:
+						throw new IllegalArgumentException('''compareReferences(«path») LiteralFloat type mismatch «f.name»: «t.name» (mismatch with: «v2»)''')
+				}
+			LiteralRational:
+				switch v2 {
+					LiteralRational:
+						if (v1.rational.value != v2.rational.value)
+							throw new IllegalArgumentException('''compareReferences(«path») LiteralRational value mismatch '«f.name»: «t.name» («v1.rational.value» vs. «v2.rational.value»)''')
+					default:
+						throw new IllegalArgumentException('''compareReferences(«path») LiteralRational type mismatch «f.name»: «t.name» (mismatch with: «v2»)''')
+				}
+			LiteralReal:
+				switch v2 {
+					LiteralReal:
+						if (v1.real.value != v2.real.value)
+							throw new IllegalArgumentException('''compareReferences(«path») LiteralReal value mismatch '«f.name»: «t.name» («v1.real.value» vs. «v2.real.value»)''')
+					default:
+						throw new IllegalArgumentException('''compareReferences(«path») LiteralReal type mismatch «f.name»: «t.name» (mismatch with: «v2»)''')
+				}
+		}	
+	}
+	
+	static protected def dispatch void compareReferences
+	(String path, EReference f, EClass t, EObject e1, LiteralValue v1, EObject e2, LiteralValue v2)
+	throws IllegalArgumentException {
+		switch v1 {
+			LiteralBoolean:
+				switch v2 {
+					LiteralBoolean:
+						if (v1.bool != v2.bool)
+							throw new IllegalArgumentException('''compareReferences(«path») LiteralBoolean value mismatch '«f.name»: «t.name» («v1.bool» vs. «v2.bool»)''')
+					default:
+						throw new IllegalArgumentException('''compareReferences(«path») LiteralBoolean type mismatch «f.name»: «t.name» (mismatch with: «v2»)''')
+				}
+			LiteralDateTime:
+				switch v2 {
+					LiteralDateTime:
+						if (v1.dateTime != v2.dateTime)
+							throw new IllegalArgumentException('''compareReferences(«path») LiteralDateTime value mismatch '«f.name»: «t.name» («v1.dateTime» vs. «v2.dateTime»)''')
+					default:
+						throw new IllegalArgumentException('''compareReferences(«path») LiteralBoolean type mismatch «f.name»: «t.name» (mismatch with: «v2»)''')
+				}
+			LiteralString:
+				switch v2 {
+					LiteralString:
+						if (v1.value != v2.value)
+							throw new IllegalArgumentException('''compareReferences(«path») LiteralString value mismatch '«f.name»: «t.name» («v1.value» vs. «v2.value»)''')
+					default:
+						throw new IllegalArgumentException('''compareReferences(«path») LiteralString type mismatch «f.name»: «t.name» (mismatch with: «v2»)''')
+				}
+			LiteralURI:
+				switch v2 {
+					LiteralURI:
+						if (v1.uri != v2.uri)
+							throw new IllegalArgumentException('''compareReferences(«path») LiteralURI value mismatch '«f.name»: «t.name» («v1.uri» vs. «v2.uri»)''')
+					default:
+						throw new IllegalArgumentException('''compareReferences(«path») LiteralURI type mismatch «f.name»: «t.name» (mismatch with: «v2»)''')
+				}
+			LiteralUUID:
+				switch v2 {
+					LiteralUUID:
+						if (v1.uuid != v2.uuid)
+							throw new IllegalArgumentException('''compareReferences(«path») LiteralUUID value mismatch '«f.name»: «t.name» («v1.uuid» vs. «v2.uuid»)''')
+					default:
+						throw new IllegalArgumentException('''compareReferences(«path») LiteralUUID type mismatch «f.name»: «t.name» (mismatch with: «v2»)''')
+				}
+			LiteralNumber:
+				switch v2 {
+					LiteralNumber:
+						compareReferences(path, f, t, e1, v1, e2, v2)
+					default:
+						throw new IllegalArgumentException('''compareReferences(«path») LiteralNumber type mismatch «f.name»: «t.name» (mismatch with: «v2»)''')
+				}
+		}	
+	}
+	
 	
 	/**
 	 * Reference comparison for OML CrossReferencabilityKinds.

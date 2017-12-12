@@ -24,7 +24,6 @@ import java.util.ArrayList
 import java.util.HashMap
 import java.util.List
 import java.util.Map
-import java.util.stream.Stream
 import org.apache.commons.compress.archivers.zip.ZipArchiveOutputStream
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.resource.URIConverter
@@ -100,9 +99,9 @@ class OMLZipResource extends ResourceImpl {
 		}
 	}
 
-   protected static val Pattern KeyValue = Pattern.compile("\"([^\"]*)\":\"(.*?)\",?")
+   protected static val Pattern KeyValue = Pattern.compile("\"([^\"]*)\":(null|\".*?\"|\\{\"literalType\":\"[^\"]*\",\"value\":\".*?\"\\}),?")
    
-   protected static def List<Map<String, String>> lines2tuples(Stream<String> lines) {
+   protected static def List<Map<String, String>> lines2tuples(ArrayList<String> lines) {
    	val list = new ArrayList<Map<String, String>>()
   	lines.forEach[ line | 
   	    val map = new HashMap<String, String>()
