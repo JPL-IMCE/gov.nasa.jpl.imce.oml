@@ -55,3 +55,9 @@ gov.nasa.jpl.imce.oml.tycho 0.9.0.0 resolves major problems found in 0.8.0.1
   This problem seems to have been due to stale generated XText code.
 
 - [#175 Provide custom EMF/OML JSon serialization support for "*.omlzip"](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/175)
+
+- [#178 Add OMLZip unit tests that involve LiteralNumber and LiteralValue](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/178)
+
+- [#179 Update OMLZip serialization for optional references and attributes](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/179)
+
+- [#180 OMLSpecificaitonTables.save is vulnerable to exceptions.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/180)
