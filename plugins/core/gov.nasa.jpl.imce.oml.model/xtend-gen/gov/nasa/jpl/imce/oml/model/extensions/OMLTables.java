@@ -1718,9 +1718,9 @@ public class OMLTables {
   public static DescriptionKind toDescriptionKind(final String value) {
     if (value != null) {
       switch (value) {
-        case "\"Partial\"":
+        case "Partial":
           return DescriptionKind.PARTIAL;
-        case "\"Final\"":
+        case "Final":
           return DescriptionKind.FINAL;
         default:
           throw new IllegalArgumentException((value + " is not a legal DescriptionKind"));
@@ -1733,9 +1733,9 @@ public class OMLTables {
   public static TerminologyKind toTerminologyKind(final String value) {
     if (value != null) {
       switch (value) {
-        case "\"OpenWorldDefinitions\"":
+        case "OpenWorldDefinitions":
           return TerminologyKind.OPEN_WORLD_DEFINITIONS;
-        case "\"ClosedWorldDesignations\"":
+        case "ClosedWorldDesignations":
           return TerminologyKind.CLOSED_WORLD_DESIGNATIONS;
         default:
           throw new IllegalArgumentException((value + " is not a legal TerminologyKind"));

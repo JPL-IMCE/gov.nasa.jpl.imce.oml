@@ -61,3 +61,5 @@ gov.nasa.jpl.imce.oml.tycho 0.9.0.0 resolves major problems found in 0.8.0.1
 - [#179 Update OMLZip serialization for optional references and attributes](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/179)
 
 - [#180 OMLSpecificaitonTables.save is vulnerable to exceptions.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/180)
+
+- [#183 Need to strip quotes around IRI and UUID cross references](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/183)

@@ -736,8 +736,6 @@ class OMLTables {
 	return lit
   }
   
-  //protected static val Pattern LiteralNumberOrValue = Pattern.compile("{\"literalType\":\"(.*)\",\"value\":\"(.*)\"}")
-   
   protected static val Pattern LiteralNumberOrValue = Pattern.compile("\\{\"literalType\":\"(.*)\",\"value\":\"(.*)\"\\}")
     
   static def LiteralNumber toLiteralNumber(String value) {
@@ -843,9 +841,9 @@ class OMLTables {
   
   static def DescriptionKind toDescriptionKind(String value) {
   	switch value {
-  		case "\"Partial\"":
+  		case "Partial":
   			return DescriptionKind.PARTIAL
-  		case "\"Final\"":
+  		case "Final":
   			return DescriptionKind.FINAL
   		default:
   			throw new IllegalArgumentException(value +" is not a legal DescriptionKind")
@@ -854,9 +852,9 @@ class OMLTables {
   
   static def TerminologyKind toTerminologyKind(String value) {
   	switch value {
-  		case "\"OpenWorldDefinitions\"":
+  		case "OpenWorldDefinitions":
   			return TerminologyKind.OPEN_WORLD_DEFINITIONS
-  		case "\"ClosedWorldDesignations\"":
+  		case "ClosedWorldDesignations":
   			return TerminologyKind.CLOSED_WORLD_DESIGNATIONS
   		default:
   			throw new IllegalArgumentException(value +" is not a legal TerminologyKind")
