@@ -102,6 +102,8 @@ public class TerminologiesFactoryImpl extends EFactoryImpl implements Terminolog
 			case TerminologiesPackage.ASPECT_SPECIALIZATION_AXIOM: return (EObject)createAspectSpecializationAxiom();
 			case TerminologiesPackage.CONCEPT_SPECIALIZATION_AXIOM: return (EObject)createConceptSpecializationAxiom();
 			case TerminologiesPackage.REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM: return (EObject)createReifiedRelationshipSpecializationAxiom();
+			case TerminologiesPackage.SUB_OBJECT_PROPERTY_OF_AXIOM: return (EObject)createSubObjectPropertyOfAxiom();
+			case TerminologiesPackage.SUB_DATA_PROPERTY_OF_AXIOM: return (EObject)createSubDataPropertyOfAxiom();
 			case TerminologiesPackage.ENTITY_SCALAR_DATA_PROPERTY_EXISTENTIAL_RESTRICTION_AXIOM: return (EObject)createEntityScalarDataPropertyExistentialRestrictionAxiom();
 			case TerminologiesPackage.ENTITY_SCALAR_DATA_PROPERTY_UNIVERSAL_RESTRICTION_AXIOM: return (EObject)createEntityScalarDataPropertyUniversalRestrictionAxiom();
 			case TerminologiesPackage.ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM: return (EObject)createEntityScalarDataPropertyParticularRestrictionAxiom();
@@ -440,6 +442,26 @@ public class TerminologiesFactoryImpl extends EFactoryImpl implements Terminolog
 	public ReifiedRelationshipSpecializationAxiom createReifiedRelationshipSpecializationAxiom() {
 		ReifiedRelationshipSpecializationAxiomImpl reifiedRelationshipSpecializationAxiom = new ReifiedRelationshipSpecializationAxiomImpl();
 		return reifiedRelationshipSpecializationAxiom;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SubObjectPropertyOfAxiom createSubObjectPropertyOfAxiom() {
+		SubObjectPropertyOfAxiomImpl subObjectPropertyOfAxiom = new SubObjectPropertyOfAxiomImpl();
+		return subObjectPropertyOfAxiom;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SubDataPropertyOfAxiom createSubDataPropertyOfAxiom() {
+		SubDataPropertyOfAxiomImpl subDataPropertyOfAxiom = new SubDataPropertyOfAxiomImpl();
+		return subDataPropertyOfAxiom;
 	}
 
 	/**

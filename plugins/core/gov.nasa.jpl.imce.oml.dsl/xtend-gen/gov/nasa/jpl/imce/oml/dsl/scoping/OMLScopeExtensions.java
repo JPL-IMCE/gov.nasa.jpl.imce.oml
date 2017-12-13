@@ -345,6 +345,16 @@ public class OMLScopeExtensions {
     return this.<ReifiedRelationship>terminologyScope(tbox, _function, _function_1);
   }
   
+  public IScope allUnreifiedRelationshipsScope(final TerminologyBox tbox) {
+    final Function<TerminologyBox, Iterable<UnreifiedRelationship>> _function = (TerminologyBox it) -> {
+      return this._oMLExtensions.localUnreifiedRelationships(it);
+    };
+    final Function<Pair<TerminologyBox, UnreifiedRelationship>, QualifiedName> _function_1 = (Pair<TerminologyBox, UnreifiedRelationship> it) -> {
+      return this.<UnreifiedRelationship>importedResourceNameFunction(it);
+    };
+    return this.<UnreifiedRelationship>terminologyScope(tbox, _function, _function_1);
+  }
+  
   public IScope allEntityRelationshipsScope(final TerminologyBox tbox) {
     final Function<TerminologyBox, Iterable<EntityRelationship>> _function = (TerminologyBox it) -> {
       return this._oMLExtensions.localEntityRelationships(it);

@@ -124,6 +124,8 @@ public class OMLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getAspectSpecializationAxiomAccess().getGroup(), "rule__AspectSpecializationAxiom__Group__0");
 					put(grammarAccess.getConceptSpecializationAxiomAccess().getGroup(), "rule__ConceptSpecializationAxiom__Group__0");
 					put(grammarAccess.getReifiedRelationshipSpecializationAxiomAccess().getGroup(), "rule__ReifiedRelationshipSpecializationAxiom__Group__0");
+					put(grammarAccess.getSubObjectPropertyOfAxiomAccess().getGroup(), "rule__SubObjectPropertyOfAxiom__Group__0");
+					put(grammarAccess.getSubDataPropertyOfAxiomAccess().getGroup(), "rule__SubDataPropertyOfAxiom__Group__0");
 					put(grammarAccess.getEntityScalarDataPropertyExistentialRestrictionAxiomAccess().getGroup(), "rule__EntityScalarDataPropertyExistentialRestrictionAxiom__Group__0");
 					put(grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomAccess().getGroup(), "rule__EntityScalarDataPropertyParticularRestrictionAxiom__Group__0");
 					put(grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomAccess().getGroup_7(), "rule__EntityScalarDataPropertyParticularRestrictionAxiom__Group_7__0");
@@ -324,6 +326,12 @@ public class OMLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getReifiedRelationshipSpecializationAxiomAccess().getAnnotationsAssignment_0(), "rule__ReifiedRelationshipSpecializationAxiom__AnnotationsAssignment_0");
 					put(grammarAccess.getReifiedRelationshipSpecializationAxiomAccess().getSubRelationshipAssignment_1(), "rule__ReifiedRelationshipSpecializationAxiom__SubRelationshipAssignment_1");
 					put(grammarAccess.getReifiedRelationshipSpecializationAxiomAccess().getSuperRelationshipAssignment_3(), "rule__ReifiedRelationshipSpecializationAxiom__SuperRelationshipAssignment_3");
+					put(grammarAccess.getSubObjectPropertyOfAxiomAccess().getAnnotationsAssignment_0(), "rule__SubObjectPropertyOfAxiom__AnnotationsAssignment_0");
+					put(grammarAccess.getSubObjectPropertyOfAxiomAccess().getSubPropertyAssignment_1(), "rule__SubObjectPropertyOfAxiom__SubPropertyAssignment_1");
+					put(grammarAccess.getSubObjectPropertyOfAxiomAccess().getSuperPropertyAssignment_3(), "rule__SubObjectPropertyOfAxiom__SuperPropertyAssignment_3");
+					put(grammarAccess.getSubDataPropertyOfAxiomAccess().getAnnotationsAssignment_0(), "rule__SubDataPropertyOfAxiom__AnnotationsAssignment_0");
+					put(grammarAccess.getSubDataPropertyOfAxiomAccess().getSubPropertyAssignment_1(), "rule__SubDataPropertyOfAxiom__SubPropertyAssignment_1");
+					put(grammarAccess.getSubDataPropertyOfAxiomAccess().getSuperPropertyAssignment_3(), "rule__SubDataPropertyOfAxiom__SuperPropertyAssignment_3");
 					put(grammarAccess.getEntityScalarDataPropertyExistentialRestrictionAxiomAccess().getAnnotationsAssignment_0(), "rule__EntityScalarDataPropertyExistentialRestrictionAxiom__AnnotationsAssignment_0");
 					put(grammarAccess.getEntityScalarDataPropertyExistentialRestrictionAxiomAccess().getRestrictedEntityAssignment_2(), "rule__EntityScalarDataPropertyExistentialRestrictionAxiom__RestrictedEntityAssignment_2");
 					put(grammarAccess.getEntityScalarDataPropertyExistentialRestrictionAxiomAccess().getScalarPropertyAssignment_4(), "rule__EntityScalarDataPropertyExistentialRestrictionAxiom__ScalarPropertyAssignment_4");

@@ -326,6 +326,14 @@ public class TerminologiesAdapterFactory extends AdapterFactoryImpl {
 				return createReifiedRelationshipSpecializationAxiomAdapter();
 			}
 			@Override
+			public Adapter caseSubObjectPropertyOfAxiom(SubObjectPropertyOfAxiom object) {
+				return createSubObjectPropertyOfAxiomAdapter();
+			}
+			@Override
+			public Adapter caseSubDataPropertyOfAxiom(SubDataPropertyOfAxiom object) {
+				return createSubDataPropertyOfAxiomAdapter();
+			}
+			@Override
 			public Adapter caseEntityScalarDataPropertyRestrictionAxiom(EntityScalarDataPropertyRestrictionAxiom object) {
 				return createEntityScalarDataPropertyRestrictionAxiomAdapter();
 			}
@@ -1268,6 +1276,34 @@ public class TerminologiesAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createReifiedRelationshipSpecializationAxiomAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.terminologies.SubObjectPropertyOfAxiom <em>Sub Object Property Of Axiom</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.SubObjectPropertyOfAxiom
+	 * @generated
+	 */
+	public Adapter createSubObjectPropertyOfAxiomAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.terminologies.SubDataPropertyOfAxiom <em>Sub Data Property Of Axiom</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.SubDataPropertyOfAxiom
+	 * @generated
+	 */
+	public Adapter createSubDataPropertyOfAxiomAdapter() {
 		return null;
 	}
 

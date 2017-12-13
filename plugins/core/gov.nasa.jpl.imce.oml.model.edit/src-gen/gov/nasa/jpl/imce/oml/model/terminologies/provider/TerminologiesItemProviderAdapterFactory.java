@@ -755,6 +755,52 @@ public class TerminologiesItemProviderAdapterFactory extends TerminologiesAdapte
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.terminologies.SubObjectPropertyOfAxiom} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SubObjectPropertyOfAxiomItemProvider subObjectPropertyOfAxiomItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.terminologies.SubObjectPropertyOfAxiom}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSubObjectPropertyOfAxiomAdapter() {
+		if (subObjectPropertyOfAxiomItemProvider == null) {
+			subObjectPropertyOfAxiomItemProvider = new SubObjectPropertyOfAxiomItemProvider(this);
+		}
+
+		return subObjectPropertyOfAxiomItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.terminologies.SubDataPropertyOfAxiom} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SubDataPropertyOfAxiomItemProvider subDataPropertyOfAxiomItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.terminologies.SubDataPropertyOfAxiom}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSubDataPropertyOfAxiomAdapter() {
+		if (subDataPropertyOfAxiomItemProvider == null) {
+			subDataPropertyOfAxiomItemProvider = new SubDataPropertyOfAxiomItemProvider(this);
+		}
+
+		return subDataPropertyOfAxiomItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyExistentialRestrictionAxiom} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1227,6 +1273,8 @@ public class TerminologiesItemProviderAdapterFactory extends TerminologiesAdapte
 		if (aspectSpecializationAxiomItemProvider != null) aspectSpecializationAxiomItemProvider.dispose();
 		if (conceptSpecializationAxiomItemProvider != null) conceptSpecializationAxiomItemProvider.dispose();
 		if (reifiedRelationshipSpecializationAxiomItemProvider != null) reifiedRelationshipSpecializationAxiomItemProvider.dispose();
+		if (subObjectPropertyOfAxiomItemProvider != null) subObjectPropertyOfAxiomItemProvider.dispose();
+		if (subDataPropertyOfAxiomItemProvider != null) subDataPropertyOfAxiomItemProvider.dispose();
 		if (entityScalarDataPropertyExistentialRestrictionAxiomItemProvider != null) entityScalarDataPropertyExistentialRestrictionAxiomItemProvider.dispose();
 		if (entityScalarDataPropertyUniversalRestrictionAxiomItemProvider != null) entityScalarDataPropertyUniversalRestrictionAxiomItemProvider.dispose();
 		if (entityScalarDataPropertyParticularRestrictionAxiomItemProvider != null) entityScalarDataPropertyParticularRestrictionAxiomItemProvider.dispose();

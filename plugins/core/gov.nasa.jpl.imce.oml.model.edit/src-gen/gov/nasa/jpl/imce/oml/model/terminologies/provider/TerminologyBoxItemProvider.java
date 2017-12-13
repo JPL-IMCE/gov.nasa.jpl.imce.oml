@@ -263,6 +263,16 @@ public class TerminologyBoxItemProvider extends ModuleItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(TerminologiesPackage.Literals.TERMINOLOGY_BOX__BOX_STATEMENTS,
+				 TerminologiesFactory.eINSTANCE.createSubObjectPropertyOfAxiom()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TerminologiesPackage.Literals.TERMINOLOGY_BOX__BOX_STATEMENTS,
+				 TerminologiesFactory.eINSTANCE.createSubDataPropertyOfAxiom()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TerminologiesPackage.Literals.TERMINOLOGY_BOX__BOX_STATEMENTS,
 				 TerminologiesFactory.eINSTANCE.createEntityScalarDataPropertyExistentialRestrictionAxiom()));
 
 		newChildDescriptors.add

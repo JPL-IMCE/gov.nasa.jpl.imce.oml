@@ -79,6 +79,8 @@ import gov.nasa.jpl.imce.oml.model.terminologies.RuleBodySegment;
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.StructuredDataProperty;
+import gov.nasa.jpl.imce.oml.model.terminologies.SubDataPropertyOfAxiom;
+import gov.nasa.jpl.imce.oml.model.terminologies.SubObjectPropertyOfAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBoxAxiom;
@@ -411,6 +413,38 @@ public class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespa
             boolean _equals_1 = Objects.equal(reference, _reifiedRelationshipSpecializationAxiom_SuperRelationship);
             if (_equals_1) {
               scope = this._oMLScopeExtensions.allReifiedRelationshipsScope(((ReifiedRelationshipSpecializationAxiom)context).getTbox());
+            }
+          }
+        }
+      }
+      if (!_matched) {
+        if (context instanceof SubObjectPropertyOfAxiom) {
+          _matched=true;
+          EReference _subObjectPropertyOfAxiom_SubProperty = TerminologiesPackage.eINSTANCE.getSubObjectPropertyOfAxiom_SubProperty();
+          boolean _equals = Objects.equal(reference, _subObjectPropertyOfAxiom_SubProperty);
+          if (_equals) {
+            scope = this._oMLScopeExtensions.allUnreifiedRelationshipsScope(((SubObjectPropertyOfAxiom)context).getTbox());
+          } else {
+            EReference _subObjectPropertyOfAxiom_SuperProperty = TerminologiesPackage.eINSTANCE.getSubObjectPropertyOfAxiom_SuperProperty();
+            boolean _equals_1 = Objects.equal(reference, _subObjectPropertyOfAxiom_SuperProperty);
+            if (_equals_1) {
+              scope = this._oMLScopeExtensions.allUnreifiedRelationshipsScope(((SubObjectPropertyOfAxiom)context).getTbox());
+            }
+          }
+        }
+      }
+      if (!_matched) {
+        if (context instanceof SubDataPropertyOfAxiom) {
+          _matched=true;
+          EReference _subDataPropertyOfAxiom_SubProperty = TerminologiesPackage.eINSTANCE.getSubDataPropertyOfAxiom_SubProperty();
+          boolean _equals = Objects.equal(reference, _subDataPropertyOfAxiom_SubProperty);
+          if (_equals) {
+            scope = this._oMLScopeExtensions.allEntityScalarDataPropertiesScope(((SubDataPropertyOfAxiom)context).getTbox());
+          } else {
+            EReference _subDataPropertyOfAxiom_SuperProperty = TerminologiesPackage.eINSTANCE.getSubDataPropertyOfAxiom_SuperProperty();
+            boolean _equals_1 = Objects.equal(reference, _subDataPropertyOfAxiom_SuperProperty);
+            if (_equals_1) {
+              scope = this._oMLScopeExtensions.allEntityScalarDataPropertiesScope(((SubDataPropertyOfAxiom)context).getTbox());
             }
           }
         }

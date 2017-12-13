@@ -299,6 +299,24 @@ public interface TerminologiesFactory extends EFactory {
 	ReifiedRelationshipSpecializationAxiom createReifiedRelationshipSpecializationAxiom();
 
 	/**
+	 * Returns a new object of class '<em>Sub Object Property Of Axiom</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Sub Object Property Of Axiom</em>'.
+	 * @generated
+	 */
+	SubObjectPropertyOfAxiom createSubObjectPropertyOfAxiom();
+
+	/**
+	 * Returns a new object of class '<em>Sub Data Property Of Axiom</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Sub Data Property Of Axiom</em>'.
+	 * @generated
+	 */
+	SubDataPropertyOfAxiom createSubDataPropertyOfAxiom();
+
+	/**
 	 * Returns a new object of class '<em>Entity Scalar Data Property Existential Restriction Axiom</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

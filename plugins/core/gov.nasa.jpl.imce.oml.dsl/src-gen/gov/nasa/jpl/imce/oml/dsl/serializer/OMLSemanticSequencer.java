@@ -93,6 +93,8 @@ import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.StringScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.Structure;
 import gov.nasa.jpl.imce.oml.model.terminologies.StructuredDataProperty;
+import gov.nasa.jpl.imce.oml.model.terminologies.SubDataPropertyOfAxiom;
+import gov.nasa.jpl.imce.oml.model.terminologies.SubObjectPropertyOfAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.SynonymScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyExtensionAxiom;
@@ -349,6 +351,12 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				return; 
 			case TerminologiesPackage.STRUCTURED_DATA_PROPERTY:
 				sequence_StructuredDataProperty(context, (StructuredDataProperty) semanticObject); 
+				return; 
+			case TerminologiesPackage.SUB_DATA_PROPERTY_OF_AXIOM:
+				sequence_SubDataPropertyOfAxiom(context, (SubDataPropertyOfAxiom) semanticObject); 
+				return; 
+			case TerminologiesPackage.SUB_OBJECT_PROPERTY_OF_AXIOM:
+				sequence_SubObjectPropertyOfAxiom(context, (SubObjectPropertyOfAxiom) semanticObject); 
 				return; 
 			case TerminologiesPackage.SYNONYM_SCALAR_RESTRICTION:
 				sequence_SynonymScalarRestriction(context, (SynonymScalarRestriction) semanticObject); 
@@ -1611,6 +1619,34 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     (annotations+=AnnotationPropertyValue* name=ID domain=[Structure|Reference] range=[Structure|Reference])
 	 */
 	protected void sequence_StructuredDataProperty(ISerializationContext context, StructuredDataProperty semanticObject) {
+		genericSequencer.createSequence(context, (EObject) semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     TerminologyBoxStatement returns SubDataPropertyOfAxiom
+	 *     TermAxiom returns SubDataPropertyOfAxiom
+	 *     SubDataPropertyOfAxiom returns SubDataPropertyOfAxiom
+	 *
+	 * Constraint:
+	 *     (annotations+=AnnotationPropertyValue* subProperty=[EntityScalarDataProperty|Reference] superProperty=[EntityScalarDataProperty|Reference])
+	 */
+	protected void sequence_SubDataPropertyOfAxiom(ISerializationContext context, SubDataPropertyOfAxiom semanticObject) {
+		genericSequencer.createSequence(context, (EObject) semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     TerminologyBoxStatement returns SubObjectPropertyOfAxiom
+	 *     TermAxiom returns SubObjectPropertyOfAxiom
+	 *     SubObjectPropertyOfAxiom returns SubObjectPropertyOfAxiom
+	 *
+	 * Constraint:
+	 *     (annotations+=AnnotationPropertyValue* subProperty=[UnreifiedRelationship|Reference] superProperty=[UnreifiedRelationship|Reference])
+	 */
+	protected void sequence_SubObjectPropertyOfAxiom(ISerializationContext context, SubObjectPropertyOfAxiom semanticObject) {
 		genericSequencer.createSequence(context, (EObject) semanticObject);
 	}
 	
