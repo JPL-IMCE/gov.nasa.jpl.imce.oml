@@ -86,6 +86,8 @@ import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetInvers
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetPropertyPredicate
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourceInversePropertyPredicate
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourcePropertyPredicate
+import gov.nasa.jpl.imce.oml.model.terminologies.SubObjectPropertyOfAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.SubDataPropertyOfAxiom
 
 class OMLFormatter extends AbstractFormatter2 {
 	
@@ -338,6 +340,16 @@ class OMLFormatter extends AbstractFormatter2 {
 	def dispatch void format(ReifiedRelationshipSpecializationAxiom ax, extension IFormattableDocument document) {
 		ax.annotations.forEach[format.append[setNewLines(1)]]
 		ax.regionFor.keyword('extendsRelationship').surround[oneSpace]
+	}
+	
+	def dispatch void format(SubObjectPropertyOfAxiom ax, extension IFormattableDocument document) {
+		ax.annotations.forEach[format.append[setNewLines(1)]]
+		ax.regionFor.keyword('subObjectPropertyOf').surround[oneSpace]
+	}
+	
+	def dispatch void format(SubDataPropertyOfAxiom ax, extension IFormattableDocument document) {
+		ax.annotations.forEach[format.append[setNewLines(1)]]
+		ax.regionFor.keyword('subDataPropertyOf').surround[oneSpace]
 	}
 	
 	def dispatch void format(ConceptDesignationTerminologyAxiom ax, extension IFormattableDocument document) {
