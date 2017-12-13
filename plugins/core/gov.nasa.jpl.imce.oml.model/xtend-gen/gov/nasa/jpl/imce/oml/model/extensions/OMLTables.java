@@ -105,6 +105,8 @@ import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.StringScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.Structure;
 import gov.nasa.jpl.imce.oml.model.terminologies.StructuredDataProperty;
+import gov.nasa.jpl.imce.oml.model.terminologies.SubDataPropertyOfAxiom;
+import gov.nasa.jpl.imce.oml.model.terminologies.SubObjectPropertyOfAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.SynonymScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyExtensionAxiom;
@@ -687,6 +689,40 @@ public class OMLTables {
         return it.uuid();
       };
       ListExtensions.<ReifiedRelationshipSpecializationAxiom, String>sortInplaceBy(result, _function_1);
+      _xblockexpression = result;
+    }
+    return _xblockexpression;
+  }
+  
+  public static List<SubDataPropertyOfAxiom> subDataPropertyOfAxioms(final Extent e) {
+    List<SubDataPropertyOfAxiom> _xblockexpression = null;
+    {
+      final List<SubDataPropertyOfAxiom> result = new ArrayList<SubDataPropertyOfAxiom>();
+      final Consumer<TerminologyBox> _function = (TerminologyBox tbox) -> {
+        Iterables.<SubDataPropertyOfAxiom>addAll(result, Iterables.<SubDataPropertyOfAxiom>filter(tbox.getBoxStatements(), SubDataPropertyOfAxiom.class));
+      };
+      OMLTables.terminologies(e).forEach(_function);
+      final Function1<SubDataPropertyOfAxiom, String> _function_1 = (SubDataPropertyOfAxiom it) -> {
+        return it.uuid();
+      };
+      ListExtensions.<SubDataPropertyOfAxiom, String>sortInplaceBy(result, _function_1);
+      _xblockexpression = result;
+    }
+    return _xblockexpression;
+  }
+  
+  public static List<SubObjectPropertyOfAxiom> subObjectPropertyOfAxioms(final Extent e) {
+    List<SubObjectPropertyOfAxiom> _xblockexpression = null;
+    {
+      final List<SubObjectPropertyOfAxiom> result = new ArrayList<SubObjectPropertyOfAxiom>();
+      final Consumer<TerminologyBox> _function = (TerminologyBox tbox) -> {
+        Iterables.<SubObjectPropertyOfAxiom>addAll(result, Iterables.<SubObjectPropertyOfAxiom>filter(tbox.getBoxStatements(), SubObjectPropertyOfAxiom.class));
+      };
+      OMLTables.terminologies(e).forEach(_function);
+      final Function1<SubObjectPropertyOfAxiom, String> _function_1 = (SubObjectPropertyOfAxiom it) -> {
+        return it.uuid();
+      };
+      ListExtensions.<SubObjectPropertyOfAxiom, String>sortInplaceBy(result, _function_1);
       _xblockexpression = result;
     }
     return _xblockexpression;

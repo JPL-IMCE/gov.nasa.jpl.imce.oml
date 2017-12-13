@@ -2920,6 +2920,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final CrossReference cSuperPropertyUnreifiedRelationshipCrossReference_3_0 = (CrossReference)cSuperPropertyAssignment_3.eContents().get(0);
 		private final RuleCall cSuperPropertyUnreifiedRelationshipReferenceParserRuleCall_3_0_1 = (RuleCall)cSuperPropertyUnreifiedRelationshipCrossReference_3_0.eContents().get(1);
 		
+		//// 2 Sub*PropertyOfAxioms
 		//SubObjectPropertyOfAxiom:
 		//	annotations+=AnnotationPropertyValue*
 		//	subProperty=[UnreifiedRelationship|Reference]
@@ -6722,6 +6723,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		return getReifiedRelationshipSpecializationAxiomAccess().getRule();
 	}
 	
+	//// 2 Sub*PropertyOfAxioms
 	//SubObjectPropertyOfAxiom:
 	//	annotations+=AnnotationPropertyValue*
 	//	subProperty=[UnreifiedRelationship|Reference]

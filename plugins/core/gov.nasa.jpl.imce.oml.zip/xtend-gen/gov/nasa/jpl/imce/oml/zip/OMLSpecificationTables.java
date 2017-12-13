@@ -96,6 +96,8 @@ import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.StringScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.Structure;
 import gov.nasa.jpl.imce.oml.model.terminologies.StructuredDataProperty;
+import gov.nasa.jpl.imce.oml.model.terminologies.SubDataPropertyOfAxiom;
+import gov.nasa.jpl.imce.oml.model.terminologies.SubObjectPropertyOfAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.SynonymScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesFactory;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox;
@@ -264,6 +266,10 @@ public class OMLSpecificationTables {
   protected final Map<String, Pair<SingletonInstanceStructuredDataPropertyValue, Map<String, String>>> singletonInstanceStructuredDataPropertyValues;
   
   protected final Map<String, Pair<StructuredDataPropertyTuple, Map<String, String>>> structuredDataPropertyTuples;
+  
+  protected final Map<String, Pair<SubDataPropertyOfAxiom, Map<String, String>>> subDataPropertyOfAxioms;
+  
+  protected final Map<String, Pair<SubObjectPropertyOfAxiom, Map<String, String>>> subObjectPropertyOfAxioms;
   
   protected final Map<String, Pair<UnreifiedRelationshipInstanceTuple, Map<String, String>>> unreifiedRelationshipInstanceTuples;
   
@@ -440,34 +446,38 @@ public class OMLSpecificationTables {
     this.singletonInstanceStructuredDataPropertyValues = _hashMap_61;
     HashMap<String, Pair<StructuredDataPropertyTuple, Map<String, String>>> _hashMap_62 = new HashMap<String, Pair<StructuredDataPropertyTuple, Map<String, String>>>();
     this.structuredDataPropertyTuples = _hashMap_62;
-    HashMap<String, Pair<UnreifiedRelationshipInstanceTuple, Map<String, String>>> _hashMap_63 = new HashMap<String, Pair<UnreifiedRelationshipInstanceTuple, Map<String, String>>>();
-    this.unreifiedRelationshipInstanceTuples = _hashMap_63;
-    HashMap<String, Pair<UnreifiedRelationshipInversePropertyPredicate, Map<String, String>>> _hashMap_64 = new HashMap<String, Pair<UnreifiedRelationshipInversePropertyPredicate, Map<String, String>>>();
-    this.unreifiedRelationshipInversePropertyPredicates = _hashMap_64;
-    HashMap<String, Pair<UnreifiedRelationshipPropertyPredicate, Map<String, String>>> _hashMap_65 = new HashMap<String, Pair<UnreifiedRelationshipPropertyPredicate, Map<String, String>>>();
-    this.unreifiedRelationshipPropertyPredicates = _hashMap_65;
-    HashMap<String, Pair<LogicalElement, Map<String, String>>> _hashMap_66 = new HashMap<String, Pair<LogicalElement, Map<String, String>>>();
-    this.logicalElements = _hashMap_66;
-    HashMap<String, Pair<Entity, Map<String, String>>> _hashMap_67 = new HashMap<String, Pair<Entity, Map<String, String>>>();
-    this.entities = _hashMap_67;
-    HashMap<String, Pair<EntityRelationship, Map<String, String>>> _hashMap_68 = new HashMap<String, Pair<EntityRelationship, Map<String, String>>>();
-    this.entityRelationships = _hashMap_68;
-    HashMap<String, Pair<DataRange, Map<String, String>>> _hashMap_69 = new HashMap<String, Pair<DataRange, Map<String, String>>>();
-    this.dataRanges = _hashMap_69;
-    HashMap<String, Pair<DataRelationshipToScalar, Map<String, String>>> _hashMap_70 = new HashMap<String, Pair<DataRelationshipToScalar, Map<String, String>>>();
-    this.dataRelationshipToScalars = _hashMap_70;
-    HashMap<String, Pair<DataRelationshipToStructure, Map<String, String>>> _hashMap_71 = new HashMap<String, Pair<DataRelationshipToStructure, Map<String, String>>>();
-    this.dataRelationshipToStructures = _hashMap_71;
-    HashMap<String, Pair<RestrictionStructuredDataPropertyContext, Map<String, String>>> _hashMap_72 = new HashMap<String, Pair<RestrictionStructuredDataPropertyContext, Map<String, String>>>();
-    this.restrictionStructuredDataPropertyContexts = _hashMap_72;
-    HashMap<String, Pair<TerminologyBox, Map<String, String>>> _hashMap_73 = new HashMap<String, Pair<TerminologyBox, Map<String, String>>>();
-    this.terminologyBoxes = _hashMap_73;
-    HashMap<String, Pair<ConceptTreeDisjunction, Map<String, String>>> _hashMap_74 = new HashMap<String, Pair<ConceptTreeDisjunction, Map<String, String>>>();
-    this.conceptTreeDisjunctions = _hashMap_74;
-    HashMap<String, Pair<ConceptualEntitySingletonInstance, Map<String, String>>> _hashMap_75 = new HashMap<String, Pair<ConceptualEntitySingletonInstance, Map<String, String>>>();
-    this.conceptualEntitySingletonInstances = _hashMap_75;
-    HashMap<String, Pair<SingletonInstanceStructuredDataPropertyContext, Map<String, String>>> _hashMap_76 = new HashMap<String, Pair<SingletonInstanceStructuredDataPropertyContext, Map<String, String>>>();
-    this.singletonInstanceStructuredDataPropertyContexts = _hashMap_76;
+    HashMap<String, Pair<SubDataPropertyOfAxiom, Map<String, String>>> _hashMap_63 = new HashMap<String, Pair<SubDataPropertyOfAxiom, Map<String, String>>>();
+    this.subDataPropertyOfAxioms = _hashMap_63;
+    HashMap<String, Pair<SubObjectPropertyOfAxiom, Map<String, String>>> _hashMap_64 = new HashMap<String, Pair<SubObjectPropertyOfAxiom, Map<String, String>>>();
+    this.subObjectPropertyOfAxioms = _hashMap_64;
+    HashMap<String, Pair<UnreifiedRelationshipInstanceTuple, Map<String, String>>> _hashMap_65 = new HashMap<String, Pair<UnreifiedRelationshipInstanceTuple, Map<String, String>>>();
+    this.unreifiedRelationshipInstanceTuples = _hashMap_65;
+    HashMap<String, Pair<UnreifiedRelationshipInversePropertyPredicate, Map<String, String>>> _hashMap_66 = new HashMap<String, Pair<UnreifiedRelationshipInversePropertyPredicate, Map<String, String>>>();
+    this.unreifiedRelationshipInversePropertyPredicates = _hashMap_66;
+    HashMap<String, Pair<UnreifiedRelationshipPropertyPredicate, Map<String, String>>> _hashMap_67 = new HashMap<String, Pair<UnreifiedRelationshipPropertyPredicate, Map<String, String>>>();
+    this.unreifiedRelationshipPropertyPredicates = _hashMap_67;
+    HashMap<String, Pair<LogicalElement, Map<String, String>>> _hashMap_68 = new HashMap<String, Pair<LogicalElement, Map<String, String>>>();
+    this.logicalElements = _hashMap_68;
+    HashMap<String, Pair<Entity, Map<String, String>>> _hashMap_69 = new HashMap<String, Pair<Entity, Map<String, String>>>();
+    this.entities = _hashMap_69;
+    HashMap<String, Pair<EntityRelationship, Map<String, String>>> _hashMap_70 = new HashMap<String, Pair<EntityRelationship, Map<String, String>>>();
+    this.entityRelationships = _hashMap_70;
+    HashMap<String, Pair<DataRange, Map<String, String>>> _hashMap_71 = new HashMap<String, Pair<DataRange, Map<String, String>>>();
+    this.dataRanges = _hashMap_71;
+    HashMap<String, Pair<DataRelationshipToScalar, Map<String, String>>> _hashMap_72 = new HashMap<String, Pair<DataRelationshipToScalar, Map<String, String>>>();
+    this.dataRelationshipToScalars = _hashMap_72;
+    HashMap<String, Pair<DataRelationshipToStructure, Map<String, String>>> _hashMap_73 = new HashMap<String, Pair<DataRelationshipToStructure, Map<String, String>>>();
+    this.dataRelationshipToStructures = _hashMap_73;
+    HashMap<String, Pair<RestrictionStructuredDataPropertyContext, Map<String, String>>> _hashMap_74 = new HashMap<String, Pair<RestrictionStructuredDataPropertyContext, Map<String, String>>>();
+    this.restrictionStructuredDataPropertyContexts = _hashMap_74;
+    HashMap<String, Pair<TerminologyBox, Map<String, String>>> _hashMap_75 = new HashMap<String, Pair<TerminologyBox, Map<String, String>>>();
+    this.terminologyBoxes = _hashMap_75;
+    HashMap<String, Pair<ConceptTreeDisjunction, Map<String, String>>> _hashMap_76 = new HashMap<String, Pair<ConceptTreeDisjunction, Map<String, String>>>();
+    this.conceptTreeDisjunctions = _hashMap_76;
+    HashMap<String, Pair<ConceptualEntitySingletonInstance, Map<String, String>>> _hashMap_77 = new HashMap<String, Pair<ConceptualEntitySingletonInstance, Map<String, String>>>();
+    this.conceptualEntitySingletonInstances = _hashMap_77;
+    HashMap<String, Pair<SingletonInstanceStructuredDataPropertyContext, Map<String, String>>> _hashMap_78 = new HashMap<String, Pair<SingletonInstanceStructuredDataPropertyContext, Map<String, String>>>();
+    this.singletonInstanceStructuredDataPropertyContexts = _hashMap_78;
   }
   
   public static void save(final Extent e, final ZipArchiveOutputStream zos) {
@@ -977,24 +987,40 @@ public class OMLSpecificationTables {
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_63 = new ZipArchiveEntry("UnreifiedRelationshipInstanceTuples.json");
+      ZipArchiveEntry _zipArchiveEntry_63 = new ZipArchiveEntry("SubDataPropertyOfAxioms.json");
       entry = _zipArchiveEntry_63;
+      zos.putArchiveEntry(entry);
+      try {
+        zos.write(OMLSpecificationTables.subDataPropertyOfAxiomsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
+      ZipArchiveEntry _zipArchiveEntry_64 = new ZipArchiveEntry("SubObjectPropertyOfAxioms.json");
+      entry = _zipArchiveEntry_64;
+      zos.putArchiveEntry(entry);
+      try {
+        zos.write(OMLSpecificationTables.subObjectPropertyOfAxiomsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
+      ZipArchiveEntry _zipArchiveEntry_65 = new ZipArchiveEntry("UnreifiedRelationshipInstanceTuples.json");
+      entry = _zipArchiveEntry_65;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.unreifiedRelationshipInstanceTuplesByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_64 = new ZipArchiveEntry("UnreifiedRelationshipInversePropertyPredicates.json");
-      entry = _zipArchiveEntry_64;
+      ZipArchiveEntry _zipArchiveEntry_66 = new ZipArchiveEntry("UnreifiedRelationshipInversePropertyPredicates.json");
+      entry = _zipArchiveEntry_66;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.unreifiedRelationshipInversePropertyPredicatesByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_65 = new ZipArchiveEntry("UnreifiedRelationshipPropertyPredicates.json");
-      entry = _zipArchiveEntry_65;
+      ZipArchiveEntry _zipArchiveEntry_67 = new ZipArchiveEntry("UnreifiedRelationshipPropertyPredicates.json");
+      entry = _zipArchiveEntry_67;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.unreifiedRelationshipPropertyPredicatesByteArray(e));
@@ -3052,6 +3078,68 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
+  public static byte[] subDataPropertyOfAxiomsByteArray(final Extent e) {
+    final ByteArrayOutputStream bos = new ByteArrayOutputStream();
+    final PrintWriter pw = new PrintWriter(bos);
+    final Consumer<SubDataPropertyOfAxiom> _function = (SubDataPropertyOfAxiom it) -> {
+      pw.print("{");
+      pw.print("\"uuid\":");
+      pw.print("\"");
+      pw.print(it.uuid());
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"tboxUUID\":");
+      pw.print("\"");
+      pw.print(it.getTbox().uuid());
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"subPropertyUUID\":");
+      pw.print("\"");
+      pw.print(it.getSubProperty().uuid());
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"superPropertyUUID\":");
+      pw.print("\"");
+      pw.print(it.getSuperProperty().uuid());
+      pw.print("\"");
+      pw.println("}");
+    };
+    OMLTables.subDataPropertyOfAxioms(e).forEach(_function);
+    pw.close();
+    return bos.toByteArray();
+  }
+  
+  public static byte[] subObjectPropertyOfAxiomsByteArray(final Extent e) {
+    final ByteArrayOutputStream bos = new ByteArrayOutputStream();
+    final PrintWriter pw = new PrintWriter(bos);
+    final Consumer<SubObjectPropertyOfAxiom> _function = (SubObjectPropertyOfAxiom it) -> {
+      pw.print("{");
+      pw.print("\"uuid\":");
+      pw.print("\"");
+      pw.print(it.uuid());
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"tboxUUID\":");
+      pw.print("\"");
+      pw.print(it.getTbox().uuid());
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"subPropertyUUID\":");
+      pw.print("\"");
+      pw.print(it.getSubProperty().uuid());
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"superPropertyUUID\":");
+      pw.print("\"");
+      pw.print(it.getSuperProperty().uuid());
+      pw.print("\"");
+      pw.println("}");
+    };
+    OMLTables.subObjectPropertyOfAxioms(e).forEach(_function);
+    pw.close();
+    return bos.toByteArray();
+  }
+  
   public static byte[] unreifiedRelationshipInstanceTuplesByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
@@ -3342,6 +3430,12 @@ public class OMLSpecificationTables {
                 break;
               case "StructuredDataPropertyTuples.json":
                 tables.readStructuredDataPropertyTuples(lines);
+                break;
+              case "SubDataPropertyOfAxioms.json":
+                tables.readSubDataPropertyOfAxioms(lines);
+                break;
+              case "SubObjectPropertyOfAxioms.json":
+                tables.readSubObjectPropertyOfAxioms(lines);
                 break;
               case "UnreifiedRelationshipInstanceTuples.json":
                 tables.readUnreifiedRelationshipInstanceTuples(lines);
@@ -4148,6 +4242,28 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
+  protected void readSubDataPropertyOfAxioms(final ArrayList<String> lines) {
+    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
+      final SubDataPropertyOfAxiom oml = this.omlTerminologiesFactory.createSubDataPropertyOfAxiom();
+      final String uuid = kv.remove("uuid");
+      final Pair<SubDataPropertyOfAxiom, Map<String, String>> pair = new Pair<SubDataPropertyOfAxiom, Map<String, String>>(oml, kv);
+      this.subDataPropertyOfAxioms.put(uuid, pair);
+    };
+    kvs.forEach(_function);
+  }
+  
+  protected void readSubObjectPropertyOfAxioms(final ArrayList<String> lines) {
+    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
+      final SubObjectPropertyOfAxiom oml = this.omlTerminologiesFactory.createSubObjectPropertyOfAxiom();
+      final String uuid = kv.remove("uuid");
+      final Pair<SubObjectPropertyOfAxiom, Map<String, String>> pair = new Pair<SubObjectPropertyOfAxiom, Map<String, String>>(oml, kv);
+      this.subObjectPropertyOfAxioms.put(uuid, pair);
+    };
+    kvs.forEach(_function);
+  }
+  
   protected void readUnreifiedRelationshipInstanceTuples(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
@@ -4253,6 +4369,8 @@ public class OMLSpecificationTables {
     this.<LogicalElement, SingletonInstanceScalarDataPropertyValue>includeMap(this.logicalElements, this.singletonInstanceScalarDataPropertyValues);
     this.<LogicalElement, SingletonInstanceStructuredDataPropertyValue>includeMap(this.logicalElements, this.singletonInstanceStructuredDataPropertyValues);
     this.<LogicalElement, StructuredDataPropertyTuple>includeMap(this.logicalElements, this.structuredDataPropertyTuples);
+    this.<LogicalElement, SubDataPropertyOfAxiom>includeMap(this.logicalElements, this.subDataPropertyOfAxioms);
+    this.<LogicalElement, SubObjectPropertyOfAxiom>includeMap(this.logicalElements, this.subObjectPropertyOfAxioms);
     this.<LogicalElement, UnreifiedRelationshipInstanceTuple>includeMap(this.logicalElements, this.unreifiedRelationshipInstanceTuples);
     this.<LogicalElement, UnreifiedRelationshipInversePropertyPredicate>includeMap(this.logicalElements, this.unreifiedRelationshipInversePropertyPredicates);
     this.<LogicalElement, UnreifiedRelationshipPropertyPredicate>includeMap(this.logicalElements, this.unreifiedRelationshipPropertyPredicates);
@@ -4343,6 +4461,8 @@ public class OMLSpecificationTables {
     this.resolveSingletonInstanceScalarDataPropertyValues(rs);
     this.resolveSingletonInstanceStructuredDataPropertyValues(rs);
     this.resolveStructuredDataPropertyTuples(rs);
+    this.resolveSubDataPropertyOfAxioms(rs);
+    this.resolveSubObjectPropertyOfAxioms(rs);
     this.resolveUnreifiedRelationshipInstanceTuples(rs);
     this.resolveUnreifiedRelationshipInversePropertyPredicates(rs);
     this.resolveUnreifiedRelationshipPropertyPredicates(rs);
@@ -5959,6 +6079,66 @@ public class OMLSpecificationTables {
     this.structuredDataPropertyTuples.forEach(_function);
   }
   
+  protected void resolveSubDataPropertyOfAxioms(final OMLZipResourceSet rs) {
+    final BiConsumer<String, Pair<SubDataPropertyOfAxiom, Map<String, String>>> _function = (String uuid, Pair<SubDataPropertyOfAxiom, Map<String, String>> oml_kv) -> {
+      final SubDataPropertyOfAxiom oml = oml_kv.getKey();
+      final Map<String, String> kv = oml_kv.getValue();
+      boolean _isEmpty = kv.isEmpty();
+      boolean _not = (!_isEmpty);
+      if (_not) {
+        final String tboxXRef = kv.remove("tboxUUID");
+        final Pair<TerminologyBox, Map<String, String>> tboxPair = this.terminologyBoxes.get(tboxXRef);
+        if ((null == tboxPair)) {
+          throw new IllegalArgumentException("Null cross-reference lookup for tbox in subDataPropertyOfAxioms");
+        }
+        oml.setTbox(tboxPair.getKey());
+        final String subPropertyXRef = kv.remove("subPropertyUUID");
+        final Pair<EntityScalarDataProperty, Map<String, String>> subPropertyPair = this.entityScalarDataProperties.get(subPropertyXRef);
+        if ((null == subPropertyPair)) {
+          throw new IllegalArgumentException("Null cross-reference lookup for subProperty in subDataPropertyOfAxioms");
+        }
+        oml.setSubProperty(subPropertyPair.getKey());
+        final String superPropertyXRef = kv.remove("superPropertyUUID");
+        final Pair<EntityScalarDataProperty, Map<String, String>> superPropertyPair = this.entityScalarDataProperties.get(superPropertyXRef);
+        if ((null == superPropertyPair)) {
+          throw new IllegalArgumentException("Null cross-reference lookup for superProperty in subDataPropertyOfAxioms");
+        }
+        oml.setSuperProperty(superPropertyPair.getKey());
+      }
+    };
+    this.subDataPropertyOfAxioms.forEach(_function);
+  }
+  
+  protected void resolveSubObjectPropertyOfAxioms(final OMLZipResourceSet rs) {
+    final BiConsumer<String, Pair<SubObjectPropertyOfAxiom, Map<String, String>>> _function = (String uuid, Pair<SubObjectPropertyOfAxiom, Map<String, String>> oml_kv) -> {
+      final SubObjectPropertyOfAxiom oml = oml_kv.getKey();
+      final Map<String, String> kv = oml_kv.getValue();
+      boolean _isEmpty = kv.isEmpty();
+      boolean _not = (!_isEmpty);
+      if (_not) {
+        final String tboxXRef = kv.remove("tboxUUID");
+        final Pair<TerminologyBox, Map<String, String>> tboxPair = this.terminologyBoxes.get(tboxXRef);
+        if ((null == tboxPair)) {
+          throw new IllegalArgumentException("Null cross-reference lookup for tbox in subObjectPropertyOfAxioms");
+        }
+        oml.setTbox(tboxPair.getKey());
+        final String subPropertyXRef = kv.remove("subPropertyUUID");
+        final Pair<UnreifiedRelationship, Map<String, String>> subPropertyPair = this.unreifiedRelationships.get(subPropertyXRef);
+        if ((null == subPropertyPair)) {
+          throw new IllegalArgumentException("Null cross-reference lookup for subProperty in subObjectPropertyOfAxioms");
+        }
+        oml.setSubProperty(subPropertyPair.getKey());
+        final String superPropertyXRef = kv.remove("superPropertyUUID");
+        final Pair<UnreifiedRelationship, Map<String, String>> superPropertyPair = this.unreifiedRelationships.get(superPropertyXRef);
+        if ((null == superPropertyPair)) {
+          throw new IllegalArgumentException("Null cross-reference lookup for superProperty in subObjectPropertyOfAxioms");
+        }
+        oml.setSuperProperty(superPropertyPair.getKey());
+      }
+    };
+    this.subObjectPropertyOfAxioms.forEach(_function);
+  }
+  
   protected void resolveUnreifiedRelationshipInstanceTuples(final OMLZipResourceSet rs) {
     final BiConsumer<String, Pair<UnreifiedRelationshipInstanceTuple, Map<String, String>>> _function = (String uuid, Pair<UnreifiedRelationshipInstanceTuple, Map<String, String>> oml_kv) -> {
       final UnreifiedRelationshipInstanceTuple oml = oml_kv.getKey();
@@ -6810,6 +6990,30 @@ public class OMLSpecificationTables {
             final Pair<StructuredDataPropertyTuple, Map<String, String>> pair = new Pair<StructuredDataPropertyTuple, Map<String, String>>(((StructuredDataPropertyTuple)e), _emptyMap);
             this.structuredDataPropertyTuples.put(((StructuredDataPropertyTuple)e).uuid(), pair);
             String _uuid = ((StructuredDataPropertyTuple)e).uuid();
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+            this.logicalElements.put(_uuid, _pair);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof SubDataPropertyOfAxiom) {
+            _matched_1=true;
+            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+            final Pair<SubDataPropertyOfAxiom, Map<String, String>> pair = new Pair<SubDataPropertyOfAxiom, Map<String, String>>(((SubDataPropertyOfAxiom)e), _emptyMap);
+            this.subDataPropertyOfAxioms.put(((SubDataPropertyOfAxiom)e).uuid(), pair);
+            String _uuid = ((SubDataPropertyOfAxiom)e).uuid();
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+            this.logicalElements.put(_uuid, _pair);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof SubObjectPropertyOfAxiom) {
+            _matched_1=true;
+            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+            final Pair<SubObjectPropertyOfAxiom, Map<String, String>> pair = new Pair<SubObjectPropertyOfAxiom, Map<String, String>>(((SubObjectPropertyOfAxiom)e), _emptyMap);
+            this.subObjectPropertyOfAxioms.put(((SubObjectPropertyOfAxiom)e).uuid(), pair);
+            String _uuid = ((SubObjectPropertyOfAxiom)e).uuid();
             Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
             Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
             this.logicalElements.put(_uuid, _pair);
