@@ -369,6 +369,8 @@ ReifiedRelationshipSpecializationAxiom returns ReifiedRelationshipSpecialization
 	( annotations+=AnnotationPropertyValue )*
 	subRelationship=[ReifiedRelationship|Reference] 'extendsRelationship' superRelationship=[ReifiedRelationship|Reference];
 
+// 2 Sub*PropertyOfAxioms
+
 SubObjectPropertyOfAxiom returns SubObjectPropertyOfAxiom:
 	( annotations+=AnnotationPropertyValue )*
 	subProperty=[UnreifiedRelationship|Reference]
