@@ -2452,6 +2452,15 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getSubObjectPropertyOfAxiom__AllNestedElements() {
+		return subObjectPropertyOfAxiomEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getSubDataPropertyOfAxiom() {
 		return subDataPropertyOfAxiomEClass;
 	}
@@ -2481,6 +2490,15 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 */
 	public EOperation getSubDataPropertyOfAxiom__Uuid() {
 		return subDataPropertyOfAxiomEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getSubDataPropertyOfAxiom__AllNestedElements() {
+		return subDataPropertyOfAxiomEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -3487,11 +3505,13 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		createEReference(subObjectPropertyOfAxiomEClass, SUB_OBJECT_PROPERTY_OF_AXIOM__SUB_PROPERTY);
 		createEReference(subObjectPropertyOfAxiomEClass, SUB_OBJECT_PROPERTY_OF_AXIOM__SUPER_PROPERTY);
 		createEOperation(subObjectPropertyOfAxiomEClass, SUB_OBJECT_PROPERTY_OF_AXIOM___UUID);
+		createEOperation(subObjectPropertyOfAxiomEClass, SUB_OBJECT_PROPERTY_OF_AXIOM___ALL_NESTED_ELEMENTS);
 
 		subDataPropertyOfAxiomEClass = createEClass(SUB_DATA_PROPERTY_OF_AXIOM);
 		createEReference(subDataPropertyOfAxiomEClass, SUB_DATA_PROPERTY_OF_AXIOM__SUB_PROPERTY);
 		createEReference(subDataPropertyOfAxiomEClass, SUB_DATA_PROPERTY_OF_AXIOM__SUPER_PROPERTY);
 		createEOperation(subDataPropertyOfAxiomEClass, SUB_DATA_PROPERTY_OF_AXIOM___UUID);
+		createEOperation(subDataPropertyOfAxiomEClass, SUB_DATA_PROPERTY_OF_AXIOM___ALL_NESTED_ELEMENTS);
 
 		entityScalarDataPropertyRestrictionAxiomEClass = createEClass(ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM);
 		createEReference(entityScalarDataPropertyRestrictionAxiomEClass, ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM__RESTRICTED_ENTITY);
@@ -4063,11 +4083,15 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 
 		initEOperation(getSubObjectPropertyOfAxiom__Uuid(), theCommonPackage.getUUID(), "uuid", 1, 1, !IS_UNIQUE, IS_ORDERED);
 
+		initEOperation(getSubObjectPropertyOfAxiom__AllNestedElements(), theCommonPackage.getLogicalElement(), "allNestedElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
+
 		initEClass(subDataPropertyOfAxiomEClass, SubDataPropertyOfAxiom.class, "SubDataPropertyOfAxiom", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSubDataPropertyOfAxiom_SubProperty(), this.getEntityScalarDataProperty(), null, "subProperty", null, 1, 1, SubDataPropertyOfAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSubDataPropertyOfAxiom_SuperProperty(), this.getEntityScalarDataProperty(), null, "superProperty", null, 1, 1, SubDataPropertyOfAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getSubDataPropertyOfAxiom__Uuid(), theCommonPackage.getUUID(), "uuid", 1, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getSubDataPropertyOfAxiom__AllNestedElements(), theCommonPackage.getLogicalElement(), "allNestedElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(entityScalarDataPropertyRestrictionAxiomEClass, EntityScalarDataPropertyRestrictionAxiom.class, "EntityScalarDataPropertyRestrictionAxiom", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEntityScalarDataPropertyRestrictionAxiom_RestrictedEntity(), this.getEntity(), null, "restrictedEntity", null, 1, 1, EntityScalarDataPropertyRestrictionAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4964,7 +4988,17 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   new String[] {
 		   });	
 		addAnnotation
+		  (getSubObjectPropertyOfAxiom__AllNestedElements(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
 		  (getSubDataPropertyOfAxiom__Uuid(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getSubDataPropertyOfAxiom__AllNestedElements(), 
 		   source, 
 		   new String[] {
 		   });	
@@ -5099,6 +5133,18 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 			 "kind", "Set"
 		   });	
 		addAnnotation
+		  (getSubObjectPropertyOfAxiom__AllNestedElements(), 
+		   source, 
+		   new String[] {
+			 "kind", "Set"
+		   });	
+		addAnnotation
+		  (getSubDataPropertyOfAxiom__AllNestedElements(), 
+		   source, 
+		   new String[] {
+			 "kind", "Set"
+		   });	
+		addAnnotation
 		  (getEntityScalarDataPropertyRestrictionAxiom__AllNestedElements(), 
 		   source, 
 		   new String[] {
@@ -5212,6 +5258,18 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   });	
 		addAnnotation
 		  (getSpecializationAxiom__AllNestedElements(), 
+		   source, 
+		   new String[] {
+			 "code", "scala.collection.immutable.Set.empty[resolver.api.LogicalElement]"
+		   });	
+		addAnnotation
+		  (getSubObjectPropertyOfAxiom__AllNestedElements(), 
+		   source, 
+		   new String[] {
+			 "code", "scala.collection.immutable.Set.empty[resolver.api.LogicalElement]"
+		   });	
+		addAnnotation
+		  (getSubDataPropertyOfAxiom__AllNestedElements(), 
 		   source, 
 		   new String[] {
 			 "code", "scala.collection.immutable.Set.empty[resolver.api.LogicalElement]"
@@ -5346,6 +5404,16 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   });	
 		addAnnotation
 		  (getSpecializationAxiom__AllNestedElements(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getSubObjectPropertyOfAxiom__AllNestedElements(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getSubDataPropertyOfAxiom__AllNestedElements(), 
 		   source, 
 		   new String[] {
 		   });	

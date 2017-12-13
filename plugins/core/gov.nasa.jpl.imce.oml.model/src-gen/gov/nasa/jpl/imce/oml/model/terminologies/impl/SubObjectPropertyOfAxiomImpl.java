@@ -18,6 +18,8 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies.impl;
 
+import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
+
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
 
 import gov.nasa.jpl.imce.oml.model.terminologies.SubObjectPropertyOfAxiom;
@@ -31,6 +33,7 @@ import java.util.UUID;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -217,6 +220,15 @@ public class SubObjectPropertyOfAxiomImpl extends TermAxiomImpl implements SubOb
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<LogicalElement> allNestedElements() {
+		return ECollections.<LogicalElement>emptyEList();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -292,6 +304,8 @@ public class SubObjectPropertyOfAxiomImpl extends TermAxiomImpl implements SubOb
 		switch (operationID) {
 			case TerminologiesPackage.SUB_OBJECT_PROPERTY_OF_AXIOM___UUID:
 				return uuid();
+			case TerminologiesPackage.SUB_OBJECT_PROPERTY_OF_AXIOM___ALL_NESTED_ELEMENTS:
+				return allNestedElements();
 		}
 		return super.eInvoke(operationID, arguments);
 	}
