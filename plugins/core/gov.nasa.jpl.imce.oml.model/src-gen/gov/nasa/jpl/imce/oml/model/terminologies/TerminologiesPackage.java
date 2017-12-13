@@ -7237,15 +7237,6 @@ public interface TerminologiesPackage extends EPackage {
 	int SUB_OBJECT_PROPERTY_OF_AXIOM_FEATURE_COUNT = TERM_AXIOM_FEATURE_COUNT + 2;
 
 	/**
-	 * The operation id for the '<em>All Nested Elements</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SUB_OBJECT_PROPERTY_OF_AXIOM___ALL_NESTED_ELEMENTS = TERM_AXIOM___ALL_NESTED_ELEMENTS;
-
-	/**
 	 * The operation id for the '<em>Module Context</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7264,13 +7255,22 @@ public interface TerminologiesPackage extends EPackage {
 	int SUB_OBJECT_PROPERTY_OF_AXIOM___UUID = TERM_AXIOM_OPERATION_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUB_OBJECT_PROPERTY_OF_AXIOM___ALL_NESTED_ELEMENTS = TERM_AXIOM_OPERATION_COUNT + 1;
+
+	/**
 	 * The number of operations of the '<em>Sub Object Property Of Axiom</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SUB_OBJECT_PROPERTY_OF_AXIOM_OPERATION_COUNT = TERM_AXIOM_OPERATION_COUNT + 1;
+	int SUB_OBJECT_PROPERTY_OF_AXIOM_OPERATION_COUNT = TERM_AXIOM_OPERATION_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.SubDataPropertyOfAxiomImpl <em>Sub Data Property Of Axiom</em>}' class.
@@ -7337,15 +7337,6 @@ public interface TerminologiesPackage extends EPackage {
 	int SUB_DATA_PROPERTY_OF_AXIOM_FEATURE_COUNT = TERM_AXIOM_FEATURE_COUNT + 2;
 
 	/**
-	 * The operation id for the '<em>All Nested Elements</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SUB_DATA_PROPERTY_OF_AXIOM___ALL_NESTED_ELEMENTS = TERM_AXIOM___ALL_NESTED_ELEMENTS;
-
-	/**
 	 * The operation id for the '<em>Module Context</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7364,13 +7355,22 @@ public interface TerminologiesPackage extends EPackage {
 	int SUB_DATA_PROPERTY_OF_AXIOM___UUID = TERM_AXIOM_OPERATION_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUB_DATA_PROPERTY_OF_AXIOM___ALL_NESTED_ELEMENTS = TERM_AXIOM_OPERATION_COUNT + 1;
+
+	/**
 	 * The number of operations of the '<em>Sub Data Property Of Axiom</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SUB_DATA_PROPERTY_OF_AXIOM_OPERATION_COUNT = TERM_AXIOM_OPERATION_COUNT + 1;
+	int SUB_DATA_PROPERTY_OF_AXIOM_OPERATION_COUNT = TERM_AXIOM_OPERATION_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityScalarDataPropertyRestrictionAxiomImpl <em>Entity Scalar Data Property Restriction Axiom</em>}' class.
@@ -11823,6 +11823,16 @@ public interface TerminologiesPackage extends EPackage {
 	EOperation getSubObjectPropertyOfAxiom__Uuid();
 
 	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.SubObjectPropertyOfAxiom#allNestedElements() <em>All Nested Elements</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>All Nested Elements</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.SubObjectPropertyOfAxiom#allNestedElements()
+	 * @generated
+	 */
+	EOperation getSubObjectPropertyOfAxiom__AllNestedElements();
+
+	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.SubDataPropertyOfAxiom <em>Sub Data Property Of Axiom</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11863,6 +11873,16 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getSubDataPropertyOfAxiom__Uuid();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.SubDataPropertyOfAxiom#allNestedElements() <em>All Nested Elements</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>All Nested Elements</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.SubDataPropertyOfAxiom#allNestedElements()
+	 * @generated
+	 */
+	EOperation getSubDataPropertyOfAxiom__AllNestedElements();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyRestrictionAxiom <em>Entity Scalar Data Property Restriction Axiom</em>}'.
@@ -14377,6 +14397,14 @@ public interface TerminologiesPackage extends EPackage {
 		EOperation SUB_OBJECT_PROPERTY_OF_AXIOM___UUID = eINSTANCE.getSubObjectPropertyOfAxiom__Uuid();
 
 		/**
+		 * The meta object literal for the '<em><b>All Nested Elements</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SUB_OBJECT_PROPERTY_OF_AXIOM___ALL_NESTED_ELEMENTS = eINSTANCE.getSubObjectPropertyOfAxiom__AllNestedElements();
+
+		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.SubDataPropertyOfAxiomImpl <em>Sub Data Property Of Axiom</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -14409,6 +14437,14 @@ public interface TerminologiesPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation SUB_DATA_PROPERTY_OF_AXIOM___UUID = eINSTANCE.getSubDataPropertyOfAxiom__Uuid();
+
+		/**
+		 * The meta object literal for the '<em><b>All Nested Elements</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SUB_DATA_PROPERTY_OF_AXIOM___ALL_NESTED_ELEMENTS = eINSTANCE.getSubDataPropertyOfAxiom__AllNestedElements();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityScalarDataPropertyRestrictionAxiomImpl <em>Entity Scalar Data Property Restriction Axiom</em>}' class.
