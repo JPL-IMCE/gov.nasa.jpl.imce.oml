@@ -940,14 +940,16 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cEntityStructuredDataPropertyRestrictionAxiomParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		private final RuleCall cScalarOneOfLiteralAxiomParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		private final RuleCall cSpecializationAxiomParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
+		private final RuleCall cSubObjectPropertyOfAxiomParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
+		private final RuleCall cSubDataPropertyOfAxiomParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
 		
 		//TermAxiom:
 		//	EntityRestrictionAxiom | EntityScalarDataPropertyRestrictionAxiom | EntityStructuredDataPropertyRestrictionAxiom |
-		//	ScalarOneOfLiteralAxiom | SpecializationAxiom;
+		//	ScalarOneOfLiteralAxiom | SpecializationAxiom | SubObjectPropertyOfAxiom | SubDataPropertyOfAxiom;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//EntityRestrictionAxiom | EntityScalarDataPropertyRestrictionAxiom | EntityStructuredDataPropertyRestrictionAxiom |
-		//ScalarOneOfLiteralAxiom | SpecializationAxiom
+		//ScalarOneOfLiteralAxiom | SpecializationAxiom | SubObjectPropertyOfAxiom | SubDataPropertyOfAxiom
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//EntityRestrictionAxiom
@@ -964,6 +966,12 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//SpecializationAxiom
 		public RuleCall getSpecializationAxiomParserRuleCall_4() { return cSpecializationAxiomParserRuleCall_4; }
+		
+		//SubObjectPropertyOfAxiom
+		public RuleCall getSubObjectPropertyOfAxiomParserRuleCall_5() { return cSubObjectPropertyOfAxiomParserRuleCall_5; }
+		
+		//SubDataPropertyOfAxiom
+		public RuleCall getSubDataPropertyOfAxiomParserRuleCall_6() { return cSubDataPropertyOfAxiomParserRuleCall_6; }
 	}
 	public class EntityRestrictionAxiomElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.EntityRestrictionAxiom");
@@ -2898,6 +2906,109 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//Reference
 		public RuleCall getSuperRelationshipReifiedRelationshipReferenceParserRuleCall_3_0_1() { return cSuperRelationshipReifiedRelationshipReferenceParserRuleCall_3_0_1; }
+	}
+	public class SubObjectPropertyOfAxiomElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.SubObjectPropertyOfAxiom");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cAnnotationsAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cAnnotationsAnnotationPropertyValueParserRuleCall_0_0 = (RuleCall)cAnnotationsAssignment_0.eContents().get(0);
+		private final Assignment cSubPropertyAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final CrossReference cSubPropertyUnreifiedRelationshipCrossReference_1_0 = (CrossReference)cSubPropertyAssignment_1.eContents().get(0);
+		private final RuleCall cSubPropertyUnreifiedRelationshipReferenceParserRuleCall_1_0_1 = (RuleCall)cSubPropertyUnreifiedRelationshipCrossReference_1_0.eContents().get(1);
+		private final Keyword cSubObjectPropertyOfKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cSuperPropertyAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final CrossReference cSuperPropertyUnreifiedRelationshipCrossReference_3_0 = (CrossReference)cSuperPropertyAssignment_3.eContents().get(0);
+		private final RuleCall cSuperPropertyUnreifiedRelationshipReferenceParserRuleCall_3_0_1 = (RuleCall)cSuperPropertyUnreifiedRelationshipCrossReference_3_0.eContents().get(1);
+		
+		//// 2 Sub*PropertyOfAxioms
+		//SubObjectPropertyOfAxiom:
+		//	annotations+=AnnotationPropertyValue*
+		//	subProperty=[UnreifiedRelationship|Reference]
+		//	'subObjectPropertyOf'
+		//	superProperty=[UnreifiedRelationship|Reference];
+		@Override public ParserRule getRule() { return rule; }
+		
+		//annotations+=AnnotationPropertyValue* subProperty=[UnreifiedRelationship|Reference] 'subObjectPropertyOf'
+		//superProperty=[UnreifiedRelationship|Reference]
+		public Group getGroup() { return cGroup; }
+		
+		//annotations+=AnnotationPropertyValue*
+		public Assignment getAnnotationsAssignment_0() { return cAnnotationsAssignment_0; }
+		
+		//AnnotationPropertyValue
+		public RuleCall getAnnotationsAnnotationPropertyValueParserRuleCall_0_0() { return cAnnotationsAnnotationPropertyValueParserRuleCall_0_0; }
+		
+		//subProperty=[UnreifiedRelationship|Reference]
+		public Assignment getSubPropertyAssignment_1() { return cSubPropertyAssignment_1; }
+		
+		//[UnreifiedRelationship|Reference]
+		public CrossReference getSubPropertyUnreifiedRelationshipCrossReference_1_0() { return cSubPropertyUnreifiedRelationshipCrossReference_1_0; }
+		
+		//Reference
+		public RuleCall getSubPropertyUnreifiedRelationshipReferenceParserRuleCall_1_0_1() { return cSubPropertyUnreifiedRelationshipReferenceParserRuleCall_1_0_1; }
+		
+		//'subObjectPropertyOf'
+		public Keyword getSubObjectPropertyOfKeyword_2() { return cSubObjectPropertyOfKeyword_2; }
+		
+		//superProperty=[UnreifiedRelationship|Reference]
+		public Assignment getSuperPropertyAssignment_3() { return cSuperPropertyAssignment_3; }
+		
+		//[UnreifiedRelationship|Reference]
+		public CrossReference getSuperPropertyUnreifiedRelationshipCrossReference_3_0() { return cSuperPropertyUnreifiedRelationshipCrossReference_3_0; }
+		
+		//Reference
+		public RuleCall getSuperPropertyUnreifiedRelationshipReferenceParserRuleCall_3_0_1() { return cSuperPropertyUnreifiedRelationshipReferenceParserRuleCall_3_0_1; }
+	}
+	public class SubDataPropertyOfAxiomElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.SubDataPropertyOfAxiom");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cAnnotationsAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cAnnotationsAnnotationPropertyValueParserRuleCall_0_0 = (RuleCall)cAnnotationsAssignment_0.eContents().get(0);
+		private final Assignment cSubPropertyAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final CrossReference cSubPropertyEntityScalarDataPropertyCrossReference_1_0 = (CrossReference)cSubPropertyAssignment_1.eContents().get(0);
+		private final RuleCall cSubPropertyEntityScalarDataPropertyReferenceParserRuleCall_1_0_1 = (RuleCall)cSubPropertyEntityScalarDataPropertyCrossReference_1_0.eContents().get(1);
+		private final Keyword cSubDataPropertyOfKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cSuperPropertyAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final CrossReference cSuperPropertyEntityScalarDataPropertyCrossReference_3_0 = (CrossReference)cSuperPropertyAssignment_3.eContents().get(0);
+		private final RuleCall cSuperPropertyEntityScalarDataPropertyReferenceParserRuleCall_3_0_1 = (RuleCall)cSuperPropertyEntityScalarDataPropertyCrossReference_3_0.eContents().get(1);
+		
+		//SubDataPropertyOfAxiom:
+		//	annotations+=AnnotationPropertyValue*
+		//	subProperty=[EntityScalarDataProperty|Reference]
+		//	'subDataPropertyOf'
+		//	superProperty=[EntityScalarDataProperty|Reference];
+		@Override public ParserRule getRule() { return rule; }
+		
+		//annotations+=AnnotationPropertyValue* subProperty=[EntityScalarDataProperty|Reference] 'subDataPropertyOf'
+		//superProperty=[EntityScalarDataProperty|Reference]
+		public Group getGroup() { return cGroup; }
+		
+		//annotations+=AnnotationPropertyValue*
+		public Assignment getAnnotationsAssignment_0() { return cAnnotationsAssignment_0; }
+		
+		//AnnotationPropertyValue
+		public RuleCall getAnnotationsAnnotationPropertyValueParserRuleCall_0_0() { return cAnnotationsAnnotationPropertyValueParserRuleCall_0_0; }
+		
+		//subProperty=[EntityScalarDataProperty|Reference]
+		public Assignment getSubPropertyAssignment_1() { return cSubPropertyAssignment_1; }
+		
+		//[EntityScalarDataProperty|Reference]
+		public CrossReference getSubPropertyEntityScalarDataPropertyCrossReference_1_0() { return cSubPropertyEntityScalarDataPropertyCrossReference_1_0; }
+		
+		//Reference
+		public RuleCall getSubPropertyEntityScalarDataPropertyReferenceParserRuleCall_1_0_1() { return cSubPropertyEntityScalarDataPropertyReferenceParserRuleCall_1_0_1; }
+		
+		//'subDataPropertyOf'
+		public Keyword getSubDataPropertyOfKeyword_2() { return cSubDataPropertyOfKeyword_2; }
+		
+		//superProperty=[EntityScalarDataProperty|Reference]
+		public Assignment getSuperPropertyAssignment_3() { return cSuperPropertyAssignment_3; }
+		
+		//[EntityScalarDataProperty|Reference]
+		public CrossReference getSuperPropertyEntityScalarDataPropertyCrossReference_3_0() { return cSuperPropertyEntityScalarDataPropertyCrossReference_3_0; }
+		
+		//Reference
+		public RuleCall getSuperPropertyEntityScalarDataPropertyReferenceParserRuleCall_3_0_1() { return cSuperPropertyEntityScalarDataPropertyReferenceParserRuleCall_3_0_1; }
 	}
 	public class EntityScalarDataPropertyExistentialRestrictionAxiomElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.EntityScalarDataPropertyExistentialRestrictionAxiom");
@@ -5650,6 +5761,8 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	private final AspectSpecializationAxiomElements pAspectSpecializationAxiom;
 	private final ConceptSpecializationAxiomElements pConceptSpecializationAxiom;
 	private final ReifiedRelationshipSpecializationAxiomElements pReifiedRelationshipSpecializationAxiom;
+	private final SubObjectPropertyOfAxiomElements pSubObjectPropertyOfAxiom;
+	private final SubDataPropertyOfAxiomElements pSubDataPropertyOfAxiom;
 	private final EntityScalarDataPropertyExistentialRestrictionAxiomElements pEntityScalarDataPropertyExistentialRestrictionAxiom;
 	private final EntityScalarDataPropertyParticularRestrictionAxiomElements pEntityScalarDataPropertyParticularRestrictionAxiom;
 	private final EntityScalarDataPropertyUniversalRestrictionAxiomElements pEntityScalarDataPropertyUniversalRestrictionAxiom;
@@ -5824,6 +5937,8 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		this.pAspectSpecializationAxiom = new AspectSpecializationAxiomElements();
 		this.pConceptSpecializationAxiom = new ConceptSpecializationAxiomElements();
 		this.pReifiedRelationshipSpecializationAxiom = new ReifiedRelationshipSpecializationAxiomElements();
+		this.pSubObjectPropertyOfAxiom = new SubObjectPropertyOfAxiomElements();
+		this.pSubDataPropertyOfAxiom = new SubDataPropertyOfAxiomElements();
 		this.pEntityScalarDataPropertyExistentialRestrictionAxiom = new EntityScalarDataPropertyExistentialRestrictionAxiomElements();
 		this.pEntityScalarDataPropertyParticularRestrictionAxiom = new EntityScalarDataPropertyParticularRestrictionAxiomElements();
 		this.pEntityScalarDataPropertyUniversalRestrictionAxiom = new EntityScalarDataPropertyUniversalRestrictionAxiomElements();
@@ -6211,7 +6326,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//TermAxiom:
 	//	EntityRestrictionAxiom | EntityScalarDataPropertyRestrictionAxiom | EntityStructuredDataPropertyRestrictionAxiom |
-	//	ScalarOneOfLiteralAxiom | SpecializationAxiom;
+	//	ScalarOneOfLiteralAxiom | SpecializationAxiom | SubObjectPropertyOfAxiom | SubDataPropertyOfAxiom;
 	public TermAxiomElements getTermAxiomAccess() {
 		return pTermAxiom;
 	}
@@ -6606,6 +6721,33 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getReifiedRelationshipSpecializationAxiomRule() {
 		return getReifiedRelationshipSpecializationAxiomAccess().getRule();
+	}
+	
+	//// 2 Sub*PropertyOfAxioms
+	//SubObjectPropertyOfAxiom:
+	//	annotations+=AnnotationPropertyValue*
+	//	subProperty=[UnreifiedRelationship|Reference]
+	//	'subObjectPropertyOf'
+	//	superProperty=[UnreifiedRelationship|Reference];
+	public SubObjectPropertyOfAxiomElements getSubObjectPropertyOfAxiomAccess() {
+		return pSubObjectPropertyOfAxiom;
+	}
+	
+	public ParserRule getSubObjectPropertyOfAxiomRule() {
+		return getSubObjectPropertyOfAxiomAccess().getRule();
+	}
+	
+	//SubDataPropertyOfAxiom:
+	//	annotations+=AnnotationPropertyValue*
+	//	subProperty=[EntityScalarDataProperty|Reference]
+	//	'subDataPropertyOf'
+	//	superProperty=[EntityScalarDataProperty|Reference];
+	public SubDataPropertyOfAxiomElements getSubDataPropertyOfAxiomAccess() {
+		return pSubDataPropertyOfAxiom;
+	}
+	
+	public ParserRule getSubDataPropertyOfAxiomRule() {
+		return getSubDataPropertyOfAxiomAccess().getRule();
 	}
 	
 	//// 3 EntityScalarDataPropertyRestrictionAxioms

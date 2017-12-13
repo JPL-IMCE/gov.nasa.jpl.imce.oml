@@ -1273,6 +1273,54 @@ class ReifiedRelationshipSpecializationAxiom extends SpecializationAxiom {
 }
 
 /*
+ * An OML SubObjectPropertyOfAxiom is a logical axiom
+ * about a taxonomic relationship between a specific and general
+ * OML UnreifiedRelationship.
+ */
+@Glossary
+class SubObjectPropertyOfAxiom extends TermAxiom, ElementCrossReferenceTuple {
+	
+	refers UnreifiedRelationship[1] subProperty
+	
+	refers UnreifiedRelationship[1] superProperty
+	
+	@NotFunctionalAPI
+	@NotSchema
+	op UUID[1] uuid() {
+		OMLExtensions.derivedUUID(
+		"SubObjectPropertyOfAxiom",
+		"tbox" -> tbox?.uuid(),
+		"subProperty" -> subProperty?.uuid()?.toString,
+		"superProperty" -> superProperty?.uuid()?.toString
+		)?.toString
+	}
+}
+
+/*
+ * An OML SubDataPropertyOfAxiom is a logical axiom
+ * about a taxonomic relationship between a specific and general
+ * OML EntityScalarDataProperty.
+ */
+@Glossary
+class SubDataPropertyOfAxiom extends TermAxiom, ElementCrossReferenceTuple {
+	
+	refers EntityScalarDataProperty[1] subProperty
+	
+	refers EntityScalarDataProperty[1] superProperty
+	
+	@NotFunctionalAPI
+	@NotSchema
+	op UUID[1] uuid() {
+		OMLExtensions.derivedUUID(
+		"SubDataPropertyOfAxiom",
+		"tbox" -> tbox?.uuid(),
+		"subProperty" -> subProperty?.uuid()?.toString,
+		"superProperty" -> superProperty?.uuid()?.toString
+		)?.toString
+	}
+}
+
+/*
  * An OML EntityScalarDataPropertyRestrictionAxiom maps to
  * some kind of OWL2 Data Property Restriction.
  */

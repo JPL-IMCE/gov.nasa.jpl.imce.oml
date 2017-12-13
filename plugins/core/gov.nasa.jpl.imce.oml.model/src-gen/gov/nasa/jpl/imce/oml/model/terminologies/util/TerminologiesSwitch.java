@@ -987,6 +987,36 @@ public class TerminologiesSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case TerminologiesPackage.SUB_OBJECT_PROPERTY_OF_AXIOM: {
+				SubObjectPropertyOfAxiom subObjectPropertyOfAxiom = (SubObjectPropertyOfAxiom)theEObject;
+				T result = caseSubObjectPropertyOfAxiom(subObjectPropertyOfAxiom);
+				if (result == null) result = caseTermAxiom(subObjectPropertyOfAxiom);
+				if (result == null) result = caseElementCrossReferenceTuple(subObjectPropertyOfAxiom);
+				if (result == null) result = caseTerminologyBoxStatement(subObjectPropertyOfAxiom);
+				if (result == null) result = caseExtrinsicIdentityKind(subObjectPropertyOfAxiom);
+				if (result == null) result = caseCrossReferencableKind(subObjectPropertyOfAxiom);
+				if (result == null) result = caseModuleElement(subObjectPropertyOfAxiom);
+				if (result == null) result = caseLogicalElement(subObjectPropertyOfAxiom);
+				if (result == null) result = caseIdentityKind(subObjectPropertyOfAxiom);
+				if (result == null) result = caseCrossReferencabilityKind(subObjectPropertyOfAxiom);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TerminologiesPackage.SUB_DATA_PROPERTY_OF_AXIOM: {
+				SubDataPropertyOfAxiom subDataPropertyOfAxiom = (SubDataPropertyOfAxiom)theEObject;
+				T result = caseSubDataPropertyOfAxiom(subDataPropertyOfAxiom);
+				if (result == null) result = caseTermAxiom(subDataPropertyOfAxiom);
+				if (result == null) result = caseElementCrossReferenceTuple(subDataPropertyOfAxiom);
+				if (result == null) result = caseTerminologyBoxStatement(subDataPropertyOfAxiom);
+				if (result == null) result = caseExtrinsicIdentityKind(subDataPropertyOfAxiom);
+				if (result == null) result = caseCrossReferencableKind(subDataPropertyOfAxiom);
+				if (result == null) result = caseModuleElement(subDataPropertyOfAxiom);
+				if (result == null) result = caseLogicalElement(subDataPropertyOfAxiom);
+				if (result == null) result = caseIdentityKind(subDataPropertyOfAxiom);
+				if (result == null) result = caseCrossReferencabilityKind(subDataPropertyOfAxiom);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case TerminologiesPackage.ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM: {
 				EntityScalarDataPropertyRestrictionAxiom entityScalarDataPropertyRestrictionAxiom = (EntityScalarDataPropertyRestrictionAxiom)theEObject;
 				T result = caseEntityScalarDataPropertyRestrictionAxiom(entityScalarDataPropertyRestrictionAxiom);
@@ -2151,6 +2181,36 @@ public class TerminologiesSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseReifiedRelationshipSpecializationAxiom(ReifiedRelationshipSpecializationAxiom object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Sub Object Property Of Axiom</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Sub Object Property Of Axiom</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSubObjectPropertyOfAxiom(SubObjectPropertyOfAxiom object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Sub Data Property Of Axiom</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Sub Data Property Of Axiom</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSubDataPropertyOfAxiom(SubDataPropertyOfAxiom object) {
 		return null;
 	}
 

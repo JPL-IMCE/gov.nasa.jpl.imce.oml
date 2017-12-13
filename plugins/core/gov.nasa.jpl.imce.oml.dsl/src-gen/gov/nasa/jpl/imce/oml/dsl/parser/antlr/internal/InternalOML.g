@@ -1687,6 +1687,24 @@ ruleTermAxiom returns [EObject current=null]
 			$current = $this_SpecializationAxiom_4.current;
 			afterParserOrEnumRuleCall();
 		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getTermAxiomAccess().getSubObjectPropertyOfAxiomParserRuleCall_5());
+		}
+		this_SubObjectPropertyOfAxiom_5=ruleSubObjectPropertyOfAxiom
+		{
+			$current = $this_SubObjectPropertyOfAxiom_5.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getTermAxiomAccess().getSubDataPropertyOfAxiomParserRuleCall_6());
+		}
+		this_SubDataPropertyOfAxiom_6=ruleSubDataPropertyOfAxiom
+		{
+			$current = $this_SubDataPropertyOfAxiom_6.current;
+			afterParserOrEnumRuleCall();
+		}
 	)
 ;
 
@@ -4649,6 +4667,154 @@ ruleReifiedRelationshipSpecializationAxiom returns [EObject current=null]
 				}
 				{
 					newCompositeNode(grammarAccess.getReifiedRelationshipSpecializationAxiomAccess().getSuperRelationshipReifiedRelationshipCrossReference_3_0());
+				}
+				ruleReference
+				{
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+	)
+;
+
+// Entry rule entryRuleSubObjectPropertyOfAxiom
+entryRuleSubObjectPropertyOfAxiom returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getSubObjectPropertyOfAxiomRule()); }
+	iv_ruleSubObjectPropertyOfAxiom=ruleSubObjectPropertyOfAxiom
+	{ $current=$iv_ruleSubObjectPropertyOfAxiom.current; }
+	EOF;
+
+// Rule SubObjectPropertyOfAxiom
+ruleSubObjectPropertyOfAxiom returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getSubObjectPropertyOfAxiomAccess().getAnnotationsAnnotationPropertyValueParserRuleCall_0_0());
+				}
+				lv_annotations_0_0=ruleAnnotationPropertyValue
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getSubObjectPropertyOfAxiomRule());
+					}
+					add(
+						$current,
+						"annotations",
+						lv_annotations_0_0,
+						"gov.nasa.jpl.imce.oml.dsl.OML.AnnotationPropertyValue");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)*
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getSubObjectPropertyOfAxiomRule());
+					}
+				}
+				{
+					newCompositeNode(grammarAccess.getSubObjectPropertyOfAxiomAccess().getSubPropertyUnreifiedRelationshipCrossReference_1_0());
+				}
+				ruleReference
+				{
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_2='subObjectPropertyOf'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getSubObjectPropertyOfAxiomAccess().getSubObjectPropertyOfKeyword_2());
+		}
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getSubObjectPropertyOfAxiomRule());
+					}
+				}
+				{
+					newCompositeNode(grammarAccess.getSubObjectPropertyOfAxiomAccess().getSuperPropertyUnreifiedRelationshipCrossReference_3_0());
+				}
+				ruleReference
+				{
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+	)
+;
+
+// Entry rule entryRuleSubDataPropertyOfAxiom
+entryRuleSubDataPropertyOfAxiom returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getSubDataPropertyOfAxiomRule()); }
+	iv_ruleSubDataPropertyOfAxiom=ruleSubDataPropertyOfAxiom
+	{ $current=$iv_ruleSubDataPropertyOfAxiom.current; }
+	EOF;
+
+// Rule SubDataPropertyOfAxiom
+ruleSubDataPropertyOfAxiom returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getSubDataPropertyOfAxiomAccess().getAnnotationsAnnotationPropertyValueParserRuleCall_0_0());
+				}
+				lv_annotations_0_0=ruleAnnotationPropertyValue
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getSubDataPropertyOfAxiomRule());
+					}
+					add(
+						$current,
+						"annotations",
+						lv_annotations_0_0,
+						"gov.nasa.jpl.imce.oml.dsl.OML.AnnotationPropertyValue");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)*
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getSubDataPropertyOfAxiomRule());
+					}
+				}
+				{
+					newCompositeNode(grammarAccess.getSubDataPropertyOfAxiomAccess().getSubPropertyEntityScalarDataPropertyCrossReference_1_0());
+				}
+				ruleReference
+				{
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_2='subDataPropertyOf'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getSubDataPropertyOfAxiomAccess().getSubDataPropertyOfKeyword_2());
+		}
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getSubDataPropertyOfAxiomRule());
+					}
+				}
+				{
+					newCompositeNode(grammarAccess.getSubDataPropertyOfAxiomAccess().getSuperPropertyEntityScalarDataPropertyCrossReference_3_0());
 				}
 				ruleReference
 				{

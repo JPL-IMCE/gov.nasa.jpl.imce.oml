@@ -112,6 +112,8 @@ import gov.nasa.jpl.imce.oml.model.terminologies.TimeScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship
 import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipInversePropertyPredicate
 import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipPropertyPredicate
+import gov.nasa.jpl.imce.oml.model.terminologies.SubObjectPropertyOfAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.SubDataPropertyOfAxiom
 
 /**
  * OMLTables is a collection of extension queries for OML Extent and conversion methods for OML values.
@@ -365,6 +367,20 @@ class OMLTables {
   static def List<ReifiedRelationshipSpecializationAxiom> reifiedRelationshipSpecializationAxioms(Extent e) {
   	val List<ReifiedRelationshipSpecializationAxiom> result = new ArrayList<ReifiedRelationshipSpecializationAxiom>()
   	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(ReifiedRelationshipSpecializationAxiom))]
+  	result.sortInplaceBy[uuid()]
+  	result
+  }
+  
+  static def List<SubDataPropertyOfAxiom> subDataPropertyOfAxioms(Extent e) {
+  	val List<SubDataPropertyOfAxiom> result = new ArrayList<SubDataPropertyOfAxiom>()
+  	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(SubDataPropertyOfAxiom)) ]
+  	result.sortInplaceBy[uuid()]
+  	result
+  }
+  
+  static def List<SubObjectPropertyOfAxiom> subObjectPropertyOfAxioms(Extent e) {
+  	val List<SubObjectPropertyOfAxiom> result = new ArrayList<SubObjectPropertyOfAxiom>()
+  	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(SubObjectPropertyOfAxiom)) ]
   	result.sortInplaceBy[uuid()]
   	result
   }

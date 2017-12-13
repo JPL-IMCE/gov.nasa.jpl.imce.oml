@@ -82,6 +82,8 @@ import gov.nasa.jpl.imce.oml.model.terminologies.SpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.StringScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.Structure;
 import gov.nasa.jpl.imce.oml.model.terminologies.StructuredDataProperty;
+import gov.nasa.jpl.imce.oml.model.terminologies.SubDataPropertyOfAxiom;
+import gov.nasa.jpl.imce.oml.model.terminologies.SubObjectPropertyOfAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.SynonymScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.Term;
 import gov.nasa.jpl.imce.oml.model.terminologies.TermAxiom;
@@ -515,6 +517,20 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * @generated
 	 */
 	private EClass reifiedRelationshipSpecializationAxiomEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass subObjectPropertyOfAxiomEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass subDataPropertyOfAxiomEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2400,6 +2416,78 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getSubObjectPropertyOfAxiom() {
+		return subObjectPropertyOfAxiomEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSubObjectPropertyOfAxiom_SubProperty() {
+		return (EReference)subObjectPropertyOfAxiomEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSubObjectPropertyOfAxiom_SuperProperty() {
+		return (EReference)subObjectPropertyOfAxiomEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getSubObjectPropertyOfAxiom__Uuid() {
+		return subObjectPropertyOfAxiomEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getSubDataPropertyOfAxiom() {
+		return subDataPropertyOfAxiomEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSubDataPropertyOfAxiom_SubProperty() {
+		return (EReference)subDataPropertyOfAxiomEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSubDataPropertyOfAxiom_SuperProperty() {
+		return (EReference)subDataPropertyOfAxiomEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getSubDataPropertyOfAxiom__Uuid() {
+		return subDataPropertyOfAxiomEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getEntityScalarDataPropertyRestrictionAxiom() {
 		return entityScalarDataPropertyRestrictionAxiomEClass;
 	}
@@ -3395,6 +3483,16 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		createEOperation(reifiedRelationshipSpecializationAxiomEClass, REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM___PARENT);
 		createEOperation(reifiedRelationshipSpecializationAxiomEClass, REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM___UUID);
 
+		subObjectPropertyOfAxiomEClass = createEClass(SUB_OBJECT_PROPERTY_OF_AXIOM);
+		createEReference(subObjectPropertyOfAxiomEClass, SUB_OBJECT_PROPERTY_OF_AXIOM__SUB_PROPERTY);
+		createEReference(subObjectPropertyOfAxiomEClass, SUB_OBJECT_PROPERTY_OF_AXIOM__SUPER_PROPERTY);
+		createEOperation(subObjectPropertyOfAxiomEClass, SUB_OBJECT_PROPERTY_OF_AXIOM___UUID);
+
+		subDataPropertyOfAxiomEClass = createEClass(SUB_DATA_PROPERTY_OF_AXIOM);
+		createEReference(subDataPropertyOfAxiomEClass, SUB_DATA_PROPERTY_OF_AXIOM__SUB_PROPERTY);
+		createEReference(subDataPropertyOfAxiomEClass, SUB_DATA_PROPERTY_OF_AXIOM__SUPER_PROPERTY);
+		createEOperation(subDataPropertyOfAxiomEClass, SUB_DATA_PROPERTY_OF_AXIOM___UUID);
+
 		entityScalarDataPropertyRestrictionAxiomEClass = createEClass(ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM);
 		createEReference(entityScalarDataPropertyRestrictionAxiomEClass, ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM__RESTRICTED_ENTITY);
 		createEReference(entityScalarDataPropertyRestrictionAxiomEClass, ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM__SCALAR_PROPERTY);
@@ -3605,6 +3703,10 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		aspectSpecializationAxiomEClass.getESuperTypes().add(this.getSpecializationAxiom());
 		conceptSpecializationAxiomEClass.getESuperTypes().add(this.getSpecializationAxiom());
 		reifiedRelationshipSpecializationAxiomEClass.getESuperTypes().add(this.getSpecializationAxiom());
+		subObjectPropertyOfAxiomEClass.getESuperTypes().add(this.getTermAxiom());
+		subObjectPropertyOfAxiomEClass.getESuperTypes().add(theCommonPackage.getElementCrossReferenceTuple());
+		subDataPropertyOfAxiomEClass.getESuperTypes().add(this.getTermAxiom());
+		subDataPropertyOfAxiomEClass.getESuperTypes().add(theCommonPackage.getElementCrossReferenceTuple());
 		entityScalarDataPropertyRestrictionAxiomEClass.getESuperTypes().add(this.getTermAxiom());
 		entityScalarDataPropertyRestrictionAxiomEClass.getESuperTypes().add(theCommonPackage.getExtrinsicIdentityKind());
 		entityScalarDataPropertyExistentialRestrictionAxiomEClass.getESuperTypes().add(this.getEntityScalarDataPropertyRestrictionAxiom());
@@ -3954,6 +4056,18 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		initEOperation(getReifiedRelationshipSpecializationAxiom__Parent(), this.getEntity(), "parent", 1, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEOperation(getReifiedRelationshipSpecializationAxiom__Uuid(), theCommonPackage.getUUID(), "uuid", 1, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEClass(subObjectPropertyOfAxiomEClass, SubObjectPropertyOfAxiom.class, "SubObjectPropertyOfAxiom", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSubObjectPropertyOfAxiom_SubProperty(), this.getUnreifiedRelationship(), null, "subProperty", null, 1, 1, SubObjectPropertyOfAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSubObjectPropertyOfAxiom_SuperProperty(), this.getUnreifiedRelationship(), null, "superProperty", null, 1, 1, SubObjectPropertyOfAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getSubObjectPropertyOfAxiom__Uuid(), theCommonPackage.getUUID(), "uuid", 1, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEClass(subDataPropertyOfAxiomEClass, SubDataPropertyOfAxiom.class, "SubDataPropertyOfAxiom", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSubDataPropertyOfAxiom_SubProperty(), this.getEntityScalarDataProperty(), null, "subProperty", null, 1, 1, SubDataPropertyOfAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSubDataPropertyOfAxiom_SuperProperty(), this.getEntityScalarDataProperty(), null, "superProperty", null, 1, 1, SubDataPropertyOfAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getSubDataPropertyOfAxiom__Uuid(), theCommonPackage.getUUID(), "uuid", 1, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(entityScalarDataPropertyRestrictionAxiomEClass, EntityScalarDataPropertyRestrictionAxiom.class, "EntityScalarDataPropertyRestrictionAxiom", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEntityScalarDataPropertyRestrictionAxiom_RestrictedEntity(), this.getEntity(), null, "restrictedEntity", null, 1, 1, EntityScalarDataPropertyRestrictionAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4415,6 +4529,16 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   new String[] {
 		   });	
 		addAnnotation
+		  (subObjectPropertyOfAxiomEClass, 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (subDataPropertyOfAxiomEClass, 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
 		  (entityScalarDataPropertyRestrictionAxiomEClass, 
 		   source, 
 		   new String[] {
@@ -4831,6 +4955,16 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   });	
 		addAnnotation
 		  (getReifiedRelationshipSpecializationAxiom__Uuid(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getSubObjectPropertyOfAxiom__Uuid(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getSubDataPropertyOfAxiom__Uuid(), 
 		   source, 
 		   new String[] {
 		   });	
@@ -5657,6 +5791,16 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   });	
 		addAnnotation
 		  (getReifiedRelationshipSpecializationAxiom__Uuid(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getSubObjectPropertyOfAxiom__Uuid(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getSubDataPropertyOfAxiom__Uuid(), 
 		   source, 
 		   new String[] {
 		   });	

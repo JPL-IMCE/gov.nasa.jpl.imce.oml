@@ -172,6 +172,10 @@ class OMLScopeExtensions {
 		terminologyScope(tbox, [localReifiedRelationships], [importedResourceNameFunction])
 	}
 	
+	def IScope allUnreifiedRelationshipsScope(TerminologyBox tbox) {
+		terminologyScope(tbox, [localUnreifiedRelationships], [importedResourceNameFunction])
+	}
+	
 	def IScope allEntityRelationshipsScope(TerminologyBox tbox) {
 		terminologyScope(tbox, [localEntityRelationships], [importedResourceNameFunction])
 	}

@@ -167,7 +167,9 @@ TermAxiom returns TermAxiom:
 	EntityScalarDataPropertyRestrictionAxiom |
 	EntityStructuredDataPropertyRestrictionAxiom |
 	ScalarOneOfLiteralAxiom |
-	SpecializationAxiom;
+	SpecializationAxiom |
+	SubObjectPropertyOfAxiom |
+	SubDataPropertyOfAxiom;
 	
 EntityRestrictionAxiom returns EntityRestrictionAxiom:
 	EntityExistentialRestrictionAxiom | 
@@ -366,6 +368,20 @@ ConceptSpecializationAxiom returns ConceptSpecializationAxiom:
 ReifiedRelationshipSpecializationAxiom returns ReifiedRelationshipSpecializationAxiom:
 	( annotations+=AnnotationPropertyValue )*
 	subRelationship=[ReifiedRelationship|Reference] 'extendsRelationship' superRelationship=[ReifiedRelationship|Reference];
+
+// 2 Sub*PropertyOfAxioms
+
+SubObjectPropertyOfAxiom returns SubObjectPropertyOfAxiom:
+	( annotations+=AnnotationPropertyValue )*
+	subProperty=[UnreifiedRelationship|Reference]
+	'subObjectPropertyOf'
+	superProperty=[UnreifiedRelationship|Reference];
+
+SubDataPropertyOfAxiom returns SubDataPropertyOfAxiom:
+	( annotations+=AnnotationPropertyValue )*
+	subProperty=[EntityScalarDataProperty|Reference]
+	'subDataPropertyOf'
+	superProperty=[EntityScalarDataProperty|Reference];
 
 // 3 EntityScalarDataPropertyRestrictionAxioms
 

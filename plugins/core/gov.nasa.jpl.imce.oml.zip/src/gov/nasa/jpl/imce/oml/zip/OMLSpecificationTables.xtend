@@ -106,6 +106,8 @@ import gov.nasa.jpl.imce.oml.model.terminologies.ScalarDataProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.StringScalarRestriction
+import gov.nasa.jpl.imce.oml.model.terminologies.SubDataPropertyOfAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.SubObjectPropertyOfAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.Structure
 import gov.nasa.jpl.imce.oml.model.terminologies.StructuredDataProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.SynonymScalarRestriction
@@ -190,6 +192,8 @@ class OMLSpecificationTables {
   protected val Map<String, Pair<SingletonInstanceScalarDataPropertyValue, Map<String,String>>> singletonInstanceScalarDataPropertyValues
   protected val Map<String, Pair<SingletonInstanceStructuredDataPropertyValue, Map<String,String>>> singletonInstanceStructuredDataPropertyValues
   protected val Map<String, Pair<StructuredDataPropertyTuple, Map<String,String>>> structuredDataPropertyTuples
+  protected val Map<String, Pair<SubDataPropertyOfAxiom, Map<String,String>>> subDataPropertyOfAxioms
+  protected val Map<String, Pair<SubObjectPropertyOfAxiom, Map<String,String>>> subObjectPropertyOfAxioms
   protected val Map<String, Pair<UnreifiedRelationshipInstanceTuple, Map<String,String>>> unreifiedRelationshipInstanceTuples
   protected val Map<String, Pair<UnreifiedRelationshipInversePropertyPredicate, Map<String,String>>> unreifiedRelationshipInversePropertyPredicates
   protected val Map<String, Pair<UnreifiedRelationshipPropertyPredicate, Map<String,String>>> unreifiedRelationshipPropertyPredicates
@@ -282,6 +286,8 @@ class OMLSpecificationTables {
   	singletonInstanceScalarDataPropertyValues = new HashMap<String, Pair<SingletonInstanceScalarDataPropertyValue, Map<String,String>>>()
   	singletonInstanceStructuredDataPropertyValues = new HashMap<String, Pair<SingletonInstanceStructuredDataPropertyValue, Map<String,String>>>()
   	structuredDataPropertyTuples = new HashMap<String, Pair<StructuredDataPropertyTuple, Map<String,String>>>()
+  	subDataPropertyOfAxioms = new HashMap<String, Pair<SubDataPropertyOfAxiom, Map<String,String>>>()
+  	subObjectPropertyOfAxioms = new HashMap<String, Pair<SubObjectPropertyOfAxiom, Map<String,String>>>()
   	unreifiedRelationshipInstanceTuples = new HashMap<String, Pair<UnreifiedRelationshipInstanceTuple, Map<String,String>>>()
   	unreifiedRelationshipInversePropertyPredicates = new HashMap<String, Pair<UnreifiedRelationshipInversePropertyPredicate, Map<String,String>>>()
   	unreifiedRelationshipPropertyPredicates = new HashMap<String, Pair<UnreifiedRelationshipPropertyPredicate, Map<String,String>>>()
@@ -802,6 +808,22 @@ class OMLSpecificationTables {
     zos.putArchiveEntry(entry)
     try {
       zos.write(structuredDataPropertyTuplesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
+    // SubDataPropertyOfAxiom
+    entry = new ZipArchiveEntry("SubDataPropertyOfAxioms.json")
+    zos.putArchiveEntry(entry)
+    try {
+      zos.write(subDataPropertyOfAxiomsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
+    // SubObjectPropertyOfAxiom
+    entry = new ZipArchiveEntry("SubObjectPropertyOfAxioms.json")
+    zos.putArchiveEntry(entry)
+    try {
+      zos.write(subObjectPropertyOfAxiomsByteArray(e))
     } finally {
       zos.closeArchiveEntry()
     }
@@ -2758,6 +2780,66 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
+  static def byte[] subDataPropertyOfAxiomsByteArray(Extent e) {
+  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
+  	val PrintWriter pw = new PrintWriter(bos)
+  	OMLTables.subDataPropertyOfAxioms(e).forEach[it |
+  	  pw.print("{")
+      pw.print("\"uuid\":")
+      pw.print("\"")
+      pw.print(it.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"tboxUUID\":")
+      pw.print("\"")
+      pw.print(it.tbox.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"subPropertyUUID\":")
+      pw.print("\"")
+      pw.print(it.subProperty.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"superPropertyUUID\":")
+      pw.print("\"")
+      pw.print(it.superProperty.uuid())
+      pw.print("\"")
+      pw.println("}")
+    ]
+    pw.close()
+    return bos.toByteArray()
+  }
+  
+  static def byte[] subObjectPropertyOfAxiomsByteArray(Extent e) {
+  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
+  	val PrintWriter pw = new PrintWriter(bos)
+  	OMLTables.subObjectPropertyOfAxioms(e).forEach[it |
+  	  pw.print("{")
+      pw.print("\"uuid\":")
+      pw.print("\"")
+      pw.print(it.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"tboxUUID\":")
+      pw.print("\"")
+      pw.print(it.tbox.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"subPropertyUUID\":")
+      pw.print("\"")
+      pw.print(it.subProperty.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"superPropertyUUID\":")
+      pw.print("\"")
+      pw.print(it.superProperty.uuid())
+      pw.print("\"")
+      pw.println("}")
+    ]
+    pw.close()
+    return bos.toByteArray()
+  }
+  
   static def byte[] unreifiedRelationshipInstanceTuplesByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
@@ -2981,6 +3063,10 @@ class OMLSpecificationTables {
   	      tables.readSingletonInstanceStructuredDataPropertyValues(lines)
   	    case "StructuredDataPropertyTuples.json":
   	      tables.readStructuredDataPropertyTuples(lines)
+  	    case "SubDataPropertyOfAxioms.json":
+  	      tables.readSubDataPropertyOfAxioms(lines)
+  	    case "SubObjectPropertyOfAxioms.json":
+  	      tables.readSubObjectPropertyOfAxioms(lines)
   	    case "UnreifiedRelationshipInstanceTuples.json":
   	      tables.readUnreifiedRelationshipInstanceTuples(lines)
   	    case "UnreifiedRelationshipInversePropertyPredicates.json":
@@ -3706,6 +3792,26 @@ class OMLSpecificationTables {
   	]
   }
   
+  protected def void readSubDataPropertyOfAxioms(ArrayList<String> lines) {
+  	val kvs = OMLZipResource.lines2tuples(lines)
+  	kvs.forEach[kv|
+  	  val oml = createSubDataPropertyOfAxiom()
+  	  val uuid = kv.remove("uuid")
+  	  val pair = new Pair<SubDataPropertyOfAxiom, Map<String,String>>(oml, kv)
+  	  subDataPropertyOfAxioms.put(uuid, pair)
+  	]
+  }
+  
+  protected def void readSubObjectPropertyOfAxioms(ArrayList<String> lines) {
+  	val kvs = OMLZipResource.lines2tuples(lines)
+  	kvs.forEach[kv|
+  	  val oml = createSubObjectPropertyOfAxiom()
+  	  val uuid = kv.remove("uuid")
+  	  val pair = new Pair<SubObjectPropertyOfAxiom, Map<String,String>>(oml, kv)
+  	  subObjectPropertyOfAxioms.put(uuid, pair)
+  	]
+  }
+  
   protected def void readUnreifiedRelationshipInstanceTuples(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
@@ -3804,6 +3910,8 @@ class OMLSpecificationTables {
     includeMap(logicalElements, singletonInstanceScalarDataPropertyValues)
     includeMap(logicalElements, singletonInstanceStructuredDataPropertyValues)
     includeMap(logicalElements, structuredDataPropertyTuples)
+    includeMap(logicalElements, subDataPropertyOfAxioms)
+    includeMap(logicalElements, subObjectPropertyOfAxioms)
     includeMap(logicalElements, unreifiedRelationshipInstanceTuples)
     includeMap(logicalElements, unreifiedRelationshipInversePropertyPredicates)
     includeMap(logicalElements, unreifiedRelationshipPropertyPredicates)
@@ -3915,6 +4023,8 @@ class OMLSpecificationTables {
     resolveSingletonInstanceScalarDataPropertyValues(rs)
     resolveSingletonInstanceStructuredDataPropertyValues(rs)
     resolveStructuredDataPropertyTuples(rs)
+    resolveSubDataPropertyOfAxioms(rs)
+    resolveSubObjectPropertyOfAxioms(rs)
     resolveUnreifiedRelationshipInstanceTuples(rs)
     resolveUnreifiedRelationshipInversePropertyPredicates(rs)
     resolveUnreifiedRelationshipPropertyPredicates(rs)
@@ -5193,6 +5303,54 @@ class OMLSpecificationTables {
   	]
   }
   
+  protected def void resolveSubDataPropertyOfAxioms(OMLZipResourceSet rs) {
+  	subDataPropertyOfAxioms.forEach[uuid, oml_kv |
+  	  val SubDataPropertyOfAxiom oml = oml_kv.key
+  	  val Map<String, String> kv = oml_kv.value
+  	  if (!kv.empty) {
+  	    val String tboxXRef = kv.remove("tboxUUID")
+  	    val Pair<TerminologyBox, Map<String, String>> tboxPair = terminologyBoxes.get(tboxXRef)
+  	    if (null === tboxPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for tbox in subDataPropertyOfAxioms")
+  	    oml.tbox = tboxPair.key
+  	    val String subPropertyXRef = kv.remove("subPropertyUUID")
+  	    val Pair<EntityScalarDataProperty, Map<String, String>> subPropertyPair = entityScalarDataProperties.get(subPropertyXRef)
+  	    if (null === subPropertyPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for subProperty in subDataPropertyOfAxioms")
+  	    oml.subProperty = subPropertyPair.key
+  	    val String superPropertyXRef = kv.remove("superPropertyUUID")
+  	    val Pair<EntityScalarDataProperty, Map<String, String>> superPropertyPair = entityScalarDataProperties.get(superPropertyXRef)
+  	    if (null === superPropertyPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for superProperty in subDataPropertyOfAxioms")
+  	    oml.superProperty = superPropertyPair.key
+  	  }
+  	]
+  }
+  
+  protected def void resolveSubObjectPropertyOfAxioms(OMLZipResourceSet rs) {
+  	subObjectPropertyOfAxioms.forEach[uuid, oml_kv |
+  	  val SubObjectPropertyOfAxiom oml = oml_kv.key
+  	  val Map<String, String> kv = oml_kv.value
+  	  if (!kv.empty) {
+  	    val String tboxXRef = kv.remove("tboxUUID")
+  	    val Pair<TerminologyBox, Map<String, String>> tboxPair = terminologyBoxes.get(tboxXRef)
+  	    if (null === tboxPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for tbox in subObjectPropertyOfAxioms")
+  	    oml.tbox = tboxPair.key
+  	    val String subPropertyXRef = kv.remove("subPropertyUUID")
+  	    val Pair<UnreifiedRelationship, Map<String, String>> subPropertyPair = unreifiedRelationships.get(subPropertyXRef)
+  	    if (null === subPropertyPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for subProperty in subObjectPropertyOfAxioms")
+  	    oml.subProperty = subPropertyPair.key
+  	    val String superPropertyXRef = kv.remove("superPropertyUUID")
+  	    val Pair<UnreifiedRelationship, Map<String, String>> superPropertyPair = unreifiedRelationships.get(superPropertyXRef)
+  	    if (null === superPropertyPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for superProperty in subObjectPropertyOfAxioms")
+  	    oml.superProperty = superPropertyPair.key
+  	  }
+  	]
+  }
+  
   protected def void resolveUnreifiedRelationshipInstanceTuples(OMLZipResourceSet rs) {
   	unreifiedRelationshipInstanceTuples.forEach[uuid, oml_kv |
   	  val UnreifiedRelationshipInstanceTuple oml = oml_kv.key
@@ -5585,6 +5743,16 @@ class OMLSpecificationTables {
   	          StructuredDataPropertyTuple: {
   	          	val pair = new Pair<StructuredDataPropertyTuple, Map<String,String>>(e, Collections.emptyMap)
   	            structuredDataPropertyTuples.put(e.uuid(), pair)
+  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	          }
+  	          SubDataPropertyOfAxiom: {
+  	          	val pair = new Pair<SubDataPropertyOfAxiom, Map<String,String>>(e, Collections.emptyMap)
+  	            subDataPropertyOfAxioms.put(e.uuid(), pair)
+  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	          }
+  	          SubObjectPropertyOfAxiom: {
+  	          	val pair = new Pair<SubObjectPropertyOfAxiom, Map<String,String>>(e, Collections.emptyMap)
+  	            subObjectPropertyOfAxioms.put(e.uuid(), pair)
   	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
   	          }
   	          UnreifiedRelationshipInstanceTuple: {

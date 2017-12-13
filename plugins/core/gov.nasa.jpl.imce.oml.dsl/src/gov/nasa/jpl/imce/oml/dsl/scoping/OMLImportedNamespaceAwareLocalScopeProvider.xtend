@@ -85,6 +85,8 @@ import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetInvers
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetPropertyPredicate
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourceInversePropertyPredicate
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourcePropertyPredicate
+import gov.nasa.jpl.imce.oml.model.terminologies.SubObjectPropertyOfAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.SubDataPropertyOfAxiom
 
 class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespaceAwareLocalScopeProvider {
 	
@@ -178,6 +180,18 @@ class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespaceAware
 					scope = context.tbox.allReifiedRelationshipsScope
 				else if (reference == TerminologiesPackage.eINSTANCE.reifiedRelationshipSpecializationAxiom_SuperRelationship)
 					scope = context.tbox.allReifiedRelationshipsScope
+						
+			SubObjectPropertyOfAxiom:
+				if (reference == TerminologiesPackage.eINSTANCE.subObjectPropertyOfAxiom_SubProperty)
+					scope = context.tbox.allUnreifiedRelationshipsScope
+				else if (reference == TerminologiesPackage.eINSTANCE.subObjectPropertyOfAxiom_SuperProperty)
+					scope = context.tbox.allUnreifiedRelationshipsScope
+					
+			SubDataPropertyOfAxiom:
+				if (reference == TerminologiesPackage.eINSTANCE.subDataPropertyOfAxiom_SubProperty)
+					scope = context.tbox.allEntityScalarDataPropertiesScope
+				else if (reference == TerminologiesPackage.eINSTANCE.subDataPropertyOfAxiom_SuperProperty)
+					scope = context.tbox.allEntityScalarDataPropertiesScope
 					
 			RestrictedDataRange:
 				if (reference == TerminologiesPackage.eINSTANCE.restrictedDataRange_RestrictedRange)

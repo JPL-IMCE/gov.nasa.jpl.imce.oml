@@ -86,6 +86,8 @@ import gov.nasa.jpl.imce.oml.model.terminologies.SegmentPredicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.StringScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.Structure;
 import gov.nasa.jpl.imce.oml.model.terminologies.StructuredDataProperty;
+import gov.nasa.jpl.imce.oml.model.terminologies.SubDataPropertyOfAxiom;
+import gov.nasa.jpl.imce.oml.model.terminologies.SubObjectPropertyOfAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.SynonymScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBoxAxiom;
@@ -861,6 +863,34 @@ public class OMLFormatter extends AbstractFormatter2 {
       it.oneSpace();
     };
     document.surround(this.textRegionExtensions.regionFor(ax).keyword("extendsRelationship"), _function_1);
+  }
+  
+  protected void _format(final SubObjectPropertyOfAxiom ax, @Extension final IFormattableDocument document) {
+    final Consumer<AnnotationPropertyValue> _function = (AnnotationPropertyValue it) -> {
+      final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it_1) -> {
+        it_1.setNewLines(1);
+      };
+      document.<AnnotationPropertyValue>append(document.<AnnotationPropertyValue>format(it), _function_1);
+    };
+    ax.getAnnotations().forEach(_function);
+    final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
+      it.oneSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(ax).keyword("subObjectPropertyOf"), _function_1);
+  }
+  
+  protected void _format(final SubDataPropertyOfAxiom ax, @Extension final IFormattableDocument document) {
+    final Consumer<AnnotationPropertyValue> _function = (AnnotationPropertyValue it) -> {
+      final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it_1) -> {
+        it_1.setNewLines(1);
+      };
+      document.<AnnotationPropertyValue>append(document.<AnnotationPropertyValue>format(it), _function_1);
+    };
+    ax.getAnnotations().forEach(_function);
+    final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
+      it.oneSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(ax).keyword("subDataPropertyOf"), _function_1);
   }
   
   protected void _format(final ConceptDesignationTerminologyAxiom ax, @Extension final IFormattableDocument document) {
@@ -2356,6 +2386,12 @@ public class OMLFormatter extends AbstractFormatter2 {
       return;
     } else if (t instanceof ScalarOneOfLiteralAxiom) {
       _format((ScalarOneOfLiteralAxiom)t, document);
+      return;
+    } else if (t instanceof SubDataPropertyOfAxiom) {
+      _format((SubDataPropertyOfAxiom)t, document);
+      return;
+    } else if (t instanceof SubObjectPropertyOfAxiom) {
+      _format((SubObjectPropertyOfAxiom)t, document);
       return;
     } else if (t instanceof AnonymousConceptUnionAxiom) {
       _format((AnonymousConceptUnionAxiom)t, document);
