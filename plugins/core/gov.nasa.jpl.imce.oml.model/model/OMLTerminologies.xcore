@@ -1294,6 +1294,12 @@ class SubObjectPropertyOfAxiom extends TermAxiom, ElementCrossReferenceTuple {
 		"superProperty" -> superProperty?.uuid()?.toString
 		)?.toString
 	}
+	
+	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.LogicalElement]")
+	@Collection(kind="Set")
+	@NotSchema
+	@ImplicitExtent
+	op LogicalElement[] allNestedElements() { ECollections.emptyEList }
 }
 
 /*
@@ -1318,6 +1324,12 @@ class SubDataPropertyOfAxiom extends TermAxiom, ElementCrossReferenceTuple {
 		"superProperty" -> superProperty?.uuid()?.toString
 		)?.toString
 	}
+	
+	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.LogicalElement]")
+	@Collection(kind="Set")
+	@NotSchema
+	@ImplicitExtent
+	op LogicalElement[] allNestedElements() { ECollections.emptyEList }
 }
 
 /*
