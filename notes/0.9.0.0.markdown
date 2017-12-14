@@ -65,3 +65,5 @@ gov.nasa.jpl.imce.oml.tycho 0.9.0.0 resolves major problems found in 0.8.0.1
 - [#183 Need to strip quotes around IRI and UUID cross references](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/183)
 
 - [#185 Add OML syntax corresponding to OWL subObjectPropertyOf and subDataPropertyOf](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/185)
+
+- [#188 Add oml.zip to the oml.core feature and version range dependencies for all oml plugins](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/188)

@@ -21,9 +21,9 @@ Require-Bundle: org.eclipse.xtext.ui;bundle-version="[2.12.0,3.0.0)";visibility:
  org.eclipse.emf.ecore.xcore.ui;bundle-version="[1.5.0,2.0.0)";visibility:=reexport,
  org.eclipse.core.runtime;bundle-version="[3.13.0,4.0.0)";visibility:=reexport,
  org.eclipse.core.resources;bundle-version="[3.12.0,4.0.0)";visibility:=reexport,
- gov.nasa.jpl.imce.oml.model;visibility:=reexport,
- gov.nasa.jpl.imce.oml.dsl;visibility:=reexport,
- gov.nasa.jpl.imce.oml.dsl.ide;visibility:=reexport
+ gov.nasa.jpl.imce.oml.model;bundle-version="[0.9.0,1.0.0)";visibility:=reexport,
+ gov.nasa.jpl.imce.oml.dsl;bundle-version="[0.9.0,1.0.0)";visibility:=reexport,
+ gov.nasa.jpl.imce.oml.dsl.ide;bundle-version="[0.9.0,1.0.0)";visibility:=reexport
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: gov.nasa.jpl.imce.oml.dsl.ui.internal,
  gov.nasa.jpl.imce.oml.dsl.ui.quickfix,
