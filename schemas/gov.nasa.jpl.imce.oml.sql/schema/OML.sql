@@ -20,7 +20,6 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
-
 -- -----------------------------------------------------
 -- Schema OML
 -- -----------------------------------------------------
@@ -28,9 +27,10 @@ CREATE SCHEMA IF NOT EXISTS `OML` DEFAULT CHARACTER SET utf8 ;
 USE `OML` ;
 
 -- -----------------------------------------------------
--- Table `OML`.`AnnotationProperties`
+-- AnnotationProperties
+-- Table `OML`.`AP`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`AnnotationProperties` (
+CREATE TABLE IF NOT EXISTS `OML`.`AP` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `iri`  TEXT,
@@ -40,9 +40,10 @@ CREATE TABLE IF NOT EXISTS `OML`.`AnnotationProperties` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`TerminologyGraphs`
+-- TerminologyGraphs
+-- Table `OML`.`TG`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`TerminologyGraphs` (
+CREATE TABLE IF NOT EXISTS `OML`.`TG` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `kind`  TEXT,
@@ -52,9 +53,10 @@ CREATE TABLE IF NOT EXISTS `OML`.`TerminologyGraphs` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`Bundles`
+-- Bundles
+-- Table `OML`.`B`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`Bundles` (
+CREATE TABLE IF NOT EXISTS `OML`.`B` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `kind`  TEXT,
@@ -64,9 +66,10 @@ CREATE TABLE IF NOT EXISTS `OML`.`Bundles` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`ConceptDesignationTerminologyAxioms`
+-- ConceptDesignationTerminologyAxioms
+-- Table `OML`.`CDTA`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`ConceptDesignationTerminologyAxioms` (
+CREATE TABLE IF NOT EXISTS `OML`.`CDTA` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `tboxUUID`  BINARY(16) NOT NULL,
@@ -75,21 +78,21 @@ CREATE TABLE IF NOT EXISTS `OML`.`ConceptDesignationTerminologyAxioms` (
   
     `designatedTerminologyIRI`  VARCHAR(256) NOT NULL
   ,
-  CONSTRAINT `fk_ConceptDesignationTerminologyAxioms_tboxUUID`
+  CONSTRAINT `fk_CDTA_tboxUUID`
     FOREIGN KEY (`tboxUUID`)
-    REFERENCES `OML`.`TerminologyBoxes`(`uuid`)
+    REFERENCES `OML`.`TB`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_ConceptDesignationTerminologyAxioms_designatedConceptUUID`
+  CONSTRAINT `fk_CDTA_designatedConceptUUID`
     FOREIGN KEY (`designatedConceptUUID`)
-    REFERENCES `OML`.`Concepts`(`uuid`)
+    REFERENCES `OML`.`C`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_ConceptDesignationTerminologyAxioms_designatedTerminologyIRI`
+  CONSTRAINT `fk_CDTA_designatedTerminologyIRI`
     FOREIGN KEY (`designatedTerminologyIRI`)
-    REFERENCES `OML`.`TerminologyBoxes`(`uuid`)
+    REFERENCES `OML`.`TB`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -97,24 +100,25 @@ CREATE TABLE IF NOT EXISTS `OML`.`ConceptDesignationTerminologyAxioms` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`TerminologyExtensionAxioms`
+-- TerminologyExtensionAxioms
+-- Table `OML`.`TEA`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`TerminologyExtensionAxioms` (
+CREATE TABLE IF NOT EXISTS `OML`.`TEA` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `tboxUUID`  BINARY(16) NOT NULL,
   
     `extendedTerminologyIRI`  VARCHAR(256) NOT NULL
   ,
-  CONSTRAINT `fk_TerminologyExtensionAxioms_tboxUUID`
+  CONSTRAINT `fk_TEA_tboxUUID`
     FOREIGN KEY (`tboxUUID`)
-    REFERENCES `OML`.`TerminologyBoxes`(`uuid`)
+    REFERENCES `OML`.`TB`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_TerminologyExtensionAxioms_extendedTerminologyIRI`
+  CONSTRAINT `fk_TEA_extendedTerminologyIRI`
     FOREIGN KEY (`extendedTerminologyIRI`)
-    REFERENCES `OML`.`TerminologyBoxes`(`uuid`)
+    REFERENCES `OML`.`TB`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -122,9 +126,10 @@ CREATE TABLE IF NOT EXISTS `OML`.`TerminologyExtensionAxioms` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`TerminologyNestingAxioms`
+-- TerminologyNestingAxioms
+-- Table `OML`.`TNA`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`TerminologyNestingAxioms` (
+CREATE TABLE IF NOT EXISTS `OML`.`TNA` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `tboxUUID`  BINARY(16) NOT NULL,
@@ -133,21 +138,21 @@ CREATE TABLE IF NOT EXISTS `OML`.`TerminologyNestingAxioms` (
   
     `nestingTerminologyIRI`  VARCHAR(256) NOT NULL
   ,
-  CONSTRAINT `fk_TerminologyNestingAxioms_tboxUUID`
+  CONSTRAINT `fk_TNA_tboxUUID`
     FOREIGN KEY (`tboxUUID`)
-    REFERENCES `OML`.`TerminologyBoxes`(`uuid`)
+    REFERENCES `OML`.`TB`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_TerminologyNestingAxioms_nestingContextUUID`
+  CONSTRAINT `fk_TNA_nestingContextUUID`
     FOREIGN KEY (`nestingContextUUID`)
-    REFERENCES `OML`.`Concepts`(`uuid`)
+    REFERENCES `OML`.`C`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_TerminologyNestingAxioms_nestingTerminologyIRI`
+  CONSTRAINT `fk_TNA_nestingTerminologyIRI`
     FOREIGN KEY (`nestingTerminologyIRI`)
-    REFERENCES `OML`.`TerminologyBoxes`(`uuid`)
+    REFERENCES `OML`.`TB`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -155,17 +160,18 @@ CREATE TABLE IF NOT EXISTS `OML`.`TerminologyNestingAxioms` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`Aspects`
+-- Aspects
+-- Table `OML`.`A`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`Aspects` (
+CREATE TABLE IF NOT EXISTS `OML`.`A` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `tboxUUID`  BINARY(16) NOT NULL,
   
     `name`  TEXT,
-  CONSTRAINT `fk_Aspects_tboxUUID`
+  CONSTRAINT `fk_A_tboxUUID`
     FOREIGN KEY (`tboxUUID`)
-    REFERENCES `OML`.`TerminologyBoxes`(`uuid`)
+    REFERENCES `OML`.`TB`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -173,17 +179,18 @@ CREATE TABLE IF NOT EXISTS `OML`.`Aspects` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`Concepts`
+-- Concepts
+-- Table `OML`.`C`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`Concepts` (
+CREATE TABLE IF NOT EXISTS `OML`.`C` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `tboxUUID`  BINARY(16) NOT NULL,
   
     `name`  TEXT,
-  CONSTRAINT `fk_Concepts_tboxUUID`
+  CONSTRAINT `fk_C_tboxUUID`
     FOREIGN KEY (`tboxUUID`)
-    REFERENCES `OML`.`TerminologyBoxes`(`uuid`)
+    REFERENCES `OML`.`TB`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -191,9 +198,10 @@ CREATE TABLE IF NOT EXISTS `OML`.`Concepts` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`ReifiedRelationships`
+-- ReifiedRelationships
+-- Table `OML`.`RR`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`ReifiedRelationships` (
+CREATE TABLE IF NOT EXISTS `OML`.`RR` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `tboxUUID`  BINARY(16) NOT NULL,
@@ -214,21 +222,21 @@ CREATE TABLE IF NOT EXISTS `OML`.`ReifiedRelationships` (
     `name`  TEXT,
     `unreifiedPropertyName`  TEXT,
     `unreifiedInversePropertyName`  TEXT,
-  CONSTRAINT `fk_ReifiedRelationships_tboxUUID`
+  CONSTRAINT `fk_RR_tboxUUID`
     FOREIGN KEY (`tboxUUID`)
-    REFERENCES `OML`.`TerminologyBoxes`(`uuid`)
+    REFERENCES `OML`.`TB`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_ReifiedRelationships_sourceUUID`
+  CONSTRAINT `fk_RR_sourceUUID`
     FOREIGN KEY (`sourceUUID`)
-    REFERENCES `OML`.`Entities`(`uuid`)
+    REFERENCES `OML`.`E`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_ReifiedRelationships_targetUUID`
+  CONSTRAINT `fk_RR_targetUUID`
     FOREIGN KEY (`targetUUID`)
-    REFERENCES `OML`.`Entities`(`uuid`)
+    REFERENCES `OML`.`E`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -236,9 +244,10 @@ CREATE TABLE IF NOT EXISTS `OML`.`ReifiedRelationships` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`UnreifiedRelationships`
+-- UnreifiedRelationships
+-- Table `OML`.`UR`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`UnreifiedRelationships` (
+CREATE TABLE IF NOT EXISTS `OML`.`UR` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `tboxUUID`  BINARY(16) NOT NULL,
@@ -257,21 +266,21 @@ CREATE TABLE IF NOT EXISTS `OML`.`UnreifiedRelationships` (
     `isSymmetric`  TEXT,
     `isTransitive`  TEXT,
     `name`  TEXT,
-  CONSTRAINT `fk_UnreifiedRelationships_tboxUUID`
+  CONSTRAINT `fk_UR_tboxUUID`
     FOREIGN KEY (`tboxUUID`)
-    REFERENCES `OML`.`TerminologyBoxes`(`uuid`)
+    REFERENCES `OML`.`TB`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_UnreifiedRelationships_sourceUUID`
+  CONSTRAINT `fk_UR_sourceUUID`
     FOREIGN KEY (`sourceUUID`)
-    REFERENCES `OML`.`Entities`(`uuid`)
+    REFERENCES `OML`.`E`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_UnreifiedRelationships_targetUUID`
+  CONSTRAINT `fk_UR_targetUUID`
     FOREIGN KEY (`targetUUID`)
-    REFERENCES `OML`.`Entities`(`uuid`)
+    REFERENCES `OML`.`E`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -279,17 +288,18 @@ CREATE TABLE IF NOT EXISTS `OML`.`UnreifiedRelationships` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`Scalars`
+-- Scalars
+-- Table `OML`.`S`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`Scalars` (
+CREATE TABLE IF NOT EXISTS `OML`.`S` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `tboxUUID`  BINARY(16) NOT NULL,
   
     `name`  TEXT,
-  CONSTRAINT `fk_Scalars_tboxUUID`
+  CONSTRAINT `fk_S_tboxUUID`
     FOREIGN KEY (`tboxUUID`)
-    REFERENCES `OML`.`TerminologyBoxes`(`uuid`)
+    REFERENCES `OML`.`TB`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -297,17 +307,18 @@ CREATE TABLE IF NOT EXISTS `OML`.`Scalars` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`Structures`
+-- Structures
+-- Table `OML`.`S`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`Structures` (
+CREATE TABLE IF NOT EXISTS `OML`.`S` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `tboxUUID`  BINARY(16) NOT NULL,
   
     `name`  TEXT,
-  CONSTRAINT `fk_Structures_tboxUUID`
+  CONSTRAINT `fk_S_tboxUUID`
     FOREIGN KEY (`tboxUUID`)
-    REFERENCES `OML`.`TerminologyBoxes`(`uuid`)
+    REFERENCES `OML`.`TB`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -315,9 +326,10 @@ CREATE TABLE IF NOT EXISTS `OML`.`Structures` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`BinaryScalarRestrictions`
+-- BinaryScalarRestrictions
+-- Table `OML`.`BSR`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`BinaryScalarRestrictions` (
+CREATE TABLE IF NOT EXISTS `OML`.`BSR` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `tboxUUID`  BINARY(16) NOT NULL,
@@ -328,15 +340,15 @@ CREATE TABLE IF NOT EXISTS `OML`.`BinaryScalarRestrictions` (
     `minLength`  TEXT,
     `maxLength`  TEXT,
     `name`  TEXT,
-  CONSTRAINT `fk_BinaryScalarRestrictions_tboxUUID`
+  CONSTRAINT `fk_BSR_tboxUUID`
     FOREIGN KEY (`tboxUUID`)
-    REFERENCES `OML`.`TerminologyBoxes`(`uuid`)
+    REFERENCES `OML`.`TB`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_BinaryScalarRestrictions_restrictedRangeUUID`
+  CONSTRAINT `fk_BSR_restrictedRangeUUID`
     FOREIGN KEY (`restrictedRangeUUID`)
-    REFERENCES `OML`.`DataRanges`(`uuid`)
+    REFERENCES `OML`.`DR`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -344,9 +356,10 @@ CREATE TABLE IF NOT EXISTS `OML`.`BinaryScalarRestrictions` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`IRIScalarRestrictions`
+-- IRIScalarRestrictions
+-- Table `OML`.`IRISR`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`IRIScalarRestrictions` (
+CREATE TABLE IF NOT EXISTS `OML`.`IRISR` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `tboxUUID`  BINARY(16) NOT NULL,
@@ -358,15 +371,15 @@ CREATE TABLE IF NOT EXISTS `OML`.`IRIScalarRestrictions` (
     `maxLength`  TEXT,
     `name`  TEXT,
     `pattern`  TEXT,
-  CONSTRAINT `fk_IRIScalarRestrictions_tboxUUID`
+  CONSTRAINT `fk_IRISR_tboxUUID`
     FOREIGN KEY (`tboxUUID`)
-    REFERENCES `OML`.`TerminologyBoxes`(`uuid`)
+    REFERENCES `OML`.`TB`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_IRIScalarRestrictions_restrictedRangeUUID`
+  CONSTRAINT `fk_IRISR_restrictedRangeUUID`
     FOREIGN KEY (`restrictedRangeUUID`)
-    REFERENCES `OML`.`DataRanges`(`uuid`)
+    REFERENCES `OML`.`DR`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -374,9 +387,10 @@ CREATE TABLE IF NOT EXISTS `OML`.`IRIScalarRestrictions` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`NumericScalarRestrictions`
+-- NumericScalarRestrictions
+-- Table `OML`.`NSR`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`NumericScalarRestrictions` (
+CREATE TABLE IF NOT EXISTS `OML`.`NSR` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `tboxUUID`  BINARY(16) NOT NULL,
@@ -396,39 +410,39 @@ CREATE TABLE IF NOT EXISTS `OML`.`NumericScalarRestrictions` (
   TEXT, `maxInclusiveLiteralType` VARCHAR(20) NOT NULL,
   
     `name`  TEXT,
-  CONSTRAINT `fk_NumericScalarRestrictions_tboxUUID`
+  CONSTRAINT `fk_NSR_tboxUUID`
     FOREIGN KEY (`tboxUUID`)
-    REFERENCES `OML`.`TerminologyBoxes`(`uuid`)
+    REFERENCES `OML`.`TB`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_NumericScalarRestrictions_restrictedRangeUUID`
+  CONSTRAINT `fk_NSR_restrictedRangeUUID`
     FOREIGN KEY (`restrictedRangeUUID`)
-    REFERENCES `OML`.`DataRanges`(`uuid`)
+    REFERENCES `OML`.`DR`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_NumericScalarRestrictions_minExclusive`
+  CONSTRAINT `fk_NSR_minExclusive`
     FOREIGN KEY (`minExclusive`)
-    REFERENCES `OML`.`LiteralNumbers`(`uuid`)
+    REFERENCES `OML`.`LN`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_NumericScalarRestrictions_minInclusive`
+  CONSTRAINT `fk_NSR_minInclusive`
     FOREIGN KEY (`minInclusive`)
-    REFERENCES `OML`.`LiteralNumbers`(`uuid`)
+    REFERENCES `OML`.`LN`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_NumericScalarRestrictions_maxExclusive`
+  CONSTRAINT `fk_NSR_maxExclusive`
     FOREIGN KEY (`maxExclusive`)
-    REFERENCES `OML`.`LiteralNumbers`(`uuid`)
+    REFERENCES `OML`.`LN`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_NumericScalarRestrictions_maxInclusive`
+  CONSTRAINT `fk_NSR_maxInclusive`
     FOREIGN KEY (`maxInclusive`)
-    REFERENCES `OML`.`LiteralNumbers`(`uuid`)
+    REFERENCES `OML`.`LN`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -436,9 +450,10 @@ CREATE TABLE IF NOT EXISTS `OML`.`NumericScalarRestrictions` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`PlainLiteralScalarRestrictions`
+-- PlainLiteralScalarRestrictions
+-- Table `OML`.`PLSR`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`PlainLiteralScalarRestrictions` (
+CREATE TABLE IF NOT EXISTS `OML`.`PLSR` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `tboxUUID`  BINARY(16) NOT NULL,
@@ -451,15 +466,15 @@ CREATE TABLE IF NOT EXISTS `OML`.`PlainLiteralScalarRestrictions` (
     `name`  TEXT,
     `langRange`  TEXT,
     `pattern`  TEXT,
-  CONSTRAINT `fk_PlainLiteralScalarRestrictions_tboxUUID`
+  CONSTRAINT `fk_PLSR_tboxUUID`
     FOREIGN KEY (`tboxUUID`)
-    REFERENCES `OML`.`TerminologyBoxes`(`uuid`)
+    REFERENCES `OML`.`TB`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_PlainLiteralScalarRestrictions_restrictedRangeUUID`
+  CONSTRAINT `fk_PLSR_restrictedRangeUUID`
     FOREIGN KEY (`restrictedRangeUUID`)
-    REFERENCES `OML`.`DataRanges`(`uuid`)
+    REFERENCES `OML`.`DR`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -467,9 +482,10 @@ CREATE TABLE IF NOT EXISTS `OML`.`PlainLiteralScalarRestrictions` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`ScalarOneOfRestrictions`
+-- ScalarOneOfRestrictions
+-- Table `OML`.`SOOR`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`ScalarOneOfRestrictions` (
+CREATE TABLE IF NOT EXISTS `OML`.`SOOR` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `tboxUUID`  BINARY(16) NOT NULL,
@@ -477,15 +493,15 @@ CREATE TABLE IF NOT EXISTS `OML`.`ScalarOneOfRestrictions` (
     `restrictedRangeUUID`  BINARY(16) NOT NULL,
   
     `name`  TEXT,
-  CONSTRAINT `fk_ScalarOneOfRestrictions_tboxUUID`
+  CONSTRAINT `fk_SOOR_tboxUUID`
     FOREIGN KEY (`tboxUUID`)
-    REFERENCES `OML`.`TerminologyBoxes`(`uuid`)
+    REFERENCES `OML`.`TB`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_ScalarOneOfRestrictions_restrictedRangeUUID`
+  CONSTRAINT `fk_SOOR_restrictedRangeUUID`
     FOREIGN KEY (`restrictedRangeUUID`)
-    REFERENCES `OML`.`DataRanges`(`uuid`)
+    REFERENCES `OML`.`DR`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -493,9 +509,10 @@ CREATE TABLE IF NOT EXISTS `OML`.`ScalarOneOfRestrictions` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`StringScalarRestrictions`
+-- StringScalarRestrictions
+-- Table `OML`.`SSR`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`StringScalarRestrictions` (
+CREATE TABLE IF NOT EXISTS `OML`.`SSR` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `tboxUUID`  BINARY(16) NOT NULL,
@@ -507,15 +524,15 @@ CREATE TABLE IF NOT EXISTS `OML`.`StringScalarRestrictions` (
     `maxLength`  TEXT,
     `name`  TEXT,
     `pattern`  TEXT,
-  CONSTRAINT `fk_StringScalarRestrictions_tboxUUID`
+  CONSTRAINT `fk_SSR_tboxUUID`
     FOREIGN KEY (`tboxUUID`)
-    REFERENCES `OML`.`TerminologyBoxes`(`uuid`)
+    REFERENCES `OML`.`TB`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_StringScalarRestrictions_restrictedRangeUUID`
+  CONSTRAINT `fk_SSR_restrictedRangeUUID`
     FOREIGN KEY (`restrictedRangeUUID`)
-    REFERENCES `OML`.`DataRanges`(`uuid`)
+    REFERENCES `OML`.`DR`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -523,9 +540,10 @@ CREATE TABLE IF NOT EXISTS `OML`.`StringScalarRestrictions` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`SynonymScalarRestrictions`
+-- SynonymScalarRestrictions
+-- Table `OML`.`SSR`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`SynonymScalarRestrictions` (
+CREATE TABLE IF NOT EXISTS `OML`.`SSR` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `tboxUUID`  BINARY(16) NOT NULL,
@@ -533,15 +551,15 @@ CREATE TABLE IF NOT EXISTS `OML`.`SynonymScalarRestrictions` (
     `restrictedRangeUUID`  BINARY(16) NOT NULL,
   
     `name`  TEXT,
-  CONSTRAINT `fk_SynonymScalarRestrictions_tboxUUID`
+  CONSTRAINT `fk_SSR_tboxUUID`
     FOREIGN KEY (`tboxUUID`)
-    REFERENCES `OML`.`TerminologyBoxes`(`uuid`)
+    REFERENCES `OML`.`TB`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_SynonymScalarRestrictions_restrictedRangeUUID`
+  CONSTRAINT `fk_SSR_restrictedRangeUUID`
     FOREIGN KEY (`restrictedRangeUUID`)
-    REFERENCES `OML`.`DataRanges`(`uuid`)
+    REFERENCES `OML`.`DR`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -549,9 +567,10 @@ CREATE TABLE IF NOT EXISTS `OML`.`SynonymScalarRestrictions` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`TimeScalarRestrictions`
+-- TimeScalarRestrictions
+-- Table `OML`.`TSR`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`TimeScalarRestrictions` (
+CREATE TABLE IF NOT EXISTS `OML`.`TSR` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `tboxUUID`  BINARY(16) NOT NULL,
@@ -571,39 +590,39 @@ CREATE TABLE IF NOT EXISTS `OML`.`TimeScalarRestrictions` (
   TEXT, `maxInclusiveLiteralType` VARCHAR(20) NOT NULL,
   
     `name`  TEXT,
-  CONSTRAINT `fk_TimeScalarRestrictions_tboxUUID`
+  CONSTRAINT `fk_TSR_tboxUUID`
     FOREIGN KEY (`tboxUUID`)
-    REFERENCES `OML`.`TerminologyBoxes`(`uuid`)
+    REFERENCES `OML`.`TB`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_TimeScalarRestrictions_restrictedRangeUUID`
+  CONSTRAINT `fk_TSR_restrictedRangeUUID`
     FOREIGN KEY (`restrictedRangeUUID`)
-    REFERENCES `OML`.`DataRanges`(`uuid`)
+    REFERENCES `OML`.`DR`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_TimeScalarRestrictions_minExclusive`
+  CONSTRAINT `fk_TSR_minExclusive`
     FOREIGN KEY (`minExclusive`)
-    REFERENCES `OML`.`LiteralDateTimes`(`uuid`)
+    REFERENCES `OML`.`LDT`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_TimeScalarRestrictions_minInclusive`
+  CONSTRAINT `fk_TSR_minInclusive`
     FOREIGN KEY (`minInclusive`)
-    REFERENCES `OML`.`LiteralDateTimes`(`uuid`)
+    REFERENCES `OML`.`LDT`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_TimeScalarRestrictions_maxExclusive`
+  CONSTRAINT `fk_TSR_maxExclusive`
     FOREIGN KEY (`maxExclusive`)
-    REFERENCES `OML`.`LiteralDateTimes`(`uuid`)
+    REFERENCES `OML`.`LDT`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_TimeScalarRestrictions_maxInclusive`
+  CONSTRAINT `fk_TSR_maxInclusive`
     FOREIGN KEY (`maxInclusive`)
-    REFERENCES `OML`.`LiteralDateTimes`(`uuid`)
+    REFERENCES `OML`.`LDT`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -611,9 +630,10 @@ CREATE TABLE IF NOT EXISTS `OML`.`TimeScalarRestrictions` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`EntityScalarDataProperties`
+-- EntityScalarDataProperties
+-- Table `OML`.`ESDP`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`EntityScalarDataProperties` (
+CREATE TABLE IF NOT EXISTS `OML`.`ESDP` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `tboxUUID`  BINARY(16) NOT NULL,
@@ -624,21 +644,21 @@ CREATE TABLE IF NOT EXISTS `OML`.`EntityScalarDataProperties` (
   
     `isIdentityCriteria`  TEXT,
     `name`  TEXT,
-  CONSTRAINT `fk_EntityScalarDataProperties_tboxUUID`
+  CONSTRAINT `fk_ESDP_tboxUUID`
     FOREIGN KEY (`tboxUUID`)
-    REFERENCES `OML`.`TerminologyBoxes`(`uuid`)
+    REFERENCES `OML`.`TB`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_EntityScalarDataProperties_domainUUID`
+  CONSTRAINT `fk_ESDP_domainUUID`
     FOREIGN KEY (`domainUUID`)
-    REFERENCES `OML`.`Entities`(`uuid`)
+    REFERENCES `OML`.`E`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_EntityScalarDataProperties_rangeUUID`
+  CONSTRAINT `fk_ESDP_rangeUUID`
     FOREIGN KEY (`rangeUUID`)
-    REFERENCES `OML`.`DataRanges`(`uuid`)
+    REFERENCES `OML`.`DR`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -646,9 +666,10 @@ CREATE TABLE IF NOT EXISTS `OML`.`EntityScalarDataProperties` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`EntityStructuredDataProperties`
+-- EntityStructuredDataProperties
+-- Table `OML`.`ESDP`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`EntityStructuredDataProperties` (
+CREATE TABLE IF NOT EXISTS `OML`.`ESDP` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `tboxUUID`  BINARY(16) NOT NULL,
@@ -659,21 +680,21 @@ CREATE TABLE IF NOT EXISTS `OML`.`EntityStructuredDataProperties` (
   
     `isIdentityCriteria`  TEXT,
     `name`  TEXT,
-  CONSTRAINT `fk_EntityStructuredDataProperties_tboxUUID`
+  CONSTRAINT `fk_ESDP_tboxUUID`
     FOREIGN KEY (`tboxUUID`)
-    REFERENCES `OML`.`TerminologyBoxes`(`uuid`)
+    REFERENCES `OML`.`TB`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_EntityStructuredDataProperties_domainUUID`
+  CONSTRAINT `fk_ESDP_domainUUID`
     FOREIGN KEY (`domainUUID`)
-    REFERENCES `OML`.`Entities`(`uuid`)
+    REFERENCES `OML`.`E`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_EntityStructuredDataProperties_rangeUUID`
+  CONSTRAINT `fk_ESDP_rangeUUID`
     FOREIGN KEY (`rangeUUID`)
-    REFERENCES `OML`.`Structures`(`uuid`)
+    REFERENCES `OML`.`S`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -681,9 +702,10 @@ CREATE TABLE IF NOT EXISTS `OML`.`EntityStructuredDataProperties` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`ScalarDataProperties`
+-- ScalarDataProperties
+-- Table `OML`.`SDP`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`ScalarDataProperties` (
+CREATE TABLE IF NOT EXISTS `OML`.`SDP` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `tboxUUID`  BINARY(16) NOT NULL,
@@ -693,21 +715,21 @@ CREATE TABLE IF NOT EXISTS `OML`.`ScalarDataProperties` (
     `rangeUUID`  BINARY(16) NOT NULL,
   
     `name`  TEXT,
-  CONSTRAINT `fk_ScalarDataProperties_tboxUUID`
+  CONSTRAINT `fk_SDP_tboxUUID`
     FOREIGN KEY (`tboxUUID`)
-    REFERENCES `OML`.`TerminologyBoxes`(`uuid`)
+    REFERENCES `OML`.`TB`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_ScalarDataProperties_domainUUID`
+  CONSTRAINT `fk_SDP_domainUUID`
     FOREIGN KEY (`domainUUID`)
-    REFERENCES `OML`.`Structures`(`uuid`)
+    REFERENCES `OML`.`S`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_ScalarDataProperties_rangeUUID`
+  CONSTRAINT `fk_SDP_rangeUUID`
     FOREIGN KEY (`rangeUUID`)
-    REFERENCES `OML`.`DataRanges`(`uuid`)
+    REFERENCES `OML`.`DR`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -715,9 +737,10 @@ CREATE TABLE IF NOT EXISTS `OML`.`ScalarDataProperties` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`StructuredDataProperties`
+-- StructuredDataProperties
+-- Table `OML`.`SDP`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`StructuredDataProperties` (
+CREATE TABLE IF NOT EXISTS `OML`.`SDP` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `tboxUUID`  BINARY(16) NOT NULL,
@@ -727,21 +750,21 @@ CREATE TABLE IF NOT EXISTS `OML`.`StructuredDataProperties` (
     `rangeUUID`  BINARY(16) NOT NULL,
   
     `name`  TEXT,
-  CONSTRAINT `fk_StructuredDataProperties_tboxUUID`
+  CONSTRAINT `fk_SDP_tboxUUID`
     FOREIGN KEY (`tboxUUID`)
-    REFERENCES `OML`.`TerminologyBoxes`(`uuid`)
+    REFERENCES `OML`.`TB`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_StructuredDataProperties_domainUUID`
+  CONSTRAINT `fk_SDP_domainUUID`
     FOREIGN KEY (`domainUUID`)
-    REFERENCES `OML`.`Structures`(`uuid`)
+    REFERENCES `OML`.`S`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_StructuredDataProperties_rangeUUID`
+  CONSTRAINT `fk_SDP_rangeUUID`
     FOREIGN KEY (`rangeUUID`)
-    REFERENCES `OML`.`Structures`(`uuid`)
+    REFERENCES `OML`.`S`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -749,9 +772,10 @@ CREATE TABLE IF NOT EXISTS `OML`.`StructuredDataProperties` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`AspectSpecializationAxioms`
+-- AspectSpecializationAxioms
+-- Table `OML`.`ASA`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`AspectSpecializationAxioms` (
+CREATE TABLE IF NOT EXISTS `OML`.`ASA` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `tboxUUID`  BINARY(16) NOT NULL,
@@ -760,21 +784,21 @@ CREATE TABLE IF NOT EXISTS `OML`.`AspectSpecializationAxioms` (
   
     `subEntityUUID`  BINARY(16) NOT NULL
   ,
-  CONSTRAINT `fk_AspectSpecializationAxioms_tboxUUID`
+  CONSTRAINT `fk_ASA_tboxUUID`
     FOREIGN KEY (`tboxUUID`)
-    REFERENCES `OML`.`TerminologyBoxes`(`uuid`)
+    REFERENCES `OML`.`TB`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_AspectSpecializationAxioms_superAspectUUID`
+  CONSTRAINT `fk_ASA_superAspectUUID`
     FOREIGN KEY (`superAspectUUID`)
-    REFERENCES `OML`.`Aspects`(`uuid`)
+    REFERENCES `OML`.`A`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_AspectSpecializationAxioms_subEntityUUID`
+  CONSTRAINT `fk_ASA_subEntityUUID`
     FOREIGN KEY (`subEntityUUID`)
-    REFERENCES `OML`.`Entities`(`uuid`)
+    REFERENCES `OML`.`E`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -782,9 +806,10 @@ CREATE TABLE IF NOT EXISTS `OML`.`AspectSpecializationAxioms` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`ConceptSpecializationAxioms`
+-- ConceptSpecializationAxioms
+-- Table `OML`.`CSA`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`ConceptSpecializationAxioms` (
+CREATE TABLE IF NOT EXISTS `OML`.`CSA` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `tboxUUID`  BINARY(16) NOT NULL,
@@ -793,21 +818,21 @@ CREATE TABLE IF NOT EXISTS `OML`.`ConceptSpecializationAxioms` (
   
     `subConceptUUID`  BINARY(16) NOT NULL
   ,
-  CONSTRAINT `fk_ConceptSpecializationAxioms_tboxUUID`
+  CONSTRAINT `fk_CSA_tboxUUID`
     FOREIGN KEY (`tboxUUID`)
-    REFERENCES `OML`.`TerminologyBoxes`(`uuid`)
+    REFERENCES `OML`.`TB`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_ConceptSpecializationAxioms_superConceptUUID`
+  CONSTRAINT `fk_CSA_superConceptUUID`
     FOREIGN KEY (`superConceptUUID`)
-    REFERENCES `OML`.`Concepts`(`uuid`)
+    REFERENCES `OML`.`C`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_ConceptSpecializationAxioms_subConceptUUID`
+  CONSTRAINT `fk_CSA_subConceptUUID`
     FOREIGN KEY (`subConceptUUID`)
-    REFERENCES `OML`.`Concepts`(`uuid`)
+    REFERENCES `OML`.`C`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -815,9 +840,10 @@ CREATE TABLE IF NOT EXISTS `OML`.`ConceptSpecializationAxioms` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`ReifiedRelationshipSpecializationAxioms`
+-- ReifiedRelationshipSpecializationAxioms
+-- Table `OML`.`RRSA`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`ReifiedRelationshipSpecializationAxioms` (
+CREATE TABLE IF NOT EXISTS `OML`.`RRSA` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `tboxUUID`  BINARY(16) NOT NULL,
@@ -826,21 +852,21 @@ CREATE TABLE IF NOT EXISTS `OML`.`ReifiedRelationshipSpecializationAxioms` (
   
     `subRelationshipUUID`  BINARY(16) NOT NULL
   ,
-  CONSTRAINT `fk_ReifiedRelationshipSpecializationAxioms_tboxUUID`
+  CONSTRAINT `fk_RRSA_tboxUUID`
     FOREIGN KEY (`tboxUUID`)
-    REFERENCES `OML`.`TerminologyBoxes`(`uuid`)
+    REFERENCES `OML`.`TB`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_ReifiedRelationshipSpecializationAxioms_superRelationshipUUID`
+  CONSTRAINT `fk_RRSA_superRelationshipUUID`
     FOREIGN KEY (`superRelationshipUUID`)
-    REFERENCES `OML`.`ReifiedRelationships`(`uuid`)
+    REFERENCES `OML`.`RR`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_ReifiedRelationshipSpecializationAxioms_subRelationshipUUID`
+  CONSTRAINT `fk_RRSA_subRelationshipUUID`
     FOREIGN KEY (`subRelationshipUUID`)
-    REFERENCES `OML`.`ReifiedRelationships`(`uuid`)
+    REFERENCES `OML`.`RR`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -848,9 +874,10 @@ CREATE TABLE IF NOT EXISTS `OML`.`ReifiedRelationshipSpecializationAxioms` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`EntityExistentialRestrictionAxioms`
+-- EntityExistentialRestrictionAxioms
+-- Table `OML`.`EERA`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`EntityExistentialRestrictionAxioms` (
+CREATE TABLE IF NOT EXISTS `OML`.`EERA` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `tboxUUID`  BINARY(16) NOT NULL,
@@ -861,27 +888,27 @@ CREATE TABLE IF NOT EXISTS `OML`.`EntityExistentialRestrictionAxioms` (
   
     `restrictedRangeUUID`  BINARY(16) NOT NULL
   ,
-  CONSTRAINT `fk_EntityExistentialRestrictionAxioms_tboxUUID`
+  CONSTRAINT `fk_EERA_tboxUUID`
     FOREIGN KEY (`tboxUUID`)
-    REFERENCES `OML`.`TerminologyBoxes`(`uuid`)
+    REFERENCES `OML`.`TB`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_EntityExistentialRestrictionAxioms_restrictedRelationUUID`
+  CONSTRAINT `fk_EERA_restrictedRelationUUID`
     FOREIGN KEY (`restrictedRelationUUID`)
-    REFERENCES `OML`.`EntityRelationships`(`uuid`)
+    REFERENCES `OML`.`ER`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_EntityExistentialRestrictionAxioms_restrictedDomainUUID`
+  CONSTRAINT `fk_EERA_restrictedDomainUUID`
     FOREIGN KEY (`restrictedDomainUUID`)
-    REFERENCES `OML`.`Entities`(`uuid`)
+    REFERENCES `OML`.`E`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_EntityExistentialRestrictionAxioms_restrictedRangeUUID`
+  CONSTRAINT `fk_EERA_restrictedRangeUUID`
     FOREIGN KEY (`restrictedRangeUUID`)
-    REFERENCES `OML`.`Entities`(`uuid`)
+    REFERENCES `OML`.`E`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -889,9 +916,10 @@ CREATE TABLE IF NOT EXISTS `OML`.`EntityExistentialRestrictionAxioms` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`EntityUniversalRestrictionAxioms`
+-- EntityUniversalRestrictionAxioms
+-- Table `OML`.`EURA`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`EntityUniversalRestrictionAxioms` (
+CREATE TABLE IF NOT EXISTS `OML`.`EURA` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `tboxUUID`  BINARY(16) NOT NULL,
@@ -902,27 +930,27 @@ CREATE TABLE IF NOT EXISTS `OML`.`EntityUniversalRestrictionAxioms` (
   
     `restrictedRangeUUID`  BINARY(16) NOT NULL
   ,
-  CONSTRAINT `fk_EntityUniversalRestrictionAxioms_tboxUUID`
+  CONSTRAINT `fk_EURA_tboxUUID`
     FOREIGN KEY (`tboxUUID`)
-    REFERENCES `OML`.`TerminologyBoxes`(`uuid`)
+    REFERENCES `OML`.`TB`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_EntityUniversalRestrictionAxioms_restrictedRelationUUID`
+  CONSTRAINT `fk_EURA_restrictedRelationUUID`
     FOREIGN KEY (`restrictedRelationUUID`)
-    REFERENCES `OML`.`EntityRelationships`(`uuid`)
+    REFERENCES `OML`.`ER`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_EntityUniversalRestrictionAxioms_restrictedDomainUUID`
+  CONSTRAINT `fk_EURA_restrictedDomainUUID`
     FOREIGN KEY (`restrictedDomainUUID`)
-    REFERENCES `OML`.`Entities`(`uuid`)
+    REFERENCES `OML`.`E`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_EntityUniversalRestrictionAxioms_restrictedRangeUUID`
+  CONSTRAINT `fk_EURA_restrictedRangeUUID`
     FOREIGN KEY (`restrictedRangeUUID`)
-    REFERENCES `OML`.`Entities`(`uuid`)
+    REFERENCES `OML`.`E`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -930,9 +958,10 @@ CREATE TABLE IF NOT EXISTS `OML`.`EntityUniversalRestrictionAxioms` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`EntityScalarDataPropertyExistentialRestrictionAxioms`
+-- EntityScalarDataPropertyExistentialRestrictionAxioms
+-- Table `OML`.`ESDPERA`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`EntityScalarDataPropertyExistentialRestrictionAxioms` (
+CREATE TABLE IF NOT EXISTS `OML`.`ESDPERA` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `tboxUUID`  BINARY(16) NOT NULL,
@@ -943,27 +972,27 @@ CREATE TABLE IF NOT EXISTS `OML`.`EntityScalarDataPropertyExistentialRestriction
   
     `scalarRestrictionUUID`  BINARY(16) NOT NULL
   ,
-  CONSTRAINT `fk_EntityScalarDataPropertyExistentialRestrictionAxioms_tboxUUID`
+  CONSTRAINT `fk_ESDPERA_tboxUUID`
     FOREIGN KEY (`tboxUUID`)
-    REFERENCES `OML`.`TerminologyBoxes`(`uuid`)
+    REFERENCES `OML`.`TB`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_EntityScalarDataPropertyExistentialRestrictionAxioms_restrictedEntityUUID`
+  CONSTRAINT `fk_ESDPERA_restrictedEntityUUID`
     FOREIGN KEY (`restrictedEntityUUID`)
-    REFERENCES `OML`.`Entities`(`uuid`)
+    REFERENCES `OML`.`E`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_EntityScalarDataPropertyExistentialRestrictionAxioms_scalarPropertyUUID`
+  CONSTRAINT `fk_ESDPERA_scalarPropertyUUID`
     FOREIGN KEY (`scalarPropertyUUID`)
-    REFERENCES `OML`.`EntityScalarDataProperties`(`uuid`)
+    REFERENCES `OML`.`ESDP`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_EntityScalarDataPropertyExistentialRestrictionAxioms_scalarRestrictionUUID`
+  CONSTRAINT `fk_ESDPERA_scalarRestrictionUUID`
     FOREIGN KEY (`scalarRestrictionUUID`)
-    REFERENCES `OML`.`DataRanges`(`uuid`)
+    REFERENCES `OML`.`DR`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -971,9 +1000,10 @@ CREATE TABLE IF NOT EXISTS `OML`.`EntityScalarDataPropertyExistentialRestriction
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`EntityScalarDataPropertyParticularRestrictionAxioms`
+-- EntityScalarDataPropertyParticularRestrictionAxioms
+-- Table `OML`.`ESDPPRA`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`EntityScalarDataPropertyParticularRestrictionAxioms` (
+CREATE TABLE IF NOT EXISTS `OML`.`ESDPPRA` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `tboxUUID`  BINARY(16) NOT NULL,
@@ -987,33 +1017,33 @@ CREATE TABLE IF NOT EXISTS `OML`.`EntityScalarDataPropertyParticularRestrictionA
   
     `valueTypeUUID`  BINARY(16) NULL
   ,
-  CONSTRAINT `fk_EntityScalarDataPropertyParticularRestrictionAxioms_tboxUUID`
+  CONSTRAINT `fk_ESDPPRA_tboxUUID`
     FOREIGN KEY (`tboxUUID`)
-    REFERENCES `OML`.`TerminologyBoxes`(`uuid`)
+    REFERENCES `OML`.`TB`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_EntityScalarDataPropertyParticularRestrictionAxioms_restrictedEntityUUID`
+  CONSTRAINT `fk_ESDPPRA_restrictedEntityUUID`
     FOREIGN KEY (`restrictedEntityUUID`)
-    REFERENCES `OML`.`Entities`(`uuid`)
+    REFERENCES `OML`.`E`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_EntityScalarDataPropertyParticularRestrictionAxioms_scalarPropertyUUID`
+  CONSTRAINT `fk_ESDPPRA_scalarPropertyUUID`
     FOREIGN KEY (`scalarPropertyUUID`)
-    REFERENCES `OML`.`EntityScalarDataProperties`(`uuid`)
+    REFERENCES `OML`.`ESDP`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_EntityScalarDataPropertyParticularRestrictionAxioms_literalValue`
+  CONSTRAINT `fk_ESDPPRA_literalValue`
     FOREIGN KEY (`literalValue`)
-    REFERENCES `OML`.`LiteralValues`(`uuid`)
+    REFERENCES `OML`.`LV`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_EntityScalarDataPropertyParticularRestrictionAxioms_valueTypeUUID`
+  CONSTRAINT `fk_ESDPPRA_valueTypeUUID`
     FOREIGN KEY (`valueTypeUUID`)
-    REFERENCES `OML`.`DataRanges`(`uuid`)
+    REFERENCES `OML`.`DR`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -1021,9 +1051,10 @@ CREATE TABLE IF NOT EXISTS `OML`.`EntityScalarDataPropertyParticularRestrictionA
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`EntityScalarDataPropertyUniversalRestrictionAxioms`
+-- EntityScalarDataPropertyUniversalRestrictionAxioms
+-- Table `OML`.`ESDPURA`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`EntityScalarDataPropertyUniversalRestrictionAxioms` (
+CREATE TABLE IF NOT EXISTS `OML`.`ESDPURA` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `tboxUUID`  BINARY(16) NOT NULL,
@@ -1034,27 +1065,27 @@ CREATE TABLE IF NOT EXISTS `OML`.`EntityScalarDataPropertyUniversalRestrictionAx
   
     `scalarRestrictionUUID`  BINARY(16) NOT NULL
   ,
-  CONSTRAINT `fk_EntityScalarDataPropertyUniversalRestrictionAxioms_tboxUUID`
+  CONSTRAINT `fk_ESDPURA_tboxUUID`
     FOREIGN KEY (`tboxUUID`)
-    REFERENCES `OML`.`TerminologyBoxes`(`uuid`)
+    REFERENCES `OML`.`TB`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_EntityScalarDataPropertyUniversalRestrictionAxioms_restrictedEntityUUID`
+  CONSTRAINT `fk_ESDPURA_restrictedEntityUUID`
     FOREIGN KEY (`restrictedEntityUUID`)
-    REFERENCES `OML`.`Entities`(`uuid`)
+    REFERENCES `OML`.`E`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_EntityScalarDataPropertyUniversalRestrictionAxioms_scalarPropertyUUID`
+  CONSTRAINT `fk_ESDPURA_scalarPropertyUUID`
     FOREIGN KEY (`scalarPropertyUUID`)
-    REFERENCES `OML`.`EntityScalarDataProperties`(`uuid`)
+    REFERENCES `OML`.`ESDP`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_EntityScalarDataPropertyUniversalRestrictionAxioms_scalarRestrictionUUID`
+  CONSTRAINT `fk_ESDPURA_scalarRestrictionUUID`
     FOREIGN KEY (`scalarRestrictionUUID`)
-    REFERENCES `OML`.`DataRanges`(`uuid`)
+    REFERENCES `OML`.`DR`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -1062,9 +1093,10 @@ CREATE TABLE IF NOT EXISTS `OML`.`EntityScalarDataPropertyUniversalRestrictionAx
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`ScalarOneOfLiteralAxioms`
+-- ScalarOneOfLiteralAxioms
+-- Table `OML`.`SOOLA`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`ScalarOneOfLiteralAxioms` (
+CREATE TABLE IF NOT EXISTS `OML`.`SOOLA` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `tboxUUID`  BINARY(16) NOT NULL,
@@ -1076,27 +1108,27 @@ CREATE TABLE IF NOT EXISTS `OML`.`ScalarOneOfLiteralAxioms` (
   
     `valueTypeUUID`  BINARY(16) NULL
   ,
-  CONSTRAINT `fk_ScalarOneOfLiteralAxioms_tboxUUID`
+  CONSTRAINT `fk_SOOLA_tboxUUID`
     FOREIGN KEY (`tboxUUID`)
-    REFERENCES `OML`.`TerminologyBoxes`(`uuid`)
+    REFERENCES `OML`.`TB`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_ScalarOneOfLiteralAxioms_axiomUUID`
+  CONSTRAINT `fk_SOOLA_axiomUUID`
     FOREIGN KEY (`axiomUUID`)
-    REFERENCES `OML`.`ScalarOneOfRestrictions`(`uuid`)
+    REFERENCES `OML`.`SOOR`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_ScalarOneOfLiteralAxioms_value`
+  CONSTRAINT `fk_SOOLA_value`
     FOREIGN KEY (`value`)
-    REFERENCES `OML`.`LiteralValues`(`uuid`)
+    REFERENCES `OML`.`LV`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_ScalarOneOfLiteralAxioms_valueTypeUUID`
+  CONSTRAINT `fk_SOOLA_valueTypeUUID`
     FOREIGN KEY (`valueTypeUUID`)
-    REFERENCES `OML`.`DataRanges`(`uuid`)
+    REFERENCES `OML`.`DR`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -1104,24 +1136,25 @@ CREATE TABLE IF NOT EXISTS `OML`.`ScalarOneOfLiteralAxioms` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`BundledTerminologyAxioms`
+-- BundledTerminologyAxioms
+-- Table `OML`.`BTA`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`BundledTerminologyAxioms` (
+CREATE TABLE IF NOT EXISTS `OML`.`BTA` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `bundleUUID`  BINARY(16) NOT NULL,
   
     `bundledTerminologyIRI`  VARCHAR(256) NOT NULL
   ,
-  CONSTRAINT `fk_BundledTerminologyAxioms_bundleUUID`
+  CONSTRAINT `fk_BTA_bundleUUID`
     FOREIGN KEY (`bundleUUID`)
-    REFERENCES `OML`.`Bundles`(`uuid`)
+    REFERENCES `OML`.`B`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_BundledTerminologyAxioms_bundledTerminologyIRI`
+  CONSTRAINT `fk_BTA_bundledTerminologyIRI`
     FOREIGN KEY (`bundledTerminologyIRI`)
-    REFERENCES `OML`.`TerminologyBoxes`(`uuid`)
+    REFERENCES `OML`.`TB`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -1129,24 +1162,25 @@ CREATE TABLE IF NOT EXISTS `OML`.`BundledTerminologyAxioms` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`RootConceptTaxonomyAxioms`
+-- RootConceptTaxonomyAxioms
+-- Table `OML`.`RCTA`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`RootConceptTaxonomyAxioms` (
+CREATE TABLE IF NOT EXISTS `OML`.`RCTA` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `bundleUUID`  BINARY(16) NOT NULL,
   
     `rootUUID`  BINARY(16) NOT NULL
   ,
-  CONSTRAINT `fk_RootConceptTaxonomyAxioms_bundleUUID`
+  CONSTRAINT `fk_RCTA_bundleUUID`
     FOREIGN KEY (`bundleUUID`)
-    REFERENCES `OML`.`Bundles`(`uuid`)
+    REFERENCES `OML`.`B`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_RootConceptTaxonomyAxioms_rootUUID`
+  CONSTRAINT `fk_RCTA_rootUUID`
     FOREIGN KEY (`rootUUID`)
-    REFERENCES `OML`.`Concepts`(`uuid`)
+    REFERENCES `OML`.`C`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -1154,24 +1188,25 @@ CREATE TABLE IF NOT EXISTS `OML`.`RootConceptTaxonomyAxioms` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`SpecificDisjointConceptAxioms`
+-- SpecificDisjointConceptAxioms
+-- Table `OML`.`SDCA`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`SpecificDisjointConceptAxioms` (
+CREATE TABLE IF NOT EXISTS `OML`.`SDCA` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `disjointTaxonomyParentUUID`  BINARY(16) NOT NULL,
   
     `disjointLeafUUID`  BINARY(16) NOT NULL
   ,
-  CONSTRAINT `fk_SpecificDisjointConceptAxioms_disjointTaxonomyParentUUID`
+  CONSTRAINT `fk_SDCA_disjointTaxonomyParentUUID`
     FOREIGN KEY (`disjointTaxonomyParentUUID`)
-    REFERENCES `OML`.`ConceptTreeDisjunctions`(`uuid`)
+    REFERENCES `OML`.`CTD`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_SpecificDisjointConceptAxioms_disjointLeafUUID`
+  CONSTRAINT `fk_SDCA_disjointLeafUUID`
     FOREIGN KEY (`disjointLeafUUID`)
-    REFERENCES `OML`.`Concepts`(`uuid`)
+    REFERENCES `OML`.`C`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -1179,9 +1214,10 @@ CREATE TABLE IF NOT EXISTS `OML`.`SpecificDisjointConceptAxioms` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`AnnotationPropertyValues`
+-- AnnotationPropertyValues
+-- Table `OML`.`APV`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`AnnotationPropertyValues` (
+CREATE TABLE IF NOT EXISTS `OML`.`APV` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `subjectUUID`  BINARY(16) NOT NULL,
@@ -1191,21 +1227,21 @@ CREATE TABLE IF NOT EXISTS `OML`.`AnnotationPropertyValues` (
     `value`  -- TODO: LiteralFeature
   TEXT, `valueLiteralType` VARCHAR(20) NOT NULL
   ,
-  CONSTRAINT `fk_AnnotationPropertyValues_subjectUUID`
+  CONSTRAINT `fk_APV_subjectUUID`
     FOREIGN KEY (`subjectUUID`)
-    REFERENCES `OML`.`LogicalElements`(`uuid`)
+    REFERENCES `OML`.`LE`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_AnnotationPropertyValues_propertyUUID`
+  CONSTRAINT `fk_APV_propertyUUID`
     FOREIGN KEY (`propertyUUID`)
-    REFERENCES `OML`.`AnnotationProperties`(`uuid`)
+    REFERENCES `OML`.`AP`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_AnnotationPropertyValues_value`
+  CONSTRAINT `fk_APV_value`
     FOREIGN KEY (`value`)
-    REFERENCES `OML`.`LiteralStrings`(`uuid`)
+    REFERENCES `OML`.`LS`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -1213,17 +1249,18 @@ CREATE TABLE IF NOT EXISTS `OML`.`AnnotationPropertyValues` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`AnonymousConceptUnionAxioms`
+-- AnonymousConceptUnionAxioms
+-- Table `OML`.`ACUA`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`AnonymousConceptUnionAxioms` (
+CREATE TABLE IF NOT EXISTS `OML`.`ACUA` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `disjointTaxonomyParentUUID`  BINARY(16) NOT NULL,
   
     `name`  TEXT,
-  CONSTRAINT `fk_AnonymousConceptUnionAxioms_disjointTaxonomyParentUUID`
+  CONSTRAINT `fk_ACUA_disjointTaxonomyParentUUID`
     FOREIGN KEY (`disjointTaxonomyParentUUID`)
-    REFERENCES `OML`.`ConceptTreeDisjunctions`(`uuid`)
+    REFERENCES `OML`.`CTD`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -1231,24 +1268,25 @@ CREATE TABLE IF NOT EXISTS `OML`.`AnonymousConceptUnionAxioms` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`AspectPredicates`
+-- AspectPredicates
+-- Table `OML`.`AP`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`AspectPredicates` (
+CREATE TABLE IF NOT EXISTS `OML`.`AP` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `aspectUUID`  BINARY(16) NOT NULL,
   
     `bodySegmentUUID`  BINARY(16) NOT NULL
   ,
-  CONSTRAINT `fk_AspectPredicates_aspectUUID`
+  CONSTRAINT `fk_AP_aspectUUID`
     FOREIGN KEY (`aspectUUID`)
-    REFERENCES `OML`.`Aspects`(`uuid`)
+    REFERENCES `OML`.`A`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_AspectPredicates_bodySegmentUUID`
+  CONSTRAINT `fk_AP_bodySegmentUUID`
     FOREIGN KEY (`bodySegmentUUID`)
-    REFERENCES `OML`.`RuleBodySegments`(`uuid`)
+    REFERENCES `OML`.`RBS`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -1256,9 +1294,10 @@ CREATE TABLE IF NOT EXISTS `OML`.`AspectPredicates` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`ChainRules`
+-- ChainRules
+-- Table `OML`.`CR`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`ChainRules` (
+CREATE TABLE IF NOT EXISTS `OML`.`CR` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `tboxUUID`  BINARY(16) NOT NULL,
@@ -1266,15 +1305,15 @@ CREATE TABLE IF NOT EXISTS `OML`.`ChainRules` (
     `name`  TEXT,
     `headUUID`  BINARY(16) NOT NULL
   ,
-  CONSTRAINT `fk_ChainRules_tboxUUID`
+  CONSTRAINT `fk_CR_tboxUUID`
     FOREIGN KEY (`tboxUUID`)
-    REFERENCES `OML`.`TerminologyBoxes`(`uuid`)
+    REFERENCES `OML`.`TB`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_ChainRules_headUUID`
+  CONSTRAINT `fk_CR_headUUID`
     FOREIGN KEY (`headUUID`)
-    REFERENCES `OML`.`UnreifiedRelationships`(`uuid`)
+    REFERENCES `OML`.`UR`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -1282,9 +1321,10 @@ CREATE TABLE IF NOT EXISTS `OML`.`ChainRules` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`ConceptInstances`
+-- ConceptInstances
+-- Table `OML`.`CI`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`ConceptInstances` (
+CREATE TABLE IF NOT EXISTS `OML`.`CI` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `descriptionBoxUUID`  BINARY(16) NOT NULL,
@@ -1292,15 +1332,15 @@ CREATE TABLE IF NOT EXISTS `OML`.`ConceptInstances` (
     `singletonConceptClassifierUUID`  BINARY(16) NOT NULL,
   
     `name`  TEXT,
-  CONSTRAINT `fk_ConceptInstances_descriptionBoxUUID`
+  CONSTRAINT `fk_CI_descriptionBoxUUID`
     FOREIGN KEY (`descriptionBoxUUID`)
-    REFERENCES `OML`.`DescriptionBoxes`(`uuid`)
+    REFERENCES `OML`.`DB`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_ConceptInstances_singletonConceptClassifierUUID`
+  CONSTRAINT `fk_CI_singletonConceptClassifierUUID`
     FOREIGN KEY (`singletonConceptClassifierUUID`)
-    REFERENCES `OML`.`Concepts`(`uuid`)
+    REFERENCES `OML`.`C`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -1308,24 +1348,25 @@ CREATE TABLE IF NOT EXISTS `OML`.`ConceptInstances` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`ConceptPredicates`
+-- ConceptPredicates
+-- Table `OML`.`CP`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`ConceptPredicates` (
+CREATE TABLE IF NOT EXISTS `OML`.`CP` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `bodySegmentUUID`  BINARY(16) NOT NULL,
   
     `conceptUUID`  BINARY(16) NOT NULL
   ,
-  CONSTRAINT `fk_ConceptPredicates_bodySegmentUUID`
+  CONSTRAINT `fk_CP_bodySegmentUUID`
     FOREIGN KEY (`bodySegmentUUID`)
-    REFERENCES `OML`.`RuleBodySegments`(`uuid`)
+    REFERENCES `OML`.`RBS`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_ConceptPredicates_conceptUUID`
+  CONSTRAINT `fk_CP_conceptUUID`
     FOREIGN KEY (`conceptUUID`)
-    REFERENCES `OML`.`Concepts`(`uuid`)
+    REFERENCES `OML`.`C`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -1333,9 +1374,10 @@ CREATE TABLE IF NOT EXISTS `OML`.`ConceptPredicates` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`DescriptionBoxes`
+-- DescriptionBoxes
+-- Table `OML`.`DB`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`DescriptionBoxes` (
+CREATE TABLE IF NOT EXISTS `OML`.`DB` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `kind`  TEXT,
@@ -1345,24 +1387,25 @@ CREATE TABLE IF NOT EXISTS `OML`.`DescriptionBoxes` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`DescriptionBoxExtendsClosedWorldDefinitions`
+-- DescriptionBoxExtendsClosedWorldDefinitions
+-- Table `OML`.`DBECWD`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`DescriptionBoxExtendsClosedWorldDefinitions` (
+CREATE TABLE IF NOT EXISTS `OML`.`DBECWD` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `descriptionBoxUUID`  BINARY(16) NOT NULL,
   
     `closedWorldDefinitionsIRI`  VARCHAR(256) NOT NULL
   ,
-  CONSTRAINT `fk_DescriptionBoxExtendsClosedWorldDefinitions_descriptionBoxUUID`
+  CONSTRAINT `fk_DBECWD_descriptionBoxUUID`
     FOREIGN KEY (`descriptionBoxUUID`)
-    REFERENCES `OML`.`DescriptionBoxes`(`uuid`)
+    REFERENCES `OML`.`DB`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_DescriptionBoxExtendsClosedWorldDefinitions_closedWorldDefinitionsIRI`
+  CONSTRAINT `fk_DBECWD_closedWorldDefinitionsIRI`
     FOREIGN KEY (`closedWorldDefinitionsIRI`)
-    REFERENCES `OML`.`TerminologyBoxes`(`uuid`)
+    REFERENCES `OML`.`TB`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -1370,24 +1413,25 @@ CREATE TABLE IF NOT EXISTS `OML`.`DescriptionBoxExtendsClosedWorldDefinitions` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`DescriptionBoxRefinements`
+-- DescriptionBoxRefinements
+-- Table `OML`.`DBR`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`DescriptionBoxRefinements` (
+CREATE TABLE IF NOT EXISTS `OML`.`DBR` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `refiningDescriptionBoxUUID`  BINARY(16) NOT NULL,
   
     `refinedDescriptionBoxIRI`  VARCHAR(256) NOT NULL
   ,
-  CONSTRAINT `fk_DescriptionBoxRefinements_refiningDescriptionBoxUUID`
+  CONSTRAINT `fk_DBR_refiningDescriptionBoxUUID`
     FOREIGN KEY (`refiningDescriptionBoxUUID`)
-    REFERENCES `OML`.`DescriptionBoxes`(`uuid`)
+    REFERENCES `OML`.`DB`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_DescriptionBoxRefinements_refinedDescriptionBoxIRI`
+  CONSTRAINT `fk_DBR_refinedDescriptionBoxIRI`
     FOREIGN KEY (`refinedDescriptionBoxIRI`)
-    REFERENCES `OML`.`DescriptionBoxes`(`uuid`)
+    REFERENCES `OML`.`DB`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -1395,9 +1439,10 @@ CREATE TABLE IF NOT EXISTS `OML`.`DescriptionBoxRefinements` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`EntityStructuredDataPropertyParticularRestrictionAxioms`
+-- EntityStructuredDataPropertyParticularRestrictionAxioms
+-- Table `OML`.`ESDPPRA`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`EntityStructuredDataPropertyParticularRestrictionAxioms` (
+CREATE TABLE IF NOT EXISTS `OML`.`ESDPPRA` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `tboxUUID`  BINARY(16) NOT NULL,
@@ -1406,21 +1451,21 @@ CREATE TABLE IF NOT EXISTS `OML`.`EntityStructuredDataPropertyParticularRestrict
   
     `restrictedEntityUUID`  BINARY(16) NOT NULL
   ,
-  CONSTRAINT `fk_EntityStructuredDataPropertyParticularRestrictionAxioms_tboxUUID`
+  CONSTRAINT `fk_ESDPPRA_tboxUUID`
     FOREIGN KEY (`tboxUUID`)
-    REFERENCES `OML`.`TerminologyBoxes`(`uuid`)
+    REFERENCES `OML`.`TB`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_EntityStructuredDataPropertyParticularRestrictionAxioms_structuredDataPropertyUUID`
+  CONSTRAINT `fk_ESDPPRA_structuredDataPropertyUUID`
     FOREIGN KEY (`structuredDataPropertyUUID`)
-    REFERENCES `OML`.`DataRelationshipToStructures`(`uuid`)
+    REFERENCES `OML`.`DRTS`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_EntityStructuredDataPropertyParticularRestrictionAxioms_restrictedEntityUUID`
+  CONSTRAINT `fk_ESDPPRA_restrictedEntityUUID`
     FOREIGN KEY (`restrictedEntityUUID`)
-    REFERENCES `OML`.`Entities`(`uuid`)
+    REFERENCES `OML`.`E`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -1428,9 +1473,10 @@ CREATE TABLE IF NOT EXISTS `OML`.`EntityStructuredDataPropertyParticularRestrict
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`ReifiedRelationshipInstances`
+-- ReifiedRelationshipInstances
+-- Table `OML`.`RRI`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`ReifiedRelationshipInstances` (
+CREATE TABLE IF NOT EXISTS `OML`.`RRI` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `descriptionBoxUUID`  BINARY(16) NOT NULL,
@@ -1438,15 +1484,15 @@ CREATE TABLE IF NOT EXISTS `OML`.`ReifiedRelationshipInstances` (
     `singletonReifiedRelationshipClassifierUUID`  BINARY(16) NOT NULL,
   
     `name`  TEXT,
-  CONSTRAINT `fk_ReifiedRelationshipInstances_descriptionBoxUUID`
+  CONSTRAINT `fk_RRI_descriptionBoxUUID`
     FOREIGN KEY (`descriptionBoxUUID`)
-    REFERENCES `OML`.`DescriptionBoxes`(`uuid`)
+    REFERENCES `OML`.`DB`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_ReifiedRelationshipInstances_singletonReifiedRelationshipClassifierUUID`
+  CONSTRAINT `fk_RRI_singletonReifiedRelationshipClassifierUUID`
     FOREIGN KEY (`singletonReifiedRelationshipClassifierUUID`)
-    REFERENCES `OML`.`ReifiedRelationships`(`uuid`)
+    REFERENCES `OML`.`RR`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -1454,9 +1500,10 @@ CREATE TABLE IF NOT EXISTS `OML`.`ReifiedRelationshipInstances` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`ReifiedRelationshipInstanceDomains`
+-- ReifiedRelationshipInstanceDomains
+-- Table `OML`.`RRID`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`ReifiedRelationshipInstanceDomains` (
+CREATE TABLE IF NOT EXISTS `OML`.`RRID` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `descriptionBoxUUID`  BINARY(16) NOT NULL,
@@ -1465,21 +1512,21 @@ CREATE TABLE IF NOT EXISTS `OML`.`ReifiedRelationshipInstanceDomains` (
   
     `domainUUID`  BINARY(16) NOT NULL
   ,
-  CONSTRAINT `fk_ReifiedRelationshipInstanceDomains_descriptionBoxUUID`
+  CONSTRAINT `fk_RRID_descriptionBoxUUID`
     FOREIGN KEY (`descriptionBoxUUID`)
-    REFERENCES `OML`.`DescriptionBoxes`(`uuid`)
+    REFERENCES `OML`.`DB`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_ReifiedRelationshipInstanceDomains_reifiedRelationshipInstanceUUID`
+  CONSTRAINT `fk_RRID_reifiedRelationshipInstanceUUID`
     FOREIGN KEY (`reifiedRelationshipInstanceUUID`)
-    REFERENCES `OML`.`ReifiedRelationshipInstances`(`uuid`)
+    REFERENCES `OML`.`RRI`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_ReifiedRelationshipInstanceDomains_domainUUID`
+  CONSTRAINT `fk_RRID_domainUUID`
     FOREIGN KEY (`domainUUID`)
-    REFERENCES `OML`.`ConceptualEntitySingletonInstances`(`uuid`)
+    REFERENCES `OML`.`CESI`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -1487,9 +1534,10 @@ CREATE TABLE IF NOT EXISTS `OML`.`ReifiedRelationshipInstanceDomains` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`ReifiedRelationshipInstanceRanges`
+-- ReifiedRelationshipInstanceRanges
+-- Table `OML`.`RRIR`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`ReifiedRelationshipInstanceRanges` (
+CREATE TABLE IF NOT EXISTS `OML`.`RRIR` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `descriptionBoxUUID`  BINARY(16) NOT NULL,
@@ -1498,21 +1546,21 @@ CREATE TABLE IF NOT EXISTS `OML`.`ReifiedRelationshipInstanceRanges` (
   
     `rangeUUID`  BINARY(16) NOT NULL
   ,
-  CONSTRAINT `fk_ReifiedRelationshipInstanceRanges_descriptionBoxUUID`
+  CONSTRAINT `fk_RRIR_descriptionBoxUUID`
     FOREIGN KEY (`descriptionBoxUUID`)
-    REFERENCES `OML`.`DescriptionBoxes`(`uuid`)
+    REFERENCES `OML`.`DB`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_ReifiedRelationshipInstanceRanges_reifiedRelationshipInstanceUUID`
+  CONSTRAINT `fk_RRIR_reifiedRelationshipInstanceUUID`
     FOREIGN KEY (`reifiedRelationshipInstanceUUID`)
-    REFERENCES `OML`.`ReifiedRelationshipInstances`(`uuid`)
+    REFERENCES `OML`.`RRI`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_ReifiedRelationshipInstanceRanges_rangeUUID`
+  CONSTRAINT `fk_RRIR_rangeUUID`
     FOREIGN KEY (`rangeUUID`)
-    REFERENCES `OML`.`ConceptualEntitySingletonInstances`(`uuid`)
+    REFERENCES `OML`.`CESI`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -1520,24 +1568,25 @@ CREATE TABLE IF NOT EXISTS `OML`.`ReifiedRelationshipInstanceRanges` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`ReifiedRelationshipInversePropertyPredicates`
+-- ReifiedRelationshipInversePropertyPredicates
+-- Table `OML`.`RRIPP`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`ReifiedRelationshipInversePropertyPredicates` (
+CREATE TABLE IF NOT EXISTS `OML`.`RRIPP` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `bodySegmentUUID`  BINARY(16) NOT NULL,
   
     `reifiedRelationshipUUID`  BINARY(16) NOT NULL
   ,
-  CONSTRAINT `fk_ReifiedRelationshipInversePropertyPredicates_bodySegmentUUID`
+  CONSTRAINT `fk_RRIPP_bodySegmentUUID`
     FOREIGN KEY (`bodySegmentUUID`)
-    REFERENCES `OML`.`RuleBodySegments`(`uuid`)
+    REFERENCES `OML`.`RBS`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_ReifiedRelationshipInversePropertyPredicates_reifiedRelationshipUUID`
+  CONSTRAINT `fk_RRIPP_reifiedRelationshipUUID`
     FOREIGN KEY (`reifiedRelationshipUUID`)
-    REFERENCES `OML`.`ReifiedRelationships`(`uuid`)
+    REFERENCES `OML`.`RR`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -1545,24 +1594,25 @@ CREATE TABLE IF NOT EXISTS `OML`.`ReifiedRelationshipInversePropertyPredicates` 
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`ReifiedRelationshipPredicates`
+-- ReifiedRelationshipPredicates
+-- Table `OML`.`RRP`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`ReifiedRelationshipPredicates` (
+CREATE TABLE IF NOT EXISTS `OML`.`RRP` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `bodySegmentUUID`  BINARY(16) NOT NULL,
   
     `reifiedRelationshipUUID`  BINARY(16) NOT NULL
   ,
-  CONSTRAINT `fk_ReifiedRelationshipPredicates_bodySegmentUUID`
+  CONSTRAINT `fk_RRP_bodySegmentUUID`
     FOREIGN KEY (`bodySegmentUUID`)
-    REFERENCES `OML`.`RuleBodySegments`(`uuid`)
+    REFERENCES `OML`.`RBS`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_ReifiedRelationshipPredicates_reifiedRelationshipUUID`
+  CONSTRAINT `fk_RRP_reifiedRelationshipUUID`
     FOREIGN KEY (`reifiedRelationshipUUID`)
-    REFERENCES `OML`.`ReifiedRelationships`(`uuid`)
+    REFERENCES `OML`.`RR`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -1570,24 +1620,25 @@ CREATE TABLE IF NOT EXISTS `OML`.`ReifiedRelationshipPredicates` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`ReifiedRelationshipPropertyPredicates`
+-- ReifiedRelationshipPropertyPredicates
+-- Table `OML`.`RRPP`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`ReifiedRelationshipPropertyPredicates` (
+CREATE TABLE IF NOT EXISTS `OML`.`RRPP` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `bodySegmentUUID`  BINARY(16) NOT NULL,
   
     `reifiedRelationshipUUID`  BINARY(16) NOT NULL
   ,
-  CONSTRAINT `fk_ReifiedRelationshipPropertyPredicates_bodySegmentUUID`
+  CONSTRAINT `fk_RRPP_bodySegmentUUID`
     FOREIGN KEY (`bodySegmentUUID`)
-    REFERENCES `OML`.`RuleBodySegments`(`uuid`)
+    REFERENCES `OML`.`RBS`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_ReifiedRelationshipPropertyPredicates_reifiedRelationshipUUID`
+  CONSTRAINT `fk_RRPP_reifiedRelationshipUUID`
     FOREIGN KEY (`reifiedRelationshipUUID`)
-    REFERENCES `OML`.`ReifiedRelationships`(`uuid`)
+    REFERENCES `OML`.`RR`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -1595,24 +1646,25 @@ CREATE TABLE IF NOT EXISTS `OML`.`ReifiedRelationshipPropertyPredicates` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`ReifiedRelationshipSourceInversePropertyPredicates`
+-- ReifiedRelationshipSourceInversePropertyPredicates
+-- Table `OML`.`RRSIPP`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`ReifiedRelationshipSourceInversePropertyPredicates` (
+CREATE TABLE IF NOT EXISTS `OML`.`RRSIPP` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `bodySegmentUUID`  BINARY(16) NOT NULL,
   
     `reifiedRelationshipUUID`  BINARY(16) NOT NULL
   ,
-  CONSTRAINT `fk_ReifiedRelationshipSourceInversePropertyPredicates_bodySegmentUUID`
+  CONSTRAINT `fk_RRSIPP_bodySegmentUUID`
     FOREIGN KEY (`bodySegmentUUID`)
-    REFERENCES `OML`.`RuleBodySegments`(`uuid`)
+    REFERENCES `OML`.`RBS`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_ReifiedRelationshipSourceInversePropertyPredicates_reifiedRelationshipUUID`
+  CONSTRAINT `fk_RRSIPP_reifiedRelationshipUUID`
     FOREIGN KEY (`reifiedRelationshipUUID`)
-    REFERENCES `OML`.`ReifiedRelationships`(`uuid`)
+    REFERENCES `OML`.`RR`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -1620,24 +1672,25 @@ CREATE TABLE IF NOT EXISTS `OML`.`ReifiedRelationshipSourceInversePropertyPredic
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`ReifiedRelationshipSourcePropertyPredicates`
+-- ReifiedRelationshipSourcePropertyPredicates
+-- Table `OML`.`RRSPP`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`ReifiedRelationshipSourcePropertyPredicates` (
+CREATE TABLE IF NOT EXISTS `OML`.`RRSPP` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `bodySegmentUUID`  BINARY(16) NOT NULL,
   
     `reifiedRelationshipUUID`  BINARY(16) NOT NULL
   ,
-  CONSTRAINT `fk_ReifiedRelationshipSourcePropertyPredicates_bodySegmentUUID`
+  CONSTRAINT `fk_RRSPP_bodySegmentUUID`
     FOREIGN KEY (`bodySegmentUUID`)
-    REFERENCES `OML`.`RuleBodySegments`(`uuid`)
+    REFERENCES `OML`.`RBS`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_ReifiedRelationshipSourcePropertyPredicates_reifiedRelationshipUUID`
+  CONSTRAINT `fk_RRSPP_reifiedRelationshipUUID`
     FOREIGN KEY (`reifiedRelationshipUUID`)
-    REFERENCES `OML`.`ReifiedRelationships`(`uuid`)
+    REFERENCES `OML`.`RR`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -1645,24 +1698,25 @@ CREATE TABLE IF NOT EXISTS `OML`.`ReifiedRelationshipSourcePropertyPredicates` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`ReifiedRelationshipTargetInversePropertyPredicates`
+-- ReifiedRelationshipTargetInversePropertyPredicates
+-- Table `OML`.`RRTIPP`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`ReifiedRelationshipTargetInversePropertyPredicates` (
+CREATE TABLE IF NOT EXISTS `OML`.`RRTIPP` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `bodySegmentUUID`  BINARY(16) NOT NULL,
   
     `reifiedRelationshipUUID`  BINARY(16) NOT NULL
   ,
-  CONSTRAINT `fk_ReifiedRelationshipTargetInversePropertyPredicates_bodySegmentUUID`
+  CONSTRAINT `fk_RRTIPP_bodySegmentUUID`
     FOREIGN KEY (`bodySegmentUUID`)
-    REFERENCES `OML`.`RuleBodySegments`(`uuid`)
+    REFERENCES `OML`.`RBS`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_ReifiedRelationshipTargetInversePropertyPredicates_reifiedRelationshipUUID`
+  CONSTRAINT `fk_RRTIPP_reifiedRelationshipUUID`
     FOREIGN KEY (`reifiedRelationshipUUID`)
-    REFERENCES `OML`.`ReifiedRelationships`(`uuid`)
+    REFERENCES `OML`.`RR`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -1670,24 +1724,25 @@ CREATE TABLE IF NOT EXISTS `OML`.`ReifiedRelationshipTargetInversePropertyPredic
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`ReifiedRelationshipTargetPropertyPredicates`
+-- ReifiedRelationshipTargetPropertyPredicates
+-- Table `OML`.`RRTPP`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`ReifiedRelationshipTargetPropertyPredicates` (
+CREATE TABLE IF NOT EXISTS `OML`.`RRTPP` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `bodySegmentUUID`  BINARY(16) NOT NULL,
   
     `reifiedRelationshipUUID`  BINARY(16) NOT NULL
   ,
-  CONSTRAINT `fk_ReifiedRelationshipTargetPropertyPredicates_bodySegmentUUID`
+  CONSTRAINT `fk_RRTPP_bodySegmentUUID`
     FOREIGN KEY (`bodySegmentUUID`)
-    REFERENCES `OML`.`RuleBodySegments`(`uuid`)
+    REFERENCES `OML`.`RBS`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_ReifiedRelationshipTargetPropertyPredicates_reifiedRelationshipUUID`
+  CONSTRAINT `fk_RRTPP_reifiedRelationshipUUID`
     FOREIGN KEY (`reifiedRelationshipUUID`)
-    REFERENCES `OML`.`ReifiedRelationships`(`uuid`)
+    REFERENCES `OML`.`RR`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -1695,9 +1750,10 @@ CREATE TABLE IF NOT EXISTS `OML`.`ReifiedRelationshipTargetPropertyPredicates` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`RestrictionScalarDataPropertyValues`
+-- RestrictionScalarDataPropertyValues
+-- Table `OML`.`RSDPV`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`RestrictionScalarDataPropertyValues` (
+CREATE TABLE IF NOT EXISTS `OML`.`RSDPV` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `scalarDataPropertyUUID`  BINARY(16) NOT NULL,
@@ -1709,27 +1765,27 @@ CREATE TABLE IF NOT EXISTS `OML`.`RestrictionScalarDataPropertyValues` (
   
     `valueTypeUUID`  BINARY(16) NULL
   ,
-  CONSTRAINT `fk_RestrictionScalarDataPropertyValues_scalarDataPropertyUUID`
+  CONSTRAINT `fk_RSDPV_scalarDataPropertyUUID`
     FOREIGN KEY (`scalarDataPropertyUUID`)
-    REFERENCES `OML`.`DataRelationshipToScalars`(`uuid`)
+    REFERENCES `OML`.`DRTS`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_RestrictionScalarDataPropertyValues_scalarPropertyValue`
+  CONSTRAINT `fk_RSDPV_scalarPropertyValue`
     FOREIGN KEY (`scalarPropertyValue`)
-    REFERENCES `OML`.`LiteralValues`(`uuid`)
+    REFERENCES `OML`.`LV`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_RestrictionScalarDataPropertyValues_structuredDataPropertyContextUUID`
+  CONSTRAINT `fk_RSDPV_structuredDataPropertyContextUUID`
     FOREIGN KEY (`structuredDataPropertyContextUUID`)
-    REFERENCES `OML`.`RestrictionStructuredDataPropertyContexts`(`uuid`)
+    REFERENCES `OML`.`RSDPC`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_RestrictionScalarDataPropertyValues_valueTypeUUID`
+  CONSTRAINT `fk_RSDPV_valueTypeUUID`
     FOREIGN KEY (`valueTypeUUID`)
-    REFERENCES `OML`.`DataRanges`(`uuid`)
+    REFERENCES `OML`.`DR`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -1737,24 +1793,25 @@ CREATE TABLE IF NOT EXISTS `OML`.`RestrictionScalarDataPropertyValues` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`RestrictionStructuredDataPropertyTuples`
+-- RestrictionStructuredDataPropertyTuples
+-- Table `OML`.`RSDPT`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`RestrictionStructuredDataPropertyTuples` (
+CREATE TABLE IF NOT EXISTS `OML`.`RSDPT` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `structuredDataPropertyUUID`  BINARY(16) NOT NULL,
   
     `structuredDataPropertyContextUUID`  BINARY(16) NOT NULL
   ,
-  CONSTRAINT `fk_RestrictionStructuredDataPropertyTuples_structuredDataPropertyUUID`
+  CONSTRAINT `fk_RSDPT_structuredDataPropertyUUID`
     FOREIGN KEY (`structuredDataPropertyUUID`)
-    REFERENCES `OML`.`DataRelationshipToStructures`(`uuid`)
+    REFERENCES `OML`.`DRTS`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_RestrictionStructuredDataPropertyTuples_structuredDataPropertyContextUUID`
+  CONSTRAINT `fk_RSDPT_structuredDataPropertyContextUUID`
     FOREIGN KEY (`structuredDataPropertyContextUUID`)
-    REFERENCES `OML`.`RestrictionStructuredDataPropertyContexts`(`uuid`)
+    REFERENCES `OML`.`RSDPC`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -1762,24 +1819,25 @@ CREATE TABLE IF NOT EXISTS `OML`.`RestrictionStructuredDataPropertyTuples` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`RuleBodySegments`
+-- RuleBodySegments
+-- Table `OML`.`RBS`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`RuleBodySegments` (
+CREATE TABLE IF NOT EXISTS `OML`.`RBS` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `previousSegmentUUID`  BINARY(16) NULL,
   
     `ruleUUID`  BINARY(16) NULL
   ,
-  CONSTRAINT `fk_RuleBodySegments_previousSegmentUUID`
+  CONSTRAINT `fk_RBS_previousSegmentUUID`
     FOREIGN KEY (`previousSegmentUUID`)
-    REFERENCES `OML`.`RuleBodySegments`(`uuid`)
+    REFERENCES `OML`.`RBS`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_RuleBodySegments_ruleUUID`
+  CONSTRAINT `fk_RBS_ruleUUID`
     FOREIGN KEY (`ruleUUID`)
-    REFERENCES `OML`.`ChainRules`(`uuid`)
+    REFERENCES `OML`.`CR`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -1787,9 +1845,10 @@ CREATE TABLE IF NOT EXISTS `OML`.`RuleBodySegments` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`ScalarDataPropertyValues`
+-- ScalarDataPropertyValues
+-- Table `OML`.`SDPV`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`ScalarDataPropertyValues` (
+CREATE TABLE IF NOT EXISTS `OML`.`SDPV` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `scalarDataPropertyUUID`  BINARY(16) NOT NULL,
@@ -1801,27 +1860,27 @@ CREATE TABLE IF NOT EXISTS `OML`.`ScalarDataPropertyValues` (
   
     `valueTypeUUID`  BINARY(16) NULL
   ,
-  CONSTRAINT `fk_ScalarDataPropertyValues_scalarDataPropertyUUID`
+  CONSTRAINT `fk_SDPV_scalarDataPropertyUUID`
     FOREIGN KEY (`scalarDataPropertyUUID`)
-    REFERENCES `OML`.`DataRelationshipToScalars`(`uuid`)
+    REFERENCES `OML`.`DRTS`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_ScalarDataPropertyValues_scalarPropertyValue`
+  CONSTRAINT `fk_SDPV_scalarPropertyValue`
     FOREIGN KEY (`scalarPropertyValue`)
-    REFERENCES `OML`.`LiteralValues`(`uuid`)
+    REFERENCES `OML`.`LV`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_ScalarDataPropertyValues_structuredDataPropertyContextUUID`
+  CONSTRAINT `fk_SDPV_structuredDataPropertyContextUUID`
     FOREIGN KEY (`structuredDataPropertyContextUUID`)
-    REFERENCES `OML`.`SingletonInstanceStructuredDataPropertyContexts`(`uuid`)
+    REFERENCES `OML`.`SISDPC`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_ScalarDataPropertyValues_valueTypeUUID`
+  CONSTRAINT `fk_SDPV_valueTypeUUID`
     FOREIGN KEY (`valueTypeUUID`)
-    REFERENCES `OML`.`DataRanges`(`uuid`)
+    REFERENCES `OML`.`DR`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -1829,9 +1888,10 @@ CREATE TABLE IF NOT EXISTS `OML`.`ScalarDataPropertyValues` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`SingletonInstanceScalarDataPropertyValues`
+-- SingletonInstanceScalarDataPropertyValues
+-- Table `OML`.`SISDPV`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`SingletonInstanceScalarDataPropertyValues` (
+CREATE TABLE IF NOT EXISTS `OML`.`SISDPV` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `descriptionBoxUUID`  BINARY(16) NOT NULL,
@@ -1845,33 +1905,33 @@ CREATE TABLE IF NOT EXISTS `OML`.`SingletonInstanceScalarDataPropertyValues` (
   
     `valueTypeUUID`  BINARY(16) NULL
   ,
-  CONSTRAINT `fk_SingletonInstanceScalarDataPropertyValues_descriptionBoxUUID`
+  CONSTRAINT `fk_SISDPV_descriptionBoxUUID`
     FOREIGN KEY (`descriptionBoxUUID`)
-    REFERENCES `OML`.`DescriptionBoxes`(`uuid`)
+    REFERENCES `OML`.`DB`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_SingletonInstanceScalarDataPropertyValues_singletonInstanceUUID`
+  CONSTRAINT `fk_SISDPV_singletonInstanceUUID`
     FOREIGN KEY (`singletonInstanceUUID`)
-    REFERENCES `OML`.`ConceptualEntitySingletonInstances`(`uuid`)
+    REFERENCES `OML`.`CESI`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_SingletonInstanceScalarDataPropertyValues_scalarDataPropertyUUID`
+  CONSTRAINT `fk_SISDPV_scalarDataPropertyUUID`
     FOREIGN KEY (`scalarDataPropertyUUID`)
-    REFERENCES `OML`.`EntityScalarDataProperties`(`uuid`)
+    REFERENCES `OML`.`ESDP`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_SingletonInstanceScalarDataPropertyValues_scalarPropertyValue`
+  CONSTRAINT `fk_SISDPV_scalarPropertyValue`
     FOREIGN KEY (`scalarPropertyValue`)
-    REFERENCES `OML`.`LiteralValues`(`uuid`)
+    REFERENCES `OML`.`LV`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_SingletonInstanceScalarDataPropertyValues_valueTypeUUID`
+  CONSTRAINT `fk_SISDPV_valueTypeUUID`
     FOREIGN KEY (`valueTypeUUID`)
-    REFERENCES `OML`.`DataRanges`(`uuid`)
+    REFERENCES `OML`.`DR`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -1879,9 +1939,10 @@ CREATE TABLE IF NOT EXISTS `OML`.`SingletonInstanceScalarDataPropertyValues` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`SingletonInstanceStructuredDataPropertyValues`
+-- SingletonInstanceStructuredDataPropertyValues
+-- Table `OML`.`SISDPV`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`SingletonInstanceStructuredDataPropertyValues` (
+CREATE TABLE IF NOT EXISTS `OML`.`SISDPV` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `descriptionBoxUUID`  BINARY(16) NOT NULL,
@@ -1890,21 +1951,21 @@ CREATE TABLE IF NOT EXISTS `OML`.`SingletonInstanceStructuredDataPropertyValues`
   
     `structuredDataPropertyUUID`  BINARY(16) NOT NULL
   ,
-  CONSTRAINT `fk_SingletonInstanceStructuredDataPropertyValues_descriptionBoxUUID`
+  CONSTRAINT `fk_SISDPV_descriptionBoxUUID`
     FOREIGN KEY (`descriptionBoxUUID`)
-    REFERENCES `OML`.`DescriptionBoxes`(`uuid`)
+    REFERENCES `OML`.`DB`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_SingletonInstanceStructuredDataPropertyValues_singletonInstanceUUID`
+  CONSTRAINT `fk_SISDPV_singletonInstanceUUID`
     FOREIGN KEY (`singletonInstanceUUID`)
-    REFERENCES `OML`.`ConceptualEntitySingletonInstances`(`uuid`)
+    REFERENCES `OML`.`CESI`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_SingletonInstanceStructuredDataPropertyValues_structuredDataPropertyUUID`
+  CONSTRAINT `fk_SISDPV_structuredDataPropertyUUID`
     FOREIGN KEY (`structuredDataPropertyUUID`)
-    REFERENCES `OML`.`DataRelationshipToStructures`(`uuid`)
+    REFERENCES `OML`.`DRTS`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -1912,24 +1973,25 @@ CREATE TABLE IF NOT EXISTS `OML`.`SingletonInstanceStructuredDataPropertyValues`
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`StructuredDataPropertyTuples`
+-- StructuredDataPropertyTuples
+-- Table `OML`.`SDPT`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`StructuredDataPropertyTuples` (
+CREATE TABLE IF NOT EXISTS `OML`.`SDPT` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `structuredDataPropertyUUID`  BINARY(16) NOT NULL,
   
     `structuredDataPropertyContextUUID`  BINARY(16) NOT NULL
   ,
-  CONSTRAINT `fk_StructuredDataPropertyTuples_structuredDataPropertyUUID`
+  CONSTRAINT `fk_SDPT_structuredDataPropertyUUID`
     FOREIGN KEY (`structuredDataPropertyUUID`)
-    REFERENCES `OML`.`DataRelationshipToStructures`(`uuid`)
+    REFERENCES `OML`.`DRTS`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_StructuredDataPropertyTuples_structuredDataPropertyContextUUID`
+  CONSTRAINT `fk_SDPT_structuredDataPropertyContextUUID`
     FOREIGN KEY (`structuredDataPropertyContextUUID`)
-    REFERENCES `OML`.`SingletonInstanceStructuredDataPropertyContexts`(`uuid`)
+    REFERENCES `OML`.`SISDPC`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -1937,9 +1999,10 @@ CREATE TABLE IF NOT EXISTS `OML`.`StructuredDataPropertyTuples` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`SubDataPropertyOfAxioms`
+-- SubDataPropertyOfAxioms
+-- Table `OML`.`SDPOA`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`SubDataPropertyOfAxioms` (
+CREATE TABLE IF NOT EXISTS `OML`.`SDPOA` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `tboxUUID`  BINARY(16) NOT NULL,
@@ -1948,21 +2011,21 @@ CREATE TABLE IF NOT EXISTS `OML`.`SubDataPropertyOfAxioms` (
   
     `superPropertyUUID`  BINARY(16) NOT NULL
   ,
-  CONSTRAINT `fk_SubDataPropertyOfAxioms_tboxUUID`
+  CONSTRAINT `fk_SDPOA_tboxUUID`
     FOREIGN KEY (`tboxUUID`)
-    REFERENCES `OML`.`TerminologyBoxes`(`uuid`)
+    REFERENCES `OML`.`TB`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_SubDataPropertyOfAxioms_subPropertyUUID`
+  CONSTRAINT `fk_SDPOA_subPropertyUUID`
     FOREIGN KEY (`subPropertyUUID`)
-    REFERENCES `OML`.`EntityScalarDataProperties`(`uuid`)
+    REFERENCES `OML`.`ESDP`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_SubDataPropertyOfAxioms_superPropertyUUID`
+  CONSTRAINT `fk_SDPOA_superPropertyUUID`
     FOREIGN KEY (`superPropertyUUID`)
-    REFERENCES `OML`.`EntityScalarDataProperties`(`uuid`)
+    REFERENCES `OML`.`ESDP`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -1970,9 +2033,10 @@ CREATE TABLE IF NOT EXISTS `OML`.`SubDataPropertyOfAxioms` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`SubObjectPropertyOfAxioms`
+-- SubObjectPropertyOfAxioms
+-- Table `OML`.`SOPOA`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`SubObjectPropertyOfAxioms` (
+CREATE TABLE IF NOT EXISTS `OML`.`SOPOA` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `tboxUUID`  BINARY(16) NOT NULL,
@@ -1981,21 +2045,21 @@ CREATE TABLE IF NOT EXISTS `OML`.`SubObjectPropertyOfAxioms` (
   
     `superPropertyUUID`  BINARY(16) NOT NULL
   ,
-  CONSTRAINT `fk_SubObjectPropertyOfAxioms_tboxUUID`
+  CONSTRAINT `fk_SOPOA_tboxUUID`
     FOREIGN KEY (`tboxUUID`)
-    REFERENCES `OML`.`TerminologyBoxes`(`uuid`)
+    REFERENCES `OML`.`TB`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_SubObjectPropertyOfAxioms_subPropertyUUID`
+  CONSTRAINT `fk_SOPOA_subPropertyUUID`
     FOREIGN KEY (`subPropertyUUID`)
-    REFERENCES `OML`.`UnreifiedRelationships`(`uuid`)
+    REFERENCES `OML`.`UR`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_SubObjectPropertyOfAxioms_superPropertyUUID`
+  CONSTRAINT `fk_SOPOA_superPropertyUUID`
     FOREIGN KEY (`superPropertyUUID`)
-    REFERENCES `OML`.`UnreifiedRelationships`(`uuid`)
+    REFERENCES `OML`.`UR`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -2003,9 +2067,10 @@ CREATE TABLE IF NOT EXISTS `OML`.`SubObjectPropertyOfAxioms` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`UnreifiedRelationshipInstanceTuples`
+-- UnreifiedRelationshipInstanceTuples
+-- Table `OML`.`URIT`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`UnreifiedRelationshipInstanceTuples` (
+CREATE TABLE IF NOT EXISTS `OML`.`URIT` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `descriptionBoxUUID`  BINARY(16) NOT NULL,
@@ -2016,27 +2081,27 @@ CREATE TABLE IF NOT EXISTS `OML`.`UnreifiedRelationshipInstanceTuples` (
   
     `rangeUUID`  BINARY(16) NOT NULL
   ,
-  CONSTRAINT `fk_UnreifiedRelationshipInstanceTuples_descriptionBoxUUID`
+  CONSTRAINT `fk_URIT_descriptionBoxUUID`
     FOREIGN KEY (`descriptionBoxUUID`)
-    REFERENCES `OML`.`DescriptionBoxes`(`uuid`)
+    REFERENCES `OML`.`DB`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_UnreifiedRelationshipInstanceTuples_unreifiedRelationshipUUID`
+  CONSTRAINT `fk_URIT_unreifiedRelationshipUUID`
     FOREIGN KEY (`unreifiedRelationshipUUID`)
-    REFERENCES `OML`.`UnreifiedRelationships`(`uuid`)
+    REFERENCES `OML`.`UR`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_UnreifiedRelationshipInstanceTuples_domainUUID`
+  CONSTRAINT `fk_URIT_domainUUID`
     FOREIGN KEY (`domainUUID`)
-    REFERENCES `OML`.`ConceptualEntitySingletonInstances`(`uuid`)
+    REFERENCES `OML`.`CESI`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_UnreifiedRelationshipInstanceTuples_rangeUUID`
+  CONSTRAINT `fk_URIT_rangeUUID`
     FOREIGN KEY (`rangeUUID`)
-    REFERENCES `OML`.`ConceptualEntitySingletonInstances`(`uuid`)
+    REFERENCES `OML`.`CESI`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -2044,24 +2109,25 @@ CREATE TABLE IF NOT EXISTS `OML`.`UnreifiedRelationshipInstanceTuples` (
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`UnreifiedRelationshipInversePropertyPredicates`
+-- UnreifiedRelationshipInversePropertyPredicates
+-- Table `OML`.`URIPP`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`UnreifiedRelationshipInversePropertyPredicates` (
+CREATE TABLE IF NOT EXISTS `OML`.`URIPP` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `unreifiedRelationshipUUID`  BINARY(16) NOT NULL,
   
     `bodySegmentUUID`  BINARY(16) NOT NULL
   ,
-  CONSTRAINT `fk_UnreifiedRelationshipInversePropertyPredicates_unreifiedRelationshipUUID`
+  CONSTRAINT `fk_URIPP_unreifiedRelationshipUUID`
     FOREIGN KEY (`unreifiedRelationshipUUID`)
-    REFERENCES `OML`.`UnreifiedRelationships`(`uuid`)
+    REFERENCES `OML`.`UR`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_UnreifiedRelationshipInversePropertyPredicates_bodySegmentUUID`
+  CONSTRAINT `fk_URIPP_bodySegmentUUID`
     FOREIGN KEY (`bodySegmentUUID`)
-    REFERENCES `OML`.`RuleBodySegments`(`uuid`)
+    REFERENCES `OML`.`RBS`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -2069,24 +2135,25 @@ CREATE TABLE IF NOT EXISTS `OML`.`UnreifiedRelationshipInversePropertyPredicates
 );
   
 -- -----------------------------------------------------
--- Table `OML`.`UnreifiedRelationshipPropertyPredicates`
+-- UnreifiedRelationshipPropertyPredicates
+-- Table `OML`.`URPP`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`UnreifiedRelationshipPropertyPredicates` (
+CREATE TABLE IF NOT EXISTS `OML`.`URPP` (
   `uuid`  BINARY(16) NOT NULL PRIMARY KEY,
   
     `unreifiedRelationshipUUID`  BINARY(16) NOT NULL,
   
     `bodySegmentUUID`  BINARY(16) NOT NULL
   ,
-  CONSTRAINT `fk_UnreifiedRelationshipPropertyPredicates_unreifiedRelationshipUUID`
+  CONSTRAINT `fk_URPP_unreifiedRelationshipUUID`
     FOREIGN KEY (`unreifiedRelationshipUUID`)
-    REFERENCES `OML`.`UnreifiedRelationships`(`uuid`)
+    REFERENCES `OML`.`UR`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_UnreifiedRelationshipPropertyPredicates_bodySegmentUUID`
+  CONSTRAINT `fk_URPP_bodySegmentUUID`
     FOREIGN KEY (`bodySegmentUUID`)
-    REFERENCES `OML`.`RuleBodySegments`(`uuid`)
+    REFERENCES `OML`.`RBS`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
