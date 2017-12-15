@@ -384,16 +384,16 @@ CREATE TABLE IF NOT EXISTS `OML`.`NumericScalarRestrictions` (
     `restrictedRangeUUID`  BINARY(16) NOT NULL,
   
     `minExclusive`  -- TODO: LiteralFeature
-  TEXT, `LiteralType` VARCHAR(20) NOT NULL,,
+  TEXT, `minExclusiveLiteralType` VARCHAR(20) NOT NULL,
   
     `minInclusive`  -- TODO: LiteralFeature
-  TEXT, `LiteralType` VARCHAR(20) NOT NULL,,
+  TEXT, `minInclusiveLiteralType` VARCHAR(20) NOT NULL,
   
     `maxExclusive`  -- TODO: LiteralFeature
-  TEXT, `LiteralType` VARCHAR(20) NOT NULL,,
+  TEXT, `maxExclusiveLiteralType` VARCHAR(20) NOT NULL,
   
     `maxInclusive`  -- TODO: LiteralFeature
-  TEXT, `LiteralType` VARCHAR(20) NOT NULL,,
+  TEXT, `maxInclusiveLiteralType` VARCHAR(20) NOT NULL,
   
     `name`  TEXT,
   CONSTRAINT `fk_NumericScalarRestrictions_tboxUUID`
@@ -559,16 +559,16 @@ CREATE TABLE IF NOT EXISTS `OML`.`TimeScalarRestrictions` (
     `restrictedRangeUUID`  BINARY(16) NOT NULL,
   
     `minExclusive`  -- TODO: LiteralFeature
-  TEXT, `LiteralType` VARCHAR(20) NOT NULL,,
+  TEXT, `minExclusiveLiteralType` VARCHAR(20) NOT NULL,
   
     `minInclusive`  -- TODO: LiteralFeature
-  TEXT, `LiteralType` VARCHAR(20) NOT NULL,,
+  TEXT, `minInclusiveLiteralType` VARCHAR(20) NOT NULL,
   
     `maxExclusive`  -- TODO: LiteralFeature
-  TEXT, `LiteralType` VARCHAR(20) NOT NULL,,
+  TEXT, `maxExclusiveLiteralType` VARCHAR(20) NOT NULL,
   
     `maxInclusive`  -- TODO: LiteralFeature
-  TEXT, `LiteralType` VARCHAR(20) NOT NULL,,
+  TEXT, `maxInclusiveLiteralType` VARCHAR(20) NOT NULL,
   
     `name`  TEXT,
   CONSTRAINT `fk_TimeScalarRestrictions_tboxUUID`
@@ -983,7 +983,7 @@ CREATE TABLE IF NOT EXISTS `OML`.`EntityScalarDataPropertyParticularRestrictionA
     `scalarPropertyUUID`  BINARY(16) NOT NULL,
   
     `literalValue`  -- TODO: LiteralFeature
-  TEXT, `LiteralType` VARCHAR(20) NOT NULL,,
+  TEXT, `literalValueLiteralType` VARCHAR(20) NOT NULL,
   
     `valueTypeUUID`  BINARY(16) NULL
   ,
@@ -1072,7 +1072,7 @@ CREATE TABLE IF NOT EXISTS `OML`.`ScalarOneOfLiteralAxioms` (
     `axiomUUID`  BINARY(16) NOT NULL,
   
     `value`  -- TODO: LiteralFeature
-  TEXT, `LiteralType` VARCHAR(20) NOT NULL,,
+  TEXT, `valueLiteralType` VARCHAR(20) NOT NULL,
   
     `valueTypeUUID`  BINARY(16) NULL
   ,
@@ -1189,7 +1189,7 @@ CREATE TABLE IF NOT EXISTS `OML`.`AnnotationPropertyValues` (
     `propertyUUID`  BINARY(16) NOT NULL,
   
     `value`  -- TODO: LiteralFeature
-  TEXT, `LiteralType` VARCHAR(20) NOT NULL,
+  TEXT, `valueLiteralType` VARCHAR(20) NOT NULL
   ,
   CONSTRAINT `fk_AnnotationPropertyValues_subjectUUID`
     FOREIGN KEY (`subjectUUID`)
@@ -1703,7 +1703,7 @@ CREATE TABLE IF NOT EXISTS `OML`.`RestrictionScalarDataPropertyValues` (
     `scalarDataPropertyUUID`  BINARY(16) NOT NULL,
   
     `scalarPropertyValue`  -- TODO: LiteralFeature
-  TEXT, `LiteralType` VARCHAR(20) NOT NULL,,
+  TEXT, `scalarPropertyValueLiteralType` VARCHAR(20) NOT NULL,
   
     `structuredDataPropertyContextUUID`  BINARY(16) NOT NULL,
   
@@ -1795,7 +1795,7 @@ CREATE TABLE IF NOT EXISTS `OML`.`ScalarDataPropertyValues` (
     `scalarDataPropertyUUID`  BINARY(16) NOT NULL,
   
     `scalarPropertyValue`  -- TODO: LiteralFeature
-  TEXT, `LiteralType` VARCHAR(20) NOT NULL,,
+  TEXT, `scalarPropertyValueLiteralType` VARCHAR(20) NOT NULL,
   
     `structuredDataPropertyContextUUID`  BINARY(16) NOT NULL,
   
@@ -1841,7 +1841,7 @@ CREATE TABLE IF NOT EXISTS `OML`.`SingletonInstanceScalarDataPropertyValues` (
     `scalarDataPropertyUUID`  BINARY(16) NOT NULL,
   
     `scalarPropertyValue`  -- TODO: LiteralFeature
-  TEXT, `LiteralType` VARCHAR(20) NOT NULL,,
+  TEXT, `scalarPropertyValueLiteralType` VARCHAR(20) NOT NULL,
   
     `valueTypeUUID`  BINARY(16) NULL
   ,
