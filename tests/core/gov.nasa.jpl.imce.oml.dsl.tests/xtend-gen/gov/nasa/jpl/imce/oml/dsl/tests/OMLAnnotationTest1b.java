@@ -94,9 +94,9 @@ public class OMLAnnotationTest1b {
       this._validationTestHelper.assertNoErrors(result);
       final Resource r = result.eResource();
       EcoreUtil.resolveAll(r);
-      final AnnotationProperty ap = IterableExtensions.<AnnotationProperty>head(result.getAnnotationProperties());
       final TerminologyBox tbox = IterableExtensions.<TerminologyBox>head(Iterables.<TerminologyBox>filter(result.getModules(), TerminologyBox.class));
       Assert.assertEquals(tbox.nsPrefix(), "mission");
+      final AnnotationProperty ap = IterableExtensions.<AnnotationProperty>head(tbox.getAnnotationProperties());
       final Concept c = IterableExtensions.<Concept>head(Iterables.<Concept>filter(tbox.getBoxStatements(), Concept.class));
       Assert.assertEquals(c.name(), "PerformingElement");
       final AnnotationPropertyValue a = IterableExtensions.<AnnotationPropertyValue>head(c.getAnnotations());

@@ -64,10 +64,10 @@ open terminology <http://imce.jpl.nasa.gov/foundation/mission/mission>
 		val r = result.eResource
 		EcoreUtil.resolveAll(r)
 		
-		val ap = result.annotationProperties.head
-		
 		val tbox = result.modules.filter(TerminologyBox).head
 		tbox.nsPrefix.assertEquals("mission")
+		
+		val ap = tbox.annotationProperties.head
 		
 		val c = tbox.boxStatements.filter(Concept).head
 		c.name().assertEquals("PerformingElement")

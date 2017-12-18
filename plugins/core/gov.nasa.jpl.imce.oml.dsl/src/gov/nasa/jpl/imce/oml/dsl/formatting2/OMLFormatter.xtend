@@ -95,7 +95,6 @@ class OMLFormatter extends AbstractFormatter2 {
 	
 	def dispatch void format(Extent extent, extension IFormattableDocument document) {
 		extent.prepend[noSpace]
-		extent.annotationProperties.forEach[format.append[setNewLines(2)]]
 		val lastM = extent.modules.last
 		extent.modules.forEach[m | m.format.append[setNewLines(if (lastM == m) 1 else 2)]]
 	}
@@ -111,9 +110,10 @@ class OMLFormatter extends AbstractFormatter2 {
 	}
 	
 	def dispatch void format(TerminologyGraph terminologyGraph, extension IFormattableDocument document) {
+		terminologyGraph.annotationProperties.forEach[format.append[setNewLines(2)]]
 		terminologyGraph.regionFor.feature(TerminologiesPackage.eINSTANCE.terminologyBox_Kind).append[oneSpace]
 		terminologyGraph.regionFor.keyword('terminology').surround[oneSpace]
-		terminologyGraph.regionFor.ruleCall(terminologyGraphAccess.iriIRITerminalRuleCall_3_0).surround[oneSpace]
+		terminologyGraph.regionFor.ruleCall(terminologyGraphAccess.iriIRITerminalRuleCall_4_0).surround[oneSpace]
 	
 		val lcurly = terminologyGraph.regionFor.keyword('{')
 		val rcurly = terminologyGraph.regionFor.keyword('}')
@@ -136,9 +136,10 @@ class OMLFormatter extends AbstractFormatter2 {
 	}
 	
 	def dispatch void format(Bundle bundle, extension IFormattableDocument document) {
+		bundle.annotationProperties.forEach[format.append[setNewLines(2)]]
 		bundle.regionFor.feature(TerminologiesPackage.eINSTANCE.terminologyBox_Kind).append[oneSpace]
 		bundle.regionFor.keyword('bundle').surround[oneSpace]
-		bundle.regionFor.ruleCall(bundleAccess.iriIRITerminalRuleCall_3_0).surround[oneSpace]
+		bundle.regionFor.ruleCall(bundleAccess.iriIRITerminalRuleCall_4_0).surround[oneSpace]
 		
 		val lcurly = bundle.regionFor.keyword('{')
 		val rcurly = bundle.regionFor.keyword('}')
@@ -154,9 +155,10 @@ class OMLFormatter extends AbstractFormatter2 {
 	}
 	
 	def dispatch void format(DescriptionBox descriptionBox, extension IFormattableDocument document) {
+		descriptionBox.annotationProperties.forEach[format.append[setNewLines(2)]]
 		descriptionBox.regionFor.feature(DescriptionsPackage.eINSTANCE.descriptionBox_Kind).append[oneSpace]
 		descriptionBox.regionFor.keyword('descriptionBox').surround[oneSpace]
-		descriptionBox.regionFor.ruleCall(descriptionBoxAccess.iriIRITerminalRuleCall_3_0).surround[oneSpace]
+		descriptionBox.regionFor.ruleCall(descriptionBoxAccess.iriIRITerminalRuleCall_4_0).surround[oneSpace]
 		
 		val lcurly = descriptionBox.regionFor.keyword('{')
 		val rcurly = descriptionBox.regionFor.keyword('}')

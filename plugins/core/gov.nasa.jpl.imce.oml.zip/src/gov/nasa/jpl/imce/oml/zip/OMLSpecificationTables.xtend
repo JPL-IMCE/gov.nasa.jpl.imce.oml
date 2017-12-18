@@ -47,6 +47,7 @@ import gov.nasa.jpl.imce.oml.model.common.AnnotationProperty
 import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue
 import gov.nasa.jpl.imce.oml.model.common.Extent
 import gov.nasa.jpl.imce.oml.model.common.LogicalElement
+import gov.nasa.jpl.imce.oml.model.common.Module
 import gov.nasa.jpl.imce.oml.model.descriptions.ConceptInstance
 import gov.nasa.jpl.imce.oml.model.descriptions.ConceptualEntitySingletonInstance
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox
@@ -198,6 +199,7 @@ class OMLSpecificationTables {
   protected val Map<String, Pair<UnreifiedRelationshipInversePropertyPredicate, Map<String,String>>> unreifiedRelationshipInversePropertyPredicates
   protected val Map<String, Pair<UnreifiedRelationshipPropertyPredicate, Map<String,String>>> unreifiedRelationshipPropertyPredicates
 
+  protected val Map<String, Pair<Module, Map<String,String>>> modules
   protected val Map<String, Pair<LogicalElement, Map<String,String>>> logicalElements
   protected val Map<String, Pair<Entity, Map<String,String>>> entities
   protected val Map<String, Pair<EntityRelationship, Map<String,String>>> entityRelationships
@@ -292,7 +294,8 @@ class OMLSpecificationTables {
   	unreifiedRelationshipInversePropertyPredicates = new HashMap<String, Pair<UnreifiedRelationshipInversePropertyPredicate, Map<String,String>>>()
   	unreifiedRelationshipPropertyPredicates = new HashMap<String, Pair<UnreifiedRelationshipPropertyPredicate, Map<String,String>>>()
   
-    logicalElements = new HashMap<String, Pair<LogicalElement, Map<String,String>>>()
+    modules = new HashMap<String, Pair<Module, Map<String,String>>>()
+    	logicalElements = new HashMap<String, Pair<LogicalElement, Map<String,String>>>()
     entities = new HashMap<String, Pair<Entity, Map<String,String>>>()
     entityRelationships = new HashMap<String, Pair<EntityRelationship, Map<String,String>>>()
     dataRanges = new HashMap<String, Pair<DataRange, Map<String,String>>>()
@@ -861,6 +864,11 @@ class OMLSpecificationTables {
       pw.print("\"uuid\":")
       pw.print("\"")
       pw.print(it.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"moduleUUID\":")
+      pw.print("\"")
+      pw.print(it.module.uuid())
       pw.print("\"")
       pw.print(",")
       pw.print("\"iri\":")
@@ -3964,6 +3972,7 @@ class OMLSpecificationTables {
   	includeMap(singletonInstanceStructuredDataPropertyContexts, singletonInstanceStructuredDataPropertyValues)
   	includeMap(singletonInstanceStructuredDataPropertyContexts, structuredDataPropertyTuples)
   	
+    resolveAnnotationProperties(rs)
     resolveConceptDesignationTerminologyAxioms(rs)
     resolveTerminologyExtensionAxioms(rs)
     resolveTerminologyNestingAxioms(rs)
@@ -4030,13 +4039,26 @@ class OMLSpecificationTables {
     resolveUnreifiedRelationshipPropertyPredicates(rs)
     
     	val ext = createExtent()
-    	ext.getAnnotationProperties.addAll(annotationProperties.values.map[key])
     	ext.getModules.addAll(terminologyGraphs.values.map[key])
     	ext.getModules.addAll(bundles.values.map[key])
     	ext.getModules.addAll(descriptionBoxes.values.map[key])
     	r.contents.add(ext)
   }
 
+  protected def void resolveAnnotationProperties(OMLZipResourceSet rs) {
+  	annotationProperties.forEach[uuid, oml_kv |
+  	  val AnnotationProperty oml = oml_kv.key
+  	  val Map<String, String> kv = oml_kv.value
+  	  if (!kv.empty) {
+  	    val String moduleXRef = kv.remove("moduleUUID")
+  	    val Pair<Module, Map<String, String>> modulePair = modules.get(moduleXRef)
+  	    if (null === modulePair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for module in annotationProperties")
+  	    oml.module = modulePair.key
+  	  }
+  	]
+  }
+  
   protected def void resolveConceptDesignationTerminologyAxioms(OMLZipResourceSet rs) {
   	conceptDesignationTerminologyAxioms.forEach[uuid, oml_kv |
   	  val ConceptDesignationTerminologyAxiom oml = oml_kv.key

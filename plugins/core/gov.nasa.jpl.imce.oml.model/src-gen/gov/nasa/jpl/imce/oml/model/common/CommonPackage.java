@@ -1445,13 +1445,13 @@ public interface CommonPackage extends EPackage {
 	int ANNOTATION_PROPERTY__UUID = INTRINSIC_IDENTITY_KIND__UUID;
 
 	/**
-	 * The feature id for the '<em><b>Extent</b></em>' container reference.
+	 * The feature id for the '<em><b>Module</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ANNOTATION_PROPERTY__EXTENT = INTRINSIC_IDENTITY_KIND_FEATURE_COUNT + 0;
+	int ANNOTATION_PROPERTY__MODULE = INTRINSIC_IDENTITY_KIND_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Iri</b></em>' attribute.
@@ -1481,13 +1481,22 @@ public interface CommonPackage extends EPackage {
 	int ANNOTATION_PROPERTY_FEATURE_COUNT = INTRINSIC_IDENTITY_KIND_FEATURE_COUNT + 3;
 
 	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_PROPERTY___MODULE_CONTEXT = INTRINSIC_IDENTITY_KIND_OPERATION_COUNT + 0;
+
+	/**
 	 * The operation id for the '<em>Uuid</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ANNOTATION_PROPERTY___UUID = INTRINSIC_IDENTITY_KIND_OPERATION_COUNT + 0;
+	int ANNOTATION_PROPERTY___UUID = INTRINSIC_IDENTITY_KIND_OPERATION_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Iri</em>' operation.
@@ -1496,7 +1505,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ANNOTATION_PROPERTY___IRI = INTRINSIC_IDENTITY_KIND_OPERATION_COUNT + 1;
+	int ANNOTATION_PROPERTY___IRI = INTRINSIC_IDENTITY_KIND_OPERATION_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Annotation Property</em>' class.
@@ -1505,7 +1514,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ANNOTATION_PROPERTY_OPERATION_COUNT = INTRINSIC_IDENTITY_KIND_OPERATION_COUNT + 2;
+	int ANNOTATION_PROPERTY_OPERATION_COUNT = INTRINSIC_IDENTITY_KIND_OPERATION_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.AnnotationPropertyValueImpl <em>Annotation Property Value</em>}' class.
@@ -1600,22 +1609,13 @@ public interface CommonPackage extends EPackage {
 	int EXTENT__MODULES = 0;
 
 	/**
-	 * The feature id for the '<em><b>Annotation Properties</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXTENT__ANNOTATION_PROPERTIES = 1;
-
-	/**
 	 * The number of structural features of the '<em>Extent</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXTENT_FEATURE_COUNT = 2;
+	int EXTENT_FEATURE_COUNT = 1;
 
 	/**
 	 * The number of operations of the '<em>Extent</em>' class.
@@ -1655,13 +1655,22 @@ public interface CommonPackage extends EPackage {
 	int MODULE__ANNOTATIONS = RESOURCE__ANNOTATIONS;
 
 	/**
+	 * The feature id for the '<em><b>Annotation Properties</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODULE__ANNOTATION_PROPERTIES = RESOURCE_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Extent</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE__EXTENT = RESOURCE_FEATURE_COUNT + 0;
+	int MODULE__EXTENT = RESOURCE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Iri</b></em>' attribute.
@@ -1670,7 +1679,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE__IRI = RESOURCE_FEATURE_COUNT + 1;
+	int MODULE__IRI = RESOURCE_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Module</em>' class.
@@ -1679,7 +1688,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODULE_FEATURE_COUNT = RESOURCE_FEATURE_COUNT + 2;
+	int MODULE_FEATURE_COUNT = RESOURCE_FEATURE_COUNT + 3;
 
 	/**
 	 * The operation id for the '<em>Module Edges</em>' operation.
@@ -2576,15 +2585,15 @@ public interface CommonPackage extends EPackage {
 	EClass getAnnotationProperty();
 
 	/**
-	 * Returns the meta object for the container reference '{@link gov.nasa.jpl.imce.oml.model.common.AnnotationProperty#getExtent <em>Extent</em>}'.
+	 * Returns the meta object for the container reference '{@link gov.nasa.jpl.imce.oml.model.common.AnnotationProperty#getModule <em>Module</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Extent</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.common.AnnotationProperty#getExtent()
+	 * @return the meta object for the container reference '<em>Module</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.common.AnnotationProperty#getModule()
 	 * @see #getAnnotationProperty()
 	 * @generated
 	 */
-	EReference getAnnotationProperty_Extent();
+	EReference getAnnotationProperty_Module();
 
 	/**
 	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.common.AnnotationProperty#getIri <em>Iri</em>}'.
@@ -2607,6 +2616,16 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getAnnotationProperty_AbbrevIRI();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.common.AnnotationProperty#moduleContext() <em>Module Context</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Module Context</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.common.AnnotationProperty#moduleContext()
+	 * @generated
+	 */
+	EOperation getAnnotationProperty__ModuleContext();
 
 	/**
 	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.common.AnnotationProperty#uuid() <em>Uuid</em>}' operation.
@@ -2703,17 +2722,6 @@ public interface CommonPackage extends EPackage {
 	EReference getExtent_Modules();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link gov.nasa.jpl.imce.oml.model.common.Extent#getAnnotationProperties <em>Annotation Properties</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Annotation Properties</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.common.Extent#getAnnotationProperties()
-	 * @see #getExtent()
-	 * @generated
-	 */
-	EReference getExtent_AnnotationProperties();
-
-	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.common.Module <em>Module</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2722,6 +2730,17 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getModule();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link gov.nasa.jpl.imce.oml.model.common.Module#getAnnotationProperties <em>Annotation Properties</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Annotation Properties</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.common.Module#getAnnotationProperties()
+	 * @see #getModule()
+	 * @generated
+	 */
+	EReference getModule_AnnotationProperties();
 
 	/**
 	 * Returns the meta object for the container reference '{@link gov.nasa.jpl.imce.oml.model.common.Module#getExtent <em>Extent</em>}'.
@@ -3600,12 +3619,12 @@ public interface CommonPackage extends EPackage {
 		EClass ANNOTATION_PROPERTY = eINSTANCE.getAnnotationProperty();
 
 		/**
-		 * The meta object literal for the '<em><b>Extent</b></em>' container reference feature.
+		 * The meta object literal for the '<em><b>Module</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ANNOTATION_PROPERTY__EXTENT = eINSTANCE.getAnnotationProperty_Extent();
+		EReference ANNOTATION_PROPERTY__MODULE = eINSTANCE.getAnnotationProperty_Module();
 
 		/**
 		 * The meta object literal for the '<em><b>Iri</b></em>' attribute feature.
@@ -3622,6 +3641,14 @@ public interface CommonPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ANNOTATION_PROPERTY__ABBREV_IRI = eINSTANCE.getAnnotationProperty_AbbrevIRI();
+
+		/**
+		 * The meta object literal for the '<em><b>Module Context</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ANNOTATION_PROPERTY___MODULE_CONTEXT = eINSTANCE.getAnnotationProperty__ModuleContext();
 
 		/**
 		 * The meta object literal for the '<em><b>Uuid</b></em>' operation.
@@ -3700,14 +3727,6 @@ public interface CommonPackage extends EPackage {
 		EReference EXTENT__MODULES = eINSTANCE.getExtent_Modules();
 
 		/**
-		 * The meta object literal for the '<em><b>Annotation Properties</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference EXTENT__ANNOTATION_PROPERTIES = eINSTANCE.getExtent_AnnotationProperties();
-
-		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.ModuleImpl <em>Module</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3716,6 +3735,14 @@ public interface CommonPackage extends EPackage {
 		 * @generated
 		 */
 		EClass MODULE = eINSTANCE.getModule();
+
+		/**
+		 * The meta object literal for the '<em><b>Annotation Properties</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MODULE__ANNOTATION_PROPERTIES = eINSTANCE.getModule_AnnotationProperties();
 
 		/**
 		 * The meta object literal for the '<em><b>Extent</b></em>' container reference feature.

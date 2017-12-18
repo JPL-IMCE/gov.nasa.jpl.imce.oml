@@ -40,6 +40,7 @@ import gov.nasa.jpl.imce.oml.model.common.LiteralString;
 import gov.nasa.jpl.imce.oml.model.common.LiteralURI;
 import gov.nasa.jpl.imce.oml.model.common.LiteralUUID;
 import gov.nasa.jpl.imce.oml.model.common.LiteralValue;
+import gov.nasa.jpl.imce.oml.model.common.Module;
 import gov.nasa.jpl.imce.oml.model.datatypes.AbstractDecimalValue;
 import gov.nasa.jpl.imce.oml.model.datatypes.DateTimeValue;
 import gov.nasa.jpl.imce.oml.model.datatypes.DecimalValue;
@@ -138,11 +139,14 @@ public class OMLTables {
     List<AnnotationProperty> _xblockexpression = null;
     {
       final List<AnnotationProperty> result = new ArrayList<AnnotationProperty>();
-      result.addAll(e.getAnnotationProperties());
-      final Function1<AnnotationProperty, String> _function = (AnnotationProperty it) -> {
+      final Consumer<Module> _function = (Module m) -> {
+        result.addAll(m.getAnnotationProperties());
+      };
+      e.getModules().forEach(_function);
+      final Function1<AnnotationProperty, String> _function_1 = (AnnotationProperty it) -> {
         return it.uuid();
       };
-      ListExtensions.<AnnotationProperty, String>sortInplaceBy(result, _function);
+      ListExtensions.<AnnotationProperty, String>sortInplaceBy(result, _function_1);
       _xblockexpression = result;
     }
     return _xblockexpression;

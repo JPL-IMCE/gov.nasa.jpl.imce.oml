@@ -18,6 +18,7 @@
  */
 package gov.nasa.jpl.imce.oml.model.common.impl;
 
+import gov.nasa.jpl.imce.oml.model.common.AnnotationProperty;
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
 import gov.nasa.jpl.imce.oml.model.common.Module;
@@ -28,6 +29,7 @@ import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
 
 import java.lang.reflect.InvocationTargetException;
 
+import java.util.Collection;
 import java.util.UUID;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -41,7 +43,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -51,6 +55,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.common.impl.ModuleImpl#getAnnotationProperties <em>Annotation Properties</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.common.impl.ModuleImpl#getExtent <em>Extent</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.common.impl.ModuleImpl#getIri <em>Iri</em>}</li>
  * </ul>
@@ -58,6 +63,16 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * @generated
  */
 public abstract class ModuleImpl extends ResourceImpl implements Module {
+	/**
+	 * The cached value of the '{@link #getAnnotationProperties() <em>Annotation Properties</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAnnotationProperties()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<AnnotationProperty> annotationProperties;
+
 	/**
 	 * The default value of the '{@link #getIri() <em>Iri</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -95,6 +110,18 @@ public abstract class ModuleImpl extends ResourceImpl implements Module {
 	@Override
 	protected EClass eStaticClass() {
 		return CommonPackage.Literals.MODULE;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<AnnotationProperty> getAnnotationProperties() {
+		if (annotationProperties == null) {
+			annotationProperties = new EObjectContainmentWithInverseEList<AnnotationProperty>(AnnotationProperty.class, this, CommonPackage.MODULE__ANNOTATION_PROPERTIES, CommonPackage.ANNOTATION_PROPERTY__MODULE);
+		}
+		return annotationProperties;
 	}
 
 	/**
@@ -269,9 +296,12 @@ public abstract class ModuleImpl extends ResourceImpl implements Module {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case CommonPackage.MODULE__ANNOTATION_PROPERTIES:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getAnnotationProperties()).basicAdd(otherEnd, msgs);
 			case CommonPackage.MODULE__EXTENT:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
@@ -288,6 +318,8 @@ public abstract class ModuleImpl extends ResourceImpl implements Module {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case CommonPackage.MODULE__ANNOTATION_PROPERTIES:
+				return ((InternalEList<?>)getAnnotationProperties()).basicRemove(otherEnd, msgs);
 			case CommonPackage.MODULE__EXTENT:
 				return basicSetExtent(null, msgs);
 		}
@@ -316,6 +348,8 @@ public abstract class ModuleImpl extends ResourceImpl implements Module {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case CommonPackage.MODULE__ANNOTATION_PROPERTIES:
+				return getAnnotationProperties();
 			case CommonPackage.MODULE__EXTENT:
 				if (resolve) return getExtent();
 				return basicGetExtent();
@@ -330,9 +364,14 @@ public abstract class ModuleImpl extends ResourceImpl implements Module {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case CommonPackage.MODULE__ANNOTATION_PROPERTIES:
+				getAnnotationProperties().clear();
+				getAnnotationProperties().addAll((Collection<? extends AnnotationProperty>)newValue);
+				return;
 			case CommonPackage.MODULE__EXTENT:
 				setExtent((Extent)newValue);
 				return;
@@ -351,6 +390,9 @@ public abstract class ModuleImpl extends ResourceImpl implements Module {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case CommonPackage.MODULE__ANNOTATION_PROPERTIES:
+				getAnnotationProperties().clear();
+				return;
 			case CommonPackage.MODULE__EXTENT:
 				setExtent((Extent)null);
 				return;
@@ -369,6 +411,8 @@ public abstract class ModuleImpl extends ResourceImpl implements Module {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case CommonPackage.MODULE__ANNOTATION_PROPERTIES:
+				return annotationProperties != null && !annotationProperties.isEmpty();
 			case CommonPackage.MODULE__EXTENT:
 				return basicGetExtent() != null;
 			case CommonPackage.MODULE__IRI:

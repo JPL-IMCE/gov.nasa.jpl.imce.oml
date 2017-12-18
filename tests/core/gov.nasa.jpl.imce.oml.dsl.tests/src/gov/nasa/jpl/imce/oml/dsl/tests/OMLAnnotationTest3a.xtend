@@ -60,19 +60,20 @@ class OMLAnnotationTest3a {
 		val Extent e = commonF.createExtent()
 		r.getContents.add(e)
 
+		val TerminologyGraph g = graphsF.createTerminologyGraph()
+		e.getModules.add(g)
+		g.setIri("http://www.example.org/OMLAnnotationTest3")
+		
 		val AnnotationProperty ap1 = commonF.createAnnotationProperty
-		ap1.extent = e
+		ap1.module = g
 		ap1.abbrevIRI = "test:doc1"
 		ap1.iri = "http://www.example.org/OMLAnnotationTest3#doc1"
 
 		val AnnotationProperty ap2 = commonF.createAnnotationProperty
-		ap2.extent = e
+		ap2.module = g
 		ap2.abbrevIRI = "test:doc2"
 		ap2.iri = "http://www.example.org/OMLAnnotationTest3#doc2"
 
-		val TerminologyGraph g = graphsF.createTerminologyGraph()
-		e.getModules.add(g)
-		g.setIri("http://www.example.org/OMLAnnotationTest3")
 		addAnnotation(g, ap1, "Un graphe...")
 		addAnnotation(g, ap2, "A graph...")
 

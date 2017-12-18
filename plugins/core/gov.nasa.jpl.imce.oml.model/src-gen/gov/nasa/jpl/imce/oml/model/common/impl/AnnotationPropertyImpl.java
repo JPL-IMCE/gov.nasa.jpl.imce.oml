@@ -20,7 +20,7 @@ package gov.nasa.jpl.imce.oml.model.common.impl;
 
 import gov.nasa.jpl.imce.oml.model.common.AnnotationProperty;
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
-import gov.nasa.jpl.imce.oml.model.common.Extent;
+import gov.nasa.jpl.imce.oml.model.common.Module;
 
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
 
@@ -49,7 +49,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link gov.nasa.jpl.imce.oml.model.common.impl.AnnotationPropertyImpl#getExtent <em>Extent</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.common.impl.AnnotationPropertyImpl#getModule <em>Module</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.common.impl.AnnotationPropertyImpl#getIri <em>Iri</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.common.impl.AnnotationPropertyImpl#getAbbrevIRI <em>Abbrev IRI</em>}</li>
  * </ul>
@@ -121,9 +121,9 @@ public class AnnotationPropertyImpl extends IntrinsicIdentityKindImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Extent getExtent() {
-		if (eContainerFeatureID() != CommonPackage.ANNOTATION_PROPERTY__EXTENT) return null;
-		return (Extent)eContainer();
+	public Module getModule() {
+		if (eContainerFeatureID() != CommonPackage.ANNOTATION_PROPERTY__MODULE) return null;
+		return (Module)eContainer();
 	}
 
 	/**
@@ -131,9 +131,9 @@ public class AnnotationPropertyImpl extends IntrinsicIdentityKindImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Extent basicGetExtent() {
-		if (eContainerFeatureID() != CommonPackage.ANNOTATION_PROPERTY__EXTENT) return null;
-		return (Extent)eInternalContainer();
+	public Module basicGetModule() {
+		if (eContainerFeatureID() != CommonPackage.ANNOTATION_PROPERTY__MODULE) return null;
+		return (Module)eInternalContainer();
 	}
 
 	/**
@@ -141,8 +141,8 @@ public class AnnotationPropertyImpl extends IntrinsicIdentityKindImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetExtent(Extent newExtent, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newExtent, CommonPackage.ANNOTATION_PROPERTY__EXTENT, msgs);
+	public NotificationChain basicSetModule(Module newModule, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newModule, CommonPackage.ANNOTATION_PROPERTY__MODULE, msgs);
 		return msgs;
 	}
 
@@ -151,20 +151,20 @@ public class AnnotationPropertyImpl extends IntrinsicIdentityKindImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setExtent(Extent newExtent) {
-		if (newExtent != eInternalContainer() || (eContainerFeatureID() != CommonPackage.ANNOTATION_PROPERTY__EXTENT && newExtent != null)) {
-			if (EcoreUtil.isAncestor(this, (EObject)newExtent))
+	public void setModule(Module newModule) {
+		if (newModule != eInternalContainer() || (eContainerFeatureID() != CommonPackage.ANNOTATION_PROPERTY__MODULE && newModule != null)) {
+			if (EcoreUtil.isAncestor(this, (EObject)newModule))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
-			if (newExtent != null)
-				msgs = ((InternalEObject)newExtent).eInverseAdd(this, CommonPackage.EXTENT__ANNOTATION_PROPERTIES, Extent.class, msgs);
-			msgs = basicSetExtent(newExtent, msgs);
+			if (newModule != null)
+				msgs = ((InternalEObject)newModule).eInverseAdd(this, CommonPackage.MODULE__ANNOTATION_PROPERTIES, Module.class, msgs);
+			msgs = basicSetModule(newModule, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CommonPackage.ANNOTATION_PROPERTY__EXTENT, newExtent, newExtent));
+			eNotify(new ENotificationImpl(this, Notification.SET, CommonPackage.ANNOTATION_PROPERTY__MODULE, newModule, newModule));
 	}
 
 	/**
@@ -214,6 +214,15 @@ public class AnnotationPropertyImpl extends IntrinsicIdentityKindImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Module moduleContext() {
+		return this.getModule();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String uuid() {
 		UUID _namespaceUUID = OMLExtensions.namespaceUUID(this.iri());
 		String _string = null;
@@ -240,10 +249,10 @@ public class AnnotationPropertyImpl extends IntrinsicIdentityKindImpl implements
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case CommonPackage.ANNOTATION_PROPERTY__EXTENT:
+			case CommonPackage.ANNOTATION_PROPERTY__MODULE:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetExtent((Extent)otherEnd, msgs);
+				return basicSetModule((Module)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -256,8 +265,8 @@ public class AnnotationPropertyImpl extends IntrinsicIdentityKindImpl implements
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case CommonPackage.ANNOTATION_PROPERTY__EXTENT:
-				return basicSetExtent(null, msgs);
+			case CommonPackage.ANNOTATION_PROPERTY__MODULE:
+				return basicSetModule(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -270,8 +279,8 @@ public class AnnotationPropertyImpl extends IntrinsicIdentityKindImpl implements
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
-			case CommonPackage.ANNOTATION_PROPERTY__EXTENT:
-				return eInternalContainer().eInverseRemove(this, CommonPackage.EXTENT__ANNOTATION_PROPERTIES, Extent.class, msgs);
+			case CommonPackage.ANNOTATION_PROPERTY__MODULE:
+				return eInternalContainer().eInverseRemove(this, CommonPackage.MODULE__ANNOTATION_PROPERTIES, Module.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
@@ -284,9 +293,9 @@ public class AnnotationPropertyImpl extends IntrinsicIdentityKindImpl implements
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case CommonPackage.ANNOTATION_PROPERTY__EXTENT:
-				if (resolve) return getExtent();
-				return basicGetExtent();
+			case CommonPackage.ANNOTATION_PROPERTY__MODULE:
+				if (resolve) return getModule();
+				return basicGetModule();
 			case CommonPackage.ANNOTATION_PROPERTY__IRI:
 				return getIri();
 			case CommonPackage.ANNOTATION_PROPERTY__ABBREV_IRI:
@@ -303,8 +312,8 @@ public class AnnotationPropertyImpl extends IntrinsicIdentityKindImpl implements
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case CommonPackage.ANNOTATION_PROPERTY__EXTENT:
-				setExtent((Extent)newValue);
+			case CommonPackage.ANNOTATION_PROPERTY__MODULE:
+				setModule((Module)newValue);
 				return;
 			case CommonPackage.ANNOTATION_PROPERTY__IRI:
 				setIri((String)newValue);
@@ -324,8 +333,8 @@ public class AnnotationPropertyImpl extends IntrinsicIdentityKindImpl implements
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case CommonPackage.ANNOTATION_PROPERTY__EXTENT:
-				setExtent((Extent)null);
+			case CommonPackage.ANNOTATION_PROPERTY__MODULE:
+				setModule((Module)null);
 				return;
 			case CommonPackage.ANNOTATION_PROPERTY__IRI:
 				setIri(IRI_EDEFAULT);
@@ -345,8 +354,8 @@ public class AnnotationPropertyImpl extends IntrinsicIdentityKindImpl implements
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case CommonPackage.ANNOTATION_PROPERTY__EXTENT:
-				return basicGetExtent() != null;
+			case CommonPackage.ANNOTATION_PROPERTY__MODULE:
+				return basicGetModule() != null;
 			case CommonPackage.ANNOTATION_PROPERTY__IRI:
 				return IRI_EDEFAULT == null ? iri != null : !IRI_EDEFAULT.equals(iri);
 			case CommonPackage.ANNOTATION_PROPERTY__ABBREV_IRI:
@@ -363,6 +372,8 @@ public class AnnotationPropertyImpl extends IntrinsicIdentityKindImpl implements
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
+			case CommonPackage.ANNOTATION_PROPERTY___MODULE_CONTEXT:
+				return moduleContext();
 			case CommonPackage.ANNOTATION_PROPERTY___UUID:
 				return uuid();
 			case CommonPackage.ANNOTATION_PROPERTY___IRI:

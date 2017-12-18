@@ -965,7 +965,6 @@ public class OMLExtensions {
 		queue.add(ext)
 		removeAllINodes(queue)
 				
-		sortInplaceBy(ext.annotationProperties, [abbrevIRI])
 		sortInplaceBy(ext.modules, [abbrevIRI])
 		ext.modules.forEach [ m |
 			normalize(m)
@@ -998,6 +997,7 @@ public class OMLExtensions {
 	 * Normalizes the order of OML Elements recursively within an OML DescriptionBox.
 	 */
 	static def dispatch void normalize(DescriptionBox it) {
+		sortInplaceBy(annotationProperties, [abbrevIRI])
 		sortInplaceBy(descriptionBoxRefinements, [sortingCriteria])
 		sortInplaceBy(closedWorldDefinitions, [sortingCriteria])
 		sortInplaceBy(conceptInstances, [sortingCriteria])
@@ -1014,6 +1014,7 @@ public class OMLExtensions {
 	}
 
 	protected static def void normalizeTerminologyBoxCollections(TerminologyBox it) {
+		sortInplaceBy(annotationProperties, [abbrevIRI])
 		ECollections.sort(boxAxioms, terminologyBoxAxiomComparator)
 		ECollections.sort(boxStatements, terminologyBoxStatementComparator)
 	}

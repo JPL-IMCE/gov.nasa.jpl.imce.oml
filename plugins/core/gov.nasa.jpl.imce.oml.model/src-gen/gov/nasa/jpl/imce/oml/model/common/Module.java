@@ -35,6 +35,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.common.Module#getAnnotationProperties <em>Annotation Properties</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.common.Module#getExtent <em>Extent</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.common.Module#getIri <em>Iri</em>}</li>
  * </ul>
@@ -45,6 +46,25 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface Module extends Resource {
+	/**
+	 * Returns the value of the '<em><b>Annotation Properties</b></em>' containment reference list.
+	 * The list contents are of type {@link gov.nasa.jpl.imce.oml.model.common.AnnotationProperty}.
+	 * It is bidirectional and its opposite is '{@link gov.nasa.jpl.imce.oml.model.common.AnnotationProperty#getModule <em>Module</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Annotation Properties</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Annotation Properties</em>' containment reference list.
+	 * @see gov.nasa.jpl.imce.oml.model.common.CommonPackage#getModule_AnnotationProperties()
+	 * @see gov.nasa.jpl.imce.oml.model.common.AnnotationProperty#getModule
+	 * @model opposite="module" containment="true"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
+	 * @generated
+	 */
+	EList<AnnotationProperty> getAnnotationProperties();
+
 	/**
 	 * Returns the value of the '<em><b>Extent</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link gov.nasa.jpl.imce.oml.model.common.Extent#getModules <em>Modules</em>}'.

@@ -646,9 +646,15 @@ COMMENT = 'Abstract Classification Table ValueCrossReferenceTuples';
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `OML`.`AnnotProps` (
   `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `moduleUUID` CHAR(36) NOT NULL COMMENT 'Mods (Module)',
   `iri` TEXT NOT NULL COMMENT 'IRI',
   `abbrevIRI` TEXT NOT NULL COMMENT 'AbbrevIRI',
   
+  CONSTRAINT `fk_AnnotProps_moduleUUID`
+    FOREIGN KEY (`moduleUUID`)
+    REFERENCES `OML`.`Mods`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   
   UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
 )

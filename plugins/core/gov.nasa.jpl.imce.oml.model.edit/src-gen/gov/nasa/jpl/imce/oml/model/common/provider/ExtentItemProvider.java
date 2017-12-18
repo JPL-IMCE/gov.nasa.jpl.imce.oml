@@ -19,7 +19,6 @@
 package gov.nasa.jpl.imce.oml.model.common.provider;
 
 
-import gov.nasa.jpl.imce.oml.model.common.CommonFactory;
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
 
@@ -96,7 +95,6 @@ public class ExtentItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(CommonPackage.Literals.EXTENT__MODULES);
-			childrenFeatures.add(CommonPackage.Literals.EXTENT__ANNOTATION_PROPERTIES);
 		}
 		return childrenFeatures;
 	}
@@ -150,7 +148,6 @@ public class ExtentItemProvider
 
 		switch (notification.getFeatureID(Extent.class)) {
 			case CommonPackage.EXTENT__MODULES:
-			case CommonPackage.EXTENT__ANNOTATION_PROPERTIES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -167,11 +164,6 @@ public class ExtentItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CommonPackage.Literals.EXTENT__ANNOTATION_PROPERTIES,
-				 CommonFactory.eINSTANCE.createAnnotationProperty()));
 	}
 
 	/**

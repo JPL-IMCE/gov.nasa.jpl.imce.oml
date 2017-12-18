@@ -37,7 +37,6 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.common.Extent#getModules <em>Modules</em>}</li>
- *   <li>{@link gov.nasa.jpl.imce.oml.model.common.Extent#getAnnotationProperties <em>Annotation Properties</em>}</li>
  * </ul>
  *
  * @see gov.nasa.jpl.imce.oml.model.common.CommonPackage#getExtent()
@@ -63,23 +62,5 @@ public interface Extent extends CDOObject {
 	 * @generated
 	 */
 	EList<Module> getModules();
-
-	/**
-	 * Returns the value of the '<em><b>Annotation Properties</b></em>' containment reference list.
-	 * The list contents are of type {@link gov.nasa.jpl.imce.oml.model.common.AnnotationProperty}.
-	 * It is bidirectional and its opposite is '{@link gov.nasa.jpl.imce.oml.model.common.AnnotationProperty#getExtent <em>Extent</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Annotation Properties</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Annotation Properties</em>' containment reference list.
-	 * @see gov.nasa.jpl.imce.oml.model.common.CommonPackage#getExtent_AnnotationProperties()
-	 * @see gov.nasa.jpl.imce.oml.model.common.AnnotationProperty#getExtent
-	 * @model opposite="extent" containment="true"
-	 * @generated
-	 */
-	EList<AnnotationProperty> getAnnotationProperties();
 
 } // Extent

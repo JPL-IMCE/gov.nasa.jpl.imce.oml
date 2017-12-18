@@ -55,13 +55,12 @@ class OMLScopeExtensions {
 	 * This scope computation accounts for possible parsing errors resulting in EFeature values being null.
 	 */
 	def scope_Annotation_property(AnnotationPropertyValue annotation, EReference eRef) {
-		val extents =
+		val modules =
 			annotation.subject?. // may be null!
 			moduleContext?. // may be null!
 			allImportedModules?. // may be null!
-			map[extent]?. // may be null!
 			filterNull // remove nulls!
-		val annoationProperties = extents.map[annotationProperties]?. // may be null!
+		val annoationProperties = modules.map[annotationProperties]?. // may be null!
 			flatten?. // may be null!
 			filterNull // remove nulls!
 		Scopes.scopeFor(annoationProperties, [qnc.toQualifiedName(it.abbrevIRI)], IScope.NULLSCOPE)

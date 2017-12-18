@@ -27,7 +27,6 @@ import gov.nasa.jpl.imce.oml.model.bundles.RootConceptTaxonomyAxiom
 import gov.nasa.jpl.imce.oml.model.bundles.SpecificDisjointConceptAxiom
 import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage
-import gov.nasa.jpl.imce.oml.model.common.Extent
 import gov.nasa.jpl.imce.oml.model.common.ModuleEdge
 import gov.nasa.jpl.imce.oml.model.descriptions.ConceptInstance
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox
@@ -95,11 +94,8 @@ class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespaceAware
 	override def List<ImportNormalizer> getImportedNamespaceResolvers(EObject context, boolean ignoreCase) {
 		val res = new ArrayList<ImportNormalizer>();
 		switch context {
-			Extent:
-				for (ap : context.annotationProperties)
-					res.add(new OMLImportNormalizer(qnc.toQualifiedName(ap.iri()), ap.abbrevIRI))
 			Bundle: {
-				for (ap : context.extent.annotationProperties) {
+				for (ap : context.annotationProperties) {
 					res.add(new OMLImportNormalizer(qnc.toQualifiedName(ap.iri()), ap.abbrevIRI))
 				}
 				for (e : context.boxAxioms) {
@@ -110,7 +106,7 @@ class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespaceAware
 				}
 			}
 			TerminologyGraph: {
-				for (ap : context.extent.annotationProperties) {
+				for (ap : context.annotationProperties) {
 					res.add(new OMLImportNormalizer(qnc.toQualifiedName(ap.iri()), ap.abbrevIRI))
 				}
 				for (e : context.boxAxioms) {
@@ -118,7 +114,7 @@ class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespaceAware
 				}
 			}
 			DescriptionBox: {
-				for (ap : context.extent.annotationProperties) {
+				for (ap : context.annotationProperties) {
 					res.add(new OMLImportNormalizer(qnc.toQualifiedName(ap.iri()), ap.abbrevIRI))
 				}
 				for (e : context.closedWorldDefinitions) {

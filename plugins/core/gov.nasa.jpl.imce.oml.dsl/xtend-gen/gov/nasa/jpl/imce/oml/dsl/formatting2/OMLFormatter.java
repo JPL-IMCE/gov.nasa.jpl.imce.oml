@@ -120,16 +120,9 @@ public class OMLFormatter extends AbstractFormatter2 {
       it.noSpace();
     };
     document.<Extent>prepend(extent, _function);
-    final Consumer<AnnotationProperty> _function_1 = (AnnotationProperty it) -> {
-      final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it_1) -> {
-        it_1.setNewLines(2);
-      };
-      document.<AnnotationProperty>append(document.<AnnotationProperty>format(it), _function_2);
-    };
-    extent.getAnnotationProperties().forEach(_function_1);
     final Module lastM = IterableExtensions.<Module>last(extent.getModules());
-    final Consumer<Module> _function_2 = (Module m) -> {
-      final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
+    final Consumer<Module> _function_1 = (Module m) -> {
+      final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
         int _xifexpression = (int) 0;
         boolean _equals = Objects.equal(lastM, m);
         if (_equals) {
@@ -139,9 +132,9 @@ public class OMLFormatter extends AbstractFormatter2 {
         }
         it.setNewLines(_xifexpression);
       };
-      document.<Module>append(document.<Module>format(m), _function_3);
+      document.<Module>append(document.<Module>format(m), _function_2);
     };
-    extent.getModules().forEach(_function_2);
+    extent.getModules().forEach(_function_1);
   }
   
   protected void _format(final AnnotationProperty annotationProperty, @Extension final IFormattableDocument document) {
@@ -167,219 +160,240 @@ public class OMLFormatter extends AbstractFormatter2 {
   }
   
   protected void _format(final TerminologyGraph terminologyGraph, @Extension final IFormattableDocument document) {
-    final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
-      it.oneSpace();
+    final Consumer<AnnotationProperty> _function = (AnnotationProperty it) -> {
+      final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it_1) -> {
+        it_1.setNewLines(2);
+      };
+      document.<AnnotationProperty>append(document.<AnnotationProperty>format(it), _function_1);
     };
-    document.append(this.textRegionExtensions.regionFor(terminologyGraph).feature(TerminologiesPackage.eINSTANCE.getTerminologyBox_Kind()), _function);
+    terminologyGraph.getAnnotationProperties().forEach(_function);
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(terminologyGraph).keyword("terminology"), _function_1);
+    document.append(this.textRegionExtensions.regionFor(terminologyGraph).feature(TerminologiesPackage.eINSTANCE.getTerminologyBox_Kind()), _function_1);
     final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(terminologyGraph).ruleCall(this._oMLGrammarAccess.getTerminologyGraphAccess().getIriIRITerminalRuleCall_3_0()), _function_2);
-    final ISemanticRegion lcurly = this.textRegionExtensions.regionFor(terminologyGraph).keyword("{");
-    final ISemanticRegion rcurly = this.textRegionExtensions.regionFor(terminologyGraph).keyword("}");
+    document.surround(this.textRegionExtensions.regionFor(terminologyGraph).keyword("terminology"), _function_2);
     final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.prepend(lcurly, _function_3);
+    document.surround(this.textRegionExtensions.regionFor(terminologyGraph).ruleCall(this._oMLGrammarAccess.getTerminologyGraphAccess().getIriIRITerminalRuleCall_4_0()), _function_3);
+    final ISemanticRegion lcurly = this.textRegionExtensions.regionFor(terminologyGraph).keyword("{");
+    final ISemanticRegion rcurly = this.textRegionExtensions.regionFor(terminologyGraph).keyword("}");
     final Procedure1<IHiddenRegionFormatter> _function_4 = (IHiddenRegionFormatter it) -> {
+      it.oneSpace();
+    };
+    document.prepend(lcurly, _function_4);
+    final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it) -> {
       it.setNewLines(2);
     };
-    document.append(lcurly, _function_4);
-    final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it) -> {
+    document.append(lcurly, _function_5);
+    final Procedure1<IHiddenRegionFormatter> _function_6 = (IHiddenRegionFormatter it) -> {
       it.indent();
     };
-    document.<ISemanticRegion, ISemanticRegion>interior(lcurly, rcurly, _function_5);
-    final Consumer<AnnotationPropertyValue> _function_6 = (AnnotationPropertyValue ax) -> {
-      this.format(ax, document);
-      final Procedure1<IHiddenRegionFormatter> _function_7 = (IHiddenRegionFormatter it) -> {
-        it.setNewLines(1);
-      };
-      document.<AnnotationPropertyValue>append(ax, _function_7);
-    };
-    terminologyGraph.getAnnotations().forEach(_function_6);
-    final Consumer<TerminologyBoxAxiom> _function_7 = (TerminologyBoxAxiom ax) -> {
+    document.<ISemanticRegion, ISemanticRegion>interior(lcurly, rcurly, _function_6);
+    final Consumer<AnnotationPropertyValue> _function_7 = (AnnotationPropertyValue ax) -> {
       this.format(ax, document);
       final Procedure1<IHiddenRegionFormatter> _function_8 = (IHiddenRegionFormatter it) -> {
-        it.setNewLines(2);
+        it.setNewLines(1);
       };
-      document.<TerminologyBoxAxiom>append(ax, _function_8);
+      document.<AnnotationPropertyValue>append(ax, _function_8);
     };
-    terminologyGraph.getBoxAxioms().forEach(_function_7);
-    final Consumer<TerminologyBoxStatement> _function_8 = (TerminologyBoxStatement ax) -> {
+    terminologyGraph.getAnnotations().forEach(_function_7);
+    final Consumer<TerminologyBoxAxiom> _function_8 = (TerminologyBoxAxiom ax) -> {
       this.format(ax, document);
       final Procedure1<IHiddenRegionFormatter> _function_9 = (IHiddenRegionFormatter it) -> {
         it.setNewLines(2);
       };
-      document.<TerminologyBoxStatement>append(ax, _function_9);
+      document.<TerminologyBoxAxiom>append(ax, _function_9);
     };
-    terminologyGraph.getBoxStatements().forEach(_function_8);
+    terminologyGraph.getBoxAxioms().forEach(_function_8);
+    final Consumer<TerminologyBoxStatement> _function_9 = (TerminologyBoxStatement ax) -> {
+      this.format(ax, document);
+      final Procedure1<IHiddenRegionFormatter> _function_10 = (IHiddenRegionFormatter it) -> {
+        it.setNewLines(2);
+      };
+      document.<TerminologyBoxStatement>append(ax, _function_10);
+    };
+    terminologyGraph.getBoxStatements().forEach(_function_9);
   }
   
   protected void _format(final Bundle bundle, @Extension final IFormattableDocument document) {
-    final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
-      it.oneSpace();
+    final Consumer<AnnotationProperty> _function = (AnnotationProperty it) -> {
+      final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it_1) -> {
+        it_1.setNewLines(2);
+      };
+      document.<AnnotationProperty>append(document.<AnnotationProperty>format(it), _function_1);
     };
-    document.append(this.textRegionExtensions.regionFor(bundle).feature(TerminologiesPackage.eINSTANCE.getTerminologyBox_Kind()), _function);
+    bundle.getAnnotationProperties().forEach(_function);
     final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(bundle).keyword("bundle"), _function_1);
+    document.append(this.textRegionExtensions.regionFor(bundle).feature(TerminologiesPackage.eINSTANCE.getTerminologyBox_Kind()), _function_1);
     final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(bundle).ruleCall(this._oMLGrammarAccess.getBundleAccess().getIriIRITerminalRuleCall_3_0()), _function_2);
+    document.surround(this.textRegionExtensions.regionFor(bundle).keyword("bundle"), _function_2);
+    final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
+      it.oneSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(bundle).ruleCall(this._oMLGrammarAccess.getBundleAccess().getIriIRITerminalRuleCall_4_0()), _function_3);
     final ISemanticRegion lcurly = this.textRegionExtensions.regionFor(bundle).keyword("{");
     final ISemanticRegion rcurly = this.textRegionExtensions.regionFor(bundle).keyword("}");
-    final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
+    final Procedure1<IHiddenRegionFormatter> _function_4 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.prepend(lcurly, _function_3);
-    final Procedure1<IHiddenRegionFormatter> _function_4 = (IHiddenRegionFormatter it) -> {
+    document.prepend(lcurly, _function_4);
+    final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it) -> {
       it.setNewLines(2);
     };
-    document.append(lcurly, _function_4);
-    final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it) -> {
+    document.append(lcurly, _function_5);
+    final Procedure1<IHiddenRegionFormatter> _function_6 = (IHiddenRegionFormatter it) -> {
       it.indent();
     };
-    document.<ISemanticRegion, ISemanticRegion>interior(lcurly, rcurly, _function_5);
-    final Consumer<AnnotationPropertyValue> _function_6 = (AnnotationPropertyValue it) -> {
-      final Procedure1<IHiddenRegionFormatter> _function_7 = (IHiddenRegionFormatter it_1) -> {
+    document.<ISemanticRegion, ISemanticRegion>interior(lcurly, rcurly, _function_6);
+    final Consumer<AnnotationPropertyValue> _function_7 = (AnnotationPropertyValue it) -> {
+      final Procedure1<IHiddenRegionFormatter> _function_8 = (IHiddenRegionFormatter it_1) -> {
         it_1.setNewLines(1);
       };
-      document.<AnnotationPropertyValue>append(document.<AnnotationPropertyValue>format(it), _function_7);
+      document.<AnnotationPropertyValue>append(document.<AnnotationPropertyValue>format(it), _function_8);
     };
-    bundle.getAnnotations().forEach(_function_6);
-    final Consumer<TerminologyBoxAxiom> _function_7 = (TerminologyBoxAxiom it) -> {
-      final Procedure1<IHiddenRegionFormatter> _function_8 = (IHiddenRegionFormatter it_1) -> {
-        it_1.setNewLines(2);
-      };
-      document.<TerminologyBoxAxiom>append(document.<TerminologyBoxAxiom>format(it), _function_8);
-    };
-    bundle.getBoxAxioms().forEach(_function_7);
-    final Consumer<TerminologyBoxStatement> _function_8 = (TerminologyBoxStatement it) -> {
+    bundle.getAnnotations().forEach(_function_7);
+    final Consumer<TerminologyBoxAxiom> _function_8 = (TerminologyBoxAxiom it) -> {
       final Procedure1<IHiddenRegionFormatter> _function_9 = (IHiddenRegionFormatter it_1) -> {
         it_1.setNewLines(2);
       };
-      document.<TerminologyBoxStatement>append(document.<TerminologyBoxStatement>format(it), _function_9);
+      document.<TerminologyBoxAxiom>append(document.<TerminologyBoxAxiom>format(it), _function_9);
     };
-    bundle.getBoxStatements().forEach(_function_8);
-    final Consumer<TerminologyBundleAxiom> _function_9 = (TerminologyBundleAxiom it) -> {
+    bundle.getBoxAxioms().forEach(_function_8);
+    final Consumer<TerminologyBoxStatement> _function_9 = (TerminologyBoxStatement it) -> {
       final Procedure1<IHiddenRegionFormatter> _function_10 = (IHiddenRegionFormatter it_1) -> {
         it_1.setNewLines(2);
       };
-      document.<TerminologyBundleAxiom>append(document.<TerminologyBundleAxiom>format(it), _function_10);
+      document.<TerminologyBoxStatement>append(document.<TerminologyBoxStatement>format(it), _function_10);
     };
-    bundle.getBundleAxioms().forEach(_function_9);
-    final Consumer<TerminologyBundleStatement> _function_10 = (TerminologyBundleStatement it) -> {
+    bundle.getBoxStatements().forEach(_function_9);
+    final Consumer<TerminologyBundleAxiom> _function_10 = (TerminologyBundleAxiom it) -> {
       final Procedure1<IHiddenRegionFormatter> _function_11 = (IHiddenRegionFormatter it_1) -> {
         it_1.setNewLines(2);
       };
-      document.<TerminologyBundleStatement>append(document.<TerminologyBundleStatement>format(it), _function_11);
+      document.<TerminologyBundleAxiom>append(document.<TerminologyBundleAxiom>format(it), _function_11);
     };
-    bundle.getBundleStatements().forEach(_function_10);
-  }
-  
-  protected void _format(final DescriptionBox descriptionBox, @Extension final IFormattableDocument document) {
-    final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
-      it.oneSpace();
-    };
-    document.append(this.textRegionExtensions.regionFor(descriptionBox).feature(DescriptionsPackage.eINSTANCE.getDescriptionBox_Kind()), _function);
-    final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
-      it.oneSpace();
-    };
-    document.surround(this.textRegionExtensions.regionFor(descriptionBox).keyword("descriptionBox"), _function_1);
-    final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
-      it.oneSpace();
-    };
-    document.surround(this.textRegionExtensions.regionFor(descriptionBox).ruleCall(this._oMLGrammarAccess.getDescriptionBoxAccess().getIriIRITerminalRuleCall_3_0()), _function_2);
-    final ISemanticRegion lcurly = this.textRegionExtensions.regionFor(descriptionBox).keyword("{");
-    final ISemanticRegion rcurly = this.textRegionExtensions.regionFor(descriptionBox).keyword("}");
-    final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
-      it.oneSpace();
-    };
-    document.prepend(lcurly, _function_3);
-    final Procedure1<IHiddenRegionFormatter> _function_4 = (IHiddenRegionFormatter it) -> {
-      it.setNewLines(2);
-    };
-    document.append(lcurly, _function_4);
-    final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it) -> {
-      it.indent();
-    };
-    document.<ISemanticRegion, ISemanticRegion>interior(lcurly, rcurly, _function_5);
-    final Consumer<AnnotationPropertyValue> _function_6 = (AnnotationPropertyValue it) -> {
-      final Procedure1<IHiddenRegionFormatter> _function_7 = (IHiddenRegionFormatter it_1) -> {
-        it_1.setNewLines(1);
-      };
-      document.<AnnotationPropertyValue>append(document.<AnnotationPropertyValue>format(it), _function_7);
-    };
-    descriptionBox.getAnnotations().forEach(_function_6);
-    final Consumer<DescriptionBoxExtendsClosedWorldDefinitions> _function_7 = (DescriptionBoxExtendsClosedWorldDefinitions it) -> {
-      final Procedure1<IHiddenRegionFormatter> _function_8 = (IHiddenRegionFormatter it_1) -> {
-        it_1.setNewLines(2);
-      };
-      document.<DescriptionBoxExtendsClosedWorldDefinitions>append(document.<DescriptionBoxExtendsClosedWorldDefinitions>format(it), _function_8);
-    };
-    descriptionBox.getClosedWorldDefinitions().forEach(_function_7);
-    final Consumer<DescriptionBoxRefinement> _function_8 = (DescriptionBoxRefinement it) -> {
-      final Procedure1<IHiddenRegionFormatter> _function_9 = (IHiddenRegionFormatter it_1) -> {
-        it_1.setNewLines(2);
-      };
-      document.<DescriptionBoxRefinement>append(document.<DescriptionBoxRefinement>format(it), _function_9);
-    };
-    descriptionBox.getDescriptionBoxRefinements().forEach(_function_8);
-    final Consumer<ConceptInstance> _function_9 = (ConceptInstance it) -> {
-      final Procedure1<IHiddenRegionFormatter> _function_10 = (IHiddenRegionFormatter it_1) -> {
-        it_1.setNewLines(2);
-      };
-      document.<ConceptInstance>append(document.<ConceptInstance>format(it), _function_10);
-    };
-    descriptionBox.getConceptInstances().forEach(_function_9);
-    final Consumer<ReifiedRelationshipInstance> _function_10 = (ReifiedRelationshipInstance it) -> {
-      final Procedure1<IHiddenRegionFormatter> _function_11 = (IHiddenRegionFormatter it_1) -> {
-        it_1.setNewLines(2);
-      };
-      document.<ReifiedRelationshipInstance>append(document.<ReifiedRelationshipInstance>format(it), _function_11);
-    };
-    descriptionBox.getReifiedRelationshipInstances().forEach(_function_10);
-    final Consumer<ReifiedRelationshipInstanceDomain> _function_11 = (ReifiedRelationshipInstanceDomain it) -> {
+    bundle.getBundleAxioms().forEach(_function_10);
+    final Consumer<TerminologyBundleStatement> _function_11 = (TerminologyBundleStatement it) -> {
       final Procedure1<IHiddenRegionFormatter> _function_12 = (IHiddenRegionFormatter it_1) -> {
         it_1.setNewLines(2);
       };
-      document.<ReifiedRelationshipInstanceDomain>append(document.<ReifiedRelationshipInstanceDomain>format(it), _function_12);
+      document.<TerminologyBundleStatement>append(document.<TerminologyBundleStatement>format(it), _function_12);
     };
-    descriptionBox.getReifiedRelationshipInstanceDomains().forEach(_function_11);
-    final Consumer<ReifiedRelationshipInstanceRange> _function_12 = (ReifiedRelationshipInstanceRange it) -> {
+    bundle.getBundleStatements().forEach(_function_11);
+  }
+  
+  protected void _format(final DescriptionBox descriptionBox, @Extension final IFormattableDocument document) {
+    final Consumer<AnnotationProperty> _function = (AnnotationProperty it) -> {
+      final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it_1) -> {
+        it_1.setNewLines(2);
+      };
+      document.<AnnotationProperty>append(document.<AnnotationProperty>format(it), _function_1);
+    };
+    descriptionBox.getAnnotationProperties().forEach(_function);
+    final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
+      it.oneSpace();
+    };
+    document.append(this.textRegionExtensions.regionFor(descriptionBox).feature(DescriptionsPackage.eINSTANCE.getDescriptionBox_Kind()), _function_1);
+    final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
+      it.oneSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(descriptionBox).keyword("descriptionBox"), _function_2);
+    final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
+      it.oneSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(descriptionBox).ruleCall(this._oMLGrammarAccess.getDescriptionBoxAccess().getIriIRITerminalRuleCall_4_0()), _function_3);
+    final ISemanticRegion lcurly = this.textRegionExtensions.regionFor(descriptionBox).keyword("{");
+    final ISemanticRegion rcurly = this.textRegionExtensions.regionFor(descriptionBox).keyword("}");
+    final Procedure1<IHiddenRegionFormatter> _function_4 = (IHiddenRegionFormatter it) -> {
+      it.oneSpace();
+    };
+    document.prepend(lcurly, _function_4);
+    final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it) -> {
+      it.setNewLines(2);
+    };
+    document.append(lcurly, _function_5);
+    final Procedure1<IHiddenRegionFormatter> _function_6 = (IHiddenRegionFormatter it) -> {
+      it.indent();
+    };
+    document.<ISemanticRegion, ISemanticRegion>interior(lcurly, rcurly, _function_6);
+    final Consumer<AnnotationPropertyValue> _function_7 = (AnnotationPropertyValue it) -> {
+      final Procedure1<IHiddenRegionFormatter> _function_8 = (IHiddenRegionFormatter it_1) -> {
+        it_1.setNewLines(1);
+      };
+      document.<AnnotationPropertyValue>append(document.<AnnotationPropertyValue>format(it), _function_8);
+    };
+    descriptionBox.getAnnotations().forEach(_function_7);
+    final Consumer<DescriptionBoxExtendsClosedWorldDefinitions> _function_8 = (DescriptionBoxExtendsClosedWorldDefinitions it) -> {
+      final Procedure1<IHiddenRegionFormatter> _function_9 = (IHiddenRegionFormatter it_1) -> {
+        it_1.setNewLines(2);
+      };
+      document.<DescriptionBoxExtendsClosedWorldDefinitions>append(document.<DescriptionBoxExtendsClosedWorldDefinitions>format(it), _function_9);
+    };
+    descriptionBox.getClosedWorldDefinitions().forEach(_function_8);
+    final Consumer<DescriptionBoxRefinement> _function_9 = (DescriptionBoxRefinement it) -> {
+      final Procedure1<IHiddenRegionFormatter> _function_10 = (IHiddenRegionFormatter it_1) -> {
+        it_1.setNewLines(2);
+      };
+      document.<DescriptionBoxRefinement>append(document.<DescriptionBoxRefinement>format(it), _function_10);
+    };
+    descriptionBox.getDescriptionBoxRefinements().forEach(_function_9);
+    final Consumer<ConceptInstance> _function_10 = (ConceptInstance it) -> {
+      final Procedure1<IHiddenRegionFormatter> _function_11 = (IHiddenRegionFormatter it_1) -> {
+        it_1.setNewLines(2);
+      };
+      document.<ConceptInstance>append(document.<ConceptInstance>format(it), _function_11);
+    };
+    descriptionBox.getConceptInstances().forEach(_function_10);
+    final Consumer<ReifiedRelationshipInstance> _function_11 = (ReifiedRelationshipInstance it) -> {
+      final Procedure1<IHiddenRegionFormatter> _function_12 = (IHiddenRegionFormatter it_1) -> {
+        it_1.setNewLines(2);
+      };
+      document.<ReifiedRelationshipInstance>append(document.<ReifiedRelationshipInstance>format(it), _function_12);
+    };
+    descriptionBox.getReifiedRelationshipInstances().forEach(_function_11);
+    final Consumer<ReifiedRelationshipInstanceDomain> _function_12 = (ReifiedRelationshipInstanceDomain it) -> {
       final Procedure1<IHiddenRegionFormatter> _function_13 = (IHiddenRegionFormatter it_1) -> {
         it_1.setNewLines(2);
       };
-      document.<ReifiedRelationshipInstanceRange>append(document.<ReifiedRelationshipInstanceRange>format(it), _function_13);
+      document.<ReifiedRelationshipInstanceDomain>append(document.<ReifiedRelationshipInstanceDomain>format(it), _function_13);
     };
-    descriptionBox.getReifiedRelationshipInstanceRanges().forEach(_function_12);
-    final Consumer<UnreifiedRelationshipInstanceTuple> _function_13 = (UnreifiedRelationshipInstanceTuple it) -> {
+    descriptionBox.getReifiedRelationshipInstanceDomains().forEach(_function_12);
+    final Consumer<ReifiedRelationshipInstanceRange> _function_13 = (ReifiedRelationshipInstanceRange it) -> {
       final Procedure1<IHiddenRegionFormatter> _function_14 = (IHiddenRegionFormatter it_1) -> {
         it_1.setNewLines(2);
       };
-      document.<UnreifiedRelationshipInstanceTuple>append(document.<UnreifiedRelationshipInstanceTuple>format(it), _function_14);
+      document.<ReifiedRelationshipInstanceRange>append(document.<ReifiedRelationshipInstanceRange>format(it), _function_14);
     };
-    descriptionBox.getUnreifiedRelationshipInstanceTuples().forEach(_function_13);
-    final Consumer<SingletonInstanceScalarDataPropertyValue> _function_14 = (SingletonInstanceScalarDataPropertyValue it) -> {
+    descriptionBox.getReifiedRelationshipInstanceRanges().forEach(_function_13);
+    final Consumer<UnreifiedRelationshipInstanceTuple> _function_14 = (UnreifiedRelationshipInstanceTuple it) -> {
       final Procedure1<IHiddenRegionFormatter> _function_15 = (IHiddenRegionFormatter it_1) -> {
         it_1.setNewLines(2);
       };
-      document.<SingletonInstanceScalarDataPropertyValue>append(document.<SingletonInstanceScalarDataPropertyValue>format(it), _function_15);
+      document.<UnreifiedRelationshipInstanceTuple>append(document.<UnreifiedRelationshipInstanceTuple>format(it), _function_15);
     };
-    descriptionBox.getSingletonScalarDataPropertyValues().forEach(_function_14);
-    final Consumer<SingletonInstanceStructuredDataPropertyValue> _function_15 = (SingletonInstanceStructuredDataPropertyValue it) -> {
+    descriptionBox.getUnreifiedRelationshipInstanceTuples().forEach(_function_14);
+    final Consumer<SingletonInstanceScalarDataPropertyValue> _function_15 = (SingletonInstanceScalarDataPropertyValue it) -> {
       final Procedure1<IHiddenRegionFormatter> _function_16 = (IHiddenRegionFormatter it_1) -> {
         it_1.setNewLines(2);
       };
-      document.<SingletonInstanceStructuredDataPropertyValue>append(document.<SingletonInstanceStructuredDataPropertyValue>format(it), _function_16);
+      document.<SingletonInstanceScalarDataPropertyValue>append(document.<SingletonInstanceScalarDataPropertyValue>format(it), _function_16);
     };
-    descriptionBox.getSingletonStructuredDataPropertyValues().forEach(_function_15);
+    descriptionBox.getSingletonScalarDataPropertyValues().forEach(_function_15);
+    final Consumer<SingletonInstanceStructuredDataPropertyValue> _function_16 = (SingletonInstanceStructuredDataPropertyValue it) -> {
+      final Procedure1<IHiddenRegionFormatter> _function_17 = (IHiddenRegionFormatter it_1) -> {
+        it_1.setNewLines(2);
+      };
+      document.<SingletonInstanceStructuredDataPropertyValue>append(document.<SingletonInstanceStructuredDataPropertyValue>format(it), _function_17);
+    };
+    descriptionBox.getSingletonStructuredDataPropertyValues().forEach(_function_16);
   }
   
   protected void _format(final Aspect aspect, @Extension final IFormattableDocument document) {

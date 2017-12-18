@@ -497,6 +497,7 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *
 	 * Constraint:
 	 *     (
+	 *         annotationProperties+=AnnotationProperty* 
 	 *         annotations+=AnnotationPropertyValue* 
 	 *         kind=TerminologyKind 
 	 *         iri=IRI 
@@ -641,6 +642,7 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *
 	 * Constraint:
 	 *     (
+	 *         annotationProperties+=AnnotationProperty* 
 	 *         annotations+=AnnotationPropertyValue* 
 	 *         kind=DescriptionKind 
 	 *         iri=IRI 
@@ -818,7 +820,7 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Extent returns Extent
 	 *
 	 * Constraint:
-	 *     (annotationProperties+=AnnotationProperty | modules+=Module)*
+	 *     modules+=Module*
 	 */
 	protected void sequence_Extent(ISerializationContext context, Extent semanticObject) {
 		genericSequencer.createSequence(context, (EObject) semanticObject);
@@ -1688,7 +1690,13 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     TerminologyGraph returns TerminologyGraph
 	 *
 	 * Constraint:
-	 *     (annotations+=AnnotationPropertyValue* kind=TerminologyKind iri=IRI (boxAxioms+=TerminologyBoxAxiom | boxStatements+=TerminologyBoxStatement)*)
+	 *     (
+	 *         annotationProperties+=AnnotationProperty* 
+	 *         annotations+=AnnotationPropertyValue* 
+	 *         kind=TerminologyKind 
+	 *         iri=IRI 
+	 *         (boxAxioms+=TerminologyBoxAxiom | boxStatements+=TerminologyBoxStatement)*
+	 *     )
 	 */
 	protected void sequence_TerminologyGraph(ISerializationContext context, TerminologyGraph semanticObject) {
 		genericSequencer.createSequence(context, (EObject) semanticObject);
