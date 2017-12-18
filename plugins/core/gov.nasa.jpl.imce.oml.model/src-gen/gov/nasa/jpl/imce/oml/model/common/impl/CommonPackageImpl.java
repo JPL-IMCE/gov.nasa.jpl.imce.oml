@@ -1071,7 +1071,7 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getAnnotationProperty__Uuid() {
+	public EOperation getAnnotationProperty__ModuleContext() {
 		return annotationPropertyEClass.getEOperations().get(0);
 	}
 
@@ -1080,8 +1080,17 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getAnnotationProperty__Iri() {
+	public EOperation getAnnotationProperty__Uuid() {
 		return annotationPropertyEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getAnnotationProperty__Iri() {
+		return annotationPropertyEClass.getEOperations().get(2);
 	}
 
 	/**
@@ -1544,6 +1553,7 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		createEReference(annotationPropertyEClass, ANNOTATION_PROPERTY__MODULE);
 		createEAttribute(annotationPropertyEClass, ANNOTATION_PROPERTY__IRI);
 		createEAttribute(annotationPropertyEClass, ANNOTATION_PROPERTY__ABBREV_IRI);
+		createEOperation(annotationPropertyEClass, ANNOTATION_PROPERTY___MODULE_CONTEXT);
 		createEOperation(annotationPropertyEClass, ANNOTATION_PROPERTY___UUID);
 		createEOperation(annotationPropertyEClass, ANNOTATION_PROPERTY___IRI);
 
@@ -1770,6 +1780,8 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		initEReference(getAnnotationProperty_Module(), this.getModule(), this.getModule_AnnotationProperties(), "module", null, 1, 1, AnnotationProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAnnotationProperty_Iri(), this.getIRI(), "iri", null, 1, 1, AnnotationProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAnnotationProperty_AbbrevIRI(), this.getAbbrevIRI(), "abbrevIRI", null, 1, 1, AnnotationProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getAnnotationProperty__ModuleContext(), this.getModule(), "moduleContext", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEOperation(getAnnotationProperty__Uuid(), this.getUUID(), "uuid", 1, 1, !IS_UNIQUE, IS_ORDERED);
 
@@ -2078,6 +2090,11 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		   new String[] {
 		   });	
 		addAnnotation
+		  (getAnnotationProperty__ModuleContext(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
 		  (getAnnotationProperty__Uuid(), 
 		   source, 
 		   new String[] {
@@ -2203,6 +2220,11 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		   new String[] {
 		   });	
 		addAnnotation
+		  (getAnnotationProperty__ModuleContext(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
 		  (getAnnotationProperty__Iri(), 
 		   source, 
 		   new String[] {
@@ -2280,6 +2302,12 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 		   source, 
 		   new String[] {
 			 "kind", "Set"
+		   });	
+		addAnnotation
+		  (getModule_AnnotationProperties(), 
+		   source, 
+		   new String[] {
+			 "kind", "Set"
 		   });
 	}
 
@@ -2330,6 +2358,12 @@ public class CommonPackageImpl extends EPackageImpl implements CommonPackage {
 	 */
 	protected void createScalaAnnotations() {
 		String source = "http://imce.jpl.nasa.gov/oml/Scala";	
+		addAnnotation
+		  (getAnnotationProperty__ModuleContext(), 
+		   source, 
+		   new String[] {
+			 "code", "extent.moduleOfAnnotationProperty.get(this)"
+		   });	
 		addAnnotation
 		  (getAnnotationProperty__Uuid(), 
 		   source, 

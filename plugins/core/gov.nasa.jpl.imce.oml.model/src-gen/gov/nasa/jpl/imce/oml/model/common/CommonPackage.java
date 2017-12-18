@@ -1481,13 +1481,22 @@ public interface CommonPackage extends EPackage {
 	int ANNOTATION_PROPERTY_FEATURE_COUNT = INTRINSIC_IDENTITY_KIND_FEATURE_COUNT + 3;
 
 	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANNOTATION_PROPERTY___MODULE_CONTEXT = INTRINSIC_IDENTITY_KIND_OPERATION_COUNT + 0;
+
+	/**
 	 * The operation id for the '<em>Uuid</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ANNOTATION_PROPERTY___UUID = INTRINSIC_IDENTITY_KIND_OPERATION_COUNT + 0;
+	int ANNOTATION_PROPERTY___UUID = INTRINSIC_IDENTITY_KIND_OPERATION_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Iri</em>' operation.
@@ -1496,7 +1505,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ANNOTATION_PROPERTY___IRI = INTRINSIC_IDENTITY_KIND_OPERATION_COUNT + 1;
+	int ANNOTATION_PROPERTY___IRI = INTRINSIC_IDENTITY_KIND_OPERATION_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Annotation Property</em>' class.
@@ -1505,7 +1514,7 @@ public interface CommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ANNOTATION_PROPERTY_OPERATION_COUNT = INTRINSIC_IDENTITY_KIND_OPERATION_COUNT + 2;
+	int ANNOTATION_PROPERTY_OPERATION_COUNT = INTRINSIC_IDENTITY_KIND_OPERATION_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.common.impl.AnnotationPropertyValueImpl <em>Annotation Property Value</em>}' class.
@@ -2609,6 +2618,16 @@ public interface CommonPackage extends EPackage {
 	EAttribute getAnnotationProperty_AbbrevIRI();
 
 	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.common.AnnotationProperty#moduleContext() <em>Module Context</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Module Context</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.common.AnnotationProperty#moduleContext()
+	 * @generated
+	 */
+	EOperation getAnnotationProperty__ModuleContext();
+
+	/**
 	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.common.AnnotationProperty#uuid() <em>Uuid</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3622,6 +3641,14 @@ public interface CommonPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ANNOTATION_PROPERTY__ABBREV_IRI = eINSTANCE.getAnnotationProperty_AbbrevIRI();
+
+		/**
+		 * The meta object literal for the '<em><b>Module Context</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ANNOTATION_PROPERTY___MODULE_CONTEXT = eINSTANCE.getAnnotationProperty__ModuleContext();
 
 		/**
 		 * The meta object literal for the '<em><b>Uuid</b></em>' operation.

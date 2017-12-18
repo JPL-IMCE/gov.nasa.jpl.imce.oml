@@ -23,7 +23,7 @@ import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 /**
- * This is the central singleton for the Common edit plugin.
+ * This is the central singleton for the Descriptions edit plugin.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
@@ -54,6 +54,7 @@ public final class OMLEditPlugin extends EMFPlugin {
 	public OMLEditPlugin() {
 		super
 		  (new ResourceLocator [] {
+		     OMLEditPlugin.INSTANCE,
 		   });
 	}
 

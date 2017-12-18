@@ -60,6 +60,7 @@ public interface Module extends Resource {
 	 * @see gov.nasa.jpl.imce.oml.model.common.CommonPackage#getModule_AnnotationProperties()
 	 * @see gov.nasa.jpl.imce.oml.model.common.AnnotationProperty#getModule
 	 * @model opposite="module" containment="true"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
 	 * @generated
 	 */
 	EList<AnnotationProperty> getAnnotationProperties();

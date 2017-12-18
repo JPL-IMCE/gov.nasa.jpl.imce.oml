@@ -214,6 +214,15 @@ public class AnnotationPropertyImpl extends IntrinsicIdentityKindImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Module moduleContext() {
+		return this.getModule();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String uuid() {
 		UUID _namespaceUUID = OMLExtensions.namespaceUUID(this.iri());
 		String _string = null;
@@ -363,6 +372,8 @@ public class AnnotationPropertyImpl extends IntrinsicIdentityKindImpl implements
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
+			case CommonPackage.ANNOTATION_PROPERTY___MODULE_CONTEXT:
+				return moduleContext();
 			case CommonPackage.ANNOTATION_PROPERTY___UUID:
 				return uuid();
 			case CommonPackage.ANNOTATION_PROPERTY___IRI:
