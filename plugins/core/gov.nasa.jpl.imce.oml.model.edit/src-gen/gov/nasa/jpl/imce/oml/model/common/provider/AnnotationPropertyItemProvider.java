@@ -60,7 +60,7 @@ public class AnnotationPropertyItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addExtentPropertyDescriptor(object);
+			addModulePropertyDescriptor(object);
 			addIriPropertyDescriptor(object);
 			addAbbrevIRIPropertyDescriptor(object);
 		}
@@ -68,19 +68,19 @@ public class AnnotationPropertyItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Extent feature.
+	 * This adds a property descriptor for the Module feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addExtentPropertyDescriptor(Object object) {
+	protected void addModulePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_AnnotationProperty_extent_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_AnnotationProperty_extent_feature", "_UI_AnnotationProperty_type"),
-				 CommonPackage.Literals.ANNOTATION_PROPERTY__EXTENT,
+				 getString("_UI_AnnotationProperty_module_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_AnnotationProperty_module_feature", "_UI_AnnotationProperty_type"),
+				 CommonPackage.Literals.ANNOTATION_PROPERTY__MODULE,
 				 true,
 				 false,
 				 true,

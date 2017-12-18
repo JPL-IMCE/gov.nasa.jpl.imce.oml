@@ -106,6 +106,15 @@ public interface TerminologiesPackage extends EPackage {
 	int TERMINOLOGY_BOX__ANNOTATIONS = CommonPackage.MODULE__ANNOTATIONS;
 
 	/**
+	 * The feature id for the '<em><b>Annotation Properties</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TERMINOLOGY_BOX__ANNOTATION_PROPERTIES = CommonPackage.MODULE__ANNOTATION_PROPERTIES;
+
+	/**
 	 * The feature id for the '<em><b>Extent</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -44,36 +44,24 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.Extent");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cExtentAction_0 = (Action)cGroup.eContents().get(0);
-		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
-		private final Assignment cAnnotationPropertiesAssignment_1_0 = (Assignment)cAlternatives_1.eContents().get(0);
-		private final RuleCall cAnnotationPropertiesAnnotationPropertyParserRuleCall_1_0_0 = (RuleCall)cAnnotationPropertiesAssignment_1_0.eContents().get(0);
-		private final Assignment cModulesAssignment_1_1 = (Assignment)cAlternatives_1.eContents().get(1);
-		private final RuleCall cModulesModuleParserRuleCall_1_1_0 = (RuleCall)cModulesAssignment_1_1.eContents().get(0);
+		private final Assignment cModulesAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cModulesModuleParserRuleCall_1_0 = (RuleCall)cModulesAssignment_1.eContents().get(0);
 		
 		//Extent:
-		//	{Extent} (annotationProperties+=AnnotationProperty | modules+=Module)*;
+		//	{Extent} modules+=Module*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Extent} (annotationProperties+=AnnotationProperty | modules+=Module)*
+		//{Extent} modules+=Module*
 		public Group getGroup() { return cGroup; }
 		
 		//{Extent}
 		public Action getExtentAction_0() { return cExtentAction_0; }
 		
-		//(annotationProperties+=AnnotationProperty | modules+=Module)*
-		public Alternatives getAlternatives_1() { return cAlternatives_1; }
-		
-		//annotationProperties+=AnnotationProperty
-		public Assignment getAnnotationPropertiesAssignment_1_0() { return cAnnotationPropertiesAssignment_1_0; }
-		
-		//AnnotationProperty
-		public RuleCall getAnnotationPropertiesAnnotationPropertyParserRuleCall_1_0_0() { return cAnnotationPropertiesAnnotationPropertyParserRuleCall_1_0_0; }
-		
-		//modules+=Module
-		public Assignment getModulesAssignment_1_1() { return cModulesAssignment_1_1; }
+		//modules+=Module*
+		public Assignment getModulesAssignment_1() { return cModulesAssignment_1; }
 		
 		//Module
-		public RuleCall getModulesModuleParserRuleCall_1_1_0() { return cModulesModuleParserRuleCall_1_1_0; }
+		public RuleCall getModulesModuleParserRuleCall_1_0() { return cModulesModuleParserRuleCall_1_0; }
 	}
 	public class AnnotationPropertyElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.AnnotationProperty");
@@ -193,97 +181,109 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	public class TerminologyGraphElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.TerminologyGraph");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cAnnotationsAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cAnnotationsAnnotationPropertyValueParserRuleCall_0_0 = (RuleCall)cAnnotationsAssignment_0.eContents().get(0);
-		private final Assignment cKindAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cKindTerminologyKindEnumRuleCall_1_0 = (RuleCall)cKindAssignment_1.eContents().get(0);
-		private final Keyword cTerminologyKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cIriAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cIriIRITerminalRuleCall_3_0 = (RuleCall)cIriAssignment_3.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Alternatives cAlternatives_5 = (Alternatives)cGroup.eContents().get(5);
-		private final Assignment cBoxAxiomsAssignment_5_0 = (Assignment)cAlternatives_5.eContents().get(0);
-		private final RuleCall cBoxAxiomsTerminologyBoxAxiomParserRuleCall_5_0_0 = (RuleCall)cBoxAxiomsAssignment_5_0.eContents().get(0);
-		private final Assignment cBoxStatementsAssignment_5_1 = (Assignment)cAlternatives_5.eContents().get(1);
-		private final RuleCall cBoxStatementsTerminologyBoxStatementParserRuleCall_5_1_0 = (RuleCall)cBoxStatementsAssignment_5_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cAnnotationPropertiesAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cAnnotationPropertiesAnnotationPropertyParserRuleCall_0_0 = (RuleCall)cAnnotationPropertiesAssignment_0.eContents().get(0);
+		private final Assignment cAnnotationsAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cAnnotationsAnnotationPropertyValueParserRuleCall_1_0 = (RuleCall)cAnnotationsAssignment_1.eContents().get(0);
+		private final Assignment cKindAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cKindTerminologyKindEnumRuleCall_2_0 = (RuleCall)cKindAssignment_2.eContents().get(0);
+		private final Keyword cTerminologyKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cIriAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cIriIRITerminalRuleCall_4_0 = (RuleCall)cIriAssignment_4.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Alternatives cAlternatives_6 = (Alternatives)cGroup.eContents().get(6);
+		private final Assignment cBoxAxiomsAssignment_6_0 = (Assignment)cAlternatives_6.eContents().get(0);
+		private final RuleCall cBoxAxiomsTerminologyBoxAxiomParserRuleCall_6_0_0 = (RuleCall)cBoxAxiomsAssignment_6_0.eContents().get(0);
+		private final Assignment cBoxStatementsAssignment_6_1 = (Assignment)cAlternatives_6.eContents().get(1);
+		private final RuleCall cBoxStatementsTerminologyBoxStatementParserRuleCall_6_1_0 = (RuleCall)cBoxStatementsAssignment_6_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//TerminologyGraph:
+		//	annotationProperties+=AnnotationProperty*
 		//	annotations+=AnnotationPropertyValue*
 		//	kind=TerminologyKind 'terminology' iri=IRI
 		//	'{' (boxAxioms+=TerminologyBoxAxiom | boxStatements+=TerminologyBoxStatement)*
 		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//annotations+=AnnotationPropertyValue* kind=TerminologyKind 'terminology' iri=IRI '{' (boxAxioms+=TerminologyBoxAxiom |
-		//boxStatements+=TerminologyBoxStatement)* '}'
+		//annotationProperties+=AnnotationProperty* annotations+=AnnotationPropertyValue* kind=TerminologyKind 'terminology'
+		//iri=IRI '{' (boxAxioms+=TerminologyBoxAxiom | boxStatements+=TerminologyBoxStatement)* '}'
 		public Group getGroup() { return cGroup; }
 		
+		//annotationProperties+=AnnotationProperty*
+		public Assignment getAnnotationPropertiesAssignment_0() { return cAnnotationPropertiesAssignment_0; }
+		
+		//AnnotationProperty
+		public RuleCall getAnnotationPropertiesAnnotationPropertyParserRuleCall_0_0() { return cAnnotationPropertiesAnnotationPropertyParserRuleCall_0_0; }
+		
 		//annotations+=AnnotationPropertyValue*
-		public Assignment getAnnotationsAssignment_0() { return cAnnotationsAssignment_0; }
+		public Assignment getAnnotationsAssignment_1() { return cAnnotationsAssignment_1; }
 		
 		//AnnotationPropertyValue
-		public RuleCall getAnnotationsAnnotationPropertyValueParserRuleCall_0_0() { return cAnnotationsAnnotationPropertyValueParserRuleCall_0_0; }
+		public RuleCall getAnnotationsAnnotationPropertyValueParserRuleCall_1_0() { return cAnnotationsAnnotationPropertyValueParserRuleCall_1_0; }
 		
 		//kind=TerminologyKind
-		public Assignment getKindAssignment_1() { return cKindAssignment_1; }
+		public Assignment getKindAssignment_2() { return cKindAssignment_2; }
 		
 		//TerminologyKind
-		public RuleCall getKindTerminologyKindEnumRuleCall_1_0() { return cKindTerminologyKindEnumRuleCall_1_0; }
+		public RuleCall getKindTerminologyKindEnumRuleCall_2_0() { return cKindTerminologyKindEnumRuleCall_2_0; }
 		
 		//'terminology'
-		public Keyword getTerminologyKeyword_2() { return cTerminologyKeyword_2; }
+		public Keyword getTerminologyKeyword_3() { return cTerminologyKeyword_3; }
 		
 		//iri=IRI
-		public Assignment getIriAssignment_3() { return cIriAssignment_3; }
+		public Assignment getIriAssignment_4() { return cIriAssignment_4; }
 		
 		//IRI
-		public RuleCall getIriIRITerminalRuleCall_3_0() { return cIriIRITerminalRuleCall_3_0; }
+		public RuleCall getIriIRITerminalRuleCall_4_0() { return cIriIRITerminalRuleCall_4_0; }
 		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_4() { return cLeftCurlyBracketKeyword_4; }
+		public Keyword getLeftCurlyBracketKeyword_5() { return cLeftCurlyBracketKeyword_5; }
 		
 		//(boxAxioms+=TerminologyBoxAxiom | boxStatements+=TerminologyBoxStatement)*
-		public Alternatives getAlternatives_5() { return cAlternatives_5; }
+		public Alternatives getAlternatives_6() { return cAlternatives_6; }
 		
 		//boxAxioms+=TerminologyBoxAxiom
-		public Assignment getBoxAxiomsAssignment_5_0() { return cBoxAxiomsAssignment_5_0; }
+		public Assignment getBoxAxiomsAssignment_6_0() { return cBoxAxiomsAssignment_6_0; }
 		
 		//TerminologyBoxAxiom
-		public RuleCall getBoxAxiomsTerminologyBoxAxiomParserRuleCall_5_0_0() { return cBoxAxiomsTerminologyBoxAxiomParserRuleCall_5_0_0; }
+		public RuleCall getBoxAxiomsTerminologyBoxAxiomParserRuleCall_6_0_0() { return cBoxAxiomsTerminologyBoxAxiomParserRuleCall_6_0_0; }
 		
 		//boxStatements+=TerminologyBoxStatement
-		public Assignment getBoxStatementsAssignment_5_1() { return cBoxStatementsAssignment_5_1; }
+		public Assignment getBoxStatementsAssignment_6_1() { return cBoxStatementsAssignment_6_1; }
 		
 		//TerminologyBoxStatement
-		public RuleCall getBoxStatementsTerminologyBoxStatementParserRuleCall_5_1_0() { return cBoxStatementsTerminologyBoxStatementParserRuleCall_5_1_0; }
+		public RuleCall getBoxStatementsTerminologyBoxStatementParserRuleCall_6_1_0() { return cBoxStatementsTerminologyBoxStatementParserRuleCall_6_1_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
+		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
 	}
 	public class BundleElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.Bundle");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cAnnotationsAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cAnnotationsAnnotationPropertyValueParserRuleCall_0_0 = (RuleCall)cAnnotationsAssignment_0.eContents().get(0);
-		private final Assignment cKindAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cKindTerminologyKindEnumRuleCall_1_0 = (RuleCall)cKindAssignment_1.eContents().get(0);
-		private final Keyword cBundleKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cIriAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cIriIRITerminalRuleCall_3_0 = (RuleCall)cIriAssignment_3.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Alternatives cAlternatives_5 = (Alternatives)cGroup.eContents().get(5);
-		private final Assignment cBoxAxiomsAssignment_5_0 = (Assignment)cAlternatives_5.eContents().get(0);
-		private final RuleCall cBoxAxiomsTerminologyBoxAxiomParserRuleCall_5_0_0 = (RuleCall)cBoxAxiomsAssignment_5_0.eContents().get(0);
-		private final Assignment cBoxStatementsAssignment_5_1 = (Assignment)cAlternatives_5.eContents().get(1);
-		private final RuleCall cBoxStatementsTerminologyBoxStatementParserRuleCall_5_1_0 = (RuleCall)cBoxStatementsAssignment_5_1.eContents().get(0);
-		private final Assignment cBundleStatementsAssignment_5_2 = (Assignment)cAlternatives_5.eContents().get(2);
-		private final RuleCall cBundleStatementsTerminologyBundleStatementParserRuleCall_5_2_0 = (RuleCall)cBundleStatementsAssignment_5_2.eContents().get(0);
-		private final Assignment cBundleAxiomsAssignment_5_3 = (Assignment)cAlternatives_5.eContents().get(3);
-		private final RuleCall cBundleAxiomsTerminologyBundleAxiomParserRuleCall_5_3_0 = (RuleCall)cBundleAxiomsAssignment_5_3.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cAnnotationPropertiesAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cAnnotationPropertiesAnnotationPropertyParserRuleCall_0_0 = (RuleCall)cAnnotationPropertiesAssignment_0.eContents().get(0);
+		private final Assignment cAnnotationsAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cAnnotationsAnnotationPropertyValueParserRuleCall_1_0 = (RuleCall)cAnnotationsAssignment_1.eContents().get(0);
+		private final Assignment cKindAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cKindTerminologyKindEnumRuleCall_2_0 = (RuleCall)cKindAssignment_2.eContents().get(0);
+		private final Keyword cBundleKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cIriAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cIriIRITerminalRuleCall_4_0 = (RuleCall)cIriAssignment_4.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Alternatives cAlternatives_6 = (Alternatives)cGroup.eContents().get(6);
+		private final Assignment cBoxAxiomsAssignment_6_0 = (Assignment)cAlternatives_6.eContents().get(0);
+		private final RuleCall cBoxAxiomsTerminologyBoxAxiomParserRuleCall_6_0_0 = (RuleCall)cBoxAxiomsAssignment_6_0.eContents().get(0);
+		private final Assignment cBoxStatementsAssignment_6_1 = (Assignment)cAlternatives_6.eContents().get(1);
+		private final RuleCall cBoxStatementsTerminologyBoxStatementParserRuleCall_6_1_0 = (RuleCall)cBoxStatementsAssignment_6_1.eContents().get(0);
+		private final Assignment cBundleStatementsAssignment_6_2 = (Assignment)cAlternatives_6.eContents().get(2);
+		private final RuleCall cBundleStatementsTerminologyBundleStatementParserRuleCall_6_2_0 = (RuleCall)cBundleStatementsAssignment_6_2.eContents().get(0);
+		private final Assignment cBundleAxiomsAssignment_6_3 = (Assignment)cAlternatives_6.eContents().get(3);
+		private final RuleCall cBundleAxiomsTerminologyBundleAxiomParserRuleCall_6_3_0 = (RuleCall)cBundleAxiomsAssignment_6_3.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//Bundle:
+		//	annotationProperties+=AnnotationProperty*
 		//	annotations+=AnnotationPropertyValue*
 		//	kind=TerminologyKind 'bundle' iri=IRI
 		//	'{' (boxAxioms+=TerminologyBoxAxiom | boxStatements+=TerminologyBoxStatement |
@@ -291,99 +291,108 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//annotations+=AnnotationPropertyValue* kind=TerminologyKind 'bundle' iri=IRI '{' (boxAxioms+=TerminologyBoxAxiom |
-		//boxStatements+=TerminologyBoxStatement | bundleStatements+=TerminologyBundleStatement |
-		//bundleAxioms+=TerminologyBundleAxiom)* '}'
+		//annotationProperties+=AnnotationProperty* annotations+=AnnotationPropertyValue* kind=TerminologyKind 'bundle' iri=IRI
+		//'{' (boxAxioms+=TerminologyBoxAxiom | boxStatements+=TerminologyBoxStatement |
+		//bundleStatements+=TerminologyBundleStatement | bundleAxioms+=TerminologyBundleAxiom)* '}'
 		public Group getGroup() { return cGroup; }
 		
+		//annotationProperties+=AnnotationProperty*
+		public Assignment getAnnotationPropertiesAssignment_0() { return cAnnotationPropertiesAssignment_0; }
+		
+		//AnnotationProperty
+		public RuleCall getAnnotationPropertiesAnnotationPropertyParserRuleCall_0_0() { return cAnnotationPropertiesAnnotationPropertyParserRuleCall_0_0; }
+		
 		//annotations+=AnnotationPropertyValue*
-		public Assignment getAnnotationsAssignment_0() { return cAnnotationsAssignment_0; }
+		public Assignment getAnnotationsAssignment_1() { return cAnnotationsAssignment_1; }
 		
 		//AnnotationPropertyValue
-		public RuleCall getAnnotationsAnnotationPropertyValueParserRuleCall_0_0() { return cAnnotationsAnnotationPropertyValueParserRuleCall_0_0; }
+		public RuleCall getAnnotationsAnnotationPropertyValueParserRuleCall_1_0() { return cAnnotationsAnnotationPropertyValueParserRuleCall_1_0; }
 		
 		//kind=TerminologyKind
-		public Assignment getKindAssignment_1() { return cKindAssignment_1; }
+		public Assignment getKindAssignment_2() { return cKindAssignment_2; }
 		
 		//TerminologyKind
-		public RuleCall getKindTerminologyKindEnumRuleCall_1_0() { return cKindTerminologyKindEnumRuleCall_1_0; }
+		public RuleCall getKindTerminologyKindEnumRuleCall_2_0() { return cKindTerminologyKindEnumRuleCall_2_0; }
 		
 		//'bundle'
-		public Keyword getBundleKeyword_2() { return cBundleKeyword_2; }
+		public Keyword getBundleKeyword_3() { return cBundleKeyword_3; }
 		
 		//iri=IRI
-		public Assignment getIriAssignment_3() { return cIriAssignment_3; }
+		public Assignment getIriAssignment_4() { return cIriAssignment_4; }
 		
 		//IRI
-		public RuleCall getIriIRITerminalRuleCall_3_0() { return cIriIRITerminalRuleCall_3_0; }
+		public RuleCall getIriIRITerminalRuleCall_4_0() { return cIriIRITerminalRuleCall_4_0; }
 		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_4() { return cLeftCurlyBracketKeyword_4; }
+		public Keyword getLeftCurlyBracketKeyword_5() { return cLeftCurlyBracketKeyword_5; }
 		
 		//(boxAxioms+=TerminologyBoxAxiom | boxStatements+=TerminologyBoxStatement | bundleStatements+=TerminologyBundleStatement
 		//| bundleAxioms+=TerminologyBundleAxiom)*
-		public Alternatives getAlternatives_5() { return cAlternatives_5; }
+		public Alternatives getAlternatives_6() { return cAlternatives_6; }
 		
 		//boxAxioms+=TerminologyBoxAxiom
-		public Assignment getBoxAxiomsAssignment_5_0() { return cBoxAxiomsAssignment_5_0; }
+		public Assignment getBoxAxiomsAssignment_6_0() { return cBoxAxiomsAssignment_6_0; }
 		
 		//TerminologyBoxAxiom
-		public RuleCall getBoxAxiomsTerminologyBoxAxiomParserRuleCall_5_0_0() { return cBoxAxiomsTerminologyBoxAxiomParserRuleCall_5_0_0; }
+		public RuleCall getBoxAxiomsTerminologyBoxAxiomParserRuleCall_6_0_0() { return cBoxAxiomsTerminologyBoxAxiomParserRuleCall_6_0_0; }
 		
 		//boxStatements+=TerminologyBoxStatement
-		public Assignment getBoxStatementsAssignment_5_1() { return cBoxStatementsAssignment_5_1; }
+		public Assignment getBoxStatementsAssignment_6_1() { return cBoxStatementsAssignment_6_1; }
 		
 		//TerminologyBoxStatement
-		public RuleCall getBoxStatementsTerminologyBoxStatementParserRuleCall_5_1_0() { return cBoxStatementsTerminologyBoxStatementParserRuleCall_5_1_0; }
+		public RuleCall getBoxStatementsTerminologyBoxStatementParserRuleCall_6_1_0() { return cBoxStatementsTerminologyBoxStatementParserRuleCall_6_1_0; }
 		
 		//bundleStatements+=TerminologyBundleStatement
-		public Assignment getBundleStatementsAssignment_5_2() { return cBundleStatementsAssignment_5_2; }
+		public Assignment getBundleStatementsAssignment_6_2() { return cBundleStatementsAssignment_6_2; }
 		
 		//TerminologyBundleStatement
-		public RuleCall getBundleStatementsTerminologyBundleStatementParserRuleCall_5_2_0() { return cBundleStatementsTerminologyBundleStatementParserRuleCall_5_2_0; }
+		public RuleCall getBundleStatementsTerminologyBundleStatementParserRuleCall_6_2_0() { return cBundleStatementsTerminologyBundleStatementParserRuleCall_6_2_0; }
 		
 		//bundleAxioms+=TerminologyBundleAxiom
-		public Assignment getBundleAxiomsAssignment_5_3() { return cBundleAxiomsAssignment_5_3; }
+		public Assignment getBundleAxiomsAssignment_6_3() { return cBundleAxiomsAssignment_6_3; }
 		
 		//TerminologyBundleAxiom
-		public RuleCall getBundleAxiomsTerminologyBundleAxiomParserRuleCall_5_3_0() { return cBundleAxiomsTerminologyBundleAxiomParserRuleCall_5_3_0; }
+		public RuleCall getBundleAxiomsTerminologyBundleAxiomParserRuleCall_6_3_0() { return cBundleAxiomsTerminologyBundleAxiomParserRuleCall_6_3_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
+		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
 	}
 	public class DescriptionBoxElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.DescriptionBox");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cAnnotationsAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cAnnotationsAnnotationPropertyValueParserRuleCall_0_0 = (RuleCall)cAnnotationsAssignment_0.eContents().get(0);
-		private final Assignment cKindAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cKindDescriptionKindEnumRuleCall_1_0 = (RuleCall)cKindAssignment_1.eContents().get(0);
-		private final Keyword cDescriptionBoxKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cIriAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cIriIRITerminalRuleCall_3_0 = (RuleCall)cIriAssignment_3.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Alternatives cAlternatives_5 = (Alternatives)cGroup.eContents().get(5);
-		private final Assignment cClosedWorldDefinitionsAssignment_5_0 = (Assignment)cAlternatives_5.eContents().get(0);
-		private final RuleCall cClosedWorldDefinitionsDescriptionBoxExtendsClosedWorldDefinitionsParserRuleCall_5_0_0 = (RuleCall)cClosedWorldDefinitionsAssignment_5_0.eContents().get(0);
-		private final Assignment cDescriptionBoxRefinementsAssignment_5_1 = (Assignment)cAlternatives_5.eContents().get(1);
-		private final RuleCall cDescriptionBoxRefinementsDescriptionBoxRefinementParserRuleCall_5_1_0 = (RuleCall)cDescriptionBoxRefinementsAssignment_5_1.eContents().get(0);
-		private final Assignment cConceptInstancesAssignment_5_2 = (Assignment)cAlternatives_5.eContents().get(2);
-		private final RuleCall cConceptInstancesConceptInstanceParserRuleCall_5_2_0 = (RuleCall)cConceptInstancesAssignment_5_2.eContents().get(0);
-		private final Assignment cReifiedRelationshipInstancesAssignment_5_3 = (Assignment)cAlternatives_5.eContents().get(3);
-		private final RuleCall cReifiedRelationshipInstancesReifiedRelationshipInstanceParserRuleCall_5_3_0 = (RuleCall)cReifiedRelationshipInstancesAssignment_5_3.eContents().get(0);
-		private final Assignment cReifiedRelationshipInstanceDomainsAssignment_5_4 = (Assignment)cAlternatives_5.eContents().get(4);
-		private final RuleCall cReifiedRelationshipInstanceDomainsReifiedRelationshipInstanceDomainParserRuleCall_5_4_0 = (RuleCall)cReifiedRelationshipInstanceDomainsAssignment_5_4.eContents().get(0);
-		private final Assignment cReifiedRelationshipInstanceRangesAssignment_5_5 = (Assignment)cAlternatives_5.eContents().get(5);
-		private final RuleCall cReifiedRelationshipInstanceRangesReifiedRelationshipInstanceRangeParserRuleCall_5_5_0 = (RuleCall)cReifiedRelationshipInstanceRangesAssignment_5_5.eContents().get(0);
-		private final Assignment cUnreifiedRelationshipInstanceTuplesAssignment_5_6 = (Assignment)cAlternatives_5.eContents().get(6);
-		private final RuleCall cUnreifiedRelationshipInstanceTuplesUnreifiedRelationshipInstanceTupleParserRuleCall_5_6_0 = (RuleCall)cUnreifiedRelationshipInstanceTuplesAssignment_5_6.eContents().get(0);
-		private final Assignment cSingletonScalarDataPropertyValuesAssignment_5_7 = (Assignment)cAlternatives_5.eContents().get(7);
-		private final RuleCall cSingletonScalarDataPropertyValuesSingletonInstanceScalarDataPropertyValueParserRuleCall_5_7_0 = (RuleCall)cSingletonScalarDataPropertyValuesAssignment_5_7.eContents().get(0);
-		private final Assignment cSingletonStructuredDataPropertyValuesAssignment_5_8 = (Assignment)cAlternatives_5.eContents().get(8);
-		private final RuleCall cSingletonStructuredDataPropertyValuesSingletonInstanceStructuredDataPropertyValueParserRuleCall_5_8_0 = (RuleCall)cSingletonStructuredDataPropertyValuesAssignment_5_8.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cAnnotationPropertiesAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cAnnotationPropertiesAnnotationPropertyParserRuleCall_0_0 = (RuleCall)cAnnotationPropertiesAssignment_0.eContents().get(0);
+		private final Assignment cAnnotationsAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cAnnotationsAnnotationPropertyValueParserRuleCall_1_0 = (RuleCall)cAnnotationsAssignment_1.eContents().get(0);
+		private final Assignment cKindAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cKindDescriptionKindEnumRuleCall_2_0 = (RuleCall)cKindAssignment_2.eContents().get(0);
+		private final Keyword cDescriptionBoxKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cIriAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cIriIRITerminalRuleCall_4_0 = (RuleCall)cIriAssignment_4.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Alternatives cAlternatives_6 = (Alternatives)cGroup.eContents().get(6);
+		private final Assignment cClosedWorldDefinitionsAssignment_6_0 = (Assignment)cAlternatives_6.eContents().get(0);
+		private final RuleCall cClosedWorldDefinitionsDescriptionBoxExtendsClosedWorldDefinitionsParserRuleCall_6_0_0 = (RuleCall)cClosedWorldDefinitionsAssignment_6_0.eContents().get(0);
+		private final Assignment cDescriptionBoxRefinementsAssignment_6_1 = (Assignment)cAlternatives_6.eContents().get(1);
+		private final RuleCall cDescriptionBoxRefinementsDescriptionBoxRefinementParserRuleCall_6_1_0 = (RuleCall)cDescriptionBoxRefinementsAssignment_6_1.eContents().get(0);
+		private final Assignment cConceptInstancesAssignment_6_2 = (Assignment)cAlternatives_6.eContents().get(2);
+		private final RuleCall cConceptInstancesConceptInstanceParserRuleCall_6_2_0 = (RuleCall)cConceptInstancesAssignment_6_2.eContents().get(0);
+		private final Assignment cReifiedRelationshipInstancesAssignment_6_3 = (Assignment)cAlternatives_6.eContents().get(3);
+		private final RuleCall cReifiedRelationshipInstancesReifiedRelationshipInstanceParserRuleCall_6_3_0 = (RuleCall)cReifiedRelationshipInstancesAssignment_6_3.eContents().get(0);
+		private final Assignment cReifiedRelationshipInstanceDomainsAssignment_6_4 = (Assignment)cAlternatives_6.eContents().get(4);
+		private final RuleCall cReifiedRelationshipInstanceDomainsReifiedRelationshipInstanceDomainParserRuleCall_6_4_0 = (RuleCall)cReifiedRelationshipInstanceDomainsAssignment_6_4.eContents().get(0);
+		private final Assignment cReifiedRelationshipInstanceRangesAssignment_6_5 = (Assignment)cAlternatives_6.eContents().get(5);
+		private final RuleCall cReifiedRelationshipInstanceRangesReifiedRelationshipInstanceRangeParserRuleCall_6_5_0 = (RuleCall)cReifiedRelationshipInstanceRangesAssignment_6_5.eContents().get(0);
+		private final Assignment cUnreifiedRelationshipInstanceTuplesAssignment_6_6 = (Assignment)cAlternatives_6.eContents().get(6);
+		private final RuleCall cUnreifiedRelationshipInstanceTuplesUnreifiedRelationshipInstanceTupleParserRuleCall_6_6_0 = (RuleCall)cUnreifiedRelationshipInstanceTuplesAssignment_6_6.eContents().get(0);
+		private final Assignment cSingletonScalarDataPropertyValuesAssignment_6_7 = (Assignment)cAlternatives_6.eContents().get(7);
+		private final RuleCall cSingletonScalarDataPropertyValuesSingletonInstanceScalarDataPropertyValueParserRuleCall_6_7_0 = (RuleCall)cSingletonScalarDataPropertyValuesAssignment_6_7.eContents().get(0);
+		private final Assignment cSingletonStructuredDataPropertyValuesAssignment_6_8 = (Assignment)cAlternatives_6.eContents().get(8);
+		private final RuleCall cSingletonStructuredDataPropertyValuesSingletonInstanceStructuredDataPropertyValueParserRuleCall_6_8_0 = (RuleCall)cSingletonStructuredDataPropertyValuesAssignment_6_8.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//DescriptionBox:
+		//	annotationProperties+=AnnotationProperty*
 		//	annotations+=AnnotationPropertyValue*
 		//	kind=DescriptionKind 'descriptionBox' iri=IRI
 		//	'{' (closedWorldDefinitions+=DescriptionBoxExtendsClosedWorldDefinitions |
@@ -397,8 +406,8 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//annotations+=AnnotationPropertyValue* kind=DescriptionKind 'descriptionBox' iri=IRI '{'
-		//(closedWorldDefinitions+=DescriptionBoxExtendsClosedWorldDefinitions |
+		//annotationProperties+=AnnotationProperty* annotations+=AnnotationPropertyValue* kind=DescriptionKind 'descriptionBox'
+		//iri=IRI '{' (closedWorldDefinitions+=DescriptionBoxExtendsClosedWorldDefinitions |
 		//descriptionBoxRefinements+=DescriptionBoxRefinement | conceptInstances+=ConceptInstance |
 		//reifiedRelationshipInstances+=ReifiedRelationshipInstance |
 		//reifiedRelationshipInstanceDomains+=ReifiedRelationshipInstanceDomain |
@@ -408,29 +417,35 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//singletonStructuredDataPropertyValues+=SingletonInstanceStructuredDataPropertyValue)* '}'
 		public Group getGroup() { return cGroup; }
 		
+		//annotationProperties+=AnnotationProperty*
+		public Assignment getAnnotationPropertiesAssignment_0() { return cAnnotationPropertiesAssignment_0; }
+		
+		//AnnotationProperty
+		public RuleCall getAnnotationPropertiesAnnotationPropertyParserRuleCall_0_0() { return cAnnotationPropertiesAnnotationPropertyParserRuleCall_0_0; }
+		
 		//annotations+=AnnotationPropertyValue*
-		public Assignment getAnnotationsAssignment_0() { return cAnnotationsAssignment_0; }
+		public Assignment getAnnotationsAssignment_1() { return cAnnotationsAssignment_1; }
 		
 		//AnnotationPropertyValue
-		public RuleCall getAnnotationsAnnotationPropertyValueParserRuleCall_0_0() { return cAnnotationsAnnotationPropertyValueParserRuleCall_0_0; }
+		public RuleCall getAnnotationsAnnotationPropertyValueParserRuleCall_1_0() { return cAnnotationsAnnotationPropertyValueParserRuleCall_1_0; }
 		
 		//kind=DescriptionKind
-		public Assignment getKindAssignment_1() { return cKindAssignment_1; }
+		public Assignment getKindAssignment_2() { return cKindAssignment_2; }
 		
 		//DescriptionKind
-		public RuleCall getKindDescriptionKindEnumRuleCall_1_0() { return cKindDescriptionKindEnumRuleCall_1_0; }
+		public RuleCall getKindDescriptionKindEnumRuleCall_2_0() { return cKindDescriptionKindEnumRuleCall_2_0; }
 		
 		//'descriptionBox'
-		public Keyword getDescriptionBoxKeyword_2() { return cDescriptionBoxKeyword_2; }
+		public Keyword getDescriptionBoxKeyword_3() { return cDescriptionBoxKeyword_3; }
 		
 		//iri=IRI
-		public Assignment getIriAssignment_3() { return cIriAssignment_3; }
+		public Assignment getIriAssignment_4() { return cIriAssignment_4; }
 		
 		//IRI
-		public RuleCall getIriIRITerminalRuleCall_3_0() { return cIriIRITerminalRuleCall_3_0; }
+		public RuleCall getIriIRITerminalRuleCall_4_0() { return cIriIRITerminalRuleCall_4_0; }
 		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_4() { return cLeftCurlyBracketKeyword_4; }
+		public Keyword getLeftCurlyBracketKeyword_5() { return cLeftCurlyBracketKeyword_5; }
 		
 		//(closedWorldDefinitions+=DescriptionBoxExtendsClosedWorldDefinitions |
 		//descriptionBoxRefinements+=DescriptionBoxRefinement | conceptInstances+=ConceptInstance |
@@ -440,64 +455,64 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//unreifiedRelationshipInstanceTuples+=UnreifiedRelationshipInstanceTuple |
 		//singletonScalarDataPropertyValues+=SingletonInstanceScalarDataPropertyValue |
 		//singletonStructuredDataPropertyValues+=SingletonInstanceStructuredDataPropertyValue)*
-		public Alternatives getAlternatives_5() { return cAlternatives_5; }
+		public Alternatives getAlternatives_6() { return cAlternatives_6; }
 		
 		//closedWorldDefinitions+=DescriptionBoxExtendsClosedWorldDefinitions
-		public Assignment getClosedWorldDefinitionsAssignment_5_0() { return cClosedWorldDefinitionsAssignment_5_0; }
+		public Assignment getClosedWorldDefinitionsAssignment_6_0() { return cClosedWorldDefinitionsAssignment_6_0; }
 		
 		//DescriptionBoxExtendsClosedWorldDefinitions
-		public RuleCall getClosedWorldDefinitionsDescriptionBoxExtendsClosedWorldDefinitionsParserRuleCall_5_0_0() { return cClosedWorldDefinitionsDescriptionBoxExtendsClosedWorldDefinitionsParserRuleCall_5_0_0; }
+		public RuleCall getClosedWorldDefinitionsDescriptionBoxExtendsClosedWorldDefinitionsParserRuleCall_6_0_0() { return cClosedWorldDefinitionsDescriptionBoxExtendsClosedWorldDefinitionsParserRuleCall_6_0_0; }
 		
 		//descriptionBoxRefinements+=DescriptionBoxRefinement
-		public Assignment getDescriptionBoxRefinementsAssignment_5_1() { return cDescriptionBoxRefinementsAssignment_5_1; }
+		public Assignment getDescriptionBoxRefinementsAssignment_6_1() { return cDescriptionBoxRefinementsAssignment_6_1; }
 		
 		//DescriptionBoxRefinement
-		public RuleCall getDescriptionBoxRefinementsDescriptionBoxRefinementParserRuleCall_5_1_0() { return cDescriptionBoxRefinementsDescriptionBoxRefinementParserRuleCall_5_1_0; }
+		public RuleCall getDescriptionBoxRefinementsDescriptionBoxRefinementParserRuleCall_6_1_0() { return cDescriptionBoxRefinementsDescriptionBoxRefinementParserRuleCall_6_1_0; }
 		
 		//conceptInstances+=ConceptInstance
-		public Assignment getConceptInstancesAssignment_5_2() { return cConceptInstancesAssignment_5_2; }
+		public Assignment getConceptInstancesAssignment_6_2() { return cConceptInstancesAssignment_6_2; }
 		
 		//ConceptInstance
-		public RuleCall getConceptInstancesConceptInstanceParserRuleCall_5_2_0() { return cConceptInstancesConceptInstanceParserRuleCall_5_2_0; }
+		public RuleCall getConceptInstancesConceptInstanceParserRuleCall_6_2_0() { return cConceptInstancesConceptInstanceParserRuleCall_6_2_0; }
 		
 		//reifiedRelationshipInstances+=ReifiedRelationshipInstance
-		public Assignment getReifiedRelationshipInstancesAssignment_5_3() { return cReifiedRelationshipInstancesAssignment_5_3; }
+		public Assignment getReifiedRelationshipInstancesAssignment_6_3() { return cReifiedRelationshipInstancesAssignment_6_3; }
 		
 		//ReifiedRelationshipInstance
-		public RuleCall getReifiedRelationshipInstancesReifiedRelationshipInstanceParserRuleCall_5_3_0() { return cReifiedRelationshipInstancesReifiedRelationshipInstanceParserRuleCall_5_3_0; }
+		public RuleCall getReifiedRelationshipInstancesReifiedRelationshipInstanceParserRuleCall_6_3_0() { return cReifiedRelationshipInstancesReifiedRelationshipInstanceParserRuleCall_6_3_0; }
 		
 		//reifiedRelationshipInstanceDomains+=ReifiedRelationshipInstanceDomain
-		public Assignment getReifiedRelationshipInstanceDomainsAssignment_5_4() { return cReifiedRelationshipInstanceDomainsAssignment_5_4; }
+		public Assignment getReifiedRelationshipInstanceDomainsAssignment_6_4() { return cReifiedRelationshipInstanceDomainsAssignment_6_4; }
 		
 		//ReifiedRelationshipInstanceDomain
-		public RuleCall getReifiedRelationshipInstanceDomainsReifiedRelationshipInstanceDomainParserRuleCall_5_4_0() { return cReifiedRelationshipInstanceDomainsReifiedRelationshipInstanceDomainParserRuleCall_5_4_0; }
+		public RuleCall getReifiedRelationshipInstanceDomainsReifiedRelationshipInstanceDomainParserRuleCall_6_4_0() { return cReifiedRelationshipInstanceDomainsReifiedRelationshipInstanceDomainParserRuleCall_6_4_0; }
 		
 		//reifiedRelationshipInstanceRanges+=ReifiedRelationshipInstanceRange
-		public Assignment getReifiedRelationshipInstanceRangesAssignment_5_5() { return cReifiedRelationshipInstanceRangesAssignment_5_5; }
+		public Assignment getReifiedRelationshipInstanceRangesAssignment_6_5() { return cReifiedRelationshipInstanceRangesAssignment_6_5; }
 		
 		//ReifiedRelationshipInstanceRange
-		public RuleCall getReifiedRelationshipInstanceRangesReifiedRelationshipInstanceRangeParserRuleCall_5_5_0() { return cReifiedRelationshipInstanceRangesReifiedRelationshipInstanceRangeParserRuleCall_5_5_0; }
+		public RuleCall getReifiedRelationshipInstanceRangesReifiedRelationshipInstanceRangeParserRuleCall_6_5_0() { return cReifiedRelationshipInstanceRangesReifiedRelationshipInstanceRangeParserRuleCall_6_5_0; }
 		
 		//unreifiedRelationshipInstanceTuples+=UnreifiedRelationshipInstanceTuple
-		public Assignment getUnreifiedRelationshipInstanceTuplesAssignment_5_6() { return cUnreifiedRelationshipInstanceTuplesAssignment_5_6; }
+		public Assignment getUnreifiedRelationshipInstanceTuplesAssignment_6_6() { return cUnreifiedRelationshipInstanceTuplesAssignment_6_6; }
 		
 		//UnreifiedRelationshipInstanceTuple
-		public RuleCall getUnreifiedRelationshipInstanceTuplesUnreifiedRelationshipInstanceTupleParserRuleCall_5_6_0() { return cUnreifiedRelationshipInstanceTuplesUnreifiedRelationshipInstanceTupleParserRuleCall_5_6_0; }
+		public RuleCall getUnreifiedRelationshipInstanceTuplesUnreifiedRelationshipInstanceTupleParserRuleCall_6_6_0() { return cUnreifiedRelationshipInstanceTuplesUnreifiedRelationshipInstanceTupleParserRuleCall_6_6_0; }
 		
 		//singletonScalarDataPropertyValues+=SingletonInstanceScalarDataPropertyValue
-		public Assignment getSingletonScalarDataPropertyValuesAssignment_5_7() { return cSingletonScalarDataPropertyValuesAssignment_5_7; }
+		public Assignment getSingletonScalarDataPropertyValuesAssignment_6_7() { return cSingletonScalarDataPropertyValuesAssignment_6_7; }
 		
 		//SingletonInstanceScalarDataPropertyValue
-		public RuleCall getSingletonScalarDataPropertyValuesSingletonInstanceScalarDataPropertyValueParserRuleCall_5_7_0() { return cSingletonScalarDataPropertyValuesSingletonInstanceScalarDataPropertyValueParserRuleCall_5_7_0; }
+		public RuleCall getSingletonScalarDataPropertyValuesSingletonInstanceScalarDataPropertyValueParserRuleCall_6_7_0() { return cSingletonScalarDataPropertyValuesSingletonInstanceScalarDataPropertyValueParserRuleCall_6_7_0; }
 		
 		//singletonStructuredDataPropertyValues+=SingletonInstanceStructuredDataPropertyValue
-		public Assignment getSingletonStructuredDataPropertyValuesAssignment_5_8() { return cSingletonStructuredDataPropertyValuesAssignment_5_8; }
+		public Assignment getSingletonStructuredDataPropertyValuesAssignment_6_8() { return cSingletonStructuredDataPropertyValuesAssignment_6_8; }
 		
 		//SingletonInstanceStructuredDataPropertyValue
-		public RuleCall getSingletonStructuredDataPropertyValuesSingletonInstanceStructuredDataPropertyValueParserRuleCall_5_8_0() { return cSingletonStructuredDataPropertyValuesSingletonInstanceStructuredDataPropertyValueParserRuleCall_5_8_0; }
+		public RuleCall getSingletonStructuredDataPropertyValuesSingletonInstanceStructuredDataPropertyValueParserRuleCall_6_8_0() { return cSingletonStructuredDataPropertyValuesSingletonInstanceStructuredDataPropertyValueParserRuleCall_6_8_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
+		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
 	}
 	public class TerminologyBoxAxiomElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.TerminologyBoxAxiom");
@@ -6080,7 +6095,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//Extent:
-	//	{Extent} (annotationProperties+=AnnotationProperty | modules+=Module)*;
+	//	{Extent} modules+=Module*;
 	public ExtentElements getExtentAccess() {
 		return pExtent;
 	}
@@ -6133,6 +6148,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//TerminologyGraph:
+	//	annotationProperties+=AnnotationProperty*
 	//	annotations+=AnnotationPropertyValue*
 	//	kind=TerminologyKind 'terminology' iri=IRI
 	//	'{' (boxAxioms+=TerminologyBoxAxiom | boxStatements+=TerminologyBoxStatement)*
@@ -6146,6 +6162,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Bundle:
+	//	annotationProperties+=AnnotationProperty*
 	//	annotations+=AnnotationPropertyValue*
 	//	kind=TerminologyKind 'bundle' iri=IRI
 	//	'{' (boxAxioms+=TerminologyBoxAxiom | boxStatements+=TerminologyBoxStatement |
@@ -6160,6 +6177,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//DescriptionBox:
+	//	annotationProperties+=AnnotationProperty*
 	//	annotations+=AnnotationPropertyValue*
 	//	kind=DescriptionKind 'descriptionBox' iri=IRI
 	//	'{' (closedWorldDefinitions+=DescriptionBoxExtendsClosedWorldDefinitions |

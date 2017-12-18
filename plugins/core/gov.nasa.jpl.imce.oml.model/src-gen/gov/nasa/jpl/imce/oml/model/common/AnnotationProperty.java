@@ -35,7 +35,7 @@ package gov.nasa.jpl.imce.oml.model.common;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link gov.nasa.jpl.imce.oml.model.common.AnnotationProperty#getExtent <em>Extent</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.common.AnnotationProperty#getModule <em>Module</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.common.AnnotationProperty#getIri <em>Iri</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.common.AnnotationProperty#getAbbrevIRI <em>Abbrev IRI</em>}</li>
  * </ul>
@@ -46,32 +46,32 @@ package gov.nasa.jpl.imce.oml.model.common;
  */
 public interface AnnotationProperty extends IntrinsicIdentityKind, NonLogicalElement {
 	/**
-	 * Returns the value of the '<em><b>Extent</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link gov.nasa.jpl.imce.oml.model.common.Extent#getAnnotationProperties <em>Annotation Properties</em>}'.
+	 * Returns the value of the '<em><b>Module</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link gov.nasa.jpl.imce.oml.model.common.Module#getAnnotationProperties <em>Annotation Properties</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Extent</em>' container reference isn't clear,
+	 * If the meaning of the '<em>Module</em>' container reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Extent</em>' container reference.
-	 * @see #setExtent(Extent)
-	 * @see gov.nasa.jpl.imce.oml.model.common.CommonPackage#getAnnotationProperty_Extent()
-	 * @see gov.nasa.jpl.imce.oml.model.common.Extent#getAnnotationProperties
+	 * @return the value of the '<em>Module</em>' container reference.
+	 * @see #setModule(Module)
+	 * @see gov.nasa.jpl.imce.oml.model.common.CommonPackage#getAnnotationProperty_Module()
+	 * @see gov.nasa.jpl.imce.oml.model.common.Module#getAnnotationProperties
 	 * @model opposite="annotationProperties" required="true" transient="false"
 	 * @generated
 	 */
-	Extent getExtent();
+	Module getModule();
 
 	/**
-	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.common.AnnotationProperty#getExtent <em>Extent</em>}' container reference.
+	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.common.AnnotationProperty#getModule <em>Module</em>}' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Extent</em>' container reference.
-	 * @see #getExtent()
+	 * @param value the new value of the '<em>Module</em>' container reference.
+	 * @see #getModule()
 	 * @generated
 	 */
-	void setExtent(Extent value);
+	void setModule(Module value);
 
 	/**
 	 * Returns the value of the '<em><b>Iri</b></em>' attribute.

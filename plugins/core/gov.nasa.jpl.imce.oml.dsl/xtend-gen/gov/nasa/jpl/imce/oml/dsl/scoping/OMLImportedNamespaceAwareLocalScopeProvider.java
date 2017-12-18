@@ -31,7 +31,6 @@ import gov.nasa.jpl.imce.oml.model.bundles.TerminologyBundleAxiom;
 import gov.nasa.jpl.imce.oml.model.common.AnnotationProperty;
 import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue;
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
-import gov.nasa.jpl.imce.oml.model.common.Extent;
 import gov.nasa.jpl.imce.oml.model.common.Module;
 import gov.nasa.jpl.imce.oml.model.common.ModuleEdge;
 import gov.nasa.jpl.imce.oml.model.descriptions.ConceptInstance;
@@ -108,94 +107,82 @@ public class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespa
   public List<ImportNormalizer> getImportedNamespaceResolvers(final EObject context, final boolean ignoreCase) {
     final ArrayList<ImportNormalizer> res = new ArrayList<ImportNormalizer>();
     boolean _matched = false;
-    if (context instanceof Extent) {
+    if (context instanceof Bundle) {
       _matched=true;
-      EList<AnnotationProperty> _annotationProperties = ((Extent)context).getAnnotationProperties();
+      EList<AnnotationProperty> _annotationProperties = ((Bundle)context).getAnnotationProperties();
       for (final AnnotationProperty ap : _annotationProperties) {
         QualifiedName _qualifiedName = this.qnc.toQualifiedName(ap.iri());
         String _abbrevIRI = ap.getAbbrevIRI();
         OMLImportNormalizer _oMLImportNormalizer = new OMLImportNormalizer(_qualifiedName, _abbrevIRI);
         res.add(_oMLImportNormalizer);
       }
-    }
-    if (!_matched) {
-      if (context instanceof Bundle) {
-        _matched=true;
-        EList<AnnotationProperty> _annotationProperties = ((Bundle)context).getExtent().getAnnotationProperties();
-        for (final AnnotationProperty ap : _annotationProperties) {
-          QualifiedName _qualifiedName = this.qnc.toQualifiedName(ap.iri());
-          String _abbrevIRI = ap.getAbbrevIRI();
-          OMLImportNormalizer _oMLImportNormalizer = new OMLImportNormalizer(_qualifiedName, _abbrevIRI);
-          res.add(_oMLImportNormalizer);
+      EList<TerminologyBoxAxiom> _boxAxioms = ((Bundle)context).getBoxAxioms();
+      for (final TerminologyBoxAxiom e : _boxAxioms) {
+        String _elvis = null;
+        TerminologyBox _target = null;
+        if (e!=null) {
+          _target=e.target();
         }
-        EList<TerminologyBoxAxiom> _boxAxioms = ((Bundle)context).getBoxAxioms();
-        for (final TerminologyBoxAxiom e : _boxAxioms) {
-          String _elvis = null;
-          TerminologyBox _target = null;
-          if (e!=null) {
-            _target=e.target();
-          }
-          String _iri = null;
-          if (_target!=null) {
-            _iri=_target.iri();
-          }
-          if (_iri != null) {
-            _elvis = _iri;
-          } else {
-            _elvis = "";
-          }
-          QualifiedName _qualifiedName_1 = this.qnc.toQualifiedName(_elvis);
-          String _elvis_1 = null;
-          TerminologyBox _target_1 = e.target();
-          String _name = null;
-          if (_target_1!=null) {
-            _name=_target_1.name();
-          }
-          if (_name != null) {
-            _elvis_1 = _name;
-          } else {
-            _elvis_1 = "";
-          }
-          OMLImportNormalizer _oMLImportNormalizer_1 = new OMLImportNormalizer(_qualifiedName_1, _elvis_1);
-          res.add(_oMLImportNormalizer_1);
+        String _iri = null;
+        if (_target!=null) {
+          _iri=_target.iri();
         }
-        EList<TerminologyBundleAxiom> _bundleAxioms = ((Bundle)context).getBundleAxioms();
-        for (final TerminologyBundleAxiom e_1 : _bundleAxioms) {
-          String _elvis_2 = null;
-          TerminologyBox _target_2 = null;
-          if (e_1!=null) {
-            _target_2=e_1.target();
-          }
-          String _iri_1 = null;
-          if (_target_2!=null) {
-            _iri_1=_target_2.iri();
-          }
-          if (_iri_1 != null) {
-            _elvis_2 = _iri_1;
-          } else {
-            _elvis_2 = "";
-          }
-          QualifiedName _qualifiedName_2 = this.qnc.toQualifiedName(_elvis_2);
-          String _elvis_3 = null;
-          TerminologyBox _target_3 = e_1.target();
-          String _name_1 = null;
-          if (_target_3!=null) {
-            _name_1=_target_3.name();
-          }
-          if (_name_1 != null) {
-            _elvis_3 = _name_1;
-          } else {
-            _elvis_3 = "";
-          }
-          OMLImportNormalizer _oMLImportNormalizer_2 = new OMLImportNormalizer(_qualifiedName_2, _elvis_3);
-          res.add(_oMLImportNormalizer_2);
+        if (_iri != null) {
+          _elvis = _iri;
+        } else {
+          _elvis = "";
         }
+        QualifiedName _qualifiedName_1 = this.qnc.toQualifiedName(_elvis);
+        String _elvis_1 = null;
+        TerminologyBox _target_1 = e.target();
+        String _name = null;
+        if (_target_1!=null) {
+          _name=_target_1.name();
+        }
+        if (_name != null) {
+          _elvis_1 = _name;
+        } else {
+          _elvis_1 = "";
+        }
+        OMLImportNormalizer _oMLImportNormalizer_1 = new OMLImportNormalizer(_qualifiedName_1, _elvis_1);
+        res.add(_oMLImportNormalizer_1);
+      }
+      EList<TerminologyBundleAxiom> _bundleAxioms = ((Bundle)context).getBundleAxioms();
+      for (final TerminologyBundleAxiom e_1 : _bundleAxioms) {
+        String _elvis_2 = null;
+        TerminologyBox _target_2 = null;
+        if (e_1!=null) {
+          _target_2=e_1.target();
+        }
+        String _iri_1 = null;
+        if (_target_2!=null) {
+          _iri_1=_target_2.iri();
+        }
+        if (_iri_1 != null) {
+          _elvis_2 = _iri_1;
+        } else {
+          _elvis_2 = "";
+        }
+        QualifiedName _qualifiedName_2 = this.qnc.toQualifiedName(_elvis_2);
+        String _elvis_3 = null;
+        TerminologyBox _target_3 = e_1.target();
+        String _name_1 = null;
+        if (_target_3!=null) {
+          _name_1=_target_3.name();
+        }
+        if (_name_1 != null) {
+          _elvis_3 = _name_1;
+        } else {
+          _elvis_3 = "";
+        }
+        OMLImportNormalizer _oMLImportNormalizer_2 = new OMLImportNormalizer(_qualifiedName_2, _elvis_3);
+        res.add(_oMLImportNormalizer_2);
       }
     }
     if (!_matched) {
       if (context instanceof TerminologyGraph) {
         _matched=true;
-        EList<AnnotationProperty> _annotationProperties = ((TerminologyGraph)context).getExtent().getAnnotationProperties();
+        EList<AnnotationProperty> _annotationProperties = ((TerminologyGraph)context).getAnnotationProperties();
         for (final AnnotationProperty ap : _annotationProperties) {
           QualifiedName _qualifiedName = this.qnc.toQualifiedName(ap.iri());
           String _abbrevIRI = ap.getAbbrevIRI();
@@ -238,7 +225,7 @@ public class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespa
     if (!_matched) {
       if (context instanceof DescriptionBox) {
         _matched=true;
-        EList<AnnotationProperty> _annotationProperties = ((DescriptionBox)context).getExtent().getAnnotationProperties();
+        EList<AnnotationProperty> _annotationProperties = ((DescriptionBox)context).getAnnotationProperties();
         for (final AnnotationProperty ap : _annotationProperties) {
           QualifiedName _qualifiedName = this.qnc.toQualifiedName(ap.iri());
           String _abbrevIRI = ap.getAbbrevIRI();

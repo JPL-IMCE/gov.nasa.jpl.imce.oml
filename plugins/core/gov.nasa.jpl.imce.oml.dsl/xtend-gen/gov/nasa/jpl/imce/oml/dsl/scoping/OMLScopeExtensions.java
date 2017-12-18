@@ -94,35 +94,28 @@ public class OMLScopeExtensions {
       if (_moduleContext!=null) {
         _allImportedModules=this._oMLExtensions.allImportedModules(_moduleContext);
       }
-      Iterable<Extent> _map = null;
+      Iterable<Module> _filterNull = null;
       if (_allImportedModules!=null) {
-        final Function1<Module, Extent> _function = (Module it) -> {
-          return it.getExtent();
-        };
-        _map=IterableExtensions.<Module, Extent>map(_allImportedModules, _function);
+        _filterNull=IterableExtensions.<Module>filterNull(_allImportedModules);
       }
-      Iterable<Extent> _filterNull = null;
-      if (_map!=null) {
-        _filterNull=IterableExtensions.<Extent>filterNull(_map);
-      }
-      final Iterable<Extent> extents = _filterNull;
-      final Function1<Extent, EList<AnnotationProperty>> _function_1 = (Extent it) -> {
+      final Iterable<Module> modules = _filterNull;
+      final Function1<Module, EList<AnnotationProperty>> _function = (Module it) -> {
         return it.getAnnotationProperties();
       };
-      Iterable<EList<AnnotationProperty>> _map_1 = IterableExtensions.<Extent, EList<AnnotationProperty>>map(extents, _function_1);
+      Iterable<EList<AnnotationProperty>> _map = IterableExtensions.<Module, EList<AnnotationProperty>>map(modules, _function);
       Iterable<AnnotationProperty> _flatten = null;
-      if (_map_1!=null) {
-        _flatten=Iterables.<AnnotationProperty>concat(_map_1);
+      if (_map!=null) {
+        _flatten=Iterables.<AnnotationProperty>concat(_map);
       }
       Iterable<AnnotationProperty> _filterNull_1 = null;
       if (_flatten!=null) {
         _filterNull_1=IterableExtensions.<AnnotationProperty>filterNull(_flatten);
       }
       final Iterable<AnnotationProperty> annoationProperties = _filterNull_1;
-      final Function<AnnotationProperty, QualifiedName> _function_2 = (AnnotationProperty it) -> {
+      final Function<AnnotationProperty, QualifiedName> _function_1 = (AnnotationProperty it) -> {
         return this.qnc.toQualifiedName(it.getAbbrevIRI());
       };
-      _xblockexpression = Scopes.<AnnotationProperty>scopeFor(annoationProperties, _function_2, IScope.NULLSCOPE);
+      _xblockexpression = Scopes.<AnnotationProperty>scopeFor(annoationProperties, _function_1, IScope.NULLSCOPE);
     }
     return _xblockexpression;
   }

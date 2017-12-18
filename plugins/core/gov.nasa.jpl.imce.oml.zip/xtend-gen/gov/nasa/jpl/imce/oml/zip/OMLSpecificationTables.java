@@ -277,6 +277,8 @@ public class OMLSpecificationTables {
   
   protected final Map<String, Pair<UnreifiedRelationshipPropertyPredicate, Map<String, String>>> unreifiedRelationshipPropertyPredicates;
   
+  protected final Map<String, Pair<Module, Map<String, String>>> modules;
+  
   protected final Map<String, Pair<LogicalElement, Map<String, String>>> logicalElements;
   
   protected final Map<String, Pair<Entity, Map<String, String>>> entities;
@@ -456,28 +458,30 @@ public class OMLSpecificationTables {
     this.unreifiedRelationshipInversePropertyPredicates = _hashMap_66;
     HashMap<String, Pair<UnreifiedRelationshipPropertyPredicate, Map<String, String>>> _hashMap_67 = new HashMap<String, Pair<UnreifiedRelationshipPropertyPredicate, Map<String, String>>>();
     this.unreifiedRelationshipPropertyPredicates = _hashMap_67;
-    HashMap<String, Pair<LogicalElement, Map<String, String>>> _hashMap_68 = new HashMap<String, Pair<LogicalElement, Map<String, String>>>();
-    this.logicalElements = _hashMap_68;
-    HashMap<String, Pair<Entity, Map<String, String>>> _hashMap_69 = new HashMap<String, Pair<Entity, Map<String, String>>>();
-    this.entities = _hashMap_69;
-    HashMap<String, Pair<EntityRelationship, Map<String, String>>> _hashMap_70 = new HashMap<String, Pair<EntityRelationship, Map<String, String>>>();
-    this.entityRelationships = _hashMap_70;
-    HashMap<String, Pair<DataRange, Map<String, String>>> _hashMap_71 = new HashMap<String, Pair<DataRange, Map<String, String>>>();
-    this.dataRanges = _hashMap_71;
-    HashMap<String, Pair<DataRelationshipToScalar, Map<String, String>>> _hashMap_72 = new HashMap<String, Pair<DataRelationshipToScalar, Map<String, String>>>();
-    this.dataRelationshipToScalars = _hashMap_72;
-    HashMap<String, Pair<DataRelationshipToStructure, Map<String, String>>> _hashMap_73 = new HashMap<String, Pair<DataRelationshipToStructure, Map<String, String>>>();
-    this.dataRelationshipToStructures = _hashMap_73;
-    HashMap<String, Pair<RestrictionStructuredDataPropertyContext, Map<String, String>>> _hashMap_74 = new HashMap<String, Pair<RestrictionStructuredDataPropertyContext, Map<String, String>>>();
-    this.restrictionStructuredDataPropertyContexts = _hashMap_74;
-    HashMap<String, Pair<TerminologyBox, Map<String, String>>> _hashMap_75 = new HashMap<String, Pair<TerminologyBox, Map<String, String>>>();
-    this.terminologyBoxes = _hashMap_75;
-    HashMap<String, Pair<ConceptTreeDisjunction, Map<String, String>>> _hashMap_76 = new HashMap<String, Pair<ConceptTreeDisjunction, Map<String, String>>>();
-    this.conceptTreeDisjunctions = _hashMap_76;
-    HashMap<String, Pair<ConceptualEntitySingletonInstance, Map<String, String>>> _hashMap_77 = new HashMap<String, Pair<ConceptualEntitySingletonInstance, Map<String, String>>>();
-    this.conceptualEntitySingletonInstances = _hashMap_77;
-    HashMap<String, Pair<SingletonInstanceStructuredDataPropertyContext, Map<String, String>>> _hashMap_78 = new HashMap<String, Pair<SingletonInstanceStructuredDataPropertyContext, Map<String, String>>>();
-    this.singletonInstanceStructuredDataPropertyContexts = _hashMap_78;
+    HashMap<String, Pair<Module, Map<String, String>>> _hashMap_68 = new HashMap<String, Pair<Module, Map<String, String>>>();
+    this.modules = _hashMap_68;
+    HashMap<String, Pair<LogicalElement, Map<String, String>>> _hashMap_69 = new HashMap<String, Pair<LogicalElement, Map<String, String>>>();
+    this.logicalElements = _hashMap_69;
+    HashMap<String, Pair<Entity, Map<String, String>>> _hashMap_70 = new HashMap<String, Pair<Entity, Map<String, String>>>();
+    this.entities = _hashMap_70;
+    HashMap<String, Pair<EntityRelationship, Map<String, String>>> _hashMap_71 = new HashMap<String, Pair<EntityRelationship, Map<String, String>>>();
+    this.entityRelationships = _hashMap_71;
+    HashMap<String, Pair<DataRange, Map<String, String>>> _hashMap_72 = new HashMap<String, Pair<DataRange, Map<String, String>>>();
+    this.dataRanges = _hashMap_72;
+    HashMap<String, Pair<DataRelationshipToScalar, Map<String, String>>> _hashMap_73 = new HashMap<String, Pair<DataRelationshipToScalar, Map<String, String>>>();
+    this.dataRelationshipToScalars = _hashMap_73;
+    HashMap<String, Pair<DataRelationshipToStructure, Map<String, String>>> _hashMap_74 = new HashMap<String, Pair<DataRelationshipToStructure, Map<String, String>>>();
+    this.dataRelationshipToStructures = _hashMap_74;
+    HashMap<String, Pair<RestrictionStructuredDataPropertyContext, Map<String, String>>> _hashMap_75 = new HashMap<String, Pair<RestrictionStructuredDataPropertyContext, Map<String, String>>>();
+    this.restrictionStructuredDataPropertyContexts = _hashMap_75;
+    HashMap<String, Pair<TerminologyBox, Map<String, String>>> _hashMap_76 = new HashMap<String, Pair<TerminologyBox, Map<String, String>>>();
+    this.terminologyBoxes = _hashMap_76;
+    HashMap<String, Pair<ConceptTreeDisjunction, Map<String, String>>> _hashMap_77 = new HashMap<String, Pair<ConceptTreeDisjunction, Map<String, String>>>();
+    this.conceptTreeDisjunctions = _hashMap_77;
+    HashMap<String, Pair<ConceptualEntitySingletonInstance, Map<String, String>>> _hashMap_78 = new HashMap<String, Pair<ConceptualEntitySingletonInstance, Map<String, String>>>();
+    this.conceptualEntitySingletonInstances = _hashMap_78;
+    HashMap<String, Pair<SingletonInstanceStructuredDataPropertyContext, Map<String, String>>> _hashMap_79 = new HashMap<String, Pair<SingletonInstanceStructuredDataPropertyContext, Map<String, String>>>();
+    this.singletonInstanceStructuredDataPropertyContexts = _hashMap_79;
   }
   
   public static void save(final Extent e, final ZipArchiveOutputStream zos) {
@@ -1040,6 +1044,11 @@ public class OMLSpecificationTables {
       pw.print("\"uuid\":");
       pw.print("\"");
       pw.print(it.uuid());
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"moduleUUID\":");
+      pw.print("\"");
+      pw.print(it.getModule().uuid());
       pw.print("\"");
       pw.print(",");
       pw.print("\"iri\":");
@@ -4402,6 +4411,7 @@ public class OMLSpecificationTables {
     this.<ConceptualEntitySingletonInstance, ReifiedRelationshipInstance>includeMap(this.conceptualEntitySingletonInstances, this.reifiedRelationshipInstances);
     this.<SingletonInstanceStructuredDataPropertyContext, SingletonInstanceStructuredDataPropertyValue>includeMap(this.singletonInstanceStructuredDataPropertyContexts, this.singletonInstanceStructuredDataPropertyValues);
     this.<SingletonInstanceStructuredDataPropertyContext, StructuredDataPropertyTuple>includeMap(this.singletonInstanceStructuredDataPropertyContexts, this.structuredDataPropertyTuples);
+    this.resolveAnnotationProperties(rs);
     this.resolveConceptDesignationTerminologyAxioms(rs);
     this.resolveTerminologyExtensionAxioms(rs);
     this.resolveTerminologyNestingAxioms(rs);
@@ -4467,23 +4477,37 @@ public class OMLSpecificationTables {
     this.resolveUnreifiedRelationshipInversePropertyPredicates(rs);
     this.resolveUnreifiedRelationshipPropertyPredicates(rs);
     final Extent ext = this.omlCommonFactory.createExtent();
-    final Function1<Pair<AnnotationProperty, Map<String, String>>, AnnotationProperty> _function = (Pair<AnnotationProperty, Map<String, String>> it) -> {
+    final Function1<Pair<TerminologyGraph, Map<String, String>>, TerminologyGraph> _function = (Pair<TerminologyGraph, Map<String, String>> it) -> {
       return it.getKey();
     };
-    Iterables.<AnnotationProperty>addAll(ext.getAnnotationProperties(), IterableExtensions.<Pair<AnnotationProperty, Map<String, String>>, AnnotationProperty>map(this.annotationProperties.values(), _function));
-    final Function1<Pair<TerminologyGraph, Map<String, String>>, TerminologyGraph> _function_1 = (Pair<TerminologyGraph, Map<String, String>> it) -> {
+    Iterables.<Module>addAll(ext.getModules(), IterableExtensions.<Pair<TerminologyGraph, Map<String, String>>, TerminologyGraph>map(this.terminologyGraphs.values(), _function));
+    final Function1<Pair<Bundle, Map<String, String>>, Bundle> _function_1 = (Pair<Bundle, Map<String, String>> it) -> {
       return it.getKey();
     };
-    Iterables.<Module>addAll(ext.getModules(), IterableExtensions.<Pair<TerminologyGraph, Map<String, String>>, TerminologyGraph>map(this.terminologyGraphs.values(), _function_1));
-    final Function1<Pair<Bundle, Map<String, String>>, Bundle> _function_2 = (Pair<Bundle, Map<String, String>> it) -> {
+    Iterables.<Module>addAll(ext.getModules(), IterableExtensions.<Pair<Bundle, Map<String, String>>, Bundle>map(this.bundles.values(), _function_1));
+    final Function1<Pair<DescriptionBox, Map<String, String>>, DescriptionBox> _function_2 = (Pair<DescriptionBox, Map<String, String>> it) -> {
       return it.getKey();
     };
-    Iterables.<Module>addAll(ext.getModules(), IterableExtensions.<Pair<Bundle, Map<String, String>>, Bundle>map(this.bundles.values(), _function_2));
-    final Function1<Pair<DescriptionBox, Map<String, String>>, DescriptionBox> _function_3 = (Pair<DescriptionBox, Map<String, String>> it) -> {
-      return it.getKey();
-    };
-    Iterables.<Module>addAll(ext.getModules(), IterableExtensions.<Pair<DescriptionBox, Map<String, String>>, DescriptionBox>map(this.descriptionBoxes.values(), _function_3));
+    Iterables.<Module>addAll(ext.getModules(), IterableExtensions.<Pair<DescriptionBox, Map<String, String>>, DescriptionBox>map(this.descriptionBoxes.values(), _function_2));
     r.getContents().add(ext);
+  }
+  
+  protected void resolveAnnotationProperties(final OMLZipResourceSet rs) {
+    final BiConsumer<String, Pair<AnnotationProperty, Map<String, String>>> _function = (String uuid, Pair<AnnotationProperty, Map<String, String>> oml_kv) -> {
+      final AnnotationProperty oml = oml_kv.getKey();
+      final Map<String, String> kv = oml_kv.getValue();
+      boolean _isEmpty = kv.isEmpty();
+      boolean _not = (!_isEmpty);
+      if (_not) {
+        final String moduleXRef = kv.remove("moduleUUID");
+        final Pair<Module, Map<String, String>> modulePair = this.modules.get(moduleXRef);
+        if ((null == modulePair)) {
+          throw new IllegalArgumentException("Null cross-reference lookup for module in annotationProperties");
+        }
+        oml.setModule(modulePair.getKey());
+      }
+    };
+    this.annotationProperties.forEach(_function);
   }
   
   protected void resolveConceptDesignationTerminologyAxioms(final OMLZipResourceSet rs) {

@@ -104,6 +104,15 @@ public interface GraphsPackage extends EPackage {
 	int TERMINOLOGY_GRAPH__ANNOTATIONS = TerminologiesPackage.TERMINOLOGY_BOX__ANNOTATIONS;
 
 	/**
+	 * The feature id for the '<em><b>Annotation Properties</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TERMINOLOGY_GRAPH__ANNOTATION_PROPERTIES = TerminologiesPackage.TERMINOLOGY_BOX__ANNOTATION_PROPERTIES;
+
+	/**
 	 * The feature id for the '<em><b>Extent</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -1789,18 +1789,14 @@ public class OMLExtensions {
     final ArrayList<EObject> queue = new ArrayList<EObject>();
     queue.add(ext);
     OMLExtensions.removeAllINodes(queue);
-    final Function1<AnnotationProperty, String> _function = (AnnotationProperty it) -> {
-      return it.getAbbrevIRI();
-    };
-    OMLExtensions.<AnnotationProperty, String>sortInplaceBy(ext.getAnnotationProperties(), _function);
-    final Function1<Module, String> _function_1 = (Module it) -> {
+    final Function1<Module, String> _function = (Module it) -> {
       return it.abbrevIRI();
     };
-    OMLExtensions.<Module, String>sortInplaceBy(ext.getModules(), _function_1);
-    final Consumer<Module> _function_2 = (Module m) -> {
+    OMLExtensions.<Module, String>sortInplaceBy(ext.getModules(), _function);
+    final Consumer<Module> _function_1 = (Module m) -> {
       OMLExtensions.normalize(m);
     };
-    ext.getModules().forEach(_function_2);
+    ext.getModules().forEach(_function_1);
   }
   
   /**
@@ -1831,50 +1827,58 @@ public class OMLExtensions {
    * Normalizes the order of OML Elements recursively within an OML DescriptionBox.
    */
   protected static void _normalize(final DescriptionBox it) {
-    final Function1<DescriptionBoxRefinement, String> _function = (DescriptionBoxRefinement it_1) -> {
+    final Function1<AnnotationProperty, String> _function = (AnnotationProperty it_1) -> {
+      return it_1.getAbbrevIRI();
+    };
+    OMLExtensions.<AnnotationProperty, String>sortInplaceBy(it.getAnnotationProperties(), _function);
+    final Function1<DescriptionBoxRefinement, String> _function_1 = (DescriptionBoxRefinement it_1) -> {
       return OMLExtensions.sortingCriteria(it_1);
     };
-    OMLExtensions.<DescriptionBoxRefinement, String>sortInplaceBy(it.getDescriptionBoxRefinements(), _function);
-    final Function1<DescriptionBoxExtendsClosedWorldDefinitions, String> _function_1 = (DescriptionBoxExtendsClosedWorldDefinitions it_1) -> {
+    OMLExtensions.<DescriptionBoxRefinement, String>sortInplaceBy(it.getDescriptionBoxRefinements(), _function_1);
+    final Function1<DescriptionBoxExtendsClosedWorldDefinitions, String> _function_2 = (DescriptionBoxExtendsClosedWorldDefinitions it_1) -> {
       return OMLExtensions.sortingCriteria(it_1);
     };
-    OMLExtensions.<DescriptionBoxExtendsClosedWorldDefinitions, String>sortInplaceBy(it.getClosedWorldDefinitions(), _function_1);
-    final Function1<ConceptInstance, String> _function_2 = (ConceptInstance it_1) -> {
+    OMLExtensions.<DescriptionBoxExtendsClosedWorldDefinitions, String>sortInplaceBy(it.getClosedWorldDefinitions(), _function_2);
+    final Function1<ConceptInstance, String> _function_3 = (ConceptInstance it_1) -> {
       return OMLExtensions.sortingCriteria(it_1);
     };
-    OMLExtensions.<ConceptInstance, String>sortInplaceBy(it.getConceptInstances(), _function_2);
-    final Function1<ReifiedRelationshipInstance, String> _function_3 = (ReifiedRelationshipInstance it_1) -> {
+    OMLExtensions.<ConceptInstance, String>sortInplaceBy(it.getConceptInstances(), _function_3);
+    final Function1<ReifiedRelationshipInstance, String> _function_4 = (ReifiedRelationshipInstance it_1) -> {
       return OMLExtensions.sortingCriteria(it_1);
     };
-    OMLExtensions.<ReifiedRelationshipInstance, String>sortInplaceBy(it.getReifiedRelationshipInstances(), _function_3);
-    final Function1<ReifiedRelationshipInstanceDomain, String> _function_4 = (ReifiedRelationshipInstanceDomain it_1) -> {
+    OMLExtensions.<ReifiedRelationshipInstance, String>sortInplaceBy(it.getReifiedRelationshipInstances(), _function_4);
+    final Function1<ReifiedRelationshipInstanceDomain, String> _function_5 = (ReifiedRelationshipInstanceDomain it_1) -> {
       return OMLExtensions.sortingCriteria(it_1);
     };
-    OMLExtensions.<ReifiedRelationshipInstanceDomain, String>sortInplaceBy(it.getReifiedRelationshipInstanceDomains(), _function_4);
-    final Function1<ReifiedRelationshipInstanceRange, String> _function_5 = (ReifiedRelationshipInstanceRange it_1) -> {
+    OMLExtensions.<ReifiedRelationshipInstanceDomain, String>sortInplaceBy(it.getReifiedRelationshipInstanceDomains(), _function_5);
+    final Function1<ReifiedRelationshipInstanceRange, String> _function_6 = (ReifiedRelationshipInstanceRange it_1) -> {
       return OMLExtensions.sortingCriteria(it_1);
     };
-    OMLExtensions.<ReifiedRelationshipInstanceRange, String>sortInplaceBy(it.getReifiedRelationshipInstanceRanges(), _function_5);
-    final Function1<UnreifiedRelationshipInstanceTuple, String> _function_6 = (UnreifiedRelationshipInstanceTuple it_1) -> {
+    OMLExtensions.<ReifiedRelationshipInstanceRange, String>sortInplaceBy(it.getReifiedRelationshipInstanceRanges(), _function_6);
+    final Function1<UnreifiedRelationshipInstanceTuple, String> _function_7 = (UnreifiedRelationshipInstanceTuple it_1) -> {
       return OMLExtensions.sortingCriteria(it_1);
     };
-    OMLExtensions.<UnreifiedRelationshipInstanceTuple, String>sortInplaceBy(it.getUnreifiedRelationshipInstanceTuples(), _function_6);
-    final Function1<SingletonInstanceScalarDataPropertyValue, String> _function_7 = (SingletonInstanceScalarDataPropertyValue it_1) -> {
+    OMLExtensions.<UnreifiedRelationshipInstanceTuple, String>sortInplaceBy(it.getUnreifiedRelationshipInstanceTuples(), _function_7);
+    final Function1<SingletonInstanceScalarDataPropertyValue, String> _function_8 = (SingletonInstanceScalarDataPropertyValue it_1) -> {
       return OMLExtensions.sortingCriteria(it_1);
     };
-    OMLExtensions.<SingletonInstanceScalarDataPropertyValue, String>sortInplaceBy(it.getSingletonScalarDataPropertyValues(), _function_7);
-    final Function1<SingletonInstanceStructuredDataPropertyValue, String> _function_8 = (SingletonInstanceStructuredDataPropertyValue it_1) -> {
+    OMLExtensions.<SingletonInstanceScalarDataPropertyValue, String>sortInplaceBy(it.getSingletonScalarDataPropertyValues(), _function_8);
+    final Function1<SingletonInstanceStructuredDataPropertyValue, String> _function_9 = (SingletonInstanceStructuredDataPropertyValue it_1) -> {
       return OMLExtensions.sortingCriteria(it_1);
     };
-    OMLExtensions.<SingletonInstanceStructuredDataPropertyValue, String>sortInplaceBy(it.getSingletonStructuredDataPropertyValues(), _function_8);
-    final Consumer<LogicalElement> _function_9 = (LogicalElement e) -> {
+    OMLExtensions.<SingletonInstanceStructuredDataPropertyValue, String>sortInplaceBy(it.getSingletonStructuredDataPropertyValues(), _function_9);
+    final Consumer<LogicalElement> _function_10 = (LogicalElement e) -> {
       OMLExtensions.normalizeAnnotations(e);
       OMLExtensions.normalizeSubElements(e);
     };
-    Iterables.<LogicalElement>filter(it.eContents(), LogicalElement.class).forEach(_function_9);
+    Iterables.<LogicalElement>filter(it.eContents(), LogicalElement.class).forEach(_function_10);
   }
   
   protected static void normalizeTerminologyBoxCollections(final TerminologyBox it) {
+    final Function1<AnnotationProperty, String> _function = (AnnotationProperty it_1) -> {
+      return it_1.getAbbrevIRI();
+    };
+    OMLExtensions.<AnnotationProperty, String>sortInplaceBy(it.getAnnotationProperties(), _function);
     ECollections.<TerminologyBoxAxiom>sort(it.getBoxAxioms(), OMLExtensions.terminologyBoxAxiomComparator);
     ECollections.<TerminologyBoxStatement>sort(it.getBoxStatements(), OMLExtensions.terminologyBoxStatementComparator);
   }
