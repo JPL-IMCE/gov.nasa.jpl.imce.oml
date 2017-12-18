@@ -125,7 +125,7 @@ class OMLTables {
 	
   static def List<AnnotationProperty> annotationProperties(Extent e) {
   	val List<AnnotationProperty> result = new ArrayList<AnnotationProperty>()
-  	result.addAll(e.annotationProperties)
+  	e.modules.forEach[m|result.addAll(m.annotationProperties)]
   	result.sortInplaceBy[uuid()]
   	result
   }

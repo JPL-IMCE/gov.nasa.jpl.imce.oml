@@ -408,14 +408,11 @@ abstract class ModuleEdge extends ElementCrossReferenceTuple {
  * that an OML Element can have at most one OML AnnotationPropertyValue for a given OML AnnotationProperty.
  */
 @Glossary
-@ExtentManaged
 @NamespaceUUID(namespace="iri", factors="")
 class AnnotationProperty extends IntrinsicIdentityKind, NonLogicalElement {
 
-	@NotFunctionalAPI
-	@NotSchema
-	@Override
-	container Extent[1] extent opposite annotationProperties
+	@Factory
+	container Module[1] module opposite annotationProperties
 	
 	@Scala(code="com.fasterxml.uuid.Generators.nameBasedGenerator(com.fasterxml.uuid.impl.NameBasedGenerator.NAMESPACE_URL).generate(iri)")
 	@NotSchema
@@ -480,10 +477,6 @@ class Extent {
 	@NotSchema
 	contains Module[] modules opposite extent
 	
-	@NotFunctionalAPI
-	@NotSchema
-	contains AnnotationProperty[] annotationProperties opposite extent
-	
 }
 
 /*
@@ -495,6 +488,9 @@ class Extent {
 @ExtentManaged
 @NamespaceUUID(namespace="iri", factors="")
 abstract class Module extends Resource {
+	
+	@NotSchema
+	contains AnnotationProperty[] annotationProperties opposite module
 	
 	@NotFunctionalAPI
 	@NotSchema

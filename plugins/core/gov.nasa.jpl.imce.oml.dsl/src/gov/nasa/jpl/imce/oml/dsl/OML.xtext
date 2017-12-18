@@ -27,9 +27,7 @@ import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
 Extent returns Extent:
 	{Extent}
-	( annotationProperties+=AnnotationProperty |
-	  modules+=Module
-	)*
+	( modules+=Module )*
 	;
 
 // syntax of Annotation & AnnotationProperties
@@ -50,6 +48,7 @@ TerminologyBox returns TerminologyBox:
 	Bundle | TerminologyGraph;
 
 TerminologyGraph returns TerminologyGraph:
+	( annotationProperties+=AnnotationProperty )*
 	( annotations+=AnnotationPropertyValue )*
 	kind=TerminologyKind 'terminology' iri=IRI 
 	'{'
@@ -59,6 +58,7 @@ TerminologyGraph returns TerminologyGraph:
 	'}';
 
 Bundle returns Bundle:
+	( annotationProperties+=AnnotationProperty )*
 	( annotations+=AnnotationPropertyValue )*
 	kind=TerminologyKind 'bundle' iri=IRI 
 	'{'
@@ -70,6 +70,7 @@ Bundle returns Bundle:
 	'}';
 	
 DescriptionBox returns DescriptionBox:
+	( annotationProperties+=AnnotationProperty )*
 	( annotations+=AnnotationPropertyValue )*
 	kind=DescriptionKind 'descriptionBox' iri=IRI
 	'{'
