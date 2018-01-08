@@ -130,23 +130,26 @@ import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsFactory
  */
 class OMLSpecificationTables {
  
-  protected val Map<String, Pair<AnnotationProperty, Map<String,String>>> annotationProperties
   protected val Map<String, Pair<TerminologyGraph, Map<String,String>>> terminologyGraphs
   protected val Map<String, Pair<Bundle, Map<String,String>>> bundles
+  protected val Map<String, Pair<DescriptionBox, Map<String,String>>> descriptionBoxes
+  protected val Map<String, Pair<AnnotationProperty, Map<String,String>>> annotationProperties
+  protected val Map<String, Pair<Aspect, Map<String,String>>> aspects
+  protected val Map<String, Pair<Concept, Map<String,String>>> concepts
+  protected val Map<String, Pair<Scalar, Map<String,String>>> scalars
+  protected val Map<String, Pair<Structure, Map<String,String>>> structures
   protected val Map<String, Pair<ConceptDesignationTerminologyAxiom, Map<String,String>>> conceptDesignationTerminologyAxioms
   protected val Map<String, Pair<TerminologyExtensionAxiom, Map<String,String>>> terminologyExtensionAxioms
   protected val Map<String, Pair<TerminologyNestingAxiom, Map<String,String>>> terminologyNestingAxioms
-  protected val Map<String, Pair<Aspect, Map<String,String>>> aspects
-  protected val Map<String, Pair<Concept, Map<String,String>>> concepts
-  protected val Map<String, Pair<ReifiedRelationship, Map<String,String>>> reifiedRelationships
-  protected val Map<String, Pair<UnreifiedRelationship, Map<String,String>>> unreifiedRelationships
-  protected val Map<String, Pair<Scalar, Map<String,String>>> scalars
-  protected val Map<String, Pair<Structure, Map<String,String>>> structures
+  protected val Map<String, Pair<BundledTerminologyAxiom, Map<String,String>>> bundledTerminologyAxioms
+  protected val Map<String, Pair<DescriptionBoxExtendsClosedWorldDefinitions, Map<String,String>>> descriptionBoxExtendsClosedWorldDefinitions
+  protected val Map<String, Pair<DescriptionBoxRefinement, Map<String,String>>> descriptionBoxRefinements
   protected val Map<String, Pair<BinaryScalarRestriction, Map<String,String>>> binaryScalarRestrictions
   protected val Map<String, Pair<IRIScalarRestriction, Map<String,String>>> iriScalarRestrictions
   protected val Map<String, Pair<NumericScalarRestriction, Map<String,String>>> numericScalarRestrictions
   protected val Map<String, Pair<PlainLiteralScalarRestriction, Map<String,String>>> plainLiteralScalarRestrictions
   protected val Map<String, Pair<ScalarOneOfRestriction, Map<String,String>>> scalarOneOfRestrictions
+  protected val Map<String, Pair<ScalarOneOfLiteralAxiom, Map<String,String>>> scalarOneOfLiteralAxioms
   protected val Map<String, Pair<StringScalarRestriction, Map<String,String>>> stringScalarRestrictions
   protected val Map<String, Pair<SynonymScalarRestriction, Map<String,String>>> synonymScalarRestrictions
   protected val Map<String, Pair<TimeScalarRestriction, Map<String,String>>> timeScalarRestrictions
@@ -154,50 +157,47 @@ class OMLSpecificationTables {
   protected val Map<String, Pair<EntityStructuredDataProperty, Map<String,String>>> entityStructuredDataProperties
   protected val Map<String, Pair<ScalarDataProperty, Map<String,String>>> scalarDataProperties
   protected val Map<String, Pair<StructuredDataProperty, Map<String,String>>> structuredDataProperties
-  protected val Map<String, Pair<AspectSpecializationAxiom, Map<String,String>>> aspectSpecializationAxioms
-  protected val Map<String, Pair<ConceptSpecializationAxiom, Map<String,String>>> conceptSpecializationAxioms
-  protected val Map<String, Pair<ReifiedRelationshipSpecializationAxiom, Map<String,String>>> reifiedRelationshipSpecializationAxioms
+  protected val Map<String, Pair<ReifiedRelationship, Map<String,String>>> reifiedRelationships
+  protected val Map<String, Pair<UnreifiedRelationship, Map<String,String>>> unreifiedRelationships
+  protected val Map<String, Pair<ChainRule, Map<String,String>>> chainRules
+  protected val Map<String, Pair<RuleBodySegment, Map<String,String>>> ruleBodySegments
+  protected val Map<String, Pair<AspectPredicate, Map<String,String>>> aspectPredicates
+  protected val Map<String, Pair<ConceptPredicate, Map<String,String>>> conceptPredicates
+  protected val Map<String, Pair<ReifiedRelationshipPredicate, Map<String,String>>> reifiedRelationshipPredicates
+  protected val Map<String, Pair<ReifiedRelationshipPropertyPredicate, Map<String,String>>> reifiedRelationshipPropertyPredicates
+  protected val Map<String, Pair<ReifiedRelationshipSourcePropertyPredicate, Map<String,String>>> reifiedRelationshipSourcePropertyPredicates
+  protected val Map<String, Pair<ReifiedRelationshipTargetPropertyPredicate, Map<String,String>>> reifiedRelationshipTargetPropertyPredicates
+  protected val Map<String, Pair<UnreifiedRelationshipPropertyPredicate, Map<String,String>>> unreifiedRelationshipPropertyPredicates
+  protected val Map<String, Pair<ReifiedRelationshipInversePropertyPredicate, Map<String,String>>> reifiedRelationshipInversePropertyPredicates
+  protected val Map<String, Pair<ReifiedRelationshipSourceInversePropertyPredicate, Map<String,String>>> reifiedRelationshipSourceInversePropertyPredicates
+  protected val Map<String, Pair<ReifiedRelationshipTargetInversePropertyPredicate, Map<String,String>>> reifiedRelationshipTargetInversePropertyPredicates
+  protected val Map<String, Pair<UnreifiedRelationshipInversePropertyPredicate, Map<String,String>>> unreifiedRelationshipInversePropertyPredicates
   protected val Map<String, Pair<EntityExistentialRestrictionAxiom, Map<String,String>>> entityExistentialRestrictionAxioms
   protected val Map<String, Pair<EntityUniversalRestrictionAxiom, Map<String,String>>> entityUniversalRestrictionAxioms
   protected val Map<String, Pair<EntityScalarDataPropertyExistentialRestrictionAxiom, Map<String,String>>> entityScalarDataPropertyExistentialRestrictionAxioms
   protected val Map<String, Pair<EntityScalarDataPropertyParticularRestrictionAxiom, Map<String,String>>> entityScalarDataPropertyParticularRestrictionAxioms
   protected val Map<String, Pair<EntityScalarDataPropertyUniversalRestrictionAxiom, Map<String,String>>> entityScalarDataPropertyUniversalRestrictionAxioms
-  protected val Map<String, Pair<ScalarOneOfLiteralAxiom, Map<String,String>>> scalarOneOfLiteralAxioms
-  protected val Map<String, Pair<BundledTerminologyAxiom, Map<String,String>>> bundledTerminologyAxioms
-  protected val Map<String, Pair<RootConceptTaxonomyAxiom, Map<String,String>>> rootConceptTaxonomyAxioms
-  protected val Map<String, Pair<SpecificDisjointConceptAxiom, Map<String,String>>> specificDisjointConceptAxioms
-  protected val Map<String, Pair<AnnotationPropertyValue, Map<String,String>>> annotationPropertyValues
-  protected val Map<String, Pair<AnonymousConceptUnionAxiom, Map<String,String>>> anonymousConceptUnionAxioms
-  protected val Map<String, Pair<AspectPredicate, Map<String,String>>> aspectPredicates
-  protected val Map<String, Pair<ChainRule, Map<String,String>>> chainRules
-  protected val Map<String, Pair<ConceptInstance, Map<String,String>>> conceptInstances
-  protected val Map<String, Pair<ConceptPredicate, Map<String,String>>> conceptPredicates
-  protected val Map<String, Pair<DescriptionBox, Map<String,String>>> descriptionBoxes
-  protected val Map<String, Pair<DescriptionBoxExtendsClosedWorldDefinitions, Map<String,String>>> descriptionBoxExtendsClosedWorldDefinitions
-  protected val Map<String, Pair<DescriptionBoxRefinement, Map<String,String>>> descriptionBoxRefinements
   protected val Map<String, Pair<EntityStructuredDataPropertyParticularRestrictionAxiom, Map<String,String>>> entityStructuredDataPropertyParticularRestrictionAxioms
+  protected val Map<String, Pair<RestrictionStructuredDataPropertyTuple, Map<String,String>>> restrictionStructuredDataPropertyTuples
+  protected val Map<String, Pair<RestrictionScalarDataPropertyValue, Map<String,String>>> restrictionScalarDataPropertyValues
+  protected val Map<String, Pair<AspectSpecializationAxiom, Map<String,String>>> aspectSpecializationAxioms
+  protected val Map<String, Pair<ConceptSpecializationAxiom, Map<String,String>>> conceptSpecializationAxioms
+  protected val Map<String, Pair<ReifiedRelationshipSpecializationAxiom, Map<String,String>>> reifiedRelationshipSpecializationAxioms
+  protected val Map<String, Pair<SubDataPropertyOfAxiom, Map<String,String>>> subDataPropertyOfAxioms
+  protected val Map<String, Pair<SubObjectPropertyOfAxiom, Map<String,String>>> subObjectPropertyOfAxioms
+  protected val Map<String, Pair<RootConceptTaxonomyAxiom, Map<String,String>>> rootConceptTaxonomyAxioms
+  protected val Map<String, Pair<AnonymousConceptUnionAxiom, Map<String,String>>> anonymousConceptUnionAxioms
+  protected val Map<String, Pair<SpecificDisjointConceptAxiom, Map<String,String>>> specificDisjointConceptAxioms
+  protected val Map<String, Pair<ConceptInstance, Map<String,String>>> conceptInstances
   protected val Map<String, Pair<ReifiedRelationshipInstance, Map<String,String>>> reifiedRelationshipInstances
   protected val Map<String, Pair<ReifiedRelationshipInstanceDomain, Map<String,String>>> reifiedRelationshipInstanceDomains
   protected val Map<String, Pair<ReifiedRelationshipInstanceRange, Map<String,String>>> reifiedRelationshipInstanceRanges
-  protected val Map<String, Pair<ReifiedRelationshipInversePropertyPredicate, Map<String,String>>> reifiedRelationshipInversePropertyPredicates
-  protected val Map<String, Pair<ReifiedRelationshipPredicate, Map<String,String>>> reifiedRelationshipPredicates
-  protected val Map<String, Pair<ReifiedRelationshipPropertyPredicate, Map<String,String>>> reifiedRelationshipPropertyPredicates
-  protected val Map<String, Pair<ReifiedRelationshipSourceInversePropertyPredicate, Map<String,String>>> reifiedRelationshipSourceInversePropertyPredicates
-  protected val Map<String, Pair<ReifiedRelationshipSourcePropertyPredicate, Map<String,String>>> reifiedRelationshipSourcePropertyPredicates
-  protected val Map<String, Pair<ReifiedRelationshipTargetInversePropertyPredicate, Map<String,String>>> reifiedRelationshipTargetInversePropertyPredicates
-  protected val Map<String, Pair<ReifiedRelationshipTargetPropertyPredicate, Map<String,String>>> reifiedRelationshipTargetPropertyPredicates
-  protected val Map<String, Pair<RestrictionScalarDataPropertyValue, Map<String,String>>> restrictionScalarDataPropertyValues
-  protected val Map<String, Pair<RestrictionStructuredDataPropertyTuple, Map<String,String>>> restrictionStructuredDataPropertyTuples
-  protected val Map<String, Pair<RuleBodySegment, Map<String,String>>> ruleBodySegments
-  protected val Map<String, Pair<ScalarDataPropertyValue, Map<String,String>>> scalarDataPropertyValues
-  protected val Map<String, Pair<SingletonInstanceScalarDataPropertyValue, Map<String,String>>> singletonInstanceScalarDataPropertyValues
-  protected val Map<String, Pair<SingletonInstanceStructuredDataPropertyValue, Map<String,String>>> singletonInstanceStructuredDataPropertyValues
-  protected val Map<String, Pair<StructuredDataPropertyTuple, Map<String,String>>> structuredDataPropertyTuples
-  protected val Map<String, Pair<SubDataPropertyOfAxiom, Map<String,String>>> subDataPropertyOfAxioms
-  protected val Map<String, Pair<SubObjectPropertyOfAxiom, Map<String,String>>> subObjectPropertyOfAxioms
   protected val Map<String, Pair<UnreifiedRelationshipInstanceTuple, Map<String,String>>> unreifiedRelationshipInstanceTuples
-  protected val Map<String, Pair<UnreifiedRelationshipInversePropertyPredicate, Map<String,String>>> unreifiedRelationshipInversePropertyPredicates
-  protected val Map<String, Pair<UnreifiedRelationshipPropertyPredicate, Map<String,String>>> unreifiedRelationshipPropertyPredicates
+  protected val Map<String, Pair<SingletonInstanceStructuredDataPropertyValue, Map<String,String>>> singletonInstanceStructuredDataPropertyValues
+  protected val Map<String, Pair<SingletonInstanceScalarDataPropertyValue, Map<String,String>>> singletonInstanceScalarDataPropertyValues
+  protected val Map<String, Pair<StructuredDataPropertyTuple, Map<String,String>>> structuredDataPropertyTuples
+  protected val Map<String, Pair<ScalarDataPropertyValue, Map<String,String>>> scalarDataPropertyValues
+  protected val Map<String, Pair<AnnotationPropertyValue, Map<String,String>>> annotationPropertyValues
 
   protected val Map<String, Pair<Module, Map<String,String>>> modules
   protected val Map<String, Pair<LogicalElement, Map<String,String>>> logicalElements
@@ -225,23 +225,26 @@ class OMLSpecificationTables {
   	omlBundlesFactory = BundlesFactory.eINSTANCE
   	omlDescriptionsFactory = DescriptionsFactory.eINSTANCE
   	
-  	annotationProperties = new HashMap<String, Pair<AnnotationProperty, Map<String,String>>>()
   	terminologyGraphs = new HashMap<String, Pair<TerminologyGraph, Map<String,String>>>()
   	bundles = new HashMap<String, Pair<Bundle, Map<String,String>>>()
+  	descriptionBoxes = new HashMap<String, Pair<DescriptionBox, Map<String,String>>>()
+  	annotationProperties = new HashMap<String, Pair<AnnotationProperty, Map<String,String>>>()
+  	aspects = new HashMap<String, Pair<Aspect, Map<String,String>>>()
+  	concepts = new HashMap<String, Pair<Concept, Map<String,String>>>()
+  	scalars = new HashMap<String, Pair<Scalar, Map<String,String>>>()
+  	structures = new HashMap<String, Pair<Structure, Map<String,String>>>()
   	conceptDesignationTerminologyAxioms = new HashMap<String, Pair<ConceptDesignationTerminologyAxiom, Map<String,String>>>()
   	terminologyExtensionAxioms = new HashMap<String, Pair<TerminologyExtensionAxiom, Map<String,String>>>()
   	terminologyNestingAxioms = new HashMap<String, Pair<TerminologyNestingAxiom, Map<String,String>>>()
-  	aspects = new HashMap<String, Pair<Aspect, Map<String,String>>>()
-  	concepts = new HashMap<String, Pair<Concept, Map<String,String>>>()
-  	reifiedRelationships = new HashMap<String, Pair<ReifiedRelationship, Map<String,String>>>()
-  	unreifiedRelationships = new HashMap<String, Pair<UnreifiedRelationship, Map<String,String>>>()
-  	scalars = new HashMap<String, Pair<Scalar, Map<String,String>>>()
-  	structures = new HashMap<String, Pair<Structure, Map<String,String>>>()
+  	bundledTerminologyAxioms = new HashMap<String, Pair<BundledTerminologyAxiom, Map<String,String>>>()
+  	descriptionBoxExtendsClosedWorldDefinitions = new HashMap<String, Pair<DescriptionBoxExtendsClosedWorldDefinitions, Map<String,String>>>()
+  	descriptionBoxRefinements = new HashMap<String, Pair<DescriptionBoxRefinement, Map<String,String>>>()
   	binaryScalarRestrictions = new HashMap<String, Pair<BinaryScalarRestriction, Map<String,String>>>()
   	iriScalarRestrictions = new HashMap<String, Pair<IRIScalarRestriction, Map<String,String>>>()
   	numericScalarRestrictions = new HashMap<String, Pair<NumericScalarRestriction, Map<String,String>>>()
   	plainLiteralScalarRestrictions = new HashMap<String, Pair<PlainLiteralScalarRestriction, Map<String,String>>>()
   	scalarOneOfRestrictions = new HashMap<String, Pair<ScalarOneOfRestriction, Map<String,String>>>()
+  	scalarOneOfLiteralAxioms = new HashMap<String, Pair<ScalarOneOfLiteralAxiom, Map<String,String>>>()
   	stringScalarRestrictions = new HashMap<String, Pair<StringScalarRestriction, Map<String,String>>>()
   	synonymScalarRestrictions = new HashMap<String, Pair<SynonymScalarRestriction, Map<String,String>>>()
   	timeScalarRestrictions = new HashMap<String, Pair<TimeScalarRestriction, Map<String,String>>>()
@@ -249,50 +252,47 @@ class OMLSpecificationTables {
   	entityStructuredDataProperties = new HashMap<String, Pair<EntityStructuredDataProperty, Map<String,String>>>()
   	scalarDataProperties = new HashMap<String, Pair<ScalarDataProperty, Map<String,String>>>()
   	structuredDataProperties = new HashMap<String, Pair<StructuredDataProperty, Map<String,String>>>()
-  	aspectSpecializationAxioms = new HashMap<String, Pair<AspectSpecializationAxiom, Map<String,String>>>()
-  	conceptSpecializationAxioms = new HashMap<String, Pair<ConceptSpecializationAxiom, Map<String,String>>>()
-  	reifiedRelationshipSpecializationAxioms = new HashMap<String, Pair<ReifiedRelationshipSpecializationAxiom, Map<String,String>>>()
+  	reifiedRelationships = new HashMap<String, Pair<ReifiedRelationship, Map<String,String>>>()
+  	unreifiedRelationships = new HashMap<String, Pair<UnreifiedRelationship, Map<String,String>>>()
+  	chainRules = new HashMap<String, Pair<ChainRule, Map<String,String>>>()
+  	ruleBodySegments = new HashMap<String, Pair<RuleBodySegment, Map<String,String>>>()
+  	aspectPredicates = new HashMap<String, Pair<AspectPredicate, Map<String,String>>>()
+  	conceptPredicates = new HashMap<String, Pair<ConceptPredicate, Map<String,String>>>()
+  	reifiedRelationshipPredicates = new HashMap<String, Pair<ReifiedRelationshipPredicate, Map<String,String>>>()
+  	reifiedRelationshipPropertyPredicates = new HashMap<String, Pair<ReifiedRelationshipPropertyPredicate, Map<String,String>>>()
+  	reifiedRelationshipSourcePropertyPredicates = new HashMap<String, Pair<ReifiedRelationshipSourcePropertyPredicate, Map<String,String>>>()
+  	reifiedRelationshipTargetPropertyPredicates = new HashMap<String, Pair<ReifiedRelationshipTargetPropertyPredicate, Map<String,String>>>()
+  	unreifiedRelationshipPropertyPredicates = new HashMap<String, Pair<UnreifiedRelationshipPropertyPredicate, Map<String,String>>>()
+  	reifiedRelationshipInversePropertyPredicates = new HashMap<String, Pair<ReifiedRelationshipInversePropertyPredicate, Map<String,String>>>()
+  	reifiedRelationshipSourceInversePropertyPredicates = new HashMap<String, Pair<ReifiedRelationshipSourceInversePropertyPredicate, Map<String,String>>>()
+  	reifiedRelationshipTargetInversePropertyPredicates = new HashMap<String, Pair<ReifiedRelationshipTargetInversePropertyPredicate, Map<String,String>>>()
+  	unreifiedRelationshipInversePropertyPredicates = new HashMap<String, Pair<UnreifiedRelationshipInversePropertyPredicate, Map<String,String>>>()
   	entityExistentialRestrictionAxioms = new HashMap<String, Pair<EntityExistentialRestrictionAxiom, Map<String,String>>>()
   	entityUniversalRestrictionAxioms = new HashMap<String, Pair<EntityUniversalRestrictionAxiom, Map<String,String>>>()
   	entityScalarDataPropertyExistentialRestrictionAxioms = new HashMap<String, Pair<EntityScalarDataPropertyExistentialRestrictionAxiom, Map<String,String>>>()
   	entityScalarDataPropertyParticularRestrictionAxioms = new HashMap<String, Pair<EntityScalarDataPropertyParticularRestrictionAxiom, Map<String,String>>>()
   	entityScalarDataPropertyUniversalRestrictionAxioms = new HashMap<String, Pair<EntityScalarDataPropertyUniversalRestrictionAxiom, Map<String,String>>>()
-  	scalarOneOfLiteralAxioms = new HashMap<String, Pair<ScalarOneOfLiteralAxiom, Map<String,String>>>()
-  	bundledTerminologyAxioms = new HashMap<String, Pair<BundledTerminologyAxiom, Map<String,String>>>()
-  	rootConceptTaxonomyAxioms = new HashMap<String, Pair<RootConceptTaxonomyAxiom, Map<String,String>>>()
-  	specificDisjointConceptAxioms = new HashMap<String, Pair<SpecificDisjointConceptAxiom, Map<String,String>>>()
-  	annotationPropertyValues = new HashMap<String, Pair<AnnotationPropertyValue, Map<String,String>>>()
-  	anonymousConceptUnionAxioms = new HashMap<String, Pair<AnonymousConceptUnionAxiom, Map<String,String>>>()
-  	aspectPredicates = new HashMap<String, Pair<AspectPredicate, Map<String,String>>>()
-  	chainRules = new HashMap<String, Pair<ChainRule, Map<String,String>>>()
-  	conceptInstances = new HashMap<String, Pair<ConceptInstance, Map<String,String>>>()
-  	conceptPredicates = new HashMap<String, Pair<ConceptPredicate, Map<String,String>>>()
-  	descriptionBoxes = new HashMap<String, Pair<DescriptionBox, Map<String,String>>>()
-  	descriptionBoxExtendsClosedWorldDefinitions = new HashMap<String, Pair<DescriptionBoxExtendsClosedWorldDefinitions, Map<String,String>>>()
-  	descriptionBoxRefinements = new HashMap<String, Pair<DescriptionBoxRefinement, Map<String,String>>>()
   	entityStructuredDataPropertyParticularRestrictionAxioms = new HashMap<String, Pair<EntityStructuredDataPropertyParticularRestrictionAxiom, Map<String,String>>>()
+  	restrictionStructuredDataPropertyTuples = new HashMap<String, Pair<RestrictionStructuredDataPropertyTuple, Map<String,String>>>()
+  	restrictionScalarDataPropertyValues = new HashMap<String, Pair<RestrictionScalarDataPropertyValue, Map<String,String>>>()
+  	aspectSpecializationAxioms = new HashMap<String, Pair<AspectSpecializationAxiom, Map<String,String>>>()
+  	conceptSpecializationAxioms = new HashMap<String, Pair<ConceptSpecializationAxiom, Map<String,String>>>()
+  	reifiedRelationshipSpecializationAxioms = new HashMap<String, Pair<ReifiedRelationshipSpecializationAxiom, Map<String,String>>>()
+  	subDataPropertyOfAxioms = new HashMap<String, Pair<SubDataPropertyOfAxiom, Map<String,String>>>()
+  	subObjectPropertyOfAxioms = new HashMap<String, Pair<SubObjectPropertyOfAxiom, Map<String,String>>>()
+  	rootConceptTaxonomyAxioms = new HashMap<String, Pair<RootConceptTaxonomyAxiom, Map<String,String>>>()
+  	anonymousConceptUnionAxioms = new HashMap<String, Pair<AnonymousConceptUnionAxiom, Map<String,String>>>()
+  	specificDisjointConceptAxioms = new HashMap<String, Pair<SpecificDisjointConceptAxiom, Map<String,String>>>()
+  	conceptInstances = new HashMap<String, Pair<ConceptInstance, Map<String,String>>>()
   	reifiedRelationshipInstances = new HashMap<String, Pair<ReifiedRelationshipInstance, Map<String,String>>>()
   	reifiedRelationshipInstanceDomains = new HashMap<String, Pair<ReifiedRelationshipInstanceDomain, Map<String,String>>>()
   	reifiedRelationshipInstanceRanges = new HashMap<String, Pair<ReifiedRelationshipInstanceRange, Map<String,String>>>()
-  	reifiedRelationshipInversePropertyPredicates = new HashMap<String, Pair<ReifiedRelationshipInversePropertyPredicate, Map<String,String>>>()
-  	reifiedRelationshipPredicates = new HashMap<String, Pair<ReifiedRelationshipPredicate, Map<String,String>>>()
-  	reifiedRelationshipPropertyPredicates = new HashMap<String, Pair<ReifiedRelationshipPropertyPredicate, Map<String,String>>>()
-  	reifiedRelationshipSourceInversePropertyPredicates = new HashMap<String, Pair<ReifiedRelationshipSourceInversePropertyPredicate, Map<String,String>>>()
-  	reifiedRelationshipSourcePropertyPredicates = new HashMap<String, Pair<ReifiedRelationshipSourcePropertyPredicate, Map<String,String>>>()
-  	reifiedRelationshipTargetInversePropertyPredicates = new HashMap<String, Pair<ReifiedRelationshipTargetInversePropertyPredicate, Map<String,String>>>()
-  	reifiedRelationshipTargetPropertyPredicates = new HashMap<String, Pair<ReifiedRelationshipTargetPropertyPredicate, Map<String,String>>>()
-  	restrictionScalarDataPropertyValues = new HashMap<String, Pair<RestrictionScalarDataPropertyValue, Map<String,String>>>()
-  	restrictionStructuredDataPropertyTuples = new HashMap<String, Pair<RestrictionStructuredDataPropertyTuple, Map<String,String>>>()
-  	ruleBodySegments = new HashMap<String, Pair<RuleBodySegment, Map<String,String>>>()
-  	scalarDataPropertyValues = new HashMap<String, Pair<ScalarDataPropertyValue, Map<String,String>>>()
-  	singletonInstanceScalarDataPropertyValues = new HashMap<String, Pair<SingletonInstanceScalarDataPropertyValue, Map<String,String>>>()
-  	singletonInstanceStructuredDataPropertyValues = new HashMap<String, Pair<SingletonInstanceStructuredDataPropertyValue, Map<String,String>>>()
-  	structuredDataPropertyTuples = new HashMap<String, Pair<StructuredDataPropertyTuple, Map<String,String>>>()
-  	subDataPropertyOfAxioms = new HashMap<String, Pair<SubDataPropertyOfAxiom, Map<String,String>>>()
-  	subObjectPropertyOfAxioms = new HashMap<String, Pair<SubObjectPropertyOfAxiom, Map<String,String>>>()
   	unreifiedRelationshipInstanceTuples = new HashMap<String, Pair<UnreifiedRelationshipInstanceTuple, Map<String,String>>>()
-  	unreifiedRelationshipInversePropertyPredicates = new HashMap<String, Pair<UnreifiedRelationshipInversePropertyPredicate, Map<String,String>>>()
-  	unreifiedRelationshipPropertyPredicates = new HashMap<String, Pair<UnreifiedRelationshipPropertyPredicate, Map<String,String>>>()
+  	singletonInstanceStructuredDataPropertyValues = new HashMap<String, Pair<SingletonInstanceStructuredDataPropertyValue, Map<String,String>>>()
+  	singletonInstanceScalarDataPropertyValues = new HashMap<String, Pair<SingletonInstanceScalarDataPropertyValue, Map<String,String>>>()
+  	structuredDataPropertyTuples = new HashMap<String, Pair<StructuredDataPropertyTuple, Map<String,String>>>()
+  	scalarDataPropertyValues = new HashMap<String, Pair<ScalarDataPropertyValue, Map<String,String>>>()
+  	annotationPropertyValues = new HashMap<String, Pair<AnnotationPropertyValue, Map<String,String>>>()
   
     modules = new HashMap<String, Pair<Module, Map<String,String>>>()
     	logicalElements = new HashMap<String, Pair<LogicalElement, Map<String,String>>>()
@@ -310,14 +310,6 @@ class OMLSpecificationTables {
   
   static def void save(Extent e, ZipArchiveOutputStream zos) {
     var ZipArchiveEntry entry = null
-    // AnnotationProperty
-    entry = new ZipArchiveEntry("AnnotationProperties.json")
-    zos.putArchiveEntry(entry)
-    try {
-      zos.write(annotationPropertiesByteArray(e))
-    } finally {
-      zos.closeArchiveEntry()
-    }
     // TerminologyGraph
     entry = new ZipArchiveEntry("TerminologyGraphs.json")
     zos.putArchiveEntry(entry)
@@ -331,6 +323,54 @@ class OMLSpecificationTables {
     zos.putArchiveEntry(entry)
     try {
       zos.write(bundlesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
+    // DescriptionBox
+    entry = new ZipArchiveEntry("DescriptionBoxes.json")
+    zos.putArchiveEntry(entry)
+    try {
+      zos.write(descriptionBoxesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
+    // AnnotationProperty
+    entry = new ZipArchiveEntry("AnnotationProperties.json")
+    zos.putArchiveEntry(entry)
+    try {
+      zos.write(annotationPropertiesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
+    // Aspect
+    entry = new ZipArchiveEntry("Aspects.json")
+    zos.putArchiveEntry(entry)
+    try {
+      zos.write(aspectsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
+    // Concept
+    entry = new ZipArchiveEntry("Concepts.json")
+    zos.putArchiveEntry(entry)
+    try {
+      zos.write(conceptsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
+    // Scalar
+    entry = new ZipArchiveEntry("Scalars.json")
+    zos.putArchiveEntry(entry)
+    try {
+      zos.write(scalarsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
+    // Structure
+    entry = new ZipArchiveEntry("Structures.json")
+    zos.putArchiveEntry(entry)
+    try {
+      zos.write(structuresByteArray(e))
     } finally {
       zos.closeArchiveEntry()
     }
@@ -358,51 +398,27 @@ class OMLSpecificationTables {
     } finally {
       zos.closeArchiveEntry()
     }
-    // Aspect
-    entry = new ZipArchiveEntry("Aspects.json")
+    // BundledTerminologyAxiom
+    entry = new ZipArchiveEntry("BundledTerminologyAxioms.json")
     zos.putArchiveEntry(entry)
     try {
-      zos.write(aspectsByteArray(e))
+      zos.write(bundledTerminologyAxiomsByteArray(e))
     } finally {
       zos.closeArchiveEntry()
     }
-    // Concept
-    entry = new ZipArchiveEntry("Concepts.json")
+    // DescriptionBoxExtendsClosedWorldDefinitions
+    entry = new ZipArchiveEntry("DescriptionBoxExtendsClosedWorldDefinitions.json")
     zos.putArchiveEntry(entry)
     try {
-      zos.write(conceptsByteArray(e))
+      zos.write(descriptionBoxExtendsClosedWorldDefinitionsByteArray(e))
     } finally {
       zos.closeArchiveEntry()
     }
-    // ReifiedRelationship
-    entry = new ZipArchiveEntry("ReifiedRelationships.json")
+    // DescriptionBoxRefinement
+    entry = new ZipArchiveEntry("DescriptionBoxRefinements.json")
     zos.putArchiveEntry(entry)
     try {
-      zos.write(reifiedRelationshipsByteArray(e))
-    } finally {
-      zos.closeArchiveEntry()
-    }
-    // UnreifiedRelationship
-    entry = new ZipArchiveEntry("UnreifiedRelationships.json")
-    zos.putArchiveEntry(entry)
-    try {
-      zos.write(unreifiedRelationshipsByteArray(e))
-    } finally {
-      zos.closeArchiveEntry()
-    }
-    // Scalar
-    entry = new ZipArchiveEntry("Scalars.json")
-    zos.putArchiveEntry(entry)
-    try {
-      zos.write(scalarsByteArray(e))
-    } finally {
-      zos.closeArchiveEntry()
-    }
-    // Structure
-    entry = new ZipArchiveEntry("Structures.json")
-    zos.putArchiveEntry(entry)
-    try {
-      zos.write(structuresByteArray(e))
+      zos.write(descriptionBoxRefinementsByteArray(e))
     } finally {
       zos.closeArchiveEntry()
     }
@@ -443,6 +459,14 @@ class OMLSpecificationTables {
     zos.putArchiveEntry(entry)
     try {
       zos.write(scalarOneOfRestrictionsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
+    // ScalarOneOfLiteralAxiom
+    entry = new ZipArchiveEntry("ScalarOneOfLiteralAxioms.json")
+    zos.putArchiveEntry(entry)
+    try {
+      zos.write(scalarOneOfLiteralAxiomsByteArray(e))
     } finally {
       zos.closeArchiveEntry()
     }
@@ -502,27 +526,123 @@ class OMLSpecificationTables {
     } finally {
       zos.closeArchiveEntry()
     }
-    // AspectSpecializationAxiom
-    entry = new ZipArchiveEntry("AspectSpecializationAxioms.json")
+    // ReifiedRelationship
+    entry = new ZipArchiveEntry("ReifiedRelationships.json")
     zos.putArchiveEntry(entry)
     try {
-      zos.write(aspectSpecializationAxiomsByteArray(e))
+      zos.write(reifiedRelationshipsByteArray(e))
     } finally {
       zos.closeArchiveEntry()
     }
-    // ConceptSpecializationAxiom
-    entry = new ZipArchiveEntry("ConceptSpecializationAxioms.json")
+    // UnreifiedRelationship
+    entry = new ZipArchiveEntry("UnreifiedRelationships.json")
     zos.putArchiveEntry(entry)
     try {
-      zos.write(conceptSpecializationAxiomsByteArray(e))
+      zos.write(unreifiedRelationshipsByteArray(e))
     } finally {
       zos.closeArchiveEntry()
     }
-    // ReifiedRelationshipSpecializationAxiom
-    entry = new ZipArchiveEntry("ReifiedRelationshipSpecializationAxioms.json")
+    // ChainRule
+    entry = new ZipArchiveEntry("ChainRules.json")
     zos.putArchiveEntry(entry)
     try {
-      zos.write(reifiedRelationshipSpecializationAxiomsByteArray(e))
+      zos.write(chainRulesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
+    // RuleBodySegment
+    entry = new ZipArchiveEntry("RuleBodySegments.json")
+    zos.putArchiveEntry(entry)
+    try {
+      zos.write(ruleBodySegmentsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
+    // AspectPredicate
+    entry = new ZipArchiveEntry("AspectPredicates.json")
+    zos.putArchiveEntry(entry)
+    try {
+      zos.write(aspectPredicatesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
+    // ConceptPredicate
+    entry = new ZipArchiveEntry("ConceptPredicates.json")
+    zos.putArchiveEntry(entry)
+    try {
+      zos.write(conceptPredicatesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
+    // ReifiedRelationshipPredicate
+    entry = new ZipArchiveEntry("ReifiedRelationshipPredicates.json")
+    zos.putArchiveEntry(entry)
+    try {
+      zos.write(reifiedRelationshipPredicatesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
+    // ReifiedRelationshipPropertyPredicate
+    entry = new ZipArchiveEntry("ReifiedRelationshipPropertyPredicates.json")
+    zos.putArchiveEntry(entry)
+    try {
+      zos.write(reifiedRelationshipPropertyPredicatesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
+    // ReifiedRelationshipSourcePropertyPredicate
+    entry = new ZipArchiveEntry("ReifiedRelationshipSourcePropertyPredicates.json")
+    zos.putArchiveEntry(entry)
+    try {
+      zos.write(reifiedRelationshipSourcePropertyPredicatesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
+    // ReifiedRelationshipTargetPropertyPredicate
+    entry = new ZipArchiveEntry("ReifiedRelationshipTargetPropertyPredicates.json")
+    zos.putArchiveEntry(entry)
+    try {
+      zos.write(reifiedRelationshipTargetPropertyPredicatesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
+    // UnreifiedRelationshipPropertyPredicate
+    entry = new ZipArchiveEntry("UnreifiedRelationshipPropertyPredicates.json")
+    zos.putArchiveEntry(entry)
+    try {
+      zos.write(unreifiedRelationshipPropertyPredicatesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
+    // ReifiedRelationshipInversePropertyPredicate
+    entry = new ZipArchiveEntry("ReifiedRelationshipInversePropertyPredicates.json")
+    zos.putArchiveEntry(entry)
+    try {
+      zos.write(reifiedRelationshipInversePropertyPredicatesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
+    // ReifiedRelationshipSourceInversePropertyPredicate
+    entry = new ZipArchiveEntry("ReifiedRelationshipSourceInversePropertyPredicates.json")
+    zos.putArchiveEntry(entry)
+    try {
+      zos.write(reifiedRelationshipSourceInversePropertyPredicatesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
+    // ReifiedRelationshipTargetInversePropertyPredicate
+    entry = new ZipArchiveEntry("ReifiedRelationshipTargetInversePropertyPredicates.json")
+    zos.putArchiveEntry(entry)
+    try {
+      zos.write(reifiedRelationshipTargetInversePropertyPredicatesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
+    // UnreifiedRelationshipInversePropertyPredicate
+    entry = new ZipArchiveEntry("UnreifiedRelationshipInversePropertyPredicates.json")
+    zos.putArchiveEntry(entry)
+    try {
+      zos.write(unreifiedRelationshipInversePropertyPredicatesByteArray(e))
     } finally {
       zos.closeArchiveEntry()
     }
@@ -566,19 +686,67 @@ class OMLSpecificationTables {
     } finally {
       zos.closeArchiveEntry()
     }
-    // ScalarOneOfLiteralAxiom
-    entry = new ZipArchiveEntry("ScalarOneOfLiteralAxioms.json")
+    // EntityStructuredDataPropertyParticularRestrictionAxiom
+    entry = new ZipArchiveEntry("EntityStructuredDataPropertyParticularRestrictionAxioms.json")
     zos.putArchiveEntry(entry)
     try {
-      zos.write(scalarOneOfLiteralAxiomsByteArray(e))
+      zos.write(entityStructuredDataPropertyParticularRestrictionAxiomsByteArray(e))
     } finally {
       zos.closeArchiveEntry()
     }
-    // BundledTerminologyAxiom
-    entry = new ZipArchiveEntry("BundledTerminologyAxioms.json")
+    // RestrictionStructuredDataPropertyTuple
+    entry = new ZipArchiveEntry("RestrictionStructuredDataPropertyTuples.json")
     zos.putArchiveEntry(entry)
     try {
-      zos.write(bundledTerminologyAxiomsByteArray(e))
+      zos.write(restrictionStructuredDataPropertyTuplesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
+    // RestrictionScalarDataPropertyValue
+    entry = new ZipArchiveEntry("RestrictionScalarDataPropertyValues.json")
+    zos.putArchiveEntry(entry)
+    try {
+      zos.write(restrictionScalarDataPropertyValuesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
+    // AspectSpecializationAxiom
+    entry = new ZipArchiveEntry("AspectSpecializationAxioms.json")
+    zos.putArchiveEntry(entry)
+    try {
+      zos.write(aspectSpecializationAxiomsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
+    // ConceptSpecializationAxiom
+    entry = new ZipArchiveEntry("ConceptSpecializationAxioms.json")
+    zos.putArchiveEntry(entry)
+    try {
+      zos.write(conceptSpecializationAxiomsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
+    // ReifiedRelationshipSpecializationAxiom
+    entry = new ZipArchiveEntry("ReifiedRelationshipSpecializationAxioms.json")
+    zos.putArchiveEntry(entry)
+    try {
+      zos.write(reifiedRelationshipSpecializationAxiomsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
+    // SubDataPropertyOfAxiom
+    entry = new ZipArchiveEntry("SubDataPropertyOfAxioms.json")
+    zos.putArchiveEntry(entry)
+    try {
+      zos.write(subDataPropertyOfAxiomsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
+    // SubObjectPropertyOfAxiom
+    entry = new ZipArchiveEntry("SubObjectPropertyOfAxioms.json")
+    zos.putArchiveEntry(entry)
+    try {
+      zos.write(subObjectPropertyOfAxiomsByteArray(e))
     } finally {
       zos.closeArchiveEntry()
     }
@@ -590,22 +758,6 @@ class OMLSpecificationTables {
     } finally {
       zos.closeArchiveEntry()
     }
-    // SpecificDisjointConceptAxiom
-    entry = new ZipArchiveEntry("SpecificDisjointConceptAxioms.json")
-    zos.putArchiveEntry(entry)
-    try {
-      zos.write(specificDisjointConceptAxiomsByteArray(e))
-    } finally {
-      zos.closeArchiveEntry()
-    }
-    // AnnotationPropertyValue
-    entry = new ZipArchiveEntry("AnnotationPropertyValues.json")
-    zos.putArchiveEntry(entry)
-    try {
-      zos.write(annotationPropertyValuesByteArray(e))
-    } finally {
-      zos.closeArchiveEntry()
-    }
     // AnonymousConceptUnionAxiom
     entry = new ZipArchiveEntry("AnonymousConceptUnionAxioms.json")
     zos.putArchiveEntry(entry)
@@ -614,19 +766,11 @@ class OMLSpecificationTables {
     } finally {
       zos.closeArchiveEntry()
     }
-    // AspectPredicate
-    entry = new ZipArchiveEntry("AspectPredicates.json")
+    // SpecificDisjointConceptAxiom
+    entry = new ZipArchiveEntry("SpecificDisjointConceptAxioms.json")
     zos.putArchiveEntry(entry)
     try {
-      zos.write(aspectPredicatesByteArray(e))
-    } finally {
-      zos.closeArchiveEntry()
-    }
-    // ChainRule
-    entry = new ZipArchiveEntry("ChainRules.json")
-    zos.putArchiveEntry(entry)
-    try {
-      zos.write(chainRulesByteArray(e))
+      zos.write(specificDisjointConceptAxiomsByteArray(e))
     } finally {
       zos.closeArchiveEntry()
     }
@@ -635,46 +779,6 @@ class OMLSpecificationTables {
     zos.putArchiveEntry(entry)
     try {
       zos.write(conceptInstancesByteArray(e))
-    } finally {
-      zos.closeArchiveEntry()
-    }
-    // ConceptPredicate
-    entry = new ZipArchiveEntry("ConceptPredicates.json")
-    zos.putArchiveEntry(entry)
-    try {
-      zos.write(conceptPredicatesByteArray(e))
-    } finally {
-      zos.closeArchiveEntry()
-    }
-    // DescriptionBox
-    entry = new ZipArchiveEntry("DescriptionBoxes.json")
-    zos.putArchiveEntry(entry)
-    try {
-      zos.write(descriptionBoxesByteArray(e))
-    } finally {
-      zos.closeArchiveEntry()
-    }
-    // DescriptionBoxExtendsClosedWorldDefinitions
-    entry = new ZipArchiveEntry("DescriptionBoxExtendsClosedWorldDefinitions.json")
-    zos.putArchiveEntry(entry)
-    try {
-      zos.write(descriptionBoxExtendsClosedWorldDefinitionsByteArray(e))
-    } finally {
-      zos.closeArchiveEntry()
-    }
-    // DescriptionBoxRefinement
-    entry = new ZipArchiveEntry("DescriptionBoxRefinements.json")
-    zos.putArchiveEntry(entry)
-    try {
-      zos.write(descriptionBoxRefinementsByteArray(e))
-    } finally {
-      zos.closeArchiveEntry()
-    }
-    // EntityStructuredDataPropertyParticularRestrictionAxiom
-    entry = new ZipArchiveEntry("EntityStructuredDataPropertyParticularRestrictionAxioms.json")
-    zos.putArchiveEntry(entry)
-    try {
-      zos.write(entityStructuredDataPropertyParticularRestrictionAxiomsByteArray(e))
     } finally {
       zos.closeArchiveEntry()
     }
@@ -702,99 +806,11 @@ class OMLSpecificationTables {
     } finally {
       zos.closeArchiveEntry()
     }
-    // ReifiedRelationshipInversePropertyPredicate
-    entry = new ZipArchiveEntry("ReifiedRelationshipInversePropertyPredicates.json")
+    // UnreifiedRelationshipInstanceTuple
+    entry = new ZipArchiveEntry("UnreifiedRelationshipInstanceTuples.json")
     zos.putArchiveEntry(entry)
     try {
-      zos.write(reifiedRelationshipInversePropertyPredicatesByteArray(e))
-    } finally {
-      zos.closeArchiveEntry()
-    }
-    // ReifiedRelationshipPredicate
-    entry = new ZipArchiveEntry("ReifiedRelationshipPredicates.json")
-    zos.putArchiveEntry(entry)
-    try {
-      zos.write(reifiedRelationshipPredicatesByteArray(e))
-    } finally {
-      zos.closeArchiveEntry()
-    }
-    // ReifiedRelationshipPropertyPredicate
-    entry = new ZipArchiveEntry("ReifiedRelationshipPropertyPredicates.json")
-    zos.putArchiveEntry(entry)
-    try {
-      zos.write(reifiedRelationshipPropertyPredicatesByteArray(e))
-    } finally {
-      zos.closeArchiveEntry()
-    }
-    // ReifiedRelationshipSourceInversePropertyPredicate
-    entry = new ZipArchiveEntry("ReifiedRelationshipSourceInversePropertyPredicates.json")
-    zos.putArchiveEntry(entry)
-    try {
-      zos.write(reifiedRelationshipSourceInversePropertyPredicatesByteArray(e))
-    } finally {
-      zos.closeArchiveEntry()
-    }
-    // ReifiedRelationshipSourcePropertyPredicate
-    entry = new ZipArchiveEntry("ReifiedRelationshipSourcePropertyPredicates.json")
-    zos.putArchiveEntry(entry)
-    try {
-      zos.write(reifiedRelationshipSourcePropertyPredicatesByteArray(e))
-    } finally {
-      zos.closeArchiveEntry()
-    }
-    // ReifiedRelationshipTargetInversePropertyPredicate
-    entry = new ZipArchiveEntry("ReifiedRelationshipTargetInversePropertyPredicates.json")
-    zos.putArchiveEntry(entry)
-    try {
-      zos.write(reifiedRelationshipTargetInversePropertyPredicatesByteArray(e))
-    } finally {
-      zos.closeArchiveEntry()
-    }
-    // ReifiedRelationshipTargetPropertyPredicate
-    entry = new ZipArchiveEntry("ReifiedRelationshipTargetPropertyPredicates.json")
-    zos.putArchiveEntry(entry)
-    try {
-      zos.write(reifiedRelationshipTargetPropertyPredicatesByteArray(e))
-    } finally {
-      zos.closeArchiveEntry()
-    }
-    // RestrictionScalarDataPropertyValue
-    entry = new ZipArchiveEntry("RestrictionScalarDataPropertyValues.json")
-    zos.putArchiveEntry(entry)
-    try {
-      zos.write(restrictionScalarDataPropertyValuesByteArray(e))
-    } finally {
-      zos.closeArchiveEntry()
-    }
-    // RestrictionStructuredDataPropertyTuple
-    entry = new ZipArchiveEntry("RestrictionStructuredDataPropertyTuples.json")
-    zos.putArchiveEntry(entry)
-    try {
-      zos.write(restrictionStructuredDataPropertyTuplesByteArray(e))
-    } finally {
-      zos.closeArchiveEntry()
-    }
-    // RuleBodySegment
-    entry = new ZipArchiveEntry("RuleBodySegments.json")
-    zos.putArchiveEntry(entry)
-    try {
-      zos.write(ruleBodySegmentsByteArray(e))
-    } finally {
-      zos.closeArchiveEntry()
-    }
-    // ScalarDataPropertyValue
-    entry = new ZipArchiveEntry("ScalarDataPropertyValues.json")
-    zos.putArchiveEntry(entry)
-    try {
-      zos.write(scalarDataPropertyValuesByteArray(e))
-    } finally {
-      zos.closeArchiveEntry()
-    }
-    // SingletonInstanceScalarDataPropertyValue
-    entry = new ZipArchiveEntry("SingletonInstanceScalarDataPropertyValues.json")
-    zos.putArchiveEntry(entry)
-    try {
-      zos.write(singletonInstanceScalarDataPropertyValuesByteArray(e))
+      zos.write(unreifiedRelationshipInstanceTuplesByteArray(e))
     } finally {
       zos.closeArchiveEntry()
     }
@@ -806,6 +822,14 @@ class OMLSpecificationTables {
     } finally {
       zos.closeArchiveEntry()
     }
+    // SingletonInstanceScalarDataPropertyValue
+    entry = new ZipArchiveEntry("SingletonInstanceScalarDataPropertyValues.json")
+    zos.putArchiveEntry(entry)
+    try {
+      zos.write(singletonInstanceScalarDataPropertyValuesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // StructuredDataPropertyTuple
     entry = new ZipArchiveEntry("StructuredDataPropertyTuples.json")
     zos.putArchiveEntry(entry)
@@ -814,72 +838,22 @@ class OMLSpecificationTables {
     } finally {
       zos.closeArchiveEntry()
     }
-    // SubDataPropertyOfAxiom
-    entry = new ZipArchiveEntry("SubDataPropertyOfAxioms.json")
+    // ScalarDataPropertyValue
+    entry = new ZipArchiveEntry("ScalarDataPropertyValues.json")
     zos.putArchiveEntry(entry)
     try {
-      zos.write(subDataPropertyOfAxiomsByteArray(e))
+      zos.write(scalarDataPropertyValuesByteArray(e))
     } finally {
       zos.closeArchiveEntry()
     }
-    // SubObjectPropertyOfAxiom
-    entry = new ZipArchiveEntry("SubObjectPropertyOfAxioms.json")
+    // AnnotationPropertyValue
+    entry = new ZipArchiveEntry("AnnotationPropertyValues.json")
     zos.putArchiveEntry(entry)
     try {
-      zos.write(subObjectPropertyOfAxiomsByteArray(e))
+      zos.write(annotationPropertyValuesByteArray(e))
     } finally {
       zos.closeArchiveEntry()
     }
-    // UnreifiedRelationshipInstanceTuple
-    entry = new ZipArchiveEntry("UnreifiedRelationshipInstanceTuples.json")
-    zos.putArchiveEntry(entry)
-    try {
-      zos.write(unreifiedRelationshipInstanceTuplesByteArray(e))
-    } finally {
-      zos.closeArchiveEntry()
-    }
-    // UnreifiedRelationshipInversePropertyPredicate
-    entry = new ZipArchiveEntry("UnreifiedRelationshipInversePropertyPredicates.json")
-    zos.putArchiveEntry(entry)
-    try {
-      zos.write(unreifiedRelationshipInversePropertyPredicatesByteArray(e))
-    } finally {
-      zos.closeArchiveEntry()
-    }
-    // UnreifiedRelationshipPropertyPredicate
-    entry = new ZipArchiveEntry("UnreifiedRelationshipPropertyPredicates.json")
-    zos.putArchiveEntry(entry)
-    try {
-      zos.write(unreifiedRelationshipPropertyPredicatesByteArray(e))
-    } finally {
-      zos.closeArchiveEntry()
-    }
-  }
-  
-  static def byte[] annotationPropertiesByteArray(Extent e) {
-  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
-  	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.annotationProperties(e).forEach[it |
-  	  pw.print("{")
-      pw.print("\"uuid\":")
-      pw.print("\"")
-      pw.print(it.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"moduleUUID\":")
-      pw.print("\"")
-      pw.print(it.module.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"iri\":")
-      pw.print(OMLTables.toString(it.iri()))
-      pw.print(",")
-      pw.print("\"abbrevIRI\":")
-      pw.print(OMLTables.toString(it.abbrevIRI))
-      pw.println("}")
-    ]
-    pw.close()
-    return bos.toByteArray()
   }
   
   static def byte[] terminologyGraphsByteArray(Extent e) {
@@ -918,6 +892,145 @@ class OMLSpecificationTables {
       pw.print(",")
       pw.print("\"iri\":")
       pw.print(OMLTables.toString(it.iri()))
+      pw.println("}")
+    ]
+    pw.close()
+    return bos.toByteArray()
+  }
+  
+  static def byte[] descriptionBoxesByteArray(Extent e) {
+  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
+  	val PrintWriter pw = new PrintWriter(bos)
+  	OMLTables.descriptionBoxes(e).forEach[it |
+  	  pw.print("{")
+      pw.print("\"uuid\":")
+      pw.print("\"")
+      pw.print(it.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"kind\":")
+      pw.print(OMLTables.toString(it.kind))
+      pw.print(",")
+      pw.print("\"iri\":")
+      pw.print(OMLTables.toString(it.iri()))
+      pw.println("}")
+    ]
+    pw.close()
+    return bos.toByteArray()
+  }
+  
+  static def byte[] annotationPropertiesByteArray(Extent e) {
+  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
+  	val PrintWriter pw = new PrintWriter(bos)
+  	OMLTables.annotationProperties(e).forEach[it |
+  	  pw.print("{")
+      pw.print("\"uuid\":")
+      pw.print("\"")
+      pw.print(it.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"moduleUUID\":")
+      pw.print("\"")
+      pw.print(it.module.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"iri\":")
+      pw.print(OMLTables.toString(it.iri()))
+      pw.print(",")
+      pw.print("\"abbrevIRI\":")
+      pw.print(OMLTables.toString(it.abbrevIRI))
+      pw.println("}")
+    ]
+    pw.close()
+    return bos.toByteArray()
+  }
+  
+  static def byte[] aspectsByteArray(Extent e) {
+  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
+  	val PrintWriter pw = new PrintWriter(bos)
+  	OMLTables.aspects(e).forEach[it |
+  	  pw.print("{")
+      pw.print("\"uuid\":")
+      pw.print("\"")
+      pw.print(it.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"tboxUUID\":")
+      pw.print("\"")
+      pw.print(it.tbox.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"name\":")
+      pw.print(OMLTables.toString(it.name()))
+      pw.println("}")
+    ]
+    pw.close()
+    return bos.toByteArray()
+  }
+  
+  static def byte[] conceptsByteArray(Extent e) {
+  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
+  	val PrintWriter pw = new PrintWriter(bos)
+  	OMLTables.concepts(e).forEach[it |
+  	  pw.print("{")
+      pw.print("\"uuid\":")
+      pw.print("\"")
+      pw.print(it.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"tboxUUID\":")
+      pw.print("\"")
+      pw.print(it.tbox.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"name\":")
+      pw.print(OMLTables.toString(it.name()))
+      pw.println("}")
+    ]
+    pw.close()
+    return bos.toByteArray()
+  }
+  
+  static def byte[] scalarsByteArray(Extent e) {
+  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
+  	val PrintWriter pw = new PrintWriter(bos)
+  	OMLTables.scalars(e).forEach[it |
+  	  pw.print("{")
+      pw.print("\"uuid\":")
+      pw.print("\"")
+      pw.print(it.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"tboxUUID\":")
+      pw.print("\"")
+      pw.print(it.tbox.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"name\":")
+      pw.print(OMLTables.toString(it.name()))
+      pw.println("}")
+    ]
+    pw.close()
+    return bos.toByteArray()
+  }
+  
+  static def byte[] structuresByteArray(Extent e) {
+  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
+  	val PrintWriter pw = new PrintWriter(bos)
+  	OMLTables.structures(e).forEach[it |
+  	  pw.print("{")
+      pw.print("\"uuid\":")
+      pw.print("\"")
+      pw.print(it.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"tboxUUID\":")
+      pw.print("\"")
+      pw.print(it.tbox.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"name\":")
+      pw.print(OMLTables.toString(it.name()))
       pw.println("}")
     ]
     pw.close()
@@ -1009,218 +1122,75 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] aspectsByteArray(Extent e) {
+  static def byte[] bundledTerminologyAxiomsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.aspects(e).forEach[it |
+  	OMLTables.bundledTerminologyAxioms(e).forEach[it |
   	  pw.print("{")
       pw.print("\"uuid\":")
       pw.print("\"")
       pw.print(it.uuid())
       pw.print("\"")
       pw.print(",")
-      pw.print("\"tboxUUID\":")
+      pw.print("\"bundleUUID\":")
       pw.print("\"")
-      pw.print(it.tbox.uuid())
+      pw.print(it.bundle.uuid())
       pw.print("\"")
       pw.print(",")
-      pw.print("\"name\":")
-      pw.print(OMLTables.toString(it.name()))
+      pw.print("\"bundledTerminologyIRI\":")
+      pw.print("\"")
+      pw.print(it.bundledTerminology.iri())
+      pw.print("\"")
       pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
   }
   
-  static def byte[] conceptsByteArray(Extent e) {
+  static def byte[] descriptionBoxExtendsClosedWorldDefinitionsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.concepts(e).forEach[it |
+  	OMLTables.descriptionBoxExtendsClosedWorldDefinitions(e).forEach[it |
   	  pw.print("{")
       pw.print("\"uuid\":")
       pw.print("\"")
       pw.print(it.uuid())
       pw.print("\"")
       pw.print(",")
-      pw.print("\"tboxUUID\":")
+      pw.print("\"descriptionBoxUUID\":")
       pw.print("\"")
-      pw.print(it.tbox.uuid())
+      pw.print(it.descriptionBox.uuid())
       pw.print("\"")
       pw.print(",")
-      pw.print("\"name\":")
-      pw.print(OMLTables.toString(it.name()))
+      pw.print("\"closedWorldDefinitionsIRI\":")
+      pw.print("\"")
+      pw.print(it.closedWorldDefinitions.iri())
+      pw.print("\"")
       pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
   }
   
-  static def byte[] reifiedRelationshipsByteArray(Extent e) {
+  static def byte[] descriptionBoxRefinementsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.reifiedRelationships(e).forEach[it |
+  	OMLTables.descriptionBoxRefinements(e).forEach[it |
   	  pw.print("{")
       pw.print("\"uuid\":")
       pw.print("\"")
       pw.print(it.uuid())
       pw.print("\"")
       pw.print(",")
-      pw.print("\"tboxUUID\":")
+      pw.print("\"refiningDescriptionBoxUUID\":")
       pw.print("\"")
-      pw.print(it.tbox.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"sourceUUID\":")
-      pw.print("\"")
-      pw.print(it.source.uuid())
+      pw.print(it.refiningDescriptionBox.uuid())
       pw.print("\"")
       pw.print(",")
-      pw.print("\"targetUUID\":")
+      pw.print("\"refinedDescriptionBoxIRI\":")
       pw.print("\"")
-      pw.print(it.target.uuid())
+      pw.print(it.refinedDescriptionBox.iri())
       pw.print("\"")
-      pw.print(",")
-      pw.print("\"isAsymmetric\":")
-      pw.print(OMLTables.toString(it.isAsymmetric))
-      pw.print(",")
-      pw.print("\"isEssential\":")
-      pw.print(OMLTables.toString(it.isEssential))
-      pw.print(",")
-      pw.print("\"isFunctional\":")
-      pw.print(OMLTables.toString(it.isFunctional))
-      pw.print(",")
-      pw.print("\"isInverseEssential\":")
-      pw.print(OMLTables.toString(it.isInverseEssential))
-      pw.print(",")
-      pw.print("\"isInverseFunctional\":")
-      pw.print(OMLTables.toString(it.isInverseFunctional))
-      pw.print(",")
-      pw.print("\"isIrreflexive\":")
-      pw.print(OMLTables.toString(it.isIrreflexive))
-      pw.print(",")
-      pw.print("\"isReflexive\":")
-      pw.print(OMLTables.toString(it.isReflexive))
-      pw.print(",")
-      pw.print("\"isSymmetric\":")
-      pw.print(OMLTables.toString(it.isSymmetric))
-      pw.print(",")
-      pw.print("\"isTransitive\":")
-      pw.print(OMLTables.toString(it.isTransitive))
-      pw.print(",")
-      pw.print("\"name\":")
-      pw.print(OMLTables.toString(it.name()))
-      pw.print(",")
-      pw.print("\"unreifiedPropertyName\":")
-      pw.print(OMLTables.toString(it.unreifiedPropertyName))
-      pw.print(",")
-      pw.print("\"unreifiedInversePropertyName\":")
-      pw.print(OMLTables.toString(it.unreifiedInversePropertyName))
-      pw.println("}")
-    ]
-    pw.close()
-    return bos.toByteArray()
-  }
-  
-  static def byte[] unreifiedRelationshipsByteArray(Extent e) {
-  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
-  	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.unreifiedRelationships(e).forEach[it |
-  	  pw.print("{")
-      pw.print("\"uuid\":")
-      pw.print("\"")
-      pw.print(it.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"tboxUUID\":")
-      pw.print("\"")
-      pw.print(it.tbox.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"sourceUUID\":")
-      pw.print("\"")
-      pw.print(it.source.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"targetUUID\":")
-      pw.print("\"")
-      pw.print(it.target.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"isAsymmetric\":")
-      pw.print(OMLTables.toString(it.isAsymmetric))
-      pw.print(",")
-      pw.print("\"isEssential\":")
-      pw.print(OMLTables.toString(it.isEssential))
-      pw.print(",")
-      pw.print("\"isFunctional\":")
-      pw.print(OMLTables.toString(it.isFunctional))
-      pw.print(",")
-      pw.print("\"isInverseEssential\":")
-      pw.print(OMLTables.toString(it.isInverseEssential))
-      pw.print(",")
-      pw.print("\"isInverseFunctional\":")
-      pw.print(OMLTables.toString(it.isInverseFunctional))
-      pw.print(",")
-      pw.print("\"isIrreflexive\":")
-      pw.print(OMLTables.toString(it.isIrreflexive))
-      pw.print(",")
-      pw.print("\"isReflexive\":")
-      pw.print(OMLTables.toString(it.isReflexive))
-      pw.print(",")
-      pw.print("\"isSymmetric\":")
-      pw.print(OMLTables.toString(it.isSymmetric))
-      pw.print(",")
-      pw.print("\"isTransitive\":")
-      pw.print(OMLTables.toString(it.isTransitive))
-      pw.print(",")
-      pw.print("\"name\":")
-      pw.print(OMLTables.toString(it.name()))
-      pw.println("}")
-    ]
-    pw.close()
-    return bos.toByteArray()
-  }
-  
-  static def byte[] scalarsByteArray(Extent e) {
-  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
-  	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.scalars(e).forEach[it |
-  	  pw.print("{")
-      pw.print("\"uuid\":")
-      pw.print("\"")
-      pw.print(it.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"tboxUUID\":")
-      pw.print("\"")
-      pw.print(it.tbox.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"name\":")
-      pw.print(OMLTables.toString(it.name()))
-      pw.println("}")
-    ]
-    pw.close()
-    return bos.toByteArray()
-  }
-  
-  static def byte[] structuresByteArray(Extent e) {
-  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
-  	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.structures(e).forEach[it |
-  	  pw.print("{")
-      pw.print("\"uuid\":")
-      pw.print("\"")
-      pw.print(it.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"tboxUUID\":")
-      pw.print("\"")
-      pw.print(it.tbox.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"name\":")
-      pw.print(OMLTables.toString(it.name()))
       pw.println("}")
     ]
     pw.close()
@@ -1409,6 +1379,42 @@ class OMLSpecificationTables {
       pw.print(",")
       pw.print("\"name\":")
       pw.print(OMLTables.toString(it.name()))
+      pw.println("}")
+    ]
+    pw.close()
+    return bos.toByteArray()
+  }
+  
+  static def byte[] scalarOneOfLiteralAxiomsByteArray(Extent e) {
+  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
+  	val PrintWriter pw = new PrintWriter(bos)
+  	OMLTables.scalarOneOfLiteralAxioms(e).forEach[it |
+  	  pw.print("{")
+      pw.print("\"uuid\":")
+      pw.print("\"")
+      pw.print(it.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"tboxUUID\":")
+      pw.print("\"")
+      pw.print(it.tbox.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"axiomUUID\":")
+      pw.print("\"")
+      pw.print(it.axiom.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"value\":")
+      pw.print(OMLTables.toString(it.value))
+      pw.print(",")
+      pw.print("\"valueTypeUUID\":")
+      if (null !== valueType) {
+        pw.print("\"")
+        pw.print(it.valueType?.uuid())
+        pw.print("\"")
+      } else
+        pw.print("null")
       pw.println("}")
     ]
     pw.close()
@@ -1661,10 +1667,10 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] aspectSpecializationAxiomsByteArray(Extent e) {
+  static def byte[] reifiedRelationshipsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.aspectSpecializationAxioms(e).forEach[it |
+  	OMLTables.reifiedRelationships(e).forEach[it |
   	  pw.print("{")
       pw.print("\"uuid\":")
       pw.print("\"")
@@ -1676,14 +1682,138 @@ class OMLSpecificationTables {
       pw.print(it.tbox.uuid())
       pw.print("\"")
       pw.print(",")
-      pw.print("\"superAspectUUID\":")
+      pw.print("\"sourceUUID\":")
       pw.print("\"")
-      pw.print(it.superAspect.uuid())
+      pw.print(it.source.uuid())
       pw.print("\"")
       pw.print(",")
-      pw.print("\"subEntityUUID\":")
+      pw.print("\"targetUUID\":")
       pw.print("\"")
-      pw.print(it.subEntity.uuid())
+      pw.print(it.target.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"isAsymmetric\":")
+      pw.print(OMLTables.toString(it.isAsymmetric))
+      pw.print(",")
+      pw.print("\"isEssential\":")
+      pw.print(OMLTables.toString(it.isEssential))
+      pw.print(",")
+      pw.print("\"isFunctional\":")
+      pw.print(OMLTables.toString(it.isFunctional))
+      pw.print(",")
+      pw.print("\"isInverseEssential\":")
+      pw.print(OMLTables.toString(it.isInverseEssential))
+      pw.print(",")
+      pw.print("\"isInverseFunctional\":")
+      pw.print(OMLTables.toString(it.isInverseFunctional))
+      pw.print(",")
+      pw.print("\"isIrreflexive\":")
+      pw.print(OMLTables.toString(it.isIrreflexive))
+      pw.print(",")
+      pw.print("\"isReflexive\":")
+      pw.print(OMLTables.toString(it.isReflexive))
+      pw.print(",")
+      pw.print("\"isSymmetric\":")
+      pw.print(OMLTables.toString(it.isSymmetric))
+      pw.print(",")
+      pw.print("\"isTransitive\":")
+      pw.print(OMLTables.toString(it.isTransitive))
+      pw.print(",")
+      pw.print("\"name\":")
+      pw.print(OMLTables.toString(it.name()))
+      pw.print(",")
+      pw.print("\"unreifiedPropertyName\":")
+      pw.print(OMLTables.toString(it.unreifiedPropertyName))
+      pw.print(",")
+      pw.print("\"unreifiedInversePropertyName\":")
+      pw.print(OMLTables.toString(it.unreifiedInversePropertyName))
+      pw.println("}")
+    ]
+    pw.close()
+    return bos.toByteArray()
+  }
+  
+  static def byte[] unreifiedRelationshipsByteArray(Extent e) {
+  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
+  	val PrintWriter pw = new PrintWriter(bos)
+  	OMLTables.unreifiedRelationships(e).forEach[it |
+  	  pw.print("{")
+      pw.print("\"uuid\":")
+      pw.print("\"")
+      pw.print(it.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"tboxUUID\":")
+      pw.print("\"")
+      pw.print(it.tbox.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"sourceUUID\":")
+      pw.print("\"")
+      pw.print(it.source.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"targetUUID\":")
+      pw.print("\"")
+      pw.print(it.target.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"isAsymmetric\":")
+      pw.print(OMLTables.toString(it.isAsymmetric))
+      pw.print(",")
+      pw.print("\"isEssential\":")
+      pw.print(OMLTables.toString(it.isEssential))
+      pw.print(",")
+      pw.print("\"isFunctional\":")
+      pw.print(OMLTables.toString(it.isFunctional))
+      pw.print(",")
+      pw.print("\"isInverseEssential\":")
+      pw.print(OMLTables.toString(it.isInverseEssential))
+      pw.print(",")
+      pw.print("\"isInverseFunctional\":")
+      pw.print(OMLTables.toString(it.isInverseFunctional))
+      pw.print(",")
+      pw.print("\"isIrreflexive\":")
+      pw.print(OMLTables.toString(it.isIrreflexive))
+      pw.print(",")
+      pw.print("\"isReflexive\":")
+      pw.print(OMLTables.toString(it.isReflexive))
+      pw.print(",")
+      pw.print("\"isSymmetric\":")
+      pw.print(OMLTables.toString(it.isSymmetric))
+      pw.print(",")
+      pw.print("\"isTransitive\":")
+      pw.print(OMLTables.toString(it.isTransitive))
+      pw.print(",")
+      pw.print("\"name\":")
+      pw.print(OMLTables.toString(it.name()))
+      pw.println("}")
+    ]
+    pw.close()
+    return bos.toByteArray()
+  }
+  
+  static def byte[] chainRulesByteArray(Extent e) {
+  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
+  	val PrintWriter pw = new PrintWriter(bos)
+  	OMLTables.chainRules(e).forEach[it |
+  	  pw.print("{")
+      pw.print("\"uuid\":")
+      pw.print("\"")
+      pw.print(it.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"tboxUUID\":")
+      pw.print("\"")
+      pw.print(it.tbox.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"name\":")
+      pw.print(OMLTables.toString(it.name()))
+      pw.print(",")
+      pw.print("\"headUUID\":")
+      pw.print("\"")
+      pw.print(it.head.uuid())
       pw.print("\"")
       pw.println("}")
     ]
@@ -1691,29 +1821,55 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] conceptSpecializationAxiomsByteArray(Extent e) {
+  static def byte[] ruleBodySegmentsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.conceptSpecializationAxioms(e).forEach[it |
+  	OMLTables.ruleBodySegments(e).forEach[it |
   	  pw.print("{")
       pw.print("\"uuid\":")
       pw.print("\"")
       pw.print(it.uuid())
       pw.print("\"")
       pw.print(",")
-      pw.print("\"tboxUUID\":")
+      pw.print("\"previousSegmentUUID\":")
+      if (null !== previousSegment) {
+        pw.print("\"")
+        pw.print(it.previousSegment?.uuid())
+        pw.print("\"")
+      } else
+        pw.print("null")
+      pw.print(",")
+      pw.print("\"ruleUUID\":")
+      if (null !== rule) {
+        pw.print("\"")
+        pw.print(it.rule?.uuid())
+        pw.print("\"")
+      } else
+        pw.print("null")
+      pw.println("}")
+    ]
+    pw.close()
+    return bos.toByteArray()
+  }
+  
+  static def byte[] aspectPredicatesByteArray(Extent e) {
+  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
+  	val PrintWriter pw = new PrintWriter(bos)
+  	OMLTables.aspectPredicates(e).forEach[it |
+  	  pw.print("{")
+      pw.print("\"uuid\":")
       pw.print("\"")
-      pw.print(it.tbox.uuid())
+      pw.print(it.uuid())
       pw.print("\"")
       pw.print(",")
-      pw.print("\"superConceptUUID\":")
+      pw.print("\"aspectUUID\":")
       pw.print("\"")
-      pw.print(it.superConcept.uuid())
+      pw.print(it.aspect.uuid())
       pw.print("\"")
       pw.print(",")
-      pw.print("\"subConceptUUID\":")
+      pw.print("\"bodySegmentUUID\":")
       pw.print("\"")
-      pw.print(it.subConcept.uuid())
+      pw.print(it.bodySegment.uuid())
       pw.print("\"")
       pw.println("}")
     ]
@@ -1721,29 +1877,249 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] reifiedRelationshipSpecializationAxiomsByteArray(Extent e) {
+  static def byte[] conceptPredicatesByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.reifiedRelationshipSpecializationAxioms(e).forEach[it |
+  	OMLTables.conceptPredicates(e).forEach[it |
   	  pw.print("{")
       pw.print("\"uuid\":")
       pw.print("\"")
       pw.print(it.uuid())
       pw.print("\"")
       pw.print(",")
-      pw.print("\"tboxUUID\":")
+      pw.print("\"bodySegmentUUID\":")
       pw.print("\"")
-      pw.print(it.tbox.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"superRelationshipUUID\":")
-      pw.print("\"")
-      pw.print(it.superRelationship.uuid())
+      pw.print(it.bodySegment.uuid())
       pw.print("\"")
       pw.print(",")
-      pw.print("\"subRelationshipUUID\":")
+      pw.print("\"conceptUUID\":")
       pw.print("\"")
-      pw.print(it.subRelationship.uuid())
+      pw.print(it.concept.uuid())
+      pw.print("\"")
+      pw.println("}")
+    ]
+    pw.close()
+    return bos.toByteArray()
+  }
+  
+  static def byte[] reifiedRelationshipPredicatesByteArray(Extent e) {
+  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
+  	val PrintWriter pw = new PrintWriter(bos)
+  	OMLTables.reifiedRelationshipPredicates(e).forEach[it |
+  	  pw.print("{")
+      pw.print("\"uuid\":")
+      pw.print("\"")
+      pw.print(it.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"bodySegmentUUID\":")
+      pw.print("\"")
+      pw.print(it.bodySegment.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"reifiedRelationshipUUID\":")
+      pw.print("\"")
+      pw.print(it.reifiedRelationship.uuid())
+      pw.print("\"")
+      pw.println("}")
+    ]
+    pw.close()
+    return bos.toByteArray()
+  }
+  
+  static def byte[] reifiedRelationshipPropertyPredicatesByteArray(Extent e) {
+  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
+  	val PrintWriter pw = new PrintWriter(bos)
+  	OMLTables.reifiedRelationshipPropertyPredicates(e).forEach[it |
+  	  pw.print("{")
+      pw.print("\"uuid\":")
+      pw.print("\"")
+      pw.print(it.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"bodySegmentUUID\":")
+      pw.print("\"")
+      pw.print(it.bodySegment.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"reifiedRelationshipUUID\":")
+      pw.print("\"")
+      pw.print(it.reifiedRelationship.uuid())
+      pw.print("\"")
+      pw.println("}")
+    ]
+    pw.close()
+    return bos.toByteArray()
+  }
+  
+  static def byte[] reifiedRelationshipSourcePropertyPredicatesByteArray(Extent e) {
+  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
+  	val PrintWriter pw = new PrintWriter(bos)
+  	OMLTables.reifiedRelationshipSourcePropertyPredicates(e).forEach[it |
+  	  pw.print("{")
+      pw.print("\"uuid\":")
+      pw.print("\"")
+      pw.print(it.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"bodySegmentUUID\":")
+      pw.print("\"")
+      pw.print(it.bodySegment.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"reifiedRelationshipUUID\":")
+      pw.print("\"")
+      pw.print(it.reifiedRelationship.uuid())
+      pw.print("\"")
+      pw.println("}")
+    ]
+    pw.close()
+    return bos.toByteArray()
+  }
+  
+  static def byte[] reifiedRelationshipTargetPropertyPredicatesByteArray(Extent e) {
+  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
+  	val PrintWriter pw = new PrintWriter(bos)
+  	OMLTables.reifiedRelationshipTargetPropertyPredicates(e).forEach[it |
+  	  pw.print("{")
+      pw.print("\"uuid\":")
+      pw.print("\"")
+      pw.print(it.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"bodySegmentUUID\":")
+      pw.print("\"")
+      pw.print(it.bodySegment.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"reifiedRelationshipUUID\":")
+      pw.print("\"")
+      pw.print(it.reifiedRelationship.uuid())
+      pw.print("\"")
+      pw.println("}")
+    ]
+    pw.close()
+    return bos.toByteArray()
+  }
+  
+  static def byte[] unreifiedRelationshipPropertyPredicatesByteArray(Extent e) {
+  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
+  	val PrintWriter pw = new PrintWriter(bos)
+  	OMLTables.unreifiedRelationshipPropertyPredicates(e).forEach[it |
+  	  pw.print("{")
+      pw.print("\"uuid\":")
+      pw.print("\"")
+      pw.print(it.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"unreifiedRelationshipUUID\":")
+      pw.print("\"")
+      pw.print(it.unreifiedRelationship.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"bodySegmentUUID\":")
+      pw.print("\"")
+      pw.print(it.bodySegment.uuid())
+      pw.print("\"")
+      pw.println("}")
+    ]
+    pw.close()
+    return bos.toByteArray()
+  }
+  
+  static def byte[] reifiedRelationshipInversePropertyPredicatesByteArray(Extent e) {
+  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
+  	val PrintWriter pw = new PrintWriter(bos)
+  	OMLTables.reifiedRelationshipInversePropertyPredicates(e).forEach[it |
+  	  pw.print("{")
+      pw.print("\"uuid\":")
+      pw.print("\"")
+      pw.print(it.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"bodySegmentUUID\":")
+      pw.print("\"")
+      pw.print(it.bodySegment.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"reifiedRelationshipUUID\":")
+      pw.print("\"")
+      pw.print(it.reifiedRelationship.uuid())
+      pw.print("\"")
+      pw.println("}")
+    ]
+    pw.close()
+    return bos.toByteArray()
+  }
+  
+  static def byte[] reifiedRelationshipSourceInversePropertyPredicatesByteArray(Extent e) {
+  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
+  	val PrintWriter pw = new PrintWriter(bos)
+  	OMLTables.reifiedRelationshipSourceInversePropertyPredicates(e).forEach[it |
+  	  pw.print("{")
+      pw.print("\"uuid\":")
+      pw.print("\"")
+      pw.print(it.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"bodySegmentUUID\":")
+      pw.print("\"")
+      pw.print(it.bodySegment.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"reifiedRelationshipUUID\":")
+      pw.print("\"")
+      pw.print(it.reifiedRelationship.uuid())
+      pw.print("\"")
+      pw.println("}")
+    ]
+    pw.close()
+    return bos.toByteArray()
+  }
+  
+  static def byte[] reifiedRelationshipTargetInversePropertyPredicatesByteArray(Extent e) {
+  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
+  	val PrintWriter pw = new PrintWriter(bos)
+  	OMLTables.reifiedRelationshipTargetInversePropertyPredicates(e).forEach[it |
+  	  pw.print("{")
+      pw.print("\"uuid\":")
+      pw.print("\"")
+      pw.print(it.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"bodySegmentUUID\":")
+      pw.print("\"")
+      pw.print(it.bodySegment.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"reifiedRelationshipUUID\":")
+      pw.print("\"")
+      pw.print(it.reifiedRelationship.uuid())
+      pw.print("\"")
+      pw.println("}")
+    ]
+    pw.close()
+    return bos.toByteArray()
+  }
+  
+  static def byte[] unreifiedRelationshipInversePropertyPredicatesByteArray(Extent e) {
+  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
+  	val PrintWriter pw = new PrintWriter(bos)
+  	OMLTables.unreifiedRelationshipInversePropertyPredicates(e).forEach[it |
+  	  pw.print("{")
+      pw.print("\"uuid\":")
+      pw.print("\"")
+      pw.print(it.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"unreifiedRelationshipUUID\":")
+      pw.print("\"")
+      pw.print(it.unreifiedRelationship.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"bodySegmentUUID\":")
+      pw.print("\"")
+      pw.print(it.bodySegment.uuid())
       pw.print("\"")
       pw.println("}")
     ]
@@ -1932,10 +2308,10 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] scalarOneOfLiteralAxiomsByteArray(Extent e) {
+  static def byte[] entityStructuredDataPropertyParticularRestrictionAxiomsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.scalarOneOfLiteralAxioms(e).forEach[it |
+  	OMLTables.entityStructuredDataPropertyParticularRestrictionAxioms(e).forEach[it |
   	  pw.print("{")
       pw.print("\"uuid\":")
       pw.print("\"")
@@ -1947,13 +2323,68 @@ class OMLSpecificationTables {
       pw.print(it.tbox.uuid())
       pw.print("\"")
       pw.print(",")
-      pw.print("\"axiomUUID\":")
+      pw.print("\"structuredDataPropertyUUID\":")
       pw.print("\"")
-      pw.print(it.axiom.uuid())
+      pw.print(it.structuredDataProperty.uuid())
       pw.print("\"")
       pw.print(",")
-      pw.print("\"value\":")
-      pw.print(OMLTables.toString(it.value))
+      pw.print("\"restrictedEntityUUID\":")
+      pw.print("\"")
+      pw.print(it.restrictedEntity.uuid())
+      pw.print("\"")
+      pw.println("}")
+    ]
+    pw.close()
+    return bos.toByteArray()
+  }
+  
+  static def byte[] restrictionStructuredDataPropertyTuplesByteArray(Extent e) {
+  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
+  	val PrintWriter pw = new PrintWriter(bos)
+  	OMLTables.restrictionStructuredDataPropertyTuples(e).forEach[it |
+  	  pw.print("{")
+      pw.print("\"uuid\":")
+      pw.print("\"")
+      pw.print(it.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"structuredDataPropertyUUID\":")
+      pw.print("\"")
+      pw.print(it.structuredDataProperty.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"structuredDataPropertyContextUUID\":")
+      pw.print("\"")
+      pw.print(it.structuredDataPropertyContext.uuid())
+      pw.print("\"")
+      pw.println("}")
+    ]
+    pw.close()
+    return bos.toByteArray()
+  }
+  
+  static def byte[] restrictionScalarDataPropertyValuesByteArray(Extent e) {
+  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
+  	val PrintWriter pw = new PrintWriter(bos)
+  	OMLTables.restrictionScalarDataPropertyValues(e).forEach[it |
+  	  pw.print("{")
+      pw.print("\"uuid\":")
+      pw.print("\"")
+      pw.print(it.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"scalarDataPropertyUUID\":")
+      pw.print("\"")
+      pw.print(it.scalarDataProperty.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"scalarPropertyValue\":")
+      pw.print(OMLTables.toString(it.scalarPropertyValue))
+      pw.print(",")
+      pw.print("\"structuredDataPropertyContextUUID\":")
+      pw.print("\"")
+      pw.print(it.structuredDataPropertyContext.uuid())
+      pw.print("\"")
       pw.print(",")
       pw.print("\"valueTypeUUID\":")
       if (null !== valueType) {
@@ -1968,24 +2399,149 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] bundledTerminologyAxiomsByteArray(Extent e) {
+  static def byte[] aspectSpecializationAxiomsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.bundledTerminologyAxioms(e).forEach[it |
+  	OMLTables.aspectSpecializationAxioms(e).forEach[it |
   	  pw.print("{")
       pw.print("\"uuid\":")
       pw.print("\"")
       pw.print(it.uuid())
       pw.print("\"")
       pw.print(",")
-      pw.print("\"bundleUUID\":")
+      pw.print("\"tboxUUID\":")
       pw.print("\"")
-      pw.print(it.bundle.uuid())
+      pw.print(it.tbox.uuid())
       pw.print("\"")
       pw.print(",")
-      pw.print("\"bundledTerminologyIRI\":")
+      pw.print("\"superAspectUUID\":")
       pw.print("\"")
-      pw.print(it.bundledTerminology.iri())
+      pw.print(it.superAspect.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"subEntityUUID\":")
+      pw.print("\"")
+      pw.print(it.subEntity.uuid())
+      pw.print("\"")
+      pw.println("}")
+    ]
+    pw.close()
+    return bos.toByteArray()
+  }
+  
+  static def byte[] conceptSpecializationAxiomsByteArray(Extent e) {
+  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
+  	val PrintWriter pw = new PrintWriter(bos)
+  	OMLTables.conceptSpecializationAxioms(e).forEach[it |
+  	  pw.print("{")
+      pw.print("\"uuid\":")
+      pw.print("\"")
+      pw.print(it.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"tboxUUID\":")
+      pw.print("\"")
+      pw.print(it.tbox.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"superConceptUUID\":")
+      pw.print("\"")
+      pw.print(it.superConcept.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"subConceptUUID\":")
+      pw.print("\"")
+      pw.print(it.subConcept.uuid())
+      pw.print("\"")
+      pw.println("}")
+    ]
+    pw.close()
+    return bos.toByteArray()
+  }
+  
+  static def byte[] reifiedRelationshipSpecializationAxiomsByteArray(Extent e) {
+  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
+  	val PrintWriter pw = new PrintWriter(bos)
+  	OMLTables.reifiedRelationshipSpecializationAxioms(e).forEach[it |
+  	  pw.print("{")
+      pw.print("\"uuid\":")
+      pw.print("\"")
+      pw.print(it.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"tboxUUID\":")
+      pw.print("\"")
+      pw.print(it.tbox.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"superRelationshipUUID\":")
+      pw.print("\"")
+      pw.print(it.superRelationship.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"subRelationshipUUID\":")
+      pw.print("\"")
+      pw.print(it.subRelationship.uuid())
+      pw.print("\"")
+      pw.println("}")
+    ]
+    pw.close()
+    return bos.toByteArray()
+  }
+  
+  static def byte[] subDataPropertyOfAxiomsByteArray(Extent e) {
+  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
+  	val PrintWriter pw = new PrintWriter(bos)
+  	OMLTables.subDataPropertyOfAxioms(e).forEach[it |
+  	  pw.print("{")
+      pw.print("\"uuid\":")
+      pw.print("\"")
+      pw.print(it.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"tboxUUID\":")
+      pw.print("\"")
+      pw.print(it.tbox.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"subPropertyUUID\":")
+      pw.print("\"")
+      pw.print(it.subProperty.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"superPropertyUUID\":")
+      pw.print("\"")
+      pw.print(it.superProperty.uuid())
+      pw.print("\"")
+      pw.println("}")
+    ]
+    pw.close()
+    return bos.toByteArray()
+  }
+  
+  static def byte[] subObjectPropertyOfAxiomsByteArray(Extent e) {
+  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
+  	val PrintWriter pw = new PrintWriter(bos)
+  	OMLTables.subObjectPropertyOfAxioms(e).forEach[it |
+  	  pw.print("{")
+      pw.print("\"uuid\":")
+      pw.print("\"")
+      pw.print(it.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"tboxUUID\":")
+      pw.print("\"")
+      pw.print(it.tbox.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"subPropertyUUID\":")
+      pw.print("\"")
+      pw.print(it.subProperty.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"superPropertyUUID\":")
+      pw.print("\"")
+      pw.print(it.superProperty.uuid())
       pw.print("\"")
       pw.println("}")
     ]
@@ -2018,59 +2574,6 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] specificDisjointConceptAxiomsByteArray(Extent e) {
-  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
-  	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.specificDisjointConceptAxioms(e).forEach[it |
-  	  pw.print("{")
-      pw.print("\"uuid\":")
-      pw.print("\"")
-      pw.print(it.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"disjointTaxonomyParentUUID\":")
-      pw.print("\"")
-      pw.print(it.disjointTaxonomyParent.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"disjointLeafUUID\":")
-      pw.print("\"")
-      pw.print(it.disjointLeaf.uuid())
-      pw.print("\"")
-      pw.println("}")
-    ]
-    pw.close()
-    return bos.toByteArray()
-  }
-  
-  static def byte[] annotationPropertyValuesByteArray(Extent e) {
-  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
-  	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.annotationPropertyValues(e).forEach[it |
-  	  pw.print("{")
-      pw.print("\"uuid\":")
-      pw.print("\"")
-      pw.print(it.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"subjectUUID\":")
-      pw.print("\"")
-      pw.print(it.subject.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"propertyUUID\":")
-      pw.print("\"")
-      pw.print(it.property.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"value\":")
-      pw.print(OMLTables.toString(it.value))
-      pw.println("}")
-    ]
-    pw.close()
-    return bos.toByteArray()
-  }
-  
   static def byte[] anonymousConceptUnionAxiomsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
@@ -2094,52 +2597,24 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] aspectPredicatesByteArray(Extent e) {
+  static def byte[] specificDisjointConceptAxiomsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.aspectPredicates(e).forEach[it |
+  	OMLTables.specificDisjointConceptAxioms(e).forEach[it |
   	  pw.print("{")
       pw.print("\"uuid\":")
       pw.print("\"")
       pw.print(it.uuid())
       pw.print("\"")
       pw.print(",")
-      pw.print("\"aspectUUID\":")
+      pw.print("\"disjointTaxonomyParentUUID\":")
       pw.print("\"")
-      pw.print(it.aspect.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"bodySegmentUUID\":")
-      pw.print("\"")
-      pw.print(it.bodySegment.uuid())
-      pw.print("\"")
-      pw.println("}")
-    ]
-    pw.close()
-    return bos.toByteArray()
-  }
-  
-  static def byte[] chainRulesByteArray(Extent e) {
-  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
-  	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.chainRules(e).forEach[it |
-  	  pw.print("{")
-      pw.print("\"uuid\":")
-      pw.print("\"")
-      pw.print(it.uuid())
+      pw.print(it.disjointTaxonomyParent.uuid())
       pw.print("\"")
       pw.print(",")
-      pw.print("\"tboxUUID\":")
+      pw.print("\"disjointLeafUUID\":")
       pw.print("\"")
-      pw.print(it.tbox.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"name\":")
-      pw.print(OMLTables.toString(it.name()))
-      pw.print(",")
-      pw.print("\"headUUID\":")
-      pw.print("\"")
-      pw.print(it.head.uuid())
+      pw.print(it.disjointLeaf.uuid())
       pw.print("\"")
       pw.println("}")
     ]
@@ -2169,132 +2644,6 @@ class OMLSpecificationTables {
       pw.print(",")
       pw.print("\"name\":")
       pw.print(OMLTables.toString(it.name()))
-      pw.println("}")
-    ]
-    pw.close()
-    return bos.toByteArray()
-  }
-  
-  static def byte[] conceptPredicatesByteArray(Extent e) {
-  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
-  	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.conceptPredicates(e).forEach[it |
-  	  pw.print("{")
-      pw.print("\"uuid\":")
-      pw.print("\"")
-      pw.print(it.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"bodySegmentUUID\":")
-      pw.print("\"")
-      pw.print(it.bodySegment.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"conceptUUID\":")
-      pw.print("\"")
-      pw.print(it.concept.uuid())
-      pw.print("\"")
-      pw.println("}")
-    ]
-    pw.close()
-    return bos.toByteArray()
-  }
-  
-  static def byte[] descriptionBoxesByteArray(Extent e) {
-  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
-  	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.descriptionBoxes(e).forEach[it |
-  	  pw.print("{")
-      pw.print("\"uuid\":")
-      pw.print("\"")
-      pw.print(it.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"kind\":")
-      pw.print(OMLTables.toString(it.kind))
-      pw.print(",")
-      pw.print("\"iri\":")
-      pw.print(OMLTables.toString(it.iri()))
-      pw.println("}")
-    ]
-    pw.close()
-    return bos.toByteArray()
-  }
-  
-  static def byte[] descriptionBoxExtendsClosedWorldDefinitionsByteArray(Extent e) {
-  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
-  	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.descriptionBoxExtendsClosedWorldDefinitions(e).forEach[it |
-  	  pw.print("{")
-      pw.print("\"uuid\":")
-      pw.print("\"")
-      pw.print(it.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"descriptionBoxUUID\":")
-      pw.print("\"")
-      pw.print(it.descriptionBox.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"closedWorldDefinitionsIRI\":")
-      pw.print("\"")
-      pw.print(it.closedWorldDefinitions.iri())
-      pw.print("\"")
-      pw.println("}")
-    ]
-    pw.close()
-    return bos.toByteArray()
-  }
-  
-  static def byte[] descriptionBoxRefinementsByteArray(Extent e) {
-  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
-  	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.descriptionBoxRefinements(e).forEach[it |
-  	  pw.print("{")
-      pw.print("\"uuid\":")
-      pw.print("\"")
-      pw.print(it.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"refiningDescriptionBoxUUID\":")
-      pw.print("\"")
-      pw.print(it.refiningDescriptionBox.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"refinedDescriptionBoxIRI\":")
-      pw.print("\"")
-      pw.print(it.refinedDescriptionBox.iri())
-      pw.print("\"")
-      pw.println("}")
-    ]
-    pw.close()
-    return bos.toByteArray()
-  }
-  
-  static def byte[] entityStructuredDataPropertyParticularRestrictionAxiomsByteArray(Extent e) {
-  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
-  	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.entityStructuredDataPropertyParticularRestrictionAxioms(e).forEach[it |
-  	  pw.print("{")
-      pw.print("\"uuid\":")
-      pw.print("\"")
-      pw.print(it.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"tboxUUID\":")
-      pw.print("\"")
-      pw.print(it.tbox.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"structuredDataPropertyUUID\":")
-      pw.print("\"")
-      pw.print(it.structuredDataProperty.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"restrictedEntityUUID\":")
-      pw.print("\"")
-      pw.print(it.restrictedEntity.uuid())
-      pw.print("\"")
       pw.println("}")
     ]
     pw.close()
@@ -2389,24 +2738,34 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] reifiedRelationshipInversePropertyPredicatesByteArray(Extent e) {
+  static def byte[] unreifiedRelationshipInstanceTuplesByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.reifiedRelationshipInversePropertyPredicates(e).forEach[it |
+  	OMLTables.unreifiedRelationshipInstanceTuples(e).forEach[it |
   	  pw.print("{")
       pw.print("\"uuid\":")
       pw.print("\"")
       pw.print(it.uuid())
       pw.print("\"")
       pw.print(",")
-      pw.print("\"bodySegmentUUID\":")
+      pw.print("\"descriptionBoxUUID\":")
       pw.print("\"")
-      pw.print(it.bodySegment.uuid())
+      pw.print(it.descriptionBox().uuid())
       pw.print("\"")
       pw.print(",")
-      pw.print("\"reifiedRelationshipUUID\":")
+      pw.print("\"unreifiedRelationshipUUID\":")
       pw.print("\"")
-      pw.print(it.reifiedRelationship.uuid())
+      pw.print(it.unreifiedRelationship.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"domainUUID\":")
+      pw.print("\"")
+      pw.print(it.domain.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"rangeUUID\":")
+      pw.print("\"")
+      pw.print(it.range.uuid())
       pw.print("\"")
       pw.println("}")
     ]
@@ -2414,278 +2773,30 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] reifiedRelationshipPredicatesByteArray(Extent e) {
+  static def byte[] singletonInstanceStructuredDataPropertyValuesByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.reifiedRelationshipPredicates(e).forEach[it |
+  	OMLTables.singletonInstanceStructuredDataPropertyValues(e).forEach[it |
   	  pw.print("{")
       pw.print("\"uuid\":")
       pw.print("\"")
       pw.print(it.uuid())
       pw.print("\"")
       pw.print(",")
-      pw.print("\"bodySegmentUUID\":")
+      pw.print("\"descriptionBoxUUID\":")
       pw.print("\"")
-      pw.print(it.bodySegment.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"reifiedRelationshipUUID\":")
-      pw.print("\"")
-      pw.print(it.reifiedRelationship.uuid())
-      pw.print("\"")
-      pw.println("}")
-    ]
-    pw.close()
-    return bos.toByteArray()
-  }
-  
-  static def byte[] reifiedRelationshipPropertyPredicatesByteArray(Extent e) {
-  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
-  	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.reifiedRelationshipPropertyPredicates(e).forEach[it |
-  	  pw.print("{")
-      pw.print("\"uuid\":")
-      pw.print("\"")
-      pw.print(it.uuid())
+      pw.print(it.descriptionBox().uuid())
       pw.print("\"")
       pw.print(",")
-      pw.print("\"bodySegmentUUID\":")
+      pw.print("\"singletonInstanceUUID\":")
       pw.print("\"")
-      pw.print(it.bodySegment.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"reifiedRelationshipUUID\":")
-      pw.print("\"")
-      pw.print(it.reifiedRelationship.uuid())
-      pw.print("\"")
-      pw.println("}")
-    ]
-    pw.close()
-    return bos.toByteArray()
-  }
-  
-  static def byte[] reifiedRelationshipSourceInversePropertyPredicatesByteArray(Extent e) {
-  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
-  	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.reifiedRelationshipSourceInversePropertyPredicates(e).forEach[it |
-  	  pw.print("{")
-      pw.print("\"uuid\":")
-      pw.print("\"")
-      pw.print(it.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"bodySegmentUUID\":")
-      pw.print("\"")
-      pw.print(it.bodySegment.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"reifiedRelationshipUUID\":")
-      pw.print("\"")
-      pw.print(it.reifiedRelationship.uuid())
-      pw.print("\"")
-      pw.println("}")
-    ]
-    pw.close()
-    return bos.toByteArray()
-  }
-  
-  static def byte[] reifiedRelationshipSourcePropertyPredicatesByteArray(Extent e) {
-  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
-  	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.reifiedRelationshipSourcePropertyPredicates(e).forEach[it |
-  	  pw.print("{")
-      pw.print("\"uuid\":")
-      pw.print("\"")
-      pw.print(it.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"bodySegmentUUID\":")
-      pw.print("\"")
-      pw.print(it.bodySegment.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"reifiedRelationshipUUID\":")
-      pw.print("\"")
-      pw.print(it.reifiedRelationship.uuid())
-      pw.print("\"")
-      pw.println("}")
-    ]
-    pw.close()
-    return bos.toByteArray()
-  }
-  
-  static def byte[] reifiedRelationshipTargetInversePropertyPredicatesByteArray(Extent e) {
-  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
-  	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.reifiedRelationshipTargetInversePropertyPredicates(e).forEach[it |
-  	  pw.print("{")
-      pw.print("\"uuid\":")
-      pw.print("\"")
-      pw.print(it.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"bodySegmentUUID\":")
-      pw.print("\"")
-      pw.print(it.bodySegment.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"reifiedRelationshipUUID\":")
-      pw.print("\"")
-      pw.print(it.reifiedRelationship.uuid())
-      pw.print("\"")
-      pw.println("}")
-    ]
-    pw.close()
-    return bos.toByteArray()
-  }
-  
-  static def byte[] reifiedRelationshipTargetPropertyPredicatesByteArray(Extent e) {
-  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
-  	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.reifiedRelationshipTargetPropertyPredicates(e).forEach[it |
-  	  pw.print("{")
-      pw.print("\"uuid\":")
-      pw.print("\"")
-      pw.print(it.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"bodySegmentUUID\":")
-      pw.print("\"")
-      pw.print(it.bodySegment.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"reifiedRelationshipUUID\":")
-      pw.print("\"")
-      pw.print(it.reifiedRelationship.uuid())
-      pw.print("\"")
-      pw.println("}")
-    ]
-    pw.close()
-    return bos.toByteArray()
-  }
-  
-  static def byte[] restrictionScalarDataPropertyValuesByteArray(Extent e) {
-  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
-  	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.restrictionScalarDataPropertyValues(e).forEach[it |
-  	  pw.print("{")
-      pw.print("\"uuid\":")
-      pw.print("\"")
-      pw.print(it.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"scalarDataPropertyUUID\":")
-      pw.print("\"")
-      pw.print(it.scalarDataProperty.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"scalarPropertyValue\":")
-      pw.print(OMLTables.toString(it.scalarPropertyValue))
-      pw.print(",")
-      pw.print("\"structuredDataPropertyContextUUID\":")
-      pw.print("\"")
-      pw.print(it.structuredDataPropertyContext.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"valueTypeUUID\":")
-      if (null !== valueType) {
-        pw.print("\"")
-        pw.print(it.valueType?.uuid())
-        pw.print("\"")
-      } else
-        pw.print("null")
-      pw.println("}")
-    ]
-    pw.close()
-    return bos.toByteArray()
-  }
-  
-  static def byte[] restrictionStructuredDataPropertyTuplesByteArray(Extent e) {
-  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
-  	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.restrictionStructuredDataPropertyTuples(e).forEach[it |
-  	  pw.print("{")
-      pw.print("\"uuid\":")
-      pw.print("\"")
-      pw.print(it.uuid())
+      pw.print(it.singletonInstance.uuid())
       pw.print("\"")
       pw.print(",")
       pw.print("\"structuredDataPropertyUUID\":")
       pw.print("\"")
       pw.print(it.structuredDataProperty.uuid())
       pw.print("\"")
-      pw.print(",")
-      pw.print("\"structuredDataPropertyContextUUID\":")
-      pw.print("\"")
-      pw.print(it.structuredDataPropertyContext.uuid())
-      pw.print("\"")
-      pw.println("}")
-    ]
-    pw.close()
-    return bos.toByteArray()
-  }
-  
-  static def byte[] ruleBodySegmentsByteArray(Extent e) {
-  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
-  	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.ruleBodySegments(e).forEach[it |
-  	  pw.print("{")
-      pw.print("\"uuid\":")
-      pw.print("\"")
-      pw.print(it.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"previousSegmentUUID\":")
-      if (null !== previousSegment) {
-        pw.print("\"")
-        pw.print(it.previousSegment?.uuid())
-        pw.print("\"")
-      } else
-        pw.print("null")
-      pw.print(",")
-      pw.print("\"ruleUUID\":")
-      if (null !== rule) {
-        pw.print("\"")
-        pw.print(it.rule?.uuid())
-        pw.print("\"")
-      } else
-        pw.print("null")
-      pw.println("}")
-    ]
-    pw.close()
-    return bos.toByteArray()
-  }
-  
-  static def byte[] scalarDataPropertyValuesByteArray(Extent e) {
-  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
-  	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.scalarDataPropertyValues(e).forEach[it |
-  	  pw.print("{")
-      pw.print("\"uuid\":")
-      pw.print("\"")
-      pw.print(it.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"scalarDataPropertyUUID\":")
-      pw.print("\"")
-      pw.print(it.scalarDataProperty.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"scalarPropertyValue\":")
-      pw.print(OMLTables.toString(it.scalarPropertyValue))
-      pw.print(",")
-      pw.print("\"structuredDataPropertyContextUUID\":")
-      pw.print("\"")
-      pw.print(it.structuredDataPropertyContext.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"valueTypeUUID\":")
-      if (null !== valueType) {
-        pw.print("\"")
-        pw.print(it.valueType?.uuid())
-        pw.print("\"")
-      } else
-        pw.print("null")
       pw.println("}")
     ]
     pw.close()
@@ -2733,36 +2844,6 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] singletonInstanceStructuredDataPropertyValuesByteArray(Extent e) {
-  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
-  	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.singletonInstanceStructuredDataPropertyValues(e).forEach[it |
-  	  pw.print("{")
-      pw.print("\"uuid\":")
-      pw.print("\"")
-      pw.print(it.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"descriptionBoxUUID\":")
-      pw.print("\"")
-      pw.print(it.descriptionBox().uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"singletonInstanceUUID\":")
-      pw.print("\"")
-      pw.print(it.singletonInstance.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"structuredDataPropertyUUID\":")
-      pw.print("\"")
-      pw.print(it.structuredDataProperty.uuid())
-      pw.print("\"")
-      pw.println("}")
-    ]
-    pw.close()
-    return bos.toByteArray()
-  }
-  
   static def byte[] structuredDataPropertyTuplesByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
@@ -2788,145 +2869,64 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] subDataPropertyOfAxiomsByteArray(Extent e) {
+  static def byte[] scalarDataPropertyValuesByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.subDataPropertyOfAxioms(e).forEach[it |
+  	OMLTables.scalarDataPropertyValues(e).forEach[it |
   	  pw.print("{")
       pw.print("\"uuid\":")
       pw.print("\"")
       pw.print(it.uuid())
       pw.print("\"")
       pw.print(",")
-      pw.print("\"tboxUUID\":")
+      pw.print("\"scalarDataPropertyUUID\":")
       pw.print("\"")
-      pw.print(it.tbox.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"subPropertyUUID\":")
-      pw.print("\"")
-      pw.print(it.subProperty.uuid())
+      pw.print(it.scalarDataProperty.uuid())
       pw.print("\"")
       pw.print(",")
-      pw.print("\"superPropertyUUID\":")
+      pw.print("\"scalarPropertyValue\":")
+      pw.print(OMLTables.toString(it.scalarPropertyValue))
+      pw.print(",")
+      pw.print("\"structuredDataPropertyContextUUID\":")
       pw.print("\"")
-      pw.print(it.superProperty.uuid())
+      pw.print(it.structuredDataPropertyContext.uuid())
       pw.print("\"")
+      pw.print(",")
+      pw.print("\"valueTypeUUID\":")
+      if (null !== valueType) {
+        pw.print("\"")
+        pw.print(it.valueType?.uuid())
+        pw.print("\"")
+      } else
+        pw.print("null")
       pw.println("}")
     ]
     pw.close()
     return bos.toByteArray()
   }
   
-  static def byte[] subObjectPropertyOfAxiomsByteArray(Extent e) {
+  static def byte[] annotationPropertyValuesByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.subObjectPropertyOfAxioms(e).forEach[it |
+  	OMLTables.annotationPropertyValues(e).forEach[it |
   	  pw.print("{")
       pw.print("\"uuid\":")
       pw.print("\"")
       pw.print(it.uuid())
       pw.print("\"")
       pw.print(",")
-      pw.print("\"tboxUUID\":")
+      pw.print("\"subjectUUID\":")
       pw.print("\"")
-      pw.print(it.tbox.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"subPropertyUUID\":")
-      pw.print("\"")
-      pw.print(it.subProperty.uuid())
+      pw.print(it.subject.uuid())
       pw.print("\"")
       pw.print(",")
-      pw.print("\"superPropertyUUID\":")
+      pw.print("\"propertyUUID\":")
       pw.print("\"")
-      pw.print(it.superProperty.uuid())
-      pw.print("\"")
-      pw.println("}")
-    ]
-    pw.close()
-    return bos.toByteArray()
-  }
-  
-  static def byte[] unreifiedRelationshipInstanceTuplesByteArray(Extent e) {
-  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
-  	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.unreifiedRelationshipInstanceTuples(e).forEach[it |
-  	  pw.print("{")
-      pw.print("\"uuid\":")
-      pw.print("\"")
-      pw.print(it.uuid())
+      pw.print(it.property.uuid())
       pw.print("\"")
       pw.print(",")
-      pw.print("\"descriptionBoxUUID\":")
-      pw.print("\"")
-      pw.print(it.descriptionBox().uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"unreifiedRelationshipUUID\":")
-      pw.print("\"")
-      pw.print(it.unreifiedRelationship.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"domainUUID\":")
-      pw.print("\"")
-      pw.print(it.domain.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"rangeUUID\":")
-      pw.print("\"")
-      pw.print(it.range.uuid())
-      pw.print("\"")
-      pw.println("}")
-    ]
-    pw.close()
-    return bos.toByteArray()
-  }
-  
-  static def byte[] unreifiedRelationshipInversePropertyPredicatesByteArray(Extent e) {
-  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
-  	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.unreifiedRelationshipInversePropertyPredicates(e).forEach[it |
-  	  pw.print("{")
-      pw.print("\"uuid\":")
-      pw.print("\"")
-      pw.print(it.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"unreifiedRelationshipUUID\":")
-      pw.print("\"")
-      pw.print(it.unreifiedRelationship.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"bodySegmentUUID\":")
-      pw.print("\"")
-      pw.print(it.bodySegment.uuid())
-      pw.print("\"")
-      pw.println("}")
-    ]
-    pw.close()
-    return bos.toByteArray()
-  }
-  
-  static def byte[] unreifiedRelationshipPropertyPredicatesByteArray(Extent e) {
-  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
-  	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.unreifiedRelationshipPropertyPredicates(e).forEach[it |
-  	  pw.print("{")
-      pw.print("\"uuid\":")
-      pw.print("\"")
-      pw.print(it.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"unreifiedRelationshipUUID\":")
-      pw.print("\"")
-      pw.print(it.unreifiedRelationship.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"bodySegmentUUID\":")
-      pw.print("\"")
-      pw.print(it.bodySegment.uuid())
-      pw.print("\"")
+      pw.print("\"value\":")
+      pw.print(OMLTables.toString(it.value))
       pw.println("}")
     ]
     pw.close()
@@ -2945,30 +2945,34 @@ class OMLSpecificationTables {
       val lines = new ArrayList<String>()
       lines.addAll(buffer.lines().iterator.toIterable)
       switch ze.name {
-  	    case "AnnotationProperties.json":
-  	      tables.readAnnotationProperties(lines)
   	    case "TerminologyGraphs.json":
   	      tables.readTerminologyGraphs(lines)
   	    case "Bundles.json":
   	      tables.readBundles(lines)
+  	    case "DescriptionBoxes.json":
+  	      tables.readDescriptionBoxes(lines)
+  	    case "AnnotationProperties.json":
+  	      tables.readAnnotationProperties(lines)
+  	    case "Aspects.json":
+  	      tables.readAspects(lines)
+  	    case "Concepts.json":
+  	      tables.readConcepts(lines)
+  	    case "Scalars.json":
+  	      tables.readScalars(lines)
+  	    case "Structures.json":
+  	      tables.readStructures(lines)
   	    case "ConceptDesignationTerminologyAxioms.json":
   	      tables.readConceptDesignationTerminologyAxioms(lines)
   	    case "TerminologyExtensionAxioms.json":
   	      tables.readTerminologyExtensionAxioms(lines)
   	    case "TerminologyNestingAxioms.json":
   	      tables.readTerminologyNestingAxioms(lines)
-  	    case "Aspects.json":
-  	      tables.readAspects(lines)
-  	    case "Concepts.json":
-  	      tables.readConcepts(lines)
-  	    case "ReifiedRelationships.json":
-  	      tables.readReifiedRelationships(lines)
-  	    case "UnreifiedRelationships.json":
-  	      tables.readUnreifiedRelationships(lines)
-  	    case "Scalars.json":
-  	      tables.readScalars(lines)
-  	    case "Structures.json":
-  	      tables.readStructures(lines)
+  	    case "BundledTerminologyAxioms.json":
+  	      tables.readBundledTerminologyAxioms(lines)
+  	    case "DescriptionBoxExtendsClosedWorldDefinitions.json":
+  	      tables.readDescriptionBoxExtendsClosedWorldDefinitions(lines)
+  	    case "DescriptionBoxRefinements.json":
+  	      tables.readDescriptionBoxRefinements(lines)
   	    case "BinaryScalarRestrictions.json":
   	      tables.readBinaryScalarRestrictions(lines)
   	    case "IRIScalarRestrictions.json":
@@ -2979,6 +2983,8 @@ class OMLSpecificationTables {
   	      tables.readPlainLiteralScalarRestrictions(lines)
   	    case "ScalarOneOfRestrictions.json":
   	      tables.readScalarOneOfRestrictions(lines)
+  	    case "ScalarOneOfLiteralAxioms.json":
+  	      tables.readScalarOneOfLiteralAxioms(lines)
   	    case "StringScalarRestrictions.json":
   	      tables.readStringScalarRestrictions(lines)
   	    case "SynonymScalarRestrictions.json":
@@ -2993,12 +2999,36 @@ class OMLSpecificationTables {
   	      tables.readScalarDataProperties(lines)
   	    case "StructuredDataProperties.json":
   	      tables.readStructuredDataProperties(lines)
-  	    case "AspectSpecializationAxioms.json":
-  	      tables.readAspectSpecializationAxioms(lines)
-  	    case "ConceptSpecializationAxioms.json":
-  	      tables.readConceptSpecializationAxioms(lines)
-  	    case "ReifiedRelationshipSpecializationAxioms.json":
-  	      tables.readReifiedRelationshipSpecializationAxioms(lines)
+  	    case "ReifiedRelationships.json":
+  	      tables.readReifiedRelationships(lines)
+  	    case "UnreifiedRelationships.json":
+  	      tables.readUnreifiedRelationships(lines)
+  	    case "ChainRules.json":
+  	      tables.readChainRules(lines)
+  	    case "RuleBodySegments.json":
+  	      tables.readRuleBodySegments(lines)
+  	    case "AspectPredicates.json":
+  	      tables.readAspectPredicates(lines)
+  	    case "ConceptPredicates.json":
+  	      tables.readConceptPredicates(lines)
+  	    case "ReifiedRelationshipPredicates.json":
+  	      tables.readReifiedRelationshipPredicates(lines)
+  	    case "ReifiedRelationshipPropertyPredicates.json":
+  	      tables.readReifiedRelationshipPropertyPredicates(lines)
+  	    case "ReifiedRelationshipSourcePropertyPredicates.json":
+  	      tables.readReifiedRelationshipSourcePropertyPredicates(lines)
+  	    case "ReifiedRelationshipTargetPropertyPredicates.json":
+  	      tables.readReifiedRelationshipTargetPropertyPredicates(lines)
+  	    case "UnreifiedRelationshipPropertyPredicates.json":
+  	      tables.readUnreifiedRelationshipPropertyPredicates(lines)
+  	    case "ReifiedRelationshipInversePropertyPredicates.json":
+  	      tables.readReifiedRelationshipInversePropertyPredicates(lines)
+  	    case "ReifiedRelationshipSourceInversePropertyPredicates.json":
+  	      tables.readReifiedRelationshipSourceInversePropertyPredicates(lines)
+  	    case "ReifiedRelationshipTargetInversePropertyPredicates.json":
+  	      tables.readReifiedRelationshipTargetInversePropertyPredicates(lines)
+  	    case "UnreifiedRelationshipInversePropertyPredicates.json":
+  	      tables.readUnreifiedRelationshipInversePropertyPredicates(lines)
   	    case "EntityExistentialRestrictionAxioms.json":
   	      tables.readEntityExistentialRestrictionAxioms(lines)
   	    case "EntityUniversalRestrictionAxioms.json":
@@ -3009,78 +3039,48 @@ class OMLSpecificationTables {
   	      tables.readEntityScalarDataPropertyParticularRestrictionAxioms(lines)
   	    case "EntityScalarDataPropertyUniversalRestrictionAxioms.json":
   	      tables.readEntityScalarDataPropertyUniversalRestrictionAxioms(lines)
-  	    case "ScalarOneOfLiteralAxioms.json":
-  	      tables.readScalarOneOfLiteralAxioms(lines)
-  	    case "BundledTerminologyAxioms.json":
-  	      tables.readBundledTerminologyAxioms(lines)
-  	    case "RootConceptTaxonomyAxioms.json":
-  	      tables.readRootConceptTaxonomyAxioms(lines)
-  	    case "SpecificDisjointConceptAxioms.json":
-  	      tables.readSpecificDisjointConceptAxioms(lines)
-  	    case "AnnotationPropertyValues.json":
-  	      tables.readAnnotationPropertyValues(lines)
-  	    case "AnonymousConceptUnionAxioms.json":
-  	      tables.readAnonymousConceptUnionAxioms(lines)
-  	    case "AspectPredicates.json":
-  	      tables.readAspectPredicates(lines)
-  	    case "ChainRules.json":
-  	      tables.readChainRules(lines)
-  	    case "ConceptInstances.json":
-  	      tables.readConceptInstances(lines)
-  	    case "ConceptPredicates.json":
-  	      tables.readConceptPredicates(lines)
-  	    case "DescriptionBoxes.json":
-  	      tables.readDescriptionBoxes(lines)
-  	    case "DescriptionBoxExtendsClosedWorldDefinitions.json":
-  	      tables.readDescriptionBoxExtendsClosedWorldDefinitions(lines)
-  	    case "DescriptionBoxRefinements.json":
-  	      tables.readDescriptionBoxRefinements(lines)
   	    case "EntityStructuredDataPropertyParticularRestrictionAxioms.json":
   	      tables.readEntityStructuredDataPropertyParticularRestrictionAxioms(lines)
+  	    case "RestrictionStructuredDataPropertyTuples.json":
+  	      tables.readRestrictionStructuredDataPropertyTuples(lines)
+  	    case "RestrictionScalarDataPropertyValues.json":
+  	      tables.readRestrictionScalarDataPropertyValues(lines)
+  	    case "AspectSpecializationAxioms.json":
+  	      tables.readAspectSpecializationAxioms(lines)
+  	    case "ConceptSpecializationAxioms.json":
+  	      tables.readConceptSpecializationAxioms(lines)
+  	    case "ReifiedRelationshipSpecializationAxioms.json":
+  	      tables.readReifiedRelationshipSpecializationAxioms(lines)
+  	    case "SubDataPropertyOfAxioms.json":
+  	      tables.readSubDataPropertyOfAxioms(lines)
+  	    case "SubObjectPropertyOfAxioms.json":
+  	      tables.readSubObjectPropertyOfAxioms(lines)
+  	    case "RootConceptTaxonomyAxioms.json":
+  	      tables.readRootConceptTaxonomyAxioms(lines)
+  	    case "AnonymousConceptUnionAxioms.json":
+  	      tables.readAnonymousConceptUnionAxioms(lines)
+  	    case "SpecificDisjointConceptAxioms.json":
+  	      tables.readSpecificDisjointConceptAxioms(lines)
+  	    case "ConceptInstances.json":
+  	      tables.readConceptInstances(lines)
   	    case "ReifiedRelationshipInstances.json":
   	      tables.readReifiedRelationshipInstances(lines)
   	    case "ReifiedRelationshipInstanceDomains.json":
   	      tables.readReifiedRelationshipInstanceDomains(lines)
   	    case "ReifiedRelationshipInstanceRanges.json":
   	      tables.readReifiedRelationshipInstanceRanges(lines)
-  	    case "ReifiedRelationshipInversePropertyPredicates.json":
-  	      tables.readReifiedRelationshipInversePropertyPredicates(lines)
-  	    case "ReifiedRelationshipPredicates.json":
-  	      tables.readReifiedRelationshipPredicates(lines)
-  	    case "ReifiedRelationshipPropertyPredicates.json":
-  	      tables.readReifiedRelationshipPropertyPredicates(lines)
-  	    case "ReifiedRelationshipSourceInversePropertyPredicates.json":
-  	      tables.readReifiedRelationshipSourceInversePropertyPredicates(lines)
-  	    case "ReifiedRelationshipSourcePropertyPredicates.json":
-  	      tables.readReifiedRelationshipSourcePropertyPredicates(lines)
-  	    case "ReifiedRelationshipTargetInversePropertyPredicates.json":
-  	      tables.readReifiedRelationshipTargetInversePropertyPredicates(lines)
-  	    case "ReifiedRelationshipTargetPropertyPredicates.json":
-  	      tables.readReifiedRelationshipTargetPropertyPredicates(lines)
-  	    case "RestrictionScalarDataPropertyValues.json":
-  	      tables.readRestrictionScalarDataPropertyValues(lines)
-  	    case "RestrictionStructuredDataPropertyTuples.json":
-  	      tables.readRestrictionStructuredDataPropertyTuples(lines)
-  	    case "RuleBodySegments.json":
-  	      tables.readRuleBodySegments(lines)
-  	    case "ScalarDataPropertyValues.json":
-  	      tables.readScalarDataPropertyValues(lines)
-  	    case "SingletonInstanceScalarDataPropertyValues.json":
-  	      tables.readSingletonInstanceScalarDataPropertyValues(lines)
-  	    case "SingletonInstanceStructuredDataPropertyValues.json":
-  	      tables.readSingletonInstanceStructuredDataPropertyValues(lines)
-  	    case "StructuredDataPropertyTuples.json":
-  	      tables.readStructuredDataPropertyTuples(lines)
-  	    case "SubDataPropertyOfAxioms.json":
-  	      tables.readSubDataPropertyOfAxioms(lines)
-  	    case "SubObjectPropertyOfAxioms.json":
-  	      tables.readSubObjectPropertyOfAxioms(lines)
   	    case "UnreifiedRelationshipInstanceTuples.json":
   	      tables.readUnreifiedRelationshipInstanceTuples(lines)
-  	    case "UnreifiedRelationshipInversePropertyPredicates.json":
-  	      tables.readUnreifiedRelationshipInversePropertyPredicates(lines)
-  	    case "UnreifiedRelationshipPropertyPredicates.json":
-  	      tables.readUnreifiedRelationshipPropertyPredicates(lines)
+  	    case "SingletonInstanceStructuredDataPropertyValues.json":
+  	      tables.readSingletonInstanceStructuredDataPropertyValues(lines)
+  	    case "SingletonInstanceScalarDataPropertyValues.json":
+  	      tables.readSingletonInstanceScalarDataPropertyValues(lines)
+  	    case "StructuredDataPropertyTuples.json":
+  	      tables.readStructuredDataPropertyTuples(lines)
+  	    case "ScalarDataPropertyValues.json":
+  	      tables.readScalarDataPropertyValues(lines)
+  	    case "AnnotationPropertyValues.json":
+  	      tables.readAnnotationPropertyValues(lines)
         default:
           throw new IllegalArgumentException("OMLSpecificationTables.load(): unrecognized table name: "+ze.name)
       }
@@ -3088,18 +3088,6 @@ class OMLSpecificationTables {
     tables.resolve(rs, r)
   }
 
-  protected def void readAnnotationProperties(ArrayList<String> lines) {
-  	val kvs = OMLZipResource.lines2tuples(lines)
-  	kvs.forEach[kv|
-  	  val oml = createAnnotationProperty()
-  	  val uuid = kv.remove("uuid")
-  	  oml.iri = OMLTables.toIRI(kv.remove("iri"))
-  	  oml.abbrevIRI = OMLTables.toAbbrevIRI(kv.remove("abbrevIRI"))
-  	  val pair = new Pair<AnnotationProperty, Map<String,String>>(oml, kv)
-  	  annotationProperties.put(uuid, pair)
-  	]
-  }
-  
   protected def void readTerminologyGraphs(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
@@ -3121,6 +3109,74 @@ class OMLSpecificationTables {
   	  oml.iri = OMLTables.toIRI(kv.remove("iri"))
   	  val pair = new Pair<Bundle, Map<String,String>>(oml, kv)
   	  bundles.put(uuid, pair)
+  	]
+  }
+  
+  protected def void readDescriptionBoxes(ArrayList<String> lines) {
+  	val kvs = OMLZipResource.lines2tuples(lines)
+  	kvs.forEach[kv|
+  	  val oml = createDescriptionBox()
+  	  val uuid = kv.remove("uuid")
+  	  oml.kind = OMLTables.toDescriptionKind(kv.remove("kind"))
+  	  oml.iri = OMLTables.toIRI(kv.remove("iri"))
+  	  val pair = new Pair<DescriptionBox, Map<String,String>>(oml, kv)
+  	  descriptionBoxes.put(uuid, pair)
+  	]
+  }
+  
+  protected def void readAnnotationProperties(ArrayList<String> lines) {
+  	val kvs = OMLZipResource.lines2tuples(lines)
+  	kvs.forEach[kv|
+  	  val oml = createAnnotationProperty()
+  	  val uuid = kv.remove("uuid")
+  	  oml.iri = OMLTables.toIRI(kv.remove("iri"))
+  	  oml.abbrevIRI = OMLTables.toAbbrevIRI(kv.remove("abbrevIRI"))
+  	  val pair = new Pair<AnnotationProperty, Map<String,String>>(oml, kv)
+  	  annotationProperties.put(uuid, pair)
+  	]
+  }
+  
+  protected def void readAspects(ArrayList<String> lines) {
+  	val kvs = OMLZipResource.lines2tuples(lines)
+  	kvs.forEach[kv|
+  	  val oml = createAspect()
+  	  val uuid = kv.remove("uuid")
+  	  oml.name = OMLTables.toLocalName(kv.remove("name"))
+  	  val pair = new Pair<Aspect, Map<String,String>>(oml, kv)
+  	  aspects.put(uuid, pair)
+  	]
+  }
+  
+  protected def void readConcepts(ArrayList<String> lines) {
+  	val kvs = OMLZipResource.lines2tuples(lines)
+  	kvs.forEach[kv|
+  	  val oml = createConcept()
+  	  val uuid = kv.remove("uuid")
+  	  oml.name = OMLTables.toLocalName(kv.remove("name"))
+  	  val pair = new Pair<Concept, Map<String,String>>(oml, kv)
+  	  concepts.put(uuid, pair)
+  	]
+  }
+  
+  protected def void readScalars(ArrayList<String> lines) {
+  	val kvs = OMLZipResource.lines2tuples(lines)
+  	kvs.forEach[kv|
+  	  val oml = createScalar()
+  	  val uuid = kv.remove("uuid")
+  	  oml.name = OMLTables.toLocalName(kv.remove("name"))
+  	  val pair = new Pair<Scalar, Map<String,String>>(oml, kv)
+  	  scalars.put(uuid, pair)
+  	]
+  }
+  
+  protected def void readStructures(ArrayList<String> lines) {
+  	val kvs = OMLZipResource.lines2tuples(lines)
+  	kvs.forEach[kv|
+  	  val oml = createStructure()
+  	  val uuid = kv.remove("uuid")
+  	  oml.name = OMLTables.toLocalName(kv.remove("name"))
+  	  val pair = new Pair<Structure, Map<String,String>>(oml, kv)
+  	  structures.put(uuid, pair)
   	]
   }
   
@@ -3154,89 +3210,33 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readAspects(ArrayList<String> lines) {
+  protected def void readBundledTerminologyAxioms(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
-  	  val oml = createAspect()
+  	  val oml = createBundledTerminologyAxiom()
   	  val uuid = kv.remove("uuid")
-  	  oml.name = OMLTables.toLocalName(kv.remove("name"))
-  	  val pair = new Pair<Aspect, Map<String,String>>(oml, kv)
-  	  aspects.put(uuid, pair)
+  	  val pair = new Pair<BundledTerminologyAxiom, Map<String,String>>(oml, kv)
+  	  bundledTerminologyAxioms.put(uuid, pair)
   	]
   }
   
-  protected def void readConcepts(ArrayList<String> lines) {
+  protected def void readDescriptionBoxExtendsClosedWorldDefinitions(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
-  	  val oml = createConcept()
+  	  val oml = createDescriptionBoxExtendsClosedWorldDefinitions()
   	  val uuid = kv.remove("uuid")
-  	  oml.name = OMLTables.toLocalName(kv.remove("name"))
-  	  val pair = new Pair<Concept, Map<String,String>>(oml, kv)
-  	  concepts.put(uuid, pair)
+  	  val pair = new Pair<DescriptionBoxExtendsClosedWorldDefinitions, Map<String,String>>(oml, kv)
+  	  descriptionBoxExtendsClosedWorldDefinitions.put(uuid, pair)
   	]
   }
   
-  protected def void readReifiedRelationships(ArrayList<String> lines) {
+  protected def void readDescriptionBoxRefinements(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
-  	  val oml = createReifiedRelationship()
+  	  val oml = createDescriptionBoxRefinement()
   	  val uuid = kv.remove("uuid")
-  	  oml.isAsymmetric = OMLTables.toEBoolean(kv.remove("isAsymmetric"))
-  	  oml.isEssential = OMLTables.toEBoolean(kv.remove("isEssential"))
-  	  oml.isFunctional = OMLTables.toEBoolean(kv.remove("isFunctional"))
-  	  oml.isInverseEssential = OMLTables.toEBoolean(kv.remove("isInverseEssential"))
-  	  oml.isInverseFunctional = OMLTables.toEBoolean(kv.remove("isInverseFunctional"))
-  	  oml.isIrreflexive = OMLTables.toEBoolean(kv.remove("isIrreflexive"))
-  	  oml.isReflexive = OMLTables.toEBoolean(kv.remove("isReflexive"))
-  	  oml.isSymmetric = OMLTables.toEBoolean(kv.remove("isSymmetric"))
-  	  oml.isTransitive = OMLTables.toEBoolean(kv.remove("isTransitive"))
-  	  oml.name = OMLTables.toLocalName(kv.remove("name"))
-  	  oml.unreifiedPropertyName = OMLTables.toLocalName(kv.remove("unreifiedPropertyName"))
-  	  oml.unreifiedInversePropertyName = OMLTables.toLocalName(kv.remove("unreifiedInversePropertyName"))
-  	  val pair = new Pair<ReifiedRelationship, Map<String,String>>(oml, kv)
-  	  reifiedRelationships.put(uuid, pair)
-  	]
-  }
-  
-  protected def void readUnreifiedRelationships(ArrayList<String> lines) {
-  	val kvs = OMLZipResource.lines2tuples(lines)
-  	kvs.forEach[kv|
-  	  val oml = createUnreifiedRelationship()
-  	  val uuid = kv.remove("uuid")
-  	  oml.isAsymmetric = OMLTables.toEBoolean(kv.remove("isAsymmetric"))
-  	  oml.isEssential = OMLTables.toEBoolean(kv.remove("isEssential"))
-  	  oml.isFunctional = OMLTables.toEBoolean(kv.remove("isFunctional"))
-  	  oml.isInverseEssential = OMLTables.toEBoolean(kv.remove("isInverseEssential"))
-  	  oml.isInverseFunctional = OMLTables.toEBoolean(kv.remove("isInverseFunctional"))
-  	  oml.isIrreflexive = OMLTables.toEBoolean(kv.remove("isIrreflexive"))
-  	  oml.isReflexive = OMLTables.toEBoolean(kv.remove("isReflexive"))
-  	  oml.isSymmetric = OMLTables.toEBoolean(kv.remove("isSymmetric"))
-  	  oml.isTransitive = OMLTables.toEBoolean(kv.remove("isTransitive"))
-  	  oml.name = OMLTables.toLocalName(kv.remove("name"))
-  	  val pair = new Pair<UnreifiedRelationship, Map<String,String>>(oml, kv)
-  	  unreifiedRelationships.put(uuid, pair)
-  	]
-  }
-  
-  protected def void readScalars(ArrayList<String> lines) {
-  	val kvs = OMLZipResource.lines2tuples(lines)
-  	kvs.forEach[kv|
-  	  val oml = createScalar()
-  	  val uuid = kv.remove("uuid")
-  	  oml.name = OMLTables.toLocalName(kv.remove("name"))
-  	  val pair = new Pair<Scalar, Map<String,String>>(oml, kv)
-  	  scalars.put(uuid, pair)
-  	]
-  }
-  
-  protected def void readStructures(ArrayList<String> lines) {
-  	val kvs = OMLZipResource.lines2tuples(lines)
-  	kvs.forEach[kv|
-  	  val oml = createStructure()
-  	  val uuid = kv.remove("uuid")
-  	  oml.name = OMLTables.toLocalName(kv.remove("name"))
-  	  val pair = new Pair<Structure, Map<String,String>>(oml, kv)
-  	  structures.put(uuid, pair)
+  	  val pair = new Pair<DescriptionBoxRefinement, Map<String,String>>(oml, kv)
+  	  descriptionBoxRefinements.put(uuid, pair)
   	]
   }
   
@@ -3308,6 +3308,17 @@ class OMLSpecificationTables {
   	  oml.name = OMLTables.toLocalName(kv.remove("name"))
   	  val pair = new Pair<ScalarOneOfRestriction, Map<String,String>>(oml, kv)
   	  scalarOneOfRestrictions.put(uuid, pair)
+  	]
+  }
+  
+  protected def void readScalarOneOfLiteralAxioms(ArrayList<String> lines) {
+  	val kvs = OMLZipResource.lines2tuples(lines)
+  	kvs.forEach[kv|
+  	  val oml = createScalarOneOfLiteralAxiom()
+  	  val uuid = kv.remove("uuid")
+  	  oml.value = OMLTables.toLiteralValue(kv.remove("value"))
+  	  val pair = new Pair<ScalarOneOfLiteralAxiom, Map<String,String>>(oml, kv)
+  	  scalarOneOfLiteralAxioms.put(uuid, pair)
   	]
   }
   
@@ -3398,33 +3409,176 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readAspectSpecializationAxioms(ArrayList<String> lines) {
+  protected def void readReifiedRelationships(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
-  	  val oml = createAspectSpecializationAxiom()
+  	  val oml = createReifiedRelationship()
   	  val uuid = kv.remove("uuid")
-  	  val pair = new Pair<AspectSpecializationAxiom, Map<String,String>>(oml, kv)
-  	  aspectSpecializationAxioms.put(uuid, pair)
+  	  oml.isAsymmetric = OMLTables.toEBoolean(kv.remove("isAsymmetric"))
+  	  oml.isEssential = OMLTables.toEBoolean(kv.remove("isEssential"))
+  	  oml.isFunctional = OMLTables.toEBoolean(kv.remove("isFunctional"))
+  	  oml.isInverseEssential = OMLTables.toEBoolean(kv.remove("isInverseEssential"))
+  	  oml.isInverseFunctional = OMLTables.toEBoolean(kv.remove("isInverseFunctional"))
+  	  oml.isIrreflexive = OMLTables.toEBoolean(kv.remove("isIrreflexive"))
+  	  oml.isReflexive = OMLTables.toEBoolean(kv.remove("isReflexive"))
+  	  oml.isSymmetric = OMLTables.toEBoolean(kv.remove("isSymmetric"))
+  	  oml.isTransitive = OMLTables.toEBoolean(kv.remove("isTransitive"))
+  	  oml.name = OMLTables.toLocalName(kv.remove("name"))
+  	  oml.unreifiedPropertyName = OMLTables.toLocalName(kv.remove("unreifiedPropertyName"))
+  	  oml.unreifiedInversePropertyName = OMLTables.toLocalName(kv.remove("unreifiedInversePropertyName"))
+  	  val pair = new Pair<ReifiedRelationship, Map<String,String>>(oml, kv)
+  	  reifiedRelationships.put(uuid, pair)
   	]
   }
   
-  protected def void readConceptSpecializationAxioms(ArrayList<String> lines) {
+  protected def void readUnreifiedRelationships(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
-  	  val oml = createConceptSpecializationAxiom()
+  	  val oml = createUnreifiedRelationship()
   	  val uuid = kv.remove("uuid")
-  	  val pair = new Pair<ConceptSpecializationAxiom, Map<String,String>>(oml, kv)
-  	  conceptSpecializationAxioms.put(uuid, pair)
+  	  oml.isAsymmetric = OMLTables.toEBoolean(kv.remove("isAsymmetric"))
+  	  oml.isEssential = OMLTables.toEBoolean(kv.remove("isEssential"))
+  	  oml.isFunctional = OMLTables.toEBoolean(kv.remove("isFunctional"))
+  	  oml.isInverseEssential = OMLTables.toEBoolean(kv.remove("isInverseEssential"))
+  	  oml.isInverseFunctional = OMLTables.toEBoolean(kv.remove("isInverseFunctional"))
+  	  oml.isIrreflexive = OMLTables.toEBoolean(kv.remove("isIrreflexive"))
+  	  oml.isReflexive = OMLTables.toEBoolean(kv.remove("isReflexive"))
+  	  oml.isSymmetric = OMLTables.toEBoolean(kv.remove("isSymmetric"))
+  	  oml.isTransitive = OMLTables.toEBoolean(kv.remove("isTransitive"))
+  	  oml.name = OMLTables.toLocalName(kv.remove("name"))
+  	  val pair = new Pair<UnreifiedRelationship, Map<String,String>>(oml, kv)
+  	  unreifiedRelationships.put(uuid, pair)
   	]
   }
   
-  protected def void readReifiedRelationshipSpecializationAxioms(ArrayList<String> lines) {
+  protected def void readChainRules(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
-  	  val oml = createReifiedRelationshipSpecializationAxiom()
+  	  val oml = createChainRule()
   	  val uuid = kv.remove("uuid")
-  	  val pair = new Pair<ReifiedRelationshipSpecializationAxiom, Map<String,String>>(oml, kv)
-  	  reifiedRelationshipSpecializationAxioms.put(uuid, pair)
+  	  oml.name = OMLTables.toLocalName(kv.remove("name"))
+  	  val pair = new Pair<ChainRule, Map<String,String>>(oml, kv)
+  	  chainRules.put(uuid, pair)
+  	]
+  }
+  
+  protected def void readRuleBodySegments(ArrayList<String> lines) {
+  	val kvs = OMLZipResource.lines2tuples(lines)
+  	kvs.forEach[kv|
+  	  val oml = createRuleBodySegment()
+  	  val uuid = kv.remove("uuid")
+  	  val pair = new Pair<RuleBodySegment, Map<String,String>>(oml, kv)
+  	  ruleBodySegments.put(uuid, pair)
+  	]
+  }
+  
+  protected def void readAspectPredicates(ArrayList<String> lines) {
+  	val kvs = OMLZipResource.lines2tuples(lines)
+  	kvs.forEach[kv|
+  	  val oml = createAspectPredicate()
+  	  val uuid = kv.remove("uuid")
+  	  val pair = new Pair<AspectPredicate, Map<String,String>>(oml, kv)
+  	  aspectPredicates.put(uuid, pair)
+  	]
+  }
+  
+  protected def void readConceptPredicates(ArrayList<String> lines) {
+  	val kvs = OMLZipResource.lines2tuples(lines)
+  	kvs.forEach[kv|
+  	  val oml = createConceptPredicate()
+  	  val uuid = kv.remove("uuid")
+  	  val pair = new Pair<ConceptPredicate, Map<String,String>>(oml, kv)
+  	  conceptPredicates.put(uuid, pair)
+  	]
+  }
+  
+  protected def void readReifiedRelationshipPredicates(ArrayList<String> lines) {
+  	val kvs = OMLZipResource.lines2tuples(lines)
+  	kvs.forEach[kv|
+  	  val oml = createReifiedRelationshipPredicate()
+  	  val uuid = kv.remove("uuid")
+  	  val pair = new Pair<ReifiedRelationshipPredicate, Map<String,String>>(oml, kv)
+  	  reifiedRelationshipPredicates.put(uuid, pair)
+  	]
+  }
+  
+  protected def void readReifiedRelationshipPropertyPredicates(ArrayList<String> lines) {
+  	val kvs = OMLZipResource.lines2tuples(lines)
+  	kvs.forEach[kv|
+  	  val oml = createReifiedRelationshipPropertyPredicate()
+  	  val uuid = kv.remove("uuid")
+  	  val pair = new Pair<ReifiedRelationshipPropertyPredicate, Map<String,String>>(oml, kv)
+  	  reifiedRelationshipPropertyPredicates.put(uuid, pair)
+  	]
+  }
+  
+  protected def void readReifiedRelationshipSourcePropertyPredicates(ArrayList<String> lines) {
+  	val kvs = OMLZipResource.lines2tuples(lines)
+  	kvs.forEach[kv|
+  	  val oml = createReifiedRelationshipSourcePropertyPredicate()
+  	  val uuid = kv.remove("uuid")
+  	  val pair = new Pair<ReifiedRelationshipSourcePropertyPredicate, Map<String,String>>(oml, kv)
+  	  reifiedRelationshipSourcePropertyPredicates.put(uuid, pair)
+  	]
+  }
+  
+  protected def void readReifiedRelationshipTargetPropertyPredicates(ArrayList<String> lines) {
+  	val kvs = OMLZipResource.lines2tuples(lines)
+  	kvs.forEach[kv|
+  	  val oml = createReifiedRelationshipTargetPropertyPredicate()
+  	  val uuid = kv.remove("uuid")
+  	  val pair = new Pair<ReifiedRelationshipTargetPropertyPredicate, Map<String,String>>(oml, kv)
+  	  reifiedRelationshipTargetPropertyPredicates.put(uuid, pair)
+  	]
+  }
+  
+  protected def void readUnreifiedRelationshipPropertyPredicates(ArrayList<String> lines) {
+  	val kvs = OMLZipResource.lines2tuples(lines)
+  	kvs.forEach[kv|
+  	  val oml = createUnreifiedRelationshipPropertyPredicate()
+  	  val uuid = kv.remove("uuid")
+  	  val pair = new Pair<UnreifiedRelationshipPropertyPredicate, Map<String,String>>(oml, kv)
+  	  unreifiedRelationshipPropertyPredicates.put(uuid, pair)
+  	]
+  }
+  
+  protected def void readReifiedRelationshipInversePropertyPredicates(ArrayList<String> lines) {
+  	val kvs = OMLZipResource.lines2tuples(lines)
+  	kvs.forEach[kv|
+  	  val oml = createReifiedRelationshipInversePropertyPredicate()
+  	  val uuid = kv.remove("uuid")
+  	  val pair = new Pair<ReifiedRelationshipInversePropertyPredicate, Map<String,String>>(oml, kv)
+  	  reifiedRelationshipInversePropertyPredicates.put(uuid, pair)
+  	]
+  }
+  
+  protected def void readReifiedRelationshipSourceInversePropertyPredicates(ArrayList<String> lines) {
+  	val kvs = OMLZipResource.lines2tuples(lines)
+  	kvs.forEach[kv|
+  	  val oml = createReifiedRelationshipSourceInversePropertyPredicate()
+  	  val uuid = kv.remove("uuid")
+  	  val pair = new Pair<ReifiedRelationshipSourceInversePropertyPredicate, Map<String,String>>(oml, kv)
+  	  reifiedRelationshipSourceInversePropertyPredicates.put(uuid, pair)
+  	]
+  }
+  
+  protected def void readReifiedRelationshipTargetInversePropertyPredicates(ArrayList<String> lines) {
+  	val kvs = OMLZipResource.lines2tuples(lines)
+  	kvs.forEach[kv|
+  	  val oml = createReifiedRelationshipTargetInversePropertyPredicate()
+  	  val uuid = kv.remove("uuid")
+  	  val pair = new Pair<ReifiedRelationshipTargetInversePropertyPredicate, Map<String,String>>(oml, kv)
+  	  reifiedRelationshipTargetInversePropertyPredicates.put(uuid, pair)
+  	]
+  }
+  
+  protected def void readUnreifiedRelationshipInversePropertyPredicates(ArrayList<String> lines) {
+  	val kvs = OMLZipResource.lines2tuples(lines)
+  	kvs.forEach[kv|
+  	  val oml = createUnreifiedRelationshipInversePropertyPredicate()
+  	  val uuid = kv.remove("uuid")
+  	  val pair = new Pair<UnreifiedRelationshipInversePropertyPredicate, Map<String,String>>(oml, kv)
+  	  unreifiedRelationshipInversePropertyPredicates.put(uuid, pair)
   	]
   }
   
@@ -3479,24 +3633,84 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readScalarOneOfLiteralAxioms(ArrayList<String> lines) {
+  protected def void readEntityStructuredDataPropertyParticularRestrictionAxioms(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
-  	  val oml = createScalarOneOfLiteralAxiom()
+  	  val oml = createEntityStructuredDataPropertyParticularRestrictionAxiom()
   	  val uuid = kv.remove("uuid")
-  	  oml.value = OMLTables.toLiteralValue(kv.remove("value"))
-  	  val pair = new Pair<ScalarOneOfLiteralAxiom, Map<String,String>>(oml, kv)
-  	  scalarOneOfLiteralAxioms.put(uuid, pair)
+  	  val pair = new Pair<EntityStructuredDataPropertyParticularRestrictionAxiom, Map<String,String>>(oml, kv)
+  	  entityStructuredDataPropertyParticularRestrictionAxioms.put(uuid, pair)
   	]
   }
   
-  protected def void readBundledTerminologyAxioms(ArrayList<String> lines) {
+  protected def void readRestrictionStructuredDataPropertyTuples(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
-  	  val oml = createBundledTerminologyAxiom()
+  	  val oml = createRestrictionStructuredDataPropertyTuple()
   	  val uuid = kv.remove("uuid")
-  	  val pair = new Pair<BundledTerminologyAxiom, Map<String,String>>(oml, kv)
-  	  bundledTerminologyAxioms.put(uuid, pair)
+  	  val pair = new Pair<RestrictionStructuredDataPropertyTuple, Map<String,String>>(oml, kv)
+  	  restrictionStructuredDataPropertyTuples.put(uuid, pair)
+  	]
+  }
+  
+  protected def void readRestrictionScalarDataPropertyValues(ArrayList<String> lines) {
+  	val kvs = OMLZipResource.lines2tuples(lines)
+  	kvs.forEach[kv|
+  	  val oml = createRestrictionScalarDataPropertyValue()
+  	  val uuid = kv.remove("uuid")
+  	  oml.scalarPropertyValue = OMLTables.toLiteralValue(kv.remove("scalarPropertyValue"))
+  	  val pair = new Pair<RestrictionScalarDataPropertyValue, Map<String,String>>(oml, kv)
+  	  restrictionScalarDataPropertyValues.put(uuid, pair)
+  	]
+  }
+  
+  protected def void readAspectSpecializationAxioms(ArrayList<String> lines) {
+  	val kvs = OMLZipResource.lines2tuples(lines)
+  	kvs.forEach[kv|
+  	  val oml = createAspectSpecializationAxiom()
+  	  val uuid = kv.remove("uuid")
+  	  val pair = new Pair<AspectSpecializationAxiom, Map<String,String>>(oml, kv)
+  	  aspectSpecializationAxioms.put(uuid, pair)
+  	]
+  }
+  
+  protected def void readConceptSpecializationAxioms(ArrayList<String> lines) {
+  	val kvs = OMLZipResource.lines2tuples(lines)
+  	kvs.forEach[kv|
+  	  val oml = createConceptSpecializationAxiom()
+  	  val uuid = kv.remove("uuid")
+  	  val pair = new Pair<ConceptSpecializationAxiom, Map<String,String>>(oml, kv)
+  	  conceptSpecializationAxioms.put(uuid, pair)
+  	]
+  }
+  
+  protected def void readReifiedRelationshipSpecializationAxioms(ArrayList<String> lines) {
+  	val kvs = OMLZipResource.lines2tuples(lines)
+  	kvs.forEach[kv|
+  	  val oml = createReifiedRelationshipSpecializationAxiom()
+  	  val uuid = kv.remove("uuid")
+  	  val pair = new Pair<ReifiedRelationshipSpecializationAxiom, Map<String,String>>(oml, kv)
+  	  reifiedRelationshipSpecializationAxioms.put(uuid, pair)
+  	]
+  }
+  
+  protected def void readSubDataPropertyOfAxioms(ArrayList<String> lines) {
+  	val kvs = OMLZipResource.lines2tuples(lines)
+  	kvs.forEach[kv|
+  	  val oml = createSubDataPropertyOfAxiom()
+  	  val uuid = kv.remove("uuid")
+  	  val pair = new Pair<SubDataPropertyOfAxiom, Map<String,String>>(oml, kv)
+  	  subDataPropertyOfAxioms.put(uuid, pair)
+  	]
+  }
+  
+  protected def void readSubObjectPropertyOfAxioms(ArrayList<String> lines) {
+  	val kvs = OMLZipResource.lines2tuples(lines)
+  	kvs.forEach[kv|
+  	  val oml = createSubObjectPropertyOfAxiom()
+  	  val uuid = kv.remove("uuid")
+  	  val pair = new Pair<SubObjectPropertyOfAxiom, Map<String,String>>(oml, kv)
+  	  subObjectPropertyOfAxioms.put(uuid, pair)
   	]
   }
   
@@ -3507,27 +3721,6 @@ class OMLSpecificationTables {
   	  val uuid = kv.remove("uuid")
   	  val pair = new Pair<RootConceptTaxonomyAxiom, Map<String,String>>(oml, kv)
   	  rootConceptTaxonomyAxioms.put(uuid, pair)
-  	]
-  }
-  
-  protected def void readSpecificDisjointConceptAxioms(ArrayList<String> lines) {
-  	val kvs = OMLZipResource.lines2tuples(lines)
-  	kvs.forEach[kv|
-  	  val oml = createSpecificDisjointConceptAxiom()
-  	  val uuid = kv.remove("uuid")
-  	  val pair = new Pair<SpecificDisjointConceptAxiom, Map<String,String>>(oml, kv)
-  	  specificDisjointConceptAxioms.put(uuid, pair)
-  	]
-  }
-  
-  protected def void readAnnotationPropertyValues(ArrayList<String> lines) {
-  	val kvs = OMLZipResource.lines2tuples(lines)
-  	kvs.forEach[kv|
-  	  val oml = createAnnotationPropertyValue()
-  	  val uuid = kv.remove("uuid")
-  	  oml.value = OMLTables.toLiteralString(kv.remove("value"))
-  	  val pair = new Pair<AnnotationPropertyValue, Map<String,String>>(oml, kv)
-  	  annotationPropertyValues.put(uuid, pair)
   	]
   }
   
@@ -3542,24 +3735,13 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readAspectPredicates(ArrayList<String> lines) {
+  protected def void readSpecificDisjointConceptAxioms(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
-  	  val oml = createAspectPredicate()
+  	  val oml = createSpecificDisjointConceptAxiom()
   	  val uuid = kv.remove("uuid")
-  	  val pair = new Pair<AspectPredicate, Map<String,String>>(oml, kv)
-  	  aspectPredicates.put(uuid, pair)
-  	]
-  }
-  
-  protected def void readChainRules(ArrayList<String> lines) {
-  	val kvs = OMLZipResource.lines2tuples(lines)
-  	kvs.forEach[kv|
-  	  val oml = createChainRule()
-  	  val uuid = kv.remove("uuid")
-  	  oml.name = OMLTables.toLocalName(kv.remove("name"))
-  	  val pair = new Pair<ChainRule, Map<String,String>>(oml, kv)
-  	  chainRules.put(uuid, pair)
+  	  val pair = new Pair<SpecificDisjointConceptAxiom, Map<String,String>>(oml, kv)
+  	  specificDisjointConceptAxioms.put(uuid, pair)
   	]
   }
   
@@ -3571,58 +3753,6 @@ class OMLSpecificationTables {
   	  oml.name = OMLTables.toLocalName(kv.remove("name"))
   	  val pair = new Pair<ConceptInstance, Map<String,String>>(oml, kv)
   	  conceptInstances.put(uuid, pair)
-  	]
-  }
-  
-  protected def void readConceptPredicates(ArrayList<String> lines) {
-  	val kvs = OMLZipResource.lines2tuples(lines)
-  	kvs.forEach[kv|
-  	  val oml = createConceptPredicate()
-  	  val uuid = kv.remove("uuid")
-  	  val pair = new Pair<ConceptPredicate, Map<String,String>>(oml, kv)
-  	  conceptPredicates.put(uuid, pair)
-  	]
-  }
-  
-  protected def void readDescriptionBoxes(ArrayList<String> lines) {
-  	val kvs = OMLZipResource.lines2tuples(lines)
-  	kvs.forEach[kv|
-  	  val oml = createDescriptionBox()
-  	  val uuid = kv.remove("uuid")
-  	  oml.kind = OMLTables.toDescriptionKind(kv.remove("kind"))
-  	  oml.iri = OMLTables.toIRI(kv.remove("iri"))
-  	  val pair = new Pair<DescriptionBox, Map<String,String>>(oml, kv)
-  	  descriptionBoxes.put(uuid, pair)
-  	]
-  }
-  
-  protected def void readDescriptionBoxExtendsClosedWorldDefinitions(ArrayList<String> lines) {
-  	val kvs = OMLZipResource.lines2tuples(lines)
-  	kvs.forEach[kv|
-  	  val oml = createDescriptionBoxExtendsClosedWorldDefinitions()
-  	  val uuid = kv.remove("uuid")
-  	  val pair = new Pair<DescriptionBoxExtendsClosedWorldDefinitions, Map<String,String>>(oml, kv)
-  	  descriptionBoxExtendsClosedWorldDefinitions.put(uuid, pair)
-  	]
-  }
-  
-  protected def void readDescriptionBoxRefinements(ArrayList<String> lines) {
-  	val kvs = OMLZipResource.lines2tuples(lines)
-  	kvs.forEach[kv|
-  	  val oml = createDescriptionBoxRefinement()
-  	  val uuid = kv.remove("uuid")
-  	  val pair = new Pair<DescriptionBoxRefinement, Map<String,String>>(oml, kv)
-  	  descriptionBoxRefinements.put(uuid, pair)
-  	]
-  }
-  
-  protected def void readEntityStructuredDataPropertyParticularRestrictionAxioms(ArrayList<String> lines) {
-  	val kvs = OMLZipResource.lines2tuples(lines)
-  	kvs.forEach[kv|
-  	  val oml = createEntityStructuredDataPropertyParticularRestrictionAxiom()
-  	  val uuid = kv.remove("uuid")
-  	  val pair = new Pair<EntityStructuredDataPropertyParticularRestrictionAxiom, Map<String,String>>(oml, kv)
-  	  entityStructuredDataPropertyParticularRestrictionAxioms.put(uuid, pair)
   	]
   }
   
@@ -3657,115 +3787,23 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readReifiedRelationshipInversePropertyPredicates(ArrayList<String> lines) {
+  protected def void readUnreifiedRelationshipInstanceTuples(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
-  	  val oml = createReifiedRelationshipInversePropertyPredicate()
+  	  val oml = createUnreifiedRelationshipInstanceTuple()
   	  val uuid = kv.remove("uuid")
-  	  val pair = new Pair<ReifiedRelationshipInversePropertyPredicate, Map<String,String>>(oml, kv)
-  	  reifiedRelationshipInversePropertyPredicates.put(uuid, pair)
+  	  val pair = new Pair<UnreifiedRelationshipInstanceTuple, Map<String,String>>(oml, kv)
+  	  unreifiedRelationshipInstanceTuples.put(uuid, pair)
   	]
   }
   
-  protected def void readReifiedRelationshipPredicates(ArrayList<String> lines) {
+  protected def void readSingletonInstanceStructuredDataPropertyValues(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
-  	  val oml = createReifiedRelationshipPredicate()
+  	  val oml = createSingletonInstanceStructuredDataPropertyValue()
   	  val uuid = kv.remove("uuid")
-  	  val pair = new Pair<ReifiedRelationshipPredicate, Map<String,String>>(oml, kv)
-  	  reifiedRelationshipPredicates.put(uuid, pair)
-  	]
-  }
-  
-  protected def void readReifiedRelationshipPropertyPredicates(ArrayList<String> lines) {
-  	val kvs = OMLZipResource.lines2tuples(lines)
-  	kvs.forEach[kv|
-  	  val oml = createReifiedRelationshipPropertyPredicate()
-  	  val uuid = kv.remove("uuid")
-  	  val pair = new Pair<ReifiedRelationshipPropertyPredicate, Map<String,String>>(oml, kv)
-  	  reifiedRelationshipPropertyPredicates.put(uuid, pair)
-  	]
-  }
-  
-  protected def void readReifiedRelationshipSourceInversePropertyPredicates(ArrayList<String> lines) {
-  	val kvs = OMLZipResource.lines2tuples(lines)
-  	kvs.forEach[kv|
-  	  val oml = createReifiedRelationshipSourceInversePropertyPredicate()
-  	  val uuid = kv.remove("uuid")
-  	  val pair = new Pair<ReifiedRelationshipSourceInversePropertyPredicate, Map<String,String>>(oml, kv)
-  	  reifiedRelationshipSourceInversePropertyPredicates.put(uuid, pair)
-  	]
-  }
-  
-  protected def void readReifiedRelationshipSourcePropertyPredicates(ArrayList<String> lines) {
-  	val kvs = OMLZipResource.lines2tuples(lines)
-  	kvs.forEach[kv|
-  	  val oml = createReifiedRelationshipSourcePropertyPredicate()
-  	  val uuid = kv.remove("uuid")
-  	  val pair = new Pair<ReifiedRelationshipSourcePropertyPredicate, Map<String,String>>(oml, kv)
-  	  reifiedRelationshipSourcePropertyPredicates.put(uuid, pair)
-  	]
-  }
-  
-  protected def void readReifiedRelationshipTargetInversePropertyPredicates(ArrayList<String> lines) {
-  	val kvs = OMLZipResource.lines2tuples(lines)
-  	kvs.forEach[kv|
-  	  val oml = createReifiedRelationshipTargetInversePropertyPredicate()
-  	  val uuid = kv.remove("uuid")
-  	  val pair = new Pair<ReifiedRelationshipTargetInversePropertyPredicate, Map<String,String>>(oml, kv)
-  	  reifiedRelationshipTargetInversePropertyPredicates.put(uuid, pair)
-  	]
-  }
-  
-  protected def void readReifiedRelationshipTargetPropertyPredicates(ArrayList<String> lines) {
-  	val kvs = OMLZipResource.lines2tuples(lines)
-  	kvs.forEach[kv|
-  	  val oml = createReifiedRelationshipTargetPropertyPredicate()
-  	  val uuid = kv.remove("uuid")
-  	  val pair = new Pair<ReifiedRelationshipTargetPropertyPredicate, Map<String,String>>(oml, kv)
-  	  reifiedRelationshipTargetPropertyPredicates.put(uuid, pair)
-  	]
-  }
-  
-  protected def void readRestrictionScalarDataPropertyValues(ArrayList<String> lines) {
-  	val kvs = OMLZipResource.lines2tuples(lines)
-  	kvs.forEach[kv|
-  	  val oml = createRestrictionScalarDataPropertyValue()
-  	  val uuid = kv.remove("uuid")
-  	  oml.scalarPropertyValue = OMLTables.toLiteralValue(kv.remove("scalarPropertyValue"))
-  	  val pair = new Pair<RestrictionScalarDataPropertyValue, Map<String,String>>(oml, kv)
-  	  restrictionScalarDataPropertyValues.put(uuid, pair)
-  	]
-  }
-  
-  protected def void readRestrictionStructuredDataPropertyTuples(ArrayList<String> lines) {
-  	val kvs = OMLZipResource.lines2tuples(lines)
-  	kvs.forEach[kv|
-  	  val oml = createRestrictionStructuredDataPropertyTuple()
-  	  val uuid = kv.remove("uuid")
-  	  val pair = new Pair<RestrictionStructuredDataPropertyTuple, Map<String,String>>(oml, kv)
-  	  restrictionStructuredDataPropertyTuples.put(uuid, pair)
-  	]
-  }
-  
-  protected def void readRuleBodySegments(ArrayList<String> lines) {
-  	val kvs = OMLZipResource.lines2tuples(lines)
-  	kvs.forEach[kv|
-  	  val oml = createRuleBodySegment()
-  	  val uuid = kv.remove("uuid")
-  	  val pair = new Pair<RuleBodySegment, Map<String,String>>(oml, kv)
-  	  ruleBodySegments.put(uuid, pair)
-  	]
-  }
-  
-  protected def void readScalarDataPropertyValues(ArrayList<String> lines) {
-  	val kvs = OMLZipResource.lines2tuples(lines)
-  	kvs.forEach[kv|
-  	  val oml = createScalarDataPropertyValue()
-  	  val uuid = kv.remove("uuid")
-  	  oml.scalarPropertyValue = OMLTables.toLiteralValue(kv.remove("scalarPropertyValue"))
-  	  val pair = new Pair<ScalarDataPropertyValue, Map<String,String>>(oml, kv)
-  	  scalarDataPropertyValues.put(uuid, pair)
+  	  val pair = new Pair<SingletonInstanceStructuredDataPropertyValue, Map<String,String>>(oml, kv)
+  	  singletonInstanceStructuredDataPropertyValues.put(uuid, pair)
   	]
   }
   
@@ -3780,16 +3818,6 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readSingletonInstanceStructuredDataPropertyValues(ArrayList<String> lines) {
-  	val kvs = OMLZipResource.lines2tuples(lines)
-  	kvs.forEach[kv|
-  	  val oml = createSingletonInstanceStructuredDataPropertyValue()
-  	  val uuid = kv.remove("uuid")
-  	  val pair = new Pair<SingletonInstanceStructuredDataPropertyValue, Map<String,String>>(oml, kv)
-  	  singletonInstanceStructuredDataPropertyValues.put(uuid, pair)
-  	]
-  }
-  
   protected def void readStructuredDataPropertyTuples(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
@@ -3800,53 +3828,25 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readSubDataPropertyOfAxioms(ArrayList<String> lines) {
+  protected def void readScalarDataPropertyValues(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
-  	  val oml = createSubDataPropertyOfAxiom()
+  	  val oml = createScalarDataPropertyValue()
   	  val uuid = kv.remove("uuid")
-  	  val pair = new Pair<SubDataPropertyOfAxiom, Map<String,String>>(oml, kv)
-  	  subDataPropertyOfAxioms.put(uuid, pair)
+  	  oml.scalarPropertyValue = OMLTables.toLiteralValue(kv.remove("scalarPropertyValue"))
+  	  val pair = new Pair<ScalarDataPropertyValue, Map<String,String>>(oml, kv)
+  	  scalarDataPropertyValues.put(uuid, pair)
   	]
   }
   
-  protected def void readSubObjectPropertyOfAxioms(ArrayList<String> lines) {
+  protected def void readAnnotationPropertyValues(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
-  	  val oml = createSubObjectPropertyOfAxiom()
+  	  val oml = createAnnotationPropertyValue()
   	  val uuid = kv.remove("uuid")
-  	  val pair = new Pair<SubObjectPropertyOfAxiom, Map<String,String>>(oml, kv)
-  	  subObjectPropertyOfAxioms.put(uuid, pair)
-  	]
-  }
-  
-  protected def void readUnreifiedRelationshipInstanceTuples(ArrayList<String> lines) {
-  	val kvs = OMLZipResource.lines2tuples(lines)
-  	kvs.forEach[kv|
-  	  val oml = createUnreifiedRelationshipInstanceTuple()
-  	  val uuid = kv.remove("uuid")
-  	  val pair = new Pair<UnreifiedRelationshipInstanceTuple, Map<String,String>>(oml, kv)
-  	  unreifiedRelationshipInstanceTuples.put(uuid, pair)
-  	]
-  }
-  
-  protected def void readUnreifiedRelationshipInversePropertyPredicates(ArrayList<String> lines) {
-  	val kvs = OMLZipResource.lines2tuples(lines)
-  	kvs.forEach[kv|
-  	  val oml = createUnreifiedRelationshipInversePropertyPredicate()
-  	  val uuid = kv.remove("uuid")
-  	  val pair = new Pair<UnreifiedRelationshipInversePropertyPredicate, Map<String,String>>(oml, kv)
-  	  unreifiedRelationshipInversePropertyPredicates.put(uuid, pair)
-  	]
-  }
-  
-  protected def void readUnreifiedRelationshipPropertyPredicates(ArrayList<String> lines) {
-  	val kvs = OMLZipResource.lines2tuples(lines)
-  	kvs.forEach[kv|
-  	  val oml = createUnreifiedRelationshipPropertyPredicate()
-  	  val uuid = kv.remove("uuid")
-  	  val pair = new Pair<UnreifiedRelationshipPropertyPredicate, Map<String,String>>(oml, kv)
-  	  unreifiedRelationshipPropertyPredicates.put(uuid, pair)
+  	  oml.value = OMLTables.toLiteralString(kv.remove("value"))
+  	  val pair = new Pair<AnnotationPropertyValue, Map<String,String>>(oml, kv)
+  	  annotationPropertyValues.put(uuid, pair)
   	]
   }
   
@@ -3859,20 +3859,23 @@ class OMLSpecificationTables {
 	// Lookup table for LogicalElement cross references
     includeMap(logicalElements, terminologyGraphs)
     includeMap(logicalElements, bundles)
+    includeMap(logicalElements, descriptionBoxes)
+    includeMap(logicalElements, aspects)
+    includeMap(logicalElements, concepts)
+    includeMap(logicalElements, scalars)
+    includeMap(logicalElements, structures)
     includeMap(logicalElements, conceptDesignationTerminologyAxioms)
     includeMap(logicalElements, terminologyExtensionAxioms)
     includeMap(logicalElements, terminologyNestingAxioms)
-    includeMap(logicalElements, aspects)
-    includeMap(logicalElements, concepts)
-    includeMap(logicalElements, reifiedRelationships)
-    includeMap(logicalElements, unreifiedRelationships)
-    includeMap(logicalElements, scalars)
-    includeMap(logicalElements, structures)
+    includeMap(logicalElements, bundledTerminologyAxioms)
+    includeMap(logicalElements, descriptionBoxExtendsClosedWorldDefinitions)
+    includeMap(logicalElements, descriptionBoxRefinements)
     includeMap(logicalElements, binaryScalarRestrictions)
     includeMap(logicalElements, iriScalarRestrictions)
     includeMap(logicalElements, numericScalarRestrictions)
     includeMap(logicalElements, plainLiteralScalarRestrictions)
     includeMap(logicalElements, scalarOneOfRestrictions)
+    includeMap(logicalElements, scalarOneOfLiteralAxioms)
     includeMap(logicalElements, stringScalarRestrictions)
     includeMap(logicalElements, synonymScalarRestrictions)
     includeMap(logicalElements, timeScalarRestrictions)
@@ -3880,49 +3883,46 @@ class OMLSpecificationTables {
     includeMap(logicalElements, entityStructuredDataProperties)
     includeMap(logicalElements, scalarDataProperties)
     includeMap(logicalElements, structuredDataProperties)
-    includeMap(logicalElements, aspectSpecializationAxioms)
-    includeMap(logicalElements, conceptSpecializationAxioms)
-    includeMap(logicalElements, reifiedRelationshipSpecializationAxioms)
+    includeMap(logicalElements, reifiedRelationships)
+    includeMap(logicalElements, unreifiedRelationships)
+    includeMap(logicalElements, chainRules)
+    includeMap(logicalElements, ruleBodySegments)
+    includeMap(logicalElements, aspectPredicates)
+    includeMap(logicalElements, conceptPredicates)
+    includeMap(logicalElements, reifiedRelationshipPredicates)
+    includeMap(logicalElements, reifiedRelationshipPropertyPredicates)
+    includeMap(logicalElements, reifiedRelationshipSourcePropertyPredicates)
+    includeMap(logicalElements, reifiedRelationshipTargetPropertyPredicates)
+    includeMap(logicalElements, unreifiedRelationshipPropertyPredicates)
+    includeMap(logicalElements, reifiedRelationshipInversePropertyPredicates)
+    includeMap(logicalElements, reifiedRelationshipSourceInversePropertyPredicates)
+    includeMap(logicalElements, reifiedRelationshipTargetInversePropertyPredicates)
+    includeMap(logicalElements, unreifiedRelationshipInversePropertyPredicates)
     includeMap(logicalElements, entityExistentialRestrictionAxioms)
     includeMap(logicalElements, entityUniversalRestrictionAxioms)
     includeMap(logicalElements, entityScalarDataPropertyExistentialRestrictionAxioms)
     includeMap(logicalElements, entityScalarDataPropertyParticularRestrictionAxioms)
     includeMap(logicalElements, entityScalarDataPropertyUniversalRestrictionAxioms)
-    includeMap(logicalElements, scalarOneOfLiteralAxioms)
-    includeMap(logicalElements, bundledTerminologyAxioms)
-    includeMap(logicalElements, rootConceptTaxonomyAxioms)
-    includeMap(logicalElements, specificDisjointConceptAxioms)
-    includeMap(logicalElements, anonymousConceptUnionAxioms)
-    includeMap(logicalElements, aspectPredicates)
-    includeMap(logicalElements, chainRules)
-    includeMap(logicalElements, conceptInstances)
-    includeMap(logicalElements, conceptPredicates)
-    includeMap(logicalElements, descriptionBoxes)
-    includeMap(logicalElements, descriptionBoxExtendsClosedWorldDefinitions)
-    includeMap(logicalElements, descriptionBoxRefinements)
     includeMap(logicalElements, entityStructuredDataPropertyParticularRestrictionAxioms)
+    includeMap(logicalElements, restrictionStructuredDataPropertyTuples)
+    includeMap(logicalElements, restrictionScalarDataPropertyValues)
+    includeMap(logicalElements, aspectSpecializationAxioms)
+    includeMap(logicalElements, conceptSpecializationAxioms)
+    includeMap(logicalElements, reifiedRelationshipSpecializationAxioms)
+    includeMap(logicalElements, subDataPropertyOfAxioms)
+    includeMap(logicalElements, subObjectPropertyOfAxioms)
+    includeMap(logicalElements, rootConceptTaxonomyAxioms)
+    includeMap(logicalElements, anonymousConceptUnionAxioms)
+    includeMap(logicalElements, specificDisjointConceptAxioms)
+    includeMap(logicalElements, conceptInstances)
     includeMap(logicalElements, reifiedRelationshipInstances)
     includeMap(logicalElements, reifiedRelationshipInstanceDomains)
     includeMap(logicalElements, reifiedRelationshipInstanceRanges)
-    includeMap(logicalElements, reifiedRelationshipInversePropertyPredicates)
-    includeMap(logicalElements, reifiedRelationshipPredicates)
-    includeMap(logicalElements, reifiedRelationshipPropertyPredicates)
-    includeMap(logicalElements, reifiedRelationshipSourceInversePropertyPredicates)
-    includeMap(logicalElements, reifiedRelationshipSourcePropertyPredicates)
-    includeMap(logicalElements, reifiedRelationshipTargetInversePropertyPredicates)
-    includeMap(logicalElements, reifiedRelationshipTargetPropertyPredicates)
-    includeMap(logicalElements, restrictionScalarDataPropertyValues)
-    includeMap(logicalElements, restrictionStructuredDataPropertyTuples)
-    includeMap(logicalElements, ruleBodySegments)
-    includeMap(logicalElements, scalarDataPropertyValues)
-    includeMap(logicalElements, singletonInstanceScalarDataPropertyValues)
-    includeMap(logicalElements, singletonInstanceStructuredDataPropertyValues)
-    includeMap(logicalElements, structuredDataPropertyTuples)
-    includeMap(logicalElements, subDataPropertyOfAxioms)
-    includeMap(logicalElements, subObjectPropertyOfAxioms)
     includeMap(logicalElements, unreifiedRelationshipInstanceTuples)
-    includeMap(logicalElements, unreifiedRelationshipInversePropertyPredicates)
-    includeMap(logicalElements, unreifiedRelationshipPropertyPredicates)
+    includeMap(logicalElements, singletonInstanceStructuredDataPropertyValues)
+    includeMap(logicalElements, singletonInstanceScalarDataPropertyValues)
+    includeMap(logicalElements, structuredDataPropertyTuples)
+    includeMap(logicalElements, scalarDataPropertyValues)
   	
 	// Lookup table for Entity cross references
   	includeMap(entities, aspects)
@@ -3973,20 +3973,22 @@ class OMLSpecificationTables {
   	includeMap(singletonInstanceStructuredDataPropertyContexts, structuredDataPropertyTuples)
   	
     resolveAnnotationProperties(rs)
+    resolveAspects(rs)
+    resolveConcepts(rs)
+    resolveScalars(rs)
+    resolveStructures(rs)
     resolveConceptDesignationTerminologyAxioms(rs)
     resolveTerminologyExtensionAxioms(rs)
     resolveTerminologyNestingAxioms(rs)
-    resolveAspects(rs)
-    resolveConcepts(rs)
-    resolveReifiedRelationships(rs)
-    resolveUnreifiedRelationships(rs)
-    resolveScalars(rs)
-    resolveStructures(rs)
+    resolveBundledTerminologyAxioms(rs)
+    resolveDescriptionBoxExtendsClosedWorldDefinitions(rs)
+    resolveDescriptionBoxRefinements(rs)
     resolveBinaryScalarRestrictions(rs)
     resolveIRIScalarRestrictions(rs)
     resolveNumericScalarRestrictions(rs)
     resolvePlainLiteralScalarRestrictions(rs)
     resolveScalarOneOfRestrictions(rs)
+    resolveScalarOneOfLiteralAxioms(rs)
     resolveStringScalarRestrictions(rs)
     resolveSynonymScalarRestrictions(rs)
     resolveTimeScalarRestrictions(rs)
@@ -3994,49 +3996,47 @@ class OMLSpecificationTables {
     resolveEntityStructuredDataProperties(rs)
     resolveScalarDataProperties(rs)
     resolveStructuredDataProperties(rs)
-    resolveAspectSpecializationAxioms(rs)
-    resolveConceptSpecializationAxioms(rs)
-    resolveReifiedRelationshipSpecializationAxioms(rs)
+    resolveReifiedRelationships(rs)
+    resolveUnreifiedRelationships(rs)
+    resolveChainRules(rs)
+    resolveRuleBodySegments(rs)
+    resolveAspectPredicates(rs)
+    resolveConceptPredicates(rs)
+    resolveReifiedRelationshipPredicates(rs)
+    resolveReifiedRelationshipPropertyPredicates(rs)
+    resolveReifiedRelationshipSourcePropertyPredicates(rs)
+    resolveReifiedRelationshipTargetPropertyPredicates(rs)
+    resolveUnreifiedRelationshipPropertyPredicates(rs)
+    resolveReifiedRelationshipInversePropertyPredicates(rs)
+    resolveReifiedRelationshipSourceInversePropertyPredicates(rs)
+    resolveReifiedRelationshipTargetInversePropertyPredicates(rs)
+    resolveUnreifiedRelationshipInversePropertyPredicates(rs)
     resolveEntityExistentialRestrictionAxioms(rs)
     resolveEntityUniversalRestrictionAxioms(rs)
     resolveEntityScalarDataPropertyExistentialRestrictionAxioms(rs)
     resolveEntityScalarDataPropertyParticularRestrictionAxioms(rs)
     resolveEntityScalarDataPropertyUniversalRestrictionAxioms(rs)
-    resolveScalarOneOfLiteralAxioms(rs)
-    resolveBundledTerminologyAxioms(rs)
-    resolveRootConceptTaxonomyAxioms(rs)
-    resolveSpecificDisjointConceptAxioms(rs)
-    resolveAnnotationPropertyValues(rs)
-    resolveAnonymousConceptUnionAxioms(rs)
-    resolveAspectPredicates(rs)
-    resolveChainRules(rs)
-    resolveConceptInstances(rs)
-    resolveConceptPredicates(rs)
-    resolveDescriptionBoxExtendsClosedWorldDefinitions(rs)
-    resolveDescriptionBoxRefinements(rs)
     resolveEntityStructuredDataPropertyParticularRestrictionAxioms(rs)
+    resolveRestrictionStructuredDataPropertyTuples(rs)
+    resolveRestrictionScalarDataPropertyValues(rs)
+    resolveAspectSpecializationAxioms(rs)
+    resolveConceptSpecializationAxioms(rs)
+    resolveReifiedRelationshipSpecializationAxioms(rs)
+    resolveSubDataPropertyOfAxioms(rs)
+    resolveSubObjectPropertyOfAxioms(rs)
+    resolveRootConceptTaxonomyAxioms(rs)
+    resolveAnonymousConceptUnionAxioms(rs)
+    resolveSpecificDisjointConceptAxioms(rs)
+    resolveConceptInstances(rs)
     resolveReifiedRelationshipInstances(rs)
     resolveReifiedRelationshipInstanceDomains(rs)
     resolveReifiedRelationshipInstanceRanges(rs)
-    resolveReifiedRelationshipInversePropertyPredicates(rs)
-    resolveReifiedRelationshipPredicates(rs)
-    resolveReifiedRelationshipPropertyPredicates(rs)
-    resolveReifiedRelationshipSourceInversePropertyPredicates(rs)
-    resolveReifiedRelationshipSourcePropertyPredicates(rs)
-    resolveReifiedRelationshipTargetInversePropertyPredicates(rs)
-    resolveReifiedRelationshipTargetPropertyPredicates(rs)
-    resolveRestrictionScalarDataPropertyValues(rs)
-    resolveRestrictionStructuredDataPropertyTuples(rs)
-    resolveRuleBodySegments(rs)
-    resolveScalarDataPropertyValues(rs)
-    resolveSingletonInstanceScalarDataPropertyValues(rs)
-    resolveSingletonInstanceStructuredDataPropertyValues(rs)
-    resolveStructuredDataPropertyTuples(rs)
-    resolveSubDataPropertyOfAxioms(rs)
-    resolveSubObjectPropertyOfAxioms(rs)
     resolveUnreifiedRelationshipInstanceTuples(rs)
-    resolveUnreifiedRelationshipInversePropertyPredicates(rs)
-    resolveUnreifiedRelationshipPropertyPredicates(rs)
+    resolveSingletonInstanceStructuredDataPropertyValues(rs)
+    resolveSingletonInstanceScalarDataPropertyValues(rs)
+    resolveStructuredDataPropertyTuples(rs)
+    resolveScalarDataPropertyValues(rs)
+    resolveAnnotationPropertyValues(rs)
     
     	val ext = createExtent()
     	ext.getModules.addAll(terminologyGraphs.values.map[key])
@@ -4055,6 +4055,62 @@ class OMLSpecificationTables {
   	    if (null === modulePair)
   	      throw new IllegalArgumentException("Null cross-reference lookup for module in annotationProperties")
   	    oml.module = modulePair.key
+  	  }
+  	]
+  }
+  
+  protected def void resolveAspects(OMLZipResourceSet rs) {
+  	aspects.forEach[uuid, oml_kv |
+  	  val Aspect oml = oml_kv.key
+  	  val Map<String, String> kv = oml_kv.value
+  	  if (!kv.empty) {
+  	    val String tboxXRef = kv.remove("tboxUUID")
+  	    val Pair<TerminologyBox, Map<String, String>> tboxPair = terminologyBoxes.get(tboxXRef)
+  	    if (null === tboxPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for tbox in aspects")
+  	    oml.tbox = tboxPair.key
+  	  }
+  	]
+  }
+  
+  protected def void resolveConcepts(OMLZipResourceSet rs) {
+  	concepts.forEach[uuid, oml_kv |
+  	  val Concept oml = oml_kv.key
+  	  val Map<String, String> kv = oml_kv.value
+  	  if (!kv.empty) {
+  	    val String tboxXRef = kv.remove("tboxUUID")
+  	    val Pair<TerminologyBox, Map<String, String>> tboxPair = terminologyBoxes.get(tboxXRef)
+  	    if (null === tboxPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for tbox in concepts")
+  	    oml.tbox = tboxPair.key
+  	  }
+  	]
+  }
+  
+  protected def void resolveScalars(OMLZipResourceSet rs) {
+  	scalars.forEach[uuid, oml_kv |
+  	  val Scalar oml = oml_kv.key
+  	  val Map<String, String> kv = oml_kv.value
+  	  if (!kv.empty) {
+  	    val String tboxXRef = kv.remove("tboxUUID")
+  	    val Pair<TerminologyBox, Map<String, String>> tboxPair = terminologyBoxes.get(tboxXRef)
+  	    if (null === tboxPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for tbox in scalars")
+  	    oml.tbox = tboxPair.key
+  	  }
+  	]
+  }
+  
+  protected def void resolveStructures(OMLZipResourceSet rs) {
+  	structures.forEach[uuid, oml_kv |
+  	  val Structure oml = oml_kv.key
+  	  val Map<String, String> kv = oml_kv.value
+  	  if (!kv.empty) {
+  	    val String tboxXRef = kv.remove("tboxUUID")
+  	    val Pair<TerminologyBox, Map<String, String>> tboxPair = terminologyBoxes.get(tboxXRef)
+  	    if (null === tboxPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for tbox in structures")
+  	    oml.tbox = tboxPair.key
   	  }
   	]
   }
@@ -4129,106 +4185,62 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveAspects(OMLZipResourceSet rs) {
-  	aspects.forEach[uuid, oml_kv |
-  	  val Aspect oml = oml_kv.key
+  protected def void resolveBundledTerminologyAxioms(OMLZipResourceSet rs) {
+  	bundledTerminologyAxioms.forEach[uuid, oml_kv |
+  	  val BundledTerminologyAxiom oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
   	  if (!kv.empty) {
-  	    val String tboxXRef = kv.remove("tboxUUID")
-  	    val Pair<TerminologyBox, Map<String, String>> tboxPair = terminologyBoxes.get(tboxXRef)
-  	    if (null === tboxPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for tbox in aspects")
-  	    oml.tbox = tboxPair.key
+  	    val String bundleXRef = kv.remove("bundleUUID")
+  	    val Pair<Bundle, Map<String, String>> bundlePair = bundles.get(bundleXRef)
+  	    if (null === bundlePair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for bundle in bundledTerminologyAxioms")
+  	    oml.bundle = bundlePair.key
+  	    val String bundledTerminologyIRI = kv.remove("bundledTerminologyIRI")
+  	    loadOMLZipResource(rs, URI.createURI(bundledTerminologyIRI))
+  	    val Pair<TerminologyBox, Map<String, String>> bundledTerminologyPair = terminologyBoxes.get(bundledTerminologyIRI)
+  	    if (null === bundledTerminologyPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for bundledTerminology in bundledTerminologyAxioms")
+  	    oml.bundledTerminology = bundledTerminologyPair.key		  	  
   	  }
   	]
   }
   
-  protected def void resolveConcepts(OMLZipResourceSet rs) {
-  	concepts.forEach[uuid, oml_kv |
-  	  val Concept oml = oml_kv.key
+  protected def void resolveDescriptionBoxExtendsClosedWorldDefinitions(OMLZipResourceSet rs) {
+  	descriptionBoxExtendsClosedWorldDefinitions.forEach[uuid, oml_kv |
+  	  val DescriptionBoxExtendsClosedWorldDefinitions oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
   	  if (!kv.empty) {
-  	    val String tboxXRef = kv.remove("tboxUUID")
-  	    val Pair<TerminologyBox, Map<String, String>> tboxPair = terminologyBoxes.get(tboxXRef)
-  	    if (null === tboxPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for tbox in concepts")
-  	    oml.tbox = tboxPair.key
+  	    val String descriptionBoxXRef = kv.remove("descriptionBoxUUID")
+  	    val Pair<DescriptionBox, Map<String, String>> descriptionBoxPair = descriptionBoxes.get(descriptionBoxXRef)
+  	    if (null === descriptionBoxPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for descriptionBox in descriptionBoxExtendsClosedWorldDefinitions")
+  	    oml.descriptionBox = descriptionBoxPair.key
+  	    val String closedWorldDefinitionsIRI = kv.remove("closedWorldDefinitionsIRI")
+  	    loadOMLZipResource(rs, URI.createURI(closedWorldDefinitionsIRI))
+  	    val Pair<TerminologyBox, Map<String, String>> closedWorldDefinitionsPair = terminologyBoxes.get(closedWorldDefinitionsIRI)
+  	    if (null === closedWorldDefinitionsPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for closedWorldDefinitions in descriptionBoxExtendsClosedWorldDefinitions")
+  	    oml.closedWorldDefinitions = closedWorldDefinitionsPair.key		  	  
   	  }
   	]
   }
   
-  protected def void resolveReifiedRelationships(OMLZipResourceSet rs) {
-  	reifiedRelationships.forEach[uuid, oml_kv |
-  	  val ReifiedRelationship oml = oml_kv.key
+  protected def void resolveDescriptionBoxRefinements(OMLZipResourceSet rs) {
+  	descriptionBoxRefinements.forEach[uuid, oml_kv |
+  	  val DescriptionBoxRefinement oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
   	  if (!kv.empty) {
-  	    val String tboxXRef = kv.remove("tboxUUID")
-  	    val Pair<TerminologyBox, Map<String, String>> tboxPair = terminologyBoxes.get(tboxXRef)
-  	    if (null === tboxPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for tbox in reifiedRelationships")
-  	    oml.tbox = tboxPair.key
-  	    val String sourceXRef = kv.remove("sourceUUID")
-  	    val Pair<Entity, Map<String, String>> sourcePair = entities.get(sourceXRef)
-  	    if (null === sourcePair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for source in reifiedRelationships")
-  	    oml.source = sourcePair.key
-  	    val String targetXRef = kv.remove("targetUUID")
-  	    val Pair<Entity, Map<String, String>> targetPair = entities.get(targetXRef)
-  	    if (null === targetPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for target in reifiedRelationships")
-  	    oml.target = targetPair.key
-  	  }
-  	]
-  }
-  
-  protected def void resolveUnreifiedRelationships(OMLZipResourceSet rs) {
-  	unreifiedRelationships.forEach[uuid, oml_kv |
-  	  val UnreifiedRelationship oml = oml_kv.key
-  	  val Map<String, String> kv = oml_kv.value
-  	  if (!kv.empty) {
-  	    val String tboxXRef = kv.remove("tboxUUID")
-  	    val Pair<TerminologyBox, Map<String, String>> tboxPair = terminologyBoxes.get(tboxXRef)
-  	    if (null === tboxPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for tbox in unreifiedRelationships")
-  	    oml.tbox = tboxPair.key
-  	    val String sourceXRef = kv.remove("sourceUUID")
-  	    val Pair<Entity, Map<String, String>> sourcePair = entities.get(sourceXRef)
-  	    if (null === sourcePair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for source in unreifiedRelationships")
-  	    oml.source = sourcePair.key
-  	    val String targetXRef = kv.remove("targetUUID")
-  	    val Pair<Entity, Map<String, String>> targetPair = entities.get(targetXRef)
-  	    if (null === targetPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for target in unreifiedRelationships")
-  	    oml.target = targetPair.key
-  	  }
-  	]
-  }
-  
-  protected def void resolveScalars(OMLZipResourceSet rs) {
-  	scalars.forEach[uuid, oml_kv |
-  	  val Scalar oml = oml_kv.key
-  	  val Map<String, String> kv = oml_kv.value
-  	  if (!kv.empty) {
-  	    val String tboxXRef = kv.remove("tboxUUID")
-  	    val Pair<TerminologyBox, Map<String, String>> tboxPair = terminologyBoxes.get(tboxXRef)
-  	    if (null === tboxPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for tbox in scalars")
-  	    oml.tbox = tboxPair.key
-  	  }
-  	]
-  }
-  
-  protected def void resolveStructures(OMLZipResourceSet rs) {
-  	structures.forEach[uuid, oml_kv |
-  	  val Structure oml = oml_kv.key
-  	  val Map<String, String> kv = oml_kv.value
-  	  if (!kv.empty) {
-  	    val String tboxXRef = kv.remove("tboxUUID")
-  	    val Pair<TerminologyBox, Map<String, String>> tboxPair = terminologyBoxes.get(tboxXRef)
-  	    if (null === tboxPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for tbox in structures")
-  	    oml.tbox = tboxPair.key
+  	    val String refiningDescriptionBoxXRef = kv.remove("refiningDescriptionBoxUUID")
+  	    val Pair<DescriptionBox, Map<String, String>> refiningDescriptionBoxPair = descriptionBoxes.get(refiningDescriptionBoxXRef)
+  	    if (null === refiningDescriptionBoxPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for refiningDescriptionBox in descriptionBoxRefinements")
+  	    oml.refiningDescriptionBox = refiningDescriptionBoxPair.key
+  	    val String refinedDescriptionBoxIRI = kv.remove("refinedDescriptionBoxIRI")
+  	    loadOMLZipResource(rs, URI.createURI(refinedDescriptionBoxIRI))
+  	    val Pair<DescriptionBox, Map<String, String>> refinedDescriptionBoxPair = descriptionBoxes.get(refinedDescriptionBoxIRI)
+  	    if (null === refinedDescriptionBoxPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for refinedDescriptionBox in descriptionBoxRefinements")
+  	    oml.refinedDescriptionBox = refinedDescriptionBoxPair.key		  	  
   	  }
   	]
   }
@@ -4324,6 +4336,32 @@ class OMLSpecificationTables {
   	    if (null === restrictedRangePair)
   	      throw new IllegalArgumentException("Null cross-reference lookup for restrictedRange in scalarOneOfRestrictions")
   	    oml.restrictedRange = restrictedRangePair.key
+  	  }
+  	]
+  }
+  
+  protected def void resolveScalarOneOfLiteralAxioms(OMLZipResourceSet rs) {
+  	scalarOneOfLiteralAxioms.forEach[uuid, oml_kv |
+  	  val ScalarOneOfLiteralAxiom oml = oml_kv.key
+  	  val Map<String, String> kv = oml_kv.value
+  	  if (!kv.empty) {
+  	    val String tboxXRef = kv.remove("tboxUUID")
+  	    val Pair<TerminologyBox, Map<String, String>> tboxPair = terminologyBoxes.get(tboxXRef)
+  	    if (null === tboxPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for tbox in scalarOneOfLiteralAxioms")
+  	    oml.tbox = tboxPair.key
+  	    val String axiomXRef = kv.remove("axiomUUID")
+  	    val Pair<ScalarOneOfRestriction, Map<String, String>> axiomPair = scalarOneOfRestrictions.get(axiomXRef)
+  	    if (null === axiomPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for axiom in scalarOneOfLiteralAxioms")
+  	    oml.axiom = axiomPair.key
+  	    val String valueTypeXRef = kv.remove("valueTypeUUID")
+  	    if ("null" != valueTypeXRef) {
+  	      val Pair<DataRange, Map<String, String>> valueTypePair = dataRanges.get(valueTypeXRef)
+  	      if (null === valueTypePair)
+  	        throw new IllegalArgumentException("Null cross-reference lookup for valueType in scalarOneOfLiteralAxioms")
+  	      oml.valueType = valueTypePair.key
+  	    }
   	  }
   	]
   }
@@ -4481,74 +4519,301 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveAspectSpecializationAxioms(OMLZipResourceSet rs) {
-  	aspectSpecializationAxioms.forEach[uuid, oml_kv |
-  	  val AspectSpecializationAxiom oml = oml_kv.key
+  protected def void resolveReifiedRelationships(OMLZipResourceSet rs) {
+  	reifiedRelationships.forEach[uuid, oml_kv |
+  	  val ReifiedRelationship oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
   	  if (!kv.empty) {
   	    val String tboxXRef = kv.remove("tboxUUID")
   	    val Pair<TerminologyBox, Map<String, String>> tboxPair = terminologyBoxes.get(tboxXRef)
   	    if (null === tboxPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for tbox in aspectSpecializationAxioms")
+  	      throw new IllegalArgumentException("Null cross-reference lookup for tbox in reifiedRelationships")
   	    oml.tbox = tboxPair.key
-  	    val String superAspectXRef = kv.remove("superAspectUUID")
-  	    val Pair<Aspect, Map<String, String>> superAspectPair = aspects.get(superAspectXRef)
-  	    if (null === superAspectPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for superAspect in aspectSpecializationAxioms")
-  	    oml.superAspect = superAspectPair.key
-  	    val String subEntityXRef = kv.remove("subEntityUUID")
-  	    val Pair<Entity, Map<String, String>> subEntityPair = entities.get(subEntityXRef)
-  	    if (null === subEntityPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for subEntity in aspectSpecializationAxioms")
-  	    oml.subEntity = subEntityPair.key
+  	    val String sourceXRef = kv.remove("sourceUUID")
+  	    val Pair<Entity, Map<String, String>> sourcePair = entities.get(sourceXRef)
+  	    if (null === sourcePair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for source in reifiedRelationships")
+  	    oml.source = sourcePair.key
+  	    val String targetXRef = kv.remove("targetUUID")
+  	    val Pair<Entity, Map<String, String>> targetPair = entities.get(targetXRef)
+  	    if (null === targetPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for target in reifiedRelationships")
+  	    oml.target = targetPair.key
   	  }
   	]
   }
   
-  protected def void resolveConceptSpecializationAxioms(OMLZipResourceSet rs) {
-  	conceptSpecializationAxioms.forEach[uuid, oml_kv |
-  	  val ConceptSpecializationAxiom oml = oml_kv.key
+  protected def void resolveUnreifiedRelationships(OMLZipResourceSet rs) {
+  	unreifiedRelationships.forEach[uuid, oml_kv |
+  	  val UnreifiedRelationship oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
   	  if (!kv.empty) {
   	    val String tboxXRef = kv.remove("tboxUUID")
   	    val Pair<TerminologyBox, Map<String, String>> tboxPair = terminologyBoxes.get(tboxXRef)
   	    if (null === tboxPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for tbox in conceptSpecializationAxioms")
+  	      throw new IllegalArgumentException("Null cross-reference lookup for tbox in unreifiedRelationships")
   	    oml.tbox = tboxPair.key
-  	    val String superConceptXRef = kv.remove("superConceptUUID")
-  	    val Pair<Concept, Map<String, String>> superConceptPair = concepts.get(superConceptXRef)
-  	    if (null === superConceptPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for superConcept in conceptSpecializationAxioms")
-  	    oml.superConcept = superConceptPair.key
-  	    val String subConceptXRef = kv.remove("subConceptUUID")
-  	    val Pair<Concept, Map<String, String>> subConceptPair = concepts.get(subConceptXRef)
-  	    if (null === subConceptPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for subConcept in conceptSpecializationAxioms")
-  	    oml.subConcept = subConceptPair.key
+  	    val String sourceXRef = kv.remove("sourceUUID")
+  	    val Pair<Entity, Map<String, String>> sourcePair = entities.get(sourceXRef)
+  	    if (null === sourcePair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for source in unreifiedRelationships")
+  	    oml.source = sourcePair.key
+  	    val String targetXRef = kv.remove("targetUUID")
+  	    val Pair<Entity, Map<String, String>> targetPair = entities.get(targetXRef)
+  	    if (null === targetPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for target in unreifiedRelationships")
+  	    oml.target = targetPair.key
   	  }
   	]
   }
   
-  protected def void resolveReifiedRelationshipSpecializationAxioms(OMLZipResourceSet rs) {
-  	reifiedRelationshipSpecializationAxioms.forEach[uuid, oml_kv |
-  	  val ReifiedRelationshipSpecializationAxiom oml = oml_kv.key
+  protected def void resolveChainRules(OMLZipResourceSet rs) {
+  	chainRules.forEach[uuid, oml_kv |
+  	  val ChainRule oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
   	  if (!kv.empty) {
   	    val String tboxXRef = kv.remove("tboxUUID")
   	    val Pair<TerminologyBox, Map<String, String>> tboxPair = terminologyBoxes.get(tboxXRef)
   	    if (null === tboxPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for tbox in reifiedRelationshipSpecializationAxioms")
+  	      throw new IllegalArgumentException("Null cross-reference lookup for tbox in chainRules")
   	    oml.tbox = tboxPair.key
-  	    val String superRelationshipXRef = kv.remove("superRelationshipUUID")
-  	    val Pair<ReifiedRelationship, Map<String, String>> superRelationshipPair = reifiedRelationships.get(superRelationshipXRef)
-  	    if (null === superRelationshipPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for superRelationship in reifiedRelationshipSpecializationAxioms")
-  	    oml.superRelationship = superRelationshipPair.key
-  	    val String subRelationshipXRef = kv.remove("subRelationshipUUID")
-  	    val Pair<ReifiedRelationship, Map<String, String>> subRelationshipPair = reifiedRelationships.get(subRelationshipXRef)
-  	    if (null === subRelationshipPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for subRelationship in reifiedRelationshipSpecializationAxioms")
-  	    oml.subRelationship = subRelationshipPair.key
+  	    val String headXRef = kv.remove("headUUID")
+  	    val Pair<UnreifiedRelationship, Map<String, String>> headPair = unreifiedRelationships.get(headXRef)
+  	    if (null === headPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for head in chainRules")
+  	    oml.head = headPair.key
+  	  }
+  	]
+  }
+  
+  protected def void resolveRuleBodySegments(OMLZipResourceSet rs) {
+  	ruleBodySegments.forEach[uuid, oml_kv |
+  	  val RuleBodySegment oml = oml_kv.key
+  	  val Map<String, String> kv = oml_kv.value
+  	  if (!kv.empty) {
+  	    val String previousSegmentXRef = kv.remove("previousSegmentUUID")
+  	    if ("null" != previousSegmentXRef) {
+  	      val Pair<RuleBodySegment, Map<String, String>> previousSegmentPair = ruleBodySegments.get(previousSegmentXRef)
+  	      if (null === previousSegmentPair)
+  	        throw new IllegalArgumentException("Null cross-reference lookup for previousSegment in ruleBodySegments")
+  	      oml.previousSegment = previousSegmentPair.key
+  	    }
+  	    val String ruleXRef = kv.remove("ruleUUID")
+  	    if ("null" != ruleXRef) {
+  	      val Pair<ChainRule, Map<String, String>> rulePair = chainRules.get(ruleXRef)
+  	      if (null === rulePair)
+  	        throw new IllegalArgumentException("Null cross-reference lookup for rule in ruleBodySegments")
+  	      oml.rule = rulePair.key
+  	    }
+  	  }
+  	]
+  }
+  
+  protected def void resolveAspectPredicates(OMLZipResourceSet rs) {
+  	aspectPredicates.forEach[uuid, oml_kv |
+  	  val AspectPredicate oml = oml_kv.key
+  	  val Map<String, String> kv = oml_kv.value
+  	  if (!kv.empty) {
+  	    val String aspectXRef = kv.remove("aspectUUID")
+  	    val Pair<Aspect, Map<String, String>> aspectPair = aspects.get(aspectXRef)
+  	    if (null === aspectPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for aspect in aspectPredicates")
+  	    oml.aspect = aspectPair.key
+  	    val String bodySegmentXRef = kv.remove("bodySegmentUUID")
+  	    val Pair<RuleBodySegment, Map<String, String>> bodySegmentPair = ruleBodySegments.get(bodySegmentXRef)
+  	    if (null === bodySegmentPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in aspectPredicates")
+  	    oml.bodySegment = bodySegmentPair.key
+  	  }
+  	]
+  }
+  
+  protected def void resolveConceptPredicates(OMLZipResourceSet rs) {
+  	conceptPredicates.forEach[uuid, oml_kv |
+  	  val ConceptPredicate oml = oml_kv.key
+  	  val Map<String, String> kv = oml_kv.value
+  	  if (!kv.empty) {
+  	    val String bodySegmentXRef = kv.remove("bodySegmentUUID")
+  	    val Pair<RuleBodySegment, Map<String, String>> bodySegmentPair = ruleBodySegments.get(bodySegmentXRef)
+  	    if (null === bodySegmentPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in conceptPredicates")
+  	    oml.bodySegment = bodySegmentPair.key
+  	    val String conceptXRef = kv.remove("conceptUUID")
+  	    val Pair<Concept, Map<String, String>> conceptPair = concepts.get(conceptXRef)
+  	    if (null === conceptPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for concept in conceptPredicates")
+  	    oml.concept = conceptPair.key
+  	  }
+  	]
+  }
+  
+  protected def void resolveReifiedRelationshipPredicates(OMLZipResourceSet rs) {
+  	reifiedRelationshipPredicates.forEach[uuid, oml_kv |
+  	  val ReifiedRelationshipPredicate oml = oml_kv.key
+  	  val Map<String, String> kv = oml_kv.value
+  	  if (!kv.empty) {
+  	    val String bodySegmentXRef = kv.remove("bodySegmentUUID")
+  	    val Pair<RuleBodySegment, Map<String, String>> bodySegmentPair = ruleBodySegments.get(bodySegmentXRef)
+  	    if (null === bodySegmentPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in reifiedRelationshipPredicates")
+  	    oml.bodySegment = bodySegmentPair.key
+  	    val String reifiedRelationshipXRef = kv.remove("reifiedRelationshipUUID")
+  	    val Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipPair = reifiedRelationships.get(reifiedRelationshipXRef)
+  	    if (null === reifiedRelationshipPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationship in reifiedRelationshipPredicates")
+  	    oml.reifiedRelationship = reifiedRelationshipPair.key
+  	  }
+  	]
+  }
+  
+  protected def void resolveReifiedRelationshipPropertyPredicates(OMLZipResourceSet rs) {
+  	reifiedRelationshipPropertyPredicates.forEach[uuid, oml_kv |
+  	  val ReifiedRelationshipPropertyPredicate oml = oml_kv.key
+  	  val Map<String, String> kv = oml_kv.value
+  	  if (!kv.empty) {
+  	    val String bodySegmentXRef = kv.remove("bodySegmentUUID")
+  	    val Pair<RuleBodySegment, Map<String, String>> bodySegmentPair = ruleBodySegments.get(bodySegmentXRef)
+  	    if (null === bodySegmentPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in reifiedRelationshipPropertyPredicates")
+  	    oml.bodySegment = bodySegmentPair.key
+  	    val String reifiedRelationshipXRef = kv.remove("reifiedRelationshipUUID")
+  	    val Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipPair = reifiedRelationships.get(reifiedRelationshipXRef)
+  	    if (null === reifiedRelationshipPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationship in reifiedRelationshipPropertyPredicates")
+  	    oml.reifiedRelationship = reifiedRelationshipPair.key
+  	  }
+  	]
+  }
+  
+  protected def void resolveReifiedRelationshipSourcePropertyPredicates(OMLZipResourceSet rs) {
+  	reifiedRelationshipSourcePropertyPredicates.forEach[uuid, oml_kv |
+  	  val ReifiedRelationshipSourcePropertyPredicate oml = oml_kv.key
+  	  val Map<String, String> kv = oml_kv.value
+  	  if (!kv.empty) {
+  	    val String bodySegmentXRef = kv.remove("bodySegmentUUID")
+  	    val Pair<RuleBodySegment, Map<String, String>> bodySegmentPair = ruleBodySegments.get(bodySegmentXRef)
+  	    if (null === bodySegmentPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in reifiedRelationshipSourcePropertyPredicates")
+  	    oml.bodySegment = bodySegmentPair.key
+  	    val String reifiedRelationshipXRef = kv.remove("reifiedRelationshipUUID")
+  	    val Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipPair = reifiedRelationships.get(reifiedRelationshipXRef)
+  	    if (null === reifiedRelationshipPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationship in reifiedRelationshipSourcePropertyPredicates")
+  	    oml.reifiedRelationship = reifiedRelationshipPair.key
+  	  }
+  	]
+  }
+  
+  protected def void resolveReifiedRelationshipTargetPropertyPredicates(OMLZipResourceSet rs) {
+  	reifiedRelationshipTargetPropertyPredicates.forEach[uuid, oml_kv |
+  	  val ReifiedRelationshipTargetPropertyPredicate oml = oml_kv.key
+  	  val Map<String, String> kv = oml_kv.value
+  	  if (!kv.empty) {
+  	    val String bodySegmentXRef = kv.remove("bodySegmentUUID")
+  	    val Pair<RuleBodySegment, Map<String, String>> bodySegmentPair = ruleBodySegments.get(bodySegmentXRef)
+  	    if (null === bodySegmentPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in reifiedRelationshipTargetPropertyPredicates")
+  	    oml.bodySegment = bodySegmentPair.key
+  	    val String reifiedRelationshipXRef = kv.remove("reifiedRelationshipUUID")
+  	    val Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipPair = reifiedRelationships.get(reifiedRelationshipXRef)
+  	    if (null === reifiedRelationshipPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationship in reifiedRelationshipTargetPropertyPredicates")
+  	    oml.reifiedRelationship = reifiedRelationshipPair.key
+  	  }
+  	]
+  }
+  
+  protected def void resolveUnreifiedRelationshipPropertyPredicates(OMLZipResourceSet rs) {
+  	unreifiedRelationshipPropertyPredicates.forEach[uuid, oml_kv |
+  	  val UnreifiedRelationshipPropertyPredicate oml = oml_kv.key
+  	  val Map<String, String> kv = oml_kv.value
+  	  if (!kv.empty) {
+  	    val String unreifiedRelationshipXRef = kv.remove("unreifiedRelationshipUUID")
+  	    val Pair<UnreifiedRelationship, Map<String, String>> unreifiedRelationshipPair = unreifiedRelationships.get(unreifiedRelationshipXRef)
+  	    if (null === unreifiedRelationshipPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for unreifiedRelationship in unreifiedRelationshipPropertyPredicates")
+  	    oml.unreifiedRelationship = unreifiedRelationshipPair.key
+  	    val String bodySegmentXRef = kv.remove("bodySegmentUUID")
+  	    val Pair<RuleBodySegment, Map<String, String>> bodySegmentPair = ruleBodySegments.get(bodySegmentXRef)
+  	    if (null === bodySegmentPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in unreifiedRelationshipPropertyPredicates")
+  	    oml.bodySegment = bodySegmentPair.key
+  	  }
+  	]
+  }
+  
+  protected def void resolveReifiedRelationshipInversePropertyPredicates(OMLZipResourceSet rs) {
+  	reifiedRelationshipInversePropertyPredicates.forEach[uuid, oml_kv |
+  	  val ReifiedRelationshipInversePropertyPredicate oml = oml_kv.key
+  	  val Map<String, String> kv = oml_kv.value
+  	  if (!kv.empty) {
+  	    val String bodySegmentXRef = kv.remove("bodySegmentUUID")
+  	    val Pair<RuleBodySegment, Map<String, String>> bodySegmentPair = ruleBodySegments.get(bodySegmentXRef)
+  	    if (null === bodySegmentPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in reifiedRelationshipInversePropertyPredicates")
+  	    oml.bodySegment = bodySegmentPair.key
+  	    val String reifiedRelationshipXRef = kv.remove("reifiedRelationshipUUID")
+  	    val Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipPair = reifiedRelationships.get(reifiedRelationshipXRef)
+  	    if (null === reifiedRelationshipPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationship in reifiedRelationshipInversePropertyPredicates")
+  	    oml.reifiedRelationship = reifiedRelationshipPair.key
+  	  }
+  	]
+  }
+  
+  protected def void resolveReifiedRelationshipSourceInversePropertyPredicates(OMLZipResourceSet rs) {
+  	reifiedRelationshipSourceInversePropertyPredicates.forEach[uuid, oml_kv |
+  	  val ReifiedRelationshipSourceInversePropertyPredicate oml = oml_kv.key
+  	  val Map<String, String> kv = oml_kv.value
+  	  if (!kv.empty) {
+  	    val String bodySegmentXRef = kv.remove("bodySegmentUUID")
+  	    val Pair<RuleBodySegment, Map<String, String>> bodySegmentPair = ruleBodySegments.get(bodySegmentXRef)
+  	    if (null === bodySegmentPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in reifiedRelationshipSourceInversePropertyPredicates")
+  	    oml.bodySegment = bodySegmentPair.key
+  	    val String reifiedRelationshipXRef = kv.remove("reifiedRelationshipUUID")
+  	    val Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipPair = reifiedRelationships.get(reifiedRelationshipXRef)
+  	    if (null === reifiedRelationshipPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationship in reifiedRelationshipSourceInversePropertyPredicates")
+  	    oml.reifiedRelationship = reifiedRelationshipPair.key
+  	  }
+  	]
+  }
+  
+  protected def void resolveReifiedRelationshipTargetInversePropertyPredicates(OMLZipResourceSet rs) {
+  	reifiedRelationshipTargetInversePropertyPredicates.forEach[uuid, oml_kv |
+  	  val ReifiedRelationshipTargetInversePropertyPredicate oml = oml_kv.key
+  	  val Map<String, String> kv = oml_kv.value
+  	  if (!kv.empty) {
+  	    val String bodySegmentXRef = kv.remove("bodySegmentUUID")
+  	    val Pair<RuleBodySegment, Map<String, String>> bodySegmentPair = ruleBodySegments.get(bodySegmentXRef)
+  	    if (null === bodySegmentPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in reifiedRelationshipTargetInversePropertyPredicates")
+  	    oml.bodySegment = bodySegmentPair.key
+  	    val String reifiedRelationshipXRef = kv.remove("reifiedRelationshipUUID")
+  	    val Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipPair = reifiedRelationships.get(reifiedRelationshipXRef)
+  	    if (null === reifiedRelationshipPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationship in reifiedRelationshipTargetInversePropertyPredicates")
+  	    oml.reifiedRelationship = reifiedRelationshipPair.key
+  	  }
+  	]
+  }
+  
+  protected def void resolveUnreifiedRelationshipInversePropertyPredicates(OMLZipResourceSet rs) {
+  	unreifiedRelationshipInversePropertyPredicates.forEach[uuid, oml_kv |
+  	  val UnreifiedRelationshipInversePropertyPredicate oml = oml_kv.key
+  	  val Map<String, String> kv = oml_kv.value
+  	  if (!kv.empty) {
+  	    val String unreifiedRelationshipXRef = kv.remove("unreifiedRelationshipUUID")
+  	    val Pair<UnreifiedRelationship, Map<String, String>> unreifiedRelationshipPair = unreifiedRelationships.get(unreifiedRelationshipXRef)
+  	    if (null === unreifiedRelationshipPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for unreifiedRelationship in unreifiedRelationshipInversePropertyPredicates")
+  	    oml.unreifiedRelationship = unreifiedRelationshipPair.key
+  	    val String bodySegmentXRef = kv.remove("bodySegmentUUID")
+  	    val Pair<RuleBodySegment, Map<String, String>> bodySegmentPair = ruleBodySegments.get(bodySegmentXRef)
+  	    if (null === bodySegmentPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in unreifiedRelationshipInversePropertyPredicates")
+  	    oml.bodySegment = bodySegmentPair.key
   	  }
   	]
   }
@@ -4700,48 +4965,191 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveScalarOneOfLiteralAxioms(OMLZipResourceSet rs) {
-  	scalarOneOfLiteralAxioms.forEach[uuid, oml_kv |
-  	  val ScalarOneOfLiteralAxiom oml = oml_kv.key
+  protected def void resolveEntityStructuredDataPropertyParticularRestrictionAxioms(OMLZipResourceSet rs) {
+  	entityStructuredDataPropertyParticularRestrictionAxioms.forEach[uuid, oml_kv |
+  	  val EntityStructuredDataPropertyParticularRestrictionAxiom oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
   	  if (!kv.empty) {
   	    val String tboxXRef = kv.remove("tboxUUID")
   	    val Pair<TerminologyBox, Map<String, String>> tboxPair = terminologyBoxes.get(tboxXRef)
   	    if (null === tboxPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for tbox in scalarOneOfLiteralAxioms")
+  	      throw new IllegalArgumentException("Null cross-reference lookup for tbox in entityStructuredDataPropertyParticularRestrictionAxioms")
   	    oml.tbox = tboxPair.key
-  	    val String axiomXRef = kv.remove("axiomUUID")
-  	    val Pair<ScalarOneOfRestriction, Map<String, String>> axiomPair = scalarOneOfRestrictions.get(axiomXRef)
-  	    if (null === axiomPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for axiom in scalarOneOfLiteralAxioms")
-  	    oml.axiom = axiomPair.key
+  	    val String structuredDataPropertyXRef = kv.remove("structuredDataPropertyUUID")
+  	    val Pair<DataRelationshipToStructure, Map<String, String>> structuredDataPropertyPair = dataRelationshipToStructures.get(structuredDataPropertyXRef)
+  	    if (null === structuredDataPropertyPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for structuredDataProperty in entityStructuredDataPropertyParticularRestrictionAxioms")
+  	    oml.structuredDataProperty = structuredDataPropertyPair.key
+  	    val String restrictedEntityXRef = kv.remove("restrictedEntityUUID")
+  	    val Pair<Entity, Map<String, String>> restrictedEntityPair = entities.get(restrictedEntityXRef)
+  	    if (null === restrictedEntityPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for restrictedEntity in entityStructuredDataPropertyParticularRestrictionAxioms")
+  	    oml.restrictedEntity = restrictedEntityPair.key
+  	  }
+  	]
+  }
+  
+  protected def void resolveRestrictionStructuredDataPropertyTuples(OMLZipResourceSet rs) {
+  	restrictionStructuredDataPropertyTuples.forEach[uuid, oml_kv |
+  	  val RestrictionStructuredDataPropertyTuple oml = oml_kv.key
+  	  val Map<String, String> kv = oml_kv.value
+  	  if (!kv.empty) {
+  	    val String structuredDataPropertyXRef = kv.remove("structuredDataPropertyUUID")
+  	    val Pair<DataRelationshipToStructure, Map<String, String>> structuredDataPropertyPair = dataRelationshipToStructures.get(structuredDataPropertyXRef)
+  	    if (null === structuredDataPropertyPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for structuredDataProperty in restrictionStructuredDataPropertyTuples")
+  	    oml.structuredDataProperty = structuredDataPropertyPair.key
+  	    val String structuredDataPropertyContextXRef = kv.remove("structuredDataPropertyContextUUID")
+  	    val Pair<RestrictionStructuredDataPropertyContext, Map<String, String>> structuredDataPropertyContextPair = restrictionStructuredDataPropertyContexts.get(structuredDataPropertyContextXRef)
+  	    if (null === structuredDataPropertyContextPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for structuredDataPropertyContext in restrictionStructuredDataPropertyTuples")
+  	    oml.structuredDataPropertyContext = structuredDataPropertyContextPair.key
+  	  }
+  	]
+  }
+  
+  protected def void resolveRestrictionScalarDataPropertyValues(OMLZipResourceSet rs) {
+  	restrictionScalarDataPropertyValues.forEach[uuid, oml_kv |
+  	  val RestrictionScalarDataPropertyValue oml = oml_kv.key
+  	  val Map<String, String> kv = oml_kv.value
+  	  if (!kv.empty) {
+  	    val String scalarDataPropertyXRef = kv.remove("scalarDataPropertyUUID")
+  	    val Pair<DataRelationshipToScalar, Map<String, String>> scalarDataPropertyPair = dataRelationshipToScalars.get(scalarDataPropertyXRef)
+  	    if (null === scalarDataPropertyPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for scalarDataProperty in restrictionScalarDataPropertyValues")
+  	    oml.scalarDataProperty = scalarDataPropertyPair.key
+  	    val String structuredDataPropertyContextXRef = kv.remove("structuredDataPropertyContextUUID")
+  	    val Pair<RestrictionStructuredDataPropertyContext, Map<String, String>> structuredDataPropertyContextPair = restrictionStructuredDataPropertyContexts.get(structuredDataPropertyContextXRef)
+  	    if (null === structuredDataPropertyContextPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for structuredDataPropertyContext in restrictionScalarDataPropertyValues")
+  	    oml.structuredDataPropertyContext = structuredDataPropertyContextPair.key
   	    val String valueTypeXRef = kv.remove("valueTypeUUID")
   	    if ("null" != valueTypeXRef) {
   	      val Pair<DataRange, Map<String, String>> valueTypePair = dataRanges.get(valueTypeXRef)
   	      if (null === valueTypePair)
-  	        throw new IllegalArgumentException("Null cross-reference lookup for valueType in scalarOneOfLiteralAxioms")
+  	        throw new IllegalArgumentException("Null cross-reference lookup for valueType in restrictionScalarDataPropertyValues")
   	      oml.valueType = valueTypePair.key
   	    }
   	  }
   	]
   }
   
-  protected def void resolveBundledTerminologyAxioms(OMLZipResourceSet rs) {
-  	bundledTerminologyAxioms.forEach[uuid, oml_kv |
-  	  val BundledTerminologyAxiom oml = oml_kv.key
+  protected def void resolveAspectSpecializationAxioms(OMLZipResourceSet rs) {
+  	aspectSpecializationAxioms.forEach[uuid, oml_kv |
+  	  val AspectSpecializationAxiom oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
   	  if (!kv.empty) {
-  	    val String bundleXRef = kv.remove("bundleUUID")
-  	    val Pair<Bundle, Map<String, String>> bundlePair = bundles.get(bundleXRef)
-  	    if (null === bundlePair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for bundle in bundledTerminologyAxioms")
-  	    oml.bundle = bundlePair.key
-  	    val String bundledTerminologyIRI = kv.remove("bundledTerminologyIRI")
-  	    loadOMLZipResource(rs, URI.createURI(bundledTerminologyIRI))
-  	    val Pair<TerminologyBox, Map<String, String>> bundledTerminologyPair = terminologyBoxes.get(bundledTerminologyIRI)
-  	    if (null === bundledTerminologyPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for bundledTerminology in bundledTerminologyAxioms")
-  	    oml.bundledTerminology = bundledTerminologyPair.key		  	  
+  	    val String tboxXRef = kv.remove("tboxUUID")
+  	    val Pair<TerminologyBox, Map<String, String>> tboxPair = terminologyBoxes.get(tboxXRef)
+  	    if (null === tboxPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for tbox in aspectSpecializationAxioms")
+  	    oml.tbox = tboxPair.key
+  	    val String superAspectXRef = kv.remove("superAspectUUID")
+  	    val Pair<Aspect, Map<String, String>> superAspectPair = aspects.get(superAspectXRef)
+  	    if (null === superAspectPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for superAspect in aspectSpecializationAxioms")
+  	    oml.superAspect = superAspectPair.key
+  	    val String subEntityXRef = kv.remove("subEntityUUID")
+  	    val Pair<Entity, Map<String, String>> subEntityPair = entities.get(subEntityXRef)
+  	    if (null === subEntityPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for subEntity in aspectSpecializationAxioms")
+  	    oml.subEntity = subEntityPair.key
+  	  }
+  	]
+  }
+  
+  protected def void resolveConceptSpecializationAxioms(OMLZipResourceSet rs) {
+  	conceptSpecializationAxioms.forEach[uuid, oml_kv |
+  	  val ConceptSpecializationAxiom oml = oml_kv.key
+  	  val Map<String, String> kv = oml_kv.value
+  	  if (!kv.empty) {
+  	    val String tboxXRef = kv.remove("tboxUUID")
+  	    val Pair<TerminologyBox, Map<String, String>> tboxPair = terminologyBoxes.get(tboxXRef)
+  	    if (null === tboxPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for tbox in conceptSpecializationAxioms")
+  	    oml.tbox = tboxPair.key
+  	    val String superConceptXRef = kv.remove("superConceptUUID")
+  	    val Pair<Concept, Map<String, String>> superConceptPair = concepts.get(superConceptXRef)
+  	    if (null === superConceptPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for superConcept in conceptSpecializationAxioms")
+  	    oml.superConcept = superConceptPair.key
+  	    val String subConceptXRef = kv.remove("subConceptUUID")
+  	    val Pair<Concept, Map<String, String>> subConceptPair = concepts.get(subConceptXRef)
+  	    if (null === subConceptPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for subConcept in conceptSpecializationAxioms")
+  	    oml.subConcept = subConceptPair.key
+  	  }
+  	]
+  }
+  
+  protected def void resolveReifiedRelationshipSpecializationAxioms(OMLZipResourceSet rs) {
+  	reifiedRelationshipSpecializationAxioms.forEach[uuid, oml_kv |
+  	  val ReifiedRelationshipSpecializationAxiom oml = oml_kv.key
+  	  val Map<String, String> kv = oml_kv.value
+  	  if (!kv.empty) {
+  	    val String tboxXRef = kv.remove("tboxUUID")
+  	    val Pair<TerminologyBox, Map<String, String>> tboxPair = terminologyBoxes.get(tboxXRef)
+  	    if (null === tboxPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for tbox in reifiedRelationshipSpecializationAxioms")
+  	    oml.tbox = tboxPair.key
+  	    val String superRelationshipXRef = kv.remove("superRelationshipUUID")
+  	    val Pair<ReifiedRelationship, Map<String, String>> superRelationshipPair = reifiedRelationships.get(superRelationshipXRef)
+  	    if (null === superRelationshipPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for superRelationship in reifiedRelationshipSpecializationAxioms")
+  	    oml.superRelationship = superRelationshipPair.key
+  	    val String subRelationshipXRef = kv.remove("subRelationshipUUID")
+  	    val Pair<ReifiedRelationship, Map<String, String>> subRelationshipPair = reifiedRelationships.get(subRelationshipXRef)
+  	    if (null === subRelationshipPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for subRelationship in reifiedRelationshipSpecializationAxioms")
+  	    oml.subRelationship = subRelationshipPair.key
+  	  }
+  	]
+  }
+  
+  protected def void resolveSubDataPropertyOfAxioms(OMLZipResourceSet rs) {
+  	subDataPropertyOfAxioms.forEach[uuid, oml_kv |
+  	  val SubDataPropertyOfAxiom oml = oml_kv.key
+  	  val Map<String, String> kv = oml_kv.value
+  	  if (!kv.empty) {
+  	    val String tboxXRef = kv.remove("tboxUUID")
+  	    val Pair<TerminologyBox, Map<String, String>> tboxPair = terminologyBoxes.get(tboxXRef)
+  	    if (null === tboxPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for tbox in subDataPropertyOfAxioms")
+  	    oml.tbox = tboxPair.key
+  	    val String subPropertyXRef = kv.remove("subPropertyUUID")
+  	    val Pair<EntityScalarDataProperty, Map<String, String>> subPropertyPair = entityScalarDataProperties.get(subPropertyXRef)
+  	    if (null === subPropertyPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for subProperty in subDataPropertyOfAxioms")
+  	    oml.subProperty = subPropertyPair.key
+  	    val String superPropertyXRef = kv.remove("superPropertyUUID")
+  	    val Pair<EntityScalarDataProperty, Map<String, String>> superPropertyPair = entityScalarDataProperties.get(superPropertyXRef)
+  	    if (null === superPropertyPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for superProperty in subDataPropertyOfAxioms")
+  	    oml.superProperty = superPropertyPair.key
+  	  }
+  	]
+  }
+  
+  protected def void resolveSubObjectPropertyOfAxioms(OMLZipResourceSet rs) {
+  	subObjectPropertyOfAxioms.forEach[uuid, oml_kv |
+  	  val SubObjectPropertyOfAxiom oml = oml_kv.key
+  	  val Map<String, String> kv = oml_kv.value
+  	  if (!kv.empty) {
+  	    val String tboxXRef = kv.remove("tboxUUID")
+  	    val Pair<TerminologyBox, Map<String, String>> tboxPair = terminologyBoxes.get(tboxXRef)
+  	    if (null === tboxPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for tbox in subObjectPropertyOfAxioms")
+  	    oml.tbox = tboxPair.key
+  	    val String subPropertyXRef = kv.remove("subPropertyUUID")
+  	    val Pair<UnreifiedRelationship, Map<String, String>> subPropertyPair = unreifiedRelationships.get(subPropertyXRef)
+  	    if (null === subPropertyPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for subProperty in subObjectPropertyOfAxioms")
+  	    oml.subProperty = subPropertyPair.key
+  	    val String superPropertyXRef = kv.remove("superPropertyUUID")
+  	    val Pair<UnreifiedRelationship, Map<String, String>> superPropertyPair = unreifiedRelationships.get(superPropertyXRef)
+  	    if (null === superPropertyPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for superProperty in subObjectPropertyOfAxioms")
+  	    oml.superProperty = superPropertyPair.key
   	  }
   	]
   }
@@ -4765,6 +5173,20 @@ class OMLSpecificationTables {
   	]
   }
   
+  protected def void resolveAnonymousConceptUnionAxioms(OMLZipResourceSet rs) {
+  	anonymousConceptUnionAxioms.forEach[uuid, oml_kv |
+  	  val AnonymousConceptUnionAxiom oml = oml_kv.key
+  	  val Map<String, String> kv = oml_kv.value
+  	  if (!kv.empty) {
+  	    val String disjointTaxonomyParentXRef = kv.remove("disjointTaxonomyParentUUID")
+  	    val Pair<ConceptTreeDisjunction, Map<String, String>> disjointTaxonomyParentPair = conceptTreeDisjunctions.get(disjointTaxonomyParentXRef)
+  	    if (null === disjointTaxonomyParentPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for disjointTaxonomyParent in anonymousConceptUnionAxioms")
+  	    oml.disjointTaxonomyParent = disjointTaxonomyParentPair.key
+  	  }
+  	]
+  }
+  
   protected def void resolveSpecificDisjointConceptAxioms(OMLZipResourceSet rs) {
   	specificDisjointConceptAxioms.forEach[uuid, oml_kv |
   	  val SpecificDisjointConceptAxiom oml = oml_kv.key
@@ -4784,77 +5206,6 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveAnnotationPropertyValues(OMLZipResourceSet rs) {
-  	annotationPropertyValues.forEach[uuid, oml_kv |
-  	  val AnnotationPropertyValue oml = oml_kv.key
-  	  val Map<String, String> kv = oml_kv.value
-  	  if (!kv.empty) {
-  	    val String subjectXRef = kv.remove("subjectUUID")
-  	    val Pair<LogicalElement, Map<String, String>> subjectPair = logicalElements.get(subjectXRef)
-  	    if (null === subjectPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for subject in annotationPropertyValues")
-  	    oml.subject = subjectPair.key
-  	    val String propertyXRef = kv.remove("propertyUUID")
-  	    val Pair<AnnotationProperty, Map<String, String>> propertyPair = annotationProperties.get(propertyXRef)
-  	    if (null === propertyPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for property in annotationPropertyValues")
-  	    oml.property = propertyPair.key
-  	  }
-  	]
-  }
-  
-  protected def void resolveAnonymousConceptUnionAxioms(OMLZipResourceSet rs) {
-  	anonymousConceptUnionAxioms.forEach[uuid, oml_kv |
-  	  val AnonymousConceptUnionAxiom oml = oml_kv.key
-  	  val Map<String, String> kv = oml_kv.value
-  	  if (!kv.empty) {
-  	    val String disjointTaxonomyParentXRef = kv.remove("disjointTaxonomyParentUUID")
-  	    val Pair<ConceptTreeDisjunction, Map<String, String>> disjointTaxonomyParentPair = conceptTreeDisjunctions.get(disjointTaxonomyParentXRef)
-  	    if (null === disjointTaxonomyParentPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for disjointTaxonomyParent in anonymousConceptUnionAxioms")
-  	    oml.disjointTaxonomyParent = disjointTaxonomyParentPair.key
-  	  }
-  	]
-  }
-  
-  protected def void resolveAspectPredicates(OMLZipResourceSet rs) {
-  	aspectPredicates.forEach[uuid, oml_kv |
-  	  val AspectPredicate oml = oml_kv.key
-  	  val Map<String, String> kv = oml_kv.value
-  	  if (!kv.empty) {
-  	    val String aspectXRef = kv.remove("aspectUUID")
-  	    val Pair<Aspect, Map<String, String>> aspectPair = aspects.get(aspectXRef)
-  	    if (null === aspectPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for aspect in aspectPredicates")
-  	    oml.aspect = aspectPair.key
-  	    val String bodySegmentXRef = kv.remove("bodySegmentUUID")
-  	    val Pair<RuleBodySegment, Map<String, String>> bodySegmentPair = ruleBodySegments.get(bodySegmentXRef)
-  	    if (null === bodySegmentPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in aspectPredicates")
-  	    oml.bodySegment = bodySegmentPair.key
-  	  }
-  	]
-  }
-  
-  protected def void resolveChainRules(OMLZipResourceSet rs) {
-  	chainRules.forEach[uuid, oml_kv |
-  	  val ChainRule oml = oml_kv.key
-  	  val Map<String, String> kv = oml_kv.value
-  	  if (!kv.empty) {
-  	    val String tboxXRef = kv.remove("tboxUUID")
-  	    val Pair<TerminologyBox, Map<String, String>> tboxPair = terminologyBoxes.get(tboxXRef)
-  	    if (null === tboxPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for tbox in chainRules")
-  	    oml.tbox = tboxPair.key
-  	    val String headXRef = kv.remove("headUUID")
-  	    val Pair<UnreifiedRelationship, Map<String, String>> headPair = unreifiedRelationships.get(headXRef)
-  	    if (null === headPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for head in chainRules")
-  	    oml.head = headPair.key
-  	  }
-  	]
-  }
-  
   protected def void resolveConceptInstances(OMLZipResourceSet rs) {
   	conceptInstances.forEach[uuid, oml_kv |
   	  val ConceptInstance oml = oml_kv.key
@@ -4870,89 +5221,6 @@ class OMLSpecificationTables {
   	    if (null === singletonConceptClassifierPair)
   	      throw new IllegalArgumentException("Null cross-reference lookup for singletonConceptClassifier in conceptInstances")
   	    oml.singletonConceptClassifier = singletonConceptClassifierPair.key
-  	  }
-  	]
-  }
-  
-  protected def void resolveConceptPredicates(OMLZipResourceSet rs) {
-  	conceptPredicates.forEach[uuid, oml_kv |
-  	  val ConceptPredicate oml = oml_kv.key
-  	  val Map<String, String> kv = oml_kv.value
-  	  if (!kv.empty) {
-  	    val String bodySegmentXRef = kv.remove("bodySegmentUUID")
-  	    val Pair<RuleBodySegment, Map<String, String>> bodySegmentPair = ruleBodySegments.get(bodySegmentXRef)
-  	    if (null === bodySegmentPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in conceptPredicates")
-  	    oml.bodySegment = bodySegmentPair.key
-  	    val String conceptXRef = kv.remove("conceptUUID")
-  	    val Pair<Concept, Map<String, String>> conceptPair = concepts.get(conceptXRef)
-  	    if (null === conceptPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for concept in conceptPredicates")
-  	    oml.concept = conceptPair.key
-  	  }
-  	]
-  }
-  
-  protected def void resolveDescriptionBoxExtendsClosedWorldDefinitions(OMLZipResourceSet rs) {
-  	descriptionBoxExtendsClosedWorldDefinitions.forEach[uuid, oml_kv |
-  	  val DescriptionBoxExtendsClosedWorldDefinitions oml = oml_kv.key
-  	  val Map<String, String> kv = oml_kv.value
-  	  if (!kv.empty) {
-  	    val String descriptionBoxXRef = kv.remove("descriptionBoxUUID")
-  	    val Pair<DescriptionBox, Map<String, String>> descriptionBoxPair = descriptionBoxes.get(descriptionBoxXRef)
-  	    if (null === descriptionBoxPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for descriptionBox in descriptionBoxExtendsClosedWorldDefinitions")
-  	    oml.descriptionBox = descriptionBoxPair.key
-  	    val String closedWorldDefinitionsIRI = kv.remove("closedWorldDefinitionsIRI")
-  	    loadOMLZipResource(rs, URI.createURI(closedWorldDefinitionsIRI))
-  	    val Pair<TerminologyBox, Map<String, String>> closedWorldDefinitionsPair = terminologyBoxes.get(closedWorldDefinitionsIRI)
-  	    if (null === closedWorldDefinitionsPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for closedWorldDefinitions in descriptionBoxExtendsClosedWorldDefinitions")
-  	    oml.closedWorldDefinitions = closedWorldDefinitionsPair.key		  	  
-  	  }
-  	]
-  }
-  
-  protected def void resolveDescriptionBoxRefinements(OMLZipResourceSet rs) {
-  	descriptionBoxRefinements.forEach[uuid, oml_kv |
-  	  val DescriptionBoxRefinement oml = oml_kv.key
-  	  val Map<String, String> kv = oml_kv.value
-  	  if (!kv.empty) {
-  	    val String refiningDescriptionBoxXRef = kv.remove("refiningDescriptionBoxUUID")
-  	    val Pair<DescriptionBox, Map<String, String>> refiningDescriptionBoxPair = descriptionBoxes.get(refiningDescriptionBoxXRef)
-  	    if (null === refiningDescriptionBoxPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for refiningDescriptionBox in descriptionBoxRefinements")
-  	    oml.refiningDescriptionBox = refiningDescriptionBoxPair.key
-  	    val String refinedDescriptionBoxIRI = kv.remove("refinedDescriptionBoxIRI")
-  	    loadOMLZipResource(rs, URI.createURI(refinedDescriptionBoxIRI))
-  	    val Pair<DescriptionBox, Map<String, String>> refinedDescriptionBoxPair = descriptionBoxes.get(refinedDescriptionBoxIRI)
-  	    if (null === refinedDescriptionBoxPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for refinedDescriptionBox in descriptionBoxRefinements")
-  	    oml.refinedDescriptionBox = refinedDescriptionBoxPair.key		  	  
-  	  }
-  	]
-  }
-  
-  protected def void resolveEntityStructuredDataPropertyParticularRestrictionAxioms(OMLZipResourceSet rs) {
-  	entityStructuredDataPropertyParticularRestrictionAxioms.forEach[uuid, oml_kv |
-  	  val EntityStructuredDataPropertyParticularRestrictionAxiom oml = oml_kv.key
-  	  val Map<String, String> kv = oml_kv.value
-  	  if (!kv.empty) {
-  	    val String tboxXRef = kv.remove("tboxUUID")
-  	    val Pair<TerminologyBox, Map<String, String>> tboxPair = terminologyBoxes.get(tboxXRef)
-  	    if (null === tboxPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for tbox in entityStructuredDataPropertyParticularRestrictionAxioms")
-  	    oml.tbox = tboxPair.key
-  	    val String structuredDataPropertyXRef = kv.remove("structuredDataPropertyUUID")
-  	    val Pair<DataRelationshipToStructure, Map<String, String>> structuredDataPropertyPair = dataRelationshipToStructures.get(structuredDataPropertyXRef)
-  	    if (null === structuredDataPropertyPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for structuredDataProperty in entityStructuredDataPropertyParticularRestrictionAxioms")
-  	    oml.structuredDataProperty = structuredDataPropertyPair.key
-  	    val String restrictedEntityXRef = kv.remove("restrictedEntityUUID")
-  	    val Pair<Entity, Map<String, String>> restrictedEntityPair = entities.get(restrictedEntityXRef)
-  	    if (null === restrictedEntityPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for restrictedEntity in entityStructuredDataPropertyParticularRestrictionAxioms")
-  	    oml.restrictedEntity = restrictedEntityPair.key
   	  }
   	]
   }
@@ -5024,229 +5292,55 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveReifiedRelationshipInversePropertyPredicates(OMLZipResourceSet rs) {
-  	reifiedRelationshipInversePropertyPredicates.forEach[uuid, oml_kv |
-  	  val ReifiedRelationshipInversePropertyPredicate oml = oml_kv.key
+  protected def void resolveUnreifiedRelationshipInstanceTuples(OMLZipResourceSet rs) {
+  	unreifiedRelationshipInstanceTuples.forEach[uuid, oml_kv |
+  	  val UnreifiedRelationshipInstanceTuple oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
   	  if (!kv.empty) {
-  	    val String bodySegmentXRef = kv.remove("bodySegmentUUID")
-  	    val Pair<RuleBodySegment, Map<String, String>> bodySegmentPair = ruleBodySegments.get(bodySegmentXRef)
-  	    if (null === bodySegmentPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in reifiedRelationshipInversePropertyPredicates")
-  	    oml.bodySegment = bodySegmentPair.key
-  	    val String reifiedRelationshipXRef = kv.remove("reifiedRelationshipUUID")
-  	    val Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipPair = reifiedRelationships.get(reifiedRelationshipXRef)
-  	    if (null === reifiedRelationshipPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationship in reifiedRelationshipInversePropertyPredicates")
-  	    oml.reifiedRelationship = reifiedRelationshipPair.key
+  	    val String descriptionBoxXRef = kv.remove("descriptionBoxUUID")
+  	    val Pair<DescriptionBox, Map<String, String>> descriptionBoxPair = descriptionBoxes.get(descriptionBoxXRef)
+  	    if (null === descriptionBoxPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for descriptionBox in unreifiedRelationshipInstanceTuples")
+  	    oml.descriptionBox = descriptionBoxPair.key
+  	    val String unreifiedRelationshipXRef = kv.remove("unreifiedRelationshipUUID")
+  	    val Pair<UnreifiedRelationship, Map<String, String>> unreifiedRelationshipPair = unreifiedRelationships.get(unreifiedRelationshipXRef)
+  	    if (null === unreifiedRelationshipPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for unreifiedRelationship in unreifiedRelationshipInstanceTuples")
+  	    oml.unreifiedRelationship = unreifiedRelationshipPair.key
+  	    val String domainXRef = kv.remove("domainUUID")
+  	    val Pair<ConceptualEntitySingletonInstance, Map<String, String>> domainPair = conceptualEntitySingletonInstances.get(domainXRef)
+  	    if (null === domainPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for domain in unreifiedRelationshipInstanceTuples")
+  	    oml.domain = domainPair.key
+  	    val String rangeXRef = kv.remove("rangeUUID")
+  	    val Pair<ConceptualEntitySingletonInstance, Map<String, String>> rangePair = conceptualEntitySingletonInstances.get(rangeXRef)
+  	    if (null === rangePair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for range in unreifiedRelationshipInstanceTuples")
+  	    oml.range = rangePair.key
   	  }
   	]
   }
   
-  protected def void resolveReifiedRelationshipPredicates(OMLZipResourceSet rs) {
-  	reifiedRelationshipPredicates.forEach[uuid, oml_kv |
-  	  val ReifiedRelationshipPredicate oml = oml_kv.key
+  protected def void resolveSingletonInstanceStructuredDataPropertyValues(OMLZipResourceSet rs) {
+  	singletonInstanceStructuredDataPropertyValues.forEach[uuid, oml_kv |
+  	  val SingletonInstanceStructuredDataPropertyValue oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
   	  if (!kv.empty) {
-  	    val String bodySegmentXRef = kv.remove("bodySegmentUUID")
-  	    val Pair<RuleBodySegment, Map<String, String>> bodySegmentPair = ruleBodySegments.get(bodySegmentXRef)
-  	    if (null === bodySegmentPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in reifiedRelationshipPredicates")
-  	    oml.bodySegment = bodySegmentPair.key
-  	    val String reifiedRelationshipXRef = kv.remove("reifiedRelationshipUUID")
-  	    val Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipPair = reifiedRelationships.get(reifiedRelationshipXRef)
-  	    if (null === reifiedRelationshipPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationship in reifiedRelationshipPredicates")
-  	    oml.reifiedRelationship = reifiedRelationshipPair.key
-  	  }
-  	]
-  }
-  
-  protected def void resolveReifiedRelationshipPropertyPredicates(OMLZipResourceSet rs) {
-  	reifiedRelationshipPropertyPredicates.forEach[uuid, oml_kv |
-  	  val ReifiedRelationshipPropertyPredicate oml = oml_kv.key
-  	  val Map<String, String> kv = oml_kv.value
-  	  if (!kv.empty) {
-  	    val String bodySegmentXRef = kv.remove("bodySegmentUUID")
-  	    val Pair<RuleBodySegment, Map<String, String>> bodySegmentPair = ruleBodySegments.get(bodySegmentXRef)
-  	    if (null === bodySegmentPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in reifiedRelationshipPropertyPredicates")
-  	    oml.bodySegment = bodySegmentPair.key
-  	    val String reifiedRelationshipXRef = kv.remove("reifiedRelationshipUUID")
-  	    val Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipPair = reifiedRelationships.get(reifiedRelationshipXRef)
-  	    if (null === reifiedRelationshipPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationship in reifiedRelationshipPropertyPredicates")
-  	    oml.reifiedRelationship = reifiedRelationshipPair.key
-  	  }
-  	]
-  }
-  
-  protected def void resolveReifiedRelationshipSourceInversePropertyPredicates(OMLZipResourceSet rs) {
-  	reifiedRelationshipSourceInversePropertyPredicates.forEach[uuid, oml_kv |
-  	  val ReifiedRelationshipSourceInversePropertyPredicate oml = oml_kv.key
-  	  val Map<String, String> kv = oml_kv.value
-  	  if (!kv.empty) {
-  	    val String bodySegmentXRef = kv.remove("bodySegmentUUID")
-  	    val Pair<RuleBodySegment, Map<String, String>> bodySegmentPair = ruleBodySegments.get(bodySegmentXRef)
-  	    if (null === bodySegmentPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in reifiedRelationshipSourceInversePropertyPredicates")
-  	    oml.bodySegment = bodySegmentPair.key
-  	    val String reifiedRelationshipXRef = kv.remove("reifiedRelationshipUUID")
-  	    val Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipPair = reifiedRelationships.get(reifiedRelationshipXRef)
-  	    if (null === reifiedRelationshipPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationship in reifiedRelationshipSourceInversePropertyPredicates")
-  	    oml.reifiedRelationship = reifiedRelationshipPair.key
-  	  }
-  	]
-  }
-  
-  protected def void resolveReifiedRelationshipSourcePropertyPredicates(OMLZipResourceSet rs) {
-  	reifiedRelationshipSourcePropertyPredicates.forEach[uuid, oml_kv |
-  	  val ReifiedRelationshipSourcePropertyPredicate oml = oml_kv.key
-  	  val Map<String, String> kv = oml_kv.value
-  	  if (!kv.empty) {
-  	    val String bodySegmentXRef = kv.remove("bodySegmentUUID")
-  	    val Pair<RuleBodySegment, Map<String, String>> bodySegmentPair = ruleBodySegments.get(bodySegmentXRef)
-  	    if (null === bodySegmentPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in reifiedRelationshipSourcePropertyPredicates")
-  	    oml.bodySegment = bodySegmentPair.key
-  	    val String reifiedRelationshipXRef = kv.remove("reifiedRelationshipUUID")
-  	    val Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipPair = reifiedRelationships.get(reifiedRelationshipXRef)
-  	    if (null === reifiedRelationshipPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationship in reifiedRelationshipSourcePropertyPredicates")
-  	    oml.reifiedRelationship = reifiedRelationshipPair.key
-  	  }
-  	]
-  }
-  
-  protected def void resolveReifiedRelationshipTargetInversePropertyPredicates(OMLZipResourceSet rs) {
-  	reifiedRelationshipTargetInversePropertyPredicates.forEach[uuid, oml_kv |
-  	  val ReifiedRelationshipTargetInversePropertyPredicate oml = oml_kv.key
-  	  val Map<String, String> kv = oml_kv.value
-  	  if (!kv.empty) {
-  	    val String bodySegmentXRef = kv.remove("bodySegmentUUID")
-  	    val Pair<RuleBodySegment, Map<String, String>> bodySegmentPair = ruleBodySegments.get(bodySegmentXRef)
-  	    if (null === bodySegmentPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in reifiedRelationshipTargetInversePropertyPredicates")
-  	    oml.bodySegment = bodySegmentPair.key
-  	    val String reifiedRelationshipXRef = kv.remove("reifiedRelationshipUUID")
-  	    val Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipPair = reifiedRelationships.get(reifiedRelationshipXRef)
-  	    if (null === reifiedRelationshipPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationship in reifiedRelationshipTargetInversePropertyPredicates")
-  	    oml.reifiedRelationship = reifiedRelationshipPair.key
-  	  }
-  	]
-  }
-  
-  protected def void resolveReifiedRelationshipTargetPropertyPredicates(OMLZipResourceSet rs) {
-  	reifiedRelationshipTargetPropertyPredicates.forEach[uuid, oml_kv |
-  	  val ReifiedRelationshipTargetPropertyPredicate oml = oml_kv.key
-  	  val Map<String, String> kv = oml_kv.value
-  	  if (!kv.empty) {
-  	    val String bodySegmentXRef = kv.remove("bodySegmentUUID")
-  	    val Pair<RuleBodySegment, Map<String, String>> bodySegmentPair = ruleBodySegments.get(bodySegmentXRef)
-  	    if (null === bodySegmentPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in reifiedRelationshipTargetPropertyPredicates")
-  	    oml.bodySegment = bodySegmentPair.key
-  	    val String reifiedRelationshipXRef = kv.remove("reifiedRelationshipUUID")
-  	    val Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipPair = reifiedRelationships.get(reifiedRelationshipXRef)
-  	    if (null === reifiedRelationshipPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationship in reifiedRelationshipTargetPropertyPredicates")
-  	    oml.reifiedRelationship = reifiedRelationshipPair.key
-  	  }
-  	]
-  }
-  
-  protected def void resolveRestrictionScalarDataPropertyValues(OMLZipResourceSet rs) {
-  	restrictionScalarDataPropertyValues.forEach[uuid, oml_kv |
-  	  val RestrictionScalarDataPropertyValue oml = oml_kv.key
-  	  val Map<String, String> kv = oml_kv.value
-  	  if (!kv.empty) {
-  	    val String scalarDataPropertyXRef = kv.remove("scalarDataPropertyUUID")
-  	    val Pair<DataRelationshipToScalar, Map<String, String>> scalarDataPropertyPair = dataRelationshipToScalars.get(scalarDataPropertyXRef)
-  	    if (null === scalarDataPropertyPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for scalarDataProperty in restrictionScalarDataPropertyValues")
-  	    oml.scalarDataProperty = scalarDataPropertyPair.key
-  	    val String structuredDataPropertyContextXRef = kv.remove("structuredDataPropertyContextUUID")
-  	    val Pair<RestrictionStructuredDataPropertyContext, Map<String, String>> structuredDataPropertyContextPair = restrictionStructuredDataPropertyContexts.get(structuredDataPropertyContextXRef)
-  	    if (null === structuredDataPropertyContextPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for structuredDataPropertyContext in restrictionScalarDataPropertyValues")
-  	    oml.structuredDataPropertyContext = structuredDataPropertyContextPair.key
-  	    val String valueTypeXRef = kv.remove("valueTypeUUID")
-  	    if ("null" != valueTypeXRef) {
-  	      val Pair<DataRange, Map<String, String>> valueTypePair = dataRanges.get(valueTypeXRef)
-  	      if (null === valueTypePair)
-  	        throw new IllegalArgumentException("Null cross-reference lookup for valueType in restrictionScalarDataPropertyValues")
-  	      oml.valueType = valueTypePair.key
-  	    }
-  	  }
-  	]
-  }
-  
-  protected def void resolveRestrictionStructuredDataPropertyTuples(OMLZipResourceSet rs) {
-  	restrictionStructuredDataPropertyTuples.forEach[uuid, oml_kv |
-  	  val RestrictionStructuredDataPropertyTuple oml = oml_kv.key
-  	  val Map<String, String> kv = oml_kv.value
-  	  if (!kv.empty) {
+  	    val String descriptionBoxXRef = kv.remove("descriptionBoxUUID")
+  	    val Pair<DescriptionBox, Map<String, String>> descriptionBoxPair = descriptionBoxes.get(descriptionBoxXRef)
+  	    if (null === descriptionBoxPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for descriptionBox in singletonInstanceStructuredDataPropertyValues")
+  	    oml.descriptionBox = descriptionBoxPair.key
+  	    val String singletonInstanceXRef = kv.remove("singletonInstanceUUID")
+  	    val Pair<ConceptualEntitySingletonInstance, Map<String, String>> singletonInstancePair = conceptualEntitySingletonInstances.get(singletonInstanceXRef)
+  	    if (null === singletonInstancePair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for singletonInstance in singletonInstanceStructuredDataPropertyValues")
+  	    oml.singletonInstance = singletonInstancePair.key
   	    val String structuredDataPropertyXRef = kv.remove("structuredDataPropertyUUID")
   	    val Pair<DataRelationshipToStructure, Map<String, String>> structuredDataPropertyPair = dataRelationshipToStructures.get(structuredDataPropertyXRef)
   	    if (null === structuredDataPropertyPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for structuredDataProperty in restrictionStructuredDataPropertyTuples")
+  	      throw new IllegalArgumentException("Null cross-reference lookup for structuredDataProperty in singletonInstanceStructuredDataPropertyValues")
   	    oml.structuredDataProperty = structuredDataPropertyPair.key
-  	    val String structuredDataPropertyContextXRef = kv.remove("structuredDataPropertyContextUUID")
-  	    val Pair<RestrictionStructuredDataPropertyContext, Map<String, String>> structuredDataPropertyContextPair = restrictionStructuredDataPropertyContexts.get(structuredDataPropertyContextXRef)
-  	    if (null === structuredDataPropertyContextPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for structuredDataPropertyContext in restrictionStructuredDataPropertyTuples")
-  	    oml.structuredDataPropertyContext = structuredDataPropertyContextPair.key
-  	  }
-  	]
-  }
-  
-  protected def void resolveRuleBodySegments(OMLZipResourceSet rs) {
-  	ruleBodySegments.forEach[uuid, oml_kv |
-  	  val RuleBodySegment oml = oml_kv.key
-  	  val Map<String, String> kv = oml_kv.value
-  	  if (!kv.empty) {
-  	    val String previousSegmentXRef = kv.remove("previousSegmentUUID")
-  	    if ("null" != previousSegmentXRef) {
-  	      val Pair<RuleBodySegment, Map<String, String>> previousSegmentPair = ruleBodySegments.get(previousSegmentXRef)
-  	      if (null === previousSegmentPair)
-  	        throw new IllegalArgumentException("Null cross-reference lookup for previousSegment in ruleBodySegments")
-  	      oml.previousSegment = previousSegmentPair.key
-  	    }
-  	    val String ruleXRef = kv.remove("ruleUUID")
-  	    if ("null" != ruleXRef) {
-  	      val Pair<ChainRule, Map<String, String>> rulePair = chainRules.get(ruleXRef)
-  	      if (null === rulePair)
-  	        throw new IllegalArgumentException("Null cross-reference lookup for rule in ruleBodySegments")
-  	      oml.rule = rulePair.key
-  	    }
-  	  }
-  	]
-  }
-  
-  protected def void resolveScalarDataPropertyValues(OMLZipResourceSet rs) {
-  	scalarDataPropertyValues.forEach[uuid, oml_kv |
-  	  val ScalarDataPropertyValue oml = oml_kv.key
-  	  val Map<String, String> kv = oml_kv.value
-  	  if (!kv.empty) {
-  	    val String scalarDataPropertyXRef = kv.remove("scalarDataPropertyUUID")
-  	    val Pair<DataRelationshipToScalar, Map<String, String>> scalarDataPropertyPair = dataRelationshipToScalars.get(scalarDataPropertyXRef)
-  	    if (null === scalarDataPropertyPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for scalarDataProperty in scalarDataPropertyValues")
-  	    oml.scalarDataProperty = scalarDataPropertyPair.key
-  	    val String structuredDataPropertyContextXRef = kv.remove("structuredDataPropertyContextUUID")
-  	    val Pair<SingletonInstanceStructuredDataPropertyContext, Map<String, String>> structuredDataPropertyContextPair = singletonInstanceStructuredDataPropertyContexts.get(structuredDataPropertyContextXRef)
-  	    if (null === structuredDataPropertyContextPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for structuredDataPropertyContext in scalarDataPropertyValues")
-  	    oml.structuredDataPropertyContext = structuredDataPropertyContextPair.key
-  	    val String valueTypeXRef = kv.remove("valueTypeUUID")
-  	    if ("null" != valueTypeXRef) {
-  	      val Pair<DataRange, Map<String, String>> valueTypePair = dataRanges.get(valueTypeXRef)
-  	      if (null === valueTypePair)
-  	        throw new IllegalArgumentException("Null cross-reference lookup for valueType in scalarDataPropertyValues")
-  	      oml.valueType = valueTypePair.key
-  	    }
   	  }
   	]
   }
@@ -5282,30 +5376,6 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveSingletonInstanceStructuredDataPropertyValues(OMLZipResourceSet rs) {
-  	singletonInstanceStructuredDataPropertyValues.forEach[uuid, oml_kv |
-  	  val SingletonInstanceStructuredDataPropertyValue oml = oml_kv.key
-  	  val Map<String, String> kv = oml_kv.value
-  	  if (!kv.empty) {
-  	    val String descriptionBoxXRef = kv.remove("descriptionBoxUUID")
-  	    val Pair<DescriptionBox, Map<String, String>> descriptionBoxPair = descriptionBoxes.get(descriptionBoxXRef)
-  	    if (null === descriptionBoxPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for descriptionBox in singletonInstanceStructuredDataPropertyValues")
-  	    oml.descriptionBox = descriptionBoxPair.key
-  	    val String singletonInstanceXRef = kv.remove("singletonInstanceUUID")
-  	    val Pair<ConceptualEntitySingletonInstance, Map<String, String>> singletonInstancePair = conceptualEntitySingletonInstances.get(singletonInstanceXRef)
-  	    if (null === singletonInstancePair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for singletonInstance in singletonInstanceStructuredDataPropertyValues")
-  	    oml.singletonInstance = singletonInstancePair.key
-  	    val String structuredDataPropertyXRef = kv.remove("structuredDataPropertyUUID")
-  	    val Pair<DataRelationshipToStructure, Map<String, String>> structuredDataPropertyPair = dataRelationshipToStructures.get(structuredDataPropertyXRef)
-  	    if (null === structuredDataPropertyPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for structuredDataProperty in singletonInstanceStructuredDataPropertyValues")
-  	    oml.structuredDataProperty = structuredDataPropertyPair.key
-  	  }
-  	]
-  }
-  
   protected def void resolveStructuredDataPropertyTuples(OMLZipResourceSet rs) {
   	structuredDataPropertyTuples.forEach[uuid, oml_kv |
   	  val StructuredDataPropertyTuple oml = oml_kv.key
@@ -5325,117 +5395,47 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveSubDataPropertyOfAxioms(OMLZipResourceSet rs) {
-  	subDataPropertyOfAxioms.forEach[uuid, oml_kv |
-  	  val SubDataPropertyOfAxiom oml = oml_kv.key
+  protected def void resolveScalarDataPropertyValues(OMLZipResourceSet rs) {
+  	scalarDataPropertyValues.forEach[uuid, oml_kv |
+  	  val ScalarDataPropertyValue oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
   	  if (!kv.empty) {
-  	    val String tboxXRef = kv.remove("tboxUUID")
-  	    val Pair<TerminologyBox, Map<String, String>> tboxPair = terminologyBoxes.get(tboxXRef)
-  	    if (null === tboxPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for tbox in subDataPropertyOfAxioms")
-  	    oml.tbox = tboxPair.key
-  	    val String subPropertyXRef = kv.remove("subPropertyUUID")
-  	    val Pair<EntityScalarDataProperty, Map<String, String>> subPropertyPair = entityScalarDataProperties.get(subPropertyXRef)
-  	    if (null === subPropertyPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for subProperty in subDataPropertyOfAxioms")
-  	    oml.subProperty = subPropertyPair.key
-  	    val String superPropertyXRef = kv.remove("superPropertyUUID")
-  	    val Pair<EntityScalarDataProperty, Map<String, String>> superPropertyPair = entityScalarDataProperties.get(superPropertyXRef)
-  	    if (null === superPropertyPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for superProperty in subDataPropertyOfAxioms")
-  	    oml.superProperty = superPropertyPair.key
+  	    val String scalarDataPropertyXRef = kv.remove("scalarDataPropertyUUID")
+  	    val Pair<DataRelationshipToScalar, Map<String, String>> scalarDataPropertyPair = dataRelationshipToScalars.get(scalarDataPropertyXRef)
+  	    if (null === scalarDataPropertyPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for scalarDataProperty in scalarDataPropertyValues")
+  	    oml.scalarDataProperty = scalarDataPropertyPair.key
+  	    val String structuredDataPropertyContextXRef = kv.remove("structuredDataPropertyContextUUID")
+  	    val Pair<SingletonInstanceStructuredDataPropertyContext, Map<String, String>> structuredDataPropertyContextPair = singletonInstanceStructuredDataPropertyContexts.get(structuredDataPropertyContextXRef)
+  	    if (null === structuredDataPropertyContextPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for structuredDataPropertyContext in scalarDataPropertyValues")
+  	    oml.structuredDataPropertyContext = structuredDataPropertyContextPair.key
+  	    val String valueTypeXRef = kv.remove("valueTypeUUID")
+  	    if ("null" != valueTypeXRef) {
+  	      val Pair<DataRange, Map<String, String>> valueTypePair = dataRanges.get(valueTypeXRef)
+  	      if (null === valueTypePair)
+  	        throw new IllegalArgumentException("Null cross-reference lookup for valueType in scalarDataPropertyValues")
+  	      oml.valueType = valueTypePair.key
+  	    }
   	  }
   	]
   }
   
-  protected def void resolveSubObjectPropertyOfAxioms(OMLZipResourceSet rs) {
-  	subObjectPropertyOfAxioms.forEach[uuid, oml_kv |
-  	  val SubObjectPropertyOfAxiom oml = oml_kv.key
+  protected def void resolveAnnotationPropertyValues(OMLZipResourceSet rs) {
+  	annotationPropertyValues.forEach[uuid, oml_kv |
+  	  val AnnotationPropertyValue oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
   	  if (!kv.empty) {
-  	    val String tboxXRef = kv.remove("tboxUUID")
-  	    val Pair<TerminologyBox, Map<String, String>> tboxPair = terminologyBoxes.get(tboxXRef)
-  	    if (null === tboxPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for tbox in subObjectPropertyOfAxioms")
-  	    oml.tbox = tboxPair.key
-  	    val String subPropertyXRef = kv.remove("subPropertyUUID")
-  	    val Pair<UnreifiedRelationship, Map<String, String>> subPropertyPair = unreifiedRelationships.get(subPropertyXRef)
-  	    if (null === subPropertyPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for subProperty in subObjectPropertyOfAxioms")
-  	    oml.subProperty = subPropertyPair.key
-  	    val String superPropertyXRef = kv.remove("superPropertyUUID")
-  	    val Pair<UnreifiedRelationship, Map<String, String>> superPropertyPair = unreifiedRelationships.get(superPropertyXRef)
-  	    if (null === superPropertyPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for superProperty in subObjectPropertyOfAxioms")
-  	    oml.superProperty = superPropertyPair.key
-  	  }
-  	]
-  }
-  
-  protected def void resolveUnreifiedRelationshipInstanceTuples(OMLZipResourceSet rs) {
-  	unreifiedRelationshipInstanceTuples.forEach[uuid, oml_kv |
-  	  val UnreifiedRelationshipInstanceTuple oml = oml_kv.key
-  	  val Map<String, String> kv = oml_kv.value
-  	  if (!kv.empty) {
-  	    val String descriptionBoxXRef = kv.remove("descriptionBoxUUID")
-  	    val Pair<DescriptionBox, Map<String, String>> descriptionBoxPair = descriptionBoxes.get(descriptionBoxXRef)
-  	    if (null === descriptionBoxPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for descriptionBox in unreifiedRelationshipInstanceTuples")
-  	    oml.descriptionBox = descriptionBoxPair.key
-  	    val String unreifiedRelationshipXRef = kv.remove("unreifiedRelationshipUUID")
-  	    val Pair<UnreifiedRelationship, Map<String, String>> unreifiedRelationshipPair = unreifiedRelationships.get(unreifiedRelationshipXRef)
-  	    if (null === unreifiedRelationshipPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for unreifiedRelationship in unreifiedRelationshipInstanceTuples")
-  	    oml.unreifiedRelationship = unreifiedRelationshipPair.key
-  	    val String domainXRef = kv.remove("domainUUID")
-  	    val Pair<ConceptualEntitySingletonInstance, Map<String, String>> domainPair = conceptualEntitySingletonInstances.get(domainXRef)
-  	    if (null === domainPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for domain in unreifiedRelationshipInstanceTuples")
-  	    oml.domain = domainPair.key
-  	    val String rangeXRef = kv.remove("rangeUUID")
-  	    val Pair<ConceptualEntitySingletonInstance, Map<String, String>> rangePair = conceptualEntitySingletonInstances.get(rangeXRef)
-  	    if (null === rangePair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for range in unreifiedRelationshipInstanceTuples")
-  	    oml.range = rangePair.key
-  	  }
-  	]
-  }
-  
-  protected def void resolveUnreifiedRelationshipInversePropertyPredicates(OMLZipResourceSet rs) {
-  	unreifiedRelationshipInversePropertyPredicates.forEach[uuid, oml_kv |
-  	  val UnreifiedRelationshipInversePropertyPredicate oml = oml_kv.key
-  	  val Map<String, String> kv = oml_kv.value
-  	  if (!kv.empty) {
-  	    val String unreifiedRelationshipXRef = kv.remove("unreifiedRelationshipUUID")
-  	    val Pair<UnreifiedRelationship, Map<String, String>> unreifiedRelationshipPair = unreifiedRelationships.get(unreifiedRelationshipXRef)
-  	    if (null === unreifiedRelationshipPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for unreifiedRelationship in unreifiedRelationshipInversePropertyPredicates")
-  	    oml.unreifiedRelationship = unreifiedRelationshipPair.key
-  	    val String bodySegmentXRef = kv.remove("bodySegmentUUID")
-  	    val Pair<RuleBodySegment, Map<String, String>> bodySegmentPair = ruleBodySegments.get(bodySegmentXRef)
-  	    if (null === bodySegmentPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in unreifiedRelationshipInversePropertyPredicates")
-  	    oml.bodySegment = bodySegmentPair.key
-  	  }
-  	]
-  }
-  
-  protected def void resolveUnreifiedRelationshipPropertyPredicates(OMLZipResourceSet rs) {
-  	unreifiedRelationshipPropertyPredicates.forEach[uuid, oml_kv |
-  	  val UnreifiedRelationshipPropertyPredicate oml = oml_kv.key
-  	  val Map<String, String> kv = oml_kv.value
-  	  if (!kv.empty) {
-  	    val String unreifiedRelationshipXRef = kv.remove("unreifiedRelationshipUUID")
-  	    val Pair<UnreifiedRelationship, Map<String, String>> unreifiedRelationshipPair = unreifiedRelationships.get(unreifiedRelationshipXRef)
-  	    if (null === unreifiedRelationshipPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for unreifiedRelationship in unreifiedRelationshipPropertyPredicates")
-  	    oml.unreifiedRelationship = unreifiedRelationshipPair.key
-  	    val String bodySegmentXRef = kv.remove("bodySegmentUUID")
-  	    val Pair<RuleBodySegment, Map<String, String>> bodySegmentPair = ruleBodySegments.get(bodySegmentXRef)
-  	    if (null === bodySegmentPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in unreifiedRelationshipPropertyPredicates")
-  	    oml.bodySegment = bodySegmentPair.key
+  	    val String subjectXRef = kv.remove("subjectUUID")
+  	    val Pair<LogicalElement, Map<String, String>> subjectPair = logicalElements.get(subjectXRef)
+  	    if (null === subjectPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for subject in annotationPropertyValues")
+  	    oml.subject = subjectPair.key
+  	    val String propertyXRef = kv.remove("propertyUUID")
+  	    val Pair<AnnotationProperty, Map<String, String>> propertyPair = annotationProperties.get(propertyXRef)
+  	    if (null === propertyPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for property in annotationPropertyValues")
+  	    oml.property = propertyPair.key
   	  }
   	]
   }
@@ -5447,10 +5447,6 @@ class OMLSpecificationTables {
   		OMLZipResource: {
   		  r.contents.get(0).eAllContents.forEach[e|
   		    switch e {
-  	          AnnotationProperty: {
-  	          	val pair = new Pair<AnnotationProperty, Map<String,String>>(e, Collections.emptyMap)
-  	            annotationProperties.put(e.uuid(), pair)
-  	          }
   	          TerminologyGraph: {
   	          	val pair = new Pair<TerminologyGraph, Map<String,String>>(e, Collections.emptyMap)
   	            terminologyGraphs.put(e.uuid(), pair)
@@ -5467,6 +5463,36 @@ class OMLSpecificationTables {
   	            terminologyBoxes.put(e.uuid(), new Pair<TerminologyBox, Map<String,String>>(e, Collections.emptyMap))
   	            terminologyBoxes.put(e.iri(), new Pair<TerminologyBox, Map<String,String>>(e, Collections.emptyMap))
   	          }
+  	          DescriptionBox: {
+  	          	val pair = new Pair<DescriptionBox, Map<String,String>>(e, Collections.emptyMap)
+  	            descriptionBoxes.put(e.uuid(), pair)
+  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	            descriptionBoxes.put(e.iri(), pair)
+  	          }
+  	          AnnotationProperty: {
+  	          	val pair = new Pair<AnnotationProperty, Map<String,String>>(e, Collections.emptyMap)
+  	            annotationProperties.put(e.uuid(), pair)
+  	          }
+  	          Aspect: {
+  	          	val pair = new Pair<Aspect, Map<String,String>>(e, Collections.emptyMap)
+  	            aspects.put(e.uuid(), pair)
+  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	          }
+  	          Concept: {
+  	          	val pair = new Pair<Concept, Map<String,String>>(e, Collections.emptyMap)
+  	            concepts.put(e.uuid(), pair)
+  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	          }
+  	          Scalar: {
+  	          	val pair = new Pair<Scalar, Map<String,String>>(e, Collections.emptyMap)
+  	            scalars.put(e.uuid(), pair)
+  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	          }
+  	          Structure: {
+  	          	val pair = new Pair<Structure, Map<String,String>>(e, Collections.emptyMap)
+  	            structures.put(e.uuid(), pair)
+  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	          }
   	          ConceptDesignationTerminologyAxiom: {
   	          	val pair = new Pair<ConceptDesignationTerminologyAxiom, Map<String,String>>(e, Collections.emptyMap)
   	            conceptDesignationTerminologyAxioms.put(e.uuid(), pair)
@@ -5482,34 +5508,19 @@ class OMLSpecificationTables {
   	            terminologyNestingAxioms.put(e.uuid(), pair)
   	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
   	          }
-  	          Aspect: {
-  	          	val pair = new Pair<Aspect, Map<String,String>>(e, Collections.emptyMap)
-  	            aspects.put(e.uuid(), pair)
+  	          BundledTerminologyAxiom: {
+  	          	val pair = new Pair<BundledTerminologyAxiom, Map<String,String>>(e, Collections.emptyMap)
+  	            bundledTerminologyAxioms.put(e.uuid(), pair)
   	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
   	          }
-  	          Concept: {
-  	          	val pair = new Pair<Concept, Map<String,String>>(e, Collections.emptyMap)
-  	            concepts.put(e.uuid(), pair)
+  	          DescriptionBoxExtendsClosedWorldDefinitions: {
+  	          	val pair = new Pair<DescriptionBoxExtendsClosedWorldDefinitions, Map<String,String>>(e, Collections.emptyMap)
+  	            descriptionBoxExtendsClosedWorldDefinitions.put(e.uuid(), pair)
   	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
   	          }
-  	          ReifiedRelationship: {
-  	          	val pair = new Pair<ReifiedRelationship, Map<String,String>>(e, Collections.emptyMap)
-  	            reifiedRelationships.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          UnreifiedRelationship: {
-  	          	val pair = new Pair<UnreifiedRelationship, Map<String,String>>(e, Collections.emptyMap)
-  	            unreifiedRelationships.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          Scalar: {
-  	          	val pair = new Pair<Scalar, Map<String,String>>(e, Collections.emptyMap)
-  	            scalars.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          Structure: {
-  	          	val pair = new Pair<Structure, Map<String,String>>(e, Collections.emptyMap)
-  	            structures.put(e.uuid(), pair)
+  	          DescriptionBoxRefinement: {
+  	          	val pair = new Pair<DescriptionBoxRefinement, Map<String,String>>(e, Collections.emptyMap)
+  	            descriptionBoxRefinements.put(e.uuid(), pair)
   	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
   	          }
   	          BinaryScalarRestriction: {
@@ -5535,6 +5546,11 @@ class OMLSpecificationTables {
   	          ScalarOneOfRestriction: {
   	          	val pair = new Pair<ScalarOneOfRestriction, Map<String,String>>(e, Collections.emptyMap)
   	            scalarOneOfRestrictions.put(e.uuid(), pair)
+  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	          }
+  	          ScalarOneOfLiteralAxiom: {
+  	          	val pair = new Pair<ScalarOneOfLiteralAxiom, Map<String,String>>(e, Collections.emptyMap)
+  	            scalarOneOfLiteralAxioms.put(e.uuid(), pair)
   	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
   	          }
   	          StringScalarRestriction: {
@@ -5572,19 +5588,79 @@ class OMLSpecificationTables {
   	            structuredDataProperties.put(e.uuid(), pair)
   	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
   	          }
-  	          AspectSpecializationAxiom: {
-  	          	val pair = new Pair<AspectSpecializationAxiom, Map<String,String>>(e, Collections.emptyMap)
-  	            aspectSpecializationAxioms.put(e.uuid(), pair)
+  	          ReifiedRelationship: {
+  	          	val pair = new Pair<ReifiedRelationship, Map<String,String>>(e, Collections.emptyMap)
+  	            reifiedRelationships.put(e.uuid(), pair)
   	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
   	          }
-  	          ConceptSpecializationAxiom: {
-  	          	val pair = new Pair<ConceptSpecializationAxiom, Map<String,String>>(e, Collections.emptyMap)
-  	            conceptSpecializationAxioms.put(e.uuid(), pair)
+  	          UnreifiedRelationship: {
+  	          	val pair = new Pair<UnreifiedRelationship, Map<String,String>>(e, Collections.emptyMap)
+  	            unreifiedRelationships.put(e.uuid(), pair)
   	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
   	          }
-  	          ReifiedRelationshipSpecializationAxiom: {
-  	          	val pair = new Pair<ReifiedRelationshipSpecializationAxiom, Map<String,String>>(e, Collections.emptyMap)
-  	            reifiedRelationshipSpecializationAxioms.put(e.uuid(), pair)
+  	          ChainRule: {
+  	          	val pair = new Pair<ChainRule, Map<String,String>>(e, Collections.emptyMap)
+  	            chainRules.put(e.uuid(), pair)
+  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	          }
+  	          RuleBodySegment: {
+  	          	val pair = new Pair<RuleBodySegment, Map<String,String>>(e, Collections.emptyMap)
+  	            ruleBodySegments.put(e.uuid(), pair)
+  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	          }
+  	          AspectPredicate: {
+  	          	val pair = new Pair<AspectPredicate, Map<String,String>>(e, Collections.emptyMap)
+  	            aspectPredicates.put(e.uuid(), pair)
+  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	          }
+  	          ConceptPredicate: {
+  	          	val pair = new Pair<ConceptPredicate, Map<String,String>>(e, Collections.emptyMap)
+  	            conceptPredicates.put(e.uuid(), pair)
+  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	          }
+  	          ReifiedRelationshipPredicate: {
+  	          	val pair = new Pair<ReifiedRelationshipPredicate, Map<String,String>>(e, Collections.emptyMap)
+  	            reifiedRelationshipPredicates.put(e.uuid(), pair)
+  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	          }
+  	          ReifiedRelationshipPropertyPredicate: {
+  	          	val pair = new Pair<ReifiedRelationshipPropertyPredicate, Map<String,String>>(e, Collections.emptyMap)
+  	            reifiedRelationshipPropertyPredicates.put(e.uuid(), pair)
+  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	          }
+  	          ReifiedRelationshipSourcePropertyPredicate: {
+  	          	val pair = new Pair<ReifiedRelationshipSourcePropertyPredicate, Map<String,String>>(e, Collections.emptyMap)
+  	            reifiedRelationshipSourcePropertyPredicates.put(e.uuid(), pair)
+  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	          }
+  	          ReifiedRelationshipTargetPropertyPredicate: {
+  	          	val pair = new Pair<ReifiedRelationshipTargetPropertyPredicate, Map<String,String>>(e, Collections.emptyMap)
+  	            reifiedRelationshipTargetPropertyPredicates.put(e.uuid(), pair)
+  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	          }
+  	          UnreifiedRelationshipPropertyPredicate: {
+  	          	val pair = new Pair<UnreifiedRelationshipPropertyPredicate, Map<String,String>>(e, Collections.emptyMap)
+  	            unreifiedRelationshipPropertyPredicates.put(e.uuid(), pair)
+  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	          }
+  	          ReifiedRelationshipInversePropertyPredicate: {
+  	          	val pair = new Pair<ReifiedRelationshipInversePropertyPredicate, Map<String,String>>(e, Collections.emptyMap)
+  	            reifiedRelationshipInversePropertyPredicates.put(e.uuid(), pair)
+  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	          }
+  	          ReifiedRelationshipSourceInversePropertyPredicate: {
+  	          	val pair = new Pair<ReifiedRelationshipSourceInversePropertyPredicate, Map<String,String>>(e, Collections.emptyMap)
+  	            reifiedRelationshipSourceInversePropertyPredicates.put(e.uuid(), pair)
+  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	          }
+  	          ReifiedRelationshipTargetInversePropertyPredicate: {
+  	          	val pair = new Pair<ReifiedRelationshipTargetInversePropertyPredicate, Map<String,String>>(e, Collections.emptyMap)
+  	            reifiedRelationshipTargetInversePropertyPredicates.put(e.uuid(), pair)
+  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	          }
+  	          UnreifiedRelationshipInversePropertyPredicate: {
+  	          	val pair = new Pair<UnreifiedRelationshipInversePropertyPredicate, Map<String,String>>(e, Collections.emptyMap)
+  	            unreifiedRelationshipInversePropertyPredicates.put(e.uuid(), pair)
   	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
   	          }
   	          EntityExistentialRestrictionAxiom: {
@@ -5612,14 +5688,44 @@ class OMLSpecificationTables {
   	            entityScalarDataPropertyUniversalRestrictionAxioms.put(e.uuid(), pair)
   	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
   	          }
-  	          ScalarOneOfLiteralAxiom: {
-  	          	val pair = new Pair<ScalarOneOfLiteralAxiom, Map<String,String>>(e, Collections.emptyMap)
-  	            scalarOneOfLiteralAxioms.put(e.uuid(), pair)
+  	          EntityStructuredDataPropertyParticularRestrictionAxiom: {
+  	          	val pair = new Pair<EntityStructuredDataPropertyParticularRestrictionAxiom, Map<String,String>>(e, Collections.emptyMap)
+  	            entityStructuredDataPropertyParticularRestrictionAxioms.put(e.uuid(), pair)
   	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
   	          }
-  	          BundledTerminologyAxiom: {
-  	          	val pair = new Pair<BundledTerminologyAxiom, Map<String,String>>(e, Collections.emptyMap)
-  	            bundledTerminologyAxioms.put(e.uuid(), pair)
+  	          RestrictionStructuredDataPropertyTuple: {
+  	          	val pair = new Pair<RestrictionStructuredDataPropertyTuple, Map<String,String>>(e, Collections.emptyMap)
+  	            restrictionStructuredDataPropertyTuples.put(e.uuid(), pair)
+  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	          }
+  	          RestrictionScalarDataPropertyValue: {
+  	          	val pair = new Pair<RestrictionScalarDataPropertyValue, Map<String,String>>(e, Collections.emptyMap)
+  	            restrictionScalarDataPropertyValues.put(e.uuid(), pair)
+  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	          }
+  	          AspectSpecializationAxiom: {
+  	          	val pair = new Pair<AspectSpecializationAxiom, Map<String,String>>(e, Collections.emptyMap)
+  	            aspectSpecializationAxioms.put(e.uuid(), pair)
+  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	          }
+  	          ConceptSpecializationAxiom: {
+  	          	val pair = new Pair<ConceptSpecializationAxiom, Map<String,String>>(e, Collections.emptyMap)
+  	            conceptSpecializationAxioms.put(e.uuid(), pair)
+  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	          }
+  	          ReifiedRelationshipSpecializationAxiom: {
+  	          	val pair = new Pair<ReifiedRelationshipSpecializationAxiom, Map<String,String>>(e, Collections.emptyMap)
+  	            reifiedRelationshipSpecializationAxioms.put(e.uuid(), pair)
+  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	          }
+  	          SubDataPropertyOfAxiom: {
+  	          	val pair = new Pair<SubDataPropertyOfAxiom, Map<String,String>>(e, Collections.emptyMap)
+  	            subDataPropertyOfAxioms.put(e.uuid(), pair)
+  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	          }
+  	          SubObjectPropertyOfAxiom: {
+  	          	val pair = new Pair<SubObjectPropertyOfAxiom, Map<String,String>>(e, Collections.emptyMap)
+  	            subObjectPropertyOfAxioms.put(e.uuid(), pair)
   	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
   	          }
   	          RootConceptTaxonomyAxiom: {
@@ -5627,59 +5733,19 @@ class OMLSpecificationTables {
   	            rootConceptTaxonomyAxioms.put(e.uuid(), pair)
   	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
   	          }
-  	          SpecificDisjointConceptAxiom: {
-  	          	val pair = new Pair<SpecificDisjointConceptAxiom, Map<String,String>>(e, Collections.emptyMap)
-  	            specificDisjointConceptAxioms.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          AnnotationPropertyValue: {
-  	          	val pair = new Pair<AnnotationPropertyValue, Map<String,String>>(e, Collections.emptyMap)
-  	            annotationPropertyValues.put(e.uuid(), pair)
-  	          }
   	          AnonymousConceptUnionAxiom: {
   	          	val pair = new Pair<AnonymousConceptUnionAxiom, Map<String,String>>(e, Collections.emptyMap)
   	            anonymousConceptUnionAxioms.put(e.uuid(), pair)
   	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
   	          }
-  	          AspectPredicate: {
-  	          	val pair = new Pair<AspectPredicate, Map<String,String>>(e, Collections.emptyMap)
-  	            aspectPredicates.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          ChainRule: {
-  	          	val pair = new Pair<ChainRule, Map<String,String>>(e, Collections.emptyMap)
-  	            chainRules.put(e.uuid(), pair)
+  	          SpecificDisjointConceptAxiom: {
+  	          	val pair = new Pair<SpecificDisjointConceptAxiom, Map<String,String>>(e, Collections.emptyMap)
+  	            specificDisjointConceptAxioms.put(e.uuid(), pair)
   	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
   	          }
   	          ConceptInstance: {
   	          	val pair = new Pair<ConceptInstance, Map<String,String>>(e, Collections.emptyMap)
   	            conceptInstances.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          ConceptPredicate: {
-  	          	val pair = new Pair<ConceptPredicate, Map<String,String>>(e, Collections.emptyMap)
-  	            conceptPredicates.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          DescriptionBox: {
-  	          	val pair = new Pair<DescriptionBox, Map<String,String>>(e, Collections.emptyMap)
-  	            descriptionBoxes.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	            descriptionBoxes.put(e.iri(), pair)
-  	          }
-  	          DescriptionBoxExtendsClosedWorldDefinitions: {
-  	          	val pair = new Pair<DescriptionBoxExtendsClosedWorldDefinitions, Map<String,String>>(e, Collections.emptyMap)
-  	            descriptionBoxExtendsClosedWorldDefinitions.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          DescriptionBoxRefinement: {
-  	          	val pair = new Pair<DescriptionBoxRefinement, Map<String,String>>(e, Collections.emptyMap)
-  	            descriptionBoxRefinements.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          EntityStructuredDataPropertyParticularRestrictionAxiom: {
-  	          	val pair = new Pair<EntityStructuredDataPropertyParticularRestrictionAxiom, Map<String,String>>(e, Collections.emptyMap)
-  	            entityStructuredDataPropertyParticularRestrictionAxioms.put(e.uuid(), pair)
   	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
   	          }
   	          ReifiedRelationshipInstance: {
@@ -5697,64 +5763,9 @@ class OMLSpecificationTables {
   	            reifiedRelationshipInstanceRanges.put(e.uuid(), pair)
   	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
   	          }
-  	          ReifiedRelationshipInversePropertyPredicate: {
-  	          	val pair = new Pair<ReifiedRelationshipInversePropertyPredicate, Map<String,String>>(e, Collections.emptyMap)
-  	            reifiedRelationshipInversePropertyPredicates.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          ReifiedRelationshipPredicate: {
-  	          	val pair = new Pair<ReifiedRelationshipPredicate, Map<String,String>>(e, Collections.emptyMap)
-  	            reifiedRelationshipPredicates.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          ReifiedRelationshipPropertyPredicate: {
-  	          	val pair = new Pair<ReifiedRelationshipPropertyPredicate, Map<String,String>>(e, Collections.emptyMap)
-  	            reifiedRelationshipPropertyPredicates.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          ReifiedRelationshipSourceInversePropertyPredicate: {
-  	          	val pair = new Pair<ReifiedRelationshipSourceInversePropertyPredicate, Map<String,String>>(e, Collections.emptyMap)
-  	            reifiedRelationshipSourceInversePropertyPredicates.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          ReifiedRelationshipSourcePropertyPredicate: {
-  	          	val pair = new Pair<ReifiedRelationshipSourcePropertyPredicate, Map<String,String>>(e, Collections.emptyMap)
-  	            reifiedRelationshipSourcePropertyPredicates.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          ReifiedRelationshipTargetInversePropertyPredicate: {
-  	          	val pair = new Pair<ReifiedRelationshipTargetInversePropertyPredicate, Map<String,String>>(e, Collections.emptyMap)
-  	            reifiedRelationshipTargetInversePropertyPredicates.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          ReifiedRelationshipTargetPropertyPredicate: {
-  	          	val pair = new Pair<ReifiedRelationshipTargetPropertyPredicate, Map<String,String>>(e, Collections.emptyMap)
-  	            reifiedRelationshipTargetPropertyPredicates.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          RestrictionScalarDataPropertyValue: {
-  	          	val pair = new Pair<RestrictionScalarDataPropertyValue, Map<String,String>>(e, Collections.emptyMap)
-  	            restrictionScalarDataPropertyValues.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          RestrictionStructuredDataPropertyTuple: {
-  	          	val pair = new Pair<RestrictionStructuredDataPropertyTuple, Map<String,String>>(e, Collections.emptyMap)
-  	            restrictionStructuredDataPropertyTuples.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          RuleBodySegment: {
-  	          	val pair = new Pair<RuleBodySegment, Map<String,String>>(e, Collections.emptyMap)
-  	            ruleBodySegments.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          ScalarDataPropertyValue: {
-  	          	val pair = new Pair<ScalarDataPropertyValue, Map<String,String>>(e, Collections.emptyMap)
-  	            scalarDataPropertyValues.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          SingletonInstanceScalarDataPropertyValue: {
-  	          	val pair = new Pair<SingletonInstanceScalarDataPropertyValue, Map<String,String>>(e, Collections.emptyMap)
-  	            singletonInstanceScalarDataPropertyValues.put(e.uuid(), pair)
+  	          UnreifiedRelationshipInstanceTuple: {
+  	          	val pair = new Pair<UnreifiedRelationshipInstanceTuple, Map<String,String>>(e, Collections.emptyMap)
+  	            unreifiedRelationshipInstanceTuples.put(e.uuid(), pair)
   	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
   	          }
   	          SingletonInstanceStructuredDataPropertyValue: {
@@ -5762,35 +5773,24 @@ class OMLSpecificationTables {
   	            singletonInstanceStructuredDataPropertyValues.put(e.uuid(), pair)
   	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
   	          }
+  	          SingletonInstanceScalarDataPropertyValue: {
+  	          	val pair = new Pair<SingletonInstanceScalarDataPropertyValue, Map<String,String>>(e, Collections.emptyMap)
+  	            singletonInstanceScalarDataPropertyValues.put(e.uuid(), pair)
+  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	          }
   	          StructuredDataPropertyTuple: {
   	          	val pair = new Pair<StructuredDataPropertyTuple, Map<String,String>>(e, Collections.emptyMap)
   	            structuredDataPropertyTuples.put(e.uuid(), pair)
   	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
   	          }
-  	          SubDataPropertyOfAxiom: {
-  	          	val pair = new Pair<SubDataPropertyOfAxiom, Map<String,String>>(e, Collections.emptyMap)
-  	            subDataPropertyOfAxioms.put(e.uuid(), pair)
+  	          ScalarDataPropertyValue: {
+  	          	val pair = new Pair<ScalarDataPropertyValue, Map<String,String>>(e, Collections.emptyMap)
+  	            scalarDataPropertyValues.put(e.uuid(), pair)
   	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
   	          }
-  	          SubObjectPropertyOfAxiom: {
-  	          	val pair = new Pair<SubObjectPropertyOfAxiom, Map<String,String>>(e, Collections.emptyMap)
-  	            subObjectPropertyOfAxioms.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          UnreifiedRelationshipInstanceTuple: {
-  	          	val pair = new Pair<UnreifiedRelationshipInstanceTuple, Map<String,String>>(e, Collections.emptyMap)
-  	            unreifiedRelationshipInstanceTuples.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          UnreifiedRelationshipInversePropertyPredicate: {
-  	          	val pair = new Pair<UnreifiedRelationshipInversePropertyPredicate, Map<String,String>>(e, Collections.emptyMap)
-  	            unreifiedRelationshipInversePropertyPredicates.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          UnreifiedRelationshipPropertyPredicate: {
-  	          	val pair = new Pair<UnreifiedRelationshipPropertyPredicate, Map<String,String>>(e, Collections.emptyMap)
-  	            unreifiedRelationshipPropertyPredicates.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	          AnnotationPropertyValue: {
+  	          	val pair = new Pair<AnnotationPropertyValue, Map<String,String>>(e, Collections.emptyMap)
+  	            annotationPropertyValues.put(e.uuid(), pair)
   	          }
   		    	}
   		  ]

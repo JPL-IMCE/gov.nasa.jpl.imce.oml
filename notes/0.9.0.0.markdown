@@ -71,3 +71,14 @@ gov.nasa.jpl.imce.oml.tycho 0.9.0.0 resolves major problems found in 0.8.0.1
 - [#190 Add SQL schema for OML tables.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/190)
 
 - [#192 OML AnnotationProperty must be owned by an OML Module, not OML Extent](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/192)
+
+- [#194 Fix SQL triggers in OML schema.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/194)
+
+- [#195 Update OMLExtension sorter for missing metaclasses.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/195)
+
+- [#196 Improve OMLCatalog.parseCatalog](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/196)
+
+- [#197 Update OML's target platform to use latest version of published features](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/197)
+
+  No change to the version number; just changes to the timestamp of the published version because the older timestamp is no longer available!
+  

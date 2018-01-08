@@ -642,6 +642,45 @@ COMMENT = 'Abstract Classification Table ValueCrossReferenceTuples';
 
 
 -- -----------------------------------------------------
+-- Table `OML`.`TlgyGraphs`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`TlgyGraphs` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `kind` INT NOT NULL COMMENT 'TerminologyKind',
+  `iri` TEXT NOT NULL COMMENT 'IRI',
+  
+  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Concrete Information Table TerminologyGraphs';
+
+-- -----------------------------------------------------
+-- Table `OML`.`Bdls`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`Bdls` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `kind` INT NOT NULL COMMENT 'TerminologyKind',
+  `iri` TEXT NOT NULL COMMENT 'IRI',
+  
+  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Concrete Information Table Bundles';
+
+-- -----------------------------------------------------
+-- Table `OML`.`DBoxes`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`DBoxes` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `kind` INT NOT NULL COMMENT 'DescriptionKind',
+  `iri` TEXT NOT NULL COMMENT 'IRI',
+  
+  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Concrete Information Table DescriptionBoxes';
+
+-- -----------------------------------------------------
 -- Table `OML`.`AnnotProps`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `OML`.`AnnotProps` (
@@ -659,118 +698,6 @@ CREATE TABLE IF NOT EXISTS `OML`.`AnnotProps` (
   UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
 )
 COMMENT = 'Concrete Information Table AnnotationProperties';
-
--- -----------------------------------------------------
--- Table `OML`.`TlgyGraphs`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`TlgyGraphs` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `kind` TEXT NOT NULL COMMENT 'TerminologyKind',
-  `iri` TEXT NOT NULL COMMENT 'IRI',
-  
-  
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Concrete Information Table TerminologyGraphs';
-
--- -----------------------------------------------------
--- Table `OML`.`Bdls`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`Bdls` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `kind` TEXT NOT NULL COMMENT 'TerminologyKind',
-  `iri` TEXT NOT NULL COMMENT 'IRI',
-  
-  
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Concrete Information Table Bundles';
-
--- -----------------------------------------------------
--- Table `OML`.`CDesTlgyAx`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`CDesTlgyAx` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `tboxUUID` CHAR(36) NOT NULL COMMENT 'TBox (TerminologyBox)',
-  `designatedConceptUUID` CHAR(36) NOT NULL COMMENT 'Cs (Concept)',
-  `designatedTerminologyIRI` CHAR(36) NOT NULL COMMENT 'TBox (TerminologyBox)',
-  
-  CONSTRAINT `fk_CDesTlgyAx_tboxUUID`
-    FOREIGN KEY (`tboxUUID`)
-    REFERENCES `OML`.`TBox`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_CDesTlgyAx_designatedConceptUUID`
-    FOREIGN KEY (`designatedConceptUUID`)
-    REFERENCES `OML`.`Cs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_CDesTlgyAx_designatedTerminologyIRI`
-    FOREIGN KEY (`designatedTerminologyIRI`)
-    REFERENCES `OML`.`TBox`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Concrete Information Table ConceptDesignationTerminologyAxioms';
-
--- -----------------------------------------------------
--- Table `OML`.`TlgyExtensionAx`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`TlgyExtensionAx` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `tboxUUID` CHAR(36) NOT NULL COMMENT 'TBox (TerminologyBox)',
-  `extendedTerminologyIRI` CHAR(36) NOT NULL COMMENT 'TBox (TerminologyBox)',
-  
-  CONSTRAINT `fk_TlgyExtensionAx_tboxUUID`
-    FOREIGN KEY (`tboxUUID`)
-    REFERENCES `OML`.`TBox`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_TlgyExtensionAx_extendedTerminologyIRI`
-    FOREIGN KEY (`extendedTerminologyIRI`)
-    REFERENCES `OML`.`TBox`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Concrete Information Table TerminologyExtensionAxioms';
-
--- -----------------------------------------------------
--- Table `OML`.`TlgyNestingAx`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`TlgyNestingAx` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `tboxUUID` CHAR(36) NOT NULL COMMENT 'TBox (TerminologyBox)',
-  `nestingContextUUID` CHAR(36) NOT NULL COMMENT 'Cs (Concept)',
-  `nestingTerminologyIRI` CHAR(36) NOT NULL COMMENT 'TBox (TerminologyBox)',
-  
-  CONSTRAINT `fk_TlgyNestingAx_tboxUUID`
-    FOREIGN KEY (`tboxUUID`)
-    REFERENCES `OML`.`TBox`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_TlgyNestingAx_nestingContextUUID`
-    FOREIGN KEY (`nestingContextUUID`)
-    REFERENCES `OML`.`Cs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_TlgyNestingAx_nestingTerminologyIRI`
-    FOREIGN KEY (`nestingTerminologyIRI`)
-    REFERENCES `OML`.`TBox`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Concrete Information Table TerminologyNestingAxioms';
 
 -- -----------------------------------------------------
 -- Table `OML`.`Aspects`
@@ -809,90 +736,6 @@ CREATE TABLE IF NOT EXISTS `OML`.`Cs` (
 COMMENT = 'Concrete Information Table Concepts';
 
 -- -----------------------------------------------------
--- Table `OML`.`RRs`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`RRs` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `tboxUUID` CHAR(36) NOT NULL COMMENT 'TBox (TerminologyBox)',
-  `sourceUUID` CHAR(36) NOT NULL COMMENT 'Es (Entity)',
-  `targetUUID` CHAR(36) NOT NULL COMMENT 'Es (Entity)',
-  `isAsymmetric` BOOLEAN NOT NULL,
-  `isEssential` BOOLEAN NOT NULL,
-  `isFunctional` BOOLEAN NOT NULL,
-  `isInverseEssential` BOOLEAN NOT NULL,
-  `isInverseFunctional` BOOLEAN NOT NULL,
-  `isIrreflexive` BOOLEAN NOT NULL,
-  `isReflexive` BOOLEAN NOT NULL,
-  `isSymmetric` BOOLEAN NOT NULL,
-  `isTransitive` BOOLEAN NOT NULL,
-  `name` TEXT NOT NULL COMMENT 'LocalName',
-  `unreifiedPropertyName` TEXT NOT NULL COMMENT 'LocalName',
-  `unreifiedInversePropertyName` TEXT COMMENT 'LocalName',
-  
-  CONSTRAINT `fk_RRs_tboxUUID`
-    FOREIGN KEY (`tboxUUID`)
-    REFERENCES `OML`.`TBox`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_RRs_sourceUUID`
-    FOREIGN KEY (`sourceUUID`)
-    REFERENCES `OML`.`Es`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_RRs_targetUUID`
-    FOREIGN KEY (`targetUUID`)
-    REFERENCES `OML`.`Es`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Concrete Information Table ReifiedRelationships';
-
--- -----------------------------------------------------
--- Table `OML`.`URs`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`URs` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `tboxUUID` CHAR(36) NOT NULL COMMENT 'TBox (TerminologyBox)',
-  `sourceUUID` CHAR(36) NOT NULL COMMENT 'Es (Entity)',
-  `targetUUID` CHAR(36) NOT NULL COMMENT 'Es (Entity)',
-  `isAsymmetric` BOOLEAN NOT NULL,
-  `isEssential` BOOLEAN NOT NULL,
-  `isFunctional` BOOLEAN NOT NULL,
-  `isInverseEssential` BOOLEAN NOT NULL,
-  `isInverseFunctional` BOOLEAN NOT NULL,
-  `isIrreflexive` BOOLEAN NOT NULL,
-  `isReflexive` BOOLEAN NOT NULL,
-  `isSymmetric` BOOLEAN NOT NULL,
-  `isTransitive` BOOLEAN NOT NULL,
-  `name` TEXT NOT NULL COMMENT 'LocalName',
-  
-  CONSTRAINT `fk_URs_tboxUUID`
-    FOREIGN KEY (`tboxUUID`)
-    REFERENCES `OML`.`TBox`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_URs_sourceUUID`
-    FOREIGN KEY (`sourceUUID`)
-    REFERENCES `OML`.`Es`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_URs_targetUUID`
-    FOREIGN KEY (`targetUUID`)
-    REFERENCES `OML`.`Es`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Concrete Information Table UnreifiedRelationships';
-
--- -----------------------------------------------------
 -- Table `OML`.`Scs`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `OML`.`Scs` (
@@ -927,6 +770,128 @@ CREATE TABLE IF NOT EXISTS `OML`.`Sts` (
   UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
 )
 COMMENT = 'Concrete Information Table Structures';
+
+-- -----------------------------------------------------
+-- Table `OML`.`CDesTlgyAx`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`CDesTlgyAx` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `tboxUUID` CHAR(36) NOT NULL COMMENT 'TBox (TerminologyBox)',
+  `designatedConceptUUID` CHAR(36) NOT NULL COMMENT 'Cs (Concept)',
+  `designatedTerminologyIRI` TEXT NOT NULL COMMENT 'TBox (TerminologyBox)',
+  
+  CONSTRAINT `fk_CDesTlgyAx_tboxUUID`
+    FOREIGN KEY (`tboxUUID`)
+    REFERENCES `OML`.`TBox`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_CDesTlgyAx_designatedConceptUUID`
+    FOREIGN KEY (`designatedConceptUUID`)
+    REFERENCES `OML`.`Cs`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Concrete Information Table ConceptDesignationTerminologyAxioms';
+
+-- -----------------------------------------------------
+-- Table `OML`.`TlgyExtensionAx`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`TlgyExtensionAx` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `tboxUUID` CHAR(36) NOT NULL COMMENT 'TBox (TerminologyBox)',
+  `extendedTerminologyIRI` TEXT NOT NULL COMMENT 'TBox (TerminologyBox)',
+  
+  CONSTRAINT `fk_TlgyExtensionAx_tboxUUID`
+    FOREIGN KEY (`tboxUUID`)
+    REFERENCES `OML`.`TBox`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Concrete Information Table TerminologyExtensionAxioms';
+
+-- -----------------------------------------------------
+-- Table `OML`.`TlgyNestingAx`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`TlgyNestingAx` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `tboxUUID` CHAR(36) NOT NULL COMMENT 'TBox (TerminologyBox)',
+  `nestingContextUUID` CHAR(36) NOT NULL COMMENT 'Cs (Concept)',
+  `nestingTerminologyIRI` TEXT NOT NULL COMMENT 'TBox (TerminologyBox)',
+  
+  CONSTRAINT `fk_TlgyNestingAx_tboxUUID`
+    FOREIGN KEY (`tboxUUID`)
+    REFERENCES `OML`.`TBox`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_TlgyNestingAx_nestingContextUUID`
+    FOREIGN KEY (`nestingContextUUID`)
+    REFERENCES `OML`.`Cs`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Concrete Information Table TerminologyNestingAxioms';
+
+-- -----------------------------------------------------
+-- Table `OML`.`BdldTlgyAx`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`BdldTlgyAx` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `bundleUUID` CHAR(36) NOT NULL COMMENT 'Bdls (Bundle)',
+  `bundledTerminologyIRI` TEXT NOT NULL COMMENT 'TBox (TerminologyBox)',
+  
+  CONSTRAINT `fk_BdldTlgyAx_bundleUUID`
+    FOREIGN KEY (`bundleUUID`)
+    REFERENCES `OML`.`Bdls`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Concrete Information Table BundledTerminologyAxioms';
+
+-- -----------------------------------------------------
+-- Table `OML`.`DBoxExtCWDef`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`DBoxExtCWDef` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `descriptionBoxUUID` CHAR(36) NOT NULL COMMENT 'DBoxes (DescriptionBox)',
+  `closedWorldDefinitionsIRI` TEXT NOT NULL COMMENT 'TBox (TerminologyBox)',
+  
+  CONSTRAINT `fk_DBoxExtCWDef_descriptionBoxUUID`
+    FOREIGN KEY (`descriptionBoxUUID`)
+    REFERENCES `OML`.`DBoxes`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Concrete Information Table DescriptionBoxExtendsClosedWorldDefinitions';
+
+-- -----------------------------------------------------
+-- Table `OML`.`DBoxRfns`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`DBoxRfns` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `refiningDescriptionBoxUUID` CHAR(36) NOT NULL COMMENT 'DBoxes (DescriptionBox)',
+  `refinedDescriptionBoxIRI` TEXT NOT NULL COMMENT 'DBoxes (DescriptionBox)',
+  
+  CONSTRAINT `fk_DBoxRfns_refiningDescriptionBoxUUID`
+    FOREIGN KEY (`refiningDescriptionBoxUUID`)
+    REFERENCES `OML`.`DBoxes`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Concrete Information Table DescriptionBoxRefinements';
 
 -- -----------------------------------------------------
 -- Table `OML`.`BinScRs`
@@ -993,13 +958,13 @@ CREATE TABLE IF NOT EXISTS `OML`.`NumericScRs` (
   `tboxUUID` CHAR(36) NOT NULL COMMENT 'TBox (TerminologyBox)',
   `restrictedRangeUUID` CHAR(36) NOT NULL COMMENT 'Drs (DataRange)',
   `minExclusive` TEXT COMMENT '(LiteralNumber value)',
-  `minExclusiveLiteralType` VARCHAR(20) COMMENT '(LiteralNumber kind)',
+  `minExclusiveLiteralType` VARCHAR(30) COMMENT '(LiteralNumber kind)',
   `minInclusive` TEXT COMMENT '(LiteralNumber value)',
-  `minInclusiveLiteralType` VARCHAR(20) COMMENT '(LiteralNumber kind)',
+  `minInclusiveLiteralType` VARCHAR(30) COMMENT '(LiteralNumber kind)',
   `maxExclusive` TEXT COMMENT '(LiteralNumber value)',
-  `maxExclusiveLiteralType` VARCHAR(20) COMMENT '(LiteralNumber kind)',
+  `maxExclusiveLiteralType` VARCHAR(30) COMMENT '(LiteralNumber kind)',
   `maxInclusive` TEXT COMMENT '(LiteralNumber value)',
-  `maxInclusiveLiteralType` VARCHAR(20) COMMENT '(LiteralNumber kind)',
+  `maxInclusiveLiteralType` VARCHAR(30) COMMENT '(LiteralNumber kind)',
   `name` TEXT NOT NULL COMMENT 'LocalName',
   
   CONSTRAINT `fk_NumericScRs_tboxUUID`
@@ -1074,6 +1039,39 @@ CREATE TABLE IF NOT EXISTS `OML`.`ScOneOfRs` (
 COMMENT = 'Concrete Information Table ScalarOneOfRestrictions';
 
 -- -----------------------------------------------------
+-- Table `OML`.`ScOneOfLitAx`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`ScOneOfLitAx` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `tboxUUID` CHAR(36) NOT NULL COMMENT 'TBox (TerminologyBox)',
+  `axiomUUID` CHAR(36) NOT NULL COMMENT 'ScOneOfRs (ScalarOneOfRestriction)',
+  `value` TEXT COMMENT '(LiteralValue value)',
+  `valueLiteralType` VARCHAR(30) COMMENT '(LiteralValue kind)',
+  `valueTypeUUID` CHAR(36) NULL COMMENT 'Drs (DataRange)',
+  
+  CONSTRAINT `fk_ScOneOfLitAx_tboxUUID`
+    FOREIGN KEY (`tboxUUID`)
+    REFERENCES `OML`.`TBox`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_ScOneOfLitAx_axiomUUID`
+    FOREIGN KEY (`axiomUUID`)
+    REFERENCES `OML`.`ScOneOfRs`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_ScOneOfLitAx_valueTypeUUID`
+    FOREIGN KEY (`valueTypeUUID`)
+    REFERENCES `OML`.`Drs`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Concrete Information Table ScalarOneOfLiteralAxioms';
+
+-- -----------------------------------------------------
 -- Table `OML`.`StringScRs`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `OML`.`StringScRs` (
@@ -1135,13 +1133,13 @@ CREATE TABLE IF NOT EXISTS `OML`.`TimeScRs` (
   `tboxUUID` CHAR(36) NOT NULL COMMENT 'TBox (TerminologyBox)',
   `restrictedRangeUUID` CHAR(36) NOT NULL COMMENT 'Drs (DataRange)',
   `minExclusive` TEXT COMMENT '(LiteralDateTime value)',
-  `minExclusiveLiteralType` VARCHAR(20) COMMENT '(LiteralDateTime kind)',
+  `minExclusiveLiteralType` VARCHAR(30) COMMENT '(LiteralDateTime kind)',
   `minInclusive` TEXT COMMENT '(LiteralDateTime value)',
-  `minInclusiveLiteralType` VARCHAR(20) COMMENT '(LiteralDateTime kind)',
+  `minInclusiveLiteralType` VARCHAR(30) COMMENT '(LiteralDateTime kind)',
   `maxExclusive` TEXT COMMENT '(LiteralDateTime value)',
-  `maxExclusiveLiteralType` VARCHAR(20) COMMENT '(LiteralDateTime kind)',
+  `maxExclusiveLiteralType` VARCHAR(30) COMMENT '(LiteralDateTime kind)',
   `maxInclusive` TEXT COMMENT '(LiteralDateTime value)',
-  `maxInclusiveLiteralType` VARCHAR(20) COMMENT '(LiteralDateTime kind)',
+  `maxInclusiveLiteralType` VARCHAR(30) COMMENT '(LiteralDateTime kind)',
   `name` TEXT NOT NULL COMMENT 'LocalName',
   
   CONSTRAINT `fk_TimeScRs_tboxUUID`
@@ -1291,97 +1289,401 @@ CREATE TABLE IF NOT EXISTS `OML`.`StPs` (
 COMMENT = 'Concrete Information Table StructuredDataProperties';
 
 -- -----------------------------------------------------
--- Table `OML`.`AspectSpeAx`
+-- Table `OML`.`RRs`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`AspectSpeAx` (
+CREATE TABLE IF NOT EXISTS `OML`.`RRs` (
   `uuid` CHAR(36) NOT NULL PRIMARY KEY,
   `tboxUUID` CHAR(36) NOT NULL COMMENT 'TBox (TerminologyBox)',
-  `superAspectUUID` CHAR(36) NOT NULL COMMENT 'Aspects (Aspect)',
-  `subEntityUUID` CHAR(36) NOT NULL COMMENT 'Es (Entity)',
+  `sourceUUID` CHAR(36) NOT NULL COMMENT 'Es (Entity)',
+  `targetUUID` CHAR(36) NOT NULL COMMENT 'Es (Entity)',
+  `isAsymmetric` BOOLEAN NOT NULL,
+  `isEssential` BOOLEAN NOT NULL,
+  `isFunctional` BOOLEAN NOT NULL,
+  `isInverseEssential` BOOLEAN NOT NULL,
+  `isInverseFunctional` BOOLEAN NOT NULL,
+  `isIrreflexive` BOOLEAN NOT NULL,
+  `isReflexive` BOOLEAN NOT NULL,
+  `isSymmetric` BOOLEAN NOT NULL,
+  `isTransitive` BOOLEAN NOT NULL,
+  `name` TEXT NOT NULL COMMENT 'LocalName',
+  `unreifiedPropertyName` TEXT NOT NULL COMMENT 'LocalName',
+  `unreifiedInversePropertyName` TEXT COMMENT 'LocalName',
   
-  CONSTRAINT `fk_AspectSpeAx_tboxUUID`
+  CONSTRAINT `fk_RRs_tboxUUID`
     FOREIGN KEY (`tboxUUID`)
     REFERENCES `OML`.`TBox`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_AspectSpeAx_superAspectUUID`
-    FOREIGN KEY (`superAspectUUID`)
-    REFERENCES `OML`.`Aspects`(`uuid`)
+  CONSTRAINT `fk_RRs_sourceUUID`
+    FOREIGN KEY (`sourceUUID`)
+    REFERENCES `OML`.`Es`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_AspectSpeAx_subEntityUUID`
-    FOREIGN KEY (`subEntityUUID`)
+  CONSTRAINT `fk_RRs_targetUUID`
+    FOREIGN KEY (`targetUUID`)
     REFERENCES `OML`.`Es`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
   UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
 )
-COMMENT = 'Concrete Information Table AspectSpecializationAxioms';
+COMMENT = 'Concrete Information Table ReifiedRelationships';
 
 -- -----------------------------------------------------
--- Table `OML`.`CSpeAx`
+-- Table `OML`.`URs`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`CSpeAx` (
+CREATE TABLE IF NOT EXISTS `OML`.`URs` (
   `uuid` CHAR(36) NOT NULL PRIMARY KEY,
   `tboxUUID` CHAR(36) NOT NULL COMMENT 'TBox (TerminologyBox)',
-  `superConceptUUID` CHAR(36) NOT NULL COMMENT 'Cs (Concept)',
-  `subConceptUUID` CHAR(36) NOT NULL COMMENT 'Cs (Concept)',
+  `sourceUUID` CHAR(36) NOT NULL COMMENT 'Es (Entity)',
+  `targetUUID` CHAR(36) NOT NULL COMMENT 'Es (Entity)',
+  `isAsymmetric` BOOLEAN NOT NULL,
+  `isEssential` BOOLEAN NOT NULL,
+  `isFunctional` BOOLEAN NOT NULL,
+  `isInverseEssential` BOOLEAN NOT NULL,
+  `isInverseFunctional` BOOLEAN NOT NULL,
+  `isIrreflexive` BOOLEAN NOT NULL,
+  `isReflexive` BOOLEAN NOT NULL,
+  `isSymmetric` BOOLEAN NOT NULL,
+  `isTransitive` BOOLEAN NOT NULL,
+  `name` TEXT NOT NULL COMMENT 'LocalName',
   
-  CONSTRAINT `fk_CSpeAx_tboxUUID`
+  CONSTRAINT `fk_URs_tboxUUID`
     FOREIGN KEY (`tboxUUID`)
     REFERENCES `OML`.`TBox`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_CSpeAx_superConceptUUID`
-    FOREIGN KEY (`superConceptUUID`)
-    REFERENCES `OML`.`Cs`(`uuid`)
+  CONSTRAINT `fk_URs_sourceUUID`
+    FOREIGN KEY (`sourceUUID`)
+    REFERENCES `OML`.`Es`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_CSpeAx_subConceptUUID`
-    FOREIGN KEY (`subConceptUUID`)
+  CONSTRAINT `fk_URs_targetUUID`
+    FOREIGN KEY (`targetUUID`)
+    REFERENCES `OML`.`Es`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Concrete Information Table UnreifiedRelationships';
+
+-- -----------------------------------------------------
+-- Table `OML`.`ChainRules`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`ChainRules` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `tboxUUID` CHAR(36) NOT NULL COMMENT 'TBox (TerminologyBox)',
+  `name` TEXT NOT NULL COMMENT 'LocalName',
+  `headUUID` CHAR(36) NOT NULL COMMENT 'URs (UnreifiedRelationship)',
+  
+  CONSTRAINT `fk_ChainRules_tboxUUID`
+    FOREIGN KEY (`tboxUUID`)
+    REFERENCES `OML`.`TBox`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_ChainRules_headUUID`
+    FOREIGN KEY (`headUUID`)
+    REFERENCES `OML`.`URs`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Concrete Information Table ChainRules';
+
+-- -----------------------------------------------------
+-- Table `OML`.`RuleBodySegs`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`RuleBodySegs` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `previousSegmentUUID` CHAR(36) NULL COMMENT 'RuleBodySegs (RuleBodySegment)',
+  `ruleUUID` CHAR(36) NULL COMMENT 'ChainRules (ChainRule)',
+  
+  CONSTRAINT `fk_RuleBodySegs_previousSegmentUUID`
+    FOREIGN KEY (`previousSegmentUUID`)
+    REFERENCES `OML`.`RuleBodySegs`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_RuleBodySegs_ruleUUID`
+    FOREIGN KEY (`ruleUUID`)
+    REFERENCES `OML`.`ChainRules`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Concrete Information Table RuleBodySegments';
+
+-- -----------------------------------------------------
+-- Table `OML`.`AspectP`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`AspectP` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `aspectUUID` CHAR(36) NOT NULL COMMENT 'Aspects (Aspect)',
+  `bodySegmentUUID` CHAR(36) NOT NULL COMMENT 'RuleBodySegs (RuleBodySegment)',
+  
+  CONSTRAINT `fk_AspectP_aspectUUID`
+    FOREIGN KEY (`aspectUUID`)
+    REFERENCES `OML`.`Aspects`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_AspectP_bodySegmentUUID`
+    FOREIGN KEY (`bodySegmentUUID`)
+    REFERENCES `OML`.`RuleBodySegs`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Concrete Information Table AspectPredicates';
+
+-- -----------------------------------------------------
+-- Table `OML`.`CP`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`CP` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `bodySegmentUUID` CHAR(36) NOT NULL COMMENT 'RuleBodySegs (RuleBodySegment)',
+  `conceptUUID` CHAR(36) NOT NULL COMMENT 'Cs (Concept)',
+  
+  CONSTRAINT `fk_CP_bodySegmentUUID`
+    FOREIGN KEY (`bodySegmentUUID`)
+    REFERENCES `OML`.`RuleBodySegs`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_CP_conceptUUID`
+    FOREIGN KEY (`conceptUUID`)
     REFERENCES `OML`.`Cs`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
   UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
 )
-COMMENT = 'Concrete Information Table ConceptSpecializationAxioms';
+COMMENT = 'Concrete Information Table ConceptPredicates';
 
 -- -----------------------------------------------------
--- Table `OML`.`RRSpeAx`
+-- Table `OML`.`RRP`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`RRSpeAx` (
+CREATE TABLE IF NOT EXISTS `OML`.`RRP` (
   `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `tboxUUID` CHAR(36) NOT NULL COMMENT 'TBox (TerminologyBox)',
-  `superRelationshipUUID` CHAR(36) NOT NULL COMMENT 'RRs (ReifiedRelationship)',
-  `subRelationshipUUID` CHAR(36) NOT NULL COMMENT 'RRs (ReifiedRelationship)',
+  `bodySegmentUUID` CHAR(36) NOT NULL COMMENT 'RuleBodySegs (RuleBodySegment)',
+  `reifiedRelationshipUUID` CHAR(36) NOT NULL COMMENT 'RRs (ReifiedRelationship)',
   
-  CONSTRAINT `fk_RRSpeAx_tboxUUID`
-    FOREIGN KEY (`tboxUUID`)
-    REFERENCES `OML`.`TBox`(`uuid`)
+  CONSTRAINT `fk_RRP_bodySegmentUUID`
+    FOREIGN KEY (`bodySegmentUUID`)
+    REFERENCES `OML`.`RuleBodySegs`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_RRSpeAx_superRelationshipUUID`
-    FOREIGN KEY (`superRelationshipUUID`)
-    REFERENCES `OML`.`RRs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_RRSpeAx_subRelationshipUUID`
-    FOREIGN KEY (`subRelationshipUUID`)
+  CONSTRAINT `fk_RRP_reifiedRelationshipUUID`
+    FOREIGN KEY (`reifiedRelationshipUUID`)
     REFERENCES `OML`.`RRs`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
   UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
 )
-COMMENT = 'Concrete Information Table ReifiedRelationshipSpecializationAxioms';
+COMMENT = 'Concrete Information Table ReifiedRelationshipPredicates';
+
+-- -----------------------------------------------------
+-- Table `OML`.`RRPropP`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`RRPropP` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `bodySegmentUUID` CHAR(36) NOT NULL COMMENT 'RuleBodySegs (RuleBodySegment)',
+  `reifiedRelationshipUUID` CHAR(36) NOT NULL COMMENT 'RRs (ReifiedRelationship)',
+  
+  CONSTRAINT `fk_RRPropP_bodySegmentUUID`
+    FOREIGN KEY (`bodySegmentUUID`)
+    REFERENCES `OML`.`RuleBodySegs`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_RRPropP_reifiedRelationshipUUID`
+    FOREIGN KEY (`reifiedRelationshipUUID`)
+    REFERENCES `OML`.`RRs`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Concrete Information Table ReifiedRelationshipPropertyPredicates';
+
+-- -----------------------------------------------------
+-- Table `OML`.`RRSrcPropP`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`RRSrcPropP` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `bodySegmentUUID` CHAR(36) NOT NULL COMMENT 'RuleBodySegs (RuleBodySegment)',
+  `reifiedRelationshipUUID` CHAR(36) NOT NULL COMMENT 'RRs (ReifiedRelationship)',
+  
+  CONSTRAINT `fk_RRSrcPropP_bodySegmentUUID`
+    FOREIGN KEY (`bodySegmentUUID`)
+    REFERENCES `OML`.`RuleBodySegs`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_RRSrcPropP_reifiedRelationshipUUID`
+    FOREIGN KEY (`reifiedRelationshipUUID`)
+    REFERENCES `OML`.`RRs`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Concrete Information Table ReifiedRelationshipSourcePropertyPredicates';
+
+-- -----------------------------------------------------
+-- Table `OML`.`RRTgtPropP`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`RRTgtPropP` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `bodySegmentUUID` CHAR(36) NOT NULL COMMENT 'RuleBodySegs (RuleBodySegment)',
+  `reifiedRelationshipUUID` CHAR(36) NOT NULL COMMENT 'RRs (ReifiedRelationship)',
+  
+  CONSTRAINT `fk_RRTgtPropP_bodySegmentUUID`
+    FOREIGN KEY (`bodySegmentUUID`)
+    REFERENCES `OML`.`RuleBodySegs`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_RRTgtPropP_reifiedRelationshipUUID`
+    FOREIGN KEY (`reifiedRelationshipUUID`)
+    REFERENCES `OML`.`RRs`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Concrete Information Table ReifiedRelationshipTargetPropertyPredicates';
+
+-- -----------------------------------------------------
+-- Table `OML`.`URPropP`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`URPropP` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `unreifiedRelationshipUUID` CHAR(36) NOT NULL COMMENT 'URs (UnreifiedRelationship)',
+  `bodySegmentUUID` CHAR(36) NOT NULL COMMENT 'RuleBodySegs (RuleBodySegment)',
+  
+  CONSTRAINT `fk_URPropP_unreifiedRelationshipUUID`
+    FOREIGN KEY (`unreifiedRelationshipUUID`)
+    REFERENCES `OML`.`URs`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_URPropP_bodySegmentUUID`
+    FOREIGN KEY (`bodySegmentUUID`)
+    REFERENCES `OML`.`RuleBodySegs`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Concrete Information Table UnreifiedRelationshipPropertyPredicates';
+
+-- -----------------------------------------------------
+-- Table `OML`.`RRInvPropP`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`RRInvPropP` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `bodySegmentUUID` CHAR(36) NOT NULL COMMENT 'RuleBodySegs (RuleBodySegment)',
+  `reifiedRelationshipUUID` CHAR(36) NOT NULL COMMENT 'RRs (ReifiedRelationship)',
+  
+  CONSTRAINT `fk_RRInvPropP_bodySegmentUUID`
+    FOREIGN KEY (`bodySegmentUUID`)
+    REFERENCES `OML`.`RuleBodySegs`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_RRInvPropP_reifiedRelationshipUUID`
+    FOREIGN KEY (`reifiedRelationshipUUID`)
+    REFERENCES `OML`.`RRs`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Concrete Information Table ReifiedRelationshipInversePropertyPredicates';
+
+-- -----------------------------------------------------
+-- Table `OML`.`RRSrcInvPropP`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`RRSrcInvPropP` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `bodySegmentUUID` CHAR(36) NOT NULL COMMENT 'RuleBodySegs (RuleBodySegment)',
+  `reifiedRelationshipUUID` CHAR(36) NOT NULL COMMENT 'RRs (ReifiedRelationship)',
+  
+  CONSTRAINT `fk_RRSrcInvPropP_bodySegmentUUID`
+    FOREIGN KEY (`bodySegmentUUID`)
+    REFERENCES `OML`.`RuleBodySegs`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_RRSrcInvPropP_reifiedRelationshipUUID`
+    FOREIGN KEY (`reifiedRelationshipUUID`)
+    REFERENCES `OML`.`RRs`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Concrete Information Table ReifiedRelationshipSourceInversePropertyPredicates';
+
+-- -----------------------------------------------------
+-- Table `OML`.`RRTgtInvPropP`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`RRTgtInvPropP` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `bodySegmentUUID` CHAR(36) NOT NULL COMMENT 'RuleBodySegs (RuleBodySegment)',
+  `reifiedRelationshipUUID` CHAR(36) NOT NULL COMMENT 'RRs (ReifiedRelationship)',
+  
+  CONSTRAINT `fk_RRTgtInvPropP_bodySegmentUUID`
+    FOREIGN KEY (`bodySegmentUUID`)
+    REFERENCES `OML`.`RuleBodySegs`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_RRTgtInvPropP_reifiedRelationshipUUID`
+    FOREIGN KEY (`reifiedRelationshipUUID`)
+    REFERENCES `OML`.`RRs`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Concrete Information Table ReifiedRelationshipTargetInversePropertyPredicates';
+
+-- -----------------------------------------------------
+-- Table `OML`.`URInvPropP`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`URInvPropP` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `unreifiedRelationshipUUID` CHAR(36) NOT NULL COMMENT 'URs (UnreifiedRelationship)',
+  `bodySegmentUUID` CHAR(36) NOT NULL COMMENT 'RuleBodySegs (RuleBodySegment)',
+  
+  CONSTRAINT `fk_URInvPropP_unreifiedRelationshipUUID`
+    FOREIGN KEY (`unreifiedRelationshipUUID`)
+    REFERENCES `OML`.`URs`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_URInvPropP_bodySegmentUUID`
+    FOREIGN KEY (`bodySegmentUUID`)
+    REFERENCES `OML`.`RuleBodySegs`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Concrete Information Table UnreifiedRelationshipInversePropertyPredicates';
 
 -- -----------------------------------------------------
 -- Table `OML`.`EExRAx`
@@ -1506,7 +1808,7 @@ CREATE TABLE IF NOT EXISTS `OML`.`EScPPtrRAx` (
   `restrictedEntityUUID` CHAR(36) NOT NULL COMMENT 'Es (Entity)',
   `scalarPropertyUUID` CHAR(36) NOT NULL COMMENT 'EScPs (EntityScalarDataProperty)',
   `literalValue` TEXT COMMENT '(LiteralValue value)',
-  `literalValueLiteralType` VARCHAR(20) COMMENT '(LiteralValue kind)',
+  `literalValueLiteralType` VARCHAR(30) COMMENT '(LiteralValue kind)',
   `valueTypeUUID` CHAR(36) NULL COMMENT 'Drs (DataRange)',
   
   CONSTRAINT `fk_EScPPtrRAx_tboxUUID`
@@ -1576,314 +1878,6 @@ CREATE TABLE IF NOT EXISTS `OML`.`EScPUxRAx` (
 COMMENT = 'Concrete Information Table EntityScalarDataPropertyUniversalRestrictionAxioms';
 
 -- -----------------------------------------------------
--- Table `OML`.`ScOneOfLitAx`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`ScOneOfLitAx` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `tboxUUID` CHAR(36) NOT NULL COMMENT 'TBox (TerminologyBox)',
-  `axiomUUID` CHAR(36) NOT NULL COMMENT 'ScOneOfRs (ScalarOneOfRestriction)',
-  `value` TEXT COMMENT '(LiteralValue value)',
-  `valueLiteralType` VARCHAR(20) COMMENT '(LiteralValue kind)',
-  `valueTypeUUID` CHAR(36) NULL COMMENT 'Drs (DataRange)',
-  
-  CONSTRAINT `fk_ScOneOfLitAx_tboxUUID`
-    FOREIGN KEY (`tboxUUID`)
-    REFERENCES `OML`.`TBox`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_ScOneOfLitAx_axiomUUID`
-    FOREIGN KEY (`axiomUUID`)
-    REFERENCES `OML`.`ScOneOfRs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_ScOneOfLitAx_valueTypeUUID`
-    FOREIGN KEY (`valueTypeUUID`)
-    REFERENCES `OML`.`Drs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Concrete Information Table ScalarOneOfLiteralAxioms';
-
--- -----------------------------------------------------
--- Table `OML`.`BdldTlgyAx`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`BdldTlgyAx` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `bundleUUID` CHAR(36) NOT NULL COMMENT 'Bdls (Bundle)',
-  `bundledTerminologyIRI` CHAR(36) NOT NULL COMMENT 'TBox (TerminologyBox)',
-  
-  CONSTRAINT `fk_BdldTlgyAx_bundleUUID`
-    FOREIGN KEY (`bundleUUID`)
-    REFERENCES `OML`.`Bdls`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_BdldTlgyAx_bundledTerminologyIRI`
-    FOREIGN KEY (`bundledTerminologyIRI`)
-    REFERENCES `OML`.`TBox`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Concrete Information Table BundledTerminologyAxioms';
-
--- -----------------------------------------------------
--- Table `OML`.`RootCTaxonomyAx`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`RootCTaxonomyAx` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `bundleUUID` CHAR(36) NOT NULL COMMENT 'Bdls (Bundle)',
-  `rootUUID` CHAR(36) NOT NULL COMMENT 'Cs (Concept)',
-  
-  CONSTRAINT `fk_RootCTaxonomyAx_bundleUUID`
-    FOREIGN KEY (`bundleUUID`)
-    REFERENCES `OML`.`Bdls`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_RootCTaxonomyAx_rootUUID`
-    FOREIGN KEY (`rootUUID`)
-    REFERENCES `OML`.`Cs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Concrete Information Table RootConceptTaxonomyAxioms';
-
--- -----------------------------------------------------
--- Table `OML`.`SpeDsjtCAx`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`SpeDsjtCAx` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `disjointTaxonomyParentUUID` CHAR(36) NOT NULL COMMENT 'CTreeDsju (ConceptTreeDisjunction)',
-  `disjointLeafUUID` CHAR(36) NOT NULL COMMENT 'Cs (Concept)',
-  
-  CONSTRAINT `fk_SpeDsjtCAx_disjointTaxonomyParentUUID`
-    FOREIGN KEY (`disjointTaxonomyParentUUID`)
-    REFERENCES `OML`.`CTreeDsju`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_SpeDsjtCAx_disjointLeafUUID`
-    FOREIGN KEY (`disjointLeafUUID`)
-    REFERENCES `OML`.`Cs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Concrete Information Table SpecificDisjointConceptAxioms';
-
--- -----------------------------------------------------
--- Table `OML`.`AnnotPropVals`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`AnnotPropVals` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `subjectUUID` CHAR(36) NOT NULL COMMENT 'LogEs (LogicalElement)',
-  `propertyUUID` CHAR(36) NOT NULL COMMENT 'AnnotProps (AnnotationProperty)',
-  `value` TEXT COMMENT '(LiteralString value)',
-  `valueLiteralType` VARCHAR(20) COMMENT '(LiteralString kind)',
-  
-  CONSTRAINT `fk_AnnotPropVals_subjectUUID`
-    FOREIGN KEY (`subjectUUID`)
-    REFERENCES `OML`.`LogEs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_AnnotPropVals_propertyUUID`
-    FOREIGN KEY (`propertyUUID`)
-    REFERENCES `OML`.`AnnotProps`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Concrete Information Table AnnotationPropertyValues';
-
--- -----------------------------------------------------
--- Table `OML`.`AnonymousCUnionAx`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`AnonymousCUnionAx` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `disjointTaxonomyParentUUID` CHAR(36) NOT NULL COMMENT 'CTreeDsju (ConceptTreeDisjunction)',
-  `name` TEXT NOT NULL COMMENT 'LocalName',
-  
-  CONSTRAINT `fk_AnonymousCUnionAx_disjointTaxonomyParentUUID`
-    FOREIGN KEY (`disjointTaxonomyParentUUID`)
-    REFERENCES `OML`.`CTreeDsju`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Concrete Information Table AnonymousConceptUnionAxioms';
-
--- -----------------------------------------------------
--- Table `OML`.`AspectP`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`AspectP` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `aspectUUID` CHAR(36) NOT NULL COMMENT 'Aspects (Aspect)',
-  `bodySegmentUUID` CHAR(36) NOT NULL COMMENT 'RuleBodySegs (RuleBodySegment)',
-  
-  CONSTRAINT `fk_AspectP_aspectUUID`
-    FOREIGN KEY (`aspectUUID`)
-    REFERENCES `OML`.`Aspects`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_AspectP_bodySegmentUUID`
-    FOREIGN KEY (`bodySegmentUUID`)
-    REFERENCES `OML`.`RuleBodySegs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Concrete Information Table AspectPredicates';
-
--- -----------------------------------------------------
--- Table `OML`.`ChainRules`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`ChainRules` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `tboxUUID` CHAR(36) NOT NULL COMMENT 'TBox (TerminologyBox)',
-  `name` TEXT NOT NULL COMMENT 'LocalName',
-  `headUUID` CHAR(36) NOT NULL COMMENT 'URs (UnreifiedRelationship)',
-  
-  CONSTRAINT `fk_ChainRules_tboxUUID`
-    FOREIGN KEY (`tboxUUID`)
-    REFERENCES `OML`.`TBox`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_ChainRules_headUUID`
-    FOREIGN KEY (`headUUID`)
-    REFERENCES `OML`.`URs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Concrete Information Table ChainRules';
-
--- -----------------------------------------------------
--- Table `OML`.`CIs`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`CIs` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `descriptionBoxUUID` CHAR(36) NOT NULL COMMENT 'DBoxes (DescriptionBox)',
-  `singletonConceptClassifierUUID` CHAR(36) NOT NULL COMMENT 'Cs (Concept)',
-  `name` TEXT NOT NULL COMMENT 'LocalName',
-  
-  CONSTRAINT `fk_CIs_descriptionBoxUUID`
-    FOREIGN KEY (`descriptionBoxUUID`)
-    REFERENCES `OML`.`DBoxes`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_CIs_singletonConceptClassifierUUID`
-    FOREIGN KEY (`singletonConceptClassifierUUID`)
-    REFERENCES `OML`.`Cs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Concrete Information Table ConceptInstances';
-
--- -----------------------------------------------------
--- Table `OML`.`CP`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`CP` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `bodySegmentUUID` CHAR(36) NOT NULL COMMENT 'RuleBodySegs (RuleBodySegment)',
-  `conceptUUID` CHAR(36) NOT NULL COMMENT 'Cs (Concept)',
-  
-  CONSTRAINT `fk_CP_bodySegmentUUID`
-    FOREIGN KEY (`bodySegmentUUID`)
-    REFERENCES `OML`.`RuleBodySegs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_CP_conceptUUID`
-    FOREIGN KEY (`conceptUUID`)
-    REFERENCES `OML`.`Cs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Concrete Information Table ConceptPredicates';
-
--- -----------------------------------------------------
--- Table `OML`.`DBoxes`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`DBoxes` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `kind` TEXT NOT NULL COMMENT 'DescriptionKind',
-  `iri` TEXT NOT NULL COMMENT 'IRI',
-  
-  
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Concrete Information Table DescriptionBoxes';
-
--- -----------------------------------------------------
--- Table `OML`.`DBoxExtCWDef`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`DBoxExtCWDef` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `descriptionBoxUUID` CHAR(36) NOT NULL COMMENT 'DBoxes (DescriptionBox)',
-  `closedWorldDefinitionsIRI` CHAR(36) NOT NULL COMMENT 'TBox (TerminologyBox)',
-  
-  CONSTRAINT `fk_DBoxExtCWDef_descriptionBoxUUID`
-    FOREIGN KEY (`descriptionBoxUUID`)
-    REFERENCES `OML`.`DBoxes`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_DBoxExtCWDef_closedWorldDefinitionsIRI`
-    FOREIGN KEY (`closedWorldDefinitionsIRI`)
-    REFERENCES `OML`.`TBox`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Concrete Information Table DescriptionBoxExtendsClosedWorldDefinitions';
-
--- -----------------------------------------------------
--- Table `OML`.`DBoxRfns`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`DBoxRfns` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `refiningDescriptionBoxUUID` CHAR(36) NOT NULL COMMENT 'DBoxes (DescriptionBox)',
-  `refinedDescriptionBoxIRI` CHAR(36) NOT NULL COMMENT 'DBoxes (DescriptionBox)',
-  
-  CONSTRAINT `fk_DBoxRfns_refiningDescriptionBoxUUID`
-    FOREIGN KEY (`refiningDescriptionBoxUUID`)
-    REFERENCES `OML`.`DBoxes`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_DBoxRfns_refinedDescriptionBoxIRI`
-    FOREIGN KEY (`refinedDescriptionBoxIRI`)
-    REFERENCES `OML`.`DBoxes`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Concrete Information Table DescriptionBoxRefinements';
-
--- -----------------------------------------------------
 -- Table `OML`.`EStPPtrRAx`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `OML`.`EStPPtrRAx` (
@@ -1913,6 +1907,309 @@ CREATE TABLE IF NOT EXISTS `OML`.`EStPPtrRAx` (
   UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
 )
 COMMENT = 'Concrete Information Table EntityStructuredDataPropertyParticularRestrictionAxioms';
+
+-- -----------------------------------------------------
+-- Table `OML`.`RStPTs`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`RStPTs` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `structuredDataPropertyUUID` CHAR(36) NOT NULL COMMENT 'DRelToSts (DataRelationshipToStructure)',
+  `structuredDataPropertyContextUUID` CHAR(36) NOT NULL COMMENT 'RStPCtxts (RestrictionStructuredDataPropertyContext)',
+  
+  CONSTRAINT `fk_RStPTs_structuredDataPropertyUUID`
+    FOREIGN KEY (`structuredDataPropertyUUID`)
+    REFERENCES `OML`.`DRelToSts`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_RStPTs_structuredDataPropertyContextUUID`
+    FOREIGN KEY (`structuredDataPropertyContextUUID`)
+    REFERENCES `OML`.`RStPCtxts`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Concrete Information Table RestrictionStructuredDataPropertyTuples';
+
+-- -----------------------------------------------------
+-- Table `OML`.`RScPVals`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`RScPVals` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `scalarDataPropertyUUID` CHAR(36) NOT NULL COMMENT 'DRelToScs (DataRelationshipToScalar)',
+  `scalarPropertyValue` TEXT COMMENT '(LiteralValue value)',
+  `scalarPropertyValueLiteralType` VARCHAR(30) COMMENT '(LiteralValue kind)',
+  `structuredDataPropertyContextUUID` CHAR(36) NOT NULL COMMENT 'RStPCtxts (RestrictionStructuredDataPropertyContext)',
+  `valueTypeUUID` CHAR(36) NULL COMMENT 'Drs (DataRange)',
+  
+  CONSTRAINT `fk_RScPVals_scalarDataPropertyUUID`
+    FOREIGN KEY (`scalarDataPropertyUUID`)
+    REFERENCES `OML`.`DRelToScs`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_RScPVals_structuredDataPropertyContextUUID`
+    FOREIGN KEY (`structuredDataPropertyContextUUID`)
+    REFERENCES `OML`.`RStPCtxts`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_RScPVals_valueTypeUUID`
+    FOREIGN KEY (`valueTypeUUID`)
+    REFERENCES `OML`.`Drs`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Concrete Information Table RestrictionScalarDataPropertyValues';
+
+-- -----------------------------------------------------
+-- Table `OML`.`AspectSpeAx`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`AspectSpeAx` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `tboxUUID` CHAR(36) NOT NULL COMMENT 'TBox (TerminologyBox)',
+  `superAspectUUID` CHAR(36) NOT NULL COMMENT 'Aspects (Aspect)',
+  `subEntityUUID` CHAR(36) NOT NULL COMMENT 'Es (Entity)',
+  
+  CONSTRAINT `fk_AspectSpeAx_tboxUUID`
+    FOREIGN KEY (`tboxUUID`)
+    REFERENCES `OML`.`TBox`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_AspectSpeAx_superAspectUUID`
+    FOREIGN KEY (`superAspectUUID`)
+    REFERENCES `OML`.`Aspects`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_AspectSpeAx_subEntityUUID`
+    FOREIGN KEY (`subEntityUUID`)
+    REFERENCES `OML`.`Es`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Concrete Information Table AspectSpecializationAxioms';
+
+-- -----------------------------------------------------
+-- Table `OML`.`CSpeAx`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`CSpeAx` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `tboxUUID` CHAR(36) NOT NULL COMMENT 'TBox (TerminologyBox)',
+  `superConceptUUID` CHAR(36) NOT NULL COMMENT 'Cs (Concept)',
+  `subConceptUUID` CHAR(36) NOT NULL COMMENT 'Cs (Concept)',
+  
+  CONSTRAINT `fk_CSpeAx_tboxUUID`
+    FOREIGN KEY (`tboxUUID`)
+    REFERENCES `OML`.`TBox`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_CSpeAx_superConceptUUID`
+    FOREIGN KEY (`superConceptUUID`)
+    REFERENCES `OML`.`Cs`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_CSpeAx_subConceptUUID`
+    FOREIGN KEY (`subConceptUUID`)
+    REFERENCES `OML`.`Cs`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Concrete Information Table ConceptSpecializationAxioms';
+
+-- -----------------------------------------------------
+-- Table `OML`.`RRSpeAx`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`RRSpeAx` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `tboxUUID` CHAR(36) NOT NULL COMMENT 'TBox (TerminologyBox)',
+  `superRelationshipUUID` CHAR(36) NOT NULL COMMENT 'RRs (ReifiedRelationship)',
+  `subRelationshipUUID` CHAR(36) NOT NULL COMMENT 'RRs (ReifiedRelationship)',
+  
+  CONSTRAINT `fk_RRSpeAx_tboxUUID`
+    FOREIGN KEY (`tboxUUID`)
+    REFERENCES `OML`.`TBox`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_RRSpeAx_superRelationshipUUID`
+    FOREIGN KEY (`superRelationshipUUID`)
+    REFERENCES `OML`.`RRs`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_RRSpeAx_subRelationshipUUID`
+    FOREIGN KEY (`subRelationshipUUID`)
+    REFERENCES `OML`.`RRs`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Concrete Information Table ReifiedRelationshipSpecializationAxioms';
+
+-- -----------------------------------------------------
+-- Table `OML`.`SubDataPropOfAx`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`SubDataPropOfAx` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `tboxUUID` CHAR(36) NOT NULL COMMENT 'TBox (TerminologyBox)',
+  `subPropertyUUID` CHAR(36) NOT NULL COMMENT 'EScPs (EntityScalarDataProperty)',
+  `superPropertyUUID` CHAR(36) NOT NULL COMMENT 'EScPs (EntityScalarDataProperty)',
+  
+  CONSTRAINT `fk_SubDataPropOfAx_tboxUUID`
+    FOREIGN KEY (`tboxUUID`)
+    REFERENCES `OML`.`TBox`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_SubDataPropOfAx_subPropertyUUID`
+    FOREIGN KEY (`subPropertyUUID`)
+    REFERENCES `OML`.`EScPs`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_SubDataPropOfAx_superPropertyUUID`
+    FOREIGN KEY (`superPropertyUUID`)
+    REFERENCES `OML`.`EScPs`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Concrete Information Table SubDataPropertyOfAxioms';
+
+-- -----------------------------------------------------
+-- Table `OML`.`SubObjectPropOfAx`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`SubObjectPropOfAx` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `tboxUUID` CHAR(36) NOT NULL COMMENT 'TBox (TerminologyBox)',
+  `subPropertyUUID` CHAR(36) NOT NULL COMMENT 'URs (UnreifiedRelationship)',
+  `superPropertyUUID` CHAR(36) NOT NULL COMMENT 'URs (UnreifiedRelationship)',
+  
+  CONSTRAINT `fk_SubObjectPropOfAx_tboxUUID`
+    FOREIGN KEY (`tboxUUID`)
+    REFERENCES `OML`.`TBox`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_SubObjectPropOfAx_subPropertyUUID`
+    FOREIGN KEY (`subPropertyUUID`)
+    REFERENCES `OML`.`URs`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_SubObjectPropOfAx_superPropertyUUID`
+    FOREIGN KEY (`superPropertyUUID`)
+    REFERENCES `OML`.`URs`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Concrete Information Table SubObjectPropertyOfAxioms';
+
+-- -----------------------------------------------------
+-- Table `OML`.`RootCTaxonomyAx`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`RootCTaxonomyAx` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `bundleUUID` CHAR(36) NOT NULL COMMENT 'Bdls (Bundle)',
+  `rootUUID` CHAR(36) NOT NULL COMMENT 'Cs (Concept)',
+  
+  CONSTRAINT `fk_RootCTaxonomyAx_bundleUUID`
+    FOREIGN KEY (`bundleUUID`)
+    REFERENCES `OML`.`Bdls`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_RootCTaxonomyAx_rootUUID`
+    FOREIGN KEY (`rootUUID`)
+    REFERENCES `OML`.`Cs`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Concrete Information Table RootConceptTaxonomyAxioms';
+
+-- -----------------------------------------------------
+-- Table `OML`.`AnonymousCUnionAx`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`AnonymousCUnionAx` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `disjointTaxonomyParentUUID` CHAR(36) NOT NULL COMMENT 'CTreeDsju (ConceptTreeDisjunction)',
+  `name` TEXT NOT NULL COMMENT 'LocalName',
+  
+  CONSTRAINT `fk_AnonymousCUnionAx_disjointTaxonomyParentUUID`
+    FOREIGN KEY (`disjointTaxonomyParentUUID`)
+    REFERENCES `OML`.`CTreeDsju`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Concrete Information Table AnonymousConceptUnionAxioms';
+
+-- -----------------------------------------------------
+-- Table `OML`.`SpeDsjtCAx`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`SpeDsjtCAx` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `disjointTaxonomyParentUUID` CHAR(36) NOT NULL COMMENT 'CTreeDsju (ConceptTreeDisjunction)',
+  `disjointLeafUUID` CHAR(36) NOT NULL COMMENT 'Cs (Concept)',
+  
+  CONSTRAINT `fk_SpeDsjtCAx_disjointTaxonomyParentUUID`
+    FOREIGN KEY (`disjointTaxonomyParentUUID`)
+    REFERENCES `OML`.`CTreeDsju`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_SpeDsjtCAx_disjointLeafUUID`
+    FOREIGN KEY (`disjointLeafUUID`)
+    REFERENCES `OML`.`Cs`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Concrete Information Table SpecificDisjointConceptAxioms';
+
+-- -----------------------------------------------------
+-- Table `OML`.`CIs`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`CIs` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `descriptionBoxUUID` CHAR(36) NOT NULL COMMENT 'DBoxes (DescriptionBox)',
+  `singletonConceptClassifierUUID` CHAR(36) NOT NULL COMMENT 'Cs (Concept)',
+  `name` TEXT NOT NULL COMMENT 'LocalName',
+  
+  CONSTRAINT `fk_CIs_descriptionBoxUUID`
+    FOREIGN KEY (`descriptionBoxUUID`)
+    REFERENCES `OML`.`DBoxes`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_CIs_singletonConceptClassifierUUID`
+    FOREIGN KEY (`singletonConceptClassifierUUID`)
+    REFERENCES `OML`.`Cs`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Concrete Information Table ConceptInstances';
 
 -- -----------------------------------------------------
 -- Table `OML`.`RRIs`
@@ -2002,445 +2299,6 @@ CREATE TABLE IF NOT EXISTS `OML`.`RRIRanges` (
 COMMENT = 'Concrete Information Table ReifiedRelationshipInstanceRanges';
 
 -- -----------------------------------------------------
--- Table `OML`.`RRInvPropP`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`RRInvPropP` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `bodySegmentUUID` CHAR(36) NOT NULL COMMENT 'RuleBodySegs (RuleBodySegment)',
-  `reifiedRelationshipUUID` CHAR(36) NOT NULL COMMENT 'RRs (ReifiedRelationship)',
-  
-  CONSTRAINT `fk_RRInvPropP_bodySegmentUUID`
-    FOREIGN KEY (`bodySegmentUUID`)
-    REFERENCES `OML`.`RuleBodySegs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_RRInvPropP_reifiedRelationshipUUID`
-    FOREIGN KEY (`reifiedRelationshipUUID`)
-    REFERENCES `OML`.`RRs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Concrete Information Table ReifiedRelationshipInversePropertyPredicates';
-
--- -----------------------------------------------------
--- Table `OML`.`RRP`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`RRP` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `bodySegmentUUID` CHAR(36) NOT NULL COMMENT 'RuleBodySegs (RuleBodySegment)',
-  `reifiedRelationshipUUID` CHAR(36) NOT NULL COMMENT 'RRs (ReifiedRelationship)',
-  
-  CONSTRAINT `fk_RRP_bodySegmentUUID`
-    FOREIGN KEY (`bodySegmentUUID`)
-    REFERENCES `OML`.`RuleBodySegs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_RRP_reifiedRelationshipUUID`
-    FOREIGN KEY (`reifiedRelationshipUUID`)
-    REFERENCES `OML`.`RRs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Concrete Information Table ReifiedRelationshipPredicates';
-
--- -----------------------------------------------------
--- Table `OML`.`RRPropP`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`RRPropP` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `bodySegmentUUID` CHAR(36) NOT NULL COMMENT 'RuleBodySegs (RuleBodySegment)',
-  `reifiedRelationshipUUID` CHAR(36) NOT NULL COMMENT 'RRs (ReifiedRelationship)',
-  
-  CONSTRAINT `fk_RRPropP_bodySegmentUUID`
-    FOREIGN KEY (`bodySegmentUUID`)
-    REFERENCES `OML`.`RuleBodySegs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_RRPropP_reifiedRelationshipUUID`
-    FOREIGN KEY (`reifiedRelationshipUUID`)
-    REFERENCES `OML`.`RRs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Concrete Information Table ReifiedRelationshipPropertyPredicates';
-
--- -----------------------------------------------------
--- Table `OML`.`RRSrcInvPropP`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`RRSrcInvPropP` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `bodySegmentUUID` CHAR(36) NOT NULL COMMENT 'RuleBodySegs (RuleBodySegment)',
-  `reifiedRelationshipUUID` CHAR(36) NOT NULL COMMENT 'RRs (ReifiedRelationship)',
-  
-  CONSTRAINT `fk_RRSrcInvPropP_bodySegmentUUID`
-    FOREIGN KEY (`bodySegmentUUID`)
-    REFERENCES `OML`.`RuleBodySegs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_RRSrcInvPropP_reifiedRelationshipUUID`
-    FOREIGN KEY (`reifiedRelationshipUUID`)
-    REFERENCES `OML`.`RRs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Concrete Information Table ReifiedRelationshipSourceInversePropertyPredicates';
-
--- -----------------------------------------------------
--- Table `OML`.`RRSrcPropP`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`RRSrcPropP` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `bodySegmentUUID` CHAR(36) NOT NULL COMMENT 'RuleBodySegs (RuleBodySegment)',
-  `reifiedRelationshipUUID` CHAR(36) NOT NULL COMMENT 'RRs (ReifiedRelationship)',
-  
-  CONSTRAINT `fk_RRSrcPropP_bodySegmentUUID`
-    FOREIGN KEY (`bodySegmentUUID`)
-    REFERENCES `OML`.`RuleBodySegs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_RRSrcPropP_reifiedRelationshipUUID`
-    FOREIGN KEY (`reifiedRelationshipUUID`)
-    REFERENCES `OML`.`RRs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Concrete Information Table ReifiedRelationshipSourcePropertyPredicates';
-
--- -----------------------------------------------------
--- Table `OML`.`RRTgtInvPropP`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`RRTgtInvPropP` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `bodySegmentUUID` CHAR(36) NOT NULL COMMENT 'RuleBodySegs (RuleBodySegment)',
-  `reifiedRelationshipUUID` CHAR(36) NOT NULL COMMENT 'RRs (ReifiedRelationship)',
-  
-  CONSTRAINT `fk_RRTgtInvPropP_bodySegmentUUID`
-    FOREIGN KEY (`bodySegmentUUID`)
-    REFERENCES `OML`.`RuleBodySegs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_RRTgtInvPropP_reifiedRelationshipUUID`
-    FOREIGN KEY (`reifiedRelationshipUUID`)
-    REFERENCES `OML`.`RRs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Concrete Information Table ReifiedRelationshipTargetInversePropertyPredicates';
-
--- -----------------------------------------------------
--- Table `OML`.`RRTgtPropP`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`RRTgtPropP` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `bodySegmentUUID` CHAR(36) NOT NULL COMMENT 'RuleBodySegs (RuleBodySegment)',
-  `reifiedRelationshipUUID` CHAR(36) NOT NULL COMMENT 'RRs (ReifiedRelationship)',
-  
-  CONSTRAINT `fk_RRTgtPropP_bodySegmentUUID`
-    FOREIGN KEY (`bodySegmentUUID`)
-    REFERENCES `OML`.`RuleBodySegs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_RRTgtPropP_reifiedRelationshipUUID`
-    FOREIGN KEY (`reifiedRelationshipUUID`)
-    REFERENCES `OML`.`RRs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Concrete Information Table ReifiedRelationshipTargetPropertyPredicates';
-
--- -----------------------------------------------------
--- Table `OML`.`RScPVals`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`RScPVals` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `scalarDataPropertyUUID` CHAR(36) NOT NULL COMMENT 'DRelToScs (DataRelationshipToScalar)',
-  `scalarPropertyValue` TEXT COMMENT '(LiteralValue value)',
-  `scalarPropertyValueLiteralType` VARCHAR(20) COMMENT '(LiteralValue kind)',
-  `structuredDataPropertyContextUUID` CHAR(36) NOT NULL COMMENT 'RStPCtxts (RestrictionStructuredDataPropertyContext)',
-  `valueTypeUUID` CHAR(36) NULL COMMENT 'Drs (DataRange)',
-  
-  CONSTRAINT `fk_RScPVals_scalarDataPropertyUUID`
-    FOREIGN KEY (`scalarDataPropertyUUID`)
-    REFERENCES `OML`.`DRelToScs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_RScPVals_structuredDataPropertyContextUUID`
-    FOREIGN KEY (`structuredDataPropertyContextUUID`)
-    REFERENCES `OML`.`RStPCtxts`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_RScPVals_valueTypeUUID`
-    FOREIGN KEY (`valueTypeUUID`)
-    REFERENCES `OML`.`Drs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Concrete Information Table RestrictionScalarDataPropertyValues';
-
--- -----------------------------------------------------
--- Table `OML`.`RStPTs`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`RStPTs` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `structuredDataPropertyUUID` CHAR(36) NOT NULL COMMENT 'DRelToSts (DataRelationshipToStructure)',
-  `structuredDataPropertyContextUUID` CHAR(36) NOT NULL COMMENT 'RStPCtxts (RestrictionStructuredDataPropertyContext)',
-  
-  CONSTRAINT `fk_RStPTs_structuredDataPropertyUUID`
-    FOREIGN KEY (`structuredDataPropertyUUID`)
-    REFERENCES `OML`.`DRelToSts`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_RStPTs_structuredDataPropertyContextUUID`
-    FOREIGN KEY (`structuredDataPropertyContextUUID`)
-    REFERENCES `OML`.`RStPCtxts`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Concrete Information Table RestrictionStructuredDataPropertyTuples';
-
--- -----------------------------------------------------
--- Table `OML`.`RuleBodySegs`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`RuleBodySegs` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `previousSegmentUUID` CHAR(36) NULL COMMENT 'RuleBodySegs (RuleBodySegment)',
-  `ruleUUID` CHAR(36) NULL COMMENT 'ChainRules (ChainRule)',
-  
-  CONSTRAINT `fk_RuleBodySegs_previousSegmentUUID`
-    FOREIGN KEY (`previousSegmentUUID`)
-    REFERENCES `OML`.`RuleBodySegs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_RuleBodySegs_ruleUUID`
-    FOREIGN KEY (`ruleUUID`)
-    REFERENCES `OML`.`ChainRules`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Concrete Information Table RuleBodySegments';
-
--- -----------------------------------------------------
--- Table `OML`.`ScPVals`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`ScPVals` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `scalarDataPropertyUUID` CHAR(36) NOT NULL COMMENT 'DRelToScs (DataRelationshipToScalar)',
-  `scalarPropertyValue` TEXT COMMENT '(LiteralValue value)',
-  `scalarPropertyValueLiteralType` VARCHAR(20) COMMENT '(LiteralValue kind)',
-  `structuredDataPropertyContextUUID` CHAR(36) NOT NULL COMMENT 'S1IStPCtxts (SingletonInstanceStructuredDataPropertyContext)',
-  `valueTypeUUID` CHAR(36) NULL COMMENT 'Drs (DataRange)',
-  
-  CONSTRAINT `fk_ScPVals_scalarDataPropertyUUID`
-    FOREIGN KEY (`scalarDataPropertyUUID`)
-    REFERENCES `OML`.`DRelToScs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_ScPVals_structuredDataPropertyContextUUID`
-    FOREIGN KEY (`structuredDataPropertyContextUUID`)
-    REFERENCES `OML`.`S1IStPCtxts`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_ScPVals_valueTypeUUID`
-    FOREIGN KEY (`valueTypeUUID`)
-    REFERENCES `OML`.`Drs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Concrete Information Table ScalarDataPropertyValues';
-
--- -----------------------------------------------------
--- Table `OML`.`S1IScPVals`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`S1IScPVals` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `descriptionBoxUUID` CHAR(36) NOT NULL COMMENT 'DBoxes (DescriptionBox)',
-  `singletonInstanceUUID` CHAR(36) NOT NULL COMMENT 'CualESI (ConceptualEntitySingletonInstance)',
-  `scalarDataPropertyUUID` CHAR(36) NOT NULL COMMENT 'EScPs (EntityScalarDataProperty)',
-  `scalarPropertyValue` TEXT COMMENT '(LiteralValue value)',
-  `scalarPropertyValueLiteralType` VARCHAR(20) COMMENT '(LiteralValue kind)',
-  `valueTypeUUID` CHAR(36) NULL COMMENT 'Drs (DataRange)',
-  
-  CONSTRAINT `fk_S1IScPVals_descriptionBoxUUID`
-    FOREIGN KEY (`descriptionBoxUUID`)
-    REFERENCES `OML`.`DBoxes`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_S1IScPVals_singletonInstanceUUID`
-    FOREIGN KEY (`singletonInstanceUUID`)
-    REFERENCES `OML`.`CualESI`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_S1IScPVals_scalarDataPropertyUUID`
-    FOREIGN KEY (`scalarDataPropertyUUID`)
-    REFERENCES `OML`.`EScPs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_S1IScPVals_valueTypeUUID`
-    FOREIGN KEY (`valueTypeUUID`)
-    REFERENCES `OML`.`Drs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Concrete Information Table SingletonInstanceScalarDataPropertyValues';
-
--- -----------------------------------------------------
--- Table `OML`.`S1IStPVals`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`S1IStPVals` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `descriptionBoxUUID` CHAR(36) NOT NULL COMMENT 'DBoxes (DescriptionBox)',
-  `singletonInstanceUUID` CHAR(36) NOT NULL COMMENT 'CualESI (ConceptualEntitySingletonInstance)',
-  `structuredDataPropertyUUID` CHAR(36) NOT NULL COMMENT 'DRelToSts (DataRelationshipToStructure)',
-  
-  CONSTRAINT `fk_S1IStPVals_descriptionBoxUUID`
-    FOREIGN KEY (`descriptionBoxUUID`)
-    REFERENCES `OML`.`DBoxes`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_S1IStPVals_singletonInstanceUUID`
-    FOREIGN KEY (`singletonInstanceUUID`)
-    REFERENCES `OML`.`CualESI`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_S1IStPVals_structuredDataPropertyUUID`
-    FOREIGN KEY (`structuredDataPropertyUUID`)
-    REFERENCES `OML`.`DRelToSts`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Concrete Information Table SingletonInstanceStructuredDataPropertyValues';
-
--- -----------------------------------------------------
--- Table `OML`.`StPTs`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`StPTs` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `structuredDataPropertyUUID` CHAR(36) NOT NULL COMMENT 'DRelToSts (DataRelationshipToStructure)',
-  `structuredDataPropertyContextUUID` CHAR(36) NOT NULL COMMENT 'S1IStPCtxts (SingletonInstanceStructuredDataPropertyContext)',
-  
-  CONSTRAINT `fk_StPTs_structuredDataPropertyUUID`
-    FOREIGN KEY (`structuredDataPropertyUUID`)
-    REFERENCES `OML`.`DRelToSts`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_StPTs_structuredDataPropertyContextUUID`
-    FOREIGN KEY (`structuredDataPropertyContextUUID`)
-    REFERENCES `OML`.`S1IStPCtxts`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Concrete Information Table StructuredDataPropertyTuples';
-
--- -----------------------------------------------------
--- Table `OML`.`SubDataPropOfAx`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`SubDataPropOfAx` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `tboxUUID` CHAR(36) NOT NULL COMMENT 'TBox (TerminologyBox)',
-  `subPropertyUUID` CHAR(36) NOT NULL COMMENT 'EScPs (EntityScalarDataProperty)',
-  `superPropertyUUID` CHAR(36) NOT NULL COMMENT 'EScPs (EntityScalarDataProperty)',
-  
-  CONSTRAINT `fk_SubDataPropOfAx_tboxUUID`
-    FOREIGN KEY (`tboxUUID`)
-    REFERENCES `OML`.`TBox`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_SubDataPropOfAx_subPropertyUUID`
-    FOREIGN KEY (`subPropertyUUID`)
-    REFERENCES `OML`.`EScPs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_SubDataPropOfAx_superPropertyUUID`
-    FOREIGN KEY (`superPropertyUUID`)
-    REFERENCES `OML`.`EScPs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Concrete Information Table SubDataPropertyOfAxioms';
-
--- -----------------------------------------------------
--- Table `OML`.`SubObjectPropOfAx`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`SubObjectPropOfAx` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `tboxUUID` CHAR(36) NOT NULL COMMENT 'TBox (TerminologyBox)',
-  `subPropertyUUID` CHAR(36) NOT NULL COMMENT 'URs (UnreifiedRelationship)',
-  `superPropertyUUID` CHAR(36) NOT NULL COMMENT 'URs (UnreifiedRelationship)',
-  
-  CONSTRAINT `fk_SubObjectPropOfAx_tboxUUID`
-    FOREIGN KEY (`tboxUUID`)
-    REFERENCES `OML`.`TBox`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_SubObjectPropOfAx_subPropertyUUID`
-    FOREIGN KEY (`subPropertyUUID`)
-    REFERENCES `OML`.`URs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_SubObjectPropOfAx_superPropertyUUID`
-    FOREIGN KEY (`superPropertyUUID`)
-    REFERENCES `OML`.`URs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Concrete Information Table SubObjectPropertyOfAxioms';
-
--- -----------------------------------------------------
 -- Table `OML`.`URITs`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `OML`.`URITs` (
@@ -2479,1324 +2337,208 @@ CREATE TABLE IF NOT EXISTS `OML`.`URITs` (
 COMMENT = 'Concrete Information Table UnreifiedRelationshipInstanceTuples';
 
 -- -----------------------------------------------------
--- Table `OML`.`URInvPropP`
+-- Table `OML`.`S1IStPVals`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`URInvPropP` (
+CREATE TABLE IF NOT EXISTS `OML`.`S1IStPVals` (
   `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `unreifiedRelationshipUUID` CHAR(36) NOT NULL COMMENT 'URs (UnreifiedRelationship)',
-  `bodySegmentUUID` CHAR(36) NOT NULL COMMENT 'RuleBodySegs (RuleBodySegment)',
+  `descriptionBoxUUID` CHAR(36) NOT NULL COMMENT 'DBoxes (DescriptionBox)',
+  `singletonInstanceUUID` CHAR(36) NOT NULL COMMENT 'CualESI (ConceptualEntitySingletonInstance)',
+  `structuredDataPropertyUUID` CHAR(36) NOT NULL COMMENT 'DRelToSts (DataRelationshipToStructure)',
   
-  CONSTRAINT `fk_URInvPropP_unreifiedRelationshipUUID`
-    FOREIGN KEY (`unreifiedRelationshipUUID`)
-    REFERENCES `OML`.`URs`(`uuid`)
+  CONSTRAINT `fk_S1IStPVals_descriptionBoxUUID`
+    FOREIGN KEY (`descriptionBoxUUID`)
+    REFERENCES `OML`.`DBoxes`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_URInvPropP_bodySegmentUUID`
-    FOREIGN KEY (`bodySegmentUUID`)
-    REFERENCES `OML`.`RuleBodySegs`(`uuid`)
+  CONSTRAINT `fk_S1IStPVals_singletonInstanceUUID`
+    FOREIGN KEY (`singletonInstanceUUID`)
+    REFERENCES `OML`.`CualESI`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_S1IStPVals_structuredDataPropertyUUID`
+    FOREIGN KEY (`structuredDataPropertyUUID`)
+    REFERENCES `OML`.`DRelToSts`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
   UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
 )
-COMMENT = 'Concrete Information Table UnreifiedRelationshipInversePropertyPredicates';
+COMMENT = 'Concrete Information Table SingletonInstanceStructuredDataPropertyValues';
 
 -- -----------------------------------------------------
--- Table `OML`.`URPropP`
+-- Table `OML`.`S1IScPVals`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`URPropP` (
+CREATE TABLE IF NOT EXISTS `OML`.`S1IScPVals` (
   `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `unreifiedRelationshipUUID` CHAR(36) NOT NULL COMMENT 'URs (UnreifiedRelationship)',
-  `bodySegmentUUID` CHAR(36) NOT NULL COMMENT 'RuleBodySegs (RuleBodySegment)',
+  `descriptionBoxUUID` CHAR(36) NOT NULL COMMENT 'DBoxes (DescriptionBox)',
+  `singletonInstanceUUID` CHAR(36) NOT NULL COMMENT 'CualESI (ConceptualEntitySingletonInstance)',
+  `scalarDataPropertyUUID` CHAR(36) NOT NULL COMMENT 'EScPs (EntityScalarDataProperty)',
+  `scalarPropertyValue` TEXT COMMENT '(LiteralValue value)',
+  `scalarPropertyValueLiteralType` VARCHAR(30) COMMENT '(LiteralValue kind)',
+  `valueTypeUUID` CHAR(36) NULL COMMENT 'Drs (DataRange)',
   
-  CONSTRAINT `fk_URPropP_unreifiedRelationshipUUID`
-    FOREIGN KEY (`unreifiedRelationshipUUID`)
-    REFERENCES `OML`.`URs`(`uuid`)
+  CONSTRAINT `fk_S1IScPVals_descriptionBoxUUID`
+    FOREIGN KEY (`descriptionBoxUUID`)
+    REFERENCES `OML`.`DBoxes`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_URPropP_bodySegmentUUID`
-    FOREIGN KEY (`bodySegmentUUID`)
-    REFERENCES `OML`.`RuleBodySegs`(`uuid`)
+  CONSTRAINT `fk_S1IScPVals_singletonInstanceUUID`
+    FOREIGN KEY (`singletonInstanceUUID`)
+    REFERENCES `OML`.`CualESI`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_S1IScPVals_scalarDataPropertyUUID`
+    FOREIGN KEY (`scalarDataPropertyUUID`)
+    REFERENCES `OML`.`EScPs`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_S1IScPVals_valueTypeUUID`
+    FOREIGN KEY (`valueTypeUUID`)
+    REFERENCES `OML`.`Drs`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
   UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
 )
-COMMENT = 'Concrete Information Table UnreifiedRelationshipPropertyPredicates';
+COMMENT = 'Concrete Information Table SingletonInstanceScalarDataPropertyValues';
+
+-- -----------------------------------------------------
+-- Table `OML`.`StPTs`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`StPTs` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `structuredDataPropertyUUID` CHAR(36) NOT NULL COMMENT 'DRelToSts (DataRelationshipToStructure)',
+  `structuredDataPropertyContextUUID` CHAR(36) NOT NULL COMMENT 'S1IStPCtxts (SingletonInstanceStructuredDataPropertyContext)',
+  
+  CONSTRAINT `fk_StPTs_structuredDataPropertyUUID`
+    FOREIGN KEY (`structuredDataPropertyUUID`)
+    REFERENCES `OML`.`DRelToSts`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_StPTs_structuredDataPropertyContextUUID`
+    FOREIGN KEY (`structuredDataPropertyContextUUID`)
+    REFERENCES `OML`.`S1IStPCtxts`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Concrete Information Table StructuredDataPropertyTuples';
+
+-- -----------------------------------------------------
+-- Table `OML`.`ScPVals`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`ScPVals` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `scalarDataPropertyUUID` CHAR(36) NOT NULL COMMENT 'DRelToScs (DataRelationshipToScalar)',
+  `scalarPropertyValue` TEXT COMMENT '(LiteralValue value)',
+  `scalarPropertyValueLiteralType` VARCHAR(30) COMMENT '(LiteralValue kind)',
+  `structuredDataPropertyContextUUID` CHAR(36) NOT NULL COMMENT 'S1IStPCtxts (SingletonInstanceStructuredDataPropertyContext)',
+  `valueTypeUUID` CHAR(36) NULL COMMENT 'Drs (DataRange)',
+  
+  CONSTRAINT `fk_ScPVals_scalarDataPropertyUUID`
+    FOREIGN KEY (`scalarDataPropertyUUID`)
+    REFERENCES `OML`.`DRelToScs`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_ScPVals_structuredDataPropertyContextUUID`
+    FOREIGN KEY (`structuredDataPropertyContextUUID`)
+    REFERENCES `OML`.`S1IStPCtxts`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_ScPVals_valueTypeUUID`
+    FOREIGN KEY (`valueTypeUUID`)
+    REFERENCES `OML`.`Drs`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Concrete Information Table ScalarDataPropertyValues';
+
+-- -----------------------------------------------------
+-- Table `OML`.`AnnotPropVals`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`AnnotPropVals` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `subjectUUID` CHAR(36) NOT NULL COMMENT 'LogEs (LogicalElement)',
+  `propertyUUID` CHAR(36) NOT NULL COMMENT 'AnnotProps (AnnotationProperty)',
+  `value` TEXT COMMENT '(LiteralString value)',
+  `valueLiteralType` VARCHAR(30) COMMENT '(LiteralString kind)',
+  
+  CONSTRAINT `fk_AnnotPropVals_subjectUUID`
+    FOREIGN KEY (`subjectUUID`)
+    REFERENCES `OML`.`LogEs`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_AnnotPropVals_propertyUUID`
+    FOREIGN KEY (`propertyUUID`)
+    REFERENCES `OML`.`AnnotProps`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Concrete Information Table AnnotationPropertyValues';
 
 
 USE `OML`;
 DELIMITER $$
 
 -- -----------------------------------------------------
--- Abstract Classification Table `OML`.`BinSegFwdPropP` (BinarySegmentForwardPropertyPredicates)
--- -----------------------------------------------------
-
--- `OML`.`BinSegPropP`(x) iff `OML`.`BinSegFwdPropP`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`BinSegFwdPropP_AFTER_INSERT` AFTER INSERT ON `BinSegFwdPropP` FOR EACH ROW
-BEGIN
-insert into `OML`.`BinSegPropP`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`BinSegFwdPropP_AFTER_DELETE` AFTER DELETE ON `BinSegFwdPropP` FOR EACH ROW
-BEGIN
-delete from `OML`.`BinSegPropP`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`BinSegPropP` (BinarySegmentPropertyPredicates)
--- -----------------------------------------------------
-
--- `OML`.`SegP`(x) iff `OML`.`BinSegPropP`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`BinSegPropP_AFTER_INSERT` AFTER INSERT ON `BinSegPropP` FOR EACH ROW
-BEGIN
-insert into `OML`.`SegP`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`BinSegPropP_AFTER_DELETE` AFTER DELETE ON `BinSegPropP` FOR EACH ROW
-BEGIN
-delete from `OML`.`SegP`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`BinSegRevPropP` (BinarySegmentReversePropertyPredicates)
--- -----------------------------------------------------
-
--- `OML`.`BinSegPropP`(x) iff `OML`.`BinSegRevPropP`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`BinSegRevPropP_AFTER_INSERT` AFTER INSERT ON `BinSegRevPropP` FOR EACH ROW
-BEGIN
-insert into `OML`.`BinSegPropP`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`BinSegRevPropP_AFTER_DELETE` AFTER DELETE ON `BinSegRevPropP` FOR EACH ROW
-BEGIN
-delete from `OML`.`BinSegPropP`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`CTreeDsju` (ConceptTreeDisjunctions)
--- -----------------------------------------------------
-
--- `OML`.`EltCRefTs`(x) iff `OML`.`CTreeDsju`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`CTreeDsju_AFTER_INSERT` AFTER INSERT ON `CTreeDsju` FOR EACH ROW
-BEGIN
-insert into `OML`.`EltCRefTs`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`CTreeDsju_AFTER_DELETE` AFTER DELETE ON `CTreeDsju` FOR EACH ROW
-BEGIN
-delete from `OML`.`EltCRefTs`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`CualEs` (ConceptualEntities)
--- -----------------------------------------------------
-
--- `OML`.`Es`(x) iff `OML`.`CualEs`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`CualEs_AFTER_INSERT` AFTER INSERT ON `CualEs` FOR EACH ROW
-BEGIN
-insert into `OML`.`Es`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`CualEs_AFTER_DELETE` AFTER DELETE ON `CualEs` FOR EACH ROW
-BEGIN
-delete from `OML`.`Es`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`CualESI` (ConceptualEntitySingletonInstances)
--- -----------------------------------------------------
-
--- `OML`.`Ress`(x) iff `OML`.`CualESI`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`CualESI_AFTER_INSERT` AFTER INSERT ON `CualESI` FOR EACH ROW
-BEGIN
-insert into `OML`.`Ress`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`CualESI_AFTER_DELETE` AFTER DELETE ON `CualESI` FOR EACH ROW
-BEGIN
-delete from `OML`.`Ress`;
-END$$
-
--- `OML`.`TlgyIAsts`(x) iff `OML`.`CualESI`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`CualESI_AFTER_INSERT` AFTER INSERT ON `CualESI` FOR EACH ROW
-BEGIN
-insert into `OML`.`TlgyIAsts`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`CualESI_AFTER_DELETE` AFTER DELETE ON `CualESI` FOR EACH ROW
-BEGIN
-delete from `OML`.`TlgyIAsts`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`CRBK` (CrossReferencableKinds)
--- -----------------------------------------------------
-
--- `OML`.`CRTK`(x) iff `OML`.`CRBK`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`CRBK_AFTER_INSERT` AFTER INSERT ON `CRBK` FOR EACH ROW
-BEGIN
-insert into `OML`.`CRTK`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`CRBK_AFTER_DELETE` AFTER DELETE ON `CRBK` FOR EACH ROW
-BEGIN
-delete from `OML`.`CRTK`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`Drs` (DataRanges)
--- -----------------------------------------------------
-
--- `OML`.`Dt`(x) iff `OML`.`Drs`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`Drs_AFTER_INSERT` AFTER INSERT ON `Drs` FOR EACH ROW
-BEGIN
-insert into `OML`.`Dt`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`Drs_AFTER_DELETE` AFTER DELETE ON `Drs` FOR EACH ROW
-BEGIN
-delete from `OML`.`Dt`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`DRels` (DataRelationships)
--- -----------------------------------------------------
-
--- `OML`.`DirBinRelKinds`(x) iff `OML`.`DRels`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`DRels_AFTER_INSERT` AFTER INSERT ON `DRels` FOR EACH ROW
-BEGIN
-insert into `OML`.`DirBinRelKinds`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`DRels_AFTER_DELETE` AFTER DELETE ON `DRels` FOR EACH ROW
-BEGIN
-delete from `OML`.`DirBinRelKinds`;
-END$$
-
--- `OML`.`Terms`(x) iff `OML`.`DRels`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`DRels_AFTER_INSERT` AFTER INSERT ON `DRels` FOR EACH ROW
-BEGIN
-insert into `OML`.`Terms`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`DRels_AFTER_DELETE` AFTER DELETE ON `DRels` FOR EACH ROW
-BEGIN
-delete from `OML`.`Terms`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`DRelDomains` (DataRelationshipDomains)
--- -----------------------------------------------------
-
--- `OML`.`DRels`(x) iff `OML`.`DRelDomains`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`DRelDomains_AFTER_INSERT` AFTER INSERT ON `DRelDomains` FOR EACH ROW
-BEGIN
-insert into `OML`.`DRels`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`DRelDomains_AFTER_DELETE` AFTER DELETE ON `DRelDomains` FOR EACH ROW
-BEGIN
-delete from `OML`.`DRels`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`DRelFromEs` (DataRelationshipFromEntities)
--- -----------------------------------------------------
-
--- `OML`.`DRelDomains`(x) iff `OML`.`DRelFromEs`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`DRelFromEs_AFTER_INSERT` AFTER INSERT ON `DRelFromEs` FOR EACH ROW
-BEGIN
-insert into `OML`.`DRelDomains`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`DRelFromEs_AFTER_DELETE` AFTER DELETE ON `DRelFromEs` FOR EACH ROW
-BEGIN
-delete from `OML`.`DRelDomains`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`DRelFromSts` (DataRelationshipFromStructures)
--- -----------------------------------------------------
-
--- `OML`.`DRelDomains`(x) iff `OML`.`DRelFromSts`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`DRelFromSts_AFTER_INSERT` AFTER INSERT ON `DRelFromSts` FOR EACH ROW
-BEGIN
-insert into `OML`.`DRelDomains`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`DRelFromSts_AFTER_DELETE` AFTER DELETE ON `DRelFromSts` FOR EACH ROW
-BEGIN
-delete from `OML`.`DRelDomains`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`DRelRanges` (DataRelationshipRanges)
--- -----------------------------------------------------
-
--- `OML`.`DRels`(x) iff `OML`.`DRelRanges`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`DRelRanges_AFTER_INSERT` AFTER INSERT ON `DRelRanges` FOR EACH ROW
-BEGIN
-insert into `OML`.`DRels`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`DRelRanges_AFTER_DELETE` AFTER DELETE ON `DRelRanges` FOR EACH ROW
-BEGIN
-delete from `OML`.`DRels`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`DRelToScs` (DataRelationshipToScalars)
--- -----------------------------------------------------
-
--- `OML`.`DRelRanges`(x) iff `OML`.`DRelToScs`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`DRelToScs_AFTER_INSERT` AFTER INSERT ON `DRelToScs` FOR EACH ROW
-BEGIN
-insert into `OML`.`DRelRanges`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`DRelToScs_AFTER_DELETE` AFTER DELETE ON `DRelToScs` FOR EACH ROW
-BEGIN
-delete from `OML`.`DRelRanges`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`DRelToSts` (DataRelationshipToStructures)
--- -----------------------------------------------------
-
--- `OML`.`DRelRanges`(x) iff `OML`.`DRelToSts`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`DRelToSts_AFTER_INSERT` AFTER INSERT ON `DRelToSts` FOR EACH ROW
-BEGIN
-insert into `OML`.`DRelRanges`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`DRelToSts_AFTER_DELETE` AFTER DELETE ON `DRelToSts` FOR EACH ROW
-BEGIN
-delete from `OML`.`DRelRanges`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`Dt` (Datatypes)
--- -----------------------------------------------------
-
--- `OML`.`Terms`(x) iff `OML`.`Dt`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`Dt_AFTER_INSERT` AFTER INSERT ON `Dt` FOR EACH ROW
-BEGIN
-insert into `OML`.`Terms`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`Dt_AFTER_DELETE` AFTER DELETE ON `Dt` FOR EACH ROW
-BEGIN
-delete from `OML`.`Terms`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`DBoxRels` (DescriptionBoxRelationships)
--- -----------------------------------------------------
-
--- `OML`.`ModEdges`(x) iff `OML`.`DBoxRels`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`DBoxRels_AFTER_INSERT` AFTER INSERT ON `DBoxRels` FOR EACH ROW
-BEGIN
-insert into `OML`.`ModEdges`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`DBoxRels_AFTER_DELETE` AFTER DELETE ON `DBoxRels` FOR EACH ROW
-BEGIN
-delete from `OML`.`ModEdges`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`DirBinRelKinds` (DirectedBinaryRelationshipKinds)
--- -----------------------------------------------------
-
--- `OML`.`Terms`(x) iff `OML`.`DirBinRelKinds`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`DirBinRelKinds_AFTER_INSERT` AFTER INSERT ON `DirBinRelKinds` FOR EACH ROW
-BEGIN
-insert into `OML`.`Terms`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`DirBinRelKinds_AFTER_DELETE` AFTER DELETE ON `DirBinRelKinds` FOR EACH ROW
-BEGIN
-delete from `OML`.`Terms`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`DsjUOfCsAx` (DisjointUnionOfConceptsAxioms)
--- -----------------------------------------------------
-
--- `OML`.`EltCRefTs`(x) iff `OML`.`DsjUOfCsAx`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`DsjUOfCsAx_AFTER_INSERT` AFTER INSERT ON `DsjUOfCsAx` FOR EACH ROW
-BEGIN
-insert into `OML`.`EltCRefTs`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`DsjUOfCsAx_AFTER_DELETE` AFTER DELETE ON `DsjUOfCsAx` FOR EACH ROW
-BEGIN
-delete from `OML`.`EltCRefTs`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`EltCRefTs` (ElementCrossReferenceTuples)
--- -----------------------------------------------------
-
--- `OML`.`CRBK`(x) iff `OML`.`EltCRefTs`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EltCRefTs_AFTER_INSERT` AFTER INSERT ON `EltCRefTs` FOR EACH ROW
-BEGIN
-insert into `OML`.`CRBK`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EltCRefTs_AFTER_DELETE` AFTER DELETE ON `EltCRefTs` FOR EACH ROW
-BEGIN
-delete from `OML`.`CRBK`;
-END$$
-
--- `OML`.`EIdK`(x) iff `OML`.`EltCRefTs`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EltCRefTs_AFTER_INSERT` AFTER INSERT ON `EltCRefTs` FOR EACH ROW
-BEGIN
-insert into `OML`.`EIdK`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EltCRefTs_AFTER_DELETE` AFTER DELETE ON `EltCRefTs` FOR EACH ROW
-BEGIN
-delete from `OML`.`EIdK`;
-END$$
-
--- `OML`.`LogEs`(x) iff `OML`.`EltCRefTs`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EltCRefTs_AFTER_INSERT` AFTER INSERT ON `EltCRefTs` FOR EACH ROW
-BEGIN
-insert into `OML`.`LogEs`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EltCRefTs_AFTER_DELETE` AFTER DELETE ON `EltCRefTs` FOR EACH ROW
-BEGIN
-delete from `OML`.`LogEs`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`Es` (Entities)
--- -----------------------------------------------------
-
--- `OML`.`Terms`(x) iff `OML`.`Es`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`Es_AFTER_INSERT` AFTER INSERT ON `Es` FOR EACH ROW
-BEGIN
-insert into `OML`.`Terms`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`Es_AFTER_DELETE` AFTER DELETE ON `Es` FOR EACH ROW
-BEGIN
-delete from `OML`.`Terms`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`ERels` (EntityRelationships)
--- -----------------------------------------------------
-
--- `OML`.`DirBinRelKinds`(x) iff `OML`.`ERels`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`ERels_AFTER_INSERT` AFTER INSERT ON `ERels` FOR EACH ROW
-BEGIN
-insert into `OML`.`DirBinRelKinds`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`ERels_AFTER_DELETE` AFTER DELETE ON `ERels` FOR EACH ROW
-BEGIN
-delete from `OML`.`DirBinRelKinds`;
-END$$
-
--- `OML`.`Terms`(x) iff `OML`.`ERels`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`ERels_AFTER_INSERT` AFTER INSERT ON `ERels` FOR EACH ROW
-BEGIN
-insert into `OML`.`Terms`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`ERels_AFTER_DELETE` AFTER DELETE ON `ERels` FOR EACH ROW
-BEGIN
-delete from `OML`.`Terms`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`ERAx` (EntityRestrictionAxioms)
--- -----------------------------------------------------
-
--- `OML`.`EltCRefTs`(x) iff `OML`.`ERAx`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`ERAx_AFTER_INSERT` AFTER INSERT ON `ERAx` FOR EACH ROW
-BEGIN
-insert into `OML`.`EltCRefTs`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`ERAx_AFTER_DELETE` AFTER DELETE ON `ERAx` FOR EACH ROW
-BEGIN
-delete from `OML`.`EltCRefTs`;
-END$$
-
--- `OML`.`TermAx`(x) iff `OML`.`ERAx`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`ERAx_AFTER_INSERT` AFTER INSERT ON `ERAx` FOR EACH ROW
-BEGIN
-insert into `OML`.`TermAx`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`ERAx_AFTER_DELETE` AFTER DELETE ON `ERAx` FOR EACH ROW
-BEGIN
-delete from `OML`.`TermAx`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`EScPRAx` (EntityScalarDataPropertyRestrictionAxioms)
--- -----------------------------------------------------
-
--- `OML`.`EIdK`(x) iff `OML`.`EScPRAx`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EScPRAx_AFTER_INSERT` AFTER INSERT ON `EScPRAx` FOR EACH ROW
-BEGIN
-insert into `OML`.`EIdK`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EScPRAx_AFTER_DELETE` AFTER DELETE ON `EScPRAx` FOR EACH ROW
-BEGIN
-delete from `OML`.`EIdK`;
-END$$
-
--- `OML`.`TermAx`(x) iff `OML`.`EScPRAx`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EScPRAx_AFTER_INSERT` AFTER INSERT ON `EScPRAx` FOR EACH ROW
-BEGIN
-insert into `OML`.`TermAx`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EScPRAx_AFTER_DELETE` AFTER DELETE ON `EScPRAx` FOR EACH ROW
-BEGIN
-delete from `OML`.`TermAx`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`EStPRAx` (EntityStructuredDataPropertyRestrictionAxioms)
--- -----------------------------------------------------
-
--- `OML`.`EltCRefTs`(x) iff `OML`.`EStPRAx`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EStPRAx_AFTER_INSERT` AFTER INSERT ON `EStPRAx` FOR EACH ROW
-BEGIN
-insert into `OML`.`EltCRefTs`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EStPRAx_AFTER_DELETE` AFTER DELETE ON `EStPRAx` FOR EACH ROW
-BEGIN
-delete from `OML`.`EltCRefTs`;
-END$$
-
--- `OML`.`TermAx`(x) iff `OML`.`EStPRAx`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EStPRAx_AFTER_INSERT` AFTER INSERT ON `EStPRAx` FOR EACH ROW
-BEGIN
-insert into `OML`.`TermAx`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EStPRAx_AFTER_DELETE` AFTER DELETE ON `EStPRAx` FOR EACH ROW
-BEGIN
-delete from `OML`.`TermAx`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`EIdK` (ExtrinsicIdentityKinds)
--- -----------------------------------------------------
-
--- `OML`.`Ik`(x) iff `OML`.`EIdK`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EIdK_AFTER_INSERT` AFTER INSERT ON `EIdK` FOR EACH ROW
-BEGIN
-insert into `OML`.`Ik`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EIdK_AFTER_DELETE` AFTER DELETE ON `EIdK` FOR EACH ROW
-BEGIN
-delete from `OML`.`Ik`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`Ik` (IdentityKinds)
--- -----------------------------------------------------
-
--- `OML`.`CRTK`(x) iff `OML`.`Ik`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`Ik_AFTER_INSERT` AFTER INSERT ON `Ik` FOR EACH ROW
-BEGIN
-insert into `OML`.`CRTK`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`Ik_AFTER_DELETE` AFTER DELETE ON `Ik` FOR EACH ROW
-BEGIN
-delete from `OML`.`CRTK`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`IIdK` (IntrinsicIdentityKinds)
--- -----------------------------------------------------
-
--- `OML`.`CRBK`(x) iff `OML`.`IIdK`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`IIdK_AFTER_INSERT` AFTER INSERT ON `IIdK` FOR EACH ROW
-BEGIN
-insert into `OML`.`CRBK`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`IIdK_AFTER_DELETE` AFTER DELETE ON `IIdK` FOR EACH ROW
-BEGIN
-delete from `OML`.`CRBK`;
-END$$
-
--- `OML`.`Ik`(x) iff `OML`.`IIdK`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`IIdK_AFTER_INSERT` AFTER INSERT ON `IIdK` FOR EACH ROW
-BEGIN
-insert into `OML`.`Ik`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`IIdK_AFTER_DELETE` AFTER DELETE ON `IIdK` FOR EACH ROW
-BEGIN
-delete from `OML`.`Ik`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`LogEs` (LogicalElements)
--- -----------------------------------------------------
-
--- `OML`.`Ik`(x) iff `OML`.`LogEs`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`LogEs_AFTER_INSERT` AFTER INSERT ON `LogEs` FOR EACH ROW
-BEGIN
-insert into `OML`.`Ik`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`LogEs_AFTER_DELETE` AFTER DELETE ON `LogEs` FOR EACH ROW
-BEGIN
-delete from `OML`.`Ik`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`Mods` (Modules)
--- -----------------------------------------------------
-
--- `OML`.`Ress`(x) iff `OML`.`Mods`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`Mods_AFTER_INSERT` AFTER INSERT ON `Mods` FOR EACH ROW
-BEGIN
-insert into `OML`.`Ress`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`Mods_AFTER_DELETE` AFTER DELETE ON `Mods` FOR EACH ROW
-BEGIN
-delete from `OML`.`Ress`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`ModEdges` (ModuleEdges)
--- -----------------------------------------------------
-
--- `OML`.`EltCRefTs`(x) iff `OML`.`ModEdges`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`ModEdges_AFTER_INSERT` AFTER INSERT ON `ModEdges` FOR EACH ROW
-BEGIN
-insert into `OML`.`EltCRefTs`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`ModEdges_AFTER_DELETE` AFTER DELETE ON `ModEdges` FOR EACH ROW
-BEGIN
-delete from `OML`.`EltCRefTs`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`ModElts` (ModuleElements)
--- -----------------------------------------------------
-
--- `OML`.`LogEs`(x) iff `OML`.`ModElts`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`ModElts_AFTER_INSERT` AFTER INSERT ON `ModElts` FOR EACH ROW
-BEGIN
-insert into `OML`.`LogEs`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`ModElts_AFTER_DELETE` AFTER DELETE ON `ModElts` FOR EACH ROW
-BEGIN
-delete from `OML`.`LogEs`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`NonCRBK` (NonCrossReferencableKinds)
--- -----------------------------------------------------
-
--- `OML`.`CRTK`(x) iff `OML`.`NonCRBK`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`NonCRBK_AFTER_INSERT` AFTER INSERT ON `NonCRBK` FOR EACH ROW
-BEGIN
-insert into `OML`.`CRTK`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`NonCRBK_AFTER_DELETE` AFTER DELETE ON `NonCRBK` FOR EACH ROW
-BEGIN
-delete from `OML`.`CRTK`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`NonLogEs` (NonLogicalElements)
--- -----------------------------------------------------
-
--- `OML`.`Ik`(x) iff `OML`.`NonLogEs`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`NonLogEs_AFTER_INSERT` AFTER INSERT ON `NonLogEs` FOR EACH ROW
-BEGIN
-insert into `OML`.`Ik`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`NonLogEs_AFTER_DELETE` AFTER DELETE ON `NonLogEs` FOR EACH ROW
-BEGIN
-delete from `OML`.`Ik`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`Ress` (Resources)
--- -----------------------------------------------------
-
--- `OML`.`IIdK`(x) iff `OML`.`Ress`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`Ress_AFTER_INSERT` AFTER INSERT ON `Ress` FOR EACH ROW
-BEGIN
-insert into `OML`.`IIdK`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`Ress_AFTER_DELETE` AFTER DELETE ON `Ress` FOR EACH ROW
-BEGIN
-delete from `OML`.`IIdK`;
-END$$
-
--- `OML`.`LogEs`(x) iff `OML`.`Ress`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`Ress_AFTER_INSERT` AFTER INSERT ON `Ress` FOR EACH ROW
-BEGIN
-insert into `OML`.`LogEs`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`Ress_AFTER_DELETE` AFTER DELETE ON `Ress` FOR EACH ROW
-BEGIN
-delete from `OML`.`LogEs`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`RestDrs` (RestrictedDataRanges)
--- -----------------------------------------------------
-
--- `OML`.`Drs`(x) iff `OML`.`RestDrs`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RestDrs_AFTER_INSERT` AFTER INSERT ON `RestDrs` FOR EACH ROW
-BEGIN
-insert into `OML`.`Drs`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RestDrs_AFTER_DELETE` AFTER DELETE ON `RestDrs` FOR EACH ROW
-BEGIN
-delete from `OML`.`Drs`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`RStPCtxts` (RestrictionStructuredDataPropertyContexts)
--- -----------------------------------------------------
-
--- `OML`.`EltCRefTs`(x) iff `OML`.`RStPCtxts`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RStPCtxts_AFTER_INSERT` AFTER INSERT ON `RStPCtxts` FOR EACH ROW
-BEGIN
-insert into `OML`.`EltCRefTs`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RStPCtxts_AFTER_DELETE` AFTER DELETE ON `RStPCtxts` FOR EACH ROW
-BEGIN
-delete from `OML`.`EltCRefTs`;
-END$$
-
--- `OML`.`ModElts`(x) iff `OML`.`RStPCtxts`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RStPCtxts_AFTER_INSERT` AFTER INSERT ON `RStPCtxts` FOR EACH ROW
-BEGIN
-insert into `OML`.`ModElts`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RStPCtxts_AFTER_DELETE` AFTER DELETE ON `RStPCtxts` FOR EACH ROW
-BEGIN
-delete from `OML`.`ModElts`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`Rules` (Rules)
--- -----------------------------------------------------
-
--- `OML`.`Terms`(x) iff `OML`.`Rules`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`Rules_AFTER_INSERT` AFTER INSERT ON `Rules` FOR EACH ROW
-BEGIN
-insert into `OML`.`Terms`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`Rules_AFTER_DELETE` AFTER DELETE ON `Rules` FOR EACH ROW
-BEGIN
-delete from `OML`.`Terms`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`SegP` (SegmentPredicates)
--- -----------------------------------------------------
-
--- `OML`.`EltCRefTs`(x) iff `OML`.`SegP`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`SegP_AFTER_INSERT` AFTER INSERT ON `SegP` FOR EACH ROW
-BEGIN
-insert into `OML`.`EltCRefTs`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`SegP_AFTER_DELETE` AFTER DELETE ON `SegP` FOR EACH ROW
-BEGIN
-delete from `OML`.`EltCRefTs`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`S1IStPCtxts` (SingletonInstanceStructuredDataPropertyContexts)
--- -----------------------------------------------------
-
--- `OML`.`EltCRefTs`(x) iff `OML`.`S1IStPCtxts`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`S1IStPCtxts_AFTER_INSERT` AFTER INSERT ON `S1IStPCtxts` FOR EACH ROW
-BEGIN
-insert into `OML`.`EltCRefTs`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`S1IStPCtxts_AFTER_DELETE` AFTER DELETE ON `S1IStPCtxts` FOR EACH ROW
-BEGIN
-delete from `OML`.`EltCRefTs`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`SpeAx` (SpecializationAxioms)
--- -----------------------------------------------------
-
--- `OML`.`EltCRefTs`(x) iff `OML`.`SpeAx`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`SpeAx_AFTER_INSERT` AFTER INSERT ON `SpeAx` FOR EACH ROW
-BEGIN
-insert into `OML`.`EltCRefTs`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`SpeAx_AFTER_DELETE` AFTER DELETE ON `SpeAx` FOR EACH ROW
-BEGIN
-delete from `OML`.`EltCRefTs`;
-END$$
-
--- `OML`.`TermAx`(x) iff `OML`.`SpeAx`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`SpeAx_AFTER_INSERT` AFTER INSERT ON `SpeAx` FOR EACH ROW
-BEGIN
-insert into `OML`.`TermAx`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`SpeAx_AFTER_DELETE` AFTER DELETE ON `SpeAx` FOR EACH ROW
-BEGIN
-delete from `OML`.`TermAx`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`Terms` (Terms)
--- -----------------------------------------------------
-
--- `OML`.`Ress`(x) iff `OML`.`Terms`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`Terms_AFTER_INSERT` AFTER INSERT ON `Terms` FOR EACH ROW
-BEGIN
-insert into `OML`.`Ress`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`Terms_AFTER_DELETE` AFTER DELETE ON `Terms` FOR EACH ROW
-BEGIN
-delete from `OML`.`Ress`;
-END$$
-
--- `OML`.`TBoxSt`(x) iff `OML`.`Terms`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`Terms_AFTER_INSERT` AFTER INSERT ON `Terms` FOR EACH ROW
-BEGIN
-insert into `OML`.`TBoxSt`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`Terms_AFTER_DELETE` AFTER DELETE ON `Terms` FOR EACH ROW
-BEGIN
-delete from `OML`.`TBoxSt`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`TermAx` (TermAxioms)
--- -----------------------------------------------------
-
--- `OML`.`TBoxSt`(x) iff `OML`.`TermAx`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`TermAx_AFTER_INSERT` AFTER INSERT ON `TermAx` FOR EACH ROW
-BEGIN
-insert into `OML`.`TBoxSt`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`TermAx_AFTER_DELETE` AFTER DELETE ON `TermAx` FOR EACH ROW
-BEGIN
-delete from `OML`.`TBoxSt`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`TlgyAx` (TerminologyAxioms)
--- -----------------------------------------------------
-
--- `OML`.`ModEdges`(x) iff `OML`.`TlgyAx`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`TlgyAx_AFTER_INSERT` AFTER INSERT ON `TlgyAx` FOR EACH ROW
-BEGIN
-insert into `OML`.`ModEdges`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`TlgyAx_AFTER_DELETE` AFTER DELETE ON `TlgyAx` FOR EACH ROW
-BEGIN
-delete from `OML`.`ModEdges`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`TBox` (TerminologyBoxes)
--- -----------------------------------------------------
-
--- `OML`.`Mods`(x) iff `OML`.`TBox`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`TBox_AFTER_INSERT` AFTER INSERT ON `TBox` FOR EACH ROW
-BEGIN
-insert into `OML`.`Mods`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`TBox_AFTER_DELETE` AFTER DELETE ON `TBox` FOR EACH ROW
-BEGIN
-delete from `OML`.`Mods`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`TBoxAx` (TerminologyBoxAxioms)
--- -----------------------------------------------------
-
--- `OML`.`TlgyAx`(x) iff `OML`.`TBoxAx`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`TBoxAx_AFTER_INSERT` AFTER INSERT ON `TBoxAx` FOR EACH ROW
-BEGIN
-insert into `OML`.`TlgyAx`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`TBoxAx_AFTER_DELETE` AFTER DELETE ON `TBoxAx` FOR EACH ROW
-BEGIN
-delete from `OML`.`TlgyAx`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`TBoxSt` (TerminologyBoxStatements)
--- -----------------------------------------------------
-
--- `OML`.`ModElts`(x) iff `OML`.`TBoxSt`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`TBoxSt_AFTER_INSERT` AFTER INSERT ON `TBoxSt` FOR EACH ROW
-BEGIN
-insert into `OML`.`ModElts`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`TBoxSt_AFTER_DELETE` AFTER DELETE ON `TBoxSt` FOR EACH ROW
-BEGIN
-delete from `OML`.`ModElts`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`TlgyBdlAx` (TerminologyBundleAxioms)
--- -----------------------------------------------------
-
--- `OML`.`TlgyAx`(x) iff `OML`.`TlgyBdlAx`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`TlgyBdlAx_AFTER_INSERT` AFTER INSERT ON `TlgyBdlAx` FOR EACH ROW
-BEGIN
-insert into `OML`.`TlgyAx`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`TlgyBdlAx_AFTER_DELETE` AFTER DELETE ON `TlgyBdlAx` FOR EACH ROW
-BEGIN
-delete from `OML`.`TlgyAx`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`TlgyBdlSt` (TerminologyBundleStatements)
--- -----------------------------------------------------
-
--- `OML`.`ModElts`(x) iff `OML`.`TlgyBdlSt`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`TlgyBdlSt_AFTER_INSERT` AFTER INSERT ON `TlgyBdlSt` FOR EACH ROW
-BEGIN
-insert into `OML`.`ModElts`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`TlgyBdlSt_AFTER_DELETE` AFTER DELETE ON `TlgyBdlSt` FOR EACH ROW
-BEGIN
-delete from `OML`.`ModElts`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`TlgyIAsts` (TerminologyInstanceAssertions)
--- -----------------------------------------------------
-
--- `OML`.`ModElts`(x) iff `OML`.`TlgyIAsts`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`TlgyIAsts_AFTER_INSERT` AFTER INSERT ON `TlgyIAsts` FOR EACH ROW
-BEGIN
-insert into `OML`.`ModElts`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`TlgyIAsts_AFTER_DELETE` AFTER DELETE ON `TlgyIAsts` FOR EACH ROW
-BEGIN
-delete from `OML`.`ModElts`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`UrySegP` (UnarySegmentPredicates)
--- -----------------------------------------------------
-
--- `OML`.`SegP`(x) iff `OML`.`UrySegP`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`UrySegP_AFTER_INSERT` AFTER INSERT ON `UrySegP` FOR EACH ROW
-BEGIN
-insert into `OML`.`SegP`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`UrySegP_AFTER_DELETE` AFTER DELETE ON `UrySegP` FOR EACH ROW
-BEGIN
-delete from `OML`.`SegP`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`UryTermKinds` (UnaryTermKinds)
--- -----------------------------------------------------
-
--- `OML`.`Terms`(x) iff `OML`.`UryTermKinds`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`UryTermKinds_AFTER_INSERT` AFTER INSERT ON `UryTermKinds` FOR EACH ROW
-BEGIN
-insert into `OML`.`Terms`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`UryTermKinds_AFTER_DELETE` AFTER DELETE ON `UryTermKinds` FOR EACH ROW
-BEGIN
-delete from `OML`.`Terms`;
-END$$
-
--- -----------------------------------------------------
--- Abstract Classification Table `OML`.`ValCRefTs` (ValueCrossReferenceTuples)
--- -----------------------------------------------------
-
--- `OML`.`EIdK`(x) iff `OML`.`ValCRefTs`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`ValCRefTs_AFTER_INSERT` AFTER INSERT ON `ValCRefTs` FOR EACH ROW
-BEGIN
-insert into `OML`.`EIdK`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`ValCRefTs_AFTER_DELETE` AFTER DELETE ON `ValCRefTs` FOR EACH ROW
-BEGIN
-delete from `OML`.`EIdK`;
-END$$
-
--- `OML`.`NonCRBK`(x) iff `OML`.`ValCRefTs`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`ValCRefTs_AFTER_INSERT` AFTER INSERT ON `ValCRefTs` FOR EACH ROW
-BEGIN
-insert into `OML`.`NonCRBK`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`ValCRefTs_AFTER_DELETE` AFTER DELETE ON `ValCRefTs` FOR EACH ROW
-BEGIN
-delete from `OML`.`NonCRBK`;
-END$$
-
--- -----------------------------------------------------
--- Concrete Information Table `OML`.`AnnotProps` (AnnotationProperties)
--- -----------------------------------------------------
-
--- `OML`.`IIdK`(x) iff `OML`.`AnnotProps`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`AnnotProps_AFTER_INSERT` AFTER INSERT ON `AnnotProps` FOR EACH ROW
-BEGIN
-insert into `OML`.`IIdK`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`AnnotProps_AFTER_DELETE` AFTER DELETE ON `AnnotProps` FOR EACH ROW
-BEGIN
-delete from `OML`.`IIdK`;
-END$$
-
--- `OML`.`NonLogEs`(x) iff `OML`.`AnnotProps`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`AnnotProps_AFTER_INSERT` AFTER INSERT ON `AnnotProps` FOR EACH ROW
-BEGIN
-insert into `OML`.`NonLogEs`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`AnnotProps_AFTER_DELETE` AFTER DELETE ON `AnnotProps` FOR EACH ROW
-BEGIN
-delete from `OML`.`NonLogEs`;
-END$$
-
--- -----------------------------------------------------
 -- Concrete Information Table `OML`.`TlgyGraphs` (TerminologyGraphs)
 -- -----------------------------------------------------
 
--- `OML`.`TBox`(x) iff `OML`.`TlgyGraphs`(x)
 DELIMITER $$
 USE `OML`$$
 CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`TlgyGraphs_AFTER_INSERT` AFTER INSERT ON `TlgyGraphs` FOR EACH ROW
 BEGIN
-insert into `OML`.`TBox`() value (uuid);
+-- CrossReferencableKinds(x) if TerminologyGraphs(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if TerminologyGraphs(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- IntrinsicIdentityKinds(x) if TerminologyGraphs(x)
+insert into `OML`.`IIdK`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if TerminologyGraphs(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if TerminologyGraphs(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- Modules(x) if TerminologyGraphs(x)
+insert into `OML`.`Mods`(`uuid`) values(new.`uuid`);
+-- Resources(x) if TerminologyGraphs(x)
+insert into `OML`.`Ress`(`uuid`) values(new.`uuid`);
+-- TerminologyBoxes(x) if TerminologyGraphs(x)
+insert into `OML`.`TBox`(`uuid`) values(new.`uuid`);
 END$$
 
 DELIMITER $$
 USE `OML`$$
 CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`TlgyGraphs_AFTER_DELETE` AFTER DELETE ON `TlgyGraphs` FOR EACH ROW
 BEGIN
+-- CrossReferencableKinds(x) if TerminologyGraphs(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if TerminologyGraphs(x)
+delete from `OML`.`CRTK`;
+-- IntrinsicIdentityKinds(x) if TerminologyGraphs(x)
+delete from `OML`.`IIdK`;
+-- IdentityKinds(x) if TerminologyGraphs(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if TerminologyGraphs(x)
+delete from `OML`.`LogEs`;
+-- Modules(x) if TerminologyGraphs(x)
+delete from `OML`.`Mods`;
+-- Resources(x) if TerminologyGraphs(x)
+delete from `OML`.`Ress`;
+-- TerminologyBoxes(x) if TerminologyGraphs(x)
 delete from `OML`.`TBox`;
 END$$
 
@@ -3804,109 +2546,187 @@ END$$
 -- Concrete Information Table `OML`.`Bdls` (Bundles)
 -- -----------------------------------------------------
 
--- `OML`.`TBox`(x) iff `OML`.`Bdls`(x)
 DELIMITER $$
 USE `OML`$$
 CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`Bdls_AFTER_INSERT` AFTER INSERT ON `Bdls` FOR EACH ROW
 BEGIN
-insert into `OML`.`TBox`() value (uuid);
+-- CrossReferencableKinds(x) if Bundles(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if Bundles(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- IntrinsicIdentityKinds(x) if Bundles(x)
+insert into `OML`.`IIdK`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if Bundles(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if Bundles(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- Modules(x) if Bundles(x)
+insert into `OML`.`Mods`(`uuid`) values(new.`uuid`);
+-- Resources(x) if Bundles(x)
+insert into `OML`.`Ress`(`uuid`) values(new.`uuid`);
+-- TerminologyBoxes(x) if Bundles(x)
+insert into `OML`.`TBox`(`uuid`) values(new.`uuid`);
 END$$
 
 DELIMITER $$
 USE `OML`$$
 CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`Bdls_AFTER_DELETE` AFTER DELETE ON `Bdls` FOR EACH ROW
 BEGIN
+-- CrossReferencableKinds(x) if Bundles(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if Bundles(x)
+delete from `OML`.`CRTK`;
+-- IntrinsicIdentityKinds(x) if Bundles(x)
+delete from `OML`.`IIdK`;
+-- IdentityKinds(x) if Bundles(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if Bundles(x)
+delete from `OML`.`LogEs`;
+-- Modules(x) if Bundles(x)
+delete from `OML`.`Mods`;
+-- Resources(x) if Bundles(x)
+delete from `OML`.`Ress`;
+-- TerminologyBoxes(x) if Bundles(x)
 delete from `OML`.`TBox`;
 END$$
 
 -- -----------------------------------------------------
--- Concrete Information Table `OML`.`CDesTlgyAx` (ConceptDesignationTerminologyAxioms)
+-- Concrete Information Table `OML`.`DBoxes` (DescriptionBoxes)
 -- -----------------------------------------------------
 
--- `OML`.`TBoxAx`(x) iff `OML`.`CDesTlgyAx`(x)
 DELIMITER $$
 USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`CDesTlgyAx_AFTER_INSERT` AFTER INSERT ON `CDesTlgyAx` FOR EACH ROW
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`DBoxes_AFTER_INSERT` AFTER INSERT ON `DBoxes` FOR EACH ROW
 BEGIN
-insert into `OML`.`TBoxAx`() value (uuid);
+-- CrossReferencableKinds(x) if DescriptionBoxes(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if DescriptionBoxes(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- IntrinsicIdentityKinds(x) if DescriptionBoxes(x)
+insert into `OML`.`IIdK`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if DescriptionBoxes(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if DescriptionBoxes(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- Modules(x) if DescriptionBoxes(x)
+insert into `OML`.`Mods`(`uuid`) values(new.`uuid`);
+-- Resources(x) if DescriptionBoxes(x)
+insert into `OML`.`Ress`(`uuid`) values(new.`uuid`);
 END$$
 
 DELIMITER $$
 USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`CDesTlgyAx_AFTER_DELETE` AFTER DELETE ON `CDesTlgyAx` FOR EACH ROW
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`DBoxes_AFTER_DELETE` AFTER DELETE ON `DBoxes` FOR EACH ROW
 BEGIN
-delete from `OML`.`TBoxAx`;
+-- CrossReferencableKinds(x) if DescriptionBoxes(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if DescriptionBoxes(x)
+delete from `OML`.`CRTK`;
+-- IntrinsicIdentityKinds(x) if DescriptionBoxes(x)
+delete from `OML`.`IIdK`;
+-- IdentityKinds(x) if DescriptionBoxes(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if DescriptionBoxes(x)
+delete from `OML`.`LogEs`;
+-- Modules(x) if DescriptionBoxes(x)
+delete from `OML`.`Mods`;
+-- Resources(x) if DescriptionBoxes(x)
+delete from `OML`.`Ress`;
 END$$
 
 -- -----------------------------------------------------
--- Concrete Information Table `OML`.`TlgyExtensionAx` (TerminologyExtensionAxioms)
+-- Concrete Information Table `OML`.`AnnotProps` (AnnotationProperties)
 -- -----------------------------------------------------
 
--- `OML`.`TBoxAx`(x) iff `OML`.`TlgyExtensionAx`(x)
 DELIMITER $$
 USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`TlgyExtensionAx_AFTER_INSERT` AFTER INSERT ON `TlgyExtensionAx` FOR EACH ROW
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`AnnotProps_AFTER_INSERT` AFTER INSERT ON `AnnotProps` FOR EACH ROW
 BEGIN
-insert into `OML`.`TBoxAx`() value (uuid);
+-- CrossReferencableKinds(x) if AnnotationProperties(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if AnnotationProperties(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- IntrinsicIdentityKinds(x) if AnnotationProperties(x)
+insert into `OML`.`IIdK`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if AnnotationProperties(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- NonLogicalElements(x) if AnnotationProperties(x)
+insert into `OML`.`NonLogEs`(`uuid`) values(new.`uuid`);
 END$$
 
 DELIMITER $$
 USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`TlgyExtensionAx_AFTER_DELETE` AFTER DELETE ON `TlgyExtensionAx` FOR EACH ROW
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`AnnotProps_AFTER_DELETE` AFTER DELETE ON `AnnotProps` FOR EACH ROW
 BEGIN
-delete from `OML`.`TBoxAx`;
-END$$
-
--- -----------------------------------------------------
--- Concrete Information Table `OML`.`TlgyNestingAx` (TerminologyNestingAxioms)
--- -----------------------------------------------------
-
--- `OML`.`TBoxAx`(x) iff `OML`.`TlgyNestingAx`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`TlgyNestingAx_AFTER_INSERT` AFTER INSERT ON `TlgyNestingAx` FOR EACH ROW
-BEGIN
-insert into `OML`.`TBoxAx`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`TlgyNestingAx_AFTER_DELETE` AFTER DELETE ON `TlgyNestingAx` FOR EACH ROW
-BEGIN
-delete from `OML`.`TBoxAx`;
+-- CrossReferencableKinds(x) if AnnotationProperties(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if AnnotationProperties(x)
+delete from `OML`.`CRTK`;
+-- IntrinsicIdentityKinds(x) if AnnotationProperties(x)
+delete from `OML`.`IIdK`;
+-- IdentityKinds(x) if AnnotationProperties(x)
+delete from `OML`.`Ik`;
+-- NonLogicalElements(x) if AnnotationProperties(x)
+delete from `OML`.`NonLogEs`;
 END$$
 
 -- -----------------------------------------------------
 -- Concrete Information Table `OML`.`Aspects` (Aspects)
 -- -----------------------------------------------------
 
--- `OML`.`Es`(x) iff `OML`.`Aspects`(x)
 DELIMITER $$
 USE `OML`$$
 CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`Aspects_AFTER_INSERT` AFTER INSERT ON `Aspects` FOR EACH ROW
 BEGIN
-insert into `OML`.`Es`() value (uuid);
+-- CrossReferencableKinds(x) if Aspects(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if Aspects(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- Entities(x) if Aspects(x)
+insert into `OML`.`Es`(`uuid`) values(new.`uuid`);
+-- IntrinsicIdentityKinds(x) if Aspects(x)
+insert into `OML`.`IIdK`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if Aspects(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if Aspects(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleElements(x) if Aspects(x)
+insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- Resources(x) if Aspects(x)
+insert into `OML`.`Ress`(`uuid`) values(new.`uuid`);
+-- TerminologyBoxStatements(x) if Aspects(x)
+insert into `OML`.`TBoxSt`(`uuid`) values(new.`uuid`);
+-- Terms(x) if Aspects(x)
+insert into `OML`.`Terms`(`uuid`) values(new.`uuid`);
+-- UnaryTermKinds(x) if Aspects(x)
+insert into `OML`.`UryTermKinds`(`uuid`) values(new.`uuid`);
 END$$
 
 DELIMITER $$
 USE `OML`$$
 CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`Aspects_AFTER_DELETE` AFTER DELETE ON `Aspects` FOR EACH ROW
 BEGIN
+-- CrossReferencableKinds(x) if Aspects(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if Aspects(x)
+delete from `OML`.`CRTK`;
+-- Entities(x) if Aspects(x)
 delete from `OML`.`Es`;
-END$$
-
--- `OML`.`UryTermKinds`(x) iff `OML`.`Aspects`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`Aspects_AFTER_INSERT` AFTER INSERT ON `Aspects` FOR EACH ROW
-BEGIN
-insert into `OML`.`UryTermKinds`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`Aspects_AFTER_DELETE` AFTER DELETE ON `Aspects` FOR EACH ROW
-BEGIN
+-- IntrinsicIdentityKinds(x) if Aspects(x)
+delete from `OML`.`IIdK`;
+-- IdentityKinds(x) if Aspects(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if Aspects(x)
+delete from `OML`.`LogEs`;
+-- ModuleElements(x) if Aspects(x)
+delete from `OML`.`ModElts`;
+-- Resources(x) if Aspects(x)
+delete from `OML`.`Ress`;
+-- TerminologyBoxStatements(x) if Aspects(x)
+delete from `OML`.`TBoxSt`;
+-- Terms(x) if Aspects(x)
+delete from `OML`.`Terms`;
+-- UnaryTermKinds(x) if Aspects(x)
 delete from `OML`.`UryTermKinds`;
 END$$
 
@@ -3914,120 +2734,127 @@ END$$
 -- Concrete Information Table `OML`.`Cs` (Concepts)
 -- -----------------------------------------------------
 
--- `OML`.`CualEs`(x) iff `OML`.`Cs`(x)
 DELIMITER $$
 USE `OML`$$
 CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`Cs_AFTER_INSERT` AFTER INSERT ON `Cs` FOR EACH ROW
 BEGIN
-insert into `OML`.`CualEs`() value (uuid);
+-- CrossReferencableKinds(x) if Concepts(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if Concepts(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- ConceptualEntities(x) if Concepts(x)
+insert into `OML`.`CualEs`(`uuid`) values(new.`uuid`);
+-- Entities(x) if Concepts(x)
+insert into `OML`.`Es`(`uuid`) values(new.`uuid`);
+-- IntrinsicIdentityKinds(x) if Concepts(x)
+insert into `OML`.`IIdK`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if Concepts(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if Concepts(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleElements(x) if Concepts(x)
+insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- Resources(x) if Concepts(x)
+insert into `OML`.`Ress`(`uuid`) values(new.`uuid`);
+-- TerminologyBoxStatements(x) if Concepts(x)
+insert into `OML`.`TBoxSt`(`uuid`) values(new.`uuid`);
+-- Terms(x) if Concepts(x)
+insert into `OML`.`Terms`(`uuid`) values(new.`uuid`);
+-- UnaryTermKinds(x) if Concepts(x)
+insert into `OML`.`UryTermKinds`(`uuid`) values(new.`uuid`);
 END$$
 
 DELIMITER $$
 USE `OML`$$
 CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`Cs_AFTER_DELETE` AFTER DELETE ON `Cs` FOR EACH ROW
 BEGIN
+-- CrossReferencableKinds(x) if Concepts(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if Concepts(x)
+delete from `OML`.`CRTK`;
+-- ConceptualEntities(x) if Concepts(x)
 delete from `OML`.`CualEs`;
-END$$
-
--- `OML`.`UryTermKinds`(x) iff `OML`.`Cs`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`Cs_AFTER_INSERT` AFTER INSERT ON `Cs` FOR EACH ROW
-BEGIN
-insert into `OML`.`UryTermKinds`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`Cs_AFTER_DELETE` AFTER DELETE ON `Cs` FOR EACH ROW
-BEGIN
+-- Entities(x) if Concepts(x)
+delete from `OML`.`Es`;
+-- IntrinsicIdentityKinds(x) if Concepts(x)
+delete from `OML`.`IIdK`;
+-- IdentityKinds(x) if Concepts(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if Concepts(x)
+delete from `OML`.`LogEs`;
+-- ModuleElements(x) if Concepts(x)
+delete from `OML`.`ModElts`;
+-- Resources(x) if Concepts(x)
+delete from `OML`.`Ress`;
+-- TerminologyBoxStatements(x) if Concepts(x)
+delete from `OML`.`TBoxSt`;
+-- Terms(x) if Concepts(x)
+delete from `OML`.`Terms`;
+-- UnaryTermKinds(x) if Concepts(x)
 delete from `OML`.`UryTermKinds`;
-END$$
-
--- -----------------------------------------------------
--- Concrete Information Table `OML`.`RRs` (ReifiedRelationships)
--- -----------------------------------------------------
-
--- `OML`.`CualEs`(x) iff `OML`.`RRs`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRs_AFTER_INSERT` AFTER INSERT ON `RRs` FOR EACH ROW
-BEGIN
-insert into `OML`.`CualEs`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRs_AFTER_DELETE` AFTER DELETE ON `RRs` FOR EACH ROW
-BEGIN
-delete from `OML`.`CualEs`;
-END$$
-
--- `OML`.`ERels`(x) iff `OML`.`RRs`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRs_AFTER_INSERT` AFTER INSERT ON `RRs` FOR EACH ROW
-BEGIN
-insert into `OML`.`ERels`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRs_AFTER_DELETE` AFTER DELETE ON `RRs` FOR EACH ROW
-BEGIN
-delete from `OML`.`ERels`;
-END$$
-
--- -----------------------------------------------------
--- Concrete Information Table `OML`.`URs` (UnreifiedRelationships)
--- -----------------------------------------------------
-
--- `OML`.`ERels`(x) iff `OML`.`URs`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`URs_AFTER_INSERT` AFTER INSERT ON `URs` FOR EACH ROW
-BEGIN
-insert into `OML`.`ERels`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`URs_AFTER_DELETE` AFTER DELETE ON `URs` FOR EACH ROW
-BEGIN
-delete from `OML`.`ERels`;
 END$$
 
 -- -----------------------------------------------------
 -- Concrete Information Table `OML`.`Scs` (Scalars)
 -- -----------------------------------------------------
 
--- `OML`.`Drs`(x) iff `OML`.`Scs`(x)
 DELIMITER $$
 USE `OML`$$
 CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`Scs_AFTER_INSERT` AFTER INSERT ON `Scs` FOR EACH ROW
 BEGIN
-insert into `OML`.`Drs`() value (uuid);
+-- CrossReferencableKinds(x) if Scalars(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if Scalars(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- DataRanges(x) if Scalars(x)
+insert into `OML`.`Drs`(`uuid`) values(new.`uuid`);
+-- Datatypes(x) if Scalars(x)
+insert into `OML`.`Dt`(`uuid`) values(new.`uuid`);
+-- IntrinsicIdentityKinds(x) if Scalars(x)
+insert into `OML`.`IIdK`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if Scalars(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if Scalars(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleElements(x) if Scalars(x)
+insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- Resources(x) if Scalars(x)
+insert into `OML`.`Ress`(`uuid`) values(new.`uuid`);
+-- TerminologyBoxStatements(x) if Scalars(x)
+insert into `OML`.`TBoxSt`(`uuid`) values(new.`uuid`);
+-- Terms(x) if Scalars(x)
+insert into `OML`.`Terms`(`uuid`) values(new.`uuid`);
+-- UnaryTermKinds(x) if Scalars(x)
+insert into `OML`.`UryTermKinds`(`uuid`) values(new.`uuid`);
 END$$
 
 DELIMITER $$
 USE `OML`$$
 CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`Scs_AFTER_DELETE` AFTER DELETE ON `Scs` FOR EACH ROW
 BEGIN
+-- CrossReferencableKinds(x) if Scalars(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if Scalars(x)
+delete from `OML`.`CRTK`;
+-- DataRanges(x) if Scalars(x)
 delete from `OML`.`Drs`;
-END$$
-
--- `OML`.`UryTermKinds`(x) iff `OML`.`Scs`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`Scs_AFTER_INSERT` AFTER INSERT ON `Scs` FOR EACH ROW
-BEGIN
-insert into `OML`.`UryTermKinds`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`Scs_AFTER_DELETE` AFTER DELETE ON `Scs` FOR EACH ROW
-BEGIN
+-- Datatypes(x) if Scalars(x)
+delete from `OML`.`Dt`;
+-- IntrinsicIdentityKinds(x) if Scalars(x)
+delete from `OML`.`IIdK`;
+-- IdentityKinds(x) if Scalars(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if Scalars(x)
+delete from `OML`.`LogEs`;
+-- ModuleElements(x) if Scalars(x)
+delete from `OML`.`ModElts`;
+-- Resources(x) if Scalars(x)
+delete from `OML`.`Ress`;
+-- TerminologyBoxStatements(x) if Scalars(x)
+delete from `OML`.`TBoxSt`;
+-- Terms(x) if Scalars(x)
+delete from `OML`.`Terms`;
+-- UnaryTermKinds(x) if Scalars(x)
 delete from `OML`.`UryTermKinds`;
 END$$
 
@@ -4035,1044 +2862,1599 @@ END$$
 -- Concrete Information Table `OML`.`Sts` (Structures)
 -- -----------------------------------------------------
 
--- `OML`.`Dt`(x) iff `OML`.`Sts`(x)
 DELIMITER $$
 USE `OML`$$
 CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`Sts_AFTER_INSERT` AFTER INSERT ON `Sts` FOR EACH ROW
 BEGIN
-insert into `OML`.`Dt`() value (uuid);
+-- CrossReferencableKinds(x) if Structures(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if Structures(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- Datatypes(x) if Structures(x)
+insert into `OML`.`Dt`(`uuid`) values(new.`uuid`);
+-- IntrinsicIdentityKinds(x) if Structures(x)
+insert into `OML`.`IIdK`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if Structures(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if Structures(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleElements(x) if Structures(x)
+insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- Resources(x) if Structures(x)
+insert into `OML`.`Ress`(`uuid`) values(new.`uuid`);
+-- TerminologyBoxStatements(x) if Structures(x)
+insert into `OML`.`TBoxSt`(`uuid`) values(new.`uuid`);
+-- Terms(x) if Structures(x)
+insert into `OML`.`Terms`(`uuid`) values(new.`uuid`);
+-- UnaryTermKinds(x) if Structures(x)
+insert into `OML`.`UryTermKinds`(`uuid`) values(new.`uuid`);
 END$$
 
 DELIMITER $$
 USE `OML`$$
 CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`Sts_AFTER_DELETE` AFTER DELETE ON `Sts` FOR EACH ROW
 BEGIN
+-- CrossReferencableKinds(x) if Structures(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if Structures(x)
+delete from `OML`.`CRTK`;
+-- Datatypes(x) if Structures(x)
 delete from `OML`.`Dt`;
-END$$
-
--- `OML`.`UryTermKinds`(x) iff `OML`.`Sts`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`Sts_AFTER_INSERT` AFTER INSERT ON `Sts` FOR EACH ROW
-BEGIN
-insert into `OML`.`UryTermKinds`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`Sts_AFTER_DELETE` AFTER DELETE ON `Sts` FOR EACH ROW
-BEGIN
+-- IntrinsicIdentityKinds(x) if Structures(x)
+delete from `OML`.`IIdK`;
+-- IdentityKinds(x) if Structures(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if Structures(x)
+delete from `OML`.`LogEs`;
+-- ModuleElements(x) if Structures(x)
+delete from `OML`.`ModElts`;
+-- Resources(x) if Structures(x)
+delete from `OML`.`Ress`;
+-- TerminologyBoxStatements(x) if Structures(x)
+delete from `OML`.`TBoxSt`;
+-- Terms(x) if Structures(x)
+delete from `OML`.`Terms`;
+-- UnaryTermKinds(x) if Structures(x)
 delete from `OML`.`UryTermKinds`;
 END$$
 
 -- -----------------------------------------------------
--- Concrete Information Table `OML`.`BinScRs` (BinaryScalarRestrictions)
+-- Concrete Information Table `OML`.`CDesTlgyAx` (ConceptDesignationTerminologyAxioms)
 -- -----------------------------------------------------
 
--- `OML`.`RestDrs`(x) iff `OML`.`BinScRs`(x)
 DELIMITER $$
 USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`BinScRs_AFTER_INSERT` AFTER INSERT ON `BinScRs` FOR EACH ROW
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`CDesTlgyAx_AFTER_INSERT` AFTER INSERT ON `CDesTlgyAx` FOR EACH ROW
 BEGIN
-insert into `OML`.`RestDrs`() value (uuid);
+-- CrossReferencableKinds(x) if ConceptDesignationTerminologyAxioms(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if ConceptDesignationTerminologyAxioms(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if ConceptDesignationTerminologyAxioms(x)
+insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
+-- ElementCrossReferenceTuples(x) if ConceptDesignationTerminologyAxioms(x)
+insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if ConceptDesignationTerminologyAxioms(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if ConceptDesignationTerminologyAxioms(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleEdges(x) if ConceptDesignationTerminologyAxioms(x)
+insert into `OML`.`ModEdges`(`uuid`) values(new.`uuid`);
+-- TerminologyBoxAxioms(x) if ConceptDesignationTerminologyAxioms(x)
+insert into `OML`.`TBoxAx`(`uuid`) values(new.`uuid`);
+-- TerminologyAxioms(x) if ConceptDesignationTerminologyAxioms(x)
+insert into `OML`.`TlgyAx`(`uuid`) values(new.`uuid`);
 END$$
 
 DELIMITER $$
 USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`BinScRs_AFTER_DELETE` AFTER DELETE ON `BinScRs` FOR EACH ROW
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`CDesTlgyAx_AFTER_DELETE` AFTER DELETE ON `CDesTlgyAx` FOR EACH ROW
 BEGIN
-delete from `OML`.`RestDrs`;
-END$$
-
--- -----------------------------------------------------
--- Concrete Information Table `OML`.`IRIScRs` (IRIScalarRestrictions)
--- -----------------------------------------------------
-
--- `OML`.`RestDrs`(x) iff `OML`.`IRIScRs`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`IRIScRs_AFTER_INSERT` AFTER INSERT ON `IRIScRs` FOR EACH ROW
-BEGIN
-insert into `OML`.`RestDrs`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`IRIScRs_AFTER_DELETE` AFTER DELETE ON `IRIScRs` FOR EACH ROW
-BEGIN
-delete from `OML`.`RestDrs`;
-END$$
-
--- -----------------------------------------------------
--- Concrete Information Table `OML`.`NumericScRs` (NumericScalarRestrictions)
--- -----------------------------------------------------
-
--- `OML`.`RestDrs`(x) iff `OML`.`NumericScRs`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`NumericScRs_AFTER_INSERT` AFTER INSERT ON `NumericScRs` FOR EACH ROW
-BEGIN
-insert into `OML`.`RestDrs`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`NumericScRs_AFTER_DELETE` AFTER DELETE ON `NumericScRs` FOR EACH ROW
-BEGIN
-delete from `OML`.`RestDrs`;
-END$$
-
--- -----------------------------------------------------
--- Concrete Information Table `OML`.`PlainLitScRs` (PlainLiteralScalarRestrictions)
--- -----------------------------------------------------
-
--- `OML`.`RestDrs`(x) iff `OML`.`PlainLitScRs`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`PlainLitScRs_AFTER_INSERT` AFTER INSERT ON `PlainLitScRs` FOR EACH ROW
-BEGIN
-insert into `OML`.`RestDrs`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`PlainLitScRs_AFTER_DELETE` AFTER DELETE ON `PlainLitScRs` FOR EACH ROW
-BEGIN
-delete from `OML`.`RestDrs`;
-END$$
-
--- -----------------------------------------------------
--- Concrete Information Table `OML`.`ScOneOfRs` (ScalarOneOfRestrictions)
--- -----------------------------------------------------
-
--- `OML`.`RestDrs`(x) iff `OML`.`ScOneOfRs`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`ScOneOfRs_AFTER_INSERT` AFTER INSERT ON `ScOneOfRs` FOR EACH ROW
-BEGIN
-insert into `OML`.`RestDrs`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`ScOneOfRs_AFTER_DELETE` AFTER DELETE ON `ScOneOfRs` FOR EACH ROW
-BEGIN
-delete from `OML`.`RestDrs`;
-END$$
-
--- -----------------------------------------------------
--- Concrete Information Table `OML`.`StringScRs` (StringScalarRestrictions)
--- -----------------------------------------------------
-
--- `OML`.`RestDrs`(x) iff `OML`.`StringScRs`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`StringScRs_AFTER_INSERT` AFTER INSERT ON `StringScRs` FOR EACH ROW
-BEGIN
-insert into `OML`.`RestDrs`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`StringScRs_AFTER_DELETE` AFTER DELETE ON `StringScRs` FOR EACH ROW
-BEGIN
-delete from `OML`.`RestDrs`;
-END$$
-
--- -----------------------------------------------------
--- Concrete Information Table `OML`.`SynonymScRs` (SynonymScalarRestrictions)
--- -----------------------------------------------------
-
--- `OML`.`RestDrs`(x) iff `OML`.`SynonymScRs`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`SynonymScRs_AFTER_INSERT` AFTER INSERT ON `SynonymScRs` FOR EACH ROW
-BEGIN
-insert into `OML`.`RestDrs`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`SynonymScRs_AFTER_DELETE` AFTER DELETE ON `SynonymScRs` FOR EACH ROW
-BEGIN
-delete from `OML`.`RestDrs`;
-END$$
-
--- -----------------------------------------------------
--- Concrete Information Table `OML`.`TimeScRs` (TimeScalarRestrictions)
--- -----------------------------------------------------
-
--- `OML`.`RestDrs`(x) iff `OML`.`TimeScRs`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`TimeScRs_AFTER_INSERT` AFTER INSERT ON `TimeScRs` FOR EACH ROW
-BEGIN
-insert into `OML`.`RestDrs`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`TimeScRs_AFTER_DELETE` AFTER DELETE ON `TimeScRs` FOR EACH ROW
-BEGIN
-delete from `OML`.`RestDrs`;
-END$$
-
--- -----------------------------------------------------
--- Concrete Information Table `OML`.`EScPs` (EntityScalarDataProperties)
--- -----------------------------------------------------
-
--- `OML`.`DRelFromEs`(x) iff `OML`.`EScPs`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EScPs_AFTER_INSERT` AFTER INSERT ON `EScPs` FOR EACH ROW
-BEGIN
-insert into `OML`.`DRelFromEs`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EScPs_AFTER_DELETE` AFTER DELETE ON `EScPs` FOR EACH ROW
-BEGIN
-delete from `OML`.`DRelFromEs`;
-END$$
-
--- `OML`.`DRelToScs`(x) iff `OML`.`EScPs`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EScPs_AFTER_INSERT` AFTER INSERT ON `EScPs` FOR EACH ROW
-BEGIN
-insert into `OML`.`DRelToScs`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EScPs_AFTER_DELETE` AFTER DELETE ON `EScPs` FOR EACH ROW
-BEGIN
-delete from `OML`.`DRelToScs`;
-END$$
-
--- `OML`.`DRels`(x) iff `OML`.`EScPs`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EScPs_AFTER_INSERT` AFTER INSERT ON `EScPs` FOR EACH ROW
-BEGIN
-insert into `OML`.`DRels`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EScPs_AFTER_DELETE` AFTER DELETE ON `EScPs` FOR EACH ROW
-BEGIN
-delete from `OML`.`DRels`;
-END$$
-
--- -----------------------------------------------------
--- Concrete Information Table `OML`.`EStPs` (EntityStructuredDataProperties)
--- -----------------------------------------------------
-
--- `OML`.`DRelFromEs`(x) iff `OML`.`EStPs`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EStPs_AFTER_INSERT` AFTER INSERT ON `EStPs` FOR EACH ROW
-BEGIN
-insert into `OML`.`DRelFromEs`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EStPs_AFTER_DELETE` AFTER DELETE ON `EStPs` FOR EACH ROW
-BEGIN
-delete from `OML`.`DRelFromEs`;
-END$$
-
--- `OML`.`DRelToSts`(x) iff `OML`.`EStPs`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EStPs_AFTER_INSERT` AFTER INSERT ON `EStPs` FOR EACH ROW
-BEGIN
-insert into `OML`.`DRelToSts`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EStPs_AFTER_DELETE` AFTER DELETE ON `EStPs` FOR EACH ROW
-BEGIN
-delete from `OML`.`DRelToSts`;
-END$$
-
--- `OML`.`DRels`(x) iff `OML`.`EStPs`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EStPs_AFTER_INSERT` AFTER INSERT ON `EStPs` FOR EACH ROW
-BEGIN
-insert into `OML`.`DRels`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EStPs_AFTER_DELETE` AFTER DELETE ON `EStPs` FOR EACH ROW
-BEGIN
-delete from `OML`.`DRels`;
-END$$
-
--- -----------------------------------------------------
--- Concrete Information Table `OML`.`ScPs` (ScalarDataProperties)
--- -----------------------------------------------------
-
--- `OML`.`DRelFromSts`(x) iff `OML`.`ScPs`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`ScPs_AFTER_INSERT` AFTER INSERT ON `ScPs` FOR EACH ROW
-BEGIN
-insert into `OML`.`DRelFromSts`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`ScPs_AFTER_DELETE` AFTER DELETE ON `ScPs` FOR EACH ROW
-BEGIN
-delete from `OML`.`DRelFromSts`;
-END$$
-
--- `OML`.`DRelToScs`(x) iff `OML`.`ScPs`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`ScPs_AFTER_INSERT` AFTER INSERT ON `ScPs` FOR EACH ROW
-BEGIN
-insert into `OML`.`DRelToScs`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`ScPs_AFTER_DELETE` AFTER DELETE ON `ScPs` FOR EACH ROW
-BEGIN
-delete from `OML`.`DRelToScs`;
-END$$
-
--- `OML`.`DRels`(x) iff `OML`.`ScPs`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`ScPs_AFTER_INSERT` AFTER INSERT ON `ScPs` FOR EACH ROW
-BEGIN
-insert into `OML`.`DRels`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`ScPs_AFTER_DELETE` AFTER DELETE ON `ScPs` FOR EACH ROW
-BEGIN
-delete from `OML`.`DRels`;
-END$$
-
--- -----------------------------------------------------
--- Concrete Information Table `OML`.`StPs` (StructuredDataProperties)
--- -----------------------------------------------------
-
--- `OML`.`DRelFromSts`(x) iff `OML`.`StPs`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`StPs_AFTER_INSERT` AFTER INSERT ON `StPs` FOR EACH ROW
-BEGIN
-insert into `OML`.`DRelFromSts`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`StPs_AFTER_DELETE` AFTER DELETE ON `StPs` FOR EACH ROW
-BEGIN
-delete from `OML`.`DRelFromSts`;
-END$$
-
--- `OML`.`DRelToSts`(x) iff `OML`.`StPs`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`StPs_AFTER_INSERT` AFTER INSERT ON `StPs` FOR EACH ROW
-BEGIN
-insert into `OML`.`DRelToSts`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`StPs_AFTER_DELETE` AFTER DELETE ON `StPs` FOR EACH ROW
-BEGIN
-delete from `OML`.`DRelToSts`;
-END$$
-
--- `OML`.`DRels`(x) iff `OML`.`StPs`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`StPs_AFTER_INSERT` AFTER INSERT ON `StPs` FOR EACH ROW
-BEGIN
-insert into `OML`.`DRels`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`StPs_AFTER_DELETE` AFTER DELETE ON `StPs` FOR EACH ROW
-BEGIN
-delete from `OML`.`DRels`;
-END$$
-
--- -----------------------------------------------------
--- Concrete Information Table `OML`.`AspectSpeAx` (AspectSpecializationAxioms)
--- -----------------------------------------------------
-
--- `OML`.`SpeAx`(x) iff `OML`.`AspectSpeAx`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`AspectSpeAx_AFTER_INSERT` AFTER INSERT ON `AspectSpeAx` FOR EACH ROW
-BEGIN
-insert into `OML`.`SpeAx`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`AspectSpeAx_AFTER_DELETE` AFTER DELETE ON `AspectSpeAx` FOR EACH ROW
-BEGIN
-delete from `OML`.`SpeAx`;
-END$$
-
--- -----------------------------------------------------
--- Concrete Information Table `OML`.`CSpeAx` (ConceptSpecializationAxioms)
--- -----------------------------------------------------
-
--- `OML`.`SpeAx`(x) iff `OML`.`CSpeAx`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`CSpeAx_AFTER_INSERT` AFTER INSERT ON `CSpeAx` FOR EACH ROW
-BEGIN
-insert into `OML`.`SpeAx`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`CSpeAx_AFTER_DELETE` AFTER DELETE ON `CSpeAx` FOR EACH ROW
-BEGIN
-delete from `OML`.`SpeAx`;
-END$$
-
--- -----------------------------------------------------
--- Concrete Information Table `OML`.`RRSpeAx` (ReifiedRelationshipSpecializationAxioms)
--- -----------------------------------------------------
-
--- `OML`.`SpeAx`(x) iff `OML`.`RRSpeAx`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRSpeAx_AFTER_INSERT` AFTER INSERT ON `RRSpeAx` FOR EACH ROW
-BEGIN
-insert into `OML`.`SpeAx`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRSpeAx_AFTER_DELETE` AFTER DELETE ON `RRSpeAx` FOR EACH ROW
-BEGIN
-delete from `OML`.`SpeAx`;
-END$$
-
--- -----------------------------------------------------
--- Concrete Information Table `OML`.`EExRAx` (EntityExistentialRestrictionAxioms)
--- -----------------------------------------------------
-
--- `OML`.`ERAx`(x) iff `OML`.`EExRAx`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EExRAx_AFTER_INSERT` AFTER INSERT ON `EExRAx` FOR EACH ROW
-BEGIN
-insert into `OML`.`ERAx`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EExRAx_AFTER_DELETE` AFTER DELETE ON `EExRAx` FOR EACH ROW
-BEGIN
-delete from `OML`.`ERAx`;
-END$$
-
--- -----------------------------------------------------
--- Concrete Information Table `OML`.`EUxRAx` (EntityUniversalRestrictionAxioms)
--- -----------------------------------------------------
-
--- `OML`.`ERAx`(x) iff `OML`.`EUxRAx`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EUxRAx_AFTER_INSERT` AFTER INSERT ON `EUxRAx` FOR EACH ROW
-BEGIN
-insert into `OML`.`ERAx`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EUxRAx_AFTER_DELETE` AFTER DELETE ON `EUxRAx` FOR EACH ROW
-BEGIN
-delete from `OML`.`ERAx`;
-END$$
-
--- -----------------------------------------------------
--- Concrete Information Table `OML`.`EScPExRAx` (EntityScalarDataPropertyExistentialRestrictionAxioms)
--- -----------------------------------------------------
-
--- `OML`.`EScPRAx`(x) iff `OML`.`EScPExRAx`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EScPExRAx_AFTER_INSERT` AFTER INSERT ON `EScPExRAx` FOR EACH ROW
-BEGIN
-insert into `OML`.`EScPRAx`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EScPExRAx_AFTER_DELETE` AFTER DELETE ON `EScPExRAx` FOR EACH ROW
-BEGIN
-delete from `OML`.`EScPRAx`;
-END$$
-
--- `OML`.`EltCRefTs`(x) iff `OML`.`EScPExRAx`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EScPExRAx_AFTER_INSERT` AFTER INSERT ON `EScPExRAx` FOR EACH ROW
-BEGIN
-insert into `OML`.`EltCRefTs`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EScPExRAx_AFTER_DELETE` AFTER DELETE ON `EScPExRAx` FOR EACH ROW
-BEGIN
+-- CrossReferencableKinds(x) if ConceptDesignationTerminologyAxioms(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if ConceptDesignationTerminologyAxioms(x)
+delete from `OML`.`CRTK`;
+-- ExtrinsicIdentityKinds(x) if ConceptDesignationTerminologyAxioms(x)
+delete from `OML`.`EIdK`;
+-- ElementCrossReferenceTuples(x) if ConceptDesignationTerminologyAxioms(x)
 delete from `OML`.`EltCRefTs`;
+-- IdentityKinds(x) if ConceptDesignationTerminologyAxioms(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if ConceptDesignationTerminologyAxioms(x)
+delete from `OML`.`LogEs`;
+-- ModuleEdges(x) if ConceptDesignationTerminologyAxioms(x)
+delete from `OML`.`ModEdges`;
+-- TerminologyBoxAxioms(x) if ConceptDesignationTerminologyAxioms(x)
+delete from `OML`.`TBoxAx`;
+-- TerminologyAxioms(x) if ConceptDesignationTerminologyAxioms(x)
+delete from `OML`.`TlgyAx`;
 END$$
 
 -- -----------------------------------------------------
--- Concrete Information Table `OML`.`EScPPtrRAx` (EntityScalarDataPropertyParticularRestrictionAxioms)
+-- Concrete Information Table `OML`.`TlgyExtensionAx` (TerminologyExtensionAxioms)
 -- -----------------------------------------------------
 
--- `OML`.`EScPRAx`(x) iff `OML`.`EScPPtrRAx`(x)
 DELIMITER $$
 USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EScPPtrRAx_AFTER_INSERT` AFTER INSERT ON `EScPPtrRAx` FOR EACH ROW
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`TlgyExtensionAx_AFTER_INSERT` AFTER INSERT ON `TlgyExtensionAx` FOR EACH ROW
 BEGIN
-insert into `OML`.`EScPRAx`() value (uuid);
+-- CrossReferencableKinds(x) if TerminologyExtensionAxioms(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if TerminologyExtensionAxioms(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if TerminologyExtensionAxioms(x)
+insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
+-- ElementCrossReferenceTuples(x) if TerminologyExtensionAxioms(x)
+insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if TerminologyExtensionAxioms(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if TerminologyExtensionAxioms(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleEdges(x) if TerminologyExtensionAxioms(x)
+insert into `OML`.`ModEdges`(`uuid`) values(new.`uuid`);
+-- TerminologyBoxAxioms(x) if TerminologyExtensionAxioms(x)
+insert into `OML`.`TBoxAx`(`uuid`) values(new.`uuid`);
+-- TerminologyAxioms(x) if TerminologyExtensionAxioms(x)
+insert into `OML`.`TlgyAx`(`uuid`) values(new.`uuid`);
 END$$
 
 DELIMITER $$
 USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EScPPtrRAx_AFTER_DELETE` AFTER DELETE ON `EScPPtrRAx` FOR EACH ROW
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`TlgyExtensionAx_AFTER_DELETE` AFTER DELETE ON `TlgyExtensionAx` FOR EACH ROW
 BEGIN
-delete from `OML`.`EScPRAx`;
-END$$
-
--- `OML`.`ValCRefTs`(x) iff `OML`.`EScPPtrRAx`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EScPPtrRAx_AFTER_INSERT` AFTER INSERT ON `EScPPtrRAx` FOR EACH ROW
-BEGIN
-insert into `OML`.`ValCRefTs`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EScPPtrRAx_AFTER_DELETE` AFTER DELETE ON `EScPPtrRAx` FOR EACH ROW
-BEGIN
-delete from `OML`.`ValCRefTs`;
-END$$
-
--- -----------------------------------------------------
--- Concrete Information Table `OML`.`EScPUxRAx` (EntityScalarDataPropertyUniversalRestrictionAxioms)
--- -----------------------------------------------------
-
--- `OML`.`EScPRAx`(x) iff `OML`.`EScPUxRAx`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EScPUxRAx_AFTER_INSERT` AFTER INSERT ON `EScPUxRAx` FOR EACH ROW
-BEGIN
-insert into `OML`.`EScPRAx`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EScPUxRAx_AFTER_DELETE` AFTER DELETE ON `EScPUxRAx` FOR EACH ROW
-BEGIN
-delete from `OML`.`EScPRAx`;
-END$$
-
--- `OML`.`EltCRefTs`(x) iff `OML`.`EScPUxRAx`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EScPUxRAx_AFTER_INSERT` AFTER INSERT ON `EScPUxRAx` FOR EACH ROW
-BEGIN
-insert into `OML`.`EltCRefTs`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EScPUxRAx_AFTER_DELETE` AFTER DELETE ON `EScPUxRAx` FOR EACH ROW
-BEGIN
+-- CrossReferencableKinds(x) if TerminologyExtensionAxioms(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if TerminologyExtensionAxioms(x)
+delete from `OML`.`CRTK`;
+-- ExtrinsicIdentityKinds(x) if TerminologyExtensionAxioms(x)
+delete from `OML`.`EIdK`;
+-- ElementCrossReferenceTuples(x) if TerminologyExtensionAxioms(x)
 delete from `OML`.`EltCRefTs`;
+-- IdentityKinds(x) if TerminologyExtensionAxioms(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if TerminologyExtensionAxioms(x)
+delete from `OML`.`LogEs`;
+-- ModuleEdges(x) if TerminologyExtensionAxioms(x)
+delete from `OML`.`ModEdges`;
+-- TerminologyBoxAxioms(x) if TerminologyExtensionAxioms(x)
+delete from `OML`.`TBoxAx`;
+-- TerminologyAxioms(x) if TerminologyExtensionAxioms(x)
+delete from `OML`.`TlgyAx`;
 END$$
 
 -- -----------------------------------------------------
--- Concrete Information Table `OML`.`ScOneOfLitAx` (ScalarOneOfLiteralAxioms)
+-- Concrete Information Table `OML`.`TlgyNestingAx` (TerminologyNestingAxioms)
 -- -----------------------------------------------------
 
--- `OML`.`TermAx`(x) iff `OML`.`ScOneOfLitAx`(x)
 DELIMITER $$
 USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`ScOneOfLitAx_AFTER_INSERT` AFTER INSERT ON `ScOneOfLitAx` FOR EACH ROW
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`TlgyNestingAx_AFTER_INSERT` AFTER INSERT ON `TlgyNestingAx` FOR EACH ROW
 BEGIN
-insert into `OML`.`TermAx`() value (uuid);
+-- CrossReferencableKinds(x) if TerminologyNestingAxioms(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if TerminologyNestingAxioms(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if TerminologyNestingAxioms(x)
+insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
+-- ElementCrossReferenceTuples(x) if TerminologyNestingAxioms(x)
+insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if TerminologyNestingAxioms(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if TerminologyNestingAxioms(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleEdges(x) if TerminologyNestingAxioms(x)
+insert into `OML`.`ModEdges`(`uuid`) values(new.`uuid`);
+-- TerminologyBoxAxioms(x) if TerminologyNestingAxioms(x)
+insert into `OML`.`TBoxAx`(`uuid`) values(new.`uuid`);
+-- TerminologyAxioms(x) if TerminologyNestingAxioms(x)
+insert into `OML`.`TlgyAx`(`uuid`) values(new.`uuid`);
 END$$
 
 DELIMITER $$
 USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`ScOneOfLitAx_AFTER_DELETE` AFTER DELETE ON `ScOneOfLitAx` FOR EACH ROW
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`TlgyNestingAx_AFTER_DELETE` AFTER DELETE ON `TlgyNestingAx` FOR EACH ROW
 BEGIN
-delete from `OML`.`TermAx`;
-END$$
-
--- `OML`.`ValCRefTs`(x) iff `OML`.`ScOneOfLitAx`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`ScOneOfLitAx_AFTER_INSERT` AFTER INSERT ON `ScOneOfLitAx` FOR EACH ROW
-BEGIN
-insert into `OML`.`ValCRefTs`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`ScOneOfLitAx_AFTER_DELETE` AFTER DELETE ON `ScOneOfLitAx` FOR EACH ROW
-BEGIN
-delete from `OML`.`ValCRefTs`;
+-- CrossReferencableKinds(x) if TerminologyNestingAxioms(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if TerminologyNestingAxioms(x)
+delete from `OML`.`CRTK`;
+-- ExtrinsicIdentityKinds(x) if TerminologyNestingAxioms(x)
+delete from `OML`.`EIdK`;
+-- ElementCrossReferenceTuples(x) if TerminologyNestingAxioms(x)
+delete from `OML`.`EltCRefTs`;
+-- IdentityKinds(x) if TerminologyNestingAxioms(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if TerminologyNestingAxioms(x)
+delete from `OML`.`LogEs`;
+-- ModuleEdges(x) if TerminologyNestingAxioms(x)
+delete from `OML`.`ModEdges`;
+-- TerminologyBoxAxioms(x) if TerminologyNestingAxioms(x)
+delete from `OML`.`TBoxAx`;
+-- TerminologyAxioms(x) if TerminologyNestingAxioms(x)
+delete from `OML`.`TlgyAx`;
 END$$
 
 -- -----------------------------------------------------
 -- Concrete Information Table `OML`.`BdldTlgyAx` (BundledTerminologyAxioms)
 -- -----------------------------------------------------
 
--- `OML`.`TlgyBdlAx`(x) iff `OML`.`BdldTlgyAx`(x)
 DELIMITER $$
 USE `OML`$$
 CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`BdldTlgyAx_AFTER_INSERT` AFTER INSERT ON `BdldTlgyAx` FOR EACH ROW
 BEGIN
-insert into `OML`.`TlgyBdlAx`() value (uuid);
+-- CrossReferencableKinds(x) if BundledTerminologyAxioms(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if BundledTerminologyAxioms(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if BundledTerminologyAxioms(x)
+insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
+-- ElementCrossReferenceTuples(x) if BundledTerminologyAxioms(x)
+insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if BundledTerminologyAxioms(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if BundledTerminologyAxioms(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleEdges(x) if BundledTerminologyAxioms(x)
+insert into `OML`.`ModEdges`(`uuid`) values(new.`uuid`);
+-- TerminologyAxioms(x) if BundledTerminologyAxioms(x)
+insert into `OML`.`TlgyAx`(`uuid`) values(new.`uuid`);
+-- TerminologyBundleAxioms(x) if BundledTerminologyAxioms(x)
+insert into `OML`.`TlgyBdlAx`(`uuid`) values(new.`uuid`);
 END$$
 
 DELIMITER $$
 USE `OML`$$
 CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`BdldTlgyAx_AFTER_DELETE` AFTER DELETE ON `BdldTlgyAx` FOR EACH ROW
 BEGIN
+-- CrossReferencableKinds(x) if BundledTerminologyAxioms(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if BundledTerminologyAxioms(x)
+delete from `OML`.`CRTK`;
+-- ExtrinsicIdentityKinds(x) if BundledTerminologyAxioms(x)
+delete from `OML`.`EIdK`;
+-- ElementCrossReferenceTuples(x) if BundledTerminologyAxioms(x)
+delete from `OML`.`EltCRefTs`;
+-- IdentityKinds(x) if BundledTerminologyAxioms(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if BundledTerminologyAxioms(x)
+delete from `OML`.`LogEs`;
+-- ModuleEdges(x) if BundledTerminologyAxioms(x)
+delete from `OML`.`ModEdges`;
+-- TerminologyAxioms(x) if BundledTerminologyAxioms(x)
+delete from `OML`.`TlgyAx`;
+-- TerminologyBundleAxioms(x) if BundledTerminologyAxioms(x)
 delete from `OML`.`TlgyBdlAx`;
-END$$
-
--- -----------------------------------------------------
--- Concrete Information Table `OML`.`RootCTaxonomyAx` (RootConceptTaxonomyAxioms)
--- -----------------------------------------------------
-
--- `OML`.`CTreeDsju`(x) iff `OML`.`RootCTaxonomyAx`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RootCTaxonomyAx_AFTER_INSERT` AFTER INSERT ON `RootCTaxonomyAx` FOR EACH ROW
-BEGIN
-insert into `OML`.`CTreeDsju`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RootCTaxonomyAx_AFTER_DELETE` AFTER DELETE ON `RootCTaxonomyAx` FOR EACH ROW
-BEGIN
-delete from `OML`.`CTreeDsju`;
-END$$
-
--- `OML`.`TlgyBdlSt`(x) iff `OML`.`RootCTaxonomyAx`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RootCTaxonomyAx_AFTER_INSERT` AFTER INSERT ON `RootCTaxonomyAx` FOR EACH ROW
-BEGIN
-insert into `OML`.`TlgyBdlSt`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RootCTaxonomyAx_AFTER_DELETE` AFTER DELETE ON `RootCTaxonomyAx` FOR EACH ROW
-BEGIN
-delete from `OML`.`TlgyBdlSt`;
-END$$
-
--- -----------------------------------------------------
--- Concrete Information Table `OML`.`SpeDsjtCAx` (SpecificDisjointConceptAxioms)
--- -----------------------------------------------------
-
--- `OML`.`DsjUOfCsAx`(x) iff `OML`.`SpeDsjtCAx`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`SpeDsjtCAx_AFTER_INSERT` AFTER INSERT ON `SpeDsjtCAx` FOR EACH ROW
-BEGIN
-insert into `OML`.`DsjUOfCsAx`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`SpeDsjtCAx_AFTER_DELETE` AFTER DELETE ON `SpeDsjtCAx` FOR EACH ROW
-BEGIN
-delete from `OML`.`DsjUOfCsAx`;
-END$$
-
--- -----------------------------------------------------
--- Concrete Information Table `OML`.`AnnotPropVals` (AnnotationPropertyValues)
--- -----------------------------------------------------
-
--- `OML`.`NonLogEs`(x) iff `OML`.`AnnotPropVals`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`AnnotPropVals_AFTER_INSERT` AFTER INSERT ON `AnnotPropVals` FOR EACH ROW
-BEGIN
-insert into `OML`.`NonLogEs`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`AnnotPropVals_AFTER_DELETE` AFTER DELETE ON `AnnotPropVals` FOR EACH ROW
-BEGIN
-delete from `OML`.`NonLogEs`;
-END$$
-
--- `OML`.`ValCRefTs`(x) iff `OML`.`AnnotPropVals`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`AnnotPropVals_AFTER_INSERT` AFTER INSERT ON `AnnotPropVals` FOR EACH ROW
-BEGIN
-insert into `OML`.`ValCRefTs`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`AnnotPropVals_AFTER_DELETE` AFTER DELETE ON `AnnotPropVals` FOR EACH ROW
-BEGIN
-delete from `OML`.`ValCRefTs`;
-END$$
-
--- -----------------------------------------------------
--- Concrete Information Table `OML`.`AnonymousCUnionAx` (AnonymousConceptUnionAxioms)
--- -----------------------------------------------------
-
--- `OML`.`CTreeDsju`(x) iff `OML`.`AnonymousCUnionAx`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`AnonymousCUnionAx_AFTER_INSERT` AFTER INSERT ON `AnonymousCUnionAx` FOR EACH ROW
-BEGIN
-insert into `OML`.`CTreeDsju`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`AnonymousCUnionAx_AFTER_DELETE` AFTER DELETE ON `AnonymousCUnionAx` FOR EACH ROW
-BEGIN
-delete from `OML`.`CTreeDsju`;
-END$$
-
--- `OML`.`DsjUOfCsAx`(x) iff `OML`.`AnonymousCUnionAx`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`AnonymousCUnionAx_AFTER_INSERT` AFTER INSERT ON `AnonymousCUnionAx` FOR EACH ROW
-BEGIN
-insert into `OML`.`DsjUOfCsAx`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`AnonymousCUnionAx_AFTER_DELETE` AFTER DELETE ON `AnonymousCUnionAx` FOR EACH ROW
-BEGIN
-delete from `OML`.`DsjUOfCsAx`;
-END$$
-
--- -----------------------------------------------------
--- Concrete Information Table `OML`.`AspectP` (AspectPredicates)
--- -----------------------------------------------------
-
--- `OML`.`UrySegP`(x) iff `OML`.`AspectP`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`AspectP_AFTER_INSERT` AFTER INSERT ON `AspectP` FOR EACH ROW
-BEGIN
-insert into `OML`.`UrySegP`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`AspectP_AFTER_DELETE` AFTER DELETE ON `AspectP` FOR EACH ROW
-BEGIN
-delete from `OML`.`UrySegP`;
-END$$
-
--- -----------------------------------------------------
--- Concrete Information Table `OML`.`ChainRules` (ChainRules)
--- -----------------------------------------------------
-
--- `OML`.`Rules`(x) iff `OML`.`ChainRules`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`ChainRules_AFTER_INSERT` AFTER INSERT ON `ChainRules` FOR EACH ROW
-BEGIN
-insert into `OML`.`Rules`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`ChainRules_AFTER_DELETE` AFTER DELETE ON `ChainRules` FOR EACH ROW
-BEGIN
-delete from `OML`.`Rules`;
-END$$
-
--- -----------------------------------------------------
--- Concrete Information Table `OML`.`CIs` (ConceptInstances)
--- -----------------------------------------------------
-
--- `OML`.`CualESI`(x) iff `OML`.`CIs`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`CIs_AFTER_INSERT` AFTER INSERT ON `CIs` FOR EACH ROW
-BEGIN
-insert into `OML`.`CualESI`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`CIs_AFTER_DELETE` AFTER DELETE ON `CIs` FOR EACH ROW
-BEGIN
-delete from `OML`.`CualESI`;
-END$$
-
--- -----------------------------------------------------
--- Concrete Information Table `OML`.`CP` (ConceptPredicates)
--- -----------------------------------------------------
-
--- `OML`.`UrySegP`(x) iff `OML`.`CP`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`CP_AFTER_INSERT` AFTER INSERT ON `CP` FOR EACH ROW
-BEGIN
-insert into `OML`.`UrySegP`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`CP_AFTER_DELETE` AFTER DELETE ON `CP` FOR EACH ROW
-BEGIN
-delete from `OML`.`UrySegP`;
-END$$
-
--- -----------------------------------------------------
--- Concrete Information Table `OML`.`DBoxes` (DescriptionBoxes)
--- -----------------------------------------------------
-
--- `OML`.`Mods`(x) iff `OML`.`DBoxes`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`DBoxes_AFTER_INSERT` AFTER INSERT ON `DBoxes` FOR EACH ROW
-BEGIN
-insert into `OML`.`Mods`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`DBoxes_AFTER_DELETE` AFTER DELETE ON `DBoxes` FOR EACH ROW
-BEGIN
-delete from `OML`.`Mods`;
 END$$
 
 -- -----------------------------------------------------
 -- Concrete Information Table `OML`.`DBoxExtCWDef` (DescriptionBoxExtendsClosedWorldDefinitions)
 -- -----------------------------------------------------
 
--- `OML`.`DBoxRels`(x) iff `OML`.`DBoxExtCWDef`(x)
 DELIMITER $$
 USE `OML`$$
 CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`DBoxExtCWDef_AFTER_INSERT` AFTER INSERT ON `DBoxExtCWDef` FOR EACH ROW
 BEGIN
-insert into `OML`.`DBoxRels`() value (uuid);
+-- CrossReferencableKinds(x) if DescriptionBoxExtendsClosedWorldDefinitions(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if DescriptionBoxExtendsClosedWorldDefinitions(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- DescriptionBoxRelationships(x) if DescriptionBoxExtendsClosedWorldDefinitions(x)
+insert into `OML`.`DBoxRels`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if DescriptionBoxExtendsClosedWorldDefinitions(x)
+insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
+-- ElementCrossReferenceTuples(x) if DescriptionBoxExtendsClosedWorldDefinitions(x)
+insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if DescriptionBoxExtendsClosedWorldDefinitions(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if DescriptionBoxExtendsClosedWorldDefinitions(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleEdges(x) if DescriptionBoxExtendsClosedWorldDefinitions(x)
+insert into `OML`.`ModEdges`(`uuid`) values(new.`uuid`);
 END$$
 
 DELIMITER $$
 USE `OML`$$
 CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`DBoxExtCWDef_AFTER_DELETE` AFTER DELETE ON `DBoxExtCWDef` FOR EACH ROW
 BEGIN
+-- CrossReferencableKinds(x) if DescriptionBoxExtendsClosedWorldDefinitions(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if DescriptionBoxExtendsClosedWorldDefinitions(x)
+delete from `OML`.`CRTK`;
+-- DescriptionBoxRelationships(x) if DescriptionBoxExtendsClosedWorldDefinitions(x)
 delete from `OML`.`DBoxRels`;
+-- ExtrinsicIdentityKinds(x) if DescriptionBoxExtendsClosedWorldDefinitions(x)
+delete from `OML`.`EIdK`;
+-- ElementCrossReferenceTuples(x) if DescriptionBoxExtendsClosedWorldDefinitions(x)
+delete from `OML`.`EltCRefTs`;
+-- IdentityKinds(x) if DescriptionBoxExtendsClosedWorldDefinitions(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if DescriptionBoxExtendsClosedWorldDefinitions(x)
+delete from `OML`.`LogEs`;
+-- ModuleEdges(x) if DescriptionBoxExtendsClosedWorldDefinitions(x)
+delete from `OML`.`ModEdges`;
 END$$
 
 -- -----------------------------------------------------
 -- Concrete Information Table `OML`.`DBoxRfns` (DescriptionBoxRefinements)
 -- -----------------------------------------------------
 
--- `OML`.`DBoxRels`(x) iff `OML`.`DBoxRfns`(x)
 DELIMITER $$
 USE `OML`$$
 CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`DBoxRfns_AFTER_INSERT` AFTER INSERT ON `DBoxRfns` FOR EACH ROW
 BEGIN
-insert into `OML`.`DBoxRels`() value (uuid);
+-- CrossReferencableKinds(x) if DescriptionBoxRefinements(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if DescriptionBoxRefinements(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- DescriptionBoxRelationships(x) if DescriptionBoxRefinements(x)
+insert into `OML`.`DBoxRels`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if DescriptionBoxRefinements(x)
+insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
+-- ElementCrossReferenceTuples(x) if DescriptionBoxRefinements(x)
+insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if DescriptionBoxRefinements(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if DescriptionBoxRefinements(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleEdges(x) if DescriptionBoxRefinements(x)
+insert into `OML`.`ModEdges`(`uuid`) values(new.`uuid`);
 END$$
 
 DELIMITER $$
 USE `OML`$$
 CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`DBoxRfns_AFTER_DELETE` AFTER DELETE ON `DBoxRfns` FOR EACH ROW
 BEGIN
+-- CrossReferencableKinds(x) if DescriptionBoxRefinements(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if DescriptionBoxRefinements(x)
+delete from `OML`.`CRTK`;
+-- DescriptionBoxRelationships(x) if DescriptionBoxRefinements(x)
 delete from `OML`.`DBoxRels`;
-END$$
-
--- -----------------------------------------------------
--- Concrete Information Table `OML`.`EStPPtrRAx` (EntityStructuredDataPropertyParticularRestrictionAxioms)
--- -----------------------------------------------------
-
--- `OML`.`EStPRAx`(x) iff `OML`.`EStPPtrRAx`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EStPPtrRAx_AFTER_INSERT` AFTER INSERT ON `EStPPtrRAx` FOR EACH ROW
-BEGIN
-insert into `OML`.`EStPRAx`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EStPPtrRAx_AFTER_DELETE` AFTER DELETE ON `EStPPtrRAx` FOR EACH ROW
-BEGIN
-delete from `OML`.`EStPRAx`;
-END$$
-
--- `OML`.`RStPCtxts`(x) iff `OML`.`EStPPtrRAx`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EStPPtrRAx_AFTER_INSERT` AFTER INSERT ON `EStPPtrRAx` FOR EACH ROW
-BEGIN
-insert into `OML`.`RStPCtxts`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EStPPtrRAx_AFTER_DELETE` AFTER DELETE ON `EStPPtrRAx` FOR EACH ROW
-BEGIN
-delete from `OML`.`RStPCtxts`;
-END$$
-
--- -----------------------------------------------------
--- Concrete Information Table `OML`.`RRIs` (ReifiedRelationshipInstances)
--- -----------------------------------------------------
-
--- `OML`.`CualESI`(x) iff `OML`.`RRIs`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRIs_AFTER_INSERT` AFTER INSERT ON `RRIs` FOR EACH ROW
-BEGIN
-insert into `OML`.`CualESI`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRIs_AFTER_DELETE` AFTER DELETE ON `RRIs` FOR EACH ROW
-BEGIN
-delete from `OML`.`CualESI`;
-END$$
-
--- -----------------------------------------------------
--- Concrete Information Table `OML`.`RRIDomains` (ReifiedRelationshipInstanceDomains)
--- -----------------------------------------------------
-
--- `OML`.`EltCRefTs`(x) iff `OML`.`RRIDomains`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRIDomains_AFTER_INSERT` AFTER INSERT ON `RRIDomains` FOR EACH ROW
-BEGIN
-insert into `OML`.`EltCRefTs`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRIDomains_AFTER_DELETE` AFTER DELETE ON `RRIDomains` FOR EACH ROW
-BEGIN
+-- ExtrinsicIdentityKinds(x) if DescriptionBoxRefinements(x)
+delete from `OML`.`EIdK`;
+-- ElementCrossReferenceTuples(x) if DescriptionBoxRefinements(x)
 delete from `OML`.`EltCRefTs`;
-END$$
-
--- `OML`.`TlgyIAsts`(x) iff `OML`.`RRIDomains`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRIDomains_AFTER_INSERT` AFTER INSERT ON `RRIDomains` FOR EACH ROW
-BEGIN
-insert into `OML`.`TlgyIAsts`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRIDomains_AFTER_DELETE` AFTER DELETE ON `RRIDomains` FOR EACH ROW
-BEGIN
-delete from `OML`.`TlgyIAsts`;
+-- IdentityKinds(x) if DescriptionBoxRefinements(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if DescriptionBoxRefinements(x)
+delete from `OML`.`LogEs`;
+-- ModuleEdges(x) if DescriptionBoxRefinements(x)
+delete from `OML`.`ModEdges`;
 END$$
 
 -- -----------------------------------------------------
--- Concrete Information Table `OML`.`RRIRanges` (ReifiedRelationshipInstanceRanges)
+-- Concrete Information Table `OML`.`BinScRs` (BinaryScalarRestrictions)
 -- -----------------------------------------------------
 
--- `OML`.`EltCRefTs`(x) iff `OML`.`RRIRanges`(x)
 DELIMITER $$
 USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRIRanges_AFTER_INSERT` AFTER INSERT ON `RRIRanges` FOR EACH ROW
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`BinScRs_AFTER_INSERT` AFTER INSERT ON `BinScRs` FOR EACH ROW
 BEGIN
-insert into `OML`.`EltCRefTs`() value (uuid);
+-- CrossReferencableKinds(x) if BinaryScalarRestrictions(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if BinaryScalarRestrictions(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- DataRanges(x) if BinaryScalarRestrictions(x)
+insert into `OML`.`Drs`(`uuid`) values(new.`uuid`);
+-- Datatypes(x) if BinaryScalarRestrictions(x)
+insert into `OML`.`Dt`(`uuid`) values(new.`uuid`);
+-- IntrinsicIdentityKinds(x) if BinaryScalarRestrictions(x)
+insert into `OML`.`IIdK`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if BinaryScalarRestrictions(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if BinaryScalarRestrictions(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleElements(x) if BinaryScalarRestrictions(x)
+insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- Resources(x) if BinaryScalarRestrictions(x)
+insert into `OML`.`Ress`(`uuid`) values(new.`uuid`);
+-- RestrictedDataRanges(x) if BinaryScalarRestrictions(x)
+insert into `OML`.`RestDrs`(`uuid`) values(new.`uuid`);
+-- TerminologyBoxStatements(x) if BinaryScalarRestrictions(x)
+insert into `OML`.`TBoxSt`(`uuid`) values(new.`uuid`);
+-- Terms(x) if BinaryScalarRestrictions(x)
+insert into `OML`.`Terms`(`uuid`) values(new.`uuid`);
 END$$
 
 DELIMITER $$
 USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRIRanges_AFTER_DELETE` AFTER DELETE ON `RRIRanges` FOR EACH ROW
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`BinScRs_AFTER_DELETE` AFTER DELETE ON `BinScRs` FOR EACH ROW
 BEGIN
+-- CrossReferencableKinds(x) if BinaryScalarRestrictions(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if BinaryScalarRestrictions(x)
+delete from `OML`.`CRTK`;
+-- DataRanges(x) if BinaryScalarRestrictions(x)
+delete from `OML`.`Drs`;
+-- Datatypes(x) if BinaryScalarRestrictions(x)
+delete from `OML`.`Dt`;
+-- IntrinsicIdentityKinds(x) if BinaryScalarRestrictions(x)
+delete from `OML`.`IIdK`;
+-- IdentityKinds(x) if BinaryScalarRestrictions(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if BinaryScalarRestrictions(x)
+delete from `OML`.`LogEs`;
+-- ModuleElements(x) if BinaryScalarRestrictions(x)
+delete from `OML`.`ModElts`;
+-- Resources(x) if BinaryScalarRestrictions(x)
+delete from `OML`.`Ress`;
+-- RestrictedDataRanges(x) if BinaryScalarRestrictions(x)
+delete from `OML`.`RestDrs`;
+-- TerminologyBoxStatements(x) if BinaryScalarRestrictions(x)
+delete from `OML`.`TBoxSt`;
+-- Terms(x) if BinaryScalarRestrictions(x)
+delete from `OML`.`Terms`;
+END$$
+
+-- -----------------------------------------------------
+-- Concrete Information Table `OML`.`IRIScRs` (IRIScalarRestrictions)
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`IRIScRs_AFTER_INSERT` AFTER INSERT ON `IRIScRs` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if IRIScalarRestrictions(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if IRIScalarRestrictions(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- DataRanges(x) if IRIScalarRestrictions(x)
+insert into `OML`.`Drs`(`uuid`) values(new.`uuid`);
+-- Datatypes(x) if IRIScalarRestrictions(x)
+insert into `OML`.`Dt`(`uuid`) values(new.`uuid`);
+-- IntrinsicIdentityKinds(x) if IRIScalarRestrictions(x)
+insert into `OML`.`IIdK`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if IRIScalarRestrictions(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if IRIScalarRestrictions(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleElements(x) if IRIScalarRestrictions(x)
+insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- Resources(x) if IRIScalarRestrictions(x)
+insert into `OML`.`Ress`(`uuid`) values(new.`uuid`);
+-- RestrictedDataRanges(x) if IRIScalarRestrictions(x)
+insert into `OML`.`RestDrs`(`uuid`) values(new.`uuid`);
+-- TerminologyBoxStatements(x) if IRIScalarRestrictions(x)
+insert into `OML`.`TBoxSt`(`uuid`) values(new.`uuid`);
+-- Terms(x) if IRIScalarRestrictions(x)
+insert into `OML`.`Terms`(`uuid`) values(new.`uuid`);
+END$$
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`IRIScRs_AFTER_DELETE` AFTER DELETE ON `IRIScRs` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if IRIScalarRestrictions(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if IRIScalarRestrictions(x)
+delete from `OML`.`CRTK`;
+-- DataRanges(x) if IRIScalarRestrictions(x)
+delete from `OML`.`Drs`;
+-- Datatypes(x) if IRIScalarRestrictions(x)
+delete from `OML`.`Dt`;
+-- IntrinsicIdentityKinds(x) if IRIScalarRestrictions(x)
+delete from `OML`.`IIdK`;
+-- IdentityKinds(x) if IRIScalarRestrictions(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if IRIScalarRestrictions(x)
+delete from `OML`.`LogEs`;
+-- ModuleElements(x) if IRIScalarRestrictions(x)
+delete from `OML`.`ModElts`;
+-- Resources(x) if IRIScalarRestrictions(x)
+delete from `OML`.`Ress`;
+-- RestrictedDataRanges(x) if IRIScalarRestrictions(x)
+delete from `OML`.`RestDrs`;
+-- TerminologyBoxStatements(x) if IRIScalarRestrictions(x)
+delete from `OML`.`TBoxSt`;
+-- Terms(x) if IRIScalarRestrictions(x)
+delete from `OML`.`Terms`;
+END$$
+
+-- -----------------------------------------------------
+-- Concrete Information Table `OML`.`NumericScRs` (NumericScalarRestrictions)
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`NumericScRs_AFTER_INSERT` AFTER INSERT ON `NumericScRs` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if NumericScalarRestrictions(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if NumericScalarRestrictions(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- DataRanges(x) if NumericScalarRestrictions(x)
+insert into `OML`.`Drs`(`uuid`) values(new.`uuid`);
+-- Datatypes(x) if NumericScalarRestrictions(x)
+insert into `OML`.`Dt`(`uuid`) values(new.`uuid`);
+-- IntrinsicIdentityKinds(x) if NumericScalarRestrictions(x)
+insert into `OML`.`IIdK`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if NumericScalarRestrictions(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if NumericScalarRestrictions(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleElements(x) if NumericScalarRestrictions(x)
+insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- Resources(x) if NumericScalarRestrictions(x)
+insert into `OML`.`Ress`(`uuid`) values(new.`uuid`);
+-- RestrictedDataRanges(x) if NumericScalarRestrictions(x)
+insert into `OML`.`RestDrs`(`uuid`) values(new.`uuid`);
+-- TerminologyBoxStatements(x) if NumericScalarRestrictions(x)
+insert into `OML`.`TBoxSt`(`uuid`) values(new.`uuid`);
+-- Terms(x) if NumericScalarRestrictions(x)
+insert into `OML`.`Terms`(`uuid`) values(new.`uuid`);
+END$$
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`NumericScRs_AFTER_DELETE` AFTER DELETE ON `NumericScRs` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if NumericScalarRestrictions(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if NumericScalarRestrictions(x)
+delete from `OML`.`CRTK`;
+-- DataRanges(x) if NumericScalarRestrictions(x)
+delete from `OML`.`Drs`;
+-- Datatypes(x) if NumericScalarRestrictions(x)
+delete from `OML`.`Dt`;
+-- IntrinsicIdentityKinds(x) if NumericScalarRestrictions(x)
+delete from `OML`.`IIdK`;
+-- IdentityKinds(x) if NumericScalarRestrictions(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if NumericScalarRestrictions(x)
+delete from `OML`.`LogEs`;
+-- ModuleElements(x) if NumericScalarRestrictions(x)
+delete from `OML`.`ModElts`;
+-- Resources(x) if NumericScalarRestrictions(x)
+delete from `OML`.`Ress`;
+-- RestrictedDataRanges(x) if NumericScalarRestrictions(x)
+delete from `OML`.`RestDrs`;
+-- TerminologyBoxStatements(x) if NumericScalarRestrictions(x)
+delete from `OML`.`TBoxSt`;
+-- Terms(x) if NumericScalarRestrictions(x)
+delete from `OML`.`Terms`;
+END$$
+
+-- -----------------------------------------------------
+-- Concrete Information Table `OML`.`PlainLitScRs` (PlainLiteralScalarRestrictions)
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`PlainLitScRs_AFTER_INSERT` AFTER INSERT ON `PlainLitScRs` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if PlainLiteralScalarRestrictions(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if PlainLiteralScalarRestrictions(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- DataRanges(x) if PlainLiteralScalarRestrictions(x)
+insert into `OML`.`Drs`(`uuid`) values(new.`uuid`);
+-- Datatypes(x) if PlainLiteralScalarRestrictions(x)
+insert into `OML`.`Dt`(`uuid`) values(new.`uuid`);
+-- IntrinsicIdentityKinds(x) if PlainLiteralScalarRestrictions(x)
+insert into `OML`.`IIdK`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if PlainLiteralScalarRestrictions(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if PlainLiteralScalarRestrictions(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleElements(x) if PlainLiteralScalarRestrictions(x)
+insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- Resources(x) if PlainLiteralScalarRestrictions(x)
+insert into `OML`.`Ress`(`uuid`) values(new.`uuid`);
+-- RestrictedDataRanges(x) if PlainLiteralScalarRestrictions(x)
+insert into `OML`.`RestDrs`(`uuid`) values(new.`uuid`);
+-- TerminologyBoxStatements(x) if PlainLiteralScalarRestrictions(x)
+insert into `OML`.`TBoxSt`(`uuid`) values(new.`uuid`);
+-- Terms(x) if PlainLiteralScalarRestrictions(x)
+insert into `OML`.`Terms`(`uuid`) values(new.`uuid`);
+END$$
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`PlainLitScRs_AFTER_DELETE` AFTER DELETE ON `PlainLitScRs` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if PlainLiteralScalarRestrictions(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if PlainLiteralScalarRestrictions(x)
+delete from `OML`.`CRTK`;
+-- DataRanges(x) if PlainLiteralScalarRestrictions(x)
+delete from `OML`.`Drs`;
+-- Datatypes(x) if PlainLiteralScalarRestrictions(x)
+delete from `OML`.`Dt`;
+-- IntrinsicIdentityKinds(x) if PlainLiteralScalarRestrictions(x)
+delete from `OML`.`IIdK`;
+-- IdentityKinds(x) if PlainLiteralScalarRestrictions(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if PlainLiteralScalarRestrictions(x)
+delete from `OML`.`LogEs`;
+-- ModuleElements(x) if PlainLiteralScalarRestrictions(x)
+delete from `OML`.`ModElts`;
+-- Resources(x) if PlainLiteralScalarRestrictions(x)
+delete from `OML`.`Ress`;
+-- RestrictedDataRanges(x) if PlainLiteralScalarRestrictions(x)
+delete from `OML`.`RestDrs`;
+-- TerminologyBoxStatements(x) if PlainLiteralScalarRestrictions(x)
+delete from `OML`.`TBoxSt`;
+-- Terms(x) if PlainLiteralScalarRestrictions(x)
+delete from `OML`.`Terms`;
+END$$
+
+-- -----------------------------------------------------
+-- Concrete Information Table `OML`.`ScOneOfRs` (ScalarOneOfRestrictions)
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`ScOneOfRs_AFTER_INSERT` AFTER INSERT ON `ScOneOfRs` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if ScalarOneOfRestrictions(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if ScalarOneOfRestrictions(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- DataRanges(x) if ScalarOneOfRestrictions(x)
+insert into `OML`.`Drs`(`uuid`) values(new.`uuid`);
+-- Datatypes(x) if ScalarOneOfRestrictions(x)
+insert into `OML`.`Dt`(`uuid`) values(new.`uuid`);
+-- IntrinsicIdentityKinds(x) if ScalarOneOfRestrictions(x)
+insert into `OML`.`IIdK`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if ScalarOneOfRestrictions(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if ScalarOneOfRestrictions(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleElements(x) if ScalarOneOfRestrictions(x)
+insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- Resources(x) if ScalarOneOfRestrictions(x)
+insert into `OML`.`Ress`(`uuid`) values(new.`uuid`);
+-- RestrictedDataRanges(x) if ScalarOneOfRestrictions(x)
+insert into `OML`.`RestDrs`(`uuid`) values(new.`uuid`);
+-- TerminologyBoxStatements(x) if ScalarOneOfRestrictions(x)
+insert into `OML`.`TBoxSt`(`uuid`) values(new.`uuid`);
+-- Terms(x) if ScalarOneOfRestrictions(x)
+insert into `OML`.`Terms`(`uuid`) values(new.`uuid`);
+END$$
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`ScOneOfRs_AFTER_DELETE` AFTER DELETE ON `ScOneOfRs` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if ScalarOneOfRestrictions(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if ScalarOneOfRestrictions(x)
+delete from `OML`.`CRTK`;
+-- DataRanges(x) if ScalarOneOfRestrictions(x)
+delete from `OML`.`Drs`;
+-- Datatypes(x) if ScalarOneOfRestrictions(x)
+delete from `OML`.`Dt`;
+-- IntrinsicIdentityKinds(x) if ScalarOneOfRestrictions(x)
+delete from `OML`.`IIdK`;
+-- IdentityKinds(x) if ScalarOneOfRestrictions(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if ScalarOneOfRestrictions(x)
+delete from `OML`.`LogEs`;
+-- ModuleElements(x) if ScalarOneOfRestrictions(x)
+delete from `OML`.`ModElts`;
+-- Resources(x) if ScalarOneOfRestrictions(x)
+delete from `OML`.`Ress`;
+-- RestrictedDataRanges(x) if ScalarOneOfRestrictions(x)
+delete from `OML`.`RestDrs`;
+-- TerminologyBoxStatements(x) if ScalarOneOfRestrictions(x)
+delete from `OML`.`TBoxSt`;
+-- Terms(x) if ScalarOneOfRestrictions(x)
+delete from `OML`.`Terms`;
+END$$
+
+-- -----------------------------------------------------
+-- Concrete Information Table `OML`.`ScOneOfLitAx` (ScalarOneOfLiteralAxioms)
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`ScOneOfLitAx_AFTER_INSERT` AFTER INSERT ON `ScOneOfLitAx` FOR EACH ROW
+BEGIN
+-- CrossReferencabilityKinds(x) if ScalarOneOfLiteralAxioms(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if ScalarOneOfLiteralAxioms(x)
+insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if ScalarOneOfLiteralAxioms(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if ScalarOneOfLiteralAxioms(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleElements(x) if ScalarOneOfLiteralAxioms(x)
+insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- NonCrossReferencableKinds(x) if ScalarOneOfLiteralAxioms(x)
+insert into `OML`.`NonCRBK`(`uuid`) values(new.`uuid`);
+-- TerminologyBoxStatements(x) if ScalarOneOfLiteralAxioms(x)
+insert into `OML`.`TBoxSt`(`uuid`) values(new.`uuid`);
+-- TermAxioms(x) if ScalarOneOfLiteralAxioms(x)
+insert into `OML`.`TermAx`(`uuid`) values(new.`uuid`);
+-- ValueCrossReferenceTuples(x) if ScalarOneOfLiteralAxioms(x)
+insert into `OML`.`ValCRefTs`(`uuid`) values(new.`uuid`);
+END$$
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`ScOneOfLitAx_AFTER_DELETE` AFTER DELETE ON `ScOneOfLitAx` FOR EACH ROW
+BEGIN
+-- CrossReferencabilityKinds(x) if ScalarOneOfLiteralAxioms(x)
+delete from `OML`.`CRTK`;
+-- ExtrinsicIdentityKinds(x) if ScalarOneOfLiteralAxioms(x)
+delete from `OML`.`EIdK`;
+-- IdentityKinds(x) if ScalarOneOfLiteralAxioms(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if ScalarOneOfLiteralAxioms(x)
+delete from `OML`.`LogEs`;
+-- ModuleElements(x) if ScalarOneOfLiteralAxioms(x)
+delete from `OML`.`ModElts`;
+-- NonCrossReferencableKinds(x) if ScalarOneOfLiteralAxioms(x)
+delete from `OML`.`NonCRBK`;
+-- TerminologyBoxStatements(x) if ScalarOneOfLiteralAxioms(x)
+delete from `OML`.`TBoxSt`;
+-- TermAxioms(x) if ScalarOneOfLiteralAxioms(x)
+delete from `OML`.`TermAx`;
+-- ValueCrossReferenceTuples(x) if ScalarOneOfLiteralAxioms(x)
+delete from `OML`.`ValCRefTs`;
+END$$
+
+-- -----------------------------------------------------
+-- Concrete Information Table `OML`.`StringScRs` (StringScalarRestrictions)
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`StringScRs_AFTER_INSERT` AFTER INSERT ON `StringScRs` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if StringScalarRestrictions(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if StringScalarRestrictions(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- DataRanges(x) if StringScalarRestrictions(x)
+insert into `OML`.`Drs`(`uuid`) values(new.`uuid`);
+-- Datatypes(x) if StringScalarRestrictions(x)
+insert into `OML`.`Dt`(`uuid`) values(new.`uuid`);
+-- IntrinsicIdentityKinds(x) if StringScalarRestrictions(x)
+insert into `OML`.`IIdK`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if StringScalarRestrictions(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if StringScalarRestrictions(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleElements(x) if StringScalarRestrictions(x)
+insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- Resources(x) if StringScalarRestrictions(x)
+insert into `OML`.`Ress`(`uuid`) values(new.`uuid`);
+-- RestrictedDataRanges(x) if StringScalarRestrictions(x)
+insert into `OML`.`RestDrs`(`uuid`) values(new.`uuid`);
+-- TerminologyBoxStatements(x) if StringScalarRestrictions(x)
+insert into `OML`.`TBoxSt`(`uuid`) values(new.`uuid`);
+-- Terms(x) if StringScalarRestrictions(x)
+insert into `OML`.`Terms`(`uuid`) values(new.`uuid`);
+END$$
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`StringScRs_AFTER_DELETE` AFTER DELETE ON `StringScRs` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if StringScalarRestrictions(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if StringScalarRestrictions(x)
+delete from `OML`.`CRTK`;
+-- DataRanges(x) if StringScalarRestrictions(x)
+delete from `OML`.`Drs`;
+-- Datatypes(x) if StringScalarRestrictions(x)
+delete from `OML`.`Dt`;
+-- IntrinsicIdentityKinds(x) if StringScalarRestrictions(x)
+delete from `OML`.`IIdK`;
+-- IdentityKinds(x) if StringScalarRestrictions(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if StringScalarRestrictions(x)
+delete from `OML`.`LogEs`;
+-- ModuleElements(x) if StringScalarRestrictions(x)
+delete from `OML`.`ModElts`;
+-- Resources(x) if StringScalarRestrictions(x)
+delete from `OML`.`Ress`;
+-- RestrictedDataRanges(x) if StringScalarRestrictions(x)
+delete from `OML`.`RestDrs`;
+-- TerminologyBoxStatements(x) if StringScalarRestrictions(x)
+delete from `OML`.`TBoxSt`;
+-- Terms(x) if StringScalarRestrictions(x)
+delete from `OML`.`Terms`;
+END$$
+
+-- -----------------------------------------------------
+-- Concrete Information Table `OML`.`SynonymScRs` (SynonymScalarRestrictions)
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`SynonymScRs_AFTER_INSERT` AFTER INSERT ON `SynonymScRs` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if SynonymScalarRestrictions(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if SynonymScalarRestrictions(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- DataRanges(x) if SynonymScalarRestrictions(x)
+insert into `OML`.`Drs`(`uuid`) values(new.`uuid`);
+-- Datatypes(x) if SynonymScalarRestrictions(x)
+insert into `OML`.`Dt`(`uuid`) values(new.`uuid`);
+-- IntrinsicIdentityKinds(x) if SynonymScalarRestrictions(x)
+insert into `OML`.`IIdK`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if SynonymScalarRestrictions(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if SynonymScalarRestrictions(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleElements(x) if SynonymScalarRestrictions(x)
+insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- Resources(x) if SynonymScalarRestrictions(x)
+insert into `OML`.`Ress`(`uuid`) values(new.`uuid`);
+-- RestrictedDataRanges(x) if SynonymScalarRestrictions(x)
+insert into `OML`.`RestDrs`(`uuid`) values(new.`uuid`);
+-- TerminologyBoxStatements(x) if SynonymScalarRestrictions(x)
+insert into `OML`.`TBoxSt`(`uuid`) values(new.`uuid`);
+-- Terms(x) if SynonymScalarRestrictions(x)
+insert into `OML`.`Terms`(`uuid`) values(new.`uuid`);
+END$$
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`SynonymScRs_AFTER_DELETE` AFTER DELETE ON `SynonymScRs` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if SynonymScalarRestrictions(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if SynonymScalarRestrictions(x)
+delete from `OML`.`CRTK`;
+-- DataRanges(x) if SynonymScalarRestrictions(x)
+delete from `OML`.`Drs`;
+-- Datatypes(x) if SynonymScalarRestrictions(x)
+delete from `OML`.`Dt`;
+-- IntrinsicIdentityKinds(x) if SynonymScalarRestrictions(x)
+delete from `OML`.`IIdK`;
+-- IdentityKinds(x) if SynonymScalarRestrictions(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if SynonymScalarRestrictions(x)
+delete from `OML`.`LogEs`;
+-- ModuleElements(x) if SynonymScalarRestrictions(x)
+delete from `OML`.`ModElts`;
+-- Resources(x) if SynonymScalarRestrictions(x)
+delete from `OML`.`Ress`;
+-- RestrictedDataRanges(x) if SynonymScalarRestrictions(x)
+delete from `OML`.`RestDrs`;
+-- TerminologyBoxStatements(x) if SynonymScalarRestrictions(x)
+delete from `OML`.`TBoxSt`;
+-- Terms(x) if SynonymScalarRestrictions(x)
+delete from `OML`.`Terms`;
+END$$
+
+-- -----------------------------------------------------
+-- Concrete Information Table `OML`.`TimeScRs` (TimeScalarRestrictions)
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`TimeScRs_AFTER_INSERT` AFTER INSERT ON `TimeScRs` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if TimeScalarRestrictions(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if TimeScalarRestrictions(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- DataRanges(x) if TimeScalarRestrictions(x)
+insert into `OML`.`Drs`(`uuid`) values(new.`uuid`);
+-- Datatypes(x) if TimeScalarRestrictions(x)
+insert into `OML`.`Dt`(`uuid`) values(new.`uuid`);
+-- IntrinsicIdentityKinds(x) if TimeScalarRestrictions(x)
+insert into `OML`.`IIdK`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if TimeScalarRestrictions(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if TimeScalarRestrictions(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleElements(x) if TimeScalarRestrictions(x)
+insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- Resources(x) if TimeScalarRestrictions(x)
+insert into `OML`.`Ress`(`uuid`) values(new.`uuid`);
+-- RestrictedDataRanges(x) if TimeScalarRestrictions(x)
+insert into `OML`.`RestDrs`(`uuid`) values(new.`uuid`);
+-- TerminologyBoxStatements(x) if TimeScalarRestrictions(x)
+insert into `OML`.`TBoxSt`(`uuid`) values(new.`uuid`);
+-- Terms(x) if TimeScalarRestrictions(x)
+insert into `OML`.`Terms`(`uuid`) values(new.`uuid`);
+END$$
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`TimeScRs_AFTER_DELETE` AFTER DELETE ON `TimeScRs` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if TimeScalarRestrictions(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if TimeScalarRestrictions(x)
+delete from `OML`.`CRTK`;
+-- DataRanges(x) if TimeScalarRestrictions(x)
+delete from `OML`.`Drs`;
+-- Datatypes(x) if TimeScalarRestrictions(x)
+delete from `OML`.`Dt`;
+-- IntrinsicIdentityKinds(x) if TimeScalarRestrictions(x)
+delete from `OML`.`IIdK`;
+-- IdentityKinds(x) if TimeScalarRestrictions(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if TimeScalarRestrictions(x)
+delete from `OML`.`LogEs`;
+-- ModuleElements(x) if TimeScalarRestrictions(x)
+delete from `OML`.`ModElts`;
+-- Resources(x) if TimeScalarRestrictions(x)
+delete from `OML`.`Ress`;
+-- RestrictedDataRanges(x) if TimeScalarRestrictions(x)
+delete from `OML`.`RestDrs`;
+-- TerminologyBoxStatements(x) if TimeScalarRestrictions(x)
+delete from `OML`.`TBoxSt`;
+-- Terms(x) if TimeScalarRestrictions(x)
+delete from `OML`.`Terms`;
+END$$
+
+-- -----------------------------------------------------
+-- Concrete Information Table `OML`.`EScPs` (EntityScalarDataProperties)
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EScPs_AFTER_INSERT` AFTER INSERT ON `EScPs` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if EntityScalarDataProperties(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if EntityScalarDataProperties(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- DataRelationshipDomains(x) if EntityScalarDataProperties(x)
+insert into `OML`.`DRelDomains`(`uuid`) values(new.`uuid`);
+-- DataRelationshipFromEntities(x) if EntityScalarDataProperties(x)
+insert into `OML`.`DRelFromEs`(`uuid`) values(new.`uuid`);
+-- DataRelationshipRanges(x) if EntityScalarDataProperties(x)
+insert into `OML`.`DRelRanges`(`uuid`) values(new.`uuid`);
+-- DataRelationshipToScalars(x) if EntityScalarDataProperties(x)
+insert into `OML`.`DRelToScs`(`uuid`) values(new.`uuid`);
+-- DataRelationships(x) if EntityScalarDataProperties(x)
+insert into `OML`.`DRels`(`uuid`) values(new.`uuid`);
+-- DirectedBinaryRelationshipKinds(x) if EntityScalarDataProperties(x)
+insert into `OML`.`DirBinRelKinds`(`uuid`) values(new.`uuid`);
+-- IntrinsicIdentityKinds(x) if EntityScalarDataProperties(x)
+insert into `OML`.`IIdK`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if EntityScalarDataProperties(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if EntityScalarDataProperties(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleElements(x) if EntityScalarDataProperties(x)
+insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- Resources(x) if EntityScalarDataProperties(x)
+insert into `OML`.`Ress`(`uuid`) values(new.`uuid`);
+-- TerminologyBoxStatements(x) if EntityScalarDataProperties(x)
+insert into `OML`.`TBoxSt`(`uuid`) values(new.`uuid`);
+-- Terms(x) if EntityScalarDataProperties(x)
+insert into `OML`.`Terms`(`uuid`) values(new.`uuid`);
+END$$
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EScPs_AFTER_DELETE` AFTER DELETE ON `EScPs` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if EntityScalarDataProperties(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if EntityScalarDataProperties(x)
+delete from `OML`.`CRTK`;
+-- DataRelationshipDomains(x) if EntityScalarDataProperties(x)
+delete from `OML`.`DRelDomains`;
+-- DataRelationshipFromEntities(x) if EntityScalarDataProperties(x)
+delete from `OML`.`DRelFromEs`;
+-- DataRelationshipRanges(x) if EntityScalarDataProperties(x)
+delete from `OML`.`DRelRanges`;
+-- DataRelationshipToScalars(x) if EntityScalarDataProperties(x)
+delete from `OML`.`DRelToScs`;
+-- DataRelationships(x) if EntityScalarDataProperties(x)
+delete from `OML`.`DRels`;
+-- DirectedBinaryRelationshipKinds(x) if EntityScalarDataProperties(x)
+delete from `OML`.`DirBinRelKinds`;
+-- IntrinsicIdentityKinds(x) if EntityScalarDataProperties(x)
+delete from `OML`.`IIdK`;
+-- IdentityKinds(x) if EntityScalarDataProperties(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if EntityScalarDataProperties(x)
+delete from `OML`.`LogEs`;
+-- ModuleElements(x) if EntityScalarDataProperties(x)
+delete from `OML`.`ModElts`;
+-- Resources(x) if EntityScalarDataProperties(x)
+delete from `OML`.`Ress`;
+-- TerminologyBoxStatements(x) if EntityScalarDataProperties(x)
+delete from `OML`.`TBoxSt`;
+-- Terms(x) if EntityScalarDataProperties(x)
+delete from `OML`.`Terms`;
+END$$
+
+-- -----------------------------------------------------
+-- Concrete Information Table `OML`.`EStPs` (EntityStructuredDataProperties)
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EStPs_AFTER_INSERT` AFTER INSERT ON `EStPs` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if EntityStructuredDataProperties(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if EntityStructuredDataProperties(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- DataRelationshipDomains(x) if EntityStructuredDataProperties(x)
+insert into `OML`.`DRelDomains`(`uuid`) values(new.`uuid`);
+-- DataRelationshipFromEntities(x) if EntityStructuredDataProperties(x)
+insert into `OML`.`DRelFromEs`(`uuid`) values(new.`uuid`);
+-- DataRelationshipRanges(x) if EntityStructuredDataProperties(x)
+insert into `OML`.`DRelRanges`(`uuid`) values(new.`uuid`);
+-- DataRelationshipToStructures(x) if EntityStructuredDataProperties(x)
+insert into `OML`.`DRelToSts`(`uuid`) values(new.`uuid`);
+-- DataRelationships(x) if EntityStructuredDataProperties(x)
+insert into `OML`.`DRels`(`uuid`) values(new.`uuid`);
+-- DirectedBinaryRelationshipKinds(x) if EntityStructuredDataProperties(x)
+insert into `OML`.`DirBinRelKinds`(`uuid`) values(new.`uuid`);
+-- IntrinsicIdentityKinds(x) if EntityStructuredDataProperties(x)
+insert into `OML`.`IIdK`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if EntityStructuredDataProperties(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if EntityStructuredDataProperties(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleElements(x) if EntityStructuredDataProperties(x)
+insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- Resources(x) if EntityStructuredDataProperties(x)
+insert into `OML`.`Ress`(`uuid`) values(new.`uuid`);
+-- TerminologyBoxStatements(x) if EntityStructuredDataProperties(x)
+insert into `OML`.`TBoxSt`(`uuid`) values(new.`uuid`);
+-- Terms(x) if EntityStructuredDataProperties(x)
+insert into `OML`.`Terms`(`uuid`) values(new.`uuid`);
+END$$
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EStPs_AFTER_DELETE` AFTER DELETE ON `EStPs` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if EntityStructuredDataProperties(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if EntityStructuredDataProperties(x)
+delete from `OML`.`CRTK`;
+-- DataRelationshipDomains(x) if EntityStructuredDataProperties(x)
+delete from `OML`.`DRelDomains`;
+-- DataRelationshipFromEntities(x) if EntityStructuredDataProperties(x)
+delete from `OML`.`DRelFromEs`;
+-- DataRelationshipRanges(x) if EntityStructuredDataProperties(x)
+delete from `OML`.`DRelRanges`;
+-- DataRelationshipToStructures(x) if EntityStructuredDataProperties(x)
+delete from `OML`.`DRelToSts`;
+-- DataRelationships(x) if EntityStructuredDataProperties(x)
+delete from `OML`.`DRels`;
+-- DirectedBinaryRelationshipKinds(x) if EntityStructuredDataProperties(x)
+delete from `OML`.`DirBinRelKinds`;
+-- IntrinsicIdentityKinds(x) if EntityStructuredDataProperties(x)
+delete from `OML`.`IIdK`;
+-- IdentityKinds(x) if EntityStructuredDataProperties(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if EntityStructuredDataProperties(x)
+delete from `OML`.`LogEs`;
+-- ModuleElements(x) if EntityStructuredDataProperties(x)
+delete from `OML`.`ModElts`;
+-- Resources(x) if EntityStructuredDataProperties(x)
+delete from `OML`.`Ress`;
+-- TerminologyBoxStatements(x) if EntityStructuredDataProperties(x)
+delete from `OML`.`TBoxSt`;
+-- Terms(x) if EntityStructuredDataProperties(x)
+delete from `OML`.`Terms`;
+END$$
+
+-- -----------------------------------------------------
+-- Concrete Information Table `OML`.`ScPs` (ScalarDataProperties)
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`ScPs_AFTER_INSERT` AFTER INSERT ON `ScPs` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if ScalarDataProperties(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if ScalarDataProperties(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- DataRelationshipDomains(x) if ScalarDataProperties(x)
+insert into `OML`.`DRelDomains`(`uuid`) values(new.`uuid`);
+-- DataRelationshipFromStructures(x) if ScalarDataProperties(x)
+insert into `OML`.`DRelFromSts`(`uuid`) values(new.`uuid`);
+-- DataRelationshipRanges(x) if ScalarDataProperties(x)
+insert into `OML`.`DRelRanges`(`uuid`) values(new.`uuid`);
+-- DataRelationshipToScalars(x) if ScalarDataProperties(x)
+insert into `OML`.`DRelToScs`(`uuid`) values(new.`uuid`);
+-- DataRelationships(x) if ScalarDataProperties(x)
+insert into `OML`.`DRels`(`uuid`) values(new.`uuid`);
+-- DirectedBinaryRelationshipKinds(x) if ScalarDataProperties(x)
+insert into `OML`.`DirBinRelKinds`(`uuid`) values(new.`uuid`);
+-- IntrinsicIdentityKinds(x) if ScalarDataProperties(x)
+insert into `OML`.`IIdK`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if ScalarDataProperties(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if ScalarDataProperties(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleElements(x) if ScalarDataProperties(x)
+insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- Resources(x) if ScalarDataProperties(x)
+insert into `OML`.`Ress`(`uuid`) values(new.`uuid`);
+-- TerminologyBoxStatements(x) if ScalarDataProperties(x)
+insert into `OML`.`TBoxSt`(`uuid`) values(new.`uuid`);
+-- Terms(x) if ScalarDataProperties(x)
+insert into `OML`.`Terms`(`uuid`) values(new.`uuid`);
+END$$
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`ScPs_AFTER_DELETE` AFTER DELETE ON `ScPs` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if ScalarDataProperties(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if ScalarDataProperties(x)
+delete from `OML`.`CRTK`;
+-- DataRelationshipDomains(x) if ScalarDataProperties(x)
+delete from `OML`.`DRelDomains`;
+-- DataRelationshipFromStructures(x) if ScalarDataProperties(x)
+delete from `OML`.`DRelFromSts`;
+-- DataRelationshipRanges(x) if ScalarDataProperties(x)
+delete from `OML`.`DRelRanges`;
+-- DataRelationshipToScalars(x) if ScalarDataProperties(x)
+delete from `OML`.`DRelToScs`;
+-- DataRelationships(x) if ScalarDataProperties(x)
+delete from `OML`.`DRels`;
+-- DirectedBinaryRelationshipKinds(x) if ScalarDataProperties(x)
+delete from `OML`.`DirBinRelKinds`;
+-- IntrinsicIdentityKinds(x) if ScalarDataProperties(x)
+delete from `OML`.`IIdK`;
+-- IdentityKinds(x) if ScalarDataProperties(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if ScalarDataProperties(x)
+delete from `OML`.`LogEs`;
+-- ModuleElements(x) if ScalarDataProperties(x)
+delete from `OML`.`ModElts`;
+-- Resources(x) if ScalarDataProperties(x)
+delete from `OML`.`Ress`;
+-- TerminologyBoxStatements(x) if ScalarDataProperties(x)
+delete from `OML`.`TBoxSt`;
+-- Terms(x) if ScalarDataProperties(x)
+delete from `OML`.`Terms`;
+END$$
+
+-- -----------------------------------------------------
+-- Concrete Information Table `OML`.`StPs` (StructuredDataProperties)
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`StPs_AFTER_INSERT` AFTER INSERT ON `StPs` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if StructuredDataProperties(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if StructuredDataProperties(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- DataRelationshipDomains(x) if StructuredDataProperties(x)
+insert into `OML`.`DRelDomains`(`uuid`) values(new.`uuid`);
+-- DataRelationshipFromStructures(x) if StructuredDataProperties(x)
+insert into `OML`.`DRelFromSts`(`uuid`) values(new.`uuid`);
+-- DataRelationshipRanges(x) if StructuredDataProperties(x)
+insert into `OML`.`DRelRanges`(`uuid`) values(new.`uuid`);
+-- DataRelationshipToStructures(x) if StructuredDataProperties(x)
+insert into `OML`.`DRelToSts`(`uuid`) values(new.`uuid`);
+-- DataRelationships(x) if StructuredDataProperties(x)
+insert into `OML`.`DRels`(`uuid`) values(new.`uuid`);
+-- DirectedBinaryRelationshipKinds(x) if StructuredDataProperties(x)
+insert into `OML`.`DirBinRelKinds`(`uuid`) values(new.`uuid`);
+-- IntrinsicIdentityKinds(x) if StructuredDataProperties(x)
+insert into `OML`.`IIdK`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if StructuredDataProperties(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if StructuredDataProperties(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleElements(x) if StructuredDataProperties(x)
+insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- Resources(x) if StructuredDataProperties(x)
+insert into `OML`.`Ress`(`uuid`) values(new.`uuid`);
+-- TerminologyBoxStatements(x) if StructuredDataProperties(x)
+insert into `OML`.`TBoxSt`(`uuid`) values(new.`uuid`);
+-- Terms(x) if StructuredDataProperties(x)
+insert into `OML`.`Terms`(`uuid`) values(new.`uuid`);
+END$$
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`StPs_AFTER_DELETE` AFTER DELETE ON `StPs` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if StructuredDataProperties(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if StructuredDataProperties(x)
+delete from `OML`.`CRTK`;
+-- DataRelationshipDomains(x) if StructuredDataProperties(x)
+delete from `OML`.`DRelDomains`;
+-- DataRelationshipFromStructures(x) if StructuredDataProperties(x)
+delete from `OML`.`DRelFromSts`;
+-- DataRelationshipRanges(x) if StructuredDataProperties(x)
+delete from `OML`.`DRelRanges`;
+-- DataRelationshipToStructures(x) if StructuredDataProperties(x)
+delete from `OML`.`DRelToSts`;
+-- DataRelationships(x) if StructuredDataProperties(x)
+delete from `OML`.`DRels`;
+-- DirectedBinaryRelationshipKinds(x) if StructuredDataProperties(x)
+delete from `OML`.`DirBinRelKinds`;
+-- IntrinsicIdentityKinds(x) if StructuredDataProperties(x)
+delete from `OML`.`IIdK`;
+-- IdentityKinds(x) if StructuredDataProperties(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if StructuredDataProperties(x)
+delete from `OML`.`LogEs`;
+-- ModuleElements(x) if StructuredDataProperties(x)
+delete from `OML`.`ModElts`;
+-- Resources(x) if StructuredDataProperties(x)
+delete from `OML`.`Ress`;
+-- TerminologyBoxStatements(x) if StructuredDataProperties(x)
+delete from `OML`.`TBoxSt`;
+-- Terms(x) if StructuredDataProperties(x)
+delete from `OML`.`Terms`;
+END$$
+
+-- -----------------------------------------------------
+-- Concrete Information Table `OML`.`RRs` (ReifiedRelationships)
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRs_AFTER_INSERT` AFTER INSERT ON `RRs` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if ReifiedRelationships(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if ReifiedRelationships(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- ConceptualEntities(x) if ReifiedRelationships(x)
+insert into `OML`.`CualEs`(`uuid`) values(new.`uuid`);
+-- DirectedBinaryRelationshipKinds(x) if ReifiedRelationships(x)
+insert into `OML`.`DirBinRelKinds`(`uuid`) values(new.`uuid`);
+-- EntityRelationships(x) if ReifiedRelationships(x)
+insert into `OML`.`ERels`(`uuid`) values(new.`uuid`);
+-- Entities(x) if ReifiedRelationships(x)
+insert into `OML`.`Es`(`uuid`) values(new.`uuid`);
+-- IntrinsicIdentityKinds(x) if ReifiedRelationships(x)
+insert into `OML`.`IIdK`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if ReifiedRelationships(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if ReifiedRelationships(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleElements(x) if ReifiedRelationships(x)
+insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- Resources(x) if ReifiedRelationships(x)
+insert into `OML`.`Ress`(`uuid`) values(new.`uuid`);
+-- TerminologyBoxStatements(x) if ReifiedRelationships(x)
+insert into `OML`.`TBoxSt`(`uuid`) values(new.`uuid`);
+-- Terms(x) if ReifiedRelationships(x)
+insert into `OML`.`Terms`(`uuid`) values(new.`uuid`);
+END$$
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRs_AFTER_DELETE` AFTER DELETE ON `RRs` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if ReifiedRelationships(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if ReifiedRelationships(x)
+delete from `OML`.`CRTK`;
+-- ConceptualEntities(x) if ReifiedRelationships(x)
+delete from `OML`.`CualEs`;
+-- DirectedBinaryRelationshipKinds(x) if ReifiedRelationships(x)
+delete from `OML`.`DirBinRelKinds`;
+-- EntityRelationships(x) if ReifiedRelationships(x)
+delete from `OML`.`ERels`;
+-- Entities(x) if ReifiedRelationships(x)
+delete from `OML`.`Es`;
+-- IntrinsicIdentityKinds(x) if ReifiedRelationships(x)
+delete from `OML`.`IIdK`;
+-- IdentityKinds(x) if ReifiedRelationships(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if ReifiedRelationships(x)
+delete from `OML`.`LogEs`;
+-- ModuleElements(x) if ReifiedRelationships(x)
+delete from `OML`.`ModElts`;
+-- Resources(x) if ReifiedRelationships(x)
+delete from `OML`.`Ress`;
+-- TerminologyBoxStatements(x) if ReifiedRelationships(x)
+delete from `OML`.`TBoxSt`;
+-- Terms(x) if ReifiedRelationships(x)
+delete from `OML`.`Terms`;
+END$$
+
+-- -----------------------------------------------------
+-- Concrete Information Table `OML`.`URs` (UnreifiedRelationships)
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`URs_AFTER_INSERT` AFTER INSERT ON `URs` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if UnreifiedRelationships(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if UnreifiedRelationships(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- DirectedBinaryRelationshipKinds(x) if UnreifiedRelationships(x)
+insert into `OML`.`DirBinRelKinds`(`uuid`) values(new.`uuid`);
+-- EntityRelationships(x) if UnreifiedRelationships(x)
+insert into `OML`.`ERels`(`uuid`) values(new.`uuid`);
+-- IntrinsicIdentityKinds(x) if UnreifiedRelationships(x)
+insert into `OML`.`IIdK`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if UnreifiedRelationships(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if UnreifiedRelationships(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleElements(x) if UnreifiedRelationships(x)
+insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- Resources(x) if UnreifiedRelationships(x)
+insert into `OML`.`Ress`(`uuid`) values(new.`uuid`);
+-- TerminologyBoxStatements(x) if UnreifiedRelationships(x)
+insert into `OML`.`TBoxSt`(`uuid`) values(new.`uuid`);
+-- Terms(x) if UnreifiedRelationships(x)
+insert into `OML`.`Terms`(`uuid`) values(new.`uuid`);
+END$$
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`URs_AFTER_DELETE` AFTER DELETE ON `URs` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if UnreifiedRelationships(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if UnreifiedRelationships(x)
+delete from `OML`.`CRTK`;
+-- DirectedBinaryRelationshipKinds(x) if UnreifiedRelationships(x)
+delete from `OML`.`DirBinRelKinds`;
+-- EntityRelationships(x) if UnreifiedRelationships(x)
+delete from `OML`.`ERels`;
+-- IntrinsicIdentityKinds(x) if UnreifiedRelationships(x)
+delete from `OML`.`IIdK`;
+-- IdentityKinds(x) if UnreifiedRelationships(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if UnreifiedRelationships(x)
+delete from `OML`.`LogEs`;
+-- ModuleElements(x) if UnreifiedRelationships(x)
+delete from `OML`.`ModElts`;
+-- Resources(x) if UnreifiedRelationships(x)
+delete from `OML`.`Ress`;
+-- TerminologyBoxStatements(x) if UnreifiedRelationships(x)
+delete from `OML`.`TBoxSt`;
+-- Terms(x) if UnreifiedRelationships(x)
+delete from `OML`.`Terms`;
+END$$
+
+-- -----------------------------------------------------
+-- Concrete Information Table `OML`.`ChainRules` (ChainRules)
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`ChainRules_AFTER_INSERT` AFTER INSERT ON `ChainRules` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if ChainRules(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if ChainRules(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- IntrinsicIdentityKinds(x) if ChainRules(x)
+insert into `OML`.`IIdK`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if ChainRules(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if ChainRules(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleElements(x) if ChainRules(x)
+insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- Resources(x) if ChainRules(x)
+insert into `OML`.`Ress`(`uuid`) values(new.`uuid`);
+-- Rules(x) if ChainRules(x)
+insert into `OML`.`Rules`(`uuid`) values(new.`uuid`);
+-- TerminologyBoxStatements(x) if ChainRules(x)
+insert into `OML`.`TBoxSt`(`uuid`) values(new.`uuid`);
+-- Terms(x) if ChainRules(x)
+insert into `OML`.`Terms`(`uuid`) values(new.`uuid`);
+END$$
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`ChainRules_AFTER_DELETE` AFTER DELETE ON `ChainRules` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if ChainRules(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if ChainRules(x)
+delete from `OML`.`CRTK`;
+-- IntrinsicIdentityKinds(x) if ChainRules(x)
+delete from `OML`.`IIdK`;
+-- IdentityKinds(x) if ChainRules(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if ChainRules(x)
+delete from `OML`.`LogEs`;
+-- ModuleElements(x) if ChainRules(x)
+delete from `OML`.`ModElts`;
+-- Resources(x) if ChainRules(x)
+delete from `OML`.`Ress`;
+-- Rules(x) if ChainRules(x)
+delete from `OML`.`Rules`;
+-- TerminologyBoxStatements(x) if ChainRules(x)
+delete from `OML`.`TBoxSt`;
+-- Terms(x) if ChainRules(x)
+delete from `OML`.`Terms`;
+END$$
+
+-- -----------------------------------------------------
+-- Concrete Information Table `OML`.`RuleBodySegs` (RuleBodySegments)
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RuleBodySegs_AFTER_INSERT` AFTER INSERT ON `RuleBodySegs` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if RuleBodySegments(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if RuleBodySegments(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if RuleBodySegments(x)
+insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
+-- ElementCrossReferenceTuples(x) if RuleBodySegments(x)
+insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if RuleBodySegments(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if RuleBodySegments(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+END$$
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RuleBodySegs_AFTER_DELETE` AFTER DELETE ON `RuleBodySegs` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if RuleBodySegments(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if RuleBodySegments(x)
+delete from `OML`.`CRTK`;
+-- ExtrinsicIdentityKinds(x) if RuleBodySegments(x)
+delete from `OML`.`EIdK`;
+-- ElementCrossReferenceTuples(x) if RuleBodySegments(x)
 delete from `OML`.`EltCRefTs`;
-END$$
-
--- `OML`.`TlgyIAsts`(x) iff `OML`.`RRIRanges`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRIRanges_AFTER_INSERT` AFTER INSERT ON `RRIRanges` FOR EACH ROW
-BEGIN
-insert into `OML`.`TlgyIAsts`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRIRanges_AFTER_DELETE` AFTER DELETE ON `RRIRanges` FOR EACH ROW
-BEGIN
-delete from `OML`.`TlgyIAsts`;
+-- IdentityKinds(x) if RuleBodySegments(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if RuleBodySegments(x)
+delete from `OML`.`LogEs`;
 END$$
 
 -- -----------------------------------------------------
--- Concrete Information Table `OML`.`RRInvPropP` (ReifiedRelationshipInversePropertyPredicates)
+-- Concrete Information Table `OML`.`AspectP` (AspectPredicates)
 -- -----------------------------------------------------
 
--- `OML`.`BinSegRevPropP`(x) iff `OML`.`RRInvPropP`(x)
 DELIMITER $$
 USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRInvPropP_AFTER_INSERT` AFTER INSERT ON `RRInvPropP` FOR EACH ROW
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`AspectP_AFTER_INSERT` AFTER INSERT ON `AspectP` FOR EACH ROW
 BEGIN
-insert into `OML`.`BinSegRevPropP`() value (uuid);
+-- CrossReferencableKinds(x) if AspectPredicates(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if AspectPredicates(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if AspectPredicates(x)
+insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
+-- ElementCrossReferenceTuples(x) if AspectPredicates(x)
+insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if AspectPredicates(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if AspectPredicates(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- SegmentPredicates(x) if AspectPredicates(x)
+insert into `OML`.`SegP`(`uuid`) values(new.`uuid`);
+-- UnarySegmentPredicates(x) if AspectPredicates(x)
+insert into `OML`.`UrySegP`(`uuid`) values(new.`uuid`);
 END$$
 
 DELIMITER $$
 USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRInvPropP_AFTER_DELETE` AFTER DELETE ON `RRInvPropP` FOR EACH ROW
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`AspectP_AFTER_DELETE` AFTER DELETE ON `AspectP` FOR EACH ROW
 BEGIN
-delete from `OML`.`BinSegRevPropP`;
+-- CrossReferencableKinds(x) if AspectPredicates(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if AspectPredicates(x)
+delete from `OML`.`CRTK`;
+-- ExtrinsicIdentityKinds(x) if AspectPredicates(x)
+delete from `OML`.`EIdK`;
+-- ElementCrossReferenceTuples(x) if AspectPredicates(x)
+delete from `OML`.`EltCRefTs`;
+-- IdentityKinds(x) if AspectPredicates(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if AspectPredicates(x)
+delete from `OML`.`LogEs`;
+-- SegmentPredicates(x) if AspectPredicates(x)
+delete from `OML`.`SegP`;
+-- UnarySegmentPredicates(x) if AspectPredicates(x)
+delete from `OML`.`UrySegP`;
+END$$
+
+-- -----------------------------------------------------
+-- Concrete Information Table `OML`.`CP` (ConceptPredicates)
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`CP_AFTER_INSERT` AFTER INSERT ON `CP` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if ConceptPredicates(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if ConceptPredicates(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if ConceptPredicates(x)
+insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
+-- ElementCrossReferenceTuples(x) if ConceptPredicates(x)
+insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if ConceptPredicates(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if ConceptPredicates(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- SegmentPredicates(x) if ConceptPredicates(x)
+insert into `OML`.`SegP`(`uuid`) values(new.`uuid`);
+-- UnarySegmentPredicates(x) if ConceptPredicates(x)
+insert into `OML`.`UrySegP`(`uuid`) values(new.`uuid`);
+END$$
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`CP_AFTER_DELETE` AFTER DELETE ON `CP` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if ConceptPredicates(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if ConceptPredicates(x)
+delete from `OML`.`CRTK`;
+-- ExtrinsicIdentityKinds(x) if ConceptPredicates(x)
+delete from `OML`.`EIdK`;
+-- ElementCrossReferenceTuples(x) if ConceptPredicates(x)
+delete from `OML`.`EltCRefTs`;
+-- IdentityKinds(x) if ConceptPredicates(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if ConceptPredicates(x)
+delete from `OML`.`LogEs`;
+-- SegmentPredicates(x) if ConceptPredicates(x)
+delete from `OML`.`SegP`;
+-- UnarySegmentPredicates(x) if ConceptPredicates(x)
+delete from `OML`.`UrySegP`;
 END$$
 
 -- -----------------------------------------------------
 -- Concrete Information Table `OML`.`RRP` (ReifiedRelationshipPredicates)
 -- -----------------------------------------------------
 
--- `OML`.`UrySegP`(x) iff `OML`.`RRP`(x)
 DELIMITER $$
 USE `OML`$$
 CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRP_AFTER_INSERT` AFTER INSERT ON `RRP` FOR EACH ROW
 BEGIN
-insert into `OML`.`UrySegP`() value (uuid);
+-- CrossReferencableKinds(x) if ReifiedRelationshipPredicates(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if ReifiedRelationshipPredicates(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if ReifiedRelationshipPredicates(x)
+insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
+-- ElementCrossReferenceTuples(x) if ReifiedRelationshipPredicates(x)
+insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if ReifiedRelationshipPredicates(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if ReifiedRelationshipPredicates(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- SegmentPredicates(x) if ReifiedRelationshipPredicates(x)
+insert into `OML`.`SegP`(`uuid`) values(new.`uuid`);
+-- UnarySegmentPredicates(x) if ReifiedRelationshipPredicates(x)
+insert into `OML`.`UrySegP`(`uuid`) values(new.`uuid`);
 END$$
 
 DELIMITER $$
 USE `OML`$$
 CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRP_AFTER_DELETE` AFTER DELETE ON `RRP` FOR EACH ROW
 BEGIN
+-- CrossReferencableKinds(x) if ReifiedRelationshipPredicates(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if ReifiedRelationshipPredicates(x)
+delete from `OML`.`CRTK`;
+-- ExtrinsicIdentityKinds(x) if ReifiedRelationshipPredicates(x)
+delete from `OML`.`EIdK`;
+-- ElementCrossReferenceTuples(x) if ReifiedRelationshipPredicates(x)
+delete from `OML`.`EltCRefTs`;
+-- IdentityKinds(x) if ReifiedRelationshipPredicates(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if ReifiedRelationshipPredicates(x)
+delete from `OML`.`LogEs`;
+-- SegmentPredicates(x) if ReifiedRelationshipPredicates(x)
+delete from `OML`.`SegP`;
+-- UnarySegmentPredicates(x) if ReifiedRelationshipPredicates(x)
 delete from `OML`.`UrySegP`;
 END$$
 
@@ -5080,321 +4462,1063 @@ END$$
 -- Concrete Information Table `OML`.`RRPropP` (ReifiedRelationshipPropertyPredicates)
 -- -----------------------------------------------------
 
--- `OML`.`BinSegFwdPropP`(x) iff `OML`.`RRPropP`(x)
 DELIMITER $$
 USE `OML`$$
 CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRPropP_AFTER_INSERT` AFTER INSERT ON `RRPropP` FOR EACH ROW
 BEGIN
-insert into `OML`.`BinSegFwdPropP`() value (uuid);
+-- BinarySegmentForwardPropertyPredicates(x) if ReifiedRelationshipPropertyPredicates(x)
+insert into `OML`.`BinSegFwdPropP`(`uuid`) values(new.`uuid`);
+-- BinarySegmentPropertyPredicates(x) if ReifiedRelationshipPropertyPredicates(x)
+insert into `OML`.`BinSegPropP`(`uuid`) values(new.`uuid`);
+-- CrossReferencableKinds(x) if ReifiedRelationshipPropertyPredicates(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if ReifiedRelationshipPropertyPredicates(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if ReifiedRelationshipPropertyPredicates(x)
+insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
+-- ElementCrossReferenceTuples(x) if ReifiedRelationshipPropertyPredicates(x)
+insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if ReifiedRelationshipPropertyPredicates(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if ReifiedRelationshipPropertyPredicates(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- SegmentPredicates(x) if ReifiedRelationshipPropertyPredicates(x)
+insert into `OML`.`SegP`(`uuid`) values(new.`uuid`);
 END$$
 
 DELIMITER $$
 USE `OML`$$
 CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRPropP_AFTER_DELETE` AFTER DELETE ON `RRPropP` FOR EACH ROW
 BEGIN
+-- BinarySegmentForwardPropertyPredicates(x) if ReifiedRelationshipPropertyPredicates(x)
 delete from `OML`.`BinSegFwdPropP`;
-END$$
-
--- -----------------------------------------------------
--- Concrete Information Table `OML`.`RRSrcInvPropP` (ReifiedRelationshipSourceInversePropertyPredicates)
--- -----------------------------------------------------
-
--- `OML`.`BinSegRevPropP`(x) iff `OML`.`RRSrcInvPropP`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRSrcInvPropP_AFTER_INSERT` AFTER INSERT ON `RRSrcInvPropP` FOR EACH ROW
-BEGIN
-insert into `OML`.`BinSegRevPropP`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRSrcInvPropP_AFTER_DELETE` AFTER DELETE ON `RRSrcInvPropP` FOR EACH ROW
-BEGIN
-delete from `OML`.`BinSegRevPropP`;
+-- BinarySegmentPropertyPredicates(x) if ReifiedRelationshipPropertyPredicates(x)
+delete from `OML`.`BinSegPropP`;
+-- CrossReferencableKinds(x) if ReifiedRelationshipPropertyPredicates(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if ReifiedRelationshipPropertyPredicates(x)
+delete from `OML`.`CRTK`;
+-- ExtrinsicIdentityKinds(x) if ReifiedRelationshipPropertyPredicates(x)
+delete from `OML`.`EIdK`;
+-- ElementCrossReferenceTuples(x) if ReifiedRelationshipPropertyPredicates(x)
+delete from `OML`.`EltCRefTs`;
+-- IdentityKinds(x) if ReifiedRelationshipPropertyPredicates(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if ReifiedRelationshipPropertyPredicates(x)
+delete from `OML`.`LogEs`;
+-- SegmentPredicates(x) if ReifiedRelationshipPropertyPredicates(x)
+delete from `OML`.`SegP`;
 END$$
 
 -- -----------------------------------------------------
 -- Concrete Information Table `OML`.`RRSrcPropP` (ReifiedRelationshipSourcePropertyPredicates)
 -- -----------------------------------------------------
 
--- `OML`.`BinSegFwdPropP`(x) iff `OML`.`RRSrcPropP`(x)
 DELIMITER $$
 USE `OML`$$
 CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRSrcPropP_AFTER_INSERT` AFTER INSERT ON `RRSrcPropP` FOR EACH ROW
 BEGIN
-insert into `OML`.`BinSegFwdPropP`() value (uuid);
+-- BinarySegmentForwardPropertyPredicates(x) if ReifiedRelationshipSourcePropertyPredicates(x)
+insert into `OML`.`BinSegFwdPropP`(`uuid`) values(new.`uuid`);
+-- BinarySegmentPropertyPredicates(x) if ReifiedRelationshipSourcePropertyPredicates(x)
+insert into `OML`.`BinSegPropP`(`uuid`) values(new.`uuid`);
+-- CrossReferencableKinds(x) if ReifiedRelationshipSourcePropertyPredicates(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if ReifiedRelationshipSourcePropertyPredicates(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if ReifiedRelationshipSourcePropertyPredicates(x)
+insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
+-- ElementCrossReferenceTuples(x) if ReifiedRelationshipSourcePropertyPredicates(x)
+insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if ReifiedRelationshipSourcePropertyPredicates(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if ReifiedRelationshipSourcePropertyPredicates(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- SegmentPredicates(x) if ReifiedRelationshipSourcePropertyPredicates(x)
+insert into `OML`.`SegP`(`uuid`) values(new.`uuid`);
 END$$
 
 DELIMITER $$
 USE `OML`$$
 CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRSrcPropP_AFTER_DELETE` AFTER DELETE ON `RRSrcPropP` FOR EACH ROW
 BEGIN
+-- BinarySegmentForwardPropertyPredicates(x) if ReifiedRelationshipSourcePropertyPredicates(x)
 delete from `OML`.`BinSegFwdPropP`;
-END$$
-
--- -----------------------------------------------------
--- Concrete Information Table `OML`.`RRTgtInvPropP` (ReifiedRelationshipTargetInversePropertyPredicates)
--- -----------------------------------------------------
-
--- `OML`.`BinSegRevPropP`(x) iff `OML`.`RRTgtInvPropP`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRTgtInvPropP_AFTER_INSERT` AFTER INSERT ON `RRTgtInvPropP` FOR EACH ROW
-BEGIN
-insert into `OML`.`BinSegRevPropP`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRTgtInvPropP_AFTER_DELETE` AFTER DELETE ON `RRTgtInvPropP` FOR EACH ROW
-BEGIN
-delete from `OML`.`BinSegRevPropP`;
+-- BinarySegmentPropertyPredicates(x) if ReifiedRelationshipSourcePropertyPredicates(x)
+delete from `OML`.`BinSegPropP`;
+-- CrossReferencableKinds(x) if ReifiedRelationshipSourcePropertyPredicates(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if ReifiedRelationshipSourcePropertyPredicates(x)
+delete from `OML`.`CRTK`;
+-- ExtrinsicIdentityKinds(x) if ReifiedRelationshipSourcePropertyPredicates(x)
+delete from `OML`.`EIdK`;
+-- ElementCrossReferenceTuples(x) if ReifiedRelationshipSourcePropertyPredicates(x)
+delete from `OML`.`EltCRefTs`;
+-- IdentityKinds(x) if ReifiedRelationshipSourcePropertyPredicates(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if ReifiedRelationshipSourcePropertyPredicates(x)
+delete from `OML`.`LogEs`;
+-- SegmentPredicates(x) if ReifiedRelationshipSourcePropertyPredicates(x)
+delete from `OML`.`SegP`;
 END$$
 
 -- -----------------------------------------------------
 -- Concrete Information Table `OML`.`RRTgtPropP` (ReifiedRelationshipTargetPropertyPredicates)
 -- -----------------------------------------------------
 
--- `OML`.`BinSegFwdPropP`(x) iff `OML`.`RRTgtPropP`(x)
 DELIMITER $$
 USE `OML`$$
 CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRTgtPropP_AFTER_INSERT` AFTER INSERT ON `RRTgtPropP` FOR EACH ROW
 BEGIN
-insert into `OML`.`BinSegFwdPropP`() value (uuid);
+-- BinarySegmentForwardPropertyPredicates(x) if ReifiedRelationshipTargetPropertyPredicates(x)
+insert into `OML`.`BinSegFwdPropP`(`uuid`) values(new.`uuid`);
+-- BinarySegmentPropertyPredicates(x) if ReifiedRelationshipTargetPropertyPredicates(x)
+insert into `OML`.`BinSegPropP`(`uuid`) values(new.`uuid`);
+-- CrossReferencableKinds(x) if ReifiedRelationshipTargetPropertyPredicates(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if ReifiedRelationshipTargetPropertyPredicates(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if ReifiedRelationshipTargetPropertyPredicates(x)
+insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
+-- ElementCrossReferenceTuples(x) if ReifiedRelationshipTargetPropertyPredicates(x)
+insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if ReifiedRelationshipTargetPropertyPredicates(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if ReifiedRelationshipTargetPropertyPredicates(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- SegmentPredicates(x) if ReifiedRelationshipTargetPropertyPredicates(x)
+insert into `OML`.`SegP`(`uuid`) values(new.`uuid`);
 END$$
 
 DELIMITER $$
 USE `OML`$$
 CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRTgtPropP_AFTER_DELETE` AFTER DELETE ON `RRTgtPropP` FOR EACH ROW
 BEGIN
+-- BinarySegmentForwardPropertyPredicates(x) if ReifiedRelationshipTargetPropertyPredicates(x)
 delete from `OML`.`BinSegFwdPropP`;
-END$$
-
--- -----------------------------------------------------
--- Concrete Information Table `OML`.`RScPVals` (RestrictionScalarDataPropertyValues)
--- -----------------------------------------------------
-
--- `OML`.`LogEs`(x) iff `OML`.`RScPVals`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RScPVals_AFTER_INSERT` AFTER INSERT ON `RScPVals` FOR EACH ROW
-BEGIN
-insert into `OML`.`LogEs`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RScPVals_AFTER_DELETE` AFTER DELETE ON `RScPVals` FOR EACH ROW
-BEGIN
+-- BinarySegmentPropertyPredicates(x) if ReifiedRelationshipTargetPropertyPredicates(x)
+delete from `OML`.`BinSegPropP`;
+-- CrossReferencableKinds(x) if ReifiedRelationshipTargetPropertyPredicates(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if ReifiedRelationshipTargetPropertyPredicates(x)
+delete from `OML`.`CRTK`;
+-- ExtrinsicIdentityKinds(x) if ReifiedRelationshipTargetPropertyPredicates(x)
+delete from `OML`.`EIdK`;
+-- ElementCrossReferenceTuples(x) if ReifiedRelationshipTargetPropertyPredicates(x)
+delete from `OML`.`EltCRefTs`;
+-- IdentityKinds(x) if ReifiedRelationshipTargetPropertyPredicates(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if ReifiedRelationshipTargetPropertyPredicates(x)
 delete from `OML`.`LogEs`;
+-- SegmentPredicates(x) if ReifiedRelationshipTargetPropertyPredicates(x)
+delete from `OML`.`SegP`;
 END$$
 
--- `OML`.`ValCRefTs`(x) iff `OML`.`RScPVals`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RScPVals_AFTER_INSERT` AFTER INSERT ON `RScPVals` FOR EACH ROW
-BEGIN
-insert into `OML`.`ValCRefTs`() value (uuid);
-END$$
+-- -----------------------------------------------------
+-- Concrete Information Table `OML`.`URPropP` (UnreifiedRelationshipPropertyPredicates)
+-- -----------------------------------------------------
 
 DELIMITER $$
 USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RScPVals_AFTER_DELETE` AFTER DELETE ON `RScPVals` FOR EACH ROW
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`URPropP_AFTER_INSERT` AFTER INSERT ON `URPropP` FOR EACH ROW
 BEGIN
+-- BinarySegmentForwardPropertyPredicates(x) if UnreifiedRelationshipPropertyPredicates(x)
+insert into `OML`.`BinSegFwdPropP`(`uuid`) values(new.`uuid`);
+-- BinarySegmentPropertyPredicates(x) if UnreifiedRelationshipPropertyPredicates(x)
+insert into `OML`.`BinSegPropP`(`uuid`) values(new.`uuid`);
+-- CrossReferencableKinds(x) if UnreifiedRelationshipPropertyPredicates(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if UnreifiedRelationshipPropertyPredicates(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if UnreifiedRelationshipPropertyPredicates(x)
+insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
+-- ElementCrossReferenceTuples(x) if UnreifiedRelationshipPropertyPredicates(x)
+insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if UnreifiedRelationshipPropertyPredicates(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if UnreifiedRelationshipPropertyPredicates(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- SegmentPredicates(x) if UnreifiedRelationshipPropertyPredicates(x)
+insert into `OML`.`SegP`(`uuid`) values(new.`uuid`);
+END$$
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`URPropP_AFTER_DELETE` AFTER DELETE ON `URPropP` FOR EACH ROW
+BEGIN
+-- BinarySegmentForwardPropertyPredicates(x) if UnreifiedRelationshipPropertyPredicates(x)
+delete from `OML`.`BinSegFwdPropP`;
+-- BinarySegmentPropertyPredicates(x) if UnreifiedRelationshipPropertyPredicates(x)
+delete from `OML`.`BinSegPropP`;
+-- CrossReferencableKinds(x) if UnreifiedRelationshipPropertyPredicates(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if UnreifiedRelationshipPropertyPredicates(x)
+delete from `OML`.`CRTK`;
+-- ExtrinsicIdentityKinds(x) if UnreifiedRelationshipPropertyPredicates(x)
+delete from `OML`.`EIdK`;
+-- ElementCrossReferenceTuples(x) if UnreifiedRelationshipPropertyPredicates(x)
+delete from `OML`.`EltCRefTs`;
+-- IdentityKinds(x) if UnreifiedRelationshipPropertyPredicates(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if UnreifiedRelationshipPropertyPredicates(x)
+delete from `OML`.`LogEs`;
+-- SegmentPredicates(x) if UnreifiedRelationshipPropertyPredicates(x)
+delete from `OML`.`SegP`;
+END$$
+
+-- -----------------------------------------------------
+-- Concrete Information Table `OML`.`RRInvPropP` (ReifiedRelationshipInversePropertyPredicates)
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRInvPropP_AFTER_INSERT` AFTER INSERT ON `RRInvPropP` FOR EACH ROW
+BEGIN
+-- BinarySegmentPropertyPredicates(x) if ReifiedRelationshipInversePropertyPredicates(x)
+insert into `OML`.`BinSegPropP`(`uuid`) values(new.`uuid`);
+-- BinarySegmentReversePropertyPredicates(x) if ReifiedRelationshipInversePropertyPredicates(x)
+insert into `OML`.`BinSegRevPropP`(`uuid`) values(new.`uuid`);
+-- CrossReferencableKinds(x) if ReifiedRelationshipInversePropertyPredicates(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if ReifiedRelationshipInversePropertyPredicates(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if ReifiedRelationshipInversePropertyPredicates(x)
+insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
+-- ElementCrossReferenceTuples(x) if ReifiedRelationshipInversePropertyPredicates(x)
+insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if ReifiedRelationshipInversePropertyPredicates(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if ReifiedRelationshipInversePropertyPredicates(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- SegmentPredicates(x) if ReifiedRelationshipInversePropertyPredicates(x)
+insert into `OML`.`SegP`(`uuid`) values(new.`uuid`);
+END$$
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRInvPropP_AFTER_DELETE` AFTER DELETE ON `RRInvPropP` FOR EACH ROW
+BEGIN
+-- BinarySegmentPropertyPredicates(x) if ReifiedRelationshipInversePropertyPredicates(x)
+delete from `OML`.`BinSegPropP`;
+-- BinarySegmentReversePropertyPredicates(x) if ReifiedRelationshipInversePropertyPredicates(x)
+delete from `OML`.`BinSegRevPropP`;
+-- CrossReferencableKinds(x) if ReifiedRelationshipInversePropertyPredicates(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if ReifiedRelationshipInversePropertyPredicates(x)
+delete from `OML`.`CRTK`;
+-- ExtrinsicIdentityKinds(x) if ReifiedRelationshipInversePropertyPredicates(x)
+delete from `OML`.`EIdK`;
+-- ElementCrossReferenceTuples(x) if ReifiedRelationshipInversePropertyPredicates(x)
+delete from `OML`.`EltCRefTs`;
+-- IdentityKinds(x) if ReifiedRelationshipInversePropertyPredicates(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if ReifiedRelationshipInversePropertyPredicates(x)
+delete from `OML`.`LogEs`;
+-- SegmentPredicates(x) if ReifiedRelationshipInversePropertyPredicates(x)
+delete from `OML`.`SegP`;
+END$$
+
+-- -----------------------------------------------------
+-- Concrete Information Table `OML`.`RRSrcInvPropP` (ReifiedRelationshipSourceInversePropertyPredicates)
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRSrcInvPropP_AFTER_INSERT` AFTER INSERT ON `RRSrcInvPropP` FOR EACH ROW
+BEGIN
+-- BinarySegmentPropertyPredicates(x) if ReifiedRelationshipSourceInversePropertyPredicates(x)
+insert into `OML`.`BinSegPropP`(`uuid`) values(new.`uuid`);
+-- BinarySegmentReversePropertyPredicates(x) if ReifiedRelationshipSourceInversePropertyPredicates(x)
+insert into `OML`.`BinSegRevPropP`(`uuid`) values(new.`uuid`);
+-- CrossReferencableKinds(x) if ReifiedRelationshipSourceInversePropertyPredicates(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if ReifiedRelationshipSourceInversePropertyPredicates(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if ReifiedRelationshipSourceInversePropertyPredicates(x)
+insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
+-- ElementCrossReferenceTuples(x) if ReifiedRelationshipSourceInversePropertyPredicates(x)
+insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if ReifiedRelationshipSourceInversePropertyPredicates(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if ReifiedRelationshipSourceInversePropertyPredicates(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- SegmentPredicates(x) if ReifiedRelationshipSourceInversePropertyPredicates(x)
+insert into `OML`.`SegP`(`uuid`) values(new.`uuid`);
+END$$
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRSrcInvPropP_AFTER_DELETE` AFTER DELETE ON `RRSrcInvPropP` FOR EACH ROW
+BEGIN
+-- BinarySegmentPropertyPredicates(x) if ReifiedRelationshipSourceInversePropertyPredicates(x)
+delete from `OML`.`BinSegPropP`;
+-- BinarySegmentReversePropertyPredicates(x) if ReifiedRelationshipSourceInversePropertyPredicates(x)
+delete from `OML`.`BinSegRevPropP`;
+-- CrossReferencableKinds(x) if ReifiedRelationshipSourceInversePropertyPredicates(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if ReifiedRelationshipSourceInversePropertyPredicates(x)
+delete from `OML`.`CRTK`;
+-- ExtrinsicIdentityKinds(x) if ReifiedRelationshipSourceInversePropertyPredicates(x)
+delete from `OML`.`EIdK`;
+-- ElementCrossReferenceTuples(x) if ReifiedRelationshipSourceInversePropertyPredicates(x)
+delete from `OML`.`EltCRefTs`;
+-- IdentityKinds(x) if ReifiedRelationshipSourceInversePropertyPredicates(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if ReifiedRelationshipSourceInversePropertyPredicates(x)
+delete from `OML`.`LogEs`;
+-- SegmentPredicates(x) if ReifiedRelationshipSourceInversePropertyPredicates(x)
+delete from `OML`.`SegP`;
+END$$
+
+-- -----------------------------------------------------
+-- Concrete Information Table `OML`.`RRTgtInvPropP` (ReifiedRelationshipTargetInversePropertyPredicates)
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRTgtInvPropP_AFTER_INSERT` AFTER INSERT ON `RRTgtInvPropP` FOR EACH ROW
+BEGIN
+-- BinarySegmentPropertyPredicates(x) if ReifiedRelationshipTargetInversePropertyPredicates(x)
+insert into `OML`.`BinSegPropP`(`uuid`) values(new.`uuid`);
+-- BinarySegmentReversePropertyPredicates(x) if ReifiedRelationshipTargetInversePropertyPredicates(x)
+insert into `OML`.`BinSegRevPropP`(`uuid`) values(new.`uuid`);
+-- CrossReferencableKinds(x) if ReifiedRelationshipTargetInversePropertyPredicates(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if ReifiedRelationshipTargetInversePropertyPredicates(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if ReifiedRelationshipTargetInversePropertyPredicates(x)
+insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
+-- ElementCrossReferenceTuples(x) if ReifiedRelationshipTargetInversePropertyPredicates(x)
+insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if ReifiedRelationshipTargetInversePropertyPredicates(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if ReifiedRelationshipTargetInversePropertyPredicates(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- SegmentPredicates(x) if ReifiedRelationshipTargetInversePropertyPredicates(x)
+insert into `OML`.`SegP`(`uuid`) values(new.`uuid`);
+END$$
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRTgtInvPropP_AFTER_DELETE` AFTER DELETE ON `RRTgtInvPropP` FOR EACH ROW
+BEGIN
+-- BinarySegmentPropertyPredicates(x) if ReifiedRelationshipTargetInversePropertyPredicates(x)
+delete from `OML`.`BinSegPropP`;
+-- BinarySegmentReversePropertyPredicates(x) if ReifiedRelationshipTargetInversePropertyPredicates(x)
+delete from `OML`.`BinSegRevPropP`;
+-- CrossReferencableKinds(x) if ReifiedRelationshipTargetInversePropertyPredicates(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if ReifiedRelationshipTargetInversePropertyPredicates(x)
+delete from `OML`.`CRTK`;
+-- ExtrinsicIdentityKinds(x) if ReifiedRelationshipTargetInversePropertyPredicates(x)
+delete from `OML`.`EIdK`;
+-- ElementCrossReferenceTuples(x) if ReifiedRelationshipTargetInversePropertyPredicates(x)
+delete from `OML`.`EltCRefTs`;
+-- IdentityKinds(x) if ReifiedRelationshipTargetInversePropertyPredicates(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if ReifiedRelationshipTargetInversePropertyPredicates(x)
+delete from `OML`.`LogEs`;
+-- SegmentPredicates(x) if ReifiedRelationshipTargetInversePropertyPredicates(x)
+delete from `OML`.`SegP`;
+END$$
+
+-- -----------------------------------------------------
+-- Concrete Information Table `OML`.`URInvPropP` (UnreifiedRelationshipInversePropertyPredicates)
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`URInvPropP_AFTER_INSERT` AFTER INSERT ON `URInvPropP` FOR EACH ROW
+BEGIN
+-- BinarySegmentPropertyPredicates(x) if UnreifiedRelationshipInversePropertyPredicates(x)
+insert into `OML`.`BinSegPropP`(`uuid`) values(new.`uuid`);
+-- BinarySegmentReversePropertyPredicates(x) if UnreifiedRelationshipInversePropertyPredicates(x)
+insert into `OML`.`BinSegRevPropP`(`uuid`) values(new.`uuid`);
+-- CrossReferencableKinds(x) if UnreifiedRelationshipInversePropertyPredicates(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if UnreifiedRelationshipInversePropertyPredicates(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if UnreifiedRelationshipInversePropertyPredicates(x)
+insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
+-- ElementCrossReferenceTuples(x) if UnreifiedRelationshipInversePropertyPredicates(x)
+insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if UnreifiedRelationshipInversePropertyPredicates(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if UnreifiedRelationshipInversePropertyPredicates(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- SegmentPredicates(x) if UnreifiedRelationshipInversePropertyPredicates(x)
+insert into `OML`.`SegP`(`uuid`) values(new.`uuid`);
+END$$
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`URInvPropP_AFTER_DELETE` AFTER DELETE ON `URInvPropP` FOR EACH ROW
+BEGIN
+-- BinarySegmentPropertyPredicates(x) if UnreifiedRelationshipInversePropertyPredicates(x)
+delete from `OML`.`BinSegPropP`;
+-- BinarySegmentReversePropertyPredicates(x) if UnreifiedRelationshipInversePropertyPredicates(x)
+delete from `OML`.`BinSegRevPropP`;
+-- CrossReferencableKinds(x) if UnreifiedRelationshipInversePropertyPredicates(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if UnreifiedRelationshipInversePropertyPredicates(x)
+delete from `OML`.`CRTK`;
+-- ExtrinsicIdentityKinds(x) if UnreifiedRelationshipInversePropertyPredicates(x)
+delete from `OML`.`EIdK`;
+-- ElementCrossReferenceTuples(x) if UnreifiedRelationshipInversePropertyPredicates(x)
+delete from `OML`.`EltCRefTs`;
+-- IdentityKinds(x) if UnreifiedRelationshipInversePropertyPredicates(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if UnreifiedRelationshipInversePropertyPredicates(x)
+delete from `OML`.`LogEs`;
+-- SegmentPredicates(x) if UnreifiedRelationshipInversePropertyPredicates(x)
+delete from `OML`.`SegP`;
+END$$
+
+-- -----------------------------------------------------
+-- Concrete Information Table `OML`.`EExRAx` (EntityExistentialRestrictionAxioms)
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EExRAx_AFTER_INSERT` AFTER INSERT ON `EExRAx` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if EntityExistentialRestrictionAxioms(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if EntityExistentialRestrictionAxioms(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if EntityExistentialRestrictionAxioms(x)
+insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
+-- EntityRestrictionAxioms(x) if EntityExistentialRestrictionAxioms(x)
+insert into `OML`.`ERAx`(`uuid`) values(new.`uuid`);
+-- ElementCrossReferenceTuples(x) if EntityExistentialRestrictionAxioms(x)
+insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if EntityExistentialRestrictionAxioms(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if EntityExistentialRestrictionAxioms(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleElements(x) if EntityExistentialRestrictionAxioms(x)
+insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- TerminologyBoxStatements(x) if EntityExistentialRestrictionAxioms(x)
+insert into `OML`.`TBoxSt`(`uuid`) values(new.`uuid`);
+-- TermAxioms(x) if EntityExistentialRestrictionAxioms(x)
+insert into `OML`.`TermAx`(`uuid`) values(new.`uuid`);
+END$$
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EExRAx_AFTER_DELETE` AFTER DELETE ON `EExRAx` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if EntityExistentialRestrictionAxioms(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if EntityExistentialRestrictionAxioms(x)
+delete from `OML`.`CRTK`;
+-- ExtrinsicIdentityKinds(x) if EntityExistentialRestrictionAxioms(x)
+delete from `OML`.`EIdK`;
+-- EntityRestrictionAxioms(x) if EntityExistentialRestrictionAxioms(x)
+delete from `OML`.`ERAx`;
+-- ElementCrossReferenceTuples(x) if EntityExistentialRestrictionAxioms(x)
+delete from `OML`.`EltCRefTs`;
+-- IdentityKinds(x) if EntityExistentialRestrictionAxioms(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if EntityExistentialRestrictionAxioms(x)
+delete from `OML`.`LogEs`;
+-- ModuleElements(x) if EntityExistentialRestrictionAxioms(x)
+delete from `OML`.`ModElts`;
+-- TerminologyBoxStatements(x) if EntityExistentialRestrictionAxioms(x)
+delete from `OML`.`TBoxSt`;
+-- TermAxioms(x) if EntityExistentialRestrictionAxioms(x)
+delete from `OML`.`TermAx`;
+END$$
+
+-- -----------------------------------------------------
+-- Concrete Information Table `OML`.`EUxRAx` (EntityUniversalRestrictionAxioms)
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EUxRAx_AFTER_INSERT` AFTER INSERT ON `EUxRAx` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if EntityUniversalRestrictionAxioms(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if EntityUniversalRestrictionAxioms(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if EntityUniversalRestrictionAxioms(x)
+insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
+-- EntityRestrictionAxioms(x) if EntityUniversalRestrictionAxioms(x)
+insert into `OML`.`ERAx`(`uuid`) values(new.`uuid`);
+-- ElementCrossReferenceTuples(x) if EntityUniversalRestrictionAxioms(x)
+insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if EntityUniversalRestrictionAxioms(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if EntityUniversalRestrictionAxioms(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleElements(x) if EntityUniversalRestrictionAxioms(x)
+insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- TerminologyBoxStatements(x) if EntityUniversalRestrictionAxioms(x)
+insert into `OML`.`TBoxSt`(`uuid`) values(new.`uuid`);
+-- TermAxioms(x) if EntityUniversalRestrictionAxioms(x)
+insert into `OML`.`TermAx`(`uuid`) values(new.`uuid`);
+END$$
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EUxRAx_AFTER_DELETE` AFTER DELETE ON `EUxRAx` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if EntityUniversalRestrictionAxioms(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if EntityUniversalRestrictionAxioms(x)
+delete from `OML`.`CRTK`;
+-- ExtrinsicIdentityKinds(x) if EntityUniversalRestrictionAxioms(x)
+delete from `OML`.`EIdK`;
+-- EntityRestrictionAxioms(x) if EntityUniversalRestrictionAxioms(x)
+delete from `OML`.`ERAx`;
+-- ElementCrossReferenceTuples(x) if EntityUniversalRestrictionAxioms(x)
+delete from `OML`.`EltCRefTs`;
+-- IdentityKinds(x) if EntityUniversalRestrictionAxioms(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if EntityUniversalRestrictionAxioms(x)
+delete from `OML`.`LogEs`;
+-- ModuleElements(x) if EntityUniversalRestrictionAxioms(x)
+delete from `OML`.`ModElts`;
+-- TerminologyBoxStatements(x) if EntityUniversalRestrictionAxioms(x)
+delete from `OML`.`TBoxSt`;
+-- TermAxioms(x) if EntityUniversalRestrictionAxioms(x)
+delete from `OML`.`TermAx`;
+END$$
+
+-- -----------------------------------------------------
+-- Concrete Information Table `OML`.`EScPExRAx` (EntityScalarDataPropertyExistentialRestrictionAxioms)
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EScPExRAx_AFTER_INSERT` AFTER INSERT ON `EScPExRAx` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if EntityScalarDataPropertyExistentialRestrictionAxioms(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if EntityScalarDataPropertyExistentialRestrictionAxioms(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if EntityScalarDataPropertyExistentialRestrictionAxioms(x)
+insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
+-- EntityScalarDataPropertyRestrictionAxioms(x) if EntityScalarDataPropertyExistentialRestrictionAxioms(x)
+insert into `OML`.`EScPRAx`(`uuid`) values(new.`uuid`);
+-- ElementCrossReferenceTuples(x) if EntityScalarDataPropertyExistentialRestrictionAxioms(x)
+insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if EntityScalarDataPropertyExistentialRestrictionAxioms(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if EntityScalarDataPropertyExistentialRestrictionAxioms(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleElements(x) if EntityScalarDataPropertyExistentialRestrictionAxioms(x)
+insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- TerminologyBoxStatements(x) if EntityScalarDataPropertyExistentialRestrictionAxioms(x)
+insert into `OML`.`TBoxSt`(`uuid`) values(new.`uuid`);
+-- TermAxioms(x) if EntityScalarDataPropertyExistentialRestrictionAxioms(x)
+insert into `OML`.`TermAx`(`uuid`) values(new.`uuid`);
+END$$
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EScPExRAx_AFTER_DELETE` AFTER DELETE ON `EScPExRAx` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if EntityScalarDataPropertyExistentialRestrictionAxioms(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if EntityScalarDataPropertyExistentialRestrictionAxioms(x)
+delete from `OML`.`CRTK`;
+-- ExtrinsicIdentityKinds(x) if EntityScalarDataPropertyExistentialRestrictionAxioms(x)
+delete from `OML`.`EIdK`;
+-- EntityScalarDataPropertyRestrictionAxioms(x) if EntityScalarDataPropertyExistentialRestrictionAxioms(x)
+delete from `OML`.`EScPRAx`;
+-- ElementCrossReferenceTuples(x) if EntityScalarDataPropertyExistentialRestrictionAxioms(x)
+delete from `OML`.`EltCRefTs`;
+-- IdentityKinds(x) if EntityScalarDataPropertyExistentialRestrictionAxioms(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if EntityScalarDataPropertyExistentialRestrictionAxioms(x)
+delete from `OML`.`LogEs`;
+-- ModuleElements(x) if EntityScalarDataPropertyExistentialRestrictionAxioms(x)
+delete from `OML`.`ModElts`;
+-- TerminologyBoxStatements(x) if EntityScalarDataPropertyExistentialRestrictionAxioms(x)
+delete from `OML`.`TBoxSt`;
+-- TermAxioms(x) if EntityScalarDataPropertyExistentialRestrictionAxioms(x)
+delete from `OML`.`TermAx`;
+END$$
+
+-- -----------------------------------------------------
+-- Concrete Information Table `OML`.`EScPPtrRAx` (EntityScalarDataPropertyParticularRestrictionAxioms)
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EScPPtrRAx_AFTER_INSERT` AFTER INSERT ON `EScPPtrRAx` FOR EACH ROW
+BEGIN
+-- CrossReferencabilityKinds(x) if EntityScalarDataPropertyParticularRestrictionAxioms(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if EntityScalarDataPropertyParticularRestrictionAxioms(x)
+insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
+-- EntityScalarDataPropertyRestrictionAxioms(x) if EntityScalarDataPropertyParticularRestrictionAxioms(x)
+insert into `OML`.`EScPRAx`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if EntityScalarDataPropertyParticularRestrictionAxioms(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if EntityScalarDataPropertyParticularRestrictionAxioms(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleElements(x) if EntityScalarDataPropertyParticularRestrictionAxioms(x)
+insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- NonCrossReferencableKinds(x) if EntityScalarDataPropertyParticularRestrictionAxioms(x)
+insert into `OML`.`NonCRBK`(`uuid`) values(new.`uuid`);
+-- TerminologyBoxStatements(x) if EntityScalarDataPropertyParticularRestrictionAxioms(x)
+insert into `OML`.`TBoxSt`(`uuid`) values(new.`uuid`);
+-- TermAxioms(x) if EntityScalarDataPropertyParticularRestrictionAxioms(x)
+insert into `OML`.`TermAx`(`uuid`) values(new.`uuid`);
+-- ValueCrossReferenceTuples(x) if EntityScalarDataPropertyParticularRestrictionAxioms(x)
+insert into `OML`.`ValCRefTs`(`uuid`) values(new.`uuid`);
+END$$
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EScPPtrRAx_AFTER_DELETE` AFTER DELETE ON `EScPPtrRAx` FOR EACH ROW
+BEGIN
+-- CrossReferencabilityKinds(x) if EntityScalarDataPropertyParticularRestrictionAxioms(x)
+delete from `OML`.`CRTK`;
+-- ExtrinsicIdentityKinds(x) if EntityScalarDataPropertyParticularRestrictionAxioms(x)
+delete from `OML`.`EIdK`;
+-- EntityScalarDataPropertyRestrictionAxioms(x) if EntityScalarDataPropertyParticularRestrictionAxioms(x)
+delete from `OML`.`EScPRAx`;
+-- IdentityKinds(x) if EntityScalarDataPropertyParticularRestrictionAxioms(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if EntityScalarDataPropertyParticularRestrictionAxioms(x)
+delete from `OML`.`LogEs`;
+-- ModuleElements(x) if EntityScalarDataPropertyParticularRestrictionAxioms(x)
+delete from `OML`.`ModElts`;
+-- NonCrossReferencableKinds(x) if EntityScalarDataPropertyParticularRestrictionAxioms(x)
+delete from `OML`.`NonCRBK`;
+-- TerminologyBoxStatements(x) if EntityScalarDataPropertyParticularRestrictionAxioms(x)
+delete from `OML`.`TBoxSt`;
+-- TermAxioms(x) if EntityScalarDataPropertyParticularRestrictionAxioms(x)
+delete from `OML`.`TermAx`;
+-- ValueCrossReferenceTuples(x) if EntityScalarDataPropertyParticularRestrictionAxioms(x)
 delete from `OML`.`ValCRefTs`;
+END$$
+
+-- -----------------------------------------------------
+-- Concrete Information Table `OML`.`EScPUxRAx` (EntityScalarDataPropertyUniversalRestrictionAxioms)
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EScPUxRAx_AFTER_INSERT` AFTER INSERT ON `EScPUxRAx` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if EntityScalarDataPropertyUniversalRestrictionAxioms(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if EntityScalarDataPropertyUniversalRestrictionAxioms(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if EntityScalarDataPropertyUniversalRestrictionAxioms(x)
+insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
+-- EntityScalarDataPropertyRestrictionAxioms(x) if EntityScalarDataPropertyUniversalRestrictionAxioms(x)
+insert into `OML`.`EScPRAx`(`uuid`) values(new.`uuid`);
+-- ElementCrossReferenceTuples(x) if EntityScalarDataPropertyUniversalRestrictionAxioms(x)
+insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if EntityScalarDataPropertyUniversalRestrictionAxioms(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if EntityScalarDataPropertyUniversalRestrictionAxioms(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleElements(x) if EntityScalarDataPropertyUniversalRestrictionAxioms(x)
+insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- TerminologyBoxStatements(x) if EntityScalarDataPropertyUniversalRestrictionAxioms(x)
+insert into `OML`.`TBoxSt`(`uuid`) values(new.`uuid`);
+-- TermAxioms(x) if EntityScalarDataPropertyUniversalRestrictionAxioms(x)
+insert into `OML`.`TermAx`(`uuid`) values(new.`uuid`);
+END$$
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EScPUxRAx_AFTER_DELETE` AFTER DELETE ON `EScPUxRAx` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if EntityScalarDataPropertyUniversalRestrictionAxioms(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if EntityScalarDataPropertyUniversalRestrictionAxioms(x)
+delete from `OML`.`CRTK`;
+-- ExtrinsicIdentityKinds(x) if EntityScalarDataPropertyUniversalRestrictionAxioms(x)
+delete from `OML`.`EIdK`;
+-- EntityScalarDataPropertyRestrictionAxioms(x) if EntityScalarDataPropertyUniversalRestrictionAxioms(x)
+delete from `OML`.`EScPRAx`;
+-- ElementCrossReferenceTuples(x) if EntityScalarDataPropertyUniversalRestrictionAxioms(x)
+delete from `OML`.`EltCRefTs`;
+-- IdentityKinds(x) if EntityScalarDataPropertyUniversalRestrictionAxioms(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if EntityScalarDataPropertyUniversalRestrictionAxioms(x)
+delete from `OML`.`LogEs`;
+-- ModuleElements(x) if EntityScalarDataPropertyUniversalRestrictionAxioms(x)
+delete from `OML`.`ModElts`;
+-- TerminologyBoxStatements(x) if EntityScalarDataPropertyUniversalRestrictionAxioms(x)
+delete from `OML`.`TBoxSt`;
+-- TermAxioms(x) if EntityScalarDataPropertyUniversalRestrictionAxioms(x)
+delete from `OML`.`TermAx`;
+END$$
+
+-- -----------------------------------------------------
+-- Concrete Information Table `OML`.`EStPPtrRAx` (EntityStructuredDataPropertyParticularRestrictionAxioms)
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EStPPtrRAx_AFTER_INSERT` AFTER INSERT ON `EStPPtrRAx` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if EntityStructuredDataPropertyParticularRestrictionAxioms(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if EntityStructuredDataPropertyParticularRestrictionAxioms(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if EntityStructuredDataPropertyParticularRestrictionAxioms(x)
+insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
+-- EntityStructuredDataPropertyRestrictionAxioms(x) if EntityStructuredDataPropertyParticularRestrictionAxioms(x)
+insert into `OML`.`EStPRAx`(`uuid`) values(new.`uuid`);
+-- ElementCrossReferenceTuples(x) if EntityStructuredDataPropertyParticularRestrictionAxioms(x)
+insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if EntityStructuredDataPropertyParticularRestrictionAxioms(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if EntityStructuredDataPropertyParticularRestrictionAxioms(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleElements(x) if EntityStructuredDataPropertyParticularRestrictionAxioms(x)
+insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- RestrictionStructuredDataPropertyContexts(x) if EntityStructuredDataPropertyParticularRestrictionAxioms(x)
+insert into `OML`.`RStPCtxts`(`uuid`) values(new.`uuid`);
+-- TerminologyBoxStatements(x) if EntityStructuredDataPropertyParticularRestrictionAxioms(x)
+insert into `OML`.`TBoxSt`(`uuid`) values(new.`uuid`);
+-- TermAxioms(x) if EntityStructuredDataPropertyParticularRestrictionAxioms(x)
+insert into `OML`.`TermAx`(`uuid`) values(new.`uuid`);
+END$$
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EStPPtrRAx_AFTER_DELETE` AFTER DELETE ON `EStPPtrRAx` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if EntityStructuredDataPropertyParticularRestrictionAxioms(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if EntityStructuredDataPropertyParticularRestrictionAxioms(x)
+delete from `OML`.`CRTK`;
+-- ExtrinsicIdentityKinds(x) if EntityStructuredDataPropertyParticularRestrictionAxioms(x)
+delete from `OML`.`EIdK`;
+-- EntityStructuredDataPropertyRestrictionAxioms(x) if EntityStructuredDataPropertyParticularRestrictionAxioms(x)
+delete from `OML`.`EStPRAx`;
+-- ElementCrossReferenceTuples(x) if EntityStructuredDataPropertyParticularRestrictionAxioms(x)
+delete from `OML`.`EltCRefTs`;
+-- IdentityKinds(x) if EntityStructuredDataPropertyParticularRestrictionAxioms(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if EntityStructuredDataPropertyParticularRestrictionAxioms(x)
+delete from `OML`.`LogEs`;
+-- ModuleElements(x) if EntityStructuredDataPropertyParticularRestrictionAxioms(x)
+delete from `OML`.`ModElts`;
+-- RestrictionStructuredDataPropertyContexts(x) if EntityStructuredDataPropertyParticularRestrictionAxioms(x)
+delete from `OML`.`RStPCtxts`;
+-- TerminologyBoxStatements(x) if EntityStructuredDataPropertyParticularRestrictionAxioms(x)
+delete from `OML`.`TBoxSt`;
+-- TermAxioms(x) if EntityStructuredDataPropertyParticularRestrictionAxioms(x)
+delete from `OML`.`TermAx`;
 END$$
 
 -- -----------------------------------------------------
 -- Concrete Information Table `OML`.`RStPTs` (RestrictionStructuredDataPropertyTuples)
 -- -----------------------------------------------------
 
--- `OML`.`RStPCtxts`(x) iff `OML`.`RStPTs`(x)
 DELIMITER $$
 USE `OML`$$
 CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RStPTs_AFTER_INSERT` AFTER INSERT ON `RStPTs` FOR EACH ROW
 BEGIN
-insert into `OML`.`RStPCtxts`() value (uuid);
+-- CrossReferencableKinds(x) if RestrictionStructuredDataPropertyTuples(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if RestrictionStructuredDataPropertyTuples(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if RestrictionStructuredDataPropertyTuples(x)
+insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
+-- ElementCrossReferenceTuples(x) if RestrictionStructuredDataPropertyTuples(x)
+insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if RestrictionStructuredDataPropertyTuples(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if RestrictionStructuredDataPropertyTuples(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleElements(x) if RestrictionStructuredDataPropertyTuples(x)
+insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- RestrictionStructuredDataPropertyContexts(x) if RestrictionStructuredDataPropertyTuples(x)
+insert into `OML`.`RStPCtxts`(`uuid`) values(new.`uuid`);
 END$$
 
 DELIMITER $$
 USE `OML`$$
 CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RStPTs_AFTER_DELETE` AFTER DELETE ON `RStPTs` FOR EACH ROW
 BEGIN
+-- CrossReferencableKinds(x) if RestrictionStructuredDataPropertyTuples(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if RestrictionStructuredDataPropertyTuples(x)
+delete from `OML`.`CRTK`;
+-- ExtrinsicIdentityKinds(x) if RestrictionStructuredDataPropertyTuples(x)
+delete from `OML`.`EIdK`;
+-- ElementCrossReferenceTuples(x) if RestrictionStructuredDataPropertyTuples(x)
+delete from `OML`.`EltCRefTs`;
+-- IdentityKinds(x) if RestrictionStructuredDataPropertyTuples(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if RestrictionStructuredDataPropertyTuples(x)
+delete from `OML`.`LogEs`;
+-- ModuleElements(x) if RestrictionStructuredDataPropertyTuples(x)
+delete from `OML`.`ModElts`;
+-- RestrictionStructuredDataPropertyContexts(x) if RestrictionStructuredDataPropertyTuples(x)
 delete from `OML`.`RStPCtxts`;
 END$$
 
 -- -----------------------------------------------------
--- Concrete Information Table `OML`.`RuleBodySegs` (RuleBodySegments)
+-- Concrete Information Table `OML`.`RScPVals` (RestrictionScalarDataPropertyValues)
 -- -----------------------------------------------------
 
--- `OML`.`EltCRefTs`(x) iff `OML`.`RuleBodySegs`(x)
 DELIMITER $$
 USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RuleBodySegs_AFTER_INSERT` AFTER INSERT ON `RuleBodySegs` FOR EACH ROW
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RScPVals_AFTER_INSERT` AFTER INSERT ON `RScPVals` FOR EACH ROW
 BEGIN
-insert into `OML`.`EltCRefTs`() value (uuid);
+-- CrossReferencabilityKinds(x) if RestrictionScalarDataPropertyValues(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if RestrictionScalarDataPropertyValues(x)
+insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if RestrictionScalarDataPropertyValues(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if RestrictionScalarDataPropertyValues(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- NonCrossReferencableKinds(x) if RestrictionScalarDataPropertyValues(x)
+insert into `OML`.`NonCRBK`(`uuid`) values(new.`uuid`);
+-- ValueCrossReferenceTuples(x) if RestrictionScalarDataPropertyValues(x)
+insert into `OML`.`ValCRefTs`(`uuid`) values(new.`uuid`);
 END$$
 
 DELIMITER $$
 USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RuleBodySegs_AFTER_DELETE` AFTER DELETE ON `RuleBodySegs` FOR EACH ROW
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RScPVals_AFTER_DELETE` AFTER DELETE ON `RScPVals` FOR EACH ROW
 BEGIN
-delete from `OML`.`EltCRefTs`;
-END$$
-
--- -----------------------------------------------------
--- Concrete Information Table `OML`.`ScPVals` (ScalarDataPropertyValues)
--- -----------------------------------------------------
-
--- `OML`.`LogEs`(x) iff `OML`.`ScPVals`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`ScPVals_AFTER_INSERT` AFTER INSERT ON `ScPVals` FOR EACH ROW
-BEGIN
-insert into `OML`.`LogEs`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`ScPVals_AFTER_DELETE` AFTER DELETE ON `ScPVals` FOR EACH ROW
-BEGIN
+-- CrossReferencabilityKinds(x) if RestrictionScalarDataPropertyValues(x)
+delete from `OML`.`CRTK`;
+-- ExtrinsicIdentityKinds(x) if RestrictionScalarDataPropertyValues(x)
+delete from `OML`.`EIdK`;
+-- IdentityKinds(x) if RestrictionScalarDataPropertyValues(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if RestrictionScalarDataPropertyValues(x)
 delete from `OML`.`LogEs`;
-END$$
-
--- `OML`.`ValCRefTs`(x) iff `OML`.`ScPVals`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`ScPVals_AFTER_INSERT` AFTER INSERT ON `ScPVals` FOR EACH ROW
-BEGIN
-insert into `OML`.`ValCRefTs`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`ScPVals_AFTER_DELETE` AFTER DELETE ON `ScPVals` FOR EACH ROW
-BEGIN
+-- NonCrossReferencableKinds(x) if RestrictionScalarDataPropertyValues(x)
+delete from `OML`.`NonCRBK`;
+-- ValueCrossReferenceTuples(x) if RestrictionScalarDataPropertyValues(x)
 delete from `OML`.`ValCRefTs`;
 END$$
 
 -- -----------------------------------------------------
--- Concrete Information Table `OML`.`S1IScPVals` (SingletonInstanceScalarDataPropertyValues)
+-- Concrete Information Table `OML`.`AspectSpeAx` (AspectSpecializationAxioms)
 -- -----------------------------------------------------
 
--- `OML`.`ModElts`(x) iff `OML`.`S1IScPVals`(x)
 DELIMITER $$
 USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`S1IScPVals_AFTER_INSERT` AFTER INSERT ON `S1IScPVals` FOR EACH ROW
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`AspectSpeAx_AFTER_INSERT` AFTER INSERT ON `AspectSpeAx` FOR EACH ROW
 BEGIN
-insert into `OML`.`ModElts`() value (uuid);
+-- CrossReferencableKinds(x) if AspectSpecializationAxioms(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if AspectSpecializationAxioms(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if AspectSpecializationAxioms(x)
+insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
+-- ElementCrossReferenceTuples(x) if AspectSpecializationAxioms(x)
+insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if AspectSpecializationAxioms(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if AspectSpecializationAxioms(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleElements(x) if AspectSpecializationAxioms(x)
+insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- SpecializationAxioms(x) if AspectSpecializationAxioms(x)
+insert into `OML`.`SpeAx`(`uuid`) values(new.`uuid`);
+-- TerminologyBoxStatements(x) if AspectSpecializationAxioms(x)
+insert into `OML`.`TBoxSt`(`uuid`) values(new.`uuid`);
+-- TermAxioms(x) if AspectSpecializationAxioms(x)
+insert into `OML`.`TermAx`(`uuid`) values(new.`uuid`);
 END$$
 
 DELIMITER $$
 USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`S1IScPVals_AFTER_DELETE` AFTER DELETE ON `S1IScPVals` FOR EACH ROW
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`AspectSpeAx_AFTER_DELETE` AFTER DELETE ON `AspectSpeAx` FOR EACH ROW
 BEGIN
+-- CrossReferencableKinds(x) if AspectSpecializationAxioms(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if AspectSpecializationAxioms(x)
+delete from `OML`.`CRTK`;
+-- ExtrinsicIdentityKinds(x) if AspectSpecializationAxioms(x)
+delete from `OML`.`EIdK`;
+-- ElementCrossReferenceTuples(x) if AspectSpecializationAxioms(x)
+delete from `OML`.`EltCRefTs`;
+-- IdentityKinds(x) if AspectSpecializationAxioms(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if AspectSpecializationAxioms(x)
+delete from `OML`.`LogEs`;
+-- ModuleElements(x) if AspectSpecializationAxioms(x)
 delete from `OML`.`ModElts`;
-END$$
-
--- `OML`.`ValCRefTs`(x) iff `OML`.`S1IScPVals`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`S1IScPVals_AFTER_INSERT` AFTER INSERT ON `S1IScPVals` FOR EACH ROW
-BEGIN
-insert into `OML`.`ValCRefTs`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`S1IScPVals_AFTER_DELETE` AFTER DELETE ON `S1IScPVals` FOR EACH ROW
-BEGIN
-delete from `OML`.`ValCRefTs`;
+-- SpecializationAxioms(x) if AspectSpecializationAxioms(x)
+delete from `OML`.`SpeAx`;
+-- TerminologyBoxStatements(x) if AspectSpecializationAxioms(x)
+delete from `OML`.`TBoxSt`;
+-- TermAxioms(x) if AspectSpecializationAxioms(x)
+delete from `OML`.`TermAx`;
 END$$
 
 -- -----------------------------------------------------
--- Concrete Information Table `OML`.`S1IStPVals` (SingletonInstanceStructuredDataPropertyValues)
+-- Concrete Information Table `OML`.`CSpeAx` (ConceptSpecializationAxioms)
 -- -----------------------------------------------------
 
--- `OML`.`ModElts`(x) iff `OML`.`S1IStPVals`(x)
 DELIMITER $$
 USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`S1IStPVals_AFTER_INSERT` AFTER INSERT ON `S1IStPVals` FOR EACH ROW
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`CSpeAx_AFTER_INSERT` AFTER INSERT ON `CSpeAx` FOR EACH ROW
 BEGIN
-insert into `OML`.`ModElts`() value (uuid);
+-- CrossReferencableKinds(x) if ConceptSpecializationAxioms(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if ConceptSpecializationAxioms(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if ConceptSpecializationAxioms(x)
+insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
+-- ElementCrossReferenceTuples(x) if ConceptSpecializationAxioms(x)
+insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if ConceptSpecializationAxioms(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if ConceptSpecializationAxioms(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleElements(x) if ConceptSpecializationAxioms(x)
+insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- SpecializationAxioms(x) if ConceptSpecializationAxioms(x)
+insert into `OML`.`SpeAx`(`uuid`) values(new.`uuid`);
+-- TerminologyBoxStatements(x) if ConceptSpecializationAxioms(x)
+insert into `OML`.`TBoxSt`(`uuid`) values(new.`uuid`);
+-- TermAxioms(x) if ConceptSpecializationAxioms(x)
+insert into `OML`.`TermAx`(`uuid`) values(new.`uuid`);
 END$$
 
 DELIMITER $$
 USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`S1IStPVals_AFTER_DELETE` AFTER DELETE ON `S1IStPVals` FOR EACH ROW
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`CSpeAx_AFTER_DELETE` AFTER DELETE ON `CSpeAx` FOR EACH ROW
 BEGIN
+-- CrossReferencableKinds(x) if ConceptSpecializationAxioms(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if ConceptSpecializationAxioms(x)
+delete from `OML`.`CRTK`;
+-- ExtrinsicIdentityKinds(x) if ConceptSpecializationAxioms(x)
+delete from `OML`.`EIdK`;
+-- ElementCrossReferenceTuples(x) if ConceptSpecializationAxioms(x)
+delete from `OML`.`EltCRefTs`;
+-- IdentityKinds(x) if ConceptSpecializationAxioms(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if ConceptSpecializationAxioms(x)
+delete from `OML`.`LogEs`;
+-- ModuleElements(x) if ConceptSpecializationAxioms(x)
 delete from `OML`.`ModElts`;
-END$$
-
--- `OML`.`S1IStPCtxts`(x) iff `OML`.`S1IStPVals`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`S1IStPVals_AFTER_INSERT` AFTER INSERT ON `S1IStPVals` FOR EACH ROW
-BEGIN
-insert into `OML`.`S1IStPCtxts`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`S1IStPVals_AFTER_DELETE` AFTER DELETE ON `S1IStPVals` FOR EACH ROW
-BEGIN
-delete from `OML`.`S1IStPCtxts`;
+-- SpecializationAxioms(x) if ConceptSpecializationAxioms(x)
+delete from `OML`.`SpeAx`;
+-- TerminologyBoxStatements(x) if ConceptSpecializationAxioms(x)
+delete from `OML`.`TBoxSt`;
+-- TermAxioms(x) if ConceptSpecializationAxioms(x)
+delete from `OML`.`TermAx`;
 END$$
 
 -- -----------------------------------------------------
--- Concrete Information Table `OML`.`StPTs` (StructuredDataPropertyTuples)
+-- Concrete Information Table `OML`.`RRSpeAx` (ReifiedRelationshipSpecializationAxioms)
 -- -----------------------------------------------------
 
--- `OML`.`S1IStPCtxts`(x) iff `OML`.`StPTs`(x)
 DELIMITER $$
 USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`StPTs_AFTER_INSERT` AFTER INSERT ON `StPTs` FOR EACH ROW
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRSpeAx_AFTER_INSERT` AFTER INSERT ON `RRSpeAx` FOR EACH ROW
 BEGIN
-insert into `OML`.`S1IStPCtxts`() value (uuid);
+-- CrossReferencableKinds(x) if ReifiedRelationshipSpecializationAxioms(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if ReifiedRelationshipSpecializationAxioms(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if ReifiedRelationshipSpecializationAxioms(x)
+insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
+-- ElementCrossReferenceTuples(x) if ReifiedRelationshipSpecializationAxioms(x)
+insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if ReifiedRelationshipSpecializationAxioms(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if ReifiedRelationshipSpecializationAxioms(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleElements(x) if ReifiedRelationshipSpecializationAxioms(x)
+insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- SpecializationAxioms(x) if ReifiedRelationshipSpecializationAxioms(x)
+insert into `OML`.`SpeAx`(`uuid`) values(new.`uuid`);
+-- TerminologyBoxStatements(x) if ReifiedRelationshipSpecializationAxioms(x)
+insert into `OML`.`TBoxSt`(`uuid`) values(new.`uuid`);
+-- TermAxioms(x) if ReifiedRelationshipSpecializationAxioms(x)
+insert into `OML`.`TermAx`(`uuid`) values(new.`uuid`);
 END$$
 
 DELIMITER $$
 USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`StPTs_AFTER_DELETE` AFTER DELETE ON `StPTs` FOR EACH ROW
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRSpeAx_AFTER_DELETE` AFTER DELETE ON `RRSpeAx` FOR EACH ROW
 BEGIN
-delete from `OML`.`S1IStPCtxts`;
+-- CrossReferencableKinds(x) if ReifiedRelationshipSpecializationAxioms(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if ReifiedRelationshipSpecializationAxioms(x)
+delete from `OML`.`CRTK`;
+-- ExtrinsicIdentityKinds(x) if ReifiedRelationshipSpecializationAxioms(x)
+delete from `OML`.`EIdK`;
+-- ElementCrossReferenceTuples(x) if ReifiedRelationshipSpecializationAxioms(x)
+delete from `OML`.`EltCRefTs`;
+-- IdentityKinds(x) if ReifiedRelationshipSpecializationAxioms(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if ReifiedRelationshipSpecializationAxioms(x)
+delete from `OML`.`LogEs`;
+-- ModuleElements(x) if ReifiedRelationshipSpecializationAxioms(x)
+delete from `OML`.`ModElts`;
+-- SpecializationAxioms(x) if ReifiedRelationshipSpecializationAxioms(x)
+delete from `OML`.`SpeAx`;
+-- TerminologyBoxStatements(x) if ReifiedRelationshipSpecializationAxioms(x)
+delete from `OML`.`TBoxSt`;
+-- TermAxioms(x) if ReifiedRelationshipSpecializationAxioms(x)
+delete from `OML`.`TermAx`;
 END$$
 
 -- -----------------------------------------------------
 -- Concrete Information Table `OML`.`SubDataPropOfAx` (SubDataPropertyOfAxioms)
 -- -----------------------------------------------------
 
--- `OML`.`EltCRefTs`(x) iff `OML`.`SubDataPropOfAx`(x)
 DELIMITER $$
 USE `OML`$$
 CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`SubDataPropOfAx_AFTER_INSERT` AFTER INSERT ON `SubDataPropOfAx` FOR EACH ROW
 BEGIN
-insert into `OML`.`EltCRefTs`() value (uuid);
+-- CrossReferencableKinds(x) if SubDataPropertyOfAxioms(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if SubDataPropertyOfAxioms(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if SubDataPropertyOfAxioms(x)
+insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
+-- ElementCrossReferenceTuples(x) if SubDataPropertyOfAxioms(x)
+insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if SubDataPropertyOfAxioms(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if SubDataPropertyOfAxioms(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleElements(x) if SubDataPropertyOfAxioms(x)
+insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- TerminologyBoxStatements(x) if SubDataPropertyOfAxioms(x)
+insert into `OML`.`TBoxSt`(`uuid`) values(new.`uuid`);
+-- TermAxioms(x) if SubDataPropertyOfAxioms(x)
+insert into `OML`.`TermAx`(`uuid`) values(new.`uuid`);
 END$$
 
 DELIMITER $$
 USE `OML`$$
 CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`SubDataPropOfAx_AFTER_DELETE` AFTER DELETE ON `SubDataPropOfAx` FOR EACH ROW
 BEGIN
+-- CrossReferencableKinds(x) if SubDataPropertyOfAxioms(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if SubDataPropertyOfAxioms(x)
+delete from `OML`.`CRTK`;
+-- ExtrinsicIdentityKinds(x) if SubDataPropertyOfAxioms(x)
+delete from `OML`.`EIdK`;
+-- ElementCrossReferenceTuples(x) if SubDataPropertyOfAxioms(x)
 delete from `OML`.`EltCRefTs`;
-END$$
-
--- `OML`.`TermAx`(x) iff `OML`.`SubDataPropOfAx`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`SubDataPropOfAx_AFTER_INSERT` AFTER INSERT ON `SubDataPropOfAx` FOR EACH ROW
-BEGIN
-insert into `OML`.`TermAx`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`SubDataPropOfAx_AFTER_DELETE` AFTER DELETE ON `SubDataPropOfAx` FOR EACH ROW
-BEGIN
+-- IdentityKinds(x) if SubDataPropertyOfAxioms(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if SubDataPropertyOfAxioms(x)
+delete from `OML`.`LogEs`;
+-- ModuleElements(x) if SubDataPropertyOfAxioms(x)
+delete from `OML`.`ModElts`;
+-- TerminologyBoxStatements(x) if SubDataPropertyOfAxioms(x)
+delete from `OML`.`TBoxSt`;
+-- TermAxioms(x) if SubDataPropertyOfAxioms(x)
 delete from `OML`.`TermAx`;
 END$$
 
@@ -5402,106 +5526,660 @@ END$$
 -- Concrete Information Table `OML`.`SubObjectPropOfAx` (SubObjectPropertyOfAxioms)
 -- -----------------------------------------------------
 
--- `OML`.`EltCRefTs`(x) iff `OML`.`SubObjectPropOfAx`(x)
 DELIMITER $$
 USE `OML`$$
 CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`SubObjectPropOfAx_AFTER_INSERT` AFTER INSERT ON `SubObjectPropOfAx` FOR EACH ROW
 BEGIN
-insert into `OML`.`EltCRefTs`() value (uuid);
+-- CrossReferencableKinds(x) if SubObjectPropertyOfAxioms(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if SubObjectPropertyOfAxioms(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if SubObjectPropertyOfAxioms(x)
+insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
+-- ElementCrossReferenceTuples(x) if SubObjectPropertyOfAxioms(x)
+insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if SubObjectPropertyOfAxioms(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if SubObjectPropertyOfAxioms(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleElements(x) if SubObjectPropertyOfAxioms(x)
+insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- TerminologyBoxStatements(x) if SubObjectPropertyOfAxioms(x)
+insert into `OML`.`TBoxSt`(`uuid`) values(new.`uuid`);
+-- TermAxioms(x) if SubObjectPropertyOfAxioms(x)
+insert into `OML`.`TermAx`(`uuid`) values(new.`uuid`);
 END$$
 
 DELIMITER $$
 USE `OML`$$
 CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`SubObjectPropOfAx_AFTER_DELETE` AFTER DELETE ON `SubObjectPropOfAx` FOR EACH ROW
 BEGIN
+-- CrossReferencableKinds(x) if SubObjectPropertyOfAxioms(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if SubObjectPropertyOfAxioms(x)
+delete from `OML`.`CRTK`;
+-- ExtrinsicIdentityKinds(x) if SubObjectPropertyOfAxioms(x)
+delete from `OML`.`EIdK`;
+-- ElementCrossReferenceTuples(x) if SubObjectPropertyOfAxioms(x)
 delete from `OML`.`EltCRefTs`;
-END$$
-
--- `OML`.`TermAx`(x) iff `OML`.`SubObjectPropOfAx`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`SubObjectPropOfAx_AFTER_INSERT` AFTER INSERT ON `SubObjectPropOfAx` FOR EACH ROW
-BEGIN
-insert into `OML`.`TermAx`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`SubObjectPropOfAx_AFTER_DELETE` AFTER DELETE ON `SubObjectPropOfAx` FOR EACH ROW
-BEGIN
+-- IdentityKinds(x) if SubObjectPropertyOfAxioms(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if SubObjectPropertyOfAxioms(x)
+delete from `OML`.`LogEs`;
+-- ModuleElements(x) if SubObjectPropertyOfAxioms(x)
+delete from `OML`.`ModElts`;
+-- TerminologyBoxStatements(x) if SubObjectPropertyOfAxioms(x)
+delete from `OML`.`TBoxSt`;
+-- TermAxioms(x) if SubObjectPropertyOfAxioms(x)
 delete from `OML`.`TermAx`;
+END$$
+
+-- -----------------------------------------------------
+-- Concrete Information Table `OML`.`RootCTaxonomyAx` (RootConceptTaxonomyAxioms)
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RootCTaxonomyAx_AFTER_INSERT` AFTER INSERT ON `RootCTaxonomyAx` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if RootConceptTaxonomyAxioms(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if RootConceptTaxonomyAxioms(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- ConceptTreeDisjunctions(x) if RootConceptTaxonomyAxioms(x)
+insert into `OML`.`CTreeDsju`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if RootConceptTaxonomyAxioms(x)
+insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
+-- ElementCrossReferenceTuples(x) if RootConceptTaxonomyAxioms(x)
+insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if RootConceptTaxonomyAxioms(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if RootConceptTaxonomyAxioms(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleElements(x) if RootConceptTaxonomyAxioms(x)
+insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- TerminologyBundleStatements(x) if RootConceptTaxonomyAxioms(x)
+insert into `OML`.`TlgyBdlSt`(`uuid`) values(new.`uuid`);
+END$$
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RootCTaxonomyAx_AFTER_DELETE` AFTER DELETE ON `RootCTaxonomyAx` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if RootConceptTaxonomyAxioms(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if RootConceptTaxonomyAxioms(x)
+delete from `OML`.`CRTK`;
+-- ConceptTreeDisjunctions(x) if RootConceptTaxonomyAxioms(x)
+delete from `OML`.`CTreeDsju`;
+-- ExtrinsicIdentityKinds(x) if RootConceptTaxonomyAxioms(x)
+delete from `OML`.`EIdK`;
+-- ElementCrossReferenceTuples(x) if RootConceptTaxonomyAxioms(x)
+delete from `OML`.`EltCRefTs`;
+-- IdentityKinds(x) if RootConceptTaxonomyAxioms(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if RootConceptTaxonomyAxioms(x)
+delete from `OML`.`LogEs`;
+-- ModuleElements(x) if RootConceptTaxonomyAxioms(x)
+delete from `OML`.`ModElts`;
+-- TerminologyBundleStatements(x) if RootConceptTaxonomyAxioms(x)
+delete from `OML`.`TlgyBdlSt`;
+END$$
+
+-- -----------------------------------------------------
+-- Concrete Information Table `OML`.`AnonymousCUnionAx` (AnonymousConceptUnionAxioms)
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`AnonymousCUnionAx_AFTER_INSERT` AFTER INSERT ON `AnonymousCUnionAx` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if AnonymousConceptUnionAxioms(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if AnonymousConceptUnionAxioms(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- ConceptTreeDisjunctions(x) if AnonymousConceptUnionAxioms(x)
+insert into `OML`.`CTreeDsju`(`uuid`) values(new.`uuid`);
+-- DisjointUnionOfConceptsAxioms(x) if AnonymousConceptUnionAxioms(x)
+insert into `OML`.`DsjUOfCsAx`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if AnonymousConceptUnionAxioms(x)
+insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
+-- ElementCrossReferenceTuples(x) if AnonymousConceptUnionAxioms(x)
+insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if AnonymousConceptUnionAxioms(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if AnonymousConceptUnionAxioms(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+END$$
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`AnonymousCUnionAx_AFTER_DELETE` AFTER DELETE ON `AnonymousCUnionAx` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if AnonymousConceptUnionAxioms(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if AnonymousConceptUnionAxioms(x)
+delete from `OML`.`CRTK`;
+-- ConceptTreeDisjunctions(x) if AnonymousConceptUnionAxioms(x)
+delete from `OML`.`CTreeDsju`;
+-- DisjointUnionOfConceptsAxioms(x) if AnonymousConceptUnionAxioms(x)
+delete from `OML`.`DsjUOfCsAx`;
+-- ExtrinsicIdentityKinds(x) if AnonymousConceptUnionAxioms(x)
+delete from `OML`.`EIdK`;
+-- ElementCrossReferenceTuples(x) if AnonymousConceptUnionAxioms(x)
+delete from `OML`.`EltCRefTs`;
+-- IdentityKinds(x) if AnonymousConceptUnionAxioms(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if AnonymousConceptUnionAxioms(x)
+delete from `OML`.`LogEs`;
+END$$
+
+-- -----------------------------------------------------
+-- Concrete Information Table `OML`.`SpeDsjtCAx` (SpecificDisjointConceptAxioms)
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`SpeDsjtCAx_AFTER_INSERT` AFTER INSERT ON `SpeDsjtCAx` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if SpecificDisjointConceptAxioms(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if SpecificDisjointConceptAxioms(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- DisjointUnionOfConceptsAxioms(x) if SpecificDisjointConceptAxioms(x)
+insert into `OML`.`DsjUOfCsAx`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if SpecificDisjointConceptAxioms(x)
+insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
+-- ElementCrossReferenceTuples(x) if SpecificDisjointConceptAxioms(x)
+insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if SpecificDisjointConceptAxioms(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if SpecificDisjointConceptAxioms(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+END$$
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`SpeDsjtCAx_AFTER_DELETE` AFTER DELETE ON `SpeDsjtCAx` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if SpecificDisjointConceptAxioms(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if SpecificDisjointConceptAxioms(x)
+delete from `OML`.`CRTK`;
+-- DisjointUnionOfConceptsAxioms(x) if SpecificDisjointConceptAxioms(x)
+delete from `OML`.`DsjUOfCsAx`;
+-- ExtrinsicIdentityKinds(x) if SpecificDisjointConceptAxioms(x)
+delete from `OML`.`EIdK`;
+-- ElementCrossReferenceTuples(x) if SpecificDisjointConceptAxioms(x)
+delete from `OML`.`EltCRefTs`;
+-- IdentityKinds(x) if SpecificDisjointConceptAxioms(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if SpecificDisjointConceptAxioms(x)
+delete from `OML`.`LogEs`;
+END$$
+
+-- -----------------------------------------------------
+-- Concrete Information Table `OML`.`CIs` (ConceptInstances)
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`CIs_AFTER_INSERT` AFTER INSERT ON `CIs` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if ConceptInstances(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if ConceptInstances(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- ConceptualEntitySingletonInstances(x) if ConceptInstances(x)
+insert into `OML`.`CualESI`(`uuid`) values(new.`uuid`);
+-- IntrinsicIdentityKinds(x) if ConceptInstances(x)
+insert into `OML`.`IIdK`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if ConceptInstances(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if ConceptInstances(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleElements(x) if ConceptInstances(x)
+insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- Resources(x) if ConceptInstances(x)
+insert into `OML`.`Ress`(`uuid`) values(new.`uuid`);
+-- TerminologyInstanceAssertions(x) if ConceptInstances(x)
+insert into `OML`.`TlgyIAsts`(`uuid`) values(new.`uuid`);
+END$$
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`CIs_AFTER_DELETE` AFTER DELETE ON `CIs` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if ConceptInstances(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if ConceptInstances(x)
+delete from `OML`.`CRTK`;
+-- ConceptualEntitySingletonInstances(x) if ConceptInstances(x)
+delete from `OML`.`CualESI`;
+-- IntrinsicIdentityKinds(x) if ConceptInstances(x)
+delete from `OML`.`IIdK`;
+-- IdentityKinds(x) if ConceptInstances(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if ConceptInstances(x)
+delete from `OML`.`LogEs`;
+-- ModuleElements(x) if ConceptInstances(x)
+delete from `OML`.`ModElts`;
+-- Resources(x) if ConceptInstances(x)
+delete from `OML`.`Ress`;
+-- TerminologyInstanceAssertions(x) if ConceptInstances(x)
+delete from `OML`.`TlgyIAsts`;
+END$$
+
+-- -----------------------------------------------------
+-- Concrete Information Table `OML`.`RRIs` (ReifiedRelationshipInstances)
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRIs_AFTER_INSERT` AFTER INSERT ON `RRIs` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if ReifiedRelationshipInstances(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if ReifiedRelationshipInstances(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- ConceptualEntitySingletonInstances(x) if ReifiedRelationshipInstances(x)
+insert into `OML`.`CualESI`(`uuid`) values(new.`uuid`);
+-- IntrinsicIdentityKinds(x) if ReifiedRelationshipInstances(x)
+insert into `OML`.`IIdK`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if ReifiedRelationshipInstances(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if ReifiedRelationshipInstances(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleElements(x) if ReifiedRelationshipInstances(x)
+insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- Resources(x) if ReifiedRelationshipInstances(x)
+insert into `OML`.`Ress`(`uuid`) values(new.`uuid`);
+-- TerminologyInstanceAssertions(x) if ReifiedRelationshipInstances(x)
+insert into `OML`.`TlgyIAsts`(`uuid`) values(new.`uuid`);
+END$$
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRIs_AFTER_DELETE` AFTER DELETE ON `RRIs` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if ReifiedRelationshipInstances(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if ReifiedRelationshipInstances(x)
+delete from `OML`.`CRTK`;
+-- ConceptualEntitySingletonInstances(x) if ReifiedRelationshipInstances(x)
+delete from `OML`.`CualESI`;
+-- IntrinsicIdentityKinds(x) if ReifiedRelationshipInstances(x)
+delete from `OML`.`IIdK`;
+-- IdentityKinds(x) if ReifiedRelationshipInstances(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if ReifiedRelationshipInstances(x)
+delete from `OML`.`LogEs`;
+-- ModuleElements(x) if ReifiedRelationshipInstances(x)
+delete from `OML`.`ModElts`;
+-- Resources(x) if ReifiedRelationshipInstances(x)
+delete from `OML`.`Ress`;
+-- TerminologyInstanceAssertions(x) if ReifiedRelationshipInstances(x)
+delete from `OML`.`TlgyIAsts`;
+END$$
+
+-- -----------------------------------------------------
+-- Concrete Information Table `OML`.`RRIDomains` (ReifiedRelationshipInstanceDomains)
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRIDomains_AFTER_INSERT` AFTER INSERT ON `RRIDomains` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if ReifiedRelationshipInstanceDomains(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if ReifiedRelationshipInstanceDomains(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if ReifiedRelationshipInstanceDomains(x)
+insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
+-- ElementCrossReferenceTuples(x) if ReifiedRelationshipInstanceDomains(x)
+insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if ReifiedRelationshipInstanceDomains(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if ReifiedRelationshipInstanceDomains(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleElements(x) if ReifiedRelationshipInstanceDomains(x)
+insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- TerminologyInstanceAssertions(x) if ReifiedRelationshipInstanceDomains(x)
+insert into `OML`.`TlgyIAsts`(`uuid`) values(new.`uuid`);
+END$$
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRIDomains_AFTER_DELETE` AFTER DELETE ON `RRIDomains` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if ReifiedRelationshipInstanceDomains(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if ReifiedRelationshipInstanceDomains(x)
+delete from `OML`.`CRTK`;
+-- ExtrinsicIdentityKinds(x) if ReifiedRelationshipInstanceDomains(x)
+delete from `OML`.`EIdK`;
+-- ElementCrossReferenceTuples(x) if ReifiedRelationshipInstanceDomains(x)
+delete from `OML`.`EltCRefTs`;
+-- IdentityKinds(x) if ReifiedRelationshipInstanceDomains(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if ReifiedRelationshipInstanceDomains(x)
+delete from `OML`.`LogEs`;
+-- ModuleElements(x) if ReifiedRelationshipInstanceDomains(x)
+delete from `OML`.`ModElts`;
+-- TerminologyInstanceAssertions(x) if ReifiedRelationshipInstanceDomains(x)
+delete from `OML`.`TlgyIAsts`;
+END$$
+
+-- -----------------------------------------------------
+-- Concrete Information Table `OML`.`RRIRanges` (ReifiedRelationshipInstanceRanges)
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRIRanges_AFTER_INSERT` AFTER INSERT ON `RRIRanges` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if ReifiedRelationshipInstanceRanges(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if ReifiedRelationshipInstanceRanges(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if ReifiedRelationshipInstanceRanges(x)
+insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
+-- ElementCrossReferenceTuples(x) if ReifiedRelationshipInstanceRanges(x)
+insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if ReifiedRelationshipInstanceRanges(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if ReifiedRelationshipInstanceRanges(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleElements(x) if ReifiedRelationshipInstanceRanges(x)
+insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- TerminologyInstanceAssertions(x) if ReifiedRelationshipInstanceRanges(x)
+insert into `OML`.`TlgyIAsts`(`uuid`) values(new.`uuid`);
+END$$
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRIRanges_AFTER_DELETE` AFTER DELETE ON `RRIRanges` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if ReifiedRelationshipInstanceRanges(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if ReifiedRelationshipInstanceRanges(x)
+delete from `OML`.`CRTK`;
+-- ExtrinsicIdentityKinds(x) if ReifiedRelationshipInstanceRanges(x)
+delete from `OML`.`EIdK`;
+-- ElementCrossReferenceTuples(x) if ReifiedRelationshipInstanceRanges(x)
+delete from `OML`.`EltCRefTs`;
+-- IdentityKinds(x) if ReifiedRelationshipInstanceRanges(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if ReifiedRelationshipInstanceRanges(x)
+delete from `OML`.`LogEs`;
+-- ModuleElements(x) if ReifiedRelationshipInstanceRanges(x)
+delete from `OML`.`ModElts`;
+-- TerminologyInstanceAssertions(x) if ReifiedRelationshipInstanceRanges(x)
+delete from `OML`.`TlgyIAsts`;
 END$$
 
 -- -----------------------------------------------------
 -- Concrete Information Table `OML`.`URITs` (UnreifiedRelationshipInstanceTuples)
 -- -----------------------------------------------------
 
--- `OML`.`EltCRefTs`(x) iff `OML`.`URITs`(x)
 DELIMITER $$
 USE `OML`$$
 CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`URITs_AFTER_INSERT` AFTER INSERT ON `URITs` FOR EACH ROW
 BEGIN
-insert into `OML`.`EltCRefTs`() value (uuid);
+-- CrossReferencableKinds(x) if UnreifiedRelationshipInstanceTuples(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if UnreifiedRelationshipInstanceTuples(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if UnreifiedRelationshipInstanceTuples(x)
+insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
+-- ElementCrossReferenceTuples(x) if UnreifiedRelationshipInstanceTuples(x)
+insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if UnreifiedRelationshipInstanceTuples(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if UnreifiedRelationshipInstanceTuples(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleElements(x) if UnreifiedRelationshipInstanceTuples(x)
+insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- TerminologyInstanceAssertions(x) if UnreifiedRelationshipInstanceTuples(x)
+insert into `OML`.`TlgyIAsts`(`uuid`) values(new.`uuid`);
 END$$
 
 DELIMITER $$
 USE `OML`$$
 CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`URITs_AFTER_DELETE` AFTER DELETE ON `URITs` FOR EACH ROW
 BEGIN
+-- CrossReferencableKinds(x) if UnreifiedRelationshipInstanceTuples(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if UnreifiedRelationshipInstanceTuples(x)
+delete from `OML`.`CRTK`;
+-- ExtrinsicIdentityKinds(x) if UnreifiedRelationshipInstanceTuples(x)
+delete from `OML`.`EIdK`;
+-- ElementCrossReferenceTuples(x) if UnreifiedRelationshipInstanceTuples(x)
 delete from `OML`.`EltCRefTs`;
-END$$
-
--- `OML`.`TlgyIAsts`(x) iff `OML`.`URITs`(x)
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`URITs_AFTER_INSERT` AFTER INSERT ON `URITs` FOR EACH ROW
-BEGIN
-insert into `OML`.`TlgyIAsts`() value (uuid);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`URITs_AFTER_DELETE` AFTER DELETE ON `URITs` FOR EACH ROW
-BEGIN
+-- IdentityKinds(x) if UnreifiedRelationshipInstanceTuples(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if UnreifiedRelationshipInstanceTuples(x)
+delete from `OML`.`LogEs`;
+-- ModuleElements(x) if UnreifiedRelationshipInstanceTuples(x)
+delete from `OML`.`ModElts`;
+-- TerminologyInstanceAssertions(x) if UnreifiedRelationshipInstanceTuples(x)
 delete from `OML`.`TlgyIAsts`;
 END$$
 
 -- -----------------------------------------------------
--- Concrete Information Table `OML`.`URInvPropP` (UnreifiedRelationshipInversePropertyPredicates)
+-- Concrete Information Table `OML`.`S1IStPVals` (SingletonInstanceStructuredDataPropertyValues)
 -- -----------------------------------------------------
 
--- `OML`.`BinSegRevPropP`(x) iff `OML`.`URInvPropP`(x)
 DELIMITER $$
 USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`URInvPropP_AFTER_INSERT` AFTER INSERT ON `URInvPropP` FOR EACH ROW
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`S1IStPVals_AFTER_INSERT` AFTER INSERT ON `S1IStPVals` FOR EACH ROW
 BEGIN
-insert into `OML`.`BinSegRevPropP`() value (uuid);
+-- CrossReferencableKinds(x) if SingletonInstanceStructuredDataPropertyValues(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if SingletonInstanceStructuredDataPropertyValues(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if SingletonInstanceStructuredDataPropertyValues(x)
+insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
+-- ElementCrossReferenceTuples(x) if SingletonInstanceStructuredDataPropertyValues(x)
+insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if SingletonInstanceStructuredDataPropertyValues(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if SingletonInstanceStructuredDataPropertyValues(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleElements(x) if SingletonInstanceStructuredDataPropertyValues(x)
+insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- SingletonInstanceStructuredDataPropertyContexts(x) if SingletonInstanceStructuredDataPropertyValues(x)
+insert into `OML`.`S1IStPCtxts`(`uuid`) values(new.`uuid`);
 END$$
 
 DELIMITER $$
 USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`URInvPropP_AFTER_DELETE` AFTER DELETE ON `URInvPropP` FOR EACH ROW
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`S1IStPVals_AFTER_DELETE` AFTER DELETE ON `S1IStPVals` FOR EACH ROW
 BEGIN
-delete from `OML`.`BinSegRevPropP`;
+-- CrossReferencableKinds(x) if SingletonInstanceStructuredDataPropertyValues(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if SingletonInstanceStructuredDataPropertyValues(x)
+delete from `OML`.`CRTK`;
+-- ExtrinsicIdentityKinds(x) if SingletonInstanceStructuredDataPropertyValues(x)
+delete from `OML`.`EIdK`;
+-- ElementCrossReferenceTuples(x) if SingletonInstanceStructuredDataPropertyValues(x)
+delete from `OML`.`EltCRefTs`;
+-- IdentityKinds(x) if SingletonInstanceStructuredDataPropertyValues(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if SingletonInstanceStructuredDataPropertyValues(x)
+delete from `OML`.`LogEs`;
+-- ModuleElements(x) if SingletonInstanceStructuredDataPropertyValues(x)
+delete from `OML`.`ModElts`;
+-- SingletonInstanceStructuredDataPropertyContexts(x) if SingletonInstanceStructuredDataPropertyValues(x)
+delete from `OML`.`S1IStPCtxts`;
 END$$
 
 -- -----------------------------------------------------
--- Concrete Information Table `OML`.`URPropP` (UnreifiedRelationshipPropertyPredicates)
+-- Concrete Information Table `OML`.`S1IScPVals` (SingletonInstanceScalarDataPropertyValues)
 -- -----------------------------------------------------
 
--- `OML`.`BinSegFwdPropP`(x) iff `OML`.`URPropP`(x)
 DELIMITER $$
 USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`URPropP_AFTER_INSERT` AFTER INSERT ON `URPropP` FOR EACH ROW
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`S1IScPVals_AFTER_INSERT` AFTER INSERT ON `S1IScPVals` FOR EACH ROW
 BEGIN
-insert into `OML`.`BinSegFwdPropP`() value (uuid);
+-- CrossReferencabilityKinds(x) if SingletonInstanceScalarDataPropertyValues(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if SingletonInstanceScalarDataPropertyValues(x)
+insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if SingletonInstanceScalarDataPropertyValues(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if SingletonInstanceScalarDataPropertyValues(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleElements(x) if SingletonInstanceScalarDataPropertyValues(x)
+insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- NonCrossReferencableKinds(x) if SingletonInstanceScalarDataPropertyValues(x)
+insert into `OML`.`NonCRBK`(`uuid`) values(new.`uuid`);
+-- ValueCrossReferenceTuples(x) if SingletonInstanceScalarDataPropertyValues(x)
+insert into `OML`.`ValCRefTs`(`uuid`) values(new.`uuid`);
 END$$
 
 DELIMITER $$
 USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`URPropP_AFTER_DELETE` AFTER DELETE ON `URPropP` FOR EACH ROW
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`S1IScPVals_AFTER_DELETE` AFTER DELETE ON `S1IScPVals` FOR EACH ROW
 BEGIN
-delete from `OML`.`BinSegFwdPropP`;
+-- CrossReferencabilityKinds(x) if SingletonInstanceScalarDataPropertyValues(x)
+delete from `OML`.`CRTK`;
+-- ExtrinsicIdentityKinds(x) if SingletonInstanceScalarDataPropertyValues(x)
+delete from `OML`.`EIdK`;
+-- IdentityKinds(x) if SingletonInstanceScalarDataPropertyValues(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if SingletonInstanceScalarDataPropertyValues(x)
+delete from `OML`.`LogEs`;
+-- ModuleElements(x) if SingletonInstanceScalarDataPropertyValues(x)
+delete from `OML`.`ModElts`;
+-- NonCrossReferencableKinds(x) if SingletonInstanceScalarDataPropertyValues(x)
+delete from `OML`.`NonCRBK`;
+-- ValueCrossReferenceTuples(x) if SingletonInstanceScalarDataPropertyValues(x)
+delete from `OML`.`ValCRefTs`;
+END$$
+
+-- -----------------------------------------------------
+-- Concrete Information Table `OML`.`StPTs` (StructuredDataPropertyTuples)
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`StPTs_AFTER_INSERT` AFTER INSERT ON `StPTs` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if StructuredDataPropertyTuples(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if StructuredDataPropertyTuples(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if StructuredDataPropertyTuples(x)
+insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
+-- ElementCrossReferenceTuples(x) if StructuredDataPropertyTuples(x)
+insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if StructuredDataPropertyTuples(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if StructuredDataPropertyTuples(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- SingletonInstanceStructuredDataPropertyContexts(x) if StructuredDataPropertyTuples(x)
+insert into `OML`.`S1IStPCtxts`(`uuid`) values(new.`uuid`);
+END$$
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`StPTs_AFTER_DELETE` AFTER DELETE ON `StPTs` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if StructuredDataPropertyTuples(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if StructuredDataPropertyTuples(x)
+delete from `OML`.`CRTK`;
+-- ExtrinsicIdentityKinds(x) if StructuredDataPropertyTuples(x)
+delete from `OML`.`EIdK`;
+-- ElementCrossReferenceTuples(x) if StructuredDataPropertyTuples(x)
+delete from `OML`.`EltCRefTs`;
+-- IdentityKinds(x) if StructuredDataPropertyTuples(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if StructuredDataPropertyTuples(x)
+delete from `OML`.`LogEs`;
+-- SingletonInstanceStructuredDataPropertyContexts(x) if StructuredDataPropertyTuples(x)
+delete from `OML`.`S1IStPCtxts`;
+END$$
+
+-- -----------------------------------------------------
+-- Concrete Information Table `OML`.`ScPVals` (ScalarDataPropertyValues)
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`ScPVals_AFTER_INSERT` AFTER INSERT ON `ScPVals` FOR EACH ROW
+BEGIN
+-- CrossReferencabilityKinds(x) if ScalarDataPropertyValues(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if ScalarDataPropertyValues(x)
+insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if ScalarDataPropertyValues(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if ScalarDataPropertyValues(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- NonCrossReferencableKinds(x) if ScalarDataPropertyValues(x)
+insert into `OML`.`NonCRBK`(`uuid`) values(new.`uuid`);
+-- ValueCrossReferenceTuples(x) if ScalarDataPropertyValues(x)
+insert into `OML`.`ValCRefTs`(`uuid`) values(new.`uuid`);
+END$$
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`ScPVals_AFTER_DELETE` AFTER DELETE ON `ScPVals` FOR EACH ROW
+BEGIN
+-- CrossReferencabilityKinds(x) if ScalarDataPropertyValues(x)
+delete from `OML`.`CRTK`;
+-- ExtrinsicIdentityKinds(x) if ScalarDataPropertyValues(x)
+delete from `OML`.`EIdK`;
+-- IdentityKinds(x) if ScalarDataPropertyValues(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if ScalarDataPropertyValues(x)
+delete from `OML`.`LogEs`;
+-- NonCrossReferencableKinds(x) if ScalarDataPropertyValues(x)
+delete from `OML`.`NonCRBK`;
+-- ValueCrossReferenceTuples(x) if ScalarDataPropertyValues(x)
+delete from `OML`.`ValCRefTs`;
+END$$
+
+-- -----------------------------------------------------
+-- Concrete Information Table `OML`.`AnnotPropVals` (AnnotationPropertyValues)
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`AnnotPropVals_AFTER_INSERT` AFTER INSERT ON `AnnotPropVals` FOR EACH ROW
+BEGIN
+-- CrossReferencabilityKinds(x) if AnnotationPropertyValues(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if AnnotationPropertyValues(x)
+insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if AnnotationPropertyValues(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- NonCrossReferencableKinds(x) if AnnotationPropertyValues(x)
+insert into `OML`.`NonCRBK`(`uuid`) values(new.`uuid`);
+-- NonLogicalElements(x) if AnnotationPropertyValues(x)
+insert into `OML`.`NonLogEs`(`uuid`) values(new.`uuid`);
+-- ValueCrossReferenceTuples(x) if AnnotationPropertyValues(x)
+insert into `OML`.`ValCRefTs`(`uuid`) values(new.`uuid`);
+END$$
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`AnnotPropVals_AFTER_DELETE` AFTER DELETE ON `AnnotPropVals` FOR EACH ROW
+BEGIN
+-- CrossReferencabilityKinds(x) if AnnotationPropertyValues(x)
+delete from `OML`.`CRTK`;
+-- ExtrinsicIdentityKinds(x) if AnnotationPropertyValues(x)
+delete from `OML`.`EIdK`;
+-- IdentityKinds(x) if AnnotationPropertyValues(x)
+delete from `OML`.`Ik`;
+-- NonCrossReferencableKinds(x) if AnnotationPropertyValues(x)
+delete from `OML`.`NonCRBK`;
+-- NonLogicalElements(x) if AnnotationPropertyValues(x)
+delete from `OML`.`NonLogEs`;
+-- ValueCrossReferenceTuples(x) if AnnotationPropertyValues(x)
+delete from `OML`.`ValCRefTs`;
 END$$
 
 

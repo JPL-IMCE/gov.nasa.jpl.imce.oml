@@ -60,6 +60,7 @@ import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstanceDomai
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstanceRange;
 import gov.nasa.jpl.imce.oml.model.descriptions.ScalarDataPropertyValue;
 import gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceScalarDataPropertyValue;
+import gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceStructuredDataPropertyContext;
 import gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceStructuredDataPropertyValue;
 import gov.nasa.jpl.imce.oml.model.descriptions.StructuredDataPropertyTuple;
 import gov.nasa.jpl.imce.oml.model.descriptions.UnreifiedRelationshipInstanceTuple;
@@ -77,6 +78,7 @@ import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptPredicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.DataRange;
+import gov.nasa.jpl.imce.oml.model.terminologies.DataRelationshipToScalar;
 import gov.nasa.jpl.imce.oml.model.terminologies.DataRelationshipToStructure;
 import gov.nasa.jpl.imce.oml.model.terminologies.Entity;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialRestrictionAxiom;
@@ -113,6 +115,8 @@ import gov.nasa.jpl.imce.oml.model.terminologies.SpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.StringScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.Structure;
 import gov.nasa.jpl.imce.oml.model.terminologies.StructuredDataProperty;
+import gov.nasa.jpl.imce.oml.model.terminologies.SubDataPropertyOfAxiom;
+import gov.nasa.jpl.imce.oml.model.terminologies.SubObjectPropertyOfAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.SynonymScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.Term;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox;
@@ -932,6 +936,12 @@ public class OMLExtensions {
       }
     }
     if (!_matched) {
+      if (e instanceof EntityStructuredDataPropertyParticularRestrictionAxiom) {
+        _matched=true;
+        _switchResult = "EntityStructuredDataPropertyParticularRestrictionAxiom";
+      }
+    }
+    if (!_matched) {
       if (e instanceof EntityUniversalRestrictionAxiom) {
         _matched=true;
         _switchResult = "EntityUniversalRestrictionAxiom";
@@ -1121,6 +1131,18 @@ public class OMLExtensions {
       if (e instanceof StructuredDataPropertyTuple) {
         _matched=true;
         _switchResult = "StructuredDataPropertyTuple";
+      }
+    }
+    if (!_matched) {
+      if (e instanceof SubDataPropertyOfAxiom) {
+        _matched=true;
+        _switchResult = "SubDataPropertyOfAxiom";
+      }
+    }
+    if (!_matched) {
+      if (e instanceof SubObjectPropertyOfAxiom) {
+        _matched=true;
+        _switchResult = "SubObjectPropertyOfAxiom";
       }
     }
     if (!_matched) {
@@ -1356,6 +1378,18 @@ public class OMLExtensions {
       if (e instanceof EntityStructuredDataPropertyParticularRestrictionAxiom) {
         _matched=true;
         _switchResult = 10105;
+      }
+    }
+    if (!_matched) {
+      if (e instanceof SubObjectPropertyOfAxiom) {
+        _matched=true;
+        _switchResult = 10202;
+      }
+    }
+    if (!_matched) {
+      if (e instanceof SubDataPropertyOfAxiom) {
+        _matched=true;
+        _switchResult = 10201;
       }
     }
     if (!_matched) {
@@ -1756,6 +1790,18 @@ public class OMLExtensions {
       if (e instanceof UnreifiedRelationshipInstanceTuple) {
         _matched=true;
         _switchResult = "00144";
+      }
+    }
+    if (!_matched) {
+      if (e instanceof SubObjectPropertyOfAxiom) {
+        _matched=true;
+        _switchResult = "00150";
+      }
+    }
+    if (!_matched) {
+      if (e instanceof SubDataPropertyOfAxiom) {
+        _matched=true;
+        _switchResult = "00151";
       }
     }
     if (!_matched) {
@@ -2255,6 +2301,44 @@ public class OMLExtensions {
         }
       }
       if (!_matched) {
+        if (e instanceof RestrictionStructuredDataPropertyTuple) {
+          _matched=true;
+          String _elvis = null;
+          DataRelationshipToStructure _structuredDataProperty = ((RestrictionStructuredDataPropertyTuple)e).getStructuredDataProperty();
+          String _abbrevIRI = null;
+          if (_structuredDataProperty!=null) {
+            _abbrevIRI=_structuredDataProperty.abbrevIRI();
+          }
+          if (_abbrevIRI != null) {
+            _elvis = _abbrevIRI;
+          } else {
+            _elvis = "";
+          }
+          String _plus = (_elvis + ".");
+          String _string = ((RestrictionStructuredDataPropertyTuple)e).uuid().toString();
+          _switchResult = (_plus + _string);
+        }
+      }
+      if (!_matched) {
+        if (e instanceof RestrictionScalarDataPropertyValue) {
+          _matched=true;
+          String _elvis = null;
+          DataRelationshipToScalar _scalarDataProperty = ((RestrictionScalarDataPropertyValue)e).getScalarDataProperty();
+          String _abbrevIRI = null;
+          if (_scalarDataProperty!=null) {
+            _abbrevIRI=_scalarDataProperty.abbrevIRI();
+          }
+          if (_abbrevIRI != null) {
+            _elvis = _abbrevIRI;
+          } else {
+            _elvis = "";
+          }
+          String _plus = (_elvis + ".");
+          String _string = ((RestrictionScalarDataPropertyValue)e).uuid().toString();
+          _switchResult = (_plus + _string);
+        }
+      }
+      if (!_matched) {
         if (e instanceof ScalarOneOfLiteralAxiom) {
           _matched=true;
           String _elvis = null;
@@ -2427,6 +2511,163 @@ public class OMLExtensions {
             _elvis_2 = _string_2;
           }
           _switchResult = (_plus_2 + _elvis_2);
+        }
+      }
+      if (!_matched) {
+        if (e instanceof SubObjectPropertyOfAxiom) {
+          _matched=true;
+          String _elvis = null;
+          UnreifiedRelationship _superProperty = ((SubObjectPropertyOfAxiom)e).getSuperProperty();
+          String _abbrevIRI = null;
+          if (_superProperty!=null) {
+            _abbrevIRI=_superProperty.abbrevIRI();
+          }
+          if (_abbrevIRI != null) {
+            _elvis = _abbrevIRI;
+          } else {
+            String _string = ((SubObjectPropertyOfAxiom)e).uuid().toString();
+            _elvis = _string;
+          }
+          String _plus = (_elvis + ".");
+          String _elvis_1 = null;
+          UnreifiedRelationship _subProperty = ((SubObjectPropertyOfAxiom)e).getSubProperty();
+          String _abbrevIRI_1 = null;
+          if (_subProperty!=null) {
+            _abbrevIRI_1=_subProperty.abbrevIRI();
+          }
+          if (_abbrevIRI_1 != null) {
+            _elvis_1 = _abbrevIRI_1;
+          } else {
+            String _string_1 = ((SubObjectPropertyOfAxiom)e).uuid().toString();
+            _elvis_1 = _string_1;
+          }
+          _switchResult = (_plus + _elvis_1);
+        }
+      }
+      if (!_matched) {
+        if (e instanceof SubDataPropertyOfAxiom) {
+          _matched=true;
+          String _elvis = null;
+          EntityScalarDataProperty _superProperty = ((SubDataPropertyOfAxiom)e).getSuperProperty();
+          String _abbrevIRI = null;
+          if (_superProperty!=null) {
+            _abbrevIRI=_superProperty.abbrevIRI();
+          }
+          if (_abbrevIRI != null) {
+            _elvis = _abbrevIRI;
+          } else {
+            String _string = ((SubDataPropertyOfAxiom)e).uuid().toString();
+            _elvis = _string;
+          }
+          String _plus = (_elvis + ".");
+          String _elvis_1 = null;
+          EntityScalarDataProperty _subProperty = ((SubDataPropertyOfAxiom)e).getSubProperty();
+          String _abbrevIRI_1 = null;
+          if (_subProperty!=null) {
+            _abbrevIRI_1=_subProperty.abbrevIRI();
+          }
+          if (_abbrevIRI_1 != null) {
+            _elvis_1 = _abbrevIRI_1;
+          } else {
+            String _string_1 = ((SubDataPropertyOfAxiom)e).uuid().toString();
+            _elvis_1 = _string_1;
+          }
+          _switchResult = (_plus + _elvis_1);
+        }
+      }
+      if (!_matched) {
+        if (e instanceof SingletonInstanceStructuredDataPropertyValue) {
+          _matched=true;
+          String _elvis = null;
+          ConceptualEntitySingletonInstance _singletonInstance = ((SingletonInstanceStructuredDataPropertyValue)e).getSingletonInstance();
+          String _abbrevIRI = null;
+          if (_singletonInstance!=null) {
+            _abbrevIRI=_singletonInstance.abbrevIRI();
+          }
+          if (_abbrevIRI != null) {
+            _elvis = _abbrevIRI;
+          } else {
+            String _string = ((SingletonInstanceStructuredDataPropertyValue)e).uuid().toString();
+            _elvis = _string;
+          }
+          String _plus = (_elvis + ".");
+          String _elvis_1 = null;
+          DataRelationshipToStructure _structuredDataProperty = ((SingletonInstanceStructuredDataPropertyValue)e).getStructuredDataProperty();
+          String _abbrevIRI_1 = null;
+          if (_structuredDataProperty!=null) {
+            _abbrevIRI_1=_structuredDataProperty.abbrevIRI();
+          }
+          if (_abbrevIRI_1 != null) {
+            _elvis_1 = _abbrevIRI_1;
+          } else {
+            String _string_1 = ((SingletonInstanceStructuredDataPropertyValue)e).uuid().toString();
+            _elvis_1 = _string_1;
+          }
+          _switchResult = (_plus + _elvis_1);
+        }
+      }
+      if (!_matched) {
+        if (e instanceof StructuredDataPropertyTuple) {
+          _matched=true;
+          String _elvis = null;
+          SingletonInstanceStructuredDataPropertyContext _structuredDataPropertyContext = ((StructuredDataPropertyTuple)e).getStructuredDataPropertyContext();
+          String _uuid = null;
+          if (_structuredDataPropertyContext!=null) {
+            _uuid=_structuredDataPropertyContext.uuid();
+          }
+          if (_uuid != null) {
+            _elvis = _uuid;
+          } else {
+            _elvis = "";
+          }
+          String _plus = (_elvis + ".");
+          String _elvis_1 = null;
+          DataRelationshipToStructure _structuredDataProperty = ((StructuredDataPropertyTuple)e).getStructuredDataProperty();
+          String _abbrevIRI = null;
+          if (_structuredDataProperty!=null) {
+            _abbrevIRI=_structuredDataProperty.abbrevIRI();
+          }
+          if (_abbrevIRI != null) {
+            _elvis_1 = _abbrevIRI;
+          } else {
+            _elvis_1 = "";
+          }
+          String _plus_1 = (_plus + _elvis_1);
+          String _plus_2 = (_plus_1 + ".");
+          String _string = ((StructuredDataPropertyTuple)e).uuid().toString();
+          _switchResult = (_plus_2 + _string);
+        }
+      }
+      if (!_matched) {
+        if (e instanceof ScalarDataPropertyValue) {
+          _matched=true;
+          String _elvis = null;
+          SingletonInstanceStructuredDataPropertyContext _structuredDataPropertyContext = ((ScalarDataPropertyValue)e).getStructuredDataPropertyContext();
+          String _uuid = null;
+          if (_structuredDataPropertyContext!=null) {
+            _uuid=_structuredDataPropertyContext.uuid();
+          }
+          if (_uuid != null) {
+            _elvis = _uuid;
+          } else {
+            _elvis = "";
+          }
+          String _plus = (_elvis + ".");
+          String _elvis_1 = null;
+          DataRelationshipToScalar _scalarDataProperty = ((ScalarDataPropertyValue)e).getScalarDataProperty();
+          String _abbrevIRI = null;
+          if (_scalarDataProperty!=null) {
+            _abbrevIRI=_scalarDataProperty.abbrevIRI();
+          }
+          if (_abbrevIRI != null) {
+            _elvis_1 = _abbrevIRI;
+          } else {
+            _elvis_1 = "";
+          }
+          String _plus_1 = (_plus + _elvis_1);
+          String _plus_2 = (_plus_1 + ".");
+          String _string = ((ScalarDataPropertyValue)e).uuid().toString();
+          _switchResult = (_plus_2 + _string);
         }
       }
       final String c = _switchResult;
