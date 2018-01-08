@@ -549,35 +549,35 @@ License Terms
          id="org.eclipse.jdt.junit"
          download-size="0"
          install-size="0"
-         version="3.10.0.v20170208-1347"
+         version="3.10.50.v20171004-1157"
          unpack="false"/>
 
    <plugin
          id="org.eclipse.jdt.junit.core"
          download-size="0"
          install-size="0"
-         version="3.9.0.v20170316-1142"
+         version="3.9.50.v20170927-1941"
          unpack="false"/>
 
    <plugin
          id="org.eclipse.jdt.junit.runtime"
          download-size="0"
          install-size="0"
-         version="3.4.600.v20160505-0715"
+         version="3.4.650.v20170920-1015"
          unpack="false"/>
 
    <plugin
          id="org.eclipse.jdt.junit4.runtime"
          download-size="0"
          install-size="0"
-         version="1.1.600.v20160505-0715"
+         version="1.1.650.v20170920-1015"
          unpack="false"/>
 
    <plugin
          id="org.eclipse.pde.junit.runtime"
          download-size="0"
          install-size="0"
-         version="3.5.0.v20151013-0625"
+         version="3.5.50.v20170923-0844"
          unpack="false"/>
 
    <plugin
