@@ -135,6 +135,8 @@ import java.util.List
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.nodemodel.INode
 import gov.nasa.jpl.imce.oml.model.common.LogicalElement
+import gov.nasa.jpl.imce.oml.model.terminologies.SubObjectPropertyOfAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.SubDataPropertyOfAxiom
 
 public class OMLExtensions {
 
@@ -603,6 +605,8 @@ public class OMLExtensions {
 				'EntityScalarDataPropertyUniversalRestrictionAxiom'
 			EntityStructuredDataProperty:
 				'EntityStructuredDataProperty'
+			EntityStructuredDataPropertyParticularRestrictionAxiom:
+				'EntityStructuredDataPropertyParticularRestrictionAxiom'
 			EntityUniversalRestrictionAxiom:
 				'EntityUniversalRestrictionAxiom'
 			IRIScalarRestriction:
@@ -667,6 +671,10 @@ public class OMLExtensions {
 				'StructuredDataProperty'
 			StructuredDataPropertyTuple:
 				'StructuredDataPropertyTuple'
+			SubDataPropertyOfAxiom:
+				'SubDataPropertyOfAxiom'
+			SubObjectPropertyOfAxiom:
+				'SubObjectPropertyOfAxiom'
 			SynonymScalarRestriction:
 				'SynonymScalarRestriction'
 			TerminologyExtensionAxiom:
@@ -750,6 +758,10 @@ public class OMLExtensions {
 				10104
 			EntityStructuredDataPropertyParticularRestrictionAxiom:
 				10105
+			SubObjectPropertyOfAxiom:
+				10202	
+			SubDataPropertyOfAxiom:
+				10201
 			default:
 				0
 		}
@@ -902,6 +914,10 @@ public class OMLExtensions {
 				"00143"
 			UnreifiedRelationshipInstanceTuple:
 				"00144"
+			SubObjectPropertyOfAxiom:
+				"00150"
+			SubDataPropertyOfAxiom:
+				"00151"
 			default:
 				"0"
 		}
@@ -1153,6 +1169,10 @@ public class OMLExtensions {
 			EntityStructuredDataPropertyParticularRestrictionAxiom:
 				(e.restrictedEntity?.abbrevIRI ?: e.uuid().toString) + "." +
 					(e.structuredDataProperty?.abbrevIRI ?: e.uuid().toString)
+			RestrictionStructuredDataPropertyTuple:
+				(e.structuredDataProperty?.abbrevIRI ?: "") + "." + e.uuid().toString
+			RestrictionScalarDataPropertyValue:
+				(e.scalarDataProperty?.abbrevIRI ?: "") + "." + e.uuid().toString
 			ScalarOneOfLiteralAxiom:
 				(e.axiom?.abbrevIRI ?: e.uuid().toString) + "." + (e.value?.sortingCriteria ?: e.uuid().toString)
 			SpecializationAxiom:
@@ -1168,6 +1188,21 @@ public class OMLExtensions {
 			UnreifiedRelationshipInstanceTuple:
 				(e.unreifiedRelationship?.abbrevIRI ?: e.uuid().toString) + "." +
 					(e.domain?.abbrevIRI ?: e.uuid().toString) + "." + (e.range?.abbrevIRI ?: e.uuid().toString)
+			SubObjectPropertyOfAxiom:
+				(e.superProperty?.abbrevIRI ?: e.uuid().toString) + "." +
+				(e.subProperty?.abbrevIRI ?: e.uuid().toString)
+			SubDataPropertyOfAxiom:
+				(e.superProperty?.abbrevIRI ?: e.uuid().toString) + "." +
+				(e.subProperty?.abbrevIRI ?: e.uuid().toString)
+			SingletonInstanceStructuredDataPropertyValue:
+				(e.singletonInstance?.abbrevIRI ?: e.uuid().toString) + "." +
+				(e.structuredDataProperty?.abbrevIRI ?: e.uuid().toString)
+			StructuredDataPropertyTuple:
+				(e.structuredDataPropertyContext?.uuid() ?: "") + "." +
+				(e.structuredDataProperty?.abbrevIRI ?: "") + "." + e.uuid().toString
+			ScalarDataPropertyValue:
+				(e.structuredDataPropertyContext?.uuid() ?: "") + "." +
+				(e.scalarDataProperty?.abbrevIRI ?: "") + "." + e.uuid().toString
 		}
 		nestedKindOrder(e) + c
 	}
