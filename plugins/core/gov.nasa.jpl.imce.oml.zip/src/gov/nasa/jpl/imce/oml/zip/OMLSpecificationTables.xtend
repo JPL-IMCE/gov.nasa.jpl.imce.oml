@@ -1267,7 +1267,7 @@ class OMLSpecificationTables {
       pw.print(OMLTables.toPlainString(it.name()))
       pw.print(",")
       pw.print("\"pattern\":")
-      pw.print(OMLTables.toPlainString(it.pattern))
+      pw.print(OMLTables.toStringArray(it.pattern))
       pw.println("}")
     ]
     pw.close()

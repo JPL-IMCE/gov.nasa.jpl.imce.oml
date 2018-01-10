@@ -89,3 +89,5 @@ gov.nasa.jpl.imce.oml.tycho 0.9.0.0 resolves major problems found in 0.8.0.1
 - [#200 CatalogURIConverter.normalize should report unresolved URIs](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/200)
 
 - [#201 OMLCatalog needs to provide access to the CatalogEntry rules](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/201)
+
+- [#203 Missing wrappers for raw strings.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/203)
