@@ -99,8 +99,8 @@ class OMLZipResource extends ResourceImpl {
 		}
 	}
 
-   protected static val Pattern KeyValue = Pattern.compile("\"([^\"]*)\":(null|\"(.*?)\"|\\{\"literalType\":\"[^\"]*\",\"value\":\".*?\"\\}),?")
-   
+   public static val Pattern KeyValue = Pattern.compile("\"([^\"]*)\":(null|\"(.*?)\"|\\{\"literalType\":\"[^\"]*\",\"value\":\\[\"(\\\\\\\"|\\n|\\r|[^\"]+?)\"(,\"(\\\\\\\"|\\n|\\r|[^\"]+?)\")*\\]\\}|\\[\"(\\\\\\\"|\\n|\\r|[^\"]+?)\"(,\"(\\\\\\\"|\\n|\\r|[^\"]+?)\")*\\]),?")
+  
    protected static def List<Map<String, String>> lines2tuples(ArrayList<String> lines) {
    	val list = new ArrayList<Map<String, String>>()
   	lines.forEach[ line | 
