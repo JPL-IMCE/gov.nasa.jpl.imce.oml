@@ -1462,7 +1462,7 @@ public class OMLSpecificationTables {
       pw.print(OMLTables.toPlainString(it.name()));
       pw.print(",");
       pw.print("\"pattern\":");
-      pw.print(OMLTables.toPlainString(it.getPattern()));
+      pw.print(OMLTables.toStringArray(it.getPattern()));
       pw.println("}");
     };
     OMLTables.iriScalarRestrictions(e).forEach(_function);
