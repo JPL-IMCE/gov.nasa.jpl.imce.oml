@@ -6,6 +6,8 @@ import java.io.IOException
 import java.util.Set
 import java.util.HashSet
 import java.net.MalformedURLException
+import java.util.Vector
+import org.apache.xml.resolver.CatalogEntry
 
 class OMLCatalog extends Catalog {
 	
@@ -36,5 +38,9 @@ class OMLCatalog extends Catalog {
 	
 	def Set<URL> getParsedCatalogs() {
 		parsedCatalogs.immutableCopy
+	}
+	
+	def Vector<CatalogEntry> entries() {
+		catalogEntries
 	}
 }
