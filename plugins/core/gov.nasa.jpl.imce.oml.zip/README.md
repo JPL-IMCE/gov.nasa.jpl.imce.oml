@@ -61,5 +61,22 @@ For change management purposes, the `*.omlzip` serialization format yields the f
   For loading or saving such a resource, the `URI` is mapped to an `*.omlzip` file location according to the catalog.
   OML `ModuleEdge` target cross-reference `IRI`s are similarly mapped for resolving the referenced target OML `Module` to an `*.omlzip` file.
   
+  ## Note about Raw String encoding in omlzip.
+  
+  The following OML Tables use a special encoding for raw strings in [OMLSpecificationTables](./src/gov/nasa/jpl/imce/oml/zip/OMLSpecificationTables.xtend):
+  
+  Regular Expression Patterns:
+  
+  - `PlainLiteralScalarRestriction.pattern`
+  - `StringScalarRestriction.pattern`
+  
+  Values:
+  
+  - `AnnotationPropertyValue.value`
+  - `EntityScalarDataPropertyParticularRestrictionAxiom.literalValue`
+  - `RestrictionScalarDataPropertyValue.scalarPropertyValue`
+  - `ScalarDataPropertyValue.scalarPropertyValue`
+  - `ScalarOneOfLiteralAxiom.value`
+  - `SingletonInstanceScalarDataPropertyValue.scalarPropertyValue`
   
   

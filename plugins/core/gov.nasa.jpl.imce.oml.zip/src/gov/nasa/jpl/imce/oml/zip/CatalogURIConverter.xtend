@@ -17,12 +17,15 @@
  */
 package gov.nasa.jpl.imce.oml.zip
 
-import org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl
-import org.eclipse.emf.ecore.resource.URIHandler
+import java.lang.IllegalArgumentException
 import java.util.Collection
-import org.eclipse.emf.ecore.resource.ContentHandler
-import gov.nasa.jpl.imce.oml.model.extensions.OMLCatalog
+
 import org.eclipse.emf.common.util.URI
+import org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl
+import org.eclipse.emf.ecore.resource.ContentHandler
+import org.eclipse.emf.ecore.resource.URIHandler
+
+import gov.nasa.jpl.imce.oml.model.extensions.OMLCatalog
 
 /**
  * CatalogURIConverter is a kind of ExtensibleURIConverterImpl
@@ -54,6 +57,8 @@ class CatalogURIConverter extends ExtensibleURIConverterImpl {
 	 */
 	override def URI normalize(URI uri) {
 		val resolved = catalog.resolveURI(uri.toString)
+		if (null === resolved || !resolved.startsWith("file:"))
+			throw new IllegalArgumentException('''No catalog mapping for URI: «uri»''')
 		URI.createURI(resolved + ".omlzip")
 	}
 	

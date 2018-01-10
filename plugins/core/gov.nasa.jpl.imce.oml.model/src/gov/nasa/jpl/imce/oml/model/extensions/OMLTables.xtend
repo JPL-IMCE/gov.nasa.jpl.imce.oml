@@ -114,6 +114,8 @@ import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipInversePro
 import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipPropertyPredicate
 import gov.nasa.jpl.imce.oml.model.terminologies.SubObjectPropertyOfAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.SubDataPropertyOfAxiom
+import gov.nasa.jpl.imce.oml.model.common.LiteralQuotedString
+import java.util.regex.Matcher
 
 /**
  * OMLTables is a collection of extension queries for OML Extent and conversion methods for OML values.
@@ -661,15 +663,85 @@ class OMLTables {
   	result
   }
 	
-  static def dispatch String toString(String value) {
-  	"\"" + value.replaceAll("\"", "\\\"") + "\""
+  public static val char QUOTE = '"'
+  public static val char NEWLINE = '\n'
+  public static val char LINEFEED = '\r'
+  
+  protected static def String toStringArray(String prefix, String rawString) {
+		if (null === rawString || rawString.empty) {
+			if (null === prefix || prefix.empty) {
+				'''[""]'''
+			} else {
+				'''[«prefix»]'''
+			}
+		} else {
+			val buffer = new StringBuffer()
+			buffer.append("[")
+			var value = rawString
+			var empty = true
+			var continue = true
+			do {
+				val qi = value.indexOf(QUOTE)
+				val ni = value.indexOf(NEWLINE)
+				val li = value.indexOf(LINEFEED)
+
+				if (0 == qi) {
+					if (empty) empty = false else buffer.append(",")
+					buffer.append('''"\""''')
+					value = value.substring(1)
+				} else if (0 == ni) {
+					if (empty) empty = false else buffer.append(",")
+					buffer.append('''"\n"''')
+					value = value.substring(1)
+				} else if (0 == li) {
+					if (empty) empty = false else buffer.append(",")
+					buffer.append('''"\r"''')
+					value = value.substring(1)
+				} else if (0 < qi && (-1 == ni || qi < ni) && (-1 == li || qi < li)) {
+					if (empty) empty = false else buffer.append(",")
+					buffer.append('''"«value.substring(0, qi)»","\""''')
+					value = value.substring(qi + 1)
+				} else if (0 < ni && (-1 == qi || ni < qi) && (-1 == li || ni < li)) {
+					if (empty) empty = false else buffer.append(",")
+					buffer.append('''"«value.substring(0, ni)»","\n"''')
+					value = value.substring(ni + 1)
+				} else if (0 < li && (-1 == qi || li < qi) && (-1 == ni || li < ni)) {
+					if (empty) empty = false else buffer.append(",")
+					buffer.append('''"«value.substring(0,li)»","\r"''')
+					value = value.substring(li + 1)
+				} else {
+					buffer.append("]")
+					continue=false
+				}
+			} while (continue)
+			buffer.toString
+		}
+	}
+  
+  static def dispatch String toStringArray(String value) {
+  	if (value.empty)
+  		""
+  	else
+	  	toStringArray("", value)
   }
   
-  static def dispatch String toString(PositiveIntegerValue value) {
+  static def dispatch String toStringArray(PatternValue value) {
+  	toStringArray(value.value)
+  }
+  
+  static def dispatch String toStringArray(LiteralQuotedString value) {
+  	toStringArray(value.value)
+  }
+  
+  static def dispatch String toPlainString(String value) {
+  	"\"" + value + "\""
+  }
+  
+  static def dispatch String toPlainString(PositiveIntegerValue value) {
   	"\"" + value.value + "\""
   }
   
-  static def dispatch String toString(LiteralNumber value) {
+  static def dispatch String toPlainString(LiteralNumber value) {
   	switch value {
   		LiteralDecimal:
   		  switch value.decimal {
@@ -687,7 +759,7 @@ class OMLTables {
   	}
   }
   
-  static def dispatch String toString(LiteralValue value) {
+  static def dispatch String toPlainString(LiteralValue value) {
   	switch value {
   		LiteralBoolean:
   			 '''{"literalType":"LiteralBooleanType","value":"«value.value»"}'''
@@ -700,15 +772,15 @@ class OMLTables {
   		LiteralURI:
   			 '''{"literalType":"LiteralURIType","value":"«value.value»"}'''
   		LiteralNumber:
-  			toString(value)
+  			toPlainString(value)
   	}
   }
   
-  static def dispatch String toString(DescriptionKind value) {
+  static def dispatch String toPlainString(DescriptionKind value) {
   	"\"" + value.toString + "\""
   }
   
-  static def dispatch String toString(TerminologyKind value) {
+  static def dispatch String toPlainString(TerminologyKind value) {
   	"\"" + value.toString + "\""
   }
   
@@ -752,13 +824,40 @@ class OMLTables {
 	return lit
   }
   
-  protected static val Pattern LiteralNumberOrValue = Pattern.compile("\\{\"literalType\":\"(.*)\",\"value\":\"(.*)\"\\}")
-    
+  public static val Pattern LiteralNumberOrValue = Pattern.compile("(\\{\"literalType\":\"(.*)\",\"value\":(\"(.*)\"|\\[\"(\\\\\\\"|\\n|\\r|[^\"]+?)\"(,\"(\\\\\\\"|\\n|\\r|[^\"]+?)\")*\\])\\}|\\[\"(\\\\\\\"|\\n|\\r|[^\"]+?)\"(,\"(\\\\\\\"|\\n|\\r|[^\"]+?)\")*\\])")
+  public static val Pattern StringArray = Pattern.compile("\"(\\\\\\\"|\\n|\\r|[^\"]+?)\",?")
+  
+  static def String toValue(Matcher m) {
+		if (null !== m.group(4) && !m.group(4).empty)
+			m.group(4)
+		else {
+			val stringArray = if (null === m.group(2) || m.group(2).empty) m.group(1) else m.group(3)
+			if (!stringArray.startsWith("["))
+				throw new IllegalArgumentException('''toValue(«stringArray») should start with '['. ''')
+			if (!stringArray.endsWith("]"))
+				throw new IllegalArgumentException('''toValue(«stringArray») should end with ']'. ''')
+			val buffer = new StringBuffer()
+			val a = StringArray.matcher(stringArray.substring(1, stringArray.length-1))
+			while (a.find()) {
+				val part = a.group(1)
+				if ("\\\\n" == part)
+					buffer.append(NEWLINE)
+				else if ("\\\\r" == part)
+					buffer.append(LINEFEED)
+				else if ("\\\"" == part)
+					buffer.append(QUOTE)
+				else
+					buffer.append(part)
+			}
+			buffer.toString
+		}
+	}
+  
   static def LiteralNumber toLiteralNumber(String value) {
-  	val m = LiteralNumberOrValue.matcher(value)
+  	val Matcher m = LiteralNumberOrValue.matcher(value)
   	if (m.find) {
-  		val litType = m.group(1)
-  		val litValue = m.group(2)
+  		val litType = m.group(2) ?: ""
+  		val litValue = toValue(m)
   		switch litType {
   			case "LiteralDecimalType": {
   				val lit = CommonFactory.eINSTANCE.createLiteralDecimal
@@ -795,8 +894,8 @@ class OMLTables {
   static def LiteralValue toLiteralValue(String value) {
   	val m = LiteralNumberOrValue.matcher(value)
   	if (m.find) {
-  		val litType = m.group(1)
-  		val litValue = m.group(2)
+  		val litType = m.group(2) ?: ""
+  		val litValue = toValue(m)
   		switch litType {
   			case "LiteralBooleanType": {
   				val lit = CommonFactory.eINSTANCE.createLiteralBoolean
@@ -848,11 +947,16 @@ class OMLTables {
   				lit.real = new RealValue(litValue)
   				lit
   				}
+  			case "": {
+  				val lit = CommonFactory.eINSTANCE.createLiteralRawString
+  				lit.string = new RawStringValue(litValue)
+  				lit
+  			}
   			default:
- 				throw new IllegalArgumentException("OMLTables.toLiteralValue(value): unrecognized type: "+litType)
+ 				throw new IllegalArgumentException('''OMLTables.toLiteralValue(value): unrecognized type: «litType» for value: «value»''')
   		}
   	} else
-		throw new IllegalArgumentException("OMLTables.toLiteralValue(value): ill-formed value="+value)
+		throw new IllegalArgumentException('''OMLTables.toLiteralValue(value): ill-formed value=«value»''')
  }
   
   static def DescriptionKind toDescriptionKind(String value) {

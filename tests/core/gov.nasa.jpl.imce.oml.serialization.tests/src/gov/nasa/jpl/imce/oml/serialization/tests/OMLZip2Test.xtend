@@ -23,6 +23,8 @@ import org.eclipse.emf.common.util.URI
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.BlockJUnit4ClassRunner
+import gov.nasa.jpl.imce.oml.model.extensions.OMLTables
+import gov.nasa.jpl.imce.oml.zip.OMLZipResource
 
 @RunWith(BlockJUnit4ClassRunner)
 class OMLZip2Test extends OMLSaveLoadComparisonTest {
@@ -49,7 +51,9 @@ class OMLZip2Test extends OMLSaveLoadComparisonTest {
 		on.valueType = s2
 
 		val onValue = createLiteralQuotedString
-		onValue.string = new QuotedStringValue("On")
+		onValue.string = new QuotedStringValue('''on,
+		"on",
+		true''')
 		on.value = onValue
 
 		val off = createScalarOneOfLiteralAxiom
@@ -57,7 +61,12 @@ class OMLZip2Test extends OMLSaveLoadComparisonTest {
 		off.axiom = s2
 		// off.valueType = s2
 		val offValue = createLiteralQuotedString
-		offValue.string = new QuotedStringValue("Off")
+		offValue.string = new QuotedStringValue('''
+			
+			This is ""on""
+			
+			Ceci est "true"
+		''')
 		off.value = offValue
 
 		return #[new Pair<URI, Extent>(URI.createURI(tbox1.iri()), extent)]
@@ -66,6 +75,84 @@ class OMLZip2Test extends OMLSaveLoadComparisonTest {
 	@Test
 	def void test1() {
 		compareSavedAndLoaded(example1)
+	}
+
+	// For development purposes, this is helpful to understand the string regex parsing processes involved in OML.
+	
+	def array(String s) {
+		println()
+		println(s)
+		var pass = 1
+		val a = OMLTables.StringArray.matcher(s)
+		println("match? " + a)
+		val buffer = new StringBuffer()
+		while (a.find()) {
+			val part = a.group(1)
+			println('''«pass++»: "«part»"''')
+			if ("\\\\n" == part)
+				buffer.append(OMLTables.NEWLINE)
+			else if ("\\\\r" == part)
+				buffer.append(OMLTables.LINEFEED)
+			else if ("\\\"" == part)
+				buffer.append(OMLTables.QUOTE)
+			else
+				buffer.append(part)
+			}
+		println(buffer.toString)
+	}
+	
+	def value(String s) {
+		println()
+		println(s)
+		var pass = 1
+		val m = OMLTables.LiteralNumberOrValue.matcher(s)
+		println("match? " + m)
+		while (m.find()) {
+			println("pass: " + pass)
+			println(m.groupCount)
+			for (var i = 1; i <= m.groupCount; i++) {
+				println('''«i»: «m.group(i)»''')
+			}
+		}
+	}
+	def show(String s) {
+		println()
+		println(s)
+		var pass = 1
+		val m = OMLZipResource.KeyValue.matcher(s)
+		println("match? " + m)
+		while (m.find()) {
+			println("pass: " + pass)
+			println(m.groupCount)
+			for (var i = 1; i <= m.groupCount; i++) {
+				println('''«i»: «m.group(i)»''')
+			}
+		}
+	}
+
+	@Test
+	def void test2() {
+		show('''"value":["\\n"]''')
+		show('''"value":["\\r"]''')
+		show('''"value":["\""]''')
+		show('''"value":["abc"]''')
+		show('''"value":["abc","def"]''')
+
+		show('''"value":["\\n","This is ","\"","\"","on","\"","\"","\\n","\\n","Ceci est ","\"","true","\"","\\n"]''')
+		show('''"value":["\\n","This is ","\"","\"","on"]''')
+		show('''"value":["\\n","This is ","\"","\""]''')
+		show('''"value":["\\n","\\n"]''')
+		show('''"value":["abc","\\r"]''')
+		show('''"value":"OpenWorldDefiniions"''')
+		
+		value('''{"literalType":"string","value":["\"","def"]}''')
+		value('''{"literalType":"int","value":"42"}''')
+		value('''["\"","def"]''')
+		
+		array('''"\\n","This is ","\"","\"","on","\"","\"","\\n","\\n","Ceci est ","\"","true","\"","\\n"''')
+		array('''"\\n","This is ","\"","\"","on"''')
+		array('''"\\n","This is ","\"","\""''')
+		array('''"\"","def"''')
 	}
 
 }

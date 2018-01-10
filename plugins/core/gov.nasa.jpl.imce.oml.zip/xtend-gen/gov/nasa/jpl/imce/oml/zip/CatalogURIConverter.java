@@ -23,6 +23,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.ContentHandler;
 import org.eclipse.emf.ecore.resource.URIHandler;
 import org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 
 /**
@@ -59,6 +60,12 @@ public class CatalogURIConverter extends ExtensibleURIConverterImpl {
       URI _xblockexpression = null;
       {
         final String resolved = this.catalog.resolveURI(uri.toString());
+        if (((null == resolved) || (!resolved.startsWith("file:")))) {
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("No catalog mapping for URI: ");
+          _builder.append(uri);
+          throw new IllegalArgumentException(_builder.toString());
+        }
         _xblockexpression = URI.createURI((resolved + ".omlzip"));
       }
       return _xblockexpression;

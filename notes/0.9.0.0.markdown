@@ -82,3 +82,10 @@ gov.nasa.jpl.imce.oml.tycho 0.9.0.0 resolves major problems found in 0.8.0.1
 
   No change to the version number; just changes to the timestamp of the published version because the older timestamp is no longer available!
   
+- [#199 Improve support for special characters in values for omlzip.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/199)
+
+  See [oml.zip/README.md](../plugins/core/gov.nasa.jpl.imce.oml.zip/README.md)
+  
+- [#200 CatalogURIConverter.normalize should report unresolved URIs](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/200)
+
+- [#201 OMLCatalog needs to provide access to the CatalogEntry rules](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/201)

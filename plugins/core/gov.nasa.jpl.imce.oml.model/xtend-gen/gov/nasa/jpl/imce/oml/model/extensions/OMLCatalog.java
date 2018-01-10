@@ -6,7 +6,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.Vector;
 import org.apache.xml.resolver.Catalog;
+import org.apache.xml.resolver.CatalogEntry;
 import org.eclipse.xtend2.lib.StringConcatenation;
 
 @SuppressWarnings("all")
@@ -46,5 +48,9 @@ public class OMLCatalog extends Catalog {
   
   public Set<URL> getParsedCatalogs() {
     return ImmutableSet.<URL>copyOf(this.parsedCatalogs);
+  }
+  
+  public Vector<CatalogEntry> entries() {
+    return this.catalogEntries;
   }
 }
