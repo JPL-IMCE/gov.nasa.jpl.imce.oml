@@ -67,6 +67,7 @@ For change management purposes, the `*.omlzip` serialization format yields the f
   
   Regular Expression Patterns:
   
+  - `IRIScalarRestriction.pattern`
   - `PlainLiteralScalarRestriction.pattern`
   - `StringScalarRestriction.pattern`
   
