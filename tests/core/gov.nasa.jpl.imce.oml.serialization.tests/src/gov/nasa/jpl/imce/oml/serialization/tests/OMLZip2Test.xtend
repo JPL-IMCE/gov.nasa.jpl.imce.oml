@@ -20,6 +20,7 @@ package gov.nasa.jpl.imce.oml.serialization.tests
 import gov.nasa.jpl.imce.oml.model.common.Extent
 import gov.nasa.jpl.imce.oml.model.datatypes.QuotedStringValue
 import org.eclipse.emf.common.util.URI
+import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.BlockJUnit4ClassRunner
@@ -155,4 +156,13 @@ class OMLZip2Test extends OMLSaveLoadComparisonTest {
 		array('''"\"","def"''')
 	}
 
+	@Test
+	def void test3() {
+		val s1 = '''on,
+		"on",
+		true'''
+		val v1 = OMLTables.toString(s1)
+		val j1 = "[\"on,\",\"\\n\",\"\t\t\",\"\\\"\",\"on\",\"\\\"\",\",\",\"\\n\",\"\t\ttrue\"]"
+		Assert.assertEquals(j1, v1)
+	}
 }
