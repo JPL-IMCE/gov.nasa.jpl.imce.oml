@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/gov.nasa.jpl.imce.oml.core.feature_0.9.0.qualifier.jar" id="gov.nasa.jpl.imce.oml.core.feature" version="0.9.0.qualifier">
+   <feature url="features/gov.nasa.jpl.imce.oml.core.feature_0.9.0.7.jar" id="gov.nasa.jpl.imce.oml.core.feature" version="0.9.0.7">
       <category name="OMLWorkbench"/>
    </feature>
-   <feature url="features/gov.nasa.jpl.imce.oml.ui.feature_0.9.0.qualifier.jar" id="gov.nasa.jpl.imce.oml.ui.feature" version="0.9.0.qualifier">
+   <feature url="features/gov.nasa.jpl.imce.oml.ui.feature_0.9.0.7.jar" id="gov.nasa.jpl.imce.oml.ui.feature" version="0.9.0.7">
       <category name="OMLWorkbench"/>
    </feature>
    <category-def name="OMLWorkbench" label="OML Workbench"/>
