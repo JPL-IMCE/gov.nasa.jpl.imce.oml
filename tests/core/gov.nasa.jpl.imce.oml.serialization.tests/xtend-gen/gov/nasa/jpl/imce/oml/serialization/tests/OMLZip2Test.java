@@ -33,6 +33,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.Pair;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.BlockJUnit4ClassRunner;
@@ -234,5 +235,21 @@ public class OMLZip2Test extends OMLSaveLoadComparisonTest {
     StringConcatenation _builder_17 = new StringConcatenation();
     _builder_17.append("\"\\\"\",\"def\"");
     this.array(_builder_17.toString());
+  }
+  
+  @Test
+  public void test3() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("on,");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("\"on\",");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("true");
+    final String s1 = _builder.toString();
+    final String v1 = OMLTables.toString(s1);
+    final String j1 = "[\"on,\",\"\\n\",\"\t\t\",\"\\\"\",\"on\",\"\\\"\",\",\",\"\\n\",\"\t\ttrue\"]";
+    Assert.assertEquals(j1, v1);
   }
 }
