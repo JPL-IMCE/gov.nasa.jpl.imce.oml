@@ -91,3 +91,9 @@ gov.nasa.jpl.imce.oml.tycho 0.9.0.0 resolves major problems found in 0.8.0.1
 - [#201 OMLCatalog needs to provide access to the CatalogEntry rules](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/201)
 
 - [#203 Missing wrappers for raw strings.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/203)
+
+- [#205 OMLTables.toStringArray is missing the last unescaped string part.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/205)
+
+  Reorganized support for string processing under the OMLTables.toString() dispatch methods.
+  
+- [#206 Fix the OMLZipResourceFactory type to 'omlzip' to support mixed `oml`, `omlzip` resources](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/206)

@@ -1,5 +1,15 @@
 # EMF Serialization for the Ontological Modeling Language
 
+## OML & XText
+
+There two Eclipse-based OML resource formats available:
+- `*.oml` is the OML Xtext-based textual concrete syntax format.
+- `*.omlzip` is the OML json-lines zip archive format.
+
+An `XTextResourceSet` should be able to handle the `*.omlzip` format in addition to the XText-based `*.oml` format.
+A non-`XTextResourceSet` should be able to handle the `*.omlzip` format but not the XText-based `*.oml` format.
+An `OMLZipResourceSet` only handles the `*.omlzip` format.
+
 ## GIT and *.omlzip files
 
 For change management purposes, the `*.omlzip` serialization format yields the following benefits:
@@ -67,6 +77,7 @@ For change management purposes, the `*.omlzip` serialization format yields the f
   
   Regular Expression Patterns:
   
+  - `IRIScalarRestriction.pattern`
   - `PlainLiteralScalarRestriction.pattern`
   - `StringScalarRestriction.pattern`
   
