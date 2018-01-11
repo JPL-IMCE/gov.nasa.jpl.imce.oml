@@ -5,7 +5,7 @@
          point="org.eclipse.emf.ecore.extension_parser">
       <parser
             class="gov.nasa.jpl.imce.oml.zip.OMLZipResourceFactory"
-            type="gov.nasa.jpl.imce.oml.zip">
+            type="omlzip">
       </parser>
    </extension>
    <extension
@@ -21,7 +21,7 @@
          point="org.eclipse.emf.ecore.content_parser">
       <parser
             class="gov.nasa.jpl.imce.oml.zip.OMLZipResourceFactory"
-            contentTypeIdentifier="gov.nasa.jpl.imce.oml.zip">
+            contentTypeIdentifier="omlzip">
       </parser>
    </extension>
 

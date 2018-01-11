@@ -7,6 +7,16 @@ using [Gunther Rademacher's online converstion service](http://bottlecaps.de/con
 the Xtext-generated Antlr grammar from the 
 [Ontological Modeling Language Xtext specification](src/gov/nasa/jpl/imce/oml/dsl/OntologicalModelingLanguage.xtext).
 
+## OML & XText
+
+There two Eclipse-based OML resource formats available:
+- `*.oml` is the OML Xtext-based textual concrete syntax format.
+- `*.omlzip` is the OML json-lines zip archive format.
+
+An `XTextResourceSet` should be able to handle the `*.omlzip` format in addition to the XText-based `*.oml` format.
+A non-`XTextResourceSet` should be able to handle the `*.omlzip` format but not the XText-based `*.oml` format.
+An `OMLZipResourceSet` only handles the `*.omlzip` format.
+
 ## XText notes
 
 ### [Datatype rules](https://www.eclipse.org/Xtext/documentation/301_grammarlanguage.html#datatype-rules)
