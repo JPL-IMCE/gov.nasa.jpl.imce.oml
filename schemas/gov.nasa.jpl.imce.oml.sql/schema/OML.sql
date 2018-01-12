@@ -48,11 +48,15 @@ USE `OML` ;
 -- Drs                  DataRanges
 -- DsjUOfCsAx           DisjointUnionOfConceptsAxioms
 -- Dt                   Datatypes
+-- EExRAx               EntityExistentialRestrictionAxioms
 -- EIdK                 ExtrinsicIdentityKinds
 -- ERAx                 EntityRestrictionAxioms
+-- EReifiedRAx          EntityReifiedRestrictionAxioms
 -- ERels                EntityRelationships
 -- EScPRAx              EntityScalarDataPropertyRestrictionAxioms
 -- EStPRAx              EntityStructuredDataPropertyRestrictionAxioms
+-- EUnreifiedRAx        EntityUnreifiedRestrictionAxioms
+-- EUxRAx               EntityUniversalRestrictionAxioms
 -- EltCRefTs            ElementCrossReferenceTuples
 -- Es                   Entities
 -- IIdK                 IntrinsicIdentityKinds
@@ -103,14 +107,18 @@ USE `OML` ;
 -- DBoxExtCWDef         DescriptionBoxExtendsClosedWorldDefinitions
 -- DBoxRfns             DescriptionBoxRefinements
 -- DBoxes               DescriptionBoxes
--- EExRAx               EntityExistentialRestrictionAxioms
+-- EExFwdReifiedRAx     EntityExistentialForwardReifiedRestrictionAxioms
+-- EExInvReifiedRAx     EntityExistentialInverseReifiedRestrictionAxioms
+-- EExUnreifiedRAx      EntityExistentialUnreifiedRestrictionAxioms
 -- EScPExRAx            EntityScalarDataPropertyExistentialRestrictionAxioms
 -- EScPPtrRAx           EntityScalarDataPropertyParticularRestrictionAxioms
 -- EScPUxRAx            EntityScalarDataPropertyUniversalRestrictionAxioms
 -- EScPs                EntityScalarDataProperties
 -- EStPPtrRAx           EntityStructuredDataPropertyParticularRestrictionAxioms
 -- EStPs                EntityStructuredDataProperties
--- EUxRAx               EntityUniversalRestrictionAxioms
+-- EUxFwdReifiedRAx     EntityUniversalForwardReifiedRestrictionAxioms
+-- EUxInvReifiedRAx     EntityUniversalInverseReifiedRestrictionAxioms
+-- EUxUnreifiedRAx      EntityUniversalUnreifiedRestrictionAxioms
 -- IRIScRs              IRIScalarRestrictions
 -- NumericScRs          NumericScalarRestrictions
 -- PlainLitScRs         PlainLiteralScalarRestrictions
@@ -353,6 +361,24 @@ CREATE TABLE IF NOT EXISTS `OML`.`Es` (
 COMMENT = 'Abstract Classification Table Entities';
 
 -- -----------------------------------------------------
+-- Table `OML`.`EExRAx`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`EExRAx` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,		  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Abstract Classification Table EntityExistentialRestrictionAxioms';
+
+-- -----------------------------------------------------
+-- Table `OML`.`EReifiedRAx`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`EReifiedRAx` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,		  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Abstract Classification Table EntityReifiedRestrictionAxioms';
+
+-- -----------------------------------------------------
 -- Table `OML`.`ERels`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `OML`.`ERels` (
@@ -387,6 +413,24 @@ CREATE TABLE IF NOT EXISTS `OML`.`EStPRAx` (
   UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
 )
 COMMENT = 'Abstract Classification Table EntityStructuredDataPropertyRestrictionAxioms';
+
+-- -----------------------------------------------------
+-- Table `OML`.`EUxRAx`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`EUxRAx` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,		  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Abstract Classification Table EntityUniversalRestrictionAxioms';
+
+-- -----------------------------------------------------
+-- Table `OML`.`EUnreifiedRAx`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`EUnreifiedRAx` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,		  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Abstract Classification Table EntityUnreifiedRestrictionAxioms';
 
 -- -----------------------------------------------------
 -- Table `OML`.`EIdK`
@@ -1686,80 +1730,232 @@ CREATE TABLE IF NOT EXISTS `OML`.`URInvPropP` (
 COMMENT = 'Concrete Information Table UnreifiedRelationshipInversePropertyPredicates';
 
 -- -----------------------------------------------------
--- Table `OML`.`EExRAx`
+-- Table `OML`.`EExFwdReifiedRAx`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`EExRAx` (
+CREATE TABLE IF NOT EXISTS `OML`.`EExFwdReifiedRAx` (
   `uuid` CHAR(36) NOT NULL PRIMARY KEY,
   `tboxUUID` CHAR(36) NOT NULL COMMENT 'TBox (TerminologyBox)',
-  `restrictedRelationUUID` CHAR(36) NOT NULL COMMENT 'ERels (EntityRelationship)',
   `restrictedDomainUUID` CHAR(36) NOT NULL COMMENT 'Es (Entity)',
   `restrictedRangeUUID` CHAR(36) NOT NULL COMMENT 'Es (Entity)',
+  `restrictedReifiedRelationshipUUID` CHAR(36) NOT NULL COMMENT 'RRs (ReifiedRelationship)',
   
-  CONSTRAINT `fk_EExRAx_tboxUUID`
+  CONSTRAINT `fk_EExFwdReifiedRAx_tboxUUID`
     FOREIGN KEY (`tboxUUID`)
     REFERENCES `OML`.`TBox`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_EExRAx_restrictedRelationUUID`
-    FOREIGN KEY (`restrictedRelationUUID`)
-    REFERENCES `OML`.`ERels`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_EExRAx_restrictedDomainUUID`
+  CONSTRAINT `fk_EExFwdReifiedRAx_restrictedDomainUUID`
     FOREIGN KEY (`restrictedDomainUUID`)
     REFERENCES `OML`.`Es`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_EExRAx_restrictedRangeUUID`
+  CONSTRAINT `fk_EExFwdReifiedRAx_restrictedRangeUUID`
     FOREIGN KEY (`restrictedRangeUUID`)
     REFERENCES `OML`.`Es`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
+  CONSTRAINT `fk_EExFwdReifiedRAx_restrictedReifiedRelationshipUUID`
+    FOREIGN KEY (`restrictedReifiedRelationshipUUID`)
+    REFERENCES `OML`.`RRs`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
   UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
 )
-COMMENT = 'Concrete Information Table EntityExistentialRestrictionAxioms';
+COMMENT = 'Concrete Information Table EntityExistentialForwardReifiedRestrictionAxioms';
 
 -- -----------------------------------------------------
--- Table `OML`.`EUxRAx`
+-- Table `OML`.`EExInvReifiedRAx`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`EUxRAx` (
+CREATE TABLE IF NOT EXISTS `OML`.`EExInvReifiedRAx` (
   `uuid` CHAR(36) NOT NULL PRIMARY KEY,
   `tboxUUID` CHAR(36) NOT NULL COMMENT 'TBox (TerminologyBox)',
-  `restrictedRelationUUID` CHAR(36) NOT NULL COMMENT 'ERels (EntityRelationship)',
   `restrictedDomainUUID` CHAR(36) NOT NULL COMMENT 'Es (Entity)',
   `restrictedRangeUUID` CHAR(36) NOT NULL COMMENT 'Es (Entity)',
+  `restrictedReifiedRelationshipUUID` CHAR(36) NOT NULL COMMENT 'RRs (ReifiedRelationship)',
   
-  CONSTRAINT `fk_EUxRAx_tboxUUID`
+  CONSTRAINT `fk_EExInvReifiedRAx_tboxUUID`
     FOREIGN KEY (`tboxUUID`)
     REFERENCES `OML`.`TBox`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_EUxRAx_restrictedRelationUUID`
-    FOREIGN KEY (`restrictedRelationUUID`)
-    REFERENCES `OML`.`ERels`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_EUxRAx_restrictedDomainUUID`
+  CONSTRAINT `fk_EExInvReifiedRAx_restrictedDomainUUID`
     FOREIGN KEY (`restrictedDomainUUID`)
     REFERENCES `OML`.`Es`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_EUxRAx_restrictedRangeUUID`
+  CONSTRAINT `fk_EExInvReifiedRAx_restrictedRangeUUID`
     FOREIGN KEY (`restrictedRangeUUID`)
     REFERENCES `OML`.`Es`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
+  CONSTRAINT `fk_EExInvReifiedRAx_restrictedReifiedRelationshipUUID`
+    FOREIGN KEY (`restrictedReifiedRelationshipUUID`)
+    REFERENCES `OML`.`RRs`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
   UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
 )
-COMMENT = 'Concrete Information Table EntityUniversalRestrictionAxioms';
+COMMENT = 'Concrete Information Table EntityExistentialInverseReifiedRestrictionAxioms';
+
+-- -----------------------------------------------------
+-- Table `OML`.`EExUnreifiedRAx`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`EExUnreifiedRAx` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `tboxUUID` CHAR(36) NOT NULL COMMENT 'TBox (TerminologyBox)',
+  `restrictedDomainUUID` CHAR(36) NOT NULL COMMENT 'Es (Entity)',
+  `restrictedRangeUUID` CHAR(36) NOT NULL COMMENT 'Es (Entity)',
+  `restrictedUnreifiedRelationshipUUID` CHAR(36) NOT NULL COMMENT 'URs (UnreifiedRelationship)',
+  
+  CONSTRAINT `fk_EExUnreifiedRAx_tboxUUID`
+    FOREIGN KEY (`tboxUUID`)
+    REFERENCES `OML`.`TBox`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_EExUnreifiedRAx_restrictedDomainUUID`
+    FOREIGN KEY (`restrictedDomainUUID`)
+    REFERENCES `OML`.`Es`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_EExUnreifiedRAx_restrictedRangeUUID`
+    FOREIGN KEY (`restrictedRangeUUID`)
+    REFERENCES `OML`.`Es`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_EExUnreifiedRAx_restrictedUnreifiedRelationshipUUID`
+    FOREIGN KEY (`restrictedUnreifiedRelationshipUUID`)
+    REFERENCES `OML`.`URs`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Concrete Information Table EntityExistentialUnreifiedRestrictionAxioms';
+
+-- -----------------------------------------------------
+-- Table `OML`.`EUxFwdReifiedRAx`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`EUxFwdReifiedRAx` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `tboxUUID` CHAR(36) NOT NULL COMMENT 'TBox (TerminologyBox)',
+  `restrictedDomainUUID` CHAR(36) NOT NULL COMMENT 'Es (Entity)',
+  `restrictedRangeUUID` CHAR(36) NOT NULL COMMENT 'Es (Entity)',
+  `restrictedReifiedRelationshipUUID` CHAR(36) NOT NULL COMMENT 'RRs (ReifiedRelationship)',
+  
+  CONSTRAINT `fk_EUxFwdReifiedRAx_tboxUUID`
+    FOREIGN KEY (`tboxUUID`)
+    REFERENCES `OML`.`TBox`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_EUxFwdReifiedRAx_restrictedDomainUUID`
+    FOREIGN KEY (`restrictedDomainUUID`)
+    REFERENCES `OML`.`Es`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_EUxFwdReifiedRAx_restrictedRangeUUID`
+    FOREIGN KEY (`restrictedRangeUUID`)
+    REFERENCES `OML`.`Es`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_EUxFwdReifiedRAx_restrictedReifiedRelationshipUUID`
+    FOREIGN KEY (`restrictedReifiedRelationshipUUID`)
+    REFERENCES `OML`.`RRs`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Concrete Information Table EntityUniversalForwardReifiedRestrictionAxioms';
+
+-- -----------------------------------------------------
+-- Table `OML`.`EUxInvReifiedRAx`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`EUxInvReifiedRAx` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `tboxUUID` CHAR(36) NOT NULL COMMENT 'TBox (TerminologyBox)',
+  `restrictedDomainUUID` CHAR(36) NOT NULL COMMENT 'Es (Entity)',
+  `restrictedRangeUUID` CHAR(36) NOT NULL COMMENT 'Es (Entity)',
+  `restrictedReifiedRelationshipUUID` CHAR(36) NOT NULL COMMENT 'RRs (ReifiedRelationship)',
+  
+  CONSTRAINT `fk_EUxInvReifiedRAx_tboxUUID`
+    FOREIGN KEY (`tboxUUID`)
+    REFERENCES `OML`.`TBox`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_EUxInvReifiedRAx_restrictedDomainUUID`
+    FOREIGN KEY (`restrictedDomainUUID`)
+    REFERENCES `OML`.`Es`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_EUxInvReifiedRAx_restrictedRangeUUID`
+    FOREIGN KEY (`restrictedRangeUUID`)
+    REFERENCES `OML`.`Es`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_EUxInvReifiedRAx_restrictedReifiedRelationshipUUID`
+    FOREIGN KEY (`restrictedReifiedRelationshipUUID`)
+    REFERENCES `OML`.`RRs`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Concrete Information Table EntityUniversalInverseReifiedRestrictionAxioms';
+
+-- -----------------------------------------------------
+-- Table `OML`.`EUxUnreifiedRAx`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`EUxUnreifiedRAx` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `tboxUUID` CHAR(36) NOT NULL COMMENT 'TBox (TerminologyBox)',
+  `restrictedDomainUUID` CHAR(36) NOT NULL COMMENT 'Es (Entity)',
+  `restrictedRangeUUID` CHAR(36) NOT NULL COMMENT 'Es (Entity)',
+  `restrictedUnreifiedRelationshipUUID` CHAR(36) NOT NULL COMMENT 'URs (UnreifiedRelationship)',
+  
+  CONSTRAINT `fk_EUxUnreifiedRAx_tboxUUID`
+    FOREIGN KEY (`tboxUUID`)
+    REFERENCES `OML`.`TBox`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_EUxUnreifiedRAx_restrictedDomainUUID`
+    FOREIGN KEY (`restrictedDomainUUID`)
+    REFERENCES `OML`.`Es`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_EUxUnreifiedRAx_restrictedRangeUUID`
+    FOREIGN KEY (`restrictedRangeUUID`)
+    REFERENCES `OML`.`Es`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_EUxUnreifiedRAx_restrictedUnreifiedRelationshipUUID`
+    FOREIGN KEY (`restrictedUnreifiedRelationshipUUID`)
+    REFERENCES `OML`.`URs`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Concrete Information Table EntityUniversalUnreifiedRestrictionAxioms';
 
 -- -----------------------------------------------------
 -- Table `OML`.`EScPExRAx`
@@ -4875,114 +5071,386 @@ delete from `OML`.`SegP`;
 END$$
 
 -- -----------------------------------------------------
--- Concrete Information Table `OML`.`EExRAx` (EntityExistentialRestrictionAxioms)
+-- Concrete Information Table `OML`.`EExFwdReifiedRAx` (EntityExistentialForwardReifiedRestrictionAxioms)
 -- -----------------------------------------------------
 
 DELIMITER $$
 USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EExRAx_AFTER_INSERT` AFTER INSERT ON `EExRAx` FOR EACH ROW
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EExFwdReifiedRAx_AFTER_INSERT` AFTER INSERT ON `EExFwdReifiedRAx` FOR EACH ROW
 BEGIN
--- CrossReferencableKinds(x) if EntityExistentialRestrictionAxioms(x)
+-- CrossReferencableKinds(x) if EntityExistentialForwardReifiedRestrictionAxioms(x)
 insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
--- CrossReferencabilityKinds(x) if EntityExistentialRestrictionAxioms(x)
+-- CrossReferencabilityKinds(x) if EntityExistentialForwardReifiedRestrictionAxioms(x)
 insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
--- ExtrinsicIdentityKinds(x) if EntityExistentialRestrictionAxioms(x)
+-- EntityExistentialRestrictionAxioms(x) if EntityExistentialForwardReifiedRestrictionAxioms(x)
+insert into `OML`.`EExRAx`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if EntityExistentialForwardReifiedRestrictionAxioms(x)
 insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
--- EntityRestrictionAxioms(x) if EntityExistentialRestrictionAxioms(x)
+-- EntityRestrictionAxioms(x) if EntityExistentialForwardReifiedRestrictionAxioms(x)
 insert into `OML`.`ERAx`(`uuid`) values(new.`uuid`);
--- ElementCrossReferenceTuples(x) if EntityExistentialRestrictionAxioms(x)
+-- EntityReifiedRestrictionAxioms(x) if EntityExistentialForwardReifiedRestrictionAxioms(x)
+insert into `OML`.`EReifiedRAx`(`uuid`) values(new.`uuid`);
+-- ElementCrossReferenceTuples(x) if EntityExistentialForwardReifiedRestrictionAxioms(x)
 insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
--- IdentityKinds(x) if EntityExistentialRestrictionAxioms(x)
+-- IdentityKinds(x) if EntityExistentialForwardReifiedRestrictionAxioms(x)
 insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
--- LogicalElements(x) if EntityExistentialRestrictionAxioms(x)
+-- LogicalElements(x) if EntityExistentialForwardReifiedRestrictionAxioms(x)
 insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
--- ModuleElements(x) if EntityExistentialRestrictionAxioms(x)
+-- ModuleElements(x) if EntityExistentialForwardReifiedRestrictionAxioms(x)
 insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
--- TerminologyBoxStatements(x) if EntityExistentialRestrictionAxioms(x)
+-- TerminologyBoxStatements(x) if EntityExistentialForwardReifiedRestrictionAxioms(x)
 insert into `OML`.`TBoxSt`(`uuid`) values(new.`uuid`);
--- TermAxioms(x) if EntityExistentialRestrictionAxioms(x)
+-- TermAxioms(x) if EntityExistentialForwardReifiedRestrictionAxioms(x)
 insert into `OML`.`TermAx`(`uuid`) values(new.`uuid`);
 END$$
 
 DELIMITER $$
 USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EExRAx_AFTER_DELETE` AFTER DELETE ON `EExRAx` FOR EACH ROW
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EExFwdReifiedRAx_AFTER_DELETE` AFTER DELETE ON `EExFwdReifiedRAx` FOR EACH ROW
 BEGIN
--- CrossReferencableKinds(x) if EntityExistentialRestrictionAxioms(x)
+-- CrossReferencableKinds(x) if EntityExistentialForwardReifiedRestrictionAxioms(x)
 delete from `OML`.`CRBK`;
--- CrossReferencabilityKinds(x) if EntityExistentialRestrictionAxioms(x)
+-- CrossReferencabilityKinds(x) if EntityExistentialForwardReifiedRestrictionAxioms(x)
 delete from `OML`.`CRTK`;
--- ExtrinsicIdentityKinds(x) if EntityExistentialRestrictionAxioms(x)
+-- EntityExistentialRestrictionAxioms(x) if EntityExistentialForwardReifiedRestrictionAxioms(x)
+delete from `OML`.`EExRAx`;
+-- ExtrinsicIdentityKinds(x) if EntityExistentialForwardReifiedRestrictionAxioms(x)
 delete from `OML`.`EIdK`;
--- EntityRestrictionAxioms(x) if EntityExistentialRestrictionAxioms(x)
+-- EntityRestrictionAxioms(x) if EntityExistentialForwardReifiedRestrictionAxioms(x)
 delete from `OML`.`ERAx`;
--- ElementCrossReferenceTuples(x) if EntityExistentialRestrictionAxioms(x)
+-- EntityReifiedRestrictionAxioms(x) if EntityExistentialForwardReifiedRestrictionAxioms(x)
+delete from `OML`.`EReifiedRAx`;
+-- ElementCrossReferenceTuples(x) if EntityExistentialForwardReifiedRestrictionAxioms(x)
 delete from `OML`.`EltCRefTs`;
--- IdentityKinds(x) if EntityExistentialRestrictionAxioms(x)
+-- IdentityKinds(x) if EntityExistentialForwardReifiedRestrictionAxioms(x)
 delete from `OML`.`Ik`;
--- LogicalElements(x) if EntityExistentialRestrictionAxioms(x)
+-- LogicalElements(x) if EntityExistentialForwardReifiedRestrictionAxioms(x)
 delete from `OML`.`LogEs`;
--- ModuleElements(x) if EntityExistentialRestrictionAxioms(x)
+-- ModuleElements(x) if EntityExistentialForwardReifiedRestrictionAxioms(x)
 delete from `OML`.`ModElts`;
--- TerminologyBoxStatements(x) if EntityExistentialRestrictionAxioms(x)
+-- TerminologyBoxStatements(x) if EntityExistentialForwardReifiedRestrictionAxioms(x)
 delete from `OML`.`TBoxSt`;
--- TermAxioms(x) if EntityExistentialRestrictionAxioms(x)
+-- TermAxioms(x) if EntityExistentialForwardReifiedRestrictionAxioms(x)
 delete from `OML`.`TermAx`;
 END$$
 
 -- -----------------------------------------------------
--- Concrete Information Table `OML`.`EUxRAx` (EntityUniversalRestrictionAxioms)
+-- Concrete Information Table `OML`.`EExInvReifiedRAx` (EntityExistentialInverseReifiedRestrictionAxioms)
 -- -----------------------------------------------------
 
 DELIMITER $$
 USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EUxRAx_AFTER_INSERT` AFTER INSERT ON `EUxRAx` FOR EACH ROW
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EExInvReifiedRAx_AFTER_INSERT` AFTER INSERT ON `EExInvReifiedRAx` FOR EACH ROW
 BEGIN
--- CrossReferencableKinds(x) if EntityUniversalRestrictionAxioms(x)
+-- CrossReferencableKinds(x) if EntityExistentialInverseReifiedRestrictionAxioms(x)
 insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
--- CrossReferencabilityKinds(x) if EntityUniversalRestrictionAxioms(x)
+-- CrossReferencabilityKinds(x) if EntityExistentialInverseReifiedRestrictionAxioms(x)
 insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
--- ExtrinsicIdentityKinds(x) if EntityUniversalRestrictionAxioms(x)
+-- EntityExistentialRestrictionAxioms(x) if EntityExistentialInverseReifiedRestrictionAxioms(x)
+insert into `OML`.`EExRAx`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if EntityExistentialInverseReifiedRestrictionAxioms(x)
 insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
--- EntityRestrictionAxioms(x) if EntityUniversalRestrictionAxioms(x)
+-- EntityRestrictionAxioms(x) if EntityExistentialInverseReifiedRestrictionAxioms(x)
 insert into `OML`.`ERAx`(`uuid`) values(new.`uuid`);
--- ElementCrossReferenceTuples(x) if EntityUniversalRestrictionAxioms(x)
+-- EntityReifiedRestrictionAxioms(x) if EntityExistentialInverseReifiedRestrictionAxioms(x)
+insert into `OML`.`EReifiedRAx`(`uuid`) values(new.`uuid`);
+-- ElementCrossReferenceTuples(x) if EntityExistentialInverseReifiedRestrictionAxioms(x)
 insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
--- IdentityKinds(x) if EntityUniversalRestrictionAxioms(x)
+-- IdentityKinds(x) if EntityExistentialInverseReifiedRestrictionAxioms(x)
 insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
--- LogicalElements(x) if EntityUniversalRestrictionAxioms(x)
+-- LogicalElements(x) if EntityExistentialInverseReifiedRestrictionAxioms(x)
 insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
--- ModuleElements(x) if EntityUniversalRestrictionAxioms(x)
+-- ModuleElements(x) if EntityExistentialInverseReifiedRestrictionAxioms(x)
 insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
--- TerminologyBoxStatements(x) if EntityUniversalRestrictionAxioms(x)
+-- TerminologyBoxStatements(x) if EntityExistentialInverseReifiedRestrictionAxioms(x)
 insert into `OML`.`TBoxSt`(`uuid`) values(new.`uuid`);
--- TermAxioms(x) if EntityUniversalRestrictionAxioms(x)
+-- TermAxioms(x) if EntityExistentialInverseReifiedRestrictionAxioms(x)
 insert into `OML`.`TermAx`(`uuid`) values(new.`uuid`);
 END$$
 
 DELIMITER $$
 USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EUxRAx_AFTER_DELETE` AFTER DELETE ON `EUxRAx` FOR EACH ROW
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EExInvReifiedRAx_AFTER_DELETE` AFTER DELETE ON `EExInvReifiedRAx` FOR EACH ROW
 BEGIN
--- CrossReferencableKinds(x) if EntityUniversalRestrictionAxioms(x)
+-- CrossReferencableKinds(x) if EntityExistentialInverseReifiedRestrictionAxioms(x)
 delete from `OML`.`CRBK`;
--- CrossReferencabilityKinds(x) if EntityUniversalRestrictionAxioms(x)
+-- CrossReferencabilityKinds(x) if EntityExistentialInverseReifiedRestrictionAxioms(x)
 delete from `OML`.`CRTK`;
--- ExtrinsicIdentityKinds(x) if EntityUniversalRestrictionAxioms(x)
+-- EntityExistentialRestrictionAxioms(x) if EntityExistentialInverseReifiedRestrictionAxioms(x)
+delete from `OML`.`EExRAx`;
+-- ExtrinsicIdentityKinds(x) if EntityExistentialInverseReifiedRestrictionAxioms(x)
 delete from `OML`.`EIdK`;
--- EntityRestrictionAxioms(x) if EntityUniversalRestrictionAxioms(x)
+-- EntityRestrictionAxioms(x) if EntityExistentialInverseReifiedRestrictionAxioms(x)
 delete from `OML`.`ERAx`;
--- ElementCrossReferenceTuples(x) if EntityUniversalRestrictionAxioms(x)
+-- EntityReifiedRestrictionAxioms(x) if EntityExistentialInverseReifiedRestrictionAxioms(x)
+delete from `OML`.`EReifiedRAx`;
+-- ElementCrossReferenceTuples(x) if EntityExistentialInverseReifiedRestrictionAxioms(x)
 delete from `OML`.`EltCRefTs`;
--- IdentityKinds(x) if EntityUniversalRestrictionAxioms(x)
+-- IdentityKinds(x) if EntityExistentialInverseReifiedRestrictionAxioms(x)
 delete from `OML`.`Ik`;
--- LogicalElements(x) if EntityUniversalRestrictionAxioms(x)
+-- LogicalElements(x) if EntityExistentialInverseReifiedRestrictionAxioms(x)
 delete from `OML`.`LogEs`;
--- ModuleElements(x) if EntityUniversalRestrictionAxioms(x)
+-- ModuleElements(x) if EntityExistentialInverseReifiedRestrictionAxioms(x)
 delete from `OML`.`ModElts`;
--- TerminologyBoxStatements(x) if EntityUniversalRestrictionAxioms(x)
+-- TerminologyBoxStatements(x) if EntityExistentialInverseReifiedRestrictionAxioms(x)
 delete from `OML`.`TBoxSt`;
--- TermAxioms(x) if EntityUniversalRestrictionAxioms(x)
+-- TermAxioms(x) if EntityExistentialInverseReifiedRestrictionAxioms(x)
+delete from `OML`.`TermAx`;
+END$$
+
+-- -----------------------------------------------------
+-- Concrete Information Table `OML`.`EExUnreifiedRAx` (EntityExistentialUnreifiedRestrictionAxioms)
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EExUnreifiedRAx_AFTER_INSERT` AFTER INSERT ON `EExUnreifiedRAx` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if EntityExistentialUnreifiedRestrictionAxioms(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if EntityExistentialUnreifiedRestrictionAxioms(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- EntityExistentialRestrictionAxioms(x) if EntityExistentialUnreifiedRestrictionAxioms(x)
+insert into `OML`.`EExRAx`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if EntityExistentialUnreifiedRestrictionAxioms(x)
+insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
+-- EntityRestrictionAxioms(x) if EntityExistentialUnreifiedRestrictionAxioms(x)
+insert into `OML`.`ERAx`(`uuid`) values(new.`uuid`);
+-- EntityUnreifiedRestrictionAxioms(x) if EntityExistentialUnreifiedRestrictionAxioms(x)
+insert into `OML`.`EUnreifiedRAx`(`uuid`) values(new.`uuid`);
+-- ElementCrossReferenceTuples(x) if EntityExistentialUnreifiedRestrictionAxioms(x)
+insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if EntityExistentialUnreifiedRestrictionAxioms(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if EntityExistentialUnreifiedRestrictionAxioms(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleElements(x) if EntityExistentialUnreifiedRestrictionAxioms(x)
+insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- TerminologyBoxStatements(x) if EntityExistentialUnreifiedRestrictionAxioms(x)
+insert into `OML`.`TBoxSt`(`uuid`) values(new.`uuid`);
+-- TermAxioms(x) if EntityExistentialUnreifiedRestrictionAxioms(x)
+insert into `OML`.`TermAx`(`uuid`) values(new.`uuid`);
+END$$
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EExUnreifiedRAx_AFTER_DELETE` AFTER DELETE ON `EExUnreifiedRAx` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if EntityExistentialUnreifiedRestrictionAxioms(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if EntityExistentialUnreifiedRestrictionAxioms(x)
+delete from `OML`.`CRTK`;
+-- EntityExistentialRestrictionAxioms(x) if EntityExistentialUnreifiedRestrictionAxioms(x)
+delete from `OML`.`EExRAx`;
+-- ExtrinsicIdentityKinds(x) if EntityExistentialUnreifiedRestrictionAxioms(x)
+delete from `OML`.`EIdK`;
+-- EntityRestrictionAxioms(x) if EntityExistentialUnreifiedRestrictionAxioms(x)
+delete from `OML`.`ERAx`;
+-- EntityUnreifiedRestrictionAxioms(x) if EntityExistentialUnreifiedRestrictionAxioms(x)
+delete from `OML`.`EUnreifiedRAx`;
+-- ElementCrossReferenceTuples(x) if EntityExistentialUnreifiedRestrictionAxioms(x)
+delete from `OML`.`EltCRefTs`;
+-- IdentityKinds(x) if EntityExistentialUnreifiedRestrictionAxioms(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if EntityExistentialUnreifiedRestrictionAxioms(x)
+delete from `OML`.`LogEs`;
+-- ModuleElements(x) if EntityExistentialUnreifiedRestrictionAxioms(x)
+delete from `OML`.`ModElts`;
+-- TerminologyBoxStatements(x) if EntityExistentialUnreifiedRestrictionAxioms(x)
+delete from `OML`.`TBoxSt`;
+-- TermAxioms(x) if EntityExistentialUnreifiedRestrictionAxioms(x)
+delete from `OML`.`TermAx`;
+END$$
+
+-- -----------------------------------------------------
+-- Concrete Information Table `OML`.`EUxFwdReifiedRAx` (EntityUniversalForwardReifiedRestrictionAxioms)
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EUxFwdReifiedRAx_AFTER_INSERT` AFTER INSERT ON `EUxFwdReifiedRAx` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if EntityUniversalForwardReifiedRestrictionAxioms(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if EntityUniversalForwardReifiedRestrictionAxioms(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- EntityExistentialRestrictionAxioms(x) if EntityUniversalForwardReifiedRestrictionAxioms(x)
+insert into `OML`.`EExRAx`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if EntityUniversalForwardReifiedRestrictionAxioms(x)
+insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
+-- EntityRestrictionAxioms(x) if EntityUniversalForwardReifiedRestrictionAxioms(x)
+insert into `OML`.`ERAx`(`uuid`) values(new.`uuid`);
+-- EntityReifiedRestrictionAxioms(x) if EntityUniversalForwardReifiedRestrictionAxioms(x)
+insert into `OML`.`EReifiedRAx`(`uuid`) values(new.`uuid`);
+-- ElementCrossReferenceTuples(x) if EntityUniversalForwardReifiedRestrictionAxioms(x)
+insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if EntityUniversalForwardReifiedRestrictionAxioms(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if EntityUniversalForwardReifiedRestrictionAxioms(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleElements(x) if EntityUniversalForwardReifiedRestrictionAxioms(x)
+insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- TerminologyBoxStatements(x) if EntityUniversalForwardReifiedRestrictionAxioms(x)
+insert into `OML`.`TBoxSt`(`uuid`) values(new.`uuid`);
+-- TermAxioms(x) if EntityUniversalForwardReifiedRestrictionAxioms(x)
+insert into `OML`.`TermAx`(`uuid`) values(new.`uuid`);
+END$$
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EUxFwdReifiedRAx_AFTER_DELETE` AFTER DELETE ON `EUxFwdReifiedRAx` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if EntityUniversalForwardReifiedRestrictionAxioms(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if EntityUniversalForwardReifiedRestrictionAxioms(x)
+delete from `OML`.`CRTK`;
+-- EntityExistentialRestrictionAxioms(x) if EntityUniversalForwardReifiedRestrictionAxioms(x)
+delete from `OML`.`EExRAx`;
+-- ExtrinsicIdentityKinds(x) if EntityUniversalForwardReifiedRestrictionAxioms(x)
+delete from `OML`.`EIdK`;
+-- EntityRestrictionAxioms(x) if EntityUniversalForwardReifiedRestrictionAxioms(x)
+delete from `OML`.`ERAx`;
+-- EntityReifiedRestrictionAxioms(x) if EntityUniversalForwardReifiedRestrictionAxioms(x)
+delete from `OML`.`EReifiedRAx`;
+-- ElementCrossReferenceTuples(x) if EntityUniversalForwardReifiedRestrictionAxioms(x)
+delete from `OML`.`EltCRefTs`;
+-- IdentityKinds(x) if EntityUniversalForwardReifiedRestrictionAxioms(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if EntityUniversalForwardReifiedRestrictionAxioms(x)
+delete from `OML`.`LogEs`;
+-- ModuleElements(x) if EntityUniversalForwardReifiedRestrictionAxioms(x)
+delete from `OML`.`ModElts`;
+-- TerminologyBoxStatements(x) if EntityUniversalForwardReifiedRestrictionAxioms(x)
+delete from `OML`.`TBoxSt`;
+-- TermAxioms(x) if EntityUniversalForwardReifiedRestrictionAxioms(x)
+delete from `OML`.`TermAx`;
+END$$
+
+-- -----------------------------------------------------
+-- Concrete Information Table `OML`.`EUxInvReifiedRAx` (EntityUniversalInverseReifiedRestrictionAxioms)
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EUxInvReifiedRAx_AFTER_INSERT` AFTER INSERT ON `EUxInvReifiedRAx` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if EntityUniversalInverseReifiedRestrictionAxioms(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if EntityUniversalInverseReifiedRestrictionAxioms(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- EntityExistentialRestrictionAxioms(x) if EntityUniversalInverseReifiedRestrictionAxioms(x)
+insert into `OML`.`EExRAx`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if EntityUniversalInverseReifiedRestrictionAxioms(x)
+insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
+-- EntityRestrictionAxioms(x) if EntityUniversalInverseReifiedRestrictionAxioms(x)
+insert into `OML`.`ERAx`(`uuid`) values(new.`uuid`);
+-- EntityReifiedRestrictionAxioms(x) if EntityUniversalInverseReifiedRestrictionAxioms(x)
+insert into `OML`.`EReifiedRAx`(`uuid`) values(new.`uuid`);
+-- ElementCrossReferenceTuples(x) if EntityUniversalInverseReifiedRestrictionAxioms(x)
+insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if EntityUniversalInverseReifiedRestrictionAxioms(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if EntityUniversalInverseReifiedRestrictionAxioms(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleElements(x) if EntityUniversalInverseReifiedRestrictionAxioms(x)
+insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- TerminologyBoxStatements(x) if EntityUniversalInverseReifiedRestrictionAxioms(x)
+insert into `OML`.`TBoxSt`(`uuid`) values(new.`uuid`);
+-- TermAxioms(x) if EntityUniversalInverseReifiedRestrictionAxioms(x)
+insert into `OML`.`TermAx`(`uuid`) values(new.`uuid`);
+END$$
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EUxInvReifiedRAx_AFTER_DELETE` AFTER DELETE ON `EUxInvReifiedRAx` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if EntityUniversalInverseReifiedRestrictionAxioms(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if EntityUniversalInverseReifiedRestrictionAxioms(x)
+delete from `OML`.`CRTK`;
+-- EntityExistentialRestrictionAxioms(x) if EntityUniversalInverseReifiedRestrictionAxioms(x)
+delete from `OML`.`EExRAx`;
+-- ExtrinsicIdentityKinds(x) if EntityUniversalInverseReifiedRestrictionAxioms(x)
+delete from `OML`.`EIdK`;
+-- EntityRestrictionAxioms(x) if EntityUniversalInverseReifiedRestrictionAxioms(x)
+delete from `OML`.`ERAx`;
+-- EntityReifiedRestrictionAxioms(x) if EntityUniversalInverseReifiedRestrictionAxioms(x)
+delete from `OML`.`EReifiedRAx`;
+-- ElementCrossReferenceTuples(x) if EntityUniversalInverseReifiedRestrictionAxioms(x)
+delete from `OML`.`EltCRefTs`;
+-- IdentityKinds(x) if EntityUniversalInverseReifiedRestrictionAxioms(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if EntityUniversalInverseReifiedRestrictionAxioms(x)
+delete from `OML`.`LogEs`;
+-- ModuleElements(x) if EntityUniversalInverseReifiedRestrictionAxioms(x)
+delete from `OML`.`ModElts`;
+-- TerminologyBoxStatements(x) if EntityUniversalInverseReifiedRestrictionAxioms(x)
+delete from `OML`.`TBoxSt`;
+-- TermAxioms(x) if EntityUniversalInverseReifiedRestrictionAxioms(x)
+delete from `OML`.`TermAx`;
+END$$
+
+-- -----------------------------------------------------
+-- Concrete Information Table `OML`.`EUxUnreifiedRAx` (EntityUniversalUnreifiedRestrictionAxioms)
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EUxUnreifiedRAx_AFTER_INSERT` AFTER INSERT ON `EUxUnreifiedRAx` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if EntityUniversalUnreifiedRestrictionAxioms(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if EntityUniversalUnreifiedRestrictionAxioms(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- EntityExistentialRestrictionAxioms(x) if EntityUniversalUnreifiedRestrictionAxioms(x)
+insert into `OML`.`EExRAx`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if EntityUniversalUnreifiedRestrictionAxioms(x)
+insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
+-- EntityRestrictionAxioms(x) if EntityUniversalUnreifiedRestrictionAxioms(x)
+insert into `OML`.`ERAx`(`uuid`) values(new.`uuid`);
+-- EntityUnreifiedRestrictionAxioms(x) if EntityUniversalUnreifiedRestrictionAxioms(x)
+insert into `OML`.`EUnreifiedRAx`(`uuid`) values(new.`uuid`);
+-- ElementCrossReferenceTuples(x) if EntityUniversalUnreifiedRestrictionAxioms(x)
+insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if EntityUniversalUnreifiedRestrictionAxioms(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if EntityUniversalUnreifiedRestrictionAxioms(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleElements(x) if EntityUniversalUnreifiedRestrictionAxioms(x)
+insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- TerminologyBoxStatements(x) if EntityUniversalUnreifiedRestrictionAxioms(x)
+insert into `OML`.`TBoxSt`(`uuid`) values(new.`uuid`);
+-- TermAxioms(x) if EntityUniversalUnreifiedRestrictionAxioms(x)
+insert into `OML`.`TermAx`(`uuid`) values(new.`uuid`);
+END$$
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`EUxUnreifiedRAx_AFTER_DELETE` AFTER DELETE ON `EUxUnreifiedRAx` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if EntityUniversalUnreifiedRestrictionAxioms(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if EntityUniversalUnreifiedRestrictionAxioms(x)
+delete from `OML`.`CRTK`;
+-- EntityExistentialRestrictionAxioms(x) if EntityUniversalUnreifiedRestrictionAxioms(x)
+delete from `OML`.`EExRAx`;
+-- ExtrinsicIdentityKinds(x) if EntityUniversalUnreifiedRestrictionAxioms(x)
+delete from `OML`.`EIdK`;
+-- EntityRestrictionAxioms(x) if EntityUniversalUnreifiedRestrictionAxioms(x)
+delete from `OML`.`ERAx`;
+-- EntityUnreifiedRestrictionAxioms(x) if EntityUniversalUnreifiedRestrictionAxioms(x)
+delete from `OML`.`EUnreifiedRAx`;
+-- ElementCrossReferenceTuples(x) if EntityUniversalUnreifiedRestrictionAxioms(x)
+delete from `OML`.`EltCRefTs`;
+-- IdentityKinds(x) if EntityUniversalUnreifiedRestrictionAxioms(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if EntityUniversalUnreifiedRestrictionAxioms(x)
+delete from `OML`.`LogEs`;
+-- ModuleElements(x) if EntityUniversalUnreifiedRestrictionAxioms(x)
+delete from `OML`.`ModElts`;
+-- TerminologyBoxStatements(x) if EntityUniversalUnreifiedRestrictionAxioms(x)
+delete from `OML`.`TBoxSt`;
+-- TermAxioms(x) if EntityUniversalUnreifiedRestrictionAxioms(x)
 delete from `OML`.`TermAx`;
 END$$
 

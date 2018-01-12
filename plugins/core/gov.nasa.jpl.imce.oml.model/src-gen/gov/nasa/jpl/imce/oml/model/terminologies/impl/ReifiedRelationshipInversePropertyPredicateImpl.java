@@ -20,6 +20,7 @@ package gov.nasa.jpl.imce.oml.model.terminologies.impl;
 
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
 
+import gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipInversePropertyPredicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.RuleBodySegment;
@@ -50,21 +51,21 @@ import org.eclipse.xtext.xbase.lib.Pair;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipInversePropertyPredicateImpl#getReifiedRelationship <em>Reified Relationship</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipInversePropertyPredicateImpl#getInverseProperty <em>Inverse Property</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class ReifiedRelationshipInversePropertyPredicateImpl extends BinarySegmentReversePropertyPredicateImpl implements ReifiedRelationshipInversePropertyPredicate {
 	/**
-	 * The cached value of the '{@link #getReifiedRelationship() <em>Reified Relationship</em>}' reference.
+	 * The cached value of the '{@link #getInverseProperty() <em>Inverse Property</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getReifiedRelationship()
+	 * @see #getInverseProperty()
 	 * @generated
 	 * @ordered
 	 */
-	protected ReifiedRelationship reifiedRelationship;
+	protected InverseProperty inverseProperty;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -90,16 +91,16 @@ public class ReifiedRelationshipInversePropertyPredicateImpl extends BinarySegme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ReifiedRelationship getReifiedRelationship() {
-		if (reifiedRelationship != null && ((EObject)reifiedRelationship).eIsProxy()) {
-			InternalEObject oldReifiedRelationship = (InternalEObject)reifiedRelationship;
-			reifiedRelationship = (ReifiedRelationship)eResolveProxy(oldReifiedRelationship);
-			if (reifiedRelationship != oldReifiedRelationship) {
+	public InverseProperty getInverseProperty() {
+		if (inverseProperty != null && ((EObject)inverseProperty).eIsProxy()) {
+			InternalEObject oldInverseProperty = (InternalEObject)inverseProperty;
+			inverseProperty = (InverseProperty)eResolveProxy(oldInverseProperty);
+			if (inverseProperty != oldInverseProperty) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, TerminologiesPackage.REIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE__REIFIED_RELATIONSHIP, oldReifiedRelationship, reifiedRelationship));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, TerminologiesPackage.REIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE__INVERSE_PROPERTY, oldInverseProperty, inverseProperty));
 			}
 		}
-		return reifiedRelationship;
+		return inverseProperty;
 	}
 
 	/**
@@ -107,8 +108,8 @@ public class ReifiedRelationshipInversePropertyPredicateImpl extends BinarySegme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ReifiedRelationship basicGetReifiedRelationship() {
-		return reifiedRelationship;
+	public InverseProperty basicGetInverseProperty() {
+		return inverseProperty;
 	}
 
 	/**
@@ -116,11 +117,11 @@ public class ReifiedRelationshipInversePropertyPredicateImpl extends BinarySegme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setReifiedRelationship(ReifiedRelationship newReifiedRelationship) {
-		ReifiedRelationship oldReifiedRelationship = reifiedRelationship;
-		reifiedRelationship = newReifiedRelationship;
+	public void setInverseProperty(InverseProperty newInverseProperty) {
+		InverseProperty oldInverseProperty = inverseProperty;
+		inverseProperty = newInverseProperty;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.REIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE__REIFIED_RELATIONSHIP, oldReifiedRelationship, reifiedRelationship));
+			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.REIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE__INVERSE_PROPERTY, oldInverseProperty, inverseProperty));
 	}
 
 	/**
@@ -129,7 +130,12 @@ public class ReifiedRelationshipInversePropertyPredicateImpl extends BinarySegme
 	 * @generated
 	 */
 	public Term termPredicate() {
-		return this.getReifiedRelationship();
+		InverseProperty _inverseProperty = this.getInverseProperty();
+		ReifiedRelationship _reifiedRelationship = null;
+		if (_inverseProperty!=null) {
+			_reifiedRelationship=_inverseProperty.getReifiedRelationship();
+		}
+		return _reifiedRelationship;
 	}
 
 	/**
@@ -148,16 +154,16 @@ public class ReifiedRelationshipInversePropertyPredicateImpl extends BinarySegme
 			_string=_uuid.toString();
 		}
 		Pair<String, String> _mappedTo = Pair.<String, String>of("bodySegment", _string);
-		ReifiedRelationship _reifiedRelationship = this.getReifiedRelationship();
+		InverseProperty _inverseProperty = this.getInverseProperty();
 		String _uuid_1 = null;
-		if (_reifiedRelationship!=null) {
-			_uuid_1=_reifiedRelationship.uuid();
+		if (_inverseProperty!=null) {
+			_uuid_1=_inverseProperty.uuid();
 		}
 		String _string_1 = null;
 		if (_uuid_1!=null) {
 			_string_1=_uuid_1.toString();
 		}
-		Pair<String, String> _mappedTo_1 = Pair.<String, String>of("reifiedRelationship", _string_1);
+		Pair<String, String> _mappedTo_1 = Pair.<String, String>of("inverseProperty", _string_1);
 		UUID _derivedUUID = OMLExtensions.derivedUUID(
 			"ReifiedRelationshipInversePropertyPredicate", _mappedTo, _mappedTo_1);
 		String _string_2 = null;
@@ -175,9 +181,9 @@ public class ReifiedRelationshipInversePropertyPredicateImpl extends BinarySegme
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case TerminologiesPackage.REIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE__REIFIED_RELATIONSHIP:
-				if (resolve) return getReifiedRelationship();
-				return basicGetReifiedRelationship();
+			case TerminologiesPackage.REIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE__INVERSE_PROPERTY:
+				if (resolve) return getInverseProperty();
+				return basicGetInverseProperty();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -190,8 +196,8 @@ public class ReifiedRelationshipInversePropertyPredicateImpl extends BinarySegme
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case TerminologiesPackage.REIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE__REIFIED_RELATIONSHIP:
-				setReifiedRelationship((ReifiedRelationship)newValue);
+			case TerminologiesPackage.REIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE__INVERSE_PROPERTY:
+				setInverseProperty((InverseProperty)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -205,8 +211,8 @@ public class ReifiedRelationshipInversePropertyPredicateImpl extends BinarySegme
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case TerminologiesPackage.REIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE__REIFIED_RELATIONSHIP:
-				setReifiedRelationship((ReifiedRelationship)null);
+			case TerminologiesPackage.REIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE__INVERSE_PROPERTY:
+				setInverseProperty((InverseProperty)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -220,8 +226,8 @@ public class ReifiedRelationshipInversePropertyPredicateImpl extends BinarySegme
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case TerminologiesPackage.REIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE__REIFIED_RELATIONSHIP:
-				return reifiedRelationship != null;
+			case TerminologiesPackage.REIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE__INVERSE_PROPERTY:
+				return inverseProperty != null;
 		}
 		return super.eIsSet(featureID);
 	}

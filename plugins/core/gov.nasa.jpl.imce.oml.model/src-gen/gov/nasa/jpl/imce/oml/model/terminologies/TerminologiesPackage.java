@@ -1747,6 +1747,224 @@ public interface TerminologiesPackage extends EPackage {
 	int ENTITY_RELATIONSHIP_OPERATION_COUNT = TERM_OPERATION_COUNT + 4;
 
 	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ForwardPropertyImpl <em>Forward Property</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.ForwardPropertyImpl
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getForwardProperty()
+	 * @generated
+	 */
+	int FORWARD_PROPERTY = 13;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORWARD_PROPERTY__UUID = CommonPackage.RESOURCE__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORWARD_PROPERTY__ANNOTATIONS = CommonPackage.RESOURCE__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Reified Relationship</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORWARD_PROPERTY__REIFIED_RELATIONSHIP = CommonPackage.RESOURCE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORWARD_PROPERTY__NAME = CommonPackage.RESOURCE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Forward Property</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORWARD_PROPERTY_FEATURE_COUNT = CommonPackage.RESOURCE_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORWARD_PROPERTY___MODULE_CONTEXT = CommonPackage.RESOURCE___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>Iri</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORWARD_PROPERTY___IRI = CommonPackage.RESOURCE_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Abbrev IRI</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORWARD_PROPERTY___ABBREV_IRI = CommonPackage.RESOURCE_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORWARD_PROPERTY___NAME = CommonPackage.RESOURCE_OPERATION_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORWARD_PROPERTY___UUID = CommonPackage.RESOURCE_OPERATION_COUNT + 3;
+
+	/**
+	 * The number of operations of the '<em>Forward Property</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORWARD_PROPERTY_OPERATION_COUNT = CommonPackage.RESOURCE_OPERATION_COUNT + 4;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.InversePropertyImpl <em>Inverse Property</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.InversePropertyImpl
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getInverseProperty()
+	 * @generated
+	 */
+	int INVERSE_PROPERTY = 14;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INVERSE_PROPERTY__UUID = CommonPackage.RESOURCE__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INVERSE_PROPERTY__ANNOTATIONS = CommonPackage.RESOURCE__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Reified Relationship</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INVERSE_PROPERTY__REIFIED_RELATIONSHIP = CommonPackage.RESOURCE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INVERSE_PROPERTY__NAME = CommonPackage.RESOURCE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Inverse Property</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INVERSE_PROPERTY_FEATURE_COUNT = CommonPackage.RESOURCE_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INVERSE_PROPERTY___MODULE_CONTEXT = CommonPackage.RESOURCE___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>Iri</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INVERSE_PROPERTY___IRI = CommonPackage.RESOURCE_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Abbrev IRI</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INVERSE_PROPERTY___ABBREV_IRI = CommonPackage.RESOURCE_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INVERSE_PROPERTY___NAME = CommonPackage.RESOURCE_OPERATION_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INVERSE_PROPERTY___UUID = CommonPackage.RESOURCE_OPERATION_COUNT + 3;
+
+	/**
+	 * The number of operations of the '<em>Inverse Property</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INVERSE_PROPERTY_OPERATION_COUNT = CommonPackage.RESOURCE_OPERATION_COUNT + 4;
+
+	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipImpl <em>Reified Relationship</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1754,7 +1972,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getReifiedRelationship()
 	 * @generated
 	 */
-	int REIFIED_RELATIONSHIP = 13;
+	int REIFIED_RELATIONSHIP = 15;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -1892,22 +2110,22 @@ public interface TerminologiesPackage extends EPackage {
 	int REIFIED_RELATIONSHIP__IS_TRANSITIVE = ENTITY_RELATIONSHIP__IS_TRANSITIVE;
 
 	/**
-	 * The feature id for the '<em><b>Unreified Property Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Forward Property</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REIFIED_RELATIONSHIP__UNREIFIED_PROPERTY_NAME = ENTITY_RELATIONSHIP_FEATURE_COUNT + 0;
+	int REIFIED_RELATIONSHIP__FORWARD_PROPERTY = ENTITY_RELATIONSHIP_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Unreified Inverse Property Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Inverse Property</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REIFIED_RELATIONSHIP__UNREIFIED_INVERSE_PROPERTY_NAME = ENTITY_RELATIONSHIP_FEATURE_COUNT + 1;
+	int REIFIED_RELATIONSHIP__INVERSE_PROPERTY = ENTITY_RELATIONSHIP_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Reified Relationship</em>' class.
@@ -2007,7 +2225,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getUnreifiedRelationship()
 	 * @generated
 	 */
-	int UNREIFIED_RELATIONSHIP = 14;
+	int UNREIFIED_RELATIONSHIP = 16;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -2242,7 +2460,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getDatatype()
 	 * @generated
 	 */
-	int DATATYPE = 15;
+	int DATATYPE = 17;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -2360,7 +2578,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getDataRange()
 	 * @generated
 	 */
-	int DATA_RANGE = 16;
+	int DATA_RANGE = 18;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -2478,7 +2696,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getScalar()
 	 * @generated
 	 */
-	int SCALAR = 17;
+	int SCALAR = 19;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -2596,7 +2814,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getDataRelationship()
 	 * @generated
 	 */
-	int DATA_RELATIONSHIP = 18;
+	int DATA_RELATIONSHIP = 20;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -2750,7 +2968,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getDataRelationshipDomain()
 	 * @generated
 	 */
-	int DATA_RELATIONSHIP_DOMAIN = 19;
+	int DATA_RELATIONSHIP_DOMAIN = 21;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -2904,7 +3122,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getDataRelationshipFromEntity()
 	 * @generated
 	 */
-	int DATA_RELATIONSHIP_FROM_ENTITY = 20;
+	int DATA_RELATIONSHIP_FROM_ENTITY = 22;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -3076,7 +3294,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getDataRelationshipFromStructure()
 	 * @generated
 	 */
-	int DATA_RELATIONSHIP_FROM_STRUCTURE = 21;
+	int DATA_RELATIONSHIP_FROM_STRUCTURE = 23;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -3239,7 +3457,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getDataRelationshipRange()
 	 * @generated
 	 */
-	int DATA_RELATIONSHIP_RANGE = 22;
+	int DATA_RELATIONSHIP_RANGE = 24;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -3393,7 +3611,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getDataRelationshipToScalar()
 	 * @generated
 	 */
-	int DATA_RELATIONSHIP_TO_SCALAR = 23;
+	int DATA_RELATIONSHIP_TO_SCALAR = 25;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -3556,7 +3774,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getDataRelationshipToStructure()
 	 * @generated
 	 */
-	int DATA_RELATIONSHIP_TO_STRUCTURE = 24;
+	int DATA_RELATIONSHIP_TO_STRUCTURE = 26;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -3719,7 +3937,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityStructuredDataProperty()
 	 * @generated
 	 */
-	int ENTITY_STRUCTURED_DATA_PROPERTY = 25;
+	int ENTITY_STRUCTURED_DATA_PROPERTY = 27;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -3900,7 +4118,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityScalarDataProperty()
 	 * @generated
 	 */
-	int ENTITY_SCALAR_DATA_PROPERTY = 26;
+	int ENTITY_SCALAR_DATA_PROPERTY = 28;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -4081,7 +4299,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getStructuredDataProperty()
 	 * @generated
 	 */
-	int STRUCTURED_DATA_PROPERTY = 27;
+	int STRUCTURED_DATA_PROPERTY = 29;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -4253,7 +4471,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getScalarDataProperty()
 	 * @generated
 	 */
-	int SCALAR_DATA_PROPERTY = 28;
+	int SCALAR_DATA_PROPERTY = 30;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -4425,7 +4643,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getStructure()
 	 * @generated
 	 */
-	int STRUCTURE = 29;
+	int STRUCTURE = 31;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -4543,7 +4761,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getRule()
 	 * @generated
 	 */
-	int RULE = 30;
+	int RULE = 32;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -4661,7 +4879,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getChainRule()
 	 * @generated
 	 */
-	int CHAIN_RULE = 31;
+	int CHAIN_RULE = 33;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -4797,7 +5015,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getRuleBodySegment()
 	 * @generated
 	 */
-	int RULE_BODY_SEGMENT = 32;
+	int RULE_BODY_SEGMENT = 34;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -4915,7 +5133,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getSegmentPredicate()
 	 * @generated
 	 */
-	int SEGMENT_PREDICATE = 33;
+	int SEGMENT_PREDICATE = 35;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -4997,7 +5215,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getUnarySegmentPredicate()
 	 * @generated
 	 */
-	int UNARY_SEGMENT_PREDICATE = 34;
+	int UNARY_SEGMENT_PREDICATE = 36;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -5079,7 +5297,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getAspectPredicate()
 	 * @generated
 	 */
-	int ASPECT_PREDICATE = 35;
+	int ASPECT_PREDICATE = 37;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -5170,7 +5388,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getConceptPredicate()
 	 * @generated
 	 */
-	int CONCEPT_PREDICATE = 36;
+	int CONCEPT_PREDICATE = 38;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -5261,7 +5479,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getReifiedRelationshipPredicate()
 	 * @generated
 	 */
-	int REIFIED_RELATIONSHIP_PREDICATE = 37;
+	int REIFIED_RELATIONSHIP_PREDICATE = 39;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -5352,7 +5570,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getBinarySegmentPropertyPredicate()
 	 * @generated
 	 */
-	int BINARY_SEGMENT_PROPERTY_PREDICATE = 38;
+	int BINARY_SEGMENT_PROPERTY_PREDICATE = 40;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -5434,7 +5652,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getBinarySegmentForwardPropertyPredicate()
 	 * @generated
 	 */
-	int BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE = 39;
+	int BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE = 41;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -5516,7 +5734,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getBinarySegmentReversePropertyPredicate()
 	 * @generated
 	 */
-	int BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE = 40;
+	int BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE = 42;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -5598,7 +5816,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getReifiedRelationshipPropertyPredicate()
 	 * @generated
 	 */
-	int REIFIED_RELATIONSHIP_PROPERTY_PREDICATE = 41;
+	int REIFIED_RELATIONSHIP_PROPERTY_PREDICATE = 43;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -5628,13 +5846,13 @@ public interface TerminologiesPackage extends EPackage {
 	int REIFIED_RELATIONSHIP_PROPERTY_PREDICATE__BODY_SEGMENT = BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE__BODY_SEGMENT;
 
 	/**
-	 * The feature id for the '<em><b>Reified Relationship</b></em>' reference.
+	 * The feature id for the '<em><b>Forward Property</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REIFIED_RELATIONSHIP_PROPERTY_PREDICATE__REIFIED_RELATIONSHIP = BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE_FEATURE_COUNT + 0;
+	int REIFIED_RELATIONSHIP_PROPERTY_PREDICATE__FORWARD_PROPERTY = BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Reified Relationship Property Predicate</em>' class.
@@ -5689,7 +5907,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getReifiedRelationshipInversePropertyPredicate()
 	 * @generated
 	 */
-	int REIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE = 42;
+	int REIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE = 44;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -5719,13 +5937,13 @@ public interface TerminologiesPackage extends EPackage {
 	int REIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE__BODY_SEGMENT = BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE__BODY_SEGMENT;
 
 	/**
-	 * The feature id for the '<em><b>Reified Relationship</b></em>' reference.
+	 * The feature id for the '<em><b>Inverse Property</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE__REIFIED_RELATIONSHIP = BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE_FEATURE_COUNT + 0;
+	int REIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE__INVERSE_PROPERTY = BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Reified Relationship Inverse Property Predicate</em>' class.
@@ -5780,7 +5998,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getReifiedRelationshipSourcePropertyPredicate()
 	 * @generated
 	 */
-	int REIFIED_RELATIONSHIP_SOURCE_PROPERTY_PREDICATE = 43;
+	int REIFIED_RELATIONSHIP_SOURCE_PROPERTY_PREDICATE = 45;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -5871,7 +6089,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getReifiedRelationshipSourceInversePropertyPredicate()
 	 * @generated
 	 */
-	int REIFIED_RELATIONSHIP_SOURCE_INVERSE_PROPERTY_PREDICATE = 44;
+	int REIFIED_RELATIONSHIP_SOURCE_INVERSE_PROPERTY_PREDICATE = 46;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -5962,7 +6180,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getReifiedRelationshipTargetPropertyPredicate()
 	 * @generated
 	 */
-	int REIFIED_RELATIONSHIP_TARGET_PROPERTY_PREDICATE = 45;
+	int REIFIED_RELATIONSHIP_TARGET_PROPERTY_PREDICATE = 47;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -6053,7 +6271,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getReifiedRelationshipTargetInversePropertyPredicate()
 	 * @generated
 	 */
-	int REIFIED_RELATIONSHIP_TARGET_INVERSE_PROPERTY_PREDICATE = 46;
+	int REIFIED_RELATIONSHIP_TARGET_INVERSE_PROPERTY_PREDICATE = 48;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -6144,7 +6362,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getUnreifiedRelationshipPropertyPredicate()
 	 * @generated
 	 */
-	int UNREIFIED_RELATIONSHIP_PROPERTY_PREDICATE = 47;
+	int UNREIFIED_RELATIONSHIP_PROPERTY_PREDICATE = 49;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -6235,7 +6453,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getUnreifiedRelationshipInversePropertyPredicate()
 	 * @generated
 	 */
-	int UNREIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE = 48;
+	int UNREIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE = 50;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -6326,7 +6544,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getTermAxiom()
 	 * @generated
 	 */
-	int TERM_AXIOM = 49;
+	int TERM_AXIOM = 51;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -6408,7 +6626,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityRestrictionAxiom()
 	 * @generated
 	 */
-	int ENTITY_RESTRICTION_AXIOM = 50;
+	int ENTITY_RESTRICTION_AXIOM = 52;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -6438,22 +6656,13 @@ public interface TerminologiesPackage extends EPackage {
 	int ENTITY_RESTRICTION_AXIOM__TBOX = TERM_AXIOM__TBOX;
 
 	/**
-	 * The feature id for the '<em><b>Restricted Relation</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENTITY_RESTRICTION_AXIOM__RESTRICTED_RELATION = TERM_AXIOM_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Restricted Range</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY_RESTRICTION_AXIOM__RESTRICTED_RANGE = TERM_AXIOM_FEATURE_COUNT + 1;
+	int ENTITY_RESTRICTION_AXIOM__RESTRICTED_RANGE = TERM_AXIOM_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Restricted Domain</b></em>' reference.
@@ -6462,7 +6671,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY_RESTRICTION_AXIOM__RESTRICTED_DOMAIN = TERM_AXIOM_FEATURE_COUNT + 2;
+	int ENTITY_RESTRICTION_AXIOM__RESTRICTED_DOMAIN = TERM_AXIOM_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Entity Restriction Axiom</em>' class.
@@ -6471,7 +6680,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY_RESTRICTION_AXIOM_FEATURE_COUNT = TERM_AXIOM_FEATURE_COUNT + 3;
+	int ENTITY_RESTRICTION_AXIOM_FEATURE_COUNT = TERM_AXIOM_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Uuid</em>' operation.
@@ -6492,13 +6701,22 @@ public interface TerminologiesPackage extends EPackage {
 	int ENTITY_RESTRICTION_AXIOM___MODULE_CONTEXT = TERM_AXIOM___MODULE_CONTEXT;
 
 	/**
+	 * The operation id for the '<em>Restricted Relation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_RESTRICTION_AXIOM___RESTRICTED_RELATION = TERM_AXIOM_OPERATION_COUNT + 0;
+
+	/**
 	 * The operation id for the '<em>All Nested Elements</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY_RESTRICTION_AXIOM___ALL_NESTED_ELEMENTS = TERM_AXIOM_OPERATION_COUNT + 0;
+	int ENTITY_RESTRICTION_AXIOM___ALL_NESTED_ELEMENTS = TERM_AXIOM_OPERATION_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Entity Restriction Axiom</em>' class.
@@ -6507,7 +6725,470 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY_RESTRICTION_AXIOM_OPERATION_COUNT = TERM_AXIOM_OPERATION_COUNT + 1;
+	int ENTITY_RESTRICTION_AXIOM_OPERATION_COUNT = TERM_AXIOM_OPERATION_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityReifiedRestrictionAxiomImpl <em>Entity Reified Restriction Axiom</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityReifiedRestrictionAxiomImpl
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityReifiedRestrictionAxiom()
+	 * @generated
+	 */
+	int ENTITY_REIFIED_RESTRICTION_AXIOM = 53;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_REIFIED_RESTRICTION_AXIOM__UUID = ENTITY_RESTRICTION_AXIOM__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_REIFIED_RESTRICTION_AXIOM__ANNOTATIONS = ENTITY_RESTRICTION_AXIOM__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_REIFIED_RESTRICTION_AXIOM__TBOX = ENTITY_RESTRICTION_AXIOM__TBOX;
+
+	/**
+	 * The feature id for the '<em><b>Restricted Range</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_REIFIED_RESTRICTION_AXIOM__RESTRICTED_RANGE = ENTITY_RESTRICTION_AXIOM__RESTRICTED_RANGE;
+
+	/**
+	 * The feature id for the '<em><b>Restricted Domain</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_REIFIED_RESTRICTION_AXIOM__RESTRICTED_DOMAIN = ENTITY_RESTRICTION_AXIOM__RESTRICTED_DOMAIN;
+
+	/**
+	 * The number of structural features of the '<em>Entity Reified Restriction Axiom</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_REIFIED_RESTRICTION_AXIOM_FEATURE_COUNT = ENTITY_RESTRICTION_AXIOM_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_REIFIED_RESTRICTION_AXIOM___UUID = ENTITY_RESTRICTION_AXIOM___UUID;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_REIFIED_RESTRICTION_AXIOM___MODULE_CONTEXT = ENTITY_RESTRICTION_AXIOM___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>Restricted Relation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_REIFIED_RESTRICTION_AXIOM___RESTRICTED_RELATION = ENTITY_RESTRICTION_AXIOM___RESTRICTED_RELATION;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_REIFIED_RESTRICTION_AXIOM___ALL_NESTED_ELEMENTS = ENTITY_RESTRICTION_AXIOM___ALL_NESTED_ELEMENTS;
+
+	/**
+	 * The number of operations of the '<em>Entity Reified Restriction Axiom</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_REIFIED_RESTRICTION_AXIOM_OPERATION_COUNT = ENTITY_RESTRICTION_AXIOM_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityForwardReifiedRestrictionAxiomImpl <em>Entity Forward Reified Restriction Axiom</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityForwardReifiedRestrictionAxiomImpl
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityForwardReifiedRestrictionAxiom()
+	 * @generated
+	 */
+	int ENTITY_FORWARD_REIFIED_RESTRICTION_AXIOM = 54;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_FORWARD_REIFIED_RESTRICTION_AXIOM__UUID = ENTITY_REIFIED_RESTRICTION_AXIOM__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_FORWARD_REIFIED_RESTRICTION_AXIOM__ANNOTATIONS = ENTITY_REIFIED_RESTRICTION_AXIOM__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_FORWARD_REIFIED_RESTRICTION_AXIOM__TBOX = ENTITY_REIFIED_RESTRICTION_AXIOM__TBOX;
+
+	/**
+	 * The feature id for the '<em><b>Restricted Range</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_FORWARD_REIFIED_RESTRICTION_AXIOM__RESTRICTED_RANGE = ENTITY_REIFIED_RESTRICTION_AXIOM__RESTRICTED_RANGE;
+
+	/**
+	 * The feature id for the '<em><b>Restricted Domain</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_FORWARD_REIFIED_RESTRICTION_AXIOM__RESTRICTED_DOMAIN = ENTITY_REIFIED_RESTRICTION_AXIOM__RESTRICTED_DOMAIN;
+
+	/**
+	 * The feature id for the '<em><b>Forward Property</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_FORWARD_REIFIED_RESTRICTION_AXIOM__FORWARD_PROPERTY = ENTITY_REIFIED_RESTRICTION_AXIOM_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Entity Forward Reified Restriction Axiom</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_FORWARD_REIFIED_RESTRICTION_AXIOM_FEATURE_COUNT = ENTITY_REIFIED_RESTRICTION_AXIOM_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_FORWARD_REIFIED_RESTRICTION_AXIOM___UUID = ENTITY_REIFIED_RESTRICTION_AXIOM___UUID;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_FORWARD_REIFIED_RESTRICTION_AXIOM___MODULE_CONTEXT = ENTITY_REIFIED_RESTRICTION_AXIOM___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_FORWARD_REIFIED_RESTRICTION_AXIOM___ALL_NESTED_ELEMENTS = ENTITY_REIFIED_RESTRICTION_AXIOM___ALL_NESTED_ELEMENTS;
+
+	/**
+	 * The operation id for the '<em>Restricted Relation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_FORWARD_REIFIED_RESTRICTION_AXIOM___RESTRICTED_RELATION = ENTITY_REIFIED_RESTRICTION_AXIOM_OPERATION_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Entity Forward Reified Restriction Axiom</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_FORWARD_REIFIED_RESTRICTION_AXIOM_OPERATION_COUNT = ENTITY_REIFIED_RESTRICTION_AXIOM_OPERATION_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityInverseReifiedRestrictionAxiomImpl <em>Entity Inverse Reified Restriction Axiom</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityInverseReifiedRestrictionAxiomImpl
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityInverseReifiedRestrictionAxiom()
+	 * @generated
+	 */
+	int ENTITY_INVERSE_REIFIED_RESTRICTION_AXIOM = 55;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_INVERSE_REIFIED_RESTRICTION_AXIOM__UUID = ENTITY_REIFIED_RESTRICTION_AXIOM__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_INVERSE_REIFIED_RESTRICTION_AXIOM__ANNOTATIONS = ENTITY_REIFIED_RESTRICTION_AXIOM__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_INVERSE_REIFIED_RESTRICTION_AXIOM__TBOX = ENTITY_REIFIED_RESTRICTION_AXIOM__TBOX;
+
+	/**
+	 * The feature id for the '<em><b>Restricted Range</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_INVERSE_REIFIED_RESTRICTION_AXIOM__RESTRICTED_RANGE = ENTITY_REIFIED_RESTRICTION_AXIOM__RESTRICTED_RANGE;
+
+	/**
+	 * The feature id for the '<em><b>Restricted Domain</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_INVERSE_REIFIED_RESTRICTION_AXIOM__RESTRICTED_DOMAIN = ENTITY_REIFIED_RESTRICTION_AXIOM__RESTRICTED_DOMAIN;
+
+	/**
+	 * The feature id for the '<em><b>Inverse Property</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_INVERSE_REIFIED_RESTRICTION_AXIOM__INVERSE_PROPERTY = ENTITY_REIFIED_RESTRICTION_AXIOM_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Entity Inverse Reified Restriction Axiom</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_INVERSE_REIFIED_RESTRICTION_AXIOM_FEATURE_COUNT = ENTITY_REIFIED_RESTRICTION_AXIOM_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_INVERSE_REIFIED_RESTRICTION_AXIOM___UUID = ENTITY_REIFIED_RESTRICTION_AXIOM___UUID;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_INVERSE_REIFIED_RESTRICTION_AXIOM___MODULE_CONTEXT = ENTITY_REIFIED_RESTRICTION_AXIOM___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_INVERSE_REIFIED_RESTRICTION_AXIOM___ALL_NESTED_ELEMENTS = ENTITY_REIFIED_RESTRICTION_AXIOM___ALL_NESTED_ELEMENTS;
+
+	/**
+	 * The operation id for the '<em>Restricted Relation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_INVERSE_REIFIED_RESTRICTION_AXIOM___RESTRICTED_RELATION = ENTITY_REIFIED_RESTRICTION_AXIOM_OPERATION_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Entity Inverse Reified Restriction Axiom</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_INVERSE_REIFIED_RESTRICTION_AXIOM_OPERATION_COUNT = ENTITY_REIFIED_RESTRICTION_AXIOM_OPERATION_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityUnreifiedRestrictionAxiomImpl <em>Entity Unreified Restriction Axiom</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityUnreifiedRestrictionAxiomImpl
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityUnreifiedRestrictionAxiom()
+	 * @generated
+	 */
+	int ENTITY_UNREIFIED_RESTRICTION_AXIOM = 56;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNREIFIED_RESTRICTION_AXIOM__UUID = ENTITY_RESTRICTION_AXIOM__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNREIFIED_RESTRICTION_AXIOM__ANNOTATIONS = ENTITY_RESTRICTION_AXIOM__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNREIFIED_RESTRICTION_AXIOM__TBOX = ENTITY_RESTRICTION_AXIOM__TBOX;
+
+	/**
+	 * The feature id for the '<em><b>Restricted Range</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNREIFIED_RESTRICTION_AXIOM__RESTRICTED_RANGE = ENTITY_RESTRICTION_AXIOM__RESTRICTED_RANGE;
+
+	/**
+	 * The feature id for the '<em><b>Restricted Domain</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNREIFIED_RESTRICTION_AXIOM__RESTRICTED_DOMAIN = ENTITY_RESTRICTION_AXIOM__RESTRICTED_DOMAIN;
+
+	/**
+	 * The feature id for the '<em><b>Restricted Unreified Relationship</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNREIFIED_RESTRICTION_AXIOM__RESTRICTED_UNREIFIED_RELATIONSHIP = ENTITY_RESTRICTION_AXIOM_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Entity Unreified Restriction Axiom</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNREIFIED_RESTRICTION_AXIOM_FEATURE_COUNT = ENTITY_RESTRICTION_AXIOM_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNREIFIED_RESTRICTION_AXIOM___UUID = ENTITY_RESTRICTION_AXIOM___UUID;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNREIFIED_RESTRICTION_AXIOM___MODULE_CONTEXT = ENTITY_RESTRICTION_AXIOM___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNREIFIED_RESTRICTION_AXIOM___ALL_NESTED_ELEMENTS = ENTITY_RESTRICTION_AXIOM___ALL_NESTED_ELEMENTS;
+
+	/**
+	 * The operation id for the '<em>Restricted Relation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNREIFIED_RESTRICTION_AXIOM___RESTRICTED_RELATION = ENTITY_RESTRICTION_AXIOM_OPERATION_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Entity Unreified Restriction Axiom</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNREIFIED_RESTRICTION_AXIOM_OPERATION_COUNT = ENTITY_RESTRICTION_AXIOM_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityExistentialRestrictionAxiomImpl <em>Entity Existential Restriction Axiom</em>}' class.
@@ -6517,7 +7198,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityExistentialRestrictionAxiom()
 	 * @generated
 	 */
-	int ENTITY_EXISTENTIAL_RESTRICTION_AXIOM = 51;
+	int ENTITY_EXISTENTIAL_RESTRICTION_AXIOM = 57;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -6547,15 +7228,6 @@ public interface TerminologiesPackage extends EPackage {
 	int ENTITY_EXISTENTIAL_RESTRICTION_AXIOM__TBOX = ENTITY_RESTRICTION_AXIOM__TBOX;
 
 	/**
-	 * The feature id for the '<em><b>Restricted Relation</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENTITY_EXISTENTIAL_RESTRICTION_AXIOM__RESTRICTED_RELATION = ENTITY_RESTRICTION_AXIOM__RESTRICTED_RELATION;
-
-	/**
 	 * The feature id for the '<em><b>Restricted Range</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6583,6 +7255,15 @@ public interface TerminologiesPackage extends EPackage {
 	int ENTITY_EXISTENTIAL_RESTRICTION_AXIOM_FEATURE_COUNT = ENTITY_RESTRICTION_AXIOM_FEATURE_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_EXISTENTIAL_RESTRICTION_AXIOM___UUID = ENTITY_RESTRICTION_AXIOM___UUID;
+
+	/**
 	 * The operation id for the '<em>Module Context</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6590,6 +7271,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int ENTITY_EXISTENTIAL_RESTRICTION_AXIOM___MODULE_CONTEXT = ENTITY_RESTRICTION_AXIOM___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>Restricted Relation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_EXISTENTIAL_RESTRICTION_AXIOM___RESTRICTED_RELATION = ENTITY_RESTRICTION_AXIOM___RESTRICTED_RELATION;
 
 	/**
 	 * The operation id for the '<em>All Nested Elements</em>' operation.
@@ -6601,22 +7291,367 @@ public interface TerminologiesPackage extends EPackage {
 	int ENTITY_EXISTENTIAL_RESTRICTION_AXIOM___ALL_NESTED_ELEMENTS = ENTITY_RESTRICTION_AXIOM___ALL_NESTED_ELEMENTS;
 
 	/**
-	 * The operation id for the '<em>Uuid</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENTITY_EXISTENTIAL_RESTRICTION_AXIOM___UUID = ENTITY_RESTRICTION_AXIOM_OPERATION_COUNT + 0;
-
-	/**
 	 * The number of operations of the '<em>Entity Existential Restriction Axiom</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY_EXISTENTIAL_RESTRICTION_AXIOM_OPERATION_COUNT = ENTITY_RESTRICTION_AXIOM_OPERATION_COUNT + 1;
+	int ENTITY_EXISTENTIAL_RESTRICTION_AXIOM_OPERATION_COUNT = ENTITY_RESTRICTION_AXIOM_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityExistentialForwardReifiedRestrictionAxiomImpl <em>Entity Existential Forward Reified Restriction Axiom</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityExistentialForwardReifiedRestrictionAxiomImpl
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityExistentialForwardReifiedRestrictionAxiom()
+	 * @generated
+	 */
+	int ENTITY_EXISTENTIAL_FORWARD_REIFIED_RESTRICTION_AXIOM = 58;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_EXISTENTIAL_FORWARD_REIFIED_RESTRICTION_AXIOM__UUID = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_EXISTENTIAL_FORWARD_REIFIED_RESTRICTION_AXIOM__ANNOTATIONS = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_EXISTENTIAL_FORWARD_REIFIED_RESTRICTION_AXIOM__TBOX = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM__TBOX;
+
+	/**
+	 * The feature id for the '<em><b>Restricted Range</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_EXISTENTIAL_FORWARD_REIFIED_RESTRICTION_AXIOM__RESTRICTED_RANGE = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM__RESTRICTED_RANGE;
+
+	/**
+	 * The feature id for the '<em><b>Restricted Domain</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_EXISTENTIAL_FORWARD_REIFIED_RESTRICTION_AXIOM__RESTRICTED_DOMAIN = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM__RESTRICTED_DOMAIN;
+
+	/**
+	 * The feature id for the '<em><b>Forward Property</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_EXISTENTIAL_FORWARD_REIFIED_RESTRICTION_AXIOM__FORWARD_PROPERTY = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Entity Existential Forward Reified Restriction Axiom</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_EXISTENTIAL_FORWARD_REIFIED_RESTRICTION_AXIOM_FEATURE_COUNT = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_EXISTENTIAL_FORWARD_REIFIED_RESTRICTION_AXIOM___MODULE_CONTEXT = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_EXISTENTIAL_FORWARD_REIFIED_RESTRICTION_AXIOM___ALL_NESTED_ELEMENTS = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM___ALL_NESTED_ELEMENTS;
+
+	/**
+	 * The operation id for the '<em>Restricted Relation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_EXISTENTIAL_FORWARD_REIFIED_RESTRICTION_AXIOM___RESTRICTED_RELATION = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_EXISTENTIAL_FORWARD_REIFIED_RESTRICTION_AXIOM___UUID = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM_OPERATION_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Entity Existential Forward Reified Restriction Axiom</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_EXISTENTIAL_FORWARD_REIFIED_RESTRICTION_AXIOM_OPERATION_COUNT = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM_OPERATION_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityExistentialInverseReifiedRestrictionAxiomImpl <em>Entity Existential Inverse Reified Restriction Axiom</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityExistentialInverseReifiedRestrictionAxiomImpl
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityExistentialInverseReifiedRestrictionAxiom()
+	 * @generated
+	 */
+	int ENTITY_EXISTENTIAL_INVERSE_REIFIED_RESTRICTION_AXIOM = 59;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_EXISTENTIAL_INVERSE_REIFIED_RESTRICTION_AXIOM__UUID = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_EXISTENTIAL_INVERSE_REIFIED_RESTRICTION_AXIOM__ANNOTATIONS = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_EXISTENTIAL_INVERSE_REIFIED_RESTRICTION_AXIOM__TBOX = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM__TBOX;
+
+	/**
+	 * The feature id for the '<em><b>Restricted Range</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_EXISTENTIAL_INVERSE_REIFIED_RESTRICTION_AXIOM__RESTRICTED_RANGE = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM__RESTRICTED_RANGE;
+
+	/**
+	 * The feature id for the '<em><b>Restricted Domain</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_EXISTENTIAL_INVERSE_REIFIED_RESTRICTION_AXIOM__RESTRICTED_DOMAIN = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM__RESTRICTED_DOMAIN;
+
+	/**
+	 * The feature id for the '<em><b>Inverse Property</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_EXISTENTIAL_INVERSE_REIFIED_RESTRICTION_AXIOM__INVERSE_PROPERTY = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Entity Existential Inverse Reified Restriction Axiom</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_EXISTENTIAL_INVERSE_REIFIED_RESTRICTION_AXIOM_FEATURE_COUNT = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_EXISTENTIAL_INVERSE_REIFIED_RESTRICTION_AXIOM___MODULE_CONTEXT = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_EXISTENTIAL_INVERSE_REIFIED_RESTRICTION_AXIOM___ALL_NESTED_ELEMENTS = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM___ALL_NESTED_ELEMENTS;
+
+	/**
+	 * The operation id for the '<em>Restricted Relation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_EXISTENTIAL_INVERSE_REIFIED_RESTRICTION_AXIOM___RESTRICTED_RELATION = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_EXISTENTIAL_INVERSE_REIFIED_RESTRICTION_AXIOM___UUID = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM_OPERATION_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Entity Existential Inverse Reified Restriction Axiom</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_EXISTENTIAL_INVERSE_REIFIED_RESTRICTION_AXIOM_OPERATION_COUNT = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM_OPERATION_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityExistentialUnreifiedRestrictionAxiomImpl <em>Entity Existential Unreified Restriction Axiom</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityExistentialUnreifiedRestrictionAxiomImpl
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityExistentialUnreifiedRestrictionAxiom()
+	 * @generated
+	 */
+	int ENTITY_EXISTENTIAL_UNREIFIED_RESTRICTION_AXIOM = 60;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_EXISTENTIAL_UNREIFIED_RESTRICTION_AXIOM__UUID = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_EXISTENTIAL_UNREIFIED_RESTRICTION_AXIOM__ANNOTATIONS = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_EXISTENTIAL_UNREIFIED_RESTRICTION_AXIOM__TBOX = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM__TBOX;
+
+	/**
+	 * The feature id for the '<em><b>Restricted Range</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_EXISTENTIAL_UNREIFIED_RESTRICTION_AXIOM__RESTRICTED_RANGE = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM__RESTRICTED_RANGE;
+
+	/**
+	 * The feature id for the '<em><b>Restricted Domain</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_EXISTENTIAL_UNREIFIED_RESTRICTION_AXIOM__RESTRICTED_DOMAIN = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM__RESTRICTED_DOMAIN;
+
+	/**
+	 * The feature id for the '<em><b>Restricted Unreified Relationship</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_EXISTENTIAL_UNREIFIED_RESTRICTION_AXIOM__RESTRICTED_UNREIFIED_RELATIONSHIP = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Entity Existential Unreified Restriction Axiom</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_EXISTENTIAL_UNREIFIED_RESTRICTION_AXIOM_FEATURE_COUNT = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_EXISTENTIAL_UNREIFIED_RESTRICTION_AXIOM___MODULE_CONTEXT = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_EXISTENTIAL_UNREIFIED_RESTRICTION_AXIOM___ALL_NESTED_ELEMENTS = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM___ALL_NESTED_ELEMENTS;
+
+	/**
+	 * The operation id for the '<em>Restricted Relation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_EXISTENTIAL_UNREIFIED_RESTRICTION_AXIOM___RESTRICTED_RELATION = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_EXISTENTIAL_UNREIFIED_RESTRICTION_AXIOM___UUID = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM_OPERATION_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Entity Existential Unreified Restriction Axiom</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_EXISTENTIAL_UNREIFIED_RESTRICTION_AXIOM_OPERATION_COUNT = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM_OPERATION_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityUniversalRestrictionAxiomImpl <em>Entity Universal Restriction Axiom</em>}' class.
@@ -6626,7 +7661,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityUniversalRestrictionAxiom()
 	 * @generated
 	 */
-	int ENTITY_UNIVERSAL_RESTRICTION_AXIOM = 52;
+	int ENTITY_UNIVERSAL_RESTRICTION_AXIOM = 61;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -6656,15 +7691,6 @@ public interface TerminologiesPackage extends EPackage {
 	int ENTITY_UNIVERSAL_RESTRICTION_AXIOM__TBOX = ENTITY_RESTRICTION_AXIOM__TBOX;
 
 	/**
-	 * The feature id for the '<em><b>Restricted Relation</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENTITY_UNIVERSAL_RESTRICTION_AXIOM__RESTRICTED_RELATION = ENTITY_RESTRICTION_AXIOM__RESTRICTED_RELATION;
-
-	/**
 	 * The feature id for the '<em><b>Restricted Range</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6692,6 +7718,15 @@ public interface TerminologiesPackage extends EPackage {
 	int ENTITY_UNIVERSAL_RESTRICTION_AXIOM_FEATURE_COUNT = ENTITY_RESTRICTION_AXIOM_FEATURE_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNIVERSAL_RESTRICTION_AXIOM___UUID = ENTITY_RESTRICTION_AXIOM___UUID;
+
+	/**
 	 * The operation id for the '<em>Module Context</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6699,6 +7734,15 @@ public interface TerminologiesPackage extends EPackage {
 	 * @ordered
 	 */
 	int ENTITY_UNIVERSAL_RESTRICTION_AXIOM___MODULE_CONTEXT = ENTITY_RESTRICTION_AXIOM___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>Restricted Relation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNIVERSAL_RESTRICTION_AXIOM___RESTRICTED_RELATION = ENTITY_RESTRICTION_AXIOM___RESTRICTED_RELATION;
 
 	/**
 	 * The operation id for the '<em>All Nested Elements</em>' operation.
@@ -6710,22 +7754,367 @@ public interface TerminologiesPackage extends EPackage {
 	int ENTITY_UNIVERSAL_RESTRICTION_AXIOM___ALL_NESTED_ELEMENTS = ENTITY_RESTRICTION_AXIOM___ALL_NESTED_ELEMENTS;
 
 	/**
-	 * The operation id for the '<em>Uuid</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENTITY_UNIVERSAL_RESTRICTION_AXIOM___UUID = ENTITY_RESTRICTION_AXIOM_OPERATION_COUNT + 0;
-
-	/**
 	 * The number of operations of the '<em>Entity Universal Restriction Axiom</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY_UNIVERSAL_RESTRICTION_AXIOM_OPERATION_COUNT = ENTITY_RESTRICTION_AXIOM_OPERATION_COUNT + 1;
+	int ENTITY_UNIVERSAL_RESTRICTION_AXIOM_OPERATION_COUNT = ENTITY_RESTRICTION_AXIOM_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityUniversalForwardReifiedRestrictionAxiomImpl <em>Entity Universal Forward Reified Restriction Axiom</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityUniversalForwardReifiedRestrictionAxiomImpl
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityUniversalForwardReifiedRestrictionAxiom()
+	 * @generated
+	 */
+	int ENTITY_UNIVERSAL_FORWARD_REIFIED_RESTRICTION_AXIOM = 62;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNIVERSAL_FORWARD_REIFIED_RESTRICTION_AXIOM__UUID = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNIVERSAL_FORWARD_REIFIED_RESTRICTION_AXIOM__ANNOTATIONS = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNIVERSAL_FORWARD_REIFIED_RESTRICTION_AXIOM__TBOX = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM__TBOX;
+
+	/**
+	 * The feature id for the '<em><b>Restricted Range</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNIVERSAL_FORWARD_REIFIED_RESTRICTION_AXIOM__RESTRICTED_RANGE = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM__RESTRICTED_RANGE;
+
+	/**
+	 * The feature id for the '<em><b>Restricted Domain</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNIVERSAL_FORWARD_REIFIED_RESTRICTION_AXIOM__RESTRICTED_DOMAIN = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM__RESTRICTED_DOMAIN;
+
+	/**
+	 * The feature id for the '<em><b>Forward Property</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNIVERSAL_FORWARD_REIFIED_RESTRICTION_AXIOM__FORWARD_PROPERTY = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Entity Universal Forward Reified Restriction Axiom</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNIVERSAL_FORWARD_REIFIED_RESTRICTION_AXIOM_FEATURE_COUNT = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNIVERSAL_FORWARD_REIFIED_RESTRICTION_AXIOM___MODULE_CONTEXT = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNIVERSAL_FORWARD_REIFIED_RESTRICTION_AXIOM___ALL_NESTED_ELEMENTS = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM___ALL_NESTED_ELEMENTS;
+
+	/**
+	 * The operation id for the '<em>Restricted Relation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNIVERSAL_FORWARD_REIFIED_RESTRICTION_AXIOM___RESTRICTED_RELATION = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNIVERSAL_FORWARD_REIFIED_RESTRICTION_AXIOM___UUID = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM_OPERATION_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Entity Universal Forward Reified Restriction Axiom</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNIVERSAL_FORWARD_REIFIED_RESTRICTION_AXIOM_OPERATION_COUNT = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM_OPERATION_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityUniversalInverseReifiedRestrictionAxiomImpl <em>Entity Universal Inverse Reified Restriction Axiom</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityUniversalInverseReifiedRestrictionAxiomImpl
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityUniversalInverseReifiedRestrictionAxiom()
+	 * @generated
+	 */
+	int ENTITY_UNIVERSAL_INVERSE_REIFIED_RESTRICTION_AXIOM = 63;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNIVERSAL_INVERSE_REIFIED_RESTRICTION_AXIOM__UUID = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNIVERSAL_INVERSE_REIFIED_RESTRICTION_AXIOM__ANNOTATIONS = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNIVERSAL_INVERSE_REIFIED_RESTRICTION_AXIOM__TBOX = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM__TBOX;
+
+	/**
+	 * The feature id for the '<em><b>Restricted Range</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNIVERSAL_INVERSE_REIFIED_RESTRICTION_AXIOM__RESTRICTED_RANGE = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM__RESTRICTED_RANGE;
+
+	/**
+	 * The feature id for the '<em><b>Restricted Domain</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNIVERSAL_INVERSE_REIFIED_RESTRICTION_AXIOM__RESTRICTED_DOMAIN = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM__RESTRICTED_DOMAIN;
+
+	/**
+	 * The feature id for the '<em><b>Inverse Property</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNIVERSAL_INVERSE_REIFIED_RESTRICTION_AXIOM__INVERSE_PROPERTY = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Entity Universal Inverse Reified Restriction Axiom</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNIVERSAL_INVERSE_REIFIED_RESTRICTION_AXIOM_FEATURE_COUNT = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNIVERSAL_INVERSE_REIFIED_RESTRICTION_AXIOM___MODULE_CONTEXT = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNIVERSAL_INVERSE_REIFIED_RESTRICTION_AXIOM___ALL_NESTED_ELEMENTS = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM___ALL_NESTED_ELEMENTS;
+
+	/**
+	 * The operation id for the '<em>Restricted Relation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNIVERSAL_INVERSE_REIFIED_RESTRICTION_AXIOM___RESTRICTED_RELATION = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNIVERSAL_INVERSE_REIFIED_RESTRICTION_AXIOM___UUID = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM_OPERATION_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Entity Universal Inverse Reified Restriction Axiom</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNIVERSAL_INVERSE_REIFIED_RESTRICTION_AXIOM_OPERATION_COUNT = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM_OPERATION_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityUniversalUnreifiedRestrictionAxiomImpl <em>Entity Universal Unreified Restriction Axiom</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityUniversalUnreifiedRestrictionAxiomImpl
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityUniversalUnreifiedRestrictionAxiom()
+	 * @generated
+	 */
+	int ENTITY_UNIVERSAL_UNREIFIED_RESTRICTION_AXIOM = 64;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNIVERSAL_UNREIFIED_RESTRICTION_AXIOM__UUID = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNIVERSAL_UNREIFIED_RESTRICTION_AXIOM__ANNOTATIONS = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNIVERSAL_UNREIFIED_RESTRICTION_AXIOM__TBOX = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM__TBOX;
+
+	/**
+	 * The feature id for the '<em><b>Restricted Range</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNIVERSAL_UNREIFIED_RESTRICTION_AXIOM__RESTRICTED_RANGE = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM__RESTRICTED_RANGE;
+
+	/**
+	 * The feature id for the '<em><b>Restricted Domain</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNIVERSAL_UNREIFIED_RESTRICTION_AXIOM__RESTRICTED_DOMAIN = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM__RESTRICTED_DOMAIN;
+
+	/**
+	 * The feature id for the '<em><b>Restricted Unreified Relationship</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNIVERSAL_UNREIFIED_RESTRICTION_AXIOM__RESTRICTED_UNREIFIED_RELATIONSHIP = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Entity Universal Unreified Restriction Axiom</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNIVERSAL_UNREIFIED_RESTRICTION_AXIOM_FEATURE_COUNT = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNIVERSAL_UNREIFIED_RESTRICTION_AXIOM___MODULE_CONTEXT = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNIVERSAL_UNREIFIED_RESTRICTION_AXIOM___ALL_NESTED_ELEMENTS = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM___ALL_NESTED_ELEMENTS;
+
+	/**
+	 * The operation id for the '<em>Restricted Relation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNIVERSAL_UNREIFIED_RESTRICTION_AXIOM___RESTRICTED_RELATION = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNIVERSAL_UNREIFIED_RESTRICTION_AXIOM___UUID = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM_OPERATION_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Entity Universal Unreified Restriction Axiom</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_UNIVERSAL_UNREIFIED_RESTRICTION_AXIOM_OPERATION_COUNT = ENTITY_EXISTENTIAL_RESTRICTION_AXIOM_OPERATION_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.SpecializationAxiomImpl <em>Specialization Axiom</em>}' class.
@@ -6735,7 +8124,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getSpecializationAxiom()
 	 * @generated
 	 */
-	int SPECIALIZATION_AXIOM = 53;
+	int SPECIALIZATION_AXIOM = 65;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -6835,7 +8224,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getAspectSpecializationAxiom()
 	 * @generated
 	 */
-	int ASPECT_SPECIALIZATION_AXIOM = 54;
+	int ASPECT_SPECIALIZATION_AXIOM = 66;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -6953,7 +8342,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getConceptSpecializationAxiom()
 	 * @generated
 	 */
-	int CONCEPT_SPECIALIZATION_AXIOM = 55;
+	int CONCEPT_SPECIALIZATION_AXIOM = 67;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -7071,7 +8460,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getReifiedRelationshipSpecializationAxiom()
 	 * @generated
 	 */
-	int REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM = 56;
+	int REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM = 68;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -7189,7 +8578,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getSubObjectPropertyOfAxiom()
 	 * @generated
 	 */
-	int SUB_OBJECT_PROPERTY_OF_AXIOM = 57;
+	int SUB_OBJECT_PROPERTY_OF_AXIOM = 69;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -7289,7 +8678,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getSubDataPropertyOfAxiom()
 	 * @generated
 	 */
-	int SUB_DATA_PROPERTY_OF_AXIOM = 58;
+	int SUB_DATA_PROPERTY_OF_AXIOM = 70;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -7389,7 +8778,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityScalarDataPropertyRestrictionAxiom()
 	 * @generated
 	 */
-	int ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM = 59;
+	int ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM = 71;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -7489,7 +8878,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityScalarDataPropertyExistentialRestrictionAxiom()
 	 * @generated
 	 */
-	int ENTITY_SCALAR_DATA_PROPERTY_EXISTENTIAL_RESTRICTION_AXIOM = 60;
+	int ENTITY_SCALAR_DATA_PROPERTY_EXISTENTIAL_RESTRICTION_AXIOM = 72;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -7598,7 +8987,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityScalarDataPropertyUniversalRestrictionAxiom()
 	 * @generated
 	 */
-	int ENTITY_SCALAR_DATA_PROPERTY_UNIVERSAL_RESTRICTION_AXIOM = 61;
+	int ENTITY_SCALAR_DATA_PROPERTY_UNIVERSAL_RESTRICTION_AXIOM = 73;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -7707,7 +9096,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityScalarDataPropertyParticularRestrictionAxiom()
 	 * @generated
 	 */
-	int ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM = 62;
+	int ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM = 74;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -7825,7 +9214,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityStructuredDataPropertyRestrictionAxiom()
 	 * @generated
 	 */
-	int ENTITY_STRUCTURED_DATA_PROPERTY_RESTRICTION_AXIOM = 63;
+	int ENTITY_STRUCTURED_DATA_PROPERTY_RESTRICTION_AXIOM = 75;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -7916,7 +9305,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityStructuredDataPropertyParticularRestrictionAxiom()
 	 * @generated
 	 */
-	int ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM = 64;
+	int ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM = 76;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -8052,7 +9441,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getRestrictionStructuredDataPropertyContext()
 	 * @generated
 	 */
-	int RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT = 65;
+	int RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT = 77;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -8170,7 +9559,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getRestrictionStructuredDataPropertyTuple()
 	 * @generated
 	 */
-	int RESTRICTION_STRUCTURED_DATA_PROPERTY_TUPLE = 66;
+	int RESTRICTION_STRUCTURED_DATA_PROPERTY_TUPLE = 78;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -8297,7 +9686,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getRestrictionScalarDataPropertyValue()
 	 * @generated
 	 */
-	int RESTRICTION_SCALAR_DATA_PROPERTY_VALUE = 67;
+	int RESTRICTION_SCALAR_DATA_PROPERTY_VALUE = 79;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -8406,7 +9795,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getRestrictedDataRange()
 	 * @generated
 	 */
-	int RESTRICTED_DATA_RANGE = 68;
+	int RESTRICTED_DATA_RANGE = 80;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -8533,7 +9922,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getBinaryScalarRestriction()
 	 * @generated
 	 */
-	int BINARY_SCALAR_RESTRICTION = 69;
+	int BINARY_SCALAR_RESTRICTION = 81;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -8687,7 +10076,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getIRIScalarRestriction()
 	 * @generated
 	 */
-	int IRI_SCALAR_RESTRICTION = 70;
+	int IRI_SCALAR_RESTRICTION = 82;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -8850,7 +10239,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getNumericScalarRestriction()
 	 * @generated
 	 */
-	int NUMERIC_SCALAR_RESTRICTION = 71;
+	int NUMERIC_SCALAR_RESTRICTION = 83;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -9013,7 +10402,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getPlainLiteralScalarRestriction()
 	 * @generated
 	 */
-	int PLAIN_LITERAL_SCALAR_RESTRICTION = 72;
+	int PLAIN_LITERAL_SCALAR_RESTRICTION = 84;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -9185,7 +10574,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getStringScalarRestriction()
 	 * @generated
 	 */
-	int STRING_SCALAR_RESTRICTION = 73;
+	int STRING_SCALAR_RESTRICTION = 85;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -9348,7 +10737,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getTimeScalarRestriction()
 	 * @generated
 	 */
-	int TIME_SCALAR_RESTRICTION = 74;
+	int TIME_SCALAR_RESTRICTION = 86;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -9511,7 +10900,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getSynonymScalarRestriction()
 	 * @generated
 	 */
-	int SYNONYM_SCALAR_RESTRICTION = 75;
+	int SYNONYM_SCALAR_RESTRICTION = 87;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -9638,7 +11027,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getScalarOneOfRestriction()
 	 * @generated
 	 */
-	int SCALAR_ONE_OF_RESTRICTION = 76;
+	int SCALAR_ONE_OF_RESTRICTION = 88;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -9765,7 +11154,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getScalarOneOfLiteralAxiom()
 	 * @generated
 	 */
-	int SCALAR_ONE_OF_LITERAL_AXIOM = 77;
+	int SCALAR_ONE_OF_LITERAL_AXIOM = 89;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -9874,7 +11263,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getTerminologyKind()
 	 * @generated
 	 */
-	int TERMINOLOGY_KIND = 78;
+	int TERMINOLOGY_KIND = 90;
 
 
 	/**
@@ -10386,6 +11775,150 @@ public interface TerminologiesPackage extends EPackage {
 	EOperation getEntityRelationship__RelationRange();
 
 	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty <em>Forward Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Forward Property</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty
+	 * @generated
+	 */
+	EClass getForwardProperty();
+
+	/**
+	 * Returns the meta object for the container reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty#getReifiedRelationship <em>Reified Relationship</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Reified Relationship</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty#getReifiedRelationship()
+	 * @see #getForwardProperty()
+	 * @generated
+	 */
+	EReference getForwardProperty_ReifiedRelationship();
+
+	/**
+	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty#getName()
+	 * @see #getForwardProperty()
+	 * @generated
+	 */
+	EAttribute getForwardProperty_Name();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty#iri() <em>Iri</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Iri</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty#iri()
+	 * @generated
+	 */
+	EOperation getForwardProperty__Iri();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty#abbrevIRI() <em>Abbrev IRI</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Abbrev IRI</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty#abbrevIRI()
+	 * @generated
+	 */
+	EOperation getForwardProperty__AbbrevIRI();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty#name() <em>Name</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Name</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty#name()
+	 * @generated
+	 */
+	EOperation getForwardProperty__Name();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty#uuid() <em>Uuid</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Uuid</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty#uuid()
+	 * @generated
+	 */
+	EOperation getForwardProperty__Uuid();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty <em>Inverse Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Inverse Property</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty
+	 * @generated
+	 */
+	EClass getInverseProperty();
+
+	/**
+	 * Returns the meta object for the container reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty#getReifiedRelationship <em>Reified Relationship</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Reified Relationship</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty#getReifiedRelationship()
+	 * @see #getInverseProperty()
+	 * @generated
+	 */
+	EReference getInverseProperty_ReifiedRelationship();
+
+	/**
+	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty#getName()
+	 * @see #getInverseProperty()
+	 * @generated
+	 */
+	EAttribute getInverseProperty_Name();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty#iri() <em>Iri</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Iri</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty#iri()
+	 * @generated
+	 */
+	EOperation getInverseProperty__Iri();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty#abbrevIRI() <em>Abbrev IRI</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Abbrev IRI</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty#abbrevIRI()
+	 * @generated
+	 */
+	EOperation getInverseProperty__AbbrevIRI();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty#name() <em>Name</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Name</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty#name()
+	 * @generated
+	 */
+	EOperation getInverseProperty__Name();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty#uuid() <em>Uuid</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Uuid</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty#uuid()
+	 * @generated
+	 */
+	EOperation getInverseProperty__Uuid();
+
+	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship <em>Reified Relationship</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10396,26 +11929,26 @@ public interface TerminologiesPackage extends EPackage {
 	EClass getReifiedRelationship();
 
 	/**
-	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship#getUnreifiedPropertyName <em>Unreified Property Name</em>}'.
+	 * Returns the meta object for the containment reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship#getForwardProperty <em>Forward Property</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Unreified Property Name</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship#getUnreifiedPropertyName()
+	 * @return the meta object for the containment reference '<em>Forward Property</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship#getForwardProperty()
 	 * @see #getReifiedRelationship()
 	 * @generated
 	 */
-	EAttribute getReifiedRelationship_UnreifiedPropertyName();
+	EReference getReifiedRelationship_ForwardProperty();
 
 	/**
-	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship#getUnreifiedInversePropertyName <em>Unreified Inverse Property Name</em>}'.
+	 * Returns the meta object for the containment reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship#getInverseProperty <em>Inverse Property</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Unreified Inverse Property Name</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship#getUnreifiedInversePropertyName()
+	 * @return the meta object for the containment reference '<em>Inverse Property</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship#getInverseProperty()
 	 * @see #getReifiedRelationship()
 	 * @generated
 	 */
-	EAttribute getReifiedRelationship_UnreifiedInversePropertyName();
+	EReference getReifiedRelationship_InverseProperty();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship <em>Unreified Relationship</em>}'.
@@ -11143,15 +12676,15 @@ public interface TerminologiesPackage extends EPackage {
 	EClass getReifiedRelationshipPropertyPredicate();
 
 	/**
-	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPropertyPredicate#getReifiedRelationship <em>Reified Relationship</em>}'.
+	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPropertyPredicate#getForwardProperty <em>Forward Property</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Reified Relationship</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPropertyPredicate#getReifiedRelationship()
+	 * @return the meta object for the reference '<em>Forward Property</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPropertyPredicate#getForwardProperty()
 	 * @see #getReifiedRelationshipPropertyPredicate()
 	 * @generated
 	 */
-	EReference getReifiedRelationshipPropertyPredicate_ReifiedRelationship();
+	EReference getReifiedRelationshipPropertyPredicate_ForwardProperty();
 
 	/**
 	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPropertyPredicate#termPredicate() <em>Term Predicate</em>}' operation.
@@ -11184,15 +12717,15 @@ public interface TerminologiesPackage extends EPackage {
 	EClass getReifiedRelationshipInversePropertyPredicate();
 
 	/**
-	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipInversePropertyPredicate#getReifiedRelationship <em>Reified Relationship</em>}'.
+	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipInversePropertyPredicate#getInverseProperty <em>Inverse Property</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Reified Relationship</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipInversePropertyPredicate#getReifiedRelationship()
+	 * @return the meta object for the reference '<em>Inverse Property</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipInversePropertyPredicate#getInverseProperty()
 	 * @see #getReifiedRelationshipInversePropertyPredicate()
 	 * @generated
 	 */
-	EReference getReifiedRelationshipInversePropertyPredicate_ReifiedRelationship();
+	EReference getReifiedRelationshipInversePropertyPredicate_InverseProperty();
 
 	/**
 	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipInversePropertyPredicate#termPredicate() <em>Term Predicate</em>}' operation.
@@ -11481,17 +13014,6 @@ public interface TerminologiesPackage extends EPackage {
 	EClass getEntityRestrictionAxiom();
 
 	/**
-	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityRestrictionAxiom#getRestrictedRelation <em>Restricted Relation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Restricted Relation</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.EntityRestrictionAxiom#getRestrictedRelation()
-	 * @see #getEntityRestrictionAxiom()
-	 * @generated
-	 */
-	EReference getEntityRestrictionAxiom_RestrictedRelation();
-
-	/**
 	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityRestrictionAxiom#getRestrictedRange <em>Restricted Range</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11514,6 +13036,16 @@ public interface TerminologiesPackage extends EPackage {
 	EReference getEntityRestrictionAxiom_RestrictedDomain();
 
 	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityRestrictionAxiom#restrictedRelation() <em>Restricted Relation</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Restricted Relation</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.EntityRestrictionAxiom#restrictedRelation()
+	 * @generated
+	 */
+	EOperation getEntityRestrictionAxiom__RestrictedRelation();
+
+	/**
 	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityRestrictionAxiom#allNestedElements() <em>All Nested Elements</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11522,6 +13054,109 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getEntityRestrictionAxiom__AllNestedElements();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityReifiedRestrictionAxiom <em>Entity Reified Restriction Axiom</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Entity Reified Restriction Axiom</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.EntityReifiedRestrictionAxiom
+	 * @generated
+	 */
+	EClass getEntityReifiedRestrictionAxiom();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityForwardReifiedRestrictionAxiom <em>Entity Forward Reified Restriction Axiom</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Entity Forward Reified Restriction Axiom</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.EntityForwardReifiedRestrictionAxiom
+	 * @generated
+	 */
+	EClass getEntityForwardReifiedRestrictionAxiom();
+
+	/**
+	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityForwardReifiedRestrictionAxiom#getForwardProperty <em>Forward Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Forward Property</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.EntityForwardReifiedRestrictionAxiom#getForwardProperty()
+	 * @see #getEntityForwardReifiedRestrictionAxiom()
+	 * @generated
+	 */
+	EReference getEntityForwardReifiedRestrictionAxiom_ForwardProperty();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityForwardReifiedRestrictionAxiom#restrictedRelation() <em>Restricted Relation</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Restricted Relation</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.EntityForwardReifiedRestrictionAxiom#restrictedRelation()
+	 * @generated
+	 */
+	EOperation getEntityForwardReifiedRestrictionAxiom__RestrictedRelation();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityInverseReifiedRestrictionAxiom <em>Entity Inverse Reified Restriction Axiom</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Entity Inverse Reified Restriction Axiom</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.EntityInverseReifiedRestrictionAxiom
+	 * @generated
+	 */
+	EClass getEntityInverseReifiedRestrictionAxiom();
+
+	/**
+	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityInverseReifiedRestrictionAxiom#getInverseProperty <em>Inverse Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Inverse Property</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.EntityInverseReifiedRestrictionAxiom#getInverseProperty()
+	 * @see #getEntityInverseReifiedRestrictionAxiom()
+	 * @generated
+	 */
+	EReference getEntityInverseReifiedRestrictionAxiom_InverseProperty();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityInverseReifiedRestrictionAxiom#restrictedRelation() <em>Restricted Relation</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Restricted Relation</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.EntityInverseReifiedRestrictionAxiom#restrictedRelation()
+	 * @generated
+	 */
+	EOperation getEntityInverseReifiedRestrictionAxiom__RestrictedRelation();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityUnreifiedRestrictionAxiom <em>Entity Unreified Restriction Axiom</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Entity Unreified Restriction Axiom</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.EntityUnreifiedRestrictionAxiom
+	 * @generated
+	 */
+	EClass getEntityUnreifiedRestrictionAxiom();
+
+	/**
+	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityUnreifiedRestrictionAxiom#getRestrictedUnreifiedRelationship <em>Restricted Unreified Relationship</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Restricted Unreified Relationship</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.EntityUnreifiedRestrictionAxiom#getRestrictedUnreifiedRelationship()
+	 * @see #getEntityUnreifiedRestrictionAxiom()
+	 * @generated
+	 */
+	EReference getEntityUnreifiedRestrictionAxiom_RestrictedUnreifiedRelationship();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityUnreifiedRestrictionAxiom#restrictedRelation() <em>Restricted Relation</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Restricted Relation</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.EntityUnreifiedRestrictionAxiom#restrictedRelation()
+	 * @generated
+	 */
+	EOperation getEntityUnreifiedRestrictionAxiom__RestrictedRelation();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialRestrictionAxiom <em>Entity Existential Restriction Axiom</em>}'.
@@ -11534,14 +13169,64 @@ public interface TerminologiesPackage extends EPackage {
 	EClass getEntityExistentialRestrictionAxiom();
 
 	/**
-	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialRestrictionAxiom#uuid() <em>Uuid</em>}' operation.
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialForwardReifiedRestrictionAxiom <em>Entity Existential Forward Reified Restriction Axiom</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Entity Existential Forward Reified Restriction Axiom</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialForwardReifiedRestrictionAxiom
+	 * @generated
+	 */
+	EClass getEntityExistentialForwardReifiedRestrictionAxiom();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialForwardReifiedRestrictionAxiom#uuid() <em>Uuid</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Uuid</em>' operation.
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialRestrictionAxiom#uuid()
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialForwardReifiedRestrictionAxiom#uuid()
 	 * @generated
 	 */
-	EOperation getEntityExistentialRestrictionAxiom__Uuid();
+	EOperation getEntityExistentialForwardReifiedRestrictionAxiom__Uuid();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialInverseReifiedRestrictionAxiom <em>Entity Existential Inverse Reified Restriction Axiom</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Entity Existential Inverse Reified Restriction Axiom</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialInverseReifiedRestrictionAxiom
+	 * @generated
+	 */
+	EClass getEntityExistentialInverseReifiedRestrictionAxiom();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialInverseReifiedRestrictionAxiom#uuid() <em>Uuid</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Uuid</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialInverseReifiedRestrictionAxiom#uuid()
+	 * @generated
+	 */
+	EOperation getEntityExistentialInverseReifiedRestrictionAxiom__Uuid();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialUnreifiedRestrictionAxiom <em>Entity Existential Unreified Restriction Axiom</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Entity Existential Unreified Restriction Axiom</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialUnreifiedRestrictionAxiom
+	 * @generated
+	 */
+	EClass getEntityExistentialUnreifiedRestrictionAxiom();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialUnreifiedRestrictionAxiom#uuid() <em>Uuid</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Uuid</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialUnreifiedRestrictionAxiom#uuid()
+	 * @generated
+	 */
+	EOperation getEntityExistentialUnreifiedRestrictionAxiom__Uuid();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalRestrictionAxiom <em>Entity Universal Restriction Axiom</em>}'.
@@ -11554,14 +13239,64 @@ public interface TerminologiesPackage extends EPackage {
 	EClass getEntityUniversalRestrictionAxiom();
 
 	/**
-	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalRestrictionAxiom#uuid() <em>Uuid</em>}' operation.
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalForwardReifiedRestrictionAxiom <em>Entity Universal Forward Reified Restriction Axiom</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Entity Universal Forward Reified Restriction Axiom</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalForwardReifiedRestrictionAxiom
+	 * @generated
+	 */
+	EClass getEntityUniversalForwardReifiedRestrictionAxiom();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalForwardReifiedRestrictionAxiom#uuid() <em>Uuid</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Uuid</em>' operation.
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalRestrictionAxiom#uuid()
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalForwardReifiedRestrictionAxiom#uuid()
 	 * @generated
 	 */
-	EOperation getEntityUniversalRestrictionAxiom__Uuid();
+	EOperation getEntityUniversalForwardReifiedRestrictionAxiom__Uuid();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalInverseReifiedRestrictionAxiom <em>Entity Universal Inverse Reified Restriction Axiom</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Entity Universal Inverse Reified Restriction Axiom</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalInverseReifiedRestrictionAxiom
+	 * @generated
+	 */
+	EClass getEntityUniversalInverseReifiedRestrictionAxiom();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalInverseReifiedRestrictionAxiom#uuid() <em>Uuid</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Uuid</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalInverseReifiedRestrictionAxiom#uuid()
+	 * @generated
+	 */
+	EOperation getEntityUniversalInverseReifiedRestrictionAxiom__Uuid();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalUnreifiedRestrictionAxiom <em>Entity Universal Unreified Restriction Axiom</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Entity Universal Unreified Restriction Axiom</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalUnreifiedRestrictionAxiom
+	 * @generated
+	 */
+	EClass getEntityUniversalUnreifiedRestrictionAxiom();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalUnreifiedRestrictionAxiom#uuid() <em>Uuid</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Uuid</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalUnreifiedRestrictionAxiom#uuid()
+	 * @generated
+	 */
+	EOperation getEntityUniversalUnreifiedRestrictionAxiom__Uuid();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.SpecializationAxiom <em>Specialization Axiom</em>}'.
@@ -13188,6 +14923,122 @@ public interface TerminologiesPackage extends EPackage {
 		EOperation ENTITY_RELATIONSHIP___RELATION_RANGE = eINSTANCE.getEntityRelationship__RelationRange();
 
 		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ForwardPropertyImpl <em>Forward Property</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.ForwardPropertyImpl
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getForwardProperty()
+		 * @generated
+		 */
+		EClass FORWARD_PROPERTY = eINSTANCE.getForwardProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Reified Relationship</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FORWARD_PROPERTY__REIFIED_RELATIONSHIP = eINSTANCE.getForwardProperty_ReifiedRelationship();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FORWARD_PROPERTY__NAME = eINSTANCE.getForwardProperty_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Iri</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation FORWARD_PROPERTY___IRI = eINSTANCE.getForwardProperty__Iri();
+
+		/**
+		 * The meta object literal for the '<em><b>Abbrev IRI</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation FORWARD_PROPERTY___ABBREV_IRI = eINSTANCE.getForwardProperty__AbbrevIRI();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation FORWARD_PROPERTY___NAME = eINSTANCE.getForwardProperty__Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Uuid</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation FORWARD_PROPERTY___UUID = eINSTANCE.getForwardProperty__Uuid();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.InversePropertyImpl <em>Inverse Property</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.InversePropertyImpl
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getInverseProperty()
+		 * @generated
+		 */
+		EClass INVERSE_PROPERTY = eINSTANCE.getInverseProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Reified Relationship</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INVERSE_PROPERTY__REIFIED_RELATIONSHIP = eINSTANCE.getInverseProperty_ReifiedRelationship();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INVERSE_PROPERTY__NAME = eINSTANCE.getInverseProperty_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Iri</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INVERSE_PROPERTY___IRI = eINSTANCE.getInverseProperty__Iri();
+
+		/**
+		 * The meta object literal for the '<em><b>Abbrev IRI</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INVERSE_PROPERTY___ABBREV_IRI = eINSTANCE.getInverseProperty__AbbrevIRI();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INVERSE_PROPERTY___NAME = eINSTANCE.getInverseProperty__Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Uuid</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INVERSE_PROPERTY___UUID = eINSTANCE.getInverseProperty__Uuid();
+
+		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipImpl <em>Reified Relationship</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -13198,20 +15049,20 @@ public interface TerminologiesPackage extends EPackage {
 		EClass REIFIED_RELATIONSHIP = eINSTANCE.getReifiedRelationship();
 
 		/**
-		 * The meta object literal for the '<em><b>Unreified Property Name</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Forward Property</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute REIFIED_RELATIONSHIP__UNREIFIED_PROPERTY_NAME = eINSTANCE.getReifiedRelationship_UnreifiedPropertyName();
+		EReference REIFIED_RELATIONSHIP__FORWARD_PROPERTY = eINSTANCE.getReifiedRelationship_ForwardProperty();
 
 		/**
-		 * The meta object literal for the '<em><b>Unreified Inverse Property Name</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Inverse Property</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute REIFIED_RELATIONSHIP__UNREIFIED_INVERSE_PROPERTY_NAME = eINSTANCE.getReifiedRelationship_UnreifiedInversePropertyName();
+		EReference REIFIED_RELATIONSHIP__INVERSE_PROPERTY = eINSTANCE.getReifiedRelationship_InverseProperty();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.UnreifiedRelationshipImpl <em>Unreified Relationship</em>}' class.
@@ -13838,12 +15689,12 @@ public interface TerminologiesPackage extends EPackage {
 		EClass REIFIED_RELATIONSHIP_PROPERTY_PREDICATE = eINSTANCE.getReifiedRelationshipPropertyPredicate();
 
 		/**
-		 * The meta object literal for the '<em><b>Reified Relationship</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Forward Property</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference REIFIED_RELATIONSHIP_PROPERTY_PREDICATE__REIFIED_RELATIONSHIP = eINSTANCE.getReifiedRelationshipPropertyPredicate_ReifiedRelationship();
+		EReference REIFIED_RELATIONSHIP_PROPERTY_PREDICATE__FORWARD_PROPERTY = eINSTANCE.getReifiedRelationshipPropertyPredicate_ForwardProperty();
 
 		/**
 		 * The meta object literal for the '<em><b>Term Predicate</b></em>' operation.
@@ -13872,12 +15723,12 @@ public interface TerminologiesPackage extends EPackage {
 		EClass REIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE = eINSTANCE.getReifiedRelationshipInversePropertyPredicate();
 
 		/**
-		 * The meta object literal for the '<em><b>Reified Relationship</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Inverse Property</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference REIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE__REIFIED_RELATIONSHIP = eINSTANCE.getReifiedRelationshipInversePropertyPredicate_ReifiedRelationship();
+		EReference REIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE__INVERSE_PROPERTY = eINSTANCE.getReifiedRelationshipInversePropertyPredicate_InverseProperty();
 
 		/**
 		 * The meta object literal for the '<em><b>Term Predicate</b></em>' operation.
@@ -14120,14 +15971,6 @@ public interface TerminologiesPackage extends EPackage {
 		EClass ENTITY_RESTRICTION_AXIOM = eINSTANCE.getEntityRestrictionAxiom();
 
 		/**
-		 * The meta object literal for the '<em><b>Restricted Relation</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ENTITY_RESTRICTION_AXIOM__RESTRICTED_RELATION = eINSTANCE.getEntityRestrictionAxiom_RestrictedRelation();
-
-		/**
 		 * The meta object literal for the '<em><b>Restricted Range</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -14144,12 +15987,108 @@ public interface TerminologiesPackage extends EPackage {
 		EReference ENTITY_RESTRICTION_AXIOM__RESTRICTED_DOMAIN = eINSTANCE.getEntityRestrictionAxiom_RestrictedDomain();
 
 		/**
+		 * The meta object literal for the '<em><b>Restricted Relation</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ENTITY_RESTRICTION_AXIOM___RESTRICTED_RELATION = eINSTANCE.getEntityRestrictionAxiom__RestrictedRelation();
+
+		/**
 		 * The meta object literal for the '<em><b>All Nested Elements</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EOperation ENTITY_RESTRICTION_AXIOM___ALL_NESTED_ELEMENTS = eINSTANCE.getEntityRestrictionAxiom__AllNestedElements();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityReifiedRestrictionAxiomImpl <em>Entity Reified Restriction Axiom</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityReifiedRestrictionAxiomImpl
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityReifiedRestrictionAxiom()
+		 * @generated
+		 */
+		EClass ENTITY_REIFIED_RESTRICTION_AXIOM = eINSTANCE.getEntityReifiedRestrictionAxiom();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityForwardReifiedRestrictionAxiomImpl <em>Entity Forward Reified Restriction Axiom</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityForwardReifiedRestrictionAxiomImpl
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityForwardReifiedRestrictionAxiom()
+		 * @generated
+		 */
+		EClass ENTITY_FORWARD_REIFIED_RESTRICTION_AXIOM = eINSTANCE.getEntityForwardReifiedRestrictionAxiom();
+
+		/**
+		 * The meta object literal for the '<em><b>Forward Property</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ENTITY_FORWARD_REIFIED_RESTRICTION_AXIOM__FORWARD_PROPERTY = eINSTANCE.getEntityForwardReifiedRestrictionAxiom_ForwardProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Restricted Relation</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ENTITY_FORWARD_REIFIED_RESTRICTION_AXIOM___RESTRICTED_RELATION = eINSTANCE.getEntityForwardReifiedRestrictionAxiom__RestrictedRelation();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityInverseReifiedRestrictionAxiomImpl <em>Entity Inverse Reified Restriction Axiom</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityInverseReifiedRestrictionAxiomImpl
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityInverseReifiedRestrictionAxiom()
+		 * @generated
+		 */
+		EClass ENTITY_INVERSE_REIFIED_RESTRICTION_AXIOM = eINSTANCE.getEntityInverseReifiedRestrictionAxiom();
+
+		/**
+		 * The meta object literal for the '<em><b>Inverse Property</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ENTITY_INVERSE_REIFIED_RESTRICTION_AXIOM__INVERSE_PROPERTY = eINSTANCE.getEntityInverseReifiedRestrictionAxiom_InverseProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Restricted Relation</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ENTITY_INVERSE_REIFIED_RESTRICTION_AXIOM___RESTRICTED_RELATION = eINSTANCE.getEntityInverseReifiedRestrictionAxiom__RestrictedRelation();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityUnreifiedRestrictionAxiomImpl <em>Entity Unreified Restriction Axiom</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityUnreifiedRestrictionAxiomImpl
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityUnreifiedRestrictionAxiom()
+		 * @generated
+		 */
+		EClass ENTITY_UNREIFIED_RESTRICTION_AXIOM = eINSTANCE.getEntityUnreifiedRestrictionAxiom();
+
+		/**
+		 * The meta object literal for the '<em><b>Restricted Unreified Relationship</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ENTITY_UNREIFIED_RESTRICTION_AXIOM__RESTRICTED_UNREIFIED_RELATIONSHIP = eINSTANCE.getEntityUnreifiedRestrictionAxiom_RestrictedUnreifiedRelationship();
+
+		/**
+		 * The meta object literal for the '<em><b>Restricted Relation</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ENTITY_UNREIFIED_RESTRICTION_AXIOM___RESTRICTED_RELATION = eINSTANCE.getEntityUnreifiedRestrictionAxiom__RestrictedRelation();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityExistentialRestrictionAxiomImpl <em>Entity Existential Restriction Axiom</em>}' class.
@@ -14162,12 +16101,58 @@ public interface TerminologiesPackage extends EPackage {
 		EClass ENTITY_EXISTENTIAL_RESTRICTION_AXIOM = eINSTANCE.getEntityExistentialRestrictionAxiom();
 
 		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityExistentialForwardReifiedRestrictionAxiomImpl <em>Entity Existential Forward Reified Restriction Axiom</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityExistentialForwardReifiedRestrictionAxiomImpl
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityExistentialForwardReifiedRestrictionAxiom()
+		 * @generated
+		 */
+		EClass ENTITY_EXISTENTIAL_FORWARD_REIFIED_RESTRICTION_AXIOM = eINSTANCE.getEntityExistentialForwardReifiedRestrictionAxiom();
+
+		/**
 		 * The meta object literal for the '<em><b>Uuid</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation ENTITY_EXISTENTIAL_RESTRICTION_AXIOM___UUID = eINSTANCE.getEntityExistentialRestrictionAxiom__Uuid();
+		EOperation ENTITY_EXISTENTIAL_FORWARD_REIFIED_RESTRICTION_AXIOM___UUID = eINSTANCE.getEntityExistentialForwardReifiedRestrictionAxiom__Uuid();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityExistentialInverseReifiedRestrictionAxiomImpl <em>Entity Existential Inverse Reified Restriction Axiom</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityExistentialInverseReifiedRestrictionAxiomImpl
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityExistentialInverseReifiedRestrictionAxiom()
+		 * @generated
+		 */
+		EClass ENTITY_EXISTENTIAL_INVERSE_REIFIED_RESTRICTION_AXIOM = eINSTANCE.getEntityExistentialInverseReifiedRestrictionAxiom();
+
+		/**
+		 * The meta object literal for the '<em><b>Uuid</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ENTITY_EXISTENTIAL_INVERSE_REIFIED_RESTRICTION_AXIOM___UUID = eINSTANCE.getEntityExistentialInverseReifiedRestrictionAxiom__Uuid();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityExistentialUnreifiedRestrictionAxiomImpl <em>Entity Existential Unreified Restriction Axiom</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityExistentialUnreifiedRestrictionAxiomImpl
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityExistentialUnreifiedRestrictionAxiom()
+		 * @generated
+		 */
+		EClass ENTITY_EXISTENTIAL_UNREIFIED_RESTRICTION_AXIOM = eINSTANCE.getEntityExistentialUnreifiedRestrictionAxiom();
+
+		/**
+		 * The meta object literal for the '<em><b>Uuid</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ENTITY_EXISTENTIAL_UNREIFIED_RESTRICTION_AXIOM___UUID = eINSTANCE.getEntityExistentialUnreifiedRestrictionAxiom__Uuid();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityUniversalRestrictionAxiomImpl <em>Entity Universal Restriction Axiom</em>}' class.
@@ -14180,12 +16165,58 @@ public interface TerminologiesPackage extends EPackage {
 		EClass ENTITY_UNIVERSAL_RESTRICTION_AXIOM = eINSTANCE.getEntityUniversalRestrictionAxiom();
 
 		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityUniversalForwardReifiedRestrictionAxiomImpl <em>Entity Universal Forward Reified Restriction Axiom</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityUniversalForwardReifiedRestrictionAxiomImpl
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityUniversalForwardReifiedRestrictionAxiom()
+		 * @generated
+		 */
+		EClass ENTITY_UNIVERSAL_FORWARD_REIFIED_RESTRICTION_AXIOM = eINSTANCE.getEntityUniversalForwardReifiedRestrictionAxiom();
+
+		/**
 		 * The meta object literal for the '<em><b>Uuid</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation ENTITY_UNIVERSAL_RESTRICTION_AXIOM___UUID = eINSTANCE.getEntityUniversalRestrictionAxiom__Uuid();
+		EOperation ENTITY_UNIVERSAL_FORWARD_REIFIED_RESTRICTION_AXIOM___UUID = eINSTANCE.getEntityUniversalForwardReifiedRestrictionAxiom__Uuid();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityUniversalInverseReifiedRestrictionAxiomImpl <em>Entity Universal Inverse Reified Restriction Axiom</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityUniversalInverseReifiedRestrictionAxiomImpl
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityUniversalInverseReifiedRestrictionAxiom()
+		 * @generated
+		 */
+		EClass ENTITY_UNIVERSAL_INVERSE_REIFIED_RESTRICTION_AXIOM = eINSTANCE.getEntityUniversalInverseReifiedRestrictionAxiom();
+
+		/**
+		 * The meta object literal for the '<em><b>Uuid</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ENTITY_UNIVERSAL_INVERSE_REIFIED_RESTRICTION_AXIOM___UUID = eINSTANCE.getEntityUniversalInverseReifiedRestrictionAxiom__Uuid();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityUniversalUnreifiedRestrictionAxiomImpl <em>Entity Universal Unreified Restriction Axiom</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityUniversalUnreifiedRestrictionAxiomImpl
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityUniversalUnreifiedRestrictionAxiom()
+		 * @generated
+		 */
+		EClass ENTITY_UNIVERSAL_UNREIFIED_RESTRICTION_AXIOM = eINSTANCE.getEntityUniversalUnreifiedRestrictionAxiom();
+
+		/**
+		 * The meta object literal for the '<em><b>Uuid</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ENTITY_UNIVERSAL_UNREIFIED_RESTRICTION_AXIOM___UUID = eINSTANCE.getEntityUniversalUnreifiedRestrictionAxiom__Uuid();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.SpecializationAxiomImpl <em>Specialization Axiom</em>}' class.

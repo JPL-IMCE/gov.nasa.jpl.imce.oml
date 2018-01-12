@@ -59,25 +59,25 @@ public class ReifiedRelationshipInversePropertyPredicateItemProvider extends Bin
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addReifiedRelationshipPropertyDescriptor(object);
+			addInversePropertyPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Reified Relationship feature.
+	 * This adds a property descriptor for the Inverse Property feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addReifiedRelationshipPropertyDescriptor(Object object) {
+	protected void addInversePropertyPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ReifiedRelationshipInversePropertyPredicate_reifiedRelationship_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ReifiedRelationshipInversePropertyPredicate_reifiedRelationship_feature", "_UI_ReifiedRelationshipInversePropertyPredicate_type"),
-				 TerminologiesPackage.Literals.REIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE__REIFIED_RELATIONSHIP,
+				 getString("_UI_ReifiedRelationshipInversePropertyPredicate_inverseProperty_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ReifiedRelationshipInversePropertyPredicate_inverseProperty_feature", "_UI_ReifiedRelationshipInversePropertyPredicate_type"),
+				 TerminologiesPackage.Literals.REIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE__INVERSE_PROPERTY,
 				 true,
 				 false,
 				 true,

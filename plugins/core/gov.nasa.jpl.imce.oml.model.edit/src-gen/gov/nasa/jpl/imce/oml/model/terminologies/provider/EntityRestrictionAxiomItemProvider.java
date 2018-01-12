@@ -59,33 +59,10 @@ public class EntityRestrictionAxiomItemProvider extends TermAxiomItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addRestrictedRelationPropertyDescriptor(object);
 			addRestrictedRangePropertyDescriptor(object);
 			addRestrictedDomainPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Restricted Relation feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addRestrictedRelationPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_EntityRestrictionAxiom_restrictedRelation_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_EntityRestrictionAxiom_restrictedRelation_feature", "_UI_EntityRestrictionAxiom_type"),
-				 TerminologiesPackage.Literals.ENTITY_RESTRICTION_AXIOM__RESTRICTED_RELATION,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
 	}
 
 	/**

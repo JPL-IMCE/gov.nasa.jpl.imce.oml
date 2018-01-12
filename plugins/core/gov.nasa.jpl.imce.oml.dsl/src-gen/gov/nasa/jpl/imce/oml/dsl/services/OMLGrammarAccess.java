@@ -991,21 +991,41 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	public class EntityRestrictionAxiomElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.EntityRestrictionAxiom");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cEntityExistentialRestrictionAxiomParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cEntityUniversalRestrictionAxiomParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cEntityExistentialForwardReifiedRestrictionAxiomParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cEntityExistentialInverseReifiedRestrictionAxiomParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cEntityExistentialUnreifiedRestrictionAxiomParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cEntityUniversalForwardReifiedRestrictionAxiomParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cEntityUniversalInverseReifiedRestrictionAxiomParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
+		private final RuleCall cEntityUniversalUnreifiedRestrictionAxiomParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
 		
 		//EntityRestrictionAxiom:
-		//	EntityExistentialRestrictionAxiom | EntityUniversalRestrictionAxiom;
+		//	EntityExistentialForwardReifiedRestrictionAxiom | EntityExistentialInverseReifiedRestrictionAxiom |
+		//	EntityExistentialUnreifiedRestrictionAxiom | EntityUniversalForwardReifiedRestrictionAxiom |
+		//	EntityUniversalInverseReifiedRestrictionAxiom | EntityUniversalUnreifiedRestrictionAxiom;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//EntityExistentialRestrictionAxiom | EntityUniversalRestrictionAxiom
+		//EntityExistentialForwardReifiedRestrictionAxiom | EntityExistentialInverseReifiedRestrictionAxiom |
+		//EntityExistentialUnreifiedRestrictionAxiom | EntityUniversalForwardReifiedRestrictionAxiom |
+		//EntityUniversalInverseReifiedRestrictionAxiom | EntityUniversalUnreifiedRestrictionAxiom
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//EntityExistentialRestrictionAxiom
-		public RuleCall getEntityExistentialRestrictionAxiomParserRuleCall_0() { return cEntityExistentialRestrictionAxiomParserRuleCall_0; }
+		//EntityExistentialForwardReifiedRestrictionAxiom
+		public RuleCall getEntityExistentialForwardReifiedRestrictionAxiomParserRuleCall_0() { return cEntityExistentialForwardReifiedRestrictionAxiomParserRuleCall_0; }
 		
-		//EntityUniversalRestrictionAxiom
-		public RuleCall getEntityUniversalRestrictionAxiomParserRuleCall_1() { return cEntityUniversalRestrictionAxiomParserRuleCall_1; }
+		//EntityExistentialInverseReifiedRestrictionAxiom
+		public RuleCall getEntityExistentialInverseReifiedRestrictionAxiomParserRuleCall_1() { return cEntityExistentialInverseReifiedRestrictionAxiomParserRuleCall_1; }
+		
+		//EntityExistentialUnreifiedRestrictionAxiom
+		public RuleCall getEntityExistentialUnreifiedRestrictionAxiomParserRuleCall_2() { return cEntityExistentialUnreifiedRestrictionAxiomParserRuleCall_2; }
+		
+		//EntityUniversalForwardReifiedRestrictionAxiom
+		public RuleCall getEntityUniversalForwardReifiedRestrictionAxiomParserRuleCall_3() { return cEntityUniversalForwardReifiedRestrictionAxiomParserRuleCall_3; }
+		
+		//EntityUniversalInverseReifiedRestrictionAxiom
+		public RuleCall getEntityUniversalInverseReifiedRestrictionAxiomParserRuleCall_4() { return cEntityUniversalInverseReifiedRestrictionAxiomParserRuleCall_4; }
+		
+		//EntityUniversalUnreifiedRestrictionAxiom
+		public RuleCall getEntityUniversalUnreifiedRestrictionAxiomParserRuleCall_5() { return cEntityUniversalUnreifiedRestrictionAxiomParserRuleCall_5; }
 	}
 	public class EntityScalarDataPropertyRestrictionAxiomElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.EntityScalarDataPropertyRestrictionAxiom");
@@ -1221,13 +1241,13 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cIsTransitiveTransitiveKeyword_4_8_0 = (Keyword)cIsTransitiveAssignment_4_8.eContents().get(0);
 		private final Keyword cUnreifiedKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		private final Keyword cEqualsSignKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Assignment cUnreifiedPropertyNameAssignment_7 = (Assignment)cGroup.eContents().get(7);
-		private final RuleCall cUnreifiedPropertyNameIDTerminalRuleCall_7_0 = (RuleCall)cUnreifiedPropertyNameAssignment_7.eContents().get(0);
+		private final Assignment cForwardPropertyAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final RuleCall cForwardPropertyForwardPropertyParserRuleCall_7_0 = (RuleCall)cForwardPropertyAssignment_7.eContents().get(0);
 		private final Group cGroup_8 = (Group)cGroup.eContents().get(8);
 		private final Keyword cInverseKeyword_8_0 = (Keyword)cGroup_8.eContents().get(0);
 		private final Keyword cEqualsSignKeyword_8_1 = (Keyword)cGroup_8.eContents().get(1);
-		private final Assignment cUnreifiedInversePropertyNameAssignment_8_2 = (Assignment)cGroup_8.eContents().get(2);
-		private final RuleCall cUnreifiedInversePropertyNameIDTerminalRuleCall_8_2_0 = (RuleCall)cUnreifiedInversePropertyNameAssignment_8_2.eContents().get(0);
+		private final Assignment cInversePropertyAssignment_8_2 = (Assignment)cGroup_8.eContents().get(2);
+		private final RuleCall cInversePropertyInversePropertyParserRuleCall_8_2_0 = (RuleCall)cInversePropertyAssignment_8_2.eContents().get(0);
 		private final Keyword cSourceKeyword_9 = (Keyword)cGroup.eContents().get(9);
 		private final Keyword cEqualsSignKeyword_10 = (Keyword)cGroup.eContents().get(10);
 		private final Assignment cSourceAssignment_11 = (Assignment)cGroup.eContents().get(11);
@@ -1246,7 +1266,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//	'reifiedRelationship' name=ID '{' (isFunctional?='functional'? & isInverseFunctional?='inverseFunctional'? &
 		//	isEssential?='essential'? & isInverseEssential?='inverseEssential'? & isSymmetric?='symmetric'? &
 		//	isAsymmetric?='asymmetric'? & isReflexive?='reflexive'? & isIrreflexive?='irreflexive'? & isTransitive?='transitive'?)
-		//	'unreified' '=' unreifiedPropertyName=ID ('inverse' '=' unreifiedInversePropertyName=ID)?
+		//	'unreified' '=' forwardProperty=ForwardProperty ('inverse' '=' inverseProperty=InverseProperty)?
 		//	'source' '=' source=[Entity|Reference]
 		//	'target' '=' target=[Entity|Reference]
 		//	'}';
@@ -1255,8 +1275,8 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//annotations+=AnnotationPropertyValue* 'reifiedRelationship' name=ID '{' (isFunctional?='functional'? &
 		//isInverseFunctional?='inverseFunctional'? & isEssential?='essential'? & isInverseEssential?='inverseEssential'? &
 		//isSymmetric?='symmetric'? & isAsymmetric?='asymmetric'? & isReflexive?='reflexive'? & isIrreflexive?='irreflexive'? &
-		//isTransitive?='transitive'?) 'unreified' '=' unreifiedPropertyName=ID ('inverse' '=' unreifiedInversePropertyName=ID)?
-		//'source' '=' source=[Entity|Reference] 'target' '=' target=[Entity|Reference] '}'
+		//isTransitive?='transitive'?) 'unreified' '=' forwardProperty=ForwardProperty ('inverse' '='
+		//inverseProperty=InverseProperty)? 'source' '=' source=[Entity|Reference] 'target' '=' target=[Entity|Reference] '}'
 		public Group getGroup() { return cGroup; }
 		
 		//annotations+=AnnotationPropertyValue*
@@ -1342,13 +1362,13 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//'='
 		public Keyword getEqualsSignKeyword_6() { return cEqualsSignKeyword_6; }
 		
-		//unreifiedPropertyName=ID
-		public Assignment getUnreifiedPropertyNameAssignment_7() { return cUnreifiedPropertyNameAssignment_7; }
+		//forwardProperty=ForwardProperty
+		public Assignment getForwardPropertyAssignment_7() { return cForwardPropertyAssignment_7; }
 		
-		//ID
-		public RuleCall getUnreifiedPropertyNameIDTerminalRuleCall_7_0() { return cUnreifiedPropertyNameIDTerminalRuleCall_7_0; }
+		//ForwardProperty
+		public RuleCall getForwardPropertyForwardPropertyParserRuleCall_7_0() { return cForwardPropertyForwardPropertyParserRuleCall_7_0; }
 		
-		//('inverse' '=' unreifiedInversePropertyName=ID)?
+		//('inverse' '=' inverseProperty=InverseProperty)?
 		public Group getGroup_8() { return cGroup_8; }
 		
 		//'inverse'
@@ -1357,11 +1377,11 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//'='
 		public Keyword getEqualsSignKeyword_8_1() { return cEqualsSignKeyword_8_1; }
 		
-		//unreifiedInversePropertyName=ID
-		public Assignment getUnreifiedInversePropertyNameAssignment_8_2() { return cUnreifiedInversePropertyNameAssignment_8_2; }
+		//inverseProperty=InverseProperty
+		public Assignment getInversePropertyAssignment_8_2() { return cInversePropertyAssignment_8_2; }
 		
-		//ID
-		public RuleCall getUnreifiedInversePropertyNameIDTerminalRuleCall_8_2_0() { return cUnreifiedInversePropertyNameIDTerminalRuleCall_8_2_0; }
+		//InverseProperty
+		public RuleCall getInversePropertyInversePropertyParserRuleCall_8_2_0() { return cInversePropertyInversePropertyParserRuleCall_8_2_0; }
 		
 		//'source'
 		public Keyword getSourceKeyword_9() { return cSourceKeyword_9; }
@@ -1395,6 +1415,36 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_15() { return cRightCurlyBracketKeyword_15; }
+	}
+	public class ForwardPropertyElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.ForwardProperty");
+		private final Assignment cNameAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_0 = (RuleCall)cNameAssignment.eContents().get(0);
+		
+		//ForwardProperty:
+		//	name=ID;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//name=ID
+		public Assignment getNameAssignment() { return cNameAssignment; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_0() { return cNameIDTerminalRuleCall_0; }
+	}
+	public class InversePropertyElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.InverseProperty");
+		private final Assignment cNameAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_0 = (RuleCall)cNameAssignment.eContents().get(0);
+		
+		//InverseProperty:
+		//	name=ID;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//name=ID
+		public Assignment getNameAssignment() { return cNameAssignment; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_0() { return cNameIDTerminalRuleCall_0; }
 	}
 	public class UnreifiedRelationshipElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.UnreifiedRelationship");
@@ -2077,9 +2127,9 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cPropertyKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_3_1 = (Keyword)cGroup_3.eContents().get(1);
 		private final Action cReifiedRelationshipPropertyPredicateAction_3_2 = (Action)cGroup_3.eContents().get(2);
-		private final Assignment cReifiedRelationshipAssignment_3_3 = (Assignment)cGroup_3.eContents().get(3);
-		private final CrossReference cReifiedRelationshipReifiedRelationshipCrossReference_3_3_0 = (CrossReference)cReifiedRelationshipAssignment_3_3.eContents().get(0);
-		private final RuleCall cReifiedRelationshipReifiedRelationshipReferenceParserRuleCall_3_3_0_1 = (RuleCall)cReifiedRelationshipReifiedRelationshipCrossReference_3_3_0.eContents().get(1);
+		private final Assignment cForwardPropertyAssignment_3_3 = (Assignment)cGroup_3.eContents().get(3);
+		private final CrossReference cForwardPropertyForwardPropertyCrossReference_3_3_0 = (CrossReference)cForwardPropertyAssignment_3_3.eContents().get(0);
+		private final RuleCall cForwardPropertyForwardPropertyReferenceParserRuleCall_3_3_0_1 = (RuleCall)cForwardPropertyForwardPropertyCrossReference_3_3_0.eContents().get(1);
 		private final Keyword cRightParenthesisKeyword_3_4 = (Keyword)cGroup_3.eContents().get(4);
 		private final Group cGroup_4 = (Group)cAlternatives.eContents().get(4);
 		private final Keyword cInvKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
@@ -2087,9 +2137,9 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cPropertyKeyword_4_2 = (Keyword)cGroup_4.eContents().get(2);
 		private final Keyword cLeftParenthesisKeyword_4_3 = (Keyword)cGroup_4.eContents().get(3);
 		private final Action cReifiedRelationshipInversePropertyPredicateAction_4_4 = (Action)cGroup_4.eContents().get(4);
-		private final Assignment cReifiedRelationshipAssignment_4_5 = (Assignment)cGroup_4.eContents().get(5);
-		private final CrossReference cReifiedRelationshipReifiedRelationshipCrossReference_4_5_0 = (CrossReference)cReifiedRelationshipAssignment_4_5.eContents().get(0);
-		private final RuleCall cReifiedRelationshipReifiedRelationshipReferenceParserRuleCall_4_5_0_1 = (RuleCall)cReifiedRelationshipReifiedRelationshipCrossReference_4_5_0.eContents().get(1);
+		private final Assignment cInversePropertyAssignment_4_5 = (Assignment)cGroup_4.eContents().get(5);
+		private final CrossReference cInversePropertyInversePropertyCrossReference_4_5_0 = (CrossReference)cInversePropertyAssignment_4_5.eContents().get(0);
+		private final RuleCall cInversePropertyInversePropertyReferenceParserRuleCall_4_5_0_1 = (RuleCall)cInversePropertyInversePropertyCrossReference_4_5_0.eContents().get(1);
 		private final Keyword cRightParenthesisKeyword_4_6 = (Keyword)cGroup_4.eContents().get(6);
 		private final Keyword cRightParenthesisKeyword_4_7 = (Keyword)cGroup_4.eContents().get(7);
 		private final Group cGroup_5 = (Group)cAlternatives.eContents().get(5);
@@ -2148,9 +2198,9 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//	'aspect' '(' {AspectPredicate} aspect=[Aspect|Reference] ')' |
 		//	'concept' '(' {ConceptPredicate} concept=[Concept|Reference] ')' |
 		//	'reifiedRelationship' '(' {ReifiedRelationshipPredicate} reifiedRelationship=[ReifiedRelationship|Reference] ')' |
-		//	'property' '(' {ReifiedRelationshipPropertyPredicate} reifiedRelationship=[ReifiedRelationship|Reference] ')' |
-		//	'inv' '(' 'property' '(' {ReifiedRelationshipInversePropertyPredicate}
-		//	reifiedRelationship=[ReifiedRelationship|Reference] ')' ')' |
+		//	'property' '(' {ReifiedRelationshipPropertyPredicate} forwardProperty=[ForwardProperty|Reference] ')' |
+		//	'inv' '(' 'property' '(' {ReifiedRelationshipInversePropertyPredicate} inverseProperty=[InverseProperty|Reference] ')'
+		//	')' |
 		//	'source' '(' {ReifiedRelationshipSourcePropertyPredicate} reifiedRelationship=[ReifiedRelationship|Reference] ')' |
 		//	'inv' '(' 'source' '(' {ReifiedRelationshipSourceInversePropertyPredicate}
 		//	reifiedRelationship=[ReifiedRelationship|Reference] ')' ')' |
@@ -2164,9 +2214,9 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//'aspect' '(' {AspectPredicate} aspect=[Aspect|Reference] ')' | 'concept' '(' {ConceptPredicate}
 		//concept=[Concept|Reference] ')' | 'reifiedRelationship' '(' {ReifiedRelationshipPredicate}
 		//reifiedRelationship=[ReifiedRelationship|Reference] ')' | 'property' '(' {ReifiedRelationshipPropertyPredicate}
-		//reifiedRelationship=[ReifiedRelationship|Reference] ')' | 'inv' '(' 'property' '('
-		//{ReifiedRelationshipInversePropertyPredicate} reifiedRelationship=[ReifiedRelationship|Reference] ')' ')' | 'source'
-		//'(' {ReifiedRelationshipSourcePropertyPredicate} reifiedRelationship=[ReifiedRelationship|Reference] ')' | 'inv' '('
+		//forwardProperty=[ForwardProperty|Reference] ')' | 'inv' '(' 'property' '('
+		//{ReifiedRelationshipInversePropertyPredicate} inverseProperty=[InverseProperty|Reference] ')' ')' | 'source' '('
+		//{ReifiedRelationshipSourcePropertyPredicate} reifiedRelationship=[ReifiedRelationship|Reference] ')' | 'inv' '('
 		//'source' '(' {ReifiedRelationshipSourceInversePropertyPredicate} reifiedRelationship=[ReifiedRelationship|Reference]
 		//')' ')' | 'target' '(' {ReifiedRelationshipTargetPropertyPredicate} reifiedRelationship=[ReifiedRelationship|Reference]
 		//')' | 'inv' '(' 'target' '(' {ReifiedRelationshipTargetInversePropertyPredicate}
@@ -2247,7 +2297,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//')'
 		public Keyword getRightParenthesisKeyword_2_4() { return cRightParenthesisKeyword_2_4; }
 		
-		//'property' '(' {ReifiedRelationshipPropertyPredicate} reifiedRelationship=[ReifiedRelationship|Reference] ')'
+		//'property' '(' {ReifiedRelationshipPropertyPredicate} forwardProperty=[ForwardProperty|Reference] ')'
 		public Group getGroup_3() { return cGroup_3; }
 		
 		//'property'
@@ -2259,20 +2309,20 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//{ReifiedRelationshipPropertyPredicate}
 		public Action getReifiedRelationshipPropertyPredicateAction_3_2() { return cReifiedRelationshipPropertyPredicateAction_3_2; }
 		
-		//reifiedRelationship=[ReifiedRelationship|Reference]
-		public Assignment getReifiedRelationshipAssignment_3_3() { return cReifiedRelationshipAssignment_3_3; }
+		//forwardProperty=[ForwardProperty|Reference]
+		public Assignment getForwardPropertyAssignment_3_3() { return cForwardPropertyAssignment_3_3; }
 		
-		//[ReifiedRelationship|Reference]
-		public CrossReference getReifiedRelationshipReifiedRelationshipCrossReference_3_3_0() { return cReifiedRelationshipReifiedRelationshipCrossReference_3_3_0; }
+		//[ForwardProperty|Reference]
+		public CrossReference getForwardPropertyForwardPropertyCrossReference_3_3_0() { return cForwardPropertyForwardPropertyCrossReference_3_3_0; }
 		
 		//Reference
-		public RuleCall getReifiedRelationshipReifiedRelationshipReferenceParserRuleCall_3_3_0_1() { return cReifiedRelationshipReifiedRelationshipReferenceParserRuleCall_3_3_0_1; }
+		public RuleCall getForwardPropertyForwardPropertyReferenceParserRuleCall_3_3_0_1() { return cForwardPropertyForwardPropertyReferenceParserRuleCall_3_3_0_1; }
 		
 		//')'
 		public Keyword getRightParenthesisKeyword_3_4() { return cRightParenthesisKeyword_3_4; }
 		
-		//'inv' '(' 'property' '(' {ReifiedRelationshipInversePropertyPredicate}
-		//reifiedRelationship=[ReifiedRelationship|Reference] ')' ')'
+		//'inv' '(' 'property' '(' {ReifiedRelationshipInversePropertyPredicate} inverseProperty=[InverseProperty|Reference] ')'
+		//')'
 		public Group getGroup_4() { return cGroup_4; }
 		
 		//'inv'
@@ -2290,14 +2340,14 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//{ReifiedRelationshipInversePropertyPredicate}
 		public Action getReifiedRelationshipInversePropertyPredicateAction_4_4() { return cReifiedRelationshipInversePropertyPredicateAction_4_4; }
 		
-		//reifiedRelationship=[ReifiedRelationship|Reference]
-		public Assignment getReifiedRelationshipAssignment_4_5() { return cReifiedRelationshipAssignment_4_5; }
+		//inverseProperty=[InverseProperty|Reference]
+		public Assignment getInversePropertyAssignment_4_5() { return cInversePropertyAssignment_4_5; }
 		
-		//[ReifiedRelationship|Reference]
-		public CrossReference getReifiedRelationshipReifiedRelationshipCrossReference_4_5_0() { return cReifiedRelationshipReifiedRelationshipCrossReference_4_5_0; }
+		//[InverseProperty|Reference]
+		public CrossReference getInversePropertyInversePropertyCrossReference_4_5_0() { return cInversePropertyInversePropertyCrossReference_4_5_0; }
 		
 		//Reference
-		public RuleCall getReifiedRelationshipReifiedRelationshipReferenceParserRuleCall_4_5_0_1() { return cReifiedRelationshipReifiedRelationshipReferenceParserRuleCall_4_5_0_1; }
+		public RuleCall getInversePropertyInversePropertyReferenceParserRuleCall_4_5_0_1() { return cInversePropertyInversePropertyReferenceParserRuleCall_4_5_0_1; }
 		
 		//')'
 		public Keyword getRightParenthesisKeyword_4_6() { return cRightParenthesisKeyword_4_6; }
@@ -2628,8 +2678,82 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//')'
 		public Keyword getRightParenthesisKeyword_4() { return cRightParenthesisKeyword_4; }
 	}
-	public class EntityExistentialRestrictionAxiomElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.EntityExistentialRestrictionAxiom");
+	public class EntityExistentialForwardReifiedRestrictionAxiomElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.EntityExistentialForwardReifiedRestrictionAxiom");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cAnnotationsAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cAnnotationsAnnotationPropertyValueParserRuleCall_0_0 = (RuleCall)cAnnotationsAssignment_0.eContents().get(0);
+		private final Keyword cSomeEntitiesKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cRestrictedDomainAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cRestrictedDomainEntityCrossReference_2_0 = (CrossReference)cRestrictedDomainAssignment_2.eContents().get(0);
+		private final RuleCall cRestrictedDomainEntityReferenceParserRuleCall_2_0_1 = (RuleCall)cRestrictedDomainEntityCrossReference_2_0.eContents().get(1);
+		private final Keyword cHyphenMinusGreaterThanSignKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cForwardPropertyAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final CrossReference cForwardPropertyForwardPropertyCrossReference_4_0 = (CrossReference)cForwardPropertyAssignment_4.eContents().get(0);
+		private final RuleCall cForwardPropertyForwardPropertyReferenceParserRuleCall_4_0_1 = (RuleCall)cForwardPropertyForwardPropertyCrossReference_4_0.eContents().get(1);
+		private final Keyword cInKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cRestrictedRangeAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final CrossReference cRestrictedRangeEntityCrossReference_6_0 = (CrossReference)cRestrictedRangeAssignment_6.eContents().get(0);
+		private final RuleCall cRestrictedRangeEntityReferenceParserRuleCall_6_0_1 = (RuleCall)cRestrictedRangeEntityCrossReference_6_0.eContents().get(1);
+		
+		//// 6 EntityRestrictionAxioms
+		//EntityExistentialForwardReifiedRestrictionAxiom:
+		//	annotations+=AnnotationPropertyValue*
+		//	'someEntities'
+		//	restrictedDomain=[Entity|Reference]
+		//	'->'
+		//	forwardProperty=[ForwardProperty|Reference]
+		//	'in' restrictedRange=[Entity|Reference];
+		@Override public ParserRule getRule() { return rule; }
+		
+		//annotations+=AnnotationPropertyValue* 'someEntities' restrictedDomain=[Entity|Reference] '->'
+		//forwardProperty=[ForwardProperty|Reference] 'in' restrictedRange=[Entity|Reference]
+		public Group getGroup() { return cGroup; }
+		
+		//annotations+=AnnotationPropertyValue*
+		public Assignment getAnnotationsAssignment_0() { return cAnnotationsAssignment_0; }
+		
+		//AnnotationPropertyValue
+		public RuleCall getAnnotationsAnnotationPropertyValueParserRuleCall_0_0() { return cAnnotationsAnnotationPropertyValueParserRuleCall_0_0; }
+		
+		//'someEntities'
+		public Keyword getSomeEntitiesKeyword_1() { return cSomeEntitiesKeyword_1; }
+		
+		//restrictedDomain=[Entity|Reference]
+		public Assignment getRestrictedDomainAssignment_2() { return cRestrictedDomainAssignment_2; }
+		
+		//[Entity|Reference]
+		public CrossReference getRestrictedDomainEntityCrossReference_2_0() { return cRestrictedDomainEntityCrossReference_2_0; }
+		
+		//Reference
+		public RuleCall getRestrictedDomainEntityReferenceParserRuleCall_2_0_1() { return cRestrictedDomainEntityReferenceParserRuleCall_2_0_1; }
+		
+		//'->'
+		public Keyword getHyphenMinusGreaterThanSignKeyword_3() { return cHyphenMinusGreaterThanSignKeyword_3; }
+		
+		//forwardProperty=[ForwardProperty|Reference]
+		public Assignment getForwardPropertyAssignment_4() { return cForwardPropertyAssignment_4; }
+		
+		//[ForwardProperty|Reference]
+		public CrossReference getForwardPropertyForwardPropertyCrossReference_4_0() { return cForwardPropertyForwardPropertyCrossReference_4_0; }
+		
+		//Reference
+		public RuleCall getForwardPropertyForwardPropertyReferenceParserRuleCall_4_0_1() { return cForwardPropertyForwardPropertyReferenceParserRuleCall_4_0_1; }
+		
+		//'in'
+		public Keyword getInKeyword_5() { return cInKeyword_5; }
+		
+		//restrictedRange=[Entity|Reference]
+		public Assignment getRestrictedRangeAssignment_6() { return cRestrictedRangeAssignment_6; }
+		
+		//[Entity|Reference]
+		public CrossReference getRestrictedRangeEntityCrossReference_6_0() { return cRestrictedRangeEntityCrossReference_6_0; }
+		
+		//Reference
+		public RuleCall getRestrictedRangeEntityReferenceParserRuleCall_6_0_1() { return cRestrictedRangeEntityReferenceParserRuleCall_6_0_1; }
+	}
+	public class EntityExistentialInverseReifiedRestrictionAxiomElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.EntityExistentialInverseReifiedRestrictionAxiom");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cAnnotationsAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final RuleCall cAnnotationsAnnotationPropertyValueParserRuleCall_0_0 = (RuleCall)cAnnotationsAssignment_0.eContents().get(0);
@@ -2638,26 +2762,25 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final CrossReference cRestrictedDomainEntityCrossReference_2_0 = (CrossReference)cRestrictedDomainAssignment_2.eContents().get(0);
 		private final RuleCall cRestrictedDomainEntityReferenceParserRuleCall_2_0_1 = (RuleCall)cRestrictedDomainEntityCrossReference_2_0.eContents().get(1);
 		private final Keyword cFullStopKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cRestrictedRelationAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final CrossReference cRestrictedRelationEntityRelationshipCrossReference_4_0 = (CrossReference)cRestrictedRelationAssignment_4.eContents().get(0);
-		private final RuleCall cRestrictedRelationEntityRelationshipReferenceParserRuleCall_4_0_1 = (RuleCall)cRestrictedRelationEntityRelationshipCrossReference_4_0.eContents().get(1);
+		private final Assignment cInversePropertyAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final CrossReference cInversePropertyInversePropertyCrossReference_4_0 = (CrossReference)cInversePropertyAssignment_4.eContents().get(0);
+		private final RuleCall cInversePropertyInversePropertyReferenceParserRuleCall_4_0_1 = (RuleCall)cInversePropertyInversePropertyCrossReference_4_0.eContents().get(1);
 		private final Keyword cInKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		private final Assignment cRestrictedRangeAssignment_6 = (Assignment)cGroup.eContents().get(6);
 		private final CrossReference cRestrictedRangeEntityCrossReference_6_0 = (CrossReference)cRestrictedRangeAssignment_6.eContents().get(0);
 		private final RuleCall cRestrictedRangeEntityReferenceParserRuleCall_6_0_1 = (RuleCall)cRestrictedRangeEntityCrossReference_6_0.eContents().get(1);
 		
-		//// 2 EntityRestrictionAxioms
-		//EntityExistentialRestrictionAxiom:
+		//EntityExistentialInverseReifiedRestrictionAxiom:
 		//	annotations+=AnnotationPropertyValue*
 		//	'someEntities'
 		//	restrictedDomain=[Entity|Reference]
 		//	'.'
-		//	restrictedRelation=[EntityRelationship|Reference]
+		//	inverseProperty=[InverseProperty|Reference]
 		//	'in' restrictedRange=[Entity|Reference];
 		@Override public ParserRule getRule() { return rule; }
 		
 		//annotations+=AnnotationPropertyValue* 'someEntities' restrictedDomain=[Entity|Reference] '.'
-		//restrictedRelation=[EntityRelationship|Reference] 'in' restrictedRange=[Entity|Reference]
+		//inverseProperty=[InverseProperty|Reference] 'in' restrictedRange=[Entity|Reference]
 		public Group getGroup() { return cGroup; }
 		
 		//annotations+=AnnotationPropertyValue*
@@ -2681,14 +2804,14 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//'.'
 		public Keyword getFullStopKeyword_3() { return cFullStopKeyword_3; }
 		
-		//restrictedRelation=[EntityRelationship|Reference]
-		public Assignment getRestrictedRelationAssignment_4() { return cRestrictedRelationAssignment_4; }
+		//inverseProperty=[InverseProperty|Reference]
+		public Assignment getInversePropertyAssignment_4() { return cInversePropertyAssignment_4; }
 		
-		//[EntityRelationship|Reference]
-		public CrossReference getRestrictedRelationEntityRelationshipCrossReference_4_0() { return cRestrictedRelationEntityRelationshipCrossReference_4_0; }
+		//[InverseProperty|Reference]
+		public CrossReference getInversePropertyInversePropertyCrossReference_4_0() { return cInversePropertyInversePropertyCrossReference_4_0; }
 		
 		//Reference
-		public RuleCall getRestrictedRelationEntityRelationshipReferenceParserRuleCall_4_0_1() { return cRestrictedRelationEntityRelationshipReferenceParserRuleCall_4_0_1; }
+		public RuleCall getInversePropertyInversePropertyReferenceParserRuleCall_4_0_1() { return cInversePropertyInversePropertyReferenceParserRuleCall_4_0_1; }
 		
 		//'in'
 		public Keyword getInKeyword_5() { return cInKeyword_5; }
@@ -2702,8 +2825,154 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//Reference
 		public RuleCall getRestrictedRangeEntityReferenceParserRuleCall_6_0_1() { return cRestrictedRangeEntityReferenceParserRuleCall_6_0_1; }
 	}
-	public class EntityUniversalRestrictionAxiomElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.EntityUniversalRestrictionAxiom");
+	public class EntityExistentialUnreifiedRestrictionAxiomElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.EntityExistentialUnreifiedRestrictionAxiom");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cAnnotationsAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cAnnotationsAnnotationPropertyValueParserRuleCall_0_0 = (RuleCall)cAnnotationsAssignment_0.eContents().get(0);
+		private final Keyword cSomeEntitiesKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cRestrictedDomainAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cRestrictedDomainEntityCrossReference_2_0 = (CrossReference)cRestrictedDomainAssignment_2.eContents().get(0);
+		private final RuleCall cRestrictedDomainEntityReferenceParserRuleCall_2_0_1 = (RuleCall)cRestrictedDomainEntityCrossReference_2_0.eContents().get(1);
+		private final Keyword cFullStopKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cRestrictedUnreifiedRelationshipAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final CrossReference cRestrictedUnreifiedRelationshipUnreifiedRelationshipCrossReference_4_0 = (CrossReference)cRestrictedUnreifiedRelationshipAssignment_4.eContents().get(0);
+		private final RuleCall cRestrictedUnreifiedRelationshipUnreifiedRelationshipReferenceParserRuleCall_4_0_1 = (RuleCall)cRestrictedUnreifiedRelationshipUnreifiedRelationshipCrossReference_4_0.eContents().get(1);
+		private final Keyword cFromKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cRestrictedRangeAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final CrossReference cRestrictedRangeEntityCrossReference_6_0 = (CrossReference)cRestrictedRangeAssignment_6.eContents().get(0);
+		private final RuleCall cRestrictedRangeEntityReferenceParserRuleCall_6_0_1 = (RuleCall)cRestrictedRangeEntityCrossReference_6_0.eContents().get(1);
+		
+		//EntityExistentialUnreifiedRestrictionAxiom:
+		//	annotations+=AnnotationPropertyValue*
+		//	'someEntities'
+		//	restrictedDomain=[Entity|Reference]
+		//	'.'
+		//	restrictedUnreifiedRelationship=[UnreifiedRelationship|Reference]
+		//	'from' restrictedRange=[Entity|Reference];
+		@Override public ParserRule getRule() { return rule; }
+		
+		//annotations+=AnnotationPropertyValue* 'someEntities' restrictedDomain=[Entity|Reference] '.'
+		//restrictedUnreifiedRelationship=[UnreifiedRelationship|Reference] 'from' restrictedRange=[Entity|Reference]
+		public Group getGroup() { return cGroup; }
+		
+		//annotations+=AnnotationPropertyValue*
+		public Assignment getAnnotationsAssignment_0() { return cAnnotationsAssignment_0; }
+		
+		//AnnotationPropertyValue
+		public RuleCall getAnnotationsAnnotationPropertyValueParserRuleCall_0_0() { return cAnnotationsAnnotationPropertyValueParserRuleCall_0_0; }
+		
+		//'someEntities'
+		public Keyword getSomeEntitiesKeyword_1() { return cSomeEntitiesKeyword_1; }
+		
+		//restrictedDomain=[Entity|Reference]
+		public Assignment getRestrictedDomainAssignment_2() { return cRestrictedDomainAssignment_2; }
+		
+		//[Entity|Reference]
+		public CrossReference getRestrictedDomainEntityCrossReference_2_0() { return cRestrictedDomainEntityCrossReference_2_0; }
+		
+		//Reference
+		public RuleCall getRestrictedDomainEntityReferenceParserRuleCall_2_0_1() { return cRestrictedDomainEntityReferenceParserRuleCall_2_0_1; }
+		
+		//'.'
+		public Keyword getFullStopKeyword_3() { return cFullStopKeyword_3; }
+		
+		//restrictedUnreifiedRelationship=[UnreifiedRelationship|Reference]
+		public Assignment getRestrictedUnreifiedRelationshipAssignment_4() { return cRestrictedUnreifiedRelationshipAssignment_4; }
+		
+		//[UnreifiedRelationship|Reference]
+		public CrossReference getRestrictedUnreifiedRelationshipUnreifiedRelationshipCrossReference_4_0() { return cRestrictedUnreifiedRelationshipUnreifiedRelationshipCrossReference_4_0; }
+		
+		//Reference
+		public RuleCall getRestrictedUnreifiedRelationshipUnreifiedRelationshipReferenceParserRuleCall_4_0_1() { return cRestrictedUnreifiedRelationshipUnreifiedRelationshipReferenceParserRuleCall_4_0_1; }
+		
+		//'from'
+		public Keyword getFromKeyword_5() { return cFromKeyword_5; }
+		
+		//restrictedRange=[Entity|Reference]
+		public Assignment getRestrictedRangeAssignment_6() { return cRestrictedRangeAssignment_6; }
+		
+		//[Entity|Reference]
+		public CrossReference getRestrictedRangeEntityCrossReference_6_0() { return cRestrictedRangeEntityCrossReference_6_0; }
+		
+		//Reference
+		public RuleCall getRestrictedRangeEntityReferenceParserRuleCall_6_0_1() { return cRestrictedRangeEntityReferenceParserRuleCall_6_0_1; }
+	}
+	public class EntityUniversalForwardReifiedRestrictionAxiomElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.EntityUniversalForwardReifiedRestrictionAxiom");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cAnnotationsAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cAnnotationsAnnotationPropertyValueParserRuleCall_0_0 = (RuleCall)cAnnotationsAssignment_0.eContents().get(0);
+		private final Keyword cAllEntitiesKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cRestrictedDomainAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cRestrictedDomainEntityCrossReference_2_0 = (CrossReference)cRestrictedDomainAssignment_2.eContents().get(0);
+		private final RuleCall cRestrictedDomainEntityReferenceParserRuleCall_2_0_1 = (RuleCall)cRestrictedDomainEntityCrossReference_2_0.eContents().get(1);
+		private final Keyword cHyphenMinusGreaterThanSignKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cForwardPropertyAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final CrossReference cForwardPropertyForwardPropertyCrossReference_4_0 = (CrossReference)cForwardPropertyAssignment_4.eContents().get(0);
+		private final RuleCall cForwardPropertyForwardPropertyReferenceParserRuleCall_4_0_1 = (RuleCall)cForwardPropertyForwardPropertyCrossReference_4_0.eContents().get(1);
+		private final Keyword cInKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cRestrictedRangeAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final CrossReference cRestrictedRangeEntityCrossReference_6_0 = (CrossReference)cRestrictedRangeAssignment_6.eContents().get(0);
+		private final RuleCall cRestrictedRangeEntityReferenceParserRuleCall_6_0_1 = (RuleCall)cRestrictedRangeEntityCrossReference_6_0.eContents().get(1);
+		
+		//EntityUniversalForwardReifiedRestrictionAxiom:
+		//	annotations+=AnnotationPropertyValue*
+		//	'allEntities'
+		//	restrictedDomain=[Entity|Reference]
+		//	'->'
+		//	forwardProperty=[ForwardProperty|Reference]
+		//	'in' restrictedRange=[Entity|Reference];
+		@Override public ParserRule getRule() { return rule; }
+		
+		//annotations+=AnnotationPropertyValue* 'allEntities' restrictedDomain=[Entity|Reference] '->'
+		//forwardProperty=[ForwardProperty|Reference] 'in' restrictedRange=[Entity|Reference]
+		public Group getGroup() { return cGroup; }
+		
+		//annotations+=AnnotationPropertyValue*
+		public Assignment getAnnotationsAssignment_0() { return cAnnotationsAssignment_0; }
+		
+		//AnnotationPropertyValue
+		public RuleCall getAnnotationsAnnotationPropertyValueParserRuleCall_0_0() { return cAnnotationsAnnotationPropertyValueParserRuleCall_0_0; }
+		
+		//'allEntities'
+		public Keyword getAllEntitiesKeyword_1() { return cAllEntitiesKeyword_1; }
+		
+		//restrictedDomain=[Entity|Reference]
+		public Assignment getRestrictedDomainAssignment_2() { return cRestrictedDomainAssignment_2; }
+		
+		//[Entity|Reference]
+		public CrossReference getRestrictedDomainEntityCrossReference_2_0() { return cRestrictedDomainEntityCrossReference_2_0; }
+		
+		//Reference
+		public RuleCall getRestrictedDomainEntityReferenceParserRuleCall_2_0_1() { return cRestrictedDomainEntityReferenceParserRuleCall_2_0_1; }
+		
+		//'->'
+		public Keyword getHyphenMinusGreaterThanSignKeyword_3() { return cHyphenMinusGreaterThanSignKeyword_3; }
+		
+		//forwardProperty=[ForwardProperty|Reference]
+		public Assignment getForwardPropertyAssignment_4() { return cForwardPropertyAssignment_4; }
+		
+		//[ForwardProperty|Reference]
+		public CrossReference getForwardPropertyForwardPropertyCrossReference_4_0() { return cForwardPropertyForwardPropertyCrossReference_4_0; }
+		
+		//Reference
+		public RuleCall getForwardPropertyForwardPropertyReferenceParserRuleCall_4_0_1() { return cForwardPropertyForwardPropertyReferenceParserRuleCall_4_0_1; }
+		
+		//'in'
+		public Keyword getInKeyword_5() { return cInKeyword_5; }
+		
+		//restrictedRange=[Entity|Reference]
+		public Assignment getRestrictedRangeAssignment_6() { return cRestrictedRangeAssignment_6; }
+		
+		//[Entity|Reference]
+		public CrossReference getRestrictedRangeEntityCrossReference_6_0() { return cRestrictedRangeEntityCrossReference_6_0; }
+		
+		//Reference
+		public RuleCall getRestrictedRangeEntityReferenceParserRuleCall_6_0_1() { return cRestrictedRangeEntityReferenceParserRuleCall_6_0_1; }
+	}
+	public class EntityUniversalInverseReifiedRestrictionAxiomElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.EntityUniversalInverseReifiedRestrictionAxiom");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cAnnotationsAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final RuleCall cAnnotationsAnnotationPropertyValueParserRuleCall_0_0 = (RuleCall)cAnnotationsAssignment_0.eContents().get(0);
@@ -2712,25 +2981,25 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final CrossReference cRestrictedDomainEntityCrossReference_2_0 = (CrossReference)cRestrictedDomainAssignment_2.eContents().get(0);
 		private final RuleCall cRestrictedDomainEntityReferenceParserRuleCall_2_0_1 = (RuleCall)cRestrictedDomainEntityCrossReference_2_0.eContents().get(1);
 		private final Keyword cFullStopKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cRestrictedRelationAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final CrossReference cRestrictedRelationEntityRelationshipCrossReference_4_0 = (CrossReference)cRestrictedRelationAssignment_4.eContents().get(0);
-		private final RuleCall cRestrictedRelationEntityRelationshipReferenceParserRuleCall_4_0_1 = (RuleCall)cRestrictedRelationEntityRelationshipCrossReference_4_0.eContents().get(1);
+		private final Assignment cInversePropertyAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final CrossReference cInversePropertyInversePropertyCrossReference_4_0 = (CrossReference)cInversePropertyAssignment_4.eContents().get(0);
+		private final RuleCall cInversePropertyInversePropertyReferenceParserRuleCall_4_0_1 = (RuleCall)cInversePropertyInversePropertyCrossReference_4_0.eContents().get(1);
 		private final Keyword cInKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		private final Assignment cRestrictedRangeAssignment_6 = (Assignment)cGroup.eContents().get(6);
 		private final CrossReference cRestrictedRangeEntityCrossReference_6_0 = (CrossReference)cRestrictedRangeAssignment_6.eContents().get(0);
 		private final RuleCall cRestrictedRangeEntityReferenceParserRuleCall_6_0_1 = (RuleCall)cRestrictedRangeEntityCrossReference_6_0.eContents().get(1);
 		
-		//EntityUniversalRestrictionAxiom:
+		//EntityUniversalInverseReifiedRestrictionAxiom:
 		//	annotations+=AnnotationPropertyValue*
 		//	'allEntities'
 		//	restrictedDomain=[Entity|Reference]
 		//	'.'
-		//	restrictedRelation=[EntityRelationship|Reference]
+		//	inverseProperty=[InverseProperty|Reference]
 		//	'in' restrictedRange=[Entity|Reference];
 		@Override public ParserRule getRule() { return rule; }
 		
 		//annotations+=AnnotationPropertyValue* 'allEntities' restrictedDomain=[Entity|Reference] '.'
-		//restrictedRelation=[EntityRelationship|Reference] 'in' restrictedRange=[Entity|Reference]
+		//inverseProperty=[InverseProperty|Reference] 'in' restrictedRange=[Entity|Reference]
 		public Group getGroup() { return cGroup; }
 		
 		//annotations+=AnnotationPropertyValue*
@@ -2754,17 +3023,90 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//'.'
 		public Keyword getFullStopKeyword_3() { return cFullStopKeyword_3; }
 		
-		//restrictedRelation=[EntityRelationship|Reference]
-		public Assignment getRestrictedRelationAssignment_4() { return cRestrictedRelationAssignment_4; }
+		//inverseProperty=[InverseProperty|Reference]
+		public Assignment getInversePropertyAssignment_4() { return cInversePropertyAssignment_4; }
 		
-		//[EntityRelationship|Reference]
-		public CrossReference getRestrictedRelationEntityRelationshipCrossReference_4_0() { return cRestrictedRelationEntityRelationshipCrossReference_4_0; }
+		//[InverseProperty|Reference]
+		public CrossReference getInversePropertyInversePropertyCrossReference_4_0() { return cInversePropertyInversePropertyCrossReference_4_0; }
 		
 		//Reference
-		public RuleCall getRestrictedRelationEntityRelationshipReferenceParserRuleCall_4_0_1() { return cRestrictedRelationEntityRelationshipReferenceParserRuleCall_4_0_1; }
+		public RuleCall getInversePropertyInversePropertyReferenceParserRuleCall_4_0_1() { return cInversePropertyInversePropertyReferenceParserRuleCall_4_0_1; }
 		
 		//'in'
 		public Keyword getInKeyword_5() { return cInKeyword_5; }
+		
+		//restrictedRange=[Entity|Reference]
+		public Assignment getRestrictedRangeAssignment_6() { return cRestrictedRangeAssignment_6; }
+		
+		//[Entity|Reference]
+		public CrossReference getRestrictedRangeEntityCrossReference_6_0() { return cRestrictedRangeEntityCrossReference_6_0; }
+		
+		//Reference
+		public RuleCall getRestrictedRangeEntityReferenceParserRuleCall_6_0_1() { return cRestrictedRangeEntityReferenceParserRuleCall_6_0_1; }
+	}
+	public class EntityUniversalUnreifiedRestrictionAxiomElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.EntityUniversalUnreifiedRestrictionAxiom");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cAnnotationsAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cAnnotationsAnnotationPropertyValueParserRuleCall_0_0 = (RuleCall)cAnnotationsAssignment_0.eContents().get(0);
+		private final Keyword cAllEntitiesKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cRestrictedDomainAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cRestrictedDomainEntityCrossReference_2_0 = (CrossReference)cRestrictedDomainAssignment_2.eContents().get(0);
+		private final RuleCall cRestrictedDomainEntityReferenceParserRuleCall_2_0_1 = (RuleCall)cRestrictedDomainEntityCrossReference_2_0.eContents().get(1);
+		private final Keyword cFullStopKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cRestrictedUnreifiedRelationshipAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final CrossReference cRestrictedUnreifiedRelationshipUnreifiedRelationshipCrossReference_4_0 = (CrossReference)cRestrictedUnreifiedRelationshipAssignment_4.eContents().get(0);
+		private final RuleCall cRestrictedUnreifiedRelationshipUnreifiedRelationshipReferenceParserRuleCall_4_0_1 = (RuleCall)cRestrictedUnreifiedRelationshipUnreifiedRelationshipCrossReference_4_0.eContents().get(1);
+		private final Keyword cFromKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cRestrictedRangeAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final CrossReference cRestrictedRangeEntityCrossReference_6_0 = (CrossReference)cRestrictedRangeAssignment_6.eContents().get(0);
+		private final RuleCall cRestrictedRangeEntityReferenceParserRuleCall_6_0_1 = (RuleCall)cRestrictedRangeEntityCrossReference_6_0.eContents().get(1);
+		
+		//EntityUniversalUnreifiedRestrictionAxiom:
+		//	annotations+=AnnotationPropertyValue*
+		//	'allEntities'
+		//	restrictedDomain=[Entity|Reference]
+		//	'.'
+		//	restrictedUnreifiedRelationship=[UnreifiedRelationship|Reference]
+		//	'from' restrictedRange=[Entity|Reference];
+		@Override public ParserRule getRule() { return rule; }
+		
+		//annotations+=AnnotationPropertyValue* 'allEntities' restrictedDomain=[Entity|Reference] '.'
+		//restrictedUnreifiedRelationship=[UnreifiedRelationship|Reference] 'from' restrictedRange=[Entity|Reference]
+		public Group getGroup() { return cGroup; }
+		
+		//annotations+=AnnotationPropertyValue*
+		public Assignment getAnnotationsAssignment_0() { return cAnnotationsAssignment_0; }
+		
+		//AnnotationPropertyValue
+		public RuleCall getAnnotationsAnnotationPropertyValueParserRuleCall_0_0() { return cAnnotationsAnnotationPropertyValueParserRuleCall_0_0; }
+		
+		//'allEntities'
+		public Keyword getAllEntitiesKeyword_1() { return cAllEntitiesKeyword_1; }
+		
+		//restrictedDomain=[Entity|Reference]
+		public Assignment getRestrictedDomainAssignment_2() { return cRestrictedDomainAssignment_2; }
+		
+		//[Entity|Reference]
+		public CrossReference getRestrictedDomainEntityCrossReference_2_0() { return cRestrictedDomainEntityCrossReference_2_0; }
+		
+		//Reference
+		public RuleCall getRestrictedDomainEntityReferenceParserRuleCall_2_0_1() { return cRestrictedDomainEntityReferenceParserRuleCall_2_0_1; }
+		
+		//'.'
+		public Keyword getFullStopKeyword_3() { return cFullStopKeyword_3; }
+		
+		//restrictedUnreifiedRelationship=[UnreifiedRelationship|Reference]
+		public Assignment getRestrictedUnreifiedRelationshipAssignment_4() { return cRestrictedUnreifiedRelationshipAssignment_4; }
+		
+		//[UnreifiedRelationship|Reference]
+		public CrossReference getRestrictedUnreifiedRelationshipUnreifiedRelationshipCrossReference_4_0() { return cRestrictedUnreifiedRelationshipUnreifiedRelationshipCrossReference_4_0; }
+		
+		//Reference
+		public RuleCall getRestrictedUnreifiedRelationshipUnreifiedRelationshipReferenceParserRuleCall_4_0_1() { return cRestrictedUnreifiedRelationshipUnreifiedRelationshipReferenceParserRuleCall_4_0_1; }
+		
+		//'from'
+		public Keyword getFromKeyword_5() { return cFromKeyword_5; }
 		
 		//restrictedRange=[Entity|Reference]
 		public Assignment getRestrictedRangeAssignment_6() { return cRestrictedRangeAssignment_6; }
@@ -5757,6 +6099,8 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	private final AspectElements pAspect;
 	private final ConceptElements pConcept;
 	private final ReifiedRelationshipElements pReifiedRelationship;
+	private final ForwardPropertyElements pForwardProperty;
+	private final InversePropertyElements pInverseProperty;
 	private final UnreifiedRelationshipElements pUnreifiedRelationship;
 	private final ScalarElements pScalar;
 	private final StructureElements pStructure;
@@ -5771,8 +6115,12 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	private final AnonymousConceptUnionAxiomElements pAnonymousConceptUnionAxiom;
 	private final RootConceptTaxonomyAxiomElements pRootConceptTaxonomyAxiom;
 	private final SpecificDisjointConceptAxiomElements pSpecificDisjointConceptAxiom;
-	private final EntityExistentialRestrictionAxiomElements pEntityExistentialRestrictionAxiom;
-	private final EntityUniversalRestrictionAxiomElements pEntityUniversalRestrictionAxiom;
+	private final EntityExistentialForwardReifiedRestrictionAxiomElements pEntityExistentialForwardReifiedRestrictionAxiom;
+	private final EntityExistentialInverseReifiedRestrictionAxiomElements pEntityExistentialInverseReifiedRestrictionAxiom;
+	private final EntityExistentialUnreifiedRestrictionAxiomElements pEntityExistentialUnreifiedRestrictionAxiom;
+	private final EntityUniversalForwardReifiedRestrictionAxiomElements pEntityUniversalForwardReifiedRestrictionAxiom;
+	private final EntityUniversalInverseReifiedRestrictionAxiomElements pEntityUniversalInverseReifiedRestrictionAxiom;
+	private final EntityUniversalUnreifiedRestrictionAxiomElements pEntityUniversalUnreifiedRestrictionAxiom;
 	private final AspectSpecializationAxiomElements pAspectSpecializationAxiom;
 	private final ConceptSpecializationAxiomElements pConceptSpecializationAxiom;
 	private final ReifiedRelationshipSpecializationAxiomElements pReifiedRelationshipSpecializationAxiom;
@@ -5933,6 +6281,8 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		this.pAspect = new AspectElements();
 		this.pConcept = new ConceptElements();
 		this.pReifiedRelationship = new ReifiedRelationshipElements();
+		this.pForwardProperty = new ForwardPropertyElements();
+		this.pInverseProperty = new InversePropertyElements();
 		this.pUnreifiedRelationship = new UnreifiedRelationshipElements();
 		this.pScalar = new ScalarElements();
 		this.pStructure = new StructureElements();
@@ -5947,8 +6297,12 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		this.pAnonymousConceptUnionAxiom = new AnonymousConceptUnionAxiomElements();
 		this.pRootConceptTaxonomyAxiom = new RootConceptTaxonomyAxiomElements();
 		this.pSpecificDisjointConceptAxiom = new SpecificDisjointConceptAxiomElements();
-		this.pEntityExistentialRestrictionAxiom = new EntityExistentialRestrictionAxiomElements();
-		this.pEntityUniversalRestrictionAxiom = new EntityUniversalRestrictionAxiomElements();
+		this.pEntityExistentialForwardReifiedRestrictionAxiom = new EntityExistentialForwardReifiedRestrictionAxiomElements();
+		this.pEntityExistentialInverseReifiedRestrictionAxiom = new EntityExistentialInverseReifiedRestrictionAxiomElements();
+		this.pEntityExistentialUnreifiedRestrictionAxiom = new EntityExistentialUnreifiedRestrictionAxiomElements();
+		this.pEntityUniversalForwardReifiedRestrictionAxiom = new EntityUniversalForwardReifiedRestrictionAxiomElements();
+		this.pEntityUniversalInverseReifiedRestrictionAxiom = new EntityUniversalInverseReifiedRestrictionAxiomElements();
+		this.pEntityUniversalUnreifiedRestrictionAxiom = new EntityUniversalUnreifiedRestrictionAxiomElements();
 		this.pAspectSpecializationAxiom = new AspectSpecializationAxiomElements();
 		this.pConceptSpecializationAxiom = new ConceptSpecializationAxiomElements();
 		this.pReifiedRelationshipSpecializationAxiom = new ReifiedRelationshipSpecializationAxiomElements();
@@ -6354,7 +6708,9 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//EntityRestrictionAxiom:
-	//	EntityExistentialRestrictionAxiom | EntityUniversalRestrictionAxiom;
+	//	EntityExistentialForwardReifiedRestrictionAxiom | EntityExistentialInverseReifiedRestrictionAxiom |
+	//	EntityExistentialUnreifiedRestrictionAxiom | EntityUniversalForwardReifiedRestrictionAxiom |
+	//	EntityUniversalInverseReifiedRestrictionAxiom | EntityUniversalUnreifiedRestrictionAxiom;
 	public EntityRestrictionAxiomElements getEntityRestrictionAxiomAccess() {
 		return pEntityRestrictionAxiom;
 	}
@@ -6474,7 +6830,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	//	'reifiedRelationship' name=ID '{' (isFunctional?='functional'? & isInverseFunctional?='inverseFunctional'? &
 	//	isEssential?='essential'? & isInverseEssential?='inverseEssential'? & isSymmetric?='symmetric'? &
 	//	isAsymmetric?='asymmetric'? & isReflexive?='reflexive'? & isIrreflexive?='irreflexive'? & isTransitive?='transitive'?)
-	//	'unreified' '=' unreifiedPropertyName=ID ('inverse' '=' unreifiedInversePropertyName=ID)?
+	//	'unreified' '=' forwardProperty=ForwardProperty ('inverse' '=' inverseProperty=InverseProperty)?
 	//	'source' '=' source=[Entity|Reference]
 	//	'target' '=' target=[Entity|Reference]
 	//	'}';
@@ -6484,6 +6840,26 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getReifiedRelationshipRule() {
 		return getReifiedRelationshipAccess().getRule();
+	}
+	
+	//ForwardProperty:
+	//	name=ID;
+	public ForwardPropertyElements getForwardPropertyAccess() {
+		return pForwardProperty;
+	}
+	
+	public ParserRule getForwardPropertyRule() {
+		return getForwardPropertyAccess().getRule();
+	}
+	
+	//InverseProperty:
+	//	name=ID;
+	public InversePropertyElements getInversePropertyAccess() {
+		return pInverseProperty;
+	}
+	
+	public ParserRule getInversePropertyRule() {
+		return getInversePropertyAccess().getRule();
 	}
 	
 	//UnreifiedRelationship:
@@ -6617,9 +6993,9 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	//	'aspect' '(' {AspectPredicate} aspect=[Aspect|Reference] ')' |
 	//	'concept' '(' {ConceptPredicate} concept=[Concept|Reference] ')' |
 	//	'reifiedRelationship' '(' {ReifiedRelationshipPredicate} reifiedRelationship=[ReifiedRelationship|Reference] ')' |
-	//	'property' '(' {ReifiedRelationshipPropertyPredicate} reifiedRelationship=[ReifiedRelationship|Reference] ')' |
-	//	'inv' '(' 'property' '(' {ReifiedRelationshipInversePropertyPredicate}
-	//	reifiedRelationship=[ReifiedRelationship|Reference] ')' ')' |
+	//	'property' '(' {ReifiedRelationshipPropertyPredicate} forwardProperty=[ForwardProperty|Reference] ')' |
+	//	'inv' '(' 'property' '(' {ReifiedRelationshipInversePropertyPredicate} inverseProperty=[InverseProperty|Reference] ')'
+	//	')' |
 	//	'source' '(' {ReifiedRelationshipSourcePropertyPredicate} reifiedRelationship=[ReifiedRelationship|Reference] ')' |
 	//	'inv' '(' 'source' '(' {ReifiedRelationshipSourceInversePropertyPredicate}
 	//	reifiedRelationship=[ReifiedRelationship|Reference] ')' ')' |
@@ -6675,35 +7051,95 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		return getSpecificDisjointConceptAxiomAccess().getRule();
 	}
 	
-	//// 2 EntityRestrictionAxioms
-	//EntityExistentialRestrictionAxiom:
+	//// 6 EntityRestrictionAxioms
+	//EntityExistentialForwardReifiedRestrictionAxiom:
+	//	annotations+=AnnotationPropertyValue*
+	//	'someEntities'
+	//	restrictedDomain=[Entity|Reference]
+	//	'->'
+	//	forwardProperty=[ForwardProperty|Reference]
+	//	'in' restrictedRange=[Entity|Reference];
+	public EntityExistentialForwardReifiedRestrictionAxiomElements getEntityExistentialForwardReifiedRestrictionAxiomAccess() {
+		return pEntityExistentialForwardReifiedRestrictionAxiom;
+	}
+	
+	public ParserRule getEntityExistentialForwardReifiedRestrictionAxiomRule() {
+		return getEntityExistentialForwardReifiedRestrictionAxiomAccess().getRule();
+	}
+	
+	//EntityExistentialInverseReifiedRestrictionAxiom:
 	//	annotations+=AnnotationPropertyValue*
 	//	'someEntities'
 	//	restrictedDomain=[Entity|Reference]
 	//	'.'
-	//	restrictedRelation=[EntityRelationship|Reference]
+	//	inverseProperty=[InverseProperty|Reference]
 	//	'in' restrictedRange=[Entity|Reference];
-	public EntityExistentialRestrictionAxiomElements getEntityExistentialRestrictionAxiomAccess() {
-		return pEntityExistentialRestrictionAxiom;
+	public EntityExistentialInverseReifiedRestrictionAxiomElements getEntityExistentialInverseReifiedRestrictionAxiomAccess() {
+		return pEntityExistentialInverseReifiedRestrictionAxiom;
 	}
 	
-	public ParserRule getEntityExistentialRestrictionAxiomRule() {
-		return getEntityExistentialRestrictionAxiomAccess().getRule();
+	public ParserRule getEntityExistentialInverseReifiedRestrictionAxiomRule() {
+		return getEntityExistentialInverseReifiedRestrictionAxiomAccess().getRule();
 	}
 	
-	//EntityUniversalRestrictionAxiom:
+	//EntityExistentialUnreifiedRestrictionAxiom:
+	//	annotations+=AnnotationPropertyValue*
+	//	'someEntities'
+	//	restrictedDomain=[Entity|Reference]
+	//	'.'
+	//	restrictedUnreifiedRelationship=[UnreifiedRelationship|Reference]
+	//	'from' restrictedRange=[Entity|Reference];
+	public EntityExistentialUnreifiedRestrictionAxiomElements getEntityExistentialUnreifiedRestrictionAxiomAccess() {
+		return pEntityExistentialUnreifiedRestrictionAxiom;
+	}
+	
+	public ParserRule getEntityExistentialUnreifiedRestrictionAxiomRule() {
+		return getEntityExistentialUnreifiedRestrictionAxiomAccess().getRule();
+	}
+	
+	//EntityUniversalForwardReifiedRestrictionAxiom:
+	//	annotations+=AnnotationPropertyValue*
+	//	'allEntities'
+	//	restrictedDomain=[Entity|Reference]
+	//	'->'
+	//	forwardProperty=[ForwardProperty|Reference]
+	//	'in' restrictedRange=[Entity|Reference];
+	public EntityUniversalForwardReifiedRestrictionAxiomElements getEntityUniversalForwardReifiedRestrictionAxiomAccess() {
+		return pEntityUniversalForwardReifiedRestrictionAxiom;
+	}
+	
+	public ParserRule getEntityUniversalForwardReifiedRestrictionAxiomRule() {
+		return getEntityUniversalForwardReifiedRestrictionAxiomAccess().getRule();
+	}
+	
+	//EntityUniversalInverseReifiedRestrictionAxiom:
 	//	annotations+=AnnotationPropertyValue*
 	//	'allEntities'
 	//	restrictedDomain=[Entity|Reference]
 	//	'.'
-	//	restrictedRelation=[EntityRelationship|Reference]
+	//	inverseProperty=[InverseProperty|Reference]
 	//	'in' restrictedRange=[Entity|Reference];
-	public EntityUniversalRestrictionAxiomElements getEntityUniversalRestrictionAxiomAccess() {
-		return pEntityUniversalRestrictionAxiom;
+	public EntityUniversalInverseReifiedRestrictionAxiomElements getEntityUniversalInverseReifiedRestrictionAxiomAccess() {
+		return pEntityUniversalInverseReifiedRestrictionAxiom;
 	}
 	
-	public ParserRule getEntityUniversalRestrictionAxiomRule() {
-		return getEntityUniversalRestrictionAxiomAccess().getRule();
+	public ParserRule getEntityUniversalInverseReifiedRestrictionAxiomRule() {
+		return getEntityUniversalInverseReifiedRestrictionAxiomAccess().getRule();
+	}
+	
+	//EntityUniversalUnreifiedRestrictionAxiom:
+	//	annotations+=AnnotationPropertyValue*
+	//	'allEntities'
+	//	restrictedDomain=[Entity|Reference]
+	//	'.'
+	//	restrictedUnreifiedRelationship=[UnreifiedRelationship|Reference]
+	//	'from' restrictedRange=[Entity|Reference];
+	public EntityUniversalUnreifiedRestrictionAxiomElements getEntityUniversalUnreifiedRestrictionAxiomAccess() {
+		return pEntityUniversalUnreifiedRestrictionAxiom;
+	}
+	
+	public ParserRule getEntityUniversalUnreifiedRestrictionAxiomRule() {
+		return getEntityUniversalUnreifiedRestrictionAxiomAccess().getRule();
 	}
 	
 	//// 3 SpecializationAxioms

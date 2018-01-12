@@ -55,6 +55,8 @@ import gov.nasa.jpl.imce.oml.model.terminologies.AspectSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.ChainRule;
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptPredicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptSpecializationAxiom;
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityForwardReifiedRestrictionAxiom;
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityInverseReifiedRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataProperty;
@@ -63,6 +65,7 @@ import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyParticu
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyUniversalRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataPropertyParticularRestrictionAxiom;
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityUnreifiedRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipInversePropertyPredicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPredicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPropertyPredicate;
@@ -90,6 +93,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
@@ -592,8 +596,8 @@ public class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespa
       if (!_matched) {
         if (context instanceof ReifiedRelationshipPropertyPredicate) {
           _matched=true;
-          EReference _reifiedRelationshipPropertyPredicate_ReifiedRelationship = TerminologiesPackage.eINSTANCE.getReifiedRelationshipPropertyPredicate_ReifiedRelationship();
-          boolean _equals = Objects.equal(reference, _reifiedRelationshipPropertyPredicate_ReifiedRelationship);
+          EReference _reifiedRelationshipPropertyPredicate_ForwardProperty = TerminologiesPackage.eINSTANCE.getReifiedRelationshipPropertyPredicate_ForwardProperty();
+          boolean _equals = Objects.equal(reference, _reifiedRelationshipPropertyPredicate_ForwardProperty);
           if (_equals) {
             RuleBodySegment _bodySegment = ((ReifiedRelationshipPropertyPredicate)context).getBodySegment();
             ChainRule _chainRule = null;
@@ -604,19 +608,19 @@ public class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespa
             if (_chainRule!=null) {
               _tbox=_chainRule.getTbox();
             }
-            IScope _allEntityRelationshipsScope = null;
+            IScope _allForwardPropertiesScope = null;
             if (_tbox!=null) {
-              _allEntityRelationshipsScope=this._oMLScopeExtensions.allEntityRelationshipsScope(_tbox);
+              _allForwardPropertiesScope=this._oMLScopeExtensions.allForwardPropertiesScope(_tbox);
             }
-            scope = _allEntityRelationshipsScope;
+            scope = _allForwardPropertiesScope;
           }
         }
       }
       if (!_matched) {
         if (context instanceof ReifiedRelationshipInversePropertyPredicate) {
           _matched=true;
-          EReference _reifiedRelationshipInversePropertyPredicate_ReifiedRelationship = TerminologiesPackage.eINSTANCE.getReifiedRelationshipInversePropertyPredicate_ReifiedRelationship();
-          boolean _equals = Objects.equal(reference, _reifiedRelationshipInversePropertyPredicate_ReifiedRelationship);
+          EReference _reifiedRelationshipInversePropertyPredicate_InverseProperty = TerminologiesPackage.eINSTANCE.getReifiedRelationshipInversePropertyPredicate_InverseProperty();
+          boolean _equals = Objects.equal(reference, _reifiedRelationshipInversePropertyPredicate_InverseProperty);
           if (_equals) {
             RuleBodySegment _bodySegment = ((ReifiedRelationshipInversePropertyPredicate)context).getBodySegment();
             ChainRule _chainRule = null;
@@ -627,11 +631,11 @@ public class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespa
             if (_chainRule!=null) {
               _tbox=_chainRule.getTbox();
             }
-            IScope _allEntityRelationshipsScope = null;
+            IScope _allInversePropertiesScope = null;
             if (_tbox!=null) {
-              _allEntityRelationshipsScope=this._oMLScopeExtensions.allEntityRelationshipsScope(_tbox);
+              _allInversePropertiesScope=this._oMLScopeExtensions.allInversePropertiesScope(_tbox);
             }
-            scope = _allEntityRelationshipsScope;
+            scope = _allInversePropertiesScope;
           }
         }
       }
@@ -774,23 +778,47 @@ public class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespa
         }
       }
       if (!_matched) {
+        if (context instanceof EntityForwardReifiedRestrictionAxiom) {
+          _matched=true;
+          EReference _entityForwardReifiedRestrictionAxiom_ForwardProperty = TerminologiesPackage.eINSTANCE.getEntityForwardReifiedRestrictionAxiom_ForwardProperty();
+          boolean _equals = Objects.equal(reference, _entityForwardReifiedRestrictionAxiom_ForwardProperty);
+          if (_equals) {
+            scope = this._oMLScopeExtensions.allForwardPropertiesScope(((EntityForwardReifiedRestrictionAxiom)context).getTbox());
+          }
+        }
+      }
+      if (!_matched) {
+        if (context instanceof EntityInverseReifiedRestrictionAxiom) {
+          _matched=true;
+          EReference _entityInverseReifiedRestrictionAxiom_InverseProperty = TerminologiesPackage.eINSTANCE.getEntityInverseReifiedRestrictionAxiom_InverseProperty();
+          boolean _equals = Objects.equal(reference, _entityInverseReifiedRestrictionAxiom_InverseProperty);
+          if (_equals) {
+            scope = this._oMLScopeExtensions.allInversePropertiesScope(((EntityInverseReifiedRestrictionAxiom)context).getTbox());
+          }
+        }
+      }
+      if (!_matched) {
+        if (context instanceof EntityUnreifiedRestrictionAxiom) {
+          _matched=true;
+          EOperation _entityUnreifiedRestrictionAxiom__RestrictedRelation = TerminologiesPackage.eINSTANCE.getEntityUnreifiedRestrictionAxiom__RestrictedRelation();
+          boolean _equals = Objects.equal(reference, _entityUnreifiedRestrictionAxiom__RestrictedRelation);
+          if (_equals) {
+            scope = this._oMLScopeExtensions.allUnreifiedRelationshipsScope(((EntityUnreifiedRestrictionAxiom)context).getTbox());
+          }
+        }
+      }
+      if (!_matched) {
         if (context instanceof EntityRestrictionAxiom) {
           _matched=true;
-          EReference _entityRestrictionAxiom_RestrictedRelation = TerminologiesPackage.eINSTANCE.getEntityRestrictionAxiom_RestrictedRelation();
-          boolean _equals = Objects.equal(reference, _entityRestrictionAxiom_RestrictedRelation);
+          EReference _entityRestrictionAxiom_RestrictedDomain = TerminologiesPackage.eINSTANCE.getEntityRestrictionAxiom_RestrictedDomain();
+          boolean _equals = Objects.equal(reference, _entityRestrictionAxiom_RestrictedDomain);
           if (_equals) {
-            scope = this._oMLScopeExtensions.allEntityRelationshipsScope(((EntityRestrictionAxiom)context).getTbox());
+            scope = this._oMLScopeExtensions.allEntitiesScope(((EntityRestrictionAxiom)context).getTbox());
           } else {
-            EReference _entityRestrictionAxiom_RestrictedDomain = TerminologiesPackage.eINSTANCE.getEntityRestrictionAxiom_RestrictedDomain();
-            boolean _equals_1 = Objects.equal(reference, _entityRestrictionAxiom_RestrictedDomain);
+            EReference _entityRestrictionAxiom_RestrictedRange = TerminologiesPackage.eINSTANCE.getEntityRestrictionAxiom_RestrictedRange();
+            boolean _equals_1 = Objects.equal(reference, _entityRestrictionAxiom_RestrictedRange);
             if (_equals_1) {
               scope = this._oMLScopeExtensions.allEntitiesScope(((EntityRestrictionAxiom)context).getTbox());
-            } else {
-              EReference _entityRestrictionAxiom_RestrictedRange = TerminologiesPackage.eINSTANCE.getEntityRestrictionAxiom_RestrictedRange();
-              boolean _equals_2 = Objects.equal(reference, _entityRestrictionAxiom_RestrictedRange);
-              if (_equals_2) {
-                scope = this._oMLScopeExtensions.allEntitiesScope(((EntityRestrictionAxiom)context).getTbox());
-              }
             }
           }
         }

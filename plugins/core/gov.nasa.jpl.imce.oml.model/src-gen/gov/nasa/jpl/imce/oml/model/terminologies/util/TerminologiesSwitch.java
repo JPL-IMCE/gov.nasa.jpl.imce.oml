@@ -287,6 +287,30 @@ public class TerminologiesSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case TerminologiesPackage.FORWARD_PROPERTY: {
+				ForwardProperty forwardProperty = (ForwardProperty)theEObject;
+				T result = caseForwardProperty(forwardProperty);
+				if (result == null) result = caseResource(forwardProperty);
+				if (result == null) result = caseLogicalElement(forwardProperty);
+				if (result == null) result = caseIntrinsicIdentityKind(forwardProperty);
+				if (result == null) result = caseIdentityKind(forwardProperty);
+				if (result == null) result = caseCrossReferencableKind(forwardProperty);
+				if (result == null) result = caseCrossReferencabilityKind(forwardProperty);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TerminologiesPackage.INVERSE_PROPERTY: {
+				InverseProperty inverseProperty = (InverseProperty)theEObject;
+				T result = caseInverseProperty(inverseProperty);
+				if (result == null) result = caseResource(inverseProperty);
+				if (result == null) result = caseLogicalElement(inverseProperty);
+				if (result == null) result = caseIntrinsicIdentityKind(inverseProperty);
+				if (result == null) result = caseIdentityKind(inverseProperty);
+				if (result == null) result = caseCrossReferencableKind(inverseProperty);
+				if (result == null) result = caseCrossReferencabilityKind(inverseProperty);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case TerminologiesPackage.REIFIED_RELATIONSHIP: {
 				ReifiedRelationship reifiedRelationship = (ReifiedRelationship)theEObject;
 				T result = caseReifiedRelationship(reifiedRelationship);
@@ -892,6 +916,72 @@ public class TerminologiesSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case TerminologiesPackage.ENTITY_REIFIED_RESTRICTION_AXIOM: {
+				EntityReifiedRestrictionAxiom entityReifiedRestrictionAxiom = (EntityReifiedRestrictionAxiom)theEObject;
+				T result = caseEntityReifiedRestrictionAxiom(entityReifiedRestrictionAxiom);
+				if (result == null) result = caseEntityRestrictionAxiom(entityReifiedRestrictionAxiom);
+				if (result == null) result = caseTermAxiom(entityReifiedRestrictionAxiom);
+				if (result == null) result = caseElementCrossReferenceTuple(entityReifiedRestrictionAxiom);
+				if (result == null) result = caseTerminologyBoxStatement(entityReifiedRestrictionAxiom);
+				if (result == null) result = caseExtrinsicIdentityKind(entityReifiedRestrictionAxiom);
+				if (result == null) result = caseCrossReferencableKind(entityReifiedRestrictionAxiom);
+				if (result == null) result = caseModuleElement(entityReifiedRestrictionAxiom);
+				if (result == null) result = caseLogicalElement(entityReifiedRestrictionAxiom);
+				if (result == null) result = caseIdentityKind(entityReifiedRestrictionAxiom);
+				if (result == null) result = caseCrossReferencabilityKind(entityReifiedRestrictionAxiom);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TerminologiesPackage.ENTITY_FORWARD_REIFIED_RESTRICTION_AXIOM: {
+				EntityForwardReifiedRestrictionAxiom entityForwardReifiedRestrictionAxiom = (EntityForwardReifiedRestrictionAxiom)theEObject;
+				T result = caseEntityForwardReifiedRestrictionAxiom(entityForwardReifiedRestrictionAxiom);
+				if (result == null) result = caseEntityReifiedRestrictionAxiom(entityForwardReifiedRestrictionAxiom);
+				if (result == null) result = caseEntityRestrictionAxiom(entityForwardReifiedRestrictionAxiom);
+				if (result == null) result = caseTermAxiom(entityForwardReifiedRestrictionAxiom);
+				if (result == null) result = caseElementCrossReferenceTuple(entityForwardReifiedRestrictionAxiom);
+				if (result == null) result = caseTerminologyBoxStatement(entityForwardReifiedRestrictionAxiom);
+				if (result == null) result = caseExtrinsicIdentityKind(entityForwardReifiedRestrictionAxiom);
+				if (result == null) result = caseCrossReferencableKind(entityForwardReifiedRestrictionAxiom);
+				if (result == null) result = caseModuleElement(entityForwardReifiedRestrictionAxiom);
+				if (result == null) result = caseLogicalElement(entityForwardReifiedRestrictionAxiom);
+				if (result == null) result = caseIdentityKind(entityForwardReifiedRestrictionAxiom);
+				if (result == null) result = caseCrossReferencabilityKind(entityForwardReifiedRestrictionAxiom);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TerminologiesPackage.ENTITY_INVERSE_REIFIED_RESTRICTION_AXIOM: {
+				EntityInverseReifiedRestrictionAxiom entityInverseReifiedRestrictionAxiom = (EntityInverseReifiedRestrictionAxiom)theEObject;
+				T result = caseEntityInverseReifiedRestrictionAxiom(entityInverseReifiedRestrictionAxiom);
+				if (result == null) result = caseEntityReifiedRestrictionAxiom(entityInverseReifiedRestrictionAxiom);
+				if (result == null) result = caseEntityRestrictionAxiom(entityInverseReifiedRestrictionAxiom);
+				if (result == null) result = caseTermAxiom(entityInverseReifiedRestrictionAxiom);
+				if (result == null) result = caseElementCrossReferenceTuple(entityInverseReifiedRestrictionAxiom);
+				if (result == null) result = caseTerminologyBoxStatement(entityInverseReifiedRestrictionAxiom);
+				if (result == null) result = caseExtrinsicIdentityKind(entityInverseReifiedRestrictionAxiom);
+				if (result == null) result = caseCrossReferencableKind(entityInverseReifiedRestrictionAxiom);
+				if (result == null) result = caseModuleElement(entityInverseReifiedRestrictionAxiom);
+				if (result == null) result = caseLogicalElement(entityInverseReifiedRestrictionAxiom);
+				if (result == null) result = caseIdentityKind(entityInverseReifiedRestrictionAxiom);
+				if (result == null) result = caseCrossReferencabilityKind(entityInverseReifiedRestrictionAxiom);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TerminologiesPackage.ENTITY_UNREIFIED_RESTRICTION_AXIOM: {
+				EntityUnreifiedRestrictionAxiom entityUnreifiedRestrictionAxiom = (EntityUnreifiedRestrictionAxiom)theEObject;
+				T result = caseEntityUnreifiedRestrictionAxiom(entityUnreifiedRestrictionAxiom);
+				if (result == null) result = caseEntityRestrictionAxiom(entityUnreifiedRestrictionAxiom);
+				if (result == null) result = caseTermAxiom(entityUnreifiedRestrictionAxiom);
+				if (result == null) result = caseElementCrossReferenceTuple(entityUnreifiedRestrictionAxiom);
+				if (result == null) result = caseTerminologyBoxStatement(entityUnreifiedRestrictionAxiom);
+				if (result == null) result = caseExtrinsicIdentityKind(entityUnreifiedRestrictionAxiom);
+				if (result == null) result = caseCrossReferencableKind(entityUnreifiedRestrictionAxiom);
+				if (result == null) result = caseModuleElement(entityUnreifiedRestrictionAxiom);
+				if (result == null) result = caseLogicalElement(entityUnreifiedRestrictionAxiom);
+				if (result == null) result = caseIdentityKind(entityUnreifiedRestrictionAxiom);
+				if (result == null) result = caseCrossReferencabilityKind(entityUnreifiedRestrictionAxiom);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case TerminologiesPackage.ENTITY_EXISTENTIAL_RESTRICTION_AXIOM: {
 				EntityExistentialRestrictionAxiom entityExistentialRestrictionAxiom = (EntityExistentialRestrictionAxiom)theEObject;
 				T result = caseEntityExistentialRestrictionAxiom(entityExistentialRestrictionAxiom);
@@ -908,6 +998,62 @@ public class TerminologiesSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case TerminologiesPackage.ENTITY_EXISTENTIAL_FORWARD_REIFIED_RESTRICTION_AXIOM: {
+				EntityExistentialForwardReifiedRestrictionAxiom entityExistentialForwardReifiedRestrictionAxiom = (EntityExistentialForwardReifiedRestrictionAxiom)theEObject;
+				T result = caseEntityExistentialForwardReifiedRestrictionAxiom(entityExistentialForwardReifiedRestrictionAxiom);
+				if (result == null) result = caseEntityExistentialRestrictionAxiom(entityExistentialForwardReifiedRestrictionAxiom);
+				if (result == null) result = caseEntityForwardReifiedRestrictionAxiom(entityExistentialForwardReifiedRestrictionAxiom);
+				if (result == null) result = caseEntityReifiedRestrictionAxiom(entityExistentialForwardReifiedRestrictionAxiom);
+				if (result == null) result = caseEntityRestrictionAxiom(entityExistentialForwardReifiedRestrictionAxiom);
+				if (result == null) result = caseTermAxiom(entityExistentialForwardReifiedRestrictionAxiom);
+				if (result == null) result = caseElementCrossReferenceTuple(entityExistentialForwardReifiedRestrictionAxiom);
+				if (result == null) result = caseTerminologyBoxStatement(entityExistentialForwardReifiedRestrictionAxiom);
+				if (result == null) result = caseExtrinsicIdentityKind(entityExistentialForwardReifiedRestrictionAxiom);
+				if (result == null) result = caseCrossReferencableKind(entityExistentialForwardReifiedRestrictionAxiom);
+				if (result == null) result = caseModuleElement(entityExistentialForwardReifiedRestrictionAxiom);
+				if (result == null) result = caseLogicalElement(entityExistentialForwardReifiedRestrictionAxiom);
+				if (result == null) result = caseIdentityKind(entityExistentialForwardReifiedRestrictionAxiom);
+				if (result == null) result = caseCrossReferencabilityKind(entityExistentialForwardReifiedRestrictionAxiom);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TerminologiesPackage.ENTITY_EXISTENTIAL_INVERSE_REIFIED_RESTRICTION_AXIOM: {
+				EntityExistentialInverseReifiedRestrictionAxiom entityExistentialInverseReifiedRestrictionAxiom = (EntityExistentialInverseReifiedRestrictionAxiom)theEObject;
+				T result = caseEntityExistentialInverseReifiedRestrictionAxiom(entityExistentialInverseReifiedRestrictionAxiom);
+				if (result == null) result = caseEntityExistentialRestrictionAxiom(entityExistentialInverseReifiedRestrictionAxiom);
+				if (result == null) result = caseEntityInverseReifiedRestrictionAxiom(entityExistentialInverseReifiedRestrictionAxiom);
+				if (result == null) result = caseEntityReifiedRestrictionAxiom(entityExistentialInverseReifiedRestrictionAxiom);
+				if (result == null) result = caseEntityRestrictionAxiom(entityExistentialInverseReifiedRestrictionAxiom);
+				if (result == null) result = caseTermAxiom(entityExistentialInverseReifiedRestrictionAxiom);
+				if (result == null) result = caseElementCrossReferenceTuple(entityExistentialInverseReifiedRestrictionAxiom);
+				if (result == null) result = caseTerminologyBoxStatement(entityExistentialInverseReifiedRestrictionAxiom);
+				if (result == null) result = caseExtrinsicIdentityKind(entityExistentialInverseReifiedRestrictionAxiom);
+				if (result == null) result = caseCrossReferencableKind(entityExistentialInverseReifiedRestrictionAxiom);
+				if (result == null) result = caseModuleElement(entityExistentialInverseReifiedRestrictionAxiom);
+				if (result == null) result = caseLogicalElement(entityExistentialInverseReifiedRestrictionAxiom);
+				if (result == null) result = caseIdentityKind(entityExistentialInverseReifiedRestrictionAxiom);
+				if (result == null) result = caseCrossReferencabilityKind(entityExistentialInverseReifiedRestrictionAxiom);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TerminologiesPackage.ENTITY_EXISTENTIAL_UNREIFIED_RESTRICTION_AXIOM: {
+				EntityExistentialUnreifiedRestrictionAxiom entityExistentialUnreifiedRestrictionAxiom = (EntityExistentialUnreifiedRestrictionAxiom)theEObject;
+				T result = caseEntityExistentialUnreifiedRestrictionAxiom(entityExistentialUnreifiedRestrictionAxiom);
+				if (result == null) result = caseEntityExistentialRestrictionAxiom(entityExistentialUnreifiedRestrictionAxiom);
+				if (result == null) result = caseEntityUnreifiedRestrictionAxiom(entityExistentialUnreifiedRestrictionAxiom);
+				if (result == null) result = caseEntityRestrictionAxiom(entityExistentialUnreifiedRestrictionAxiom);
+				if (result == null) result = caseTermAxiom(entityExistentialUnreifiedRestrictionAxiom);
+				if (result == null) result = caseElementCrossReferenceTuple(entityExistentialUnreifiedRestrictionAxiom);
+				if (result == null) result = caseTerminologyBoxStatement(entityExistentialUnreifiedRestrictionAxiom);
+				if (result == null) result = caseExtrinsicIdentityKind(entityExistentialUnreifiedRestrictionAxiom);
+				if (result == null) result = caseCrossReferencableKind(entityExistentialUnreifiedRestrictionAxiom);
+				if (result == null) result = caseModuleElement(entityExistentialUnreifiedRestrictionAxiom);
+				if (result == null) result = caseLogicalElement(entityExistentialUnreifiedRestrictionAxiom);
+				if (result == null) result = caseIdentityKind(entityExistentialUnreifiedRestrictionAxiom);
+				if (result == null) result = caseCrossReferencabilityKind(entityExistentialUnreifiedRestrictionAxiom);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case TerminologiesPackage.ENTITY_UNIVERSAL_RESTRICTION_AXIOM: {
 				EntityUniversalRestrictionAxiom entityUniversalRestrictionAxiom = (EntityUniversalRestrictionAxiom)theEObject;
 				T result = caseEntityUniversalRestrictionAxiom(entityUniversalRestrictionAxiom);
@@ -921,6 +1067,62 @@ public class TerminologiesSwitch<T> extends Switch<T> {
 				if (result == null) result = caseLogicalElement(entityUniversalRestrictionAxiom);
 				if (result == null) result = caseIdentityKind(entityUniversalRestrictionAxiom);
 				if (result == null) result = caseCrossReferencabilityKind(entityUniversalRestrictionAxiom);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TerminologiesPackage.ENTITY_UNIVERSAL_FORWARD_REIFIED_RESTRICTION_AXIOM: {
+				EntityUniversalForwardReifiedRestrictionAxiom entityUniversalForwardReifiedRestrictionAxiom = (EntityUniversalForwardReifiedRestrictionAxiom)theEObject;
+				T result = caseEntityUniversalForwardReifiedRestrictionAxiom(entityUniversalForwardReifiedRestrictionAxiom);
+				if (result == null) result = caseEntityExistentialRestrictionAxiom(entityUniversalForwardReifiedRestrictionAxiom);
+				if (result == null) result = caseEntityForwardReifiedRestrictionAxiom(entityUniversalForwardReifiedRestrictionAxiom);
+				if (result == null) result = caseEntityReifiedRestrictionAxiom(entityUniversalForwardReifiedRestrictionAxiom);
+				if (result == null) result = caseEntityRestrictionAxiom(entityUniversalForwardReifiedRestrictionAxiom);
+				if (result == null) result = caseTermAxiom(entityUniversalForwardReifiedRestrictionAxiom);
+				if (result == null) result = caseElementCrossReferenceTuple(entityUniversalForwardReifiedRestrictionAxiom);
+				if (result == null) result = caseTerminologyBoxStatement(entityUniversalForwardReifiedRestrictionAxiom);
+				if (result == null) result = caseExtrinsicIdentityKind(entityUniversalForwardReifiedRestrictionAxiom);
+				if (result == null) result = caseCrossReferencableKind(entityUniversalForwardReifiedRestrictionAxiom);
+				if (result == null) result = caseModuleElement(entityUniversalForwardReifiedRestrictionAxiom);
+				if (result == null) result = caseLogicalElement(entityUniversalForwardReifiedRestrictionAxiom);
+				if (result == null) result = caseIdentityKind(entityUniversalForwardReifiedRestrictionAxiom);
+				if (result == null) result = caseCrossReferencabilityKind(entityUniversalForwardReifiedRestrictionAxiom);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TerminologiesPackage.ENTITY_UNIVERSAL_INVERSE_REIFIED_RESTRICTION_AXIOM: {
+				EntityUniversalInverseReifiedRestrictionAxiom entityUniversalInverseReifiedRestrictionAxiom = (EntityUniversalInverseReifiedRestrictionAxiom)theEObject;
+				T result = caseEntityUniversalInverseReifiedRestrictionAxiom(entityUniversalInverseReifiedRestrictionAxiom);
+				if (result == null) result = caseEntityExistentialRestrictionAxiom(entityUniversalInverseReifiedRestrictionAxiom);
+				if (result == null) result = caseEntityInverseReifiedRestrictionAxiom(entityUniversalInverseReifiedRestrictionAxiom);
+				if (result == null) result = caseEntityReifiedRestrictionAxiom(entityUniversalInverseReifiedRestrictionAxiom);
+				if (result == null) result = caseEntityRestrictionAxiom(entityUniversalInverseReifiedRestrictionAxiom);
+				if (result == null) result = caseTermAxiom(entityUniversalInverseReifiedRestrictionAxiom);
+				if (result == null) result = caseElementCrossReferenceTuple(entityUniversalInverseReifiedRestrictionAxiom);
+				if (result == null) result = caseTerminologyBoxStatement(entityUniversalInverseReifiedRestrictionAxiom);
+				if (result == null) result = caseExtrinsicIdentityKind(entityUniversalInverseReifiedRestrictionAxiom);
+				if (result == null) result = caseCrossReferencableKind(entityUniversalInverseReifiedRestrictionAxiom);
+				if (result == null) result = caseModuleElement(entityUniversalInverseReifiedRestrictionAxiom);
+				if (result == null) result = caseLogicalElement(entityUniversalInverseReifiedRestrictionAxiom);
+				if (result == null) result = caseIdentityKind(entityUniversalInverseReifiedRestrictionAxiom);
+				if (result == null) result = caseCrossReferencabilityKind(entityUniversalInverseReifiedRestrictionAxiom);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TerminologiesPackage.ENTITY_UNIVERSAL_UNREIFIED_RESTRICTION_AXIOM: {
+				EntityUniversalUnreifiedRestrictionAxiom entityUniversalUnreifiedRestrictionAxiom = (EntityUniversalUnreifiedRestrictionAxiom)theEObject;
+				T result = caseEntityUniversalUnreifiedRestrictionAxiom(entityUniversalUnreifiedRestrictionAxiom);
+				if (result == null) result = caseEntityExistentialRestrictionAxiom(entityUniversalUnreifiedRestrictionAxiom);
+				if (result == null) result = caseEntityUnreifiedRestrictionAxiom(entityUniversalUnreifiedRestrictionAxiom);
+				if (result == null) result = caseEntityRestrictionAxiom(entityUniversalUnreifiedRestrictionAxiom);
+				if (result == null) result = caseTermAxiom(entityUniversalUnreifiedRestrictionAxiom);
+				if (result == null) result = caseElementCrossReferenceTuple(entityUniversalUnreifiedRestrictionAxiom);
+				if (result == null) result = caseTerminologyBoxStatement(entityUniversalUnreifiedRestrictionAxiom);
+				if (result == null) result = caseExtrinsicIdentityKind(entityUniversalUnreifiedRestrictionAxiom);
+				if (result == null) result = caseCrossReferencableKind(entityUniversalUnreifiedRestrictionAxiom);
+				if (result == null) result = caseModuleElement(entityUniversalUnreifiedRestrictionAxiom);
+				if (result == null) result = caseLogicalElement(entityUniversalUnreifiedRestrictionAxiom);
+				if (result == null) result = caseIdentityKind(entityUniversalUnreifiedRestrictionAxiom);
+				if (result == null) result = caseCrossReferencabilityKind(entityUniversalUnreifiedRestrictionAxiom);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1525,6 +1727,36 @@ public class TerminologiesSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Forward Property</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Forward Property</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseForwardProperty(ForwardProperty object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Inverse Property</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Inverse Property</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseInverseProperty(InverseProperty object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Reified Relationship</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -2095,6 +2327,66 @@ public class TerminologiesSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Entity Reified Restriction Axiom</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Entity Reified Restriction Axiom</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEntityReifiedRestrictionAxiom(EntityReifiedRestrictionAxiom object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Entity Forward Reified Restriction Axiom</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Entity Forward Reified Restriction Axiom</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEntityForwardReifiedRestrictionAxiom(EntityForwardReifiedRestrictionAxiom object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Entity Inverse Reified Restriction Axiom</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Entity Inverse Reified Restriction Axiom</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEntityInverseReifiedRestrictionAxiom(EntityInverseReifiedRestrictionAxiom object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Entity Unreified Restriction Axiom</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Entity Unreified Restriction Axiom</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEntityUnreifiedRestrictionAxiom(EntityUnreifiedRestrictionAxiom object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Entity Existential Restriction Axiom</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -2110,6 +2402,51 @@ public class TerminologiesSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Entity Existential Forward Reified Restriction Axiom</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Entity Existential Forward Reified Restriction Axiom</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEntityExistentialForwardReifiedRestrictionAxiom(EntityExistentialForwardReifiedRestrictionAxiom object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Entity Existential Inverse Reified Restriction Axiom</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Entity Existential Inverse Reified Restriction Axiom</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEntityExistentialInverseReifiedRestrictionAxiom(EntityExistentialInverseReifiedRestrictionAxiom object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Entity Existential Unreified Restriction Axiom</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Entity Existential Unreified Restriction Axiom</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEntityExistentialUnreifiedRestrictionAxiom(EntityExistentialUnreifiedRestrictionAxiom object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Entity Universal Restriction Axiom</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -2121,6 +2458,51 @@ public class TerminologiesSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseEntityUniversalRestrictionAxiom(EntityUniversalRestrictionAxiom object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Entity Universal Forward Reified Restriction Axiom</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Entity Universal Forward Reified Restriction Axiom</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEntityUniversalForwardReifiedRestrictionAxiom(EntityUniversalForwardReifiedRestrictionAxiom object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Entity Universal Inverse Reified Restriction Axiom</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Entity Universal Inverse Reified Restriction Axiom</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEntityUniversalInverseReifiedRestrictionAxiom(EntityUniversalInverseReifiedRestrictionAxiom object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Entity Universal Unreified Restriction Axiom</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Entity Universal Unreified Restriction Axiom</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEntityUniversalUnreifiedRestrictionAxiom(EntityUniversalUnreifiedRestrictionAxiom object) {
 		return null;
 	}
 

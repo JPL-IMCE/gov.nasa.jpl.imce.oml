@@ -196,7 +196,7 @@ public class OMLLabelProvider extends DefaultEObjectLabelProvider {
   public String text(final EntityExistentialRestrictionAxiom ax) {
     String _elvis = null;
     String _elvis_1 = null;
-    EntityRelationship _restrictedRelation = ax.getRestrictedRelation();
+    EntityRelationship _restrictedRelation = ax.restrictedRelation();
     String _abbrevIRI = null;
     if (_restrictedRelation!=null) {
       _abbrevIRI=_restrictedRelation.abbrevIRI();
@@ -239,7 +239,7 @@ public class OMLLabelProvider extends DefaultEObjectLabelProvider {
   public String text(final EntityUniversalRestrictionAxiom ax) {
     String _elvis = null;
     String _elvis_1 = null;
-    EntityRelationship _restrictedRelation = ax.getRestrictedRelation();
+    EntityRelationship _restrictedRelation = ax.restrictedRelation();
     String _abbrevIRI = null;
     if (_restrictedRelation!=null) {
       _abbrevIRI=_restrictedRelation.abbrevIRI();

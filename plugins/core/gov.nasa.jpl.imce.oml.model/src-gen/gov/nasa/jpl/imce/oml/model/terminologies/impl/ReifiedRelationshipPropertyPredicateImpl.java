@@ -20,6 +20,7 @@ package gov.nasa.jpl.imce.oml.model.terminologies.impl;
 
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
 
+import gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPropertyPredicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.RuleBodySegment;
@@ -50,21 +51,21 @@ import org.eclipse.xtext.xbase.lib.Pair;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipPropertyPredicateImpl#getReifiedRelationship <em>Reified Relationship</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipPropertyPredicateImpl#getForwardProperty <em>Forward Property</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class ReifiedRelationshipPropertyPredicateImpl extends BinarySegmentForwardPropertyPredicateImpl implements ReifiedRelationshipPropertyPredicate {
 	/**
-	 * The cached value of the '{@link #getReifiedRelationship() <em>Reified Relationship</em>}' reference.
+	 * The cached value of the '{@link #getForwardProperty() <em>Forward Property</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getReifiedRelationship()
+	 * @see #getForwardProperty()
 	 * @generated
 	 * @ordered
 	 */
-	protected ReifiedRelationship reifiedRelationship;
+	protected ForwardProperty forwardProperty;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -90,16 +91,16 @@ public class ReifiedRelationshipPropertyPredicateImpl extends BinarySegmentForwa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ReifiedRelationship getReifiedRelationship() {
-		if (reifiedRelationship != null && ((EObject)reifiedRelationship).eIsProxy()) {
-			InternalEObject oldReifiedRelationship = (InternalEObject)reifiedRelationship;
-			reifiedRelationship = (ReifiedRelationship)eResolveProxy(oldReifiedRelationship);
-			if (reifiedRelationship != oldReifiedRelationship) {
+	public ForwardProperty getForwardProperty() {
+		if (forwardProperty != null && ((EObject)forwardProperty).eIsProxy()) {
+			InternalEObject oldForwardProperty = (InternalEObject)forwardProperty;
+			forwardProperty = (ForwardProperty)eResolveProxy(oldForwardProperty);
+			if (forwardProperty != oldForwardProperty) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, TerminologiesPackage.REIFIED_RELATIONSHIP_PROPERTY_PREDICATE__REIFIED_RELATIONSHIP, oldReifiedRelationship, reifiedRelationship));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, TerminologiesPackage.REIFIED_RELATIONSHIP_PROPERTY_PREDICATE__FORWARD_PROPERTY, oldForwardProperty, forwardProperty));
 			}
 		}
-		return reifiedRelationship;
+		return forwardProperty;
 	}
 
 	/**
@@ -107,8 +108,8 @@ public class ReifiedRelationshipPropertyPredicateImpl extends BinarySegmentForwa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ReifiedRelationship basicGetReifiedRelationship() {
-		return reifiedRelationship;
+	public ForwardProperty basicGetForwardProperty() {
+		return forwardProperty;
 	}
 
 	/**
@@ -116,11 +117,11 @@ public class ReifiedRelationshipPropertyPredicateImpl extends BinarySegmentForwa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setReifiedRelationship(ReifiedRelationship newReifiedRelationship) {
-		ReifiedRelationship oldReifiedRelationship = reifiedRelationship;
-		reifiedRelationship = newReifiedRelationship;
+	public void setForwardProperty(ForwardProperty newForwardProperty) {
+		ForwardProperty oldForwardProperty = forwardProperty;
+		forwardProperty = newForwardProperty;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.REIFIED_RELATIONSHIP_PROPERTY_PREDICATE__REIFIED_RELATIONSHIP, oldReifiedRelationship, reifiedRelationship));
+			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.REIFIED_RELATIONSHIP_PROPERTY_PREDICATE__FORWARD_PROPERTY, oldForwardProperty, forwardProperty));
 	}
 
 	/**
@@ -129,7 +130,12 @@ public class ReifiedRelationshipPropertyPredicateImpl extends BinarySegmentForwa
 	 * @generated
 	 */
 	public Term termPredicate() {
-		return this.getReifiedRelationship();
+		ForwardProperty _forwardProperty = this.getForwardProperty();
+		ReifiedRelationship _reifiedRelationship = null;
+		if (_forwardProperty!=null) {
+			_reifiedRelationship=_forwardProperty.getReifiedRelationship();
+		}
+		return _reifiedRelationship;
 	}
 
 	/**
@@ -148,16 +154,16 @@ public class ReifiedRelationshipPropertyPredicateImpl extends BinarySegmentForwa
 			_string=_uuid.toString();
 		}
 		Pair<String, String> _mappedTo = Pair.<String, String>of("bodySegment", _string);
-		ReifiedRelationship _reifiedRelationship = this.getReifiedRelationship();
+		ForwardProperty _forwardProperty = this.getForwardProperty();
 		String _uuid_1 = null;
-		if (_reifiedRelationship!=null) {
-			_uuid_1=_reifiedRelationship.uuid();
+		if (_forwardProperty!=null) {
+			_uuid_1=_forwardProperty.uuid();
 		}
 		String _string_1 = null;
 		if (_uuid_1!=null) {
 			_string_1=_uuid_1.toString();
 		}
-		Pair<String, String> _mappedTo_1 = Pair.<String, String>of("reifiedRelationship", _string_1);
+		Pair<String, String> _mappedTo_1 = Pair.<String, String>of("forwardProperty", _string_1);
 		UUID _derivedUUID = OMLExtensions.derivedUUID(
 			"ReifiedRelationshipPropertyPredicate", _mappedTo, _mappedTo_1);
 		String _string_2 = null;
@@ -175,9 +181,9 @@ public class ReifiedRelationshipPropertyPredicateImpl extends BinarySegmentForwa
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case TerminologiesPackage.REIFIED_RELATIONSHIP_PROPERTY_PREDICATE__REIFIED_RELATIONSHIP:
-				if (resolve) return getReifiedRelationship();
-				return basicGetReifiedRelationship();
+			case TerminologiesPackage.REIFIED_RELATIONSHIP_PROPERTY_PREDICATE__FORWARD_PROPERTY:
+				if (resolve) return getForwardProperty();
+				return basicGetForwardProperty();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -190,8 +196,8 @@ public class ReifiedRelationshipPropertyPredicateImpl extends BinarySegmentForwa
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case TerminologiesPackage.REIFIED_RELATIONSHIP_PROPERTY_PREDICATE__REIFIED_RELATIONSHIP:
-				setReifiedRelationship((ReifiedRelationship)newValue);
+			case TerminologiesPackage.REIFIED_RELATIONSHIP_PROPERTY_PREDICATE__FORWARD_PROPERTY:
+				setForwardProperty((ForwardProperty)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -205,8 +211,8 @@ public class ReifiedRelationshipPropertyPredicateImpl extends BinarySegmentForwa
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case TerminologiesPackage.REIFIED_RELATIONSHIP_PROPERTY_PREDICATE__REIFIED_RELATIONSHIP:
-				setReifiedRelationship((ReifiedRelationship)null);
+			case TerminologiesPackage.REIFIED_RELATIONSHIP_PROPERTY_PREDICATE__FORWARD_PROPERTY:
+				setForwardProperty((ForwardProperty)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -220,8 +226,8 @@ public class ReifiedRelationshipPropertyPredicateImpl extends BinarySegmentForwa
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case TerminologiesPackage.REIFIED_RELATIONSHIP_PROPERTY_PREDICATE__REIFIED_RELATIONSHIP:
-				return reifiedRelationship != null;
+			case TerminologiesPackage.REIFIED_RELATIONSHIP_PROPERTY_PREDICATE__FORWARD_PROPERTY:
+				return forwardProperty != null;
 		}
 		return super.eIsSet(featureID);
 	}

@@ -77,15 +77,21 @@ import gov.nasa.jpl.imce.oml.model.terminologies.ChainRule;
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptPredicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptSpecializationAxiom;
-import gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialRestrictionAxiom;
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialForwardReifiedRestrictionAxiom;
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialInverseReifiedRestrictionAxiom;
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialUnreifiedRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyExistentialRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyParticularRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyUniversalRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataPropertyParticularRestrictionAxiom;
-import gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalRestrictionAxiom;
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalForwardReifiedRestrictionAxiom;
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalInverseReifiedRestrictionAxiom;
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalUnreifiedRestrictionAxiom;
+import gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction;
+import gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship;
@@ -125,6 +131,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 
@@ -374,6 +381,20 @@ public class OMLTables {
       _xblockexpression = result;
     }
     return _xblockexpression;
+  }
+  
+  public static Iterable<ForwardProperty> forwardProperties(final Extent e) {
+    final Function1<ReifiedRelationship, ForwardProperty> _function = (ReifiedRelationship it) -> {
+      return it.getForwardProperty();
+    };
+    return IterableExtensions.<ForwardProperty>filterNull(ListExtensions.<ReifiedRelationship, ForwardProperty>map(OMLTables.reifiedRelationships(e), _function));
+  }
+  
+  public static Iterable<InverseProperty> inverseProperties(final Extent e) {
+    final Function1<ReifiedRelationship, InverseProperty> _function = (ReifiedRelationship it) -> {
+      return it.getInverseProperty();
+    };
+    return IterableExtensions.<InverseProperty>filterNull(ListExtensions.<ReifiedRelationship, InverseProperty>map(OMLTables.reifiedRelationships(e), _function));
   }
   
   public static List<UnreifiedRelationship> unreifiedRelationships(final Extent e) {
@@ -733,35 +754,103 @@ public class OMLTables {
     return _xblockexpression;
   }
   
-  public static List<EntityExistentialRestrictionAxiom> entityExistentialRestrictionAxioms(final Extent e) {
-    List<EntityExistentialRestrictionAxiom> _xblockexpression = null;
+  public static List<EntityExistentialForwardReifiedRestrictionAxiom> entityExistentialForwardReifiedRestrictionAxioms(final Extent e) {
+    List<EntityExistentialForwardReifiedRestrictionAxiom> _xblockexpression = null;
     {
-      final List<EntityExistentialRestrictionAxiom> result = new ArrayList<EntityExistentialRestrictionAxiom>();
+      final List<EntityExistentialForwardReifiedRestrictionAxiom> result = new ArrayList<EntityExistentialForwardReifiedRestrictionAxiom>();
       final Consumer<TerminologyBox> _function = (TerminologyBox tbox) -> {
-        Iterables.<EntityExistentialRestrictionAxiom>addAll(result, Iterables.<EntityExistentialRestrictionAxiom>filter(tbox.getBoxStatements(), EntityExistentialRestrictionAxiom.class));
+        Iterables.<EntityExistentialForwardReifiedRestrictionAxiom>addAll(result, Iterables.<EntityExistentialForwardReifiedRestrictionAxiom>filter(tbox.getBoxStatements(), EntityExistentialForwardReifiedRestrictionAxiom.class));
       };
       OMLTables.terminologies(e).forEach(_function);
-      final Function1<EntityExistentialRestrictionAxiom, String> _function_1 = (EntityExistentialRestrictionAxiom it) -> {
+      final Function1<EntityExistentialForwardReifiedRestrictionAxiom, String> _function_1 = (EntityExistentialForwardReifiedRestrictionAxiom it) -> {
         return it.uuid();
       };
-      ListExtensions.<EntityExistentialRestrictionAxiom, String>sortInplaceBy(result, _function_1);
+      ListExtensions.<EntityExistentialForwardReifiedRestrictionAxiom, String>sortInplaceBy(result, _function_1);
       _xblockexpression = result;
     }
     return _xblockexpression;
   }
   
-  public static List<EntityUniversalRestrictionAxiom> entityUniversalRestrictionAxioms(final Extent e) {
-    List<EntityUniversalRestrictionAxiom> _xblockexpression = null;
+  public static List<EntityExistentialInverseReifiedRestrictionAxiom> entityExistentialInverseReifiedRestrictionAxioms(final Extent e) {
+    List<EntityExistentialInverseReifiedRestrictionAxiom> _xblockexpression = null;
     {
-      final List<EntityUniversalRestrictionAxiom> result = new ArrayList<EntityUniversalRestrictionAxiom>();
+      final List<EntityExistentialInverseReifiedRestrictionAxiom> result = new ArrayList<EntityExistentialInverseReifiedRestrictionAxiom>();
       final Consumer<TerminologyBox> _function = (TerminologyBox tbox) -> {
-        Iterables.<EntityUniversalRestrictionAxiom>addAll(result, Iterables.<EntityUniversalRestrictionAxiom>filter(tbox.getBoxStatements(), EntityUniversalRestrictionAxiom.class));
+        Iterables.<EntityExistentialInverseReifiedRestrictionAxiom>addAll(result, Iterables.<EntityExistentialInverseReifiedRestrictionAxiom>filter(tbox.getBoxStatements(), EntityExistentialInverseReifiedRestrictionAxiom.class));
       };
       OMLTables.terminologies(e).forEach(_function);
-      final Function1<EntityUniversalRestrictionAxiom, String> _function_1 = (EntityUniversalRestrictionAxiom it) -> {
+      final Function1<EntityExistentialInverseReifiedRestrictionAxiom, String> _function_1 = (EntityExistentialInverseReifiedRestrictionAxiom it) -> {
         return it.uuid();
       };
-      ListExtensions.<EntityUniversalRestrictionAxiom, String>sortInplaceBy(result, _function_1);
+      ListExtensions.<EntityExistentialInverseReifiedRestrictionAxiom, String>sortInplaceBy(result, _function_1);
+      _xblockexpression = result;
+    }
+    return _xblockexpression;
+  }
+  
+  public static List<EntityExistentialUnreifiedRestrictionAxiom> entityExistentialUnreifiedRestrictionAxioms(final Extent e) {
+    List<EntityExistentialUnreifiedRestrictionAxiom> _xblockexpression = null;
+    {
+      final List<EntityExistentialUnreifiedRestrictionAxiom> result = new ArrayList<EntityExistentialUnreifiedRestrictionAxiom>();
+      final Consumer<TerminologyBox> _function = (TerminologyBox tbox) -> {
+        Iterables.<EntityExistentialUnreifiedRestrictionAxiom>addAll(result, Iterables.<EntityExistentialUnreifiedRestrictionAxiom>filter(tbox.getBoxStatements(), EntityExistentialUnreifiedRestrictionAxiom.class));
+      };
+      OMLTables.terminologies(e).forEach(_function);
+      final Function1<EntityExistentialUnreifiedRestrictionAxiom, String> _function_1 = (EntityExistentialUnreifiedRestrictionAxiom it) -> {
+        return it.uuid();
+      };
+      ListExtensions.<EntityExistentialUnreifiedRestrictionAxiom, String>sortInplaceBy(result, _function_1);
+      _xblockexpression = result;
+    }
+    return _xblockexpression;
+  }
+  
+  public static List<EntityUniversalForwardReifiedRestrictionAxiom> entityUniversalForwardReifiedRestrictionAxioms(final Extent e) {
+    List<EntityUniversalForwardReifiedRestrictionAxiom> _xblockexpression = null;
+    {
+      final List<EntityUniversalForwardReifiedRestrictionAxiom> result = new ArrayList<EntityUniversalForwardReifiedRestrictionAxiom>();
+      final Consumer<TerminologyBox> _function = (TerminologyBox tbox) -> {
+        Iterables.<EntityUniversalForwardReifiedRestrictionAxiom>addAll(result, Iterables.<EntityUniversalForwardReifiedRestrictionAxiom>filter(tbox.getBoxStatements(), EntityUniversalForwardReifiedRestrictionAxiom.class));
+      };
+      OMLTables.terminologies(e).forEach(_function);
+      final Function1<EntityUniversalForwardReifiedRestrictionAxiom, String> _function_1 = (EntityUniversalForwardReifiedRestrictionAxiom it) -> {
+        return it.uuid();
+      };
+      ListExtensions.<EntityUniversalForwardReifiedRestrictionAxiom, String>sortInplaceBy(result, _function_1);
+      _xblockexpression = result;
+    }
+    return _xblockexpression;
+  }
+  
+  public static List<EntityUniversalInverseReifiedRestrictionAxiom> entityUniversalInverseReifiedRestrictionAxioms(final Extent e) {
+    List<EntityUniversalInverseReifiedRestrictionAxiom> _xblockexpression = null;
+    {
+      final List<EntityUniversalInverseReifiedRestrictionAxiom> result = new ArrayList<EntityUniversalInverseReifiedRestrictionAxiom>();
+      final Consumer<TerminologyBox> _function = (TerminologyBox tbox) -> {
+        Iterables.<EntityUniversalInverseReifiedRestrictionAxiom>addAll(result, Iterables.<EntityUniversalInverseReifiedRestrictionAxiom>filter(tbox.getBoxStatements(), EntityUniversalInverseReifiedRestrictionAxiom.class));
+      };
+      OMLTables.terminologies(e).forEach(_function);
+      final Function1<EntityUniversalInverseReifiedRestrictionAxiom, String> _function_1 = (EntityUniversalInverseReifiedRestrictionAxiom it) -> {
+        return it.uuid();
+      };
+      ListExtensions.<EntityUniversalInverseReifiedRestrictionAxiom, String>sortInplaceBy(result, _function_1);
+      _xblockexpression = result;
+    }
+    return _xblockexpression;
+  }
+  
+  public static List<EntityUniversalUnreifiedRestrictionAxiom> entityUniversalUnreifiedRestrictionAxioms(final Extent e) {
+    List<EntityUniversalUnreifiedRestrictionAxiom> _xblockexpression = null;
+    {
+      final List<EntityUniversalUnreifiedRestrictionAxiom> result = new ArrayList<EntityUniversalUnreifiedRestrictionAxiom>();
+      final Consumer<TerminologyBox> _function = (TerminologyBox tbox) -> {
+        Iterables.<EntityUniversalUnreifiedRestrictionAxiom>addAll(result, Iterables.<EntityUniversalUnreifiedRestrictionAxiom>filter(tbox.getBoxStatements(), EntityUniversalUnreifiedRestrictionAxiom.class));
+      };
+      OMLTables.terminologies(e).forEach(_function);
+      final Function1<EntityUniversalUnreifiedRestrictionAxiom, String> _function_1 = (EntityUniversalUnreifiedRestrictionAxiom it) -> {
+        return it.uuid();
+      };
+      ListExtensions.<EntityUniversalUnreifiedRestrictionAxiom, String>sortInplaceBy(result, _function_1);
       _xblockexpression = result;
     }
     return _xblockexpression;

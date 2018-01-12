@@ -36,8 +36,8 @@ package gov.nasa.jpl.imce.oml.model.terminologies;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship#getUnreifiedPropertyName <em>Unreified Property Name</em>}</li>
- *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship#getUnreifiedInversePropertyName <em>Unreified Inverse Property Name</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship#getForwardProperty <em>Forward Property</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship#getInverseProperty <em>Inverse Property</em>}</li>
  * </ul>
  *
  * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getReifiedRelationship()
@@ -46,55 +46,59 @@ package gov.nasa.jpl.imce.oml.model.terminologies;
  */
 public interface ReifiedRelationship extends EntityRelationship, ConceptualEntity {
 	/**
-	 * Returns the value of the '<em><b>Unreified Property Name</b></em>' attribute.
+	 * Returns the value of the '<em><b>Forward Property</b></em>' containment reference.
+	 * It is bidirectional and its opposite is '{@link gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty#getReifiedRelationship <em>Reified Relationship</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Unreified Property Name</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Forward Property</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Unreified Property Name</em>' attribute.
-	 * @see #setUnreifiedPropertyName(String)
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getReifiedRelationship_UnreifiedPropertyName()
-	 * @model unique="false" dataType="gov.nasa.jpl.imce.oml.model.common.LocalName" required="true"
+	 * @return the value of the '<em>Forward Property</em>' containment reference.
+	 * @see #setForwardProperty(ForwardProperty)
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getReifiedRelationship_ForwardProperty()
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty#getReifiedRelationship
+	 * @model opposite="reifiedRelationship" containment="true" required="true"
 	 * @generated
 	 */
-	String getUnreifiedPropertyName();
+	ForwardProperty getForwardProperty();
 
 	/**
-	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship#getUnreifiedPropertyName <em>Unreified Property Name</em>}' attribute.
+	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship#getForwardProperty <em>Forward Property</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Unreified Property Name</em>' attribute.
-	 * @see #getUnreifiedPropertyName()
+	 * @param value the new value of the '<em>Forward Property</em>' containment reference.
+	 * @see #getForwardProperty()
 	 * @generated
 	 */
-	void setUnreifiedPropertyName(String value);
+	void setForwardProperty(ForwardProperty value);
 
 	/**
-	 * Returns the value of the '<em><b>Unreified Inverse Property Name</b></em>' attribute.
+	 * Returns the value of the '<em><b>Inverse Property</b></em>' containment reference.
+	 * It is bidirectional and its opposite is '{@link gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty#getReifiedRelationship <em>Reified Relationship</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Unreified Inverse Property Name</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Inverse Property</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Unreified Inverse Property Name</em>' attribute.
-	 * @see #setUnreifiedInversePropertyName(String)
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getReifiedRelationship_UnreifiedInversePropertyName()
-	 * @model unique="false" dataType="gov.nasa.jpl.imce.oml.model.common.LocalName"
+	 * @return the value of the '<em>Inverse Property</em>' containment reference.
+	 * @see #setInverseProperty(InverseProperty)
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getReifiedRelationship_InverseProperty()
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty#getReifiedRelationship
+	 * @model opposite="reifiedRelationship" containment="true"
 	 * @generated
 	 */
-	String getUnreifiedInversePropertyName();
+	InverseProperty getInverseProperty();
 
 	/**
-	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship#getUnreifiedInversePropertyName <em>Unreified Inverse Property Name</em>}' attribute.
+	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship#getInverseProperty <em>Inverse Property</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Unreified Inverse Property Name</em>' attribute.
-	 * @see #getUnreifiedInversePropertyName()
+	 * @param value the new value of the '<em>Inverse Property</em>' containment reference.
+	 * @see #getInverseProperty()
 	 * @generated
 	 */
-	void setUnreifiedInversePropertyName(String value);
+	void setInverseProperty(InverseProperty value);
 
 } // ReifiedRelationship

@@ -64,7 +64,9 @@ import gov.nasa.jpl.imce.oml.model.terminologies.DataRange;
 import gov.nasa.jpl.imce.oml.model.terminologies.DataRelationshipToScalar;
 import gov.nasa.jpl.imce.oml.model.terminologies.DataRelationshipToStructure;
 import gov.nasa.jpl.imce.oml.model.terminologies.Entity;
-import gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialRestrictionAxiom;
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialForwardReifiedRestrictionAxiom;
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialInverseReifiedRestrictionAxiom;
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialUnreifiedRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyExistentialRestrictionAxiom;
@@ -72,8 +74,12 @@ import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyParticu
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyUniversalRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataPropertyParticularRestrictionAxiom;
-import gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalRestrictionAxiom;
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalForwardReifiedRestrictionAxiom;
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalInverseReifiedRestrictionAxiom;
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalUnreifiedRestrictionAxiom;
+import gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction;
+import gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship;
@@ -225,9 +231,17 @@ public class OMLSpecificationTables {
   
   protected final Map<String, Pair<UnreifiedRelationshipInversePropertyPredicate, Map<String, String>>> unreifiedRelationshipInversePropertyPredicates;
   
-  protected final Map<String, Pair<EntityExistentialRestrictionAxiom, Map<String, String>>> entityExistentialRestrictionAxioms;
+  protected final Map<String, Pair<EntityExistentialForwardReifiedRestrictionAxiom, Map<String, String>>> entityExistentialForwardReifiedRestrictionAxioms;
   
-  protected final Map<String, Pair<EntityUniversalRestrictionAxiom, Map<String, String>>> entityUniversalRestrictionAxioms;
+  protected final Map<String, Pair<EntityExistentialInverseReifiedRestrictionAxiom, Map<String, String>>> entityExistentialInverseReifiedRestrictionAxioms;
+  
+  protected final Map<String, Pair<EntityExistentialUnreifiedRestrictionAxiom, Map<String, String>>> entityExistentialUnreifiedRestrictionAxioms;
+  
+  protected final Map<String, Pair<EntityUniversalForwardReifiedRestrictionAxiom, Map<String, String>>> entityUniversalForwardReifiedRestrictionAxioms;
+  
+  protected final Map<String, Pair<EntityUniversalInverseReifiedRestrictionAxiom, Map<String, String>>> entityUniversalInverseReifiedRestrictionAxioms;
+  
+  protected final Map<String, Pair<EntityUniversalUnreifiedRestrictionAxiom, Map<String, String>>> entityUniversalUnreifiedRestrictionAxioms;
   
   protected final Map<String, Pair<EntityScalarDataPropertyExistentialRestrictionAxiom, Map<String, String>>> entityScalarDataPropertyExistentialRestrictionAxioms;
   
@@ -276,6 +290,10 @@ public class OMLSpecificationTables {
   protected final Map<String, Pair<ScalarDataPropertyValue, Map<String, String>>> scalarDataPropertyValues;
   
   protected final Map<String, Pair<AnnotationPropertyValue, Map<String, String>>> annotationPropertyValues;
+  
+  protected final Map<String, Pair<ForwardProperty, Map<String, String>>> forwardProperties;
+  
+  protected final Map<String, Pair<InverseProperty, Map<String, String>>> inverseProperties;
   
   protected final Map<String, Pair<Module, Map<String, String>>> modules;
   
@@ -406,82 +424,94 @@ public class OMLSpecificationTables {
     this.reifiedRelationshipTargetInversePropertyPredicates = _hashMap_40;
     HashMap<String, Pair<UnreifiedRelationshipInversePropertyPredicate, Map<String, String>>> _hashMap_41 = new HashMap<String, Pair<UnreifiedRelationshipInversePropertyPredicate, Map<String, String>>>();
     this.unreifiedRelationshipInversePropertyPredicates = _hashMap_41;
-    HashMap<String, Pair<EntityExistentialRestrictionAxiom, Map<String, String>>> _hashMap_42 = new HashMap<String, Pair<EntityExistentialRestrictionAxiom, Map<String, String>>>();
-    this.entityExistentialRestrictionAxioms = _hashMap_42;
-    HashMap<String, Pair<EntityUniversalRestrictionAxiom, Map<String, String>>> _hashMap_43 = new HashMap<String, Pair<EntityUniversalRestrictionAxiom, Map<String, String>>>();
-    this.entityUniversalRestrictionAxioms = _hashMap_43;
-    HashMap<String, Pair<EntityScalarDataPropertyExistentialRestrictionAxiom, Map<String, String>>> _hashMap_44 = new HashMap<String, Pair<EntityScalarDataPropertyExistentialRestrictionAxiom, Map<String, String>>>();
-    this.entityScalarDataPropertyExistentialRestrictionAxioms = _hashMap_44;
-    HashMap<String, Pair<EntityScalarDataPropertyParticularRestrictionAxiom, Map<String, String>>> _hashMap_45 = new HashMap<String, Pair<EntityScalarDataPropertyParticularRestrictionAxiom, Map<String, String>>>();
-    this.entityScalarDataPropertyParticularRestrictionAxioms = _hashMap_45;
-    HashMap<String, Pair<EntityScalarDataPropertyUniversalRestrictionAxiom, Map<String, String>>> _hashMap_46 = new HashMap<String, Pair<EntityScalarDataPropertyUniversalRestrictionAxiom, Map<String, String>>>();
-    this.entityScalarDataPropertyUniversalRestrictionAxioms = _hashMap_46;
-    HashMap<String, Pair<EntityStructuredDataPropertyParticularRestrictionAxiom, Map<String, String>>> _hashMap_47 = new HashMap<String, Pair<EntityStructuredDataPropertyParticularRestrictionAxiom, Map<String, String>>>();
-    this.entityStructuredDataPropertyParticularRestrictionAxioms = _hashMap_47;
-    HashMap<String, Pair<RestrictionStructuredDataPropertyTuple, Map<String, String>>> _hashMap_48 = new HashMap<String, Pair<RestrictionStructuredDataPropertyTuple, Map<String, String>>>();
-    this.restrictionStructuredDataPropertyTuples = _hashMap_48;
-    HashMap<String, Pair<RestrictionScalarDataPropertyValue, Map<String, String>>> _hashMap_49 = new HashMap<String, Pair<RestrictionScalarDataPropertyValue, Map<String, String>>>();
-    this.restrictionScalarDataPropertyValues = _hashMap_49;
-    HashMap<String, Pair<AspectSpecializationAxiom, Map<String, String>>> _hashMap_50 = new HashMap<String, Pair<AspectSpecializationAxiom, Map<String, String>>>();
-    this.aspectSpecializationAxioms = _hashMap_50;
-    HashMap<String, Pair<ConceptSpecializationAxiom, Map<String, String>>> _hashMap_51 = new HashMap<String, Pair<ConceptSpecializationAxiom, Map<String, String>>>();
-    this.conceptSpecializationAxioms = _hashMap_51;
-    HashMap<String, Pair<ReifiedRelationshipSpecializationAxiom, Map<String, String>>> _hashMap_52 = new HashMap<String, Pair<ReifiedRelationshipSpecializationAxiom, Map<String, String>>>();
-    this.reifiedRelationshipSpecializationAxioms = _hashMap_52;
-    HashMap<String, Pair<SubDataPropertyOfAxiom, Map<String, String>>> _hashMap_53 = new HashMap<String, Pair<SubDataPropertyOfAxiom, Map<String, String>>>();
-    this.subDataPropertyOfAxioms = _hashMap_53;
-    HashMap<String, Pair<SubObjectPropertyOfAxiom, Map<String, String>>> _hashMap_54 = new HashMap<String, Pair<SubObjectPropertyOfAxiom, Map<String, String>>>();
-    this.subObjectPropertyOfAxioms = _hashMap_54;
-    HashMap<String, Pair<RootConceptTaxonomyAxiom, Map<String, String>>> _hashMap_55 = new HashMap<String, Pair<RootConceptTaxonomyAxiom, Map<String, String>>>();
-    this.rootConceptTaxonomyAxioms = _hashMap_55;
-    HashMap<String, Pair<AnonymousConceptUnionAxiom, Map<String, String>>> _hashMap_56 = new HashMap<String, Pair<AnonymousConceptUnionAxiom, Map<String, String>>>();
-    this.anonymousConceptUnionAxioms = _hashMap_56;
-    HashMap<String, Pair<SpecificDisjointConceptAxiom, Map<String, String>>> _hashMap_57 = new HashMap<String, Pair<SpecificDisjointConceptAxiom, Map<String, String>>>();
-    this.specificDisjointConceptAxioms = _hashMap_57;
-    HashMap<String, Pair<ConceptInstance, Map<String, String>>> _hashMap_58 = new HashMap<String, Pair<ConceptInstance, Map<String, String>>>();
-    this.conceptInstances = _hashMap_58;
-    HashMap<String, Pair<ReifiedRelationshipInstance, Map<String, String>>> _hashMap_59 = new HashMap<String, Pair<ReifiedRelationshipInstance, Map<String, String>>>();
-    this.reifiedRelationshipInstances = _hashMap_59;
-    HashMap<String, Pair<ReifiedRelationshipInstanceDomain, Map<String, String>>> _hashMap_60 = new HashMap<String, Pair<ReifiedRelationshipInstanceDomain, Map<String, String>>>();
-    this.reifiedRelationshipInstanceDomains = _hashMap_60;
-    HashMap<String, Pair<ReifiedRelationshipInstanceRange, Map<String, String>>> _hashMap_61 = new HashMap<String, Pair<ReifiedRelationshipInstanceRange, Map<String, String>>>();
-    this.reifiedRelationshipInstanceRanges = _hashMap_61;
-    HashMap<String, Pair<UnreifiedRelationshipInstanceTuple, Map<String, String>>> _hashMap_62 = new HashMap<String, Pair<UnreifiedRelationshipInstanceTuple, Map<String, String>>>();
-    this.unreifiedRelationshipInstanceTuples = _hashMap_62;
-    HashMap<String, Pair<SingletonInstanceStructuredDataPropertyValue, Map<String, String>>> _hashMap_63 = new HashMap<String, Pair<SingletonInstanceStructuredDataPropertyValue, Map<String, String>>>();
-    this.singletonInstanceStructuredDataPropertyValues = _hashMap_63;
-    HashMap<String, Pair<SingletonInstanceScalarDataPropertyValue, Map<String, String>>> _hashMap_64 = new HashMap<String, Pair<SingletonInstanceScalarDataPropertyValue, Map<String, String>>>();
-    this.singletonInstanceScalarDataPropertyValues = _hashMap_64;
-    HashMap<String, Pair<StructuredDataPropertyTuple, Map<String, String>>> _hashMap_65 = new HashMap<String, Pair<StructuredDataPropertyTuple, Map<String, String>>>();
-    this.structuredDataPropertyTuples = _hashMap_65;
-    HashMap<String, Pair<ScalarDataPropertyValue, Map<String, String>>> _hashMap_66 = new HashMap<String, Pair<ScalarDataPropertyValue, Map<String, String>>>();
-    this.scalarDataPropertyValues = _hashMap_66;
-    HashMap<String, Pair<AnnotationPropertyValue, Map<String, String>>> _hashMap_67 = new HashMap<String, Pair<AnnotationPropertyValue, Map<String, String>>>();
-    this.annotationPropertyValues = _hashMap_67;
-    HashMap<String, Pair<Module, Map<String, String>>> _hashMap_68 = new HashMap<String, Pair<Module, Map<String, String>>>();
-    this.modules = _hashMap_68;
-    HashMap<String, Pair<LogicalElement, Map<String, String>>> _hashMap_69 = new HashMap<String, Pair<LogicalElement, Map<String, String>>>();
-    this.logicalElements = _hashMap_69;
-    HashMap<String, Pair<Entity, Map<String, String>>> _hashMap_70 = new HashMap<String, Pair<Entity, Map<String, String>>>();
-    this.entities = _hashMap_70;
-    HashMap<String, Pair<EntityRelationship, Map<String, String>>> _hashMap_71 = new HashMap<String, Pair<EntityRelationship, Map<String, String>>>();
-    this.entityRelationships = _hashMap_71;
-    HashMap<String, Pair<DataRange, Map<String, String>>> _hashMap_72 = new HashMap<String, Pair<DataRange, Map<String, String>>>();
-    this.dataRanges = _hashMap_72;
-    HashMap<String, Pair<DataRelationshipToScalar, Map<String, String>>> _hashMap_73 = new HashMap<String, Pair<DataRelationshipToScalar, Map<String, String>>>();
-    this.dataRelationshipToScalars = _hashMap_73;
-    HashMap<String, Pair<DataRelationshipToStructure, Map<String, String>>> _hashMap_74 = new HashMap<String, Pair<DataRelationshipToStructure, Map<String, String>>>();
-    this.dataRelationshipToStructures = _hashMap_74;
-    HashMap<String, Pair<RestrictionStructuredDataPropertyContext, Map<String, String>>> _hashMap_75 = new HashMap<String, Pair<RestrictionStructuredDataPropertyContext, Map<String, String>>>();
-    this.restrictionStructuredDataPropertyContexts = _hashMap_75;
-    HashMap<String, Pair<TerminologyBox, Map<String, String>>> _hashMap_76 = new HashMap<String, Pair<TerminologyBox, Map<String, String>>>();
-    this.terminologyBoxes = _hashMap_76;
-    HashMap<String, Pair<ConceptTreeDisjunction, Map<String, String>>> _hashMap_77 = new HashMap<String, Pair<ConceptTreeDisjunction, Map<String, String>>>();
-    this.conceptTreeDisjunctions = _hashMap_77;
-    HashMap<String, Pair<ConceptualEntitySingletonInstance, Map<String, String>>> _hashMap_78 = new HashMap<String, Pair<ConceptualEntitySingletonInstance, Map<String, String>>>();
-    this.conceptualEntitySingletonInstances = _hashMap_78;
-    HashMap<String, Pair<SingletonInstanceStructuredDataPropertyContext, Map<String, String>>> _hashMap_79 = new HashMap<String, Pair<SingletonInstanceStructuredDataPropertyContext, Map<String, String>>>();
-    this.singletonInstanceStructuredDataPropertyContexts = _hashMap_79;
+    HashMap<String, Pair<EntityExistentialForwardReifiedRestrictionAxiom, Map<String, String>>> _hashMap_42 = new HashMap<String, Pair<EntityExistentialForwardReifiedRestrictionAxiom, Map<String, String>>>();
+    this.entityExistentialForwardReifiedRestrictionAxioms = _hashMap_42;
+    HashMap<String, Pair<EntityExistentialInverseReifiedRestrictionAxiom, Map<String, String>>> _hashMap_43 = new HashMap<String, Pair<EntityExistentialInverseReifiedRestrictionAxiom, Map<String, String>>>();
+    this.entityExistentialInverseReifiedRestrictionAxioms = _hashMap_43;
+    HashMap<String, Pair<EntityExistentialUnreifiedRestrictionAxiom, Map<String, String>>> _hashMap_44 = new HashMap<String, Pair<EntityExistentialUnreifiedRestrictionAxiom, Map<String, String>>>();
+    this.entityExistentialUnreifiedRestrictionAxioms = _hashMap_44;
+    HashMap<String, Pair<EntityUniversalForwardReifiedRestrictionAxiom, Map<String, String>>> _hashMap_45 = new HashMap<String, Pair<EntityUniversalForwardReifiedRestrictionAxiom, Map<String, String>>>();
+    this.entityUniversalForwardReifiedRestrictionAxioms = _hashMap_45;
+    HashMap<String, Pair<EntityUniversalInverseReifiedRestrictionAxiom, Map<String, String>>> _hashMap_46 = new HashMap<String, Pair<EntityUniversalInverseReifiedRestrictionAxiom, Map<String, String>>>();
+    this.entityUniversalInverseReifiedRestrictionAxioms = _hashMap_46;
+    HashMap<String, Pair<EntityUniversalUnreifiedRestrictionAxiom, Map<String, String>>> _hashMap_47 = new HashMap<String, Pair<EntityUniversalUnreifiedRestrictionAxiom, Map<String, String>>>();
+    this.entityUniversalUnreifiedRestrictionAxioms = _hashMap_47;
+    HashMap<String, Pair<EntityScalarDataPropertyExistentialRestrictionAxiom, Map<String, String>>> _hashMap_48 = new HashMap<String, Pair<EntityScalarDataPropertyExistentialRestrictionAxiom, Map<String, String>>>();
+    this.entityScalarDataPropertyExistentialRestrictionAxioms = _hashMap_48;
+    HashMap<String, Pair<EntityScalarDataPropertyParticularRestrictionAxiom, Map<String, String>>> _hashMap_49 = new HashMap<String, Pair<EntityScalarDataPropertyParticularRestrictionAxiom, Map<String, String>>>();
+    this.entityScalarDataPropertyParticularRestrictionAxioms = _hashMap_49;
+    HashMap<String, Pair<EntityScalarDataPropertyUniversalRestrictionAxiom, Map<String, String>>> _hashMap_50 = new HashMap<String, Pair<EntityScalarDataPropertyUniversalRestrictionAxiom, Map<String, String>>>();
+    this.entityScalarDataPropertyUniversalRestrictionAxioms = _hashMap_50;
+    HashMap<String, Pair<EntityStructuredDataPropertyParticularRestrictionAxiom, Map<String, String>>> _hashMap_51 = new HashMap<String, Pair<EntityStructuredDataPropertyParticularRestrictionAxiom, Map<String, String>>>();
+    this.entityStructuredDataPropertyParticularRestrictionAxioms = _hashMap_51;
+    HashMap<String, Pair<RestrictionStructuredDataPropertyTuple, Map<String, String>>> _hashMap_52 = new HashMap<String, Pair<RestrictionStructuredDataPropertyTuple, Map<String, String>>>();
+    this.restrictionStructuredDataPropertyTuples = _hashMap_52;
+    HashMap<String, Pair<RestrictionScalarDataPropertyValue, Map<String, String>>> _hashMap_53 = new HashMap<String, Pair<RestrictionScalarDataPropertyValue, Map<String, String>>>();
+    this.restrictionScalarDataPropertyValues = _hashMap_53;
+    HashMap<String, Pair<AspectSpecializationAxiom, Map<String, String>>> _hashMap_54 = new HashMap<String, Pair<AspectSpecializationAxiom, Map<String, String>>>();
+    this.aspectSpecializationAxioms = _hashMap_54;
+    HashMap<String, Pair<ConceptSpecializationAxiom, Map<String, String>>> _hashMap_55 = new HashMap<String, Pair<ConceptSpecializationAxiom, Map<String, String>>>();
+    this.conceptSpecializationAxioms = _hashMap_55;
+    HashMap<String, Pair<ReifiedRelationshipSpecializationAxiom, Map<String, String>>> _hashMap_56 = new HashMap<String, Pair<ReifiedRelationshipSpecializationAxiom, Map<String, String>>>();
+    this.reifiedRelationshipSpecializationAxioms = _hashMap_56;
+    HashMap<String, Pair<SubDataPropertyOfAxiom, Map<String, String>>> _hashMap_57 = new HashMap<String, Pair<SubDataPropertyOfAxiom, Map<String, String>>>();
+    this.subDataPropertyOfAxioms = _hashMap_57;
+    HashMap<String, Pair<SubObjectPropertyOfAxiom, Map<String, String>>> _hashMap_58 = new HashMap<String, Pair<SubObjectPropertyOfAxiom, Map<String, String>>>();
+    this.subObjectPropertyOfAxioms = _hashMap_58;
+    HashMap<String, Pair<RootConceptTaxonomyAxiom, Map<String, String>>> _hashMap_59 = new HashMap<String, Pair<RootConceptTaxonomyAxiom, Map<String, String>>>();
+    this.rootConceptTaxonomyAxioms = _hashMap_59;
+    HashMap<String, Pair<AnonymousConceptUnionAxiom, Map<String, String>>> _hashMap_60 = new HashMap<String, Pair<AnonymousConceptUnionAxiom, Map<String, String>>>();
+    this.anonymousConceptUnionAxioms = _hashMap_60;
+    HashMap<String, Pair<SpecificDisjointConceptAxiom, Map<String, String>>> _hashMap_61 = new HashMap<String, Pair<SpecificDisjointConceptAxiom, Map<String, String>>>();
+    this.specificDisjointConceptAxioms = _hashMap_61;
+    HashMap<String, Pair<ConceptInstance, Map<String, String>>> _hashMap_62 = new HashMap<String, Pair<ConceptInstance, Map<String, String>>>();
+    this.conceptInstances = _hashMap_62;
+    HashMap<String, Pair<ReifiedRelationshipInstance, Map<String, String>>> _hashMap_63 = new HashMap<String, Pair<ReifiedRelationshipInstance, Map<String, String>>>();
+    this.reifiedRelationshipInstances = _hashMap_63;
+    HashMap<String, Pair<ReifiedRelationshipInstanceDomain, Map<String, String>>> _hashMap_64 = new HashMap<String, Pair<ReifiedRelationshipInstanceDomain, Map<String, String>>>();
+    this.reifiedRelationshipInstanceDomains = _hashMap_64;
+    HashMap<String, Pair<ReifiedRelationshipInstanceRange, Map<String, String>>> _hashMap_65 = new HashMap<String, Pair<ReifiedRelationshipInstanceRange, Map<String, String>>>();
+    this.reifiedRelationshipInstanceRanges = _hashMap_65;
+    HashMap<String, Pair<UnreifiedRelationshipInstanceTuple, Map<String, String>>> _hashMap_66 = new HashMap<String, Pair<UnreifiedRelationshipInstanceTuple, Map<String, String>>>();
+    this.unreifiedRelationshipInstanceTuples = _hashMap_66;
+    HashMap<String, Pair<SingletonInstanceStructuredDataPropertyValue, Map<String, String>>> _hashMap_67 = new HashMap<String, Pair<SingletonInstanceStructuredDataPropertyValue, Map<String, String>>>();
+    this.singletonInstanceStructuredDataPropertyValues = _hashMap_67;
+    HashMap<String, Pair<SingletonInstanceScalarDataPropertyValue, Map<String, String>>> _hashMap_68 = new HashMap<String, Pair<SingletonInstanceScalarDataPropertyValue, Map<String, String>>>();
+    this.singletonInstanceScalarDataPropertyValues = _hashMap_68;
+    HashMap<String, Pair<StructuredDataPropertyTuple, Map<String, String>>> _hashMap_69 = new HashMap<String, Pair<StructuredDataPropertyTuple, Map<String, String>>>();
+    this.structuredDataPropertyTuples = _hashMap_69;
+    HashMap<String, Pair<ScalarDataPropertyValue, Map<String, String>>> _hashMap_70 = new HashMap<String, Pair<ScalarDataPropertyValue, Map<String, String>>>();
+    this.scalarDataPropertyValues = _hashMap_70;
+    HashMap<String, Pair<AnnotationPropertyValue, Map<String, String>>> _hashMap_71 = new HashMap<String, Pair<AnnotationPropertyValue, Map<String, String>>>();
+    this.annotationPropertyValues = _hashMap_71;
+    HashMap<String, Pair<ForwardProperty, Map<String, String>>> _hashMap_72 = new HashMap<String, Pair<ForwardProperty, Map<String, String>>>();
+    this.forwardProperties = _hashMap_72;
+    HashMap<String, Pair<InverseProperty, Map<String, String>>> _hashMap_73 = new HashMap<String, Pair<InverseProperty, Map<String, String>>>();
+    this.inverseProperties = _hashMap_73;
+    HashMap<String, Pair<Module, Map<String, String>>> _hashMap_74 = new HashMap<String, Pair<Module, Map<String, String>>>();
+    this.modules = _hashMap_74;
+    HashMap<String, Pair<LogicalElement, Map<String, String>>> _hashMap_75 = new HashMap<String, Pair<LogicalElement, Map<String, String>>>();
+    this.logicalElements = _hashMap_75;
+    HashMap<String, Pair<Entity, Map<String, String>>> _hashMap_76 = new HashMap<String, Pair<Entity, Map<String, String>>>();
+    this.entities = _hashMap_76;
+    HashMap<String, Pair<EntityRelationship, Map<String, String>>> _hashMap_77 = new HashMap<String, Pair<EntityRelationship, Map<String, String>>>();
+    this.entityRelationships = _hashMap_77;
+    HashMap<String, Pair<DataRange, Map<String, String>>> _hashMap_78 = new HashMap<String, Pair<DataRange, Map<String, String>>>();
+    this.dataRanges = _hashMap_78;
+    HashMap<String, Pair<DataRelationshipToScalar, Map<String, String>>> _hashMap_79 = new HashMap<String, Pair<DataRelationshipToScalar, Map<String, String>>>();
+    this.dataRelationshipToScalars = _hashMap_79;
+    HashMap<String, Pair<DataRelationshipToStructure, Map<String, String>>> _hashMap_80 = new HashMap<String, Pair<DataRelationshipToStructure, Map<String, String>>>();
+    this.dataRelationshipToStructures = _hashMap_80;
+    HashMap<String, Pair<RestrictionStructuredDataPropertyContext, Map<String, String>>> _hashMap_81 = new HashMap<String, Pair<RestrictionStructuredDataPropertyContext, Map<String, String>>>();
+    this.restrictionStructuredDataPropertyContexts = _hashMap_81;
+    HashMap<String, Pair<TerminologyBox, Map<String, String>>> _hashMap_82 = new HashMap<String, Pair<TerminologyBox, Map<String, String>>>();
+    this.terminologyBoxes = _hashMap_82;
+    HashMap<String, Pair<ConceptTreeDisjunction, Map<String, String>>> _hashMap_83 = new HashMap<String, Pair<ConceptTreeDisjunction, Map<String, String>>>();
+    this.conceptTreeDisjunctions = _hashMap_83;
+    HashMap<String, Pair<ConceptualEntitySingletonInstance, Map<String, String>>> _hashMap_84 = new HashMap<String, Pair<ConceptualEntitySingletonInstance, Map<String, String>>>();
+    this.conceptualEntitySingletonInstances = _hashMap_84;
+    HashMap<String, Pair<SingletonInstanceStructuredDataPropertyContext, Map<String, String>>> _hashMap_85 = new HashMap<String, Pair<SingletonInstanceStructuredDataPropertyContext, Map<String, String>>>();
+    this.singletonInstanceStructuredDataPropertyContexts = _hashMap_85;
   }
   
   public static void save(final Extent e, final ZipArchiveOutputStream zos) {
@@ -823,211 +853,259 @@ public class OMLSpecificationTables {
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_42 = new ZipArchiveEntry("EntityExistentialRestrictionAxioms.json");
+      ZipArchiveEntry _zipArchiveEntry_42 = new ZipArchiveEntry("EntityExistentialForwardReifiedRestrictionAxioms.json");
       entry = _zipArchiveEntry_42;
       zos.putArchiveEntry(entry);
       try {
-        zos.write(OMLSpecificationTables.entityExistentialRestrictionAxiomsByteArray(e));
+        zos.write(OMLSpecificationTables.entityExistentialForwardReifiedRestrictionAxiomsByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_43 = new ZipArchiveEntry("EntityUniversalRestrictionAxioms.json");
+      ZipArchiveEntry _zipArchiveEntry_43 = new ZipArchiveEntry("EntityExistentialInverseReifiedRestrictionAxioms.json");
       entry = _zipArchiveEntry_43;
       zos.putArchiveEntry(entry);
       try {
-        zos.write(OMLSpecificationTables.entityUniversalRestrictionAxiomsByteArray(e));
+        zos.write(OMLSpecificationTables.entityExistentialInverseReifiedRestrictionAxiomsByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_44 = new ZipArchiveEntry("EntityScalarDataPropertyExistentialRestrictionAxioms.json");
+      ZipArchiveEntry _zipArchiveEntry_44 = new ZipArchiveEntry("EntityExistentialUnreifiedRestrictionAxioms.json");
       entry = _zipArchiveEntry_44;
+      zos.putArchiveEntry(entry);
+      try {
+        zos.write(OMLSpecificationTables.entityExistentialUnreifiedRestrictionAxiomsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
+      ZipArchiveEntry _zipArchiveEntry_45 = new ZipArchiveEntry("EntityUniversalForwardReifiedRestrictionAxioms.json");
+      entry = _zipArchiveEntry_45;
+      zos.putArchiveEntry(entry);
+      try {
+        zos.write(OMLSpecificationTables.entityUniversalForwardReifiedRestrictionAxiomsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
+      ZipArchiveEntry _zipArchiveEntry_46 = new ZipArchiveEntry("EntityUniversalInverseReifiedRestrictionAxioms.json");
+      entry = _zipArchiveEntry_46;
+      zos.putArchiveEntry(entry);
+      try {
+        zos.write(OMLSpecificationTables.entityUniversalInverseReifiedRestrictionAxiomsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
+      ZipArchiveEntry _zipArchiveEntry_47 = new ZipArchiveEntry("EntityUniversalUnreifiedRestrictionAxioms.json");
+      entry = _zipArchiveEntry_47;
+      zos.putArchiveEntry(entry);
+      try {
+        zos.write(OMLSpecificationTables.entityUniversalUnreifiedRestrictionAxiomsByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
+      ZipArchiveEntry _zipArchiveEntry_48 = new ZipArchiveEntry("EntityScalarDataPropertyExistentialRestrictionAxioms.json");
+      entry = _zipArchiveEntry_48;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.entityScalarDataPropertyExistentialRestrictionAxiomsByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_45 = new ZipArchiveEntry("EntityScalarDataPropertyParticularRestrictionAxioms.json");
-      entry = _zipArchiveEntry_45;
+      ZipArchiveEntry _zipArchiveEntry_49 = new ZipArchiveEntry("EntityScalarDataPropertyParticularRestrictionAxioms.json");
+      entry = _zipArchiveEntry_49;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.entityScalarDataPropertyParticularRestrictionAxiomsByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_46 = new ZipArchiveEntry("EntityScalarDataPropertyUniversalRestrictionAxioms.json");
-      entry = _zipArchiveEntry_46;
+      ZipArchiveEntry _zipArchiveEntry_50 = new ZipArchiveEntry("EntityScalarDataPropertyUniversalRestrictionAxioms.json");
+      entry = _zipArchiveEntry_50;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.entityScalarDataPropertyUniversalRestrictionAxiomsByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_47 = new ZipArchiveEntry("EntityStructuredDataPropertyParticularRestrictionAxioms.json");
-      entry = _zipArchiveEntry_47;
+      ZipArchiveEntry _zipArchiveEntry_51 = new ZipArchiveEntry("EntityStructuredDataPropertyParticularRestrictionAxioms.json");
+      entry = _zipArchiveEntry_51;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.entityStructuredDataPropertyParticularRestrictionAxiomsByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_48 = new ZipArchiveEntry("RestrictionStructuredDataPropertyTuples.json");
-      entry = _zipArchiveEntry_48;
+      ZipArchiveEntry _zipArchiveEntry_52 = new ZipArchiveEntry("RestrictionStructuredDataPropertyTuples.json");
+      entry = _zipArchiveEntry_52;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.restrictionStructuredDataPropertyTuplesByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_49 = new ZipArchiveEntry("RestrictionScalarDataPropertyValues.json");
-      entry = _zipArchiveEntry_49;
+      ZipArchiveEntry _zipArchiveEntry_53 = new ZipArchiveEntry("RestrictionScalarDataPropertyValues.json");
+      entry = _zipArchiveEntry_53;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.restrictionScalarDataPropertyValuesByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_50 = new ZipArchiveEntry("AspectSpecializationAxioms.json");
-      entry = _zipArchiveEntry_50;
+      ZipArchiveEntry _zipArchiveEntry_54 = new ZipArchiveEntry("AspectSpecializationAxioms.json");
+      entry = _zipArchiveEntry_54;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.aspectSpecializationAxiomsByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_51 = new ZipArchiveEntry("ConceptSpecializationAxioms.json");
-      entry = _zipArchiveEntry_51;
+      ZipArchiveEntry _zipArchiveEntry_55 = new ZipArchiveEntry("ConceptSpecializationAxioms.json");
+      entry = _zipArchiveEntry_55;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.conceptSpecializationAxiomsByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_52 = new ZipArchiveEntry("ReifiedRelationshipSpecializationAxioms.json");
-      entry = _zipArchiveEntry_52;
+      ZipArchiveEntry _zipArchiveEntry_56 = new ZipArchiveEntry("ReifiedRelationshipSpecializationAxioms.json");
+      entry = _zipArchiveEntry_56;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.reifiedRelationshipSpecializationAxiomsByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_53 = new ZipArchiveEntry("SubDataPropertyOfAxioms.json");
-      entry = _zipArchiveEntry_53;
+      ZipArchiveEntry _zipArchiveEntry_57 = new ZipArchiveEntry("SubDataPropertyOfAxioms.json");
+      entry = _zipArchiveEntry_57;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.subDataPropertyOfAxiomsByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_54 = new ZipArchiveEntry("SubObjectPropertyOfAxioms.json");
-      entry = _zipArchiveEntry_54;
+      ZipArchiveEntry _zipArchiveEntry_58 = new ZipArchiveEntry("SubObjectPropertyOfAxioms.json");
+      entry = _zipArchiveEntry_58;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.subObjectPropertyOfAxiomsByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_55 = new ZipArchiveEntry("RootConceptTaxonomyAxioms.json");
-      entry = _zipArchiveEntry_55;
+      ZipArchiveEntry _zipArchiveEntry_59 = new ZipArchiveEntry("RootConceptTaxonomyAxioms.json");
+      entry = _zipArchiveEntry_59;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.rootConceptTaxonomyAxiomsByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_56 = new ZipArchiveEntry("AnonymousConceptUnionAxioms.json");
-      entry = _zipArchiveEntry_56;
+      ZipArchiveEntry _zipArchiveEntry_60 = new ZipArchiveEntry("AnonymousConceptUnionAxioms.json");
+      entry = _zipArchiveEntry_60;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.anonymousConceptUnionAxiomsByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_57 = new ZipArchiveEntry("SpecificDisjointConceptAxioms.json");
-      entry = _zipArchiveEntry_57;
+      ZipArchiveEntry _zipArchiveEntry_61 = new ZipArchiveEntry("SpecificDisjointConceptAxioms.json");
+      entry = _zipArchiveEntry_61;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.specificDisjointConceptAxiomsByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_58 = new ZipArchiveEntry("ConceptInstances.json");
-      entry = _zipArchiveEntry_58;
+      ZipArchiveEntry _zipArchiveEntry_62 = new ZipArchiveEntry("ConceptInstances.json");
+      entry = _zipArchiveEntry_62;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.conceptInstancesByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_59 = new ZipArchiveEntry("ReifiedRelationshipInstances.json");
-      entry = _zipArchiveEntry_59;
+      ZipArchiveEntry _zipArchiveEntry_63 = new ZipArchiveEntry("ReifiedRelationshipInstances.json");
+      entry = _zipArchiveEntry_63;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.reifiedRelationshipInstancesByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_60 = new ZipArchiveEntry("ReifiedRelationshipInstanceDomains.json");
-      entry = _zipArchiveEntry_60;
+      ZipArchiveEntry _zipArchiveEntry_64 = new ZipArchiveEntry("ReifiedRelationshipInstanceDomains.json");
+      entry = _zipArchiveEntry_64;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.reifiedRelationshipInstanceDomainsByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_61 = new ZipArchiveEntry("ReifiedRelationshipInstanceRanges.json");
-      entry = _zipArchiveEntry_61;
+      ZipArchiveEntry _zipArchiveEntry_65 = new ZipArchiveEntry("ReifiedRelationshipInstanceRanges.json");
+      entry = _zipArchiveEntry_65;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.reifiedRelationshipInstanceRangesByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_62 = new ZipArchiveEntry("UnreifiedRelationshipInstanceTuples.json");
-      entry = _zipArchiveEntry_62;
+      ZipArchiveEntry _zipArchiveEntry_66 = new ZipArchiveEntry("UnreifiedRelationshipInstanceTuples.json");
+      entry = _zipArchiveEntry_66;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.unreifiedRelationshipInstanceTuplesByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_63 = new ZipArchiveEntry("SingletonInstanceStructuredDataPropertyValues.json");
-      entry = _zipArchiveEntry_63;
+      ZipArchiveEntry _zipArchiveEntry_67 = new ZipArchiveEntry("SingletonInstanceStructuredDataPropertyValues.json");
+      entry = _zipArchiveEntry_67;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.singletonInstanceStructuredDataPropertyValuesByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_64 = new ZipArchiveEntry("SingletonInstanceScalarDataPropertyValues.json");
-      entry = _zipArchiveEntry_64;
+      ZipArchiveEntry _zipArchiveEntry_68 = new ZipArchiveEntry("SingletonInstanceScalarDataPropertyValues.json");
+      entry = _zipArchiveEntry_68;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.singletonInstanceScalarDataPropertyValuesByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_65 = new ZipArchiveEntry("StructuredDataPropertyTuples.json");
-      entry = _zipArchiveEntry_65;
+      ZipArchiveEntry _zipArchiveEntry_69 = new ZipArchiveEntry("StructuredDataPropertyTuples.json");
+      entry = _zipArchiveEntry_69;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.structuredDataPropertyTuplesByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_66 = new ZipArchiveEntry("ScalarDataPropertyValues.json");
-      entry = _zipArchiveEntry_66;
+      ZipArchiveEntry _zipArchiveEntry_70 = new ZipArchiveEntry("ScalarDataPropertyValues.json");
+      entry = _zipArchiveEntry_70;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.scalarDataPropertyValuesByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_67 = new ZipArchiveEntry("AnnotationPropertyValues.json");
-      entry = _zipArchiveEntry_67;
+      ZipArchiveEntry _zipArchiveEntry_71 = new ZipArchiveEntry("AnnotationPropertyValues.json");
+      entry = _zipArchiveEntry_71;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.annotationPropertyValuesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
+      ZipArchiveEntry _zipArchiveEntry_72 = new ZipArchiveEntry("ForwardProperties.json");
+      entry = _zipArchiveEntry_72;
+      zos.putArchiveEntry(entry);
+      try {
+        zos.write(OMLSpecificationTables.forwardPropertiesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
+      ZipArchiveEntry _zipArchiveEntry_73 = new ZipArchiveEntry("InverseProperties.json");
+      entry = _zipArchiveEntry_73;
+      zos.putArchiveEntry(entry);
+      try {
+        zos.write(OMLSpecificationTables.inversePropertiesByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
@@ -1936,12 +2014,6 @@ public class OMLSpecificationTables {
       pw.print(",");
       pw.print("\"name\":");
       pw.print(OMLTables.toString(it.name()));
-      pw.print(",");
-      pw.print("\"unreifiedPropertyName\":");
-      pw.print(OMLTables.toString(it.getUnreifiedPropertyName()));
-      pw.print(",");
-      pw.print("\"unreifiedInversePropertyName\":");
-      pw.print(OMLTables.toString(it.getUnreifiedInversePropertyName()));
       pw.println("}");
     };
     OMLTables.reifiedRelationships(e).forEach(_function);
@@ -2180,9 +2252,9 @@ public class OMLSpecificationTables {
       pw.print(it.getBodySegment().uuid());
       pw.print("\"");
       pw.print(",");
-      pw.print("\"reifiedRelationshipUUID\":");
+      pw.print("\"forwardPropertyUUID\":");
       pw.print("\"");
-      pw.print(it.getReifiedRelationship().uuid());
+      pw.print(it.getForwardProperty().uuid());
       pw.print("\"");
       pw.println("}");
     };
@@ -2284,9 +2356,9 @@ public class OMLSpecificationTables {
       pw.print(it.getBodySegment().uuid());
       pw.print("\"");
       pw.print(",");
-      pw.print("\"reifiedRelationshipUUID\":");
+      pw.print("\"inversePropertyUUID\":");
       pw.print("\"");
-      pw.print(it.getReifiedRelationship().uuid());
+      pw.print(it.getInverseProperty().uuid());
       pw.print("\"");
       pw.println("}");
     };
@@ -2373,10 +2445,10 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] entityExistentialRestrictionAxiomsByteArray(final Extent e) {
+  public static byte[] entityExistentialForwardReifiedRestrictionAxiomsByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
-    final Consumer<EntityExistentialRestrictionAxiom> _function = (EntityExistentialRestrictionAxiom it) -> {
+    final Consumer<EntityExistentialForwardReifiedRestrictionAxiom> _function = (EntityExistentialForwardReifiedRestrictionAxiom it) -> {
       pw.print("{");
       pw.print("\"uuid\":");
       pw.print("\"");
@@ -2388,11 +2460,6 @@ public class OMLSpecificationTables {
       pw.print(it.getTbox().uuid());
       pw.print("\"");
       pw.print(",");
-      pw.print("\"restrictedRelationUUID\":");
-      pw.print("\"");
-      pw.print(it.getRestrictedRelation().uuid());
-      pw.print("\"");
-      pw.print(",");
       pw.print("\"restrictedDomainUUID\":");
       pw.print("\"");
       pw.print(it.getRestrictedDomain().uuid());
@@ -2402,17 +2469,22 @@ public class OMLSpecificationTables {
       pw.print("\"");
       pw.print(it.getRestrictedRange().uuid());
       pw.print("\"");
+      pw.print(",");
+      pw.print("\"forwardPropertyUUID\":");
+      pw.print("\"");
+      pw.print(it.getForwardProperty().uuid());
+      pw.print("\"");
       pw.println("}");
     };
-    OMLTables.entityExistentialRestrictionAxioms(e).forEach(_function);
+    OMLTables.entityExistentialForwardReifiedRestrictionAxioms(e).forEach(_function);
     pw.close();
     return bos.toByteArray();
   }
   
-  public static byte[] entityUniversalRestrictionAxiomsByteArray(final Extent e) {
+  public static byte[] entityExistentialInverseReifiedRestrictionAxiomsByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
-    final Consumer<EntityUniversalRestrictionAxiom> _function = (EntityUniversalRestrictionAxiom it) -> {
+    final Consumer<EntityExistentialInverseReifiedRestrictionAxiom> _function = (EntityExistentialInverseReifiedRestrictionAxiom it) -> {
       pw.print("{");
       pw.print("\"uuid\":");
       pw.print("\"");
@@ -2424,9 +2496,40 @@ public class OMLSpecificationTables {
       pw.print(it.getTbox().uuid());
       pw.print("\"");
       pw.print(",");
-      pw.print("\"restrictedRelationUUID\":");
+      pw.print("\"restrictedDomainUUID\":");
       pw.print("\"");
-      pw.print(it.getRestrictedRelation().uuid());
+      pw.print(it.getRestrictedDomain().uuid());
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"restrictedRangeUUID\":");
+      pw.print("\"");
+      pw.print(it.getRestrictedRange().uuid());
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"inversePropertyUUID\":");
+      pw.print("\"");
+      pw.print(it.getInverseProperty().uuid());
+      pw.print("\"");
+      pw.println("}");
+    };
+    OMLTables.entityExistentialInverseReifiedRestrictionAxioms(e).forEach(_function);
+    pw.close();
+    return bos.toByteArray();
+  }
+  
+  public static byte[] entityExistentialUnreifiedRestrictionAxiomsByteArray(final Extent e) {
+    final ByteArrayOutputStream bos = new ByteArrayOutputStream();
+    final PrintWriter pw = new PrintWriter(bos);
+    final Consumer<EntityExistentialUnreifiedRestrictionAxiom> _function = (EntityExistentialUnreifiedRestrictionAxiom it) -> {
+      pw.print("{");
+      pw.print("\"uuid\":");
+      pw.print("\"");
+      pw.print(it.uuid());
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"tboxUUID\":");
+      pw.print("\"");
+      pw.print(it.getTbox().uuid());
       pw.print("\"");
       pw.print(",");
       pw.print("\"restrictedDomainUUID\":");
@@ -2438,9 +2541,122 @@ public class OMLSpecificationTables {
       pw.print("\"");
       pw.print(it.getRestrictedRange().uuid());
       pw.print("\"");
+      pw.print(",");
+      pw.print("\"restrictedUnreifiedRelationshipUUID\":");
+      pw.print("\"");
+      pw.print(it.getRestrictedUnreifiedRelationship().uuid());
+      pw.print("\"");
       pw.println("}");
     };
-    OMLTables.entityUniversalRestrictionAxioms(e).forEach(_function);
+    OMLTables.entityExistentialUnreifiedRestrictionAxioms(e).forEach(_function);
+    pw.close();
+    return bos.toByteArray();
+  }
+  
+  public static byte[] entityUniversalForwardReifiedRestrictionAxiomsByteArray(final Extent e) {
+    final ByteArrayOutputStream bos = new ByteArrayOutputStream();
+    final PrintWriter pw = new PrintWriter(bos);
+    final Consumer<EntityUniversalForwardReifiedRestrictionAxiom> _function = (EntityUniversalForwardReifiedRestrictionAxiom it) -> {
+      pw.print("{");
+      pw.print("\"uuid\":");
+      pw.print("\"");
+      pw.print(it.uuid());
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"tboxUUID\":");
+      pw.print("\"");
+      pw.print(it.getTbox().uuid());
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"restrictedDomainUUID\":");
+      pw.print("\"");
+      pw.print(it.getRestrictedDomain().uuid());
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"restrictedRangeUUID\":");
+      pw.print("\"");
+      pw.print(it.getRestrictedRange().uuid());
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"forwardPropertyUUID\":");
+      pw.print("\"");
+      pw.print(it.getForwardProperty().uuid());
+      pw.print("\"");
+      pw.println("}");
+    };
+    OMLTables.entityUniversalForwardReifiedRestrictionAxioms(e).forEach(_function);
+    pw.close();
+    return bos.toByteArray();
+  }
+  
+  public static byte[] entityUniversalInverseReifiedRestrictionAxiomsByteArray(final Extent e) {
+    final ByteArrayOutputStream bos = new ByteArrayOutputStream();
+    final PrintWriter pw = new PrintWriter(bos);
+    final Consumer<EntityUniversalInverseReifiedRestrictionAxiom> _function = (EntityUniversalInverseReifiedRestrictionAxiom it) -> {
+      pw.print("{");
+      pw.print("\"uuid\":");
+      pw.print("\"");
+      pw.print(it.uuid());
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"tboxUUID\":");
+      pw.print("\"");
+      pw.print(it.getTbox().uuid());
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"restrictedDomainUUID\":");
+      pw.print("\"");
+      pw.print(it.getRestrictedDomain().uuid());
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"restrictedRangeUUID\":");
+      pw.print("\"");
+      pw.print(it.getRestrictedRange().uuid());
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"inversePropertyUUID\":");
+      pw.print("\"");
+      pw.print(it.getInverseProperty().uuid());
+      pw.print("\"");
+      pw.println("}");
+    };
+    OMLTables.entityUniversalInverseReifiedRestrictionAxioms(e).forEach(_function);
+    pw.close();
+    return bos.toByteArray();
+  }
+  
+  public static byte[] entityUniversalUnreifiedRestrictionAxiomsByteArray(final Extent e) {
+    final ByteArrayOutputStream bos = new ByteArrayOutputStream();
+    final PrintWriter pw = new PrintWriter(bos);
+    final Consumer<EntityUniversalUnreifiedRestrictionAxiom> _function = (EntityUniversalUnreifiedRestrictionAxiom it) -> {
+      pw.print("{");
+      pw.print("\"uuid\":");
+      pw.print("\"");
+      pw.print(it.uuid());
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"tboxUUID\":");
+      pw.print("\"");
+      pw.print(it.getTbox().uuid());
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"restrictedDomainUUID\":");
+      pw.print("\"");
+      pw.print(it.getRestrictedDomain().uuid());
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"restrictedRangeUUID\":");
+      pw.print("\"");
+      pw.print(it.getRestrictedRange().uuid());
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"restrictedUnreifiedRelationshipUUID\":");
+      pw.print("\"");
+      pw.print(it.getRestrictedUnreifiedRelationship().uuid());
+      pw.print("\"");
+      pw.println("}");
+    };
+    OMLTables.entityUniversalUnreifiedRestrictionAxioms(e).forEach(_function);
     pw.close();
     return bos.toByteArray();
   }
@@ -3237,6 +3453,54 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
+  public static byte[] forwardPropertiesByteArray(final Extent e) {
+    final ByteArrayOutputStream bos = new ByteArrayOutputStream();
+    final PrintWriter pw = new PrintWriter(bos);
+    final Consumer<ForwardProperty> _function = (ForwardProperty it) -> {
+      pw.print("{");
+      pw.print("\"uuid\":");
+      pw.print("\"");
+      pw.print(it.uuid());
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"name\":");
+      pw.print(OMLTables.toString(it.name()));
+      pw.print(",");
+      pw.print("\"reifiedRelationshipUUID\":");
+      pw.print("\"");
+      pw.print(it.getReifiedRelationship().uuid());
+      pw.print("\"");
+      pw.println("}");
+    };
+    OMLTables.forwardProperties(e).forEach(_function);
+    pw.close();
+    return bos.toByteArray();
+  }
+  
+  public static byte[] inversePropertiesByteArray(final Extent e) {
+    final ByteArrayOutputStream bos = new ByteArrayOutputStream();
+    final PrintWriter pw = new PrintWriter(bos);
+    final Consumer<InverseProperty> _function = (InverseProperty it) -> {
+      pw.print("{");
+      pw.print("\"uuid\":");
+      pw.print("\"");
+      pw.print(it.uuid());
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"name\":");
+      pw.print(OMLTables.toString(it.name()));
+      pw.print(",");
+      pw.print("\"reifiedRelationshipUUID\":");
+      pw.print("\"");
+      pw.print(it.getReifiedRelationship().uuid());
+      pw.print("\"");
+      pw.println("}");
+    };
+    OMLTables.inverseProperties(e).forEach(_function);
+    pw.close();
+    return bos.toByteArray();
+  }
+  
   public static void load(final OMLZipResourceSet rs, final OMLZipResource r, final File omlZipFile) {
     try {
       final OMLSpecificationTables tables = new OMLSpecificationTables();
@@ -3377,11 +3641,23 @@ public class OMLSpecificationTables {
               case "UnreifiedRelationshipInversePropertyPredicates.json":
                 tables.readUnreifiedRelationshipInversePropertyPredicates(lines);
                 break;
-              case "EntityExistentialRestrictionAxioms.json":
-                tables.readEntityExistentialRestrictionAxioms(lines);
+              case "EntityExistentialForwardReifiedRestrictionAxioms.json":
+                tables.readEntityExistentialForwardReifiedRestrictionAxioms(lines);
                 break;
-              case "EntityUniversalRestrictionAxioms.json":
-                tables.readEntityUniversalRestrictionAxioms(lines);
+              case "EntityExistentialInverseReifiedRestrictionAxioms.json":
+                tables.readEntityExistentialInverseReifiedRestrictionAxioms(lines);
+                break;
+              case "EntityExistentialUnreifiedRestrictionAxioms.json":
+                tables.readEntityExistentialUnreifiedRestrictionAxioms(lines);
+                break;
+              case "EntityUniversalForwardReifiedRestrictionAxioms.json":
+                tables.readEntityUniversalForwardReifiedRestrictionAxioms(lines);
+                break;
+              case "EntityUniversalInverseReifiedRestrictionAxioms.json":
+                tables.readEntityUniversalInverseReifiedRestrictionAxioms(lines);
+                break;
+              case "EntityUniversalUnreifiedRestrictionAxioms.json":
+                tables.readEntityUniversalUnreifiedRestrictionAxioms(lines);
                 break;
               case "EntityScalarDataPropertyExistentialRestrictionAxioms.json":
                 tables.readEntityScalarDataPropertyExistentialRestrictionAxioms(lines);
@@ -3454,6 +3730,12 @@ public class OMLSpecificationTables {
                 break;
               case "AnnotationPropertyValues.json":
                 tables.readAnnotationPropertyValues(lines);
+                break;
+              case "ForwardProperties.json":
+                tables.readForwardProperties(lines);
+                break;
+              case "InverseProperties.json":
+                tables.readInverseProperties(lines);
                 break;
               default:
                 String _name_1 = ze.getName();
@@ -3839,8 +4121,6 @@ public class OMLSpecificationTables {
       oml.setIsSymmetric((OMLTables.toEBoolean(kv.remove("isSymmetric"))).booleanValue());
       oml.setIsTransitive((OMLTables.toEBoolean(kv.remove("isTransitive"))).booleanValue());
       oml.setName(OMLTables.toLocalName(kv.remove("name")));
-      oml.setUnreifiedPropertyName(OMLTables.toLocalName(kv.remove("unreifiedPropertyName")));
-      oml.setUnreifiedInversePropertyName(OMLTables.toLocalName(kv.remove("unreifiedInversePropertyName")));
       final Pair<ReifiedRelationship, Map<String, String>> pair = new Pair<ReifiedRelationship, Map<String, String>>(oml, kv);
       this.reifiedRelationships.put(uuid, pair);
     };
@@ -4012,24 +4292,68 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readEntityExistentialRestrictionAxioms(final ArrayList<String> lines) {
+  protected void readEntityExistentialForwardReifiedRestrictionAxioms(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final EntityExistentialRestrictionAxiom oml = this.omlTerminologiesFactory.createEntityExistentialRestrictionAxiom();
+      final EntityExistentialForwardReifiedRestrictionAxiom oml = this.omlTerminologiesFactory.createEntityExistentialForwardReifiedRestrictionAxiom();
       final String uuid = kv.remove("uuid");
-      final Pair<EntityExistentialRestrictionAxiom, Map<String, String>> pair = new Pair<EntityExistentialRestrictionAxiom, Map<String, String>>(oml, kv);
-      this.entityExistentialRestrictionAxioms.put(uuid, pair);
+      final Pair<EntityExistentialForwardReifiedRestrictionAxiom, Map<String, String>> pair = new Pair<EntityExistentialForwardReifiedRestrictionAxiom, Map<String, String>>(oml, kv);
+      this.entityExistentialForwardReifiedRestrictionAxioms.put(uuid, pair);
     };
     kvs.forEach(_function);
   }
   
-  protected void readEntityUniversalRestrictionAxioms(final ArrayList<String> lines) {
+  protected void readEntityExistentialInverseReifiedRestrictionAxioms(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final EntityUniversalRestrictionAxiom oml = this.omlTerminologiesFactory.createEntityUniversalRestrictionAxiom();
+      final EntityExistentialInverseReifiedRestrictionAxiom oml = this.omlTerminologiesFactory.createEntityExistentialInverseReifiedRestrictionAxiom();
       final String uuid = kv.remove("uuid");
-      final Pair<EntityUniversalRestrictionAxiom, Map<String, String>> pair = new Pair<EntityUniversalRestrictionAxiom, Map<String, String>>(oml, kv);
-      this.entityUniversalRestrictionAxioms.put(uuid, pair);
+      final Pair<EntityExistentialInverseReifiedRestrictionAxiom, Map<String, String>> pair = new Pair<EntityExistentialInverseReifiedRestrictionAxiom, Map<String, String>>(oml, kv);
+      this.entityExistentialInverseReifiedRestrictionAxioms.put(uuid, pair);
+    };
+    kvs.forEach(_function);
+  }
+  
+  protected void readEntityExistentialUnreifiedRestrictionAxioms(final ArrayList<String> lines) {
+    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
+      final EntityExistentialUnreifiedRestrictionAxiom oml = this.omlTerminologiesFactory.createEntityExistentialUnreifiedRestrictionAxiom();
+      final String uuid = kv.remove("uuid");
+      final Pair<EntityExistentialUnreifiedRestrictionAxiom, Map<String, String>> pair = new Pair<EntityExistentialUnreifiedRestrictionAxiom, Map<String, String>>(oml, kv);
+      this.entityExistentialUnreifiedRestrictionAxioms.put(uuid, pair);
+    };
+    kvs.forEach(_function);
+  }
+  
+  protected void readEntityUniversalForwardReifiedRestrictionAxioms(final ArrayList<String> lines) {
+    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
+      final EntityUniversalForwardReifiedRestrictionAxiom oml = this.omlTerminologiesFactory.createEntityUniversalForwardReifiedRestrictionAxiom();
+      final String uuid = kv.remove("uuid");
+      final Pair<EntityUniversalForwardReifiedRestrictionAxiom, Map<String, String>> pair = new Pair<EntityUniversalForwardReifiedRestrictionAxiom, Map<String, String>>(oml, kv);
+      this.entityUniversalForwardReifiedRestrictionAxioms.put(uuid, pair);
+    };
+    kvs.forEach(_function);
+  }
+  
+  protected void readEntityUniversalInverseReifiedRestrictionAxioms(final ArrayList<String> lines) {
+    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
+      final EntityUniversalInverseReifiedRestrictionAxiom oml = this.omlTerminologiesFactory.createEntityUniversalInverseReifiedRestrictionAxiom();
+      final String uuid = kv.remove("uuid");
+      final Pair<EntityUniversalInverseReifiedRestrictionAxiom, Map<String, String>> pair = new Pair<EntityUniversalInverseReifiedRestrictionAxiom, Map<String, String>>(oml, kv);
+      this.entityUniversalInverseReifiedRestrictionAxioms.put(uuid, pair);
+    };
+    kvs.forEach(_function);
+  }
+  
+  protected void readEntityUniversalUnreifiedRestrictionAxioms(final ArrayList<String> lines) {
+    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
+      final EntityUniversalUnreifiedRestrictionAxiom oml = this.omlTerminologiesFactory.createEntityUniversalUnreifiedRestrictionAxiom();
+      final String uuid = kv.remove("uuid");
+      final Pair<EntityUniversalUnreifiedRestrictionAxiom, Map<String, String>> pair = new Pair<EntityUniversalUnreifiedRestrictionAxiom, Map<String, String>>(oml, kv);
+      this.entityUniversalUnreifiedRestrictionAxioms.put(uuid, pair);
     };
     kvs.forEach(_function);
   }
@@ -4306,6 +4630,30 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
+  protected void readForwardProperties(final ArrayList<String> lines) {
+    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
+      final ForwardProperty oml = this.omlTerminologiesFactory.createForwardProperty();
+      final String uuid = kv.remove("uuid");
+      oml.setName(OMLTables.toLocalName(kv.remove("name")));
+      final Pair<ForwardProperty, Map<String, String>> pair = new Pair<ForwardProperty, Map<String, String>>(oml, kv);
+      this.forwardProperties.put(uuid, pair);
+    };
+    kvs.forEach(_function);
+  }
+  
+  protected void readInverseProperties(final ArrayList<String> lines) {
+    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
+      final InverseProperty oml = this.omlTerminologiesFactory.createInverseProperty();
+      final String uuid = kv.remove("uuid");
+      oml.setName(OMLTables.toLocalName(kv.remove("name")));
+      final Pair<InverseProperty, Map<String, String>> pair = new Pair<InverseProperty, Map<String, String>>(oml, kv);
+      this.inverseProperties.put(uuid, pair);
+    };
+    kvs.forEach(_function);
+  }
+  
   protected <U extends Object, V extends U> void includeMap(final Map<String, Pair<U, Map<String, String>>> uMap, final Map<String, Pair<V, Map<String, String>>> vMap) {
     final BiConsumer<String, Pair<V, Map<String, String>>> _function = (String uuid, Pair<V, Map<String, String>> kv) -> {
       V _key = kv.getKey();
@@ -4358,8 +4706,12 @@ public class OMLSpecificationTables {
     this.<LogicalElement, ReifiedRelationshipSourceInversePropertyPredicate>includeMap(this.logicalElements, this.reifiedRelationshipSourceInversePropertyPredicates);
     this.<LogicalElement, ReifiedRelationshipTargetInversePropertyPredicate>includeMap(this.logicalElements, this.reifiedRelationshipTargetInversePropertyPredicates);
     this.<LogicalElement, UnreifiedRelationshipInversePropertyPredicate>includeMap(this.logicalElements, this.unreifiedRelationshipInversePropertyPredicates);
-    this.<LogicalElement, EntityExistentialRestrictionAxiom>includeMap(this.logicalElements, this.entityExistentialRestrictionAxioms);
-    this.<LogicalElement, EntityUniversalRestrictionAxiom>includeMap(this.logicalElements, this.entityUniversalRestrictionAxioms);
+    this.<LogicalElement, EntityExistentialForwardReifiedRestrictionAxiom>includeMap(this.logicalElements, this.entityExistentialForwardReifiedRestrictionAxioms);
+    this.<LogicalElement, EntityExistentialInverseReifiedRestrictionAxiom>includeMap(this.logicalElements, this.entityExistentialInverseReifiedRestrictionAxioms);
+    this.<LogicalElement, EntityExistentialUnreifiedRestrictionAxiom>includeMap(this.logicalElements, this.entityExistentialUnreifiedRestrictionAxioms);
+    this.<LogicalElement, EntityUniversalForwardReifiedRestrictionAxiom>includeMap(this.logicalElements, this.entityUniversalForwardReifiedRestrictionAxioms);
+    this.<LogicalElement, EntityUniversalInverseReifiedRestrictionAxiom>includeMap(this.logicalElements, this.entityUniversalInverseReifiedRestrictionAxioms);
+    this.<LogicalElement, EntityUniversalUnreifiedRestrictionAxiom>includeMap(this.logicalElements, this.entityUniversalUnreifiedRestrictionAxioms);
     this.<LogicalElement, EntityScalarDataPropertyExistentialRestrictionAxiom>includeMap(this.logicalElements, this.entityScalarDataPropertyExistentialRestrictionAxioms);
     this.<LogicalElement, EntityScalarDataPropertyParticularRestrictionAxiom>includeMap(this.logicalElements, this.entityScalarDataPropertyParticularRestrictionAxioms);
     this.<LogicalElement, EntityScalarDataPropertyUniversalRestrictionAxiom>includeMap(this.logicalElements, this.entityScalarDataPropertyUniversalRestrictionAxioms);
@@ -4383,6 +4735,8 @@ public class OMLSpecificationTables {
     this.<LogicalElement, SingletonInstanceScalarDataPropertyValue>includeMap(this.logicalElements, this.singletonInstanceScalarDataPropertyValues);
     this.<LogicalElement, StructuredDataPropertyTuple>includeMap(this.logicalElements, this.structuredDataPropertyTuples);
     this.<LogicalElement, ScalarDataPropertyValue>includeMap(this.logicalElements, this.scalarDataPropertyValues);
+    this.<LogicalElement, ForwardProperty>includeMap(this.logicalElements, this.forwardProperties);
+    this.<LogicalElement, InverseProperty>includeMap(this.logicalElements, this.inverseProperties);
     this.<Entity, Aspect>includeMap(this.entities, this.aspects);
     this.<Entity, Concept>includeMap(this.entities, this.concepts);
     this.<Entity, ReifiedRelationship>includeMap(this.entities, this.reifiedRelationships);
@@ -4450,8 +4804,12 @@ public class OMLSpecificationTables {
     this.resolveReifiedRelationshipSourceInversePropertyPredicates(rs);
     this.resolveReifiedRelationshipTargetInversePropertyPredicates(rs);
     this.resolveUnreifiedRelationshipInversePropertyPredicates(rs);
-    this.resolveEntityExistentialRestrictionAxioms(rs);
-    this.resolveEntityUniversalRestrictionAxioms(rs);
+    this.resolveEntityExistentialForwardReifiedRestrictionAxioms(rs);
+    this.resolveEntityExistentialInverseReifiedRestrictionAxioms(rs);
+    this.resolveEntityExistentialUnreifiedRestrictionAxioms(rs);
+    this.resolveEntityUniversalForwardReifiedRestrictionAxioms(rs);
+    this.resolveEntityUniversalInverseReifiedRestrictionAxioms(rs);
+    this.resolveEntityUniversalUnreifiedRestrictionAxioms(rs);
     this.resolveEntityScalarDataPropertyExistentialRestrictionAxioms(rs);
     this.resolveEntityScalarDataPropertyParticularRestrictionAxioms(rs);
     this.resolveEntityScalarDataPropertyUniversalRestrictionAxioms(rs);
@@ -4476,6 +4834,8 @@ public class OMLSpecificationTables {
     this.resolveStructuredDataPropertyTuples(rs);
     this.resolveScalarDataPropertyValues(rs);
     this.resolveAnnotationPropertyValues(rs);
+    this.resolveForwardProperties(rs);
+    this.resolveInverseProperties(rs);
     final Extent ext = this.omlCommonFactory.createExtent();
     final Function1<Pair<TerminologyGraph, Map<String, String>>, TerminologyGraph> _function = (Pair<TerminologyGraph, Map<String, String>> it) -> {
       return it.getKey();
@@ -5288,12 +5648,12 @@ public class OMLSpecificationTables {
           throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in reifiedRelationshipPropertyPredicates");
         }
         oml.setBodySegment(bodySegmentPair.getKey());
-        final String reifiedRelationshipXRef = kv.remove("reifiedRelationshipUUID");
-        final Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipPair = this.reifiedRelationships.get(reifiedRelationshipXRef);
-        if ((null == reifiedRelationshipPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationship in reifiedRelationshipPropertyPredicates");
+        final String forwardPropertyXRef = kv.remove("forwardPropertyUUID");
+        final Pair<ForwardProperty, Map<String, String>> forwardPropertyPair = this.forwardProperties.get(forwardPropertyXRef);
+        if ((null == forwardPropertyPair)) {
+          throw new IllegalArgumentException("Null cross-reference lookup for forwardProperty in reifiedRelationshipPropertyPredicates");
         }
-        oml.setReifiedRelationship(reifiedRelationshipPair.getKey());
+        oml.setForwardProperty(forwardPropertyPair.getKey());
       }
     };
     this.reifiedRelationshipPropertyPredicates.forEach(_function);
@@ -5384,12 +5744,12 @@ public class OMLSpecificationTables {
           throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in reifiedRelationshipInversePropertyPredicates");
         }
         oml.setBodySegment(bodySegmentPair.getKey());
-        final String reifiedRelationshipXRef = kv.remove("reifiedRelationshipUUID");
-        final Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipPair = this.reifiedRelationships.get(reifiedRelationshipXRef);
-        if ((null == reifiedRelationshipPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationship in reifiedRelationshipInversePropertyPredicates");
+        final String inversePropertyXRef = kv.remove("inversePropertyUUID");
+        final Pair<InverseProperty, Map<String, String>> inversePropertyPair = this.inverseProperties.get(inversePropertyXRef);
+        if ((null == inversePropertyPair)) {
+          throw new IllegalArgumentException("Null cross-reference lookup for inverseProperty in reifiedRelationshipInversePropertyPredicates");
         }
-        oml.setReifiedRelationship(reifiedRelationshipPair.getKey());
+        oml.setInverseProperty(inversePropertyPair.getKey());
       }
     };
     this.reifiedRelationshipInversePropertyPredicates.forEach(_function);
@@ -5467,9 +5827,9 @@ public class OMLSpecificationTables {
     this.unreifiedRelationshipInversePropertyPredicates.forEach(_function);
   }
   
-  protected void resolveEntityExistentialRestrictionAxioms(final OMLZipResourceSet rs) {
-    final BiConsumer<String, Pair<EntityExistentialRestrictionAxiom, Map<String, String>>> _function = (String uuid, Pair<EntityExistentialRestrictionAxiom, Map<String, String>> oml_kv) -> {
-      final EntityExistentialRestrictionAxiom oml = oml_kv.getKey();
+  protected void resolveEntityExistentialForwardReifiedRestrictionAxioms(final OMLZipResourceSet rs) {
+    final BiConsumer<String, Pair<EntityExistentialForwardReifiedRestrictionAxiom, Map<String, String>>> _function = (String uuid, Pair<EntityExistentialForwardReifiedRestrictionAxiom, Map<String, String>> oml_kv) -> {
+      final EntityExistentialForwardReifiedRestrictionAxiom oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
       boolean _isEmpty = kv.isEmpty();
       boolean _not = (!_isEmpty);
@@ -5477,35 +5837,35 @@ public class OMLSpecificationTables {
         final String tboxXRef = kv.remove("tboxUUID");
         final Pair<TerminologyBox, Map<String, String>> tboxPair = this.terminologyBoxes.get(tboxXRef);
         if ((null == tboxPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for tbox in entityExistentialRestrictionAxioms");
+          throw new IllegalArgumentException("Null cross-reference lookup for tbox in entityExistentialForwardReifiedRestrictionAxioms");
         }
         oml.setTbox(tboxPair.getKey());
-        final String restrictedRelationXRef = kv.remove("restrictedRelationUUID");
-        final Pair<EntityRelationship, Map<String, String>> restrictedRelationPair = this.entityRelationships.get(restrictedRelationXRef);
-        if ((null == restrictedRelationPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for restrictedRelation in entityExistentialRestrictionAxioms");
-        }
-        oml.setRestrictedRelation(restrictedRelationPair.getKey());
         final String restrictedDomainXRef = kv.remove("restrictedDomainUUID");
         final Pair<Entity, Map<String, String>> restrictedDomainPair = this.entities.get(restrictedDomainXRef);
         if ((null == restrictedDomainPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for restrictedDomain in entityExistentialRestrictionAxioms");
+          throw new IllegalArgumentException("Null cross-reference lookup for restrictedDomain in entityExistentialForwardReifiedRestrictionAxioms");
         }
         oml.setRestrictedDomain(restrictedDomainPair.getKey());
         final String restrictedRangeXRef = kv.remove("restrictedRangeUUID");
         final Pair<Entity, Map<String, String>> restrictedRangePair = this.entities.get(restrictedRangeXRef);
         if ((null == restrictedRangePair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for restrictedRange in entityExistentialRestrictionAxioms");
+          throw new IllegalArgumentException("Null cross-reference lookup for restrictedRange in entityExistentialForwardReifiedRestrictionAxioms");
         }
         oml.setRestrictedRange(restrictedRangePair.getKey());
+        final String forwardPropertyXRef = kv.remove("forwardPropertyUUID");
+        final Pair<ForwardProperty, Map<String, String>> forwardPropertyPair = this.forwardProperties.get(forwardPropertyXRef);
+        if ((null == forwardPropertyPair)) {
+          throw new IllegalArgumentException("Null cross-reference lookup for forwardProperty in entityExistentialForwardReifiedRestrictionAxioms");
+        }
+        oml.setForwardProperty(forwardPropertyPair.getKey());
       }
     };
-    this.entityExistentialRestrictionAxioms.forEach(_function);
+    this.entityExistentialForwardReifiedRestrictionAxioms.forEach(_function);
   }
   
-  protected void resolveEntityUniversalRestrictionAxioms(final OMLZipResourceSet rs) {
-    final BiConsumer<String, Pair<EntityUniversalRestrictionAxiom, Map<String, String>>> _function = (String uuid, Pair<EntityUniversalRestrictionAxiom, Map<String, String>> oml_kv) -> {
-      final EntityUniversalRestrictionAxiom oml = oml_kv.getKey();
+  protected void resolveEntityExistentialInverseReifiedRestrictionAxioms(final OMLZipResourceSet rs) {
+    final BiConsumer<String, Pair<EntityExistentialInverseReifiedRestrictionAxiom, Map<String, String>>> _function = (String uuid, Pair<EntityExistentialInverseReifiedRestrictionAxiom, Map<String, String>> oml_kv) -> {
+      final EntityExistentialInverseReifiedRestrictionAxiom oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
       boolean _isEmpty = kv.isEmpty();
       boolean _not = (!_isEmpty);
@@ -5513,30 +5873,174 @@ public class OMLSpecificationTables {
         final String tboxXRef = kv.remove("tboxUUID");
         final Pair<TerminologyBox, Map<String, String>> tboxPair = this.terminologyBoxes.get(tboxXRef);
         if ((null == tboxPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for tbox in entityUniversalRestrictionAxioms");
+          throw new IllegalArgumentException("Null cross-reference lookup for tbox in entityExistentialInverseReifiedRestrictionAxioms");
         }
         oml.setTbox(tboxPair.getKey());
-        final String restrictedRelationXRef = kv.remove("restrictedRelationUUID");
-        final Pair<EntityRelationship, Map<String, String>> restrictedRelationPair = this.entityRelationships.get(restrictedRelationXRef);
-        if ((null == restrictedRelationPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for restrictedRelation in entityUniversalRestrictionAxioms");
-        }
-        oml.setRestrictedRelation(restrictedRelationPair.getKey());
         final String restrictedDomainXRef = kv.remove("restrictedDomainUUID");
         final Pair<Entity, Map<String, String>> restrictedDomainPair = this.entities.get(restrictedDomainXRef);
         if ((null == restrictedDomainPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for restrictedDomain in entityUniversalRestrictionAxioms");
+          throw new IllegalArgumentException("Null cross-reference lookup for restrictedDomain in entityExistentialInverseReifiedRestrictionAxioms");
         }
         oml.setRestrictedDomain(restrictedDomainPair.getKey());
         final String restrictedRangeXRef = kv.remove("restrictedRangeUUID");
         final Pair<Entity, Map<String, String>> restrictedRangePair = this.entities.get(restrictedRangeXRef);
         if ((null == restrictedRangePair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for restrictedRange in entityUniversalRestrictionAxioms");
+          throw new IllegalArgumentException("Null cross-reference lookup for restrictedRange in entityExistentialInverseReifiedRestrictionAxioms");
         }
         oml.setRestrictedRange(restrictedRangePair.getKey());
+        final String inversePropertyXRef = kv.remove("inversePropertyUUID");
+        final Pair<InverseProperty, Map<String, String>> inversePropertyPair = this.inverseProperties.get(inversePropertyXRef);
+        if ((null == inversePropertyPair)) {
+          throw new IllegalArgumentException("Null cross-reference lookup for inverseProperty in entityExistentialInverseReifiedRestrictionAxioms");
+        }
+        oml.setInverseProperty(inversePropertyPair.getKey());
       }
     };
-    this.entityUniversalRestrictionAxioms.forEach(_function);
+    this.entityExistentialInverseReifiedRestrictionAxioms.forEach(_function);
+  }
+  
+  protected void resolveEntityExistentialUnreifiedRestrictionAxioms(final OMLZipResourceSet rs) {
+    final BiConsumer<String, Pair<EntityExistentialUnreifiedRestrictionAxiom, Map<String, String>>> _function = (String uuid, Pair<EntityExistentialUnreifiedRestrictionAxiom, Map<String, String>> oml_kv) -> {
+      final EntityExistentialUnreifiedRestrictionAxiom oml = oml_kv.getKey();
+      final Map<String, String> kv = oml_kv.getValue();
+      boolean _isEmpty = kv.isEmpty();
+      boolean _not = (!_isEmpty);
+      if (_not) {
+        final String tboxXRef = kv.remove("tboxUUID");
+        final Pair<TerminologyBox, Map<String, String>> tboxPair = this.terminologyBoxes.get(tboxXRef);
+        if ((null == tboxPair)) {
+          throw new IllegalArgumentException("Null cross-reference lookup for tbox in entityExistentialUnreifiedRestrictionAxioms");
+        }
+        oml.setTbox(tboxPair.getKey());
+        final String restrictedDomainXRef = kv.remove("restrictedDomainUUID");
+        final Pair<Entity, Map<String, String>> restrictedDomainPair = this.entities.get(restrictedDomainXRef);
+        if ((null == restrictedDomainPair)) {
+          throw new IllegalArgumentException("Null cross-reference lookup for restrictedDomain in entityExistentialUnreifiedRestrictionAxioms");
+        }
+        oml.setRestrictedDomain(restrictedDomainPair.getKey());
+        final String restrictedRangeXRef = kv.remove("restrictedRangeUUID");
+        final Pair<Entity, Map<String, String>> restrictedRangePair = this.entities.get(restrictedRangeXRef);
+        if ((null == restrictedRangePair)) {
+          throw new IllegalArgumentException("Null cross-reference lookup for restrictedRange in entityExistentialUnreifiedRestrictionAxioms");
+        }
+        oml.setRestrictedRange(restrictedRangePair.getKey());
+        final String restrictedUnreifiedRelationshipXRef = kv.remove("restrictedUnreifiedRelationshipUUID");
+        final Pair<UnreifiedRelationship, Map<String, String>> restrictedUnreifiedRelationshipPair = this.unreifiedRelationships.get(restrictedUnreifiedRelationshipXRef);
+        if ((null == restrictedUnreifiedRelationshipPair)) {
+          throw new IllegalArgumentException("Null cross-reference lookup for restrictedUnreifiedRelationship in entityExistentialUnreifiedRestrictionAxioms");
+        }
+        oml.setRestrictedUnreifiedRelationship(restrictedUnreifiedRelationshipPair.getKey());
+      }
+    };
+    this.entityExistentialUnreifiedRestrictionAxioms.forEach(_function);
+  }
+  
+  protected void resolveEntityUniversalForwardReifiedRestrictionAxioms(final OMLZipResourceSet rs) {
+    final BiConsumer<String, Pair<EntityUniversalForwardReifiedRestrictionAxiom, Map<String, String>>> _function = (String uuid, Pair<EntityUniversalForwardReifiedRestrictionAxiom, Map<String, String>> oml_kv) -> {
+      final EntityUniversalForwardReifiedRestrictionAxiom oml = oml_kv.getKey();
+      final Map<String, String> kv = oml_kv.getValue();
+      boolean _isEmpty = kv.isEmpty();
+      boolean _not = (!_isEmpty);
+      if (_not) {
+        final String tboxXRef = kv.remove("tboxUUID");
+        final Pair<TerminologyBox, Map<String, String>> tboxPair = this.terminologyBoxes.get(tboxXRef);
+        if ((null == tboxPair)) {
+          throw new IllegalArgumentException("Null cross-reference lookup for tbox in entityUniversalForwardReifiedRestrictionAxioms");
+        }
+        oml.setTbox(tboxPair.getKey());
+        final String restrictedDomainXRef = kv.remove("restrictedDomainUUID");
+        final Pair<Entity, Map<String, String>> restrictedDomainPair = this.entities.get(restrictedDomainXRef);
+        if ((null == restrictedDomainPair)) {
+          throw new IllegalArgumentException("Null cross-reference lookup for restrictedDomain in entityUniversalForwardReifiedRestrictionAxioms");
+        }
+        oml.setRestrictedDomain(restrictedDomainPair.getKey());
+        final String restrictedRangeXRef = kv.remove("restrictedRangeUUID");
+        final Pair<Entity, Map<String, String>> restrictedRangePair = this.entities.get(restrictedRangeXRef);
+        if ((null == restrictedRangePair)) {
+          throw new IllegalArgumentException("Null cross-reference lookup for restrictedRange in entityUniversalForwardReifiedRestrictionAxioms");
+        }
+        oml.setRestrictedRange(restrictedRangePair.getKey());
+        final String forwardPropertyXRef = kv.remove("forwardPropertyUUID");
+        final Pair<ForwardProperty, Map<String, String>> forwardPropertyPair = this.forwardProperties.get(forwardPropertyXRef);
+        if ((null == forwardPropertyPair)) {
+          throw new IllegalArgumentException("Null cross-reference lookup for forwardProperty in entityUniversalForwardReifiedRestrictionAxioms");
+        }
+        oml.setForwardProperty(forwardPropertyPair.getKey());
+      }
+    };
+    this.entityUniversalForwardReifiedRestrictionAxioms.forEach(_function);
+  }
+  
+  protected void resolveEntityUniversalInverseReifiedRestrictionAxioms(final OMLZipResourceSet rs) {
+    final BiConsumer<String, Pair<EntityUniversalInverseReifiedRestrictionAxiom, Map<String, String>>> _function = (String uuid, Pair<EntityUniversalInverseReifiedRestrictionAxiom, Map<String, String>> oml_kv) -> {
+      final EntityUniversalInverseReifiedRestrictionAxiom oml = oml_kv.getKey();
+      final Map<String, String> kv = oml_kv.getValue();
+      boolean _isEmpty = kv.isEmpty();
+      boolean _not = (!_isEmpty);
+      if (_not) {
+        final String tboxXRef = kv.remove("tboxUUID");
+        final Pair<TerminologyBox, Map<String, String>> tboxPair = this.terminologyBoxes.get(tboxXRef);
+        if ((null == tboxPair)) {
+          throw new IllegalArgumentException("Null cross-reference lookup for tbox in entityUniversalInverseReifiedRestrictionAxioms");
+        }
+        oml.setTbox(tboxPair.getKey());
+        final String restrictedDomainXRef = kv.remove("restrictedDomainUUID");
+        final Pair<Entity, Map<String, String>> restrictedDomainPair = this.entities.get(restrictedDomainXRef);
+        if ((null == restrictedDomainPair)) {
+          throw new IllegalArgumentException("Null cross-reference lookup for restrictedDomain in entityUniversalInverseReifiedRestrictionAxioms");
+        }
+        oml.setRestrictedDomain(restrictedDomainPair.getKey());
+        final String restrictedRangeXRef = kv.remove("restrictedRangeUUID");
+        final Pair<Entity, Map<String, String>> restrictedRangePair = this.entities.get(restrictedRangeXRef);
+        if ((null == restrictedRangePair)) {
+          throw new IllegalArgumentException("Null cross-reference lookup for restrictedRange in entityUniversalInverseReifiedRestrictionAxioms");
+        }
+        oml.setRestrictedRange(restrictedRangePair.getKey());
+        final String inversePropertyXRef = kv.remove("inversePropertyUUID");
+        final Pair<InverseProperty, Map<String, String>> inversePropertyPair = this.inverseProperties.get(inversePropertyXRef);
+        if ((null == inversePropertyPair)) {
+          throw new IllegalArgumentException("Null cross-reference lookup for inverseProperty in entityUniversalInverseReifiedRestrictionAxioms");
+        }
+        oml.setInverseProperty(inversePropertyPair.getKey());
+      }
+    };
+    this.entityUniversalInverseReifiedRestrictionAxioms.forEach(_function);
+  }
+  
+  protected void resolveEntityUniversalUnreifiedRestrictionAxioms(final OMLZipResourceSet rs) {
+    final BiConsumer<String, Pair<EntityUniversalUnreifiedRestrictionAxiom, Map<String, String>>> _function = (String uuid, Pair<EntityUniversalUnreifiedRestrictionAxiom, Map<String, String>> oml_kv) -> {
+      final EntityUniversalUnreifiedRestrictionAxiom oml = oml_kv.getKey();
+      final Map<String, String> kv = oml_kv.getValue();
+      boolean _isEmpty = kv.isEmpty();
+      boolean _not = (!_isEmpty);
+      if (_not) {
+        final String tboxXRef = kv.remove("tboxUUID");
+        final Pair<TerminologyBox, Map<String, String>> tboxPair = this.terminologyBoxes.get(tboxXRef);
+        if ((null == tboxPair)) {
+          throw new IllegalArgumentException("Null cross-reference lookup for tbox in entityUniversalUnreifiedRestrictionAxioms");
+        }
+        oml.setTbox(tboxPair.getKey());
+        final String restrictedDomainXRef = kv.remove("restrictedDomainUUID");
+        final Pair<Entity, Map<String, String>> restrictedDomainPair = this.entities.get(restrictedDomainXRef);
+        if ((null == restrictedDomainPair)) {
+          throw new IllegalArgumentException("Null cross-reference lookup for restrictedDomain in entityUniversalUnreifiedRestrictionAxioms");
+        }
+        oml.setRestrictedDomain(restrictedDomainPair.getKey());
+        final String restrictedRangeXRef = kv.remove("restrictedRangeUUID");
+        final Pair<Entity, Map<String, String>> restrictedRangePair = this.entities.get(restrictedRangeXRef);
+        if ((null == restrictedRangePair)) {
+          throw new IllegalArgumentException("Null cross-reference lookup for restrictedRange in entityUniversalUnreifiedRestrictionAxioms");
+        }
+        oml.setRestrictedRange(restrictedRangePair.getKey());
+        final String restrictedUnreifiedRelationshipXRef = kv.remove("restrictedUnreifiedRelationshipUUID");
+        final Pair<UnreifiedRelationship, Map<String, String>> restrictedUnreifiedRelationshipPair = this.unreifiedRelationships.get(restrictedUnreifiedRelationshipXRef);
+        if ((null == restrictedUnreifiedRelationshipPair)) {
+          throw new IllegalArgumentException("Null cross-reference lookup for restrictedUnreifiedRelationship in entityUniversalUnreifiedRestrictionAxioms");
+        }
+        oml.setRestrictedUnreifiedRelationship(restrictedUnreifiedRelationshipPair.getKey());
+      }
+    };
+    this.entityUniversalUnreifiedRestrictionAxioms.forEach(_function);
   }
   
   protected void resolveEntityScalarDataPropertyExistentialRestrictionAxioms(final OMLZipResourceSet rs) {
@@ -6247,6 +6751,42 @@ public class OMLSpecificationTables {
     this.annotationPropertyValues.forEach(_function);
   }
   
+  protected void resolveForwardProperties(final OMLZipResourceSet rs) {
+    final BiConsumer<String, Pair<ForwardProperty, Map<String, String>>> _function = (String uuid, Pair<ForwardProperty, Map<String, String>> oml_kv) -> {
+      final ForwardProperty oml = oml_kv.getKey();
+      final Map<String, String> kv = oml_kv.getValue();
+      boolean _isEmpty = kv.isEmpty();
+      boolean _not = (!_isEmpty);
+      if (_not) {
+        final String reifiedRelationshipXRef = kv.remove("reifiedRelationshipUUID");
+        final Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipPair = this.reifiedRelationships.get(reifiedRelationshipXRef);
+        if ((null == reifiedRelationshipPair)) {
+          throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationship in forwardProperties");
+        }
+        oml.setReifiedRelationship(reifiedRelationshipPair.getKey());
+      }
+    };
+    this.forwardProperties.forEach(_function);
+  }
+  
+  protected void resolveInverseProperties(final OMLZipResourceSet rs) {
+    final BiConsumer<String, Pair<InverseProperty, Map<String, String>>> _function = (String uuid, Pair<InverseProperty, Map<String, String>> oml_kv) -> {
+      final InverseProperty oml = oml_kv.getKey();
+      final Map<String, String> kv = oml_kv.getValue();
+      boolean _isEmpty = kv.isEmpty();
+      boolean _not = (!_isEmpty);
+      if (_not) {
+        final String reifiedRelationshipXRef = kv.remove("reifiedRelationshipUUID");
+        final Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipPair = this.reifiedRelationships.get(reifiedRelationshipXRef);
+        if ((null == reifiedRelationshipPair)) {
+          throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationship in inverseProperties");
+        }
+        oml.setReifiedRelationship(reifiedRelationshipPair.getKey());
+      }
+    };
+    this.inverseProperties.forEach(_function);
+  }
+  
   protected OMLZipResource loadOMLZipResource(final OMLZipResourceSet rs, final URI uri) {
     final Resource r = rs.getResource(uri, true);
     boolean _matched = false;
@@ -6772,24 +7312,72 @@ public class OMLSpecificationTables {
           }
         }
         if (!_matched_1) {
-          if (e instanceof EntityExistentialRestrictionAxiom) {
+          if (e instanceof EntityExistentialForwardReifiedRestrictionAxiom) {
             _matched_1=true;
             Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<EntityExistentialRestrictionAxiom, Map<String, String>> pair = new Pair<EntityExistentialRestrictionAxiom, Map<String, String>>(((EntityExistentialRestrictionAxiom)e), _emptyMap);
-            this.entityExistentialRestrictionAxioms.put(((EntityExistentialRestrictionAxiom)e).uuid(), pair);
-            String _uuid = ((EntityExistentialRestrictionAxiom)e).uuid();
+            final Pair<EntityExistentialForwardReifiedRestrictionAxiom, Map<String, String>> pair = new Pair<EntityExistentialForwardReifiedRestrictionAxiom, Map<String, String>>(((EntityExistentialForwardReifiedRestrictionAxiom)e), _emptyMap);
+            this.entityExistentialForwardReifiedRestrictionAxioms.put(((EntityExistentialForwardReifiedRestrictionAxiom)e).uuid(), pair);
+            String _uuid = ((EntityExistentialForwardReifiedRestrictionAxiom)e).uuid();
             Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
             Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
             this.logicalElements.put(_uuid, _pair);
           }
         }
         if (!_matched_1) {
-          if (e instanceof EntityUniversalRestrictionAxiom) {
+          if (e instanceof EntityExistentialInverseReifiedRestrictionAxiom) {
             _matched_1=true;
             Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<EntityUniversalRestrictionAxiom, Map<String, String>> pair = new Pair<EntityUniversalRestrictionAxiom, Map<String, String>>(((EntityUniversalRestrictionAxiom)e), _emptyMap);
-            this.entityUniversalRestrictionAxioms.put(((EntityUniversalRestrictionAxiom)e).uuid(), pair);
-            String _uuid = ((EntityUniversalRestrictionAxiom)e).uuid();
+            final Pair<EntityExistentialInverseReifiedRestrictionAxiom, Map<String, String>> pair = new Pair<EntityExistentialInverseReifiedRestrictionAxiom, Map<String, String>>(((EntityExistentialInverseReifiedRestrictionAxiom)e), _emptyMap);
+            this.entityExistentialInverseReifiedRestrictionAxioms.put(((EntityExistentialInverseReifiedRestrictionAxiom)e).uuid(), pair);
+            String _uuid = ((EntityExistentialInverseReifiedRestrictionAxiom)e).uuid();
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+            this.logicalElements.put(_uuid, _pair);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof EntityExistentialUnreifiedRestrictionAxiom) {
+            _matched_1=true;
+            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+            final Pair<EntityExistentialUnreifiedRestrictionAxiom, Map<String, String>> pair = new Pair<EntityExistentialUnreifiedRestrictionAxiom, Map<String, String>>(((EntityExistentialUnreifiedRestrictionAxiom)e), _emptyMap);
+            this.entityExistentialUnreifiedRestrictionAxioms.put(((EntityExistentialUnreifiedRestrictionAxiom)e).uuid(), pair);
+            String _uuid = ((EntityExistentialUnreifiedRestrictionAxiom)e).uuid();
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+            this.logicalElements.put(_uuid, _pair);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof EntityUniversalForwardReifiedRestrictionAxiom) {
+            _matched_1=true;
+            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+            final Pair<EntityUniversalForwardReifiedRestrictionAxiom, Map<String, String>> pair = new Pair<EntityUniversalForwardReifiedRestrictionAxiom, Map<String, String>>(((EntityUniversalForwardReifiedRestrictionAxiom)e), _emptyMap);
+            this.entityUniversalForwardReifiedRestrictionAxioms.put(((EntityUniversalForwardReifiedRestrictionAxiom)e).uuid(), pair);
+            String _uuid = ((EntityUniversalForwardReifiedRestrictionAxiom)e).uuid();
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+            this.logicalElements.put(_uuid, _pair);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof EntityUniversalInverseReifiedRestrictionAxiom) {
+            _matched_1=true;
+            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+            final Pair<EntityUniversalInverseReifiedRestrictionAxiom, Map<String, String>> pair = new Pair<EntityUniversalInverseReifiedRestrictionAxiom, Map<String, String>>(((EntityUniversalInverseReifiedRestrictionAxiom)e), _emptyMap);
+            this.entityUniversalInverseReifiedRestrictionAxioms.put(((EntityUniversalInverseReifiedRestrictionAxiom)e).uuid(), pair);
+            String _uuid = ((EntityUniversalInverseReifiedRestrictionAxiom)e).uuid();
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+            this.logicalElements.put(_uuid, _pair);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof EntityUniversalUnreifiedRestrictionAxiom) {
+            _matched_1=true;
+            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+            final Pair<EntityUniversalUnreifiedRestrictionAxiom, Map<String, String>> pair = new Pair<EntityUniversalUnreifiedRestrictionAxiom, Map<String, String>>(((EntityUniversalUnreifiedRestrictionAxiom)e), _emptyMap);
+            this.entityUniversalUnreifiedRestrictionAxioms.put(((EntityUniversalUnreifiedRestrictionAxiom)e).uuid(), pair);
+            String _uuid = ((EntityUniversalUnreifiedRestrictionAxiom)e).uuid();
             Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
             Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
             this.logicalElements.put(_uuid, _pair);
@@ -7077,6 +7665,30 @@ public class OMLSpecificationTables {
             Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
             final Pair<AnnotationPropertyValue, Map<String, String>> pair = new Pair<AnnotationPropertyValue, Map<String, String>>(((AnnotationPropertyValue)e), _emptyMap);
             this.annotationPropertyValues.put(((AnnotationPropertyValue)e).uuid(), pair);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof ForwardProperty) {
+            _matched_1=true;
+            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+            final Pair<ForwardProperty, Map<String, String>> pair = new Pair<ForwardProperty, Map<String, String>>(((ForwardProperty)e), _emptyMap);
+            this.forwardProperties.put(((ForwardProperty)e).uuid(), pair);
+            String _uuid = ((ForwardProperty)e).uuid();
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+            this.logicalElements.put(_uuid, _pair);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof InverseProperty) {
+            _matched_1=true;
+            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+            final Pair<InverseProperty, Map<String, String>> pair = new Pair<InverseProperty, Map<String, String>>(((InverseProperty)e), _emptyMap);
+            this.inverseProperties.put(((InverseProperty)e).uuid(), pair);
+            String _uuid = ((InverseProperty)e).uuid();
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+            this.logicalElements.put(_uuid, _pair);
           }
         }
       };

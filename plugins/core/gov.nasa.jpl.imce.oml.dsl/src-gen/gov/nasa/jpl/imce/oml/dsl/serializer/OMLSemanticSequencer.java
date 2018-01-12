@@ -63,15 +63,21 @@ import gov.nasa.jpl.imce.oml.model.terminologies.ChainRule;
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptPredicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptSpecializationAxiom;
-import gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialRestrictionAxiom;
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialForwardReifiedRestrictionAxiom;
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialInverseReifiedRestrictionAxiom;
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialUnreifiedRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyExistentialRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyParticularRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyUniversalRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataPropertyParticularRestrictionAxiom;
-import gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalRestrictionAxiom;
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalForwardReifiedRestrictionAxiom;
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalInverseReifiedRestrictionAxiom;
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalUnreifiedRestrictionAxiom;
+import gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction;
+import gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship;
@@ -262,8 +268,14 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case TerminologiesPackage.CONCEPT_SPECIALIZATION_AXIOM:
 				sequence_ConceptSpecializationAxiom(context, (ConceptSpecializationAxiom) semanticObject); 
 				return; 
-			case TerminologiesPackage.ENTITY_EXISTENTIAL_RESTRICTION_AXIOM:
-				sequence_EntityExistentialRestrictionAxiom(context, (EntityExistentialRestrictionAxiom) semanticObject); 
+			case TerminologiesPackage.ENTITY_EXISTENTIAL_FORWARD_REIFIED_RESTRICTION_AXIOM:
+				sequence_EntityExistentialForwardReifiedRestrictionAxiom(context, (EntityExistentialForwardReifiedRestrictionAxiom) semanticObject); 
+				return; 
+			case TerminologiesPackage.ENTITY_EXISTENTIAL_INVERSE_REIFIED_RESTRICTION_AXIOM:
+				sequence_EntityExistentialInverseReifiedRestrictionAxiom(context, (EntityExistentialInverseReifiedRestrictionAxiom) semanticObject); 
+				return; 
+			case TerminologiesPackage.ENTITY_EXISTENTIAL_UNREIFIED_RESTRICTION_AXIOM:
+				sequence_EntityExistentialUnreifiedRestrictionAxiom(context, (EntityExistentialUnreifiedRestrictionAxiom) semanticObject); 
 				return; 
 			case TerminologiesPackage.ENTITY_SCALAR_DATA_PROPERTY:
 				sequence_EntityScalarDataProperty(context, (EntityScalarDataProperty) semanticObject); 
@@ -283,11 +295,23 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case TerminologiesPackage.ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM:
 				sequence_EntityStructuredDataPropertyParticularRestrictionAxiom(context, (EntityStructuredDataPropertyParticularRestrictionAxiom) semanticObject); 
 				return; 
-			case TerminologiesPackage.ENTITY_UNIVERSAL_RESTRICTION_AXIOM:
-				sequence_EntityUniversalRestrictionAxiom(context, (EntityUniversalRestrictionAxiom) semanticObject); 
+			case TerminologiesPackage.ENTITY_UNIVERSAL_FORWARD_REIFIED_RESTRICTION_AXIOM:
+				sequence_EntityUniversalForwardReifiedRestrictionAxiom(context, (EntityUniversalForwardReifiedRestrictionAxiom) semanticObject); 
+				return; 
+			case TerminologiesPackage.ENTITY_UNIVERSAL_INVERSE_REIFIED_RESTRICTION_AXIOM:
+				sequence_EntityUniversalInverseReifiedRestrictionAxiom(context, (EntityUniversalInverseReifiedRestrictionAxiom) semanticObject); 
+				return; 
+			case TerminologiesPackage.ENTITY_UNIVERSAL_UNREIFIED_RESTRICTION_AXIOM:
+				sequence_EntityUniversalUnreifiedRestrictionAxiom(context, (EntityUniversalUnreifiedRestrictionAxiom) semanticObject); 
+				return; 
+			case TerminologiesPackage.FORWARD_PROPERTY:
+				sequence_ForwardProperty(context, (ForwardProperty) semanticObject); 
 				return; 
 			case TerminologiesPackage.IRI_SCALAR_RESTRICTION:
 				sequence_IRIScalarRestriction(context, (IRIScalarRestriction) semanticObject); 
+				return; 
+			case TerminologiesPackage.INVERSE_PROPERTY:
+				sequence_InverseProperty(context, (InverseProperty) semanticObject); 
 				return; 
 			case TerminologiesPackage.NUMERIC_SCALAR_RESTRICTION:
 				sequence_NumericScalarRestriction(context, (NumericScalarRestriction) semanticObject); 
@@ -666,20 +690,60 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
-	 *     TerminologyBoxStatement returns EntityExistentialRestrictionAxiom
-	 *     TermAxiom returns EntityExistentialRestrictionAxiom
-	 *     EntityRestrictionAxiom returns EntityExistentialRestrictionAxiom
-	 *     EntityExistentialRestrictionAxiom returns EntityExistentialRestrictionAxiom
+	 *     TerminologyBoxStatement returns EntityExistentialForwardReifiedRestrictionAxiom
+	 *     TermAxiom returns EntityExistentialForwardReifiedRestrictionAxiom
+	 *     EntityRestrictionAxiom returns EntityExistentialForwardReifiedRestrictionAxiom
+	 *     EntityExistentialForwardReifiedRestrictionAxiom returns EntityExistentialForwardReifiedRestrictionAxiom
 	 *
 	 * Constraint:
 	 *     (
 	 *         annotations+=AnnotationPropertyValue* 
 	 *         restrictedDomain=[Entity|Reference] 
-	 *         restrictedRelation=[EntityRelationship|Reference] 
+	 *         forwardProperty=[ForwardProperty|Reference] 
 	 *         restrictedRange=[Entity|Reference]
 	 *     )
 	 */
-	protected void sequence_EntityExistentialRestrictionAxiom(ISerializationContext context, EntityExistentialRestrictionAxiom semanticObject) {
+	protected void sequence_EntityExistentialForwardReifiedRestrictionAxiom(ISerializationContext context, EntityExistentialForwardReifiedRestrictionAxiom semanticObject) {
+		genericSequencer.createSequence(context, (EObject) semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     TerminologyBoxStatement returns EntityExistentialInverseReifiedRestrictionAxiom
+	 *     TermAxiom returns EntityExistentialInverseReifiedRestrictionAxiom
+	 *     EntityRestrictionAxiom returns EntityExistentialInverseReifiedRestrictionAxiom
+	 *     EntityExistentialInverseReifiedRestrictionAxiom returns EntityExistentialInverseReifiedRestrictionAxiom
+	 *
+	 * Constraint:
+	 *     (
+	 *         annotations+=AnnotationPropertyValue* 
+	 *         restrictedDomain=[Entity|Reference] 
+	 *         inverseProperty=[InverseProperty|Reference] 
+	 *         restrictedRange=[Entity|Reference]
+	 *     )
+	 */
+	protected void sequence_EntityExistentialInverseReifiedRestrictionAxiom(ISerializationContext context, EntityExistentialInverseReifiedRestrictionAxiom semanticObject) {
+		genericSequencer.createSequence(context, (EObject) semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     TerminologyBoxStatement returns EntityExistentialUnreifiedRestrictionAxiom
+	 *     TermAxiom returns EntityExistentialUnreifiedRestrictionAxiom
+	 *     EntityRestrictionAxiom returns EntityExistentialUnreifiedRestrictionAxiom
+	 *     EntityExistentialUnreifiedRestrictionAxiom returns EntityExistentialUnreifiedRestrictionAxiom
+	 *
+	 * Constraint:
+	 *     (
+	 *         annotations+=AnnotationPropertyValue* 
+	 *         restrictedDomain=[Entity|Reference] 
+	 *         restrictedUnreifiedRelationship=[UnreifiedRelationship|Reference] 
+	 *         restrictedRange=[Entity|Reference]
+	 *     )
+	 */
+	protected void sequence_EntityExistentialUnreifiedRestrictionAxiom(ISerializationContext context, EntityExistentialUnreifiedRestrictionAxiom semanticObject) {
 		genericSequencer.createSequence(context, (EObject) semanticObject);
 	}
 	
@@ -797,20 +861,60 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
-	 *     TerminologyBoxStatement returns EntityUniversalRestrictionAxiom
-	 *     TermAxiom returns EntityUniversalRestrictionAxiom
-	 *     EntityRestrictionAxiom returns EntityUniversalRestrictionAxiom
-	 *     EntityUniversalRestrictionAxiom returns EntityUniversalRestrictionAxiom
+	 *     TerminologyBoxStatement returns EntityUniversalForwardReifiedRestrictionAxiom
+	 *     TermAxiom returns EntityUniversalForwardReifiedRestrictionAxiom
+	 *     EntityRestrictionAxiom returns EntityUniversalForwardReifiedRestrictionAxiom
+	 *     EntityUniversalForwardReifiedRestrictionAxiom returns EntityUniversalForwardReifiedRestrictionAxiom
 	 *
 	 * Constraint:
 	 *     (
 	 *         annotations+=AnnotationPropertyValue* 
 	 *         restrictedDomain=[Entity|Reference] 
-	 *         restrictedRelation=[EntityRelationship|Reference] 
+	 *         forwardProperty=[ForwardProperty|Reference] 
 	 *         restrictedRange=[Entity|Reference]
 	 *     )
 	 */
-	protected void sequence_EntityUniversalRestrictionAxiom(ISerializationContext context, EntityUniversalRestrictionAxiom semanticObject) {
+	protected void sequence_EntityUniversalForwardReifiedRestrictionAxiom(ISerializationContext context, EntityUniversalForwardReifiedRestrictionAxiom semanticObject) {
+		genericSequencer.createSequence(context, (EObject) semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     TerminologyBoxStatement returns EntityUniversalInverseReifiedRestrictionAxiom
+	 *     TermAxiom returns EntityUniversalInverseReifiedRestrictionAxiom
+	 *     EntityRestrictionAxiom returns EntityUniversalInverseReifiedRestrictionAxiom
+	 *     EntityUniversalInverseReifiedRestrictionAxiom returns EntityUniversalInverseReifiedRestrictionAxiom
+	 *
+	 * Constraint:
+	 *     (
+	 *         annotations+=AnnotationPropertyValue* 
+	 *         restrictedDomain=[Entity|Reference] 
+	 *         inverseProperty=[InverseProperty|Reference] 
+	 *         restrictedRange=[Entity|Reference]
+	 *     )
+	 */
+	protected void sequence_EntityUniversalInverseReifiedRestrictionAxiom(ISerializationContext context, EntityUniversalInverseReifiedRestrictionAxiom semanticObject) {
+		genericSequencer.createSequence(context, (EObject) semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     TerminologyBoxStatement returns EntityUniversalUnreifiedRestrictionAxiom
+	 *     TermAxiom returns EntityUniversalUnreifiedRestrictionAxiom
+	 *     EntityRestrictionAxiom returns EntityUniversalUnreifiedRestrictionAxiom
+	 *     EntityUniversalUnreifiedRestrictionAxiom returns EntityUniversalUnreifiedRestrictionAxiom
+	 *
+	 * Constraint:
+	 *     (
+	 *         annotations+=AnnotationPropertyValue* 
+	 *         restrictedDomain=[Entity|Reference] 
+	 *         restrictedUnreifiedRelationship=[UnreifiedRelationship|Reference] 
+	 *         restrictedRange=[Entity|Reference]
+	 *     )
+	 */
+	protected void sequence_EntityUniversalUnreifiedRestrictionAxiom(ISerializationContext context, EntityUniversalUnreifiedRestrictionAxiom semanticObject) {
 		genericSequencer.createSequence(context, (EObject) semanticObject);
 	}
 	
@@ -824,6 +928,24 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 */
 	protected void sequence_Extent(ISerializationContext context, Extent semanticObject) {
 		genericSequencer.createSequence(context, (EObject) semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ForwardProperty returns ForwardProperty
+	 *
+	 * Constraint:
+	 *     name=ID
+	 */
+	protected void sequence_ForwardProperty(ISerializationContext context, ForwardProperty semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient((EObject) semanticObject, TerminologiesPackage.Literals.FORWARD_PROPERTY__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, TerminologiesPackage.Literals.FORWARD_PROPERTY__NAME));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, (EObject) semanticObject);
+		feeder.accept(grammarAccess.getForwardPropertyAccess().getNameIDTerminalRuleCall_0(), semanticObject.getName());
+		feeder.finish();
 	}
 	
 	
@@ -846,6 +968,24 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 */
 	protected void sequence_IRIScalarRestriction(ISerializationContext context, IRIScalarRestriction semanticObject) {
 		genericSequencer.createSequence(context, (EObject) semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     InverseProperty returns InverseProperty
+	 *
+	 * Constraint:
+	 *     name=ID
+	 */
+	protected void sequence_InverseProperty(ISerializationContext context, InverseProperty semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient((EObject) semanticObject, TerminologiesPackage.Literals.INVERSE_PROPERTY__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, TerminologiesPackage.Literals.INVERSE_PROPERTY__NAME));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, (EObject) semanticObject);
+		feeder.accept(grammarAccess.getInversePropertyAccess().getNameIDTerminalRuleCall_0(), semanticObject.getName());
+		feeder.finish();
 	}
 	
 	
@@ -1162,8 +1302,8 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *             isIrreflexive?='irreflexive' | 
 	 *             isTransitive?='transitive'
 	 *         )* 
-	 *         unreifiedPropertyName=ID 
-	 *         unreifiedInversePropertyName=ID? 
+	 *         forwardProperty=ForwardProperty 
+	 *         inverseProperty=InverseProperty? 
 	 *         source=[Entity|Reference] 
 	 *         target=[Entity|Reference]
 	 *     )
@@ -1352,15 +1492,15 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     SegmentPredicate returns ReifiedRelationshipInversePropertyPredicate
 	 *
 	 * Constraint:
-	 *     reifiedRelationship=[ReifiedRelationship|Reference]
+	 *     inverseProperty=[InverseProperty|Reference]
 	 */
 	protected void sequence_SegmentPredicate(ISerializationContext context, ReifiedRelationshipInversePropertyPredicate semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient((EObject) semanticObject, TerminologiesPackage.Literals.REIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE__REIFIED_RELATIONSHIP) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, TerminologiesPackage.Literals.REIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE__REIFIED_RELATIONSHIP));
+			if (transientValues.isValueTransient((EObject) semanticObject, TerminologiesPackage.Literals.REIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE__INVERSE_PROPERTY) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, TerminologiesPackage.Literals.REIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE__INVERSE_PROPERTY));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, (EObject) semanticObject);
-		feeder.accept(grammarAccess.getSegmentPredicateAccess().getReifiedRelationshipReifiedRelationshipReferenceParserRuleCall_4_5_0_1(), semanticObject.eGet(TerminologiesPackage.Literals.REIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE__REIFIED_RELATIONSHIP, false));
+		feeder.accept(grammarAccess.getSegmentPredicateAccess().getInversePropertyInversePropertyReferenceParserRuleCall_4_5_0_1(), semanticObject.eGet(TerminologiesPackage.Literals.REIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE__INVERSE_PROPERTY, false));
 		feeder.finish();
 	}
 	
@@ -1388,15 +1528,15 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     SegmentPredicate returns ReifiedRelationshipPropertyPredicate
 	 *
 	 * Constraint:
-	 *     reifiedRelationship=[ReifiedRelationship|Reference]
+	 *     forwardProperty=[ForwardProperty|Reference]
 	 */
 	protected void sequence_SegmentPredicate(ISerializationContext context, ReifiedRelationshipPropertyPredicate semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient((EObject) semanticObject, TerminologiesPackage.Literals.REIFIED_RELATIONSHIP_PROPERTY_PREDICATE__REIFIED_RELATIONSHIP) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, TerminologiesPackage.Literals.REIFIED_RELATIONSHIP_PROPERTY_PREDICATE__REIFIED_RELATIONSHIP));
+			if (transientValues.isValueTransient((EObject) semanticObject, TerminologiesPackage.Literals.REIFIED_RELATIONSHIP_PROPERTY_PREDICATE__FORWARD_PROPERTY) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing((EObject) semanticObject, TerminologiesPackage.Literals.REIFIED_RELATIONSHIP_PROPERTY_PREDICATE__FORWARD_PROPERTY));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, (EObject) semanticObject);
-		feeder.accept(grammarAccess.getSegmentPredicateAccess().getReifiedRelationshipReifiedRelationshipReferenceParserRuleCall_3_3_0_1(), semanticObject.eGet(TerminologiesPackage.Literals.REIFIED_RELATIONSHIP_PROPERTY_PREDICATE__REIFIED_RELATIONSHIP, false));
+		feeder.accept(grammarAccess.getSegmentPredicateAccess().getForwardPropertyForwardPropertyReferenceParserRuleCall_3_3_0_1(), semanticObject.eGet(TerminologiesPackage.Literals.REIFIED_RELATIONSHIP_PROPERTY_PREDICATE__FORWARD_PROPERTY, false));
 		feeder.finish();
 	}
 	

@@ -65,6 +65,24 @@ public interface TerminologiesFactory extends EFactory {
 	Concept createConcept();
 
 	/**
+	 * Returns a new object of class '<em>Forward Property</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Forward Property</em>'.
+	 * @generated
+	 */
+	ForwardProperty createForwardProperty();
+
+	/**
+	 * Returns a new object of class '<em>Inverse Property</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Inverse Property</em>'.
+	 * @generated
+	 */
+	InverseProperty createInverseProperty();
+
+	/**
 	 * Returns a new object of class '<em>Reified Relationship</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -254,22 +272,58 @@ public interface TerminologiesFactory extends EFactory {
 	UnreifiedRelationshipInversePropertyPredicate createUnreifiedRelationshipInversePropertyPredicate();
 
 	/**
-	 * Returns a new object of class '<em>Entity Existential Restriction Axiom</em>'.
+	 * Returns a new object of class '<em>Entity Existential Forward Reified Restriction Axiom</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Entity Existential Restriction Axiom</em>'.
+	 * @return a new object of class '<em>Entity Existential Forward Reified Restriction Axiom</em>'.
 	 * @generated
 	 */
-	EntityExistentialRestrictionAxiom createEntityExistentialRestrictionAxiom();
+	EntityExistentialForwardReifiedRestrictionAxiom createEntityExistentialForwardReifiedRestrictionAxiom();
 
 	/**
-	 * Returns a new object of class '<em>Entity Universal Restriction Axiom</em>'.
+	 * Returns a new object of class '<em>Entity Existential Inverse Reified Restriction Axiom</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Entity Universal Restriction Axiom</em>'.
+	 * @return a new object of class '<em>Entity Existential Inverse Reified Restriction Axiom</em>'.
 	 * @generated
 	 */
-	EntityUniversalRestrictionAxiom createEntityUniversalRestrictionAxiom();
+	EntityExistentialInverseReifiedRestrictionAxiom createEntityExistentialInverseReifiedRestrictionAxiom();
+
+	/**
+	 * Returns a new object of class '<em>Entity Existential Unreified Restriction Axiom</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Entity Existential Unreified Restriction Axiom</em>'.
+	 * @generated
+	 */
+	EntityExistentialUnreifiedRestrictionAxiom createEntityExistentialUnreifiedRestrictionAxiom();
+
+	/**
+	 * Returns a new object of class '<em>Entity Universal Forward Reified Restriction Axiom</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Entity Universal Forward Reified Restriction Axiom</em>'.
+	 * @generated
+	 */
+	EntityUniversalForwardReifiedRestrictionAxiom createEntityUniversalForwardReifiedRestrictionAxiom();
+
+	/**
+	 * Returns a new object of class '<em>Entity Universal Inverse Reified Restriction Axiom</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Entity Universal Inverse Reified Restriction Axiom</em>'.
+	 * @generated
+	 */
+	EntityUniversalInverseReifiedRestrictionAxiom createEntityUniversalInverseReifiedRestrictionAxiom();
+
+	/**
+	 * Returns a new object of class '<em>Entity Universal Unreified Restriction Axiom</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Entity Universal Unreified Restriction Axiom</em>'.
+	 * @generated
+	 */
+	EntityUniversalUnreifiedRestrictionAxiom createEntityUniversalUnreifiedRestrictionAxiom();
 
 	/**
 	 * Returns a new object of class '<em>Aspect Specialization Axiom</em>'.

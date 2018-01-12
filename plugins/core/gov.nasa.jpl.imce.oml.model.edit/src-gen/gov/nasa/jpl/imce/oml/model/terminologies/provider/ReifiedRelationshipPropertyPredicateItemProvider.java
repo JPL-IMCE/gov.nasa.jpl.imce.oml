@@ -59,25 +59,25 @@ public class ReifiedRelationshipPropertyPredicateItemProvider extends BinarySegm
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addReifiedRelationshipPropertyDescriptor(object);
+			addForwardPropertyPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Reified Relationship feature.
+	 * This adds a property descriptor for the Forward Property feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addReifiedRelationshipPropertyDescriptor(Object object) {
+	protected void addForwardPropertyPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ReifiedRelationshipPropertyPredicate_reifiedRelationship_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ReifiedRelationshipPropertyPredicate_reifiedRelationship_feature", "_UI_ReifiedRelationshipPropertyPredicate_type"),
-				 TerminologiesPackage.Literals.REIFIED_RELATIONSHIP_PROPERTY_PREDICATE__REIFIED_RELATIONSHIP,
+				 getString("_UI_ReifiedRelationshipPropertyPredicate_forwardProperty_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ReifiedRelationshipPropertyPredicate_forwardProperty_feature", "_UI_ReifiedRelationshipPropertyPredicate_type"),
+				 TerminologiesPackage.Literals.REIFIED_RELATIONSHIP_PROPERTY_PREDICATE__FORWARD_PROPERTY,
 				 true,
 				 false,
 				 true,

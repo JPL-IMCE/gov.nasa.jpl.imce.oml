@@ -157,6 +157,52 @@ public class TerminologiesItemProviderAdapterFactory extends TerminologiesAdapte
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ForwardPropertyItemProvider forwardPropertyItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createForwardPropertyAdapter() {
+		if (forwardPropertyItemProvider == null) {
+			forwardPropertyItemProvider = new ForwardPropertyItemProvider(this);
+		}
+
+		return forwardPropertyItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected InversePropertyItemProvider inversePropertyItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createInversePropertyAdapter() {
+		if (inversePropertyItemProvider == null) {
+			inversePropertyItemProvider = new InversePropertyItemProvider(this);
+		}
+
+		return inversePropertyItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -640,49 +686,141 @@ public class TerminologiesItemProviderAdapterFactory extends TerminologiesAdapte
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialRestrictionAxiom} instances.
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialForwardReifiedRestrictionAxiom} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EntityExistentialRestrictionAxiomItemProvider entityExistentialRestrictionAxiomItemProvider;
+	protected EntityExistentialForwardReifiedRestrictionAxiomItemProvider entityExistentialForwardReifiedRestrictionAxiomItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialRestrictionAxiom}.
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialForwardReifiedRestrictionAxiom}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createEntityExistentialRestrictionAxiomAdapter() {
-		if (entityExistentialRestrictionAxiomItemProvider == null) {
-			entityExistentialRestrictionAxiomItemProvider = new EntityExistentialRestrictionAxiomItemProvider(this);
+	public Adapter createEntityExistentialForwardReifiedRestrictionAxiomAdapter() {
+		if (entityExistentialForwardReifiedRestrictionAxiomItemProvider == null) {
+			entityExistentialForwardReifiedRestrictionAxiomItemProvider = new EntityExistentialForwardReifiedRestrictionAxiomItemProvider(this);
 		}
 
-		return entityExistentialRestrictionAxiomItemProvider;
+		return entityExistentialForwardReifiedRestrictionAxiomItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalRestrictionAxiom} instances.
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialInverseReifiedRestrictionAxiom} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EntityUniversalRestrictionAxiomItemProvider entityUniversalRestrictionAxiomItemProvider;
+	protected EntityExistentialInverseReifiedRestrictionAxiomItemProvider entityExistentialInverseReifiedRestrictionAxiomItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalRestrictionAxiom}.
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialInverseReifiedRestrictionAxiom}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createEntityUniversalRestrictionAxiomAdapter() {
-		if (entityUniversalRestrictionAxiomItemProvider == null) {
-			entityUniversalRestrictionAxiomItemProvider = new EntityUniversalRestrictionAxiomItemProvider(this);
+	public Adapter createEntityExistentialInverseReifiedRestrictionAxiomAdapter() {
+		if (entityExistentialInverseReifiedRestrictionAxiomItemProvider == null) {
+			entityExistentialInverseReifiedRestrictionAxiomItemProvider = new EntityExistentialInverseReifiedRestrictionAxiomItemProvider(this);
 		}
 
-		return entityUniversalRestrictionAxiomItemProvider;
+		return entityExistentialInverseReifiedRestrictionAxiomItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialUnreifiedRestrictionAxiom} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EntityExistentialUnreifiedRestrictionAxiomItemProvider entityExistentialUnreifiedRestrictionAxiomItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialUnreifiedRestrictionAxiom}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEntityExistentialUnreifiedRestrictionAxiomAdapter() {
+		if (entityExistentialUnreifiedRestrictionAxiomItemProvider == null) {
+			entityExistentialUnreifiedRestrictionAxiomItemProvider = new EntityExistentialUnreifiedRestrictionAxiomItemProvider(this);
+		}
+
+		return entityExistentialUnreifiedRestrictionAxiomItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalForwardReifiedRestrictionAxiom} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EntityUniversalForwardReifiedRestrictionAxiomItemProvider entityUniversalForwardReifiedRestrictionAxiomItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalForwardReifiedRestrictionAxiom}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEntityUniversalForwardReifiedRestrictionAxiomAdapter() {
+		if (entityUniversalForwardReifiedRestrictionAxiomItemProvider == null) {
+			entityUniversalForwardReifiedRestrictionAxiomItemProvider = new EntityUniversalForwardReifiedRestrictionAxiomItemProvider(this);
+		}
+
+		return entityUniversalForwardReifiedRestrictionAxiomItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalInverseReifiedRestrictionAxiom} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EntityUniversalInverseReifiedRestrictionAxiomItemProvider entityUniversalInverseReifiedRestrictionAxiomItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalInverseReifiedRestrictionAxiom}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEntityUniversalInverseReifiedRestrictionAxiomAdapter() {
+		if (entityUniversalInverseReifiedRestrictionAxiomItemProvider == null) {
+			entityUniversalInverseReifiedRestrictionAxiomItemProvider = new EntityUniversalInverseReifiedRestrictionAxiomItemProvider(this);
+		}
+
+		return entityUniversalInverseReifiedRestrictionAxiomItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalUnreifiedRestrictionAxiom} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EntityUniversalUnreifiedRestrictionAxiomItemProvider entityUniversalUnreifiedRestrictionAxiomItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalUnreifiedRestrictionAxiom}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEntityUniversalUnreifiedRestrictionAxiomAdapter() {
+		if (entityUniversalUnreifiedRestrictionAxiomItemProvider == null) {
+			entityUniversalUnreifiedRestrictionAxiomItemProvider = new EntityUniversalUnreifiedRestrictionAxiomItemProvider(this);
+		}
+
+		return entityUniversalUnreifiedRestrictionAxiomItemProvider;
 	}
 
 	/**
@@ -1247,6 +1385,8 @@ public class TerminologiesItemProviderAdapterFactory extends TerminologiesAdapte
 		if (terminologyExtensionAxiomItemProvider != null) terminologyExtensionAxiomItemProvider.dispose();
 		if (aspectItemProvider != null) aspectItemProvider.dispose();
 		if (conceptItemProvider != null) conceptItemProvider.dispose();
+		if (forwardPropertyItemProvider != null) forwardPropertyItemProvider.dispose();
+		if (inversePropertyItemProvider != null) inversePropertyItemProvider.dispose();
 		if (reifiedRelationshipItemProvider != null) reifiedRelationshipItemProvider.dispose();
 		if (unreifiedRelationshipItemProvider != null) unreifiedRelationshipItemProvider.dispose();
 		if (scalarItemProvider != null) scalarItemProvider.dispose();
@@ -1268,8 +1408,12 @@ public class TerminologiesItemProviderAdapterFactory extends TerminologiesAdapte
 		if (reifiedRelationshipTargetInversePropertyPredicateItemProvider != null) reifiedRelationshipTargetInversePropertyPredicateItemProvider.dispose();
 		if (unreifiedRelationshipPropertyPredicateItemProvider != null) unreifiedRelationshipPropertyPredicateItemProvider.dispose();
 		if (unreifiedRelationshipInversePropertyPredicateItemProvider != null) unreifiedRelationshipInversePropertyPredicateItemProvider.dispose();
-		if (entityExistentialRestrictionAxiomItemProvider != null) entityExistentialRestrictionAxiomItemProvider.dispose();
-		if (entityUniversalRestrictionAxiomItemProvider != null) entityUniversalRestrictionAxiomItemProvider.dispose();
+		if (entityExistentialForwardReifiedRestrictionAxiomItemProvider != null) entityExistentialForwardReifiedRestrictionAxiomItemProvider.dispose();
+		if (entityExistentialInverseReifiedRestrictionAxiomItemProvider != null) entityExistentialInverseReifiedRestrictionAxiomItemProvider.dispose();
+		if (entityExistentialUnreifiedRestrictionAxiomItemProvider != null) entityExistentialUnreifiedRestrictionAxiomItemProvider.dispose();
+		if (entityUniversalForwardReifiedRestrictionAxiomItemProvider != null) entityUniversalForwardReifiedRestrictionAxiomItemProvider.dispose();
+		if (entityUniversalInverseReifiedRestrictionAxiomItemProvider != null) entityUniversalInverseReifiedRestrictionAxiomItemProvider.dispose();
+		if (entityUniversalUnreifiedRestrictionAxiomItemProvider != null) entityUniversalUnreifiedRestrictionAxiomItemProvider.dispose();
 		if (aspectSpecializationAxiomItemProvider != null) aspectSpecializationAxiomItemProvider.dispose();
 		if (conceptSpecializationAxiomItemProvider != null) conceptSpecializationAxiomItemProvider.dispose();
 		if (reifiedRelationshipSpecializationAxiomItemProvider != null) reifiedRelationshipSpecializationAxiomItemProvider.dispose();

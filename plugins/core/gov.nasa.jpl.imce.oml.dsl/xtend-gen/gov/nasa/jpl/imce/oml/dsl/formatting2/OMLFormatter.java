@@ -1346,7 +1346,19 @@ public class OMLFormatter extends AbstractFormatter2 {
     final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(ax).keyword("in"), _function_3);
+    document.surround(this.textRegionExtensions.regionFor(ax).keyword("->"), _function_3);
+    final Procedure1<IHiddenRegionFormatter> _function_4 = (IHiddenRegionFormatter it) -> {
+      it.oneSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(ax).keyword("<-"), _function_4);
+    final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it) -> {
+      it.oneSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(ax).keyword("in"), _function_5);
+    final Procedure1<IHiddenRegionFormatter> _function_6 = (IHiddenRegionFormatter it) -> {
+      it.oneSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(ax).keyword("from"), _function_6);
   }
   
   protected void _format(final EntityUniversalRestrictionAxiom ax, @Extension final IFormattableDocument document) {
@@ -1361,7 +1373,19 @@ public class OMLFormatter extends AbstractFormatter2 {
     final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
       it.oneSpace();
     };
-    document.surround(this.textRegionExtensions.regionFor(ax).keyword("in"), _function_2);
+    document.surround(this.textRegionExtensions.regionFor(ax).keyword("->"), _function_2);
+    final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
+      it.oneSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(ax).keyword("<-"), _function_3);
+    final Procedure1<IHiddenRegionFormatter> _function_4 = (IHiddenRegionFormatter it) -> {
+      it.oneSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(ax).keyword("in"), _function_4);
+    final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it) -> {
+      it.oneSpace();
+    };
+    document.surround(this.textRegionExtensions.regionFor(ax).keyword("from"), _function_5);
   }
   
   protected void _format(final EntityScalarDataPropertyExistentialRestrictionAxiom ax, @Extension final IFormattableDocument document) {

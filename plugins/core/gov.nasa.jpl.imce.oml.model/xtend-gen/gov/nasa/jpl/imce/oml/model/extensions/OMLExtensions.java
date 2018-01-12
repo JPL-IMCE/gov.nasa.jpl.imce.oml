@@ -92,7 +92,9 @@ import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyUnivers
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataPropertyParticularRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalRestrictionAxiom;
+import gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction;
+import gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship;
@@ -666,6 +668,14 @@ public class OMLExtensions {
   
   public Iterable<EntityRelationship> localEntityRelationships(final TerminologyBox it) {
     return Iterables.<EntityRelationship>filter(it.getBoxStatements(), EntityRelationship.class);
+  }
+  
+  public Iterable<ForwardProperty> localForwardProperties(final TerminologyBox it) {
+    return Iterables.<ForwardProperty>filter(it.getBoxStatements(), ForwardProperty.class);
+  }
+  
+  public Iterable<InverseProperty> localInverseProperties(final TerminologyBox it) {
+    return Iterables.<InverseProperty>filter(it.getBoxStatements(), InverseProperty.class);
   }
   
   public Iterable<EntityRelationship> allEntityRelationships(final TerminologyBox it) {
@@ -2224,7 +2234,7 @@ public class OMLExtensions {
           }
           String _plus = (_elvis + ".");
           String _elvis_1 = null;
-          EntityRelationship _restrictedRelation = ((EntityRestrictionAxiom)e).getRestrictedRelation();
+          EntityRelationship _restrictedRelation = ((EntityRestrictionAxiom)e).restrictedRelation();
           String _abbrevIRI_1 = null;
           if (_restrictedRelation!=null) {
             _abbrevIRI_1=_restrictedRelation.abbrevIRI();

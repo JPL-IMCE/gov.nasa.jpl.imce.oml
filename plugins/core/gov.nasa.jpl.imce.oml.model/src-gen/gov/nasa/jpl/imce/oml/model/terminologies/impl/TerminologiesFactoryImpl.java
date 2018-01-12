@@ -76,6 +76,8 @@ public class TerminologiesFactoryImpl extends EFactoryImpl implements Terminolog
 			case TerminologiesPackage.TERMINOLOGY_EXTENSION_AXIOM: return (EObject)createTerminologyExtensionAxiom();
 			case TerminologiesPackage.ASPECT: return (EObject)createAspect();
 			case TerminologiesPackage.CONCEPT: return (EObject)createConcept();
+			case TerminologiesPackage.FORWARD_PROPERTY: return (EObject)createForwardProperty();
+			case TerminologiesPackage.INVERSE_PROPERTY: return (EObject)createInverseProperty();
 			case TerminologiesPackage.REIFIED_RELATIONSHIP: return (EObject)createReifiedRelationship();
 			case TerminologiesPackage.UNREIFIED_RELATIONSHIP: return (EObject)createUnreifiedRelationship();
 			case TerminologiesPackage.SCALAR: return (EObject)createScalar();
@@ -97,8 +99,12 @@ public class TerminologiesFactoryImpl extends EFactoryImpl implements Terminolog
 			case TerminologiesPackage.REIFIED_RELATIONSHIP_TARGET_INVERSE_PROPERTY_PREDICATE: return (EObject)createReifiedRelationshipTargetInversePropertyPredicate();
 			case TerminologiesPackage.UNREIFIED_RELATIONSHIP_PROPERTY_PREDICATE: return (EObject)createUnreifiedRelationshipPropertyPredicate();
 			case TerminologiesPackage.UNREIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE: return (EObject)createUnreifiedRelationshipInversePropertyPredicate();
-			case TerminologiesPackage.ENTITY_EXISTENTIAL_RESTRICTION_AXIOM: return (EObject)createEntityExistentialRestrictionAxiom();
-			case TerminologiesPackage.ENTITY_UNIVERSAL_RESTRICTION_AXIOM: return (EObject)createEntityUniversalRestrictionAxiom();
+			case TerminologiesPackage.ENTITY_EXISTENTIAL_FORWARD_REIFIED_RESTRICTION_AXIOM: return (EObject)createEntityExistentialForwardReifiedRestrictionAxiom();
+			case TerminologiesPackage.ENTITY_EXISTENTIAL_INVERSE_REIFIED_RESTRICTION_AXIOM: return (EObject)createEntityExistentialInverseReifiedRestrictionAxiom();
+			case TerminologiesPackage.ENTITY_EXISTENTIAL_UNREIFIED_RESTRICTION_AXIOM: return (EObject)createEntityExistentialUnreifiedRestrictionAxiom();
+			case TerminologiesPackage.ENTITY_UNIVERSAL_FORWARD_REIFIED_RESTRICTION_AXIOM: return (EObject)createEntityUniversalForwardReifiedRestrictionAxiom();
+			case TerminologiesPackage.ENTITY_UNIVERSAL_INVERSE_REIFIED_RESTRICTION_AXIOM: return (EObject)createEntityUniversalInverseReifiedRestrictionAxiom();
+			case TerminologiesPackage.ENTITY_UNIVERSAL_UNREIFIED_RESTRICTION_AXIOM: return (EObject)createEntityUniversalUnreifiedRestrictionAxiom();
 			case TerminologiesPackage.ASPECT_SPECIALIZATION_AXIOM: return (EObject)createAspectSpecializationAxiom();
 			case TerminologiesPackage.CONCEPT_SPECIALIZATION_AXIOM: return (EObject)createConceptSpecializationAxiom();
 			case TerminologiesPackage.REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM: return (EObject)createReifiedRelationshipSpecializationAxiom();
@@ -182,6 +188,26 @@ public class TerminologiesFactoryImpl extends EFactoryImpl implements Terminolog
 	public Concept createConcept() {
 		ConceptImpl concept = new ConceptImpl();
 		return concept;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ForwardProperty createForwardProperty() {
+		ForwardPropertyImpl forwardProperty = new ForwardPropertyImpl();
+		return forwardProperty;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InverseProperty createInverseProperty() {
+		InversePropertyImpl inverseProperty = new InversePropertyImpl();
+		return inverseProperty;
 	}
 
 	/**
@@ -399,9 +425,9 @@ public class TerminologiesFactoryImpl extends EFactoryImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EntityExistentialRestrictionAxiom createEntityExistentialRestrictionAxiom() {
-		EntityExistentialRestrictionAxiomImpl entityExistentialRestrictionAxiom = new EntityExistentialRestrictionAxiomImpl();
-		return entityExistentialRestrictionAxiom;
+	public EntityExistentialForwardReifiedRestrictionAxiom createEntityExistentialForwardReifiedRestrictionAxiom() {
+		EntityExistentialForwardReifiedRestrictionAxiomImpl entityExistentialForwardReifiedRestrictionAxiom = new EntityExistentialForwardReifiedRestrictionAxiomImpl();
+		return entityExistentialForwardReifiedRestrictionAxiom;
 	}
 
 	/**
@@ -409,9 +435,49 @@ public class TerminologiesFactoryImpl extends EFactoryImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EntityUniversalRestrictionAxiom createEntityUniversalRestrictionAxiom() {
-		EntityUniversalRestrictionAxiomImpl entityUniversalRestrictionAxiom = new EntityUniversalRestrictionAxiomImpl();
-		return entityUniversalRestrictionAxiom;
+	public EntityExistentialInverseReifiedRestrictionAxiom createEntityExistentialInverseReifiedRestrictionAxiom() {
+		EntityExistentialInverseReifiedRestrictionAxiomImpl entityExistentialInverseReifiedRestrictionAxiom = new EntityExistentialInverseReifiedRestrictionAxiomImpl();
+		return entityExistentialInverseReifiedRestrictionAxiom;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EntityExistentialUnreifiedRestrictionAxiom createEntityExistentialUnreifiedRestrictionAxiom() {
+		EntityExistentialUnreifiedRestrictionAxiomImpl entityExistentialUnreifiedRestrictionAxiom = new EntityExistentialUnreifiedRestrictionAxiomImpl();
+		return entityExistentialUnreifiedRestrictionAxiom;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EntityUniversalForwardReifiedRestrictionAxiom createEntityUniversalForwardReifiedRestrictionAxiom() {
+		EntityUniversalForwardReifiedRestrictionAxiomImpl entityUniversalForwardReifiedRestrictionAxiom = new EntityUniversalForwardReifiedRestrictionAxiomImpl();
+		return entityUniversalForwardReifiedRestrictionAxiom;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EntityUniversalInverseReifiedRestrictionAxiom createEntityUniversalInverseReifiedRestrictionAxiom() {
+		EntityUniversalInverseReifiedRestrictionAxiomImpl entityUniversalInverseReifiedRestrictionAxiom = new EntityUniversalInverseReifiedRestrictionAxiomImpl();
+		return entityUniversalInverseReifiedRestrictionAxiom;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EntityUniversalUnreifiedRestrictionAxiom createEntityUniversalUnreifiedRestrictionAxiom() {
+		EntityUniversalUnreifiedRestrictionAxiomImpl entityUniversalUnreifiedRestrictionAxiom = new EntityUniversalUnreifiedRestrictionAxiomImpl();
+		return entityUniversalUnreifiedRestrictionAxiom;
 	}
 
 	/**
