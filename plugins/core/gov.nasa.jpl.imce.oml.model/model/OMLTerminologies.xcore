@@ -382,6 +382,66 @@ abstract class EntityRelationship extends Term, DirectedBinaryRelationshipKind {
  	boolean[1] isTransitive
 }
 
+class ForwardProperty extends Resource {
+	
+	container ReifiedRelationship[1] reifiedRelationship opposite forwardProperty
+		
+	@Scala(code="extent.terminologyBoxOfTerminologyBoxStatement.get(this).flatMap(tbox => tbox.iri().map(i =>  gov.nasa.jpl.imce.oml.tables.taggedTypes.iri(i + \"#\" + name)))")
+	@ImplicitExtent
+	@NotSchema
+	@Override
+	op IRI[?] iri() { reifiedRelationship?.tbox?.iri()+'#'+name() }
+	
+	@Scala(code="extent.terminologyBoxOfTerminologyBoxStatement.get(this).map(tbox => tbox.nsPrefix+\":\"+name)")
+	@ImplicitExtent
+	@NotSchema
+	@Override
+	op String[?] abbrevIRI() { (reifiedRelationship?.tbox?.nsPrefix()?:"")+':'+name() }
+	
+	@Override
+	LocalName[1] name
+	
+	@NotFunctionalAPI
+	@NotSchema
+	op LocalName[1] name() { getName() }
+	
+	@NotFunctionalAPI
+	@NotSchema
+	op UUID[1] uuid() {
+		OMLExtensions.namespaceUUID(reifiedRelationship?.tbox?.uuid(), "name" -> name()?.toString())?.toString
+	}
+}
+
+class InverseProperty extends Resource {
+	
+	container ReifiedRelationship[1] reifiedRelationship opposite inverseProperty
+		
+	@Scala(code="extent.terminologyBoxOfTerminologyBoxStatement.get(this).flatMap(tbox => tbox.iri().map(i =>  gov.nasa.jpl.imce.oml.tables.taggedTypes.iri(i + \"#\" + name)))")
+	@ImplicitExtent
+	@NotSchema
+	@Override
+	op IRI[?] iri() { reifiedRelationship?.tbox?.iri()+'#'+name() }
+	
+	@Scala(code="extent.terminologyBoxOfTerminologyBoxStatement.get(this).map(tbox => tbox.nsPrefix+\":\"+name)")
+	@ImplicitExtent
+	@NotSchema
+	@Override
+	op String[?] abbrevIRI() { (reifiedRelationship?.tbox?.nsPrefix()?:"")+':'+name() }
+	
+	@Override
+	LocalName[1] name
+	
+	@NotFunctionalAPI
+	@NotSchema
+	op LocalName[1] name() { getName() }
+	
+	@NotFunctionalAPI
+	@NotSchema
+	op UUID[1] uuid() {
+		OMLExtensions.namespaceUUID(reifiedRelationship?.tbox?.uuid(), "name" -> name()?.toString())?.toString
+	}
+}
+
 /*
  * An OML ReifiedRelationship is an OML ConceptualEntity and a kind of OML EntityRelationship
  * where an instance has an intrinsic identity. This means that
@@ -392,8 +452,8 @@ abstract class EntityRelationship extends Term, DirectedBinaryRelationshipKind {
 @Glossary
 class ReifiedRelationship extends EntityRelationship, ConceptualEntity {
 
-	LocalName[1] unreifiedPropertyName
-	LocalName[?] unreifiedInversePropertyName
+	contains ForwardProperty[1] forwardProperty opposite reifiedRelationship
+	contains InverseProperty[?] inverseProperty opposite reifiedRelationship
 }
 
 /*
@@ -854,11 +914,11 @@ abstract class BinarySegmentReversePropertyPredicate extends BinarySegmentProper
 @Glossary
 class ReifiedRelationshipPropertyPredicate extends BinarySegmentForwardPropertyPredicate {
 	
-	refers ReifiedRelationship[1] reifiedRelationship
+	refers ForwardProperty[1] forwardProperty
 	
 	@NotSchema
 	@Override
-	op Term[1] termPredicate() { reifiedRelationship }
+	op Term[1] termPredicate() { forwardProperty?.reifiedRelationship }
 	
 	@FunctionalInterface
 	@OverrideVal
@@ -866,7 +926,7 @@ class ReifiedRelationshipPropertyPredicate extends BinarySegmentForwardPropertyP
 		OMLExtensions.derivedUUID(
 		"ReifiedRelationshipPropertyPredicate",
 		"bodySegment" -> getBodySegment?.uuid()?.toString,
-		"reifiedRelationship" -> getReifiedRelationship?.uuid()?.toString
+		"forwardProperty" -> forwardProperty?.uuid()?.toString
 		)?.toString
 	}
 }
@@ -882,11 +942,11 @@ class ReifiedRelationshipPropertyPredicate extends BinarySegmentForwardPropertyP
 @Glossary
 class ReifiedRelationshipInversePropertyPredicate extends BinarySegmentReversePropertyPredicate {
 	
-	refers ReifiedRelationship[1] reifiedRelationship
+	refers InverseProperty[1] inverseProperty
 	
 	@NotSchema
 	@Override
-	op Term[1] termPredicate() { reifiedRelationship }
+	op Term[1] termPredicate() { inverseProperty?.reifiedRelationship }
 	
 	@FunctionalInterface
 	@OverrideVal
@@ -894,7 +954,7 @@ class ReifiedRelationshipInversePropertyPredicate extends BinarySegmentReversePr
 		OMLExtensions.derivedUUID(
 		"ReifiedRelationshipInversePropertyPredicate",
 		"bodySegment" -> getBodySegment?.uuid()?.toString,
-		"reifiedRelationship" -> getReifiedRelationship?.uuid()?.toString
+		"inverseProperty" -> inverseProperty?.uuid()?.toString
 		)?.toString
 	}
 }
@@ -1063,17 +1123,18 @@ class UnreifiedRelationshipInversePropertyPredicate extends BinarySegmentReverse
 abstract class TermAxiom extends TerminologyBoxStatement {}
 
 /*
- * An OML EntityRestrictionAxiom maps to an [OWL2 Object Property Restiction]
+ * An OML EntityRestrictionAxiom maps to an [OWL2 Object Property Restriction]
  * for an OML EntityRelationship.
  */
 @Glossary
 abstract class EntityRestrictionAxiom extends TermAxiom, ElementCrossReferenceTuple {
 
-	 refers EntityRelationship[1] restrictedRelation
+	@NotSchema
+	op EntityRelationship[1] restrictedRelation()
 
-	 refers Entity[1] restrictedRange
+	refers Entity[1] restrictedRange
 
-	 refers Entity[1] restrictedDomain
+	refers Entity[1] restrictedDomain
 	 
 	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.LogicalElement]")
 	@Collection(kind="Set")
@@ -1083,22 +1144,126 @@ abstract class EntityRestrictionAxiom extends TermAxiom, ElementCrossReferenceTu
 }
 
 /*
+ * An OML EntityReifiedRestrictionAxiom is an OML EntityRestrictionAxiom
+ * where the restricted relationship is an OML ReifiedRelationship.
+ */
+@Glossary
+abstract class EntityReifiedRestrictionAxiom extends EntityRestrictionAxiom {}
+
+/*
+ * An OML EntityForwardReifiedRestrictionAxiom is an OML EntityRestrictionAxiom
+ * where the restricted relationship is the forward property of an OML ReifiedRelationship.
+ */
+@Glossary
+abstract class EntityForwardReifiedRestrictionAxiom extends EntityReifiedRestrictionAxiom {
+	
+	refers ForwardProperty[1] forwardProperty
+	
+	@NotSchema
+	@Override
+	op EntityRelationship[1] restrictedRelation() { forwardProperty.reifiedRelationship }
+	
+}
+
+/*
+ * An OML EntityInverseReifiedRestrictionAxiom is an OML EntityRestrictionAxiom
+ * where the restricted relationship is the inverse property of an OML ReifiedRelationship.
+ */
+@Glossary
+abstract class EntityInverseReifiedRestrictionAxiom extends EntityReifiedRestrictionAxiom {
+	
+	refers InverseProperty[1] inverseProperty
+	
+	@NotSchema
+	@Override
+	op EntityRelationship[1] restrictedRelation() { inverseProperty.reifiedRelationship }
+	
+}
+
+/*
+ * An OML EntityUnreifiedRestrictionAxiom is an OML EntityRestrictionAxiom
+ * where the restricted relationship is an OML UnreifiedRelationship.
+ */
+@Glossary
+abstract class EntityUnreifiedRestrictionAxiom extends EntityRestrictionAxiom {
+	
+	refers UnreifiedRelationship[1] restrictedUnreifiedRelationship
+	
+	@NotSchema
+	@Override
+	op EntityRelationship[1] restrictedRelation() { restrictedUnreifiedRelationship }
+	
+}
+/*
  * An OML EntityExistentialRestrictionAxiom maps 
  * to an [OWL2 Object Property Existential Restriction].
  */
 @Glossary
 @DerivedUUID
-class EntityExistentialRestrictionAxiom extends EntityRestrictionAxiom {
+abstract class EntityExistentialRestrictionAxiom extends EntityRestrictionAxiom {}
+
+/*
+ * An OML EntityExistentialForwardReifiedRestrictionAxiom maps 
+ * to an [OWL2 Object Property Existential Restriction] where
+ * the restricted relationship is the unreifiedProperty of an OML ReifiedRelationship.
+ */
+@Glossary
+@DerivedUUID
+class EntityExistentialForwardReifiedRestrictionAxiom extends EntityExistentialRestrictionAxiom, EntityForwardReifiedRestrictionAxiom {
 	
 	@NotFunctionalAPI
 	@NotSchema
 	op UUID[1] uuid() {
 		OMLExtensions.derivedUUID(
-		"EntityExistentialRestrictionAxiom", 
+		"EntityExistentialForwardReifiedRestrictionAxiom", 
 		"tbox" -> tbox.uuid(),
-		"restrictedRelation" -> restrictedRelation?.uuid()?.toString,
+		"forwardProperty" -> forwardProperty?.uuid()?.toString,
+		"restrictedDomain" -> restrictedDomain?.uuid()?.toString,
+		"restrictedRange" -> restrictedRange?.uuid()?.toString
+		)?.toString
+	}
+}
+
+/*
+ * An OML EntityExistentialInverseReifiedRestrictionAxiom maps 
+ * to an [OWL2 Object Property Existential Restriction] where
+ * the restricted relationship is the unreifiedInverseProperty of an OML ReifiedRelationship.
+ */
+@Glossary
+@DerivedUUID
+class EntityExistentialInverseReifiedRestrictionAxiom extends EntityExistentialRestrictionAxiom, EntityInverseReifiedRestrictionAxiom {
+	
+	@NotFunctionalAPI
+	@NotSchema
+	op UUID[1] uuid() {
+		OMLExtensions.derivedUUID(
+		"EntityExistentialInverseReifiedRestrictionAxiom", 
+		"tbox" -> tbox.uuid(),
+		"inverseProperty" -> inverseProperty?.uuid()?.toString,
 		"restrictedDomain" -> restrictedDomain?.uuid()?.toString, 
 		"restrictedRange" -> restrictedRange?.uuid()?.toString
+		)?.toString
+	}
+}
+
+/*
+ * An OML EntityExistentialUnreifiedRestrictionAxiom maps 
+ * to an [OWL2 Object Property Existential Restriction] where
+ * the restricted relationship is the unreifiedRelationship of an OML ReifiedRelationship.
+ */
+@Glossary
+@DerivedUUID
+class EntityExistentialUnreifiedRestrictionAxiom extends EntityExistentialRestrictionAxiom, EntityUnreifiedRestrictionAxiom {
+	
+	@NotFunctionalAPI
+	@NotSchema
+	op UUID[1] uuid() {
+		OMLExtensions.derivedUUID(
+		"EntityExistentialUnreifiedRestrictionAxiom", 
+		"tbox" -> tbox.uuid(),
+		"restrictedDomain" -> restrictedDomain?.uuid()?.toString, 
+		"restrictedRange" -> restrictedRange?.uuid()?.toString,
+		"restrictedUnreifiedRelationship" -> restrictedUnreifiedRelationship?.uuid()?.toString
 		)?.toString
 	}
 }
@@ -1109,20 +1274,72 @@ class EntityExistentialRestrictionAxiom extends EntityRestrictionAxiom {
  */
 @Glossary
 @DerivedUUID
-class EntityUniversalRestrictionAxiom extends EntityRestrictionAxiom {
+abstract class EntityUniversalRestrictionAxiom extends EntityRestrictionAxiom {}
+
+/*
+ * An OML EntityUniversalForwardReifiedRestrictionAxiom maps 
+ * to an [OWL2 Object Property Existential Restriction] where
+ * the restricted relationship is the unreifiedProperty of an OML ReifiedRelationship.
+ */
+@Glossary
+@DerivedUUID
+class EntityUniversalForwardReifiedRestrictionAxiom extends EntityExistentialRestrictionAxiom, EntityForwardReifiedRestrictionAxiom {
 	
 	@NotFunctionalAPI
 	@NotSchema
 	op UUID[1] uuid() {
 		OMLExtensions.derivedUUID(
-		"EntityUniversalRestrictionAxiom", 
+		"EntityUniversalForwardReifiedRestrictionAxiom", 
 		"tbox" -> tbox.uuid(),
-		"restrictedRelation" -> restrictedRelation?.uuid()?.toString,
+		"forwardProperty" -> forwardProperty?.uuid()?.toString,
 		"restrictedDomain" -> restrictedDomain?.uuid()?.toString, 
 		"restrictedRange" -> restrictedRange?.uuid()?.toString
 		)?.toString
 	}
+}
+
+/*
+ * An OML EntityUniversalInverseReifiedRestrictionAxiom maps 
+ * to an [OWL2 Object Property Existential Restriction] where
+ * the restricted relationship is the unreifiedInverseProperty of an OML ReifiedRelationship.
+ */
+@Glossary
+@DerivedUUID
+class EntityUniversalInverseReifiedRestrictionAxiom extends EntityExistentialRestrictionAxiom, EntityInverseReifiedRestrictionAxiom {
 	
+	@NotFunctionalAPI
+	@NotSchema
+	op UUID[1] uuid() {
+		OMLExtensions.derivedUUID(
+		"EntityUniversalInverseReifiedRestrictionAxiom", 
+		"tbox" -> tbox.uuid(),
+		"inverseProperty" -> inverseProperty?.uuid()?.toString,
+		"restrictedDomain" -> restrictedDomain?.uuid()?.toString, 
+		"restrictedRange" -> restrictedRange?.uuid()?.toString
+		)?.toString
+	}
+}
+
+/*
+ * An OML EntityUniversalUnreifiedRestrictionAxiom maps 
+ * to an [OWL2 Object Property Existential Restriction] where
+ * the restricted relationship is the unreifiedRelationship of an OML ReifiedRelationship.
+ */
+@Glossary
+@DerivedUUID
+class EntityUniversalUnreifiedRestrictionAxiom extends EntityExistentialRestrictionAxiom, EntityUnreifiedRestrictionAxiom {
+	
+	@NotFunctionalAPI
+	@NotSchema
+	op UUID[1] uuid() {
+		OMLExtensions.derivedUUID(
+		"EntityUniversalUnreifiedRestrictionAxiom", 
+		"tbox" -> tbox.uuid(),
+		"restrictedDomain" -> restrictedDomain?.uuid()?.toString, 
+		"restrictedRange" -> restrictedRange?.uuid()?.toString,
+		"restrictedUnreifiedRelationship" -> restrictedUnreifiedRelationship?.uuid()?.toString
+		)?.toString
+	}
 }
 
 /*

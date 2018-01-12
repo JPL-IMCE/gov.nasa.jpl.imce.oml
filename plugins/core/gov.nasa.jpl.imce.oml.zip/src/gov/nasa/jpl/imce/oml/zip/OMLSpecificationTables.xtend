@@ -77,7 +77,12 @@ import gov.nasa.jpl.imce.oml.model.terminologies.DataRange
 import gov.nasa.jpl.imce.oml.model.terminologies.DataRelationshipToScalar
 import gov.nasa.jpl.imce.oml.model.terminologies.DataRelationshipToStructure
 import gov.nasa.jpl.imce.oml.model.terminologies.Entity
-import gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialRestrictionAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialForwardReifiedRestrictionAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialInverseReifiedRestrictionAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialUnreifiedRestrictionAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalForwardReifiedRestrictionAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalInverseReifiedRestrictionAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalUnreifiedRestrictionAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyExistentialRestrictionAxiom
@@ -85,7 +90,8 @@ import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyParticu
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyUniversalRestrictionAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataPropertyParticularRestrictionAxiom
-import gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalRestrictionAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty
+import gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction
@@ -172,8 +178,12 @@ class OMLSpecificationTables {
   protected val Map<String, Pair<ReifiedRelationshipSourceInversePropertyPredicate, Map<String,String>>> reifiedRelationshipSourceInversePropertyPredicates
   protected val Map<String, Pair<ReifiedRelationshipTargetInversePropertyPredicate, Map<String,String>>> reifiedRelationshipTargetInversePropertyPredicates
   protected val Map<String, Pair<UnreifiedRelationshipInversePropertyPredicate, Map<String,String>>> unreifiedRelationshipInversePropertyPredicates
-  protected val Map<String, Pair<EntityExistentialRestrictionAxiom, Map<String,String>>> entityExistentialRestrictionAxioms
-  protected val Map<String, Pair<EntityUniversalRestrictionAxiom, Map<String,String>>> entityUniversalRestrictionAxioms
+  protected val Map<String, Pair<EntityExistentialForwardReifiedRestrictionAxiom, Map<String,String>>> entityExistentialForwardReifiedRestrictionAxioms
+  protected val Map<String, Pair<EntityExistentialInverseReifiedRestrictionAxiom, Map<String,String>>> entityExistentialInverseReifiedRestrictionAxioms
+  protected val Map<String, Pair<EntityExistentialUnreifiedRestrictionAxiom, Map<String,String>>> entityExistentialUnreifiedRestrictionAxioms
+  protected val Map<String, Pair<EntityUniversalForwardReifiedRestrictionAxiom, Map<String,String>>> entityUniversalForwardReifiedRestrictionAxioms
+  protected val Map<String, Pair<EntityUniversalInverseReifiedRestrictionAxiom, Map<String,String>>> entityUniversalInverseReifiedRestrictionAxioms
+  protected val Map<String, Pair<EntityUniversalUnreifiedRestrictionAxiom, Map<String,String>>> entityUniversalUnreifiedRestrictionAxioms
   protected val Map<String, Pair<EntityScalarDataPropertyExistentialRestrictionAxiom, Map<String,String>>> entityScalarDataPropertyExistentialRestrictionAxioms
   protected val Map<String, Pair<EntityScalarDataPropertyParticularRestrictionAxiom, Map<String,String>>> entityScalarDataPropertyParticularRestrictionAxioms
   protected val Map<String, Pair<EntityScalarDataPropertyUniversalRestrictionAxiom, Map<String,String>>> entityScalarDataPropertyUniversalRestrictionAxioms
@@ -198,6 +208,8 @@ class OMLSpecificationTables {
   protected val Map<String, Pair<StructuredDataPropertyTuple, Map<String,String>>> structuredDataPropertyTuples
   protected val Map<String, Pair<ScalarDataPropertyValue, Map<String,String>>> scalarDataPropertyValues
   protected val Map<String, Pair<AnnotationPropertyValue, Map<String,String>>> annotationPropertyValues
+  protected val Map<String, Pair<ForwardProperty, Map<String,String>>> forwardProperties
+  protected val Map<String, Pair<InverseProperty, Map<String,String>>> inverseProperties
 
   protected val Map<String, Pair<Module, Map<String,String>>> modules
   protected val Map<String, Pair<LogicalElement, Map<String,String>>> logicalElements
@@ -267,8 +279,12 @@ class OMLSpecificationTables {
   	reifiedRelationshipSourceInversePropertyPredicates = new HashMap<String, Pair<ReifiedRelationshipSourceInversePropertyPredicate, Map<String,String>>>()
   	reifiedRelationshipTargetInversePropertyPredicates = new HashMap<String, Pair<ReifiedRelationshipTargetInversePropertyPredicate, Map<String,String>>>()
   	unreifiedRelationshipInversePropertyPredicates = new HashMap<String, Pair<UnreifiedRelationshipInversePropertyPredicate, Map<String,String>>>()
-  	entityExistentialRestrictionAxioms = new HashMap<String, Pair<EntityExistentialRestrictionAxiom, Map<String,String>>>()
-  	entityUniversalRestrictionAxioms = new HashMap<String, Pair<EntityUniversalRestrictionAxiom, Map<String,String>>>()
+  	entityExistentialForwardReifiedRestrictionAxioms = new HashMap<String, Pair<EntityExistentialForwardReifiedRestrictionAxiom, Map<String,String>>>()
+  	entityExistentialInverseReifiedRestrictionAxioms = new HashMap<String, Pair<EntityExistentialInverseReifiedRestrictionAxiom, Map<String,String>>>()
+  	entityExistentialUnreifiedRestrictionAxioms = new HashMap<String, Pair<EntityExistentialUnreifiedRestrictionAxiom, Map<String,String>>>()
+  	entityUniversalForwardReifiedRestrictionAxioms = new HashMap<String, Pair<EntityUniversalForwardReifiedRestrictionAxiom, Map<String,String>>>()
+  	entityUniversalInverseReifiedRestrictionAxioms = new HashMap<String, Pair<EntityUniversalInverseReifiedRestrictionAxiom, Map<String,String>>>()
+  	entityUniversalUnreifiedRestrictionAxioms = new HashMap<String, Pair<EntityUniversalUnreifiedRestrictionAxiom, Map<String,String>>>()
   	entityScalarDataPropertyExistentialRestrictionAxioms = new HashMap<String, Pair<EntityScalarDataPropertyExistentialRestrictionAxiom, Map<String,String>>>()
   	entityScalarDataPropertyParticularRestrictionAxioms = new HashMap<String, Pair<EntityScalarDataPropertyParticularRestrictionAxiom, Map<String,String>>>()
   	entityScalarDataPropertyUniversalRestrictionAxioms = new HashMap<String, Pair<EntityScalarDataPropertyUniversalRestrictionAxiom, Map<String,String>>>()
@@ -293,6 +309,8 @@ class OMLSpecificationTables {
   	structuredDataPropertyTuples = new HashMap<String, Pair<StructuredDataPropertyTuple, Map<String,String>>>()
   	scalarDataPropertyValues = new HashMap<String, Pair<ScalarDataPropertyValue, Map<String,String>>>()
   	annotationPropertyValues = new HashMap<String, Pair<AnnotationPropertyValue, Map<String,String>>>()
+  	forwardProperties = new HashMap<String, Pair<ForwardProperty, Map<String,String>>>()
+  	inverseProperties = new HashMap<String, Pair<InverseProperty, Map<String,String>>>()
   
     modules = new HashMap<String, Pair<Module, Map<String,String>>>()
     	logicalElements = new HashMap<String, Pair<LogicalElement, Map<String,String>>>()
@@ -646,19 +664,51 @@ class OMLSpecificationTables {
     } finally {
       zos.closeArchiveEntry()
     }
-    // EntityExistentialRestrictionAxiom
-    entry = new ZipArchiveEntry("EntityExistentialRestrictionAxioms.json")
+    // EntityExistentialForwardReifiedRestrictionAxiom
+    entry = new ZipArchiveEntry("EntityExistentialForwardReifiedRestrictionAxioms.json")
     zos.putArchiveEntry(entry)
     try {
-      zos.write(entityExistentialRestrictionAxiomsByteArray(e))
+      zos.write(entityExistentialForwardReifiedRestrictionAxiomsByteArray(e))
     } finally {
       zos.closeArchiveEntry()
     }
-    // EntityUniversalRestrictionAxiom
-    entry = new ZipArchiveEntry("EntityUniversalRestrictionAxioms.json")
+    // EntityExistentialInverseReifiedRestrictionAxiom
+    entry = new ZipArchiveEntry("EntityExistentialInverseReifiedRestrictionAxioms.json")
     zos.putArchiveEntry(entry)
     try {
-      zos.write(entityUniversalRestrictionAxiomsByteArray(e))
+      zos.write(entityExistentialInverseReifiedRestrictionAxiomsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
+    // EntityExistentialUnreifiedRestrictionAxiom
+    entry = new ZipArchiveEntry("EntityExistentialUnreifiedRestrictionAxioms.json")
+    zos.putArchiveEntry(entry)
+    try {
+      zos.write(entityExistentialUnreifiedRestrictionAxiomsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
+    // EntityUniversalForwardReifiedRestrictionAxiom
+    entry = new ZipArchiveEntry("EntityUniversalForwardReifiedRestrictionAxioms.json")
+    zos.putArchiveEntry(entry)
+    try {
+      zos.write(entityUniversalForwardReifiedRestrictionAxiomsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
+    // EntityUniversalInverseReifiedRestrictionAxiom
+    entry = new ZipArchiveEntry("EntityUniversalInverseReifiedRestrictionAxioms.json")
+    zos.putArchiveEntry(entry)
+    try {
+      zos.write(entityUniversalInverseReifiedRestrictionAxiomsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
+    // EntityUniversalUnreifiedRestrictionAxiom
+    entry = new ZipArchiveEntry("EntityUniversalUnreifiedRestrictionAxioms.json")
+    zos.putArchiveEntry(entry)
+    try {
+      zos.write(entityUniversalUnreifiedRestrictionAxiomsByteArray(e))
     } finally {
       zos.closeArchiveEntry()
     }
@@ -851,6 +901,22 @@ class OMLSpecificationTables {
     zos.putArchiveEntry(entry)
     try {
       zos.write(annotationPropertyValuesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
+    // ForwardProperty
+    entry = new ZipArchiveEntry("ForwardProperties.json")
+    zos.putArchiveEntry(entry)
+    try {
+      zos.write(forwardPropertiesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
+    // InverseProperty
+    entry = new ZipArchiveEntry("InverseProperties.json")
+    zos.putArchiveEntry(entry)
+    try {
+      zos.write(inversePropertiesByteArray(e))
     } finally {
       zos.closeArchiveEntry()
     }
@@ -1721,12 +1787,6 @@ class OMLSpecificationTables {
       pw.print(",")
       pw.print("\"name\":")
       pw.print(OMLTables.toString(it.name()))
-      pw.print(",")
-      pw.print("\"unreifiedPropertyName\":")
-      pw.print(OMLTables.toString(it.unreifiedPropertyName))
-      pw.print(",")
-      pw.print("\"unreifiedInversePropertyName\":")
-      pw.print(OMLTables.toString(it.unreifiedInversePropertyName))
       pw.println("}")
     ]
     pw.close()
@@ -1942,9 +2002,9 @@ class OMLSpecificationTables {
       pw.print(it.bodySegment.uuid())
       pw.print("\"")
       pw.print(",")
-      pw.print("\"reifiedRelationshipUUID\":")
+      pw.print("\"forwardPropertyUUID\":")
       pw.print("\"")
-      pw.print(it.reifiedRelationship.uuid())
+      pw.print(it.forwardProperty.uuid())
       pw.print("\"")
       pw.println("}")
     ]
@@ -2042,9 +2102,9 @@ class OMLSpecificationTables {
       pw.print(it.bodySegment.uuid())
       pw.print("\"")
       pw.print(",")
-      pw.print("\"reifiedRelationshipUUID\":")
+      pw.print("\"inversePropertyUUID\":")
       pw.print("\"")
-      pw.print(it.reifiedRelationship.uuid())
+      pw.print(it.inverseProperty.uuid())
       pw.print("\"")
       pw.println("}")
     ]
@@ -2127,10 +2187,10 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] entityExistentialRestrictionAxiomsByteArray(Extent e) {
+  static def byte[] entityExistentialForwardReifiedRestrictionAxiomsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.entityExistentialRestrictionAxioms(e).forEach[it |
+  	OMLTables.entityExistentialForwardReifiedRestrictionAxioms(e).forEach[it |
   	  pw.print("{")
       pw.print("\"uuid\":")
       pw.print("\"")
@@ -2142,11 +2202,6 @@ class OMLSpecificationTables {
       pw.print(it.tbox.uuid())
       pw.print("\"")
       pw.print(",")
-      pw.print("\"restrictedRelationUUID\":")
-      pw.print("\"")
-      pw.print(it.restrictedRelation.uuid())
-      pw.print("\"")
-      pw.print(",")
       pw.print("\"restrictedDomainUUID\":")
       pw.print("\"")
       pw.print(it.restrictedDomain.uuid())
@@ -2155,6 +2210,11 @@ class OMLSpecificationTables {
       pw.print("\"restrictedRangeUUID\":")
       pw.print("\"")
       pw.print(it.restrictedRange.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"forwardPropertyUUID\":")
+      pw.print("\"")
+      pw.print(it.forwardProperty.uuid())
       pw.print("\"")
       pw.println("}")
     ]
@@ -2162,10 +2222,10 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] entityUniversalRestrictionAxiomsByteArray(Extent e) {
+  static def byte[] entityExistentialInverseReifiedRestrictionAxiomsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.entityUniversalRestrictionAxioms(e).forEach[it |
+  	OMLTables.entityExistentialInverseReifiedRestrictionAxioms(e).forEach[it |
   	  pw.print("{")
       pw.print("\"uuid\":")
       pw.print("\"")
@@ -2177,9 +2237,39 @@ class OMLSpecificationTables {
       pw.print(it.tbox.uuid())
       pw.print("\"")
       pw.print(",")
-      pw.print("\"restrictedRelationUUID\":")
+      pw.print("\"restrictedDomainUUID\":")
       pw.print("\"")
-      pw.print(it.restrictedRelation.uuid())
+      pw.print(it.restrictedDomain.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"restrictedRangeUUID\":")
+      pw.print("\"")
+      pw.print(it.restrictedRange.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"inversePropertyUUID\":")
+      pw.print("\"")
+      pw.print(it.inverseProperty.uuid())
+      pw.print("\"")
+      pw.println("}")
+    ]
+    pw.close()
+    return bos.toByteArray()
+  }
+  
+  static def byte[] entityExistentialUnreifiedRestrictionAxiomsByteArray(Extent e) {
+  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
+  	val PrintWriter pw = new PrintWriter(bos)
+  	OMLTables.entityExistentialUnreifiedRestrictionAxioms(e).forEach[it |
+  	  pw.print("{")
+      pw.print("\"uuid\":")
+      pw.print("\"")
+      pw.print(it.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"tboxUUID\":")
+      pw.print("\"")
+      pw.print(it.tbox.uuid())
       pw.print("\"")
       pw.print(",")
       pw.print("\"restrictedDomainUUID\":")
@@ -2190,6 +2280,116 @@ class OMLSpecificationTables {
       pw.print("\"restrictedRangeUUID\":")
       pw.print("\"")
       pw.print(it.restrictedRange.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"restrictedUnreifiedRelationshipUUID\":")
+      pw.print("\"")
+      pw.print(it.restrictedUnreifiedRelationship.uuid())
+      pw.print("\"")
+      pw.println("}")
+    ]
+    pw.close()
+    return bos.toByteArray()
+  }
+  
+  static def byte[] entityUniversalForwardReifiedRestrictionAxiomsByteArray(Extent e) {
+  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
+  	val PrintWriter pw = new PrintWriter(bos)
+  	OMLTables.entityUniversalForwardReifiedRestrictionAxioms(e).forEach[it |
+  	  pw.print("{")
+      pw.print("\"uuid\":")
+      pw.print("\"")
+      pw.print(it.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"tboxUUID\":")
+      pw.print("\"")
+      pw.print(it.tbox.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"restrictedDomainUUID\":")
+      pw.print("\"")
+      pw.print(it.restrictedDomain.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"restrictedRangeUUID\":")
+      pw.print("\"")
+      pw.print(it.restrictedRange.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"forwardPropertyUUID\":")
+      pw.print("\"")
+      pw.print(it.forwardProperty.uuid())
+      pw.print("\"")
+      pw.println("}")
+    ]
+    pw.close()
+    return bos.toByteArray()
+  }
+  
+  static def byte[] entityUniversalInverseReifiedRestrictionAxiomsByteArray(Extent e) {
+  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
+  	val PrintWriter pw = new PrintWriter(bos)
+  	OMLTables.entityUniversalInverseReifiedRestrictionAxioms(e).forEach[it |
+  	  pw.print("{")
+      pw.print("\"uuid\":")
+      pw.print("\"")
+      pw.print(it.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"tboxUUID\":")
+      pw.print("\"")
+      pw.print(it.tbox.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"restrictedDomainUUID\":")
+      pw.print("\"")
+      pw.print(it.restrictedDomain.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"restrictedRangeUUID\":")
+      pw.print("\"")
+      pw.print(it.restrictedRange.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"inversePropertyUUID\":")
+      pw.print("\"")
+      pw.print(it.inverseProperty.uuid())
+      pw.print("\"")
+      pw.println("}")
+    ]
+    pw.close()
+    return bos.toByteArray()
+  }
+  
+  static def byte[] entityUniversalUnreifiedRestrictionAxiomsByteArray(Extent e) {
+  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
+  	val PrintWriter pw = new PrintWriter(bos)
+  	OMLTables.entityUniversalUnreifiedRestrictionAxioms(e).forEach[it |
+  	  pw.print("{")
+      pw.print("\"uuid\":")
+      pw.print("\"")
+      pw.print(it.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"tboxUUID\":")
+      pw.print("\"")
+      pw.print(it.tbox.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"restrictedDomainUUID\":")
+      pw.print("\"")
+      pw.print(it.restrictedDomain.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"restrictedRangeUUID\":")
+      pw.print("\"")
+      pw.print(it.restrictedRange.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"restrictedUnreifiedRelationshipUUID\":")
+      pw.print("\"")
+      pw.print(it.restrictedUnreifiedRelationship.uuid())
       pw.print("\"")
       pw.println("}")
     ]
@@ -2933,6 +3133,52 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
+  static def byte[] forwardPropertiesByteArray(Extent e) {
+  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
+  	val PrintWriter pw = new PrintWriter(bos)
+  	OMLTables.forwardProperties(e).forEach[it |
+  	  pw.print("{")
+      pw.print("\"uuid\":")
+      pw.print("\"")
+      pw.print(it.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"name\":")
+      pw.print(OMLTables.toString(it.name()))
+      pw.print(",")
+      pw.print("\"reifiedRelationshipUUID\":")
+      pw.print("\"")
+      pw.print(it.reifiedRelationship.uuid())
+      pw.print("\"")
+      pw.println("}")
+    ]
+    pw.close()
+    return bos.toByteArray()
+  }
+  
+  static def byte[] inversePropertiesByteArray(Extent e) {
+  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
+  	val PrintWriter pw = new PrintWriter(bos)
+  	OMLTables.inverseProperties(e).forEach[it |
+  	  pw.print("{")
+      pw.print("\"uuid\":")
+      pw.print("\"")
+      pw.print(it.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"name\":")
+      pw.print(OMLTables.toString(it.name()))
+      pw.print(",")
+      pw.print("\"reifiedRelationshipUUID\":")
+      pw.print("\"")
+      pw.print(it.reifiedRelationship.uuid())
+      pw.print("\"")
+      pw.println("}")
+    ]
+    pw.close()
+    return bos.toByteArray()
+  }
+  
   		    	    
   static def void load(OMLZipResourceSet rs, OMLZipResource r, File omlZipFile) {
 
@@ -3029,10 +3275,18 @@ class OMLSpecificationTables {
   	      tables.readReifiedRelationshipTargetInversePropertyPredicates(lines)
   	    case "UnreifiedRelationshipInversePropertyPredicates.json":
   	      tables.readUnreifiedRelationshipInversePropertyPredicates(lines)
-  	    case "EntityExistentialRestrictionAxioms.json":
-  	      tables.readEntityExistentialRestrictionAxioms(lines)
-  	    case "EntityUniversalRestrictionAxioms.json":
-  	      tables.readEntityUniversalRestrictionAxioms(lines)
+  	    case "EntityExistentialForwardReifiedRestrictionAxioms.json":
+  	      tables.readEntityExistentialForwardReifiedRestrictionAxioms(lines)
+  	    case "EntityExistentialInverseReifiedRestrictionAxioms.json":
+  	      tables.readEntityExistentialInverseReifiedRestrictionAxioms(lines)
+  	    case "EntityExistentialUnreifiedRestrictionAxioms.json":
+  	      tables.readEntityExistentialUnreifiedRestrictionAxioms(lines)
+  	    case "EntityUniversalForwardReifiedRestrictionAxioms.json":
+  	      tables.readEntityUniversalForwardReifiedRestrictionAxioms(lines)
+  	    case "EntityUniversalInverseReifiedRestrictionAxioms.json":
+  	      tables.readEntityUniversalInverseReifiedRestrictionAxioms(lines)
+  	    case "EntityUniversalUnreifiedRestrictionAxioms.json":
+  	      tables.readEntityUniversalUnreifiedRestrictionAxioms(lines)
   	    case "EntityScalarDataPropertyExistentialRestrictionAxioms.json":
   	      tables.readEntityScalarDataPropertyExistentialRestrictionAxioms(lines)
   	    case "EntityScalarDataPropertyParticularRestrictionAxioms.json":
@@ -3081,6 +3335,10 @@ class OMLSpecificationTables {
   	      tables.readScalarDataPropertyValues(lines)
   	    case "AnnotationPropertyValues.json":
   	      tables.readAnnotationPropertyValues(lines)
+  	    case "ForwardProperties.json":
+  	      tables.readForwardProperties(lines)
+  	    case "InverseProperties.json":
+  	      tables.readInverseProperties(lines)
         default:
           throw new IllegalArgumentException("OMLSpecificationTables.load(): unrecognized table name: "+ze.name)
       }
@@ -3424,8 +3682,6 @@ class OMLSpecificationTables {
   	  oml.isSymmetric = OMLTables.toEBoolean(kv.remove("isSymmetric"))
   	  oml.isTransitive = OMLTables.toEBoolean(kv.remove("isTransitive"))
   	  oml.name = OMLTables.toLocalName(kv.remove("name"))
-  	  oml.unreifiedPropertyName = OMLTables.toLocalName(kv.remove("unreifiedPropertyName"))
-  	  oml.unreifiedInversePropertyName = OMLTables.toLocalName(kv.remove("unreifiedInversePropertyName"))
   	  val pair = new Pair<ReifiedRelationship, Map<String,String>>(oml, kv)
   	  reifiedRelationships.put(uuid, pair)
   	]
@@ -3582,23 +3838,63 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readEntityExistentialRestrictionAxioms(ArrayList<String> lines) {
+  protected def void readEntityExistentialForwardReifiedRestrictionAxioms(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
-  	  val oml = createEntityExistentialRestrictionAxiom()
+  	  val oml = createEntityExistentialForwardReifiedRestrictionAxiom()
   	  val uuid = kv.remove("uuid")
-  	  val pair = new Pair<EntityExistentialRestrictionAxiom, Map<String,String>>(oml, kv)
-  	  entityExistentialRestrictionAxioms.put(uuid, pair)
+  	  val pair = new Pair<EntityExistentialForwardReifiedRestrictionAxiom, Map<String,String>>(oml, kv)
+  	  entityExistentialForwardReifiedRestrictionAxioms.put(uuid, pair)
   	]
   }
   
-  protected def void readEntityUniversalRestrictionAxioms(ArrayList<String> lines) {
+  protected def void readEntityExistentialInverseReifiedRestrictionAxioms(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
-  	  val oml = createEntityUniversalRestrictionAxiom()
+  	  val oml = createEntityExistentialInverseReifiedRestrictionAxiom()
   	  val uuid = kv.remove("uuid")
-  	  val pair = new Pair<EntityUniversalRestrictionAxiom, Map<String,String>>(oml, kv)
-  	  entityUniversalRestrictionAxioms.put(uuid, pair)
+  	  val pair = new Pair<EntityExistentialInverseReifiedRestrictionAxiom, Map<String,String>>(oml, kv)
+  	  entityExistentialInverseReifiedRestrictionAxioms.put(uuid, pair)
+  	]
+  }
+  
+  protected def void readEntityExistentialUnreifiedRestrictionAxioms(ArrayList<String> lines) {
+  	val kvs = OMLZipResource.lines2tuples(lines)
+  	kvs.forEach[kv|
+  	  val oml = createEntityExistentialUnreifiedRestrictionAxiom()
+  	  val uuid = kv.remove("uuid")
+  	  val pair = new Pair<EntityExistentialUnreifiedRestrictionAxiom, Map<String,String>>(oml, kv)
+  	  entityExistentialUnreifiedRestrictionAxioms.put(uuid, pair)
+  	]
+  }
+  
+  protected def void readEntityUniversalForwardReifiedRestrictionAxioms(ArrayList<String> lines) {
+  	val kvs = OMLZipResource.lines2tuples(lines)
+  	kvs.forEach[kv|
+  	  val oml = createEntityUniversalForwardReifiedRestrictionAxiom()
+  	  val uuid = kv.remove("uuid")
+  	  val pair = new Pair<EntityUniversalForwardReifiedRestrictionAxiom, Map<String,String>>(oml, kv)
+  	  entityUniversalForwardReifiedRestrictionAxioms.put(uuid, pair)
+  	]
+  }
+  
+  protected def void readEntityUniversalInverseReifiedRestrictionAxioms(ArrayList<String> lines) {
+  	val kvs = OMLZipResource.lines2tuples(lines)
+  	kvs.forEach[kv|
+  	  val oml = createEntityUniversalInverseReifiedRestrictionAxiom()
+  	  val uuid = kv.remove("uuid")
+  	  val pair = new Pair<EntityUniversalInverseReifiedRestrictionAxiom, Map<String,String>>(oml, kv)
+  	  entityUniversalInverseReifiedRestrictionAxioms.put(uuid, pair)
+  	]
+  }
+  
+  protected def void readEntityUniversalUnreifiedRestrictionAxioms(ArrayList<String> lines) {
+  	val kvs = OMLZipResource.lines2tuples(lines)
+  	kvs.forEach[kv|
+  	  val oml = createEntityUniversalUnreifiedRestrictionAxiom()
+  	  val uuid = kv.remove("uuid")
+  	  val pair = new Pair<EntityUniversalUnreifiedRestrictionAxiom, Map<String,String>>(oml, kv)
+  	  entityUniversalUnreifiedRestrictionAxioms.put(uuid, pair)
   	]
   }
   
@@ -3850,6 +4146,28 @@ class OMLSpecificationTables {
   	]
   }
   
+  protected def void readForwardProperties(ArrayList<String> lines) {
+  	val kvs = OMLZipResource.lines2tuples(lines)
+  	kvs.forEach[kv|
+  	  val oml = createForwardProperty()
+  	  val uuid = kv.remove("uuid")
+  	  oml.name = OMLTables.toLocalName(kv.remove("name"))
+  	  val pair = new Pair<ForwardProperty, Map<String,String>>(oml, kv)
+  	  forwardProperties.put(uuid, pair)
+  	]
+  }
+  
+  protected def void readInverseProperties(ArrayList<String> lines) {
+  	val kvs = OMLZipResource.lines2tuples(lines)
+  	kvs.forEach[kv|
+  	  val oml = createInverseProperty()
+  	  val uuid = kv.remove("uuid")
+  	  oml.name = OMLTables.toLocalName(kv.remove("name"))
+  	  val pair = new Pair<InverseProperty, Map<String,String>>(oml, kv)
+  	  inverseProperties.put(uuid, pair)
+  	]
+  }
+  
 
   protected def <U,V extends U> void includeMap(Map<String, Pair<U, Map<String, String>>> uMap, Map<String, Pair<V, Map<String, String>>> vMap) {
     vMap.forEach[uuid,kv|uMap.put(uuid, new Pair<U, Map<String, String>>(kv.key, Collections.emptyMap))]
@@ -3898,8 +4216,12 @@ class OMLSpecificationTables {
     includeMap(logicalElements, reifiedRelationshipSourceInversePropertyPredicates)
     includeMap(logicalElements, reifiedRelationshipTargetInversePropertyPredicates)
     includeMap(logicalElements, unreifiedRelationshipInversePropertyPredicates)
-    includeMap(logicalElements, entityExistentialRestrictionAxioms)
-    includeMap(logicalElements, entityUniversalRestrictionAxioms)
+    includeMap(logicalElements, entityExistentialForwardReifiedRestrictionAxioms)
+    includeMap(logicalElements, entityExistentialInverseReifiedRestrictionAxioms)
+    includeMap(logicalElements, entityExistentialUnreifiedRestrictionAxioms)
+    includeMap(logicalElements, entityUniversalForwardReifiedRestrictionAxioms)
+    includeMap(logicalElements, entityUniversalInverseReifiedRestrictionAxioms)
+    includeMap(logicalElements, entityUniversalUnreifiedRestrictionAxioms)
     includeMap(logicalElements, entityScalarDataPropertyExistentialRestrictionAxioms)
     includeMap(logicalElements, entityScalarDataPropertyParticularRestrictionAxioms)
     includeMap(logicalElements, entityScalarDataPropertyUniversalRestrictionAxioms)
@@ -3923,6 +4245,8 @@ class OMLSpecificationTables {
     includeMap(logicalElements, singletonInstanceScalarDataPropertyValues)
     includeMap(logicalElements, structuredDataPropertyTuples)
     includeMap(logicalElements, scalarDataPropertyValues)
+    includeMap(logicalElements, forwardProperties)
+    includeMap(logicalElements, inverseProperties)
   	
 	// Lookup table for Entity cross references
   	includeMap(entities, aspects)
@@ -4011,8 +4335,12 @@ class OMLSpecificationTables {
     resolveReifiedRelationshipSourceInversePropertyPredicates(rs)
     resolveReifiedRelationshipTargetInversePropertyPredicates(rs)
     resolveUnreifiedRelationshipInversePropertyPredicates(rs)
-    resolveEntityExistentialRestrictionAxioms(rs)
-    resolveEntityUniversalRestrictionAxioms(rs)
+    resolveEntityExistentialForwardReifiedRestrictionAxioms(rs)
+    resolveEntityExistentialInverseReifiedRestrictionAxioms(rs)
+    resolveEntityExistentialUnreifiedRestrictionAxioms(rs)
+    resolveEntityUniversalForwardReifiedRestrictionAxioms(rs)
+    resolveEntityUniversalInverseReifiedRestrictionAxioms(rs)
+    resolveEntityUniversalUnreifiedRestrictionAxioms(rs)
     resolveEntityScalarDataPropertyExistentialRestrictionAxioms(rs)
     resolveEntityScalarDataPropertyParticularRestrictionAxioms(rs)
     resolveEntityScalarDataPropertyUniversalRestrictionAxioms(rs)
@@ -4037,6 +4365,8 @@ class OMLSpecificationTables {
     resolveStructuredDataPropertyTuples(rs)
     resolveScalarDataPropertyValues(rs)
     resolveAnnotationPropertyValues(rs)
+    resolveForwardProperties(rs)
+    resolveInverseProperties(rs)
     
     	val ext = createExtent()
     	ext.getModules.addAll(terminologyGraphs.values.map[key])
@@ -4676,11 +5006,11 @@ class OMLSpecificationTables {
   	    if (null === bodySegmentPair)
   	      throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in reifiedRelationshipPropertyPredicates")
   	    oml.bodySegment = bodySegmentPair.key
-  	    val String reifiedRelationshipXRef = kv.remove("reifiedRelationshipUUID")
-  	    val Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipPair = reifiedRelationships.get(reifiedRelationshipXRef)
-  	    if (null === reifiedRelationshipPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationship in reifiedRelationshipPropertyPredicates")
-  	    oml.reifiedRelationship = reifiedRelationshipPair.key
+  	    val String forwardPropertyXRef = kv.remove("forwardPropertyUUID")
+  	    val Pair<ForwardProperty, Map<String, String>> forwardPropertyPair = forwardProperties.get(forwardPropertyXRef)
+  	    if (null === forwardPropertyPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for forwardProperty in reifiedRelationshipPropertyPredicates")
+  	    oml.forwardProperty = forwardPropertyPair.key
   	  }
   	]
   }
@@ -4752,11 +5082,11 @@ class OMLSpecificationTables {
   	    if (null === bodySegmentPair)
   	      throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in reifiedRelationshipInversePropertyPredicates")
   	    oml.bodySegment = bodySegmentPair.key
-  	    val String reifiedRelationshipXRef = kv.remove("reifiedRelationshipUUID")
-  	    val Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipPair = reifiedRelationships.get(reifiedRelationshipXRef)
-  	    if (null === reifiedRelationshipPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationship in reifiedRelationshipInversePropertyPredicates")
-  	    oml.reifiedRelationship = reifiedRelationshipPair.key
+  	    val String inversePropertyXRef = kv.remove("inversePropertyUUID")
+  	    val Pair<InverseProperty, Map<String, String>> inversePropertyPair = inverseProperties.get(inversePropertyXRef)
+  	    if (null === inversePropertyPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for inverseProperty in reifiedRelationshipInversePropertyPredicates")
+  	    oml.inverseProperty = inversePropertyPair.key
   	  }
   	]
   }
@@ -4818,60 +5148,176 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveEntityExistentialRestrictionAxioms(OMLZipResourceSet rs) {
-  	entityExistentialRestrictionAxioms.forEach[uuid, oml_kv |
-  	  val EntityExistentialRestrictionAxiom oml = oml_kv.key
+  protected def void resolveEntityExistentialForwardReifiedRestrictionAxioms(OMLZipResourceSet rs) {
+  	entityExistentialForwardReifiedRestrictionAxioms.forEach[uuid, oml_kv |
+  	  val EntityExistentialForwardReifiedRestrictionAxiom oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
   	  if (!kv.empty) {
   	    val String tboxXRef = kv.remove("tboxUUID")
   	    val Pair<TerminologyBox, Map<String, String>> tboxPair = terminologyBoxes.get(tboxXRef)
   	    if (null === tboxPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for tbox in entityExistentialRestrictionAxioms")
+  	      throw new IllegalArgumentException("Null cross-reference lookup for tbox in entityExistentialForwardReifiedRestrictionAxioms")
   	    oml.tbox = tboxPair.key
-  	    val String restrictedRelationXRef = kv.remove("restrictedRelationUUID")
-  	    val Pair<EntityRelationship, Map<String, String>> restrictedRelationPair = entityRelationships.get(restrictedRelationXRef)
-  	    if (null === restrictedRelationPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for restrictedRelation in entityExistentialRestrictionAxioms")
-  	    oml.restrictedRelation = restrictedRelationPair.key
   	    val String restrictedDomainXRef = kv.remove("restrictedDomainUUID")
   	    val Pair<Entity, Map<String, String>> restrictedDomainPair = entities.get(restrictedDomainXRef)
   	    if (null === restrictedDomainPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for restrictedDomain in entityExistentialRestrictionAxioms")
+  	      throw new IllegalArgumentException("Null cross-reference lookup for restrictedDomain in entityExistentialForwardReifiedRestrictionAxioms")
   	    oml.restrictedDomain = restrictedDomainPair.key
   	    val String restrictedRangeXRef = kv.remove("restrictedRangeUUID")
   	    val Pair<Entity, Map<String, String>> restrictedRangePair = entities.get(restrictedRangeXRef)
   	    if (null === restrictedRangePair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for restrictedRange in entityExistentialRestrictionAxioms")
+  	      throw new IllegalArgumentException("Null cross-reference lookup for restrictedRange in entityExistentialForwardReifiedRestrictionAxioms")
   	    oml.restrictedRange = restrictedRangePair.key
+  	    val String forwardPropertyXRef = kv.remove("forwardPropertyUUID")
+  	    val Pair<ForwardProperty, Map<String, String>> forwardPropertyPair = forwardProperties.get(forwardPropertyXRef)
+  	    if (null === forwardPropertyPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for forwardProperty in entityExistentialForwardReifiedRestrictionAxioms")
+  	    oml.forwardProperty = forwardPropertyPair.key
   	  }
   	]
   }
   
-  protected def void resolveEntityUniversalRestrictionAxioms(OMLZipResourceSet rs) {
-  	entityUniversalRestrictionAxioms.forEach[uuid, oml_kv |
-  	  val EntityUniversalRestrictionAxiom oml = oml_kv.key
+  protected def void resolveEntityExistentialInverseReifiedRestrictionAxioms(OMLZipResourceSet rs) {
+  	entityExistentialInverseReifiedRestrictionAxioms.forEach[uuid, oml_kv |
+  	  val EntityExistentialInverseReifiedRestrictionAxiom oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
   	  if (!kv.empty) {
   	    val String tboxXRef = kv.remove("tboxUUID")
   	    val Pair<TerminologyBox, Map<String, String>> tboxPair = terminologyBoxes.get(tboxXRef)
   	    if (null === tboxPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for tbox in entityUniversalRestrictionAxioms")
+  	      throw new IllegalArgumentException("Null cross-reference lookup for tbox in entityExistentialInverseReifiedRestrictionAxioms")
   	    oml.tbox = tboxPair.key
-  	    val String restrictedRelationXRef = kv.remove("restrictedRelationUUID")
-  	    val Pair<EntityRelationship, Map<String, String>> restrictedRelationPair = entityRelationships.get(restrictedRelationXRef)
-  	    if (null === restrictedRelationPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for restrictedRelation in entityUniversalRestrictionAxioms")
-  	    oml.restrictedRelation = restrictedRelationPair.key
   	    val String restrictedDomainXRef = kv.remove("restrictedDomainUUID")
   	    val Pair<Entity, Map<String, String>> restrictedDomainPair = entities.get(restrictedDomainXRef)
   	    if (null === restrictedDomainPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for restrictedDomain in entityUniversalRestrictionAxioms")
+  	      throw new IllegalArgumentException("Null cross-reference lookup for restrictedDomain in entityExistentialInverseReifiedRestrictionAxioms")
   	    oml.restrictedDomain = restrictedDomainPair.key
   	    val String restrictedRangeXRef = kv.remove("restrictedRangeUUID")
   	    val Pair<Entity, Map<String, String>> restrictedRangePair = entities.get(restrictedRangeXRef)
   	    if (null === restrictedRangePair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for restrictedRange in entityUniversalRestrictionAxioms")
+  	      throw new IllegalArgumentException("Null cross-reference lookup for restrictedRange in entityExistentialInverseReifiedRestrictionAxioms")
   	    oml.restrictedRange = restrictedRangePair.key
+  	    val String inversePropertyXRef = kv.remove("inversePropertyUUID")
+  	    val Pair<InverseProperty, Map<String, String>> inversePropertyPair = inverseProperties.get(inversePropertyXRef)
+  	    if (null === inversePropertyPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for inverseProperty in entityExistentialInverseReifiedRestrictionAxioms")
+  	    oml.inverseProperty = inversePropertyPair.key
+  	  }
+  	]
+  }
+  
+  protected def void resolveEntityExistentialUnreifiedRestrictionAxioms(OMLZipResourceSet rs) {
+  	entityExistentialUnreifiedRestrictionAxioms.forEach[uuid, oml_kv |
+  	  val EntityExistentialUnreifiedRestrictionAxiom oml = oml_kv.key
+  	  val Map<String, String> kv = oml_kv.value
+  	  if (!kv.empty) {
+  	    val String tboxXRef = kv.remove("tboxUUID")
+  	    val Pair<TerminologyBox, Map<String, String>> tboxPair = terminologyBoxes.get(tboxXRef)
+  	    if (null === tboxPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for tbox in entityExistentialUnreifiedRestrictionAxioms")
+  	    oml.tbox = tboxPair.key
+  	    val String restrictedDomainXRef = kv.remove("restrictedDomainUUID")
+  	    val Pair<Entity, Map<String, String>> restrictedDomainPair = entities.get(restrictedDomainXRef)
+  	    if (null === restrictedDomainPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for restrictedDomain in entityExistentialUnreifiedRestrictionAxioms")
+  	    oml.restrictedDomain = restrictedDomainPair.key
+  	    val String restrictedRangeXRef = kv.remove("restrictedRangeUUID")
+  	    val Pair<Entity, Map<String, String>> restrictedRangePair = entities.get(restrictedRangeXRef)
+  	    if (null === restrictedRangePair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for restrictedRange in entityExistentialUnreifiedRestrictionAxioms")
+  	    oml.restrictedRange = restrictedRangePair.key
+  	    val String restrictedUnreifiedRelationshipXRef = kv.remove("restrictedUnreifiedRelationshipUUID")
+  	    val Pair<UnreifiedRelationship, Map<String, String>> restrictedUnreifiedRelationshipPair = unreifiedRelationships.get(restrictedUnreifiedRelationshipXRef)
+  	    if (null === restrictedUnreifiedRelationshipPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for restrictedUnreifiedRelationship in entityExistentialUnreifiedRestrictionAxioms")
+  	    oml.restrictedUnreifiedRelationship = restrictedUnreifiedRelationshipPair.key
+  	  }
+  	]
+  }
+  
+  protected def void resolveEntityUniversalForwardReifiedRestrictionAxioms(OMLZipResourceSet rs) {
+  	entityUniversalForwardReifiedRestrictionAxioms.forEach[uuid, oml_kv |
+  	  val EntityUniversalForwardReifiedRestrictionAxiom oml = oml_kv.key
+  	  val Map<String, String> kv = oml_kv.value
+  	  if (!kv.empty) {
+  	    val String tboxXRef = kv.remove("tboxUUID")
+  	    val Pair<TerminologyBox, Map<String, String>> tboxPair = terminologyBoxes.get(tboxXRef)
+  	    if (null === tboxPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for tbox in entityUniversalForwardReifiedRestrictionAxioms")
+  	    oml.tbox = tboxPair.key
+  	    val String restrictedDomainXRef = kv.remove("restrictedDomainUUID")
+  	    val Pair<Entity, Map<String, String>> restrictedDomainPair = entities.get(restrictedDomainXRef)
+  	    if (null === restrictedDomainPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for restrictedDomain in entityUniversalForwardReifiedRestrictionAxioms")
+  	    oml.restrictedDomain = restrictedDomainPair.key
+  	    val String restrictedRangeXRef = kv.remove("restrictedRangeUUID")
+  	    val Pair<Entity, Map<String, String>> restrictedRangePair = entities.get(restrictedRangeXRef)
+  	    if (null === restrictedRangePair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for restrictedRange in entityUniversalForwardReifiedRestrictionAxioms")
+  	    oml.restrictedRange = restrictedRangePair.key
+  	    val String forwardPropertyXRef = kv.remove("forwardPropertyUUID")
+  	    val Pair<ForwardProperty, Map<String, String>> forwardPropertyPair = forwardProperties.get(forwardPropertyXRef)
+  	    if (null === forwardPropertyPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for forwardProperty in entityUniversalForwardReifiedRestrictionAxioms")
+  	    oml.forwardProperty = forwardPropertyPair.key
+  	  }
+  	]
+  }
+  
+  protected def void resolveEntityUniversalInverseReifiedRestrictionAxioms(OMLZipResourceSet rs) {
+  	entityUniversalInverseReifiedRestrictionAxioms.forEach[uuid, oml_kv |
+  	  val EntityUniversalInverseReifiedRestrictionAxiom oml = oml_kv.key
+  	  val Map<String, String> kv = oml_kv.value
+  	  if (!kv.empty) {
+  	    val String tboxXRef = kv.remove("tboxUUID")
+  	    val Pair<TerminologyBox, Map<String, String>> tboxPair = terminologyBoxes.get(tboxXRef)
+  	    if (null === tboxPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for tbox in entityUniversalInverseReifiedRestrictionAxioms")
+  	    oml.tbox = tboxPair.key
+  	    val String restrictedDomainXRef = kv.remove("restrictedDomainUUID")
+  	    val Pair<Entity, Map<String, String>> restrictedDomainPair = entities.get(restrictedDomainXRef)
+  	    if (null === restrictedDomainPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for restrictedDomain in entityUniversalInverseReifiedRestrictionAxioms")
+  	    oml.restrictedDomain = restrictedDomainPair.key
+  	    val String restrictedRangeXRef = kv.remove("restrictedRangeUUID")
+  	    val Pair<Entity, Map<String, String>> restrictedRangePair = entities.get(restrictedRangeXRef)
+  	    if (null === restrictedRangePair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for restrictedRange in entityUniversalInverseReifiedRestrictionAxioms")
+  	    oml.restrictedRange = restrictedRangePair.key
+  	    val String inversePropertyXRef = kv.remove("inversePropertyUUID")
+  	    val Pair<InverseProperty, Map<String, String>> inversePropertyPair = inverseProperties.get(inversePropertyXRef)
+  	    if (null === inversePropertyPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for inverseProperty in entityUniversalInverseReifiedRestrictionAxioms")
+  	    oml.inverseProperty = inversePropertyPair.key
+  	  }
+  	]
+  }
+  
+  protected def void resolveEntityUniversalUnreifiedRestrictionAxioms(OMLZipResourceSet rs) {
+  	entityUniversalUnreifiedRestrictionAxioms.forEach[uuid, oml_kv |
+  	  val EntityUniversalUnreifiedRestrictionAxiom oml = oml_kv.key
+  	  val Map<String, String> kv = oml_kv.value
+  	  if (!kv.empty) {
+  	    val String tboxXRef = kv.remove("tboxUUID")
+  	    val Pair<TerminologyBox, Map<String, String>> tboxPair = terminologyBoxes.get(tboxXRef)
+  	    if (null === tboxPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for tbox in entityUniversalUnreifiedRestrictionAxioms")
+  	    oml.tbox = tboxPair.key
+  	    val String restrictedDomainXRef = kv.remove("restrictedDomainUUID")
+  	    val Pair<Entity, Map<String, String>> restrictedDomainPair = entities.get(restrictedDomainXRef)
+  	    if (null === restrictedDomainPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for restrictedDomain in entityUniversalUnreifiedRestrictionAxioms")
+  	    oml.restrictedDomain = restrictedDomainPair.key
+  	    val String restrictedRangeXRef = kv.remove("restrictedRangeUUID")
+  	    val Pair<Entity, Map<String, String>> restrictedRangePair = entities.get(restrictedRangeXRef)
+  	    if (null === restrictedRangePair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for restrictedRange in entityUniversalUnreifiedRestrictionAxioms")
+  	    oml.restrictedRange = restrictedRangePair.key
+  	    val String restrictedUnreifiedRelationshipXRef = kv.remove("restrictedUnreifiedRelationshipUUID")
+  	    val Pair<UnreifiedRelationship, Map<String, String>> restrictedUnreifiedRelationshipPair = unreifiedRelationships.get(restrictedUnreifiedRelationshipXRef)
+  	    if (null === restrictedUnreifiedRelationshipPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for restrictedUnreifiedRelationship in entityUniversalUnreifiedRestrictionAxioms")
+  	    oml.restrictedUnreifiedRelationship = restrictedUnreifiedRelationshipPair.key
   	  }
   	]
   }
@@ -5440,6 +5886,34 @@ class OMLSpecificationTables {
   	]
   }
   
+  protected def void resolveForwardProperties(OMLZipResourceSet rs) {
+  	forwardProperties.forEach[uuid, oml_kv |
+  	  val ForwardProperty oml = oml_kv.key
+  	  val Map<String, String> kv = oml_kv.value
+  	  if (!kv.empty) {
+  	    val String reifiedRelationshipXRef = kv.remove("reifiedRelationshipUUID")
+  	    val Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipPair = reifiedRelationships.get(reifiedRelationshipXRef)
+  	    if (null === reifiedRelationshipPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationship in forwardProperties")
+  	    oml.reifiedRelationship = reifiedRelationshipPair.key
+  	  }
+  	]
+  }
+  
+  protected def void resolveInverseProperties(OMLZipResourceSet rs) {
+  	inverseProperties.forEach[uuid, oml_kv |
+  	  val InverseProperty oml = oml_kv.key
+  	  val Map<String, String> kv = oml_kv.value
+  	  if (!kv.empty) {
+  	    val String reifiedRelationshipXRef = kv.remove("reifiedRelationshipUUID")
+  	    val Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipPair = reifiedRelationships.get(reifiedRelationshipXRef)
+  	    if (null === reifiedRelationshipPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationship in inverseProperties")
+  	    oml.reifiedRelationship = reifiedRelationshipPair.key
+  	  }
+  	]
+  }
+  
 
   protected def OMLZipResource loadOMLZipResource(OMLZipResourceSet rs, URI uri) {
   	val r = rs.getResource(uri, true)
@@ -5663,14 +6137,34 @@ class OMLSpecificationTables {
   	            unreifiedRelationshipInversePropertyPredicates.put(e.uuid(), pair)
   	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
   	          }
-  	          EntityExistentialRestrictionAxiom: {
-  	          	val pair = new Pair<EntityExistentialRestrictionAxiom, Map<String,String>>(e, Collections.emptyMap)
-  	            entityExistentialRestrictionAxioms.put(e.uuid(), pair)
+  	          EntityExistentialForwardReifiedRestrictionAxiom: {
+  	          	val pair = new Pair<EntityExistentialForwardReifiedRestrictionAxiom, Map<String,String>>(e, Collections.emptyMap)
+  	            entityExistentialForwardReifiedRestrictionAxioms.put(e.uuid(), pair)
   	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
   	          }
-  	          EntityUniversalRestrictionAxiom: {
-  	          	val pair = new Pair<EntityUniversalRestrictionAxiom, Map<String,String>>(e, Collections.emptyMap)
-  	            entityUniversalRestrictionAxioms.put(e.uuid(), pair)
+  	          EntityExistentialInverseReifiedRestrictionAxiom: {
+  	          	val pair = new Pair<EntityExistentialInverseReifiedRestrictionAxiom, Map<String,String>>(e, Collections.emptyMap)
+  	            entityExistentialInverseReifiedRestrictionAxioms.put(e.uuid(), pair)
+  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	          }
+  	          EntityExistentialUnreifiedRestrictionAxiom: {
+  	          	val pair = new Pair<EntityExistentialUnreifiedRestrictionAxiom, Map<String,String>>(e, Collections.emptyMap)
+  	            entityExistentialUnreifiedRestrictionAxioms.put(e.uuid(), pair)
+  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	          }
+  	          EntityUniversalForwardReifiedRestrictionAxiom: {
+  	          	val pair = new Pair<EntityUniversalForwardReifiedRestrictionAxiom, Map<String,String>>(e, Collections.emptyMap)
+  	            entityUniversalForwardReifiedRestrictionAxioms.put(e.uuid(), pair)
+  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	          }
+  	          EntityUniversalInverseReifiedRestrictionAxiom: {
+  	          	val pair = new Pair<EntityUniversalInverseReifiedRestrictionAxiom, Map<String,String>>(e, Collections.emptyMap)
+  	            entityUniversalInverseReifiedRestrictionAxioms.put(e.uuid(), pair)
+  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	          }
+  	          EntityUniversalUnreifiedRestrictionAxiom: {
+  	          	val pair = new Pair<EntityUniversalUnreifiedRestrictionAxiom, Map<String,String>>(e, Collections.emptyMap)
+  	            entityUniversalUnreifiedRestrictionAxioms.put(e.uuid(), pair)
   	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
   	          }
   	          EntityScalarDataPropertyExistentialRestrictionAxiom: {
@@ -5791,6 +6285,16 @@ class OMLSpecificationTables {
   	          AnnotationPropertyValue: {
   	          	val pair = new Pair<AnnotationPropertyValue, Map<String,String>>(e, Collections.emptyMap)
   	            annotationPropertyValues.put(e.uuid(), pair)
+  	          }
+  	          ForwardProperty: {
+  	          	val pair = new Pair<ForwardProperty, Map<String,String>>(e, Collections.emptyMap)
+  	            forwardProperties.put(e.uuid(), pair)
+  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	          }
+  	          InverseProperty: {
+  	          	val pair = new Pair<InverseProperty, Map<String,String>>(e, Collections.emptyMap)
+  	            inverseProperties.put(e.uuid(), pair)
+  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
   	          }
   		    	}
   		  ]

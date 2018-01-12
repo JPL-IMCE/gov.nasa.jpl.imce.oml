@@ -45,8 +45,13 @@ import gov.nasa.jpl.imce.oml.model.graphs.ConceptDesignationTerminologyAxiom
 import gov.nasa.jpl.imce.oml.model.graphs.GraphsPackage
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyGraph
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyNestingAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.AspectPredicate
 import gov.nasa.jpl.imce.oml.model.terminologies.AspectSpecializationAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.ChainRule
+import gov.nasa.jpl.imce.oml.model.terminologies.ConceptPredicate
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptSpecializationAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityForwardReifiedRestrictionAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityInverseReifiedRestrictionAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityRestrictionAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataProperty
@@ -54,13 +59,28 @@ import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyExisten
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyParticularRestrictionAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyUniversalRestrictionAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataProperty
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataPropertyParticularRestrictionAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityUnreifiedRestrictionAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipInversePropertyPredicate
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPredicate
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPropertyPredicate
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourceInversePropertyPredicate
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourcePropertyPredicate
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetInversePropertyPredicate
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetPropertyPredicate
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictedDataRange
+import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue
+import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarDataProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.StructuredDataProperty
+import gov.nasa.jpl.imce.oml.model.terminologies.SubDataPropertyOfAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.SubObjectPropertyOfAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyExtensionAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipInversePropertyPredicate
+import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipPropertyPredicate
 import java.util.ArrayList
 import java.util.List
 import org.eclipse.emf.ecore.EObject
@@ -69,23 +89,6 @@ import org.eclipse.xtext.naming.IQualifiedNameConverter
 import org.eclipse.xtext.scoping.IScope
 import org.eclipse.xtext.scoping.impl.ImportNormalizer
 import org.eclipse.xtext.scoping.impl.ImportedNamespaceAwareLocalScopeProvider
-import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataPropertyParticularRestrictionAxiom
-import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple
-import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue
-import gov.nasa.jpl.imce.oml.model.terminologies.ChainRule
-import gov.nasa.jpl.imce.oml.model.terminologies.AspectPredicate
-import gov.nasa.jpl.imce.oml.model.terminologies.ConceptPredicate
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPredicate
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPropertyPredicate
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipInversePropertyPredicate
-import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipInversePropertyPredicate
-import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipPropertyPredicate
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetInversePropertyPredicate
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetPropertyPredicate
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourceInversePropertyPredicate
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourcePropertyPredicate
-import gov.nasa.jpl.imce.oml.model.terminologies.SubObjectPropertyOfAxiom
-import gov.nasa.jpl.imce.oml.model.terminologies.SubDataPropertyOfAxiom
 
 class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespaceAwareLocalScopeProvider {
 	
@@ -234,12 +237,12 @@ class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespaceAware
 					scope = context.getBodySegment?.chainRule?.tbox?.allEntityRelationshipsScope
 					
 			ReifiedRelationshipPropertyPredicate:
-				if (reference == TerminologiesPackage.eINSTANCE.reifiedRelationshipPropertyPredicate_ReifiedRelationship)
-					scope = context.getBodySegment?.chainRule?.tbox?.allEntityRelationshipsScope
+				if (reference == TerminologiesPackage.eINSTANCE.reifiedRelationshipPropertyPredicate_ForwardProperty)
+					scope = context.getBodySegment?.chainRule?.tbox?.allForwardPropertiesScope
 					
 			ReifiedRelationshipInversePropertyPredicate:
-				if (reference == TerminologiesPackage.eINSTANCE.reifiedRelationshipInversePropertyPredicate_ReifiedRelationship)
-					scope = context.getBodySegment?.chainRule?.tbox?.allEntityRelationshipsScope
+				if (reference == TerminologiesPackage.eINSTANCE.reifiedRelationshipInversePropertyPredicate_InverseProperty)
+					scope = context.getBodySegment?.chainRule?.tbox?.allInversePropertiesScope
 					
 			ReifiedRelationshipSourcePropertyPredicate:
 				if (reference == TerminologiesPackage.eINSTANCE.reifiedRelationshipSourcePropertyPredicate_ReifiedRelationship)
@@ -265,10 +268,20 @@ class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespaceAware
 				if (reference == TerminologiesPackage.eINSTANCE.unreifiedRelationshipInversePropertyPredicate_UnreifiedRelationship)
 					scope = context.getBodySegment?.chainRule?.tbox?.allEntityRelationshipsScope
 				
+			EntityForwardReifiedRestrictionAxiom:
+				if (reference == TerminologiesPackage.eINSTANCE.entityForwardReifiedRestrictionAxiom_ForwardProperty)
+					scope = context.tbox.allForwardPropertiesScope
+				
+			EntityInverseReifiedRestrictionAxiom:
+				if (reference == TerminologiesPackage.eINSTANCE.entityInverseReifiedRestrictionAxiom_InverseProperty)
+					scope = context.tbox.allInversePropertiesScope
+			
+			EntityUnreifiedRestrictionAxiom:
+				if (reference == TerminologiesPackage.eINSTANCE.entityUnreifiedRestrictionAxiom__RestrictedRelation)
+					scope = context.tbox.allUnreifiedRelationshipsScope
+				
 			EntityRestrictionAxiom:
-				if (reference == TerminologiesPackage.eINSTANCE.entityRestrictionAxiom_RestrictedRelation)
-					scope = context.tbox.allEntityRelationshipsScope
-				else if (reference == TerminologiesPackage.eINSTANCE.entityRestrictionAxiom_RestrictedDomain)
+				if (reference == TerminologiesPackage.eINSTANCE.entityRestrictionAxiom_RestrictedDomain)
 					scope = context.tbox.allEntitiesScope
 				else if (reference == TerminologiesPackage.eINSTANCE.entityRestrictionAxiom_RestrictedRange)
 					scope = context.tbox.allEntitiesScope

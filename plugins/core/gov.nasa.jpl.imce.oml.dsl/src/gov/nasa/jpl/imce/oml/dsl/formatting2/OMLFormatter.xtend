@@ -498,14 +498,20 @@ class OMLFormatter extends AbstractFormatter2 {
 		ax.regionFor.keyword('someEntities').append[oneSpace]
 		
 		ax.regionFor.keyword('.').surround[oneSpace]
+		ax.regionFor.keyword('->').surround[oneSpace]
+		ax.regionFor.keyword('<-').surround[oneSpace]
 		ax.regionFor.keyword('in').surround[oneSpace]
+		ax.regionFor.keyword('from').surround[oneSpace]
 	}
 	
 	def dispatch void format(EntityUniversalRestrictionAxiom ax, extension IFormattableDocument document) {
 		ax.regionFor.keyword('allEntities').append[oneSpace]
 		
 		ax.regionFor.keyword('.').surround[oneSpace]
+		ax.regionFor.keyword('->').surround[oneSpace]
+		ax.regionFor.keyword('<-').surround[oneSpace]
 		ax.regionFor.keyword('in').surround[oneSpace]
+		ax.regionFor.keyword('from').surround[oneSpace]
 	}
 	
 	def dispatch void format(EntityScalarDataPropertyExistentialRestrictionAxiom ax, extension IFormattableDocument document) {

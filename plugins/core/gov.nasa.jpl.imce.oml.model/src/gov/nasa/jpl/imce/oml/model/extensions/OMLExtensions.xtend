@@ -137,6 +137,8 @@ import org.eclipse.xtext.nodemodel.INode
 import gov.nasa.jpl.imce.oml.model.common.LogicalElement
 import gov.nasa.jpl.imce.oml.model.terminologies.SubObjectPropertyOfAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.SubDataPropertyOfAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty
+import gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty
 
 public class OMLExtensions {
 
@@ -444,6 +446,14 @@ public class OMLExtensions {
 
 	def Iterable<EntityRelationship> localEntityRelationships(TerminologyBox it) {
 		boxStatements.filter(EntityRelationship)
+	}
+
+	def Iterable<ForwardProperty> localForwardProperties(TerminologyBox it) {
+		boxStatements.filter(ForwardProperty)
+	}
+
+	def Iterable<InverseProperty> localInverseProperties(TerminologyBox it) {
+		boxStatements.filter(InverseProperty)
 	}
 
 	def Iterable<EntityRelationship> allEntityRelationships(TerminologyBox it) {

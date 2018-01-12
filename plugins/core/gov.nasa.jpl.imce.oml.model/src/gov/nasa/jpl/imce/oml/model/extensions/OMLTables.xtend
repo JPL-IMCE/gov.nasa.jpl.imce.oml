@@ -71,14 +71,18 @@ import gov.nasa.jpl.imce.oml.model.terminologies.ChainRule
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptPredicate
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptSpecializationAxiom
-import gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialRestrictionAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialForwardReifiedRestrictionAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialInverseReifiedRestrictionAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialUnreifiedRestrictionAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyExistentialRestrictionAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyParticularRestrictionAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyUniversalRestrictionAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataPropertyParticularRestrictionAxiom
-import gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalRestrictionAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalForwardReifiedRestrictionAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalInverseReifiedRestrictionAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalUnreifiedRestrictionAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction
@@ -115,6 +119,8 @@ import java.util.ArrayList
 import java.util.List
 import java.util.regex.Matcher
 import java.util.regex.Pattern
+import gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty
+import gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty
 
 /**
  * OMLTables is a collection of extension queries for OML Extent and conversion methods for OML values.
@@ -233,6 +239,14 @@ class OMLTables {
   	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(ReifiedRelationship))]
   	result.sortInplaceBy[uuid()]
   	result
+  }
+  
+  static def Iterable<ForwardProperty> forwardProperties(Extent e) {
+  	reifiedRelationships(e).map[forwardProperty].filterNull
+  }
+  
+  static def Iterable<InverseProperty> inverseProperties(Extent e) {
+  	reifiedRelationships(e).map[inverseProperty].filterNull
   }
   
   static def List<UnreifiedRelationship> unreifiedRelationships(Extent e) {
@@ -388,19 +402,48 @@ class OMLTables {
   
   // restriction axioms
   
-  static def List<EntityExistentialRestrictionAxiom> entityExistentialRestrictionAxioms(Extent e) {
-  	val List<EntityExistentialRestrictionAxiom> result = new ArrayList<EntityExistentialRestrictionAxiom>()
-  	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(EntityExistentialRestrictionAxiom))]
+  static def List<EntityExistentialForwardReifiedRestrictionAxiom> entityExistentialForwardReifiedRestrictionAxioms(Extent e) {
+  	val List<EntityExistentialForwardReifiedRestrictionAxiom> result = new ArrayList<EntityExistentialForwardReifiedRestrictionAxiom>()
+  	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(EntityExistentialForwardReifiedRestrictionAxiom))]
   	result.sortInplaceBy[uuid()]
   	result
   }
   
-  static def List<EntityUniversalRestrictionAxiom> entityUniversalRestrictionAxioms(Extent e) {
-  	val List<EntityUniversalRestrictionAxiom> result = new ArrayList<EntityUniversalRestrictionAxiom>()
-  	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(EntityUniversalRestrictionAxiom))]
+  static def List<EntityExistentialInverseReifiedRestrictionAxiom> entityExistentialInverseReifiedRestrictionAxioms(Extent e) {
+  	val List<EntityExistentialInverseReifiedRestrictionAxiom> result = new ArrayList<EntityExistentialInverseReifiedRestrictionAxiom>()
+  	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(EntityExistentialInverseReifiedRestrictionAxiom))]
   	result.sortInplaceBy[uuid()]
   	result
   }
+  
+  static def List<EntityExistentialUnreifiedRestrictionAxiom> entityExistentialUnreifiedRestrictionAxioms(Extent e) {
+  	val List<EntityExistentialUnreifiedRestrictionAxiom> result = new ArrayList<EntityExistentialUnreifiedRestrictionAxiom>()
+  	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(EntityExistentialUnreifiedRestrictionAxiom))]
+  	result.sortInplaceBy[uuid()]
+  	result
+  }
+  
+  static def List<EntityUniversalForwardReifiedRestrictionAxiom> entityUniversalForwardReifiedRestrictionAxioms(Extent e) {
+  	val List<EntityUniversalForwardReifiedRestrictionAxiom> result = new ArrayList<EntityUniversalForwardReifiedRestrictionAxiom>()
+  	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(EntityUniversalForwardReifiedRestrictionAxiom))]
+  	result.sortInplaceBy[uuid()]
+  	result
+  }
+  
+  static def List<EntityUniversalInverseReifiedRestrictionAxiom> entityUniversalInverseReifiedRestrictionAxioms(Extent e) {
+  	val List<EntityUniversalInverseReifiedRestrictionAxiom> result = new ArrayList<EntityUniversalInverseReifiedRestrictionAxiom>()
+  	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(EntityUniversalInverseReifiedRestrictionAxiom))]
+  	result.sortInplaceBy[uuid()]
+  	result
+  }
+  
+  static def List<EntityUniversalUnreifiedRestrictionAxiom> entityUniversalUnreifiedRestrictionAxioms(Extent e) {
+  	val List<EntityUniversalUnreifiedRestrictionAxiom> result = new ArrayList<EntityUniversalUnreifiedRestrictionAxiom>()
+  	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(EntityUniversalUnreifiedRestrictionAxiom))]
+  	result.sortInplaceBy[uuid()]
+  	result
+  }
+  
   
   static def List<EntityScalarDataPropertyExistentialRestrictionAxiom> entityScalarDataPropertyExistentialRestrictionAxioms(Extent e) {
   	val List<EntityScalarDataPropertyExistentialRestrictionAxiom> result = new ArrayList<EntityScalarDataPropertyExistentialRestrictionAxiom>()
