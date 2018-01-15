@@ -179,12 +179,20 @@ class OMLScopeExtensions {
 		terminologyScope(tbox, [localEntityRelationships], [importedResourceNameFunction])
 	}
 	
+	def IScope allPredicatesScope(TerminologyBox tbox) {
+		terminologyScope(tbox, [localPredicates], [importedResourceNameFunction])
+	}
+	
 	def IScope allForwardPropertiesScope(TerminologyBox tbox) {
 		terminologyScope(tbox, [localForwardProperties], [importedResourceNameFunction])
 	}
 	
 	def IScope allInversePropertiesScope(TerminologyBox tbox) {
 		terminologyScope(tbox, [localInverseProperties], [importedResourceNameFunction])
+	}
+	
+	def IScope allRestrictableRelationshipsScope(TerminologyBox tbox) {
+		terminologyScope(tbox, [localRestrictableRelationships], [importedResourceNameFunction])
 	}
 	
 	def IScope allEntityScalarDataPropertiesScope(TerminologyBox tbox) {

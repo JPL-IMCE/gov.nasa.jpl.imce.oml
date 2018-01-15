@@ -57,6 +57,7 @@ open terminology <http://example.org/Foo> {
 	
 	reifiedRelationship P {
 		unreified=p
+		inverse=fromP
 		source=A
 		target=B
 	}
@@ -76,9 +77,9 @@ open terminology <http://example.org/Foo> {
 		target=C
 	}
 	
-	rule pqr infers Foo:r if aspect(Foo:A) && reifiedRelationship(Foo:P) && concept(Foo:B) && inv(Foo:q)
+	rule pqr infers Foo:r if Foo:A && Foo:p && Foo:B && inv(Foo:q)
 
-	rule psr infers Foo:r if aspect(Foo:A) && inv(source(Foo:P)) && reifiedRelationship(Foo:P) && Foo:s
+	rule psr infers Foo:r if Foo:A && Foo:fromP && Foo:P && Foo:s
 
 }
 '''

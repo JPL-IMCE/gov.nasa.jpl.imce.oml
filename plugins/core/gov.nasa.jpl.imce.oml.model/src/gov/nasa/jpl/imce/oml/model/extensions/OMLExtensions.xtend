@@ -21,20 +21,42 @@ package gov.nasa.jpl.imce.oml.model.extensions
 import com.fasterxml.uuid.Generators
 import com.fasterxml.uuid.impl.NameBasedGenerator
 import com.google.common.collect.Lists
+import com.google.common.collect.Sets
+import gov.nasa.jpl.imce.oml.model.bundles.AnonymousConceptUnionAxiom
 import gov.nasa.jpl.imce.oml.model.bundles.Bundle
 import gov.nasa.jpl.imce.oml.model.bundles.BundledTerminologyAxiom
 import gov.nasa.jpl.imce.oml.model.bundles.RootConceptTaxonomyAxiom
 import gov.nasa.jpl.imce.oml.model.bundles.SpecificDisjointConceptAxiom
-import gov.nasa.jpl.imce.oml.model.bundles.AnonymousConceptUnionAxiom
-import gov.nasa.jpl.imce.oml.model.common.Module
+import gov.nasa.jpl.imce.oml.model.bundles.TerminologyBundleAxiom
+import gov.nasa.jpl.imce.oml.model.bundles.TerminologyBundleStatement
+import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue
 import gov.nasa.jpl.imce.oml.model.common.Extent
+import gov.nasa.jpl.imce.oml.model.common.LiteralBoolean
+import gov.nasa.jpl.imce.oml.model.common.LiteralDateTime
+import gov.nasa.jpl.imce.oml.model.common.LiteralDecimal
+import gov.nasa.jpl.imce.oml.model.common.LiteralFloat
+import gov.nasa.jpl.imce.oml.model.common.LiteralQuotedString
+import gov.nasa.jpl.imce.oml.model.common.LiteralRational
+import gov.nasa.jpl.imce.oml.model.common.LiteralRawString
+import gov.nasa.jpl.imce.oml.model.common.LiteralReal
+import gov.nasa.jpl.imce.oml.model.common.LiteralURI
+import gov.nasa.jpl.imce.oml.model.common.LiteralUUID
+import gov.nasa.jpl.imce.oml.model.common.LiteralValue
+import gov.nasa.jpl.imce.oml.model.common.LogicalElement
+import gov.nasa.jpl.imce.oml.model.common.Module
+import gov.nasa.jpl.imce.oml.model.common.ModuleEdge
 import gov.nasa.jpl.imce.oml.model.descriptions.ConceptInstance
+import gov.nasa.jpl.imce.oml.model.descriptions.ConceptualEntitySingletonInstance
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxExtendsClosedWorldDefinitions
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxRefinement
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstance
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstanceDomain
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstanceRange
+import gov.nasa.jpl.imce.oml.model.descriptions.ScalarDataPropertyValue
+import gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceScalarDataPropertyValue
+import gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceStructuredDataPropertyValue
+import gov.nasa.jpl.imce.oml.model.descriptions.StructuredDataPropertyTuple
 import gov.nasa.jpl.imce.oml.model.descriptions.UnreifiedRelationshipInstanceTuple
 import gov.nasa.jpl.imce.oml.model.graphs.ConceptDesignationTerminologyAxiom
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyGraph
@@ -42,103 +64,72 @@ import gov.nasa.jpl.imce.oml.model.graphs.TerminologyNestingAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.Aspect
 import gov.nasa.jpl.imce.oml.model.terminologies.AspectSpecializationAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.BinaryScalarRestriction
+import gov.nasa.jpl.imce.oml.model.terminologies.ChainRule
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptSpecializationAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.DataRange
 import gov.nasa.jpl.imce.oml.model.terminologies.Entity
-import gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialRestrictionAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityRestrictionAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyExistentialRestrictionAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyParticularRestrictionAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyRestrictionAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyUniversalRestrictionAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataProperty
-import gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalRestrictionAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataPropertyParticularRestrictionAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction
+import gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.RestrictableRelationship
+import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue
+import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple
+import gov.nasa.jpl.imce.oml.model.terminologies.RuleBodySegment
 import gov.nasa.jpl.imce.oml.model.terminologies.Scalar
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarDataProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfRestriction
+import gov.nasa.jpl.imce.oml.model.terminologies.SpecializationAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.StringScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.Structure
 import gov.nasa.jpl.imce.oml.model.terminologies.StructuredDataProperty
+import gov.nasa.jpl.imce.oml.model.terminologies.SubDataPropertyOfAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.SubObjectPropertyOfAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.SynonymScalarRestriction
+import gov.nasa.jpl.imce.oml.model.terminologies.Term
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox
+import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBoxAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBoxStatement
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyExtensionAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.TimeScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship
-import gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceScalarDataPropertyValue
-import gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceStructuredDataPropertyValue
-import gov.nasa.jpl.imce.oml.model.descriptions.StructuredDataPropertyTuple
-import gov.nasa.jpl.imce.oml.model.descriptions.ScalarDataPropertyValue
-import gov.nasa.jpl.imce.oml.model.descriptions.ConceptualEntitySingletonInstance
 import java.io.IOException
 import java.net.URL
 import java.util.ArrayList
+import java.util.Comparator
+import java.util.HashSet
+import java.util.List
 import java.util.UUID
 import org.apache.xml.resolver.CatalogManager
 import org.apache.xml.resolver.tools.CatalogResolver
 import org.eclipse.emf.common.CommonPlugin
+import org.eclipse.emf.common.util.ECollections
+import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.common.util.URI
+import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.emf.ecore.util.EcoreUtil
-import com.google.common.collect.Sets
-import java.util.HashSet
-import gov.nasa.jpl.imce.oml.model.terminologies.ChainRule
-import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBoxAxiom
-import gov.nasa.jpl.imce.oml.model.terminologies.AspectPredicate
-import gov.nasa.jpl.imce.oml.model.terminologies.ConceptPredicate
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipInversePropertyPredicate
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPredicate
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPropertyPredicate
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourceInversePropertyPredicate
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourcePropertyPredicate
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetInversePropertyPredicate
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetPropertyPredicate
-import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue
-import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple
-import gov.nasa.jpl.imce.oml.model.terminologies.RuleBodySegment
-import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipInversePropertyPredicate
-import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipPropertyPredicate
-import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBoxStatement
-import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataPropertyParticularRestrictionAxiom
-import gov.nasa.jpl.imce.oml.model.bundles.TerminologyBundleAxiom
-import gov.nasa.jpl.imce.oml.model.bundles.TerminologyBundleStatement
-import gov.nasa.jpl.imce.oml.model.common.ModuleEdge
-import gov.nasa.jpl.imce.oml.model.terminologies.Term
-import gov.nasa.jpl.imce.oml.model.terminologies.EntityRestrictionAxiom
-import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyRestrictionAxiom
-import gov.nasa.jpl.imce.oml.model.terminologies.SpecializationAxiom
-import gov.nasa.jpl.imce.oml.model.common.LiteralValue
-import gov.nasa.jpl.imce.oml.model.common.LiteralDateTime
-import gov.nasa.jpl.imce.oml.model.common.LiteralBoolean
-import gov.nasa.jpl.imce.oml.model.common.LiteralDecimal
-import gov.nasa.jpl.imce.oml.model.common.LiteralUUID
-import gov.nasa.jpl.imce.oml.model.common.LiteralURI
-import gov.nasa.jpl.imce.oml.model.common.LiteralReal
-import gov.nasa.jpl.imce.oml.model.common.LiteralFloat
-import gov.nasa.jpl.imce.oml.model.common.LiteralRational
-import gov.nasa.jpl.imce.oml.model.common.LiteralQuotedString
-import gov.nasa.jpl.imce.oml.model.common.LiteralRawString
-import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue
-import org.eclipse.emf.common.util.ECollections
-import java.util.Comparator
-import org.eclipse.xtext.xbase.lib.Functions.Function1
-import static com.google.common.base.Preconditions.checkNotNull
-import org.eclipse.emf.common.util.EList
-import java.util.List
-import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.nodemodel.INode
-import gov.nasa.jpl.imce.oml.model.common.LogicalElement
-import gov.nasa.jpl.imce.oml.model.terminologies.SubObjectPropertyOfAxiom
-import gov.nasa.jpl.imce.oml.model.terminologies.SubDataPropertyOfAxiom
-import gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty
-import gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty
+import org.eclipse.xtext.xbase.lib.Functions.Function1
+
+import static com.google.common.base.Preconditions.checkNotNull
+import gov.nasa.jpl.imce.oml.model.terminologies.SegmentPredicate
+import gov.nasa.jpl.imce.oml.model.terminologies.Predicate
 
 public class OMLExtensions {
 
@@ -448,14 +439,34 @@ public class OMLExtensions {
 		boxStatements.filter(EntityRelationship)
 	}
 
+	def Iterable<Predicate> localPredicates(TerminologyBox it) {
+		val result = new ArrayList<Predicate>()
+		localReifiedRelationships.forEach[rr| 
+			result.add(rr.forwardProperty)
+			result.add(rr.inverseProperty)
+		]
+		result.addAll(localEntities)
+		result.filterNull
+	}
+	
 	def Iterable<ForwardProperty> localForwardProperties(TerminologyBox it) {
-		boxStatements.filter(ForwardProperty)
+		localReifiedRelationships.map[forwardProperty].filterNull
 	}
 
 	def Iterable<InverseProperty> localInverseProperties(TerminologyBox it) {
-		boxStatements.filter(InverseProperty)
+		localReifiedRelationships.map[inverseProperty].filterNull
 	}
 
+	def Iterable<RestrictableRelationship> localRestrictableRelationships(TerminologyBox it) {
+		val result = new ArrayList<RestrictableRelationship>()
+		localReifiedRelationships.forEach[rr| 
+			result.add(rr.forwardProperty)
+			result.add(rr.inverseProperty)
+		]
+		result.addAll(localUnreifiedRelationships)
+		result.filterNull
+	}
+	
 	def Iterable<EntityRelationship> allEntityRelationships(TerminologyBox it) {
 		localEntityRelationships + allImportedTerminologies(it).map[localEntityRelationships].flatten
 	}
@@ -575,8 +586,6 @@ public class OMLExtensions {
 				'AnonymousConceptUnionAxiom'
 			Aspect:
 				'Aspect'
-			AspectPredicate:
-				'AspectPredicate'
 			AspectSpecializationAxiom:
 				'AspectSpecializationAxiom'
 			BinaryScalarRestriction:
@@ -593,8 +602,6 @@ public class OMLExtensions {
 				'ConceptDesignationTerminologyAxiom'
 			ConceptInstance:
 				'ConceptInstance'
-			ConceptPredicate:
-				'ConceptPredicate'
 			ConceptSpecializationAxiom:
 				'ConceptSpecializationAxiom'
 			DescriptionBox:
@@ -603,8 +610,8 @@ public class OMLExtensions {
 				'DescriptionBoxExtendsClosedWorldDefinitions'
 			DescriptionBoxRefinement:
 				'DescriptionBoxRefinement'
-			EntityExistentialRestrictionAxiom:
-				'EntityExistentialRestrictionAxiom'
+			EntityRestrictionAxiom:
+				'EntityRestrictionAxiom'
 			EntityScalarDataProperty:
 				'EntityScalarDataProperty'
 			EntityScalarDataPropertyExistentialRestrictionAxiom:
@@ -617,8 +624,6 @@ public class OMLExtensions {
 				'EntityStructuredDataProperty'
 			EntityStructuredDataPropertyParticularRestrictionAxiom:
 				'EntityStructuredDataPropertyParticularRestrictionAxiom'
-			EntityUniversalRestrictionAxiom:
-				'EntityUniversalRestrictionAxiom'
 			IRIScalarRestriction:
 				'IRIScalarRestriction'
 			NumericScalarRestriction:
@@ -633,22 +638,8 @@ public class OMLExtensions {
 				'ReifiedRelationshipInstanceDomain'
 			ReifiedRelationshipInstanceRange:
 				'ReifiedRelationshipInstanceRange'
-			ReifiedRelationshipInversePropertyPredicate:
-				'ReifiedRelationshipInversePropertyPredicate'
-			ReifiedRelationshipPredicate:
-				'ReifiedRelationshipPredicate'
-			ReifiedRelationshipPropertyPredicate:
-				'ReifiedRelationshipPropertyPredicate'
-			ReifiedRelationshipSourceInversePropertyPredicate:
-				'ReifiedRelationshipSourceInversePropertyPredicate'
-			ReifiedRelationshipSourcePropertyPredicate:
-				'ReifiedRelationshipSourcePropertyPredicate'
 			ReifiedRelationshipSpecializationAxiom:
 				'ReifiedRelationshipSpecializationAxiom'
-			ReifiedRelationshipTargetInversePropertyPredicate:
-				'ReifiedRelationshipTargetInversePropertyPredicate'
-			ReifiedRelationshipTargetPropertyPredicate:
-				'ReifiedRelationshipTargetPropertyPredicate'
 			RestrictionScalarDataPropertyValue:
 				'RestrictionScalarDataPropertyValue'
 			RestrictionStructuredDataPropertyTuple:
@@ -667,6 +658,8 @@ public class OMLExtensions {
 				'ScalarOneOfLiteralAxiom'
 			ScalarOneOfRestriction:
 				'ScalarOneOfRestriction'
+			SegmentPredicate:
+				'SegmentPredicate'
 			SingletonInstanceScalarDataPropertyValue:
 				'SingletonInstanceScalarDataPropertyValue'
 			SingletonInstanceStructuredDataPropertyValue:
@@ -699,10 +692,6 @@ public class OMLExtensions {
 				'UnreifiedRelationship'
 			UnreifiedRelationshipInstanceTuple:
 				'UnreifiedRelationshipInstanceTuple'
-			UnreifiedRelationshipInversePropertyPredicate:
-				'UnreifiedRelationshipInversePropertyPredicate'
-			UnreifiedRelationshipPropertyPredicate:
-				'UnreifiedRelationshipPropertyPredicate'
 			default:
 				e.eClass.name
 		}
@@ -756,18 +745,16 @@ public class OMLExtensions {
 				10092
 			StructuredDataProperty:
 				10093
-			EntityExistentialRestrictionAxiom:
+			EntityRestrictionAxiom:
 				10100
-			EntityUniversalRestrictionAxiom:
-				10101
 			EntityScalarDataPropertyExistentialRestrictionAxiom:
-				10102
+				10101
 			EntityScalarDataPropertyParticularRestrictionAxiom:
-				10103
+				10102
 			EntityScalarDataPropertyUniversalRestrictionAxiom:
-				10104
+				10103
 			EntityStructuredDataPropertyParticularRestrictionAxiom:
-				10105
+				10104
 			SubObjectPropertyOfAxiom:
 				10202	
 			SubDataPropertyOfAxiom:
@@ -862,18 +849,16 @@ public class OMLExtensions {
 				"00052-"
 			StructuredDataProperty:
 				"00053-"
-			EntityExistentialRestrictionAxiom:
+			EntityRestrictionAxiom:
 				"00060-"
-			EntityUniversalRestrictionAxiom:
-				"00061-"
 			EntityScalarDataPropertyExistentialRestrictionAxiom:
-				"00062-"
+				"00061-"
 			EntityScalarDataPropertyParticularRestrictionAxiom:
-				"00063-"
+				"00062-"
 			EntityScalarDataPropertyUniversalRestrictionAxiom:
-				"00064-"
+				"00063-"
 			EntityStructuredDataPropertyParticularRestrictionAxiom:
-				"00065-"
+				"00064-"
 			RootConceptTaxonomyAxiom:
 				"00070-"
 			SpecificDisjointConceptAxiom:
@@ -882,28 +867,8 @@ public class OMLExtensions {
 				"00072-"
 			RuleBodySegment:
 				"00080"
-			AspectPredicate:
+			SegmentPredicate:
 				"00090"
-			ConceptPredicate:
-				"00091"
-			ReifiedRelationshipPredicate:
-				"00092"
-			ReifiedRelationshipPropertyPredicate:
-				"00100"
-			ReifiedRelationshipSourcePropertyPredicate:
-				"00101"
-			ReifiedRelationshipTargetPropertyPredicate:
-				"00102"
-			UnreifiedRelationshipPropertyPredicate:
-				"00103"
-			ReifiedRelationshipInversePropertyPredicate:
-				"00110"
-			ReifiedRelationshipSourceInversePropertyPredicate:
-				"00111"
-			ReifiedRelationshipTargetInversePropertyPredicate:
-				"00112"
-			UnreifiedRelationshipInversePropertyPredicate:
-				"00113"
 			SingletonInstanceStructuredDataPropertyValue:
 				"00120"
 			StructuredDataPropertyTuple:
@@ -1002,7 +967,7 @@ public class OMLExtensions {
 	 */
 	static def dispatch void normalize(TerminologyGraph it) {
 		normalizeTerminologyBoxCollections
-		eContents.filter(gov.nasa.jpl.imce.oml.model.common.LogicalElement).forEach [ e |
+		eContents.filter(LogicalElement).forEach [ e |
 			normalizeAnnotations(e)
 			normalizeSubElements(e)
 		]
@@ -1013,7 +978,7 @@ public class OMLExtensions {
 	 */
 	static def dispatch void normalize(Bundle it) {
 		normalizeBundleCollections
-		eContents.filter(gov.nasa.jpl.imce.oml.model.common.LogicalElement).forEach [ e |
+		eContents.filter(LogicalElement).forEach [ e |
 			normalizeAnnotations(e)
 			normalizeSubElements(e)
 		]
@@ -1075,7 +1040,7 @@ public class OMLExtensions {
 	protected static def dispatch void normalizeSubElements(TerminologyBoxStatement e) {
 	}
 	
-	static val terminologyBoxStatementComparator = new java.util.Comparator<TerminologyBoxStatement> {
+	static val terminologyBoxStatementComparator = new Comparator<TerminologyBoxStatement> {
 		override int compare(TerminologyBoxStatement o1, TerminologyBoxStatement o2) {
 			val k1 = o1.kindOrder
 			val k2 = o2.kindOrder
@@ -1095,7 +1060,7 @@ public class OMLExtensions {
 		}
 	}
 
-	static val terminologyBoxAxiomComparator = new java.util.Comparator<TerminologyBoxAxiom> {
+	static val terminologyBoxAxiomComparator = new Comparator<TerminologyBoxAxiom> {
 		override int compare(TerminologyBoxAxiom o1, TerminologyBoxAxiom o2) {
 			val k1 = o1.kindOrder
 			val k2 = o2.kindOrder
@@ -1115,7 +1080,7 @@ public class OMLExtensions {
 		}
 	}
 
-	static val bundleStatementComparator = new java.util.Comparator<TerminologyBundleStatement> {
+	static val bundleStatementComparator = new Comparator<TerminologyBundleStatement> {
 		override int compare(TerminologyBundleStatement o1, TerminologyBundleStatement o2) {
 			val k1 = o1.kindOrder
 			val k2 = o2.kindOrder
@@ -1135,7 +1100,7 @@ public class OMLExtensions {
 		}
 	}
 
-	static val bundleAxiomComparator = new java.util.Comparator<TerminologyBundleAxiom> {
+	static val bundleAxiomComparator = new Comparator<TerminologyBundleAxiom> {
 		override int compare(TerminologyBundleAxiom o1, TerminologyBundleAxiom o2) {
 			val k1 = o1.kindOrder
 			val k2 = o2.kindOrder

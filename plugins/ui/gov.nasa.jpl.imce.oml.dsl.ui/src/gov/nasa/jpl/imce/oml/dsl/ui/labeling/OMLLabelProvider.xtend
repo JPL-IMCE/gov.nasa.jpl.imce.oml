@@ -34,16 +34,17 @@ import gov.nasa.jpl.imce.oml.model.descriptions.StructuredDataPropertyTuple
 import gov.nasa.jpl.imce.oml.model.descriptions.UnreifiedRelationshipInstanceTuple
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyGraph
-import gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialRestrictionAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityRestrictionAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyExistentialRestrictionAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyParticularRestrictionAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyUniversalRestrictionAxiom
-import gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalRestrictionAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.SpecializationAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.Term
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialRestrictionAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalRestrictionAxiom
 
 /**
  * Provides labels for EObjects.
@@ -90,14 +91,17 @@ class OMLLabelProvider extends DefaultEObjectLabelProvider {
 		m.kind.toString + ' ' + OMLExtensions.kind(m) + '(' + m.nsPrefix() + ')'
 	}
 
-	def text(EntityExistentialRestrictionAxiom ax) {
-		'someEntities ' + (ax.restrictedRelation?.abbrevIRI() ?: "") + '.' + (ax.restrictedDomain?.abbrevIRI() ?: "") +
-			' in ' + ax.restrictedRange?.abbrevIRI() ?: ""
-	}
-
-	def text(EntityUniversalRestrictionAxiom ax) {
-		'allEntities ' + (ax.restrictedRelation?.abbrevIRI() ?: "") + '.' + (ax.restrictedDomain?.abbrevIRI() ?: "") +
-			' in ' + ax.restrictedRange?.abbrevIRI() ?: ""
+	def text(EntityRestrictionAxiom ax) {
+		val kind = switch ax {
+			EntityExistentialRestrictionAxiom:
+				'SomeEntities '
+			EntityUniversalRestrictionAxiom:
+				'AllEntities '
+		}
+		kind + 
+		(ax.restrictedDomain?.abbrevIRI() ?: "") + '.' + 
+		(ax.restrictedRelation?.abbrevIRI() ?: "") + ' in ' +
+		(ax.restrictedRange?.abbrevIRI() ?: "")
 	}
 
 	def text(EntityScalarDataPropertyExistentialRestrictionAxiom ax) {

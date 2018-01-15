@@ -61,8 +61,8 @@ class OMLRuleTest5 {
 	}
 
 	rule pc infers p
-	if property(P)
-	&& concept(C)
+	if p
+	&& C
 
 }
 '''
@@ -86,7 +86,7 @@ open terminology <http://example.org/Foo> {
 			target=C
 	}
 	
-	rule pc infers p if property(P) && concept(C)
+	rule pc infers p if p && C
 	
 }
 			'''

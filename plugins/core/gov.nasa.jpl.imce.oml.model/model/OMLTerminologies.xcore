@@ -291,6 +291,13 @@ abstract class DirectedBinaryRelationshipKind extends Term {
 	op Term[1] relationRange()
 }
 
+@Glossary
+abstract class Predicate extends Resource {
+	
+	@NotSchema
+	op Term[1] term()
+}
+
 /*
  * An OML Entity is an abstraction for an OML Term
  * that is either an OML UnaryTermKind or
@@ -298,7 +305,12 @@ abstract class DirectedBinaryRelationshipKind extends Term {
  * and range are both a kind of OML Entity.
  */
 @Glossary
-abstract class Entity extends Term {}
+abstract class Entity extends Term, Predicate {
+	
+	@NotSchema
+	@Override
+	op Term[1] term() { this }
+}
 
 /*
  * An OML ConceptualEntity is an OML Entity that can be instantiated
@@ -382,7 +394,30 @@ abstract class EntityRelationship extends Term, DirectedBinaryRelationshipKind {
  	boolean[1] isTransitive
 }
 
-class ForwardProperty extends Resource {
+/*
+ * An OML RestrictableRelationship is either an OML ForwardProperty, 
+ * an OML InverseProperty or an OML UnreifiedRelationship.
+ * An OML RestrictableRelationship serves as an abstraction for the different kinds 
+ * of relationships that can be restricted via an OML EntityRestrictionAxiom
+ * and that can be involved in an OML SegmentPredicate for an OML ChainRule.
+ */
+@Glossary
+abstract class RestrictableRelationship extends Resource, Predicate {
+	
+	@NotSchema
+	op EntityRelationship[1] relation()
+	
+	@NotSchema
+	@Override
+	op Term[1] term() { relation() }
+}
+
+/*
+ * An OML ForwardProperty is an essential part of an OML ReifiedRelationship.
+ * An OML ForwardProperty defines the unreified relationship from the OML ReifiedRelationship's domain to its range.
+ */
+@Glossary
+class ForwardProperty extends RestrictableRelationship {
 	
 	container ReifiedRelationship[1] reifiedRelationship opposite forwardProperty
 		
@@ -410,9 +445,18 @@ class ForwardProperty extends Resource {
 	op UUID[1] uuid() {
 		OMLExtensions.namespaceUUID(reifiedRelationship?.tbox?.uuid(), "name" -> name()?.toString())?.toString
 	}
+	
+	@NotSchema
+	@Override
+	op EntityRelationship[1] relation() { reifiedRelationship }
 }
 
-class InverseProperty extends Resource {
+/*
+ * An OML InverseProperty is an optional part of an OML ReifiedRelationship.
+ * If defined, it corresponds to the inverse of the OML ReifiedRelationship's OML ForwardProperty.
+ */
+@Glossary
+class InverseProperty extends RestrictableRelationship {
 	
 	container ReifiedRelationship[1] reifiedRelationship opposite inverseProperty
 		
@@ -440,6 +484,10 @@ class InverseProperty extends Resource {
 	op UUID[1] uuid() {
 		OMLExtensions.namespaceUUID(reifiedRelationship?.tbox?.uuid(), "name" -> name()?.toString())?.toString
 	}
+	
+	@NotSchema
+	@Override
+	op EntityRelationship[1] relation() { reifiedRelationship }
 }
 
 /*
@@ -464,7 +512,12 @@ class ReifiedRelationship extends EntityRelationship, ConceptualEntity {
  * or range of any kind of OML DirectedBinaryRelationshipKind.
  */
 @Glossary
-class UnreifiedRelationship extends EntityRelationship {}
+class UnreifiedRelationship extends EntityRelationship, RestrictableRelationship {
+	
+	@NotSchema
+	@Override
+	op EntityRelationship[1] relation() { this }
+}
 
 /*
  * An OML Datatype is a common abstraction for what should be, in principle,
@@ -785,336 +838,41 @@ class RuleBodySegment extends ElementCrossReferenceTuple {
  * An OML SegmentPredicate wraps a reference to an OML Term used as a predicate for an OML ChainRule.
  */
 @Glossary
-abstract class SegmentPredicate extends ElementCrossReferenceTuple {
+class SegmentPredicate extends ElementCrossReferenceTuple {
 	
 	container RuleBodySegment[1] bodySegment opposite predicate
 	
+	refers Predicate[?] predicate
+	refers ReifiedRelationship[?] reifiedRelationshipSource
+	refers ReifiedRelationship[?] reifiedRelationshipInverseSource
+	refers ReifiedRelationship[?] reifiedRelationshipTarget
+	refers ReifiedRelationship[?] reifiedRelationshipInverseTarget
+	refers UnreifiedRelationship[?] unreifiedRelationshipInverse
+	
 	@NotSchema
-	op Term[1] termPredicate()
+	op Term[1] termPredicate() {
+		predicate?.term ?:
+		reifiedRelationshipSource ?:
+		reifiedRelationshipInverseSource ?:
+		reifiedRelationshipTarget ?:
+		reifiedRelationshipInverseTarget
+	}
 	
 	@NotSchema
 	@ImplicitExtent
 	op Module[?] moduleContext() { bodySegment.moduleContext() }
-}
-
-/*
- * An OML UnarySegmentPredicate wraps a reference to an OML Term used as a unary predicate for an OML ChainRule.
- */
-@Glossary
-abstract class UnarySegmentPredicate extends SegmentPredicate {}
-
-/*
- * An OML AspectPredicate wraps a reference 
- * to an OML Aspect as a unary predicate for an OML ChainRule.
- * This unary predicate is satisfied when its implicit variable is bound 
- * to an instance of the referenced OML Aspect.
- */
-@Glossary
-class AspectPredicate extends UnarySegmentPredicate {
-	
-	refers Aspect[1] aspect
-	
-	@NotSchema
-	@Override
-	op Term[1] termPredicate() { aspect }
 	
 	@FunctionalInterface
 	@OverrideVal
 	op UUID[1] uuid() {
 		OMLExtensions.derivedUUID(
-		"AspectPredicate",
-		"aspect" -> aspect?.uuid()?.toString,
+		"SegmentPredicate",
+		"predicate" -> predicate?.uuid()?.toString,
 		"bodySegment" -> bodySegment?.uuid()?.toString
 		)?.toString
 	}
 }
 
-/*
- * An OML ConceptPredicate wraps a reference 
- * to an OML Concept as a unary predicate for an OML ChainRule.
- * This unary predicate is satisfied when its implicit variable is bound 
- * to an instance of the referenced OML Concept.
- */
-@Glossary
-class ConceptPredicate extends UnarySegmentPredicate {
-	
-	refers Concept[1] concept
-	
-	@NotSchema
-	@Override
-	op Term[1] termPredicate() { concept }
-	
-	@FunctionalInterface
-	@OverrideVal
-	op UUID[1] uuid() {
-		OMLExtensions.derivedUUID(
-		"ConceptPredicate",
-		"bodySegment" -> bodySegment?.uuid()?.toString,
-		"concept" -> concept?.uuid()?.toString
-		)?.toString
-	}
-}
-
-/*
- * An OML ReifiedRelationshipPredicate wraps a reference 
- * to an OML ReifiedRelationship as a unary predicate for an OML ChainRule.
- * This unary predicate is satisfied when its implicit variable is bound 
- * to an instance of the referenced OML ReifiedRelationship.
- */
-@Glossary
-class ReifiedRelationshipPredicate extends UnarySegmentPredicate {
-	
-	refers ReifiedRelationship[1] reifiedRelationship
-	
-	@NotSchema
-	@Override
-	op Term[1] termPredicate() { reifiedRelationship }
-	
-	@FunctionalInterface
-	@OverrideVal
-	op UUID[1] uuid() {
-		OMLExtensions.derivedUUID(
-		"ReifiedRelationshipPredicate",
-		"bodySegment" -> bodySegment?.uuid()?.toString,
-		"reifiedRelationship" -> reifiedRelationship?.uuid()?.toString
-		)?.toString
-	}
-}
-
-/*
- * An OML BinarySegmentPredicate wraps a reference to an OML Term used as a binary predicate for an OML ChainRule.
- */
-@Glossary
-abstract class BinarySegmentPropertyPredicate extends SegmentPredicate {}
-
-/*
- * An OML BinarySegmentForwardPropertyPredicate wraps a reference to an OML Term used as a binary property predicate for an OML ChainRule
- * in the forward direction, that is, the first and second variables of this predicate correspond respectively
- * to the domain and range of the binary property predicate.
- */
-@Glossary
-abstract class BinarySegmentForwardPropertyPredicate extends BinarySegmentPropertyPredicate {}
-
-/*
- * An OML BinarySegmentReversePropertyPredicate wraps a reference to an OML Term used as a binary property predicate for an OML ChainRule
- * in the reverse direction, that is, the first and second variables of this predicate correspond respectively
- * to the range and domain of the binary property predicate.
- */
-@Glossary
-abstract class BinarySegmentReversePropertyPredicate extends BinarySegmentPropertyPredicate {}
-
-/*
- * An OML ReifiedRelationshipPropertyPredicate wraps a reference 
- * to an OML ReifiedRelationship as a binary predicate for an OML ChainRule.
- * This binary predicate is satisfied when the pair of its implicit variables are bound as follows:
- * - the first variable is bound to an instance suitable for the domain of the OML ReifiedRelationship;
- * - the second variable is bound to an instance suitable for the range of the OML ReifiedRelationship;
- * - there must be an instance of the OML ReifiedRelationship relating the first variable (domain) to the second variable (range).
- */
-@Glossary
-class ReifiedRelationshipPropertyPredicate extends BinarySegmentForwardPropertyPredicate {
-	
-	refers ForwardProperty[1] forwardProperty
-	
-	@NotSchema
-	@Override
-	op Term[1] termPredicate() { forwardProperty?.reifiedRelationship }
-	
-	@FunctionalInterface
-	@OverrideVal
-	op UUID[1] uuid() {
-		OMLExtensions.derivedUUID(
-		"ReifiedRelationshipPropertyPredicate",
-		"bodySegment" -> getBodySegment?.uuid()?.toString,
-		"forwardProperty" -> forwardProperty?.uuid()?.toString
-		)?.toString
-	}
-}
-
-/*
- * An OML ReifiedRelationshipInversePropertyPredicate wraps a reference 
- * to an OML ReifiedRelationship as a binary predicate for an OML ChainRule.
- * This binary predicate is satisfied when the pair of its implicit variables are bound as follows:
- * - the first variable is bound to an instance suitable for the range of the OML ReifiedRelationship;
- * - the second variable is bound to an instance suitable for the domain of the OML ReifiedRelationship;
- * - there must be an instance of the OML ReifiedRelationship relating the second variable (domain) to the first variable (range).
- */
-@Glossary
-class ReifiedRelationshipInversePropertyPredicate extends BinarySegmentReversePropertyPredicate {
-	
-	refers InverseProperty[1] inverseProperty
-	
-	@NotSchema
-	@Override
-	op Term[1] termPredicate() { inverseProperty?.reifiedRelationship }
-	
-	@FunctionalInterface
-	@OverrideVal
-	op UUID[1] uuid() {
-		OMLExtensions.derivedUUID(
-		"ReifiedRelationshipInversePropertyPredicate",
-		"bodySegment" -> getBodySegment?.uuid()?.toString,
-		"inverseProperty" -> inverseProperty?.uuid()?.toString
-		)?.toString
-	}
-}
-
-/*
- * An OML ReifiedRelationshipSourcePropertyPredicate wraps a reference 
- * to an OML ReifiedRelationship as a binary predicate for an OML ChainRule.
- * This binary predicate is satisfied when the pair of its implicit variables are bound as follows:
- * - the first variable is bound to an instance of the OML ReifiedRelationship;
- * - the second variable is bound to an instance suitable for the domain of the OML ReifiedRelationship.
- */
-@Glossary
-class ReifiedRelationshipSourcePropertyPredicate extends BinarySegmentForwardPropertyPredicate {
-	
-	refers ReifiedRelationship[1] reifiedRelationship
-	
-	@NotSchema
-	@Override
-	op Term[1] termPredicate() { reifiedRelationship }
-	
-	@FunctionalInterface
-	@OverrideVal
-	op UUID[1] uuid() {
-		OMLExtensions.derivedUUID(
-		"ReifiedRelationshipSourcePropertyPredicate",
-		"bodySegment" -> getBodySegment?.uuid()?.toString,
-		"reifiedRelationship" -> getReifiedRelationship?.uuid()?.toString
-		)?.toString
-	}
-}
-
-/*
- * An OML ReifiedRelationshipSourceInversePropertyPredicate wraps a reference 
- * to an OML ReifiedRelationship as a binary predicate for an OML ChainRule.
- * This binary predicate is satisfied when the pair of its implicit variables are bound as follows:
- * - the first variable is bound to an instance suitable for the domain of the OML ReifiedRelationship;
- * - the second variable is bound to an instance of the OML ReifiedRelationship.
- */
-@Glossary
-class ReifiedRelationshipSourceInversePropertyPredicate extends BinarySegmentReversePropertyPredicate {
-	refers ReifiedRelationship[1] reifiedRelationship
-	
-	@NotSchema
-	@Override
-	op Term[1] termPredicate() { reifiedRelationship }
-	
-	@FunctionalInterface
-	@OverrideVal
-	op UUID[1] uuid() {
-		OMLExtensions.derivedUUID(
-		"ReifiedRelationshipSourceInversePropertyPredicate",
-		"bodySegment" -> getBodySegment?.uuid()?.toString,
-		"reifiedRelationship" -> getReifiedRelationship?.uuid()?.toString
-		)?.toString
-	}
-}
-
-/*
- * An OML ReifiedRelationshipTargetPropertyPredicate wraps a reference 
- * to an OML ReifiedRelationship as a binary predicate for an OML ChainRule.
- * This binary predicate is satisfied when the pair of its implicit variables are bound as follows:
- * - the first variable is bound to an instance of the OML ReifiedRelationship;
- * - the second variable is bound to an instance suitable for the range of the OML ReifiedRelationship.
- */
-@Glossary
-class ReifiedRelationshipTargetPropertyPredicate extends BinarySegmentForwardPropertyPredicate {
-	refers ReifiedRelationship[1] reifiedRelationship
-	
-	@NotSchema
-	@Override
-	op Term[1] termPredicate() { reifiedRelationship }
-	
-	@FunctionalInterface
-	@OverrideVal
-	op UUID[1] uuid() {
-		OMLExtensions.derivedUUID(
-		"ReifiedRelationshipTargetPropertyPredicate",
-		"bodySegment" -> getBodySegment?.uuid()?.toString,
-		"reifiedRelationship" -> getReifiedRelationship?.uuid()?.toString
-		)?.toString
-	}
-}
-
-/*
- * An OML ReifiedRelationshipTargetInversePropertyPredicate wraps a reference 
- * to an OML ReifiedRelationship as a binary predicate for an OML ChainRule.
- * This binary predicate is satisfied when the pair of its implicit variables are bound as follows:
- * - the first variable is bound to an instance suitable for the range of the OML ReifiedRelationship;
- * - the second variable is bound to an instance of the OML ReifiedRelationship.
- */
-@Glossary
-class ReifiedRelationshipTargetInversePropertyPredicate extends BinarySegmentReversePropertyPredicate {
-	refers ReifiedRelationship[1] reifiedRelationship
-	
-	@NotSchema
-	@Override
-	op Term[1] termPredicate() { reifiedRelationship }
-	
-	@FunctionalInterface
-	@OverrideVal
-	op UUID[1] uuid() {
-		OMLExtensions.derivedUUID(
-		"ReifiedRelationshipTargetInversePropertyPredicate",
-		"bodySegment" -> getBodySegment?.uuid()?.toString,
-		"reifiedRelationship" -> getReifiedRelationship?.uuid()?.toString
-		)?.toString
-	}
-}
-
-/*
- * An OML UnreifiedRelationshipPropertyPredicate wraps a reference 
- * to an OML UnreifiedReifiedRelationship as a binary predicate for an OML ChainRule.
- * This binary predicate is satisfied when the pair of its implicit variables are bound as follows:
- * - the first variable is bound to an instance suitable for the domain of the OML UnreifiedRelationship;
- * - the second variable is bound to an instance suitable for the range of the OML UnreifiedRelationship.
- */
-@Glossary
-class UnreifiedRelationshipPropertyPredicate extends BinarySegmentForwardPropertyPredicate {
-	refers UnreifiedRelationship[1] unreifiedRelationship
-	
-	@NotSchema
-	@Override
-	op Term[1] termPredicate() { unreifiedRelationship }
-	
-	@FunctionalInterface
-	@OverrideVal
-	op UUID[1] uuid() {
-		OMLExtensions.derivedUUID(
-		"UnreifiedRelationshipPropertyPredicate",
-		"unreifiedRelationship" -> getUnreifiedRelationship?.uuid()?.toString,
-		"bodySegment" -> getBodySegment?.uuid()?.toString
-		)?.toString
-	}
-}
-
-/*
- * An OML UnreifiedRelationshipInversePropertyPredicate wraps a reference 
- * to an OML UnreifiedReifiedRelationship as a binary predicate for an OML ChainRule.
- * This binary predicate is satisfied when the pair of its implicit variables are bound as follows:
- * - the first variable is bound to an instance suitable for the range of the OML UnreifiedRelationship;
- * - the second variable is bound to an instance suitable for the domain of the OML UnreifiedRelationship.
- */
-@Glossary
-class UnreifiedRelationshipInversePropertyPredicate extends BinarySegmentReversePropertyPredicate {
-	refers UnreifiedRelationship[1] unreifiedRelationship
-	
-	@NotSchema
-	@Override
-	op Term[1] termPredicate() { unreifiedRelationship }
-	
-	@FunctionalInterface
-	@OverrideVal
-	op UUID[1] uuid() {
-		OMLExtensions.derivedUUID(
-		"UnreifiedRelationshipInversePropertyPredicate",
-		"bodySegment" -> getBodySegment?.uuid()?.toString,
-		"unreifiedRelationship" -> getUnreifiedRelationship?.uuid()?.toString
-		)?.toString
-	}	
-}
 
 /*
  * An OML TermAxiom is a logical axiom about an OML Term.
@@ -1129,141 +887,39 @@ abstract class TermAxiom extends TerminologyBoxStatement {}
 @Glossary
 abstract class EntityRestrictionAxiom extends TermAxiom, ElementCrossReferenceTuple {
 
-	@NotSchema
-	op EntityRelationship[1] restrictedRelation()
+	 refers RestrictableRelationship[1] restrictedRelationship
 
-	refers Entity[1] restrictedRange
+	 refers Entity[1] restrictedRange
 
-	refers Entity[1] restrictedDomain
+	 refers Entity[1] restrictedDomain
 	 
 	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.LogicalElement]")
 	@Collection(kind="Set")
 	@NotSchema
 	@ImplicitExtent
 	op LogicalElement[] allNestedElements() { ECollections.emptyEList }
-}
-
-/*
- * An OML EntityReifiedRestrictionAxiom is an OML EntityRestrictionAxiom
- * where the restricted relationship is an OML ReifiedRelationship.
- */
-@Glossary
-abstract class EntityReifiedRestrictionAxiom extends EntityRestrictionAxiom {}
-
-/*
- * An OML EntityForwardReifiedRestrictionAxiom is an OML EntityRestrictionAxiom
- * where the restricted relationship is the forward property of an OML ReifiedRelationship.
- */
-@Glossary
-abstract class EntityForwardReifiedRestrictionAxiom extends EntityReifiedRestrictionAxiom {
-	
-	refers ForwardProperty[1] forwardProperty
 	
 	@NotSchema
-	@Override
-	op EntityRelationship[1] restrictedRelation() { forwardProperty.reifiedRelationship }
-	
+	op EntityRelationship[1] restrictedRelation() { restrictedRelationship?.relation() }
 }
 
-/*
- * An OML EntityInverseReifiedRestrictionAxiom is an OML EntityRestrictionAxiom
- * where the restricted relationship is the inverse property of an OML ReifiedRelationship.
- */
-@Glossary
-abstract class EntityInverseReifiedRestrictionAxiom extends EntityReifiedRestrictionAxiom {
-	
-	refers InverseProperty[1] inverseProperty
-	
-	@NotSchema
-	@Override
-	op EntityRelationship[1] restrictedRelation() { inverseProperty.reifiedRelationship }
-	
-}
-
-/*
- * An OML EntityUnreifiedRestrictionAxiom is an OML EntityRestrictionAxiom
- * where the restricted relationship is an OML UnreifiedRelationship.
- */
-@Glossary
-abstract class EntityUnreifiedRestrictionAxiom extends EntityRestrictionAxiom {
-	
-	refers UnreifiedRelationship[1] restrictedUnreifiedRelationship
-	
-	@NotSchema
-	@Override
-	op EntityRelationship[1] restrictedRelation() { restrictedUnreifiedRelationship }
-	
-}
 /*
  * An OML EntityExistentialRestrictionAxiom maps 
  * to an [OWL2 Object Property Existential Restriction].
  */
 @Glossary
 @DerivedUUID
-abstract class EntityExistentialRestrictionAxiom extends EntityRestrictionAxiom {}
-
-/*
- * An OML EntityExistentialForwardReifiedRestrictionAxiom maps 
- * to an [OWL2 Object Property Existential Restriction] where
- * the restricted relationship is the unreifiedProperty of an OML ReifiedRelationship.
- */
-@Glossary
-@DerivedUUID
-class EntityExistentialForwardReifiedRestrictionAxiom extends EntityExistentialRestrictionAxiom, EntityForwardReifiedRestrictionAxiom {
+class EntityExistentialRestrictionAxiom extends EntityRestrictionAxiom {
 	
 	@NotFunctionalAPI
 	@NotSchema
 	op UUID[1] uuid() {
 		OMLExtensions.derivedUUID(
-		"EntityExistentialForwardReifiedRestrictionAxiom", 
+		"EntityExistentialRestrictionAxiom", 
 		"tbox" -> tbox.uuid(),
-		"forwardProperty" -> forwardProperty?.uuid()?.toString,
-		"restrictedDomain" -> restrictedDomain?.uuid()?.toString,
-		"restrictedRange" -> restrictedRange?.uuid()?.toString
-		)?.toString
-	}
-}
-
-/*
- * An OML EntityExistentialInverseReifiedRestrictionAxiom maps 
- * to an [OWL2 Object Property Existential Restriction] where
- * the restricted relationship is the unreifiedInverseProperty of an OML ReifiedRelationship.
- */
-@Glossary
-@DerivedUUID
-class EntityExistentialInverseReifiedRestrictionAxiom extends EntityExistentialRestrictionAxiom, EntityInverseReifiedRestrictionAxiom {
-	
-	@NotFunctionalAPI
-	@NotSchema
-	op UUID[1] uuid() {
-		OMLExtensions.derivedUUID(
-		"EntityExistentialInverseReifiedRestrictionAxiom", 
-		"tbox" -> tbox.uuid(),
-		"inverseProperty" -> inverseProperty?.uuid()?.toString,
+		"restrictedRelation" -> restrictedRelation?.uuid()?.toString,
 		"restrictedDomain" -> restrictedDomain?.uuid()?.toString, 
 		"restrictedRange" -> restrictedRange?.uuid()?.toString
-		)?.toString
-	}
-}
-
-/*
- * An OML EntityExistentialUnreifiedRestrictionAxiom maps 
- * to an [OWL2 Object Property Existential Restriction] where
- * the restricted relationship is the unreifiedRelationship of an OML ReifiedRelationship.
- */
-@Glossary
-@DerivedUUID
-class EntityExistentialUnreifiedRestrictionAxiom extends EntityExistentialRestrictionAxiom, EntityUnreifiedRestrictionAxiom {
-	
-	@NotFunctionalAPI
-	@NotSchema
-	op UUID[1] uuid() {
-		OMLExtensions.derivedUUID(
-		"EntityExistentialUnreifiedRestrictionAxiom", 
-		"tbox" -> tbox.uuid(),
-		"restrictedDomain" -> restrictedDomain?.uuid()?.toString, 
-		"restrictedRange" -> restrictedRange?.uuid()?.toString,
-		"restrictedUnreifiedRelationship" -> restrictedUnreifiedRelationship?.uuid()?.toString
 		)?.toString
 	}
 }
@@ -1274,72 +930,20 @@ class EntityExistentialUnreifiedRestrictionAxiom extends EntityExistentialRestri
  */
 @Glossary
 @DerivedUUID
-abstract class EntityUniversalRestrictionAxiom extends EntityRestrictionAxiom {}
-
-/*
- * An OML EntityUniversalForwardReifiedRestrictionAxiom maps 
- * to an [OWL2 Object Property Existential Restriction] where
- * the restricted relationship is the unreifiedProperty of an OML ReifiedRelationship.
- */
-@Glossary
-@DerivedUUID
-class EntityUniversalForwardReifiedRestrictionAxiom extends EntityExistentialRestrictionAxiom, EntityForwardReifiedRestrictionAxiom {
+class EntityUniversalRestrictionAxiom extends EntityRestrictionAxiom {
 	
 	@NotFunctionalAPI
 	@NotSchema
 	op UUID[1] uuid() {
 		OMLExtensions.derivedUUID(
-		"EntityUniversalForwardReifiedRestrictionAxiom", 
+		"EntityUniversalRestrictionAxiom", 
 		"tbox" -> tbox.uuid(),
-		"forwardProperty" -> forwardProperty?.uuid()?.toString,
+		"restrictedRelation" -> restrictedRelation?.uuid()?.toString,
 		"restrictedDomain" -> restrictedDomain?.uuid()?.toString, 
 		"restrictedRange" -> restrictedRange?.uuid()?.toString
 		)?.toString
 	}
-}
-
-/*
- * An OML EntityUniversalInverseReifiedRestrictionAxiom maps 
- * to an [OWL2 Object Property Existential Restriction] where
- * the restricted relationship is the unreifiedInverseProperty of an OML ReifiedRelationship.
- */
-@Glossary
-@DerivedUUID
-class EntityUniversalInverseReifiedRestrictionAxiom extends EntityExistentialRestrictionAxiom, EntityInverseReifiedRestrictionAxiom {
 	
-	@NotFunctionalAPI
-	@NotSchema
-	op UUID[1] uuid() {
-		OMLExtensions.derivedUUID(
-		"EntityUniversalInverseReifiedRestrictionAxiom", 
-		"tbox" -> tbox.uuid(),
-		"inverseProperty" -> inverseProperty?.uuid()?.toString,
-		"restrictedDomain" -> restrictedDomain?.uuid()?.toString, 
-		"restrictedRange" -> restrictedRange?.uuid()?.toString
-		)?.toString
-	}
-}
-
-/*
- * An OML EntityUniversalUnreifiedRestrictionAxiom maps 
- * to an [OWL2 Object Property Existential Restriction] where
- * the restricted relationship is the unreifiedRelationship of an OML ReifiedRelationship.
- */
-@Glossary
-@DerivedUUID
-class EntityUniversalUnreifiedRestrictionAxiom extends EntityExistentialRestrictionAxiom, EntityUnreifiedRestrictionAxiom {
-	
-	@NotFunctionalAPI
-	@NotSchema
-	op UUID[1] uuid() {
-		OMLExtensions.derivedUUID(
-		"EntityUniversalUnreifiedRestrictionAxiom", 
-		"tbox" -> tbox.uuid(),
-		"restrictedDomain" -> restrictedDomain?.uuid()?.toString, 
-		"restrictedRange" -> restrictedRange?.uuid()?.toString,
-		"restrictedUnreifiedRelationship" -> restrictedUnreifiedRelationship?.uuid()?.toString
-		)?.toString
-	}
 }
 
 /*

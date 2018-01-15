@@ -173,13 +173,9 @@ TermAxiom returns TermAxiom:
 	SubDataPropertyOfAxiom;
 	
 EntityRestrictionAxiom returns EntityRestrictionAxiom:
-	EntityExistentialForwardReifiedRestrictionAxiom | 
-	EntityExistentialInverseReifiedRestrictionAxiom | 
-	EntityExistentialUnreifiedRestrictionAxiom | 
-	EntityUniversalForwardReifiedRestrictionAxiom |
-	EntityUniversalInverseReifiedRestrictionAxiom |
-	EntityUniversalUnreifiedRestrictionAxiom;
-	
+	EntityExistentialRestrictionAxiom | 
+	EntityUniversalRestrictionAxiom;
+
 EntityScalarDataPropertyRestrictionAxiom returns EntityScalarDataPropertyRestrictionAxiom:
 	EntityScalarDataPropertyExistentialRestrictionAxiom | 
 	EntityScalarDataPropertyParticularRestrictionAxiom | 
@@ -316,20 +312,14 @@ RuleBodySegment returns RuleBodySegment:
 	predicate=SegmentPredicate ('&&' nextSegment=RuleBodySegment)?;
 
 SegmentPredicate returns SegmentPredicate: 
-	'aspect' '(' {AspectPredicate} aspect=[Aspect|Reference] ')' |
-	'concept' '(' {ConceptPredicate} concept=[Concept|Reference] ')' |
-	'reifiedRelationship' '(' {ReifiedRelationshipPredicate} reifiedRelationship=[ReifiedRelationship|Reference] ')' |
-	'property' '(' {ReifiedRelationshipPropertyPredicate} forwardProperty=[ForwardProperty|Reference] ')' |
-	'inv' '(' 'property' '(' {ReifiedRelationshipInversePropertyPredicate} inverseProperty=[InverseProperty|Reference] ')' ')' |
-	'source' '(' {ReifiedRelationshipSourcePropertyPredicate} reifiedRelationship=[ReifiedRelationship|Reference] ')' | 
-	'inv' '(' 'source' '(' {ReifiedRelationshipSourceInversePropertyPredicate} reifiedRelationship=[ReifiedRelationship|Reference] ')' ')' | 
-	'target' '(' {ReifiedRelationshipTargetPropertyPredicate} reifiedRelationship=[ReifiedRelationship|Reference] ')' | 
-	'inv' '(' 'target' '(' {ReifiedRelationshipTargetInversePropertyPredicate} reifiedRelationship=[ReifiedRelationship|Reference] ')' ')' | 
-	{UnreifiedRelationshipPropertyPredicate} unreifiedRelationship=[UnreifiedRelationship|Reference] |
-	'inv' '(' {UnreifiedRelationshipInversePropertyPredicate} unreifiedRelationship=[UnreifiedRelationship|Reference] ')' ;
+	predicate=[Predicate|QNAME] |
+	'source' '(' reifiedRelationshipSource=[ReifiedRelationship|QNAME] ')' |
+	'invSource' '(' reifiedRelationshipInverseSource=[ReifiedRelationship|QNAME] ')' | 
+	'target' '(' reifiedRelationshipTarget=[ReifiedRelationship|QNAME] ')' | 
+	'invTarget' '(' reifiedRelationshipInverseTarget=[ReifiedRelationship|QNAME] ')' | 
+	'inv' '(' unreifiedRelationshipInverse=[UnreifiedRelationship|QNAME] ')' ;
 
-// ConceptTreeDisjunctions and DisjointUnionOfConceptsAxioms
-
+// 3 ConceptTreeDisjunctions and DisjointUnionOfConceptsAxioms
 
 AnonymousConceptUnionAxiom returns AnonymousConceptUnionAxiom:
 	( annotations+=AnnotationPropertyValue )*
@@ -346,57 +336,27 @@ RootConceptTaxonomyAxiom returns RootConceptTaxonomyAxiom:
 
 SpecificDisjointConceptAxiom returns SpecificDisjointConceptAxiom:
 	( annotations+=AnnotationPropertyValue )*
-	'disjointLeaf' '(' disjointLeaf=[Concept|Reference] ')';
+	'disjointLeaf' '(' disjointLeaf=[Concept|QNAME] ')';
 
-// 6 EntityRestrictionAxioms
+// 2 EntityRestrictionAxioms
 
-EntityExistentialForwardReifiedRestrictionAxiom returns EntityExistentialForwardReifiedRestrictionAxiom:
+EntityExistentialRestrictionAxiom returns EntityExistentialRestrictionAxiom:
 	( annotations+=AnnotationPropertyValue )*
 	'someEntities'
-	restrictedDomain=[Entity|Reference]
-	'->' 
-	forwardProperty=[ForwardProperty|Reference]
-	'in' restrictedRange=[Entity|Reference];
-
-EntityExistentialInverseReifiedRestrictionAxiom returns EntityExistentialInverseReifiedRestrictionAxiom:
-	( annotations+=AnnotationPropertyValue )*
-	'someEntities'
-	restrictedDomain=[Entity|Reference]
+	restrictedDomain=[Entity|QNAME]
 	'.' 
-	inverseProperty=[InverseProperty|Reference]
-	'in' restrictedRange=[Entity|Reference];
+	restrictedRelationship=[RestrictableRelationship|QNAME]
+	'in'
+	restrictedRange=[Entity|QNAME];
 
-EntityExistentialUnreifiedRestrictionAxiom returns EntityExistentialUnreifiedRestrictionAxiom:
-	( annotations+=AnnotationPropertyValue )*
-	'someEntities'
-	restrictedDomain=[Entity|Reference]
-	'.' 
-	restrictedUnreifiedRelationship=[UnreifiedRelationship|Reference]
-	'from' restrictedRange=[Entity|Reference];
-
-EntityUniversalForwardReifiedRestrictionAxiom returns EntityUniversalForwardReifiedRestrictionAxiom:
+EntityUniversalRestrictionAxiom returns EntityUniversalRestrictionAxiom:
 	( annotations+=AnnotationPropertyValue )*
 	'allEntities'
-	restrictedDomain=[Entity|Reference]
-	'->' 
-	forwardProperty=[ForwardProperty|Reference]
-	'in' restrictedRange=[Entity|Reference];
-
-EntityUniversalInverseReifiedRestrictionAxiom returns EntityUniversalInverseReifiedRestrictionAxiom:
-	( annotations+=AnnotationPropertyValue )*
-	'allEntities'
-	restrictedDomain=[Entity|Reference]
+	restrictedDomain=[Entity|QNAME]
 	'.' 
-	inverseProperty=[InverseProperty|Reference]
-	'in' restrictedRange=[Entity|Reference];
-
-EntityUniversalUnreifiedRestrictionAxiom returns EntityUniversalUnreifiedRestrictionAxiom:
-	( annotations+=AnnotationPropertyValue )*
-	'allEntities'
-	restrictedDomain=[Entity|Reference]
-	'.' 
-	restrictedUnreifiedRelationship=[UnreifiedRelationship|Reference]
-	'from' restrictedRange=[Entity|Reference];
+	restrictedRelationship=[RestrictableRelationship|QNAME]
+	'in'
+	restrictedRange=[Entity|QNAME];
 
 // 3 SpecializationAxioms
 
@@ -699,6 +659,7 @@ LiteralDecimal returns LiteralDecimal:					{LiteralDecimal} decimal=DIGITS | dec
 PositiveIntegerLiteral returns PositiveIntegerLiteral: 	DIGITS;
 
 //----------------------------
+
 terminal FALSE returns ecore::EBoolean:					'false';
 terminal TRUE returns ecore::EBoolean:					'true';
 

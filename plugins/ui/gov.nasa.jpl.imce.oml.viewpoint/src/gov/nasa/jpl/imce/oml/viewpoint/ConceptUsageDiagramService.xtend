@@ -18,19 +18,17 @@
  
 package gov.nasa.jpl.imce.oml.viewpoint
 
+import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions
 import gov.nasa.jpl.imce.oml.model.terminologies.Aspect
 import gov.nasa.jpl.imce.oml.model.terminologies.AspectSpecializationAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept
 import gov.nasa.jpl.imce.oml.model.terminologies.Entity
-import gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialRestrictionAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityRestrictionAxiom
-import gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalRestrictionAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship
 import gov.nasa.jpl.imce.oml.model.terminologies.SpecializationAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBoxStatement
-import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions
 import java.util.AbstractMap.SimpleEntry
 import java.util.ArrayList
 import java.util.HashMap
@@ -187,57 +185,29 @@ class ConceptUsageDiagramService {
 	}
 	
 	/*
-	 * Gets all {@link EntityUniversalRestrictionAxiom}s that have the passed
+	 * Gets all {@link EntityRestrictionAxiom}s that have the passed
 	 * {@link Concept} as its restricted domain
 	 * 
 	 * @param c The root {@link Concept}
-	 * @return Set of {@link EntityUniversalRestrictionAxioms}s
+	 * @return Set of {@link EntityRestrictionAxiom}s
 	 */
-	def Set<EntityUniversalRestrictionAxiom> getUniversalAxiomWithRootAsSource(Concept c){
+	def Set<EntityRestrictionAxiom> getEntityRestrictionAxiomWithRootAsSource(Concept c){
 		return getUsageReltionships(c)
-		.filter(EntityUniversalRestrictionAxiom)
+		.filter(EntityRestrictionAxiom)
 		.filter[f | f.restrictedDomain == c]
 		.toSet
 	}
 
 	/*
-	 * Gets all {@link EntityUniversalRestrictionAxiom}s that have the passed
+	 * Gets all {@link EntityRestrictionAxiom}s that have the passed
 	 * {@link Concept} as its restricted range
 	 * 
 	 * @param c The root {@link Concept}
-	 * @return Set of {@link EntityUniversalRestrictionAxioms}s
+	 * @return Set of {@link EntityRestrictionAxiom}s
 	 */
-	def Set<EntityUniversalRestrictionAxiom> getUniversalAxiomWithRootAsTarget(Concept c){
+	def Set<EntityRestrictionAxiom> getEntityRestrictionAxiomWithRootAsTarget(Concept c){
 		return getUsageReltionships(c)
-		.filter(EntityUniversalRestrictionAxiom)
-		.filter[f | f.restrictedRange == c]
-		.toSet
-	}	
-	
-	/*
-	 * Gets all {@link EntityExitenstialRestrictionAxiom}s that have the passed
-	 * {@link Concept} as its restricted domain
-	 * 
-	 * @param c The root {@link Concept}
-	 * @return Set of {@link EntityExistentialRestrictionAxioms}s
-	 */
-	def Set<EntityExistentialRestrictionAxiom> getExistentialAxiomWithRootAsSource(Concept c){
-		return getUsageReltionships(c)
-		.filter(EntityExistentialRestrictionAxiom)
-		.filter[f | f.restrictedDomain == c]
-		.toSet
-	}
-	
-	/*
-	 * Gets all {@link EntityExistentialRestrictionAxiom}s that have the passed
-	 * {@link Concept} as its restricted domain
-	 * 
-	 * @param c The root {@link Concept}
-	 * @return Set of {@link EntityExistentialRestrictionAxioms}s
-	 */
-	def Set<EntityExistentialRestrictionAxiom> getExistentialAxiomWithRootAsTarget(Concept c){
-		return getUsageReltionships(c)
-		.filter(EntityExistentialRestrictionAxiom)
+		.filter(EntityRestrictionAxiom)
 		.filter[f | f.restrictedRange == c]
 		.toSet
 	}	
