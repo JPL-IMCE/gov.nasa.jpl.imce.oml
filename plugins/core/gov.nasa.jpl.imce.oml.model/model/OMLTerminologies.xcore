@@ -402,7 +402,7 @@ abstract class EntityRelationship extends Term, DirectedBinaryRelationshipKind {
  * and that can be involved in an OML SegmentPredicate for an OML ChainRule.
  */
 @Glossary
-abstract class RestrictableRelationship extends Resource, Predicate {
+abstract class RestrictableRelationship extends Predicate {
 	
 	@NotSchema
 	op EntityRelationship[1] relation()
@@ -421,13 +421,19 @@ class ForwardProperty extends RestrictableRelationship {
 	
 	container ReifiedRelationship[1] reifiedRelationship opposite forwardProperty
 		
-	@Scala(code="extent.terminologyBoxOfTerminologyBoxStatement.get(this).flatMap(tbox => tbox.iri().map(i =>  gov.nasa.jpl.imce.oml.tables.taggedTypes.iri(i + \"#\" + name)))")
+	@Scala(code="extent
+	    .terminologyBoxOfTerminologyBoxStatement
+	    .get(reifiedRelationship)
+	    .flatMap(tbox => tbox.iri().map(i =>  gov.nasa.jpl.imce.oml.tables.taggedTypes.iri(i + \"#\" + name)))")
 	@ImplicitExtent
 	@NotSchema
 	@Override
 	op IRI[?] iri() { reifiedRelationship?.tbox?.iri()+'#'+name() }
 	
-	@Scala(code="extent.terminologyBoxOfTerminologyBoxStatement.get(this).map(tbox => tbox.nsPrefix+\":\"+name)")
+	@Scala(code="extent
+	    .terminologyBoxOfTerminologyBoxStatement
+	    .get(reifiedRelationship)
+	    .map(tbox => tbox.nsPrefix+\":\"+name)")
 	@ImplicitExtent
 	@NotSchema
 	@Override
@@ -449,6 +455,11 @@ class ForwardProperty extends RestrictableRelationship {
 	@NotSchema
 	@Override
 	op EntityRelationship[1] relation() { reifiedRelationship }
+	
+	@NotSchema
+	@ImplicitExtent
+	@Override
+	op Module[?] moduleContext() { reifiedRelationship?.moduleContext }
 }
 
 /*
@@ -460,13 +471,19 @@ class InverseProperty extends RestrictableRelationship {
 	
 	container ReifiedRelationship[1] reifiedRelationship opposite inverseProperty
 		
-	@Scala(code="extent.terminologyBoxOfTerminologyBoxStatement.get(this).flatMap(tbox => tbox.iri().map(i =>  gov.nasa.jpl.imce.oml.tables.taggedTypes.iri(i + \"#\" + name)))")
+	@Scala(code="extent
+	    .terminologyBoxOfTerminologyBoxStatement
+	    .get(reifiedRelationship)
+	    .flatMap(tbox => tbox.iri().map(i =>  gov.nasa.jpl.imce.oml.tables.taggedTypes.iri(i + \"#\" + name)))")
 	@ImplicitExtent
 	@NotSchema
 	@Override
 	op IRI[?] iri() { reifiedRelationship?.tbox?.iri()+'#'+name() }
 	
-	@Scala(code="extent.terminologyBoxOfTerminologyBoxStatement.get(this).map(tbox => tbox.nsPrefix+\":\"+name)")
+	@Scala(code="extent
+	    .terminologyBoxOfTerminologyBoxStatement
+	    .get(reifiedRelationship)
+	    .map(tbox => tbox.nsPrefix+\":\"+name)")
 	@ImplicitExtent
 	@NotSchema
 	@Override
@@ -488,6 +505,11 @@ class InverseProperty extends RestrictableRelationship {
 	@NotSchema
 	@Override
 	op EntityRelationship[1] relation() { reifiedRelationship }
+	
+	@NotSchema
+	@ImplicitExtent
+	@Override
+	op Module[?] moduleContext() { reifiedRelationship?.moduleContext }
 }
 
 /*
@@ -502,6 +524,21 @@ class ReifiedRelationship extends EntityRelationship, ConceptualEntity {
 
 	contains ForwardProperty[1] forwardProperty opposite reifiedRelationship
 	contains InverseProperty[?] inverseProperty opposite reifiedRelationship
+	
+	@Scala(code="
+		scala.collection.immutable.Set[resolver.api.LogicalElement]() ++
+		extent.forwardProperty.get(this) ++
+		extent.inverseProperty.get(this)")
+	@Collection(kind="Set")
+	@NotSchema
+	@ImplicitExtent
+	@Override
+	op LogicalElement[] allNestedElements() { 
+		val les = new BasicEList<LogicalElement>()
+		les.add(forwardProperty)
+		if (null !== inverseProperty) les.add(inverseProperty)
+		les
+	}
 }
 
 /*
@@ -849,8 +886,14 @@ class SegmentPredicate extends ElementCrossReferenceTuple {
 	refers ReifiedRelationship[?] reifiedRelationshipInverseTarget
 	refers UnreifiedRelationship[?] unreifiedRelationshipInverse
 	
+	@Scala(code="predicate.map(_.term()) orElse 
+	reifiedRelationshipSource orElse 
+	reifiedRelationshipInverseSource orElse
+	reifiedRelationshipTarget orElse
+	reifiedRelationshipInverseTarget orElse
+	unreifiedRelationshipInverse")
 	@NotSchema
-	op Term[1] termPredicate() {
+	op Term[?] termPredicate() {
 		predicate?.term ?:
 		reifiedRelationshipSource ?:
 		reifiedRelationshipInverseSource ?:
