@@ -24,10 +24,8 @@ import gov.nasa.jpl.imce.oml.model.terminologies.Aspect;
 import gov.nasa.jpl.imce.oml.model.terminologies.AspectSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
 import gov.nasa.jpl.imce.oml.model.terminologies.Entity;
-import gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityRestrictionAxiom;
-import gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.SpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox;
@@ -206,63 +204,33 @@ public class ConceptUsageDiagramService {
   }
   
   /**
-   * Gets all {@link EntityUniversalRestrictionAxiom}s that have the passed
+   * Gets all {@link EntityRestrictionAxiom}s that have the passed
    * {@link Concept} as its restricted domain
    * 
    * @param c The root {@link Concept}
-   * @return Set of {@link EntityUniversalRestrictionAxioms}s
+   * @return Set of {@link EntityRestrictionAxiom}s
    */
-  public Set<EntityUniversalRestrictionAxiom> getUniversalAxiomWithRootAsSource(final Concept c) {
-    final Function1<EntityUniversalRestrictionAxiom, Boolean> _function = (EntityUniversalRestrictionAxiom f) -> {
+  public Set<EntityRestrictionAxiom> getEntityRestrictionAxiomWithRootAsSource(final Concept c) {
+    final Function1<EntityRestrictionAxiom, Boolean> _function = (EntityRestrictionAxiom f) -> {
       Entity _restrictedDomain = f.getRestrictedDomain();
       return Boolean.valueOf(Objects.equal(_restrictedDomain, c));
     };
-    return IterableExtensions.<EntityUniversalRestrictionAxiom>toSet(IterableExtensions.<EntityUniversalRestrictionAxiom>filter(Iterables.<EntityUniversalRestrictionAxiom>filter(this.getUsageReltionships(c), EntityUniversalRestrictionAxiom.class), _function));
+    return IterableExtensions.<EntityRestrictionAxiom>toSet(IterableExtensions.<EntityRestrictionAxiom>filter(Iterables.<EntityRestrictionAxiom>filter(this.getUsageReltionships(c), EntityRestrictionAxiom.class), _function));
   }
   
   /**
-   * Gets all {@link EntityUniversalRestrictionAxiom}s that have the passed
+   * Gets all {@link EntityRestrictionAxiom}s that have the passed
    * {@link Concept} as its restricted range
    * 
    * @param c The root {@link Concept}
-   * @return Set of {@link EntityUniversalRestrictionAxioms}s
+   * @return Set of {@link EntityRestrictionAxiom}s
    */
-  public Set<EntityUniversalRestrictionAxiom> getUniversalAxiomWithRootAsTarget(final Concept c) {
-    final Function1<EntityUniversalRestrictionAxiom, Boolean> _function = (EntityUniversalRestrictionAxiom f) -> {
+  public Set<EntityRestrictionAxiom> getEntityRestrictionAxiomWithRootAsTarget(final Concept c) {
+    final Function1<EntityRestrictionAxiom, Boolean> _function = (EntityRestrictionAxiom f) -> {
       Entity _restrictedRange = f.getRestrictedRange();
       return Boolean.valueOf(Objects.equal(_restrictedRange, c));
     };
-    return IterableExtensions.<EntityUniversalRestrictionAxiom>toSet(IterableExtensions.<EntityUniversalRestrictionAxiom>filter(Iterables.<EntityUniversalRestrictionAxiom>filter(this.getUsageReltionships(c), EntityUniversalRestrictionAxiom.class), _function));
-  }
-  
-  /**
-   * Gets all {@link EntityExitenstialRestrictionAxiom}s that have the passed
-   * {@link Concept} as its restricted domain
-   * 
-   * @param c The root {@link Concept}
-   * @return Set of {@link EntityExistentialRestrictionAxioms}s
-   */
-  public Set<EntityExistentialRestrictionAxiom> getExistentialAxiomWithRootAsSource(final Concept c) {
-    final Function1<EntityExistentialRestrictionAxiom, Boolean> _function = (EntityExistentialRestrictionAxiom f) -> {
-      Entity _restrictedDomain = f.getRestrictedDomain();
-      return Boolean.valueOf(Objects.equal(_restrictedDomain, c));
-    };
-    return IterableExtensions.<EntityExistentialRestrictionAxiom>toSet(IterableExtensions.<EntityExistentialRestrictionAxiom>filter(Iterables.<EntityExistentialRestrictionAxiom>filter(this.getUsageReltionships(c), EntityExistentialRestrictionAxiom.class), _function));
-  }
-  
-  /**
-   * Gets all {@link EntityExistentialRestrictionAxiom}s that have the passed
-   * {@link Concept} as its restricted domain
-   * 
-   * @param c The root {@link Concept}
-   * @return Set of {@link EntityExistentialRestrictionAxioms}s
-   */
-  public Set<EntityExistentialRestrictionAxiom> getExistentialAxiomWithRootAsTarget(final Concept c) {
-    final Function1<EntityExistentialRestrictionAxiom, Boolean> _function = (EntityExistentialRestrictionAxiom f) -> {
-      Entity _restrictedRange = f.getRestrictedRange();
-      return Boolean.valueOf(Objects.equal(_restrictedRange, c));
-    };
-    return IterableExtensions.<EntityExistentialRestrictionAxiom>toSet(IterableExtensions.<EntityExistentialRestrictionAxiom>filter(Iterables.<EntityExistentialRestrictionAxiom>filter(this.getUsageReltionships(c), EntityExistentialRestrictionAxiom.class), _function));
+    return IterableExtensions.<EntityRestrictionAxiom>toSet(IterableExtensions.<EntityRestrictionAxiom>filter(Iterables.<EntityRestrictionAxiom>filter(this.getUsageReltionships(c), EntityRestrictionAxiom.class), _function));
   }
   
   /**

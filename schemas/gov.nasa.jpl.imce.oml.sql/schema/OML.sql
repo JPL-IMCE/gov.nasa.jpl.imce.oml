@@ -28,9 +28,6 @@ USE `OML` ;
 
 -- Summary of abstract table names
 -- 
--- BinSegFwdPropP       BinarySegmentForwardPropertyPredicates
--- BinSegPropP          BinarySegmentPropertyPredicates
--- BinSegRevPropP       BinarySegmentReversePropertyPredicates
 -- CRBK                 CrossReferencableKinds
 -- CRTK                 CrossReferencabilityKinds
 -- CTreeDsju            ConceptTreeDisjunctions
@@ -63,12 +60,13 @@ USE `OML` ;
 -- Mods                 Modules
 -- NonCRBK              NonCrossReferencableKinds
 -- NonLogEs             NonLogicalElements
+-- P                    Predicates
 -- RStPCtxts            RestrictionStructuredDataPropertyContexts
 -- Ress                 Resources
 -- RestDrs              RestrictedDataRanges
+-- RestrictableRels     RestrictableRelationships
 -- Rules                Rules
 -- S1IStPCtxts          SingletonInstanceStructuredDataPropertyContexts
--- SegP                 SegmentPredicates
 -- SpeAx                SpecializationAxioms
 -- TBox                 TerminologyBoxes
 -- TBoxAx               TerminologyBoxAxioms
@@ -79,7 +77,6 @@ USE `OML` ;
 -- TlgyBdlAx            TerminologyBundleAxioms
 -- TlgyBdlSt            TerminologyBundleStatements
 -- TlgyIAsts            TerminologyInstanceAssertions
--- UrySegP              UnarySegmentPredicates
 -- UryTermKinds         UnaryTermKinds
 -- ValCRefTs            ValueCrossReferenceTuples
 		
@@ -88,7 +85,6 @@ USE `OML` ;
 -- AnnotPropVals        AnnotationPropertyValues
 -- AnnotProps           AnnotationProperties
 -- AnonymousCUnionAx    AnonymousConceptUnionAxioms
--- AspectP              AspectPredicates
 -- AspectSpeAx          AspectSpecializationAxioms
 -- Aspects              Aspects
 -- BdldTlgyAx           BundledTerminologyAxioms
@@ -96,7 +92,6 @@ USE `OML` ;
 -- BinScRs              BinaryScalarRestrictions
 -- CDesTlgyAx           ConceptDesignationTerminologyAxioms
 -- CIs                  ConceptInstances
--- CP                   ConceptPredicates
 -- CSpeAx               ConceptSpecializationAxioms
 -- ChainRules           ChainRules
 -- Cs                   Concepts
@@ -111,20 +106,15 @@ USE `OML` ;
 -- EStPPtrRAx           EntityStructuredDataPropertyParticularRestrictionAxioms
 -- EStPs                EntityStructuredDataProperties
 -- EUxRAx               EntityUniversalRestrictionAxioms
+-- FwdProps             ForwardProperties
 -- IRIScRs              IRIScalarRestrictions
+-- InvProps             InverseProperties
 -- NumericScRs          NumericScalarRestrictions
 -- PlainLitScRs         PlainLiteralScalarRestrictions
 -- RRIDomains           ReifiedRelationshipInstanceDomains
 -- RRIRanges            ReifiedRelationshipInstanceRanges
--- RRInvPropP           ReifiedRelationshipInversePropertyPredicates
 -- RRIs                 ReifiedRelationshipInstances
--- RRP                  ReifiedRelationshipPredicates
--- RRPropP              ReifiedRelationshipPropertyPredicates
 -- RRSpeAx              ReifiedRelationshipSpecializationAxioms
--- RRSrcInvPropP        ReifiedRelationshipSourceInversePropertyPredicates
--- RRSrcPropP           ReifiedRelationshipSourcePropertyPredicates
--- RRTgtInvPropP        ReifiedRelationshipTargetInversePropertyPredicates
--- RRTgtPropP           ReifiedRelationshipTargetPropertyPredicates
 -- RRs                  ReifiedRelationships
 -- RScPVals             RestrictionScalarDataPropertyValues
 -- RStPTs               RestrictionStructuredDataPropertyTuples
@@ -137,6 +127,7 @@ USE `OML` ;
 -- ScPVals              ScalarDataPropertyValues
 -- ScPs                 ScalarDataProperties
 -- Scs                  Scalars
+-- SegP                 SegmentPredicates
 -- SpeDsjtCAx           SpecificDisjointConceptAxioms
 -- StPTs                StructuredDataPropertyTuples
 -- StPs                 StructuredDataProperties
@@ -150,36 +141,7 @@ USE `OML` ;
 -- TlgyGraphs           TerminologyGraphs
 -- TlgyNestingAx        TerminologyNestingAxioms
 -- URITs                UnreifiedRelationshipInstanceTuples
--- URInvPropP           UnreifiedRelationshipInversePropertyPredicates
--- URPropP              UnreifiedRelationshipPropertyPredicates
 -- URs                  UnreifiedRelationships
-
--- -----------------------------------------------------
--- Table `OML`.`BinSegFwdPropP`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`BinSegFwdPropP` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,		  
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Abstract Classification Table BinarySegmentForwardPropertyPredicates';
-
--- -----------------------------------------------------
--- Table `OML`.`BinSegPropP`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`BinSegPropP` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,		  
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Abstract Classification Table BinarySegmentPropertyPredicates';
-
--- -----------------------------------------------------
--- Table `OML`.`BinSegRevPropP`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`BinSegRevPropP` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,		  
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Abstract Classification Table BinarySegmentReversePropertyPredicates';
 
 -- -----------------------------------------------------
 -- Table `OML`.`CTreeDsju`
@@ -470,6 +432,15 @@ CREATE TABLE IF NOT EXISTS `OML`.`NonLogEs` (
 COMMENT = 'Abstract Classification Table NonLogicalElements';
 
 -- -----------------------------------------------------
+-- Table `OML`.`P`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`P` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,		  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Abstract Classification Table Predicates';
+
+-- -----------------------------------------------------
 -- Table `OML`.`Ress`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `OML`.`Ress` (
@@ -477,6 +448,15 @@ CREATE TABLE IF NOT EXISTS `OML`.`Ress` (
   UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
 )
 COMMENT = 'Abstract Classification Table Resources';
+
+-- -----------------------------------------------------
+-- Table `OML`.`RestrictableRels`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`RestrictableRels` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,		  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Abstract Classification Table RestrictableRelationships';
 
 -- -----------------------------------------------------
 -- Table `OML`.`RestDrs`
@@ -504,15 +484,6 @@ CREATE TABLE IF NOT EXISTS `OML`.`Rules` (
   UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
 )
 COMMENT = 'Abstract Classification Table Rules';
-
--- -----------------------------------------------------
--- Table `OML`.`SegP`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`SegP` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,		  
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Abstract Classification Table SegmentPredicates';
 
 -- -----------------------------------------------------
 -- Table `OML`.`S1IStPCtxts`
@@ -612,15 +583,6 @@ CREATE TABLE IF NOT EXISTS `OML`.`TlgyIAsts` (
   UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
 )
 COMMENT = 'Abstract Classification Table TerminologyInstanceAssertions';
-
--- -----------------------------------------------------
--- Table `OML`.`UrySegP`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`UrySegP` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,		  
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Abstract Classification Table UnarySegmentPredicates';
 
 -- -----------------------------------------------------
 -- Table `OML`.`UryTermKinds`
@@ -1306,8 +1268,6 @@ CREATE TABLE IF NOT EXISTS `OML`.`RRs` (
   `isSymmetric` BOOLEAN NOT NULL,
   `isTransitive` BOOLEAN NOT NULL,
   `name` TEXT NOT NULL COMMENT 'LocalName',
-  `unreifiedPropertyName` TEXT NOT NULL COMMENT 'LocalName',
-  `unreifiedInversePropertyName` TEXT COMMENT 'LocalName',
   
   CONSTRAINT `fk_RRs_tboxUUID`
     FOREIGN KEY (`tboxUUID`)
@@ -1330,6 +1290,42 @@ CREATE TABLE IF NOT EXISTS `OML`.`RRs` (
   UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
 )
 COMMENT = 'Concrete Information Table ReifiedRelationships';
+
+-- -----------------------------------------------------
+-- Table `OML`.`FwdProps`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`FwdProps` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `name` TEXT NOT NULL COMMENT 'LocalName',
+  `reifiedRelationshipUUID` CHAR(36) NOT NULL COMMENT 'RRs (ReifiedRelationship)',
+  
+  CONSTRAINT `fk_FwdProps_reifiedRelationshipUUID`
+    FOREIGN KEY (`reifiedRelationshipUUID`)
+    REFERENCES `OML`.`RRs`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Concrete Information Table ForwardProperties';
+
+-- -----------------------------------------------------
+-- Table `OML`.`InvProps`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`InvProps` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `name` TEXT NOT NULL COMMENT 'LocalName',
+  `reifiedRelationshipUUID` CHAR(36) NOT NULL COMMENT 'RRs (ReifiedRelationship)',
+  
+  CONSTRAINT `fk_InvProps_reifiedRelationshipUUID`
+    FOREIGN KEY (`reifiedRelationshipUUID`)
+    REFERENCES `OML`.`RRs`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Concrete Information Table InverseProperties';
 
 -- -----------------------------------------------------
 -- Table `OML`.`URs`
@@ -1422,268 +1418,63 @@ CREATE TABLE IF NOT EXISTS `OML`.`RuleBodySegs` (
 COMMENT = 'Concrete Information Table RuleBodySegments';
 
 -- -----------------------------------------------------
--- Table `OML`.`AspectP`
+-- Table `OML`.`SegP`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`AspectP` (
+CREATE TABLE IF NOT EXISTS `OML`.`SegP` (
   `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `aspectUUID` CHAR(36) NOT NULL COMMENT 'Aspects (Aspect)',
   `bodySegmentUUID` CHAR(36) NOT NULL COMMENT 'RuleBodySegs (RuleBodySegment)',
+  `predicateUUID` CHAR(36) NULL COMMENT 'P (Predicate)',
+  `reifiedRelationshipSourceUUID` CHAR(36) NULL COMMENT 'RRs (ReifiedRelationship)',
+  `reifiedRelationshipInverseSourceUUID` CHAR(36) NULL COMMENT 'RRs (ReifiedRelationship)',
+  `reifiedRelationshipTargetUUID` CHAR(36) NULL COMMENT 'RRs (ReifiedRelationship)',
+  `reifiedRelationshipInverseTargetUUID` CHAR(36) NULL COMMENT 'RRs (ReifiedRelationship)',
+  `unreifiedRelationshipInverseUUID` CHAR(36) NULL COMMENT 'URs (UnreifiedRelationship)',
   
-  CONSTRAINT `fk_AspectP_aspectUUID`
-    FOREIGN KEY (`aspectUUID`)
-    REFERENCES `OML`.`Aspects`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_AspectP_bodySegmentUUID`
+  CONSTRAINT `fk_SegP_bodySegmentUUID`
     FOREIGN KEY (`bodySegmentUUID`)
     REFERENCES `OML`.`RuleBodySegs`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Concrete Information Table AspectPredicates';
-
--- -----------------------------------------------------
--- Table `OML`.`CP`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`CP` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `bodySegmentUUID` CHAR(36) NOT NULL COMMENT 'RuleBodySegs (RuleBodySegment)',
-  `conceptUUID` CHAR(36) NOT NULL COMMENT 'Cs (Concept)',
-  
-  CONSTRAINT `fk_CP_bodySegmentUUID`
-    FOREIGN KEY (`bodySegmentUUID`)
-    REFERENCES `OML`.`RuleBodySegs`(`uuid`)
+  CONSTRAINT `fk_SegP_predicateUUID`
+    FOREIGN KEY (`predicateUUID`)
+    REFERENCES `OML`.`P`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_CP_conceptUUID`
-    FOREIGN KEY (`conceptUUID`)
-    REFERENCES `OML`.`Cs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Concrete Information Table ConceptPredicates';
-
--- -----------------------------------------------------
--- Table `OML`.`RRP`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`RRP` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `bodySegmentUUID` CHAR(36) NOT NULL COMMENT 'RuleBodySegs (RuleBodySegment)',
-  `reifiedRelationshipUUID` CHAR(36) NOT NULL COMMENT 'RRs (ReifiedRelationship)',
-  
-  CONSTRAINT `fk_RRP_bodySegmentUUID`
-    FOREIGN KEY (`bodySegmentUUID`)
-    REFERENCES `OML`.`RuleBodySegs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_RRP_reifiedRelationshipUUID`
-    FOREIGN KEY (`reifiedRelationshipUUID`)
+  CONSTRAINT `fk_SegP_reifiedRelationshipSourceUUID`
+    FOREIGN KEY (`reifiedRelationshipSourceUUID`)
     REFERENCES `OML`.`RRs`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Concrete Information Table ReifiedRelationshipPredicates';
-
--- -----------------------------------------------------
--- Table `OML`.`RRPropP`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`RRPropP` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `bodySegmentUUID` CHAR(36) NOT NULL COMMENT 'RuleBodySegs (RuleBodySegment)',
-  `reifiedRelationshipUUID` CHAR(36) NOT NULL COMMENT 'RRs (ReifiedRelationship)',
-  
-  CONSTRAINT `fk_RRPropP_bodySegmentUUID`
-    FOREIGN KEY (`bodySegmentUUID`)
-    REFERENCES `OML`.`RuleBodySegs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_RRPropP_reifiedRelationshipUUID`
-    FOREIGN KEY (`reifiedRelationshipUUID`)
+  CONSTRAINT `fk_SegP_reifiedRelationshipInverseSourceUUID`
+    FOREIGN KEY (`reifiedRelationshipInverseSourceUUID`)
     REFERENCES `OML`.`RRs`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Concrete Information Table ReifiedRelationshipPropertyPredicates';
-
--- -----------------------------------------------------
--- Table `OML`.`RRSrcPropP`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`RRSrcPropP` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `bodySegmentUUID` CHAR(36) NOT NULL COMMENT 'RuleBodySegs (RuleBodySegment)',
-  `reifiedRelationshipUUID` CHAR(36) NOT NULL COMMENT 'RRs (ReifiedRelationship)',
-  
-  CONSTRAINT `fk_RRSrcPropP_bodySegmentUUID`
-    FOREIGN KEY (`bodySegmentUUID`)
-    REFERENCES `OML`.`RuleBodySegs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_RRSrcPropP_reifiedRelationshipUUID`
-    FOREIGN KEY (`reifiedRelationshipUUID`)
+  CONSTRAINT `fk_SegP_reifiedRelationshipTargetUUID`
+    FOREIGN KEY (`reifiedRelationshipTargetUUID`)
     REFERENCES `OML`.`RRs`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Concrete Information Table ReifiedRelationshipSourcePropertyPredicates';
-
--- -----------------------------------------------------
--- Table `OML`.`RRTgtPropP`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`RRTgtPropP` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `bodySegmentUUID` CHAR(36) NOT NULL COMMENT 'RuleBodySegs (RuleBodySegment)',
-  `reifiedRelationshipUUID` CHAR(36) NOT NULL COMMENT 'RRs (ReifiedRelationship)',
-  
-  CONSTRAINT `fk_RRTgtPropP_bodySegmentUUID`
-    FOREIGN KEY (`bodySegmentUUID`)
-    REFERENCES `OML`.`RuleBodySegs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_RRTgtPropP_reifiedRelationshipUUID`
-    FOREIGN KEY (`reifiedRelationshipUUID`)
+  CONSTRAINT `fk_SegP_reifiedRelationshipInverseTargetUUID`
+    FOREIGN KEY (`reifiedRelationshipInverseTargetUUID`)
     REFERENCES `OML`.`RRs`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Concrete Information Table ReifiedRelationshipTargetPropertyPredicates';
-
--- -----------------------------------------------------
--- Table `OML`.`URPropP`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`URPropP` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `unreifiedRelationshipUUID` CHAR(36) NOT NULL COMMENT 'URs (UnreifiedRelationship)',
-  `bodySegmentUUID` CHAR(36) NOT NULL COMMENT 'RuleBodySegs (RuleBodySegment)',
-  
-  CONSTRAINT `fk_URPropP_unreifiedRelationshipUUID`
-    FOREIGN KEY (`unreifiedRelationshipUUID`)
+  CONSTRAINT `fk_SegP_unreifiedRelationshipInverseUUID`
+    FOREIGN KEY (`unreifiedRelationshipInverseUUID`)
     REFERENCES `OML`.`URs`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_URPropP_bodySegmentUUID`
-    FOREIGN KEY (`bodySegmentUUID`)
-    REFERENCES `OML`.`RuleBodySegs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
   UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
 )
-COMMENT = 'Concrete Information Table UnreifiedRelationshipPropertyPredicates';
-
--- -----------------------------------------------------
--- Table `OML`.`RRInvPropP`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`RRInvPropP` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `bodySegmentUUID` CHAR(36) NOT NULL COMMENT 'RuleBodySegs (RuleBodySegment)',
-  `reifiedRelationshipUUID` CHAR(36) NOT NULL COMMENT 'RRs (ReifiedRelationship)',
-  
-  CONSTRAINT `fk_RRInvPropP_bodySegmentUUID`
-    FOREIGN KEY (`bodySegmentUUID`)
-    REFERENCES `OML`.`RuleBodySegs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_RRInvPropP_reifiedRelationshipUUID`
-    FOREIGN KEY (`reifiedRelationshipUUID`)
-    REFERENCES `OML`.`RRs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Concrete Information Table ReifiedRelationshipInversePropertyPredicates';
-
--- -----------------------------------------------------
--- Table `OML`.`RRSrcInvPropP`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`RRSrcInvPropP` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `bodySegmentUUID` CHAR(36) NOT NULL COMMENT 'RuleBodySegs (RuleBodySegment)',
-  `reifiedRelationshipUUID` CHAR(36) NOT NULL COMMENT 'RRs (ReifiedRelationship)',
-  
-  CONSTRAINT `fk_RRSrcInvPropP_bodySegmentUUID`
-    FOREIGN KEY (`bodySegmentUUID`)
-    REFERENCES `OML`.`RuleBodySegs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_RRSrcInvPropP_reifiedRelationshipUUID`
-    FOREIGN KEY (`reifiedRelationshipUUID`)
-    REFERENCES `OML`.`RRs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Concrete Information Table ReifiedRelationshipSourceInversePropertyPredicates';
-
--- -----------------------------------------------------
--- Table `OML`.`RRTgtInvPropP`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`RRTgtInvPropP` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `bodySegmentUUID` CHAR(36) NOT NULL COMMENT 'RuleBodySegs (RuleBodySegment)',
-  `reifiedRelationshipUUID` CHAR(36) NOT NULL COMMENT 'RRs (ReifiedRelationship)',
-  
-  CONSTRAINT `fk_RRTgtInvPropP_bodySegmentUUID`
-    FOREIGN KEY (`bodySegmentUUID`)
-    REFERENCES `OML`.`RuleBodySegs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_RRTgtInvPropP_reifiedRelationshipUUID`
-    FOREIGN KEY (`reifiedRelationshipUUID`)
-    REFERENCES `OML`.`RRs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Concrete Information Table ReifiedRelationshipTargetInversePropertyPredicates';
-
--- -----------------------------------------------------
--- Table `OML`.`URInvPropP`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`URInvPropP` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `unreifiedRelationshipUUID` CHAR(36) NOT NULL COMMENT 'URs (UnreifiedRelationship)',
-  `bodySegmentUUID` CHAR(36) NOT NULL COMMENT 'RuleBodySegs (RuleBodySegment)',
-  
-  CONSTRAINT `fk_URInvPropP_unreifiedRelationshipUUID`
-    FOREIGN KEY (`unreifiedRelationshipUUID`)
-    REFERENCES `OML`.`URs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_URInvPropP_bodySegmentUUID`
-    FOREIGN KEY (`bodySegmentUUID`)
-    REFERENCES `OML`.`RuleBodySegs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Concrete Information Table UnreifiedRelationshipInversePropertyPredicates';
+COMMENT = 'Concrete Information Table SegmentPredicates';
 
 -- -----------------------------------------------------
 -- Table `OML`.`EExRAx`
@@ -1691,19 +1482,13 @@ COMMENT = 'Concrete Information Table UnreifiedRelationshipInversePropertyPredic
 CREATE TABLE IF NOT EXISTS `OML`.`EExRAx` (
   `uuid` CHAR(36) NOT NULL PRIMARY KEY,
   `tboxUUID` CHAR(36) NOT NULL COMMENT 'TBox (TerminologyBox)',
-  `restrictedRelationUUID` CHAR(36) NOT NULL COMMENT 'ERels (EntityRelationship)',
   `restrictedDomainUUID` CHAR(36) NOT NULL COMMENT 'Es (Entity)',
   `restrictedRangeUUID` CHAR(36) NOT NULL COMMENT 'Es (Entity)',
+  `restrictedRelationshipUUID` CHAR(36) NOT NULL COMMENT 'RestrictableRels (RestrictableRelationship)',
   
   CONSTRAINT `fk_EExRAx_tboxUUID`
     FOREIGN KEY (`tboxUUID`)
     REFERENCES `OML`.`TBox`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_EExRAx_restrictedRelationUUID`
-    FOREIGN KEY (`restrictedRelationUUID`)
-    REFERENCES `OML`.`ERels`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -1719,6 +1504,12 @@ CREATE TABLE IF NOT EXISTS `OML`.`EExRAx` (
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
+  CONSTRAINT `fk_EExRAx_restrictedRelationshipUUID`
+    FOREIGN KEY (`restrictedRelationshipUUID`)
+    REFERENCES `OML`.`RestrictableRels`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
   UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
 )
 COMMENT = 'Concrete Information Table EntityExistentialRestrictionAxioms';
@@ -1729,19 +1520,13 @@ COMMENT = 'Concrete Information Table EntityExistentialRestrictionAxioms';
 CREATE TABLE IF NOT EXISTS `OML`.`EUxRAx` (
   `uuid` CHAR(36) NOT NULL PRIMARY KEY,
   `tboxUUID` CHAR(36) NOT NULL COMMENT 'TBox (TerminologyBox)',
-  `restrictedRelationUUID` CHAR(36) NOT NULL COMMENT 'ERels (EntityRelationship)',
   `restrictedDomainUUID` CHAR(36) NOT NULL COMMENT 'Es (Entity)',
   `restrictedRangeUUID` CHAR(36) NOT NULL COMMENT 'Es (Entity)',
+  `restrictedRelationshipUUID` CHAR(36) NOT NULL COMMENT 'RestrictableRels (RestrictableRelationship)',
   
   CONSTRAINT `fk_EUxRAx_tboxUUID`
     FOREIGN KEY (`tboxUUID`)
     REFERENCES `OML`.`TBox`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_EUxRAx_restrictedRelationUUID`
-    FOREIGN KEY (`restrictedRelationUUID`)
-    REFERENCES `OML`.`ERels`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -1754,6 +1539,12 @@ CREATE TABLE IF NOT EXISTS `OML`.`EUxRAx` (
   CONSTRAINT `fk_EUxRAx_restrictedRangeUUID`
     FOREIGN KEY (`restrictedRangeUUID`)
     REFERENCES `OML`.`Es`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_EUxRAx_restrictedRelationshipUUID`
+    FOREIGN KEY (`restrictedRelationshipUUID`)
+    REFERENCES `OML`.`RestrictableRels`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -2692,6 +2483,8 @@ insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
 insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
 -- ModuleElements(x) if Aspects(x)
 insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- Predicates(x) if Aspects(x)
+insert into `OML`.`P`(`uuid`) values(new.`uuid`);
 -- Resources(x) if Aspects(x)
 insert into `OML`.`Ress`(`uuid`) values(new.`uuid`);
 -- TerminologyBoxStatements(x) if Aspects(x)
@@ -2720,6 +2513,8 @@ delete from `OML`.`Ik`;
 delete from `OML`.`LogEs`;
 -- ModuleElements(x) if Aspects(x)
 delete from `OML`.`ModElts`;
+-- Predicates(x) if Aspects(x)
+delete from `OML`.`P`;
 -- Resources(x) if Aspects(x)
 delete from `OML`.`Ress`;
 -- TerminologyBoxStatements(x) if Aspects(x)
@@ -2754,6 +2549,8 @@ insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
 insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
 -- ModuleElements(x) if Concepts(x)
 insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- Predicates(x) if Concepts(x)
+insert into `OML`.`P`(`uuid`) values(new.`uuid`);
 -- Resources(x) if Concepts(x)
 insert into `OML`.`Ress`(`uuid`) values(new.`uuid`);
 -- TerminologyBoxStatements(x) if Concepts(x)
@@ -2784,6 +2581,8 @@ delete from `OML`.`Ik`;
 delete from `OML`.`LogEs`;
 -- ModuleElements(x) if Concepts(x)
 delete from `OML`.`ModElts`;
+-- Predicates(x) if Concepts(x)
+delete from `OML`.`P`;
 -- Resources(x) if Concepts(x)
 delete from `OML`.`Ress`;
 -- TerminologyBoxStatements(x) if Concepts(x)
@@ -4118,6 +3917,8 @@ insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
 insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
 -- ModuleElements(x) if ReifiedRelationships(x)
 insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- Predicates(x) if ReifiedRelationships(x)
+insert into `OML`.`P`(`uuid`) values(new.`uuid`);
 -- Resources(x) if ReifiedRelationships(x)
 insert into `OML`.`Ress`(`uuid`) values(new.`uuid`);
 -- TerminologyBoxStatements(x) if ReifiedRelationships(x)
@@ -4150,12 +3951,110 @@ delete from `OML`.`Ik`;
 delete from `OML`.`LogEs`;
 -- ModuleElements(x) if ReifiedRelationships(x)
 delete from `OML`.`ModElts`;
+-- Predicates(x) if ReifiedRelationships(x)
+delete from `OML`.`P`;
 -- Resources(x) if ReifiedRelationships(x)
 delete from `OML`.`Ress`;
 -- TerminologyBoxStatements(x) if ReifiedRelationships(x)
 delete from `OML`.`TBoxSt`;
 -- Terms(x) if ReifiedRelationships(x)
 delete from `OML`.`Terms`;
+END$$
+
+-- -----------------------------------------------------
+-- Concrete Information Table `OML`.`FwdProps` (ForwardProperties)
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`FwdProps_AFTER_INSERT` AFTER INSERT ON `FwdProps` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if ForwardProperties(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if ForwardProperties(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- IntrinsicIdentityKinds(x) if ForwardProperties(x)
+insert into `OML`.`IIdK`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if ForwardProperties(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if ForwardProperties(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- Predicates(x) if ForwardProperties(x)
+insert into `OML`.`P`(`uuid`) values(new.`uuid`);
+-- Resources(x) if ForwardProperties(x)
+insert into `OML`.`Ress`(`uuid`) values(new.`uuid`);
+-- RestrictableRelationships(x) if ForwardProperties(x)
+insert into `OML`.`RestrictableRels`(`uuid`) values(new.`uuid`);
+END$$
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`FwdProps_AFTER_DELETE` AFTER DELETE ON `FwdProps` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if ForwardProperties(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if ForwardProperties(x)
+delete from `OML`.`CRTK`;
+-- IntrinsicIdentityKinds(x) if ForwardProperties(x)
+delete from `OML`.`IIdK`;
+-- IdentityKinds(x) if ForwardProperties(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if ForwardProperties(x)
+delete from `OML`.`LogEs`;
+-- Predicates(x) if ForwardProperties(x)
+delete from `OML`.`P`;
+-- Resources(x) if ForwardProperties(x)
+delete from `OML`.`Ress`;
+-- RestrictableRelationships(x) if ForwardProperties(x)
+delete from `OML`.`RestrictableRels`;
+END$$
+
+-- -----------------------------------------------------
+-- Concrete Information Table `OML`.`InvProps` (InverseProperties)
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`InvProps_AFTER_INSERT` AFTER INSERT ON `InvProps` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if InverseProperties(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if InverseProperties(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- IntrinsicIdentityKinds(x) if InverseProperties(x)
+insert into `OML`.`IIdK`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if InverseProperties(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if InverseProperties(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- Predicates(x) if InverseProperties(x)
+insert into `OML`.`P`(`uuid`) values(new.`uuid`);
+-- Resources(x) if InverseProperties(x)
+insert into `OML`.`Ress`(`uuid`) values(new.`uuid`);
+-- RestrictableRelationships(x) if InverseProperties(x)
+insert into `OML`.`RestrictableRels`(`uuid`) values(new.`uuid`);
+END$$
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`InvProps_AFTER_DELETE` AFTER DELETE ON `InvProps` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if InverseProperties(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if InverseProperties(x)
+delete from `OML`.`CRTK`;
+-- IntrinsicIdentityKinds(x) if InverseProperties(x)
+delete from `OML`.`IIdK`;
+-- IdentityKinds(x) if InverseProperties(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if InverseProperties(x)
+delete from `OML`.`LogEs`;
+-- Predicates(x) if InverseProperties(x)
+delete from `OML`.`P`;
+-- Resources(x) if InverseProperties(x)
+delete from `OML`.`Ress`;
+-- RestrictableRelationships(x) if InverseProperties(x)
+delete from `OML`.`RestrictableRels`;
 END$$
 
 -- -----------------------------------------------------
@@ -4182,8 +4081,12 @@ insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
 insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
 -- ModuleElements(x) if UnreifiedRelationships(x)
 insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- Predicates(x) if UnreifiedRelationships(x)
+insert into `OML`.`P`(`uuid`) values(new.`uuid`);
 -- Resources(x) if UnreifiedRelationships(x)
 insert into `OML`.`Ress`(`uuid`) values(new.`uuid`);
+-- RestrictableRelationships(x) if UnreifiedRelationships(x)
+insert into `OML`.`RestrictableRels`(`uuid`) values(new.`uuid`);
 -- TerminologyBoxStatements(x) if UnreifiedRelationships(x)
 insert into `OML`.`TBoxSt`(`uuid`) values(new.`uuid`);
 -- Terms(x) if UnreifiedRelationships(x)
@@ -4210,8 +4113,12 @@ delete from `OML`.`Ik`;
 delete from `OML`.`LogEs`;
 -- ModuleElements(x) if UnreifiedRelationships(x)
 delete from `OML`.`ModElts`;
+-- Predicates(x) if UnreifiedRelationships(x)
+delete from `OML`.`P`;
 -- Resources(x) if UnreifiedRelationships(x)
 delete from `OML`.`Ress`;
+-- RestrictableRelationships(x) if UnreifiedRelationships(x)
+delete from `OML`.`RestrictableRels`;
 -- TerminologyBoxStatements(x) if UnreifiedRelationships(x)
 delete from `OML`.`TBoxSt`;
 -- Terms(x) if UnreifiedRelationships(x)
@@ -4315,563 +4222,43 @@ delete from `OML`.`LogEs`;
 END$$
 
 -- -----------------------------------------------------
--- Concrete Information Table `OML`.`AspectP` (AspectPredicates)
+-- Concrete Information Table `OML`.`SegP` (SegmentPredicates)
 -- -----------------------------------------------------
 
 DELIMITER $$
 USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`AspectP_AFTER_INSERT` AFTER INSERT ON `AspectP` FOR EACH ROW
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`SegP_AFTER_INSERT` AFTER INSERT ON `SegP` FOR EACH ROW
 BEGIN
--- CrossReferencableKinds(x) if AspectPredicates(x)
+-- CrossReferencableKinds(x) if SegmentPredicates(x)
 insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
--- CrossReferencabilityKinds(x) if AspectPredicates(x)
+-- CrossReferencabilityKinds(x) if SegmentPredicates(x)
 insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
--- ExtrinsicIdentityKinds(x) if AspectPredicates(x)
+-- ExtrinsicIdentityKinds(x) if SegmentPredicates(x)
 insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
--- ElementCrossReferenceTuples(x) if AspectPredicates(x)
+-- ElementCrossReferenceTuples(x) if SegmentPredicates(x)
 insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
--- IdentityKinds(x) if AspectPredicates(x)
+-- IdentityKinds(x) if SegmentPredicates(x)
 insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
--- LogicalElements(x) if AspectPredicates(x)
+-- LogicalElements(x) if SegmentPredicates(x)
 insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
--- SegmentPredicates(x) if AspectPredicates(x)
-insert into `OML`.`SegP`(`uuid`) values(new.`uuid`);
--- UnarySegmentPredicates(x) if AspectPredicates(x)
-insert into `OML`.`UrySegP`(`uuid`) values(new.`uuid`);
 END$$
 
 DELIMITER $$
 USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`AspectP_AFTER_DELETE` AFTER DELETE ON `AspectP` FOR EACH ROW
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`SegP_AFTER_DELETE` AFTER DELETE ON `SegP` FOR EACH ROW
 BEGIN
--- CrossReferencableKinds(x) if AspectPredicates(x)
+-- CrossReferencableKinds(x) if SegmentPredicates(x)
 delete from `OML`.`CRBK`;
--- CrossReferencabilityKinds(x) if AspectPredicates(x)
+-- CrossReferencabilityKinds(x) if SegmentPredicates(x)
 delete from `OML`.`CRTK`;
--- ExtrinsicIdentityKinds(x) if AspectPredicates(x)
+-- ExtrinsicIdentityKinds(x) if SegmentPredicates(x)
 delete from `OML`.`EIdK`;
--- ElementCrossReferenceTuples(x) if AspectPredicates(x)
+-- ElementCrossReferenceTuples(x) if SegmentPredicates(x)
 delete from `OML`.`EltCRefTs`;
--- IdentityKinds(x) if AspectPredicates(x)
+-- IdentityKinds(x) if SegmentPredicates(x)
 delete from `OML`.`Ik`;
--- LogicalElements(x) if AspectPredicates(x)
+-- LogicalElements(x) if SegmentPredicates(x)
 delete from `OML`.`LogEs`;
--- SegmentPredicates(x) if AspectPredicates(x)
-delete from `OML`.`SegP`;
--- UnarySegmentPredicates(x) if AspectPredicates(x)
-delete from `OML`.`UrySegP`;
-END$$
-
--- -----------------------------------------------------
--- Concrete Information Table `OML`.`CP` (ConceptPredicates)
--- -----------------------------------------------------
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`CP_AFTER_INSERT` AFTER INSERT ON `CP` FOR EACH ROW
-BEGIN
--- CrossReferencableKinds(x) if ConceptPredicates(x)
-insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
--- CrossReferencabilityKinds(x) if ConceptPredicates(x)
-insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
--- ExtrinsicIdentityKinds(x) if ConceptPredicates(x)
-insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
--- ElementCrossReferenceTuples(x) if ConceptPredicates(x)
-insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
--- IdentityKinds(x) if ConceptPredicates(x)
-insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
--- LogicalElements(x) if ConceptPredicates(x)
-insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
--- SegmentPredicates(x) if ConceptPredicates(x)
-insert into `OML`.`SegP`(`uuid`) values(new.`uuid`);
--- UnarySegmentPredicates(x) if ConceptPredicates(x)
-insert into `OML`.`UrySegP`(`uuid`) values(new.`uuid`);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`CP_AFTER_DELETE` AFTER DELETE ON `CP` FOR EACH ROW
-BEGIN
--- CrossReferencableKinds(x) if ConceptPredicates(x)
-delete from `OML`.`CRBK`;
--- CrossReferencabilityKinds(x) if ConceptPredicates(x)
-delete from `OML`.`CRTK`;
--- ExtrinsicIdentityKinds(x) if ConceptPredicates(x)
-delete from `OML`.`EIdK`;
--- ElementCrossReferenceTuples(x) if ConceptPredicates(x)
-delete from `OML`.`EltCRefTs`;
--- IdentityKinds(x) if ConceptPredicates(x)
-delete from `OML`.`Ik`;
--- LogicalElements(x) if ConceptPredicates(x)
-delete from `OML`.`LogEs`;
--- SegmentPredicates(x) if ConceptPredicates(x)
-delete from `OML`.`SegP`;
--- UnarySegmentPredicates(x) if ConceptPredicates(x)
-delete from `OML`.`UrySegP`;
-END$$
-
--- -----------------------------------------------------
--- Concrete Information Table `OML`.`RRP` (ReifiedRelationshipPredicates)
--- -----------------------------------------------------
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRP_AFTER_INSERT` AFTER INSERT ON `RRP` FOR EACH ROW
-BEGIN
--- CrossReferencableKinds(x) if ReifiedRelationshipPredicates(x)
-insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
--- CrossReferencabilityKinds(x) if ReifiedRelationshipPredicates(x)
-insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
--- ExtrinsicIdentityKinds(x) if ReifiedRelationshipPredicates(x)
-insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
--- ElementCrossReferenceTuples(x) if ReifiedRelationshipPredicates(x)
-insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
--- IdentityKinds(x) if ReifiedRelationshipPredicates(x)
-insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
--- LogicalElements(x) if ReifiedRelationshipPredicates(x)
-insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
--- SegmentPredicates(x) if ReifiedRelationshipPredicates(x)
-insert into `OML`.`SegP`(`uuid`) values(new.`uuid`);
--- UnarySegmentPredicates(x) if ReifiedRelationshipPredicates(x)
-insert into `OML`.`UrySegP`(`uuid`) values(new.`uuid`);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRP_AFTER_DELETE` AFTER DELETE ON `RRP` FOR EACH ROW
-BEGIN
--- CrossReferencableKinds(x) if ReifiedRelationshipPredicates(x)
-delete from `OML`.`CRBK`;
--- CrossReferencabilityKinds(x) if ReifiedRelationshipPredicates(x)
-delete from `OML`.`CRTK`;
--- ExtrinsicIdentityKinds(x) if ReifiedRelationshipPredicates(x)
-delete from `OML`.`EIdK`;
--- ElementCrossReferenceTuples(x) if ReifiedRelationshipPredicates(x)
-delete from `OML`.`EltCRefTs`;
--- IdentityKinds(x) if ReifiedRelationshipPredicates(x)
-delete from `OML`.`Ik`;
--- LogicalElements(x) if ReifiedRelationshipPredicates(x)
-delete from `OML`.`LogEs`;
--- SegmentPredicates(x) if ReifiedRelationshipPredicates(x)
-delete from `OML`.`SegP`;
--- UnarySegmentPredicates(x) if ReifiedRelationshipPredicates(x)
-delete from `OML`.`UrySegP`;
-END$$
-
--- -----------------------------------------------------
--- Concrete Information Table `OML`.`RRPropP` (ReifiedRelationshipPropertyPredicates)
--- -----------------------------------------------------
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRPropP_AFTER_INSERT` AFTER INSERT ON `RRPropP` FOR EACH ROW
-BEGIN
--- BinarySegmentForwardPropertyPredicates(x) if ReifiedRelationshipPropertyPredicates(x)
-insert into `OML`.`BinSegFwdPropP`(`uuid`) values(new.`uuid`);
--- BinarySegmentPropertyPredicates(x) if ReifiedRelationshipPropertyPredicates(x)
-insert into `OML`.`BinSegPropP`(`uuid`) values(new.`uuid`);
--- CrossReferencableKinds(x) if ReifiedRelationshipPropertyPredicates(x)
-insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
--- CrossReferencabilityKinds(x) if ReifiedRelationshipPropertyPredicates(x)
-insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
--- ExtrinsicIdentityKinds(x) if ReifiedRelationshipPropertyPredicates(x)
-insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
--- ElementCrossReferenceTuples(x) if ReifiedRelationshipPropertyPredicates(x)
-insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
--- IdentityKinds(x) if ReifiedRelationshipPropertyPredicates(x)
-insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
--- LogicalElements(x) if ReifiedRelationshipPropertyPredicates(x)
-insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
--- SegmentPredicates(x) if ReifiedRelationshipPropertyPredicates(x)
-insert into `OML`.`SegP`(`uuid`) values(new.`uuid`);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRPropP_AFTER_DELETE` AFTER DELETE ON `RRPropP` FOR EACH ROW
-BEGIN
--- BinarySegmentForwardPropertyPredicates(x) if ReifiedRelationshipPropertyPredicates(x)
-delete from `OML`.`BinSegFwdPropP`;
--- BinarySegmentPropertyPredicates(x) if ReifiedRelationshipPropertyPredicates(x)
-delete from `OML`.`BinSegPropP`;
--- CrossReferencableKinds(x) if ReifiedRelationshipPropertyPredicates(x)
-delete from `OML`.`CRBK`;
--- CrossReferencabilityKinds(x) if ReifiedRelationshipPropertyPredicates(x)
-delete from `OML`.`CRTK`;
--- ExtrinsicIdentityKinds(x) if ReifiedRelationshipPropertyPredicates(x)
-delete from `OML`.`EIdK`;
--- ElementCrossReferenceTuples(x) if ReifiedRelationshipPropertyPredicates(x)
-delete from `OML`.`EltCRefTs`;
--- IdentityKinds(x) if ReifiedRelationshipPropertyPredicates(x)
-delete from `OML`.`Ik`;
--- LogicalElements(x) if ReifiedRelationshipPropertyPredicates(x)
-delete from `OML`.`LogEs`;
--- SegmentPredicates(x) if ReifiedRelationshipPropertyPredicates(x)
-delete from `OML`.`SegP`;
-END$$
-
--- -----------------------------------------------------
--- Concrete Information Table `OML`.`RRSrcPropP` (ReifiedRelationshipSourcePropertyPredicates)
--- -----------------------------------------------------
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRSrcPropP_AFTER_INSERT` AFTER INSERT ON `RRSrcPropP` FOR EACH ROW
-BEGIN
--- BinarySegmentForwardPropertyPredicates(x) if ReifiedRelationshipSourcePropertyPredicates(x)
-insert into `OML`.`BinSegFwdPropP`(`uuid`) values(new.`uuid`);
--- BinarySegmentPropertyPredicates(x) if ReifiedRelationshipSourcePropertyPredicates(x)
-insert into `OML`.`BinSegPropP`(`uuid`) values(new.`uuid`);
--- CrossReferencableKinds(x) if ReifiedRelationshipSourcePropertyPredicates(x)
-insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
--- CrossReferencabilityKinds(x) if ReifiedRelationshipSourcePropertyPredicates(x)
-insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
--- ExtrinsicIdentityKinds(x) if ReifiedRelationshipSourcePropertyPredicates(x)
-insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
--- ElementCrossReferenceTuples(x) if ReifiedRelationshipSourcePropertyPredicates(x)
-insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
--- IdentityKinds(x) if ReifiedRelationshipSourcePropertyPredicates(x)
-insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
--- LogicalElements(x) if ReifiedRelationshipSourcePropertyPredicates(x)
-insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
--- SegmentPredicates(x) if ReifiedRelationshipSourcePropertyPredicates(x)
-insert into `OML`.`SegP`(`uuid`) values(new.`uuid`);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRSrcPropP_AFTER_DELETE` AFTER DELETE ON `RRSrcPropP` FOR EACH ROW
-BEGIN
--- BinarySegmentForwardPropertyPredicates(x) if ReifiedRelationshipSourcePropertyPredicates(x)
-delete from `OML`.`BinSegFwdPropP`;
--- BinarySegmentPropertyPredicates(x) if ReifiedRelationshipSourcePropertyPredicates(x)
-delete from `OML`.`BinSegPropP`;
--- CrossReferencableKinds(x) if ReifiedRelationshipSourcePropertyPredicates(x)
-delete from `OML`.`CRBK`;
--- CrossReferencabilityKinds(x) if ReifiedRelationshipSourcePropertyPredicates(x)
-delete from `OML`.`CRTK`;
--- ExtrinsicIdentityKinds(x) if ReifiedRelationshipSourcePropertyPredicates(x)
-delete from `OML`.`EIdK`;
--- ElementCrossReferenceTuples(x) if ReifiedRelationshipSourcePropertyPredicates(x)
-delete from `OML`.`EltCRefTs`;
--- IdentityKinds(x) if ReifiedRelationshipSourcePropertyPredicates(x)
-delete from `OML`.`Ik`;
--- LogicalElements(x) if ReifiedRelationshipSourcePropertyPredicates(x)
-delete from `OML`.`LogEs`;
--- SegmentPredicates(x) if ReifiedRelationshipSourcePropertyPredicates(x)
-delete from `OML`.`SegP`;
-END$$
-
--- -----------------------------------------------------
--- Concrete Information Table `OML`.`RRTgtPropP` (ReifiedRelationshipTargetPropertyPredicates)
--- -----------------------------------------------------
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRTgtPropP_AFTER_INSERT` AFTER INSERT ON `RRTgtPropP` FOR EACH ROW
-BEGIN
--- BinarySegmentForwardPropertyPredicates(x) if ReifiedRelationshipTargetPropertyPredicates(x)
-insert into `OML`.`BinSegFwdPropP`(`uuid`) values(new.`uuid`);
--- BinarySegmentPropertyPredicates(x) if ReifiedRelationshipTargetPropertyPredicates(x)
-insert into `OML`.`BinSegPropP`(`uuid`) values(new.`uuid`);
--- CrossReferencableKinds(x) if ReifiedRelationshipTargetPropertyPredicates(x)
-insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
--- CrossReferencabilityKinds(x) if ReifiedRelationshipTargetPropertyPredicates(x)
-insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
--- ExtrinsicIdentityKinds(x) if ReifiedRelationshipTargetPropertyPredicates(x)
-insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
--- ElementCrossReferenceTuples(x) if ReifiedRelationshipTargetPropertyPredicates(x)
-insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
--- IdentityKinds(x) if ReifiedRelationshipTargetPropertyPredicates(x)
-insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
--- LogicalElements(x) if ReifiedRelationshipTargetPropertyPredicates(x)
-insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
--- SegmentPredicates(x) if ReifiedRelationshipTargetPropertyPredicates(x)
-insert into `OML`.`SegP`(`uuid`) values(new.`uuid`);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRTgtPropP_AFTER_DELETE` AFTER DELETE ON `RRTgtPropP` FOR EACH ROW
-BEGIN
--- BinarySegmentForwardPropertyPredicates(x) if ReifiedRelationshipTargetPropertyPredicates(x)
-delete from `OML`.`BinSegFwdPropP`;
--- BinarySegmentPropertyPredicates(x) if ReifiedRelationshipTargetPropertyPredicates(x)
-delete from `OML`.`BinSegPropP`;
--- CrossReferencableKinds(x) if ReifiedRelationshipTargetPropertyPredicates(x)
-delete from `OML`.`CRBK`;
--- CrossReferencabilityKinds(x) if ReifiedRelationshipTargetPropertyPredicates(x)
-delete from `OML`.`CRTK`;
--- ExtrinsicIdentityKinds(x) if ReifiedRelationshipTargetPropertyPredicates(x)
-delete from `OML`.`EIdK`;
--- ElementCrossReferenceTuples(x) if ReifiedRelationshipTargetPropertyPredicates(x)
-delete from `OML`.`EltCRefTs`;
--- IdentityKinds(x) if ReifiedRelationshipTargetPropertyPredicates(x)
-delete from `OML`.`Ik`;
--- LogicalElements(x) if ReifiedRelationshipTargetPropertyPredicates(x)
-delete from `OML`.`LogEs`;
--- SegmentPredicates(x) if ReifiedRelationshipTargetPropertyPredicates(x)
-delete from `OML`.`SegP`;
-END$$
-
--- -----------------------------------------------------
--- Concrete Information Table `OML`.`URPropP` (UnreifiedRelationshipPropertyPredicates)
--- -----------------------------------------------------
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`URPropP_AFTER_INSERT` AFTER INSERT ON `URPropP` FOR EACH ROW
-BEGIN
--- BinarySegmentForwardPropertyPredicates(x) if UnreifiedRelationshipPropertyPredicates(x)
-insert into `OML`.`BinSegFwdPropP`(`uuid`) values(new.`uuid`);
--- BinarySegmentPropertyPredicates(x) if UnreifiedRelationshipPropertyPredicates(x)
-insert into `OML`.`BinSegPropP`(`uuid`) values(new.`uuid`);
--- CrossReferencableKinds(x) if UnreifiedRelationshipPropertyPredicates(x)
-insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
--- CrossReferencabilityKinds(x) if UnreifiedRelationshipPropertyPredicates(x)
-insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
--- ExtrinsicIdentityKinds(x) if UnreifiedRelationshipPropertyPredicates(x)
-insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
--- ElementCrossReferenceTuples(x) if UnreifiedRelationshipPropertyPredicates(x)
-insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
--- IdentityKinds(x) if UnreifiedRelationshipPropertyPredicates(x)
-insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
--- LogicalElements(x) if UnreifiedRelationshipPropertyPredicates(x)
-insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
--- SegmentPredicates(x) if UnreifiedRelationshipPropertyPredicates(x)
-insert into `OML`.`SegP`(`uuid`) values(new.`uuid`);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`URPropP_AFTER_DELETE` AFTER DELETE ON `URPropP` FOR EACH ROW
-BEGIN
--- BinarySegmentForwardPropertyPredicates(x) if UnreifiedRelationshipPropertyPredicates(x)
-delete from `OML`.`BinSegFwdPropP`;
--- BinarySegmentPropertyPredicates(x) if UnreifiedRelationshipPropertyPredicates(x)
-delete from `OML`.`BinSegPropP`;
--- CrossReferencableKinds(x) if UnreifiedRelationshipPropertyPredicates(x)
-delete from `OML`.`CRBK`;
--- CrossReferencabilityKinds(x) if UnreifiedRelationshipPropertyPredicates(x)
-delete from `OML`.`CRTK`;
--- ExtrinsicIdentityKinds(x) if UnreifiedRelationshipPropertyPredicates(x)
-delete from `OML`.`EIdK`;
--- ElementCrossReferenceTuples(x) if UnreifiedRelationshipPropertyPredicates(x)
-delete from `OML`.`EltCRefTs`;
--- IdentityKinds(x) if UnreifiedRelationshipPropertyPredicates(x)
-delete from `OML`.`Ik`;
--- LogicalElements(x) if UnreifiedRelationshipPropertyPredicates(x)
-delete from `OML`.`LogEs`;
--- SegmentPredicates(x) if UnreifiedRelationshipPropertyPredicates(x)
-delete from `OML`.`SegP`;
-END$$
-
--- -----------------------------------------------------
--- Concrete Information Table `OML`.`RRInvPropP` (ReifiedRelationshipInversePropertyPredicates)
--- -----------------------------------------------------
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRInvPropP_AFTER_INSERT` AFTER INSERT ON `RRInvPropP` FOR EACH ROW
-BEGIN
--- BinarySegmentPropertyPredicates(x) if ReifiedRelationshipInversePropertyPredicates(x)
-insert into `OML`.`BinSegPropP`(`uuid`) values(new.`uuid`);
--- BinarySegmentReversePropertyPredicates(x) if ReifiedRelationshipInversePropertyPredicates(x)
-insert into `OML`.`BinSegRevPropP`(`uuid`) values(new.`uuid`);
--- CrossReferencableKinds(x) if ReifiedRelationshipInversePropertyPredicates(x)
-insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
--- CrossReferencabilityKinds(x) if ReifiedRelationshipInversePropertyPredicates(x)
-insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
--- ExtrinsicIdentityKinds(x) if ReifiedRelationshipInversePropertyPredicates(x)
-insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
--- ElementCrossReferenceTuples(x) if ReifiedRelationshipInversePropertyPredicates(x)
-insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
--- IdentityKinds(x) if ReifiedRelationshipInversePropertyPredicates(x)
-insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
--- LogicalElements(x) if ReifiedRelationshipInversePropertyPredicates(x)
-insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
--- SegmentPredicates(x) if ReifiedRelationshipInversePropertyPredicates(x)
-insert into `OML`.`SegP`(`uuid`) values(new.`uuid`);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRInvPropP_AFTER_DELETE` AFTER DELETE ON `RRInvPropP` FOR EACH ROW
-BEGIN
--- BinarySegmentPropertyPredicates(x) if ReifiedRelationshipInversePropertyPredicates(x)
-delete from `OML`.`BinSegPropP`;
--- BinarySegmentReversePropertyPredicates(x) if ReifiedRelationshipInversePropertyPredicates(x)
-delete from `OML`.`BinSegRevPropP`;
--- CrossReferencableKinds(x) if ReifiedRelationshipInversePropertyPredicates(x)
-delete from `OML`.`CRBK`;
--- CrossReferencabilityKinds(x) if ReifiedRelationshipInversePropertyPredicates(x)
-delete from `OML`.`CRTK`;
--- ExtrinsicIdentityKinds(x) if ReifiedRelationshipInversePropertyPredicates(x)
-delete from `OML`.`EIdK`;
--- ElementCrossReferenceTuples(x) if ReifiedRelationshipInversePropertyPredicates(x)
-delete from `OML`.`EltCRefTs`;
--- IdentityKinds(x) if ReifiedRelationshipInversePropertyPredicates(x)
-delete from `OML`.`Ik`;
--- LogicalElements(x) if ReifiedRelationshipInversePropertyPredicates(x)
-delete from `OML`.`LogEs`;
--- SegmentPredicates(x) if ReifiedRelationshipInversePropertyPredicates(x)
-delete from `OML`.`SegP`;
-END$$
-
--- -----------------------------------------------------
--- Concrete Information Table `OML`.`RRSrcInvPropP` (ReifiedRelationshipSourceInversePropertyPredicates)
--- -----------------------------------------------------
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRSrcInvPropP_AFTER_INSERT` AFTER INSERT ON `RRSrcInvPropP` FOR EACH ROW
-BEGIN
--- BinarySegmentPropertyPredicates(x) if ReifiedRelationshipSourceInversePropertyPredicates(x)
-insert into `OML`.`BinSegPropP`(`uuid`) values(new.`uuid`);
--- BinarySegmentReversePropertyPredicates(x) if ReifiedRelationshipSourceInversePropertyPredicates(x)
-insert into `OML`.`BinSegRevPropP`(`uuid`) values(new.`uuid`);
--- CrossReferencableKinds(x) if ReifiedRelationshipSourceInversePropertyPredicates(x)
-insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
--- CrossReferencabilityKinds(x) if ReifiedRelationshipSourceInversePropertyPredicates(x)
-insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
--- ExtrinsicIdentityKinds(x) if ReifiedRelationshipSourceInversePropertyPredicates(x)
-insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
--- ElementCrossReferenceTuples(x) if ReifiedRelationshipSourceInversePropertyPredicates(x)
-insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
--- IdentityKinds(x) if ReifiedRelationshipSourceInversePropertyPredicates(x)
-insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
--- LogicalElements(x) if ReifiedRelationshipSourceInversePropertyPredicates(x)
-insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
--- SegmentPredicates(x) if ReifiedRelationshipSourceInversePropertyPredicates(x)
-insert into `OML`.`SegP`(`uuid`) values(new.`uuid`);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRSrcInvPropP_AFTER_DELETE` AFTER DELETE ON `RRSrcInvPropP` FOR EACH ROW
-BEGIN
--- BinarySegmentPropertyPredicates(x) if ReifiedRelationshipSourceInversePropertyPredicates(x)
-delete from `OML`.`BinSegPropP`;
--- BinarySegmentReversePropertyPredicates(x) if ReifiedRelationshipSourceInversePropertyPredicates(x)
-delete from `OML`.`BinSegRevPropP`;
--- CrossReferencableKinds(x) if ReifiedRelationshipSourceInversePropertyPredicates(x)
-delete from `OML`.`CRBK`;
--- CrossReferencabilityKinds(x) if ReifiedRelationshipSourceInversePropertyPredicates(x)
-delete from `OML`.`CRTK`;
--- ExtrinsicIdentityKinds(x) if ReifiedRelationshipSourceInversePropertyPredicates(x)
-delete from `OML`.`EIdK`;
--- ElementCrossReferenceTuples(x) if ReifiedRelationshipSourceInversePropertyPredicates(x)
-delete from `OML`.`EltCRefTs`;
--- IdentityKinds(x) if ReifiedRelationshipSourceInversePropertyPredicates(x)
-delete from `OML`.`Ik`;
--- LogicalElements(x) if ReifiedRelationshipSourceInversePropertyPredicates(x)
-delete from `OML`.`LogEs`;
--- SegmentPredicates(x) if ReifiedRelationshipSourceInversePropertyPredicates(x)
-delete from `OML`.`SegP`;
-END$$
-
--- -----------------------------------------------------
--- Concrete Information Table `OML`.`RRTgtInvPropP` (ReifiedRelationshipTargetInversePropertyPredicates)
--- -----------------------------------------------------
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRTgtInvPropP_AFTER_INSERT` AFTER INSERT ON `RRTgtInvPropP` FOR EACH ROW
-BEGIN
--- BinarySegmentPropertyPredicates(x) if ReifiedRelationshipTargetInversePropertyPredicates(x)
-insert into `OML`.`BinSegPropP`(`uuid`) values(new.`uuid`);
--- BinarySegmentReversePropertyPredicates(x) if ReifiedRelationshipTargetInversePropertyPredicates(x)
-insert into `OML`.`BinSegRevPropP`(`uuid`) values(new.`uuid`);
--- CrossReferencableKinds(x) if ReifiedRelationshipTargetInversePropertyPredicates(x)
-insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
--- CrossReferencabilityKinds(x) if ReifiedRelationshipTargetInversePropertyPredicates(x)
-insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
--- ExtrinsicIdentityKinds(x) if ReifiedRelationshipTargetInversePropertyPredicates(x)
-insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
--- ElementCrossReferenceTuples(x) if ReifiedRelationshipTargetInversePropertyPredicates(x)
-insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
--- IdentityKinds(x) if ReifiedRelationshipTargetInversePropertyPredicates(x)
-insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
--- LogicalElements(x) if ReifiedRelationshipTargetInversePropertyPredicates(x)
-insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
--- SegmentPredicates(x) if ReifiedRelationshipTargetInversePropertyPredicates(x)
-insert into `OML`.`SegP`(`uuid`) values(new.`uuid`);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRTgtInvPropP_AFTER_DELETE` AFTER DELETE ON `RRTgtInvPropP` FOR EACH ROW
-BEGIN
--- BinarySegmentPropertyPredicates(x) if ReifiedRelationshipTargetInversePropertyPredicates(x)
-delete from `OML`.`BinSegPropP`;
--- BinarySegmentReversePropertyPredicates(x) if ReifiedRelationshipTargetInversePropertyPredicates(x)
-delete from `OML`.`BinSegRevPropP`;
--- CrossReferencableKinds(x) if ReifiedRelationshipTargetInversePropertyPredicates(x)
-delete from `OML`.`CRBK`;
--- CrossReferencabilityKinds(x) if ReifiedRelationshipTargetInversePropertyPredicates(x)
-delete from `OML`.`CRTK`;
--- ExtrinsicIdentityKinds(x) if ReifiedRelationshipTargetInversePropertyPredicates(x)
-delete from `OML`.`EIdK`;
--- ElementCrossReferenceTuples(x) if ReifiedRelationshipTargetInversePropertyPredicates(x)
-delete from `OML`.`EltCRefTs`;
--- IdentityKinds(x) if ReifiedRelationshipTargetInversePropertyPredicates(x)
-delete from `OML`.`Ik`;
--- LogicalElements(x) if ReifiedRelationshipTargetInversePropertyPredicates(x)
-delete from `OML`.`LogEs`;
--- SegmentPredicates(x) if ReifiedRelationshipTargetInversePropertyPredicates(x)
-delete from `OML`.`SegP`;
-END$$
-
--- -----------------------------------------------------
--- Concrete Information Table `OML`.`URInvPropP` (UnreifiedRelationshipInversePropertyPredicates)
--- -----------------------------------------------------
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`URInvPropP_AFTER_INSERT` AFTER INSERT ON `URInvPropP` FOR EACH ROW
-BEGIN
--- BinarySegmentPropertyPredicates(x) if UnreifiedRelationshipInversePropertyPredicates(x)
-insert into `OML`.`BinSegPropP`(`uuid`) values(new.`uuid`);
--- BinarySegmentReversePropertyPredicates(x) if UnreifiedRelationshipInversePropertyPredicates(x)
-insert into `OML`.`BinSegRevPropP`(`uuid`) values(new.`uuid`);
--- CrossReferencableKinds(x) if UnreifiedRelationshipInversePropertyPredicates(x)
-insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
--- CrossReferencabilityKinds(x) if UnreifiedRelationshipInversePropertyPredicates(x)
-insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
--- ExtrinsicIdentityKinds(x) if UnreifiedRelationshipInversePropertyPredicates(x)
-insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
--- ElementCrossReferenceTuples(x) if UnreifiedRelationshipInversePropertyPredicates(x)
-insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
--- IdentityKinds(x) if UnreifiedRelationshipInversePropertyPredicates(x)
-insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
--- LogicalElements(x) if UnreifiedRelationshipInversePropertyPredicates(x)
-insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
--- SegmentPredicates(x) if UnreifiedRelationshipInversePropertyPredicates(x)
-insert into `OML`.`SegP`(`uuid`) values(new.`uuid`);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`URInvPropP_AFTER_DELETE` AFTER DELETE ON `URInvPropP` FOR EACH ROW
-BEGIN
--- BinarySegmentPropertyPredicates(x) if UnreifiedRelationshipInversePropertyPredicates(x)
-delete from `OML`.`BinSegPropP`;
--- BinarySegmentReversePropertyPredicates(x) if UnreifiedRelationshipInversePropertyPredicates(x)
-delete from `OML`.`BinSegRevPropP`;
--- CrossReferencableKinds(x) if UnreifiedRelationshipInversePropertyPredicates(x)
-delete from `OML`.`CRBK`;
--- CrossReferencabilityKinds(x) if UnreifiedRelationshipInversePropertyPredicates(x)
-delete from `OML`.`CRTK`;
--- ExtrinsicIdentityKinds(x) if UnreifiedRelationshipInversePropertyPredicates(x)
-delete from `OML`.`EIdK`;
--- ElementCrossReferenceTuples(x) if UnreifiedRelationshipInversePropertyPredicates(x)
-delete from `OML`.`EltCRefTs`;
--- IdentityKinds(x) if UnreifiedRelationshipInversePropertyPredicates(x)
-delete from `OML`.`Ik`;
--- LogicalElements(x) if UnreifiedRelationshipInversePropertyPredicates(x)
-delete from `OML`.`LogEs`;
--- SegmentPredicates(x) if UnreifiedRelationshipInversePropertyPredicates(x)
-delete from `OML`.`SegP`;
 END$$
 
 -- -----------------------------------------------------

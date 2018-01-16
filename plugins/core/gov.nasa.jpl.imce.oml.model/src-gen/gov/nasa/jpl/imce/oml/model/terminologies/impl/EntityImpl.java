@@ -19,7 +19,13 @@
 package gov.nasa.jpl.imce.oml.model.terminologies.impl;
 
 import gov.nasa.jpl.imce.oml.model.terminologies.Entity;
+import gov.nasa.jpl.imce.oml.model.terminologies.Predicate;
+import gov.nasa.jpl.imce.oml.model.terminologies.Term;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage;
+
+import java.lang.reflect.InvocationTargetException;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -48,6 +54,45 @@ public abstract class EntityImpl extends TermImpl implements Entity {
 	@Override
 	protected EClass eStaticClass() {
 		return TerminologiesPackage.Literals.ENTITY;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Term term() {
+		return this;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
+		if (baseClass == Predicate.class) {
+			switch (baseOperationID) {
+				case TerminologiesPackage.PREDICATE___TERM: return TerminologiesPackage.ENTITY___TERM;
+				default: return -1;
+			}
+		}
+		return super.eDerivedOperationID(baseOperationID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case TerminologiesPackage.ENTITY___TERM:
+				return term();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 } //EntityImpl

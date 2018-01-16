@@ -232,12 +232,18 @@ ReifiedRelationship returns ReifiedRelationship:
 	  (isReflexive?='reflexive')? &
 	  (isIrreflexive?='irreflexive')? &
 	  (isTransitive?='transitive')? )
-	'unreified' '=' unreifiedPropertyName=ID
-	('inverse' '=' unreifiedInversePropertyName=ID)?
+	'unreified' '=' forwardProperty=ForwardProperty
+	('inverse' '=' inverseProperty=InverseProperty)?
 	'source' '=' source=[Entity|Reference]
 	'target' '=' target=[Entity|Reference]
 	'}';
 
+ForwardProperty returns ForwardProperty:
+	name=ID;
+
+InverseProperty returns InverseProperty:
+	name=ID;
+	
 UnreifiedRelationship returns UnreifiedRelationship:
 	( annotations+=AnnotationPropertyValue )*
 	'unreifiedRelationship' name=ID '{'
@@ -306,20 +312,14 @@ RuleBodySegment returns RuleBodySegment:
 	predicate=SegmentPredicate ('&&' nextSegment=RuleBodySegment)?;
 
 SegmentPredicate returns SegmentPredicate: 
-	'aspect' '(' {AspectPredicate} aspect=[Aspect|Reference] ')' |
-	'concept' '(' {ConceptPredicate} concept=[Concept|Reference] ')' |
-	'reifiedRelationship' '(' {ReifiedRelationshipPredicate} reifiedRelationship=[ReifiedRelationship|Reference] ')' |
-	'property' '(' {ReifiedRelationshipPropertyPredicate} reifiedRelationship=[ReifiedRelationship|Reference] ')' |
-	'inv' '(' 'property' '(' {ReifiedRelationshipInversePropertyPredicate} reifiedRelationship=[ReifiedRelationship|Reference] ')' ')' |
-	'source' '(' {ReifiedRelationshipSourcePropertyPredicate} reifiedRelationship=[ReifiedRelationship|Reference] ')' | 
-	'inv' '(' 'source' '(' {ReifiedRelationshipSourceInversePropertyPredicate} reifiedRelationship=[ReifiedRelationship|Reference] ')' ')' | 
-	'target' '(' {ReifiedRelationshipTargetPropertyPredicate} reifiedRelationship=[ReifiedRelationship|Reference] ')' | 
-	'inv' '(' 'target' '(' {ReifiedRelationshipTargetInversePropertyPredicate} reifiedRelationship=[ReifiedRelationship|Reference] ')' ')' | 
-	{UnreifiedRelationshipPropertyPredicate} unreifiedRelationship=[UnreifiedRelationship|Reference] |
-	'inv' '(' {UnreifiedRelationshipInversePropertyPredicate} unreifiedRelationship=[UnreifiedRelationship|Reference] ')' ;
+	predicate=[Predicate|QNAME] |
+	'source' '(' reifiedRelationshipSource=[ReifiedRelationship|QNAME] ')' |
+	'invSource' '(' reifiedRelationshipInverseSource=[ReifiedRelationship|QNAME] ')' | 
+	'target' '(' reifiedRelationshipTarget=[ReifiedRelationship|QNAME] ')' | 
+	'invTarget' '(' reifiedRelationshipInverseTarget=[ReifiedRelationship|QNAME] ')' | 
+	'inv' '(' unreifiedRelationshipInverse=[UnreifiedRelationship|QNAME] ')' ;
 
-// ConceptTreeDisjunctions and DisjointUnionOfConceptsAxioms
-
+// 3 ConceptTreeDisjunctions and DisjointUnionOfConceptsAxioms
 
 AnonymousConceptUnionAxiom returns AnonymousConceptUnionAxiom:
 	( annotations+=AnnotationPropertyValue )*
@@ -336,25 +336,27 @@ RootConceptTaxonomyAxiom returns RootConceptTaxonomyAxiom:
 
 SpecificDisjointConceptAxiom returns SpecificDisjointConceptAxiom:
 	( annotations+=AnnotationPropertyValue )*
-	'disjointLeaf' '(' disjointLeaf=[Concept|Reference] ')';
+	'disjointLeaf' '(' disjointLeaf=[Concept|QNAME] ')';
 
 // 2 EntityRestrictionAxioms
 
 EntityExistentialRestrictionAxiom returns EntityExistentialRestrictionAxiom:
 	( annotations+=AnnotationPropertyValue )*
 	'someEntities'
-	restrictedDomain=[Entity|Reference]
+	restrictedDomain=[Entity|QNAME]
 	'.' 
-	restrictedRelation=[EntityRelationship|Reference]
-	'in' restrictedRange=[Entity|Reference];
+	restrictedRelationship=[RestrictableRelationship|QNAME]
+	'in'
+	restrictedRange=[Entity|QNAME];
 
 EntityUniversalRestrictionAxiom returns EntityUniversalRestrictionAxiom:
 	( annotations+=AnnotationPropertyValue )*
 	'allEntities'
-	restrictedDomain=[Entity|Reference]
+	restrictedDomain=[Entity|QNAME]
 	'.' 
-	restrictedRelation=[EntityRelationship|Reference]
-	'in' restrictedRange=[Entity|Reference];
+	restrictedRelationship=[RestrictableRelationship|QNAME]
+	'in'
+	restrictedRange=[Entity|QNAME];
 
 // 3 SpecializationAxioms
 
@@ -657,6 +659,7 @@ LiteralDecimal returns LiteralDecimal:					{LiteralDecimal} decimal=DIGITS | dec
 PositiveIntegerLiteral returns PositiveIntegerLiteral: 	DIGITS;
 
 //----------------------------
+
 terminal FALSE returns ecore::EBoolean:					'false';
 terminal TRUE returns ecore::EBoolean:					'true';
 

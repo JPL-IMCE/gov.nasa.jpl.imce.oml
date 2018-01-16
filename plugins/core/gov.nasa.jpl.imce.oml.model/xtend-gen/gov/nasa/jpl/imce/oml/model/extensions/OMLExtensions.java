@@ -70,18 +70,15 @@ import gov.nasa.jpl.imce.oml.model.graphs.ConceptDesignationTerminologyAxiom;
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyGraph;
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyNestingAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.Aspect;
-import gov.nasa.jpl.imce.oml.model.terminologies.AspectPredicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.AspectSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.BinaryScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.ChainRule;
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
-import gov.nasa.jpl.imce.oml.model.terminologies.ConceptPredicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.DataRange;
 import gov.nasa.jpl.imce.oml.model.terminologies.DataRelationshipToScalar;
 import gov.nasa.jpl.imce.oml.model.terminologies.DataRelationshipToStructure;
 import gov.nasa.jpl.imce.oml.model.terminologies.Entity;
-import gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataProperty;
@@ -91,19 +88,15 @@ import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyRestric
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyUniversalRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataPropertyParticularRestrictionAxiom;
-import gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalRestrictionAxiom;
+import gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction;
+import gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction;
+import gov.nasa.jpl.imce.oml.model.terminologies.Predicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship;
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipInversePropertyPredicate;
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPredicate;
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPropertyPredicate;
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourceInversePropertyPredicate;
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourcePropertyPredicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom;
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetInversePropertyPredicate;
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetPropertyPredicate;
+import gov.nasa.jpl.imce.oml.model.terminologies.RestrictableRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple;
 import gov.nasa.jpl.imce.oml.model.terminologies.RuleBodySegment;
@@ -111,6 +104,7 @@ import gov.nasa.jpl.imce.oml.model.terminologies.Scalar;
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfRestriction;
+import gov.nasa.jpl.imce.oml.model.terminologies.SegmentPredicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.SpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.StringScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.Structure;
@@ -125,8 +119,6 @@ import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBoxStatement;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyExtensionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.TimeScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship;
-import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipInversePropertyPredicate;
-import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipPropertyPredicate;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -668,6 +660,50 @@ public class OMLExtensions {
     return Iterables.<EntityRelationship>filter(it.getBoxStatements(), EntityRelationship.class);
   }
   
+  public Iterable<Predicate> localPredicates(final TerminologyBox it) {
+    Iterable<Predicate> _xblockexpression = null;
+    {
+      final ArrayList<Predicate> result = new ArrayList<Predicate>();
+      final Consumer<ReifiedRelationship> _function = (ReifiedRelationship rr) -> {
+        result.add(rr.getForwardProperty());
+        result.add(rr.getInverseProperty());
+      };
+      this.localReifiedRelationships(it).forEach(_function);
+      Iterables.<Predicate>addAll(result, this.localEntities(it));
+      _xblockexpression = IterableExtensions.<Predicate>filterNull(result);
+    }
+    return _xblockexpression;
+  }
+  
+  public Iterable<ForwardProperty> localForwardProperties(final TerminologyBox it) {
+    final Function1<ReifiedRelationship, ForwardProperty> _function = (ReifiedRelationship it_1) -> {
+      return it_1.getForwardProperty();
+    };
+    return IterableExtensions.<ForwardProperty>filterNull(IterableExtensions.<ReifiedRelationship, ForwardProperty>map(this.localReifiedRelationships(it), _function));
+  }
+  
+  public Iterable<InverseProperty> localInverseProperties(final TerminologyBox it) {
+    final Function1<ReifiedRelationship, InverseProperty> _function = (ReifiedRelationship it_1) -> {
+      return it_1.getInverseProperty();
+    };
+    return IterableExtensions.<InverseProperty>filterNull(IterableExtensions.<ReifiedRelationship, InverseProperty>map(this.localReifiedRelationships(it), _function));
+  }
+  
+  public Iterable<RestrictableRelationship> localRestrictableRelationships(final TerminologyBox it) {
+    Iterable<RestrictableRelationship> _xblockexpression = null;
+    {
+      final ArrayList<RestrictableRelationship> result = new ArrayList<RestrictableRelationship>();
+      final Consumer<ReifiedRelationship> _function = (ReifiedRelationship rr) -> {
+        result.add(rr.getForwardProperty());
+        result.add(rr.getInverseProperty());
+      };
+      this.localReifiedRelationships(it).forEach(_function);
+      Iterables.<RestrictableRelationship>addAll(result, this.localUnreifiedRelationships(it));
+      _xblockexpression = IterableExtensions.<RestrictableRelationship>filterNull(result);
+    }
+    return _xblockexpression;
+  }
+  
   public Iterable<EntityRelationship> allEntityRelationships(final TerminologyBox it) {
     Iterable<EntityRelationship> _localEntityRelationships = this.localEntityRelationships(it);
     final Function1<TerminologyBox, Iterable<EntityRelationship>> _function = (TerminologyBox it_1) -> {
@@ -816,12 +852,6 @@ public class OMLExtensions {
       }
     }
     if (!_matched) {
-      if (e instanceof AspectPredicate) {
-        _matched=true;
-        _switchResult = "AspectPredicate";
-      }
-    }
-    if (!_matched) {
       if (e instanceof AspectSpecializationAxiom) {
         _matched=true;
         _switchResult = "AspectSpecializationAxiom";
@@ -870,12 +900,6 @@ public class OMLExtensions {
       }
     }
     if (!_matched) {
-      if (e instanceof ConceptPredicate) {
-        _matched=true;
-        _switchResult = "ConceptPredicate";
-      }
-    }
-    if (!_matched) {
       if (e instanceof ConceptSpecializationAxiom) {
         _matched=true;
         _switchResult = "ConceptSpecializationAxiom";
@@ -900,9 +924,9 @@ public class OMLExtensions {
       }
     }
     if (!_matched) {
-      if (e instanceof EntityExistentialRestrictionAxiom) {
+      if (e instanceof EntityRestrictionAxiom) {
         _matched=true;
-        _switchResult = "EntityExistentialRestrictionAxiom";
+        _switchResult = "EntityRestrictionAxiom";
       }
     }
     if (!_matched) {
@@ -939,12 +963,6 @@ public class OMLExtensions {
       if (e instanceof EntityStructuredDataPropertyParticularRestrictionAxiom) {
         _matched=true;
         _switchResult = "EntityStructuredDataPropertyParticularRestrictionAxiom";
-      }
-    }
-    if (!_matched) {
-      if (e instanceof EntityUniversalRestrictionAxiom) {
-        _matched=true;
-        _switchResult = "EntityUniversalRestrictionAxiom";
       }
     }
     if (!_matched) {
@@ -990,51 +1008,9 @@ public class OMLExtensions {
       }
     }
     if (!_matched) {
-      if (e instanceof ReifiedRelationshipInversePropertyPredicate) {
-        _matched=true;
-        _switchResult = "ReifiedRelationshipInversePropertyPredicate";
-      }
-    }
-    if (!_matched) {
-      if (e instanceof ReifiedRelationshipPredicate) {
-        _matched=true;
-        _switchResult = "ReifiedRelationshipPredicate";
-      }
-    }
-    if (!_matched) {
-      if (e instanceof ReifiedRelationshipPropertyPredicate) {
-        _matched=true;
-        _switchResult = "ReifiedRelationshipPropertyPredicate";
-      }
-    }
-    if (!_matched) {
-      if (e instanceof ReifiedRelationshipSourceInversePropertyPredicate) {
-        _matched=true;
-        _switchResult = "ReifiedRelationshipSourceInversePropertyPredicate";
-      }
-    }
-    if (!_matched) {
-      if (e instanceof ReifiedRelationshipSourcePropertyPredicate) {
-        _matched=true;
-        _switchResult = "ReifiedRelationshipSourcePropertyPredicate";
-      }
-    }
-    if (!_matched) {
       if (e instanceof ReifiedRelationshipSpecializationAxiom) {
         _matched=true;
         _switchResult = "ReifiedRelationshipSpecializationAxiom";
-      }
-    }
-    if (!_matched) {
-      if (e instanceof ReifiedRelationshipTargetInversePropertyPredicate) {
-        _matched=true;
-        _switchResult = "ReifiedRelationshipTargetInversePropertyPredicate";
-      }
-    }
-    if (!_matched) {
-      if (e instanceof ReifiedRelationshipTargetPropertyPredicate) {
-        _matched=true;
-        _switchResult = "ReifiedRelationshipTargetPropertyPredicate";
       }
     }
     if (!_matched) {
@@ -1089,6 +1065,12 @@ public class OMLExtensions {
       if (e instanceof ScalarOneOfRestriction) {
         _matched=true;
         _switchResult = "ScalarOneOfRestriction";
+      }
+    }
+    if (!_matched) {
+      if (e instanceof SegmentPredicate) {
+        _matched=true;
+        _switchResult = "SegmentPredicate";
       }
     }
     if (!_matched) {
@@ -1185,18 +1167,6 @@ public class OMLExtensions {
       if (e instanceof UnreifiedRelationshipInstanceTuple) {
         _matched=true;
         _switchResult = "UnreifiedRelationshipInstanceTuple";
-      }
-    }
-    if (!_matched) {
-      if (e instanceof UnreifiedRelationshipInversePropertyPredicate) {
-        _matched=true;
-        _switchResult = "UnreifiedRelationshipInversePropertyPredicate";
-      }
-    }
-    if (!_matched) {
-      if (e instanceof UnreifiedRelationshipPropertyPredicate) {
-        _matched=true;
-        _switchResult = "UnreifiedRelationshipPropertyPredicate";
       }
     }
     if (!_matched) {
@@ -1345,39 +1315,33 @@ public class OMLExtensions {
       }
     }
     if (!_matched) {
-      if (e instanceof EntityExistentialRestrictionAxiom) {
+      if (e instanceof EntityRestrictionAxiom) {
         _matched=true;
         _switchResult = 10100;
       }
     }
     if (!_matched) {
-      if (e instanceof EntityUniversalRestrictionAxiom) {
+      if (e instanceof EntityScalarDataPropertyExistentialRestrictionAxiom) {
         _matched=true;
         _switchResult = 10101;
       }
     }
     if (!_matched) {
-      if (e instanceof EntityScalarDataPropertyExistentialRestrictionAxiom) {
+      if (e instanceof EntityScalarDataPropertyParticularRestrictionAxiom) {
         _matched=true;
         _switchResult = 10102;
       }
     }
     if (!_matched) {
-      if (e instanceof EntityScalarDataPropertyParticularRestrictionAxiom) {
+      if (e instanceof EntityScalarDataPropertyUniversalRestrictionAxiom) {
         _matched=true;
         _switchResult = 10103;
       }
     }
     if (!_matched) {
-      if (e instanceof EntityScalarDataPropertyUniversalRestrictionAxiom) {
-        _matched=true;
-        _switchResult = 10104;
-      }
-    }
-    if (!_matched) {
       if (e instanceof EntityStructuredDataPropertyParticularRestrictionAxiom) {
         _matched=true;
-        _switchResult = 10105;
+        _switchResult = 10104;
       }
     }
     if (!_matched) {
@@ -1607,39 +1571,33 @@ public class OMLExtensions {
       }
     }
     if (!_matched) {
-      if (e instanceof EntityExistentialRestrictionAxiom) {
+      if (e instanceof EntityRestrictionAxiom) {
         _matched=true;
         _switchResult = "00060-";
       }
     }
     if (!_matched) {
-      if (e instanceof EntityUniversalRestrictionAxiom) {
+      if (e instanceof EntityScalarDataPropertyExistentialRestrictionAxiom) {
         _matched=true;
         _switchResult = "00061-";
       }
     }
     if (!_matched) {
-      if (e instanceof EntityScalarDataPropertyExistentialRestrictionAxiom) {
+      if (e instanceof EntityScalarDataPropertyParticularRestrictionAxiom) {
         _matched=true;
         _switchResult = "00062-";
       }
     }
     if (!_matched) {
-      if (e instanceof EntityScalarDataPropertyParticularRestrictionAxiom) {
+      if (e instanceof EntityScalarDataPropertyUniversalRestrictionAxiom) {
         _matched=true;
         _switchResult = "00063-";
       }
     }
     if (!_matched) {
-      if (e instanceof EntityScalarDataPropertyUniversalRestrictionAxiom) {
-        _matched=true;
-        _switchResult = "00064-";
-      }
-    }
-    if (!_matched) {
       if (e instanceof EntityStructuredDataPropertyParticularRestrictionAxiom) {
         _matched=true;
-        _switchResult = "00065-";
+        _switchResult = "00064-";
       }
     }
     if (!_matched) {
@@ -1667,69 +1625,9 @@ public class OMLExtensions {
       }
     }
     if (!_matched) {
-      if (e instanceof AspectPredicate) {
+      if (e instanceof SegmentPredicate) {
         _matched=true;
         _switchResult = "00090";
-      }
-    }
-    if (!_matched) {
-      if (e instanceof ConceptPredicate) {
-        _matched=true;
-        _switchResult = "00091";
-      }
-    }
-    if (!_matched) {
-      if (e instanceof ReifiedRelationshipPredicate) {
-        _matched=true;
-        _switchResult = "00092";
-      }
-    }
-    if (!_matched) {
-      if (e instanceof ReifiedRelationshipPropertyPredicate) {
-        _matched=true;
-        _switchResult = "00100";
-      }
-    }
-    if (!_matched) {
-      if (e instanceof ReifiedRelationshipSourcePropertyPredicate) {
-        _matched=true;
-        _switchResult = "00101";
-      }
-    }
-    if (!_matched) {
-      if (e instanceof ReifiedRelationshipTargetPropertyPredicate) {
-        _matched=true;
-        _switchResult = "00102";
-      }
-    }
-    if (!_matched) {
-      if (e instanceof UnreifiedRelationshipPropertyPredicate) {
-        _matched=true;
-        _switchResult = "00103";
-      }
-    }
-    if (!_matched) {
-      if (e instanceof ReifiedRelationshipInversePropertyPredicate) {
-        _matched=true;
-        _switchResult = "00110";
-      }
-    }
-    if (!_matched) {
-      if (e instanceof ReifiedRelationshipSourceInversePropertyPredicate) {
-        _matched=true;
-        _switchResult = "00111";
-      }
-    }
-    if (!_matched) {
-      if (e instanceof ReifiedRelationshipTargetInversePropertyPredicate) {
-        _matched=true;
-        _switchResult = "00112";
-      }
-    }
-    if (!_matched) {
-      if (e instanceof UnreifiedRelationshipInversePropertyPredicate) {
-        _matched=true;
-        _switchResult = "00113";
       }
     }
     if (!_matched) {
@@ -2224,7 +2122,7 @@ public class OMLExtensions {
           }
           String _plus = (_elvis + ".");
           String _elvis_1 = null;
-          EntityRelationship _restrictedRelation = ((EntityRestrictionAxiom)e).getRestrictedRelation();
+          EntityRelationship _restrictedRelation = ((EntityRestrictionAxiom)e).restrictedRelation();
           String _abbrevIRI_1 = null;
           if (_restrictedRelation!=null) {
             _abbrevIRI_1=_restrictedRelation.abbrevIRI();

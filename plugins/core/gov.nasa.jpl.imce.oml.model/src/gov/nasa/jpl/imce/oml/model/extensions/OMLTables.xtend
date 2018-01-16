@@ -64,12 +64,10 @@ import gov.nasa.jpl.imce.oml.model.graphs.ConceptDesignationTerminologyAxiom
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyGraph
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyNestingAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.Aspect
-import gov.nasa.jpl.imce.oml.model.terminologies.AspectPredicate
 import gov.nasa.jpl.imce.oml.model.terminologies.AspectSpecializationAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.BinaryScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.ChainRule
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept
-import gov.nasa.jpl.imce.oml.model.terminologies.ConceptPredicate
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptSpecializationAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialRestrictionAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataProperty
@@ -79,18 +77,13 @@ import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyUnivers
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataPropertyParticularRestrictionAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalRestrictionAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction
+import gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipInversePropertyPredicate
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPredicate
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPropertyPredicate
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourceInversePropertyPredicate
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourcePropertyPredicate
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetInversePropertyPredicate
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetPropertyPredicate
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple
 import gov.nasa.jpl.imce.oml.model.terminologies.RuleBodySegment
@@ -109,12 +102,12 @@ import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyExtensionAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyKind
 import gov.nasa.jpl.imce.oml.model.terminologies.TimeScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship
-import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipInversePropertyPredicate
-import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipPropertyPredicate
 import java.util.ArrayList
 import java.util.List
 import java.util.regex.Matcher
 import java.util.regex.Pattern
+import gov.nasa.jpl.imce.oml.model.terminologies.SegmentPredicate
+import gov.nasa.jpl.imce.oml.model.terminologies.Predicate
 
 /**
  * OMLTables is a collection of extension queries for OML Extent and conversion methods for OML values.
@@ -233,6 +226,14 @@ class OMLTables {
   	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(ReifiedRelationship))]
   	result.sortInplaceBy[uuid()]
   	result
+  }
+  
+  static def Iterable<ForwardProperty> forwardProperties(Extent e) {
+  	reifiedRelationships(e).map[forwardProperty].filterNull
+  }
+  
+  static def Iterable<InverseProperty> inverseProperties(Extent e) {
+  	reifiedRelationships(e).map[inverseProperty].filterNull
   }
   
   static def List<UnreifiedRelationship> unreifiedRelationships(Extent e) {
@@ -386,8 +387,6 @@ class OMLTables {
   	result
   }
   
-  // restriction axioms
-  
   static def List<EntityExistentialRestrictionAxiom> entityExistentialRestrictionAxioms(Extent e) {
   	val List<EntityExistentialRestrictionAxiom> result = new ArrayList<EntityExistentialRestrictionAxiom>()
   	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(EntityExistentialRestrictionAxiom))]
@@ -475,101 +474,23 @@ class OMLTables {
   	result
   }
   
-  static def List<AspectPredicate> aspectPredicates(Extent e) {
-  	val List<AspectPredicate> result = new ArrayList<AspectPredicate>()
+  static def List<SegmentPredicate> segmentPredicates(Extent e) {
+  	val List<SegmentPredicate> result = new ArrayList<SegmentPredicate>()
   	e.terminologyGraphs.forEach[b | b.boxStatements.filter(ChainRule).forEach[r |
-  		result.addAll(r.allNestedElements.filter(AspectPredicate))
+  		result.addAll(r.allNestedElements.filter(SegmentPredicate))
   	]]
   	result.sortInplaceBy[uuid()]
   	result
   }
   
-  static def List<ConceptPredicate> conceptPredicates(Extent e) {
-  	val List<ConceptPredicate> result = new ArrayList<ConceptPredicate>()
-  	e.terminologyGraphs.forEach[b | b.boxStatements.filter(ChainRule).forEach[r |
-  		result.addAll(r.allNestedElements.filter(ConceptPredicate))
+  static def List<Predicate> predicates(Extent e) {
+  	val List<Predicate> result = new ArrayList<Predicate>()
+  	e.terminologyGraphs.forEach[t | t.boxStatements.filter(Predicate).forEach[p |
+  		result.addAll(p)
   	]]
-  	result.sortInplaceBy[uuid()]
-  	result
-  }
-  
-  
-  static def List<ReifiedRelationshipInversePropertyPredicate> reifiedRelationshipInversePropertyPredicates(Extent e) {
-  	val List<ReifiedRelationshipInversePropertyPredicate> result = new ArrayList<ReifiedRelationshipInversePropertyPredicate>()
-  	e.terminologyGraphs.forEach[b | b.boxStatements.filter(ChainRule).forEach[r |
-  		result.addAll(r.allNestedElements.filter(ReifiedRelationshipInversePropertyPredicate))
-  	]]
-  	result.sortInplaceBy[uuid()]
-  	result
-  }
-  
-  static def List<ReifiedRelationshipPredicate> reifiedRelationshipPredicates(Extent e) {
-  	val List<ReifiedRelationshipPredicate> result = new ArrayList<ReifiedRelationshipPredicate>()
-  	e.terminologyGraphs.forEach[b | b.boxStatements.filter(ChainRule).forEach[r |
-  		result.addAll(r.allNestedElements.filter(ReifiedRelationshipPredicate))
-  	]]
-  	result.sortInplaceBy[uuid()]
-  	result
-  }
-  
-  static def List<ReifiedRelationshipPropertyPredicate> reifiedRelationshipPropertyPredicates(Extent e) {
-  	val List<ReifiedRelationshipPropertyPredicate> result = new ArrayList<ReifiedRelationshipPropertyPredicate>()
-  	e.terminologyGraphs.forEach[b | b.boxStatements.filter(ChainRule).forEach[r |
-  		result.addAll(r.allNestedElements.filter(ReifiedRelationshipPropertyPredicate))
-  	]]
-  	result.sortInplaceBy[uuid()]
-  	result
-  }
-  
-  static def List<ReifiedRelationshipSourceInversePropertyPredicate> reifiedRelationshipSourceInversePropertyPredicates(Extent e) {
-  	val List<ReifiedRelationshipSourceInversePropertyPredicate> result = new ArrayList<ReifiedRelationshipSourceInversePropertyPredicate>()
-  	e.terminologyGraphs.forEach[b | b.boxStatements.filter(ChainRule).forEach[r |
-  		result.addAll(r.allNestedElements.filter(ReifiedRelationshipSourceInversePropertyPredicate))
-  	]]
-  	result.sortInplaceBy[uuid()]
-  	result
-  }
-  
-  static def List<ReifiedRelationshipSourcePropertyPredicate> reifiedRelationshipSourcePropertyPredicates(Extent e) {
-  	val List<ReifiedRelationshipSourcePropertyPredicate> result = new ArrayList<ReifiedRelationshipSourcePropertyPredicate>()
-  	e.terminologyGraphs.forEach[b | b.boxStatements.filter(ChainRule).forEach[r |
-  		result.addAll(r.allNestedElements.filter(ReifiedRelationshipSourcePropertyPredicate))
-  	]]
-  	result.sortInplaceBy[uuid()]
-  	result
-  }
-  
-  static def List<ReifiedRelationshipTargetInversePropertyPredicate> reifiedRelationshipTargetInversePropertyPredicates(Extent e) {
-  	val List<ReifiedRelationshipTargetInversePropertyPredicate> result = new ArrayList<ReifiedRelationshipTargetInversePropertyPredicate>()
-  	e.terminologyGraphs.forEach[b | b.boxStatements.filter(ChainRule).forEach[r |
-  		result.addAll(r.allNestedElements.filter(ReifiedRelationshipTargetInversePropertyPredicate))
-  	]]
-  	result.sortInplaceBy[uuid()]
-  	result
-  }
-  
-  static def List<ReifiedRelationshipTargetPropertyPredicate> reifiedRelationshipTargetPropertyPredicates(Extent e) {
-  	val List<ReifiedRelationshipTargetPropertyPredicate> result = new ArrayList<ReifiedRelationshipTargetPropertyPredicate>()
-  	e.terminologyGraphs.forEach[b | b.boxStatements.filter(ChainRule).forEach[r |
-  		result.addAll(r.allNestedElements.filter(ReifiedRelationshipTargetPropertyPredicate))
-  	]]
-  	result.sortInplaceBy[uuid()]
-  	result
-  }
-  
-  static def List<UnreifiedRelationshipInversePropertyPredicate> unreifiedRelationshipInversePropertyPredicates(Extent e) {
-  	val List<UnreifiedRelationshipInversePropertyPredicate> result = new ArrayList<UnreifiedRelationshipInversePropertyPredicate>()
-  	e.terminologyGraphs.forEach[b | b.boxStatements.filter(ChainRule).forEach[r |
-  		result.addAll(r.allNestedElements.filter(UnreifiedRelationshipInversePropertyPredicate))
-  	]]
-  	result.sortInplaceBy[uuid()]
-  	result
-  }
-  
-  static def List<UnreifiedRelationshipPropertyPredicate> unreifiedRelationshipPropertyPredicates(Extent e) {
-  	val List<UnreifiedRelationshipPropertyPredicate> result = new ArrayList<UnreifiedRelationshipPropertyPredicate>()
-  	e.terminologyGraphs.forEach[b | b.boxStatements.filter(ChainRule).forEach[r |
-  		result.addAll(r.allNestedElements.filter(UnreifiedRelationshipPropertyPredicate))
+  	e.terminologyGraphs.forEach[t | t.boxStatements.filter(ReifiedRelationship).forEach[rr |
+  		result.add(rr.forwardProperty)
+  		if (null !== rr.inverseProperty) result.add(rr.inverseProperty)
   	]]
   	result.sortInplaceBy[uuid()]
   	result

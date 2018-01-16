@@ -23,6 +23,7 @@ import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
 import gov.nasa.jpl.imce.oml.model.terminologies.Entity;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityRestrictionAxiom;
+import gov.nasa.jpl.imce.oml.model.terminologies.RestrictableRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage;
 
 import java.lang.reflect.InvocationTargetException;
@@ -46,7 +47,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityRestrictionAxiomImpl#getRestrictedRelation <em>Restricted Relation</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityRestrictionAxiomImpl#getRestrictedRelationship <em>Restricted Relationship</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityRestrictionAxiomImpl#getRestrictedRange <em>Restricted Range</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityRestrictionAxiomImpl#getRestrictedDomain <em>Restricted Domain</em>}</li>
  * </ul>
@@ -55,14 +56,14 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public abstract class EntityRestrictionAxiomImpl extends TermAxiomImpl implements EntityRestrictionAxiom {
 	/**
-	 * The cached value of the '{@link #getRestrictedRelation() <em>Restricted Relation</em>}' reference.
+	 * The cached value of the '{@link #getRestrictedRelationship() <em>Restricted Relationship</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getRestrictedRelation()
+	 * @see #getRestrictedRelationship()
 	 * @generated
 	 * @ordered
 	 */
-	protected EntityRelationship restrictedRelation;
+	protected RestrictableRelationship restrictedRelationship;
 
 	/**
 	 * The cached value of the '{@link #getRestrictedRange() <em>Restricted Range</em>}' reference.
@@ -108,16 +109,16 @@ public abstract class EntityRestrictionAxiomImpl extends TermAxiomImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EntityRelationship getRestrictedRelation() {
-		if (restrictedRelation != null && ((EObject)restrictedRelation).eIsProxy()) {
-			InternalEObject oldRestrictedRelation = (InternalEObject)restrictedRelation;
-			restrictedRelation = (EntityRelationship)eResolveProxy(oldRestrictedRelation);
-			if (restrictedRelation != oldRestrictedRelation) {
+	public RestrictableRelationship getRestrictedRelationship() {
+		if (restrictedRelationship != null && ((EObject)restrictedRelationship).eIsProxy()) {
+			InternalEObject oldRestrictedRelationship = (InternalEObject)restrictedRelationship;
+			restrictedRelationship = (RestrictableRelationship)eResolveProxy(oldRestrictedRelationship);
+			if (restrictedRelationship != oldRestrictedRelationship) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, TerminologiesPackage.ENTITY_RESTRICTION_AXIOM__RESTRICTED_RELATION, oldRestrictedRelation, restrictedRelation));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, TerminologiesPackage.ENTITY_RESTRICTION_AXIOM__RESTRICTED_RELATIONSHIP, oldRestrictedRelationship, restrictedRelationship));
 			}
 		}
-		return restrictedRelation;
+		return restrictedRelationship;
 	}
 
 	/**
@@ -125,8 +126,8 @@ public abstract class EntityRestrictionAxiomImpl extends TermAxiomImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EntityRelationship basicGetRestrictedRelation() {
-		return restrictedRelation;
+	public RestrictableRelationship basicGetRestrictedRelationship() {
+		return restrictedRelationship;
 	}
 
 	/**
@@ -134,11 +135,11 @@ public abstract class EntityRestrictionAxiomImpl extends TermAxiomImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setRestrictedRelation(EntityRelationship newRestrictedRelation) {
-		EntityRelationship oldRestrictedRelation = restrictedRelation;
-		restrictedRelation = newRestrictedRelation;
+	public void setRestrictedRelationship(RestrictableRelationship newRestrictedRelationship) {
+		RestrictableRelationship oldRestrictedRelationship = restrictedRelationship;
+		restrictedRelationship = newRestrictedRelationship;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.ENTITY_RESTRICTION_AXIOM__RESTRICTED_RELATION, oldRestrictedRelation, restrictedRelation));
+			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.ENTITY_RESTRICTION_AXIOM__RESTRICTED_RELATIONSHIP, oldRestrictedRelationship, restrictedRelationship));
 	}
 
 	/**
@@ -231,12 +232,26 @@ public abstract class EntityRestrictionAxiomImpl extends TermAxiomImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EntityRelationship restrictedRelation() {
+		RestrictableRelationship _restrictedRelationship = this.getRestrictedRelationship();
+		EntityRelationship _relation = null;
+		if (_restrictedRelationship!=null) {
+			_relation=_restrictedRelationship.relation();
+		}
+		return _relation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case TerminologiesPackage.ENTITY_RESTRICTION_AXIOM__RESTRICTED_RELATION:
-				if (resolve) return getRestrictedRelation();
-				return basicGetRestrictedRelation();
+			case TerminologiesPackage.ENTITY_RESTRICTION_AXIOM__RESTRICTED_RELATIONSHIP:
+				if (resolve) return getRestrictedRelationship();
+				return basicGetRestrictedRelationship();
 			case TerminologiesPackage.ENTITY_RESTRICTION_AXIOM__RESTRICTED_RANGE:
 				if (resolve) return getRestrictedRange();
 				return basicGetRestrictedRange();
@@ -255,8 +270,8 @@ public abstract class EntityRestrictionAxiomImpl extends TermAxiomImpl implement
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case TerminologiesPackage.ENTITY_RESTRICTION_AXIOM__RESTRICTED_RELATION:
-				setRestrictedRelation((EntityRelationship)newValue);
+			case TerminologiesPackage.ENTITY_RESTRICTION_AXIOM__RESTRICTED_RELATIONSHIP:
+				setRestrictedRelationship((RestrictableRelationship)newValue);
 				return;
 			case TerminologiesPackage.ENTITY_RESTRICTION_AXIOM__RESTRICTED_RANGE:
 				setRestrictedRange((Entity)newValue);
@@ -276,8 +291,8 @@ public abstract class EntityRestrictionAxiomImpl extends TermAxiomImpl implement
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case TerminologiesPackage.ENTITY_RESTRICTION_AXIOM__RESTRICTED_RELATION:
-				setRestrictedRelation((EntityRelationship)null);
+			case TerminologiesPackage.ENTITY_RESTRICTION_AXIOM__RESTRICTED_RELATIONSHIP:
+				setRestrictedRelationship((RestrictableRelationship)null);
 				return;
 			case TerminologiesPackage.ENTITY_RESTRICTION_AXIOM__RESTRICTED_RANGE:
 				setRestrictedRange((Entity)null);
@@ -297,8 +312,8 @@ public abstract class EntityRestrictionAxiomImpl extends TermAxiomImpl implement
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case TerminologiesPackage.ENTITY_RESTRICTION_AXIOM__RESTRICTED_RELATION:
-				return restrictedRelation != null;
+			case TerminologiesPackage.ENTITY_RESTRICTION_AXIOM__RESTRICTED_RELATIONSHIP:
+				return restrictedRelationship != null;
 			case TerminologiesPackage.ENTITY_RESTRICTION_AXIOM__RESTRICTED_RANGE:
 				return restrictedRange != null;
 			case TerminologiesPackage.ENTITY_RESTRICTION_AXIOM__RESTRICTED_DOMAIN:
@@ -317,6 +332,8 @@ public abstract class EntityRestrictionAxiomImpl extends TermAxiomImpl implement
 		switch (operationID) {
 			case TerminologiesPackage.ENTITY_RESTRICTION_AXIOM___ALL_NESTED_ELEMENTS:
 				return allNestedElements();
+			case TerminologiesPackage.ENTITY_RESTRICTION_AXIOM___RESTRICTED_RELATION:
+				return restrictedRelation();
 		}
 		return super.eInvoke(operationID, arguments);
 	}

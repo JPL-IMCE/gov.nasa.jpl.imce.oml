@@ -53,12 +53,10 @@ import gov.nasa.jpl.imce.oml.model.graphs.GraphsFactory;
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyGraph;
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyNestingAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.Aspect;
-import gov.nasa.jpl.imce.oml.model.terminologies.AspectPredicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.AspectSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.BinaryScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.ChainRule;
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
-import gov.nasa.jpl.imce.oml.model.terminologies.ConceptPredicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.DataRange;
 import gov.nasa.jpl.imce.oml.model.terminologies.DataRelationshipToScalar;
@@ -73,18 +71,15 @@ import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyUnivers
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataPropertyParticularRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalRestrictionAxiom;
+import gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction;
+import gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction;
+import gov.nasa.jpl.imce.oml.model.terminologies.Predicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship;
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipInversePropertyPredicate;
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPredicate;
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPropertyPredicate;
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourceInversePropertyPredicate;
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourcePropertyPredicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom;
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetInversePropertyPredicate;
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetPropertyPredicate;
+import gov.nasa.jpl.imce.oml.model.terminologies.RestrictableRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyContext;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple;
@@ -93,6 +88,7 @@ import gov.nasa.jpl.imce.oml.model.terminologies.Scalar;
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfRestriction;
+import gov.nasa.jpl.imce.oml.model.terminologies.SegmentPredicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.StringScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.Structure;
 import gov.nasa.jpl.imce.oml.model.terminologies.StructuredDataProperty;
@@ -104,8 +100,6 @@ import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyExtensionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.TimeScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship;
-import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipInversePropertyPredicate;
-import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipPropertyPredicate;
 import gov.nasa.jpl.imce.oml.zip.OMLZipResource;
 import gov.nasa.jpl.imce.oml.zip.OMLZipResourceSet;
 import java.io.BufferedReader;
@@ -197,33 +191,17 @@ public class OMLSpecificationTables {
   
   protected final Map<String, Pair<ReifiedRelationship, Map<String, String>>> reifiedRelationships;
   
+  protected final Map<String, Pair<ForwardProperty, Map<String, String>>> forwardProperties;
+  
+  protected final Map<String, Pair<InverseProperty, Map<String, String>>> inverseProperties;
+  
   protected final Map<String, Pair<UnreifiedRelationship, Map<String, String>>> unreifiedRelationships;
   
   protected final Map<String, Pair<ChainRule, Map<String, String>>> chainRules;
   
   protected final Map<String, Pair<RuleBodySegment, Map<String, String>>> ruleBodySegments;
   
-  protected final Map<String, Pair<AspectPredicate, Map<String, String>>> aspectPredicates;
-  
-  protected final Map<String, Pair<ConceptPredicate, Map<String, String>>> conceptPredicates;
-  
-  protected final Map<String, Pair<ReifiedRelationshipPredicate, Map<String, String>>> reifiedRelationshipPredicates;
-  
-  protected final Map<String, Pair<ReifiedRelationshipPropertyPredicate, Map<String, String>>> reifiedRelationshipPropertyPredicates;
-  
-  protected final Map<String, Pair<ReifiedRelationshipSourcePropertyPredicate, Map<String, String>>> reifiedRelationshipSourcePropertyPredicates;
-  
-  protected final Map<String, Pair<ReifiedRelationshipTargetPropertyPredicate, Map<String, String>>> reifiedRelationshipTargetPropertyPredicates;
-  
-  protected final Map<String, Pair<UnreifiedRelationshipPropertyPredicate, Map<String, String>>> unreifiedRelationshipPropertyPredicates;
-  
-  protected final Map<String, Pair<ReifiedRelationshipInversePropertyPredicate, Map<String, String>>> reifiedRelationshipInversePropertyPredicates;
-  
-  protected final Map<String, Pair<ReifiedRelationshipSourceInversePropertyPredicate, Map<String, String>>> reifiedRelationshipSourceInversePropertyPredicates;
-  
-  protected final Map<String, Pair<ReifiedRelationshipTargetInversePropertyPredicate, Map<String, String>>> reifiedRelationshipTargetInversePropertyPredicates;
-  
-  protected final Map<String, Pair<UnreifiedRelationshipInversePropertyPredicate, Map<String, String>>> unreifiedRelationshipInversePropertyPredicates;
+  protected final Map<String, Pair<SegmentPredicate, Map<String, String>>> segmentPredicates;
   
   protected final Map<String, Pair<EntityExistentialRestrictionAxiom, Map<String, String>>> entityExistentialRestrictionAxioms;
   
@@ -290,6 +268,10 @@ public class OMLSpecificationTables {
   protected final Map<String, Pair<DataRelationshipToScalar, Map<String, String>>> dataRelationshipToScalars;
   
   protected final Map<String, Pair<DataRelationshipToStructure, Map<String, String>>> dataRelationshipToStructures;
+  
+  protected final Map<String, Pair<Predicate, Map<String, String>>> predicates;
+  
+  protected final Map<String, Pair<RestrictableRelationship, Map<String, String>>> restrictableRelationships;
   
   protected final Map<String, Pair<RestrictionStructuredDataPropertyContext, Map<String, String>>> restrictionStructuredDataPropertyContexts;
   
@@ -378,110 +360,98 @@ public class OMLSpecificationTables {
     this.structuredDataProperties = _hashMap_26;
     HashMap<String, Pair<ReifiedRelationship, Map<String, String>>> _hashMap_27 = new HashMap<String, Pair<ReifiedRelationship, Map<String, String>>>();
     this.reifiedRelationships = _hashMap_27;
-    HashMap<String, Pair<UnreifiedRelationship, Map<String, String>>> _hashMap_28 = new HashMap<String, Pair<UnreifiedRelationship, Map<String, String>>>();
-    this.unreifiedRelationships = _hashMap_28;
-    HashMap<String, Pair<ChainRule, Map<String, String>>> _hashMap_29 = new HashMap<String, Pair<ChainRule, Map<String, String>>>();
-    this.chainRules = _hashMap_29;
-    HashMap<String, Pair<RuleBodySegment, Map<String, String>>> _hashMap_30 = new HashMap<String, Pair<RuleBodySegment, Map<String, String>>>();
-    this.ruleBodySegments = _hashMap_30;
-    HashMap<String, Pair<AspectPredicate, Map<String, String>>> _hashMap_31 = new HashMap<String, Pair<AspectPredicate, Map<String, String>>>();
-    this.aspectPredicates = _hashMap_31;
-    HashMap<String, Pair<ConceptPredicate, Map<String, String>>> _hashMap_32 = new HashMap<String, Pair<ConceptPredicate, Map<String, String>>>();
-    this.conceptPredicates = _hashMap_32;
-    HashMap<String, Pair<ReifiedRelationshipPredicate, Map<String, String>>> _hashMap_33 = new HashMap<String, Pair<ReifiedRelationshipPredicate, Map<String, String>>>();
-    this.reifiedRelationshipPredicates = _hashMap_33;
-    HashMap<String, Pair<ReifiedRelationshipPropertyPredicate, Map<String, String>>> _hashMap_34 = new HashMap<String, Pair<ReifiedRelationshipPropertyPredicate, Map<String, String>>>();
-    this.reifiedRelationshipPropertyPredicates = _hashMap_34;
-    HashMap<String, Pair<ReifiedRelationshipSourcePropertyPredicate, Map<String, String>>> _hashMap_35 = new HashMap<String, Pair<ReifiedRelationshipSourcePropertyPredicate, Map<String, String>>>();
-    this.reifiedRelationshipSourcePropertyPredicates = _hashMap_35;
-    HashMap<String, Pair<ReifiedRelationshipTargetPropertyPredicate, Map<String, String>>> _hashMap_36 = new HashMap<String, Pair<ReifiedRelationshipTargetPropertyPredicate, Map<String, String>>>();
-    this.reifiedRelationshipTargetPropertyPredicates = _hashMap_36;
-    HashMap<String, Pair<UnreifiedRelationshipPropertyPredicate, Map<String, String>>> _hashMap_37 = new HashMap<String, Pair<UnreifiedRelationshipPropertyPredicate, Map<String, String>>>();
-    this.unreifiedRelationshipPropertyPredicates = _hashMap_37;
-    HashMap<String, Pair<ReifiedRelationshipInversePropertyPredicate, Map<String, String>>> _hashMap_38 = new HashMap<String, Pair<ReifiedRelationshipInversePropertyPredicate, Map<String, String>>>();
-    this.reifiedRelationshipInversePropertyPredicates = _hashMap_38;
-    HashMap<String, Pair<ReifiedRelationshipSourceInversePropertyPredicate, Map<String, String>>> _hashMap_39 = new HashMap<String, Pair<ReifiedRelationshipSourceInversePropertyPredicate, Map<String, String>>>();
-    this.reifiedRelationshipSourceInversePropertyPredicates = _hashMap_39;
-    HashMap<String, Pair<ReifiedRelationshipTargetInversePropertyPredicate, Map<String, String>>> _hashMap_40 = new HashMap<String, Pair<ReifiedRelationshipTargetInversePropertyPredicate, Map<String, String>>>();
-    this.reifiedRelationshipTargetInversePropertyPredicates = _hashMap_40;
-    HashMap<String, Pair<UnreifiedRelationshipInversePropertyPredicate, Map<String, String>>> _hashMap_41 = new HashMap<String, Pair<UnreifiedRelationshipInversePropertyPredicate, Map<String, String>>>();
-    this.unreifiedRelationshipInversePropertyPredicates = _hashMap_41;
-    HashMap<String, Pair<EntityExistentialRestrictionAxiom, Map<String, String>>> _hashMap_42 = new HashMap<String, Pair<EntityExistentialRestrictionAxiom, Map<String, String>>>();
-    this.entityExistentialRestrictionAxioms = _hashMap_42;
-    HashMap<String, Pair<EntityUniversalRestrictionAxiom, Map<String, String>>> _hashMap_43 = new HashMap<String, Pair<EntityUniversalRestrictionAxiom, Map<String, String>>>();
-    this.entityUniversalRestrictionAxioms = _hashMap_43;
-    HashMap<String, Pair<EntityScalarDataPropertyExistentialRestrictionAxiom, Map<String, String>>> _hashMap_44 = new HashMap<String, Pair<EntityScalarDataPropertyExistentialRestrictionAxiom, Map<String, String>>>();
-    this.entityScalarDataPropertyExistentialRestrictionAxioms = _hashMap_44;
-    HashMap<String, Pair<EntityScalarDataPropertyParticularRestrictionAxiom, Map<String, String>>> _hashMap_45 = new HashMap<String, Pair<EntityScalarDataPropertyParticularRestrictionAxiom, Map<String, String>>>();
-    this.entityScalarDataPropertyParticularRestrictionAxioms = _hashMap_45;
-    HashMap<String, Pair<EntityScalarDataPropertyUniversalRestrictionAxiom, Map<String, String>>> _hashMap_46 = new HashMap<String, Pair<EntityScalarDataPropertyUniversalRestrictionAxiom, Map<String, String>>>();
-    this.entityScalarDataPropertyUniversalRestrictionAxioms = _hashMap_46;
-    HashMap<String, Pair<EntityStructuredDataPropertyParticularRestrictionAxiom, Map<String, String>>> _hashMap_47 = new HashMap<String, Pair<EntityStructuredDataPropertyParticularRestrictionAxiom, Map<String, String>>>();
-    this.entityStructuredDataPropertyParticularRestrictionAxioms = _hashMap_47;
-    HashMap<String, Pair<RestrictionStructuredDataPropertyTuple, Map<String, String>>> _hashMap_48 = new HashMap<String, Pair<RestrictionStructuredDataPropertyTuple, Map<String, String>>>();
-    this.restrictionStructuredDataPropertyTuples = _hashMap_48;
-    HashMap<String, Pair<RestrictionScalarDataPropertyValue, Map<String, String>>> _hashMap_49 = new HashMap<String, Pair<RestrictionScalarDataPropertyValue, Map<String, String>>>();
-    this.restrictionScalarDataPropertyValues = _hashMap_49;
-    HashMap<String, Pair<AspectSpecializationAxiom, Map<String, String>>> _hashMap_50 = new HashMap<String, Pair<AspectSpecializationAxiom, Map<String, String>>>();
-    this.aspectSpecializationAxioms = _hashMap_50;
-    HashMap<String, Pair<ConceptSpecializationAxiom, Map<String, String>>> _hashMap_51 = new HashMap<String, Pair<ConceptSpecializationAxiom, Map<String, String>>>();
-    this.conceptSpecializationAxioms = _hashMap_51;
-    HashMap<String, Pair<ReifiedRelationshipSpecializationAxiom, Map<String, String>>> _hashMap_52 = new HashMap<String, Pair<ReifiedRelationshipSpecializationAxiom, Map<String, String>>>();
-    this.reifiedRelationshipSpecializationAxioms = _hashMap_52;
-    HashMap<String, Pair<SubDataPropertyOfAxiom, Map<String, String>>> _hashMap_53 = new HashMap<String, Pair<SubDataPropertyOfAxiom, Map<String, String>>>();
-    this.subDataPropertyOfAxioms = _hashMap_53;
-    HashMap<String, Pair<SubObjectPropertyOfAxiom, Map<String, String>>> _hashMap_54 = new HashMap<String, Pair<SubObjectPropertyOfAxiom, Map<String, String>>>();
-    this.subObjectPropertyOfAxioms = _hashMap_54;
-    HashMap<String, Pair<RootConceptTaxonomyAxiom, Map<String, String>>> _hashMap_55 = new HashMap<String, Pair<RootConceptTaxonomyAxiom, Map<String, String>>>();
-    this.rootConceptTaxonomyAxioms = _hashMap_55;
-    HashMap<String, Pair<AnonymousConceptUnionAxiom, Map<String, String>>> _hashMap_56 = new HashMap<String, Pair<AnonymousConceptUnionAxiom, Map<String, String>>>();
-    this.anonymousConceptUnionAxioms = _hashMap_56;
-    HashMap<String, Pair<SpecificDisjointConceptAxiom, Map<String, String>>> _hashMap_57 = new HashMap<String, Pair<SpecificDisjointConceptAxiom, Map<String, String>>>();
-    this.specificDisjointConceptAxioms = _hashMap_57;
-    HashMap<String, Pair<ConceptInstance, Map<String, String>>> _hashMap_58 = new HashMap<String, Pair<ConceptInstance, Map<String, String>>>();
-    this.conceptInstances = _hashMap_58;
-    HashMap<String, Pair<ReifiedRelationshipInstance, Map<String, String>>> _hashMap_59 = new HashMap<String, Pair<ReifiedRelationshipInstance, Map<String, String>>>();
-    this.reifiedRelationshipInstances = _hashMap_59;
-    HashMap<String, Pair<ReifiedRelationshipInstanceDomain, Map<String, String>>> _hashMap_60 = new HashMap<String, Pair<ReifiedRelationshipInstanceDomain, Map<String, String>>>();
-    this.reifiedRelationshipInstanceDomains = _hashMap_60;
-    HashMap<String, Pair<ReifiedRelationshipInstanceRange, Map<String, String>>> _hashMap_61 = new HashMap<String, Pair<ReifiedRelationshipInstanceRange, Map<String, String>>>();
-    this.reifiedRelationshipInstanceRanges = _hashMap_61;
-    HashMap<String, Pair<UnreifiedRelationshipInstanceTuple, Map<String, String>>> _hashMap_62 = new HashMap<String, Pair<UnreifiedRelationshipInstanceTuple, Map<String, String>>>();
-    this.unreifiedRelationshipInstanceTuples = _hashMap_62;
-    HashMap<String, Pair<SingletonInstanceStructuredDataPropertyValue, Map<String, String>>> _hashMap_63 = new HashMap<String, Pair<SingletonInstanceStructuredDataPropertyValue, Map<String, String>>>();
-    this.singletonInstanceStructuredDataPropertyValues = _hashMap_63;
-    HashMap<String, Pair<SingletonInstanceScalarDataPropertyValue, Map<String, String>>> _hashMap_64 = new HashMap<String, Pair<SingletonInstanceScalarDataPropertyValue, Map<String, String>>>();
-    this.singletonInstanceScalarDataPropertyValues = _hashMap_64;
-    HashMap<String, Pair<StructuredDataPropertyTuple, Map<String, String>>> _hashMap_65 = new HashMap<String, Pair<StructuredDataPropertyTuple, Map<String, String>>>();
-    this.structuredDataPropertyTuples = _hashMap_65;
-    HashMap<String, Pair<ScalarDataPropertyValue, Map<String, String>>> _hashMap_66 = new HashMap<String, Pair<ScalarDataPropertyValue, Map<String, String>>>();
-    this.scalarDataPropertyValues = _hashMap_66;
-    HashMap<String, Pair<AnnotationPropertyValue, Map<String, String>>> _hashMap_67 = new HashMap<String, Pair<AnnotationPropertyValue, Map<String, String>>>();
-    this.annotationPropertyValues = _hashMap_67;
-    HashMap<String, Pair<Module, Map<String, String>>> _hashMap_68 = new HashMap<String, Pair<Module, Map<String, String>>>();
-    this.modules = _hashMap_68;
-    HashMap<String, Pair<LogicalElement, Map<String, String>>> _hashMap_69 = new HashMap<String, Pair<LogicalElement, Map<String, String>>>();
-    this.logicalElements = _hashMap_69;
-    HashMap<String, Pair<Entity, Map<String, String>>> _hashMap_70 = new HashMap<String, Pair<Entity, Map<String, String>>>();
-    this.entities = _hashMap_70;
-    HashMap<String, Pair<EntityRelationship, Map<String, String>>> _hashMap_71 = new HashMap<String, Pair<EntityRelationship, Map<String, String>>>();
-    this.entityRelationships = _hashMap_71;
-    HashMap<String, Pair<DataRange, Map<String, String>>> _hashMap_72 = new HashMap<String, Pair<DataRange, Map<String, String>>>();
-    this.dataRanges = _hashMap_72;
-    HashMap<String, Pair<DataRelationshipToScalar, Map<String, String>>> _hashMap_73 = new HashMap<String, Pair<DataRelationshipToScalar, Map<String, String>>>();
-    this.dataRelationshipToScalars = _hashMap_73;
-    HashMap<String, Pair<DataRelationshipToStructure, Map<String, String>>> _hashMap_74 = new HashMap<String, Pair<DataRelationshipToStructure, Map<String, String>>>();
-    this.dataRelationshipToStructures = _hashMap_74;
-    HashMap<String, Pair<RestrictionStructuredDataPropertyContext, Map<String, String>>> _hashMap_75 = new HashMap<String, Pair<RestrictionStructuredDataPropertyContext, Map<String, String>>>();
-    this.restrictionStructuredDataPropertyContexts = _hashMap_75;
-    HashMap<String, Pair<TerminologyBox, Map<String, String>>> _hashMap_76 = new HashMap<String, Pair<TerminologyBox, Map<String, String>>>();
-    this.terminologyBoxes = _hashMap_76;
-    HashMap<String, Pair<ConceptTreeDisjunction, Map<String, String>>> _hashMap_77 = new HashMap<String, Pair<ConceptTreeDisjunction, Map<String, String>>>();
-    this.conceptTreeDisjunctions = _hashMap_77;
-    HashMap<String, Pair<ConceptualEntitySingletonInstance, Map<String, String>>> _hashMap_78 = new HashMap<String, Pair<ConceptualEntitySingletonInstance, Map<String, String>>>();
-    this.conceptualEntitySingletonInstances = _hashMap_78;
-    HashMap<String, Pair<SingletonInstanceStructuredDataPropertyContext, Map<String, String>>> _hashMap_79 = new HashMap<String, Pair<SingletonInstanceStructuredDataPropertyContext, Map<String, String>>>();
-    this.singletonInstanceStructuredDataPropertyContexts = _hashMap_79;
+    HashMap<String, Pair<ForwardProperty, Map<String, String>>> _hashMap_28 = new HashMap<String, Pair<ForwardProperty, Map<String, String>>>();
+    this.forwardProperties = _hashMap_28;
+    HashMap<String, Pair<InverseProperty, Map<String, String>>> _hashMap_29 = new HashMap<String, Pair<InverseProperty, Map<String, String>>>();
+    this.inverseProperties = _hashMap_29;
+    HashMap<String, Pair<UnreifiedRelationship, Map<String, String>>> _hashMap_30 = new HashMap<String, Pair<UnreifiedRelationship, Map<String, String>>>();
+    this.unreifiedRelationships = _hashMap_30;
+    HashMap<String, Pair<ChainRule, Map<String, String>>> _hashMap_31 = new HashMap<String, Pair<ChainRule, Map<String, String>>>();
+    this.chainRules = _hashMap_31;
+    HashMap<String, Pair<RuleBodySegment, Map<String, String>>> _hashMap_32 = new HashMap<String, Pair<RuleBodySegment, Map<String, String>>>();
+    this.ruleBodySegments = _hashMap_32;
+    HashMap<String, Pair<SegmentPredicate, Map<String, String>>> _hashMap_33 = new HashMap<String, Pair<SegmentPredicate, Map<String, String>>>();
+    this.segmentPredicates = _hashMap_33;
+    HashMap<String, Pair<EntityExistentialRestrictionAxiom, Map<String, String>>> _hashMap_34 = new HashMap<String, Pair<EntityExistentialRestrictionAxiom, Map<String, String>>>();
+    this.entityExistentialRestrictionAxioms = _hashMap_34;
+    HashMap<String, Pair<EntityUniversalRestrictionAxiom, Map<String, String>>> _hashMap_35 = new HashMap<String, Pair<EntityUniversalRestrictionAxiom, Map<String, String>>>();
+    this.entityUniversalRestrictionAxioms = _hashMap_35;
+    HashMap<String, Pair<EntityScalarDataPropertyExistentialRestrictionAxiom, Map<String, String>>> _hashMap_36 = new HashMap<String, Pair<EntityScalarDataPropertyExistentialRestrictionAxiom, Map<String, String>>>();
+    this.entityScalarDataPropertyExistentialRestrictionAxioms = _hashMap_36;
+    HashMap<String, Pair<EntityScalarDataPropertyParticularRestrictionAxiom, Map<String, String>>> _hashMap_37 = new HashMap<String, Pair<EntityScalarDataPropertyParticularRestrictionAxiom, Map<String, String>>>();
+    this.entityScalarDataPropertyParticularRestrictionAxioms = _hashMap_37;
+    HashMap<String, Pair<EntityScalarDataPropertyUniversalRestrictionAxiom, Map<String, String>>> _hashMap_38 = new HashMap<String, Pair<EntityScalarDataPropertyUniversalRestrictionAxiom, Map<String, String>>>();
+    this.entityScalarDataPropertyUniversalRestrictionAxioms = _hashMap_38;
+    HashMap<String, Pair<EntityStructuredDataPropertyParticularRestrictionAxiom, Map<String, String>>> _hashMap_39 = new HashMap<String, Pair<EntityStructuredDataPropertyParticularRestrictionAxiom, Map<String, String>>>();
+    this.entityStructuredDataPropertyParticularRestrictionAxioms = _hashMap_39;
+    HashMap<String, Pair<RestrictionStructuredDataPropertyTuple, Map<String, String>>> _hashMap_40 = new HashMap<String, Pair<RestrictionStructuredDataPropertyTuple, Map<String, String>>>();
+    this.restrictionStructuredDataPropertyTuples = _hashMap_40;
+    HashMap<String, Pair<RestrictionScalarDataPropertyValue, Map<String, String>>> _hashMap_41 = new HashMap<String, Pair<RestrictionScalarDataPropertyValue, Map<String, String>>>();
+    this.restrictionScalarDataPropertyValues = _hashMap_41;
+    HashMap<String, Pair<AspectSpecializationAxiom, Map<String, String>>> _hashMap_42 = new HashMap<String, Pair<AspectSpecializationAxiom, Map<String, String>>>();
+    this.aspectSpecializationAxioms = _hashMap_42;
+    HashMap<String, Pair<ConceptSpecializationAxiom, Map<String, String>>> _hashMap_43 = new HashMap<String, Pair<ConceptSpecializationAxiom, Map<String, String>>>();
+    this.conceptSpecializationAxioms = _hashMap_43;
+    HashMap<String, Pair<ReifiedRelationshipSpecializationAxiom, Map<String, String>>> _hashMap_44 = new HashMap<String, Pair<ReifiedRelationshipSpecializationAxiom, Map<String, String>>>();
+    this.reifiedRelationshipSpecializationAxioms = _hashMap_44;
+    HashMap<String, Pair<SubDataPropertyOfAxiom, Map<String, String>>> _hashMap_45 = new HashMap<String, Pair<SubDataPropertyOfAxiom, Map<String, String>>>();
+    this.subDataPropertyOfAxioms = _hashMap_45;
+    HashMap<String, Pair<SubObjectPropertyOfAxiom, Map<String, String>>> _hashMap_46 = new HashMap<String, Pair<SubObjectPropertyOfAxiom, Map<String, String>>>();
+    this.subObjectPropertyOfAxioms = _hashMap_46;
+    HashMap<String, Pair<RootConceptTaxonomyAxiom, Map<String, String>>> _hashMap_47 = new HashMap<String, Pair<RootConceptTaxonomyAxiom, Map<String, String>>>();
+    this.rootConceptTaxonomyAxioms = _hashMap_47;
+    HashMap<String, Pair<AnonymousConceptUnionAxiom, Map<String, String>>> _hashMap_48 = new HashMap<String, Pair<AnonymousConceptUnionAxiom, Map<String, String>>>();
+    this.anonymousConceptUnionAxioms = _hashMap_48;
+    HashMap<String, Pair<SpecificDisjointConceptAxiom, Map<String, String>>> _hashMap_49 = new HashMap<String, Pair<SpecificDisjointConceptAxiom, Map<String, String>>>();
+    this.specificDisjointConceptAxioms = _hashMap_49;
+    HashMap<String, Pair<ConceptInstance, Map<String, String>>> _hashMap_50 = new HashMap<String, Pair<ConceptInstance, Map<String, String>>>();
+    this.conceptInstances = _hashMap_50;
+    HashMap<String, Pair<ReifiedRelationshipInstance, Map<String, String>>> _hashMap_51 = new HashMap<String, Pair<ReifiedRelationshipInstance, Map<String, String>>>();
+    this.reifiedRelationshipInstances = _hashMap_51;
+    HashMap<String, Pair<ReifiedRelationshipInstanceDomain, Map<String, String>>> _hashMap_52 = new HashMap<String, Pair<ReifiedRelationshipInstanceDomain, Map<String, String>>>();
+    this.reifiedRelationshipInstanceDomains = _hashMap_52;
+    HashMap<String, Pair<ReifiedRelationshipInstanceRange, Map<String, String>>> _hashMap_53 = new HashMap<String, Pair<ReifiedRelationshipInstanceRange, Map<String, String>>>();
+    this.reifiedRelationshipInstanceRanges = _hashMap_53;
+    HashMap<String, Pair<UnreifiedRelationshipInstanceTuple, Map<String, String>>> _hashMap_54 = new HashMap<String, Pair<UnreifiedRelationshipInstanceTuple, Map<String, String>>>();
+    this.unreifiedRelationshipInstanceTuples = _hashMap_54;
+    HashMap<String, Pair<SingletonInstanceStructuredDataPropertyValue, Map<String, String>>> _hashMap_55 = new HashMap<String, Pair<SingletonInstanceStructuredDataPropertyValue, Map<String, String>>>();
+    this.singletonInstanceStructuredDataPropertyValues = _hashMap_55;
+    HashMap<String, Pair<SingletonInstanceScalarDataPropertyValue, Map<String, String>>> _hashMap_56 = new HashMap<String, Pair<SingletonInstanceScalarDataPropertyValue, Map<String, String>>>();
+    this.singletonInstanceScalarDataPropertyValues = _hashMap_56;
+    HashMap<String, Pair<StructuredDataPropertyTuple, Map<String, String>>> _hashMap_57 = new HashMap<String, Pair<StructuredDataPropertyTuple, Map<String, String>>>();
+    this.structuredDataPropertyTuples = _hashMap_57;
+    HashMap<String, Pair<ScalarDataPropertyValue, Map<String, String>>> _hashMap_58 = new HashMap<String, Pair<ScalarDataPropertyValue, Map<String, String>>>();
+    this.scalarDataPropertyValues = _hashMap_58;
+    HashMap<String, Pair<AnnotationPropertyValue, Map<String, String>>> _hashMap_59 = new HashMap<String, Pair<AnnotationPropertyValue, Map<String, String>>>();
+    this.annotationPropertyValues = _hashMap_59;
+    HashMap<String, Pair<Module, Map<String, String>>> _hashMap_60 = new HashMap<String, Pair<Module, Map<String, String>>>();
+    this.modules = _hashMap_60;
+    HashMap<String, Pair<LogicalElement, Map<String, String>>> _hashMap_61 = new HashMap<String, Pair<LogicalElement, Map<String, String>>>();
+    this.logicalElements = _hashMap_61;
+    HashMap<String, Pair<Entity, Map<String, String>>> _hashMap_62 = new HashMap<String, Pair<Entity, Map<String, String>>>();
+    this.entities = _hashMap_62;
+    HashMap<String, Pair<EntityRelationship, Map<String, String>>> _hashMap_63 = new HashMap<String, Pair<EntityRelationship, Map<String, String>>>();
+    this.entityRelationships = _hashMap_63;
+    HashMap<String, Pair<DataRange, Map<String, String>>> _hashMap_64 = new HashMap<String, Pair<DataRange, Map<String, String>>>();
+    this.dataRanges = _hashMap_64;
+    HashMap<String, Pair<DataRelationshipToScalar, Map<String, String>>> _hashMap_65 = new HashMap<String, Pair<DataRelationshipToScalar, Map<String, String>>>();
+    this.dataRelationshipToScalars = _hashMap_65;
+    HashMap<String, Pair<DataRelationshipToStructure, Map<String, String>>> _hashMap_66 = new HashMap<String, Pair<DataRelationshipToStructure, Map<String, String>>>();
+    this.dataRelationshipToStructures = _hashMap_66;
+    HashMap<String, Pair<Predicate, Map<String, String>>> _hashMap_67 = new HashMap<String, Pair<Predicate, Map<String, String>>>();
+    this.predicates = _hashMap_67;
+    HashMap<String, Pair<RestrictableRelationship, Map<String, String>>> _hashMap_68 = new HashMap<String, Pair<RestrictableRelationship, Map<String, String>>>();
+    this.restrictableRelationships = _hashMap_68;
+    HashMap<String, Pair<RestrictionStructuredDataPropertyContext, Map<String, String>>> _hashMap_69 = new HashMap<String, Pair<RestrictionStructuredDataPropertyContext, Map<String, String>>>();
+    this.restrictionStructuredDataPropertyContexts = _hashMap_69;
+    HashMap<String, Pair<TerminologyBox, Map<String, String>>> _hashMap_70 = new HashMap<String, Pair<TerminologyBox, Map<String, String>>>();
+    this.terminologyBoxes = _hashMap_70;
+    HashMap<String, Pair<ConceptTreeDisjunction, Map<String, String>>> _hashMap_71 = new HashMap<String, Pair<ConceptTreeDisjunction, Map<String, String>>>();
+    this.conceptTreeDisjunctions = _hashMap_71;
+    HashMap<String, Pair<ConceptualEntitySingletonInstance, Map<String, String>>> _hashMap_72 = new HashMap<String, Pair<ConceptualEntitySingletonInstance, Map<String, String>>>();
+    this.conceptualEntitySingletonInstances = _hashMap_72;
+    HashMap<String, Pair<SingletonInstanceStructuredDataPropertyContext, Map<String, String>>> _hashMap_73 = new HashMap<String, Pair<SingletonInstanceStructuredDataPropertyContext, Map<String, String>>>();
+    this.singletonInstanceStructuredDataPropertyContexts = _hashMap_73;
   }
   
   public static void save(final Extent e, final ZipArchiveOutputStream zos) {
@@ -711,320 +681,256 @@ public class OMLSpecificationTables {
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_28 = new ZipArchiveEntry("UnreifiedRelationships.json");
+      ZipArchiveEntry _zipArchiveEntry_28 = new ZipArchiveEntry("ForwardProperties.json");
       entry = _zipArchiveEntry_28;
+      zos.putArchiveEntry(entry);
+      try {
+        zos.write(OMLSpecificationTables.forwardPropertiesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
+      ZipArchiveEntry _zipArchiveEntry_29 = new ZipArchiveEntry("InverseProperties.json");
+      entry = _zipArchiveEntry_29;
+      zos.putArchiveEntry(entry);
+      try {
+        zos.write(OMLSpecificationTables.inversePropertiesByteArray(e));
+      } finally {
+        zos.closeArchiveEntry();
+      }
+      ZipArchiveEntry _zipArchiveEntry_30 = new ZipArchiveEntry("UnreifiedRelationships.json");
+      entry = _zipArchiveEntry_30;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.unreifiedRelationshipsByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_29 = new ZipArchiveEntry("ChainRules.json");
-      entry = _zipArchiveEntry_29;
+      ZipArchiveEntry _zipArchiveEntry_31 = new ZipArchiveEntry("ChainRules.json");
+      entry = _zipArchiveEntry_31;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.chainRulesByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_30 = new ZipArchiveEntry("RuleBodySegments.json");
-      entry = _zipArchiveEntry_30;
+      ZipArchiveEntry _zipArchiveEntry_32 = new ZipArchiveEntry("RuleBodySegments.json");
+      entry = _zipArchiveEntry_32;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.ruleBodySegmentsByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_31 = new ZipArchiveEntry("AspectPredicates.json");
-      entry = _zipArchiveEntry_31;
-      zos.putArchiveEntry(entry);
-      try {
-        zos.write(OMLSpecificationTables.aspectPredicatesByteArray(e));
-      } finally {
-        zos.closeArchiveEntry();
-      }
-      ZipArchiveEntry _zipArchiveEntry_32 = new ZipArchiveEntry("ConceptPredicates.json");
-      entry = _zipArchiveEntry_32;
-      zos.putArchiveEntry(entry);
-      try {
-        zos.write(OMLSpecificationTables.conceptPredicatesByteArray(e));
-      } finally {
-        zos.closeArchiveEntry();
-      }
-      ZipArchiveEntry _zipArchiveEntry_33 = new ZipArchiveEntry("ReifiedRelationshipPredicates.json");
+      ZipArchiveEntry _zipArchiveEntry_33 = new ZipArchiveEntry("SegmentPredicates.json");
       entry = _zipArchiveEntry_33;
       zos.putArchiveEntry(entry);
       try {
-        zos.write(OMLSpecificationTables.reifiedRelationshipPredicatesByteArray(e));
+        zos.write(OMLSpecificationTables.segmentPredicatesByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_34 = new ZipArchiveEntry("ReifiedRelationshipPropertyPredicates.json");
+      ZipArchiveEntry _zipArchiveEntry_34 = new ZipArchiveEntry("EntityExistentialRestrictionAxioms.json");
       entry = _zipArchiveEntry_34;
-      zos.putArchiveEntry(entry);
-      try {
-        zos.write(OMLSpecificationTables.reifiedRelationshipPropertyPredicatesByteArray(e));
-      } finally {
-        zos.closeArchiveEntry();
-      }
-      ZipArchiveEntry _zipArchiveEntry_35 = new ZipArchiveEntry("ReifiedRelationshipSourcePropertyPredicates.json");
-      entry = _zipArchiveEntry_35;
-      zos.putArchiveEntry(entry);
-      try {
-        zos.write(OMLSpecificationTables.reifiedRelationshipSourcePropertyPredicatesByteArray(e));
-      } finally {
-        zos.closeArchiveEntry();
-      }
-      ZipArchiveEntry _zipArchiveEntry_36 = new ZipArchiveEntry("ReifiedRelationshipTargetPropertyPredicates.json");
-      entry = _zipArchiveEntry_36;
-      zos.putArchiveEntry(entry);
-      try {
-        zos.write(OMLSpecificationTables.reifiedRelationshipTargetPropertyPredicatesByteArray(e));
-      } finally {
-        zos.closeArchiveEntry();
-      }
-      ZipArchiveEntry _zipArchiveEntry_37 = new ZipArchiveEntry("UnreifiedRelationshipPropertyPredicates.json");
-      entry = _zipArchiveEntry_37;
-      zos.putArchiveEntry(entry);
-      try {
-        zos.write(OMLSpecificationTables.unreifiedRelationshipPropertyPredicatesByteArray(e));
-      } finally {
-        zos.closeArchiveEntry();
-      }
-      ZipArchiveEntry _zipArchiveEntry_38 = new ZipArchiveEntry("ReifiedRelationshipInversePropertyPredicates.json");
-      entry = _zipArchiveEntry_38;
-      zos.putArchiveEntry(entry);
-      try {
-        zos.write(OMLSpecificationTables.reifiedRelationshipInversePropertyPredicatesByteArray(e));
-      } finally {
-        zos.closeArchiveEntry();
-      }
-      ZipArchiveEntry _zipArchiveEntry_39 = new ZipArchiveEntry("ReifiedRelationshipSourceInversePropertyPredicates.json");
-      entry = _zipArchiveEntry_39;
-      zos.putArchiveEntry(entry);
-      try {
-        zos.write(OMLSpecificationTables.reifiedRelationshipSourceInversePropertyPredicatesByteArray(e));
-      } finally {
-        zos.closeArchiveEntry();
-      }
-      ZipArchiveEntry _zipArchiveEntry_40 = new ZipArchiveEntry("ReifiedRelationshipTargetInversePropertyPredicates.json");
-      entry = _zipArchiveEntry_40;
-      zos.putArchiveEntry(entry);
-      try {
-        zos.write(OMLSpecificationTables.reifiedRelationshipTargetInversePropertyPredicatesByteArray(e));
-      } finally {
-        zos.closeArchiveEntry();
-      }
-      ZipArchiveEntry _zipArchiveEntry_41 = new ZipArchiveEntry("UnreifiedRelationshipInversePropertyPredicates.json");
-      entry = _zipArchiveEntry_41;
-      zos.putArchiveEntry(entry);
-      try {
-        zos.write(OMLSpecificationTables.unreifiedRelationshipInversePropertyPredicatesByteArray(e));
-      } finally {
-        zos.closeArchiveEntry();
-      }
-      ZipArchiveEntry _zipArchiveEntry_42 = new ZipArchiveEntry("EntityExistentialRestrictionAxioms.json");
-      entry = _zipArchiveEntry_42;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.entityExistentialRestrictionAxiomsByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_43 = new ZipArchiveEntry("EntityUniversalRestrictionAxioms.json");
-      entry = _zipArchiveEntry_43;
+      ZipArchiveEntry _zipArchiveEntry_35 = new ZipArchiveEntry("EntityUniversalRestrictionAxioms.json");
+      entry = _zipArchiveEntry_35;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.entityUniversalRestrictionAxiomsByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_44 = new ZipArchiveEntry("EntityScalarDataPropertyExistentialRestrictionAxioms.json");
-      entry = _zipArchiveEntry_44;
+      ZipArchiveEntry _zipArchiveEntry_36 = new ZipArchiveEntry("EntityScalarDataPropertyExistentialRestrictionAxioms.json");
+      entry = _zipArchiveEntry_36;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.entityScalarDataPropertyExistentialRestrictionAxiomsByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_45 = new ZipArchiveEntry("EntityScalarDataPropertyParticularRestrictionAxioms.json");
-      entry = _zipArchiveEntry_45;
+      ZipArchiveEntry _zipArchiveEntry_37 = new ZipArchiveEntry("EntityScalarDataPropertyParticularRestrictionAxioms.json");
+      entry = _zipArchiveEntry_37;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.entityScalarDataPropertyParticularRestrictionAxiomsByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_46 = new ZipArchiveEntry("EntityScalarDataPropertyUniversalRestrictionAxioms.json");
-      entry = _zipArchiveEntry_46;
+      ZipArchiveEntry _zipArchiveEntry_38 = new ZipArchiveEntry("EntityScalarDataPropertyUniversalRestrictionAxioms.json");
+      entry = _zipArchiveEntry_38;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.entityScalarDataPropertyUniversalRestrictionAxiomsByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_47 = new ZipArchiveEntry("EntityStructuredDataPropertyParticularRestrictionAxioms.json");
-      entry = _zipArchiveEntry_47;
+      ZipArchiveEntry _zipArchiveEntry_39 = new ZipArchiveEntry("EntityStructuredDataPropertyParticularRestrictionAxioms.json");
+      entry = _zipArchiveEntry_39;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.entityStructuredDataPropertyParticularRestrictionAxiomsByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_48 = new ZipArchiveEntry("RestrictionStructuredDataPropertyTuples.json");
-      entry = _zipArchiveEntry_48;
+      ZipArchiveEntry _zipArchiveEntry_40 = new ZipArchiveEntry("RestrictionStructuredDataPropertyTuples.json");
+      entry = _zipArchiveEntry_40;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.restrictionStructuredDataPropertyTuplesByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_49 = new ZipArchiveEntry("RestrictionScalarDataPropertyValues.json");
-      entry = _zipArchiveEntry_49;
+      ZipArchiveEntry _zipArchiveEntry_41 = new ZipArchiveEntry("RestrictionScalarDataPropertyValues.json");
+      entry = _zipArchiveEntry_41;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.restrictionScalarDataPropertyValuesByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_50 = new ZipArchiveEntry("AspectSpecializationAxioms.json");
-      entry = _zipArchiveEntry_50;
+      ZipArchiveEntry _zipArchiveEntry_42 = new ZipArchiveEntry("AspectSpecializationAxioms.json");
+      entry = _zipArchiveEntry_42;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.aspectSpecializationAxiomsByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_51 = new ZipArchiveEntry("ConceptSpecializationAxioms.json");
-      entry = _zipArchiveEntry_51;
+      ZipArchiveEntry _zipArchiveEntry_43 = new ZipArchiveEntry("ConceptSpecializationAxioms.json");
+      entry = _zipArchiveEntry_43;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.conceptSpecializationAxiomsByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_52 = new ZipArchiveEntry("ReifiedRelationshipSpecializationAxioms.json");
-      entry = _zipArchiveEntry_52;
+      ZipArchiveEntry _zipArchiveEntry_44 = new ZipArchiveEntry("ReifiedRelationshipSpecializationAxioms.json");
+      entry = _zipArchiveEntry_44;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.reifiedRelationshipSpecializationAxiomsByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_53 = new ZipArchiveEntry("SubDataPropertyOfAxioms.json");
-      entry = _zipArchiveEntry_53;
+      ZipArchiveEntry _zipArchiveEntry_45 = new ZipArchiveEntry("SubDataPropertyOfAxioms.json");
+      entry = _zipArchiveEntry_45;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.subDataPropertyOfAxiomsByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_54 = new ZipArchiveEntry("SubObjectPropertyOfAxioms.json");
-      entry = _zipArchiveEntry_54;
+      ZipArchiveEntry _zipArchiveEntry_46 = new ZipArchiveEntry("SubObjectPropertyOfAxioms.json");
+      entry = _zipArchiveEntry_46;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.subObjectPropertyOfAxiomsByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_55 = new ZipArchiveEntry("RootConceptTaxonomyAxioms.json");
-      entry = _zipArchiveEntry_55;
+      ZipArchiveEntry _zipArchiveEntry_47 = new ZipArchiveEntry("RootConceptTaxonomyAxioms.json");
+      entry = _zipArchiveEntry_47;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.rootConceptTaxonomyAxiomsByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_56 = new ZipArchiveEntry("AnonymousConceptUnionAxioms.json");
-      entry = _zipArchiveEntry_56;
+      ZipArchiveEntry _zipArchiveEntry_48 = new ZipArchiveEntry("AnonymousConceptUnionAxioms.json");
+      entry = _zipArchiveEntry_48;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.anonymousConceptUnionAxiomsByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_57 = new ZipArchiveEntry("SpecificDisjointConceptAxioms.json");
-      entry = _zipArchiveEntry_57;
+      ZipArchiveEntry _zipArchiveEntry_49 = new ZipArchiveEntry("SpecificDisjointConceptAxioms.json");
+      entry = _zipArchiveEntry_49;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.specificDisjointConceptAxiomsByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_58 = new ZipArchiveEntry("ConceptInstances.json");
-      entry = _zipArchiveEntry_58;
+      ZipArchiveEntry _zipArchiveEntry_50 = new ZipArchiveEntry("ConceptInstances.json");
+      entry = _zipArchiveEntry_50;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.conceptInstancesByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_59 = new ZipArchiveEntry("ReifiedRelationshipInstances.json");
-      entry = _zipArchiveEntry_59;
+      ZipArchiveEntry _zipArchiveEntry_51 = new ZipArchiveEntry("ReifiedRelationshipInstances.json");
+      entry = _zipArchiveEntry_51;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.reifiedRelationshipInstancesByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_60 = new ZipArchiveEntry("ReifiedRelationshipInstanceDomains.json");
-      entry = _zipArchiveEntry_60;
+      ZipArchiveEntry _zipArchiveEntry_52 = new ZipArchiveEntry("ReifiedRelationshipInstanceDomains.json");
+      entry = _zipArchiveEntry_52;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.reifiedRelationshipInstanceDomainsByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_61 = new ZipArchiveEntry("ReifiedRelationshipInstanceRanges.json");
-      entry = _zipArchiveEntry_61;
+      ZipArchiveEntry _zipArchiveEntry_53 = new ZipArchiveEntry("ReifiedRelationshipInstanceRanges.json");
+      entry = _zipArchiveEntry_53;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.reifiedRelationshipInstanceRangesByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_62 = new ZipArchiveEntry("UnreifiedRelationshipInstanceTuples.json");
-      entry = _zipArchiveEntry_62;
+      ZipArchiveEntry _zipArchiveEntry_54 = new ZipArchiveEntry("UnreifiedRelationshipInstanceTuples.json");
+      entry = _zipArchiveEntry_54;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.unreifiedRelationshipInstanceTuplesByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_63 = new ZipArchiveEntry("SingletonInstanceStructuredDataPropertyValues.json");
-      entry = _zipArchiveEntry_63;
+      ZipArchiveEntry _zipArchiveEntry_55 = new ZipArchiveEntry("SingletonInstanceStructuredDataPropertyValues.json");
+      entry = _zipArchiveEntry_55;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.singletonInstanceStructuredDataPropertyValuesByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_64 = new ZipArchiveEntry("SingletonInstanceScalarDataPropertyValues.json");
-      entry = _zipArchiveEntry_64;
+      ZipArchiveEntry _zipArchiveEntry_56 = new ZipArchiveEntry("SingletonInstanceScalarDataPropertyValues.json");
+      entry = _zipArchiveEntry_56;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.singletonInstanceScalarDataPropertyValuesByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_65 = new ZipArchiveEntry("StructuredDataPropertyTuples.json");
-      entry = _zipArchiveEntry_65;
+      ZipArchiveEntry _zipArchiveEntry_57 = new ZipArchiveEntry("StructuredDataPropertyTuples.json");
+      entry = _zipArchiveEntry_57;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.structuredDataPropertyTuplesByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_66 = new ZipArchiveEntry("ScalarDataPropertyValues.json");
-      entry = _zipArchiveEntry_66;
+      ZipArchiveEntry _zipArchiveEntry_58 = new ZipArchiveEntry("ScalarDataPropertyValues.json");
+      entry = _zipArchiveEntry_58;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.scalarDataPropertyValuesByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_67 = new ZipArchiveEntry("AnnotationPropertyValues.json");
-      entry = _zipArchiveEntry_67;
+      ZipArchiveEntry _zipArchiveEntry_59 = new ZipArchiveEntry("AnnotationPropertyValues.json");
+      entry = _zipArchiveEntry_59;
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.annotationPropertyValuesByteArray(e));
@@ -1936,15 +1842,57 @@ public class OMLSpecificationTables {
       pw.print(",");
       pw.print("\"name\":");
       pw.print(OMLTables.toString(it.name()));
-      pw.print(",");
-      pw.print("\"unreifiedPropertyName\":");
-      pw.print(OMLTables.toString(it.getUnreifiedPropertyName()));
-      pw.print(",");
-      pw.print("\"unreifiedInversePropertyName\":");
-      pw.print(OMLTables.toString(it.getUnreifiedInversePropertyName()));
       pw.println("}");
     };
     OMLTables.reifiedRelationships(e).forEach(_function);
+    pw.close();
+    return bos.toByteArray();
+  }
+  
+  public static byte[] forwardPropertiesByteArray(final Extent e) {
+    final ByteArrayOutputStream bos = new ByteArrayOutputStream();
+    final PrintWriter pw = new PrintWriter(bos);
+    final Consumer<ForwardProperty> _function = (ForwardProperty it) -> {
+      pw.print("{");
+      pw.print("\"uuid\":");
+      pw.print("\"");
+      pw.print(it.uuid());
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"name\":");
+      pw.print(OMLTables.toString(it.name()));
+      pw.print(",");
+      pw.print("\"reifiedRelationshipUUID\":");
+      pw.print("\"");
+      pw.print(it.getReifiedRelationship().uuid());
+      pw.print("\"");
+      pw.println("}");
+    };
+    OMLTables.forwardProperties(e).forEach(_function);
+    pw.close();
+    return bos.toByteArray();
+  }
+  
+  public static byte[] inversePropertiesByteArray(final Extent e) {
+    final ByteArrayOutputStream bos = new ByteArrayOutputStream();
+    final PrintWriter pw = new PrintWriter(bos);
+    final Consumer<InverseProperty> _function = (InverseProperty it) -> {
+      pw.print("{");
+      pw.print("\"uuid\":");
+      pw.print("\"");
+      pw.print(it.uuid());
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"name\":");
+      pw.print(OMLTables.toString(it.name()));
+      pw.print(",");
+      pw.print("\"reifiedRelationshipUUID\":");
+      pw.print("\"");
+      pw.print(it.getReifiedRelationship().uuid());
+      pw.print("\"");
+      pw.println("}");
+    };
+    OMLTables.inverseProperties(e).forEach(_function);
     pw.close();
     return bos.toByteArray();
   }
@@ -2087,36 +2035,10 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] aspectPredicatesByteArray(final Extent e) {
+  public static byte[] segmentPredicatesByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
-    final Consumer<AspectPredicate> _function = (AspectPredicate it) -> {
-      pw.print("{");
-      pw.print("\"uuid\":");
-      pw.print("\"");
-      pw.print(it.uuid());
-      pw.print("\"");
-      pw.print(",");
-      pw.print("\"aspectUUID\":");
-      pw.print("\"");
-      pw.print(it.getAspect().uuid());
-      pw.print("\"");
-      pw.print(",");
-      pw.print("\"bodySegmentUUID\":");
-      pw.print("\"");
-      pw.print(it.getBodySegment().uuid());
-      pw.print("\"");
-      pw.println("}");
-    };
-    OMLTables.aspectPredicates(e).forEach(_function);
-    pw.close();
-    return bos.toByteArray();
-  }
-  
-  public static byte[] conceptPredicatesByteArray(final Extent e) {
-    final ByteArrayOutputStream bos = new ByteArrayOutputStream();
-    final PrintWriter pw = new PrintWriter(bos);
-    final Consumer<ConceptPredicate> _function = (ConceptPredicate it) -> {
+    final Consumer<SegmentPredicate> _function = (SegmentPredicate it) -> {
       pw.print("{");
       pw.print("\"uuid\":");
       pw.print("\"");
@@ -2128,247 +2050,104 @@ public class OMLSpecificationTables {
       pw.print(it.getBodySegment().uuid());
       pw.print("\"");
       pw.print(",");
-      pw.print("\"conceptUUID\":");
-      pw.print("\"");
-      pw.print(it.getConcept().uuid());
-      pw.print("\"");
+      pw.print("\"predicateUUID\":");
+      Predicate _predicate = it.getPredicate();
+      boolean _tripleNotEquals = (null != _predicate);
+      if (_tripleNotEquals) {
+        pw.print("\"");
+        Predicate _predicate_1 = it.getPredicate();
+        String _uuid = null;
+        if (_predicate_1!=null) {
+          _uuid=_predicate_1.uuid();
+        }
+        pw.print(_uuid);
+        pw.print("\"");
+      } else {
+        pw.print("null");
+      }
+      pw.print(",");
+      pw.print("\"reifiedRelationshipSourceUUID\":");
+      ReifiedRelationship _reifiedRelationshipSource = it.getReifiedRelationshipSource();
+      boolean _tripleNotEquals_1 = (null != _reifiedRelationshipSource);
+      if (_tripleNotEquals_1) {
+        pw.print("\"");
+        ReifiedRelationship _reifiedRelationshipSource_1 = it.getReifiedRelationshipSource();
+        String _uuid_1 = null;
+        if (_reifiedRelationshipSource_1!=null) {
+          _uuid_1=_reifiedRelationshipSource_1.uuid();
+        }
+        pw.print(_uuid_1);
+        pw.print("\"");
+      } else {
+        pw.print("null");
+      }
+      pw.print(",");
+      pw.print("\"reifiedRelationshipInverseSourceUUID\":");
+      ReifiedRelationship _reifiedRelationshipInverseSource = it.getReifiedRelationshipInverseSource();
+      boolean _tripleNotEquals_2 = (null != _reifiedRelationshipInverseSource);
+      if (_tripleNotEquals_2) {
+        pw.print("\"");
+        ReifiedRelationship _reifiedRelationshipInverseSource_1 = it.getReifiedRelationshipInverseSource();
+        String _uuid_2 = null;
+        if (_reifiedRelationshipInverseSource_1!=null) {
+          _uuid_2=_reifiedRelationshipInverseSource_1.uuid();
+        }
+        pw.print(_uuid_2);
+        pw.print("\"");
+      } else {
+        pw.print("null");
+      }
+      pw.print(",");
+      pw.print("\"reifiedRelationshipTargetUUID\":");
+      ReifiedRelationship _reifiedRelationshipTarget = it.getReifiedRelationshipTarget();
+      boolean _tripleNotEquals_3 = (null != _reifiedRelationshipTarget);
+      if (_tripleNotEquals_3) {
+        pw.print("\"");
+        ReifiedRelationship _reifiedRelationshipTarget_1 = it.getReifiedRelationshipTarget();
+        String _uuid_3 = null;
+        if (_reifiedRelationshipTarget_1!=null) {
+          _uuid_3=_reifiedRelationshipTarget_1.uuid();
+        }
+        pw.print(_uuid_3);
+        pw.print("\"");
+      } else {
+        pw.print("null");
+      }
+      pw.print(",");
+      pw.print("\"reifiedRelationshipInverseTargetUUID\":");
+      ReifiedRelationship _reifiedRelationshipInverseTarget = it.getReifiedRelationshipInverseTarget();
+      boolean _tripleNotEquals_4 = (null != _reifiedRelationshipInverseTarget);
+      if (_tripleNotEquals_4) {
+        pw.print("\"");
+        ReifiedRelationship _reifiedRelationshipInverseTarget_1 = it.getReifiedRelationshipInverseTarget();
+        String _uuid_4 = null;
+        if (_reifiedRelationshipInverseTarget_1!=null) {
+          _uuid_4=_reifiedRelationshipInverseTarget_1.uuid();
+        }
+        pw.print(_uuid_4);
+        pw.print("\"");
+      } else {
+        pw.print("null");
+      }
+      pw.print(",");
+      pw.print("\"unreifiedRelationshipInverseUUID\":");
+      UnreifiedRelationship _unreifiedRelationshipInverse = it.getUnreifiedRelationshipInverse();
+      boolean _tripleNotEquals_5 = (null != _unreifiedRelationshipInverse);
+      if (_tripleNotEquals_5) {
+        pw.print("\"");
+        UnreifiedRelationship _unreifiedRelationshipInverse_1 = it.getUnreifiedRelationshipInverse();
+        String _uuid_5 = null;
+        if (_unreifiedRelationshipInverse_1!=null) {
+          _uuid_5=_unreifiedRelationshipInverse_1.uuid();
+        }
+        pw.print(_uuid_5);
+        pw.print("\"");
+      } else {
+        pw.print("null");
+      }
       pw.println("}");
     };
-    OMLTables.conceptPredicates(e).forEach(_function);
-    pw.close();
-    return bos.toByteArray();
-  }
-  
-  public static byte[] reifiedRelationshipPredicatesByteArray(final Extent e) {
-    final ByteArrayOutputStream bos = new ByteArrayOutputStream();
-    final PrintWriter pw = new PrintWriter(bos);
-    final Consumer<ReifiedRelationshipPredicate> _function = (ReifiedRelationshipPredicate it) -> {
-      pw.print("{");
-      pw.print("\"uuid\":");
-      pw.print("\"");
-      pw.print(it.uuid());
-      pw.print("\"");
-      pw.print(",");
-      pw.print("\"bodySegmentUUID\":");
-      pw.print("\"");
-      pw.print(it.getBodySegment().uuid());
-      pw.print("\"");
-      pw.print(",");
-      pw.print("\"reifiedRelationshipUUID\":");
-      pw.print("\"");
-      pw.print(it.getReifiedRelationship().uuid());
-      pw.print("\"");
-      pw.println("}");
-    };
-    OMLTables.reifiedRelationshipPredicates(e).forEach(_function);
-    pw.close();
-    return bos.toByteArray();
-  }
-  
-  public static byte[] reifiedRelationshipPropertyPredicatesByteArray(final Extent e) {
-    final ByteArrayOutputStream bos = new ByteArrayOutputStream();
-    final PrintWriter pw = new PrintWriter(bos);
-    final Consumer<ReifiedRelationshipPropertyPredicate> _function = (ReifiedRelationshipPropertyPredicate it) -> {
-      pw.print("{");
-      pw.print("\"uuid\":");
-      pw.print("\"");
-      pw.print(it.uuid());
-      pw.print("\"");
-      pw.print(",");
-      pw.print("\"bodySegmentUUID\":");
-      pw.print("\"");
-      pw.print(it.getBodySegment().uuid());
-      pw.print("\"");
-      pw.print(",");
-      pw.print("\"reifiedRelationshipUUID\":");
-      pw.print("\"");
-      pw.print(it.getReifiedRelationship().uuid());
-      pw.print("\"");
-      pw.println("}");
-    };
-    OMLTables.reifiedRelationshipPropertyPredicates(e).forEach(_function);
-    pw.close();
-    return bos.toByteArray();
-  }
-  
-  public static byte[] reifiedRelationshipSourcePropertyPredicatesByteArray(final Extent e) {
-    final ByteArrayOutputStream bos = new ByteArrayOutputStream();
-    final PrintWriter pw = new PrintWriter(bos);
-    final Consumer<ReifiedRelationshipSourcePropertyPredicate> _function = (ReifiedRelationshipSourcePropertyPredicate it) -> {
-      pw.print("{");
-      pw.print("\"uuid\":");
-      pw.print("\"");
-      pw.print(it.uuid());
-      pw.print("\"");
-      pw.print(",");
-      pw.print("\"bodySegmentUUID\":");
-      pw.print("\"");
-      pw.print(it.getBodySegment().uuid());
-      pw.print("\"");
-      pw.print(",");
-      pw.print("\"reifiedRelationshipUUID\":");
-      pw.print("\"");
-      pw.print(it.getReifiedRelationship().uuid());
-      pw.print("\"");
-      pw.println("}");
-    };
-    OMLTables.reifiedRelationshipSourcePropertyPredicates(e).forEach(_function);
-    pw.close();
-    return bos.toByteArray();
-  }
-  
-  public static byte[] reifiedRelationshipTargetPropertyPredicatesByteArray(final Extent e) {
-    final ByteArrayOutputStream bos = new ByteArrayOutputStream();
-    final PrintWriter pw = new PrintWriter(bos);
-    final Consumer<ReifiedRelationshipTargetPropertyPredicate> _function = (ReifiedRelationshipTargetPropertyPredicate it) -> {
-      pw.print("{");
-      pw.print("\"uuid\":");
-      pw.print("\"");
-      pw.print(it.uuid());
-      pw.print("\"");
-      pw.print(",");
-      pw.print("\"bodySegmentUUID\":");
-      pw.print("\"");
-      pw.print(it.getBodySegment().uuid());
-      pw.print("\"");
-      pw.print(",");
-      pw.print("\"reifiedRelationshipUUID\":");
-      pw.print("\"");
-      pw.print(it.getReifiedRelationship().uuid());
-      pw.print("\"");
-      pw.println("}");
-    };
-    OMLTables.reifiedRelationshipTargetPropertyPredicates(e).forEach(_function);
-    pw.close();
-    return bos.toByteArray();
-  }
-  
-  public static byte[] unreifiedRelationshipPropertyPredicatesByteArray(final Extent e) {
-    final ByteArrayOutputStream bos = new ByteArrayOutputStream();
-    final PrintWriter pw = new PrintWriter(bos);
-    final Consumer<UnreifiedRelationshipPropertyPredicate> _function = (UnreifiedRelationshipPropertyPredicate it) -> {
-      pw.print("{");
-      pw.print("\"uuid\":");
-      pw.print("\"");
-      pw.print(it.uuid());
-      pw.print("\"");
-      pw.print(",");
-      pw.print("\"unreifiedRelationshipUUID\":");
-      pw.print("\"");
-      pw.print(it.getUnreifiedRelationship().uuid());
-      pw.print("\"");
-      pw.print(",");
-      pw.print("\"bodySegmentUUID\":");
-      pw.print("\"");
-      pw.print(it.getBodySegment().uuid());
-      pw.print("\"");
-      pw.println("}");
-    };
-    OMLTables.unreifiedRelationshipPropertyPredicates(e).forEach(_function);
-    pw.close();
-    return bos.toByteArray();
-  }
-  
-  public static byte[] reifiedRelationshipInversePropertyPredicatesByteArray(final Extent e) {
-    final ByteArrayOutputStream bos = new ByteArrayOutputStream();
-    final PrintWriter pw = new PrintWriter(bos);
-    final Consumer<ReifiedRelationshipInversePropertyPredicate> _function = (ReifiedRelationshipInversePropertyPredicate it) -> {
-      pw.print("{");
-      pw.print("\"uuid\":");
-      pw.print("\"");
-      pw.print(it.uuid());
-      pw.print("\"");
-      pw.print(",");
-      pw.print("\"bodySegmentUUID\":");
-      pw.print("\"");
-      pw.print(it.getBodySegment().uuid());
-      pw.print("\"");
-      pw.print(",");
-      pw.print("\"reifiedRelationshipUUID\":");
-      pw.print("\"");
-      pw.print(it.getReifiedRelationship().uuid());
-      pw.print("\"");
-      pw.println("}");
-    };
-    OMLTables.reifiedRelationshipInversePropertyPredicates(e).forEach(_function);
-    pw.close();
-    return bos.toByteArray();
-  }
-  
-  public static byte[] reifiedRelationshipSourceInversePropertyPredicatesByteArray(final Extent e) {
-    final ByteArrayOutputStream bos = new ByteArrayOutputStream();
-    final PrintWriter pw = new PrintWriter(bos);
-    final Consumer<ReifiedRelationshipSourceInversePropertyPredicate> _function = (ReifiedRelationshipSourceInversePropertyPredicate it) -> {
-      pw.print("{");
-      pw.print("\"uuid\":");
-      pw.print("\"");
-      pw.print(it.uuid());
-      pw.print("\"");
-      pw.print(",");
-      pw.print("\"bodySegmentUUID\":");
-      pw.print("\"");
-      pw.print(it.getBodySegment().uuid());
-      pw.print("\"");
-      pw.print(",");
-      pw.print("\"reifiedRelationshipUUID\":");
-      pw.print("\"");
-      pw.print(it.getReifiedRelationship().uuid());
-      pw.print("\"");
-      pw.println("}");
-    };
-    OMLTables.reifiedRelationshipSourceInversePropertyPredicates(e).forEach(_function);
-    pw.close();
-    return bos.toByteArray();
-  }
-  
-  public static byte[] reifiedRelationshipTargetInversePropertyPredicatesByteArray(final Extent e) {
-    final ByteArrayOutputStream bos = new ByteArrayOutputStream();
-    final PrintWriter pw = new PrintWriter(bos);
-    final Consumer<ReifiedRelationshipTargetInversePropertyPredicate> _function = (ReifiedRelationshipTargetInversePropertyPredicate it) -> {
-      pw.print("{");
-      pw.print("\"uuid\":");
-      pw.print("\"");
-      pw.print(it.uuid());
-      pw.print("\"");
-      pw.print(",");
-      pw.print("\"bodySegmentUUID\":");
-      pw.print("\"");
-      pw.print(it.getBodySegment().uuid());
-      pw.print("\"");
-      pw.print(",");
-      pw.print("\"reifiedRelationshipUUID\":");
-      pw.print("\"");
-      pw.print(it.getReifiedRelationship().uuid());
-      pw.print("\"");
-      pw.println("}");
-    };
-    OMLTables.reifiedRelationshipTargetInversePropertyPredicates(e).forEach(_function);
-    pw.close();
-    return bos.toByteArray();
-  }
-  
-  public static byte[] unreifiedRelationshipInversePropertyPredicatesByteArray(final Extent e) {
-    final ByteArrayOutputStream bos = new ByteArrayOutputStream();
-    final PrintWriter pw = new PrintWriter(bos);
-    final Consumer<UnreifiedRelationshipInversePropertyPredicate> _function = (UnreifiedRelationshipInversePropertyPredicate it) -> {
-      pw.print("{");
-      pw.print("\"uuid\":");
-      pw.print("\"");
-      pw.print(it.uuid());
-      pw.print("\"");
-      pw.print(",");
-      pw.print("\"unreifiedRelationshipUUID\":");
-      pw.print("\"");
-      pw.print(it.getUnreifiedRelationship().uuid());
-      pw.print("\"");
-      pw.print(",");
-      pw.print("\"bodySegmentUUID\":");
-      pw.print("\"");
-      pw.print(it.getBodySegment().uuid());
-      pw.print("\"");
-      pw.println("}");
-    };
-    OMLTables.unreifiedRelationshipInversePropertyPredicates(e).forEach(_function);
+    OMLTables.segmentPredicates(e).forEach(_function);
     pw.close();
     return bos.toByteArray();
   }
@@ -2388,11 +2167,6 @@ public class OMLSpecificationTables {
       pw.print(it.getTbox().uuid());
       pw.print("\"");
       pw.print(",");
-      pw.print("\"restrictedRelationUUID\":");
-      pw.print("\"");
-      pw.print(it.getRestrictedRelation().uuid());
-      pw.print("\"");
-      pw.print(",");
       pw.print("\"restrictedDomainUUID\":");
       pw.print("\"");
       pw.print(it.getRestrictedDomain().uuid());
@@ -2401,6 +2175,11 @@ public class OMLSpecificationTables {
       pw.print("\"restrictedRangeUUID\":");
       pw.print("\"");
       pw.print(it.getRestrictedRange().uuid());
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"restrictedRelationshipUUID\":");
+      pw.print("\"");
+      pw.print(it.getRestrictedRelationship().uuid());
       pw.print("\"");
       pw.println("}");
     };
@@ -2424,11 +2203,6 @@ public class OMLSpecificationTables {
       pw.print(it.getTbox().uuid());
       pw.print("\"");
       pw.print(",");
-      pw.print("\"restrictedRelationUUID\":");
-      pw.print("\"");
-      pw.print(it.getRestrictedRelation().uuid());
-      pw.print("\"");
-      pw.print(",");
       pw.print("\"restrictedDomainUUID\":");
       pw.print("\"");
       pw.print(it.getRestrictedDomain().uuid());
@@ -2437,6 +2211,11 @@ public class OMLSpecificationTables {
       pw.print("\"restrictedRangeUUID\":");
       pw.print("\"");
       pw.print(it.getRestrictedRange().uuid());
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"restrictedRelationshipUUID\":");
+      pw.print("\"");
+      pw.print(it.getRestrictedRelationship().uuid());
       pw.print("\"");
       pw.println("}");
     };
@@ -3335,6 +3114,12 @@ public class OMLSpecificationTables {
               case "ReifiedRelationships.json":
                 tables.readReifiedRelationships(lines);
                 break;
+              case "ForwardProperties.json":
+                tables.readForwardProperties(lines);
+                break;
+              case "InverseProperties.json":
+                tables.readInverseProperties(lines);
+                break;
               case "UnreifiedRelationships.json":
                 tables.readUnreifiedRelationships(lines);
                 break;
@@ -3344,38 +3129,8 @@ public class OMLSpecificationTables {
               case "RuleBodySegments.json":
                 tables.readRuleBodySegments(lines);
                 break;
-              case "AspectPredicates.json":
-                tables.readAspectPredicates(lines);
-                break;
-              case "ConceptPredicates.json":
-                tables.readConceptPredicates(lines);
-                break;
-              case "ReifiedRelationshipPredicates.json":
-                tables.readReifiedRelationshipPredicates(lines);
-                break;
-              case "ReifiedRelationshipPropertyPredicates.json":
-                tables.readReifiedRelationshipPropertyPredicates(lines);
-                break;
-              case "ReifiedRelationshipSourcePropertyPredicates.json":
-                tables.readReifiedRelationshipSourcePropertyPredicates(lines);
-                break;
-              case "ReifiedRelationshipTargetPropertyPredicates.json":
-                tables.readReifiedRelationshipTargetPropertyPredicates(lines);
-                break;
-              case "UnreifiedRelationshipPropertyPredicates.json":
-                tables.readUnreifiedRelationshipPropertyPredicates(lines);
-                break;
-              case "ReifiedRelationshipInversePropertyPredicates.json":
-                tables.readReifiedRelationshipInversePropertyPredicates(lines);
-                break;
-              case "ReifiedRelationshipSourceInversePropertyPredicates.json":
-                tables.readReifiedRelationshipSourceInversePropertyPredicates(lines);
-                break;
-              case "ReifiedRelationshipTargetInversePropertyPredicates.json":
-                tables.readReifiedRelationshipTargetInversePropertyPredicates(lines);
-                break;
-              case "UnreifiedRelationshipInversePropertyPredicates.json":
-                tables.readUnreifiedRelationshipInversePropertyPredicates(lines);
+              case "SegmentPredicates.json":
+                tables.readSegmentPredicates(lines);
                 break;
               case "EntityExistentialRestrictionAxioms.json":
                 tables.readEntityExistentialRestrictionAxioms(lines);
@@ -3839,10 +3594,32 @@ public class OMLSpecificationTables {
       oml.setIsSymmetric((OMLTables.toEBoolean(kv.remove("isSymmetric"))).booleanValue());
       oml.setIsTransitive((OMLTables.toEBoolean(kv.remove("isTransitive"))).booleanValue());
       oml.setName(OMLTables.toLocalName(kv.remove("name")));
-      oml.setUnreifiedPropertyName(OMLTables.toLocalName(kv.remove("unreifiedPropertyName")));
-      oml.setUnreifiedInversePropertyName(OMLTables.toLocalName(kv.remove("unreifiedInversePropertyName")));
       final Pair<ReifiedRelationship, Map<String, String>> pair = new Pair<ReifiedRelationship, Map<String, String>>(oml, kv);
       this.reifiedRelationships.put(uuid, pair);
+    };
+    kvs.forEach(_function);
+  }
+  
+  protected void readForwardProperties(final ArrayList<String> lines) {
+    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
+      final ForwardProperty oml = this.omlTerminologiesFactory.createForwardProperty();
+      final String uuid = kv.remove("uuid");
+      oml.setName(OMLTables.toLocalName(kv.remove("name")));
+      final Pair<ForwardProperty, Map<String, String>> pair = new Pair<ForwardProperty, Map<String, String>>(oml, kv);
+      this.forwardProperties.put(uuid, pair);
+    };
+    kvs.forEach(_function);
+  }
+  
+  protected void readInverseProperties(final ArrayList<String> lines) {
+    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
+      final InverseProperty oml = this.omlTerminologiesFactory.createInverseProperty();
+      final String uuid = kv.remove("uuid");
+      oml.setName(OMLTables.toLocalName(kv.remove("name")));
+      final Pair<InverseProperty, Map<String, String>> pair = new Pair<InverseProperty, Map<String, String>>(oml, kv);
+      this.inverseProperties.put(uuid, pair);
     };
     kvs.forEach(_function);
   }
@@ -3891,123 +3668,13 @@ public class OMLSpecificationTables {
     kvs.forEach(_function);
   }
   
-  protected void readAspectPredicates(final ArrayList<String> lines) {
+  protected void readSegmentPredicates(final ArrayList<String> lines) {
     final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final AspectPredicate oml = this.omlTerminologiesFactory.createAspectPredicate();
+      final SegmentPredicate oml = this.omlTerminologiesFactory.createSegmentPredicate();
       final String uuid = kv.remove("uuid");
-      final Pair<AspectPredicate, Map<String, String>> pair = new Pair<AspectPredicate, Map<String, String>>(oml, kv);
-      this.aspectPredicates.put(uuid, pair);
-    };
-    kvs.forEach(_function);
-  }
-  
-  protected void readConceptPredicates(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final ConceptPredicate oml = this.omlTerminologiesFactory.createConceptPredicate();
-      final String uuid = kv.remove("uuid");
-      final Pair<ConceptPredicate, Map<String, String>> pair = new Pair<ConceptPredicate, Map<String, String>>(oml, kv);
-      this.conceptPredicates.put(uuid, pair);
-    };
-    kvs.forEach(_function);
-  }
-  
-  protected void readReifiedRelationshipPredicates(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final ReifiedRelationshipPredicate oml = this.omlTerminologiesFactory.createReifiedRelationshipPredicate();
-      final String uuid = kv.remove("uuid");
-      final Pair<ReifiedRelationshipPredicate, Map<String, String>> pair = new Pair<ReifiedRelationshipPredicate, Map<String, String>>(oml, kv);
-      this.reifiedRelationshipPredicates.put(uuid, pair);
-    };
-    kvs.forEach(_function);
-  }
-  
-  protected void readReifiedRelationshipPropertyPredicates(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final ReifiedRelationshipPropertyPredicate oml = this.omlTerminologiesFactory.createReifiedRelationshipPropertyPredicate();
-      final String uuid = kv.remove("uuid");
-      final Pair<ReifiedRelationshipPropertyPredicate, Map<String, String>> pair = new Pair<ReifiedRelationshipPropertyPredicate, Map<String, String>>(oml, kv);
-      this.reifiedRelationshipPropertyPredicates.put(uuid, pair);
-    };
-    kvs.forEach(_function);
-  }
-  
-  protected void readReifiedRelationshipSourcePropertyPredicates(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final ReifiedRelationshipSourcePropertyPredicate oml = this.omlTerminologiesFactory.createReifiedRelationshipSourcePropertyPredicate();
-      final String uuid = kv.remove("uuid");
-      final Pair<ReifiedRelationshipSourcePropertyPredicate, Map<String, String>> pair = new Pair<ReifiedRelationshipSourcePropertyPredicate, Map<String, String>>(oml, kv);
-      this.reifiedRelationshipSourcePropertyPredicates.put(uuid, pair);
-    };
-    kvs.forEach(_function);
-  }
-  
-  protected void readReifiedRelationshipTargetPropertyPredicates(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final ReifiedRelationshipTargetPropertyPredicate oml = this.omlTerminologiesFactory.createReifiedRelationshipTargetPropertyPredicate();
-      final String uuid = kv.remove("uuid");
-      final Pair<ReifiedRelationshipTargetPropertyPredicate, Map<String, String>> pair = new Pair<ReifiedRelationshipTargetPropertyPredicate, Map<String, String>>(oml, kv);
-      this.reifiedRelationshipTargetPropertyPredicates.put(uuid, pair);
-    };
-    kvs.forEach(_function);
-  }
-  
-  protected void readUnreifiedRelationshipPropertyPredicates(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final UnreifiedRelationshipPropertyPredicate oml = this.omlTerminologiesFactory.createUnreifiedRelationshipPropertyPredicate();
-      final String uuid = kv.remove("uuid");
-      final Pair<UnreifiedRelationshipPropertyPredicate, Map<String, String>> pair = new Pair<UnreifiedRelationshipPropertyPredicate, Map<String, String>>(oml, kv);
-      this.unreifiedRelationshipPropertyPredicates.put(uuid, pair);
-    };
-    kvs.forEach(_function);
-  }
-  
-  protected void readReifiedRelationshipInversePropertyPredicates(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final ReifiedRelationshipInversePropertyPredicate oml = this.omlTerminologiesFactory.createReifiedRelationshipInversePropertyPredicate();
-      final String uuid = kv.remove("uuid");
-      final Pair<ReifiedRelationshipInversePropertyPredicate, Map<String, String>> pair = new Pair<ReifiedRelationshipInversePropertyPredicate, Map<String, String>>(oml, kv);
-      this.reifiedRelationshipInversePropertyPredicates.put(uuid, pair);
-    };
-    kvs.forEach(_function);
-  }
-  
-  protected void readReifiedRelationshipSourceInversePropertyPredicates(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final ReifiedRelationshipSourceInversePropertyPredicate oml = this.omlTerminologiesFactory.createReifiedRelationshipSourceInversePropertyPredicate();
-      final String uuid = kv.remove("uuid");
-      final Pair<ReifiedRelationshipSourceInversePropertyPredicate, Map<String, String>> pair = new Pair<ReifiedRelationshipSourceInversePropertyPredicate, Map<String, String>>(oml, kv);
-      this.reifiedRelationshipSourceInversePropertyPredicates.put(uuid, pair);
-    };
-    kvs.forEach(_function);
-  }
-  
-  protected void readReifiedRelationshipTargetInversePropertyPredicates(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final ReifiedRelationshipTargetInversePropertyPredicate oml = this.omlTerminologiesFactory.createReifiedRelationshipTargetInversePropertyPredicate();
-      final String uuid = kv.remove("uuid");
-      final Pair<ReifiedRelationshipTargetInversePropertyPredicate, Map<String, String>> pair = new Pair<ReifiedRelationshipTargetInversePropertyPredicate, Map<String, String>>(oml, kv);
-      this.reifiedRelationshipTargetInversePropertyPredicates.put(uuid, pair);
-    };
-    kvs.forEach(_function);
-  }
-  
-  protected void readUnreifiedRelationshipInversePropertyPredicates(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final UnreifiedRelationshipInversePropertyPredicate oml = this.omlTerminologiesFactory.createUnreifiedRelationshipInversePropertyPredicate();
-      final String uuid = kv.remove("uuid");
-      final Pair<UnreifiedRelationshipInversePropertyPredicate, Map<String, String>> pair = new Pair<UnreifiedRelationshipInversePropertyPredicate, Map<String, String>>(oml, kv);
-      this.unreifiedRelationshipInversePropertyPredicates.put(uuid, pair);
+      final Pair<SegmentPredicate, Map<String, String>> pair = new Pair<SegmentPredicate, Map<String, String>>(oml, kv);
+      this.segmentPredicates.put(uuid, pair);
     };
     kvs.forEach(_function);
   }
@@ -4344,20 +4011,12 @@ public class OMLSpecificationTables {
     this.<LogicalElement, ScalarDataProperty>includeMap(this.logicalElements, this.scalarDataProperties);
     this.<LogicalElement, StructuredDataProperty>includeMap(this.logicalElements, this.structuredDataProperties);
     this.<LogicalElement, ReifiedRelationship>includeMap(this.logicalElements, this.reifiedRelationships);
+    this.<LogicalElement, ForwardProperty>includeMap(this.logicalElements, this.forwardProperties);
+    this.<LogicalElement, InverseProperty>includeMap(this.logicalElements, this.inverseProperties);
     this.<LogicalElement, UnreifiedRelationship>includeMap(this.logicalElements, this.unreifiedRelationships);
     this.<LogicalElement, ChainRule>includeMap(this.logicalElements, this.chainRules);
     this.<LogicalElement, RuleBodySegment>includeMap(this.logicalElements, this.ruleBodySegments);
-    this.<LogicalElement, AspectPredicate>includeMap(this.logicalElements, this.aspectPredicates);
-    this.<LogicalElement, ConceptPredicate>includeMap(this.logicalElements, this.conceptPredicates);
-    this.<LogicalElement, ReifiedRelationshipPredicate>includeMap(this.logicalElements, this.reifiedRelationshipPredicates);
-    this.<LogicalElement, ReifiedRelationshipPropertyPredicate>includeMap(this.logicalElements, this.reifiedRelationshipPropertyPredicates);
-    this.<LogicalElement, ReifiedRelationshipSourcePropertyPredicate>includeMap(this.logicalElements, this.reifiedRelationshipSourcePropertyPredicates);
-    this.<LogicalElement, ReifiedRelationshipTargetPropertyPredicate>includeMap(this.logicalElements, this.reifiedRelationshipTargetPropertyPredicates);
-    this.<LogicalElement, UnreifiedRelationshipPropertyPredicate>includeMap(this.logicalElements, this.unreifiedRelationshipPropertyPredicates);
-    this.<LogicalElement, ReifiedRelationshipInversePropertyPredicate>includeMap(this.logicalElements, this.reifiedRelationshipInversePropertyPredicates);
-    this.<LogicalElement, ReifiedRelationshipSourceInversePropertyPredicate>includeMap(this.logicalElements, this.reifiedRelationshipSourceInversePropertyPredicates);
-    this.<LogicalElement, ReifiedRelationshipTargetInversePropertyPredicate>includeMap(this.logicalElements, this.reifiedRelationshipTargetInversePropertyPredicates);
-    this.<LogicalElement, UnreifiedRelationshipInversePropertyPredicate>includeMap(this.logicalElements, this.unreifiedRelationshipInversePropertyPredicates);
+    this.<LogicalElement, SegmentPredicate>includeMap(this.logicalElements, this.segmentPredicates);
     this.<LogicalElement, EntityExistentialRestrictionAxiom>includeMap(this.logicalElements, this.entityExistentialRestrictionAxioms);
     this.<LogicalElement, EntityUniversalRestrictionAxiom>includeMap(this.logicalElements, this.entityUniversalRestrictionAxioms);
     this.<LogicalElement, EntityScalarDataPropertyExistentialRestrictionAxiom>includeMap(this.logicalElements, this.entityScalarDataPropertyExistentialRestrictionAxioms);
@@ -4436,20 +4095,12 @@ public class OMLSpecificationTables {
     this.resolveScalarDataProperties(rs);
     this.resolveStructuredDataProperties(rs);
     this.resolveReifiedRelationships(rs);
+    this.resolveForwardProperties(rs);
+    this.resolveInverseProperties(rs);
     this.resolveUnreifiedRelationships(rs);
     this.resolveChainRules(rs);
     this.resolveRuleBodySegments(rs);
-    this.resolveAspectPredicates(rs);
-    this.resolveConceptPredicates(rs);
-    this.resolveReifiedRelationshipPredicates(rs);
-    this.resolveReifiedRelationshipPropertyPredicates(rs);
-    this.resolveReifiedRelationshipSourcePropertyPredicates(rs);
-    this.resolveReifiedRelationshipTargetPropertyPredicates(rs);
-    this.resolveUnreifiedRelationshipPropertyPredicates(rs);
-    this.resolveReifiedRelationshipInversePropertyPredicates(rs);
-    this.resolveReifiedRelationshipSourceInversePropertyPredicates(rs);
-    this.resolveReifiedRelationshipTargetInversePropertyPredicates(rs);
-    this.resolveUnreifiedRelationshipInversePropertyPredicates(rs);
+    this.resolveSegmentPredicates(rs);
     this.resolveEntityExistentialRestrictionAxioms(rs);
     this.resolveEntityUniversalRestrictionAxioms(rs);
     this.resolveEntityScalarDataPropertyExistentialRestrictionAxioms(rs);
@@ -5119,6 +4770,42 @@ public class OMLSpecificationTables {
     this.reifiedRelationships.forEach(_function);
   }
   
+  protected void resolveForwardProperties(final OMLZipResourceSet rs) {
+    final BiConsumer<String, Pair<ForwardProperty, Map<String, String>>> _function = (String uuid, Pair<ForwardProperty, Map<String, String>> oml_kv) -> {
+      final ForwardProperty oml = oml_kv.getKey();
+      final Map<String, String> kv = oml_kv.getValue();
+      boolean _isEmpty = kv.isEmpty();
+      boolean _not = (!_isEmpty);
+      if (_not) {
+        final String reifiedRelationshipXRef = kv.remove("reifiedRelationshipUUID");
+        final Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipPair = this.reifiedRelationships.get(reifiedRelationshipXRef);
+        if ((null == reifiedRelationshipPair)) {
+          throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationship in forwardProperties");
+        }
+        oml.setReifiedRelationship(reifiedRelationshipPair.getKey());
+      }
+    };
+    this.forwardProperties.forEach(_function);
+  }
+  
+  protected void resolveInverseProperties(final OMLZipResourceSet rs) {
+    final BiConsumer<String, Pair<InverseProperty, Map<String, String>>> _function = (String uuid, Pair<InverseProperty, Map<String, String>> oml_kv) -> {
+      final InverseProperty oml = oml_kv.getKey();
+      final Map<String, String> kv = oml_kv.getValue();
+      boolean _isEmpty = kv.isEmpty();
+      boolean _not = (!_isEmpty);
+      if (_not) {
+        final String reifiedRelationshipXRef = kv.remove("reifiedRelationshipUUID");
+        final Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipPair = this.reifiedRelationships.get(reifiedRelationshipXRef);
+        if ((null == reifiedRelationshipPair)) {
+          throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationship in inverseProperties");
+        }
+        oml.setReifiedRelationship(reifiedRelationshipPair.getKey());
+      }
+    };
+    this.inverseProperties.forEach(_function);
+  }
+  
   protected void resolveUnreifiedRelationships(final OMLZipResourceSet rs) {
     final BiConsumer<String, Pair<UnreifiedRelationship, Map<String, String>>> _function = (String uuid, Pair<UnreifiedRelationship, Map<String, String>> oml_kv) -> {
       final UnreifiedRelationship oml = oml_kv.getKey();
@@ -5203,33 +4890,9 @@ public class OMLSpecificationTables {
     this.ruleBodySegments.forEach(_function);
   }
   
-  protected void resolveAspectPredicates(final OMLZipResourceSet rs) {
-    final BiConsumer<String, Pair<AspectPredicate, Map<String, String>>> _function = (String uuid, Pair<AspectPredicate, Map<String, String>> oml_kv) -> {
-      final AspectPredicate oml = oml_kv.getKey();
-      final Map<String, String> kv = oml_kv.getValue();
-      boolean _isEmpty = kv.isEmpty();
-      boolean _not = (!_isEmpty);
-      if (_not) {
-        final String aspectXRef = kv.remove("aspectUUID");
-        final Pair<Aspect, Map<String, String>> aspectPair = this.aspects.get(aspectXRef);
-        if ((null == aspectPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for aspect in aspectPredicates");
-        }
-        oml.setAspect(aspectPair.getKey());
-        final String bodySegmentXRef = kv.remove("bodySegmentUUID");
-        final Pair<RuleBodySegment, Map<String, String>> bodySegmentPair = this.ruleBodySegments.get(bodySegmentXRef);
-        if ((null == bodySegmentPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in aspectPredicates");
-        }
-        oml.setBodySegment(bodySegmentPair.getKey());
-      }
-    };
-    this.aspectPredicates.forEach(_function);
-  }
-  
-  protected void resolveConceptPredicates(final OMLZipResourceSet rs) {
-    final BiConsumer<String, Pair<ConceptPredicate, Map<String, String>>> _function = (String uuid, Pair<ConceptPredicate, Map<String, String>> oml_kv) -> {
-      final ConceptPredicate oml = oml_kv.getKey();
+  protected void resolveSegmentPredicates(final OMLZipResourceSet rs) {
+    final BiConsumer<String, Pair<SegmentPredicate, Map<String, String>>> _function = (String uuid, Pair<SegmentPredicate, Map<String, String>> oml_kv) -> {
+      final SegmentPredicate oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
       boolean _isEmpty = kv.isEmpty();
       boolean _not = (!_isEmpty);
@@ -5237,234 +4900,66 @@ public class OMLSpecificationTables {
         final String bodySegmentXRef = kv.remove("bodySegmentUUID");
         final Pair<RuleBodySegment, Map<String, String>> bodySegmentPair = this.ruleBodySegments.get(bodySegmentXRef);
         if ((null == bodySegmentPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in conceptPredicates");
+          throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in segmentPredicates");
         }
         oml.setBodySegment(bodySegmentPair.getKey());
-        final String conceptXRef = kv.remove("conceptUUID");
-        final Pair<Concept, Map<String, String>> conceptPair = this.concepts.get(conceptXRef);
-        if ((null == conceptPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for concept in conceptPredicates");
+        final String predicateXRef = kv.remove("predicateUUID");
+        boolean _notEquals = (!Objects.equal("null", predicateXRef));
+        if (_notEquals) {
+          final Pair<Predicate, Map<String, String>> predicatePair = this.predicates.get(predicateXRef);
+          if ((null == predicatePair)) {
+            throw new IllegalArgumentException("Null cross-reference lookup for predicate in segmentPredicates");
+          }
+          oml.setPredicate(predicatePair.getKey());
         }
-        oml.setConcept(conceptPair.getKey());
+        final String reifiedRelationshipSourceXRef = kv.remove("reifiedRelationshipSourceUUID");
+        boolean _notEquals_1 = (!Objects.equal("null", reifiedRelationshipSourceXRef));
+        if (_notEquals_1) {
+          final Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipSourcePair = this.reifiedRelationships.get(reifiedRelationshipSourceXRef);
+          if ((null == reifiedRelationshipSourcePair)) {
+            throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationshipSource in segmentPredicates");
+          }
+          oml.setReifiedRelationshipSource(reifiedRelationshipSourcePair.getKey());
+        }
+        final String reifiedRelationshipInverseSourceXRef = kv.remove("reifiedRelationshipInverseSourceUUID");
+        boolean _notEquals_2 = (!Objects.equal("null", reifiedRelationshipInverseSourceXRef));
+        if (_notEquals_2) {
+          final Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipInverseSourcePair = this.reifiedRelationships.get(reifiedRelationshipInverseSourceXRef);
+          if ((null == reifiedRelationshipInverseSourcePair)) {
+            throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationshipInverseSource in segmentPredicates");
+          }
+          oml.setReifiedRelationshipInverseSource(reifiedRelationshipInverseSourcePair.getKey());
+        }
+        final String reifiedRelationshipTargetXRef = kv.remove("reifiedRelationshipTargetUUID");
+        boolean _notEquals_3 = (!Objects.equal("null", reifiedRelationshipTargetXRef));
+        if (_notEquals_3) {
+          final Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipTargetPair = this.reifiedRelationships.get(reifiedRelationshipTargetXRef);
+          if ((null == reifiedRelationshipTargetPair)) {
+            throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationshipTarget in segmentPredicates");
+          }
+          oml.setReifiedRelationshipTarget(reifiedRelationshipTargetPair.getKey());
+        }
+        final String reifiedRelationshipInverseTargetXRef = kv.remove("reifiedRelationshipInverseTargetUUID");
+        boolean _notEquals_4 = (!Objects.equal("null", reifiedRelationshipInverseTargetXRef));
+        if (_notEquals_4) {
+          final Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipInverseTargetPair = this.reifiedRelationships.get(reifiedRelationshipInverseTargetXRef);
+          if ((null == reifiedRelationshipInverseTargetPair)) {
+            throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationshipInverseTarget in segmentPredicates");
+          }
+          oml.setReifiedRelationshipInverseTarget(reifiedRelationshipInverseTargetPair.getKey());
+        }
+        final String unreifiedRelationshipInverseXRef = kv.remove("unreifiedRelationshipInverseUUID");
+        boolean _notEquals_5 = (!Objects.equal("null", unreifiedRelationshipInverseXRef));
+        if (_notEquals_5) {
+          final Pair<UnreifiedRelationship, Map<String, String>> unreifiedRelationshipInversePair = this.unreifiedRelationships.get(unreifiedRelationshipInverseXRef);
+          if ((null == unreifiedRelationshipInversePair)) {
+            throw new IllegalArgumentException("Null cross-reference lookup for unreifiedRelationshipInverse in segmentPredicates");
+          }
+          oml.setUnreifiedRelationshipInverse(unreifiedRelationshipInversePair.getKey());
+        }
       }
     };
-    this.conceptPredicates.forEach(_function);
-  }
-  
-  protected void resolveReifiedRelationshipPredicates(final OMLZipResourceSet rs) {
-    final BiConsumer<String, Pair<ReifiedRelationshipPredicate, Map<String, String>>> _function = (String uuid, Pair<ReifiedRelationshipPredicate, Map<String, String>> oml_kv) -> {
-      final ReifiedRelationshipPredicate oml = oml_kv.getKey();
-      final Map<String, String> kv = oml_kv.getValue();
-      boolean _isEmpty = kv.isEmpty();
-      boolean _not = (!_isEmpty);
-      if (_not) {
-        final String bodySegmentXRef = kv.remove("bodySegmentUUID");
-        final Pair<RuleBodySegment, Map<String, String>> bodySegmentPair = this.ruleBodySegments.get(bodySegmentXRef);
-        if ((null == bodySegmentPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in reifiedRelationshipPredicates");
-        }
-        oml.setBodySegment(bodySegmentPair.getKey());
-        final String reifiedRelationshipXRef = kv.remove("reifiedRelationshipUUID");
-        final Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipPair = this.reifiedRelationships.get(reifiedRelationshipXRef);
-        if ((null == reifiedRelationshipPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationship in reifiedRelationshipPredicates");
-        }
-        oml.setReifiedRelationship(reifiedRelationshipPair.getKey());
-      }
-    };
-    this.reifiedRelationshipPredicates.forEach(_function);
-  }
-  
-  protected void resolveReifiedRelationshipPropertyPredicates(final OMLZipResourceSet rs) {
-    final BiConsumer<String, Pair<ReifiedRelationshipPropertyPredicate, Map<String, String>>> _function = (String uuid, Pair<ReifiedRelationshipPropertyPredicate, Map<String, String>> oml_kv) -> {
-      final ReifiedRelationshipPropertyPredicate oml = oml_kv.getKey();
-      final Map<String, String> kv = oml_kv.getValue();
-      boolean _isEmpty = kv.isEmpty();
-      boolean _not = (!_isEmpty);
-      if (_not) {
-        final String bodySegmentXRef = kv.remove("bodySegmentUUID");
-        final Pair<RuleBodySegment, Map<String, String>> bodySegmentPair = this.ruleBodySegments.get(bodySegmentXRef);
-        if ((null == bodySegmentPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in reifiedRelationshipPropertyPredicates");
-        }
-        oml.setBodySegment(bodySegmentPair.getKey());
-        final String reifiedRelationshipXRef = kv.remove("reifiedRelationshipUUID");
-        final Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipPair = this.reifiedRelationships.get(reifiedRelationshipXRef);
-        if ((null == reifiedRelationshipPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationship in reifiedRelationshipPropertyPredicates");
-        }
-        oml.setReifiedRelationship(reifiedRelationshipPair.getKey());
-      }
-    };
-    this.reifiedRelationshipPropertyPredicates.forEach(_function);
-  }
-  
-  protected void resolveReifiedRelationshipSourcePropertyPredicates(final OMLZipResourceSet rs) {
-    final BiConsumer<String, Pair<ReifiedRelationshipSourcePropertyPredicate, Map<String, String>>> _function = (String uuid, Pair<ReifiedRelationshipSourcePropertyPredicate, Map<String, String>> oml_kv) -> {
-      final ReifiedRelationshipSourcePropertyPredicate oml = oml_kv.getKey();
-      final Map<String, String> kv = oml_kv.getValue();
-      boolean _isEmpty = kv.isEmpty();
-      boolean _not = (!_isEmpty);
-      if (_not) {
-        final String bodySegmentXRef = kv.remove("bodySegmentUUID");
-        final Pair<RuleBodySegment, Map<String, String>> bodySegmentPair = this.ruleBodySegments.get(bodySegmentXRef);
-        if ((null == bodySegmentPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in reifiedRelationshipSourcePropertyPredicates");
-        }
-        oml.setBodySegment(bodySegmentPair.getKey());
-        final String reifiedRelationshipXRef = kv.remove("reifiedRelationshipUUID");
-        final Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipPair = this.reifiedRelationships.get(reifiedRelationshipXRef);
-        if ((null == reifiedRelationshipPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationship in reifiedRelationshipSourcePropertyPredicates");
-        }
-        oml.setReifiedRelationship(reifiedRelationshipPair.getKey());
-      }
-    };
-    this.reifiedRelationshipSourcePropertyPredicates.forEach(_function);
-  }
-  
-  protected void resolveReifiedRelationshipTargetPropertyPredicates(final OMLZipResourceSet rs) {
-    final BiConsumer<String, Pair<ReifiedRelationshipTargetPropertyPredicate, Map<String, String>>> _function = (String uuid, Pair<ReifiedRelationshipTargetPropertyPredicate, Map<String, String>> oml_kv) -> {
-      final ReifiedRelationshipTargetPropertyPredicate oml = oml_kv.getKey();
-      final Map<String, String> kv = oml_kv.getValue();
-      boolean _isEmpty = kv.isEmpty();
-      boolean _not = (!_isEmpty);
-      if (_not) {
-        final String bodySegmentXRef = kv.remove("bodySegmentUUID");
-        final Pair<RuleBodySegment, Map<String, String>> bodySegmentPair = this.ruleBodySegments.get(bodySegmentXRef);
-        if ((null == bodySegmentPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in reifiedRelationshipTargetPropertyPredicates");
-        }
-        oml.setBodySegment(bodySegmentPair.getKey());
-        final String reifiedRelationshipXRef = kv.remove("reifiedRelationshipUUID");
-        final Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipPair = this.reifiedRelationships.get(reifiedRelationshipXRef);
-        if ((null == reifiedRelationshipPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationship in reifiedRelationshipTargetPropertyPredicates");
-        }
-        oml.setReifiedRelationship(reifiedRelationshipPair.getKey());
-      }
-    };
-    this.reifiedRelationshipTargetPropertyPredicates.forEach(_function);
-  }
-  
-  protected void resolveUnreifiedRelationshipPropertyPredicates(final OMLZipResourceSet rs) {
-    final BiConsumer<String, Pair<UnreifiedRelationshipPropertyPredicate, Map<String, String>>> _function = (String uuid, Pair<UnreifiedRelationshipPropertyPredicate, Map<String, String>> oml_kv) -> {
-      final UnreifiedRelationshipPropertyPredicate oml = oml_kv.getKey();
-      final Map<String, String> kv = oml_kv.getValue();
-      boolean _isEmpty = kv.isEmpty();
-      boolean _not = (!_isEmpty);
-      if (_not) {
-        final String unreifiedRelationshipXRef = kv.remove("unreifiedRelationshipUUID");
-        final Pair<UnreifiedRelationship, Map<String, String>> unreifiedRelationshipPair = this.unreifiedRelationships.get(unreifiedRelationshipXRef);
-        if ((null == unreifiedRelationshipPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for unreifiedRelationship in unreifiedRelationshipPropertyPredicates");
-        }
-        oml.setUnreifiedRelationship(unreifiedRelationshipPair.getKey());
-        final String bodySegmentXRef = kv.remove("bodySegmentUUID");
-        final Pair<RuleBodySegment, Map<String, String>> bodySegmentPair = this.ruleBodySegments.get(bodySegmentXRef);
-        if ((null == bodySegmentPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in unreifiedRelationshipPropertyPredicates");
-        }
-        oml.setBodySegment(bodySegmentPair.getKey());
-      }
-    };
-    this.unreifiedRelationshipPropertyPredicates.forEach(_function);
-  }
-  
-  protected void resolveReifiedRelationshipInversePropertyPredicates(final OMLZipResourceSet rs) {
-    final BiConsumer<String, Pair<ReifiedRelationshipInversePropertyPredicate, Map<String, String>>> _function = (String uuid, Pair<ReifiedRelationshipInversePropertyPredicate, Map<String, String>> oml_kv) -> {
-      final ReifiedRelationshipInversePropertyPredicate oml = oml_kv.getKey();
-      final Map<String, String> kv = oml_kv.getValue();
-      boolean _isEmpty = kv.isEmpty();
-      boolean _not = (!_isEmpty);
-      if (_not) {
-        final String bodySegmentXRef = kv.remove("bodySegmentUUID");
-        final Pair<RuleBodySegment, Map<String, String>> bodySegmentPair = this.ruleBodySegments.get(bodySegmentXRef);
-        if ((null == bodySegmentPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in reifiedRelationshipInversePropertyPredicates");
-        }
-        oml.setBodySegment(bodySegmentPair.getKey());
-        final String reifiedRelationshipXRef = kv.remove("reifiedRelationshipUUID");
-        final Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipPair = this.reifiedRelationships.get(reifiedRelationshipXRef);
-        if ((null == reifiedRelationshipPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationship in reifiedRelationshipInversePropertyPredicates");
-        }
-        oml.setReifiedRelationship(reifiedRelationshipPair.getKey());
-      }
-    };
-    this.reifiedRelationshipInversePropertyPredicates.forEach(_function);
-  }
-  
-  protected void resolveReifiedRelationshipSourceInversePropertyPredicates(final OMLZipResourceSet rs) {
-    final BiConsumer<String, Pair<ReifiedRelationshipSourceInversePropertyPredicate, Map<String, String>>> _function = (String uuid, Pair<ReifiedRelationshipSourceInversePropertyPredicate, Map<String, String>> oml_kv) -> {
-      final ReifiedRelationshipSourceInversePropertyPredicate oml = oml_kv.getKey();
-      final Map<String, String> kv = oml_kv.getValue();
-      boolean _isEmpty = kv.isEmpty();
-      boolean _not = (!_isEmpty);
-      if (_not) {
-        final String bodySegmentXRef = kv.remove("bodySegmentUUID");
-        final Pair<RuleBodySegment, Map<String, String>> bodySegmentPair = this.ruleBodySegments.get(bodySegmentXRef);
-        if ((null == bodySegmentPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in reifiedRelationshipSourceInversePropertyPredicates");
-        }
-        oml.setBodySegment(bodySegmentPair.getKey());
-        final String reifiedRelationshipXRef = kv.remove("reifiedRelationshipUUID");
-        final Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipPair = this.reifiedRelationships.get(reifiedRelationshipXRef);
-        if ((null == reifiedRelationshipPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationship in reifiedRelationshipSourceInversePropertyPredicates");
-        }
-        oml.setReifiedRelationship(reifiedRelationshipPair.getKey());
-      }
-    };
-    this.reifiedRelationshipSourceInversePropertyPredicates.forEach(_function);
-  }
-  
-  protected void resolveReifiedRelationshipTargetInversePropertyPredicates(final OMLZipResourceSet rs) {
-    final BiConsumer<String, Pair<ReifiedRelationshipTargetInversePropertyPredicate, Map<String, String>>> _function = (String uuid, Pair<ReifiedRelationshipTargetInversePropertyPredicate, Map<String, String>> oml_kv) -> {
-      final ReifiedRelationshipTargetInversePropertyPredicate oml = oml_kv.getKey();
-      final Map<String, String> kv = oml_kv.getValue();
-      boolean _isEmpty = kv.isEmpty();
-      boolean _not = (!_isEmpty);
-      if (_not) {
-        final String bodySegmentXRef = kv.remove("bodySegmentUUID");
-        final Pair<RuleBodySegment, Map<String, String>> bodySegmentPair = this.ruleBodySegments.get(bodySegmentXRef);
-        if ((null == bodySegmentPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in reifiedRelationshipTargetInversePropertyPredicates");
-        }
-        oml.setBodySegment(bodySegmentPair.getKey());
-        final String reifiedRelationshipXRef = kv.remove("reifiedRelationshipUUID");
-        final Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipPair = this.reifiedRelationships.get(reifiedRelationshipXRef);
-        if ((null == reifiedRelationshipPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationship in reifiedRelationshipTargetInversePropertyPredicates");
-        }
-        oml.setReifiedRelationship(reifiedRelationshipPair.getKey());
-      }
-    };
-    this.reifiedRelationshipTargetInversePropertyPredicates.forEach(_function);
-  }
-  
-  protected void resolveUnreifiedRelationshipInversePropertyPredicates(final OMLZipResourceSet rs) {
-    final BiConsumer<String, Pair<UnreifiedRelationshipInversePropertyPredicate, Map<String, String>>> _function = (String uuid, Pair<UnreifiedRelationshipInversePropertyPredicate, Map<String, String>> oml_kv) -> {
-      final UnreifiedRelationshipInversePropertyPredicate oml = oml_kv.getKey();
-      final Map<String, String> kv = oml_kv.getValue();
-      boolean _isEmpty = kv.isEmpty();
-      boolean _not = (!_isEmpty);
-      if (_not) {
-        final String unreifiedRelationshipXRef = kv.remove("unreifiedRelationshipUUID");
-        final Pair<UnreifiedRelationship, Map<String, String>> unreifiedRelationshipPair = this.unreifiedRelationships.get(unreifiedRelationshipXRef);
-        if ((null == unreifiedRelationshipPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for unreifiedRelationship in unreifiedRelationshipInversePropertyPredicates");
-        }
-        oml.setUnreifiedRelationship(unreifiedRelationshipPair.getKey());
-        final String bodySegmentXRef = kv.remove("bodySegmentUUID");
-        final Pair<RuleBodySegment, Map<String, String>> bodySegmentPair = this.ruleBodySegments.get(bodySegmentXRef);
-        if ((null == bodySegmentPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in unreifiedRelationshipInversePropertyPredicates");
-        }
-        oml.setBodySegment(bodySegmentPair.getKey());
-      }
-    };
-    this.unreifiedRelationshipInversePropertyPredicates.forEach(_function);
+    this.segmentPredicates.forEach(_function);
   }
   
   protected void resolveEntityExistentialRestrictionAxioms(final OMLZipResourceSet rs) {
@@ -5480,12 +4975,6 @@ public class OMLSpecificationTables {
           throw new IllegalArgumentException("Null cross-reference lookup for tbox in entityExistentialRestrictionAxioms");
         }
         oml.setTbox(tboxPair.getKey());
-        final String restrictedRelationXRef = kv.remove("restrictedRelationUUID");
-        final Pair<EntityRelationship, Map<String, String>> restrictedRelationPair = this.entityRelationships.get(restrictedRelationXRef);
-        if ((null == restrictedRelationPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for restrictedRelation in entityExistentialRestrictionAxioms");
-        }
-        oml.setRestrictedRelation(restrictedRelationPair.getKey());
         final String restrictedDomainXRef = kv.remove("restrictedDomainUUID");
         final Pair<Entity, Map<String, String>> restrictedDomainPair = this.entities.get(restrictedDomainXRef);
         if ((null == restrictedDomainPair)) {
@@ -5498,6 +4987,12 @@ public class OMLSpecificationTables {
           throw new IllegalArgumentException("Null cross-reference lookup for restrictedRange in entityExistentialRestrictionAxioms");
         }
         oml.setRestrictedRange(restrictedRangePair.getKey());
+        final String restrictedRelationshipXRef = kv.remove("restrictedRelationshipUUID");
+        final Pair<RestrictableRelationship, Map<String, String>> restrictedRelationshipPair = this.restrictableRelationships.get(restrictedRelationshipXRef);
+        if ((null == restrictedRelationshipPair)) {
+          throw new IllegalArgumentException("Null cross-reference lookup for restrictedRelationship in entityExistentialRestrictionAxioms");
+        }
+        oml.setRestrictedRelationship(restrictedRelationshipPair.getKey());
       }
     };
     this.entityExistentialRestrictionAxioms.forEach(_function);
@@ -5516,12 +5011,6 @@ public class OMLSpecificationTables {
           throw new IllegalArgumentException("Null cross-reference lookup for tbox in entityUniversalRestrictionAxioms");
         }
         oml.setTbox(tboxPair.getKey());
-        final String restrictedRelationXRef = kv.remove("restrictedRelationUUID");
-        final Pair<EntityRelationship, Map<String, String>> restrictedRelationPair = this.entityRelationships.get(restrictedRelationXRef);
-        if ((null == restrictedRelationPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for restrictedRelation in entityUniversalRestrictionAxioms");
-        }
-        oml.setRestrictedRelation(restrictedRelationPair.getKey());
         final String restrictedDomainXRef = kv.remove("restrictedDomainUUID");
         final Pair<Entity, Map<String, String>> restrictedDomainPair = this.entities.get(restrictedDomainXRef);
         if ((null == restrictedDomainPair)) {
@@ -5534,6 +5023,12 @@ public class OMLSpecificationTables {
           throw new IllegalArgumentException("Null cross-reference lookup for restrictedRange in entityUniversalRestrictionAxioms");
         }
         oml.setRestrictedRange(restrictedRangePair.getKey());
+        final String restrictedRelationshipXRef = kv.remove("restrictedRelationshipUUID");
+        final Pair<RestrictableRelationship, Map<String, String>> restrictedRelationshipPair = this.restrictableRelationships.get(restrictedRelationshipXRef);
+        if ((null == restrictedRelationshipPair)) {
+          throw new IllegalArgumentException("Null cross-reference lookup for restrictedRelationship in entityUniversalRestrictionAxioms");
+        }
+        oml.setRestrictedRelationship(restrictedRelationshipPair.getKey());
       }
     };
     this.entityUniversalRestrictionAxioms.forEach(_function);
@@ -6604,6 +6099,30 @@ public class OMLSpecificationTables {
           }
         }
         if (!_matched_1) {
+          if (e instanceof ForwardProperty) {
+            _matched_1=true;
+            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+            final Pair<ForwardProperty, Map<String, String>> pair = new Pair<ForwardProperty, Map<String, String>>(((ForwardProperty)e), _emptyMap);
+            this.forwardProperties.put(((ForwardProperty)e).uuid(), pair);
+            String _uuid = ((ForwardProperty)e).uuid();
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+            this.logicalElements.put(_uuid, _pair);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof InverseProperty) {
+            _matched_1=true;
+            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+            final Pair<InverseProperty, Map<String, String>> pair = new Pair<InverseProperty, Map<String, String>>(((InverseProperty)e), _emptyMap);
+            this.inverseProperties.put(((InverseProperty)e).uuid(), pair);
+            String _uuid = ((InverseProperty)e).uuid();
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+            this.logicalElements.put(_uuid, _pair);
+          }
+        }
+        if (!_matched_1) {
           if (e instanceof UnreifiedRelationship) {
             _matched_1=true;
             Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
@@ -6640,132 +6159,12 @@ public class OMLSpecificationTables {
           }
         }
         if (!_matched_1) {
-          if (e instanceof AspectPredicate) {
+          if (e instanceof SegmentPredicate) {
             _matched_1=true;
             Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<AspectPredicate, Map<String, String>> pair = new Pair<AspectPredicate, Map<String, String>>(((AspectPredicate)e), _emptyMap);
-            this.aspectPredicates.put(((AspectPredicate)e).uuid(), pair);
-            String _uuid = ((AspectPredicate)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched_1) {
-          if (e instanceof ConceptPredicate) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<ConceptPredicate, Map<String, String>> pair = new Pair<ConceptPredicate, Map<String, String>>(((ConceptPredicate)e), _emptyMap);
-            this.conceptPredicates.put(((ConceptPredicate)e).uuid(), pair);
-            String _uuid = ((ConceptPredicate)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched_1) {
-          if (e instanceof ReifiedRelationshipPredicate) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<ReifiedRelationshipPredicate, Map<String, String>> pair = new Pair<ReifiedRelationshipPredicate, Map<String, String>>(((ReifiedRelationshipPredicate)e), _emptyMap);
-            this.reifiedRelationshipPredicates.put(((ReifiedRelationshipPredicate)e).uuid(), pair);
-            String _uuid = ((ReifiedRelationshipPredicate)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched_1) {
-          if (e instanceof ReifiedRelationshipPropertyPredicate) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<ReifiedRelationshipPropertyPredicate, Map<String, String>> pair = new Pair<ReifiedRelationshipPropertyPredicate, Map<String, String>>(((ReifiedRelationshipPropertyPredicate)e), _emptyMap);
-            this.reifiedRelationshipPropertyPredicates.put(((ReifiedRelationshipPropertyPredicate)e).uuid(), pair);
-            String _uuid = ((ReifiedRelationshipPropertyPredicate)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched_1) {
-          if (e instanceof ReifiedRelationshipSourcePropertyPredicate) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<ReifiedRelationshipSourcePropertyPredicate, Map<String, String>> pair = new Pair<ReifiedRelationshipSourcePropertyPredicate, Map<String, String>>(((ReifiedRelationshipSourcePropertyPredicate)e), _emptyMap);
-            this.reifiedRelationshipSourcePropertyPredicates.put(((ReifiedRelationshipSourcePropertyPredicate)e).uuid(), pair);
-            String _uuid = ((ReifiedRelationshipSourcePropertyPredicate)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched_1) {
-          if (e instanceof ReifiedRelationshipTargetPropertyPredicate) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<ReifiedRelationshipTargetPropertyPredicate, Map<String, String>> pair = new Pair<ReifiedRelationshipTargetPropertyPredicate, Map<String, String>>(((ReifiedRelationshipTargetPropertyPredicate)e), _emptyMap);
-            this.reifiedRelationshipTargetPropertyPredicates.put(((ReifiedRelationshipTargetPropertyPredicate)e).uuid(), pair);
-            String _uuid = ((ReifiedRelationshipTargetPropertyPredicate)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched_1) {
-          if (e instanceof UnreifiedRelationshipPropertyPredicate) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<UnreifiedRelationshipPropertyPredicate, Map<String, String>> pair = new Pair<UnreifiedRelationshipPropertyPredicate, Map<String, String>>(((UnreifiedRelationshipPropertyPredicate)e), _emptyMap);
-            this.unreifiedRelationshipPropertyPredicates.put(((UnreifiedRelationshipPropertyPredicate)e).uuid(), pair);
-            String _uuid = ((UnreifiedRelationshipPropertyPredicate)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched_1) {
-          if (e instanceof ReifiedRelationshipInversePropertyPredicate) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<ReifiedRelationshipInversePropertyPredicate, Map<String, String>> pair = new Pair<ReifiedRelationshipInversePropertyPredicate, Map<String, String>>(((ReifiedRelationshipInversePropertyPredicate)e), _emptyMap);
-            this.reifiedRelationshipInversePropertyPredicates.put(((ReifiedRelationshipInversePropertyPredicate)e).uuid(), pair);
-            String _uuid = ((ReifiedRelationshipInversePropertyPredicate)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched_1) {
-          if (e instanceof ReifiedRelationshipSourceInversePropertyPredicate) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<ReifiedRelationshipSourceInversePropertyPredicate, Map<String, String>> pair = new Pair<ReifiedRelationshipSourceInversePropertyPredicate, Map<String, String>>(((ReifiedRelationshipSourceInversePropertyPredicate)e), _emptyMap);
-            this.reifiedRelationshipSourceInversePropertyPredicates.put(((ReifiedRelationshipSourceInversePropertyPredicate)e).uuid(), pair);
-            String _uuid = ((ReifiedRelationshipSourceInversePropertyPredicate)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched_1) {
-          if (e instanceof ReifiedRelationshipTargetInversePropertyPredicate) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<ReifiedRelationshipTargetInversePropertyPredicate, Map<String, String>> pair = new Pair<ReifiedRelationshipTargetInversePropertyPredicate, Map<String, String>>(((ReifiedRelationshipTargetInversePropertyPredicate)e), _emptyMap);
-            this.reifiedRelationshipTargetInversePropertyPredicates.put(((ReifiedRelationshipTargetInversePropertyPredicate)e).uuid(), pair);
-            String _uuid = ((ReifiedRelationshipTargetInversePropertyPredicate)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched_1) {
-          if (e instanceof UnreifiedRelationshipInversePropertyPredicate) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<UnreifiedRelationshipInversePropertyPredicate, Map<String, String>> pair = new Pair<UnreifiedRelationshipInversePropertyPredicate, Map<String, String>>(((UnreifiedRelationshipInversePropertyPredicate)e), _emptyMap);
-            this.unreifiedRelationshipInversePropertyPredicates.put(((UnreifiedRelationshipInversePropertyPredicate)e).uuid(), pair);
-            String _uuid = ((UnreifiedRelationshipInversePropertyPredicate)e).uuid();
+            final Pair<SegmentPredicate, Map<String, String>> pair = new Pair<SegmentPredicate, Map<String, String>>(((SegmentPredicate)e), _emptyMap);
+            this.segmentPredicates.put(((SegmentPredicate)e).uuid(), pair);
+            String _uuid = ((SegmentPredicate)e).uuid();
             Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
             Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
             this.logicalElements.put(_uuid, _pair);

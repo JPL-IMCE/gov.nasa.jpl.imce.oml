@@ -66,38 +66,33 @@ import gov.nasa.jpl.imce.oml.model.graphs.ConceptDesignationTerminologyAxiom
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyGraph
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyNestingAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.Aspect
-import gov.nasa.jpl.imce.oml.model.terminologies.AspectPredicate
 import gov.nasa.jpl.imce.oml.model.terminologies.AspectSpecializationAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.BinaryScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.ChainRule
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept
-import gov.nasa.jpl.imce.oml.model.terminologies.ConceptPredicate
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptSpecializationAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.DataRange
 import gov.nasa.jpl.imce.oml.model.terminologies.DataRelationshipToScalar
 import gov.nasa.jpl.imce.oml.model.terminologies.DataRelationshipToStructure
 import gov.nasa.jpl.imce.oml.model.terminologies.Entity
-import gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialRestrictionAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialRestrictionAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalRestrictionAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyExistentialRestrictionAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyParticularRestrictionAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyUniversalRestrictionAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataPropertyParticularRestrictionAxiom
-import gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalRestrictionAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty
+import gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction
+import gov.nasa.jpl.imce.oml.model.terminologies.Predicate
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipInversePropertyPredicate
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPredicate
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPropertyPredicate
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourceInversePropertyPredicate
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourcePropertyPredicate
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetInversePropertyPredicate
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetPropertyPredicate
+import gov.nasa.jpl.imce.oml.model.terminologies.RestrictableRelationship
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyContext
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple
@@ -106,6 +101,7 @@ import gov.nasa.jpl.imce.oml.model.terminologies.Scalar
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarDataProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfRestriction
+import gov.nasa.jpl.imce.oml.model.terminologies.SegmentPredicate
 import gov.nasa.jpl.imce.oml.model.terminologies.StringScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.SubDataPropertyOfAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.SubObjectPropertyOfAxiom
@@ -116,8 +112,6 @@ import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyExtensionAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.TimeScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship
-import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipInversePropertyPredicate
-import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipPropertyPredicate
 
 import gov.nasa.jpl.imce.oml.model.common.CommonFactory
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesFactory
@@ -129,7 +123,7 @@ import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsFactory
  * @generated
  */
 class OMLSpecificationTables {
- 
+
   protected val Map<String, Pair<TerminologyGraph, Map<String,String>>> terminologyGraphs
   protected val Map<String, Pair<Bundle, Map<String,String>>> bundles
   protected val Map<String, Pair<DescriptionBox, Map<String,String>>> descriptionBoxes
@@ -158,20 +152,12 @@ class OMLSpecificationTables {
   protected val Map<String, Pair<ScalarDataProperty, Map<String,String>>> scalarDataProperties
   protected val Map<String, Pair<StructuredDataProperty, Map<String,String>>> structuredDataProperties
   protected val Map<String, Pair<ReifiedRelationship, Map<String,String>>> reifiedRelationships
+  protected val Map<String, Pair<ForwardProperty, Map<String,String>>> forwardProperties
+  protected val Map<String, Pair<InverseProperty, Map<String,String>>> inverseProperties
   protected val Map<String, Pair<UnreifiedRelationship, Map<String,String>>> unreifiedRelationships
   protected val Map<String, Pair<ChainRule, Map<String,String>>> chainRules
   protected val Map<String, Pair<RuleBodySegment, Map<String,String>>> ruleBodySegments
-  protected val Map<String, Pair<AspectPredicate, Map<String,String>>> aspectPredicates
-  protected val Map<String, Pair<ConceptPredicate, Map<String,String>>> conceptPredicates
-  protected val Map<String, Pair<ReifiedRelationshipPredicate, Map<String,String>>> reifiedRelationshipPredicates
-  protected val Map<String, Pair<ReifiedRelationshipPropertyPredicate, Map<String,String>>> reifiedRelationshipPropertyPredicates
-  protected val Map<String, Pair<ReifiedRelationshipSourcePropertyPredicate, Map<String,String>>> reifiedRelationshipSourcePropertyPredicates
-  protected val Map<String, Pair<ReifiedRelationshipTargetPropertyPredicate, Map<String,String>>> reifiedRelationshipTargetPropertyPredicates
-  protected val Map<String, Pair<UnreifiedRelationshipPropertyPredicate, Map<String,String>>> unreifiedRelationshipPropertyPredicates
-  protected val Map<String, Pair<ReifiedRelationshipInversePropertyPredicate, Map<String,String>>> reifiedRelationshipInversePropertyPredicates
-  protected val Map<String, Pair<ReifiedRelationshipSourceInversePropertyPredicate, Map<String,String>>> reifiedRelationshipSourceInversePropertyPredicates
-  protected val Map<String, Pair<ReifiedRelationshipTargetInversePropertyPredicate, Map<String,String>>> reifiedRelationshipTargetInversePropertyPredicates
-  protected val Map<String, Pair<UnreifiedRelationshipInversePropertyPredicate, Map<String,String>>> unreifiedRelationshipInversePropertyPredicates
+  protected val Map<String, Pair<SegmentPredicate, Map<String,String>>> segmentPredicates
   protected val Map<String, Pair<EntityExistentialRestrictionAxiom, Map<String,String>>> entityExistentialRestrictionAxioms
   protected val Map<String, Pair<EntityUniversalRestrictionAxiom, Map<String,String>>> entityUniversalRestrictionAxioms
   protected val Map<String, Pair<EntityScalarDataPropertyExistentialRestrictionAxiom, Map<String,String>>> entityScalarDataPropertyExistentialRestrictionAxioms
@@ -205,8 +191,10 @@ class OMLSpecificationTables {
   protected val Map<String, Pair<EntityRelationship, Map<String,String>>> entityRelationships
   protected val Map<String, Pair<DataRange, Map<String,String>>> dataRanges 
   protected val Map<String, Pair<DataRelationshipToScalar, Map<String,String>>> dataRelationshipToScalars
-  protected val Map<String, Pair<DataRelationshipToStructure, Map<String,String>>> dataRelationshipToStructures 
-  protected val Map<String, Pair<RestrictionStructuredDataPropertyContext, Map<String,String>>> restrictionStructuredDataPropertyContexts 
+  protected val Map<String, Pair<DataRelationshipToStructure, Map<String,String>>> dataRelationshipToStructures
+  protected val Map<String, Pair<Predicate, Map<String,String>>> predicates
+  protected val Map<String, Pair<RestrictableRelationship, Map<String,String>>> restrictableRelationships
+  protected val Map<String, Pair<RestrictionStructuredDataPropertyContext, Map<String,String>>> restrictionStructuredDataPropertyContexts
   protected val Map<String, Pair<TerminologyBox, Map<String,String>>> terminologyBoxes
   protected val Map<String, Pair<ConceptTreeDisjunction, Map<String,String>>> conceptTreeDisjunctions
   protected val Map<String, Pair<ConceptualEntitySingletonInstance, Map<String,String>>> conceptualEntitySingletonInstances
@@ -253,20 +241,12 @@ class OMLSpecificationTables {
   	scalarDataProperties = new HashMap<String, Pair<ScalarDataProperty, Map<String,String>>>()
   	structuredDataProperties = new HashMap<String, Pair<StructuredDataProperty, Map<String,String>>>()
   	reifiedRelationships = new HashMap<String, Pair<ReifiedRelationship, Map<String,String>>>()
+  	forwardProperties = new HashMap<String, Pair<ForwardProperty, Map<String,String>>>()
+  	inverseProperties = new HashMap<String, Pair<InverseProperty, Map<String,String>>>()
   	unreifiedRelationships = new HashMap<String, Pair<UnreifiedRelationship, Map<String,String>>>()
   	chainRules = new HashMap<String, Pair<ChainRule, Map<String,String>>>()
   	ruleBodySegments = new HashMap<String, Pair<RuleBodySegment, Map<String,String>>>()
-  	aspectPredicates = new HashMap<String, Pair<AspectPredicate, Map<String,String>>>()
-  	conceptPredicates = new HashMap<String, Pair<ConceptPredicate, Map<String,String>>>()
-  	reifiedRelationshipPredicates = new HashMap<String, Pair<ReifiedRelationshipPredicate, Map<String,String>>>()
-  	reifiedRelationshipPropertyPredicates = new HashMap<String, Pair<ReifiedRelationshipPropertyPredicate, Map<String,String>>>()
-  	reifiedRelationshipSourcePropertyPredicates = new HashMap<String, Pair<ReifiedRelationshipSourcePropertyPredicate, Map<String,String>>>()
-  	reifiedRelationshipTargetPropertyPredicates = new HashMap<String, Pair<ReifiedRelationshipTargetPropertyPredicate, Map<String,String>>>()
-  	unreifiedRelationshipPropertyPredicates = new HashMap<String, Pair<UnreifiedRelationshipPropertyPredicate, Map<String,String>>>()
-  	reifiedRelationshipInversePropertyPredicates = new HashMap<String, Pair<ReifiedRelationshipInversePropertyPredicate, Map<String,String>>>()
-  	reifiedRelationshipSourceInversePropertyPredicates = new HashMap<String, Pair<ReifiedRelationshipSourceInversePropertyPredicate, Map<String,String>>>()
-  	reifiedRelationshipTargetInversePropertyPredicates = new HashMap<String, Pair<ReifiedRelationshipTargetInversePropertyPredicate, Map<String,String>>>()
-  	unreifiedRelationshipInversePropertyPredicates = new HashMap<String, Pair<UnreifiedRelationshipInversePropertyPredicate, Map<String,String>>>()
+  	segmentPredicates = new HashMap<String, Pair<SegmentPredicate, Map<String,String>>>()
   	entityExistentialRestrictionAxioms = new HashMap<String, Pair<EntityExistentialRestrictionAxiom, Map<String,String>>>()
   	entityUniversalRestrictionAxioms = new HashMap<String, Pair<EntityUniversalRestrictionAxiom, Map<String,String>>>()
   	entityScalarDataPropertyExistentialRestrictionAxioms = new HashMap<String, Pair<EntityScalarDataPropertyExistentialRestrictionAxiom, Map<String,String>>>()
@@ -301,6 +281,8 @@ class OMLSpecificationTables {
     dataRanges = new HashMap<String, Pair<DataRange, Map<String,String>>>()
     dataRelationshipToScalars = new HashMap<String, Pair<DataRelationshipToScalar, Map<String,String>>>()
     dataRelationshipToStructures = new HashMap<String, Pair<DataRelationshipToStructure, Map<String,String>>>()
+    predicates = new HashMap<String, Pair<Predicate, Map<String,String>>>()
+    restrictableRelationships = new HashMap<String, Pair<RestrictableRelationship, Map<String,String>>>()
     restrictionStructuredDataPropertyContexts = new HashMap<String, Pair<RestrictionStructuredDataPropertyContext, Map<String,String>>>()
     terminologyBoxes = new HashMap<String, Pair<TerminologyBox, Map<String,String>>>()
     conceptTreeDisjunctions = new HashMap<String, Pair<ConceptTreeDisjunction, Map<String,String>>>()
@@ -534,6 +516,22 @@ class OMLSpecificationTables {
     } finally {
       zos.closeArchiveEntry()
     }
+    // ForwardProperty
+    entry = new ZipArchiveEntry("ForwardProperties.json")
+    zos.putArchiveEntry(entry)
+    try {
+      zos.write(forwardPropertiesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
+    // InverseProperty
+    entry = new ZipArchiveEntry("InverseProperties.json")
+    zos.putArchiveEntry(entry)
+    try {
+      zos.write(inversePropertiesByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // UnreifiedRelationship
     entry = new ZipArchiveEntry("UnreifiedRelationships.json")
     zos.putArchiveEntry(entry)
@@ -558,91 +556,11 @@ class OMLSpecificationTables {
     } finally {
       zos.closeArchiveEntry()
     }
-    // AspectPredicate
-    entry = new ZipArchiveEntry("AspectPredicates.json")
+    // SegmentPredicate
+    entry = new ZipArchiveEntry("SegmentPredicates.json")
     zos.putArchiveEntry(entry)
     try {
-      zos.write(aspectPredicatesByteArray(e))
-    } finally {
-      zos.closeArchiveEntry()
-    }
-    // ConceptPredicate
-    entry = new ZipArchiveEntry("ConceptPredicates.json")
-    zos.putArchiveEntry(entry)
-    try {
-      zos.write(conceptPredicatesByteArray(e))
-    } finally {
-      zos.closeArchiveEntry()
-    }
-    // ReifiedRelationshipPredicate
-    entry = new ZipArchiveEntry("ReifiedRelationshipPredicates.json")
-    zos.putArchiveEntry(entry)
-    try {
-      zos.write(reifiedRelationshipPredicatesByteArray(e))
-    } finally {
-      zos.closeArchiveEntry()
-    }
-    // ReifiedRelationshipPropertyPredicate
-    entry = new ZipArchiveEntry("ReifiedRelationshipPropertyPredicates.json")
-    zos.putArchiveEntry(entry)
-    try {
-      zos.write(reifiedRelationshipPropertyPredicatesByteArray(e))
-    } finally {
-      zos.closeArchiveEntry()
-    }
-    // ReifiedRelationshipSourcePropertyPredicate
-    entry = new ZipArchiveEntry("ReifiedRelationshipSourcePropertyPredicates.json")
-    zos.putArchiveEntry(entry)
-    try {
-      zos.write(reifiedRelationshipSourcePropertyPredicatesByteArray(e))
-    } finally {
-      zos.closeArchiveEntry()
-    }
-    // ReifiedRelationshipTargetPropertyPredicate
-    entry = new ZipArchiveEntry("ReifiedRelationshipTargetPropertyPredicates.json")
-    zos.putArchiveEntry(entry)
-    try {
-      zos.write(reifiedRelationshipTargetPropertyPredicatesByteArray(e))
-    } finally {
-      zos.closeArchiveEntry()
-    }
-    // UnreifiedRelationshipPropertyPredicate
-    entry = new ZipArchiveEntry("UnreifiedRelationshipPropertyPredicates.json")
-    zos.putArchiveEntry(entry)
-    try {
-      zos.write(unreifiedRelationshipPropertyPredicatesByteArray(e))
-    } finally {
-      zos.closeArchiveEntry()
-    }
-    // ReifiedRelationshipInversePropertyPredicate
-    entry = new ZipArchiveEntry("ReifiedRelationshipInversePropertyPredicates.json")
-    zos.putArchiveEntry(entry)
-    try {
-      zos.write(reifiedRelationshipInversePropertyPredicatesByteArray(e))
-    } finally {
-      zos.closeArchiveEntry()
-    }
-    // ReifiedRelationshipSourceInversePropertyPredicate
-    entry = new ZipArchiveEntry("ReifiedRelationshipSourceInversePropertyPredicates.json")
-    zos.putArchiveEntry(entry)
-    try {
-      zos.write(reifiedRelationshipSourceInversePropertyPredicatesByteArray(e))
-    } finally {
-      zos.closeArchiveEntry()
-    }
-    // ReifiedRelationshipTargetInversePropertyPredicate
-    entry = new ZipArchiveEntry("ReifiedRelationshipTargetInversePropertyPredicates.json")
-    zos.putArchiveEntry(entry)
-    try {
-      zos.write(reifiedRelationshipTargetInversePropertyPredicatesByteArray(e))
-    } finally {
-      zos.closeArchiveEntry()
-    }
-    // UnreifiedRelationshipInversePropertyPredicate
-    entry = new ZipArchiveEntry("UnreifiedRelationshipInversePropertyPredicates.json")
-    zos.putArchiveEntry(entry)
-    try {
-      zos.write(unreifiedRelationshipInversePropertyPredicatesByteArray(e))
+      zos.write(segmentPredicatesByteArray(e))
     } finally {
       zos.closeArchiveEntry()
     }
@@ -1721,12 +1639,52 @@ class OMLSpecificationTables {
       pw.print(",")
       pw.print("\"name\":")
       pw.print(OMLTables.toString(it.name()))
+      pw.println("}")
+    ]
+    pw.close()
+    return bos.toByteArray()
+  }
+  
+  static def byte[] forwardPropertiesByteArray(Extent e) {
+  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
+  	val PrintWriter pw = new PrintWriter(bos)
+  	OMLTables.forwardProperties(e).forEach[it |
+  	  pw.print("{")
+      pw.print("\"uuid\":")
+      pw.print("\"")
+      pw.print(it.uuid())
+      pw.print("\"")
       pw.print(",")
-      pw.print("\"unreifiedPropertyName\":")
-      pw.print(OMLTables.toString(it.unreifiedPropertyName))
+      pw.print("\"name\":")
+      pw.print(OMLTables.toString(it.name()))
       pw.print(",")
-      pw.print("\"unreifiedInversePropertyName\":")
-      pw.print(OMLTables.toString(it.unreifiedInversePropertyName))
+      pw.print("\"reifiedRelationshipUUID\":")
+      pw.print("\"")
+      pw.print(it.reifiedRelationship.uuid())
+      pw.print("\"")
+      pw.println("}")
+    ]
+    pw.close()
+    return bos.toByteArray()
+  }
+  
+  static def byte[] inversePropertiesByteArray(Extent e) {
+  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
+  	val PrintWriter pw = new PrintWriter(bos)
+  	OMLTables.inverseProperties(e).forEach[it |
+  	  pw.print("{")
+      pw.print("\"uuid\":")
+      pw.print("\"")
+      pw.print(it.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"name\":")
+      pw.print(OMLTables.toString(it.name()))
+      pw.print(",")
+      pw.print("\"reifiedRelationshipUUID\":")
+      pw.print("\"")
+      pw.print(it.reifiedRelationship.uuid())
+      pw.print("\"")
       pw.println("}")
     ]
     pw.close()
@@ -1852,35 +1810,10 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] aspectPredicatesByteArray(Extent e) {
+  static def byte[] segmentPredicatesByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.aspectPredicates(e).forEach[it |
-  	  pw.print("{")
-      pw.print("\"uuid\":")
-      pw.print("\"")
-      pw.print(it.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"aspectUUID\":")
-      pw.print("\"")
-      pw.print(it.aspect.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"bodySegmentUUID\":")
-      pw.print("\"")
-      pw.print(it.bodySegment.uuid())
-      pw.print("\"")
-      pw.println("}")
-    ]
-    pw.close()
-    return bos.toByteArray()
-  }
-  
-  static def byte[] conceptPredicatesByteArray(Extent e) {
-  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
-  	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.conceptPredicates(e).forEach[it |
+  	OMLTables.segmentPredicates(e).forEach[it |
   	  pw.print("{")
       pw.print("\"uuid\":")
       pw.print("\"")
@@ -1892,235 +1825,53 @@ class OMLSpecificationTables {
       pw.print(it.bodySegment.uuid())
       pw.print("\"")
       pw.print(",")
-      pw.print("\"conceptUUID\":")
-      pw.print("\"")
-      pw.print(it.concept.uuid())
-      pw.print("\"")
-      pw.println("}")
-    ]
-    pw.close()
-    return bos.toByteArray()
-  }
-  
-  static def byte[] reifiedRelationshipPredicatesByteArray(Extent e) {
-  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
-  	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.reifiedRelationshipPredicates(e).forEach[it |
-  	  pw.print("{")
-      pw.print("\"uuid\":")
-      pw.print("\"")
-      pw.print(it.uuid())
-      pw.print("\"")
+      pw.print("\"predicateUUID\":")
+      if (null !== predicate) {
+        pw.print("\"")
+        pw.print(it.predicate?.uuid())
+        pw.print("\"")
+      } else
+        pw.print("null")
       pw.print(",")
-      pw.print("\"bodySegmentUUID\":")
-      pw.print("\"")
-      pw.print(it.bodySegment.uuid())
-      pw.print("\"")
+      pw.print("\"reifiedRelationshipSourceUUID\":")
+      if (null !== reifiedRelationshipSource) {
+        pw.print("\"")
+        pw.print(it.reifiedRelationshipSource?.uuid())
+        pw.print("\"")
+      } else
+        pw.print("null")
       pw.print(",")
-      pw.print("\"reifiedRelationshipUUID\":")
-      pw.print("\"")
-      pw.print(it.reifiedRelationship.uuid())
-      pw.print("\"")
-      pw.println("}")
-    ]
-    pw.close()
-    return bos.toByteArray()
-  }
-  
-  static def byte[] reifiedRelationshipPropertyPredicatesByteArray(Extent e) {
-  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
-  	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.reifiedRelationshipPropertyPredicates(e).forEach[it |
-  	  pw.print("{")
-      pw.print("\"uuid\":")
-      pw.print("\"")
-      pw.print(it.uuid())
-      pw.print("\"")
+      pw.print("\"reifiedRelationshipInverseSourceUUID\":")
+      if (null !== reifiedRelationshipInverseSource) {
+        pw.print("\"")
+        pw.print(it.reifiedRelationshipInverseSource?.uuid())
+        pw.print("\"")
+      } else
+        pw.print("null")
       pw.print(",")
-      pw.print("\"bodySegmentUUID\":")
-      pw.print("\"")
-      pw.print(it.bodySegment.uuid())
-      pw.print("\"")
+      pw.print("\"reifiedRelationshipTargetUUID\":")
+      if (null !== reifiedRelationshipTarget) {
+        pw.print("\"")
+        pw.print(it.reifiedRelationshipTarget?.uuid())
+        pw.print("\"")
+      } else
+        pw.print("null")
       pw.print(",")
-      pw.print("\"reifiedRelationshipUUID\":")
-      pw.print("\"")
-      pw.print(it.reifiedRelationship.uuid())
-      pw.print("\"")
-      pw.println("}")
-    ]
-    pw.close()
-    return bos.toByteArray()
-  }
-  
-  static def byte[] reifiedRelationshipSourcePropertyPredicatesByteArray(Extent e) {
-  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
-  	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.reifiedRelationshipSourcePropertyPredicates(e).forEach[it |
-  	  pw.print("{")
-      pw.print("\"uuid\":")
-      pw.print("\"")
-      pw.print(it.uuid())
-      pw.print("\"")
+      pw.print("\"reifiedRelationshipInverseTargetUUID\":")
+      if (null !== reifiedRelationshipInverseTarget) {
+        pw.print("\"")
+        pw.print(it.reifiedRelationshipInverseTarget?.uuid())
+        pw.print("\"")
+      } else
+        pw.print("null")
       pw.print(",")
-      pw.print("\"bodySegmentUUID\":")
-      pw.print("\"")
-      pw.print(it.bodySegment.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"reifiedRelationshipUUID\":")
-      pw.print("\"")
-      pw.print(it.reifiedRelationship.uuid())
-      pw.print("\"")
-      pw.println("}")
-    ]
-    pw.close()
-    return bos.toByteArray()
-  }
-  
-  static def byte[] reifiedRelationshipTargetPropertyPredicatesByteArray(Extent e) {
-  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
-  	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.reifiedRelationshipTargetPropertyPredicates(e).forEach[it |
-  	  pw.print("{")
-      pw.print("\"uuid\":")
-      pw.print("\"")
-      pw.print(it.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"bodySegmentUUID\":")
-      pw.print("\"")
-      pw.print(it.bodySegment.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"reifiedRelationshipUUID\":")
-      pw.print("\"")
-      pw.print(it.reifiedRelationship.uuid())
-      pw.print("\"")
-      pw.println("}")
-    ]
-    pw.close()
-    return bos.toByteArray()
-  }
-  
-  static def byte[] unreifiedRelationshipPropertyPredicatesByteArray(Extent e) {
-  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
-  	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.unreifiedRelationshipPropertyPredicates(e).forEach[it |
-  	  pw.print("{")
-      pw.print("\"uuid\":")
-      pw.print("\"")
-      pw.print(it.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"unreifiedRelationshipUUID\":")
-      pw.print("\"")
-      pw.print(it.unreifiedRelationship.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"bodySegmentUUID\":")
-      pw.print("\"")
-      pw.print(it.bodySegment.uuid())
-      pw.print("\"")
-      pw.println("}")
-    ]
-    pw.close()
-    return bos.toByteArray()
-  }
-  
-  static def byte[] reifiedRelationshipInversePropertyPredicatesByteArray(Extent e) {
-  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
-  	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.reifiedRelationshipInversePropertyPredicates(e).forEach[it |
-  	  pw.print("{")
-      pw.print("\"uuid\":")
-      pw.print("\"")
-      pw.print(it.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"bodySegmentUUID\":")
-      pw.print("\"")
-      pw.print(it.bodySegment.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"reifiedRelationshipUUID\":")
-      pw.print("\"")
-      pw.print(it.reifiedRelationship.uuid())
-      pw.print("\"")
-      pw.println("}")
-    ]
-    pw.close()
-    return bos.toByteArray()
-  }
-  
-  static def byte[] reifiedRelationshipSourceInversePropertyPredicatesByteArray(Extent e) {
-  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
-  	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.reifiedRelationshipSourceInversePropertyPredicates(e).forEach[it |
-  	  pw.print("{")
-      pw.print("\"uuid\":")
-      pw.print("\"")
-      pw.print(it.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"bodySegmentUUID\":")
-      pw.print("\"")
-      pw.print(it.bodySegment.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"reifiedRelationshipUUID\":")
-      pw.print("\"")
-      pw.print(it.reifiedRelationship.uuid())
-      pw.print("\"")
-      pw.println("}")
-    ]
-    pw.close()
-    return bos.toByteArray()
-  }
-  
-  static def byte[] reifiedRelationshipTargetInversePropertyPredicatesByteArray(Extent e) {
-  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
-  	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.reifiedRelationshipTargetInversePropertyPredicates(e).forEach[it |
-  	  pw.print("{")
-      pw.print("\"uuid\":")
-      pw.print("\"")
-      pw.print(it.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"bodySegmentUUID\":")
-      pw.print("\"")
-      pw.print(it.bodySegment.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"reifiedRelationshipUUID\":")
-      pw.print("\"")
-      pw.print(it.reifiedRelationship.uuid())
-      pw.print("\"")
-      pw.println("}")
-    ]
-    pw.close()
-    return bos.toByteArray()
-  }
-  
-  static def byte[] unreifiedRelationshipInversePropertyPredicatesByteArray(Extent e) {
-  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
-  	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.unreifiedRelationshipInversePropertyPredicates(e).forEach[it |
-  	  pw.print("{")
-      pw.print("\"uuid\":")
-      pw.print("\"")
-      pw.print(it.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"unreifiedRelationshipUUID\":")
-      pw.print("\"")
-      pw.print(it.unreifiedRelationship.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"bodySegmentUUID\":")
-      pw.print("\"")
-      pw.print(it.bodySegment.uuid())
-      pw.print("\"")
+      pw.print("\"unreifiedRelationshipInverseUUID\":")
+      if (null !== unreifiedRelationshipInverse) {
+        pw.print("\"")
+        pw.print(it.unreifiedRelationshipInverse?.uuid())
+        pw.print("\"")
+      } else
+        pw.print("null")
       pw.println("}")
     ]
     pw.close()
@@ -2142,11 +1893,6 @@ class OMLSpecificationTables {
       pw.print(it.tbox.uuid())
       pw.print("\"")
       pw.print(",")
-      pw.print("\"restrictedRelationUUID\":")
-      pw.print("\"")
-      pw.print(it.restrictedRelation.uuid())
-      pw.print("\"")
-      pw.print(",")
       pw.print("\"restrictedDomainUUID\":")
       pw.print("\"")
       pw.print(it.restrictedDomain.uuid())
@@ -2155,6 +1901,11 @@ class OMLSpecificationTables {
       pw.print("\"restrictedRangeUUID\":")
       pw.print("\"")
       pw.print(it.restrictedRange.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"restrictedRelationshipUUID\":")
+      pw.print("\"")
+      pw.print(it.restrictedRelationship.uuid())
       pw.print("\"")
       pw.println("}")
     ]
@@ -2177,11 +1928,6 @@ class OMLSpecificationTables {
       pw.print(it.tbox.uuid())
       pw.print("\"")
       pw.print(",")
-      pw.print("\"restrictedRelationUUID\":")
-      pw.print("\"")
-      pw.print(it.restrictedRelation.uuid())
-      pw.print("\"")
-      pw.print(",")
       pw.print("\"restrictedDomainUUID\":")
       pw.print("\"")
       pw.print(it.restrictedDomain.uuid())
@@ -2190,6 +1936,11 @@ class OMLSpecificationTables {
       pw.print("\"restrictedRangeUUID\":")
       pw.print("\"")
       pw.print(it.restrictedRange.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"restrictedRelationshipUUID\":")
+      pw.print("\"")
+      pw.print(it.restrictedRelationship.uuid())
       pw.print("\"")
       pw.println("}")
     ]
@@ -3001,34 +2752,18 @@ class OMLSpecificationTables {
   	      tables.readStructuredDataProperties(lines)
   	    case "ReifiedRelationships.json":
   	      tables.readReifiedRelationships(lines)
+  	    case "ForwardProperties.json":
+  	      tables.readForwardProperties(lines)
+  	    case "InverseProperties.json":
+  	      tables.readInverseProperties(lines)
   	    case "UnreifiedRelationships.json":
   	      tables.readUnreifiedRelationships(lines)
   	    case "ChainRules.json":
   	      tables.readChainRules(lines)
   	    case "RuleBodySegments.json":
   	      tables.readRuleBodySegments(lines)
-  	    case "AspectPredicates.json":
-  	      tables.readAspectPredicates(lines)
-  	    case "ConceptPredicates.json":
-  	      tables.readConceptPredicates(lines)
-  	    case "ReifiedRelationshipPredicates.json":
-  	      tables.readReifiedRelationshipPredicates(lines)
-  	    case "ReifiedRelationshipPropertyPredicates.json":
-  	      tables.readReifiedRelationshipPropertyPredicates(lines)
-  	    case "ReifiedRelationshipSourcePropertyPredicates.json":
-  	      tables.readReifiedRelationshipSourcePropertyPredicates(lines)
-  	    case "ReifiedRelationshipTargetPropertyPredicates.json":
-  	      tables.readReifiedRelationshipTargetPropertyPredicates(lines)
-  	    case "UnreifiedRelationshipPropertyPredicates.json":
-  	      tables.readUnreifiedRelationshipPropertyPredicates(lines)
-  	    case "ReifiedRelationshipInversePropertyPredicates.json":
-  	      tables.readReifiedRelationshipInversePropertyPredicates(lines)
-  	    case "ReifiedRelationshipSourceInversePropertyPredicates.json":
-  	      tables.readReifiedRelationshipSourceInversePropertyPredicates(lines)
-  	    case "ReifiedRelationshipTargetInversePropertyPredicates.json":
-  	      tables.readReifiedRelationshipTargetInversePropertyPredicates(lines)
-  	    case "UnreifiedRelationshipInversePropertyPredicates.json":
-  	      tables.readUnreifiedRelationshipInversePropertyPredicates(lines)
+  	    case "SegmentPredicates.json":
+  	      tables.readSegmentPredicates(lines)
   	    case "EntityExistentialRestrictionAxioms.json":
   	      tables.readEntityExistentialRestrictionAxioms(lines)
   	    case "EntityUniversalRestrictionAxioms.json":
@@ -3424,10 +3159,30 @@ class OMLSpecificationTables {
   	  oml.isSymmetric = OMLTables.toEBoolean(kv.remove("isSymmetric"))
   	  oml.isTransitive = OMLTables.toEBoolean(kv.remove("isTransitive"))
   	  oml.name = OMLTables.toLocalName(kv.remove("name"))
-  	  oml.unreifiedPropertyName = OMLTables.toLocalName(kv.remove("unreifiedPropertyName"))
-  	  oml.unreifiedInversePropertyName = OMLTables.toLocalName(kv.remove("unreifiedInversePropertyName"))
   	  val pair = new Pair<ReifiedRelationship, Map<String,String>>(oml, kv)
   	  reifiedRelationships.put(uuid, pair)
+  	]
+  }
+  
+  protected def void readForwardProperties(ArrayList<String> lines) {
+  	val kvs = OMLZipResource.lines2tuples(lines)
+  	kvs.forEach[kv|
+  	  val oml = createForwardProperty()
+  	  val uuid = kv.remove("uuid")
+  	  oml.name = OMLTables.toLocalName(kv.remove("name"))
+  	  val pair = new Pair<ForwardProperty, Map<String,String>>(oml, kv)
+  	  forwardProperties.put(uuid, pair)
+  	]
+  }
+  
+  protected def void readInverseProperties(ArrayList<String> lines) {
+  	val kvs = OMLZipResource.lines2tuples(lines)
+  	kvs.forEach[kv|
+  	  val oml = createInverseProperty()
+  	  val uuid = kv.remove("uuid")
+  	  oml.name = OMLTables.toLocalName(kv.remove("name"))
+  	  val pair = new Pair<InverseProperty, Map<String,String>>(oml, kv)
+  	  inverseProperties.put(uuid, pair)
   	]
   }
   
@@ -3472,113 +3227,13 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void readAspectPredicates(ArrayList<String> lines) {
+  protected def void readSegmentPredicates(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	kvs.forEach[kv|
-  	  val oml = createAspectPredicate()
+  	  val oml = createSegmentPredicate()
   	  val uuid = kv.remove("uuid")
-  	  val pair = new Pair<AspectPredicate, Map<String,String>>(oml, kv)
-  	  aspectPredicates.put(uuid, pair)
-  	]
-  }
-  
-  protected def void readConceptPredicates(ArrayList<String> lines) {
-  	val kvs = OMLZipResource.lines2tuples(lines)
-  	kvs.forEach[kv|
-  	  val oml = createConceptPredicate()
-  	  val uuid = kv.remove("uuid")
-  	  val pair = new Pair<ConceptPredicate, Map<String,String>>(oml, kv)
-  	  conceptPredicates.put(uuid, pair)
-  	]
-  }
-  
-  protected def void readReifiedRelationshipPredicates(ArrayList<String> lines) {
-  	val kvs = OMLZipResource.lines2tuples(lines)
-  	kvs.forEach[kv|
-  	  val oml = createReifiedRelationshipPredicate()
-  	  val uuid = kv.remove("uuid")
-  	  val pair = new Pair<ReifiedRelationshipPredicate, Map<String,String>>(oml, kv)
-  	  reifiedRelationshipPredicates.put(uuid, pair)
-  	]
-  }
-  
-  protected def void readReifiedRelationshipPropertyPredicates(ArrayList<String> lines) {
-  	val kvs = OMLZipResource.lines2tuples(lines)
-  	kvs.forEach[kv|
-  	  val oml = createReifiedRelationshipPropertyPredicate()
-  	  val uuid = kv.remove("uuid")
-  	  val pair = new Pair<ReifiedRelationshipPropertyPredicate, Map<String,String>>(oml, kv)
-  	  reifiedRelationshipPropertyPredicates.put(uuid, pair)
-  	]
-  }
-  
-  protected def void readReifiedRelationshipSourcePropertyPredicates(ArrayList<String> lines) {
-  	val kvs = OMLZipResource.lines2tuples(lines)
-  	kvs.forEach[kv|
-  	  val oml = createReifiedRelationshipSourcePropertyPredicate()
-  	  val uuid = kv.remove("uuid")
-  	  val pair = new Pair<ReifiedRelationshipSourcePropertyPredicate, Map<String,String>>(oml, kv)
-  	  reifiedRelationshipSourcePropertyPredicates.put(uuid, pair)
-  	]
-  }
-  
-  protected def void readReifiedRelationshipTargetPropertyPredicates(ArrayList<String> lines) {
-  	val kvs = OMLZipResource.lines2tuples(lines)
-  	kvs.forEach[kv|
-  	  val oml = createReifiedRelationshipTargetPropertyPredicate()
-  	  val uuid = kv.remove("uuid")
-  	  val pair = new Pair<ReifiedRelationshipTargetPropertyPredicate, Map<String,String>>(oml, kv)
-  	  reifiedRelationshipTargetPropertyPredicates.put(uuid, pair)
-  	]
-  }
-  
-  protected def void readUnreifiedRelationshipPropertyPredicates(ArrayList<String> lines) {
-  	val kvs = OMLZipResource.lines2tuples(lines)
-  	kvs.forEach[kv|
-  	  val oml = createUnreifiedRelationshipPropertyPredicate()
-  	  val uuid = kv.remove("uuid")
-  	  val pair = new Pair<UnreifiedRelationshipPropertyPredicate, Map<String,String>>(oml, kv)
-  	  unreifiedRelationshipPropertyPredicates.put(uuid, pair)
-  	]
-  }
-  
-  protected def void readReifiedRelationshipInversePropertyPredicates(ArrayList<String> lines) {
-  	val kvs = OMLZipResource.lines2tuples(lines)
-  	kvs.forEach[kv|
-  	  val oml = createReifiedRelationshipInversePropertyPredicate()
-  	  val uuid = kv.remove("uuid")
-  	  val pair = new Pair<ReifiedRelationshipInversePropertyPredicate, Map<String,String>>(oml, kv)
-  	  reifiedRelationshipInversePropertyPredicates.put(uuid, pair)
-  	]
-  }
-  
-  protected def void readReifiedRelationshipSourceInversePropertyPredicates(ArrayList<String> lines) {
-  	val kvs = OMLZipResource.lines2tuples(lines)
-  	kvs.forEach[kv|
-  	  val oml = createReifiedRelationshipSourceInversePropertyPredicate()
-  	  val uuid = kv.remove("uuid")
-  	  val pair = new Pair<ReifiedRelationshipSourceInversePropertyPredicate, Map<String,String>>(oml, kv)
-  	  reifiedRelationshipSourceInversePropertyPredicates.put(uuid, pair)
-  	]
-  }
-  
-  protected def void readReifiedRelationshipTargetInversePropertyPredicates(ArrayList<String> lines) {
-  	val kvs = OMLZipResource.lines2tuples(lines)
-  	kvs.forEach[kv|
-  	  val oml = createReifiedRelationshipTargetInversePropertyPredicate()
-  	  val uuid = kv.remove("uuid")
-  	  val pair = new Pair<ReifiedRelationshipTargetInversePropertyPredicate, Map<String,String>>(oml, kv)
-  	  reifiedRelationshipTargetInversePropertyPredicates.put(uuid, pair)
-  	]
-  }
-  
-  protected def void readUnreifiedRelationshipInversePropertyPredicates(ArrayList<String> lines) {
-  	val kvs = OMLZipResource.lines2tuples(lines)
-  	kvs.forEach[kv|
-  	  val oml = createUnreifiedRelationshipInversePropertyPredicate()
-  	  val uuid = kv.remove("uuid")
-  	  val pair = new Pair<UnreifiedRelationshipInversePropertyPredicate, Map<String,String>>(oml, kv)
-  	  unreifiedRelationshipInversePropertyPredicates.put(uuid, pair)
+  	  val pair = new Pair<SegmentPredicate, Map<String,String>>(oml, kv)
+  	  segmentPredicates.put(uuid, pair)
   	]
   }
   
@@ -3884,20 +3539,12 @@ class OMLSpecificationTables {
     includeMap(logicalElements, scalarDataProperties)
     includeMap(logicalElements, structuredDataProperties)
     includeMap(logicalElements, reifiedRelationships)
+    includeMap(logicalElements, forwardProperties)
+    includeMap(logicalElements, inverseProperties)
     includeMap(logicalElements, unreifiedRelationships)
     includeMap(logicalElements, chainRules)
     includeMap(logicalElements, ruleBodySegments)
-    includeMap(logicalElements, aspectPredicates)
-    includeMap(logicalElements, conceptPredicates)
-    includeMap(logicalElements, reifiedRelationshipPredicates)
-    includeMap(logicalElements, reifiedRelationshipPropertyPredicates)
-    includeMap(logicalElements, reifiedRelationshipSourcePropertyPredicates)
-    includeMap(logicalElements, reifiedRelationshipTargetPropertyPredicates)
-    includeMap(logicalElements, unreifiedRelationshipPropertyPredicates)
-    includeMap(logicalElements, reifiedRelationshipInversePropertyPredicates)
-    includeMap(logicalElements, reifiedRelationshipSourceInversePropertyPredicates)
-    includeMap(logicalElements, reifiedRelationshipTargetInversePropertyPredicates)
-    includeMap(logicalElements, unreifiedRelationshipInversePropertyPredicates)
+    includeMap(logicalElements, segmentPredicates)
     includeMap(logicalElements, entityExistentialRestrictionAxioms)
     includeMap(logicalElements, entityUniversalRestrictionAxioms)
     includeMap(logicalElements, entityScalarDataPropertyExistentialRestrictionAxioms)
@@ -3997,20 +3644,12 @@ class OMLSpecificationTables {
     resolveScalarDataProperties(rs)
     resolveStructuredDataProperties(rs)
     resolveReifiedRelationships(rs)
+    resolveForwardProperties(rs)
+    resolveInverseProperties(rs)
     resolveUnreifiedRelationships(rs)
     resolveChainRules(rs)
     resolveRuleBodySegments(rs)
-    resolveAspectPredicates(rs)
-    resolveConceptPredicates(rs)
-    resolveReifiedRelationshipPredicates(rs)
-    resolveReifiedRelationshipPropertyPredicates(rs)
-    resolveReifiedRelationshipSourcePropertyPredicates(rs)
-    resolveReifiedRelationshipTargetPropertyPredicates(rs)
-    resolveUnreifiedRelationshipPropertyPredicates(rs)
-    resolveReifiedRelationshipInversePropertyPredicates(rs)
-    resolveReifiedRelationshipSourceInversePropertyPredicates(rs)
-    resolveReifiedRelationshipTargetInversePropertyPredicates(rs)
-    resolveUnreifiedRelationshipInversePropertyPredicates(rs)
+    resolveSegmentPredicates(rs)
     resolveEntityExistentialRestrictionAxioms(rs)
     resolveEntityUniversalRestrictionAxioms(rs)
     resolveEntityScalarDataPropertyExistentialRestrictionAxioms(rs)
@@ -4543,6 +4182,34 @@ class OMLSpecificationTables {
   	]
   }
   
+  protected def void resolveForwardProperties(OMLZipResourceSet rs) {
+  	forwardProperties.forEach[uuid, oml_kv |
+  	  val ForwardProperty oml = oml_kv.key
+  	  val Map<String, String> kv = oml_kv.value
+  	  if (!kv.empty) {
+  	    val String reifiedRelationshipXRef = kv.remove("reifiedRelationshipUUID")
+  	    val Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipPair = reifiedRelationships.get(reifiedRelationshipXRef)
+  	    if (null === reifiedRelationshipPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationship in forwardProperties")
+  	    oml.reifiedRelationship = reifiedRelationshipPair.key
+  	  }
+  	]
+  }
+  
+  protected def void resolveInverseProperties(OMLZipResourceSet rs) {
+  	inverseProperties.forEach[uuid, oml_kv |
+  	  val InverseProperty oml = oml_kv.key
+  	  val Map<String, String> kv = oml_kv.value
+  	  if (!kv.empty) {
+  	    val String reifiedRelationshipXRef = kv.remove("reifiedRelationshipUUID")
+  	    val Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipPair = reifiedRelationships.get(reifiedRelationshipXRef)
+  	    if (null === reifiedRelationshipPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationship in inverseProperties")
+  	    oml.reifiedRelationship = reifiedRelationshipPair.key
+  	  }
+  	]
+  }
+  
   protected def void resolveUnreifiedRelationships(OMLZipResourceSet rs) {
   	unreifiedRelationships.forEach[uuid, oml_kv |
   	  val UnreifiedRelationship oml = oml_kv.key
@@ -4609,211 +4276,58 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveAspectPredicates(OMLZipResourceSet rs) {
-  	aspectPredicates.forEach[uuid, oml_kv |
-  	  val AspectPredicate oml = oml_kv.key
-  	  val Map<String, String> kv = oml_kv.value
-  	  if (!kv.empty) {
-  	    val String aspectXRef = kv.remove("aspectUUID")
-  	    val Pair<Aspect, Map<String, String>> aspectPair = aspects.get(aspectXRef)
-  	    if (null === aspectPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for aspect in aspectPredicates")
-  	    oml.aspect = aspectPair.key
-  	    val String bodySegmentXRef = kv.remove("bodySegmentUUID")
-  	    val Pair<RuleBodySegment, Map<String, String>> bodySegmentPair = ruleBodySegments.get(bodySegmentXRef)
-  	    if (null === bodySegmentPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in aspectPredicates")
-  	    oml.bodySegment = bodySegmentPair.key
-  	  }
-  	]
-  }
-  
-  protected def void resolveConceptPredicates(OMLZipResourceSet rs) {
-  	conceptPredicates.forEach[uuid, oml_kv |
-  	  val ConceptPredicate oml = oml_kv.key
+  protected def void resolveSegmentPredicates(OMLZipResourceSet rs) {
+  	segmentPredicates.forEach[uuid, oml_kv |
+  	  val SegmentPredicate oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
   	  if (!kv.empty) {
   	    val String bodySegmentXRef = kv.remove("bodySegmentUUID")
   	    val Pair<RuleBodySegment, Map<String, String>> bodySegmentPair = ruleBodySegments.get(bodySegmentXRef)
   	    if (null === bodySegmentPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in conceptPredicates")
+  	      throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in segmentPredicates")
   	    oml.bodySegment = bodySegmentPair.key
-  	    val String conceptXRef = kv.remove("conceptUUID")
-  	    val Pair<Concept, Map<String, String>> conceptPair = concepts.get(conceptXRef)
-  	    if (null === conceptPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for concept in conceptPredicates")
-  	    oml.concept = conceptPair.key
-  	  }
-  	]
-  }
-  
-  protected def void resolveReifiedRelationshipPredicates(OMLZipResourceSet rs) {
-  	reifiedRelationshipPredicates.forEach[uuid, oml_kv |
-  	  val ReifiedRelationshipPredicate oml = oml_kv.key
-  	  val Map<String, String> kv = oml_kv.value
-  	  if (!kv.empty) {
-  	    val String bodySegmentXRef = kv.remove("bodySegmentUUID")
-  	    val Pair<RuleBodySegment, Map<String, String>> bodySegmentPair = ruleBodySegments.get(bodySegmentXRef)
-  	    if (null === bodySegmentPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in reifiedRelationshipPredicates")
-  	    oml.bodySegment = bodySegmentPair.key
-  	    val String reifiedRelationshipXRef = kv.remove("reifiedRelationshipUUID")
-  	    val Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipPair = reifiedRelationships.get(reifiedRelationshipXRef)
-  	    if (null === reifiedRelationshipPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationship in reifiedRelationshipPredicates")
-  	    oml.reifiedRelationship = reifiedRelationshipPair.key
-  	  }
-  	]
-  }
-  
-  protected def void resolveReifiedRelationshipPropertyPredicates(OMLZipResourceSet rs) {
-  	reifiedRelationshipPropertyPredicates.forEach[uuid, oml_kv |
-  	  val ReifiedRelationshipPropertyPredicate oml = oml_kv.key
-  	  val Map<String, String> kv = oml_kv.value
-  	  if (!kv.empty) {
-  	    val String bodySegmentXRef = kv.remove("bodySegmentUUID")
-  	    val Pair<RuleBodySegment, Map<String, String>> bodySegmentPair = ruleBodySegments.get(bodySegmentXRef)
-  	    if (null === bodySegmentPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in reifiedRelationshipPropertyPredicates")
-  	    oml.bodySegment = bodySegmentPair.key
-  	    val String reifiedRelationshipXRef = kv.remove("reifiedRelationshipUUID")
-  	    val Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipPair = reifiedRelationships.get(reifiedRelationshipXRef)
-  	    if (null === reifiedRelationshipPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationship in reifiedRelationshipPropertyPredicates")
-  	    oml.reifiedRelationship = reifiedRelationshipPair.key
-  	  }
-  	]
-  }
-  
-  protected def void resolveReifiedRelationshipSourcePropertyPredicates(OMLZipResourceSet rs) {
-  	reifiedRelationshipSourcePropertyPredicates.forEach[uuid, oml_kv |
-  	  val ReifiedRelationshipSourcePropertyPredicate oml = oml_kv.key
-  	  val Map<String, String> kv = oml_kv.value
-  	  if (!kv.empty) {
-  	    val String bodySegmentXRef = kv.remove("bodySegmentUUID")
-  	    val Pair<RuleBodySegment, Map<String, String>> bodySegmentPair = ruleBodySegments.get(bodySegmentXRef)
-  	    if (null === bodySegmentPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in reifiedRelationshipSourcePropertyPredicates")
-  	    oml.bodySegment = bodySegmentPair.key
-  	    val String reifiedRelationshipXRef = kv.remove("reifiedRelationshipUUID")
-  	    val Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipPair = reifiedRelationships.get(reifiedRelationshipXRef)
-  	    if (null === reifiedRelationshipPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationship in reifiedRelationshipSourcePropertyPredicates")
-  	    oml.reifiedRelationship = reifiedRelationshipPair.key
-  	  }
-  	]
-  }
-  
-  protected def void resolveReifiedRelationshipTargetPropertyPredicates(OMLZipResourceSet rs) {
-  	reifiedRelationshipTargetPropertyPredicates.forEach[uuid, oml_kv |
-  	  val ReifiedRelationshipTargetPropertyPredicate oml = oml_kv.key
-  	  val Map<String, String> kv = oml_kv.value
-  	  if (!kv.empty) {
-  	    val String bodySegmentXRef = kv.remove("bodySegmentUUID")
-  	    val Pair<RuleBodySegment, Map<String, String>> bodySegmentPair = ruleBodySegments.get(bodySegmentXRef)
-  	    if (null === bodySegmentPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in reifiedRelationshipTargetPropertyPredicates")
-  	    oml.bodySegment = bodySegmentPair.key
-  	    val String reifiedRelationshipXRef = kv.remove("reifiedRelationshipUUID")
-  	    val Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipPair = reifiedRelationships.get(reifiedRelationshipXRef)
-  	    if (null === reifiedRelationshipPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationship in reifiedRelationshipTargetPropertyPredicates")
-  	    oml.reifiedRelationship = reifiedRelationshipPair.key
-  	  }
-  	]
-  }
-  
-  protected def void resolveUnreifiedRelationshipPropertyPredicates(OMLZipResourceSet rs) {
-  	unreifiedRelationshipPropertyPredicates.forEach[uuid, oml_kv |
-  	  val UnreifiedRelationshipPropertyPredicate oml = oml_kv.key
-  	  val Map<String, String> kv = oml_kv.value
-  	  if (!kv.empty) {
-  	    val String unreifiedRelationshipXRef = kv.remove("unreifiedRelationshipUUID")
-  	    val Pair<UnreifiedRelationship, Map<String, String>> unreifiedRelationshipPair = unreifiedRelationships.get(unreifiedRelationshipXRef)
-  	    if (null === unreifiedRelationshipPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for unreifiedRelationship in unreifiedRelationshipPropertyPredicates")
-  	    oml.unreifiedRelationship = unreifiedRelationshipPair.key
-  	    val String bodySegmentXRef = kv.remove("bodySegmentUUID")
-  	    val Pair<RuleBodySegment, Map<String, String>> bodySegmentPair = ruleBodySegments.get(bodySegmentXRef)
-  	    if (null === bodySegmentPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in unreifiedRelationshipPropertyPredicates")
-  	    oml.bodySegment = bodySegmentPair.key
-  	  }
-  	]
-  }
-  
-  protected def void resolveReifiedRelationshipInversePropertyPredicates(OMLZipResourceSet rs) {
-  	reifiedRelationshipInversePropertyPredicates.forEach[uuid, oml_kv |
-  	  val ReifiedRelationshipInversePropertyPredicate oml = oml_kv.key
-  	  val Map<String, String> kv = oml_kv.value
-  	  if (!kv.empty) {
-  	    val String bodySegmentXRef = kv.remove("bodySegmentUUID")
-  	    val Pair<RuleBodySegment, Map<String, String>> bodySegmentPair = ruleBodySegments.get(bodySegmentXRef)
-  	    if (null === bodySegmentPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in reifiedRelationshipInversePropertyPredicates")
-  	    oml.bodySegment = bodySegmentPair.key
-  	    val String reifiedRelationshipXRef = kv.remove("reifiedRelationshipUUID")
-  	    val Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipPair = reifiedRelationships.get(reifiedRelationshipXRef)
-  	    if (null === reifiedRelationshipPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationship in reifiedRelationshipInversePropertyPredicates")
-  	    oml.reifiedRelationship = reifiedRelationshipPair.key
-  	  }
-  	]
-  }
-  
-  protected def void resolveReifiedRelationshipSourceInversePropertyPredicates(OMLZipResourceSet rs) {
-  	reifiedRelationshipSourceInversePropertyPredicates.forEach[uuid, oml_kv |
-  	  val ReifiedRelationshipSourceInversePropertyPredicate oml = oml_kv.key
-  	  val Map<String, String> kv = oml_kv.value
-  	  if (!kv.empty) {
-  	    val String bodySegmentXRef = kv.remove("bodySegmentUUID")
-  	    val Pair<RuleBodySegment, Map<String, String>> bodySegmentPair = ruleBodySegments.get(bodySegmentXRef)
-  	    if (null === bodySegmentPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in reifiedRelationshipSourceInversePropertyPredicates")
-  	    oml.bodySegment = bodySegmentPair.key
-  	    val String reifiedRelationshipXRef = kv.remove("reifiedRelationshipUUID")
-  	    val Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipPair = reifiedRelationships.get(reifiedRelationshipXRef)
-  	    if (null === reifiedRelationshipPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationship in reifiedRelationshipSourceInversePropertyPredicates")
-  	    oml.reifiedRelationship = reifiedRelationshipPair.key
-  	  }
-  	]
-  }
-  
-  protected def void resolveReifiedRelationshipTargetInversePropertyPredicates(OMLZipResourceSet rs) {
-  	reifiedRelationshipTargetInversePropertyPredicates.forEach[uuid, oml_kv |
-  	  val ReifiedRelationshipTargetInversePropertyPredicate oml = oml_kv.key
-  	  val Map<String, String> kv = oml_kv.value
-  	  if (!kv.empty) {
-  	    val String bodySegmentXRef = kv.remove("bodySegmentUUID")
-  	    val Pair<RuleBodySegment, Map<String, String>> bodySegmentPair = ruleBodySegments.get(bodySegmentXRef)
-  	    if (null === bodySegmentPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in reifiedRelationshipTargetInversePropertyPredicates")
-  	    oml.bodySegment = bodySegmentPair.key
-  	    val String reifiedRelationshipXRef = kv.remove("reifiedRelationshipUUID")
-  	    val Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipPair = reifiedRelationships.get(reifiedRelationshipXRef)
-  	    if (null === reifiedRelationshipPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationship in reifiedRelationshipTargetInversePropertyPredicates")
-  	    oml.reifiedRelationship = reifiedRelationshipPair.key
-  	  }
-  	]
-  }
-  
-  protected def void resolveUnreifiedRelationshipInversePropertyPredicates(OMLZipResourceSet rs) {
-  	unreifiedRelationshipInversePropertyPredicates.forEach[uuid, oml_kv |
-  	  val UnreifiedRelationshipInversePropertyPredicate oml = oml_kv.key
-  	  val Map<String, String> kv = oml_kv.value
-  	  if (!kv.empty) {
-  	    val String unreifiedRelationshipXRef = kv.remove("unreifiedRelationshipUUID")
-  	    val Pair<UnreifiedRelationship, Map<String, String>> unreifiedRelationshipPair = unreifiedRelationships.get(unreifiedRelationshipXRef)
-  	    if (null === unreifiedRelationshipPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for unreifiedRelationship in unreifiedRelationshipInversePropertyPredicates")
-  	    oml.unreifiedRelationship = unreifiedRelationshipPair.key
-  	    val String bodySegmentXRef = kv.remove("bodySegmentUUID")
-  	    val Pair<RuleBodySegment, Map<String, String>> bodySegmentPair = ruleBodySegments.get(bodySegmentXRef)
-  	    if (null === bodySegmentPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in unreifiedRelationshipInversePropertyPredicates")
-  	    oml.bodySegment = bodySegmentPair.key
+  	    val String predicateXRef = kv.remove("predicateUUID")
+  	    if ("null" != predicateXRef) {
+  	      val Pair<Predicate, Map<String, String>> predicatePair = predicates.get(predicateXRef)
+  	      if (null === predicatePair)
+  	        throw new IllegalArgumentException("Null cross-reference lookup for predicate in segmentPredicates")
+  	      oml.predicate = predicatePair.key
+  	    }
+  	    val String reifiedRelationshipSourceXRef = kv.remove("reifiedRelationshipSourceUUID")
+  	    if ("null" != reifiedRelationshipSourceXRef) {
+  	      val Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipSourcePair = reifiedRelationships.get(reifiedRelationshipSourceXRef)
+  	      if (null === reifiedRelationshipSourcePair)
+  	        throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationshipSource in segmentPredicates")
+  	      oml.reifiedRelationshipSource = reifiedRelationshipSourcePair.key
+  	    }
+  	    val String reifiedRelationshipInverseSourceXRef = kv.remove("reifiedRelationshipInverseSourceUUID")
+  	    if ("null" != reifiedRelationshipInverseSourceXRef) {
+  	      val Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipInverseSourcePair = reifiedRelationships.get(reifiedRelationshipInverseSourceXRef)
+  	      if (null === reifiedRelationshipInverseSourcePair)
+  	        throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationshipInverseSource in segmentPredicates")
+  	      oml.reifiedRelationshipInverseSource = reifiedRelationshipInverseSourcePair.key
+  	    }
+  	    val String reifiedRelationshipTargetXRef = kv.remove("reifiedRelationshipTargetUUID")
+  	    if ("null" != reifiedRelationshipTargetXRef) {
+  	      val Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipTargetPair = reifiedRelationships.get(reifiedRelationshipTargetXRef)
+  	      if (null === reifiedRelationshipTargetPair)
+  	        throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationshipTarget in segmentPredicates")
+  	      oml.reifiedRelationshipTarget = reifiedRelationshipTargetPair.key
+  	    }
+  	    val String reifiedRelationshipInverseTargetXRef = kv.remove("reifiedRelationshipInverseTargetUUID")
+  	    if ("null" != reifiedRelationshipInverseTargetXRef) {
+  	      val Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipInverseTargetPair = reifiedRelationships.get(reifiedRelationshipInverseTargetXRef)
+  	      if (null === reifiedRelationshipInverseTargetPair)
+  	        throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationshipInverseTarget in segmentPredicates")
+  	      oml.reifiedRelationshipInverseTarget = reifiedRelationshipInverseTargetPair.key
+  	    }
+  	    val String unreifiedRelationshipInverseXRef = kv.remove("unreifiedRelationshipInverseUUID")
+  	    if ("null" != unreifiedRelationshipInverseXRef) {
+  	      val Pair<UnreifiedRelationship, Map<String, String>> unreifiedRelationshipInversePair = unreifiedRelationships.get(unreifiedRelationshipInverseXRef)
+  	      if (null === unreifiedRelationshipInversePair)
+  	        throw new IllegalArgumentException("Null cross-reference lookup for unreifiedRelationshipInverse in segmentPredicates")
+  	      oml.unreifiedRelationshipInverse = unreifiedRelationshipInversePair.key
+  	    }
   	  }
   	]
   }
@@ -4828,11 +4342,6 @@ class OMLSpecificationTables {
   	    if (null === tboxPair)
   	      throw new IllegalArgumentException("Null cross-reference lookup for tbox in entityExistentialRestrictionAxioms")
   	    oml.tbox = tboxPair.key
-  	    val String restrictedRelationXRef = kv.remove("restrictedRelationUUID")
-  	    val Pair<EntityRelationship, Map<String, String>> restrictedRelationPair = entityRelationships.get(restrictedRelationXRef)
-  	    if (null === restrictedRelationPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for restrictedRelation in entityExistentialRestrictionAxioms")
-  	    oml.restrictedRelation = restrictedRelationPair.key
   	    val String restrictedDomainXRef = kv.remove("restrictedDomainUUID")
   	    val Pair<Entity, Map<String, String>> restrictedDomainPair = entities.get(restrictedDomainXRef)
   	    if (null === restrictedDomainPair)
@@ -4843,6 +4352,11 @@ class OMLSpecificationTables {
   	    if (null === restrictedRangePair)
   	      throw new IllegalArgumentException("Null cross-reference lookup for restrictedRange in entityExistentialRestrictionAxioms")
   	    oml.restrictedRange = restrictedRangePair.key
+  	    val String restrictedRelationshipXRef = kv.remove("restrictedRelationshipUUID")
+  	    val Pair<RestrictableRelationship, Map<String, String>> restrictedRelationshipPair = restrictableRelationships.get(restrictedRelationshipXRef)
+  	    if (null === restrictedRelationshipPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for restrictedRelationship in entityExistentialRestrictionAxioms")
+  	    oml.restrictedRelationship = restrictedRelationshipPair.key
   	  }
   	]
   }
@@ -4857,11 +4371,6 @@ class OMLSpecificationTables {
   	    if (null === tboxPair)
   	      throw new IllegalArgumentException("Null cross-reference lookup for tbox in entityUniversalRestrictionAxioms")
   	    oml.tbox = tboxPair.key
-  	    val String restrictedRelationXRef = kv.remove("restrictedRelationUUID")
-  	    val Pair<EntityRelationship, Map<String, String>> restrictedRelationPair = entityRelationships.get(restrictedRelationXRef)
-  	    if (null === restrictedRelationPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for restrictedRelation in entityUniversalRestrictionAxioms")
-  	    oml.restrictedRelation = restrictedRelationPair.key
   	    val String restrictedDomainXRef = kv.remove("restrictedDomainUUID")
   	    val Pair<Entity, Map<String, String>> restrictedDomainPair = entities.get(restrictedDomainXRef)
   	    if (null === restrictedDomainPair)
@@ -4872,6 +4381,11 @@ class OMLSpecificationTables {
   	    if (null === restrictedRangePair)
   	      throw new IllegalArgumentException("Null cross-reference lookup for restrictedRange in entityUniversalRestrictionAxioms")
   	    oml.restrictedRange = restrictedRangePair.key
+  	    val String restrictedRelationshipXRef = kv.remove("restrictedRelationshipUUID")
+  	    val Pair<RestrictableRelationship, Map<String, String>> restrictedRelationshipPair = restrictableRelationships.get(restrictedRelationshipXRef)
+  	    if (null === restrictedRelationshipPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for restrictedRelationship in entityUniversalRestrictionAxioms")
+  	    oml.restrictedRelationship = restrictedRelationshipPair.key
   	  }
   	]
   }
@@ -5593,6 +5107,16 @@ class OMLSpecificationTables {
   	            reifiedRelationships.put(e.uuid(), pair)
   	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
   	          }
+  	          ForwardProperty: {
+  	          	val pair = new Pair<ForwardProperty, Map<String,String>>(e, Collections.emptyMap)
+  	            forwardProperties.put(e.uuid(), pair)
+  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	          }
+  	          InverseProperty: {
+  	          	val pair = new Pair<InverseProperty, Map<String,String>>(e, Collections.emptyMap)
+  	            inverseProperties.put(e.uuid(), pair)
+  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	          }
   	          UnreifiedRelationship: {
   	          	val pair = new Pair<UnreifiedRelationship, Map<String,String>>(e, Collections.emptyMap)
   	            unreifiedRelationships.put(e.uuid(), pair)
@@ -5608,59 +5132,9 @@ class OMLSpecificationTables {
   	            ruleBodySegments.put(e.uuid(), pair)
   	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
   	          }
-  	          AspectPredicate: {
-  	          	val pair = new Pair<AspectPredicate, Map<String,String>>(e, Collections.emptyMap)
-  	            aspectPredicates.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          ConceptPredicate: {
-  	          	val pair = new Pair<ConceptPredicate, Map<String,String>>(e, Collections.emptyMap)
-  	            conceptPredicates.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          ReifiedRelationshipPredicate: {
-  	          	val pair = new Pair<ReifiedRelationshipPredicate, Map<String,String>>(e, Collections.emptyMap)
-  	            reifiedRelationshipPredicates.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          ReifiedRelationshipPropertyPredicate: {
-  	          	val pair = new Pair<ReifiedRelationshipPropertyPredicate, Map<String,String>>(e, Collections.emptyMap)
-  	            reifiedRelationshipPropertyPredicates.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          ReifiedRelationshipSourcePropertyPredicate: {
-  	          	val pair = new Pair<ReifiedRelationshipSourcePropertyPredicate, Map<String,String>>(e, Collections.emptyMap)
-  	            reifiedRelationshipSourcePropertyPredicates.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          ReifiedRelationshipTargetPropertyPredicate: {
-  	          	val pair = new Pair<ReifiedRelationshipTargetPropertyPredicate, Map<String,String>>(e, Collections.emptyMap)
-  	            reifiedRelationshipTargetPropertyPredicates.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          UnreifiedRelationshipPropertyPredicate: {
-  	          	val pair = new Pair<UnreifiedRelationshipPropertyPredicate, Map<String,String>>(e, Collections.emptyMap)
-  	            unreifiedRelationshipPropertyPredicates.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          ReifiedRelationshipInversePropertyPredicate: {
-  	          	val pair = new Pair<ReifiedRelationshipInversePropertyPredicate, Map<String,String>>(e, Collections.emptyMap)
-  	            reifiedRelationshipInversePropertyPredicates.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          ReifiedRelationshipSourceInversePropertyPredicate: {
-  	          	val pair = new Pair<ReifiedRelationshipSourceInversePropertyPredicate, Map<String,String>>(e, Collections.emptyMap)
-  	            reifiedRelationshipSourceInversePropertyPredicates.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          ReifiedRelationshipTargetInversePropertyPredicate: {
-  	          	val pair = new Pair<ReifiedRelationshipTargetInversePropertyPredicate, Map<String,String>>(e, Collections.emptyMap)
-  	            reifiedRelationshipTargetInversePropertyPredicates.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          UnreifiedRelationshipInversePropertyPredicate: {
-  	          	val pair = new Pair<UnreifiedRelationshipInversePropertyPredicate, Map<String,String>>(e, Collections.emptyMap)
-  	            unreifiedRelationshipInversePropertyPredicates.put(e.uuid(), pair)
+  	          SegmentPredicate: {
+  	          	val pair = new Pair<SegmentPredicate, Map<String,String>>(e, Collections.emptyMap)
+  	            segmentPredicates.put(e.uuid(), pair)
   	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
   	          }
   	          EntityExistentialRestrictionAxiom: {

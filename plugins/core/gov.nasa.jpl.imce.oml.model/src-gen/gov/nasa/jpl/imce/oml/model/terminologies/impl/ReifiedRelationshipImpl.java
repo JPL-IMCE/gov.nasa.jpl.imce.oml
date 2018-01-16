@@ -18,12 +18,24 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies.impl;
 
+import gov.nasa.jpl.imce.oml.model.terminologies.ConceptualEntity;
+import gov.nasa.jpl.imce.oml.model.terminologies.Entity;
+import gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty;
+import gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty;
+import gov.nasa.jpl.imce.oml.model.terminologies.Predicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship;
+import gov.nasa.jpl.imce.oml.model.terminologies.Term;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage;
 
+import java.lang.reflect.InvocationTargetException;
+
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
@@ -35,52 +47,32 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipImpl#getUnreifiedPropertyName <em>Unreified Property Name</em>}</li>
- *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipImpl#getUnreifiedInversePropertyName <em>Unreified Inverse Property Name</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipImpl#getForwardProperty <em>Forward Property</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipImpl#getInverseProperty <em>Inverse Property</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class ReifiedRelationshipImpl extends EntityRelationshipImpl implements ReifiedRelationship {
 	/**
-	 * The default value of the '{@link #getUnreifiedPropertyName() <em>Unreified Property Name</em>}' attribute.
+	 * The cached value of the '{@link #getForwardProperty() <em>Forward Property</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getUnreifiedPropertyName()
+	 * @see #getForwardProperty()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String UNREIFIED_PROPERTY_NAME_EDEFAULT = null;
+	protected ForwardProperty forwardProperty;
 
 	/**
-	 * The cached value of the '{@link #getUnreifiedPropertyName() <em>Unreified Property Name</em>}' attribute.
+	 * The cached value of the '{@link #getInverseProperty() <em>Inverse Property</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getUnreifiedPropertyName()
+	 * @see #getInverseProperty()
 	 * @generated
 	 * @ordered
 	 */
-	protected String unreifiedPropertyName = UNREIFIED_PROPERTY_NAME_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getUnreifiedInversePropertyName() <em>Unreified Inverse Property Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getUnreifiedInversePropertyName()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String UNREIFIED_INVERSE_PROPERTY_NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getUnreifiedInversePropertyName() <em>Unreified Inverse Property Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getUnreifiedInversePropertyName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String unreifiedInversePropertyName = UNREIFIED_INVERSE_PROPERTY_NAME_EDEFAULT;
+	protected InverseProperty inverseProperty;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -106,8 +98,8 @@ public class ReifiedRelationshipImpl extends EntityRelationshipImpl implements R
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getUnreifiedPropertyName() {
-		return unreifiedPropertyName;
+	public ForwardProperty getForwardProperty() {
+		return forwardProperty;
 	}
 
 	/**
@@ -115,11 +107,14 @@ public class ReifiedRelationshipImpl extends EntityRelationshipImpl implements R
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setUnreifiedPropertyName(String newUnreifiedPropertyName) {
-		String oldUnreifiedPropertyName = unreifiedPropertyName;
-		unreifiedPropertyName = newUnreifiedPropertyName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.REIFIED_RELATIONSHIP__UNREIFIED_PROPERTY_NAME, oldUnreifiedPropertyName, unreifiedPropertyName));
+	public NotificationChain basicSetForwardProperty(ForwardProperty newForwardProperty, NotificationChain msgs) {
+		ForwardProperty oldForwardProperty = forwardProperty;
+		forwardProperty = newForwardProperty;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TerminologiesPackage.REIFIED_RELATIONSHIP__FORWARD_PROPERTY, oldForwardProperty, newForwardProperty);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -127,8 +122,18 @@ public class ReifiedRelationshipImpl extends EntityRelationshipImpl implements R
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getUnreifiedInversePropertyName() {
-		return unreifiedInversePropertyName;
+	public void setForwardProperty(ForwardProperty newForwardProperty) {
+		if (newForwardProperty != forwardProperty) {
+			NotificationChain msgs = null;
+			if (forwardProperty != null)
+				msgs = ((InternalEObject)forwardProperty).eInverseRemove(this, TerminologiesPackage.FORWARD_PROPERTY__REIFIED_RELATIONSHIP, ForwardProperty.class, msgs);
+			if (newForwardProperty != null)
+				msgs = ((InternalEObject)newForwardProperty).eInverseAdd(this, TerminologiesPackage.FORWARD_PROPERTY__REIFIED_RELATIONSHIP, ForwardProperty.class, msgs);
+			msgs = basicSetForwardProperty(newForwardProperty, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.REIFIED_RELATIONSHIP__FORWARD_PROPERTY, newForwardProperty, newForwardProperty));
 	}
 
 	/**
@@ -136,11 +141,87 @@ public class ReifiedRelationshipImpl extends EntityRelationshipImpl implements R
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setUnreifiedInversePropertyName(String newUnreifiedInversePropertyName) {
-		String oldUnreifiedInversePropertyName = unreifiedInversePropertyName;
-		unreifiedInversePropertyName = newUnreifiedInversePropertyName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.REIFIED_RELATIONSHIP__UNREIFIED_INVERSE_PROPERTY_NAME, oldUnreifiedInversePropertyName, unreifiedInversePropertyName));
+	public InverseProperty getInverseProperty() {
+		return inverseProperty;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetInverseProperty(InverseProperty newInverseProperty, NotificationChain msgs) {
+		InverseProperty oldInverseProperty = inverseProperty;
+		inverseProperty = newInverseProperty;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TerminologiesPackage.REIFIED_RELATIONSHIP__INVERSE_PROPERTY, oldInverseProperty, newInverseProperty);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInverseProperty(InverseProperty newInverseProperty) {
+		if (newInverseProperty != inverseProperty) {
+			NotificationChain msgs = null;
+			if (inverseProperty != null)
+				msgs = ((InternalEObject)inverseProperty).eInverseRemove(this, TerminologiesPackage.INVERSE_PROPERTY__REIFIED_RELATIONSHIP, InverseProperty.class, msgs);
+			if (newInverseProperty != null)
+				msgs = ((InternalEObject)newInverseProperty).eInverseAdd(this, TerminologiesPackage.INVERSE_PROPERTY__REIFIED_RELATIONSHIP, InverseProperty.class, msgs);
+			msgs = basicSetInverseProperty(newInverseProperty, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.REIFIED_RELATIONSHIP__INVERSE_PROPERTY, newInverseProperty, newInverseProperty));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Term term() {
+		return this;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case TerminologiesPackage.REIFIED_RELATIONSHIP__FORWARD_PROPERTY:
+				if (forwardProperty != null)
+					msgs = ((InternalEObject)forwardProperty).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TerminologiesPackage.REIFIED_RELATIONSHIP__FORWARD_PROPERTY, null, msgs);
+				return basicSetForwardProperty((ForwardProperty)otherEnd, msgs);
+			case TerminologiesPackage.REIFIED_RELATIONSHIP__INVERSE_PROPERTY:
+				if (inverseProperty != null)
+					msgs = ((InternalEObject)inverseProperty).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TerminologiesPackage.REIFIED_RELATIONSHIP__INVERSE_PROPERTY, null, msgs);
+				return basicSetInverseProperty((InverseProperty)otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case TerminologiesPackage.REIFIED_RELATIONSHIP__FORWARD_PROPERTY:
+				return basicSetForwardProperty(null, msgs);
+			case TerminologiesPackage.REIFIED_RELATIONSHIP__INVERSE_PROPERTY:
+				return basicSetInverseProperty(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -151,10 +232,10 @@ public class ReifiedRelationshipImpl extends EntityRelationshipImpl implements R
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case TerminologiesPackage.REIFIED_RELATIONSHIP__UNREIFIED_PROPERTY_NAME:
-				return getUnreifiedPropertyName();
-			case TerminologiesPackage.REIFIED_RELATIONSHIP__UNREIFIED_INVERSE_PROPERTY_NAME:
-				return getUnreifiedInversePropertyName();
+			case TerminologiesPackage.REIFIED_RELATIONSHIP__FORWARD_PROPERTY:
+				return getForwardProperty();
+			case TerminologiesPackage.REIFIED_RELATIONSHIP__INVERSE_PROPERTY:
+				return getInverseProperty();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -167,11 +248,11 @@ public class ReifiedRelationshipImpl extends EntityRelationshipImpl implements R
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case TerminologiesPackage.REIFIED_RELATIONSHIP__UNREIFIED_PROPERTY_NAME:
-				setUnreifiedPropertyName((String)newValue);
+			case TerminologiesPackage.REIFIED_RELATIONSHIP__FORWARD_PROPERTY:
+				setForwardProperty((ForwardProperty)newValue);
 				return;
-			case TerminologiesPackage.REIFIED_RELATIONSHIP__UNREIFIED_INVERSE_PROPERTY_NAME:
-				setUnreifiedInversePropertyName((String)newValue);
+			case TerminologiesPackage.REIFIED_RELATIONSHIP__INVERSE_PROPERTY:
+				setInverseProperty((InverseProperty)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -185,11 +266,11 @@ public class ReifiedRelationshipImpl extends EntityRelationshipImpl implements R
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case TerminologiesPackage.REIFIED_RELATIONSHIP__UNREIFIED_PROPERTY_NAME:
-				setUnreifiedPropertyName(UNREIFIED_PROPERTY_NAME_EDEFAULT);
+			case TerminologiesPackage.REIFIED_RELATIONSHIP__FORWARD_PROPERTY:
+				setForwardProperty((ForwardProperty)null);
 				return;
-			case TerminologiesPackage.REIFIED_RELATIONSHIP__UNREIFIED_INVERSE_PROPERTY_NAME:
-				setUnreifiedInversePropertyName(UNREIFIED_INVERSE_PROPERTY_NAME_EDEFAULT);
+			case TerminologiesPackage.REIFIED_RELATIONSHIP__INVERSE_PROPERTY:
+				setInverseProperty((InverseProperty)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -203,10 +284,10 @@ public class ReifiedRelationshipImpl extends EntityRelationshipImpl implements R
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case TerminologiesPackage.REIFIED_RELATIONSHIP__UNREIFIED_PROPERTY_NAME:
-				return UNREIFIED_PROPERTY_NAME_EDEFAULT == null ? unreifiedPropertyName != null : !UNREIFIED_PROPERTY_NAME_EDEFAULT.equals(unreifiedPropertyName);
-			case TerminologiesPackage.REIFIED_RELATIONSHIP__UNREIFIED_INVERSE_PROPERTY_NAME:
-				return UNREIFIED_INVERSE_PROPERTY_NAME_EDEFAULT == null ? unreifiedInversePropertyName != null : !UNREIFIED_INVERSE_PROPERTY_NAME_EDEFAULT.equals(unreifiedInversePropertyName);
+			case TerminologiesPackage.REIFIED_RELATIONSHIP__FORWARD_PROPERTY:
+				return forwardProperty != null;
+			case TerminologiesPackage.REIFIED_RELATIONSHIP__INVERSE_PROPERTY:
+				return inverseProperty != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -217,16 +298,39 @@ public class ReifiedRelationshipImpl extends EntityRelationshipImpl implements R
 	 * @generated
 	 */
 	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
+	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
+		if (baseClass == Predicate.class) {
+			switch (baseOperationID) {
+				case TerminologiesPackage.PREDICATE___TERM: return TerminologiesPackage.REIFIED_RELATIONSHIP___TERM;
+				default: return -1;
+			}
+		}
+		if (baseClass == Entity.class) {
+			switch (baseOperationID) {
+				case TerminologiesPackage.ENTITY___TERM: return TerminologiesPackage.REIFIED_RELATIONSHIP___TERM;
+				default: return -1;
+			}
+		}
+		if (baseClass == ConceptualEntity.class) {
+			switch (baseOperationID) {
+				default: return -1;
+			}
+		}
+		return super.eDerivedOperationID(baseOperationID, baseClass);
+	}
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (unreifiedPropertyName: ");
-		result.append(unreifiedPropertyName);
-		result.append(", unreifiedInversePropertyName: ");
-		result.append(unreifiedInversePropertyName);
-		result.append(')');
-		return result.toString();
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case TerminologiesPackage.REIFIED_RELATIONSHIP___TERM:
+				return term();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 } //ReifiedRelationshipImpl

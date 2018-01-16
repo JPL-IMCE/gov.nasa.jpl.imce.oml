@@ -36,5 +36,14 @@ package gov.nasa.jpl.imce.oml.model.terminologies;
  * @model abstract="true"
  * @generated
  */
-public interface Entity extends Term {
+public interface Entity extends Term, Predicate {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false" required="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return this;'"
+	 * @generated
+	 */
+	Term term();
+
 } // Entity

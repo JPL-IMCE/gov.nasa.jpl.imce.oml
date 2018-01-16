@@ -1221,13 +1221,13 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cIsTransitiveTransitiveKeyword_4_8_0 = (Keyword)cIsTransitiveAssignment_4_8.eContents().get(0);
 		private final Keyword cUnreifiedKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		private final Keyword cEqualsSignKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Assignment cUnreifiedPropertyNameAssignment_7 = (Assignment)cGroup.eContents().get(7);
-		private final RuleCall cUnreifiedPropertyNameIDTerminalRuleCall_7_0 = (RuleCall)cUnreifiedPropertyNameAssignment_7.eContents().get(0);
+		private final Assignment cForwardPropertyAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final RuleCall cForwardPropertyForwardPropertyParserRuleCall_7_0 = (RuleCall)cForwardPropertyAssignment_7.eContents().get(0);
 		private final Group cGroup_8 = (Group)cGroup.eContents().get(8);
 		private final Keyword cInverseKeyword_8_0 = (Keyword)cGroup_8.eContents().get(0);
 		private final Keyword cEqualsSignKeyword_8_1 = (Keyword)cGroup_8.eContents().get(1);
-		private final Assignment cUnreifiedInversePropertyNameAssignment_8_2 = (Assignment)cGroup_8.eContents().get(2);
-		private final RuleCall cUnreifiedInversePropertyNameIDTerminalRuleCall_8_2_0 = (RuleCall)cUnreifiedInversePropertyNameAssignment_8_2.eContents().get(0);
+		private final Assignment cInversePropertyAssignment_8_2 = (Assignment)cGroup_8.eContents().get(2);
+		private final RuleCall cInversePropertyInversePropertyParserRuleCall_8_2_0 = (RuleCall)cInversePropertyAssignment_8_2.eContents().get(0);
 		private final Keyword cSourceKeyword_9 = (Keyword)cGroup.eContents().get(9);
 		private final Keyword cEqualsSignKeyword_10 = (Keyword)cGroup.eContents().get(10);
 		private final Assignment cSourceAssignment_11 = (Assignment)cGroup.eContents().get(11);
@@ -1246,7 +1246,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//	'reifiedRelationship' name=ID '{' (isFunctional?='functional'? & isInverseFunctional?='inverseFunctional'? &
 		//	isEssential?='essential'? & isInverseEssential?='inverseEssential'? & isSymmetric?='symmetric'? &
 		//	isAsymmetric?='asymmetric'? & isReflexive?='reflexive'? & isIrreflexive?='irreflexive'? & isTransitive?='transitive'?)
-		//	'unreified' '=' unreifiedPropertyName=ID ('inverse' '=' unreifiedInversePropertyName=ID)?
+		//	'unreified' '=' forwardProperty=ForwardProperty ('inverse' '=' inverseProperty=InverseProperty)?
 		//	'source' '=' source=[Entity|Reference]
 		//	'target' '=' target=[Entity|Reference]
 		//	'}';
@@ -1255,8 +1255,8 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//annotations+=AnnotationPropertyValue* 'reifiedRelationship' name=ID '{' (isFunctional?='functional'? &
 		//isInverseFunctional?='inverseFunctional'? & isEssential?='essential'? & isInverseEssential?='inverseEssential'? &
 		//isSymmetric?='symmetric'? & isAsymmetric?='asymmetric'? & isReflexive?='reflexive'? & isIrreflexive?='irreflexive'? &
-		//isTransitive?='transitive'?) 'unreified' '=' unreifiedPropertyName=ID ('inverse' '=' unreifiedInversePropertyName=ID)?
-		//'source' '=' source=[Entity|Reference] 'target' '=' target=[Entity|Reference] '}'
+		//isTransitive?='transitive'?) 'unreified' '=' forwardProperty=ForwardProperty ('inverse' '='
+		//inverseProperty=InverseProperty)? 'source' '=' source=[Entity|Reference] 'target' '=' target=[Entity|Reference] '}'
 		public Group getGroup() { return cGroup; }
 		
 		//annotations+=AnnotationPropertyValue*
@@ -1342,13 +1342,13 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//'='
 		public Keyword getEqualsSignKeyword_6() { return cEqualsSignKeyword_6; }
 		
-		//unreifiedPropertyName=ID
-		public Assignment getUnreifiedPropertyNameAssignment_7() { return cUnreifiedPropertyNameAssignment_7; }
+		//forwardProperty=ForwardProperty
+		public Assignment getForwardPropertyAssignment_7() { return cForwardPropertyAssignment_7; }
 		
-		//ID
-		public RuleCall getUnreifiedPropertyNameIDTerminalRuleCall_7_0() { return cUnreifiedPropertyNameIDTerminalRuleCall_7_0; }
+		//ForwardProperty
+		public RuleCall getForwardPropertyForwardPropertyParserRuleCall_7_0() { return cForwardPropertyForwardPropertyParserRuleCall_7_0; }
 		
-		//('inverse' '=' unreifiedInversePropertyName=ID)?
+		//('inverse' '=' inverseProperty=InverseProperty)?
 		public Group getGroup_8() { return cGroup_8; }
 		
 		//'inverse'
@@ -1357,11 +1357,11 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//'='
 		public Keyword getEqualsSignKeyword_8_1() { return cEqualsSignKeyword_8_1; }
 		
-		//unreifiedInversePropertyName=ID
-		public Assignment getUnreifiedInversePropertyNameAssignment_8_2() { return cUnreifiedInversePropertyNameAssignment_8_2; }
+		//inverseProperty=InverseProperty
+		public Assignment getInversePropertyAssignment_8_2() { return cInversePropertyAssignment_8_2; }
 		
-		//ID
-		public RuleCall getUnreifiedInversePropertyNameIDTerminalRuleCall_8_2_0() { return cUnreifiedInversePropertyNameIDTerminalRuleCall_8_2_0; }
+		//InverseProperty
+		public RuleCall getInversePropertyInversePropertyParserRuleCall_8_2_0() { return cInversePropertyInversePropertyParserRuleCall_8_2_0; }
 		
 		//'source'
 		public Keyword getSourceKeyword_9() { return cSourceKeyword_9; }
@@ -1395,6 +1395,36 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_15() { return cRightCurlyBracketKeyword_15; }
+	}
+	public class ForwardPropertyElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.ForwardProperty");
+		private final Assignment cNameAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_0 = (RuleCall)cNameAssignment.eContents().get(0);
+		
+		//ForwardProperty:
+		//	name=ID;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//name=ID
+		public Assignment getNameAssignment() { return cNameAssignment; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_0() { return cNameIDTerminalRuleCall_0; }
+	}
+	public class InversePropertyElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.InverseProperty");
+		private final Assignment cNameAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_0 = (RuleCall)cNameAssignment.eContents().get(0);
+		
+		//InverseProperty:
+		//	name=ID;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//name=ID
+		public Assignment getNameAssignment() { return cNameAssignment; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_0() { return cNameIDTerminalRuleCall_0; }
 	}
 	public class UnreifiedRelationshipElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.UnreifiedRelationship");
@@ -2049,416 +2079,174 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	public class SegmentPredicateElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.SegmentPredicate");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
-		private final Keyword cAspectKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
-		private final Action cAspectPredicateAction_0_2 = (Action)cGroup_0.eContents().get(2);
-		private final Assignment cAspectAssignment_0_3 = (Assignment)cGroup_0.eContents().get(3);
-		private final CrossReference cAspectAspectCrossReference_0_3_0 = (CrossReference)cAspectAssignment_0_3.eContents().get(0);
-		private final RuleCall cAspectAspectReferenceParserRuleCall_0_3_0_1 = (RuleCall)cAspectAspectCrossReference_0_3_0.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_0_4 = (Keyword)cGroup_0.eContents().get(4);
+		private final Assignment cPredicateAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
+		private final CrossReference cPredicatePredicateCrossReference_0_0 = (CrossReference)cPredicateAssignment_0.eContents().get(0);
+		private final RuleCall cPredicatePredicateQNAMEParserRuleCall_0_0_1 = (RuleCall)cPredicatePredicateCrossReference_0_0.eContents().get(1);
 		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final Keyword cConceptKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Keyword cSourceKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
-		private final Action cConceptPredicateAction_1_2 = (Action)cGroup_1.eContents().get(2);
-		private final Assignment cConceptAssignment_1_3 = (Assignment)cGroup_1.eContents().get(3);
-		private final CrossReference cConceptConceptCrossReference_1_3_0 = (CrossReference)cConceptAssignment_1_3.eContents().get(0);
-		private final RuleCall cConceptConceptReferenceParserRuleCall_1_3_0_1 = (RuleCall)cConceptConceptCrossReference_1_3_0.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_1_4 = (Keyword)cGroup_1.eContents().get(4);
+		private final Assignment cReifiedRelationshipSourceAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final CrossReference cReifiedRelationshipSourceReifiedRelationshipCrossReference_1_2_0 = (CrossReference)cReifiedRelationshipSourceAssignment_1_2.eContents().get(0);
+		private final RuleCall cReifiedRelationshipSourceReifiedRelationshipQNAMEParserRuleCall_1_2_0_1 = (RuleCall)cReifiedRelationshipSourceReifiedRelationshipCrossReference_1_2_0.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_1_3 = (Keyword)cGroup_1.eContents().get(3);
 		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
-		private final Keyword cReifiedRelationshipKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Keyword cInvSourceKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_2_1 = (Keyword)cGroup_2.eContents().get(1);
-		private final Action cReifiedRelationshipPredicateAction_2_2 = (Action)cGroup_2.eContents().get(2);
-		private final Assignment cReifiedRelationshipAssignment_2_3 = (Assignment)cGroup_2.eContents().get(3);
-		private final CrossReference cReifiedRelationshipReifiedRelationshipCrossReference_2_3_0 = (CrossReference)cReifiedRelationshipAssignment_2_3.eContents().get(0);
-		private final RuleCall cReifiedRelationshipReifiedRelationshipReferenceParserRuleCall_2_3_0_1 = (RuleCall)cReifiedRelationshipReifiedRelationshipCrossReference_2_3_0.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_2_4 = (Keyword)cGroup_2.eContents().get(4);
+		private final Assignment cReifiedRelationshipInverseSourceAssignment_2_2 = (Assignment)cGroup_2.eContents().get(2);
+		private final CrossReference cReifiedRelationshipInverseSourceReifiedRelationshipCrossReference_2_2_0 = (CrossReference)cReifiedRelationshipInverseSourceAssignment_2_2.eContents().get(0);
+		private final RuleCall cReifiedRelationshipInverseSourceReifiedRelationshipQNAMEParserRuleCall_2_2_0_1 = (RuleCall)cReifiedRelationshipInverseSourceReifiedRelationshipCrossReference_2_2_0.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_2_3 = (Keyword)cGroup_2.eContents().get(3);
 		private final Group cGroup_3 = (Group)cAlternatives.eContents().get(3);
-		private final Keyword cPropertyKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Keyword cTargetKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_3_1 = (Keyword)cGroup_3.eContents().get(1);
-		private final Action cReifiedRelationshipPropertyPredicateAction_3_2 = (Action)cGroup_3.eContents().get(2);
-		private final Assignment cReifiedRelationshipAssignment_3_3 = (Assignment)cGroup_3.eContents().get(3);
-		private final CrossReference cReifiedRelationshipReifiedRelationshipCrossReference_3_3_0 = (CrossReference)cReifiedRelationshipAssignment_3_3.eContents().get(0);
-		private final RuleCall cReifiedRelationshipReifiedRelationshipReferenceParserRuleCall_3_3_0_1 = (RuleCall)cReifiedRelationshipReifiedRelationshipCrossReference_3_3_0.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_3_4 = (Keyword)cGroup_3.eContents().get(4);
+		private final Assignment cReifiedRelationshipTargetAssignment_3_2 = (Assignment)cGroup_3.eContents().get(2);
+		private final CrossReference cReifiedRelationshipTargetReifiedRelationshipCrossReference_3_2_0 = (CrossReference)cReifiedRelationshipTargetAssignment_3_2.eContents().get(0);
+		private final RuleCall cReifiedRelationshipTargetReifiedRelationshipQNAMEParserRuleCall_3_2_0_1 = (RuleCall)cReifiedRelationshipTargetReifiedRelationshipCrossReference_3_2_0.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_3_3 = (Keyword)cGroup_3.eContents().get(3);
 		private final Group cGroup_4 = (Group)cAlternatives.eContents().get(4);
-		private final Keyword cInvKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Keyword cInvTargetKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_4_1 = (Keyword)cGroup_4.eContents().get(1);
-		private final Keyword cPropertyKeyword_4_2 = (Keyword)cGroup_4.eContents().get(2);
-		private final Keyword cLeftParenthesisKeyword_4_3 = (Keyword)cGroup_4.eContents().get(3);
-		private final Action cReifiedRelationshipInversePropertyPredicateAction_4_4 = (Action)cGroup_4.eContents().get(4);
-		private final Assignment cReifiedRelationshipAssignment_4_5 = (Assignment)cGroup_4.eContents().get(5);
-		private final CrossReference cReifiedRelationshipReifiedRelationshipCrossReference_4_5_0 = (CrossReference)cReifiedRelationshipAssignment_4_5.eContents().get(0);
-		private final RuleCall cReifiedRelationshipReifiedRelationshipReferenceParserRuleCall_4_5_0_1 = (RuleCall)cReifiedRelationshipReifiedRelationshipCrossReference_4_5_0.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_4_6 = (Keyword)cGroup_4.eContents().get(6);
-		private final Keyword cRightParenthesisKeyword_4_7 = (Keyword)cGroup_4.eContents().get(7);
+		private final Assignment cReifiedRelationshipInverseTargetAssignment_4_2 = (Assignment)cGroup_4.eContents().get(2);
+		private final CrossReference cReifiedRelationshipInverseTargetReifiedRelationshipCrossReference_4_2_0 = (CrossReference)cReifiedRelationshipInverseTargetAssignment_4_2.eContents().get(0);
+		private final RuleCall cReifiedRelationshipInverseTargetReifiedRelationshipQNAMEParserRuleCall_4_2_0_1 = (RuleCall)cReifiedRelationshipInverseTargetReifiedRelationshipCrossReference_4_2_0.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_4_3 = (Keyword)cGroup_4.eContents().get(3);
 		private final Group cGroup_5 = (Group)cAlternatives.eContents().get(5);
-		private final Keyword cSourceKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
+		private final Keyword cInvKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_5_1 = (Keyword)cGroup_5.eContents().get(1);
-		private final Action cReifiedRelationshipSourcePropertyPredicateAction_5_2 = (Action)cGroup_5.eContents().get(2);
-		private final Assignment cReifiedRelationshipAssignment_5_3 = (Assignment)cGroup_5.eContents().get(3);
-		private final CrossReference cReifiedRelationshipReifiedRelationshipCrossReference_5_3_0 = (CrossReference)cReifiedRelationshipAssignment_5_3.eContents().get(0);
-		private final RuleCall cReifiedRelationshipReifiedRelationshipReferenceParserRuleCall_5_3_0_1 = (RuleCall)cReifiedRelationshipReifiedRelationshipCrossReference_5_3_0.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_5_4 = (Keyword)cGroup_5.eContents().get(4);
-		private final Group cGroup_6 = (Group)cAlternatives.eContents().get(6);
-		private final Keyword cInvKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_6_1 = (Keyword)cGroup_6.eContents().get(1);
-		private final Keyword cSourceKeyword_6_2 = (Keyword)cGroup_6.eContents().get(2);
-		private final Keyword cLeftParenthesisKeyword_6_3 = (Keyword)cGroup_6.eContents().get(3);
-		private final Action cReifiedRelationshipSourceInversePropertyPredicateAction_6_4 = (Action)cGroup_6.eContents().get(4);
-		private final Assignment cReifiedRelationshipAssignment_6_5 = (Assignment)cGroup_6.eContents().get(5);
-		private final CrossReference cReifiedRelationshipReifiedRelationshipCrossReference_6_5_0 = (CrossReference)cReifiedRelationshipAssignment_6_5.eContents().get(0);
-		private final RuleCall cReifiedRelationshipReifiedRelationshipReferenceParserRuleCall_6_5_0_1 = (RuleCall)cReifiedRelationshipReifiedRelationshipCrossReference_6_5_0.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_6_6 = (Keyword)cGroup_6.eContents().get(6);
-		private final Keyword cRightParenthesisKeyword_6_7 = (Keyword)cGroup_6.eContents().get(7);
-		private final Group cGroup_7 = (Group)cAlternatives.eContents().get(7);
-		private final Keyword cTargetKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_7_1 = (Keyword)cGroup_7.eContents().get(1);
-		private final Action cReifiedRelationshipTargetPropertyPredicateAction_7_2 = (Action)cGroup_7.eContents().get(2);
-		private final Assignment cReifiedRelationshipAssignment_7_3 = (Assignment)cGroup_7.eContents().get(3);
-		private final CrossReference cReifiedRelationshipReifiedRelationshipCrossReference_7_3_0 = (CrossReference)cReifiedRelationshipAssignment_7_3.eContents().get(0);
-		private final RuleCall cReifiedRelationshipReifiedRelationshipReferenceParserRuleCall_7_3_0_1 = (RuleCall)cReifiedRelationshipReifiedRelationshipCrossReference_7_3_0.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_7_4 = (Keyword)cGroup_7.eContents().get(4);
-		private final Group cGroup_8 = (Group)cAlternatives.eContents().get(8);
-		private final Keyword cInvKeyword_8_0 = (Keyword)cGroup_8.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_8_1 = (Keyword)cGroup_8.eContents().get(1);
-		private final Keyword cTargetKeyword_8_2 = (Keyword)cGroup_8.eContents().get(2);
-		private final Keyword cLeftParenthesisKeyword_8_3 = (Keyword)cGroup_8.eContents().get(3);
-		private final Action cReifiedRelationshipTargetInversePropertyPredicateAction_8_4 = (Action)cGroup_8.eContents().get(4);
-		private final Assignment cReifiedRelationshipAssignment_8_5 = (Assignment)cGroup_8.eContents().get(5);
-		private final CrossReference cReifiedRelationshipReifiedRelationshipCrossReference_8_5_0 = (CrossReference)cReifiedRelationshipAssignment_8_5.eContents().get(0);
-		private final RuleCall cReifiedRelationshipReifiedRelationshipReferenceParserRuleCall_8_5_0_1 = (RuleCall)cReifiedRelationshipReifiedRelationshipCrossReference_8_5_0.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_8_6 = (Keyword)cGroup_8.eContents().get(6);
-		private final Keyword cRightParenthesisKeyword_8_7 = (Keyword)cGroup_8.eContents().get(7);
-		private final Group cGroup_9 = (Group)cAlternatives.eContents().get(9);
-		private final Action cUnreifiedRelationshipPropertyPredicateAction_9_0 = (Action)cGroup_9.eContents().get(0);
-		private final Assignment cUnreifiedRelationshipAssignment_9_1 = (Assignment)cGroup_9.eContents().get(1);
-		private final CrossReference cUnreifiedRelationshipUnreifiedRelationshipCrossReference_9_1_0 = (CrossReference)cUnreifiedRelationshipAssignment_9_1.eContents().get(0);
-		private final RuleCall cUnreifiedRelationshipUnreifiedRelationshipReferenceParserRuleCall_9_1_0_1 = (RuleCall)cUnreifiedRelationshipUnreifiedRelationshipCrossReference_9_1_0.eContents().get(1);
-		private final Group cGroup_10 = (Group)cAlternatives.eContents().get(10);
-		private final Keyword cInvKeyword_10_0 = (Keyword)cGroup_10.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_10_1 = (Keyword)cGroup_10.eContents().get(1);
-		private final Action cUnreifiedRelationshipInversePropertyPredicateAction_10_2 = (Action)cGroup_10.eContents().get(2);
-		private final Assignment cUnreifiedRelationshipAssignment_10_3 = (Assignment)cGroup_10.eContents().get(3);
-		private final CrossReference cUnreifiedRelationshipUnreifiedRelationshipCrossReference_10_3_0 = (CrossReference)cUnreifiedRelationshipAssignment_10_3.eContents().get(0);
-		private final RuleCall cUnreifiedRelationshipUnreifiedRelationshipReferenceParserRuleCall_10_3_0_1 = (RuleCall)cUnreifiedRelationshipUnreifiedRelationshipCrossReference_10_3_0.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_10_4 = (Keyword)cGroup_10.eContents().get(4);
+		private final Assignment cUnreifiedRelationshipInverseAssignment_5_2 = (Assignment)cGroup_5.eContents().get(2);
+		private final CrossReference cUnreifiedRelationshipInverseUnreifiedRelationshipCrossReference_5_2_0 = (CrossReference)cUnreifiedRelationshipInverseAssignment_5_2.eContents().get(0);
+		private final RuleCall cUnreifiedRelationshipInverseUnreifiedRelationshipQNAMEParserRuleCall_5_2_0_1 = (RuleCall)cUnreifiedRelationshipInverseUnreifiedRelationshipCrossReference_5_2_0.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_5_3 = (Keyword)cGroup_5.eContents().get(3);
 		
 		//SegmentPredicate:
-		//	'aspect' '(' {AspectPredicate} aspect=[Aspect|Reference] ')' |
-		//	'concept' '(' {ConceptPredicate} concept=[Concept|Reference] ')' |
-		//	'reifiedRelationship' '(' {ReifiedRelationshipPredicate} reifiedRelationship=[ReifiedRelationship|Reference] ')' |
-		//	'property' '(' {ReifiedRelationshipPropertyPredicate} reifiedRelationship=[ReifiedRelationship|Reference] ')' |
-		//	'inv' '(' 'property' '(' {ReifiedRelationshipInversePropertyPredicate}
-		//	reifiedRelationship=[ReifiedRelationship|Reference] ')' ')' |
-		//	'source' '(' {ReifiedRelationshipSourcePropertyPredicate} reifiedRelationship=[ReifiedRelationship|Reference] ')' |
-		//	'inv' '(' 'source' '(' {ReifiedRelationshipSourceInversePropertyPredicate}
-		//	reifiedRelationship=[ReifiedRelationship|Reference] ')' ')' |
-		//	'target' '(' {ReifiedRelationshipTargetPropertyPredicate} reifiedRelationship=[ReifiedRelationship|Reference] ')' |
-		//	'inv' '(' 'target' '(' {ReifiedRelationshipTargetInversePropertyPredicate}
-		//	reifiedRelationship=[ReifiedRelationship|Reference] ')' ')' | {UnreifiedRelationshipPropertyPredicate}
-		//	unreifiedRelationship=[UnreifiedRelationship|Reference] |
-		//	'inv' '(' {UnreifiedRelationshipInversePropertyPredicate} unreifiedRelationship=[UnreifiedRelationship|Reference] ')';
+		//	predicate=[Predicate|QNAME] |
+		//	'source' '(' reifiedRelationshipSource=[ReifiedRelationship|QNAME] ')' |
+		//	'invSource' '(' reifiedRelationshipInverseSource=[ReifiedRelationship|QNAME] ')' |
+		//	'target' '(' reifiedRelationshipTarget=[ReifiedRelationship|QNAME] ')' |
+		//	'invTarget' '(' reifiedRelationshipInverseTarget=[ReifiedRelationship|QNAME] ')' |
+		//	'inv' '(' unreifiedRelationshipInverse=[UnreifiedRelationship|QNAME] ')';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'aspect' '(' {AspectPredicate} aspect=[Aspect|Reference] ')' | 'concept' '(' {ConceptPredicate}
-		//concept=[Concept|Reference] ')' | 'reifiedRelationship' '(' {ReifiedRelationshipPredicate}
-		//reifiedRelationship=[ReifiedRelationship|Reference] ')' | 'property' '(' {ReifiedRelationshipPropertyPredicate}
-		//reifiedRelationship=[ReifiedRelationship|Reference] ')' | 'inv' '(' 'property' '('
-		//{ReifiedRelationshipInversePropertyPredicate} reifiedRelationship=[ReifiedRelationship|Reference] ')' ')' | 'source'
-		//'(' {ReifiedRelationshipSourcePropertyPredicate} reifiedRelationship=[ReifiedRelationship|Reference] ')' | 'inv' '('
-		//'source' '(' {ReifiedRelationshipSourceInversePropertyPredicate} reifiedRelationship=[ReifiedRelationship|Reference]
-		//')' ')' | 'target' '(' {ReifiedRelationshipTargetPropertyPredicate} reifiedRelationship=[ReifiedRelationship|Reference]
-		//')' | 'inv' '(' 'target' '(' {ReifiedRelationshipTargetInversePropertyPredicate}
-		//reifiedRelationship=[ReifiedRelationship|Reference] ')' ')' | {UnreifiedRelationshipPropertyPredicate}
-		//unreifiedRelationship=[UnreifiedRelationship|Reference] | 'inv' '(' {UnreifiedRelationshipInversePropertyPredicate}
-		//unreifiedRelationship=[UnreifiedRelationship|Reference] ')'
+		//predicate=[Predicate|QNAME] | 'source' '(' reifiedRelationshipSource=[ReifiedRelationship|QNAME] ')' | 'invSource' '('
+		//reifiedRelationshipInverseSource=[ReifiedRelationship|QNAME] ')' | 'target' '('
+		//reifiedRelationshipTarget=[ReifiedRelationship|QNAME] ')' | 'invTarget' '('
+		//reifiedRelationshipInverseTarget=[ReifiedRelationship|QNAME] ')' | 'inv' '('
+		//unreifiedRelationshipInverse=[UnreifiedRelationship|QNAME] ')'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//'aspect' '(' {AspectPredicate} aspect=[Aspect|Reference] ')'
-		public Group getGroup_0() { return cGroup_0; }
+		//predicate=[Predicate|QNAME]
+		public Assignment getPredicateAssignment_0() { return cPredicateAssignment_0; }
 		
-		//'aspect'
-		public Keyword getAspectKeyword_0_0() { return cAspectKeyword_0_0; }
+		//[Predicate|QNAME]
+		public CrossReference getPredicatePredicateCrossReference_0_0() { return cPredicatePredicateCrossReference_0_0; }
 		
-		//'('
-		public Keyword getLeftParenthesisKeyword_0_1() { return cLeftParenthesisKeyword_0_1; }
+		//QNAME
+		public RuleCall getPredicatePredicateQNAMEParserRuleCall_0_0_1() { return cPredicatePredicateQNAMEParserRuleCall_0_0_1; }
 		
-		//{AspectPredicate}
-		public Action getAspectPredicateAction_0_2() { return cAspectPredicateAction_0_2; }
-		
-		//aspect=[Aspect|Reference]
-		public Assignment getAspectAssignment_0_3() { return cAspectAssignment_0_3; }
-		
-		//[Aspect|Reference]
-		public CrossReference getAspectAspectCrossReference_0_3_0() { return cAspectAspectCrossReference_0_3_0; }
-		
-		//Reference
-		public RuleCall getAspectAspectReferenceParserRuleCall_0_3_0_1() { return cAspectAspectReferenceParserRuleCall_0_3_0_1; }
-		
-		//')'
-		public Keyword getRightParenthesisKeyword_0_4() { return cRightParenthesisKeyword_0_4; }
-		
-		//'concept' '(' {ConceptPredicate} concept=[Concept|Reference] ')'
+		//'source' '(' reifiedRelationshipSource=[ReifiedRelationship|QNAME] ')'
 		public Group getGroup_1() { return cGroup_1; }
 		
-		//'concept'
-		public Keyword getConceptKeyword_1_0() { return cConceptKeyword_1_0; }
+		//'source'
+		public Keyword getSourceKeyword_1_0() { return cSourceKeyword_1_0; }
 		
 		//'('
 		public Keyword getLeftParenthesisKeyword_1_1() { return cLeftParenthesisKeyword_1_1; }
 		
-		//{ConceptPredicate}
-		public Action getConceptPredicateAction_1_2() { return cConceptPredicateAction_1_2; }
+		//reifiedRelationshipSource=[ReifiedRelationship|QNAME]
+		public Assignment getReifiedRelationshipSourceAssignment_1_2() { return cReifiedRelationshipSourceAssignment_1_2; }
 		
-		//concept=[Concept|Reference]
-		public Assignment getConceptAssignment_1_3() { return cConceptAssignment_1_3; }
+		//[ReifiedRelationship|QNAME]
+		public CrossReference getReifiedRelationshipSourceReifiedRelationshipCrossReference_1_2_0() { return cReifiedRelationshipSourceReifiedRelationshipCrossReference_1_2_0; }
 		
-		//[Concept|Reference]
-		public CrossReference getConceptConceptCrossReference_1_3_0() { return cConceptConceptCrossReference_1_3_0; }
-		
-		//Reference
-		public RuleCall getConceptConceptReferenceParserRuleCall_1_3_0_1() { return cConceptConceptReferenceParserRuleCall_1_3_0_1; }
+		//QNAME
+		public RuleCall getReifiedRelationshipSourceReifiedRelationshipQNAMEParserRuleCall_1_2_0_1() { return cReifiedRelationshipSourceReifiedRelationshipQNAMEParserRuleCall_1_2_0_1; }
 		
 		//')'
-		public Keyword getRightParenthesisKeyword_1_4() { return cRightParenthesisKeyword_1_4; }
+		public Keyword getRightParenthesisKeyword_1_3() { return cRightParenthesisKeyword_1_3; }
 		
-		//'reifiedRelationship' '(' {ReifiedRelationshipPredicate} reifiedRelationship=[ReifiedRelationship|Reference] ')'
+		//'invSource' '(' reifiedRelationshipInverseSource=[ReifiedRelationship|QNAME] ')'
 		public Group getGroup_2() { return cGroup_2; }
 		
-		//'reifiedRelationship'
-		public Keyword getReifiedRelationshipKeyword_2_0() { return cReifiedRelationshipKeyword_2_0; }
+		//'invSource'
+		public Keyword getInvSourceKeyword_2_0() { return cInvSourceKeyword_2_0; }
 		
 		//'('
 		public Keyword getLeftParenthesisKeyword_2_1() { return cLeftParenthesisKeyword_2_1; }
 		
-		//{ReifiedRelationshipPredicate}
-		public Action getReifiedRelationshipPredicateAction_2_2() { return cReifiedRelationshipPredicateAction_2_2; }
+		//reifiedRelationshipInverseSource=[ReifiedRelationship|QNAME]
+		public Assignment getReifiedRelationshipInverseSourceAssignment_2_2() { return cReifiedRelationshipInverseSourceAssignment_2_2; }
 		
-		//reifiedRelationship=[ReifiedRelationship|Reference]
-		public Assignment getReifiedRelationshipAssignment_2_3() { return cReifiedRelationshipAssignment_2_3; }
+		//[ReifiedRelationship|QNAME]
+		public CrossReference getReifiedRelationshipInverseSourceReifiedRelationshipCrossReference_2_2_0() { return cReifiedRelationshipInverseSourceReifiedRelationshipCrossReference_2_2_0; }
 		
-		//[ReifiedRelationship|Reference]
-		public CrossReference getReifiedRelationshipReifiedRelationshipCrossReference_2_3_0() { return cReifiedRelationshipReifiedRelationshipCrossReference_2_3_0; }
-		
-		//Reference
-		public RuleCall getReifiedRelationshipReifiedRelationshipReferenceParserRuleCall_2_3_0_1() { return cReifiedRelationshipReifiedRelationshipReferenceParserRuleCall_2_3_0_1; }
+		//QNAME
+		public RuleCall getReifiedRelationshipInverseSourceReifiedRelationshipQNAMEParserRuleCall_2_2_0_1() { return cReifiedRelationshipInverseSourceReifiedRelationshipQNAMEParserRuleCall_2_2_0_1; }
 		
 		//')'
-		public Keyword getRightParenthesisKeyword_2_4() { return cRightParenthesisKeyword_2_4; }
+		public Keyword getRightParenthesisKeyword_2_3() { return cRightParenthesisKeyword_2_3; }
 		
-		//'property' '(' {ReifiedRelationshipPropertyPredicate} reifiedRelationship=[ReifiedRelationship|Reference] ')'
+		//'target' '(' reifiedRelationshipTarget=[ReifiedRelationship|QNAME] ')'
 		public Group getGroup_3() { return cGroup_3; }
 		
-		//'property'
-		public Keyword getPropertyKeyword_3_0() { return cPropertyKeyword_3_0; }
+		//'target'
+		public Keyword getTargetKeyword_3_0() { return cTargetKeyword_3_0; }
 		
 		//'('
 		public Keyword getLeftParenthesisKeyword_3_1() { return cLeftParenthesisKeyword_3_1; }
 		
-		//{ReifiedRelationshipPropertyPredicate}
-		public Action getReifiedRelationshipPropertyPredicateAction_3_2() { return cReifiedRelationshipPropertyPredicateAction_3_2; }
+		//reifiedRelationshipTarget=[ReifiedRelationship|QNAME]
+		public Assignment getReifiedRelationshipTargetAssignment_3_2() { return cReifiedRelationshipTargetAssignment_3_2; }
 		
-		//reifiedRelationship=[ReifiedRelationship|Reference]
-		public Assignment getReifiedRelationshipAssignment_3_3() { return cReifiedRelationshipAssignment_3_3; }
+		//[ReifiedRelationship|QNAME]
+		public CrossReference getReifiedRelationshipTargetReifiedRelationshipCrossReference_3_2_0() { return cReifiedRelationshipTargetReifiedRelationshipCrossReference_3_2_0; }
 		
-		//[ReifiedRelationship|Reference]
-		public CrossReference getReifiedRelationshipReifiedRelationshipCrossReference_3_3_0() { return cReifiedRelationshipReifiedRelationshipCrossReference_3_3_0; }
-		
-		//Reference
-		public RuleCall getReifiedRelationshipReifiedRelationshipReferenceParserRuleCall_3_3_0_1() { return cReifiedRelationshipReifiedRelationshipReferenceParserRuleCall_3_3_0_1; }
+		//QNAME
+		public RuleCall getReifiedRelationshipTargetReifiedRelationshipQNAMEParserRuleCall_3_2_0_1() { return cReifiedRelationshipTargetReifiedRelationshipQNAMEParserRuleCall_3_2_0_1; }
 		
 		//')'
-		public Keyword getRightParenthesisKeyword_3_4() { return cRightParenthesisKeyword_3_4; }
+		public Keyword getRightParenthesisKeyword_3_3() { return cRightParenthesisKeyword_3_3; }
 		
-		//'inv' '(' 'property' '(' {ReifiedRelationshipInversePropertyPredicate}
-		//reifiedRelationship=[ReifiedRelationship|Reference] ')' ')'
+		//'invTarget' '(' reifiedRelationshipInverseTarget=[ReifiedRelationship|QNAME] ')'
 		public Group getGroup_4() { return cGroup_4; }
 		
-		//'inv'
-		public Keyword getInvKeyword_4_0() { return cInvKeyword_4_0; }
+		//'invTarget'
+		public Keyword getInvTargetKeyword_4_0() { return cInvTargetKeyword_4_0; }
 		
 		//'('
 		public Keyword getLeftParenthesisKeyword_4_1() { return cLeftParenthesisKeyword_4_1; }
 		
-		//'property'
-		public Keyword getPropertyKeyword_4_2() { return cPropertyKeyword_4_2; }
+		//reifiedRelationshipInverseTarget=[ReifiedRelationship|QNAME]
+		public Assignment getReifiedRelationshipInverseTargetAssignment_4_2() { return cReifiedRelationshipInverseTargetAssignment_4_2; }
 		
-		//'('
-		public Keyword getLeftParenthesisKeyword_4_3() { return cLeftParenthesisKeyword_4_3; }
+		//[ReifiedRelationship|QNAME]
+		public CrossReference getReifiedRelationshipInverseTargetReifiedRelationshipCrossReference_4_2_0() { return cReifiedRelationshipInverseTargetReifiedRelationshipCrossReference_4_2_0; }
 		
-		//{ReifiedRelationshipInversePropertyPredicate}
-		public Action getReifiedRelationshipInversePropertyPredicateAction_4_4() { return cReifiedRelationshipInversePropertyPredicateAction_4_4; }
-		
-		//reifiedRelationship=[ReifiedRelationship|Reference]
-		public Assignment getReifiedRelationshipAssignment_4_5() { return cReifiedRelationshipAssignment_4_5; }
-		
-		//[ReifiedRelationship|Reference]
-		public CrossReference getReifiedRelationshipReifiedRelationshipCrossReference_4_5_0() { return cReifiedRelationshipReifiedRelationshipCrossReference_4_5_0; }
-		
-		//Reference
-		public RuleCall getReifiedRelationshipReifiedRelationshipReferenceParserRuleCall_4_5_0_1() { return cReifiedRelationshipReifiedRelationshipReferenceParserRuleCall_4_5_0_1; }
+		//QNAME
+		public RuleCall getReifiedRelationshipInverseTargetReifiedRelationshipQNAMEParserRuleCall_4_2_0_1() { return cReifiedRelationshipInverseTargetReifiedRelationshipQNAMEParserRuleCall_4_2_0_1; }
 		
 		//')'
-		public Keyword getRightParenthesisKeyword_4_6() { return cRightParenthesisKeyword_4_6; }
+		public Keyword getRightParenthesisKeyword_4_3() { return cRightParenthesisKeyword_4_3; }
 		
-		//')'
-		public Keyword getRightParenthesisKeyword_4_7() { return cRightParenthesisKeyword_4_7; }
-		
-		//'source' '(' {ReifiedRelationshipSourcePropertyPredicate} reifiedRelationship=[ReifiedRelationship|Reference] ')'
+		//'inv' '(' unreifiedRelationshipInverse=[UnreifiedRelationship|QNAME] ')'
 		public Group getGroup_5() { return cGroup_5; }
 		
-		//'source'
-		public Keyword getSourceKeyword_5_0() { return cSourceKeyword_5_0; }
+		//'inv'
+		public Keyword getInvKeyword_5_0() { return cInvKeyword_5_0; }
 		
 		//'('
 		public Keyword getLeftParenthesisKeyword_5_1() { return cLeftParenthesisKeyword_5_1; }
 		
-		//{ReifiedRelationshipSourcePropertyPredicate}
-		public Action getReifiedRelationshipSourcePropertyPredicateAction_5_2() { return cReifiedRelationshipSourcePropertyPredicateAction_5_2; }
+		//unreifiedRelationshipInverse=[UnreifiedRelationship|QNAME]
+		public Assignment getUnreifiedRelationshipInverseAssignment_5_2() { return cUnreifiedRelationshipInverseAssignment_5_2; }
 		
-		//reifiedRelationship=[ReifiedRelationship|Reference]
-		public Assignment getReifiedRelationshipAssignment_5_3() { return cReifiedRelationshipAssignment_5_3; }
+		//[UnreifiedRelationship|QNAME]
+		public CrossReference getUnreifiedRelationshipInverseUnreifiedRelationshipCrossReference_5_2_0() { return cUnreifiedRelationshipInverseUnreifiedRelationshipCrossReference_5_2_0; }
 		
-		//[ReifiedRelationship|Reference]
-		public CrossReference getReifiedRelationshipReifiedRelationshipCrossReference_5_3_0() { return cReifiedRelationshipReifiedRelationshipCrossReference_5_3_0; }
-		
-		//Reference
-		public RuleCall getReifiedRelationshipReifiedRelationshipReferenceParserRuleCall_5_3_0_1() { return cReifiedRelationshipReifiedRelationshipReferenceParserRuleCall_5_3_0_1; }
+		//QNAME
+		public RuleCall getUnreifiedRelationshipInverseUnreifiedRelationshipQNAMEParserRuleCall_5_2_0_1() { return cUnreifiedRelationshipInverseUnreifiedRelationshipQNAMEParserRuleCall_5_2_0_1; }
 		
 		//')'
-		public Keyword getRightParenthesisKeyword_5_4() { return cRightParenthesisKeyword_5_4; }
-		
-		//'inv' '(' 'source' '(' {ReifiedRelationshipSourceInversePropertyPredicate}
-		//reifiedRelationship=[ReifiedRelationship|Reference] ')' ')'
-		public Group getGroup_6() { return cGroup_6; }
-		
-		//'inv'
-		public Keyword getInvKeyword_6_0() { return cInvKeyword_6_0; }
-		
-		//'('
-		public Keyword getLeftParenthesisKeyword_6_1() { return cLeftParenthesisKeyword_6_1; }
-		
-		//'source'
-		public Keyword getSourceKeyword_6_2() { return cSourceKeyword_6_2; }
-		
-		//'('
-		public Keyword getLeftParenthesisKeyword_6_3() { return cLeftParenthesisKeyword_6_3; }
-		
-		//{ReifiedRelationshipSourceInversePropertyPredicate}
-		public Action getReifiedRelationshipSourceInversePropertyPredicateAction_6_4() { return cReifiedRelationshipSourceInversePropertyPredicateAction_6_4; }
-		
-		//reifiedRelationship=[ReifiedRelationship|Reference]
-		public Assignment getReifiedRelationshipAssignment_6_5() { return cReifiedRelationshipAssignment_6_5; }
-		
-		//[ReifiedRelationship|Reference]
-		public CrossReference getReifiedRelationshipReifiedRelationshipCrossReference_6_5_0() { return cReifiedRelationshipReifiedRelationshipCrossReference_6_5_0; }
-		
-		//Reference
-		public RuleCall getReifiedRelationshipReifiedRelationshipReferenceParserRuleCall_6_5_0_1() { return cReifiedRelationshipReifiedRelationshipReferenceParserRuleCall_6_5_0_1; }
-		
-		//')'
-		public Keyword getRightParenthesisKeyword_6_6() { return cRightParenthesisKeyword_6_6; }
-		
-		//')'
-		public Keyword getRightParenthesisKeyword_6_7() { return cRightParenthesisKeyword_6_7; }
-		
-		//'target' '(' {ReifiedRelationshipTargetPropertyPredicate} reifiedRelationship=[ReifiedRelationship|Reference] ')'
-		public Group getGroup_7() { return cGroup_7; }
-		
-		//'target'
-		public Keyword getTargetKeyword_7_0() { return cTargetKeyword_7_0; }
-		
-		//'('
-		public Keyword getLeftParenthesisKeyword_7_1() { return cLeftParenthesisKeyword_7_1; }
-		
-		//{ReifiedRelationshipTargetPropertyPredicate}
-		public Action getReifiedRelationshipTargetPropertyPredicateAction_7_2() { return cReifiedRelationshipTargetPropertyPredicateAction_7_2; }
-		
-		//reifiedRelationship=[ReifiedRelationship|Reference]
-		public Assignment getReifiedRelationshipAssignment_7_3() { return cReifiedRelationshipAssignment_7_3; }
-		
-		//[ReifiedRelationship|Reference]
-		public CrossReference getReifiedRelationshipReifiedRelationshipCrossReference_7_3_0() { return cReifiedRelationshipReifiedRelationshipCrossReference_7_3_0; }
-		
-		//Reference
-		public RuleCall getReifiedRelationshipReifiedRelationshipReferenceParserRuleCall_7_3_0_1() { return cReifiedRelationshipReifiedRelationshipReferenceParserRuleCall_7_3_0_1; }
-		
-		//')'
-		public Keyword getRightParenthesisKeyword_7_4() { return cRightParenthesisKeyword_7_4; }
-		
-		//'inv' '(' 'target' '(' {ReifiedRelationshipTargetInversePropertyPredicate}
-		//reifiedRelationship=[ReifiedRelationship|Reference] ')' ')'
-		public Group getGroup_8() { return cGroup_8; }
-		
-		//'inv'
-		public Keyword getInvKeyword_8_0() { return cInvKeyword_8_0; }
-		
-		//'('
-		public Keyword getLeftParenthesisKeyword_8_1() { return cLeftParenthesisKeyword_8_1; }
-		
-		//'target'
-		public Keyword getTargetKeyword_8_2() { return cTargetKeyword_8_2; }
-		
-		//'('
-		public Keyword getLeftParenthesisKeyword_8_3() { return cLeftParenthesisKeyword_8_3; }
-		
-		//{ReifiedRelationshipTargetInversePropertyPredicate}
-		public Action getReifiedRelationshipTargetInversePropertyPredicateAction_8_4() { return cReifiedRelationshipTargetInversePropertyPredicateAction_8_4; }
-		
-		//reifiedRelationship=[ReifiedRelationship|Reference]
-		public Assignment getReifiedRelationshipAssignment_8_5() { return cReifiedRelationshipAssignment_8_5; }
-		
-		//[ReifiedRelationship|Reference]
-		public CrossReference getReifiedRelationshipReifiedRelationshipCrossReference_8_5_0() { return cReifiedRelationshipReifiedRelationshipCrossReference_8_5_0; }
-		
-		//Reference
-		public RuleCall getReifiedRelationshipReifiedRelationshipReferenceParserRuleCall_8_5_0_1() { return cReifiedRelationshipReifiedRelationshipReferenceParserRuleCall_8_5_0_1; }
-		
-		//')'
-		public Keyword getRightParenthesisKeyword_8_6() { return cRightParenthesisKeyword_8_6; }
-		
-		//')'
-		public Keyword getRightParenthesisKeyword_8_7() { return cRightParenthesisKeyword_8_7; }
-		
-		//{UnreifiedRelationshipPropertyPredicate} unreifiedRelationship=[UnreifiedRelationship|Reference]
-		public Group getGroup_9() { return cGroup_9; }
-		
-		//{UnreifiedRelationshipPropertyPredicate}
-		public Action getUnreifiedRelationshipPropertyPredicateAction_9_0() { return cUnreifiedRelationshipPropertyPredicateAction_9_0; }
-		
-		//unreifiedRelationship=[UnreifiedRelationship|Reference]
-		public Assignment getUnreifiedRelationshipAssignment_9_1() { return cUnreifiedRelationshipAssignment_9_1; }
-		
-		//[UnreifiedRelationship|Reference]
-		public CrossReference getUnreifiedRelationshipUnreifiedRelationshipCrossReference_9_1_0() { return cUnreifiedRelationshipUnreifiedRelationshipCrossReference_9_1_0; }
-		
-		//Reference
-		public RuleCall getUnreifiedRelationshipUnreifiedRelationshipReferenceParserRuleCall_9_1_0_1() { return cUnreifiedRelationshipUnreifiedRelationshipReferenceParserRuleCall_9_1_0_1; }
-		
-		//'inv' '(' {UnreifiedRelationshipInversePropertyPredicate} unreifiedRelationship=[UnreifiedRelationship|Reference] ')'
-		public Group getGroup_10() { return cGroup_10; }
-		
-		//'inv'
-		public Keyword getInvKeyword_10_0() { return cInvKeyword_10_0; }
-		
-		//'('
-		public Keyword getLeftParenthesisKeyword_10_1() { return cLeftParenthesisKeyword_10_1; }
-		
-		//{UnreifiedRelationshipInversePropertyPredicate}
-		public Action getUnreifiedRelationshipInversePropertyPredicateAction_10_2() { return cUnreifiedRelationshipInversePropertyPredicateAction_10_2; }
-		
-		//unreifiedRelationship=[UnreifiedRelationship|Reference]
-		public Assignment getUnreifiedRelationshipAssignment_10_3() { return cUnreifiedRelationshipAssignment_10_3; }
-		
-		//[UnreifiedRelationship|Reference]
-		public CrossReference getUnreifiedRelationshipUnreifiedRelationshipCrossReference_10_3_0() { return cUnreifiedRelationshipUnreifiedRelationshipCrossReference_10_3_0; }
-		
-		//Reference
-		public RuleCall getUnreifiedRelationshipUnreifiedRelationshipReferenceParserRuleCall_10_3_0_1() { return cUnreifiedRelationshipUnreifiedRelationshipReferenceParserRuleCall_10_3_0_1; }
-		
-		//')'
-		public Keyword getRightParenthesisKeyword_10_4() { return cRightParenthesisKeyword_10_4; }
+		public Keyword getRightParenthesisKeyword_5_3() { return cRightParenthesisKeyword_5_3; }
 	}
 	public class AnonymousConceptUnionAxiomElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.AnonymousConceptUnionAxiom");
@@ -2475,7 +2263,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cDisjunctionsDisjointUnionOfConceptsAxiomParserRuleCall_6_0 = (RuleCall)cDisjunctionsAssignment_6.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
-		//// ConceptTreeDisjunctions and DisjointUnionOfConceptsAxioms
+		//// 3 ConceptTreeDisjunctions and DisjointUnionOfConceptsAxioms
 		//AnonymousConceptUnionAxiom:
 		//	annotations+=AnnotationPropertyValue*
 		//	'anonymousConceptUnion' '(' name=ID ')' '{'
@@ -2593,15 +2381,15 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cDisjointLeafAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final CrossReference cDisjointLeafConceptCrossReference_3_0 = (CrossReference)cDisjointLeafAssignment_3.eContents().get(0);
-		private final RuleCall cDisjointLeafConceptReferenceParserRuleCall_3_0_1 = (RuleCall)cDisjointLeafConceptCrossReference_3_0.eContents().get(1);
+		private final RuleCall cDisjointLeafConceptQNAMEParserRuleCall_3_0_1 = (RuleCall)cDisjointLeafConceptCrossReference_3_0.eContents().get(1);
 		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//SpecificDisjointConceptAxiom:
 		//	annotations+=AnnotationPropertyValue*
-		//	'disjointLeaf' '(' disjointLeaf=[Concept|Reference] ')';
+		//	'disjointLeaf' '(' disjointLeaf=[Concept|QNAME] ')';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//annotations+=AnnotationPropertyValue* 'disjointLeaf' '(' disjointLeaf=[Concept|Reference] ')'
+		//annotations+=AnnotationPropertyValue* 'disjointLeaf' '(' disjointLeaf=[Concept|QNAME] ')'
 		public Group getGroup() { return cGroup; }
 		
 		//annotations+=AnnotationPropertyValue*
@@ -2616,14 +2404,14 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//'('
 		public Keyword getLeftParenthesisKeyword_2() { return cLeftParenthesisKeyword_2; }
 		
-		//disjointLeaf=[Concept|Reference]
+		//disjointLeaf=[Concept|QNAME]
 		public Assignment getDisjointLeafAssignment_3() { return cDisjointLeafAssignment_3; }
 		
-		//[Concept|Reference]
+		//[Concept|QNAME]
 		public CrossReference getDisjointLeafConceptCrossReference_3_0() { return cDisjointLeafConceptCrossReference_3_0; }
 		
-		//Reference
-		public RuleCall getDisjointLeafConceptReferenceParserRuleCall_3_0_1() { return cDisjointLeafConceptReferenceParserRuleCall_3_0_1; }
+		//QNAME
+		public RuleCall getDisjointLeafConceptQNAMEParserRuleCall_3_0_1() { return cDisjointLeafConceptQNAMEParserRuleCall_3_0_1; }
 		
 		//')'
 		public Keyword getRightParenthesisKeyword_4() { return cRightParenthesisKeyword_4; }
@@ -2636,28 +2424,29 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSomeEntitiesKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cRestrictedDomainAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final CrossReference cRestrictedDomainEntityCrossReference_2_0 = (CrossReference)cRestrictedDomainAssignment_2.eContents().get(0);
-		private final RuleCall cRestrictedDomainEntityReferenceParserRuleCall_2_0_1 = (RuleCall)cRestrictedDomainEntityCrossReference_2_0.eContents().get(1);
+		private final RuleCall cRestrictedDomainEntityQNAMEParserRuleCall_2_0_1 = (RuleCall)cRestrictedDomainEntityCrossReference_2_0.eContents().get(1);
 		private final Keyword cFullStopKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cRestrictedRelationAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final CrossReference cRestrictedRelationEntityRelationshipCrossReference_4_0 = (CrossReference)cRestrictedRelationAssignment_4.eContents().get(0);
-		private final RuleCall cRestrictedRelationEntityRelationshipReferenceParserRuleCall_4_0_1 = (RuleCall)cRestrictedRelationEntityRelationshipCrossReference_4_0.eContents().get(1);
+		private final Assignment cRestrictedRelationshipAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final CrossReference cRestrictedRelationshipRestrictableRelationshipCrossReference_4_0 = (CrossReference)cRestrictedRelationshipAssignment_4.eContents().get(0);
+		private final RuleCall cRestrictedRelationshipRestrictableRelationshipQNAMEParserRuleCall_4_0_1 = (RuleCall)cRestrictedRelationshipRestrictableRelationshipCrossReference_4_0.eContents().get(1);
 		private final Keyword cInKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		private final Assignment cRestrictedRangeAssignment_6 = (Assignment)cGroup.eContents().get(6);
 		private final CrossReference cRestrictedRangeEntityCrossReference_6_0 = (CrossReference)cRestrictedRangeAssignment_6.eContents().get(0);
-		private final RuleCall cRestrictedRangeEntityReferenceParserRuleCall_6_0_1 = (RuleCall)cRestrictedRangeEntityCrossReference_6_0.eContents().get(1);
+		private final RuleCall cRestrictedRangeEntityQNAMEParserRuleCall_6_0_1 = (RuleCall)cRestrictedRangeEntityCrossReference_6_0.eContents().get(1);
 		
 		//// 2 EntityRestrictionAxioms
 		//EntityExistentialRestrictionAxiom:
 		//	annotations+=AnnotationPropertyValue*
 		//	'someEntities'
-		//	restrictedDomain=[Entity|Reference]
+		//	restrictedDomain=[Entity|QNAME]
 		//	'.'
-		//	restrictedRelation=[EntityRelationship|Reference]
-		//	'in' restrictedRange=[Entity|Reference];
+		//	restrictedRelationship=[RestrictableRelationship|QNAME]
+		//	'in'
+		//	restrictedRange=[Entity|QNAME];
 		@Override public ParserRule getRule() { return rule; }
 		
-		//annotations+=AnnotationPropertyValue* 'someEntities' restrictedDomain=[Entity|Reference] '.'
-		//restrictedRelation=[EntityRelationship|Reference] 'in' restrictedRange=[Entity|Reference]
+		//annotations+=AnnotationPropertyValue* 'someEntities' restrictedDomain=[Entity|QNAME] '.'
+		//restrictedRelationship=[RestrictableRelationship|QNAME] 'in' restrictedRange=[Entity|QNAME]
 		public Group getGroup() { return cGroup; }
 		
 		//annotations+=AnnotationPropertyValue*
@@ -2669,38 +2458,38 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//'someEntities'
 		public Keyword getSomeEntitiesKeyword_1() { return cSomeEntitiesKeyword_1; }
 		
-		//restrictedDomain=[Entity|Reference]
+		//restrictedDomain=[Entity|QNAME]
 		public Assignment getRestrictedDomainAssignment_2() { return cRestrictedDomainAssignment_2; }
 		
-		//[Entity|Reference]
+		//[Entity|QNAME]
 		public CrossReference getRestrictedDomainEntityCrossReference_2_0() { return cRestrictedDomainEntityCrossReference_2_0; }
 		
-		//Reference
-		public RuleCall getRestrictedDomainEntityReferenceParserRuleCall_2_0_1() { return cRestrictedDomainEntityReferenceParserRuleCall_2_0_1; }
+		//QNAME
+		public RuleCall getRestrictedDomainEntityQNAMEParserRuleCall_2_0_1() { return cRestrictedDomainEntityQNAMEParserRuleCall_2_0_1; }
 		
 		//'.'
 		public Keyword getFullStopKeyword_3() { return cFullStopKeyword_3; }
 		
-		//restrictedRelation=[EntityRelationship|Reference]
-		public Assignment getRestrictedRelationAssignment_4() { return cRestrictedRelationAssignment_4; }
+		//restrictedRelationship=[RestrictableRelationship|QNAME]
+		public Assignment getRestrictedRelationshipAssignment_4() { return cRestrictedRelationshipAssignment_4; }
 		
-		//[EntityRelationship|Reference]
-		public CrossReference getRestrictedRelationEntityRelationshipCrossReference_4_0() { return cRestrictedRelationEntityRelationshipCrossReference_4_0; }
+		//[RestrictableRelationship|QNAME]
+		public CrossReference getRestrictedRelationshipRestrictableRelationshipCrossReference_4_0() { return cRestrictedRelationshipRestrictableRelationshipCrossReference_4_0; }
 		
-		//Reference
-		public RuleCall getRestrictedRelationEntityRelationshipReferenceParserRuleCall_4_0_1() { return cRestrictedRelationEntityRelationshipReferenceParserRuleCall_4_0_1; }
+		//QNAME
+		public RuleCall getRestrictedRelationshipRestrictableRelationshipQNAMEParserRuleCall_4_0_1() { return cRestrictedRelationshipRestrictableRelationshipQNAMEParserRuleCall_4_0_1; }
 		
 		//'in'
 		public Keyword getInKeyword_5() { return cInKeyword_5; }
 		
-		//restrictedRange=[Entity|Reference]
+		//restrictedRange=[Entity|QNAME]
 		public Assignment getRestrictedRangeAssignment_6() { return cRestrictedRangeAssignment_6; }
 		
-		//[Entity|Reference]
+		//[Entity|QNAME]
 		public CrossReference getRestrictedRangeEntityCrossReference_6_0() { return cRestrictedRangeEntityCrossReference_6_0; }
 		
-		//Reference
-		public RuleCall getRestrictedRangeEntityReferenceParserRuleCall_6_0_1() { return cRestrictedRangeEntityReferenceParserRuleCall_6_0_1; }
+		//QNAME
+		public RuleCall getRestrictedRangeEntityQNAMEParserRuleCall_6_0_1() { return cRestrictedRangeEntityQNAMEParserRuleCall_6_0_1; }
 	}
 	public class EntityUniversalRestrictionAxiomElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.EntityUniversalRestrictionAxiom");
@@ -2710,27 +2499,28 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cAllEntitiesKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cRestrictedDomainAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final CrossReference cRestrictedDomainEntityCrossReference_2_0 = (CrossReference)cRestrictedDomainAssignment_2.eContents().get(0);
-		private final RuleCall cRestrictedDomainEntityReferenceParserRuleCall_2_0_1 = (RuleCall)cRestrictedDomainEntityCrossReference_2_0.eContents().get(1);
+		private final RuleCall cRestrictedDomainEntityQNAMEParserRuleCall_2_0_1 = (RuleCall)cRestrictedDomainEntityCrossReference_2_0.eContents().get(1);
 		private final Keyword cFullStopKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cRestrictedRelationAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final CrossReference cRestrictedRelationEntityRelationshipCrossReference_4_0 = (CrossReference)cRestrictedRelationAssignment_4.eContents().get(0);
-		private final RuleCall cRestrictedRelationEntityRelationshipReferenceParserRuleCall_4_0_1 = (RuleCall)cRestrictedRelationEntityRelationshipCrossReference_4_0.eContents().get(1);
+		private final Assignment cRestrictedRelationshipAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final CrossReference cRestrictedRelationshipRestrictableRelationshipCrossReference_4_0 = (CrossReference)cRestrictedRelationshipAssignment_4.eContents().get(0);
+		private final RuleCall cRestrictedRelationshipRestrictableRelationshipQNAMEParserRuleCall_4_0_1 = (RuleCall)cRestrictedRelationshipRestrictableRelationshipCrossReference_4_0.eContents().get(1);
 		private final Keyword cInKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		private final Assignment cRestrictedRangeAssignment_6 = (Assignment)cGroup.eContents().get(6);
 		private final CrossReference cRestrictedRangeEntityCrossReference_6_0 = (CrossReference)cRestrictedRangeAssignment_6.eContents().get(0);
-		private final RuleCall cRestrictedRangeEntityReferenceParserRuleCall_6_0_1 = (RuleCall)cRestrictedRangeEntityCrossReference_6_0.eContents().get(1);
+		private final RuleCall cRestrictedRangeEntityQNAMEParserRuleCall_6_0_1 = (RuleCall)cRestrictedRangeEntityCrossReference_6_0.eContents().get(1);
 		
 		//EntityUniversalRestrictionAxiom:
 		//	annotations+=AnnotationPropertyValue*
 		//	'allEntities'
-		//	restrictedDomain=[Entity|Reference]
+		//	restrictedDomain=[Entity|QNAME]
 		//	'.'
-		//	restrictedRelation=[EntityRelationship|Reference]
-		//	'in' restrictedRange=[Entity|Reference];
+		//	restrictedRelationship=[RestrictableRelationship|QNAME]
+		//	'in'
+		//	restrictedRange=[Entity|QNAME];
 		@Override public ParserRule getRule() { return rule; }
 		
-		//annotations+=AnnotationPropertyValue* 'allEntities' restrictedDomain=[Entity|Reference] '.'
-		//restrictedRelation=[EntityRelationship|Reference] 'in' restrictedRange=[Entity|Reference]
+		//annotations+=AnnotationPropertyValue* 'allEntities' restrictedDomain=[Entity|QNAME] '.'
+		//restrictedRelationship=[RestrictableRelationship|QNAME] 'in' restrictedRange=[Entity|QNAME]
 		public Group getGroup() { return cGroup; }
 		
 		//annotations+=AnnotationPropertyValue*
@@ -2742,38 +2532,38 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//'allEntities'
 		public Keyword getAllEntitiesKeyword_1() { return cAllEntitiesKeyword_1; }
 		
-		//restrictedDomain=[Entity|Reference]
+		//restrictedDomain=[Entity|QNAME]
 		public Assignment getRestrictedDomainAssignment_2() { return cRestrictedDomainAssignment_2; }
 		
-		//[Entity|Reference]
+		//[Entity|QNAME]
 		public CrossReference getRestrictedDomainEntityCrossReference_2_0() { return cRestrictedDomainEntityCrossReference_2_0; }
 		
-		//Reference
-		public RuleCall getRestrictedDomainEntityReferenceParserRuleCall_2_0_1() { return cRestrictedDomainEntityReferenceParserRuleCall_2_0_1; }
+		//QNAME
+		public RuleCall getRestrictedDomainEntityQNAMEParserRuleCall_2_0_1() { return cRestrictedDomainEntityQNAMEParserRuleCall_2_0_1; }
 		
 		//'.'
 		public Keyword getFullStopKeyword_3() { return cFullStopKeyword_3; }
 		
-		//restrictedRelation=[EntityRelationship|Reference]
-		public Assignment getRestrictedRelationAssignment_4() { return cRestrictedRelationAssignment_4; }
+		//restrictedRelationship=[RestrictableRelationship|QNAME]
+		public Assignment getRestrictedRelationshipAssignment_4() { return cRestrictedRelationshipAssignment_4; }
 		
-		//[EntityRelationship|Reference]
-		public CrossReference getRestrictedRelationEntityRelationshipCrossReference_4_0() { return cRestrictedRelationEntityRelationshipCrossReference_4_0; }
+		//[RestrictableRelationship|QNAME]
+		public CrossReference getRestrictedRelationshipRestrictableRelationshipCrossReference_4_0() { return cRestrictedRelationshipRestrictableRelationshipCrossReference_4_0; }
 		
-		//Reference
-		public RuleCall getRestrictedRelationEntityRelationshipReferenceParserRuleCall_4_0_1() { return cRestrictedRelationEntityRelationshipReferenceParserRuleCall_4_0_1; }
+		//QNAME
+		public RuleCall getRestrictedRelationshipRestrictableRelationshipQNAMEParserRuleCall_4_0_1() { return cRestrictedRelationshipRestrictableRelationshipQNAMEParserRuleCall_4_0_1; }
 		
 		//'in'
 		public Keyword getInKeyword_5() { return cInKeyword_5; }
 		
-		//restrictedRange=[Entity|Reference]
+		//restrictedRange=[Entity|QNAME]
 		public Assignment getRestrictedRangeAssignment_6() { return cRestrictedRangeAssignment_6; }
 		
-		//[Entity|Reference]
+		//[Entity|QNAME]
 		public CrossReference getRestrictedRangeEntityCrossReference_6_0() { return cRestrictedRangeEntityCrossReference_6_0; }
 		
-		//Reference
-		public RuleCall getRestrictedRangeEntityReferenceParserRuleCall_6_0_1() { return cRestrictedRangeEntityReferenceParserRuleCall_6_0_1; }
+		//QNAME
+		public RuleCall getRestrictedRangeEntityQNAMEParserRuleCall_6_0_1() { return cRestrictedRangeEntityQNAMEParserRuleCall_6_0_1; }
 	}
 	public class AspectSpecializationAxiomElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.AspectSpecializationAxiom");
@@ -5757,6 +5547,8 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	private final AspectElements pAspect;
 	private final ConceptElements pConcept;
 	private final ReifiedRelationshipElements pReifiedRelationship;
+	private final ForwardPropertyElements pForwardProperty;
+	private final InversePropertyElements pInverseProperty;
 	private final UnreifiedRelationshipElements pUnreifiedRelationship;
 	private final ScalarElements pScalar;
 	private final StructureElements pStructure;
@@ -5933,6 +5725,8 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		this.pAspect = new AspectElements();
 		this.pConcept = new ConceptElements();
 		this.pReifiedRelationship = new ReifiedRelationshipElements();
+		this.pForwardProperty = new ForwardPropertyElements();
+		this.pInverseProperty = new InversePropertyElements();
 		this.pUnreifiedRelationship = new UnreifiedRelationshipElements();
 		this.pScalar = new ScalarElements();
 		this.pStructure = new StructureElements();
@@ -6474,7 +6268,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	//	'reifiedRelationship' name=ID '{' (isFunctional?='functional'? & isInverseFunctional?='inverseFunctional'? &
 	//	isEssential?='essential'? & isInverseEssential?='inverseEssential'? & isSymmetric?='symmetric'? &
 	//	isAsymmetric?='asymmetric'? & isReflexive?='reflexive'? & isIrreflexive?='irreflexive'? & isTransitive?='transitive'?)
-	//	'unreified' '=' unreifiedPropertyName=ID ('inverse' '=' unreifiedInversePropertyName=ID)?
+	//	'unreified' '=' forwardProperty=ForwardProperty ('inverse' '=' inverseProperty=InverseProperty)?
 	//	'source' '=' source=[Entity|Reference]
 	//	'target' '=' target=[Entity|Reference]
 	//	'}';
@@ -6484,6 +6278,26 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getReifiedRelationshipRule() {
 		return getReifiedRelationshipAccess().getRule();
+	}
+	
+	//ForwardProperty:
+	//	name=ID;
+	public ForwardPropertyElements getForwardPropertyAccess() {
+		return pForwardProperty;
+	}
+	
+	public ParserRule getForwardPropertyRule() {
+		return getForwardPropertyAccess().getRule();
+	}
+	
+	//InverseProperty:
+	//	name=ID;
+	public InversePropertyElements getInversePropertyAccess() {
+		return pInverseProperty;
+	}
+	
+	public ParserRule getInversePropertyRule() {
+		return getInversePropertyAccess().getRule();
 	}
 	
 	//UnreifiedRelationship:
@@ -6614,20 +6428,12 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//SegmentPredicate:
-	//	'aspect' '(' {AspectPredicate} aspect=[Aspect|Reference] ')' |
-	//	'concept' '(' {ConceptPredicate} concept=[Concept|Reference] ')' |
-	//	'reifiedRelationship' '(' {ReifiedRelationshipPredicate} reifiedRelationship=[ReifiedRelationship|Reference] ')' |
-	//	'property' '(' {ReifiedRelationshipPropertyPredicate} reifiedRelationship=[ReifiedRelationship|Reference] ')' |
-	//	'inv' '(' 'property' '(' {ReifiedRelationshipInversePropertyPredicate}
-	//	reifiedRelationship=[ReifiedRelationship|Reference] ')' ')' |
-	//	'source' '(' {ReifiedRelationshipSourcePropertyPredicate} reifiedRelationship=[ReifiedRelationship|Reference] ')' |
-	//	'inv' '(' 'source' '(' {ReifiedRelationshipSourceInversePropertyPredicate}
-	//	reifiedRelationship=[ReifiedRelationship|Reference] ')' ')' |
-	//	'target' '(' {ReifiedRelationshipTargetPropertyPredicate} reifiedRelationship=[ReifiedRelationship|Reference] ')' |
-	//	'inv' '(' 'target' '(' {ReifiedRelationshipTargetInversePropertyPredicate}
-	//	reifiedRelationship=[ReifiedRelationship|Reference] ')' ')' | {UnreifiedRelationshipPropertyPredicate}
-	//	unreifiedRelationship=[UnreifiedRelationship|Reference] |
-	//	'inv' '(' {UnreifiedRelationshipInversePropertyPredicate} unreifiedRelationship=[UnreifiedRelationship|Reference] ')';
+	//	predicate=[Predicate|QNAME] |
+	//	'source' '(' reifiedRelationshipSource=[ReifiedRelationship|QNAME] ')' |
+	//	'invSource' '(' reifiedRelationshipInverseSource=[ReifiedRelationship|QNAME] ')' |
+	//	'target' '(' reifiedRelationshipTarget=[ReifiedRelationship|QNAME] ')' |
+	//	'invTarget' '(' reifiedRelationshipInverseTarget=[ReifiedRelationship|QNAME] ')' |
+	//	'inv' '(' unreifiedRelationshipInverse=[UnreifiedRelationship|QNAME] ')';
 	public SegmentPredicateElements getSegmentPredicateAccess() {
 		return pSegmentPredicate;
 	}
@@ -6636,7 +6442,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		return getSegmentPredicateAccess().getRule();
 	}
 	
-	//// ConceptTreeDisjunctions and DisjointUnionOfConceptsAxioms
+	//// 3 ConceptTreeDisjunctions and DisjointUnionOfConceptsAxioms
 	//AnonymousConceptUnionAxiom:
 	//	annotations+=AnnotationPropertyValue*
 	//	'anonymousConceptUnion' '(' name=ID ')' '{'
@@ -6666,7 +6472,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//SpecificDisjointConceptAxiom:
 	//	annotations+=AnnotationPropertyValue*
-	//	'disjointLeaf' '(' disjointLeaf=[Concept|Reference] ')';
+	//	'disjointLeaf' '(' disjointLeaf=[Concept|QNAME] ')';
 	public SpecificDisjointConceptAxiomElements getSpecificDisjointConceptAxiomAccess() {
 		return pSpecificDisjointConceptAxiom;
 	}
@@ -6679,10 +6485,11 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	//EntityExistentialRestrictionAxiom:
 	//	annotations+=AnnotationPropertyValue*
 	//	'someEntities'
-	//	restrictedDomain=[Entity|Reference]
+	//	restrictedDomain=[Entity|QNAME]
 	//	'.'
-	//	restrictedRelation=[EntityRelationship|Reference]
-	//	'in' restrictedRange=[Entity|Reference];
+	//	restrictedRelationship=[RestrictableRelationship|QNAME]
+	//	'in'
+	//	restrictedRange=[Entity|QNAME];
 	public EntityExistentialRestrictionAxiomElements getEntityExistentialRestrictionAxiomAccess() {
 		return pEntityExistentialRestrictionAxiom;
 	}
@@ -6694,10 +6501,11 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	//EntityUniversalRestrictionAxiom:
 	//	annotations+=AnnotationPropertyValue*
 	//	'allEntities'
-	//	restrictedDomain=[Entity|Reference]
+	//	restrictedDomain=[Entity|QNAME]
 	//	'.'
-	//	restrictedRelation=[EntityRelationship|Reference]
-	//	'in' restrictedRange=[Entity|Reference];
+	//	restrictedRelationship=[RestrictableRelationship|QNAME]
+	//	'in'
+	//	restrictedRange=[Entity|QNAME];
 	public EntityUniversalRestrictionAxiomElements getEntityUniversalRestrictionAxiomAccess() {
 		return pEntityUniversalRestrictionAxiom;
 	}

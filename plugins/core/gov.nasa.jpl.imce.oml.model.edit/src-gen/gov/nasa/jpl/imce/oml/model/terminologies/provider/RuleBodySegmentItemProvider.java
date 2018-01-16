@@ -206,57 +206,7 @@ public class RuleBodySegmentItemProvider extends ElementCrossReferenceTupleItemP
 		newChildDescriptors.add
 			(createChildParameter
 				(TerminologiesPackage.Literals.RULE_BODY_SEGMENT__PREDICATE,
-				 TerminologiesFactory.eINSTANCE.createAspectPredicate()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(TerminologiesPackage.Literals.RULE_BODY_SEGMENT__PREDICATE,
-				 TerminologiesFactory.eINSTANCE.createConceptPredicate()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(TerminologiesPackage.Literals.RULE_BODY_SEGMENT__PREDICATE,
-				 TerminologiesFactory.eINSTANCE.createReifiedRelationshipPredicate()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(TerminologiesPackage.Literals.RULE_BODY_SEGMENT__PREDICATE,
-				 TerminologiesFactory.eINSTANCE.createReifiedRelationshipPropertyPredicate()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(TerminologiesPackage.Literals.RULE_BODY_SEGMENT__PREDICATE,
-				 TerminologiesFactory.eINSTANCE.createReifiedRelationshipInversePropertyPredicate()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(TerminologiesPackage.Literals.RULE_BODY_SEGMENT__PREDICATE,
-				 TerminologiesFactory.eINSTANCE.createReifiedRelationshipSourcePropertyPredicate()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(TerminologiesPackage.Literals.RULE_BODY_SEGMENT__PREDICATE,
-				 TerminologiesFactory.eINSTANCE.createReifiedRelationshipSourceInversePropertyPredicate()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(TerminologiesPackage.Literals.RULE_BODY_SEGMENT__PREDICATE,
-				 TerminologiesFactory.eINSTANCE.createReifiedRelationshipTargetPropertyPredicate()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(TerminologiesPackage.Literals.RULE_BODY_SEGMENT__PREDICATE,
-				 TerminologiesFactory.eINSTANCE.createReifiedRelationshipTargetInversePropertyPredicate()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(TerminologiesPackage.Literals.RULE_BODY_SEGMENT__PREDICATE,
-				 TerminologiesFactory.eINSTANCE.createUnreifiedRelationshipPropertyPredicate()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(TerminologiesPackage.Literals.RULE_BODY_SEGMENT__PREDICATE,
-				 TerminologiesFactory.eINSTANCE.createUnreifiedRelationshipInversePropertyPredicate()));
+				 TerminologiesFactory.eINSTANCE.createSegmentPredicate()));
 
 		newChildDescriptors.add
 			(createChildParameter

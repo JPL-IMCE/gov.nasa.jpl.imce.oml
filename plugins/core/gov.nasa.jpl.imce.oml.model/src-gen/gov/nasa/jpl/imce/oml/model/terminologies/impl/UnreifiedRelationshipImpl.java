@@ -18,8 +18,16 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies.impl;
 
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship;
+import gov.nasa.jpl.imce.oml.model.terminologies.Predicate;
+import gov.nasa.jpl.imce.oml.model.terminologies.RestrictableRelationship;
+import gov.nasa.jpl.imce.oml.model.terminologies.Term;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage;
 import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship;
+
+import java.lang.reflect.InvocationTargetException;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -48,6 +56,63 @@ public class UnreifiedRelationshipImpl extends EntityRelationshipImpl implements
 	@Override
 	protected EClass eStaticClass() {
 		return TerminologiesPackage.Literals.UNREIFIED_RELATIONSHIP;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EntityRelationship relation() {
+		return this;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Term term() {
+		return this.relation();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
+		if (baseClass == Predicate.class) {
+			switch (baseOperationID) {
+				case TerminologiesPackage.PREDICATE___TERM: return TerminologiesPackage.UNREIFIED_RELATIONSHIP___TERM;
+				default: return -1;
+			}
+		}
+		if (baseClass == RestrictableRelationship.class) {
+			switch (baseOperationID) {
+				case TerminologiesPackage.RESTRICTABLE_RELATIONSHIP___RELATION: return TerminologiesPackage.UNREIFIED_RELATIONSHIP___RELATION;
+				case TerminologiesPackage.RESTRICTABLE_RELATIONSHIP___TERM: return TerminologiesPackage.UNREIFIED_RELATIONSHIP___TERM;
+				default: return -1;
+			}
+		}
+		return super.eDerivedOperationID(baseOperationID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case TerminologiesPackage.UNREIFIED_RELATIONSHIP___RELATION:
+				return relation();
+			case TerminologiesPackage.UNREIFIED_RELATIONSHIP___TERM:
+				return term();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 } //UnreifiedRelationshipImpl

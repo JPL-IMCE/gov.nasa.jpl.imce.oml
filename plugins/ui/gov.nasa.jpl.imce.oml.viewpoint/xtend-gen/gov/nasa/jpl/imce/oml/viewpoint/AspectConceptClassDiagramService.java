@@ -20,6 +20,7 @@ package gov.nasa.jpl.imce.oml.viewpoint;
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
+import gov.nasa.jpl.imce.oml.model.terminologies.Aspect;
 import gov.nasa.jpl.imce.oml.model.terminologies.AspectSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptSpecializationAxiom;
@@ -27,6 +28,7 @@ import gov.nasa.jpl.imce.oml.model.terminologies.Entity;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityRestrictionAxiom;
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.SpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox;
@@ -38,6 +40,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
@@ -125,7 +128,8 @@ public class AspectConceptClassDiagramService {
         Entity _target = f.getTarget();
         return Boolean.valueOf(Objects.equal(_target, e));
       };
-      _xblockexpression = IterableExtensions.<ReifiedRelationship>toSet(IterableExtensions.<ReifiedRelationship>filter(Iterables.<ReifiedRelationship>filter(IterableExtensions.<TerminologyBoxStatement>filterNull(Iterables.<TerminologyBoxStatement>concat(IterableExtensions.<TerminologyBox, EList<TerminologyBoxStatement>>map(OMLExtensions.allImportedTerminologies(e.getTbox()), _function))), ReifiedRelationship.class), _function_1));
+      _xblockexpression = IterableExtensions.<ReifiedRelationship>toSet(IterableExtensions.<ReifiedRelationship>filter(Iterables.<ReifiedRelationship>filter(IterableExtensions.<TerminologyBoxStatement>filterNull(Iterables.<TerminologyBoxStatement>concat(IterableExtensions.<TerminologyBox, EList<TerminologyBoxStatement>>map(OMLExtensions.allImportedTerminologies(e.getTbox()), _function))), 
+        ReifiedRelationship.class), _function_1));
     }
     return _xblockexpression;
   }
@@ -222,7 +226,8 @@ public class AspectConceptClassDiagramService {
         Entity _subEntity = f.getSubEntity();
         return Boolean.valueOf(Objects.equal(_subEntity, e));
       };
-      _xblockexpression = IterableExtensions.<AspectSpecializationAxiom>toSet(IterableExtensions.<AspectSpecializationAxiom>filter(Iterables.<AspectSpecializationAxiom>filter(IterableExtensions.<TerminologyBoxStatement>filterNull(Iterables.<TerminologyBoxStatement>concat(IterableExtensions.<TerminologyBox, EList<TerminologyBoxStatement>>map(OMLExtensions.allImportedTerminologies(e.getTbox()), _function))), AspectSpecializationAxiom.class), _function_1));
+      _xblockexpression = IterableExtensions.<AspectSpecializationAxiom>toSet(IterableExtensions.<AspectSpecializationAxiom>filter(Iterables.<AspectSpecializationAxiom>filter(IterableExtensions.<TerminologyBoxStatement>filterNull(Iterables.<TerminologyBoxStatement>concat(IterableExtensions.<TerminologyBox, EList<TerminologyBoxStatement>>map(OMLExtensions.allImportedTerminologies(e.getTbox()), _function))), 
+        AspectSpecializationAxiom.class), _function_1));
     }
     return _xblockexpression;
   }
@@ -253,7 +258,8 @@ public class AspectConceptClassDiagramService {
         Concept _subConcept = f.getSubConcept();
         return Boolean.valueOf(Objects.equal(_subConcept, c));
       };
-      _xblockexpression = IterableExtensions.<ConceptSpecializationAxiom>toSet(IterableExtensions.<ConceptSpecializationAxiom>filter(Iterables.<ConceptSpecializationAxiom>filter(IterableExtensions.<TerminologyBoxStatement>filterNull(Iterables.<TerminologyBoxStatement>concat(IterableExtensions.<TerminologyBox, EList<TerminologyBoxStatement>>map(OMLExtensions.allImportedTerminologies(c.getTbox()), _function))), ConceptSpecializationAxiom.class), _function_1));
+      _xblockexpression = IterableExtensions.<ConceptSpecializationAxiom>toSet(IterableExtensions.<ConceptSpecializationAxiom>filter(Iterables.<ConceptSpecializationAxiom>filter(IterableExtensions.<TerminologyBoxStatement>filterNull(Iterables.<TerminologyBoxStatement>concat(IterableExtensions.<TerminologyBox, EList<TerminologyBoxStatement>>map(OMLExtensions.allImportedTerminologies(c.getTbox()), _function))), 
+        ConceptSpecializationAxiom.class), _function_1));
     }
     return _xblockexpression;
   }
@@ -283,7 +289,8 @@ public class AspectConceptClassDiagramService {
         Entity _restrictedDomain = f.getRestrictedDomain();
         return Boolean.valueOf(Objects.equal(_restrictedDomain, e));
       };
-      _xblockexpression = IterableExtensions.<EntityRestrictionAxiom>toSet(IterableExtensions.<EntityRestrictionAxiom>filter(Iterables.<EntityRestrictionAxiom>filter(IterableExtensions.<TerminologyBoxStatement>filterNull(Iterables.<TerminologyBoxStatement>concat(IterableExtensions.<TerminologyBox, EList<TerminologyBoxStatement>>map(OMLExtensions.allImportedTerminologies(e.getTbox()), _function))), EntityRestrictionAxiom.class), _function_1));
+      _xblockexpression = IterableExtensions.<EntityRestrictionAxiom>toSet(IterableExtensions.<EntityRestrictionAxiom>filter(Iterables.<EntityRestrictionAxiom>filter(IterableExtensions.<TerminologyBoxStatement>filterNull(Iterables.<TerminologyBoxStatement>concat(IterableExtensions.<TerminologyBox, EList<TerminologyBoxStatement>>map(OMLExtensions.allImportedTerminologies(e.getTbox()), _function))), 
+        EntityRestrictionAxiom.class), _function_1));
     }
     return _xblockexpression;
   }
@@ -292,16 +299,31 @@ public class AspectConceptClassDiagramService {
    * Gets the label for the given {@link EntityRestrictionAxiom}
    * 
    * @param e The {@link EntityRestrictionAxiom}
-   * @return '<<existential>>' or '<<universal>>'
+   * @return EntityRestrictionAxiom label
    */
   public String getAxiomLabel(final EntityRestrictionAxiom ax) {
-    String _xblockexpression = null;
-    {
-      if ((ax instanceof EntityExistentialRestrictionAxiom)) {
-        return "<<existential>>";
-      }
-      _xblockexpression = "<<universal>>";
+    String _switchResult = null;
+    boolean _matched = false;
+    if (ax instanceof EntityExistentialRestrictionAxiom) {
+      _matched=true;
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("some ");
+      String _abbrevIRI = ((EntityExistentialRestrictionAxiom)ax).restrictedRelation().abbrevIRI();
+      _builder.append(_abbrevIRI);
+      _builder.append(" in");
+      _switchResult = _builder.toString();
     }
-    return _xblockexpression;
+    if (!_matched) {
+      if (ax instanceof EntityUniversalRestrictionAxiom) {
+        _matched=true;
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("all ");
+        String _abbrevIRI = ((EntityUniversalRestrictionAxiom)ax).restrictedRelation().abbrevIRI();
+        _builder.append(_abbrevIRI);
+        _builder.append(" in");
+        _switchResult = _builder.toString();
+      }
+    }
+    return _switchResult;
   }
 }

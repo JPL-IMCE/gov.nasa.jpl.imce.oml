@@ -70,7 +70,7 @@ public class EntityUniversalRestrictionAxiomImpl extends EntityRestrictionAxiomI
 	public String uuid() {
 		String _uuid = this.getTbox().uuid();
 		Pair<String, String> _mappedTo = Pair.<String, String>of("tbox", _uuid);
-		EntityRelationship _restrictedRelation = this.getRestrictedRelation();
+		EntityRelationship _restrictedRelation = this.restrictedRelation();
 		String _uuid_1 = null;
 		if (_restrictedRelation!=null) {
 			_uuid_1=_restrictedRelation.uuid();

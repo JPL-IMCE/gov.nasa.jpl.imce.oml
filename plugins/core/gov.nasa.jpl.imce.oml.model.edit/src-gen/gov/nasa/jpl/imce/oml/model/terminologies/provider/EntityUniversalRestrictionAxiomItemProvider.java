@@ -20,6 +20,7 @@ package gov.nasa.jpl.imce.oml.model.terminologies.provider;
 
 
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalRestrictionAxiom;
+
 import java.util.Collection;
 import java.util.List;
 

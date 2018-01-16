@@ -37,5 +37,14 @@ package gov.nasa.jpl.imce.oml.model.terminologies;
  * @model
  * @generated
  */
-public interface UnreifiedRelationship extends EntityRelationship {
+public interface UnreifiedRelationship extends EntityRelationship, RestrictableRelationship {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false" required="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return this;'"
+	 * @generated
+	 */
+	EntityRelationship relation();
+
 } // UnreifiedRelationship

@@ -21,15 +21,10 @@ package gov.nasa.jpl.imce.oml.model.terminologies.impl;
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
 
 import gov.nasa.jpl.imce.oml.model.terminologies.Aspect;
-import gov.nasa.jpl.imce.oml.model.terminologies.AspectPredicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.AspectSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.BinaryScalarRestriction;
-import gov.nasa.jpl.imce.oml.model.terminologies.BinarySegmentForwardPropertyPredicate;
-import gov.nasa.jpl.imce.oml.model.terminologies.BinarySegmentPropertyPredicate;
-import gov.nasa.jpl.imce.oml.model.terminologies.BinarySegmentReversePropertyPredicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.ChainRule;
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
-import gov.nasa.jpl.imce.oml.model.terminologies.ConceptPredicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptualEntity;
 import gov.nasa.jpl.imce.oml.model.terminologies.DataRange;
@@ -55,18 +50,15 @@ import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataPropertyParticularRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataPropertyRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalRestrictionAxiom;
+import gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction;
+import gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction;
+import gov.nasa.jpl.imce.oml.model.terminologies.Predicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship;
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipInversePropertyPredicate;
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPredicate;
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPropertyPredicate;
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourceInversePropertyPredicate;
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourcePropertyPredicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom;
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetInversePropertyPredicate;
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetPropertyPredicate;
+import gov.nasa.jpl.imce.oml.model.terminologies.RestrictableRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictedDataRange;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyContext;
@@ -96,11 +88,8 @@ import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBoxStatement;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyExtensionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyKind;
 import gov.nasa.jpl.imce.oml.model.terminologies.TimeScalarRestriction;
-import gov.nasa.jpl.imce.oml.model.terminologies.UnarySegmentPredicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.UnaryTermKind;
 import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship;
-import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipInversePropertyPredicate;
-import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipPropertyPredicate;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -180,6 +169,13 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass predicateEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass entityEClass = null;
 
 	/**
@@ -209,6 +205,27 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * @generated
 	 */
 	private EClass entityRelationshipEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass restrictableRelationshipEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass forwardPropertyEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass inversePropertyEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -356,111 +373,6 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * @generated
 	 */
 	private EClass segmentPredicateEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass unarySegmentPredicateEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass aspectPredicateEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass conceptPredicateEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass reifiedRelationshipPredicateEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass binarySegmentPropertyPredicateEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass binarySegmentForwardPropertyPredicateEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass binarySegmentReversePropertyPredicateEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass reifiedRelationshipPropertyPredicateEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass reifiedRelationshipInversePropertyPredicateEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass reifiedRelationshipSourcePropertyPredicateEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass reifiedRelationshipSourceInversePropertyPredicateEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass reifiedRelationshipTargetPropertyPredicateEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass reifiedRelationshipTargetInversePropertyPredicateEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass unreifiedRelationshipPropertyPredicateEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass unreifiedRelationshipInversePropertyPredicateEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1021,8 +933,35 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getPredicate() {
+		return predicateEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getPredicate__Term() {
+		return predicateEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getEntity() {
 		return entityEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getEntity__Term() {
+		return entityEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -1183,6 +1122,177 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getRestrictableRelationship() {
+		return restrictableRelationshipEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getRestrictableRelationship__Relation() {
+		return restrictableRelationshipEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getRestrictableRelationship__Term() {
+		return restrictableRelationshipEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getForwardProperty() {
+		return forwardPropertyEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getForwardProperty_ReifiedRelationship() {
+		return (EReference)forwardPropertyEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getForwardProperty_Name() {
+		return (EAttribute)forwardPropertyEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getForwardProperty__Iri() {
+		return forwardPropertyEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getForwardProperty__AbbrevIRI() {
+		return forwardPropertyEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getForwardProperty__Name() {
+		return forwardPropertyEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getForwardProperty__Uuid() {
+		return forwardPropertyEClass.getEOperations().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getForwardProperty__Relation() {
+		return forwardPropertyEClass.getEOperations().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getInverseProperty() {
+		return inversePropertyEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getInverseProperty_ReifiedRelationship() {
+		return (EReference)inversePropertyEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInverseProperty_Name() {
+		return (EAttribute)inversePropertyEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInverseProperty__Iri() {
+		return inversePropertyEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInverseProperty__AbbrevIRI() {
+		return inversePropertyEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInverseProperty__Name() {
+		return inversePropertyEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInverseProperty__Uuid() {
+		return inversePropertyEClass.getEOperations().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getInverseProperty__Relation() {
+		return inversePropertyEClass.getEOperations().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getReifiedRelationship() {
 		return reifiedRelationshipEClass;
 	}
@@ -1192,8 +1302,8 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getReifiedRelationship_UnreifiedPropertyName() {
-		return (EAttribute)reifiedRelationshipEClass.getEStructuralFeatures().get(0);
+	public EReference getReifiedRelationship_ForwardProperty() {
+		return (EReference)reifiedRelationshipEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1201,8 +1311,8 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getReifiedRelationship_UnreifiedInversePropertyName() {
-		return (EAttribute)reifiedRelationshipEClass.getEStructuralFeatures().get(1);
+	public EReference getReifiedRelationship_InverseProperty() {
+		return (EReference)reifiedRelationshipEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1212,6 +1322,15 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 */
 	public EClass getUnreifiedRelationship() {
 		return unreifiedRelationshipEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getUnreifiedRelationship__Relation() {
+		return unreifiedRelationshipEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -1678,6 +1797,60 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getSegmentPredicate_Predicate() {
+		return (EReference)segmentPredicateEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSegmentPredicate_ReifiedRelationshipSource() {
+		return (EReference)segmentPredicateEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSegmentPredicate_ReifiedRelationshipInverseSource() {
+		return (EReference)segmentPredicateEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSegmentPredicate_ReifiedRelationshipTarget() {
+		return (EReference)segmentPredicateEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSegmentPredicate_ReifiedRelationshipInverseTarget() {
+		return (EReference)segmentPredicateEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSegmentPredicate_UnreifiedRelationshipInverse() {
+		return (EReference)segmentPredicateEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EOperation getSegmentPredicate__TermPredicate() {
 		return segmentPredicateEClass.getEOperations().get(0);
 	}
@@ -1696,431 +1869,8 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getUnarySegmentPredicate() {
-		return unarySegmentPredicateEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getAspectPredicate() {
-		return aspectPredicateEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getAspectPredicate_Aspect() {
-		return (EReference)aspectPredicateEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getAspectPredicate__TermPredicate() {
-		return aspectPredicateEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getAspectPredicate__Uuid() {
-		return aspectPredicateEClass.getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getConceptPredicate() {
-		return conceptPredicateEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getConceptPredicate_Concept() {
-		return (EReference)conceptPredicateEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getConceptPredicate__TermPredicate() {
-		return conceptPredicateEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getConceptPredicate__Uuid() {
-		return conceptPredicateEClass.getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getReifiedRelationshipPredicate() {
-		return reifiedRelationshipPredicateEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getReifiedRelationshipPredicate_ReifiedRelationship() {
-		return (EReference)reifiedRelationshipPredicateEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getReifiedRelationshipPredicate__TermPredicate() {
-		return reifiedRelationshipPredicateEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getReifiedRelationshipPredicate__Uuid() {
-		return reifiedRelationshipPredicateEClass.getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getBinarySegmentPropertyPredicate() {
-		return binarySegmentPropertyPredicateEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getBinarySegmentForwardPropertyPredicate() {
-		return binarySegmentForwardPropertyPredicateEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getBinarySegmentReversePropertyPredicate() {
-		return binarySegmentReversePropertyPredicateEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getReifiedRelationshipPropertyPredicate() {
-		return reifiedRelationshipPropertyPredicateEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getReifiedRelationshipPropertyPredicate_ReifiedRelationship() {
-		return (EReference)reifiedRelationshipPropertyPredicateEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getReifiedRelationshipPropertyPredicate__TermPredicate() {
-		return reifiedRelationshipPropertyPredicateEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getReifiedRelationshipPropertyPredicate__Uuid() {
-		return reifiedRelationshipPropertyPredicateEClass.getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getReifiedRelationshipInversePropertyPredicate() {
-		return reifiedRelationshipInversePropertyPredicateEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getReifiedRelationshipInversePropertyPredicate_ReifiedRelationship() {
-		return (EReference)reifiedRelationshipInversePropertyPredicateEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getReifiedRelationshipInversePropertyPredicate__TermPredicate() {
-		return reifiedRelationshipInversePropertyPredicateEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getReifiedRelationshipInversePropertyPredicate__Uuid() {
-		return reifiedRelationshipInversePropertyPredicateEClass.getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getReifiedRelationshipSourcePropertyPredicate() {
-		return reifiedRelationshipSourcePropertyPredicateEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getReifiedRelationshipSourcePropertyPredicate_ReifiedRelationship() {
-		return (EReference)reifiedRelationshipSourcePropertyPredicateEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getReifiedRelationshipSourcePropertyPredicate__TermPredicate() {
-		return reifiedRelationshipSourcePropertyPredicateEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getReifiedRelationshipSourcePropertyPredicate__Uuid() {
-		return reifiedRelationshipSourcePropertyPredicateEClass.getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getReifiedRelationshipSourceInversePropertyPredicate() {
-		return reifiedRelationshipSourceInversePropertyPredicateEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getReifiedRelationshipSourceInversePropertyPredicate_ReifiedRelationship() {
-		return (EReference)reifiedRelationshipSourceInversePropertyPredicateEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getReifiedRelationshipSourceInversePropertyPredicate__TermPredicate() {
-		return reifiedRelationshipSourceInversePropertyPredicateEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getReifiedRelationshipSourceInversePropertyPredicate__Uuid() {
-		return reifiedRelationshipSourceInversePropertyPredicateEClass.getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getReifiedRelationshipTargetPropertyPredicate() {
-		return reifiedRelationshipTargetPropertyPredicateEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getReifiedRelationshipTargetPropertyPredicate_ReifiedRelationship() {
-		return (EReference)reifiedRelationshipTargetPropertyPredicateEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getReifiedRelationshipTargetPropertyPredicate__TermPredicate() {
-		return reifiedRelationshipTargetPropertyPredicateEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getReifiedRelationshipTargetPropertyPredicate__Uuid() {
-		return reifiedRelationshipTargetPropertyPredicateEClass.getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getReifiedRelationshipTargetInversePropertyPredicate() {
-		return reifiedRelationshipTargetInversePropertyPredicateEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getReifiedRelationshipTargetInversePropertyPredicate_ReifiedRelationship() {
-		return (EReference)reifiedRelationshipTargetInversePropertyPredicateEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getReifiedRelationshipTargetInversePropertyPredicate__TermPredicate() {
-		return reifiedRelationshipTargetInversePropertyPredicateEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getReifiedRelationshipTargetInversePropertyPredicate__Uuid() {
-		return reifiedRelationshipTargetInversePropertyPredicateEClass.getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getUnreifiedRelationshipPropertyPredicate() {
-		return unreifiedRelationshipPropertyPredicateEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getUnreifiedRelationshipPropertyPredicate_UnreifiedRelationship() {
-		return (EReference)unreifiedRelationshipPropertyPredicateEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getUnreifiedRelationshipPropertyPredicate__TermPredicate() {
-		return unreifiedRelationshipPropertyPredicateEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getUnreifiedRelationshipPropertyPredicate__Uuid() {
-		return unreifiedRelationshipPropertyPredicateEClass.getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getUnreifiedRelationshipInversePropertyPredicate() {
-		return unreifiedRelationshipInversePropertyPredicateEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getUnreifiedRelationshipInversePropertyPredicate_UnreifiedRelationship() {
-		return (EReference)unreifiedRelationshipInversePropertyPredicateEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getUnreifiedRelationshipInversePropertyPredicate__TermPredicate() {
-		return unreifiedRelationshipInversePropertyPredicateEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getUnreifiedRelationshipInversePropertyPredicate__Uuid() {
-		return unreifiedRelationshipInversePropertyPredicateEClass.getEOperations().get(1);
+	public EOperation getSegmentPredicate__Uuid() {
+		return segmentPredicateEClass.getEOperations().get(2);
 	}
 
 	/**
@@ -2146,7 +1896,7 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getEntityRestrictionAxiom_RestrictedRelation() {
+	public EReference getEntityRestrictionAxiom_RestrictedRelationship() {
 		return (EReference)entityRestrictionAxiomEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -2175,6 +1925,15 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 */
 	public EOperation getEntityRestrictionAxiom__AllNestedElements() {
 		return entityRestrictionAxiomEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getEntityRestrictionAxiom__RestrictedRelation() {
+		return entityRestrictionAxiomEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -3297,7 +3056,11 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		createEOperation(directedBinaryRelationshipKindEClass, DIRECTED_BINARY_RELATIONSHIP_KIND___RELATION_DOMAIN);
 		createEOperation(directedBinaryRelationshipKindEClass, DIRECTED_BINARY_RELATIONSHIP_KIND___RELATION_RANGE);
 
+		predicateEClass = createEClass(PREDICATE);
+		createEOperation(predicateEClass, PREDICATE___TERM);
+
 		entityEClass = createEClass(ENTITY);
+		createEOperation(entityEClass, ENTITY___TERM);
 
 		conceptualEntityEClass = createEClass(CONCEPTUAL_ENTITY);
 
@@ -3320,11 +3083,34 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		createEOperation(entityRelationshipEClass, ENTITY_RELATIONSHIP___RELATION_DOMAIN);
 		createEOperation(entityRelationshipEClass, ENTITY_RELATIONSHIP___RELATION_RANGE);
 
+		restrictableRelationshipEClass = createEClass(RESTRICTABLE_RELATIONSHIP);
+		createEOperation(restrictableRelationshipEClass, RESTRICTABLE_RELATIONSHIP___RELATION);
+		createEOperation(restrictableRelationshipEClass, RESTRICTABLE_RELATIONSHIP___TERM);
+
+		forwardPropertyEClass = createEClass(FORWARD_PROPERTY);
+		createEReference(forwardPropertyEClass, FORWARD_PROPERTY__REIFIED_RELATIONSHIP);
+		createEAttribute(forwardPropertyEClass, FORWARD_PROPERTY__NAME);
+		createEOperation(forwardPropertyEClass, FORWARD_PROPERTY___IRI);
+		createEOperation(forwardPropertyEClass, FORWARD_PROPERTY___ABBREV_IRI);
+		createEOperation(forwardPropertyEClass, FORWARD_PROPERTY___NAME);
+		createEOperation(forwardPropertyEClass, FORWARD_PROPERTY___UUID);
+		createEOperation(forwardPropertyEClass, FORWARD_PROPERTY___RELATION);
+
+		inversePropertyEClass = createEClass(INVERSE_PROPERTY);
+		createEReference(inversePropertyEClass, INVERSE_PROPERTY__REIFIED_RELATIONSHIP);
+		createEAttribute(inversePropertyEClass, INVERSE_PROPERTY__NAME);
+		createEOperation(inversePropertyEClass, INVERSE_PROPERTY___IRI);
+		createEOperation(inversePropertyEClass, INVERSE_PROPERTY___ABBREV_IRI);
+		createEOperation(inversePropertyEClass, INVERSE_PROPERTY___NAME);
+		createEOperation(inversePropertyEClass, INVERSE_PROPERTY___UUID);
+		createEOperation(inversePropertyEClass, INVERSE_PROPERTY___RELATION);
+
 		reifiedRelationshipEClass = createEClass(REIFIED_RELATIONSHIP);
-		createEAttribute(reifiedRelationshipEClass, REIFIED_RELATIONSHIP__UNREIFIED_PROPERTY_NAME);
-		createEAttribute(reifiedRelationshipEClass, REIFIED_RELATIONSHIP__UNREIFIED_INVERSE_PROPERTY_NAME);
+		createEReference(reifiedRelationshipEClass, REIFIED_RELATIONSHIP__FORWARD_PROPERTY);
+		createEReference(reifiedRelationshipEClass, REIFIED_RELATIONSHIP__INVERSE_PROPERTY);
 
 		unreifiedRelationshipEClass = createEClass(UNREIFIED_RELATIONSHIP);
+		createEOperation(unreifiedRelationshipEClass, UNREIFIED_RELATIONSHIP___RELATION);
 
 		datatypeEClass = createEClass(DATATYPE);
 
@@ -3395,79 +3181,24 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 
 		segmentPredicateEClass = createEClass(SEGMENT_PREDICATE);
 		createEReference(segmentPredicateEClass, SEGMENT_PREDICATE__BODY_SEGMENT);
+		createEReference(segmentPredicateEClass, SEGMENT_PREDICATE__PREDICATE);
+		createEReference(segmentPredicateEClass, SEGMENT_PREDICATE__REIFIED_RELATIONSHIP_SOURCE);
+		createEReference(segmentPredicateEClass, SEGMENT_PREDICATE__REIFIED_RELATIONSHIP_INVERSE_SOURCE);
+		createEReference(segmentPredicateEClass, SEGMENT_PREDICATE__REIFIED_RELATIONSHIP_TARGET);
+		createEReference(segmentPredicateEClass, SEGMENT_PREDICATE__REIFIED_RELATIONSHIP_INVERSE_TARGET);
+		createEReference(segmentPredicateEClass, SEGMENT_PREDICATE__UNREIFIED_RELATIONSHIP_INVERSE);
 		createEOperation(segmentPredicateEClass, SEGMENT_PREDICATE___TERM_PREDICATE);
 		createEOperation(segmentPredicateEClass, SEGMENT_PREDICATE___MODULE_CONTEXT);
-
-		unarySegmentPredicateEClass = createEClass(UNARY_SEGMENT_PREDICATE);
-
-		aspectPredicateEClass = createEClass(ASPECT_PREDICATE);
-		createEReference(aspectPredicateEClass, ASPECT_PREDICATE__ASPECT);
-		createEOperation(aspectPredicateEClass, ASPECT_PREDICATE___TERM_PREDICATE);
-		createEOperation(aspectPredicateEClass, ASPECT_PREDICATE___UUID);
-
-		conceptPredicateEClass = createEClass(CONCEPT_PREDICATE);
-		createEReference(conceptPredicateEClass, CONCEPT_PREDICATE__CONCEPT);
-		createEOperation(conceptPredicateEClass, CONCEPT_PREDICATE___TERM_PREDICATE);
-		createEOperation(conceptPredicateEClass, CONCEPT_PREDICATE___UUID);
-
-		reifiedRelationshipPredicateEClass = createEClass(REIFIED_RELATIONSHIP_PREDICATE);
-		createEReference(reifiedRelationshipPredicateEClass, REIFIED_RELATIONSHIP_PREDICATE__REIFIED_RELATIONSHIP);
-		createEOperation(reifiedRelationshipPredicateEClass, REIFIED_RELATIONSHIP_PREDICATE___TERM_PREDICATE);
-		createEOperation(reifiedRelationshipPredicateEClass, REIFIED_RELATIONSHIP_PREDICATE___UUID);
-
-		binarySegmentPropertyPredicateEClass = createEClass(BINARY_SEGMENT_PROPERTY_PREDICATE);
-
-		binarySegmentForwardPropertyPredicateEClass = createEClass(BINARY_SEGMENT_FORWARD_PROPERTY_PREDICATE);
-
-		binarySegmentReversePropertyPredicateEClass = createEClass(BINARY_SEGMENT_REVERSE_PROPERTY_PREDICATE);
-
-		reifiedRelationshipPropertyPredicateEClass = createEClass(REIFIED_RELATIONSHIP_PROPERTY_PREDICATE);
-		createEReference(reifiedRelationshipPropertyPredicateEClass, REIFIED_RELATIONSHIP_PROPERTY_PREDICATE__REIFIED_RELATIONSHIP);
-		createEOperation(reifiedRelationshipPropertyPredicateEClass, REIFIED_RELATIONSHIP_PROPERTY_PREDICATE___TERM_PREDICATE);
-		createEOperation(reifiedRelationshipPropertyPredicateEClass, REIFIED_RELATIONSHIP_PROPERTY_PREDICATE___UUID);
-
-		reifiedRelationshipInversePropertyPredicateEClass = createEClass(REIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE);
-		createEReference(reifiedRelationshipInversePropertyPredicateEClass, REIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE__REIFIED_RELATIONSHIP);
-		createEOperation(reifiedRelationshipInversePropertyPredicateEClass, REIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE___TERM_PREDICATE);
-		createEOperation(reifiedRelationshipInversePropertyPredicateEClass, REIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE___UUID);
-
-		reifiedRelationshipSourcePropertyPredicateEClass = createEClass(REIFIED_RELATIONSHIP_SOURCE_PROPERTY_PREDICATE);
-		createEReference(reifiedRelationshipSourcePropertyPredicateEClass, REIFIED_RELATIONSHIP_SOURCE_PROPERTY_PREDICATE__REIFIED_RELATIONSHIP);
-		createEOperation(reifiedRelationshipSourcePropertyPredicateEClass, REIFIED_RELATIONSHIP_SOURCE_PROPERTY_PREDICATE___TERM_PREDICATE);
-		createEOperation(reifiedRelationshipSourcePropertyPredicateEClass, REIFIED_RELATIONSHIP_SOURCE_PROPERTY_PREDICATE___UUID);
-
-		reifiedRelationshipSourceInversePropertyPredicateEClass = createEClass(REIFIED_RELATIONSHIP_SOURCE_INVERSE_PROPERTY_PREDICATE);
-		createEReference(reifiedRelationshipSourceInversePropertyPredicateEClass, REIFIED_RELATIONSHIP_SOURCE_INVERSE_PROPERTY_PREDICATE__REIFIED_RELATIONSHIP);
-		createEOperation(reifiedRelationshipSourceInversePropertyPredicateEClass, REIFIED_RELATIONSHIP_SOURCE_INVERSE_PROPERTY_PREDICATE___TERM_PREDICATE);
-		createEOperation(reifiedRelationshipSourceInversePropertyPredicateEClass, REIFIED_RELATIONSHIP_SOURCE_INVERSE_PROPERTY_PREDICATE___UUID);
-
-		reifiedRelationshipTargetPropertyPredicateEClass = createEClass(REIFIED_RELATIONSHIP_TARGET_PROPERTY_PREDICATE);
-		createEReference(reifiedRelationshipTargetPropertyPredicateEClass, REIFIED_RELATIONSHIP_TARGET_PROPERTY_PREDICATE__REIFIED_RELATIONSHIP);
-		createEOperation(reifiedRelationshipTargetPropertyPredicateEClass, REIFIED_RELATIONSHIP_TARGET_PROPERTY_PREDICATE___TERM_PREDICATE);
-		createEOperation(reifiedRelationshipTargetPropertyPredicateEClass, REIFIED_RELATIONSHIP_TARGET_PROPERTY_PREDICATE___UUID);
-
-		reifiedRelationshipTargetInversePropertyPredicateEClass = createEClass(REIFIED_RELATIONSHIP_TARGET_INVERSE_PROPERTY_PREDICATE);
-		createEReference(reifiedRelationshipTargetInversePropertyPredicateEClass, REIFIED_RELATIONSHIP_TARGET_INVERSE_PROPERTY_PREDICATE__REIFIED_RELATIONSHIP);
-		createEOperation(reifiedRelationshipTargetInversePropertyPredicateEClass, REIFIED_RELATIONSHIP_TARGET_INVERSE_PROPERTY_PREDICATE___TERM_PREDICATE);
-		createEOperation(reifiedRelationshipTargetInversePropertyPredicateEClass, REIFIED_RELATIONSHIP_TARGET_INVERSE_PROPERTY_PREDICATE___UUID);
-
-		unreifiedRelationshipPropertyPredicateEClass = createEClass(UNREIFIED_RELATIONSHIP_PROPERTY_PREDICATE);
-		createEReference(unreifiedRelationshipPropertyPredicateEClass, UNREIFIED_RELATIONSHIP_PROPERTY_PREDICATE__UNREIFIED_RELATIONSHIP);
-		createEOperation(unreifiedRelationshipPropertyPredicateEClass, UNREIFIED_RELATIONSHIP_PROPERTY_PREDICATE___TERM_PREDICATE);
-		createEOperation(unreifiedRelationshipPropertyPredicateEClass, UNREIFIED_RELATIONSHIP_PROPERTY_PREDICATE___UUID);
-
-		unreifiedRelationshipInversePropertyPredicateEClass = createEClass(UNREIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE);
-		createEReference(unreifiedRelationshipInversePropertyPredicateEClass, UNREIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE__UNREIFIED_RELATIONSHIP);
-		createEOperation(unreifiedRelationshipInversePropertyPredicateEClass, UNREIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE___TERM_PREDICATE);
-		createEOperation(unreifiedRelationshipInversePropertyPredicateEClass, UNREIFIED_RELATIONSHIP_INVERSE_PROPERTY_PREDICATE___UUID);
+		createEOperation(segmentPredicateEClass, SEGMENT_PREDICATE___UUID);
 
 		termAxiomEClass = createEClass(TERM_AXIOM);
 
 		entityRestrictionAxiomEClass = createEClass(ENTITY_RESTRICTION_AXIOM);
-		createEReference(entityRestrictionAxiomEClass, ENTITY_RESTRICTION_AXIOM__RESTRICTED_RELATION);
+		createEReference(entityRestrictionAxiomEClass, ENTITY_RESTRICTION_AXIOM__RESTRICTED_RELATIONSHIP);
 		createEReference(entityRestrictionAxiomEClass, ENTITY_RESTRICTION_AXIOM__RESTRICTED_RANGE);
 		createEReference(entityRestrictionAxiomEClass, ENTITY_RESTRICTION_AXIOM__RESTRICTED_DOMAIN);
 		createEOperation(entityRestrictionAxiomEClass, ENTITY_RESTRICTION_AXIOM___ALL_NESTED_ELEMENTS);
+		createEOperation(entityRestrictionAxiomEClass, ENTITY_RESTRICTION_AXIOM___RESTRICTED_RELATION);
 
 		entityExistentialRestrictionAxiomEClass = createEClass(ENTITY_EXISTENTIAL_RESTRICTION_AXIOM);
 		createEOperation(entityExistentialRestrictionAxiomEClass, ENTITY_EXISTENTIAL_RESTRICTION_AXIOM___UUID);
@@ -3657,7 +3388,9 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		termEClass.getESuperTypes().add(theCommonPackage.getResource());
 		unaryTermKindEClass.getESuperTypes().add(this.getTerm());
 		directedBinaryRelationshipKindEClass.getESuperTypes().add(this.getTerm());
+		predicateEClass.getESuperTypes().add(theCommonPackage.getResource());
 		entityEClass.getESuperTypes().add(this.getTerm());
+		entityEClass.getESuperTypes().add(this.getPredicate());
 		conceptualEntityEClass.getESuperTypes().add(this.getEntity());
 		aspectEClass.getESuperTypes().add(this.getEntity());
 		aspectEClass.getESuperTypes().add(this.getUnaryTermKind());
@@ -3665,9 +3398,14 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		conceptEClass.getESuperTypes().add(this.getUnaryTermKind());
 		entityRelationshipEClass.getESuperTypes().add(this.getTerm());
 		entityRelationshipEClass.getESuperTypes().add(this.getDirectedBinaryRelationshipKind());
+		restrictableRelationshipEClass.getESuperTypes().add(theCommonPackage.getResource());
+		restrictableRelationshipEClass.getESuperTypes().add(this.getPredicate());
+		forwardPropertyEClass.getESuperTypes().add(this.getRestrictableRelationship());
+		inversePropertyEClass.getESuperTypes().add(this.getRestrictableRelationship());
 		reifiedRelationshipEClass.getESuperTypes().add(this.getEntityRelationship());
 		reifiedRelationshipEClass.getESuperTypes().add(this.getConceptualEntity());
 		unreifiedRelationshipEClass.getESuperTypes().add(this.getEntityRelationship());
+		unreifiedRelationshipEClass.getESuperTypes().add(this.getRestrictableRelationship());
 		datatypeEClass.getESuperTypes().add(this.getTerm());
 		dataRangeEClass.getESuperTypes().add(this.getDatatype());
 		scalarEClass.getESuperTypes().add(this.getDataRange());
@@ -3698,21 +3436,6 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		chainRuleEClass.getESuperTypes().add(this.getRule());
 		ruleBodySegmentEClass.getESuperTypes().add(theCommonPackage.getElementCrossReferenceTuple());
 		segmentPredicateEClass.getESuperTypes().add(theCommonPackage.getElementCrossReferenceTuple());
-		unarySegmentPredicateEClass.getESuperTypes().add(this.getSegmentPredicate());
-		aspectPredicateEClass.getESuperTypes().add(this.getUnarySegmentPredicate());
-		conceptPredicateEClass.getESuperTypes().add(this.getUnarySegmentPredicate());
-		reifiedRelationshipPredicateEClass.getESuperTypes().add(this.getUnarySegmentPredicate());
-		binarySegmentPropertyPredicateEClass.getESuperTypes().add(this.getSegmentPredicate());
-		binarySegmentForwardPropertyPredicateEClass.getESuperTypes().add(this.getBinarySegmentPropertyPredicate());
-		binarySegmentReversePropertyPredicateEClass.getESuperTypes().add(this.getBinarySegmentPropertyPredicate());
-		reifiedRelationshipPropertyPredicateEClass.getESuperTypes().add(this.getBinarySegmentForwardPropertyPredicate());
-		reifiedRelationshipInversePropertyPredicateEClass.getESuperTypes().add(this.getBinarySegmentReversePropertyPredicate());
-		reifiedRelationshipSourcePropertyPredicateEClass.getESuperTypes().add(this.getBinarySegmentForwardPropertyPredicate());
-		reifiedRelationshipSourceInversePropertyPredicateEClass.getESuperTypes().add(this.getBinarySegmentReversePropertyPredicate());
-		reifiedRelationshipTargetPropertyPredicateEClass.getESuperTypes().add(this.getBinarySegmentForwardPropertyPredicate());
-		reifiedRelationshipTargetInversePropertyPredicateEClass.getESuperTypes().add(this.getBinarySegmentReversePropertyPredicate());
-		unreifiedRelationshipPropertyPredicateEClass.getESuperTypes().add(this.getBinarySegmentForwardPropertyPredicate());
-		unreifiedRelationshipInversePropertyPredicateEClass.getESuperTypes().add(this.getBinarySegmentReversePropertyPredicate());
 		termAxiomEClass.getESuperTypes().add(this.getTerminologyBoxStatement());
 		entityRestrictionAxiomEClass.getESuperTypes().add(this.getTermAxiom());
 		entityRestrictionAxiomEClass.getESuperTypes().add(theCommonPackage.getElementCrossReferenceTuple());
@@ -3812,7 +3535,13 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 
 		initEOperation(getDirectedBinaryRelationshipKind__RelationRange(), this.getTerm(), "relationRange", 1, 1, !IS_UNIQUE, IS_ORDERED);
 
+		initEClass(predicateEClass, Predicate.class, "Predicate", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEOperation(getPredicate__Term(), this.getTerm(), "term", 1, 1, !IS_UNIQUE, IS_ORDERED);
+
 		initEClass(entityEClass, Entity.class, "Entity", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEOperation(getEntity__Term(), this.getTerm(), "term", 1, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(conceptualEntityEClass, ConceptualEntity.class, "ConceptualEntity", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -3837,11 +3566,47 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 
 		initEOperation(getEntityRelationship__RelationRange(), this.getTerm(), "relationRange", 1, 1, !IS_UNIQUE, IS_ORDERED);
 
+		initEClass(restrictableRelationshipEClass, RestrictableRelationship.class, "RestrictableRelationship", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEOperation(getRestrictableRelationship__Relation(), this.getEntityRelationship(), "relation", 1, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getRestrictableRelationship__Term(), this.getTerm(), "term", 1, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEClass(forwardPropertyEClass, ForwardProperty.class, "ForwardProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getForwardProperty_ReifiedRelationship(), this.getReifiedRelationship(), this.getReifiedRelationship_ForwardProperty(), "reifiedRelationship", null, 1, 1, ForwardProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getForwardProperty_Name(), theCommonPackage.getLocalName(), "name", null, 1, 1, ForwardProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getForwardProperty__Iri(), theCommonPackage.getIRI(), "iri", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getForwardProperty__AbbrevIRI(), theEcorePackage.getEString(), "abbrevIRI", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getForwardProperty__Name(), theCommonPackage.getLocalName(), "name", 1, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getForwardProperty__Uuid(), theCommonPackage.getUUID(), "uuid", 1, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getForwardProperty__Relation(), this.getEntityRelationship(), "relation", 1, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEClass(inversePropertyEClass, InverseProperty.class, "InverseProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getInverseProperty_ReifiedRelationship(), this.getReifiedRelationship(), this.getReifiedRelationship_InverseProperty(), "reifiedRelationship", null, 1, 1, InverseProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInverseProperty_Name(), theCommonPackage.getLocalName(), "name", null, 1, 1, InverseProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getInverseProperty__Iri(), theCommonPackage.getIRI(), "iri", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getInverseProperty__AbbrevIRI(), theEcorePackage.getEString(), "abbrevIRI", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getInverseProperty__Name(), theCommonPackage.getLocalName(), "name", 1, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getInverseProperty__Uuid(), theCommonPackage.getUUID(), "uuid", 1, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getInverseProperty__Relation(), this.getEntityRelationship(), "relation", 1, 1, !IS_UNIQUE, IS_ORDERED);
+
 		initEClass(reifiedRelationshipEClass, ReifiedRelationship.class, "ReifiedRelationship", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getReifiedRelationship_UnreifiedPropertyName(), theCommonPackage.getLocalName(), "unreifiedPropertyName", null, 1, 1, ReifiedRelationship.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getReifiedRelationship_UnreifiedInversePropertyName(), theCommonPackage.getLocalName(), "unreifiedInversePropertyName", null, 0, 1, ReifiedRelationship.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getReifiedRelationship_ForwardProperty(), this.getForwardProperty(), this.getForwardProperty_ReifiedRelationship(), "forwardProperty", null, 1, 1, ReifiedRelationship.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getReifiedRelationship_InverseProperty(), this.getInverseProperty(), this.getInverseProperty_ReifiedRelationship(), "inverseProperty", null, 0, 1, ReifiedRelationship.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(unreifiedRelationshipEClass, UnreifiedRelationship.class, "UnreifiedRelationship", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEOperation(getUnreifiedRelationship__Relation(), this.getEntityRelationship(), "relation", 1, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(datatypeEClass, Datatype.class, "Datatype", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -3930,106 +3695,31 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 
 		initEOperation(getRuleBodySegment__ModuleContext(), theCommonPackage.getModule(), "moduleContext", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEClass(segmentPredicateEClass, SegmentPredicate.class, "SegmentPredicate", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(segmentPredicateEClass, SegmentPredicate.class, "SegmentPredicate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSegmentPredicate_BodySegment(), this.getRuleBodySegment(), this.getRuleBodySegment_Predicate(), "bodySegment", null, 1, 1, SegmentPredicate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSegmentPredicate_Predicate(), this.getPredicate(), null, "predicate", null, 0, 1, SegmentPredicate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSegmentPredicate_ReifiedRelationshipSource(), this.getReifiedRelationship(), null, "reifiedRelationshipSource", null, 0, 1, SegmentPredicate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSegmentPredicate_ReifiedRelationshipInverseSource(), this.getReifiedRelationship(), null, "reifiedRelationshipInverseSource", null, 0, 1, SegmentPredicate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSegmentPredicate_ReifiedRelationshipTarget(), this.getReifiedRelationship(), null, "reifiedRelationshipTarget", null, 0, 1, SegmentPredicate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSegmentPredicate_ReifiedRelationshipInverseTarget(), this.getReifiedRelationship(), null, "reifiedRelationshipInverseTarget", null, 0, 1, SegmentPredicate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSegmentPredicate_UnreifiedRelationshipInverse(), this.getUnreifiedRelationship(), null, "unreifiedRelationshipInverse", null, 0, 1, SegmentPredicate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getSegmentPredicate__TermPredicate(), this.getTerm(), "termPredicate", 1, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEOperation(getSegmentPredicate__ModuleContext(), theCommonPackage.getModule(), "moduleContext", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEClass(unarySegmentPredicateEClass, UnarySegmentPredicate.class, "UnarySegmentPredicate", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(aspectPredicateEClass, AspectPredicate.class, "AspectPredicate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAspectPredicate_Aspect(), this.getAspect(), null, "aspect", null, 1, 1, AspectPredicate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEOperation(getAspectPredicate__TermPredicate(), this.getTerm(), "termPredicate", 1, 1, !IS_UNIQUE, IS_ORDERED);
-
-		initEOperation(getAspectPredicate__Uuid(), theCommonPackage.getUUID(), "uuid", 1, 1, !IS_UNIQUE, IS_ORDERED);
-
-		initEClass(conceptPredicateEClass, ConceptPredicate.class, "ConceptPredicate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getConceptPredicate_Concept(), this.getConcept(), null, "concept", null, 1, 1, ConceptPredicate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEOperation(getConceptPredicate__TermPredicate(), this.getTerm(), "termPredicate", 1, 1, !IS_UNIQUE, IS_ORDERED);
-
-		initEOperation(getConceptPredicate__Uuid(), theCommonPackage.getUUID(), "uuid", 1, 1, !IS_UNIQUE, IS_ORDERED);
-
-		initEClass(reifiedRelationshipPredicateEClass, ReifiedRelationshipPredicate.class, "ReifiedRelationshipPredicate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getReifiedRelationshipPredicate_ReifiedRelationship(), this.getReifiedRelationship(), null, "reifiedRelationship", null, 1, 1, ReifiedRelationshipPredicate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEOperation(getReifiedRelationshipPredicate__TermPredicate(), this.getTerm(), "termPredicate", 1, 1, !IS_UNIQUE, IS_ORDERED);
-
-		initEOperation(getReifiedRelationshipPredicate__Uuid(), theCommonPackage.getUUID(), "uuid", 1, 1, !IS_UNIQUE, IS_ORDERED);
-
-		initEClass(binarySegmentPropertyPredicateEClass, BinarySegmentPropertyPredicate.class, "BinarySegmentPropertyPredicate", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(binarySegmentForwardPropertyPredicateEClass, BinarySegmentForwardPropertyPredicate.class, "BinarySegmentForwardPropertyPredicate", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(binarySegmentReversePropertyPredicateEClass, BinarySegmentReversePropertyPredicate.class, "BinarySegmentReversePropertyPredicate", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(reifiedRelationshipPropertyPredicateEClass, ReifiedRelationshipPropertyPredicate.class, "ReifiedRelationshipPropertyPredicate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getReifiedRelationshipPropertyPredicate_ReifiedRelationship(), this.getReifiedRelationship(), null, "reifiedRelationship", null, 1, 1, ReifiedRelationshipPropertyPredicate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEOperation(getReifiedRelationshipPropertyPredicate__TermPredicate(), this.getTerm(), "termPredicate", 1, 1, !IS_UNIQUE, IS_ORDERED);
-
-		initEOperation(getReifiedRelationshipPropertyPredicate__Uuid(), theCommonPackage.getUUID(), "uuid", 1, 1, !IS_UNIQUE, IS_ORDERED);
-
-		initEClass(reifiedRelationshipInversePropertyPredicateEClass, ReifiedRelationshipInversePropertyPredicate.class, "ReifiedRelationshipInversePropertyPredicate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getReifiedRelationshipInversePropertyPredicate_ReifiedRelationship(), this.getReifiedRelationship(), null, "reifiedRelationship", null, 1, 1, ReifiedRelationshipInversePropertyPredicate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEOperation(getReifiedRelationshipInversePropertyPredicate__TermPredicate(), this.getTerm(), "termPredicate", 1, 1, !IS_UNIQUE, IS_ORDERED);
-
-		initEOperation(getReifiedRelationshipInversePropertyPredicate__Uuid(), theCommonPackage.getUUID(), "uuid", 1, 1, !IS_UNIQUE, IS_ORDERED);
-
-		initEClass(reifiedRelationshipSourcePropertyPredicateEClass, ReifiedRelationshipSourcePropertyPredicate.class, "ReifiedRelationshipSourcePropertyPredicate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getReifiedRelationshipSourcePropertyPredicate_ReifiedRelationship(), this.getReifiedRelationship(), null, "reifiedRelationship", null, 1, 1, ReifiedRelationshipSourcePropertyPredicate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEOperation(getReifiedRelationshipSourcePropertyPredicate__TermPredicate(), this.getTerm(), "termPredicate", 1, 1, !IS_UNIQUE, IS_ORDERED);
-
-		initEOperation(getReifiedRelationshipSourcePropertyPredicate__Uuid(), theCommonPackage.getUUID(), "uuid", 1, 1, !IS_UNIQUE, IS_ORDERED);
-
-		initEClass(reifiedRelationshipSourceInversePropertyPredicateEClass, ReifiedRelationshipSourceInversePropertyPredicate.class, "ReifiedRelationshipSourceInversePropertyPredicate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getReifiedRelationshipSourceInversePropertyPredicate_ReifiedRelationship(), this.getReifiedRelationship(), null, "reifiedRelationship", null, 1, 1, ReifiedRelationshipSourceInversePropertyPredicate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEOperation(getReifiedRelationshipSourceInversePropertyPredicate__TermPredicate(), this.getTerm(), "termPredicate", 1, 1, !IS_UNIQUE, IS_ORDERED);
-
-		initEOperation(getReifiedRelationshipSourceInversePropertyPredicate__Uuid(), theCommonPackage.getUUID(), "uuid", 1, 1, !IS_UNIQUE, IS_ORDERED);
-
-		initEClass(reifiedRelationshipTargetPropertyPredicateEClass, ReifiedRelationshipTargetPropertyPredicate.class, "ReifiedRelationshipTargetPropertyPredicate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getReifiedRelationshipTargetPropertyPredicate_ReifiedRelationship(), this.getReifiedRelationship(), null, "reifiedRelationship", null, 1, 1, ReifiedRelationshipTargetPropertyPredicate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEOperation(getReifiedRelationshipTargetPropertyPredicate__TermPredicate(), this.getTerm(), "termPredicate", 1, 1, !IS_UNIQUE, IS_ORDERED);
-
-		initEOperation(getReifiedRelationshipTargetPropertyPredicate__Uuid(), theCommonPackage.getUUID(), "uuid", 1, 1, !IS_UNIQUE, IS_ORDERED);
-
-		initEClass(reifiedRelationshipTargetInversePropertyPredicateEClass, ReifiedRelationshipTargetInversePropertyPredicate.class, "ReifiedRelationshipTargetInversePropertyPredicate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getReifiedRelationshipTargetInversePropertyPredicate_ReifiedRelationship(), this.getReifiedRelationship(), null, "reifiedRelationship", null, 1, 1, ReifiedRelationshipTargetInversePropertyPredicate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEOperation(getReifiedRelationshipTargetInversePropertyPredicate__TermPredicate(), this.getTerm(), "termPredicate", 1, 1, !IS_UNIQUE, IS_ORDERED);
-
-		initEOperation(getReifiedRelationshipTargetInversePropertyPredicate__Uuid(), theCommonPackage.getUUID(), "uuid", 1, 1, !IS_UNIQUE, IS_ORDERED);
-
-		initEClass(unreifiedRelationshipPropertyPredicateEClass, UnreifiedRelationshipPropertyPredicate.class, "UnreifiedRelationshipPropertyPredicate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getUnreifiedRelationshipPropertyPredicate_UnreifiedRelationship(), this.getUnreifiedRelationship(), null, "unreifiedRelationship", null, 1, 1, UnreifiedRelationshipPropertyPredicate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEOperation(getUnreifiedRelationshipPropertyPredicate__TermPredicate(), this.getTerm(), "termPredicate", 1, 1, !IS_UNIQUE, IS_ORDERED);
-
-		initEOperation(getUnreifiedRelationshipPropertyPredicate__Uuid(), theCommonPackage.getUUID(), "uuid", 1, 1, !IS_UNIQUE, IS_ORDERED);
-
-		initEClass(unreifiedRelationshipInversePropertyPredicateEClass, UnreifiedRelationshipInversePropertyPredicate.class, "UnreifiedRelationshipInversePropertyPredicate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getUnreifiedRelationshipInversePropertyPredicate_UnreifiedRelationship(), this.getUnreifiedRelationship(), null, "unreifiedRelationship", null, 1, 1, UnreifiedRelationshipInversePropertyPredicate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEOperation(getUnreifiedRelationshipInversePropertyPredicate__TermPredicate(), this.getTerm(), "termPredicate", 1, 1, !IS_UNIQUE, IS_ORDERED);
-
-		initEOperation(getUnreifiedRelationshipInversePropertyPredicate__Uuid(), theCommonPackage.getUUID(), "uuid", 1, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getSegmentPredicate__Uuid(), theCommonPackage.getUUID(), "uuid", 1, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(termAxiomEClass, TermAxiom.class, "TermAxiom", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(entityRestrictionAxiomEClass, EntityRestrictionAxiom.class, "EntityRestrictionAxiom", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getEntityRestrictionAxiom_RestrictedRelation(), this.getEntityRelationship(), null, "restrictedRelation", null, 1, 1, EntityRestrictionAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEntityRestrictionAxiom_RestrictedRelationship(), this.getRestrictableRelationship(), null, "restrictedRelationship", null, 1, 1, EntityRestrictionAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEntityRestrictionAxiom_RestrictedRange(), this.getEntity(), null, "restrictedRange", null, 1, 1, EntityRestrictionAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEntityRestrictionAxiom_RestrictedDomain(), this.getEntity(), null, "restrictedDomain", null, 1, 1, EntityRestrictionAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getEntityRestrictionAxiom__AllNestedElements(), theCommonPackage.getLogicalElement(), "allNestedElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getEntityRestrictionAxiom__RestrictedRelation(), this.getEntityRelationship(), "restrictedRelation", 1, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(entityExistentialRestrictionAxiomEClass, EntityExistentialRestrictionAxiom.class, "EntityExistentialRestrictionAxiom", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -4303,6 +3993,11 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   new String[] {
 		   });	
 		addAnnotation
+		  (predicateEClass, 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
 		  (entityEClass, 
 		   source, 
 		   new String[] {
@@ -4324,6 +4019,21 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   });	
 		addAnnotation
 		  (entityRelationshipEClass, 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (restrictableRelationshipEClass, 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (forwardPropertyEClass, 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (inversePropertyEClass, 
 		   source, 
 		   new String[] {
 		   });	
@@ -4434,81 +4144,6 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   });	
 		addAnnotation
 		  (segmentPredicateEClass, 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (unarySegmentPredicateEClass, 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (aspectPredicateEClass, 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (conceptPredicateEClass, 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (reifiedRelationshipPredicateEClass, 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (binarySegmentPropertyPredicateEClass, 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (binarySegmentForwardPropertyPredicateEClass, 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (binarySegmentReversePropertyPredicateEClass, 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (reifiedRelationshipPropertyPredicateEClass, 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (reifiedRelationshipInversePropertyPredicateEClass, 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (reifiedRelationshipSourcePropertyPredicateEClass, 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (reifiedRelationshipSourceInversePropertyPredicateEClass, 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (reifiedRelationshipTargetPropertyPredicateEClass, 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (reifiedRelationshipTargetInversePropertyPredicateEClass, 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (unreifiedRelationshipPropertyPredicateEClass, 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (unreifiedRelationshipInversePropertyPredicateEClass, 
 		   source, 
 		   new String[] {
 		   });	
@@ -4758,12 +4393,87 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   new String[] {
 		   });	
 		addAnnotation
+		  (getPredicate__Term(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getEntity__Term(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
 		  (getEntityRelationship__RelationDomain(), 
 		   source, 
 		   new String[] {
 		   });	
 		addAnnotation
 		  (getEntityRelationship__RelationRange(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getRestrictableRelationship__Relation(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getRestrictableRelationship__Term(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getForwardProperty__Iri(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getForwardProperty__AbbrevIRI(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getForwardProperty__Name(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getForwardProperty__Uuid(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getForwardProperty__Relation(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getInverseProperty__Iri(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getInverseProperty__AbbrevIRI(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getInverseProperty__Name(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getInverseProperty__Uuid(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getInverseProperty__Relation(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getUnreifiedRelationship__Relation(), 
 		   source, 
 		   new String[] {
 		   });	
@@ -4853,62 +4563,12 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   new String[] {
 		   });	
 		addAnnotation
-		  (getAspectPredicate__TermPredicate(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getConceptPredicate__TermPredicate(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getReifiedRelationshipPredicate__TermPredicate(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getReifiedRelationshipPropertyPredicate__TermPredicate(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getReifiedRelationshipInversePropertyPredicate__TermPredicate(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getReifiedRelationshipSourcePropertyPredicate__TermPredicate(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getReifiedRelationshipSourceInversePropertyPredicate__TermPredicate(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getReifiedRelationshipTargetPropertyPredicate__TermPredicate(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getReifiedRelationshipTargetInversePropertyPredicate__TermPredicate(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getUnreifiedRelationshipPropertyPredicate__TermPredicate(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getUnreifiedRelationshipInversePropertyPredicate__TermPredicate(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
 		  (getEntityRestrictionAxiom__AllNestedElements(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getEntityRestrictionAxiom__RestrictedRelation(), 
 		   source, 
 		   new String[] {
 		   });	
@@ -5227,6 +4887,30 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 			 "code", "scala.collection.immutable.Set.empty[resolver.api.LogicalElement]"
 		   });	
 		addAnnotation
+		  (getForwardProperty__Iri(), 
+		   source, 
+		   new String[] {
+			 "code", "extent.terminologyBoxOfTerminologyBoxStatement.get(this).flatMap(tbox => tbox.iri().map(i =>  gov.nasa.jpl.imce.oml.tables.taggedTypes.iri(i + \"#\" + name)))"
+		   });	
+		addAnnotation
+		  (getForwardProperty__AbbrevIRI(), 
+		   source, 
+		   new String[] {
+			 "code", "extent.terminologyBoxOfTerminologyBoxStatement.get(this).map(tbox => tbox.nsPrefix+\":\"+name)"
+		   });	
+		addAnnotation
+		  (getInverseProperty__Iri(), 
+		   source, 
+		   new String[] {
+			 "code", "extent.terminologyBoxOfTerminologyBoxStatement.get(this).flatMap(tbox => tbox.iri().map(i =>  gov.nasa.jpl.imce.oml.tables.taggedTypes.iri(i + \"#\" + name)))"
+		   });	
+		addAnnotation
+		  (getInverseProperty__AbbrevIRI(), 
+		   source, 
+		   new String[] {
+			 "code", "extent.terminologyBoxOfTerminologyBoxStatement.get(this).map(tbox => tbox.nsPrefix+\":\"+name)"
+		   });	
+		addAnnotation
 		  (getRuleBodySegment__Position(), 
 		   source, 
 		   new String[] {
@@ -5384,6 +5068,26 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   });	
 		addAnnotation
 		  (getTerm__AllNestedElements(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getForwardProperty__Iri(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getForwardProperty__AbbrevIRI(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getInverseProperty__Iri(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getInverseProperty__AbbrevIRI(), 
 		   source, 
 		   new String[] {
 		   });	
@@ -5658,12 +5362,67 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   new String[] {
 		   });	
 		addAnnotation
+		  (getEntity__Term(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
 		  (getEntityRelationship__RelationDomain(), 
 		   source, 
 		   new String[] {
 		   });	
 		addAnnotation
 		  (getEntityRelationship__RelationRange(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getRestrictableRelationship__Term(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getForwardProperty__Iri(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getForwardProperty__AbbrevIRI(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getForwardProperty__Relation(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getForwardProperty_Name(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getInverseProperty__Iri(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getInverseProperty__AbbrevIRI(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getInverseProperty__Relation(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getInverseProperty_Name(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getUnreifiedRelationship__Relation(), 
 		   source, 
 		   new String[] {
 		   });	
@@ -5714,61 +5473,6 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   });	
 		addAnnotation
 		  (getScalarDataProperty__Target(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getAspectPredicate__TermPredicate(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getConceptPredicate__TermPredicate(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getReifiedRelationshipPredicate__TermPredicate(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getReifiedRelationshipPropertyPredicate__TermPredicate(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getReifiedRelationshipInversePropertyPredicate__TermPredicate(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getReifiedRelationshipSourcePropertyPredicate__TermPredicate(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getReifiedRelationshipSourceInversePropertyPredicate__TermPredicate(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getReifiedRelationshipTargetPropertyPredicate__TermPredicate(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getReifiedRelationshipTargetInversePropertyPredicate__TermPredicate(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getUnreifiedRelationshipPropertyPredicate__TermPredicate(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getUnreifiedRelationshipInversePropertyPredicate__TermPredicate(), 
 		   source, 
 		   new String[] {
 		   });	
@@ -5834,6 +5538,26 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   });	
 		addAnnotation
 		  (getTerm__Uuid(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getForwardProperty__Name(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getForwardProperty__Uuid(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getInverseProperty__Name(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getInverseProperty__Uuid(), 
 		   source, 
 		   new String[] {
 		   });	
@@ -5960,57 +5684,7 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   new String[] {
 		   });	
 		addAnnotation
-		  (getAspectPredicate__Uuid(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getConceptPredicate__Uuid(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getReifiedRelationshipPredicate__Uuid(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getReifiedRelationshipPropertyPredicate__Uuid(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getReifiedRelationshipInversePropertyPredicate__Uuid(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getReifiedRelationshipSourcePropertyPredicate__Uuid(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getReifiedRelationshipSourceInversePropertyPredicate__Uuid(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getReifiedRelationshipTargetPropertyPredicate__Uuid(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getReifiedRelationshipTargetInversePropertyPredicate__Uuid(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getUnreifiedRelationshipPropertyPredicate__Uuid(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getUnreifiedRelationshipInversePropertyPredicate__Uuid(), 
+		  (getSegmentPredicate__Uuid(), 
 		   source, 
 		   new String[] {
 		   });
@@ -6050,57 +5724,7 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   new String[] {
 		   });	
 		addAnnotation
-		  (getAspectPredicate__Uuid(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getConceptPredicate__Uuid(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getReifiedRelationshipPredicate__Uuid(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getReifiedRelationshipPropertyPredicate__Uuid(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getReifiedRelationshipInversePropertyPredicate__Uuid(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getReifiedRelationshipSourcePropertyPredicate__Uuid(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getReifiedRelationshipSourceInversePropertyPredicate__Uuid(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getReifiedRelationshipTargetPropertyPredicate__Uuid(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getReifiedRelationshipTargetInversePropertyPredicate__Uuid(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getUnreifiedRelationshipPropertyPredicate__Uuid(), 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
-		  (getUnreifiedRelationshipInversePropertyPredicate__Uuid(), 
+		  (getSegmentPredicate__Uuid(), 
 		   source, 
 		   new String[] {
 		   });

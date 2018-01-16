@@ -42,7 +42,11 @@ import gov.nasa.jpl.imce.oml.model.terminologies.Entity;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataProperty;
+import gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty;
+import gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty;
+import gov.nasa.jpl.imce.oml.model.terminologies.Predicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship;
+import gov.nasa.jpl.imce.oml.model.terminologies.RestrictableRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.Structure;
@@ -356,6 +360,46 @@ public class OMLScopeExtensions {
       return this.<EntityRelationship>importedResourceNameFunction(it);
     };
     return this.<EntityRelationship>terminologyScope(tbox, _function, _function_1);
+  }
+  
+  public IScope allPredicatesScope(final TerminologyBox tbox) {
+    final Function<TerminologyBox, Iterable<Predicate>> _function = (TerminologyBox it) -> {
+      return this._oMLExtensions.localPredicates(it);
+    };
+    final Function<Pair<TerminologyBox, Predicate>, QualifiedName> _function_1 = (Pair<TerminologyBox, Predicate> it) -> {
+      return this.<Predicate>importedResourceNameFunction(it);
+    };
+    return this.<Predicate>terminologyScope(tbox, _function, _function_1);
+  }
+  
+  public IScope allForwardPropertiesScope(final TerminologyBox tbox) {
+    final Function<TerminologyBox, Iterable<ForwardProperty>> _function = (TerminologyBox it) -> {
+      return this._oMLExtensions.localForwardProperties(it);
+    };
+    final Function<Pair<TerminologyBox, ForwardProperty>, QualifiedName> _function_1 = (Pair<TerminologyBox, ForwardProperty> it) -> {
+      return this.<ForwardProperty>importedResourceNameFunction(it);
+    };
+    return this.<ForwardProperty>terminologyScope(tbox, _function, _function_1);
+  }
+  
+  public IScope allInversePropertiesScope(final TerminologyBox tbox) {
+    final Function<TerminologyBox, Iterable<InverseProperty>> _function = (TerminologyBox it) -> {
+      return this._oMLExtensions.localInverseProperties(it);
+    };
+    final Function<Pair<TerminologyBox, InverseProperty>, QualifiedName> _function_1 = (Pair<TerminologyBox, InverseProperty> it) -> {
+      return this.<InverseProperty>importedResourceNameFunction(it);
+    };
+    return this.<InverseProperty>terminologyScope(tbox, _function, _function_1);
+  }
+  
+  public IScope allRestrictableRelationshipsScope(final TerminologyBox tbox) {
+    final Function<TerminologyBox, Iterable<RestrictableRelationship>> _function = (TerminologyBox it) -> {
+      return this._oMLExtensions.localRestrictableRelationships(it);
+    };
+    final Function<Pair<TerminologyBox, RestrictableRelationship>, QualifiedName> _function_1 = (Pair<TerminologyBox, RestrictableRelationship> it) -> {
+      return this.<RestrictableRelationship>importedResourceNameFunction(it);
+    };
+    return this.<RestrictableRelationship>terminologyScope(tbox, _function, _function_1);
   }
   
   public IScope allEntityScalarDataPropertiesScope(final TerminologyBox tbox) {

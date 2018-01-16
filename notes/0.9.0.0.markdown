@@ -97,3 +97,8 @@ gov.nasa.jpl.imce.oml.tycho 0.9.0.0 resolves major problems found in 0.8.0.1
   Reorganized support for string processing under the OMLTables.toString() dispatch methods.
   
 - [#206 Fix the OMLZipResourceFactory type to 'omlzip' to support mixed `oml`, `omlzip` resources](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/206)
+
+- [#208 Add support for OML EntityRestrictionAxiom about forward or inverse property.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/208)
+
+  Unfortunately, the OML abstract syntax had to be changed significantly to support distinctions among forward/inverse reified relationship restrictions vs. unreified relationship restrictions.
+  The reason is that the XText grammar parser generator does not provide sufficient flexibility 

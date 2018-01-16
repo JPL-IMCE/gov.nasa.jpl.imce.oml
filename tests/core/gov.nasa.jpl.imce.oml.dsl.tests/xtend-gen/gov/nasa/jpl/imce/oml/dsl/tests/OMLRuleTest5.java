@@ -100,10 +100,10 @@ public class OMLRuleTest5 {
       _builder.append("rule pc infers p");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("if property(P)");
+      _builder.append("if p");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("&& concept(C)");
+      _builder.append("&& C");
       _builder.newLine();
       _builder.newLine();
       _builder.append("}");
@@ -160,7 +160,7 @@ public class OMLRuleTest5 {
       _builder_1.append("\t");
       _builder_1.newLine();
       _builder_1.append("\t");
-      _builder_1.append("rule pc infers p if property(P) && concept(C)");
+      _builder_1.append("rule pc infers p if p && C");
       _builder_1.newLine();
       _builder_1.append("\t");
       _builder_1.newLine();
