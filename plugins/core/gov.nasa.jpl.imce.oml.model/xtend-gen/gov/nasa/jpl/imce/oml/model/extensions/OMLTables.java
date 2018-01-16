@@ -70,39 +70,27 @@ import gov.nasa.jpl.imce.oml.model.graphs.ConceptDesignationTerminologyAxiom;
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyGraph;
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyNestingAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.Aspect;
-import gov.nasa.jpl.imce.oml.model.terminologies.AspectPredicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.AspectSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.BinaryScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.ChainRule;
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
-import gov.nasa.jpl.imce.oml.model.terminologies.ConceptPredicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptSpecializationAxiom;
-import gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialForwardReifiedRestrictionAxiom;
-import gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialInverseReifiedRestrictionAxiom;
-import gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialUnreifiedRestrictionAxiom;
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyExistentialRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyParticularRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyUniversalRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataPropertyParticularRestrictionAxiom;
-import gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalForwardReifiedRestrictionAxiom;
-import gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalInverseReifiedRestrictionAxiom;
-import gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalUnreifiedRestrictionAxiom;
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction;
+import gov.nasa.jpl.imce.oml.model.terminologies.Predicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship;
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipInversePropertyPredicate;
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPredicate;
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPropertyPredicate;
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourceInversePropertyPredicate;
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourcePropertyPredicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom;
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetInversePropertyPredicate;
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetPropertyPredicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple;
 import gov.nasa.jpl.imce.oml.model.terminologies.RuleBodySegment;
@@ -110,6 +98,7 @@ import gov.nasa.jpl.imce.oml.model.terminologies.Scalar;
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfRestriction;
+import gov.nasa.jpl.imce.oml.model.terminologies.SegmentPredicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.StringScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.Structure;
 import gov.nasa.jpl.imce.oml.model.terminologies.StructuredDataProperty;
@@ -121,8 +110,6 @@ import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyExtensionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyKind;
 import gov.nasa.jpl.imce.oml.model.terminologies.TimeScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship;
-import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipInversePropertyPredicate;
-import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipPropertyPredicate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -130,6 +117,7 @@ import java.util.function.Consumer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.CollectionExtensions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
@@ -754,103 +742,35 @@ public class OMLTables {
     return _xblockexpression;
   }
   
-  public static List<EntityExistentialForwardReifiedRestrictionAxiom> entityExistentialForwardReifiedRestrictionAxioms(final Extent e) {
-    List<EntityExistentialForwardReifiedRestrictionAxiom> _xblockexpression = null;
+  public static List<EntityExistentialRestrictionAxiom> entityExistentialRestrictionAxioms(final Extent e) {
+    List<EntityExistentialRestrictionAxiom> _xblockexpression = null;
     {
-      final List<EntityExistentialForwardReifiedRestrictionAxiom> result = new ArrayList<EntityExistentialForwardReifiedRestrictionAxiom>();
+      final List<EntityExistentialRestrictionAxiom> result = new ArrayList<EntityExistentialRestrictionAxiom>();
       final Consumer<TerminologyBox> _function = (TerminologyBox tbox) -> {
-        Iterables.<EntityExistentialForwardReifiedRestrictionAxiom>addAll(result, Iterables.<EntityExistentialForwardReifiedRestrictionAxiom>filter(tbox.getBoxStatements(), EntityExistentialForwardReifiedRestrictionAxiom.class));
+        Iterables.<EntityExistentialRestrictionAxiom>addAll(result, Iterables.<EntityExistentialRestrictionAxiom>filter(tbox.getBoxStatements(), EntityExistentialRestrictionAxiom.class));
       };
       OMLTables.terminologies(e).forEach(_function);
-      final Function1<EntityExistentialForwardReifiedRestrictionAxiom, String> _function_1 = (EntityExistentialForwardReifiedRestrictionAxiom it) -> {
+      final Function1<EntityExistentialRestrictionAxiom, String> _function_1 = (EntityExistentialRestrictionAxiom it) -> {
         return it.uuid();
       };
-      ListExtensions.<EntityExistentialForwardReifiedRestrictionAxiom, String>sortInplaceBy(result, _function_1);
+      ListExtensions.<EntityExistentialRestrictionAxiom, String>sortInplaceBy(result, _function_1);
       _xblockexpression = result;
     }
     return _xblockexpression;
   }
   
-  public static List<EntityExistentialInverseReifiedRestrictionAxiom> entityExistentialInverseReifiedRestrictionAxioms(final Extent e) {
-    List<EntityExistentialInverseReifiedRestrictionAxiom> _xblockexpression = null;
+  public static List<EntityUniversalRestrictionAxiom> entityUniversalRestrictionAxioms(final Extent e) {
+    List<EntityUniversalRestrictionAxiom> _xblockexpression = null;
     {
-      final List<EntityExistentialInverseReifiedRestrictionAxiom> result = new ArrayList<EntityExistentialInverseReifiedRestrictionAxiom>();
+      final List<EntityUniversalRestrictionAxiom> result = new ArrayList<EntityUniversalRestrictionAxiom>();
       final Consumer<TerminologyBox> _function = (TerminologyBox tbox) -> {
-        Iterables.<EntityExistentialInverseReifiedRestrictionAxiom>addAll(result, Iterables.<EntityExistentialInverseReifiedRestrictionAxiom>filter(tbox.getBoxStatements(), EntityExistentialInverseReifiedRestrictionAxiom.class));
+        Iterables.<EntityUniversalRestrictionAxiom>addAll(result, Iterables.<EntityUniversalRestrictionAxiom>filter(tbox.getBoxStatements(), EntityUniversalRestrictionAxiom.class));
       };
       OMLTables.terminologies(e).forEach(_function);
-      final Function1<EntityExistentialInverseReifiedRestrictionAxiom, String> _function_1 = (EntityExistentialInverseReifiedRestrictionAxiom it) -> {
+      final Function1<EntityUniversalRestrictionAxiom, String> _function_1 = (EntityUniversalRestrictionAxiom it) -> {
         return it.uuid();
       };
-      ListExtensions.<EntityExistentialInverseReifiedRestrictionAxiom, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
-    }
-    return _xblockexpression;
-  }
-  
-  public static List<EntityExistentialUnreifiedRestrictionAxiom> entityExistentialUnreifiedRestrictionAxioms(final Extent e) {
-    List<EntityExistentialUnreifiedRestrictionAxiom> _xblockexpression = null;
-    {
-      final List<EntityExistentialUnreifiedRestrictionAxiom> result = new ArrayList<EntityExistentialUnreifiedRestrictionAxiom>();
-      final Consumer<TerminologyBox> _function = (TerminologyBox tbox) -> {
-        Iterables.<EntityExistentialUnreifiedRestrictionAxiom>addAll(result, Iterables.<EntityExistentialUnreifiedRestrictionAxiom>filter(tbox.getBoxStatements(), EntityExistentialUnreifiedRestrictionAxiom.class));
-      };
-      OMLTables.terminologies(e).forEach(_function);
-      final Function1<EntityExistentialUnreifiedRestrictionAxiom, String> _function_1 = (EntityExistentialUnreifiedRestrictionAxiom it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<EntityExistentialUnreifiedRestrictionAxiom, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
-    }
-    return _xblockexpression;
-  }
-  
-  public static List<EntityUniversalForwardReifiedRestrictionAxiom> entityUniversalForwardReifiedRestrictionAxioms(final Extent e) {
-    List<EntityUniversalForwardReifiedRestrictionAxiom> _xblockexpression = null;
-    {
-      final List<EntityUniversalForwardReifiedRestrictionAxiom> result = new ArrayList<EntityUniversalForwardReifiedRestrictionAxiom>();
-      final Consumer<TerminologyBox> _function = (TerminologyBox tbox) -> {
-        Iterables.<EntityUniversalForwardReifiedRestrictionAxiom>addAll(result, Iterables.<EntityUniversalForwardReifiedRestrictionAxiom>filter(tbox.getBoxStatements(), EntityUniversalForwardReifiedRestrictionAxiom.class));
-      };
-      OMLTables.terminologies(e).forEach(_function);
-      final Function1<EntityUniversalForwardReifiedRestrictionAxiom, String> _function_1 = (EntityUniversalForwardReifiedRestrictionAxiom it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<EntityUniversalForwardReifiedRestrictionAxiom, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
-    }
-    return _xblockexpression;
-  }
-  
-  public static List<EntityUniversalInverseReifiedRestrictionAxiom> entityUniversalInverseReifiedRestrictionAxioms(final Extent e) {
-    List<EntityUniversalInverseReifiedRestrictionAxiom> _xblockexpression = null;
-    {
-      final List<EntityUniversalInverseReifiedRestrictionAxiom> result = new ArrayList<EntityUniversalInverseReifiedRestrictionAxiom>();
-      final Consumer<TerminologyBox> _function = (TerminologyBox tbox) -> {
-        Iterables.<EntityUniversalInverseReifiedRestrictionAxiom>addAll(result, Iterables.<EntityUniversalInverseReifiedRestrictionAxiom>filter(tbox.getBoxStatements(), EntityUniversalInverseReifiedRestrictionAxiom.class));
-      };
-      OMLTables.terminologies(e).forEach(_function);
-      final Function1<EntityUniversalInverseReifiedRestrictionAxiom, String> _function_1 = (EntityUniversalInverseReifiedRestrictionAxiom it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<EntityUniversalInverseReifiedRestrictionAxiom, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
-    }
-    return _xblockexpression;
-  }
-  
-  public static List<EntityUniversalUnreifiedRestrictionAxiom> entityUniversalUnreifiedRestrictionAxioms(final Extent e) {
-    List<EntityUniversalUnreifiedRestrictionAxiom> _xblockexpression = null;
-    {
-      final List<EntityUniversalUnreifiedRestrictionAxiom> result = new ArrayList<EntityUniversalUnreifiedRestrictionAxiom>();
-      final Consumer<TerminologyBox> _function = (TerminologyBox tbox) -> {
-        Iterables.<EntityUniversalUnreifiedRestrictionAxiom>addAll(result, Iterables.<EntityUniversalUnreifiedRestrictionAxiom>filter(tbox.getBoxStatements(), EntityUniversalUnreifiedRestrictionAxiom.class));
-      };
-      OMLTables.terminologies(e).forEach(_function);
-      final Function1<EntityUniversalUnreifiedRestrictionAxiom, String> _function_1 = (EntityUniversalUnreifiedRestrictionAxiom it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<EntityUniversalUnreifiedRestrictionAxiom, String>sortInplaceBy(result, _function_1);
+      ListExtensions.<EntityUniversalRestrictionAxiom, String>sortInplaceBy(result, _function_1);
       _xblockexpression = result;
     }
     return _xblockexpression;
@@ -1018,221 +938,53 @@ public class OMLTables {
     return _xblockexpression;
   }
   
-  public static List<AspectPredicate> aspectPredicates(final Extent e) {
-    List<AspectPredicate> _xblockexpression = null;
+  public static List<SegmentPredicate> segmentPredicates(final Extent e) {
+    List<SegmentPredicate> _xblockexpression = null;
     {
-      final List<AspectPredicate> result = new ArrayList<AspectPredicate>();
+      final List<SegmentPredicate> result = new ArrayList<SegmentPredicate>();
       final Consumer<TerminologyGraph> _function = (TerminologyGraph b) -> {
         final Consumer<ChainRule> _function_1 = (ChainRule r) -> {
-          Iterables.<AspectPredicate>addAll(result, Iterables.<AspectPredicate>filter(r.allNestedElements(), AspectPredicate.class));
+          Iterables.<SegmentPredicate>addAll(result, Iterables.<SegmentPredicate>filter(r.allNestedElements(), SegmentPredicate.class));
         };
         Iterables.<ChainRule>filter(b.getBoxStatements(), ChainRule.class).forEach(_function_1);
       };
       OMLTables.terminologyGraphs(e).forEach(_function);
-      final Function1<AspectPredicate, String> _function_1 = (AspectPredicate it) -> {
+      final Function1<SegmentPredicate, String> _function_1 = (SegmentPredicate it) -> {
         return it.uuid();
       };
-      ListExtensions.<AspectPredicate, String>sortInplaceBy(result, _function_1);
+      ListExtensions.<SegmentPredicate, String>sortInplaceBy(result, _function_1);
       _xblockexpression = result;
     }
     return _xblockexpression;
   }
   
-  public static List<ConceptPredicate> conceptPredicates(final Extent e) {
-    List<ConceptPredicate> _xblockexpression = null;
+  public static List<Predicate> predicates(final Extent e) {
+    List<Predicate> _xblockexpression = null;
     {
-      final List<ConceptPredicate> result = new ArrayList<ConceptPredicate>();
-      final Consumer<TerminologyGraph> _function = (TerminologyGraph b) -> {
-        final Consumer<ChainRule> _function_1 = (ChainRule r) -> {
-          Iterables.<ConceptPredicate>addAll(result, Iterables.<ConceptPredicate>filter(r.allNestedElements(), ConceptPredicate.class));
+      final List<Predicate> result = new ArrayList<Predicate>();
+      final Consumer<TerminologyGraph> _function = (TerminologyGraph t) -> {
+        final Consumer<Predicate> _function_1 = (Predicate p) -> {
+          CollectionExtensions.<Predicate>addAll(result, p);
         };
-        Iterables.<ChainRule>filter(b.getBoxStatements(), ChainRule.class).forEach(_function_1);
+        Iterables.<Predicate>filter(t.getBoxStatements(), Predicate.class).forEach(_function_1);
       };
       OMLTables.terminologyGraphs(e).forEach(_function);
-      final Function1<ConceptPredicate, String> _function_1 = (ConceptPredicate it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<ConceptPredicate, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
-    }
-    return _xblockexpression;
-  }
-  
-  public static List<ReifiedRelationshipInversePropertyPredicate> reifiedRelationshipInversePropertyPredicates(final Extent e) {
-    List<ReifiedRelationshipInversePropertyPredicate> _xblockexpression = null;
-    {
-      final List<ReifiedRelationshipInversePropertyPredicate> result = new ArrayList<ReifiedRelationshipInversePropertyPredicate>();
-      final Consumer<TerminologyGraph> _function = (TerminologyGraph b) -> {
-        final Consumer<ChainRule> _function_1 = (ChainRule r) -> {
-          Iterables.<ReifiedRelationshipInversePropertyPredicate>addAll(result, Iterables.<ReifiedRelationshipInversePropertyPredicate>filter(r.allNestedElements(), ReifiedRelationshipInversePropertyPredicate.class));
+      final Consumer<TerminologyGraph> _function_1 = (TerminologyGraph t) -> {
+        final Consumer<ReifiedRelationship> _function_2 = (ReifiedRelationship rr) -> {
+          result.add(rr.getForwardProperty());
+          InverseProperty _inverseProperty = rr.getInverseProperty();
+          boolean _tripleNotEquals = (null != _inverseProperty);
+          if (_tripleNotEquals) {
+            result.add(rr.getInverseProperty());
+          }
         };
-        Iterables.<ChainRule>filter(b.getBoxStatements(), ChainRule.class).forEach(_function_1);
+        Iterables.<ReifiedRelationship>filter(t.getBoxStatements(), ReifiedRelationship.class).forEach(_function_2);
       };
-      OMLTables.terminologyGraphs(e).forEach(_function);
-      final Function1<ReifiedRelationshipInversePropertyPredicate, String> _function_1 = (ReifiedRelationshipInversePropertyPredicate it) -> {
+      OMLTables.terminologyGraphs(e).forEach(_function_1);
+      final Function1<Predicate, String> _function_2 = (Predicate it) -> {
         return it.uuid();
       };
-      ListExtensions.<ReifiedRelationshipInversePropertyPredicate, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
-    }
-    return _xblockexpression;
-  }
-  
-  public static List<ReifiedRelationshipPredicate> reifiedRelationshipPredicates(final Extent e) {
-    List<ReifiedRelationshipPredicate> _xblockexpression = null;
-    {
-      final List<ReifiedRelationshipPredicate> result = new ArrayList<ReifiedRelationshipPredicate>();
-      final Consumer<TerminologyGraph> _function = (TerminologyGraph b) -> {
-        final Consumer<ChainRule> _function_1 = (ChainRule r) -> {
-          Iterables.<ReifiedRelationshipPredicate>addAll(result, Iterables.<ReifiedRelationshipPredicate>filter(r.allNestedElements(), ReifiedRelationshipPredicate.class));
-        };
-        Iterables.<ChainRule>filter(b.getBoxStatements(), ChainRule.class).forEach(_function_1);
-      };
-      OMLTables.terminologyGraphs(e).forEach(_function);
-      final Function1<ReifiedRelationshipPredicate, String> _function_1 = (ReifiedRelationshipPredicate it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<ReifiedRelationshipPredicate, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
-    }
-    return _xblockexpression;
-  }
-  
-  public static List<ReifiedRelationshipPropertyPredicate> reifiedRelationshipPropertyPredicates(final Extent e) {
-    List<ReifiedRelationshipPropertyPredicate> _xblockexpression = null;
-    {
-      final List<ReifiedRelationshipPropertyPredicate> result = new ArrayList<ReifiedRelationshipPropertyPredicate>();
-      final Consumer<TerminologyGraph> _function = (TerminologyGraph b) -> {
-        final Consumer<ChainRule> _function_1 = (ChainRule r) -> {
-          Iterables.<ReifiedRelationshipPropertyPredicate>addAll(result, Iterables.<ReifiedRelationshipPropertyPredicate>filter(r.allNestedElements(), ReifiedRelationshipPropertyPredicate.class));
-        };
-        Iterables.<ChainRule>filter(b.getBoxStatements(), ChainRule.class).forEach(_function_1);
-      };
-      OMLTables.terminologyGraphs(e).forEach(_function);
-      final Function1<ReifiedRelationshipPropertyPredicate, String> _function_1 = (ReifiedRelationshipPropertyPredicate it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<ReifiedRelationshipPropertyPredicate, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
-    }
-    return _xblockexpression;
-  }
-  
-  public static List<ReifiedRelationshipSourceInversePropertyPredicate> reifiedRelationshipSourceInversePropertyPredicates(final Extent e) {
-    List<ReifiedRelationshipSourceInversePropertyPredicate> _xblockexpression = null;
-    {
-      final List<ReifiedRelationshipSourceInversePropertyPredicate> result = new ArrayList<ReifiedRelationshipSourceInversePropertyPredicate>();
-      final Consumer<TerminologyGraph> _function = (TerminologyGraph b) -> {
-        final Consumer<ChainRule> _function_1 = (ChainRule r) -> {
-          Iterables.<ReifiedRelationshipSourceInversePropertyPredicate>addAll(result, Iterables.<ReifiedRelationshipSourceInversePropertyPredicate>filter(r.allNestedElements(), ReifiedRelationshipSourceInversePropertyPredicate.class));
-        };
-        Iterables.<ChainRule>filter(b.getBoxStatements(), ChainRule.class).forEach(_function_1);
-      };
-      OMLTables.terminologyGraphs(e).forEach(_function);
-      final Function1<ReifiedRelationshipSourceInversePropertyPredicate, String> _function_1 = (ReifiedRelationshipSourceInversePropertyPredicate it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<ReifiedRelationshipSourceInversePropertyPredicate, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
-    }
-    return _xblockexpression;
-  }
-  
-  public static List<ReifiedRelationshipSourcePropertyPredicate> reifiedRelationshipSourcePropertyPredicates(final Extent e) {
-    List<ReifiedRelationshipSourcePropertyPredicate> _xblockexpression = null;
-    {
-      final List<ReifiedRelationshipSourcePropertyPredicate> result = new ArrayList<ReifiedRelationshipSourcePropertyPredicate>();
-      final Consumer<TerminologyGraph> _function = (TerminologyGraph b) -> {
-        final Consumer<ChainRule> _function_1 = (ChainRule r) -> {
-          Iterables.<ReifiedRelationshipSourcePropertyPredicate>addAll(result, Iterables.<ReifiedRelationshipSourcePropertyPredicate>filter(r.allNestedElements(), ReifiedRelationshipSourcePropertyPredicate.class));
-        };
-        Iterables.<ChainRule>filter(b.getBoxStatements(), ChainRule.class).forEach(_function_1);
-      };
-      OMLTables.terminologyGraphs(e).forEach(_function);
-      final Function1<ReifiedRelationshipSourcePropertyPredicate, String> _function_1 = (ReifiedRelationshipSourcePropertyPredicate it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<ReifiedRelationshipSourcePropertyPredicate, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
-    }
-    return _xblockexpression;
-  }
-  
-  public static List<ReifiedRelationshipTargetInversePropertyPredicate> reifiedRelationshipTargetInversePropertyPredicates(final Extent e) {
-    List<ReifiedRelationshipTargetInversePropertyPredicate> _xblockexpression = null;
-    {
-      final List<ReifiedRelationshipTargetInversePropertyPredicate> result = new ArrayList<ReifiedRelationshipTargetInversePropertyPredicate>();
-      final Consumer<TerminologyGraph> _function = (TerminologyGraph b) -> {
-        final Consumer<ChainRule> _function_1 = (ChainRule r) -> {
-          Iterables.<ReifiedRelationshipTargetInversePropertyPredicate>addAll(result, Iterables.<ReifiedRelationshipTargetInversePropertyPredicate>filter(r.allNestedElements(), ReifiedRelationshipTargetInversePropertyPredicate.class));
-        };
-        Iterables.<ChainRule>filter(b.getBoxStatements(), ChainRule.class).forEach(_function_1);
-      };
-      OMLTables.terminologyGraphs(e).forEach(_function);
-      final Function1<ReifiedRelationshipTargetInversePropertyPredicate, String> _function_1 = (ReifiedRelationshipTargetInversePropertyPredicate it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<ReifiedRelationshipTargetInversePropertyPredicate, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
-    }
-    return _xblockexpression;
-  }
-  
-  public static List<ReifiedRelationshipTargetPropertyPredicate> reifiedRelationshipTargetPropertyPredicates(final Extent e) {
-    List<ReifiedRelationshipTargetPropertyPredicate> _xblockexpression = null;
-    {
-      final List<ReifiedRelationshipTargetPropertyPredicate> result = new ArrayList<ReifiedRelationshipTargetPropertyPredicate>();
-      final Consumer<TerminologyGraph> _function = (TerminologyGraph b) -> {
-        final Consumer<ChainRule> _function_1 = (ChainRule r) -> {
-          Iterables.<ReifiedRelationshipTargetPropertyPredicate>addAll(result, Iterables.<ReifiedRelationshipTargetPropertyPredicate>filter(r.allNestedElements(), ReifiedRelationshipTargetPropertyPredicate.class));
-        };
-        Iterables.<ChainRule>filter(b.getBoxStatements(), ChainRule.class).forEach(_function_1);
-      };
-      OMLTables.terminologyGraphs(e).forEach(_function);
-      final Function1<ReifiedRelationshipTargetPropertyPredicate, String> _function_1 = (ReifiedRelationshipTargetPropertyPredicate it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<ReifiedRelationshipTargetPropertyPredicate, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
-    }
-    return _xblockexpression;
-  }
-  
-  public static List<UnreifiedRelationshipInversePropertyPredicate> unreifiedRelationshipInversePropertyPredicates(final Extent e) {
-    List<UnreifiedRelationshipInversePropertyPredicate> _xblockexpression = null;
-    {
-      final List<UnreifiedRelationshipInversePropertyPredicate> result = new ArrayList<UnreifiedRelationshipInversePropertyPredicate>();
-      final Consumer<TerminologyGraph> _function = (TerminologyGraph b) -> {
-        final Consumer<ChainRule> _function_1 = (ChainRule r) -> {
-          Iterables.<UnreifiedRelationshipInversePropertyPredicate>addAll(result, Iterables.<UnreifiedRelationshipInversePropertyPredicate>filter(r.allNestedElements(), UnreifiedRelationshipInversePropertyPredicate.class));
-        };
-        Iterables.<ChainRule>filter(b.getBoxStatements(), ChainRule.class).forEach(_function_1);
-      };
-      OMLTables.terminologyGraphs(e).forEach(_function);
-      final Function1<UnreifiedRelationshipInversePropertyPredicate, String> _function_1 = (UnreifiedRelationshipInversePropertyPredicate it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<UnreifiedRelationshipInversePropertyPredicate, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
-    }
-    return _xblockexpression;
-  }
-  
-  public static List<UnreifiedRelationshipPropertyPredicate> unreifiedRelationshipPropertyPredicates(final Extent e) {
-    List<UnreifiedRelationshipPropertyPredicate> _xblockexpression = null;
-    {
-      final List<UnreifiedRelationshipPropertyPredicate> result = new ArrayList<UnreifiedRelationshipPropertyPredicate>();
-      final Consumer<TerminologyGraph> _function = (TerminologyGraph b) -> {
-        final Consumer<ChainRule> _function_1 = (ChainRule r) -> {
-          Iterables.<UnreifiedRelationshipPropertyPredicate>addAll(result, Iterables.<UnreifiedRelationshipPropertyPredicate>filter(r.allNestedElements(), UnreifiedRelationshipPropertyPredicate.class));
-        };
-        Iterables.<ChainRule>filter(b.getBoxStatements(), ChainRule.class).forEach(_function_1);
-      };
-      OMLTables.terminologyGraphs(e).forEach(_function);
-      final Function1<UnreifiedRelationshipPropertyPredicate, String> _function_1 = (UnreifiedRelationshipPropertyPredicate it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<UnreifiedRelationshipPropertyPredicate, String>sortInplaceBy(result, _function_1);
+      ListExtensions.<Predicate, String>sortInplaceBy(result, _function_2);
       _xblockexpression = result;
     }
     return _xblockexpression;

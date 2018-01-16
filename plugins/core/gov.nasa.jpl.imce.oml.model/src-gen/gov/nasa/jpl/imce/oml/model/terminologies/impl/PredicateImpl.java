@@ -18,12 +18,11 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies.impl;
 
-import gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship;
+import gov.nasa.jpl.imce.oml.model.common.impl.ResourceImpl;
+
 import gov.nasa.jpl.imce.oml.model.terminologies.Predicate;
-import gov.nasa.jpl.imce.oml.model.terminologies.RestrictableRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.Term;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage;
-import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -33,18 +32,18 @@ import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Unreified Relationship</b></em>'.
+ * An implementation of the model object '<em><b>Predicate</b></em>'.
  * <!-- end-user-doc -->
  *
  * @generated
  */
-public class UnreifiedRelationshipImpl extends EntityRelationshipImpl implements UnreifiedRelationship {
+public abstract class PredicateImpl extends ResourceImpl implements Predicate {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected UnreifiedRelationshipImpl() {
+	protected PredicateImpl() {
 		super();
 	}
 
@@ -55,16 +54,7 @@ public class UnreifiedRelationshipImpl extends EntityRelationshipImpl implements
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return TerminologiesPackage.Literals.UNREIFIED_RELATIONSHIP;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EntityRelationship relation() {
-		return this;
+		return TerminologiesPackage.Literals.PREDICATE;
 	}
 
 	/**
@@ -73,30 +63,9 @@ public class UnreifiedRelationshipImpl extends EntityRelationshipImpl implements
 	 * @generated
 	 */
 	public Term term() {
-		return this.relation();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
-		if (baseClass == Predicate.class) {
-			switch (baseOperationID) {
-				case TerminologiesPackage.PREDICATE___TERM: return TerminologiesPackage.UNREIFIED_RELATIONSHIP___TERM;
-				default: return -1;
-			}
-		}
-		if (baseClass == RestrictableRelationship.class) {
-			switch (baseOperationID) {
-				case TerminologiesPackage.RESTRICTABLE_RELATIONSHIP___RELATION: return TerminologiesPackage.UNREIFIED_RELATIONSHIP___RELATION;
-				case TerminologiesPackage.RESTRICTABLE_RELATIONSHIP___TERM: return TerminologiesPackage.UNREIFIED_RELATIONSHIP___TERM;
-				default: return -1;
-			}
-		}
-		return super.eDerivedOperationID(baseOperationID, baseClass);
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -107,12 +76,10 @@ public class UnreifiedRelationshipImpl extends EntityRelationshipImpl implements
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case TerminologiesPackage.UNREIFIED_RELATIONSHIP___RELATION:
-				return relation();
-			case TerminologiesPackage.UNREIFIED_RELATIONSHIP___TERM:
+			case TerminologiesPackage.PREDICATE___TERM:
 				return term();
 		}
 		return super.eInvoke(operationID, arguments);
 	}
 
-} //UnreifiedRelationshipImpl
+} //PredicateImpl

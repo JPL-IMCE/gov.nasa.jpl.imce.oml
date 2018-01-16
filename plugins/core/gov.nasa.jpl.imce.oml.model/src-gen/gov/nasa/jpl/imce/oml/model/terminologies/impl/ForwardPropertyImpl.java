@@ -18,10 +18,9 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies.impl;
 
-import gov.nasa.jpl.imce.oml.model.common.impl.ResourceImpl;
-
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
 
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage;
@@ -60,7 +59,7 @@ import org.eclipse.xtext.xbase.lib.Pair;
  *
  * @generated
  */
-public class ForwardPropertyImpl extends ResourceImpl implements ForwardProperty {
+public class ForwardPropertyImpl extends RestrictableRelationshipImpl implements ForwardProperty {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -261,6 +260,15 @@ public class ForwardPropertyImpl extends ResourceImpl implements ForwardProperty
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EntityRelationship relation() {
+		return this.getReifiedRelationship();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -385,6 +393,8 @@ public class ForwardPropertyImpl extends ResourceImpl implements ForwardProperty
 				return name();
 			case TerminologiesPackage.FORWARD_PROPERTY___UUID:
 				return uuid();
+			case TerminologiesPackage.FORWARD_PROPERTY___RELATION:
+				return relation();
 		}
 		return super.eInvoke(operationID, arguments);
 	}

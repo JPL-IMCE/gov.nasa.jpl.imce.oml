@@ -43,6 +43,7 @@ import gov.nasa.jpl.imce.oml.model.terminologies.DataRelationshipToStructure;
 import gov.nasa.jpl.imce.oml.model.terminologies.Entity;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship;
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyExistentialRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyParticularRestrictionAxiom;
@@ -193,90 +194,62 @@ public class OMLLabelProvider extends DefaultEObjectLabelProvider {
     return (_plus_3 + ")");
   }
   
-  public String text(final EntityExistentialRestrictionAxiom ax) {
-    String _elvis = null;
-    String _elvis_1 = null;
-    EntityRelationship _restrictedRelation = ax.restrictedRelation();
-    String _abbrevIRI = null;
-    if (_restrictedRelation!=null) {
-      _abbrevIRI=_restrictedRelation.abbrevIRI();
+  public String text(final EntityRestrictionAxiom ax) {
+    String _xblockexpression = null;
+    {
+      String _switchResult = null;
+      boolean _matched = false;
+      if (ax instanceof EntityExistentialRestrictionAxiom) {
+        _matched=true;
+        _switchResult = "SomeEntities ";
+      }
+      if (!_matched) {
+        if (ax instanceof EntityUniversalRestrictionAxiom) {
+          _matched=true;
+          _switchResult = "AllEntities ";
+        }
+      }
+      final String kind = _switchResult;
+      String _elvis = null;
+      Entity _restrictedDomain = ax.getRestrictedDomain();
+      String _abbrevIRI = null;
+      if (_restrictedDomain!=null) {
+        _abbrevIRI=_restrictedDomain.abbrevIRI();
+      }
+      if (_abbrevIRI != null) {
+        _elvis = _abbrevIRI;
+      } else {
+        _elvis = "";
+      }
+      String _plus = (kind + _elvis);
+      String _plus_1 = (_plus + ".");
+      String _elvis_1 = null;
+      EntityRelationship _restrictedRelation = ax.restrictedRelation();
+      String _abbrevIRI_1 = null;
+      if (_restrictedRelation!=null) {
+        _abbrevIRI_1=_restrictedRelation.abbrevIRI();
+      }
+      if (_abbrevIRI_1 != null) {
+        _elvis_1 = _abbrevIRI_1;
+      } else {
+        _elvis_1 = "";
+      }
+      String _plus_2 = (_plus_1 + _elvis_1);
+      String _plus_3 = (_plus_2 + " in ");
+      String _elvis_2 = null;
+      Entity _restrictedRange = ax.getRestrictedRange();
+      String _abbrevIRI_2 = null;
+      if (_restrictedRange!=null) {
+        _abbrevIRI_2=_restrictedRange.abbrevIRI();
+      }
+      if (_abbrevIRI_2 != null) {
+        _elvis_2 = _abbrevIRI_2;
+      } else {
+        _elvis_2 = "";
+      }
+      _xblockexpression = (_plus_3 + _elvis_2);
     }
-    if (_abbrevIRI != null) {
-      _elvis_1 = _abbrevIRI;
-    } else {
-      _elvis_1 = "";
-    }
-    String _plus = ("someEntities " + _elvis_1);
-    String _plus_1 = (_plus + ".");
-    String _elvis_2 = null;
-    Entity _restrictedDomain = ax.getRestrictedDomain();
-    String _abbrevIRI_1 = null;
-    if (_restrictedDomain!=null) {
-      _abbrevIRI_1=_restrictedDomain.abbrevIRI();
-    }
-    if (_abbrevIRI_1 != null) {
-      _elvis_2 = _abbrevIRI_1;
-    } else {
-      _elvis_2 = "";
-    }
-    String _plus_2 = (_plus_1 + _elvis_2);
-    String _plus_3 = (_plus_2 + 
-      " in ");
-    Entity _restrictedRange = ax.getRestrictedRange();
-    String _abbrevIRI_2 = null;
-    if (_restrictedRange!=null) {
-      _abbrevIRI_2=_restrictedRange.abbrevIRI();
-    }
-    String _plus_4 = (_plus_3 + _abbrevIRI_2);
-    if (_plus_4 != null) {
-      _elvis = _plus_4;
-    } else {
-      _elvis = "";
-    }
-    return _elvis;
-  }
-  
-  public String text(final EntityUniversalRestrictionAxiom ax) {
-    String _elvis = null;
-    String _elvis_1 = null;
-    EntityRelationship _restrictedRelation = ax.restrictedRelation();
-    String _abbrevIRI = null;
-    if (_restrictedRelation!=null) {
-      _abbrevIRI=_restrictedRelation.abbrevIRI();
-    }
-    if (_abbrevIRI != null) {
-      _elvis_1 = _abbrevIRI;
-    } else {
-      _elvis_1 = "";
-    }
-    String _plus = ("allEntities " + _elvis_1);
-    String _plus_1 = (_plus + ".");
-    String _elvis_2 = null;
-    Entity _restrictedDomain = ax.getRestrictedDomain();
-    String _abbrevIRI_1 = null;
-    if (_restrictedDomain!=null) {
-      _abbrevIRI_1=_restrictedDomain.abbrevIRI();
-    }
-    if (_abbrevIRI_1 != null) {
-      _elvis_2 = _abbrevIRI_1;
-    } else {
-      _elvis_2 = "";
-    }
-    String _plus_2 = (_plus_1 + _elvis_2);
-    String _plus_3 = (_plus_2 + 
-      " in ");
-    Entity _restrictedRange = ax.getRestrictedRange();
-    String _abbrevIRI_2 = null;
-    if (_restrictedRange!=null) {
-      _abbrevIRI_2=_restrictedRange.abbrevIRI();
-    }
-    String _plus_4 = (_plus_3 + _abbrevIRI_2);
-    if (_plus_4 != null) {
-      _elvis = _plus_4;
-    } else {
-      _elvis = "";
-    }
-    return _elvis;
+    return _xblockexpression;
   }
   
   public String text(final EntityScalarDataPropertyExistentialRestrictionAxiom ax) {

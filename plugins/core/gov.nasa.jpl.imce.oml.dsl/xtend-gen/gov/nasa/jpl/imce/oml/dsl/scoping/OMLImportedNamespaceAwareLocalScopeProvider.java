@@ -50,13 +50,9 @@ import gov.nasa.jpl.imce.oml.model.graphs.ConceptDesignationTerminologyAxiom;
 import gov.nasa.jpl.imce.oml.model.graphs.GraphsPackage;
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyGraph;
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyNestingAxiom;
-import gov.nasa.jpl.imce.oml.model.terminologies.AspectPredicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.AspectSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.ChainRule;
-import gov.nasa.jpl.imce.oml.model.terminologies.ConceptPredicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptSpecializationAxiom;
-import gov.nasa.jpl.imce.oml.model.terminologies.EntityForwardReifiedRestrictionAxiom;
-import gov.nasa.jpl.imce.oml.model.terminologies.EntityInverseReifiedRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataProperty;
@@ -65,21 +61,14 @@ import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyParticu
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyUniversalRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataPropertyParticularRestrictionAxiom;
-import gov.nasa.jpl.imce.oml.model.terminologies.EntityUnreifiedRestrictionAxiom;
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipInversePropertyPredicate;
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPredicate;
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipPropertyPredicate;
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourceInversePropertyPredicate;
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSourcePropertyPredicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom;
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetInversePropertyPredicate;
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipTargetPropertyPredicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictedDataRange;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple;
 import gov.nasa.jpl.imce.oml.model.terminologies.RuleBodySegment;
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom;
+import gov.nasa.jpl.imce.oml.model.terminologies.SegmentPredicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.StructuredDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.SubDataPropertyOfAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.SubObjectPropertyOfAxiom;
@@ -87,13 +76,10 @@ import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBoxAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyExtensionAxiom;
-import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipInversePropertyPredicate;
-import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationshipPropertyPredicate;
 import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
@@ -520,17 +506,17 @@ public class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespa
           EReference _chainRule_Head = TerminologiesPackage.eINSTANCE.getChainRule_Head();
           boolean _equals = Objects.equal(reference, _chainRule_Head);
           if (_equals) {
-            scope = this._oMLScopeExtensions.allEntityRelationshipsScope(((ChainRule)context).getTbox());
+            scope = this._oMLScopeExtensions.allUnreifiedRelationshipsScope(((ChainRule)context).getTbox());
           }
         }
       }
       if (!_matched) {
-        if (context instanceof AspectPredicate) {
+        if (context instanceof SegmentPredicate) {
           _matched=true;
-          EReference _aspectPredicate_Aspect = TerminologiesPackage.eINSTANCE.getAspectPredicate_Aspect();
-          boolean _equals = Objects.equal(reference, _aspectPredicate_Aspect);
+          EReference _segmentPredicate_Predicate = TerminologiesPackage.eINSTANCE.getSegmentPredicate_Predicate();
+          boolean _equals = Objects.equal(reference, _segmentPredicate_Predicate);
           if (_equals) {
-            RuleBodySegment _bodySegment = ((AspectPredicate)context).getBodySegment();
+            RuleBodySegment _bodySegment = ((SegmentPredicate)context).getBodySegment();
             ChainRule _chainRule = null;
             if (_bodySegment!=null) {
               _chainRule=_bodySegment.chainRule();
@@ -539,286 +525,127 @@ public class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespa
             if (_chainRule!=null) {
               _tbox=_chainRule.getTbox();
             }
-            IScope _allAspectsScope = null;
+            IScope _allPredicatesScope = null;
             if (_tbox!=null) {
-              _allAspectsScope=this._oMLScopeExtensions.allAspectsScope(_tbox);
+              _allPredicatesScope=this._oMLScopeExtensions.allPredicatesScope(_tbox);
             }
-            scope = _allAspectsScope;
-          }
-        }
-      }
-      if (!_matched) {
-        if (context instanceof ConceptPredicate) {
-          _matched=true;
-          EReference _conceptPredicate_Concept = TerminologiesPackage.eINSTANCE.getConceptPredicate_Concept();
-          boolean _equals = Objects.equal(reference, _conceptPredicate_Concept);
-          if (_equals) {
-            RuleBodySegment _bodySegment = ((ConceptPredicate)context).getBodySegment();
-            ChainRule _chainRule = null;
-            if (_bodySegment!=null) {
-              _chainRule=_bodySegment.chainRule();
+            scope = _allPredicatesScope;
+          } else {
+            EReference _segmentPredicate_ReifiedRelationshipInverseSource = TerminologiesPackage.eINSTANCE.getSegmentPredicate_ReifiedRelationshipInverseSource();
+            boolean _equals_1 = Objects.equal(reference, _segmentPredicate_ReifiedRelationshipInverseSource);
+            if (_equals_1) {
+              RuleBodySegment _bodySegment_1 = ((SegmentPredicate)context).getBodySegment();
+              ChainRule _chainRule_1 = null;
+              if (_bodySegment_1!=null) {
+                _chainRule_1=_bodySegment_1.chainRule();
+              }
+              TerminologyBox _tbox_1 = null;
+              if (_chainRule_1!=null) {
+                _tbox_1=_chainRule_1.getTbox();
+              }
+              IScope _allReifiedRelationshipsScope = null;
+              if (_tbox_1!=null) {
+                _allReifiedRelationshipsScope=this._oMLScopeExtensions.allReifiedRelationshipsScope(_tbox_1);
+              }
+              scope = _allReifiedRelationshipsScope;
+            } else {
+              EReference _segmentPredicate_ReifiedRelationshipInverseTarget = TerminologiesPackage.eINSTANCE.getSegmentPredicate_ReifiedRelationshipInverseTarget();
+              boolean _equals_2 = Objects.equal(reference, _segmentPredicate_ReifiedRelationshipInverseTarget);
+              if (_equals_2) {
+                RuleBodySegment _bodySegment_2 = ((SegmentPredicate)context).getBodySegment();
+                ChainRule _chainRule_2 = null;
+                if (_bodySegment_2!=null) {
+                  _chainRule_2=_bodySegment_2.chainRule();
+                }
+                TerminologyBox _tbox_2 = null;
+                if (_chainRule_2!=null) {
+                  _tbox_2=_chainRule_2.getTbox();
+                }
+                IScope _allReifiedRelationshipsScope_1 = null;
+                if (_tbox_2!=null) {
+                  _allReifiedRelationshipsScope_1=this._oMLScopeExtensions.allReifiedRelationshipsScope(_tbox_2);
+                }
+                scope = _allReifiedRelationshipsScope_1;
+              } else {
+                EReference _segmentPredicate_ReifiedRelationshipSource = TerminologiesPackage.eINSTANCE.getSegmentPredicate_ReifiedRelationshipSource();
+                boolean _equals_3 = Objects.equal(reference, _segmentPredicate_ReifiedRelationshipSource);
+                if (_equals_3) {
+                  RuleBodySegment _bodySegment_3 = ((SegmentPredicate)context).getBodySegment();
+                  ChainRule _chainRule_3 = null;
+                  if (_bodySegment_3!=null) {
+                    _chainRule_3=_bodySegment_3.chainRule();
+                  }
+                  TerminologyBox _tbox_3 = null;
+                  if (_chainRule_3!=null) {
+                    _tbox_3=_chainRule_3.getTbox();
+                  }
+                  IScope _allReifiedRelationshipsScope_2 = null;
+                  if (_tbox_3!=null) {
+                    _allReifiedRelationshipsScope_2=this._oMLScopeExtensions.allReifiedRelationshipsScope(_tbox_3);
+                  }
+                  scope = _allReifiedRelationshipsScope_2;
+                } else {
+                  EReference _segmentPredicate_ReifiedRelationshipTarget = TerminologiesPackage.eINSTANCE.getSegmentPredicate_ReifiedRelationshipTarget();
+                  boolean _equals_4 = Objects.equal(reference, _segmentPredicate_ReifiedRelationshipTarget);
+                  if (_equals_4) {
+                    RuleBodySegment _bodySegment_4 = ((SegmentPredicate)context).getBodySegment();
+                    ChainRule _chainRule_4 = null;
+                    if (_bodySegment_4!=null) {
+                      _chainRule_4=_bodySegment_4.chainRule();
+                    }
+                    TerminologyBox _tbox_4 = null;
+                    if (_chainRule_4!=null) {
+                      _tbox_4=_chainRule_4.getTbox();
+                    }
+                    IScope _allReifiedRelationshipsScope_3 = null;
+                    if (_tbox_4!=null) {
+                      _allReifiedRelationshipsScope_3=this._oMLScopeExtensions.allReifiedRelationshipsScope(_tbox_4);
+                    }
+                    scope = _allReifiedRelationshipsScope_3;
+                  } else {
+                    EReference _segmentPredicate_UnreifiedRelationshipInverse = TerminologiesPackage.eINSTANCE.getSegmentPredicate_UnreifiedRelationshipInverse();
+                    boolean _equals_5 = Objects.equal(reference, _segmentPredicate_UnreifiedRelationshipInverse);
+                    if (_equals_5) {
+                      RuleBodySegment _bodySegment_5 = ((SegmentPredicate)context).getBodySegment();
+                      ChainRule _chainRule_5 = null;
+                      if (_bodySegment_5!=null) {
+                        _chainRule_5=_bodySegment_5.chainRule();
+                      }
+                      TerminologyBox _tbox_5 = null;
+                      if (_chainRule_5!=null) {
+                        _tbox_5=_chainRule_5.getTbox();
+                      }
+                      IScope _allUnreifiedRelationshipsScope = null;
+                      if (_tbox_5!=null) {
+                        _allUnreifiedRelationshipsScope=this._oMLScopeExtensions.allUnreifiedRelationshipsScope(_tbox_5);
+                      }
+                      scope = _allUnreifiedRelationshipsScope;
+                    }
+                  }
+                }
+              }
             }
-            TerminologyBox _tbox = null;
-            if (_chainRule!=null) {
-              _tbox=_chainRule.getTbox();
-            }
-            IScope _allConceptsScope = null;
-            if (_tbox!=null) {
-              _allConceptsScope=this._oMLScopeExtensions.allConceptsScope(_tbox);
-            }
-            scope = _allConceptsScope;
-          }
-        }
-      }
-      if (!_matched) {
-        if (context instanceof ReifiedRelationshipPredicate) {
-          _matched=true;
-          EReference _reifiedRelationshipPredicate_ReifiedRelationship = TerminologiesPackage.eINSTANCE.getReifiedRelationshipPredicate_ReifiedRelationship();
-          boolean _equals = Objects.equal(reference, _reifiedRelationshipPredicate_ReifiedRelationship);
-          if (_equals) {
-            RuleBodySegment _bodySegment = ((ReifiedRelationshipPredicate)context).getBodySegment();
-            ChainRule _chainRule = null;
-            if (_bodySegment!=null) {
-              _chainRule=_bodySegment.chainRule();
-            }
-            TerminologyBox _tbox = null;
-            if (_chainRule!=null) {
-              _tbox=_chainRule.getTbox();
-            }
-            IScope _allEntityRelationshipsScope = null;
-            if (_tbox!=null) {
-              _allEntityRelationshipsScope=this._oMLScopeExtensions.allEntityRelationshipsScope(_tbox);
-            }
-            scope = _allEntityRelationshipsScope;
-          }
-        }
-      }
-      if (!_matched) {
-        if (context instanceof ReifiedRelationshipPropertyPredicate) {
-          _matched=true;
-          EReference _reifiedRelationshipPropertyPredicate_ForwardProperty = TerminologiesPackage.eINSTANCE.getReifiedRelationshipPropertyPredicate_ForwardProperty();
-          boolean _equals = Objects.equal(reference, _reifiedRelationshipPropertyPredicate_ForwardProperty);
-          if (_equals) {
-            RuleBodySegment _bodySegment = ((ReifiedRelationshipPropertyPredicate)context).getBodySegment();
-            ChainRule _chainRule = null;
-            if (_bodySegment!=null) {
-              _chainRule=_bodySegment.chainRule();
-            }
-            TerminologyBox _tbox = null;
-            if (_chainRule!=null) {
-              _tbox=_chainRule.getTbox();
-            }
-            IScope _allForwardPropertiesScope = null;
-            if (_tbox!=null) {
-              _allForwardPropertiesScope=this._oMLScopeExtensions.allForwardPropertiesScope(_tbox);
-            }
-            scope = _allForwardPropertiesScope;
-          }
-        }
-      }
-      if (!_matched) {
-        if (context instanceof ReifiedRelationshipInversePropertyPredicate) {
-          _matched=true;
-          EReference _reifiedRelationshipInversePropertyPredicate_InverseProperty = TerminologiesPackage.eINSTANCE.getReifiedRelationshipInversePropertyPredicate_InverseProperty();
-          boolean _equals = Objects.equal(reference, _reifiedRelationshipInversePropertyPredicate_InverseProperty);
-          if (_equals) {
-            RuleBodySegment _bodySegment = ((ReifiedRelationshipInversePropertyPredicate)context).getBodySegment();
-            ChainRule _chainRule = null;
-            if (_bodySegment!=null) {
-              _chainRule=_bodySegment.chainRule();
-            }
-            TerminologyBox _tbox = null;
-            if (_chainRule!=null) {
-              _tbox=_chainRule.getTbox();
-            }
-            IScope _allInversePropertiesScope = null;
-            if (_tbox!=null) {
-              _allInversePropertiesScope=this._oMLScopeExtensions.allInversePropertiesScope(_tbox);
-            }
-            scope = _allInversePropertiesScope;
-          }
-        }
-      }
-      if (!_matched) {
-        if (context instanceof ReifiedRelationshipSourcePropertyPredicate) {
-          _matched=true;
-          EReference _reifiedRelationshipSourcePropertyPredicate_ReifiedRelationship = TerminologiesPackage.eINSTANCE.getReifiedRelationshipSourcePropertyPredicate_ReifiedRelationship();
-          boolean _equals = Objects.equal(reference, _reifiedRelationshipSourcePropertyPredicate_ReifiedRelationship);
-          if (_equals) {
-            RuleBodySegment _bodySegment = ((ReifiedRelationshipSourcePropertyPredicate)context).getBodySegment();
-            ChainRule _chainRule = null;
-            if (_bodySegment!=null) {
-              _chainRule=_bodySegment.chainRule();
-            }
-            TerminologyBox _tbox = null;
-            if (_chainRule!=null) {
-              _tbox=_chainRule.getTbox();
-            }
-            IScope _allEntityRelationshipsScope = null;
-            if (_tbox!=null) {
-              _allEntityRelationshipsScope=this._oMLScopeExtensions.allEntityRelationshipsScope(_tbox);
-            }
-            scope = _allEntityRelationshipsScope;
-          }
-        }
-      }
-      if (!_matched) {
-        if (context instanceof ReifiedRelationshipSourceInversePropertyPredicate) {
-          _matched=true;
-          EReference _reifiedRelationshipSourceInversePropertyPredicate_ReifiedRelationship = TerminologiesPackage.eINSTANCE.getReifiedRelationshipSourceInversePropertyPredicate_ReifiedRelationship();
-          boolean _equals = Objects.equal(reference, _reifiedRelationshipSourceInversePropertyPredicate_ReifiedRelationship);
-          if (_equals) {
-            RuleBodySegment _bodySegment = ((ReifiedRelationshipSourceInversePropertyPredicate)context).getBodySegment();
-            ChainRule _chainRule = null;
-            if (_bodySegment!=null) {
-              _chainRule=_bodySegment.chainRule();
-            }
-            TerminologyBox _tbox = null;
-            if (_chainRule!=null) {
-              _tbox=_chainRule.getTbox();
-            }
-            IScope _allEntityRelationshipsScope = null;
-            if (_tbox!=null) {
-              _allEntityRelationshipsScope=this._oMLScopeExtensions.allEntityRelationshipsScope(_tbox);
-            }
-            scope = _allEntityRelationshipsScope;
-          }
-        }
-      }
-      if (!_matched) {
-        if (context instanceof ReifiedRelationshipTargetPropertyPredicate) {
-          _matched=true;
-          EReference _reifiedRelationshipTargetPropertyPredicate_ReifiedRelationship = TerminologiesPackage.eINSTANCE.getReifiedRelationshipTargetPropertyPredicate_ReifiedRelationship();
-          boolean _equals = Objects.equal(reference, _reifiedRelationshipTargetPropertyPredicate_ReifiedRelationship);
-          if (_equals) {
-            RuleBodySegment _bodySegment = ((ReifiedRelationshipTargetPropertyPredicate)context).getBodySegment();
-            ChainRule _chainRule = null;
-            if (_bodySegment!=null) {
-              _chainRule=_bodySegment.chainRule();
-            }
-            TerminologyBox _tbox = null;
-            if (_chainRule!=null) {
-              _tbox=_chainRule.getTbox();
-            }
-            IScope _allEntityRelationshipsScope = null;
-            if (_tbox!=null) {
-              _allEntityRelationshipsScope=this._oMLScopeExtensions.allEntityRelationshipsScope(_tbox);
-            }
-            scope = _allEntityRelationshipsScope;
-          }
-        }
-      }
-      if (!_matched) {
-        if (context instanceof ReifiedRelationshipTargetInversePropertyPredicate) {
-          _matched=true;
-          EReference _reifiedRelationshipTargetInversePropertyPredicate_ReifiedRelationship = TerminologiesPackage.eINSTANCE.getReifiedRelationshipTargetInversePropertyPredicate_ReifiedRelationship();
-          boolean _equals = Objects.equal(reference, _reifiedRelationshipTargetInversePropertyPredicate_ReifiedRelationship);
-          if (_equals) {
-            RuleBodySegment _bodySegment = ((ReifiedRelationshipTargetInversePropertyPredicate)context).getBodySegment();
-            ChainRule _chainRule = null;
-            if (_bodySegment!=null) {
-              _chainRule=_bodySegment.chainRule();
-            }
-            TerminologyBox _tbox = null;
-            if (_chainRule!=null) {
-              _tbox=_chainRule.getTbox();
-            }
-            IScope _allEntityRelationshipsScope = null;
-            if (_tbox!=null) {
-              _allEntityRelationshipsScope=this._oMLScopeExtensions.allEntityRelationshipsScope(_tbox);
-            }
-            scope = _allEntityRelationshipsScope;
-          }
-        }
-      }
-      if (!_matched) {
-        if (context instanceof UnreifiedRelationshipPropertyPredicate) {
-          _matched=true;
-          EReference _unreifiedRelationshipPropertyPredicate_UnreifiedRelationship = TerminologiesPackage.eINSTANCE.getUnreifiedRelationshipPropertyPredicate_UnreifiedRelationship();
-          boolean _equals = Objects.equal(reference, _unreifiedRelationshipPropertyPredicate_UnreifiedRelationship);
-          if (_equals) {
-            RuleBodySegment _bodySegment = ((UnreifiedRelationshipPropertyPredicate)context).getBodySegment();
-            ChainRule _chainRule = null;
-            if (_bodySegment!=null) {
-              _chainRule=_bodySegment.chainRule();
-            }
-            TerminologyBox _tbox = null;
-            if (_chainRule!=null) {
-              _tbox=_chainRule.getTbox();
-            }
-            IScope _allEntityRelationshipsScope = null;
-            if (_tbox!=null) {
-              _allEntityRelationshipsScope=this._oMLScopeExtensions.allEntityRelationshipsScope(_tbox);
-            }
-            scope = _allEntityRelationshipsScope;
-          }
-        }
-      }
-      if (!_matched) {
-        if (context instanceof UnreifiedRelationshipInversePropertyPredicate) {
-          _matched=true;
-          EReference _unreifiedRelationshipInversePropertyPredicate_UnreifiedRelationship = TerminologiesPackage.eINSTANCE.getUnreifiedRelationshipInversePropertyPredicate_UnreifiedRelationship();
-          boolean _equals = Objects.equal(reference, _unreifiedRelationshipInversePropertyPredicate_UnreifiedRelationship);
-          if (_equals) {
-            RuleBodySegment _bodySegment = ((UnreifiedRelationshipInversePropertyPredicate)context).getBodySegment();
-            ChainRule _chainRule = null;
-            if (_bodySegment!=null) {
-              _chainRule=_bodySegment.chainRule();
-            }
-            TerminologyBox _tbox = null;
-            if (_chainRule!=null) {
-              _tbox=_chainRule.getTbox();
-            }
-            IScope _allEntityRelationshipsScope = null;
-            if (_tbox!=null) {
-              _allEntityRelationshipsScope=this._oMLScopeExtensions.allEntityRelationshipsScope(_tbox);
-            }
-            scope = _allEntityRelationshipsScope;
-          }
-        }
-      }
-      if (!_matched) {
-        if (context instanceof EntityForwardReifiedRestrictionAxiom) {
-          _matched=true;
-          EReference _entityForwardReifiedRestrictionAxiom_ForwardProperty = TerminologiesPackage.eINSTANCE.getEntityForwardReifiedRestrictionAxiom_ForwardProperty();
-          boolean _equals = Objects.equal(reference, _entityForwardReifiedRestrictionAxiom_ForwardProperty);
-          if (_equals) {
-            scope = this._oMLScopeExtensions.allForwardPropertiesScope(((EntityForwardReifiedRestrictionAxiom)context).getTbox());
-          }
-        }
-      }
-      if (!_matched) {
-        if (context instanceof EntityInverseReifiedRestrictionAxiom) {
-          _matched=true;
-          EReference _entityInverseReifiedRestrictionAxiom_InverseProperty = TerminologiesPackage.eINSTANCE.getEntityInverseReifiedRestrictionAxiom_InverseProperty();
-          boolean _equals = Objects.equal(reference, _entityInverseReifiedRestrictionAxiom_InverseProperty);
-          if (_equals) {
-            scope = this._oMLScopeExtensions.allInversePropertiesScope(((EntityInverseReifiedRestrictionAxiom)context).getTbox());
-          }
-        }
-      }
-      if (!_matched) {
-        if (context instanceof EntityUnreifiedRestrictionAxiom) {
-          _matched=true;
-          EOperation _entityUnreifiedRestrictionAxiom__RestrictedRelation = TerminologiesPackage.eINSTANCE.getEntityUnreifiedRestrictionAxiom__RestrictedRelation();
-          boolean _equals = Objects.equal(reference, _entityUnreifiedRestrictionAxiom__RestrictedRelation);
-          if (_equals) {
-            scope = this._oMLScopeExtensions.allUnreifiedRelationshipsScope(((EntityUnreifiedRestrictionAxiom)context).getTbox());
           }
         }
       }
       if (!_matched) {
         if (context instanceof EntityRestrictionAxiom) {
           _matched=true;
-          EReference _entityRestrictionAxiom_RestrictedDomain = TerminologiesPackage.eINSTANCE.getEntityRestrictionAxiom_RestrictedDomain();
-          boolean _equals = Objects.equal(reference, _entityRestrictionAxiom_RestrictedDomain);
+          EReference _entityRestrictionAxiom_RestrictedRelationship = TerminologiesPackage.eINSTANCE.getEntityRestrictionAxiom_RestrictedRelationship();
+          boolean _equals = Objects.equal(reference, _entityRestrictionAxiom_RestrictedRelationship);
           if (_equals) {
-            scope = this._oMLScopeExtensions.allEntitiesScope(((EntityRestrictionAxiom)context).getTbox());
+            scope = this._oMLScopeExtensions.allRestrictableRelationshipsScope(((EntityRestrictionAxiom)context).getTbox());
           } else {
-            EReference _entityRestrictionAxiom_RestrictedRange = TerminologiesPackage.eINSTANCE.getEntityRestrictionAxiom_RestrictedRange();
-            boolean _equals_1 = Objects.equal(reference, _entityRestrictionAxiom_RestrictedRange);
+            EReference _entityRestrictionAxiom_RestrictedDomain = TerminologiesPackage.eINSTANCE.getEntityRestrictionAxiom_RestrictedDomain();
+            boolean _equals_1 = Objects.equal(reference, _entityRestrictionAxiom_RestrictedDomain);
             if (_equals_1) {
               scope = this._oMLScopeExtensions.allEntitiesScope(((EntityRestrictionAxiom)context).getTbox());
+            } else {
+              EReference _entityRestrictionAxiom_RestrictedRange = TerminologiesPackage.eINSTANCE.getEntityRestrictionAxiom_RestrictedRange();
+              boolean _equals_2 = Objects.equal(reference, _entityRestrictionAxiom_RestrictedRange);
+              if (_equals_2) {
+                scope = this._oMLScopeExtensions.allEntitiesScope(((EntityRestrictionAxiom)context).getTbox());
+              }
             }
           }
         }

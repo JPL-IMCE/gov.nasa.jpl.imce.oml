@@ -18,12 +18,16 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies;
 
-import gov.nasa.jpl.imce.oml.model.common.Resource;
 
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Inverse Property</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * An OML InverseProperty is an optional part of an OML ReifiedRelationship.
+ * If defined, it corresponds to the inverse of the OML ReifiedRelationship's OML ForwardProperty.
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
@@ -37,7 +41,7 @@ import gov.nasa.jpl.imce.oml.model.common.Resource;
  * @model
  * @generated
  */
-public interface InverseProperty extends Resource {
+public interface InverseProperty extends RestrictableRelationship {
 	/**
 	 * Returns the value of the '<em><b>Reified Relationship</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship#getInverseProperty <em>Inverse Property</em>}'.
@@ -129,5 +133,14 @@ public interface InverseProperty extends Resource {
 	 * @generated
 	 */
 	String uuid();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false" required="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return this.getReifiedRelationship();'"
+	 * @generated
+	 */
+	EntityRelationship relation();
 
 } // InverseProperty

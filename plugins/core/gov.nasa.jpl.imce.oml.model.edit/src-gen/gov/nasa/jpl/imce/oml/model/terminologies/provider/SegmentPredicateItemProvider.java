@@ -64,6 +64,12 @@ public class SegmentPredicateItemProvider extends ElementCrossReferenceTupleItem
 			super.getPropertyDescriptors(object);
 
 			addBodySegmentPropertyDescriptor(object);
+			addPredicatePropertyDescriptor(object);
+			addReifiedRelationshipSourcePropertyDescriptor(object);
+			addReifiedRelationshipInverseSourcePropertyDescriptor(object);
+			addReifiedRelationshipTargetPropertyDescriptor(object);
+			addReifiedRelationshipInverseTargetPropertyDescriptor(object);
+			addUnreifiedRelationshipInversePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -88,6 +94,149 @@ public class SegmentPredicateItemProvider extends ElementCrossReferenceTupleItem
 				 null,
 				 null,
 				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Predicate feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addPredicatePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SegmentPredicate_predicate_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SegmentPredicate_predicate_feature", "_UI_SegmentPredicate_type"),
+				 TerminologiesPackage.Literals.SEGMENT_PREDICATE__PREDICATE,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Reified Relationship Source feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addReifiedRelationshipSourcePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SegmentPredicate_reifiedRelationshipSource_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SegmentPredicate_reifiedRelationshipSource_feature", "_UI_SegmentPredicate_type"),
+				 TerminologiesPackage.Literals.SEGMENT_PREDICATE__REIFIED_RELATIONSHIP_SOURCE,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Reified Relationship Inverse Source feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addReifiedRelationshipInverseSourcePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SegmentPredicate_reifiedRelationshipInverseSource_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SegmentPredicate_reifiedRelationshipInverseSource_feature", "_UI_SegmentPredicate_type"),
+				 TerminologiesPackage.Literals.SEGMENT_PREDICATE__REIFIED_RELATIONSHIP_INVERSE_SOURCE,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Reified Relationship Target feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addReifiedRelationshipTargetPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SegmentPredicate_reifiedRelationshipTarget_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SegmentPredicate_reifiedRelationshipTarget_feature", "_UI_SegmentPredicate_type"),
+				 TerminologiesPackage.Literals.SEGMENT_PREDICATE__REIFIED_RELATIONSHIP_TARGET,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Reified Relationship Inverse Target feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addReifiedRelationshipInverseTargetPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SegmentPredicate_reifiedRelationshipInverseTarget_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SegmentPredicate_reifiedRelationshipInverseTarget_feature", "_UI_SegmentPredicate_type"),
+				 TerminologiesPackage.Literals.SEGMENT_PREDICATE__REIFIED_RELATIONSHIP_INVERSE_TARGET,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Unreified Relationship Inverse feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addUnreifiedRelationshipInversePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SegmentPredicate_unreifiedRelationshipInverse_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SegmentPredicate_unreifiedRelationshipInverse_feature", "_UI_SegmentPredicate_type"),
+				 TerminologiesPackage.Literals.SEGMENT_PREDICATE__UNREIFIED_RELATIONSHIP_INVERSE,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This returns SegmentPredicate.gif.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object getImage(Object object) {
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/SegmentPredicate"));
 	}
 
 	/**

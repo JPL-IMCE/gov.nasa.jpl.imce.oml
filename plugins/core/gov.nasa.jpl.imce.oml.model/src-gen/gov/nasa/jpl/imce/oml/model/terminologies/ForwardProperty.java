@@ -18,12 +18,16 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies;
 
-import gov.nasa.jpl.imce.oml.model.common.Resource;
 
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Forward Property</b></em>'.
  * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * An OML ForwardProperty is an essential part of an OML ReifiedRelationship.
+ * An OML ForwardProperty defines the unreified relationship from the OML ReifiedRelationship's domain to its range.
+ * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
@@ -37,7 +41,7 @@ import gov.nasa.jpl.imce.oml.model.common.Resource;
  * @model
  * @generated
  */
-public interface ForwardProperty extends Resource {
+public interface ForwardProperty extends RestrictableRelationship {
 	/**
 	 * Returns the value of the '<em><b>Reified Relationship</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship#getForwardProperty <em>Forward Property</em>}'.
@@ -129,5 +133,14 @@ public interface ForwardProperty extends Resource {
 	 * @generated
 	 */
 	String uuid();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false" required="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return this.getReifiedRelationship();'"
+	 * @generated
+	 */
+	EntityRelationship relation();
 
 } // ForwardProperty

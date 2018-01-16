@@ -77,6 +77,9 @@ public class OMLRuleTest4 {
       _builder.append("unreified=p");
       _builder.newLine();
       _builder.append("\t\t");
+      _builder.append("inverse=fromP");
+      _builder.newLine();
+      _builder.append("\t\t");
       _builder.append("source=A");
       _builder.newLine();
       _builder.append("\t\t");
@@ -130,11 +133,11 @@ public class OMLRuleTest4 {
       _builder.append("\t");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("rule pqr infers Foo:r if aspect(Foo:A) && reifiedRelationship(Foo:P) && concept(Foo:B) && inv(Foo:q)");
+      _builder.append("rule pqr infers Foo:r if Foo:A && Foo:p && Foo:B && inv(Foo:q)");
       _builder.newLine();
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("rule psr infers Foo:r if aspect(Foo:A) && inv(source(Foo:P)) && reifiedRelationship(Foo:P) && Foo:s");
+      _builder.append("rule psr infers Foo:r if Foo:A && Foo:fromP && Foo:P && Foo:s");
       _builder.newLine();
       _builder.newLine();
       _builder.append("}");

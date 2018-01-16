@@ -25,7 +25,10 @@ import gov.nasa.jpl.imce.oml.model.datatypes.PatternValue;
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyGraph;
 import gov.nasa.jpl.imce.oml.model.terminologies.BinaryScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.Entity;
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship;
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityRestrictionAxiom;
+import gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction;
@@ -44,6 +47,7 @@ import gov.nasa.jpl.imce.oml.model.terminologies.TimeScalarRestriction;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
@@ -353,5 +357,37 @@ public class TerminologyDiagramService {
       _xblockexpression = label.toString();
     }
     return _xblockexpression;
+  }
+  
+  /**
+   * Gets the label for the given {@link EntityRestrictionAxiom}
+   * 
+   * @param e The {@link EntityRestrictionAxiom}
+   * @return EntityRestrictionAxiom label
+   */
+  public String getAxiomLabel(final EntityRestrictionAxiom ax) {
+    String _switchResult = null;
+    boolean _matched = false;
+    if (ax instanceof EntityExistentialRestrictionAxiom) {
+      _matched=true;
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("some ");
+      String _abbrevIRI = ((EntityExistentialRestrictionAxiom)ax).restrictedRelation().abbrevIRI();
+      _builder.append(_abbrevIRI);
+      _builder.append(" in");
+      _switchResult = _builder.toString();
+    }
+    if (!_matched) {
+      if (ax instanceof EntityUniversalRestrictionAxiom) {
+        _matched=true;
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("all ");
+        String _abbrevIRI = ((EntityUniversalRestrictionAxiom)ax).restrictedRelation().abbrevIRI();
+        _builder.append(_abbrevIRI);
+        _builder.append(" in");
+        _switchResult = _builder.toString();
+      }
+    }
+    return _switchResult;
   }
 }

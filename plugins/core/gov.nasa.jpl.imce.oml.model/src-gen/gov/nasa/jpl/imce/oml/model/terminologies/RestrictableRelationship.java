@@ -18,32 +18,42 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies;
 
+import gov.nasa.jpl.imce.oml.model.common.Resource;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Entity</b></em>'.
+ * A representation of the model object '<em><b>Restrictable Relationship</b></em>'.
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * An OML Entity is an abstraction for an OML Term
- * that is either an OML UnaryTermKind or
- * an OML DirectedBinaryRelationshipKind whose subject
- * and range are both a kind of OML Entity.
+ * An OML RestrictableRelationship is either an OML ForwardProperty,
+ * an OML InverseProperty or an OML UnreifiedRelationship.
+ * An OML RestrictableRelationship serves as an abstraction for the different kinds
+ * of relationships that can be restricted via an OML EntityRestrictionAxiom
+ * and that can be involved in an OML SegmentPredicate for an OML ChainRule.
  * <!-- end-model-doc -->
  *
  *
- * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getEntity()
+ * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getRestrictableRelationship()
  * @model abstract="true"
  * @generated
  */
-public interface Entity extends Term, Predicate {
+public interface RestrictableRelationship extends Resource, Predicate {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return this;'"
+	 * @generated
+	 */
+	EntityRelationship relation();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false" required="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return this.relation();'"
 	 * @generated
 	 */
 	Term term();
 
-} // Entity
+} // RestrictableRelationship

@@ -238,32 +238,12 @@ public class TerminologyBoxItemProvider extends ModuleItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(TerminologiesPackage.Literals.TERMINOLOGY_BOX__BOX_STATEMENTS,
-				 TerminologiesFactory.eINSTANCE.createEntityExistentialForwardReifiedRestrictionAxiom()));
+				 TerminologiesFactory.eINSTANCE.createEntityExistentialRestrictionAxiom()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(TerminologiesPackage.Literals.TERMINOLOGY_BOX__BOX_STATEMENTS,
-				 TerminologiesFactory.eINSTANCE.createEntityExistentialInverseReifiedRestrictionAxiom()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(TerminologiesPackage.Literals.TERMINOLOGY_BOX__BOX_STATEMENTS,
-				 TerminologiesFactory.eINSTANCE.createEntityExistentialUnreifiedRestrictionAxiom()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(TerminologiesPackage.Literals.TERMINOLOGY_BOX__BOX_STATEMENTS,
-				 TerminologiesFactory.eINSTANCE.createEntityUniversalForwardReifiedRestrictionAxiom()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(TerminologiesPackage.Literals.TERMINOLOGY_BOX__BOX_STATEMENTS,
-				 TerminologiesFactory.eINSTANCE.createEntityUniversalInverseReifiedRestrictionAxiom()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(TerminologiesPackage.Literals.TERMINOLOGY_BOX__BOX_STATEMENTS,
-				 TerminologiesFactory.eINSTANCE.createEntityUniversalUnreifiedRestrictionAxiom()));
+				 TerminologiesFactory.eINSTANCE.createEntityUniversalRestrictionAxiom()));
 
 		newChildDescriptors.add
 			(createChildParameter

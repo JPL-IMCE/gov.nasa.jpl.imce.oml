@@ -27,7 +27,6 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
@@ -59,6 +58,7 @@ public class EntityRestrictionAxiomItemProvider extends TermAxiomItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addRestrictedRelationshipPropertyDescriptor(object);
 			addRestrictedRangePropertyDescriptor(object);
 			addRestrictedDomainPropertyDescriptor(object);
 		}
@@ -66,19 +66,19 @@ public class EntityRestrictionAxiomItemProvider extends TermAxiomItemProvider {
 	}
 
 	/**
-	 * This adds a property descriptor for the Restricted Range feature.
+	 * This adds a property descriptor for the Restricted Relationship feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addRestrictedRangePropertyDescriptor(Object object) {
+	protected void addRestrictedRelationshipPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_EntityRestrictionAxiom_restrictedRange_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_EntityRestrictionAxiom_restrictedRange_feature", "_UI_EntityRestrictionAxiom_type"),
-				 TerminologiesPackage.Literals.ENTITY_RESTRICTION_AXIOM__RESTRICTED_RANGE,
+				 getString("_UI_EntityRestrictionAxiom_restrictedRelationship_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_EntityRestrictionAxiom_restrictedRelationship_feature", "_UI_EntityRestrictionAxiom_type"),
+				 TerminologiesPackage.Literals.ENTITY_RESTRICTION_AXIOM__RESTRICTED_RELATIONSHIP,
 				 true,
 				 false,
 				 true,
@@ -101,6 +101,28 @@ public class EntityRestrictionAxiomItemProvider extends TermAxiomItemProvider {
 				 getString("_UI_EntityRestrictionAxiom_restrictedDomain_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_EntityRestrictionAxiom_restrictedDomain_feature", "_UI_EntityRestrictionAxiom_type"),
 				 TerminologiesPackage.Literals.ENTITY_RESTRICTION_AXIOM__RESTRICTED_DOMAIN,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Restricted Range feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRestrictedRangePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_EntityRestrictionAxiom_restrictedRange_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_EntityRestrictionAxiom_restrictedRange_feature", "_UI_EntityRestrictionAxiom_type"),
+				 TerminologiesPackage.Literals.ENTITY_RESTRICTION_AXIOM__RESTRICTED_RANGE,
 				 true,
 				 false,
 				 true,

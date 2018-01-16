@@ -19,7 +19,11 @@
 package gov.nasa.jpl.imce.oml.model.terminologies.provider;
 
 
-import gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialRestrictionAxiom;
+import gov.nasa.jpl.imce.oml.model.common.provider.ResourceItemProvider;
+
+import gov.nasa.jpl.imce.oml.model.edit.provider.OMLEditPlugin;
+
+import gov.nasa.jpl.imce.oml.model.terminologies.RestrictableRelationship;
 
 import java.util.Collection;
 import java.util.List;
@@ -27,22 +31,24 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.ResourceLocator;
+
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
 /**
- * This is the item provider adapter for a {@link gov.nasa.jpl.imce.oml.model.terminologies.EntityExistentialRestrictionAxiom} object.
+ * This is the item provider adapter for a {@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictableRelationship} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class EntityExistentialRestrictionAxiomItemProvider extends EntityRestrictionAxiomItemProvider {
+public class RestrictableRelationshipItemProvider extends ResourceItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EntityExistentialRestrictionAxiomItemProvider(AdapterFactory adapterFactory) {
+	public RestrictableRelationshipItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -62,17 +68,6 @@ public class EntityExistentialRestrictionAxiomItemProvider extends EntityRestric
 	}
 
 	/**
-	 * This returns EntityExistentialRestrictionAxiom.gif.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/EntityExistentialRestrictionAxiom"));
-	}
-
-	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -80,10 +75,10 @@ public class EntityExistentialRestrictionAxiomItemProvider extends EntityRestric
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((EntityExistentialRestrictionAxiom)object).getUuid();
+		String label = ((RestrictableRelationship)object).getUuid();
 		return label == null || label.length() == 0 ?
-			getString("_UI_EntityExistentialRestrictionAxiom_type") :
-			getString("_UI_EntityExistentialRestrictionAxiom_type") + " " + label;
+			getString("_UI_RestrictableRelationship_type") :
+			getString("_UI_RestrictableRelationship_type") + " " + label;
 	}
 	
 
@@ -110,6 +105,17 @@ public class EntityExistentialRestrictionAxiomItemProvider extends EntityRestric
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+	}
+
+	/**
+	 * Return the resource locator for this item provider's resources.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ResourceLocator getResourceLocator() {
+		return OMLEditPlugin.INSTANCE;
 	}
 
 }

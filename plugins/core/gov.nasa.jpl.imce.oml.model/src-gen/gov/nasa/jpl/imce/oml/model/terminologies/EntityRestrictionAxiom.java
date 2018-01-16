@@ -37,6 +37,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityRestrictionAxiom#getRestrictedRelationship <em>Restricted Relationship</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityRestrictionAxiom#getRestrictedRange <em>Restricted Range</em>}</li>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityRestrictionAxiom#getRestrictedDomain <em>Restricted Domain</em>}</li>
  * </ul>
@@ -46,6 +47,32 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface EntityRestrictionAxiom extends TermAxiom, ElementCrossReferenceTuple {
+	/**
+	 * Returns the value of the '<em><b>Restricted Relationship</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Restricted Relationship</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Restricted Relationship</em>' reference.
+	 * @see #setRestrictedRelationship(RestrictableRelationship)
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getEntityRestrictionAxiom_RestrictedRelationship()
+	 * @model required="true"
+	 * @generated
+	 */
+	RestrictableRelationship getRestrictedRelationship();
+
+	/**
+	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityRestrictionAxiom#getRestrictedRelationship <em>Restricted Relationship</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Restricted Relationship</em>' reference.
+	 * @see #getRestrictedRelationship()
+	 * @generated
+	 */
+	void setRestrictedRelationship(RestrictableRelationship value);
+
 	/**
 	 * Returns the value of the '<em><b>Restricted Range</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -101,14 +128,6 @@ public interface EntityRestrictionAxiom extends TermAxiom, ElementCrossReference
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model unique="false" required="true"
-	 * @generated
-	 */
-	EntityRelationship restrictedRelation();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @model unique="false"
 	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='scala.collection.immutable.Set.empty[resolver.api.LogicalElement]'"
 	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
@@ -116,5 +135,14 @@ public interface EntityRestrictionAxiom extends TermAxiom, ElementCrossReference
 	 * @generated
 	 */
 	EList<LogicalElement> allNestedElements();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false" required="true"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%gov.nasa.jpl.imce.oml.model.terminologies.RestrictableRelationship%&gt; _restrictedRelationship = this.getRestrictedRelationship();\n&lt;%gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship%&gt; _relation = null;\nif (_restrictedRelationship!=null)\n{\n\t_relation=_restrictedRelationship.relation();\n}\nreturn _relation;'"
+	 * @generated
+	 */
+	EntityRelationship restrictedRelation();
 
 } // EntityRestrictionAxiom

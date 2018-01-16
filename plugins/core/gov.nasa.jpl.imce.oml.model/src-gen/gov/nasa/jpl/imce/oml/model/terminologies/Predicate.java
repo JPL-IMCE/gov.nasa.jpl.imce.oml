@@ -18,32 +18,25 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies;
 
+import gov.nasa.jpl.imce.oml.model.common.Resource;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Entity</b></em>'.
+ * A representation of the model object '<em><b>Predicate</b></em>'.
  * <!-- end-user-doc -->
  *
- * <!-- begin-model-doc -->
- * An OML Entity is an abstraction for an OML Term
- * that is either an OML UnaryTermKind or
- * an OML DirectedBinaryRelationshipKind whose subject
- * and range are both a kind of OML Entity.
- * <!-- end-model-doc -->
  *
- *
- * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getEntity()
+ * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getPredicate()
  * @model abstract="true"
  * @generated
  */
-public interface Entity extends Term, Predicate {
+public interface Predicate extends Resource {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return this;'"
 	 * @generated
 	 */
 	Term term();
 
-} // Entity
+} // Predicate

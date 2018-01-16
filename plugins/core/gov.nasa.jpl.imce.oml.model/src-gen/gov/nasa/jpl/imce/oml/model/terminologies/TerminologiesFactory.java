@@ -173,157 +173,31 @@ public interface TerminologiesFactory extends EFactory {
 	RuleBodySegment createRuleBodySegment();
 
 	/**
-	 * Returns a new object of class '<em>Aspect Predicate</em>'.
+	 * Returns a new object of class '<em>Segment Predicate</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Aspect Predicate</em>'.
+	 * @return a new object of class '<em>Segment Predicate</em>'.
 	 * @generated
 	 */
-	AspectPredicate createAspectPredicate();
+	SegmentPredicate createSegmentPredicate();
 
 	/**
-	 * Returns a new object of class '<em>Concept Predicate</em>'.
+	 * Returns a new object of class '<em>Entity Existential Restriction Axiom</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Concept Predicate</em>'.
+	 * @return a new object of class '<em>Entity Existential Restriction Axiom</em>'.
 	 * @generated
 	 */
-	ConceptPredicate createConceptPredicate();
+	EntityExistentialRestrictionAxiom createEntityExistentialRestrictionAxiom();
 
 	/**
-	 * Returns a new object of class '<em>Reified Relationship Predicate</em>'.
+	 * Returns a new object of class '<em>Entity Universal Restriction Axiom</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Reified Relationship Predicate</em>'.
+	 * @return a new object of class '<em>Entity Universal Restriction Axiom</em>'.
 	 * @generated
 	 */
-	ReifiedRelationshipPredicate createReifiedRelationshipPredicate();
-
-	/**
-	 * Returns a new object of class '<em>Reified Relationship Property Predicate</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Reified Relationship Property Predicate</em>'.
-	 * @generated
-	 */
-	ReifiedRelationshipPropertyPredicate createReifiedRelationshipPropertyPredicate();
-
-	/**
-	 * Returns a new object of class '<em>Reified Relationship Inverse Property Predicate</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Reified Relationship Inverse Property Predicate</em>'.
-	 * @generated
-	 */
-	ReifiedRelationshipInversePropertyPredicate createReifiedRelationshipInversePropertyPredicate();
-
-	/**
-	 * Returns a new object of class '<em>Reified Relationship Source Property Predicate</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Reified Relationship Source Property Predicate</em>'.
-	 * @generated
-	 */
-	ReifiedRelationshipSourcePropertyPredicate createReifiedRelationshipSourcePropertyPredicate();
-
-	/**
-	 * Returns a new object of class '<em>Reified Relationship Source Inverse Property Predicate</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Reified Relationship Source Inverse Property Predicate</em>'.
-	 * @generated
-	 */
-	ReifiedRelationshipSourceInversePropertyPredicate createReifiedRelationshipSourceInversePropertyPredicate();
-
-	/**
-	 * Returns a new object of class '<em>Reified Relationship Target Property Predicate</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Reified Relationship Target Property Predicate</em>'.
-	 * @generated
-	 */
-	ReifiedRelationshipTargetPropertyPredicate createReifiedRelationshipTargetPropertyPredicate();
-
-	/**
-	 * Returns a new object of class '<em>Reified Relationship Target Inverse Property Predicate</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Reified Relationship Target Inverse Property Predicate</em>'.
-	 * @generated
-	 */
-	ReifiedRelationshipTargetInversePropertyPredicate createReifiedRelationshipTargetInversePropertyPredicate();
-
-	/**
-	 * Returns a new object of class '<em>Unreified Relationship Property Predicate</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Unreified Relationship Property Predicate</em>'.
-	 * @generated
-	 */
-	UnreifiedRelationshipPropertyPredicate createUnreifiedRelationshipPropertyPredicate();
-
-	/**
-	 * Returns a new object of class '<em>Unreified Relationship Inverse Property Predicate</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Unreified Relationship Inverse Property Predicate</em>'.
-	 * @generated
-	 */
-	UnreifiedRelationshipInversePropertyPredicate createUnreifiedRelationshipInversePropertyPredicate();
-
-	/**
-	 * Returns a new object of class '<em>Entity Existential Forward Reified Restriction Axiom</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Entity Existential Forward Reified Restriction Axiom</em>'.
-	 * @generated
-	 */
-	EntityExistentialForwardReifiedRestrictionAxiom createEntityExistentialForwardReifiedRestrictionAxiom();
-
-	/**
-	 * Returns a new object of class '<em>Entity Existential Inverse Reified Restriction Axiom</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Entity Existential Inverse Reified Restriction Axiom</em>'.
-	 * @generated
-	 */
-	EntityExistentialInverseReifiedRestrictionAxiom createEntityExistentialInverseReifiedRestrictionAxiom();
-
-	/**
-	 * Returns a new object of class '<em>Entity Existential Unreified Restriction Axiom</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Entity Existential Unreified Restriction Axiom</em>'.
-	 * @generated
-	 */
-	EntityExistentialUnreifiedRestrictionAxiom createEntityExistentialUnreifiedRestrictionAxiom();
-
-	/**
-	 * Returns a new object of class '<em>Entity Universal Forward Reified Restriction Axiom</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Entity Universal Forward Reified Restriction Axiom</em>'.
-	 * @generated
-	 */
-	EntityUniversalForwardReifiedRestrictionAxiom createEntityUniversalForwardReifiedRestrictionAxiom();
-
-	/**
-	 * Returns a new object of class '<em>Entity Universal Inverse Reified Restriction Axiom</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Entity Universal Inverse Reified Restriction Axiom</em>'.
-	 * @generated
-	 */
-	EntityUniversalInverseReifiedRestrictionAxiom createEntityUniversalInverseReifiedRestrictionAxiom();
-
-	/**
-	 * Returns a new object of class '<em>Entity Universal Unreified Restriction Axiom</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Entity Universal Unreified Restriction Axiom</em>'.
-	 * @generated
-	 */
-	EntityUniversalUnreifiedRestrictionAxiom createEntityUniversalUnreifiedRestrictionAxiom();
+	EntityUniversalRestrictionAxiom createEntityUniversalRestrictionAxiom();
 
 	/**
 	 * Returns a new object of class '<em>Aspect Specialization Axiom</em>'.

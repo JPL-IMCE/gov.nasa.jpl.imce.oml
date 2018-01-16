@@ -20,6 +20,7 @@ package gov.nasa.jpl.imce.oml.model.terminologies.provider;
 
 
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityUniversalRestrictionAxiom;
+
 import java.util.Collection;
 import java.util.List;
 
@@ -58,6 +59,17 @@ public class EntityUniversalRestrictionAxiomItemProvider extends EntityRestricti
 
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This returns EntityUniversalRestrictionAxiom.gif.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object getImage(Object object) {
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/EntityUniversalRestrictionAxiom"));
 	}
 
 	/**

@@ -18,13 +18,21 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies.impl;
 
+import gov.nasa.jpl.imce.oml.model.terminologies.ConceptualEntity;
+import gov.nasa.jpl.imce.oml.model.terminologies.Entity;
 import gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty;
+import gov.nasa.jpl.imce.oml.model.terminologies.Predicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship;
+import gov.nasa.jpl.imce.oml.model.terminologies.Term;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage;
+
+import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -176,6 +184,15 @@ public class ReifiedRelationshipImpl extends EntityRelationshipImpl implements R
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Term term() {
+		return this;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -273,6 +290,47 @@ public class ReifiedRelationshipImpl extends EntityRelationshipImpl implements R
 				return inverseProperty != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
+		if (baseClass == Predicate.class) {
+			switch (baseOperationID) {
+				case TerminologiesPackage.PREDICATE___TERM: return TerminologiesPackage.REIFIED_RELATIONSHIP___TERM;
+				default: return -1;
+			}
+		}
+		if (baseClass == Entity.class) {
+			switch (baseOperationID) {
+				case TerminologiesPackage.ENTITY___TERM: return TerminologiesPackage.REIFIED_RELATIONSHIP___TERM;
+				default: return -1;
+			}
+		}
+		if (baseClass == ConceptualEntity.class) {
+			switch (baseOperationID) {
+				default: return -1;
+			}
+		}
+		return super.eDerivedOperationID(baseOperationID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case TerminologiesPackage.REIFIED_RELATIONSHIP___TERM:
+				return term();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 } //ReifiedRelationshipImpl
