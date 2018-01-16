@@ -18,6 +18,7 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies;
 
+import gov.nasa.jpl.imce.oml.model.common.Module;
 
 /**
  * <!-- begin-user-doc -->
@@ -100,7 +101,7 @@ public interface ForwardProperty extends RestrictableRelationship {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model dataType="gov.nasa.jpl.imce.oml.model.common.IRI" unique="false"
-	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='extent.terminologyBoxOfTerminologyBoxStatement.get(this).flatMap(tbox =&gt; tbox.iri().map(i =&gt;  gov.nasa.jpl.imce.oml.tables.taggedTypes.iri(i + \"#\" + name)))'"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='extent\n\t    .terminologyBoxOfTerminologyBoxStatement\n\t    .get(reifiedRelationship)\n\t    .flatMap(tbox =&gt; tbox.iri().map(i =&gt;  gov.nasa.jpl.imce.oml.tables.taggedTypes.iri(i + \"#\" + name)))'"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship%&gt; _reifiedRelationship = this.getReifiedRelationship();\n&lt;%gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox%&gt; _tbox = null;\nif (_reifiedRelationship!=null)\n{\n\t_tbox=_reifiedRelationship.getTbox();\n}\n&lt;%java.lang.String%&gt; _iri = null;\nif (_tbox!=null)\n{\n\t_iri=_tbox.iri();\n}\n&lt;%java.lang.String%&gt; _plus = (_iri + \"#\");\n&lt;%java.lang.String%&gt; _name = this.name();\nreturn (_plus + _name);'"
 	 * @generated
 	 */
@@ -110,7 +111,7 @@ public interface ForwardProperty extends RestrictableRelationship {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
-	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='extent.terminologyBoxOfTerminologyBoxStatement.get(this).map(tbox =&gt; tbox.nsPrefix+\":\"+name)'"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='extent\n\t    .terminologyBoxOfTerminologyBoxStatement\n\t    .get(reifiedRelationship)\n\t    .map(tbox =&gt; tbox.nsPrefix+\":\"+name)'"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%java.lang.String%&gt; _elvis = null;\n&lt;%gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship%&gt; _reifiedRelationship = this.getReifiedRelationship();\n&lt;%gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox%&gt; _tbox = null;\nif (_reifiedRelationship!=null)\n{\n\t_tbox=_reifiedRelationship.getTbox();\n}\n&lt;%java.lang.String%&gt; _nsPrefix = null;\nif (_tbox!=null)\n{\n\t_nsPrefix=_tbox.nsPrefix();\n}\nif (_nsPrefix != null)\n{\n\t_elvis = _nsPrefix;\n} else\n{\n\t_elvis = \"\";\n}\n&lt;%java.lang.String%&gt; _plus = (_elvis + \":\");\n&lt;%java.lang.String%&gt; _name = this.name();\nreturn (_plus + _name);'"
 	 * @generated
 	 */
@@ -142,5 +143,14 @@ public interface ForwardProperty extends RestrictableRelationship {
 	 * @generated
 	 */
 	EntityRelationship relation();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship%&gt; _reifiedRelationship = this.getReifiedRelationship();\n&lt;%gov.nasa.jpl.imce.oml.model.common.Module%&gt; _moduleContext = null;\nif (_reifiedRelationship!=null)\n{\n\t_moduleContext=_reifiedRelationship.moduleContext();\n}\nreturn _moduleContext;'"
+	 * @generated
+	 */
+	Module moduleContext();
 
 } // ForwardProperty

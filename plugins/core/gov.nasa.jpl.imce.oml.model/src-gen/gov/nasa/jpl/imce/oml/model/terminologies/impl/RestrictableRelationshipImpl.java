@@ -18,10 +18,7 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies.impl;
 
-import gov.nasa.jpl.imce.oml.model.common.impl.ResourceImpl;
-
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship;
-import gov.nasa.jpl.imce.oml.model.terminologies.Predicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictableRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.Term;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage;
@@ -39,7 +36,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public abstract class RestrictableRelationshipImpl extends ResourceImpl implements RestrictableRelationship {
+public abstract class RestrictableRelationshipImpl extends PredicateImpl implements RestrictableRelationship {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -77,22 +74,6 @@ public abstract class RestrictableRelationshipImpl extends ResourceImpl implemen
 	 */
 	public Term term() {
 		return this.relation();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
-		if (baseClass == Predicate.class) {
-			switch (baseOperationID) {
-				case TerminologiesPackage.PREDICATE___TERM: return TerminologiesPackage.RESTRICTABLE_RELATIONSHIP___TERM;
-				default: return -1;
-			}
-		}
-		return super.eDerivedOperationID(baseOperationID, baseClass);
 	}
 
 	/**

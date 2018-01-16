@@ -18,6 +18,8 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies.impl;
 
+import gov.nasa.jpl.imce.oml.model.common.Module;
+
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
 
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship;
@@ -269,6 +271,20 @@ public class InversePropertyImpl extends RestrictableRelationshipImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Module moduleContext() {
+		ReifiedRelationship _reifiedRelationship = this.getReifiedRelationship();
+		Module _moduleContext = null;
+		if (_reifiedRelationship!=null) {
+			_moduleContext=_reifiedRelationship.moduleContext();
+		}
+		return _moduleContext;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -395,6 +411,8 @@ public class InversePropertyImpl extends RestrictableRelationshipImpl implements
 				return uuid();
 			case TerminologiesPackage.INVERSE_PROPERTY___RELATION:
 				return relation();
+			case TerminologiesPackage.INVERSE_PROPERTY___MODULE_CONTEXT:
+				return moduleContext();
 		}
 		return super.eInvoke(operationID, arguments);
 	}

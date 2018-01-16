@@ -18,7 +18,6 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies;
 
-import gov.nasa.jpl.imce.oml.model.common.Resource;
 
 /**
  * <!-- begin-user-doc -->
@@ -38,7 +37,7 @@ import gov.nasa.jpl.imce.oml.model.common.Resource;
  * @model abstract="true"
  * @generated
  */
-public interface RestrictableRelationship extends Resource, Predicate {
+public interface RestrictableRelationship extends Predicate {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

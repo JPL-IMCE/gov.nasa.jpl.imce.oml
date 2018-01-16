@@ -18,6 +18,9 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies;
 
+import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
+
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -100,5 +103,16 @@ public interface ReifiedRelationship extends EntityRelationship, ConceptualEntit
 	 * @generated
 	 */
 	void setInverseProperty(InverseProperty value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='\n\t\tscala.collection.immutable.Set[resolver.api.LogicalElement]() ++\n\t\textent.forwardProperty.get(this) ++\n\t\textent.inverseProperty.get(this)'"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%org.eclipse.emf.common.util.BasicEList%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.common.LogicalElement%&gt;&gt; _xblockexpression = null;\n{\n\tfinal &lt;%org.eclipse.emf.common.util.BasicEList%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.common.LogicalElement%&gt;&gt; les = new &lt;%org.eclipse.emf.common.util.BasicEList%&gt;&lt;&lt;%gov.nasa.jpl.imce.oml.model.common.LogicalElement%&gt;&gt;();\n\tles.add(this.getForwardProperty());\n\t&lt;%gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty%&gt; _inverseProperty = this.getInverseProperty();\n\tboolean _tripleNotEquals = (null != _inverseProperty);\n\tif (_tripleNotEquals)\n\t{\n\t\tles.add(this.getInverseProperty());\n\t}\n\t_xblockexpression = les;\n}\nreturn _xblockexpression;'"
+	 * @generated
+	 */
+	EList<LogicalElement> allNestedElements();
 
 } // ReifiedRelationship
