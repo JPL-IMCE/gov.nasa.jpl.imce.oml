@@ -348,3 +348,17 @@ where `QNAME = name | abbrev IRI`
 ### [#210 Make the OML WB updatable](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/210)
 
 Followed the [official Tycho doc](https://wiki.eclipse.org/Tycho/eclipse-repository#Source_files) and added `installMode="root"` to the OML features in the OML product configuration.
+
+### [#211 Minor updates for code generation](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/211)
+
+- Removed a redundant specialization (an OML `Predicate` is a kind of OML `Resource`)
+
+  Previously: `abstract class RestrictableRelationship extends Resource, Predicate`
+  Now: `abstract class RestrictableRelationship extends Predicate`
+  
+- Fixed the return type cardinality of `SegmentPredicate.termPredicate()`:
+
+  Previously: `op Term[1] termPredicate()`
+  Now: `op Term[?] termPredicate()`
+  
+- Updated the scala code generation tags for several methods.
