@@ -321,20 +321,21 @@ The overall concrete syntax for OML `ChainRule` remains unchanged as summarized 
 ChainRule: 'rule' <name> 'infers' <unreified relationship> 'if' SegmentPredicate ( '&&' SegmentPredicate )*
 ```
 
-The significant change pertains to the concrete syntax of `SegmentPredicate` as described below:
+The significant change pertains to the concrete syntax of `SegmentPredicate` as described below
+where `QNAME = name | abbrev IRI`
 
-| What the predicate pertains to | 0.9.1 concrete syntax | 0.9.0.7 concrete syntax | Change |
+| What the `SegmentPredicate` pertains to? | 0.9.1 concrete syntax | 0.9.0.7 concrete syntax | Change |
 |---|---|---|---|
-| OML `Aspect` | `<Aspect name|abbrev IRI>` | `aspect ( <Aspect name|abbrev IRI> )` | Simpler, isomorphic to OWL2 |
-| OML `Concept` | `<Concept name|abbrev IRI>` | `concept ( <Concept name|abbrev IRI> )` | Simpler, isomorphic to OWL2 |
-| OML `ReifiedRelationship` | `<ReifiedRelationship name|abbrev IRI>` | `reifiedRelationship ( <ReifiedRelationship name|abbrev IRI> )` | Simpler, isomorphic to OWL2 |
-| OML `ReifiedRelationship.forwardProperty` | `<ReifiedRelationship.forwardProperty name|abbrev IRI>` | `property ( <ReifiedRelationship name|abbrev IRI> )` | Simpler, isomorphic to OWL2 |
-| OML `ReifiedRelationship.inverseProperty` | `<ReifiedRelationship.inverseProperty name|abbrev IRI>` | `inv ( property ( <ReifiedRelationship name|abbrev IRI> ) )` | Simpler, isomorphic to OWL2 |
-| OML `ReifiedRelationship.source` | `source ( <ReifiedRelationship name|abbrev IRI>` | `source ( <ReifiedRelationship name|abbrev IRI> )` | Same |
-| OML `ReifiedRelationship.source` inverse | `invSource ( <ReifiedRelationship name|abbrev IRI>` | `inv ( source ( <ReifiedRelationship name|abbrev IRI> ) )` | Simpler |
-| OML `ReifiedRelationship.target` | `target ( <ReifiedRelationship name|abbrev IRI>` | `target ( <ReifiedRelationship name|abbrev IRI> )` | Same |
-| OML `ReifiedRelationship.target` inverse | `invTarget ( <ReifiedRelationship name|abbrev IRI>` | `inv ( target ( <ReifiedRelationship name|abbrev IRI> ) )` | Simpler |
-| OML `UnreifiedRelationship` | `<UnreifiedRelationship name|abbrev IRI>` | `<UnreifiedRelationship name|abbrev IRI>` | Same, isomorphic to OWL2 |
-| OML `UnreifiedRelationship` inverse | `inv ( <UnreifiedRelationship name|abbrev IRI> )` | `inv ( <UnreifiedRelationship name|abbrev IRI> )` | Same, isomorphic to OWL2 |
+| OML `Aspect` | `<Aspect QNAME>` | `aspect ( <Aspect QNAME> )` | Simpler, isomorphic to OWL2 |
+| OML `Concept` | `<Concept QNAME>` | `concept ( <Concept QNAME> )` | Simpler, isomorphic to OWL2 |
+| OML `ReifiedRelationship` | `<ReifiedRelationship QNAME>` | `reifiedRelationship ( <ReifiedRelationship QNAME> )` | Simpler, isomorphic to OWL2 |
+| OML `ReifiedRelationship.forwardProperty` | `<ReifiedRelationship.forwardProperty QNAME>` | `property ( <ReifiedRelationship QNAME> )` | Simpler, isomorphic to OWL2 |
+| OML `ReifiedRelationship.inverseProperty` | `<ReifiedRelationship.inverseProperty QNAME>` | `inv ( property ( <ReifiedRelationship QNAME> ) )` | Simpler, isomorphic to OWL2 |
+| OML `ReifiedRelationship.source` | `source ( <ReifiedRelationship QNAME> )` | `source ( <ReifiedRelationship QNAME> )` | Same |
+| OML `ReifiedRelationship.source` inverse | `invSource ( <ReifiedRelationship QNAME> )` | `inv ( source ( <ReifiedRelationship QNAME> ) )` | Simpler |
+| OML `ReifiedRelationship.target` | `target ( <ReifiedRelationship QNAME> )` | `target ( <ReifiedRelationship QNAME> )` | Same |
+| OML `ReifiedRelationship.target` inverse | `invTarget ( <ReifiedRelationship QNAME> )` | `inv ( target ( <ReifiedRelationship QNAME> ) )` | Simpler |
+| OML `UnreifiedRelationship` | `<UnreifiedRelationship QNAME>` | `<UnreifiedRelationship QNAME>` | Same, isomorphic to OWL2 |
+| OML `UnreifiedRelationship` inverse | `inv ( <UnreifiedRelationship QNAME> )` | `inv ( <UnreifiedRelationship QNAME> )` | Same, isomorphic to OWL2 |
 
 
