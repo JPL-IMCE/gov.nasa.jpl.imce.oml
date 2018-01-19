@@ -319,7 +319,7 @@ public class OMLExtensions {
 		factors.add(factor5)
 		derivedUUID(context, factors)
 	}
-
+	
 	static def UUID derivedUUID(
 		String context,
 		Pair<String, String> factor1,
@@ -485,6 +485,7 @@ public class OMLExtensions {
 			result.add(rr.forwardProperty)
 			result.add(rr.inverseProperty)
 		]
+		result.addAll(localUnreifiedRelationships)
 		result.addAll(localEntities)
 		result.filterNull
 	}
