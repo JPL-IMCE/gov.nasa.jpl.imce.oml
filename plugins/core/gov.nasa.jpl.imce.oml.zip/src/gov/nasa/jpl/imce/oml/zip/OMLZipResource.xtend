@@ -31,6 +31,8 @@ import org.eclipse.emf.ecore.resource.impl.ResourceImpl
 import gov.nasa.jpl.imce.oml.model.common.Extent
 import org.eclipse.core.runtime.Assert
 import java.util.regex.Pattern
+import gov.nasa.jpl.imce.oml.model.extensions.OMLCatalog
+import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions
 
 /**
  * An OMLZipResource is a kind of Resource that is loaded from and saved to an *.omlzip file
@@ -59,7 +61,7 @@ class OMLZipResource extends ResourceImpl {
 	}
 	
 	/**
-	 * Loading an OMLZipResource involves mapping its URI to an *.omlzip file according to the CatalogURIConverter associated with its OMLZipResourceSet.
+	 * Loading an OMLZipResource involves mapping its URI to an *.omlzip file according to the CatalogURIConverter associated with its ResourceSet.
 	 * If successful, the contents of the loaded OMLZipResource is a single toplevel OML Extent whose contents
 	 * is the result of parsing all the tables in the *.omlzip file.
 	 */
@@ -72,8 +74,18 @@ class OMLZipResource extends ResourceImpl {
 					throw new IllegalArgumentException("OMLZipResource.load() requires the uri to be normalized as a file://....*.omlzip; uri="+uri+" is instead normalized as: "+omlZipFile)
 				OMLSpecificationTables.load(rs, this, new File(omlZipFile.toFileString))
 			}
-			default:
-				throw new IllegalArgumentException("OMLZipResource must be loaded within an OMLZipResourceSet, not a "+rs?.class?.name)
+			default: {
+				val OMLCatalog c = OMLExtensions.getCatalog(rs)
+				if (null === c) 
+					throw new IllegalArgumentException("OMLZipResource.load(): requires an OMLCatalog on this resource set!")
+				val resolved = c.resolveURI(uri.toString)
+				if (null === resolved || !resolved.startsWith("file:"))
+					throw new IllegalArgumentException('''OMLZipResource.load(): No catalog mapping for URI: «uri»''')
+				val omlZipFile = new File(resolved + ".omlzip")
+				if (!omlZipFile.exists)
+					throw new IllegalArgumentException('''OMLZipResource.load(): URI: «uri» resolves to a non-existent file: «omlZipFile»''')
+				OMLSpecificationTables.load(rs, this, omlZipFile)
+			}
 		}
 	}
 	

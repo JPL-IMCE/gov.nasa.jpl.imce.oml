@@ -34,6 +34,7 @@ import org.apache.commons.compress.archivers.zip.ZipArchiveEntry
 import org.apache.commons.compress.archivers.zip.ZipArchiveOutputStream
 import org.apache.commons.compress.archivers.zip.ZipFile
 import org.eclipse.emf.common.util.URI
+import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.xtext.xbase.lib.Pair
 
 import gov.nasa.jpl.imce.oml.model.extensions.OMLTables
@@ -774,7 +775,7 @@ class OMLSpecificationTables {
     }
   }
   
-  static def byte[] terminologyGraphsByteArray(Extent e) {
+  protected static def byte[] terminologyGraphsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.terminologyGraphs(e).forEach[it |
@@ -795,7 +796,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] bundlesByteArray(Extent e) {
+  protected static def byte[] bundlesByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.bundles(e).forEach[it |
@@ -816,7 +817,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] descriptionBoxesByteArray(Extent e) {
+  protected static def byte[] descriptionBoxesByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.descriptionBoxes(e).forEach[it |
@@ -837,7 +838,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] annotationPropertiesByteArray(Extent e) {
+  protected static def byte[] annotationPropertiesByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.annotationProperties(e).forEach[it |
@@ -863,7 +864,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] aspectsByteArray(Extent e) {
+  protected static def byte[] aspectsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.aspects(e).forEach[it |
@@ -886,7 +887,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] conceptsByteArray(Extent e) {
+  protected static def byte[] conceptsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.concepts(e).forEach[it |
@@ -909,7 +910,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] scalarsByteArray(Extent e) {
+  protected static def byte[] scalarsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.scalars(e).forEach[it |
@@ -932,7 +933,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] structuresByteArray(Extent e) {
+  protected static def byte[] structuresByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.structures(e).forEach[it |
@@ -955,7 +956,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] conceptDesignationTerminologyAxiomsByteArray(Extent e) {
+  protected static def byte[] conceptDesignationTerminologyAxiomsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.conceptDesignationTerminologyAxioms(e).forEach[it |
@@ -985,7 +986,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] terminologyExtensionAxiomsByteArray(Extent e) {
+  protected static def byte[] terminologyExtensionAxiomsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.terminologyExtensionAxioms(e).forEach[it |
@@ -1010,7 +1011,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] terminologyNestingAxiomsByteArray(Extent e) {
+  protected static def byte[] terminologyNestingAxiomsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.terminologyNestingAxioms(e).forEach[it |
@@ -1040,7 +1041,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] bundledTerminologyAxiomsByteArray(Extent e) {
+  protected static def byte[] bundledTerminologyAxiomsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.bundledTerminologyAxioms(e).forEach[it |
@@ -1065,7 +1066,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] descriptionBoxExtendsClosedWorldDefinitionsByteArray(Extent e) {
+  protected static def byte[] descriptionBoxExtendsClosedWorldDefinitionsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.descriptionBoxExtendsClosedWorldDefinitions(e).forEach[it |
@@ -1090,7 +1091,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] descriptionBoxRefinementsByteArray(Extent e) {
+  protected static def byte[] descriptionBoxRefinementsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.descriptionBoxRefinements(e).forEach[it |
@@ -1115,7 +1116,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] binaryScalarRestrictionsByteArray(Extent e) {
+  protected static def byte[] binaryScalarRestrictionsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.binaryScalarRestrictions(e).forEach[it |
@@ -1152,7 +1153,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] iriScalarRestrictionsByteArray(Extent e) {
+  protected static def byte[] iriScalarRestrictionsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.iriScalarRestrictions(e).forEach[it |
@@ -1192,7 +1193,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] numericScalarRestrictionsByteArray(Extent e) {
+  protected static def byte[] numericScalarRestrictionsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.numericScalarRestrictions(e).forEach[it |
@@ -1232,7 +1233,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] plainLiteralScalarRestrictionsByteArray(Extent e) {
+  protected static def byte[] plainLiteralScalarRestrictionsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.plainLiteralScalarRestrictions(e).forEach[it |
@@ -1275,7 +1276,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] scalarOneOfRestrictionsByteArray(Extent e) {
+  protected static def byte[] scalarOneOfRestrictionsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.scalarOneOfRestrictions(e).forEach[it |
@@ -1303,7 +1304,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] scalarOneOfLiteralAxiomsByteArray(Extent e) {
+  protected static def byte[] scalarOneOfLiteralAxiomsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.scalarOneOfLiteralAxioms(e).forEach[it |
@@ -1339,7 +1340,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] stringScalarRestrictionsByteArray(Extent e) {
+  protected static def byte[] stringScalarRestrictionsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.stringScalarRestrictions(e).forEach[it |
@@ -1379,7 +1380,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] synonymScalarRestrictionsByteArray(Extent e) {
+  protected static def byte[] synonymScalarRestrictionsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.synonymScalarRestrictions(e).forEach[it |
@@ -1407,7 +1408,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] timeScalarRestrictionsByteArray(Extent e) {
+  protected static def byte[] timeScalarRestrictionsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.timeScalarRestrictions(e).forEach[it |
@@ -1447,7 +1448,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] entityScalarDataPropertiesByteArray(Extent e) {
+  protected static def byte[] entityScalarDataPropertiesByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.entityScalarDataProperties(e).forEach[it |
@@ -1483,7 +1484,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] entityStructuredDataPropertiesByteArray(Extent e) {
+  protected static def byte[] entityStructuredDataPropertiesByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.entityStructuredDataProperties(e).forEach[it |
@@ -1519,7 +1520,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] scalarDataPropertiesByteArray(Extent e) {
+  protected static def byte[] scalarDataPropertiesByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.scalarDataProperties(e).forEach[it |
@@ -1552,7 +1553,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] structuredDataPropertiesByteArray(Extent e) {
+  protected static def byte[] structuredDataPropertiesByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.structuredDataProperties(e).forEach[it |
@@ -1585,7 +1586,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] reifiedRelationshipsByteArray(Extent e) {
+  protected static def byte[] reifiedRelationshipsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.reifiedRelationships(e).forEach[it |
@@ -1645,7 +1646,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] forwardPropertiesByteArray(Extent e) {
+  protected static def byte[] forwardPropertiesByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.forwardProperties(e).forEach[it |
@@ -1668,7 +1669,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] inversePropertiesByteArray(Extent e) {
+  protected static def byte[] inversePropertiesByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.inverseProperties(e).forEach[it |
@@ -1691,7 +1692,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] unreifiedRelationshipsByteArray(Extent e) {
+  protected static def byte[] unreifiedRelationshipsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.unreifiedRelationships(e).forEach[it |
@@ -1751,7 +1752,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] chainRulesByteArray(Extent e) {
+  protected static def byte[] chainRulesByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.chainRules(e).forEach[it |
@@ -1779,7 +1780,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] ruleBodySegmentsByteArray(Extent e) {
+  protected static def byte[] ruleBodySegmentsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.ruleBodySegments(e).forEach[it |
@@ -1810,7 +1811,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] segmentPredicatesByteArray(Extent e) {
+  protected static def byte[] segmentPredicatesByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.segmentPredicates(e).forEach[it |
@@ -1878,7 +1879,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] entityExistentialRestrictionAxiomsByteArray(Extent e) {
+  protected static def byte[] entityExistentialRestrictionAxiomsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.entityExistentialRestrictionAxioms(e).forEach[it |
@@ -1913,7 +1914,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] entityUniversalRestrictionAxiomsByteArray(Extent e) {
+  protected static def byte[] entityUniversalRestrictionAxiomsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.entityUniversalRestrictionAxioms(e).forEach[it |
@@ -1948,7 +1949,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] entityScalarDataPropertyExistentialRestrictionAxiomsByteArray(Extent e) {
+  protected static def byte[] entityScalarDataPropertyExistentialRestrictionAxiomsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.entityScalarDataPropertyExistentialRestrictionAxioms(e).forEach[it |
@@ -1983,7 +1984,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] entityScalarDataPropertyParticularRestrictionAxiomsByteArray(Extent e) {
+  protected static def byte[] entityScalarDataPropertyParticularRestrictionAxiomsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.entityScalarDataPropertyParticularRestrictionAxioms(e).forEach[it |
@@ -2024,7 +2025,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] entityScalarDataPropertyUniversalRestrictionAxiomsByteArray(Extent e) {
+  protected static def byte[] entityScalarDataPropertyUniversalRestrictionAxiomsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.entityScalarDataPropertyUniversalRestrictionAxioms(e).forEach[it |
@@ -2059,7 +2060,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] entityStructuredDataPropertyParticularRestrictionAxiomsByteArray(Extent e) {
+  protected static def byte[] entityStructuredDataPropertyParticularRestrictionAxiomsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.entityStructuredDataPropertyParticularRestrictionAxioms(e).forEach[it |
@@ -2089,7 +2090,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] restrictionStructuredDataPropertyTuplesByteArray(Extent e) {
+  protected static def byte[] restrictionStructuredDataPropertyTuplesByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.restrictionStructuredDataPropertyTuples(e).forEach[it |
@@ -2099,14 +2100,14 @@ class OMLSpecificationTables {
       pw.print(it.uuid())
       pw.print("\"")
       pw.print(",")
-      pw.print("\"structuredDataPropertyUUID\":")
-      pw.print("\"")
-      pw.print(it.structuredDataProperty.uuid())
-      pw.print("\"")
-      pw.print(",")
       pw.print("\"structuredDataPropertyContextUUID\":")
       pw.print("\"")
       pw.print(it.structuredDataPropertyContext.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"structuredDataPropertyUUID\":")
+      pw.print("\"")
+      pw.print(it.structuredDataProperty.uuid())
       pw.print("\"")
       pw.println("}")
     ]
@@ -2114,7 +2115,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] restrictionScalarDataPropertyValuesByteArray(Extent e) {
+  protected static def byte[] restrictionScalarDataPropertyValuesByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.restrictionScalarDataPropertyValues(e).forEach[it |
@@ -2124,6 +2125,11 @@ class OMLSpecificationTables {
       pw.print(it.uuid())
       pw.print("\"")
       pw.print(",")
+      pw.print("\"structuredDataPropertyContextUUID\":")
+      pw.print("\"")
+      pw.print(it.structuredDataPropertyContext.uuid())
+      pw.print("\"")
+      pw.print(",")
       pw.print("\"scalarDataPropertyUUID\":")
       pw.print("\"")
       pw.print(it.scalarDataProperty.uuid())
@@ -2131,11 +2137,6 @@ class OMLSpecificationTables {
       pw.print(",")
       pw.print("\"scalarPropertyValue\":")
       pw.print(OMLTables.toString(it.scalarPropertyValue))
-      pw.print(",")
-      pw.print("\"structuredDataPropertyContextUUID\":")
-      pw.print("\"")
-      pw.print(it.structuredDataPropertyContext.uuid())
-      pw.print("\"")
       pw.print(",")
       pw.print("\"valueTypeUUID\":")
       if (null !== valueType) {
@@ -2150,7 +2151,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] aspectSpecializationAxiomsByteArray(Extent e) {
+  protected static def byte[] aspectSpecializationAxiomsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.aspectSpecializationAxioms(e).forEach[it |
@@ -2180,7 +2181,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] conceptSpecializationAxiomsByteArray(Extent e) {
+  protected static def byte[] conceptSpecializationAxiomsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.conceptSpecializationAxioms(e).forEach[it |
@@ -2210,7 +2211,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] reifiedRelationshipSpecializationAxiomsByteArray(Extent e) {
+  protected static def byte[] reifiedRelationshipSpecializationAxiomsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.reifiedRelationshipSpecializationAxioms(e).forEach[it |
@@ -2240,7 +2241,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] subDataPropertyOfAxiomsByteArray(Extent e) {
+  protected static def byte[] subDataPropertyOfAxiomsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.subDataPropertyOfAxioms(e).forEach[it |
@@ -2270,7 +2271,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] subObjectPropertyOfAxiomsByteArray(Extent e) {
+  protected static def byte[] subObjectPropertyOfAxiomsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.subObjectPropertyOfAxioms(e).forEach[it |
@@ -2300,7 +2301,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] rootConceptTaxonomyAxiomsByteArray(Extent e) {
+  protected static def byte[] rootConceptTaxonomyAxiomsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.rootConceptTaxonomyAxioms(e).forEach[it |
@@ -2325,7 +2326,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] anonymousConceptUnionAxiomsByteArray(Extent e) {
+  protected static def byte[] anonymousConceptUnionAxiomsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.anonymousConceptUnionAxioms(e).forEach[it |
@@ -2348,7 +2349,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] specificDisjointConceptAxiomsByteArray(Extent e) {
+  protected static def byte[] specificDisjointConceptAxiomsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.specificDisjointConceptAxioms(e).forEach[it |
@@ -2373,7 +2374,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] conceptInstancesByteArray(Extent e) {
+  protected static def byte[] conceptInstancesByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.conceptInstances(e).forEach[it |
@@ -2401,7 +2402,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] reifiedRelationshipInstancesByteArray(Extent e) {
+  protected static def byte[] reifiedRelationshipInstancesByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.reifiedRelationshipInstances(e).forEach[it |
@@ -2429,7 +2430,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] reifiedRelationshipInstanceDomainsByteArray(Extent e) {
+  protected static def byte[] reifiedRelationshipInstanceDomainsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.reifiedRelationshipInstanceDomains(e).forEach[it |
@@ -2459,7 +2460,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] reifiedRelationshipInstanceRangesByteArray(Extent e) {
+  protected static def byte[] reifiedRelationshipInstanceRangesByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.reifiedRelationshipInstanceRanges(e).forEach[it |
@@ -2489,7 +2490,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] unreifiedRelationshipInstanceTuplesByteArray(Extent e) {
+  protected static def byte[] unreifiedRelationshipInstanceTuplesByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.unreifiedRelationshipInstanceTuples(e).forEach[it |
@@ -2524,7 +2525,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] singletonInstanceStructuredDataPropertyValuesByteArray(Extent e) {
+  protected static def byte[] singletonInstanceStructuredDataPropertyValuesByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.singletonInstanceStructuredDataPropertyValues(e).forEach[it |
@@ -2554,7 +2555,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] singletonInstanceScalarDataPropertyValuesByteArray(Extent e) {
+  protected static def byte[] singletonInstanceScalarDataPropertyValuesByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.singletonInstanceScalarDataPropertyValues(e).forEach[it |
@@ -2595,7 +2596,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] structuredDataPropertyTuplesByteArray(Extent e) {
+  protected static def byte[] structuredDataPropertyTuplesByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.structuredDataPropertyTuples(e).forEach[it |
@@ -2605,14 +2606,14 @@ class OMLSpecificationTables {
       pw.print(it.uuid())
       pw.print("\"")
       pw.print(",")
-      pw.print("\"structuredDataPropertyUUID\":")
-      pw.print("\"")
-      pw.print(it.structuredDataProperty.uuid())
-      pw.print("\"")
-      pw.print(",")
       pw.print("\"structuredDataPropertyContextUUID\":")
       pw.print("\"")
       pw.print(it.structuredDataPropertyContext.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"structuredDataPropertyUUID\":")
+      pw.print("\"")
+      pw.print(it.structuredDataProperty.uuid())
       pw.print("\"")
       pw.println("}")
     ]
@@ -2620,7 +2621,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] scalarDataPropertyValuesByteArray(Extent e) {
+  protected static def byte[] scalarDataPropertyValuesByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.scalarDataPropertyValues(e).forEach[it |
@@ -2630,6 +2631,11 @@ class OMLSpecificationTables {
       pw.print(it.uuid())
       pw.print("\"")
       pw.print(",")
+      pw.print("\"structuredDataPropertyContextUUID\":")
+      pw.print("\"")
+      pw.print(it.structuredDataPropertyContext.uuid())
+      pw.print("\"")
+      pw.print(",")
       pw.print("\"scalarDataPropertyUUID\":")
       pw.print("\"")
       pw.print(it.scalarDataProperty.uuid())
@@ -2637,11 +2643,6 @@ class OMLSpecificationTables {
       pw.print(",")
       pw.print("\"scalarPropertyValue\":")
       pw.print(OMLTables.toString(it.scalarPropertyValue))
-      pw.print(",")
-      pw.print("\"structuredDataPropertyContextUUID\":")
-      pw.print("\"")
-      pw.print(it.structuredDataPropertyContext.uuid())
-      pw.print("\"")
       pw.print(",")
       pw.print("\"valueTypeUUID\":")
       if (null !== valueType) {
@@ -2656,7 +2657,7 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  static def byte[] annotationPropertyValuesByteArray(Extent e) {
+  protected static def byte[] annotationPropertyValuesByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
   	OMLTables.annotationPropertyValues(e).forEach[it |
@@ -2685,7 +2686,7 @@ class OMLSpecificationTables {
   }
   
   		    	    
-  static def void load(OMLZipResourceSet rs, OMLZipResource r, File omlZipFile) {
+  static def void load(ResourceSet rs, OMLZipResource r, File omlZipFile) {
 
     val tables = new OMLSpecificationTables()
     
@@ -3510,7 +3511,7 @@ class OMLSpecificationTables {
     vMap.forEach[uuid,kv|uMap.put(uuid, new Pair<U, Map<String, String>>(kv.key, Collections.emptyMap))]
   }
   
-  protected def void resolve(OMLZipResourceSet rs, OMLZipResource r) {
+  protected def void resolve(ResourceSet rs, OMLZipResource r) {
 	// Lookup table for LogicalElement cross references
     includeMap(logicalElements, terminologyGraphs)
     includeMap(logicalElements, bundles)
@@ -3684,7 +3685,7 @@ class OMLSpecificationTables {
     	r.contents.add(ext)
   }
 
-  protected def void resolveAnnotationProperties(OMLZipResourceSet rs) {
+  protected def void resolveAnnotationProperties(ResourceSet rs) {
   	annotationProperties.forEach[uuid, oml_kv |
   	  val AnnotationProperty oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -3698,7 +3699,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveAspects(OMLZipResourceSet rs) {
+  protected def void resolveAspects(ResourceSet rs) {
   	aspects.forEach[uuid, oml_kv |
   	  val Aspect oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -3712,7 +3713,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveConcepts(OMLZipResourceSet rs) {
+  protected def void resolveConcepts(ResourceSet rs) {
   	concepts.forEach[uuid, oml_kv |
   	  val Concept oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -3726,7 +3727,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveScalars(OMLZipResourceSet rs) {
+  protected def void resolveScalars(ResourceSet rs) {
   	scalars.forEach[uuid, oml_kv |
   	  val Scalar oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -3740,7 +3741,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveStructures(OMLZipResourceSet rs) {
+  protected def void resolveStructures(ResourceSet rs) {
   	structures.forEach[uuid, oml_kv |
   	  val Structure oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -3754,7 +3755,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveConceptDesignationTerminologyAxioms(OMLZipResourceSet rs) {
+  protected def void resolveConceptDesignationTerminologyAxioms(ResourceSet rs) {
   	conceptDesignationTerminologyAxioms.forEach[uuid, oml_kv |
   	  val ConceptDesignationTerminologyAxiom oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -3779,7 +3780,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveTerminologyExtensionAxioms(OMLZipResourceSet rs) {
+  protected def void resolveTerminologyExtensionAxioms(ResourceSet rs) {
   	terminologyExtensionAxioms.forEach[uuid, oml_kv |
   	  val TerminologyExtensionAxiom oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -3799,7 +3800,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveTerminologyNestingAxioms(OMLZipResourceSet rs) {
+  protected def void resolveTerminologyNestingAxioms(ResourceSet rs) {
   	terminologyNestingAxioms.forEach[uuid, oml_kv |
   	  val TerminologyNestingAxiom oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -3824,7 +3825,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveBundledTerminologyAxioms(OMLZipResourceSet rs) {
+  protected def void resolveBundledTerminologyAxioms(ResourceSet rs) {
   	bundledTerminologyAxioms.forEach[uuid, oml_kv |
   	  val BundledTerminologyAxiom oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -3844,7 +3845,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveDescriptionBoxExtendsClosedWorldDefinitions(OMLZipResourceSet rs) {
+  protected def void resolveDescriptionBoxExtendsClosedWorldDefinitions(ResourceSet rs) {
   	descriptionBoxExtendsClosedWorldDefinitions.forEach[uuid, oml_kv |
   	  val DescriptionBoxExtendsClosedWorldDefinitions oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -3864,7 +3865,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveDescriptionBoxRefinements(OMLZipResourceSet rs) {
+  protected def void resolveDescriptionBoxRefinements(ResourceSet rs) {
   	descriptionBoxRefinements.forEach[uuid, oml_kv |
   	  val DescriptionBoxRefinement oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -3884,7 +3885,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveBinaryScalarRestrictions(OMLZipResourceSet rs) {
+  protected def void resolveBinaryScalarRestrictions(ResourceSet rs) {
   	binaryScalarRestrictions.forEach[uuid, oml_kv |
   	  val BinaryScalarRestriction oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -3903,7 +3904,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveIRIScalarRestrictions(OMLZipResourceSet rs) {
+  protected def void resolveIRIScalarRestrictions(ResourceSet rs) {
   	iriScalarRestrictions.forEach[uuid, oml_kv |
   	  val IRIScalarRestriction oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -3922,7 +3923,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveNumericScalarRestrictions(OMLZipResourceSet rs) {
+  protected def void resolveNumericScalarRestrictions(ResourceSet rs) {
   	numericScalarRestrictions.forEach[uuid, oml_kv |
   	  val NumericScalarRestriction oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -3941,7 +3942,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolvePlainLiteralScalarRestrictions(OMLZipResourceSet rs) {
+  protected def void resolvePlainLiteralScalarRestrictions(ResourceSet rs) {
   	plainLiteralScalarRestrictions.forEach[uuid, oml_kv |
   	  val PlainLiteralScalarRestriction oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -3960,7 +3961,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveScalarOneOfRestrictions(OMLZipResourceSet rs) {
+  protected def void resolveScalarOneOfRestrictions(ResourceSet rs) {
   	scalarOneOfRestrictions.forEach[uuid, oml_kv |
   	  val ScalarOneOfRestriction oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -3979,7 +3980,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveScalarOneOfLiteralAxioms(OMLZipResourceSet rs) {
+  protected def void resolveScalarOneOfLiteralAxioms(ResourceSet rs) {
   	scalarOneOfLiteralAxioms.forEach[uuid, oml_kv |
   	  val ScalarOneOfLiteralAxiom oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -4005,7 +4006,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveStringScalarRestrictions(OMLZipResourceSet rs) {
+  protected def void resolveStringScalarRestrictions(ResourceSet rs) {
   	stringScalarRestrictions.forEach[uuid, oml_kv |
   	  val StringScalarRestriction oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -4024,7 +4025,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveSynonymScalarRestrictions(OMLZipResourceSet rs) {
+  protected def void resolveSynonymScalarRestrictions(ResourceSet rs) {
   	synonymScalarRestrictions.forEach[uuid, oml_kv |
   	  val SynonymScalarRestriction oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -4043,7 +4044,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveTimeScalarRestrictions(OMLZipResourceSet rs) {
+  protected def void resolveTimeScalarRestrictions(ResourceSet rs) {
   	timeScalarRestrictions.forEach[uuid, oml_kv |
   	  val TimeScalarRestriction oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -4062,7 +4063,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveEntityScalarDataProperties(OMLZipResourceSet rs) {
+  protected def void resolveEntityScalarDataProperties(ResourceSet rs) {
   	entityScalarDataProperties.forEach[uuid, oml_kv |
   	  val EntityScalarDataProperty oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -4086,7 +4087,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveEntityStructuredDataProperties(OMLZipResourceSet rs) {
+  protected def void resolveEntityStructuredDataProperties(ResourceSet rs) {
   	entityStructuredDataProperties.forEach[uuid, oml_kv |
   	  val EntityStructuredDataProperty oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -4110,7 +4111,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveScalarDataProperties(OMLZipResourceSet rs) {
+  protected def void resolveScalarDataProperties(ResourceSet rs) {
   	scalarDataProperties.forEach[uuid, oml_kv |
   	  val ScalarDataProperty oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -4134,7 +4135,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveStructuredDataProperties(OMLZipResourceSet rs) {
+  protected def void resolveStructuredDataProperties(ResourceSet rs) {
   	structuredDataProperties.forEach[uuid, oml_kv |
   	  val StructuredDataProperty oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -4158,7 +4159,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveReifiedRelationships(OMLZipResourceSet rs) {
+  protected def void resolveReifiedRelationships(ResourceSet rs) {
   	reifiedRelationships.forEach[uuid, oml_kv |
   	  val ReifiedRelationship oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -4182,7 +4183,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveForwardProperties(OMLZipResourceSet rs) {
+  protected def void resolveForwardProperties(ResourceSet rs) {
   	forwardProperties.forEach[uuid, oml_kv |
   	  val ForwardProperty oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -4196,7 +4197,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveInverseProperties(OMLZipResourceSet rs) {
+  protected def void resolveInverseProperties(ResourceSet rs) {
   	inverseProperties.forEach[uuid, oml_kv |
   	  val InverseProperty oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -4210,7 +4211,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveUnreifiedRelationships(OMLZipResourceSet rs) {
+  protected def void resolveUnreifiedRelationships(ResourceSet rs) {
   	unreifiedRelationships.forEach[uuid, oml_kv |
   	  val UnreifiedRelationship oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -4234,7 +4235,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveChainRules(OMLZipResourceSet rs) {
+  protected def void resolveChainRules(ResourceSet rs) {
   	chainRules.forEach[uuid, oml_kv |
   	  val ChainRule oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -4253,7 +4254,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveRuleBodySegments(OMLZipResourceSet rs) {
+  protected def void resolveRuleBodySegments(ResourceSet rs) {
   	ruleBodySegments.forEach[uuid, oml_kv |
   	  val RuleBodySegment oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -4276,7 +4277,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveSegmentPredicates(OMLZipResourceSet rs) {
+  protected def void resolveSegmentPredicates(ResourceSet rs) {
   	segmentPredicates.forEach[uuid, oml_kv |
   	  val SegmentPredicate oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -4332,7 +4333,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveEntityExistentialRestrictionAxioms(OMLZipResourceSet rs) {
+  protected def void resolveEntityExistentialRestrictionAxioms(ResourceSet rs) {
   	entityExistentialRestrictionAxioms.forEach[uuid, oml_kv |
   	  val EntityExistentialRestrictionAxiom oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -4361,7 +4362,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveEntityUniversalRestrictionAxioms(OMLZipResourceSet rs) {
+  protected def void resolveEntityUniversalRestrictionAxioms(ResourceSet rs) {
   	entityUniversalRestrictionAxioms.forEach[uuid, oml_kv |
   	  val EntityUniversalRestrictionAxiom oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -4390,7 +4391,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveEntityScalarDataPropertyExistentialRestrictionAxioms(OMLZipResourceSet rs) {
+  protected def void resolveEntityScalarDataPropertyExistentialRestrictionAxioms(ResourceSet rs) {
   	entityScalarDataPropertyExistentialRestrictionAxioms.forEach[uuid, oml_kv |
   	  val EntityScalarDataPropertyExistentialRestrictionAxiom oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -4419,7 +4420,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveEntityScalarDataPropertyParticularRestrictionAxioms(OMLZipResourceSet rs) {
+  protected def void resolveEntityScalarDataPropertyParticularRestrictionAxioms(ResourceSet rs) {
   	entityScalarDataPropertyParticularRestrictionAxioms.forEach[uuid, oml_kv |
   	  val EntityScalarDataPropertyParticularRestrictionAxiom oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -4450,7 +4451,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveEntityScalarDataPropertyUniversalRestrictionAxioms(OMLZipResourceSet rs) {
+  protected def void resolveEntityScalarDataPropertyUniversalRestrictionAxioms(ResourceSet rs) {
   	entityScalarDataPropertyUniversalRestrictionAxioms.forEach[uuid, oml_kv |
   	  val EntityScalarDataPropertyUniversalRestrictionAxiom oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -4479,7 +4480,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveEntityStructuredDataPropertyParticularRestrictionAxioms(OMLZipResourceSet rs) {
+  protected def void resolveEntityStructuredDataPropertyParticularRestrictionAxioms(ResourceSet rs) {
   	entityStructuredDataPropertyParticularRestrictionAxioms.forEach[uuid, oml_kv |
   	  val EntityStructuredDataPropertyParticularRestrictionAxiom oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -4503,40 +4504,40 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveRestrictionStructuredDataPropertyTuples(OMLZipResourceSet rs) {
+  protected def void resolveRestrictionStructuredDataPropertyTuples(ResourceSet rs) {
   	restrictionStructuredDataPropertyTuples.forEach[uuid, oml_kv |
   	  val RestrictionStructuredDataPropertyTuple oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
   	  if (!kv.empty) {
-  	    val String structuredDataPropertyXRef = kv.remove("structuredDataPropertyUUID")
-  	    val Pair<DataRelationshipToStructure, Map<String, String>> structuredDataPropertyPair = dataRelationshipToStructures.get(structuredDataPropertyXRef)
-  	    if (null === structuredDataPropertyPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for structuredDataProperty in restrictionStructuredDataPropertyTuples")
-  	    oml.structuredDataProperty = structuredDataPropertyPair.key
   	    val String structuredDataPropertyContextXRef = kv.remove("structuredDataPropertyContextUUID")
   	    val Pair<RestrictionStructuredDataPropertyContext, Map<String, String>> structuredDataPropertyContextPair = restrictionStructuredDataPropertyContexts.get(structuredDataPropertyContextXRef)
   	    if (null === structuredDataPropertyContextPair)
   	      throw new IllegalArgumentException("Null cross-reference lookup for structuredDataPropertyContext in restrictionStructuredDataPropertyTuples")
   	    oml.structuredDataPropertyContext = structuredDataPropertyContextPair.key
+  	    val String structuredDataPropertyXRef = kv.remove("structuredDataPropertyUUID")
+  	    val Pair<DataRelationshipToStructure, Map<String, String>> structuredDataPropertyPair = dataRelationshipToStructures.get(structuredDataPropertyXRef)
+  	    if (null === structuredDataPropertyPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for structuredDataProperty in restrictionStructuredDataPropertyTuples")
+  	    oml.structuredDataProperty = structuredDataPropertyPair.key
   	  }
   	]
   }
   
-  protected def void resolveRestrictionScalarDataPropertyValues(OMLZipResourceSet rs) {
+  protected def void resolveRestrictionScalarDataPropertyValues(ResourceSet rs) {
   	restrictionScalarDataPropertyValues.forEach[uuid, oml_kv |
   	  val RestrictionScalarDataPropertyValue oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
   	  if (!kv.empty) {
-  	    val String scalarDataPropertyXRef = kv.remove("scalarDataPropertyUUID")
-  	    val Pair<DataRelationshipToScalar, Map<String, String>> scalarDataPropertyPair = dataRelationshipToScalars.get(scalarDataPropertyXRef)
-  	    if (null === scalarDataPropertyPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for scalarDataProperty in restrictionScalarDataPropertyValues")
-  	    oml.scalarDataProperty = scalarDataPropertyPair.key
   	    val String structuredDataPropertyContextXRef = kv.remove("structuredDataPropertyContextUUID")
   	    val Pair<RestrictionStructuredDataPropertyContext, Map<String, String>> structuredDataPropertyContextPair = restrictionStructuredDataPropertyContexts.get(structuredDataPropertyContextXRef)
   	    if (null === structuredDataPropertyContextPair)
   	      throw new IllegalArgumentException("Null cross-reference lookup for structuredDataPropertyContext in restrictionScalarDataPropertyValues")
   	    oml.structuredDataPropertyContext = structuredDataPropertyContextPair.key
+  	    val String scalarDataPropertyXRef = kv.remove("scalarDataPropertyUUID")
+  	    val Pair<DataRelationshipToScalar, Map<String, String>> scalarDataPropertyPair = dataRelationshipToScalars.get(scalarDataPropertyXRef)
+  	    if (null === scalarDataPropertyPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for scalarDataProperty in restrictionScalarDataPropertyValues")
+  	    oml.scalarDataProperty = scalarDataPropertyPair.key
   	    val String valueTypeXRef = kv.remove("valueTypeUUID")
   	    if ("null" != valueTypeXRef) {
   	      val Pair<DataRange, Map<String, String>> valueTypePair = dataRanges.get(valueTypeXRef)
@@ -4548,7 +4549,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveAspectSpecializationAxioms(OMLZipResourceSet rs) {
+  protected def void resolveAspectSpecializationAxioms(ResourceSet rs) {
   	aspectSpecializationAxioms.forEach[uuid, oml_kv |
   	  val AspectSpecializationAxiom oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -4572,7 +4573,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveConceptSpecializationAxioms(OMLZipResourceSet rs) {
+  protected def void resolveConceptSpecializationAxioms(ResourceSet rs) {
   	conceptSpecializationAxioms.forEach[uuid, oml_kv |
   	  val ConceptSpecializationAxiom oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -4596,7 +4597,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveReifiedRelationshipSpecializationAxioms(OMLZipResourceSet rs) {
+  protected def void resolveReifiedRelationshipSpecializationAxioms(ResourceSet rs) {
   	reifiedRelationshipSpecializationAxioms.forEach[uuid, oml_kv |
   	  val ReifiedRelationshipSpecializationAxiom oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -4620,7 +4621,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveSubDataPropertyOfAxioms(OMLZipResourceSet rs) {
+  protected def void resolveSubDataPropertyOfAxioms(ResourceSet rs) {
   	subDataPropertyOfAxioms.forEach[uuid, oml_kv |
   	  val SubDataPropertyOfAxiom oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -4644,7 +4645,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveSubObjectPropertyOfAxioms(OMLZipResourceSet rs) {
+  protected def void resolveSubObjectPropertyOfAxioms(ResourceSet rs) {
   	subObjectPropertyOfAxioms.forEach[uuid, oml_kv |
   	  val SubObjectPropertyOfAxiom oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -4668,7 +4669,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveRootConceptTaxonomyAxioms(OMLZipResourceSet rs) {
+  protected def void resolveRootConceptTaxonomyAxioms(ResourceSet rs) {
   	rootConceptTaxonomyAxioms.forEach[uuid, oml_kv |
   	  val RootConceptTaxonomyAxiom oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -4687,7 +4688,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveAnonymousConceptUnionAxioms(OMLZipResourceSet rs) {
+  protected def void resolveAnonymousConceptUnionAxioms(ResourceSet rs) {
   	anonymousConceptUnionAxioms.forEach[uuid, oml_kv |
   	  val AnonymousConceptUnionAxiom oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -4701,7 +4702,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveSpecificDisjointConceptAxioms(OMLZipResourceSet rs) {
+  protected def void resolveSpecificDisjointConceptAxioms(ResourceSet rs) {
   	specificDisjointConceptAxioms.forEach[uuid, oml_kv |
   	  val SpecificDisjointConceptAxiom oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -4720,7 +4721,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveConceptInstances(OMLZipResourceSet rs) {
+  protected def void resolveConceptInstances(ResourceSet rs) {
   	conceptInstances.forEach[uuid, oml_kv |
   	  val ConceptInstance oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -4739,7 +4740,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveReifiedRelationshipInstances(OMLZipResourceSet rs) {
+  protected def void resolveReifiedRelationshipInstances(ResourceSet rs) {
   	reifiedRelationshipInstances.forEach[uuid, oml_kv |
   	  val ReifiedRelationshipInstance oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -4758,7 +4759,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveReifiedRelationshipInstanceDomains(OMLZipResourceSet rs) {
+  protected def void resolveReifiedRelationshipInstanceDomains(ResourceSet rs) {
   	reifiedRelationshipInstanceDomains.forEach[uuid, oml_kv |
   	  val ReifiedRelationshipInstanceDomain oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -4782,7 +4783,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveReifiedRelationshipInstanceRanges(OMLZipResourceSet rs) {
+  protected def void resolveReifiedRelationshipInstanceRanges(ResourceSet rs) {
   	reifiedRelationshipInstanceRanges.forEach[uuid, oml_kv |
   	  val ReifiedRelationshipInstanceRange oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -4806,7 +4807,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveUnreifiedRelationshipInstanceTuples(OMLZipResourceSet rs) {
+  protected def void resolveUnreifiedRelationshipInstanceTuples(ResourceSet rs) {
   	unreifiedRelationshipInstanceTuples.forEach[uuid, oml_kv |
   	  val UnreifiedRelationshipInstanceTuple oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -4835,7 +4836,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveSingletonInstanceStructuredDataPropertyValues(OMLZipResourceSet rs) {
+  protected def void resolveSingletonInstanceStructuredDataPropertyValues(ResourceSet rs) {
   	singletonInstanceStructuredDataPropertyValues.forEach[uuid, oml_kv |
   	  val SingletonInstanceStructuredDataPropertyValue oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -4859,7 +4860,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveSingletonInstanceScalarDataPropertyValues(OMLZipResourceSet rs) {
+  protected def void resolveSingletonInstanceScalarDataPropertyValues(ResourceSet rs) {
   	singletonInstanceScalarDataPropertyValues.forEach[uuid, oml_kv |
   	  val SingletonInstanceScalarDataPropertyValue oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -4890,40 +4891,40 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveStructuredDataPropertyTuples(OMLZipResourceSet rs) {
+  protected def void resolveStructuredDataPropertyTuples(ResourceSet rs) {
   	structuredDataPropertyTuples.forEach[uuid, oml_kv |
   	  val StructuredDataPropertyTuple oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
   	  if (!kv.empty) {
-  	    val String structuredDataPropertyXRef = kv.remove("structuredDataPropertyUUID")
-  	    val Pair<DataRelationshipToStructure, Map<String, String>> structuredDataPropertyPair = dataRelationshipToStructures.get(structuredDataPropertyXRef)
-  	    if (null === structuredDataPropertyPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for structuredDataProperty in structuredDataPropertyTuples")
-  	    oml.structuredDataProperty = structuredDataPropertyPair.key
   	    val String structuredDataPropertyContextXRef = kv.remove("structuredDataPropertyContextUUID")
   	    val Pair<SingletonInstanceStructuredDataPropertyContext, Map<String, String>> structuredDataPropertyContextPair = singletonInstanceStructuredDataPropertyContexts.get(structuredDataPropertyContextXRef)
   	    if (null === structuredDataPropertyContextPair)
   	      throw new IllegalArgumentException("Null cross-reference lookup for structuredDataPropertyContext in structuredDataPropertyTuples")
   	    oml.structuredDataPropertyContext = structuredDataPropertyContextPair.key
+  	    val String structuredDataPropertyXRef = kv.remove("structuredDataPropertyUUID")
+  	    val Pair<DataRelationshipToStructure, Map<String, String>> structuredDataPropertyPair = dataRelationshipToStructures.get(structuredDataPropertyXRef)
+  	    if (null === structuredDataPropertyPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for structuredDataProperty in structuredDataPropertyTuples")
+  	    oml.structuredDataProperty = structuredDataPropertyPair.key
   	  }
   	]
   }
   
-  protected def void resolveScalarDataPropertyValues(OMLZipResourceSet rs) {
+  protected def void resolveScalarDataPropertyValues(ResourceSet rs) {
   	scalarDataPropertyValues.forEach[uuid, oml_kv |
   	  val ScalarDataPropertyValue oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
   	  if (!kv.empty) {
-  	    val String scalarDataPropertyXRef = kv.remove("scalarDataPropertyUUID")
-  	    val Pair<DataRelationshipToScalar, Map<String, String>> scalarDataPropertyPair = dataRelationshipToScalars.get(scalarDataPropertyXRef)
-  	    if (null === scalarDataPropertyPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for scalarDataProperty in scalarDataPropertyValues")
-  	    oml.scalarDataProperty = scalarDataPropertyPair.key
   	    val String structuredDataPropertyContextXRef = kv.remove("structuredDataPropertyContextUUID")
   	    val Pair<SingletonInstanceStructuredDataPropertyContext, Map<String, String>> structuredDataPropertyContextPair = singletonInstanceStructuredDataPropertyContexts.get(structuredDataPropertyContextXRef)
   	    if (null === structuredDataPropertyContextPair)
   	      throw new IllegalArgumentException("Null cross-reference lookup for structuredDataPropertyContext in scalarDataPropertyValues")
   	    oml.structuredDataPropertyContext = structuredDataPropertyContextPair.key
+  	    val String scalarDataPropertyXRef = kv.remove("scalarDataPropertyUUID")
+  	    val Pair<DataRelationshipToScalar, Map<String, String>> scalarDataPropertyPair = dataRelationshipToScalars.get(scalarDataPropertyXRef)
+  	    if (null === scalarDataPropertyPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for scalarDataProperty in scalarDataPropertyValues")
+  	    oml.scalarDataProperty = scalarDataPropertyPair.key
   	    val String valueTypeXRef = kv.remove("valueTypeUUID")
   	    if ("null" != valueTypeXRef) {
   	      val Pair<DataRange, Map<String, String>> valueTypePair = dataRanges.get(valueTypeXRef)
@@ -4935,7 +4936,7 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveAnnotationPropertyValues(OMLZipResourceSet rs) {
+  protected def void resolveAnnotationPropertyValues(ResourceSet rs) {
   	annotationPropertyValues.forEach[uuid, oml_kv |
   	  val AnnotationPropertyValue oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
@@ -4955,7 +4956,7 @@ class OMLSpecificationTables {
   }
   
 
-  protected def OMLZipResource loadOMLZipResource(OMLZipResourceSet rs, URI uri) {
+  protected def OMLZipResource loadOMLZipResource(ResourceSet rs, URI uri) {
   	val r = rs.getResource(uri, true)
   	switch r {
   		OMLZipResource: {
