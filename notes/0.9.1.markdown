@@ -338,4 +338,33 @@ where `QNAME = name | abbrev IRI`
 | OML `UnreifiedRelationship` | `<UnreifiedRelationship QNAME>` | `<UnreifiedRelationship QNAME>` | Same, isomorphic to OWL2 |
 | OML `UnreifiedRelationship` inverse | `inv ( <UnreifiedRelationship QNAME> )` | `inv ( <UnreifiedRelationship QNAME> )` | Same, isomorphic to OWL2 |
 
+#### 3) Visualization notation changes in OML 0.9.1 from OML 0.9.0.7 for OML `EntityRestrictionAxiom`(s)
 
+| Kind | Notation in 0.9.0.7 | Notation in 0.9.1 |
+| ---- | --- | --- |
+| `EntityExistentialRestrictionAxiom` | `<<Existential>>` | `some <restricted relationship abbrev IRI> in` |
+| `EntityUNiversalRestrictionAxiom` | `<<Universal>>` | `all <restricted relationship abbrev IRI> in` |
+
+### [#210 Make the OML WB updatable](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/210)
+
+Followed the [official Tycho doc](https://wiki.eclipse.org/Tycho/eclipse-repository#Source_files) and added `installMode="root"` to the OML features in the OML product configuration.
+
+### [#211 Minor updates for code generation](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/211)
+
+- Removed a redundant specialization (an OML `Predicate` is a kind of OML `Resource`)
+
+   - Previously: `abstract class RestrictableRelationship extends Resource, Predicate`
+   - Now: `abstract class RestrictableRelationship extends Predicate`
+  
+- Fixed the return type cardinality of `SegmentPredicate.termPredicate()`:
+
+   - Previously: `op Term[1] termPredicate()`
+   - Now: `op Term[?] termPredicate()`
+  
+- Updated the scala code generation tags for several methods.
+
+### [#213 Update derived UUIDs to sync w/ scala APIs derived UUIDs](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/213)
+
+### [#214 Relax OMLZipResource to allow mixed XTextResource & OMLZipResource in XTextResourcSet](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/214)
+
+### [#216 Incomplete XText scope computation for SegmentPredicate.predicate cross-reference serialization.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/216)

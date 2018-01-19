@@ -1704,18 +1704,18 @@ COMMENT = 'Concrete Information Table EntityStructuredDataPropertyParticularRest
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `OML`.`RStPTs` (
   `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `structuredDataPropertyUUID` CHAR(36) NOT NULL COMMENT 'DRelToSts (DataRelationshipToStructure)',
   `structuredDataPropertyContextUUID` CHAR(36) NOT NULL COMMENT 'RStPCtxts (RestrictionStructuredDataPropertyContext)',
-  
-  CONSTRAINT `fk_RStPTs_structuredDataPropertyUUID`
-    FOREIGN KEY (`structuredDataPropertyUUID`)
-    REFERENCES `OML`.`DRelToSts`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
+  `structuredDataPropertyUUID` CHAR(36) NOT NULL COMMENT 'DRelToSts (DataRelationshipToStructure)',
   
   CONSTRAINT `fk_RStPTs_structuredDataPropertyContextUUID`
     FOREIGN KEY (`structuredDataPropertyContextUUID`)
     REFERENCES `OML`.`RStPCtxts`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_RStPTs_structuredDataPropertyUUID`
+    FOREIGN KEY (`structuredDataPropertyUUID`)
+    REFERENCES `OML`.`DRelToSts`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -1728,21 +1728,21 @@ COMMENT = 'Concrete Information Table RestrictionStructuredDataPropertyTuples';
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `OML`.`RScPVals` (
   `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `structuredDataPropertyContextUUID` CHAR(36) NOT NULL COMMENT 'RStPCtxts (RestrictionStructuredDataPropertyContext)',
   `scalarDataPropertyUUID` CHAR(36) NOT NULL COMMENT 'DRelToScs (DataRelationshipToScalar)',
   `scalarPropertyValue` TEXT COMMENT '(LiteralValue value)',
   `scalarPropertyValueLiteralType` VARCHAR(30) COMMENT '(LiteralValue kind)',
-  `structuredDataPropertyContextUUID` CHAR(36) NOT NULL COMMENT 'RStPCtxts (RestrictionStructuredDataPropertyContext)',
   `valueTypeUUID` CHAR(36) NULL COMMENT 'Drs (DataRange)',
-  
-  CONSTRAINT `fk_RScPVals_scalarDataPropertyUUID`
-    FOREIGN KEY (`scalarDataPropertyUUID`)
-    REFERENCES `OML`.`DRelToScs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
   
   CONSTRAINT `fk_RScPVals_structuredDataPropertyContextUUID`
     FOREIGN KEY (`structuredDataPropertyContextUUID`)
     REFERENCES `OML`.`RStPCtxts`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_RScPVals_scalarDataPropertyUUID`
+    FOREIGN KEY (`scalarDataPropertyUUID`)
+    REFERENCES `OML`.`DRelToScs`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -2203,18 +2203,18 @@ COMMENT = 'Concrete Information Table SingletonInstanceScalarDataPropertyValues'
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `OML`.`StPTs` (
   `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `structuredDataPropertyUUID` CHAR(36) NOT NULL COMMENT 'DRelToSts (DataRelationshipToStructure)',
   `structuredDataPropertyContextUUID` CHAR(36) NOT NULL COMMENT 'S1IStPCtxts (SingletonInstanceStructuredDataPropertyContext)',
-  
-  CONSTRAINT `fk_StPTs_structuredDataPropertyUUID`
-    FOREIGN KEY (`structuredDataPropertyUUID`)
-    REFERENCES `OML`.`DRelToSts`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
+  `structuredDataPropertyUUID` CHAR(36) NOT NULL COMMENT 'DRelToSts (DataRelationshipToStructure)',
   
   CONSTRAINT `fk_StPTs_structuredDataPropertyContextUUID`
     FOREIGN KEY (`structuredDataPropertyContextUUID`)
     REFERENCES `OML`.`S1IStPCtxts`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_StPTs_structuredDataPropertyUUID`
+    FOREIGN KEY (`structuredDataPropertyUUID`)
+    REFERENCES `OML`.`DRelToSts`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -2227,21 +2227,21 @@ COMMENT = 'Concrete Information Table StructuredDataPropertyTuples';
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `OML`.`ScPVals` (
   `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `structuredDataPropertyContextUUID` CHAR(36) NOT NULL COMMENT 'S1IStPCtxts (SingletonInstanceStructuredDataPropertyContext)',
   `scalarDataPropertyUUID` CHAR(36) NOT NULL COMMENT 'DRelToScs (DataRelationshipToScalar)',
   `scalarPropertyValue` TEXT COMMENT '(LiteralValue value)',
   `scalarPropertyValueLiteralType` VARCHAR(30) COMMENT '(LiteralValue kind)',
-  `structuredDataPropertyContextUUID` CHAR(36) NOT NULL COMMENT 'S1IStPCtxts (SingletonInstanceStructuredDataPropertyContext)',
   `valueTypeUUID` CHAR(36) NULL COMMENT 'Drs (DataRange)',
-  
-  CONSTRAINT `fk_ScPVals_scalarDataPropertyUUID`
-    FOREIGN KEY (`scalarDataPropertyUUID`)
-    REFERENCES `OML`.`DRelToScs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
   
   CONSTRAINT `fk_ScPVals_structuredDataPropertyContextUUID`
     FOREIGN KEY (`structuredDataPropertyContextUUID`)
     REFERENCES `OML`.`S1IStPCtxts`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_ScPVals_scalarDataPropertyUUID`
+    FOREIGN KEY (`scalarDataPropertyUUID`)
+    REFERENCES `OML`.`DRelToScs`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   

@@ -1221,6 +1221,15 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getForwardProperty__ModuleContext() {
+		return forwardPropertyEClass.getEOperations().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getInverseProperty() {
 		return inversePropertyEClass;
 	}
@@ -1293,6 +1302,15 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getInverseProperty__ModuleContext() {
+		return inversePropertyEClass.getEOperations().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getReifiedRelationship() {
 		return reifiedRelationshipEClass;
 	}
@@ -1313,6 +1331,15 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 */
 	public EReference getReifiedRelationship_InverseProperty() {
 		return (EReference)reifiedRelationshipEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getReifiedRelationship__AllNestedElements() {
+		return reifiedRelationshipEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -3095,6 +3122,7 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		createEOperation(forwardPropertyEClass, FORWARD_PROPERTY___NAME);
 		createEOperation(forwardPropertyEClass, FORWARD_PROPERTY___UUID);
 		createEOperation(forwardPropertyEClass, FORWARD_PROPERTY___RELATION);
+		createEOperation(forwardPropertyEClass, FORWARD_PROPERTY___MODULE_CONTEXT);
 
 		inversePropertyEClass = createEClass(INVERSE_PROPERTY);
 		createEReference(inversePropertyEClass, INVERSE_PROPERTY__REIFIED_RELATIONSHIP);
@@ -3104,10 +3132,12 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		createEOperation(inversePropertyEClass, INVERSE_PROPERTY___NAME);
 		createEOperation(inversePropertyEClass, INVERSE_PROPERTY___UUID);
 		createEOperation(inversePropertyEClass, INVERSE_PROPERTY___RELATION);
+		createEOperation(inversePropertyEClass, INVERSE_PROPERTY___MODULE_CONTEXT);
 
 		reifiedRelationshipEClass = createEClass(REIFIED_RELATIONSHIP);
 		createEReference(reifiedRelationshipEClass, REIFIED_RELATIONSHIP__FORWARD_PROPERTY);
 		createEReference(reifiedRelationshipEClass, REIFIED_RELATIONSHIP__INVERSE_PROPERTY);
+		createEOperation(reifiedRelationshipEClass, REIFIED_RELATIONSHIP___ALL_NESTED_ELEMENTS);
 
 		unreifiedRelationshipEClass = createEClass(UNREIFIED_RELATIONSHIP);
 		createEOperation(unreifiedRelationshipEClass, UNREIFIED_RELATIONSHIP___RELATION);
@@ -3398,7 +3428,6 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		conceptEClass.getESuperTypes().add(this.getUnaryTermKind());
 		entityRelationshipEClass.getESuperTypes().add(this.getTerm());
 		entityRelationshipEClass.getESuperTypes().add(this.getDirectedBinaryRelationshipKind());
-		restrictableRelationshipEClass.getESuperTypes().add(theCommonPackage.getResource());
 		restrictableRelationshipEClass.getESuperTypes().add(this.getPredicate());
 		forwardPropertyEClass.getESuperTypes().add(this.getRestrictableRelationship());
 		inversePropertyEClass.getESuperTypes().add(this.getRestrictableRelationship());
@@ -3586,6 +3615,8 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 
 		initEOperation(getForwardProperty__Relation(), this.getEntityRelationship(), "relation", 1, 1, !IS_UNIQUE, IS_ORDERED);
 
+		initEOperation(getForwardProperty__ModuleContext(), theCommonPackage.getModule(), "moduleContext", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
 		initEClass(inversePropertyEClass, InverseProperty.class, "InverseProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getInverseProperty_ReifiedRelationship(), this.getReifiedRelationship(), this.getReifiedRelationship_InverseProperty(), "reifiedRelationship", null, 1, 1, InverseProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getInverseProperty_Name(), theCommonPackage.getLocalName(), "name", null, 1, 1, InverseProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3600,9 +3631,13 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 
 		initEOperation(getInverseProperty__Relation(), this.getEntityRelationship(), "relation", 1, 1, !IS_UNIQUE, IS_ORDERED);
 
+		initEOperation(getInverseProperty__ModuleContext(), theCommonPackage.getModule(), "moduleContext", 0, 1, !IS_UNIQUE, IS_ORDERED);
+
 		initEClass(reifiedRelationshipEClass, ReifiedRelationship.class, "ReifiedRelationship", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getReifiedRelationship_ForwardProperty(), this.getForwardProperty(), this.getForwardProperty_ReifiedRelationship(), "forwardProperty", null, 1, 1, ReifiedRelationship.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getReifiedRelationship_InverseProperty(), this.getInverseProperty(), this.getInverseProperty_ReifiedRelationship(), "inverseProperty", null, 0, 1, ReifiedRelationship.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getReifiedRelationship__AllNestedElements(), theCommonPackage.getLogicalElement(), "allNestedElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(unreifiedRelationshipEClass, UnreifiedRelationship.class, "UnreifiedRelationship", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -3704,7 +3739,7 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		initEReference(getSegmentPredicate_ReifiedRelationshipInverseTarget(), this.getReifiedRelationship(), null, "reifiedRelationshipInverseTarget", null, 0, 1, SegmentPredicate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSegmentPredicate_UnreifiedRelationshipInverse(), this.getUnreifiedRelationship(), null, "unreifiedRelationshipInverse", null, 0, 1, SegmentPredicate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getSegmentPredicate__TermPredicate(), this.getTerm(), "termPredicate", 1, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getSegmentPredicate__TermPredicate(), this.getTerm(), "termPredicate", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEOperation(getSegmentPredicate__ModuleContext(), theCommonPackage.getModule(), "moduleContext", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
@@ -4448,6 +4483,11 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   new String[] {
 		   });	
 		addAnnotation
+		  (getForwardProperty__ModuleContext(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
 		  (getInverseProperty__Iri(), 
 		   source, 
 		   new String[] {
@@ -4469,6 +4509,16 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   });	
 		addAnnotation
 		  (getInverseProperty__Relation(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getInverseProperty__ModuleContext(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getReifiedRelationship__AllNestedElements(), 
 		   source, 
 		   new String[] {
 		   });	
@@ -4781,6 +4831,12 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 			 "kind", "Set"
 		   });	
 		addAnnotation
+		  (getReifiedRelationship__AllNestedElements(), 
+		   source, 
+		   new String[] {
+			 "kind", "Set"
+		   });	
+		addAnnotation
 		  (getEntityRestrictionAxiom__AllNestedElements(), 
 		   source, 
 		   new String[] {
@@ -4890,25 +4946,31 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		  (getForwardProperty__Iri(), 
 		   source, 
 		   new String[] {
-			 "code", "extent.terminologyBoxOfTerminologyBoxStatement.get(this).flatMap(tbox => tbox.iri().map(i =>  gov.nasa.jpl.imce.oml.tables.taggedTypes.iri(i + \"#\" + name)))"
+			 "code", "extent\n\t    .terminologyBoxOfTerminologyBoxStatement\n\t    .get(reifiedRelationship)\n\t    .flatMap(tbox => tbox.iri().map(i =>  gov.nasa.jpl.imce.oml.tables.taggedTypes.iri(i + \"#\" + name)))"
 		   });	
 		addAnnotation
 		  (getForwardProperty__AbbrevIRI(), 
 		   source, 
 		   new String[] {
-			 "code", "extent.terminologyBoxOfTerminologyBoxStatement.get(this).map(tbox => tbox.nsPrefix+\":\"+name)"
+			 "code", "extent\n\t    .terminologyBoxOfTerminologyBoxStatement\n\t    .get(reifiedRelationship)\n\t    .map(tbox => tbox.nsPrefix+\":\"+name)"
 		   });	
 		addAnnotation
 		  (getInverseProperty__Iri(), 
 		   source, 
 		   new String[] {
-			 "code", "extent.terminologyBoxOfTerminologyBoxStatement.get(this).flatMap(tbox => tbox.iri().map(i =>  gov.nasa.jpl.imce.oml.tables.taggedTypes.iri(i + \"#\" + name)))"
+			 "code", "extent\n\t    .terminologyBoxOfTerminologyBoxStatement\n\t    .get(reifiedRelationship)\n\t    .flatMap(tbox => tbox.iri().map(i =>  gov.nasa.jpl.imce.oml.tables.taggedTypes.iri(i + \"#\" + name)))"
 		   });	
 		addAnnotation
 		  (getInverseProperty__AbbrevIRI(), 
 		   source, 
 		   new String[] {
-			 "code", "extent.terminologyBoxOfTerminologyBoxStatement.get(this).map(tbox => tbox.nsPrefix+\":\"+name)"
+			 "code", "extent\n\t    .terminologyBoxOfTerminologyBoxStatement\n\t    .get(reifiedRelationship)\n\t    .map(tbox => tbox.nsPrefix+\":\"+name)"
+		   });	
+		addAnnotation
+		  (getReifiedRelationship__AllNestedElements(), 
+		   source, 
+		   new String[] {
+			 "code", "\n\t\tscala.collection.immutable.Set[resolver.api.LogicalElement]() ++\n\t\textent.forwardProperty.get(this) ++\n\t\textent.inverseProperty.get(this)"
 		   });	
 		addAnnotation
 		  (getRuleBodySegment__Position(), 
@@ -4933,6 +4995,18 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   source, 
 		   new String[] {
 			 "code", "chainRule().moduleContext()"
+		   });	
+		addAnnotation
+		  (getSegmentPredicate__TermPredicate(), 
+		   source, 
+		   new String[] {
+			 "code", "predicate.map(_.term()) orElse \n\treifiedRelationshipSource orElse \n\treifiedRelationshipInverseSource orElse\n\treifiedRelationshipTarget orElse\n\treifiedRelationshipInverseTarget orElse\n\tunreifiedRelationshipInverse"
+		   });	
+		addAnnotation
+		  (getSegmentPredicate__Uuid(), 
+		   source, 
+		   new String[] {
+			 "tables", "\n\t  {\n\t    import scala.collection.immutable.Seq\n\t    import scala.Predef.String\n\n\t    taggedTypes.segmentPredicateUUID(\n          oug.namespaceUUID(\"SegmentPredicate\",  \n            Seq.empty[(String, String)] ++\n            Seq(\"bodySegment\" -> bodySegmentUUID.toString) ++\n            predicateUUID.map { id => \"predicate\" -> id.toString } ++\n            reifiedRelationshipSourceUUID.map { id => \"reifiedRelationshipSource\" -> id.toString } ++\n            reifiedRelationshipInverseSourceUUID.map { id => \"reifiedRelationshipInverseSource\" -> id.toString } ++\n            reifiedRelationshipTargetUUID.map { id => \"reifiedRelationshipTarget\" -> id.toString } ++\n            reifiedRelationshipInverseTargetUUID.map { id => \"reifiedRelationshipInverseTarget\" -> id.toString } ++\n            unreifiedRelationshipInverseUUID.map { id => \"unreifiedRelationshipInverse\" -> id.toString } : _*).toString)\n\t   }"
 		   });	
 		addAnnotation
 		  (getEntityRestrictionAxiom__AllNestedElements(), 
@@ -5082,12 +5156,27 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   new String[] {
 		   });	
 		addAnnotation
+		  (getForwardProperty__ModuleContext(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
 		  (getInverseProperty__Iri(), 
 		   source, 
 		   new String[] {
 		   });	
 		addAnnotation
 		  (getInverseProperty__AbbrevIRI(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getInverseProperty__ModuleContext(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getReifiedRelationship__AllNestedElements(), 
 		   source, 
 		   new String[] {
 		   });	
@@ -5397,6 +5486,11 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   new String[] {
 		   });	
 		addAnnotation
+		  (getForwardProperty__ModuleContext(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
 		  (getForwardProperty_Name(), 
 		   source, 
 		   new String[] {
@@ -5417,7 +5511,17 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   new String[] {
 		   });	
 		addAnnotation
+		  (getInverseProperty__ModuleContext(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
 		  (getInverseProperty_Name(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getReifiedRelationship__AllNestedElements(), 
 		   source, 
 		   new String[] {
 		   });	

@@ -18,6 +18,8 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies.impl;
 
+import gov.nasa.jpl.imce.oml.model.common.Module;
+
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
 
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship;
@@ -232,27 +234,29 @@ public class InversePropertyImpl extends RestrictableRelationshipImpl implements
 	 * @generated
 	 */
 	public String uuid() {
-		ReifiedRelationship _reifiedRelationship = this.getReifiedRelationship();
-		TerminologyBox _tbox = null;
-		if (_reifiedRelationship!=null) {
-			_tbox=_reifiedRelationship.getTbox();
-		}
-		String _uuid = null;
-		if (_tbox!=null) {
-			_uuid=_tbox.uuid();
-		}
 		String _name = this.name();
 		String _string = null;
 		if (_name!=null) {
 			_string=_name.toString();
 		}
 		Pair<String, String> _mappedTo = Pair.<String, String>of("name", _string);
-		UUID _namespaceUUID = OMLExtensions.namespaceUUID(_uuid, _mappedTo);
-		String _string_1 = null;
-		if (_namespaceUUID!=null) {
-			_string_1=_namespaceUUID.toString();
+		ReifiedRelationship _reifiedRelationship = this.getReifiedRelationship();
+		String _uuid = null;
+		if (_reifiedRelationship!=null) {
+			_uuid=_reifiedRelationship.uuid();
 		}
-		return _string_1;
+		String _string_1 = null;
+		if (_uuid!=null) {
+			_string_1=_uuid.toString();
+		}
+		Pair<String, String> _mappedTo_1 = Pair.<String, String>of("reifiedRelationship", _string_1);
+		UUID _derivedUUID = OMLExtensions.derivedUUID(
+			"InverseProperty", _mappedTo, _mappedTo_1);
+		String _string_2 = null;
+		if (_derivedUUID!=null) {
+			_string_2=_derivedUUID.toString();
+		}
+		return _string_2;
 	}
 
 	/**
@@ -262,6 +266,20 @@ public class InversePropertyImpl extends RestrictableRelationshipImpl implements
 	 */
 	public EntityRelationship relation() {
 		return this.getReifiedRelationship();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Module moduleContext() {
+		ReifiedRelationship _reifiedRelationship = this.getReifiedRelationship();
+		Module _moduleContext = null;
+		if (_reifiedRelationship!=null) {
+			_moduleContext=_reifiedRelationship.moduleContext();
+		}
+		return _moduleContext;
 	}
 
 	/**
@@ -395,6 +413,8 @@ public class InversePropertyImpl extends RestrictableRelationshipImpl implements
 				return uuid();
 			case TerminologiesPackage.INVERSE_PROPERTY___RELATION:
 				return relation();
+			case TerminologiesPackage.INVERSE_PROPERTY___MODULE_CONTEXT:
+				return moduleContext();
 		}
 		return super.eInvoke(operationID, arguments);
 	}

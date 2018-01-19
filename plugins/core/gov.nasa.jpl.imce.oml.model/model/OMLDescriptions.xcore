@@ -432,8 +432,8 @@ class ScalarDataPropertyValue extends LogicalElement, ValueCrossReferenceTuple {
 		OMLExtensions.derivedUUID(
 		"ScalarDataPropertyValue", 
 		"structuredDataPropertyContext" -> structuredDataPropertyContext?.uuid()?.toString(),
-		"scalarPropertyValue" -> scalarPropertyValue?.value,
-		"scalarDataProperty" -> scalarDataProperty?.uuid()?.toString()
+		"scalarDataProperty" -> scalarDataProperty?.uuid()?.toString(),
+		"scalarPropertyValue" -> scalarPropertyValue?.value
 		)?.toString
 	}
 	

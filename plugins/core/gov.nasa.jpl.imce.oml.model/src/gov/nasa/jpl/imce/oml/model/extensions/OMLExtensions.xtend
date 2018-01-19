@@ -319,6 +319,46 @@ public class OMLExtensions {
 		factors.add(factor5)
 		derivedUUID(context, factors)
 	}
+	
+	static def UUID derivedUUID(
+		String context,
+		Pair<String, String> factor1,
+		Pair<String, String> factor2,
+		Pair<String, String> factor3,
+		Pair<String, String> factor4,
+		Pair<String, String> factor5,
+		Pair<String, String> factor6
+	) {
+		val factors = new ArrayList<Pair<String, String>>()
+		factors.add(factor1)
+		factors.add(factor2)
+		factors.add(factor3)
+		factors.add(factor4)
+		factors.add(factor5)
+		factors.add(factor6)
+		derivedUUID(context, factors)
+	}
+
+	static def UUID derivedUUID(
+		String context,
+		Pair<String, String> factor1,
+		Pair<String, String> factor2,
+		Pair<String, String> factor3,
+		Pair<String, String> factor4,
+		Pair<String, String> factor5,
+		Pair<String, String> factor6,
+		Pair<String, String> factor7
+	) {
+		val factors = new ArrayList<Pair<String, String>>()
+		factors.add(factor1)
+		factors.add(factor2)
+		factors.add(factor3)
+		factors.add(factor4)
+		factors.add(factor5)
+		factors.add(factor6)
+		factors.add(factor7)
+		derivedUUID(context, factors)
+	}
 
 	static def derivedUUID(String context, Pair<String, String>[] factors) {
 		val name = context + factors.map[pair|(pair.key ?: "") + ":" + (pair.value ?: "")].join(",")
@@ -445,6 +485,7 @@ public class OMLExtensions {
 			result.add(rr.forwardProperty)
 			result.add(rr.inverseProperty)
 		]
+		result.addAll(localUnreifiedRelationships)
 		result.addAll(localEntities)
 		result.filterNull
 	}

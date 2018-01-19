@@ -442,6 +442,37 @@ public class OMLExtensions {
     return _xblockexpression;
   }
   
+  public static UUID derivedUUID(final String context, final Pair<String, String> factor1, final Pair<String, String> factor2, final Pair<String, String> factor3, final Pair<String, String> factor4, final Pair<String, String> factor5, final Pair<String, String> factor6) {
+    UUID _xblockexpression = null;
+    {
+      final ArrayList<Pair<String, String>> factors = new ArrayList<Pair<String, String>>();
+      factors.add(factor1);
+      factors.add(factor2);
+      factors.add(factor3);
+      factors.add(factor4);
+      factors.add(factor5);
+      factors.add(factor6);
+      _xblockexpression = OMLExtensions.derivedUUID(context, ((Pair<String, String>[])Conversions.unwrapArray(factors, Pair.class)));
+    }
+    return _xblockexpression;
+  }
+  
+  public static UUID derivedUUID(final String context, final Pair<String, String> factor1, final Pair<String, String> factor2, final Pair<String, String> factor3, final Pair<String, String> factor4, final Pair<String, String> factor5, final Pair<String, String> factor6, final Pair<String, String> factor7) {
+    UUID _xblockexpression = null;
+    {
+      final ArrayList<Pair<String, String>> factors = new ArrayList<Pair<String, String>>();
+      factors.add(factor1);
+      factors.add(factor2);
+      factors.add(factor3);
+      factors.add(factor4);
+      factors.add(factor5);
+      factors.add(factor6);
+      factors.add(factor7);
+      _xblockexpression = OMLExtensions.derivedUUID(context, ((Pair<String, String>[])Conversions.unwrapArray(factors, Pair.class)));
+    }
+    return _xblockexpression;
+  }
+  
   public static UUID derivedUUID(final String context, final Pair<String, String>[] factors) {
     UUID _xblockexpression = null;
     {
@@ -669,6 +700,7 @@ public class OMLExtensions {
         result.add(rr.getInverseProperty());
       };
       this.localReifiedRelationships(it).forEach(_function);
+      Iterables.<Predicate>addAll(result, this.localUnreifiedRelationships(it));
       Iterables.<Predicate>addAll(result, this.localEntities(it));
       _xblockexpression = IterableExtensions.<Predicate>filterNull(result);
     }

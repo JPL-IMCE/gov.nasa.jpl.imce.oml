@@ -193,8 +193,8 @@ class TerminologyNestingAxiom extends TerminologyBoxAxiom {
 		OMLExtensions.derivedUUID(
 		"TerminologyNestingAxiom",
 		"tbox" -> tbox.uuid().toString,
-		"nestingTerminology" -> nestingTerminology?.uuid()?.toString,
-		"nestingContext" -> nestingContext?.uuid()?.toString
+		"nestingContext" -> nestingContext?.uuid()?.toString,
+		"nestingTerminology" -> nestingTerminology?.uuid()?.toString
 		)?.toString
 	}
 }

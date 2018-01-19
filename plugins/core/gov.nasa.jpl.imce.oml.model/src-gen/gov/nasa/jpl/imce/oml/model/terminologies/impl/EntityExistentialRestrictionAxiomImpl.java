@@ -70,36 +70,36 @@ public class EntityExistentialRestrictionAxiomImpl extends EntityRestrictionAxio
 	public String uuid() {
 		String _uuid = this.getTbox().uuid();
 		Pair<String, String> _mappedTo = Pair.<String, String>of("tbox", _uuid);
-		EntityRelationship _restrictedRelation = this.restrictedRelation();
+		Entity _restrictedDomain = this.getRestrictedDomain();
 		String _uuid_1 = null;
-		if (_restrictedRelation!=null) {
-			_uuid_1=_restrictedRelation.uuid();
+		if (_restrictedDomain!=null) {
+			_uuid_1=_restrictedDomain.uuid();
 		}
 		String _string = null;
 		if (_uuid_1!=null) {
 			_string=_uuid_1.toString();
 		}
-		Pair<String, String> _mappedTo_1 = Pair.<String, String>of("restrictedRelation", _string);
-		Entity _restrictedDomain = this.getRestrictedDomain();
+		Pair<String, String> _mappedTo_1 = Pair.<String, String>of("restrictedDomain", _string);
+		Entity _restrictedRange = this.getRestrictedRange();
 		String _uuid_2 = null;
-		if (_restrictedDomain!=null) {
-			_uuid_2=_restrictedDomain.uuid();
+		if (_restrictedRange!=null) {
+			_uuid_2=_restrictedRange.uuid();
 		}
 		String _string_1 = null;
 		if (_uuid_2!=null) {
 			_string_1=_uuid_2.toString();
 		}
-		Pair<String, String> _mappedTo_2 = Pair.<String, String>of("restrictedDomain", _string_1);
-		Entity _restrictedRange = this.getRestrictedRange();
+		Pair<String, String> _mappedTo_2 = Pair.<String, String>of("restrictedRange", _string_1);
+		EntityRelationship _restrictedRelation = this.restrictedRelation();
 		String _uuid_3 = null;
-		if (_restrictedRange!=null) {
-			_uuid_3=_restrictedRange.uuid();
+		if (_restrictedRelation!=null) {
+			_uuid_3=_restrictedRelation.uuid();
 		}
 		String _string_2 = null;
 		if (_uuid_3!=null) {
 			_string_2=_uuid_3.toString();
 		}
-		Pair<String, String> _mappedTo_3 = Pair.<String, String>of("restrictedRange", _string_2);
+		Pair<String, String> _mappedTo_3 = Pair.<String, String>of("restrictedRelationship", _string_2);
 		UUID _derivedUUID = OMLExtensions.derivedUUID(
 			"EntityExistentialRestrictionAxiom", _mappedTo, _mappedTo_1, _mappedTo_2, _mappedTo_3);
 		String _string_3 = null;

@@ -18,6 +18,10 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies.impl;
 
+import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
+import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
+import gov.nasa.jpl.imce.oml.model.common.ModuleElement;
+
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptualEntity;
 import gov.nasa.jpl.imce.oml.model.terminologies.Entity;
 import gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty;
@@ -32,6 +36,7 @@ import java.lang.reflect.InvocationTargetException;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -184,6 +189,26 @@ public class ReifiedRelationshipImpl extends EntityRelationshipImpl implements R
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<LogicalElement> allNestedElements() {
+		BasicEList<LogicalElement> _xblockexpression = null;
+		{
+			final BasicEList<LogicalElement> les = new BasicEList<LogicalElement>();
+			les.add(this.getForwardProperty());
+			InverseProperty _inverseProperty = this.getInverseProperty();
+			boolean _tripleNotEquals = (null != _inverseProperty);
+			if (_tripleNotEquals) {
+				les.add(this.getInverseProperty());
+			}
+			_xblockexpression = les;
+		}
+		return _xblockexpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Term term() {
 		return this;
 	}
@@ -299,6 +324,18 @@ public class ReifiedRelationshipImpl extends EntityRelationshipImpl implements R
 	 */
 	@Override
 	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
+		if (baseClass == ModuleElement.class) {
+			switch (baseOperationID) {
+				case CommonPackage.MODULE_ELEMENT___ALL_NESTED_ELEMENTS: return TerminologiesPackage.REIFIED_RELATIONSHIP___ALL_NESTED_ELEMENTS;
+				default: return super.eDerivedOperationID(baseOperationID, baseClass);
+			}
+		}
+		if (baseClass == Term.class) {
+			switch (baseOperationID) {
+				case TerminologiesPackage.TERM___ALL_NESTED_ELEMENTS: return TerminologiesPackage.REIFIED_RELATIONSHIP___ALL_NESTED_ELEMENTS;
+				default: return super.eDerivedOperationID(baseOperationID, baseClass);
+			}
+		}
 		if (baseClass == Predicate.class) {
 			switch (baseOperationID) {
 				case TerminologiesPackage.PREDICATE___TERM: return TerminologiesPackage.REIFIED_RELATIONSHIP___TERM;
@@ -327,6 +364,8 @@ public class ReifiedRelationshipImpl extends EntityRelationshipImpl implements R
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
+			case TerminologiesPackage.REIFIED_RELATIONSHIP___ALL_NESTED_ELEMENTS:
+				return allNestedElements();
 			case TerminologiesPackage.REIFIED_RELATIONSHIP___TERM:
 				return term();
 		}

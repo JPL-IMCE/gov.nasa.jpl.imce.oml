@@ -1899,7 +1899,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESTRICTABLE_RELATIONSHIP__UUID = CommonPackage.RESOURCE__UUID;
+	int RESTRICTABLE_RELATIONSHIP__UUID = PREDICATE__UUID;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -1908,7 +1908,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESTRICTABLE_RELATIONSHIP__ANNOTATIONS = CommonPackage.RESOURCE__ANNOTATIONS;
+	int RESTRICTABLE_RELATIONSHIP__ANNOTATIONS = PREDICATE__ANNOTATIONS;
 
 	/**
 	 * The number of structural features of the '<em>Restrictable Relationship</em>' class.
@@ -1917,7 +1917,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESTRICTABLE_RELATIONSHIP_FEATURE_COUNT = CommonPackage.RESOURCE_FEATURE_COUNT + 0;
+	int RESTRICTABLE_RELATIONSHIP_FEATURE_COUNT = PREDICATE_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Uuid</em>' operation.
@@ -1926,7 +1926,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESTRICTABLE_RELATIONSHIP___UUID = CommonPackage.RESOURCE___UUID;
+	int RESTRICTABLE_RELATIONSHIP___UUID = PREDICATE___UUID;
 
 	/**
 	 * The operation id for the '<em>Module Context</em>' operation.
@@ -1935,7 +1935,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESTRICTABLE_RELATIONSHIP___MODULE_CONTEXT = CommonPackage.RESOURCE___MODULE_CONTEXT;
+	int RESTRICTABLE_RELATIONSHIP___MODULE_CONTEXT = PREDICATE___MODULE_CONTEXT;
 
 	/**
 	 * The operation id for the '<em>Iri</em>' operation.
@@ -1944,7 +1944,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESTRICTABLE_RELATIONSHIP___IRI = CommonPackage.RESOURCE___IRI;
+	int RESTRICTABLE_RELATIONSHIP___IRI = PREDICATE___IRI;
 
 	/**
 	 * The operation id for the '<em>Name</em>' operation.
@@ -1953,7 +1953,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESTRICTABLE_RELATIONSHIP___NAME = CommonPackage.RESOURCE___NAME;
+	int RESTRICTABLE_RELATIONSHIP___NAME = PREDICATE___NAME;
 
 	/**
 	 * The operation id for the '<em>Abbrev IRI</em>' operation.
@@ -1962,7 +1962,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESTRICTABLE_RELATIONSHIP___ABBREV_IRI = CommonPackage.RESOURCE___ABBREV_IRI;
+	int RESTRICTABLE_RELATIONSHIP___ABBREV_IRI = PREDICATE___ABBREV_IRI;
 
 	/**
 	 * The operation id for the '<em>Relation</em>' operation.
@@ -1971,7 +1971,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESTRICTABLE_RELATIONSHIP___RELATION = CommonPackage.RESOURCE_OPERATION_COUNT + 1;
+	int RESTRICTABLE_RELATIONSHIP___RELATION = PREDICATE_OPERATION_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Term</em>' operation.
@@ -1980,7 +1980,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESTRICTABLE_RELATIONSHIP___TERM = CommonPackage.RESOURCE_OPERATION_COUNT + 2;
+	int RESTRICTABLE_RELATIONSHIP___TERM = PREDICATE_OPERATION_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Restrictable Relationship</em>' class.
@@ -1989,7 +1989,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESTRICTABLE_RELATIONSHIP_OPERATION_COUNT = CommonPackage.RESOURCE_OPERATION_COUNT + 3;
+	int RESTRICTABLE_RELATIONSHIP_OPERATION_COUNT = PREDICATE_OPERATION_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ForwardPropertyImpl <em>Forward Property</em>}' class.
@@ -2047,15 +2047,6 @@ public interface TerminologiesPackage extends EPackage {
 	int FORWARD_PROPERTY_FEATURE_COUNT = RESTRICTABLE_RELATIONSHIP_FEATURE_COUNT + 2;
 
 	/**
-	 * The operation id for the '<em>Module Context</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FORWARD_PROPERTY___MODULE_CONTEXT = RESTRICTABLE_RELATIONSHIP___MODULE_CONTEXT;
-
-	/**
 	 * The operation id for the '<em>Term</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2110,13 +2101,22 @@ public interface TerminologiesPackage extends EPackage {
 	int FORWARD_PROPERTY___RELATION = RESTRICTABLE_RELATIONSHIP_OPERATION_COUNT + 4;
 
 	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORWARD_PROPERTY___MODULE_CONTEXT = RESTRICTABLE_RELATIONSHIP_OPERATION_COUNT + 5;
+
+	/**
 	 * The number of operations of the '<em>Forward Property</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FORWARD_PROPERTY_OPERATION_COUNT = RESTRICTABLE_RELATIONSHIP_OPERATION_COUNT + 5;
+	int FORWARD_PROPERTY_OPERATION_COUNT = RESTRICTABLE_RELATIONSHIP_OPERATION_COUNT + 6;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.InversePropertyImpl <em>Inverse Property</em>}' class.
@@ -2174,15 +2174,6 @@ public interface TerminologiesPackage extends EPackage {
 	int INVERSE_PROPERTY_FEATURE_COUNT = RESTRICTABLE_RELATIONSHIP_FEATURE_COUNT + 2;
 
 	/**
-	 * The operation id for the '<em>Module Context</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INVERSE_PROPERTY___MODULE_CONTEXT = RESTRICTABLE_RELATIONSHIP___MODULE_CONTEXT;
-
-	/**
 	 * The operation id for the '<em>Term</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2237,13 +2228,22 @@ public interface TerminologiesPackage extends EPackage {
 	int INVERSE_PROPERTY___RELATION = RESTRICTABLE_RELATIONSHIP_OPERATION_COUNT + 4;
 
 	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INVERSE_PROPERTY___MODULE_CONTEXT = RESTRICTABLE_RELATIONSHIP_OPERATION_COUNT + 5;
+
+	/**
 	 * The number of operations of the '<em>Inverse Property</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INVERSE_PROPERTY_OPERATION_COUNT = RESTRICTABLE_RELATIONSHIP_OPERATION_COUNT + 5;
+	int INVERSE_PROPERTY_OPERATION_COUNT = RESTRICTABLE_RELATIONSHIP_OPERATION_COUNT + 6;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipImpl <em>Reified Relationship</em>}' class.
@@ -2463,15 +2463,6 @@ public interface TerminologiesPackage extends EPackage {
 	int REIFIED_RELATIONSHIP___UUID = ENTITY_RELATIONSHIP___UUID;
 
 	/**
-	 * The operation id for the '<em>All Nested Elements</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REIFIED_RELATIONSHIP___ALL_NESTED_ELEMENTS = ENTITY_RELATIONSHIP___ALL_NESTED_ELEMENTS;
-
-	/**
 	 * The operation id for the '<em>Relation Domain</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2499,13 +2490,22 @@ public interface TerminologiesPackage extends EPackage {
 	int REIFIED_RELATIONSHIP___TERM = ENTITY_RELATIONSHIP_OPERATION_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP___ALL_NESTED_ELEMENTS = ENTITY_RELATIONSHIP_OPERATION_COUNT + 2;
+
+	/**
 	 * The number of operations of the '<em>Reified Relationship</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REIFIED_RELATIONSHIP_OPERATION_COUNT = ENTITY_RELATIONSHIP_OPERATION_COUNT + 2;
+	int REIFIED_RELATIONSHIP_OPERATION_COUNT = ENTITY_RELATIONSHIP_OPERATION_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.UnreifiedRelationshipImpl <em>Unreified Relationship</em>}' class.
@@ -9806,6 +9806,16 @@ public interface TerminologiesPackage extends EPackage {
 	EOperation getForwardProperty__Relation();
 
 	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty#moduleContext() <em>Module Context</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Module Context</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty#moduleContext()
+	 * @generated
+	 */
+	EOperation getForwardProperty__ModuleContext();
+
+	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty <em>Inverse Property</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9888,6 +9898,16 @@ public interface TerminologiesPackage extends EPackage {
 	EOperation getInverseProperty__Relation();
 
 	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty#moduleContext() <em>Module Context</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Module Context</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty#moduleContext()
+	 * @generated
+	 */
+	EOperation getInverseProperty__ModuleContext();
+
+	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship <em>Reified Relationship</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9918,6 +9938,16 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getReifiedRelationship_InverseProperty();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship#allNestedElements() <em>All Nested Elements</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>All Nested Elements</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship#allNestedElements()
+	 * @generated
+	 */
+	EOperation getReifiedRelationship__AllNestedElements();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship <em>Unreified Relationship</em>}'.
@@ -12413,6 +12443,14 @@ public interface TerminologiesPackage extends EPackage {
 		EOperation FORWARD_PROPERTY___RELATION = eINSTANCE.getForwardProperty__Relation();
 
 		/**
+		 * The meta object literal for the '<em><b>Module Context</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation FORWARD_PROPERTY___MODULE_CONTEXT = eINSTANCE.getForwardProperty__ModuleContext();
+
+		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.InversePropertyImpl <em>Inverse Property</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -12479,6 +12517,14 @@ public interface TerminologiesPackage extends EPackage {
 		EOperation INVERSE_PROPERTY___RELATION = eINSTANCE.getInverseProperty__Relation();
 
 		/**
+		 * The meta object literal for the '<em><b>Module Context</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation INVERSE_PROPERTY___MODULE_CONTEXT = eINSTANCE.getInverseProperty__ModuleContext();
+
+		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipImpl <em>Reified Relationship</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -12503,6 +12549,14 @@ public interface TerminologiesPackage extends EPackage {
 		 * @generated
 		 */
 		EReference REIFIED_RELATIONSHIP__INVERSE_PROPERTY = eINSTANCE.getReifiedRelationship_InverseProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>All Nested Elements</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation REIFIED_RELATIONSHIP___ALL_NESTED_ELEMENTS = eINSTANCE.getReifiedRelationship__AllNestedElements();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.UnreifiedRelationshipImpl <em>Unreified Relationship</em>}' class.
