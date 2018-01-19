@@ -17,6 +17,9 @@
 )
 package gov.nasa.jpl.imce.oml.model.terminologies
 
+import java.util.ArrayList
+import org.eclipse.xtext.xbase.lib.Pair
+
 import gov.nasa.jpl.imce.oml.model.common.Collection
 import gov.nasa.jpl.imce.oml.model.common.CopyConstructor
 import gov.nasa.jpl.imce.oml.model.common.DerivedUUID
@@ -449,7 +452,11 @@ class ForwardProperty extends RestrictableRelationship {
 	@NotFunctionalAPI
 	@NotSchema
 	op UUID[1] uuid() {
-		OMLExtensions.namespaceUUID(reifiedRelationship?.tbox?.uuid(), "name" -> name()?.toString())?.toString
+		OMLExtensions.derivedUUID(
+		"ForwardProperty", 
+		"name" -> name()?.toString(),
+		"reifiedRelationship" -> reifiedRelationship?.uuid()?.toString
+		)?.toString
 	}
 	
 	@NotSchema
@@ -499,7 +506,11 @@ class InverseProperty extends RestrictableRelationship {
 	@NotFunctionalAPI
 	@NotSchema
 	op UUID[1] uuid() {
-		OMLExtensions.namespaceUUID(reifiedRelationship?.tbox?.uuid(), "name" -> name()?.toString())?.toString
+		OMLExtensions.derivedUUID(
+		"InverseProperty", 
+		"name" -> name()?.toString(),
+		"reifiedRelationship" -> reifiedRelationship?.uuid()?.toString
+		)?.toString
 	}
 	
 	@NotSchema
@@ -905,14 +916,41 @@ class SegmentPredicate extends ElementCrossReferenceTuple {
 	@ImplicitExtent
 	op Module[?] moduleContext() { bodySegment.moduleContext() }
 	
+	@Scala(tables="
+	  {
+	    import scala.collection.immutable.Seq
+	    import scala.Predef.String
+
+	    taggedTypes.segmentPredicateUUID(
+          oug.namespaceUUID(\"SegmentPredicate\",  
+            Seq.empty[(String, String)] ++
+            Seq(\"bodySegment\" -> bodySegmentUUID.toString) ++
+            predicateUUID.map { id => \"predicate\" -> id.toString } ++
+            reifiedRelationshipSourceUUID.map { id => \"reifiedRelationshipSource\" -> id.toString } ++
+            reifiedRelationshipInverseSourceUUID.map { id => \"reifiedRelationshipInverseSource\" -> id.toString } ++
+            reifiedRelationshipTargetUUID.map { id => \"reifiedRelationshipTarget\" -> id.toString } ++
+            reifiedRelationshipInverseTargetUUID.map { id => \"reifiedRelationshipInverseTarget\" -> id.toString } ++
+            unreifiedRelationshipInverseUUID.map { id => \"unreifiedRelationshipInverse\" -> id.toString } : _*).toString)
+	   }")
 	@FunctionalInterface
 	@OverrideVal
 	op UUID[1] uuid() {
-		OMLExtensions.derivedUUID(
-		"SegmentPredicate",
-		"predicate" -> predicate?.uuid()?.toString,
-		"bodySegment" -> bodySegment?.uuid()?.toString
-		)?.toString
+		val factors = new ArrayList<Pair<String, String>>()
+		factors.add("bodySegment" -> bodySegment?.uuid()?.toString)
+		if (null !== predicate) 
+			factors.add("predicate" -> predicate.uuid()?.toString)
+		if (null !== reifiedRelationshipSource) 
+			factors.add("reifiedRelationshipSource" -> reifiedRelationshipSource.uuid()?.toString)
+		if (null !== reifiedRelationshipInverseSource) 
+			factors.add("reifiedRelationshipInverseSource" -> reifiedRelationshipInverseSource?.uuid()?.toString)
+		if (null !== reifiedRelationshipTarget) 
+			factors.add("reifiedRelationshipTarget" -> reifiedRelationshipTarget?.uuid()?.toString)
+		if (null !== reifiedRelationshipInverseTarget) 
+			factors.add("reifiedRelationshipInverseTarget" -> reifiedRelationshipInverseTarget?.uuid()?.toString)
+		if (null !== unreifiedRelationshipInverse) 
+			factors.add("unreifiedRelationshipInverse" -> unreifiedRelationshipInverse?.uuid()?.toString)
+		
+		OMLExtensions.derivedUUID("SegmentPredicate", factors)?.toString
 	}
 }
 
@@ -960,9 +998,9 @@ class EntityExistentialRestrictionAxiom extends EntityRestrictionAxiom {
 		OMLExtensions.derivedUUID(
 		"EntityExistentialRestrictionAxiom", 
 		"tbox" -> tbox.uuid(),
-		"restrictedRelation" -> restrictedRelation?.uuid()?.toString,
 		"restrictedDomain" -> restrictedDomain?.uuid()?.toString, 
-		"restrictedRange" -> restrictedRange?.uuid()?.toString
+		"restrictedRange" -> restrictedRange?.uuid()?.toString,
+		"restrictedRelationship" -> restrictedRelation?.uuid()?.toString
 		)?.toString
 	}
 }
@@ -981,9 +1019,9 @@ class EntityUniversalRestrictionAxiom extends EntityRestrictionAxiom {
 		OMLExtensions.derivedUUID(
 		"EntityUniversalRestrictionAxiom", 
 		"tbox" -> tbox.uuid(),
-		"restrictedRelation" -> restrictedRelation?.uuid()?.toString,
 		"restrictedDomain" -> restrictedDomain?.uuid()?.toString, 
-		"restrictedRange" -> restrictedRange?.uuid()?.toString
+		"restrictedRange" -> restrictedRange?.uuid()?.toString,
+		"restrictedRelationship" -> restrictedRelation?.uuid()?.toString
 		)?.toString
 	}
 	
@@ -1312,8 +1350,8 @@ class EntityStructuredDataPropertyParticularRestrictionAxiom extends EntityStruc
 		OMLExtensions.derivedUUID(
 		"EntityStructuredDataPropertyParticularRestrictionAxiom",
 		"tbox" -> tbox?.uuid(),
-		"restrictedEntity" -> restrictedEntity?.uuid()?.toString,
-		"structuredDataProperty" -> structuredDataProperty?.uuid()?.toString
+		"structuredDataProperty" -> structuredDataProperty?.uuid()?.toString,
+		"restrictedEntity" -> restrictedEntity?.uuid()?.toString
 		)?.toString
 	}
 	
@@ -1424,8 +1462,8 @@ class RestrictionScalarDataPropertyValue extends LogicalElement, ValueCrossRefer
 		OMLExtensions.derivedUUID(
 		"RestrictionScalarDataPropertyValue", 
 		"structuredDataPropertyContext" -> structuredDataPropertyContext?.uuid()?.toString(),
-		"scalarPropertyValue" -> scalarPropertyValue?.value,
-		"scalarDataProperty" -> scalarDataProperty?.uuid()?.toString()
+		"scalarDataProperty" -> scalarDataProperty?.uuid()?.toString(),
+		"scalarPropertyValue" -> scalarPropertyValue?.value
 		)?.toString
 	}
 	

@@ -328,8 +328,8 @@ class BundledTerminologyAxiom extends TerminologyBundleAxiom {
 	op UUID[1] uuid() {
 		OMLExtensions.derivedUUID(
 		"BundledTerminologyAxiom",
-		"bundledTerminology" -> bundledTerminology?.uuid()?.toString,
-		"bundle" -> bundle?.uuid()?.toString
+		"bundle" -> bundle?.uuid()?.toString,
+		"bundledTerminology" -> bundledTerminology?.uuid()?.toString
 		)?.toString
 	}
 }
