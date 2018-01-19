@@ -700,6 +700,7 @@ public class OMLExtensions {
         result.add(rr.getInverseProperty());
       };
       this.localReifiedRelationships(it).forEach(_function);
+      Iterables.<Predicate>addAll(result, this.localUnreifiedRelationships(it));
       Iterables.<Predicate>addAll(result, this.localEntities(it));
       _xblockexpression = IterableExtensions.<Predicate>filterNull(result);
     }
