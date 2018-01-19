@@ -147,26 +147,26 @@ public class BundledTerminologyAxiomImpl extends TerminologyBundleAxiomImpl impl
 	 * @generated
 	 */
 	public String uuid() {
-		TerminologyBox _bundledTerminology = this.getBundledTerminology();
+		Bundle _bundle = this.getBundle();
 		String _uuid = null;
-		if (_bundledTerminology!=null) {
-			_uuid=_bundledTerminology.uuid();
+		if (_bundle!=null) {
+			_uuid=_bundle.uuid();
 		}
 		String _string = null;
 		if (_uuid!=null) {
 			_string=_uuid.toString();
 		}
-		Pair<String, String> _mappedTo = Pair.<String, String>of("bundledTerminology", _string);
-		Bundle _bundle = this.getBundle();
+		Pair<String, String> _mappedTo = Pair.<String, String>of("bundle", _string);
+		TerminologyBox _bundledTerminology = this.getBundledTerminology();
 		String _uuid_1 = null;
-		if (_bundle!=null) {
-			_uuid_1=_bundle.uuid();
+		if (_bundledTerminology!=null) {
+			_uuid_1=_bundledTerminology.uuid();
 		}
 		String _string_1 = null;
 		if (_uuid_1!=null) {
 			_string_1=_uuid_1.toString();
 		}
-		Pair<String, String> _mappedTo_1 = Pair.<String, String>of("bundle", _string_1);
+		Pair<String, String> _mappedTo_1 = Pair.<String, String>of("bundledTerminology", _string_1);
 		UUID _derivedUUID = OMLExtensions.derivedUUID(
 			"BundledTerminologyAxiom", _mappedTo, _mappedTo_1);
 		String _string_2 = null;

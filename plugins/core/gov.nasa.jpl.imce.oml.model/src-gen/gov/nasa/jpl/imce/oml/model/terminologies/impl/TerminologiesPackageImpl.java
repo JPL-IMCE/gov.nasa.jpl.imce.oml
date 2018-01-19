@@ -5003,6 +5003,12 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 			 "code", "predicate.map(_.term()) orElse \n\treifiedRelationshipSource orElse \n\treifiedRelationshipInverseSource orElse\n\treifiedRelationshipTarget orElse\n\treifiedRelationshipInverseTarget orElse\n\tunreifiedRelationshipInverse"
 		   });	
 		addAnnotation
+		  (getSegmentPredicate__Uuid(), 
+		   source, 
+		   new String[] {
+			 "tables", "\n\t  {\n\t    import scala.collection.immutable.Seq\n\t    import scala.Predef.String\n\n\t    taggedTypes.segmentPredicateUUID(\n          oug.namespaceUUID(\"SegmentPredicate\",  \n            Seq.empty[(String, String)] ++\n            Seq(\"bodySegment\" -> bodySegmentUUID.toString) ++\n            predicateUUID.map { id => \"predicate\" -> id.toString } ++\n            reifiedRelationshipSourceUUID.map { id => \"reifiedRelationshipSource\" -> id.toString } ++\n            reifiedRelationshipInverseSourceUUID.map { id => \"reifiedRelationshipInverseSource\" -> id.toString } ++\n            reifiedRelationshipTargetUUID.map { id => \"reifiedRelationshipTarget\" -> id.toString } ++\n            reifiedRelationshipInverseTargetUUID.map { id => \"reifiedRelationshipInverseTarget\" -> id.toString } ++\n            unreifiedRelationshipInverseUUID.map { id => \"unreifiedRelationshipInverse\" -> id.toString } : _*).toString)\n\t   }"
+		   });	
+		addAnnotation
 		  (getEntityRestrictionAxiom__AllNestedElements(), 
 		   source, 
 		   new String[] {

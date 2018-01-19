@@ -220,26 +220,26 @@ public class TerminologyNestingAxiomImpl extends TerminologyBoxAxiomImpl impleme
 	public String uuid() {
 		String _string = this.getTbox().uuid().toString();
 		Pair<String, String> _mappedTo = Pair.<String, String>of("tbox", _string);
-		TerminologyBox _nestingTerminology = this.getNestingTerminology();
+		Concept _nestingContext = this.getNestingContext();
 		String _uuid = null;
-		if (_nestingTerminology!=null) {
-			_uuid=_nestingTerminology.uuid();
+		if (_nestingContext!=null) {
+			_uuid=_nestingContext.uuid();
 		}
 		String _string_1 = null;
 		if (_uuid!=null) {
 			_string_1=_uuid.toString();
 		}
-		Pair<String, String> _mappedTo_1 = Pair.<String, String>of("nestingTerminology", _string_1);
-		Concept _nestingContext = this.getNestingContext();
+		Pair<String, String> _mappedTo_1 = Pair.<String, String>of("nestingContext", _string_1);
+		TerminologyBox _nestingTerminology = this.getNestingTerminology();
 		String _uuid_1 = null;
-		if (_nestingContext!=null) {
-			_uuid_1=_nestingContext.uuid();
+		if (_nestingTerminology!=null) {
+			_uuid_1=_nestingTerminology.uuid();
 		}
 		String _string_2 = null;
 		if (_uuid_1!=null) {
 			_string_2=_uuid_1.toString();
 		}
-		Pair<String, String> _mappedTo_2 = Pair.<String, String>of("nestingContext", _string_2);
+		Pair<String, String> _mappedTo_2 = Pair.<String, String>of("nestingTerminology", _string_2);
 		UUID _derivedUUID = OMLExtensions.derivedUUID(
 			"TerminologyNestingAxiom", _mappedTo, _mappedTo_1, _mappedTo_2);
 		String _string_3 = null;

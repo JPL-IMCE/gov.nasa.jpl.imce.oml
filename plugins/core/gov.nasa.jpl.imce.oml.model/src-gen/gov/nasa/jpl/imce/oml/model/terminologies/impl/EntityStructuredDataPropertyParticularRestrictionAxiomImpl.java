@@ -206,26 +206,26 @@ public class EntityStructuredDataPropertyParticularRestrictionAxiomImpl extends 
 			_uuid=_tbox.uuid();
 		}
 		Pair<String, String> _mappedTo = Pair.<String, String>of("tbox", _uuid);
-		Entity _restrictedEntity = this.getRestrictedEntity();
+		DataRelationshipToStructure _structuredDataProperty = this.getStructuredDataProperty();
 		String _uuid_1 = null;
-		if (_restrictedEntity!=null) {
-			_uuid_1=_restrictedEntity.uuid();
+		if (_structuredDataProperty!=null) {
+			_uuid_1=_structuredDataProperty.uuid();
 		}
 		String _string = null;
 		if (_uuid_1!=null) {
 			_string=_uuid_1.toString();
 		}
-		Pair<String, String> _mappedTo_1 = Pair.<String, String>of("restrictedEntity", _string);
-		DataRelationshipToStructure _structuredDataProperty = this.getStructuredDataProperty();
+		Pair<String, String> _mappedTo_1 = Pair.<String, String>of("structuredDataProperty", _string);
+		Entity _restrictedEntity = this.getRestrictedEntity();
 		String _uuid_2 = null;
-		if (_structuredDataProperty!=null) {
-			_uuid_2=_structuredDataProperty.uuid();
+		if (_restrictedEntity!=null) {
+			_uuid_2=_restrictedEntity.uuid();
 		}
 		String _string_1 = null;
 		if (_uuid_2!=null) {
 			_string_1=_uuid_2.toString();
 		}
-		Pair<String, String> _mappedTo_2 = Pair.<String, String>of("structuredDataProperty", _string_1);
+		Pair<String, String> _mappedTo_2 = Pair.<String, String>of("restrictedEntity", _string_1);
 		UUID _derivedUUID = OMLExtensions.derivedUUID(
 			"EntityStructuredDataPropertyParticularRestrictionAxiom", _mappedTo, _mappedTo_1, _mappedTo_2);
 		String _string_2 = null;

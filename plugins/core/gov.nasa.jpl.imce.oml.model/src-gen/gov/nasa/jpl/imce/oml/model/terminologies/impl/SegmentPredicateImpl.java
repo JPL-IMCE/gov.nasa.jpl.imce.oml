@@ -34,6 +34,7 @@ import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship;
 
 import java.lang.reflect.InvocationTargetException;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -486,33 +487,110 @@ public class SegmentPredicateImpl extends ElementCrossReferenceTupleImpl impleme
 	 * @generated
 	 */
 	public String uuid() {
-		Predicate _predicate = this.getPredicate();
-		String _uuid = null;
-		if (_predicate!=null) {
-			_uuid=_predicate.uuid();
+		String _xblockexpression = null;
+		{
+			final ArrayList<Pair<String, String>> factors = new ArrayList<Pair<String, String>>();
+			RuleBodySegment _bodySegment = this.getBodySegment();
+			String _uuid = null;
+			if (_bodySegment!=null) {
+				_uuid=_bodySegment.uuid();
+			}
+			String _string = null;
+			if (_uuid!=null) {
+				_string=_uuid.toString();
+			}
+			Pair<String, String> _mappedTo = Pair.<String, String>of("bodySegment", _string);
+			factors.add(_mappedTo);
+			Predicate _predicate = this.getPredicate();
+			boolean _tripleNotEquals = (null != _predicate);
+			if (_tripleNotEquals) {
+				String _uuid_1 = this.getPredicate().uuid();
+				String _string_1 = null;
+				if (_uuid_1!=null) {
+					_string_1=_uuid_1.toString();
+				}
+				Pair<String, String> _mappedTo_1 = Pair.<String, String>of("predicate", _string_1);
+				factors.add(_mappedTo_1);
+			}
+			ReifiedRelationship _reifiedRelationshipSource = this.getReifiedRelationshipSource();
+			boolean _tripleNotEquals_1 = (null != _reifiedRelationshipSource);
+			if (_tripleNotEquals_1) {
+				String _uuid_2 = this.getReifiedRelationshipSource().uuid();
+				String _string_2 = null;
+				if (_uuid_2!=null) {
+					_string_2=_uuid_2.toString();
+				}
+				Pair<String, String> _mappedTo_2 = Pair.<String, String>of("reifiedRelationshipSource", _string_2);
+				factors.add(_mappedTo_2);
+			}
+			ReifiedRelationship _reifiedRelationshipInverseSource = this.getReifiedRelationshipInverseSource();
+			boolean _tripleNotEquals_2 = (null != _reifiedRelationshipInverseSource);
+			if (_tripleNotEquals_2) {
+				ReifiedRelationship _reifiedRelationshipInverseSource_1 = this.getReifiedRelationshipInverseSource();
+				String _uuid_3 = null;
+				if (_reifiedRelationshipInverseSource_1!=null) {
+					_uuid_3=_reifiedRelationshipInverseSource_1.uuid();
+				}
+				String _string_3 = null;
+				if (_uuid_3!=null) {
+					_string_3=_uuid_3.toString();
+				}
+				Pair<String, String> _mappedTo_3 = Pair.<String, String>of("reifiedRelationshipInverseSource", _string_3);
+				factors.add(_mappedTo_3);
+			}
+			ReifiedRelationship _reifiedRelationshipTarget = this.getReifiedRelationshipTarget();
+			boolean _tripleNotEquals_3 = (null != _reifiedRelationshipTarget);
+			if (_tripleNotEquals_3) {
+				ReifiedRelationship _reifiedRelationshipTarget_1 = this.getReifiedRelationshipTarget();
+				String _uuid_4 = null;
+				if (_reifiedRelationshipTarget_1!=null) {
+					_uuid_4=_reifiedRelationshipTarget_1.uuid();
+				}
+				String _string_4 = null;
+				if (_uuid_4!=null) {
+					_string_4=_uuid_4.toString();
+				}
+				Pair<String, String> _mappedTo_4 = Pair.<String, String>of("reifiedRelationshipTarget", _string_4);
+				factors.add(_mappedTo_4);
+			}
+			ReifiedRelationship _reifiedRelationshipInverseTarget = this.getReifiedRelationshipInverseTarget();
+			boolean _tripleNotEquals_4 = (null != _reifiedRelationshipInverseTarget);
+			if (_tripleNotEquals_4) {
+				ReifiedRelationship _reifiedRelationshipInverseTarget_1 = this.getReifiedRelationshipInverseTarget();
+				String _uuid_5 = null;
+				if (_reifiedRelationshipInverseTarget_1!=null) {
+					_uuid_5=_reifiedRelationshipInverseTarget_1.uuid();
+				}
+				String _string_5 = null;
+				if (_uuid_5!=null) {
+					_string_5=_uuid_5.toString();
+				}
+				Pair<String, String> _mappedTo_5 = Pair.<String, String>of("reifiedRelationshipInverseTarget", _string_5);
+				factors.add(_mappedTo_5);
+			}
+			UnreifiedRelationship _unreifiedRelationshipInverse = this.getUnreifiedRelationshipInverse();
+			boolean _tripleNotEquals_5 = (null != _unreifiedRelationshipInverse);
+			if (_tripleNotEquals_5) {
+				UnreifiedRelationship _unreifiedRelationshipInverse_1 = this.getUnreifiedRelationshipInverse();
+				String _uuid_6 = null;
+				if (_unreifiedRelationshipInverse_1!=null) {
+					_uuid_6=_unreifiedRelationshipInverse_1.uuid();
+				}
+				String _string_6 = null;
+				if (_uuid_6!=null) {
+					_string_6=_uuid_6.toString();
+				}
+				Pair<String, String> _mappedTo_6 = Pair.<String, String>of("unreifiedRelationshipInverse", _string_6);
+				factors.add(_mappedTo_6);
+			}
+			UUID _derivedUUID = OMLExtensions.derivedUUID("SegmentPredicate", ((Pair<String, String>[])org.eclipse.xtext.xbase.lib.Conversions.unwrapArray(factors, Pair.class)));
+			String _string_7 = null;
+			if (_derivedUUID!=null) {
+				_string_7=_derivedUUID.toString();
+			}
+			_xblockexpression = _string_7;
 		}
-		String _string = null;
-		if (_uuid!=null) {
-			_string=_uuid.toString();
-		}
-		Pair<String, String> _mappedTo = Pair.<String, String>of("predicate", _string);
-		RuleBodySegment _bodySegment = this.getBodySegment();
-		String _uuid_1 = null;
-		if (_bodySegment!=null) {
-			_uuid_1=_bodySegment.uuid();
-		}
-		String _string_1 = null;
-		if (_uuid_1!=null) {
-			_string_1=_uuid_1.toString();
-		}
-		Pair<String, String> _mappedTo_1 = Pair.<String, String>of("bodySegment", _string_1);
-		UUID _derivedUUID = OMLExtensions.derivedUUID(
-			"SegmentPredicate", _mappedTo, _mappedTo_1);
-		String _string_2 = null;
-		if (_derivedUUID!=null) {
-			_string_2=_derivedUUID.toString();
-		}
-		return _string_2;
+		return _xblockexpression;
 	}
 
 	/**
