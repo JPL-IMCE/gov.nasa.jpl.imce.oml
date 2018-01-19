@@ -353,12 +353,18 @@ Followed the [official Tycho doc](https://wiki.eclipse.org/Tycho/eclipse-reposit
 
 - Removed a redundant specialization (an OML `Predicate` is a kind of OML `Resource`)
 
-  Previously: `abstract class RestrictableRelationship extends Resource, Predicate`
-  Now: `abstract class RestrictableRelationship extends Predicate`
+   - Previously: `abstract class RestrictableRelationship extends Resource, Predicate`
+   - Now: `abstract class RestrictableRelationship extends Predicate`
   
 - Fixed the return type cardinality of `SegmentPredicate.termPredicate()`:
 
-  Previously: `op Term[1] termPredicate()`
-  Now: `op Term[?] termPredicate()`
+   - Previously: `op Term[1] termPredicate()`
+   - Now: `op Term[?] termPredicate()`
   
 - Updated the scala code generation tags for several methods.
+
+### [#213 Update derived UUIDs to sync w/ scala APIs derived UUIDs](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/213)
+
+### [#214 Relax OMLZipResource to allow mixed XTextResource & OMLZipResource in XTextResourcSet](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/214)
+
+### [#216 Incomplete XText scope computation for SegmentPredicate.predicate cross-reference serialization.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/216)
