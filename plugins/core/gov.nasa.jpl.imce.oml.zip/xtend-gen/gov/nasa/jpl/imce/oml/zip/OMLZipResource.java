@@ -19,6 +19,8 @@ package gov.nasa.jpl.imce.oml.zip;
 
 import com.google.common.base.Objects;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
+import gov.nasa.jpl.imce.oml.model.extensions.OMLCatalog;
+import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
 import gov.nasa.jpl.imce.oml.zip.OMLSpecificationTables;
 import gov.nasa.jpl.imce.oml.zip.OMLZipResourceSet;
 import java.io.File;
@@ -39,6 +41,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
+import org.eclipse.xtend2.lib.StringConcatenation;
 
 /**
  * An OMLZipResource is a kind of Resource that is loaded from and saved to an *.omlzip file
@@ -75,7 +78,7 @@ public class OMLZipResource extends ResourceImpl {
   }
   
   /**
-   * Loading an OMLZipResource involves mapping its URI to an *.omlzip file according to the CatalogURIConverter associated with its OMLZipResourceSet.
+   * Loading an OMLZipResource involves mapping its URI to an *.omlzip file according to the CatalogURIConverter associated with its ResourceSet.
    * If successful, the contents of the loaded OMLZipResource is a single toplevel OML Extent whose contents
    * is the result of parsing all the tables in the *.omlzip file.
    */
@@ -91,19 +94,34 @@ public class OMLZipResource extends ResourceImpl {
       }
       String _fileString = omlZipFile.toFileString();
       File _file = new File(_fileString);
-      OMLSpecificationTables.load(((OMLZipResourceSet)rs), this, _file);
+      OMLSpecificationTables.load(rs, this, _file);
     }
     if (!_matched) {
-      Class<? extends ResourceSet> _class = null;
-      if (rs!=null) {
-        _class=rs.getClass();
+      {
+        final OMLCatalog c = OMLExtensions.getCatalog(rs);
+        if ((null == c)) {
+          throw new IllegalArgumentException("OMLZipResource.load(): requires an OMLCatalog on this resource set!");
+        }
+        final String resolved = c.resolveURI(this.uri.toString());
+        if (((null == resolved) || (!resolved.startsWith("file:")))) {
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("OMLZipResource.load(): No catalog mapping for URI: ");
+          _builder.append(this.uri);
+          throw new IllegalArgumentException(_builder.toString());
+        }
+        final File omlZipFile = new File((resolved + ".omlzip"));
+        boolean _exists = omlZipFile.exists();
+        boolean _not = (!_exists);
+        if (_not) {
+          StringConcatenation _builder_1 = new StringConcatenation();
+          _builder_1.append("OMLZipResource.load(): URI: ");
+          _builder_1.append(this.uri);
+          _builder_1.append(" resolves to a non-existent file: ");
+          _builder_1.append(omlZipFile);
+          throw new IllegalArgumentException(_builder_1.toString());
+        }
+        OMLSpecificationTables.load(rs, this, omlZipFile);
       }
-      String _name = null;
-      if (_class!=null) {
-        _name=_class.getName();
-      }
-      String _plus = ("OMLZipResource must be loaded within an OMLZipResourceSet, not a " + _name);
-      throw new IllegalArgumentException(_plus);
     }
   }
   

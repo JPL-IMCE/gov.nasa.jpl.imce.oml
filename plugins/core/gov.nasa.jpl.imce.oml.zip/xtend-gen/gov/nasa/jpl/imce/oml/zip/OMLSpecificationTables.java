@@ -101,7 +101,6 @@ import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyExtensionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.TimeScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship;
 import gov.nasa.jpl.imce.oml.zip.OMLZipResource;
-import gov.nasa.jpl.imce.oml.zip.OMLZipResourceSet;
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -122,6 +121,7 @@ import org.apache.commons.compress.archivers.zip.ZipFile;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
@@ -942,7 +942,7 @@ public class OMLSpecificationTables {
     }
   }
   
-  public static byte[] terminologyGraphsByteArray(final Extent e) {
+  protected static byte[] terminologyGraphsByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<TerminologyGraph> _function = (TerminologyGraph it) -> {
@@ -964,7 +964,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] bundlesByteArray(final Extent e) {
+  protected static byte[] bundlesByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<Bundle> _function = (Bundle it) -> {
@@ -986,7 +986,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] descriptionBoxesByteArray(final Extent e) {
+  protected static byte[] descriptionBoxesByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<DescriptionBox> _function = (DescriptionBox it) -> {
@@ -1008,7 +1008,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] annotationPropertiesByteArray(final Extent e) {
+  protected static byte[] annotationPropertiesByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<AnnotationProperty> _function = (AnnotationProperty it) -> {
@@ -1035,7 +1035,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] aspectsByteArray(final Extent e) {
+  protected static byte[] aspectsByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<Aspect> _function = (Aspect it) -> {
@@ -1059,7 +1059,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] conceptsByteArray(final Extent e) {
+  protected static byte[] conceptsByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<Concept> _function = (Concept it) -> {
@@ -1083,7 +1083,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] scalarsByteArray(final Extent e) {
+  protected static byte[] scalarsByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<Scalar> _function = (Scalar it) -> {
@@ -1107,7 +1107,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] structuresByteArray(final Extent e) {
+  protected static byte[] structuresByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<Structure> _function = (Structure it) -> {
@@ -1131,7 +1131,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] conceptDesignationTerminologyAxiomsByteArray(final Extent e) {
+  protected static byte[] conceptDesignationTerminologyAxiomsByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<ConceptDesignationTerminologyAxiom> _function = (ConceptDesignationTerminologyAxiom it) -> {
@@ -1162,7 +1162,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] terminologyExtensionAxiomsByteArray(final Extent e) {
+  protected static byte[] terminologyExtensionAxiomsByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<TerminologyExtensionAxiom> _function = (TerminologyExtensionAxiom it) -> {
@@ -1188,7 +1188,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] terminologyNestingAxiomsByteArray(final Extent e) {
+  protected static byte[] terminologyNestingAxiomsByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<TerminologyNestingAxiom> _function = (TerminologyNestingAxiom it) -> {
@@ -1219,7 +1219,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] bundledTerminologyAxiomsByteArray(final Extent e) {
+  protected static byte[] bundledTerminologyAxiomsByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<BundledTerminologyAxiom> _function = (BundledTerminologyAxiom it) -> {
@@ -1245,7 +1245,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] descriptionBoxExtendsClosedWorldDefinitionsByteArray(final Extent e) {
+  protected static byte[] descriptionBoxExtendsClosedWorldDefinitionsByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<DescriptionBoxExtendsClosedWorldDefinitions> _function = (DescriptionBoxExtendsClosedWorldDefinitions it) -> {
@@ -1271,7 +1271,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] descriptionBoxRefinementsByteArray(final Extent e) {
+  protected static byte[] descriptionBoxRefinementsByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<DescriptionBoxRefinement> _function = (DescriptionBoxRefinement it) -> {
@@ -1297,7 +1297,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] binaryScalarRestrictionsByteArray(final Extent e) {
+  protected static byte[] binaryScalarRestrictionsByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<BinaryScalarRestriction> _function = (BinaryScalarRestriction it) -> {
@@ -1335,7 +1335,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] iriScalarRestrictionsByteArray(final Extent e) {
+  protected static byte[] iriScalarRestrictionsByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<IRIScalarRestriction> _function = (IRIScalarRestriction it) -> {
@@ -1376,7 +1376,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] numericScalarRestrictionsByteArray(final Extent e) {
+  protected static byte[] numericScalarRestrictionsByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<NumericScalarRestriction> _function = (NumericScalarRestriction it) -> {
@@ -1417,7 +1417,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] plainLiteralScalarRestrictionsByteArray(final Extent e) {
+  protected static byte[] plainLiteralScalarRestrictionsByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<PlainLiteralScalarRestriction> _function = (PlainLiteralScalarRestriction it) -> {
@@ -1461,7 +1461,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] scalarOneOfRestrictionsByteArray(final Extent e) {
+  protected static byte[] scalarOneOfRestrictionsByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<ScalarOneOfRestriction> _function = (ScalarOneOfRestriction it) -> {
@@ -1490,7 +1490,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] scalarOneOfLiteralAxiomsByteArray(final Extent e) {
+  protected static byte[] scalarOneOfLiteralAxiomsByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<ScalarOneOfLiteralAxiom> _function = (ScalarOneOfLiteralAxiom it) -> {
@@ -1535,7 +1535,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] stringScalarRestrictionsByteArray(final Extent e) {
+  protected static byte[] stringScalarRestrictionsByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<StringScalarRestriction> _function = (StringScalarRestriction it) -> {
@@ -1576,7 +1576,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] synonymScalarRestrictionsByteArray(final Extent e) {
+  protected static byte[] synonymScalarRestrictionsByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<SynonymScalarRestriction> _function = (SynonymScalarRestriction it) -> {
@@ -1605,7 +1605,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] timeScalarRestrictionsByteArray(final Extent e) {
+  protected static byte[] timeScalarRestrictionsByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<TimeScalarRestriction> _function = (TimeScalarRestriction it) -> {
@@ -1646,7 +1646,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] entityScalarDataPropertiesByteArray(final Extent e) {
+  protected static byte[] entityScalarDataPropertiesByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<EntityScalarDataProperty> _function = (EntityScalarDataProperty it) -> {
@@ -1683,7 +1683,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] entityStructuredDataPropertiesByteArray(final Extent e) {
+  protected static byte[] entityStructuredDataPropertiesByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<EntityStructuredDataProperty> _function = (EntityStructuredDataProperty it) -> {
@@ -1720,7 +1720,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] scalarDataPropertiesByteArray(final Extent e) {
+  protected static byte[] scalarDataPropertiesByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<ScalarDataProperty> _function = (ScalarDataProperty it) -> {
@@ -1754,7 +1754,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] structuredDataPropertiesByteArray(final Extent e) {
+  protected static byte[] structuredDataPropertiesByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<StructuredDataProperty> _function = (StructuredDataProperty it) -> {
@@ -1788,7 +1788,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] reifiedRelationshipsByteArray(final Extent e) {
+  protected static byte[] reifiedRelationshipsByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<ReifiedRelationship> _function = (ReifiedRelationship it) -> {
@@ -1849,7 +1849,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] forwardPropertiesByteArray(final Extent e) {
+  protected static byte[] forwardPropertiesByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<ForwardProperty> _function = (ForwardProperty it) -> {
@@ -1873,7 +1873,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] inversePropertiesByteArray(final Extent e) {
+  protected static byte[] inversePropertiesByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<InverseProperty> _function = (InverseProperty it) -> {
@@ -1897,7 +1897,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] unreifiedRelationshipsByteArray(final Extent e) {
+  protected static byte[] unreifiedRelationshipsByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<UnreifiedRelationship> _function = (UnreifiedRelationship it) -> {
@@ -1958,7 +1958,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] chainRulesByteArray(final Extent e) {
+  protected static byte[] chainRulesByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<ChainRule> _function = (ChainRule it) -> {
@@ -1987,7 +1987,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] ruleBodySegmentsByteArray(final Extent e) {
+  protected static byte[] ruleBodySegmentsByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<RuleBodySegment> _function = (RuleBodySegment it) -> {
@@ -2035,7 +2035,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] segmentPredicatesByteArray(final Extent e) {
+  protected static byte[] segmentPredicatesByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<SegmentPredicate> _function = (SegmentPredicate it) -> {
@@ -2152,7 +2152,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] entityExistentialRestrictionAxiomsByteArray(final Extent e) {
+  protected static byte[] entityExistentialRestrictionAxiomsByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<EntityExistentialRestrictionAxiom> _function = (EntityExistentialRestrictionAxiom it) -> {
@@ -2188,7 +2188,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] entityUniversalRestrictionAxiomsByteArray(final Extent e) {
+  protected static byte[] entityUniversalRestrictionAxiomsByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<EntityUniversalRestrictionAxiom> _function = (EntityUniversalRestrictionAxiom it) -> {
@@ -2224,7 +2224,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] entityScalarDataPropertyExistentialRestrictionAxiomsByteArray(final Extent e) {
+  protected static byte[] entityScalarDataPropertyExistentialRestrictionAxiomsByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<EntityScalarDataPropertyExistentialRestrictionAxiom> _function = (EntityScalarDataPropertyExistentialRestrictionAxiom it) -> {
@@ -2260,7 +2260,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] entityScalarDataPropertyParticularRestrictionAxiomsByteArray(final Extent e) {
+  protected static byte[] entityScalarDataPropertyParticularRestrictionAxiomsByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<EntityScalarDataPropertyParticularRestrictionAxiom> _function = (EntityScalarDataPropertyParticularRestrictionAxiom it) -> {
@@ -2310,7 +2310,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] entityScalarDataPropertyUniversalRestrictionAxiomsByteArray(final Extent e) {
+  protected static byte[] entityScalarDataPropertyUniversalRestrictionAxiomsByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<EntityScalarDataPropertyUniversalRestrictionAxiom> _function = (EntityScalarDataPropertyUniversalRestrictionAxiom it) -> {
@@ -2346,7 +2346,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] entityStructuredDataPropertyParticularRestrictionAxiomsByteArray(final Extent e) {
+  protected static byte[] entityStructuredDataPropertyParticularRestrictionAxiomsByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<EntityStructuredDataPropertyParticularRestrictionAxiom> _function = (EntityStructuredDataPropertyParticularRestrictionAxiom it) -> {
@@ -2377,7 +2377,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] restrictionStructuredDataPropertyTuplesByteArray(final Extent e) {
+  protected static byte[] restrictionStructuredDataPropertyTuplesByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<RestrictionStructuredDataPropertyTuple> _function = (RestrictionStructuredDataPropertyTuple it) -> {
@@ -2387,14 +2387,14 @@ public class OMLSpecificationTables {
       pw.print(it.uuid());
       pw.print("\"");
       pw.print(",");
-      pw.print("\"structuredDataPropertyUUID\":");
-      pw.print("\"");
-      pw.print(it.getStructuredDataProperty().uuid());
-      pw.print("\"");
-      pw.print(",");
       pw.print("\"structuredDataPropertyContextUUID\":");
       pw.print("\"");
       pw.print(it.getStructuredDataPropertyContext().uuid());
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"structuredDataPropertyUUID\":");
+      pw.print("\"");
+      pw.print(it.getStructuredDataProperty().uuid());
       pw.print("\"");
       pw.println("}");
     };
@@ -2403,7 +2403,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] restrictionScalarDataPropertyValuesByteArray(final Extent e) {
+  protected static byte[] restrictionScalarDataPropertyValuesByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<RestrictionScalarDataPropertyValue> _function = (RestrictionScalarDataPropertyValue it) -> {
@@ -2413,6 +2413,11 @@ public class OMLSpecificationTables {
       pw.print(it.uuid());
       pw.print("\"");
       pw.print(",");
+      pw.print("\"structuredDataPropertyContextUUID\":");
+      pw.print("\"");
+      pw.print(it.getStructuredDataPropertyContext().uuid());
+      pw.print("\"");
+      pw.print(",");
       pw.print("\"scalarDataPropertyUUID\":");
       pw.print("\"");
       pw.print(it.getScalarDataProperty().uuid());
@@ -2420,11 +2425,6 @@ public class OMLSpecificationTables {
       pw.print(",");
       pw.print("\"scalarPropertyValue\":");
       pw.print(OMLTables.toString(it.getScalarPropertyValue()));
-      pw.print(",");
-      pw.print("\"structuredDataPropertyContextUUID\":");
-      pw.print("\"");
-      pw.print(it.getStructuredDataPropertyContext().uuid());
-      pw.print("\"");
       pw.print(",");
       pw.print("\"valueTypeUUID\":");
       DataRange _valueType = it.getValueType();
@@ -2448,7 +2448,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] aspectSpecializationAxiomsByteArray(final Extent e) {
+  protected static byte[] aspectSpecializationAxiomsByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<AspectSpecializationAxiom> _function = (AspectSpecializationAxiom it) -> {
@@ -2479,7 +2479,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] conceptSpecializationAxiomsByteArray(final Extent e) {
+  protected static byte[] conceptSpecializationAxiomsByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<ConceptSpecializationAxiom> _function = (ConceptSpecializationAxiom it) -> {
@@ -2510,7 +2510,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] reifiedRelationshipSpecializationAxiomsByteArray(final Extent e) {
+  protected static byte[] reifiedRelationshipSpecializationAxiomsByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<ReifiedRelationshipSpecializationAxiom> _function = (ReifiedRelationshipSpecializationAxiom it) -> {
@@ -2541,7 +2541,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] subDataPropertyOfAxiomsByteArray(final Extent e) {
+  protected static byte[] subDataPropertyOfAxiomsByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<SubDataPropertyOfAxiom> _function = (SubDataPropertyOfAxiom it) -> {
@@ -2572,7 +2572,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] subObjectPropertyOfAxiomsByteArray(final Extent e) {
+  protected static byte[] subObjectPropertyOfAxiomsByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<SubObjectPropertyOfAxiom> _function = (SubObjectPropertyOfAxiom it) -> {
@@ -2603,7 +2603,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] rootConceptTaxonomyAxiomsByteArray(final Extent e) {
+  protected static byte[] rootConceptTaxonomyAxiomsByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<RootConceptTaxonomyAxiom> _function = (RootConceptTaxonomyAxiom it) -> {
@@ -2629,7 +2629,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] anonymousConceptUnionAxiomsByteArray(final Extent e) {
+  protected static byte[] anonymousConceptUnionAxiomsByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<AnonymousConceptUnionAxiom> _function = (AnonymousConceptUnionAxiom it) -> {
@@ -2653,7 +2653,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] specificDisjointConceptAxiomsByteArray(final Extent e) {
+  protected static byte[] specificDisjointConceptAxiomsByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<SpecificDisjointConceptAxiom> _function = (SpecificDisjointConceptAxiom it) -> {
@@ -2679,7 +2679,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] conceptInstancesByteArray(final Extent e) {
+  protected static byte[] conceptInstancesByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<ConceptInstance> _function = (ConceptInstance it) -> {
@@ -2708,7 +2708,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] reifiedRelationshipInstancesByteArray(final Extent e) {
+  protected static byte[] reifiedRelationshipInstancesByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<ReifiedRelationshipInstance> _function = (ReifiedRelationshipInstance it) -> {
@@ -2737,7 +2737,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] reifiedRelationshipInstanceDomainsByteArray(final Extent e) {
+  protected static byte[] reifiedRelationshipInstanceDomainsByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<ReifiedRelationshipInstanceDomain> _function = (ReifiedRelationshipInstanceDomain it) -> {
@@ -2768,7 +2768,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] reifiedRelationshipInstanceRangesByteArray(final Extent e) {
+  protected static byte[] reifiedRelationshipInstanceRangesByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<ReifiedRelationshipInstanceRange> _function = (ReifiedRelationshipInstanceRange it) -> {
@@ -2799,7 +2799,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] unreifiedRelationshipInstanceTuplesByteArray(final Extent e) {
+  protected static byte[] unreifiedRelationshipInstanceTuplesByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<UnreifiedRelationshipInstanceTuple> _function = (UnreifiedRelationshipInstanceTuple it) -> {
@@ -2835,7 +2835,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] singletonInstanceStructuredDataPropertyValuesByteArray(final Extent e) {
+  protected static byte[] singletonInstanceStructuredDataPropertyValuesByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<SingletonInstanceStructuredDataPropertyValue> _function = (SingletonInstanceStructuredDataPropertyValue it) -> {
@@ -2866,7 +2866,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] singletonInstanceScalarDataPropertyValuesByteArray(final Extent e) {
+  protected static byte[] singletonInstanceScalarDataPropertyValuesByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<SingletonInstanceScalarDataPropertyValue> _function = (SingletonInstanceScalarDataPropertyValue it) -> {
@@ -2916,7 +2916,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] structuredDataPropertyTuplesByteArray(final Extent e) {
+  protected static byte[] structuredDataPropertyTuplesByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<StructuredDataPropertyTuple> _function = (StructuredDataPropertyTuple it) -> {
@@ -2926,14 +2926,14 @@ public class OMLSpecificationTables {
       pw.print(it.uuid());
       pw.print("\"");
       pw.print(",");
-      pw.print("\"structuredDataPropertyUUID\":");
-      pw.print("\"");
-      pw.print(it.getStructuredDataProperty().uuid());
-      pw.print("\"");
-      pw.print(",");
       pw.print("\"structuredDataPropertyContextUUID\":");
       pw.print("\"");
       pw.print(it.getStructuredDataPropertyContext().uuid());
+      pw.print("\"");
+      pw.print(",");
+      pw.print("\"structuredDataPropertyUUID\":");
+      pw.print("\"");
+      pw.print(it.getStructuredDataProperty().uuid());
       pw.print("\"");
       pw.println("}");
     };
@@ -2942,7 +2942,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] scalarDataPropertyValuesByteArray(final Extent e) {
+  protected static byte[] scalarDataPropertyValuesByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<ScalarDataPropertyValue> _function = (ScalarDataPropertyValue it) -> {
@@ -2952,6 +2952,11 @@ public class OMLSpecificationTables {
       pw.print(it.uuid());
       pw.print("\"");
       pw.print(",");
+      pw.print("\"structuredDataPropertyContextUUID\":");
+      pw.print("\"");
+      pw.print(it.getStructuredDataPropertyContext().uuid());
+      pw.print("\"");
+      pw.print(",");
       pw.print("\"scalarDataPropertyUUID\":");
       pw.print("\"");
       pw.print(it.getScalarDataProperty().uuid());
@@ -2959,11 +2964,6 @@ public class OMLSpecificationTables {
       pw.print(",");
       pw.print("\"scalarPropertyValue\":");
       pw.print(OMLTables.toString(it.getScalarPropertyValue()));
-      pw.print(",");
-      pw.print("\"structuredDataPropertyContextUUID\":");
-      pw.print("\"");
-      pw.print(it.getStructuredDataPropertyContext().uuid());
-      pw.print("\"");
       pw.print(",");
       pw.print("\"valueTypeUUID\":");
       DataRange _valueType = it.getValueType();
@@ -2987,7 +2987,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static byte[] annotationPropertyValuesByteArray(final Extent e) {
+  protected static byte[] annotationPropertyValuesByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
     final Consumer<AnnotationPropertyValue> _function = (AnnotationPropertyValue it) -> {
@@ -3016,7 +3016,7 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  public static void load(final OMLZipResourceSet rs, final OMLZipResource r, final File omlZipFile) {
+  public static void load(final ResourceSet rs, final OMLZipResource r, final File omlZipFile) {
     try {
       final OMLSpecificationTables tables = new OMLSpecificationTables();
       final ZipFile zip = new ZipFile(omlZipFile);
@@ -3983,7 +3983,7 @@ public class OMLSpecificationTables {
     vMap.forEach(_function);
   }
   
-  protected void resolve(final OMLZipResourceSet rs, final OMLZipResource r) {
+  protected void resolve(final ResourceSet rs, final OMLZipResource r) {
     this.<LogicalElement, TerminologyGraph>includeMap(this.logicalElements, this.terminologyGraphs);
     this.<LogicalElement, Bundle>includeMap(this.logicalElements, this.bundles);
     this.<LogicalElement, DescriptionBox>includeMap(this.logicalElements, this.descriptionBoxes);
@@ -4143,7 +4143,7 @@ public class OMLSpecificationTables {
     r.getContents().add(ext);
   }
   
-  protected void resolveAnnotationProperties(final OMLZipResourceSet rs) {
+  protected void resolveAnnotationProperties(final ResourceSet rs) {
     final BiConsumer<String, Pair<AnnotationProperty, Map<String, String>>> _function = (String uuid, Pair<AnnotationProperty, Map<String, String>> oml_kv) -> {
       final AnnotationProperty oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -4161,7 +4161,7 @@ public class OMLSpecificationTables {
     this.annotationProperties.forEach(_function);
   }
   
-  protected void resolveAspects(final OMLZipResourceSet rs) {
+  protected void resolveAspects(final ResourceSet rs) {
     final BiConsumer<String, Pair<Aspect, Map<String, String>>> _function = (String uuid, Pair<Aspect, Map<String, String>> oml_kv) -> {
       final Aspect oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -4179,7 +4179,7 @@ public class OMLSpecificationTables {
     this.aspects.forEach(_function);
   }
   
-  protected void resolveConcepts(final OMLZipResourceSet rs) {
+  protected void resolveConcepts(final ResourceSet rs) {
     final BiConsumer<String, Pair<Concept, Map<String, String>>> _function = (String uuid, Pair<Concept, Map<String, String>> oml_kv) -> {
       final Concept oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -4197,7 +4197,7 @@ public class OMLSpecificationTables {
     this.concepts.forEach(_function);
   }
   
-  protected void resolveScalars(final OMLZipResourceSet rs) {
+  protected void resolveScalars(final ResourceSet rs) {
     final BiConsumer<String, Pair<Scalar, Map<String, String>>> _function = (String uuid, Pair<Scalar, Map<String, String>> oml_kv) -> {
       final Scalar oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -4215,7 +4215,7 @@ public class OMLSpecificationTables {
     this.scalars.forEach(_function);
   }
   
-  protected void resolveStructures(final OMLZipResourceSet rs) {
+  protected void resolveStructures(final ResourceSet rs) {
     final BiConsumer<String, Pair<Structure, Map<String, String>>> _function = (String uuid, Pair<Structure, Map<String, String>> oml_kv) -> {
       final Structure oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -4233,7 +4233,7 @@ public class OMLSpecificationTables {
     this.structures.forEach(_function);
   }
   
-  protected void resolveConceptDesignationTerminologyAxioms(final OMLZipResourceSet rs) {
+  protected void resolveConceptDesignationTerminologyAxioms(final ResourceSet rs) {
     final BiConsumer<String, Pair<ConceptDesignationTerminologyAxiom, Map<String, String>>> _function = (String uuid, Pair<ConceptDesignationTerminologyAxiom, Map<String, String>> oml_kv) -> {
       final ConceptDesignationTerminologyAxiom oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -4264,7 +4264,7 @@ public class OMLSpecificationTables {
     this.conceptDesignationTerminologyAxioms.forEach(_function);
   }
   
-  protected void resolveTerminologyExtensionAxioms(final OMLZipResourceSet rs) {
+  protected void resolveTerminologyExtensionAxioms(final ResourceSet rs) {
     final BiConsumer<String, Pair<TerminologyExtensionAxiom, Map<String, String>>> _function = (String uuid, Pair<TerminologyExtensionAxiom, Map<String, String>> oml_kv) -> {
       final TerminologyExtensionAxiom oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -4289,7 +4289,7 @@ public class OMLSpecificationTables {
     this.terminologyExtensionAxioms.forEach(_function);
   }
   
-  protected void resolveTerminologyNestingAxioms(final OMLZipResourceSet rs) {
+  protected void resolveTerminologyNestingAxioms(final ResourceSet rs) {
     final BiConsumer<String, Pair<TerminologyNestingAxiom, Map<String, String>>> _function = (String uuid, Pair<TerminologyNestingAxiom, Map<String, String>> oml_kv) -> {
       final TerminologyNestingAxiom oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -4320,7 +4320,7 @@ public class OMLSpecificationTables {
     this.terminologyNestingAxioms.forEach(_function);
   }
   
-  protected void resolveBundledTerminologyAxioms(final OMLZipResourceSet rs) {
+  protected void resolveBundledTerminologyAxioms(final ResourceSet rs) {
     final BiConsumer<String, Pair<BundledTerminologyAxiom, Map<String, String>>> _function = (String uuid, Pair<BundledTerminologyAxiom, Map<String, String>> oml_kv) -> {
       final BundledTerminologyAxiom oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -4345,7 +4345,7 @@ public class OMLSpecificationTables {
     this.bundledTerminologyAxioms.forEach(_function);
   }
   
-  protected void resolveDescriptionBoxExtendsClosedWorldDefinitions(final OMLZipResourceSet rs) {
+  protected void resolveDescriptionBoxExtendsClosedWorldDefinitions(final ResourceSet rs) {
     final BiConsumer<String, Pair<DescriptionBoxExtendsClosedWorldDefinitions, Map<String, String>>> _function = (String uuid, Pair<DescriptionBoxExtendsClosedWorldDefinitions, Map<String, String>> oml_kv) -> {
       final DescriptionBoxExtendsClosedWorldDefinitions oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -4370,7 +4370,7 @@ public class OMLSpecificationTables {
     this.descriptionBoxExtendsClosedWorldDefinitions.forEach(_function);
   }
   
-  protected void resolveDescriptionBoxRefinements(final OMLZipResourceSet rs) {
+  protected void resolveDescriptionBoxRefinements(final ResourceSet rs) {
     final BiConsumer<String, Pair<DescriptionBoxRefinement, Map<String, String>>> _function = (String uuid, Pair<DescriptionBoxRefinement, Map<String, String>> oml_kv) -> {
       final DescriptionBoxRefinement oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -4395,7 +4395,7 @@ public class OMLSpecificationTables {
     this.descriptionBoxRefinements.forEach(_function);
   }
   
-  protected void resolveBinaryScalarRestrictions(final OMLZipResourceSet rs) {
+  protected void resolveBinaryScalarRestrictions(final ResourceSet rs) {
     final BiConsumer<String, Pair<BinaryScalarRestriction, Map<String, String>>> _function = (String uuid, Pair<BinaryScalarRestriction, Map<String, String>> oml_kv) -> {
       final BinaryScalarRestriction oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -4419,7 +4419,7 @@ public class OMLSpecificationTables {
     this.binaryScalarRestrictions.forEach(_function);
   }
   
-  protected void resolveIRIScalarRestrictions(final OMLZipResourceSet rs) {
+  protected void resolveIRIScalarRestrictions(final ResourceSet rs) {
     final BiConsumer<String, Pair<IRIScalarRestriction, Map<String, String>>> _function = (String uuid, Pair<IRIScalarRestriction, Map<String, String>> oml_kv) -> {
       final IRIScalarRestriction oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -4443,7 +4443,7 @@ public class OMLSpecificationTables {
     this.iriScalarRestrictions.forEach(_function);
   }
   
-  protected void resolveNumericScalarRestrictions(final OMLZipResourceSet rs) {
+  protected void resolveNumericScalarRestrictions(final ResourceSet rs) {
     final BiConsumer<String, Pair<NumericScalarRestriction, Map<String, String>>> _function = (String uuid, Pair<NumericScalarRestriction, Map<String, String>> oml_kv) -> {
       final NumericScalarRestriction oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -4467,7 +4467,7 @@ public class OMLSpecificationTables {
     this.numericScalarRestrictions.forEach(_function);
   }
   
-  protected void resolvePlainLiteralScalarRestrictions(final OMLZipResourceSet rs) {
+  protected void resolvePlainLiteralScalarRestrictions(final ResourceSet rs) {
     final BiConsumer<String, Pair<PlainLiteralScalarRestriction, Map<String, String>>> _function = (String uuid, Pair<PlainLiteralScalarRestriction, Map<String, String>> oml_kv) -> {
       final PlainLiteralScalarRestriction oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -4491,7 +4491,7 @@ public class OMLSpecificationTables {
     this.plainLiteralScalarRestrictions.forEach(_function);
   }
   
-  protected void resolveScalarOneOfRestrictions(final OMLZipResourceSet rs) {
+  protected void resolveScalarOneOfRestrictions(final ResourceSet rs) {
     final BiConsumer<String, Pair<ScalarOneOfRestriction, Map<String, String>>> _function = (String uuid, Pair<ScalarOneOfRestriction, Map<String, String>> oml_kv) -> {
       final ScalarOneOfRestriction oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -4515,7 +4515,7 @@ public class OMLSpecificationTables {
     this.scalarOneOfRestrictions.forEach(_function);
   }
   
-  protected void resolveScalarOneOfLiteralAxioms(final OMLZipResourceSet rs) {
+  protected void resolveScalarOneOfLiteralAxioms(final ResourceSet rs) {
     final BiConsumer<String, Pair<ScalarOneOfLiteralAxiom, Map<String, String>>> _function = (String uuid, Pair<ScalarOneOfLiteralAxiom, Map<String, String>> oml_kv) -> {
       final ScalarOneOfLiteralAxiom oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -4548,7 +4548,7 @@ public class OMLSpecificationTables {
     this.scalarOneOfLiteralAxioms.forEach(_function);
   }
   
-  protected void resolveStringScalarRestrictions(final OMLZipResourceSet rs) {
+  protected void resolveStringScalarRestrictions(final ResourceSet rs) {
     final BiConsumer<String, Pair<StringScalarRestriction, Map<String, String>>> _function = (String uuid, Pair<StringScalarRestriction, Map<String, String>> oml_kv) -> {
       final StringScalarRestriction oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -4572,7 +4572,7 @@ public class OMLSpecificationTables {
     this.stringScalarRestrictions.forEach(_function);
   }
   
-  protected void resolveSynonymScalarRestrictions(final OMLZipResourceSet rs) {
+  protected void resolveSynonymScalarRestrictions(final ResourceSet rs) {
     final BiConsumer<String, Pair<SynonymScalarRestriction, Map<String, String>>> _function = (String uuid, Pair<SynonymScalarRestriction, Map<String, String>> oml_kv) -> {
       final SynonymScalarRestriction oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -4596,7 +4596,7 @@ public class OMLSpecificationTables {
     this.synonymScalarRestrictions.forEach(_function);
   }
   
-  protected void resolveTimeScalarRestrictions(final OMLZipResourceSet rs) {
+  protected void resolveTimeScalarRestrictions(final ResourceSet rs) {
     final BiConsumer<String, Pair<TimeScalarRestriction, Map<String, String>>> _function = (String uuid, Pair<TimeScalarRestriction, Map<String, String>> oml_kv) -> {
       final TimeScalarRestriction oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -4620,7 +4620,7 @@ public class OMLSpecificationTables {
     this.timeScalarRestrictions.forEach(_function);
   }
   
-  protected void resolveEntityScalarDataProperties(final OMLZipResourceSet rs) {
+  protected void resolveEntityScalarDataProperties(final ResourceSet rs) {
     final BiConsumer<String, Pair<EntityScalarDataProperty, Map<String, String>>> _function = (String uuid, Pair<EntityScalarDataProperty, Map<String, String>> oml_kv) -> {
       final EntityScalarDataProperty oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -4650,7 +4650,7 @@ public class OMLSpecificationTables {
     this.entityScalarDataProperties.forEach(_function);
   }
   
-  protected void resolveEntityStructuredDataProperties(final OMLZipResourceSet rs) {
+  protected void resolveEntityStructuredDataProperties(final ResourceSet rs) {
     final BiConsumer<String, Pair<EntityStructuredDataProperty, Map<String, String>>> _function = (String uuid, Pair<EntityStructuredDataProperty, Map<String, String>> oml_kv) -> {
       final EntityStructuredDataProperty oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -4680,7 +4680,7 @@ public class OMLSpecificationTables {
     this.entityStructuredDataProperties.forEach(_function);
   }
   
-  protected void resolveScalarDataProperties(final OMLZipResourceSet rs) {
+  protected void resolveScalarDataProperties(final ResourceSet rs) {
     final BiConsumer<String, Pair<ScalarDataProperty, Map<String, String>>> _function = (String uuid, Pair<ScalarDataProperty, Map<String, String>> oml_kv) -> {
       final ScalarDataProperty oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -4710,7 +4710,7 @@ public class OMLSpecificationTables {
     this.scalarDataProperties.forEach(_function);
   }
   
-  protected void resolveStructuredDataProperties(final OMLZipResourceSet rs) {
+  protected void resolveStructuredDataProperties(final ResourceSet rs) {
     final BiConsumer<String, Pair<StructuredDataProperty, Map<String, String>>> _function = (String uuid, Pair<StructuredDataProperty, Map<String, String>> oml_kv) -> {
       final StructuredDataProperty oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -4740,7 +4740,7 @@ public class OMLSpecificationTables {
     this.structuredDataProperties.forEach(_function);
   }
   
-  protected void resolveReifiedRelationships(final OMLZipResourceSet rs) {
+  protected void resolveReifiedRelationships(final ResourceSet rs) {
     final BiConsumer<String, Pair<ReifiedRelationship, Map<String, String>>> _function = (String uuid, Pair<ReifiedRelationship, Map<String, String>> oml_kv) -> {
       final ReifiedRelationship oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -4770,7 +4770,7 @@ public class OMLSpecificationTables {
     this.reifiedRelationships.forEach(_function);
   }
   
-  protected void resolveForwardProperties(final OMLZipResourceSet rs) {
+  protected void resolveForwardProperties(final ResourceSet rs) {
     final BiConsumer<String, Pair<ForwardProperty, Map<String, String>>> _function = (String uuid, Pair<ForwardProperty, Map<String, String>> oml_kv) -> {
       final ForwardProperty oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -4788,7 +4788,7 @@ public class OMLSpecificationTables {
     this.forwardProperties.forEach(_function);
   }
   
-  protected void resolveInverseProperties(final OMLZipResourceSet rs) {
+  protected void resolveInverseProperties(final ResourceSet rs) {
     final BiConsumer<String, Pair<InverseProperty, Map<String, String>>> _function = (String uuid, Pair<InverseProperty, Map<String, String>> oml_kv) -> {
       final InverseProperty oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -4806,7 +4806,7 @@ public class OMLSpecificationTables {
     this.inverseProperties.forEach(_function);
   }
   
-  protected void resolveUnreifiedRelationships(final OMLZipResourceSet rs) {
+  protected void resolveUnreifiedRelationships(final ResourceSet rs) {
     final BiConsumer<String, Pair<UnreifiedRelationship, Map<String, String>>> _function = (String uuid, Pair<UnreifiedRelationship, Map<String, String>> oml_kv) -> {
       final UnreifiedRelationship oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -4836,7 +4836,7 @@ public class OMLSpecificationTables {
     this.unreifiedRelationships.forEach(_function);
   }
   
-  protected void resolveChainRules(final OMLZipResourceSet rs) {
+  protected void resolveChainRules(final ResourceSet rs) {
     final BiConsumer<String, Pair<ChainRule, Map<String, String>>> _function = (String uuid, Pair<ChainRule, Map<String, String>> oml_kv) -> {
       final ChainRule oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -4860,7 +4860,7 @@ public class OMLSpecificationTables {
     this.chainRules.forEach(_function);
   }
   
-  protected void resolveRuleBodySegments(final OMLZipResourceSet rs) {
+  protected void resolveRuleBodySegments(final ResourceSet rs) {
     final BiConsumer<String, Pair<RuleBodySegment, Map<String, String>>> _function = (String uuid, Pair<RuleBodySegment, Map<String, String>> oml_kv) -> {
       final RuleBodySegment oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -4890,7 +4890,7 @@ public class OMLSpecificationTables {
     this.ruleBodySegments.forEach(_function);
   }
   
-  protected void resolveSegmentPredicates(final OMLZipResourceSet rs) {
+  protected void resolveSegmentPredicates(final ResourceSet rs) {
     final BiConsumer<String, Pair<SegmentPredicate, Map<String, String>>> _function = (String uuid, Pair<SegmentPredicate, Map<String, String>> oml_kv) -> {
       final SegmentPredicate oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -4962,7 +4962,7 @@ public class OMLSpecificationTables {
     this.segmentPredicates.forEach(_function);
   }
   
-  protected void resolveEntityExistentialRestrictionAxioms(final OMLZipResourceSet rs) {
+  protected void resolveEntityExistentialRestrictionAxioms(final ResourceSet rs) {
     final BiConsumer<String, Pair<EntityExistentialRestrictionAxiom, Map<String, String>>> _function = (String uuid, Pair<EntityExistentialRestrictionAxiom, Map<String, String>> oml_kv) -> {
       final EntityExistentialRestrictionAxiom oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -4998,7 +4998,7 @@ public class OMLSpecificationTables {
     this.entityExistentialRestrictionAxioms.forEach(_function);
   }
   
-  protected void resolveEntityUniversalRestrictionAxioms(final OMLZipResourceSet rs) {
+  protected void resolveEntityUniversalRestrictionAxioms(final ResourceSet rs) {
     final BiConsumer<String, Pair<EntityUniversalRestrictionAxiom, Map<String, String>>> _function = (String uuid, Pair<EntityUniversalRestrictionAxiom, Map<String, String>> oml_kv) -> {
       final EntityUniversalRestrictionAxiom oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -5034,7 +5034,7 @@ public class OMLSpecificationTables {
     this.entityUniversalRestrictionAxioms.forEach(_function);
   }
   
-  protected void resolveEntityScalarDataPropertyExistentialRestrictionAxioms(final OMLZipResourceSet rs) {
+  protected void resolveEntityScalarDataPropertyExistentialRestrictionAxioms(final ResourceSet rs) {
     final BiConsumer<String, Pair<EntityScalarDataPropertyExistentialRestrictionAxiom, Map<String, String>>> _function = (String uuid, Pair<EntityScalarDataPropertyExistentialRestrictionAxiom, Map<String, String>> oml_kv) -> {
       final EntityScalarDataPropertyExistentialRestrictionAxiom oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -5070,7 +5070,7 @@ public class OMLSpecificationTables {
     this.entityScalarDataPropertyExistentialRestrictionAxioms.forEach(_function);
   }
   
-  protected void resolveEntityScalarDataPropertyParticularRestrictionAxioms(final OMLZipResourceSet rs) {
+  protected void resolveEntityScalarDataPropertyParticularRestrictionAxioms(final ResourceSet rs) {
     final BiConsumer<String, Pair<EntityScalarDataPropertyParticularRestrictionAxiom, Map<String, String>>> _function = (String uuid, Pair<EntityScalarDataPropertyParticularRestrictionAxiom, Map<String, String>> oml_kv) -> {
       final EntityScalarDataPropertyParticularRestrictionAxiom oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -5109,7 +5109,7 @@ public class OMLSpecificationTables {
     this.entityScalarDataPropertyParticularRestrictionAxioms.forEach(_function);
   }
   
-  protected void resolveEntityScalarDataPropertyUniversalRestrictionAxioms(final OMLZipResourceSet rs) {
+  protected void resolveEntityScalarDataPropertyUniversalRestrictionAxioms(final ResourceSet rs) {
     final BiConsumer<String, Pair<EntityScalarDataPropertyUniversalRestrictionAxiom, Map<String, String>>> _function = (String uuid, Pair<EntityScalarDataPropertyUniversalRestrictionAxiom, Map<String, String>> oml_kv) -> {
       final EntityScalarDataPropertyUniversalRestrictionAxiom oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -5145,7 +5145,7 @@ public class OMLSpecificationTables {
     this.entityScalarDataPropertyUniversalRestrictionAxioms.forEach(_function);
   }
   
-  protected void resolveEntityStructuredDataPropertyParticularRestrictionAxioms(final OMLZipResourceSet rs) {
+  protected void resolveEntityStructuredDataPropertyParticularRestrictionAxioms(final ResourceSet rs) {
     final BiConsumer<String, Pair<EntityStructuredDataPropertyParticularRestrictionAxiom, Map<String, String>>> _function = (String uuid, Pair<EntityStructuredDataPropertyParticularRestrictionAxiom, Map<String, String>> oml_kv) -> {
       final EntityStructuredDataPropertyParticularRestrictionAxiom oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -5175,49 +5175,49 @@ public class OMLSpecificationTables {
     this.entityStructuredDataPropertyParticularRestrictionAxioms.forEach(_function);
   }
   
-  protected void resolveRestrictionStructuredDataPropertyTuples(final OMLZipResourceSet rs) {
+  protected void resolveRestrictionStructuredDataPropertyTuples(final ResourceSet rs) {
     final BiConsumer<String, Pair<RestrictionStructuredDataPropertyTuple, Map<String, String>>> _function = (String uuid, Pair<RestrictionStructuredDataPropertyTuple, Map<String, String>> oml_kv) -> {
       final RestrictionStructuredDataPropertyTuple oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
       boolean _isEmpty = kv.isEmpty();
       boolean _not = (!_isEmpty);
       if (_not) {
-        final String structuredDataPropertyXRef = kv.remove("structuredDataPropertyUUID");
-        final Pair<DataRelationshipToStructure, Map<String, String>> structuredDataPropertyPair = this.dataRelationshipToStructures.get(structuredDataPropertyXRef);
-        if ((null == structuredDataPropertyPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for structuredDataProperty in restrictionStructuredDataPropertyTuples");
-        }
-        oml.setStructuredDataProperty(structuredDataPropertyPair.getKey());
         final String structuredDataPropertyContextXRef = kv.remove("structuredDataPropertyContextUUID");
         final Pair<RestrictionStructuredDataPropertyContext, Map<String, String>> structuredDataPropertyContextPair = this.restrictionStructuredDataPropertyContexts.get(structuredDataPropertyContextXRef);
         if ((null == structuredDataPropertyContextPair)) {
           throw new IllegalArgumentException("Null cross-reference lookup for structuredDataPropertyContext in restrictionStructuredDataPropertyTuples");
         }
         oml.setStructuredDataPropertyContext(structuredDataPropertyContextPair.getKey());
+        final String structuredDataPropertyXRef = kv.remove("structuredDataPropertyUUID");
+        final Pair<DataRelationshipToStructure, Map<String, String>> structuredDataPropertyPair = this.dataRelationshipToStructures.get(structuredDataPropertyXRef);
+        if ((null == structuredDataPropertyPair)) {
+          throw new IllegalArgumentException("Null cross-reference lookup for structuredDataProperty in restrictionStructuredDataPropertyTuples");
+        }
+        oml.setStructuredDataProperty(structuredDataPropertyPair.getKey());
       }
     };
     this.restrictionStructuredDataPropertyTuples.forEach(_function);
   }
   
-  protected void resolveRestrictionScalarDataPropertyValues(final OMLZipResourceSet rs) {
+  protected void resolveRestrictionScalarDataPropertyValues(final ResourceSet rs) {
     final BiConsumer<String, Pair<RestrictionScalarDataPropertyValue, Map<String, String>>> _function = (String uuid, Pair<RestrictionScalarDataPropertyValue, Map<String, String>> oml_kv) -> {
       final RestrictionScalarDataPropertyValue oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
       boolean _isEmpty = kv.isEmpty();
       boolean _not = (!_isEmpty);
       if (_not) {
-        final String scalarDataPropertyXRef = kv.remove("scalarDataPropertyUUID");
-        final Pair<DataRelationshipToScalar, Map<String, String>> scalarDataPropertyPair = this.dataRelationshipToScalars.get(scalarDataPropertyXRef);
-        if ((null == scalarDataPropertyPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for scalarDataProperty in restrictionScalarDataPropertyValues");
-        }
-        oml.setScalarDataProperty(scalarDataPropertyPair.getKey());
         final String structuredDataPropertyContextXRef = kv.remove("structuredDataPropertyContextUUID");
         final Pair<RestrictionStructuredDataPropertyContext, Map<String, String>> structuredDataPropertyContextPair = this.restrictionStructuredDataPropertyContexts.get(structuredDataPropertyContextXRef);
         if ((null == structuredDataPropertyContextPair)) {
           throw new IllegalArgumentException("Null cross-reference lookup for structuredDataPropertyContext in restrictionScalarDataPropertyValues");
         }
         oml.setStructuredDataPropertyContext(structuredDataPropertyContextPair.getKey());
+        final String scalarDataPropertyXRef = kv.remove("scalarDataPropertyUUID");
+        final Pair<DataRelationshipToScalar, Map<String, String>> scalarDataPropertyPair = this.dataRelationshipToScalars.get(scalarDataPropertyXRef);
+        if ((null == scalarDataPropertyPair)) {
+          throw new IllegalArgumentException("Null cross-reference lookup for scalarDataProperty in restrictionScalarDataPropertyValues");
+        }
+        oml.setScalarDataProperty(scalarDataPropertyPair.getKey());
         final String valueTypeXRef = kv.remove("valueTypeUUID");
         boolean _notEquals = (!Objects.equal("null", valueTypeXRef));
         if (_notEquals) {
@@ -5232,7 +5232,7 @@ public class OMLSpecificationTables {
     this.restrictionScalarDataPropertyValues.forEach(_function);
   }
   
-  protected void resolveAspectSpecializationAxioms(final OMLZipResourceSet rs) {
+  protected void resolveAspectSpecializationAxioms(final ResourceSet rs) {
     final BiConsumer<String, Pair<AspectSpecializationAxiom, Map<String, String>>> _function = (String uuid, Pair<AspectSpecializationAxiom, Map<String, String>> oml_kv) -> {
       final AspectSpecializationAxiom oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -5262,7 +5262,7 @@ public class OMLSpecificationTables {
     this.aspectSpecializationAxioms.forEach(_function);
   }
   
-  protected void resolveConceptSpecializationAxioms(final OMLZipResourceSet rs) {
+  protected void resolveConceptSpecializationAxioms(final ResourceSet rs) {
     final BiConsumer<String, Pair<ConceptSpecializationAxiom, Map<String, String>>> _function = (String uuid, Pair<ConceptSpecializationAxiom, Map<String, String>> oml_kv) -> {
       final ConceptSpecializationAxiom oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -5292,7 +5292,7 @@ public class OMLSpecificationTables {
     this.conceptSpecializationAxioms.forEach(_function);
   }
   
-  protected void resolveReifiedRelationshipSpecializationAxioms(final OMLZipResourceSet rs) {
+  protected void resolveReifiedRelationshipSpecializationAxioms(final ResourceSet rs) {
     final BiConsumer<String, Pair<ReifiedRelationshipSpecializationAxiom, Map<String, String>>> _function = (String uuid, Pair<ReifiedRelationshipSpecializationAxiom, Map<String, String>> oml_kv) -> {
       final ReifiedRelationshipSpecializationAxiom oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -5322,7 +5322,7 @@ public class OMLSpecificationTables {
     this.reifiedRelationshipSpecializationAxioms.forEach(_function);
   }
   
-  protected void resolveSubDataPropertyOfAxioms(final OMLZipResourceSet rs) {
+  protected void resolveSubDataPropertyOfAxioms(final ResourceSet rs) {
     final BiConsumer<String, Pair<SubDataPropertyOfAxiom, Map<String, String>>> _function = (String uuid, Pair<SubDataPropertyOfAxiom, Map<String, String>> oml_kv) -> {
       final SubDataPropertyOfAxiom oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -5352,7 +5352,7 @@ public class OMLSpecificationTables {
     this.subDataPropertyOfAxioms.forEach(_function);
   }
   
-  protected void resolveSubObjectPropertyOfAxioms(final OMLZipResourceSet rs) {
+  protected void resolveSubObjectPropertyOfAxioms(final ResourceSet rs) {
     final BiConsumer<String, Pair<SubObjectPropertyOfAxiom, Map<String, String>>> _function = (String uuid, Pair<SubObjectPropertyOfAxiom, Map<String, String>> oml_kv) -> {
       final SubObjectPropertyOfAxiom oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -5382,7 +5382,7 @@ public class OMLSpecificationTables {
     this.subObjectPropertyOfAxioms.forEach(_function);
   }
   
-  protected void resolveRootConceptTaxonomyAxioms(final OMLZipResourceSet rs) {
+  protected void resolveRootConceptTaxonomyAxioms(final ResourceSet rs) {
     final BiConsumer<String, Pair<RootConceptTaxonomyAxiom, Map<String, String>>> _function = (String uuid, Pair<RootConceptTaxonomyAxiom, Map<String, String>> oml_kv) -> {
       final RootConceptTaxonomyAxiom oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -5406,7 +5406,7 @@ public class OMLSpecificationTables {
     this.rootConceptTaxonomyAxioms.forEach(_function);
   }
   
-  protected void resolveAnonymousConceptUnionAxioms(final OMLZipResourceSet rs) {
+  protected void resolveAnonymousConceptUnionAxioms(final ResourceSet rs) {
     final BiConsumer<String, Pair<AnonymousConceptUnionAxiom, Map<String, String>>> _function = (String uuid, Pair<AnonymousConceptUnionAxiom, Map<String, String>> oml_kv) -> {
       final AnonymousConceptUnionAxiom oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -5424,7 +5424,7 @@ public class OMLSpecificationTables {
     this.anonymousConceptUnionAxioms.forEach(_function);
   }
   
-  protected void resolveSpecificDisjointConceptAxioms(final OMLZipResourceSet rs) {
+  protected void resolveSpecificDisjointConceptAxioms(final ResourceSet rs) {
     final BiConsumer<String, Pair<SpecificDisjointConceptAxiom, Map<String, String>>> _function = (String uuid, Pair<SpecificDisjointConceptAxiom, Map<String, String>> oml_kv) -> {
       final SpecificDisjointConceptAxiom oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -5448,7 +5448,7 @@ public class OMLSpecificationTables {
     this.specificDisjointConceptAxioms.forEach(_function);
   }
   
-  protected void resolveConceptInstances(final OMLZipResourceSet rs) {
+  protected void resolveConceptInstances(final ResourceSet rs) {
     final BiConsumer<String, Pair<ConceptInstance, Map<String, String>>> _function = (String uuid, Pair<ConceptInstance, Map<String, String>> oml_kv) -> {
       final ConceptInstance oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -5472,7 +5472,7 @@ public class OMLSpecificationTables {
     this.conceptInstances.forEach(_function);
   }
   
-  protected void resolveReifiedRelationshipInstances(final OMLZipResourceSet rs) {
+  protected void resolveReifiedRelationshipInstances(final ResourceSet rs) {
     final BiConsumer<String, Pair<ReifiedRelationshipInstance, Map<String, String>>> _function = (String uuid, Pair<ReifiedRelationshipInstance, Map<String, String>> oml_kv) -> {
       final ReifiedRelationshipInstance oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -5496,7 +5496,7 @@ public class OMLSpecificationTables {
     this.reifiedRelationshipInstances.forEach(_function);
   }
   
-  protected void resolveReifiedRelationshipInstanceDomains(final OMLZipResourceSet rs) {
+  protected void resolveReifiedRelationshipInstanceDomains(final ResourceSet rs) {
     final BiConsumer<String, Pair<ReifiedRelationshipInstanceDomain, Map<String, String>>> _function = (String uuid, Pair<ReifiedRelationshipInstanceDomain, Map<String, String>> oml_kv) -> {
       final ReifiedRelationshipInstanceDomain oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -5526,7 +5526,7 @@ public class OMLSpecificationTables {
     this.reifiedRelationshipInstanceDomains.forEach(_function);
   }
   
-  protected void resolveReifiedRelationshipInstanceRanges(final OMLZipResourceSet rs) {
+  protected void resolveReifiedRelationshipInstanceRanges(final ResourceSet rs) {
     final BiConsumer<String, Pair<ReifiedRelationshipInstanceRange, Map<String, String>>> _function = (String uuid, Pair<ReifiedRelationshipInstanceRange, Map<String, String>> oml_kv) -> {
       final ReifiedRelationshipInstanceRange oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -5556,7 +5556,7 @@ public class OMLSpecificationTables {
     this.reifiedRelationshipInstanceRanges.forEach(_function);
   }
   
-  protected void resolveUnreifiedRelationshipInstanceTuples(final OMLZipResourceSet rs) {
+  protected void resolveUnreifiedRelationshipInstanceTuples(final ResourceSet rs) {
     final BiConsumer<String, Pair<UnreifiedRelationshipInstanceTuple, Map<String, String>>> _function = (String uuid, Pair<UnreifiedRelationshipInstanceTuple, Map<String, String>> oml_kv) -> {
       final UnreifiedRelationshipInstanceTuple oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -5592,7 +5592,7 @@ public class OMLSpecificationTables {
     this.unreifiedRelationshipInstanceTuples.forEach(_function);
   }
   
-  protected void resolveSingletonInstanceStructuredDataPropertyValues(final OMLZipResourceSet rs) {
+  protected void resolveSingletonInstanceStructuredDataPropertyValues(final ResourceSet rs) {
     final BiConsumer<String, Pair<SingletonInstanceStructuredDataPropertyValue, Map<String, String>>> _function = (String uuid, Pair<SingletonInstanceStructuredDataPropertyValue, Map<String, String>> oml_kv) -> {
       final SingletonInstanceStructuredDataPropertyValue oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -5622,7 +5622,7 @@ public class OMLSpecificationTables {
     this.singletonInstanceStructuredDataPropertyValues.forEach(_function);
   }
   
-  protected void resolveSingletonInstanceScalarDataPropertyValues(final OMLZipResourceSet rs) {
+  protected void resolveSingletonInstanceScalarDataPropertyValues(final ResourceSet rs) {
     final BiConsumer<String, Pair<SingletonInstanceScalarDataPropertyValue, Map<String, String>>> _function = (String uuid, Pair<SingletonInstanceScalarDataPropertyValue, Map<String, String>> oml_kv) -> {
       final SingletonInstanceScalarDataPropertyValue oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -5661,49 +5661,49 @@ public class OMLSpecificationTables {
     this.singletonInstanceScalarDataPropertyValues.forEach(_function);
   }
   
-  protected void resolveStructuredDataPropertyTuples(final OMLZipResourceSet rs) {
+  protected void resolveStructuredDataPropertyTuples(final ResourceSet rs) {
     final BiConsumer<String, Pair<StructuredDataPropertyTuple, Map<String, String>>> _function = (String uuid, Pair<StructuredDataPropertyTuple, Map<String, String>> oml_kv) -> {
       final StructuredDataPropertyTuple oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
       boolean _isEmpty = kv.isEmpty();
       boolean _not = (!_isEmpty);
       if (_not) {
-        final String structuredDataPropertyXRef = kv.remove("structuredDataPropertyUUID");
-        final Pair<DataRelationshipToStructure, Map<String, String>> structuredDataPropertyPair = this.dataRelationshipToStructures.get(structuredDataPropertyXRef);
-        if ((null == structuredDataPropertyPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for structuredDataProperty in structuredDataPropertyTuples");
-        }
-        oml.setStructuredDataProperty(structuredDataPropertyPair.getKey());
         final String structuredDataPropertyContextXRef = kv.remove("structuredDataPropertyContextUUID");
         final Pair<SingletonInstanceStructuredDataPropertyContext, Map<String, String>> structuredDataPropertyContextPair = this.singletonInstanceStructuredDataPropertyContexts.get(structuredDataPropertyContextXRef);
         if ((null == structuredDataPropertyContextPair)) {
           throw new IllegalArgumentException("Null cross-reference lookup for structuredDataPropertyContext in structuredDataPropertyTuples");
         }
         oml.setStructuredDataPropertyContext(structuredDataPropertyContextPair.getKey());
+        final String structuredDataPropertyXRef = kv.remove("structuredDataPropertyUUID");
+        final Pair<DataRelationshipToStructure, Map<String, String>> structuredDataPropertyPair = this.dataRelationshipToStructures.get(structuredDataPropertyXRef);
+        if ((null == structuredDataPropertyPair)) {
+          throw new IllegalArgumentException("Null cross-reference lookup for structuredDataProperty in structuredDataPropertyTuples");
+        }
+        oml.setStructuredDataProperty(structuredDataPropertyPair.getKey());
       }
     };
     this.structuredDataPropertyTuples.forEach(_function);
   }
   
-  protected void resolveScalarDataPropertyValues(final OMLZipResourceSet rs) {
+  protected void resolveScalarDataPropertyValues(final ResourceSet rs) {
     final BiConsumer<String, Pair<ScalarDataPropertyValue, Map<String, String>>> _function = (String uuid, Pair<ScalarDataPropertyValue, Map<String, String>> oml_kv) -> {
       final ScalarDataPropertyValue oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
       boolean _isEmpty = kv.isEmpty();
       boolean _not = (!_isEmpty);
       if (_not) {
-        final String scalarDataPropertyXRef = kv.remove("scalarDataPropertyUUID");
-        final Pair<DataRelationshipToScalar, Map<String, String>> scalarDataPropertyPair = this.dataRelationshipToScalars.get(scalarDataPropertyXRef);
-        if ((null == scalarDataPropertyPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for scalarDataProperty in scalarDataPropertyValues");
-        }
-        oml.setScalarDataProperty(scalarDataPropertyPair.getKey());
         final String structuredDataPropertyContextXRef = kv.remove("structuredDataPropertyContextUUID");
         final Pair<SingletonInstanceStructuredDataPropertyContext, Map<String, String>> structuredDataPropertyContextPair = this.singletonInstanceStructuredDataPropertyContexts.get(structuredDataPropertyContextXRef);
         if ((null == structuredDataPropertyContextPair)) {
           throw new IllegalArgumentException("Null cross-reference lookup for structuredDataPropertyContext in scalarDataPropertyValues");
         }
         oml.setStructuredDataPropertyContext(structuredDataPropertyContextPair.getKey());
+        final String scalarDataPropertyXRef = kv.remove("scalarDataPropertyUUID");
+        final Pair<DataRelationshipToScalar, Map<String, String>> scalarDataPropertyPair = this.dataRelationshipToScalars.get(scalarDataPropertyXRef);
+        if ((null == scalarDataPropertyPair)) {
+          throw new IllegalArgumentException("Null cross-reference lookup for scalarDataProperty in scalarDataPropertyValues");
+        }
+        oml.setScalarDataProperty(scalarDataPropertyPair.getKey());
         final String valueTypeXRef = kv.remove("valueTypeUUID");
         boolean _notEquals = (!Objects.equal("null", valueTypeXRef));
         if (_notEquals) {
@@ -5718,7 +5718,7 @@ public class OMLSpecificationTables {
     this.scalarDataPropertyValues.forEach(_function);
   }
   
-  protected void resolveAnnotationPropertyValues(final OMLZipResourceSet rs) {
+  protected void resolveAnnotationPropertyValues(final ResourceSet rs) {
     final BiConsumer<String, Pair<AnnotationPropertyValue, Map<String, String>>> _function = (String uuid, Pair<AnnotationPropertyValue, Map<String, String>> oml_kv) -> {
       final AnnotationPropertyValue oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
@@ -5742,7 +5742,7 @@ public class OMLSpecificationTables {
     this.annotationPropertyValues.forEach(_function);
   }
   
-  protected OMLZipResource loadOMLZipResource(final OMLZipResourceSet rs, final URI uri) {
+  protected OMLZipResource loadOMLZipResource(final ResourceSet rs, final URI uri) {
     final Resource r = rs.getResource(uri, true);
     boolean _matched = false;
     if (r instanceof OMLZipResource) {
