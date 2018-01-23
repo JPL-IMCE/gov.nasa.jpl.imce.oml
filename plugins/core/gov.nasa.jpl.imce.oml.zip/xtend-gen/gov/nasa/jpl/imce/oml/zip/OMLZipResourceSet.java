@@ -46,12 +46,25 @@ import org.eclipse.xtext.xbase.lib.Exceptions;
  */
 @SuppressWarnings("all")
 public class OMLZipResourceSet extends ResourceSetImpl {
+  /**
+   * Registers the OML-specific content & extension from the plugin.xml:
+   * 
+   * <extension point="org.eclipse.emf.ecore.extension_parser">
+   *   <parser class="gov.nasa.jpl.imce.oml.zip.OMLZipResourceFactory" type="omlzip"/>
+   * </extension>
+   * <extension point="org.eclipse.emf.ecore.content_parser">
+   *   <parser class="gov.nasa.jpl.imce.oml.zip.OMLZipResourceFactory" contentTypeIdentifier="omlzip"/>
+   * </extension>
+   */
   public static void doSetup() {
     XcoreStandaloneSetup.doSetup();
     OMLStandaloneSetup.doSetup();
     Map<String, Object> _contentTypeToFactoryMap = Resource.Factory.Registry.INSTANCE.getContentTypeToFactoryMap();
     OMLZipResourceFactory _oMLZipResourceFactory = new OMLZipResourceFactory();
-    _contentTypeToFactoryMap.put("gov.nasa.jpl.imce.oml.zip", _oMLZipResourceFactory);
+    _contentTypeToFactoryMap.put("omlzip", _oMLZipResourceFactory);
+    Map<String, Object> _extensionToFactoryMap = Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap();
+    OMLZipResourceFactory _oMLZipResourceFactory_1 = new OMLZipResourceFactory();
+    _extensionToFactoryMap.put("omlzip", _oMLZipResourceFactory_1);
   }
   
   /**

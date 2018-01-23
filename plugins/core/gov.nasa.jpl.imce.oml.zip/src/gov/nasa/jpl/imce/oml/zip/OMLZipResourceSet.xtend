@@ -41,11 +41,22 @@ import org.eclipse.emf.ecore.xcore.XcoreStandaloneSetup
  */
 class OMLZipResourceSet extends ResourceSetImpl {
 	
+	/**
+	 * Registers the OML-specific content & extension from the plugin.xml:
+	 * 
+	 * <extension point="org.eclipse.emf.ecore.extension_parser">
+	 *   <parser class="gov.nasa.jpl.imce.oml.zip.OMLZipResourceFactory" type="omlzip"/>
+	 * </extension>
+	 * <extension point="org.eclipse.emf.ecore.content_parser">
+	 *   <parser class="gov.nasa.jpl.imce.oml.zip.OMLZipResourceFactory" contentTypeIdentifier="omlzip"/>
+	 * </extension>
+	 */
 	def static void doSetup() {
 		XcoreStandaloneSetup.doSetup
 		OMLStandaloneSetup.doSetup
 		
-		Resource.Factory.Registry.INSTANCE.getContentTypeToFactoryMap().put("gov.nasa.jpl.imce.oml.zip", new OMLZipResourceFactory())
+		Resource.Factory.Registry.INSTANCE.contentTypeToFactoryMap.put("omlzip", new OMLZipResourceFactory())
+		Resource.Factory.Registry.INSTANCE.extensionToFactoryMap.put("omlzip", new OMLZipResourceFactory())
 	}
 		
 	/**
