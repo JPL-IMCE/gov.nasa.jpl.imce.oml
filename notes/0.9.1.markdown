@@ -368,3 +368,5 @@ Followed the [official Tycho doc](https://wiki.eclipse.org/Tycho/eclipse-reposit
 ### [#214 Relax OMLZipResource to allow mixed XTextResource & OMLZipResource in XTextResourcSet](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/214)
 
 ### [#216 Incomplete XText scope computation for SegmentPredicate.predicate cross-reference serialization.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/216)
+
+### [#217 OMLZipResourceSet.doSetup registration is incorrect and incomplete](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/217)
