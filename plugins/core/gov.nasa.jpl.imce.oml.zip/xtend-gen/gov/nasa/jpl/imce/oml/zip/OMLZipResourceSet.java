@@ -119,7 +119,7 @@ public class OMLZipResourceSet extends ResourceSetImpl {
    */
   @Override
   public OMLZipResource createResource(final URI uri) {
-    final Resource r = this.createResource(uri, "gov.nasa.jpl.imce.oml.zip");
+    final Resource r = this.createResource(uri, "omlzip");
     boolean _matched = false;
     if (r instanceof OMLZipResource) {
       _matched=true;

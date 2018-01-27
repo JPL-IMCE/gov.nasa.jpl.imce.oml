@@ -5742,746 +5742,741 @@ public class OMLSpecificationTables {
     this.annotationPropertyValues.forEach(_function);
   }
   
-  protected OMLZipResource loadOMLZipResource(final ResourceSet rs, final URI uri) {
+  protected Resource loadOMLZipResource(final ResourceSet rs, final URI uri) {
     final Resource r = rs.getResource(uri, true);
-    boolean _matched = false;
-    if (r instanceof OMLZipResource) {
-      _matched=true;
-      final Procedure1<EObject> _function = (EObject e) -> {
-        boolean _matched_1 = false;
-        if (e instanceof TerminologyGraph) {
-          _matched_1=true;
+    final Procedure1<EObject> _function = (EObject e) -> {
+      boolean _matched = false;
+      if (e instanceof TerminologyGraph) {
+        _matched=true;
+        Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+        final Pair<TerminologyGraph, Map<String, String>> pair = new Pair<TerminologyGraph, Map<String, String>>(((TerminologyGraph)e), _emptyMap);
+        this.terminologyGraphs.put(((TerminologyGraph)e).uuid(), pair);
+        String _uuid = ((TerminologyGraph)e).uuid();
+        Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+        Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+        this.logicalElements.put(_uuid, _pair);
+        this.terminologyGraphs.put(((TerminologyGraph)e).iri(), pair);
+        String _uuid_1 = ((TerminologyGraph)e).uuid();
+        Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+        Pair<TerminologyBox, Map<String, String>> _pair_1 = new Pair<TerminologyBox, Map<String, String>>(((TerminologyBox)e), _emptyMap_2);
+        this.terminologyBoxes.put(_uuid_1, _pair_1);
+        String _iri = ((TerminologyGraph)e).iri();
+        Map<String, String> _emptyMap_3 = Collections.<String, String>emptyMap();
+        Pair<TerminologyBox, Map<String, String>> _pair_2 = new Pair<TerminologyBox, Map<String, String>>(((TerminologyBox)e), _emptyMap_3);
+        this.terminologyBoxes.put(_iri, _pair_2);
+      }
+      if (!_matched) {
+        if (e instanceof Bundle) {
+          _matched=true;
           Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<TerminologyGraph, Map<String, String>> pair = new Pair<TerminologyGraph, Map<String, String>>(((TerminologyGraph)e), _emptyMap);
-          this.terminologyGraphs.put(((TerminologyGraph)e).uuid(), pair);
-          String _uuid = ((TerminologyGraph)e).uuid();
+          final Pair<Bundle, Map<String, String>> pair = new Pair<Bundle, Map<String, String>>(((Bundle)e), _emptyMap);
+          this.bundles.put(((Bundle)e).uuid(), pair);
+          String _uuid = ((Bundle)e).uuid();
           Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
           Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
           this.logicalElements.put(_uuid, _pair);
-          this.terminologyGraphs.put(((TerminologyGraph)e).iri(), pair);
-          String _uuid_1 = ((TerminologyGraph)e).uuid();
+          this.bundles.put(((Bundle)e).iri(), pair);
+          String _uuid_1 = ((Bundle)e).uuid();
           Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
           Pair<TerminologyBox, Map<String, String>> _pair_1 = new Pair<TerminologyBox, Map<String, String>>(((TerminologyBox)e), _emptyMap_2);
           this.terminologyBoxes.put(_uuid_1, _pair_1);
-          String _iri = ((TerminologyGraph)e).iri();
+          String _iri = ((Bundle)e).iri();
           Map<String, String> _emptyMap_3 = Collections.<String, String>emptyMap();
           Pair<TerminologyBox, Map<String, String>> _pair_2 = new Pair<TerminologyBox, Map<String, String>>(((TerminologyBox)e), _emptyMap_3);
           this.terminologyBoxes.put(_iri, _pair_2);
         }
-        if (!_matched_1) {
-          if (e instanceof Bundle) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<Bundle, Map<String, String>> pair = new Pair<Bundle, Map<String, String>>(((Bundle)e), _emptyMap);
-            this.bundles.put(((Bundle)e).uuid(), pair);
-            String _uuid = ((Bundle)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-            this.bundles.put(((Bundle)e).iri(), pair);
-            String _uuid_1 = ((Bundle)e).uuid();
-            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
-            Pair<TerminologyBox, Map<String, String>> _pair_1 = new Pair<TerminologyBox, Map<String, String>>(((TerminologyBox)e), _emptyMap_2);
-            this.terminologyBoxes.put(_uuid_1, _pair_1);
-            String _iri = ((Bundle)e).iri();
-            Map<String, String> _emptyMap_3 = Collections.<String, String>emptyMap();
-            Pair<TerminologyBox, Map<String, String>> _pair_2 = new Pair<TerminologyBox, Map<String, String>>(((TerminologyBox)e), _emptyMap_3);
-            this.terminologyBoxes.put(_iri, _pair_2);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof DescriptionBox) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<DescriptionBox, Map<String, String>> pair = new Pair<DescriptionBox, Map<String, String>>(((DescriptionBox)e), _emptyMap);
+          this.descriptionBoxes.put(((DescriptionBox)e).uuid(), pair);
+          String _uuid = ((DescriptionBox)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+          this.descriptionBoxes.put(((DescriptionBox)e).iri(), pair);
         }
-        if (!_matched_1) {
-          if (e instanceof DescriptionBox) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<DescriptionBox, Map<String, String>> pair = new Pair<DescriptionBox, Map<String, String>>(((DescriptionBox)e), _emptyMap);
-            this.descriptionBoxes.put(((DescriptionBox)e).uuid(), pair);
-            String _uuid = ((DescriptionBox)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-            this.descriptionBoxes.put(((DescriptionBox)e).iri(), pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof AnnotationProperty) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<AnnotationProperty, Map<String, String>> pair = new Pair<AnnotationProperty, Map<String, String>>(((AnnotationProperty)e), _emptyMap);
+          this.annotationProperties.put(((AnnotationProperty)e).uuid(), pair);
         }
-        if (!_matched_1) {
-          if (e instanceof AnnotationProperty) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<AnnotationProperty, Map<String, String>> pair = new Pair<AnnotationProperty, Map<String, String>>(((AnnotationProperty)e), _emptyMap);
-            this.annotationProperties.put(((AnnotationProperty)e).uuid(), pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof Aspect) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<Aspect, Map<String, String>> pair = new Pair<Aspect, Map<String, String>>(((Aspect)e), _emptyMap);
+          this.aspects.put(((Aspect)e).uuid(), pair);
+          String _uuid = ((Aspect)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof Aspect) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<Aspect, Map<String, String>> pair = new Pair<Aspect, Map<String, String>>(((Aspect)e), _emptyMap);
-            this.aspects.put(((Aspect)e).uuid(), pair);
-            String _uuid = ((Aspect)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof Concept) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<Concept, Map<String, String>> pair = new Pair<Concept, Map<String, String>>(((Concept)e), _emptyMap);
+          this.concepts.put(((Concept)e).uuid(), pair);
+          String _uuid = ((Concept)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof Concept) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<Concept, Map<String, String>> pair = new Pair<Concept, Map<String, String>>(((Concept)e), _emptyMap);
-            this.concepts.put(((Concept)e).uuid(), pair);
-            String _uuid = ((Concept)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof Scalar) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<Scalar, Map<String, String>> pair = new Pair<Scalar, Map<String, String>>(((Scalar)e), _emptyMap);
+          this.scalars.put(((Scalar)e).uuid(), pair);
+          String _uuid = ((Scalar)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof Scalar) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<Scalar, Map<String, String>> pair = new Pair<Scalar, Map<String, String>>(((Scalar)e), _emptyMap);
-            this.scalars.put(((Scalar)e).uuid(), pair);
-            String _uuid = ((Scalar)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof Structure) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<Structure, Map<String, String>> pair = new Pair<Structure, Map<String, String>>(((Structure)e), _emptyMap);
+          this.structures.put(((Structure)e).uuid(), pair);
+          String _uuid = ((Structure)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof Structure) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<Structure, Map<String, String>> pair = new Pair<Structure, Map<String, String>>(((Structure)e), _emptyMap);
-            this.structures.put(((Structure)e).uuid(), pair);
-            String _uuid = ((Structure)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof ConceptDesignationTerminologyAxiom) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<ConceptDesignationTerminologyAxiom, Map<String, String>> pair = new Pair<ConceptDesignationTerminologyAxiom, Map<String, String>>(((ConceptDesignationTerminologyAxiom)e), _emptyMap);
+          this.conceptDesignationTerminologyAxioms.put(((ConceptDesignationTerminologyAxiom)e).uuid(), pair);
+          String _uuid = ((ConceptDesignationTerminologyAxiom)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof ConceptDesignationTerminologyAxiom) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<ConceptDesignationTerminologyAxiom, Map<String, String>> pair = new Pair<ConceptDesignationTerminologyAxiom, Map<String, String>>(((ConceptDesignationTerminologyAxiom)e), _emptyMap);
-            this.conceptDesignationTerminologyAxioms.put(((ConceptDesignationTerminologyAxiom)e).uuid(), pair);
-            String _uuid = ((ConceptDesignationTerminologyAxiom)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof TerminologyExtensionAxiom) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<TerminologyExtensionAxiom, Map<String, String>> pair = new Pair<TerminologyExtensionAxiom, Map<String, String>>(((TerminologyExtensionAxiom)e), _emptyMap);
+          this.terminologyExtensionAxioms.put(((TerminologyExtensionAxiom)e).uuid(), pair);
+          String _uuid = ((TerminologyExtensionAxiom)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof TerminologyExtensionAxiom) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<TerminologyExtensionAxiom, Map<String, String>> pair = new Pair<TerminologyExtensionAxiom, Map<String, String>>(((TerminologyExtensionAxiom)e), _emptyMap);
-            this.terminologyExtensionAxioms.put(((TerminologyExtensionAxiom)e).uuid(), pair);
-            String _uuid = ((TerminologyExtensionAxiom)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof TerminologyNestingAxiom) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<TerminologyNestingAxiom, Map<String, String>> pair = new Pair<TerminologyNestingAxiom, Map<String, String>>(((TerminologyNestingAxiom)e), _emptyMap);
+          this.terminologyNestingAxioms.put(((TerminologyNestingAxiom)e).uuid(), pair);
+          String _uuid = ((TerminologyNestingAxiom)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof TerminologyNestingAxiom) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<TerminologyNestingAxiom, Map<String, String>> pair = new Pair<TerminologyNestingAxiom, Map<String, String>>(((TerminologyNestingAxiom)e), _emptyMap);
-            this.terminologyNestingAxioms.put(((TerminologyNestingAxiom)e).uuid(), pair);
-            String _uuid = ((TerminologyNestingAxiom)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof BundledTerminologyAxiom) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<BundledTerminologyAxiom, Map<String, String>> pair = new Pair<BundledTerminologyAxiom, Map<String, String>>(((BundledTerminologyAxiom)e), _emptyMap);
+          this.bundledTerminologyAxioms.put(((BundledTerminologyAxiom)e).uuid(), pair);
+          String _uuid = ((BundledTerminologyAxiom)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof BundledTerminologyAxiom) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<BundledTerminologyAxiom, Map<String, String>> pair = new Pair<BundledTerminologyAxiom, Map<String, String>>(((BundledTerminologyAxiom)e), _emptyMap);
-            this.bundledTerminologyAxioms.put(((BundledTerminologyAxiom)e).uuid(), pair);
-            String _uuid = ((BundledTerminologyAxiom)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof DescriptionBoxExtendsClosedWorldDefinitions) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<DescriptionBoxExtendsClosedWorldDefinitions, Map<String, String>> pair = new Pair<DescriptionBoxExtendsClosedWorldDefinitions, Map<String, String>>(((DescriptionBoxExtendsClosedWorldDefinitions)e), _emptyMap);
+          this.descriptionBoxExtendsClosedWorldDefinitions.put(((DescriptionBoxExtendsClosedWorldDefinitions)e).uuid(), pair);
+          String _uuid = ((DescriptionBoxExtendsClosedWorldDefinitions)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof DescriptionBoxExtendsClosedWorldDefinitions) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<DescriptionBoxExtendsClosedWorldDefinitions, Map<String, String>> pair = new Pair<DescriptionBoxExtendsClosedWorldDefinitions, Map<String, String>>(((DescriptionBoxExtendsClosedWorldDefinitions)e), _emptyMap);
-            this.descriptionBoxExtendsClosedWorldDefinitions.put(((DescriptionBoxExtendsClosedWorldDefinitions)e).uuid(), pair);
-            String _uuid = ((DescriptionBoxExtendsClosedWorldDefinitions)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof DescriptionBoxRefinement) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<DescriptionBoxRefinement, Map<String, String>> pair = new Pair<DescriptionBoxRefinement, Map<String, String>>(((DescriptionBoxRefinement)e), _emptyMap);
+          this.descriptionBoxRefinements.put(((DescriptionBoxRefinement)e).uuid(), pair);
+          String _uuid = ((DescriptionBoxRefinement)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof DescriptionBoxRefinement) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<DescriptionBoxRefinement, Map<String, String>> pair = new Pair<DescriptionBoxRefinement, Map<String, String>>(((DescriptionBoxRefinement)e), _emptyMap);
-            this.descriptionBoxRefinements.put(((DescriptionBoxRefinement)e).uuid(), pair);
-            String _uuid = ((DescriptionBoxRefinement)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof BinaryScalarRestriction) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<BinaryScalarRestriction, Map<String, String>> pair = new Pair<BinaryScalarRestriction, Map<String, String>>(((BinaryScalarRestriction)e), _emptyMap);
+          this.binaryScalarRestrictions.put(((BinaryScalarRestriction)e).uuid(), pair);
+          String _uuid = ((BinaryScalarRestriction)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof BinaryScalarRestriction) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<BinaryScalarRestriction, Map<String, String>> pair = new Pair<BinaryScalarRestriction, Map<String, String>>(((BinaryScalarRestriction)e), _emptyMap);
-            this.binaryScalarRestrictions.put(((BinaryScalarRestriction)e).uuid(), pair);
-            String _uuid = ((BinaryScalarRestriction)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof IRIScalarRestriction) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<IRIScalarRestriction, Map<String, String>> pair = new Pair<IRIScalarRestriction, Map<String, String>>(((IRIScalarRestriction)e), _emptyMap);
+          this.iriScalarRestrictions.put(((IRIScalarRestriction)e).uuid(), pair);
+          String _uuid = ((IRIScalarRestriction)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof IRIScalarRestriction) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<IRIScalarRestriction, Map<String, String>> pair = new Pair<IRIScalarRestriction, Map<String, String>>(((IRIScalarRestriction)e), _emptyMap);
-            this.iriScalarRestrictions.put(((IRIScalarRestriction)e).uuid(), pair);
-            String _uuid = ((IRIScalarRestriction)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof NumericScalarRestriction) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<NumericScalarRestriction, Map<String, String>> pair = new Pair<NumericScalarRestriction, Map<String, String>>(((NumericScalarRestriction)e), _emptyMap);
+          this.numericScalarRestrictions.put(((NumericScalarRestriction)e).uuid(), pair);
+          String _uuid = ((NumericScalarRestriction)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof NumericScalarRestriction) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<NumericScalarRestriction, Map<String, String>> pair = new Pair<NumericScalarRestriction, Map<String, String>>(((NumericScalarRestriction)e), _emptyMap);
-            this.numericScalarRestrictions.put(((NumericScalarRestriction)e).uuid(), pair);
-            String _uuid = ((NumericScalarRestriction)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof PlainLiteralScalarRestriction) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<PlainLiteralScalarRestriction, Map<String, String>> pair = new Pair<PlainLiteralScalarRestriction, Map<String, String>>(((PlainLiteralScalarRestriction)e), _emptyMap);
+          this.plainLiteralScalarRestrictions.put(((PlainLiteralScalarRestriction)e).uuid(), pair);
+          String _uuid = ((PlainLiteralScalarRestriction)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof PlainLiteralScalarRestriction) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<PlainLiteralScalarRestriction, Map<String, String>> pair = new Pair<PlainLiteralScalarRestriction, Map<String, String>>(((PlainLiteralScalarRestriction)e), _emptyMap);
-            this.plainLiteralScalarRestrictions.put(((PlainLiteralScalarRestriction)e).uuid(), pair);
-            String _uuid = ((PlainLiteralScalarRestriction)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof ScalarOneOfRestriction) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<ScalarOneOfRestriction, Map<String, String>> pair = new Pair<ScalarOneOfRestriction, Map<String, String>>(((ScalarOneOfRestriction)e), _emptyMap);
+          this.scalarOneOfRestrictions.put(((ScalarOneOfRestriction)e).uuid(), pair);
+          String _uuid = ((ScalarOneOfRestriction)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof ScalarOneOfRestriction) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<ScalarOneOfRestriction, Map<String, String>> pair = new Pair<ScalarOneOfRestriction, Map<String, String>>(((ScalarOneOfRestriction)e), _emptyMap);
-            this.scalarOneOfRestrictions.put(((ScalarOneOfRestriction)e).uuid(), pair);
-            String _uuid = ((ScalarOneOfRestriction)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof ScalarOneOfLiteralAxiom) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<ScalarOneOfLiteralAxiom, Map<String, String>> pair = new Pair<ScalarOneOfLiteralAxiom, Map<String, String>>(((ScalarOneOfLiteralAxiom)e), _emptyMap);
+          this.scalarOneOfLiteralAxioms.put(((ScalarOneOfLiteralAxiom)e).uuid(), pair);
+          String _uuid = ((ScalarOneOfLiteralAxiom)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof ScalarOneOfLiteralAxiom) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<ScalarOneOfLiteralAxiom, Map<String, String>> pair = new Pair<ScalarOneOfLiteralAxiom, Map<String, String>>(((ScalarOneOfLiteralAxiom)e), _emptyMap);
-            this.scalarOneOfLiteralAxioms.put(((ScalarOneOfLiteralAxiom)e).uuid(), pair);
-            String _uuid = ((ScalarOneOfLiteralAxiom)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof StringScalarRestriction) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<StringScalarRestriction, Map<String, String>> pair = new Pair<StringScalarRestriction, Map<String, String>>(((StringScalarRestriction)e), _emptyMap);
+          this.stringScalarRestrictions.put(((StringScalarRestriction)e).uuid(), pair);
+          String _uuid = ((StringScalarRestriction)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof StringScalarRestriction) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<StringScalarRestriction, Map<String, String>> pair = new Pair<StringScalarRestriction, Map<String, String>>(((StringScalarRestriction)e), _emptyMap);
-            this.stringScalarRestrictions.put(((StringScalarRestriction)e).uuid(), pair);
-            String _uuid = ((StringScalarRestriction)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof SynonymScalarRestriction) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<SynonymScalarRestriction, Map<String, String>> pair = new Pair<SynonymScalarRestriction, Map<String, String>>(((SynonymScalarRestriction)e), _emptyMap);
+          this.synonymScalarRestrictions.put(((SynonymScalarRestriction)e).uuid(), pair);
+          String _uuid = ((SynonymScalarRestriction)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof SynonymScalarRestriction) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<SynonymScalarRestriction, Map<String, String>> pair = new Pair<SynonymScalarRestriction, Map<String, String>>(((SynonymScalarRestriction)e), _emptyMap);
-            this.synonymScalarRestrictions.put(((SynonymScalarRestriction)e).uuid(), pair);
-            String _uuid = ((SynonymScalarRestriction)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof TimeScalarRestriction) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<TimeScalarRestriction, Map<String, String>> pair = new Pair<TimeScalarRestriction, Map<String, String>>(((TimeScalarRestriction)e), _emptyMap);
+          this.timeScalarRestrictions.put(((TimeScalarRestriction)e).uuid(), pair);
+          String _uuid = ((TimeScalarRestriction)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof TimeScalarRestriction) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<TimeScalarRestriction, Map<String, String>> pair = new Pair<TimeScalarRestriction, Map<String, String>>(((TimeScalarRestriction)e), _emptyMap);
-            this.timeScalarRestrictions.put(((TimeScalarRestriction)e).uuid(), pair);
-            String _uuid = ((TimeScalarRestriction)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof EntityScalarDataProperty) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<EntityScalarDataProperty, Map<String, String>> pair = new Pair<EntityScalarDataProperty, Map<String, String>>(((EntityScalarDataProperty)e), _emptyMap);
+          this.entityScalarDataProperties.put(((EntityScalarDataProperty)e).uuid(), pair);
+          String _uuid = ((EntityScalarDataProperty)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof EntityScalarDataProperty) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<EntityScalarDataProperty, Map<String, String>> pair = new Pair<EntityScalarDataProperty, Map<String, String>>(((EntityScalarDataProperty)e), _emptyMap);
-            this.entityScalarDataProperties.put(((EntityScalarDataProperty)e).uuid(), pair);
-            String _uuid = ((EntityScalarDataProperty)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof EntityStructuredDataProperty) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<EntityStructuredDataProperty, Map<String, String>> pair = new Pair<EntityStructuredDataProperty, Map<String, String>>(((EntityStructuredDataProperty)e), _emptyMap);
+          this.entityStructuredDataProperties.put(((EntityStructuredDataProperty)e).uuid(), pair);
+          String _uuid = ((EntityStructuredDataProperty)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof EntityStructuredDataProperty) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<EntityStructuredDataProperty, Map<String, String>> pair = new Pair<EntityStructuredDataProperty, Map<String, String>>(((EntityStructuredDataProperty)e), _emptyMap);
-            this.entityStructuredDataProperties.put(((EntityStructuredDataProperty)e).uuid(), pair);
-            String _uuid = ((EntityStructuredDataProperty)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof ScalarDataProperty) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<ScalarDataProperty, Map<String, String>> pair = new Pair<ScalarDataProperty, Map<String, String>>(((ScalarDataProperty)e), _emptyMap);
+          this.scalarDataProperties.put(((ScalarDataProperty)e).uuid(), pair);
+          String _uuid = ((ScalarDataProperty)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof ScalarDataProperty) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<ScalarDataProperty, Map<String, String>> pair = new Pair<ScalarDataProperty, Map<String, String>>(((ScalarDataProperty)e), _emptyMap);
-            this.scalarDataProperties.put(((ScalarDataProperty)e).uuid(), pair);
-            String _uuid = ((ScalarDataProperty)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof StructuredDataProperty) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<StructuredDataProperty, Map<String, String>> pair = new Pair<StructuredDataProperty, Map<String, String>>(((StructuredDataProperty)e), _emptyMap);
+          this.structuredDataProperties.put(((StructuredDataProperty)e).uuid(), pair);
+          String _uuid = ((StructuredDataProperty)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof StructuredDataProperty) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<StructuredDataProperty, Map<String, String>> pair = new Pair<StructuredDataProperty, Map<String, String>>(((StructuredDataProperty)e), _emptyMap);
-            this.structuredDataProperties.put(((StructuredDataProperty)e).uuid(), pair);
-            String _uuid = ((StructuredDataProperty)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof ReifiedRelationship) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<ReifiedRelationship, Map<String, String>> pair = new Pair<ReifiedRelationship, Map<String, String>>(((ReifiedRelationship)e), _emptyMap);
+          this.reifiedRelationships.put(((ReifiedRelationship)e).uuid(), pair);
+          String _uuid = ((ReifiedRelationship)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof ReifiedRelationship) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<ReifiedRelationship, Map<String, String>> pair = new Pair<ReifiedRelationship, Map<String, String>>(((ReifiedRelationship)e), _emptyMap);
-            this.reifiedRelationships.put(((ReifiedRelationship)e).uuid(), pair);
-            String _uuid = ((ReifiedRelationship)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof ForwardProperty) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<ForwardProperty, Map<String, String>> pair = new Pair<ForwardProperty, Map<String, String>>(((ForwardProperty)e), _emptyMap);
+          this.forwardProperties.put(((ForwardProperty)e).uuid(), pair);
+          String _uuid = ((ForwardProperty)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof ForwardProperty) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<ForwardProperty, Map<String, String>> pair = new Pair<ForwardProperty, Map<String, String>>(((ForwardProperty)e), _emptyMap);
-            this.forwardProperties.put(((ForwardProperty)e).uuid(), pair);
-            String _uuid = ((ForwardProperty)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof InverseProperty) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<InverseProperty, Map<String, String>> pair = new Pair<InverseProperty, Map<String, String>>(((InverseProperty)e), _emptyMap);
+          this.inverseProperties.put(((InverseProperty)e).uuid(), pair);
+          String _uuid = ((InverseProperty)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof InverseProperty) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<InverseProperty, Map<String, String>> pair = new Pair<InverseProperty, Map<String, String>>(((InverseProperty)e), _emptyMap);
-            this.inverseProperties.put(((InverseProperty)e).uuid(), pair);
-            String _uuid = ((InverseProperty)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof UnreifiedRelationship) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<UnreifiedRelationship, Map<String, String>> pair = new Pair<UnreifiedRelationship, Map<String, String>>(((UnreifiedRelationship)e), _emptyMap);
+          this.unreifiedRelationships.put(((UnreifiedRelationship)e).uuid(), pair);
+          String _uuid = ((UnreifiedRelationship)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof UnreifiedRelationship) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<UnreifiedRelationship, Map<String, String>> pair = new Pair<UnreifiedRelationship, Map<String, String>>(((UnreifiedRelationship)e), _emptyMap);
-            this.unreifiedRelationships.put(((UnreifiedRelationship)e).uuid(), pair);
-            String _uuid = ((UnreifiedRelationship)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof ChainRule) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<ChainRule, Map<String, String>> pair = new Pair<ChainRule, Map<String, String>>(((ChainRule)e), _emptyMap);
+          this.chainRules.put(((ChainRule)e).uuid(), pair);
+          String _uuid = ((ChainRule)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof ChainRule) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<ChainRule, Map<String, String>> pair = new Pair<ChainRule, Map<String, String>>(((ChainRule)e), _emptyMap);
-            this.chainRules.put(((ChainRule)e).uuid(), pair);
-            String _uuid = ((ChainRule)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof RuleBodySegment) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<RuleBodySegment, Map<String, String>> pair = new Pair<RuleBodySegment, Map<String, String>>(((RuleBodySegment)e), _emptyMap);
+          this.ruleBodySegments.put(((RuleBodySegment)e).uuid(), pair);
+          String _uuid = ((RuleBodySegment)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof RuleBodySegment) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<RuleBodySegment, Map<String, String>> pair = new Pair<RuleBodySegment, Map<String, String>>(((RuleBodySegment)e), _emptyMap);
-            this.ruleBodySegments.put(((RuleBodySegment)e).uuid(), pair);
-            String _uuid = ((RuleBodySegment)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof SegmentPredicate) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<SegmentPredicate, Map<String, String>> pair = new Pair<SegmentPredicate, Map<String, String>>(((SegmentPredicate)e), _emptyMap);
+          this.segmentPredicates.put(((SegmentPredicate)e).uuid(), pair);
+          String _uuid = ((SegmentPredicate)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof SegmentPredicate) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<SegmentPredicate, Map<String, String>> pair = new Pair<SegmentPredicate, Map<String, String>>(((SegmentPredicate)e), _emptyMap);
-            this.segmentPredicates.put(((SegmentPredicate)e).uuid(), pair);
-            String _uuid = ((SegmentPredicate)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof EntityExistentialRestrictionAxiom) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<EntityExistentialRestrictionAxiom, Map<String, String>> pair = new Pair<EntityExistentialRestrictionAxiom, Map<String, String>>(((EntityExistentialRestrictionAxiom)e), _emptyMap);
+          this.entityExistentialRestrictionAxioms.put(((EntityExistentialRestrictionAxiom)e).uuid(), pair);
+          String _uuid = ((EntityExistentialRestrictionAxiom)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof EntityExistentialRestrictionAxiom) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<EntityExistentialRestrictionAxiom, Map<String, String>> pair = new Pair<EntityExistentialRestrictionAxiom, Map<String, String>>(((EntityExistentialRestrictionAxiom)e), _emptyMap);
-            this.entityExistentialRestrictionAxioms.put(((EntityExistentialRestrictionAxiom)e).uuid(), pair);
-            String _uuid = ((EntityExistentialRestrictionAxiom)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof EntityUniversalRestrictionAxiom) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<EntityUniversalRestrictionAxiom, Map<String, String>> pair = new Pair<EntityUniversalRestrictionAxiom, Map<String, String>>(((EntityUniversalRestrictionAxiom)e), _emptyMap);
+          this.entityUniversalRestrictionAxioms.put(((EntityUniversalRestrictionAxiom)e).uuid(), pair);
+          String _uuid = ((EntityUniversalRestrictionAxiom)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof EntityUniversalRestrictionAxiom) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<EntityUniversalRestrictionAxiom, Map<String, String>> pair = new Pair<EntityUniversalRestrictionAxiom, Map<String, String>>(((EntityUniversalRestrictionAxiom)e), _emptyMap);
-            this.entityUniversalRestrictionAxioms.put(((EntityUniversalRestrictionAxiom)e).uuid(), pair);
-            String _uuid = ((EntityUniversalRestrictionAxiom)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof EntityScalarDataPropertyExistentialRestrictionAxiom) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<EntityScalarDataPropertyExistentialRestrictionAxiom, Map<String, String>> pair = new Pair<EntityScalarDataPropertyExistentialRestrictionAxiom, Map<String, String>>(((EntityScalarDataPropertyExistentialRestrictionAxiom)e), _emptyMap);
+          this.entityScalarDataPropertyExistentialRestrictionAxioms.put(((EntityScalarDataPropertyExistentialRestrictionAxiom)e).uuid(), pair);
+          String _uuid = ((EntityScalarDataPropertyExistentialRestrictionAxiom)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof EntityScalarDataPropertyExistentialRestrictionAxiom) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<EntityScalarDataPropertyExistentialRestrictionAxiom, Map<String, String>> pair = new Pair<EntityScalarDataPropertyExistentialRestrictionAxiom, Map<String, String>>(((EntityScalarDataPropertyExistentialRestrictionAxiom)e), _emptyMap);
-            this.entityScalarDataPropertyExistentialRestrictionAxioms.put(((EntityScalarDataPropertyExistentialRestrictionAxiom)e).uuid(), pair);
-            String _uuid = ((EntityScalarDataPropertyExistentialRestrictionAxiom)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof EntityScalarDataPropertyParticularRestrictionAxiom) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<EntityScalarDataPropertyParticularRestrictionAxiom, Map<String, String>> pair = new Pair<EntityScalarDataPropertyParticularRestrictionAxiom, Map<String, String>>(((EntityScalarDataPropertyParticularRestrictionAxiom)e), _emptyMap);
+          this.entityScalarDataPropertyParticularRestrictionAxioms.put(((EntityScalarDataPropertyParticularRestrictionAxiom)e).uuid(), pair);
+          String _uuid = ((EntityScalarDataPropertyParticularRestrictionAxiom)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof EntityScalarDataPropertyParticularRestrictionAxiom) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<EntityScalarDataPropertyParticularRestrictionAxiom, Map<String, String>> pair = new Pair<EntityScalarDataPropertyParticularRestrictionAxiom, Map<String, String>>(((EntityScalarDataPropertyParticularRestrictionAxiom)e), _emptyMap);
-            this.entityScalarDataPropertyParticularRestrictionAxioms.put(((EntityScalarDataPropertyParticularRestrictionAxiom)e).uuid(), pair);
-            String _uuid = ((EntityScalarDataPropertyParticularRestrictionAxiom)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof EntityScalarDataPropertyUniversalRestrictionAxiom) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<EntityScalarDataPropertyUniversalRestrictionAxiom, Map<String, String>> pair = new Pair<EntityScalarDataPropertyUniversalRestrictionAxiom, Map<String, String>>(((EntityScalarDataPropertyUniversalRestrictionAxiom)e), _emptyMap);
+          this.entityScalarDataPropertyUniversalRestrictionAxioms.put(((EntityScalarDataPropertyUniversalRestrictionAxiom)e).uuid(), pair);
+          String _uuid = ((EntityScalarDataPropertyUniversalRestrictionAxiom)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof EntityScalarDataPropertyUniversalRestrictionAxiom) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<EntityScalarDataPropertyUniversalRestrictionAxiom, Map<String, String>> pair = new Pair<EntityScalarDataPropertyUniversalRestrictionAxiom, Map<String, String>>(((EntityScalarDataPropertyUniversalRestrictionAxiom)e), _emptyMap);
-            this.entityScalarDataPropertyUniversalRestrictionAxioms.put(((EntityScalarDataPropertyUniversalRestrictionAxiom)e).uuid(), pair);
-            String _uuid = ((EntityScalarDataPropertyUniversalRestrictionAxiom)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof EntityStructuredDataPropertyParticularRestrictionAxiom) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<EntityStructuredDataPropertyParticularRestrictionAxiom, Map<String, String>> pair = new Pair<EntityStructuredDataPropertyParticularRestrictionAxiom, Map<String, String>>(((EntityStructuredDataPropertyParticularRestrictionAxiom)e), _emptyMap);
+          this.entityStructuredDataPropertyParticularRestrictionAxioms.put(((EntityStructuredDataPropertyParticularRestrictionAxiom)e).uuid(), pair);
+          String _uuid = ((EntityStructuredDataPropertyParticularRestrictionAxiom)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof EntityStructuredDataPropertyParticularRestrictionAxiom) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<EntityStructuredDataPropertyParticularRestrictionAxiom, Map<String, String>> pair = new Pair<EntityStructuredDataPropertyParticularRestrictionAxiom, Map<String, String>>(((EntityStructuredDataPropertyParticularRestrictionAxiom)e), _emptyMap);
-            this.entityStructuredDataPropertyParticularRestrictionAxioms.put(((EntityStructuredDataPropertyParticularRestrictionAxiom)e).uuid(), pair);
-            String _uuid = ((EntityStructuredDataPropertyParticularRestrictionAxiom)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof RestrictionStructuredDataPropertyTuple) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<RestrictionStructuredDataPropertyTuple, Map<String, String>> pair = new Pair<RestrictionStructuredDataPropertyTuple, Map<String, String>>(((RestrictionStructuredDataPropertyTuple)e), _emptyMap);
+          this.restrictionStructuredDataPropertyTuples.put(((RestrictionStructuredDataPropertyTuple)e).uuid(), pair);
+          String _uuid = ((RestrictionStructuredDataPropertyTuple)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof RestrictionStructuredDataPropertyTuple) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<RestrictionStructuredDataPropertyTuple, Map<String, String>> pair = new Pair<RestrictionStructuredDataPropertyTuple, Map<String, String>>(((RestrictionStructuredDataPropertyTuple)e), _emptyMap);
-            this.restrictionStructuredDataPropertyTuples.put(((RestrictionStructuredDataPropertyTuple)e).uuid(), pair);
-            String _uuid = ((RestrictionStructuredDataPropertyTuple)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof RestrictionScalarDataPropertyValue) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<RestrictionScalarDataPropertyValue, Map<String, String>> pair = new Pair<RestrictionScalarDataPropertyValue, Map<String, String>>(((RestrictionScalarDataPropertyValue)e), _emptyMap);
+          this.restrictionScalarDataPropertyValues.put(((RestrictionScalarDataPropertyValue)e).uuid(), pair);
+          String _uuid = ((RestrictionScalarDataPropertyValue)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof RestrictionScalarDataPropertyValue) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<RestrictionScalarDataPropertyValue, Map<String, String>> pair = new Pair<RestrictionScalarDataPropertyValue, Map<String, String>>(((RestrictionScalarDataPropertyValue)e), _emptyMap);
-            this.restrictionScalarDataPropertyValues.put(((RestrictionScalarDataPropertyValue)e).uuid(), pair);
-            String _uuid = ((RestrictionScalarDataPropertyValue)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof AspectSpecializationAxiom) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<AspectSpecializationAxiom, Map<String, String>> pair = new Pair<AspectSpecializationAxiom, Map<String, String>>(((AspectSpecializationAxiom)e), _emptyMap);
+          this.aspectSpecializationAxioms.put(((AspectSpecializationAxiom)e).uuid(), pair);
+          String _uuid = ((AspectSpecializationAxiom)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof AspectSpecializationAxiom) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<AspectSpecializationAxiom, Map<String, String>> pair = new Pair<AspectSpecializationAxiom, Map<String, String>>(((AspectSpecializationAxiom)e), _emptyMap);
-            this.aspectSpecializationAxioms.put(((AspectSpecializationAxiom)e).uuid(), pair);
-            String _uuid = ((AspectSpecializationAxiom)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof ConceptSpecializationAxiom) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<ConceptSpecializationAxiom, Map<String, String>> pair = new Pair<ConceptSpecializationAxiom, Map<String, String>>(((ConceptSpecializationAxiom)e), _emptyMap);
+          this.conceptSpecializationAxioms.put(((ConceptSpecializationAxiom)e).uuid(), pair);
+          String _uuid = ((ConceptSpecializationAxiom)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof ConceptSpecializationAxiom) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<ConceptSpecializationAxiom, Map<String, String>> pair = new Pair<ConceptSpecializationAxiom, Map<String, String>>(((ConceptSpecializationAxiom)e), _emptyMap);
-            this.conceptSpecializationAxioms.put(((ConceptSpecializationAxiom)e).uuid(), pair);
-            String _uuid = ((ConceptSpecializationAxiom)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof ReifiedRelationshipSpecializationAxiom) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<ReifiedRelationshipSpecializationAxiom, Map<String, String>> pair = new Pair<ReifiedRelationshipSpecializationAxiom, Map<String, String>>(((ReifiedRelationshipSpecializationAxiom)e), _emptyMap);
+          this.reifiedRelationshipSpecializationAxioms.put(((ReifiedRelationshipSpecializationAxiom)e).uuid(), pair);
+          String _uuid = ((ReifiedRelationshipSpecializationAxiom)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof ReifiedRelationshipSpecializationAxiom) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<ReifiedRelationshipSpecializationAxiom, Map<String, String>> pair = new Pair<ReifiedRelationshipSpecializationAxiom, Map<String, String>>(((ReifiedRelationshipSpecializationAxiom)e), _emptyMap);
-            this.reifiedRelationshipSpecializationAxioms.put(((ReifiedRelationshipSpecializationAxiom)e).uuid(), pair);
-            String _uuid = ((ReifiedRelationshipSpecializationAxiom)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof SubDataPropertyOfAxiom) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<SubDataPropertyOfAxiom, Map<String, String>> pair = new Pair<SubDataPropertyOfAxiom, Map<String, String>>(((SubDataPropertyOfAxiom)e), _emptyMap);
+          this.subDataPropertyOfAxioms.put(((SubDataPropertyOfAxiom)e).uuid(), pair);
+          String _uuid = ((SubDataPropertyOfAxiom)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof SubDataPropertyOfAxiom) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<SubDataPropertyOfAxiom, Map<String, String>> pair = new Pair<SubDataPropertyOfAxiom, Map<String, String>>(((SubDataPropertyOfAxiom)e), _emptyMap);
-            this.subDataPropertyOfAxioms.put(((SubDataPropertyOfAxiom)e).uuid(), pair);
-            String _uuid = ((SubDataPropertyOfAxiom)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof SubObjectPropertyOfAxiom) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<SubObjectPropertyOfAxiom, Map<String, String>> pair = new Pair<SubObjectPropertyOfAxiom, Map<String, String>>(((SubObjectPropertyOfAxiom)e), _emptyMap);
+          this.subObjectPropertyOfAxioms.put(((SubObjectPropertyOfAxiom)e).uuid(), pair);
+          String _uuid = ((SubObjectPropertyOfAxiom)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof SubObjectPropertyOfAxiom) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<SubObjectPropertyOfAxiom, Map<String, String>> pair = new Pair<SubObjectPropertyOfAxiom, Map<String, String>>(((SubObjectPropertyOfAxiom)e), _emptyMap);
-            this.subObjectPropertyOfAxioms.put(((SubObjectPropertyOfAxiom)e).uuid(), pair);
-            String _uuid = ((SubObjectPropertyOfAxiom)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof RootConceptTaxonomyAxiom) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<RootConceptTaxonomyAxiom, Map<String, String>> pair = new Pair<RootConceptTaxonomyAxiom, Map<String, String>>(((RootConceptTaxonomyAxiom)e), _emptyMap);
+          this.rootConceptTaxonomyAxioms.put(((RootConceptTaxonomyAxiom)e).uuid(), pair);
+          String _uuid = ((RootConceptTaxonomyAxiom)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof RootConceptTaxonomyAxiom) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<RootConceptTaxonomyAxiom, Map<String, String>> pair = new Pair<RootConceptTaxonomyAxiom, Map<String, String>>(((RootConceptTaxonomyAxiom)e), _emptyMap);
-            this.rootConceptTaxonomyAxioms.put(((RootConceptTaxonomyAxiom)e).uuid(), pair);
-            String _uuid = ((RootConceptTaxonomyAxiom)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof AnonymousConceptUnionAxiom) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<AnonymousConceptUnionAxiom, Map<String, String>> pair = new Pair<AnonymousConceptUnionAxiom, Map<String, String>>(((AnonymousConceptUnionAxiom)e), _emptyMap);
+          this.anonymousConceptUnionAxioms.put(((AnonymousConceptUnionAxiom)e).uuid(), pair);
+          String _uuid = ((AnonymousConceptUnionAxiom)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof AnonymousConceptUnionAxiom) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<AnonymousConceptUnionAxiom, Map<String, String>> pair = new Pair<AnonymousConceptUnionAxiom, Map<String, String>>(((AnonymousConceptUnionAxiom)e), _emptyMap);
-            this.anonymousConceptUnionAxioms.put(((AnonymousConceptUnionAxiom)e).uuid(), pair);
-            String _uuid = ((AnonymousConceptUnionAxiom)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof SpecificDisjointConceptAxiom) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<SpecificDisjointConceptAxiom, Map<String, String>> pair = new Pair<SpecificDisjointConceptAxiom, Map<String, String>>(((SpecificDisjointConceptAxiom)e), _emptyMap);
+          this.specificDisjointConceptAxioms.put(((SpecificDisjointConceptAxiom)e).uuid(), pair);
+          String _uuid = ((SpecificDisjointConceptAxiom)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof SpecificDisjointConceptAxiom) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<SpecificDisjointConceptAxiom, Map<String, String>> pair = new Pair<SpecificDisjointConceptAxiom, Map<String, String>>(((SpecificDisjointConceptAxiom)e), _emptyMap);
-            this.specificDisjointConceptAxioms.put(((SpecificDisjointConceptAxiom)e).uuid(), pair);
-            String _uuid = ((SpecificDisjointConceptAxiom)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof ConceptInstance) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<ConceptInstance, Map<String, String>> pair = new Pair<ConceptInstance, Map<String, String>>(((ConceptInstance)e), _emptyMap);
+          this.conceptInstances.put(((ConceptInstance)e).uuid(), pair);
+          String _uuid = ((ConceptInstance)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof ConceptInstance) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<ConceptInstance, Map<String, String>> pair = new Pair<ConceptInstance, Map<String, String>>(((ConceptInstance)e), _emptyMap);
-            this.conceptInstances.put(((ConceptInstance)e).uuid(), pair);
-            String _uuid = ((ConceptInstance)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof ReifiedRelationshipInstance) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<ReifiedRelationshipInstance, Map<String, String>> pair = new Pair<ReifiedRelationshipInstance, Map<String, String>>(((ReifiedRelationshipInstance)e), _emptyMap);
+          this.reifiedRelationshipInstances.put(((ReifiedRelationshipInstance)e).uuid(), pair);
+          String _uuid = ((ReifiedRelationshipInstance)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof ReifiedRelationshipInstance) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<ReifiedRelationshipInstance, Map<String, String>> pair = new Pair<ReifiedRelationshipInstance, Map<String, String>>(((ReifiedRelationshipInstance)e), _emptyMap);
-            this.reifiedRelationshipInstances.put(((ReifiedRelationshipInstance)e).uuid(), pair);
-            String _uuid = ((ReifiedRelationshipInstance)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof ReifiedRelationshipInstanceDomain) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<ReifiedRelationshipInstanceDomain, Map<String, String>> pair = new Pair<ReifiedRelationshipInstanceDomain, Map<String, String>>(((ReifiedRelationshipInstanceDomain)e), _emptyMap);
+          this.reifiedRelationshipInstanceDomains.put(((ReifiedRelationshipInstanceDomain)e).uuid(), pair);
+          String _uuid = ((ReifiedRelationshipInstanceDomain)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof ReifiedRelationshipInstanceDomain) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<ReifiedRelationshipInstanceDomain, Map<String, String>> pair = new Pair<ReifiedRelationshipInstanceDomain, Map<String, String>>(((ReifiedRelationshipInstanceDomain)e), _emptyMap);
-            this.reifiedRelationshipInstanceDomains.put(((ReifiedRelationshipInstanceDomain)e).uuid(), pair);
-            String _uuid = ((ReifiedRelationshipInstanceDomain)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof ReifiedRelationshipInstanceRange) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<ReifiedRelationshipInstanceRange, Map<String, String>> pair = new Pair<ReifiedRelationshipInstanceRange, Map<String, String>>(((ReifiedRelationshipInstanceRange)e), _emptyMap);
+          this.reifiedRelationshipInstanceRanges.put(((ReifiedRelationshipInstanceRange)e).uuid(), pair);
+          String _uuid = ((ReifiedRelationshipInstanceRange)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof ReifiedRelationshipInstanceRange) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<ReifiedRelationshipInstanceRange, Map<String, String>> pair = new Pair<ReifiedRelationshipInstanceRange, Map<String, String>>(((ReifiedRelationshipInstanceRange)e), _emptyMap);
-            this.reifiedRelationshipInstanceRanges.put(((ReifiedRelationshipInstanceRange)e).uuid(), pair);
-            String _uuid = ((ReifiedRelationshipInstanceRange)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof UnreifiedRelationshipInstanceTuple) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<UnreifiedRelationshipInstanceTuple, Map<String, String>> pair = new Pair<UnreifiedRelationshipInstanceTuple, Map<String, String>>(((UnreifiedRelationshipInstanceTuple)e), _emptyMap);
+          this.unreifiedRelationshipInstanceTuples.put(((UnreifiedRelationshipInstanceTuple)e).uuid(), pair);
+          String _uuid = ((UnreifiedRelationshipInstanceTuple)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof UnreifiedRelationshipInstanceTuple) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<UnreifiedRelationshipInstanceTuple, Map<String, String>> pair = new Pair<UnreifiedRelationshipInstanceTuple, Map<String, String>>(((UnreifiedRelationshipInstanceTuple)e), _emptyMap);
-            this.unreifiedRelationshipInstanceTuples.put(((UnreifiedRelationshipInstanceTuple)e).uuid(), pair);
-            String _uuid = ((UnreifiedRelationshipInstanceTuple)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof SingletonInstanceStructuredDataPropertyValue) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<SingletonInstanceStructuredDataPropertyValue, Map<String, String>> pair = new Pair<SingletonInstanceStructuredDataPropertyValue, Map<String, String>>(((SingletonInstanceStructuredDataPropertyValue)e), _emptyMap);
+          this.singletonInstanceStructuredDataPropertyValues.put(((SingletonInstanceStructuredDataPropertyValue)e).uuid(), pair);
+          String _uuid = ((SingletonInstanceStructuredDataPropertyValue)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof SingletonInstanceStructuredDataPropertyValue) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<SingletonInstanceStructuredDataPropertyValue, Map<String, String>> pair = new Pair<SingletonInstanceStructuredDataPropertyValue, Map<String, String>>(((SingletonInstanceStructuredDataPropertyValue)e), _emptyMap);
-            this.singletonInstanceStructuredDataPropertyValues.put(((SingletonInstanceStructuredDataPropertyValue)e).uuid(), pair);
-            String _uuid = ((SingletonInstanceStructuredDataPropertyValue)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof SingletonInstanceScalarDataPropertyValue) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<SingletonInstanceScalarDataPropertyValue, Map<String, String>> pair = new Pair<SingletonInstanceScalarDataPropertyValue, Map<String, String>>(((SingletonInstanceScalarDataPropertyValue)e), _emptyMap);
+          this.singletonInstanceScalarDataPropertyValues.put(((SingletonInstanceScalarDataPropertyValue)e).uuid(), pair);
+          String _uuid = ((SingletonInstanceScalarDataPropertyValue)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof SingletonInstanceScalarDataPropertyValue) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<SingletonInstanceScalarDataPropertyValue, Map<String, String>> pair = new Pair<SingletonInstanceScalarDataPropertyValue, Map<String, String>>(((SingletonInstanceScalarDataPropertyValue)e), _emptyMap);
-            this.singletonInstanceScalarDataPropertyValues.put(((SingletonInstanceScalarDataPropertyValue)e).uuid(), pair);
-            String _uuid = ((SingletonInstanceScalarDataPropertyValue)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof StructuredDataPropertyTuple) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<StructuredDataPropertyTuple, Map<String, String>> pair = new Pair<StructuredDataPropertyTuple, Map<String, String>>(((StructuredDataPropertyTuple)e), _emptyMap);
+          this.structuredDataPropertyTuples.put(((StructuredDataPropertyTuple)e).uuid(), pair);
+          String _uuid = ((StructuredDataPropertyTuple)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof StructuredDataPropertyTuple) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<StructuredDataPropertyTuple, Map<String, String>> pair = new Pair<StructuredDataPropertyTuple, Map<String, String>>(((StructuredDataPropertyTuple)e), _emptyMap);
-            this.structuredDataPropertyTuples.put(((StructuredDataPropertyTuple)e).uuid(), pair);
-            String _uuid = ((StructuredDataPropertyTuple)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof ScalarDataPropertyValue) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<ScalarDataPropertyValue, Map<String, String>> pair = new Pair<ScalarDataPropertyValue, Map<String, String>>(((ScalarDataPropertyValue)e), _emptyMap);
+          this.scalarDataPropertyValues.put(((ScalarDataPropertyValue)e).uuid(), pair);
+          String _uuid = ((ScalarDataPropertyValue)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
         }
-        if (!_matched_1) {
-          if (e instanceof ScalarDataPropertyValue) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<ScalarDataPropertyValue, Map<String, String>> pair = new Pair<ScalarDataPropertyValue, Map<String, String>>(((ScalarDataPropertyValue)e), _emptyMap);
-            this.scalarDataPropertyValues.put(((ScalarDataPropertyValue)e).uuid(), pair);
-            String _uuid = ((ScalarDataPropertyValue)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
+      }
+      if (!_matched) {
+        if (e instanceof AnnotationPropertyValue) {
+          _matched=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<AnnotationPropertyValue, Map<String, String>> pair = new Pair<AnnotationPropertyValue, Map<String, String>>(((AnnotationPropertyValue)e), _emptyMap);
+          this.annotationPropertyValues.put(((AnnotationPropertyValue)e).uuid(), pair);
         }
-        if (!_matched_1) {
-          if (e instanceof AnnotationPropertyValue) {
-            _matched_1=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<AnnotationPropertyValue, Map<String, String>> pair = new Pair<AnnotationPropertyValue, Map<String, String>>(((AnnotationPropertyValue)e), _emptyMap);
-            this.annotationPropertyValues.put(((AnnotationPropertyValue)e).uuid(), pair);
-          }
-        }
-      };
-      IteratorExtensions.<EObject>forEach(((OMLZipResource)r).getContents().get(0).eAllContents(), _function);
-      return ((OMLZipResource)r);
-    }
-    throw new IllegalArgumentException((("OMLTables.loadOMLZipResource(" + uri) + ") should have produce an OMLZipResource!"));
+      }
+    };
+    IteratorExtensions.<EObject>forEach(r.getContents().get(0).eAllContents(), _function);
+    return r;
   }
 }
