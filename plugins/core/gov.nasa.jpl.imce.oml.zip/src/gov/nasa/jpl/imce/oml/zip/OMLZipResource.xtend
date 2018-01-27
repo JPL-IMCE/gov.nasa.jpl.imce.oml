@@ -78,13 +78,25 @@ class OMLZipResource extends ResourceImpl {
 				val OMLCatalog c = OMLExtensions.getCatalog(rs)
 				if (null === c) 
 					throw new IllegalArgumentException("OMLZipResource.load(): requires an OMLCatalog on this resource set!")
-				val resolved = c.resolveURI(uri.toString)
-				if (null === resolved || !resolved.startsWith("file:"))
-					throw new IllegalArgumentException('''OMLZipResource.load(): No catalog mapping for URI: «uri»''')
-				val omlZipFile = new File(resolved + ".omlzip")
-				if (!omlZipFile.exists)
-					throw new IllegalArgumentException('''OMLZipResource.load(): URI: «uri» resolves to a non-existent file: «omlZipFile»''')
-				OMLSpecificationTables.load(rs, this, omlZipFile)
+					
+				val File omlFile = switch uri.scheme {
+					case "http": {
+						val resolved = c.resolveURI(uri.toString)
+						if (null === resolved || !resolved.startsWith("file:"))
+							throw new IllegalArgumentException('''OMLZipResource.load(): No catalog mapping for URI: «uri»''')
+						new File(resolved + ".omlzip")
+					}
+					
+					default:
+						if (uri.file)
+							new File(uri.toFileString)
+						else
+							throw new IllegalArgumentException('''OMLZipResource.load(): unrecognized URI scheme in: «uri» (must be either http or file): «uri.isFile»''')
+				}
+				
+				if (!omlFile.exists)
+					throw new IllegalArgumentException('''OMLZipResource.load(): URI: «uri» resolves to a non-existent file: «omlFile»''')
+				OMLSpecificationTables.load(rs, this, omlFile)
 			}
 		}
 	}

@@ -63,11 +63,11 @@ class OMLResourceCompare {
 	static def void resourceCompare
 	(Resource r1, Resource r2) 
 	throws IllegalArgumentException {
-		if (!OMLZipResource.isInstance(r1))
-			throw new IllegalArgumentException("resourceCompare(r1,_) must be an OMLZipResource!")
-		
-		if (!OMLZipResource.isInstance(r2))
-			throw new IllegalArgumentException("resourceCompare(_,r2) must be an OMLZipResource!")
+//		if (!OMLZipResource.isInstance(r1))
+//			throw new IllegalArgumentException("resourceCompare(r1,_) must be an OMLZipResource!")
+//		
+//		if (!OMLZipResource.isInstance(r2))
+//			throw new IllegalArgumentException("resourceCompare(_,r2) must be an OMLZipResource!")
 		
 		if (1 != r1.contents.size)
 			throw new IllegalArgumentException("resourceCompare(r1 has "+r1.contents.size+" toplevel elements (there should be 1)")

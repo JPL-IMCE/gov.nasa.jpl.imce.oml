@@ -34,6 +34,7 @@ import org.apache.commons.compress.archivers.zip.ZipArchiveEntry
 import org.apache.commons.compress.archivers.zip.ZipArchiveOutputStream
 import org.apache.commons.compress.archivers.zip.ZipFile
 import org.eclipse.emf.common.util.URI
+import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.xtext.xbase.lib.Pair
 
@@ -4956,324 +4957,318 @@ class OMLSpecificationTables {
   }
   
 
-  protected def OMLZipResource loadOMLZipResource(ResourceSet rs, URI uri) {
+  protected def Resource loadOMLZipResource(ResourceSet rs, URI uri) {
   	val r = rs.getResource(uri, true)
-  	switch r {
-  		OMLZipResource: {
-  		  r.contents.get(0).eAllContents.forEach[e|
-  		    switch e {
-  	          TerminologyGraph: {
-  	          	val pair = new Pair<TerminologyGraph, Map<String,String>>(e, Collections.emptyMap)
-  	            terminologyGraphs.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	            terminologyGraphs.put(e.iri(), pair)
-  	            terminologyBoxes.put(e.uuid(), new Pair<TerminologyBox, Map<String,String>>(e, Collections.emptyMap))
-  	            terminologyBoxes.put(e.iri(), new Pair<TerminologyBox, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          Bundle: {
-  	          	val pair = new Pair<Bundle, Map<String,String>>(e, Collections.emptyMap)
-  	            bundles.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	            bundles.put(e.iri(), pair)
-  	            terminologyBoxes.put(e.uuid(), new Pair<TerminologyBox, Map<String,String>>(e, Collections.emptyMap))
-  	            terminologyBoxes.put(e.iri(), new Pair<TerminologyBox, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          DescriptionBox: {
-  	          	val pair = new Pair<DescriptionBox, Map<String,String>>(e, Collections.emptyMap)
-  	            descriptionBoxes.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	            descriptionBoxes.put(e.iri(), pair)
-  	          }
-  	          AnnotationProperty: {
-  	          	val pair = new Pair<AnnotationProperty, Map<String,String>>(e, Collections.emptyMap)
-  	            annotationProperties.put(e.uuid(), pair)
-  	          }
-  	          Aspect: {
-  	          	val pair = new Pair<Aspect, Map<String,String>>(e, Collections.emptyMap)
-  	            aspects.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          Concept: {
-  	          	val pair = new Pair<Concept, Map<String,String>>(e, Collections.emptyMap)
-  	            concepts.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          Scalar: {
-  	          	val pair = new Pair<Scalar, Map<String,String>>(e, Collections.emptyMap)
-  	            scalars.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          Structure: {
-  	          	val pair = new Pair<Structure, Map<String,String>>(e, Collections.emptyMap)
-  	            structures.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          ConceptDesignationTerminologyAxiom: {
-  	          	val pair = new Pair<ConceptDesignationTerminologyAxiom, Map<String,String>>(e, Collections.emptyMap)
-  	            conceptDesignationTerminologyAxioms.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          TerminologyExtensionAxiom: {
-  	          	val pair = new Pair<TerminologyExtensionAxiom, Map<String,String>>(e, Collections.emptyMap)
-  	            terminologyExtensionAxioms.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          TerminologyNestingAxiom: {
-  	          	val pair = new Pair<TerminologyNestingAxiom, Map<String,String>>(e, Collections.emptyMap)
-  	            terminologyNestingAxioms.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          BundledTerminologyAxiom: {
-  	          	val pair = new Pair<BundledTerminologyAxiom, Map<String,String>>(e, Collections.emptyMap)
-  	            bundledTerminologyAxioms.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          DescriptionBoxExtendsClosedWorldDefinitions: {
-  	          	val pair = new Pair<DescriptionBoxExtendsClosedWorldDefinitions, Map<String,String>>(e, Collections.emptyMap)
-  	            descriptionBoxExtendsClosedWorldDefinitions.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          DescriptionBoxRefinement: {
-  	          	val pair = new Pair<DescriptionBoxRefinement, Map<String,String>>(e, Collections.emptyMap)
-  	            descriptionBoxRefinements.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          BinaryScalarRestriction: {
-  	          	val pair = new Pair<BinaryScalarRestriction, Map<String,String>>(e, Collections.emptyMap)
-  	            binaryScalarRestrictions.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          IRIScalarRestriction: {
-  	          	val pair = new Pair<IRIScalarRestriction, Map<String,String>>(e, Collections.emptyMap)
-  	            iriScalarRestrictions.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          NumericScalarRestriction: {
-  	          	val pair = new Pair<NumericScalarRestriction, Map<String,String>>(e, Collections.emptyMap)
-  	            numericScalarRestrictions.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          PlainLiteralScalarRestriction: {
-  	          	val pair = new Pair<PlainLiteralScalarRestriction, Map<String,String>>(e, Collections.emptyMap)
-  	            plainLiteralScalarRestrictions.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          ScalarOneOfRestriction: {
-  	          	val pair = new Pair<ScalarOneOfRestriction, Map<String,String>>(e, Collections.emptyMap)
-  	            scalarOneOfRestrictions.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          ScalarOneOfLiteralAxiom: {
-  	          	val pair = new Pair<ScalarOneOfLiteralAxiom, Map<String,String>>(e, Collections.emptyMap)
-  	            scalarOneOfLiteralAxioms.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          StringScalarRestriction: {
-  	          	val pair = new Pair<StringScalarRestriction, Map<String,String>>(e, Collections.emptyMap)
-  	            stringScalarRestrictions.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          SynonymScalarRestriction: {
-  	          	val pair = new Pair<SynonymScalarRestriction, Map<String,String>>(e, Collections.emptyMap)
-  	            synonymScalarRestrictions.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          TimeScalarRestriction: {
-  	          	val pair = new Pair<TimeScalarRestriction, Map<String,String>>(e, Collections.emptyMap)
-  	            timeScalarRestrictions.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          EntityScalarDataProperty: {
-  	          	val pair = new Pair<EntityScalarDataProperty, Map<String,String>>(e, Collections.emptyMap)
-  	            entityScalarDataProperties.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          EntityStructuredDataProperty: {
-  	          	val pair = new Pair<EntityStructuredDataProperty, Map<String,String>>(e, Collections.emptyMap)
-  	            entityStructuredDataProperties.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          ScalarDataProperty: {
-  	          	val pair = new Pair<ScalarDataProperty, Map<String,String>>(e, Collections.emptyMap)
-  	            scalarDataProperties.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          StructuredDataProperty: {
-  	          	val pair = new Pair<StructuredDataProperty, Map<String,String>>(e, Collections.emptyMap)
-  	            structuredDataProperties.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          ReifiedRelationship: {
-  	          	val pair = new Pair<ReifiedRelationship, Map<String,String>>(e, Collections.emptyMap)
-  	            reifiedRelationships.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          ForwardProperty: {
-  	          	val pair = new Pair<ForwardProperty, Map<String,String>>(e, Collections.emptyMap)
-  	            forwardProperties.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          InverseProperty: {
-  	          	val pair = new Pair<InverseProperty, Map<String,String>>(e, Collections.emptyMap)
-  	            inverseProperties.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          UnreifiedRelationship: {
-  	          	val pair = new Pair<UnreifiedRelationship, Map<String,String>>(e, Collections.emptyMap)
-  	            unreifiedRelationships.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          ChainRule: {
-  	          	val pair = new Pair<ChainRule, Map<String,String>>(e, Collections.emptyMap)
-  	            chainRules.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          RuleBodySegment: {
-  	          	val pair = new Pair<RuleBodySegment, Map<String,String>>(e, Collections.emptyMap)
-  	            ruleBodySegments.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          SegmentPredicate: {
-  	          	val pair = new Pair<SegmentPredicate, Map<String,String>>(e, Collections.emptyMap)
-  	            segmentPredicates.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          EntityExistentialRestrictionAxiom: {
-  	          	val pair = new Pair<EntityExistentialRestrictionAxiom, Map<String,String>>(e, Collections.emptyMap)
-  	            entityExistentialRestrictionAxioms.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          EntityUniversalRestrictionAxiom: {
-  	          	val pair = new Pair<EntityUniversalRestrictionAxiom, Map<String,String>>(e, Collections.emptyMap)
-  	            entityUniversalRestrictionAxioms.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          EntityScalarDataPropertyExistentialRestrictionAxiom: {
-  	          	val pair = new Pair<EntityScalarDataPropertyExistentialRestrictionAxiom, Map<String,String>>(e, Collections.emptyMap)
-  	            entityScalarDataPropertyExistentialRestrictionAxioms.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          EntityScalarDataPropertyParticularRestrictionAxiom: {
-  	          	val pair = new Pair<EntityScalarDataPropertyParticularRestrictionAxiom, Map<String,String>>(e, Collections.emptyMap)
-  	            entityScalarDataPropertyParticularRestrictionAxioms.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          EntityScalarDataPropertyUniversalRestrictionAxiom: {
-  	          	val pair = new Pair<EntityScalarDataPropertyUniversalRestrictionAxiom, Map<String,String>>(e, Collections.emptyMap)
-  	            entityScalarDataPropertyUniversalRestrictionAxioms.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          EntityStructuredDataPropertyParticularRestrictionAxiom: {
-  	          	val pair = new Pair<EntityStructuredDataPropertyParticularRestrictionAxiom, Map<String,String>>(e, Collections.emptyMap)
-  	            entityStructuredDataPropertyParticularRestrictionAxioms.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          RestrictionStructuredDataPropertyTuple: {
-  	          	val pair = new Pair<RestrictionStructuredDataPropertyTuple, Map<String,String>>(e, Collections.emptyMap)
-  	            restrictionStructuredDataPropertyTuples.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          RestrictionScalarDataPropertyValue: {
-  	          	val pair = new Pair<RestrictionScalarDataPropertyValue, Map<String,String>>(e, Collections.emptyMap)
-  	            restrictionScalarDataPropertyValues.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          AspectSpecializationAxiom: {
-  	          	val pair = new Pair<AspectSpecializationAxiom, Map<String,String>>(e, Collections.emptyMap)
-  	            aspectSpecializationAxioms.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          ConceptSpecializationAxiom: {
-  	          	val pair = new Pair<ConceptSpecializationAxiom, Map<String,String>>(e, Collections.emptyMap)
-  	            conceptSpecializationAxioms.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          ReifiedRelationshipSpecializationAxiom: {
-  	          	val pair = new Pair<ReifiedRelationshipSpecializationAxiom, Map<String,String>>(e, Collections.emptyMap)
-  	            reifiedRelationshipSpecializationAxioms.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          SubDataPropertyOfAxiom: {
-  	          	val pair = new Pair<SubDataPropertyOfAxiom, Map<String,String>>(e, Collections.emptyMap)
-  	            subDataPropertyOfAxioms.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          SubObjectPropertyOfAxiom: {
-  	          	val pair = new Pair<SubObjectPropertyOfAxiom, Map<String,String>>(e, Collections.emptyMap)
-  	            subObjectPropertyOfAxioms.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          RootConceptTaxonomyAxiom: {
-  	          	val pair = new Pair<RootConceptTaxonomyAxiom, Map<String,String>>(e, Collections.emptyMap)
-  	            rootConceptTaxonomyAxioms.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          AnonymousConceptUnionAxiom: {
-  	          	val pair = new Pair<AnonymousConceptUnionAxiom, Map<String,String>>(e, Collections.emptyMap)
-  	            anonymousConceptUnionAxioms.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          SpecificDisjointConceptAxiom: {
-  	          	val pair = new Pair<SpecificDisjointConceptAxiom, Map<String,String>>(e, Collections.emptyMap)
-  	            specificDisjointConceptAxioms.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          ConceptInstance: {
-  	          	val pair = new Pair<ConceptInstance, Map<String,String>>(e, Collections.emptyMap)
-  	            conceptInstances.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          ReifiedRelationshipInstance: {
-  	          	val pair = new Pair<ReifiedRelationshipInstance, Map<String,String>>(e, Collections.emptyMap)
-  	            reifiedRelationshipInstances.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          ReifiedRelationshipInstanceDomain: {
-  	          	val pair = new Pair<ReifiedRelationshipInstanceDomain, Map<String,String>>(e, Collections.emptyMap)
-  	            reifiedRelationshipInstanceDomains.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          ReifiedRelationshipInstanceRange: {
-  	          	val pair = new Pair<ReifiedRelationshipInstanceRange, Map<String,String>>(e, Collections.emptyMap)
-  	            reifiedRelationshipInstanceRanges.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          UnreifiedRelationshipInstanceTuple: {
-  	          	val pair = new Pair<UnreifiedRelationshipInstanceTuple, Map<String,String>>(e, Collections.emptyMap)
-  	            unreifiedRelationshipInstanceTuples.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          SingletonInstanceStructuredDataPropertyValue: {
-  	          	val pair = new Pair<SingletonInstanceStructuredDataPropertyValue, Map<String,String>>(e, Collections.emptyMap)
-  	            singletonInstanceStructuredDataPropertyValues.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          SingletonInstanceScalarDataPropertyValue: {
-  	          	val pair = new Pair<SingletonInstanceScalarDataPropertyValue, Map<String,String>>(e, Collections.emptyMap)
-  	            singletonInstanceScalarDataPropertyValues.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          StructuredDataPropertyTuple: {
-  	          	val pair = new Pair<StructuredDataPropertyTuple, Map<String,String>>(e, Collections.emptyMap)
-  	            structuredDataPropertyTuples.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          ScalarDataPropertyValue: {
-  	          	val pair = new Pair<ScalarDataPropertyValue, Map<String,String>>(e, Collections.emptyMap)
-  	            scalarDataPropertyValues.put(e.uuid(), pair)
-  	            logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	          }
-  	          AnnotationPropertyValue: {
-  	          	val pair = new Pair<AnnotationPropertyValue, Map<String,String>>(e, Collections.emptyMap)
-  	            annotationPropertyValues.put(e.uuid(), pair)
-  	          }
-  		    	}
-  		  ]
-  		  return r
-  		}
-  		default:
-  		  throw new IllegalArgumentException("OMLTables.loadOMLZipResource("+uri+") should have produce an OMLZipResource!")
-    }
+	r.contents.get(0).eAllContents.forEach[e|
+  	  switch e {
+  	    TerminologyGraph: {
+  	      val pair = new Pair<TerminologyGraph, Map<String,String>>(e, Collections.emptyMap)
+  	      terminologyGraphs.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	      terminologyGraphs.put(e.iri(), pair)
+  	      terminologyBoxes.put(e.uuid(), new Pair<TerminologyBox, Map<String,String>>(e, Collections.emptyMap))
+  	      terminologyBoxes.put(e.iri(), new Pair<TerminologyBox, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    Bundle: {
+  	      val pair = new Pair<Bundle, Map<String,String>>(e, Collections.emptyMap)
+  	      bundles.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	      bundles.put(e.iri(), pair)
+  	      terminologyBoxes.put(e.uuid(), new Pair<TerminologyBox, Map<String,String>>(e, Collections.emptyMap))
+  	      terminologyBoxes.put(e.iri(), new Pair<TerminologyBox, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    DescriptionBox: {
+  	      val pair = new Pair<DescriptionBox, Map<String,String>>(e, Collections.emptyMap)
+  	      descriptionBoxes.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	      descriptionBoxes.put(e.iri(), pair)
+  	    }
+  	    AnnotationProperty: {
+  	      val pair = new Pair<AnnotationProperty, Map<String,String>>(e, Collections.emptyMap)
+  	      annotationProperties.put(e.uuid(), pair)
+  	    }
+  	    Aspect: {
+  	      val pair = new Pair<Aspect, Map<String,String>>(e, Collections.emptyMap)
+  	      aspects.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    Concept: {
+  	      val pair = new Pair<Concept, Map<String,String>>(e, Collections.emptyMap)
+  	      concepts.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    Scalar: {
+  	      val pair = new Pair<Scalar, Map<String,String>>(e, Collections.emptyMap)
+  	      scalars.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    Structure: {
+  	      val pair = new Pair<Structure, Map<String,String>>(e, Collections.emptyMap)
+  	      structures.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    ConceptDesignationTerminologyAxiom: {
+  	      val pair = new Pair<ConceptDesignationTerminologyAxiom, Map<String,String>>(e, Collections.emptyMap)
+  	      conceptDesignationTerminologyAxioms.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    TerminologyExtensionAxiom: {
+  	      val pair = new Pair<TerminologyExtensionAxiom, Map<String,String>>(e, Collections.emptyMap)
+  	      terminologyExtensionAxioms.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    TerminologyNestingAxiom: {
+  	      val pair = new Pair<TerminologyNestingAxiom, Map<String,String>>(e, Collections.emptyMap)
+  	      terminologyNestingAxioms.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    BundledTerminologyAxiom: {
+  	      val pair = new Pair<BundledTerminologyAxiom, Map<String,String>>(e, Collections.emptyMap)
+  	      bundledTerminologyAxioms.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    DescriptionBoxExtendsClosedWorldDefinitions: {
+  	      val pair = new Pair<DescriptionBoxExtendsClosedWorldDefinitions, Map<String,String>>(e, Collections.emptyMap)
+  	      descriptionBoxExtendsClosedWorldDefinitions.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    DescriptionBoxRefinement: {
+  	      val pair = new Pair<DescriptionBoxRefinement, Map<String,String>>(e, Collections.emptyMap)
+  	      descriptionBoxRefinements.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    BinaryScalarRestriction: {
+  	      val pair = new Pair<BinaryScalarRestriction, Map<String,String>>(e, Collections.emptyMap)
+  	      binaryScalarRestrictions.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    IRIScalarRestriction: {
+  	      val pair = new Pair<IRIScalarRestriction, Map<String,String>>(e, Collections.emptyMap)
+  	      iriScalarRestrictions.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    NumericScalarRestriction: {
+  	      val pair = new Pair<NumericScalarRestriction, Map<String,String>>(e, Collections.emptyMap)
+  	      numericScalarRestrictions.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    PlainLiteralScalarRestriction: {
+  	      val pair = new Pair<PlainLiteralScalarRestriction, Map<String,String>>(e, Collections.emptyMap)
+  	      plainLiteralScalarRestrictions.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    ScalarOneOfRestriction: {
+  	      val pair = new Pair<ScalarOneOfRestriction, Map<String,String>>(e, Collections.emptyMap)
+  	      scalarOneOfRestrictions.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    ScalarOneOfLiteralAxiom: {
+  	      val pair = new Pair<ScalarOneOfLiteralAxiom, Map<String,String>>(e, Collections.emptyMap)
+  	      scalarOneOfLiteralAxioms.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    StringScalarRestriction: {
+  	      val pair = new Pair<StringScalarRestriction, Map<String,String>>(e, Collections.emptyMap)
+  	      stringScalarRestrictions.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    SynonymScalarRestriction: {
+  	      val pair = new Pair<SynonymScalarRestriction, Map<String,String>>(e, Collections.emptyMap)
+  	      synonymScalarRestrictions.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    TimeScalarRestriction: {
+  	      val pair = new Pair<TimeScalarRestriction, Map<String,String>>(e, Collections.emptyMap)
+  	      timeScalarRestrictions.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    EntityScalarDataProperty: {
+  	      val pair = new Pair<EntityScalarDataProperty, Map<String,String>>(e, Collections.emptyMap)
+  	      entityScalarDataProperties.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    EntityStructuredDataProperty: {
+  	      val pair = new Pair<EntityStructuredDataProperty, Map<String,String>>(e, Collections.emptyMap)
+  	      entityStructuredDataProperties.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    ScalarDataProperty: {
+  	      val pair = new Pair<ScalarDataProperty, Map<String,String>>(e, Collections.emptyMap)
+  	      scalarDataProperties.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    StructuredDataProperty: {
+  	      val pair = new Pair<StructuredDataProperty, Map<String,String>>(e, Collections.emptyMap)
+  	      structuredDataProperties.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    ReifiedRelationship: {
+  	      val pair = new Pair<ReifiedRelationship, Map<String,String>>(e, Collections.emptyMap)
+  	      reifiedRelationships.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    ForwardProperty: {
+  	      val pair = new Pair<ForwardProperty, Map<String,String>>(e, Collections.emptyMap)
+  	      forwardProperties.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    InverseProperty: {
+  	      val pair = new Pair<InverseProperty, Map<String,String>>(e, Collections.emptyMap)
+  	      inverseProperties.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    UnreifiedRelationship: {
+  	      val pair = new Pair<UnreifiedRelationship, Map<String,String>>(e, Collections.emptyMap)
+  	      unreifiedRelationships.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    ChainRule: {
+  	      val pair = new Pair<ChainRule, Map<String,String>>(e, Collections.emptyMap)
+  	      chainRules.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    RuleBodySegment: {
+  	      val pair = new Pair<RuleBodySegment, Map<String,String>>(e, Collections.emptyMap)
+  	      ruleBodySegments.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    SegmentPredicate: {
+  	      val pair = new Pair<SegmentPredicate, Map<String,String>>(e, Collections.emptyMap)
+  	      segmentPredicates.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    EntityExistentialRestrictionAxiom: {
+  	      val pair = new Pair<EntityExistentialRestrictionAxiom, Map<String,String>>(e, Collections.emptyMap)
+  	      entityExistentialRestrictionAxioms.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    EntityUniversalRestrictionAxiom: {
+  	      val pair = new Pair<EntityUniversalRestrictionAxiom, Map<String,String>>(e, Collections.emptyMap)
+  	      entityUniversalRestrictionAxioms.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    EntityScalarDataPropertyExistentialRestrictionAxiom: {
+  	      val pair = new Pair<EntityScalarDataPropertyExistentialRestrictionAxiom, Map<String,String>>(e, Collections.emptyMap)
+  	      entityScalarDataPropertyExistentialRestrictionAxioms.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    EntityScalarDataPropertyParticularRestrictionAxiom: {
+  	      val pair = new Pair<EntityScalarDataPropertyParticularRestrictionAxiom, Map<String,String>>(e, Collections.emptyMap)
+  	      entityScalarDataPropertyParticularRestrictionAxioms.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    EntityScalarDataPropertyUniversalRestrictionAxiom: {
+  	      val pair = new Pair<EntityScalarDataPropertyUniversalRestrictionAxiom, Map<String,String>>(e, Collections.emptyMap)
+  	      entityScalarDataPropertyUniversalRestrictionAxioms.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    EntityStructuredDataPropertyParticularRestrictionAxiom: {
+  	      val pair = new Pair<EntityStructuredDataPropertyParticularRestrictionAxiom, Map<String,String>>(e, Collections.emptyMap)
+  	      entityStructuredDataPropertyParticularRestrictionAxioms.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    RestrictionStructuredDataPropertyTuple: {
+  	      val pair = new Pair<RestrictionStructuredDataPropertyTuple, Map<String,String>>(e, Collections.emptyMap)
+  	      restrictionStructuredDataPropertyTuples.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    RestrictionScalarDataPropertyValue: {
+  	      val pair = new Pair<RestrictionScalarDataPropertyValue, Map<String,String>>(e, Collections.emptyMap)
+  	      restrictionScalarDataPropertyValues.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    AspectSpecializationAxiom: {
+  	      val pair = new Pair<AspectSpecializationAxiom, Map<String,String>>(e, Collections.emptyMap)
+  	      aspectSpecializationAxioms.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    ConceptSpecializationAxiom: {
+  	      val pair = new Pair<ConceptSpecializationAxiom, Map<String,String>>(e, Collections.emptyMap)
+  	      conceptSpecializationAxioms.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    ReifiedRelationshipSpecializationAxiom: {
+  	      val pair = new Pair<ReifiedRelationshipSpecializationAxiom, Map<String,String>>(e, Collections.emptyMap)
+  	      reifiedRelationshipSpecializationAxioms.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    SubDataPropertyOfAxiom: {
+  	      val pair = new Pair<SubDataPropertyOfAxiom, Map<String,String>>(e, Collections.emptyMap)
+  	      subDataPropertyOfAxioms.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    SubObjectPropertyOfAxiom: {
+  	      val pair = new Pair<SubObjectPropertyOfAxiom, Map<String,String>>(e, Collections.emptyMap)
+  	      subObjectPropertyOfAxioms.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    RootConceptTaxonomyAxiom: {
+  	      val pair = new Pair<RootConceptTaxonomyAxiom, Map<String,String>>(e, Collections.emptyMap)
+  	      rootConceptTaxonomyAxioms.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    AnonymousConceptUnionAxiom: {
+  	      val pair = new Pair<AnonymousConceptUnionAxiom, Map<String,String>>(e, Collections.emptyMap)
+  	      anonymousConceptUnionAxioms.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    SpecificDisjointConceptAxiom: {
+  	      val pair = new Pair<SpecificDisjointConceptAxiom, Map<String,String>>(e, Collections.emptyMap)
+  	      specificDisjointConceptAxioms.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    ConceptInstance: {
+  	      val pair = new Pair<ConceptInstance, Map<String,String>>(e, Collections.emptyMap)
+  	      conceptInstances.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    ReifiedRelationshipInstance: {
+  	      val pair = new Pair<ReifiedRelationshipInstance, Map<String,String>>(e, Collections.emptyMap)
+  	      reifiedRelationshipInstances.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    ReifiedRelationshipInstanceDomain: {
+  	      val pair = new Pair<ReifiedRelationshipInstanceDomain, Map<String,String>>(e, Collections.emptyMap)
+  	      reifiedRelationshipInstanceDomains.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    ReifiedRelationshipInstanceRange: {
+  	      val pair = new Pair<ReifiedRelationshipInstanceRange, Map<String,String>>(e, Collections.emptyMap)
+  	      reifiedRelationshipInstanceRanges.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    UnreifiedRelationshipInstanceTuple: {
+  	      val pair = new Pair<UnreifiedRelationshipInstanceTuple, Map<String,String>>(e, Collections.emptyMap)
+  	      unreifiedRelationshipInstanceTuples.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    SingletonInstanceStructuredDataPropertyValue: {
+  	      val pair = new Pair<SingletonInstanceStructuredDataPropertyValue, Map<String,String>>(e, Collections.emptyMap)
+  	      singletonInstanceStructuredDataPropertyValues.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    SingletonInstanceScalarDataPropertyValue: {
+  	      val pair = new Pair<SingletonInstanceScalarDataPropertyValue, Map<String,String>>(e, Collections.emptyMap)
+  	      singletonInstanceScalarDataPropertyValues.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    StructuredDataPropertyTuple: {
+  	      val pair = new Pair<StructuredDataPropertyTuple, Map<String,String>>(e, Collections.emptyMap)
+  	      structuredDataPropertyTuples.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    ScalarDataPropertyValue: {
+  	      val pair = new Pair<ScalarDataPropertyValue, Map<String,String>>(e, Collections.emptyMap)
+  	      scalarDataPropertyValues.put(e.uuid(), pair)
+  	      logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	    }
+  	    AnnotationPropertyValue: {
+  	      val pair = new Pair<AnnotationPropertyValue, Map<String,String>>(e, Collections.emptyMap)
+  	      annotationPropertyValues.put(e.uuid(), pair)
+  	    }
+  	   }
+  	 ]
+  	 return r
   }
   
 }

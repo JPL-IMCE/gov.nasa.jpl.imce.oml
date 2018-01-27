@@ -100,7 +100,7 @@ class OMLZipResourceSet extends ResourceSetImpl {
 	 * Create an OMLZipREsource.
 	 */
 	override def OMLZipResource createResource(URI uri) {
-		val r = createResource(uri, "gov.nasa.jpl.imce.oml.zip")
+		val r = createResource(uri, "omlzip")
 		switch r {
 			OMLZipResource:
 				return r
