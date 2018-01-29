@@ -64,6 +64,7 @@ import gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceStructuredDataP
 import gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceStructuredDataPropertyValue
 import gov.nasa.jpl.imce.oml.model.descriptions.StructuredDataPropertyTuple
 import gov.nasa.jpl.imce.oml.model.descriptions.UnreifiedRelationshipInstanceTuple
+import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions
 import gov.nasa.jpl.imce.oml.model.graphs.ConceptDesignationTerminologyAxiom
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyGraph
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyNestingAxiom
@@ -3465,7 +3466,9 @@ class OMLSpecificationTables {
   }
   
   protected def void readSingletonInstanceScalarDataPropertyValues(ArrayList<String> lines) {
-  	val kvs = OMLZipResource.lines2tuples(lines)
+  	System.out.println('''readSingletonInstanceScalarDataPropertyValues: «lines.length» lines!''')
+  	val kvs = OMLZipResource.lines2tuples(lines, 1000)
+  	System.out.println('''readSingletonInstanceScalarDataPropertyValues: «kvs.length» entries!''')
   	kvs.forEach[kv|
   	  val oml = createSingletonInstanceScalarDataPropertyValue()
   	  val uuid = kv.remove("uuid")
@@ -4753,9 +4756,12 @@ class OMLSpecificationTables {
   	    oml.descriptionBox = descriptionBoxPair.key
   	    val String singletonReifiedRelationshipClassifierXRef = kv.remove("singletonReifiedRelationshipClassifierUUID")
   	    val Pair<ReifiedRelationship, Map<String, String>> singletonReifiedRelationshipClassifierPair = reifiedRelationships.get(singletonReifiedRelationshipClassifierXRef)
-  	    if (null === singletonReifiedRelationshipClassifierPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for singletonReifiedRelationshipClassifier in reifiedRelationshipInstances")
-  	    oml.singletonReifiedRelationshipClassifier = singletonReifiedRelationshipClassifierPair.key
+  	    if (null !== singletonReifiedRelationshipClassifierPair)
+  	    	oml.singletonReifiedRelationshipClassifier = singletonReifiedRelationshipClassifierPair.key
+  	    else {
+  	    	
+  	      	throw new IllegalArgumentException("Null cross-reference lookup for singletonReifiedRelationshipClassifier in reifiedRelationshipInstances")  
+  	    }
   	  }
   	]
   }
@@ -4958,7 +4964,15 @@ class OMLSpecificationTables {
   
 
   protected def Resource loadOMLZipResource(ResourceSet rs, URI uri) {
-  	val r = rs.getResource(uri, true)
+  	val omlCatalog = OMLExtensions.getCatalog(rs)
+  	if (null === omlCatalog)
+  		throw new IllegalArgumentException("loadOMLZipResource: ResourceSet must have an OMLCatalog!")
+  		
+  	val resolvedIRI = omlCatalog.resolveURI(uri.toString + ".oml") ?: omlCatalog.resolveURI(uri.toString + ".omlzip")
+	if (null === resolvedIRI)
+		throw new IllegalArgumentException('''loadOMLZipResource: «uri» not resolved!''')
+  	
+  	val r = rs.getResource(URI.createURI(resolvedIRI), true)
 	r.contents.get(0).eAllContents.forEach[e|
   	  switch e {
   	    TerminologyGraph: {

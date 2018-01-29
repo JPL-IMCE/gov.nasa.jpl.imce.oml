@@ -142,4 +142,32 @@ class OMLZipResource extends ResourceImpl {
   	]
   	return list
   }
+  
+  
+   protected static def List<Map<String, String>> lines2tuples(ArrayList<String> lines, int limit) {
+   	val list = new ArrayList<Map<String, String>>()
+   	var i = 0
+   	val max = lines.size
+   	while (i < max) {
+   		val line = lines.get(i++)
+  	    val map = new HashMap<String, String>()
+  	    Assert.isTrue(line.startsWith("{"))
+  	    Assert.isTrue(line.endsWith("}"))
+  	    val keyValues = line.substring(1, line.length-1)
+  	    val m = KeyValue.matcher(keyValues)
+  	    while (m.find()) {
+  	    		val key = m.group(1)
+  	    		val value = m.group(3) ?: m.group(2)
+  	    		map.put(key, value)
+  	    }
+  		list.add(map)
+  		if (0 == list.size % 1000)
+  			System.out.println('''lines2typles: «list.size» («(list.size * 100)/lines.size»)''')
+  		if (list.size > limit) {
+  			System.out.println('''lines2typles: «list.size» («list.size») exceeds limit («limit»)''')
+  			return list
+  		}
+  	}
+  	return list
+  }
 }
