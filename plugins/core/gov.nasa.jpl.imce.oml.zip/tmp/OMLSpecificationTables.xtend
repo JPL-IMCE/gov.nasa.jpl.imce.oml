@@ -36,7 +36,6 @@ import org.apache.commons.compress.archivers.zip.ZipFile
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.resource.ResourceSet
-import org.eclipse.emf.ecore.util.EcoreUtil
 import org.eclipse.xtext.xbase.lib.Pair
 
 import gov.nasa.jpl.imce.oml.model.extensions.OMLTables
@@ -122,6 +121,7 @@ import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesFactory
 import gov.nasa.jpl.imce.oml.model.graphs.GraphsFactory
 import gov.nasa.jpl.imce.oml.model.bundles.BundlesFactory
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsFactory
+import org.eclipse.emf.ecore.util.EcoreUtil
 
 /**
  * @generated
@@ -2824,179 +2824,165 @@ class OMLSpecificationTables {
           throw new IllegalArgumentException("OMLSpecificationTables.load(): unrecognized table name: "+ze.name)
       }
     ]
+    
     tables.createAndResolve(rs, r)
   }
 
   protected def void readTerminologyGraphs(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createTerminologyGraph()
   	  val uuid = kv.remove("uuid")
   	  oml.kind = OMLTables.toTerminologyKind(kv.remove("kind"))
   	  oml.iri = OMLTables.toIRI(kv.remove("iri"))
   	  val pair = new Pair<TerminologyGraph, Map<String,String>>(oml, kv)
   	  terminologyGraphs.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readBundles(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createBundle()
   	  val uuid = kv.remove("uuid")
   	  oml.kind = OMLTables.toTerminologyKind(kv.remove("kind"))
   	  oml.iri = OMLTables.toIRI(kv.remove("iri"))
   	  val pair = new Pair<Bundle, Map<String,String>>(oml, kv)
   	  bundles.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readDescriptionBoxes(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createDescriptionBox()
   	  val uuid = kv.remove("uuid")
   	  oml.kind = OMLTables.toDescriptionKind(kv.remove("kind"))
   	  oml.iri = OMLTables.toIRI(kv.remove("iri"))
   	  val pair = new Pair<DescriptionBox, Map<String,String>>(oml, kv)
   	  descriptionBoxes.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readAnnotationProperties(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createAnnotationProperty()
   	  val uuid = kv.remove("uuid")
   	  oml.iri = OMLTables.toIRI(kv.remove("iri"))
   	  oml.abbrevIRI = OMLTables.toAbbrevIRI(kv.remove("abbrevIRI"))
   	  val pair = new Pair<AnnotationProperty, Map<String,String>>(oml, kv)
   	  annotationProperties.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readAspects(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createAspect()
   	  val uuid = kv.remove("uuid")
   	  oml.name = OMLTables.toLocalName(kv.remove("name"))
   	  val pair = new Pair<Aspect, Map<String,String>>(oml, kv)
   	  aspects.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readConcepts(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createConcept()
   	  val uuid = kv.remove("uuid")
   	  oml.name = OMLTables.toLocalName(kv.remove("name"))
   	  val pair = new Pair<Concept, Map<String,String>>(oml, kv)
   	  concepts.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readScalars(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createScalar()
   	  val uuid = kv.remove("uuid")
   	  oml.name = OMLTables.toLocalName(kv.remove("name"))
   	  val pair = new Pair<Scalar, Map<String,String>>(oml, kv)
   	  scalars.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readStructures(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createStructure()
   	  val uuid = kv.remove("uuid")
   	  oml.name = OMLTables.toLocalName(kv.remove("name"))
   	  val pair = new Pair<Structure, Map<String,String>>(oml, kv)
   	  structures.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readConceptDesignationTerminologyAxioms(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createConceptDesignationTerminologyAxiom()
   	  val uuid = kv.remove("uuid")
   	  val pair = new Pair<ConceptDesignationTerminologyAxiom, Map<String,String>>(oml, kv)
   	  conceptDesignationTerminologyAxioms.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readTerminologyExtensionAxioms(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createTerminologyExtensionAxiom()
   	  val uuid = kv.remove("uuid")
   	  val pair = new Pair<TerminologyExtensionAxiom, Map<String,String>>(oml, kv)
   	  terminologyExtensionAxioms.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readTerminologyNestingAxioms(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createTerminologyNestingAxiom()
   	  val uuid = kv.remove("uuid")
   	  val pair = new Pair<TerminologyNestingAxiom, Map<String,String>>(oml, kv)
   	  terminologyNestingAxioms.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readBundledTerminologyAxioms(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createBundledTerminologyAxiom()
   	  val uuid = kv.remove("uuid")
   	  val pair = new Pair<BundledTerminologyAxiom, Map<String,String>>(oml, kv)
   	  bundledTerminologyAxioms.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readDescriptionBoxExtendsClosedWorldDefinitions(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createDescriptionBoxExtendsClosedWorldDefinitions()
   	  val uuid = kv.remove("uuid")
   	  val pair = new Pair<DescriptionBoxExtendsClosedWorldDefinitions, Map<String,String>>(oml, kv)
   	  descriptionBoxExtendsClosedWorldDefinitions.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readDescriptionBoxRefinements(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createDescriptionBoxRefinement()
   	  val uuid = kv.remove("uuid")
   	  val pair = new Pair<DescriptionBoxRefinement, Map<String,String>>(oml, kv)
   	  descriptionBoxRefinements.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readBinaryScalarRestrictions(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createBinaryScalarRestriction()
   	  val uuid = kv.remove("uuid")
   	  oml.length = OMLTables.toPositiveIntegerLiteral(kv.remove("length"))
@@ -3005,13 +2991,12 @@ class OMLSpecificationTables {
   	  oml.name = OMLTables.toLocalName(kv.remove("name"))
   	  val pair = new Pair<BinaryScalarRestriction, Map<String,String>>(oml, kv)
   	  binaryScalarRestrictions.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readIRIScalarRestrictions(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createIRIScalarRestriction()
   	  val uuid = kv.remove("uuid")
   	  oml.length = OMLTables.toPositiveIntegerLiteral(kv.remove("length"))
@@ -3021,13 +3006,12 @@ class OMLSpecificationTables {
   	  oml.pattern = OMLTables.toLiteralPattern(kv.remove("pattern"))
   	  val pair = new Pair<IRIScalarRestriction, Map<String,String>>(oml, kv)
   	  iriScalarRestrictions.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readNumericScalarRestrictions(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createNumericScalarRestriction()
   	  val uuid = kv.remove("uuid")
   	  oml.minExclusive = OMLTables.toLiteralNumber(kv.remove("minExclusive"))
@@ -3037,13 +3021,12 @@ class OMLSpecificationTables {
   	  oml.name = OMLTables.toLocalName(kv.remove("name"))
   	  val pair = new Pair<NumericScalarRestriction, Map<String,String>>(oml, kv)
   	  numericScalarRestrictions.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readPlainLiteralScalarRestrictions(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createPlainLiteralScalarRestriction()
   	  val uuid = kv.remove("uuid")
   	  oml.length = OMLTables.toPositiveIntegerLiteral(kv.remove("length"))
@@ -3054,37 +3037,34 @@ class OMLSpecificationTables {
   	  oml.pattern = OMLTables.toLiteralPattern(kv.remove("pattern"))
   	  val pair = new Pair<PlainLiteralScalarRestriction, Map<String,String>>(oml, kv)
   	  plainLiteralScalarRestrictions.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readScalarOneOfRestrictions(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createScalarOneOfRestriction()
   	  val uuid = kv.remove("uuid")
   	  oml.name = OMLTables.toLocalName(kv.remove("name"))
   	  val pair = new Pair<ScalarOneOfRestriction, Map<String,String>>(oml, kv)
   	  scalarOneOfRestrictions.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readScalarOneOfLiteralAxioms(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createScalarOneOfLiteralAxiom()
   	  val uuid = kv.remove("uuid")
   	  oml.value = OMLTables.toLiteralValue(kv.remove("value"))
   	  val pair = new Pair<ScalarOneOfLiteralAxiom, Map<String,String>>(oml, kv)
   	  scalarOneOfLiteralAxioms.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readStringScalarRestrictions(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createStringScalarRestriction()
   	  val uuid = kv.remove("uuid")
   	  oml.length = OMLTables.toPositiveIntegerLiteral(kv.remove("length"))
@@ -3094,25 +3074,23 @@ class OMLSpecificationTables {
   	  oml.pattern = OMLTables.toLiteralPattern(kv.remove("pattern"))
   	  val pair = new Pair<StringScalarRestriction, Map<String,String>>(oml, kv)
   	  stringScalarRestrictions.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readSynonymScalarRestrictions(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createSynonymScalarRestriction()
   	  val uuid = kv.remove("uuid")
   	  oml.name = OMLTables.toLocalName(kv.remove("name"))
   	  val pair = new Pair<SynonymScalarRestriction, Map<String,String>>(oml, kv)
   	  synonymScalarRestrictions.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readTimeScalarRestrictions(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createTimeScalarRestriction()
   	  val uuid = kv.remove("uuid")
   	  oml.minExclusive = OMLTables.toLiteralDateTime(kv.remove("minExclusive"))
@@ -3122,63 +3100,58 @@ class OMLSpecificationTables {
   	  oml.name = OMLTables.toLocalName(kv.remove("name"))
   	  val pair = new Pair<TimeScalarRestriction, Map<String,String>>(oml, kv)
   	  timeScalarRestrictions.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readEntityScalarDataProperties(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createEntityScalarDataProperty()
   	  val uuid = kv.remove("uuid")
   	  oml.isIdentityCriteria = OMLTables.toEBoolean(kv.remove("isIdentityCriteria"))
   	  oml.name = OMLTables.toLocalName(kv.remove("name"))
   	  val pair = new Pair<EntityScalarDataProperty, Map<String,String>>(oml, kv)
   	  entityScalarDataProperties.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readEntityStructuredDataProperties(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createEntityStructuredDataProperty()
   	  val uuid = kv.remove("uuid")
   	  oml.isIdentityCriteria = OMLTables.toEBoolean(kv.remove("isIdentityCriteria"))
   	  oml.name = OMLTables.toLocalName(kv.remove("name"))
   	  val pair = new Pair<EntityStructuredDataProperty, Map<String,String>>(oml, kv)
   	  entityStructuredDataProperties.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readScalarDataProperties(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createScalarDataProperty()
   	  val uuid = kv.remove("uuid")
   	  oml.name = OMLTables.toLocalName(kv.remove("name"))
   	  val pair = new Pair<ScalarDataProperty, Map<String,String>>(oml, kv)
   	  scalarDataProperties.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readStructuredDataProperties(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createStructuredDataProperty()
   	  val uuid = kv.remove("uuid")
   	  oml.name = OMLTables.toLocalName(kv.remove("name"))
   	  val pair = new Pair<StructuredDataProperty, Map<String,String>>(oml, kv)
   	  structuredDataProperties.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readReifiedRelationships(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createReifiedRelationship()
   	  val uuid = kv.remove("uuid")
   	  oml.isAsymmetric = OMLTables.toEBoolean(kv.remove("isAsymmetric"))
@@ -3193,37 +3166,34 @@ class OMLSpecificationTables {
   	  oml.name = OMLTables.toLocalName(kv.remove("name"))
   	  val pair = new Pair<ReifiedRelationship, Map<String,String>>(oml, kv)
   	  reifiedRelationships.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readForwardProperties(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createForwardProperty()
   	  val uuid = kv.remove("uuid")
   	  oml.name = OMLTables.toLocalName(kv.remove("name"))
   	  val pair = new Pair<ForwardProperty, Map<String,String>>(oml, kv)
   	  forwardProperties.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readInverseProperties(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createInverseProperty()
   	  val uuid = kv.remove("uuid")
   	  oml.name = OMLTables.toLocalName(kv.remove("name"))
   	  val pair = new Pair<InverseProperty, Map<String,String>>(oml, kv)
   	  inverseProperties.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readUnreifiedRelationships(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createUnreifiedRelationship()
   	  val uuid = kv.remove("uuid")
   	  oml.isAsymmetric = OMLTables.toEBoolean(kv.remove("isAsymmetric"))
@@ -3238,335 +3208,306 @@ class OMLSpecificationTables {
   	  oml.name = OMLTables.toLocalName(kv.remove("name"))
   	  val pair = new Pair<UnreifiedRelationship, Map<String,String>>(oml, kv)
   	  unreifiedRelationships.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readChainRules(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createChainRule()
   	  val uuid = kv.remove("uuid")
   	  oml.name = OMLTables.toLocalName(kv.remove("name"))
   	  val pair = new Pair<ChainRule, Map<String,String>>(oml, kv)
   	  chainRules.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readRuleBodySegments(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createRuleBodySegment()
   	  val uuid = kv.remove("uuid")
   	  val pair = new Pair<RuleBodySegment, Map<String,String>>(oml, kv)
   	  ruleBodySegments.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readSegmentPredicates(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createSegmentPredicate()
   	  val uuid = kv.remove("uuid")
   	  val pair = new Pair<SegmentPredicate, Map<String,String>>(oml, kv)
   	  segmentPredicates.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readEntityExistentialRestrictionAxioms(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createEntityExistentialRestrictionAxiom()
   	  val uuid = kv.remove("uuid")
   	  val pair = new Pair<EntityExistentialRestrictionAxiom, Map<String,String>>(oml, kv)
   	  entityExistentialRestrictionAxioms.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readEntityUniversalRestrictionAxioms(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createEntityUniversalRestrictionAxiom()
   	  val uuid = kv.remove("uuid")
   	  val pair = new Pair<EntityUniversalRestrictionAxiom, Map<String,String>>(oml, kv)
   	  entityUniversalRestrictionAxioms.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readEntityScalarDataPropertyExistentialRestrictionAxioms(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createEntityScalarDataPropertyExistentialRestrictionAxiom()
   	  val uuid = kv.remove("uuid")
   	  val pair = new Pair<EntityScalarDataPropertyExistentialRestrictionAxiom, Map<String,String>>(oml, kv)
   	  entityScalarDataPropertyExistentialRestrictionAxioms.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readEntityScalarDataPropertyParticularRestrictionAxioms(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createEntityScalarDataPropertyParticularRestrictionAxiom()
   	  val uuid = kv.remove("uuid")
   	  oml.literalValue = OMLTables.toLiteralValue(kv.remove("literalValue"))
   	  val pair = new Pair<EntityScalarDataPropertyParticularRestrictionAxiom, Map<String,String>>(oml, kv)
   	  entityScalarDataPropertyParticularRestrictionAxioms.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readEntityScalarDataPropertyUniversalRestrictionAxioms(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createEntityScalarDataPropertyUniversalRestrictionAxiom()
   	  val uuid = kv.remove("uuid")
   	  val pair = new Pair<EntityScalarDataPropertyUniversalRestrictionAxiom, Map<String,String>>(oml, kv)
   	  entityScalarDataPropertyUniversalRestrictionAxioms.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readEntityStructuredDataPropertyParticularRestrictionAxioms(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createEntityStructuredDataPropertyParticularRestrictionAxiom()
   	  val uuid = kv.remove("uuid")
   	  val pair = new Pair<EntityStructuredDataPropertyParticularRestrictionAxiom, Map<String,String>>(oml, kv)
   	  entityStructuredDataPropertyParticularRestrictionAxioms.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readRestrictionStructuredDataPropertyTuples(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createRestrictionStructuredDataPropertyTuple()
   	  val uuid = kv.remove("uuid")
   	  val pair = new Pair<RestrictionStructuredDataPropertyTuple, Map<String,String>>(oml, kv)
   	  restrictionStructuredDataPropertyTuples.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readRestrictionScalarDataPropertyValues(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createRestrictionScalarDataPropertyValue()
   	  val uuid = kv.remove("uuid")
   	  oml.scalarPropertyValue = OMLTables.toLiteralValue(kv.remove("scalarPropertyValue"))
   	  val pair = new Pair<RestrictionScalarDataPropertyValue, Map<String,String>>(oml, kv)
   	  restrictionScalarDataPropertyValues.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readAspectSpecializationAxioms(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createAspectSpecializationAxiom()
   	  val uuid = kv.remove("uuid")
   	  val pair = new Pair<AspectSpecializationAxiom, Map<String,String>>(oml, kv)
   	  aspectSpecializationAxioms.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readConceptSpecializationAxioms(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createConceptSpecializationAxiom()
   	  val uuid = kv.remove("uuid")
   	  val pair = new Pair<ConceptSpecializationAxiom, Map<String,String>>(oml, kv)
   	  conceptSpecializationAxioms.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readReifiedRelationshipSpecializationAxioms(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createReifiedRelationshipSpecializationAxiom()
   	  val uuid = kv.remove("uuid")
   	  val pair = new Pair<ReifiedRelationshipSpecializationAxiom, Map<String,String>>(oml, kv)
   	  reifiedRelationshipSpecializationAxioms.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readSubDataPropertyOfAxioms(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createSubDataPropertyOfAxiom()
   	  val uuid = kv.remove("uuid")
   	  val pair = new Pair<SubDataPropertyOfAxiom, Map<String,String>>(oml, kv)
   	  subDataPropertyOfAxioms.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readSubObjectPropertyOfAxioms(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createSubObjectPropertyOfAxiom()
   	  val uuid = kv.remove("uuid")
   	  val pair = new Pair<SubObjectPropertyOfAxiom, Map<String,String>>(oml, kv)
   	  subObjectPropertyOfAxioms.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readRootConceptTaxonomyAxioms(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createRootConceptTaxonomyAxiom()
   	  val uuid = kv.remove("uuid")
   	  val pair = new Pair<RootConceptTaxonomyAxiom, Map<String,String>>(oml, kv)
   	  rootConceptTaxonomyAxioms.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readAnonymousConceptUnionAxioms(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createAnonymousConceptUnionAxiom()
   	  val uuid = kv.remove("uuid")
   	  oml.name = OMLTables.toLocalName(kv.remove("name"))
   	  val pair = new Pair<AnonymousConceptUnionAxiom, Map<String,String>>(oml, kv)
   	  anonymousConceptUnionAxioms.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readSpecificDisjointConceptAxioms(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createSpecificDisjointConceptAxiom()
   	  val uuid = kv.remove("uuid")
   	  val pair = new Pair<SpecificDisjointConceptAxiom, Map<String,String>>(oml, kv)
   	  specificDisjointConceptAxioms.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readConceptInstances(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createConceptInstance()
   	  val uuid = kv.remove("uuid")
   	  oml.name = OMLTables.toLocalName(kv.remove("name"))
   	  val pair = new Pair<ConceptInstance, Map<String,String>>(oml, kv)
   	  conceptInstances.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readReifiedRelationshipInstances(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createReifiedRelationshipInstance()
   	  val uuid = kv.remove("uuid")
   	  oml.name = OMLTables.toLocalName(kv.remove("name"))
   	  val pair = new Pair<ReifiedRelationshipInstance, Map<String,String>>(oml, kv)
   	  reifiedRelationshipInstances.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readReifiedRelationshipInstanceDomains(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createReifiedRelationshipInstanceDomain()
   	  val uuid = kv.remove("uuid")
   	  val pair = new Pair<ReifiedRelationshipInstanceDomain, Map<String,String>>(oml, kv)
   	  reifiedRelationshipInstanceDomains.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readReifiedRelationshipInstanceRanges(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createReifiedRelationshipInstanceRange()
   	  val uuid = kv.remove("uuid")
   	  val pair = new Pair<ReifiedRelationshipInstanceRange, Map<String,String>>(oml, kv)
   	  reifiedRelationshipInstanceRanges.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readUnreifiedRelationshipInstanceTuples(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createUnreifiedRelationshipInstanceTuple()
   	  val uuid = kv.remove("uuid")
   	  val pair = new Pair<UnreifiedRelationshipInstanceTuple, Map<String,String>>(oml, kv)
   	  unreifiedRelationshipInstanceTuples.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readSingletonInstanceStructuredDataPropertyValues(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createSingletonInstanceStructuredDataPropertyValue()
   	  val uuid = kv.remove("uuid")
   	  val pair = new Pair<SingletonInstanceStructuredDataPropertyValue, Map<String,String>>(oml, kv)
   	  singletonInstanceStructuredDataPropertyValues.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readSingletonInstanceScalarDataPropertyValues(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createSingletonInstanceScalarDataPropertyValue()
   	  val uuid = kv.remove("uuid")
   	  oml.scalarPropertyValue = OMLTables.toLiteralValue(kv.remove("scalarPropertyValue"))
   	  val pair = new Pair<SingletonInstanceScalarDataPropertyValue, Map<String,String>>(oml, kv)
   	  singletonInstanceScalarDataPropertyValues.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readStructuredDataPropertyTuples(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createStructuredDataPropertyTuple()
   	  val uuid = kv.remove("uuid")
   	  val pair = new Pair<StructuredDataPropertyTuple, Map<String,String>>(oml, kv)
   	  structuredDataPropertyTuples.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readScalarDataPropertyValues(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createScalarDataPropertyValue()
   	  val uuid = kv.remove("uuid")
   	  oml.scalarPropertyValue = OMLTables.toLiteralValue(kv.remove("scalarPropertyValue"))
   	  val pair = new Pair<ScalarDataPropertyValue, Map<String,String>>(oml, kv)
   	  scalarDataPropertyValues.put(uuid, pair)
-  	}
+  	]
   }
   
   protected def void readAnnotationPropertyValues(ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
+  	kvs.forEach[kv|
   	  val oml = createAnnotationPropertyValue()
   	  val uuid = kv.remove("uuid")
   	  oml.value = OMLTables.toLiteralString(kv.remove("value"))
   	  val pair = new Pair<AnnotationPropertyValue, Map<String,String>>(oml, kv)
   	  annotationPropertyValues.put(uuid, pair)
-  	}
+  	]
   }
   
 
@@ -3576,15 +3517,15 @@ class OMLSpecificationTables {
   
   protected def void createAndResolve(ResourceSet rs, OMLZipResource r) {
   	
-    val ext = createExtent()
-    ext.getModules.addAll(terminologyGraphs.values.map[key])
-    ext.getModules.addAll(bundles.values.map[key])
-    ext.getModules.addAll(descriptionBoxes.values.map[key])
+    	val ext = createExtent()
+    	ext.getModules.addAll(terminologyGraphs.values.map[key])
+    	ext.getModules.addAll(bundles.values.map[key])
+    	ext.getModules.addAll(descriptionBoxes.values.map[key])
     	r.contents.add(ext)
     	
     	resolve(rs, r)
   }
-
+  
   protected def void resolve(ResourceSet rs, OMLZipResource r) {
 	// Lookup table for LogicalElement cross references
     includeMap(logicalElements, terminologyGraphs)
@@ -3751,6 +3692,7 @@ class OMLSpecificationTables {
     resolveStructuredDataPropertyTuples(rs)
     resolveScalarDataPropertyValues(rs)
     resolveAnnotationPropertyValues(rs)
+    
   }
 
   protected def void resolveAnnotationProperties(ResourceSet rs) {
@@ -4820,9 +4762,12 @@ class OMLSpecificationTables {
   	    oml.descriptionBox = descriptionBoxPair.key
   	    val String singletonReifiedRelationshipClassifierXRef = kv.remove("singletonReifiedRelationshipClassifierUUID")
   	    val Pair<ReifiedRelationship, Map<String, String>> singletonReifiedRelationshipClassifierPair = reifiedRelationships.get(singletonReifiedRelationshipClassifierXRef)
-  	    if (null === singletonReifiedRelationshipClassifierPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for singletonReifiedRelationshipClassifier in reifiedRelationshipInstances")
-  	    oml.singletonReifiedRelationshipClassifier = singletonReifiedRelationshipClassifierPair.key
+  	    if (null !== singletonReifiedRelationshipClassifierPair)
+  	    	oml.singletonReifiedRelationshipClassifier = singletonReifiedRelationshipClassifierPair.key
+  	    else {
+  	    	
+  	      	throw new IllegalArgumentException("Null cross-reference lookup for singletonReifiedRelationshipClassifier in reifiedRelationshipInstances")  
+  	    }
   	  }
   	]
   }
@@ -5023,6 +4968,7 @@ class OMLSpecificationTables {
   	]
   }
   
+
   protected def Resource loadOMLZipResource(ResourceSet rs, URI uri) {
   	val omlCatalog = OMLExtensions.getCatalog(rs)
   	if (null === omlCatalog)
@@ -5030,7 +4976,7 @@ class OMLSpecificationTables {
   		
   	val resolvedIRI = omlCatalog.resolveURI(uri.toString + ".oml") ?: omlCatalog.resolveURI(uri.toString + ".omlzip")
 	if (null === resolvedIRI)
-		throw new IllegalArgumentException("loadOMLZipResource: "+uri+" not resolved!")
+		throw new IllegalArgumentException('''loadOMLZipResource: «uri» not resolved!''')
   	
   	val r = rs.getResource(URI.createURI(resolvedIRI), true)
   	EcoreUtil.resolveAll(r)
@@ -5045,35 +4991,35 @@ class OMLSpecificationTables {
   	
   	r
   }
-
+  
   protected def void includeModule(Module m) {
-    	switch m {
-    	  TerminologyGraph: {
-    	    val pair = new Pair<TerminologyGraph, Map<String,String>>(m, Collections.emptyMap)
-    	    terminologyGraphs.put(m.uuid(), pair)
-    	    logicalElements.put(m.uuid(), new Pair<LogicalElement, Map<String,String>>(m, Collections.emptyMap))
-    	    terminologyGraphs.put(m.iri(), pair)
-    	    terminologyBoxes.put(m.uuid(), new Pair<TerminologyBox, Map<String,String>>(m, Collections.emptyMap))
-    	    terminologyBoxes.put(m.iri(), new Pair<TerminologyBox, Map<String,String>>(m, Collections.emptyMap))
-    	  }
-    	  Bundle: {
-    	    val pair = new Pair<Bundle, Map<String,String>>(m, Collections.emptyMap)
-    	    bundles.put(m.uuid(), pair)
-    	    logicalElements.put(m.uuid(), new Pair<LogicalElement, Map<String,String>>(m, Collections.emptyMap))
-    	    bundles.put(m.iri(), pair)
-    	    terminologyBoxes.put(m.uuid(), new Pair<TerminologyBox, Map<String,String>>(m, Collections.emptyMap))
-    	    terminologyBoxes.put(m.iri(), new Pair<TerminologyBox, Map<String,String>>(m, Collections.emptyMap))
-    	  }
-    	  DescriptionBox: {
-    	    val pair = new Pair<DescriptionBox, Map<String,String>>(m, Collections.emptyMap)
-    	    descriptionBoxes.put(m.uuid(), pair)
-    	    logicalElements.put(m.uuid(), new Pair<LogicalElement, Map<String,String>>(m, Collections.emptyMap))
-    	    descriptionBoxes.put(m.iri(), pair)
-    	  }
-    	}
-  	
-  	m.eAllContents.forEach[e|
-  	  switch e {
+  	  switch m {
+  	    TerminologyGraph: {
+  	      val pair = new Pair<TerminologyGraph, Map<String,String>>(m, Collections.emptyMap)
+  	      terminologyGraphs.put(m.uuid(), pair)
+  	      logicalElements.put(m.uuid(), new Pair<LogicalElement, Map<String,String>>(m, Collections.emptyMap))
+  	      terminologyGraphs.put(m.iri(), pair)
+  	      terminologyBoxes.put(m.uuid(), new Pair<TerminologyBox, Map<String,String>>(m, Collections.emptyMap))
+  	      terminologyBoxes.put(m.iri(), new Pair<TerminologyBox, Map<String,String>>(m, Collections.emptyMap))
+  	    }
+  	    Bundle: {
+  	      val pair = new Pair<Bundle, Map<String,String>>(m, Collections.emptyMap)
+  	      bundles.put(m.uuid(), pair)
+  	      logicalElements.put(m.uuid(), new Pair<LogicalElement, Map<String,String>>(m, Collections.emptyMap))
+  	      bundles.put(m.iri(), pair)
+  	      terminologyBoxes.put(m.uuid(), new Pair<TerminologyBox, Map<String,String>>(m, Collections.emptyMap))
+  	      terminologyBoxes.put(m.iri(), new Pair<TerminologyBox, Map<String,String>>(m, Collections.emptyMap))
+  	    }
+  	    DescriptionBox: {
+  	      val pair = new Pair<DescriptionBox, Map<String,String>>(m, Collections.emptyMap)
+  	      descriptionBoxes.put(m.uuid(), pair)
+  	      logicalElements.put(m.uuid(), new Pair<LogicalElement, Map<String,String>>(m, Collections.emptyMap))
+  	      descriptionBoxes.put(m.iri(), pair)
+  	    }
+  	  }
+  	  
+  	  m.eAllContents.forEach[e|
+  	  	switch e {
   	    AnnotationProperty: {
   	      val pair = new Pair<AnnotationProperty, Map<String,String>>(e, Collections.emptyMap)
   	      annotationProperties.put(e.uuid(), pair)

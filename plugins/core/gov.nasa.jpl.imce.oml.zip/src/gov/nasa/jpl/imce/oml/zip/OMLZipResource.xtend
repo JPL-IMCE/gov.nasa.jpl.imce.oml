@@ -22,7 +22,6 @@ import java.io.IOException
 import java.io.OutputStream
 import java.util.ArrayList
 import java.util.HashMap
-import java.util.List
 import java.util.Map
 import org.apache.commons.compress.archivers.zip.ZipArchiveOutputStream
 import org.eclipse.emf.common.util.URI
@@ -69,10 +68,22 @@ class OMLZipResource extends ResourceImpl {
 		val rs = getResourceSet
 		switch rs {
 			OMLZipResourceSet: {
-				val omlZipFile = rs.getCatalogURIConverter.normalize(uri)
-				if (null === omlZipFile || "file" != omlZipFile.scheme || !omlZipFile.lastSegment.endsWith(".omlzip"))
-					throw new IllegalArgumentException("OMLZipResource.load() requires the uri to be normalized as a file://....*.omlzip; uri="+uri+" is instead normalized as: "+omlZipFile)
-				OMLSpecificationTables.load(rs, this, new File(omlZipFile.toFileString))
+				switch uri.scheme {
+					case "http": {
+						val omlZipFile = rs.getCatalogURIConverter.normalize(uri)
+						if (null === omlZipFile || "file" != omlZipFile.scheme || !omlZipFile.lastSegment.endsWith(".omlzip"))
+							throw new IllegalArgumentException("OMLZipResource.load() requires the uri to be normalized as a file://....*.omlzip; uri="+uri+" is instead normalized as: "+omlZipFile)
+						OMLSpecificationTables.load(rs, this, new File(omlZipFile.toFileString))
+					}
+					
+					default:
+						if (uri.file)
+							OMLSpecificationTables.load(rs, this, new File(uri.toFileString))
+						else
+							throw new IllegalArgumentException('''OMLZipResource.load(): unrecognized URI scheme in: «uri» (must be either http or file): «uri.isFile»''')
+				}
+				
+				
 			}
 			default: {
 				val OMLCatalog c = OMLExtensions.getCatalog(rs)
@@ -84,7 +95,7 @@ class OMLZipResource extends ResourceImpl {
 						val resolved = c.resolveURI(uri.toString)
 						if (null === resolved || !resolved.startsWith("file:"))
 							throw new IllegalArgumentException('''OMLZipResource.load(): No catalog mapping for URI: «uri»''')
-						new File(resolved + ".omlzip")
+						new File(resolved.substring(5) + ".omlzip")
 					}
 					
 					default:
@@ -125,9 +136,10 @@ class OMLZipResource extends ResourceImpl {
 
    public static val Pattern KeyValue = Pattern.compile("\"([^\"]*)\":(null|\"(.*?)\"|\\{\"literalType\":\"[^\"]*\",\"value\":\\[\"(\\\\\\\"|\\n|\\r|[^\"]+?)\"(,\"(\\\\\\\"|\\n|\\r|[^\"]+?)\")*\\]\\}|\\[\"(\\\\\\\"|\\n|\\r|[^\"]+?)\"(,\"(\\\\\\\"|\\n|\\r|[^\"]+?)\")*\\]),?")
   
-   protected static def List<Map<String, String>> lines2tuples(ArrayList<String> lines) {
+   protected static def ArrayList<Map<String, String>> lines2tuples(ArrayList<String> lines) {
    	val list = new ArrayList<Map<String, String>>()
-  	lines.forEach[ line | 
+   	while (!lines.empty) {
+   		val line = lines.remove(lines.size - 1)
   	    val map = new HashMap<String, String>()
   	    Assert.isTrue(line.startsWith("{"))
   	    Assert.isTrue(line.endsWith("}"))
@@ -139,35 +151,8 @@ class OMLZipResource extends ResourceImpl {
   	    		map.put(key, value)
   	    }
   		list.add(map)
-  	]
-  	return list
-  }
-  
-  
-   protected static def List<Map<String, String>> lines2tuples(ArrayList<String> lines, int limit) {
-   	val list = new ArrayList<Map<String, String>>()
-   	var i = 0
-   	val max = lines.size
-   	while (i < max) {
-   		val line = lines.get(i++)
-  	    val map = new HashMap<String, String>()
-  	    Assert.isTrue(line.startsWith("{"))
-  	    Assert.isTrue(line.endsWith("}"))
-  	    val keyValues = line.substring(1, line.length-1)
-  	    val m = KeyValue.matcher(keyValues)
-  	    while (m.find()) {
-  	    		val key = m.group(1)
-  	    		val value = m.group(3) ?: m.group(2)
-  	    		map.put(key, value)
-  	    }
-  		list.add(map)
-  		if (0 == list.size % 1000)
-  			System.out.println('''lines2typles: «list.size» («(list.size * 100)/lines.size»)''')
-  		if (list.size > limit) {
-  			System.out.println('''lines2typles: «list.size» («list.size») exceeds limit («limit»)''')
-  			return list
-  		}
   	}
   	return list
   }
+
 }
