@@ -171,7 +171,15 @@ public class OMLLinkingService extends DefaultLinkingService {
             (((("IRI Cross-reference resolution for " + crossRefString) + " requires an ") + 
               OMLExtensions.OML_CATALOG_XML) + " file; but no such catalog file was found!"));
         } else {
-          final String resolvedIRI = catalog.resolveURI((resourceIRI + ".oml"));
+          String _elvis = null;
+          String _resolveURI = catalog.resolveURI((resourceIRI + ".oml"));
+          if (_resolveURI != null) {
+            _elvis = _resolveURI;
+          } else {
+            String _resolveURI_1 = catalog.resolveURI((resourceIRI + ".omlzip"));
+            _elvis = _resolveURI_1;
+          }
+          final String resolvedIRI = _elvis;
           if (((null == resolvedIRI) || Objects.equal(resolvedIRI, resourceIRI))) {
             return Collections.<EObject>emptyList();
           }

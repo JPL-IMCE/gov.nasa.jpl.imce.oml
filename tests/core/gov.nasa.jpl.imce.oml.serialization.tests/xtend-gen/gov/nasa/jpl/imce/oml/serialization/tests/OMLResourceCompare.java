@@ -34,7 +34,6 @@ import gov.nasa.jpl.imce.oml.model.common.LiteralValue;
 import gov.nasa.jpl.imce.oml.model.datatypes.DateTimeValue;
 import gov.nasa.jpl.imce.oml.model.datatypes.URIValue;
 import gov.nasa.jpl.imce.oml.model.datatypes.UUIDValue;
-import gov.nasa.jpl.imce.oml.zip.OMLZipResource;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -82,16 +81,6 @@ public class OMLResourceCompare {
    * Structural comparison of the contents of two OMLZipResources.
    */
   public static void resourceCompare(final Resource r1, final Resource r2) throws IllegalArgumentException {
-    boolean _isInstance = OMLZipResource.class.isInstance(r1);
-    boolean _not = (!_isInstance);
-    if (_not) {
-      throw new IllegalArgumentException("resourceCompare(r1,_) must be an OMLZipResource!");
-    }
-    boolean _isInstance_1 = OMLZipResource.class.isInstance(r2);
-    boolean _not_1 = (!_isInstance_1);
-    if (_not_1) {
-      throw new IllegalArgumentException("resourceCompare(_,r2) must be an OMLZipResource!");
-    }
     int _size = r1.getContents().size();
     boolean _notEquals = (1 != _size);
     if (_notEquals) {

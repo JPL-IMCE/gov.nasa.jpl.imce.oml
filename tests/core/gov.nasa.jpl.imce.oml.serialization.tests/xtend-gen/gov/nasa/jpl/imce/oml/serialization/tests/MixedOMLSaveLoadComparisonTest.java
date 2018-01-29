@@ -21,6 +21,8 @@ import gov.nasa.jpl.imce.oml.model.bundles.BundlesFactory;
 import gov.nasa.jpl.imce.oml.model.common.CommonFactory;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsFactory;
+import gov.nasa.jpl.imce.oml.model.extensions.OMLCatalog;
+import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
 import gov.nasa.jpl.imce.oml.model.graphs.GraphsFactory;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesFactory;
 import gov.nasa.jpl.imce.oml.serialization.tests.OMLResourceCompare;
@@ -28,26 +30,26 @@ import gov.nasa.jpl.imce.oml.zip.OMLZipResourceSet;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
-import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.function.Consumer;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Pair;
 
 /**
- * Convenience class for writing OMLZip Save/Load Comparison Tests.
+ * Convenience class for writing mixed OML & OMLZip Save/Load Comparison Tests.
  * 
  * All the OML factory methods (e.g., createTerminologyGraph, createConcept, ...)
  * can be invoked by name without explicitly referring to the appropriate factory instance.
  */
 @SuppressWarnings("all")
-public abstract class OMLSaveLoadComparisonTest {
+public abstract class MixedOMLSaveLoadComparisonTest {
   @Extension
   protected static CommonFactory _commonFactory = CommonFactory.eINSTANCE;
   
@@ -87,25 +89,37 @@ public abstract class OMLSaveLoadComparisonTest {
   
   protected File omlCatalogFile;
   
-  protected OMLZipResourceSet rs1;
+  protected final String fileURIPrefix;
   
-  protected OMLZipResourceSet rs2;
+  protected XtextResourceSet rs1;
   
-  public OMLSaveLoadComparisonTest() {
+  protected XtextResourceSet rs2;
+  
+  public MixedOMLSaveLoadComparisonTest() {
     try {
       OMLZipResourceSet.doSetup();
       long _currentTimeMillis = System.currentTimeMillis();
       String _plus = ("./target/oml/" + Long.valueOf(_currentTimeMillis));
-      this.omlCatalogFile = OMLSaveLoadComparisonTest.createOMLFolder(Paths.get(_plus));
-      URL _uRL = this.omlCatalogFile.toURI().toURL();
-      OMLZipResourceSet _oMLZipResourceSet = new OMLZipResourceSet(_uRL);
-      this.rs1 = _oMLZipResourceSet;
-      URL _uRL_1 = this.omlCatalogFile.toURI().toURL();
-      OMLZipResourceSet _oMLZipResourceSet_1 = new OMLZipResourceSet(_uRL_1);
-      this.rs2 = _oMLZipResourceSet_1;
+      this.omlCatalogFile = MixedOMLSaveLoadComparisonTest.createOMLFolder(Paths.get(_plus));
+      String _absolutePath = this.omlCatalogFile.getParentFile().getAbsolutePath();
+      String _plus_1 = ("file:/" + _absolutePath);
+      String _plus_2 = (_plus_1 + "/");
+      this.fileURIPrefix = _plus_2;
+      XtextResourceSet _xtextResourceSet = new XtextResourceSet();
+      this.rs1 = _xtextResourceSet;
+      XtextResourceSet _xtextResourceSet_1 = new XtextResourceSet();
+      this.rs2 = _xtextResourceSet_1;
+      final OMLCatalog c1 = OMLExtensions.getCatalog(this.rs1);
+      c1.parseCatalog(this.omlCatalogFile.toURI().toURL());
+      final OMLCatalog c2 = OMLExtensions.getCatalog(this.rs2);
+      c2.parseCatalog(this.omlCatalogFile.toURI().toURL());
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
+  }
+  
+  protected String toAbsoluteTempFileURI(final String path) {
+    return (this.fileURIPrefix + path);
   }
   
   /**
@@ -120,7 +134,21 @@ public abstract class OMLSaveLoadComparisonTest {
       try {
         final URI uri = pair.getKey();
         final Extent ext1 = pair.getValue();
-        final Resource r1 = this.rs1.createResource(uri);
+        Resource _xifexpression = null;
+        boolean _endsWith = uri.toString().endsWith(".oml");
+        if (_endsWith) {
+          _xifexpression = this.rs1.createResource(uri, "oml");
+        } else {
+          Resource _xifexpression_1 = null;
+          boolean _endsWith_1 = uri.toString().endsWith(".omlzip");
+          if (_endsWith_1) {
+            _xifexpression_1 = this.rs1.createResource(uri, "omlzip");
+          } else {
+            _xifexpression_1 = this.rs1.createResource(uri);
+          }
+          _xifexpression = _xifexpression_1;
+        }
+        final Resource r1 = _xifexpression;
         r1.getContents().add(ext1);
         r1.save(null);
         final Resource r2 = this.rs2.getResource(uri, true);

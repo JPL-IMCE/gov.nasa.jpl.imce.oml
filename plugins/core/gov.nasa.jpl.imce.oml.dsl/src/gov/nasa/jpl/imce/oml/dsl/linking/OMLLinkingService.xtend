@@ -108,7 +108,7 @@ class OMLLinkingService extends DefaultLinkingService {
 					"IRI Cross-reference resolution for " + crossRefString + " requires an " +
 						OMLExtensions.OML_CATALOG_XML + " file; but no such catalog file was found!")
 			} else {
-				val resolvedIRI = catalog.resolveURI(resourceIRI + ".oml")
+				val resolvedIRI = catalog.resolveURI(resourceIRI + ".oml") ?: catalog.resolveURI(resourceIRI + ".omlzip")
 				if (null === resolvedIRI || resolvedIRI == resourceIRI)
 					return Collections.emptyList()
 

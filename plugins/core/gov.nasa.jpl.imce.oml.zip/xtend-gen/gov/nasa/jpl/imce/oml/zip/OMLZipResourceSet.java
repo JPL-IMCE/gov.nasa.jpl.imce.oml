@@ -21,7 +21,6 @@ import gov.nasa.jpl.imce.oml.dsl.OMLStandaloneSetup;
 import gov.nasa.jpl.imce.oml.model.extensions.OMLCatalog;
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
 import gov.nasa.jpl.imce.oml.zip.CatalogURIConverter;
-import gov.nasa.jpl.imce.oml.zip.OMLZipResource;
 import gov.nasa.jpl.imce.oml.zip.OMLZipResourceFactory;
 import java.net.URL;
 import java.util.Map;
@@ -118,14 +117,33 @@ public class OMLZipResourceSet extends ResourceSetImpl {
    * Create an OMLZipREsource.
    */
   @Override
-  public OMLZipResource createResource(final URI uri) {
-    final Resource r = this.createResource(uri, "gov.nasa.jpl.imce.oml.zip");
-    boolean _matched = false;
-    if (r instanceof OMLZipResource) {
-      _matched=true;
-      return ((OMLZipResource)r);
+  public Resource createResource(final URI uri) {
+    Resource _xblockexpression = null;
+    {
+      final String last = uri.lastSegment();
+      Resource _xifexpression = null;
+      if ((null == last)) {
+        _xifexpression = super.createResource(uri, "omlzip");
+      } else {
+        Resource _xifexpression_1 = null;
+        boolean _endsWith = last.endsWith(".oml");
+        if (_endsWith) {
+          _xifexpression_1 = this.createResource(uri, "oml");
+        } else {
+          Resource _xifexpression_2 = null;
+          boolean _endsWith_1 = last.endsWith(".omlzip");
+          if (_endsWith_1) {
+            _xifexpression_2 = this.createResource(uri, "omlzip");
+          } else {
+            _xifexpression_2 = super.createResource(uri);
+          }
+          _xifexpression_1 = _xifexpression_2;
+        }
+        _xifexpression = _xifexpression_1;
+      }
+      _xblockexpression = _xifexpression;
     }
-    throw new IllegalArgumentException((("OMLZipResourceSet.createResource(" + uri) + ") should have produced an OMLZipResource"));
+    return _xblockexpression;
   }
   
   @Override
