@@ -24,7 +24,6 @@ import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsFactory;
 import gov.nasa.jpl.imce.oml.model.graphs.GraphsFactory;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesFactory;
 import gov.nasa.jpl.imce.oml.serialization.tests.OMLResourceCompare;
-import gov.nasa.jpl.imce.oml.zip.OMLZipResource;
 import gov.nasa.jpl.imce.oml.zip.OMLZipResourceSet;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -121,7 +120,7 @@ public abstract class OMLSaveLoadComparisonTest {
       try {
         final URI uri = pair.getKey();
         final Extent ext1 = pair.getValue();
-        final OMLZipResource r1 = this.rs1.createResource(uri);
+        final Resource r1 = this.rs1.createResource(uri);
         r1.getContents().add(ext1);
         r1.save(null);
         final Resource r2 = this.rs2.getResource(uri, true);

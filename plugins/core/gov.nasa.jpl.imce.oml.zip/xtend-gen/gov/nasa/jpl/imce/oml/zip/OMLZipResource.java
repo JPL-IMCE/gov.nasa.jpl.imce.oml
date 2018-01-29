@@ -28,9 +28,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.function.Consumer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.apache.commons.compress.archivers.zip.ZipArchiveOutputStream;
@@ -88,13 +86,51 @@ public class OMLZipResource extends ResourceImpl {
     boolean _matched = false;
     if (rs instanceof OMLZipResourceSet) {
       _matched=true;
-      final URI omlZipFile = ((OMLZipResourceSet)rs).getCatalogURIConverter().normalize(this.uri);
-      if ((((null == omlZipFile) || (!Objects.equal("file", omlZipFile.scheme()))) || (!omlZipFile.lastSegment().endsWith(".omlzip")))) {
-        throw new IllegalArgumentException(((("OMLZipResource.load() requires the uri to be normalized as a file://....*.omlzip; uri=" + this.uri) + " is instead normalized as: ") + omlZipFile));
+      String _scheme = this.uri.scheme();
+      if (_scheme != null) {
+        switch (_scheme) {
+          case "http":
+            final URI omlZipFile = ((OMLZipResourceSet)rs).getCatalogURIConverter().normalize(this.uri);
+            if ((((null == omlZipFile) || (!Objects.equal("file", omlZipFile.scheme()))) || (!omlZipFile.lastSegment().endsWith(".omlzip")))) {
+              throw new IllegalArgumentException(((("OMLZipResource.load() requires the uri to be normalized as a file://....*.omlzip; uri=" + this.uri) + " is instead normalized as: ") + omlZipFile));
+            }
+            String _fileString = omlZipFile.toFileString();
+            File _file = new File(_fileString);
+            OMLSpecificationTables.load(rs, this, _file);
+            break;
+          default:
+            boolean _isFile = this.uri.isFile();
+            if (_isFile) {
+              String _fileString_1 = this.uri.toFileString();
+              File _file_1 = new File(_fileString_1);
+              OMLSpecificationTables.load(rs, this, _file_1);
+            } else {
+              StringConcatenation _builder = new StringConcatenation();
+              _builder.append("OMLZipResource.load(): unrecognized URI scheme in: ");
+              _builder.append(this.uri);
+              _builder.append(" (must be either http or file): ");
+              boolean _isFile_1 = this.uri.isFile();
+              _builder.append(_isFile_1);
+              throw new IllegalArgumentException(_builder.toString());
+            }
+            break;
+        }
+      } else {
+        boolean _isFile = this.uri.isFile();
+        if (_isFile) {
+          String _fileString_1 = this.uri.toFileString();
+          File _file_1 = new File(_fileString_1);
+          OMLSpecificationTables.load(rs, this, _file_1);
+        } else {
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("OMLZipResource.load(): unrecognized URI scheme in: ");
+          _builder.append(this.uri);
+          _builder.append(" (must be either http or file): ");
+          boolean _isFile_1 = this.uri.isFile();
+          _builder.append(_isFile_1);
+          throw new IllegalArgumentException(_builder.toString());
+        }
       }
-      String _fileString = omlZipFile.toFileString();
-      File _file = new File(_fileString);
-      OMLSpecificationTables.load(rs, this, _file);
     }
     if (!_matched) {
       {
@@ -116,7 +152,9 @@ public class OMLZipResource extends ResourceImpl {
                   _builder.append(this.uri);
                   throw new IllegalArgumentException(_builder.toString());
                 }
-                _xblockexpression = new File((resolved + ".omlzip"));
+                String _substring = resolved.substring(5);
+                String _plus = (_substring + ".omlzip");
+                _xblockexpression = new File(_plus);
               }
               _switchResult_1 = _xblockexpression;
               break;
@@ -219,51 +257,19 @@ public class OMLZipResource extends ResourceImpl {
   
   public final static Pattern KeyValue = Pattern.compile("\"([^\"]*)\":(null|\"(.*?)\"|\\{\"literalType\":\"[^\"]*\",\"value\":\\[\"(\\\\\\\"|\\n|\\r|[^\"]+?)\"(,\"(\\\\\\\"|\\n|\\r|[^\"]+?)\")*\\]\\}|\\[\"(\\\\\\\"|\\n|\\r|[^\"]+?)\"(,\"(\\\\\\\"|\\n|\\r|[^\"]+?)\")*\\]),?");
   
-  protected static List<Map<String, String>> lines2tuples(final ArrayList<String> lines) {
+  protected static ArrayList<Map<String, String>> lines2tuples(final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> list = new ArrayList<Map<String, String>>();
-    final Consumer<String> _function = (String line) -> {
-      final HashMap<String, String> map = new HashMap<String, String>();
-      Assert.isTrue(line.startsWith("{"));
-      Assert.isTrue(line.endsWith("}"));
-      int _length = line.length();
-      int _minus = (_length - 1);
-      final String keyValues = line.substring(1, _minus);
-      final Matcher m = OMLZipResource.KeyValue.matcher(keyValues);
-      while (m.find()) {
-        {
-          final String key = m.group(1);
-          String _elvis = null;
-          String _group = m.group(3);
-          if (_group != null) {
-            _elvis = _group;
-          } else {
-            String _group_1 = m.group(2);
-            _elvis = _group_1;
-          }
-          final String value = _elvis;
-          map.put(key, value);
-        }
-      }
-      list.add(map);
-    };
-    lines.forEach(_function);
-    return list;
-  }
-  
-  protected static List<Map<String, String>> lines2tuples(final ArrayList<String> lines, final int limit) {
-    final ArrayList<Map<String, String>> list = new ArrayList<Map<String, String>>();
-    int i = 0;
-    final int max = lines.size();
-    while ((i < max)) {
+    while ((!lines.isEmpty())) {
       {
-        int _plusPlus = i++;
-        final String line = lines.get(_plusPlus);
+        int _size = lines.size();
+        int _minus = (_size - 1);
+        final String line = lines.remove(_minus);
         final HashMap<String, String> map = new HashMap<String, String>();
         Assert.isTrue(line.startsWith("{"));
         Assert.isTrue(line.endsWith("}"));
         int _length = line.length();
-        int _minus = (_length - 1);
-        final String keyValues = line.substring(1, _minus);
+        int _minus_1 = (_length - 1);
+        final String keyValues = line.substring(1, _minus_1);
         final Matcher m = OMLZipResource.KeyValue.matcher(keyValues);
         while (m.find()) {
           {
@@ -281,39 +287,6 @@ public class OMLZipResource extends ResourceImpl {
           }
         }
         list.add(map);
-        int _size = list.size();
-        int _modulo = (_size % 1000);
-        boolean _equals = (0 == _modulo);
-        if (_equals) {
-          StringConcatenation _builder = new StringConcatenation();
-          _builder.append("lines2typles: ");
-          int _size_1 = list.size();
-          _builder.append(_size_1);
-          _builder.append(" (");
-          int _size_2 = list.size();
-          int _multiply = (_size_2 * 100);
-          int _size_3 = lines.size();
-          int _divide = (_multiply / _size_3);
-          _builder.append(_divide);
-          _builder.append(")");
-          System.out.println(_builder);
-        }
-        int _size_4 = list.size();
-        boolean _greaterThan = (_size_4 > limit);
-        if (_greaterThan) {
-          StringConcatenation _builder_1 = new StringConcatenation();
-          _builder_1.append("lines2typles: ");
-          int _size_5 = list.size();
-          _builder_1.append(_size_5);
-          _builder_1.append(" (");
-          int _size_6 = list.size();
-          _builder_1.append(_size_6);
-          _builder_1.append(") exceeds limit (");
-          _builder_1.append(limit);
-          _builder_1.append(")");
-          System.out.println(_builder_1);
-          return list;
-        }
       }
     }
     return list;
