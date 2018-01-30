@@ -36,7 +36,7 @@ travis_jigger() {
 
   while [ $count -lt $timeout ]; do
     count=$(($count + 1))
-    echo -e "\033[0m# [LOG] Still running ($count of $timeout): $@"
+    echo -e "...\n\033[0m# [LOG] Still running ($count of $timeout): $@\n..."
     sleep 60
   done
 
