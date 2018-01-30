@@ -372,3 +372,5 @@ Followed the [official Tycho doc](https://wiki.eclipse.org/Tycho/eclipse-reposit
 ### [#217 OMLZipResourceSet.doSetup registration is incorrect and incomplete](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/217)
 
 ### [#219 OMLZipResource.load should use the catalog only for resolving http URIs](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/219)
+
+### [#221 travis_wait truncates output.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/221)
