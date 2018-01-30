@@ -5996,23 +5996,38 @@ public class OMLSpecificationTables {
         if ((null == omlCatalog)) {
           throw new IllegalArgumentException("loadOMLZipResource: ResourceSet must have an OMLCatalog!");
         }
-        String _elvis = null;
-        String _string = uri.toString();
-        String _plus = (_string + ".oml");
-        String _resolveURI = omlCatalog.resolveURI(_plus);
-        if (_resolveURI != null) {
-          _elvis = _resolveURI;
+        final String uriString = uri.toString();
+        Resource _xifexpression = null;
+        boolean _startsWith = uriString.startsWith("file:");
+        if (_startsWith) {
+          _xifexpression = rs.getResource(uri, true);
         } else {
-          String _string_1 = uri.toString();
-          String _plus_1 = (_string_1 + ".omlzip");
-          String _resolveURI_1 = omlCatalog.resolveURI(_plus_1);
-          _elvis = _resolveURI_1;
+          Resource _xifexpression_1 = null;
+          boolean _startsWith_1 = uriString.startsWith("http:");
+          if (_startsWith_1) {
+            Resource _xblockexpression_1 = null;
+            {
+              final String omlIRI = omlCatalog.resolveURI((uriString + ".oml"));
+              final String omlZipIRI = omlCatalog.resolveURI((uriString + ".omlzip"));
+              Resource _xifexpression_2 = null;
+              if ((null != omlIRI)) {
+                _xifexpression_2 = rs.getResource(URI.createURI(omlIRI), true);
+              } else {
+                Resource _xifexpression_3 = null;
+                if ((null != omlZipIRI)) {
+                  _xifexpression_3 = rs.getResource(URI.createURI(omlZipIRI), true);
+                } else {
+                  throw new IllegalArgumentException((("loadOMLZipResource: " + uri) + " not resolved!"));
+                }
+                _xifexpression_2 = _xifexpression_3;
+              }
+              _xblockexpression_1 = _xifexpression_2;
+            }
+            _xifexpression_1 = _xblockexpression_1;
+          }
+          _xifexpression = _xifexpression_1;
         }
-        final String resolvedIRI = _elvis;
-        if ((null == resolvedIRI)) {
-          throw new IllegalArgumentException((("loadOMLZipResource: " + uri) + " not resolved!"));
-        }
-        final Resource r = rs.getResource(URI.createURI(resolvedIRI), true);
+        final Resource r = _xifexpression;
         EcoreUtil.resolveAll(r);
         final Consumer<EObject> _function = (EObject e) -> {
           boolean _matched = false;
