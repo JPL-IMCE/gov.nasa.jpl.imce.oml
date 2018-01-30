@@ -6009,19 +6009,35 @@ public class OMLSpecificationTables {
             {
               final String omlIRI = omlCatalog.resolveURI((uriString + ".oml"));
               final String omlZipIRI = omlCatalog.resolveURI((uriString + ".omlzip"));
-              Resource _xifexpression_2 = null;
-              if ((null != omlIRI)) {
-                _xifexpression_2 = rs.getResource(URI.createURI(omlIRI), true);
+              File _xifexpression_2 = null;
+              if (((null != omlIRI) && omlIRI.startsWith("file:"))) {
+                String _substring = omlIRI.substring(5);
+                _xifexpression_2 = new File(_substring);
               } else {
-                Resource _xifexpression_3 = null;
-                if ((null != omlZipIRI)) {
-                  _xifexpression_3 = rs.getResource(URI.createURI(omlZipIRI), true);
+                _xifexpression_2 = null;
+              }
+              final File omlFile = _xifexpression_2;
+              File _xifexpression_3 = null;
+              if (((null != omlZipIRI) && omlZipIRI.startsWith("file:"))) {
+                String _substring_1 = omlIRI.substring(5);
+                _xifexpression_3 = new File(_substring_1);
+              } else {
+                _xifexpression_3 = null;
+              }
+              final File omlZipFile = _xifexpression_3;
+              Resource _xifexpression_4 = null;
+              if ((((null != omlFile) && omlFile.exists()) && omlFile.canRead())) {
+                _xifexpression_4 = rs.getResource(URI.createURI(omlIRI), true);
+              } else {
+                Resource _xifexpression_5 = null;
+                if ((((null != omlZipFile) && omlZipFile.exists()) && omlZipFile.canRead())) {
+                  _xifexpression_5 = rs.getResource(URI.createURI(omlZipIRI), true);
                 } else {
                   throw new IllegalArgumentException((("loadOMLZipResource: " + uri) + " not resolved!"));
                 }
-                _xifexpression_2 = _xifexpression_3;
+                _xifexpression_4 = _xifexpression_5;
               }
-              _xblockexpression_1 = _xifexpression_2;
+              _xblockexpression_1 = _xifexpression_4;
             }
             _xifexpression_1 = _xblockexpression_1;
           }
