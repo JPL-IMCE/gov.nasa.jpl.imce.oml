@@ -6019,7 +6019,7 @@ public class OMLSpecificationTables {
               final File omlFile = _xifexpression_2;
               File _xifexpression_3 = null;
               if (((null != omlZipIRI) && omlZipIRI.startsWith("file:"))) {
-                String _substring_1 = omlIRI.substring(5);
+                String _substring_1 = omlZipIRI.substring(5);
                 _xifexpression_3 = new File(_substring_1);
               } else {
                 _xifexpression_3 = null;
