@@ -5035,9 +5035,12 @@ class OMLSpecificationTables {
 	  	val omlIRI = omlCatalog.resolveURI(uriString + ".oml")
 	  	val omlZipIRI = omlCatalog.resolveURI(uriString + ".omlzip")
 	  	
-	  	if (null !== omlIRI)
+	  	val omlFile = if (null !== omlIRI && omlIRI.startsWith("file:")) new File(omlIRI.substring(5)) else null
+	  	val omlZipFile = if (null !== omlZipIRI && omlZipIRI.startsWith("file:")) new File(omlIRI.substring(5)) else null
+	  	
+	  	if (null !== omlFile && omlFile.exists && omlFile.canRead)
 	  		rs.getResource(URI.createURI(omlIRI), true)
-	  	else if (null !== omlZipIRI)
+	  	else if (null !== omlZipFile && omlZipFile.exists && omlZipFile.canRead)
 	  		rs.getResource(URI.createURI(omlZipIRI), true)
 	  	else
 	  		throw new IllegalArgumentException("loadOMLZipResource: "+uri+" not resolved!")
