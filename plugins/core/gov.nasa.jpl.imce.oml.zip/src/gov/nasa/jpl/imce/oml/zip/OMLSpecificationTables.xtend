@@ -5028,11 +5028,24 @@ class OMLSpecificationTables {
   	if (null === omlCatalog)
   		throw new IllegalArgumentException("loadOMLZipResource: ResourceSet must have an OMLCatalog!")
   		
-  	val resolvedIRI = omlCatalog.resolveURI(uri.toString + ".oml") ?: omlCatalog.resolveURI(uri.toString + ".omlzip")
-	if (null === resolvedIRI)
-		throw new IllegalArgumentException("loadOMLZipResource: "+uri+" not resolved!")
+  	val uriString = uri.toString
+  	val Resource r = if (uriString.startsWith("file:"))
+  		rs.getResource(uri, true)
+  	else if (uriString.startsWith("http:")) {
+	  	val omlIRI = omlCatalog.resolveURI(uriString + ".oml")
+	  	val omlZipIRI = omlCatalog.resolveURI(uriString + ".omlzip")
+	  	
+	  	val omlFile = if (null !== omlIRI && omlIRI.startsWith("file:")) new File(omlIRI.substring(5)) else null
+	  	val omlZipFile = if (null !== omlZipIRI && omlZipIRI.startsWith("file:")) new File(omlZipIRI.substring(5)) else null
+	  	
+	  	if (null !== omlFile && omlFile.exists && omlFile.canRead)
+	  		rs.getResource(URI.createURI(omlIRI), true)
+	  	else if (null !== omlZipFile && omlZipFile.exists && omlZipFile.canRead)
+	  		rs.getResource(URI.createURI(omlZipIRI), true)
+	  	else
+	  		throw new IllegalArgumentException("loadOMLZipResource: "+uri+" not resolved!")
+  	}
   	
-  	val r = rs.getResource(URI.createURI(resolvedIRI), true)
   	EcoreUtil.resolveAll(r)
   	
   	r.contents.forEach[e|

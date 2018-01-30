@@ -4,4 +4,4 @@ services:
   - docker
   
 script:
-- travis_wait 60 docker run --rm -v $(pwd):/root/sources -w /root/sources -e TRAVIS_TAG="${TRAVIS_TAG}" -e BINTRAY_USER="${BINTRAY_USER}" -e BINTRAY_APIKEY="${BINTRAY_APIKEY}" maven:3.5-jdk-8 ./scripts/travis.sh
+- ./scripts/travis-docker.sh

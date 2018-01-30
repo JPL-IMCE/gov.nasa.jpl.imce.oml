@@ -5996,23 +5996,54 @@ public class OMLSpecificationTables {
         if ((null == omlCatalog)) {
           throw new IllegalArgumentException("loadOMLZipResource: ResourceSet must have an OMLCatalog!");
         }
-        String _elvis = null;
-        String _string = uri.toString();
-        String _plus = (_string + ".oml");
-        String _resolveURI = omlCatalog.resolveURI(_plus);
-        if (_resolveURI != null) {
-          _elvis = _resolveURI;
+        final String uriString = uri.toString();
+        Resource _xifexpression = null;
+        boolean _startsWith = uriString.startsWith("file:");
+        if (_startsWith) {
+          _xifexpression = rs.getResource(uri, true);
         } else {
-          String _string_1 = uri.toString();
-          String _plus_1 = (_string_1 + ".omlzip");
-          String _resolveURI_1 = omlCatalog.resolveURI(_plus_1);
-          _elvis = _resolveURI_1;
+          Resource _xifexpression_1 = null;
+          boolean _startsWith_1 = uriString.startsWith("http:");
+          if (_startsWith_1) {
+            Resource _xblockexpression_1 = null;
+            {
+              final String omlIRI = omlCatalog.resolveURI((uriString + ".oml"));
+              final String omlZipIRI = omlCatalog.resolveURI((uriString + ".omlzip"));
+              File _xifexpression_2 = null;
+              if (((null != omlIRI) && omlIRI.startsWith("file:"))) {
+                String _substring = omlIRI.substring(5);
+                _xifexpression_2 = new File(_substring);
+              } else {
+                _xifexpression_2 = null;
+              }
+              final File omlFile = _xifexpression_2;
+              File _xifexpression_3 = null;
+              if (((null != omlZipIRI) && omlZipIRI.startsWith("file:"))) {
+                String _substring_1 = omlZipIRI.substring(5);
+                _xifexpression_3 = new File(_substring_1);
+              } else {
+                _xifexpression_3 = null;
+              }
+              final File omlZipFile = _xifexpression_3;
+              Resource _xifexpression_4 = null;
+              if ((((null != omlFile) && omlFile.exists()) && omlFile.canRead())) {
+                _xifexpression_4 = rs.getResource(URI.createURI(omlIRI), true);
+              } else {
+                Resource _xifexpression_5 = null;
+                if ((((null != omlZipFile) && omlZipFile.exists()) && omlZipFile.canRead())) {
+                  _xifexpression_5 = rs.getResource(URI.createURI(omlZipIRI), true);
+                } else {
+                  throw new IllegalArgumentException((("loadOMLZipResource: " + uri) + " not resolved!"));
+                }
+                _xifexpression_4 = _xifexpression_5;
+              }
+              _xblockexpression_1 = _xifexpression_4;
+            }
+            _xifexpression_1 = _xblockexpression_1;
+          }
+          _xifexpression = _xifexpression_1;
         }
-        final String resolvedIRI = _elvis;
-        if ((null == resolvedIRI)) {
-          throw new IllegalArgumentException((("loadOMLZipResource: " + uri) + " not resolved!"));
-        }
-        final Resource r = rs.getResource(URI.createURI(resolvedIRI), true);
+        final Resource r = _xifexpression;
         EcoreUtil.resolveAll(r);
         final Consumer<EObject> _function = (EObject e) -> {
           boolean _matched = false;

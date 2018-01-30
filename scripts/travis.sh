@@ -2,6 +2,9 @@
 
 set -e
 
+# https://www.gnu.org/software/bash/manual/html_node/Pipelines.html
+set -o pipefail
+
 # Get the tag for this commit
 t=$(git name-rev --tags --name-only $(git rev-parse HEAD));
 
