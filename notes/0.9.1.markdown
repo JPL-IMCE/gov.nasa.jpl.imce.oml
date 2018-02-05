@@ -376,3 +376,5 @@ Followed the [official Tycho doc](https://wiki.eclipse.org/Tycho/eclipse-reposit
 ### [#221 travis_wait truncates output.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/221)
 
 ### [#222 OMLSpecificationTables.loadOMLZipResource uri handling logic](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/222)
+
+### [#224 missing cases for OMLImportedNamespaceAwareLocalScopeProvider.getScope](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/224)

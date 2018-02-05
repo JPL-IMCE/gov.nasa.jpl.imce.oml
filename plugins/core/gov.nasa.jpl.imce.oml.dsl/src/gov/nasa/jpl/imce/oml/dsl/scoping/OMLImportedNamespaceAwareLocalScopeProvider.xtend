@@ -246,6 +246,8 @@ class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespaceAware
 					scope = context.tbox.allEntitiesScope
 				else if (reference == TerminologiesPackage.eINSTANCE.entityScalarDataPropertyRestrictionAxiom_ScalarProperty)
 					scope = context.tbox.allEntityScalarDataPropertiesScope
+				else if (reference == TerminologiesPackage.eINSTANCE.entityScalarDataPropertyParticularRestrictionAxiom_ValueType)
+					scope = context.tbox.allRangesScope
 			
 			EntityScalarDataPropertyUniversalRestrictionAxiom:
 				if (reference == TerminologiesPackage.eINSTANCE.entityScalarDataPropertyRestrictionAxiom_RestrictedEntity)
@@ -276,10 +278,14 @@ class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespaceAware
 			RestrictionScalarDataPropertyValue:
 				if (reference == TerminologiesPackage.eINSTANCE.restrictionScalarDataPropertyValue_ScalarDataProperty)
 					scope = context.terminologyBox()?.allScalarDataPropertiesScope
+				else if (reference == TerminologiesPackage.eINSTANCE.restrictionScalarDataPropertyValue_ValueType)
+					scope = context.terminologyBox()?.allRangesScope
 					
 			ScalarOneOfLiteralAxiom:
 				if (reference == TerminologiesPackage.eINSTANCE.scalarOneOfLiteralAxiom_Axiom)
 					scope = context.tbox.allScalarOneOfRestrictionsScope
+				else if (reference == TerminologiesPackage.eINSTANCE.scalarOneOfLiteralAxiom_ValueType)
+					scope = context.tbox.allRangesScope
 				
 			RootConceptTaxonomyAxiom:
 				if (reference == BundlesPackage.eINSTANCE.rootConceptTaxonomyAxiom_Root)
@@ -321,6 +327,8 @@ class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespaceAware
 					scope = context.descriptionBox()?.allConceptualEntitySingletonInstanceScope
 				else if (reference == DescriptionsPackage.eINSTANCE.singletonInstanceScalarDataPropertyValue_ScalarDataProperty)
 					scope = context.descriptionBox()?.allEntityScalarDataPropertiesScope
+				else if (reference == DescriptionsPackage.eINSTANCE.singletonInstanceScalarDataPropertyValue_ValueType)
+					scope = context.descriptionBox()?.allRangesScope
 					
 			SingletonInstanceStructuredDataPropertyValue:
 				if (reference == DescriptionsPackage.eINSTANCE.singletonInstanceStructuredDataPropertyValue_SingletonInstance)
@@ -335,6 +343,8 @@ class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespaceAware
 			ScalarDataPropertyValue:
 				if (reference == DescriptionsPackage.eINSTANCE.scalarDataPropertyValue_ScalarDataProperty)
 					scope = context.descriptionBox()?.allScalarDataPropertiesScope
+				else if (reference == DescriptionsPackage.eINSTANCE.scalarDataPropertyValue_ValueType)
+					scope = context.descriptionBox()?.allRangesScope
 			
 			ConceptInstance:
 				if (reference == DescriptionsPackage.eINSTANCE.conceptInstance_SingletonConceptClassifier)

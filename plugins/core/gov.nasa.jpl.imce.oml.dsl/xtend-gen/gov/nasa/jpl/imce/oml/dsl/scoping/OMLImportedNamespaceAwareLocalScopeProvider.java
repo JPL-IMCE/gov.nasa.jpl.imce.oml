@@ -684,6 +684,12 @@ public class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespa
             boolean _equals_1 = Objects.equal(reference, _entityScalarDataPropertyRestrictionAxiom_ScalarProperty);
             if (_equals_1) {
               scope = this._oMLScopeExtensions.allEntityScalarDataPropertiesScope(((EntityScalarDataPropertyParticularRestrictionAxiom)context).getTbox());
+            } else {
+              EReference _entityScalarDataPropertyParticularRestrictionAxiom_ValueType = TerminologiesPackage.eINSTANCE.getEntityScalarDataPropertyParticularRestrictionAxiom_ValueType();
+              boolean _equals_2 = Objects.equal(reference, _entityScalarDataPropertyParticularRestrictionAxiom_ValueType);
+              if (_equals_2) {
+                scope = this._oMLScopeExtensions.allRangesScope(((EntityScalarDataPropertyParticularRestrictionAxiom)context).getTbox());
+              }
             }
           }
         }
@@ -787,6 +793,17 @@ public class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespa
               _allScalarDataPropertiesScope=this._oMLScopeExtensions.allScalarDataPropertiesScope(_terminologyBox);
             }
             scope = _allScalarDataPropertiesScope;
+          } else {
+            EReference _restrictionScalarDataPropertyValue_ValueType = TerminologiesPackage.eINSTANCE.getRestrictionScalarDataPropertyValue_ValueType();
+            boolean _equals_1 = Objects.equal(reference, _restrictionScalarDataPropertyValue_ValueType);
+            if (_equals_1) {
+              TerminologyBox _terminologyBox_1 = ((RestrictionScalarDataPropertyValue)context).terminologyBox();
+              IScope _allRangesScope = null;
+              if (_terminologyBox_1!=null) {
+                _allRangesScope=this._oMLScopeExtensions.allRangesScope(_terminologyBox_1);
+              }
+              scope = _allRangesScope;
+            }
           }
         }
       }
@@ -797,6 +814,12 @@ public class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespa
           boolean _equals = Objects.equal(reference, _scalarOneOfLiteralAxiom_Axiom);
           if (_equals) {
             scope = this._oMLScopeExtensions.allScalarOneOfRestrictionsScope(((ScalarOneOfLiteralAxiom)context).getTbox());
+          } else {
+            EReference _scalarOneOfLiteralAxiom_ValueType = TerminologiesPackage.eINSTANCE.getScalarOneOfLiteralAxiom_ValueType();
+            boolean _equals_1 = Objects.equal(reference, _scalarOneOfLiteralAxiom_ValueType);
+            if (_equals_1) {
+              scope = this._oMLScopeExtensions.allRangesScope(((ScalarOneOfLiteralAxiom)context).getTbox());
+            }
           }
         }
       }
@@ -909,6 +932,17 @@ public class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespa
                 _allEntityScalarDataPropertiesScope=this._oMLScopeExtensions.allEntityScalarDataPropertiesScope(_descriptionBox_1);
               }
               scope = _allEntityScalarDataPropertiesScope;
+            } else {
+              EReference _singletonInstanceScalarDataPropertyValue_ValueType = DescriptionsPackage.eINSTANCE.getSingletonInstanceScalarDataPropertyValue_ValueType();
+              boolean _equals_2 = Objects.equal(reference, _singletonInstanceScalarDataPropertyValue_ValueType);
+              if (_equals_2) {
+                DescriptionBox _descriptionBox_2 = ((SingletonInstanceScalarDataPropertyValue)context).descriptionBox();
+                IScope _allRangesScope = null;
+                if (_descriptionBox_2!=null) {
+                  _allRangesScope=this._oMLScopeExtensions.allRangesScope(_descriptionBox_2);
+                }
+                scope = _allRangesScope;
+              }
             }
           }
         }
@@ -966,6 +1000,17 @@ public class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespa
               _allScalarDataPropertiesScope=this._oMLScopeExtensions.allScalarDataPropertiesScope(_descriptionBox);
             }
             scope = _allScalarDataPropertiesScope;
+          } else {
+            EReference _scalarDataPropertyValue_ValueType = DescriptionsPackage.eINSTANCE.getScalarDataPropertyValue_ValueType();
+            boolean _equals_1 = Objects.equal(reference, _scalarDataPropertyValue_ValueType);
+            if (_equals_1) {
+              DescriptionBox _descriptionBox_1 = ((ScalarDataPropertyValue)context).descriptionBox();
+              IScope _allRangesScope = null;
+              if (_descriptionBox_1!=null) {
+                _allRangesScope=this._oMLScopeExtensions.allRangesScope(_descriptionBox_1);
+              }
+              scope = _allRangesScope;
+            }
           }
         }
       }
