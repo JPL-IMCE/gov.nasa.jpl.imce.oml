@@ -528,6 +528,25 @@ public class OMLScopeExtensions {
     return this.<ReifiedRelationshipInstance>descriptionScope(dbox, _function, _function_1);
   }
   
+  public IScope allRangesScope(final DescriptionBox dbox) {
+    SimpleScope _xblockexpression = null;
+    {
+      final Iterable<TerminologyBox> tboxes = this._oMLExtensions.allImportedTerminologiesFromDescription(dbox);
+      final ArrayList<IEObjectDescription> result = Lists.<IEObjectDescription>newArrayList();
+      final Function1<TerminologyBox, Iterable<IEObjectDescription>> _function = (TerminologyBox tbox) -> {
+        final Function<DataRange, QualifiedName> _function_1 = (DataRange importedThing) -> {
+          return this.<DataRange>importedResourceNameFunction(Pair.<TerminologyBox, DataRange>of(tbox, importedThing));
+        };
+        return Scopes.<DataRange>scopedElementsFor(
+          this._oMLExtensions.localRanges(tbox), _function_1);
+      };
+      final Iterable<IEObjectDescription> inc = Iterables.<IEObjectDescription>concat(IterableExtensions.<TerminologyBox, Iterable<IEObjectDescription>>map(tboxes, _function));
+      Iterables.<IEObjectDescription>addAll(result, inc);
+      _xblockexpression = new SimpleScope(result);
+    }
+    return _xblockexpression;
+  }
+  
   public IScope allEntityStructuredDataPropertiesScope(final DescriptionBox dbox) {
     SimpleScope _xblockexpression = null;
     {
