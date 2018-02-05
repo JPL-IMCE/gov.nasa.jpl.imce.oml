@@ -267,6 +267,20 @@ class OMLScopeExtensions {
 		descriptionScope(dbox, [localReifiedRelationshipInstances], [importedDescriptionNameFunction])
 	}
 	
+	def IScope allRangesScope(DescriptionBox dbox) {
+		val tboxes = dbox.allImportedTerminologiesFromDescription()
+		
+		val ArrayList<IEObjectDescription> result = Lists.newArrayList()
+		val inc = tboxes.map [ tbox |
+			Scopes.scopedElementsFor(
+				tbox.localRanges,
+				[importedThing|importedResourceNameFunction(Pair.of(tbox, importedThing))]
+			)
+		].flatten
+		result.addAll(inc)
+		new SimpleScope(result)
+	}
+	
 	def IScope allEntityStructuredDataPropertiesScope(DescriptionBox dbox) {
 		val tboxes = dbox.allImportedTerminologiesFromDescription()
 		
