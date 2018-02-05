@@ -28,12 +28,12 @@ import gov.nasa.jpl.imce.oml.model.common.Extent
 @RunWith(BlockJUnit4ClassRunner)
 class OMLZip4Test extends MixedOMLSaveLoadComparisonTest {
 	
-	static def Pair<URI,Extent>[] example1() {
+	def Pair<URI,Extent>[] example1() {
         val ext1 = createExtent
         
         val tbox1 = createTerminologyGraph
         tbox1.extent = ext1
-        tbox1.iri = "./test1.oml"
+        tbox1.iri = toAbsoluteTempFileURI("test1.oml")
         
         val concept1 = createConcept
         concept1.name = "Concept1"
@@ -43,7 +43,7 @@ class OMLZip4Test extends MixedOMLSaveLoadComparisonTest {
         
         val tbox2 = createTerminologyGraph
         tbox2.extent = ext2
-        tbox2.iri = "./test2.omlzip"
+        tbox2.iri = toAbsoluteTempFileURI("test2.omlzip")
         
         val tbox12 = createTerminologyExtensionAxiom
         tbox12.extendedTerminology = tbox1
@@ -58,9 +58,11 @@ class OMLZip4Test extends MixedOMLSaveLoadComparisonTest {
         concept12.subConcept = concept2
         concept12.superConcept = concept1
         
+        val uri1 = URI.createURI(tbox1.iri())
+        val uri2 = URI.createURI(tbox2.iri())
         return #[ 
-        	new Pair<URI,Extent>(URI.createFileURI(tbox1.iri()), ext1),
-        	new Pair<URI,Extent>(URI.createFileURI(tbox2.iri()), ext2)
+        	new Pair<URI,Extent>(uri1, ext1),
+        	new Pair<URI,Extent>(uri2, ext2)
         ]
 	}
 	

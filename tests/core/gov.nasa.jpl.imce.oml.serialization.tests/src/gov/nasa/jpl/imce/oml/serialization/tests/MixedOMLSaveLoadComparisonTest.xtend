@@ -67,12 +67,14 @@ abstract class MixedOMLSaveLoadComparisonTest {
     }
     
 	protected var File omlCatalogFile
+	protected val String fileURIPrefix
 	protected var XtextResourceSet rs1
 	protected var XtextResourceSet rs2
 	
 	new() {
 		OMLZipResourceSet.doSetup()
 		omlCatalogFile = createOMLFolder(Paths.get("./target/oml/"+System.currentTimeMillis()))
+		fileURIPrefix = "file:/" + omlCatalogFile.parentFile.absolutePath + "/"
 		rs1 = new XtextResourceSet()
 		rs2 = new XtextResourceSet()
 		
@@ -81,6 +83,10 @@ abstract class MixedOMLSaveLoadComparisonTest {
 		
 		val OMLCatalog c2 = rs2.getCatalog
 		c2.parseCatalog(omlCatalogFile.toURI.toURL)
+	}
+	
+	protected def String toAbsoluteTempFileURI(String path) {
+		fileURIPrefix + path
 	}
 	
 	/**

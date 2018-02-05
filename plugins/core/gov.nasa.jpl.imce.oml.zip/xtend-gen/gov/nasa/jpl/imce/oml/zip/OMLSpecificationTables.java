@@ -113,7 +113,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
@@ -124,8 +123,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.xtend2.lib.StringConcatenation;
-import org.eclipse.xtext.xbase.lib.Conversions;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
@@ -3229,764 +3227,992 @@ public class OMLSpecificationTables {
         }
       };
       Collections.<ZipArchiveEntry>list(zip.getEntries()).forEach(_function);
-      tables.resolve(rs, r);
+      tables.createAndResolve(rs, r);
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
   
   protected void readTerminologyGraphs(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final TerminologyGraph oml = this.omlGraphsFactory.createTerminologyGraph();
-      final String uuid = kv.remove("uuid");
-      oml.setKind(OMLTables.toTerminologyKind(kv.remove("kind")));
-      oml.setIri(OMLTables.toIRI(kv.remove("iri")));
-      final Pair<TerminologyGraph, Map<String, String>> pair = new Pair<TerminologyGraph, Map<String, String>>(oml, kv);
-      this.terminologyGraphs.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final TerminologyGraph oml = this.omlGraphsFactory.createTerminologyGraph();
+        final String uuid = kv.remove("uuid");
+        oml.setKind(OMLTables.toTerminologyKind(kv.remove("kind")));
+        oml.setIri(OMLTables.toIRI(kv.remove("iri")));
+        final Pair<TerminologyGraph, Map<String, String>> pair = new Pair<TerminologyGraph, Map<String, String>>(oml, kv);
+        this.terminologyGraphs.put(uuid, pair);
+      }
+    }
   }
   
   protected void readBundles(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final Bundle oml = this.omlBundlesFactory.createBundle();
-      final String uuid = kv.remove("uuid");
-      oml.setKind(OMLTables.toTerminologyKind(kv.remove("kind")));
-      oml.setIri(OMLTables.toIRI(kv.remove("iri")));
-      final Pair<Bundle, Map<String, String>> pair = new Pair<Bundle, Map<String, String>>(oml, kv);
-      this.bundles.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final Bundle oml = this.omlBundlesFactory.createBundle();
+        final String uuid = kv.remove("uuid");
+        oml.setKind(OMLTables.toTerminologyKind(kv.remove("kind")));
+        oml.setIri(OMLTables.toIRI(kv.remove("iri")));
+        final Pair<Bundle, Map<String, String>> pair = new Pair<Bundle, Map<String, String>>(oml, kv);
+        this.bundles.put(uuid, pair);
+      }
+    }
   }
   
   protected void readDescriptionBoxes(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final DescriptionBox oml = this.omlDescriptionsFactory.createDescriptionBox();
-      final String uuid = kv.remove("uuid");
-      oml.setKind(OMLTables.toDescriptionKind(kv.remove("kind")));
-      oml.setIri(OMLTables.toIRI(kv.remove("iri")));
-      final Pair<DescriptionBox, Map<String, String>> pair = new Pair<DescriptionBox, Map<String, String>>(oml, kv);
-      this.descriptionBoxes.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final DescriptionBox oml = this.omlDescriptionsFactory.createDescriptionBox();
+        final String uuid = kv.remove("uuid");
+        oml.setKind(OMLTables.toDescriptionKind(kv.remove("kind")));
+        oml.setIri(OMLTables.toIRI(kv.remove("iri")));
+        final Pair<DescriptionBox, Map<String, String>> pair = new Pair<DescriptionBox, Map<String, String>>(oml, kv);
+        this.descriptionBoxes.put(uuid, pair);
+      }
+    }
   }
   
   protected void readAnnotationProperties(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final AnnotationProperty oml = this.omlCommonFactory.createAnnotationProperty();
-      final String uuid = kv.remove("uuid");
-      oml.setIri(OMLTables.toIRI(kv.remove("iri")));
-      oml.setAbbrevIRI(OMLTables.toAbbrevIRI(kv.remove("abbrevIRI")));
-      final Pair<AnnotationProperty, Map<String, String>> pair = new Pair<AnnotationProperty, Map<String, String>>(oml, kv);
-      this.annotationProperties.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final AnnotationProperty oml = this.omlCommonFactory.createAnnotationProperty();
+        final String uuid = kv.remove("uuid");
+        oml.setIri(OMLTables.toIRI(kv.remove("iri")));
+        oml.setAbbrevIRI(OMLTables.toAbbrevIRI(kv.remove("abbrevIRI")));
+        final Pair<AnnotationProperty, Map<String, String>> pair = new Pair<AnnotationProperty, Map<String, String>>(oml, kv);
+        this.annotationProperties.put(uuid, pair);
+      }
+    }
   }
   
   protected void readAspects(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final Aspect oml = this.omlTerminologiesFactory.createAspect();
-      final String uuid = kv.remove("uuid");
-      oml.setName(OMLTables.toLocalName(kv.remove("name")));
-      final Pair<Aspect, Map<String, String>> pair = new Pair<Aspect, Map<String, String>>(oml, kv);
-      this.aspects.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final Aspect oml = this.omlTerminologiesFactory.createAspect();
+        final String uuid = kv.remove("uuid");
+        oml.setName(OMLTables.toLocalName(kv.remove("name")));
+        final Pair<Aspect, Map<String, String>> pair = new Pair<Aspect, Map<String, String>>(oml, kv);
+        this.aspects.put(uuid, pair);
+      }
+    }
   }
   
   protected void readConcepts(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final Concept oml = this.omlTerminologiesFactory.createConcept();
-      final String uuid = kv.remove("uuid");
-      oml.setName(OMLTables.toLocalName(kv.remove("name")));
-      final Pair<Concept, Map<String, String>> pair = new Pair<Concept, Map<String, String>>(oml, kv);
-      this.concepts.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final Concept oml = this.omlTerminologiesFactory.createConcept();
+        final String uuid = kv.remove("uuid");
+        oml.setName(OMLTables.toLocalName(kv.remove("name")));
+        final Pair<Concept, Map<String, String>> pair = new Pair<Concept, Map<String, String>>(oml, kv);
+        this.concepts.put(uuid, pair);
+      }
+    }
   }
   
   protected void readScalars(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final Scalar oml = this.omlTerminologiesFactory.createScalar();
-      final String uuid = kv.remove("uuid");
-      oml.setName(OMLTables.toLocalName(kv.remove("name")));
-      final Pair<Scalar, Map<String, String>> pair = new Pair<Scalar, Map<String, String>>(oml, kv);
-      this.scalars.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final Scalar oml = this.omlTerminologiesFactory.createScalar();
+        final String uuid = kv.remove("uuid");
+        oml.setName(OMLTables.toLocalName(kv.remove("name")));
+        final Pair<Scalar, Map<String, String>> pair = new Pair<Scalar, Map<String, String>>(oml, kv);
+        this.scalars.put(uuid, pair);
+      }
+    }
   }
   
   protected void readStructures(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final Structure oml = this.omlTerminologiesFactory.createStructure();
-      final String uuid = kv.remove("uuid");
-      oml.setName(OMLTables.toLocalName(kv.remove("name")));
-      final Pair<Structure, Map<String, String>> pair = new Pair<Structure, Map<String, String>>(oml, kv);
-      this.structures.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final Structure oml = this.omlTerminologiesFactory.createStructure();
+        final String uuid = kv.remove("uuid");
+        oml.setName(OMLTables.toLocalName(kv.remove("name")));
+        final Pair<Structure, Map<String, String>> pair = new Pair<Structure, Map<String, String>>(oml, kv);
+        this.structures.put(uuid, pair);
+      }
+    }
   }
   
   protected void readConceptDesignationTerminologyAxioms(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final ConceptDesignationTerminologyAxiom oml = this.omlGraphsFactory.createConceptDesignationTerminologyAxiom();
-      final String uuid = kv.remove("uuid");
-      final Pair<ConceptDesignationTerminologyAxiom, Map<String, String>> pair = new Pair<ConceptDesignationTerminologyAxiom, Map<String, String>>(oml, kv);
-      this.conceptDesignationTerminologyAxioms.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final ConceptDesignationTerminologyAxiom oml = this.omlGraphsFactory.createConceptDesignationTerminologyAxiom();
+        final String uuid = kv.remove("uuid");
+        final Pair<ConceptDesignationTerminologyAxiom, Map<String, String>> pair = new Pair<ConceptDesignationTerminologyAxiom, Map<String, String>>(oml, kv);
+        this.conceptDesignationTerminologyAxioms.put(uuid, pair);
+      }
+    }
   }
   
   protected void readTerminologyExtensionAxioms(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final TerminologyExtensionAxiom oml = this.omlTerminologiesFactory.createTerminologyExtensionAxiom();
-      final String uuid = kv.remove("uuid");
-      final Pair<TerminologyExtensionAxiom, Map<String, String>> pair = new Pair<TerminologyExtensionAxiom, Map<String, String>>(oml, kv);
-      this.terminologyExtensionAxioms.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final TerminologyExtensionAxiom oml = this.omlTerminologiesFactory.createTerminologyExtensionAxiom();
+        final String uuid = kv.remove("uuid");
+        final Pair<TerminologyExtensionAxiom, Map<String, String>> pair = new Pair<TerminologyExtensionAxiom, Map<String, String>>(oml, kv);
+        this.terminologyExtensionAxioms.put(uuid, pair);
+      }
+    }
   }
   
   protected void readTerminologyNestingAxioms(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final TerminologyNestingAxiom oml = this.omlGraphsFactory.createTerminologyNestingAxiom();
-      final String uuid = kv.remove("uuid");
-      final Pair<TerminologyNestingAxiom, Map<String, String>> pair = new Pair<TerminologyNestingAxiom, Map<String, String>>(oml, kv);
-      this.terminologyNestingAxioms.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final TerminologyNestingAxiom oml = this.omlGraphsFactory.createTerminologyNestingAxiom();
+        final String uuid = kv.remove("uuid");
+        final Pair<TerminologyNestingAxiom, Map<String, String>> pair = new Pair<TerminologyNestingAxiom, Map<String, String>>(oml, kv);
+        this.terminologyNestingAxioms.put(uuid, pair);
+      }
+    }
   }
   
   protected void readBundledTerminologyAxioms(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final BundledTerminologyAxiom oml = this.omlBundlesFactory.createBundledTerminologyAxiom();
-      final String uuid = kv.remove("uuid");
-      final Pair<BundledTerminologyAxiom, Map<String, String>> pair = new Pair<BundledTerminologyAxiom, Map<String, String>>(oml, kv);
-      this.bundledTerminologyAxioms.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final BundledTerminologyAxiom oml = this.omlBundlesFactory.createBundledTerminologyAxiom();
+        final String uuid = kv.remove("uuid");
+        final Pair<BundledTerminologyAxiom, Map<String, String>> pair = new Pair<BundledTerminologyAxiom, Map<String, String>>(oml, kv);
+        this.bundledTerminologyAxioms.put(uuid, pair);
+      }
+    }
   }
   
   protected void readDescriptionBoxExtendsClosedWorldDefinitions(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final DescriptionBoxExtendsClosedWorldDefinitions oml = this.omlDescriptionsFactory.createDescriptionBoxExtendsClosedWorldDefinitions();
-      final String uuid = kv.remove("uuid");
-      final Pair<DescriptionBoxExtendsClosedWorldDefinitions, Map<String, String>> pair = new Pair<DescriptionBoxExtendsClosedWorldDefinitions, Map<String, String>>(oml, kv);
-      this.descriptionBoxExtendsClosedWorldDefinitions.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final DescriptionBoxExtendsClosedWorldDefinitions oml = this.omlDescriptionsFactory.createDescriptionBoxExtendsClosedWorldDefinitions();
+        final String uuid = kv.remove("uuid");
+        final Pair<DescriptionBoxExtendsClosedWorldDefinitions, Map<String, String>> pair = new Pair<DescriptionBoxExtendsClosedWorldDefinitions, Map<String, String>>(oml, kv);
+        this.descriptionBoxExtendsClosedWorldDefinitions.put(uuid, pair);
+      }
+    }
   }
   
   protected void readDescriptionBoxRefinements(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final DescriptionBoxRefinement oml = this.omlDescriptionsFactory.createDescriptionBoxRefinement();
-      final String uuid = kv.remove("uuid");
-      final Pair<DescriptionBoxRefinement, Map<String, String>> pair = new Pair<DescriptionBoxRefinement, Map<String, String>>(oml, kv);
-      this.descriptionBoxRefinements.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final DescriptionBoxRefinement oml = this.omlDescriptionsFactory.createDescriptionBoxRefinement();
+        final String uuid = kv.remove("uuid");
+        final Pair<DescriptionBoxRefinement, Map<String, String>> pair = new Pair<DescriptionBoxRefinement, Map<String, String>>(oml, kv);
+        this.descriptionBoxRefinements.put(uuid, pair);
+      }
+    }
   }
   
   protected void readBinaryScalarRestrictions(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final BinaryScalarRestriction oml = this.omlTerminologiesFactory.createBinaryScalarRestriction();
-      final String uuid = kv.remove("uuid");
-      oml.setLength(OMLTables.toPositiveIntegerLiteral(kv.remove("length")));
-      oml.setMinLength(OMLTables.toPositiveIntegerLiteral(kv.remove("minLength")));
-      oml.setMaxLength(OMLTables.toPositiveIntegerLiteral(kv.remove("maxLength")));
-      oml.setName(OMLTables.toLocalName(kv.remove("name")));
-      final Pair<BinaryScalarRestriction, Map<String, String>> pair = new Pair<BinaryScalarRestriction, Map<String, String>>(oml, kv);
-      this.binaryScalarRestrictions.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final BinaryScalarRestriction oml = this.omlTerminologiesFactory.createBinaryScalarRestriction();
+        final String uuid = kv.remove("uuid");
+        oml.setLength(OMLTables.toPositiveIntegerLiteral(kv.remove("length")));
+        oml.setMinLength(OMLTables.toPositiveIntegerLiteral(kv.remove("minLength")));
+        oml.setMaxLength(OMLTables.toPositiveIntegerLiteral(kv.remove("maxLength")));
+        oml.setName(OMLTables.toLocalName(kv.remove("name")));
+        final Pair<BinaryScalarRestriction, Map<String, String>> pair = new Pair<BinaryScalarRestriction, Map<String, String>>(oml, kv);
+        this.binaryScalarRestrictions.put(uuid, pair);
+      }
+    }
   }
   
   protected void readIRIScalarRestrictions(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final IRIScalarRestriction oml = this.omlTerminologiesFactory.createIRIScalarRestriction();
-      final String uuid = kv.remove("uuid");
-      oml.setLength(OMLTables.toPositiveIntegerLiteral(kv.remove("length")));
-      oml.setMinLength(OMLTables.toPositiveIntegerLiteral(kv.remove("minLength")));
-      oml.setMaxLength(OMLTables.toPositiveIntegerLiteral(kv.remove("maxLength")));
-      oml.setName(OMLTables.toLocalName(kv.remove("name")));
-      oml.setPattern(OMLTables.toLiteralPattern(kv.remove("pattern")));
-      final Pair<IRIScalarRestriction, Map<String, String>> pair = new Pair<IRIScalarRestriction, Map<String, String>>(oml, kv);
-      this.iriScalarRestrictions.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final IRIScalarRestriction oml = this.omlTerminologiesFactory.createIRIScalarRestriction();
+        final String uuid = kv.remove("uuid");
+        oml.setLength(OMLTables.toPositiveIntegerLiteral(kv.remove("length")));
+        oml.setMinLength(OMLTables.toPositiveIntegerLiteral(kv.remove("minLength")));
+        oml.setMaxLength(OMLTables.toPositiveIntegerLiteral(kv.remove("maxLength")));
+        oml.setName(OMLTables.toLocalName(kv.remove("name")));
+        oml.setPattern(OMLTables.toLiteralPattern(kv.remove("pattern")));
+        final Pair<IRIScalarRestriction, Map<String, String>> pair = new Pair<IRIScalarRestriction, Map<String, String>>(oml, kv);
+        this.iriScalarRestrictions.put(uuid, pair);
+      }
+    }
   }
   
   protected void readNumericScalarRestrictions(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final NumericScalarRestriction oml = this.omlTerminologiesFactory.createNumericScalarRestriction();
-      final String uuid = kv.remove("uuid");
-      oml.setMinExclusive(OMLTables.toLiteralNumber(kv.remove("minExclusive")));
-      oml.setMinInclusive(OMLTables.toLiteralNumber(kv.remove("minInclusive")));
-      oml.setMaxExclusive(OMLTables.toLiteralNumber(kv.remove("maxExclusive")));
-      oml.setMaxInclusive(OMLTables.toLiteralNumber(kv.remove("maxInclusive")));
-      oml.setName(OMLTables.toLocalName(kv.remove("name")));
-      final Pair<NumericScalarRestriction, Map<String, String>> pair = new Pair<NumericScalarRestriction, Map<String, String>>(oml, kv);
-      this.numericScalarRestrictions.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final NumericScalarRestriction oml = this.omlTerminologiesFactory.createNumericScalarRestriction();
+        final String uuid = kv.remove("uuid");
+        oml.setMinExclusive(OMLTables.toLiteralNumber(kv.remove("minExclusive")));
+        oml.setMinInclusive(OMLTables.toLiteralNumber(kv.remove("minInclusive")));
+        oml.setMaxExclusive(OMLTables.toLiteralNumber(kv.remove("maxExclusive")));
+        oml.setMaxInclusive(OMLTables.toLiteralNumber(kv.remove("maxInclusive")));
+        oml.setName(OMLTables.toLocalName(kv.remove("name")));
+        final Pair<NumericScalarRestriction, Map<String, String>> pair = new Pair<NumericScalarRestriction, Map<String, String>>(oml, kv);
+        this.numericScalarRestrictions.put(uuid, pair);
+      }
+    }
   }
   
   protected void readPlainLiteralScalarRestrictions(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final PlainLiteralScalarRestriction oml = this.omlTerminologiesFactory.createPlainLiteralScalarRestriction();
-      final String uuid = kv.remove("uuid");
-      oml.setLength(OMLTables.toPositiveIntegerLiteral(kv.remove("length")));
-      oml.setMinLength(OMLTables.toPositiveIntegerLiteral(kv.remove("minLength")));
-      oml.setMaxLength(OMLTables.toPositiveIntegerLiteral(kv.remove("maxLength")));
-      oml.setName(OMLTables.toLocalName(kv.remove("name")));
-      oml.setLangRange(OMLTables.toLanguageTagDataType(kv.remove("langRange")));
-      oml.setPattern(OMLTables.toLiteralPattern(kv.remove("pattern")));
-      final Pair<PlainLiteralScalarRestriction, Map<String, String>> pair = new Pair<PlainLiteralScalarRestriction, Map<String, String>>(oml, kv);
-      this.plainLiteralScalarRestrictions.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final PlainLiteralScalarRestriction oml = this.omlTerminologiesFactory.createPlainLiteralScalarRestriction();
+        final String uuid = kv.remove("uuid");
+        oml.setLength(OMLTables.toPositiveIntegerLiteral(kv.remove("length")));
+        oml.setMinLength(OMLTables.toPositiveIntegerLiteral(kv.remove("minLength")));
+        oml.setMaxLength(OMLTables.toPositiveIntegerLiteral(kv.remove("maxLength")));
+        oml.setName(OMLTables.toLocalName(kv.remove("name")));
+        oml.setLangRange(OMLTables.toLanguageTagDataType(kv.remove("langRange")));
+        oml.setPattern(OMLTables.toLiteralPattern(kv.remove("pattern")));
+        final Pair<PlainLiteralScalarRestriction, Map<String, String>> pair = new Pair<PlainLiteralScalarRestriction, Map<String, String>>(oml, kv);
+        this.plainLiteralScalarRestrictions.put(uuid, pair);
+      }
+    }
   }
   
   protected void readScalarOneOfRestrictions(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final ScalarOneOfRestriction oml = this.omlTerminologiesFactory.createScalarOneOfRestriction();
-      final String uuid = kv.remove("uuid");
-      oml.setName(OMLTables.toLocalName(kv.remove("name")));
-      final Pair<ScalarOneOfRestriction, Map<String, String>> pair = new Pair<ScalarOneOfRestriction, Map<String, String>>(oml, kv);
-      this.scalarOneOfRestrictions.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final ScalarOneOfRestriction oml = this.omlTerminologiesFactory.createScalarOneOfRestriction();
+        final String uuid = kv.remove("uuid");
+        oml.setName(OMLTables.toLocalName(kv.remove("name")));
+        final Pair<ScalarOneOfRestriction, Map<String, String>> pair = new Pair<ScalarOneOfRestriction, Map<String, String>>(oml, kv);
+        this.scalarOneOfRestrictions.put(uuid, pair);
+      }
+    }
   }
   
   protected void readScalarOneOfLiteralAxioms(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final ScalarOneOfLiteralAxiom oml = this.omlTerminologiesFactory.createScalarOneOfLiteralAxiom();
-      final String uuid = kv.remove("uuid");
-      oml.setValue(OMLTables.toLiteralValue(kv.remove("value")));
-      final Pair<ScalarOneOfLiteralAxiom, Map<String, String>> pair = new Pair<ScalarOneOfLiteralAxiom, Map<String, String>>(oml, kv);
-      this.scalarOneOfLiteralAxioms.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final ScalarOneOfLiteralAxiom oml = this.omlTerminologiesFactory.createScalarOneOfLiteralAxiom();
+        final String uuid = kv.remove("uuid");
+        oml.setValue(OMLTables.toLiteralValue(kv.remove("value")));
+        final Pair<ScalarOneOfLiteralAxiom, Map<String, String>> pair = new Pair<ScalarOneOfLiteralAxiom, Map<String, String>>(oml, kv);
+        this.scalarOneOfLiteralAxioms.put(uuid, pair);
+      }
+    }
   }
   
   protected void readStringScalarRestrictions(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final StringScalarRestriction oml = this.omlTerminologiesFactory.createStringScalarRestriction();
-      final String uuid = kv.remove("uuid");
-      oml.setLength(OMLTables.toPositiveIntegerLiteral(kv.remove("length")));
-      oml.setMinLength(OMLTables.toPositiveIntegerLiteral(kv.remove("minLength")));
-      oml.setMaxLength(OMLTables.toPositiveIntegerLiteral(kv.remove("maxLength")));
-      oml.setName(OMLTables.toLocalName(kv.remove("name")));
-      oml.setPattern(OMLTables.toLiteralPattern(kv.remove("pattern")));
-      final Pair<StringScalarRestriction, Map<String, String>> pair = new Pair<StringScalarRestriction, Map<String, String>>(oml, kv);
-      this.stringScalarRestrictions.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final StringScalarRestriction oml = this.omlTerminologiesFactory.createStringScalarRestriction();
+        final String uuid = kv.remove("uuid");
+        oml.setLength(OMLTables.toPositiveIntegerLiteral(kv.remove("length")));
+        oml.setMinLength(OMLTables.toPositiveIntegerLiteral(kv.remove("minLength")));
+        oml.setMaxLength(OMLTables.toPositiveIntegerLiteral(kv.remove("maxLength")));
+        oml.setName(OMLTables.toLocalName(kv.remove("name")));
+        oml.setPattern(OMLTables.toLiteralPattern(kv.remove("pattern")));
+        final Pair<StringScalarRestriction, Map<String, String>> pair = new Pair<StringScalarRestriction, Map<String, String>>(oml, kv);
+        this.stringScalarRestrictions.put(uuid, pair);
+      }
+    }
   }
   
   protected void readSynonymScalarRestrictions(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final SynonymScalarRestriction oml = this.omlTerminologiesFactory.createSynonymScalarRestriction();
-      final String uuid = kv.remove("uuid");
-      oml.setName(OMLTables.toLocalName(kv.remove("name")));
-      final Pair<SynonymScalarRestriction, Map<String, String>> pair = new Pair<SynonymScalarRestriction, Map<String, String>>(oml, kv);
-      this.synonymScalarRestrictions.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final SynonymScalarRestriction oml = this.omlTerminologiesFactory.createSynonymScalarRestriction();
+        final String uuid = kv.remove("uuid");
+        oml.setName(OMLTables.toLocalName(kv.remove("name")));
+        final Pair<SynonymScalarRestriction, Map<String, String>> pair = new Pair<SynonymScalarRestriction, Map<String, String>>(oml, kv);
+        this.synonymScalarRestrictions.put(uuid, pair);
+      }
+    }
   }
   
   protected void readTimeScalarRestrictions(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final TimeScalarRestriction oml = this.omlTerminologiesFactory.createTimeScalarRestriction();
-      final String uuid = kv.remove("uuid");
-      oml.setMinExclusive(OMLTables.toLiteralDateTime(kv.remove("minExclusive")));
-      oml.setMinInclusive(OMLTables.toLiteralDateTime(kv.remove("minInclusive")));
-      oml.setMaxExclusive(OMLTables.toLiteralDateTime(kv.remove("maxExclusive")));
-      oml.setMaxInclusive(OMLTables.toLiteralDateTime(kv.remove("maxInclusive")));
-      oml.setName(OMLTables.toLocalName(kv.remove("name")));
-      final Pair<TimeScalarRestriction, Map<String, String>> pair = new Pair<TimeScalarRestriction, Map<String, String>>(oml, kv);
-      this.timeScalarRestrictions.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final TimeScalarRestriction oml = this.omlTerminologiesFactory.createTimeScalarRestriction();
+        final String uuid = kv.remove("uuid");
+        oml.setMinExclusive(OMLTables.toLiteralDateTime(kv.remove("minExclusive")));
+        oml.setMinInclusive(OMLTables.toLiteralDateTime(kv.remove("minInclusive")));
+        oml.setMaxExclusive(OMLTables.toLiteralDateTime(kv.remove("maxExclusive")));
+        oml.setMaxInclusive(OMLTables.toLiteralDateTime(kv.remove("maxInclusive")));
+        oml.setName(OMLTables.toLocalName(kv.remove("name")));
+        final Pair<TimeScalarRestriction, Map<String, String>> pair = new Pair<TimeScalarRestriction, Map<String, String>>(oml, kv);
+        this.timeScalarRestrictions.put(uuid, pair);
+      }
+    }
   }
   
   protected void readEntityScalarDataProperties(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final EntityScalarDataProperty oml = this.omlTerminologiesFactory.createEntityScalarDataProperty();
-      final String uuid = kv.remove("uuid");
-      oml.setIsIdentityCriteria((OMLTables.toEBoolean(kv.remove("isIdentityCriteria"))).booleanValue());
-      oml.setName(OMLTables.toLocalName(kv.remove("name")));
-      final Pair<EntityScalarDataProperty, Map<String, String>> pair = new Pair<EntityScalarDataProperty, Map<String, String>>(oml, kv);
-      this.entityScalarDataProperties.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final EntityScalarDataProperty oml = this.omlTerminologiesFactory.createEntityScalarDataProperty();
+        final String uuid = kv.remove("uuid");
+        oml.setIsIdentityCriteria((OMLTables.toEBoolean(kv.remove("isIdentityCriteria"))).booleanValue());
+        oml.setName(OMLTables.toLocalName(kv.remove("name")));
+        final Pair<EntityScalarDataProperty, Map<String, String>> pair = new Pair<EntityScalarDataProperty, Map<String, String>>(oml, kv);
+        this.entityScalarDataProperties.put(uuid, pair);
+      }
+    }
   }
   
   protected void readEntityStructuredDataProperties(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final EntityStructuredDataProperty oml = this.omlTerminologiesFactory.createEntityStructuredDataProperty();
-      final String uuid = kv.remove("uuid");
-      oml.setIsIdentityCriteria((OMLTables.toEBoolean(kv.remove("isIdentityCriteria"))).booleanValue());
-      oml.setName(OMLTables.toLocalName(kv.remove("name")));
-      final Pair<EntityStructuredDataProperty, Map<String, String>> pair = new Pair<EntityStructuredDataProperty, Map<String, String>>(oml, kv);
-      this.entityStructuredDataProperties.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final EntityStructuredDataProperty oml = this.omlTerminologiesFactory.createEntityStructuredDataProperty();
+        final String uuid = kv.remove("uuid");
+        oml.setIsIdentityCriteria((OMLTables.toEBoolean(kv.remove("isIdentityCriteria"))).booleanValue());
+        oml.setName(OMLTables.toLocalName(kv.remove("name")));
+        final Pair<EntityStructuredDataProperty, Map<String, String>> pair = new Pair<EntityStructuredDataProperty, Map<String, String>>(oml, kv);
+        this.entityStructuredDataProperties.put(uuid, pair);
+      }
+    }
   }
   
   protected void readScalarDataProperties(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final ScalarDataProperty oml = this.omlTerminologiesFactory.createScalarDataProperty();
-      final String uuid = kv.remove("uuid");
-      oml.setName(OMLTables.toLocalName(kv.remove("name")));
-      final Pair<ScalarDataProperty, Map<String, String>> pair = new Pair<ScalarDataProperty, Map<String, String>>(oml, kv);
-      this.scalarDataProperties.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final ScalarDataProperty oml = this.omlTerminologiesFactory.createScalarDataProperty();
+        final String uuid = kv.remove("uuid");
+        oml.setName(OMLTables.toLocalName(kv.remove("name")));
+        final Pair<ScalarDataProperty, Map<String, String>> pair = new Pair<ScalarDataProperty, Map<String, String>>(oml, kv);
+        this.scalarDataProperties.put(uuid, pair);
+      }
+    }
   }
   
   protected void readStructuredDataProperties(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final StructuredDataProperty oml = this.omlTerminologiesFactory.createStructuredDataProperty();
-      final String uuid = kv.remove("uuid");
-      oml.setName(OMLTables.toLocalName(kv.remove("name")));
-      final Pair<StructuredDataProperty, Map<String, String>> pair = new Pair<StructuredDataProperty, Map<String, String>>(oml, kv);
-      this.structuredDataProperties.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final StructuredDataProperty oml = this.omlTerminologiesFactory.createStructuredDataProperty();
+        final String uuid = kv.remove("uuid");
+        oml.setName(OMLTables.toLocalName(kv.remove("name")));
+        final Pair<StructuredDataProperty, Map<String, String>> pair = new Pair<StructuredDataProperty, Map<String, String>>(oml, kv);
+        this.structuredDataProperties.put(uuid, pair);
+      }
+    }
   }
   
   protected void readReifiedRelationships(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final ReifiedRelationship oml = this.omlTerminologiesFactory.createReifiedRelationship();
-      final String uuid = kv.remove("uuid");
-      oml.setIsAsymmetric((OMLTables.toEBoolean(kv.remove("isAsymmetric"))).booleanValue());
-      oml.setIsEssential((OMLTables.toEBoolean(kv.remove("isEssential"))).booleanValue());
-      oml.setIsFunctional((OMLTables.toEBoolean(kv.remove("isFunctional"))).booleanValue());
-      oml.setIsInverseEssential((OMLTables.toEBoolean(kv.remove("isInverseEssential"))).booleanValue());
-      oml.setIsInverseFunctional((OMLTables.toEBoolean(kv.remove("isInverseFunctional"))).booleanValue());
-      oml.setIsIrreflexive((OMLTables.toEBoolean(kv.remove("isIrreflexive"))).booleanValue());
-      oml.setIsReflexive((OMLTables.toEBoolean(kv.remove("isReflexive"))).booleanValue());
-      oml.setIsSymmetric((OMLTables.toEBoolean(kv.remove("isSymmetric"))).booleanValue());
-      oml.setIsTransitive((OMLTables.toEBoolean(kv.remove("isTransitive"))).booleanValue());
-      oml.setName(OMLTables.toLocalName(kv.remove("name")));
-      final Pair<ReifiedRelationship, Map<String, String>> pair = new Pair<ReifiedRelationship, Map<String, String>>(oml, kv);
-      this.reifiedRelationships.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final ReifiedRelationship oml = this.omlTerminologiesFactory.createReifiedRelationship();
+        final String uuid = kv.remove("uuid");
+        oml.setIsAsymmetric((OMLTables.toEBoolean(kv.remove("isAsymmetric"))).booleanValue());
+        oml.setIsEssential((OMLTables.toEBoolean(kv.remove("isEssential"))).booleanValue());
+        oml.setIsFunctional((OMLTables.toEBoolean(kv.remove("isFunctional"))).booleanValue());
+        oml.setIsInverseEssential((OMLTables.toEBoolean(kv.remove("isInverseEssential"))).booleanValue());
+        oml.setIsInverseFunctional((OMLTables.toEBoolean(kv.remove("isInverseFunctional"))).booleanValue());
+        oml.setIsIrreflexive((OMLTables.toEBoolean(kv.remove("isIrreflexive"))).booleanValue());
+        oml.setIsReflexive((OMLTables.toEBoolean(kv.remove("isReflexive"))).booleanValue());
+        oml.setIsSymmetric((OMLTables.toEBoolean(kv.remove("isSymmetric"))).booleanValue());
+        oml.setIsTransitive((OMLTables.toEBoolean(kv.remove("isTransitive"))).booleanValue());
+        oml.setName(OMLTables.toLocalName(kv.remove("name")));
+        final Pair<ReifiedRelationship, Map<String, String>> pair = new Pair<ReifiedRelationship, Map<String, String>>(oml, kv);
+        this.reifiedRelationships.put(uuid, pair);
+      }
+    }
   }
   
   protected void readForwardProperties(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final ForwardProperty oml = this.omlTerminologiesFactory.createForwardProperty();
-      final String uuid = kv.remove("uuid");
-      oml.setName(OMLTables.toLocalName(kv.remove("name")));
-      final Pair<ForwardProperty, Map<String, String>> pair = new Pair<ForwardProperty, Map<String, String>>(oml, kv);
-      this.forwardProperties.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final ForwardProperty oml = this.omlTerminologiesFactory.createForwardProperty();
+        final String uuid = kv.remove("uuid");
+        oml.setName(OMLTables.toLocalName(kv.remove("name")));
+        final Pair<ForwardProperty, Map<String, String>> pair = new Pair<ForwardProperty, Map<String, String>>(oml, kv);
+        this.forwardProperties.put(uuid, pair);
+      }
+    }
   }
   
   protected void readInverseProperties(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final InverseProperty oml = this.omlTerminologiesFactory.createInverseProperty();
-      final String uuid = kv.remove("uuid");
-      oml.setName(OMLTables.toLocalName(kv.remove("name")));
-      final Pair<InverseProperty, Map<String, String>> pair = new Pair<InverseProperty, Map<String, String>>(oml, kv);
-      this.inverseProperties.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final InverseProperty oml = this.omlTerminologiesFactory.createInverseProperty();
+        final String uuid = kv.remove("uuid");
+        oml.setName(OMLTables.toLocalName(kv.remove("name")));
+        final Pair<InverseProperty, Map<String, String>> pair = new Pair<InverseProperty, Map<String, String>>(oml, kv);
+        this.inverseProperties.put(uuid, pair);
+      }
+    }
   }
   
   protected void readUnreifiedRelationships(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final UnreifiedRelationship oml = this.omlTerminologiesFactory.createUnreifiedRelationship();
-      final String uuid = kv.remove("uuid");
-      oml.setIsAsymmetric((OMLTables.toEBoolean(kv.remove("isAsymmetric"))).booleanValue());
-      oml.setIsEssential((OMLTables.toEBoolean(kv.remove("isEssential"))).booleanValue());
-      oml.setIsFunctional((OMLTables.toEBoolean(kv.remove("isFunctional"))).booleanValue());
-      oml.setIsInverseEssential((OMLTables.toEBoolean(kv.remove("isInverseEssential"))).booleanValue());
-      oml.setIsInverseFunctional((OMLTables.toEBoolean(kv.remove("isInverseFunctional"))).booleanValue());
-      oml.setIsIrreflexive((OMLTables.toEBoolean(kv.remove("isIrreflexive"))).booleanValue());
-      oml.setIsReflexive((OMLTables.toEBoolean(kv.remove("isReflexive"))).booleanValue());
-      oml.setIsSymmetric((OMLTables.toEBoolean(kv.remove("isSymmetric"))).booleanValue());
-      oml.setIsTransitive((OMLTables.toEBoolean(kv.remove("isTransitive"))).booleanValue());
-      oml.setName(OMLTables.toLocalName(kv.remove("name")));
-      final Pair<UnreifiedRelationship, Map<String, String>> pair = new Pair<UnreifiedRelationship, Map<String, String>>(oml, kv);
-      this.unreifiedRelationships.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final UnreifiedRelationship oml = this.omlTerminologiesFactory.createUnreifiedRelationship();
+        final String uuid = kv.remove("uuid");
+        oml.setIsAsymmetric((OMLTables.toEBoolean(kv.remove("isAsymmetric"))).booleanValue());
+        oml.setIsEssential((OMLTables.toEBoolean(kv.remove("isEssential"))).booleanValue());
+        oml.setIsFunctional((OMLTables.toEBoolean(kv.remove("isFunctional"))).booleanValue());
+        oml.setIsInverseEssential((OMLTables.toEBoolean(kv.remove("isInverseEssential"))).booleanValue());
+        oml.setIsInverseFunctional((OMLTables.toEBoolean(kv.remove("isInverseFunctional"))).booleanValue());
+        oml.setIsIrreflexive((OMLTables.toEBoolean(kv.remove("isIrreflexive"))).booleanValue());
+        oml.setIsReflexive((OMLTables.toEBoolean(kv.remove("isReflexive"))).booleanValue());
+        oml.setIsSymmetric((OMLTables.toEBoolean(kv.remove("isSymmetric"))).booleanValue());
+        oml.setIsTransitive((OMLTables.toEBoolean(kv.remove("isTransitive"))).booleanValue());
+        oml.setName(OMLTables.toLocalName(kv.remove("name")));
+        final Pair<UnreifiedRelationship, Map<String, String>> pair = new Pair<UnreifiedRelationship, Map<String, String>>(oml, kv);
+        this.unreifiedRelationships.put(uuid, pair);
+      }
+    }
   }
   
   protected void readChainRules(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final ChainRule oml = this.omlTerminologiesFactory.createChainRule();
-      final String uuid = kv.remove("uuid");
-      oml.setName(OMLTables.toLocalName(kv.remove("name")));
-      final Pair<ChainRule, Map<String, String>> pair = new Pair<ChainRule, Map<String, String>>(oml, kv);
-      this.chainRules.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final ChainRule oml = this.omlTerminologiesFactory.createChainRule();
+        final String uuid = kv.remove("uuid");
+        oml.setName(OMLTables.toLocalName(kv.remove("name")));
+        final Pair<ChainRule, Map<String, String>> pair = new Pair<ChainRule, Map<String, String>>(oml, kv);
+        this.chainRules.put(uuid, pair);
+      }
+    }
   }
   
   protected void readRuleBodySegments(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final RuleBodySegment oml = this.omlTerminologiesFactory.createRuleBodySegment();
-      final String uuid = kv.remove("uuid");
-      final Pair<RuleBodySegment, Map<String, String>> pair = new Pair<RuleBodySegment, Map<String, String>>(oml, kv);
-      this.ruleBodySegments.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final RuleBodySegment oml = this.omlTerminologiesFactory.createRuleBodySegment();
+        final String uuid = kv.remove("uuid");
+        final Pair<RuleBodySegment, Map<String, String>> pair = new Pair<RuleBodySegment, Map<String, String>>(oml, kv);
+        this.ruleBodySegments.put(uuid, pair);
+      }
+    }
   }
   
   protected void readSegmentPredicates(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final SegmentPredicate oml = this.omlTerminologiesFactory.createSegmentPredicate();
-      final String uuid = kv.remove("uuid");
-      final Pair<SegmentPredicate, Map<String, String>> pair = new Pair<SegmentPredicate, Map<String, String>>(oml, kv);
-      this.segmentPredicates.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final SegmentPredicate oml = this.omlTerminologiesFactory.createSegmentPredicate();
+        final String uuid = kv.remove("uuid");
+        final Pair<SegmentPredicate, Map<String, String>> pair = new Pair<SegmentPredicate, Map<String, String>>(oml, kv);
+        this.segmentPredicates.put(uuid, pair);
+      }
+    }
   }
   
   protected void readEntityExistentialRestrictionAxioms(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final EntityExistentialRestrictionAxiom oml = this.omlTerminologiesFactory.createEntityExistentialRestrictionAxiom();
-      final String uuid = kv.remove("uuid");
-      final Pair<EntityExistentialRestrictionAxiom, Map<String, String>> pair = new Pair<EntityExistentialRestrictionAxiom, Map<String, String>>(oml, kv);
-      this.entityExistentialRestrictionAxioms.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final EntityExistentialRestrictionAxiom oml = this.omlTerminologiesFactory.createEntityExistentialRestrictionAxiom();
+        final String uuid = kv.remove("uuid");
+        final Pair<EntityExistentialRestrictionAxiom, Map<String, String>> pair = new Pair<EntityExistentialRestrictionAxiom, Map<String, String>>(oml, kv);
+        this.entityExistentialRestrictionAxioms.put(uuid, pair);
+      }
+    }
   }
   
   protected void readEntityUniversalRestrictionAxioms(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final EntityUniversalRestrictionAxiom oml = this.omlTerminologiesFactory.createEntityUniversalRestrictionAxiom();
-      final String uuid = kv.remove("uuid");
-      final Pair<EntityUniversalRestrictionAxiom, Map<String, String>> pair = new Pair<EntityUniversalRestrictionAxiom, Map<String, String>>(oml, kv);
-      this.entityUniversalRestrictionAxioms.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final EntityUniversalRestrictionAxiom oml = this.omlTerminologiesFactory.createEntityUniversalRestrictionAxiom();
+        final String uuid = kv.remove("uuid");
+        final Pair<EntityUniversalRestrictionAxiom, Map<String, String>> pair = new Pair<EntityUniversalRestrictionAxiom, Map<String, String>>(oml, kv);
+        this.entityUniversalRestrictionAxioms.put(uuid, pair);
+      }
+    }
   }
   
   protected void readEntityScalarDataPropertyExistentialRestrictionAxioms(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final EntityScalarDataPropertyExistentialRestrictionAxiom oml = this.omlTerminologiesFactory.createEntityScalarDataPropertyExistentialRestrictionAxiom();
-      final String uuid = kv.remove("uuid");
-      final Pair<EntityScalarDataPropertyExistentialRestrictionAxiom, Map<String, String>> pair = new Pair<EntityScalarDataPropertyExistentialRestrictionAxiom, Map<String, String>>(oml, kv);
-      this.entityScalarDataPropertyExistentialRestrictionAxioms.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final EntityScalarDataPropertyExistentialRestrictionAxiom oml = this.omlTerminologiesFactory.createEntityScalarDataPropertyExistentialRestrictionAxiom();
+        final String uuid = kv.remove("uuid");
+        final Pair<EntityScalarDataPropertyExistentialRestrictionAxiom, Map<String, String>> pair = new Pair<EntityScalarDataPropertyExistentialRestrictionAxiom, Map<String, String>>(oml, kv);
+        this.entityScalarDataPropertyExistentialRestrictionAxioms.put(uuid, pair);
+      }
+    }
   }
   
   protected void readEntityScalarDataPropertyParticularRestrictionAxioms(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final EntityScalarDataPropertyParticularRestrictionAxiom oml = this.omlTerminologiesFactory.createEntityScalarDataPropertyParticularRestrictionAxiom();
-      final String uuid = kv.remove("uuid");
-      oml.setLiteralValue(OMLTables.toLiteralValue(kv.remove("literalValue")));
-      final Pair<EntityScalarDataPropertyParticularRestrictionAxiom, Map<String, String>> pair = new Pair<EntityScalarDataPropertyParticularRestrictionAxiom, Map<String, String>>(oml, kv);
-      this.entityScalarDataPropertyParticularRestrictionAxioms.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final EntityScalarDataPropertyParticularRestrictionAxiom oml = this.omlTerminologiesFactory.createEntityScalarDataPropertyParticularRestrictionAxiom();
+        final String uuid = kv.remove("uuid");
+        oml.setLiteralValue(OMLTables.toLiteralValue(kv.remove("literalValue")));
+        final Pair<EntityScalarDataPropertyParticularRestrictionAxiom, Map<String, String>> pair = new Pair<EntityScalarDataPropertyParticularRestrictionAxiom, Map<String, String>>(oml, kv);
+        this.entityScalarDataPropertyParticularRestrictionAxioms.put(uuid, pair);
+      }
+    }
   }
   
   protected void readEntityScalarDataPropertyUniversalRestrictionAxioms(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final EntityScalarDataPropertyUniversalRestrictionAxiom oml = this.omlTerminologiesFactory.createEntityScalarDataPropertyUniversalRestrictionAxiom();
-      final String uuid = kv.remove("uuid");
-      final Pair<EntityScalarDataPropertyUniversalRestrictionAxiom, Map<String, String>> pair = new Pair<EntityScalarDataPropertyUniversalRestrictionAxiom, Map<String, String>>(oml, kv);
-      this.entityScalarDataPropertyUniversalRestrictionAxioms.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final EntityScalarDataPropertyUniversalRestrictionAxiom oml = this.omlTerminologiesFactory.createEntityScalarDataPropertyUniversalRestrictionAxiom();
+        final String uuid = kv.remove("uuid");
+        final Pair<EntityScalarDataPropertyUniversalRestrictionAxiom, Map<String, String>> pair = new Pair<EntityScalarDataPropertyUniversalRestrictionAxiom, Map<String, String>>(oml, kv);
+        this.entityScalarDataPropertyUniversalRestrictionAxioms.put(uuid, pair);
+      }
+    }
   }
   
   protected void readEntityStructuredDataPropertyParticularRestrictionAxioms(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final EntityStructuredDataPropertyParticularRestrictionAxiom oml = this.omlTerminologiesFactory.createEntityStructuredDataPropertyParticularRestrictionAxiom();
-      final String uuid = kv.remove("uuid");
-      final Pair<EntityStructuredDataPropertyParticularRestrictionAxiom, Map<String, String>> pair = new Pair<EntityStructuredDataPropertyParticularRestrictionAxiom, Map<String, String>>(oml, kv);
-      this.entityStructuredDataPropertyParticularRestrictionAxioms.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final EntityStructuredDataPropertyParticularRestrictionAxiom oml = this.omlTerminologiesFactory.createEntityStructuredDataPropertyParticularRestrictionAxiom();
+        final String uuid = kv.remove("uuid");
+        final Pair<EntityStructuredDataPropertyParticularRestrictionAxiom, Map<String, String>> pair = new Pair<EntityStructuredDataPropertyParticularRestrictionAxiom, Map<String, String>>(oml, kv);
+        this.entityStructuredDataPropertyParticularRestrictionAxioms.put(uuid, pair);
+      }
+    }
   }
   
   protected void readRestrictionStructuredDataPropertyTuples(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final RestrictionStructuredDataPropertyTuple oml = this.omlTerminologiesFactory.createRestrictionStructuredDataPropertyTuple();
-      final String uuid = kv.remove("uuid");
-      final Pair<RestrictionStructuredDataPropertyTuple, Map<String, String>> pair = new Pair<RestrictionStructuredDataPropertyTuple, Map<String, String>>(oml, kv);
-      this.restrictionStructuredDataPropertyTuples.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final RestrictionStructuredDataPropertyTuple oml = this.omlTerminologiesFactory.createRestrictionStructuredDataPropertyTuple();
+        final String uuid = kv.remove("uuid");
+        final Pair<RestrictionStructuredDataPropertyTuple, Map<String, String>> pair = new Pair<RestrictionStructuredDataPropertyTuple, Map<String, String>>(oml, kv);
+        this.restrictionStructuredDataPropertyTuples.put(uuid, pair);
+      }
+    }
   }
   
   protected void readRestrictionScalarDataPropertyValues(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final RestrictionScalarDataPropertyValue oml = this.omlTerminologiesFactory.createRestrictionScalarDataPropertyValue();
-      final String uuid = kv.remove("uuid");
-      oml.setScalarPropertyValue(OMLTables.toLiteralValue(kv.remove("scalarPropertyValue")));
-      final Pair<RestrictionScalarDataPropertyValue, Map<String, String>> pair = new Pair<RestrictionScalarDataPropertyValue, Map<String, String>>(oml, kv);
-      this.restrictionScalarDataPropertyValues.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final RestrictionScalarDataPropertyValue oml = this.omlTerminologiesFactory.createRestrictionScalarDataPropertyValue();
+        final String uuid = kv.remove("uuid");
+        oml.setScalarPropertyValue(OMLTables.toLiteralValue(kv.remove("scalarPropertyValue")));
+        final Pair<RestrictionScalarDataPropertyValue, Map<String, String>> pair = new Pair<RestrictionScalarDataPropertyValue, Map<String, String>>(oml, kv);
+        this.restrictionScalarDataPropertyValues.put(uuid, pair);
+      }
+    }
   }
   
   protected void readAspectSpecializationAxioms(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final AspectSpecializationAxiom oml = this.omlTerminologiesFactory.createAspectSpecializationAxiom();
-      final String uuid = kv.remove("uuid");
-      final Pair<AspectSpecializationAxiom, Map<String, String>> pair = new Pair<AspectSpecializationAxiom, Map<String, String>>(oml, kv);
-      this.aspectSpecializationAxioms.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final AspectSpecializationAxiom oml = this.omlTerminologiesFactory.createAspectSpecializationAxiom();
+        final String uuid = kv.remove("uuid");
+        final Pair<AspectSpecializationAxiom, Map<String, String>> pair = new Pair<AspectSpecializationAxiom, Map<String, String>>(oml, kv);
+        this.aspectSpecializationAxioms.put(uuid, pair);
+      }
+    }
   }
   
   protected void readConceptSpecializationAxioms(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final ConceptSpecializationAxiom oml = this.omlTerminologiesFactory.createConceptSpecializationAxiom();
-      final String uuid = kv.remove("uuid");
-      final Pair<ConceptSpecializationAxiom, Map<String, String>> pair = new Pair<ConceptSpecializationAxiom, Map<String, String>>(oml, kv);
-      this.conceptSpecializationAxioms.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final ConceptSpecializationAxiom oml = this.omlTerminologiesFactory.createConceptSpecializationAxiom();
+        final String uuid = kv.remove("uuid");
+        final Pair<ConceptSpecializationAxiom, Map<String, String>> pair = new Pair<ConceptSpecializationAxiom, Map<String, String>>(oml, kv);
+        this.conceptSpecializationAxioms.put(uuid, pair);
+      }
+    }
   }
   
   protected void readReifiedRelationshipSpecializationAxioms(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final ReifiedRelationshipSpecializationAxiom oml = this.omlTerminologiesFactory.createReifiedRelationshipSpecializationAxiom();
-      final String uuid = kv.remove("uuid");
-      final Pair<ReifiedRelationshipSpecializationAxiom, Map<String, String>> pair = new Pair<ReifiedRelationshipSpecializationAxiom, Map<String, String>>(oml, kv);
-      this.reifiedRelationshipSpecializationAxioms.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final ReifiedRelationshipSpecializationAxiom oml = this.omlTerminologiesFactory.createReifiedRelationshipSpecializationAxiom();
+        final String uuid = kv.remove("uuid");
+        final Pair<ReifiedRelationshipSpecializationAxiom, Map<String, String>> pair = new Pair<ReifiedRelationshipSpecializationAxiom, Map<String, String>>(oml, kv);
+        this.reifiedRelationshipSpecializationAxioms.put(uuid, pair);
+      }
+    }
   }
   
   protected void readSubDataPropertyOfAxioms(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final SubDataPropertyOfAxiom oml = this.omlTerminologiesFactory.createSubDataPropertyOfAxiom();
-      final String uuid = kv.remove("uuid");
-      final Pair<SubDataPropertyOfAxiom, Map<String, String>> pair = new Pair<SubDataPropertyOfAxiom, Map<String, String>>(oml, kv);
-      this.subDataPropertyOfAxioms.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final SubDataPropertyOfAxiom oml = this.omlTerminologiesFactory.createSubDataPropertyOfAxiom();
+        final String uuid = kv.remove("uuid");
+        final Pair<SubDataPropertyOfAxiom, Map<String, String>> pair = new Pair<SubDataPropertyOfAxiom, Map<String, String>>(oml, kv);
+        this.subDataPropertyOfAxioms.put(uuid, pair);
+      }
+    }
   }
   
   protected void readSubObjectPropertyOfAxioms(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final SubObjectPropertyOfAxiom oml = this.omlTerminologiesFactory.createSubObjectPropertyOfAxiom();
-      final String uuid = kv.remove("uuid");
-      final Pair<SubObjectPropertyOfAxiom, Map<String, String>> pair = new Pair<SubObjectPropertyOfAxiom, Map<String, String>>(oml, kv);
-      this.subObjectPropertyOfAxioms.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final SubObjectPropertyOfAxiom oml = this.omlTerminologiesFactory.createSubObjectPropertyOfAxiom();
+        final String uuid = kv.remove("uuid");
+        final Pair<SubObjectPropertyOfAxiom, Map<String, String>> pair = new Pair<SubObjectPropertyOfAxiom, Map<String, String>>(oml, kv);
+        this.subObjectPropertyOfAxioms.put(uuid, pair);
+      }
+    }
   }
   
   protected void readRootConceptTaxonomyAxioms(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final RootConceptTaxonomyAxiom oml = this.omlBundlesFactory.createRootConceptTaxonomyAxiom();
-      final String uuid = kv.remove("uuid");
-      final Pair<RootConceptTaxonomyAxiom, Map<String, String>> pair = new Pair<RootConceptTaxonomyAxiom, Map<String, String>>(oml, kv);
-      this.rootConceptTaxonomyAxioms.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final RootConceptTaxonomyAxiom oml = this.omlBundlesFactory.createRootConceptTaxonomyAxiom();
+        final String uuid = kv.remove("uuid");
+        final Pair<RootConceptTaxonomyAxiom, Map<String, String>> pair = new Pair<RootConceptTaxonomyAxiom, Map<String, String>>(oml, kv);
+        this.rootConceptTaxonomyAxioms.put(uuid, pair);
+      }
+    }
   }
   
   protected void readAnonymousConceptUnionAxioms(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final AnonymousConceptUnionAxiom oml = this.omlBundlesFactory.createAnonymousConceptUnionAxiom();
-      final String uuid = kv.remove("uuid");
-      oml.setName(OMLTables.toLocalName(kv.remove("name")));
-      final Pair<AnonymousConceptUnionAxiom, Map<String, String>> pair = new Pair<AnonymousConceptUnionAxiom, Map<String, String>>(oml, kv);
-      this.anonymousConceptUnionAxioms.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final AnonymousConceptUnionAxiom oml = this.omlBundlesFactory.createAnonymousConceptUnionAxiom();
+        final String uuid = kv.remove("uuid");
+        oml.setName(OMLTables.toLocalName(kv.remove("name")));
+        final Pair<AnonymousConceptUnionAxiom, Map<String, String>> pair = new Pair<AnonymousConceptUnionAxiom, Map<String, String>>(oml, kv);
+        this.anonymousConceptUnionAxioms.put(uuid, pair);
+      }
+    }
   }
   
   protected void readSpecificDisjointConceptAxioms(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final SpecificDisjointConceptAxiom oml = this.omlBundlesFactory.createSpecificDisjointConceptAxiom();
-      final String uuid = kv.remove("uuid");
-      final Pair<SpecificDisjointConceptAxiom, Map<String, String>> pair = new Pair<SpecificDisjointConceptAxiom, Map<String, String>>(oml, kv);
-      this.specificDisjointConceptAxioms.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final SpecificDisjointConceptAxiom oml = this.omlBundlesFactory.createSpecificDisjointConceptAxiom();
+        final String uuid = kv.remove("uuid");
+        final Pair<SpecificDisjointConceptAxiom, Map<String, String>> pair = new Pair<SpecificDisjointConceptAxiom, Map<String, String>>(oml, kv);
+        this.specificDisjointConceptAxioms.put(uuid, pair);
+      }
+    }
   }
   
   protected void readConceptInstances(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final ConceptInstance oml = this.omlDescriptionsFactory.createConceptInstance();
-      final String uuid = kv.remove("uuid");
-      oml.setName(OMLTables.toLocalName(kv.remove("name")));
-      final Pair<ConceptInstance, Map<String, String>> pair = new Pair<ConceptInstance, Map<String, String>>(oml, kv);
-      this.conceptInstances.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final ConceptInstance oml = this.omlDescriptionsFactory.createConceptInstance();
+        final String uuid = kv.remove("uuid");
+        oml.setName(OMLTables.toLocalName(kv.remove("name")));
+        final Pair<ConceptInstance, Map<String, String>> pair = new Pair<ConceptInstance, Map<String, String>>(oml, kv);
+        this.conceptInstances.put(uuid, pair);
+      }
+    }
   }
   
   protected void readReifiedRelationshipInstances(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final ReifiedRelationshipInstance oml = this.omlDescriptionsFactory.createReifiedRelationshipInstance();
-      final String uuid = kv.remove("uuid");
-      oml.setName(OMLTables.toLocalName(kv.remove("name")));
-      final Pair<ReifiedRelationshipInstance, Map<String, String>> pair = new Pair<ReifiedRelationshipInstance, Map<String, String>>(oml, kv);
-      this.reifiedRelationshipInstances.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final ReifiedRelationshipInstance oml = this.omlDescriptionsFactory.createReifiedRelationshipInstance();
+        final String uuid = kv.remove("uuid");
+        oml.setName(OMLTables.toLocalName(kv.remove("name")));
+        final Pair<ReifiedRelationshipInstance, Map<String, String>> pair = new Pair<ReifiedRelationshipInstance, Map<String, String>>(oml, kv);
+        this.reifiedRelationshipInstances.put(uuid, pair);
+      }
+    }
   }
   
   protected void readReifiedRelationshipInstanceDomains(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final ReifiedRelationshipInstanceDomain oml = this.omlDescriptionsFactory.createReifiedRelationshipInstanceDomain();
-      final String uuid = kv.remove("uuid");
-      final Pair<ReifiedRelationshipInstanceDomain, Map<String, String>> pair = new Pair<ReifiedRelationshipInstanceDomain, Map<String, String>>(oml, kv);
-      this.reifiedRelationshipInstanceDomains.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final ReifiedRelationshipInstanceDomain oml = this.omlDescriptionsFactory.createReifiedRelationshipInstanceDomain();
+        final String uuid = kv.remove("uuid");
+        final Pair<ReifiedRelationshipInstanceDomain, Map<String, String>> pair = new Pair<ReifiedRelationshipInstanceDomain, Map<String, String>>(oml, kv);
+        this.reifiedRelationshipInstanceDomains.put(uuid, pair);
+      }
+    }
   }
   
   protected void readReifiedRelationshipInstanceRanges(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final ReifiedRelationshipInstanceRange oml = this.omlDescriptionsFactory.createReifiedRelationshipInstanceRange();
-      final String uuid = kv.remove("uuid");
-      final Pair<ReifiedRelationshipInstanceRange, Map<String, String>> pair = new Pair<ReifiedRelationshipInstanceRange, Map<String, String>>(oml, kv);
-      this.reifiedRelationshipInstanceRanges.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final ReifiedRelationshipInstanceRange oml = this.omlDescriptionsFactory.createReifiedRelationshipInstanceRange();
+        final String uuid = kv.remove("uuid");
+        final Pair<ReifiedRelationshipInstanceRange, Map<String, String>> pair = new Pair<ReifiedRelationshipInstanceRange, Map<String, String>>(oml, kv);
+        this.reifiedRelationshipInstanceRanges.put(uuid, pair);
+      }
+    }
   }
   
   protected void readUnreifiedRelationshipInstanceTuples(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final UnreifiedRelationshipInstanceTuple oml = this.omlDescriptionsFactory.createUnreifiedRelationshipInstanceTuple();
-      final String uuid = kv.remove("uuid");
-      final Pair<UnreifiedRelationshipInstanceTuple, Map<String, String>> pair = new Pair<UnreifiedRelationshipInstanceTuple, Map<String, String>>(oml, kv);
-      this.unreifiedRelationshipInstanceTuples.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final UnreifiedRelationshipInstanceTuple oml = this.omlDescriptionsFactory.createUnreifiedRelationshipInstanceTuple();
+        final String uuid = kv.remove("uuid");
+        final Pair<UnreifiedRelationshipInstanceTuple, Map<String, String>> pair = new Pair<UnreifiedRelationshipInstanceTuple, Map<String, String>>(oml, kv);
+        this.unreifiedRelationshipInstanceTuples.put(uuid, pair);
+      }
+    }
   }
   
   protected void readSingletonInstanceStructuredDataPropertyValues(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final SingletonInstanceStructuredDataPropertyValue oml = this.omlDescriptionsFactory.createSingletonInstanceStructuredDataPropertyValue();
-      final String uuid = kv.remove("uuid");
-      final Pair<SingletonInstanceStructuredDataPropertyValue, Map<String, String>> pair = new Pair<SingletonInstanceStructuredDataPropertyValue, Map<String, String>>(oml, kv);
-      this.singletonInstanceStructuredDataPropertyValues.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final SingletonInstanceStructuredDataPropertyValue oml = this.omlDescriptionsFactory.createSingletonInstanceStructuredDataPropertyValue();
+        final String uuid = kv.remove("uuid");
+        final Pair<SingletonInstanceStructuredDataPropertyValue, Map<String, String>> pair = new Pair<SingletonInstanceStructuredDataPropertyValue, Map<String, String>>(oml, kv);
+        this.singletonInstanceStructuredDataPropertyValues.put(uuid, pair);
+      }
+    }
   }
   
   protected void readSingletonInstanceScalarDataPropertyValues(final ArrayList<String> lines) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("readSingletonInstanceScalarDataPropertyValues: ");
-    int _length = ((Object[])Conversions.unwrapArray(lines, Object.class)).length;
-    _builder.append(_length);
-    _builder.append(" lines!");
-    System.out.println(_builder);
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines, 1000);
-    StringConcatenation _builder_1 = new StringConcatenation();
-    _builder_1.append("readSingletonInstanceScalarDataPropertyValues: ");
-    int _length_1 = ((Object[])Conversions.unwrapArray(kvs, Object.class)).length;
-    _builder_1.append(_length_1);
-    _builder_1.append(" entries!");
-    System.out.println(_builder_1);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final SingletonInstanceScalarDataPropertyValue oml = this.omlDescriptionsFactory.createSingletonInstanceScalarDataPropertyValue();
-      final String uuid = kv.remove("uuid");
-      oml.setScalarPropertyValue(OMLTables.toLiteralValue(kv.remove("scalarPropertyValue")));
-      final Pair<SingletonInstanceScalarDataPropertyValue, Map<String, String>> pair = new Pair<SingletonInstanceScalarDataPropertyValue, Map<String, String>>(oml, kv);
-      this.singletonInstanceScalarDataPropertyValues.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final SingletonInstanceScalarDataPropertyValue oml = this.omlDescriptionsFactory.createSingletonInstanceScalarDataPropertyValue();
+        final String uuid = kv.remove("uuid");
+        oml.setScalarPropertyValue(OMLTables.toLiteralValue(kv.remove("scalarPropertyValue")));
+        final Pair<SingletonInstanceScalarDataPropertyValue, Map<String, String>> pair = new Pair<SingletonInstanceScalarDataPropertyValue, Map<String, String>>(oml, kv);
+        this.singletonInstanceScalarDataPropertyValues.put(uuid, pair);
+      }
+    }
   }
   
   protected void readStructuredDataPropertyTuples(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final StructuredDataPropertyTuple oml = this.omlDescriptionsFactory.createStructuredDataPropertyTuple();
-      final String uuid = kv.remove("uuid");
-      final Pair<StructuredDataPropertyTuple, Map<String, String>> pair = new Pair<StructuredDataPropertyTuple, Map<String, String>>(oml, kv);
-      this.structuredDataPropertyTuples.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final StructuredDataPropertyTuple oml = this.omlDescriptionsFactory.createStructuredDataPropertyTuple();
+        final String uuid = kv.remove("uuid");
+        final Pair<StructuredDataPropertyTuple, Map<String, String>> pair = new Pair<StructuredDataPropertyTuple, Map<String, String>>(oml, kv);
+        this.structuredDataPropertyTuples.put(uuid, pair);
+      }
+    }
   }
   
   protected void readScalarDataPropertyValues(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final ScalarDataPropertyValue oml = this.omlDescriptionsFactory.createScalarDataPropertyValue();
-      final String uuid = kv.remove("uuid");
-      oml.setScalarPropertyValue(OMLTables.toLiteralValue(kv.remove("scalarPropertyValue")));
-      final Pair<ScalarDataPropertyValue, Map<String, String>> pair = new Pair<ScalarDataPropertyValue, Map<String, String>>(oml, kv);
-      this.scalarDataPropertyValues.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final ScalarDataPropertyValue oml = this.omlDescriptionsFactory.createScalarDataPropertyValue();
+        final String uuid = kv.remove("uuid");
+        oml.setScalarPropertyValue(OMLTables.toLiteralValue(kv.remove("scalarPropertyValue")));
+        final Pair<ScalarDataPropertyValue, Map<String, String>> pair = new Pair<ScalarDataPropertyValue, Map<String, String>>(oml, kv);
+        this.scalarDataPropertyValues.put(uuid, pair);
+      }
+    }
   }
   
   protected void readAnnotationPropertyValues(final ArrayList<String> lines) {
-    final List<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
-    final Consumer<Map<String, String>> _function = (Map<String, String> kv) -> {
-      final AnnotationPropertyValue oml = this.omlCommonFactory.createAnnotationPropertyValue();
-      final String uuid = kv.remove("uuid");
-      oml.setValue(OMLTables.toLiteralString(kv.remove("value")));
-      final Pair<AnnotationPropertyValue, Map<String, String>> pair = new Pair<AnnotationPropertyValue, Map<String, String>>(oml, kv);
-      this.annotationPropertyValues.put(uuid, pair);
-    };
-    kvs.forEach(_function);
+    final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
+    while ((!kvs.isEmpty())) {
+      {
+        int _size = kvs.size();
+        int _minus = (_size - 1);
+        final Map<String, String> kv = kvs.remove(_minus);
+        final AnnotationPropertyValue oml = this.omlCommonFactory.createAnnotationPropertyValue();
+        final String uuid = kv.remove("uuid");
+        oml.setValue(OMLTables.toLiteralString(kv.remove("value")));
+        final Pair<AnnotationPropertyValue, Map<String, String>> pair = new Pair<AnnotationPropertyValue, Map<String, String>>(oml, kv);
+        this.annotationPropertyValues.put(uuid, pair);
+      }
+    }
   }
   
   protected <U extends Object, V extends U> void includeMap(final Map<String, Pair<U, Map<String, String>>> uMap, final Map<String, Pair<V, Map<String, String>>> vMap) {
@@ -3997,6 +4223,24 @@ public class OMLSpecificationTables {
       uMap.put(uuid, _pair);
     };
     vMap.forEach(_function);
+  }
+  
+  protected void createAndResolve(final ResourceSet rs, final OMLZipResource r) {
+    final Extent ext = this.omlCommonFactory.createExtent();
+    final Function1<Pair<TerminologyGraph, Map<String, String>>, TerminologyGraph> _function = (Pair<TerminologyGraph, Map<String, String>> it) -> {
+      return it.getKey();
+    };
+    Iterables.<Module>addAll(ext.getModules(), IterableExtensions.<Pair<TerminologyGraph, Map<String, String>>, TerminologyGraph>map(this.terminologyGraphs.values(), _function));
+    final Function1<Pair<Bundle, Map<String, String>>, Bundle> _function_1 = (Pair<Bundle, Map<String, String>> it) -> {
+      return it.getKey();
+    };
+    Iterables.<Module>addAll(ext.getModules(), IterableExtensions.<Pair<Bundle, Map<String, String>>, Bundle>map(this.bundles.values(), _function_1));
+    final Function1<Pair<DescriptionBox, Map<String, String>>, DescriptionBox> _function_2 = (Pair<DescriptionBox, Map<String, String>> it) -> {
+      return it.getKey();
+    };
+    Iterables.<Module>addAll(ext.getModules(), IterableExtensions.<Pair<DescriptionBox, Map<String, String>>, DescriptionBox>map(this.descriptionBoxes.values(), _function_2));
+    r.getContents().add(ext);
+    this.resolve(rs, r);
   }
   
   protected void resolve(final ResourceSet rs, final OMLZipResource r) {
@@ -4143,20 +4387,6 @@ public class OMLSpecificationTables {
     this.resolveStructuredDataPropertyTuples(rs);
     this.resolveScalarDataPropertyValues(rs);
     this.resolveAnnotationPropertyValues(rs);
-    final Extent ext = this.omlCommonFactory.createExtent();
-    final Function1<Pair<TerminologyGraph, Map<String, String>>, TerminologyGraph> _function = (Pair<TerminologyGraph, Map<String, String>> it) -> {
-      return it.getKey();
-    };
-    Iterables.<Module>addAll(ext.getModules(), IterableExtensions.<Pair<TerminologyGraph, Map<String, String>>, TerminologyGraph>map(this.terminologyGraphs.values(), _function));
-    final Function1<Pair<Bundle, Map<String, String>>, Bundle> _function_1 = (Pair<Bundle, Map<String, String>> it) -> {
-      return it.getKey();
-    };
-    Iterables.<Module>addAll(ext.getModules(), IterableExtensions.<Pair<Bundle, Map<String, String>>, Bundle>map(this.bundles.values(), _function_1));
-    final Function1<Pair<DescriptionBox, Map<String, String>>, DescriptionBox> _function_2 = (Pair<DescriptionBox, Map<String, String>> it) -> {
-      return it.getKey();
-    };
-    Iterables.<Module>addAll(ext.getModules(), IterableExtensions.<Pair<DescriptionBox, Map<String, String>>, DescriptionBox>map(this.descriptionBoxes.values(), _function_2));
-    r.getContents().add(ext);
   }
   
   protected void resolveAnnotationProperties(final ResourceSet rs) {
@@ -5503,11 +5733,10 @@ public class OMLSpecificationTables {
         oml.setDescriptionBox(descriptionBoxPair.getKey());
         final String singletonReifiedRelationshipClassifierXRef = kv.remove("singletonReifiedRelationshipClassifierUUID");
         final Pair<ReifiedRelationship, Map<String, String>> singletonReifiedRelationshipClassifierPair = this.reifiedRelationships.get(singletonReifiedRelationshipClassifierXRef);
-        if ((null != singletonReifiedRelationshipClassifierPair)) {
-          oml.setSingletonReifiedRelationshipClassifier(singletonReifiedRelationshipClassifierPair.getKey());
-        } else {
+        if ((null == singletonReifiedRelationshipClassifierPair)) {
           throw new IllegalArgumentException("Null cross-reference lookup for singletonReifiedRelationshipClassifier in reifiedRelationshipInstances");
         }
+        oml.setSingletonReifiedRelationshipClassifier(singletonReifiedRelationshipClassifierPair.getKey());
       }
     };
     this.reifiedRelationshipInstances.forEach(_function);
@@ -5761,767 +5990,818 @@ public class OMLSpecificationTables {
   
   protected Resource loadOMLZipResource(final ResourceSet rs, final URI uri) {
     try {
-      final OMLCatalog omlCatalog = OMLExtensions.getCatalog(rs);
-      if ((null == omlCatalog)) {
-        throw new IllegalArgumentException("loadOMLZipResource: ResourceSet must have an OMLCatalog!");
+      Resource _xblockexpression = null;
+      {
+        final OMLCatalog omlCatalog = OMLExtensions.getCatalog(rs);
+        if ((null == omlCatalog)) {
+          throw new IllegalArgumentException("loadOMLZipResource: ResourceSet must have an OMLCatalog!");
+        }
+        final String uriString = uri.toString();
+        Resource _xifexpression = null;
+        boolean _startsWith = uriString.startsWith("file:");
+        if (_startsWith) {
+          _xifexpression = rs.getResource(uri, true);
+        } else {
+          Resource _xifexpression_1 = null;
+          boolean _startsWith_1 = uriString.startsWith("http:");
+          if (_startsWith_1) {
+            Resource _xblockexpression_1 = null;
+            {
+              final String omlIRI = omlCatalog.resolveURI((uriString + ".oml"));
+              final String omlZipIRI = omlCatalog.resolveURI((uriString + ".omlzip"));
+              File _xifexpression_2 = null;
+              if (((null != omlIRI) && omlIRI.startsWith("file:"))) {
+                String _substring = omlIRI.substring(5);
+                _xifexpression_2 = new File(_substring);
+              } else {
+                _xifexpression_2 = null;
+              }
+              final File omlFile = _xifexpression_2;
+              File _xifexpression_3 = null;
+              if (((null != omlZipIRI) && omlZipIRI.startsWith("file:"))) {
+                String _substring_1 = omlZipIRI.substring(5);
+                _xifexpression_3 = new File(_substring_1);
+              } else {
+                _xifexpression_3 = null;
+              }
+              final File omlZipFile = _xifexpression_3;
+              Resource _xifexpression_4 = null;
+              if ((((null != omlFile) && omlFile.exists()) && omlFile.canRead())) {
+                _xifexpression_4 = rs.getResource(URI.createURI(omlIRI), true);
+              } else {
+                Resource _xifexpression_5 = null;
+                if ((((null != omlZipFile) && omlZipFile.exists()) && omlZipFile.canRead())) {
+                  _xifexpression_5 = rs.getResource(URI.createURI(omlZipIRI), true);
+                } else {
+                  throw new IllegalArgumentException((("loadOMLZipResource: " + uri) + " not resolved!"));
+                }
+                _xifexpression_4 = _xifexpression_5;
+              }
+              _xblockexpression_1 = _xifexpression_4;
+            }
+            _xifexpression_1 = _xblockexpression_1;
+          }
+          _xifexpression = _xifexpression_1;
+        }
+        final Resource r = _xifexpression;
+        EcoreUtil.resolveAll(r);
+        final Consumer<EObject> _function = (EObject e) -> {
+          boolean _matched = false;
+          if (e instanceof Extent) {
+            _matched=true;
+            final Consumer<Module> _function_1 = (Module it) -> {
+              this.includeModule(it);
+            };
+            ((Extent)e).getModules().forEach(_function_1);
+          }
+        };
+        r.getContents().forEach(_function);
+        _xblockexpression = r;
       }
-      String _elvis = null;
-      String _string = uri.toString();
-      String _plus = (_string + ".oml");
-      String _resolveURI = omlCatalog.resolveURI(_plus);
-      if (_resolveURI != null) {
-        _elvis = _resolveURI;
-      } else {
-        String _string_1 = uri.toString();
-        String _plus_1 = (_string_1 + ".omlzip");
-        String _resolveURI_1 = omlCatalog.resolveURI(_plus_1);
-        _elvis = _resolveURI_1;
-      }
-      final String resolvedIRI = _elvis;
-      if ((null == resolvedIRI)) {
-        StringConcatenation _builder = new StringConcatenation();
-        _builder.append("loadOMLZipResource: ");
-        _builder.append(uri);
-        _builder.append(" not resolved!");
-        throw new IllegalArgumentException(_builder.toString());
-      }
-      final Resource r = rs.getResource(URI.createURI(resolvedIRI), true);
-      final Procedure1<EObject> _function = (EObject e) -> {
-        boolean _matched = false;
-        if (e instanceof TerminologyGraph) {
-          _matched=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<TerminologyGraph, Map<String, String>> pair = new Pair<TerminologyGraph, Map<String, String>>(((TerminologyGraph)e), _emptyMap);
-          this.terminologyGraphs.put(((TerminologyGraph)e).uuid(), pair);
-          String _uuid = ((TerminologyGraph)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-          this.terminologyGraphs.put(((TerminologyGraph)e).iri(), pair);
-          String _uuid_1 = ((TerminologyGraph)e).uuid();
-          Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
-          Pair<TerminologyBox, Map<String, String>> _pair_1 = new Pair<TerminologyBox, Map<String, String>>(((TerminologyBox)e), _emptyMap_2);
-          this.terminologyBoxes.put(_uuid_1, _pair_1);
-          String _iri = ((TerminologyGraph)e).iri();
-          Map<String, String> _emptyMap_3 = Collections.<String, String>emptyMap();
-          Pair<TerminologyBox, Map<String, String>> _pair_2 = new Pair<TerminologyBox, Map<String, String>>(((TerminologyBox)e), _emptyMap_3);
-          this.terminologyBoxes.put(_iri, _pair_2);
-        }
-        if (!_matched) {
-          if (e instanceof Bundle) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<Bundle, Map<String, String>> pair = new Pair<Bundle, Map<String, String>>(((Bundle)e), _emptyMap);
-            this.bundles.put(((Bundle)e).uuid(), pair);
-            String _uuid = ((Bundle)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-            this.bundles.put(((Bundle)e).iri(), pair);
-            String _uuid_1 = ((Bundle)e).uuid();
-            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
-            Pair<TerminologyBox, Map<String, String>> _pair_1 = new Pair<TerminologyBox, Map<String, String>>(((TerminologyBox)e), _emptyMap_2);
-            this.terminologyBoxes.put(_uuid_1, _pair_1);
-            String _iri = ((Bundle)e).iri();
-            Map<String, String> _emptyMap_3 = Collections.<String, String>emptyMap();
-            Pair<TerminologyBox, Map<String, String>> _pair_2 = new Pair<TerminologyBox, Map<String, String>>(((TerminologyBox)e), _emptyMap_3);
-            this.terminologyBoxes.put(_iri, _pair_2);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof DescriptionBox) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<DescriptionBox, Map<String, String>> pair = new Pair<DescriptionBox, Map<String, String>>(((DescriptionBox)e), _emptyMap);
-            this.descriptionBoxes.put(((DescriptionBox)e).uuid(), pair);
-            String _uuid = ((DescriptionBox)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-            this.descriptionBoxes.put(((DescriptionBox)e).iri(), pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof AnnotationProperty) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<AnnotationProperty, Map<String, String>> pair = new Pair<AnnotationProperty, Map<String, String>>(((AnnotationProperty)e), _emptyMap);
-            this.annotationProperties.put(((AnnotationProperty)e).uuid(), pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof Aspect) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<Aspect, Map<String, String>> pair = new Pair<Aspect, Map<String, String>>(((Aspect)e), _emptyMap);
-            this.aspects.put(((Aspect)e).uuid(), pair);
-            String _uuid = ((Aspect)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof Concept) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<Concept, Map<String, String>> pair = new Pair<Concept, Map<String, String>>(((Concept)e), _emptyMap);
-            this.concepts.put(((Concept)e).uuid(), pair);
-            String _uuid = ((Concept)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof Scalar) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<Scalar, Map<String, String>> pair = new Pair<Scalar, Map<String, String>>(((Scalar)e), _emptyMap);
-            this.scalars.put(((Scalar)e).uuid(), pair);
-            String _uuid = ((Scalar)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof Structure) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<Structure, Map<String, String>> pair = new Pair<Structure, Map<String, String>>(((Structure)e), _emptyMap);
-            this.structures.put(((Structure)e).uuid(), pair);
-            String _uuid = ((Structure)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof ConceptDesignationTerminologyAxiom) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<ConceptDesignationTerminologyAxiom, Map<String, String>> pair = new Pair<ConceptDesignationTerminologyAxiom, Map<String, String>>(((ConceptDesignationTerminologyAxiom)e), _emptyMap);
-            this.conceptDesignationTerminologyAxioms.put(((ConceptDesignationTerminologyAxiom)e).uuid(), pair);
-            String _uuid = ((ConceptDesignationTerminologyAxiom)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof TerminologyExtensionAxiom) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<TerminologyExtensionAxiom, Map<String, String>> pair = new Pair<TerminologyExtensionAxiom, Map<String, String>>(((TerminologyExtensionAxiom)e), _emptyMap);
-            this.terminologyExtensionAxioms.put(((TerminologyExtensionAxiom)e).uuid(), pair);
-            String _uuid = ((TerminologyExtensionAxiom)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof TerminologyNestingAxiom) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<TerminologyNestingAxiom, Map<String, String>> pair = new Pair<TerminologyNestingAxiom, Map<String, String>>(((TerminologyNestingAxiom)e), _emptyMap);
-            this.terminologyNestingAxioms.put(((TerminologyNestingAxiom)e).uuid(), pair);
-            String _uuid = ((TerminologyNestingAxiom)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof BundledTerminologyAxiom) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<BundledTerminologyAxiom, Map<String, String>> pair = new Pair<BundledTerminologyAxiom, Map<String, String>>(((BundledTerminologyAxiom)e), _emptyMap);
-            this.bundledTerminologyAxioms.put(((BundledTerminologyAxiom)e).uuid(), pair);
-            String _uuid = ((BundledTerminologyAxiom)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof DescriptionBoxExtendsClosedWorldDefinitions) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<DescriptionBoxExtendsClosedWorldDefinitions, Map<String, String>> pair = new Pair<DescriptionBoxExtendsClosedWorldDefinitions, Map<String, String>>(((DescriptionBoxExtendsClosedWorldDefinitions)e), _emptyMap);
-            this.descriptionBoxExtendsClosedWorldDefinitions.put(((DescriptionBoxExtendsClosedWorldDefinitions)e).uuid(), pair);
-            String _uuid = ((DescriptionBoxExtendsClosedWorldDefinitions)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof DescriptionBoxRefinement) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<DescriptionBoxRefinement, Map<String, String>> pair = new Pair<DescriptionBoxRefinement, Map<String, String>>(((DescriptionBoxRefinement)e), _emptyMap);
-            this.descriptionBoxRefinements.put(((DescriptionBoxRefinement)e).uuid(), pair);
-            String _uuid = ((DescriptionBoxRefinement)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof BinaryScalarRestriction) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<BinaryScalarRestriction, Map<String, String>> pair = new Pair<BinaryScalarRestriction, Map<String, String>>(((BinaryScalarRestriction)e), _emptyMap);
-            this.binaryScalarRestrictions.put(((BinaryScalarRestriction)e).uuid(), pair);
-            String _uuid = ((BinaryScalarRestriction)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof IRIScalarRestriction) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<IRIScalarRestriction, Map<String, String>> pair = new Pair<IRIScalarRestriction, Map<String, String>>(((IRIScalarRestriction)e), _emptyMap);
-            this.iriScalarRestrictions.put(((IRIScalarRestriction)e).uuid(), pair);
-            String _uuid = ((IRIScalarRestriction)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof NumericScalarRestriction) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<NumericScalarRestriction, Map<String, String>> pair = new Pair<NumericScalarRestriction, Map<String, String>>(((NumericScalarRestriction)e), _emptyMap);
-            this.numericScalarRestrictions.put(((NumericScalarRestriction)e).uuid(), pair);
-            String _uuid = ((NumericScalarRestriction)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof PlainLiteralScalarRestriction) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<PlainLiteralScalarRestriction, Map<String, String>> pair = new Pair<PlainLiteralScalarRestriction, Map<String, String>>(((PlainLiteralScalarRestriction)e), _emptyMap);
-            this.plainLiteralScalarRestrictions.put(((PlainLiteralScalarRestriction)e).uuid(), pair);
-            String _uuid = ((PlainLiteralScalarRestriction)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof ScalarOneOfRestriction) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<ScalarOneOfRestriction, Map<String, String>> pair = new Pair<ScalarOneOfRestriction, Map<String, String>>(((ScalarOneOfRestriction)e), _emptyMap);
-            this.scalarOneOfRestrictions.put(((ScalarOneOfRestriction)e).uuid(), pair);
-            String _uuid = ((ScalarOneOfRestriction)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof ScalarOneOfLiteralAxiom) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<ScalarOneOfLiteralAxiom, Map<String, String>> pair = new Pair<ScalarOneOfLiteralAxiom, Map<String, String>>(((ScalarOneOfLiteralAxiom)e), _emptyMap);
-            this.scalarOneOfLiteralAxioms.put(((ScalarOneOfLiteralAxiom)e).uuid(), pair);
-            String _uuid = ((ScalarOneOfLiteralAxiom)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof StringScalarRestriction) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<StringScalarRestriction, Map<String, String>> pair = new Pair<StringScalarRestriction, Map<String, String>>(((StringScalarRestriction)e), _emptyMap);
-            this.stringScalarRestrictions.put(((StringScalarRestriction)e).uuid(), pair);
-            String _uuid = ((StringScalarRestriction)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof SynonymScalarRestriction) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<SynonymScalarRestriction, Map<String, String>> pair = new Pair<SynonymScalarRestriction, Map<String, String>>(((SynonymScalarRestriction)e), _emptyMap);
-            this.synonymScalarRestrictions.put(((SynonymScalarRestriction)e).uuid(), pair);
-            String _uuid = ((SynonymScalarRestriction)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof TimeScalarRestriction) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<TimeScalarRestriction, Map<String, String>> pair = new Pair<TimeScalarRestriction, Map<String, String>>(((TimeScalarRestriction)e), _emptyMap);
-            this.timeScalarRestrictions.put(((TimeScalarRestriction)e).uuid(), pair);
-            String _uuid = ((TimeScalarRestriction)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof EntityScalarDataProperty) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<EntityScalarDataProperty, Map<String, String>> pair = new Pair<EntityScalarDataProperty, Map<String, String>>(((EntityScalarDataProperty)e), _emptyMap);
-            this.entityScalarDataProperties.put(((EntityScalarDataProperty)e).uuid(), pair);
-            String _uuid = ((EntityScalarDataProperty)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof EntityStructuredDataProperty) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<EntityStructuredDataProperty, Map<String, String>> pair = new Pair<EntityStructuredDataProperty, Map<String, String>>(((EntityStructuredDataProperty)e), _emptyMap);
-            this.entityStructuredDataProperties.put(((EntityStructuredDataProperty)e).uuid(), pair);
-            String _uuid = ((EntityStructuredDataProperty)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof ScalarDataProperty) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<ScalarDataProperty, Map<String, String>> pair = new Pair<ScalarDataProperty, Map<String, String>>(((ScalarDataProperty)e), _emptyMap);
-            this.scalarDataProperties.put(((ScalarDataProperty)e).uuid(), pair);
-            String _uuid = ((ScalarDataProperty)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof StructuredDataProperty) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<StructuredDataProperty, Map<String, String>> pair = new Pair<StructuredDataProperty, Map<String, String>>(((StructuredDataProperty)e), _emptyMap);
-            this.structuredDataProperties.put(((StructuredDataProperty)e).uuid(), pair);
-            String _uuid = ((StructuredDataProperty)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof ReifiedRelationship) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<ReifiedRelationship, Map<String, String>> pair = new Pair<ReifiedRelationship, Map<String, String>>(((ReifiedRelationship)e), _emptyMap);
-            this.reifiedRelationships.put(((ReifiedRelationship)e).uuid(), pair);
-            String _uuid = ((ReifiedRelationship)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof ForwardProperty) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<ForwardProperty, Map<String, String>> pair = new Pair<ForwardProperty, Map<String, String>>(((ForwardProperty)e), _emptyMap);
-            this.forwardProperties.put(((ForwardProperty)e).uuid(), pair);
-            String _uuid = ((ForwardProperty)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof InverseProperty) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<InverseProperty, Map<String, String>> pair = new Pair<InverseProperty, Map<String, String>>(((InverseProperty)e), _emptyMap);
-            this.inverseProperties.put(((InverseProperty)e).uuid(), pair);
-            String _uuid = ((InverseProperty)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof UnreifiedRelationship) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<UnreifiedRelationship, Map<String, String>> pair = new Pair<UnreifiedRelationship, Map<String, String>>(((UnreifiedRelationship)e), _emptyMap);
-            this.unreifiedRelationships.put(((UnreifiedRelationship)e).uuid(), pair);
-            String _uuid = ((UnreifiedRelationship)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof ChainRule) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<ChainRule, Map<String, String>> pair = new Pair<ChainRule, Map<String, String>>(((ChainRule)e), _emptyMap);
-            this.chainRules.put(((ChainRule)e).uuid(), pair);
-            String _uuid = ((ChainRule)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof RuleBodySegment) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<RuleBodySegment, Map<String, String>> pair = new Pair<RuleBodySegment, Map<String, String>>(((RuleBodySegment)e), _emptyMap);
-            this.ruleBodySegments.put(((RuleBodySegment)e).uuid(), pair);
-            String _uuid = ((RuleBodySegment)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof SegmentPredicate) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<SegmentPredicate, Map<String, String>> pair = new Pair<SegmentPredicate, Map<String, String>>(((SegmentPredicate)e), _emptyMap);
-            this.segmentPredicates.put(((SegmentPredicate)e).uuid(), pair);
-            String _uuid = ((SegmentPredicate)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof EntityExistentialRestrictionAxiom) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<EntityExistentialRestrictionAxiom, Map<String, String>> pair = new Pair<EntityExistentialRestrictionAxiom, Map<String, String>>(((EntityExistentialRestrictionAxiom)e), _emptyMap);
-            this.entityExistentialRestrictionAxioms.put(((EntityExistentialRestrictionAxiom)e).uuid(), pair);
-            String _uuid = ((EntityExistentialRestrictionAxiom)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof EntityUniversalRestrictionAxiom) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<EntityUniversalRestrictionAxiom, Map<String, String>> pair = new Pair<EntityUniversalRestrictionAxiom, Map<String, String>>(((EntityUniversalRestrictionAxiom)e), _emptyMap);
-            this.entityUniversalRestrictionAxioms.put(((EntityUniversalRestrictionAxiom)e).uuid(), pair);
-            String _uuid = ((EntityUniversalRestrictionAxiom)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof EntityScalarDataPropertyExistentialRestrictionAxiom) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<EntityScalarDataPropertyExistentialRestrictionAxiom, Map<String, String>> pair = new Pair<EntityScalarDataPropertyExistentialRestrictionAxiom, Map<String, String>>(((EntityScalarDataPropertyExistentialRestrictionAxiom)e), _emptyMap);
-            this.entityScalarDataPropertyExistentialRestrictionAxioms.put(((EntityScalarDataPropertyExistentialRestrictionAxiom)e).uuid(), pair);
-            String _uuid = ((EntityScalarDataPropertyExistentialRestrictionAxiom)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof EntityScalarDataPropertyParticularRestrictionAxiom) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<EntityScalarDataPropertyParticularRestrictionAxiom, Map<String, String>> pair = new Pair<EntityScalarDataPropertyParticularRestrictionAxiom, Map<String, String>>(((EntityScalarDataPropertyParticularRestrictionAxiom)e), _emptyMap);
-            this.entityScalarDataPropertyParticularRestrictionAxioms.put(((EntityScalarDataPropertyParticularRestrictionAxiom)e).uuid(), pair);
-            String _uuid = ((EntityScalarDataPropertyParticularRestrictionAxiom)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof EntityScalarDataPropertyUniversalRestrictionAxiom) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<EntityScalarDataPropertyUniversalRestrictionAxiom, Map<String, String>> pair = new Pair<EntityScalarDataPropertyUniversalRestrictionAxiom, Map<String, String>>(((EntityScalarDataPropertyUniversalRestrictionAxiom)e), _emptyMap);
-            this.entityScalarDataPropertyUniversalRestrictionAxioms.put(((EntityScalarDataPropertyUniversalRestrictionAxiom)e).uuid(), pair);
-            String _uuid = ((EntityScalarDataPropertyUniversalRestrictionAxiom)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof EntityStructuredDataPropertyParticularRestrictionAxiom) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<EntityStructuredDataPropertyParticularRestrictionAxiom, Map<String, String>> pair = new Pair<EntityStructuredDataPropertyParticularRestrictionAxiom, Map<String, String>>(((EntityStructuredDataPropertyParticularRestrictionAxiom)e), _emptyMap);
-            this.entityStructuredDataPropertyParticularRestrictionAxioms.put(((EntityStructuredDataPropertyParticularRestrictionAxiom)e).uuid(), pair);
-            String _uuid = ((EntityStructuredDataPropertyParticularRestrictionAxiom)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof RestrictionStructuredDataPropertyTuple) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<RestrictionStructuredDataPropertyTuple, Map<String, String>> pair = new Pair<RestrictionStructuredDataPropertyTuple, Map<String, String>>(((RestrictionStructuredDataPropertyTuple)e), _emptyMap);
-            this.restrictionStructuredDataPropertyTuples.put(((RestrictionStructuredDataPropertyTuple)e).uuid(), pair);
-            String _uuid = ((RestrictionStructuredDataPropertyTuple)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof RestrictionScalarDataPropertyValue) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<RestrictionScalarDataPropertyValue, Map<String, String>> pair = new Pair<RestrictionScalarDataPropertyValue, Map<String, String>>(((RestrictionScalarDataPropertyValue)e), _emptyMap);
-            this.restrictionScalarDataPropertyValues.put(((RestrictionScalarDataPropertyValue)e).uuid(), pair);
-            String _uuid = ((RestrictionScalarDataPropertyValue)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof AspectSpecializationAxiom) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<AspectSpecializationAxiom, Map<String, String>> pair = new Pair<AspectSpecializationAxiom, Map<String, String>>(((AspectSpecializationAxiom)e), _emptyMap);
-            this.aspectSpecializationAxioms.put(((AspectSpecializationAxiom)e).uuid(), pair);
-            String _uuid = ((AspectSpecializationAxiom)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof ConceptSpecializationAxiom) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<ConceptSpecializationAxiom, Map<String, String>> pair = new Pair<ConceptSpecializationAxiom, Map<String, String>>(((ConceptSpecializationAxiom)e), _emptyMap);
-            this.conceptSpecializationAxioms.put(((ConceptSpecializationAxiom)e).uuid(), pair);
-            String _uuid = ((ConceptSpecializationAxiom)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof ReifiedRelationshipSpecializationAxiom) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<ReifiedRelationshipSpecializationAxiom, Map<String, String>> pair = new Pair<ReifiedRelationshipSpecializationAxiom, Map<String, String>>(((ReifiedRelationshipSpecializationAxiom)e), _emptyMap);
-            this.reifiedRelationshipSpecializationAxioms.put(((ReifiedRelationshipSpecializationAxiom)e).uuid(), pair);
-            String _uuid = ((ReifiedRelationshipSpecializationAxiom)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof SubDataPropertyOfAxiom) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<SubDataPropertyOfAxiom, Map<String, String>> pair = new Pair<SubDataPropertyOfAxiom, Map<String, String>>(((SubDataPropertyOfAxiom)e), _emptyMap);
-            this.subDataPropertyOfAxioms.put(((SubDataPropertyOfAxiom)e).uuid(), pair);
-            String _uuid = ((SubDataPropertyOfAxiom)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof SubObjectPropertyOfAxiom) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<SubObjectPropertyOfAxiom, Map<String, String>> pair = new Pair<SubObjectPropertyOfAxiom, Map<String, String>>(((SubObjectPropertyOfAxiom)e), _emptyMap);
-            this.subObjectPropertyOfAxioms.put(((SubObjectPropertyOfAxiom)e).uuid(), pair);
-            String _uuid = ((SubObjectPropertyOfAxiom)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof RootConceptTaxonomyAxiom) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<RootConceptTaxonomyAxiom, Map<String, String>> pair = new Pair<RootConceptTaxonomyAxiom, Map<String, String>>(((RootConceptTaxonomyAxiom)e), _emptyMap);
-            this.rootConceptTaxonomyAxioms.put(((RootConceptTaxonomyAxiom)e).uuid(), pair);
-            String _uuid = ((RootConceptTaxonomyAxiom)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof AnonymousConceptUnionAxiom) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<AnonymousConceptUnionAxiom, Map<String, String>> pair = new Pair<AnonymousConceptUnionAxiom, Map<String, String>>(((AnonymousConceptUnionAxiom)e), _emptyMap);
-            this.anonymousConceptUnionAxioms.put(((AnonymousConceptUnionAxiom)e).uuid(), pair);
-            String _uuid = ((AnonymousConceptUnionAxiom)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof SpecificDisjointConceptAxiom) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<SpecificDisjointConceptAxiom, Map<String, String>> pair = new Pair<SpecificDisjointConceptAxiom, Map<String, String>>(((SpecificDisjointConceptAxiom)e), _emptyMap);
-            this.specificDisjointConceptAxioms.put(((SpecificDisjointConceptAxiom)e).uuid(), pair);
-            String _uuid = ((SpecificDisjointConceptAxiom)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof ConceptInstance) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<ConceptInstance, Map<String, String>> pair = new Pair<ConceptInstance, Map<String, String>>(((ConceptInstance)e), _emptyMap);
-            this.conceptInstances.put(((ConceptInstance)e).uuid(), pair);
-            String _uuid = ((ConceptInstance)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof ReifiedRelationshipInstance) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<ReifiedRelationshipInstance, Map<String, String>> pair = new Pair<ReifiedRelationshipInstance, Map<String, String>>(((ReifiedRelationshipInstance)e), _emptyMap);
-            this.reifiedRelationshipInstances.put(((ReifiedRelationshipInstance)e).uuid(), pair);
-            String _uuid = ((ReifiedRelationshipInstance)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof ReifiedRelationshipInstanceDomain) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<ReifiedRelationshipInstanceDomain, Map<String, String>> pair = new Pair<ReifiedRelationshipInstanceDomain, Map<String, String>>(((ReifiedRelationshipInstanceDomain)e), _emptyMap);
-            this.reifiedRelationshipInstanceDomains.put(((ReifiedRelationshipInstanceDomain)e).uuid(), pair);
-            String _uuid = ((ReifiedRelationshipInstanceDomain)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof ReifiedRelationshipInstanceRange) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<ReifiedRelationshipInstanceRange, Map<String, String>> pair = new Pair<ReifiedRelationshipInstanceRange, Map<String, String>>(((ReifiedRelationshipInstanceRange)e), _emptyMap);
-            this.reifiedRelationshipInstanceRanges.put(((ReifiedRelationshipInstanceRange)e).uuid(), pair);
-            String _uuid = ((ReifiedRelationshipInstanceRange)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof UnreifiedRelationshipInstanceTuple) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<UnreifiedRelationshipInstanceTuple, Map<String, String>> pair = new Pair<UnreifiedRelationshipInstanceTuple, Map<String, String>>(((UnreifiedRelationshipInstanceTuple)e), _emptyMap);
-            this.unreifiedRelationshipInstanceTuples.put(((UnreifiedRelationshipInstanceTuple)e).uuid(), pair);
-            String _uuid = ((UnreifiedRelationshipInstanceTuple)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof SingletonInstanceStructuredDataPropertyValue) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<SingletonInstanceStructuredDataPropertyValue, Map<String, String>> pair = new Pair<SingletonInstanceStructuredDataPropertyValue, Map<String, String>>(((SingletonInstanceStructuredDataPropertyValue)e), _emptyMap);
-            this.singletonInstanceStructuredDataPropertyValues.put(((SingletonInstanceStructuredDataPropertyValue)e).uuid(), pair);
-            String _uuid = ((SingletonInstanceStructuredDataPropertyValue)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof SingletonInstanceScalarDataPropertyValue) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<SingletonInstanceScalarDataPropertyValue, Map<String, String>> pair = new Pair<SingletonInstanceScalarDataPropertyValue, Map<String, String>>(((SingletonInstanceScalarDataPropertyValue)e), _emptyMap);
-            this.singletonInstanceScalarDataPropertyValues.put(((SingletonInstanceScalarDataPropertyValue)e).uuid(), pair);
-            String _uuid = ((SingletonInstanceScalarDataPropertyValue)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof StructuredDataPropertyTuple) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<StructuredDataPropertyTuple, Map<String, String>> pair = new Pair<StructuredDataPropertyTuple, Map<String, String>>(((StructuredDataPropertyTuple)e), _emptyMap);
-            this.structuredDataPropertyTuples.put(((StructuredDataPropertyTuple)e).uuid(), pair);
-            String _uuid = ((StructuredDataPropertyTuple)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof ScalarDataPropertyValue) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<ScalarDataPropertyValue, Map<String, String>> pair = new Pair<ScalarDataPropertyValue, Map<String, String>>(((ScalarDataPropertyValue)e), _emptyMap);
-            this.scalarDataPropertyValues.put(((ScalarDataPropertyValue)e).uuid(), pair);
-            String _uuid = ((ScalarDataPropertyValue)e).uuid();
-            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-            this.logicalElements.put(_uuid, _pair);
-          }
-        }
-        if (!_matched) {
-          if (e instanceof AnnotationPropertyValue) {
-            _matched=true;
-            Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-            final Pair<AnnotationPropertyValue, Map<String, String>> pair = new Pair<AnnotationPropertyValue, Map<String, String>>(((AnnotationPropertyValue)e), _emptyMap);
-            this.annotationPropertyValues.put(((AnnotationPropertyValue)e).uuid(), pair);
-          }
-        }
-      };
-      IteratorExtensions.<EObject>forEach(r.getContents().get(0).eAllContents(), _function);
-      return r;
+      return _xblockexpression;
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
+  }
+  
+  protected void includeModule(final Module m) {
+    boolean _matched = false;
+    if (m instanceof TerminologyGraph) {
+      _matched=true;
+      Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+      final Pair<TerminologyGraph, Map<String, String>> pair = new Pair<TerminologyGraph, Map<String, String>>(((TerminologyGraph)m), _emptyMap);
+      this.terminologyGraphs.put(((TerminologyGraph)m).uuid(), pair);
+      String _uuid = ((TerminologyGraph)m).uuid();
+      Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+      Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(m, _emptyMap_1);
+      this.logicalElements.put(_uuid, _pair);
+      this.terminologyGraphs.put(((TerminologyGraph)m).iri(), pair);
+      String _uuid_1 = ((TerminologyGraph)m).uuid();
+      Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+      Pair<TerminologyBox, Map<String, String>> _pair_1 = new Pair<TerminologyBox, Map<String, String>>(((TerminologyBox)m), _emptyMap_2);
+      this.terminologyBoxes.put(_uuid_1, _pair_1);
+      String _iri = ((TerminologyGraph)m).iri();
+      Map<String, String> _emptyMap_3 = Collections.<String, String>emptyMap();
+      Pair<TerminologyBox, Map<String, String>> _pair_2 = new Pair<TerminologyBox, Map<String, String>>(((TerminologyBox)m), _emptyMap_3);
+      this.terminologyBoxes.put(_iri, _pair_2);
+    }
+    if (!_matched) {
+      if (m instanceof Bundle) {
+        _matched=true;
+        Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+        final Pair<Bundle, Map<String, String>> pair = new Pair<Bundle, Map<String, String>>(((Bundle)m), _emptyMap);
+        this.bundles.put(((Bundle)m).uuid(), pair);
+        String _uuid = ((Bundle)m).uuid();
+        Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+        Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(m, _emptyMap_1);
+        this.logicalElements.put(_uuid, _pair);
+        this.bundles.put(((Bundle)m).iri(), pair);
+        String _uuid_1 = ((Bundle)m).uuid();
+        Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+        Pair<TerminologyBox, Map<String, String>> _pair_1 = new Pair<TerminologyBox, Map<String, String>>(((TerminologyBox)m), _emptyMap_2);
+        this.terminologyBoxes.put(_uuid_1, _pair_1);
+        String _iri = ((Bundle)m).iri();
+        Map<String, String> _emptyMap_3 = Collections.<String, String>emptyMap();
+        Pair<TerminologyBox, Map<String, String>> _pair_2 = new Pair<TerminologyBox, Map<String, String>>(((TerminologyBox)m), _emptyMap_3);
+        this.terminologyBoxes.put(_iri, _pair_2);
+      }
+    }
+    if (!_matched) {
+      if (m instanceof DescriptionBox) {
+        _matched=true;
+        Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+        final Pair<DescriptionBox, Map<String, String>> pair = new Pair<DescriptionBox, Map<String, String>>(((DescriptionBox)m), _emptyMap);
+        this.descriptionBoxes.put(((DescriptionBox)m).uuid(), pair);
+        String _uuid = ((DescriptionBox)m).uuid();
+        Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+        Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(m, _emptyMap_1);
+        this.logicalElements.put(_uuid, _pair);
+        this.descriptionBoxes.put(((DescriptionBox)m).iri(), pair);
+      }
+    }
+    final Procedure1<EObject> _function = (EObject e) -> {
+      boolean _matched_1 = false;
+      if (e instanceof AnnotationProperty) {
+        _matched_1=true;
+        Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+        final Pair<AnnotationProperty, Map<String, String>> pair = new Pair<AnnotationProperty, Map<String, String>>(((AnnotationProperty)e), _emptyMap);
+        this.annotationProperties.put(((AnnotationProperty)e).uuid(), pair);
+      }
+      if (!_matched_1) {
+        if (e instanceof Aspect) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<Aspect, Map<String, String>> pair = new Pair<Aspect, Map<String, String>>(((Aspect)e), _emptyMap);
+          this.aspects.put(((Aspect)e).uuid(), pair);
+          String _uuid = ((Aspect)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof Concept) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<Concept, Map<String, String>> pair = new Pair<Concept, Map<String, String>>(((Concept)e), _emptyMap);
+          this.concepts.put(((Concept)e).uuid(), pair);
+          String _uuid = ((Concept)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof Scalar) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<Scalar, Map<String, String>> pair = new Pair<Scalar, Map<String, String>>(((Scalar)e), _emptyMap);
+          this.scalars.put(((Scalar)e).uuid(), pair);
+          String _uuid = ((Scalar)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof Structure) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<Structure, Map<String, String>> pair = new Pair<Structure, Map<String, String>>(((Structure)e), _emptyMap);
+          this.structures.put(((Structure)e).uuid(), pair);
+          String _uuid = ((Structure)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof ConceptDesignationTerminologyAxiom) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<ConceptDesignationTerminologyAxiom, Map<String, String>> pair = new Pair<ConceptDesignationTerminologyAxiom, Map<String, String>>(((ConceptDesignationTerminologyAxiom)e), _emptyMap);
+          this.conceptDesignationTerminologyAxioms.put(((ConceptDesignationTerminologyAxiom)e).uuid(), pair);
+          String _uuid = ((ConceptDesignationTerminologyAxiom)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+          this.includeModule(((ConceptDesignationTerminologyAxiom)e).targetModule());
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof TerminologyExtensionAxiom) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<TerminologyExtensionAxiom, Map<String, String>> pair = new Pair<TerminologyExtensionAxiom, Map<String, String>>(((TerminologyExtensionAxiom)e), _emptyMap);
+          this.terminologyExtensionAxioms.put(((TerminologyExtensionAxiom)e).uuid(), pair);
+          String _uuid = ((TerminologyExtensionAxiom)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+          this.includeModule(((TerminologyExtensionAxiom)e).targetModule());
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof TerminologyNestingAxiom) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<TerminologyNestingAxiom, Map<String, String>> pair = new Pair<TerminologyNestingAxiom, Map<String, String>>(((TerminologyNestingAxiom)e), _emptyMap);
+          this.terminologyNestingAxioms.put(((TerminologyNestingAxiom)e).uuid(), pair);
+          String _uuid = ((TerminologyNestingAxiom)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+          this.includeModule(((TerminologyNestingAxiom)e).targetModule());
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof BundledTerminologyAxiom) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<BundledTerminologyAxiom, Map<String, String>> pair = new Pair<BundledTerminologyAxiom, Map<String, String>>(((BundledTerminologyAxiom)e), _emptyMap);
+          this.bundledTerminologyAxioms.put(((BundledTerminologyAxiom)e).uuid(), pair);
+          String _uuid = ((BundledTerminologyAxiom)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+          this.includeModule(((BundledTerminologyAxiom)e).targetModule());
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof DescriptionBoxExtendsClosedWorldDefinitions) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<DescriptionBoxExtendsClosedWorldDefinitions, Map<String, String>> pair = new Pair<DescriptionBoxExtendsClosedWorldDefinitions, Map<String, String>>(((DescriptionBoxExtendsClosedWorldDefinitions)e), _emptyMap);
+          this.descriptionBoxExtendsClosedWorldDefinitions.put(((DescriptionBoxExtendsClosedWorldDefinitions)e).uuid(), pair);
+          String _uuid = ((DescriptionBoxExtendsClosedWorldDefinitions)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+          this.includeModule(((DescriptionBoxExtendsClosedWorldDefinitions)e).targetModule());
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof DescriptionBoxRefinement) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<DescriptionBoxRefinement, Map<String, String>> pair = new Pair<DescriptionBoxRefinement, Map<String, String>>(((DescriptionBoxRefinement)e), _emptyMap);
+          this.descriptionBoxRefinements.put(((DescriptionBoxRefinement)e).uuid(), pair);
+          String _uuid = ((DescriptionBoxRefinement)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+          this.includeModule(((DescriptionBoxRefinement)e).targetModule());
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof BinaryScalarRestriction) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<BinaryScalarRestriction, Map<String, String>> pair = new Pair<BinaryScalarRestriction, Map<String, String>>(((BinaryScalarRestriction)e), _emptyMap);
+          this.binaryScalarRestrictions.put(((BinaryScalarRestriction)e).uuid(), pair);
+          String _uuid = ((BinaryScalarRestriction)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof IRIScalarRestriction) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<IRIScalarRestriction, Map<String, String>> pair = new Pair<IRIScalarRestriction, Map<String, String>>(((IRIScalarRestriction)e), _emptyMap);
+          this.iriScalarRestrictions.put(((IRIScalarRestriction)e).uuid(), pair);
+          String _uuid = ((IRIScalarRestriction)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof NumericScalarRestriction) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<NumericScalarRestriction, Map<String, String>> pair = new Pair<NumericScalarRestriction, Map<String, String>>(((NumericScalarRestriction)e), _emptyMap);
+          this.numericScalarRestrictions.put(((NumericScalarRestriction)e).uuid(), pair);
+          String _uuid = ((NumericScalarRestriction)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof PlainLiteralScalarRestriction) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<PlainLiteralScalarRestriction, Map<String, String>> pair = new Pair<PlainLiteralScalarRestriction, Map<String, String>>(((PlainLiteralScalarRestriction)e), _emptyMap);
+          this.plainLiteralScalarRestrictions.put(((PlainLiteralScalarRestriction)e).uuid(), pair);
+          String _uuid = ((PlainLiteralScalarRestriction)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof ScalarOneOfRestriction) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<ScalarOneOfRestriction, Map<String, String>> pair = new Pair<ScalarOneOfRestriction, Map<String, String>>(((ScalarOneOfRestriction)e), _emptyMap);
+          this.scalarOneOfRestrictions.put(((ScalarOneOfRestriction)e).uuid(), pair);
+          String _uuid = ((ScalarOneOfRestriction)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof ScalarOneOfLiteralAxiom) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<ScalarOneOfLiteralAxiom, Map<String, String>> pair = new Pair<ScalarOneOfLiteralAxiom, Map<String, String>>(((ScalarOneOfLiteralAxiom)e), _emptyMap);
+          this.scalarOneOfLiteralAxioms.put(((ScalarOneOfLiteralAxiom)e).uuid(), pair);
+          String _uuid = ((ScalarOneOfLiteralAxiom)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof StringScalarRestriction) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<StringScalarRestriction, Map<String, String>> pair = new Pair<StringScalarRestriction, Map<String, String>>(((StringScalarRestriction)e), _emptyMap);
+          this.stringScalarRestrictions.put(((StringScalarRestriction)e).uuid(), pair);
+          String _uuid = ((StringScalarRestriction)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof SynonymScalarRestriction) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<SynonymScalarRestriction, Map<String, String>> pair = new Pair<SynonymScalarRestriction, Map<String, String>>(((SynonymScalarRestriction)e), _emptyMap);
+          this.synonymScalarRestrictions.put(((SynonymScalarRestriction)e).uuid(), pair);
+          String _uuid = ((SynonymScalarRestriction)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof TimeScalarRestriction) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<TimeScalarRestriction, Map<String, String>> pair = new Pair<TimeScalarRestriction, Map<String, String>>(((TimeScalarRestriction)e), _emptyMap);
+          this.timeScalarRestrictions.put(((TimeScalarRestriction)e).uuid(), pair);
+          String _uuid = ((TimeScalarRestriction)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof EntityScalarDataProperty) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<EntityScalarDataProperty, Map<String, String>> pair = new Pair<EntityScalarDataProperty, Map<String, String>>(((EntityScalarDataProperty)e), _emptyMap);
+          this.entityScalarDataProperties.put(((EntityScalarDataProperty)e).uuid(), pair);
+          String _uuid = ((EntityScalarDataProperty)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof EntityStructuredDataProperty) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<EntityStructuredDataProperty, Map<String, String>> pair = new Pair<EntityStructuredDataProperty, Map<String, String>>(((EntityStructuredDataProperty)e), _emptyMap);
+          this.entityStructuredDataProperties.put(((EntityStructuredDataProperty)e).uuid(), pair);
+          String _uuid = ((EntityStructuredDataProperty)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof ScalarDataProperty) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<ScalarDataProperty, Map<String, String>> pair = new Pair<ScalarDataProperty, Map<String, String>>(((ScalarDataProperty)e), _emptyMap);
+          this.scalarDataProperties.put(((ScalarDataProperty)e).uuid(), pair);
+          String _uuid = ((ScalarDataProperty)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof StructuredDataProperty) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<StructuredDataProperty, Map<String, String>> pair = new Pair<StructuredDataProperty, Map<String, String>>(((StructuredDataProperty)e), _emptyMap);
+          this.structuredDataProperties.put(((StructuredDataProperty)e).uuid(), pair);
+          String _uuid = ((StructuredDataProperty)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof ReifiedRelationship) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<ReifiedRelationship, Map<String, String>> pair = new Pair<ReifiedRelationship, Map<String, String>>(((ReifiedRelationship)e), _emptyMap);
+          this.reifiedRelationships.put(((ReifiedRelationship)e).uuid(), pair);
+          String _uuid = ((ReifiedRelationship)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof ForwardProperty) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<ForwardProperty, Map<String, String>> pair = new Pair<ForwardProperty, Map<String, String>>(((ForwardProperty)e), _emptyMap);
+          this.forwardProperties.put(((ForwardProperty)e).uuid(), pair);
+          String _uuid = ((ForwardProperty)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof InverseProperty) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<InverseProperty, Map<String, String>> pair = new Pair<InverseProperty, Map<String, String>>(((InverseProperty)e), _emptyMap);
+          this.inverseProperties.put(((InverseProperty)e).uuid(), pair);
+          String _uuid = ((InverseProperty)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof UnreifiedRelationship) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<UnreifiedRelationship, Map<String, String>> pair = new Pair<UnreifiedRelationship, Map<String, String>>(((UnreifiedRelationship)e), _emptyMap);
+          this.unreifiedRelationships.put(((UnreifiedRelationship)e).uuid(), pair);
+          String _uuid = ((UnreifiedRelationship)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof ChainRule) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<ChainRule, Map<String, String>> pair = new Pair<ChainRule, Map<String, String>>(((ChainRule)e), _emptyMap);
+          this.chainRules.put(((ChainRule)e).uuid(), pair);
+          String _uuid = ((ChainRule)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof RuleBodySegment) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<RuleBodySegment, Map<String, String>> pair = new Pair<RuleBodySegment, Map<String, String>>(((RuleBodySegment)e), _emptyMap);
+          this.ruleBodySegments.put(((RuleBodySegment)e).uuid(), pair);
+          String _uuid = ((RuleBodySegment)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof SegmentPredicate) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<SegmentPredicate, Map<String, String>> pair = new Pair<SegmentPredicate, Map<String, String>>(((SegmentPredicate)e), _emptyMap);
+          this.segmentPredicates.put(((SegmentPredicate)e).uuid(), pair);
+          String _uuid = ((SegmentPredicate)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof EntityExistentialRestrictionAxiom) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<EntityExistentialRestrictionAxiom, Map<String, String>> pair = new Pair<EntityExistentialRestrictionAxiom, Map<String, String>>(((EntityExistentialRestrictionAxiom)e), _emptyMap);
+          this.entityExistentialRestrictionAxioms.put(((EntityExistentialRestrictionAxiom)e).uuid(), pair);
+          String _uuid = ((EntityExistentialRestrictionAxiom)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof EntityUniversalRestrictionAxiom) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<EntityUniversalRestrictionAxiom, Map<String, String>> pair = new Pair<EntityUniversalRestrictionAxiom, Map<String, String>>(((EntityUniversalRestrictionAxiom)e), _emptyMap);
+          this.entityUniversalRestrictionAxioms.put(((EntityUniversalRestrictionAxiom)e).uuid(), pair);
+          String _uuid = ((EntityUniversalRestrictionAxiom)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof EntityScalarDataPropertyExistentialRestrictionAxiom) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<EntityScalarDataPropertyExistentialRestrictionAxiom, Map<String, String>> pair = new Pair<EntityScalarDataPropertyExistentialRestrictionAxiom, Map<String, String>>(((EntityScalarDataPropertyExistentialRestrictionAxiom)e), _emptyMap);
+          this.entityScalarDataPropertyExistentialRestrictionAxioms.put(((EntityScalarDataPropertyExistentialRestrictionAxiom)e).uuid(), pair);
+          String _uuid = ((EntityScalarDataPropertyExistentialRestrictionAxiom)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof EntityScalarDataPropertyParticularRestrictionAxiom) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<EntityScalarDataPropertyParticularRestrictionAxiom, Map<String, String>> pair = new Pair<EntityScalarDataPropertyParticularRestrictionAxiom, Map<String, String>>(((EntityScalarDataPropertyParticularRestrictionAxiom)e), _emptyMap);
+          this.entityScalarDataPropertyParticularRestrictionAxioms.put(((EntityScalarDataPropertyParticularRestrictionAxiom)e).uuid(), pair);
+          String _uuid = ((EntityScalarDataPropertyParticularRestrictionAxiom)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof EntityScalarDataPropertyUniversalRestrictionAxiom) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<EntityScalarDataPropertyUniversalRestrictionAxiom, Map<String, String>> pair = new Pair<EntityScalarDataPropertyUniversalRestrictionAxiom, Map<String, String>>(((EntityScalarDataPropertyUniversalRestrictionAxiom)e), _emptyMap);
+          this.entityScalarDataPropertyUniversalRestrictionAxioms.put(((EntityScalarDataPropertyUniversalRestrictionAxiom)e).uuid(), pair);
+          String _uuid = ((EntityScalarDataPropertyUniversalRestrictionAxiom)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof EntityStructuredDataPropertyParticularRestrictionAxiom) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<EntityStructuredDataPropertyParticularRestrictionAxiom, Map<String, String>> pair = new Pair<EntityStructuredDataPropertyParticularRestrictionAxiom, Map<String, String>>(((EntityStructuredDataPropertyParticularRestrictionAxiom)e), _emptyMap);
+          this.entityStructuredDataPropertyParticularRestrictionAxioms.put(((EntityStructuredDataPropertyParticularRestrictionAxiom)e).uuid(), pair);
+          String _uuid = ((EntityStructuredDataPropertyParticularRestrictionAxiom)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof RestrictionStructuredDataPropertyTuple) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<RestrictionStructuredDataPropertyTuple, Map<String, String>> pair = new Pair<RestrictionStructuredDataPropertyTuple, Map<String, String>>(((RestrictionStructuredDataPropertyTuple)e), _emptyMap);
+          this.restrictionStructuredDataPropertyTuples.put(((RestrictionStructuredDataPropertyTuple)e).uuid(), pair);
+          String _uuid = ((RestrictionStructuredDataPropertyTuple)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof RestrictionScalarDataPropertyValue) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<RestrictionScalarDataPropertyValue, Map<String, String>> pair = new Pair<RestrictionScalarDataPropertyValue, Map<String, String>>(((RestrictionScalarDataPropertyValue)e), _emptyMap);
+          this.restrictionScalarDataPropertyValues.put(((RestrictionScalarDataPropertyValue)e).uuid(), pair);
+          String _uuid = ((RestrictionScalarDataPropertyValue)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof AspectSpecializationAxiom) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<AspectSpecializationAxiom, Map<String, String>> pair = new Pair<AspectSpecializationAxiom, Map<String, String>>(((AspectSpecializationAxiom)e), _emptyMap);
+          this.aspectSpecializationAxioms.put(((AspectSpecializationAxiom)e).uuid(), pair);
+          String _uuid = ((AspectSpecializationAxiom)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof ConceptSpecializationAxiom) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<ConceptSpecializationAxiom, Map<String, String>> pair = new Pair<ConceptSpecializationAxiom, Map<String, String>>(((ConceptSpecializationAxiom)e), _emptyMap);
+          this.conceptSpecializationAxioms.put(((ConceptSpecializationAxiom)e).uuid(), pair);
+          String _uuid = ((ConceptSpecializationAxiom)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof ReifiedRelationshipSpecializationAxiom) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<ReifiedRelationshipSpecializationAxiom, Map<String, String>> pair = new Pair<ReifiedRelationshipSpecializationAxiom, Map<String, String>>(((ReifiedRelationshipSpecializationAxiom)e), _emptyMap);
+          this.reifiedRelationshipSpecializationAxioms.put(((ReifiedRelationshipSpecializationAxiom)e).uuid(), pair);
+          String _uuid = ((ReifiedRelationshipSpecializationAxiom)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof SubDataPropertyOfAxiom) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<SubDataPropertyOfAxiom, Map<String, String>> pair = new Pair<SubDataPropertyOfAxiom, Map<String, String>>(((SubDataPropertyOfAxiom)e), _emptyMap);
+          this.subDataPropertyOfAxioms.put(((SubDataPropertyOfAxiom)e).uuid(), pair);
+          String _uuid = ((SubDataPropertyOfAxiom)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof SubObjectPropertyOfAxiom) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<SubObjectPropertyOfAxiom, Map<String, String>> pair = new Pair<SubObjectPropertyOfAxiom, Map<String, String>>(((SubObjectPropertyOfAxiom)e), _emptyMap);
+          this.subObjectPropertyOfAxioms.put(((SubObjectPropertyOfAxiom)e).uuid(), pair);
+          String _uuid = ((SubObjectPropertyOfAxiom)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof RootConceptTaxonomyAxiom) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<RootConceptTaxonomyAxiom, Map<String, String>> pair = new Pair<RootConceptTaxonomyAxiom, Map<String, String>>(((RootConceptTaxonomyAxiom)e), _emptyMap);
+          this.rootConceptTaxonomyAxioms.put(((RootConceptTaxonomyAxiom)e).uuid(), pair);
+          String _uuid = ((RootConceptTaxonomyAxiom)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof AnonymousConceptUnionAxiom) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<AnonymousConceptUnionAxiom, Map<String, String>> pair = new Pair<AnonymousConceptUnionAxiom, Map<String, String>>(((AnonymousConceptUnionAxiom)e), _emptyMap);
+          this.anonymousConceptUnionAxioms.put(((AnonymousConceptUnionAxiom)e).uuid(), pair);
+          String _uuid = ((AnonymousConceptUnionAxiom)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof SpecificDisjointConceptAxiom) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<SpecificDisjointConceptAxiom, Map<String, String>> pair = new Pair<SpecificDisjointConceptAxiom, Map<String, String>>(((SpecificDisjointConceptAxiom)e), _emptyMap);
+          this.specificDisjointConceptAxioms.put(((SpecificDisjointConceptAxiom)e).uuid(), pair);
+          String _uuid = ((SpecificDisjointConceptAxiom)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof ConceptInstance) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<ConceptInstance, Map<String, String>> pair = new Pair<ConceptInstance, Map<String, String>>(((ConceptInstance)e), _emptyMap);
+          this.conceptInstances.put(((ConceptInstance)e).uuid(), pair);
+          String _uuid = ((ConceptInstance)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof ReifiedRelationshipInstance) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<ReifiedRelationshipInstance, Map<String, String>> pair = new Pair<ReifiedRelationshipInstance, Map<String, String>>(((ReifiedRelationshipInstance)e), _emptyMap);
+          this.reifiedRelationshipInstances.put(((ReifiedRelationshipInstance)e).uuid(), pair);
+          String _uuid = ((ReifiedRelationshipInstance)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof ReifiedRelationshipInstanceDomain) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<ReifiedRelationshipInstanceDomain, Map<String, String>> pair = new Pair<ReifiedRelationshipInstanceDomain, Map<String, String>>(((ReifiedRelationshipInstanceDomain)e), _emptyMap);
+          this.reifiedRelationshipInstanceDomains.put(((ReifiedRelationshipInstanceDomain)e).uuid(), pair);
+          String _uuid = ((ReifiedRelationshipInstanceDomain)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof ReifiedRelationshipInstanceRange) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<ReifiedRelationshipInstanceRange, Map<String, String>> pair = new Pair<ReifiedRelationshipInstanceRange, Map<String, String>>(((ReifiedRelationshipInstanceRange)e), _emptyMap);
+          this.reifiedRelationshipInstanceRanges.put(((ReifiedRelationshipInstanceRange)e).uuid(), pair);
+          String _uuid = ((ReifiedRelationshipInstanceRange)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof UnreifiedRelationshipInstanceTuple) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<UnreifiedRelationshipInstanceTuple, Map<String, String>> pair = new Pair<UnreifiedRelationshipInstanceTuple, Map<String, String>>(((UnreifiedRelationshipInstanceTuple)e), _emptyMap);
+          this.unreifiedRelationshipInstanceTuples.put(((UnreifiedRelationshipInstanceTuple)e).uuid(), pair);
+          String _uuid = ((UnreifiedRelationshipInstanceTuple)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof SingletonInstanceStructuredDataPropertyValue) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<SingletonInstanceStructuredDataPropertyValue, Map<String, String>> pair = new Pair<SingletonInstanceStructuredDataPropertyValue, Map<String, String>>(((SingletonInstanceStructuredDataPropertyValue)e), _emptyMap);
+          this.singletonInstanceStructuredDataPropertyValues.put(((SingletonInstanceStructuredDataPropertyValue)e).uuid(), pair);
+          String _uuid = ((SingletonInstanceStructuredDataPropertyValue)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof SingletonInstanceScalarDataPropertyValue) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<SingletonInstanceScalarDataPropertyValue, Map<String, String>> pair = new Pair<SingletonInstanceScalarDataPropertyValue, Map<String, String>>(((SingletonInstanceScalarDataPropertyValue)e), _emptyMap);
+          this.singletonInstanceScalarDataPropertyValues.put(((SingletonInstanceScalarDataPropertyValue)e).uuid(), pair);
+          String _uuid = ((SingletonInstanceScalarDataPropertyValue)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof StructuredDataPropertyTuple) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<StructuredDataPropertyTuple, Map<String, String>> pair = new Pair<StructuredDataPropertyTuple, Map<String, String>>(((StructuredDataPropertyTuple)e), _emptyMap);
+          this.structuredDataPropertyTuples.put(((StructuredDataPropertyTuple)e).uuid(), pair);
+          String _uuid = ((StructuredDataPropertyTuple)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof ScalarDataPropertyValue) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<ScalarDataPropertyValue, Map<String, String>> pair = new Pair<ScalarDataPropertyValue, Map<String, String>>(((ScalarDataPropertyValue)e), _emptyMap);
+          this.scalarDataPropertyValues.put(((ScalarDataPropertyValue)e).uuid(), pair);
+          String _uuid = ((ScalarDataPropertyValue)e).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
+          this.logicalElements.put(_uuid, _pair);
+        }
+      }
+      if (!_matched_1) {
+        if (e instanceof AnnotationPropertyValue) {
+          _matched_1=true;
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          final Pair<AnnotationPropertyValue, Map<String, String>> pair = new Pair<AnnotationPropertyValue, Map<String, String>>(((AnnotationPropertyValue)e), _emptyMap);
+          this.annotationPropertyValues.put(((AnnotationPropertyValue)e).uuid(), pair);
+        }
+      }
+    };
+    IteratorExtensions.<EObject>forEach(m.eAllContents(), _function);
   }
 }

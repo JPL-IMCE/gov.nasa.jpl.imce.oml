@@ -32,18 +32,18 @@ import org.junit.runners.BlockJUnit4ClassRunner;
 @RunWith(BlockJUnit4ClassRunner.class)
 @SuppressWarnings("all")
 public class OMLZip4Test extends MixedOMLSaveLoadComparisonTest {
-  public static Pair<URI, Extent>[] example1() {
+  public Pair<URI, Extent>[] example1() {
     final Extent ext1 = MixedOMLSaveLoadComparisonTest._commonFactory.createExtent();
     final TerminologyGraph tbox1 = MixedOMLSaveLoadComparisonTest._graphsFactory.createTerminologyGraph();
     tbox1.setExtent(ext1);
-    tbox1.setIri("./test1.oml");
+    tbox1.setIri(this.toAbsoluteTempFileURI("test1.oml"));
     final Concept concept1 = MixedOMLSaveLoadComparisonTest._terminologiesFactory.createConcept();
     concept1.setName("Concept1");
     concept1.setTbox(tbox1);
     final Extent ext2 = MixedOMLSaveLoadComparisonTest._commonFactory.createExtent();
     final TerminologyGraph tbox2 = MixedOMLSaveLoadComparisonTest._graphsFactory.createTerminologyGraph();
     tbox2.setExtent(ext2);
-    tbox2.setIri("./test2.omlzip");
+    tbox2.setIri(this.toAbsoluteTempFileURI("test2.omlzip"));
     final TerminologyExtensionAxiom tbox12 = MixedOMLSaveLoadComparisonTest._terminologiesFactory.createTerminologyExtensionAxiom();
     tbox12.setExtendedTerminology(tbox1);
     tbox12.setTbox(tbox2);
@@ -54,15 +54,15 @@ public class OMLZip4Test extends MixedOMLSaveLoadComparisonTest {
     concept12.setTbox(tbox2);
     concept12.setSubConcept(concept2);
     concept12.setSuperConcept(concept1);
-    URI _createFileURI = URI.createFileURI(tbox1.iri());
-    Pair<URI, Extent> _pair = new Pair<URI, Extent>(_createFileURI, ext1);
-    URI _createFileURI_1 = URI.createFileURI(tbox2.iri());
-    Pair<URI, Extent> _pair_1 = new Pair<URI, Extent>(_createFileURI_1, ext2);
+    final URI uri1 = URI.createURI(tbox1.iri());
+    final URI uri2 = URI.createURI(tbox2.iri());
+    Pair<URI, Extent> _pair = new Pair<URI, Extent>(uri1, ext1);
+    Pair<URI, Extent> _pair_1 = new Pair<URI, Extent>(uri2, ext2);
     return new Pair[] { _pair, _pair_1 };
   }
   
   @Test
   public void test1() {
-    this.compareSavedAndLoaded(OMLZip4Test.example1());
+    this.compareSavedAndLoaded(this.example1());
   }
 }
