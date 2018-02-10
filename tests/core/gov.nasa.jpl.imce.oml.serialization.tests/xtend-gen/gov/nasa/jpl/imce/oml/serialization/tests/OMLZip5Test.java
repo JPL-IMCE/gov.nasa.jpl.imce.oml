@@ -31,19 +31,19 @@ import org.junit.runners.BlockJUnit4ClassRunner;
 
 @RunWith(BlockJUnit4ClassRunner.class)
 @SuppressWarnings("all")
-public class OMLZip4Test extends MixedOMLSaveLoadComparisonTest {
+public class OMLZip5Test extends MixedOMLSaveLoadComparisonTest {
   public Pair<URI, Extent>[] example1() {
     final Extent ext1 = MixedOMLSaveLoadComparisonTest._commonFactory.createExtent();
     final TerminologyGraph tbox1 = MixedOMLSaveLoadComparisonTest._graphsFactory.createTerminologyGraph();
     tbox1.setExtent(ext1);
-    tbox1.setIri(this.toAbsoluteTempFileURI("test 1.oml"));
+    tbox1.setIri(this.toAbsoluteTempHttpURI("test1.oml"));
     final Concept concept1 = MixedOMLSaveLoadComparisonTest._terminologiesFactory.createConcept();
     concept1.setName("Concept1");
     concept1.setTbox(tbox1);
     final Extent ext2 = MixedOMLSaveLoadComparisonTest._commonFactory.createExtent();
     final TerminologyGraph tbox2 = MixedOMLSaveLoadComparisonTest._graphsFactory.createTerminologyGraph();
     tbox2.setExtent(ext2);
-    tbox2.setIri(this.toAbsoluteTempFileURI("test 2.omlzip"));
+    tbox2.setIri(this.toAbsoluteTempHttpURI("test2.omlzip"));
     final TerminologyExtensionAxiom tbox12 = MixedOMLSaveLoadComparisonTest._terminologiesFactory.createTerminologyExtensionAxiom();
     tbox12.setExtendedTerminology(tbox1);
     tbox12.setTbox(tbox2);

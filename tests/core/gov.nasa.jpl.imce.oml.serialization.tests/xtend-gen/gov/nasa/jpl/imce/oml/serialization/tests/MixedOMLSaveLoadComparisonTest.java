@@ -91,6 +91,8 @@ public abstract class MixedOMLSaveLoadComparisonTest {
   
   protected final String fileURIPrefix;
   
+  protected final String httpURIPrefix;
+  
   protected XtextResourceSet rs1;
   
   protected XtextResourceSet rs2;
@@ -105,6 +107,10 @@ public abstract class MixedOMLSaveLoadComparisonTest {
       String _plus_1 = ("file:/" + _absolutePath);
       String _plus_2 = (_plus_1 + "/");
       this.fileURIPrefix = _plus_2;
+      String _absolutePath_1 = this.omlCatalogFile.getParentFile().getAbsolutePath();
+      String _plus_3 = ("http:/" + _absolutePath_1);
+      String _plus_4 = (_plus_3 + "/");
+      this.httpURIPrefix = _plus_4;
       XtextResourceSet _xtextResourceSet = new XtextResourceSet();
       this.rs1 = _xtextResourceSet;
       XtextResourceSet _xtextResourceSet_1 = new XtextResourceSet();
@@ -120,6 +126,10 @@ public abstract class MixedOMLSaveLoadComparisonTest {
   
   protected String toAbsoluteTempFileURI(final String path) {
     return (this.fileURIPrefix + path);
+  }
+  
+  protected String toAbsoluteTempHttpURI(final String path) {
+    return (this.httpURIPrefix + path);
   }
   
   /**

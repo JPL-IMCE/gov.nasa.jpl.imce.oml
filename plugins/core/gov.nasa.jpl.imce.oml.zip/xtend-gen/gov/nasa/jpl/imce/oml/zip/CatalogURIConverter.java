@@ -57,18 +57,25 @@ public class CatalogURIConverter extends ExtensibleURIConverterImpl {
   @Override
   public URI normalize(final URI uri) {
     try {
-      URI _xblockexpression = null;
-      {
-        final String resolved = this.catalog.resolveURI(uri.toString());
-        if (((null == resolved) || (!resolved.startsWith("file:")))) {
-          StringConcatenation _builder = new StringConcatenation();
-          _builder.append("No catalog mapping for URI: ");
-          _builder.append(uri);
-          throw new IllegalArgumentException(_builder.toString());
+      URI _xifexpression = null;
+      boolean _isFile = uri.isFile();
+      if (_isFile) {
+        _xifexpression = uri;
+      } else {
+        URI _xblockexpression = null;
+        {
+          final String resolved = this.catalog.resolveURI(uri.toString());
+          if (((null == resolved) || (!resolved.startsWith("file:")))) {
+            StringConcatenation _builder = new StringConcatenation();
+            _builder.append("No catalog mapping for URI: ");
+            _builder.append(uri);
+            throw new IllegalArgumentException(_builder.toString());
+          }
+          _xblockexpression = URI.createURI((resolved + ".omlzip"));
         }
-        _xblockexpression = URI.createURI((resolved + ".omlzip"));
+        _xifexpression = _xblockexpression;
       }
-      return _xblockexpression;
+      return _xifexpression;
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
