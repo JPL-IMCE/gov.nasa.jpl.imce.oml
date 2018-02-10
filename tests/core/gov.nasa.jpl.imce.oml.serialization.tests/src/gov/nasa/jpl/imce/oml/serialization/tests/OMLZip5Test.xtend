@@ -26,14 +26,14 @@ import org.junit.runner.RunWith
 import gov.nasa.jpl.imce.oml.model.common.Extent
 
 @RunWith(BlockJUnit4ClassRunner)
-class OMLZip4Test extends MixedOMLSaveLoadComparisonTest {
+class OMLZip5Test extends MixedOMLSaveLoadComparisonTest {
 	
 	def Pair<URI,Extent>[] example1() {
         val ext1 = createExtent
         
         val tbox1 = createTerminologyGraph
         tbox1.extent = ext1
-        tbox1.iri = toAbsoluteTempFileURI("test 1.oml")
+        tbox1.iri = toAbsoluteTempHttpURI("test1.oml")
         
         val concept1 = createConcept
         concept1.name = "Concept1"
@@ -43,7 +43,7 @@ class OMLZip4Test extends MixedOMLSaveLoadComparisonTest {
         
         val tbox2 = createTerminologyGraph
         tbox2.extent = ext2
-        tbox2.iri = toAbsoluteTempFileURI("test 2.omlzip")
+        tbox2.iri = toAbsoluteTempHttpURI("test2.omlzip")
         
         val tbox12 = createTerminologyExtensionAxiom
         tbox12.extendedTerminology = tbox1

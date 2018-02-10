@@ -68,6 +68,7 @@ abstract class MixedOMLSaveLoadComparisonTest {
     
 	protected var File omlCatalogFile
 	protected val String fileURIPrefix
+	protected val String httpURIPrefix
 	protected var XtextResourceSet rs1
 	protected var XtextResourceSet rs2
 	
@@ -75,6 +76,7 @@ abstract class MixedOMLSaveLoadComparisonTest {
 		OMLZipResourceSet.doSetup()
 		omlCatalogFile = createOMLFolder(Paths.get("./target/oml/"+System.currentTimeMillis()))
 		fileURIPrefix = "file:/" + omlCatalogFile.parentFile.absolutePath + "/"
+		httpURIPrefix = "http:/" + omlCatalogFile.parentFile.absolutePath + "/"
 		rs1 = new XtextResourceSet()
 		rs2 = new XtextResourceSet()
 		
@@ -87,6 +89,10 @@ abstract class MixedOMLSaveLoadComparisonTest {
 	
 	protected def String toAbsoluteTempFileURI(String path) {
 		fileURIPrefix + path
+	}
+	
+	protected def String toAbsoluteTempHttpURI(String path) {
+		httpURIPrefix + path
 	}
 	
 	/**

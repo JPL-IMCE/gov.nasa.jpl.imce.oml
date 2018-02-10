@@ -32,7 +32,7 @@ import gov.nasa.jpl.imce.oml.model.extensions.OMLCatalog
  * where normalization involves resolving an URI through an OASIS XML Catalog.
  */
 class CatalogURIConverter extends ExtensibleURIConverterImpl {
-	
+	 
 	protected OMLCatalog catalog
 	
 	/**
@@ -56,10 +56,14 @@ class CatalogURIConverter extends ExtensibleURIConverterImpl {
 	 * Normalizing a URI is resolving that URI according to the rewrite rules defined in an OASIS XML Catalog.
 	 */
 	override def URI normalize(URI uri) {
-		val resolved = catalog.resolveURI(uri.toString)
-		if (null === resolved || !resolved.startsWith("file:"))
-			throw new IllegalArgumentException('''No catalog mapping for URI: «uri»''')
-		URI.createURI(resolved + ".omlzip")
+		if (uri.file)
+			uri
+		else {
+			val resolved = catalog.resolveURI(uri.toString)
+			if (null === resolved || !resolved.startsWith("file:"))
+				throw new IllegalArgumentException('''No catalog mapping for URI: «uri»''')
+			URI.createURI(resolved + ".omlzip")
+		}
 	}
 	
 }

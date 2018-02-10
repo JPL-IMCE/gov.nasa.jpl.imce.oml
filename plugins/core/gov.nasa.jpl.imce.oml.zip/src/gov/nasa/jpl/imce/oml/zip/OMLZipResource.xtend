@@ -32,6 +32,7 @@ import org.eclipse.core.runtime.Assert
 import java.util.regex.Pattern
 import gov.nasa.jpl.imce.oml.model.extensions.OMLCatalog
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions
+import static extension gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions.getCatalog
 
 /**
  * An OMLZipResource is a kind of Resource that is loaded from and saved to an *.omlzip file
@@ -40,6 +41,8 @@ import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions
  */
 class OMLZipResource extends ResourceImpl {
 
+	var CatalogURIConverter uriConverter = null
+	
 	new(URI uri) {
 		super(uri)
 	}
@@ -52,11 +55,15 @@ class OMLZipResource extends ResourceImpl {
 		val rs = getResourceSet
 		switch rs {
 			OMLZipResourceSet:
-				rs.getCatalogURIConverter
-			default:
-				super.getURIConverter()
+				uriConverter = rs.getCatalogURIConverter
+			default: {
+				val omlCatalog = rs.getCatalog
+				if (null === omlCatalog)
+					throw new IllegalArgumentException('''OMLZipResource.getURIConverter: there must be an OMLCatalog on the resource set!''')
+				uriConverter = new CatalogURIConverter(omlCatalog)
+			}
 		}
-		
+		uriConverter
 	}
 	
 	/**
@@ -95,7 +102,8 @@ class OMLZipResource extends ResourceImpl {
 						val resolved = c.resolveURI(uri.toString)
 						if (null === resolved || !resolved.startsWith("file:"))
 							throw new IllegalArgumentException('''OMLZipResource.load(): No catalog mapping for URI: «uri»''')
-						new File(resolved.substring(5) + ".omlzip")
+						val resolvedURI = new java.net.URI(resolved + ".omlzip")
+						new File(resolvedURI)
 					}
 					
 					default:
