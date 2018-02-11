@@ -64,6 +64,7 @@ import gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceStructuredDataP
 import gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceStructuredDataPropertyValue;
 import gov.nasa.jpl.imce.oml.model.descriptions.StructuredDataPropertyTuple;
 import gov.nasa.jpl.imce.oml.model.descriptions.UnreifiedRelationshipInstanceTuple;
+import gov.nasa.jpl.imce.oml.model.extensions.CatalogURIConverter;
 import gov.nasa.jpl.imce.oml.model.extensions.OMLCatalog;
 import gov.nasa.jpl.imce.oml.model.extensions.OMLCatalogManager;
 import gov.nasa.jpl.imce.oml.model.graphs.ConceptDesignationTerminologyAxiom;
@@ -140,6 +141,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.xbase.lib.Conversions;
@@ -245,6 +247,9 @@ public class OMLExtensions {
     if (_isInstance) {
       final OMLCatalog c = OMLCatalog.class.cast(o);
       rs.getLoadOptions().putIfAbsent(OMLExtensions.RESOURCE_SET_CATALOG_INSTANCE, c);
+      URIConverter _uRIConverter = rs.getURIConverter();
+      final CatalogURIConverter omlc = new CatalogURIConverter(c, _uRIConverter);
+      rs.setURIConverter(omlc);
       return c;
     } else {
       return null;

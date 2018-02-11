@@ -18,9 +18,9 @@
 package gov.nasa.jpl.imce.oml.zip;
 
 import gov.nasa.jpl.imce.oml.dsl.OMLStandaloneSetup;
+import gov.nasa.jpl.imce.oml.model.extensions.CatalogURIConverter;
 import gov.nasa.jpl.imce.oml.model.extensions.OMLCatalog;
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
-import gov.nasa.jpl.imce.oml.zip.CatalogURIConverter;
 import gov.nasa.jpl.imce.oml.zip.OMLZipResourceFactory;
 import java.net.URL;
 import java.util.Map;

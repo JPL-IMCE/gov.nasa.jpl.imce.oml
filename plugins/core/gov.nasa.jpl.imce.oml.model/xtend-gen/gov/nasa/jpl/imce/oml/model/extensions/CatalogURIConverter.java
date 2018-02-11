@@ -15,12 +15,13 @@
  * limitations under the License.
  * License Terms
  */
-package gov.nasa.jpl.imce.oml.zip;
+package gov.nasa.jpl.imce.oml.model.extensions;
 
 import gov.nasa.jpl.imce.oml.model.extensions.OMLCatalog;
 import java.util.Collection;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.ContentHandler;
+import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.ecore.resource.URIHandler;
 import org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl;
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -32,6 +33,8 @@ import org.eclipse.xtext.xbase.lib.Exceptions;
  */
 @SuppressWarnings("all")
 public class CatalogURIConverter extends ExtensibleURIConverterImpl {
+  protected URIConverter uriConverter;
+  
   protected OMLCatalog catalog;
   
   /**
@@ -39,16 +42,25 @@ public class CatalogURIConverter extends ExtensibleURIConverterImpl {
    * as the basis for URI normalization.
    */
   public CatalogURIConverter(final OMLCatalog catalog) {
-    this(catalog, URIHandler.DEFAULT_HANDLERS, ContentHandler.Registry.INSTANCE.contentHandlers());
+    this(catalog, URIHandler.DEFAULT_HANDLERS, ContentHandler.Registry.INSTANCE.contentHandlers(), null);
   }
   
   /**
    * Initialize an CatalogURIConverter using an OMLCatalog
-   * as the basis for URI normalization.
+   * as the basis for URI normalization and a parent URIConverter for other cases.
    */
-  public CatalogURIConverter(final OMLCatalog catalog, final Collection<URIHandler> uriHandlers, final Collection<ContentHandler> contentHandlers) {
+  public CatalogURIConverter(final OMLCatalog catalog, final URIConverter converter) {
+    this(catalog, URIHandler.DEFAULT_HANDLERS, ContentHandler.Registry.INSTANCE.contentHandlers(), converter);
+  }
+  
+  /**
+   * Initialize an CatalogURIConverter using an OMLCatalog
+   * as the basis for URI normalization and a parent URIConverter for other cases.
+   */
+  public CatalogURIConverter(final OMLCatalog catalog, final Collection<URIHandler> uriHandlers, final Collection<ContentHandler> contentHandlers, final URIConverter converter) {
     super(uriHandlers, contentHandlers);
     this.catalog = catalog;
+    this.uriConverter = converter;
   }
   
   /**
@@ -65,13 +77,22 @@ public class CatalogURIConverter extends ExtensibleURIConverterImpl {
         URI _xblockexpression = null;
         {
           final String resolved = this.catalog.resolveURI(uri.toString());
-          if (((null == resolved) || (!resolved.startsWith("file:")))) {
-            StringConcatenation _builder = new StringConcatenation();
-            _builder.append("No catalog mapping for URI: ");
-            _builder.append(uri);
-            throw new IllegalArgumentException(_builder.toString());
+          URI _xifexpression_1 = null;
+          if (((null != resolved) && resolved.startsWith("file:"))) {
+            _xifexpression_1 = URI.createURI(resolved);
+          } else {
+            URI _xifexpression_2 = null;
+            if ((null != this.uriConverter)) {
+              _xifexpression_2 = this.uriConverter.normalize(uri);
+            } else {
+              StringConcatenation _builder = new StringConcatenation();
+              _builder.append("No parent URIConverter and no catalog mapping for URI: ");
+              _builder.append(uri);
+              throw new IllegalArgumentException(_builder.toString());
+            }
+            _xifexpression_1 = _xifexpression_2;
           }
-          _xblockexpression = URI.createURI((resolved + ".omlzip"));
+          _xblockexpression = _xifexpression_1;
         }
         _xifexpression = _xblockexpression;
       }
