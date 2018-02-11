@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
 import org.eclipse.emf.ecore.xcore.XcoreStandaloneSetup
+import gov.nasa.jpl.imce.oml.model.extensions.CatalogURIConverter
 
 /**
  * An OMLZipResourceSet is a ResourceSet for creating, loading and saving OMLZipResource(s)

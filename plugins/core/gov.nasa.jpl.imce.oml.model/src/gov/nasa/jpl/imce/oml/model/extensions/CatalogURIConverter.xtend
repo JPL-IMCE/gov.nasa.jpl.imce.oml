@@ -15,7 +15,7 @@
  * limitations under the License.
  * License Terms
  */
-package gov.nasa.jpl.imce.oml.zip
+package gov.nasa.jpl.imce.oml.model.extensions
 
 import java.lang.IllegalArgumentException
 import java.util.Collection
@@ -26,13 +26,16 @@ import org.eclipse.emf.ecore.resource.ContentHandler
 import org.eclipse.emf.ecore.resource.URIHandler
 
 import gov.nasa.jpl.imce.oml.model.extensions.OMLCatalog
+import org.eclipse.emf.ecore.resource.URIConverter
 
 /**
  * CatalogURIConverter is a kind of ExtensibleURIConverterImpl
  * where normalization involves resolving an URI through an OASIS XML Catalog.
  */
 class CatalogURIConverter extends ExtensibleURIConverterImpl {
-	 
+	
+	protected URIConverter uriConverter
+	
 	protected OMLCatalog catalog
 	
 	/**
@@ -40,16 +43,25 @@ class CatalogURIConverter extends ExtensibleURIConverterImpl {
 	 * as the basis for URI normalization.
 	 */
 	new(OMLCatalog catalog) {
-		this(catalog, URIHandler.DEFAULT_HANDLERS, ContentHandler.Registry.INSTANCE.contentHandlers())
+		this(catalog, URIHandler.DEFAULT_HANDLERS, ContentHandler.Registry.INSTANCE.contentHandlers(), null)
 	}
 	
 	/**
 	 * Initialize an CatalogURIConverter using an OMLCatalog
-	 * as the basis for URI normalization.
+	 * as the basis for URI normalization and a parent URIConverter for other cases.
 	 */
-	new(OMLCatalog catalog, Collection<URIHandler> uriHandlers, Collection<ContentHandler> contentHandlers) {
+	new(OMLCatalog catalog, URIConverter converter) {
+		this(catalog, URIHandler.DEFAULT_HANDLERS, ContentHandler.Registry.INSTANCE.contentHandlers(), converter)
+	}
+	
+	/**
+	 * Initialize an CatalogURIConverter using an OMLCatalog
+	 * as the basis for URI normalization and a parent URIConverter for other cases.
+	 */
+	new(OMLCatalog catalog, Collection<URIHandler> uriHandlers, Collection<ContentHandler> contentHandlers, URIConverter converter) {
 		super(uriHandlers, contentHandlers)
 		this.catalog = catalog
+		this.uriConverter = converter
 	}
 	
 	/**
@@ -60,9 +72,12 @@ class CatalogURIConverter extends ExtensibleURIConverterImpl {
 			uri
 		else {
 			val resolved = catalog.resolveURI(uri.toString)
-			if (null === resolved || !resolved.startsWith("file:"))
-				throw new IllegalArgumentException('''No catalog mapping for URI: «uri»''')
-			URI.createURI(resolved + ".omlzip")
+			if (null !== resolved && resolved.startsWith("file:"))
+				URI.createURI(resolved)
+			else if (null !== uriConverter)			
+				uriConverter.normalize(uri)
+			else
+				throw new IllegalArgumentException('''No parent URIConverter and no catalog mapping for URI: «uri»''')
 		}
 	}
 	

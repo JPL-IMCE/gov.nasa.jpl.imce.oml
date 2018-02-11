@@ -163,11 +163,14 @@ public class OMLExtensions {
 		}
 	}
 
+	// CatalogURIConverter!
 	static def OMLCatalog getCatalog(ResourceSet rs) {
 		val o = rs.loadOptions.get(RESOURCE_SET_CATALOG_INSTANCE) ?: getOrCreateCatalogResolver(rs).catalog
 		if (OMLCatalog.isInstance(o)) {
 			val c = OMLCatalog.cast(o)
 			rs.loadOptions.putIfAbsent(RESOURCE_SET_CATALOG_INSTANCE, c)
+			val omlc = new CatalogURIConverter(c, rs.URIConverter)
+			rs.URIConverter = omlc
 			return c
 		} else {
 			return null

@@ -33,6 +33,7 @@ import java.util.regex.Pattern
 import gov.nasa.jpl.imce.oml.model.extensions.OMLCatalog
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions
 import static extension gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions.getCatalog
+import gov.nasa.jpl.imce.oml.model.extensions.CatalogURIConverter
 
 /**
  * An OMLZipResource is a kind of Resource that is loaded from and saved to an *.omlzip file
