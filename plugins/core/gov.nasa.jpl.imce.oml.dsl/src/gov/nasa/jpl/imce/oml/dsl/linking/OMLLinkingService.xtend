@@ -150,19 +150,19 @@ class OMLLinkingService extends DefaultLinkingService {
 				switch refType {
 					case BundlesPackage.eINSTANCE.bundle: {
 						val bundle = rs.resources.map[contents.filter(Extent).map[modules.filter(Bundle)].flatten].
-							flatten.findFirst[b|b.iri() == resourceIRI]
+							flatten.findFirst[b|b.iri() == resolvedIRI || b.iri() == resourceIRI]
 						return if(null === bundle) Collections.emptyList() else Collections.singletonList(bundle)
 					}
 					case TerminologiesPackage.eINSTANCE.terminologyBox: {
 						val tbox = rs.resources.map [
 							contents.filter(Extent).map[modules.filter(TerminologyBox)].flatten
-						].flatten.findFirst[tbox|tbox.iri() == resourceIRI]
+						].flatten.findFirst[tbox|tbox.iri() == resolvedIRI || tbox.iri() == resourceIRI]
 						return if(null === tbox) Collections.emptyList() else Collections.singletonList(tbox)
 					}
 					case DescriptionsPackage.eINSTANCE.descriptionBox: {
 						val dbox = rs.resources.map [
 							contents.filter(Extent).map[modules.filter(DescriptionBox)].flatten
-						].flatten.findFirst[dbox|dbox.iri() == resourceIRI]
+						].flatten.findFirst[dbox|dbox.iri() == resolvedIRI || dbox.iri() == resourceIRI]
 						return if(null === dbox) Collections.emptyList() else Collections.singletonList(dbox)
 					}
 					default:
