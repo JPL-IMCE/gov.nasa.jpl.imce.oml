@@ -272,8 +272,7 @@ public class OMLLinkingService extends DefaultLinkingService {
               return Iterables.<Bundle>concat(IterableExtensions.<Extent, Iterable<Bundle>>map(Iterables.<Extent>filter(it.getContents(), Extent.class), _function_9));
             };
             final Function1<Bundle, Boolean> _function_9 = (Bundle b) -> {
-              String _iri = b.iri();
-              return Boolean.valueOf(Objects.equal(_iri, resourceIRI));
+              return Boolean.valueOf((Objects.equal(b.iri(), resolvedIRI) || Objects.equal(b.iri(), resourceIRI)));
             };
             final Bundle bundle_1 = IterableExtensions.<Bundle>findFirst(Iterables.<Bundle>concat(ListExtensions.<Resource, Iterable<Bundle>>map(rs.getResources(), _function_8)), _function_9);
             List<EObject> _xifexpression_1 = null;
@@ -295,8 +294,7 @@ public class OMLLinkingService extends DefaultLinkingService {
                 return Iterables.<TerminologyBox>concat(IterableExtensions.<Extent, Iterable<TerminologyBox>>map(Iterables.<Extent>filter(it.getContents(), Extent.class), _function_11));
               };
               final Function1<TerminologyBox, Boolean> _function_11 = (TerminologyBox tbox_1) -> {
-                String _iri = tbox_1.iri();
-                return Boolean.valueOf(Objects.equal(_iri, resourceIRI));
+                return Boolean.valueOf((Objects.equal(tbox_1.iri(), resolvedIRI) || Objects.equal(tbox_1.iri(), resourceIRI)));
               };
               final TerminologyBox tbox_1 = IterableExtensions.<TerminologyBox>findFirst(Iterables.<TerminologyBox>concat(ListExtensions.<Resource, Iterable<TerminologyBox>>map(rs.getResources(), _function_10)), _function_11);
               List<EObject> _xifexpression_2 = null;
@@ -319,8 +317,7 @@ public class OMLLinkingService extends DefaultLinkingService {
                 return Iterables.<DescriptionBox>concat(IterableExtensions.<Extent, Iterable<DescriptionBox>>map(Iterables.<Extent>filter(it.getContents(), Extent.class), _function_13));
               };
               final Function1<DescriptionBox, Boolean> _function_13 = (DescriptionBox dbox_1) -> {
-                String _iri = dbox_1.iri();
-                return Boolean.valueOf(Objects.equal(_iri, resourceIRI));
+                return Boolean.valueOf((Objects.equal(dbox_1.iri(), resolvedIRI) || Objects.equal(dbox_1.iri(), resourceIRI)));
               };
               final DescriptionBox dbox_1 = IterableExtensions.<DescriptionBox>findFirst(Iterables.<DescriptionBox>concat(ListExtensions.<Resource, Iterable<DescriptionBox>>map(rs.getResources(), _function_12)), _function_13);
               List<EObject> _xifexpression_3 = null;
