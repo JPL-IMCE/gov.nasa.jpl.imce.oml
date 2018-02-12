@@ -1,5 +1,5 @@
 /**
- * Copyright 2016 California Institute of Technology ("Caltech").
+ * Copyright 2017 California Institute of Technology ("Caltech").
  * U.S. Government sponsorship acknowledged.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,32 +15,29 @@
  * limitations under the License.
  * License Terms
  */
-package gov.nasa.jpl.imce.oml.zip;
+package gov.nasa.jpl.imce.oml.dsl;
 
 import com.google.inject.Inject;
 import com.google.inject.Provider;
-import gov.nasa.jpl.imce.oml.zip.OMLZipResource;
+import gov.nasa.jpl.imce.oml.dsl.OMLXtextResource;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.resource.IResourceFactory;
 
-/**
- * OMLZipResourceFactory is a Resource.Factory for OMLZipResources.
- */
 @SuppressWarnings("all")
-public class OMLZipResourceFactory implements IResourceFactory {
-  private Provider<OMLZipResource> provider;
+public class OMLXtextResourceFactory implements IResourceFactory {
+  private Provider<OMLXtextResource> provider;
   
   @Inject
-  public OMLZipResourceFactory(final Provider<OMLZipResource> resourceProvider) {
+  public OMLXtextResourceFactory(final Provider<OMLXtextResource> resourceProvider) {
     this.provider = resourceProvider;
   }
   
   @Override
   public Resource createResource(final URI uri) {
-    OMLZipResource _xblockexpression = null;
+    OMLXtextResource _xblockexpression = null;
     {
-      final OMLZipResource r = this.provider.get();
+      final OMLXtextResource r = this.provider.get();
       r.setURI(uri);
       _xblockexpression = r;
     }

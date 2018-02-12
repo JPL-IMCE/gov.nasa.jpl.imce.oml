@@ -5027,21 +5027,25 @@ class OMLSpecificationTables {
   	val omlCatalog = OMLExtensions.getCatalog(rs)
   	if (null === omlCatalog)
   		throw new IllegalArgumentException("loadOMLZipResource: ResourceSet must have an OMLCatalog!")
-  		
-  	val uriString = uri.toString
+
+	val uriString = uri.toString
   	val Resource r = if (uriString.startsWith("file:"))
   		rs.getResource(uri, true)
   	else if (uriString.startsWith("http:")) {
-	  	val omlIRI = omlCatalog.resolveURI(uriString + ".oml")
-	  	val omlZipIRI = omlCatalog.resolveURI(uriString + ".omlzip")
+	  	val r1 = omlCatalog.resolveURI(uriString)
+	  	val r2 = omlCatalog.resolveURI(uriString + ".oml")
+	  	val r3 = omlCatalog.resolveURI(uriString + ".omlzip")
 	  	
-	  	val omlFile = if (null !== omlIRI && omlIRI.startsWith("file:")) new File(omlIRI.substring(5)) else null
-	  	val omlZipFile = if (null !== omlZipIRI && omlZipIRI.startsWith("file:")) new File(omlZipIRI.substring(5)) else null
+	  	val f1 = if (null !== r1 && r1.startsWith("file:")) new File(r1.substring(5)) else null
+	  	val f2 = if (null !== r2 && r2.startsWith("file:")) new File(r2.substring(5)) else null
+	  	val f3 = if (null !== r3 && r3.startsWith("file:")) new File(r3.substring(5)) else null
 	  	
-	  	if (null !== omlFile && omlFile.exists && omlFile.canRead)
-	  		rs.getResource(URI.createURI(omlIRI), true)
-	  	else if (null !== omlZipFile && omlZipFile.exists && omlZipFile.canRead)
-	  		rs.getResource(URI.createURI(omlZipIRI), true)
+	  	if (null !== f1 && f1.exists && f1.canRead)
+	  		rs.getResource(URI.createURI(r1), true)
+	  	else if (null !== f2 && f2.exists && f2.canRead)
+	  		rs.getResource(URI.createURI(r2), true)
+	  	else if (null !== f3 && f3.exists && f3.canRead)
+	  		rs.getResource(URI.createURI(r3), true)
 	  	else
 	  		throw new IllegalArgumentException("loadOMLZipResource: "+uri+" not resolved!")
   	}

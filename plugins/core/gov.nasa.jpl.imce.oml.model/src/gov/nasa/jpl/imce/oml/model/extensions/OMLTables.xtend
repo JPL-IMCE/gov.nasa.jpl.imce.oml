@@ -25,6 +25,7 @@ import gov.nasa.jpl.imce.oml.model.bundles.SpecificDisjointConceptAxiom
 import gov.nasa.jpl.imce.oml.model.common.AnnotationProperty
 import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue
 import gov.nasa.jpl.imce.oml.model.common.CommonFactory
+import gov.nasa.jpl.imce.oml.model.common.CrossReferencabilityKind
 import gov.nasa.jpl.imce.oml.model.common.Extent
 import gov.nasa.jpl.imce.oml.model.common.LiteralBoolean
 import gov.nasa.jpl.imce.oml.model.common.LiteralDateTime
@@ -82,6 +83,7 @@ import gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction
+import gov.nasa.jpl.imce.oml.model.terminologies.Predicate
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue
@@ -91,6 +93,7 @@ import gov.nasa.jpl.imce.oml.model.terminologies.Scalar
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarDataProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfRestriction
+import gov.nasa.jpl.imce.oml.model.terminologies.SegmentPredicate
 import gov.nasa.jpl.imce.oml.model.terminologies.StringScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.Structure
 import gov.nasa.jpl.imce.oml.model.terminologies.StructuredDataProperty
@@ -103,11 +106,11 @@ import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyKind
 import gov.nasa.jpl.imce.oml.model.terminologies.TimeScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship
 import java.util.ArrayList
+import java.util.Comparator
 import java.util.List
 import java.util.regex.Matcher
 import java.util.regex.Pattern
-import gov.nasa.jpl.imce.oml.model.terminologies.SegmentPredicate
-import gov.nasa.jpl.imce.oml.model.terminologies.Predicate
+import java.util.stream.Collectors
 
 /**
  * OMLTables is a collection of extension queries for OML Extent and conversion methods for OML values.
@@ -117,18 +120,24 @@ import gov.nasa.jpl.imce.oml.model.terminologies.Predicate
  */
 class OMLTables {
 	
+  static def <T extends CrossReferencabilityKind> Comparator<T> crossReferencabilityComparator() {
+  	new Comparator<T> {
+  		override def int compare(T t1, T t2) {
+  			t1.uuid().compareTo(t2.uuid())
+  		}
+  	}
+  }
+  
   static def List<AnnotationProperty> annotationProperties(Extent e) {
-  	val List<AnnotationProperty> result = new ArrayList<AnnotationProperty>()
+  	val ArrayList<AnnotationProperty> result = new ArrayList<AnnotationProperty>()
   	e.modules.forEach[m|result.addAll(m.annotationProperties)]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<AnnotationPropertyValue> annotationPropertyValues(Extent e) {
   	val List<AnnotationPropertyValue> result = new ArrayList<AnnotationPropertyValue>()
   	result.addAll(e.eAllContents.filter(AnnotationPropertyValue).toIterable)
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   // modules
@@ -136,29 +145,25 @@ class OMLTables {
   static def List<TerminologyGraph> terminologyGraphs(Extent e) {
   	val List<TerminologyGraph> result = new ArrayList<TerminologyGraph>()
   	result.addAll(e.modules.filter(TerminologyGraph))
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<Bundle> bundles(Extent e) {
   	val List<Bundle> result = new ArrayList<Bundle>()
   	result.addAll(e.modules.filter(Bundle))
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<DescriptionBox> descriptionBoxes(Extent e) {
   	val List<DescriptionBox> result = new ArrayList<DescriptionBox>()
   	result.addAll(e.modules.filter(DescriptionBox))
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<TerminologyBox> terminologies(Extent e) {
   	val List<TerminologyBox> result = new ArrayList<TerminologyBox>()
   	result.addAll(e.modules.filter(TerminologyBox))
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   // module edges
@@ -166,43 +171,37 @@ class OMLTables {
   static def List<TerminologyExtensionAxiom> terminologyExtensionAxioms(Extent e) {
   	val List<TerminologyExtensionAxiom> result = new ArrayList<TerminologyExtensionAxiom>()
   	e.terminologies.forEach[tbox | result.addAll(tbox.boxAxioms.filter(TerminologyExtensionAxiom))]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<TerminologyNestingAxiom> terminologyNestingAxioms(Extent e) {
   	val List<TerminologyNestingAxiom> result = new ArrayList<TerminologyNestingAxiom>()
   	e.terminologies.forEach[tbox | result.addAll(tbox.boxAxioms.filter(TerminologyNestingAxiom))]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<ConceptDesignationTerminologyAxiom> conceptDesignationTerminologyAxioms(Extent e) {
   	val List<ConceptDesignationTerminologyAxiom> result = new ArrayList<ConceptDesignationTerminologyAxiom>()
   	e.terminologies.forEach[tbox | result.addAll(tbox.boxAxioms.filter(ConceptDesignationTerminologyAxiom))]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<BundledTerminologyAxiom> bundledTerminologyAxioms(Extent e) {
   	val List<BundledTerminologyAxiom> result = new ArrayList<BundledTerminologyAxiom>()
   	e.bundles.forEach[b | result.addAll(b.bundleAxioms.filter(BundledTerminologyAxiom))]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<DescriptionBoxExtendsClosedWorldDefinitions> descriptionBoxExtendsClosedWorldDefinitions(Extent e) {
   	val List<DescriptionBoxExtendsClosedWorldDefinitions> result = new ArrayList<DescriptionBoxExtendsClosedWorldDefinitions>()
   	e.descriptionBoxes.forEach[dbox | result.addAll(dbox.closedWorldDefinitions)]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<DescriptionBoxRefinement> descriptionBoxRefinements(Extent e) {
   	val List<DescriptionBoxRefinement> result = new ArrayList<DescriptionBoxRefinement>()
   	e.descriptionBoxes.forEach[dbox | result.addAll(dbox.descriptionBoxRefinements)]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   // Terms
@@ -210,114 +209,103 @@ class OMLTables {
   static def List<Aspect> aspects(Extent e) {
   	val List<Aspect> result = new ArrayList<Aspect>()
   	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(Aspect))]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<Concept> concepts(Extent e) {
   	val List<Concept> result = new ArrayList<Concept>()
   	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(Concept))]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<ReifiedRelationship> reifiedRelationships(Extent e) {
   	val List<ReifiedRelationship> result = new ArrayList<ReifiedRelationship>()
   	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(ReifiedRelationship))]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def Iterable<ForwardProperty> forwardProperties(Extent e) {
-  	reifiedRelationships(e).map[forwardProperty].filterNull
+  	val List<ForwardProperty> result = new ArrayList<ForwardProperty>()
+  	result.addAll(reifiedRelationships(e).map[forwardProperty].filterNull)
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def Iterable<InverseProperty> inverseProperties(Extent e) {
-  	reifiedRelationships(e).map[inverseProperty].filterNull
+  	val List<InverseProperty> result = new ArrayList<InverseProperty>()
+  	result.addAll(reifiedRelationships(e).map[inverseProperty].filterNull)
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<UnreifiedRelationship> unreifiedRelationships(Extent e) {
   	val List<UnreifiedRelationship> result = new ArrayList<UnreifiedRelationship>()
   	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(UnreifiedRelationship))]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<Scalar> scalars(Extent e) {
   	val List<Scalar> result = new ArrayList<Scalar>()
   	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(Scalar))]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<Structure> structures(Extent e) {
   	val List<Structure> result = new ArrayList<Structure>()
   	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(Structure))]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<BinaryScalarRestriction> binaryScalarRestrictions(Extent e) {
   	val List<BinaryScalarRestriction> result = new ArrayList<BinaryScalarRestriction>()
   	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(BinaryScalarRestriction))]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<IRIScalarRestriction> iriScalarRestrictions(Extent e) {
   	val List<IRIScalarRestriction> result = new ArrayList<IRIScalarRestriction>()
   	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(IRIScalarRestriction))]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<NumericScalarRestriction> numericScalarRestrictions(Extent e) {
   	val List<NumericScalarRestriction> result = new ArrayList<NumericScalarRestriction>()
   	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(NumericScalarRestriction))]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<PlainLiteralScalarRestriction> plainLiteralScalarRestrictions(Extent e) {
   	val List<PlainLiteralScalarRestriction> result = new ArrayList<PlainLiteralScalarRestriction>()
   	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(PlainLiteralScalarRestriction))]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<ScalarOneOfRestriction> scalarOneOfRestrictions(Extent e) {
   	val List<ScalarOneOfRestriction> result = new ArrayList<ScalarOneOfRestriction>()
   	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(ScalarOneOfRestriction))]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<ScalarOneOfLiteralAxiom> scalarOneOfLiteralAxioms(Extent e) {
   	val List<ScalarOneOfLiteralAxiom> result = new ArrayList<ScalarOneOfLiteralAxiom>()
   	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(ScalarOneOfLiteralAxiom))]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<StringScalarRestriction> stringScalarRestrictions(Extent e) {
   	val List<StringScalarRestriction> result = new ArrayList<StringScalarRestriction>()
   	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(StringScalarRestriction))]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<SynonymScalarRestriction> synonymScalarRestrictions(Extent e) {
   	val List<SynonymScalarRestriction> result = new ArrayList<SynonymScalarRestriction>()
   	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(SynonymScalarRestriction))]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<TimeScalarRestriction> timeScalarRestrictions(Extent e) {
   	val List<TimeScalarRestriction> result = new ArrayList<TimeScalarRestriction>()
   	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(TimeScalarRestriction))]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   // data property terms
@@ -325,29 +313,25 @@ class OMLTables {
   static def List<EntityScalarDataProperty> entityScalarDataProperties(Extent e) {
   	val List<EntityScalarDataProperty> result = new ArrayList<EntityScalarDataProperty>()
   	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(EntityScalarDataProperty))]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<EntityStructuredDataProperty> entityStructuredDataProperties(Extent e) {
   	val List<EntityStructuredDataProperty> result = new ArrayList<EntityStructuredDataProperty>()
   	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(EntityStructuredDataProperty))]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<ScalarDataProperty> scalarDataProperties(Extent e) {
   	val List<ScalarDataProperty> result = new ArrayList<ScalarDataProperty>()
   	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(ScalarDataProperty))]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<StructuredDataProperty> structuredDataProperties(Extent e) {
   	val List<StructuredDataProperty> result = new ArrayList<StructuredDataProperty>()
   	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(StructuredDataProperty))]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   // specialization axioms
@@ -355,78 +339,67 @@ class OMLTables {
   static def List<AspectSpecializationAxiom> aspectSpecializationAxioms(Extent e) {
   	val List<AspectSpecializationAxiom> result = new ArrayList<AspectSpecializationAxiom>()
   	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(AspectSpecializationAxiom))]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<ConceptSpecializationAxiom> conceptSpecializationAxioms(Extent e) {
   	val List<ConceptSpecializationAxiom> result = new ArrayList<ConceptSpecializationAxiom>()
   	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(ConceptSpecializationAxiom))]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<ReifiedRelationshipSpecializationAxiom> reifiedRelationshipSpecializationAxioms(Extent e) {
   	val List<ReifiedRelationshipSpecializationAxiom> result = new ArrayList<ReifiedRelationshipSpecializationAxiom>()
   	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(ReifiedRelationshipSpecializationAxiom))]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<SubDataPropertyOfAxiom> subDataPropertyOfAxioms(Extent e) {
   	val List<SubDataPropertyOfAxiom> result = new ArrayList<SubDataPropertyOfAxiom>()
   	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(SubDataPropertyOfAxiom)) ]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<SubObjectPropertyOfAxiom> subObjectPropertyOfAxioms(Extent e) {
   	val List<SubObjectPropertyOfAxiom> result = new ArrayList<SubObjectPropertyOfAxiom>()
   	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(SubObjectPropertyOfAxiom)) ]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<EntityExistentialRestrictionAxiom> entityExistentialRestrictionAxioms(Extent e) {
   	val List<EntityExistentialRestrictionAxiom> result = new ArrayList<EntityExistentialRestrictionAxiom>()
   	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(EntityExistentialRestrictionAxiom))]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<EntityUniversalRestrictionAxiom> entityUniversalRestrictionAxioms(Extent e) {
   	val List<EntityUniversalRestrictionAxiom> result = new ArrayList<EntityUniversalRestrictionAxiom>()
   	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(EntityUniversalRestrictionAxiom))]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<EntityScalarDataPropertyExistentialRestrictionAxiom> entityScalarDataPropertyExistentialRestrictionAxioms(Extent e) {
   	val List<EntityScalarDataPropertyExistentialRestrictionAxiom> result = new ArrayList<EntityScalarDataPropertyExistentialRestrictionAxiom>()
   	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(EntityScalarDataPropertyExistentialRestrictionAxiom))]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<EntityScalarDataPropertyParticularRestrictionAxiom> entityScalarDataPropertyParticularRestrictionAxioms(Extent e) {
   	val List<EntityScalarDataPropertyParticularRestrictionAxiom> result = new ArrayList<EntityScalarDataPropertyParticularRestrictionAxiom>()
   	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(EntityScalarDataPropertyParticularRestrictionAxiom))]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<EntityScalarDataPropertyUniversalRestrictionAxiom> entityScalarDataPropertyUniversalRestrictionAxioms(Extent e) {
   	val List<EntityScalarDataPropertyUniversalRestrictionAxiom> result = new ArrayList<EntityScalarDataPropertyUniversalRestrictionAxiom>()
   	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(EntityScalarDataPropertyUniversalRestrictionAxiom))]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<EntityStructuredDataPropertyParticularRestrictionAxiom> entityStructuredDataPropertyParticularRestrictionAxioms(Extent e) {
   	val List<EntityStructuredDataPropertyParticularRestrictionAxiom> result = new ArrayList<EntityStructuredDataPropertyParticularRestrictionAxiom>()
   	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(EntityStructuredDataPropertyParticularRestrictionAxiom))]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   // disjunctions
@@ -434,8 +407,7 @@ class OMLTables {
   static def List<RootConceptTaxonomyAxiom> rootConceptTaxonomyAxioms(Extent e) {
   	val List<RootConceptTaxonomyAxiom> result = new ArrayList<RootConceptTaxonomyAxiom>()
   	e.bundles.forEach[b | result.addAll(b.bundleStatements.filter(RootConceptTaxonomyAxiom))]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<SpecificDisjointConceptAxiom> specificDisjointConceptAxioms(Extent e) {
@@ -443,8 +415,7 @@ class OMLTables {
   	e.bundles.forEach[b | b.boxStatements.filter(RootConceptTaxonomyAxiom).forEach[r |
   		result.addAll(r.allNestedElements.filter(SpecificDisjointConceptAxiom))
   	]]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<AnonymousConceptUnionAxiom> anonymousConceptUnionAxioms(Extent e) {
@@ -452,8 +423,7 @@ class OMLTables {
   	e.bundles.forEach[b | b.boxStatements.filter(RootConceptTaxonomyAxiom).forEach[r |
   		result.addAll(r.allNestedElements.filter(AnonymousConceptUnionAxiom))
   	]]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   // chain rules
@@ -461,8 +431,7 @@ class OMLTables {
   static def List<ChainRule> chainRules(Extent e) {
   	val List<ChainRule> result = new ArrayList<ChainRule>()
   	e.terminologyGraphs.forEach[b | result.addAll(b.boxStatements.filter(ChainRule)) ]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<RuleBodySegment> ruleBodySegments(Extent e) {
@@ -470,8 +439,7 @@ class OMLTables {
   	e.terminologyGraphs.forEach[b | b.boxStatements.filter(ChainRule).forEach[r |
   		result.addAll(r.allNestedElements.filter(RuleBodySegment))
   	]]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<SegmentPredicate> segmentPredicates(Extent e) {
@@ -479,8 +447,7 @@ class OMLTables {
   	e.terminologyGraphs.forEach[b | b.boxStatements.filter(ChainRule).forEach[r |
   		result.addAll(r.allNestedElements.filter(SegmentPredicate))
   	]]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<Predicate> predicates(Extent e) {
@@ -492,8 +459,7 @@ class OMLTables {
   		result.add(rr.forwardProperty)
   		if (null !== rr.inverseProperty) result.add(rr.inverseProperty)
   	]]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   // instances
@@ -501,29 +467,25 @@ class OMLTables {
   static def List<ConceptInstance> conceptInstances(Extent e) {
   	val List<ConceptInstance> result = new ArrayList<ConceptInstance>()
   	e.descriptionBoxes.forEach[dbox | result.addAll(dbox.conceptInstances)]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<ReifiedRelationshipInstance> reifiedRelationshipInstances(Extent e) {
   	val List<ReifiedRelationshipInstance> result = new ArrayList<ReifiedRelationshipInstance>()
   	e.descriptionBoxes.forEach[dbox | result.addAll(dbox.reifiedRelationshipInstances)]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<ReifiedRelationshipInstanceDomain> reifiedRelationshipInstanceDomains(Extent e) {
   	val List<ReifiedRelationshipInstanceDomain> result = new ArrayList<ReifiedRelationshipInstanceDomain>()
   	e.descriptionBoxes.forEach[dbox | result.addAll(dbox.reifiedRelationshipInstanceDomains)]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<ReifiedRelationshipInstanceRange> reifiedRelationshipInstanceRanges(Extent e) {
   	val List<ReifiedRelationshipInstanceRange> result = new ArrayList<ReifiedRelationshipInstanceRange>()
   	e.descriptionBoxes.forEach[dbox | result.addAll(dbox.reifiedRelationshipInstanceRanges)]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<RestrictionScalarDataPropertyValue> restrictionScalarDataPropertyValues(Extent e) {
@@ -531,8 +493,7 @@ class OMLTables {
   	e.terminologyGraphs.forEach[b | b.boxStatements.filter(EntityStructuredDataPropertyParticularRestrictionAxiom).forEach[r |
   		result.addAll(r.allNestedElements.filter(RestrictionScalarDataPropertyValue))
   	]]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<RestrictionStructuredDataPropertyTuple> restrictionStructuredDataPropertyTuples(Extent e) {
@@ -540,8 +501,7 @@ class OMLTables {
   	e.terminologyGraphs.forEach[b | b.boxStatements.filter(EntityStructuredDataPropertyParticularRestrictionAxiom).forEach[r |
   		result.addAll(r.allNestedElements.filter(RestrictionStructuredDataPropertyTuple))
   	]]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<ScalarDataPropertyValue> scalarDataPropertyValues(Extent e) {
@@ -549,22 +509,19 @@ class OMLTables {
   	e.descriptionBoxes.forEach[dbox | dbox.singletonStructuredDataPropertyValues.forEach[s|
   		result.addAll(s.allNestedElements.filter(ScalarDataPropertyValue))
   	]]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<SingletonInstanceScalarDataPropertyValue> singletonInstanceScalarDataPropertyValues(Extent e) {
   	val List<SingletonInstanceScalarDataPropertyValue> result = new ArrayList<SingletonInstanceScalarDataPropertyValue>()
   	e.descriptionBoxes.forEach[dbox | result.addAll(dbox.singletonScalarDataPropertyValues)]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<SingletonInstanceStructuredDataPropertyValue> singletonInstanceStructuredDataPropertyValues(Extent e) {
   	val List<SingletonInstanceStructuredDataPropertyValue> result = new ArrayList<SingletonInstanceStructuredDataPropertyValue>()
   	e.descriptionBoxes.forEach[dbox | result.addAll(dbox.singletonStructuredDataPropertyValues)]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<StructuredDataPropertyTuple> structuredDataPropertyTuples(Extent e) {
@@ -572,15 +529,13 @@ class OMLTables {
   	e.descriptionBoxes.forEach[dbox | dbox.singletonStructuredDataPropertyValues.forEach[s|
   		result.addAll(s.allNestedElements.filter(StructuredDataPropertyTuple))
   	]]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
   static def List<UnreifiedRelationshipInstanceTuple> unreifiedRelationshipInstanceTuples(Extent e) {
   	val List<UnreifiedRelationshipInstanceTuple> result = new ArrayList<UnreifiedRelationshipInstanceTuple>()
   	e.descriptionBoxes.forEach[dbox | result.addAll(dbox.unreifiedRelationshipInstanceTuples)]
-  	result.sortInplaceBy[uuid()]
-  	result
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
 	
   public static val char QUOTE = '"'

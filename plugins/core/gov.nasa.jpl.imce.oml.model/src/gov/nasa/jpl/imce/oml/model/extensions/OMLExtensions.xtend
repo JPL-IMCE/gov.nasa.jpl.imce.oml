@@ -163,11 +163,14 @@ public class OMLExtensions {
 		}
 	}
 
+	// CatalogURIConverter!
 	static def OMLCatalog getCatalog(ResourceSet rs) {
 		val o = rs.loadOptions.get(RESOURCE_SET_CATALOG_INSTANCE) ?: getOrCreateCatalogResolver(rs).catalog
 		if (OMLCatalog.isInstance(o)) {
 			val c = OMLCatalog.cast(o)
 			rs.loadOptions.putIfAbsent(RESOURCE_SET_CATALOG_INSTANCE, c)
+			val omlc = new CatalogURIConverter(c, rs.URIConverter)
+			rs.URIConverter = omlc
 			return c
 		} else {
 			return null
@@ -398,12 +401,13 @@ public class OMLExtensions {
 	}
 
 	static def Iterable<TerminologyBox> allImportedTerminologies(TerminologyBox it) {
-		collectAllImportedTerminologies(Lists.newArrayList(it), Lists.newArrayList(it))
+		collectAllImportedTerminologies(Lists.newArrayList(it), Lists.newArrayList(it), Sets.newHashSet(it))
 	}
 
 	static final def Iterable<TerminologyBox> collectAllImportedTerminologies(
 		ArrayList<TerminologyBox> queue,
-		ArrayList<TerminologyBox> acc
+		ArrayList<TerminologyBox> acc,
+		HashSet<TerminologyBox> visited
 	) {
 		if (queue.isEmpty)
 			return acc
@@ -411,20 +415,22 @@ public class OMLExtensions {
 		val tbox = queue.head
 		queue.remove(tbox)
 
-		val inc = tbox.moduleEdges.map[targetModule].filterNull.filter(TerminologyBox)
+		val inc = tbox.moduleEdges.map[targetModule].filterNull.filter(TerminologyBox).reject[visited.contains(it)]
 		queue.addAll(inc)
 		acc.addAll(inc)
+		visited.addAll(inc)
 
-		collectAllImportedTerminologies(queue, acc)
+		collectAllImportedTerminologies(queue, acc, visited)
 	}
 
 	def Iterable<Module> allImportedModules(Module it) {
-		collectAllImportedModules(Lists.newArrayList(it), Lists.newArrayList(it))
+		collectAllImportedModules(Lists.newArrayList(it), Lists.newArrayList(it), Sets.newHashSet(it))
 	}
 
 	final def Iterable<Module> collectAllImportedModules(
 		ArrayList<Module> queue,
-		ArrayList<Module> acc
+		ArrayList<Module> acc,
+		HashSet<Module> visited
 	) {
 		if (queue.isEmpty)
 			return acc
@@ -432,11 +438,12 @@ public class OMLExtensions {
 		val m = queue.head
 		queue.remove(m)
 
-		val inc = m.moduleEdges.map[targetModule].filterNull
+		val inc = m.moduleEdges.map[targetModule].filterNull.reject[visited.contains(it)]
 		queue.addAll(inc)
 		acc.addAll(inc)
+		visited.addAll(inc)
 
-		collectAllImportedModules(queue, acc)
+		collectAllImportedModules(queue, acc, visited)
 	}
 
 	def Iterable<Entity> localEntities(TerminologyBox it) {
@@ -541,12 +548,13 @@ public class OMLExtensions {
 	}
 
 	def Iterable<Bundle> allImportedBundles(Bundle it) {
-		collectAllImportedBundles(Lists.newArrayList(it), Lists.newArrayList(it))
+		collectAllImportedBundles(Lists.newArrayList(it), Lists.newArrayList(it), Sets.newHashSet(it))
 	}
 
 	final def Iterable<Bundle> collectAllImportedBundles(
 		ArrayList<Bundle> queue,
-		ArrayList<Bundle> acc
+		ArrayList<Bundle> acc,
+		HashSet<Bundle> visited
 	) {
 		if (queue.isEmpty)
 			return acc
@@ -554,11 +562,12 @@ public class OMLExtensions {
 		val bundle = queue.head
 		queue.remove(bundle)
 
-		val inc = bundle.bundleAxioms.map[target].filter(Bundle)
+		val inc = bundle.bundleAxioms.map[target].filter(Bundle).reject[visited.contains(it)]
 		queue.addAll(inc)
 		acc.addAll(inc)
+		visited.addAll(inc)
 
-		collectAllImportedBundles(queue, acc)
+		collectAllImportedBundles(queue, acc, visited)
 	}
 
 	def Iterable<AnonymousConceptUnionAxiom> localAnonymousConceptUnionAxioms(Bundle it) {
@@ -570,12 +579,13 @@ public class OMLExtensions {
 	}
 
 	def Iterable<TerminologyBox> allImportedTerminologiesFromDescription(DescriptionBox it) {
-		collectAllImportedTerminologiesFromDescription(Lists.newArrayList(it), Sets.newHashSet())
+		collectAllImportedTerminologiesFromDescription(Lists.newArrayList(it), Sets.newHashSet(), Sets.newHashSet())
 	}
 
 	final def Iterable<TerminologyBox> collectAllImportedTerminologiesFromDescription(
 		ArrayList<DescriptionBox> queue,
-		HashSet<TerminologyBox> acc
+		HashSet<TerminologyBox> acc,
+		HashSet<TerminologyBox> visited
 	) {
 		if (queue.isEmpty)
 			return acc
@@ -586,19 +596,21 @@ public class OMLExtensions {
 		val incd = dbox.descriptionBoxRefinements.map[refinedDescriptionBox]
 		queue.addAll(incd)
 
-		val inct = dbox.closedWorldDefinitions.map[closedWorldDefinitions].map[allImportedTerminologies].flatten
+		val inct = dbox.closedWorldDefinitions.map[closedWorldDefinitions].map[allImportedTerminologies].flatten.reject[visited.contains(it)]
 		acc.addAll(inct)
+		visited.addAll(inct)
 
-		collectAllImportedTerminologiesFromDescription(queue, acc)
+		collectAllImportedTerminologiesFromDescription(queue, acc, visited)
 	}
 
 	def Iterable<DescriptionBox> allImportedDescriptions(DescriptionBox it) {
-		collectAllImportedDescriptions(Lists.newArrayList(it), Lists.newArrayList(it))
+		collectAllImportedDescriptions(Lists.newArrayList(it), Lists.newArrayList(it), Sets.newHashSet(it))
 	}
 
 	final def Iterable<DescriptionBox> collectAllImportedDescriptions(
 		ArrayList<DescriptionBox> queue,
-		ArrayList<DescriptionBox> acc
+		ArrayList<DescriptionBox> acc,
+		HashSet<DescriptionBox> visited
 	) {
 		if (queue.isEmpty)
 			return acc
@@ -606,11 +618,12 @@ public class OMLExtensions {
 		val dbox = queue.head
 		queue.remove(dbox)
 
-		val inc = dbox.descriptionBoxRefinements.map[refinedDescriptionBox]
+		val inc = dbox.descriptionBoxRefinements.map[refinedDescriptionBox].reject[visited.contains(it)]
 		queue.addAll(inc)
 		acc.addAll(inc)
+		visited.addAll(inc)
 
-		collectAllImportedDescriptions(queue, acc)
+		collectAllImportedDescriptions(queue, acc, visited)
 	}
 
 	def Iterable<ConceptualEntitySingletonInstance> localConceptualEntitySingletonInstances(DescriptionBox it) {

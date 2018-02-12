@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 California Institute of Technology ("Caltech").
+ * Copyright 2017 California Institute of Technology ("Caltech").
  * U.S. Government sponsorship acknowledged.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +15,7 @@
  * limitations under the License.
  * License Terms
  */
-package gov.nasa.jpl.imce.oml.zip
+package gov.nasa.jpl.imce.oml.dsl
 
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.resource.Resource
@@ -23,20 +23,17 @@ import org.eclipse.xtext.resource.IResourceFactory
 import com.google.inject.Provider
 import com.google.inject.Inject
 
-/**
- * OMLZipResourceFactory is a Resource.Factory for OMLZipResources.
- */
-class OMLZipResourceFactory implements IResourceFactory {
+class OMLXtextResourceFactory implements IResourceFactory  {
 	
-	private Provider<OMLZipResource> provider
+	private Provider<OMLXtextResource> provider
 	
 	@Inject
-	new(Provider<OMLZipResource> resourceProvider) {
+	new(Provider<OMLXtextResource> resourceProvider) {
 		this.provider = resourceProvider
 	}
 	
 	override def Resource createResource(URI uri) {
-		val OMLZipResource r = provider.get()
+		val OMLXtextResource r = provider.get()
 		r.URI = uri
 		r
 	}

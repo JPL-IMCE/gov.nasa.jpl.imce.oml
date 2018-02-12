@@ -251,9 +251,9 @@ class TerminologyDiagramService {
 	def String getAxiomLabel(EntityRestrictionAxiom ax) {
 		switch ax {
 			EntityExistentialRestrictionAxiom:
-				'''some «ax.restrictedRelation.abbrevIRI» in'''
+				'''some «ax.restrictedRelationship.abbrevIRI» in'''
 			EntityUniversalRestrictionAxiom:
-				'''all «ax.restrictedRelation.abbrevIRI» in'''
+				'''all «ax.restrictedRelationship.abbrevIRI» in'''
 		}
 	}
 }

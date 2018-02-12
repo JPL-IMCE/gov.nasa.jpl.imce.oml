@@ -64,6 +64,7 @@ import gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceStructuredDataP
 import gov.nasa.jpl.imce.oml.model.descriptions.SingletonInstanceStructuredDataPropertyValue;
 import gov.nasa.jpl.imce.oml.model.descriptions.StructuredDataPropertyTuple;
 import gov.nasa.jpl.imce.oml.model.descriptions.UnreifiedRelationshipInstanceTuple;
+import gov.nasa.jpl.imce.oml.model.extensions.CatalogURIConverter;
 import gov.nasa.jpl.imce.oml.model.extensions.OMLCatalog;
 import gov.nasa.jpl.imce.oml.model.extensions.OMLCatalogManager;
 import gov.nasa.jpl.imce.oml.model.graphs.ConceptDesignationTerminologyAxiom;
@@ -140,6 +141,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.xbase.lib.Conversions;
@@ -245,6 +247,9 @@ public class OMLExtensions {
     if (_isInstance) {
       final OMLCatalog c = OMLCatalog.class.cast(o);
       rs.getLoadOptions().putIfAbsent(OMLExtensions.RESOURCE_SET_CATALOG_INSTANCE, c);
+      URIConverter _uRIConverter = rs.getURIConverter();
+      final CatalogURIConverter omlc = new CatalogURIConverter(c, _uRIConverter);
+      rs.setURIConverter(omlc);
       return c;
     } else {
       return null;
@@ -584,10 +589,10 @@ public class OMLExtensions {
   }
   
   public static Iterable<TerminologyBox> allImportedTerminologies(final TerminologyBox it) {
-    return OMLExtensions.collectAllImportedTerminologies(Lists.<TerminologyBox>newArrayList(it), Lists.<TerminologyBox>newArrayList(it));
+    return OMLExtensions.collectAllImportedTerminologies(Lists.<TerminologyBox>newArrayList(it), Lists.<TerminologyBox>newArrayList(it), Sets.<TerminologyBox>newHashSet(it));
   }
   
-  public static final Iterable<TerminologyBox> collectAllImportedTerminologies(final ArrayList<TerminologyBox> queue, final ArrayList<TerminologyBox> acc) {
+  public static final Iterable<TerminologyBox> collectAllImportedTerminologies(final ArrayList<TerminologyBox> queue, final ArrayList<TerminologyBox> acc, final HashSet<TerminologyBox> visited) {
     Iterable<TerminologyBox> _xblockexpression = null;
     {
       boolean _isEmpty = queue.isEmpty();
@@ -599,19 +604,23 @@ public class OMLExtensions {
       final Function1<ModuleEdge, Module> _function = (ModuleEdge it) -> {
         return it.targetModule();
       };
-      final Iterable<TerminologyBox> inc = Iterables.<TerminologyBox>filter(IterableExtensions.<Module>filterNull(ListExtensions.<ModuleEdge, Module>map(tbox.moduleEdges(), _function)), TerminologyBox.class);
+      final Function1<TerminologyBox, Boolean> _function_1 = (TerminologyBox it) -> {
+        return Boolean.valueOf(visited.contains(it));
+      };
+      final Iterable<TerminologyBox> inc = IterableExtensions.<TerminologyBox>reject(Iterables.<TerminologyBox>filter(IterableExtensions.<Module>filterNull(ListExtensions.<ModuleEdge, Module>map(tbox.moduleEdges(), _function)), TerminologyBox.class), _function_1);
       Iterables.<TerminologyBox>addAll(queue, inc);
       Iterables.<TerminologyBox>addAll(acc, inc);
-      _xblockexpression = OMLExtensions.collectAllImportedTerminologies(queue, acc);
+      Iterables.<TerminologyBox>addAll(visited, inc);
+      _xblockexpression = OMLExtensions.collectAllImportedTerminologies(queue, acc, visited);
     }
     return _xblockexpression;
   }
   
   public Iterable<Module> allImportedModules(final Module it) {
-    return this.collectAllImportedModules(Lists.<Module>newArrayList(it), Lists.<Module>newArrayList(it));
+    return this.collectAllImportedModules(Lists.<Module>newArrayList(it), Lists.<Module>newArrayList(it), Sets.<Module>newHashSet(it));
   }
   
-  public final Iterable<Module> collectAllImportedModules(final ArrayList<Module> queue, final ArrayList<Module> acc) {
+  public final Iterable<Module> collectAllImportedModules(final ArrayList<Module> queue, final ArrayList<Module> acc, final HashSet<Module> visited) {
     Iterable<Module> _xblockexpression = null;
     {
       boolean _isEmpty = queue.isEmpty();
@@ -623,10 +632,14 @@ public class OMLExtensions {
       final Function1<ModuleEdge, Module> _function = (ModuleEdge it) -> {
         return it.targetModule();
       };
-      final Iterable<Module> inc = IterableExtensions.<Module>filterNull(ListExtensions.<ModuleEdge, Module>map(m.moduleEdges(), _function));
+      final Function1<Module, Boolean> _function_1 = (Module it) -> {
+        return Boolean.valueOf(visited.contains(it));
+      };
+      final Iterable<Module> inc = IterableExtensions.<Module>reject(IterableExtensions.<Module>filterNull(ListExtensions.<ModuleEdge, Module>map(m.moduleEdges(), _function)), _function_1);
       Iterables.<Module>addAll(queue, inc);
       Iterables.<Module>addAll(acc, inc);
-      _xblockexpression = this.collectAllImportedModules(queue, acc);
+      Iterables.<Module>addAll(visited, inc);
+      _xblockexpression = this.collectAllImportedModules(queue, acc, visited);
     }
     return _xblockexpression;
   }
@@ -774,10 +787,10 @@ public class OMLExtensions {
   }
   
   public Iterable<Bundle> allImportedBundles(final Bundle it) {
-    return this.collectAllImportedBundles(Lists.<Bundle>newArrayList(it), Lists.<Bundle>newArrayList(it));
+    return this.collectAllImportedBundles(Lists.<Bundle>newArrayList(it), Lists.<Bundle>newArrayList(it), Sets.<Bundle>newHashSet(it));
   }
   
-  public final Iterable<Bundle> collectAllImportedBundles(final ArrayList<Bundle> queue, final ArrayList<Bundle> acc) {
+  public final Iterable<Bundle> collectAllImportedBundles(final ArrayList<Bundle> queue, final ArrayList<Bundle> acc, final HashSet<Bundle> visited) {
     Iterable<Bundle> _xblockexpression = null;
     {
       boolean _isEmpty = queue.isEmpty();
@@ -789,10 +802,14 @@ public class OMLExtensions {
       final Function1<TerminologyBundleAxiom, TerminologyBox> _function = (TerminologyBundleAxiom it) -> {
         return it.target();
       };
-      final Iterable<Bundle> inc = Iterables.<Bundle>filter(ListExtensions.<TerminologyBundleAxiom, TerminologyBox>map(bundle.getBundleAxioms(), _function), Bundle.class);
+      final Function1<Bundle, Boolean> _function_1 = (Bundle it) -> {
+        return Boolean.valueOf(visited.contains(it));
+      };
+      final Iterable<Bundle> inc = IterableExtensions.<Bundle>reject(Iterables.<Bundle>filter(ListExtensions.<TerminologyBundleAxiom, TerminologyBox>map(bundle.getBundleAxioms(), _function), Bundle.class), _function_1);
       Iterables.<Bundle>addAll(queue, inc);
       Iterables.<Bundle>addAll(acc, inc);
-      _xblockexpression = this.collectAllImportedBundles(queue, acc);
+      Iterables.<Bundle>addAll(visited, inc);
+      _xblockexpression = this.collectAllImportedBundles(queue, acc, visited);
     }
     return _xblockexpression;
   }
@@ -806,10 +823,10 @@ public class OMLExtensions {
   }
   
   public Iterable<TerminologyBox> allImportedTerminologiesFromDescription(final DescriptionBox it) {
-    return this.collectAllImportedTerminologiesFromDescription(Lists.<DescriptionBox>newArrayList(it), Sets.<TerminologyBox>newHashSet());
+    return this.collectAllImportedTerminologiesFromDescription(Lists.<DescriptionBox>newArrayList(it), Sets.<TerminologyBox>newHashSet(), Sets.<TerminologyBox>newHashSet());
   }
   
-  public final Iterable<TerminologyBox> collectAllImportedTerminologiesFromDescription(final ArrayList<DescriptionBox> queue, final HashSet<TerminologyBox> acc) {
+  public final Iterable<TerminologyBox> collectAllImportedTerminologiesFromDescription(final ArrayList<DescriptionBox> queue, final HashSet<TerminologyBox> acc, final HashSet<TerminologyBox> visited) {
     Iterable<TerminologyBox> _xblockexpression = null;
     {
       boolean _isEmpty = queue.isEmpty();
@@ -829,18 +846,22 @@ public class OMLExtensions {
       final Function1<TerminologyBox, Iterable<TerminologyBox>> _function_2 = (TerminologyBox it) -> {
         return OMLExtensions.allImportedTerminologies(it);
       };
-      final Iterable<TerminologyBox> inct = Iterables.<TerminologyBox>concat(ListExtensions.<TerminologyBox, Iterable<TerminologyBox>>map(ListExtensions.<DescriptionBoxExtendsClosedWorldDefinitions, TerminologyBox>map(dbox.getClosedWorldDefinitions(), _function_1), _function_2));
+      final Function1<TerminologyBox, Boolean> _function_3 = (TerminologyBox it) -> {
+        return Boolean.valueOf(visited.contains(it));
+      };
+      final Iterable<TerminologyBox> inct = IterableExtensions.<TerminologyBox>reject(Iterables.<TerminologyBox>concat(ListExtensions.<TerminologyBox, Iterable<TerminologyBox>>map(ListExtensions.<DescriptionBoxExtendsClosedWorldDefinitions, TerminologyBox>map(dbox.getClosedWorldDefinitions(), _function_1), _function_2)), _function_3);
       Iterables.<TerminologyBox>addAll(acc, inct);
-      _xblockexpression = this.collectAllImportedTerminologiesFromDescription(queue, acc);
+      Iterables.<TerminologyBox>addAll(visited, inct);
+      _xblockexpression = this.collectAllImportedTerminologiesFromDescription(queue, acc, visited);
     }
     return _xblockexpression;
   }
   
   public Iterable<DescriptionBox> allImportedDescriptions(final DescriptionBox it) {
-    return this.collectAllImportedDescriptions(Lists.<DescriptionBox>newArrayList(it), Lists.<DescriptionBox>newArrayList(it));
+    return this.collectAllImportedDescriptions(Lists.<DescriptionBox>newArrayList(it), Lists.<DescriptionBox>newArrayList(it), Sets.<DescriptionBox>newHashSet(it));
   }
   
-  public final Iterable<DescriptionBox> collectAllImportedDescriptions(final ArrayList<DescriptionBox> queue, final ArrayList<DescriptionBox> acc) {
+  public final Iterable<DescriptionBox> collectAllImportedDescriptions(final ArrayList<DescriptionBox> queue, final ArrayList<DescriptionBox> acc, final HashSet<DescriptionBox> visited) {
     Iterable<DescriptionBox> _xblockexpression = null;
     {
       boolean _isEmpty = queue.isEmpty();
@@ -852,10 +873,14 @@ public class OMLExtensions {
       final Function1<DescriptionBoxRefinement, DescriptionBox> _function = (DescriptionBoxRefinement it) -> {
         return it.getRefinedDescriptionBox();
       };
-      final List<DescriptionBox> inc = ListExtensions.<DescriptionBoxRefinement, DescriptionBox>map(dbox.getDescriptionBoxRefinements(), _function);
-      queue.addAll(inc);
-      acc.addAll(inc);
-      _xblockexpression = this.collectAllImportedDescriptions(queue, acc);
+      final Function1<DescriptionBox, Boolean> _function_1 = (DescriptionBox it) -> {
+        return Boolean.valueOf(visited.contains(it));
+      };
+      final Iterable<DescriptionBox> inc = IterableExtensions.<DescriptionBox>reject(ListExtensions.<DescriptionBoxRefinement, DescriptionBox>map(dbox.getDescriptionBoxRefinements(), _function), _function_1);
+      Iterables.<DescriptionBox>addAll(queue, inc);
+      Iterables.<DescriptionBox>addAll(acc, inc);
+      Iterables.<DescriptionBox>addAll(visited, inc);
+      _xblockexpression = this.collectAllImportedDescriptions(queue, acc, visited);
     }
     return _xblockexpression;
   }

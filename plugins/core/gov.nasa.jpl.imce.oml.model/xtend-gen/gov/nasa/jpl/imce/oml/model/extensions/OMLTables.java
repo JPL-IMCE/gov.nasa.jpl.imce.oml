@@ -28,6 +28,7 @@ import gov.nasa.jpl.imce.oml.model.bundles.SpecificDisjointConceptAxiom;
 import gov.nasa.jpl.imce.oml.model.common.AnnotationProperty;
 import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue;
 import gov.nasa.jpl.imce.oml.model.common.CommonFactory;
+import gov.nasa.jpl.imce.oml.model.common.CrossReferencabilityKind;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
 import gov.nasa.jpl.imce.oml.model.common.LiteralBoolean;
 import gov.nasa.jpl.imce.oml.model.common.LiteralDateTime;
@@ -112,10 +113,12 @@ import gov.nasa.jpl.imce.oml.model.terminologies.TimeScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.CollectionExtensions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
@@ -131,19 +134,24 @@ import org.eclipse.xtext.xbase.lib.ListExtensions;
  */
 @SuppressWarnings("all")
 public class OMLTables {
+  public static <T extends CrossReferencabilityKind> Comparator<T> crossReferencabilityComparator() {
+    return new Comparator<T>() {
+      @Override
+      public int compare(final T t1, final T t2) {
+        return t1.uuid().compareTo(t2.uuid());
+      }
+    };
+  }
+  
   public static List<AnnotationProperty> annotationProperties(final Extent e) {
     List<AnnotationProperty> _xblockexpression = null;
     {
-      final List<AnnotationProperty> result = new ArrayList<AnnotationProperty>();
+      final ArrayList<AnnotationProperty> result = new ArrayList<AnnotationProperty>();
       final Consumer<Module> _function = (Module m) -> {
         result.addAll(m.getAnnotationProperties());
       };
       e.getModules().forEach(_function);
-      final Function1<AnnotationProperty, String> _function_1 = (AnnotationProperty it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<AnnotationProperty, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<AnnotationProperty>crossReferencabilityComparator()).collect(Collectors.<AnnotationProperty>toList());
     }
     return _xblockexpression;
   }
@@ -153,11 +161,7 @@ public class OMLTables {
     {
       final List<AnnotationPropertyValue> result = new ArrayList<AnnotationPropertyValue>();
       Iterables.<AnnotationPropertyValue>addAll(result, IteratorExtensions.<AnnotationPropertyValue>toIterable(Iterators.<AnnotationPropertyValue>filter(e.eAllContents(), AnnotationPropertyValue.class)));
-      final Function1<AnnotationPropertyValue, String> _function = (AnnotationPropertyValue it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<AnnotationPropertyValue, String>sortInplaceBy(result, _function);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<AnnotationPropertyValue>crossReferencabilityComparator()).collect(Collectors.<AnnotationPropertyValue>toList());
     }
     return _xblockexpression;
   }
@@ -167,11 +171,7 @@ public class OMLTables {
     {
       final List<TerminologyGraph> result = new ArrayList<TerminologyGraph>();
       Iterables.<TerminologyGraph>addAll(result, Iterables.<TerminologyGraph>filter(e.getModules(), TerminologyGraph.class));
-      final Function1<TerminologyGraph, String> _function = (TerminologyGraph it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<TerminologyGraph, String>sortInplaceBy(result, _function);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<TerminologyGraph>crossReferencabilityComparator()).collect(Collectors.<TerminologyGraph>toList());
     }
     return _xblockexpression;
   }
@@ -181,11 +181,7 @@ public class OMLTables {
     {
       final List<Bundle> result = new ArrayList<Bundle>();
       Iterables.<Bundle>addAll(result, Iterables.<Bundle>filter(e.getModules(), Bundle.class));
-      final Function1<Bundle, String> _function = (Bundle it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<Bundle, String>sortInplaceBy(result, _function);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<Bundle>crossReferencabilityComparator()).collect(Collectors.<Bundle>toList());
     }
     return _xblockexpression;
   }
@@ -195,11 +191,7 @@ public class OMLTables {
     {
       final List<DescriptionBox> result = new ArrayList<DescriptionBox>();
       Iterables.<DescriptionBox>addAll(result, Iterables.<DescriptionBox>filter(e.getModules(), DescriptionBox.class));
-      final Function1<DescriptionBox, String> _function = (DescriptionBox it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<DescriptionBox, String>sortInplaceBy(result, _function);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<DescriptionBox>crossReferencabilityComparator()).collect(Collectors.<DescriptionBox>toList());
     }
     return _xblockexpression;
   }
@@ -209,11 +201,7 @@ public class OMLTables {
     {
       final List<TerminologyBox> result = new ArrayList<TerminologyBox>();
       Iterables.<TerminologyBox>addAll(result, Iterables.<TerminologyBox>filter(e.getModules(), TerminologyBox.class));
-      final Function1<TerminologyBox, String> _function = (TerminologyBox it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<TerminologyBox, String>sortInplaceBy(result, _function);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<TerminologyBox>crossReferencabilityComparator()).collect(Collectors.<TerminologyBox>toList());
     }
     return _xblockexpression;
   }
@@ -226,11 +214,7 @@ public class OMLTables {
         Iterables.<TerminologyExtensionAxiom>addAll(result, Iterables.<TerminologyExtensionAxiom>filter(tbox.getBoxAxioms(), TerminologyExtensionAxiom.class));
       };
       OMLTables.terminologies(e).forEach(_function);
-      final Function1<TerminologyExtensionAxiom, String> _function_1 = (TerminologyExtensionAxiom it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<TerminologyExtensionAxiom, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<TerminologyExtensionAxiom>crossReferencabilityComparator()).collect(Collectors.<TerminologyExtensionAxiom>toList());
     }
     return _xblockexpression;
   }
@@ -243,11 +227,7 @@ public class OMLTables {
         Iterables.<TerminologyNestingAxiom>addAll(result, Iterables.<TerminologyNestingAxiom>filter(tbox.getBoxAxioms(), TerminologyNestingAxiom.class));
       };
       OMLTables.terminologies(e).forEach(_function);
-      final Function1<TerminologyNestingAxiom, String> _function_1 = (TerminologyNestingAxiom it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<TerminologyNestingAxiom, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<TerminologyNestingAxiom>crossReferencabilityComparator()).collect(Collectors.<TerminologyNestingAxiom>toList());
     }
     return _xblockexpression;
   }
@@ -260,11 +240,7 @@ public class OMLTables {
         Iterables.<ConceptDesignationTerminologyAxiom>addAll(result, Iterables.<ConceptDesignationTerminologyAxiom>filter(tbox.getBoxAxioms(), ConceptDesignationTerminologyAxiom.class));
       };
       OMLTables.terminologies(e).forEach(_function);
-      final Function1<ConceptDesignationTerminologyAxiom, String> _function_1 = (ConceptDesignationTerminologyAxiom it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<ConceptDesignationTerminologyAxiom, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<ConceptDesignationTerminologyAxiom>crossReferencabilityComparator()).collect(Collectors.<ConceptDesignationTerminologyAxiom>toList());
     }
     return _xblockexpression;
   }
@@ -277,11 +253,7 @@ public class OMLTables {
         Iterables.<BundledTerminologyAxiom>addAll(result, Iterables.<BundledTerminologyAxiom>filter(b.getBundleAxioms(), BundledTerminologyAxiom.class));
       };
       OMLTables.bundles(e).forEach(_function);
-      final Function1<BundledTerminologyAxiom, String> _function_1 = (BundledTerminologyAxiom it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<BundledTerminologyAxiom, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<BundledTerminologyAxiom>crossReferencabilityComparator()).collect(Collectors.<BundledTerminologyAxiom>toList());
     }
     return _xblockexpression;
   }
@@ -294,11 +266,7 @@ public class OMLTables {
         result.addAll(dbox.getClosedWorldDefinitions());
       };
       OMLTables.descriptionBoxes(e).forEach(_function);
-      final Function1<DescriptionBoxExtendsClosedWorldDefinitions, String> _function_1 = (DescriptionBoxExtendsClosedWorldDefinitions it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<DescriptionBoxExtendsClosedWorldDefinitions, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<DescriptionBoxExtendsClosedWorldDefinitions>crossReferencabilityComparator()).collect(Collectors.<DescriptionBoxExtendsClosedWorldDefinitions>toList());
     }
     return _xblockexpression;
   }
@@ -311,11 +279,7 @@ public class OMLTables {
         result.addAll(dbox.getDescriptionBoxRefinements());
       };
       OMLTables.descriptionBoxes(e).forEach(_function);
-      final Function1<DescriptionBoxRefinement, String> _function_1 = (DescriptionBoxRefinement it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<DescriptionBoxRefinement, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<DescriptionBoxRefinement>crossReferencabilityComparator()).collect(Collectors.<DescriptionBoxRefinement>toList());
     }
     return _xblockexpression;
   }
@@ -328,11 +292,7 @@ public class OMLTables {
         Iterables.<Aspect>addAll(result, Iterables.<Aspect>filter(tbox.getBoxStatements(), Aspect.class));
       };
       OMLTables.terminologies(e).forEach(_function);
-      final Function1<Aspect, String> _function_1 = (Aspect it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<Aspect, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<Aspect>crossReferencabilityComparator()).collect(Collectors.<Aspect>toList());
     }
     return _xblockexpression;
   }
@@ -345,11 +305,7 @@ public class OMLTables {
         Iterables.<Concept>addAll(result, Iterables.<Concept>filter(tbox.getBoxStatements(), Concept.class));
       };
       OMLTables.terminologies(e).forEach(_function);
-      final Function1<Concept, String> _function_1 = (Concept it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<Concept, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<Concept>crossReferencabilityComparator()).collect(Collectors.<Concept>toList());
     }
     return _xblockexpression;
   }
@@ -362,27 +318,35 @@ public class OMLTables {
         Iterables.<ReifiedRelationship>addAll(result, Iterables.<ReifiedRelationship>filter(tbox.getBoxStatements(), ReifiedRelationship.class));
       };
       OMLTables.terminologies(e).forEach(_function);
-      final Function1<ReifiedRelationship, String> _function_1 = (ReifiedRelationship it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<ReifiedRelationship, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<ReifiedRelationship>crossReferencabilityComparator()).collect(Collectors.<ReifiedRelationship>toList());
     }
     return _xblockexpression;
   }
   
   public static Iterable<ForwardProperty> forwardProperties(final Extent e) {
-    final Function1<ReifiedRelationship, ForwardProperty> _function = (ReifiedRelationship it) -> {
-      return it.getForwardProperty();
-    };
-    return IterableExtensions.<ForwardProperty>filterNull(ListExtensions.<ReifiedRelationship, ForwardProperty>map(OMLTables.reifiedRelationships(e), _function));
+    List<ForwardProperty> _xblockexpression = null;
+    {
+      final List<ForwardProperty> result = new ArrayList<ForwardProperty>();
+      final Function1<ReifiedRelationship, ForwardProperty> _function = (ReifiedRelationship it) -> {
+        return it.getForwardProperty();
+      };
+      Iterables.<ForwardProperty>addAll(result, IterableExtensions.<ForwardProperty>filterNull(ListExtensions.<ReifiedRelationship, ForwardProperty>map(OMLTables.reifiedRelationships(e), _function)));
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<ForwardProperty>crossReferencabilityComparator()).collect(Collectors.<ForwardProperty>toList());
+    }
+    return _xblockexpression;
   }
   
   public static Iterable<InverseProperty> inverseProperties(final Extent e) {
-    final Function1<ReifiedRelationship, InverseProperty> _function = (ReifiedRelationship it) -> {
-      return it.getInverseProperty();
-    };
-    return IterableExtensions.<InverseProperty>filterNull(ListExtensions.<ReifiedRelationship, InverseProperty>map(OMLTables.reifiedRelationships(e), _function));
+    List<InverseProperty> _xblockexpression = null;
+    {
+      final List<InverseProperty> result = new ArrayList<InverseProperty>();
+      final Function1<ReifiedRelationship, InverseProperty> _function = (ReifiedRelationship it) -> {
+        return it.getInverseProperty();
+      };
+      Iterables.<InverseProperty>addAll(result, IterableExtensions.<InverseProperty>filterNull(ListExtensions.<ReifiedRelationship, InverseProperty>map(OMLTables.reifiedRelationships(e), _function)));
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<InverseProperty>crossReferencabilityComparator()).collect(Collectors.<InverseProperty>toList());
+    }
+    return _xblockexpression;
   }
   
   public static List<UnreifiedRelationship> unreifiedRelationships(final Extent e) {
@@ -393,11 +357,7 @@ public class OMLTables {
         Iterables.<UnreifiedRelationship>addAll(result, Iterables.<UnreifiedRelationship>filter(tbox.getBoxStatements(), UnreifiedRelationship.class));
       };
       OMLTables.terminologies(e).forEach(_function);
-      final Function1<UnreifiedRelationship, String> _function_1 = (UnreifiedRelationship it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<UnreifiedRelationship, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<UnreifiedRelationship>crossReferencabilityComparator()).collect(Collectors.<UnreifiedRelationship>toList());
     }
     return _xblockexpression;
   }
@@ -410,11 +370,7 @@ public class OMLTables {
         Iterables.<Scalar>addAll(result, Iterables.<Scalar>filter(tbox.getBoxStatements(), Scalar.class));
       };
       OMLTables.terminologies(e).forEach(_function);
-      final Function1<Scalar, String> _function_1 = (Scalar it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<Scalar, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<Scalar>crossReferencabilityComparator()).collect(Collectors.<Scalar>toList());
     }
     return _xblockexpression;
   }
@@ -427,11 +383,7 @@ public class OMLTables {
         Iterables.<Structure>addAll(result, Iterables.<Structure>filter(tbox.getBoxStatements(), Structure.class));
       };
       OMLTables.terminologies(e).forEach(_function);
-      final Function1<Structure, String> _function_1 = (Structure it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<Structure, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<Structure>crossReferencabilityComparator()).collect(Collectors.<Structure>toList());
     }
     return _xblockexpression;
   }
@@ -444,11 +396,7 @@ public class OMLTables {
         Iterables.<BinaryScalarRestriction>addAll(result, Iterables.<BinaryScalarRestriction>filter(tbox.getBoxStatements(), BinaryScalarRestriction.class));
       };
       OMLTables.terminologies(e).forEach(_function);
-      final Function1<BinaryScalarRestriction, String> _function_1 = (BinaryScalarRestriction it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<BinaryScalarRestriction, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<BinaryScalarRestriction>crossReferencabilityComparator()).collect(Collectors.<BinaryScalarRestriction>toList());
     }
     return _xblockexpression;
   }
@@ -461,11 +409,7 @@ public class OMLTables {
         Iterables.<IRIScalarRestriction>addAll(result, Iterables.<IRIScalarRestriction>filter(tbox.getBoxStatements(), IRIScalarRestriction.class));
       };
       OMLTables.terminologies(e).forEach(_function);
-      final Function1<IRIScalarRestriction, String> _function_1 = (IRIScalarRestriction it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<IRIScalarRestriction, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<IRIScalarRestriction>crossReferencabilityComparator()).collect(Collectors.<IRIScalarRestriction>toList());
     }
     return _xblockexpression;
   }
@@ -478,11 +422,7 @@ public class OMLTables {
         Iterables.<NumericScalarRestriction>addAll(result, Iterables.<NumericScalarRestriction>filter(tbox.getBoxStatements(), NumericScalarRestriction.class));
       };
       OMLTables.terminologies(e).forEach(_function);
-      final Function1<NumericScalarRestriction, String> _function_1 = (NumericScalarRestriction it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<NumericScalarRestriction, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<NumericScalarRestriction>crossReferencabilityComparator()).collect(Collectors.<NumericScalarRestriction>toList());
     }
     return _xblockexpression;
   }
@@ -495,11 +435,7 @@ public class OMLTables {
         Iterables.<PlainLiteralScalarRestriction>addAll(result, Iterables.<PlainLiteralScalarRestriction>filter(tbox.getBoxStatements(), PlainLiteralScalarRestriction.class));
       };
       OMLTables.terminologies(e).forEach(_function);
-      final Function1<PlainLiteralScalarRestriction, String> _function_1 = (PlainLiteralScalarRestriction it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<PlainLiteralScalarRestriction, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<PlainLiteralScalarRestriction>crossReferencabilityComparator()).collect(Collectors.<PlainLiteralScalarRestriction>toList());
     }
     return _xblockexpression;
   }
@@ -512,11 +448,7 @@ public class OMLTables {
         Iterables.<ScalarOneOfRestriction>addAll(result, Iterables.<ScalarOneOfRestriction>filter(tbox.getBoxStatements(), ScalarOneOfRestriction.class));
       };
       OMLTables.terminologies(e).forEach(_function);
-      final Function1<ScalarOneOfRestriction, String> _function_1 = (ScalarOneOfRestriction it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<ScalarOneOfRestriction, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<ScalarOneOfRestriction>crossReferencabilityComparator()).collect(Collectors.<ScalarOneOfRestriction>toList());
     }
     return _xblockexpression;
   }
@@ -529,11 +461,7 @@ public class OMLTables {
         Iterables.<ScalarOneOfLiteralAxiom>addAll(result, Iterables.<ScalarOneOfLiteralAxiom>filter(tbox.getBoxStatements(), ScalarOneOfLiteralAxiom.class));
       };
       OMLTables.terminologies(e).forEach(_function);
-      final Function1<ScalarOneOfLiteralAxiom, String> _function_1 = (ScalarOneOfLiteralAxiom it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<ScalarOneOfLiteralAxiom, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<ScalarOneOfLiteralAxiom>crossReferencabilityComparator()).collect(Collectors.<ScalarOneOfLiteralAxiom>toList());
     }
     return _xblockexpression;
   }
@@ -546,11 +474,7 @@ public class OMLTables {
         Iterables.<StringScalarRestriction>addAll(result, Iterables.<StringScalarRestriction>filter(tbox.getBoxStatements(), StringScalarRestriction.class));
       };
       OMLTables.terminologies(e).forEach(_function);
-      final Function1<StringScalarRestriction, String> _function_1 = (StringScalarRestriction it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<StringScalarRestriction, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<StringScalarRestriction>crossReferencabilityComparator()).collect(Collectors.<StringScalarRestriction>toList());
     }
     return _xblockexpression;
   }
@@ -563,11 +487,7 @@ public class OMLTables {
         Iterables.<SynonymScalarRestriction>addAll(result, Iterables.<SynonymScalarRestriction>filter(tbox.getBoxStatements(), SynonymScalarRestriction.class));
       };
       OMLTables.terminologies(e).forEach(_function);
-      final Function1<SynonymScalarRestriction, String> _function_1 = (SynonymScalarRestriction it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<SynonymScalarRestriction, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<SynonymScalarRestriction>crossReferencabilityComparator()).collect(Collectors.<SynonymScalarRestriction>toList());
     }
     return _xblockexpression;
   }
@@ -580,11 +500,7 @@ public class OMLTables {
         Iterables.<TimeScalarRestriction>addAll(result, Iterables.<TimeScalarRestriction>filter(tbox.getBoxStatements(), TimeScalarRestriction.class));
       };
       OMLTables.terminologies(e).forEach(_function);
-      final Function1<TimeScalarRestriction, String> _function_1 = (TimeScalarRestriction it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<TimeScalarRestriction, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<TimeScalarRestriction>crossReferencabilityComparator()).collect(Collectors.<TimeScalarRestriction>toList());
     }
     return _xblockexpression;
   }
@@ -597,11 +513,7 @@ public class OMLTables {
         Iterables.<EntityScalarDataProperty>addAll(result, Iterables.<EntityScalarDataProperty>filter(tbox.getBoxStatements(), EntityScalarDataProperty.class));
       };
       OMLTables.terminologies(e).forEach(_function);
-      final Function1<EntityScalarDataProperty, String> _function_1 = (EntityScalarDataProperty it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<EntityScalarDataProperty, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<EntityScalarDataProperty>crossReferencabilityComparator()).collect(Collectors.<EntityScalarDataProperty>toList());
     }
     return _xblockexpression;
   }
@@ -614,11 +526,7 @@ public class OMLTables {
         Iterables.<EntityStructuredDataProperty>addAll(result, Iterables.<EntityStructuredDataProperty>filter(tbox.getBoxStatements(), EntityStructuredDataProperty.class));
       };
       OMLTables.terminologies(e).forEach(_function);
-      final Function1<EntityStructuredDataProperty, String> _function_1 = (EntityStructuredDataProperty it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<EntityStructuredDataProperty, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<EntityStructuredDataProperty>crossReferencabilityComparator()).collect(Collectors.<EntityStructuredDataProperty>toList());
     }
     return _xblockexpression;
   }
@@ -631,11 +539,7 @@ public class OMLTables {
         Iterables.<ScalarDataProperty>addAll(result, Iterables.<ScalarDataProperty>filter(tbox.getBoxStatements(), ScalarDataProperty.class));
       };
       OMLTables.terminologies(e).forEach(_function);
-      final Function1<ScalarDataProperty, String> _function_1 = (ScalarDataProperty it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<ScalarDataProperty, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<ScalarDataProperty>crossReferencabilityComparator()).collect(Collectors.<ScalarDataProperty>toList());
     }
     return _xblockexpression;
   }
@@ -648,11 +552,7 @@ public class OMLTables {
         Iterables.<StructuredDataProperty>addAll(result, Iterables.<StructuredDataProperty>filter(tbox.getBoxStatements(), StructuredDataProperty.class));
       };
       OMLTables.terminologies(e).forEach(_function);
-      final Function1<StructuredDataProperty, String> _function_1 = (StructuredDataProperty it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<StructuredDataProperty, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<StructuredDataProperty>crossReferencabilityComparator()).collect(Collectors.<StructuredDataProperty>toList());
     }
     return _xblockexpression;
   }
@@ -665,11 +565,7 @@ public class OMLTables {
         Iterables.<AspectSpecializationAxiom>addAll(result, Iterables.<AspectSpecializationAxiom>filter(tbox.getBoxStatements(), AspectSpecializationAxiom.class));
       };
       OMLTables.terminologies(e).forEach(_function);
-      final Function1<AspectSpecializationAxiom, String> _function_1 = (AspectSpecializationAxiom it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<AspectSpecializationAxiom, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<AspectSpecializationAxiom>crossReferencabilityComparator()).collect(Collectors.<AspectSpecializationAxiom>toList());
     }
     return _xblockexpression;
   }
@@ -682,11 +578,7 @@ public class OMLTables {
         Iterables.<ConceptSpecializationAxiom>addAll(result, Iterables.<ConceptSpecializationAxiom>filter(tbox.getBoxStatements(), ConceptSpecializationAxiom.class));
       };
       OMLTables.terminologies(e).forEach(_function);
-      final Function1<ConceptSpecializationAxiom, String> _function_1 = (ConceptSpecializationAxiom it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<ConceptSpecializationAxiom, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<ConceptSpecializationAxiom>crossReferencabilityComparator()).collect(Collectors.<ConceptSpecializationAxiom>toList());
     }
     return _xblockexpression;
   }
@@ -699,11 +591,7 @@ public class OMLTables {
         Iterables.<ReifiedRelationshipSpecializationAxiom>addAll(result, Iterables.<ReifiedRelationshipSpecializationAxiom>filter(tbox.getBoxStatements(), ReifiedRelationshipSpecializationAxiom.class));
       };
       OMLTables.terminologies(e).forEach(_function);
-      final Function1<ReifiedRelationshipSpecializationAxiom, String> _function_1 = (ReifiedRelationshipSpecializationAxiom it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<ReifiedRelationshipSpecializationAxiom, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<ReifiedRelationshipSpecializationAxiom>crossReferencabilityComparator()).collect(Collectors.<ReifiedRelationshipSpecializationAxiom>toList());
     }
     return _xblockexpression;
   }
@@ -716,11 +604,7 @@ public class OMLTables {
         Iterables.<SubDataPropertyOfAxiom>addAll(result, Iterables.<SubDataPropertyOfAxiom>filter(tbox.getBoxStatements(), SubDataPropertyOfAxiom.class));
       };
       OMLTables.terminologies(e).forEach(_function);
-      final Function1<SubDataPropertyOfAxiom, String> _function_1 = (SubDataPropertyOfAxiom it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<SubDataPropertyOfAxiom, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<SubDataPropertyOfAxiom>crossReferencabilityComparator()).collect(Collectors.<SubDataPropertyOfAxiom>toList());
     }
     return _xblockexpression;
   }
@@ -733,11 +617,7 @@ public class OMLTables {
         Iterables.<SubObjectPropertyOfAxiom>addAll(result, Iterables.<SubObjectPropertyOfAxiom>filter(tbox.getBoxStatements(), SubObjectPropertyOfAxiom.class));
       };
       OMLTables.terminologies(e).forEach(_function);
-      final Function1<SubObjectPropertyOfAxiom, String> _function_1 = (SubObjectPropertyOfAxiom it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<SubObjectPropertyOfAxiom, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<SubObjectPropertyOfAxiom>crossReferencabilityComparator()).collect(Collectors.<SubObjectPropertyOfAxiom>toList());
     }
     return _xblockexpression;
   }
@@ -750,11 +630,7 @@ public class OMLTables {
         Iterables.<EntityExistentialRestrictionAxiom>addAll(result, Iterables.<EntityExistentialRestrictionAxiom>filter(tbox.getBoxStatements(), EntityExistentialRestrictionAxiom.class));
       };
       OMLTables.terminologies(e).forEach(_function);
-      final Function1<EntityExistentialRestrictionAxiom, String> _function_1 = (EntityExistentialRestrictionAxiom it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<EntityExistentialRestrictionAxiom, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<EntityExistentialRestrictionAxiom>crossReferencabilityComparator()).collect(Collectors.<EntityExistentialRestrictionAxiom>toList());
     }
     return _xblockexpression;
   }
@@ -767,11 +643,7 @@ public class OMLTables {
         Iterables.<EntityUniversalRestrictionAxiom>addAll(result, Iterables.<EntityUniversalRestrictionAxiom>filter(tbox.getBoxStatements(), EntityUniversalRestrictionAxiom.class));
       };
       OMLTables.terminologies(e).forEach(_function);
-      final Function1<EntityUniversalRestrictionAxiom, String> _function_1 = (EntityUniversalRestrictionAxiom it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<EntityUniversalRestrictionAxiom, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<EntityUniversalRestrictionAxiom>crossReferencabilityComparator()).collect(Collectors.<EntityUniversalRestrictionAxiom>toList());
     }
     return _xblockexpression;
   }
@@ -784,11 +656,7 @@ public class OMLTables {
         Iterables.<EntityScalarDataPropertyExistentialRestrictionAxiom>addAll(result, Iterables.<EntityScalarDataPropertyExistentialRestrictionAxiom>filter(tbox.getBoxStatements(), EntityScalarDataPropertyExistentialRestrictionAxiom.class));
       };
       OMLTables.terminologies(e).forEach(_function);
-      final Function1<EntityScalarDataPropertyExistentialRestrictionAxiom, String> _function_1 = (EntityScalarDataPropertyExistentialRestrictionAxiom it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<EntityScalarDataPropertyExistentialRestrictionAxiom, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<EntityScalarDataPropertyExistentialRestrictionAxiom>crossReferencabilityComparator()).collect(Collectors.<EntityScalarDataPropertyExistentialRestrictionAxiom>toList());
     }
     return _xblockexpression;
   }
@@ -801,11 +669,7 @@ public class OMLTables {
         Iterables.<EntityScalarDataPropertyParticularRestrictionAxiom>addAll(result, Iterables.<EntityScalarDataPropertyParticularRestrictionAxiom>filter(tbox.getBoxStatements(), EntityScalarDataPropertyParticularRestrictionAxiom.class));
       };
       OMLTables.terminologies(e).forEach(_function);
-      final Function1<EntityScalarDataPropertyParticularRestrictionAxiom, String> _function_1 = (EntityScalarDataPropertyParticularRestrictionAxiom it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<EntityScalarDataPropertyParticularRestrictionAxiom, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<EntityScalarDataPropertyParticularRestrictionAxiom>crossReferencabilityComparator()).collect(Collectors.<EntityScalarDataPropertyParticularRestrictionAxiom>toList());
     }
     return _xblockexpression;
   }
@@ -818,11 +682,7 @@ public class OMLTables {
         Iterables.<EntityScalarDataPropertyUniversalRestrictionAxiom>addAll(result, Iterables.<EntityScalarDataPropertyUniversalRestrictionAxiom>filter(tbox.getBoxStatements(), EntityScalarDataPropertyUniversalRestrictionAxiom.class));
       };
       OMLTables.terminologies(e).forEach(_function);
-      final Function1<EntityScalarDataPropertyUniversalRestrictionAxiom, String> _function_1 = (EntityScalarDataPropertyUniversalRestrictionAxiom it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<EntityScalarDataPropertyUniversalRestrictionAxiom, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<EntityScalarDataPropertyUniversalRestrictionAxiom>crossReferencabilityComparator()).collect(Collectors.<EntityScalarDataPropertyUniversalRestrictionAxiom>toList());
     }
     return _xblockexpression;
   }
@@ -835,11 +695,7 @@ public class OMLTables {
         Iterables.<EntityStructuredDataPropertyParticularRestrictionAxiom>addAll(result, Iterables.<EntityStructuredDataPropertyParticularRestrictionAxiom>filter(tbox.getBoxStatements(), EntityStructuredDataPropertyParticularRestrictionAxiom.class));
       };
       OMLTables.terminologies(e).forEach(_function);
-      final Function1<EntityStructuredDataPropertyParticularRestrictionAxiom, String> _function_1 = (EntityStructuredDataPropertyParticularRestrictionAxiom it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<EntityStructuredDataPropertyParticularRestrictionAxiom, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<EntityStructuredDataPropertyParticularRestrictionAxiom>crossReferencabilityComparator()).collect(Collectors.<EntityStructuredDataPropertyParticularRestrictionAxiom>toList());
     }
     return _xblockexpression;
   }
@@ -852,11 +708,7 @@ public class OMLTables {
         Iterables.<RootConceptTaxonomyAxiom>addAll(result, Iterables.<RootConceptTaxonomyAxiom>filter(b.getBundleStatements(), RootConceptTaxonomyAxiom.class));
       };
       OMLTables.bundles(e).forEach(_function);
-      final Function1<RootConceptTaxonomyAxiom, String> _function_1 = (RootConceptTaxonomyAxiom it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<RootConceptTaxonomyAxiom, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<RootConceptTaxonomyAxiom>crossReferencabilityComparator()).collect(Collectors.<RootConceptTaxonomyAxiom>toList());
     }
     return _xblockexpression;
   }
@@ -872,11 +724,7 @@ public class OMLTables {
         Iterables.<RootConceptTaxonomyAxiom>filter(b.getBoxStatements(), RootConceptTaxonomyAxiom.class).forEach(_function_1);
       };
       OMLTables.bundles(e).forEach(_function);
-      final Function1<SpecificDisjointConceptAxiom, String> _function_1 = (SpecificDisjointConceptAxiom it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<SpecificDisjointConceptAxiom, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<SpecificDisjointConceptAxiom>crossReferencabilityComparator()).collect(Collectors.<SpecificDisjointConceptAxiom>toList());
     }
     return _xblockexpression;
   }
@@ -892,11 +740,7 @@ public class OMLTables {
         Iterables.<RootConceptTaxonomyAxiom>filter(b.getBoxStatements(), RootConceptTaxonomyAxiom.class).forEach(_function_1);
       };
       OMLTables.bundles(e).forEach(_function);
-      final Function1<AnonymousConceptUnionAxiom, String> _function_1 = (AnonymousConceptUnionAxiom it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<AnonymousConceptUnionAxiom, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<AnonymousConceptUnionAxiom>crossReferencabilityComparator()).collect(Collectors.<AnonymousConceptUnionAxiom>toList());
     }
     return _xblockexpression;
   }
@@ -909,11 +753,7 @@ public class OMLTables {
         Iterables.<ChainRule>addAll(result, Iterables.<ChainRule>filter(b.getBoxStatements(), ChainRule.class));
       };
       OMLTables.terminologyGraphs(e).forEach(_function);
-      final Function1<ChainRule, String> _function_1 = (ChainRule it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<ChainRule, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<ChainRule>crossReferencabilityComparator()).collect(Collectors.<ChainRule>toList());
     }
     return _xblockexpression;
   }
@@ -929,11 +769,7 @@ public class OMLTables {
         Iterables.<ChainRule>filter(b.getBoxStatements(), ChainRule.class).forEach(_function_1);
       };
       OMLTables.terminologyGraphs(e).forEach(_function);
-      final Function1<RuleBodySegment, String> _function_1 = (RuleBodySegment it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<RuleBodySegment, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<RuleBodySegment>crossReferencabilityComparator()).collect(Collectors.<RuleBodySegment>toList());
     }
     return _xblockexpression;
   }
@@ -949,11 +785,7 @@ public class OMLTables {
         Iterables.<ChainRule>filter(b.getBoxStatements(), ChainRule.class).forEach(_function_1);
       };
       OMLTables.terminologyGraphs(e).forEach(_function);
-      final Function1<SegmentPredicate, String> _function_1 = (SegmentPredicate it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<SegmentPredicate, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<SegmentPredicate>crossReferencabilityComparator()).collect(Collectors.<SegmentPredicate>toList());
     }
     return _xblockexpression;
   }
@@ -981,11 +813,7 @@ public class OMLTables {
         Iterables.<ReifiedRelationship>filter(t.getBoxStatements(), ReifiedRelationship.class).forEach(_function_2);
       };
       OMLTables.terminologyGraphs(e).forEach(_function_1);
-      final Function1<Predicate, String> _function_2 = (Predicate it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<Predicate, String>sortInplaceBy(result, _function_2);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<Predicate>crossReferencabilityComparator()).collect(Collectors.<Predicate>toList());
     }
     return _xblockexpression;
   }
@@ -998,11 +826,7 @@ public class OMLTables {
         result.addAll(dbox.getConceptInstances());
       };
       OMLTables.descriptionBoxes(e).forEach(_function);
-      final Function1<ConceptInstance, String> _function_1 = (ConceptInstance it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<ConceptInstance, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<ConceptInstance>crossReferencabilityComparator()).collect(Collectors.<ConceptInstance>toList());
     }
     return _xblockexpression;
   }
@@ -1015,11 +839,7 @@ public class OMLTables {
         result.addAll(dbox.getReifiedRelationshipInstances());
       };
       OMLTables.descriptionBoxes(e).forEach(_function);
-      final Function1<ReifiedRelationshipInstance, String> _function_1 = (ReifiedRelationshipInstance it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<ReifiedRelationshipInstance, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<ReifiedRelationshipInstance>crossReferencabilityComparator()).collect(Collectors.<ReifiedRelationshipInstance>toList());
     }
     return _xblockexpression;
   }
@@ -1032,11 +852,7 @@ public class OMLTables {
         result.addAll(dbox.getReifiedRelationshipInstanceDomains());
       };
       OMLTables.descriptionBoxes(e).forEach(_function);
-      final Function1<ReifiedRelationshipInstanceDomain, String> _function_1 = (ReifiedRelationshipInstanceDomain it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<ReifiedRelationshipInstanceDomain, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<ReifiedRelationshipInstanceDomain>crossReferencabilityComparator()).collect(Collectors.<ReifiedRelationshipInstanceDomain>toList());
     }
     return _xblockexpression;
   }
@@ -1049,11 +865,7 @@ public class OMLTables {
         result.addAll(dbox.getReifiedRelationshipInstanceRanges());
       };
       OMLTables.descriptionBoxes(e).forEach(_function);
-      final Function1<ReifiedRelationshipInstanceRange, String> _function_1 = (ReifiedRelationshipInstanceRange it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<ReifiedRelationshipInstanceRange, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<ReifiedRelationshipInstanceRange>crossReferencabilityComparator()).collect(Collectors.<ReifiedRelationshipInstanceRange>toList());
     }
     return _xblockexpression;
   }
@@ -1069,11 +881,7 @@ public class OMLTables {
         Iterables.<EntityStructuredDataPropertyParticularRestrictionAxiom>filter(b.getBoxStatements(), EntityStructuredDataPropertyParticularRestrictionAxiom.class).forEach(_function_1);
       };
       OMLTables.terminologyGraphs(e).forEach(_function);
-      final Function1<RestrictionScalarDataPropertyValue, String> _function_1 = (RestrictionScalarDataPropertyValue it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<RestrictionScalarDataPropertyValue, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<RestrictionScalarDataPropertyValue>crossReferencabilityComparator()).collect(Collectors.<RestrictionScalarDataPropertyValue>toList());
     }
     return _xblockexpression;
   }
@@ -1089,11 +897,7 @@ public class OMLTables {
         Iterables.<EntityStructuredDataPropertyParticularRestrictionAxiom>filter(b.getBoxStatements(), EntityStructuredDataPropertyParticularRestrictionAxiom.class).forEach(_function_1);
       };
       OMLTables.terminologyGraphs(e).forEach(_function);
-      final Function1<RestrictionStructuredDataPropertyTuple, String> _function_1 = (RestrictionStructuredDataPropertyTuple it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<RestrictionStructuredDataPropertyTuple, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<RestrictionStructuredDataPropertyTuple>crossReferencabilityComparator()).collect(Collectors.<RestrictionStructuredDataPropertyTuple>toList());
     }
     return _xblockexpression;
   }
@@ -1109,11 +913,7 @@ public class OMLTables {
         dbox.getSingletonStructuredDataPropertyValues().forEach(_function_1);
       };
       OMLTables.descriptionBoxes(e).forEach(_function);
-      final Function1<ScalarDataPropertyValue, String> _function_1 = (ScalarDataPropertyValue it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<ScalarDataPropertyValue, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<ScalarDataPropertyValue>crossReferencabilityComparator()).collect(Collectors.<ScalarDataPropertyValue>toList());
     }
     return _xblockexpression;
   }
@@ -1126,11 +926,7 @@ public class OMLTables {
         result.addAll(dbox.getSingletonScalarDataPropertyValues());
       };
       OMLTables.descriptionBoxes(e).forEach(_function);
-      final Function1<SingletonInstanceScalarDataPropertyValue, String> _function_1 = (SingletonInstanceScalarDataPropertyValue it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<SingletonInstanceScalarDataPropertyValue, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<SingletonInstanceScalarDataPropertyValue>crossReferencabilityComparator()).collect(Collectors.<SingletonInstanceScalarDataPropertyValue>toList());
     }
     return _xblockexpression;
   }
@@ -1143,11 +939,7 @@ public class OMLTables {
         result.addAll(dbox.getSingletonStructuredDataPropertyValues());
       };
       OMLTables.descriptionBoxes(e).forEach(_function);
-      final Function1<SingletonInstanceStructuredDataPropertyValue, String> _function_1 = (SingletonInstanceStructuredDataPropertyValue it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<SingletonInstanceStructuredDataPropertyValue, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<SingletonInstanceStructuredDataPropertyValue>crossReferencabilityComparator()).collect(Collectors.<SingletonInstanceStructuredDataPropertyValue>toList());
     }
     return _xblockexpression;
   }
@@ -1163,11 +955,7 @@ public class OMLTables {
         dbox.getSingletonStructuredDataPropertyValues().forEach(_function_1);
       };
       OMLTables.descriptionBoxes(e).forEach(_function);
-      final Function1<StructuredDataPropertyTuple, String> _function_1 = (StructuredDataPropertyTuple it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<StructuredDataPropertyTuple, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<StructuredDataPropertyTuple>crossReferencabilityComparator()).collect(Collectors.<StructuredDataPropertyTuple>toList());
     }
     return _xblockexpression;
   }
@@ -1180,11 +968,7 @@ public class OMLTables {
         result.addAll(dbox.getUnreifiedRelationshipInstanceTuples());
       };
       OMLTables.descriptionBoxes(e).forEach(_function);
-      final Function1<UnreifiedRelationshipInstanceTuple, String> _function_1 = (UnreifiedRelationshipInstanceTuple it) -> {
-        return it.uuid();
-      };
-      ListExtensions.<UnreifiedRelationshipInstanceTuple, String>sortInplaceBy(result, _function_1);
-      _xblockexpression = result;
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<UnreifiedRelationshipInstanceTuple>crossReferencabilityComparator()).collect(Collectors.<UnreifiedRelationshipInstanceTuple>toList());
     }
     return _xblockexpression;
   }

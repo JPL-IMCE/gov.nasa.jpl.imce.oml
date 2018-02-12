@@ -6007,37 +6007,52 @@ public class OMLSpecificationTables {
           if (_startsWith_1) {
             Resource _xblockexpression_1 = null;
             {
-              final String omlIRI = omlCatalog.resolveURI((uriString + ".oml"));
-              final String omlZipIRI = omlCatalog.resolveURI((uriString + ".omlzip"));
+              final String r1 = omlCatalog.resolveURI(uriString);
+              final String r2 = omlCatalog.resolveURI((uriString + ".oml"));
+              final String r3 = omlCatalog.resolveURI((uriString + ".omlzip"));
               File _xifexpression_2 = null;
-              if (((null != omlIRI) && omlIRI.startsWith("file:"))) {
-                String _substring = omlIRI.substring(5);
+              if (((null != r1) && r1.startsWith("file:"))) {
+                String _substring = r1.substring(5);
                 _xifexpression_2 = new File(_substring);
               } else {
                 _xifexpression_2 = null;
               }
-              final File omlFile = _xifexpression_2;
+              final File f1 = _xifexpression_2;
               File _xifexpression_3 = null;
-              if (((null != omlZipIRI) && omlZipIRI.startsWith("file:"))) {
-                String _substring_1 = omlZipIRI.substring(5);
+              if (((null != r2) && r2.startsWith("file:"))) {
+                String _substring_1 = r2.substring(5);
                 _xifexpression_3 = new File(_substring_1);
               } else {
                 _xifexpression_3 = null;
               }
-              final File omlZipFile = _xifexpression_3;
-              Resource _xifexpression_4 = null;
-              if ((((null != omlFile) && omlFile.exists()) && omlFile.canRead())) {
-                _xifexpression_4 = rs.getResource(URI.createURI(omlIRI), true);
+              final File f2 = _xifexpression_3;
+              File _xifexpression_4 = null;
+              if (((null != r3) && r3.startsWith("file:"))) {
+                String _substring_2 = r3.substring(5);
+                _xifexpression_4 = new File(_substring_2);
               } else {
-                Resource _xifexpression_5 = null;
-                if ((((null != omlZipFile) && omlZipFile.exists()) && omlZipFile.canRead())) {
-                  _xifexpression_5 = rs.getResource(URI.createURI(omlZipIRI), true);
-                } else {
-                  throw new IllegalArgumentException((("loadOMLZipResource: " + uri) + " not resolved!"));
-                }
-                _xifexpression_4 = _xifexpression_5;
+                _xifexpression_4 = null;
               }
-              _xblockexpression_1 = _xifexpression_4;
+              final File f3 = _xifexpression_4;
+              Resource _xifexpression_5 = null;
+              if ((((null != f1) && f1.exists()) && f1.canRead())) {
+                _xifexpression_5 = rs.getResource(URI.createURI(r1), true);
+              } else {
+                Resource _xifexpression_6 = null;
+                if ((((null != f2) && f2.exists()) && f2.canRead())) {
+                  _xifexpression_6 = rs.getResource(URI.createURI(r2), true);
+                } else {
+                  Resource _xifexpression_7 = null;
+                  if ((((null != f3) && f3.exists()) && f3.canRead())) {
+                    _xifexpression_7 = rs.getResource(URI.createURI(r3), true);
+                  } else {
+                    throw new IllegalArgumentException((("loadOMLZipResource: " + uri) + " not resolved!"));
+                  }
+                  _xifexpression_6 = _xifexpression_7;
+                }
+                _xifexpression_5 = _xifexpression_6;
+              }
+              _xblockexpression_1 = _xifexpression_5;
             }
             _xifexpression_1 = _xblockexpression_1;
           }

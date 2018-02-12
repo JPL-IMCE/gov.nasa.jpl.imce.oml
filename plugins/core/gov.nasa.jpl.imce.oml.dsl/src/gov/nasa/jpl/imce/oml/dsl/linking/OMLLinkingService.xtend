@@ -71,8 +71,7 @@ class OMLLinkingService extends DefaultLinkingService {
 			val crossRefIRI = crossRefString.substring(1, crossRefString.length - 1)
 			val fragmentIndex = crossRefIRI.indexOf('#')
 
-			val refIRI = if(-1 == fragmentIndex) crossRefIRI else crossRefIRI.substring(1, fragmentIndex - 1)
-			val resourceIRI = if (refIRI.endsWith('/')) refIRI.substring(0, refIRI.length-1) else refIRI
+			val resourceIRI = if(-1 == fragmentIndex) crossRefIRI else crossRefIRI.substring(1, fragmentIndex - 1)
 			
 			if (fragmentIndex > 0)
 				throw new IllegalNodeException(node,
@@ -85,19 +84,19 @@ class OMLLinkingService extends DefaultLinkingService {
 				switch refType {
 					case BundlesPackage.eINSTANCE.bundle: {
 						val bundle = rs.resources.map[contents.filter(Extent).map[modules.filter(Bundle)].flatten].
-							flatten.findFirst[b|b.iri() == refIRI]
+							flatten.findFirst[b|b.iri() == resourceIRI]
 						if (null !== bundle) return Collections.singletonList(bundle)
 					}
 					case TerminologiesPackage.eINSTANCE.terminologyBox: {
 						val tbox = rs.resources.map [
 							contents.filter(Extent).map[modules.filter(TerminologyBox)].flatten
-						].flatten.findFirst[tbox|tbox.iri() == refIRI]
+						].flatten.findFirst[tbox|tbox.iri() == resourceIRI]
 						if (null !== tbox) return Collections.singletonList(tbox)
 					}
 					case DescriptionsPackage.eINSTANCE.descriptionBox: {
 						val dbox = rs.resources.map [
 							contents.filter(Extent).map[modules.filter(DescriptionBox)].flatten
-						].flatten.findFirst[dbox|dbox.iri() == refIRI]
+						].flatten.findFirst[dbox|dbox.iri() == resourceIRI]
 						if (null !== dbox) return Collections.singletonList(dbox)
 					}
 					default:
@@ -151,19 +150,19 @@ class OMLLinkingService extends DefaultLinkingService {
 				switch refType {
 					case BundlesPackage.eINSTANCE.bundle: {
 						val bundle = rs.resources.map[contents.filter(Extent).map[modules.filter(Bundle)].flatten].
-							flatten.findFirst[b|b.iri() == refIRI]
+							flatten.findFirst[b|b.iri() == resolvedIRI || b.iri() == resourceIRI]
 						return if(null === bundle) Collections.emptyList() else Collections.singletonList(bundle)
 					}
 					case TerminologiesPackage.eINSTANCE.terminologyBox: {
 						val tbox = rs.resources.map [
 							contents.filter(Extent).map[modules.filter(TerminologyBox)].flatten
-						].flatten.findFirst[tbox|tbox.iri() == refIRI]
+						].flatten.findFirst[tbox|tbox.iri() == resolvedIRI || tbox.iri() == resourceIRI]
 						return if(null === tbox) Collections.emptyList() else Collections.singletonList(tbox)
 					}
 					case DescriptionsPackage.eINSTANCE.descriptionBox: {
 						val dbox = rs.resources.map [
 							contents.filter(Extent).map[modules.filter(DescriptionBox)].flatten
-						].flatten.findFirst[dbox|dbox.iri() == refIRI]
+						].flatten.findFirst[dbox|dbox.iri() == resolvedIRI || dbox.iri() == resourceIRI]
 						return if(null === dbox) Collections.emptyList() else Collections.singletonList(dbox)
 					}
 					default:

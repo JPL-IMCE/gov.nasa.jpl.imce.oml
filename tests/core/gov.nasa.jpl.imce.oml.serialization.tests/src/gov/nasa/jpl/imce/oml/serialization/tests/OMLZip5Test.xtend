@@ -19,7 +19,6 @@ package gov.nasa.jpl.imce.oml.serialization.tests
 
 import org.eclipse.emf.common.util.URI
 
-import org.junit.Assert
 import org.junit.Test
 import org.junit.runners.BlockJUnit4ClassRunner
 import org.junit.runner.RunWith
@@ -27,31 +26,48 @@ import org.junit.runner.RunWith
 import gov.nasa.jpl.imce.oml.model.common.Extent
 
 @RunWith(BlockJUnit4ClassRunner)
-class OMLZip3Test extends OMLSaveLoadComparisonTest {
+class OMLZip5Test extends MixedOMLSaveLoadComparisonTest {
 	
-	static def Pair<URI,Extent>[] example1() {
-        val extent = createExtent
+	def Pair<URI,Extent>[] example1() {
+        val ext1 = createExtent
         
         val tbox1 = createTerminologyGraph
-        tbox1.extent = extent
-        tbox1.iri = "https://test"
+        tbox1.extent = ext1
+        tbox1.iri = toAbsoluteTempHttpURI("test1.oml")
         
         val concept1 = createConcept
         concept1.name = "Concept1"
         concept1.tbox = tbox1
+         
+        val ext2= createExtent
         
-        return #[ new Pair<URI,Extent>(URI.createURI(tbox1.iri()), extent) ]
+        val tbox2 = createTerminologyGraph
+        tbox2.extent = ext2
+        tbox2.iri = toAbsoluteTempHttpURI("test2.omlzip")
+        
+        val tbox12 = createTerminologyExtensionAxiom
+        tbox12.extendedTerminology = tbox1
+        tbox12.tbox = tbox2
+        
+        val concept2 = createConcept
+        concept2.name = "Concept2"
+        concept2.tbox = tbox2
+        
+        val concept12 = createConceptSpecializationAxiom
+        concept12.tbox = tbox2
+        concept12.subConcept = concept2
+        concept12.superConcept = concept1
+        
+        val uri1 = URI.createURI(tbox1.iri())
+        val uri2 = URI.createURI(tbox2.iri())
+        return #[ 
+        	new Pair<URI,Extent>(uri1, ext1),
+        	new Pair<URI,Extent>(uri2, ext2)
+        ]
 	}
 	
 	@Test
 	def void test1() {
-	try {
 		compareSavedAndLoaded(example1)
-		Assert.fail("There should have been an exception!")
-	} catch (IllegalArgumentException e) {
-		Assert.assertEquals("No parent URIConverter and no catalog mapping for URI: https://test", e.message)
 	}
-	
-	}
-	
 }

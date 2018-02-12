@@ -18,6 +18,7 @@
 package gov.nasa.jpl.imce.oml.dsl
 
 import gov.nasa.jpl.imce.oml.dsl.formatting2.OMLFormatter
+import gov.nasa.jpl.imce.oml.dsl.linking.OMLLinkingService
 import gov.nasa.jpl.imce.oml.dsl.scoping.OMLImportedNamespaceAwareLocalScopeProvider
 import gov.nasa.jpl.imce.oml.dsl.serializer.OMLCrossReferenceSerializer
 import gov.nasa.jpl.imce.oml.dsl.services.OMLGrammarAccess
@@ -30,9 +31,9 @@ import org.eclipse.xtext.formatting2.IFormatter2
 import org.eclipse.xtext.linking.ILinkingService
 import org.eclipse.xtext.naming.IQualifiedNameConverter
 import org.eclipse.xtext.naming.IQualifiedNameProvider
+import org.eclipse.xtext.resource.IResourceFactory
 import org.eclipse.xtext.scoping.IScopeProvider
 import org.eclipse.xtext.serializer.tokens.ICrossReferenceSerializer
-import gov.nasa.jpl.imce.oml.dsl.linking.OMLLinkingService
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
@@ -69,6 +70,10 @@ class OMLRuntimeModule extends AbstractOMLRuntimeModule {
 	
 	def Class<? extends ICrossReferenceSerializer> bindICrossReferenceSerializer() {
 		OMLCrossReferenceSerializer
+	}
+	
+	override def Class<? extends IResourceFactory> bindIResourceFactory() {
+		OMLXtextResourceFactory
 	}
 	
 }

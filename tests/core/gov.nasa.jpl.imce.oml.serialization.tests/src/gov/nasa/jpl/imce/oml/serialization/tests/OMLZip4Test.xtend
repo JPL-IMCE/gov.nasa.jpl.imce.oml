@@ -33,7 +33,7 @@ class OMLZip4Test extends MixedOMLSaveLoadComparisonTest {
         
         val tbox1 = createTerminologyGraph
         tbox1.extent = ext1
-        tbox1.iri = toAbsoluteTempFileURI("test1.oml")
+        tbox1.iri = toAbsoluteTempFileURI("test 1.oml")
         
         val concept1 = createConcept
         concept1.name = "Concept1"
@@ -43,7 +43,7 @@ class OMLZip4Test extends MixedOMLSaveLoadComparisonTest {
         
         val tbox2 = createTerminologyGraph
         tbox2.extent = ext2
-        tbox2.iri = toAbsoluteTempFileURI("test2.omlzip")
+        tbox2.iri = toAbsoluteTempFileURI("test 2.omlzip")
         
         val tbox12 = createTerminologyExtensionAxiom
         tbox12.extendedTerminology = tbox1

@@ -19,6 +19,7 @@ package gov.nasa.jpl.imce.oml.dsl.tests;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
@@ -53,6 +54,10 @@ import org.junit.Before;
 import com.google.common.collect.Lists;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
+
+import gov.nasa.jpl.imce.oml.model.extensions.OMLCatalog;
+import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
+
 import org.eclipselabs.xtext.utils.unittesting.FluentIssueCollection;
 
 public class OMLTest {
@@ -109,6 +114,8 @@ public class OMLTest {
         failOnParserWarnings = true;
         resourceSet = resourceSetProvider.get();
         resourceSet.setClasspathURIContext(this);
+        OMLCatalog c = OMLExtensions.getCatalog(resourceSet);
+        assertNotNull("OMLCatalog on resource set", c);
     }
     /**
      * Returns the expected type of the root element of the given resource.
@@ -182,7 +189,8 @@ public class OMLTest {
     		final ResourceSet rs, 
     		final URI uri, 
     		final Class<T> clazz) {
-        final Resource resource = rs.createResource(uri);
+        final Resource loaded = rs.getResource(uri, false);
+        final Resource resource = (null == loaded) ? rs.createResource(uri) : loaded;
         try {
             resource.load(null);
         } catch (final IOException e) {

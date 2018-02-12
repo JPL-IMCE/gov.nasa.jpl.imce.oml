@@ -120,10 +120,11 @@ public abstract class OMLSaveLoadComparisonTest {
       try {
         final URI uri = pair.getKey();
         final Extent ext1 = pair.getValue();
-        final Resource r1 = this.rs1.createResource(uri);
+        final Resource r1 = this.rs1.createResource(uri, "omlzip");
         r1.getContents().add(ext1);
         r1.save(null);
-        final Resource r2 = this.rs2.getResource(uri, true);
+        final Resource r2 = this.rs2.createResource(uri, "omlzip");
+        r2.load(null);
         OMLResourceCompare.resourceCompare(r1, r2);
       } catch (Throwable _e) {
         throw Exceptions.sneakyThrow(_e);

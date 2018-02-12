@@ -19,6 +19,7 @@ package gov.nasa.jpl.imce.oml.zip;
 
 import com.google.common.base.Objects;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
+import gov.nasa.jpl.imce.oml.model.extensions.CatalogURIConverter;
 import gov.nasa.jpl.imce.oml.model.extensions.OMLCatalog;
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
 import gov.nasa.jpl.imce.oml.zip.OMLSpecificationTables;
@@ -40,16 +41,37 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.Functions.Function0;
+import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 /**
  * An OMLZipResource is a kind of Resource that is loaded from and saved to an *.omlzip file
  * whose location corresponds to the mapping of the Resource URI according to the OMLCatalog
  * associated with its OMLZipResourceSet.
+ * 
+ * Similar to OMLXtextResource, an OMLZipResource specifies in default load/save options
+ * the `file.extension' for OMLZipResource, i.e., 'omlzip'.
  */
 @SuppressWarnings("all")
 public class OMLZipResource extends ResourceImpl {
-  public OMLZipResource(final URI uri) {
-    super(uri);
+  private final static Map<Object, Object> defaultOptions = new Function0<Map<Object, Object>>() {
+    public Map<Object, Object> apply() {
+      HashMap<Object, Object> _xblockexpression = null;
+      {
+        final HashMap<Object, Object> options = new HashMap<Object, Object>();
+        options.put("file.extension", "omlzip");
+        _xblockexpression = options;
+      }
+      return _xblockexpression;
+    }
+  }.apply();
+  
+  private CatalogURIConverter uriConverter = null;
+  
+  public OMLZipResource() {
+    super();
+    this.defaultLoadOptions = OMLZipResource.defaultOptions;
+    this.defaultSaveOptions = OMLZipResource.defaultOptions;
   }
   
   /**
@@ -58,19 +80,27 @@ public class OMLZipResource extends ResourceImpl {
    */
   @Override
   protected URIConverter getURIConverter() {
-    URIConverter _xblockexpression = null;
+    CatalogURIConverter _xblockexpression = null;
     {
       final ResourceSet rs = this.getResourceSet();
-      URIConverter _switchResult = null;
       boolean _matched = false;
       if (rs instanceof OMLZipResourceSet) {
         _matched=true;
-        _switchResult = ((OMLZipResourceSet)rs).getCatalogURIConverter();
+        this.uriConverter = ((OMLZipResourceSet)rs).getCatalogURIConverter();
       }
       if (!_matched) {
-        _switchResult = super.getURIConverter();
+        {
+          final OMLCatalog omlCatalog = OMLExtensions.getCatalog(rs);
+          if ((null == omlCatalog)) {
+            StringConcatenation _builder = new StringConcatenation();
+            _builder.append("OMLZipResource.getURIConverter: there must be an OMLCatalog on the resource set!");
+            throw new IllegalArgumentException(_builder.toString());
+          }
+          CatalogURIConverter _catalogURIConverter = new CatalogURIConverter(omlCatalog);
+          this.uriConverter = _catalogURIConverter;
+        }
       }
-      _xblockexpression = _switchResult;
+      _xblockexpression = this.uriConverter;
     }
     return _xblockexpression;
   }
@@ -82,6 +112,40 @@ public class OMLZipResource extends ResourceImpl {
    */
   @Override
   public void load(final Map<?, ?> options) throws IOException {
+    Map<?, ?> _xifexpression = null;
+    if ((null == options)) {
+      _xifexpression = new HashMap<Object, Object>();
+    } else {
+      Map<?, ?> _xblockexpression = null;
+      {
+        Object _elvis = null;
+        Object _get = options.get(URIConverter.OPTION_RESPONSE);
+        if (_get != null) {
+          _elvis = _get;
+        } else {
+          HashMap<Object, Object> _hashMap = new HashMap<Object, Object>();
+          _elvis = _hashMap;
+        }
+        final Object r = _elvis;
+        Map<?, ?> _switchResult = null;
+        boolean _matched = false;
+        if (r instanceof Map) {
+          _matched=true;
+          _switchResult = ((Map<?, ?>)r);
+        }
+        if (!_matched) {
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("OMLZipResource.load(options) the entry for ");
+          _builder.append(URIConverter.OPTION_RESPONSE);
+          _builder.append(" must be a Map<Object,Object>!");
+          throw new IllegalArgumentException(_builder.toString());
+        }
+        _xblockexpression = _switchResult;
+      }
+      _xifexpression = _xblockexpression;
+    }
+    final Map<?, ?> response = _xifexpression;
+    final CatalogURIConverter.OptionsMap effectiveOptions = new CatalogURIConverter.OptionsMap(URIConverter.OPTION_RESPONSE, response, options, this.defaultLoadOptions);
     final ResourceSet rs = this.getResourceSet();
     boolean _matched = false;
     if (rs instanceof OMLZipResourceSet) {
@@ -90,20 +154,55 @@ public class OMLZipResource extends ResourceImpl {
       if (_scheme != null) {
         switch (_scheme) {
           case "http":
-            final URI omlZipFile = ((OMLZipResourceSet)rs).getCatalogURIConverter().normalize(this.uri);
-            if ((((null == omlZipFile) || (!Objects.equal("file", omlZipFile.scheme()))) || (!omlZipFile.lastSegment().endsWith(".omlzip")))) {
-              throw new IllegalArgumentException(((("OMLZipResource.load() requires the uri to be normalized as a file://....*.omlzip; uri=" + this.uri) + " is instead normalized as: ") + omlZipFile));
+            final URI normalized = ((OMLZipResourceSet)rs).getCatalogURIConverter().normalize(this.uri);
+            final String normalizedExt = normalized.fileExtension();
+            Object _get = null;
+            if (effectiveOptions!=null) {
+              _get=effectiveOptions.get("file.extension");
             }
-            String _fileString = omlZipFile.toFileString();
-            File _file = new File(_fileString);
-            OMLSpecificationTables.load(rs, this, _file);
+            final Object fileExtension = _get;
+            boolean _matched_1 = false;
+            if (fileExtension instanceof String) {
+              _matched_1=true;
+              boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(((String)fileExtension));
+              boolean _not = (!_isNullOrEmpty);
+              if (_not) {
+                URI _xifexpression_1 = null;
+                if ((null == normalizedExt)) {
+                  _xifexpression_1 = normalized.appendFileExtension(((String)fileExtension));
+                } else {
+                  URI _xifexpression_2 = null;
+                  boolean _equals = Objects.equal(normalizedExt, fileExtension);
+                  if (_equals) {
+                    _xifexpression_2 = normalized;
+                  } else {
+                    StringConcatenation _builder = new StringConcatenation();
+                    _builder.append("OMLZipResource.load(options) invalid URI file extension ");
+                    _builder.append(normalizedExt);
+                    _builder.append(" should be instead ");
+                    _builder.append(((String)fileExtension));
+                    _builder.append(" in normalized URI: ");
+                    _builder.append(normalized);
+                    throw new IllegalArgumentException(_builder.toString());
+                  }
+                  _xifexpression_1 = _xifexpression_2;
+                }
+                final URI normalizedFileURI = _xifexpression_1;
+                String _fileString = normalizedFileURI.toFileString();
+                File _file = new File(_fileString);
+                OMLSpecificationTables.load(rs, this, _file);
+              } else {
+                throw new IllegalArgumentException(
+                  ("OMLZipResource.load() requires a non-null \'file.extension\' option: " + this.uri));
+              }
+            }
             break;
           default:
             boolean _isFile = this.uri.isFile();
             if (_isFile) {
-              String _fileString_1 = this.uri.toFileString();
-              File _file_1 = new File(_fileString_1);
-              OMLSpecificationTables.load(rs, this, _file_1);
+              String _fileString = this.uri.toFileString();
+              File _file = new File(_fileString);
+              OMLSpecificationTables.load(rs, this, _file);
             } else {
               StringConcatenation _builder = new StringConcatenation();
               _builder.append("OMLZipResource.load(): unrecognized URI scheme in: ");
@@ -118,9 +217,9 @@ public class OMLZipResource extends ResourceImpl {
       } else {
         boolean _isFile = this.uri.isFile();
         if (_isFile) {
-          String _fileString_1 = this.uri.toFileString();
-          File _file_1 = new File(_fileString_1);
-          OMLSpecificationTables.load(rs, this, _file_1);
+          String _fileString = this.uri.toFileString();
+          File _file = new File(_fileString);
+          OMLSpecificationTables.load(rs, this, _file);
         } else {
           StringConcatenation _builder = new StringConcatenation();
           _builder.append("OMLZipResource.load(): unrecognized URI scheme in: ");
@@ -136,14 +235,15 @@ public class OMLZipResource extends ResourceImpl {
       {
         final OMLCatalog c = OMLExtensions.getCatalog(rs);
         if ((null == c)) {
-          throw new IllegalArgumentException("OMLZipResource.load(): requires an OMLCatalog on this resource set!");
+          throw new IllegalArgumentException(
+            "OMLZipResource.load(): requires an OMLCatalog on this resource set!");
         }
         File _switchResult_1 = null;
         String _scheme = this.uri.scheme();
         if (_scheme != null) {
           switch (_scheme) {
             case "http":
-              File _xblockexpression = null;
+              File _xblockexpression_1 = null;
               {
                 final String resolved = c.resolveURI(this.uri.toString());
                 if (((null == resolved) || (!resolved.startsWith("file:")))) {
@@ -152,18 +252,64 @@ public class OMLZipResource extends ResourceImpl {
                   _builder.append(this.uri);
                   throw new IllegalArgumentException(_builder.toString());
                 }
-                String _substring = resolved.substring(5);
-                String _plus = (_substring + ".omlzip");
-                _xblockexpression = new File(_plus);
+                final URI resolvedURI = URI.createURI(resolved);
+                final String resolvedExt = resolvedURI.fileExtension();
+                Object _get = null;
+                if (effectiveOptions!=null) {
+                  _get=effectiveOptions.get("file.extension");
+                }
+                final Object fileExtension = _get;
+                File _switchResult_2 = null;
+                boolean _matched_1 = false;
+                if (fileExtension instanceof String) {
+                  _matched_1=true;
+                  File _xifexpression_1 = null;
+                  boolean _isNullOrEmpty = StringExtensions.isNullOrEmpty(((String)fileExtension));
+                  boolean _not = (!_isNullOrEmpty);
+                  if (_not) {
+                    File _xblockexpression_2 = null;
+                    {
+                      URI _xifexpression_2 = null;
+                      if ((null == resolvedExt)) {
+                        _xifexpression_2 = resolvedURI.appendFileExtension(((String)fileExtension));
+                      } else {
+                        URI _xifexpression_3 = null;
+                        boolean _equals = Objects.equal(resolvedExt, fileExtension);
+                        if (_equals) {
+                          _xifexpression_3 = resolvedURI;
+                        } else {
+                          StringConcatenation _builder_1 = new StringConcatenation();
+                          _builder_1.append("OMLZipResource.load(options) invalid URI file extension ");
+                          _builder_1.append(resolvedExt);
+                          _builder_1.append(" should be instead ");
+                          _builder_1.append(((String)fileExtension));
+                          _builder_1.append(" in resolved URI: ");
+                          _builder_1.append(resolvedURI);
+                          throw new IllegalArgumentException(_builder_1.toString());
+                        }
+                        _xifexpression_2 = _xifexpression_3;
+                      }
+                      final URI normalizedFileURI = _xifexpression_2;
+                      String _fileString = normalizedFileURI.toFileString();
+                      _xblockexpression_2 = new File(_fileString);
+                    }
+                    _xifexpression_1 = _xblockexpression_2;
+                  } else {
+                    throw new IllegalArgumentException(
+                      ("OMLZipResource.load() requires a non-null \'file.extension\' option: " + this.uri));
+                  }
+                  _switchResult_2 = _xifexpression_1;
+                }
+                _xblockexpression_1 = _switchResult_2;
               }
-              _switchResult_1 = _xblockexpression;
+              _switchResult_1 = _xblockexpression_1;
               break;
             default:
-              File _xifexpression = null;
+              File _xifexpression_1 = null;
               boolean _isFile = this.uri.isFile();
               if (_isFile) {
                 String _fileString = this.uri.toFileString();
-                _xifexpression = new File(_fileString);
+                _xifexpression_1 = new File(_fileString);
               } else {
                 StringConcatenation _builder = new StringConcatenation();
                 _builder.append("OMLZipResource.load(): unrecognized URI scheme in: ");
@@ -173,15 +319,15 @@ public class OMLZipResource extends ResourceImpl {
                 _builder.append(_isFile_1);
                 throw new IllegalArgumentException(_builder.toString());
               }
-              _switchResult_1 = _xifexpression;
+              _switchResult_1 = _xifexpression_1;
               break;
           }
         } else {
-          File _xifexpression = null;
+          File _xifexpression_1 = null;
           boolean _isFile = this.uri.isFile();
           if (_isFile) {
             String _fileString = this.uri.toFileString();
-            _xifexpression = new File(_fileString);
+            _xifexpression_1 = new File(_fileString);
           } else {
             StringConcatenation _builder = new StringConcatenation();
             _builder.append("OMLZipResource.load(): unrecognized URI scheme in: ");
@@ -191,7 +337,7 @@ public class OMLZipResource extends ResourceImpl {
             _builder.append(_isFile_1);
             throw new IllegalArgumentException(_builder.toString());
           }
-          _switchResult_1 = _xifexpression;
+          _switchResult_1 = _xifexpression_1;
         }
         final File omlFile = _switchResult_1;
         boolean _exists = omlFile.exists();
@@ -223,7 +369,8 @@ public class OMLZipResource extends ResourceImpl {
       if (_notEquals) {
         int _size_1 = this.contents.size();
         String _plus = ("OMLZipResource should have 1 OML Extent but it has " + Integer.valueOf(_size_1));
-        String _plus_1 = (_plus + " toplevel EObjects instead.");
+        String _plus_1 = (_plus + 
+          " toplevel EObjects instead.");
         throw new IllegalArgumentException(_plus_1);
       }
       final EObject root = this.contents.get(0);
@@ -255,7 +402,8 @@ public class OMLZipResource extends ResourceImpl {
     }
   }
   
-  public final static Pattern KeyValue = Pattern.compile("\"([^\"]*)\":(null|\"(.*?)\"|\\{\"literalType\":\"[^\"]*\",\"value\":\\[\"(\\\\\\\"|\\n|\\r|[^\"]+?)\"(,\"(\\\\\\\"|\\n|\\r|[^\"]+?)\")*\\]\\}|\\[\"(\\\\\\\"|\\n|\\r|[^\"]+?)\"(,\"(\\\\\\\"|\\n|\\r|[^\"]+?)\")*\\]),?");
+  public final static Pattern KeyValue = Pattern.compile(
+    "\"([^\"]*)\":(null|\"(.*?)\"|\\{\"literalType\":\"[^\"]*\",\"value\":\\[\"(\\\\\\\"|\\n|\\r|[^\"]+?)\"(,\"(\\\\\\\"|\\n|\\r|[^\"]+?)\")*\\]\\}|\\[\"(\\\\\\\"|\\n|\\r|[^\"]+?)\"(,\"(\\\\\\\"|\\n|\\r|[^\"]+?)\")*\\]),?");
   
   protected static ArrayList<Map<String, String>> lines2tuples(final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> list = new ArrayList<Map<String, String>>();

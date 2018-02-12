@@ -18,6 +18,7 @@
 package gov.nasa.jpl.imce.oml.dsl;
 
 import gov.nasa.jpl.imce.oml.dsl.AbstractOMLRuntimeModule;
+import gov.nasa.jpl.imce.oml.dsl.OMLXtextResourceFactory;
 import gov.nasa.jpl.imce.oml.dsl.formatting2.OMLFormatter;
 import gov.nasa.jpl.imce.oml.dsl.linking.OMLLinkingService;
 import gov.nasa.jpl.imce.oml.dsl.scoping.OMLImportedNamespaceAwareLocalScopeProvider;
@@ -32,6 +33,7 @@ import org.eclipse.xtext.formatting2.IFormatter2;
 import org.eclipse.xtext.linking.ILinkingService;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
+import org.eclipse.xtext.resource.IResourceFactory;
 import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.serializer.tokens.ICrossReferenceSerializer;
 
@@ -76,5 +78,10 @@ public class OMLRuntimeModule extends AbstractOMLRuntimeModule {
   
   public Class<? extends ICrossReferenceSerializer> bindICrossReferenceSerializer() {
     return OMLCrossReferenceSerializer.class;
+  }
+  
+  @Override
+  public Class<? extends IResourceFactory> bindIResourceFactory() {
+    return OMLXtextResourceFactory.class;
   }
 }

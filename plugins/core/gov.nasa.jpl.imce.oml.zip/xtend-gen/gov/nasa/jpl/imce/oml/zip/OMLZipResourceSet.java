@@ -17,10 +17,12 @@
  */
 package gov.nasa.jpl.imce.oml.zip;
 
+import com.google.inject.Provider;
 import gov.nasa.jpl.imce.oml.dsl.OMLStandaloneSetup;
+import gov.nasa.jpl.imce.oml.model.extensions.CatalogURIConverter;
 import gov.nasa.jpl.imce.oml.model.extensions.OMLCatalog;
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
-import gov.nasa.jpl.imce.oml.zip.CatalogURIConverter;
+import gov.nasa.jpl.imce.oml.zip.OMLZipResource;
 import gov.nasa.jpl.imce.oml.zip.OMLZipResourceFactory;
 import java.net.URL;
 import java.util.Map;
@@ -45,6 +47,18 @@ import org.eclipse.xtext.xbase.lib.Exceptions;
  */
 @SuppressWarnings("all")
 public class OMLZipResourceSet extends ResourceSetImpl {
+  private final static Provider<OMLZipResource> omlZipResourceProvider = new Provider<OMLZipResource>() {
+    @Override
+    public OMLZipResource get() {
+      OMLZipResource _xblockexpression = null;
+      {
+        final OMLZipResource r = new OMLZipResource();
+        _xblockexpression = r;
+      }
+      return _xblockexpression;
+    }
+  };
+  
   /**
    * Registers the OML-specific content & extension from the plugin.xml:
    * 
@@ -59,10 +73,10 @@ public class OMLZipResourceSet extends ResourceSetImpl {
     XcoreStandaloneSetup.doSetup();
     OMLStandaloneSetup.doSetup();
     Map<String, Object> _contentTypeToFactoryMap = Resource.Factory.Registry.INSTANCE.getContentTypeToFactoryMap();
-    OMLZipResourceFactory _oMLZipResourceFactory = new OMLZipResourceFactory();
+    OMLZipResourceFactory _oMLZipResourceFactory = new OMLZipResourceFactory(OMLZipResourceSet.omlZipResourceProvider);
     _contentTypeToFactoryMap.put("omlzip", _oMLZipResourceFactory);
     Map<String, Object> _extensionToFactoryMap = Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap();
-    OMLZipResourceFactory _oMLZipResourceFactory_1 = new OMLZipResourceFactory();
+    OMLZipResourceFactory _oMLZipResourceFactory_1 = new OMLZipResourceFactory(OMLZipResourceSet.omlZipResourceProvider);
     _extensionToFactoryMap.put("omlzip", _oMLZipResourceFactory_1);
   }
   

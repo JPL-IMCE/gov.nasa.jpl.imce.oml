@@ -87,12 +87,13 @@ abstract class OMLSaveLoadComparisonTest {
 			val ext1 = pair.value
 		
 			// Save ...
-			val r1 = rs1.createResource(uri)
+			val r1 = rs1.createResource(uri, "omlzip")
 			r1.contents.add(ext1)
 			r1.save(null)
 		
 			// Load...
-			val r2 = rs2.getResource(uri, true)
+			val r2 = rs2.createResource(uri, "omlzip")
+			r2.load(null)
 		
 			// Check...
 			OMLResourceCompare.resourceCompare(r1, r2)

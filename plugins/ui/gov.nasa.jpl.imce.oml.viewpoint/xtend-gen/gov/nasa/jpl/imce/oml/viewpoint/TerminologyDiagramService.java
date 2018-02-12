@@ -372,7 +372,7 @@ public class TerminologyDiagramService {
       _matched=true;
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("some ");
-      String _abbrevIRI = ((EntityExistentialRestrictionAxiom)ax).restrictedRelation().abbrevIRI();
+      String _abbrevIRI = ((EntityExistentialRestrictionAxiom)ax).getRestrictedRelationship().abbrevIRI();
       _builder.append(_abbrevIRI);
       _builder.append(" in");
       _switchResult = _builder.toString();
@@ -382,7 +382,7 @@ public class TerminologyDiagramService {
         _matched=true;
         StringConcatenation _builder = new StringConcatenation();
         _builder.append("all ");
-        String _abbrevIRI = ((EntityUniversalRestrictionAxiom)ax).restrictedRelation().abbrevIRI();
+        String _abbrevIRI = ((EntityUniversalRestrictionAxiom)ax).getRestrictedRelationship().abbrevIRI();
         _builder.append(_abbrevIRI);
         _builder.append(" in");
         _switchResult = _builder.toString();
