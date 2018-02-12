@@ -53,7 +53,7 @@ public class OMLZip3Test extends OMLSaveLoadComparisonTest {
     } catch (final Throwable _t) {
       if (_t instanceof IllegalArgumentException) {
         final IllegalArgumentException e = (IllegalArgumentException)_t;
-        Assert.assertEquals("No catalog mapping for URI: https://test", e.getMessage());
+        Assert.assertEquals("No parent URIConverter and no catalog mapping for URI: https://test", e.getMessage());
       } else {
         throw Exceptions.sneakyThrow(_t);
       }
