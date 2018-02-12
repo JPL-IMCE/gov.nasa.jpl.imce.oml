@@ -384,3 +384,7 @@ Followed the [official Tycho doc](https://wiki.eclipse.org/Tycho/eclipse-reposit
 ### [#227 Stack overflow with circular imports](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/227)
 
 ### [#228 Use Java8 parallelSort instead of Xtend ListExtensions.sortInplaceBy](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/228)
+
+### [#230 Ensure catalog mapping is a bijection](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/230)
+
+### [#231 OML Terminology view: incorrect entity restriction notation](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/231)
