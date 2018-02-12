@@ -1,0 +1,5 @@
+open terminology <http://example.org/B> {
+
+	extends <http://example.org/A>
+
+}
