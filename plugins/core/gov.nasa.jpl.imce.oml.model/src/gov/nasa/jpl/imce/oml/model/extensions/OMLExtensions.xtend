@@ -169,8 +169,17 @@ public class OMLExtensions {
 		if (OMLCatalog.isInstance(o)) {
 			val c = OMLCatalog.cast(o)
 			rs.loadOptions.putIfAbsent(RESOURCE_SET_CATALOG_INSTANCE, c)
-			val omlc = new CatalogURIConverter(c, rs.URIConverter)
-			rs.URIConverter = omlc
+			val prevConverter = rs.URIConverter
+			switch prevConverter {
+				CatalogURIConverter: {
+					// The resource set already has a CatalogURIConverter as its URIConverter.
+				}
+				default: {
+					// Use the resource set's URIConverter as the parent of a new CatalogURIConverter.
+					val omlc = new CatalogURIConverter(c, rs.URIConverter)
+					rs.URIConverter = omlc
+				}	
+			}
 			return c
 		} else {
 			return null

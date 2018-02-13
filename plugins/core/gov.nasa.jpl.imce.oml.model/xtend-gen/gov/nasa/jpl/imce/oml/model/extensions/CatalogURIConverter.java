@@ -37,7 +37,13 @@ import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 /**
  * CatalogURIConverter is a kind of ExtensibleURIConverterImpl
- * where normalization involves resolving an URI through an OASIS XML Catalog.
+ * where normalization involves resolving an URI through an OASIS XML Catalog
+ * or deferring to a parent URIConverter if the catalog-based resolution fails.
+ * 
+ * Note that a CatalogURIConverter cannot be the parent of another CatalogURIConverter.
+ * This may be over-restrictive but allowing this could lead to infinite loops in
+ * normalize(URI) if the same OMLCatalog fails to resolve a URI and is also the catalog
+ * of a CatalogURIConverter whose uriConverter parent is another CatalogURIConverter with the same OMLCatalog.
  */
 @SuppressWarnings("all")
 public class CatalogURIConverter extends ExtensibleURIConverterImpl {
@@ -258,6 +264,11 @@ public class CatalogURIConverter extends ExtensibleURIConverterImpl {
     super(uriHandlers, contentHandlers);
     this.catalog = catalog;
     this.uriConverter = converter;
+    boolean _matched = false;
+    if (converter instanceof CatalogURIConverter) {
+      _matched=true;
+      throw new IllegalArgumentException("A CatalogURIConverter cannot be the parent of another CatalogURIConverter!");
+    }
   }
   
   /**

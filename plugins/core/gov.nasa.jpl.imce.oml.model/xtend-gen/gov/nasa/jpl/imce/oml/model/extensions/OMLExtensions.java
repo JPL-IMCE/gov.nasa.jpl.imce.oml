@@ -247,9 +247,18 @@ public class OMLExtensions {
     if (_isInstance) {
       final OMLCatalog c = OMLCatalog.class.cast(o);
       rs.getLoadOptions().putIfAbsent(OMLExtensions.RESOURCE_SET_CATALOG_INSTANCE, c);
-      URIConverter _uRIConverter = rs.getURIConverter();
-      final CatalogURIConverter omlc = new CatalogURIConverter(c, _uRIConverter);
-      rs.setURIConverter(omlc);
+      final URIConverter prevConverter = rs.getURIConverter();
+      boolean _matched = false;
+      if (prevConverter instanceof CatalogURIConverter) {
+        _matched=true;
+      }
+      if (!_matched) {
+        {
+          URIConverter _uRIConverter = rs.getURIConverter();
+          final CatalogURIConverter omlc = new CatalogURIConverter(c, _uRIConverter);
+          rs.setURIConverter(omlc);
+        }
+      }
       return c;
     } else {
       return null;

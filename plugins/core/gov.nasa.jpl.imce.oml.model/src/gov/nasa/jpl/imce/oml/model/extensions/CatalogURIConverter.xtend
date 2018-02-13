@@ -32,7 +32,13 @@ import org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl
 
 /**
  * CatalogURIConverter is a kind of ExtensibleURIConverterImpl
- * where normalization involves resolving an URI through an OASIS XML Catalog.
+ * where normalization involves resolving an URI through an OASIS XML Catalog
+ * or deferring to a parent URIConverter if the catalog-based resolution fails.
+ * 
+ * Note that a CatalogURIConverter cannot be the parent of another CatalogURIConverter.
+ * This may be over-restrictive but allowing this could lead to infinite loops in
+ * normalize(URI) if the same OMLCatalog fails to resolve a URI and is also the catalog
+ * of a CatalogURIConverter whose uriConverter parent is another CatalogURIConverter with the same OMLCatalog.
  */
 class CatalogURIConverter extends ExtensibleURIConverterImpl {
 
@@ -65,6 +71,13 @@ class CatalogURIConverter extends ExtensibleURIConverterImpl {
 		super(uriHandlers, contentHandlers)
 		this.catalog = catalog
 		this.uriConverter = converter
+		
+		switch converter {
+			CatalogURIConverter:
+				throw new IllegalArgumentException("A CatalogURIConverter cannot be the parent of another CatalogURIConverter!")
+			default: {
+			}
+		}
 	}
 
 	/**
