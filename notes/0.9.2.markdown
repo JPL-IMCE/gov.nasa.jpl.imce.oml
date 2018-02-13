@@ -14,6 +14,8 @@ gov.nasa.jpl.imce.oml.tycho 0.9.2 resolves major problems found in 0.9.1
 
 ### [#233 Fix OMLTest infrastructure for cyclic module tests.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/233)
 
+### [#234 Trim the OML WB.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/234)
+
 ### [#236 Possible infinite loop in CatalogURIConverter.normalize](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/236)
 
 ## Summary of changes from 0.9.1
