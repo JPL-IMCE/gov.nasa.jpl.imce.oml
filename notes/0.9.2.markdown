@@ -18,6 +18,12 @@ gov.nasa.jpl.imce.oml.tycho 0.9.2 resolves major problems found in 0.9.1
 
 ### [#236 Possible infinite loop in CatalogURIConverter.normalize](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/236)
 
+### [#239 Problems serializing OML raw strings with a trailing '"' character.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/239)
+
+### [#241 OMLSpecificationTables: serializing primitive values needs to bypass OMLTables.toString](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/241)
+
+### [#242 OMLZipResource handling of OML modules with circular OML ModuleEdges](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/242)
+
 ## Summary of changes from 0.9.1
 
 ### OML ModuleEdges can be cyclic
