@@ -35,6 +35,7 @@ import org.eclipse.emf.ecore.resource.URIConverter
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl
 
 import static extension gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions.getCatalog
+import org.eclipse.emf.ecore.resource.ResourceSet
 
 /**
  * An OMLZipResource is a kind of Resource that is loaded from and saved to an *.omlzip file
@@ -46,6 +47,37 @@ import static extension gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions.get
  */
 class OMLZipResource extends ResourceImpl {
 
+	static val String OML_SPECIFICATION_TABLES = "OMLSpecificationTables"
+	
+	static def OMLSpecificationTables getOrInitializeOMLSpecificationTables(ResourceSet rs) {
+		if (!rs.loadOptions.containsKey(OML_SPECIFICATION_TABLES)) {
+			val tables = new OMLSpecificationTables
+			rs.loadOptions.put(OML_SPECIFICATION_TABLES, tables)
+			rs.resources.forEach[r |
+				r.contents.forEach[e|
+					switch e {
+						Extent: {
+							e.modules.forEach[m|tables.includeModule(m)]
+  						}
+  					}
+  				]
+			]
+		}
+		val tables = rs.loadOptions.get(OML_SPECIFICATION_TABLES)
+		switch tables {
+			OMLSpecificationTables:
+				tables
+			default:
+				throw new IllegalArgumentException('''OMLZipResource.initializeOMLSpecificationTables: should be already initialized, instead got: «tables»''')		
+		}
+	}
+	
+	static def void clearOMLSpecificationTables(ResourceSet rs) {
+		if (!rs.loadOptions.containsKey(OML_SPECIFICATION_TABLES))
+			throw new IllegalArgumentException('''OMLZipResource.initializeOMLSpecificationTables: not initialized!''')
+		rs.loadOptions.remove(OML_SPECIFICATION_TABLES)
+	}
+	
 	private static val Map<Object, Object> defaultOptions = {
 		val options = new HashMap<Object, Object>()
 		options.put("file.extension", "omlzip")
