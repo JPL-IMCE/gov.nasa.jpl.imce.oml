@@ -74,7 +74,7 @@ abstract class MixedOMLSaveLoadComparisonTest {
 	
 	new() {
 		OMLZipResourceSet.doSetup()
-		omlCatalogFile = createOMLFolder(Paths.get("./target/oml/"+System.currentTimeMillis()))
+		omlCatalogFile = createOMLFolder(Paths.get("target/oml/"+System.currentTimeMillis()))
 		fileURIPrefix = "file:/" + omlCatalogFile.parentFile.absolutePath + "/"
 		httpURIPrefix = "http:/" + omlCatalogFile.parentFile.absolutePath + "/"
 		rs1 = new XtextResourceSet()
@@ -119,7 +119,14 @@ abstract class MixedOMLSaveLoadComparisonTest {
 			r1.save(null)
 			
 			// Load...
-			val r2 = rs2.getResource(uri, true)
+			val r2 = if (uri.toString.endsWith(".oml"))
+				rs2.createResource(uri, "oml")
+			else if (uri.toString.endsWith(".omlzip"))
+				rs2.createResource(uri, "omlzip")
+			else
+				rs2.createResource(uri)
+				
+			r2.load(null)
 		
 			// Check...
 			OMLResourceCompare.resourceCompare(r1, r2)
