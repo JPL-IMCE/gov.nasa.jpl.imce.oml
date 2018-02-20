@@ -19,6 +19,7 @@ package gov.nasa.jpl.imce.oml.zip;
 
 import com.google.common.base.Objects;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
+import gov.nasa.jpl.imce.oml.model.common.Module;
 import gov.nasa.jpl.imce.oml.model.extensions.CatalogURIConverter;
 import gov.nasa.jpl.imce.oml.model.extensions.OMLCatalog;
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
@@ -30,6 +31,7 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Consumer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.apache.commons.compress.archivers.zip.ZipArchiveOutputStream;
@@ -37,6 +39,7 @@ import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
@@ -54,6 +57,60 @@ import org.eclipse.xtext.xbase.lib.StringExtensions;
  */
 @SuppressWarnings("all")
 public class OMLZipResource extends ResourceImpl {
+  private final static String OML_SPECIFICATION_TABLES = "OMLSpecificationTables";
+  
+  public static OMLSpecificationTables getOrInitializeOMLSpecificationTables(final ResourceSet rs) {
+    OMLSpecificationTables _xblockexpression = null;
+    {
+      boolean _containsKey = rs.getLoadOptions().containsKey(OMLZipResource.OML_SPECIFICATION_TABLES);
+      boolean _not = (!_containsKey);
+      if (_not) {
+        final OMLSpecificationTables tables = new OMLSpecificationTables();
+        rs.getLoadOptions().put(OMLZipResource.OML_SPECIFICATION_TABLES, tables);
+        final Consumer<Resource> _function = (Resource r) -> {
+          final Consumer<EObject> _function_1 = (EObject e) -> {
+            boolean _matched = false;
+            if (e instanceof Extent) {
+              _matched=true;
+              final Consumer<Module> _function_2 = (Module m) -> {
+                tables.includeModule(m);
+              };
+              ((Extent)e).getModules().forEach(_function_2);
+            }
+          };
+          r.getContents().forEach(_function_1);
+        };
+        rs.getResources().forEach(_function);
+      }
+      final Object tables_1 = rs.getLoadOptions().get(OMLZipResource.OML_SPECIFICATION_TABLES);
+      OMLSpecificationTables _switchResult = null;
+      boolean _matched = false;
+      if (tables_1 instanceof OMLSpecificationTables) {
+        _matched=true;
+        _switchResult = ((OMLSpecificationTables)tables_1);
+      }
+      if (!_matched) {
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("OMLZipResource.initializeOMLSpecificationTables: should be already initialized, instead got: ");
+        _builder.append(tables_1);
+        throw new IllegalArgumentException(_builder.toString());
+      }
+      _xblockexpression = _switchResult;
+    }
+    return _xblockexpression;
+  }
+  
+  public static void clearOMLSpecificationTables(final ResourceSet rs) {
+    boolean _containsKey = rs.getLoadOptions().containsKey(OMLZipResource.OML_SPECIFICATION_TABLES);
+    boolean _not = (!_containsKey);
+    if (_not) {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("OMLZipResource.initializeOMLSpecificationTables: not initialized!");
+      throw new IllegalArgumentException(_builder.toString());
+    }
+    rs.getLoadOptions().remove(OMLZipResource.OML_SPECIFICATION_TABLES);
+  }
+  
   private final static Map<Object, Object> defaultOptions = new Function0<Map<Object, Object>>() {
     public Map<Object, Object> apply() {
       HashMap<Object, Object> _xblockexpression = null;
