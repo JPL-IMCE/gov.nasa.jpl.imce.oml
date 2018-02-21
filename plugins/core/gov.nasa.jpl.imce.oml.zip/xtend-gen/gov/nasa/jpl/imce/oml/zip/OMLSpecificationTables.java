@@ -123,12 +123,13 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.Functions.Function2;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
+import org.eclipse.xtext.xbase.lib.MapExtensions;
 import org.eclipse.xtext.xbase.lib.Pair;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
@@ -1674,7 +1675,9 @@ public class OMLSpecificationTables {
       pw.print("\"");
       pw.print(",");
       pw.print("\"isIdentityCriteria\":");
-      pw.print(OMLTables.toString(Boolean.valueOf(it.isIsIdentityCriteria())));
+      pw.print("\"");
+      pw.print(it.isIsIdentityCriteria());
+      pw.print("\"");
       pw.print(",");
       pw.print("\"name\":");
       pw.print(OMLTables.toString(it.name()));
@@ -1711,7 +1714,9 @@ public class OMLSpecificationTables {
       pw.print("\"");
       pw.print(",");
       pw.print("\"isIdentityCriteria\":");
-      pw.print(OMLTables.toString(Boolean.valueOf(it.isIsIdentityCriteria())));
+      pw.print("\"");
+      pw.print(it.isIsIdentityCriteria());
+      pw.print("\"");
       pw.print(",");
       pw.print("\"name\":");
       pw.print(OMLTables.toString(it.name()));
@@ -1816,31 +1821,49 @@ public class OMLSpecificationTables {
       pw.print("\"");
       pw.print(",");
       pw.print("\"isAsymmetric\":");
-      pw.print(OMLTables.toString(Boolean.valueOf(it.isIsAsymmetric())));
+      pw.print("\"");
+      pw.print(it.isIsAsymmetric());
+      pw.print("\"");
       pw.print(",");
       pw.print("\"isEssential\":");
-      pw.print(OMLTables.toString(Boolean.valueOf(it.isIsEssential())));
+      pw.print("\"");
+      pw.print(it.isIsEssential());
+      pw.print("\"");
       pw.print(",");
       pw.print("\"isFunctional\":");
-      pw.print(OMLTables.toString(Boolean.valueOf(it.isIsFunctional())));
+      pw.print("\"");
+      pw.print(it.isIsFunctional());
+      pw.print("\"");
       pw.print(",");
       pw.print("\"isInverseEssential\":");
-      pw.print(OMLTables.toString(Boolean.valueOf(it.isIsInverseEssential())));
+      pw.print("\"");
+      pw.print(it.isIsInverseEssential());
+      pw.print("\"");
       pw.print(",");
       pw.print("\"isInverseFunctional\":");
-      pw.print(OMLTables.toString(Boolean.valueOf(it.isIsInverseFunctional())));
+      pw.print("\"");
+      pw.print(it.isIsInverseFunctional());
+      pw.print("\"");
       pw.print(",");
       pw.print("\"isIrreflexive\":");
-      pw.print(OMLTables.toString(Boolean.valueOf(it.isIsIrreflexive())));
+      pw.print("\"");
+      pw.print(it.isIsIrreflexive());
+      pw.print("\"");
       pw.print(",");
       pw.print("\"isReflexive\":");
-      pw.print(OMLTables.toString(Boolean.valueOf(it.isIsReflexive())));
+      pw.print("\"");
+      pw.print(it.isIsReflexive());
+      pw.print("\"");
       pw.print(",");
       pw.print("\"isSymmetric\":");
-      pw.print(OMLTables.toString(Boolean.valueOf(it.isIsSymmetric())));
+      pw.print("\"");
+      pw.print(it.isIsSymmetric());
+      pw.print("\"");
       pw.print(",");
       pw.print("\"isTransitive\":");
-      pw.print(OMLTables.toString(Boolean.valueOf(it.isIsTransitive())));
+      pw.print("\"");
+      pw.print(it.isIsTransitive());
+      pw.print("\"");
       pw.print(",");
       pw.print("\"name\":");
       pw.print(OMLTables.toString(it.name()));
@@ -1925,31 +1948,49 @@ public class OMLSpecificationTables {
       pw.print("\"");
       pw.print(",");
       pw.print("\"isAsymmetric\":");
-      pw.print(OMLTables.toString(Boolean.valueOf(it.isIsAsymmetric())));
+      pw.print("\"");
+      pw.print(it.isIsAsymmetric());
+      pw.print("\"");
       pw.print(",");
       pw.print("\"isEssential\":");
-      pw.print(OMLTables.toString(Boolean.valueOf(it.isIsEssential())));
+      pw.print("\"");
+      pw.print(it.isIsEssential());
+      pw.print("\"");
       pw.print(",");
       pw.print("\"isFunctional\":");
-      pw.print(OMLTables.toString(Boolean.valueOf(it.isIsFunctional())));
+      pw.print("\"");
+      pw.print(it.isIsFunctional());
+      pw.print("\"");
       pw.print(",");
       pw.print("\"isInverseEssential\":");
-      pw.print(OMLTables.toString(Boolean.valueOf(it.isIsInverseEssential())));
+      pw.print("\"");
+      pw.print(it.isIsInverseEssential());
+      pw.print("\"");
       pw.print(",");
       pw.print("\"isInverseFunctional\":");
-      pw.print(OMLTables.toString(Boolean.valueOf(it.isIsInverseFunctional())));
+      pw.print("\"");
+      pw.print(it.isIsInverseFunctional());
+      pw.print("\"");
       pw.print(",");
       pw.print("\"isIrreflexive\":");
-      pw.print(OMLTables.toString(Boolean.valueOf(it.isIsIrreflexive())));
+      pw.print("\"");
+      pw.print(it.isIsIrreflexive());
+      pw.print("\"");
       pw.print(",");
       pw.print("\"isReflexive\":");
-      pw.print(OMLTables.toString(Boolean.valueOf(it.isIsReflexive())));
+      pw.print("\"");
+      pw.print(it.isIsReflexive());
+      pw.print("\"");
       pw.print(",");
       pw.print("\"isSymmetric\":");
-      pw.print(OMLTables.toString(Boolean.valueOf(it.isIsSymmetric())));
+      pw.print("\"");
+      pw.print(it.isIsSymmetric());
+      pw.print("\"");
       pw.print(",");
       pw.print("\"isTransitive\":");
-      pw.print(OMLTables.toString(Boolean.valueOf(it.isIsTransitive())));
+      pw.print("\"");
+      pw.print(it.isIsTransitive());
+      pw.print("\"");
       pw.print(",");
       pw.print("\"name\":");
       pw.print(OMLTables.toString(it.name()));
@@ -3018,9 +3059,17 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
+  /**
+   * Uses an OMLSpecificationTables for resolving cross-references in the *.oml and *.omlzip representations.
+   * When there are no more OML resources to load, it is necessary to call explicitly:
+   * 
+   *     OMLZipResource.clearOMLSpecificationTables(rs)
+   */
   public static void load(final ResourceSet rs, final OMLZipResource r, final File omlZipFile) {
     try {
-      final OMLSpecificationTables tables = new OMLSpecificationTables();
+      final OMLSpecificationTables tables = OMLZipResource.getOrInitializeOMLSpecificationTables(rs);
+      final Extent ext = tables.omlCommonFactory.createExtent();
+      r.getContents().add(ext);
       final ZipFile zip = new ZipFile(omlZipFile);
       final Consumer<ZipArchiveEntry> _function = (ZipArchiveEntry ze) -> {
         try {
@@ -3029,188 +3078,189 @@ public class OMLSpecificationTables {
           final BufferedReader buffer = new BufferedReader(_inputStreamReader);
           final ArrayList<String> lines = new ArrayList<String>();
           Iterables.<String>addAll(lines, IteratorExtensions.<String>toIterable(buffer.lines().iterator()));
+          buffer.close();
           String _name = ze.getName();
           if (_name != null) {
             switch (_name) {
               case "TerminologyGraphs.json":
-                tables.readTerminologyGraphs(lines);
+                tables.readTerminologyGraphs(ext, lines);
                 break;
               case "Bundles.json":
-                tables.readBundles(lines);
+                tables.readBundles(ext, lines);
                 break;
               case "DescriptionBoxes.json":
-                tables.readDescriptionBoxes(lines);
+                tables.readDescriptionBoxes(ext, lines);
                 break;
               case "AnnotationProperties.json":
-                tables.readAnnotationProperties(lines);
+                tables.readAnnotationProperties(ext, lines);
                 break;
               case "Aspects.json":
-                tables.readAspects(lines);
+                tables.readAspects(ext, lines);
                 break;
               case "Concepts.json":
-                tables.readConcepts(lines);
+                tables.readConcepts(ext, lines);
                 break;
               case "Scalars.json":
-                tables.readScalars(lines);
+                tables.readScalars(ext, lines);
                 break;
               case "Structures.json":
-                tables.readStructures(lines);
+                tables.readStructures(ext, lines);
                 break;
               case "ConceptDesignationTerminologyAxioms.json":
-                tables.readConceptDesignationTerminologyAxioms(lines);
+                tables.readConceptDesignationTerminologyAxioms(ext, lines);
                 break;
               case "TerminologyExtensionAxioms.json":
-                tables.readTerminologyExtensionAxioms(lines);
+                tables.readTerminologyExtensionAxioms(ext, lines);
                 break;
               case "TerminologyNestingAxioms.json":
-                tables.readTerminologyNestingAxioms(lines);
+                tables.readTerminologyNestingAxioms(ext, lines);
                 break;
               case "BundledTerminologyAxioms.json":
-                tables.readBundledTerminologyAxioms(lines);
+                tables.readBundledTerminologyAxioms(ext, lines);
                 break;
               case "DescriptionBoxExtendsClosedWorldDefinitions.json":
-                tables.readDescriptionBoxExtendsClosedWorldDefinitions(lines);
+                tables.readDescriptionBoxExtendsClosedWorldDefinitions(ext, lines);
                 break;
               case "DescriptionBoxRefinements.json":
-                tables.readDescriptionBoxRefinements(lines);
+                tables.readDescriptionBoxRefinements(ext, lines);
                 break;
               case "BinaryScalarRestrictions.json":
-                tables.readBinaryScalarRestrictions(lines);
+                tables.readBinaryScalarRestrictions(ext, lines);
                 break;
               case "IRIScalarRestrictions.json":
-                tables.readIRIScalarRestrictions(lines);
+                tables.readIRIScalarRestrictions(ext, lines);
                 break;
               case "NumericScalarRestrictions.json":
-                tables.readNumericScalarRestrictions(lines);
+                tables.readNumericScalarRestrictions(ext, lines);
                 break;
               case "PlainLiteralScalarRestrictions.json":
-                tables.readPlainLiteralScalarRestrictions(lines);
+                tables.readPlainLiteralScalarRestrictions(ext, lines);
                 break;
               case "ScalarOneOfRestrictions.json":
-                tables.readScalarOneOfRestrictions(lines);
+                tables.readScalarOneOfRestrictions(ext, lines);
                 break;
               case "ScalarOneOfLiteralAxioms.json":
-                tables.readScalarOneOfLiteralAxioms(lines);
+                tables.readScalarOneOfLiteralAxioms(ext, lines);
                 break;
               case "StringScalarRestrictions.json":
-                tables.readStringScalarRestrictions(lines);
+                tables.readStringScalarRestrictions(ext, lines);
                 break;
               case "SynonymScalarRestrictions.json":
-                tables.readSynonymScalarRestrictions(lines);
+                tables.readSynonymScalarRestrictions(ext, lines);
                 break;
               case "TimeScalarRestrictions.json":
-                tables.readTimeScalarRestrictions(lines);
+                tables.readTimeScalarRestrictions(ext, lines);
                 break;
               case "EntityScalarDataProperties.json":
-                tables.readEntityScalarDataProperties(lines);
+                tables.readEntityScalarDataProperties(ext, lines);
                 break;
               case "EntityStructuredDataProperties.json":
-                tables.readEntityStructuredDataProperties(lines);
+                tables.readEntityStructuredDataProperties(ext, lines);
                 break;
               case "ScalarDataProperties.json":
-                tables.readScalarDataProperties(lines);
+                tables.readScalarDataProperties(ext, lines);
                 break;
               case "StructuredDataProperties.json":
-                tables.readStructuredDataProperties(lines);
+                tables.readStructuredDataProperties(ext, lines);
                 break;
               case "ReifiedRelationships.json":
-                tables.readReifiedRelationships(lines);
+                tables.readReifiedRelationships(ext, lines);
                 break;
               case "ForwardProperties.json":
-                tables.readForwardProperties(lines);
+                tables.readForwardProperties(ext, lines);
                 break;
               case "InverseProperties.json":
-                tables.readInverseProperties(lines);
+                tables.readInverseProperties(ext, lines);
                 break;
               case "UnreifiedRelationships.json":
-                tables.readUnreifiedRelationships(lines);
+                tables.readUnreifiedRelationships(ext, lines);
                 break;
               case "ChainRules.json":
-                tables.readChainRules(lines);
+                tables.readChainRules(ext, lines);
                 break;
               case "RuleBodySegments.json":
-                tables.readRuleBodySegments(lines);
+                tables.readRuleBodySegments(ext, lines);
                 break;
               case "SegmentPredicates.json":
-                tables.readSegmentPredicates(lines);
+                tables.readSegmentPredicates(ext, lines);
                 break;
               case "EntityExistentialRestrictionAxioms.json":
-                tables.readEntityExistentialRestrictionAxioms(lines);
+                tables.readEntityExistentialRestrictionAxioms(ext, lines);
                 break;
               case "EntityUniversalRestrictionAxioms.json":
-                tables.readEntityUniversalRestrictionAxioms(lines);
+                tables.readEntityUniversalRestrictionAxioms(ext, lines);
                 break;
               case "EntityScalarDataPropertyExistentialRestrictionAxioms.json":
-                tables.readEntityScalarDataPropertyExistentialRestrictionAxioms(lines);
+                tables.readEntityScalarDataPropertyExistentialRestrictionAxioms(ext, lines);
                 break;
               case "EntityScalarDataPropertyParticularRestrictionAxioms.json":
-                tables.readEntityScalarDataPropertyParticularRestrictionAxioms(lines);
+                tables.readEntityScalarDataPropertyParticularRestrictionAxioms(ext, lines);
                 break;
               case "EntityScalarDataPropertyUniversalRestrictionAxioms.json":
-                tables.readEntityScalarDataPropertyUniversalRestrictionAxioms(lines);
+                tables.readEntityScalarDataPropertyUniversalRestrictionAxioms(ext, lines);
                 break;
               case "EntityStructuredDataPropertyParticularRestrictionAxioms.json":
-                tables.readEntityStructuredDataPropertyParticularRestrictionAxioms(lines);
+                tables.readEntityStructuredDataPropertyParticularRestrictionAxioms(ext, lines);
                 break;
               case "RestrictionStructuredDataPropertyTuples.json":
-                tables.readRestrictionStructuredDataPropertyTuples(lines);
+                tables.readRestrictionStructuredDataPropertyTuples(ext, lines);
                 break;
               case "RestrictionScalarDataPropertyValues.json":
-                tables.readRestrictionScalarDataPropertyValues(lines);
+                tables.readRestrictionScalarDataPropertyValues(ext, lines);
                 break;
               case "AspectSpecializationAxioms.json":
-                tables.readAspectSpecializationAxioms(lines);
+                tables.readAspectSpecializationAxioms(ext, lines);
                 break;
               case "ConceptSpecializationAxioms.json":
-                tables.readConceptSpecializationAxioms(lines);
+                tables.readConceptSpecializationAxioms(ext, lines);
                 break;
               case "ReifiedRelationshipSpecializationAxioms.json":
-                tables.readReifiedRelationshipSpecializationAxioms(lines);
+                tables.readReifiedRelationshipSpecializationAxioms(ext, lines);
                 break;
               case "SubDataPropertyOfAxioms.json":
-                tables.readSubDataPropertyOfAxioms(lines);
+                tables.readSubDataPropertyOfAxioms(ext, lines);
                 break;
               case "SubObjectPropertyOfAxioms.json":
-                tables.readSubObjectPropertyOfAxioms(lines);
+                tables.readSubObjectPropertyOfAxioms(ext, lines);
                 break;
               case "RootConceptTaxonomyAxioms.json":
-                tables.readRootConceptTaxonomyAxioms(lines);
+                tables.readRootConceptTaxonomyAxioms(ext, lines);
                 break;
               case "AnonymousConceptUnionAxioms.json":
-                tables.readAnonymousConceptUnionAxioms(lines);
+                tables.readAnonymousConceptUnionAxioms(ext, lines);
                 break;
               case "SpecificDisjointConceptAxioms.json":
-                tables.readSpecificDisjointConceptAxioms(lines);
+                tables.readSpecificDisjointConceptAxioms(ext, lines);
                 break;
               case "ConceptInstances.json":
-                tables.readConceptInstances(lines);
+                tables.readConceptInstances(ext, lines);
                 break;
               case "ReifiedRelationshipInstances.json":
-                tables.readReifiedRelationshipInstances(lines);
+                tables.readReifiedRelationshipInstances(ext, lines);
                 break;
               case "ReifiedRelationshipInstanceDomains.json":
-                tables.readReifiedRelationshipInstanceDomains(lines);
+                tables.readReifiedRelationshipInstanceDomains(ext, lines);
                 break;
               case "ReifiedRelationshipInstanceRanges.json":
-                tables.readReifiedRelationshipInstanceRanges(lines);
+                tables.readReifiedRelationshipInstanceRanges(ext, lines);
                 break;
               case "UnreifiedRelationshipInstanceTuples.json":
-                tables.readUnreifiedRelationshipInstanceTuples(lines);
+                tables.readUnreifiedRelationshipInstanceTuples(ext, lines);
                 break;
               case "SingletonInstanceStructuredDataPropertyValues.json":
-                tables.readSingletonInstanceStructuredDataPropertyValues(lines);
+                tables.readSingletonInstanceStructuredDataPropertyValues(ext, lines);
                 break;
               case "SingletonInstanceScalarDataPropertyValues.json":
-                tables.readSingletonInstanceScalarDataPropertyValues(lines);
+                tables.readSingletonInstanceScalarDataPropertyValues(ext, lines);
                 break;
               case "StructuredDataPropertyTuples.json":
-                tables.readStructuredDataPropertyTuples(lines);
+                tables.readStructuredDataPropertyTuples(ext, lines);
                 break;
               case "ScalarDataPropertyValues.json":
-                tables.readScalarDataPropertyValues(lines);
+                tables.readScalarDataPropertyValues(ext, lines);
                 break;
               case "AnnotationPropertyValues.json":
-                tables.readAnnotationPropertyValues(lines);
+                tables.readAnnotationPropertyValues(ext, lines);
                 break;
               default:
                 String _name_1 = ze.getName();
@@ -3227,13 +3277,14 @@ public class OMLSpecificationTables {
         }
       };
       Collections.<ZipArchiveEntry>list(zip.getEntries()).forEach(_function);
-      tables.createAndResolve(rs, r);
+      zip.close();
+      tables.resolve(rs, r);
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
   
-  protected void readTerminologyGraphs(final ArrayList<String> lines) {
+  protected void readTerminologyGraphs(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -3241,16 +3292,18 @@ public class OMLSpecificationTables {
         int _minus = (_size - 1);
         final Map<String, String> kv = kvs.remove(_minus);
         final TerminologyGraph oml = this.omlGraphsFactory.createTerminologyGraph();
+        ext.getModules().add(oml);
         final String uuid = kv.remove("uuid");
         oml.setKind(OMLTables.toTerminologyKind(kv.remove("kind")));
         oml.setIri(OMLTables.toIRI(kv.remove("iri")));
         final Pair<TerminologyGraph, Map<String, String>> pair = new Pair<TerminologyGraph, Map<String, String>>(oml, kv);
         this.terminologyGraphs.put(uuid, pair);
+        this.includeTerminologyGraphs(uuid, oml);
       }
     }
   }
   
-  protected void readBundles(final ArrayList<String> lines) {
+  protected void readBundles(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -3258,16 +3311,18 @@ public class OMLSpecificationTables {
         int _minus = (_size - 1);
         final Map<String, String> kv = kvs.remove(_minus);
         final Bundle oml = this.omlBundlesFactory.createBundle();
+        ext.getModules().add(oml);
         final String uuid = kv.remove("uuid");
         oml.setKind(OMLTables.toTerminologyKind(kv.remove("kind")));
         oml.setIri(OMLTables.toIRI(kv.remove("iri")));
         final Pair<Bundle, Map<String, String>> pair = new Pair<Bundle, Map<String, String>>(oml, kv);
         this.bundles.put(uuid, pair);
+        this.includeBundles(uuid, oml);
       }
     }
   }
   
-  protected void readDescriptionBoxes(final ArrayList<String> lines) {
+  protected void readDescriptionBoxes(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -3275,16 +3330,18 @@ public class OMLSpecificationTables {
         int _minus = (_size - 1);
         final Map<String, String> kv = kvs.remove(_minus);
         final DescriptionBox oml = this.omlDescriptionsFactory.createDescriptionBox();
+        ext.getModules().add(oml);
         final String uuid = kv.remove("uuid");
         oml.setKind(OMLTables.toDescriptionKind(kv.remove("kind")));
         oml.setIri(OMLTables.toIRI(kv.remove("iri")));
         final Pair<DescriptionBox, Map<String, String>> pair = new Pair<DescriptionBox, Map<String, String>>(oml, kv);
         this.descriptionBoxes.put(uuid, pair);
+        this.includeDescriptionBoxes(uuid, oml);
       }
     }
   }
   
-  protected void readAnnotationProperties(final ArrayList<String> lines) {
+  protected void readAnnotationProperties(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -3297,11 +3354,12 @@ public class OMLSpecificationTables {
         oml.setAbbrevIRI(OMLTables.toAbbrevIRI(kv.remove("abbrevIRI")));
         final Pair<AnnotationProperty, Map<String, String>> pair = new Pair<AnnotationProperty, Map<String, String>>(oml, kv);
         this.annotationProperties.put(uuid, pair);
+        this.includeAnnotationProperties(uuid, oml);
       }
     }
   }
   
-  protected void readAspects(final ArrayList<String> lines) {
+  protected void readAspects(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -3313,11 +3371,12 @@ public class OMLSpecificationTables {
         oml.setName(OMLTables.toLocalName(kv.remove("name")));
         final Pair<Aspect, Map<String, String>> pair = new Pair<Aspect, Map<String, String>>(oml, kv);
         this.aspects.put(uuid, pair);
+        this.includeAspects(uuid, oml);
       }
     }
   }
   
-  protected void readConcepts(final ArrayList<String> lines) {
+  protected void readConcepts(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -3329,11 +3388,12 @@ public class OMLSpecificationTables {
         oml.setName(OMLTables.toLocalName(kv.remove("name")));
         final Pair<Concept, Map<String, String>> pair = new Pair<Concept, Map<String, String>>(oml, kv);
         this.concepts.put(uuid, pair);
+        this.includeConcepts(uuid, oml);
       }
     }
   }
   
-  protected void readScalars(final ArrayList<String> lines) {
+  protected void readScalars(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -3345,11 +3405,12 @@ public class OMLSpecificationTables {
         oml.setName(OMLTables.toLocalName(kv.remove("name")));
         final Pair<Scalar, Map<String, String>> pair = new Pair<Scalar, Map<String, String>>(oml, kv);
         this.scalars.put(uuid, pair);
+        this.includeScalars(uuid, oml);
       }
     }
   }
   
-  protected void readStructures(final ArrayList<String> lines) {
+  protected void readStructures(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -3361,11 +3422,12 @@ public class OMLSpecificationTables {
         oml.setName(OMLTables.toLocalName(kv.remove("name")));
         final Pair<Structure, Map<String, String>> pair = new Pair<Structure, Map<String, String>>(oml, kv);
         this.structures.put(uuid, pair);
+        this.includeStructures(uuid, oml);
       }
     }
   }
   
-  protected void readConceptDesignationTerminologyAxioms(final ArrayList<String> lines) {
+  protected void readConceptDesignationTerminologyAxioms(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -3376,11 +3438,12 @@ public class OMLSpecificationTables {
         final String uuid = kv.remove("uuid");
         final Pair<ConceptDesignationTerminologyAxiom, Map<String, String>> pair = new Pair<ConceptDesignationTerminologyAxiom, Map<String, String>>(oml, kv);
         this.conceptDesignationTerminologyAxioms.put(uuid, pair);
+        this.includeConceptDesignationTerminologyAxioms(uuid, oml);
       }
     }
   }
   
-  protected void readTerminologyExtensionAxioms(final ArrayList<String> lines) {
+  protected void readTerminologyExtensionAxioms(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -3391,11 +3454,12 @@ public class OMLSpecificationTables {
         final String uuid = kv.remove("uuid");
         final Pair<TerminologyExtensionAxiom, Map<String, String>> pair = new Pair<TerminologyExtensionAxiom, Map<String, String>>(oml, kv);
         this.terminologyExtensionAxioms.put(uuid, pair);
+        this.includeTerminologyExtensionAxioms(uuid, oml);
       }
     }
   }
   
-  protected void readTerminologyNestingAxioms(final ArrayList<String> lines) {
+  protected void readTerminologyNestingAxioms(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -3406,11 +3470,12 @@ public class OMLSpecificationTables {
         final String uuid = kv.remove("uuid");
         final Pair<TerminologyNestingAxiom, Map<String, String>> pair = new Pair<TerminologyNestingAxiom, Map<String, String>>(oml, kv);
         this.terminologyNestingAxioms.put(uuid, pair);
+        this.includeTerminologyNestingAxioms(uuid, oml);
       }
     }
   }
   
-  protected void readBundledTerminologyAxioms(final ArrayList<String> lines) {
+  protected void readBundledTerminologyAxioms(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -3421,11 +3486,12 @@ public class OMLSpecificationTables {
         final String uuid = kv.remove("uuid");
         final Pair<BundledTerminologyAxiom, Map<String, String>> pair = new Pair<BundledTerminologyAxiom, Map<String, String>>(oml, kv);
         this.bundledTerminologyAxioms.put(uuid, pair);
+        this.includeBundledTerminologyAxioms(uuid, oml);
       }
     }
   }
   
-  protected void readDescriptionBoxExtendsClosedWorldDefinitions(final ArrayList<String> lines) {
+  protected void readDescriptionBoxExtendsClosedWorldDefinitions(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -3436,11 +3502,12 @@ public class OMLSpecificationTables {
         final String uuid = kv.remove("uuid");
         final Pair<DescriptionBoxExtendsClosedWorldDefinitions, Map<String, String>> pair = new Pair<DescriptionBoxExtendsClosedWorldDefinitions, Map<String, String>>(oml, kv);
         this.descriptionBoxExtendsClosedWorldDefinitions.put(uuid, pair);
+        this.includeDescriptionBoxExtendsClosedWorldDefinitions(uuid, oml);
       }
     }
   }
   
-  protected void readDescriptionBoxRefinements(final ArrayList<String> lines) {
+  protected void readDescriptionBoxRefinements(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -3451,11 +3518,12 @@ public class OMLSpecificationTables {
         final String uuid = kv.remove("uuid");
         final Pair<DescriptionBoxRefinement, Map<String, String>> pair = new Pair<DescriptionBoxRefinement, Map<String, String>>(oml, kv);
         this.descriptionBoxRefinements.put(uuid, pair);
+        this.includeDescriptionBoxRefinements(uuid, oml);
       }
     }
   }
   
-  protected void readBinaryScalarRestrictions(final ArrayList<String> lines) {
+  protected void readBinaryScalarRestrictions(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -3470,11 +3538,12 @@ public class OMLSpecificationTables {
         oml.setName(OMLTables.toLocalName(kv.remove("name")));
         final Pair<BinaryScalarRestriction, Map<String, String>> pair = new Pair<BinaryScalarRestriction, Map<String, String>>(oml, kv);
         this.binaryScalarRestrictions.put(uuid, pair);
+        this.includeBinaryScalarRestrictions(uuid, oml);
       }
     }
   }
   
-  protected void readIRIScalarRestrictions(final ArrayList<String> lines) {
+  protected void readIRIScalarRestrictions(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -3490,11 +3559,12 @@ public class OMLSpecificationTables {
         oml.setPattern(OMLTables.toLiteralPattern(kv.remove("pattern")));
         final Pair<IRIScalarRestriction, Map<String, String>> pair = new Pair<IRIScalarRestriction, Map<String, String>>(oml, kv);
         this.iriScalarRestrictions.put(uuid, pair);
+        this.includeIRIScalarRestrictions(uuid, oml);
       }
     }
   }
   
-  protected void readNumericScalarRestrictions(final ArrayList<String> lines) {
+  protected void readNumericScalarRestrictions(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -3510,11 +3580,12 @@ public class OMLSpecificationTables {
         oml.setName(OMLTables.toLocalName(kv.remove("name")));
         final Pair<NumericScalarRestriction, Map<String, String>> pair = new Pair<NumericScalarRestriction, Map<String, String>>(oml, kv);
         this.numericScalarRestrictions.put(uuid, pair);
+        this.includeNumericScalarRestrictions(uuid, oml);
       }
     }
   }
   
-  protected void readPlainLiteralScalarRestrictions(final ArrayList<String> lines) {
+  protected void readPlainLiteralScalarRestrictions(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -3531,11 +3602,12 @@ public class OMLSpecificationTables {
         oml.setPattern(OMLTables.toLiteralPattern(kv.remove("pattern")));
         final Pair<PlainLiteralScalarRestriction, Map<String, String>> pair = new Pair<PlainLiteralScalarRestriction, Map<String, String>>(oml, kv);
         this.plainLiteralScalarRestrictions.put(uuid, pair);
+        this.includePlainLiteralScalarRestrictions(uuid, oml);
       }
     }
   }
   
-  protected void readScalarOneOfRestrictions(final ArrayList<String> lines) {
+  protected void readScalarOneOfRestrictions(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -3547,11 +3619,12 @@ public class OMLSpecificationTables {
         oml.setName(OMLTables.toLocalName(kv.remove("name")));
         final Pair<ScalarOneOfRestriction, Map<String, String>> pair = new Pair<ScalarOneOfRestriction, Map<String, String>>(oml, kv);
         this.scalarOneOfRestrictions.put(uuid, pair);
+        this.includeScalarOneOfRestrictions(uuid, oml);
       }
     }
   }
   
-  protected void readScalarOneOfLiteralAxioms(final ArrayList<String> lines) {
+  protected void readScalarOneOfLiteralAxioms(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -3563,11 +3636,12 @@ public class OMLSpecificationTables {
         oml.setValue(OMLTables.toLiteralValue(kv.remove("value")));
         final Pair<ScalarOneOfLiteralAxiom, Map<String, String>> pair = new Pair<ScalarOneOfLiteralAxiom, Map<String, String>>(oml, kv);
         this.scalarOneOfLiteralAxioms.put(uuid, pair);
+        this.includeScalarOneOfLiteralAxioms(uuid, oml);
       }
     }
   }
   
-  protected void readStringScalarRestrictions(final ArrayList<String> lines) {
+  protected void readStringScalarRestrictions(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -3583,11 +3657,12 @@ public class OMLSpecificationTables {
         oml.setPattern(OMLTables.toLiteralPattern(kv.remove("pattern")));
         final Pair<StringScalarRestriction, Map<String, String>> pair = new Pair<StringScalarRestriction, Map<String, String>>(oml, kv);
         this.stringScalarRestrictions.put(uuid, pair);
+        this.includeStringScalarRestrictions(uuid, oml);
       }
     }
   }
   
-  protected void readSynonymScalarRestrictions(final ArrayList<String> lines) {
+  protected void readSynonymScalarRestrictions(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -3599,11 +3674,12 @@ public class OMLSpecificationTables {
         oml.setName(OMLTables.toLocalName(kv.remove("name")));
         final Pair<SynonymScalarRestriction, Map<String, String>> pair = new Pair<SynonymScalarRestriction, Map<String, String>>(oml, kv);
         this.synonymScalarRestrictions.put(uuid, pair);
+        this.includeSynonymScalarRestrictions(uuid, oml);
       }
     }
   }
   
-  protected void readTimeScalarRestrictions(final ArrayList<String> lines) {
+  protected void readTimeScalarRestrictions(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -3619,11 +3695,12 @@ public class OMLSpecificationTables {
         oml.setName(OMLTables.toLocalName(kv.remove("name")));
         final Pair<TimeScalarRestriction, Map<String, String>> pair = new Pair<TimeScalarRestriction, Map<String, String>>(oml, kv);
         this.timeScalarRestrictions.put(uuid, pair);
+        this.includeTimeScalarRestrictions(uuid, oml);
       }
     }
   }
   
-  protected void readEntityScalarDataProperties(final ArrayList<String> lines) {
+  protected void readEntityScalarDataProperties(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -3636,11 +3713,12 @@ public class OMLSpecificationTables {
         oml.setName(OMLTables.toLocalName(kv.remove("name")));
         final Pair<EntityScalarDataProperty, Map<String, String>> pair = new Pair<EntityScalarDataProperty, Map<String, String>>(oml, kv);
         this.entityScalarDataProperties.put(uuid, pair);
+        this.includeEntityScalarDataProperties(uuid, oml);
       }
     }
   }
   
-  protected void readEntityStructuredDataProperties(final ArrayList<String> lines) {
+  protected void readEntityStructuredDataProperties(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -3653,11 +3731,12 @@ public class OMLSpecificationTables {
         oml.setName(OMLTables.toLocalName(kv.remove("name")));
         final Pair<EntityStructuredDataProperty, Map<String, String>> pair = new Pair<EntityStructuredDataProperty, Map<String, String>>(oml, kv);
         this.entityStructuredDataProperties.put(uuid, pair);
+        this.includeEntityStructuredDataProperties(uuid, oml);
       }
     }
   }
   
-  protected void readScalarDataProperties(final ArrayList<String> lines) {
+  protected void readScalarDataProperties(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -3669,11 +3748,12 @@ public class OMLSpecificationTables {
         oml.setName(OMLTables.toLocalName(kv.remove("name")));
         final Pair<ScalarDataProperty, Map<String, String>> pair = new Pair<ScalarDataProperty, Map<String, String>>(oml, kv);
         this.scalarDataProperties.put(uuid, pair);
+        this.includeScalarDataProperties(uuid, oml);
       }
     }
   }
   
-  protected void readStructuredDataProperties(final ArrayList<String> lines) {
+  protected void readStructuredDataProperties(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -3685,11 +3765,12 @@ public class OMLSpecificationTables {
         oml.setName(OMLTables.toLocalName(kv.remove("name")));
         final Pair<StructuredDataProperty, Map<String, String>> pair = new Pair<StructuredDataProperty, Map<String, String>>(oml, kv);
         this.structuredDataProperties.put(uuid, pair);
+        this.includeStructuredDataProperties(uuid, oml);
       }
     }
   }
   
-  protected void readReifiedRelationships(final ArrayList<String> lines) {
+  protected void readReifiedRelationships(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -3710,11 +3791,12 @@ public class OMLSpecificationTables {
         oml.setName(OMLTables.toLocalName(kv.remove("name")));
         final Pair<ReifiedRelationship, Map<String, String>> pair = new Pair<ReifiedRelationship, Map<String, String>>(oml, kv);
         this.reifiedRelationships.put(uuid, pair);
+        this.includeReifiedRelationships(uuid, oml);
       }
     }
   }
   
-  protected void readForwardProperties(final ArrayList<String> lines) {
+  protected void readForwardProperties(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -3726,11 +3808,12 @@ public class OMLSpecificationTables {
         oml.setName(OMLTables.toLocalName(kv.remove("name")));
         final Pair<ForwardProperty, Map<String, String>> pair = new Pair<ForwardProperty, Map<String, String>>(oml, kv);
         this.forwardProperties.put(uuid, pair);
+        this.includeForwardProperties(uuid, oml);
       }
     }
   }
   
-  protected void readInverseProperties(final ArrayList<String> lines) {
+  protected void readInverseProperties(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -3742,11 +3825,12 @@ public class OMLSpecificationTables {
         oml.setName(OMLTables.toLocalName(kv.remove("name")));
         final Pair<InverseProperty, Map<String, String>> pair = new Pair<InverseProperty, Map<String, String>>(oml, kv);
         this.inverseProperties.put(uuid, pair);
+        this.includeInverseProperties(uuid, oml);
       }
     }
   }
   
-  protected void readUnreifiedRelationships(final ArrayList<String> lines) {
+  protected void readUnreifiedRelationships(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -3767,11 +3851,12 @@ public class OMLSpecificationTables {
         oml.setName(OMLTables.toLocalName(kv.remove("name")));
         final Pair<UnreifiedRelationship, Map<String, String>> pair = new Pair<UnreifiedRelationship, Map<String, String>>(oml, kv);
         this.unreifiedRelationships.put(uuid, pair);
+        this.includeUnreifiedRelationships(uuid, oml);
       }
     }
   }
   
-  protected void readChainRules(final ArrayList<String> lines) {
+  protected void readChainRules(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -3783,11 +3868,12 @@ public class OMLSpecificationTables {
         oml.setName(OMLTables.toLocalName(kv.remove("name")));
         final Pair<ChainRule, Map<String, String>> pair = new Pair<ChainRule, Map<String, String>>(oml, kv);
         this.chainRules.put(uuid, pair);
+        this.includeChainRules(uuid, oml);
       }
     }
   }
   
-  protected void readRuleBodySegments(final ArrayList<String> lines) {
+  protected void readRuleBodySegments(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -3798,11 +3884,12 @@ public class OMLSpecificationTables {
         final String uuid = kv.remove("uuid");
         final Pair<RuleBodySegment, Map<String, String>> pair = new Pair<RuleBodySegment, Map<String, String>>(oml, kv);
         this.ruleBodySegments.put(uuid, pair);
+        this.includeRuleBodySegments(uuid, oml);
       }
     }
   }
   
-  protected void readSegmentPredicates(final ArrayList<String> lines) {
+  protected void readSegmentPredicates(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -3813,11 +3900,12 @@ public class OMLSpecificationTables {
         final String uuid = kv.remove("uuid");
         final Pair<SegmentPredicate, Map<String, String>> pair = new Pair<SegmentPredicate, Map<String, String>>(oml, kv);
         this.segmentPredicates.put(uuid, pair);
+        this.includeSegmentPredicates(uuid, oml);
       }
     }
   }
   
-  protected void readEntityExistentialRestrictionAxioms(final ArrayList<String> lines) {
+  protected void readEntityExistentialRestrictionAxioms(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -3828,11 +3916,12 @@ public class OMLSpecificationTables {
         final String uuid = kv.remove("uuid");
         final Pair<EntityExistentialRestrictionAxiom, Map<String, String>> pair = new Pair<EntityExistentialRestrictionAxiom, Map<String, String>>(oml, kv);
         this.entityExistentialRestrictionAxioms.put(uuid, pair);
+        this.includeEntityExistentialRestrictionAxioms(uuid, oml);
       }
     }
   }
   
-  protected void readEntityUniversalRestrictionAxioms(final ArrayList<String> lines) {
+  protected void readEntityUniversalRestrictionAxioms(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -3843,11 +3932,12 @@ public class OMLSpecificationTables {
         final String uuid = kv.remove("uuid");
         final Pair<EntityUniversalRestrictionAxiom, Map<String, String>> pair = new Pair<EntityUniversalRestrictionAxiom, Map<String, String>>(oml, kv);
         this.entityUniversalRestrictionAxioms.put(uuid, pair);
+        this.includeEntityUniversalRestrictionAxioms(uuid, oml);
       }
     }
   }
   
-  protected void readEntityScalarDataPropertyExistentialRestrictionAxioms(final ArrayList<String> lines) {
+  protected void readEntityScalarDataPropertyExistentialRestrictionAxioms(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -3858,11 +3948,12 @@ public class OMLSpecificationTables {
         final String uuid = kv.remove("uuid");
         final Pair<EntityScalarDataPropertyExistentialRestrictionAxiom, Map<String, String>> pair = new Pair<EntityScalarDataPropertyExistentialRestrictionAxiom, Map<String, String>>(oml, kv);
         this.entityScalarDataPropertyExistentialRestrictionAxioms.put(uuid, pair);
+        this.includeEntityScalarDataPropertyExistentialRestrictionAxioms(uuid, oml);
       }
     }
   }
   
-  protected void readEntityScalarDataPropertyParticularRestrictionAxioms(final ArrayList<String> lines) {
+  protected void readEntityScalarDataPropertyParticularRestrictionAxioms(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -3874,11 +3965,12 @@ public class OMLSpecificationTables {
         oml.setLiteralValue(OMLTables.toLiteralValue(kv.remove("literalValue")));
         final Pair<EntityScalarDataPropertyParticularRestrictionAxiom, Map<String, String>> pair = new Pair<EntityScalarDataPropertyParticularRestrictionAxiom, Map<String, String>>(oml, kv);
         this.entityScalarDataPropertyParticularRestrictionAxioms.put(uuid, pair);
+        this.includeEntityScalarDataPropertyParticularRestrictionAxioms(uuid, oml);
       }
     }
   }
   
-  protected void readEntityScalarDataPropertyUniversalRestrictionAxioms(final ArrayList<String> lines) {
+  protected void readEntityScalarDataPropertyUniversalRestrictionAxioms(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -3889,11 +3981,12 @@ public class OMLSpecificationTables {
         final String uuid = kv.remove("uuid");
         final Pair<EntityScalarDataPropertyUniversalRestrictionAxiom, Map<String, String>> pair = new Pair<EntityScalarDataPropertyUniversalRestrictionAxiom, Map<String, String>>(oml, kv);
         this.entityScalarDataPropertyUniversalRestrictionAxioms.put(uuid, pair);
+        this.includeEntityScalarDataPropertyUniversalRestrictionAxioms(uuid, oml);
       }
     }
   }
   
-  protected void readEntityStructuredDataPropertyParticularRestrictionAxioms(final ArrayList<String> lines) {
+  protected void readEntityStructuredDataPropertyParticularRestrictionAxioms(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -3904,11 +3997,12 @@ public class OMLSpecificationTables {
         final String uuid = kv.remove("uuid");
         final Pair<EntityStructuredDataPropertyParticularRestrictionAxiom, Map<String, String>> pair = new Pair<EntityStructuredDataPropertyParticularRestrictionAxiom, Map<String, String>>(oml, kv);
         this.entityStructuredDataPropertyParticularRestrictionAxioms.put(uuid, pair);
+        this.includeEntityStructuredDataPropertyParticularRestrictionAxioms(uuid, oml);
       }
     }
   }
   
-  protected void readRestrictionStructuredDataPropertyTuples(final ArrayList<String> lines) {
+  protected void readRestrictionStructuredDataPropertyTuples(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -3919,11 +4013,12 @@ public class OMLSpecificationTables {
         final String uuid = kv.remove("uuid");
         final Pair<RestrictionStructuredDataPropertyTuple, Map<String, String>> pair = new Pair<RestrictionStructuredDataPropertyTuple, Map<String, String>>(oml, kv);
         this.restrictionStructuredDataPropertyTuples.put(uuid, pair);
+        this.includeRestrictionStructuredDataPropertyTuples(uuid, oml);
       }
     }
   }
   
-  protected void readRestrictionScalarDataPropertyValues(final ArrayList<String> lines) {
+  protected void readRestrictionScalarDataPropertyValues(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -3935,11 +4030,12 @@ public class OMLSpecificationTables {
         oml.setScalarPropertyValue(OMLTables.toLiteralValue(kv.remove("scalarPropertyValue")));
         final Pair<RestrictionScalarDataPropertyValue, Map<String, String>> pair = new Pair<RestrictionScalarDataPropertyValue, Map<String, String>>(oml, kv);
         this.restrictionScalarDataPropertyValues.put(uuid, pair);
+        this.includeRestrictionScalarDataPropertyValues(uuid, oml);
       }
     }
   }
   
-  protected void readAspectSpecializationAxioms(final ArrayList<String> lines) {
+  protected void readAspectSpecializationAxioms(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -3950,11 +4046,12 @@ public class OMLSpecificationTables {
         final String uuid = kv.remove("uuid");
         final Pair<AspectSpecializationAxiom, Map<String, String>> pair = new Pair<AspectSpecializationAxiom, Map<String, String>>(oml, kv);
         this.aspectSpecializationAxioms.put(uuid, pair);
+        this.includeAspectSpecializationAxioms(uuid, oml);
       }
     }
   }
   
-  protected void readConceptSpecializationAxioms(final ArrayList<String> lines) {
+  protected void readConceptSpecializationAxioms(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -3965,11 +4062,12 @@ public class OMLSpecificationTables {
         final String uuid = kv.remove("uuid");
         final Pair<ConceptSpecializationAxiom, Map<String, String>> pair = new Pair<ConceptSpecializationAxiom, Map<String, String>>(oml, kv);
         this.conceptSpecializationAxioms.put(uuid, pair);
+        this.includeConceptSpecializationAxioms(uuid, oml);
       }
     }
   }
   
-  protected void readReifiedRelationshipSpecializationAxioms(final ArrayList<String> lines) {
+  protected void readReifiedRelationshipSpecializationAxioms(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -3980,11 +4078,12 @@ public class OMLSpecificationTables {
         final String uuid = kv.remove("uuid");
         final Pair<ReifiedRelationshipSpecializationAxiom, Map<String, String>> pair = new Pair<ReifiedRelationshipSpecializationAxiom, Map<String, String>>(oml, kv);
         this.reifiedRelationshipSpecializationAxioms.put(uuid, pair);
+        this.includeReifiedRelationshipSpecializationAxioms(uuid, oml);
       }
     }
   }
   
-  protected void readSubDataPropertyOfAxioms(final ArrayList<String> lines) {
+  protected void readSubDataPropertyOfAxioms(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -3995,11 +4094,12 @@ public class OMLSpecificationTables {
         final String uuid = kv.remove("uuid");
         final Pair<SubDataPropertyOfAxiom, Map<String, String>> pair = new Pair<SubDataPropertyOfAxiom, Map<String, String>>(oml, kv);
         this.subDataPropertyOfAxioms.put(uuid, pair);
+        this.includeSubDataPropertyOfAxioms(uuid, oml);
       }
     }
   }
   
-  protected void readSubObjectPropertyOfAxioms(final ArrayList<String> lines) {
+  protected void readSubObjectPropertyOfAxioms(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -4010,11 +4110,12 @@ public class OMLSpecificationTables {
         final String uuid = kv.remove("uuid");
         final Pair<SubObjectPropertyOfAxiom, Map<String, String>> pair = new Pair<SubObjectPropertyOfAxiom, Map<String, String>>(oml, kv);
         this.subObjectPropertyOfAxioms.put(uuid, pair);
+        this.includeSubObjectPropertyOfAxioms(uuid, oml);
       }
     }
   }
   
-  protected void readRootConceptTaxonomyAxioms(final ArrayList<String> lines) {
+  protected void readRootConceptTaxonomyAxioms(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -4025,11 +4126,12 @@ public class OMLSpecificationTables {
         final String uuid = kv.remove("uuid");
         final Pair<RootConceptTaxonomyAxiom, Map<String, String>> pair = new Pair<RootConceptTaxonomyAxiom, Map<String, String>>(oml, kv);
         this.rootConceptTaxonomyAxioms.put(uuid, pair);
+        this.includeRootConceptTaxonomyAxioms(uuid, oml);
       }
     }
   }
   
-  protected void readAnonymousConceptUnionAxioms(final ArrayList<String> lines) {
+  protected void readAnonymousConceptUnionAxioms(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -4041,11 +4143,12 @@ public class OMLSpecificationTables {
         oml.setName(OMLTables.toLocalName(kv.remove("name")));
         final Pair<AnonymousConceptUnionAxiom, Map<String, String>> pair = new Pair<AnonymousConceptUnionAxiom, Map<String, String>>(oml, kv);
         this.anonymousConceptUnionAxioms.put(uuid, pair);
+        this.includeAnonymousConceptUnionAxioms(uuid, oml);
       }
     }
   }
   
-  protected void readSpecificDisjointConceptAxioms(final ArrayList<String> lines) {
+  protected void readSpecificDisjointConceptAxioms(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -4056,11 +4159,12 @@ public class OMLSpecificationTables {
         final String uuid = kv.remove("uuid");
         final Pair<SpecificDisjointConceptAxiom, Map<String, String>> pair = new Pair<SpecificDisjointConceptAxiom, Map<String, String>>(oml, kv);
         this.specificDisjointConceptAxioms.put(uuid, pair);
+        this.includeSpecificDisjointConceptAxioms(uuid, oml);
       }
     }
   }
   
-  protected void readConceptInstances(final ArrayList<String> lines) {
+  protected void readConceptInstances(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -4072,11 +4176,12 @@ public class OMLSpecificationTables {
         oml.setName(OMLTables.toLocalName(kv.remove("name")));
         final Pair<ConceptInstance, Map<String, String>> pair = new Pair<ConceptInstance, Map<String, String>>(oml, kv);
         this.conceptInstances.put(uuid, pair);
+        this.includeConceptInstances(uuid, oml);
       }
     }
   }
   
-  protected void readReifiedRelationshipInstances(final ArrayList<String> lines) {
+  protected void readReifiedRelationshipInstances(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -4088,11 +4193,12 @@ public class OMLSpecificationTables {
         oml.setName(OMLTables.toLocalName(kv.remove("name")));
         final Pair<ReifiedRelationshipInstance, Map<String, String>> pair = new Pair<ReifiedRelationshipInstance, Map<String, String>>(oml, kv);
         this.reifiedRelationshipInstances.put(uuid, pair);
+        this.includeReifiedRelationshipInstances(uuid, oml);
       }
     }
   }
   
-  protected void readReifiedRelationshipInstanceDomains(final ArrayList<String> lines) {
+  protected void readReifiedRelationshipInstanceDomains(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -4103,11 +4209,12 @@ public class OMLSpecificationTables {
         final String uuid = kv.remove("uuid");
         final Pair<ReifiedRelationshipInstanceDomain, Map<String, String>> pair = new Pair<ReifiedRelationshipInstanceDomain, Map<String, String>>(oml, kv);
         this.reifiedRelationshipInstanceDomains.put(uuid, pair);
+        this.includeReifiedRelationshipInstanceDomains(uuid, oml);
       }
     }
   }
   
-  protected void readReifiedRelationshipInstanceRanges(final ArrayList<String> lines) {
+  protected void readReifiedRelationshipInstanceRanges(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -4118,11 +4225,12 @@ public class OMLSpecificationTables {
         final String uuid = kv.remove("uuid");
         final Pair<ReifiedRelationshipInstanceRange, Map<String, String>> pair = new Pair<ReifiedRelationshipInstanceRange, Map<String, String>>(oml, kv);
         this.reifiedRelationshipInstanceRanges.put(uuid, pair);
+        this.includeReifiedRelationshipInstanceRanges(uuid, oml);
       }
     }
   }
   
-  protected void readUnreifiedRelationshipInstanceTuples(final ArrayList<String> lines) {
+  protected void readUnreifiedRelationshipInstanceTuples(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -4133,11 +4241,12 @@ public class OMLSpecificationTables {
         final String uuid = kv.remove("uuid");
         final Pair<UnreifiedRelationshipInstanceTuple, Map<String, String>> pair = new Pair<UnreifiedRelationshipInstanceTuple, Map<String, String>>(oml, kv);
         this.unreifiedRelationshipInstanceTuples.put(uuid, pair);
+        this.includeUnreifiedRelationshipInstanceTuples(uuid, oml);
       }
     }
   }
   
-  protected void readSingletonInstanceStructuredDataPropertyValues(final ArrayList<String> lines) {
+  protected void readSingletonInstanceStructuredDataPropertyValues(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -4148,11 +4257,12 @@ public class OMLSpecificationTables {
         final String uuid = kv.remove("uuid");
         final Pair<SingletonInstanceStructuredDataPropertyValue, Map<String, String>> pair = new Pair<SingletonInstanceStructuredDataPropertyValue, Map<String, String>>(oml, kv);
         this.singletonInstanceStructuredDataPropertyValues.put(uuid, pair);
+        this.includeSingletonInstanceStructuredDataPropertyValues(uuid, oml);
       }
     }
   }
   
-  protected void readSingletonInstanceScalarDataPropertyValues(final ArrayList<String> lines) {
+  protected void readSingletonInstanceScalarDataPropertyValues(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -4164,11 +4274,12 @@ public class OMLSpecificationTables {
         oml.setScalarPropertyValue(OMLTables.toLiteralValue(kv.remove("scalarPropertyValue")));
         final Pair<SingletonInstanceScalarDataPropertyValue, Map<String, String>> pair = new Pair<SingletonInstanceScalarDataPropertyValue, Map<String, String>>(oml, kv);
         this.singletonInstanceScalarDataPropertyValues.put(uuid, pair);
+        this.includeSingletonInstanceScalarDataPropertyValues(uuid, oml);
       }
     }
   }
   
-  protected void readStructuredDataPropertyTuples(final ArrayList<String> lines) {
+  protected void readStructuredDataPropertyTuples(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -4179,11 +4290,12 @@ public class OMLSpecificationTables {
         final String uuid = kv.remove("uuid");
         final Pair<StructuredDataPropertyTuple, Map<String, String>> pair = new Pair<StructuredDataPropertyTuple, Map<String, String>>(oml, kv);
         this.structuredDataPropertyTuples.put(uuid, pair);
+        this.includeStructuredDataPropertyTuples(uuid, oml);
       }
     }
   }
   
-  protected void readScalarDataPropertyValues(final ArrayList<String> lines) {
+  protected void readScalarDataPropertyValues(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -4195,11 +4307,12 @@ public class OMLSpecificationTables {
         oml.setScalarPropertyValue(OMLTables.toLiteralValue(kv.remove("scalarPropertyValue")));
         final Pair<ScalarDataPropertyValue, Map<String, String>> pair = new Pair<ScalarDataPropertyValue, Map<String, String>>(oml, kv);
         this.scalarDataPropertyValues.put(uuid, pair);
+        this.includeScalarDataPropertyValues(uuid, oml);
       }
     }
   }
   
-  protected void readAnnotationPropertyValues(final ArrayList<String> lines) {
+  protected void readAnnotationPropertyValues(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
@@ -4211,6 +4324,7 @@ public class OMLSpecificationTables {
         oml.setValue(OMLTables.toLiteralString(kv.remove("value")));
         final Pair<AnnotationPropertyValue, Map<String, String>> pair = new Pair<AnnotationPropertyValue, Map<String, String>>(oml, kv);
         this.annotationPropertyValues.put(uuid, pair);
+        this.includeAnnotationPropertyValues(uuid, oml);
       }
     }
   }
@@ -4225,22 +4339,490 @@ public class OMLSpecificationTables {
     vMap.forEach(_function);
   }
   
-  protected void createAndResolve(final ResourceSet rs, final OMLZipResource r) {
-    final Extent ext = this.omlCommonFactory.createExtent();
-    final Function1<Pair<TerminologyGraph, Map<String, String>>, TerminologyGraph> _function = (Pair<TerminologyGraph, Map<String, String>> it) -> {
-      return it.getKey();
-    };
-    Iterables.<Module>addAll(ext.getModules(), IterableExtensions.<Pair<TerminologyGraph, Map<String, String>>, TerminologyGraph>map(this.terminologyGraphs.values(), _function));
-    final Function1<Pair<Bundle, Map<String, String>>, Bundle> _function_1 = (Pair<Bundle, Map<String, String>> it) -> {
-      return it.getKey();
-    };
-    Iterables.<Module>addAll(ext.getModules(), IterableExtensions.<Pair<Bundle, Map<String, String>>, Bundle>map(this.bundles.values(), _function_1));
-    final Function1<Pair<DescriptionBox, Map<String, String>>, DescriptionBox> _function_2 = (Pair<DescriptionBox, Map<String, String>> it) -> {
-      return it.getKey();
-    };
-    Iterables.<Module>addAll(ext.getModules(), IterableExtensions.<Pair<DescriptionBox, Map<String, String>>, DescriptionBox>map(this.descriptionBoxes.values(), _function_2));
-    r.getContents().add(ext);
-    this.resolve(rs, r);
+  protected void includeTerminologyGraphs(final String uuid, final TerminologyGraph oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<Module, Map<String, String>> _pair = new Pair<Module, Map<String, String>>(oml, _emptyMap);
+    this.modules.put(uuid, _pair);
+    Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap_1);
+    this.logicalElements.put(uuid, _pair_1);
+    Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+    Pair<TerminologyBox, Map<String, String>> _pair_2 = new Pair<TerminologyBox, Map<String, String>>(oml, _emptyMap_2);
+    this.terminologyBoxes.put(uuid, _pair_2);
+    String _iri = oml.iri();
+    Map<String, String> _emptyMap_3 = Collections.<String, String>emptyMap();
+    Pair<TerminologyBox, Map<String, String>> _pair_3 = new Pair<TerminologyBox, Map<String, String>>(oml, _emptyMap_3);
+    this.terminologyBoxes.put(_iri, _pair_3);
+  }
+  
+  protected void includeBundles(final String uuid, final Bundle oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<Module, Map<String, String>> _pair = new Pair<Module, Map<String, String>>(oml, _emptyMap);
+    this.modules.put(uuid, _pair);
+    Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap_1);
+    this.logicalElements.put(uuid, _pair_1);
+    Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+    Pair<TerminologyBox, Map<String, String>> _pair_2 = new Pair<TerminologyBox, Map<String, String>>(oml, _emptyMap_2);
+    this.terminologyBoxes.put(uuid, _pair_2);
+    String _iri = oml.iri();
+    Map<String, String> _emptyMap_3 = Collections.<String, String>emptyMap();
+    Pair<TerminologyBox, Map<String, String>> _pair_3 = new Pair<TerminologyBox, Map<String, String>>(oml, _emptyMap_3);
+    this.terminologyBoxes.put(_iri, _pair_3);
+  }
+  
+  protected void includeDescriptionBoxes(final String uuid, final DescriptionBox oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<Module, Map<String, String>> _pair = new Pair<Module, Map<String, String>>(oml, _emptyMap);
+    this.modules.put(uuid, _pair);
+    Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap_1);
+    this.logicalElements.put(uuid, _pair_1);
+    String _iri = oml.iri();
+    Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+    Pair<DescriptionBox, Map<String, String>> _pair_2 = new Pair<DescriptionBox, Map<String, String>>(oml, _emptyMap_2);
+    this.descriptionBoxes.put(_iri, _pair_2);
+  }
+  
+  protected void includeAnnotationProperties(final String uuid, final AnnotationProperty oml) {
+  }
+  
+  protected void includeAspects(final String uuid, final Aspect oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+    Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+    Pair<Entity, Map<String, String>> _pair_1 = new Pair<Entity, Map<String, String>>(oml, _emptyMap_1);
+    this.entities.put(uuid, _pair_1);
+    Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+    Pair<Predicate, Map<String, String>> _pair_2 = new Pair<Predicate, Map<String, String>>(oml, _emptyMap_2);
+    this.predicates.put(uuid, _pair_2);
+  }
+  
+  protected void includeConcepts(final String uuid, final Concept oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+    Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+    Pair<Entity, Map<String, String>> _pair_1 = new Pair<Entity, Map<String, String>>(oml, _emptyMap_1);
+    this.entities.put(uuid, _pair_1);
+    Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+    Pair<Predicate, Map<String, String>> _pair_2 = new Pair<Predicate, Map<String, String>>(oml, _emptyMap_2);
+    this.predicates.put(uuid, _pair_2);
+  }
+  
+  protected void includeScalars(final String uuid, final Scalar oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+    Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+    Pair<DataRange, Map<String, String>> _pair_1 = new Pair<DataRange, Map<String, String>>(oml, _emptyMap_1);
+    this.dataRanges.put(uuid, _pair_1);
+  }
+  
+  protected void includeStructures(final String uuid, final Structure oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+  }
+  
+  protected void includeConceptDesignationTerminologyAxioms(final String uuid, final ConceptDesignationTerminologyAxiom oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+  }
+  
+  protected void includeTerminologyExtensionAxioms(final String uuid, final TerminologyExtensionAxiom oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+  }
+  
+  protected void includeTerminologyNestingAxioms(final String uuid, final TerminologyNestingAxiom oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+  }
+  
+  protected void includeBundledTerminologyAxioms(final String uuid, final BundledTerminologyAxiom oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+  }
+  
+  protected void includeDescriptionBoxExtendsClosedWorldDefinitions(final String uuid, final DescriptionBoxExtendsClosedWorldDefinitions oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+  }
+  
+  protected void includeDescriptionBoxRefinements(final String uuid, final DescriptionBoxRefinement oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+  }
+  
+  protected void includeBinaryScalarRestrictions(final String uuid, final BinaryScalarRestriction oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+    Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+    Pair<DataRange, Map<String, String>> _pair_1 = new Pair<DataRange, Map<String, String>>(oml, _emptyMap_1);
+    this.dataRanges.put(uuid, _pair_1);
+  }
+  
+  protected void includeIRIScalarRestrictions(final String uuid, final IRIScalarRestriction oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+    Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+    Pair<DataRange, Map<String, String>> _pair_1 = new Pair<DataRange, Map<String, String>>(oml, _emptyMap_1);
+    this.dataRanges.put(uuid, _pair_1);
+  }
+  
+  protected void includeNumericScalarRestrictions(final String uuid, final NumericScalarRestriction oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+    Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+    Pair<DataRange, Map<String, String>> _pair_1 = new Pair<DataRange, Map<String, String>>(oml, _emptyMap_1);
+    this.dataRanges.put(uuid, _pair_1);
+  }
+  
+  protected void includePlainLiteralScalarRestrictions(final String uuid, final PlainLiteralScalarRestriction oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+    Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+    Pair<DataRange, Map<String, String>> _pair_1 = new Pair<DataRange, Map<String, String>>(oml, _emptyMap_1);
+    this.dataRanges.put(uuid, _pair_1);
+  }
+  
+  protected void includeScalarOneOfRestrictions(final String uuid, final ScalarOneOfRestriction oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+    Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+    Pair<DataRange, Map<String, String>> _pair_1 = new Pair<DataRange, Map<String, String>>(oml, _emptyMap_1);
+    this.dataRanges.put(uuid, _pair_1);
+  }
+  
+  protected void includeScalarOneOfLiteralAxioms(final String uuid, final ScalarOneOfLiteralAxiom oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+  }
+  
+  protected void includeStringScalarRestrictions(final String uuid, final StringScalarRestriction oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+    Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+    Pair<DataRange, Map<String, String>> _pair_1 = new Pair<DataRange, Map<String, String>>(oml, _emptyMap_1);
+    this.dataRanges.put(uuid, _pair_1);
+  }
+  
+  protected void includeSynonymScalarRestrictions(final String uuid, final SynonymScalarRestriction oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+    Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+    Pair<DataRange, Map<String, String>> _pair_1 = new Pair<DataRange, Map<String, String>>(oml, _emptyMap_1);
+    this.dataRanges.put(uuid, _pair_1);
+  }
+  
+  protected void includeTimeScalarRestrictions(final String uuid, final TimeScalarRestriction oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+    Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+    Pair<DataRange, Map<String, String>> _pair_1 = new Pair<DataRange, Map<String, String>>(oml, _emptyMap_1);
+    this.dataRanges.put(uuid, _pair_1);
+  }
+  
+  protected void includeEntityScalarDataProperties(final String uuid, final EntityScalarDataProperty oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+    Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+    Pair<DataRelationshipToScalar, Map<String, String>> _pair_1 = new Pair<DataRelationshipToScalar, Map<String, String>>(oml, _emptyMap_1);
+    this.dataRelationshipToScalars.put(uuid, _pair_1);
+  }
+  
+  protected void includeEntityStructuredDataProperties(final String uuid, final EntityStructuredDataProperty oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+    Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+    Pair<DataRelationshipToStructure, Map<String, String>> _pair_1 = new Pair<DataRelationshipToStructure, Map<String, String>>(oml, _emptyMap_1);
+    this.dataRelationshipToStructures.put(uuid, _pair_1);
+  }
+  
+  protected void includeScalarDataProperties(final String uuid, final ScalarDataProperty oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+    Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+    Pair<DataRelationshipToScalar, Map<String, String>> _pair_1 = new Pair<DataRelationshipToScalar, Map<String, String>>(oml, _emptyMap_1);
+    this.dataRelationshipToScalars.put(uuid, _pair_1);
+  }
+  
+  protected void includeStructuredDataProperties(final String uuid, final StructuredDataProperty oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+    Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+    Pair<DataRelationshipToStructure, Map<String, String>> _pair_1 = new Pair<DataRelationshipToStructure, Map<String, String>>(oml, _emptyMap_1);
+    this.dataRelationshipToStructures.put(uuid, _pair_1);
+  }
+  
+  protected void includeReifiedRelationships(final String uuid, final ReifiedRelationship oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+    Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+    Pair<Entity, Map<String, String>> _pair_1 = new Pair<Entity, Map<String, String>>(oml, _emptyMap_1);
+    this.entities.put(uuid, _pair_1);
+    Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+    Pair<EntityRelationship, Map<String, String>> _pair_2 = new Pair<EntityRelationship, Map<String, String>>(oml, _emptyMap_2);
+    this.entityRelationships.put(uuid, _pair_2);
+    Map<String, String> _emptyMap_3 = Collections.<String, String>emptyMap();
+    Pair<Predicate, Map<String, String>> _pair_3 = new Pair<Predicate, Map<String, String>>(oml, _emptyMap_3);
+    this.predicates.put(uuid, _pair_3);
+  }
+  
+  protected void includeForwardProperties(final String uuid, final ForwardProperty oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+    Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+    Pair<Predicate, Map<String, String>> _pair_1 = new Pair<Predicate, Map<String, String>>(oml, _emptyMap_1);
+    this.predicates.put(uuid, _pair_1);
+    Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+    Pair<RestrictableRelationship, Map<String, String>> _pair_2 = new Pair<RestrictableRelationship, Map<String, String>>(oml, _emptyMap_2);
+    this.restrictableRelationships.put(uuid, _pair_2);
+  }
+  
+  protected void includeInverseProperties(final String uuid, final InverseProperty oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+    Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+    Pair<Predicate, Map<String, String>> _pair_1 = new Pair<Predicate, Map<String, String>>(oml, _emptyMap_1);
+    this.predicates.put(uuid, _pair_1);
+    Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+    Pair<RestrictableRelationship, Map<String, String>> _pair_2 = new Pair<RestrictableRelationship, Map<String, String>>(oml, _emptyMap_2);
+    this.restrictableRelationships.put(uuid, _pair_2);
+  }
+  
+  protected void includeUnreifiedRelationships(final String uuid, final UnreifiedRelationship oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+    Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+    Pair<EntityRelationship, Map<String, String>> _pair_1 = new Pair<EntityRelationship, Map<String, String>>(oml, _emptyMap_1);
+    this.entityRelationships.put(uuid, _pair_1);
+    Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+    Pair<Predicate, Map<String, String>> _pair_2 = new Pair<Predicate, Map<String, String>>(oml, _emptyMap_2);
+    this.predicates.put(uuid, _pair_2);
+    Map<String, String> _emptyMap_3 = Collections.<String, String>emptyMap();
+    Pair<RestrictableRelationship, Map<String, String>> _pair_3 = new Pair<RestrictableRelationship, Map<String, String>>(oml, _emptyMap_3);
+    this.restrictableRelationships.put(uuid, _pair_3);
+  }
+  
+  protected void includeChainRules(final String uuid, final ChainRule oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+  }
+  
+  protected void includeRuleBodySegments(final String uuid, final RuleBodySegment oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+  }
+  
+  protected void includeSegmentPredicates(final String uuid, final SegmentPredicate oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+  }
+  
+  protected void includeEntityExistentialRestrictionAxioms(final String uuid, final EntityExistentialRestrictionAxiom oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+  }
+  
+  protected void includeEntityUniversalRestrictionAxioms(final String uuid, final EntityUniversalRestrictionAxiom oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+  }
+  
+  protected void includeEntityScalarDataPropertyExistentialRestrictionAxioms(final String uuid, final EntityScalarDataPropertyExistentialRestrictionAxiom oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+  }
+  
+  protected void includeEntityScalarDataPropertyParticularRestrictionAxioms(final String uuid, final EntityScalarDataPropertyParticularRestrictionAxiom oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+  }
+  
+  protected void includeEntityScalarDataPropertyUniversalRestrictionAxioms(final String uuid, final EntityScalarDataPropertyUniversalRestrictionAxiom oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+  }
+  
+  protected void includeEntityStructuredDataPropertyParticularRestrictionAxioms(final String uuid, final EntityStructuredDataPropertyParticularRestrictionAxiom oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+    Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+    Pair<RestrictionStructuredDataPropertyContext, Map<String, String>> _pair_1 = new Pair<RestrictionStructuredDataPropertyContext, Map<String, String>>(oml, _emptyMap_1);
+    this.restrictionStructuredDataPropertyContexts.put(uuid, _pair_1);
+  }
+  
+  protected void includeRestrictionStructuredDataPropertyTuples(final String uuid, final RestrictionStructuredDataPropertyTuple oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+    Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+    Pair<RestrictionStructuredDataPropertyContext, Map<String, String>> _pair_1 = new Pair<RestrictionStructuredDataPropertyContext, Map<String, String>>(oml, _emptyMap_1);
+    this.restrictionStructuredDataPropertyContexts.put(uuid, _pair_1);
+  }
+  
+  protected void includeRestrictionScalarDataPropertyValues(final String uuid, final RestrictionScalarDataPropertyValue oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+  }
+  
+  protected void includeAspectSpecializationAxioms(final String uuid, final AspectSpecializationAxiom oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+  }
+  
+  protected void includeConceptSpecializationAxioms(final String uuid, final ConceptSpecializationAxiom oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+  }
+  
+  protected void includeReifiedRelationshipSpecializationAxioms(final String uuid, final ReifiedRelationshipSpecializationAxiom oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+  }
+  
+  protected void includeSubDataPropertyOfAxioms(final String uuid, final SubDataPropertyOfAxiom oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+  }
+  
+  protected void includeSubObjectPropertyOfAxioms(final String uuid, final SubObjectPropertyOfAxiom oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+  }
+  
+  protected void includeRootConceptTaxonomyAxioms(final String uuid, final RootConceptTaxonomyAxiom oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+    Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+    Pair<ConceptTreeDisjunction, Map<String, String>> _pair_1 = new Pair<ConceptTreeDisjunction, Map<String, String>>(oml, _emptyMap_1);
+    this.conceptTreeDisjunctions.put(uuid, _pair_1);
+  }
+  
+  protected void includeAnonymousConceptUnionAxioms(final String uuid, final AnonymousConceptUnionAxiom oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+    Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+    Pair<ConceptTreeDisjunction, Map<String, String>> _pair_1 = new Pair<ConceptTreeDisjunction, Map<String, String>>(oml, _emptyMap_1);
+    this.conceptTreeDisjunctions.put(uuid, _pair_1);
+  }
+  
+  protected void includeSpecificDisjointConceptAxioms(final String uuid, final SpecificDisjointConceptAxiom oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+  }
+  
+  protected void includeConceptInstances(final String uuid, final ConceptInstance oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+    Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+    Pair<ConceptualEntitySingletonInstance, Map<String, String>> _pair_1 = new Pair<ConceptualEntitySingletonInstance, Map<String, String>>(oml, _emptyMap_1);
+    this.conceptualEntitySingletonInstances.put(uuid, _pair_1);
+  }
+  
+  protected void includeReifiedRelationshipInstances(final String uuid, final ReifiedRelationshipInstance oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+    Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+    Pair<ConceptualEntitySingletonInstance, Map<String, String>> _pair_1 = new Pair<ConceptualEntitySingletonInstance, Map<String, String>>(oml, _emptyMap_1);
+    this.conceptualEntitySingletonInstances.put(uuid, _pair_1);
+  }
+  
+  protected void includeReifiedRelationshipInstanceDomains(final String uuid, final ReifiedRelationshipInstanceDomain oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+  }
+  
+  protected void includeReifiedRelationshipInstanceRanges(final String uuid, final ReifiedRelationshipInstanceRange oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+  }
+  
+  protected void includeUnreifiedRelationshipInstanceTuples(final String uuid, final UnreifiedRelationshipInstanceTuple oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+  }
+  
+  protected void includeSingletonInstanceStructuredDataPropertyValues(final String uuid, final SingletonInstanceStructuredDataPropertyValue oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+    Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+    Pair<SingletonInstanceStructuredDataPropertyContext, Map<String, String>> _pair_1 = new Pair<SingletonInstanceStructuredDataPropertyContext, Map<String, String>>(oml, _emptyMap_1);
+    this.singletonInstanceStructuredDataPropertyContexts.put(uuid, _pair_1);
+  }
+  
+  protected void includeSingletonInstanceScalarDataPropertyValues(final String uuid, final SingletonInstanceScalarDataPropertyValue oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+  }
+  
+  protected void includeStructuredDataPropertyTuples(final String uuid, final StructuredDataPropertyTuple oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+    Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+    Pair<SingletonInstanceStructuredDataPropertyContext, Map<String, String>> _pair_1 = new Pair<SingletonInstanceStructuredDataPropertyContext, Map<String, String>>(oml, _emptyMap_1);
+    this.singletonInstanceStructuredDataPropertyContexts.put(uuid, _pair_1);
+  }
+  
+  protected void includeScalarDataPropertyValues(final String uuid, final ScalarDataPropertyValue oml) {
+    Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+    Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
+    this.logicalElements.put(uuid, _pair);
+  }
+  
+  protected void includeAnnotationPropertyValues(final String uuid, final AnnotationPropertyValue oml) {
   }
   
   protected void resolve(final ResourceSet rs, final OMLZipResource r) {
@@ -4320,6 +4902,15 @@ public class OMLSpecificationTables {
     this.<DataRelationshipToScalar, ScalarDataProperty>includeMap(this.dataRelationshipToScalars, this.scalarDataProperties);
     this.<DataRelationshipToStructure, EntityStructuredDataProperty>includeMap(this.dataRelationshipToStructures, this.entityStructuredDataProperties);
     this.<DataRelationshipToStructure, StructuredDataProperty>includeMap(this.dataRelationshipToStructures, this.structuredDataProperties);
+    this.<Predicate, Aspect>includeMap(this.predicates, this.aspects);
+    this.<Predicate, Concept>includeMap(this.predicates, this.concepts);
+    this.<Predicate, ReifiedRelationship>includeMap(this.predicates, this.reifiedRelationships);
+    this.<Predicate, ForwardProperty>includeMap(this.predicates, this.forwardProperties);
+    this.<Predicate, InverseProperty>includeMap(this.predicates, this.inverseProperties);
+    this.<Predicate, UnreifiedRelationship>includeMap(this.predicates, this.unreifiedRelationships);
+    this.<RestrictableRelationship, ForwardProperty>includeMap(this.restrictableRelationships, this.forwardProperties);
+    this.<RestrictableRelationship, InverseProperty>includeMap(this.restrictableRelationships, this.inverseProperties);
+    this.<RestrictableRelationship, UnreifiedRelationship>includeMap(this.restrictableRelationships, this.unreifiedRelationships);
     this.<RestrictionStructuredDataPropertyContext, EntityStructuredDataPropertyParticularRestrictionAxiom>includeMap(this.restrictionStructuredDataPropertyContexts, this.entityStructuredDataPropertyParticularRestrictionAxioms);
     this.<RestrictionStructuredDataPropertyContext, RestrictionStructuredDataPropertyTuple>includeMap(this.restrictionStructuredDataPropertyContexts, this.restrictionStructuredDataPropertyTuples);
     this.<TerminologyBox, TerminologyGraph>includeMap(this.terminologyBoxes, this.terminologyGraphs);
@@ -4399,7 +4990,7 @@ public class OMLSpecificationTables {
         final String moduleXRef = kv.remove("moduleUUID");
         final Pair<Module, Map<String, String>> modulePair = this.modules.get(moduleXRef);
         if ((null == modulePair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for module in annotationProperties");
+          throw new IllegalArgumentException(("Null cross-reference lookup for module in annotationProperties: " + moduleXRef));
         }
         oml.setModule(modulePair.getKey());
       }
@@ -4417,7 +5008,7 @@ public class OMLSpecificationTables {
         final String tboxXRef = kv.remove("tboxUUID");
         final Pair<TerminologyBox, Map<String, String>> tboxPair = this.terminologyBoxes.get(tboxXRef);
         if ((null == tboxPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for tbox in aspects");
+          throw new IllegalArgumentException(("Null cross-reference lookup for tbox in aspects: " + tboxXRef));
         }
         oml.setTbox(tboxPair.getKey());
       }
@@ -4435,7 +5026,7 @@ public class OMLSpecificationTables {
         final String tboxXRef = kv.remove("tboxUUID");
         final Pair<TerminologyBox, Map<String, String>> tboxPair = this.terminologyBoxes.get(tboxXRef);
         if ((null == tboxPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for tbox in concepts");
+          throw new IllegalArgumentException(("Null cross-reference lookup for tbox in concepts: " + tboxXRef));
         }
         oml.setTbox(tboxPair.getKey());
       }
@@ -4453,7 +5044,7 @@ public class OMLSpecificationTables {
         final String tboxXRef = kv.remove("tboxUUID");
         final Pair<TerminologyBox, Map<String, String>> tboxPair = this.terminologyBoxes.get(tboxXRef);
         if ((null == tboxPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for tbox in scalars");
+          throw new IllegalArgumentException(("Null cross-reference lookup for tbox in scalars: " + tboxXRef));
         }
         oml.setTbox(tboxPair.getKey());
       }
@@ -4471,7 +5062,7 @@ public class OMLSpecificationTables {
         final String tboxXRef = kv.remove("tboxUUID");
         final Pair<TerminologyBox, Map<String, String>> tboxPair = this.terminologyBoxes.get(tboxXRef);
         if ((null == tboxPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for tbox in structures");
+          throw new IllegalArgumentException(("Null cross-reference lookup for tbox in structures: " + tboxXRef));
         }
         oml.setTbox(tboxPair.getKey());
       }
@@ -4480,165 +5071,279 @@ public class OMLSpecificationTables {
   }
   
   protected void resolveConceptDesignationTerminologyAxioms(final ResourceSet rs) {
-    final BiConsumer<String, Pair<ConceptDesignationTerminologyAxiom, Map<String, String>>> _function = (String uuid, Pair<ConceptDesignationTerminologyAxiom, Map<String, String>> oml_kv) -> {
-      final ConceptDesignationTerminologyAxiom oml = oml_kv.getKey();
-      final Map<String, String> kv = oml_kv.getValue();
-      boolean _isEmpty = kv.isEmpty();
-      boolean _not = (!_isEmpty);
-      if (_not) {
-        final String tboxXRef = kv.remove("tboxUUID");
-        final Pair<TerminologyBox, Map<String, String>> tboxPair = this.terminologyBoxes.get(tboxXRef);
-        if ((null == tboxPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for tbox in conceptDesignationTerminologyAxioms");
+    boolean more = false;
+    do {
+      {
+        final HashMap<String, Pair<ConceptDesignationTerminologyAxiom, Map<String, String>>> queue = new HashMap<String, Pair<ConceptDesignationTerminologyAxiom, Map<String, String>>>();
+        final Function2<String, Pair<ConceptDesignationTerminologyAxiom, Map<String, String>>, Boolean> _function = (String uuid, Pair<ConceptDesignationTerminologyAxiom, Map<String, String>> oml_kv) -> {
+          boolean _isEmpty = oml_kv.getValue().isEmpty();
+          return Boolean.valueOf((!_isEmpty));
+        };
+        final BiConsumer<String, Pair<ConceptDesignationTerminologyAxiom, Map<String, String>>> _function_1 = (String uuid, Pair<ConceptDesignationTerminologyAxiom, Map<String, String>> oml_kv) -> {
+          queue.put(uuid, oml_kv);
+        };
+        MapExtensions.<String, Pair<ConceptDesignationTerminologyAxiom, Map<String, String>>>filter(this.conceptDesignationTerminologyAxioms, _function).forEach(_function_1);
+        boolean _isEmpty = queue.isEmpty();
+        boolean _not = (!_isEmpty);
+        more = _not;
+        if (more) {
+          final BiConsumer<String, Pair<ConceptDesignationTerminologyAxiom, Map<String, String>>> _function_2 = (String uuid, Pair<ConceptDesignationTerminologyAxiom, Map<String, String>> oml_kv) -> {
+            final ConceptDesignationTerminologyAxiom oml = oml_kv.getKey();
+            final Map<String, String> kv = oml_kv.getValue();
+            boolean _isEmpty_1 = kv.isEmpty();
+            boolean _not_1 = (!_isEmpty_1);
+            if (_not_1) {
+              final String tboxXRef = kv.remove("tboxUUID");
+              final Pair<TerminologyBox, Map<String, String>> tboxPair = this.terminologyBoxes.get(tboxXRef);
+              if ((null == tboxPair)) {
+                throw new IllegalArgumentException(("Null cross-reference lookup for tbox in conceptDesignationTerminologyAxioms: " + tboxXRef));
+              }
+              oml.setTbox(tboxPair.getKey());
+              final String designatedConceptXRef = kv.remove("designatedConceptUUID");
+              final Pair<Concept, Map<String, String>> designatedConceptPair = this.concepts.get(designatedConceptXRef);
+              if ((null == designatedConceptPair)) {
+                throw new IllegalArgumentException(("Null cross-reference lookup for designatedConcept in conceptDesignationTerminologyAxioms: " + designatedConceptXRef));
+              }
+              oml.setDesignatedConcept(designatedConceptPair.getKey());
+              final String designatedTerminologyIRI = kv.remove("designatedTerminologyIRI");
+              this.loadOMLZipResource(rs, URI.createURI(designatedTerminologyIRI));
+              final Pair<TerminologyBox, Map<String, String>> designatedTerminologyPair = this.terminologyBoxes.get(designatedTerminologyIRI);
+              if ((null == designatedTerminologyPair)) {
+                throw new IllegalArgumentException(("Null cross-reference lookup for designatedTerminology in conceptDesignationTerminologyAxioms: " + designatedTerminologyIRI));
+              }
+              oml.setDesignatedTerminology(designatedTerminologyPair.getKey());
+            }
+          };
+          queue.forEach(_function_2);
         }
-        oml.setTbox(tboxPair.getKey());
-        final String designatedConceptXRef = kv.remove("designatedConceptUUID");
-        final Pair<Concept, Map<String, String>> designatedConceptPair = this.concepts.get(designatedConceptXRef);
-        if ((null == designatedConceptPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for designatedConcept in conceptDesignationTerminologyAxioms");
-        }
-        oml.setDesignatedConcept(designatedConceptPair.getKey());
-        final String designatedTerminologyIRI = kv.remove("designatedTerminologyIRI");
-        this.loadOMLZipResource(rs, URI.createURI(designatedTerminologyIRI));
-        final Pair<TerminologyBox, Map<String, String>> designatedTerminologyPair = this.terminologyBoxes.get(designatedTerminologyIRI);
-        if ((null == designatedTerminologyPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for designatedTerminology in conceptDesignationTerminologyAxioms");
-        }
-        oml.setDesignatedTerminology(designatedTerminologyPair.getKey());
       }
-    };
-    this.conceptDesignationTerminologyAxioms.forEach(_function);
+    } while(more);
   }
   
   protected void resolveTerminologyExtensionAxioms(final ResourceSet rs) {
-    final BiConsumer<String, Pair<TerminologyExtensionAxiom, Map<String, String>>> _function = (String uuid, Pair<TerminologyExtensionAxiom, Map<String, String>> oml_kv) -> {
-      final TerminologyExtensionAxiom oml = oml_kv.getKey();
-      final Map<String, String> kv = oml_kv.getValue();
-      boolean _isEmpty = kv.isEmpty();
-      boolean _not = (!_isEmpty);
-      if (_not) {
-        final String tboxXRef = kv.remove("tboxUUID");
-        final Pair<TerminologyBox, Map<String, String>> tboxPair = this.terminologyBoxes.get(tboxXRef);
-        if ((null == tboxPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for tbox in terminologyExtensionAxioms");
+    boolean more = false;
+    do {
+      {
+        final HashMap<String, Pair<TerminologyExtensionAxiom, Map<String, String>>> queue = new HashMap<String, Pair<TerminologyExtensionAxiom, Map<String, String>>>();
+        final Function2<String, Pair<TerminologyExtensionAxiom, Map<String, String>>, Boolean> _function = (String uuid, Pair<TerminologyExtensionAxiom, Map<String, String>> oml_kv) -> {
+          boolean _isEmpty = oml_kv.getValue().isEmpty();
+          return Boolean.valueOf((!_isEmpty));
+        };
+        final BiConsumer<String, Pair<TerminologyExtensionAxiom, Map<String, String>>> _function_1 = (String uuid, Pair<TerminologyExtensionAxiom, Map<String, String>> oml_kv) -> {
+          queue.put(uuid, oml_kv);
+        };
+        MapExtensions.<String, Pair<TerminologyExtensionAxiom, Map<String, String>>>filter(this.terminologyExtensionAxioms, _function).forEach(_function_1);
+        boolean _isEmpty = queue.isEmpty();
+        boolean _not = (!_isEmpty);
+        more = _not;
+        if (more) {
+          final BiConsumer<String, Pair<TerminologyExtensionAxiom, Map<String, String>>> _function_2 = (String uuid, Pair<TerminologyExtensionAxiom, Map<String, String>> oml_kv) -> {
+            final TerminologyExtensionAxiom oml = oml_kv.getKey();
+            final Map<String, String> kv = oml_kv.getValue();
+            boolean _isEmpty_1 = kv.isEmpty();
+            boolean _not_1 = (!_isEmpty_1);
+            if (_not_1) {
+              final String tboxXRef = kv.remove("tboxUUID");
+              final Pair<TerminologyBox, Map<String, String>> tboxPair = this.terminologyBoxes.get(tboxXRef);
+              if ((null == tboxPair)) {
+                throw new IllegalArgumentException(("Null cross-reference lookup for tbox in terminologyExtensionAxioms: " + tboxXRef));
+              }
+              oml.setTbox(tboxPair.getKey());
+              final String extendedTerminologyIRI = kv.remove("extendedTerminologyIRI");
+              this.loadOMLZipResource(rs, URI.createURI(extendedTerminologyIRI));
+              final Pair<TerminologyBox, Map<String, String>> extendedTerminologyPair = this.terminologyBoxes.get(extendedTerminologyIRI);
+              if ((null == extendedTerminologyPair)) {
+                throw new IllegalArgumentException(("Null cross-reference lookup for extendedTerminology in terminologyExtensionAxioms: " + extendedTerminologyIRI));
+              }
+              oml.setExtendedTerminology(extendedTerminologyPair.getKey());
+            }
+          };
+          queue.forEach(_function_2);
         }
-        oml.setTbox(tboxPair.getKey());
-        final String extendedTerminologyIRI = kv.remove("extendedTerminologyIRI");
-        this.loadOMLZipResource(rs, URI.createURI(extendedTerminologyIRI));
-        final Pair<TerminologyBox, Map<String, String>> extendedTerminologyPair = this.terminologyBoxes.get(extendedTerminologyIRI);
-        if ((null == extendedTerminologyPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for extendedTerminology in terminologyExtensionAxioms");
-        }
-        oml.setExtendedTerminology(extendedTerminologyPair.getKey());
       }
-    };
-    this.terminologyExtensionAxioms.forEach(_function);
+    } while(more);
   }
   
   protected void resolveTerminologyNestingAxioms(final ResourceSet rs) {
-    final BiConsumer<String, Pair<TerminologyNestingAxiom, Map<String, String>>> _function = (String uuid, Pair<TerminologyNestingAxiom, Map<String, String>> oml_kv) -> {
-      final TerminologyNestingAxiom oml = oml_kv.getKey();
-      final Map<String, String> kv = oml_kv.getValue();
-      boolean _isEmpty = kv.isEmpty();
-      boolean _not = (!_isEmpty);
-      if (_not) {
-        final String tboxXRef = kv.remove("tboxUUID");
-        final Pair<TerminologyBox, Map<String, String>> tboxPair = this.terminologyBoxes.get(tboxXRef);
-        if ((null == tboxPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for tbox in terminologyNestingAxioms");
+    boolean more = false;
+    do {
+      {
+        final HashMap<String, Pair<TerminologyNestingAxiom, Map<String, String>>> queue = new HashMap<String, Pair<TerminologyNestingAxiom, Map<String, String>>>();
+        final Function2<String, Pair<TerminologyNestingAxiom, Map<String, String>>, Boolean> _function = (String uuid, Pair<TerminologyNestingAxiom, Map<String, String>> oml_kv) -> {
+          boolean _isEmpty = oml_kv.getValue().isEmpty();
+          return Boolean.valueOf((!_isEmpty));
+        };
+        final BiConsumer<String, Pair<TerminologyNestingAxiom, Map<String, String>>> _function_1 = (String uuid, Pair<TerminologyNestingAxiom, Map<String, String>> oml_kv) -> {
+          queue.put(uuid, oml_kv);
+        };
+        MapExtensions.<String, Pair<TerminologyNestingAxiom, Map<String, String>>>filter(this.terminologyNestingAxioms, _function).forEach(_function_1);
+        boolean _isEmpty = queue.isEmpty();
+        boolean _not = (!_isEmpty);
+        more = _not;
+        if (more) {
+          final BiConsumer<String, Pair<TerminologyNestingAxiom, Map<String, String>>> _function_2 = (String uuid, Pair<TerminologyNestingAxiom, Map<String, String>> oml_kv) -> {
+            final TerminologyNestingAxiom oml = oml_kv.getKey();
+            final Map<String, String> kv = oml_kv.getValue();
+            boolean _isEmpty_1 = kv.isEmpty();
+            boolean _not_1 = (!_isEmpty_1);
+            if (_not_1) {
+              final String tboxXRef = kv.remove("tboxUUID");
+              final Pair<TerminologyBox, Map<String, String>> tboxPair = this.terminologyBoxes.get(tboxXRef);
+              if ((null == tboxPair)) {
+                throw new IllegalArgumentException(("Null cross-reference lookup for tbox in terminologyNestingAxioms: " + tboxXRef));
+              }
+              oml.setTbox(tboxPair.getKey());
+              final String nestingContextXRef = kv.remove("nestingContextUUID");
+              final Pair<Concept, Map<String, String>> nestingContextPair = this.concepts.get(nestingContextXRef);
+              if ((null == nestingContextPair)) {
+                throw new IllegalArgumentException(("Null cross-reference lookup for nestingContext in terminologyNestingAxioms: " + nestingContextXRef));
+              }
+              oml.setNestingContext(nestingContextPair.getKey());
+              final String nestingTerminologyIRI = kv.remove("nestingTerminologyIRI");
+              this.loadOMLZipResource(rs, URI.createURI(nestingTerminologyIRI));
+              final Pair<TerminologyBox, Map<String, String>> nestingTerminologyPair = this.terminologyBoxes.get(nestingTerminologyIRI);
+              if ((null == nestingTerminologyPair)) {
+                throw new IllegalArgumentException(("Null cross-reference lookup for nestingTerminology in terminologyNestingAxioms: " + nestingTerminologyIRI));
+              }
+              oml.setNestingTerminology(nestingTerminologyPair.getKey());
+            }
+          };
+          queue.forEach(_function_2);
         }
-        oml.setTbox(tboxPair.getKey());
-        final String nestingContextXRef = kv.remove("nestingContextUUID");
-        final Pair<Concept, Map<String, String>> nestingContextPair = this.concepts.get(nestingContextXRef);
-        if ((null == nestingContextPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for nestingContext in terminologyNestingAxioms");
-        }
-        oml.setNestingContext(nestingContextPair.getKey());
-        final String nestingTerminologyIRI = kv.remove("nestingTerminologyIRI");
-        this.loadOMLZipResource(rs, URI.createURI(nestingTerminologyIRI));
-        final Pair<TerminologyBox, Map<String, String>> nestingTerminologyPair = this.terminologyBoxes.get(nestingTerminologyIRI);
-        if ((null == nestingTerminologyPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for nestingTerminology in terminologyNestingAxioms");
-        }
-        oml.setNestingTerminology(nestingTerminologyPair.getKey());
       }
-    };
-    this.terminologyNestingAxioms.forEach(_function);
+    } while(more);
   }
   
   protected void resolveBundledTerminologyAxioms(final ResourceSet rs) {
-    final BiConsumer<String, Pair<BundledTerminologyAxiom, Map<String, String>>> _function = (String uuid, Pair<BundledTerminologyAxiom, Map<String, String>> oml_kv) -> {
-      final BundledTerminologyAxiom oml = oml_kv.getKey();
-      final Map<String, String> kv = oml_kv.getValue();
-      boolean _isEmpty = kv.isEmpty();
-      boolean _not = (!_isEmpty);
-      if (_not) {
-        final String bundleXRef = kv.remove("bundleUUID");
-        final Pair<Bundle, Map<String, String>> bundlePair = this.bundles.get(bundleXRef);
-        if ((null == bundlePair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for bundle in bundledTerminologyAxioms");
+    boolean more = false;
+    do {
+      {
+        final HashMap<String, Pair<BundledTerminologyAxiom, Map<String, String>>> queue = new HashMap<String, Pair<BundledTerminologyAxiom, Map<String, String>>>();
+        final Function2<String, Pair<BundledTerminologyAxiom, Map<String, String>>, Boolean> _function = (String uuid, Pair<BundledTerminologyAxiom, Map<String, String>> oml_kv) -> {
+          boolean _isEmpty = oml_kv.getValue().isEmpty();
+          return Boolean.valueOf((!_isEmpty));
+        };
+        final BiConsumer<String, Pair<BundledTerminologyAxiom, Map<String, String>>> _function_1 = (String uuid, Pair<BundledTerminologyAxiom, Map<String, String>> oml_kv) -> {
+          queue.put(uuid, oml_kv);
+        };
+        MapExtensions.<String, Pair<BundledTerminologyAxiom, Map<String, String>>>filter(this.bundledTerminologyAxioms, _function).forEach(_function_1);
+        boolean _isEmpty = queue.isEmpty();
+        boolean _not = (!_isEmpty);
+        more = _not;
+        if (more) {
+          final BiConsumer<String, Pair<BundledTerminologyAxiom, Map<String, String>>> _function_2 = (String uuid, Pair<BundledTerminologyAxiom, Map<String, String>> oml_kv) -> {
+            final BundledTerminologyAxiom oml = oml_kv.getKey();
+            final Map<String, String> kv = oml_kv.getValue();
+            boolean _isEmpty_1 = kv.isEmpty();
+            boolean _not_1 = (!_isEmpty_1);
+            if (_not_1) {
+              final String bundleXRef = kv.remove("bundleUUID");
+              final Pair<Bundle, Map<String, String>> bundlePair = this.bundles.get(bundleXRef);
+              if ((null == bundlePair)) {
+                throw new IllegalArgumentException(("Null cross-reference lookup for bundle in bundledTerminologyAxioms: " + bundleXRef));
+              }
+              oml.setBundle(bundlePair.getKey());
+              final String bundledTerminologyIRI = kv.remove("bundledTerminologyIRI");
+              this.loadOMLZipResource(rs, URI.createURI(bundledTerminologyIRI));
+              final Pair<TerminologyBox, Map<String, String>> bundledTerminologyPair = this.terminologyBoxes.get(bundledTerminologyIRI);
+              if ((null == bundledTerminologyPair)) {
+                throw new IllegalArgumentException(("Null cross-reference lookup for bundledTerminology in bundledTerminologyAxioms: " + bundledTerminologyIRI));
+              }
+              oml.setBundledTerminology(bundledTerminologyPair.getKey());
+            }
+          };
+          queue.forEach(_function_2);
         }
-        oml.setBundle(bundlePair.getKey());
-        final String bundledTerminologyIRI = kv.remove("bundledTerminologyIRI");
-        this.loadOMLZipResource(rs, URI.createURI(bundledTerminologyIRI));
-        final Pair<TerminologyBox, Map<String, String>> bundledTerminologyPair = this.terminologyBoxes.get(bundledTerminologyIRI);
-        if ((null == bundledTerminologyPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for bundledTerminology in bundledTerminologyAxioms");
-        }
-        oml.setBundledTerminology(bundledTerminologyPair.getKey());
       }
-    };
-    this.bundledTerminologyAxioms.forEach(_function);
+    } while(more);
   }
   
   protected void resolveDescriptionBoxExtendsClosedWorldDefinitions(final ResourceSet rs) {
-    final BiConsumer<String, Pair<DescriptionBoxExtendsClosedWorldDefinitions, Map<String, String>>> _function = (String uuid, Pair<DescriptionBoxExtendsClosedWorldDefinitions, Map<String, String>> oml_kv) -> {
-      final DescriptionBoxExtendsClosedWorldDefinitions oml = oml_kv.getKey();
-      final Map<String, String> kv = oml_kv.getValue();
-      boolean _isEmpty = kv.isEmpty();
-      boolean _not = (!_isEmpty);
-      if (_not) {
-        final String descriptionBoxXRef = kv.remove("descriptionBoxUUID");
-        final Pair<DescriptionBox, Map<String, String>> descriptionBoxPair = this.descriptionBoxes.get(descriptionBoxXRef);
-        if ((null == descriptionBoxPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for descriptionBox in descriptionBoxExtendsClosedWorldDefinitions");
+    boolean more = false;
+    do {
+      {
+        final HashMap<String, Pair<DescriptionBoxExtendsClosedWorldDefinitions, Map<String, String>>> queue = new HashMap<String, Pair<DescriptionBoxExtendsClosedWorldDefinitions, Map<String, String>>>();
+        final Function2<String, Pair<DescriptionBoxExtendsClosedWorldDefinitions, Map<String, String>>, Boolean> _function = (String uuid, Pair<DescriptionBoxExtendsClosedWorldDefinitions, Map<String, String>> oml_kv) -> {
+          boolean _isEmpty = oml_kv.getValue().isEmpty();
+          return Boolean.valueOf((!_isEmpty));
+        };
+        final BiConsumer<String, Pair<DescriptionBoxExtendsClosedWorldDefinitions, Map<String, String>>> _function_1 = (String uuid, Pair<DescriptionBoxExtendsClosedWorldDefinitions, Map<String, String>> oml_kv) -> {
+          queue.put(uuid, oml_kv);
+        };
+        MapExtensions.<String, Pair<DescriptionBoxExtendsClosedWorldDefinitions, Map<String, String>>>filter(this.descriptionBoxExtendsClosedWorldDefinitions, _function).forEach(_function_1);
+        boolean _isEmpty = queue.isEmpty();
+        boolean _not = (!_isEmpty);
+        more = _not;
+        if (more) {
+          final BiConsumer<String, Pair<DescriptionBoxExtendsClosedWorldDefinitions, Map<String, String>>> _function_2 = (String uuid, Pair<DescriptionBoxExtendsClosedWorldDefinitions, Map<String, String>> oml_kv) -> {
+            final DescriptionBoxExtendsClosedWorldDefinitions oml = oml_kv.getKey();
+            final Map<String, String> kv = oml_kv.getValue();
+            boolean _isEmpty_1 = kv.isEmpty();
+            boolean _not_1 = (!_isEmpty_1);
+            if (_not_1) {
+              final String descriptionBoxXRef = kv.remove("descriptionBoxUUID");
+              final Pair<DescriptionBox, Map<String, String>> descriptionBoxPair = this.descriptionBoxes.get(descriptionBoxXRef);
+              if ((null == descriptionBoxPair)) {
+                throw new IllegalArgumentException(("Null cross-reference lookup for descriptionBox in descriptionBoxExtendsClosedWorldDefinitions: " + descriptionBoxXRef));
+              }
+              oml.setDescriptionBox(descriptionBoxPair.getKey());
+              final String closedWorldDefinitionsIRI = kv.remove("closedWorldDefinitionsIRI");
+              this.loadOMLZipResource(rs, URI.createURI(closedWorldDefinitionsIRI));
+              final Pair<TerminologyBox, Map<String, String>> closedWorldDefinitionsPair = this.terminologyBoxes.get(closedWorldDefinitionsIRI);
+              if ((null == closedWorldDefinitionsPair)) {
+                throw new IllegalArgumentException(("Null cross-reference lookup for closedWorldDefinitions in descriptionBoxExtendsClosedWorldDefinitions: " + closedWorldDefinitionsIRI));
+              }
+              oml.setClosedWorldDefinitions(closedWorldDefinitionsPair.getKey());
+            }
+          };
+          queue.forEach(_function_2);
         }
-        oml.setDescriptionBox(descriptionBoxPair.getKey());
-        final String closedWorldDefinitionsIRI = kv.remove("closedWorldDefinitionsIRI");
-        this.loadOMLZipResource(rs, URI.createURI(closedWorldDefinitionsIRI));
-        final Pair<TerminologyBox, Map<String, String>> closedWorldDefinitionsPair = this.terminologyBoxes.get(closedWorldDefinitionsIRI);
-        if ((null == closedWorldDefinitionsPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for closedWorldDefinitions in descriptionBoxExtendsClosedWorldDefinitions");
-        }
-        oml.setClosedWorldDefinitions(closedWorldDefinitionsPair.getKey());
       }
-    };
-    this.descriptionBoxExtendsClosedWorldDefinitions.forEach(_function);
+    } while(more);
   }
   
   protected void resolveDescriptionBoxRefinements(final ResourceSet rs) {
-    final BiConsumer<String, Pair<DescriptionBoxRefinement, Map<String, String>>> _function = (String uuid, Pair<DescriptionBoxRefinement, Map<String, String>> oml_kv) -> {
-      final DescriptionBoxRefinement oml = oml_kv.getKey();
-      final Map<String, String> kv = oml_kv.getValue();
-      boolean _isEmpty = kv.isEmpty();
-      boolean _not = (!_isEmpty);
-      if (_not) {
-        final String refiningDescriptionBoxXRef = kv.remove("refiningDescriptionBoxUUID");
-        final Pair<DescriptionBox, Map<String, String>> refiningDescriptionBoxPair = this.descriptionBoxes.get(refiningDescriptionBoxXRef);
-        if ((null == refiningDescriptionBoxPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for refiningDescriptionBox in descriptionBoxRefinements");
+    boolean more = false;
+    do {
+      {
+        final HashMap<String, Pair<DescriptionBoxRefinement, Map<String, String>>> queue = new HashMap<String, Pair<DescriptionBoxRefinement, Map<String, String>>>();
+        final Function2<String, Pair<DescriptionBoxRefinement, Map<String, String>>, Boolean> _function = (String uuid, Pair<DescriptionBoxRefinement, Map<String, String>> oml_kv) -> {
+          boolean _isEmpty = oml_kv.getValue().isEmpty();
+          return Boolean.valueOf((!_isEmpty));
+        };
+        final BiConsumer<String, Pair<DescriptionBoxRefinement, Map<String, String>>> _function_1 = (String uuid, Pair<DescriptionBoxRefinement, Map<String, String>> oml_kv) -> {
+          queue.put(uuid, oml_kv);
+        };
+        MapExtensions.<String, Pair<DescriptionBoxRefinement, Map<String, String>>>filter(this.descriptionBoxRefinements, _function).forEach(_function_1);
+        boolean _isEmpty = queue.isEmpty();
+        boolean _not = (!_isEmpty);
+        more = _not;
+        if (more) {
+          final BiConsumer<String, Pair<DescriptionBoxRefinement, Map<String, String>>> _function_2 = (String uuid, Pair<DescriptionBoxRefinement, Map<String, String>> oml_kv) -> {
+            final DescriptionBoxRefinement oml = oml_kv.getKey();
+            final Map<String, String> kv = oml_kv.getValue();
+            boolean _isEmpty_1 = kv.isEmpty();
+            boolean _not_1 = (!_isEmpty_1);
+            if (_not_1) {
+              final String refiningDescriptionBoxXRef = kv.remove("refiningDescriptionBoxUUID");
+              final Pair<DescriptionBox, Map<String, String>> refiningDescriptionBoxPair = this.descriptionBoxes.get(refiningDescriptionBoxXRef);
+              if ((null == refiningDescriptionBoxPair)) {
+                throw new IllegalArgumentException(("Null cross-reference lookup for refiningDescriptionBox in descriptionBoxRefinements: " + refiningDescriptionBoxXRef));
+              }
+              oml.setRefiningDescriptionBox(refiningDescriptionBoxPair.getKey());
+              final String refinedDescriptionBoxIRI = kv.remove("refinedDescriptionBoxIRI");
+              this.loadOMLZipResource(rs, URI.createURI(refinedDescriptionBoxIRI));
+              final Pair<DescriptionBox, Map<String, String>> refinedDescriptionBoxPair = this.descriptionBoxes.get(refinedDescriptionBoxIRI);
+              if ((null == refinedDescriptionBoxPair)) {
+                throw new IllegalArgumentException(("Null cross-reference lookup for refinedDescriptionBox in descriptionBoxRefinements: " + refinedDescriptionBoxIRI));
+              }
+              oml.setRefinedDescriptionBox(refinedDescriptionBoxPair.getKey());
+            }
+          };
+          queue.forEach(_function_2);
         }
-        oml.setRefiningDescriptionBox(refiningDescriptionBoxPair.getKey());
-        final String refinedDescriptionBoxIRI = kv.remove("refinedDescriptionBoxIRI");
-        this.loadOMLZipResource(rs, URI.createURI(refinedDescriptionBoxIRI));
-        final Pair<DescriptionBox, Map<String, String>> refinedDescriptionBoxPair = this.descriptionBoxes.get(refinedDescriptionBoxIRI);
-        if ((null == refinedDescriptionBoxPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for refinedDescriptionBox in descriptionBoxRefinements");
-        }
-        oml.setRefinedDescriptionBox(refinedDescriptionBoxPair.getKey());
       }
-    };
-    this.descriptionBoxRefinements.forEach(_function);
+    } while(more);
   }
   
   protected void resolveBinaryScalarRestrictions(final ResourceSet rs) {
@@ -4651,13 +5356,13 @@ public class OMLSpecificationTables {
         final String tboxXRef = kv.remove("tboxUUID");
         final Pair<TerminologyBox, Map<String, String>> tboxPair = this.terminologyBoxes.get(tboxXRef);
         if ((null == tboxPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for tbox in binaryScalarRestrictions");
+          throw new IllegalArgumentException(("Null cross-reference lookup for tbox in binaryScalarRestrictions: " + tboxXRef));
         }
         oml.setTbox(tboxPair.getKey());
         final String restrictedRangeXRef = kv.remove("restrictedRangeUUID");
         final Pair<DataRange, Map<String, String>> restrictedRangePair = this.dataRanges.get(restrictedRangeXRef);
         if ((null == restrictedRangePair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for restrictedRange in binaryScalarRestrictions");
+          throw new IllegalArgumentException(("Null cross-reference lookup for restrictedRange in binaryScalarRestrictions: " + restrictedRangeXRef));
         }
         oml.setRestrictedRange(restrictedRangePair.getKey());
       }
@@ -4675,13 +5380,13 @@ public class OMLSpecificationTables {
         final String tboxXRef = kv.remove("tboxUUID");
         final Pair<TerminologyBox, Map<String, String>> tboxPair = this.terminologyBoxes.get(tboxXRef);
         if ((null == tboxPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for tbox in iriScalarRestrictions");
+          throw new IllegalArgumentException(("Null cross-reference lookup for tbox in iriScalarRestrictions: " + tboxXRef));
         }
         oml.setTbox(tboxPair.getKey());
         final String restrictedRangeXRef = kv.remove("restrictedRangeUUID");
         final Pair<DataRange, Map<String, String>> restrictedRangePair = this.dataRanges.get(restrictedRangeXRef);
         if ((null == restrictedRangePair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for restrictedRange in iriScalarRestrictions");
+          throw new IllegalArgumentException(("Null cross-reference lookup for restrictedRange in iriScalarRestrictions: " + restrictedRangeXRef));
         }
         oml.setRestrictedRange(restrictedRangePair.getKey());
       }
@@ -4699,13 +5404,13 @@ public class OMLSpecificationTables {
         final String tboxXRef = kv.remove("tboxUUID");
         final Pair<TerminologyBox, Map<String, String>> tboxPair = this.terminologyBoxes.get(tboxXRef);
         if ((null == tboxPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for tbox in numericScalarRestrictions");
+          throw new IllegalArgumentException(("Null cross-reference lookup for tbox in numericScalarRestrictions: " + tboxXRef));
         }
         oml.setTbox(tboxPair.getKey());
         final String restrictedRangeXRef = kv.remove("restrictedRangeUUID");
         final Pair<DataRange, Map<String, String>> restrictedRangePair = this.dataRanges.get(restrictedRangeXRef);
         if ((null == restrictedRangePair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for restrictedRange in numericScalarRestrictions");
+          throw new IllegalArgumentException(("Null cross-reference lookup for restrictedRange in numericScalarRestrictions: " + restrictedRangeXRef));
         }
         oml.setRestrictedRange(restrictedRangePair.getKey());
       }
@@ -4723,13 +5428,13 @@ public class OMLSpecificationTables {
         final String tboxXRef = kv.remove("tboxUUID");
         final Pair<TerminologyBox, Map<String, String>> tboxPair = this.terminologyBoxes.get(tboxXRef);
         if ((null == tboxPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for tbox in plainLiteralScalarRestrictions");
+          throw new IllegalArgumentException(("Null cross-reference lookup for tbox in plainLiteralScalarRestrictions: " + tboxXRef));
         }
         oml.setTbox(tboxPair.getKey());
         final String restrictedRangeXRef = kv.remove("restrictedRangeUUID");
         final Pair<DataRange, Map<String, String>> restrictedRangePair = this.dataRanges.get(restrictedRangeXRef);
         if ((null == restrictedRangePair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for restrictedRange in plainLiteralScalarRestrictions");
+          throw new IllegalArgumentException(("Null cross-reference lookup for restrictedRange in plainLiteralScalarRestrictions: " + restrictedRangeXRef));
         }
         oml.setRestrictedRange(restrictedRangePair.getKey());
       }
@@ -4747,13 +5452,13 @@ public class OMLSpecificationTables {
         final String tboxXRef = kv.remove("tboxUUID");
         final Pair<TerminologyBox, Map<String, String>> tboxPair = this.terminologyBoxes.get(tboxXRef);
         if ((null == tboxPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for tbox in scalarOneOfRestrictions");
+          throw new IllegalArgumentException(("Null cross-reference lookup for tbox in scalarOneOfRestrictions: " + tboxXRef));
         }
         oml.setTbox(tboxPair.getKey());
         final String restrictedRangeXRef = kv.remove("restrictedRangeUUID");
         final Pair<DataRange, Map<String, String>> restrictedRangePair = this.dataRanges.get(restrictedRangeXRef);
         if ((null == restrictedRangePair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for restrictedRange in scalarOneOfRestrictions");
+          throw new IllegalArgumentException(("Null cross-reference lookup for restrictedRange in scalarOneOfRestrictions: " + restrictedRangeXRef));
         }
         oml.setRestrictedRange(restrictedRangePair.getKey());
       }
@@ -4771,13 +5476,13 @@ public class OMLSpecificationTables {
         final String tboxXRef = kv.remove("tboxUUID");
         final Pair<TerminologyBox, Map<String, String>> tboxPair = this.terminologyBoxes.get(tboxXRef);
         if ((null == tboxPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for tbox in scalarOneOfLiteralAxioms");
+          throw new IllegalArgumentException(("Null cross-reference lookup for tbox in scalarOneOfLiteralAxioms: " + tboxXRef));
         }
         oml.setTbox(tboxPair.getKey());
         final String axiomXRef = kv.remove("axiomUUID");
         final Pair<ScalarOneOfRestriction, Map<String, String>> axiomPair = this.scalarOneOfRestrictions.get(axiomXRef);
         if ((null == axiomPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for axiom in scalarOneOfLiteralAxioms");
+          throw new IllegalArgumentException(("Null cross-reference lookup for axiom in scalarOneOfLiteralAxioms: " + axiomXRef));
         }
         oml.setAxiom(axiomPair.getKey());
         final String valueTypeXRef = kv.remove("valueTypeUUID");
@@ -4785,7 +5490,7 @@ public class OMLSpecificationTables {
         if (_notEquals) {
           final Pair<DataRange, Map<String, String>> valueTypePair = this.dataRanges.get(valueTypeXRef);
           if ((null == valueTypePair)) {
-            throw new IllegalArgumentException("Null cross-reference lookup for valueType in scalarOneOfLiteralAxioms");
+            throw new IllegalArgumentException(("Null cross-reference lookup for valueType in scalarOneOfLiteralAxioms: " + valueTypeXRef));
           }
           oml.setValueType(valueTypePair.getKey());
         }
@@ -4804,13 +5509,13 @@ public class OMLSpecificationTables {
         final String tboxXRef = kv.remove("tboxUUID");
         final Pair<TerminologyBox, Map<String, String>> tboxPair = this.terminologyBoxes.get(tboxXRef);
         if ((null == tboxPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for tbox in stringScalarRestrictions");
+          throw new IllegalArgumentException(("Null cross-reference lookup for tbox in stringScalarRestrictions: " + tboxXRef));
         }
         oml.setTbox(tboxPair.getKey());
         final String restrictedRangeXRef = kv.remove("restrictedRangeUUID");
         final Pair<DataRange, Map<String, String>> restrictedRangePair = this.dataRanges.get(restrictedRangeXRef);
         if ((null == restrictedRangePair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for restrictedRange in stringScalarRestrictions");
+          throw new IllegalArgumentException(("Null cross-reference lookup for restrictedRange in stringScalarRestrictions: " + restrictedRangeXRef));
         }
         oml.setRestrictedRange(restrictedRangePair.getKey());
       }
@@ -4828,13 +5533,13 @@ public class OMLSpecificationTables {
         final String tboxXRef = kv.remove("tboxUUID");
         final Pair<TerminologyBox, Map<String, String>> tboxPair = this.terminologyBoxes.get(tboxXRef);
         if ((null == tboxPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for tbox in synonymScalarRestrictions");
+          throw new IllegalArgumentException(("Null cross-reference lookup for tbox in synonymScalarRestrictions: " + tboxXRef));
         }
         oml.setTbox(tboxPair.getKey());
         final String restrictedRangeXRef = kv.remove("restrictedRangeUUID");
         final Pair<DataRange, Map<String, String>> restrictedRangePair = this.dataRanges.get(restrictedRangeXRef);
         if ((null == restrictedRangePair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for restrictedRange in synonymScalarRestrictions");
+          throw new IllegalArgumentException(("Null cross-reference lookup for restrictedRange in synonymScalarRestrictions: " + restrictedRangeXRef));
         }
         oml.setRestrictedRange(restrictedRangePair.getKey());
       }
@@ -4852,13 +5557,13 @@ public class OMLSpecificationTables {
         final String tboxXRef = kv.remove("tboxUUID");
         final Pair<TerminologyBox, Map<String, String>> tboxPair = this.terminologyBoxes.get(tboxXRef);
         if ((null == tboxPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for tbox in timeScalarRestrictions");
+          throw new IllegalArgumentException(("Null cross-reference lookup for tbox in timeScalarRestrictions: " + tboxXRef));
         }
         oml.setTbox(tboxPair.getKey());
         final String restrictedRangeXRef = kv.remove("restrictedRangeUUID");
         final Pair<DataRange, Map<String, String>> restrictedRangePair = this.dataRanges.get(restrictedRangeXRef);
         if ((null == restrictedRangePair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for restrictedRange in timeScalarRestrictions");
+          throw new IllegalArgumentException(("Null cross-reference lookup for restrictedRange in timeScalarRestrictions: " + restrictedRangeXRef));
         }
         oml.setRestrictedRange(restrictedRangePair.getKey());
       }
@@ -4876,19 +5581,19 @@ public class OMLSpecificationTables {
         final String tboxXRef = kv.remove("tboxUUID");
         final Pair<TerminologyBox, Map<String, String>> tboxPair = this.terminologyBoxes.get(tboxXRef);
         if ((null == tboxPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for tbox in entityScalarDataProperties");
+          throw new IllegalArgumentException(("Null cross-reference lookup for tbox in entityScalarDataProperties: " + tboxXRef));
         }
         oml.setTbox(tboxPair.getKey());
         final String domainXRef = kv.remove("domainUUID");
         final Pair<Entity, Map<String, String>> domainPair = this.entities.get(domainXRef);
         if ((null == domainPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for domain in entityScalarDataProperties");
+          throw new IllegalArgumentException(("Null cross-reference lookup for domain in entityScalarDataProperties: " + domainXRef));
         }
         oml.setDomain(domainPair.getKey());
         final String rangeXRef = kv.remove("rangeUUID");
         final Pair<DataRange, Map<String, String>> rangePair = this.dataRanges.get(rangeXRef);
         if ((null == rangePair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for range in entityScalarDataProperties");
+          throw new IllegalArgumentException(("Null cross-reference lookup for range in entityScalarDataProperties: " + rangeXRef));
         }
         oml.setRange(rangePair.getKey());
       }
@@ -4906,19 +5611,19 @@ public class OMLSpecificationTables {
         final String tboxXRef = kv.remove("tboxUUID");
         final Pair<TerminologyBox, Map<String, String>> tboxPair = this.terminologyBoxes.get(tboxXRef);
         if ((null == tboxPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for tbox in entityStructuredDataProperties");
+          throw new IllegalArgumentException(("Null cross-reference lookup for tbox in entityStructuredDataProperties: " + tboxXRef));
         }
         oml.setTbox(tboxPair.getKey());
         final String domainXRef = kv.remove("domainUUID");
         final Pair<Entity, Map<String, String>> domainPair = this.entities.get(domainXRef);
         if ((null == domainPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for domain in entityStructuredDataProperties");
+          throw new IllegalArgumentException(("Null cross-reference lookup for domain in entityStructuredDataProperties: " + domainXRef));
         }
         oml.setDomain(domainPair.getKey());
         final String rangeXRef = kv.remove("rangeUUID");
         final Pair<Structure, Map<String, String>> rangePair = this.structures.get(rangeXRef);
         if ((null == rangePair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for range in entityStructuredDataProperties");
+          throw new IllegalArgumentException(("Null cross-reference lookup for range in entityStructuredDataProperties: " + rangeXRef));
         }
         oml.setRange(rangePair.getKey());
       }
@@ -4936,19 +5641,19 @@ public class OMLSpecificationTables {
         final String tboxXRef = kv.remove("tboxUUID");
         final Pair<TerminologyBox, Map<String, String>> tboxPair = this.terminologyBoxes.get(tboxXRef);
         if ((null == tboxPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for tbox in scalarDataProperties");
+          throw new IllegalArgumentException(("Null cross-reference lookup for tbox in scalarDataProperties: " + tboxXRef));
         }
         oml.setTbox(tboxPair.getKey());
         final String domainXRef = kv.remove("domainUUID");
         final Pair<Structure, Map<String, String>> domainPair = this.structures.get(domainXRef);
         if ((null == domainPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for domain in scalarDataProperties");
+          throw new IllegalArgumentException(("Null cross-reference lookup for domain in scalarDataProperties: " + domainXRef));
         }
         oml.setDomain(domainPair.getKey());
         final String rangeXRef = kv.remove("rangeUUID");
         final Pair<DataRange, Map<String, String>> rangePair = this.dataRanges.get(rangeXRef);
         if ((null == rangePair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for range in scalarDataProperties");
+          throw new IllegalArgumentException(("Null cross-reference lookup for range in scalarDataProperties: " + rangeXRef));
         }
         oml.setRange(rangePair.getKey());
       }
@@ -4966,19 +5671,19 @@ public class OMLSpecificationTables {
         final String tboxXRef = kv.remove("tboxUUID");
         final Pair<TerminologyBox, Map<String, String>> tboxPair = this.terminologyBoxes.get(tboxXRef);
         if ((null == tboxPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for tbox in structuredDataProperties");
+          throw new IllegalArgumentException(("Null cross-reference lookup for tbox in structuredDataProperties: " + tboxXRef));
         }
         oml.setTbox(tboxPair.getKey());
         final String domainXRef = kv.remove("domainUUID");
         final Pair<Structure, Map<String, String>> domainPair = this.structures.get(domainXRef);
         if ((null == domainPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for domain in structuredDataProperties");
+          throw new IllegalArgumentException(("Null cross-reference lookup for domain in structuredDataProperties: " + domainXRef));
         }
         oml.setDomain(domainPair.getKey());
         final String rangeXRef = kv.remove("rangeUUID");
         final Pair<Structure, Map<String, String>> rangePair = this.structures.get(rangeXRef);
         if ((null == rangePair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for range in structuredDataProperties");
+          throw new IllegalArgumentException(("Null cross-reference lookup for range in structuredDataProperties: " + rangeXRef));
         }
         oml.setRange(rangePair.getKey());
       }
@@ -4996,19 +5701,19 @@ public class OMLSpecificationTables {
         final String tboxXRef = kv.remove("tboxUUID");
         final Pair<TerminologyBox, Map<String, String>> tboxPair = this.terminologyBoxes.get(tboxXRef);
         if ((null == tboxPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for tbox in reifiedRelationships");
+          throw new IllegalArgumentException(("Null cross-reference lookup for tbox in reifiedRelationships: " + tboxXRef));
         }
         oml.setTbox(tboxPair.getKey());
         final String sourceXRef = kv.remove("sourceUUID");
         final Pair<Entity, Map<String, String>> sourcePair = this.entities.get(sourceXRef);
         if ((null == sourcePair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for source in reifiedRelationships");
+          throw new IllegalArgumentException(("Null cross-reference lookup for source in reifiedRelationships: " + sourceXRef));
         }
         oml.setSource(sourcePair.getKey());
         final String targetXRef = kv.remove("targetUUID");
         final Pair<Entity, Map<String, String>> targetPair = this.entities.get(targetXRef);
         if ((null == targetPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for target in reifiedRelationships");
+          throw new IllegalArgumentException(("Null cross-reference lookup for target in reifiedRelationships: " + targetXRef));
         }
         oml.setTarget(targetPair.getKey());
       }
@@ -5026,7 +5731,7 @@ public class OMLSpecificationTables {
         final String reifiedRelationshipXRef = kv.remove("reifiedRelationshipUUID");
         final Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipPair = this.reifiedRelationships.get(reifiedRelationshipXRef);
         if ((null == reifiedRelationshipPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationship in forwardProperties");
+          throw new IllegalArgumentException(("Null cross-reference lookup for reifiedRelationship in forwardProperties: " + reifiedRelationshipXRef));
         }
         oml.setReifiedRelationship(reifiedRelationshipPair.getKey());
       }
@@ -5044,7 +5749,7 @@ public class OMLSpecificationTables {
         final String reifiedRelationshipXRef = kv.remove("reifiedRelationshipUUID");
         final Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipPair = this.reifiedRelationships.get(reifiedRelationshipXRef);
         if ((null == reifiedRelationshipPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationship in inverseProperties");
+          throw new IllegalArgumentException(("Null cross-reference lookup for reifiedRelationship in inverseProperties: " + reifiedRelationshipXRef));
         }
         oml.setReifiedRelationship(reifiedRelationshipPair.getKey());
       }
@@ -5062,19 +5767,19 @@ public class OMLSpecificationTables {
         final String tboxXRef = kv.remove("tboxUUID");
         final Pair<TerminologyBox, Map<String, String>> tboxPair = this.terminologyBoxes.get(tboxXRef);
         if ((null == tboxPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for tbox in unreifiedRelationships");
+          throw new IllegalArgumentException(("Null cross-reference lookup for tbox in unreifiedRelationships: " + tboxXRef));
         }
         oml.setTbox(tboxPair.getKey());
         final String sourceXRef = kv.remove("sourceUUID");
         final Pair<Entity, Map<String, String>> sourcePair = this.entities.get(sourceXRef);
         if ((null == sourcePair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for source in unreifiedRelationships");
+          throw new IllegalArgumentException(("Null cross-reference lookup for source in unreifiedRelationships: " + sourceXRef));
         }
         oml.setSource(sourcePair.getKey());
         final String targetXRef = kv.remove("targetUUID");
         final Pair<Entity, Map<String, String>> targetPair = this.entities.get(targetXRef);
         if ((null == targetPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for target in unreifiedRelationships");
+          throw new IllegalArgumentException(("Null cross-reference lookup for target in unreifiedRelationships: " + targetXRef));
         }
         oml.setTarget(targetPair.getKey());
       }
@@ -5092,13 +5797,13 @@ public class OMLSpecificationTables {
         final String tboxXRef = kv.remove("tboxUUID");
         final Pair<TerminologyBox, Map<String, String>> tboxPair = this.terminologyBoxes.get(tboxXRef);
         if ((null == tboxPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for tbox in chainRules");
+          throw new IllegalArgumentException(("Null cross-reference lookup for tbox in chainRules: " + tboxXRef));
         }
         oml.setTbox(tboxPair.getKey());
         final String headXRef = kv.remove("headUUID");
         final Pair<UnreifiedRelationship, Map<String, String>> headPair = this.unreifiedRelationships.get(headXRef);
         if ((null == headPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for head in chainRules");
+          throw new IllegalArgumentException(("Null cross-reference lookup for head in chainRules: " + headXRef));
         }
         oml.setHead(headPair.getKey());
       }
@@ -5118,7 +5823,7 @@ public class OMLSpecificationTables {
         if (_notEquals) {
           final Pair<RuleBodySegment, Map<String, String>> previousSegmentPair = this.ruleBodySegments.get(previousSegmentXRef);
           if ((null == previousSegmentPair)) {
-            throw new IllegalArgumentException("Null cross-reference lookup for previousSegment in ruleBodySegments");
+            throw new IllegalArgumentException(("Null cross-reference lookup for previousSegment in ruleBodySegments: " + previousSegmentXRef));
           }
           oml.setPreviousSegment(previousSegmentPair.getKey());
         }
@@ -5127,7 +5832,7 @@ public class OMLSpecificationTables {
         if (_notEquals_1) {
           final Pair<ChainRule, Map<String, String>> rulePair = this.chainRules.get(ruleXRef);
           if ((null == rulePair)) {
-            throw new IllegalArgumentException("Null cross-reference lookup for rule in ruleBodySegments");
+            throw new IllegalArgumentException(("Null cross-reference lookup for rule in ruleBodySegments: " + ruleXRef));
           }
           oml.setRule(rulePair.getKey());
         }
@@ -5146,7 +5851,7 @@ public class OMLSpecificationTables {
         final String bodySegmentXRef = kv.remove("bodySegmentUUID");
         final Pair<RuleBodySegment, Map<String, String>> bodySegmentPair = this.ruleBodySegments.get(bodySegmentXRef);
         if ((null == bodySegmentPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for bodySegment in segmentPredicates");
+          throw new IllegalArgumentException(("Null cross-reference lookup for bodySegment in segmentPredicates: " + bodySegmentXRef));
         }
         oml.setBodySegment(bodySegmentPair.getKey());
         final String predicateXRef = kv.remove("predicateUUID");
@@ -5154,7 +5859,7 @@ public class OMLSpecificationTables {
         if (_notEquals) {
           final Pair<Predicate, Map<String, String>> predicatePair = this.predicates.get(predicateXRef);
           if ((null == predicatePair)) {
-            throw new IllegalArgumentException("Null cross-reference lookup for predicate in segmentPredicates");
+            throw new IllegalArgumentException(("Null cross-reference lookup for predicate in segmentPredicates: " + predicateXRef));
           }
           oml.setPredicate(predicatePair.getKey());
         }
@@ -5163,7 +5868,7 @@ public class OMLSpecificationTables {
         if (_notEquals_1) {
           final Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipSourcePair = this.reifiedRelationships.get(reifiedRelationshipSourceXRef);
           if ((null == reifiedRelationshipSourcePair)) {
-            throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationshipSource in segmentPredicates");
+            throw new IllegalArgumentException(("Null cross-reference lookup for reifiedRelationshipSource in segmentPredicates: " + reifiedRelationshipSourceXRef));
           }
           oml.setReifiedRelationshipSource(reifiedRelationshipSourcePair.getKey());
         }
@@ -5172,7 +5877,7 @@ public class OMLSpecificationTables {
         if (_notEquals_2) {
           final Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipInverseSourcePair = this.reifiedRelationships.get(reifiedRelationshipInverseSourceXRef);
           if ((null == reifiedRelationshipInverseSourcePair)) {
-            throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationshipInverseSource in segmentPredicates");
+            throw new IllegalArgumentException(("Null cross-reference lookup for reifiedRelationshipInverseSource in segmentPredicates: " + reifiedRelationshipInverseSourceXRef));
           }
           oml.setReifiedRelationshipInverseSource(reifiedRelationshipInverseSourcePair.getKey());
         }
@@ -5181,7 +5886,7 @@ public class OMLSpecificationTables {
         if (_notEquals_3) {
           final Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipTargetPair = this.reifiedRelationships.get(reifiedRelationshipTargetXRef);
           if ((null == reifiedRelationshipTargetPair)) {
-            throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationshipTarget in segmentPredicates");
+            throw new IllegalArgumentException(("Null cross-reference lookup for reifiedRelationshipTarget in segmentPredicates: " + reifiedRelationshipTargetXRef));
           }
           oml.setReifiedRelationshipTarget(reifiedRelationshipTargetPair.getKey());
         }
@@ -5190,7 +5895,7 @@ public class OMLSpecificationTables {
         if (_notEquals_4) {
           final Pair<ReifiedRelationship, Map<String, String>> reifiedRelationshipInverseTargetPair = this.reifiedRelationships.get(reifiedRelationshipInverseTargetXRef);
           if ((null == reifiedRelationshipInverseTargetPair)) {
-            throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationshipInverseTarget in segmentPredicates");
+            throw new IllegalArgumentException(("Null cross-reference lookup for reifiedRelationshipInverseTarget in segmentPredicates: " + reifiedRelationshipInverseTargetXRef));
           }
           oml.setReifiedRelationshipInverseTarget(reifiedRelationshipInverseTargetPair.getKey());
         }
@@ -5199,7 +5904,7 @@ public class OMLSpecificationTables {
         if (_notEquals_5) {
           final Pair<UnreifiedRelationship, Map<String, String>> unreifiedRelationshipInversePair = this.unreifiedRelationships.get(unreifiedRelationshipInverseXRef);
           if ((null == unreifiedRelationshipInversePair)) {
-            throw new IllegalArgumentException("Null cross-reference lookup for unreifiedRelationshipInverse in segmentPredicates");
+            throw new IllegalArgumentException(("Null cross-reference lookup for unreifiedRelationshipInverse in segmentPredicates: " + unreifiedRelationshipInverseXRef));
           }
           oml.setUnreifiedRelationshipInverse(unreifiedRelationshipInversePair.getKey());
         }
@@ -5218,25 +5923,25 @@ public class OMLSpecificationTables {
         final String tboxXRef = kv.remove("tboxUUID");
         final Pair<TerminologyBox, Map<String, String>> tboxPair = this.terminologyBoxes.get(tboxXRef);
         if ((null == tboxPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for tbox in entityExistentialRestrictionAxioms");
+          throw new IllegalArgumentException(("Null cross-reference lookup for tbox in entityExistentialRestrictionAxioms: " + tboxXRef));
         }
         oml.setTbox(tboxPair.getKey());
         final String restrictedDomainXRef = kv.remove("restrictedDomainUUID");
         final Pair<Entity, Map<String, String>> restrictedDomainPair = this.entities.get(restrictedDomainXRef);
         if ((null == restrictedDomainPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for restrictedDomain in entityExistentialRestrictionAxioms");
+          throw new IllegalArgumentException(("Null cross-reference lookup for restrictedDomain in entityExistentialRestrictionAxioms: " + restrictedDomainXRef));
         }
         oml.setRestrictedDomain(restrictedDomainPair.getKey());
         final String restrictedRangeXRef = kv.remove("restrictedRangeUUID");
         final Pair<Entity, Map<String, String>> restrictedRangePair = this.entities.get(restrictedRangeXRef);
         if ((null == restrictedRangePair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for restrictedRange in entityExistentialRestrictionAxioms");
+          throw new IllegalArgumentException(("Null cross-reference lookup for restrictedRange in entityExistentialRestrictionAxioms: " + restrictedRangeXRef));
         }
         oml.setRestrictedRange(restrictedRangePair.getKey());
         final String restrictedRelationshipXRef = kv.remove("restrictedRelationshipUUID");
         final Pair<RestrictableRelationship, Map<String, String>> restrictedRelationshipPair = this.restrictableRelationships.get(restrictedRelationshipXRef);
         if ((null == restrictedRelationshipPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for restrictedRelationship in entityExistentialRestrictionAxioms");
+          throw new IllegalArgumentException(("Null cross-reference lookup for restrictedRelationship in entityExistentialRestrictionAxioms: " + restrictedRelationshipXRef));
         }
         oml.setRestrictedRelationship(restrictedRelationshipPair.getKey());
       }
@@ -5254,25 +5959,25 @@ public class OMLSpecificationTables {
         final String tboxXRef = kv.remove("tboxUUID");
         final Pair<TerminologyBox, Map<String, String>> tboxPair = this.terminologyBoxes.get(tboxXRef);
         if ((null == tboxPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for tbox in entityUniversalRestrictionAxioms");
+          throw new IllegalArgumentException(("Null cross-reference lookup for tbox in entityUniversalRestrictionAxioms: " + tboxXRef));
         }
         oml.setTbox(tboxPair.getKey());
         final String restrictedDomainXRef = kv.remove("restrictedDomainUUID");
         final Pair<Entity, Map<String, String>> restrictedDomainPair = this.entities.get(restrictedDomainXRef);
         if ((null == restrictedDomainPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for restrictedDomain in entityUniversalRestrictionAxioms");
+          throw new IllegalArgumentException(("Null cross-reference lookup for restrictedDomain in entityUniversalRestrictionAxioms: " + restrictedDomainXRef));
         }
         oml.setRestrictedDomain(restrictedDomainPair.getKey());
         final String restrictedRangeXRef = kv.remove("restrictedRangeUUID");
         final Pair<Entity, Map<String, String>> restrictedRangePair = this.entities.get(restrictedRangeXRef);
         if ((null == restrictedRangePair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for restrictedRange in entityUniversalRestrictionAxioms");
+          throw new IllegalArgumentException(("Null cross-reference lookup for restrictedRange in entityUniversalRestrictionAxioms: " + restrictedRangeXRef));
         }
         oml.setRestrictedRange(restrictedRangePair.getKey());
         final String restrictedRelationshipXRef = kv.remove("restrictedRelationshipUUID");
         final Pair<RestrictableRelationship, Map<String, String>> restrictedRelationshipPair = this.restrictableRelationships.get(restrictedRelationshipXRef);
         if ((null == restrictedRelationshipPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for restrictedRelationship in entityUniversalRestrictionAxioms");
+          throw new IllegalArgumentException(("Null cross-reference lookup for restrictedRelationship in entityUniversalRestrictionAxioms: " + restrictedRelationshipXRef));
         }
         oml.setRestrictedRelationship(restrictedRelationshipPair.getKey());
       }
@@ -5290,25 +5995,25 @@ public class OMLSpecificationTables {
         final String tboxXRef = kv.remove("tboxUUID");
         final Pair<TerminologyBox, Map<String, String>> tboxPair = this.terminologyBoxes.get(tboxXRef);
         if ((null == tboxPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for tbox in entityScalarDataPropertyExistentialRestrictionAxioms");
+          throw new IllegalArgumentException(("Null cross-reference lookup for tbox in entityScalarDataPropertyExistentialRestrictionAxioms: " + tboxXRef));
         }
         oml.setTbox(tboxPair.getKey());
         final String restrictedEntityXRef = kv.remove("restrictedEntityUUID");
         final Pair<Entity, Map<String, String>> restrictedEntityPair = this.entities.get(restrictedEntityXRef);
         if ((null == restrictedEntityPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for restrictedEntity in entityScalarDataPropertyExistentialRestrictionAxioms");
+          throw new IllegalArgumentException(("Null cross-reference lookup for restrictedEntity in entityScalarDataPropertyExistentialRestrictionAxioms: " + restrictedEntityXRef));
         }
         oml.setRestrictedEntity(restrictedEntityPair.getKey());
         final String scalarPropertyXRef = kv.remove("scalarPropertyUUID");
         final Pair<EntityScalarDataProperty, Map<String, String>> scalarPropertyPair = this.entityScalarDataProperties.get(scalarPropertyXRef);
         if ((null == scalarPropertyPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for scalarProperty in entityScalarDataPropertyExistentialRestrictionAxioms");
+          throw new IllegalArgumentException(("Null cross-reference lookup for scalarProperty in entityScalarDataPropertyExistentialRestrictionAxioms: " + scalarPropertyXRef));
         }
         oml.setScalarProperty(scalarPropertyPair.getKey());
         final String scalarRestrictionXRef = kv.remove("scalarRestrictionUUID");
         final Pair<DataRange, Map<String, String>> scalarRestrictionPair = this.dataRanges.get(scalarRestrictionXRef);
         if ((null == scalarRestrictionPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for scalarRestriction in entityScalarDataPropertyExistentialRestrictionAxioms");
+          throw new IllegalArgumentException(("Null cross-reference lookup for scalarRestriction in entityScalarDataPropertyExistentialRestrictionAxioms: " + scalarRestrictionXRef));
         }
         oml.setScalarRestriction(scalarRestrictionPair.getKey());
       }
@@ -5326,19 +6031,19 @@ public class OMLSpecificationTables {
         final String tboxXRef = kv.remove("tboxUUID");
         final Pair<TerminologyBox, Map<String, String>> tboxPair = this.terminologyBoxes.get(tboxXRef);
         if ((null == tboxPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for tbox in entityScalarDataPropertyParticularRestrictionAxioms");
+          throw new IllegalArgumentException(("Null cross-reference lookup for tbox in entityScalarDataPropertyParticularRestrictionAxioms: " + tboxXRef));
         }
         oml.setTbox(tboxPair.getKey());
         final String restrictedEntityXRef = kv.remove("restrictedEntityUUID");
         final Pair<Entity, Map<String, String>> restrictedEntityPair = this.entities.get(restrictedEntityXRef);
         if ((null == restrictedEntityPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for restrictedEntity in entityScalarDataPropertyParticularRestrictionAxioms");
+          throw new IllegalArgumentException(("Null cross-reference lookup for restrictedEntity in entityScalarDataPropertyParticularRestrictionAxioms: " + restrictedEntityXRef));
         }
         oml.setRestrictedEntity(restrictedEntityPair.getKey());
         final String scalarPropertyXRef = kv.remove("scalarPropertyUUID");
         final Pair<EntityScalarDataProperty, Map<String, String>> scalarPropertyPair = this.entityScalarDataProperties.get(scalarPropertyXRef);
         if ((null == scalarPropertyPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for scalarProperty in entityScalarDataPropertyParticularRestrictionAxioms");
+          throw new IllegalArgumentException(("Null cross-reference lookup for scalarProperty in entityScalarDataPropertyParticularRestrictionAxioms: " + scalarPropertyXRef));
         }
         oml.setScalarProperty(scalarPropertyPair.getKey());
         final String valueTypeXRef = kv.remove("valueTypeUUID");
@@ -5346,7 +6051,7 @@ public class OMLSpecificationTables {
         if (_notEquals) {
           final Pair<DataRange, Map<String, String>> valueTypePair = this.dataRanges.get(valueTypeXRef);
           if ((null == valueTypePair)) {
-            throw new IllegalArgumentException("Null cross-reference lookup for valueType in entityScalarDataPropertyParticularRestrictionAxioms");
+            throw new IllegalArgumentException(("Null cross-reference lookup for valueType in entityScalarDataPropertyParticularRestrictionAxioms: " + valueTypeXRef));
           }
           oml.setValueType(valueTypePair.getKey());
         }
@@ -5365,25 +6070,25 @@ public class OMLSpecificationTables {
         final String tboxXRef = kv.remove("tboxUUID");
         final Pair<TerminologyBox, Map<String, String>> tboxPair = this.terminologyBoxes.get(tboxXRef);
         if ((null == tboxPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for tbox in entityScalarDataPropertyUniversalRestrictionAxioms");
+          throw new IllegalArgumentException(("Null cross-reference lookup for tbox in entityScalarDataPropertyUniversalRestrictionAxioms: " + tboxXRef));
         }
         oml.setTbox(tboxPair.getKey());
         final String restrictedEntityXRef = kv.remove("restrictedEntityUUID");
         final Pair<Entity, Map<String, String>> restrictedEntityPair = this.entities.get(restrictedEntityXRef);
         if ((null == restrictedEntityPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for restrictedEntity in entityScalarDataPropertyUniversalRestrictionAxioms");
+          throw new IllegalArgumentException(("Null cross-reference lookup for restrictedEntity in entityScalarDataPropertyUniversalRestrictionAxioms: " + restrictedEntityXRef));
         }
         oml.setRestrictedEntity(restrictedEntityPair.getKey());
         final String scalarPropertyXRef = kv.remove("scalarPropertyUUID");
         final Pair<EntityScalarDataProperty, Map<String, String>> scalarPropertyPair = this.entityScalarDataProperties.get(scalarPropertyXRef);
         if ((null == scalarPropertyPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for scalarProperty in entityScalarDataPropertyUniversalRestrictionAxioms");
+          throw new IllegalArgumentException(("Null cross-reference lookup for scalarProperty in entityScalarDataPropertyUniversalRestrictionAxioms: " + scalarPropertyXRef));
         }
         oml.setScalarProperty(scalarPropertyPair.getKey());
         final String scalarRestrictionXRef = kv.remove("scalarRestrictionUUID");
         final Pair<DataRange, Map<String, String>> scalarRestrictionPair = this.dataRanges.get(scalarRestrictionXRef);
         if ((null == scalarRestrictionPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for scalarRestriction in entityScalarDataPropertyUniversalRestrictionAxioms");
+          throw new IllegalArgumentException(("Null cross-reference lookup for scalarRestriction in entityScalarDataPropertyUniversalRestrictionAxioms: " + scalarRestrictionXRef));
         }
         oml.setScalarRestriction(scalarRestrictionPair.getKey());
       }
@@ -5401,19 +6106,19 @@ public class OMLSpecificationTables {
         final String tboxXRef = kv.remove("tboxUUID");
         final Pair<TerminologyBox, Map<String, String>> tboxPair = this.terminologyBoxes.get(tboxXRef);
         if ((null == tboxPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for tbox in entityStructuredDataPropertyParticularRestrictionAxioms");
+          throw new IllegalArgumentException(("Null cross-reference lookup for tbox in entityStructuredDataPropertyParticularRestrictionAxioms: " + tboxXRef));
         }
         oml.setTbox(tboxPair.getKey());
         final String structuredDataPropertyXRef = kv.remove("structuredDataPropertyUUID");
         final Pair<DataRelationshipToStructure, Map<String, String>> structuredDataPropertyPair = this.dataRelationshipToStructures.get(structuredDataPropertyXRef);
         if ((null == structuredDataPropertyPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for structuredDataProperty in entityStructuredDataPropertyParticularRestrictionAxioms");
+          throw new IllegalArgumentException(("Null cross-reference lookup for structuredDataProperty in entityStructuredDataPropertyParticularRestrictionAxioms: " + structuredDataPropertyXRef));
         }
         oml.setStructuredDataProperty(structuredDataPropertyPair.getKey());
         final String restrictedEntityXRef = kv.remove("restrictedEntityUUID");
         final Pair<Entity, Map<String, String>> restrictedEntityPair = this.entities.get(restrictedEntityXRef);
         if ((null == restrictedEntityPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for restrictedEntity in entityStructuredDataPropertyParticularRestrictionAxioms");
+          throw new IllegalArgumentException(("Null cross-reference lookup for restrictedEntity in entityStructuredDataPropertyParticularRestrictionAxioms: " + restrictedEntityXRef));
         }
         oml.setRestrictedEntity(restrictedEntityPair.getKey());
       }
@@ -5431,13 +6136,13 @@ public class OMLSpecificationTables {
         final String structuredDataPropertyContextXRef = kv.remove("structuredDataPropertyContextUUID");
         final Pair<RestrictionStructuredDataPropertyContext, Map<String, String>> structuredDataPropertyContextPair = this.restrictionStructuredDataPropertyContexts.get(structuredDataPropertyContextXRef);
         if ((null == structuredDataPropertyContextPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for structuredDataPropertyContext in restrictionStructuredDataPropertyTuples");
+          throw new IllegalArgumentException(("Null cross-reference lookup for structuredDataPropertyContext in restrictionStructuredDataPropertyTuples: " + structuredDataPropertyContextXRef));
         }
         oml.setStructuredDataPropertyContext(structuredDataPropertyContextPair.getKey());
         final String structuredDataPropertyXRef = kv.remove("structuredDataPropertyUUID");
         final Pair<DataRelationshipToStructure, Map<String, String>> structuredDataPropertyPair = this.dataRelationshipToStructures.get(structuredDataPropertyXRef);
         if ((null == structuredDataPropertyPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for structuredDataProperty in restrictionStructuredDataPropertyTuples");
+          throw new IllegalArgumentException(("Null cross-reference lookup for structuredDataProperty in restrictionStructuredDataPropertyTuples: " + structuredDataPropertyXRef));
         }
         oml.setStructuredDataProperty(structuredDataPropertyPair.getKey());
       }
@@ -5455,13 +6160,13 @@ public class OMLSpecificationTables {
         final String structuredDataPropertyContextXRef = kv.remove("structuredDataPropertyContextUUID");
         final Pair<RestrictionStructuredDataPropertyContext, Map<String, String>> structuredDataPropertyContextPair = this.restrictionStructuredDataPropertyContexts.get(structuredDataPropertyContextXRef);
         if ((null == structuredDataPropertyContextPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for structuredDataPropertyContext in restrictionScalarDataPropertyValues");
+          throw new IllegalArgumentException(("Null cross-reference lookup for structuredDataPropertyContext in restrictionScalarDataPropertyValues: " + structuredDataPropertyContextXRef));
         }
         oml.setStructuredDataPropertyContext(structuredDataPropertyContextPair.getKey());
         final String scalarDataPropertyXRef = kv.remove("scalarDataPropertyUUID");
         final Pair<DataRelationshipToScalar, Map<String, String>> scalarDataPropertyPair = this.dataRelationshipToScalars.get(scalarDataPropertyXRef);
         if ((null == scalarDataPropertyPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for scalarDataProperty in restrictionScalarDataPropertyValues");
+          throw new IllegalArgumentException(("Null cross-reference lookup for scalarDataProperty in restrictionScalarDataPropertyValues: " + scalarDataPropertyXRef));
         }
         oml.setScalarDataProperty(scalarDataPropertyPair.getKey());
         final String valueTypeXRef = kv.remove("valueTypeUUID");
@@ -5469,7 +6174,7 @@ public class OMLSpecificationTables {
         if (_notEquals) {
           final Pair<DataRange, Map<String, String>> valueTypePair = this.dataRanges.get(valueTypeXRef);
           if ((null == valueTypePair)) {
-            throw new IllegalArgumentException("Null cross-reference lookup for valueType in restrictionScalarDataPropertyValues");
+            throw new IllegalArgumentException(("Null cross-reference lookup for valueType in restrictionScalarDataPropertyValues: " + valueTypeXRef));
           }
           oml.setValueType(valueTypePair.getKey());
         }
@@ -5488,19 +6193,19 @@ public class OMLSpecificationTables {
         final String tboxXRef = kv.remove("tboxUUID");
         final Pair<TerminologyBox, Map<String, String>> tboxPair = this.terminologyBoxes.get(tboxXRef);
         if ((null == tboxPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for tbox in aspectSpecializationAxioms");
+          throw new IllegalArgumentException(("Null cross-reference lookup for tbox in aspectSpecializationAxioms: " + tboxXRef));
         }
         oml.setTbox(tboxPair.getKey());
         final String superAspectXRef = kv.remove("superAspectUUID");
         final Pair<Aspect, Map<String, String>> superAspectPair = this.aspects.get(superAspectXRef);
         if ((null == superAspectPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for superAspect in aspectSpecializationAxioms");
+          throw new IllegalArgumentException(("Null cross-reference lookup for superAspect in aspectSpecializationAxioms: " + superAspectXRef));
         }
         oml.setSuperAspect(superAspectPair.getKey());
         final String subEntityXRef = kv.remove("subEntityUUID");
         final Pair<Entity, Map<String, String>> subEntityPair = this.entities.get(subEntityXRef);
         if ((null == subEntityPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for subEntity in aspectSpecializationAxioms");
+          throw new IllegalArgumentException(("Null cross-reference lookup for subEntity in aspectSpecializationAxioms: " + subEntityXRef));
         }
         oml.setSubEntity(subEntityPair.getKey());
       }
@@ -5518,19 +6223,19 @@ public class OMLSpecificationTables {
         final String tboxXRef = kv.remove("tboxUUID");
         final Pair<TerminologyBox, Map<String, String>> tboxPair = this.terminologyBoxes.get(tboxXRef);
         if ((null == tboxPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for tbox in conceptSpecializationAxioms");
+          throw new IllegalArgumentException(("Null cross-reference lookup for tbox in conceptSpecializationAxioms: " + tboxXRef));
         }
         oml.setTbox(tboxPair.getKey());
         final String superConceptXRef = kv.remove("superConceptUUID");
         final Pair<Concept, Map<String, String>> superConceptPair = this.concepts.get(superConceptXRef);
         if ((null == superConceptPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for superConcept in conceptSpecializationAxioms");
+          throw new IllegalArgumentException(("Null cross-reference lookup for superConcept in conceptSpecializationAxioms: " + superConceptXRef));
         }
         oml.setSuperConcept(superConceptPair.getKey());
         final String subConceptXRef = kv.remove("subConceptUUID");
         final Pair<Concept, Map<String, String>> subConceptPair = this.concepts.get(subConceptXRef);
         if ((null == subConceptPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for subConcept in conceptSpecializationAxioms");
+          throw new IllegalArgumentException(("Null cross-reference lookup for subConcept in conceptSpecializationAxioms: " + subConceptXRef));
         }
         oml.setSubConcept(subConceptPair.getKey());
       }
@@ -5548,19 +6253,19 @@ public class OMLSpecificationTables {
         final String tboxXRef = kv.remove("tboxUUID");
         final Pair<TerminologyBox, Map<String, String>> tboxPair = this.terminologyBoxes.get(tboxXRef);
         if ((null == tboxPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for tbox in reifiedRelationshipSpecializationAxioms");
+          throw new IllegalArgumentException(("Null cross-reference lookup for tbox in reifiedRelationshipSpecializationAxioms: " + tboxXRef));
         }
         oml.setTbox(tboxPair.getKey());
         final String superRelationshipXRef = kv.remove("superRelationshipUUID");
         final Pair<ReifiedRelationship, Map<String, String>> superRelationshipPair = this.reifiedRelationships.get(superRelationshipXRef);
         if ((null == superRelationshipPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for superRelationship in reifiedRelationshipSpecializationAxioms");
+          throw new IllegalArgumentException(("Null cross-reference lookup for superRelationship in reifiedRelationshipSpecializationAxioms: " + superRelationshipXRef));
         }
         oml.setSuperRelationship(superRelationshipPair.getKey());
         final String subRelationshipXRef = kv.remove("subRelationshipUUID");
         final Pair<ReifiedRelationship, Map<String, String>> subRelationshipPair = this.reifiedRelationships.get(subRelationshipXRef);
         if ((null == subRelationshipPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for subRelationship in reifiedRelationshipSpecializationAxioms");
+          throw new IllegalArgumentException(("Null cross-reference lookup for subRelationship in reifiedRelationshipSpecializationAxioms: " + subRelationshipXRef));
         }
         oml.setSubRelationship(subRelationshipPair.getKey());
       }
@@ -5578,19 +6283,19 @@ public class OMLSpecificationTables {
         final String tboxXRef = kv.remove("tboxUUID");
         final Pair<TerminologyBox, Map<String, String>> tboxPair = this.terminologyBoxes.get(tboxXRef);
         if ((null == tboxPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for tbox in subDataPropertyOfAxioms");
+          throw new IllegalArgumentException(("Null cross-reference lookup for tbox in subDataPropertyOfAxioms: " + tboxXRef));
         }
         oml.setTbox(tboxPair.getKey());
         final String subPropertyXRef = kv.remove("subPropertyUUID");
         final Pair<EntityScalarDataProperty, Map<String, String>> subPropertyPair = this.entityScalarDataProperties.get(subPropertyXRef);
         if ((null == subPropertyPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for subProperty in subDataPropertyOfAxioms");
+          throw new IllegalArgumentException(("Null cross-reference lookup for subProperty in subDataPropertyOfAxioms: " + subPropertyXRef));
         }
         oml.setSubProperty(subPropertyPair.getKey());
         final String superPropertyXRef = kv.remove("superPropertyUUID");
         final Pair<EntityScalarDataProperty, Map<String, String>> superPropertyPair = this.entityScalarDataProperties.get(superPropertyXRef);
         if ((null == superPropertyPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for superProperty in subDataPropertyOfAxioms");
+          throw new IllegalArgumentException(("Null cross-reference lookup for superProperty in subDataPropertyOfAxioms: " + superPropertyXRef));
         }
         oml.setSuperProperty(superPropertyPair.getKey());
       }
@@ -5608,19 +6313,19 @@ public class OMLSpecificationTables {
         final String tboxXRef = kv.remove("tboxUUID");
         final Pair<TerminologyBox, Map<String, String>> tboxPair = this.terminologyBoxes.get(tboxXRef);
         if ((null == tboxPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for tbox in subObjectPropertyOfAxioms");
+          throw new IllegalArgumentException(("Null cross-reference lookup for tbox in subObjectPropertyOfAxioms: " + tboxXRef));
         }
         oml.setTbox(tboxPair.getKey());
         final String subPropertyXRef = kv.remove("subPropertyUUID");
         final Pair<UnreifiedRelationship, Map<String, String>> subPropertyPair = this.unreifiedRelationships.get(subPropertyXRef);
         if ((null == subPropertyPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for subProperty in subObjectPropertyOfAxioms");
+          throw new IllegalArgumentException(("Null cross-reference lookup for subProperty in subObjectPropertyOfAxioms: " + subPropertyXRef));
         }
         oml.setSubProperty(subPropertyPair.getKey());
         final String superPropertyXRef = kv.remove("superPropertyUUID");
         final Pair<UnreifiedRelationship, Map<String, String>> superPropertyPair = this.unreifiedRelationships.get(superPropertyXRef);
         if ((null == superPropertyPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for superProperty in subObjectPropertyOfAxioms");
+          throw new IllegalArgumentException(("Null cross-reference lookup for superProperty in subObjectPropertyOfAxioms: " + superPropertyXRef));
         }
         oml.setSuperProperty(superPropertyPair.getKey());
       }
@@ -5638,13 +6343,13 @@ public class OMLSpecificationTables {
         final String bundleXRef = kv.remove("bundleUUID");
         final Pair<Bundle, Map<String, String>> bundlePair = this.bundles.get(bundleXRef);
         if ((null == bundlePair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for bundle in rootConceptTaxonomyAxioms");
+          throw new IllegalArgumentException(("Null cross-reference lookup for bundle in rootConceptTaxonomyAxioms: " + bundleXRef));
         }
         oml.setBundle(bundlePair.getKey());
         final String rootXRef = kv.remove("rootUUID");
         final Pair<Concept, Map<String, String>> rootPair = this.concepts.get(rootXRef);
         if ((null == rootPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for root in rootConceptTaxonomyAxioms");
+          throw new IllegalArgumentException(("Null cross-reference lookup for root in rootConceptTaxonomyAxioms: " + rootXRef));
         }
         oml.setRoot(rootPair.getKey());
       }
@@ -5662,7 +6367,7 @@ public class OMLSpecificationTables {
         final String disjointTaxonomyParentXRef = kv.remove("disjointTaxonomyParentUUID");
         final Pair<ConceptTreeDisjunction, Map<String, String>> disjointTaxonomyParentPair = this.conceptTreeDisjunctions.get(disjointTaxonomyParentXRef);
         if ((null == disjointTaxonomyParentPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for disjointTaxonomyParent in anonymousConceptUnionAxioms");
+          throw new IllegalArgumentException(("Null cross-reference lookup for disjointTaxonomyParent in anonymousConceptUnionAxioms: " + disjointTaxonomyParentXRef));
         }
         oml.setDisjointTaxonomyParent(disjointTaxonomyParentPair.getKey());
       }
@@ -5680,13 +6385,13 @@ public class OMLSpecificationTables {
         final String disjointTaxonomyParentXRef = kv.remove("disjointTaxonomyParentUUID");
         final Pair<ConceptTreeDisjunction, Map<String, String>> disjointTaxonomyParentPair = this.conceptTreeDisjunctions.get(disjointTaxonomyParentXRef);
         if ((null == disjointTaxonomyParentPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for disjointTaxonomyParent in specificDisjointConceptAxioms");
+          throw new IllegalArgumentException(("Null cross-reference lookup for disjointTaxonomyParent in specificDisjointConceptAxioms: " + disjointTaxonomyParentXRef));
         }
         oml.setDisjointTaxonomyParent(disjointTaxonomyParentPair.getKey());
         final String disjointLeafXRef = kv.remove("disjointLeafUUID");
         final Pair<Concept, Map<String, String>> disjointLeafPair = this.concepts.get(disjointLeafXRef);
         if ((null == disjointLeafPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for disjointLeaf in specificDisjointConceptAxioms");
+          throw new IllegalArgumentException(("Null cross-reference lookup for disjointLeaf in specificDisjointConceptAxioms: " + disjointLeafXRef));
         }
         oml.setDisjointLeaf(disjointLeafPair.getKey());
       }
@@ -5704,13 +6409,13 @@ public class OMLSpecificationTables {
         final String descriptionBoxXRef = kv.remove("descriptionBoxUUID");
         final Pair<DescriptionBox, Map<String, String>> descriptionBoxPair = this.descriptionBoxes.get(descriptionBoxXRef);
         if ((null == descriptionBoxPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for descriptionBox in conceptInstances");
+          throw new IllegalArgumentException(("Null cross-reference lookup for descriptionBox in conceptInstances: " + descriptionBoxXRef));
         }
         oml.setDescriptionBox(descriptionBoxPair.getKey());
         final String singletonConceptClassifierXRef = kv.remove("singletonConceptClassifierUUID");
         final Pair<Concept, Map<String, String>> singletonConceptClassifierPair = this.concepts.get(singletonConceptClassifierXRef);
         if ((null == singletonConceptClassifierPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for singletonConceptClassifier in conceptInstances");
+          throw new IllegalArgumentException(("Null cross-reference lookup for singletonConceptClassifier in conceptInstances: " + singletonConceptClassifierXRef));
         }
         oml.setSingletonConceptClassifier(singletonConceptClassifierPair.getKey());
       }
@@ -5728,13 +6433,13 @@ public class OMLSpecificationTables {
         final String descriptionBoxXRef = kv.remove("descriptionBoxUUID");
         final Pair<DescriptionBox, Map<String, String>> descriptionBoxPair = this.descriptionBoxes.get(descriptionBoxXRef);
         if ((null == descriptionBoxPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for descriptionBox in reifiedRelationshipInstances");
+          throw new IllegalArgumentException(("Null cross-reference lookup for descriptionBox in reifiedRelationshipInstances: " + descriptionBoxXRef));
         }
         oml.setDescriptionBox(descriptionBoxPair.getKey());
         final String singletonReifiedRelationshipClassifierXRef = kv.remove("singletonReifiedRelationshipClassifierUUID");
         final Pair<ReifiedRelationship, Map<String, String>> singletonReifiedRelationshipClassifierPair = this.reifiedRelationships.get(singletonReifiedRelationshipClassifierXRef);
         if ((null == singletonReifiedRelationshipClassifierPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for singletonReifiedRelationshipClassifier in reifiedRelationshipInstances");
+          throw new IllegalArgumentException(("Null cross-reference lookup for singletonReifiedRelationshipClassifier in reifiedRelationshipInstances: " + singletonReifiedRelationshipClassifierXRef));
         }
         oml.setSingletonReifiedRelationshipClassifier(singletonReifiedRelationshipClassifierPair.getKey());
       }
@@ -5752,19 +6457,19 @@ public class OMLSpecificationTables {
         final String descriptionBoxXRef = kv.remove("descriptionBoxUUID");
         final Pair<DescriptionBox, Map<String, String>> descriptionBoxPair = this.descriptionBoxes.get(descriptionBoxXRef);
         if ((null == descriptionBoxPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for descriptionBox in reifiedRelationshipInstanceDomains");
+          throw new IllegalArgumentException(("Null cross-reference lookup for descriptionBox in reifiedRelationshipInstanceDomains: " + descriptionBoxXRef));
         }
         oml.setDescriptionBox(descriptionBoxPair.getKey());
         final String reifiedRelationshipInstanceXRef = kv.remove("reifiedRelationshipInstanceUUID");
         final Pair<ReifiedRelationshipInstance, Map<String, String>> reifiedRelationshipInstancePair = this.reifiedRelationshipInstances.get(reifiedRelationshipInstanceXRef);
         if ((null == reifiedRelationshipInstancePair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationshipInstance in reifiedRelationshipInstanceDomains");
+          throw new IllegalArgumentException(("Null cross-reference lookup for reifiedRelationshipInstance in reifiedRelationshipInstanceDomains: " + reifiedRelationshipInstanceXRef));
         }
         oml.setReifiedRelationshipInstance(reifiedRelationshipInstancePair.getKey());
         final String domainXRef = kv.remove("domainUUID");
         final Pair<ConceptualEntitySingletonInstance, Map<String, String>> domainPair = this.conceptualEntitySingletonInstances.get(domainXRef);
         if ((null == domainPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for domain in reifiedRelationshipInstanceDomains");
+          throw new IllegalArgumentException(("Null cross-reference lookup for domain in reifiedRelationshipInstanceDomains: " + domainXRef));
         }
         oml.setDomain(domainPair.getKey());
       }
@@ -5782,19 +6487,19 @@ public class OMLSpecificationTables {
         final String descriptionBoxXRef = kv.remove("descriptionBoxUUID");
         final Pair<DescriptionBox, Map<String, String>> descriptionBoxPair = this.descriptionBoxes.get(descriptionBoxXRef);
         if ((null == descriptionBoxPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for descriptionBox in reifiedRelationshipInstanceRanges");
+          throw new IllegalArgumentException(("Null cross-reference lookup for descriptionBox in reifiedRelationshipInstanceRanges: " + descriptionBoxXRef));
         }
         oml.setDescriptionBox(descriptionBoxPair.getKey());
         final String reifiedRelationshipInstanceXRef = kv.remove("reifiedRelationshipInstanceUUID");
         final Pair<ReifiedRelationshipInstance, Map<String, String>> reifiedRelationshipInstancePair = this.reifiedRelationshipInstances.get(reifiedRelationshipInstanceXRef);
         if ((null == reifiedRelationshipInstancePair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationshipInstance in reifiedRelationshipInstanceRanges");
+          throw new IllegalArgumentException(("Null cross-reference lookup for reifiedRelationshipInstance in reifiedRelationshipInstanceRanges: " + reifiedRelationshipInstanceXRef));
         }
         oml.setReifiedRelationshipInstance(reifiedRelationshipInstancePair.getKey());
         final String rangeXRef = kv.remove("rangeUUID");
         final Pair<ConceptualEntitySingletonInstance, Map<String, String>> rangePair = this.conceptualEntitySingletonInstances.get(rangeXRef);
         if ((null == rangePair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for range in reifiedRelationshipInstanceRanges");
+          throw new IllegalArgumentException(("Null cross-reference lookup for range in reifiedRelationshipInstanceRanges: " + rangeXRef));
         }
         oml.setRange(rangePair.getKey());
       }
@@ -5812,25 +6517,25 @@ public class OMLSpecificationTables {
         final String descriptionBoxXRef = kv.remove("descriptionBoxUUID");
         final Pair<DescriptionBox, Map<String, String>> descriptionBoxPair = this.descriptionBoxes.get(descriptionBoxXRef);
         if ((null == descriptionBoxPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for descriptionBox in unreifiedRelationshipInstanceTuples");
+          throw new IllegalArgumentException(("Null cross-reference lookup for descriptionBox in unreifiedRelationshipInstanceTuples: " + descriptionBoxXRef));
         }
         oml.setDescriptionBox(descriptionBoxPair.getKey());
         final String unreifiedRelationshipXRef = kv.remove("unreifiedRelationshipUUID");
         final Pair<UnreifiedRelationship, Map<String, String>> unreifiedRelationshipPair = this.unreifiedRelationships.get(unreifiedRelationshipXRef);
         if ((null == unreifiedRelationshipPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for unreifiedRelationship in unreifiedRelationshipInstanceTuples");
+          throw new IllegalArgumentException(("Null cross-reference lookup for unreifiedRelationship in unreifiedRelationshipInstanceTuples: " + unreifiedRelationshipXRef));
         }
         oml.setUnreifiedRelationship(unreifiedRelationshipPair.getKey());
         final String domainXRef = kv.remove("domainUUID");
         final Pair<ConceptualEntitySingletonInstance, Map<String, String>> domainPair = this.conceptualEntitySingletonInstances.get(domainXRef);
         if ((null == domainPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for domain in unreifiedRelationshipInstanceTuples");
+          throw new IllegalArgumentException(("Null cross-reference lookup for domain in unreifiedRelationshipInstanceTuples: " + domainXRef));
         }
         oml.setDomain(domainPair.getKey());
         final String rangeXRef = kv.remove("rangeUUID");
         final Pair<ConceptualEntitySingletonInstance, Map<String, String>> rangePair = this.conceptualEntitySingletonInstances.get(rangeXRef);
         if ((null == rangePair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for range in unreifiedRelationshipInstanceTuples");
+          throw new IllegalArgumentException(("Null cross-reference lookup for range in unreifiedRelationshipInstanceTuples: " + rangeXRef));
         }
         oml.setRange(rangePair.getKey());
       }
@@ -5848,19 +6553,19 @@ public class OMLSpecificationTables {
         final String descriptionBoxXRef = kv.remove("descriptionBoxUUID");
         final Pair<DescriptionBox, Map<String, String>> descriptionBoxPair = this.descriptionBoxes.get(descriptionBoxXRef);
         if ((null == descriptionBoxPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for descriptionBox in singletonInstanceStructuredDataPropertyValues");
+          throw new IllegalArgumentException(("Null cross-reference lookup for descriptionBox in singletonInstanceStructuredDataPropertyValues: " + descriptionBoxXRef));
         }
         oml.setDescriptionBox(descriptionBoxPair.getKey());
         final String singletonInstanceXRef = kv.remove("singletonInstanceUUID");
         final Pair<ConceptualEntitySingletonInstance, Map<String, String>> singletonInstancePair = this.conceptualEntitySingletonInstances.get(singletonInstanceXRef);
         if ((null == singletonInstancePair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for singletonInstance in singletonInstanceStructuredDataPropertyValues");
+          throw new IllegalArgumentException(("Null cross-reference lookup for singletonInstance in singletonInstanceStructuredDataPropertyValues: " + singletonInstanceXRef));
         }
         oml.setSingletonInstance(singletonInstancePair.getKey());
         final String structuredDataPropertyXRef = kv.remove("structuredDataPropertyUUID");
         final Pair<DataRelationshipToStructure, Map<String, String>> structuredDataPropertyPair = this.dataRelationshipToStructures.get(structuredDataPropertyXRef);
         if ((null == structuredDataPropertyPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for structuredDataProperty in singletonInstanceStructuredDataPropertyValues");
+          throw new IllegalArgumentException(("Null cross-reference lookup for structuredDataProperty in singletonInstanceStructuredDataPropertyValues: " + structuredDataPropertyXRef));
         }
         oml.setStructuredDataProperty(structuredDataPropertyPair.getKey());
       }
@@ -5878,19 +6583,19 @@ public class OMLSpecificationTables {
         final String descriptionBoxXRef = kv.remove("descriptionBoxUUID");
         final Pair<DescriptionBox, Map<String, String>> descriptionBoxPair = this.descriptionBoxes.get(descriptionBoxXRef);
         if ((null == descriptionBoxPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for descriptionBox in singletonInstanceScalarDataPropertyValues");
+          throw new IllegalArgumentException(("Null cross-reference lookup for descriptionBox in singletonInstanceScalarDataPropertyValues: " + descriptionBoxXRef));
         }
         oml.setDescriptionBox(descriptionBoxPair.getKey());
         final String singletonInstanceXRef = kv.remove("singletonInstanceUUID");
         final Pair<ConceptualEntitySingletonInstance, Map<String, String>> singletonInstancePair = this.conceptualEntitySingletonInstances.get(singletonInstanceXRef);
         if ((null == singletonInstancePair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for singletonInstance in singletonInstanceScalarDataPropertyValues");
+          throw new IllegalArgumentException(("Null cross-reference lookup for singletonInstance in singletonInstanceScalarDataPropertyValues: " + singletonInstanceXRef));
         }
         oml.setSingletonInstance(singletonInstancePair.getKey());
         final String scalarDataPropertyXRef = kv.remove("scalarDataPropertyUUID");
         final Pair<EntityScalarDataProperty, Map<String, String>> scalarDataPropertyPair = this.entityScalarDataProperties.get(scalarDataPropertyXRef);
         if ((null == scalarDataPropertyPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for scalarDataProperty in singletonInstanceScalarDataPropertyValues");
+          throw new IllegalArgumentException(("Null cross-reference lookup for scalarDataProperty in singletonInstanceScalarDataPropertyValues: " + scalarDataPropertyXRef));
         }
         oml.setScalarDataProperty(scalarDataPropertyPair.getKey());
         final String valueTypeXRef = kv.remove("valueTypeUUID");
@@ -5898,7 +6603,7 @@ public class OMLSpecificationTables {
         if (_notEquals) {
           final Pair<DataRange, Map<String, String>> valueTypePair = this.dataRanges.get(valueTypeXRef);
           if ((null == valueTypePair)) {
-            throw new IllegalArgumentException("Null cross-reference lookup for valueType in singletonInstanceScalarDataPropertyValues");
+            throw new IllegalArgumentException(("Null cross-reference lookup for valueType in singletonInstanceScalarDataPropertyValues: " + valueTypeXRef));
           }
           oml.setValueType(valueTypePair.getKey());
         }
@@ -5917,13 +6622,13 @@ public class OMLSpecificationTables {
         final String structuredDataPropertyContextXRef = kv.remove("structuredDataPropertyContextUUID");
         final Pair<SingletonInstanceStructuredDataPropertyContext, Map<String, String>> structuredDataPropertyContextPair = this.singletonInstanceStructuredDataPropertyContexts.get(structuredDataPropertyContextXRef);
         if ((null == structuredDataPropertyContextPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for structuredDataPropertyContext in structuredDataPropertyTuples");
+          throw new IllegalArgumentException(("Null cross-reference lookup for structuredDataPropertyContext in structuredDataPropertyTuples: " + structuredDataPropertyContextXRef));
         }
         oml.setStructuredDataPropertyContext(structuredDataPropertyContextPair.getKey());
         final String structuredDataPropertyXRef = kv.remove("structuredDataPropertyUUID");
         final Pair<DataRelationshipToStructure, Map<String, String>> structuredDataPropertyPair = this.dataRelationshipToStructures.get(structuredDataPropertyXRef);
         if ((null == structuredDataPropertyPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for structuredDataProperty in structuredDataPropertyTuples");
+          throw new IllegalArgumentException(("Null cross-reference lookup for structuredDataProperty in structuredDataPropertyTuples: " + structuredDataPropertyXRef));
         }
         oml.setStructuredDataProperty(structuredDataPropertyPair.getKey());
       }
@@ -5941,13 +6646,13 @@ public class OMLSpecificationTables {
         final String structuredDataPropertyContextXRef = kv.remove("structuredDataPropertyContextUUID");
         final Pair<SingletonInstanceStructuredDataPropertyContext, Map<String, String>> structuredDataPropertyContextPair = this.singletonInstanceStructuredDataPropertyContexts.get(structuredDataPropertyContextXRef);
         if ((null == structuredDataPropertyContextPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for structuredDataPropertyContext in scalarDataPropertyValues");
+          throw new IllegalArgumentException(("Null cross-reference lookup for structuredDataPropertyContext in scalarDataPropertyValues: " + structuredDataPropertyContextXRef));
         }
         oml.setStructuredDataPropertyContext(structuredDataPropertyContextPair.getKey());
         final String scalarDataPropertyXRef = kv.remove("scalarDataPropertyUUID");
         final Pair<DataRelationshipToScalar, Map<String, String>> scalarDataPropertyPair = this.dataRelationshipToScalars.get(scalarDataPropertyXRef);
         if ((null == scalarDataPropertyPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for scalarDataProperty in scalarDataPropertyValues");
+          throw new IllegalArgumentException(("Null cross-reference lookup for scalarDataProperty in scalarDataPropertyValues: " + scalarDataPropertyXRef));
         }
         oml.setScalarDataProperty(scalarDataPropertyPair.getKey());
         final String valueTypeXRef = kv.remove("valueTypeUUID");
@@ -5955,7 +6660,7 @@ public class OMLSpecificationTables {
         if (_notEquals) {
           final Pair<DataRange, Map<String, String>> valueTypePair = this.dataRanges.get(valueTypeXRef);
           if ((null == valueTypePair)) {
-            throw new IllegalArgumentException("Null cross-reference lookup for valueType in scalarDataPropertyValues");
+            throw new IllegalArgumentException(("Null cross-reference lookup for valueType in scalarDataPropertyValues: " + valueTypeXRef));
           }
           oml.setValueType(valueTypePair.getKey());
         }
@@ -5974,13 +6679,13 @@ public class OMLSpecificationTables {
         final String subjectXRef = kv.remove("subjectUUID");
         final Pair<LogicalElement, Map<String, String>> subjectPair = this.logicalElements.get(subjectXRef);
         if ((null == subjectPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for subject in annotationPropertyValues");
+          throw new IllegalArgumentException(("Null cross-reference lookup for subject in annotationPropertyValues: " + subjectXRef));
         }
         oml.setSubject(subjectPair.getKey());
         final String propertyXRef = kv.remove("propertyUUID");
         final Pair<AnnotationProperty, Map<String, String>> propertyPair = this.annotationProperties.get(propertyXRef);
         if ((null == propertyPair)) {
-          throw new IllegalArgumentException("Null cross-reference lookup for property in annotationPropertyValues");
+          throw new IllegalArgumentException(("Null cross-reference lookup for property in annotationPropertyValues: " + propertyXRef));
         }
         oml.setProperty(propertyPair.getKey());
       }
@@ -5996,81 +6701,126 @@ public class OMLSpecificationTables {
         if ((null == omlCatalog)) {
           throw new IllegalArgumentException("loadOMLZipResource: ResourceSet must have an OMLCatalog!");
         }
+        boolean scan = false;
         final String uriString = uri.toString();
         Resource _xifexpression = null;
         boolean _startsWith = uriString.startsWith("file:");
         if (_startsWith) {
-          _xifexpression = rs.getResource(uri, true);
+          Resource _xblockexpression_1 = null;
+          {
+            scan = true;
+            _xblockexpression_1 = rs.getResource(uri, true);
+          }
+          _xifexpression = _xblockexpression_1;
         } else {
           Resource _xifexpression_1 = null;
           boolean _startsWith_1 = uriString.startsWith("http:");
           if (_startsWith_1) {
-            Resource _xblockexpression_1 = null;
+            Resource _xblockexpression_2 = null;
             {
-              final String r1 = omlCatalog.resolveURI(uriString);
-              final String r2 = omlCatalog.resolveURI((uriString + ".oml"));
-              final String r3 = omlCatalog.resolveURI((uriString + ".omlzip"));
-              File _xifexpression_2 = null;
-              if (((null != r1) && r1.startsWith("file:"))) {
-                String _substring = r1.substring(5);
-                _xifexpression_2 = new File(_substring);
-              } else {
-                _xifexpression_2 = null;
-              }
-              final File f1 = _xifexpression_2;
-              File _xifexpression_3 = null;
-              if (((null != r2) && r2.startsWith("file:"))) {
-                String _substring_1 = r2.substring(5);
-                _xifexpression_3 = new File(_substring_1);
-              } else {
-                _xifexpression_3 = null;
-              }
-              final File f2 = _xifexpression_3;
-              File _xifexpression_4 = null;
-              if (((null != r3) && r3.startsWith("file:"))) {
-                String _substring_2 = r3.substring(5);
-                _xifexpression_4 = new File(_substring_2);
-              } else {
-                _xifexpression_4 = null;
-              }
-              final File f3 = _xifexpression_4;
-              Resource _xifexpression_5 = null;
-              if ((((null != f1) && f1.exists()) && f1.canRead())) {
-                _xifexpression_5 = rs.getResource(URI.createURI(r1), true);
-              } else {
-                Resource _xifexpression_6 = null;
-                if ((((null != f2) && f2.exists()) && f2.canRead())) {
-                  _xifexpression_6 = rs.getResource(URI.createURI(r2), true);
-                } else {
-                  Resource _xifexpression_7 = null;
-                  if ((((null != f3) && f3.exists()) && f3.canRead())) {
-                    _xifexpression_7 = rs.getResource(URI.createURI(r3), true);
-                  } else {
-                    throw new IllegalArgumentException((("loadOMLZipResource: " + uri) + " not resolved!"));
+              final Resource r0a = rs.getResource(uri, false);
+              final Function1<Resource, Boolean> _function = (Resource r) -> {
+                final Function1<EObject, Boolean> _function_1 = (EObject e) -> {
+                  boolean _switchResult = false;
+                  boolean _matched = false;
+                  if (e instanceof Extent) {
+                    _matched=true;
+                    final Function1<Module, Boolean> _function_2 = (Module m) -> {
+                      String _iri = m.iri();
+                      return Boolean.valueOf(Objects.equal(_iri, uriString));
+                    };
+                    _switchResult = IterableExtensions.<Module>exists(((Extent)e).getModules(), _function_2);
                   }
-                  _xifexpression_6 = _xifexpression_7;
+                  if (!_matched) {
+                    _switchResult = false;
+                  }
+                  return Boolean.valueOf(_switchResult);
+                };
+                return Boolean.valueOf(IterableExtensions.<EObject>exists(r.getContents(), _function_1));
+              };
+              final Resource r0b = IterableExtensions.<Resource>findFirst(rs.getResources(), _function);
+              Resource _xifexpression_2 = null;
+              if ((null != r0a)) {
+                _xifexpression_2 = r0a;
+              } else {
+                Resource _xifexpression_3 = null;
+                if ((null != r0b)) {
+                  _xifexpression_3 = r0b;
+                } else {
+                  Resource _xblockexpression_3 = null;
+                  {
+                    final String r1 = omlCatalog.resolveURI((uriString + ".oml"));
+                    final String r2 = omlCatalog.resolveURI((uriString + ".omlzip"));
+                    final String r3 = omlCatalog.resolveURI(uriString);
+                    File _xifexpression_4 = null;
+                    if (((null != r1) && r1.startsWith("file:"))) {
+                      String _substring = r1.substring(5);
+                      _xifexpression_4 = new File(_substring);
+                    } else {
+                      _xifexpression_4 = null;
+                    }
+                    final File f1 = _xifexpression_4;
+                    File _xifexpression_5 = null;
+                    if (((null != r2) && r2.startsWith("file:"))) {
+                      String _substring_1 = r2.substring(5);
+                      _xifexpression_5 = new File(_substring_1);
+                    } else {
+                      _xifexpression_5 = null;
+                    }
+                    final File f2 = _xifexpression_5;
+                    File _xifexpression_6 = null;
+                    if (((null != r3) && r3.startsWith("file:"))) {
+                      String _substring_2 = r3.substring(5);
+                      _xifexpression_6 = new File(_substring_2);
+                    } else {
+                      _xifexpression_6 = null;
+                    }
+                    final File f3 = _xifexpression_6;
+                    scan = true;
+                    Resource _xifexpression_7 = null;
+                    if ((((null != f1) && f1.exists()) && f1.canRead())) {
+                      _xifexpression_7 = rs.getResource(URI.createURI(r1), true);
+                    } else {
+                      Resource _xifexpression_8 = null;
+                      if ((((null != f2) && f2.exists()) && f2.canRead())) {
+                        _xifexpression_8 = rs.getResource(URI.createURI(r2), true);
+                      } else {
+                        Resource _xifexpression_9 = null;
+                        if ((((null != f3) && f3.exists()) && f3.canRead())) {
+                          _xifexpression_9 = rs.getResource(URI.createURI(r3), true);
+                        } else {
+                          throw new IllegalArgumentException((("loadOMLZipResource: " + uri) + " not resolved!"));
+                        }
+                        _xifexpression_8 = _xifexpression_9;
+                      }
+                      _xifexpression_7 = _xifexpression_8;
+                    }
+                    _xblockexpression_3 = _xifexpression_7;
+                  }
+                  _xifexpression_3 = _xblockexpression_3;
                 }
-                _xifexpression_5 = _xifexpression_6;
+                _xifexpression_2 = _xifexpression_3;
               }
-              _xblockexpression_1 = _xifexpression_5;
+              _xblockexpression_2 = _xifexpression_2;
             }
-            _xifexpression_1 = _xblockexpression_1;
+            _xifexpression_1 = _xblockexpression_2;
           }
           _xifexpression = _xifexpression_1;
         }
         final Resource r = _xifexpression;
-        EcoreUtil.resolveAll(r);
-        final Consumer<EObject> _function = (EObject e) -> {
-          boolean _matched = false;
-          if (e instanceof Extent) {
-            _matched=true;
-            final Consumer<Module> _function_1 = (Module it) -> {
-              this.includeModule(it);
-            };
-            ((Extent)e).getModules().forEach(_function_1);
-          }
-        };
-        r.getContents().forEach(_function);
+        if (scan) {
+          final Consumer<EObject> _function = (EObject e) -> {
+            boolean _matched = false;
+            if (e instanceof Extent) {
+              _matched=true;
+              final Consumer<Module> _function_1 = (Module it) -> {
+                this.includeModule(it);
+              };
+              ((Extent)e).getModules().forEach(_function_1);
+            }
+          };
+          r.getContents().forEach(_function);
+        }
         _xblockexpression = r;
       }
       return _xblockexpression;
@@ -6079,744 +6829,748 @@ public class OMLSpecificationTables {
     }
   }
   
-  protected void includeModule(final Module m) {
-    boolean _matched = false;
-    if (m instanceof TerminologyGraph) {
-      _matched=true;
-      Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-      final Pair<TerminologyGraph, Map<String, String>> pair = new Pair<TerminologyGraph, Map<String, String>>(((TerminologyGraph)m), _emptyMap);
-      this.terminologyGraphs.put(((TerminologyGraph)m).uuid(), pair);
-      String _uuid = ((TerminologyGraph)m).uuid();
-      Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-      Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(m, _emptyMap_1);
-      this.logicalElements.put(_uuid, _pair);
-      this.terminologyGraphs.put(((TerminologyGraph)m).iri(), pair);
-      String _uuid_1 = ((TerminologyGraph)m).uuid();
-      Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
-      Pair<TerminologyBox, Map<String, String>> _pair_1 = new Pair<TerminologyBox, Map<String, String>>(((TerminologyBox)m), _emptyMap_2);
-      this.terminologyBoxes.put(_uuid_1, _pair_1);
-      String _iri = ((TerminologyGraph)m).iri();
-      Map<String, String> _emptyMap_3 = Collections.<String, String>emptyMap();
-      Pair<TerminologyBox, Map<String, String>> _pair_2 = new Pair<TerminologyBox, Map<String, String>>(((TerminologyBox)m), _emptyMap_3);
-      this.terminologyBoxes.put(_iri, _pair_2);
-    }
-    if (!_matched) {
-      if (m instanceof Bundle) {
+  public void includeModule(final Module m) {
+    if ((null != m)) {
+      boolean _matched = false;
+      if (m instanceof TerminologyGraph) {
         _matched=true;
+        String _uuid = ((TerminologyGraph)m).uuid();
         Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-        final Pair<Bundle, Map<String, String>> pair = new Pair<Bundle, Map<String, String>>(((Bundle)m), _emptyMap);
-        this.bundles.put(((Bundle)m).uuid(), pair);
-        String _uuid = ((Bundle)m).uuid();
-        Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-        Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(m, _emptyMap_1);
+        Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(m, _emptyMap);
         this.logicalElements.put(_uuid, _pair);
-        this.bundles.put(((Bundle)m).iri(), pair);
-        String _uuid_1 = ((Bundle)m).uuid();
+        String _uuid_1 = ((TerminologyGraph)m).uuid();
+        Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+        Pair<TerminologyGraph, Map<String, String>> _pair_1 = new Pair<TerminologyGraph, Map<String, String>>(((TerminologyGraph)m), _emptyMap_1);
+        this.terminologyGraphs.put(_uuid_1, _pair_1);
+        String _uuid_2 = ((TerminologyGraph)m).uuid();
         Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
-        Pair<TerminologyBox, Map<String, String>> _pair_1 = new Pair<TerminologyBox, Map<String, String>>(((TerminologyBox)m), _emptyMap_2);
-        this.terminologyBoxes.put(_uuid_1, _pair_1);
-        String _iri = ((Bundle)m).iri();
+        Pair<TerminologyBox, Map<String, String>> _pair_2 = new Pair<TerminologyBox, Map<String, String>>(((TerminologyBox)m), _emptyMap_2);
+        this.terminologyBoxes.put(_uuid_2, _pair_2);
+        String _iri = ((TerminologyGraph)m).iri();
         Map<String, String> _emptyMap_3 = Collections.<String, String>emptyMap();
-        Pair<TerminologyBox, Map<String, String>> _pair_2 = new Pair<TerminologyBox, Map<String, String>>(((TerminologyBox)m), _emptyMap_3);
-        this.terminologyBoxes.put(_iri, _pair_2);
+        Pair<TerminologyBox, Map<String, String>> _pair_3 = new Pair<TerminologyBox, Map<String, String>>(((TerminologyBox)m), _emptyMap_3);
+        this.terminologyBoxes.put(_iri, _pair_3);
       }
+      if (!_matched) {
+        if (m instanceof Bundle) {
+          _matched=true;
+          String _uuid = ((Bundle)m).uuid();
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(m, _emptyMap);
+          this.logicalElements.put(_uuid, _pair);
+          String _uuid_1 = ((Bundle)m).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<Bundle, Map<String, String>> _pair_1 = new Pair<Bundle, Map<String, String>>(((Bundle)m), _emptyMap_1);
+          this.bundles.put(_uuid_1, _pair_1);
+          String _uuid_2 = ((Bundle)m).uuid();
+          Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+          Pair<TerminologyBox, Map<String, String>> _pair_2 = new Pair<TerminologyBox, Map<String, String>>(((TerminologyBox)m), _emptyMap_2);
+          this.terminologyBoxes.put(_uuid_2, _pair_2);
+          String _iri = ((Bundle)m).iri();
+          Map<String, String> _emptyMap_3 = Collections.<String, String>emptyMap();
+          Pair<TerminologyBox, Map<String, String>> _pair_3 = new Pair<TerminologyBox, Map<String, String>>(((TerminologyBox)m), _emptyMap_3);
+          this.terminologyBoxes.put(_iri, _pair_3);
+        }
+      }
+      if (!_matched) {
+        if (m instanceof DescriptionBox) {
+          _matched=true;
+          String _uuid = ((DescriptionBox)m).uuid();
+          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(m, _emptyMap);
+          this.logicalElements.put(_uuid, _pair);
+          String _uuid_1 = ((DescriptionBox)m).uuid();
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          Pair<DescriptionBox, Map<String, String>> _pair_1 = new Pair<DescriptionBox, Map<String, String>>(((DescriptionBox)m), _emptyMap_1);
+          this.descriptionBoxes.put(_uuid_1, _pair_1);
+          String _iri = ((DescriptionBox)m).iri();
+          Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+          Pair<DescriptionBox, Map<String, String>> _pair_2 = new Pair<DescriptionBox, Map<String, String>>(((DescriptionBox)m), _emptyMap_2);
+          this.descriptionBoxes.put(_iri, _pair_2);
+        }
+      }
+      String _uuid = m.uuid();
+      Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+      Pair<Module, Map<String, String>> _pair = new Pair<Module, Map<String, String>>(m, _emptyMap);
+      this.modules.put(_uuid, _pair);
+      final Procedure1<EObject> _function = (EObject e) -> {
+        boolean _matched_1 = false;
+        if (e instanceof AnnotationProperty) {
+          _matched_1=true;
+          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+          final Pair<AnnotationProperty, Map<String, String>> pair = new Pair<AnnotationProperty, Map<String, String>>(((AnnotationProperty)e), _emptyMap_1);
+          this.annotationProperties.put(((AnnotationProperty)e).uuid(), pair);
+        }
+        if (!_matched_1) {
+          if (e instanceof Aspect) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<Aspect, Map<String, String>> pair = new Pair<Aspect, Map<String, String>>(((Aspect)e), _emptyMap_1);
+            this.aspects.put(((Aspect)e).uuid(), pair);
+            String _uuid_1 = ((Aspect)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof Concept) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<Concept, Map<String, String>> pair = new Pair<Concept, Map<String, String>>(((Concept)e), _emptyMap_1);
+            this.concepts.put(((Concept)e).uuid(), pair);
+            String _uuid_1 = ((Concept)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof Scalar) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<Scalar, Map<String, String>> pair = new Pair<Scalar, Map<String, String>>(((Scalar)e), _emptyMap_1);
+            this.scalars.put(((Scalar)e).uuid(), pair);
+            String _uuid_1 = ((Scalar)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof Structure) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<Structure, Map<String, String>> pair = new Pair<Structure, Map<String, String>>(((Structure)e), _emptyMap_1);
+            this.structures.put(((Structure)e).uuid(), pair);
+            String _uuid_1 = ((Structure)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof ConceptDesignationTerminologyAxiom) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<ConceptDesignationTerminologyAxiom, Map<String, String>> pair = new Pair<ConceptDesignationTerminologyAxiom, Map<String, String>>(((ConceptDesignationTerminologyAxiom)e), _emptyMap_1);
+            this.conceptDesignationTerminologyAxioms.put(((ConceptDesignationTerminologyAxiom)e).uuid(), pair);
+            String _uuid_1 = ((ConceptDesignationTerminologyAxiom)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof TerminologyExtensionAxiom) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<TerminologyExtensionAxiom, Map<String, String>> pair = new Pair<TerminologyExtensionAxiom, Map<String, String>>(((TerminologyExtensionAxiom)e), _emptyMap_1);
+            this.terminologyExtensionAxioms.put(((TerminologyExtensionAxiom)e).uuid(), pair);
+            String _uuid_1 = ((TerminologyExtensionAxiom)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof TerminologyNestingAxiom) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<TerminologyNestingAxiom, Map<String, String>> pair = new Pair<TerminologyNestingAxiom, Map<String, String>>(((TerminologyNestingAxiom)e), _emptyMap_1);
+            this.terminologyNestingAxioms.put(((TerminologyNestingAxiom)e).uuid(), pair);
+            String _uuid_1 = ((TerminologyNestingAxiom)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof BundledTerminologyAxiom) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<BundledTerminologyAxiom, Map<String, String>> pair = new Pair<BundledTerminologyAxiom, Map<String, String>>(((BundledTerminologyAxiom)e), _emptyMap_1);
+            this.bundledTerminologyAxioms.put(((BundledTerminologyAxiom)e).uuid(), pair);
+            String _uuid_1 = ((BundledTerminologyAxiom)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof DescriptionBoxExtendsClosedWorldDefinitions) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<DescriptionBoxExtendsClosedWorldDefinitions, Map<String, String>> pair = new Pair<DescriptionBoxExtendsClosedWorldDefinitions, Map<String, String>>(((DescriptionBoxExtendsClosedWorldDefinitions)e), _emptyMap_1);
+            this.descriptionBoxExtendsClosedWorldDefinitions.put(((DescriptionBoxExtendsClosedWorldDefinitions)e).uuid(), pair);
+            String _uuid_1 = ((DescriptionBoxExtendsClosedWorldDefinitions)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof DescriptionBoxRefinement) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<DescriptionBoxRefinement, Map<String, String>> pair = new Pair<DescriptionBoxRefinement, Map<String, String>>(((DescriptionBoxRefinement)e), _emptyMap_1);
+            this.descriptionBoxRefinements.put(((DescriptionBoxRefinement)e).uuid(), pair);
+            String _uuid_1 = ((DescriptionBoxRefinement)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof BinaryScalarRestriction) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<BinaryScalarRestriction, Map<String, String>> pair = new Pair<BinaryScalarRestriction, Map<String, String>>(((BinaryScalarRestriction)e), _emptyMap_1);
+            this.binaryScalarRestrictions.put(((BinaryScalarRestriction)e).uuid(), pair);
+            String _uuid_1 = ((BinaryScalarRestriction)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof IRIScalarRestriction) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<IRIScalarRestriction, Map<String, String>> pair = new Pair<IRIScalarRestriction, Map<String, String>>(((IRIScalarRestriction)e), _emptyMap_1);
+            this.iriScalarRestrictions.put(((IRIScalarRestriction)e).uuid(), pair);
+            String _uuid_1 = ((IRIScalarRestriction)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof NumericScalarRestriction) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<NumericScalarRestriction, Map<String, String>> pair = new Pair<NumericScalarRestriction, Map<String, String>>(((NumericScalarRestriction)e), _emptyMap_1);
+            this.numericScalarRestrictions.put(((NumericScalarRestriction)e).uuid(), pair);
+            String _uuid_1 = ((NumericScalarRestriction)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof PlainLiteralScalarRestriction) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<PlainLiteralScalarRestriction, Map<String, String>> pair = new Pair<PlainLiteralScalarRestriction, Map<String, String>>(((PlainLiteralScalarRestriction)e), _emptyMap_1);
+            this.plainLiteralScalarRestrictions.put(((PlainLiteralScalarRestriction)e).uuid(), pair);
+            String _uuid_1 = ((PlainLiteralScalarRestriction)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof ScalarOneOfRestriction) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<ScalarOneOfRestriction, Map<String, String>> pair = new Pair<ScalarOneOfRestriction, Map<String, String>>(((ScalarOneOfRestriction)e), _emptyMap_1);
+            this.scalarOneOfRestrictions.put(((ScalarOneOfRestriction)e).uuid(), pair);
+            String _uuid_1 = ((ScalarOneOfRestriction)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof ScalarOneOfLiteralAxiom) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<ScalarOneOfLiteralAxiom, Map<String, String>> pair = new Pair<ScalarOneOfLiteralAxiom, Map<String, String>>(((ScalarOneOfLiteralAxiom)e), _emptyMap_1);
+            this.scalarOneOfLiteralAxioms.put(((ScalarOneOfLiteralAxiom)e).uuid(), pair);
+            String _uuid_1 = ((ScalarOneOfLiteralAxiom)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof StringScalarRestriction) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<StringScalarRestriction, Map<String, String>> pair = new Pair<StringScalarRestriction, Map<String, String>>(((StringScalarRestriction)e), _emptyMap_1);
+            this.stringScalarRestrictions.put(((StringScalarRestriction)e).uuid(), pair);
+            String _uuid_1 = ((StringScalarRestriction)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof SynonymScalarRestriction) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<SynonymScalarRestriction, Map<String, String>> pair = new Pair<SynonymScalarRestriction, Map<String, String>>(((SynonymScalarRestriction)e), _emptyMap_1);
+            this.synonymScalarRestrictions.put(((SynonymScalarRestriction)e).uuid(), pair);
+            String _uuid_1 = ((SynonymScalarRestriction)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof TimeScalarRestriction) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<TimeScalarRestriction, Map<String, String>> pair = new Pair<TimeScalarRestriction, Map<String, String>>(((TimeScalarRestriction)e), _emptyMap_1);
+            this.timeScalarRestrictions.put(((TimeScalarRestriction)e).uuid(), pair);
+            String _uuid_1 = ((TimeScalarRestriction)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof EntityScalarDataProperty) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<EntityScalarDataProperty, Map<String, String>> pair = new Pair<EntityScalarDataProperty, Map<String, String>>(((EntityScalarDataProperty)e), _emptyMap_1);
+            this.entityScalarDataProperties.put(((EntityScalarDataProperty)e).uuid(), pair);
+            String _uuid_1 = ((EntityScalarDataProperty)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof EntityStructuredDataProperty) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<EntityStructuredDataProperty, Map<String, String>> pair = new Pair<EntityStructuredDataProperty, Map<String, String>>(((EntityStructuredDataProperty)e), _emptyMap_1);
+            this.entityStructuredDataProperties.put(((EntityStructuredDataProperty)e).uuid(), pair);
+            String _uuid_1 = ((EntityStructuredDataProperty)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof ScalarDataProperty) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<ScalarDataProperty, Map<String, String>> pair = new Pair<ScalarDataProperty, Map<String, String>>(((ScalarDataProperty)e), _emptyMap_1);
+            this.scalarDataProperties.put(((ScalarDataProperty)e).uuid(), pair);
+            String _uuid_1 = ((ScalarDataProperty)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof StructuredDataProperty) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<StructuredDataProperty, Map<String, String>> pair = new Pair<StructuredDataProperty, Map<String, String>>(((StructuredDataProperty)e), _emptyMap_1);
+            this.structuredDataProperties.put(((StructuredDataProperty)e).uuid(), pair);
+            String _uuid_1 = ((StructuredDataProperty)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof ReifiedRelationship) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<ReifiedRelationship, Map<String, String>> pair = new Pair<ReifiedRelationship, Map<String, String>>(((ReifiedRelationship)e), _emptyMap_1);
+            this.reifiedRelationships.put(((ReifiedRelationship)e).uuid(), pair);
+            String _uuid_1 = ((ReifiedRelationship)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof ForwardProperty) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<ForwardProperty, Map<String, String>> pair = new Pair<ForwardProperty, Map<String, String>>(((ForwardProperty)e), _emptyMap_1);
+            this.forwardProperties.put(((ForwardProperty)e).uuid(), pair);
+            String _uuid_1 = ((ForwardProperty)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof InverseProperty) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<InverseProperty, Map<String, String>> pair = new Pair<InverseProperty, Map<String, String>>(((InverseProperty)e), _emptyMap_1);
+            this.inverseProperties.put(((InverseProperty)e).uuid(), pair);
+            String _uuid_1 = ((InverseProperty)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof UnreifiedRelationship) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<UnreifiedRelationship, Map<String, String>> pair = new Pair<UnreifiedRelationship, Map<String, String>>(((UnreifiedRelationship)e), _emptyMap_1);
+            this.unreifiedRelationships.put(((UnreifiedRelationship)e).uuid(), pair);
+            String _uuid_1 = ((UnreifiedRelationship)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof ChainRule) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<ChainRule, Map<String, String>> pair = new Pair<ChainRule, Map<String, String>>(((ChainRule)e), _emptyMap_1);
+            this.chainRules.put(((ChainRule)e).uuid(), pair);
+            String _uuid_1 = ((ChainRule)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof RuleBodySegment) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<RuleBodySegment, Map<String, String>> pair = new Pair<RuleBodySegment, Map<String, String>>(((RuleBodySegment)e), _emptyMap_1);
+            this.ruleBodySegments.put(((RuleBodySegment)e).uuid(), pair);
+            String _uuid_1 = ((RuleBodySegment)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof SegmentPredicate) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<SegmentPredicate, Map<String, String>> pair = new Pair<SegmentPredicate, Map<String, String>>(((SegmentPredicate)e), _emptyMap_1);
+            this.segmentPredicates.put(((SegmentPredicate)e).uuid(), pair);
+            String _uuid_1 = ((SegmentPredicate)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof EntityExistentialRestrictionAxiom) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<EntityExistentialRestrictionAxiom, Map<String, String>> pair = new Pair<EntityExistentialRestrictionAxiom, Map<String, String>>(((EntityExistentialRestrictionAxiom)e), _emptyMap_1);
+            this.entityExistentialRestrictionAxioms.put(((EntityExistentialRestrictionAxiom)e).uuid(), pair);
+            String _uuid_1 = ((EntityExistentialRestrictionAxiom)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof EntityUniversalRestrictionAxiom) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<EntityUniversalRestrictionAxiom, Map<String, String>> pair = new Pair<EntityUniversalRestrictionAxiom, Map<String, String>>(((EntityUniversalRestrictionAxiom)e), _emptyMap_1);
+            this.entityUniversalRestrictionAxioms.put(((EntityUniversalRestrictionAxiom)e).uuid(), pair);
+            String _uuid_1 = ((EntityUniversalRestrictionAxiom)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof EntityScalarDataPropertyExistentialRestrictionAxiom) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<EntityScalarDataPropertyExistentialRestrictionAxiom, Map<String, String>> pair = new Pair<EntityScalarDataPropertyExistentialRestrictionAxiom, Map<String, String>>(((EntityScalarDataPropertyExistentialRestrictionAxiom)e), _emptyMap_1);
+            this.entityScalarDataPropertyExistentialRestrictionAxioms.put(((EntityScalarDataPropertyExistentialRestrictionAxiom)e).uuid(), pair);
+            String _uuid_1 = ((EntityScalarDataPropertyExistentialRestrictionAxiom)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof EntityScalarDataPropertyParticularRestrictionAxiom) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<EntityScalarDataPropertyParticularRestrictionAxiom, Map<String, String>> pair = new Pair<EntityScalarDataPropertyParticularRestrictionAxiom, Map<String, String>>(((EntityScalarDataPropertyParticularRestrictionAxiom)e), _emptyMap_1);
+            this.entityScalarDataPropertyParticularRestrictionAxioms.put(((EntityScalarDataPropertyParticularRestrictionAxiom)e).uuid(), pair);
+            String _uuid_1 = ((EntityScalarDataPropertyParticularRestrictionAxiom)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof EntityScalarDataPropertyUniversalRestrictionAxiom) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<EntityScalarDataPropertyUniversalRestrictionAxiom, Map<String, String>> pair = new Pair<EntityScalarDataPropertyUniversalRestrictionAxiom, Map<String, String>>(((EntityScalarDataPropertyUniversalRestrictionAxiom)e), _emptyMap_1);
+            this.entityScalarDataPropertyUniversalRestrictionAxioms.put(((EntityScalarDataPropertyUniversalRestrictionAxiom)e).uuid(), pair);
+            String _uuid_1 = ((EntityScalarDataPropertyUniversalRestrictionAxiom)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof EntityStructuredDataPropertyParticularRestrictionAxiom) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<EntityStructuredDataPropertyParticularRestrictionAxiom, Map<String, String>> pair = new Pair<EntityStructuredDataPropertyParticularRestrictionAxiom, Map<String, String>>(((EntityStructuredDataPropertyParticularRestrictionAxiom)e), _emptyMap_1);
+            this.entityStructuredDataPropertyParticularRestrictionAxioms.put(((EntityStructuredDataPropertyParticularRestrictionAxiom)e).uuid(), pair);
+            String _uuid_1 = ((EntityStructuredDataPropertyParticularRestrictionAxiom)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof RestrictionStructuredDataPropertyTuple) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<RestrictionStructuredDataPropertyTuple, Map<String, String>> pair = new Pair<RestrictionStructuredDataPropertyTuple, Map<String, String>>(((RestrictionStructuredDataPropertyTuple)e), _emptyMap_1);
+            this.restrictionStructuredDataPropertyTuples.put(((RestrictionStructuredDataPropertyTuple)e).uuid(), pair);
+            String _uuid_1 = ((RestrictionStructuredDataPropertyTuple)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof RestrictionScalarDataPropertyValue) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<RestrictionScalarDataPropertyValue, Map<String, String>> pair = new Pair<RestrictionScalarDataPropertyValue, Map<String, String>>(((RestrictionScalarDataPropertyValue)e), _emptyMap_1);
+            this.restrictionScalarDataPropertyValues.put(((RestrictionScalarDataPropertyValue)e).uuid(), pair);
+            String _uuid_1 = ((RestrictionScalarDataPropertyValue)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof AspectSpecializationAxiom) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<AspectSpecializationAxiom, Map<String, String>> pair = new Pair<AspectSpecializationAxiom, Map<String, String>>(((AspectSpecializationAxiom)e), _emptyMap_1);
+            this.aspectSpecializationAxioms.put(((AspectSpecializationAxiom)e).uuid(), pair);
+            String _uuid_1 = ((AspectSpecializationAxiom)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof ConceptSpecializationAxiom) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<ConceptSpecializationAxiom, Map<String, String>> pair = new Pair<ConceptSpecializationAxiom, Map<String, String>>(((ConceptSpecializationAxiom)e), _emptyMap_1);
+            this.conceptSpecializationAxioms.put(((ConceptSpecializationAxiom)e).uuid(), pair);
+            String _uuid_1 = ((ConceptSpecializationAxiom)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof ReifiedRelationshipSpecializationAxiom) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<ReifiedRelationshipSpecializationAxiom, Map<String, String>> pair = new Pair<ReifiedRelationshipSpecializationAxiom, Map<String, String>>(((ReifiedRelationshipSpecializationAxiom)e), _emptyMap_1);
+            this.reifiedRelationshipSpecializationAxioms.put(((ReifiedRelationshipSpecializationAxiom)e).uuid(), pair);
+            String _uuid_1 = ((ReifiedRelationshipSpecializationAxiom)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof SubDataPropertyOfAxiom) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<SubDataPropertyOfAxiom, Map<String, String>> pair = new Pair<SubDataPropertyOfAxiom, Map<String, String>>(((SubDataPropertyOfAxiom)e), _emptyMap_1);
+            this.subDataPropertyOfAxioms.put(((SubDataPropertyOfAxiom)e).uuid(), pair);
+            String _uuid_1 = ((SubDataPropertyOfAxiom)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof SubObjectPropertyOfAxiom) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<SubObjectPropertyOfAxiom, Map<String, String>> pair = new Pair<SubObjectPropertyOfAxiom, Map<String, String>>(((SubObjectPropertyOfAxiom)e), _emptyMap_1);
+            this.subObjectPropertyOfAxioms.put(((SubObjectPropertyOfAxiom)e).uuid(), pair);
+            String _uuid_1 = ((SubObjectPropertyOfAxiom)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof RootConceptTaxonomyAxiom) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<RootConceptTaxonomyAxiom, Map<String, String>> pair = new Pair<RootConceptTaxonomyAxiom, Map<String, String>>(((RootConceptTaxonomyAxiom)e), _emptyMap_1);
+            this.rootConceptTaxonomyAxioms.put(((RootConceptTaxonomyAxiom)e).uuid(), pair);
+            String _uuid_1 = ((RootConceptTaxonomyAxiom)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof AnonymousConceptUnionAxiom) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<AnonymousConceptUnionAxiom, Map<String, String>> pair = new Pair<AnonymousConceptUnionAxiom, Map<String, String>>(((AnonymousConceptUnionAxiom)e), _emptyMap_1);
+            this.anonymousConceptUnionAxioms.put(((AnonymousConceptUnionAxiom)e).uuid(), pair);
+            String _uuid_1 = ((AnonymousConceptUnionAxiom)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof SpecificDisjointConceptAxiom) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<SpecificDisjointConceptAxiom, Map<String, String>> pair = new Pair<SpecificDisjointConceptAxiom, Map<String, String>>(((SpecificDisjointConceptAxiom)e), _emptyMap_1);
+            this.specificDisjointConceptAxioms.put(((SpecificDisjointConceptAxiom)e).uuid(), pair);
+            String _uuid_1 = ((SpecificDisjointConceptAxiom)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof ConceptInstance) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<ConceptInstance, Map<String, String>> pair = new Pair<ConceptInstance, Map<String, String>>(((ConceptInstance)e), _emptyMap_1);
+            this.conceptInstances.put(((ConceptInstance)e).uuid(), pair);
+            String _uuid_1 = ((ConceptInstance)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof ReifiedRelationshipInstance) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<ReifiedRelationshipInstance, Map<String, String>> pair = new Pair<ReifiedRelationshipInstance, Map<String, String>>(((ReifiedRelationshipInstance)e), _emptyMap_1);
+            this.reifiedRelationshipInstances.put(((ReifiedRelationshipInstance)e).uuid(), pair);
+            String _uuid_1 = ((ReifiedRelationshipInstance)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof ReifiedRelationshipInstanceDomain) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<ReifiedRelationshipInstanceDomain, Map<String, String>> pair = new Pair<ReifiedRelationshipInstanceDomain, Map<String, String>>(((ReifiedRelationshipInstanceDomain)e), _emptyMap_1);
+            this.reifiedRelationshipInstanceDomains.put(((ReifiedRelationshipInstanceDomain)e).uuid(), pair);
+            String _uuid_1 = ((ReifiedRelationshipInstanceDomain)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof ReifiedRelationshipInstanceRange) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<ReifiedRelationshipInstanceRange, Map<String, String>> pair = new Pair<ReifiedRelationshipInstanceRange, Map<String, String>>(((ReifiedRelationshipInstanceRange)e), _emptyMap_1);
+            this.reifiedRelationshipInstanceRanges.put(((ReifiedRelationshipInstanceRange)e).uuid(), pair);
+            String _uuid_1 = ((ReifiedRelationshipInstanceRange)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof UnreifiedRelationshipInstanceTuple) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<UnreifiedRelationshipInstanceTuple, Map<String, String>> pair = new Pair<UnreifiedRelationshipInstanceTuple, Map<String, String>>(((UnreifiedRelationshipInstanceTuple)e), _emptyMap_1);
+            this.unreifiedRelationshipInstanceTuples.put(((UnreifiedRelationshipInstanceTuple)e).uuid(), pair);
+            String _uuid_1 = ((UnreifiedRelationshipInstanceTuple)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof SingletonInstanceStructuredDataPropertyValue) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<SingletonInstanceStructuredDataPropertyValue, Map<String, String>> pair = new Pair<SingletonInstanceStructuredDataPropertyValue, Map<String, String>>(((SingletonInstanceStructuredDataPropertyValue)e), _emptyMap_1);
+            this.singletonInstanceStructuredDataPropertyValues.put(((SingletonInstanceStructuredDataPropertyValue)e).uuid(), pair);
+            String _uuid_1 = ((SingletonInstanceStructuredDataPropertyValue)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof SingletonInstanceScalarDataPropertyValue) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<SingletonInstanceScalarDataPropertyValue, Map<String, String>> pair = new Pair<SingletonInstanceScalarDataPropertyValue, Map<String, String>>(((SingletonInstanceScalarDataPropertyValue)e), _emptyMap_1);
+            this.singletonInstanceScalarDataPropertyValues.put(((SingletonInstanceScalarDataPropertyValue)e).uuid(), pair);
+            String _uuid_1 = ((SingletonInstanceScalarDataPropertyValue)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof StructuredDataPropertyTuple) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<StructuredDataPropertyTuple, Map<String, String>> pair = new Pair<StructuredDataPropertyTuple, Map<String, String>>(((StructuredDataPropertyTuple)e), _emptyMap_1);
+            this.structuredDataPropertyTuples.put(((StructuredDataPropertyTuple)e).uuid(), pair);
+            String _uuid_1 = ((StructuredDataPropertyTuple)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof ScalarDataPropertyValue) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<ScalarDataPropertyValue, Map<String, String>> pair = new Pair<ScalarDataPropertyValue, Map<String, String>>(((ScalarDataPropertyValue)e), _emptyMap_1);
+            this.scalarDataPropertyValues.put(((ScalarDataPropertyValue)e).uuid(), pair);
+            String _uuid_1 = ((ScalarDataPropertyValue)e).uuid();
+            Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
+            Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
+            this.logicalElements.put(_uuid_1, _pair_1);
+          }
+        }
+        if (!_matched_1) {
+          if (e instanceof AnnotationPropertyValue) {
+            _matched_1=true;
+            Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
+            final Pair<AnnotationPropertyValue, Map<String, String>> pair = new Pair<AnnotationPropertyValue, Map<String, String>>(((AnnotationPropertyValue)e), _emptyMap_1);
+            this.annotationPropertyValues.put(((AnnotationPropertyValue)e).uuid(), pair);
+          }
+        }
+      };
+      IteratorExtensions.<EObject>forEach(m.eAllContents(), _function);
     }
-    if (!_matched) {
-      if (m instanceof DescriptionBox) {
-        _matched=true;
-        Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-        final Pair<DescriptionBox, Map<String, String>> pair = new Pair<DescriptionBox, Map<String, String>>(((DescriptionBox)m), _emptyMap);
-        this.descriptionBoxes.put(((DescriptionBox)m).uuid(), pair);
-        String _uuid = ((DescriptionBox)m).uuid();
-        Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-        Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(m, _emptyMap_1);
-        this.logicalElements.put(_uuid, _pair);
-        this.descriptionBoxes.put(((DescriptionBox)m).iri(), pair);
-      }
-    }
-    final Procedure1<EObject> _function = (EObject e) -> {
-      boolean _matched_1 = false;
-      if (e instanceof AnnotationProperty) {
-        _matched_1=true;
-        Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-        final Pair<AnnotationProperty, Map<String, String>> pair = new Pair<AnnotationProperty, Map<String, String>>(((AnnotationProperty)e), _emptyMap);
-        this.annotationProperties.put(((AnnotationProperty)e).uuid(), pair);
-      }
-      if (!_matched_1) {
-        if (e instanceof Aspect) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<Aspect, Map<String, String>> pair = new Pair<Aspect, Map<String, String>>(((Aspect)e), _emptyMap);
-          this.aspects.put(((Aspect)e).uuid(), pair);
-          String _uuid = ((Aspect)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof Concept) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<Concept, Map<String, String>> pair = new Pair<Concept, Map<String, String>>(((Concept)e), _emptyMap);
-          this.concepts.put(((Concept)e).uuid(), pair);
-          String _uuid = ((Concept)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof Scalar) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<Scalar, Map<String, String>> pair = new Pair<Scalar, Map<String, String>>(((Scalar)e), _emptyMap);
-          this.scalars.put(((Scalar)e).uuid(), pair);
-          String _uuid = ((Scalar)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof Structure) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<Structure, Map<String, String>> pair = new Pair<Structure, Map<String, String>>(((Structure)e), _emptyMap);
-          this.structures.put(((Structure)e).uuid(), pair);
-          String _uuid = ((Structure)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof ConceptDesignationTerminologyAxiom) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<ConceptDesignationTerminologyAxiom, Map<String, String>> pair = new Pair<ConceptDesignationTerminologyAxiom, Map<String, String>>(((ConceptDesignationTerminologyAxiom)e), _emptyMap);
-          this.conceptDesignationTerminologyAxioms.put(((ConceptDesignationTerminologyAxiom)e).uuid(), pair);
-          String _uuid = ((ConceptDesignationTerminologyAxiom)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-          this.includeModule(((ConceptDesignationTerminologyAxiom)e).targetModule());
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof TerminologyExtensionAxiom) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<TerminologyExtensionAxiom, Map<String, String>> pair = new Pair<TerminologyExtensionAxiom, Map<String, String>>(((TerminologyExtensionAxiom)e), _emptyMap);
-          this.terminologyExtensionAxioms.put(((TerminologyExtensionAxiom)e).uuid(), pair);
-          String _uuid = ((TerminologyExtensionAxiom)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-          this.includeModule(((TerminologyExtensionAxiom)e).targetModule());
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof TerminologyNestingAxiom) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<TerminologyNestingAxiom, Map<String, String>> pair = new Pair<TerminologyNestingAxiom, Map<String, String>>(((TerminologyNestingAxiom)e), _emptyMap);
-          this.terminologyNestingAxioms.put(((TerminologyNestingAxiom)e).uuid(), pair);
-          String _uuid = ((TerminologyNestingAxiom)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-          this.includeModule(((TerminologyNestingAxiom)e).targetModule());
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof BundledTerminologyAxiom) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<BundledTerminologyAxiom, Map<String, String>> pair = new Pair<BundledTerminologyAxiom, Map<String, String>>(((BundledTerminologyAxiom)e), _emptyMap);
-          this.bundledTerminologyAxioms.put(((BundledTerminologyAxiom)e).uuid(), pair);
-          String _uuid = ((BundledTerminologyAxiom)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-          this.includeModule(((BundledTerminologyAxiom)e).targetModule());
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof DescriptionBoxExtendsClosedWorldDefinitions) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<DescriptionBoxExtendsClosedWorldDefinitions, Map<String, String>> pair = new Pair<DescriptionBoxExtendsClosedWorldDefinitions, Map<String, String>>(((DescriptionBoxExtendsClosedWorldDefinitions)e), _emptyMap);
-          this.descriptionBoxExtendsClosedWorldDefinitions.put(((DescriptionBoxExtendsClosedWorldDefinitions)e).uuid(), pair);
-          String _uuid = ((DescriptionBoxExtendsClosedWorldDefinitions)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-          this.includeModule(((DescriptionBoxExtendsClosedWorldDefinitions)e).targetModule());
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof DescriptionBoxRefinement) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<DescriptionBoxRefinement, Map<String, String>> pair = new Pair<DescriptionBoxRefinement, Map<String, String>>(((DescriptionBoxRefinement)e), _emptyMap);
-          this.descriptionBoxRefinements.put(((DescriptionBoxRefinement)e).uuid(), pair);
-          String _uuid = ((DescriptionBoxRefinement)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-          this.includeModule(((DescriptionBoxRefinement)e).targetModule());
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof BinaryScalarRestriction) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<BinaryScalarRestriction, Map<String, String>> pair = new Pair<BinaryScalarRestriction, Map<String, String>>(((BinaryScalarRestriction)e), _emptyMap);
-          this.binaryScalarRestrictions.put(((BinaryScalarRestriction)e).uuid(), pair);
-          String _uuid = ((BinaryScalarRestriction)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof IRIScalarRestriction) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<IRIScalarRestriction, Map<String, String>> pair = new Pair<IRIScalarRestriction, Map<String, String>>(((IRIScalarRestriction)e), _emptyMap);
-          this.iriScalarRestrictions.put(((IRIScalarRestriction)e).uuid(), pair);
-          String _uuid = ((IRIScalarRestriction)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof NumericScalarRestriction) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<NumericScalarRestriction, Map<String, String>> pair = new Pair<NumericScalarRestriction, Map<String, String>>(((NumericScalarRestriction)e), _emptyMap);
-          this.numericScalarRestrictions.put(((NumericScalarRestriction)e).uuid(), pair);
-          String _uuid = ((NumericScalarRestriction)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof PlainLiteralScalarRestriction) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<PlainLiteralScalarRestriction, Map<String, String>> pair = new Pair<PlainLiteralScalarRestriction, Map<String, String>>(((PlainLiteralScalarRestriction)e), _emptyMap);
-          this.plainLiteralScalarRestrictions.put(((PlainLiteralScalarRestriction)e).uuid(), pair);
-          String _uuid = ((PlainLiteralScalarRestriction)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof ScalarOneOfRestriction) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<ScalarOneOfRestriction, Map<String, String>> pair = new Pair<ScalarOneOfRestriction, Map<String, String>>(((ScalarOneOfRestriction)e), _emptyMap);
-          this.scalarOneOfRestrictions.put(((ScalarOneOfRestriction)e).uuid(), pair);
-          String _uuid = ((ScalarOneOfRestriction)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof ScalarOneOfLiteralAxiom) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<ScalarOneOfLiteralAxiom, Map<String, String>> pair = new Pair<ScalarOneOfLiteralAxiom, Map<String, String>>(((ScalarOneOfLiteralAxiom)e), _emptyMap);
-          this.scalarOneOfLiteralAxioms.put(((ScalarOneOfLiteralAxiom)e).uuid(), pair);
-          String _uuid = ((ScalarOneOfLiteralAxiom)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof StringScalarRestriction) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<StringScalarRestriction, Map<String, String>> pair = new Pair<StringScalarRestriction, Map<String, String>>(((StringScalarRestriction)e), _emptyMap);
-          this.stringScalarRestrictions.put(((StringScalarRestriction)e).uuid(), pair);
-          String _uuid = ((StringScalarRestriction)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof SynonymScalarRestriction) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<SynonymScalarRestriction, Map<String, String>> pair = new Pair<SynonymScalarRestriction, Map<String, String>>(((SynonymScalarRestriction)e), _emptyMap);
-          this.synonymScalarRestrictions.put(((SynonymScalarRestriction)e).uuid(), pair);
-          String _uuid = ((SynonymScalarRestriction)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof TimeScalarRestriction) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<TimeScalarRestriction, Map<String, String>> pair = new Pair<TimeScalarRestriction, Map<String, String>>(((TimeScalarRestriction)e), _emptyMap);
-          this.timeScalarRestrictions.put(((TimeScalarRestriction)e).uuid(), pair);
-          String _uuid = ((TimeScalarRestriction)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof EntityScalarDataProperty) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<EntityScalarDataProperty, Map<String, String>> pair = new Pair<EntityScalarDataProperty, Map<String, String>>(((EntityScalarDataProperty)e), _emptyMap);
-          this.entityScalarDataProperties.put(((EntityScalarDataProperty)e).uuid(), pair);
-          String _uuid = ((EntityScalarDataProperty)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof EntityStructuredDataProperty) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<EntityStructuredDataProperty, Map<String, String>> pair = new Pair<EntityStructuredDataProperty, Map<String, String>>(((EntityStructuredDataProperty)e), _emptyMap);
-          this.entityStructuredDataProperties.put(((EntityStructuredDataProperty)e).uuid(), pair);
-          String _uuid = ((EntityStructuredDataProperty)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof ScalarDataProperty) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<ScalarDataProperty, Map<String, String>> pair = new Pair<ScalarDataProperty, Map<String, String>>(((ScalarDataProperty)e), _emptyMap);
-          this.scalarDataProperties.put(((ScalarDataProperty)e).uuid(), pair);
-          String _uuid = ((ScalarDataProperty)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof StructuredDataProperty) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<StructuredDataProperty, Map<String, String>> pair = new Pair<StructuredDataProperty, Map<String, String>>(((StructuredDataProperty)e), _emptyMap);
-          this.structuredDataProperties.put(((StructuredDataProperty)e).uuid(), pair);
-          String _uuid = ((StructuredDataProperty)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof ReifiedRelationship) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<ReifiedRelationship, Map<String, String>> pair = new Pair<ReifiedRelationship, Map<String, String>>(((ReifiedRelationship)e), _emptyMap);
-          this.reifiedRelationships.put(((ReifiedRelationship)e).uuid(), pair);
-          String _uuid = ((ReifiedRelationship)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof ForwardProperty) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<ForwardProperty, Map<String, String>> pair = new Pair<ForwardProperty, Map<String, String>>(((ForwardProperty)e), _emptyMap);
-          this.forwardProperties.put(((ForwardProperty)e).uuid(), pair);
-          String _uuid = ((ForwardProperty)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof InverseProperty) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<InverseProperty, Map<String, String>> pair = new Pair<InverseProperty, Map<String, String>>(((InverseProperty)e), _emptyMap);
-          this.inverseProperties.put(((InverseProperty)e).uuid(), pair);
-          String _uuid = ((InverseProperty)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof UnreifiedRelationship) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<UnreifiedRelationship, Map<String, String>> pair = new Pair<UnreifiedRelationship, Map<String, String>>(((UnreifiedRelationship)e), _emptyMap);
-          this.unreifiedRelationships.put(((UnreifiedRelationship)e).uuid(), pair);
-          String _uuid = ((UnreifiedRelationship)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof ChainRule) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<ChainRule, Map<String, String>> pair = new Pair<ChainRule, Map<String, String>>(((ChainRule)e), _emptyMap);
-          this.chainRules.put(((ChainRule)e).uuid(), pair);
-          String _uuid = ((ChainRule)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof RuleBodySegment) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<RuleBodySegment, Map<String, String>> pair = new Pair<RuleBodySegment, Map<String, String>>(((RuleBodySegment)e), _emptyMap);
-          this.ruleBodySegments.put(((RuleBodySegment)e).uuid(), pair);
-          String _uuid = ((RuleBodySegment)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof SegmentPredicate) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<SegmentPredicate, Map<String, String>> pair = new Pair<SegmentPredicate, Map<String, String>>(((SegmentPredicate)e), _emptyMap);
-          this.segmentPredicates.put(((SegmentPredicate)e).uuid(), pair);
-          String _uuid = ((SegmentPredicate)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof EntityExistentialRestrictionAxiom) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<EntityExistentialRestrictionAxiom, Map<String, String>> pair = new Pair<EntityExistentialRestrictionAxiom, Map<String, String>>(((EntityExistentialRestrictionAxiom)e), _emptyMap);
-          this.entityExistentialRestrictionAxioms.put(((EntityExistentialRestrictionAxiom)e).uuid(), pair);
-          String _uuid = ((EntityExistentialRestrictionAxiom)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof EntityUniversalRestrictionAxiom) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<EntityUniversalRestrictionAxiom, Map<String, String>> pair = new Pair<EntityUniversalRestrictionAxiom, Map<String, String>>(((EntityUniversalRestrictionAxiom)e), _emptyMap);
-          this.entityUniversalRestrictionAxioms.put(((EntityUniversalRestrictionAxiom)e).uuid(), pair);
-          String _uuid = ((EntityUniversalRestrictionAxiom)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof EntityScalarDataPropertyExistentialRestrictionAxiom) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<EntityScalarDataPropertyExistentialRestrictionAxiom, Map<String, String>> pair = new Pair<EntityScalarDataPropertyExistentialRestrictionAxiom, Map<String, String>>(((EntityScalarDataPropertyExistentialRestrictionAxiom)e), _emptyMap);
-          this.entityScalarDataPropertyExistentialRestrictionAxioms.put(((EntityScalarDataPropertyExistentialRestrictionAxiom)e).uuid(), pair);
-          String _uuid = ((EntityScalarDataPropertyExistentialRestrictionAxiom)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof EntityScalarDataPropertyParticularRestrictionAxiom) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<EntityScalarDataPropertyParticularRestrictionAxiom, Map<String, String>> pair = new Pair<EntityScalarDataPropertyParticularRestrictionAxiom, Map<String, String>>(((EntityScalarDataPropertyParticularRestrictionAxiom)e), _emptyMap);
-          this.entityScalarDataPropertyParticularRestrictionAxioms.put(((EntityScalarDataPropertyParticularRestrictionAxiom)e).uuid(), pair);
-          String _uuid = ((EntityScalarDataPropertyParticularRestrictionAxiom)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof EntityScalarDataPropertyUniversalRestrictionAxiom) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<EntityScalarDataPropertyUniversalRestrictionAxiom, Map<String, String>> pair = new Pair<EntityScalarDataPropertyUniversalRestrictionAxiom, Map<String, String>>(((EntityScalarDataPropertyUniversalRestrictionAxiom)e), _emptyMap);
-          this.entityScalarDataPropertyUniversalRestrictionAxioms.put(((EntityScalarDataPropertyUniversalRestrictionAxiom)e).uuid(), pair);
-          String _uuid = ((EntityScalarDataPropertyUniversalRestrictionAxiom)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof EntityStructuredDataPropertyParticularRestrictionAxiom) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<EntityStructuredDataPropertyParticularRestrictionAxiom, Map<String, String>> pair = new Pair<EntityStructuredDataPropertyParticularRestrictionAxiom, Map<String, String>>(((EntityStructuredDataPropertyParticularRestrictionAxiom)e), _emptyMap);
-          this.entityStructuredDataPropertyParticularRestrictionAxioms.put(((EntityStructuredDataPropertyParticularRestrictionAxiom)e).uuid(), pair);
-          String _uuid = ((EntityStructuredDataPropertyParticularRestrictionAxiom)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof RestrictionStructuredDataPropertyTuple) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<RestrictionStructuredDataPropertyTuple, Map<String, String>> pair = new Pair<RestrictionStructuredDataPropertyTuple, Map<String, String>>(((RestrictionStructuredDataPropertyTuple)e), _emptyMap);
-          this.restrictionStructuredDataPropertyTuples.put(((RestrictionStructuredDataPropertyTuple)e).uuid(), pair);
-          String _uuid = ((RestrictionStructuredDataPropertyTuple)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof RestrictionScalarDataPropertyValue) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<RestrictionScalarDataPropertyValue, Map<String, String>> pair = new Pair<RestrictionScalarDataPropertyValue, Map<String, String>>(((RestrictionScalarDataPropertyValue)e), _emptyMap);
-          this.restrictionScalarDataPropertyValues.put(((RestrictionScalarDataPropertyValue)e).uuid(), pair);
-          String _uuid = ((RestrictionScalarDataPropertyValue)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof AspectSpecializationAxiom) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<AspectSpecializationAxiom, Map<String, String>> pair = new Pair<AspectSpecializationAxiom, Map<String, String>>(((AspectSpecializationAxiom)e), _emptyMap);
-          this.aspectSpecializationAxioms.put(((AspectSpecializationAxiom)e).uuid(), pair);
-          String _uuid = ((AspectSpecializationAxiom)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof ConceptSpecializationAxiom) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<ConceptSpecializationAxiom, Map<String, String>> pair = new Pair<ConceptSpecializationAxiom, Map<String, String>>(((ConceptSpecializationAxiom)e), _emptyMap);
-          this.conceptSpecializationAxioms.put(((ConceptSpecializationAxiom)e).uuid(), pair);
-          String _uuid = ((ConceptSpecializationAxiom)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof ReifiedRelationshipSpecializationAxiom) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<ReifiedRelationshipSpecializationAxiom, Map<String, String>> pair = new Pair<ReifiedRelationshipSpecializationAxiom, Map<String, String>>(((ReifiedRelationshipSpecializationAxiom)e), _emptyMap);
-          this.reifiedRelationshipSpecializationAxioms.put(((ReifiedRelationshipSpecializationAxiom)e).uuid(), pair);
-          String _uuid = ((ReifiedRelationshipSpecializationAxiom)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof SubDataPropertyOfAxiom) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<SubDataPropertyOfAxiom, Map<String, String>> pair = new Pair<SubDataPropertyOfAxiom, Map<String, String>>(((SubDataPropertyOfAxiom)e), _emptyMap);
-          this.subDataPropertyOfAxioms.put(((SubDataPropertyOfAxiom)e).uuid(), pair);
-          String _uuid = ((SubDataPropertyOfAxiom)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof SubObjectPropertyOfAxiom) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<SubObjectPropertyOfAxiom, Map<String, String>> pair = new Pair<SubObjectPropertyOfAxiom, Map<String, String>>(((SubObjectPropertyOfAxiom)e), _emptyMap);
-          this.subObjectPropertyOfAxioms.put(((SubObjectPropertyOfAxiom)e).uuid(), pair);
-          String _uuid = ((SubObjectPropertyOfAxiom)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof RootConceptTaxonomyAxiom) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<RootConceptTaxonomyAxiom, Map<String, String>> pair = new Pair<RootConceptTaxonomyAxiom, Map<String, String>>(((RootConceptTaxonomyAxiom)e), _emptyMap);
-          this.rootConceptTaxonomyAxioms.put(((RootConceptTaxonomyAxiom)e).uuid(), pair);
-          String _uuid = ((RootConceptTaxonomyAxiom)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof AnonymousConceptUnionAxiom) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<AnonymousConceptUnionAxiom, Map<String, String>> pair = new Pair<AnonymousConceptUnionAxiom, Map<String, String>>(((AnonymousConceptUnionAxiom)e), _emptyMap);
-          this.anonymousConceptUnionAxioms.put(((AnonymousConceptUnionAxiom)e).uuid(), pair);
-          String _uuid = ((AnonymousConceptUnionAxiom)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof SpecificDisjointConceptAxiom) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<SpecificDisjointConceptAxiom, Map<String, String>> pair = new Pair<SpecificDisjointConceptAxiom, Map<String, String>>(((SpecificDisjointConceptAxiom)e), _emptyMap);
-          this.specificDisjointConceptAxioms.put(((SpecificDisjointConceptAxiom)e).uuid(), pair);
-          String _uuid = ((SpecificDisjointConceptAxiom)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof ConceptInstance) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<ConceptInstance, Map<String, String>> pair = new Pair<ConceptInstance, Map<String, String>>(((ConceptInstance)e), _emptyMap);
-          this.conceptInstances.put(((ConceptInstance)e).uuid(), pair);
-          String _uuid = ((ConceptInstance)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof ReifiedRelationshipInstance) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<ReifiedRelationshipInstance, Map<String, String>> pair = new Pair<ReifiedRelationshipInstance, Map<String, String>>(((ReifiedRelationshipInstance)e), _emptyMap);
-          this.reifiedRelationshipInstances.put(((ReifiedRelationshipInstance)e).uuid(), pair);
-          String _uuid = ((ReifiedRelationshipInstance)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof ReifiedRelationshipInstanceDomain) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<ReifiedRelationshipInstanceDomain, Map<String, String>> pair = new Pair<ReifiedRelationshipInstanceDomain, Map<String, String>>(((ReifiedRelationshipInstanceDomain)e), _emptyMap);
-          this.reifiedRelationshipInstanceDomains.put(((ReifiedRelationshipInstanceDomain)e).uuid(), pair);
-          String _uuid = ((ReifiedRelationshipInstanceDomain)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof ReifiedRelationshipInstanceRange) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<ReifiedRelationshipInstanceRange, Map<String, String>> pair = new Pair<ReifiedRelationshipInstanceRange, Map<String, String>>(((ReifiedRelationshipInstanceRange)e), _emptyMap);
-          this.reifiedRelationshipInstanceRanges.put(((ReifiedRelationshipInstanceRange)e).uuid(), pair);
-          String _uuid = ((ReifiedRelationshipInstanceRange)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof UnreifiedRelationshipInstanceTuple) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<UnreifiedRelationshipInstanceTuple, Map<String, String>> pair = new Pair<UnreifiedRelationshipInstanceTuple, Map<String, String>>(((UnreifiedRelationshipInstanceTuple)e), _emptyMap);
-          this.unreifiedRelationshipInstanceTuples.put(((UnreifiedRelationshipInstanceTuple)e).uuid(), pair);
-          String _uuid = ((UnreifiedRelationshipInstanceTuple)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof SingletonInstanceStructuredDataPropertyValue) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<SingletonInstanceStructuredDataPropertyValue, Map<String, String>> pair = new Pair<SingletonInstanceStructuredDataPropertyValue, Map<String, String>>(((SingletonInstanceStructuredDataPropertyValue)e), _emptyMap);
-          this.singletonInstanceStructuredDataPropertyValues.put(((SingletonInstanceStructuredDataPropertyValue)e).uuid(), pair);
-          String _uuid = ((SingletonInstanceStructuredDataPropertyValue)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof SingletonInstanceScalarDataPropertyValue) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<SingletonInstanceScalarDataPropertyValue, Map<String, String>> pair = new Pair<SingletonInstanceScalarDataPropertyValue, Map<String, String>>(((SingletonInstanceScalarDataPropertyValue)e), _emptyMap);
-          this.singletonInstanceScalarDataPropertyValues.put(((SingletonInstanceScalarDataPropertyValue)e).uuid(), pair);
-          String _uuid = ((SingletonInstanceScalarDataPropertyValue)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof StructuredDataPropertyTuple) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<StructuredDataPropertyTuple, Map<String, String>> pair = new Pair<StructuredDataPropertyTuple, Map<String, String>>(((StructuredDataPropertyTuple)e), _emptyMap);
-          this.structuredDataPropertyTuples.put(((StructuredDataPropertyTuple)e).uuid(), pair);
-          String _uuid = ((StructuredDataPropertyTuple)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof ScalarDataPropertyValue) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<ScalarDataPropertyValue, Map<String, String>> pair = new Pair<ScalarDataPropertyValue, Map<String, String>>(((ScalarDataPropertyValue)e), _emptyMap);
-          this.scalarDataPropertyValues.put(((ScalarDataPropertyValue)e).uuid(), pair);
-          String _uuid = ((ScalarDataPropertyValue)e).uuid();
-          Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-          Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_1);
-          this.logicalElements.put(_uuid, _pair);
-        }
-      }
-      if (!_matched_1) {
-        if (e instanceof AnnotationPropertyValue) {
-          _matched_1=true;
-          Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-          final Pair<AnnotationPropertyValue, Map<String, String>> pair = new Pair<AnnotationPropertyValue, Map<String, String>>(((AnnotationPropertyValue)e), _emptyMap);
-          this.annotationPropertyValues.put(((AnnotationPropertyValue)e).uuid(), pair);
-        }
-      }
-    };
-    IteratorExtensions.<EObject>forEach(m.eAllContents(), _function);
   }
 }

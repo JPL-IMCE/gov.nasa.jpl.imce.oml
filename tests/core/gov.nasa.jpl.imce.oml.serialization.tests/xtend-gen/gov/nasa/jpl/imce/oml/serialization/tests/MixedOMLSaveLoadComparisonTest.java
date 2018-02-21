@@ -101,7 +101,7 @@ public abstract class MixedOMLSaveLoadComparisonTest {
     try {
       OMLZipResourceSet.doSetup();
       long _currentTimeMillis = System.currentTimeMillis();
-      String _plus = ("./target/oml/" + Long.valueOf(_currentTimeMillis));
+      String _plus = ("target/oml/" + Long.valueOf(_currentTimeMillis));
       this.omlCatalogFile = MixedOMLSaveLoadComparisonTest.createOMLFolder(Paths.get(_plus));
       String _absolutePath = this.omlCatalogFile.getParentFile().getAbsolutePath();
       String _plus_1 = ("file:/" + _absolutePath);
@@ -161,7 +161,22 @@ public abstract class MixedOMLSaveLoadComparisonTest {
         final Resource r1 = _xifexpression;
         r1.getContents().add(ext1);
         r1.save(null);
-        final Resource r2 = this.rs2.getResource(uri, true);
+        Resource _xifexpression_2 = null;
+        boolean _endsWith_2 = uri.toString().endsWith(".oml");
+        if (_endsWith_2) {
+          _xifexpression_2 = this.rs2.createResource(uri, "oml");
+        } else {
+          Resource _xifexpression_3 = null;
+          boolean _endsWith_3 = uri.toString().endsWith(".omlzip");
+          if (_endsWith_3) {
+            _xifexpression_3 = this.rs2.createResource(uri, "omlzip");
+          } else {
+            _xifexpression_3 = this.rs2.createResource(uri);
+          }
+          _xifexpression_2 = _xifexpression_3;
+        }
+        final Resource r2 = _xifexpression_2;
+        r2.load(null);
         OMLResourceCompare.resourceCompare(r1, r2);
       } catch (Throwable _e) {
         throw Exceptions.sneakyThrow(_e);
