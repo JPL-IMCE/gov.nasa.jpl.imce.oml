@@ -48,19 +48,19 @@ import org.eclipse.emf.ecore.resource.ResourceSet
 class OMLZipResource extends ResourceImpl {
 
 	static val String OML_SPECIFICATION_TABLES = "OMLSpecificationTables"
-	
+
 	static def OMLSpecificationTables getOrInitializeOMLSpecificationTables(ResourceSet rs) {
 		if (!rs.loadOptions.containsKey(OML_SPECIFICATION_TABLES)) {
 			val tables = new OMLSpecificationTables
 			rs.loadOptions.put(OML_SPECIFICATION_TABLES, tables)
-			rs.resources.forEach[r |
-				r.contents.forEach[e|
+			rs.resources.forEach [ r |
+				r.contents.forEach [ e |
 					switch e {
 						Extent: {
 							e.modules.forEach[m|tables.includeModule(m)]
-  						}
-  					}
-  				]
+						}
+					}
+				]
 			]
 		}
 		val tables = rs.loadOptions.get(OML_SPECIFICATION_TABLES)
@@ -68,16 +68,16 @@ class OMLZipResource extends ResourceImpl {
 			OMLSpecificationTables:
 				tables
 			default:
-				throw new IllegalArgumentException('''OMLZipResource.initializeOMLSpecificationTables: should be already initialized, instead got: «tables»''')		
+				throw new IllegalArgumentException('''OMLZipResource.initializeOMLSpecificationTables: should be already initialized, instead got: «tables»''')
 		}
 	}
-	
+
 	static def void clearOMLSpecificationTables(ResourceSet rs) {
 		if (!rs.loadOptions.containsKey(OML_SPECIFICATION_TABLES))
 			throw new IllegalArgumentException('''OMLZipResource.initializeOMLSpecificationTables: not initialized!''')
 		rs.loadOptions.remove(OML_SPECIFICATION_TABLES)
 	}
-	
+
 	private static val Map<Object, Object> defaultOptions = {
 		val options = new HashMap<Object, Object>()
 		options.put("file.extension", "omlzip")
@@ -128,7 +128,8 @@ class OMLZipResource extends ResourceImpl {
 						throw new IllegalArgumentException('''OMLZipResource.load(options) the entry for «URIConverter::OPTION_RESPONSE» must be a Map<Object,Object>!''')
 				}
 			}
-		val effectiveOptions = new CatalogURIConverter.OptionsMap(URIConverter::OPTION_RESPONSE, response, options, defaultLoadOptions)
+		val effectiveOptions = new CatalogURIConverter.OptionsMap(URIConverter::OPTION_RESPONSE, response, options,
+			defaultLoadOptions)
 		val rs = getResourceSet
 		switch rs {
 			OMLZipResourceSet: {
@@ -188,7 +189,6 @@ class OMLZipResource extends ResourceImpl {
 								} else
 									throw new IllegalArgumentException(
 										"OMLZipResource.load() requires a non-null 'file.extension' option: " + uri)
-						
 						}
 					}
 					default:
@@ -215,42 +215,41 @@ class OMLZipResource extends ResourceImpl {
 		try {
 			if (1 != contents.size)
 				throw new IllegalArgumentException(
-					"OMLZipResource should have 1 OML Extent but it has " + contents.size +
-						" toplevel EObjects instead.")
-					val root = contents.get(0)
-					switch root {
-						Extent:
-							OMLSpecificationTables.save(root, os)
-						default:
-							throw new IllegalArgumentException(
-								"OMLZipResource should have 1 OML Extent but it has " + (root?.eClass?.name ?: "null"))
-					}
-				} finally {
-					os.close
-				}
+					'''OMLZipResource should have 1 OML Extent but it has «contents.size» toplevel EObjects instead.''')
+					
+			val root = contents.get(0)
+			switch root {
+				Extent:
+					OMLSpecificationTables.save(root, os)
+				default:
+					throw new IllegalArgumentException(
+						"OMLZipResource should have 1 OML Extent but it has " + (root?.eClass?.name ?: "null"))
 			}
-
-			public static val Pattern KeyValue = Pattern.compile(
-				"\"([^\"]*)\":(null|\"(.*?)\"|\\{\"literalType\":\"[^\"]*\",\"value\":\\[\"(\\\\\\\"|\\n|\\r|[^\"]+?)\"(,\"(\\\\\\\"|\\n|\\r|[^\"]+?)\")*\\]\\}|\\[\"(\\\\\\\"|\\n|\\r|[^\"]+?)\"(,\"(\\\\\\\"|\\n|\\r|[^\"]+?)\")*\\]),?")
-
-			protected static def ArrayList<Map<String, String>> lines2tuples(ArrayList<String> lines) {
-				val list = new ArrayList<Map<String, String>>()
-				while (!lines.empty) {
-					val line = lines.remove(lines.size - 1)
-					val map = new HashMap<String, String>()
-					Assert.isTrue(line.startsWith("{"))
-					Assert.isTrue(line.endsWith("}"))
-					val keyValues = line.substring(1, line.length - 1)
-					val m = KeyValue.matcher(keyValues)
-					while (m.find()) {
-						val key = m.group(1)
-						val value = m.group(3) ?: m.group(2)
-						map.put(key, value)
-					}
-					list.add(map)
-				}
-				return list
-			}
-
+		} finally {
+			os.close
 		}
-		
+	}
+
+	public static val Pattern KeyValue = Pattern.compile(
+		"\"([^\"]*)\":(null|\"(.*?)\"|\\{\"literalType\":\"[^\"]*\",\"value\":\\[\"(\\\\\\\"|\\n|\\r|[^\"]+?)\"(,\"(\\\\\\\"|\\n|\\r|[^\"]+?)\")*\\]\\}|\\[\"(\\\\\\\"|\\n|\\r|[^\"]+?)\"(,\"(\\\\\\\"|\\n|\\r|[^\"]+?)\")*\\]),?")
+
+	protected static def ArrayList<Map<String, String>> lines2tuples(ArrayList<String> lines) {
+		val list = new ArrayList<Map<String, String>>()
+		while (!lines.empty) {
+			val line = lines.remove(lines.size - 1)
+			val map = new HashMap<String, String>()
+			Assert.isTrue(line.startsWith("{"))
+			Assert.isTrue(line.endsWith("}"))
+			val keyValues = line.substring(1, line.length - 1)
+			val m = KeyValue.matcher(keyValues)
+			while (m.find()) {
+				val key = m.group(1)
+				val value = m.group(3) ?: m.group(2)
+				map.put(key, value)
+			}
+			list.add(map)
+		}
+		return list
+	}
+
+}
