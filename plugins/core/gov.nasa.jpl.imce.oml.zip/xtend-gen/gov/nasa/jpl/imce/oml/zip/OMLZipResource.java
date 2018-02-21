@@ -202,7 +202,8 @@ public class OMLZipResource extends ResourceImpl {
       _xifexpression = _xblockexpression;
     }
     final Map<?, ?> response = _xifexpression;
-    final CatalogURIConverter.OptionsMap effectiveOptions = new CatalogURIConverter.OptionsMap(URIConverter.OPTION_RESPONSE, response, options, this.defaultLoadOptions);
+    final CatalogURIConverter.OptionsMap effectiveOptions = new CatalogURIConverter.OptionsMap(URIConverter.OPTION_RESPONSE, response, options, 
+      this.defaultLoadOptions);
     final ResourceSet rs = this.getResourceSet();
     boolean _matched = false;
     if (rs instanceof OMLZipResourceSet) {
@@ -424,11 +425,12 @@ public class OMLZipResource extends ResourceImpl {
       int _size = this.contents.size();
       boolean _notEquals = (1 != _size);
       if (_notEquals) {
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("OMLZipResource should have 1 OML Extent but it has ");
         int _size_1 = this.contents.size();
-        String _plus = ("OMLZipResource should have 1 OML Extent but it has " + Integer.valueOf(_size_1));
-        String _plus_1 = (_plus + 
-          " toplevel EObjects instead.");
-        throw new IllegalArgumentException(_plus_1);
+        _builder.append(_size_1);
+        _builder.append(" toplevel EObjects instead.");
+        throw new IllegalArgumentException(_builder.toString());
       }
       final EObject root = this.contents.get(0);
       boolean _matched = false;
@@ -451,8 +453,8 @@ public class OMLZipResource extends ResourceImpl {
         } else {
           _elvis = "null";
         }
-        String _plus_2 = ("OMLZipResource should have 1 OML Extent but it has " + _elvis);
-        throw new IllegalArgumentException(_plus_2);
+        String _plus = ("OMLZipResource should have 1 OML Extent but it has " + _elvis);
+        throw new IllegalArgumentException(_plus);
       }
     } finally {
       os.close();
