@@ -12,3 +12,136 @@ gov.nasa.jpl.imce.oml.tycho 0.9.3 is an API-breaking change from 0.9.2
 
 ### Reified Relationship Specialization
 
+#### Changes pertaining to `ReifiedRelationship` and `ReifiedRelationshipSpecializationAxiom`
+
+For explanations about these changes, see: https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/238
+
+The context of the changes from 0.9.2 to 0.9.3 involves the following abstractions in OML that remain unchanged:
+
+```
+abstract class ElementCrossReferenceTuple ...
+
+abstract class TermAxiom ...
+
+abstract class SpecializationAxiom extends TermAxiom, ElementCrossReferenceTuple { ... }
+
+abstract class Predicate  ...
+
+abstract class RestrictableRelationship extends Predicate { ... }
+
+class ForwardProperty extends RestrictableRelationship { ... }
+
+class InverseProperty extends RestrictableRelationship { ... }
+
+abstract class Term ...
+
+abstract class DirectedBinaryRelationshipKind extends Term { ... }
+
+abstract class Entity extends Term ...
+
+abstract class ConceptualEntity extends Entity {}
+
+abstract class SpecializationAxiom extends TermAxiom, ElementCrossReferenceTuple {
+  op Entity[1] child()
+  op Entity[1] parent()
+}
+```
+
+##### `EntityRelationship` in 0.9.3:
+
+To enable defining a specialization of a `ReifiedRelationship` with minimal specification footprint,
+it is necessary to split the characteristics required for a `ReifiedRelationship` but not for a specialization
+into a separate abstraction as shown below:
+
+
+```
+abstract class EntityRelationship extends Term, DirectedBinaryRelationshipKind {
+  refers Entity[1] source
+  refers Entity[1] target
+}
+
+abstract class CharacterizedEntityRelationship extends EntityRelationship {
+  boolean[1] isFunctional
+  boolean[1] isInverseFunctional
+  boolean[1] isEssential
+  boolean[1] isInverseEssential
+  boolean[1] isSymmetric
+  boolean[1] isAsymmetric
+  boolean[1] isReflexive
+  boolean[1] isIrreflexive
+  boolean[1] isTransitive
+}
+```
+
+##### `EntityRelationship` in 0.9.2:
+
+Effectively, the 0.9.3 version of `EntityRelationship` extended with `CharacterizedEntityRelationship`
+corresponds to the 0.9.2 version of `EntityRelationship`:
+
+```
+abstract class EntityRelationship extends Term, DirectedBinaryRelationshipKind {
+  refers Entity[1] source
+  refers Entity[1] target
+  boolean[1] isFunctional
+  boolean[1] isInverseFunctional
+  boolean[1] isEssential
+  boolean[1] isInverseEssential
+  boolean[1] isSymmetric
+  boolean[1] isAsymmetric
+  boolean[1] isReflexive
+  boolean[1] isIrreflexive
+  boolean[1] isTransitive
+}
+```
+
+##### Unreified & Reified Relationship variants in 0.9.3:
+
+0.9.3 introduces a new abstraction, `ConceptualRelationship` for the unspecialized & specialized variants of a reified relationship.
+
+`UnreifiedRelationship` and `ReifiedRelationship` are functionally equivalent to their 0.9.2 counterparts
+thanks to the new `CharacterizedEntityRelationship` extension.
+
+```
+class UnreifiedRelationship extends CharacterizedEntityRelationship, RestrictableRelationship {}
+
+abstract class ConceptualRelationship extends ConceptualEntity, EntityRelationship {}
+
+class ReifiedRelationship extends ConceptualRelationship, CharacterizedEntityRelationship { 
+  contains ForwardProperty[1] forwardProperty opposite reifiedRelationship
+  contains InverseProperty[?] inverseProperty opposite reifiedRelationship
+}
+```
+
+##### Unreified & Reified Relationship variants in 0.9.2:
+
+```
+class UnreifiedRelationship extends EntityRelationship, RestrictableRelationship {}
+
+class ReifiedRelationship extends EntityRelationship, ConceptualEntity {
+  contains ForwardProperty[1] forwardProperty opposite reifiedRelationship
+  contains InverseProperty[?] inverseProperty opposite reifiedRelationship
+}
+```
+
+#### Reified Relationship Specialization in 0.9.3:
+
+`SpecializedReifiedRelationship` is a hybrid:
+- like `ReifiedRelationship` in 0.9.3, it is also a kind of `ConceptualRelationship`
+- like `ReifiedRelationshipSpecializationAxiom` in 0.9.2, it is also a kind of `SpecializationAxiom`
+
+```
+class SpecializedReifiedRelationship extends ConceptualRelationship, SpecializationAxiom {
+  refers ConceptualRelationship[1] general
+  op Entity[1] child() { this }
+  op Entity[1] parent() { general }
+}
+```
+
+##### Reified Relationship Specialization in 0.9.2:
+
+```
+class ReifiedRelationshipSpecializationAxiom extends SpecializationAxiom {
+  refers ReifiedRelationship[1] subRelationship
+  refers ReifiedRelationship[1] superRelationship
+}
+```
