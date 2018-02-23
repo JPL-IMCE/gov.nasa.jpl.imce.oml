@@ -3634,9 +3634,18 @@ public class OMLSpecificationTables {
         final Map<String, String> kv = kvs.remove(_minus);
         final BinaryScalarRestriction oml = this.omlTerminologiesFactory.createBinaryScalarRestriction();
         final String uuid = kv.remove("uuid");
-        oml.setLength(OMLTables.toPositiveIntegerLiteral(kv.remove("length")));
-        oml.setMinLength(OMLTables.toPositiveIntegerLiteral(kv.remove("minLength")));
-        oml.setMaxLength(OMLTables.toPositiveIntegerLiteral(kv.remove("maxLength")));
+        final String length_value = kv.remove("length");
+        if (((null != length_value) && (length_value.length() > 0))) {
+          oml.setLength(OMLTables.toPositiveIntegerLiteral(length_value));
+        }
+        final String minLength_value = kv.remove("minLength");
+        if (((null != minLength_value) && (minLength_value.length() > 0))) {
+          oml.setMinLength(OMLTables.toPositiveIntegerLiteral(minLength_value));
+        }
+        final String maxLength_value = kv.remove("maxLength");
+        if (((null != maxLength_value) && (maxLength_value.length() > 0))) {
+          oml.setMaxLength(OMLTables.toPositiveIntegerLiteral(maxLength_value));
+        }
         oml.setName(OMLTables.toLocalName(kv.remove("name")));
         final Pair<BinaryScalarRestriction, Map<String, String>> pair = new Pair<BinaryScalarRestriction, Map<String, String>>(oml, kv);
         this.binaryScalarRestrictions.put(uuid, pair);
@@ -3654,11 +3663,23 @@ public class OMLSpecificationTables {
         final Map<String, String> kv = kvs.remove(_minus);
         final IRIScalarRestriction oml = this.omlTerminologiesFactory.createIRIScalarRestriction();
         final String uuid = kv.remove("uuid");
-        oml.setLength(OMLTables.toPositiveIntegerLiteral(kv.remove("length")));
-        oml.setMinLength(OMLTables.toPositiveIntegerLiteral(kv.remove("minLength")));
-        oml.setMaxLength(OMLTables.toPositiveIntegerLiteral(kv.remove("maxLength")));
+        final String length_value = kv.remove("length");
+        if (((null != length_value) && (length_value.length() > 0))) {
+          oml.setLength(OMLTables.toPositiveIntegerLiteral(length_value));
+        }
+        final String minLength_value = kv.remove("minLength");
+        if (((null != minLength_value) && (minLength_value.length() > 0))) {
+          oml.setMinLength(OMLTables.toPositiveIntegerLiteral(minLength_value));
+        }
+        final String maxLength_value = kv.remove("maxLength");
+        if (((null != maxLength_value) && (maxLength_value.length() > 0))) {
+          oml.setMaxLength(OMLTables.toPositiveIntegerLiteral(maxLength_value));
+        }
         oml.setName(OMLTables.toLocalName(kv.remove("name")));
-        oml.setPattern(OMLTables.toLiteralPattern(kv.remove("pattern")));
+        final String pattern_value = kv.remove("pattern");
+        if (((null != pattern_value) && (pattern_value.length() > 0))) {
+          oml.setPattern(OMLTables.toLiteralPattern(pattern_value));
+        }
         final Pair<IRIScalarRestriction, Map<String, String>> pair = new Pair<IRIScalarRestriction, Map<String, String>>(oml, kv);
         this.iriScalarRestrictions.put(uuid, pair);
         this.includeIRIScalarRestrictions(uuid, oml);
@@ -3675,10 +3696,22 @@ public class OMLSpecificationTables {
         final Map<String, String> kv = kvs.remove(_minus);
         final NumericScalarRestriction oml = this.omlTerminologiesFactory.createNumericScalarRestriction();
         final String uuid = kv.remove("uuid");
-        oml.setMinExclusive(OMLTables.toLiteralNumber(kv.remove("minExclusive")));
-        oml.setMinInclusive(OMLTables.toLiteralNumber(kv.remove("minInclusive")));
-        oml.setMaxExclusive(OMLTables.toLiteralNumber(kv.remove("maxExclusive")));
-        oml.setMaxInclusive(OMLTables.toLiteralNumber(kv.remove("maxInclusive")));
+        final String minExclusive_value = kv.remove("minExclusive");
+        if (((null != minExclusive_value) && (minExclusive_value.length() > 0))) {
+          oml.setMinExclusive(OMLTables.toLiteralNumber(minExclusive_value));
+        }
+        final String minInclusive_value = kv.remove("minInclusive");
+        if (((null != minInclusive_value) && (minInclusive_value.length() > 0))) {
+          oml.setMinInclusive(OMLTables.toLiteralNumber(minInclusive_value));
+        }
+        final String maxExclusive_value = kv.remove("maxExclusive");
+        if (((null != maxExclusive_value) && (maxExclusive_value.length() > 0))) {
+          oml.setMaxExclusive(OMLTables.toLiteralNumber(maxExclusive_value));
+        }
+        final String maxInclusive_value = kv.remove("maxInclusive");
+        if (((null != maxInclusive_value) && (maxInclusive_value.length() > 0))) {
+          oml.setMaxInclusive(OMLTables.toLiteralNumber(maxInclusive_value));
+        }
         oml.setName(OMLTables.toLocalName(kv.remove("name")));
         final Pair<NumericScalarRestriction, Map<String, String>> pair = new Pair<NumericScalarRestriction, Map<String, String>>(oml, kv);
         this.numericScalarRestrictions.put(uuid, pair);
@@ -3696,12 +3729,27 @@ public class OMLSpecificationTables {
         final Map<String, String> kv = kvs.remove(_minus);
         final PlainLiteralScalarRestriction oml = this.omlTerminologiesFactory.createPlainLiteralScalarRestriction();
         final String uuid = kv.remove("uuid");
-        oml.setLength(OMLTables.toPositiveIntegerLiteral(kv.remove("length")));
-        oml.setMinLength(OMLTables.toPositiveIntegerLiteral(kv.remove("minLength")));
-        oml.setMaxLength(OMLTables.toPositiveIntegerLiteral(kv.remove("maxLength")));
+        final String length_value = kv.remove("length");
+        if (((null != length_value) && (length_value.length() > 0))) {
+          oml.setLength(OMLTables.toPositiveIntegerLiteral(length_value));
+        }
+        final String minLength_value = kv.remove("minLength");
+        if (((null != minLength_value) && (minLength_value.length() > 0))) {
+          oml.setMinLength(OMLTables.toPositiveIntegerLiteral(minLength_value));
+        }
+        final String maxLength_value = kv.remove("maxLength");
+        if (((null != maxLength_value) && (maxLength_value.length() > 0))) {
+          oml.setMaxLength(OMLTables.toPositiveIntegerLiteral(maxLength_value));
+        }
         oml.setName(OMLTables.toLocalName(kv.remove("name")));
-        oml.setLangRange(OMLTables.toLanguageTagDataType(kv.remove("langRange")));
-        oml.setPattern(OMLTables.toLiteralPattern(kv.remove("pattern")));
+        final String langRange_value = kv.remove("langRange");
+        if (((null != langRange_value) && (langRange_value.length() > 0))) {
+          oml.setLangRange(OMLTables.toLanguageTagDataType(langRange_value));
+        }
+        final String pattern_value = kv.remove("pattern");
+        if (((null != pattern_value) && (pattern_value.length() > 0))) {
+          oml.setPattern(OMLTables.toLiteralPattern(pattern_value));
+        }
         final Pair<PlainLiteralScalarRestriction, Map<String, String>> pair = new Pair<PlainLiteralScalarRestriction, Map<String, String>>(oml, kv);
         this.plainLiteralScalarRestrictions.put(uuid, pair);
         this.includePlainLiteralScalarRestrictions(uuid, oml);
@@ -3752,11 +3800,23 @@ public class OMLSpecificationTables {
         final Map<String, String> kv = kvs.remove(_minus);
         final StringScalarRestriction oml = this.omlTerminologiesFactory.createStringScalarRestriction();
         final String uuid = kv.remove("uuid");
-        oml.setLength(OMLTables.toPositiveIntegerLiteral(kv.remove("length")));
-        oml.setMinLength(OMLTables.toPositiveIntegerLiteral(kv.remove("minLength")));
-        oml.setMaxLength(OMLTables.toPositiveIntegerLiteral(kv.remove("maxLength")));
+        final String length_value = kv.remove("length");
+        if (((null != length_value) && (length_value.length() > 0))) {
+          oml.setLength(OMLTables.toPositiveIntegerLiteral(length_value));
+        }
+        final String minLength_value = kv.remove("minLength");
+        if (((null != minLength_value) && (minLength_value.length() > 0))) {
+          oml.setMinLength(OMLTables.toPositiveIntegerLiteral(minLength_value));
+        }
+        final String maxLength_value = kv.remove("maxLength");
+        if (((null != maxLength_value) && (maxLength_value.length() > 0))) {
+          oml.setMaxLength(OMLTables.toPositiveIntegerLiteral(maxLength_value));
+        }
         oml.setName(OMLTables.toLocalName(kv.remove("name")));
-        oml.setPattern(OMLTables.toLiteralPattern(kv.remove("pattern")));
+        final String pattern_value = kv.remove("pattern");
+        if (((null != pattern_value) && (pattern_value.length() > 0))) {
+          oml.setPattern(OMLTables.toLiteralPattern(pattern_value));
+        }
         final Pair<StringScalarRestriction, Map<String, String>> pair = new Pair<StringScalarRestriction, Map<String, String>>(oml, kv);
         this.stringScalarRestrictions.put(uuid, pair);
         this.includeStringScalarRestrictions(uuid, oml);
@@ -3790,10 +3850,22 @@ public class OMLSpecificationTables {
         final Map<String, String> kv = kvs.remove(_minus);
         final TimeScalarRestriction oml = this.omlTerminologiesFactory.createTimeScalarRestriction();
         final String uuid = kv.remove("uuid");
-        oml.setMinExclusive(OMLTables.toLiteralDateTime(kv.remove("minExclusive")));
-        oml.setMinInclusive(OMLTables.toLiteralDateTime(kv.remove("minInclusive")));
-        oml.setMaxExclusive(OMLTables.toLiteralDateTime(kv.remove("maxExclusive")));
-        oml.setMaxInclusive(OMLTables.toLiteralDateTime(kv.remove("maxInclusive")));
+        final String minExclusive_value = kv.remove("minExclusive");
+        if (((null != minExclusive_value) && (minExclusive_value.length() > 0))) {
+          oml.setMinExclusive(OMLTables.toLiteralDateTime(minExclusive_value));
+        }
+        final String minInclusive_value = kv.remove("minInclusive");
+        if (((null != minInclusive_value) && (minInclusive_value.length() > 0))) {
+          oml.setMinInclusive(OMLTables.toLiteralDateTime(minInclusive_value));
+        }
+        final String maxExclusive_value = kv.remove("maxExclusive");
+        if (((null != maxExclusive_value) && (maxExclusive_value.length() > 0))) {
+          oml.setMaxExclusive(OMLTables.toLiteralDateTime(maxExclusive_value));
+        }
+        final String maxInclusive_value = kv.remove("maxInclusive");
+        if (((null != maxInclusive_value) && (maxInclusive_value.length() > 0))) {
+          oml.setMaxInclusive(OMLTables.toLiteralDateTime(maxInclusive_value));
+        }
         oml.setName(OMLTables.toLocalName(kv.remove("name")));
         final Pair<TimeScalarRestriction, Map<String, String>> pair = new Pair<TimeScalarRestriction, Map<String, String>>(oml, kv);
         this.timeScalarRestrictions.put(uuid, pair);
