@@ -198,6 +198,11 @@ public class TerminologyBoxItemProvider extends ModuleItemProvider {
 		newChildDescriptors.add
 			(createChildParameter
 				(TerminologiesPackage.Literals.TERMINOLOGY_BOX__BOX_STATEMENTS,
+				 TerminologiesFactory.eINSTANCE.createSpecializedReifiedRelationship()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TerminologiesPackage.Literals.TERMINOLOGY_BOX__BOX_STATEMENTS,
 				 TerminologiesFactory.eINSTANCE.createUnreifiedRelationship()));
 
 		newChildDescriptors.add
@@ -254,11 +259,6 @@ public class TerminologyBoxItemProvider extends ModuleItemProvider {
 			(createChildParameter
 				(TerminologiesPackage.Literals.TERMINOLOGY_BOX__BOX_STATEMENTS,
 				 TerminologiesFactory.eINSTANCE.createConceptSpecializationAxiom()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(TerminologiesPackage.Literals.TERMINOLOGY_BOX__BOX_STATEMENTS,
-				 TerminologiesFactory.eINSTANCE.createReifiedRelationshipSpecializationAxiom()));
 
 		newChildDescriptors.add
 			(createChildParameter

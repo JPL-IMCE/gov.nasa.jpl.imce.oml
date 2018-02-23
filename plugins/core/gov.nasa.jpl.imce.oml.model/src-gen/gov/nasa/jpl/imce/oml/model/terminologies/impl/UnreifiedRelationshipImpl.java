@@ -38,7 +38,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class UnreifiedRelationshipImpl extends EntityRelationshipImpl implements UnreifiedRelationship {
+public class UnreifiedRelationshipImpl extends CharacterizedEntityRelationshipImpl implements UnreifiedRelationship {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

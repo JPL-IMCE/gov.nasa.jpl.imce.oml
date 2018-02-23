@@ -30,8 +30,6 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
  * This is the item provider adapter for a {@link gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship} object.
@@ -63,15 +61,6 @@ public class EntityRelationshipItemProvider extends TermItemProvider {
 
 			addSourcePropertyDescriptor(object);
 			addTargetPropertyDescriptor(object);
-			addIsFunctionalPropertyDescriptor(object);
-			addIsInverseFunctionalPropertyDescriptor(object);
-			addIsEssentialPropertyDescriptor(object);
-			addIsInverseEssentialPropertyDescriptor(object);
-			addIsSymmetricPropertyDescriptor(object);
-			addIsAsymmetricPropertyDescriptor(object);
-			addIsReflexivePropertyDescriptor(object);
-			addIsIrreflexivePropertyDescriptor(object);
-			addIsTransitivePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -121,204 +110,6 @@ public class EntityRelationshipItemProvider extends TermItemProvider {
 	}
 
 	/**
-	 * This adds a property descriptor for the Is Functional feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addIsFunctionalPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_EntityRelationship_isFunctional_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_EntityRelationship_isFunctional_feature", "_UI_EntityRelationship_type"),
-				 TerminologiesPackage.Literals.ENTITY_RELATIONSHIP__IS_FUNCTIONAL,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Is Inverse Functional feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addIsInverseFunctionalPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_EntityRelationship_isInverseFunctional_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_EntityRelationship_isInverseFunctional_feature", "_UI_EntityRelationship_type"),
-				 TerminologiesPackage.Literals.ENTITY_RELATIONSHIP__IS_INVERSE_FUNCTIONAL,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Is Essential feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addIsEssentialPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_EntityRelationship_isEssential_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_EntityRelationship_isEssential_feature", "_UI_EntityRelationship_type"),
-				 TerminologiesPackage.Literals.ENTITY_RELATIONSHIP__IS_ESSENTIAL,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Is Inverse Essential feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addIsInverseEssentialPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_EntityRelationship_isInverseEssential_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_EntityRelationship_isInverseEssential_feature", "_UI_EntityRelationship_type"),
-				 TerminologiesPackage.Literals.ENTITY_RELATIONSHIP__IS_INVERSE_ESSENTIAL,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Is Symmetric feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addIsSymmetricPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_EntityRelationship_isSymmetric_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_EntityRelationship_isSymmetric_feature", "_UI_EntityRelationship_type"),
-				 TerminologiesPackage.Literals.ENTITY_RELATIONSHIP__IS_SYMMETRIC,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Is Asymmetric feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addIsAsymmetricPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_EntityRelationship_isAsymmetric_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_EntityRelationship_isAsymmetric_feature", "_UI_EntityRelationship_type"),
-				 TerminologiesPackage.Literals.ENTITY_RELATIONSHIP__IS_ASYMMETRIC,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Is Reflexive feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addIsReflexivePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_EntityRelationship_isReflexive_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_EntityRelationship_isReflexive_feature", "_UI_EntityRelationship_type"),
-				 TerminologiesPackage.Literals.ENTITY_RELATIONSHIP__IS_REFLEXIVE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Is Irreflexive feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addIsIrreflexivePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_EntityRelationship_isIrreflexive_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_EntityRelationship_isIrreflexive_feature", "_UI_EntityRelationship_type"),
-				 TerminologiesPackage.Literals.ENTITY_RELATIONSHIP__IS_IRREFLEXIVE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Is Transitive feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addIsTransitivePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_EntityRelationship_isTransitive_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_EntityRelationship_isTransitive_feature", "_UI_EntityRelationship_type"),
-				 TerminologiesPackage.Literals.ENTITY_RELATIONSHIP__IS_TRANSITIVE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -343,20 +134,6 @@ public class EntityRelationshipItemProvider extends TermItemProvider {
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
-
-		switch (notification.getFeatureID(EntityRelationship.class)) {
-			case TerminologiesPackage.ENTITY_RELATIONSHIP__IS_FUNCTIONAL:
-			case TerminologiesPackage.ENTITY_RELATIONSHIP__IS_INVERSE_FUNCTIONAL:
-			case TerminologiesPackage.ENTITY_RELATIONSHIP__IS_ESSENTIAL:
-			case TerminologiesPackage.ENTITY_RELATIONSHIP__IS_INVERSE_ESSENTIAL:
-			case TerminologiesPackage.ENTITY_RELATIONSHIP__IS_SYMMETRIC:
-			case TerminologiesPackage.ENTITY_RELATIONSHIP__IS_ASYMMETRIC:
-			case TerminologiesPackage.ENTITY_RELATIONSHIP__IS_REFLEXIVE:
-			case TerminologiesPackage.ENTITY_RELATIONSHIP__IS_IRREFLEXIVE:
-			case TerminologiesPackage.ENTITY_RELATIONSHIP__IS_TRANSITIVE:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-		}
 		super.notifyChanged(notification);
 	}
 

@@ -28,7 +28,8 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * An OML ReifiedRelationship is an OML ConceptualEntity and a kind of OML EntityRelationship
+ * An OML ReifiedRelationship is an OML ConceptualRelationship
+ * and a kind of OML CharacterizedEntityRelationship
  * where an instance has an intrinsic identity. This means that
  * an OML ReifiedRelationship can be involved as the domain or the
  * range of another OML EntityRelationship as well as the
@@ -47,7 +48,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface ReifiedRelationship extends EntityRelationship, ConceptualEntity {
+public interface ReifiedRelationship extends ConceptualRelationship, CharacterizedEntityRelationship {
 	/**
 	 * Returns the value of the '<em><b>Forward Property</b></em>' containment reference.
 	 * It is bidirectional and its opposite is '{@link gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty#getReifiedRelationship <em>Reified Relationship</em>}'.

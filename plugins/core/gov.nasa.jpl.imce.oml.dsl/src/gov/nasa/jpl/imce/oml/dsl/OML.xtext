@@ -136,7 +136,8 @@ AtomicEntity returns Entity:
 	Concept;
 	
 EntityRelationship returns EntityRelationship:
-	ReifiedRelationship | 
+	ReifiedRelationship |
+	SpecializedReifiedRelationship |
 	UnreifiedRelationship;
 	
 Datatype returns Datatype:
@@ -186,8 +187,7 @@ EntityStructuredDataPropertyRestrictionAxiom returns EntityStructuredDataPropert
 	
 SpecializationAxiom returns SpecializationAxiom:
 	ConceptSpecializationAxiom | 
-	AspectSpecializationAxiom | 
-	ReifiedRelationshipSpecializationAxiom; 
+	AspectSpecializationAxiom; 
 	
 TerminologyBundleStatement returns TerminologyBundleStatement:
 	RootConceptTaxonomyAxiom;
@@ -244,6 +244,13 @@ ForwardProperty returns ForwardProperty:
 InverseProperty returns InverseProperty:
 	name=ID;
 	
+SpecializedReifiedRelationship returns SpecializedReifiedRelationship:
+	( annotations+=AnnotationPropertyValue )*
+	'reifiedRelationship' name=ID 'extends' general=[ConceptualRelationship|Reference] '{'
+	'source' '=' source=[Entity|Reference]
+	'target' '=' target=[Entity|Reference]
+	'}';
+
 UnreifiedRelationship returns UnreifiedRelationship:
 	( annotations+=AnnotationPropertyValue )*
 	'unreifiedRelationship' name=ID '{'
@@ -367,10 +374,6 @@ AspectSpecializationAxiom returns AspectSpecializationAxiom:
 ConceptSpecializationAxiom returns ConceptSpecializationAxiom:
 	( annotations+=AnnotationPropertyValue )*
 	subConcept=[Concept|Reference] 'extendsConcept' superConcept=[Concept|Reference];
-
-ReifiedRelationshipSpecializationAxiom returns ReifiedRelationshipSpecializationAxiom:
-	( annotations+=AnnotationPropertyValue )*
-	subRelationship=[ReifiedRelationship|Reference] 'extendsRelationship' superRelationship=[ReifiedRelationship|Reference];
 
 // 2 Sub*PropertyOfAxioms
 
@@ -587,7 +590,7 @@ ConceptInstance returns ConceptInstance:
 
 ReifiedRelationshipInstance returns ReifiedRelationshipInstance:
 	( annotations+=AnnotationPropertyValue )*
-	'reifiedRelationshipInstance' '(' name=ID 'is-a' singletonReifiedRelationshipClassifier=[ReifiedRelationship|Reference] ')';
+	'reifiedRelationshipInstance' '(' name=ID 'is-a' singletonConceptualRelationshipClassifier=[ConceptualRelationship|Reference] ')';
 
 ReifiedRelationshipInstanceDomain returns ReifiedRelationshipInstanceDomain:
 	( annotations+=AnnotationPropertyValue )*

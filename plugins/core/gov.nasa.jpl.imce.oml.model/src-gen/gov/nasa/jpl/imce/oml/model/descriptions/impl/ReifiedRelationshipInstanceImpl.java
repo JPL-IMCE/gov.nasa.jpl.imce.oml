@@ -25,7 +25,7 @@ import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsPackage;
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstance;
 
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptualEntity;
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship;
+import gov.nasa.jpl.imce.oml.model.terminologies.ConceptualRelationship;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -52,21 +52,21 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * </p>
  * <ul>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.ReifiedRelationshipInstanceImpl#getDescriptionBox <em>Description Box</em>}</li>
- *   <li>{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.ReifiedRelationshipInstanceImpl#getSingletonReifiedRelationshipClassifier <em>Singleton Reified Relationship Classifier</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.descriptions.impl.ReifiedRelationshipInstanceImpl#getSingletonConceptualRelationshipClassifier <em>Singleton Conceptual Relationship Classifier</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class ReifiedRelationshipInstanceImpl extends ConceptualEntitySingletonInstanceImpl implements ReifiedRelationshipInstance {
 	/**
-	 * The cached value of the '{@link #getSingletonReifiedRelationshipClassifier() <em>Singleton Reified Relationship Classifier</em>}' reference.
+	 * The cached value of the '{@link #getSingletonConceptualRelationshipClassifier() <em>Singleton Conceptual Relationship Classifier</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSingletonReifiedRelationshipClassifier()
+	 * @see #getSingletonConceptualRelationshipClassifier()
 	 * @generated
 	 * @ordered
 	 */
-	protected ReifiedRelationship singletonReifiedRelationshipClassifier;
+	protected ConceptualRelationship singletonConceptualRelationshipClassifier;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -143,16 +143,16 @@ public class ReifiedRelationshipInstanceImpl extends ConceptualEntitySingletonIn
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ReifiedRelationship getSingletonReifiedRelationshipClassifier() {
-		if (singletonReifiedRelationshipClassifier != null && ((EObject)singletonReifiedRelationshipClassifier).eIsProxy()) {
-			InternalEObject oldSingletonReifiedRelationshipClassifier = (InternalEObject)singletonReifiedRelationshipClassifier;
-			singletonReifiedRelationshipClassifier = (ReifiedRelationship)eResolveProxy(oldSingletonReifiedRelationshipClassifier);
-			if (singletonReifiedRelationshipClassifier != oldSingletonReifiedRelationshipClassifier) {
+	public ConceptualRelationship getSingletonConceptualRelationshipClassifier() {
+		if (singletonConceptualRelationshipClassifier != null && ((EObject)singletonConceptualRelationshipClassifier).eIsProxy()) {
+			InternalEObject oldSingletonConceptualRelationshipClassifier = (InternalEObject)singletonConceptualRelationshipClassifier;
+			singletonConceptualRelationshipClassifier = (ConceptualRelationship)eResolveProxy(oldSingletonConceptualRelationshipClassifier);
+			if (singletonConceptualRelationshipClassifier != oldSingletonConceptualRelationshipClassifier) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DescriptionsPackage.REIFIED_RELATIONSHIP_INSTANCE__SINGLETON_REIFIED_RELATIONSHIP_CLASSIFIER, oldSingletonReifiedRelationshipClassifier, singletonReifiedRelationshipClassifier));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DescriptionsPackage.REIFIED_RELATIONSHIP_INSTANCE__SINGLETON_CONCEPTUAL_RELATIONSHIP_CLASSIFIER, oldSingletonConceptualRelationshipClassifier, singletonConceptualRelationshipClassifier));
 			}
 		}
-		return singletonReifiedRelationshipClassifier;
+		return singletonConceptualRelationshipClassifier;
 	}
 
 	/**
@@ -160,8 +160,8 @@ public class ReifiedRelationshipInstanceImpl extends ConceptualEntitySingletonIn
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ReifiedRelationship basicGetSingletonReifiedRelationshipClassifier() {
-		return singletonReifiedRelationshipClassifier;
+	public ConceptualRelationship basicGetSingletonConceptualRelationshipClassifier() {
+		return singletonConceptualRelationshipClassifier;
 	}
 
 	/**
@@ -169,11 +169,11 @@ public class ReifiedRelationshipInstanceImpl extends ConceptualEntitySingletonIn
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSingletonReifiedRelationshipClassifier(ReifiedRelationship newSingletonReifiedRelationshipClassifier) {
-		ReifiedRelationship oldSingletonReifiedRelationshipClassifier = singletonReifiedRelationshipClassifier;
-		singletonReifiedRelationshipClassifier = newSingletonReifiedRelationshipClassifier;
+	public void setSingletonConceptualRelationshipClassifier(ConceptualRelationship newSingletonConceptualRelationshipClassifier) {
+		ConceptualRelationship oldSingletonConceptualRelationshipClassifier = singletonConceptualRelationshipClassifier;
+		singletonConceptualRelationshipClassifier = newSingletonConceptualRelationshipClassifier;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DescriptionsPackage.REIFIED_RELATIONSHIP_INSTANCE__SINGLETON_REIFIED_RELATIONSHIP_CLASSIFIER, oldSingletonReifiedRelationshipClassifier, singletonReifiedRelationshipClassifier));
+			eNotify(new ENotificationImpl(this, Notification.SET, DescriptionsPackage.REIFIED_RELATIONSHIP_INSTANCE__SINGLETON_CONCEPTUAL_RELATIONSHIP_CLASSIFIER, oldSingletonConceptualRelationshipClassifier, singletonConceptualRelationshipClassifier));
 	}
 
 	/**
@@ -182,7 +182,7 @@ public class ReifiedRelationshipInstanceImpl extends ConceptualEntitySingletonIn
 	 * @generated
 	 */
 	public ConceptualEntity conceptualEntitySingletonClassifier() {
-		return this.getSingletonReifiedRelationshipClassifier();
+		return this.getSingletonConceptualRelationshipClassifier();
 	}
 
 	/**
@@ -258,9 +258,9 @@ public class ReifiedRelationshipInstanceImpl extends ConceptualEntitySingletonIn
 			case DescriptionsPackage.REIFIED_RELATIONSHIP_INSTANCE__DESCRIPTION_BOX:
 				if (resolve) return getDescriptionBox();
 				return basicGetDescriptionBox();
-			case DescriptionsPackage.REIFIED_RELATIONSHIP_INSTANCE__SINGLETON_REIFIED_RELATIONSHIP_CLASSIFIER:
-				if (resolve) return getSingletonReifiedRelationshipClassifier();
-				return basicGetSingletonReifiedRelationshipClassifier();
+			case DescriptionsPackage.REIFIED_RELATIONSHIP_INSTANCE__SINGLETON_CONCEPTUAL_RELATIONSHIP_CLASSIFIER:
+				if (resolve) return getSingletonConceptualRelationshipClassifier();
+				return basicGetSingletonConceptualRelationshipClassifier();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -276,8 +276,8 @@ public class ReifiedRelationshipInstanceImpl extends ConceptualEntitySingletonIn
 			case DescriptionsPackage.REIFIED_RELATIONSHIP_INSTANCE__DESCRIPTION_BOX:
 				setDescriptionBox((DescriptionBox)newValue);
 				return;
-			case DescriptionsPackage.REIFIED_RELATIONSHIP_INSTANCE__SINGLETON_REIFIED_RELATIONSHIP_CLASSIFIER:
-				setSingletonReifiedRelationshipClassifier((ReifiedRelationship)newValue);
+			case DescriptionsPackage.REIFIED_RELATIONSHIP_INSTANCE__SINGLETON_CONCEPTUAL_RELATIONSHIP_CLASSIFIER:
+				setSingletonConceptualRelationshipClassifier((ConceptualRelationship)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -294,8 +294,8 @@ public class ReifiedRelationshipInstanceImpl extends ConceptualEntitySingletonIn
 			case DescriptionsPackage.REIFIED_RELATIONSHIP_INSTANCE__DESCRIPTION_BOX:
 				setDescriptionBox((DescriptionBox)null);
 				return;
-			case DescriptionsPackage.REIFIED_RELATIONSHIP_INSTANCE__SINGLETON_REIFIED_RELATIONSHIP_CLASSIFIER:
-				setSingletonReifiedRelationshipClassifier((ReifiedRelationship)null);
+			case DescriptionsPackage.REIFIED_RELATIONSHIP_INSTANCE__SINGLETON_CONCEPTUAL_RELATIONSHIP_CLASSIFIER:
+				setSingletonConceptualRelationshipClassifier((ConceptualRelationship)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -311,8 +311,8 @@ public class ReifiedRelationshipInstanceImpl extends ConceptualEntitySingletonIn
 		switch (featureID) {
 			case DescriptionsPackage.REIFIED_RELATIONSHIP_INSTANCE__DESCRIPTION_BOX:
 				return basicGetDescriptionBox() != null;
-			case DescriptionsPackage.REIFIED_RELATIONSHIP_INSTANCE__SINGLETON_REIFIED_RELATIONSHIP_CLASSIFIER:
-				return singletonReifiedRelationshipClassifier != null;
+			case DescriptionsPackage.REIFIED_RELATIONSHIP_INSTANCE__SINGLETON_CONCEPTUAL_RELATIONSHIP_CLASSIFIER:
+				return singletonConceptualRelationshipClassifier != null;
 		}
 		return super.eIsSet(featureID);
 	}

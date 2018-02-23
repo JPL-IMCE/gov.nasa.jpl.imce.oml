@@ -25,7 +25,7 @@ package gov.nasa.jpl.imce.oml.model.terminologies;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * An OML UnreifiedRelationship is a kind of OML EntityRelationship
+ * An OML UnreifiedRelationship is a kind of OML CharacterizedEntityRelationship
  * where an instance has no intrinsic identity but rather structural
  * equivalence semantics as a tuple of references. This means
  * that an OML UnreifiedRelationship cannot be involved as the domain
@@ -37,7 +37,7 @@ package gov.nasa.jpl.imce.oml.model.terminologies;
  * @model
  * @generated
  */
-public interface UnreifiedRelationship extends EntityRelationship, RestrictableRelationship {
+public interface UnreifiedRelationship extends CharacterizedEntityRelationship, RestrictableRelationship {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

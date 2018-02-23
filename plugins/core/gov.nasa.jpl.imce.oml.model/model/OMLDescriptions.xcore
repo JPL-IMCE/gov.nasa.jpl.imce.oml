@@ -62,10 +62,10 @@ import gov.nasa.jpl.imce.oml.model.common.UUID
 import gov.nasa.jpl.imce.oml.model.common.ValueCrossReferenceTuple
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptualEntity
+import gov.nasa.jpl.imce.oml.model.terminologies.ConceptualRelationship
 import gov.nasa.jpl.imce.oml.model.terminologies.DataRange
 import gov.nasa.jpl.imce.oml.model.terminologies.DataRelationshipToScalar
 import gov.nasa.jpl.imce.oml.model.terminologies.DataRelationshipToStructure
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox
 import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataProperty
@@ -523,7 +523,7 @@ class ConceptInstance extends ConceptualEntitySingletonInstance {
 }
 
 /*
- * An OML ReifiedRelationshipInstance is an OML ConceptualEntitySingletonInstance  classified by an OML ReifiedRelationship.
+ * An OML ReifiedRelationshipInstance is an OML ConceptualEntitySingletonInstance  classified by an OML ConceptualRelationship.
  */
 @Glossary
 class ReifiedRelationshipInstance extends ConceptualEntitySingletonInstance {
@@ -531,11 +531,11 @@ class ReifiedRelationshipInstance extends ConceptualEntitySingletonInstance {
 	@Factory
 	container DescriptionBox[1] descriptionBox opposite reifiedRelationshipInstances
 	
-	refers ReifiedRelationship[1] singletonReifiedRelationshipClassifier
+	refers ConceptualRelationship[1] singletonConceptualRelationshipClassifier
 	
 	@NotSchema
 	@Override
-	op ConceptualEntity[1] conceptualEntitySingletonClassifier() { singletonReifiedRelationshipClassifier }
+	op ConceptualEntity[1] conceptualEntitySingletonClassifier() { singletonConceptualRelationshipClassifier }
 	
 	@Scala(code="extent.descriptionBoxOfReifiedRelationshipInstance.get(this)")
 	@ImplicitExtent

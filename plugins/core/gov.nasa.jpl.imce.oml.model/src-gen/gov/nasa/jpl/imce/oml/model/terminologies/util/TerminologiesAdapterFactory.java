@@ -154,6 +154,10 @@ public class TerminologiesAdapterFactory extends AdapterFactoryImpl {
 				return createEntityRelationshipAdapter();
 			}
 			@Override
+			public Adapter caseCharacterizedEntityRelationship(CharacterizedEntityRelationship object) {
+				return createCharacterizedEntityRelationshipAdapter();
+			}
+			@Override
 			public Adapter caseRestrictableRelationship(RestrictableRelationship object) {
 				return createRestrictableRelationshipAdapter();
 			}
@@ -166,8 +170,16 @@ public class TerminologiesAdapterFactory extends AdapterFactoryImpl {
 				return createInversePropertyAdapter();
 			}
 			@Override
+			public Adapter caseConceptualRelationship(ConceptualRelationship object) {
+				return createConceptualRelationshipAdapter();
+			}
+			@Override
 			public Adapter caseReifiedRelationship(ReifiedRelationship object) {
 				return createReifiedRelationshipAdapter();
+			}
+			@Override
+			public Adapter caseSpecializedReifiedRelationship(SpecializedReifiedRelationship object) {
+				return createSpecializedReifiedRelationshipAdapter();
 			}
 			@Override
 			public Adapter caseUnreifiedRelationship(UnreifiedRelationship object) {
@@ -276,10 +288,6 @@ public class TerminologiesAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseConceptSpecializationAxiom(ConceptSpecializationAxiom object) {
 				return createConceptSpecializationAxiomAdapter();
-			}
-			@Override
-			public Adapter caseReifiedRelationshipSpecializationAxiom(ReifiedRelationshipSpecializationAxiom object) {
-				return createReifiedRelationshipSpecializationAxiomAdapter();
 			}
 			@Override
 			public Adapter caseSubObjectPropertyOfAxiom(SubObjectPropertyOfAxiom object) {
@@ -634,6 +642,20 @@ public class TerminologiesAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.terminologies.CharacterizedEntityRelationship <em>Characterized Entity Relationship</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.CharacterizedEntityRelationship
+	 * @generated
+	 */
+	public Adapter createCharacterizedEntityRelationshipAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictableRelationship <em>Restrictable Relationship</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -676,6 +698,20 @@ public class TerminologiesAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.terminologies.ConceptualRelationship <em>Conceptual Relationship</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ConceptualRelationship
+	 * @generated
+	 */
+	public Adapter createConceptualRelationshipAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship <em>Reified Relationship</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -686,6 +722,20 @@ public class TerminologiesAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createReifiedRelationshipAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.terminologies.SpecializedReifiedRelationship <em>Specialized Reified Relationship</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.SpecializedReifiedRelationship
+	 * @generated
+	 */
+	public Adapter createSpecializedReifiedRelationshipAdapter() {
 		return null;
 	}
 
@@ -1064,20 +1114,6 @@ public class TerminologiesAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createConceptSpecializationAxiomAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom <em>Reified Relationship Specialization Axiom</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom
-	 * @generated
-	 */
-	public Adapter createReifiedRelationshipSpecializationAxiomAdapter() {
 		return null;
 	}
 

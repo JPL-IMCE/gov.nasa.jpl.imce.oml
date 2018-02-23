@@ -29,13 +29,18 @@ import java.nio.charset.StandardCharsets
 import java.util.ArrayList
 import java.util.Collections
 import java.util.HashMap
+import java.util.HashSet
+import java.util.LinkedList
 import java.util.Map
+import java.util.Queue
+import java.util.Set
 import org.apache.commons.compress.archivers.zip.ZipArchiveEntry
 import org.apache.commons.compress.archivers.zip.ZipArchiveOutputStream
 import org.apache.commons.compress.archivers.zip.ZipFile
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.resource.ResourceSet
+import org.eclipse.xtext.resource.XtextResource
 import org.eclipse.xtext.xbase.lib.Pair
 
 import gov.nasa.jpl.imce.oml.model.extensions.OMLTables
@@ -74,6 +79,7 @@ import gov.nasa.jpl.imce.oml.model.terminologies.BinaryScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.ChainRule
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptSpecializationAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.ConceptualRelationship
 import gov.nasa.jpl.imce.oml.model.terminologies.DataRange
 import gov.nasa.jpl.imce.oml.model.terminologies.DataRelationshipToScalar
 import gov.nasa.jpl.imce.oml.model.terminologies.DataRelationshipToStructure
@@ -94,7 +100,6 @@ import gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.Predicate
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictableRelationship
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyContext
@@ -105,6 +110,7 @@ import gov.nasa.jpl.imce.oml.model.terminologies.ScalarDataProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.SegmentPredicate
+import gov.nasa.jpl.imce.oml.model.terminologies.SpecializedReifiedRelationship
 import gov.nasa.jpl.imce.oml.model.terminologies.StringScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.SubDataPropertyOfAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.SubObjectPropertyOfAxiom
@@ -157,6 +163,7 @@ class OMLSpecificationTables {
   protected val Map<String, Pair<ReifiedRelationship, Map<String,String>>> reifiedRelationships
   protected val Map<String, Pair<ForwardProperty, Map<String,String>>> forwardProperties
   protected val Map<String, Pair<InverseProperty, Map<String,String>>> inverseProperties
+  protected val Map<String, Pair<SpecializedReifiedRelationship, Map<String,String>>> specializedReifiedRelationships
   protected val Map<String, Pair<UnreifiedRelationship, Map<String,String>>> unreifiedRelationships
   protected val Map<String, Pair<ChainRule, Map<String,String>>> chainRules
   protected val Map<String, Pair<RuleBodySegment, Map<String,String>>> ruleBodySegments
@@ -171,7 +178,6 @@ class OMLSpecificationTables {
   protected val Map<String, Pair<RestrictionScalarDataPropertyValue, Map<String,String>>> restrictionScalarDataPropertyValues
   protected val Map<String, Pair<AspectSpecializationAxiom, Map<String,String>>> aspectSpecializationAxioms
   protected val Map<String, Pair<ConceptSpecializationAxiom, Map<String,String>>> conceptSpecializationAxioms
-  protected val Map<String, Pair<ReifiedRelationshipSpecializationAxiom, Map<String,String>>> reifiedRelationshipSpecializationAxioms
   protected val Map<String, Pair<SubDataPropertyOfAxiom, Map<String,String>>> subDataPropertyOfAxioms
   protected val Map<String, Pair<SubObjectPropertyOfAxiom, Map<String,String>>> subObjectPropertyOfAxioms
   protected val Map<String, Pair<RootConceptTaxonomyAxiom, Map<String,String>>> rootConceptTaxonomyAxioms
@@ -192,6 +198,7 @@ class OMLSpecificationTables {
   protected val Map<String, Pair<LogicalElement, Map<String,String>>> logicalElements
   protected val Map<String, Pair<Entity, Map<String,String>>> entities
   protected val Map<String, Pair<EntityRelationship, Map<String,String>>> entityRelationships
+  protected val Map<String, Pair<ConceptualRelationship, Map<String,String>>> conceptualRelationships
   protected val Map<String, Pair<DataRange, Map<String,String>>> dataRanges 
   protected val Map<String, Pair<DataRelationshipToScalar, Map<String,String>>> dataRelationshipToScalars
   protected val Map<String, Pair<DataRelationshipToStructure, Map<String,String>>> dataRelationshipToStructures
@@ -209,7 +216,17 @@ class OMLSpecificationTables {
   extension BundlesFactory omlBundlesFactory
   extension DescriptionsFactory omlDescriptionsFactory
   
+  protected val Queue<String> iriLoadQueue
+  protected val Set<String> visitedIRIs
+  protected val Queue<Module> moduleQueue
+  protected val Set<Module> visitedModules
+  
   new() {
+	iriLoadQueue = new LinkedList<String>()
+	visitedIRIs = new HashSet<String>()
+	moduleQueue = new LinkedList<Module>()
+	visitedModules = new HashSet<Module>()
+
   	omlCommonFactory = CommonFactory.eINSTANCE
   	omlTerminologiesFactory = TerminologiesFactory.eINSTANCE
   	omlGraphsFactory = GraphsFactory.eINSTANCE
@@ -246,6 +263,7 @@ class OMLSpecificationTables {
   	reifiedRelationships = new HashMap<String, Pair<ReifiedRelationship, Map<String,String>>>()
   	forwardProperties = new HashMap<String, Pair<ForwardProperty, Map<String,String>>>()
   	inverseProperties = new HashMap<String, Pair<InverseProperty, Map<String,String>>>()
+  	specializedReifiedRelationships = new HashMap<String, Pair<SpecializedReifiedRelationship, Map<String,String>>>()
   	unreifiedRelationships = new HashMap<String, Pair<UnreifiedRelationship, Map<String,String>>>()
   	chainRules = new HashMap<String, Pair<ChainRule, Map<String,String>>>()
   	ruleBodySegments = new HashMap<String, Pair<RuleBodySegment, Map<String,String>>>()
@@ -260,7 +278,6 @@ class OMLSpecificationTables {
   	restrictionScalarDataPropertyValues = new HashMap<String, Pair<RestrictionScalarDataPropertyValue, Map<String,String>>>()
   	aspectSpecializationAxioms = new HashMap<String, Pair<AspectSpecializationAxiom, Map<String,String>>>()
   	conceptSpecializationAxioms = new HashMap<String, Pair<ConceptSpecializationAxiom, Map<String,String>>>()
-  	reifiedRelationshipSpecializationAxioms = new HashMap<String, Pair<ReifiedRelationshipSpecializationAxiom, Map<String,String>>>()
   	subDataPropertyOfAxioms = new HashMap<String, Pair<SubDataPropertyOfAxiom, Map<String,String>>>()
   	subObjectPropertyOfAxioms = new HashMap<String, Pair<SubObjectPropertyOfAxiom, Map<String,String>>>()
   	rootConceptTaxonomyAxioms = new HashMap<String, Pair<RootConceptTaxonomyAxiom, Map<String,String>>>()
@@ -281,6 +298,7 @@ class OMLSpecificationTables {
     	logicalElements = new HashMap<String, Pair<LogicalElement, Map<String,String>>>()
     entities = new HashMap<String, Pair<Entity, Map<String,String>>>()
     entityRelationships = new HashMap<String, Pair<EntityRelationship, Map<String,String>>>()
+    conceptualRelationships = new HashMap<String, Pair<ConceptualRelationship, Map<String,String>>>()
     dataRanges = new HashMap<String, Pair<DataRange, Map<String,String>>>()
     dataRelationshipToScalars = new HashMap<String, Pair<DataRelationshipToScalar, Map<String,String>>>()
     dataRelationshipToStructures = new HashMap<String, Pair<DataRelationshipToStructure, Map<String,String>>>()
@@ -535,6 +553,14 @@ class OMLSpecificationTables {
     } finally {
       zos.closeArchiveEntry()
     }
+    // SpecializedReifiedRelationship
+    entry = new ZipArchiveEntry("SpecializedReifiedRelationships.json")
+    zos.putArchiveEntry(entry)
+    try {
+      zos.write(specializedReifiedRelationshipsByteArray(e))
+    } finally {
+      zos.closeArchiveEntry()
+    }
     // UnreifiedRelationship
     entry = new ZipArchiveEntry("UnreifiedRelationships.json")
     zos.putArchiveEntry(entry)
@@ -644,14 +670,6 @@ class OMLSpecificationTables {
     zos.putArchiveEntry(entry)
     try {
       zos.write(conceptSpecializationAxiomsByteArray(e))
-    } finally {
-      zos.closeArchiveEntry()
-    }
-    // ReifiedRelationshipSpecializationAxiom
-    entry = new ZipArchiveEntry("ReifiedRelationshipSpecializationAxioms.json")
-    zos.putArchiveEntry(entry)
-    try {
-      zos.write(reifiedRelationshipSpecializationAxiomsByteArray(e))
     } finally {
       zos.closeArchiveEntry()
     }
@@ -1716,6 +1734,44 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
+  protected static def byte[] specializedReifiedRelationshipsByteArray(Extent e) {
+  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
+  	val PrintWriter pw = new PrintWriter(bos)
+  	OMLTables.specializedReifiedRelationships(e).forEach[it |
+  	  pw.print("{")
+      pw.print("\"uuid\":")
+      pw.print("\"")
+      pw.print(it.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"tboxUUID\":")
+      pw.print("\"")
+      pw.print(it.tbox.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"sourceUUID\":")
+      pw.print("\"")
+      pw.print(it.source.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"targetUUID\":")
+      pw.print("\"")
+      pw.print(it.target.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"generalUUID\":")
+      pw.print("\"")
+      pw.print(it.general.uuid())
+      pw.print("\"")
+      pw.print(",")
+      pw.print("\"name\":")
+      pw.print(OMLTables.toString(it.name()))
+      pw.println("}")
+    ]
+    pw.close()
+    return bos.toByteArray()
+  }
+  
   protected static def byte[] unreifiedRelationshipsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
@@ -2253,36 +2309,6 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  protected static def byte[] reifiedRelationshipSpecializationAxiomsByteArray(Extent e) {
-  	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
-  	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.reifiedRelationshipSpecializationAxioms(e).forEach[it |
-  	  pw.print("{")
-      pw.print("\"uuid\":")
-      pw.print("\"")
-      pw.print(it.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"tboxUUID\":")
-      pw.print("\"")
-      pw.print(it.tbox.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"superRelationshipUUID\":")
-      pw.print("\"")
-      pw.print(it.superRelationship.uuid())
-      pw.print("\"")
-      pw.print(",")
-      pw.print("\"subRelationshipUUID\":")
-      pw.print("\"")
-      pw.print(it.subRelationship.uuid())
-      pw.print("\"")
-      pw.println("}")
-    ]
-    pw.close()
-    return bos.toByteArray()
-  }
-  
   protected static def byte[] subDataPropertyOfAxiomsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
@@ -2459,9 +2485,9 @@ class OMLSpecificationTables {
       pw.print(it.descriptionBox().uuid())
       pw.print("\"")
       pw.print(",")
-      pw.print("\"singletonReifiedRelationshipClassifierUUID\":")
+      pw.print("\"singletonConceptualRelationshipClassifierUUID\":")
       pw.print("\"")
-      pw.print(it.singletonReifiedRelationshipClassifier.uuid())
+      pw.print(it.singletonConceptualRelationshipClassifier.uuid())
       pw.print("\"")
       pw.print(",")
       pw.print("\"name\":")
@@ -2807,6 +2833,8 @@ class OMLSpecificationTables {
   	      tables.readForwardProperties(ext, lines)
   	    case "InverseProperties.json":
   	      tables.readInverseProperties(ext, lines)
+  	    case "SpecializedReifiedRelationships.json":
+  	      tables.readSpecializedReifiedRelationships(ext, lines)
   	    case "UnreifiedRelationships.json":
   	      tables.readUnreifiedRelationships(ext, lines)
   	    case "ChainRules.json":
@@ -2835,8 +2863,6 @@ class OMLSpecificationTables {
   	      tables.readAspectSpecializationAxioms(ext, lines)
   	    case "ConceptSpecializationAxioms.json":
   	      tables.readConceptSpecializationAxioms(ext, lines)
-  	    case "ReifiedRelationshipSpecializationAxioms.json":
-  	      tables.readReifiedRelationshipSpecializationAxioms(ext, lines)
   	    case "SubDataPropertyOfAxioms.json":
   	      tables.readSubDataPropertyOfAxioms(ext, lines)
   	    case "SubObjectPropertyOfAxioms.json":
@@ -2871,7 +2897,28 @@ class OMLSpecificationTables {
           throw new IllegalArgumentException("OMLSpecificationTables.load(): unrecognized table name: "+ze.name)
       }
     ]
-    zip.close()
+    zip.close()   
+    
+    var Boolean more = false
+    do {
+        more = false
+        	if (!tables.iriLoadQueue.empty) {
+        		val iri = tables.iriLoadQueue.remove
+        		if (tables.visitedIRIs.add(iri)) {
+        			more = true
+     	 	    	tables.loadOMLZipResource(rs, URI.createURI(iri))	
+     	 	}
+        }
+        	
+        	if (!tables.moduleQueue.empty) {
+        		val m = tables.moduleQueue.remove
+        		if (tables.visitedModules.add(m)) {
+        			more = true
+        			tables.includeModule(m)
+        		}
+        	}
+    } while (more)
+
     tables.resolve(rs, r)
   }
 
@@ -2883,8 +2930,7 @@ class OMLSpecificationTables {
   	  ext.getModules.add(oml)
   	  val uuid = kv.remove("uuid")
   	  oml.kind = OMLTables.toTerminologyKind(kv.remove("kind"))
-  	  oml.iri = OMLTables.toIRI(kv.remove("iri"))
-  	  val pair = new Pair<TerminologyGraph, Map<String,String>>(oml, kv)
+  	  oml.iri = OMLTables.toIRI(kv.remove("iri"))  	  val pair = new Pair<TerminologyGraph, Map<String,String>>(oml, kv)
   	  terminologyGraphs.put(uuid, pair)
   	  includeTerminologyGraphs(uuid, oml)
   	}
@@ -2898,8 +2944,7 @@ class OMLSpecificationTables {
   	  ext.getModules.add(oml)
   	  val uuid = kv.remove("uuid")
   	  oml.kind = OMLTables.toTerminologyKind(kv.remove("kind"))
-  	  oml.iri = OMLTables.toIRI(kv.remove("iri"))
-  	  val pair = new Pair<Bundle, Map<String,String>>(oml, kv)
+  	  oml.iri = OMLTables.toIRI(kv.remove("iri"))  	  val pair = new Pair<Bundle, Map<String,String>>(oml, kv)
   	  bundles.put(uuid, pair)
   	  includeBundles(uuid, oml)
   	}
@@ -2913,8 +2958,7 @@ class OMLSpecificationTables {
   	  ext.getModules.add(oml)
   	  val uuid = kv.remove("uuid")
   	  oml.kind = OMLTables.toDescriptionKind(kv.remove("kind"))
-  	  oml.iri = OMLTables.toIRI(kv.remove("iri"))
-  	  val pair = new Pair<DescriptionBox, Map<String,String>>(oml, kv)
+  	  oml.iri = OMLTables.toIRI(kv.remove("iri"))  	  val pair = new Pair<DescriptionBox, Map<String,String>>(oml, kv)
   	  descriptionBoxes.put(uuid, pair)
   	  includeDescriptionBoxes(uuid, oml)
   	}
@@ -2927,8 +2971,7 @@ class OMLSpecificationTables {
   	  val oml = createAnnotationProperty()
   	  val uuid = kv.remove("uuid")
   	  oml.iri = OMLTables.toIRI(kv.remove("iri"))
-  	  oml.abbrevIRI = OMLTables.toAbbrevIRI(kv.remove("abbrevIRI"))
-  	  val pair = new Pair<AnnotationProperty, Map<String,String>>(oml, kv)
+  	  oml.abbrevIRI = OMLTables.toAbbrevIRI(kv.remove("abbrevIRI"))  	  val pair = new Pair<AnnotationProperty, Map<String,String>>(oml, kv)
   	  annotationProperties.put(uuid, pair)
   	  includeAnnotationProperties(uuid, oml)
   	}
@@ -2940,8 +2983,7 @@ class OMLSpecificationTables {
   	  val kv = kvs.remove(kvs.size - 1)
   	  val oml = createAspect()
   	  val uuid = kv.remove("uuid")
-  	  oml.name = OMLTables.toLocalName(kv.remove("name"))
-  	  val pair = new Pair<Aspect, Map<String,String>>(oml, kv)
+  	  oml.name = OMLTables.toLocalName(kv.remove("name"))  	  val pair = new Pair<Aspect, Map<String,String>>(oml, kv)
   	  aspects.put(uuid, pair)
   	  includeAspects(uuid, oml)
   	}
@@ -2953,8 +2995,7 @@ class OMLSpecificationTables {
   	  val kv = kvs.remove(kvs.size - 1)
   	  val oml = createConcept()
   	  val uuid = kv.remove("uuid")
-  	  oml.name = OMLTables.toLocalName(kv.remove("name"))
-  	  val pair = new Pair<Concept, Map<String,String>>(oml, kv)
+  	  oml.name = OMLTables.toLocalName(kv.remove("name"))  	  val pair = new Pair<Concept, Map<String,String>>(oml, kv)
   	  concepts.put(uuid, pair)
   	  includeConcepts(uuid, oml)
   	}
@@ -2966,8 +3007,7 @@ class OMLSpecificationTables {
   	  val kv = kvs.remove(kvs.size - 1)
   	  val oml = createScalar()
   	  val uuid = kv.remove("uuid")
-  	  oml.name = OMLTables.toLocalName(kv.remove("name"))
-  	  val pair = new Pair<Scalar, Map<String,String>>(oml, kv)
+  	  oml.name = OMLTables.toLocalName(kv.remove("name"))  	  val pair = new Pair<Scalar, Map<String,String>>(oml, kv)
   	  scalars.put(uuid, pair)
   	  includeScalars(uuid, oml)
   	}
@@ -2979,8 +3019,7 @@ class OMLSpecificationTables {
   	  val kv = kvs.remove(kvs.size - 1)
   	  val oml = createStructure()
   	  val uuid = kv.remove("uuid")
-  	  oml.name = OMLTables.toLocalName(kv.remove("name"))
-  	  val pair = new Pair<Structure, Map<String,String>>(oml, kv)
+  	  oml.name = OMLTables.toLocalName(kv.remove("name"))  	  val pair = new Pair<Structure, Map<String,String>>(oml, kv)
   	  structures.put(uuid, pair)
   	  includeStructures(uuid, oml)
   	}
@@ -2992,6 +3031,10 @@ class OMLSpecificationTables {
   	  val kv = kvs.remove(kvs.size - 1)
   	  val oml = createConceptDesignationTerminologyAxiom()
   	  val uuid = kv.remove("uuid")
+  	  val String designatedTerminologyIRI = kv.get("designatedTerminologyIRI")
+  	  if (null === designatedTerminologyIRI)
+  	  	throw new IllegalArgumentException("readConceptDesignationTerminologyAxioms: missing 'designatedTerminologyIRI' in: "+kv.toString)
+  	  iriLoadQueue.add(designatedTerminologyIRI)
   	  val pair = new Pair<ConceptDesignationTerminologyAxiom, Map<String,String>>(oml, kv)
   	  conceptDesignationTerminologyAxioms.put(uuid, pair)
   	  includeConceptDesignationTerminologyAxioms(uuid, oml)
@@ -3004,6 +3047,10 @@ class OMLSpecificationTables {
   	  val kv = kvs.remove(kvs.size - 1)
   	  val oml = createTerminologyExtensionAxiom()
   	  val uuid = kv.remove("uuid")
+  	  val String extendedTerminologyIRI = kv.get("extendedTerminologyIRI")
+  	  if (null === extendedTerminologyIRI)
+  	  	throw new IllegalArgumentException("readTerminologyExtensionAxioms: missing 'extendedTerminologyIRI' in: "+kv.toString)
+  	  iriLoadQueue.add(extendedTerminologyIRI)
   	  val pair = new Pair<TerminologyExtensionAxiom, Map<String,String>>(oml, kv)
   	  terminologyExtensionAxioms.put(uuid, pair)
   	  includeTerminologyExtensionAxioms(uuid, oml)
@@ -3016,6 +3063,10 @@ class OMLSpecificationTables {
   	  val kv = kvs.remove(kvs.size - 1)
   	  val oml = createTerminologyNestingAxiom()
   	  val uuid = kv.remove("uuid")
+  	  val String nestingTerminologyIRI = kv.get("nestingTerminologyIRI")
+  	  if (null === nestingTerminologyIRI)
+  	  	throw new IllegalArgumentException("readTerminologyNestingAxioms: missing 'nestingTerminologyIRI' in: "+kv.toString)
+  	  iriLoadQueue.add(nestingTerminologyIRI)
   	  val pair = new Pair<TerminologyNestingAxiom, Map<String,String>>(oml, kv)
   	  terminologyNestingAxioms.put(uuid, pair)
   	  includeTerminologyNestingAxioms(uuid, oml)
@@ -3028,6 +3079,10 @@ class OMLSpecificationTables {
   	  val kv = kvs.remove(kvs.size - 1)
   	  val oml = createBundledTerminologyAxiom()
   	  val uuid = kv.remove("uuid")
+  	  val String bundledTerminologyIRI = kv.get("bundledTerminologyIRI")
+  	  if (null === bundledTerminologyIRI)
+  	  	throw new IllegalArgumentException("readBundledTerminologyAxioms: missing 'bundledTerminologyIRI' in: "+kv.toString)
+  	  iriLoadQueue.add(bundledTerminologyIRI)
   	  val pair = new Pair<BundledTerminologyAxiom, Map<String,String>>(oml, kv)
   	  bundledTerminologyAxioms.put(uuid, pair)
   	  includeBundledTerminologyAxioms(uuid, oml)
@@ -3040,6 +3095,10 @@ class OMLSpecificationTables {
   	  val kv = kvs.remove(kvs.size - 1)
   	  val oml = createDescriptionBoxExtendsClosedWorldDefinitions()
   	  val uuid = kv.remove("uuid")
+  	  val String closedWorldDefinitionsIRI = kv.get("closedWorldDefinitionsIRI")
+  	  if (null === closedWorldDefinitionsIRI)
+  	  	throw new IllegalArgumentException("readDescriptionBoxExtendsClosedWorldDefinitions: missing 'closedWorldDefinitionsIRI' in: "+kv.toString)
+  	  iriLoadQueue.add(closedWorldDefinitionsIRI)
   	  val pair = new Pair<DescriptionBoxExtendsClosedWorldDefinitions, Map<String,String>>(oml, kv)
   	  descriptionBoxExtendsClosedWorldDefinitions.put(uuid, pair)
   	  includeDescriptionBoxExtendsClosedWorldDefinitions(uuid, oml)
@@ -3052,6 +3111,10 @@ class OMLSpecificationTables {
   	  val kv = kvs.remove(kvs.size - 1)
   	  val oml = createDescriptionBoxRefinement()
   	  val uuid = kv.remove("uuid")
+  	  val String refinedDescriptionBoxIRI = kv.get("refinedDescriptionBoxIRI")
+  	  if (null === refinedDescriptionBoxIRI)
+  	  	throw new IllegalArgumentException("readDescriptionBoxRefinements: missing 'refinedDescriptionBoxIRI' in: "+kv.toString)
+  	  iriLoadQueue.add(refinedDescriptionBoxIRI)
   	  val pair = new Pair<DescriptionBoxRefinement, Map<String,String>>(oml, kv)
   	  descriptionBoxRefinements.put(uuid, pair)
   	  includeDescriptionBoxRefinements(uuid, oml)
@@ -3067,8 +3130,7 @@ class OMLSpecificationTables {
   	  oml.length = OMLTables.toPositiveIntegerLiteral(kv.remove("length"))
   	  oml.minLength = OMLTables.toPositiveIntegerLiteral(kv.remove("minLength"))
   	  oml.maxLength = OMLTables.toPositiveIntegerLiteral(kv.remove("maxLength"))
-  	  oml.name = OMLTables.toLocalName(kv.remove("name"))
-  	  val pair = new Pair<BinaryScalarRestriction, Map<String,String>>(oml, kv)
+  	  oml.name = OMLTables.toLocalName(kv.remove("name"))  	  val pair = new Pair<BinaryScalarRestriction, Map<String,String>>(oml, kv)
   	  binaryScalarRestrictions.put(uuid, pair)
   	  includeBinaryScalarRestrictions(uuid, oml)
   	}
@@ -3084,8 +3146,7 @@ class OMLSpecificationTables {
   	  oml.minLength = OMLTables.toPositiveIntegerLiteral(kv.remove("minLength"))
   	  oml.maxLength = OMLTables.toPositiveIntegerLiteral(kv.remove("maxLength"))
   	  oml.name = OMLTables.toLocalName(kv.remove("name"))
-  	  oml.pattern = OMLTables.toLiteralPattern(kv.remove("pattern"))
-  	  val pair = new Pair<IRIScalarRestriction, Map<String,String>>(oml, kv)
+  	  oml.pattern = OMLTables.toLiteralPattern(kv.remove("pattern"))  	  val pair = new Pair<IRIScalarRestriction, Map<String,String>>(oml, kv)
   	  iriScalarRestrictions.put(uuid, pair)
   	  includeIRIScalarRestrictions(uuid, oml)
   	}
@@ -3097,12 +3158,8 @@ class OMLSpecificationTables {
   	  val kv = kvs.remove(kvs.size - 1)
   	  val oml = createNumericScalarRestriction()
   	  val uuid = kv.remove("uuid")
-  	  oml.minExclusive = OMLTables.toLiteralNumber(kv.remove("minExclusive"))
-  	  oml.minInclusive = OMLTables.toLiteralNumber(kv.remove("minInclusive"))
-  	  oml.maxExclusive = OMLTables.toLiteralNumber(kv.remove("maxExclusive"))
-  	  oml.maxInclusive = OMLTables.toLiteralNumber(kv.remove("maxInclusive"))
-  	  oml.name = OMLTables.toLocalName(kv.remove("name"))
-  	  val pair = new Pair<NumericScalarRestriction, Map<String,String>>(oml, kv)
+  	  oml.minExclusive = OMLTables.toLiteralNumber(kv.remove("minExclusive"))  	  oml.minInclusive = OMLTables.toLiteralNumber(kv.remove("minInclusive"))  	  oml.maxExclusive = OMLTables.toLiteralNumber(kv.remove("maxExclusive"))  	  oml.maxInclusive = OMLTables.toLiteralNumber(kv.remove("maxInclusive"))
+  	  oml.name = OMLTables.toLocalName(kv.remove("name"))  	  val pair = new Pair<NumericScalarRestriction, Map<String,String>>(oml, kv)
   	  numericScalarRestrictions.put(uuid, pair)
   	  includeNumericScalarRestrictions(uuid, oml)
   	}
@@ -3119,8 +3176,7 @@ class OMLSpecificationTables {
   	  oml.maxLength = OMLTables.toPositiveIntegerLiteral(kv.remove("maxLength"))
   	  oml.name = OMLTables.toLocalName(kv.remove("name"))
   	  oml.langRange = OMLTables.toLanguageTagDataType(kv.remove("langRange"))
-  	  oml.pattern = OMLTables.toLiteralPattern(kv.remove("pattern"))
-  	  val pair = new Pair<PlainLiteralScalarRestriction, Map<String,String>>(oml, kv)
+  	  oml.pattern = OMLTables.toLiteralPattern(kv.remove("pattern"))  	  val pair = new Pair<PlainLiteralScalarRestriction, Map<String,String>>(oml, kv)
   	  plainLiteralScalarRestrictions.put(uuid, pair)
   	  includePlainLiteralScalarRestrictions(uuid, oml)
   	}
@@ -3132,8 +3188,7 @@ class OMLSpecificationTables {
   	  val kv = kvs.remove(kvs.size - 1)
   	  val oml = createScalarOneOfRestriction()
   	  val uuid = kv.remove("uuid")
-  	  oml.name = OMLTables.toLocalName(kv.remove("name"))
-  	  val pair = new Pair<ScalarOneOfRestriction, Map<String,String>>(oml, kv)
+  	  oml.name = OMLTables.toLocalName(kv.remove("name"))  	  val pair = new Pair<ScalarOneOfRestriction, Map<String,String>>(oml, kv)
   	  scalarOneOfRestrictions.put(uuid, pair)
   	  includeScalarOneOfRestrictions(uuid, oml)
   	}
@@ -3145,8 +3200,7 @@ class OMLSpecificationTables {
   	  val kv = kvs.remove(kvs.size - 1)
   	  val oml = createScalarOneOfLiteralAxiom()
   	  val uuid = kv.remove("uuid")
-  	  oml.value = OMLTables.toLiteralValue(kv.remove("value"))
-  	  val pair = new Pair<ScalarOneOfLiteralAxiom, Map<String,String>>(oml, kv)
+  	  oml.value = OMLTables.toLiteralValue(kv.remove("value"))  	  val pair = new Pair<ScalarOneOfLiteralAxiom, Map<String,String>>(oml, kv)
   	  scalarOneOfLiteralAxioms.put(uuid, pair)
   	  includeScalarOneOfLiteralAxioms(uuid, oml)
   	}
@@ -3162,8 +3216,7 @@ class OMLSpecificationTables {
   	  oml.minLength = OMLTables.toPositiveIntegerLiteral(kv.remove("minLength"))
   	  oml.maxLength = OMLTables.toPositiveIntegerLiteral(kv.remove("maxLength"))
   	  oml.name = OMLTables.toLocalName(kv.remove("name"))
-  	  oml.pattern = OMLTables.toLiteralPattern(kv.remove("pattern"))
-  	  val pair = new Pair<StringScalarRestriction, Map<String,String>>(oml, kv)
+  	  oml.pattern = OMLTables.toLiteralPattern(kv.remove("pattern"))  	  val pair = new Pair<StringScalarRestriction, Map<String,String>>(oml, kv)
   	  stringScalarRestrictions.put(uuid, pair)
   	  includeStringScalarRestrictions(uuid, oml)
   	}
@@ -3175,8 +3228,7 @@ class OMLSpecificationTables {
   	  val kv = kvs.remove(kvs.size - 1)
   	  val oml = createSynonymScalarRestriction()
   	  val uuid = kv.remove("uuid")
-  	  oml.name = OMLTables.toLocalName(kv.remove("name"))
-  	  val pair = new Pair<SynonymScalarRestriction, Map<String,String>>(oml, kv)
+  	  oml.name = OMLTables.toLocalName(kv.remove("name"))  	  val pair = new Pair<SynonymScalarRestriction, Map<String,String>>(oml, kv)
   	  synonymScalarRestrictions.put(uuid, pair)
   	  includeSynonymScalarRestrictions(uuid, oml)
   	}
@@ -3188,12 +3240,8 @@ class OMLSpecificationTables {
   	  val kv = kvs.remove(kvs.size - 1)
   	  val oml = createTimeScalarRestriction()
   	  val uuid = kv.remove("uuid")
-  	  oml.minExclusive = OMLTables.toLiteralDateTime(kv.remove("minExclusive"))
-  	  oml.minInclusive = OMLTables.toLiteralDateTime(kv.remove("minInclusive"))
-  	  oml.maxExclusive = OMLTables.toLiteralDateTime(kv.remove("maxExclusive"))
-  	  oml.maxInclusive = OMLTables.toLiteralDateTime(kv.remove("maxInclusive"))
-  	  oml.name = OMLTables.toLocalName(kv.remove("name"))
-  	  val pair = new Pair<TimeScalarRestriction, Map<String,String>>(oml, kv)
+  	  oml.minExclusive = OMLTables.toLiteralDateTime(kv.remove("minExclusive"))  	  oml.minInclusive = OMLTables.toLiteralDateTime(kv.remove("minInclusive"))  	  oml.maxExclusive = OMLTables.toLiteralDateTime(kv.remove("maxExclusive"))  	  oml.maxInclusive = OMLTables.toLiteralDateTime(kv.remove("maxInclusive"))
+  	  oml.name = OMLTables.toLocalName(kv.remove("name"))  	  val pair = new Pair<TimeScalarRestriction, Map<String,String>>(oml, kv)
   	  timeScalarRestrictions.put(uuid, pair)
   	  includeTimeScalarRestrictions(uuid, oml)
   	}
@@ -3206,8 +3254,7 @@ class OMLSpecificationTables {
   	  val oml = createEntityScalarDataProperty()
   	  val uuid = kv.remove("uuid")
   	  oml.isIdentityCriteria = OMLTables.toEBoolean(kv.remove("isIdentityCriteria"))
-  	  oml.name = OMLTables.toLocalName(kv.remove("name"))
-  	  val pair = new Pair<EntityScalarDataProperty, Map<String,String>>(oml, kv)
+  	  oml.name = OMLTables.toLocalName(kv.remove("name"))  	  val pair = new Pair<EntityScalarDataProperty, Map<String,String>>(oml, kv)
   	  entityScalarDataProperties.put(uuid, pair)
   	  includeEntityScalarDataProperties(uuid, oml)
   	}
@@ -3220,8 +3267,7 @@ class OMLSpecificationTables {
   	  val oml = createEntityStructuredDataProperty()
   	  val uuid = kv.remove("uuid")
   	  oml.isIdentityCriteria = OMLTables.toEBoolean(kv.remove("isIdentityCriteria"))
-  	  oml.name = OMLTables.toLocalName(kv.remove("name"))
-  	  val pair = new Pair<EntityStructuredDataProperty, Map<String,String>>(oml, kv)
+  	  oml.name = OMLTables.toLocalName(kv.remove("name"))  	  val pair = new Pair<EntityStructuredDataProperty, Map<String,String>>(oml, kv)
   	  entityStructuredDataProperties.put(uuid, pair)
   	  includeEntityStructuredDataProperties(uuid, oml)
   	}
@@ -3233,8 +3279,7 @@ class OMLSpecificationTables {
   	  val kv = kvs.remove(kvs.size - 1)
   	  val oml = createScalarDataProperty()
   	  val uuid = kv.remove("uuid")
-  	  oml.name = OMLTables.toLocalName(kv.remove("name"))
-  	  val pair = new Pair<ScalarDataProperty, Map<String,String>>(oml, kv)
+  	  oml.name = OMLTables.toLocalName(kv.remove("name"))  	  val pair = new Pair<ScalarDataProperty, Map<String,String>>(oml, kv)
   	  scalarDataProperties.put(uuid, pair)
   	  includeScalarDataProperties(uuid, oml)
   	}
@@ -3246,8 +3291,7 @@ class OMLSpecificationTables {
   	  val kv = kvs.remove(kvs.size - 1)
   	  val oml = createStructuredDataProperty()
   	  val uuid = kv.remove("uuid")
-  	  oml.name = OMLTables.toLocalName(kv.remove("name"))
-  	  val pair = new Pair<StructuredDataProperty, Map<String,String>>(oml, kv)
+  	  oml.name = OMLTables.toLocalName(kv.remove("name"))  	  val pair = new Pair<StructuredDataProperty, Map<String,String>>(oml, kv)
   	  structuredDataProperties.put(uuid, pair)
   	  includeStructuredDataProperties(uuid, oml)
   	}
@@ -3268,8 +3312,7 @@ class OMLSpecificationTables {
   	  oml.isReflexive = OMLTables.toEBoolean(kv.remove("isReflexive"))
   	  oml.isSymmetric = OMLTables.toEBoolean(kv.remove("isSymmetric"))
   	  oml.isTransitive = OMLTables.toEBoolean(kv.remove("isTransitive"))
-  	  oml.name = OMLTables.toLocalName(kv.remove("name"))
-  	  val pair = new Pair<ReifiedRelationship, Map<String,String>>(oml, kv)
+  	  oml.name = OMLTables.toLocalName(kv.remove("name"))  	  val pair = new Pair<ReifiedRelationship, Map<String,String>>(oml, kv)
   	  reifiedRelationships.put(uuid, pair)
   	  includeReifiedRelationships(uuid, oml)
   	}
@@ -3281,8 +3324,7 @@ class OMLSpecificationTables {
   	  val kv = kvs.remove(kvs.size - 1)
   	  val oml = createForwardProperty()
   	  val uuid = kv.remove("uuid")
-  	  oml.name = OMLTables.toLocalName(kv.remove("name"))
-  	  val pair = new Pair<ForwardProperty, Map<String,String>>(oml, kv)
+  	  oml.name = OMLTables.toLocalName(kv.remove("name"))  	  val pair = new Pair<ForwardProperty, Map<String,String>>(oml, kv)
   	  forwardProperties.put(uuid, pair)
   	  includeForwardProperties(uuid, oml)
   	}
@@ -3294,10 +3336,21 @@ class OMLSpecificationTables {
   	  val kv = kvs.remove(kvs.size - 1)
   	  val oml = createInverseProperty()
   	  val uuid = kv.remove("uuid")
-  	  oml.name = OMLTables.toLocalName(kv.remove("name"))
-  	  val pair = new Pair<InverseProperty, Map<String,String>>(oml, kv)
+  	  oml.name = OMLTables.toLocalName(kv.remove("name"))  	  val pair = new Pair<InverseProperty, Map<String,String>>(oml, kv)
   	  inverseProperties.put(uuid, pair)
   	  includeInverseProperties(uuid, oml)
+  	}
+  }
+  
+  protected def void readSpecializedReifiedRelationships(Extent ext, ArrayList<String> lines) {
+  	val kvs = OMLZipResource.lines2tuples(lines)
+  	while (!kvs.empty) {
+  	  val kv = kvs.remove(kvs.size - 1)
+  	  val oml = createSpecializedReifiedRelationship()
+  	  val uuid = kv.remove("uuid")
+  	  oml.name = OMLTables.toLocalName(kv.remove("name"))  	  val pair = new Pair<SpecializedReifiedRelationship, Map<String,String>>(oml, kv)
+  	  specializedReifiedRelationships.put(uuid, pair)
+  	  includeSpecializedReifiedRelationships(uuid, oml)
   	}
   }
   
@@ -3316,8 +3369,7 @@ class OMLSpecificationTables {
   	  oml.isReflexive = OMLTables.toEBoolean(kv.remove("isReflexive"))
   	  oml.isSymmetric = OMLTables.toEBoolean(kv.remove("isSymmetric"))
   	  oml.isTransitive = OMLTables.toEBoolean(kv.remove("isTransitive"))
-  	  oml.name = OMLTables.toLocalName(kv.remove("name"))
-  	  val pair = new Pair<UnreifiedRelationship, Map<String,String>>(oml, kv)
+  	  oml.name = OMLTables.toLocalName(kv.remove("name"))  	  val pair = new Pair<UnreifiedRelationship, Map<String,String>>(oml, kv)
   	  unreifiedRelationships.put(uuid, pair)
   	  includeUnreifiedRelationships(uuid, oml)
   	}
@@ -3329,8 +3381,7 @@ class OMLSpecificationTables {
   	  val kv = kvs.remove(kvs.size - 1)
   	  val oml = createChainRule()
   	  val uuid = kv.remove("uuid")
-  	  oml.name = OMLTables.toLocalName(kv.remove("name"))
-  	  val pair = new Pair<ChainRule, Map<String,String>>(oml, kv)
+  	  oml.name = OMLTables.toLocalName(kv.remove("name"))  	  val pair = new Pair<ChainRule, Map<String,String>>(oml, kv)
   	  chainRules.put(uuid, pair)
   	  includeChainRules(uuid, oml)
   	}
@@ -3402,8 +3453,7 @@ class OMLSpecificationTables {
   	  val kv = kvs.remove(kvs.size - 1)
   	  val oml = createEntityScalarDataPropertyParticularRestrictionAxiom()
   	  val uuid = kv.remove("uuid")
-  	  oml.literalValue = OMLTables.toLiteralValue(kv.remove("literalValue"))
-  	  val pair = new Pair<EntityScalarDataPropertyParticularRestrictionAxiom, Map<String,String>>(oml, kv)
+  	  oml.literalValue = OMLTables.toLiteralValue(kv.remove("literalValue"))  	  val pair = new Pair<EntityScalarDataPropertyParticularRestrictionAxiom, Map<String,String>>(oml, kv)
   	  entityScalarDataPropertyParticularRestrictionAxioms.put(uuid, pair)
   	  includeEntityScalarDataPropertyParticularRestrictionAxioms(uuid, oml)
   	}
@@ -3451,8 +3501,7 @@ class OMLSpecificationTables {
   	  val kv = kvs.remove(kvs.size - 1)
   	  val oml = createRestrictionScalarDataPropertyValue()
   	  val uuid = kv.remove("uuid")
-  	  oml.scalarPropertyValue = OMLTables.toLiteralValue(kv.remove("scalarPropertyValue"))
-  	  val pair = new Pair<RestrictionScalarDataPropertyValue, Map<String,String>>(oml, kv)
+  	  oml.scalarPropertyValue = OMLTables.toLiteralValue(kv.remove("scalarPropertyValue"))  	  val pair = new Pair<RestrictionScalarDataPropertyValue, Map<String,String>>(oml, kv)
   	  restrictionScalarDataPropertyValues.put(uuid, pair)
   	  includeRestrictionScalarDataPropertyValues(uuid, oml)
   	}
@@ -3479,18 +3528,6 @@ class OMLSpecificationTables {
   	  val pair = new Pair<ConceptSpecializationAxiom, Map<String,String>>(oml, kv)
   	  conceptSpecializationAxioms.put(uuid, pair)
   	  includeConceptSpecializationAxioms(uuid, oml)
-  	}
-  }
-  
-  protected def void readReifiedRelationshipSpecializationAxioms(Extent ext, ArrayList<String> lines) {
-  	val kvs = OMLZipResource.lines2tuples(lines)
-  	while (!kvs.empty) {
-  	  val kv = kvs.remove(kvs.size - 1)
-  	  val oml = createReifiedRelationshipSpecializationAxiom()
-  	  val uuid = kv.remove("uuid")
-  	  val pair = new Pair<ReifiedRelationshipSpecializationAxiom, Map<String,String>>(oml, kv)
-  	  reifiedRelationshipSpecializationAxioms.put(uuid, pair)
-  	  includeReifiedRelationshipSpecializationAxioms(uuid, oml)
   	}
   }
   
@@ -3536,8 +3573,7 @@ class OMLSpecificationTables {
   	  val kv = kvs.remove(kvs.size - 1)
   	  val oml = createAnonymousConceptUnionAxiom()
   	  val uuid = kv.remove("uuid")
-  	  oml.name = OMLTables.toLocalName(kv.remove("name"))
-  	  val pair = new Pair<AnonymousConceptUnionAxiom, Map<String,String>>(oml, kv)
+  	  oml.name = OMLTables.toLocalName(kv.remove("name"))  	  val pair = new Pair<AnonymousConceptUnionAxiom, Map<String,String>>(oml, kv)
   	  anonymousConceptUnionAxioms.put(uuid, pair)
   	  includeAnonymousConceptUnionAxioms(uuid, oml)
   	}
@@ -3561,8 +3597,7 @@ class OMLSpecificationTables {
   	  val kv = kvs.remove(kvs.size - 1)
   	  val oml = createConceptInstance()
   	  val uuid = kv.remove("uuid")
-  	  oml.name = OMLTables.toLocalName(kv.remove("name"))
-  	  val pair = new Pair<ConceptInstance, Map<String,String>>(oml, kv)
+  	  oml.name = OMLTables.toLocalName(kv.remove("name"))  	  val pair = new Pair<ConceptInstance, Map<String,String>>(oml, kv)
   	  conceptInstances.put(uuid, pair)
   	  includeConceptInstances(uuid, oml)
   	}
@@ -3574,8 +3609,7 @@ class OMLSpecificationTables {
   	  val kv = kvs.remove(kvs.size - 1)
   	  val oml = createReifiedRelationshipInstance()
   	  val uuid = kv.remove("uuid")
-  	  oml.name = OMLTables.toLocalName(kv.remove("name"))
-  	  val pair = new Pair<ReifiedRelationshipInstance, Map<String,String>>(oml, kv)
+  	  oml.name = OMLTables.toLocalName(kv.remove("name"))  	  val pair = new Pair<ReifiedRelationshipInstance, Map<String,String>>(oml, kv)
   	  reifiedRelationshipInstances.put(uuid, pair)
   	  includeReifiedRelationshipInstances(uuid, oml)
   	}
@@ -3635,8 +3669,7 @@ class OMLSpecificationTables {
   	  val kv = kvs.remove(kvs.size - 1)
   	  val oml = createSingletonInstanceScalarDataPropertyValue()
   	  val uuid = kv.remove("uuid")
-  	  oml.scalarPropertyValue = OMLTables.toLiteralValue(kv.remove("scalarPropertyValue"))
-  	  val pair = new Pair<SingletonInstanceScalarDataPropertyValue, Map<String,String>>(oml, kv)
+  	  oml.scalarPropertyValue = OMLTables.toLiteralValue(kv.remove("scalarPropertyValue"))  	  val pair = new Pair<SingletonInstanceScalarDataPropertyValue, Map<String,String>>(oml, kv)
   	  singletonInstanceScalarDataPropertyValues.put(uuid, pair)
   	  includeSingletonInstanceScalarDataPropertyValues(uuid, oml)
   	}
@@ -3660,8 +3693,7 @@ class OMLSpecificationTables {
   	  val kv = kvs.remove(kvs.size - 1)
   	  val oml = createScalarDataPropertyValue()
   	  val uuid = kv.remove("uuid")
-  	  oml.scalarPropertyValue = OMLTables.toLiteralValue(kv.remove("scalarPropertyValue"))
-  	  val pair = new Pair<ScalarDataPropertyValue, Map<String,String>>(oml, kv)
+  	  oml.scalarPropertyValue = OMLTables.toLiteralValue(kv.remove("scalarPropertyValue"))  	  val pair = new Pair<ScalarDataPropertyValue, Map<String,String>>(oml, kv)
   	  scalarDataPropertyValues.put(uuid, pair)
   	  includeScalarDataPropertyValues(uuid, oml)
   	}
@@ -3673,8 +3705,7 @@ class OMLSpecificationTables {
   	  val kv = kvs.remove(kvs.size - 1)
   	  val oml = createAnnotationPropertyValue()
   	  val uuid = kv.remove("uuid")
-  	  oml.value = OMLTables.toLiteralString(kv.remove("value"))
-  	  val pair = new Pair<AnnotationPropertyValue, Map<String,String>>(oml, kv)
+  	  oml.value = OMLTables.toLiteralString(kv.remove("value"))  	  val pair = new Pair<AnnotationPropertyValue, Map<String,String>>(oml, kv)
   	  annotationPropertyValues.put(uuid, pair)
   	  includeAnnotationPropertyValues(uuid, oml)
   	}
@@ -3821,6 +3852,7 @@ class OMLSpecificationTables {
   	logicalElements.put(uuid, new Pair<LogicalElement, Map<String, String>>(oml, Collections.emptyMap))
   	entities.put(uuid, new Pair<Entity, Map<String, String>>(oml, Collections.emptyMap))
   	entityRelationships.put(uuid, new Pair<EntityRelationship, Map<String, String>>(oml, Collections.emptyMap))
+  	conceptualRelationships.put(uuid, new Pair<ConceptualRelationship, Map<String, String>>(oml, Collections.emptyMap))
   	predicates.put(uuid, new Pair<Predicate, Map<String, String>>(oml, Collections.emptyMap))
   	
   }
@@ -3834,6 +3866,14 @@ class OMLSpecificationTables {
   	logicalElements.put(uuid, new Pair<LogicalElement, Map<String, String>>(oml, Collections.emptyMap))
   	predicates.put(uuid, new Pair<Predicate, Map<String, String>>(oml, Collections.emptyMap))
   	restrictableRelationships.put(uuid, new Pair<RestrictableRelationship, Map<String, String>>(oml, Collections.emptyMap))
+  	
+  }
+  protected def void includeSpecializedReifiedRelationships(String uuid, SpecializedReifiedRelationship oml) {
+  	logicalElements.put(uuid, new Pair<LogicalElement, Map<String, String>>(oml, Collections.emptyMap))
+  	entities.put(uuid, new Pair<Entity, Map<String, String>>(oml, Collections.emptyMap))
+  	entityRelationships.put(uuid, new Pair<EntityRelationship, Map<String, String>>(oml, Collections.emptyMap))
+  	conceptualRelationships.put(uuid, new Pair<ConceptualRelationship, Map<String, String>>(oml, Collections.emptyMap))
+  	predicates.put(uuid, new Pair<Predicate, Map<String, String>>(oml, Collections.emptyMap))
   	
   }
   protected def void includeUnreifiedRelationships(String uuid, UnreifiedRelationship oml) {
@@ -3894,10 +3934,6 @@ class OMLSpecificationTables {
   	
   }
   protected def void includeConceptSpecializationAxioms(String uuid, ConceptSpecializationAxiom oml) {
-  	logicalElements.put(uuid, new Pair<LogicalElement, Map<String, String>>(oml, Collections.emptyMap))
-  	
-  }
-  protected def void includeReifiedRelationshipSpecializationAxioms(String uuid, ReifiedRelationshipSpecializationAxiom oml) {
   	logicalElements.put(uuid, new Pair<LogicalElement, Map<String, String>>(oml, Collections.emptyMap))
   	
   }
@@ -3998,6 +4034,7 @@ class OMLSpecificationTables {
     includeMap(logicalElements, reifiedRelationships)
     includeMap(logicalElements, forwardProperties)
     includeMap(logicalElements, inverseProperties)
+    includeMap(logicalElements, specializedReifiedRelationships)
     includeMap(logicalElements, unreifiedRelationships)
     includeMap(logicalElements, chainRules)
     includeMap(logicalElements, ruleBodySegments)
@@ -4012,7 +4049,6 @@ class OMLSpecificationTables {
     includeMap(logicalElements, restrictionScalarDataPropertyValues)
     includeMap(logicalElements, aspectSpecializationAxioms)
     includeMap(logicalElements, conceptSpecializationAxioms)
-    includeMap(logicalElements, reifiedRelationshipSpecializationAxioms)
     includeMap(logicalElements, subDataPropertyOfAxioms)
     includeMap(logicalElements, subObjectPropertyOfAxioms)
     includeMap(logicalElements, rootConceptTaxonomyAxioms)
@@ -4032,10 +4068,16 @@ class OMLSpecificationTables {
   	includeMap(entities, aspects)
   	includeMap(entities, concepts)
   	includeMap(entities, reifiedRelationships)
+  	includeMap(entities, specializedReifiedRelationships)
     
 	// Lookup table for EntityRelationship cross references
     includeMap(entityRelationships, reifiedRelationships)
+    includeMap(entityRelationships, specializedReifiedRelationships)
     includeMap(entityRelationships, unreifiedRelationships)
+    
+	// Lookup table for ConceptualRelationship cross references
+    includeMap(conceptualRelationships, reifiedRelationships)
+    includeMap(conceptualRelationships, specializedReifiedRelationships)
     
 	// Lookup table for DataRange cross references
     includeMap(dataRanges, scalars)
@@ -4062,6 +4104,7 @@ class OMLSpecificationTables {
     includeMap(predicates, reifiedRelationships)
     includeMap(predicates, forwardProperties)
     includeMap(predicates, inverseProperties)
+    includeMap(predicates, specializedReifiedRelationships)
     includeMap(predicates, unreifiedRelationships)
 
 	// Lookup table for RestrictableRelationship cross references
@@ -4116,6 +4159,7 @@ class OMLSpecificationTables {
     resolveReifiedRelationships(rs)
     resolveForwardProperties(rs)
     resolveInverseProperties(rs)
+    resolveSpecializedReifiedRelationships(rs)
     resolveUnreifiedRelationships(rs)
     resolveChainRules(rs)
     resolveRuleBodySegments(rs)
@@ -4130,7 +4174,6 @@ class OMLSpecificationTables {
     resolveRestrictionScalarDataPropertyValues(rs)
     resolveAspectSpecializationAxioms(rs)
     resolveConceptSpecializationAxioms(rs)
-    resolveReifiedRelationshipSpecializationAxioms(rs)
     resolveSubDataPropertyOfAxioms(rs)
     resolveSubObjectPropertyOfAxioms(rs)
     resolveRootConceptTaxonomyAxioms(rs)
@@ -4245,7 +4288,6 @@ class OMLSpecificationTables {
   	    					throw new IllegalArgumentException("Null cross-reference lookup for designatedConcept in conceptDesignationTerminologyAxioms: "+designatedConceptXRef)
   	    				oml.designatedConcept = designatedConceptPair.key
   	    				val String designatedTerminologyIRI = kv.remove("designatedTerminologyIRI")
-  	    				loadOMLZipResource(rs, URI.createURI(designatedTerminologyIRI))
   	    				val Pair<TerminologyBox, Map<String, String>> designatedTerminologyPair = terminologyBoxes.get(designatedTerminologyIRI)
   	    				if (null === designatedTerminologyPair)
   	    					throw new IllegalArgumentException("Null cross-reference lookup for designatedTerminology in conceptDesignationTerminologyAxioms: "+designatedTerminologyIRI)
@@ -4273,7 +4315,6 @@ class OMLSpecificationTables {
   	    					throw new IllegalArgumentException("Null cross-reference lookup for tbox in terminologyExtensionAxioms: "+tboxXRef)
   	    				oml.tbox = tboxPair.key
   	    				val String extendedTerminologyIRI = kv.remove("extendedTerminologyIRI")
-  	    				loadOMLZipResource(rs, URI.createURI(extendedTerminologyIRI))
   	    				val Pair<TerminologyBox, Map<String, String>> extendedTerminologyPair = terminologyBoxes.get(extendedTerminologyIRI)
   	    				if (null === extendedTerminologyPair)
   	    					throw new IllegalArgumentException("Null cross-reference lookup for extendedTerminology in terminologyExtensionAxioms: "+extendedTerminologyIRI)
@@ -4306,7 +4347,6 @@ class OMLSpecificationTables {
   	    					throw new IllegalArgumentException("Null cross-reference lookup for nestingContext in terminologyNestingAxioms: "+nestingContextXRef)
   	    				oml.nestingContext = nestingContextPair.key
   	    				val String nestingTerminologyIRI = kv.remove("nestingTerminologyIRI")
-  	    				loadOMLZipResource(rs, URI.createURI(nestingTerminologyIRI))
   	    				val Pair<TerminologyBox, Map<String, String>> nestingTerminologyPair = terminologyBoxes.get(nestingTerminologyIRI)
   	    				if (null === nestingTerminologyPair)
   	    					throw new IllegalArgumentException("Null cross-reference lookup for nestingTerminology in terminologyNestingAxioms: "+nestingTerminologyIRI)
@@ -4334,7 +4374,6 @@ class OMLSpecificationTables {
   	    					throw new IllegalArgumentException("Null cross-reference lookup for bundle in bundledTerminologyAxioms: "+bundleXRef)
   	    				oml.bundle = bundlePair.key
   	    				val String bundledTerminologyIRI = kv.remove("bundledTerminologyIRI")
-  	    				loadOMLZipResource(rs, URI.createURI(bundledTerminologyIRI))
   	    				val Pair<TerminologyBox, Map<String, String>> bundledTerminologyPair = terminologyBoxes.get(bundledTerminologyIRI)
   	    				if (null === bundledTerminologyPair)
   	    					throw new IllegalArgumentException("Null cross-reference lookup for bundledTerminology in bundledTerminologyAxioms: "+bundledTerminologyIRI)
@@ -4362,7 +4401,6 @@ class OMLSpecificationTables {
   	    					throw new IllegalArgumentException("Null cross-reference lookup for descriptionBox in descriptionBoxExtendsClosedWorldDefinitions: "+descriptionBoxXRef)
   	    				oml.descriptionBox = descriptionBoxPair.key
   	    				val String closedWorldDefinitionsIRI = kv.remove("closedWorldDefinitionsIRI")
-  	    				loadOMLZipResource(rs, URI.createURI(closedWorldDefinitionsIRI))
   	    				val Pair<TerminologyBox, Map<String, String>> closedWorldDefinitionsPair = terminologyBoxes.get(closedWorldDefinitionsIRI)
   	    				if (null === closedWorldDefinitionsPair)
   	    					throw new IllegalArgumentException("Null cross-reference lookup for closedWorldDefinitions in descriptionBoxExtendsClosedWorldDefinitions: "+closedWorldDefinitionsIRI)
@@ -4390,7 +4428,6 @@ class OMLSpecificationTables {
   	    					throw new IllegalArgumentException("Null cross-reference lookup for refiningDescriptionBox in descriptionBoxRefinements: "+refiningDescriptionBoxXRef)
   	    				oml.refiningDescriptionBox = refiningDescriptionBoxPair.key
   	    				val String refinedDescriptionBoxIRI = kv.remove("refinedDescriptionBoxIRI")
-  	    				loadOMLZipResource(rs, URI.createURI(refinedDescriptionBoxIRI))
   	    				val Pair<DescriptionBox, Map<String, String>> refinedDescriptionBoxPair = descriptionBoxes.get(refinedDescriptionBoxIRI)
   	    				if (null === refinedDescriptionBoxPair)
   	    					throw new IllegalArgumentException("Null cross-reference lookup for refinedDescriptionBox in descriptionBoxRefinements: "+refinedDescriptionBoxIRI)
@@ -4739,6 +4776,36 @@ class OMLSpecificationTables {
   	    if (null === reifiedRelationshipPair)
   	      throw new IllegalArgumentException("Null cross-reference lookup for reifiedRelationship in inverseProperties: "+reifiedRelationshipXRef)
   	    oml.reifiedRelationship = reifiedRelationshipPair.key
+  	  }
+  	]
+  }
+  
+  protected def void resolveSpecializedReifiedRelationships(ResourceSet rs) {
+  	
+  	specializedReifiedRelationships.forEach[uuid, oml_kv |
+  	  val SpecializedReifiedRelationship oml = oml_kv.key
+  	  val Map<String, String> kv = oml_kv.value
+  	  if (!kv.empty) {
+  	    val String tboxXRef = kv.remove("tboxUUID")
+  	    val Pair<TerminologyBox, Map<String, String>> tboxPair = terminologyBoxes.get(tboxXRef)
+  	    if (null === tboxPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for tbox in specializedReifiedRelationships: "+tboxXRef)
+  	    oml.tbox = tboxPair.key
+  	    val String sourceXRef = kv.remove("sourceUUID")
+  	    val Pair<Entity, Map<String, String>> sourcePair = entities.get(sourceXRef)
+  	    if (null === sourcePair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for source in specializedReifiedRelationships: "+sourceXRef)
+  	    oml.source = sourcePair.key
+  	    val String targetXRef = kv.remove("targetUUID")
+  	    val Pair<Entity, Map<String, String>> targetPair = entities.get(targetXRef)
+  	    if (null === targetPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for target in specializedReifiedRelationships: "+targetXRef)
+  	    oml.target = targetPair.key
+  	    val String generalXRef = kv.remove("generalUUID")
+  	    val Pair<ConceptualRelationship, Map<String, String>> generalPair = conceptualRelationships.get(generalXRef)
+  	    if (null === generalPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for general in specializedReifiedRelationships: "+generalXRef)
+  	    oml.general = generalPair.key
   	  }
   	]
   }
@@ -5143,31 +5210,6 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolveReifiedRelationshipSpecializationAxioms(ResourceSet rs) {
-  	
-  	reifiedRelationshipSpecializationAxioms.forEach[uuid, oml_kv |
-  	  val ReifiedRelationshipSpecializationAxiom oml = oml_kv.key
-  	  val Map<String, String> kv = oml_kv.value
-  	  if (!kv.empty) {
-  	    val String tboxXRef = kv.remove("tboxUUID")
-  	    val Pair<TerminologyBox, Map<String, String>> tboxPair = terminologyBoxes.get(tboxXRef)
-  	    if (null === tboxPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for tbox in reifiedRelationshipSpecializationAxioms: "+tboxXRef)
-  	    oml.tbox = tboxPair.key
-  	    val String superRelationshipXRef = kv.remove("superRelationshipUUID")
-  	    val Pair<ReifiedRelationship, Map<String, String>> superRelationshipPair = reifiedRelationships.get(superRelationshipXRef)
-  	    if (null === superRelationshipPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for superRelationship in reifiedRelationshipSpecializationAxioms: "+superRelationshipXRef)
-  	    oml.superRelationship = superRelationshipPair.key
-  	    val String subRelationshipXRef = kv.remove("subRelationshipUUID")
-  	    val Pair<ReifiedRelationship, Map<String, String>> subRelationshipPair = reifiedRelationships.get(subRelationshipXRef)
-  	    if (null === subRelationshipPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for subRelationship in reifiedRelationshipSpecializationAxioms: "+subRelationshipXRef)
-  	    oml.subRelationship = subRelationshipPair.key
-  	  }
-  	]
-  }
-  
   protected def void resolveSubDataPropertyOfAxioms(ResourceSet rs) {
   	
   	subDataPropertyOfAxioms.forEach[uuid, oml_kv |
@@ -5304,11 +5346,11 @@ class OMLSpecificationTables {
   	    if (null === descriptionBoxPair)
   	      throw new IllegalArgumentException("Null cross-reference lookup for descriptionBox in reifiedRelationshipInstances: "+descriptionBoxXRef)
   	    oml.descriptionBox = descriptionBoxPair.key
-  	    val String singletonReifiedRelationshipClassifierXRef = kv.remove("singletonReifiedRelationshipClassifierUUID")
-  	    val Pair<ReifiedRelationship, Map<String, String>> singletonReifiedRelationshipClassifierPair = reifiedRelationships.get(singletonReifiedRelationshipClassifierXRef)
-  	    if (null === singletonReifiedRelationshipClassifierPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for singletonReifiedRelationshipClassifier in reifiedRelationshipInstances: "+singletonReifiedRelationshipClassifierXRef)
-  	    oml.singletonReifiedRelationshipClassifier = singletonReifiedRelationshipClassifierPair.key
+  	    val String singletonConceptualRelationshipClassifierXRef = kv.remove("singletonConceptualRelationshipClassifierUUID")
+  	    val Pair<ConceptualRelationship, Map<String, String>> singletonConceptualRelationshipClassifierPair = conceptualRelationships.get(singletonConceptualRelationshipClassifierXRef)
+  	    if (null === singletonConceptualRelationshipClassifierPair)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for singletonConceptualRelationshipClassifier in reifiedRelationshipInstances: "+singletonConceptualRelationshipClassifierXRef)
+  	    oml.singletonConceptualRelationshipClassifier = singletonConceptualRelationshipClassifierPair.key
   	  }
   	]
   }
@@ -5537,11 +5579,19 @@ class OMLSpecificationTables {
 					false
 			}
 		]]
-		if (null !== r0a)
-			r0a
-		else if (null !== r0b)
-			r0b
-		else {
+		val r0 = r0a ?: r0b
+		if (null !== r0) {
+			switch r0 {
+				OMLZipResource: {
+				}
+				XtextResource: {
+					scan = true
+				}
+				default: {
+				}
+			}
+			r0
+		} else {
 			val r1 = omlCatalog.resolveURI(uriString + ".oml")
 	  		val r2 = omlCatalog.resolveURI(uriString + ".omlzip")
 	  		val r3 = omlCatalog.resolveURI(uriString)
@@ -5628,37 +5678,31 @@ class OMLSpecificationTables {
   	        val pair = new Pair<ConceptDesignationTerminologyAxiom, Map<String,String>>(e, Collections.emptyMap)
   	        conceptDesignationTerminologyAxioms.put(e.uuid(), pair)
   	        logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	        //includeModule(e.targetModule)
   	      }
   	      TerminologyExtensionAxiom: {
   	        val pair = new Pair<TerminologyExtensionAxiom, Map<String,String>>(e, Collections.emptyMap)
   	        terminologyExtensionAxioms.put(e.uuid(), pair)
   	        logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	        //includeModule(e.targetModule)
   	      }
   	      TerminologyNestingAxiom: {
   	        val pair = new Pair<TerminologyNestingAxiom, Map<String,String>>(e, Collections.emptyMap)
   	        terminologyNestingAxioms.put(e.uuid(), pair)
   	        logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	        //includeModule(e.targetModule)
   	      }
   	      BundledTerminologyAxiom: {
   	        val pair = new Pair<BundledTerminologyAxiom, Map<String,String>>(e, Collections.emptyMap)
   	        bundledTerminologyAxioms.put(e.uuid(), pair)
   	        logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	        //includeModule(e.targetModule)
   	      }
   	      DescriptionBoxExtendsClosedWorldDefinitions: {
   	        val pair = new Pair<DescriptionBoxExtendsClosedWorldDefinitions, Map<String,String>>(e, Collections.emptyMap)
   	        descriptionBoxExtendsClosedWorldDefinitions.put(e.uuid(), pair)
   	        logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	        //includeModule(e.targetModule)
   	      }
   	      DescriptionBoxRefinement: {
   	        val pair = new Pair<DescriptionBoxRefinement, Map<String,String>>(e, Collections.emptyMap)
   	        descriptionBoxRefinements.put(e.uuid(), pair)
   	        logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	        //includeModule(e.targetModule)
   	      }
   	      BinaryScalarRestriction: {
   	        val pair = new Pair<BinaryScalarRestriction, Map<String,String>>(e, Collections.emptyMap)
@@ -5740,6 +5784,11 @@ class OMLSpecificationTables {
   	        inverseProperties.put(e.uuid(), pair)
   	        logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
   	      }
+  	      SpecializedReifiedRelationship: {
+  	        val pair = new Pair<SpecializedReifiedRelationship, Map<String,String>>(e, Collections.emptyMap)
+  	        specializedReifiedRelationships.put(e.uuid(), pair)
+  	        logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	      }
   	      UnreifiedRelationship: {
   	        val pair = new Pair<UnreifiedRelationship, Map<String,String>>(e, Collections.emptyMap)
   	        unreifiedRelationships.put(e.uuid(), pair)
@@ -5808,11 +5857,6 @@ class OMLSpecificationTables {
   	      ConceptSpecializationAxiom: {
   	        val pair = new Pair<ConceptSpecializationAxiom, Map<String,String>>(e, Collections.emptyMap)
   	        conceptSpecializationAxioms.put(e.uuid(), pair)
-  	        logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
-  	      }
-  	      ReifiedRelationshipSpecializationAxiom: {
-  	        val pair = new Pair<ReifiedRelationshipSpecializationAxiom, Map<String,String>>(e, Collections.emptyMap)
-  	        reifiedRelationshipSpecializationAxioms.put(e.uuid(), pair)
   	        logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
   	      }
   	      SubDataPropertyOfAxiom: {

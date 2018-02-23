@@ -822,20 +822,24 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.EntityRelationship");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cReifiedRelationshipParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cUnreifiedRelationshipParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cSpecializedReifiedRelationshipParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cUnreifiedRelationshipParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
 		//EntityRelationship:
-		//	ReifiedRelationship | UnreifiedRelationship;
+		//	ReifiedRelationship | SpecializedReifiedRelationship | UnreifiedRelationship;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//ReifiedRelationship | UnreifiedRelationship
+		//ReifiedRelationship | SpecializedReifiedRelationship | UnreifiedRelationship
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//ReifiedRelationship
 		public RuleCall getReifiedRelationshipParserRuleCall_0() { return cReifiedRelationshipParserRuleCall_0; }
 		
+		//SpecializedReifiedRelationship
+		public RuleCall getSpecializedReifiedRelationshipParserRuleCall_1() { return cSpecializedReifiedRelationshipParserRuleCall_1; }
+		
 		//UnreifiedRelationship
-		public RuleCall getUnreifiedRelationshipParserRuleCall_1() { return cUnreifiedRelationshipParserRuleCall_1; }
+		public RuleCall getUnreifiedRelationshipParserRuleCall_2() { return cUnreifiedRelationshipParserRuleCall_2; }
 	}
 	public class DatatypeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.Datatype");
@@ -1048,13 +1052,12 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cConceptSpecializationAxiomParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cAspectSpecializationAxiomParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cReifiedRelationshipSpecializationAxiomParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
 		//SpecializationAxiom:
-		//	ConceptSpecializationAxiom | AspectSpecializationAxiom | ReifiedRelationshipSpecializationAxiom;
+		//	ConceptSpecializationAxiom | AspectSpecializationAxiom;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//ConceptSpecializationAxiom | AspectSpecializationAxiom | ReifiedRelationshipSpecializationAxiom
+		//ConceptSpecializationAxiom | AspectSpecializationAxiom
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//ConceptSpecializationAxiom
@@ -1062,9 +1065,6 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//AspectSpecializationAxiom
 		public RuleCall getAspectSpecializationAxiomParserRuleCall_1() { return cAspectSpecializationAxiomParserRuleCall_1; }
-		
-		//ReifiedRelationshipSpecializationAxiom
-		public RuleCall getReifiedRelationshipSpecializationAxiomParserRuleCall_2() { return cReifiedRelationshipSpecializationAxiomParserRuleCall_2; }
 	}
 	public class TerminologyBundleStatementElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.TerminologyBundleStatement");
@@ -1425,6 +1425,106 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_0() { return cNameIDTerminalRuleCall_0; }
+	}
+	public class SpecializedReifiedRelationshipElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.SpecializedReifiedRelationship");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cAnnotationsAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cAnnotationsAnnotationPropertyValueParserRuleCall_0_0 = (RuleCall)cAnnotationsAssignment_0.eContents().get(0);
+		private final Keyword cReifiedRelationshipKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Keyword cExtendsKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cGeneralAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final CrossReference cGeneralConceptualRelationshipCrossReference_4_0 = (CrossReference)cGeneralAssignment_4.eContents().get(0);
+		private final RuleCall cGeneralConceptualRelationshipReferenceParserRuleCall_4_0_1 = (RuleCall)cGeneralConceptualRelationshipCrossReference_4_0.eContents().get(1);
+		private final Keyword cLeftCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Keyword cSourceKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Keyword cEqualsSignKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Assignment cSourceAssignment_8 = (Assignment)cGroup.eContents().get(8);
+		private final CrossReference cSourceEntityCrossReference_8_0 = (CrossReference)cSourceAssignment_8.eContents().get(0);
+		private final RuleCall cSourceEntityReferenceParserRuleCall_8_0_1 = (RuleCall)cSourceEntityCrossReference_8_0.eContents().get(1);
+		private final Keyword cTargetKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Keyword cEqualsSignKeyword_10 = (Keyword)cGroup.eContents().get(10);
+		private final Assignment cTargetAssignment_11 = (Assignment)cGroup.eContents().get(11);
+		private final CrossReference cTargetEntityCrossReference_11_0 = (CrossReference)cTargetAssignment_11.eContents().get(0);
+		private final RuleCall cTargetEntityReferenceParserRuleCall_11_0_1 = (RuleCall)cTargetEntityCrossReference_11_0.eContents().get(1);
+		private final Keyword cRightCurlyBracketKeyword_12 = (Keyword)cGroup.eContents().get(12);
+		
+		//SpecializedReifiedRelationship:
+		//	annotations+=AnnotationPropertyValue*
+		//	'reifiedRelationship' name=ID 'extends' general=[ConceptualRelationship|Reference] '{'
+		//	'source' '=' source=[Entity|Reference]
+		//	'target' '=' target=[Entity|Reference]
+		//	'}';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//annotations+=AnnotationPropertyValue* 'reifiedRelationship' name=ID 'extends' general=[ConceptualRelationship|Reference]
+		//'{' 'source' '=' source=[Entity|Reference] 'target' '=' target=[Entity|Reference] '}'
+		public Group getGroup() { return cGroup; }
+		
+		//annotations+=AnnotationPropertyValue*
+		public Assignment getAnnotationsAssignment_0() { return cAnnotationsAssignment_0; }
+		
+		//AnnotationPropertyValue
+		public RuleCall getAnnotationsAnnotationPropertyValueParserRuleCall_0_0() { return cAnnotationsAnnotationPropertyValueParserRuleCall_0_0; }
+		
+		//'reifiedRelationship'
+		public Keyword getReifiedRelationshipKeyword_1() { return cReifiedRelationshipKeyword_1; }
+		
+		//name=ID
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
+		
+		//'extends'
+		public Keyword getExtendsKeyword_3() { return cExtendsKeyword_3; }
+		
+		//general=[ConceptualRelationship|Reference]
+		public Assignment getGeneralAssignment_4() { return cGeneralAssignment_4; }
+		
+		//[ConceptualRelationship|Reference]
+		public CrossReference getGeneralConceptualRelationshipCrossReference_4_0() { return cGeneralConceptualRelationshipCrossReference_4_0; }
+		
+		//Reference
+		public RuleCall getGeneralConceptualRelationshipReferenceParserRuleCall_4_0_1() { return cGeneralConceptualRelationshipReferenceParserRuleCall_4_0_1; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_5() { return cLeftCurlyBracketKeyword_5; }
+		
+		//'source'
+		public Keyword getSourceKeyword_6() { return cSourceKeyword_6; }
+		
+		//'='
+		public Keyword getEqualsSignKeyword_7() { return cEqualsSignKeyword_7; }
+		
+		//source=[Entity|Reference]
+		public Assignment getSourceAssignment_8() { return cSourceAssignment_8; }
+		
+		//[Entity|Reference]
+		public CrossReference getSourceEntityCrossReference_8_0() { return cSourceEntityCrossReference_8_0; }
+		
+		//Reference
+		public RuleCall getSourceEntityReferenceParserRuleCall_8_0_1() { return cSourceEntityReferenceParserRuleCall_8_0_1; }
+		
+		//'target'
+		public Keyword getTargetKeyword_9() { return cTargetKeyword_9; }
+		
+		//'='
+		public Keyword getEqualsSignKeyword_10() { return cEqualsSignKeyword_10; }
+		
+		//target=[Entity|Reference]
+		public Assignment getTargetAssignment_11() { return cTargetAssignment_11; }
+		
+		//[Entity|Reference]
+		public CrossReference getTargetEntityCrossReference_11_0() { return cTargetEntityCrossReference_11_0; }
+		
+		//Reference
+		public RuleCall getTargetEntityReferenceParserRuleCall_11_0_1() { return cTargetEntityReferenceParserRuleCall_11_0_1; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_12() { return cRightCurlyBracketKeyword_12; }
 	}
 	public class UnreifiedRelationshipElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.UnreifiedRelationship");
@@ -2661,56 +2761,6 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//Reference
 		public RuleCall getSuperConceptConceptReferenceParserRuleCall_3_0_1() { return cSuperConceptConceptReferenceParserRuleCall_3_0_1; }
-	}
-	public class ReifiedRelationshipSpecializationAxiomElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.ReifiedRelationshipSpecializationAxiom");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cAnnotationsAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cAnnotationsAnnotationPropertyValueParserRuleCall_0_0 = (RuleCall)cAnnotationsAssignment_0.eContents().get(0);
-		private final Assignment cSubRelationshipAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final CrossReference cSubRelationshipReifiedRelationshipCrossReference_1_0 = (CrossReference)cSubRelationshipAssignment_1.eContents().get(0);
-		private final RuleCall cSubRelationshipReifiedRelationshipReferenceParserRuleCall_1_0_1 = (RuleCall)cSubRelationshipReifiedRelationshipCrossReference_1_0.eContents().get(1);
-		private final Keyword cExtendsRelationshipKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cSuperRelationshipAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final CrossReference cSuperRelationshipReifiedRelationshipCrossReference_3_0 = (CrossReference)cSuperRelationshipAssignment_3.eContents().get(0);
-		private final RuleCall cSuperRelationshipReifiedRelationshipReferenceParserRuleCall_3_0_1 = (RuleCall)cSuperRelationshipReifiedRelationshipCrossReference_3_0.eContents().get(1);
-		
-		//ReifiedRelationshipSpecializationAxiom:
-		//	annotations+=AnnotationPropertyValue*
-		//	subRelationship=[ReifiedRelationship|Reference] 'extendsRelationship'
-		//	superRelationship=[ReifiedRelationship|Reference];
-		@Override public ParserRule getRule() { return rule; }
-		
-		//annotations+=AnnotationPropertyValue* subRelationship=[ReifiedRelationship|Reference] 'extendsRelationship'
-		//superRelationship=[ReifiedRelationship|Reference]
-		public Group getGroup() { return cGroup; }
-		
-		//annotations+=AnnotationPropertyValue*
-		public Assignment getAnnotationsAssignment_0() { return cAnnotationsAssignment_0; }
-		
-		//AnnotationPropertyValue
-		public RuleCall getAnnotationsAnnotationPropertyValueParserRuleCall_0_0() { return cAnnotationsAnnotationPropertyValueParserRuleCall_0_0; }
-		
-		//subRelationship=[ReifiedRelationship|Reference]
-		public Assignment getSubRelationshipAssignment_1() { return cSubRelationshipAssignment_1; }
-		
-		//[ReifiedRelationship|Reference]
-		public CrossReference getSubRelationshipReifiedRelationshipCrossReference_1_0() { return cSubRelationshipReifiedRelationshipCrossReference_1_0; }
-		
-		//Reference
-		public RuleCall getSubRelationshipReifiedRelationshipReferenceParserRuleCall_1_0_1() { return cSubRelationshipReifiedRelationshipReferenceParserRuleCall_1_0_1; }
-		
-		//'extendsRelationship'
-		public Keyword getExtendsRelationshipKeyword_2() { return cExtendsRelationshipKeyword_2; }
-		
-		//superRelationship=[ReifiedRelationship|Reference]
-		public Assignment getSuperRelationshipAssignment_3() { return cSuperRelationshipAssignment_3; }
-		
-		//[ReifiedRelationship|Reference]
-		public CrossReference getSuperRelationshipReifiedRelationshipCrossReference_3_0() { return cSuperRelationshipReifiedRelationshipCrossReference_3_0; }
-		
-		//Reference
-		public RuleCall getSuperRelationshipReifiedRelationshipReferenceParserRuleCall_3_0_1() { return cSuperRelationshipReifiedRelationshipReferenceParserRuleCall_3_0_1; }
 	}
 	public class SubObjectPropertyOfAxiomElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.SubObjectPropertyOfAxiom");
@@ -4757,19 +4807,19 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cNameIDTerminalRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
 		private final Keyword cIsAKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cSingletonReifiedRelationshipClassifierAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final CrossReference cSingletonReifiedRelationshipClassifierReifiedRelationshipCrossReference_5_0 = (CrossReference)cSingletonReifiedRelationshipClassifierAssignment_5.eContents().get(0);
-		private final RuleCall cSingletonReifiedRelationshipClassifierReifiedRelationshipReferenceParserRuleCall_5_0_1 = (RuleCall)cSingletonReifiedRelationshipClassifierReifiedRelationshipCrossReference_5_0.eContents().get(1);
+		private final Assignment cSingletonConceptualRelationshipClassifierAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final CrossReference cSingletonConceptualRelationshipClassifierConceptualRelationshipCrossReference_5_0 = (CrossReference)cSingletonConceptualRelationshipClassifierAssignment_5.eContents().get(0);
+		private final RuleCall cSingletonConceptualRelationshipClassifierConceptualRelationshipReferenceParserRuleCall_5_0_1 = (RuleCall)cSingletonConceptualRelationshipClassifierConceptualRelationshipCrossReference_5_0.eContents().get(1);
 		private final Keyword cRightParenthesisKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		//ReifiedRelationshipInstance:
 		//	annotations+=AnnotationPropertyValue*
 		//	'reifiedRelationshipInstance' '(' name=ID 'is-a'
-		//	singletonReifiedRelationshipClassifier=[ReifiedRelationship|Reference] ')';
+		//	singletonConceptualRelationshipClassifier=[ConceptualRelationship|Reference] ')';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//annotations+=AnnotationPropertyValue* 'reifiedRelationshipInstance' '(' name=ID 'is-a'
-		//singletonReifiedRelationshipClassifier=[ReifiedRelationship|Reference] ')'
+		//singletonConceptualRelationshipClassifier=[ConceptualRelationship|Reference] ')'
 		public Group getGroup() { return cGroup; }
 		
 		//annotations+=AnnotationPropertyValue*
@@ -4793,14 +4843,14 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//'is-a'
 		public Keyword getIsAKeyword_4() { return cIsAKeyword_4; }
 		
-		//singletonReifiedRelationshipClassifier=[ReifiedRelationship|Reference]
-		public Assignment getSingletonReifiedRelationshipClassifierAssignment_5() { return cSingletonReifiedRelationshipClassifierAssignment_5; }
+		//singletonConceptualRelationshipClassifier=[ConceptualRelationship|Reference]
+		public Assignment getSingletonConceptualRelationshipClassifierAssignment_5() { return cSingletonConceptualRelationshipClassifierAssignment_5; }
 		
-		//[ReifiedRelationship|Reference]
-		public CrossReference getSingletonReifiedRelationshipClassifierReifiedRelationshipCrossReference_5_0() { return cSingletonReifiedRelationshipClassifierReifiedRelationshipCrossReference_5_0; }
+		//[ConceptualRelationship|Reference]
+		public CrossReference getSingletonConceptualRelationshipClassifierConceptualRelationshipCrossReference_5_0() { return cSingletonConceptualRelationshipClassifierConceptualRelationshipCrossReference_5_0; }
 		
 		//Reference
-		public RuleCall getSingletonReifiedRelationshipClassifierReifiedRelationshipReferenceParserRuleCall_5_0_1() { return cSingletonReifiedRelationshipClassifierReifiedRelationshipReferenceParserRuleCall_5_0_1; }
+		public RuleCall getSingletonConceptualRelationshipClassifierConceptualRelationshipReferenceParserRuleCall_5_0_1() { return cSingletonConceptualRelationshipClassifierConceptualRelationshipReferenceParserRuleCall_5_0_1; }
 		
 		//')'
 		public Keyword getRightParenthesisKeyword_6() { return cRightParenthesisKeyword_6; }
@@ -5549,6 +5599,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	private final ReifiedRelationshipElements pReifiedRelationship;
 	private final ForwardPropertyElements pForwardProperty;
 	private final InversePropertyElements pInverseProperty;
+	private final SpecializedReifiedRelationshipElements pSpecializedReifiedRelationship;
 	private final UnreifiedRelationshipElements pUnreifiedRelationship;
 	private final ScalarElements pScalar;
 	private final StructureElements pStructure;
@@ -5567,7 +5618,6 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	private final EntityUniversalRestrictionAxiomElements pEntityUniversalRestrictionAxiom;
 	private final AspectSpecializationAxiomElements pAspectSpecializationAxiom;
 	private final ConceptSpecializationAxiomElements pConceptSpecializationAxiom;
-	private final ReifiedRelationshipSpecializationAxiomElements pReifiedRelationshipSpecializationAxiom;
 	private final SubObjectPropertyOfAxiomElements pSubObjectPropertyOfAxiom;
 	private final SubDataPropertyOfAxiomElements pSubDataPropertyOfAxiom;
 	private final EntityScalarDataPropertyExistentialRestrictionAxiomElements pEntityScalarDataPropertyExistentialRestrictionAxiom;
@@ -5727,6 +5777,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		this.pReifiedRelationship = new ReifiedRelationshipElements();
 		this.pForwardProperty = new ForwardPropertyElements();
 		this.pInverseProperty = new InversePropertyElements();
+		this.pSpecializedReifiedRelationship = new SpecializedReifiedRelationshipElements();
 		this.pUnreifiedRelationship = new UnreifiedRelationshipElements();
 		this.pScalar = new ScalarElements();
 		this.pStructure = new StructureElements();
@@ -5745,7 +5796,6 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		this.pEntityUniversalRestrictionAxiom = new EntityUniversalRestrictionAxiomElements();
 		this.pAspectSpecializationAxiom = new AspectSpecializationAxiomElements();
 		this.pConceptSpecializationAxiom = new ConceptSpecializationAxiomElements();
-		this.pReifiedRelationshipSpecializationAxiom = new ReifiedRelationshipSpecializationAxiomElements();
 		this.pSubObjectPropertyOfAxiom = new SubObjectPropertyOfAxiomElements();
 		this.pSubDataPropertyOfAxiom = new SubDataPropertyOfAxiomElements();
 		this.pEntityScalarDataPropertyExistentialRestrictionAxiom = new EntityScalarDataPropertyExistentialRestrictionAxiomElements();
@@ -6086,7 +6136,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//EntityRelationship:
-	//	ReifiedRelationship | UnreifiedRelationship;
+	//	ReifiedRelationship | SpecializedReifiedRelationship | UnreifiedRelationship;
 	public EntityRelationshipElements getEntityRelationshipAccess() {
 		return pEntityRelationship;
 	}
@@ -6179,7 +6229,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//SpecializationAxiom:
-	//	ConceptSpecializationAxiom | AspectSpecializationAxiom | ReifiedRelationshipSpecializationAxiom;
+	//	ConceptSpecializationAxiom | AspectSpecializationAxiom;
 	public SpecializationAxiomElements getSpecializationAxiomAccess() {
 		return pSpecializationAxiom;
 	}
@@ -6298,6 +6348,20 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getInversePropertyRule() {
 		return getInversePropertyAccess().getRule();
+	}
+	
+	//SpecializedReifiedRelationship:
+	//	annotations+=AnnotationPropertyValue*
+	//	'reifiedRelationship' name=ID 'extends' general=[ConceptualRelationship|Reference] '{'
+	//	'source' '=' source=[Entity|Reference]
+	//	'target' '=' target=[Entity|Reference]
+	//	'}';
+	public SpecializedReifiedRelationshipElements getSpecializedReifiedRelationshipAccess() {
+		return pSpecializedReifiedRelationship;
+	}
+	
+	public ParserRule getSpecializedReifiedRelationshipRule() {
+		return getSpecializedReifiedRelationshipAccess().getRule();
 	}
 	
 	//UnreifiedRelationship:
@@ -6535,18 +6599,6 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getConceptSpecializationAxiomRule() {
 		return getConceptSpecializationAxiomAccess().getRule();
-	}
-	
-	//ReifiedRelationshipSpecializationAxiom:
-	//	annotations+=AnnotationPropertyValue*
-	//	subRelationship=[ReifiedRelationship|Reference] 'extendsRelationship'
-	//	superRelationship=[ReifiedRelationship|Reference];
-	public ReifiedRelationshipSpecializationAxiomElements getReifiedRelationshipSpecializationAxiomAccess() {
-		return pReifiedRelationshipSpecializationAxiom;
-	}
-	
-	public ParserRule getReifiedRelationshipSpecializationAxiomRule() {
-		return getReifiedRelationshipSpecializationAxiomAccess().getRule();
 	}
 	
 	//// 2 Sub*PropertyOfAxioms
@@ -6922,7 +6974,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	//ReifiedRelationshipInstance:
 	//	annotations+=AnnotationPropertyValue*
 	//	'reifiedRelationshipInstance' '(' name=ID 'is-a'
-	//	singletonReifiedRelationshipClassifier=[ReifiedRelationship|Reference] ')';
+	//	singletonConceptualRelationshipClassifier=[ConceptualRelationship|Reference] ')';
 	public ReifiedRelationshipInstanceElements getReifiedRelationshipInstanceAccess() {
 		return pReifiedRelationshipInstance;
 	}

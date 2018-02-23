@@ -75,7 +75,6 @@ import gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship;
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple;
 import gov.nasa.jpl.imce.oml.model.terminologies.RuleBodySegment;
@@ -84,6 +83,7 @@ import gov.nasa.jpl.imce.oml.model.terminologies.ScalarDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.SegmentPredicate;
+import gov.nasa.jpl.imce.oml.model.terminologies.SpecializedReifiedRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.StringScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.Structure;
 import gov.nasa.jpl.imce.oml.model.terminologies.StructuredDataProperty;
@@ -290,9 +290,6 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case TerminologiesPackage.REIFIED_RELATIONSHIP:
 				sequence_ReifiedRelationship(context, (ReifiedRelationship) semanticObject); 
 				return; 
-			case TerminologiesPackage.REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM:
-				sequence_ReifiedRelationshipSpecializationAxiom(context, (ReifiedRelationshipSpecializationAxiom) semanticObject); 
-				return; 
 			case TerminologiesPackage.RESTRICTION_SCALAR_DATA_PROPERTY_VALUE:
 				sequence_RestrictionScalarDataPropertyValue(context, (RestrictionScalarDataPropertyValue) semanticObject); 
 				return; 
@@ -316,6 +313,9 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				return; 
 			case TerminologiesPackage.SEGMENT_PREDICATE:
 				sequence_SegmentPredicate(context, (SegmentPredicate) semanticObject); 
+				return; 
+			case TerminologiesPackage.SPECIALIZED_REIFIED_RELATIONSHIP:
+				sequence_SpecializedReifiedRelationship(context, (SpecializedReifiedRelationship) semanticObject); 
 				return; 
 			case TerminologiesPackage.STRING_SCALAR_RESTRICTION:
 				sequence_StringScalarRestriction(context, (StringScalarRestriction) semanticObject); 
@@ -1122,24 +1122,9 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     ReifiedRelationshipInstance returns ReifiedRelationshipInstance
 	 *
 	 * Constraint:
-	 *     (annotations+=AnnotationPropertyValue* name=ID singletonReifiedRelationshipClassifier=[ReifiedRelationship|Reference])
+	 *     (annotations+=AnnotationPropertyValue* name=ID singletonConceptualRelationshipClassifier=[ConceptualRelationship|Reference])
 	 */
 	protected void sequence_ReifiedRelationshipInstance(ISerializationContext context, ReifiedRelationshipInstance semanticObject) {
-		genericSequencer.createSequence(context, (EObject) semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     TerminologyBoxStatement returns ReifiedRelationshipSpecializationAxiom
-	 *     TermAxiom returns ReifiedRelationshipSpecializationAxiom
-	 *     SpecializationAxiom returns ReifiedRelationshipSpecializationAxiom
-	 *     ReifiedRelationshipSpecializationAxiom returns ReifiedRelationshipSpecializationAxiom
-	 *
-	 * Constraint:
-	 *     (annotations+=AnnotationPropertyValue* subRelationship=[ReifiedRelationship|Reference] superRelationship=[ReifiedRelationship|Reference])
-	 */
-	protected void sequence_ReifiedRelationshipSpecializationAxiom(ISerializationContext context, ReifiedRelationshipSpecializationAxiom semanticObject) {
 		genericSequencer.createSequence(context, (EObject) semanticObject);
 	}
 	
@@ -1365,6 +1350,21 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     )
 	 */
 	protected void sequence_SingletonInstanceStructuredDataPropertyValue(ISerializationContext context, SingletonInstanceStructuredDataPropertyValue semanticObject) {
+		genericSequencer.createSequence(context, (EObject) semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     TerminologyBoxStatement returns SpecializedReifiedRelationship
+	 *     Term returns SpecializedReifiedRelationship
+	 *     EntityRelationship returns SpecializedReifiedRelationship
+	 *     SpecializedReifiedRelationship returns SpecializedReifiedRelationship
+	 *
+	 * Constraint:
+	 *     (annotations+=AnnotationPropertyValue* name=ID general=[ConceptualRelationship|Reference] source=[Entity|Reference] target=[Entity|Reference])
+	 */
+	protected void sequence_SpecializedReifiedRelationship(ISerializationContext context, SpecializedReifiedRelationship semanticObject) {
 		genericSequencer.createSequence(context, (EObject) semanticObject);
 	}
 	

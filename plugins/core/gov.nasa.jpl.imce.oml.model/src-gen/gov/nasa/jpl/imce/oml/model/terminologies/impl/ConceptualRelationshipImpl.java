@@ -18,6 +18,7 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies.impl;
 
+import gov.nasa.jpl.imce.oml.model.terminologies.ConceptualRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.DirectedBinaryRelationshipKind;
 import gov.nasa.jpl.imce.oml.model.terminologies.Entity;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship;
@@ -38,19 +39,19 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Entity Relationship</b></em>'.
+ * An implementation of the model object '<em><b>Conceptual Relationship</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityRelationshipImpl#getSource <em>Source</em>}</li>
- *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.EntityRelationshipImpl#getTarget <em>Target</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ConceptualRelationshipImpl#getSource <em>Source</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ConceptualRelationshipImpl#getTarget <em>Target</em>}</li>
  * </ul>
  *
  * @generated
  */
-public abstract class EntityRelationshipImpl extends TermImpl implements EntityRelationship {
+public abstract class ConceptualRelationshipImpl extends ConceptualEntityImpl implements ConceptualRelationship {
 	/**
 	 * The cached value of the '{@link #getSource() <em>Source</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -76,7 +77,7 @@ public abstract class EntityRelationshipImpl extends TermImpl implements EntityR
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EntityRelationshipImpl() {
+	protected ConceptualRelationshipImpl() {
 		super();
 	}
 
@@ -87,7 +88,7 @@ public abstract class EntityRelationshipImpl extends TermImpl implements EntityR
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return TerminologiesPackage.Literals.ENTITY_RELATIONSHIP;
+		return TerminologiesPackage.Literals.CONCEPTUAL_RELATIONSHIP;
 	}
 
 	/**
@@ -101,7 +102,7 @@ public abstract class EntityRelationshipImpl extends TermImpl implements EntityR
 			source = (Entity)eResolveProxy(oldSource);
 			if (source != oldSource) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, TerminologiesPackage.ENTITY_RELATIONSHIP__SOURCE, oldSource, source));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, TerminologiesPackage.CONCEPTUAL_RELATIONSHIP__SOURCE, oldSource, source));
 			}
 		}
 		return source;
@@ -125,7 +126,7 @@ public abstract class EntityRelationshipImpl extends TermImpl implements EntityR
 		Entity oldSource = source;
 		source = newSource;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.ENTITY_RELATIONSHIP__SOURCE, oldSource, source));
+			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.CONCEPTUAL_RELATIONSHIP__SOURCE, oldSource, source));
 	}
 
 	/**
@@ -139,7 +140,7 @@ public abstract class EntityRelationshipImpl extends TermImpl implements EntityR
 			target = (Entity)eResolveProxy(oldTarget);
 			if (target != oldTarget) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, TerminologiesPackage.ENTITY_RELATIONSHIP__TARGET, oldTarget, target));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, TerminologiesPackage.CONCEPTUAL_RELATIONSHIP__TARGET, oldTarget, target));
 			}
 		}
 		return target;
@@ -163,7 +164,7 @@ public abstract class EntityRelationshipImpl extends TermImpl implements EntityR
 		Entity oldTarget = target;
 		target = newTarget;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.ENTITY_RELATIONSHIP__TARGET, oldTarget, target));
+			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.CONCEPTUAL_RELATIONSHIP__TARGET, oldTarget, target));
 	}
 
 	/**
@@ -192,10 +193,10 @@ public abstract class EntityRelationshipImpl extends TermImpl implements EntityR
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case TerminologiesPackage.ENTITY_RELATIONSHIP__SOURCE:
+			case TerminologiesPackage.CONCEPTUAL_RELATIONSHIP__SOURCE:
 				if (resolve) return getSource();
 				return basicGetSource();
-			case TerminologiesPackage.ENTITY_RELATIONSHIP__TARGET:
+			case TerminologiesPackage.CONCEPTUAL_RELATIONSHIP__TARGET:
 				if (resolve) return getTarget();
 				return basicGetTarget();
 		}
@@ -210,10 +211,10 @@ public abstract class EntityRelationshipImpl extends TermImpl implements EntityR
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case TerminologiesPackage.ENTITY_RELATIONSHIP__SOURCE:
+			case TerminologiesPackage.CONCEPTUAL_RELATIONSHIP__SOURCE:
 				setSource((Entity)newValue);
 				return;
-			case TerminologiesPackage.ENTITY_RELATIONSHIP__TARGET:
+			case TerminologiesPackage.CONCEPTUAL_RELATIONSHIP__TARGET:
 				setTarget((Entity)newValue);
 				return;
 		}
@@ -228,10 +229,10 @@ public abstract class EntityRelationshipImpl extends TermImpl implements EntityR
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case TerminologiesPackage.ENTITY_RELATIONSHIP__SOURCE:
+			case TerminologiesPackage.CONCEPTUAL_RELATIONSHIP__SOURCE:
 				setSource((Entity)null);
 				return;
-			case TerminologiesPackage.ENTITY_RELATIONSHIP__TARGET:
+			case TerminologiesPackage.CONCEPTUAL_RELATIONSHIP__TARGET:
 				setTarget((Entity)null);
 				return;
 		}
@@ -246,9 +247,9 @@ public abstract class EntityRelationshipImpl extends TermImpl implements EntityR
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case TerminologiesPackage.ENTITY_RELATIONSHIP__SOURCE:
+			case TerminologiesPackage.CONCEPTUAL_RELATIONSHIP__SOURCE:
 				return source != null;
-			case TerminologiesPackage.ENTITY_RELATIONSHIP__TARGET:
+			case TerminologiesPackage.CONCEPTUAL_RELATIONSHIP__TARGET:
 				return target != null;
 		}
 		return super.eIsSet(featureID);
@@ -260,11 +261,62 @@ public abstract class EntityRelationshipImpl extends TermImpl implements EntityR
 	 * @generated
 	 */
 	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == DirectedBinaryRelationshipKind.class) {
+			switch (derivedFeatureID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == EntityRelationship.class) {
+			switch (derivedFeatureID) {
+				case TerminologiesPackage.CONCEPTUAL_RELATIONSHIP__SOURCE: return TerminologiesPackage.ENTITY_RELATIONSHIP__SOURCE;
+				case TerminologiesPackage.CONCEPTUAL_RELATIONSHIP__TARGET: return TerminologiesPackage.ENTITY_RELATIONSHIP__TARGET;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == DirectedBinaryRelationshipKind.class) {
+			switch (baseFeatureID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == EntityRelationship.class) {
+			switch (baseFeatureID) {
+				case TerminologiesPackage.ENTITY_RELATIONSHIP__SOURCE: return TerminologiesPackage.CONCEPTUAL_RELATIONSHIP__SOURCE;
+				case TerminologiesPackage.ENTITY_RELATIONSHIP__TARGET: return TerminologiesPackage.CONCEPTUAL_RELATIONSHIP__TARGET;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
 		if (baseClass == DirectedBinaryRelationshipKind.class) {
 			switch (baseOperationID) {
-				case TerminologiesPackage.DIRECTED_BINARY_RELATIONSHIP_KIND___RELATION_DOMAIN: return TerminologiesPackage.ENTITY_RELATIONSHIP___RELATION_DOMAIN;
-				case TerminologiesPackage.DIRECTED_BINARY_RELATIONSHIP_KIND___RELATION_RANGE: return TerminologiesPackage.ENTITY_RELATIONSHIP___RELATION_RANGE;
+				case TerminologiesPackage.DIRECTED_BINARY_RELATIONSHIP_KIND___RELATION_DOMAIN: return TerminologiesPackage.CONCEPTUAL_RELATIONSHIP___RELATION_DOMAIN;
+				case TerminologiesPackage.DIRECTED_BINARY_RELATIONSHIP_KIND___RELATION_RANGE: return TerminologiesPackage.CONCEPTUAL_RELATIONSHIP___RELATION_RANGE;
+				default: return -1;
+			}
+		}
+		if (baseClass == EntityRelationship.class) {
+			switch (baseOperationID) {
+				case TerminologiesPackage.ENTITY_RELATIONSHIP___RELATION_DOMAIN: return TerminologiesPackage.CONCEPTUAL_RELATIONSHIP___RELATION_DOMAIN;
+				case TerminologiesPackage.ENTITY_RELATIONSHIP___RELATION_RANGE: return TerminologiesPackage.CONCEPTUAL_RELATIONSHIP___RELATION_RANGE;
 				default: return -1;
 			}
 		}
@@ -279,12 +331,12 @@ public abstract class EntityRelationshipImpl extends TermImpl implements EntityR
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case TerminologiesPackage.ENTITY_RELATIONSHIP___RELATION_DOMAIN:
+			case TerminologiesPackage.CONCEPTUAL_RELATIONSHIP___RELATION_DOMAIN:
 				return relationDomain();
-			case TerminologiesPackage.ENTITY_RELATIONSHIP___RELATION_RANGE:
+			case TerminologiesPackage.CONCEPTUAL_RELATIONSHIP___RELATION_RANGE:
 				return relationRange();
 		}
 		return super.eInvoke(operationID, arguments);
 	}
 
-} //EntityRelationshipImpl
+} //ConceptualRelationshipImpl
