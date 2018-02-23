@@ -21,7 +21,7 @@ package gov.nasa.jpl.imce.oml.model.descriptions;
 import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
 
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptualEntity;
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship;
+import gov.nasa.jpl.imce.oml.model.terminologies.ConceptualRelationship;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -31,7 +31,7 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * An OML ReifiedRelationshipInstance is an OML ConceptualEntitySingletonInstance  classified by an OML ReifiedRelationship.
+ * An OML ReifiedRelationshipInstance is an OML ConceptualEntitySingletonInstance  classified by an OML ConceptualRelationship.
  * <!-- end-model-doc -->
  *
  * <p>
@@ -39,7 +39,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstance#getDescriptionBox <em>Description Box</em>}</li>
- *   <li>{@link gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstance#getSingletonReifiedRelationshipClassifier <em>Singleton Reified Relationship Classifier</em>}</li>
+ *   <li>{@link gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstance#getSingletonConceptualRelationshipClassifier <em>Singleton Conceptual Relationship Classifier</em>}</li>
  * </ul>
  *
  * @see gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsPackage#getReifiedRelationshipInstance()
@@ -76,36 +76,36 @@ public interface ReifiedRelationshipInstance extends ConceptualEntitySingletonIn
 	void setDescriptionBox(DescriptionBox value);
 
 	/**
-	 * Returns the value of the '<em><b>Singleton Reified Relationship Classifier</b></em>' reference.
+	 * Returns the value of the '<em><b>Singleton Conceptual Relationship Classifier</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Singleton Reified Relationship Classifier</em>' reference isn't clear,
+	 * If the meaning of the '<em>Singleton Conceptual Relationship Classifier</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Singleton Reified Relationship Classifier</em>' reference.
-	 * @see #setSingletonReifiedRelationshipClassifier(ReifiedRelationship)
-	 * @see gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsPackage#getReifiedRelationshipInstance_SingletonReifiedRelationshipClassifier()
+	 * @return the value of the '<em>Singleton Conceptual Relationship Classifier</em>' reference.
+	 * @see #setSingletonConceptualRelationshipClassifier(ConceptualRelationship)
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsPackage#getReifiedRelationshipInstance_SingletonConceptualRelationshipClassifier()
 	 * @model required="true"
 	 * @generated
 	 */
-	ReifiedRelationship getSingletonReifiedRelationshipClassifier();
+	ConceptualRelationship getSingletonConceptualRelationshipClassifier();
 
 	/**
-	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstance#getSingletonReifiedRelationshipClassifier <em>Singleton Reified Relationship Classifier</em>}' reference.
+	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstance#getSingletonConceptualRelationshipClassifier <em>Singleton Conceptual Relationship Classifier</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Singleton Reified Relationship Classifier</em>' reference.
-	 * @see #getSingletonReifiedRelationshipClassifier()
+	 * @param value the new value of the '<em>Singleton Conceptual Relationship Classifier</em>' reference.
+	 * @see #getSingletonConceptualRelationshipClassifier()
 	 * @generated
 	 */
-	void setSingletonReifiedRelationshipClassifier(ReifiedRelationship value);
+	void setSingletonConceptualRelationshipClassifier(ConceptualRelationship value);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return this.getSingletonReifiedRelationshipClassifier();'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return this.getSingletonConceptualRelationshipClassifier();'"
 	 * @generated
 	 */
 	ConceptualEntity conceptualEntitySingletonClassifier();

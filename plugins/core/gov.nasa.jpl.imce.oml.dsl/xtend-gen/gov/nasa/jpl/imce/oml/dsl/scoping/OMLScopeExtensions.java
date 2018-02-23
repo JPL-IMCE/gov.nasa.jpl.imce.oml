@@ -37,6 +37,7 @@ import gov.nasa.jpl.imce.oml.model.graphs.ConceptDesignationTerminologyAxiom;
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyGraph;
 import gov.nasa.jpl.imce.oml.model.terminologies.Aspect;
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
+import gov.nasa.jpl.imce.oml.model.terminologies.ConceptualEntity;
 import gov.nasa.jpl.imce.oml.model.terminologies.DataRange;
 import gov.nasa.jpl.imce.oml.model.terminologies.Entity;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship;
@@ -290,6 +291,16 @@ public class OMLScopeExtensions {
       return this.<Entity>importedResourceNameFunction(it);
     };
     return this.<Entity>terminologyScope(tbox, _function, _function_1);
+  }
+  
+  public IScope allConceptualRelationshipsScope(final TerminologyBox tbox) {
+    final Function<TerminologyBox, Iterable<ConceptualEntity>> _function = (TerminologyBox it) -> {
+      return this._oMLExtensions.localConceptualEntities(it);
+    };
+    final Function<Pair<TerminologyBox, ConceptualEntity>, QualifiedName> _function_1 = (Pair<TerminologyBox, ConceptualEntity> it) -> {
+      return this.<ConceptualEntity>importedResourceNameFunction(it);
+    };
+    return this.<ConceptualEntity>terminologyScope(tbox, _function, _function_1);
   }
   
   public IScope allRangesScope(final TerminologyBox tbox) {

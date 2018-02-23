@@ -79,6 +79,7 @@ public class TerminologiesFactoryImpl extends EFactoryImpl implements Terminolog
 			case TerminologiesPackage.FORWARD_PROPERTY: return (EObject)createForwardProperty();
 			case TerminologiesPackage.INVERSE_PROPERTY: return (EObject)createInverseProperty();
 			case TerminologiesPackage.REIFIED_RELATIONSHIP: return (EObject)createReifiedRelationship();
+			case TerminologiesPackage.SPECIALIZED_REIFIED_RELATIONSHIP: return (EObject)createSpecializedReifiedRelationship();
 			case TerminologiesPackage.UNREIFIED_RELATIONSHIP: return (EObject)createUnreifiedRelationship();
 			case TerminologiesPackage.SCALAR: return (EObject)createScalar();
 			case TerminologiesPackage.ENTITY_STRUCTURED_DATA_PROPERTY: return (EObject)createEntityStructuredDataProperty();
@@ -93,7 +94,6 @@ public class TerminologiesFactoryImpl extends EFactoryImpl implements Terminolog
 			case TerminologiesPackage.ENTITY_UNIVERSAL_RESTRICTION_AXIOM: return (EObject)createEntityUniversalRestrictionAxiom();
 			case TerminologiesPackage.ASPECT_SPECIALIZATION_AXIOM: return (EObject)createAspectSpecializationAxiom();
 			case TerminologiesPackage.CONCEPT_SPECIALIZATION_AXIOM: return (EObject)createConceptSpecializationAxiom();
-			case TerminologiesPackage.REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM: return (EObject)createReifiedRelationshipSpecializationAxiom();
 			case TerminologiesPackage.SUB_OBJECT_PROPERTY_OF_AXIOM: return (EObject)createSubObjectPropertyOfAxiom();
 			case TerminologiesPackage.SUB_DATA_PROPERTY_OF_AXIOM: return (EObject)createSubDataPropertyOfAxiom();
 			case TerminologiesPackage.ENTITY_SCALAR_DATA_PROPERTY_EXISTENTIAL_RESTRICTION_AXIOM: return (EObject)createEntityScalarDataPropertyExistentialRestrictionAxiom();
@@ -204,6 +204,16 @@ public class TerminologiesFactoryImpl extends EFactoryImpl implements Terminolog
 	public ReifiedRelationship createReifiedRelationship() {
 		ReifiedRelationshipImpl reifiedRelationship = new ReifiedRelationshipImpl();
 		return reifiedRelationship;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SpecializedReifiedRelationship createSpecializedReifiedRelationship() {
+		SpecializedReifiedRelationshipImpl specializedReifiedRelationship = new SpecializedReifiedRelationshipImpl();
+		return specializedReifiedRelationship;
 	}
 
 	/**
@@ -344,16 +354,6 @@ public class TerminologiesFactoryImpl extends EFactoryImpl implements Terminolog
 	public ConceptSpecializationAxiom createConceptSpecializationAxiom() {
 		ConceptSpecializationAxiomImpl conceptSpecializationAxiom = new ConceptSpecializationAxiomImpl();
 		return conceptSpecializationAxiom;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ReifiedRelationshipSpecializationAxiom createReifiedRelationshipSpecializationAxiom() {
-		ReifiedRelationshipSpecializationAxiomImpl reifiedRelationshipSpecializationAxiom = new ReifiedRelationshipSpecializationAxiomImpl();
-		return reifiedRelationshipSpecializationAxiom;
 	}
 
 	/**

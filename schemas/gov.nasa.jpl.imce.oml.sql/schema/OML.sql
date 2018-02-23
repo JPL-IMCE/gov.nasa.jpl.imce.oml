@@ -31,8 +31,10 @@ USE `OML` ;
 -- CRBK                 CrossReferencableKinds
 -- CRTK                 CrossReferencabilityKinds
 -- CTreeDsju            ConceptTreeDisjunctions
+-- CharacterizedERels   CharacterizedEntityRelationships
 -- CualESI              ConceptualEntitySingletonInstances
 -- CualEs               ConceptualEntities
+-- CualRels             ConceptualRelationships
 -- DBoxRels             DescriptionBoxRelationships
 -- DRelDomains          DataRelationshipDomains
 -- DRelFromEs           DataRelationshipFromEntities
@@ -114,7 +116,6 @@ USE `OML` ;
 -- RRIDomains           ReifiedRelationshipInstanceDomains
 -- RRIRanges            ReifiedRelationshipInstanceRanges
 -- RRIs                 ReifiedRelationshipInstances
--- RRSpeAx              ReifiedRelationshipSpecializationAxioms
 -- RRs                  ReifiedRelationships
 -- RScPVals             RestrictionScalarDataPropertyValues
 -- RStPTs               RestrictionStructuredDataPropertyTuples
@@ -129,6 +130,7 @@ USE `OML` ;
 -- Scs                  Scalars
 -- SegP                 SegmentPredicates
 -- SpeDsjtCAx           SpecificDisjointConceptAxioms
+-- SpecializedRRs       SpecializedReifiedRelationships
 -- StPTs                StructuredDataPropertyTuples
 -- StPs                 StructuredDataProperties
 -- StringScRs           StringScalarRestrictions
@@ -142,6 +144,15 @@ USE `OML` ;
 -- TlgyNestingAx        TerminologyNestingAxioms
 -- URITs                UnreifiedRelationshipInstanceTuples
 -- URs                  UnreifiedRelationships
+
+-- -----------------------------------------------------
+-- Table `OML`.`CharacterizedERels`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`CharacterizedERels` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,		  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Abstract Classification Table CharacterizedEntityRelationships';
 
 -- -----------------------------------------------------
 -- Table `OML`.`CTreeDsju`
@@ -169,6 +180,15 @@ CREATE TABLE IF NOT EXISTS `OML`.`CualESI` (
   UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
 )
 COMMENT = 'Abstract Classification Table ConceptualEntitySingletonInstances';
+
+-- -----------------------------------------------------
+-- Table `OML`.`CualRels`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`CualRels` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,		  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Abstract Classification Table ConceptualRelationships';
 
 -- -----------------------------------------------------
 -- Table `OML`.`CRTK`
@@ -1328,6 +1348,45 @@ CREATE TABLE IF NOT EXISTS `OML`.`InvProps` (
 COMMENT = 'Concrete Information Table InverseProperties';
 
 -- -----------------------------------------------------
+-- Table `OML`.`SpecializedRRs`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `OML`.`SpecializedRRs` (
+  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
+  `tboxUUID` CHAR(36) NOT NULL COMMENT 'TBox (TerminologyBox)',
+  `sourceUUID` CHAR(36) NOT NULL COMMENT 'Es (Entity)',
+  `targetUUID` CHAR(36) NOT NULL COMMENT 'Es (Entity)',
+  `generalUUID` CHAR(36) NOT NULL COMMENT 'CualRels (ConceptualRelationship)',
+  `name` TEXT NOT NULL COMMENT 'LocalName',
+  
+  CONSTRAINT `fk_SpecializedRRs_tboxUUID`
+    FOREIGN KEY (`tboxUUID`)
+    REFERENCES `OML`.`TBox`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_SpecializedRRs_sourceUUID`
+    FOREIGN KEY (`sourceUUID`)
+    REFERENCES `OML`.`Es`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_SpecializedRRs_targetUUID`
+    FOREIGN KEY (`targetUUID`)
+    REFERENCES `OML`.`Es`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  CONSTRAINT `fk_SpecializedRRs_generalUUID`
+    FOREIGN KEY (`generalUUID`)
+    REFERENCES `OML`.`CualRels`(`uuid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  
+  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
+)
+COMMENT = 'Concrete Information Table SpecializedReifiedRelationships';
+
+-- -----------------------------------------------------
 -- Table `OML`.`URs`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `OML`.`URs` (
@@ -1819,37 +1878,6 @@ CREATE TABLE IF NOT EXISTS `OML`.`CSpeAx` (
 COMMENT = 'Concrete Information Table ConceptSpecializationAxioms';
 
 -- -----------------------------------------------------
--- Table `OML`.`RRSpeAx`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `OML`.`RRSpeAx` (
-  `uuid` CHAR(36) NOT NULL PRIMARY KEY,
-  `tboxUUID` CHAR(36) NOT NULL COMMENT 'TBox (TerminologyBox)',
-  `superRelationshipUUID` CHAR(36) NOT NULL COMMENT 'RRs (ReifiedRelationship)',
-  `subRelationshipUUID` CHAR(36) NOT NULL COMMENT 'RRs (ReifiedRelationship)',
-  
-  CONSTRAINT `fk_RRSpeAx_tboxUUID`
-    FOREIGN KEY (`tboxUUID`)
-    REFERENCES `OML`.`TBox`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_RRSpeAx_superRelationshipUUID`
-    FOREIGN KEY (`superRelationshipUUID`)
-    REFERENCES `OML`.`RRs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  CONSTRAINT `fk_RRSpeAx_subRelationshipUUID`
-    FOREIGN KEY (`subRelationshipUUID`)
-    REFERENCES `OML`.`RRs`(`uuid`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  
-  UNIQUE INDEX `uuid_UNIQUE` (`uuid` ASC)	
-)
-COMMENT = 'Concrete Information Table ReifiedRelationshipSpecializationAxioms';
-
--- -----------------------------------------------------
 -- Table `OML`.`SubDataPropOfAx`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `OML`.`SubDataPropOfAx` (
@@ -2008,7 +2036,7 @@ COMMENT = 'Concrete Information Table ConceptInstances';
 CREATE TABLE IF NOT EXISTS `OML`.`RRIs` (
   `uuid` CHAR(36) NOT NULL PRIMARY KEY,
   `descriptionBoxUUID` CHAR(36) NOT NULL COMMENT 'DBoxes (DescriptionBox)',
-  `singletonReifiedRelationshipClassifierUUID` CHAR(36) NOT NULL COMMENT 'RRs (ReifiedRelationship)',
+  `singletonConceptualRelationshipClassifierUUID` CHAR(36) NOT NULL COMMENT 'CualRels (ConceptualRelationship)',
   `name` TEXT NOT NULL COMMENT 'LocalName',
   
   CONSTRAINT `fk_RRIs_descriptionBoxUUID`
@@ -2017,9 +2045,9 @@ CREATE TABLE IF NOT EXISTS `OML`.`RRIs` (
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
-  CONSTRAINT `fk_RRIs_singletonReifiedRelationshipClassifierUUID`
-    FOREIGN KEY (`singletonReifiedRelationshipClassifierUUID`)
-    REFERENCES `OML`.`RRs`(`uuid`)
+  CONSTRAINT `fk_RRIs_singletonConceptualRelationshipClassifierUUID`
+    FOREIGN KEY (`singletonConceptualRelationshipClassifierUUID`)
+    REFERENCES `OML`.`CualRels`(`uuid`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   
@@ -3901,8 +3929,12 @@ BEGIN
 insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
 -- CrossReferencabilityKinds(x) if ReifiedRelationships(x)
 insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- CharacterizedEntityRelationships(x) if ReifiedRelationships(x)
+insert into `OML`.`CharacterizedERels`(`uuid`) values(new.`uuid`);
 -- ConceptualEntities(x) if ReifiedRelationships(x)
 insert into `OML`.`CualEs`(`uuid`) values(new.`uuid`);
+-- ConceptualRelationships(x) if ReifiedRelationships(x)
+insert into `OML`.`CualRels`(`uuid`) values(new.`uuid`);
 -- DirectedBinaryRelationshipKinds(x) if ReifiedRelationships(x)
 insert into `OML`.`DirBinRelKinds`(`uuid`) values(new.`uuid`);
 -- EntityRelationships(x) if ReifiedRelationships(x)
@@ -3935,8 +3967,12 @@ BEGIN
 delete from `OML`.`CRBK`;
 -- CrossReferencabilityKinds(x) if ReifiedRelationships(x)
 delete from `OML`.`CRTK`;
+-- CharacterizedEntityRelationships(x) if ReifiedRelationships(x)
+delete from `OML`.`CharacterizedERels`;
 -- ConceptualEntities(x) if ReifiedRelationships(x)
 delete from `OML`.`CualEs`;
+-- ConceptualRelationships(x) if ReifiedRelationships(x)
+delete from `OML`.`CualRels`;
 -- DirectedBinaryRelationshipKinds(x) if ReifiedRelationships(x)
 delete from `OML`.`DirBinRelKinds`;
 -- EntityRelationships(x) if ReifiedRelationships(x)
@@ -4058,6 +4094,98 @@ delete from `OML`.`RestrictableRels`;
 END$$
 
 -- -----------------------------------------------------
+-- Concrete Information Table `OML`.`SpecializedRRs` (SpecializedReifiedRelationships)
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`SpecializedRRs_AFTER_INSERT` AFTER INSERT ON `SpecializedRRs` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if SpecializedReifiedRelationships(x)
+insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
+-- CrossReferencabilityKinds(x) if SpecializedReifiedRelationships(x)
+insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- ConceptualEntities(x) if SpecializedReifiedRelationships(x)
+insert into `OML`.`CualEs`(`uuid`) values(new.`uuid`);
+-- ConceptualRelationships(x) if SpecializedReifiedRelationships(x)
+insert into `OML`.`CualRels`(`uuid`) values(new.`uuid`);
+-- DirectedBinaryRelationshipKinds(x) if SpecializedReifiedRelationships(x)
+insert into `OML`.`DirBinRelKinds`(`uuid`) values(new.`uuid`);
+-- ExtrinsicIdentityKinds(x) if SpecializedReifiedRelationships(x)
+insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
+-- EntityRelationships(x) if SpecializedReifiedRelationships(x)
+insert into `OML`.`ERels`(`uuid`) values(new.`uuid`);
+-- ElementCrossReferenceTuples(x) if SpecializedReifiedRelationships(x)
+insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
+-- Entities(x) if SpecializedReifiedRelationships(x)
+insert into `OML`.`Es`(`uuid`) values(new.`uuid`);
+-- IntrinsicIdentityKinds(x) if SpecializedReifiedRelationships(x)
+insert into `OML`.`IIdK`(`uuid`) values(new.`uuid`);
+-- IdentityKinds(x) if SpecializedReifiedRelationships(x)
+insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
+-- LogicalElements(x) if SpecializedReifiedRelationships(x)
+insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
+-- ModuleElements(x) if SpecializedReifiedRelationships(x)
+insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
+-- Predicates(x) if SpecializedReifiedRelationships(x)
+insert into `OML`.`P`(`uuid`) values(new.`uuid`);
+-- Resources(x) if SpecializedReifiedRelationships(x)
+insert into `OML`.`Ress`(`uuid`) values(new.`uuid`);
+-- SpecializationAxioms(x) if SpecializedReifiedRelationships(x)
+insert into `OML`.`SpeAx`(`uuid`) values(new.`uuid`);
+-- TerminologyBoxStatements(x) if SpecializedReifiedRelationships(x)
+insert into `OML`.`TBoxSt`(`uuid`) values(new.`uuid`);
+-- TermAxioms(x) if SpecializedReifiedRelationships(x)
+insert into `OML`.`TermAx`(`uuid`) values(new.`uuid`);
+-- Terms(x) if SpecializedReifiedRelationships(x)
+insert into `OML`.`Terms`(`uuid`) values(new.`uuid`);
+END$$
+
+DELIMITER $$
+USE `OML`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`SpecializedRRs_AFTER_DELETE` AFTER DELETE ON `SpecializedRRs` FOR EACH ROW
+BEGIN
+-- CrossReferencableKinds(x) if SpecializedReifiedRelationships(x)
+delete from `OML`.`CRBK`;
+-- CrossReferencabilityKinds(x) if SpecializedReifiedRelationships(x)
+delete from `OML`.`CRTK`;
+-- ConceptualEntities(x) if SpecializedReifiedRelationships(x)
+delete from `OML`.`CualEs`;
+-- ConceptualRelationships(x) if SpecializedReifiedRelationships(x)
+delete from `OML`.`CualRels`;
+-- DirectedBinaryRelationshipKinds(x) if SpecializedReifiedRelationships(x)
+delete from `OML`.`DirBinRelKinds`;
+-- ExtrinsicIdentityKinds(x) if SpecializedReifiedRelationships(x)
+delete from `OML`.`EIdK`;
+-- EntityRelationships(x) if SpecializedReifiedRelationships(x)
+delete from `OML`.`ERels`;
+-- ElementCrossReferenceTuples(x) if SpecializedReifiedRelationships(x)
+delete from `OML`.`EltCRefTs`;
+-- Entities(x) if SpecializedReifiedRelationships(x)
+delete from `OML`.`Es`;
+-- IntrinsicIdentityKinds(x) if SpecializedReifiedRelationships(x)
+delete from `OML`.`IIdK`;
+-- IdentityKinds(x) if SpecializedReifiedRelationships(x)
+delete from `OML`.`Ik`;
+-- LogicalElements(x) if SpecializedReifiedRelationships(x)
+delete from `OML`.`LogEs`;
+-- ModuleElements(x) if SpecializedReifiedRelationships(x)
+delete from `OML`.`ModElts`;
+-- Predicates(x) if SpecializedReifiedRelationships(x)
+delete from `OML`.`P`;
+-- Resources(x) if SpecializedReifiedRelationships(x)
+delete from `OML`.`Ress`;
+-- SpecializationAxioms(x) if SpecializedReifiedRelationships(x)
+delete from `OML`.`SpeAx`;
+-- TerminologyBoxStatements(x) if SpecializedReifiedRelationships(x)
+delete from `OML`.`TBoxSt`;
+-- TermAxioms(x) if SpecializedReifiedRelationships(x)
+delete from `OML`.`TermAx`;
+-- Terms(x) if SpecializedReifiedRelationships(x)
+delete from `OML`.`Terms`;
+END$$
+
+-- -----------------------------------------------------
 -- Concrete Information Table `OML`.`URs` (UnreifiedRelationships)
 -- -----------------------------------------------------
 
@@ -4069,6 +4197,8 @@ BEGIN
 insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
 -- CrossReferencabilityKinds(x) if UnreifiedRelationships(x)
 insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
+-- CharacterizedEntityRelationships(x) if UnreifiedRelationships(x)
+insert into `OML`.`CharacterizedERels`(`uuid`) values(new.`uuid`);
 -- DirectedBinaryRelationshipKinds(x) if UnreifiedRelationships(x)
 insert into `OML`.`DirBinRelKinds`(`uuid`) values(new.`uuid`);
 -- EntityRelationships(x) if UnreifiedRelationships(x)
@@ -4101,6 +4231,8 @@ BEGIN
 delete from `OML`.`CRBK`;
 -- CrossReferencabilityKinds(x) if UnreifiedRelationships(x)
 delete from `OML`.`CRTK`;
+-- CharacterizedEntityRelationships(x) if UnreifiedRelationships(x)
+delete from `OML`.`CharacterizedERels`;
 -- DirectedBinaryRelationshipKinds(x) if UnreifiedRelationships(x)
 delete from `OML`.`DirBinRelKinds`;
 -- EntityRelationships(x) if UnreifiedRelationships(x)
@@ -4798,62 +4930,6 @@ delete from `OML`.`SpeAx`;
 -- TerminologyBoxStatements(x) if ConceptSpecializationAxioms(x)
 delete from `OML`.`TBoxSt`;
 -- TermAxioms(x) if ConceptSpecializationAxioms(x)
-delete from `OML`.`TermAx`;
-END$$
-
--- -----------------------------------------------------
--- Concrete Information Table `OML`.`RRSpeAx` (ReifiedRelationshipSpecializationAxioms)
--- -----------------------------------------------------
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRSpeAx_AFTER_INSERT` AFTER INSERT ON `RRSpeAx` FOR EACH ROW
-BEGIN
--- CrossReferencableKinds(x) if ReifiedRelationshipSpecializationAxioms(x)
-insert into `OML`.`CRBK`(`uuid`) values(new.`uuid`);
--- CrossReferencabilityKinds(x) if ReifiedRelationshipSpecializationAxioms(x)
-insert into `OML`.`CRTK`(`uuid`) values(new.`uuid`);
--- ExtrinsicIdentityKinds(x) if ReifiedRelationshipSpecializationAxioms(x)
-insert into `OML`.`EIdK`(`uuid`) values(new.`uuid`);
--- ElementCrossReferenceTuples(x) if ReifiedRelationshipSpecializationAxioms(x)
-insert into `OML`.`EltCRefTs`(`uuid`) values(new.`uuid`);
--- IdentityKinds(x) if ReifiedRelationshipSpecializationAxioms(x)
-insert into `OML`.`Ik`(`uuid`) values(new.`uuid`);
--- LogicalElements(x) if ReifiedRelationshipSpecializationAxioms(x)
-insert into `OML`.`LogEs`(`uuid`) values(new.`uuid`);
--- ModuleElements(x) if ReifiedRelationshipSpecializationAxioms(x)
-insert into `OML`.`ModElts`(`uuid`) values(new.`uuid`);
--- SpecializationAxioms(x) if ReifiedRelationshipSpecializationAxioms(x)
-insert into `OML`.`SpeAx`(`uuid`) values(new.`uuid`);
--- TerminologyBoxStatements(x) if ReifiedRelationshipSpecializationAxioms(x)
-insert into `OML`.`TBoxSt`(`uuid`) values(new.`uuid`);
--- TermAxioms(x) if ReifiedRelationshipSpecializationAxioms(x)
-insert into `OML`.`TermAx`(`uuid`) values(new.`uuid`);
-END$$
-
-DELIMITER $$
-USE `OML`$$
-CREATE DEFINER = CURRENT_USER TRIGGER `OML`.`RRSpeAx_AFTER_DELETE` AFTER DELETE ON `RRSpeAx` FOR EACH ROW
-BEGIN
--- CrossReferencableKinds(x) if ReifiedRelationshipSpecializationAxioms(x)
-delete from `OML`.`CRBK`;
--- CrossReferencabilityKinds(x) if ReifiedRelationshipSpecializationAxioms(x)
-delete from `OML`.`CRTK`;
--- ExtrinsicIdentityKinds(x) if ReifiedRelationshipSpecializationAxioms(x)
-delete from `OML`.`EIdK`;
--- ElementCrossReferenceTuples(x) if ReifiedRelationshipSpecializationAxioms(x)
-delete from `OML`.`EltCRefTs`;
--- IdentityKinds(x) if ReifiedRelationshipSpecializationAxioms(x)
-delete from `OML`.`Ik`;
--- LogicalElements(x) if ReifiedRelationshipSpecializationAxioms(x)
-delete from `OML`.`LogEs`;
--- ModuleElements(x) if ReifiedRelationshipSpecializationAxioms(x)
-delete from `OML`.`ModElts`;
--- SpecializationAxioms(x) if ReifiedRelationshipSpecializationAxioms(x)
-delete from `OML`.`SpeAx`;
--- TerminologyBoxStatements(x) if ReifiedRelationshipSpecializationAxioms(x)
-delete from `OML`.`TBoxSt`;
--- TermAxioms(x) if ReifiedRelationshipSpecializationAxioms(x)
 delete from `OML`.`TermAx`;
 END$$
 

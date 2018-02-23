@@ -60,7 +60,7 @@ public class ReifiedRelationshipInstanceItemProvider extends ConceptualEntitySin
 			super.getPropertyDescriptors(object);
 
 			addDescriptionBoxPropertyDescriptor(object);
-			addSingletonReifiedRelationshipClassifierPropertyDescriptor(object);
+			addSingletonConceptualRelationshipClassifierPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -88,19 +88,19 @@ public class ReifiedRelationshipInstanceItemProvider extends ConceptualEntitySin
 	}
 
 	/**
-	 * This adds a property descriptor for the Singleton Reified Relationship Classifier feature.
+	 * This adds a property descriptor for the Singleton Conceptual Relationship Classifier feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addSingletonReifiedRelationshipClassifierPropertyDescriptor(Object object) {
+	protected void addSingletonConceptualRelationshipClassifierPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ReifiedRelationshipInstance_singletonReifiedRelationshipClassifier_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ReifiedRelationshipInstance_singletonReifiedRelationshipClassifier_feature", "_UI_ReifiedRelationshipInstance_type"),
-				 DescriptionsPackage.Literals.REIFIED_RELATIONSHIP_INSTANCE__SINGLETON_REIFIED_RELATIONSHIP_CLASSIFIER,
+				 getString("_UI_ReifiedRelationshipInstance_singletonConceptualRelationshipClassifier_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ReifiedRelationshipInstance_singletonConceptualRelationshipClassifier_feature", "_UI_ReifiedRelationshipInstance_type"),
+				 DescriptionsPackage.Literals.REIFIED_RELATIONSHIP_INSTANCE__SINGLETON_CONCEPTUAL_RELATIONSHIP_CLASSIFIER,
 				 true,
 				 false,
 				 true,

@@ -1712,94 +1712,13 @@ public interface TerminologiesPackage extends EPackage {
 	int ENTITY_RELATIONSHIP__TARGET = TERM_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Is Functional</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENTITY_RELATIONSHIP__IS_FUNCTIONAL = TERM_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Is Inverse Functional</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENTITY_RELATIONSHIP__IS_INVERSE_FUNCTIONAL = TERM_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Is Essential</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENTITY_RELATIONSHIP__IS_ESSENTIAL = TERM_FEATURE_COUNT + 4;
-
-	/**
-	 * The feature id for the '<em><b>Is Inverse Essential</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENTITY_RELATIONSHIP__IS_INVERSE_ESSENTIAL = TERM_FEATURE_COUNT + 5;
-
-	/**
-	 * The feature id for the '<em><b>Is Symmetric</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENTITY_RELATIONSHIP__IS_SYMMETRIC = TERM_FEATURE_COUNT + 6;
-
-	/**
-	 * The feature id for the '<em><b>Is Asymmetric</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENTITY_RELATIONSHIP__IS_ASYMMETRIC = TERM_FEATURE_COUNT + 7;
-
-	/**
-	 * The feature id for the '<em><b>Is Reflexive</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENTITY_RELATIONSHIP__IS_REFLEXIVE = TERM_FEATURE_COUNT + 8;
-
-	/**
-	 * The feature id for the '<em><b>Is Irreflexive</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENTITY_RELATIONSHIP__IS_IRREFLEXIVE = TERM_FEATURE_COUNT + 9;
-
-	/**
-	 * The feature id for the '<em><b>Is Transitive</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENTITY_RELATIONSHIP__IS_TRANSITIVE = TERM_FEATURE_COUNT + 10;
-
-	/**
 	 * The number of structural features of the '<em>Entity Relationship</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY_RELATIONSHIP_FEATURE_COUNT = TERM_FEATURE_COUNT + 11;
+	int ENTITY_RELATIONSHIP_FEATURE_COUNT = TERM_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Module Context</em>' operation.
@@ -1883,6 +1802,241 @@ public interface TerminologiesPackage extends EPackage {
 	int ENTITY_RELATIONSHIP_OPERATION_COUNT = TERM_OPERATION_COUNT + 4;
 
 	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.CharacterizedEntityRelationshipImpl <em>Characterized Entity Relationship</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.CharacterizedEntityRelationshipImpl
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getCharacterizedEntityRelationship()
+	 * @generated
+	 */
+	int CHARACTERIZED_ENTITY_RELATIONSHIP = 14;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHARACTERIZED_ENTITY_RELATIONSHIP__UUID = ENTITY_RELATIONSHIP__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHARACTERIZED_ENTITY_RELATIONSHIP__ANNOTATIONS = ENTITY_RELATIONSHIP__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHARACTERIZED_ENTITY_RELATIONSHIP__TBOX = ENTITY_RELATIONSHIP__TBOX;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHARACTERIZED_ENTITY_RELATIONSHIP__NAME = ENTITY_RELATIONSHIP__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHARACTERIZED_ENTITY_RELATIONSHIP__SOURCE = ENTITY_RELATIONSHIP__SOURCE;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHARACTERIZED_ENTITY_RELATIONSHIP__TARGET = ENTITY_RELATIONSHIP__TARGET;
+
+	/**
+	 * The feature id for the '<em><b>Is Functional</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHARACTERIZED_ENTITY_RELATIONSHIP__IS_FUNCTIONAL = ENTITY_RELATIONSHIP_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Is Inverse Functional</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHARACTERIZED_ENTITY_RELATIONSHIP__IS_INVERSE_FUNCTIONAL = ENTITY_RELATIONSHIP_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Is Essential</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHARACTERIZED_ENTITY_RELATIONSHIP__IS_ESSENTIAL = ENTITY_RELATIONSHIP_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Is Inverse Essential</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHARACTERIZED_ENTITY_RELATIONSHIP__IS_INVERSE_ESSENTIAL = ENTITY_RELATIONSHIP_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Is Symmetric</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHARACTERIZED_ENTITY_RELATIONSHIP__IS_SYMMETRIC = ENTITY_RELATIONSHIP_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Is Asymmetric</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHARACTERIZED_ENTITY_RELATIONSHIP__IS_ASYMMETRIC = ENTITY_RELATIONSHIP_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Is Reflexive</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHARACTERIZED_ENTITY_RELATIONSHIP__IS_REFLEXIVE = ENTITY_RELATIONSHIP_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>Is Irreflexive</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHARACTERIZED_ENTITY_RELATIONSHIP__IS_IRREFLEXIVE = ENTITY_RELATIONSHIP_FEATURE_COUNT + 7;
+
+	/**
+	 * The feature id for the '<em><b>Is Transitive</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHARACTERIZED_ENTITY_RELATIONSHIP__IS_TRANSITIVE = ENTITY_RELATIONSHIP_FEATURE_COUNT + 8;
+
+	/**
+	 * The number of structural features of the '<em>Characterized Entity Relationship</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHARACTERIZED_ENTITY_RELATIONSHIP_FEATURE_COUNT = ENTITY_RELATIONSHIP_FEATURE_COUNT + 9;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHARACTERIZED_ENTITY_RELATIONSHIP___MODULE_CONTEXT = ENTITY_RELATIONSHIP___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>Iri</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHARACTERIZED_ENTITY_RELATIONSHIP___IRI = ENTITY_RELATIONSHIP___IRI;
+
+	/**
+	 * The operation id for the '<em>Abbrev IRI</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHARACTERIZED_ENTITY_RELATIONSHIP___ABBREV_IRI = ENTITY_RELATIONSHIP___ABBREV_IRI;
+
+	/**
+	 * The operation id for the '<em>Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHARACTERIZED_ENTITY_RELATIONSHIP___NAME = ENTITY_RELATIONSHIP___NAME;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHARACTERIZED_ENTITY_RELATIONSHIP___UUID = ENTITY_RELATIONSHIP___UUID;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHARACTERIZED_ENTITY_RELATIONSHIP___ALL_NESTED_ELEMENTS = ENTITY_RELATIONSHIP___ALL_NESTED_ELEMENTS;
+
+	/**
+	 * The operation id for the '<em>Relation Domain</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHARACTERIZED_ENTITY_RELATIONSHIP___RELATION_DOMAIN = ENTITY_RELATIONSHIP___RELATION_DOMAIN;
+
+	/**
+	 * The operation id for the '<em>Relation Range</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHARACTERIZED_ENTITY_RELATIONSHIP___RELATION_RANGE = ENTITY_RELATIONSHIP___RELATION_RANGE;
+
+	/**
+	 * The number of operations of the '<em>Characterized Entity Relationship</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHARACTERIZED_ENTITY_RELATIONSHIP_OPERATION_COUNT = ENTITY_RELATIONSHIP_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.RestrictableRelationshipImpl <em>Restrictable Relationship</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1890,7 +2044,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getRestrictableRelationship()
 	 * @generated
 	 */
-	int RESTRICTABLE_RELATIONSHIP = 14;
+	int RESTRICTABLE_RELATIONSHIP = 15;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -1999,7 +2153,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getForwardProperty()
 	 * @generated
 	 */
-	int FORWARD_PROPERTY = 15;
+	int FORWARD_PROPERTY = 16;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -2126,7 +2280,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getInverseProperty()
 	 * @generated
 	 */
-	int INVERSE_PROPERTY = 16;
+	int INVERSE_PROPERTY = 17;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -2246,14 +2400,14 @@ public interface TerminologiesPackage extends EPackage {
 	int INVERSE_PROPERTY_OPERATION_COUNT = RESTRICTABLE_RELATIONSHIP_OPERATION_COUNT + 6;
 
 	/**
-	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipImpl <em>Reified Relationship</em>}' class.
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ConceptualRelationshipImpl <em>Conceptual Relationship</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipImpl
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getReifiedRelationship()
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.ConceptualRelationshipImpl
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getConceptualRelationship()
 	 * @generated
 	 */
-	int REIFIED_RELATIONSHIP = 17;
+	int CONCEPTUAL_RELATIONSHIP = 18;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -2262,7 +2416,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REIFIED_RELATIONSHIP__UUID = ENTITY_RELATIONSHIP__UUID;
+	int CONCEPTUAL_RELATIONSHIP__UUID = CONCEPTUAL_ENTITY__UUID;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -2271,7 +2425,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REIFIED_RELATIONSHIP__ANNOTATIONS = ENTITY_RELATIONSHIP__ANNOTATIONS;
+	int CONCEPTUAL_RELATIONSHIP__ANNOTATIONS = CONCEPTUAL_ENTITY__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
@@ -2280,7 +2434,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REIFIED_RELATIONSHIP__TBOX = ENTITY_RELATIONSHIP__TBOX;
+	int CONCEPTUAL_RELATIONSHIP__TBOX = CONCEPTUAL_ENTITY__TBOX;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2289,7 +2443,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REIFIED_RELATIONSHIP__NAME = ENTITY_RELATIONSHIP__NAME;
+	int CONCEPTUAL_RELATIONSHIP__NAME = CONCEPTUAL_ENTITY__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Source</b></em>' reference.
@@ -2298,7 +2452,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REIFIED_RELATIONSHIP__SOURCE = ENTITY_RELATIONSHIP__SOURCE;
+	int CONCEPTUAL_RELATIONSHIP__SOURCE = CONCEPTUAL_ENTITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -2307,115 +2461,16 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REIFIED_RELATIONSHIP__TARGET = ENTITY_RELATIONSHIP__TARGET;
+	int CONCEPTUAL_RELATIONSHIP__TARGET = CONCEPTUAL_ENTITY_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Is Functional</b></em>' attribute.
+	 * The number of structural features of the '<em>Conceptual Relationship</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REIFIED_RELATIONSHIP__IS_FUNCTIONAL = ENTITY_RELATIONSHIP__IS_FUNCTIONAL;
-
-	/**
-	 * The feature id for the '<em><b>Is Inverse Functional</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REIFIED_RELATIONSHIP__IS_INVERSE_FUNCTIONAL = ENTITY_RELATIONSHIP__IS_INVERSE_FUNCTIONAL;
-
-	/**
-	 * The feature id for the '<em><b>Is Essential</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REIFIED_RELATIONSHIP__IS_ESSENTIAL = ENTITY_RELATIONSHIP__IS_ESSENTIAL;
-
-	/**
-	 * The feature id for the '<em><b>Is Inverse Essential</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REIFIED_RELATIONSHIP__IS_INVERSE_ESSENTIAL = ENTITY_RELATIONSHIP__IS_INVERSE_ESSENTIAL;
-
-	/**
-	 * The feature id for the '<em><b>Is Symmetric</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REIFIED_RELATIONSHIP__IS_SYMMETRIC = ENTITY_RELATIONSHIP__IS_SYMMETRIC;
-
-	/**
-	 * The feature id for the '<em><b>Is Asymmetric</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REIFIED_RELATIONSHIP__IS_ASYMMETRIC = ENTITY_RELATIONSHIP__IS_ASYMMETRIC;
-
-	/**
-	 * The feature id for the '<em><b>Is Reflexive</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REIFIED_RELATIONSHIP__IS_REFLEXIVE = ENTITY_RELATIONSHIP__IS_REFLEXIVE;
-
-	/**
-	 * The feature id for the '<em><b>Is Irreflexive</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REIFIED_RELATIONSHIP__IS_IRREFLEXIVE = ENTITY_RELATIONSHIP__IS_IRREFLEXIVE;
-
-	/**
-	 * The feature id for the '<em><b>Is Transitive</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REIFIED_RELATIONSHIP__IS_TRANSITIVE = ENTITY_RELATIONSHIP__IS_TRANSITIVE;
-
-	/**
-	 * The feature id for the '<em><b>Forward Property</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REIFIED_RELATIONSHIP__FORWARD_PROPERTY = ENTITY_RELATIONSHIP_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Inverse Property</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REIFIED_RELATIONSHIP__INVERSE_PROPERTY = ENTITY_RELATIONSHIP_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Reified Relationship</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REIFIED_RELATIONSHIP_FEATURE_COUNT = ENTITY_RELATIONSHIP_FEATURE_COUNT + 2;
+	int CONCEPTUAL_RELATIONSHIP_FEATURE_COUNT = CONCEPTUAL_ENTITY_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Module Context</em>' operation.
@@ -2424,7 +2479,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REIFIED_RELATIONSHIP___MODULE_CONTEXT = ENTITY_RELATIONSHIP___MODULE_CONTEXT;
+	int CONCEPTUAL_RELATIONSHIP___MODULE_CONTEXT = CONCEPTUAL_ENTITY___MODULE_CONTEXT;
 
 	/**
 	 * The operation id for the '<em>Iri</em>' operation.
@@ -2433,7 +2488,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REIFIED_RELATIONSHIP___IRI = ENTITY_RELATIONSHIP___IRI;
+	int CONCEPTUAL_RELATIONSHIP___IRI = CONCEPTUAL_ENTITY___IRI;
 
 	/**
 	 * The operation id for the '<em>Abbrev IRI</em>' operation.
@@ -2442,7 +2497,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REIFIED_RELATIONSHIP___ABBREV_IRI = ENTITY_RELATIONSHIP___ABBREV_IRI;
+	int CONCEPTUAL_RELATIONSHIP___ABBREV_IRI = CONCEPTUAL_ENTITY___ABBREV_IRI;
 
 	/**
 	 * The operation id for the '<em>Name</em>' operation.
@@ -2451,7 +2506,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REIFIED_RELATIONSHIP___NAME = ENTITY_RELATIONSHIP___NAME;
+	int CONCEPTUAL_RELATIONSHIP___NAME = CONCEPTUAL_ENTITY___NAME;
 
 	/**
 	 * The operation id for the '<em>Uuid</em>' operation.
@@ -2460,34 +2515,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REIFIED_RELATIONSHIP___UUID = ENTITY_RELATIONSHIP___UUID;
-
-	/**
-	 * The operation id for the '<em>Relation Domain</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REIFIED_RELATIONSHIP___RELATION_DOMAIN = ENTITY_RELATIONSHIP___RELATION_DOMAIN;
-
-	/**
-	 * The operation id for the '<em>Relation Range</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REIFIED_RELATIONSHIP___RELATION_RANGE = ENTITY_RELATIONSHIP___RELATION_RANGE;
-
-	/**
-	 * The operation id for the '<em>Term</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REIFIED_RELATIONSHIP___TERM = ENTITY_RELATIONSHIP_OPERATION_COUNT + 1;
+	int CONCEPTUAL_RELATIONSHIP___UUID = CONCEPTUAL_ENTITY___UUID;
 
 	/**
 	 * The operation id for the '<em>All Nested Elements</em>' operation.
@@ -2496,7 +2524,296 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REIFIED_RELATIONSHIP___ALL_NESTED_ELEMENTS = ENTITY_RELATIONSHIP_OPERATION_COUNT + 2;
+	int CONCEPTUAL_RELATIONSHIP___ALL_NESTED_ELEMENTS = CONCEPTUAL_ENTITY___ALL_NESTED_ELEMENTS;
+
+	/**
+	 * The operation id for the '<em>Term</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPTUAL_RELATIONSHIP___TERM = CONCEPTUAL_ENTITY___TERM;
+
+	/**
+	 * The operation id for the '<em>Relation Domain</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPTUAL_RELATIONSHIP___RELATION_DOMAIN = CONCEPTUAL_ENTITY_OPERATION_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Relation Range</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPTUAL_RELATIONSHIP___RELATION_RANGE = CONCEPTUAL_ENTITY_OPERATION_COUNT + 3;
+
+	/**
+	 * The number of operations of the '<em>Conceptual Relationship</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT = CONCEPTUAL_ENTITY_OPERATION_COUNT + 4;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipImpl <em>Reified Relationship</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipImpl
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getReifiedRelationship()
+	 * @generated
+	 */
+	int REIFIED_RELATIONSHIP = 19;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP__UUID = CONCEPTUAL_RELATIONSHIP__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP__ANNOTATIONS = CONCEPTUAL_RELATIONSHIP__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP__TBOX = CONCEPTUAL_RELATIONSHIP__TBOX;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP__NAME = CONCEPTUAL_RELATIONSHIP__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP__SOURCE = CONCEPTUAL_RELATIONSHIP__SOURCE;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP__TARGET = CONCEPTUAL_RELATIONSHIP__TARGET;
+
+	/**
+	 * The feature id for the '<em><b>Is Functional</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP__IS_FUNCTIONAL = CONCEPTUAL_RELATIONSHIP_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Is Inverse Functional</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP__IS_INVERSE_FUNCTIONAL = CONCEPTUAL_RELATIONSHIP_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Is Essential</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP__IS_ESSENTIAL = CONCEPTUAL_RELATIONSHIP_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Is Inverse Essential</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP__IS_INVERSE_ESSENTIAL = CONCEPTUAL_RELATIONSHIP_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Is Symmetric</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP__IS_SYMMETRIC = CONCEPTUAL_RELATIONSHIP_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Is Asymmetric</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP__IS_ASYMMETRIC = CONCEPTUAL_RELATIONSHIP_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Is Reflexive</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP__IS_REFLEXIVE = CONCEPTUAL_RELATIONSHIP_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>Is Irreflexive</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP__IS_IRREFLEXIVE = CONCEPTUAL_RELATIONSHIP_FEATURE_COUNT + 7;
+
+	/**
+	 * The feature id for the '<em><b>Is Transitive</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP__IS_TRANSITIVE = CONCEPTUAL_RELATIONSHIP_FEATURE_COUNT + 8;
+
+	/**
+	 * The feature id for the '<em><b>Forward Property</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP__FORWARD_PROPERTY = CONCEPTUAL_RELATIONSHIP_FEATURE_COUNT + 9;
+
+	/**
+	 * The feature id for the '<em><b>Inverse Property</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP__INVERSE_PROPERTY = CONCEPTUAL_RELATIONSHIP_FEATURE_COUNT + 10;
+
+	/**
+	 * The number of structural features of the '<em>Reified Relationship</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_FEATURE_COUNT = CONCEPTUAL_RELATIONSHIP_FEATURE_COUNT + 11;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP___MODULE_CONTEXT = CONCEPTUAL_RELATIONSHIP___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>Iri</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP___IRI = CONCEPTUAL_RELATIONSHIP___IRI;
+
+	/**
+	 * The operation id for the '<em>Abbrev IRI</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP___ABBREV_IRI = CONCEPTUAL_RELATIONSHIP___ABBREV_IRI;
+
+	/**
+	 * The operation id for the '<em>Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP___NAME = CONCEPTUAL_RELATIONSHIP___NAME;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP___UUID = CONCEPTUAL_RELATIONSHIP___UUID;
+
+	/**
+	 * The operation id for the '<em>Term</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP___TERM = CONCEPTUAL_RELATIONSHIP___TERM;
+
+	/**
+	 * The operation id for the '<em>Relation Domain</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP___RELATION_DOMAIN = CONCEPTUAL_RELATIONSHIP___RELATION_DOMAIN;
+
+	/**
+	 * The operation id for the '<em>Relation Range</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP___RELATION_RANGE = CONCEPTUAL_RELATIONSHIP___RELATION_RANGE;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP___ALL_NESTED_ELEMENTS = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Reified Relationship</em>' class.
@@ -2505,7 +2822,197 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REIFIED_RELATIONSHIP_OPERATION_COUNT = ENTITY_RELATIONSHIP_OPERATION_COUNT + 3;
+	int REIFIED_RELATIONSHIP_OPERATION_COUNT = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.SpecializedReifiedRelationshipImpl <em>Specialized Reified Relationship</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.SpecializedReifiedRelationshipImpl
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getSpecializedReifiedRelationship()
+	 * @generated
+	 */
+	int SPECIALIZED_REIFIED_RELATIONSHIP = 20;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIALIZED_REIFIED_RELATIONSHIP__UUID = CONCEPTUAL_RELATIONSHIP__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIALIZED_REIFIED_RELATIONSHIP__ANNOTATIONS = CONCEPTUAL_RELATIONSHIP__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIALIZED_REIFIED_RELATIONSHIP__TBOX = CONCEPTUAL_RELATIONSHIP__TBOX;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIALIZED_REIFIED_RELATIONSHIP__NAME = CONCEPTUAL_RELATIONSHIP__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIALIZED_REIFIED_RELATIONSHIP__SOURCE = CONCEPTUAL_RELATIONSHIP__SOURCE;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIALIZED_REIFIED_RELATIONSHIP__TARGET = CONCEPTUAL_RELATIONSHIP__TARGET;
+
+	/**
+	 * The feature id for the '<em><b>General</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIALIZED_REIFIED_RELATIONSHIP__GENERAL = CONCEPTUAL_RELATIONSHIP_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Specialized Reified Relationship</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIALIZED_REIFIED_RELATIONSHIP_FEATURE_COUNT = CONCEPTUAL_RELATIONSHIP_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIALIZED_REIFIED_RELATIONSHIP___MODULE_CONTEXT = CONCEPTUAL_RELATIONSHIP___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>Iri</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIALIZED_REIFIED_RELATIONSHIP___IRI = CONCEPTUAL_RELATIONSHIP___IRI;
+
+	/**
+	 * The operation id for the '<em>Abbrev IRI</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIALIZED_REIFIED_RELATIONSHIP___ABBREV_IRI = CONCEPTUAL_RELATIONSHIP___ABBREV_IRI;
+
+	/**
+	 * The operation id for the '<em>Name</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIALIZED_REIFIED_RELATIONSHIP___NAME = CONCEPTUAL_RELATIONSHIP___NAME;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIALIZED_REIFIED_RELATIONSHIP___UUID = CONCEPTUAL_RELATIONSHIP___UUID;
+
+	/**
+	 * The operation id for the '<em>Term</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIALIZED_REIFIED_RELATIONSHIP___TERM = CONCEPTUAL_RELATIONSHIP___TERM;
+
+	/**
+	 * The operation id for the '<em>Relation Domain</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIALIZED_REIFIED_RELATIONSHIP___RELATION_DOMAIN = CONCEPTUAL_RELATIONSHIP___RELATION_DOMAIN;
+
+	/**
+	 * The operation id for the '<em>Relation Range</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIALIZED_REIFIED_RELATIONSHIP___RELATION_RANGE = CONCEPTUAL_RELATIONSHIP___RELATION_RANGE;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIALIZED_REIFIED_RELATIONSHIP___ALL_NESTED_ELEMENTS = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Child</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIALIZED_REIFIED_RELATIONSHIP___CHILD = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 3;
+
+	/**
+	 * The operation id for the '<em>Parent</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIALIZED_REIFIED_RELATIONSHIP___PARENT = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 4;
+
+	/**
+	 * The number of operations of the '<em>Specialized Reified Relationship</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIALIZED_REIFIED_RELATIONSHIP_OPERATION_COUNT = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.UnreifiedRelationshipImpl <em>Unreified Relationship</em>}' class.
@@ -2515,7 +3022,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getUnreifiedRelationship()
 	 * @generated
 	 */
-	int UNREIFIED_RELATIONSHIP = 18;
+	int UNREIFIED_RELATIONSHIP = 21;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -2524,7 +3031,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int UNREIFIED_RELATIONSHIP__UUID = ENTITY_RELATIONSHIP__UUID;
+	int UNREIFIED_RELATIONSHIP__UUID = CHARACTERIZED_ENTITY_RELATIONSHIP__UUID;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -2533,7 +3040,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int UNREIFIED_RELATIONSHIP__ANNOTATIONS = ENTITY_RELATIONSHIP__ANNOTATIONS;
+	int UNREIFIED_RELATIONSHIP__ANNOTATIONS = CHARACTERIZED_ENTITY_RELATIONSHIP__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
@@ -2542,7 +3049,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int UNREIFIED_RELATIONSHIP__TBOX = ENTITY_RELATIONSHIP__TBOX;
+	int UNREIFIED_RELATIONSHIP__TBOX = CHARACTERIZED_ENTITY_RELATIONSHIP__TBOX;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2551,7 +3058,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int UNREIFIED_RELATIONSHIP__NAME = ENTITY_RELATIONSHIP__NAME;
+	int UNREIFIED_RELATIONSHIP__NAME = CHARACTERIZED_ENTITY_RELATIONSHIP__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Source</b></em>' reference.
@@ -2560,7 +3067,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int UNREIFIED_RELATIONSHIP__SOURCE = ENTITY_RELATIONSHIP__SOURCE;
+	int UNREIFIED_RELATIONSHIP__SOURCE = CHARACTERIZED_ENTITY_RELATIONSHIP__SOURCE;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -2569,7 +3076,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int UNREIFIED_RELATIONSHIP__TARGET = ENTITY_RELATIONSHIP__TARGET;
+	int UNREIFIED_RELATIONSHIP__TARGET = CHARACTERIZED_ENTITY_RELATIONSHIP__TARGET;
 
 	/**
 	 * The feature id for the '<em><b>Is Functional</b></em>' attribute.
@@ -2578,7 +3085,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int UNREIFIED_RELATIONSHIP__IS_FUNCTIONAL = ENTITY_RELATIONSHIP__IS_FUNCTIONAL;
+	int UNREIFIED_RELATIONSHIP__IS_FUNCTIONAL = CHARACTERIZED_ENTITY_RELATIONSHIP__IS_FUNCTIONAL;
 
 	/**
 	 * The feature id for the '<em><b>Is Inverse Functional</b></em>' attribute.
@@ -2587,7 +3094,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int UNREIFIED_RELATIONSHIP__IS_INVERSE_FUNCTIONAL = ENTITY_RELATIONSHIP__IS_INVERSE_FUNCTIONAL;
+	int UNREIFIED_RELATIONSHIP__IS_INVERSE_FUNCTIONAL = CHARACTERIZED_ENTITY_RELATIONSHIP__IS_INVERSE_FUNCTIONAL;
 
 	/**
 	 * The feature id for the '<em><b>Is Essential</b></em>' attribute.
@@ -2596,7 +3103,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int UNREIFIED_RELATIONSHIP__IS_ESSENTIAL = ENTITY_RELATIONSHIP__IS_ESSENTIAL;
+	int UNREIFIED_RELATIONSHIP__IS_ESSENTIAL = CHARACTERIZED_ENTITY_RELATIONSHIP__IS_ESSENTIAL;
 
 	/**
 	 * The feature id for the '<em><b>Is Inverse Essential</b></em>' attribute.
@@ -2605,7 +3112,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int UNREIFIED_RELATIONSHIP__IS_INVERSE_ESSENTIAL = ENTITY_RELATIONSHIP__IS_INVERSE_ESSENTIAL;
+	int UNREIFIED_RELATIONSHIP__IS_INVERSE_ESSENTIAL = CHARACTERIZED_ENTITY_RELATIONSHIP__IS_INVERSE_ESSENTIAL;
 
 	/**
 	 * The feature id for the '<em><b>Is Symmetric</b></em>' attribute.
@@ -2614,7 +3121,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int UNREIFIED_RELATIONSHIP__IS_SYMMETRIC = ENTITY_RELATIONSHIP__IS_SYMMETRIC;
+	int UNREIFIED_RELATIONSHIP__IS_SYMMETRIC = CHARACTERIZED_ENTITY_RELATIONSHIP__IS_SYMMETRIC;
 
 	/**
 	 * The feature id for the '<em><b>Is Asymmetric</b></em>' attribute.
@@ -2623,7 +3130,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int UNREIFIED_RELATIONSHIP__IS_ASYMMETRIC = ENTITY_RELATIONSHIP__IS_ASYMMETRIC;
+	int UNREIFIED_RELATIONSHIP__IS_ASYMMETRIC = CHARACTERIZED_ENTITY_RELATIONSHIP__IS_ASYMMETRIC;
 
 	/**
 	 * The feature id for the '<em><b>Is Reflexive</b></em>' attribute.
@@ -2632,7 +3139,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int UNREIFIED_RELATIONSHIP__IS_REFLEXIVE = ENTITY_RELATIONSHIP__IS_REFLEXIVE;
+	int UNREIFIED_RELATIONSHIP__IS_REFLEXIVE = CHARACTERIZED_ENTITY_RELATIONSHIP__IS_REFLEXIVE;
 
 	/**
 	 * The feature id for the '<em><b>Is Irreflexive</b></em>' attribute.
@@ -2641,7 +3148,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int UNREIFIED_RELATIONSHIP__IS_IRREFLEXIVE = ENTITY_RELATIONSHIP__IS_IRREFLEXIVE;
+	int UNREIFIED_RELATIONSHIP__IS_IRREFLEXIVE = CHARACTERIZED_ENTITY_RELATIONSHIP__IS_IRREFLEXIVE;
 
 	/**
 	 * The feature id for the '<em><b>Is Transitive</b></em>' attribute.
@@ -2650,7 +3157,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int UNREIFIED_RELATIONSHIP__IS_TRANSITIVE = ENTITY_RELATIONSHIP__IS_TRANSITIVE;
+	int UNREIFIED_RELATIONSHIP__IS_TRANSITIVE = CHARACTERIZED_ENTITY_RELATIONSHIP__IS_TRANSITIVE;
 
 	/**
 	 * The number of structural features of the '<em>Unreified Relationship</em>' class.
@@ -2659,7 +3166,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int UNREIFIED_RELATIONSHIP_FEATURE_COUNT = ENTITY_RELATIONSHIP_FEATURE_COUNT + 0;
+	int UNREIFIED_RELATIONSHIP_FEATURE_COUNT = CHARACTERIZED_ENTITY_RELATIONSHIP_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Module Context</em>' operation.
@@ -2668,7 +3175,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int UNREIFIED_RELATIONSHIP___MODULE_CONTEXT = ENTITY_RELATIONSHIP___MODULE_CONTEXT;
+	int UNREIFIED_RELATIONSHIP___MODULE_CONTEXT = CHARACTERIZED_ENTITY_RELATIONSHIP___MODULE_CONTEXT;
 
 	/**
 	 * The operation id for the '<em>Iri</em>' operation.
@@ -2677,7 +3184,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int UNREIFIED_RELATIONSHIP___IRI = ENTITY_RELATIONSHIP___IRI;
+	int UNREIFIED_RELATIONSHIP___IRI = CHARACTERIZED_ENTITY_RELATIONSHIP___IRI;
 
 	/**
 	 * The operation id for the '<em>Abbrev IRI</em>' operation.
@@ -2686,7 +3193,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int UNREIFIED_RELATIONSHIP___ABBREV_IRI = ENTITY_RELATIONSHIP___ABBREV_IRI;
+	int UNREIFIED_RELATIONSHIP___ABBREV_IRI = CHARACTERIZED_ENTITY_RELATIONSHIP___ABBREV_IRI;
 
 	/**
 	 * The operation id for the '<em>Name</em>' operation.
@@ -2695,7 +3202,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int UNREIFIED_RELATIONSHIP___NAME = ENTITY_RELATIONSHIP___NAME;
+	int UNREIFIED_RELATIONSHIP___NAME = CHARACTERIZED_ENTITY_RELATIONSHIP___NAME;
 
 	/**
 	 * The operation id for the '<em>Uuid</em>' operation.
@@ -2704,7 +3211,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int UNREIFIED_RELATIONSHIP___UUID = ENTITY_RELATIONSHIP___UUID;
+	int UNREIFIED_RELATIONSHIP___UUID = CHARACTERIZED_ENTITY_RELATIONSHIP___UUID;
 
 	/**
 	 * The operation id for the '<em>All Nested Elements</em>' operation.
@@ -2713,7 +3220,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int UNREIFIED_RELATIONSHIP___ALL_NESTED_ELEMENTS = ENTITY_RELATIONSHIP___ALL_NESTED_ELEMENTS;
+	int UNREIFIED_RELATIONSHIP___ALL_NESTED_ELEMENTS = CHARACTERIZED_ENTITY_RELATIONSHIP___ALL_NESTED_ELEMENTS;
 
 	/**
 	 * The operation id for the '<em>Relation Domain</em>' operation.
@@ -2722,7 +3229,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int UNREIFIED_RELATIONSHIP___RELATION_DOMAIN = ENTITY_RELATIONSHIP___RELATION_DOMAIN;
+	int UNREIFIED_RELATIONSHIP___RELATION_DOMAIN = CHARACTERIZED_ENTITY_RELATIONSHIP___RELATION_DOMAIN;
 
 	/**
 	 * The operation id for the '<em>Relation Range</em>' operation.
@@ -2731,7 +3238,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int UNREIFIED_RELATIONSHIP___RELATION_RANGE = ENTITY_RELATIONSHIP___RELATION_RANGE;
+	int UNREIFIED_RELATIONSHIP___RELATION_RANGE = CHARACTERIZED_ENTITY_RELATIONSHIP___RELATION_RANGE;
 
 	/**
 	 * The operation id for the '<em>Term</em>' operation.
@@ -2740,7 +3247,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int UNREIFIED_RELATIONSHIP___TERM = ENTITY_RELATIONSHIP_OPERATION_COUNT + 2;
+	int UNREIFIED_RELATIONSHIP___TERM = CHARACTERIZED_ENTITY_RELATIONSHIP_OPERATION_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Relation</em>' operation.
@@ -2749,7 +3256,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int UNREIFIED_RELATIONSHIP___RELATION = ENTITY_RELATIONSHIP_OPERATION_COUNT + 3;
+	int UNREIFIED_RELATIONSHIP___RELATION = CHARACTERIZED_ENTITY_RELATIONSHIP_OPERATION_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Unreified Relationship</em>' class.
@@ -2758,7 +3265,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int UNREIFIED_RELATIONSHIP_OPERATION_COUNT = ENTITY_RELATIONSHIP_OPERATION_COUNT + 4;
+	int UNREIFIED_RELATIONSHIP_OPERATION_COUNT = CHARACTERIZED_ENTITY_RELATIONSHIP_OPERATION_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.DatatypeImpl <em>Datatype</em>}' class.
@@ -2768,7 +3275,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getDatatype()
 	 * @generated
 	 */
-	int DATATYPE = 19;
+	int DATATYPE = 22;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -2886,7 +3393,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getDataRange()
 	 * @generated
 	 */
-	int DATA_RANGE = 20;
+	int DATA_RANGE = 23;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -3004,7 +3511,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getScalar()
 	 * @generated
 	 */
-	int SCALAR = 21;
+	int SCALAR = 24;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -3122,7 +3629,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getDataRelationship()
 	 * @generated
 	 */
-	int DATA_RELATIONSHIP = 22;
+	int DATA_RELATIONSHIP = 25;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -3276,7 +3783,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getDataRelationshipDomain()
 	 * @generated
 	 */
-	int DATA_RELATIONSHIP_DOMAIN = 23;
+	int DATA_RELATIONSHIP_DOMAIN = 26;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -3430,7 +3937,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getDataRelationshipFromEntity()
 	 * @generated
 	 */
-	int DATA_RELATIONSHIP_FROM_ENTITY = 24;
+	int DATA_RELATIONSHIP_FROM_ENTITY = 27;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -3602,7 +4109,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getDataRelationshipFromStructure()
 	 * @generated
 	 */
-	int DATA_RELATIONSHIP_FROM_STRUCTURE = 25;
+	int DATA_RELATIONSHIP_FROM_STRUCTURE = 28;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -3765,7 +4272,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getDataRelationshipRange()
 	 * @generated
 	 */
-	int DATA_RELATIONSHIP_RANGE = 26;
+	int DATA_RELATIONSHIP_RANGE = 29;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -3919,7 +4426,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getDataRelationshipToScalar()
 	 * @generated
 	 */
-	int DATA_RELATIONSHIP_TO_SCALAR = 27;
+	int DATA_RELATIONSHIP_TO_SCALAR = 30;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -4082,7 +4589,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getDataRelationshipToStructure()
 	 * @generated
 	 */
-	int DATA_RELATIONSHIP_TO_STRUCTURE = 28;
+	int DATA_RELATIONSHIP_TO_STRUCTURE = 31;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -4245,7 +4752,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityStructuredDataProperty()
 	 * @generated
 	 */
-	int ENTITY_STRUCTURED_DATA_PROPERTY = 29;
+	int ENTITY_STRUCTURED_DATA_PROPERTY = 32;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -4426,7 +4933,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityScalarDataProperty()
 	 * @generated
 	 */
-	int ENTITY_SCALAR_DATA_PROPERTY = 30;
+	int ENTITY_SCALAR_DATA_PROPERTY = 33;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -4607,7 +5114,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getStructuredDataProperty()
 	 * @generated
 	 */
-	int STRUCTURED_DATA_PROPERTY = 31;
+	int STRUCTURED_DATA_PROPERTY = 34;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -4779,7 +5286,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getScalarDataProperty()
 	 * @generated
 	 */
-	int SCALAR_DATA_PROPERTY = 32;
+	int SCALAR_DATA_PROPERTY = 35;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -4951,7 +5458,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getStructure()
 	 * @generated
 	 */
-	int STRUCTURE = 33;
+	int STRUCTURE = 36;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -5069,7 +5576,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getRule()
 	 * @generated
 	 */
-	int RULE = 34;
+	int RULE = 37;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -5187,7 +5694,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getChainRule()
 	 * @generated
 	 */
-	int CHAIN_RULE = 35;
+	int CHAIN_RULE = 38;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -5323,7 +5830,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getRuleBodySegment()
 	 * @generated
 	 */
-	int RULE_BODY_SEGMENT = 36;
+	int RULE_BODY_SEGMENT = 39;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -5441,7 +5948,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getSegmentPredicate()
 	 * @generated
 	 */
-	int SEGMENT_PREDICATE = 37;
+	int SEGMENT_PREDICATE = 40;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -5577,7 +6084,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getTermAxiom()
 	 * @generated
 	 */
-	int TERM_AXIOM = 38;
+	int TERM_AXIOM = 41;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -5659,7 +6166,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityRestrictionAxiom()
 	 * @generated
 	 */
-	int ENTITY_RESTRICTION_AXIOM = 39;
+	int ENTITY_RESTRICTION_AXIOM = 42;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -5777,7 +6284,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityExistentialRestrictionAxiom()
 	 * @generated
 	 */
-	int ENTITY_EXISTENTIAL_RESTRICTION_AXIOM = 40;
+	int ENTITY_EXISTENTIAL_RESTRICTION_AXIOM = 43;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -5895,7 +6402,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityUniversalRestrictionAxiom()
 	 * @generated
 	 */
-	int ENTITY_UNIVERSAL_RESTRICTION_AXIOM = 41;
+	int ENTITY_UNIVERSAL_RESTRICTION_AXIOM = 44;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -6013,7 +6520,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getSpecializationAxiom()
 	 * @generated
 	 */
-	int SPECIALIZATION_AXIOM = 42;
+	int SPECIALIZATION_AXIOM = 45;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -6113,7 +6620,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getAspectSpecializationAxiom()
 	 * @generated
 	 */
-	int ASPECT_SPECIALIZATION_AXIOM = 43;
+	int ASPECT_SPECIALIZATION_AXIOM = 46;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -6231,7 +6738,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getConceptSpecializationAxiom()
 	 * @generated
 	 */
-	int CONCEPT_SPECIALIZATION_AXIOM = 44;
+	int CONCEPT_SPECIALIZATION_AXIOM = 47;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -6342,124 +6849,6 @@ public interface TerminologiesPackage extends EPackage {
 	int CONCEPT_SPECIALIZATION_AXIOM_OPERATION_COUNT = SPECIALIZATION_AXIOM_OPERATION_COUNT + 3;
 
 	/**
-	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipSpecializationAxiomImpl <em>Reified Relationship Specialization Axiom</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipSpecializationAxiomImpl
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getReifiedRelationshipSpecializationAxiom()
-	 * @generated
-	 */
-	int REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM = 45;
-
-	/**
-	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM__UUID = SPECIALIZATION_AXIOM__UUID;
-
-	/**
-	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM__ANNOTATIONS = SPECIALIZATION_AXIOM__ANNOTATIONS;
-
-	/**
-	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM__TBOX = SPECIALIZATION_AXIOM__TBOX;
-
-	/**
-	 * The feature id for the '<em><b>Sub Relationship</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM__SUB_RELATIONSHIP = SPECIALIZATION_AXIOM_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Super Relationship</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM__SUPER_RELATIONSHIP = SPECIALIZATION_AXIOM_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Reified Relationship Specialization Axiom</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM_FEATURE_COUNT = SPECIALIZATION_AXIOM_FEATURE_COUNT + 2;
-
-	/**
-	 * The operation id for the '<em>Module Context</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM___MODULE_CONTEXT = SPECIALIZATION_AXIOM___MODULE_CONTEXT;
-
-	/**
-	 * The operation id for the '<em>All Nested Elements</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM___ALL_NESTED_ELEMENTS = SPECIALIZATION_AXIOM___ALL_NESTED_ELEMENTS;
-
-	/**
-	 * The operation id for the '<em>Child</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM___CHILD = SPECIALIZATION_AXIOM_OPERATION_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Parent</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM___PARENT = SPECIALIZATION_AXIOM_OPERATION_COUNT + 1;
-
-	/**
-	 * The operation id for the '<em>Uuid</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM___UUID = SPECIALIZATION_AXIOM_OPERATION_COUNT + 2;
-
-	/**
-	 * The number of operations of the '<em>Reified Relationship Specialization Axiom</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM_OPERATION_COUNT = SPECIALIZATION_AXIOM_OPERATION_COUNT + 3;
-
-	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.SubObjectPropertyOfAxiomImpl <em>Sub Object Property Of Axiom</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6467,7 +6856,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getSubObjectPropertyOfAxiom()
 	 * @generated
 	 */
-	int SUB_OBJECT_PROPERTY_OF_AXIOM = 46;
+	int SUB_OBJECT_PROPERTY_OF_AXIOM = 48;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -6567,7 +6956,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getSubDataPropertyOfAxiom()
 	 * @generated
 	 */
-	int SUB_DATA_PROPERTY_OF_AXIOM = 47;
+	int SUB_DATA_PROPERTY_OF_AXIOM = 49;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -6667,7 +7056,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityScalarDataPropertyRestrictionAxiom()
 	 * @generated
 	 */
-	int ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM = 48;
+	int ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM = 50;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -6767,7 +7156,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityScalarDataPropertyExistentialRestrictionAxiom()
 	 * @generated
 	 */
-	int ENTITY_SCALAR_DATA_PROPERTY_EXISTENTIAL_RESTRICTION_AXIOM = 49;
+	int ENTITY_SCALAR_DATA_PROPERTY_EXISTENTIAL_RESTRICTION_AXIOM = 51;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -6876,7 +7265,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityScalarDataPropertyUniversalRestrictionAxiom()
 	 * @generated
 	 */
-	int ENTITY_SCALAR_DATA_PROPERTY_UNIVERSAL_RESTRICTION_AXIOM = 50;
+	int ENTITY_SCALAR_DATA_PROPERTY_UNIVERSAL_RESTRICTION_AXIOM = 52;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -6985,7 +7374,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityScalarDataPropertyParticularRestrictionAxiom()
 	 * @generated
 	 */
-	int ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM = 51;
+	int ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM = 53;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -7103,7 +7492,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityStructuredDataPropertyRestrictionAxiom()
 	 * @generated
 	 */
-	int ENTITY_STRUCTURED_DATA_PROPERTY_RESTRICTION_AXIOM = 52;
+	int ENTITY_STRUCTURED_DATA_PROPERTY_RESTRICTION_AXIOM = 54;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -7194,7 +7583,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityStructuredDataPropertyParticularRestrictionAxiom()
 	 * @generated
 	 */
-	int ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM = 53;
+	int ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM = 55;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -7330,7 +7719,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getRestrictionStructuredDataPropertyContext()
 	 * @generated
 	 */
-	int RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT = 54;
+	int RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT = 56;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -7448,7 +7837,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getRestrictionStructuredDataPropertyTuple()
 	 * @generated
 	 */
-	int RESTRICTION_STRUCTURED_DATA_PROPERTY_TUPLE = 55;
+	int RESTRICTION_STRUCTURED_DATA_PROPERTY_TUPLE = 57;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -7575,7 +7964,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getRestrictionScalarDataPropertyValue()
 	 * @generated
 	 */
-	int RESTRICTION_SCALAR_DATA_PROPERTY_VALUE = 56;
+	int RESTRICTION_SCALAR_DATA_PROPERTY_VALUE = 58;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -7684,7 +8073,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getRestrictedDataRange()
 	 * @generated
 	 */
-	int RESTRICTED_DATA_RANGE = 57;
+	int RESTRICTED_DATA_RANGE = 59;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -7811,7 +8200,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getBinaryScalarRestriction()
 	 * @generated
 	 */
-	int BINARY_SCALAR_RESTRICTION = 58;
+	int BINARY_SCALAR_RESTRICTION = 60;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -7965,7 +8354,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getIRIScalarRestriction()
 	 * @generated
 	 */
-	int IRI_SCALAR_RESTRICTION = 59;
+	int IRI_SCALAR_RESTRICTION = 61;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -8128,7 +8517,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getNumericScalarRestriction()
 	 * @generated
 	 */
-	int NUMERIC_SCALAR_RESTRICTION = 60;
+	int NUMERIC_SCALAR_RESTRICTION = 62;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -8291,7 +8680,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getPlainLiteralScalarRestriction()
 	 * @generated
 	 */
-	int PLAIN_LITERAL_SCALAR_RESTRICTION = 61;
+	int PLAIN_LITERAL_SCALAR_RESTRICTION = 63;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -8463,7 +8852,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getStringScalarRestriction()
 	 * @generated
 	 */
-	int STRING_SCALAR_RESTRICTION = 62;
+	int STRING_SCALAR_RESTRICTION = 64;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -8626,7 +9015,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getTimeScalarRestriction()
 	 * @generated
 	 */
-	int TIME_SCALAR_RESTRICTION = 63;
+	int TIME_SCALAR_RESTRICTION = 65;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -8789,7 +9178,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getSynonymScalarRestriction()
 	 * @generated
 	 */
-	int SYNONYM_SCALAR_RESTRICTION = 64;
+	int SYNONYM_SCALAR_RESTRICTION = 66;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -8916,7 +9305,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getScalarOneOfRestriction()
 	 * @generated
 	 */
-	int SCALAR_ONE_OF_RESTRICTION = 65;
+	int SCALAR_ONE_OF_RESTRICTION = 67;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -9043,7 +9432,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getScalarOneOfLiteralAxiom()
 	 * @generated
 	 */
-	int SCALAR_ONE_OF_LITERAL_AXIOM = 66;
+	int SCALAR_ONE_OF_LITERAL_AXIOM = 68;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -9152,7 +9541,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getTerminologyKind()
 	 * @generated
 	 */
-	int TERMINOLOGY_KIND = 67;
+	int TERMINOLOGY_KIND = 69;
 
 
 	/**
@@ -9575,105 +9964,6 @@ public interface TerminologiesPackage extends EPackage {
 	EReference getEntityRelationship_Target();
 
 	/**
-	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship#isIsFunctional <em>Is Functional</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Is Functional</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship#isIsFunctional()
-	 * @see #getEntityRelationship()
-	 * @generated
-	 */
-	EAttribute getEntityRelationship_IsFunctional();
-
-	/**
-	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship#isIsInverseFunctional <em>Is Inverse Functional</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Is Inverse Functional</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship#isIsInverseFunctional()
-	 * @see #getEntityRelationship()
-	 * @generated
-	 */
-	EAttribute getEntityRelationship_IsInverseFunctional();
-
-	/**
-	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship#isIsEssential <em>Is Essential</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Is Essential</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship#isIsEssential()
-	 * @see #getEntityRelationship()
-	 * @generated
-	 */
-	EAttribute getEntityRelationship_IsEssential();
-
-	/**
-	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship#isIsInverseEssential <em>Is Inverse Essential</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Is Inverse Essential</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship#isIsInverseEssential()
-	 * @see #getEntityRelationship()
-	 * @generated
-	 */
-	EAttribute getEntityRelationship_IsInverseEssential();
-
-	/**
-	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship#isIsSymmetric <em>Is Symmetric</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Is Symmetric</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship#isIsSymmetric()
-	 * @see #getEntityRelationship()
-	 * @generated
-	 */
-	EAttribute getEntityRelationship_IsSymmetric();
-
-	/**
-	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship#isIsAsymmetric <em>Is Asymmetric</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Is Asymmetric</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship#isIsAsymmetric()
-	 * @see #getEntityRelationship()
-	 * @generated
-	 */
-	EAttribute getEntityRelationship_IsAsymmetric();
-
-	/**
-	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship#isIsReflexive <em>Is Reflexive</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Is Reflexive</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship#isIsReflexive()
-	 * @see #getEntityRelationship()
-	 * @generated
-	 */
-	EAttribute getEntityRelationship_IsReflexive();
-
-	/**
-	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship#isIsIrreflexive <em>Is Irreflexive</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Is Irreflexive</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship#isIsIrreflexive()
-	 * @see #getEntityRelationship()
-	 * @generated
-	 */
-	EAttribute getEntityRelationship_IsIrreflexive();
-
-	/**
-	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship#isIsTransitive <em>Is Transitive</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Is Transitive</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship#isIsTransitive()
-	 * @see #getEntityRelationship()
-	 * @generated
-	 */
-	EAttribute getEntityRelationship_IsTransitive();
-
-	/**
 	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship#relationDomain() <em>Relation Domain</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9692,6 +9982,115 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getEntityRelationship__RelationRange();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.CharacterizedEntityRelationship <em>Characterized Entity Relationship</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Characterized Entity Relationship</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.CharacterizedEntityRelationship
+	 * @generated
+	 */
+	EClass getCharacterizedEntityRelationship();
+
+	/**
+	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.terminologies.CharacterizedEntityRelationship#isIsFunctional <em>Is Functional</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Is Functional</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.CharacterizedEntityRelationship#isIsFunctional()
+	 * @see #getCharacterizedEntityRelationship()
+	 * @generated
+	 */
+	EAttribute getCharacterizedEntityRelationship_IsFunctional();
+
+	/**
+	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.terminologies.CharacterizedEntityRelationship#isIsInverseFunctional <em>Is Inverse Functional</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Is Inverse Functional</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.CharacterizedEntityRelationship#isIsInverseFunctional()
+	 * @see #getCharacterizedEntityRelationship()
+	 * @generated
+	 */
+	EAttribute getCharacterizedEntityRelationship_IsInverseFunctional();
+
+	/**
+	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.terminologies.CharacterizedEntityRelationship#isIsEssential <em>Is Essential</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Is Essential</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.CharacterizedEntityRelationship#isIsEssential()
+	 * @see #getCharacterizedEntityRelationship()
+	 * @generated
+	 */
+	EAttribute getCharacterizedEntityRelationship_IsEssential();
+
+	/**
+	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.terminologies.CharacterizedEntityRelationship#isIsInverseEssential <em>Is Inverse Essential</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Is Inverse Essential</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.CharacterizedEntityRelationship#isIsInverseEssential()
+	 * @see #getCharacterizedEntityRelationship()
+	 * @generated
+	 */
+	EAttribute getCharacterizedEntityRelationship_IsInverseEssential();
+
+	/**
+	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.terminologies.CharacterizedEntityRelationship#isIsSymmetric <em>Is Symmetric</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Is Symmetric</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.CharacterizedEntityRelationship#isIsSymmetric()
+	 * @see #getCharacterizedEntityRelationship()
+	 * @generated
+	 */
+	EAttribute getCharacterizedEntityRelationship_IsSymmetric();
+
+	/**
+	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.terminologies.CharacterizedEntityRelationship#isIsAsymmetric <em>Is Asymmetric</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Is Asymmetric</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.CharacterizedEntityRelationship#isIsAsymmetric()
+	 * @see #getCharacterizedEntityRelationship()
+	 * @generated
+	 */
+	EAttribute getCharacterizedEntityRelationship_IsAsymmetric();
+
+	/**
+	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.terminologies.CharacterizedEntityRelationship#isIsReflexive <em>Is Reflexive</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Is Reflexive</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.CharacterizedEntityRelationship#isIsReflexive()
+	 * @see #getCharacterizedEntityRelationship()
+	 * @generated
+	 */
+	EAttribute getCharacterizedEntityRelationship_IsReflexive();
+
+	/**
+	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.terminologies.CharacterizedEntityRelationship#isIsIrreflexive <em>Is Irreflexive</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Is Irreflexive</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.CharacterizedEntityRelationship#isIsIrreflexive()
+	 * @see #getCharacterizedEntityRelationship()
+	 * @generated
+	 */
+	EAttribute getCharacterizedEntityRelationship_IsIrreflexive();
+
+	/**
+	 * Returns the meta object for the attribute '{@link gov.nasa.jpl.imce.oml.model.terminologies.CharacterizedEntityRelationship#isIsTransitive <em>Is Transitive</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Is Transitive</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.CharacterizedEntityRelationship#isIsTransitive()
+	 * @see #getCharacterizedEntityRelationship()
+	 * @generated
+	 */
+	EAttribute getCharacterizedEntityRelationship_IsTransitive();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.RestrictableRelationship <em>Restrictable Relationship</em>}'.
@@ -9908,6 +10307,16 @@ public interface TerminologiesPackage extends EPackage {
 	EOperation getInverseProperty__ModuleContext();
 
 	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.ConceptualRelationship <em>Conceptual Relationship</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Conceptual Relationship</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ConceptualRelationship
+	 * @generated
+	 */
+	EClass getConceptualRelationship();
+
+	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship <em>Reified Relationship</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9948,6 +10357,47 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getReifiedRelationship__AllNestedElements();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.SpecializedReifiedRelationship <em>Specialized Reified Relationship</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Specialized Reified Relationship</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.SpecializedReifiedRelationship
+	 * @generated
+	 */
+	EClass getSpecializedReifiedRelationship();
+
+	/**
+	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.SpecializedReifiedRelationship#getGeneral <em>General</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>General</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.SpecializedReifiedRelationship#getGeneral()
+	 * @see #getSpecializedReifiedRelationship()
+	 * @generated
+	 */
+	EReference getSpecializedReifiedRelationship_General();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.SpecializedReifiedRelationship#child() <em>Child</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Child</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.SpecializedReifiedRelationship#child()
+	 * @generated
+	 */
+	EOperation getSpecializedReifiedRelationship__Child();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.SpecializedReifiedRelationship#parent() <em>Parent</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Parent</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.SpecializedReifiedRelationship#parent()
+	 * @generated
+	 */
+	EOperation getSpecializedReifiedRelationship__Parent();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship <em>Unreified Relationship</em>}'.
@@ -10863,68 +11313,6 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getConceptSpecializationAxiom__Uuid();
-
-	/**
-	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom <em>Reified Relationship Specialization Axiom</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Reified Relationship Specialization Axiom</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom
-	 * @generated
-	 */
-	EClass getReifiedRelationshipSpecializationAxiom();
-
-	/**
-	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom#getSubRelationship <em>Sub Relationship</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Sub Relationship</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom#getSubRelationship()
-	 * @see #getReifiedRelationshipSpecializationAxiom()
-	 * @generated
-	 */
-	EReference getReifiedRelationshipSpecializationAxiom_SubRelationship();
-
-	/**
-	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom#getSuperRelationship <em>Super Relationship</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Super Relationship</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom#getSuperRelationship()
-	 * @see #getReifiedRelationshipSpecializationAxiom()
-	 * @generated
-	 */
-	EReference getReifiedRelationshipSpecializationAxiom_SuperRelationship();
-
-	/**
-	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom#child() <em>Child</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Child</em>' operation.
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom#child()
-	 * @generated
-	 */
-	EOperation getReifiedRelationshipSpecializationAxiom__Child();
-
-	/**
-	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom#parent() <em>Parent</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Parent</em>' operation.
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom#parent()
-	 * @generated
-	 */
-	EOperation getReifiedRelationshipSpecializationAxiom__Parent();
-
-	/**
-	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom#uuid() <em>Uuid</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Uuid</em>' operation.
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom#uuid()
-	 * @generated
-	 */
-	EOperation getReifiedRelationshipSpecializationAxiom__Uuid();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.SubObjectPropertyOfAxiom <em>Sub Object Property Of Axiom</em>}'.
@@ -12263,78 +12651,6 @@ public interface TerminologiesPackage extends EPackage {
 		EReference ENTITY_RELATIONSHIP__TARGET = eINSTANCE.getEntityRelationship_Target();
 
 		/**
-		 * The meta object literal for the '<em><b>Is Functional</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ENTITY_RELATIONSHIP__IS_FUNCTIONAL = eINSTANCE.getEntityRelationship_IsFunctional();
-
-		/**
-		 * The meta object literal for the '<em><b>Is Inverse Functional</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ENTITY_RELATIONSHIP__IS_INVERSE_FUNCTIONAL = eINSTANCE.getEntityRelationship_IsInverseFunctional();
-
-		/**
-		 * The meta object literal for the '<em><b>Is Essential</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ENTITY_RELATIONSHIP__IS_ESSENTIAL = eINSTANCE.getEntityRelationship_IsEssential();
-
-		/**
-		 * The meta object literal for the '<em><b>Is Inverse Essential</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ENTITY_RELATIONSHIP__IS_INVERSE_ESSENTIAL = eINSTANCE.getEntityRelationship_IsInverseEssential();
-
-		/**
-		 * The meta object literal for the '<em><b>Is Symmetric</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ENTITY_RELATIONSHIP__IS_SYMMETRIC = eINSTANCE.getEntityRelationship_IsSymmetric();
-
-		/**
-		 * The meta object literal for the '<em><b>Is Asymmetric</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ENTITY_RELATIONSHIP__IS_ASYMMETRIC = eINSTANCE.getEntityRelationship_IsAsymmetric();
-
-		/**
-		 * The meta object literal for the '<em><b>Is Reflexive</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ENTITY_RELATIONSHIP__IS_REFLEXIVE = eINSTANCE.getEntityRelationship_IsReflexive();
-
-		/**
-		 * The meta object literal for the '<em><b>Is Irreflexive</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ENTITY_RELATIONSHIP__IS_IRREFLEXIVE = eINSTANCE.getEntityRelationship_IsIrreflexive();
-
-		/**
-		 * The meta object literal for the '<em><b>Is Transitive</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ENTITY_RELATIONSHIP__IS_TRANSITIVE = eINSTANCE.getEntityRelationship_IsTransitive();
-
-		/**
 		 * The meta object literal for the '<em><b>Relation Domain</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -12349,6 +12665,88 @@ public interface TerminologiesPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation ENTITY_RELATIONSHIP___RELATION_RANGE = eINSTANCE.getEntityRelationship__RelationRange();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.CharacterizedEntityRelationshipImpl <em>Characterized Entity Relationship</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.CharacterizedEntityRelationshipImpl
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getCharacterizedEntityRelationship()
+		 * @generated
+		 */
+		EClass CHARACTERIZED_ENTITY_RELATIONSHIP = eINSTANCE.getCharacterizedEntityRelationship();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Functional</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CHARACTERIZED_ENTITY_RELATIONSHIP__IS_FUNCTIONAL = eINSTANCE.getCharacterizedEntityRelationship_IsFunctional();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Inverse Functional</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CHARACTERIZED_ENTITY_RELATIONSHIP__IS_INVERSE_FUNCTIONAL = eINSTANCE.getCharacterizedEntityRelationship_IsInverseFunctional();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Essential</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CHARACTERIZED_ENTITY_RELATIONSHIP__IS_ESSENTIAL = eINSTANCE.getCharacterizedEntityRelationship_IsEssential();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Inverse Essential</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CHARACTERIZED_ENTITY_RELATIONSHIP__IS_INVERSE_ESSENTIAL = eINSTANCE.getCharacterizedEntityRelationship_IsInverseEssential();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Symmetric</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CHARACTERIZED_ENTITY_RELATIONSHIP__IS_SYMMETRIC = eINSTANCE.getCharacterizedEntityRelationship_IsSymmetric();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Asymmetric</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CHARACTERIZED_ENTITY_RELATIONSHIP__IS_ASYMMETRIC = eINSTANCE.getCharacterizedEntityRelationship_IsAsymmetric();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Reflexive</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CHARACTERIZED_ENTITY_RELATIONSHIP__IS_REFLEXIVE = eINSTANCE.getCharacterizedEntityRelationship_IsReflexive();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Irreflexive</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CHARACTERIZED_ENTITY_RELATIONSHIP__IS_IRREFLEXIVE = eINSTANCE.getCharacterizedEntityRelationship_IsIrreflexive();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Transitive</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CHARACTERIZED_ENTITY_RELATIONSHIP__IS_TRANSITIVE = eINSTANCE.getCharacterizedEntityRelationship_IsTransitive();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.RestrictableRelationshipImpl <em>Restrictable Relationship</em>}' class.
@@ -12525,6 +12923,16 @@ public interface TerminologiesPackage extends EPackage {
 		EOperation INVERSE_PROPERTY___MODULE_CONTEXT = eINSTANCE.getInverseProperty__ModuleContext();
 
 		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ConceptualRelationshipImpl <em>Conceptual Relationship</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.ConceptualRelationshipImpl
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getConceptualRelationship()
+		 * @generated
+		 */
+		EClass CONCEPTUAL_RELATIONSHIP = eINSTANCE.getConceptualRelationship();
+
+		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipImpl <em>Reified Relationship</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -12557,6 +12965,40 @@ public interface TerminologiesPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation REIFIED_RELATIONSHIP___ALL_NESTED_ELEMENTS = eINSTANCE.getReifiedRelationship__AllNestedElements();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.SpecializedReifiedRelationshipImpl <em>Specialized Reified Relationship</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.SpecializedReifiedRelationshipImpl
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getSpecializedReifiedRelationship()
+		 * @generated
+		 */
+		EClass SPECIALIZED_REIFIED_RELATIONSHIP = eINSTANCE.getSpecializedReifiedRelationship();
+
+		/**
+		 * The meta object literal for the '<em><b>General</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SPECIALIZED_REIFIED_RELATIONSHIP__GENERAL = eINSTANCE.getSpecializedReifiedRelationship_General();
+
+		/**
+		 * The meta object literal for the '<em><b>Child</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SPECIALIZED_REIFIED_RELATIONSHIP___CHILD = eINSTANCE.getSpecializedReifiedRelationship__Child();
+
+		/**
+		 * The meta object literal for the '<em><b>Parent</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SPECIALIZED_REIFIED_RELATIONSHIP___PARENT = eINSTANCE.getSpecializedReifiedRelationship__Parent();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.UnreifiedRelationshipImpl <em>Unreified Relationship</em>}' class.
@@ -13323,56 +13765,6 @@ public interface TerminologiesPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation CONCEPT_SPECIALIZATION_AXIOM___UUID = eINSTANCE.getConceptSpecializationAxiom__Uuid();
-
-		/**
-		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipSpecializationAxiomImpl <em>Reified Relationship Specialization Axiom</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipSpecializationAxiomImpl
-		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getReifiedRelationshipSpecializationAxiom()
-		 * @generated
-		 */
-		EClass REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM = eINSTANCE.getReifiedRelationshipSpecializationAxiom();
-
-		/**
-		 * The meta object literal for the '<em><b>Sub Relationship</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM__SUB_RELATIONSHIP = eINSTANCE.getReifiedRelationshipSpecializationAxiom_SubRelationship();
-
-		/**
-		 * The meta object literal for the '<em><b>Super Relationship</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM__SUPER_RELATIONSHIP = eINSTANCE.getReifiedRelationshipSpecializationAxiom_SuperRelationship();
-
-		/**
-		 * The meta object literal for the '<em><b>Child</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM___CHILD = eINSTANCE.getReifiedRelationshipSpecializationAxiom__Child();
-
-		/**
-		 * The meta object literal for the '<em><b>Parent</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM___PARENT = eINSTANCE.getReifiedRelationshipSpecializationAxiom__Parent();
-
-		/**
-		 * The meta object literal for the '<em><b>Uuid</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM___UUID = eINSTANCE.getReifiedRelationshipSpecializationAxiom__Uuid();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.SubObjectPropertyOfAxiomImpl <em>Sub Object Property Of Axiom</em>}' class.

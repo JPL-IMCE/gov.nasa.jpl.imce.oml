@@ -1612,13 +1612,13 @@ public interface DescriptionsPackage extends EPackage {
 	int REIFIED_RELATIONSHIP_INSTANCE__DESCRIPTION_BOX = CONCEPTUAL_ENTITY_SINGLETON_INSTANCE_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Singleton Reified Relationship Classifier</b></em>' reference.
+	 * The feature id for the '<em><b>Singleton Conceptual Relationship Classifier</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REIFIED_RELATIONSHIP_INSTANCE__SINGLETON_REIFIED_RELATIONSHIP_CLASSIFIER = CONCEPTUAL_ENTITY_SINGLETON_INSTANCE_FEATURE_COUNT + 1;
+	int REIFIED_RELATIONSHIP_INSTANCE__SINGLETON_CONCEPTUAL_RELATIONSHIP_CLASSIFIER = CONCEPTUAL_ENTITY_SINGLETON_INSTANCE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Reified Relationship Instance</em>' class.
@@ -2901,15 +2901,15 @@ public interface DescriptionsPackage extends EPackage {
 	EReference getReifiedRelationshipInstance_DescriptionBox();
 
 	/**
-	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstance#getSingletonReifiedRelationshipClassifier <em>Singleton Reified Relationship Classifier</em>}'.
+	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstance#getSingletonConceptualRelationshipClassifier <em>Singleton Conceptual Relationship Classifier</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Singleton Reified Relationship Classifier</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstance#getSingletonReifiedRelationshipClassifier()
+	 * @return the meta object for the reference '<em>Singleton Conceptual Relationship Classifier</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstance#getSingletonConceptualRelationshipClassifier()
 	 * @see #getReifiedRelationshipInstance()
 	 * @generated
 	 */
-	EReference getReifiedRelationshipInstance_SingletonReifiedRelationshipClassifier();
+	EReference getReifiedRelationshipInstance_SingletonConceptualRelationshipClassifier();
 
 	/**
 	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstance#conceptualEntitySingletonClassifier() <em>Conceptual Entity Singleton Classifier</em>}' operation.
@@ -3909,12 +3909,12 @@ public interface DescriptionsPackage extends EPackage {
 		EReference REIFIED_RELATIONSHIP_INSTANCE__DESCRIPTION_BOX = eINSTANCE.getReifiedRelationshipInstance_DescriptionBox();
 
 		/**
-		 * The meta object literal for the '<em><b>Singleton Reified Relationship Classifier</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Singleton Conceptual Relationship Classifier</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference REIFIED_RELATIONSHIP_INSTANCE__SINGLETON_REIFIED_RELATIONSHIP_CLASSIFIER = eINSTANCE.getReifiedRelationshipInstance_SingletonReifiedRelationshipClassifier();
+		EReference REIFIED_RELATIONSHIP_INSTANCE__SINGLETON_CONCEPTUAL_RELATIONSHIP_CLASSIFIER = eINSTANCE.getReifiedRelationshipInstance_SingletonConceptualRelationshipClassifier();
 
 		/**
 		 * The meta object literal for the '<em><b>Conceptual Entity Singleton Classifier</b></em>' operation.

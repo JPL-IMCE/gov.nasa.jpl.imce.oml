@@ -64,7 +64,6 @@ import gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship;
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple;
 import gov.nasa.jpl.imce.oml.model.terminologies.RuleBodySegment;
@@ -73,6 +72,7 @@ import gov.nasa.jpl.imce.oml.model.terminologies.ScalarDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.SegmentPredicate;
+import gov.nasa.jpl.imce.oml.model.terminologies.SpecializedReifiedRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.StringScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.Structure;
 import gov.nasa.jpl.imce.oml.model.terminologies.StructuredDataProperty;
@@ -496,6 +496,46 @@ public class OMLFormatter extends AbstractFormatter2 {
     document.prepend(this.textRegionExtensions.regionFor(rr).keyword("target"), _function_18);
   }
   
+  protected void _format(final SpecializedReifiedRelationship srr, @Extension final IFormattableDocument document) {
+    final Consumer<AnnotationPropertyValue> _function = (AnnotationPropertyValue it) -> {
+      final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it_1) -> {
+        it_1.setNewLines(1);
+      };
+      document.<AnnotationPropertyValue>append(document.<AnnotationPropertyValue>format(it), _function_1);
+    };
+    srr.getAnnotations().forEach(_function);
+    final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
+      it.oneSpace();
+    };
+    document.append(this.textRegionExtensions.regionFor(srr).keyword("reifiedRelationship"), _function_1);
+    final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
+      it.oneSpace();
+    };
+    document.append(this.textRegionExtensions.regionFor(srr).keyword("extends"), _function_2);
+    final ISemanticRegion lcurly = this.textRegionExtensions.regionFor(srr).keyword("{");
+    final ISemanticRegion rcurly = this.textRegionExtensions.regionFor(srr).keyword("}");
+    final Procedure1<IHiddenRegionFormatter> _function_3 = (IHiddenRegionFormatter it) -> {
+      it.oneSpace();
+    };
+    document.prepend(lcurly, _function_3);
+    final Procedure1<IHiddenRegionFormatter> _function_4 = (IHiddenRegionFormatter it) -> {
+      it.newLine();
+    };
+    document.append(lcurly, _function_4);
+    final Procedure1<IHiddenRegionFormatter> _function_5 = (IHiddenRegionFormatter it) -> {
+      it.indent();
+    };
+    document.<ISemanticRegion, ISemanticRegion>interior(lcurly, rcurly, _function_5);
+    final Procedure1<IHiddenRegionFormatter> _function_6 = (IHiddenRegionFormatter it) -> {
+      it.newLine();
+    };
+    document.prepend(this.textRegionExtensions.regionFor(srr).keyword("source"), _function_6);
+    final Procedure1<IHiddenRegionFormatter> _function_7 = (IHiddenRegionFormatter it) -> {
+      it.newLine();
+    };
+    document.prepend(this.textRegionExtensions.regionFor(srr).keyword("target"), _function_7);
+  }
+  
   protected void _format(final UnreifiedRelationship ur, @Extension final IFormattableDocument document) {
     final Consumer<AnnotationPropertyValue> _function = (AnnotationPropertyValue it) -> {
       final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it_1) -> {
@@ -724,20 +764,6 @@ public class OMLFormatter extends AbstractFormatter2 {
       it.oneSpace();
     };
     document.surround(this.textRegionExtensions.regionFor(ax).keyword("extendsConcept"), _function_1);
-  }
-  
-  protected void _format(final ReifiedRelationshipSpecializationAxiom ax, @Extension final IFormattableDocument document) {
-    final Consumer<AnnotationPropertyValue> _function = (AnnotationPropertyValue it) -> {
-      final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it_1) -> {
-        it_1.setNewLines(1);
-      };
-      document.<AnnotationPropertyValue>append(document.<AnnotationPropertyValue>format(it), _function_1);
-    };
-    ax.getAnnotations().forEach(_function);
-    final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it) -> {
-      it.oneSpace();
-    };
-    document.surround(this.textRegionExtensions.regionFor(ax).keyword("extendsRelationship"), _function_1);
   }
   
   protected void _format(final SubObjectPropertyOfAxiom ax, @Extension final IFormattableDocument document) {
@@ -2125,8 +2151,14 @@ public class OMLFormatter extends AbstractFormatter2 {
     } else if (t instanceof PlainLiteralScalarRestriction) {
       _format((PlainLiteralScalarRestriction)t, document);
       return;
+    } else if (t instanceof ReifiedRelationship) {
+      _format((ReifiedRelationship)t, document);
+      return;
     } else if (t instanceof ScalarOneOfRestriction) {
       _format((ScalarOneOfRestriction)t, document);
+      return;
+    } else if (t instanceof SpecializedReifiedRelationship) {
+      _format((SpecializedReifiedRelationship)t, document);
       return;
     } else if (t instanceof StringScalarRestriction) {
       _format((StringScalarRestriction)t, document);
@@ -2137,17 +2169,14 @@ public class OMLFormatter extends AbstractFormatter2 {
     } else if (t instanceof TimeScalarRestriction) {
       _format((TimeScalarRestriction)t, document);
       return;
+    } else if (t instanceof UnreifiedRelationship) {
+      _format((UnreifiedRelationship)t, document);
+      return;
     } else if (t instanceof Concept) {
       _format((Concept)t, document);
       return;
-    } else if (t instanceof ReifiedRelationship) {
-      _format((ReifiedRelationship)t, document);
-      return;
     } else if (t instanceof Scalar) {
       _format((Scalar)t, document);
-      return;
-    } else if (t instanceof UnreifiedRelationship) {
-      _format((UnreifiedRelationship)t, document);
       return;
     } else if (t instanceof BundledTerminologyAxiom) {
       _format((BundledTerminologyAxiom)t, document);
@@ -2181,9 +2210,6 @@ public class OMLFormatter extends AbstractFormatter2 {
       return;
     } else if (t instanceof EntityStructuredDataPropertyParticularRestrictionAxiom) {
       _format((EntityStructuredDataPropertyParticularRestrictionAxiom)t, document);
-      return;
-    } else if (t instanceof ReifiedRelationshipSpecializationAxiom) {
-      _format((ReifiedRelationshipSpecializationAxiom)t, document);
       return;
     } else if (t instanceof Structure) {
       _format((Structure)t, document);

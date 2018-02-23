@@ -94,6 +94,7 @@ public class OMLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getConceptAccess().getGroup(), "rule__Concept__Group__0");
 					put(grammarAccess.getReifiedRelationshipAccess().getGroup(), "rule__ReifiedRelationship__Group__0");
 					put(grammarAccess.getReifiedRelationshipAccess().getGroup_8(), "rule__ReifiedRelationship__Group_8__0");
+					put(grammarAccess.getSpecializedReifiedRelationshipAccess().getGroup(), "rule__SpecializedReifiedRelationship__Group__0");
 					put(grammarAccess.getUnreifiedRelationshipAccess().getGroup(), "rule__UnreifiedRelationship__Group__0");
 					put(grammarAccess.getScalarAccess().getGroup(), "rule__Scalar__Group__0");
 					put(grammarAccess.getStructureAccess().getGroup(), "rule__Structure__Group__0");
@@ -116,7 +117,6 @@ public class OMLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getEntityUniversalRestrictionAxiomAccess().getGroup(), "rule__EntityUniversalRestrictionAxiom__Group__0");
 					put(grammarAccess.getAspectSpecializationAxiomAccess().getGroup(), "rule__AspectSpecializationAxiom__Group__0");
 					put(grammarAccess.getConceptSpecializationAxiomAccess().getGroup(), "rule__ConceptSpecializationAxiom__Group__0");
-					put(grammarAccess.getReifiedRelationshipSpecializationAxiomAccess().getGroup(), "rule__ReifiedRelationshipSpecializationAxiom__Group__0");
 					put(grammarAccess.getSubObjectPropertyOfAxiomAccess().getGroup(), "rule__SubObjectPropertyOfAxiom__Group__0");
 					put(grammarAccess.getSubDataPropertyOfAxiomAccess().getGroup(), "rule__SubDataPropertyOfAxiom__Group__0");
 					put(grammarAccess.getEntityScalarDataPropertyExistentialRestrictionAxiomAccess().getGroup(), "rule__EntityScalarDataPropertyExistentialRestrictionAxiom__Group__0");
@@ -247,6 +247,11 @@ public class OMLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getReifiedRelationshipAccess().getTargetAssignment_14(), "rule__ReifiedRelationship__TargetAssignment_14");
 					put(grammarAccess.getForwardPropertyAccess().getNameAssignment(), "rule__ForwardProperty__NameAssignment");
 					put(grammarAccess.getInversePropertyAccess().getNameAssignment(), "rule__InverseProperty__NameAssignment");
+					put(grammarAccess.getSpecializedReifiedRelationshipAccess().getAnnotationsAssignment_0(), "rule__SpecializedReifiedRelationship__AnnotationsAssignment_0");
+					put(grammarAccess.getSpecializedReifiedRelationshipAccess().getNameAssignment_2(), "rule__SpecializedReifiedRelationship__NameAssignment_2");
+					put(grammarAccess.getSpecializedReifiedRelationshipAccess().getGeneralAssignment_4(), "rule__SpecializedReifiedRelationship__GeneralAssignment_4");
+					put(grammarAccess.getSpecializedReifiedRelationshipAccess().getSourceAssignment_8(), "rule__SpecializedReifiedRelationship__SourceAssignment_8");
+					put(grammarAccess.getSpecializedReifiedRelationshipAccess().getTargetAssignment_11(), "rule__SpecializedReifiedRelationship__TargetAssignment_11");
 					put(grammarAccess.getUnreifiedRelationshipAccess().getAnnotationsAssignment_0(), "rule__UnreifiedRelationship__AnnotationsAssignment_0");
 					put(grammarAccess.getUnreifiedRelationshipAccess().getNameAssignment_2(), "rule__UnreifiedRelationship__NameAssignment_2");
 					put(grammarAccess.getUnreifiedRelationshipAccess().getIsFunctionalAssignment_4_0(), "rule__UnreifiedRelationship__IsFunctionalAssignment_4_0");
@@ -315,9 +320,6 @@ public class OMLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getConceptSpecializationAxiomAccess().getAnnotationsAssignment_0(), "rule__ConceptSpecializationAxiom__AnnotationsAssignment_0");
 					put(grammarAccess.getConceptSpecializationAxiomAccess().getSubConceptAssignment_1(), "rule__ConceptSpecializationAxiom__SubConceptAssignment_1");
 					put(grammarAccess.getConceptSpecializationAxiomAccess().getSuperConceptAssignment_3(), "rule__ConceptSpecializationAxiom__SuperConceptAssignment_3");
-					put(grammarAccess.getReifiedRelationshipSpecializationAxiomAccess().getAnnotationsAssignment_0(), "rule__ReifiedRelationshipSpecializationAxiom__AnnotationsAssignment_0");
-					put(grammarAccess.getReifiedRelationshipSpecializationAxiomAccess().getSubRelationshipAssignment_1(), "rule__ReifiedRelationshipSpecializationAxiom__SubRelationshipAssignment_1");
-					put(grammarAccess.getReifiedRelationshipSpecializationAxiomAccess().getSuperRelationshipAssignment_3(), "rule__ReifiedRelationshipSpecializationAxiom__SuperRelationshipAssignment_3");
 					put(grammarAccess.getSubObjectPropertyOfAxiomAccess().getAnnotationsAssignment_0(), "rule__SubObjectPropertyOfAxiom__AnnotationsAssignment_0");
 					put(grammarAccess.getSubObjectPropertyOfAxiomAccess().getSubPropertyAssignment_1(), "rule__SubObjectPropertyOfAxiom__SubPropertyAssignment_1");
 					put(grammarAccess.getSubObjectPropertyOfAxiomAccess().getSuperPropertyAssignment_3(), "rule__SubObjectPropertyOfAxiom__SuperPropertyAssignment_3");
@@ -429,7 +431,7 @@ public class OMLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getConceptInstanceAccess().getSingletonConceptClassifierAssignment_5(), "rule__ConceptInstance__SingletonConceptClassifierAssignment_5");
 					put(grammarAccess.getReifiedRelationshipInstanceAccess().getAnnotationsAssignment_0(), "rule__ReifiedRelationshipInstance__AnnotationsAssignment_0");
 					put(grammarAccess.getReifiedRelationshipInstanceAccess().getNameAssignment_3(), "rule__ReifiedRelationshipInstance__NameAssignment_3");
-					put(grammarAccess.getReifiedRelationshipInstanceAccess().getSingletonReifiedRelationshipClassifierAssignment_5(), "rule__ReifiedRelationshipInstance__SingletonReifiedRelationshipClassifierAssignment_5");
+					put(grammarAccess.getReifiedRelationshipInstanceAccess().getSingletonConceptualRelationshipClassifierAssignment_5(), "rule__ReifiedRelationshipInstance__SingletonConceptualRelationshipClassifierAssignment_5");
 					put(grammarAccess.getReifiedRelationshipInstanceDomainAccess().getAnnotationsAssignment_0(), "rule__ReifiedRelationshipInstanceDomain__AnnotationsAssignment_0");
 					put(grammarAccess.getReifiedRelationshipInstanceDomainAccess().getReifiedRelationshipInstanceAssignment_3(), "rule__ReifiedRelationshipInstanceDomain__ReifiedRelationshipInstanceAssignment_3");
 					put(grammarAccess.getReifiedRelationshipInstanceDomainAccess().getDomainAssignment_6(), "rule__ReifiedRelationshipInstanceDomain__DomainAssignment_6");

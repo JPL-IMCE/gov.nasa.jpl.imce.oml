@@ -978,7 +978,7 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getReifiedRelationshipInstance_SingletonReifiedRelationshipClassifier() {
+	public EReference getReifiedRelationshipInstance_SingletonConceptualRelationshipClassifier() {
 		return (EReference)reifiedRelationshipInstanceEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -1364,7 +1364,7 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 
 		reifiedRelationshipInstanceEClass = createEClass(REIFIED_RELATIONSHIP_INSTANCE);
 		createEReference(reifiedRelationshipInstanceEClass, REIFIED_RELATIONSHIP_INSTANCE__DESCRIPTION_BOX);
-		createEReference(reifiedRelationshipInstanceEClass, REIFIED_RELATIONSHIP_INSTANCE__SINGLETON_REIFIED_RELATIONSHIP_CLASSIFIER);
+		createEReference(reifiedRelationshipInstanceEClass, REIFIED_RELATIONSHIP_INSTANCE__SINGLETON_CONCEPTUAL_RELATIONSHIP_CLASSIFIER);
 		createEOperation(reifiedRelationshipInstanceEClass, REIFIED_RELATIONSHIP_INSTANCE___CONCEPTUAL_ENTITY_SINGLETON_CLASSIFIER);
 		createEOperation(reifiedRelationshipInstanceEClass, REIFIED_RELATIONSHIP_INSTANCE___DESCRIPTION_BOX);
 		createEOperation(reifiedRelationshipInstanceEClass, REIFIED_RELATIONSHIP_INSTANCE___ALL_NESTED_ELEMENTS);
@@ -1587,7 +1587,7 @@ public class DescriptionsPackageImpl extends EPackageImpl implements Description
 
 		initEClass(reifiedRelationshipInstanceEClass, ReifiedRelationshipInstance.class, "ReifiedRelationshipInstance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getReifiedRelationshipInstance_DescriptionBox(), this.getDescriptionBox(), this.getDescriptionBox_ReifiedRelationshipInstances(), "descriptionBox", null, 1, 1, ReifiedRelationshipInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getReifiedRelationshipInstance_SingletonReifiedRelationshipClassifier(), theTerminologiesPackage.getReifiedRelationship(), null, "singletonReifiedRelationshipClassifier", null, 1, 1, ReifiedRelationshipInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getReifiedRelationshipInstance_SingletonConceptualRelationshipClassifier(), theTerminologiesPackage.getConceptualRelationship(), null, "singletonConceptualRelationshipClassifier", null, 1, 1, ReifiedRelationshipInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getReifiedRelationshipInstance__ConceptualEntitySingletonClassifier(), theTerminologiesPackage.getConceptualEntity(), "conceptualEntitySingletonClassifier", 1, 1, !IS_UNIQUE, IS_ORDERED);
 

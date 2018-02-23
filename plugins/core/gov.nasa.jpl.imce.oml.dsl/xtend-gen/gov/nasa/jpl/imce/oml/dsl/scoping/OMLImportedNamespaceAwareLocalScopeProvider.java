@@ -61,7 +61,6 @@ import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyParticu
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyUniversalRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataPropertyParticularRestrictionAxiom;
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictedDataRange;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple;
@@ -69,6 +68,7 @@ import gov.nasa.jpl.imce.oml.model.terminologies.RuleBodySegment;
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.SegmentPredicate;
+import gov.nasa.jpl.imce.oml.model.terminologies.SpecializedReifiedRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.StructuredDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.SubDataPropertyOfAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.SubObjectPropertyOfAxiom;
@@ -80,6 +80,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
@@ -338,6 +339,21 @@ public class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespa
         }
       }
       if (!_matched) {
+        if (context instanceof SpecializedReifiedRelationship) {
+          _matched=true;
+          if ((Objects.equal(reference, TerminologiesPackage.eINSTANCE.getEntityRelationship_Source()) || 
+            Objects.equal(reference, TerminologiesPackage.eINSTANCE.getEntityRelationship_Target()))) {
+            scope = this._oMLScopeExtensions.allEntitiesScope(((SpecializedReifiedRelationship)context).getTbox());
+          } else {
+            EReference _specializedReifiedRelationship_General = TerminologiesPackage.eINSTANCE.getSpecializedReifiedRelationship_General();
+            boolean _equals = Objects.equal(reference, _specializedReifiedRelationship_General);
+            if (_equals) {
+              scope = this._oMLScopeExtensions.allConceptualRelationshipsScope(((SpecializedReifiedRelationship)context).getTbox());
+            }
+          }
+        }
+      }
+      if (!_matched) {
         if (context instanceof EntityRelationship) {
           _matched=true;
           if ((Objects.equal(reference, TerminologiesPackage.eINSTANCE.getEntityRelationship_Source()) || 
@@ -374,22 +390,6 @@ public class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespa
             boolean _equals_1 = Objects.equal(reference, _conceptSpecializationAxiom_SuperConcept);
             if (_equals_1) {
               scope = this._oMLScopeExtensions.allConceptsScope(((ConceptSpecializationAxiom)context).getTbox());
-            }
-          }
-        }
-      }
-      if (!_matched) {
-        if (context instanceof ReifiedRelationshipSpecializationAxiom) {
-          _matched=true;
-          EReference _reifiedRelationshipSpecializationAxiom_SubRelationship = TerminologiesPackage.eINSTANCE.getReifiedRelationshipSpecializationAxiom_SubRelationship();
-          boolean _equals = Objects.equal(reference, _reifiedRelationshipSpecializationAxiom_SubRelationship);
-          if (_equals) {
-            scope = this._oMLScopeExtensions.allReifiedRelationshipsScope(((ReifiedRelationshipSpecializationAxiom)context).getTbox());
-          } else {
-            EReference _reifiedRelationshipSpecializationAxiom_SuperRelationship = TerminologiesPackage.eINSTANCE.getReifiedRelationshipSpecializationAxiom_SuperRelationship();
-            boolean _equals_1 = Objects.equal(reference, _reifiedRelationshipSpecializationAxiom_SuperRelationship);
-            if (_equals_1) {
-              scope = this._oMLScopeExtensions.allReifiedRelationshipsScope(((ReifiedRelationshipSpecializationAxiom)context).getTbox());
             }
           }
         }
@@ -1032,8 +1032,8 @@ public class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespa
       if (!_matched) {
         if (context instanceof ReifiedRelationshipInstance) {
           _matched=true;
-          EReference _reifiedRelationshipInstance_SingletonReifiedRelationshipClassifier = DescriptionsPackage.eINSTANCE.getReifiedRelationshipInstance_SingletonReifiedRelationshipClassifier();
-          boolean _equals = Objects.equal(reference, _reifiedRelationshipInstance_SingletonReifiedRelationshipClassifier);
+          EOperation _reifiedRelationshipInstance__ConceptualEntitySingletonClassifier = DescriptionsPackage.eINSTANCE.getReifiedRelationshipInstance__ConceptualEntitySingletonClassifier();
+          boolean _equals = Objects.equal(reference, _reifiedRelationshipInstance__ConceptualEntitySingletonClassifier);
           if (_equals) {
             DescriptionBox _descriptionBox = ((ReifiedRelationshipInstance)context).descriptionBox();
             IScope _allReifiedRelationshipScope = null;
