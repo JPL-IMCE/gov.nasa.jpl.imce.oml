@@ -359,6 +359,15 @@ abstract class EntityRelationship extends Term, DirectedBinaryRelationshipKind {
 	@Override
 	op Term[1] relationRange() { target }
 	
+}
+
+/*
+ * An OML CharacterizedEntityRelationship specifies the characteristics
+ * of an OML EntityRelationship.
+ */
+@Glossary
+abstract class CharacterizedEntityRelationship extends EntityRelationship {
+	
  	/*
  	 * 0 <= target.size <= 1
 	 */
@@ -524,14 +533,22 @@ class InverseProperty extends RestrictableRelationship {
 }
 
 /*
- * An OML ReifiedRelationship is an OML ConceptualEntity and a kind of OML EntityRelationship
+ * An OML ConceptualRelationship is a kind of OML ConceptualEntity
+ * that is also a kind of OML EntityRelationship.
+ */
+@Glossary
+abstract class ConceptualRelationship extends ConceptualEntity, EntityRelationship {}
+
+/*
+ * An OML ReifiedRelationship is an OML ConceptualRelationship 
+ * and a kind of OML CharacterizedEntityRelationship
  * where an instance has an intrinsic identity. This means that
  * an OML ReifiedRelationship can be involved as the domain or the
  * range of another OML EntityRelationship as well as the
  * domain of an OML DataRelationshipFromEntity.
  */
 @Glossary
-class ReifiedRelationship extends EntityRelationship, ConceptualEntity {
+class ReifiedRelationship extends ConceptualRelationship, CharacterizedEntityRelationship {
 
 	contains ForwardProperty[1] forwardProperty opposite reifiedRelationship
 	contains InverseProperty[?] inverseProperty opposite reifiedRelationship
@@ -553,14 +570,34 @@ class ReifiedRelationship extends EntityRelationship, ConceptualEntity {
 }
 
 /*
- * An OML UnreifiedRelationship is a kind of OML EntityRelationship
+ * An OML SpecializedReifiedRelationship is an OML ConceptualRelationship 
+ * that plays the role of a specific entity for an OML SpecializedReifiedRelationship
+ * with respect to an OML ConceptualRelationship as its general entity in the context
+ * of an OML SpecializationAxiom.
+ */
+class SpecializedReifiedRelationship extends ConceptualRelationship, SpecializationAxiom {
+
+	refers ConceptualRelationship[1] general
+	
+	@NotSchema
+	@Override
+	op Entity[1] child() { this }
+	
+	@NotSchema
+	@Override
+	op Entity[1] parent() { general }
+	
+}
+
+/*
+ * An OML UnreifiedRelationship is a kind of OML CharacterizedEntityRelationship
  * where an instance has no intrinsic identity but rather structural
  * equivalence semantics as a tuple of references. This means
  * that an OML UnreifiedRelationship cannot be involved as the domain
  * or range of any kind of OML DirectedBinaryRelationshipKind.
  */
 @Glossary
-class UnreifiedRelationship extends EntityRelationship, RestrictableRelationship {
+class UnreifiedRelationship extends CharacterizedEntityRelationship, RestrictableRelationship {
 	
 	@NotSchema
 	@Override
@@ -1125,51 +1162,6 @@ class ConceptSpecializationAxiom extends SpecializationAxiom {
 		"tbox" -> tbox?.uuid(),
 		"superConcept" -> superConcept?.uuid()?.toString,
 		"subConcept" -> subConcept?.uuid()?.toString
-		)?.toString
-	}
-}
-
-/*
- * An OML ReifiedRelationshipSpecializationAxiom is a logical axiom
- * about a taxonomic relationship between a specific and general
- * OML ReifiedRelationship.
- */
-@Glossary
-@DerivedUUID
-class ReifiedRelationshipSpecializationAxiom extends SpecializationAxiom {
-	
-	/*
-	 * The sub (child) relationship
-	 */
-	refers ReifiedRelationship[1] subRelationship
-	
-	/*
-	 * The super (parent) relationship
-	 */
-	refers ReifiedRelationship[1] superRelationship
-	
-	/*
-	 * Get the sub (child) entity
-	 */
-	@NotSchema
-	@Override
-	op Entity[1] child() { subRelationship }
-	
-	/*
-	 * Get the super (parent) entity
-	 */
-	@NotSchema
-	@Override
-	op Entity[1] parent() { superRelationship }
-	
-	@NotFunctionalAPI
-	@NotSchema
-	op UUID[1] uuid() {
-		OMLExtensions.derivedUUID(
-		"ReifiedRelationshipSpecializationAxiom",
-		"tbox" -> tbox?.uuid(),
-		"superRelationship" -> superRelationship?.uuid()?.toString,
-		"subRelationship" -> subRelationship?.uuid()?.toString
 		)?.toString
 	}
 }

@@ -151,6 +151,10 @@ class OMLScopeExtensions {
 		terminologyScope(tbox, [localEntities], [importedResourceNameFunction])
 	}
 	
+	def IScope allConceptualRelationshipsScope(TerminologyBox tbox) {
+		terminologyScope(tbox, [localConceptualEntities], [importedResourceNameFunction])
+	}
+	
 	def IScope allRangesScope(TerminologyBox tbox) {
 		terminologyScope(tbox, [localRanges], [importedResourceNameFunction])
 	}

@@ -56,7 +56,6 @@ import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyParticu
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityScalarDataPropertyUniversalRestrictionAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataPropertyParticularRestrictionAxiom
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictedDataRange
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple
@@ -76,6 +75,7 @@ import org.eclipse.xtext.naming.IQualifiedNameConverter
 import org.eclipse.xtext.scoping.IScope
 import org.eclipse.xtext.scoping.impl.ImportNormalizer
 import org.eclipse.xtext.scoping.impl.ImportedNamespaceAwareLocalScopeProvider
+import gov.nasa.jpl.imce.oml.model.terminologies.SpecializedReifiedRelationship
 
 class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespaceAwareLocalScopeProvider {
 	
@@ -143,7 +143,14 @@ class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespaceAware
 			TerminologyExtensionAxiom:
 				if (reference == TerminologiesPackage.eINSTANCE.terminologyExtensionAxiom_ExtendedTerminology)
 					scope = context.tbox.allTerminologies
-					
+				
+			SpecializedReifiedRelationship:
+				if (reference == TerminologiesPackage.eINSTANCE.entityRelationship_Source ||
+					reference == TerminologiesPackage.eINSTANCE.entityRelationship_Target)
+					scope = context.tbox.allEntitiesScope
+				else if (reference == TerminologiesPackage.eINSTANCE.specializedReifiedRelationship_General)
+					scope = context.tbox.allConceptualRelationshipsScope
+				
 			EntityRelationship:
 				if (reference == TerminologiesPackage.eINSTANCE.entityRelationship_Source ||
 					reference == TerminologiesPackage.eINSTANCE.entityRelationship_Target)
@@ -161,12 +168,6 @@ class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespaceAware
 				else if (reference == TerminologiesPackage.eINSTANCE.conceptSpecializationAxiom_SuperConcept)
 					scope = context.tbox.allConceptsScope
 					
-			ReifiedRelationshipSpecializationAxiom:
-				if (reference == TerminologiesPackage.eINSTANCE.reifiedRelationshipSpecializationAxiom_SubRelationship)
-					scope = context.tbox.allReifiedRelationshipsScope
-				else if (reference == TerminologiesPackage.eINSTANCE.reifiedRelationshipSpecializationAxiom_SuperRelationship)
-					scope = context.tbox.allReifiedRelationshipsScope
-						
 			SubObjectPropertyOfAxiom:
 				if (reference == TerminologiesPackage.eINSTANCE.subObjectPropertyOfAxiom_SubProperty)
 					scope = context.tbox.allUnreifiedRelationshipsScope
@@ -351,7 +352,7 @@ class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespaceAware
 					scope = context.descriptionBox()?.allConceptsScope		
 					
 			ReifiedRelationshipInstance:
-				if (reference == DescriptionsPackage.eINSTANCE.reifiedRelationshipInstance_SingletonReifiedRelationshipClassifier)
+				if (reference == DescriptionsPackage.eINSTANCE.reifiedRelationshipInstance__ConceptualEntitySingletonClassifier)
 					scope = context.descriptionBox()?.allReifiedRelationshipScope
 					
 			ReifiedRelationshipInstanceDomain:

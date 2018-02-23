@@ -84,7 +84,6 @@ import gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictableRelationship
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple
@@ -94,6 +93,7 @@ import gov.nasa.jpl.imce.oml.model.terminologies.ScalarDataProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.SpecializationAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.SpecializedReifiedRelationship
 import gov.nasa.jpl.imce.oml.model.terminologies.StringScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.Structure
 import gov.nasa.jpl.imce.oml.model.terminologies.StructuredDataProperty
@@ -130,6 +130,7 @@ import org.eclipse.xtext.xbase.lib.Functions.Function1
 import static com.google.common.base.Preconditions.checkNotNull
 import gov.nasa.jpl.imce.oml.model.terminologies.SegmentPredicate
 import gov.nasa.jpl.imce.oml.model.terminologies.Predicate
+import gov.nasa.jpl.imce.oml.model.terminologies.ConceptualEntity
 
 public class OMLExtensions {
 
@@ -463,6 +464,14 @@ public class OMLExtensions {
 		localEntities + allImportedTerminologies(it).map[localEntities].flatten
 	}
 
+	def Iterable<ConceptualEntity> localConceptualEntities(TerminologyBox it) {
+		boxStatements.filter(ConceptualEntity)
+	}
+
+	def Iterable<ConceptualEntity> allConceptualEntities(TerminologyBox it) {
+		localConceptualEntities + allImportedTerminologies(it).map[localConceptualEntities].flatten
+	}
+
 	def Iterable<Aspect> localAspects(TerminologyBox it) {
 		boxStatements.filter(Aspect)
 	}
@@ -701,8 +710,6 @@ public class OMLExtensions {
 				'ReifiedRelationshipInstanceDomain'
 			ReifiedRelationshipInstanceRange:
 				'ReifiedRelationshipInstanceRange'
-			ReifiedRelationshipSpecializationAxiom:
-				'ReifiedRelationshipSpecializationAxiom'
 			RestrictionScalarDataPropertyValue:
 				'RestrictionScalarDataPropertyValue'
 			RestrictionStructuredDataPropertyTuple:
@@ -727,6 +734,8 @@ public class OMLExtensions {
 				'SingletonInstanceScalarDataPropertyValue'
 			SingletonInstanceStructuredDataPropertyValue:
 				'SingletonInstanceStructuredDataPropertyValue'
+			SpecializedReifiedRelationship:
+				'SpecializedReifiedRelationship'
 			SpecificDisjointConceptAxiom:
 				'SpecificDisjointConceptAxiom'
 			StringScalarRestriction:
@@ -770,7 +779,7 @@ public class OMLExtensions {
 				10021
 			ReifiedRelationship:
 				10030
-			ReifiedRelationshipSpecializationAxiom:
+			SpecializedReifiedRelationship:
 				10031
 			AspectSpecializationAxiom:
 				10040
@@ -872,14 +881,14 @@ public class OMLExtensions {
 				"00011-"
 			ReifiedRelationship:
 				"00012-"
-			UnreifiedRelationship:
+			SpecializedReifiedRelationship:
 				"00013-"
-			ChainRule:
+			UnreifiedRelationship:
 				"00014-"
+			ChainRule:
+				"00015-"
 			ConceptSpecializationAxiom:
 				"00020-"
-			ReifiedRelationshipSpecializationAxiom:
-				"00021-"
 			AspectSpecializationAxiom:
 				"00022-"
 			Structure:
