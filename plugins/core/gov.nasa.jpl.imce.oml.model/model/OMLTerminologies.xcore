@@ -587,6 +587,12 @@ class SpecializedReifiedRelationship extends ConceptualRelationship, Specializat
 	@Override
 	op Entity[1] parent() { general }
 	
+	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.LogicalElement]")
+	@Collection(kind="Set")
+	@NotSchema
+	@ImplicitExtent
+	@Override
+	op LogicalElement[] allNestedElements() { ECollections.emptyEList }
 }
 
 /*

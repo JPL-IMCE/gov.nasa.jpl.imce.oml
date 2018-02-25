@@ -1417,6 +1417,15 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getSpecializedReifiedRelationship__AllNestedElements() {
+		return specializedReifiedRelationshipEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getUnreifiedRelationship() {
 		return unreifiedRelationshipEClass;
 	}
@@ -3163,6 +3172,7 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		createEReference(specializedReifiedRelationshipEClass, SPECIALIZED_REIFIED_RELATIONSHIP__GENERAL);
 		createEOperation(specializedReifiedRelationshipEClass, SPECIALIZED_REIFIED_RELATIONSHIP___CHILD);
 		createEOperation(specializedReifiedRelationshipEClass, SPECIALIZED_REIFIED_RELATIONSHIP___PARENT);
+		createEOperation(specializedReifiedRelationshipEClass, SPECIALIZED_REIFIED_RELATIONSHIP___ALL_NESTED_ELEMENTS);
 
 		unreifiedRelationshipEClass = createEClass(UNREIFIED_RELATIONSHIP);
 		createEOperation(unreifiedRelationshipEClass, UNREIFIED_RELATIONSHIP___RELATION);
@@ -3671,6 +3681,8 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		initEOperation(getSpecializedReifiedRelationship__Child(), this.getEntity(), "child", 1, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEOperation(getSpecializedReifiedRelationship__Parent(), this.getEntity(), "parent", 1, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getSpecializedReifiedRelationship__AllNestedElements(), theCommonPackage.getLogicalElement(), "allNestedElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(unreifiedRelationshipEClass, UnreifiedRelationship.class, "UnreifiedRelationship", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -4561,6 +4573,11 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   new String[] {
 		   });	
 		addAnnotation
+		  (getSpecializedReifiedRelationship__AllNestedElements(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
 		  (getUnreifiedRelationship__Relation(), 
 		   source, 
 		   new String[] {
@@ -4860,6 +4877,12 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 			 "kind", "Set"
 		   });	
 		addAnnotation
+		  (getSpecializedReifiedRelationship__AllNestedElements(), 
+		   source, 
+		   new String[] {
+			 "kind", "Set"
+		   });	
+		addAnnotation
 		  (getEntityRestrictionAxiom__AllNestedElements(), 
 		   source, 
 		   new String[] {
@@ -4994,6 +5017,12 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   source, 
 		   new String[] {
 			 "code", "\n\t\tscala.collection.immutable.Set[resolver.api.LogicalElement]() ++\n\t\textent.forwardProperty.get(this) ++\n\t\textent.inverseProperty.get(this)"
+		   });	
+		addAnnotation
+		  (getSpecializedReifiedRelationship__AllNestedElements(), 
+		   source, 
+		   new String[] {
+			 "code", "scala.collection.immutable.Set.empty[resolver.api.LogicalElement]"
 		   });	
 		addAnnotation
 		  (getRuleBodySegment__Position(), 
@@ -5200,6 +5229,11 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   });	
 		addAnnotation
 		  (getReifiedRelationship__AllNestedElements(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getSpecializedReifiedRelationship__AllNestedElements(), 
 		   source, 
 		   new String[] {
 		   });	
@@ -5550,6 +5584,11 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   });	
 		addAnnotation
 		  (getSpecializedReifiedRelationship__Parent(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getSpecializedReifiedRelationship__AllNestedElements(), 
 		   source, 
 		   new String[] {
 		   });	

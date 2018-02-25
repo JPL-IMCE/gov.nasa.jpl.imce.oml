@@ -10,6 +10,8 @@ gov.nasa.jpl.imce.oml.tycho 0.9.3 is an API-breaking change from 0.9.2
 
 ## [#247 OMLSpecificationTables.read functions problems w/ optional characteristics.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/247)
 
+## [#249 SpecializedReifiedRelationship needs to override allNestedElements](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/249)
+
 ## Summary of changes from 0.9.2
 
 ### Reified Relationship Specialization
