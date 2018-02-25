@@ -3,13 +3,13 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>gov.nasa.jpl.imce.oml</groupId>
 	<artifactId>gov.nasa.jpl.imce.oml.features.ui</artifactId>
-	<version>0.9.0-SNAPSHOT</version>
+	<version>0.9.3.2</version>
 	<packaging>pom</packaging>
 	
 	<parent>
 		<groupId>gov.nasa.jpl.imce.oml</groupId>
 		<artifactId>gov.nasa.jpl.imce.oml.features</artifactId>
-		<version>0.9.0-SNAPSHOT</version>
+		<version>0.9.3.2</version>
 	</parent>
 
 	<modules>
