@@ -2979,15 +2979,6 @@ public interface TerminologiesPackage extends EPackage {
 	int SPECIALIZED_REIFIED_RELATIONSHIP___RELATION_RANGE = CONCEPTUAL_RELATIONSHIP___RELATION_RANGE;
 
 	/**
-	 * The operation id for the '<em>All Nested Elements</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SPECIALIZED_REIFIED_RELATIONSHIP___ALL_NESTED_ELEMENTS = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 2;
-
-	/**
 	 * The operation id for the '<em>Child</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3006,13 +2997,22 @@ public interface TerminologiesPackage extends EPackage {
 	int SPECIALIZED_REIFIED_RELATIONSHIP___PARENT = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 4;
 
 	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIALIZED_REIFIED_RELATIONSHIP___ALL_NESTED_ELEMENTS = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 5;
+
+	/**
 	 * The number of operations of the '<em>Specialized Reified Relationship</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SPECIALIZED_REIFIED_RELATIONSHIP_OPERATION_COUNT = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 5;
+	int SPECIALIZED_REIFIED_RELATIONSHIP_OPERATION_COUNT = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 6;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.UnreifiedRelationshipImpl <em>Unreified Relationship</em>}' class.
@@ -10400,6 +10400,16 @@ public interface TerminologiesPackage extends EPackage {
 	EOperation getSpecializedReifiedRelationship__Parent();
 
 	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.SpecializedReifiedRelationship#allNestedElements() <em>All Nested Elements</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>All Nested Elements</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.SpecializedReifiedRelationship#allNestedElements()
+	 * @generated
+	 */
+	EOperation getSpecializedReifiedRelationship__AllNestedElements();
+
+	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship <em>Unreified Relationship</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -12999,6 +13009,14 @@ public interface TerminologiesPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation SPECIALIZED_REIFIED_RELATIONSHIP___PARENT = eINSTANCE.getSpecializedReifiedRelationship__Parent();
+
+		/**
+		 * The meta object literal for the '<em><b>All Nested Elements</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SPECIALIZED_REIFIED_RELATIONSHIP___ALL_NESTED_ELEMENTS = eINSTANCE.getSpecializedReifiedRelationship__AllNestedElements();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.UnreifiedRelationshipImpl <em>Unreified Relationship</em>}' class.
