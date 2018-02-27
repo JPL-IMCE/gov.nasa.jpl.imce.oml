@@ -17,8 +17,6 @@
  */
 package gov.nasa.jpl.imce.oml.zip;
 
-import com.google.inject.Inject;
-import com.google.inject.Provider;
 import gov.nasa.jpl.imce.oml.zip.OMLZipResource;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -29,18 +27,14 @@ import org.eclipse.xtext.resource.IResourceFactory;
  */
 @SuppressWarnings("all")
 public class OMLZipResourceFactory implements IResourceFactory {
-  private Provider<OMLZipResource> provider;
-  
-  @Inject
-  public OMLZipResourceFactory(final Provider<OMLZipResource> resourceProvider) {
-    this.provider = resourceProvider;
+  public OMLZipResourceFactory() {
   }
   
   @Override
   public Resource createResource(final URI uri) {
     OMLZipResource _xblockexpression = null;
     {
-      final OMLZipResource r = this.provider.get();
+      final OMLZipResource r = new OMLZipResource();
       r.setURI(uri);
       _xblockexpression = r;
     }
