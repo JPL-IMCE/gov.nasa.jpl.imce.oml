@@ -603,7 +603,7 @@ class PartialReifiedRelationship extends ConceptualRelationship {
 	@Override
 	op LogicalElement[] allNestedElements() { ECollections.emptyEList }
 	
-	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.ReifiedRelationship]")
+	@Scala(code="resolver.ResolverUtilities.rootReifiedRelationships(this)")
 	@Collection(kind="Set")
 	@ImplicitExtent
 	@NotSchema
