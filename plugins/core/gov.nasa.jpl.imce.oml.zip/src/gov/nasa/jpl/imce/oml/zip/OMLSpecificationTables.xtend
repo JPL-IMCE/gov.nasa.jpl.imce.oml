@@ -2937,29 +2937,37 @@ class OMLSpecificationTables {
     ]
     zip.close()   
     
+    tables.processQueue(rs)
+    
+    	tables.resolve(rs, r)
+  }
+  
+  def void queueModule(Module m) {
+  	moduleQueue.add(m)
+  }
+  
+  def void processQueue(ResourceSet rs) {
     var Boolean more = false
     do {
         more = false
-        	if (!tables.iriLoadQueue.empty) {
-        		val iri = tables.iriLoadQueue.remove
-        		if (tables.visitedIRIs.add(iri)) {
+        	if (!iriLoadQueue.empty) {
+        		val iri = iriLoadQueue.remove
+        		if (visitedIRIs.add(iri)) {
         			more = true
-     	 	    	tables.loadOMLZipResource(rs, URI.createURI(iri))	
+     	 	    	loadOMLZipResource(rs, URI.createURI(iri))	
      	 	}
         }
         	
-        	if (!tables.moduleQueue.empty) {
-        		val m = tables.moduleQueue.remove
-        		if (tables.visitedModules.add(m)) {
+        	if (!moduleQueue.empty) {
+        		val m = moduleQueue.remove
+        		if (visitedModules.add(m)) {
         			more = true
-        			tables.includeModule(m)
+        			includeModule(m)
         		}
         	}
     } while (more)
-
-    tables.resolve(rs, r)
   }
-
+  
   protected def void readTerminologyGraphs(Extent ext, ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	while (!kvs.empty) {

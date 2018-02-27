@@ -59,11 +59,12 @@ class OMLZipResource extends ResourceImpl {
 				r.contents.forEach [ e |
 					switch e {
 						Extent: {
-							e.modules.forEach[m|tables.includeModule(m)]
+							e.modules.forEach[m|tables.queueModule(m)]
 						}
 					}
 				]
 			]
+			tables.processQueue(rs)
 		}
 		val tables = rs.loadOptions.get(OML_SPECIFICATION_TABLES)
 		switch tables {
