@@ -3140,6 +3140,21 @@ public class OMLSpecificationTables {
    */
   public static void load(final ResourceSet rs, final OMLZipResource r, final File omlZipFile) {
     try {
+      final URI fileURI = URI.createFileURI(omlZipFile.getAbsolutePath());
+      final OMLCatalog c = OMLExtensions.findCatalogIfExists(rs, fileURI);
+      if ((null == c)) {
+        throw new IllegalArgumentException(("OMLSpecificationTables.load(): failed to find an OML catalog from: " + fileURI));
+      }
+      boolean _isEmpty = c.getParsedCatalogs().isEmpty();
+      if (_isEmpty) {
+        throw new IllegalArgumentException(("OMLSpecificationTables.load(): No OML catalog found from: " + fileURI));
+      }
+      boolean _isEmpty_1 = c.entries().isEmpty();
+      if (_isEmpty_1) {
+        String _join = IterableExtensions.join(c.getParsedCatalogs(), "\n");
+        String _plus = ("OMLSpecificationTables.load(): Empty OML catalog from: " + _join);
+        throw new IllegalArgumentException(_plus);
+      }
       final OMLSpecificationTables tables = OMLZipResource.getOrInitializeOMLSpecificationTables(rs);
       final Extent ext = tables.omlCommonFactory.createExtent();
       r.getContents().add(ext);
@@ -3340,13 +3355,13 @@ public class OMLSpecificationTables {
                 break;
               default:
                 String _name_1 = ze.getName();
-                String _plus = ("OMLSpecificationTables.load(): unrecognized table name: " + _name_1);
-                throw new IllegalArgumentException(_plus);
+                String _plus_1 = ("OMLSpecificationTables.load(): unrecognized table name: " + _name_1);
+                throw new IllegalArgumentException(_plus_1);
             }
           } else {
             String _name_1 = ze.getName();
-            String _plus = ("OMLSpecificationTables.load(): unrecognized table name: " + _name_1);
-            throw new IllegalArgumentException(_plus);
+            String _plus_1 = ("OMLSpecificationTables.load(): unrecognized table name: " + _name_1);
+            throw new IllegalArgumentException(_plus_1);
           }
         } catch (Throwable _e) {
           throw Exceptions.sneakyThrow(_e);
