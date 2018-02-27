@@ -22,6 +22,7 @@ import gov.nasa.jpl.imce.oml.model.terminologies.ConceptualRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.DirectedBinaryRelationshipKind;
 import gov.nasa.jpl.imce.oml.model.terminologies.Entity;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship;
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.Term;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage;
 
@@ -165,6 +166,17 @@ public abstract class ConceptualRelationshipImpl extends ConceptualEntityImpl im
 		target = newTarget;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.CONCEPTUAL_RELATIONSHIP__TARGET, oldTarget, target));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<ReifiedRelationship> rootReifiedRelationships() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -331,6 +343,8 @@ public abstract class ConceptualRelationshipImpl extends ConceptualEntityImpl im
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
+			case TerminologiesPackage.CONCEPTUAL_RELATIONSHIP___ROOT_REIFIED_RELATIONSHIPS:
+				return rootReifiedRelationships();
 			case TerminologiesPackage.CONCEPTUAL_RELATIONSHIP___RELATION_DOMAIN:
 				return relationDomain();
 			case TerminologiesPackage.CONCEPTUAL_RELATIONSHIP___RELATION_RANGE:

@@ -18,6 +18,7 @@
  */
 package gov.nasa.jpl.imce.oml.model.terminologies;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,4 +36,17 @@ package gov.nasa.jpl.imce.oml.model.terminologies;
  * @generated
  */
 public interface ConceptualRelationship extends ConceptualEntity, EntityRelationship {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The OML ReifiedRelationship(s) that are the root entities of
+	 * the OML ConceptualRelationship.
+	 * <!-- end-model-doc -->
+	 * @model unique="false"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
+	 * @generated
+	 */
+	EList<ReifiedRelationship> rootReifiedRelationships();
+
 } // ConceptualRelationship

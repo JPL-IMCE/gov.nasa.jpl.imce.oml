@@ -137,7 +137,7 @@ AtomicEntity returns Entity:
 	
 EntityRelationship returns EntityRelationship:
 	ReifiedRelationship |
-	SpecializedReifiedRelationship |
+	PartialReifiedRelationship |
 	UnreifiedRelationship;
 	
 Datatype returns Datatype:
@@ -187,7 +187,8 @@ EntityStructuredDataPropertyRestrictionAxiom returns EntityStructuredDataPropert
 	
 SpecializationAxiom returns SpecializationAxiom:
 	ConceptSpecializationAxiom | 
-	AspectSpecializationAxiom; 
+	AspectSpecializationAxiom | 
+	ReifiedRelationshipSpecializationAxiom; 
 	
 TerminologyBundleStatement returns TerminologyBundleStatement:
 	RootConceptTaxonomyAxiom;
@@ -244,9 +245,9 @@ ForwardProperty returns ForwardProperty:
 InverseProperty returns InverseProperty:
 	name=ID;
 	
-SpecializedReifiedRelationship returns SpecializedReifiedRelationship:
+PartialReifiedRelationship returns PartialReifiedRelationship:
 	( annotations+=AnnotationPropertyValue )*
-	'reifiedRelationship' name=ID 'extends' general=[ConceptualRelationship|Reference] '{'
+	'reifiedRelationship' name=ID '{'
 	'source' '=' source=[Entity|Reference]
 	'target' '=' target=[Entity|Reference]
 	'}';
@@ -374,6 +375,10 @@ AspectSpecializationAxiom returns AspectSpecializationAxiom:
 ConceptSpecializationAxiom returns ConceptSpecializationAxiom:
 	( annotations+=AnnotationPropertyValue )*
 	subConcept=[Concept|Reference] 'extendsConcept' superConcept=[Concept|Reference];
+
+ReifiedRelationshipSpecializationAxiom returns ReifiedRelationshipSpecializationAxiom:
+	( annotations+=AnnotationPropertyValue )*
+	subRelationship=[ConceptualRelationship|Reference] 'extendsRelationship' superRelationship=[ConceptualRelationship|Reference];
 
 // 2 Sub*PropertyOfAxioms
 

@@ -2554,13 +2554,22 @@ public interface TerminologiesPackage extends EPackage {
 	int CONCEPTUAL_RELATIONSHIP___RELATION_RANGE = CONCEPTUAL_ENTITY_OPERATION_COUNT + 3;
 
 	/**
+	 * The operation id for the '<em>Root Reified Relationships</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCEPTUAL_RELATIONSHIP___ROOT_REIFIED_RELATIONSHIPS = CONCEPTUAL_ENTITY_OPERATION_COUNT + 4;
+
+	/**
 	 * The number of operations of the '<em>Conceptual Relationship</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT = CONCEPTUAL_ENTITY_OPERATION_COUNT + 4;
+	int CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT = CONCEPTUAL_ENTITY_OPERATION_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipImpl <em>Reified Relationship</em>}' class.
@@ -2816,23 +2825,32 @@ public interface TerminologiesPackage extends EPackage {
 	int REIFIED_RELATIONSHIP___ALL_NESTED_ELEMENTS = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>Root Reified Relationships</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP___ROOT_REIFIED_RELATIONSHIPS = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 1;
+
+	/**
 	 * The number of operations of the '<em>Reified Relationship</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REIFIED_RELATIONSHIP_OPERATION_COUNT = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 1;
+	int REIFIED_RELATIONSHIP_OPERATION_COUNT = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 2;
 
 	/**
-	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.SpecializedReifiedRelationshipImpl <em>Specialized Reified Relationship</em>}' class.
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.PartialReifiedRelationshipImpl <em>Partial Reified Relationship</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.SpecializedReifiedRelationshipImpl
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getSpecializedReifiedRelationship()
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.PartialReifiedRelationshipImpl
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getPartialReifiedRelationship()
 	 * @generated
 	 */
-	int SPECIALIZED_REIFIED_RELATIONSHIP = 20;
+	int PARTIAL_REIFIED_RELATIONSHIP = 20;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -2841,7 +2859,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SPECIALIZED_REIFIED_RELATIONSHIP__UUID = CONCEPTUAL_RELATIONSHIP__UUID;
+	int PARTIAL_REIFIED_RELATIONSHIP__UUID = CONCEPTUAL_RELATIONSHIP__UUID;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -2850,7 +2868,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SPECIALIZED_REIFIED_RELATIONSHIP__ANNOTATIONS = CONCEPTUAL_RELATIONSHIP__ANNOTATIONS;
+	int PARTIAL_REIFIED_RELATIONSHIP__ANNOTATIONS = CONCEPTUAL_RELATIONSHIP__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
@@ -2859,7 +2877,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SPECIALIZED_REIFIED_RELATIONSHIP__TBOX = CONCEPTUAL_RELATIONSHIP__TBOX;
+	int PARTIAL_REIFIED_RELATIONSHIP__TBOX = CONCEPTUAL_RELATIONSHIP__TBOX;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2868,7 +2886,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SPECIALIZED_REIFIED_RELATIONSHIP__NAME = CONCEPTUAL_RELATIONSHIP__NAME;
+	int PARTIAL_REIFIED_RELATIONSHIP__NAME = CONCEPTUAL_RELATIONSHIP__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Source</b></em>' reference.
@@ -2877,7 +2895,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SPECIALIZED_REIFIED_RELATIONSHIP__SOURCE = CONCEPTUAL_RELATIONSHIP__SOURCE;
+	int PARTIAL_REIFIED_RELATIONSHIP__SOURCE = CONCEPTUAL_RELATIONSHIP__SOURCE;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -2886,25 +2904,16 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SPECIALIZED_REIFIED_RELATIONSHIP__TARGET = CONCEPTUAL_RELATIONSHIP__TARGET;
+	int PARTIAL_REIFIED_RELATIONSHIP__TARGET = CONCEPTUAL_RELATIONSHIP__TARGET;
 
 	/**
-	 * The feature id for the '<em><b>General</b></em>' reference.
+	 * The number of structural features of the '<em>Partial Reified Relationship</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SPECIALIZED_REIFIED_RELATIONSHIP__GENERAL = CONCEPTUAL_RELATIONSHIP_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Specialized Reified Relationship</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SPECIALIZED_REIFIED_RELATIONSHIP_FEATURE_COUNT = CONCEPTUAL_RELATIONSHIP_FEATURE_COUNT + 1;
+	int PARTIAL_REIFIED_RELATIONSHIP_FEATURE_COUNT = CONCEPTUAL_RELATIONSHIP_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Module Context</em>' operation.
@@ -2913,7 +2922,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SPECIALIZED_REIFIED_RELATIONSHIP___MODULE_CONTEXT = CONCEPTUAL_RELATIONSHIP___MODULE_CONTEXT;
+	int PARTIAL_REIFIED_RELATIONSHIP___MODULE_CONTEXT = CONCEPTUAL_RELATIONSHIP___MODULE_CONTEXT;
 
 	/**
 	 * The operation id for the '<em>Iri</em>' operation.
@@ -2922,7 +2931,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SPECIALIZED_REIFIED_RELATIONSHIP___IRI = CONCEPTUAL_RELATIONSHIP___IRI;
+	int PARTIAL_REIFIED_RELATIONSHIP___IRI = CONCEPTUAL_RELATIONSHIP___IRI;
 
 	/**
 	 * The operation id for the '<em>Abbrev IRI</em>' operation.
@@ -2931,7 +2940,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SPECIALIZED_REIFIED_RELATIONSHIP___ABBREV_IRI = CONCEPTUAL_RELATIONSHIP___ABBREV_IRI;
+	int PARTIAL_REIFIED_RELATIONSHIP___ABBREV_IRI = CONCEPTUAL_RELATIONSHIP___ABBREV_IRI;
 
 	/**
 	 * The operation id for the '<em>Name</em>' operation.
@@ -2940,7 +2949,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SPECIALIZED_REIFIED_RELATIONSHIP___NAME = CONCEPTUAL_RELATIONSHIP___NAME;
+	int PARTIAL_REIFIED_RELATIONSHIP___NAME = CONCEPTUAL_RELATIONSHIP___NAME;
 
 	/**
 	 * The operation id for the '<em>Uuid</em>' operation.
@@ -2949,7 +2958,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SPECIALIZED_REIFIED_RELATIONSHIP___UUID = CONCEPTUAL_RELATIONSHIP___UUID;
+	int PARTIAL_REIFIED_RELATIONSHIP___UUID = CONCEPTUAL_RELATIONSHIP___UUID;
 
 	/**
 	 * The operation id for the '<em>Term</em>' operation.
@@ -2958,7 +2967,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SPECIALIZED_REIFIED_RELATIONSHIP___TERM = CONCEPTUAL_RELATIONSHIP___TERM;
+	int PARTIAL_REIFIED_RELATIONSHIP___TERM = CONCEPTUAL_RELATIONSHIP___TERM;
 
 	/**
 	 * The operation id for the '<em>Relation Domain</em>' operation.
@@ -2967,7 +2976,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SPECIALIZED_REIFIED_RELATIONSHIP___RELATION_DOMAIN = CONCEPTUAL_RELATIONSHIP___RELATION_DOMAIN;
+	int PARTIAL_REIFIED_RELATIONSHIP___RELATION_DOMAIN = CONCEPTUAL_RELATIONSHIP___RELATION_DOMAIN;
 
 	/**
 	 * The operation id for the '<em>Relation Range</em>' operation.
@@ -2976,25 +2985,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SPECIALIZED_REIFIED_RELATIONSHIP___RELATION_RANGE = CONCEPTUAL_RELATIONSHIP___RELATION_RANGE;
-
-	/**
-	 * The operation id for the '<em>Child</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SPECIALIZED_REIFIED_RELATIONSHIP___CHILD = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 3;
-
-	/**
-	 * The operation id for the '<em>Parent</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SPECIALIZED_REIFIED_RELATIONSHIP___PARENT = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 4;
+	int PARTIAL_REIFIED_RELATIONSHIP___RELATION_RANGE = CONCEPTUAL_RELATIONSHIP___RELATION_RANGE;
 
 	/**
 	 * The operation id for the '<em>All Nested Elements</em>' operation.
@@ -3003,16 +2994,25 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SPECIALIZED_REIFIED_RELATIONSHIP___ALL_NESTED_ELEMENTS = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 5;
+	int PARTIAL_REIFIED_RELATIONSHIP___ALL_NESTED_ELEMENTS = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 0;
 
 	/**
-	 * The number of operations of the '<em>Specialized Reified Relationship</em>' class.
+	 * The operation id for the '<em>Root Reified Relationships</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SPECIALIZED_REIFIED_RELATIONSHIP_OPERATION_COUNT = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 6;
+	int PARTIAL_REIFIED_RELATIONSHIP___ROOT_REIFIED_RELATIONSHIPS = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Partial Reified Relationship</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARTIAL_REIFIED_RELATIONSHIP_OPERATION_COUNT = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.UnreifiedRelationshipImpl <em>Unreified Relationship</em>}' class.
@@ -6849,6 +6849,124 @@ public interface TerminologiesPackage extends EPackage {
 	int CONCEPT_SPECIALIZATION_AXIOM_OPERATION_COUNT = SPECIALIZATION_AXIOM_OPERATION_COUNT + 3;
 
 	/**
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipSpecializationAxiomImpl <em>Reified Relationship Specialization Axiom</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipSpecializationAxiomImpl
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getReifiedRelationshipSpecializationAxiom()
+	 * @generated
+	 */
+	int REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM = 48;
+
+	/**
+	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM__UUID = SPECIALIZATION_AXIOM__UUID;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM__ANNOTATIONS = SPECIALIZATION_AXIOM__ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM__TBOX = SPECIALIZATION_AXIOM__TBOX;
+
+	/**
+	 * The feature id for the '<em><b>Sub Relationship</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM__SUB_RELATIONSHIP = SPECIALIZATION_AXIOM_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Super Relationship</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM__SUPER_RELATIONSHIP = SPECIALIZATION_AXIOM_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Reified Relationship Specialization Axiom</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM_FEATURE_COUNT = SPECIALIZATION_AXIOM_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Module Context</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM___MODULE_CONTEXT = SPECIALIZATION_AXIOM___MODULE_CONTEXT;
+
+	/**
+	 * The operation id for the '<em>All Nested Elements</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM___ALL_NESTED_ELEMENTS = SPECIALIZATION_AXIOM___ALL_NESTED_ELEMENTS;
+
+	/**
+	 * The operation id for the '<em>Child</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM___CHILD = SPECIALIZATION_AXIOM_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Parent</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM___PARENT = SPECIALIZATION_AXIOM_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Uuid</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM___UUID = SPECIALIZATION_AXIOM_OPERATION_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Reified Relationship Specialization Axiom</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM_OPERATION_COUNT = SPECIALIZATION_AXIOM_OPERATION_COUNT + 3;
+
+	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.SubObjectPropertyOfAxiomImpl <em>Sub Object Property Of Axiom</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6856,7 +6974,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getSubObjectPropertyOfAxiom()
 	 * @generated
 	 */
-	int SUB_OBJECT_PROPERTY_OF_AXIOM = 48;
+	int SUB_OBJECT_PROPERTY_OF_AXIOM = 49;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -6956,7 +7074,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getSubDataPropertyOfAxiom()
 	 * @generated
 	 */
-	int SUB_DATA_PROPERTY_OF_AXIOM = 49;
+	int SUB_DATA_PROPERTY_OF_AXIOM = 50;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -7056,7 +7174,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityScalarDataPropertyRestrictionAxiom()
 	 * @generated
 	 */
-	int ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM = 50;
+	int ENTITY_SCALAR_DATA_PROPERTY_RESTRICTION_AXIOM = 51;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -7156,7 +7274,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityScalarDataPropertyExistentialRestrictionAxiom()
 	 * @generated
 	 */
-	int ENTITY_SCALAR_DATA_PROPERTY_EXISTENTIAL_RESTRICTION_AXIOM = 51;
+	int ENTITY_SCALAR_DATA_PROPERTY_EXISTENTIAL_RESTRICTION_AXIOM = 52;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -7265,7 +7383,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityScalarDataPropertyUniversalRestrictionAxiom()
 	 * @generated
 	 */
-	int ENTITY_SCALAR_DATA_PROPERTY_UNIVERSAL_RESTRICTION_AXIOM = 52;
+	int ENTITY_SCALAR_DATA_PROPERTY_UNIVERSAL_RESTRICTION_AXIOM = 53;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -7374,7 +7492,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityScalarDataPropertyParticularRestrictionAxiom()
 	 * @generated
 	 */
-	int ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM = 53;
+	int ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM = 54;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -7492,7 +7610,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityStructuredDataPropertyRestrictionAxiom()
 	 * @generated
 	 */
-	int ENTITY_STRUCTURED_DATA_PROPERTY_RESTRICTION_AXIOM = 54;
+	int ENTITY_STRUCTURED_DATA_PROPERTY_RESTRICTION_AXIOM = 55;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -7583,7 +7701,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getEntityStructuredDataPropertyParticularRestrictionAxiom()
 	 * @generated
 	 */
-	int ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM = 55;
+	int ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM = 56;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -7719,7 +7837,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getRestrictionStructuredDataPropertyContext()
 	 * @generated
 	 */
-	int RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT = 56;
+	int RESTRICTION_STRUCTURED_DATA_PROPERTY_CONTEXT = 57;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -7837,7 +7955,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getRestrictionStructuredDataPropertyTuple()
 	 * @generated
 	 */
-	int RESTRICTION_STRUCTURED_DATA_PROPERTY_TUPLE = 57;
+	int RESTRICTION_STRUCTURED_DATA_PROPERTY_TUPLE = 58;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -7964,7 +8082,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getRestrictionScalarDataPropertyValue()
 	 * @generated
 	 */
-	int RESTRICTION_SCALAR_DATA_PROPERTY_VALUE = 58;
+	int RESTRICTION_SCALAR_DATA_PROPERTY_VALUE = 59;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -8073,7 +8191,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getRestrictedDataRange()
 	 * @generated
 	 */
-	int RESTRICTED_DATA_RANGE = 59;
+	int RESTRICTED_DATA_RANGE = 60;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -8200,7 +8318,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getBinaryScalarRestriction()
 	 * @generated
 	 */
-	int BINARY_SCALAR_RESTRICTION = 60;
+	int BINARY_SCALAR_RESTRICTION = 61;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -8354,7 +8472,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getIRIScalarRestriction()
 	 * @generated
 	 */
-	int IRI_SCALAR_RESTRICTION = 61;
+	int IRI_SCALAR_RESTRICTION = 62;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -8517,7 +8635,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getNumericScalarRestriction()
 	 * @generated
 	 */
-	int NUMERIC_SCALAR_RESTRICTION = 62;
+	int NUMERIC_SCALAR_RESTRICTION = 63;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -8680,7 +8798,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getPlainLiteralScalarRestriction()
 	 * @generated
 	 */
-	int PLAIN_LITERAL_SCALAR_RESTRICTION = 63;
+	int PLAIN_LITERAL_SCALAR_RESTRICTION = 64;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -8852,7 +8970,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getStringScalarRestriction()
 	 * @generated
 	 */
-	int STRING_SCALAR_RESTRICTION = 64;
+	int STRING_SCALAR_RESTRICTION = 65;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -9015,7 +9133,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getTimeScalarRestriction()
 	 * @generated
 	 */
-	int TIME_SCALAR_RESTRICTION = 65;
+	int TIME_SCALAR_RESTRICTION = 66;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -9178,7 +9296,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getSynonymScalarRestriction()
 	 * @generated
 	 */
-	int SYNONYM_SCALAR_RESTRICTION = 66;
+	int SYNONYM_SCALAR_RESTRICTION = 67;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -9305,7 +9423,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getScalarOneOfRestriction()
 	 * @generated
 	 */
-	int SCALAR_ONE_OF_RESTRICTION = 67;
+	int SCALAR_ONE_OF_RESTRICTION = 68;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -9432,7 +9550,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getScalarOneOfLiteralAxiom()
 	 * @generated
 	 */
-	int SCALAR_ONE_OF_LITERAL_AXIOM = 68;
+	int SCALAR_ONE_OF_LITERAL_AXIOM = 69;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -9541,7 +9659,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getTerminologyKind()
 	 * @generated
 	 */
-	int TERMINOLOGY_KIND = 69;
+	int TERMINOLOGY_KIND = 70;
 
 
 	/**
@@ -10317,6 +10435,16 @@ public interface TerminologiesPackage extends EPackage {
 	EClass getConceptualRelationship();
 
 	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ConceptualRelationship#rootReifiedRelationships() <em>Root Reified Relationships</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Root Reified Relationships</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ConceptualRelationship#rootReifiedRelationships()
+	 * @generated
+	 */
+	EOperation getConceptualRelationship__RootReifiedRelationships();
+
+	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship <em>Reified Relationship</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10359,55 +10487,44 @@ public interface TerminologiesPackage extends EPackage {
 	EOperation getReifiedRelationship__AllNestedElements();
 
 	/**
-	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.SpecializedReifiedRelationship <em>Specialized Reified Relationship</em>}'.
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship#rootReifiedRelationships() <em>Root Reified Relationships</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Specialized Reified Relationship</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.SpecializedReifiedRelationship
+	 * @return the meta object for the '<em>Root Reified Relationships</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship#rootReifiedRelationships()
 	 * @generated
 	 */
-	EClass getSpecializedReifiedRelationship();
+	EOperation getReifiedRelationship__RootReifiedRelationships();
 
 	/**
-	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.SpecializedReifiedRelationship#getGeneral <em>General</em>}'.
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.PartialReifiedRelationship <em>Partial Reified Relationship</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>General</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.SpecializedReifiedRelationship#getGeneral()
-	 * @see #getSpecializedReifiedRelationship()
+	 * @return the meta object for class '<em>Partial Reified Relationship</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.PartialReifiedRelationship
 	 * @generated
 	 */
-	EReference getSpecializedReifiedRelationship_General();
+	EClass getPartialReifiedRelationship();
 
 	/**
-	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.SpecializedReifiedRelationship#child() <em>Child</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Child</em>' operation.
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.SpecializedReifiedRelationship#child()
-	 * @generated
-	 */
-	EOperation getSpecializedReifiedRelationship__Child();
-
-	/**
-	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.SpecializedReifiedRelationship#parent() <em>Parent</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Parent</em>' operation.
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.SpecializedReifiedRelationship#parent()
-	 * @generated
-	 */
-	EOperation getSpecializedReifiedRelationship__Parent();
-
-	/**
-	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.SpecializedReifiedRelationship#allNestedElements() <em>All Nested Elements</em>}' operation.
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.PartialReifiedRelationship#allNestedElements() <em>All Nested Elements</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>All Nested Elements</em>' operation.
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.SpecializedReifiedRelationship#allNestedElements()
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.PartialReifiedRelationship#allNestedElements()
 	 * @generated
 	 */
-	EOperation getSpecializedReifiedRelationship__AllNestedElements();
+	EOperation getPartialReifiedRelationship__AllNestedElements();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.PartialReifiedRelationship#rootReifiedRelationships() <em>Root Reified Relationships</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Root Reified Relationships</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.PartialReifiedRelationship#rootReifiedRelationships()
+	 * @generated
+	 */
+	EOperation getPartialReifiedRelationship__RootReifiedRelationships();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship <em>Unreified Relationship</em>}'.
@@ -11323,6 +11440,68 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getConceptSpecializationAxiom__Uuid();
+
+	/**
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom <em>Reified Relationship Specialization Axiom</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Reified Relationship Specialization Axiom</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom
+	 * @generated
+	 */
+	EClass getReifiedRelationshipSpecializationAxiom();
+
+	/**
+	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom#getSubRelationship <em>Sub Relationship</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Sub Relationship</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom#getSubRelationship()
+	 * @see #getReifiedRelationshipSpecializationAxiom()
+	 * @generated
+	 */
+	EReference getReifiedRelationshipSpecializationAxiom_SubRelationship();
+
+	/**
+	 * Returns the meta object for the reference '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom#getSuperRelationship <em>Super Relationship</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Super Relationship</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom#getSuperRelationship()
+	 * @see #getReifiedRelationshipSpecializationAxiom()
+	 * @generated
+	 */
+	EReference getReifiedRelationshipSpecializationAxiom_SuperRelationship();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom#child() <em>Child</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Child</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom#child()
+	 * @generated
+	 */
+	EOperation getReifiedRelationshipSpecializationAxiom__Child();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom#parent() <em>Parent</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Parent</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom#parent()
+	 * @generated
+	 */
+	EOperation getReifiedRelationshipSpecializationAxiom__Parent();
+
+	/**
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom#uuid() <em>Uuid</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Uuid</em>' operation.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom#uuid()
+	 * @generated
+	 */
+	EOperation getReifiedRelationshipSpecializationAxiom__Uuid();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.SubObjectPropertyOfAxiom <em>Sub Object Property Of Axiom</em>}'.
@@ -12943,6 +13122,14 @@ public interface TerminologiesPackage extends EPackage {
 		EClass CONCEPTUAL_RELATIONSHIP = eINSTANCE.getConceptualRelationship();
 
 		/**
+		 * The meta object literal for the '<em><b>Root Reified Relationships</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation CONCEPTUAL_RELATIONSHIP___ROOT_REIFIED_RELATIONSHIPS = eINSTANCE.getConceptualRelationship__RootReifiedRelationships();
+
+		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipImpl <em>Reified Relationship</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -12977,38 +13164,22 @@ public interface TerminologiesPackage extends EPackage {
 		EOperation REIFIED_RELATIONSHIP___ALL_NESTED_ELEMENTS = eINSTANCE.getReifiedRelationship__AllNestedElements();
 
 		/**
-		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.SpecializedReifiedRelationshipImpl <em>Specialized Reified Relationship</em>}' class.
+		 * The meta object literal for the '<em><b>Root Reified Relationships</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.SpecializedReifiedRelationshipImpl
-		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getSpecializedReifiedRelationship()
 		 * @generated
 		 */
-		EClass SPECIALIZED_REIFIED_RELATIONSHIP = eINSTANCE.getSpecializedReifiedRelationship();
+		EOperation REIFIED_RELATIONSHIP___ROOT_REIFIED_RELATIONSHIPS = eINSTANCE.getReifiedRelationship__RootReifiedRelationships();
 
 		/**
-		 * The meta object literal for the '<em><b>General</b></em>' reference feature.
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.PartialReifiedRelationshipImpl <em>Partial Reified Relationship</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.PartialReifiedRelationshipImpl
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getPartialReifiedRelationship()
 		 * @generated
 		 */
-		EReference SPECIALIZED_REIFIED_RELATIONSHIP__GENERAL = eINSTANCE.getSpecializedReifiedRelationship_General();
-
-		/**
-		 * The meta object literal for the '<em><b>Child</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation SPECIALIZED_REIFIED_RELATIONSHIP___CHILD = eINSTANCE.getSpecializedReifiedRelationship__Child();
-
-		/**
-		 * The meta object literal for the '<em><b>Parent</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation SPECIALIZED_REIFIED_RELATIONSHIP___PARENT = eINSTANCE.getSpecializedReifiedRelationship__Parent();
+		EClass PARTIAL_REIFIED_RELATIONSHIP = eINSTANCE.getPartialReifiedRelationship();
 
 		/**
 		 * The meta object literal for the '<em><b>All Nested Elements</b></em>' operation.
@@ -13016,7 +13187,15 @@ public interface TerminologiesPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation SPECIALIZED_REIFIED_RELATIONSHIP___ALL_NESTED_ELEMENTS = eINSTANCE.getSpecializedReifiedRelationship__AllNestedElements();
+		EOperation PARTIAL_REIFIED_RELATIONSHIP___ALL_NESTED_ELEMENTS = eINSTANCE.getPartialReifiedRelationship__AllNestedElements();
+
+		/**
+		 * The meta object literal for the '<em><b>Root Reified Relationships</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation PARTIAL_REIFIED_RELATIONSHIP___ROOT_REIFIED_RELATIONSHIPS = eINSTANCE.getPartialReifiedRelationship__RootReifiedRelationships();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.UnreifiedRelationshipImpl <em>Unreified Relationship</em>}' class.
@@ -13783,6 +13962,56 @@ public interface TerminologiesPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation CONCEPT_SPECIALIZATION_AXIOM___UUID = eINSTANCE.getConceptSpecializationAxiom__Uuid();
+
+		/**
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipSpecializationAxiomImpl <em>Reified Relationship Specialization Axiom</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipSpecializationAxiomImpl
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getReifiedRelationshipSpecializationAxiom()
+		 * @generated
+		 */
+		EClass REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM = eINSTANCE.getReifiedRelationshipSpecializationAxiom();
+
+		/**
+		 * The meta object literal for the '<em><b>Sub Relationship</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM__SUB_RELATIONSHIP = eINSTANCE.getReifiedRelationshipSpecializationAxiom_SubRelationship();
+
+		/**
+		 * The meta object literal for the '<em><b>Super Relationship</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM__SUPER_RELATIONSHIP = eINSTANCE.getReifiedRelationshipSpecializationAxiom_SuperRelationship();
+
+		/**
+		 * The meta object literal for the '<em><b>Child</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM___CHILD = eINSTANCE.getReifiedRelationshipSpecializationAxiom__Child();
+
+		/**
+		 * The meta object literal for the '<em><b>Parent</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM___PARENT = eINSTANCE.getReifiedRelationshipSpecializationAxiom__Parent();
+
+		/**
+		 * The meta object literal for the '<em><b>Uuid</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM___UUID = eINSTANCE.getReifiedRelationshipSpecializationAxiom__Uuid();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.SubObjectPropertyOfAxiomImpl <em>Sub Object Property Of Axiom</em>}' class.

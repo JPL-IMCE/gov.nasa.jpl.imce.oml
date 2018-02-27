@@ -19,7 +19,7 @@
 package gov.nasa.jpl.imce.oml.model.terminologies.provider;
 
 
-import gov.nasa.jpl.imce.oml.model.terminologies.SpecializedReifiedRelationship;
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage;
 
 import java.util.Collection;
@@ -32,19 +32,19 @@ import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
 /**
- * This is the item provider adapter for a {@link gov.nasa.jpl.imce.oml.model.terminologies.SpecializedReifiedRelationship} object.
+ * This is the item provider adapter for a {@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class SpecializedReifiedRelationshipItemProvider extends ConceptualRelationshipItemProvider {
+public class ReifiedRelationshipSpecializationAxiomItemProvider extends SpecializationAxiomItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SpecializedReifiedRelationshipItemProvider(AdapterFactory adapterFactory) {
+	public ReifiedRelationshipSpecializationAxiomItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -59,25 +59,26 @@ public class SpecializedReifiedRelationshipItemProvider extends ConceptualRelati
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addGeneralPropertyDescriptor(object);
+			addSubRelationshipPropertyDescriptor(object);
+			addSuperRelationshipPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the General feature.
+	 * This adds a property descriptor for the Sub Relationship feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addGeneralPropertyDescriptor(Object object) {
+	protected void addSubRelationshipPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_SpecializedReifiedRelationship_general_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SpecializedReifiedRelationship_general_feature", "_UI_SpecializedReifiedRelationship_type"),
-				 TerminologiesPackage.Literals.SPECIALIZED_REIFIED_RELATIONSHIP__GENERAL,
+				 getString("_UI_ReifiedRelationshipSpecializationAxiom_subRelationship_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ReifiedRelationshipSpecializationAxiom_subRelationship_feature", "_UI_ReifiedRelationshipSpecializationAxiom_type"),
+				 TerminologiesPackage.Literals.REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM__SUB_RELATIONSHIP,
 				 true,
 				 false,
 				 true,
@@ -87,14 +88,36 @@ public class SpecializedReifiedRelationshipItemProvider extends ConceptualRelati
 	}
 
 	/**
-	 * This returns SpecializedReifiedRelationship.gif.
+	 * This adds a property descriptor for the Super Relationship feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSuperRelationshipPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ReifiedRelationshipSpecializationAxiom_superRelationship_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ReifiedRelationshipSpecializationAxiom_superRelationship_feature", "_UI_ReifiedRelationshipSpecializationAxiom_type"),
+				 TerminologiesPackage.Literals.REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM__SUPER_RELATIONSHIP,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This returns ReifiedRelationshipSpecializationAxiom.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/SpecializedReifiedRelationship"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ReifiedRelationshipSpecializationAxiom"));
 	}
 
 	/**
@@ -105,10 +128,10 @@ public class SpecializedReifiedRelationshipItemProvider extends ConceptualRelati
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((SpecializedReifiedRelationship)object).getName();
+		String label = ((ReifiedRelationshipSpecializationAxiom)object).getUuid();
 		return label == null || label.length() == 0 ?
-			getString("_UI_SpecializedReifiedRelationship_type") :
-			getString("_UI_SpecializedReifiedRelationship_type") + " " + label;
+			getString("_UI_ReifiedRelationshipSpecializationAxiom_type") :
+			getString("_UI_ReifiedRelationshipSpecializationAxiom_type") + " " + label;
 	}
 	
 

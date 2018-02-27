@@ -56,9 +56,11 @@ import gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction;
+import gov.nasa.jpl.imce.oml.model.terminologies.PartialReifiedRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.Predicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship;
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictableRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictedDataRange;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue;
@@ -72,7 +74,6 @@ import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.SegmentPredicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.SpecializationAxiom;
-import gov.nasa.jpl.imce.oml.model.terminologies.SpecializedReifiedRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.StringScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.Structure;
 import gov.nasa.jpl.imce.oml.model.terminologies.StructuredDataProperty;
@@ -255,7 +256,7 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass specializedReifiedRelationshipEClass = null;
+	private EClass partialReifiedRelationshipEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -445,6 +446,13 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * @generated
 	 */
 	private EClass conceptSpecializationAxiomEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass reifiedRelationshipSpecializationAxiomEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1345,6 +1353,15 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getConceptualRelationship__RootReifiedRelationships() {
+		return conceptualRelationshipEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getReifiedRelationship() {
 		return reifiedRelationshipEClass;
 	}
@@ -1381,8 +1398,8 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getSpecializedReifiedRelationship() {
-		return specializedReifiedRelationshipEClass;
+	public EOperation getReifiedRelationship__RootReifiedRelationships() {
+		return reifiedRelationshipEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -1390,8 +1407,8 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSpecializedReifiedRelationship_General() {
-		return (EReference)specializedReifiedRelationshipEClass.getEStructuralFeatures().get(0);
+	public EClass getPartialReifiedRelationship() {
+		return partialReifiedRelationshipEClass;
 	}
 
 	/**
@@ -1399,8 +1416,8 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getSpecializedReifiedRelationship__Child() {
-		return specializedReifiedRelationshipEClass.getEOperations().get(0);
+	public EOperation getPartialReifiedRelationship__AllNestedElements() {
+		return partialReifiedRelationshipEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -1408,17 +1425,8 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getSpecializedReifiedRelationship__Parent() {
-		return specializedReifiedRelationshipEClass.getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getSpecializedReifiedRelationship__AllNestedElements() {
-		return specializedReifiedRelationshipEClass.getEOperations().get(2);
+	public EOperation getPartialReifiedRelationship__RootReifiedRelationships() {
+		return partialReifiedRelationshipEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -2220,6 +2228,60 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 */
 	public EOperation getConceptSpecializationAxiom__Uuid() {
 		return conceptSpecializationAxiomEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getReifiedRelationshipSpecializationAxiom() {
+		return reifiedRelationshipSpecializationAxiomEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getReifiedRelationshipSpecializationAxiom_SubRelationship() {
+		return (EReference)reifiedRelationshipSpecializationAxiomEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getReifiedRelationshipSpecializationAxiom_SuperRelationship() {
+		return (EReference)reifiedRelationshipSpecializationAxiomEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getReifiedRelationshipSpecializationAxiom__Child() {
+		return reifiedRelationshipSpecializationAxiomEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getReifiedRelationshipSpecializationAxiom__Parent() {
+		return reifiedRelationshipSpecializationAxiomEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getReifiedRelationshipSpecializationAxiom__Uuid() {
+		return reifiedRelationshipSpecializationAxiomEClass.getEOperations().get(2);
 	}
 
 	/**
@@ -3162,17 +3224,17 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		createEOperation(inversePropertyEClass, INVERSE_PROPERTY___MODULE_CONTEXT);
 
 		conceptualRelationshipEClass = createEClass(CONCEPTUAL_RELATIONSHIP);
+		createEOperation(conceptualRelationshipEClass, CONCEPTUAL_RELATIONSHIP___ROOT_REIFIED_RELATIONSHIPS);
 
 		reifiedRelationshipEClass = createEClass(REIFIED_RELATIONSHIP);
 		createEReference(reifiedRelationshipEClass, REIFIED_RELATIONSHIP__FORWARD_PROPERTY);
 		createEReference(reifiedRelationshipEClass, REIFIED_RELATIONSHIP__INVERSE_PROPERTY);
 		createEOperation(reifiedRelationshipEClass, REIFIED_RELATIONSHIP___ALL_NESTED_ELEMENTS);
+		createEOperation(reifiedRelationshipEClass, REIFIED_RELATIONSHIP___ROOT_REIFIED_RELATIONSHIPS);
 
-		specializedReifiedRelationshipEClass = createEClass(SPECIALIZED_REIFIED_RELATIONSHIP);
-		createEReference(specializedReifiedRelationshipEClass, SPECIALIZED_REIFIED_RELATIONSHIP__GENERAL);
-		createEOperation(specializedReifiedRelationshipEClass, SPECIALIZED_REIFIED_RELATIONSHIP___CHILD);
-		createEOperation(specializedReifiedRelationshipEClass, SPECIALIZED_REIFIED_RELATIONSHIP___PARENT);
-		createEOperation(specializedReifiedRelationshipEClass, SPECIALIZED_REIFIED_RELATIONSHIP___ALL_NESTED_ELEMENTS);
+		partialReifiedRelationshipEClass = createEClass(PARTIAL_REIFIED_RELATIONSHIP);
+		createEOperation(partialReifiedRelationshipEClass, PARTIAL_REIFIED_RELATIONSHIP___ALL_NESTED_ELEMENTS);
+		createEOperation(partialReifiedRelationshipEClass, PARTIAL_REIFIED_RELATIONSHIP___ROOT_REIFIED_RELATIONSHIPS);
 
 		unreifiedRelationshipEClass = createEClass(UNREIFIED_RELATIONSHIP);
 		createEOperation(unreifiedRelationshipEClass, UNREIFIED_RELATIONSHIP___RELATION);
@@ -3289,6 +3351,13 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		createEOperation(conceptSpecializationAxiomEClass, CONCEPT_SPECIALIZATION_AXIOM___CHILD);
 		createEOperation(conceptSpecializationAxiomEClass, CONCEPT_SPECIALIZATION_AXIOM___PARENT);
 		createEOperation(conceptSpecializationAxiomEClass, CONCEPT_SPECIALIZATION_AXIOM___UUID);
+
+		reifiedRelationshipSpecializationAxiomEClass = createEClass(REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM);
+		createEReference(reifiedRelationshipSpecializationAxiomEClass, REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM__SUB_RELATIONSHIP);
+		createEReference(reifiedRelationshipSpecializationAxiomEClass, REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM__SUPER_RELATIONSHIP);
+		createEOperation(reifiedRelationshipSpecializationAxiomEClass, REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM___CHILD);
+		createEOperation(reifiedRelationshipSpecializationAxiomEClass, REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM___PARENT);
+		createEOperation(reifiedRelationshipSpecializationAxiomEClass, REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM___UUID);
 
 		subObjectPropertyOfAxiomEClass = createEClass(SUB_OBJECT_PROPERTY_OF_AXIOM);
 		createEReference(subObjectPropertyOfAxiomEClass, SUB_OBJECT_PROPERTY_OF_AXIOM__SUB_PROPERTY);
@@ -3464,8 +3533,7 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		conceptualRelationshipEClass.getESuperTypes().add(this.getEntityRelationship());
 		reifiedRelationshipEClass.getESuperTypes().add(this.getConceptualRelationship());
 		reifiedRelationshipEClass.getESuperTypes().add(this.getCharacterizedEntityRelationship());
-		specializedReifiedRelationshipEClass.getESuperTypes().add(this.getConceptualRelationship());
-		specializedReifiedRelationshipEClass.getESuperTypes().add(this.getSpecializationAxiom());
+		partialReifiedRelationshipEClass.getESuperTypes().add(this.getConceptualRelationship());
 		unreifiedRelationshipEClass.getESuperTypes().add(this.getCharacterizedEntityRelationship());
 		unreifiedRelationshipEClass.getESuperTypes().add(this.getRestrictableRelationship());
 		datatypeEClass.getESuperTypes().add(this.getTerm());
@@ -3507,6 +3575,7 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		specializationAxiomEClass.getESuperTypes().add(theCommonPackage.getElementCrossReferenceTuple());
 		aspectSpecializationAxiomEClass.getESuperTypes().add(this.getSpecializationAxiom());
 		conceptSpecializationAxiomEClass.getESuperTypes().add(this.getSpecializationAxiom());
+		reifiedRelationshipSpecializationAxiomEClass.getESuperTypes().add(this.getSpecializationAxiom());
 		subObjectPropertyOfAxiomEClass.getESuperTypes().add(this.getTermAxiom());
 		subObjectPropertyOfAxiomEClass.getESuperTypes().add(theCommonPackage.getElementCrossReferenceTuple());
 		subDataPropertyOfAxiomEClass.getESuperTypes().add(this.getTermAxiom());
@@ -3669,20 +3738,21 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 
 		initEClass(conceptualRelationshipEClass, ConceptualRelationship.class, "ConceptualRelationship", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+		initEOperation(getConceptualRelationship__RootReifiedRelationships(), this.getReifiedRelationship(), "rootReifiedRelationships", 0, -1, !IS_UNIQUE, IS_ORDERED);
+
 		initEClass(reifiedRelationshipEClass, ReifiedRelationship.class, "ReifiedRelationship", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getReifiedRelationship_ForwardProperty(), this.getForwardProperty(), this.getForwardProperty_ReifiedRelationship(), "forwardProperty", null, 1, 1, ReifiedRelationship.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getReifiedRelationship_InverseProperty(), this.getInverseProperty(), this.getInverseProperty_ReifiedRelationship(), "inverseProperty", null, 0, 1, ReifiedRelationship.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getReifiedRelationship__AllNestedElements(), theCommonPackage.getLogicalElement(), "allNestedElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
 
-		initEClass(specializedReifiedRelationshipEClass, SpecializedReifiedRelationship.class, "SpecializedReifiedRelationship", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSpecializedReifiedRelationship_General(), this.getConceptualRelationship(), null, "general", null, 1, 1, SpecializedReifiedRelationship.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEOperation(getReifiedRelationship__RootReifiedRelationships(), this.getReifiedRelationship(), "rootReifiedRelationships", 0, -1, !IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getSpecializedReifiedRelationship__Child(), this.getEntity(), "child", 1, 1, !IS_UNIQUE, IS_ORDERED);
+		initEClass(partialReifiedRelationshipEClass, PartialReifiedRelationship.class, "PartialReifiedRelationship", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEOperation(getSpecializedReifiedRelationship__Parent(), this.getEntity(), "parent", 1, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getPartialReifiedRelationship__AllNestedElements(), theCommonPackage.getLogicalElement(), "allNestedElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getSpecializedReifiedRelationship__AllNestedElements(), theCommonPackage.getLogicalElement(), "allNestedElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getPartialReifiedRelationship__RootReifiedRelationships(), this.getReifiedRelationship(), "rootReifiedRelationships", 0, -1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(unreifiedRelationshipEClass, UnreifiedRelationship.class, "UnreifiedRelationship", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -3836,6 +3906,16 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		initEOperation(getConceptSpecializationAxiom__Parent(), this.getEntity(), "parent", 1, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEOperation(getConceptSpecializationAxiom__Uuid(), theCommonPackage.getUUID(), "uuid", 1, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEClass(reifiedRelationshipSpecializationAxiomEClass, ReifiedRelationshipSpecializationAxiom.class, "ReifiedRelationshipSpecializationAxiom", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getReifiedRelationshipSpecializationAxiom_SubRelationship(), this.getConceptualRelationship(), null, "subRelationship", null, 1, 1, ReifiedRelationshipSpecializationAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getReifiedRelationshipSpecializationAxiom_SuperRelationship(), this.getConceptualRelationship(), null, "superRelationship", null, 1, 1, ReifiedRelationshipSpecializationAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getReifiedRelationshipSpecializationAxiom__Child(), this.getEntity(), "child", 1, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getReifiedRelationshipSpecializationAxiom__Parent(), this.getEntity(), "parent", 1, 1, !IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getReifiedRelationshipSpecializationAxiom__Uuid(), theCommonPackage.getUUID(), "uuid", 1, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(subObjectPropertyOfAxiomEClass, SubObjectPropertyOfAxiom.class, "SubObjectPropertyOfAxiom", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSubObjectPropertyOfAxiom_SubProperty(), this.getUnreifiedRelationship(), null, "subProperty", null, 1, 1, SubObjectPropertyOfAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4263,6 +4343,11 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   new String[] {
 		   });	
 		addAnnotation
+		  (reifiedRelationshipSpecializationAxiomEClass, 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
 		  (subObjectPropertyOfAxiomEClass, 
 		   source, 
 		   new String[] {
@@ -4558,22 +4643,27 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   new String[] {
 		   });	
 		addAnnotation
+		  (getConceptualRelationship__RootReifiedRelationships(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
 		  (getReifiedRelationship__AllNestedElements(), 
 		   source, 
 		   new String[] {
 		   });	
 		addAnnotation
-		  (getSpecializedReifiedRelationship__Child(), 
+		  (getReifiedRelationship__RootReifiedRelationships(), 
 		   source, 
 		   new String[] {
 		   });	
 		addAnnotation
-		  (getSpecializedReifiedRelationship__Parent(), 
+		  (getPartialReifiedRelationship__AllNestedElements(), 
 		   source, 
 		   new String[] {
 		   });	
 		addAnnotation
-		  (getSpecializedReifiedRelationship__AllNestedElements(), 
+		  (getPartialReifiedRelationship__RootReifiedRelationships(), 
 		   source, 
 		   new String[] {
 		   });	
@@ -4733,6 +4823,21 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   new String[] {
 		   });	
 		addAnnotation
+		  (getReifiedRelationshipSpecializationAxiom__Child(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getReifiedRelationshipSpecializationAxiom__Parent(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getReifiedRelationshipSpecializationAxiom__Uuid(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
 		  (getSubObjectPropertyOfAxiom__Uuid(), 
 		   source, 
 		   new String[] {
@@ -4871,13 +4976,31 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 			 "kind", "Set"
 		   });	
 		addAnnotation
+		  (getConceptualRelationship__RootReifiedRelationships(), 
+		   source, 
+		   new String[] {
+			 "kind", "Set"
+		   });	
+		addAnnotation
 		  (getReifiedRelationship__AllNestedElements(), 
 		   source, 
 		   new String[] {
 			 "kind", "Set"
 		   });	
 		addAnnotation
-		  (getSpecializedReifiedRelationship__AllNestedElements(), 
+		  (getReifiedRelationship__RootReifiedRelationships(), 
+		   source, 
+		   new String[] {
+			 "kind", "Set"
+		   });	
+		addAnnotation
+		  (getPartialReifiedRelationship__AllNestedElements(), 
+		   source, 
+		   new String[] {
+			 "kind", "Set"
+		   });	
+		addAnnotation
+		  (getPartialReifiedRelationship__RootReifiedRelationships(), 
 		   source, 
 		   new String[] {
 			 "kind", "Set"
@@ -5019,10 +5142,22 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 			 "code", "\n\t\tscala.collection.immutable.Set[resolver.api.LogicalElement]() ++\n\t\textent.forwardProperty.get(this) ++\n\t\textent.inverseProperty.get(this)"
 		   });	
 		addAnnotation
-		  (getSpecializedReifiedRelationship__AllNestedElements(), 
+		  (getReifiedRelationship__RootReifiedRelationships(), 
+		   source, 
+		   new String[] {
+			 "code", "scala.collection.immutable.Set[resolver.api.ReifiedRelationship](this)"
+		   });	
+		addAnnotation
+		  (getPartialReifiedRelationship__AllNestedElements(), 
 		   source, 
 		   new String[] {
 			 "code", "scala.collection.immutable.Set.empty[resolver.api.LogicalElement]"
+		   });	
+		addAnnotation
+		  (getPartialReifiedRelationship__RootReifiedRelationships(), 
+		   source, 
+		   new String[] {
+			 "code", "scala.collection.immutable.Set.empty[resolver.api.ReifiedRelationship]"
 		   });	
 		addAnnotation
 		  (getRuleBodySegment__Position(), 
@@ -5228,12 +5363,27 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   new String[] {
 		   });	
 		addAnnotation
+		  (getConceptualRelationship__RootReifiedRelationships(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
 		  (getReifiedRelationship__AllNestedElements(), 
 		   source, 
 		   new String[] {
 		   });	
 		addAnnotation
-		  (getSpecializedReifiedRelationship__AllNestedElements(), 
+		  (getReifiedRelationship__RootReifiedRelationships(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getPartialReifiedRelationship__AllNestedElements(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getPartialReifiedRelationship__RootReifiedRelationships(), 
 		   source, 
 		   new String[] {
 		   });	
@@ -5428,6 +5578,11 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   new String[] {
 		   });	
 		addAnnotation
+		  (reifiedRelationshipSpecializationAxiomEClass, 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
 		  (entityScalarDataPropertyExistentialRestrictionAxiomEClass, 
 		   source, 
 		   new String[] {
@@ -5578,17 +5733,17 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   new String[] {
 		   });	
 		addAnnotation
-		  (getSpecializedReifiedRelationship__Child(), 
+		  (getReifiedRelationship__RootReifiedRelationships(), 
 		   source, 
 		   new String[] {
 		   });	
 		addAnnotation
-		  (getSpecializedReifiedRelationship__Parent(), 
+		  (getPartialReifiedRelationship__AllNestedElements(), 
 		   source, 
 		   new String[] {
 		   });	
 		addAnnotation
-		  (getSpecializedReifiedRelationship__AllNestedElements(), 
+		  (getPartialReifiedRelationship__RootReifiedRelationships(), 
 		   source, 
 		   new String[] {
 		   });	
@@ -5668,6 +5823,16 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   new String[] {
 		   });	
 		addAnnotation
+		  (getReifiedRelationshipSpecializationAxiom__Child(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getReifiedRelationshipSpecializationAxiom__Parent(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
 		  (getEntityStructuredDataPropertyParticularRestrictionAxiom__TerminologyBox(), 
 		   source, 
 		   new String[] {
@@ -5739,6 +5904,11 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   });	
 		addAnnotation
 		  (getConceptSpecializationAxiom__Uuid(), 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (getReifiedRelationshipSpecializationAxiom__Uuid(), 
 		   source, 
 		   new String[] {
 		   });	
