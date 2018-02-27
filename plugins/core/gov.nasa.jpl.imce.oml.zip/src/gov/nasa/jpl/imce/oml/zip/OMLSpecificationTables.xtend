@@ -2798,6 +2798,15 @@ class OMLSpecificationTables {
    */
   static def void load(ResourceSet rs, OMLZipResource r, File omlZipFile) {
 
+	val fileURI = URI.createFileURI(omlZipFile.absolutePath)
+	val c = OMLExtensions.findCatalogIfExists(rs, fileURI)
+	if (null === c)
+		throw new IllegalArgumentException("OMLSpecificationTables.load(): failed to find an OML catalog from: "+fileURI)
+	if (c.parsedCatalogs.empty)
+		throw new IllegalArgumentException("OMLSpecificationTables.load(): No OML catalog found from: "+fileURI)
+	if (c.entries.empty)
+		throw new IllegalArgumentException("OMLSpecificationTables.load(): Empty OML catalog from: "+c.parsedCatalogs.join("\n"))
+						      
     val tables = OMLZipResource.getOrInitializeOMLSpecificationTables(rs)
     val ext = tables.omlCommonFactory.createExtent()
     r.contents.add(ext)
