@@ -75,7 +75,7 @@ public class OMLZipResource extends ResourceImpl {
             if (e instanceof Extent) {
               _matched=true;
               final Consumer<Module> _function_2 = (Module m) -> {
-                tables.includeModule(m);
+                tables.queueModule(m);
               };
               ((Extent)e).getModules().forEach(_function_2);
             }
@@ -83,6 +83,7 @@ public class OMLZipResource extends ResourceImpl {
           r.getContents().forEach(_function_1);
         };
         rs.getResources().forEach(_function);
+        tables.processQueue(rs);
       }
       final Object tables_1 = rs.getLoadOptions().get(OMLZipResource.OML_SPECIFICATION_TABLES);
       OMLSpecificationTables _switchResult = null;

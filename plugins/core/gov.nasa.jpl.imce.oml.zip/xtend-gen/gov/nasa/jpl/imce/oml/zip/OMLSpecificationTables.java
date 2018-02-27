@@ -3354,36 +3354,44 @@ public class OMLSpecificationTables {
       };
       Collections.<ZipArchiveEntry>list(zip.getEntries()).forEach(_function);
       zip.close();
-      Boolean more = Boolean.valueOf(false);
-      do {
-        {
-          more = Boolean.valueOf(false);
-          boolean _isEmpty = tables.iriLoadQueue.isEmpty();
-          boolean _not = (!_isEmpty);
-          if (_not) {
-            final String iri = tables.iriLoadQueue.remove();
-            boolean _add = tables.visitedIRIs.add(iri);
-            if (_add) {
-              more = Boolean.valueOf(true);
-              tables.loadOMLZipResource(rs, URI.createURI(iri));
-            }
-          }
-          boolean _isEmpty_1 = tables.moduleQueue.isEmpty();
-          boolean _not_1 = (!_isEmpty_1);
-          if (_not_1) {
-            final Module m = tables.moduleQueue.remove();
-            boolean _add_1 = tables.visitedModules.add(m);
-            if (_add_1) {
-              more = Boolean.valueOf(true);
-              tables.includeModule(m);
-            }
-          }
-        }
-      } while((more).booleanValue());
+      tables.processQueue(rs);
       tables.resolve(rs, r);
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
+  }
+  
+  public void queueModule(final Module m) {
+    this.moduleQueue.add(m);
+  }
+  
+  public void processQueue(final ResourceSet rs) {
+    Boolean more = Boolean.valueOf(false);
+    do {
+      {
+        more = Boolean.valueOf(false);
+        boolean _isEmpty = this.iriLoadQueue.isEmpty();
+        boolean _not = (!_isEmpty);
+        if (_not) {
+          final String iri = this.iriLoadQueue.remove();
+          boolean _add = this.visitedIRIs.add(iri);
+          if (_add) {
+            more = Boolean.valueOf(true);
+            this.loadOMLZipResource(rs, URI.createURI(iri));
+          }
+        }
+        boolean _isEmpty_1 = this.moduleQueue.isEmpty();
+        boolean _not_1 = (!_isEmpty_1);
+        if (_not_1) {
+          final Module m = this.moduleQueue.remove();
+          boolean _add_1 = this.visitedModules.add(m);
+          if (_add_1) {
+            more = Boolean.valueOf(true);
+            this.includeModule(m);
+          }
+        }
+      }
+    } while((more).booleanValue());
   }
   
   protected void readTerminologyGraphs(final Extent ext, final ArrayList<String> lines) {
