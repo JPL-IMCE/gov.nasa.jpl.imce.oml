@@ -5157,7 +5157,7 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		  (getPartialReifiedRelationship__RootReifiedRelationships(), 
 		   source, 
 		   new String[] {
-			 "code", "scala.collection.immutable.Set.empty[resolver.api.ReifiedRelationship]"
+			 "code", "resolver.ResolverUtilities.rootReifiedRelationships(this)"
 		   });	
 		addAnnotation
 		  (getRuleBodySegment__Position(), 

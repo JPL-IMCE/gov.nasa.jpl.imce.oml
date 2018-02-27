@@ -57,7 +57,7 @@ public interface PartialReifiedRelationship extends ConceptualRelationship {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model unique="false"
-	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='scala.collection.immutable.Set.empty[resolver.api.ReifiedRelationship]'"
+	 *        annotation="http://imce.jpl.nasa.gov/oml/Scala code='resolver.ResolverUtilities.rootReifiedRelationships(this)'"
 	 *        annotation="http://imce.jpl.nasa.gov/oml/Collection kind='Set'"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return &lt;%gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions%&gt;.rootReifiedRelationships(this);'"
 	 * @generated
