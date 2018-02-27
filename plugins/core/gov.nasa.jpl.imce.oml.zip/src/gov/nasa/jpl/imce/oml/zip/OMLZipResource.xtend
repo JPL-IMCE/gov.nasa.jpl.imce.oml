@@ -36,6 +36,8 @@ import org.eclipse.emf.ecore.resource.impl.ResourceImpl
 
 import static extension gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions.getCatalog
 import org.eclipse.emf.ecore.resource.ResourceSet
+import org.eclipse.core.runtime.FileLocator
+import java.net.URL
 
 /**
  * An OMLZipResource is a kind of Resource that is loaded from and saved to an *.omlzip file
@@ -133,7 +135,7 @@ class OMLZipResource extends ResourceImpl {
 		val rs = getResourceSet
 		switch rs {
 			OMLZipResourceSet: {
-				switch uri.scheme {
+				val File omlFile = switch uri.scheme {
 					case "http": {
 						val normalized = rs.getCatalogURIConverter.normalize(uri)
 						val normalizedExt = normalized.fileExtension
@@ -148,19 +150,31 @@ class OMLZipResource extends ResourceImpl {
 										else
 											throw new IllegalArgumentException('''OMLZipResource.load(options) invalid URI file extension «normalizedExt» should be instead «fileExtension» in normalized URI: «normalized»''')
 
-									OMLSpecificationTables.load(rs, this, new File(normalizedFileURI.toFileString))
+									new File(normalizedFileURI.toFileString)
 								} else
 									throw new IllegalArgumentException(
 										"OMLZipResource.load() requires a non-null 'file.extension' option: " + uri)
 						}
 					}
+					case "platform": {
+						val purl = new URL(uri.toString)
+						val furl = FileLocator.toFileURL(purl)
+						if (furl != purl)
+							new File(furl.file)
+						else
+							throw new IllegalArgumentException(
+								"OMLZipResource.load() failed to resolve platform URL: " + uri)
+					}
 					default:
 						if (uri.file)
-							OMLSpecificationTables.load(rs, this, new File(uri.toFileString))
+							new File(uri.toFileString)
 						else
 							throw new IllegalArgumentException('''OMLZipResource.load(): unrecognized URI scheme in: «uri» (must be either http or file): «uri.isFile»''')
 				}
-
+				
+				if (!omlFile.exists)
+					throw new IllegalArgumentException('''OMLZipResource.load(): URI: «uri» resolves to a non-existent file: «omlFile»''')
+				OMLSpecificationTables.load(rs, this, omlFile)
 			}
 			default: {
 				val OMLCatalog c = OMLExtensions.getCatalog(rs)
@@ -190,6 +204,15 @@ class OMLZipResource extends ResourceImpl {
 									throw new IllegalArgumentException(
 										"OMLZipResource.load() requires a non-null 'file.extension' option: " + uri)
 						}
+					}
+					case "platform": {
+						val purl = new URL(uri.toString)
+						val furl = FileLocator.toFileURL(purl)
+						if (furl != purl)
+							new File(furl.file)
+						else
+							throw new IllegalArgumentException(
+								"OMLZipResource.load() failed to resolve platform URL: " + uri)
 					}
 					default:
 						if (uri.file)
