@@ -3151,7 +3151,7 @@ public class OMLSpecificationTables {
           final BufferedReader buffer = new BufferedReader(_inputStreamReader);
           final ArrayList<String> lines = new ArrayList<String>();
           Iterables.<String>addAll(lines, IteratorExtensions.<String>toIterable(buffer.lines().iterator()));
-          buffer.close();
+          is.close();
           String _name = ze.getName();
           if (_name != null) {
             switch (_name) {
