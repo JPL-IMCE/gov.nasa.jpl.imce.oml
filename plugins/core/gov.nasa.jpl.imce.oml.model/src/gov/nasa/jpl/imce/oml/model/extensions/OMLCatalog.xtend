@@ -33,7 +33,8 @@ class OMLCatalog extends Catalog {
 	
 	override protected synchronized parsePendingCatalogs() throws MalformedURLException, IOException {
 		super.parsePendingCatalogs()
-		parsedCatalogs.add(parsing)
+		if (null !== parsing)
+			parsedCatalogs.add(parsing)
 		parsing = null
 	}
 	
