@@ -2807,7 +2807,7 @@ class OMLSpecificationTables {
       val buffer = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))
       val lines = new ArrayList<String>()
       lines.addAll(buffer.lines().iterator.toIterable)
-      buffer.close()
+      is.close()
       switch ze.name {
   	    case "TerminologyGraphs.json":
   	      tables.readTerminologyGraphs(ext, lines)
