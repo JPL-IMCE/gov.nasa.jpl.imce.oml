@@ -403,28 +403,24 @@ public class TerminologiesSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case TerminologiesPackage.SPECIALIZED_REIFIED_RELATIONSHIP: {
-				SpecializedReifiedRelationship specializedReifiedRelationship = (SpecializedReifiedRelationship)theEObject;
-				T result = caseSpecializedReifiedRelationship(specializedReifiedRelationship);
-				if (result == null) result = caseConceptualRelationship(specializedReifiedRelationship);
-				if (result == null) result = caseSpecializationAxiom(specializedReifiedRelationship);
-				if (result == null) result = caseConceptualEntity(specializedReifiedRelationship);
-				if (result == null) result = caseEntityRelationship(specializedReifiedRelationship);
-				if (result == null) result = caseTermAxiom(specializedReifiedRelationship);
-				if (result == null) result = caseElementCrossReferenceTuple(specializedReifiedRelationship);
-				if (result == null) result = caseEntity(specializedReifiedRelationship);
-				if (result == null) result = caseDirectedBinaryRelationshipKind(specializedReifiedRelationship);
-				if (result == null) result = caseExtrinsicIdentityKind(specializedReifiedRelationship);
-				if (result == null) result = caseTerm(specializedReifiedRelationship);
-				if (result == null) result = casePredicate(specializedReifiedRelationship);
-				if (result == null) result = caseTerminologyBoxStatement(specializedReifiedRelationship);
-				if (result == null) result = caseResource(specializedReifiedRelationship);
-				if (result == null) result = caseModuleElement(specializedReifiedRelationship);
-				if (result == null) result = caseIntrinsicIdentityKind(specializedReifiedRelationship);
-				if (result == null) result = caseLogicalElement(specializedReifiedRelationship);
-				if (result == null) result = caseCrossReferencableKind(specializedReifiedRelationship);
-				if (result == null) result = caseIdentityKind(specializedReifiedRelationship);
-				if (result == null) result = caseCrossReferencabilityKind(specializedReifiedRelationship);
+			case TerminologiesPackage.PARTIAL_REIFIED_RELATIONSHIP: {
+				PartialReifiedRelationship partialReifiedRelationship = (PartialReifiedRelationship)theEObject;
+				T result = casePartialReifiedRelationship(partialReifiedRelationship);
+				if (result == null) result = caseConceptualRelationship(partialReifiedRelationship);
+				if (result == null) result = caseConceptualEntity(partialReifiedRelationship);
+				if (result == null) result = caseEntityRelationship(partialReifiedRelationship);
+				if (result == null) result = caseEntity(partialReifiedRelationship);
+				if (result == null) result = caseDirectedBinaryRelationshipKind(partialReifiedRelationship);
+				if (result == null) result = caseTerm(partialReifiedRelationship);
+				if (result == null) result = casePredicate(partialReifiedRelationship);
+				if (result == null) result = caseTerminologyBoxStatement(partialReifiedRelationship);
+				if (result == null) result = caseResource(partialReifiedRelationship);
+				if (result == null) result = caseModuleElement(partialReifiedRelationship);
+				if (result == null) result = caseIntrinsicIdentityKind(partialReifiedRelationship);
+				if (result == null) result = caseLogicalElement(partialReifiedRelationship);
+				if (result == null) result = caseCrossReferencableKind(partialReifiedRelationship);
+				if (result == null) result = caseIdentityKind(partialReifiedRelationship);
+				if (result == null) result = caseCrossReferencabilityKind(partialReifiedRelationship);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -877,6 +873,22 @@ public class TerminologiesSwitch<T> extends Switch<T> {
 				if (result == null) result = caseLogicalElement(conceptSpecializationAxiom);
 				if (result == null) result = caseIdentityKind(conceptSpecializationAxiom);
 				if (result == null) result = caseCrossReferencabilityKind(conceptSpecializationAxiom);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case TerminologiesPackage.REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM: {
+				ReifiedRelationshipSpecializationAxiom reifiedRelationshipSpecializationAxiom = (ReifiedRelationshipSpecializationAxiom)theEObject;
+				T result = caseReifiedRelationshipSpecializationAxiom(reifiedRelationshipSpecializationAxiom);
+				if (result == null) result = caseSpecializationAxiom(reifiedRelationshipSpecializationAxiom);
+				if (result == null) result = caseTermAxiom(reifiedRelationshipSpecializationAxiom);
+				if (result == null) result = caseElementCrossReferenceTuple(reifiedRelationshipSpecializationAxiom);
+				if (result == null) result = caseTerminologyBoxStatement(reifiedRelationshipSpecializationAxiom);
+				if (result == null) result = caseExtrinsicIdentityKind(reifiedRelationshipSpecializationAxiom);
+				if (result == null) result = caseCrossReferencableKind(reifiedRelationshipSpecializationAxiom);
+				if (result == null) result = caseModuleElement(reifiedRelationshipSpecializationAxiom);
+				if (result == null) result = caseLogicalElement(reifiedRelationshipSpecializationAxiom);
+				if (result == null) result = caseIdentityKind(reifiedRelationshipSpecializationAxiom);
+				if (result == null) result = caseCrossReferencabilityKind(reifiedRelationshipSpecializationAxiom);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1523,17 +1535,17 @@ public class TerminologiesSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Specialized Reified Relationship</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Partial Reified Relationship</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Specialized Reified Relationship</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Partial Reified Relationship</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseSpecializedReifiedRelationship(SpecializedReifiedRelationship object) {
+	public T casePartialReifiedRelationship(PartialReifiedRelationship object) {
 		return null;
 	}
 
@@ -1939,6 +1951,21 @@ public class TerminologiesSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseConceptSpecializationAxiom(ConceptSpecializationAxiom object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Reified Relationship Specialization Axiom</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Reified Relationship Specialization Axiom</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseReifiedRelationshipSpecializationAxiom(ReifiedRelationshipSpecializationAxiom object) {
 		return null;
 	}
 

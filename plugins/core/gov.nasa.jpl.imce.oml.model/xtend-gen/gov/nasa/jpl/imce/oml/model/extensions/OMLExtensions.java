@@ -77,6 +77,7 @@ import gov.nasa.jpl.imce.oml.model.terminologies.ChainRule;
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptualEntity;
+import gov.nasa.jpl.imce.oml.model.terminologies.ConceptualRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.DataRange;
 import gov.nasa.jpl.imce.oml.model.terminologies.DataRelationshipToScalar;
 import gov.nasa.jpl.imce.oml.model.terminologies.DataRelationshipToStructure;
@@ -94,9 +95,11 @@ import gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction;
+import gov.nasa.jpl.imce.oml.model.terminologies.PartialReifiedRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.Predicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship;
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictableRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple;
@@ -107,7 +110,6 @@ import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.SegmentPredicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.SpecializationAxiom;
-import gov.nasa.jpl.imce.oml.model.terminologies.SpecializedReifiedRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.StringScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.Structure;
 import gov.nasa.jpl.imce.oml.model.terminologies.StructuredDataProperty;
@@ -781,6 +783,49 @@ public class OMLExtensions {
     return Iterables.<EntityRelationship>concat(_localEntityRelationships, _flatten);
   }
   
+  public static EList<ReifiedRelationship> rootReifiedRelationships(final PartialReifiedRelationship prr) {
+    EList<ReifiedRelationship> _xblockexpression = null;
+    {
+      final HashSet<ReifiedRelationship> result = new HashSet<ReifiedRelationship>();
+      final HashSet<ConceptualRelationship> horizon = new HashSet<ConceptualRelationship>();
+      horizon.add(prr);
+      final HashSet<ReifiedRelationshipSpecializationAxiom> candidates = new HashSet<ReifiedRelationshipSpecializationAxiom>();
+      final Function1<TerminologyBox, Iterable<ReifiedRelationshipSpecializationAxiom>> _function = (TerminologyBox it) -> {
+        return Iterables.<ReifiedRelationshipSpecializationAxiom>filter(it.getBoxStatements(), ReifiedRelationshipSpecializationAxiom.class);
+      };
+      final Iterable<ReifiedRelationshipSpecializationAxiom> rrs = Iterables.<ReifiedRelationshipSpecializationAxiom>concat(IterableExtensions.<TerminologyBox, Iterable<ReifiedRelationshipSpecializationAxiom>>map(OMLExtensions.allImportedTerminologies(prr.getTbox()), _function));
+      Iterables.<ReifiedRelationshipSpecializationAxiom>addAll(candidates, rrs);
+      boolean more = false;
+      do {
+        {
+          more = false;
+          final Function1<ReifiedRelationshipSpecializationAxiom, Boolean> _function_1 = (ReifiedRelationshipSpecializationAxiom ax) -> {
+            return Boolean.valueOf(horizon.contains(ax.getSubRelationship()));
+          };
+          final List<ReifiedRelationshipSpecializationAxiom> axioms = IterableExtensions.<ReifiedRelationshipSpecializationAxiom>toList(IterableExtensions.<ReifiedRelationshipSpecializationAxiom>filter(candidates, _function_1));
+          boolean _isEmpty = axioms.isEmpty();
+          boolean _not = (!_isEmpty);
+          if (_not) {
+            horizon.clear();
+            final Function1<ReifiedRelationshipSpecializationAxiom, ConceptualRelationship> _function_2 = (ReifiedRelationshipSpecializationAxiom it) -> {
+              return it.getSuperRelationship();
+            };
+            final List<ConceptualRelationship> parents = ListExtensions.<ReifiedRelationshipSpecializationAxiom, ConceptualRelationship>map(axioms, _function_2);
+            final Iterable<ReifiedRelationship> moreReifiedRelationships = Iterables.<ReifiedRelationship>filter(parents, ReifiedRelationship.class);
+            Iterables.<ReifiedRelationship>addAll(result, moreReifiedRelationships);
+            final Iterable<PartialReifiedRelationship> morePartialReifiedRelationships = Iterables.<PartialReifiedRelationship>filter(parents, PartialReifiedRelationship.class);
+            Iterables.<ConceptualRelationship>addAll(horizon, morePartialReifiedRelationships);
+            boolean _isEmpty_1 = horizon.isEmpty();
+            boolean _not_1 = (!_isEmpty_1);
+            more = _not_1;
+          }
+        }
+      } while(more);
+      _xblockexpression = ECollections.<ReifiedRelationship>asEList(((ReifiedRelationship[])Conversions.unwrapArray(result, ReifiedRelationship.class)));
+    }
+    return _xblockexpression;
+  }
+  
   public Iterable<DataRange> localRanges(final TerminologyBox it) {
     return Iterables.<DataRange>filter(it.getBoxStatements(), DataRange.class);
   }
@@ -1058,6 +1103,12 @@ public class OMLExtensions {
       }
     }
     if (!_matched) {
+      if (e instanceof PartialReifiedRelationship) {
+        _matched=true;
+        _switchResult = "PartialReifiedRelationship";
+      }
+    }
+    if (!_matched) {
       if (e instanceof PlainLiteralScalarRestriction) {
         _matched=true;
         _switchResult = "PlainLiteralScalarRestriction";
@@ -1085,6 +1136,12 @@ public class OMLExtensions {
       if (e instanceof ReifiedRelationshipInstanceRange) {
         _matched=true;
         _switchResult = "ReifiedRelationshipInstanceRange";
+      }
+    }
+    if (!_matched) {
+      if (e instanceof ReifiedRelationshipSpecializationAxiom) {
+        _matched=true;
+        _switchResult = "ReifiedRelationshipSpecializationAxiom";
       }
     }
     if (!_matched) {
@@ -1157,12 +1214,6 @@ public class OMLExtensions {
       if (e instanceof SingletonInstanceStructuredDataPropertyValue) {
         _matched=true;
         _switchResult = "SingletonInstanceStructuredDataPropertyValue";
-      }
-    }
-    if (!_matched) {
-      if (e instanceof SpecializedReifiedRelationship) {
-        _matched=true;
-        _switchResult = "SpecializedReifiedRelationship";
       }
     }
     if (!_matched) {
@@ -1281,9 +1332,15 @@ public class OMLExtensions {
       }
     }
     if (!_matched) {
-      if (e instanceof SpecializedReifiedRelationship) {
+      if (e instanceof PartialReifiedRelationship) {
         _matched=true;
         _switchResult = 10031;
+      }
+    }
+    if (!_matched) {
+      if (e instanceof ReifiedRelationshipSpecializationAxiom) {
+        _matched=true;
+        _switchResult = 10032;
       }
     }
     if (!_matched) {
@@ -1531,7 +1588,7 @@ public class OMLExtensions {
       }
     }
     if (!_matched) {
-      if (e instanceof SpecializedReifiedRelationship) {
+      if (e instanceof PartialReifiedRelationship) {
         _matched=true;
         _switchResult = "00013-";
       }
@@ -1552,6 +1609,12 @@ public class OMLExtensions {
       if (e instanceof ConceptSpecializationAxiom) {
         _matched=true;
         _switchResult = "00020-";
+      }
+    }
+    if (!_matched) {
+      if (e instanceof ReifiedRelationshipSpecializationAxiom) {
+        _matched=true;
+        _switchResult = "00021-";
       }
     }
     if (!_matched) {

@@ -226,26 +226,26 @@ public class TerminologiesItemProviderAdapterFactory extends TerminologiesAdapte
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.terminologies.SpecializedReifiedRelationship} instances.
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.terminologies.PartialReifiedRelationship} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SpecializedReifiedRelationshipItemProvider specializedReifiedRelationshipItemProvider;
+	protected PartialReifiedRelationshipItemProvider partialReifiedRelationshipItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.terminologies.SpecializedReifiedRelationship}.
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.terminologies.PartialReifiedRelationship}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createSpecializedReifiedRelationshipAdapter() {
-		if (specializedReifiedRelationshipItemProvider == null) {
-			specializedReifiedRelationshipItemProvider = new SpecializedReifiedRelationshipItemProvider(this);
+	public Adapter createPartialReifiedRelationshipAdapter() {
+		if (partialReifiedRelationshipItemProvider == null) {
+			partialReifiedRelationshipItemProvider = new PartialReifiedRelationshipItemProvider(this);
 		}
 
-		return specializedReifiedRelationshipItemProvider;
+		return partialReifiedRelationshipItemProvider;
 	}
 
 	/**
@@ -568,6 +568,29 @@ public class TerminologiesItemProviderAdapterFactory extends TerminologiesAdapte
 		}
 
 		return conceptSpecializationAxiomItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ReifiedRelationshipSpecializationAxiomItemProvider reifiedRelationshipSpecializationAxiomItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createReifiedRelationshipSpecializationAxiomAdapter() {
+		if (reifiedRelationshipSpecializationAxiomItemProvider == null) {
+			reifiedRelationshipSpecializationAxiomItemProvider = new ReifiedRelationshipSpecializationAxiomItemProvider(this);
+		}
+
+		return reifiedRelationshipSpecializationAxiomItemProvider;
 	}
 
 	/**
@@ -1066,7 +1089,7 @@ public class TerminologiesItemProviderAdapterFactory extends TerminologiesAdapte
 		if (forwardPropertyItemProvider != null) forwardPropertyItemProvider.dispose();
 		if (inversePropertyItemProvider != null) inversePropertyItemProvider.dispose();
 		if (reifiedRelationshipItemProvider != null) reifiedRelationshipItemProvider.dispose();
-		if (specializedReifiedRelationshipItemProvider != null) specializedReifiedRelationshipItemProvider.dispose();
+		if (partialReifiedRelationshipItemProvider != null) partialReifiedRelationshipItemProvider.dispose();
 		if (unreifiedRelationshipItemProvider != null) unreifiedRelationshipItemProvider.dispose();
 		if (scalarItemProvider != null) scalarItemProvider.dispose();
 		if (entityStructuredDataPropertyItemProvider != null) entityStructuredDataPropertyItemProvider.dispose();
@@ -1081,6 +1104,7 @@ public class TerminologiesItemProviderAdapterFactory extends TerminologiesAdapte
 		if (entityUniversalRestrictionAxiomItemProvider != null) entityUniversalRestrictionAxiomItemProvider.dispose();
 		if (aspectSpecializationAxiomItemProvider != null) aspectSpecializationAxiomItemProvider.dispose();
 		if (conceptSpecializationAxiomItemProvider != null) conceptSpecializationAxiomItemProvider.dispose();
+		if (reifiedRelationshipSpecializationAxiomItemProvider != null) reifiedRelationshipSpecializationAxiomItemProvider.dispose();
 		if (subObjectPropertyOfAxiomItemProvider != null) subObjectPropertyOfAxiomItemProvider.dispose();
 		if (subDataPropertyOfAxiomItemProvider != null) subDataPropertyOfAxiomItemProvider.dispose();
 		if (entityScalarDataPropertyExistentialRestrictionAxiomItemProvider != null) entityScalarDataPropertyExistentialRestrictionAxiomItemProvider.dispose();

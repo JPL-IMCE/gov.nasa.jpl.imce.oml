@@ -82,9 +82,11 @@ import gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction
+import gov.nasa.jpl.imce.oml.model.terminologies.PartialReifiedRelationship
 import gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.Predicate
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple
 import gov.nasa.jpl.imce.oml.model.terminologies.RuleBodySegment
@@ -93,7 +95,6 @@ import gov.nasa.jpl.imce.oml.model.terminologies.ScalarDataProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.SegmentPredicate
-import gov.nasa.jpl.imce.oml.model.terminologies.SpecializedReifiedRelationship
 import gov.nasa.jpl.imce.oml.model.terminologies.StringScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.Structure
 import gov.nasa.jpl.imce.oml.model.terminologies.StructuredDataProperty
@@ -215,6 +216,12 @@ class OMLTables {
   static def List<Concept> concepts(Extent e) {
   	val List<Concept> result = new ArrayList<Concept>()
   	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(Concept))]
+  	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
+  }
+  
+  static def List<PartialReifiedRelationship> partialReifiedRelationships(Extent e) {
+  	val List<PartialReifiedRelationship> result = new ArrayList<PartialReifiedRelationship>()
+  	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(PartialReifiedRelationship))]
   	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
@@ -348,9 +355,9 @@ class OMLTables {
   	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
-  static def List<SpecializedReifiedRelationship> specializedReifiedRelationships(Extent e) {
-  	val List<SpecializedReifiedRelationship> result = new ArrayList<SpecializedReifiedRelationship>()
-  	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(SpecializedReifiedRelationship))]
+  static def List<ReifiedRelationshipSpecializationAxiom> reifiedRelationshipSpecializationAxioms(Extent e) {
+  	val List<ReifiedRelationshipSpecializationAxiom> result = new ArrayList<ReifiedRelationshipSpecializationAxiom>()
+  	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(ReifiedRelationshipSpecializationAxiom))]
   	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   

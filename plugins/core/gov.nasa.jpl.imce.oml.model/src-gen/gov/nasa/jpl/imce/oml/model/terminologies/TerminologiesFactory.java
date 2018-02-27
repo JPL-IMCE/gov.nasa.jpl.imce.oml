@@ -92,13 +92,13 @@ public interface TerminologiesFactory extends EFactory {
 	ReifiedRelationship createReifiedRelationship();
 
 	/**
-	 * Returns a new object of class '<em>Specialized Reified Relationship</em>'.
+	 * Returns a new object of class '<em>Partial Reified Relationship</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Specialized Reified Relationship</em>'.
+	 * @return a new object of class '<em>Partial Reified Relationship</em>'.
 	 * @generated
 	 */
-	SpecializedReifiedRelationship createSpecializedReifiedRelationship();
+	PartialReifiedRelationship createPartialReifiedRelationship();
 
 	/**
 	 * Returns a new object of class '<em>Unreified Relationship</em>'.
@@ -225,6 +225,15 @@ public interface TerminologiesFactory extends EFactory {
 	 * @generated
 	 */
 	ConceptSpecializationAxiom createConceptSpecializationAxiom();
+
+	/**
+	 * Returns a new object of class '<em>Reified Relationship Specialization Axiom</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Reified Relationship Specialization Axiom</em>'.
+	 * @generated
+	 */
+	ReifiedRelationshipSpecializationAxiom createReifiedRelationshipSpecializationAxiom();
 
 	/**
 	 * Returns a new object of class '<em>Sub Object Property Of Axiom</em>'.

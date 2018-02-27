@@ -82,8 +82,10 @@ import gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction
+import gov.nasa.jpl.imce.oml.model.terminologies.PartialReifiedRelationship
 import gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictableRelationship
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple
@@ -93,7 +95,6 @@ import gov.nasa.jpl.imce.oml.model.terminologies.ScalarDataProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfLiteralAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.SpecializationAxiom
-import gov.nasa.jpl.imce.oml.model.terminologies.SpecializedReifiedRelationship
 import gov.nasa.jpl.imce.oml.model.terminologies.StringScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.Structure
 import gov.nasa.jpl.imce.oml.model.terminologies.StructuredDataProperty
@@ -131,6 +132,7 @@ import static com.google.common.base.Preconditions.checkNotNull
 import gov.nasa.jpl.imce.oml.model.terminologies.SegmentPredicate
 import gov.nasa.jpl.imce.oml.model.terminologies.Predicate
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptualEntity
+import gov.nasa.jpl.imce.oml.model.terminologies.ConceptualRelationship
 
 public class OMLExtensions {
 
@@ -537,6 +539,37 @@ public class OMLExtensions {
 		localEntityRelationships + allImportedTerminologies(it).map[localEntityRelationships].flatten
 	}
 
+	static def EList<ReifiedRelationship> rootReifiedRelationships(PartialReifiedRelationship prr) {
+		val result = new HashSet<ReifiedRelationship>()
+		
+		val horizon = new HashSet<ConceptualRelationship>()
+		horizon.add(prr)
+		val candidates = new HashSet<ReifiedRelationshipSpecializationAxiom>()
+		
+		val rrs = allImportedTerminologies(prr.tbox).map[boxStatements.filter(ReifiedRelationshipSpecializationAxiom)].flatten
+		candidates.addAll(rrs)
+		
+		var more = false
+		do {
+			more = false
+			val axioms = candidates.filter[ax|horizon.contains(ax.subRelationship)].toList
+			if (!axioms.empty) {
+				horizon.clear
+				val parents = axioms.map[superRelationship]
+				
+				val moreReifiedRelationships = parents.filter(ReifiedRelationship)
+				result.addAll(moreReifiedRelationships)
+				
+				val morePartialReifiedRelationships = parents.filter(PartialReifiedRelationship)
+				horizon.addAll(morePartialReifiedRelationships)
+				
+				more = !horizon.empty
+			}
+		} while (more)
+		
+		ECollections.asEList(result)
+	}
+	
 	def Iterable<DataRange> localRanges(TerminologyBox it) {
 		boxStatements.filter(DataRange)
 	}
@@ -700,6 +733,8 @@ public class OMLExtensions {
 				'IRIScalarRestriction'
 			NumericScalarRestriction:
 				'NumericScalarRestriction'
+			PartialReifiedRelationship:
+				'PartialReifiedRelationship'
 			PlainLiteralScalarRestriction:
 				'PlainLiteralScalarRestriction'
 			ReifiedRelationship:
@@ -710,6 +745,8 @@ public class OMLExtensions {
 				'ReifiedRelationshipInstanceDomain'
 			ReifiedRelationshipInstanceRange:
 				'ReifiedRelationshipInstanceRange'
+			ReifiedRelationshipSpecializationAxiom:
+				'ReifiedRelationshipSpecializationAxiom'
 			RestrictionScalarDataPropertyValue:
 				'RestrictionScalarDataPropertyValue'
 			RestrictionStructuredDataPropertyTuple:
@@ -734,8 +771,6 @@ public class OMLExtensions {
 				'SingletonInstanceScalarDataPropertyValue'
 			SingletonInstanceStructuredDataPropertyValue:
 				'SingletonInstanceStructuredDataPropertyValue'
-			SpecializedReifiedRelationship:
-				'SpecializedReifiedRelationship'
 			SpecificDisjointConceptAxiom:
 				'SpecificDisjointConceptAxiom'
 			StringScalarRestriction:
@@ -779,8 +814,10 @@ public class OMLExtensions {
 				10021
 			ReifiedRelationship:
 				10030
-			SpecializedReifiedRelationship:
+			PartialReifiedRelationship:
 				10031
+			ReifiedRelationshipSpecializationAxiom:
+				10032
 			AspectSpecializationAxiom:
 				10040
 			UnreifiedRelationship:
@@ -881,7 +918,7 @@ public class OMLExtensions {
 				"00011-"
 			ReifiedRelationship:
 				"00012-"
-			SpecializedReifiedRelationship:
+			PartialReifiedRelationship:
 				"00013-"
 			UnreifiedRelationship:
 				"00014-"
@@ -889,6 +926,8 @@ public class OMLExtensions {
 				"00015-"
 			ConceptSpecializationAxiom:
 				"00020-"
+			ReifiedRelationshipSpecializationAxiom:
+				"00021-"
 			AspectSpecializationAxiom:
 				"00022-"
 			Structure:

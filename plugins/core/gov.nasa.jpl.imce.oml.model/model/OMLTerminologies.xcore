@@ -537,7 +537,17 @@ class InverseProperty extends RestrictableRelationship {
  * that is also a kind of OML EntityRelationship.
  */
 @Glossary
-abstract class ConceptualRelationship extends ConceptualEntity, EntityRelationship {}
+abstract class ConceptualRelationship extends ConceptualEntity, EntityRelationship {
+	
+	/*
+	 * The OML ReifiedRelationship(s) that are the root entities of 
+	 * the OML ConceptualRelationship.
+	 */
+	@Collection(kind="Set")
+	@ImplicitExtent
+	@NotSchema
+	op ReifiedRelationship[*] rootReifiedRelationships()
+}
 
 /*
  * An OML ReifiedRelationship is an OML ConceptualRelationship 
@@ -567,32 +577,40 @@ class ReifiedRelationship extends ConceptualRelationship, CharacterizedEntityRel
 		if (null !== inverseProperty) les.add(inverseProperty)
 		les
 	}
+	
+	@Scala(code="scala.collection.immutable.Set[resolver.api.ReifiedRelationship](this)")
+	@Collection(kind="Set")
+	@ImplicitExtent
+	@NotSchema
+	@Override
+	op ReifiedRelationship[*] rootReifiedRelationships() { ECollections.singletonEList(this) }
 }
 
 /*
- * An OML SpecializedReifiedRelationship is an OML ConceptualRelationship 
- * that plays the role of a specific entity for an OML SpecializedReifiedRelationship
- * with respect to an OML ConceptualRelationship as its general entity in the context
- * of an OML SpecializationAxiom.
+ * An OML PartialReifiedRelationship is an OML ConceptualRelationship 
+ * that plays the role of a specific entity for one or more OML ReifiedRelationshipSpecializationAxioms
+ * with respect to an OML ConceptualRelationship as its general entity.
+ * Note that this statement is well formed in a given OML TerminologyBox
+ * iff it is the specific entity of at least one OML ReifiedRelationshipSpecializationAxiom
+ * asserted in that OML TerminologyBox.
  */
-class SpecializedReifiedRelationship extends ConceptualRelationship, SpecializationAxiom {
+class PartialReifiedRelationship extends ConceptualRelationship {
 
-	refers ConceptualRelationship[1] general
-	
-	@NotSchema
-	@Override
-	op Entity[1] child() { this }
-	
-	@NotSchema
-	@Override
-	op Entity[1] parent() { general }
-	
 	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.LogicalElement]")
 	@Collection(kind="Set")
 	@NotSchema
 	@ImplicitExtent
 	@Override
 	op LogicalElement[] allNestedElements() { ECollections.emptyEList }
+	
+	@Scala(code="resolver.ResolverUtilities.rootReifiedRelationships(this)")
+	@Collection(kind="Set")
+	@ImplicitExtent
+	@NotSchema
+	@Override
+	op ReifiedRelationship[*] rootReifiedRelationships() { 
+		OMLExtensions.rootReifiedRelationships(this)
+	}
 }
 
 /*
@@ -1168,6 +1186,51 @@ class ConceptSpecializationAxiom extends SpecializationAxiom {
 		"tbox" -> tbox?.uuid(),
 		"superConcept" -> superConcept?.uuid()?.toString,
 		"subConcept" -> subConcept?.uuid()?.toString
+		)?.toString
+	}
+}
+
+/*
+ * An OML ReifiedRelationshipSpecializationAxiom is a logical axiom
+ * about a taxonomic relationship between a specific and general
+ * OML ConceptualRelationship.
+ */
+@Glossary
+@DerivedUUID
+class ReifiedRelationshipSpecializationAxiom extends SpecializationAxiom {
+	
+	/*
+	 * The sub (child) relationship
+	 */
+	refers ConceptualRelationship[1] subRelationship
+	
+	/*
+	 * The super (parent) relationship
+	 */
+	refers ConceptualRelationship[1] superRelationship
+	
+	/*
+	 * Get the sub (child) entity
+	 */
+	@NotSchema
+	@Override
+	op Entity[1] child() { subRelationship }
+	
+	/*
+	 * Get the super (parent) entity
+	 */
+	@NotSchema
+	@Override
+	op Entity[1] parent() { superRelationship }
+	
+	@NotFunctionalAPI
+	@NotSchema
+	op UUID[1] uuid() {
+		OMLExtensions.derivedUUID(
+		"ReifiedRelationshipSpecializationAxiom",
+		"tbox" -> tbox?.uuid(),
+		"superRelationship" -> superRelationship?.uuid()?.toString,
+		"subRelationship" -> subRelationship?.uuid()?.toString
 		)?.toString
 	}
 }

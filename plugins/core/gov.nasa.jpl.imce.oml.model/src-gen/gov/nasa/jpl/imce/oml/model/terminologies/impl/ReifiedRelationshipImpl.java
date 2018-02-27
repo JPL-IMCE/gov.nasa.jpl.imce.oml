@@ -23,6 +23,7 @@ import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
 import gov.nasa.jpl.imce.oml.model.common.ModuleElement;
 
 import gov.nasa.jpl.imce.oml.model.terminologies.CharacterizedEntityRelationship;
+import gov.nasa.jpl.imce.oml.model.terminologies.ConceptualRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship;
@@ -35,6 +36,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.BasicEList;
+import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -585,6 +587,15 @@ public class ReifiedRelationshipImpl extends ConceptualRelationshipImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<ReifiedRelationship> rootReifiedRelationships() {
+		return ECollections.<ReifiedRelationship>singletonEList(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -841,6 +852,12 @@ public class ReifiedRelationshipImpl extends ConceptualRelationshipImpl implemen
 				default: return super.eDerivedOperationID(baseOperationID, baseClass);
 			}
 		}
+		if (baseClass == ConceptualRelationship.class) {
+			switch (baseOperationID) {
+				case TerminologiesPackage.CONCEPTUAL_RELATIONSHIP___ROOT_REIFIED_RELATIONSHIPS: return TerminologiesPackage.REIFIED_RELATIONSHIP___ROOT_REIFIED_RELATIONSHIPS;
+				default: return super.eDerivedOperationID(baseOperationID, baseClass);
+			}
+		}
 		if (baseClass == CharacterizedEntityRelationship.class) {
 			switch (baseOperationID) {
 				default: return -1;
@@ -859,6 +876,8 @@ public class ReifiedRelationshipImpl extends ConceptualRelationshipImpl implemen
 		switch (operationID) {
 			case TerminologiesPackage.REIFIED_RELATIONSHIP___ALL_NESTED_ELEMENTS:
 				return allNestedElements();
+			case TerminologiesPackage.REIFIED_RELATIONSHIP___ROOT_REIFIED_RELATIONSHIPS:
+				return rootReifiedRelationships();
 		}
 		return super.eInvoke(operationID, arguments);
 	}

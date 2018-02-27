@@ -1436,11 +1436,11 @@ ruleEntityRelationship returns [EObject current=null]
 		}
 		    |
 		{
-			newCompositeNode(grammarAccess.getEntityRelationshipAccess().getSpecializedReifiedRelationshipParserRuleCall_1());
+			newCompositeNode(grammarAccess.getEntityRelationshipAccess().getPartialReifiedRelationshipParserRuleCall_1());
 		}
-		this_SpecializedReifiedRelationship_1=ruleSpecializedReifiedRelationship
+		this_PartialReifiedRelationship_1=rulePartialReifiedRelationship
 		{
-			$current = $this_SpecializedReifiedRelationship_1.current;
+			$current = $this_PartialReifiedRelationship_1.current;
 			afterParserOrEnumRuleCall();
 		}
 		    |
@@ -1889,6 +1889,15 @@ ruleSpecializationAxiom returns [EObject current=null]
 		this_AspectSpecializationAxiom_1=ruleAspectSpecializationAxiom
 		{
 			$current = $this_AspectSpecializationAxiom_1.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getSpecializationAxiomAccess().getReifiedRelationshipSpecializationAxiomParserRuleCall_2());
+		}
+		this_ReifiedRelationshipSpecializationAxiom_2=ruleReifiedRelationshipSpecializationAxiom
+		{
+			$current = $this_ReifiedRelationshipSpecializationAxiom_2.current;
 			afterParserOrEnumRuleCall();
 		}
 	)
@@ -2563,15 +2572,15 @@ ruleInverseProperty returns [EObject current=null]
 	)
 ;
 
-// Entry rule entryRuleSpecializedReifiedRelationship
-entryRuleSpecializedReifiedRelationship returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getSpecializedReifiedRelationshipRule()); }
-	iv_ruleSpecializedReifiedRelationship=ruleSpecializedReifiedRelationship
-	{ $current=$iv_ruleSpecializedReifiedRelationship.current; }
+// Entry rule entryRulePartialReifiedRelationship
+entryRulePartialReifiedRelationship returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getPartialReifiedRelationshipRule()); }
+	iv_rulePartialReifiedRelationship=rulePartialReifiedRelationship
+	{ $current=$iv_rulePartialReifiedRelationship.current; }
 	EOF;
 
-// Rule SpecializedReifiedRelationship
-ruleSpecializedReifiedRelationship returns [EObject current=null]
+// Rule PartialReifiedRelationship
+rulePartialReifiedRelationship returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -2582,12 +2591,12 @@ ruleSpecializedReifiedRelationship returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getSpecializedReifiedRelationshipAccess().getAnnotationsAnnotationPropertyValueParserRuleCall_0_0());
+					newCompositeNode(grammarAccess.getPartialReifiedRelationshipAccess().getAnnotationsAnnotationPropertyValueParserRuleCall_0_0());
 				}
 				lv_annotations_0_0=ruleAnnotationPropertyValue
 				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getSpecializedReifiedRelationshipRule());
+						$current = createModelElementForParent(grammarAccess.getPartialReifiedRelationshipRule());
 					}
 					add(
 						$current,
@@ -2600,17 +2609,17 @@ ruleSpecializedReifiedRelationship returns [EObject current=null]
 		)*
 		otherlv_1='reifiedRelationship'
 		{
-			newLeafNode(otherlv_1, grammarAccess.getSpecializedReifiedRelationshipAccess().getReifiedRelationshipKeyword_1());
+			newLeafNode(otherlv_1, grammarAccess.getPartialReifiedRelationshipAccess().getReifiedRelationshipKeyword_1());
 		}
 		(
 			(
 				lv_name_2_0=RULE_ID
 				{
-					newLeafNode(lv_name_2_0, grammarAccess.getSpecializedReifiedRelationshipAccess().getNameIDTerminalRuleCall_2_0());
+					newLeafNode(lv_name_2_0, grammarAccess.getPartialReifiedRelationshipAccess().getNameIDTerminalRuleCall_2_0());
 				}
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getSpecializedReifiedRelationshipRule());
+						$current = createModelElement(grammarAccess.getPartialReifiedRelationshipRule());
 					}
 					setWithLastConsumed(
 						$current,
@@ -2620,19 +2629,27 @@ ruleSpecializedReifiedRelationship returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_3='extends'
+		otherlv_3='{'
 		{
-			newLeafNode(otherlv_3, grammarAccess.getSpecializedReifiedRelationshipAccess().getExtendsKeyword_3());
+			newLeafNode(otherlv_3, grammarAccess.getPartialReifiedRelationshipAccess().getLeftCurlyBracketKeyword_3());
+		}
+		otherlv_4='source'
+		{
+			newLeafNode(otherlv_4, grammarAccess.getPartialReifiedRelationshipAccess().getSourceKeyword_4());
+		}
+		otherlv_5='='
+		{
+			newLeafNode(otherlv_5, grammarAccess.getPartialReifiedRelationshipAccess().getEqualsSignKeyword_5());
 		}
 		(
 			(
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getSpecializedReifiedRelationshipRule());
+						$current = createModelElement(grammarAccess.getPartialReifiedRelationshipRule());
 					}
 				}
 				{
-					newCompositeNode(grammarAccess.getSpecializedReifiedRelationshipAccess().getGeneralConceptualRelationshipCrossReference_4_0());
+					newCompositeNode(grammarAccess.getPartialReifiedRelationshipAccess().getSourceEntityCrossReference_6_0());
 				}
 				ruleReference
 				{
@@ -2640,27 +2657,23 @@ ruleSpecializedReifiedRelationship returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_5='{'
+		otherlv_7='target'
 		{
-			newLeafNode(otherlv_5, grammarAccess.getSpecializedReifiedRelationshipAccess().getLeftCurlyBracketKeyword_5());
+			newLeafNode(otherlv_7, grammarAccess.getPartialReifiedRelationshipAccess().getTargetKeyword_7());
 		}
-		otherlv_6='source'
+		otherlv_8='='
 		{
-			newLeafNode(otherlv_6, grammarAccess.getSpecializedReifiedRelationshipAccess().getSourceKeyword_6());
-		}
-		otherlv_7='='
-		{
-			newLeafNode(otherlv_7, grammarAccess.getSpecializedReifiedRelationshipAccess().getEqualsSignKeyword_7());
+			newLeafNode(otherlv_8, grammarAccess.getPartialReifiedRelationshipAccess().getEqualsSignKeyword_8());
 		}
 		(
 			(
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getSpecializedReifiedRelationshipRule());
+						$current = createModelElement(grammarAccess.getPartialReifiedRelationshipRule());
 					}
 				}
 				{
-					newCompositeNode(grammarAccess.getSpecializedReifiedRelationshipAccess().getSourceEntityCrossReference_8_0());
+					newCompositeNode(grammarAccess.getPartialReifiedRelationshipAccess().getTargetEntityCrossReference_9_0());
 				}
 				ruleReference
 				{
@@ -2668,33 +2681,9 @@ ruleSpecializedReifiedRelationship returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_9='target'
+		otherlv_10='}'
 		{
-			newLeafNode(otherlv_9, grammarAccess.getSpecializedReifiedRelationshipAccess().getTargetKeyword_9());
-		}
-		otherlv_10='='
-		{
-			newLeafNode(otherlv_10, grammarAccess.getSpecializedReifiedRelationshipAccess().getEqualsSignKeyword_10());
-		}
-		(
-			(
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getSpecializedReifiedRelationshipRule());
-					}
-				}
-				{
-					newCompositeNode(grammarAccess.getSpecializedReifiedRelationshipAccess().getTargetEntityCrossReference_11_0());
-				}
-				ruleReference
-				{
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-		otherlv_12='}'
-		{
-			newLeafNode(otherlv_12, grammarAccess.getSpecializedReifiedRelationshipAccess().getRightCurlyBracketKeyword_12());
+			newLeafNode(otherlv_10, grammarAccess.getPartialReifiedRelationshipAccess().getRightCurlyBracketKeyword_10());
 		}
 	)
 ;
@@ -4566,6 +4555,80 @@ ruleConceptSpecializationAxiom returns [EObject current=null]
 				}
 				{
 					newCompositeNode(grammarAccess.getConceptSpecializationAxiomAccess().getSuperConceptConceptCrossReference_3_0());
+				}
+				ruleReference
+				{
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+	)
+;
+
+// Entry rule entryRuleReifiedRelationshipSpecializationAxiom
+entryRuleReifiedRelationshipSpecializationAxiom returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getReifiedRelationshipSpecializationAxiomRule()); }
+	iv_ruleReifiedRelationshipSpecializationAxiom=ruleReifiedRelationshipSpecializationAxiom
+	{ $current=$iv_ruleReifiedRelationshipSpecializationAxiom.current; }
+	EOF;
+
+// Rule ReifiedRelationshipSpecializationAxiom
+ruleReifiedRelationshipSpecializationAxiom returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getReifiedRelationshipSpecializationAxiomAccess().getAnnotationsAnnotationPropertyValueParserRuleCall_0_0());
+				}
+				lv_annotations_0_0=ruleAnnotationPropertyValue
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getReifiedRelationshipSpecializationAxiomRule());
+					}
+					add(
+						$current,
+						"annotations",
+						lv_annotations_0_0,
+						"gov.nasa.jpl.imce.oml.dsl.OML.AnnotationPropertyValue");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)*
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getReifiedRelationshipSpecializationAxiomRule());
+					}
+				}
+				{
+					newCompositeNode(grammarAccess.getReifiedRelationshipSpecializationAxiomAccess().getSubRelationshipConceptualRelationshipCrossReference_1_0());
+				}
+				ruleReference
+				{
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_2='extendsRelationship'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getReifiedRelationshipSpecializationAxiomAccess().getExtendsRelationshipKeyword_2());
+		}
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getReifiedRelationshipSpecializationAxiomRule());
+					}
+				}
+				{
+					newCompositeNode(grammarAccess.getReifiedRelationshipSpecializationAxiomAccess().getSuperRelationshipConceptualRelationshipCrossReference_3_0());
 				}
 				ruleReference
 				{

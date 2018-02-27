@@ -1,0 +1,13 @@
+gov.nasa.jpl.imce.oml.tycho 0.9.4 is an API-breaking change from 0.9.3
+
+## Planned scope & Issues resolved:
+
+### [#251 Restore the old ReifiedRelationshipSpecialization pattern](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/251)
+
+### [#252 OMLZipResourceFactory instantiation and OMLZipResource.load() does not handle 'platform' URI](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/252)
+
+## Summary of changes from 0.9.3
+
+- Restored `ReifiedRelationshipSpecializationAxiom` from 0.9.1
+
+- Changed `SpecializedReifiedRelationship` from 0.9.3 to `PartialReifiedRelationship` in 0.9.4

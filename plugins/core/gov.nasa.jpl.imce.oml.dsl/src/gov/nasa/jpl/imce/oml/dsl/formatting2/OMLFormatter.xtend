@@ -76,7 +76,8 @@ import gov.nasa.jpl.imce.oml.model.terminologies.RuleBodySegment
 import gov.nasa.jpl.imce.oml.model.terminologies.SubObjectPropertyOfAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.SubDataPropertyOfAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityRestrictionAxiom
-import gov.nasa.jpl.imce.oml.model.terminologies.SpecializedReifiedRelationship
+import gov.nasa.jpl.imce.oml.model.terminologies.PartialReifiedRelationship
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom
 
 class OMLFormatter extends AbstractFormatter2 {
 	
@@ -203,19 +204,18 @@ class OMLFormatter extends AbstractFormatter2 {
 		rr.regionFor.keyword('target').prepend[newLine]
 	}
 	
-	def dispatch void format(SpecializedReifiedRelationship srr, extension IFormattableDocument document) {
-		srr.annotations.forEach[format.append[setNewLines(1)]]
-		srr.regionFor.keyword('reifiedRelationship').append[oneSpace]
-		srr.regionFor.keyword('extends').append[oneSpace]
+	def dispatch void format(PartialReifiedRelationship prr, extension IFormattableDocument document) {
+		prr.annotations.forEach[format.append[setNewLines(1)]]
+		prr.regionFor.keyword('reifiedRelationship').append[oneSpace]
 		
-		val lcurly = srr.regionFor.keyword('{')
-		val rcurly = srr.regionFor.keyword('}')
+		val lcurly = prr.regionFor.keyword('{')
+		val rcurly = prr.regionFor.keyword('}')
 		lcurly.prepend[oneSpace]
 		lcurly.append[newLine]
 		interior(lcurly, rcurly)[indent]
 		
-		srr.regionFor.keyword('source').prepend[newLine]
-		srr.regionFor.keyword('target').prepend[newLine]
+		prr.regionFor.keyword('source').prepend[newLine]
+		prr.regionFor.keyword('target').prepend[newLine]
 	}
 	
 	def dispatch void format(UnreifiedRelationship ur, extension IFormattableDocument document) {
@@ -286,6 +286,11 @@ class OMLFormatter extends AbstractFormatter2 {
 	def dispatch void format(ConceptSpecializationAxiom ax, extension IFormattableDocument document) {
 		ax.annotations.forEach[format.append[setNewLines(1)]]
 		ax.regionFor.keyword('extendsConcept').surround[oneSpace]
+	}
+	
+	def dispatch void format(ReifiedRelationshipSpecializationAxiom ax, extension IFormattableDocument document) {
+		ax.annotations.forEach[format.append[setNewLines(1)]]
+		ax.regionFor.keyword('extendsRelationship').surround[oneSpace]
 	}
 	
 	def dispatch void format(SubObjectPropertyOfAxiom ax, extension IFormattableDocument document) {
