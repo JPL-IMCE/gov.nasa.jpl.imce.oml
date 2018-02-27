@@ -28,15 +28,19 @@ import com.google.inject.Inject
  */
 class OMLZipResourceFactory implements IResourceFactory {
 	
-	private Provider<OMLZipResource> provider
+//	private Provider<OMLZipResource> provider
 	
-	@Inject
-	new(Provider<OMLZipResource> resourceProvider) {
-		this.provider = resourceProvider
+//	@Inject
+//	new(Provider<OMLZipResource> resourceProvider) {
+//		this.provider = resourceProvider
+//	}
+	
+	new(){		
 	}
 	
 	override def Resource createResource(URI uri) {
-		val OMLZipResource r = provider.get()
+		//val OMLZipResource r = provider.get()
+		val r = new OMLZipResource()
 		r.URI = uri
 		r
 	}
