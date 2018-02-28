@@ -6,6 +6,10 @@ gov.nasa.jpl.imce.oml.tycho 0.9.4 is an API-breaking change from 0.9.3
 
 ### [#252 OMLZipResourceFactory instantiation and OMLZipResource.load() does not handle 'platform' URI](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/252)
 
+### [#254 CatalogURIConverter.normalize needs to handle Eclipse' platform URIs](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/254)
+
+### [#256 OMLZipResource should have 1 OML Extent but it has 3 toplevel EObjects instead](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/256)
+
 ## Summary of changes from 0.9.3
 
 - Restored `ReifiedRelationshipSpecializationAxiom` from 0.9.1
