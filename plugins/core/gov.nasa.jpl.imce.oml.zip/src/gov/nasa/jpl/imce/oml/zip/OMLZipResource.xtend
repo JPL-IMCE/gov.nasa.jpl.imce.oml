@@ -243,18 +243,13 @@ class OMLZipResource extends ResourceImpl {
 	override protected def void doSave(OutputStream outputStream, Map<?, ?> options) throws IOException {
 		val ZipArchiveOutputStream os = new ZipArchiveOutputStream(outputStream)
 		try {
-			if (1 != contents.size)
+			val extents = contents.filter(Extent)
+			if (1 != extents.size)
 				throw new IllegalArgumentException(
-					'''OMLZipResource should have 1 OML Extent but it has «contents.size» toplevel EObjects instead.''')
+					'''OMLZipResource should have 1 OML Extent but it has «extents.size» toplevel Extents instead.''')
 					
-			val root = contents.get(0)
-			switch root {
-				Extent:
-					OMLSpecificationTables.save(root, os)
-				default:
-					throw new IllegalArgumentException(
-						"OMLZipResource should have 1 OML Extent but it has " + (root?.eClass?.name ?: "null"))
-			}
+			val root = extents.get(0)
+			OMLSpecificationTables.save(root, os)
 		} finally {
 			os.close
 		}
