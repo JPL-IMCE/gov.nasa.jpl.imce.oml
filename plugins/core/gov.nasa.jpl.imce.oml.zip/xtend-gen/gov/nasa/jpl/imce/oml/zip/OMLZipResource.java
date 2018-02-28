@@ -18,6 +18,7 @@
 package gov.nasa.jpl.imce.oml.zip;
 
 import com.google.common.base.Objects;
+import com.google.common.collect.Iterables;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
 import gov.nasa.jpl.imce.oml.model.common.Module;
 import gov.nasa.jpl.imce.oml.model.extensions.CatalogURIConverter;
@@ -39,14 +40,15 @@ import org.apache.commons.compress.archivers.zip.ZipArchiveOutputStream;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 /**
@@ -494,40 +496,19 @@ public class OMLZipResource extends ResourceImpl {
   protected void doSave(final OutputStream outputStream, final Map<?, ?> options) throws IOException {
     final ZipArchiveOutputStream os = new ZipArchiveOutputStream(outputStream);
     try {
-      int _size = this.contents.size();
+      final Iterable<Extent> extents = Iterables.<Extent>filter(this.contents, Extent.class);
+      int _size = IterableExtensions.size(extents);
       boolean _notEquals = (1 != _size);
       if (_notEquals) {
         StringConcatenation _builder = new StringConcatenation();
         _builder.append("OMLZipResource should have 1 OML Extent but it has ");
-        int _size_1 = this.contents.size();
+        int _size_1 = IterableExtensions.size(extents);
         _builder.append(_size_1);
-        _builder.append(" toplevel EObjects instead.");
+        _builder.append(" toplevel Extents instead.");
         throw new IllegalArgumentException(_builder.toString());
       }
-      final EObject root = this.contents.get(0);
-      boolean _matched = false;
-      if (root instanceof Extent) {
-        _matched=true;
-        OMLSpecificationTables.save(((Extent)root), os);
-      }
-      if (!_matched) {
-        String _elvis = null;
-        EClass _eClass = null;
-        if (root!=null) {
-          _eClass=root.eClass();
-        }
-        String _name = null;
-        if (_eClass!=null) {
-          _name=_eClass.getName();
-        }
-        if (_name != null) {
-          _elvis = _name;
-        } else {
-          _elvis = "null";
-        }
-        String _plus = ("OMLZipResource should have 1 OML Extent but it has " + _elvis);
-        throw new IllegalArgumentException(_plus);
-      }
+      final Extent root = ((Extent[])Conversions.unwrapArray(extents, Extent.class))[0];
+      OMLSpecificationTables.save(root, os);
     } finally {
       os.close();
     }
