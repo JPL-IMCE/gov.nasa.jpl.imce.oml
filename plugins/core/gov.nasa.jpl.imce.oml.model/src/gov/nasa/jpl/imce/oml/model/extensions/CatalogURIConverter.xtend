@@ -29,6 +29,8 @@ import org.eclipse.emf.ecore.resource.ContentHandler
 import org.eclipse.emf.ecore.resource.URIConverter
 import org.eclipse.emf.ecore.resource.URIHandler
 import org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl
+import java.net.URL
+import org.eclipse.core.runtime.FileLocator
 
 /**
  * CatalogURIConverter is a kind of ExtensibleURIConverterImpl
@@ -88,7 +90,15 @@ class CatalogURIConverter extends ExtensibleURIConverterImpl {
 	override def URI normalize(URI uri) {
 		if (uri.file)
 			uri
-		else {
+		else if (uri.platform) {
+			val purl = new URL(uri.toString)
+			val furl = FileLocator.toFileURL(purl)
+			if (furl != purl)
+				URI.createFileURI(furl.file)
+			else
+				throw new IllegalArgumentException(
+					"CatalogURIConverter.normalize() failed to resolve platform URI: " + uri)
+		} else {
 			val resolved = catalog.resolveURI(uri.toString)
 			if (null !== resolved && resolved.startsWith("file:"))
 				URI.createURI(resolved)
