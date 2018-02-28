@@ -22,10 +22,12 @@ import gov.nasa.jpl.imce.oml.model.extensions.OMLCatalog;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.URL;
 import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
+import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.ContentHandler;
 import org.eclipse.emf.ecore.resource.URIConverter;
@@ -284,27 +286,49 @@ public class CatalogURIConverter extends ExtensibleURIConverterImpl {
       if (_isFile) {
         _xifexpression = uri;
       } else {
-        URI _xblockexpression = null;
-        {
-          final String resolved = this.catalog.resolveURI(uri.toString());
-          URI _xifexpression_1 = null;
-          if (((null != resolved) && resolved.startsWith("file:"))) {
-            _xifexpression_1 = URI.createURI(resolved);
-          } else {
+        URI _xifexpression_1 = null;
+        boolean _isPlatform = uri.isPlatform();
+        if (_isPlatform) {
+          URI _xblockexpression = null;
+          {
+            String _string = uri.toString();
+            final URL purl = new URL(_string);
+            final URL furl = FileLocator.toFileURL(purl);
             URI _xifexpression_2 = null;
-            if ((null != this.uriConverter)) {
-              _xifexpression_2 = this.uriConverter.normalize(uri);
+            boolean _notEquals = (!Objects.equal(furl, purl));
+            if (_notEquals) {
+              _xifexpression_2 = URI.createFileURI(furl.getFile());
             } else {
-              StringConcatenation _builder = new StringConcatenation();
-              _builder.append("No parent URIConverter and no catalog mapping for URI: ");
-              _builder.append(uri);
-              throw new IllegalArgumentException(_builder.toString());
+              throw new IllegalArgumentException(
+                ("CatalogURIConverter.normalize() failed to resolve platform URI: " + uri));
             }
-            _xifexpression_1 = _xifexpression_2;
+            _xblockexpression = _xifexpression_2;
           }
-          _xblockexpression = _xifexpression_1;
+          _xifexpression_1 = _xblockexpression;
+        } else {
+          URI _xblockexpression_1 = null;
+          {
+            final String resolved = this.catalog.resolveURI(uri.toString());
+            URI _xifexpression_2 = null;
+            if (((null != resolved) && resolved.startsWith("file:"))) {
+              _xifexpression_2 = URI.createURI(resolved);
+            } else {
+              URI _xifexpression_3 = null;
+              if ((null != this.uriConverter)) {
+                _xifexpression_3 = this.uriConverter.normalize(uri);
+              } else {
+                StringConcatenation _builder = new StringConcatenation();
+                _builder.append("No parent URIConverter and no catalog mapping for URI: ");
+                _builder.append(uri);
+                throw new IllegalArgumentException(_builder.toString());
+              }
+              _xifexpression_2 = _xifexpression_3;
+            }
+            _xblockexpression_1 = _xifexpression_2;
+          }
+          _xifexpression_1 = _xblockexpression_1;
         }
-        _xifexpression = _xblockexpression;
+        _xifexpression = _xifexpression_1;
       }
       return _xifexpression;
     } catch (Throwable _e) {

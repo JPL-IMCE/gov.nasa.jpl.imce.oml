@@ -120,6 +120,8 @@ class OMLZipResource extends ResourceImpl {
 	 * is the result of parsing all the tables in the *.omlzip file.
 	 */
 	override def void load(Map<?, ?> options) throws IOException {
+		System.out.println("OMLZip. Loading: " + uri)
+		val started = System.currentTimeMillis
 		val response = if (null === options)
 				new HashMap<Object, Object>()
 			else {
@@ -225,6 +227,10 @@ class OMLZipResource extends ResourceImpl {
 				if (!omlFile.exists)
 					throw new IllegalArgumentException('''OMLZipResource.load(): URI: «uri» resolves to a non-existent file: «omlFile»''')
 				OMLSpecificationTables.load(rs, this, omlFile)
+				
+				val done = System.currentTimeMillis
+				val delta = done - started
+				System.out.println("OMLZip: Loaded "+uri+" in: "+delta+"ms")
 			}
 		}
 	}

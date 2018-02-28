@@ -172,6 +172,8 @@ public class OMLZipResource extends ResourceImpl {
    */
   @Override
   public void load(final Map<?, ?> options) throws IOException {
+    System.out.println(("OMLZip. Loading: " + this.uri));
+    final long started = System.currentTimeMillis();
     Map<?, ?> _xifexpression = null;
     if ((null == options)) {
       _xifexpression = new HashMap<Object, Object>();
@@ -476,6 +478,9 @@ public class OMLZipResource extends ResourceImpl {
           throw new IllegalArgumentException(_builder_1.toString());
         }
         OMLSpecificationTables.load(rs, this, omlFile);
+        final long done = System.currentTimeMillis();
+        final long delta = (done - started);
+        System.out.println((((("OMLZip: Loaded " + this.uri) + " in: ") + Long.valueOf(delta)) + "ms"));
       }
     }
   }
