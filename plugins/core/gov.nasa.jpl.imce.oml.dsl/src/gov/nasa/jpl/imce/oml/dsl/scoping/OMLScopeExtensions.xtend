@@ -151,10 +151,6 @@ class OMLScopeExtensions {
 		terminologyScope(tbox, [localEntities], [importedResourceNameFunction])
 	}
 	
-	def IScope allConceptualRelationshipsScope(TerminologyBox tbox) {
-		terminologyScope(tbox, [localConceptualEntities], [importedResourceNameFunction])
-	}
-	
 	def IScope allRangesScope(TerminologyBox tbox) {
 		terminologyScope(tbox, [localRanges], [importedResourceNameFunction])
 	}
@@ -169,6 +165,14 @@ class OMLScopeExtensions {
 	
 	def IScope allConceptsScope(TerminologyBox tbox) {
 		terminologyScope(tbox, [localConcepts], [importedResourceNameFunction])
+	}
+	
+	def IScope allConceptualRelationshipsScope(TerminologyBox tbox) {
+		terminologyScope(tbox, [localConceptualRelationships], [importedResourceNameFunction])
+	}
+	
+	def IScope allReifiedRelationshipRestrictionsScope(TerminologyBox tbox) {
+		terminologyScope(tbox, [localReifiedRelationshipRestrictions], [importedResourceNameFunction])
 	}
 	
 	def IScope allReifiedRelationshipsScope(TerminologyBox tbox) {

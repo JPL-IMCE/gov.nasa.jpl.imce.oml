@@ -79,7 +79,7 @@ public class TerminologiesFactoryImpl extends EFactoryImpl implements Terminolog
 			case TerminologiesPackage.FORWARD_PROPERTY: return (EObject)createForwardProperty();
 			case TerminologiesPackage.INVERSE_PROPERTY: return (EObject)createInverseProperty();
 			case TerminologiesPackage.REIFIED_RELATIONSHIP: return (EObject)createReifiedRelationship();
-			case TerminologiesPackage.PARTIAL_REIFIED_RELATIONSHIP: return (EObject)createPartialReifiedRelationship();
+			case TerminologiesPackage.REIFIED_RELATIONSHIP_RESTRICTION: return (EObject)createReifiedRelationshipRestriction();
 			case TerminologiesPackage.UNREIFIED_RELATIONSHIP: return (EObject)createUnreifiedRelationship();
 			case TerminologiesPackage.SCALAR: return (EObject)createScalar();
 			case TerminologiesPackage.ENTITY_STRUCTURED_DATA_PROPERTY: return (EObject)createEntityStructuredDataProperty();
@@ -212,9 +212,9 @@ public class TerminologiesFactoryImpl extends EFactoryImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PartialReifiedRelationship createPartialReifiedRelationship() {
-		PartialReifiedRelationshipImpl partialReifiedRelationship = new PartialReifiedRelationshipImpl();
-		return partialReifiedRelationship;
+	public ReifiedRelationshipRestriction createReifiedRelationshipRestriction() {
+		ReifiedRelationshipRestrictionImpl reifiedRelationshipRestriction = new ReifiedRelationshipRestrictionImpl();
+		return reifiedRelationshipRestriction;
 	}
 
 	/**

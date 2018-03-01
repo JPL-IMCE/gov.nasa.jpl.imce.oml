@@ -56,10 +56,10 @@ import gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction;
-import gov.nasa.jpl.imce.oml.model.terminologies.PartialReifiedRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.Predicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship;
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictableRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictedDataRange;
@@ -256,7 +256,7 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass partialReifiedRelationshipEClass = null;
+	private EClass reifiedRelationshipRestrictionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1407,8 +1407,8 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getPartialReifiedRelationship() {
-		return partialReifiedRelationshipEClass;
+	public EClass getReifiedRelationshipRestriction() {
+		return reifiedRelationshipRestrictionEClass;
 	}
 
 	/**
@@ -1416,8 +1416,8 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getPartialReifiedRelationship__AllNestedElements() {
-		return partialReifiedRelationshipEClass.getEOperations().get(0);
+	public EOperation getReifiedRelationshipRestriction__AllNestedElements() {
+		return reifiedRelationshipRestrictionEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -1425,8 +1425,8 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getPartialReifiedRelationship__RootReifiedRelationships() {
-		return partialReifiedRelationshipEClass.getEOperations().get(1);
+	public EOperation getReifiedRelationshipRestriction__RootReifiedRelationships() {
+		return reifiedRelationshipRestrictionEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -3232,9 +3232,9 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		createEOperation(reifiedRelationshipEClass, REIFIED_RELATIONSHIP___ALL_NESTED_ELEMENTS);
 		createEOperation(reifiedRelationshipEClass, REIFIED_RELATIONSHIP___ROOT_REIFIED_RELATIONSHIPS);
 
-		partialReifiedRelationshipEClass = createEClass(PARTIAL_REIFIED_RELATIONSHIP);
-		createEOperation(partialReifiedRelationshipEClass, PARTIAL_REIFIED_RELATIONSHIP___ALL_NESTED_ELEMENTS);
-		createEOperation(partialReifiedRelationshipEClass, PARTIAL_REIFIED_RELATIONSHIP___ROOT_REIFIED_RELATIONSHIPS);
+		reifiedRelationshipRestrictionEClass = createEClass(REIFIED_RELATIONSHIP_RESTRICTION);
+		createEOperation(reifiedRelationshipRestrictionEClass, REIFIED_RELATIONSHIP_RESTRICTION___ALL_NESTED_ELEMENTS);
+		createEOperation(reifiedRelationshipRestrictionEClass, REIFIED_RELATIONSHIP_RESTRICTION___ROOT_REIFIED_RELATIONSHIPS);
 
 		unreifiedRelationshipEClass = createEClass(UNREIFIED_RELATIONSHIP);
 		createEOperation(unreifiedRelationshipEClass, UNREIFIED_RELATIONSHIP___RELATION);
@@ -3533,7 +3533,7 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		conceptualRelationshipEClass.getESuperTypes().add(this.getEntityRelationship());
 		reifiedRelationshipEClass.getESuperTypes().add(this.getConceptualRelationship());
 		reifiedRelationshipEClass.getESuperTypes().add(this.getCharacterizedEntityRelationship());
-		partialReifiedRelationshipEClass.getESuperTypes().add(this.getConceptualRelationship());
+		reifiedRelationshipRestrictionEClass.getESuperTypes().add(this.getConceptualRelationship());
 		unreifiedRelationshipEClass.getESuperTypes().add(this.getCharacterizedEntityRelationship());
 		unreifiedRelationshipEClass.getESuperTypes().add(this.getRestrictableRelationship());
 		datatypeEClass.getESuperTypes().add(this.getTerm());
@@ -3748,11 +3748,11 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 
 		initEOperation(getReifiedRelationship__RootReifiedRelationships(), this.getReifiedRelationship(), "rootReifiedRelationships", 0, -1, !IS_UNIQUE, IS_ORDERED);
 
-		initEClass(partialReifiedRelationshipEClass, PartialReifiedRelationship.class, "PartialReifiedRelationship", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(reifiedRelationshipRestrictionEClass, ReifiedRelationshipRestriction.class, "ReifiedRelationshipRestriction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEOperation(getPartialReifiedRelationship__AllNestedElements(), theCommonPackage.getLogicalElement(), "allNestedElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getReifiedRelationshipRestriction__AllNestedElements(), theCommonPackage.getLogicalElement(), "allNestedElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getPartialReifiedRelationship__RootReifiedRelationships(), this.getReifiedRelationship(), "rootReifiedRelationships", 0, -1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getReifiedRelationshipRestriction__RootReifiedRelationships(), this.getReifiedRelationship(), "rootReifiedRelationships", 0, -1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(unreifiedRelationshipEClass, UnreifiedRelationship.class, "UnreifiedRelationship", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -4658,12 +4658,12 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   new String[] {
 		   });	
 		addAnnotation
-		  (getPartialReifiedRelationship__AllNestedElements(), 
+		  (getReifiedRelationshipRestriction__AllNestedElements(), 
 		   source, 
 		   new String[] {
 		   });	
 		addAnnotation
-		  (getPartialReifiedRelationship__RootReifiedRelationships(), 
+		  (getReifiedRelationshipRestriction__RootReifiedRelationships(), 
 		   source, 
 		   new String[] {
 		   });	
@@ -4994,13 +4994,13 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 			 "kind", "Set"
 		   });	
 		addAnnotation
-		  (getPartialReifiedRelationship__AllNestedElements(), 
+		  (getReifiedRelationshipRestriction__AllNestedElements(), 
 		   source, 
 		   new String[] {
 			 "kind", "Set"
 		   });	
 		addAnnotation
-		  (getPartialReifiedRelationship__RootReifiedRelationships(), 
+		  (getReifiedRelationshipRestriction__RootReifiedRelationships(), 
 		   source, 
 		   new String[] {
 			 "kind", "Set"
@@ -5148,13 +5148,13 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 			 "code", "scala.collection.immutable.Set[resolver.api.ReifiedRelationship](this)"
 		   });	
 		addAnnotation
-		  (getPartialReifiedRelationship__AllNestedElements(), 
+		  (getReifiedRelationshipRestriction__AllNestedElements(), 
 		   source, 
 		   new String[] {
 			 "code", "scala.collection.immutable.Set.empty[resolver.api.LogicalElement]"
 		   });	
 		addAnnotation
-		  (getPartialReifiedRelationship__RootReifiedRelationships(), 
+		  (getReifiedRelationshipRestriction__RootReifiedRelationships(), 
 		   source, 
 		   new String[] {
 			 "code", "resolver.ResolverUtilities.rootReifiedRelationships(this)"
@@ -5378,12 +5378,12 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   new String[] {
 		   });	
 		addAnnotation
-		  (getPartialReifiedRelationship__AllNestedElements(), 
+		  (getReifiedRelationshipRestriction__AllNestedElements(), 
 		   source, 
 		   new String[] {
 		   });	
 		addAnnotation
-		  (getPartialReifiedRelationship__RootReifiedRelationships(), 
+		  (getReifiedRelationshipRestriction__RootReifiedRelationships(), 
 		   source, 
 		   new String[] {
 		   });	
@@ -5738,12 +5738,12 @@ public class TerminologiesPackageImpl extends EPackageImpl implements Terminolog
 		   new String[] {
 		   });	
 		addAnnotation
-		  (getPartialReifiedRelationship__AllNestedElements(), 
+		  (getReifiedRelationshipRestriction__AllNestedElements(), 
 		   source, 
 		   new String[] {
 		   });	
 		addAnnotation
-		  (getPartialReifiedRelationship__RootReifiedRelationships(), 
+		  (getReifiedRelationshipRestriction__RootReifiedRelationships(), 
 		   source, 
 		   new String[] {
 		   });	

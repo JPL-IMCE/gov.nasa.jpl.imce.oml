@@ -42,7 +42,7 @@ import static org.junit.Assert.*
 
 @RunWith(XtextRunner)
 @InjectWith(OMLInjectorProvider)
-class OMLSpecializedReifiedRelationshipTest1 {
+class OMLReifiedRelationshipRestrictionTest1 {
 	
 	@Inject
 	Provider<XtextResourceSet> resourceSetProvider
@@ -240,7 +240,7 @@ class OMLSpecializedReifiedRelationshipTest1 {
 		U2_extends_U1.subRelationship = U2
 		U2_extends_U1.superRelationship = U1
 		
-		val U3 = terminologiesF.createPartialReifiedRelationship
+		val U3 = terminologiesF.createReifiedRelationshipRestriction
 		U3.tbox = g
 		U3.name = "U3"
 		U3.source = A3
@@ -251,7 +251,7 @@ class OMLSpecializedReifiedRelationshipTest1 {
 		U3_extends_U2.subRelationship = U3
 		U3_extends_U2.superRelationship = U2
 		
-		val V2 = terminologiesF.createPartialReifiedRelationship
+		val V2 = terminologiesF.createReifiedRelationshipRestriction
 		V2.tbox = g
 		V2.name = "V2"
 		V2.source = C2
@@ -262,7 +262,7 @@ class OMLSpecializedReifiedRelationshipTest1 {
 		V2_extends_V1.subRelationship = V2
 		V2_extends_V1.superRelationship = V1
 		
-		val V3 = terminologiesF.createPartialReifiedRelationship
+		val V3 = terminologiesF.createReifiedRelationshipRestriction
 		V3.tbox = g
 		V3.name = "V3"
 		V3.source = C3
@@ -273,7 +273,7 @@ class OMLSpecializedReifiedRelationshipTest1 {
 		V3_extends_V2.subRelationship = V3
 		V3_extends_V2.superRelationship = V2
 		
-		val W = terminologiesF.createPartialReifiedRelationship
+		val W = terminologiesF.createReifiedRelationshipRestriction
 		W.tbox = g
 		W.name = "W"
 		W.source = E
@@ -382,19 +382,19 @@ open terminology <http://www.example.org/OMLSpecializedReifiedRelationshipTest1>
 		source = G
 		target = H }
 
-	reifiedRelationship U3 {
+	reifiedRelationshipRestriction U3 {
 		source = A3
 		target = B3 }
 
-	reifiedRelationship V2 {
+	reifiedRelationshipRestriction V2 {
 		source = C2
 		target = D2 }
 
-	reifiedRelationship V3 {
+	reifiedRelationshipRestriction V3 {
 		source = C3
 		target = D3 }
 
-	reifiedRelationship W {
+	reifiedRelationshipRestriction W {
 		source = E
 		target = F }
 

@@ -25,8 +25,8 @@ import gov.nasa.jpl.imce.oml.model.common.ModuleElement;
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
 
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptualRelationship;
-import gov.nasa.jpl.imce.oml.model.terminologies.PartialReifiedRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship;
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.Term;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage;
 
@@ -39,18 +39,18 @@ import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Partial Reified Relationship</b></em>'.
+ * An implementation of the model object '<em><b>Reified Relationship Restriction</b></em>'.
  * <!-- end-user-doc -->
  *
  * @generated
  */
-public class PartialReifiedRelationshipImpl extends ConceptualRelationshipImpl implements PartialReifiedRelationship {
+public class ReifiedRelationshipRestrictionImpl extends ConceptualRelationshipImpl implements ReifiedRelationshipRestriction {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected PartialReifiedRelationshipImpl() {
+	protected ReifiedRelationshipRestrictionImpl() {
 		super();
 	}
 
@@ -61,7 +61,7 @@ public class PartialReifiedRelationshipImpl extends ConceptualRelationshipImpl i
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return TerminologiesPackage.Literals.PARTIAL_REIFIED_RELATIONSHIP;
+		return TerminologiesPackage.Literals.REIFIED_RELATIONSHIP_RESTRICTION;
 	}
 
 	/**
@@ -91,19 +91,19 @@ public class PartialReifiedRelationshipImpl extends ConceptualRelationshipImpl i
 	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
 		if (baseClass == ModuleElement.class) {
 			switch (baseOperationID) {
-				case CommonPackage.MODULE_ELEMENT___ALL_NESTED_ELEMENTS: return TerminologiesPackage.PARTIAL_REIFIED_RELATIONSHIP___ALL_NESTED_ELEMENTS;
+				case CommonPackage.MODULE_ELEMENT___ALL_NESTED_ELEMENTS: return TerminologiesPackage.REIFIED_RELATIONSHIP_RESTRICTION___ALL_NESTED_ELEMENTS;
 				default: return super.eDerivedOperationID(baseOperationID, baseClass);
 			}
 		}
 		if (baseClass == Term.class) {
 			switch (baseOperationID) {
-				case TerminologiesPackage.TERM___ALL_NESTED_ELEMENTS: return TerminologiesPackage.PARTIAL_REIFIED_RELATIONSHIP___ALL_NESTED_ELEMENTS;
+				case TerminologiesPackage.TERM___ALL_NESTED_ELEMENTS: return TerminologiesPackage.REIFIED_RELATIONSHIP_RESTRICTION___ALL_NESTED_ELEMENTS;
 				default: return super.eDerivedOperationID(baseOperationID, baseClass);
 			}
 		}
 		if (baseClass == ConceptualRelationship.class) {
 			switch (baseOperationID) {
-				case TerminologiesPackage.CONCEPTUAL_RELATIONSHIP___ROOT_REIFIED_RELATIONSHIPS: return TerminologiesPackage.PARTIAL_REIFIED_RELATIONSHIP___ROOT_REIFIED_RELATIONSHIPS;
+				case TerminologiesPackage.CONCEPTUAL_RELATIONSHIP___ROOT_REIFIED_RELATIONSHIPS: return TerminologiesPackage.REIFIED_RELATIONSHIP_RESTRICTION___ROOT_REIFIED_RELATIONSHIPS;
 				default: return super.eDerivedOperationID(baseOperationID, baseClass);
 			}
 		}
@@ -118,12 +118,12 @@ public class PartialReifiedRelationshipImpl extends ConceptualRelationshipImpl i
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case TerminologiesPackage.PARTIAL_REIFIED_RELATIONSHIP___ALL_NESTED_ELEMENTS:
+			case TerminologiesPackage.REIFIED_RELATIONSHIP_RESTRICTION___ALL_NESTED_ELEMENTS:
 				return allNestedElements();
-			case TerminologiesPackage.PARTIAL_REIFIED_RELATIONSHIP___ROOT_REIFIED_RELATIONSHIPS:
+			case TerminologiesPackage.REIFIED_RELATIONSHIP_RESTRICTION___ROOT_REIFIED_RELATIONSHIPS:
 				return rootReifiedRelationships();
 		}
 		return super.eInvoke(operationID, arguments);
 	}
 
-} //PartialReifiedRelationshipImpl
+} //ReifiedRelationshipRestrictionImpl

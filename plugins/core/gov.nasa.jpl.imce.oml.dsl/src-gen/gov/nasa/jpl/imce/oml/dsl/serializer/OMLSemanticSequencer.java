@@ -73,9 +73,9 @@ import gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction;
-import gov.nasa.jpl.imce.oml.model.terminologies.PartialReifiedRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship;
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple;
@@ -285,14 +285,14 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case TerminologiesPackage.NUMERIC_SCALAR_RESTRICTION:
 				sequence_NumericScalarRestriction(context, (NumericScalarRestriction) semanticObject); 
 				return; 
-			case TerminologiesPackage.PARTIAL_REIFIED_RELATIONSHIP:
-				sequence_PartialReifiedRelationship(context, (PartialReifiedRelationship) semanticObject); 
-				return; 
 			case TerminologiesPackage.PLAIN_LITERAL_SCALAR_RESTRICTION:
 				sequence_PlainLiteralScalarRestriction(context, (PlainLiteralScalarRestriction) semanticObject); 
 				return; 
 			case TerminologiesPackage.REIFIED_RELATIONSHIP:
 				sequence_ReifiedRelationship(context, (ReifiedRelationship) semanticObject); 
+				return; 
+			case TerminologiesPackage.REIFIED_RELATIONSHIP_RESTRICTION:
+				sequence_ReifiedRelationshipRestriction(context, (ReifiedRelationshipRestriction) semanticObject); 
 				return; 
 			case TerminologiesPackage.REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM:
 				sequence_ReifiedRelationshipSpecializationAxiom(context, (ReifiedRelationshipSpecializationAxiom) semanticObject); 
@@ -1065,21 +1065,6 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
-	 *     TerminologyBoxStatement returns PartialReifiedRelationship
-	 *     Term returns PartialReifiedRelationship
-	 *     EntityRelationship returns PartialReifiedRelationship
-	 *     PartialReifiedRelationship returns PartialReifiedRelationship
-	 *
-	 * Constraint:
-	 *     (annotations+=AnnotationPropertyValue* name=ID source=[Entity|Reference] target=[Entity|Reference])
-	 */
-	protected void sequence_PartialReifiedRelationship(ISerializationContext context, PartialReifiedRelationship semanticObject) {
-		genericSequencer.createSequence(context, (EObject) semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
 	 *     TerminologyBoxStatement returns PlainLiteralScalarRestriction
 	 *     Term returns PlainLiteralScalarRestriction
 	 *     Datatype returns PlainLiteralScalarRestriction
@@ -1144,6 +1129,21 @@ public class OMLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     (annotations+=AnnotationPropertyValue* name=ID singletonConceptualRelationshipClassifier=[ConceptualRelationship|Reference])
 	 */
 	protected void sequence_ReifiedRelationshipInstance(ISerializationContext context, ReifiedRelationshipInstance semanticObject) {
+		genericSequencer.createSequence(context, (EObject) semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     TerminologyBoxStatement returns ReifiedRelationshipRestriction
+	 *     Term returns ReifiedRelationshipRestriction
+	 *     EntityRelationship returns ReifiedRelationshipRestriction
+	 *     ReifiedRelationshipRestriction returns ReifiedRelationshipRestriction
+	 *
+	 * Constraint:
+	 *     (annotations+=AnnotationPropertyValue* name=ID source=[Entity|Reference] target=[Entity|Reference])
+	 */
+	protected void sequence_ReifiedRelationshipRestriction(ISerializationContext context, ReifiedRelationshipRestriction semanticObject) {
 		genericSequencer.createSequence(context, (EObject) semanticObject);
 	}
 	

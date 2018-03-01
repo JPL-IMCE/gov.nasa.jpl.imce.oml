@@ -95,10 +95,10 @@ import gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction;
-import gov.nasa.jpl.imce.oml.model.terminologies.PartialReifiedRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.Predicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship;
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictableRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue;
@@ -708,6 +708,14 @@ public class OMLExtensions {
     return Iterables.<Concept>concat(_localConcepts, _flatten);
   }
   
+  public Iterable<ConceptualRelationship> localConceptualRelationships(final TerminologyBox it) {
+    return Iterables.<ConceptualRelationship>filter(it.getBoxStatements(), ConceptualRelationship.class);
+  }
+  
+  public Iterable<ReifiedRelationshipRestriction> localReifiedRelationshipRestrictions(final TerminologyBox it) {
+    return Iterables.<ReifiedRelationshipRestriction>filter(it.getBoxStatements(), ReifiedRelationshipRestriction.class);
+  }
+  
   public Iterable<ReifiedRelationship> localReifiedRelationships(final TerminologyBox it) {
     return Iterables.<ReifiedRelationship>filter(it.getBoxStatements(), ReifiedRelationship.class);
   }
@@ -783,7 +791,7 @@ public class OMLExtensions {
     return Iterables.<EntityRelationship>concat(_localEntityRelationships, _flatten);
   }
   
-  public static EList<ReifiedRelationship> rootReifiedRelationships(final PartialReifiedRelationship prr) {
+  public static EList<ReifiedRelationship> rootReifiedRelationships(final ReifiedRelationshipRestriction prr) {
     EList<ReifiedRelationship> _xblockexpression = null;
     {
       final HashSet<ReifiedRelationship> result = new HashSet<ReifiedRelationship>();
@@ -813,8 +821,8 @@ public class OMLExtensions {
             final List<ConceptualRelationship> parents = ListExtensions.<ReifiedRelationshipSpecializationAxiom, ConceptualRelationship>map(axioms, _function_2);
             final Iterable<ReifiedRelationship> moreReifiedRelationships = Iterables.<ReifiedRelationship>filter(parents, ReifiedRelationship.class);
             Iterables.<ReifiedRelationship>addAll(result, moreReifiedRelationships);
-            final Iterable<PartialReifiedRelationship> morePartialReifiedRelationships = Iterables.<PartialReifiedRelationship>filter(parents, PartialReifiedRelationship.class);
-            Iterables.<ConceptualRelationship>addAll(horizon, morePartialReifiedRelationships);
+            final Iterable<ReifiedRelationshipRestriction> moreReifiedRelationshipRestrictions = Iterables.<ReifiedRelationshipRestriction>filter(parents, ReifiedRelationshipRestriction.class);
+            Iterables.<ConceptualRelationship>addAll(horizon, moreReifiedRelationshipRestrictions);
             boolean _isEmpty_1 = horizon.isEmpty();
             boolean _not_1 = (!_isEmpty_1);
             more = _not_1;
@@ -1103,9 +1111,9 @@ public class OMLExtensions {
       }
     }
     if (!_matched) {
-      if (e instanceof PartialReifiedRelationship) {
+      if (e instanceof ReifiedRelationshipRestriction) {
         _matched=true;
-        _switchResult = "PartialReifiedRelationship";
+        _switchResult = "ReifiedRelationshipRestriction";
       }
     }
     if (!_matched) {
@@ -1332,7 +1340,7 @@ public class OMLExtensions {
       }
     }
     if (!_matched) {
-      if (e instanceof PartialReifiedRelationship) {
+      if (e instanceof ReifiedRelationshipRestriction) {
         _matched=true;
         _switchResult = 10031;
       }
@@ -1588,7 +1596,7 @@ public class OMLExtensions {
       }
     }
     if (!_matched) {
-      if (e instanceof PartialReifiedRelationship) {
+      if (e instanceof ReifiedRelationshipRestriction) {
         _matched=true;
         _switchResult = "00013-";
       }

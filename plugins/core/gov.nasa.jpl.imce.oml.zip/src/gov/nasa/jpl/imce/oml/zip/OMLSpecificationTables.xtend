@@ -98,7 +98,7 @@ import gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction
-import gov.nasa.jpl.imce.oml.model.terminologies.PartialReifiedRelationship
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.Predicate
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom
@@ -162,7 +162,7 @@ class OMLSpecificationTables {
   protected val Map<String, Pair<ScalarDataProperty, Map<String,String>>> scalarDataProperties
   protected val Map<String, Pair<StructuredDataProperty, Map<String,String>>> structuredDataProperties
   protected val Map<String, Pair<ReifiedRelationship, Map<String,String>>> reifiedRelationships
-  protected val Map<String, Pair<PartialReifiedRelationship, Map<String,String>>> partialReifiedRelationships
+  protected val Map<String, Pair<ReifiedRelationshipRestriction, Map<String,String>>> reifiedRelationshipRestrictions
   protected val Map<String, Pair<ForwardProperty, Map<String,String>>> forwardProperties
   protected val Map<String, Pair<InverseProperty, Map<String,String>>> inverseProperties
   protected val Map<String, Pair<UnreifiedRelationship, Map<String,String>>> unreifiedRelationships
@@ -263,7 +263,7 @@ class OMLSpecificationTables {
   	scalarDataProperties = new HashMap<String, Pair<ScalarDataProperty, Map<String,String>>>()
   	structuredDataProperties = new HashMap<String, Pair<StructuredDataProperty, Map<String,String>>>()
   	reifiedRelationships = new HashMap<String, Pair<ReifiedRelationship, Map<String,String>>>()
-  	partialReifiedRelationships = new HashMap<String, Pair<PartialReifiedRelationship, Map<String,String>>>()
+  	reifiedRelationshipRestrictions = new HashMap<String, Pair<ReifiedRelationshipRestriction, Map<String,String>>>()
   	forwardProperties = new HashMap<String, Pair<ForwardProperty, Map<String,String>>>()
   	inverseProperties = new HashMap<String, Pair<InverseProperty, Map<String,String>>>()
   	unreifiedRelationships = new HashMap<String, Pair<UnreifiedRelationship, Map<String,String>>>()
@@ -540,11 +540,11 @@ class OMLSpecificationTables {
     } finally {
       zos.closeArchiveEntry()
     }
-    // PartialReifiedRelationship
-    entry = new ZipArchiveEntry("PartialReifiedRelationships.json")
+    // ReifiedRelationshipRestriction
+    entry = new ZipArchiveEntry("ReifiedRelationshipRestrictions.json")
     zos.putArchiveEntry(entry)
     try {
-      zos.write(partialReifiedRelationshipsByteArray(e))
+      zos.write(reifiedRelationshipRestrictionsByteArray(e))
     } finally {
       zos.closeArchiveEntry()
     }
@@ -1699,10 +1699,10 @@ class OMLSpecificationTables {
     return bos.toByteArray()
   }
   
-  protected static def byte[] partialReifiedRelationshipsByteArray(Extent e) {
+  protected static def byte[] reifiedRelationshipRestrictionsByteArray(Extent e) {
   	val ByteArrayOutputStream bos = new ByteArrayOutputStream()
   	val PrintWriter pw = new PrintWriter(bos)
-  	OMLTables.partialReifiedRelationships(e).forEach[it |
+  	OMLTables.reifiedRelationshipRestrictions(e).forEach[it |
   	  pw.print("{")
       pw.print("\"uuid\":")
       pw.print("\"")
@@ -2874,8 +2874,8 @@ class OMLSpecificationTables {
   	      tables.readStructuredDataProperties(ext, lines)
   	    case "ReifiedRelationships.json":
   	      tables.readReifiedRelationships(ext, lines)
-  	    case "PartialReifiedRelationships.json":
-  	      tables.readPartialReifiedRelationships(ext, lines)
+  	    case "ReifiedRelationshipRestrictions.json":
+  	      tables.readReifiedRelationshipRestrictions(ext, lines)
   	    case "ForwardProperties.json":
   	      tables.readForwardProperties(ext, lines)
   	    case "InverseProperties.json":
@@ -3449,16 +3449,16 @@ class OMLSpecificationTables {
   	}
   }
   
-  protected def void readPartialReifiedRelationships(Extent ext, ArrayList<String> lines) {
+  protected def void readReifiedRelationshipRestrictions(Extent ext, ArrayList<String> lines) {
   	val kvs = OMLZipResource.lines2tuples(lines)
   	while (!kvs.empty) {
   	  val kv = kvs.remove(kvs.size - 1)
-  	  val oml = createPartialReifiedRelationship()
+  	  val oml = createReifiedRelationshipRestriction()
   	  val uuid = kv.remove("uuid")
   	  oml.name = OMLTables.toLocalName(kv.remove("name"))
-  	  val pair = new Pair<PartialReifiedRelationship, Map<String,String>>(oml, kv)
-  	  partialReifiedRelationships.put(uuid, pair)
-  	  includePartialReifiedRelationships(uuid, oml)
+  	  val pair = new Pair<ReifiedRelationshipRestriction, Map<String,String>>(oml, kv)
+  	  reifiedRelationshipRestrictions.put(uuid, pair)
+  	  includeReifiedRelationshipRestrictions(uuid, oml)
   	}
   }
   
@@ -4011,7 +4011,7 @@ class OMLSpecificationTables {
   	predicates.put(uuid, new Pair<Predicate, Map<String, String>>(oml, Collections.emptyMap))
   	
   }
-  protected def void includePartialReifiedRelationships(String uuid, PartialReifiedRelationship oml) {
+  protected def void includeReifiedRelationshipRestrictions(String uuid, ReifiedRelationshipRestriction oml) {
   	logicalElements.put(uuid, new Pair<LogicalElement, Map<String, String>>(oml, Collections.emptyMap))
   	entities.put(uuid, new Pair<Entity, Map<String, String>>(oml, Collections.emptyMap))
   	entityRelationships.put(uuid, new Pair<EntityRelationship, Map<String, String>>(oml, Collections.emptyMap))
@@ -4191,7 +4191,7 @@ class OMLSpecificationTables {
     includeMap(logicalElements, scalarDataProperties)
     includeMap(logicalElements, structuredDataProperties)
     includeMap(logicalElements, reifiedRelationships)
-    includeMap(logicalElements, partialReifiedRelationships)
+    includeMap(logicalElements, reifiedRelationshipRestrictions)
     includeMap(logicalElements, forwardProperties)
     includeMap(logicalElements, inverseProperties)
     includeMap(logicalElements, unreifiedRelationships)
@@ -4228,16 +4228,16 @@ class OMLSpecificationTables {
   	includeMap(entities, aspects)
   	includeMap(entities, concepts)
   	includeMap(entities, reifiedRelationships)
-  	includeMap(entities, partialReifiedRelationships)
+  	includeMap(entities, reifiedRelationshipRestrictions)
     
 	// Lookup table for EntityRelationship cross references
     includeMap(entityRelationships, reifiedRelationships)
-    includeMap(entityRelationships, partialReifiedRelationships)
+    includeMap(entityRelationships, reifiedRelationshipRestrictions)
     includeMap(entityRelationships, unreifiedRelationships)
     
 	// Lookup table for ConceptualRelationship cross references
     includeMap(conceptualRelationships, reifiedRelationships)
-    includeMap(conceptualRelationships, partialReifiedRelationships)
+    includeMap(conceptualRelationships, reifiedRelationshipRestrictions)
     
 	// Lookup table for DataRange cross references
     includeMap(dataRanges, scalars)
@@ -4262,7 +4262,7 @@ class OMLSpecificationTables {
     includeMap(predicates, aspects)
     includeMap(predicates, concepts)
     includeMap(predicates, reifiedRelationships)
-    includeMap(predicates, partialReifiedRelationships)
+    includeMap(predicates, reifiedRelationshipRestrictions)
     includeMap(predicates, forwardProperties)
     includeMap(predicates, inverseProperties)
     includeMap(predicates, unreifiedRelationships)
@@ -4317,7 +4317,7 @@ class OMLSpecificationTables {
     resolveScalarDataProperties(rs)
     resolveStructuredDataProperties(rs)
     resolveReifiedRelationships(rs)
-    resolvePartialReifiedRelationships(rs)
+    resolveReifiedRelationshipRestrictions(rs)
     resolveForwardProperties(rs)
     resolveInverseProperties(rs)
     resolveUnreifiedRelationships(rs)
@@ -4911,26 +4911,26 @@ class OMLSpecificationTables {
   	]
   }
   
-  protected def void resolvePartialReifiedRelationships(ResourceSet rs) {
+  protected def void resolveReifiedRelationshipRestrictions(ResourceSet rs) {
   	
-  	partialReifiedRelationships.forEach[uuid, oml_kv |
-  	  val PartialReifiedRelationship oml = oml_kv.key
+  	reifiedRelationshipRestrictions.forEach[uuid, oml_kv |
+  	  val ReifiedRelationshipRestriction oml = oml_kv.key
   	  val Map<String, String> kv = oml_kv.value
   	  if (!kv.empty) {
   	    val String tboxXRef = kv.remove("tboxUUID")
   	    val Pair<TerminologyBox, Map<String, String>> tboxPair = terminologyBoxes.get(tboxXRef)
   	    if (null === tboxPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for tbox in partialReifiedRelationships: "+tboxXRef)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for tbox in reifiedRelationshipRestrictions: "+tboxXRef)
   	    oml.tbox = tboxPair.key
   	    val String sourceXRef = kv.remove("sourceUUID")
   	    val Pair<Entity, Map<String, String>> sourcePair = entities.get(sourceXRef)
   	    if (null === sourcePair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for source in partialReifiedRelationships: "+sourceXRef)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for source in reifiedRelationshipRestrictions: "+sourceXRef)
   	    oml.source = sourcePair.key
   	    val String targetXRef = kv.remove("targetUUID")
   	    val Pair<Entity, Map<String, String>> targetPair = entities.get(targetXRef)
   	    if (null === targetPair)
-  	      throw new IllegalArgumentException("Null cross-reference lookup for target in partialReifiedRelationships: "+targetXRef)
+  	      throw new IllegalArgumentException("Null cross-reference lookup for target in reifiedRelationshipRestrictions: "+targetXRef)
   	    oml.target = targetPair.key
   	  }
   	]
@@ -5955,9 +5955,9 @@ class OMLSpecificationTables {
   	        reifiedRelationships.put(e.uuid(), pair)
   	        logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
   	      }
-  	      PartialReifiedRelationship: {
-  	        val pair = new Pair<PartialReifiedRelationship, Map<String,String>>(e, Collections.emptyMap)
-  	        partialReifiedRelationships.put(e.uuid(), pair)
+  	      ReifiedRelationshipRestriction: {
+  	        val pair = new Pair<ReifiedRelationshipRestriction, Map<String,String>>(e, Collections.emptyMap)
+  	        reifiedRelationshipRestrictions.put(e.uuid(), pair)
   	        logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
   	      }
   	      ForwardProperty: {

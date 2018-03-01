@@ -822,21 +822,21 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.EntityRelationship");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cReifiedRelationshipParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cPartialReifiedRelationshipParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cReifiedRelationshipRestrictionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cUnreifiedRelationshipParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
 		//EntityRelationship:
-		//	ReifiedRelationship | PartialReifiedRelationship | UnreifiedRelationship;
+		//	ReifiedRelationship | ReifiedRelationshipRestriction | UnreifiedRelationship;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//ReifiedRelationship | PartialReifiedRelationship | UnreifiedRelationship
+		//ReifiedRelationship | ReifiedRelationshipRestriction | UnreifiedRelationship
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//ReifiedRelationship
 		public RuleCall getReifiedRelationshipParserRuleCall_0() { return cReifiedRelationshipParserRuleCall_0; }
 		
-		//PartialReifiedRelationship
-		public RuleCall getPartialReifiedRelationshipParserRuleCall_1() { return cPartialReifiedRelationshipParserRuleCall_1; }
+		//ReifiedRelationshipRestriction
+		public RuleCall getReifiedRelationshipRestrictionParserRuleCall_1() { return cReifiedRelationshipRestrictionParserRuleCall_1; }
 		
 		//UnreifiedRelationship
 		public RuleCall getUnreifiedRelationshipParserRuleCall_2() { return cUnreifiedRelationshipParserRuleCall_2; }
@@ -1430,12 +1430,12 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_0() { return cNameIDTerminalRuleCall_0; }
 	}
-	public class PartialReifiedRelationshipElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.PartialReifiedRelationship");
+	public class ReifiedRelationshipRestrictionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.ReifiedRelationshipRestriction");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cAnnotationsAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final RuleCall cAnnotationsAnnotationPropertyValueParserRuleCall_0_0 = (RuleCall)cAnnotationsAssignment_0.eContents().get(0);
-		private final Keyword cReifiedRelationshipKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cReifiedRelationshipRestrictionKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
@@ -1451,16 +1451,16 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cTargetEntityReferenceParserRuleCall_9_0_1 = (RuleCall)cTargetEntityCrossReference_9_0.eContents().get(1);
 		private final Keyword cRightCurlyBracketKeyword_10 = (Keyword)cGroup.eContents().get(10);
 		
-		//PartialReifiedRelationship:
+		//ReifiedRelationshipRestriction:
 		//	annotations+=AnnotationPropertyValue*
-		//	'reifiedRelationship' name=ID '{'
+		//	'reifiedRelationshipRestriction' name=ID '{'
 		//	'source' '=' source=[Entity|Reference]
 		//	'target' '=' target=[Entity|Reference]
 		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//annotations+=AnnotationPropertyValue* 'reifiedRelationship' name=ID '{' 'source' '=' source=[Entity|Reference] 'target'
-		//'=' target=[Entity|Reference] '}'
+		//annotations+=AnnotationPropertyValue* 'reifiedRelationshipRestriction' name=ID '{' 'source' '='
+		//source=[Entity|Reference] 'target' '=' target=[Entity|Reference] '}'
 		public Group getGroup() { return cGroup; }
 		
 		//annotations+=AnnotationPropertyValue*
@@ -1469,8 +1469,8 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//AnnotationPropertyValue
 		public RuleCall getAnnotationsAnnotationPropertyValueParserRuleCall_0_0() { return cAnnotationsAnnotationPropertyValueParserRuleCall_0_0; }
 		
-		//'reifiedRelationship'
-		public Keyword getReifiedRelationshipKeyword_1() { return cReifiedRelationshipKeyword_1; }
+		//'reifiedRelationshipRestriction'
+		public Keyword getReifiedRelationshipRestrictionKeyword_1() { return cReifiedRelationshipRestrictionKeyword_1; }
 		
 		//name=ID
 		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
@@ -5637,7 +5637,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	private final ReifiedRelationshipElements pReifiedRelationship;
 	private final ForwardPropertyElements pForwardProperty;
 	private final InversePropertyElements pInverseProperty;
-	private final PartialReifiedRelationshipElements pPartialReifiedRelationship;
+	private final ReifiedRelationshipRestrictionElements pReifiedRelationshipRestriction;
 	private final UnreifiedRelationshipElements pUnreifiedRelationship;
 	private final ScalarElements pScalar;
 	private final StructureElements pStructure;
@@ -5816,7 +5816,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		this.pReifiedRelationship = new ReifiedRelationshipElements();
 		this.pForwardProperty = new ForwardPropertyElements();
 		this.pInverseProperty = new InversePropertyElements();
-		this.pPartialReifiedRelationship = new PartialReifiedRelationshipElements();
+		this.pReifiedRelationshipRestriction = new ReifiedRelationshipRestrictionElements();
 		this.pUnreifiedRelationship = new UnreifiedRelationshipElements();
 		this.pScalar = new ScalarElements();
 		this.pStructure = new StructureElements();
@@ -6176,7 +6176,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//EntityRelationship:
-	//	ReifiedRelationship | PartialReifiedRelationship | UnreifiedRelationship;
+	//	ReifiedRelationship | ReifiedRelationshipRestriction | UnreifiedRelationship;
 	public EntityRelationshipElements getEntityRelationshipAccess() {
 		return pEntityRelationship;
 	}
@@ -6390,18 +6390,18 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		return getInversePropertyAccess().getRule();
 	}
 	
-	//PartialReifiedRelationship:
+	//ReifiedRelationshipRestriction:
 	//	annotations+=AnnotationPropertyValue*
-	//	'reifiedRelationship' name=ID '{'
+	//	'reifiedRelationshipRestriction' name=ID '{'
 	//	'source' '=' source=[Entity|Reference]
 	//	'target' '=' target=[Entity|Reference]
 	//	'}';
-	public PartialReifiedRelationshipElements getPartialReifiedRelationshipAccess() {
-		return pPartialReifiedRelationship;
+	public ReifiedRelationshipRestrictionElements getReifiedRelationshipRestrictionAccess() {
+		return pReifiedRelationshipRestriction;
 	}
 	
-	public ParserRule getPartialReifiedRelationshipRule() {
-		return getPartialReifiedRelationshipAccess().getRule();
+	public ParserRule getReifiedRelationshipRestrictionRule() {
+		return getReifiedRelationshipRestrictionAccess().getRule();
 	}
 	
 	//UnreifiedRelationship:

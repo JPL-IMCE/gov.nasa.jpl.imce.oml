@@ -226,26 +226,26 @@ public class TerminologiesItemProviderAdapterFactory extends TerminologiesAdapte
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.terminologies.PartialReifiedRelationship} instances.
+	 * This keeps track of the one adapter used for all {@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected PartialReifiedRelationshipItemProvider partialReifiedRelationshipItemProvider;
+	protected ReifiedRelationshipRestrictionItemProvider reifiedRelationshipRestrictionItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.terminologies.PartialReifiedRelationship}.
+	 * This creates an adapter for a {@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createPartialReifiedRelationshipAdapter() {
-		if (partialReifiedRelationshipItemProvider == null) {
-			partialReifiedRelationshipItemProvider = new PartialReifiedRelationshipItemProvider(this);
+	public Adapter createReifiedRelationshipRestrictionAdapter() {
+		if (reifiedRelationshipRestrictionItemProvider == null) {
+			reifiedRelationshipRestrictionItemProvider = new ReifiedRelationshipRestrictionItemProvider(this);
 		}
 
-		return partialReifiedRelationshipItemProvider;
+		return reifiedRelationshipRestrictionItemProvider;
 	}
 
 	/**
@@ -1089,7 +1089,7 @@ public class TerminologiesItemProviderAdapterFactory extends TerminologiesAdapte
 		if (forwardPropertyItemProvider != null) forwardPropertyItemProvider.dispose();
 		if (inversePropertyItemProvider != null) inversePropertyItemProvider.dispose();
 		if (reifiedRelationshipItemProvider != null) reifiedRelationshipItemProvider.dispose();
-		if (partialReifiedRelationshipItemProvider != null) partialReifiedRelationshipItemProvider.dispose();
+		if (reifiedRelationshipRestrictionItemProvider != null) reifiedRelationshipRestrictionItemProvider.dispose();
 		if (unreifiedRelationshipItemProvider != null) unreifiedRelationshipItemProvider.dispose();
 		if (scalarItemProvider != null) scalarItemProvider.dispose();
 		if (entityStructuredDataPropertyItemProvider != null) entityStructuredDataPropertyItemProvider.dispose();

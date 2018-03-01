@@ -82,7 +82,7 @@ import gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction
-import gov.nasa.jpl.imce.oml.model.terminologies.PartialReifiedRelationship
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.Predicate
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship
@@ -219,9 +219,9 @@ class OMLTables {
   	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   
-  static def List<PartialReifiedRelationship> partialReifiedRelationships(Extent e) {
-  	val List<PartialReifiedRelationship> result = new ArrayList<PartialReifiedRelationship>()
-  	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(PartialReifiedRelationship))]
+  static def List<ReifiedRelationshipRestriction> reifiedRelationshipRestrictions(Extent e) {
+  	val List<ReifiedRelationshipRestriction> result = new ArrayList<ReifiedRelationshipRestriction>()
+  	e.terminologies.forEach[tbox | result.addAll(tbox.boxStatements.filter(ReifiedRelationshipRestriction))]
   	result.parallelStream.sorted(crossReferencabilityComparator()).collect(Collectors.toList)
   }
   

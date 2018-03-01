@@ -24,11 +24,11 @@ import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Partial Reified Relationship</b></em>'.
+ * A representation of the model object '<em><b>Reified Relationship Restriction</b></em>'.
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * An OML PartialReifiedRelationship is an OML ConceptualRelationship
+ * An OML ReifiedRelationshipRestriction is an OML ConceptualRelationship
  * that plays the role of a specific entity for one or more OML ReifiedRelationshipSpecializationAxioms
  * with respect to an OML ConceptualRelationship as its general entity.
  * Note that this statement is well formed in a given OML TerminologyBox
@@ -37,11 +37,11 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-model-doc -->
  *
  *
- * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getPartialReifiedRelationship()
+ * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getReifiedRelationshipRestriction()
  * @model
  * @generated
  */
-public interface PartialReifiedRelationship extends ConceptualRelationship {
+public interface ReifiedRelationshipRestriction extends ConceptualRelationship {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -64,4 +64,4 @@ public interface PartialReifiedRelationship extends ConceptualRelationship {
 	 */
 	EList<ReifiedRelationship> rootReifiedRelationships();
 
-} // PartialReifiedRelationship
+} // ReifiedRelationshipRestriction

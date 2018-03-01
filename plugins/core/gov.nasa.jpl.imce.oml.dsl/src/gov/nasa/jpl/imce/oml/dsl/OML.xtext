@@ -137,7 +137,7 @@ AtomicEntity returns Entity:
 	
 EntityRelationship returns EntityRelationship:
 	ReifiedRelationship |
-	PartialReifiedRelationship |
+	ReifiedRelationshipRestriction |
 	UnreifiedRelationship;
 	
 Datatype returns Datatype:
@@ -245,9 +245,9 @@ ForwardProperty returns ForwardProperty:
 InverseProperty returns InverseProperty:
 	name=ID;
 	
-PartialReifiedRelationship returns PartialReifiedRelationship:
+ReifiedRelationshipRestriction returns ReifiedRelationshipRestriction:
 	( annotations+=AnnotationPropertyValue )*
-	'reifiedRelationship' name=ID '{'
+	'reifiedRelationshipRestriction' name=ID '{'
 	'source' '=' source=[Entity|Reference]
 	'target' '=' target=[Entity|Reference]
 	'}';

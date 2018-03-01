@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalOMLParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_IRI", "RULE_ID", "RULE_UUID", "RULE_URI", "RULE_RATIONAL", "RULE_DIGITS", "RULE_ABBREV_IRI", "RULE_TRUE", "RULE_FALSE", "RULE_PATTERN", "RULE_LANG_TAG", "RULE_DATE_TIME", "RULE_QUOTED_STRING_VALUE", "RULE_RAW_STRING_VALUE", "RULE_REAL", "RULE_FLOAT", "RULE_DECIMAL", "RULE_DIGIT", "RULE_DIGIT19", "RULE_DIGIT02", "RULE_DIGIT03", "RULE_DIGIT05", "RULE_YEAR_FRAG", "RULE_MONTH_FRAG", "RULE_DAY_FRAG", "RULE_HOUR_FRAG", "RULE_MINUTE_FRAG", "RULE_SECOND_FRAG", "RULE_END_OF_DAY_FRAG", "RULE_TIMEZONE_FRAG", "RULE_ALPHA", "RULE_SCHEME", "RULE_HEX_DIGIT", "RULE_PCT_ENCODED", "RULE_UNRESERVED", "RULE_DIGIT04", "RULE_DEC_OCTET", "RULE_IPV4_ADDRESS", "RULE_IUSER_PART", "RULE_IUSER_INFO", "RULE_IUNRESERVED_PART", "RULE_IUNRESERVED", "RULE_IHOST", "RULE_PORT", "RULE_IAUTHORITY", "RULE_IPCHAR", "RULE_ISEGMENT", "RULE_IPATH", "RULE_IHIER_PART", "RULE_IFRAGMENT", "RULE_CONSTANT_NAME", "RULE_LETTER", "RULE_LETTER_DIGIT", "RULE_LETTER_DIGIT_PREFIX", "RULE_LETTER_DIGIT_SUFFIX", "RULE_ID_PREFIX", "RULE_HEX_8DIGITS", "RULE_HEX_4DIGITS", "RULE_HEX_12DIGITS", "RULE_HEX_LETTER", "RULE_HEX", "RULE_DEC", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "'open'", "'closed'", "'final'", "'partial'", "'annotationProperty'", "'='", "'@'", "'terminology'", "'{'", "'}'", "'bundle'", "'descriptionBox'", "'bundles'", "'conceptDesignationTerminologyAxiom'", "'designatedTerminology'", "'designatedConcept'", "'extends'", "'terminologyNestingAxiom'", "'nestingTerminology'", "'nestingContext'", "'aspect'", "'concept'", "'reifiedRelationship'", "'unreified'", "'source'", "'target'", "'inverse'", "'unreifiedRelationship'", "'scalar'", "'structure'", "'entityStructuredDataProperty'", "'domain'", "'range'", "'entityScalarDataProperty'", "'structuredDataProperty'", "'scalarDataProperty'", "'rule'", "'infers'", "'if'", "'&&'", "'('", "')'", "'invSource'", "'invTarget'", "'inv'", "'anonymousConceptUnion'", "'rootConceptTaxonomy'", "'disjointLeaf'", "'someEntities'", "'.'", "'in'", "'allEntities'", "'extendsAspect'", "'extendsConcept'", "'extendsRelationship'", "'subObjectPropertyOf'", "'subDataPropertyOf'", "'someData'", "'every'", "'^^'", "'allData'", "'binaryScalarRestriction'", "'restrictedRange'", "'length'", "'minLength'", "'maxLength'", "'iriScalarRestriction'", "'pattern'", "'numericScalarRestriction'", "'minInclusive'", "'maxInclusive'", "'minExclusive'", "'maxExclusive'", "'plainLiteralScalarRestriction'", "'langRange'", "'scalarOneOfRestriction'", "'oneOf'", "'stringScalarRestriction'", "'synonymScalarRestriction'", "'timeScalarRestriction'", "'refines'", "'conceptInstance'", "'is-a'", "'reifiedRelationshipInstance'", "'tuple'", "'functional'", "'inverseFunctional'", "'essential'", "'inverseEssential'", "'symmetric'", "'asymmetric'", "'reflexive'", "'irreflexive'", "'transitive'", "'+'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_IRI", "RULE_ID", "RULE_UUID", "RULE_URI", "RULE_RATIONAL", "RULE_DIGITS", "RULE_ABBREV_IRI", "RULE_TRUE", "RULE_FALSE", "RULE_PATTERN", "RULE_LANG_TAG", "RULE_DATE_TIME", "RULE_QUOTED_STRING_VALUE", "RULE_RAW_STRING_VALUE", "RULE_REAL", "RULE_FLOAT", "RULE_DECIMAL", "RULE_DIGIT", "RULE_DIGIT19", "RULE_DIGIT02", "RULE_DIGIT03", "RULE_DIGIT05", "RULE_YEAR_FRAG", "RULE_MONTH_FRAG", "RULE_DAY_FRAG", "RULE_HOUR_FRAG", "RULE_MINUTE_FRAG", "RULE_SECOND_FRAG", "RULE_END_OF_DAY_FRAG", "RULE_TIMEZONE_FRAG", "RULE_ALPHA", "RULE_SCHEME", "RULE_HEX_DIGIT", "RULE_PCT_ENCODED", "RULE_UNRESERVED", "RULE_DIGIT04", "RULE_DEC_OCTET", "RULE_IPV4_ADDRESS", "RULE_IUSER_PART", "RULE_IUSER_INFO", "RULE_IUNRESERVED_PART", "RULE_IUNRESERVED", "RULE_IHOST", "RULE_PORT", "RULE_IAUTHORITY", "RULE_IPCHAR", "RULE_ISEGMENT", "RULE_IPATH", "RULE_IHIER_PART", "RULE_IFRAGMENT", "RULE_CONSTANT_NAME", "RULE_LETTER", "RULE_LETTER_DIGIT", "RULE_LETTER_DIGIT_PREFIX", "RULE_LETTER_DIGIT_SUFFIX", "RULE_ID_PREFIX", "RULE_HEX_8DIGITS", "RULE_HEX_4DIGITS", "RULE_HEX_12DIGITS", "RULE_HEX_LETTER", "RULE_HEX", "RULE_DEC", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "'open'", "'closed'", "'final'", "'partial'", "'annotationProperty'", "'='", "'@'", "'terminology'", "'{'", "'}'", "'bundle'", "'descriptionBox'", "'bundles'", "'conceptDesignationTerminologyAxiom'", "'designatedTerminology'", "'designatedConcept'", "'extends'", "'terminologyNestingAxiom'", "'nestingTerminology'", "'nestingContext'", "'aspect'", "'concept'", "'reifiedRelationship'", "'unreified'", "'source'", "'target'", "'inverse'", "'reifiedRelationshipRestriction'", "'unreifiedRelationship'", "'scalar'", "'structure'", "'entityStructuredDataProperty'", "'domain'", "'range'", "'entityScalarDataProperty'", "'structuredDataProperty'", "'scalarDataProperty'", "'rule'", "'infers'", "'if'", "'&&'", "'('", "')'", "'invSource'", "'invTarget'", "'inv'", "'anonymousConceptUnion'", "'rootConceptTaxonomy'", "'disjointLeaf'", "'someEntities'", "'.'", "'in'", "'allEntities'", "'extendsAspect'", "'extendsConcept'", "'extendsRelationship'", "'subObjectPropertyOf'", "'subDataPropertyOf'", "'someData'", "'every'", "'^^'", "'allData'", "'binaryScalarRestriction'", "'restrictedRange'", "'length'", "'minLength'", "'maxLength'", "'iriScalarRestriction'", "'pattern'", "'numericScalarRestriction'", "'minInclusive'", "'maxInclusive'", "'minExclusive'", "'maxExclusive'", "'plainLiteralScalarRestriction'", "'langRange'", "'scalarOneOfRestriction'", "'oneOf'", "'stringScalarRestriction'", "'synonymScalarRestriction'", "'timeScalarRestriction'", "'refines'", "'conceptInstance'", "'is-a'", "'reifiedRelationshipInstance'", "'tuple'", "'functional'", "'inverseFunctional'", "'essential'", "'inverseEssential'", "'symmetric'", "'asymmetric'", "'reflexive'", "'irreflexive'", "'transitive'", "'+'"
     };
     public static final int T__144=144;
     public static final int T__143=143;
@@ -68,6 +68,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
     public static final int T__127=127;
     public static final int T__162=162;
     public static final int T__161=161;
+    public static final int T__164=164;
     public static final int T__163=163;
     public static final int RULE_IRI=4;
     public static final int T__160=160;
@@ -2821,20 +2822,20 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "ruleInverseProperty"
 
 
-    // $ANTLR start "entryRulePartialReifiedRelationship"
-    // InternalOML.g:916:1: entryRulePartialReifiedRelationship : rulePartialReifiedRelationship EOF ;
-    public final void entryRulePartialReifiedRelationship() throws RecognitionException {
+    // $ANTLR start "entryRuleReifiedRelationshipRestriction"
+    // InternalOML.g:916:1: entryRuleReifiedRelationshipRestriction : ruleReifiedRelationshipRestriction EOF ;
+    public final void entryRuleReifiedRelationshipRestriction() throws RecognitionException {
         try {
-            // InternalOML.g:917:1: ( rulePartialReifiedRelationship EOF )
-            // InternalOML.g:918:1: rulePartialReifiedRelationship EOF
+            // InternalOML.g:917:1: ( ruleReifiedRelationshipRestriction EOF )
+            // InternalOML.g:918:1: ruleReifiedRelationshipRestriction EOF
             {
-             before(grammarAccess.getPartialReifiedRelationshipRule()); 
+             before(grammarAccess.getReifiedRelationshipRestrictionRule()); 
             pushFollow(FOLLOW_1);
-            rulePartialReifiedRelationship();
+            ruleReifiedRelationshipRestriction();
 
             state._fsp--;
 
-             after(grammarAccess.getPartialReifiedRelationshipRule()); 
+             after(grammarAccess.getReifiedRelationshipRestrictionRule()); 
             match(input,EOF,FOLLOW_2); 
 
             }
@@ -2848,35 +2849,35 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "entryRulePartialReifiedRelationship"
+    // $ANTLR end "entryRuleReifiedRelationshipRestriction"
 
 
-    // $ANTLR start "rulePartialReifiedRelationship"
-    // InternalOML.g:925:1: rulePartialReifiedRelationship : ( ( rule__PartialReifiedRelationship__Group__0 ) ) ;
-    public final void rulePartialReifiedRelationship() throws RecognitionException {
+    // $ANTLR start "ruleReifiedRelationshipRestriction"
+    // InternalOML.g:925:1: ruleReifiedRelationshipRestriction : ( ( rule__ReifiedRelationshipRestriction__Group__0 ) ) ;
+    public final void ruleReifiedRelationshipRestriction() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOML.g:929:2: ( ( ( rule__PartialReifiedRelationship__Group__0 ) ) )
-            // InternalOML.g:930:2: ( ( rule__PartialReifiedRelationship__Group__0 ) )
+            // InternalOML.g:929:2: ( ( ( rule__ReifiedRelationshipRestriction__Group__0 ) ) )
+            // InternalOML.g:930:2: ( ( rule__ReifiedRelationshipRestriction__Group__0 ) )
             {
-            // InternalOML.g:930:2: ( ( rule__PartialReifiedRelationship__Group__0 ) )
-            // InternalOML.g:931:3: ( rule__PartialReifiedRelationship__Group__0 )
+            // InternalOML.g:930:2: ( ( rule__ReifiedRelationshipRestriction__Group__0 ) )
+            // InternalOML.g:931:3: ( rule__ReifiedRelationshipRestriction__Group__0 )
             {
-             before(grammarAccess.getPartialReifiedRelationshipAccess().getGroup()); 
-            // InternalOML.g:932:3: ( rule__PartialReifiedRelationship__Group__0 )
-            // InternalOML.g:932:4: rule__PartialReifiedRelationship__Group__0
+             before(grammarAccess.getReifiedRelationshipRestrictionAccess().getGroup()); 
+            // InternalOML.g:932:3: ( rule__ReifiedRelationshipRestriction__Group__0 )
+            // InternalOML.g:932:4: rule__ReifiedRelationshipRestriction__Group__0
             {
             pushFollow(FOLLOW_2);
-            rule__PartialReifiedRelationship__Group__0();
+            rule__ReifiedRelationshipRestriction__Group__0();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getPartialReifiedRelationshipAccess().getGroup()); 
+             after(grammarAccess.getReifiedRelationshipRestrictionAccess().getGroup()); 
 
             }
 
@@ -2895,7 +2896,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rulePartialReifiedRelationship"
+    // $ANTLR end "ruleReifiedRelationshipRestriction"
 
 
     // $ANTLR start "entryRuleUnreifiedRelationship"
@@ -9171,13 +9172,13 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__EntityRelationship__Alternatives"
-    // InternalOML.g:2964:1: rule__EntityRelationship__Alternatives : ( ( ruleReifiedRelationship ) | ( rulePartialReifiedRelationship ) | ( ruleUnreifiedRelationship ) );
+    // InternalOML.g:2964:1: rule__EntityRelationship__Alternatives : ( ( ruleReifiedRelationship ) | ( ruleReifiedRelationshipRestriction ) | ( ruleUnreifiedRelationship ) );
     public final void rule__EntityRelationship__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOML.g:2968:1: ( ( ruleReifiedRelationship ) | ( rulePartialReifiedRelationship ) | ( ruleUnreifiedRelationship ) )
+            // InternalOML.g:2968:1: ( ( ruleReifiedRelationship ) | ( ruleReifiedRelationshipRestriction ) | ( ruleUnreifiedRelationship ) )
             int alt10=3;
             alt10 = dfa10.predict(input);
             switch (alt10) {
@@ -9201,18 +9202,18 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // InternalOML.g:2975:2: ( rulePartialReifiedRelationship )
+                    // InternalOML.g:2975:2: ( ruleReifiedRelationshipRestriction )
                     {
-                    // InternalOML.g:2975:2: ( rulePartialReifiedRelationship )
-                    // InternalOML.g:2976:3: rulePartialReifiedRelationship
+                    // InternalOML.g:2975:2: ( ruleReifiedRelationshipRestriction )
+                    // InternalOML.g:2976:3: ruleReifiedRelationshipRestriction
                     {
-                     before(grammarAccess.getEntityRelationshipAccess().getPartialReifiedRelationshipParserRuleCall_1()); 
+                     before(grammarAccess.getEntityRelationshipAccess().getReifiedRelationshipRestrictionParserRuleCall_1()); 
                     pushFollow(FOLLOW_2);
-                    rulePartialReifiedRelationship();
+                    ruleReifiedRelationshipRestriction();
 
                     state._fsp--;
 
-                     after(grammarAccess.getEntityRelationshipAccess().getPartialReifiedRelationshipParserRuleCall_1()); 
+                     after(grammarAccess.getEntityRelationshipAccess().getReifiedRelationshipRestrictionParserRuleCall_1()); 
 
                     }
 
@@ -10155,7 +10156,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                 alt20=2;
                 }
                 break;
-            case 111:
+            case 112:
                 {
                 alt20=3;
                 }
@@ -10165,12 +10166,12 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                 alt20=4;
                 }
                 break;
-            case 112:
+            case 113:
                 {
                 alt20=5;
                 }
                 break;
-            case 113:
+            case 114:
                 {
                 alt20=6;
                 }
@@ -12989,7 +12990,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                 int alt38=2;
                 int LA38_0 = input.LA(1);
 
-                if ( ((LA38_0>=RULE_IRI && LA38_0<=RULE_ID)||LA38_0==RULE_ABBREV_IRI||LA38_0==75||LA38_0==82||(LA38_0>=85 && LA38_0<=86)||(LA38_0>=89 && LA38_0<=91)||(LA38_0>=96 && LA38_0<=99)||(LA38_0>=102 && LA38_0<=105)||LA38_0==117||LA38_0==120||(LA38_0>=126 && LA38_0<=127)||(LA38_0>=129 && LA38_0<=130)||LA38_0==135||LA38_0==137||LA38_0==142||(LA38_0>=144 && LA38_0<=148)) ) {
+                if ( ((LA38_0>=RULE_IRI && LA38_0<=RULE_ID)||LA38_0==RULE_ABBREV_IRI||LA38_0==75||LA38_0==82||(LA38_0>=85 && LA38_0<=86)||(LA38_0>=89 && LA38_0<=91)||(LA38_0>=96 && LA38_0<=100)||(LA38_0>=103 && LA38_0<=106)||LA38_0==118||LA38_0==121||(LA38_0>=127 && LA38_0<=128)||(LA38_0>=130 && LA38_0<=131)||LA38_0==136||LA38_0==138||LA38_0==143||(LA38_0>=145 && LA38_0<=149)) ) {
                     alt38=1;
                 }
 
@@ -13688,7 +13689,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                 int alt41=2;
                 int LA41_0 = input.LA(1);
 
-                if ( ((LA41_0>=RULE_IRI && LA41_0<=RULE_ID)||LA41_0==RULE_ABBREV_IRI||LA41_0==75||(LA41_0>=81 && LA41_0<=82)||(LA41_0>=85 && LA41_0<=86)||(LA41_0>=89 && LA41_0<=91)||(LA41_0>=96 && LA41_0<=99)||(LA41_0>=102 && LA41_0<=105)||LA41_0==115||LA41_0==117||LA41_0==120||(LA41_0>=126 && LA41_0<=127)||(LA41_0>=129 && LA41_0<=130)||LA41_0==135||LA41_0==137||LA41_0==142||(LA41_0>=144 && LA41_0<=148)) ) {
+                if ( ((LA41_0>=RULE_IRI && LA41_0<=RULE_ID)||LA41_0==RULE_ABBREV_IRI||LA41_0==75||(LA41_0>=81 && LA41_0<=82)||(LA41_0>=85 && LA41_0<=86)||(LA41_0>=89 && LA41_0<=91)||(LA41_0>=96 && LA41_0<=100)||(LA41_0>=103 && LA41_0<=106)||LA41_0==116||LA41_0==118||LA41_0==121||(LA41_0>=127 && LA41_0<=128)||(LA41_0>=130 && LA41_0<=131)||LA41_0==136||LA41_0==138||LA41_0==143||(LA41_0>=145 && LA41_0<=149)) ) {
                     alt41=1;
                 }
 
@@ -14387,7 +14388,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                 int alt44=2;
                 int LA44_0 = input.LA(1);
 
-                if ( ((LA44_0>=RULE_IRI && LA44_0<=RULE_ID)||LA44_0==RULE_ABBREV_IRI||LA44_0==75||LA44_0==85||(LA44_0>=100 && LA44_0<=101)||(LA44_0>=149 && LA44_0<=150)||(LA44_0>=152 && LA44_0<=153)) ) {
+                if ( ((LA44_0>=RULE_IRI && LA44_0<=RULE_ID)||LA44_0==RULE_ABBREV_IRI||LA44_0==75||LA44_0==85||(LA44_0>=101 && LA44_0<=102)||(LA44_0>=150 && LA44_0<=151)||(LA44_0>=153 && LA44_0<=154)) ) {
                     alt44=1;
                 }
 
@@ -18344,23 +18345,23 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__ReifiedRelationship__Group_8__2__Impl"
 
 
-    // $ANTLR start "rule__PartialReifiedRelationship__Group__0"
-    // InternalOML.g:5832:1: rule__PartialReifiedRelationship__Group__0 : rule__PartialReifiedRelationship__Group__0__Impl rule__PartialReifiedRelationship__Group__1 ;
-    public final void rule__PartialReifiedRelationship__Group__0() throws RecognitionException {
+    // $ANTLR start "rule__ReifiedRelationshipRestriction__Group__0"
+    // InternalOML.g:5832:1: rule__ReifiedRelationshipRestriction__Group__0 : rule__ReifiedRelationshipRestriction__Group__0__Impl rule__ReifiedRelationshipRestriction__Group__1 ;
+    public final void rule__ReifiedRelationshipRestriction__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOML.g:5836:1: ( rule__PartialReifiedRelationship__Group__0__Impl rule__PartialReifiedRelationship__Group__1 )
-            // InternalOML.g:5837:2: rule__PartialReifiedRelationship__Group__0__Impl rule__PartialReifiedRelationship__Group__1
+            // InternalOML.g:5836:1: ( rule__ReifiedRelationshipRestriction__Group__0__Impl rule__ReifiedRelationshipRestriction__Group__1 )
+            // InternalOML.g:5837:2: rule__ReifiedRelationshipRestriction__Group__0__Impl rule__ReifiedRelationshipRestriction__Group__1
             {
-            pushFollow(FOLLOW_35);
-            rule__PartialReifiedRelationship__Group__0__Impl();
+            pushFollow(FOLLOW_40);
+            rule__ReifiedRelationshipRestriction__Group__0__Impl();
 
             state._fsp--;
 
             pushFollow(FOLLOW_2);
-            rule__PartialReifiedRelationship__Group__1();
+            rule__ReifiedRelationshipRestriction__Group__1();
 
             state._fsp--;
 
@@ -18379,24 +18380,24 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__PartialReifiedRelationship__Group__0"
+    // $ANTLR end "rule__ReifiedRelationshipRestriction__Group__0"
 
 
-    // $ANTLR start "rule__PartialReifiedRelationship__Group__0__Impl"
-    // InternalOML.g:5844:1: rule__PartialReifiedRelationship__Group__0__Impl : ( ( rule__PartialReifiedRelationship__AnnotationsAssignment_0 )* ) ;
-    public final void rule__PartialReifiedRelationship__Group__0__Impl() throws RecognitionException {
+    // $ANTLR start "rule__ReifiedRelationshipRestriction__Group__0__Impl"
+    // InternalOML.g:5844:1: rule__ReifiedRelationshipRestriction__Group__0__Impl : ( ( rule__ReifiedRelationshipRestriction__AnnotationsAssignment_0 )* ) ;
+    public final void rule__ReifiedRelationshipRestriction__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOML.g:5848:1: ( ( ( rule__PartialReifiedRelationship__AnnotationsAssignment_0 )* ) )
-            // InternalOML.g:5849:1: ( ( rule__PartialReifiedRelationship__AnnotationsAssignment_0 )* )
+            // InternalOML.g:5848:1: ( ( ( rule__ReifiedRelationshipRestriction__AnnotationsAssignment_0 )* ) )
+            // InternalOML.g:5849:1: ( ( rule__ReifiedRelationshipRestriction__AnnotationsAssignment_0 )* )
             {
-            // InternalOML.g:5849:1: ( ( rule__PartialReifiedRelationship__AnnotationsAssignment_0 )* )
-            // InternalOML.g:5850:2: ( rule__PartialReifiedRelationship__AnnotationsAssignment_0 )*
+            // InternalOML.g:5849:1: ( ( rule__ReifiedRelationshipRestriction__AnnotationsAssignment_0 )* )
+            // InternalOML.g:5850:2: ( rule__ReifiedRelationshipRestriction__AnnotationsAssignment_0 )*
             {
-             before(grammarAccess.getPartialReifiedRelationshipAccess().getAnnotationsAssignment_0()); 
-            // InternalOML.g:5851:2: ( rule__PartialReifiedRelationship__AnnotationsAssignment_0 )*
+             before(grammarAccess.getReifiedRelationshipRestrictionAccess().getAnnotationsAssignment_0()); 
+            // InternalOML.g:5851:2: ( rule__ReifiedRelationshipRestriction__AnnotationsAssignment_0 )*
             loop53:
             do {
                 int alt53=2;
@@ -18409,10 +18410,10 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
 
                 switch (alt53) {
             	case 1 :
-            	    // InternalOML.g:5851:3: rule__PartialReifiedRelationship__AnnotationsAssignment_0
+            	    // InternalOML.g:5851:3: rule__ReifiedRelationshipRestriction__AnnotationsAssignment_0
             	    {
             	    pushFollow(FOLLOW_11);
-            	    rule__PartialReifiedRelationship__AnnotationsAssignment_0();
+            	    rule__ReifiedRelationshipRestriction__AnnotationsAssignment_0();
 
             	    state._fsp--;
 
@@ -18425,7 +18426,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                 }
             } while (true);
 
-             after(grammarAccess.getPartialReifiedRelationshipAccess().getAnnotationsAssignment_0()); 
+             after(grammarAccess.getReifiedRelationshipRestrictionAccess().getAnnotationsAssignment_0()); 
 
             }
 
@@ -18444,26 +18445,26 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__PartialReifiedRelationship__Group__0__Impl"
+    // $ANTLR end "rule__ReifiedRelationshipRestriction__Group__0__Impl"
 
 
-    // $ANTLR start "rule__PartialReifiedRelationship__Group__1"
-    // InternalOML.g:5859:1: rule__PartialReifiedRelationship__Group__1 : rule__PartialReifiedRelationship__Group__1__Impl rule__PartialReifiedRelationship__Group__2 ;
-    public final void rule__PartialReifiedRelationship__Group__1() throws RecognitionException {
+    // $ANTLR start "rule__ReifiedRelationshipRestriction__Group__1"
+    // InternalOML.g:5859:1: rule__ReifiedRelationshipRestriction__Group__1 : rule__ReifiedRelationshipRestriction__Group__1__Impl rule__ReifiedRelationshipRestriction__Group__2 ;
+    public final void rule__ReifiedRelationshipRestriction__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOML.g:5863:1: ( rule__PartialReifiedRelationship__Group__1__Impl rule__PartialReifiedRelationship__Group__2 )
-            // InternalOML.g:5864:2: rule__PartialReifiedRelationship__Group__1__Impl rule__PartialReifiedRelationship__Group__2
+            // InternalOML.g:5863:1: ( rule__ReifiedRelationshipRestriction__Group__1__Impl rule__ReifiedRelationshipRestriction__Group__2 )
+            // InternalOML.g:5864:2: rule__ReifiedRelationshipRestriction__Group__1__Impl rule__ReifiedRelationshipRestriction__Group__2
             {
             pushFollow(FOLLOW_33);
-            rule__PartialReifiedRelationship__Group__1__Impl();
+            rule__ReifiedRelationshipRestriction__Group__1__Impl();
 
             state._fsp--;
 
             pushFollow(FOLLOW_2);
-            rule__PartialReifiedRelationship__Group__2();
+            rule__ReifiedRelationshipRestriction__Group__2();
 
             state._fsp--;
 
@@ -18482,25 +18483,25 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__PartialReifiedRelationship__Group__1"
+    // $ANTLR end "rule__ReifiedRelationshipRestriction__Group__1"
 
 
-    // $ANTLR start "rule__PartialReifiedRelationship__Group__1__Impl"
-    // InternalOML.g:5871:1: rule__PartialReifiedRelationship__Group__1__Impl : ( 'reifiedRelationship' ) ;
-    public final void rule__PartialReifiedRelationship__Group__1__Impl() throws RecognitionException {
+    // $ANTLR start "rule__ReifiedRelationshipRestriction__Group__1__Impl"
+    // InternalOML.g:5871:1: rule__ReifiedRelationshipRestriction__Group__1__Impl : ( 'reifiedRelationshipRestriction' ) ;
+    public final void rule__ReifiedRelationshipRestriction__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOML.g:5875:1: ( ( 'reifiedRelationship' ) )
-            // InternalOML.g:5876:1: ( 'reifiedRelationship' )
+            // InternalOML.g:5875:1: ( ( 'reifiedRelationshipRestriction' ) )
+            // InternalOML.g:5876:1: ( 'reifiedRelationshipRestriction' )
             {
-            // InternalOML.g:5876:1: ( 'reifiedRelationship' )
-            // InternalOML.g:5877:2: 'reifiedRelationship'
+            // InternalOML.g:5876:1: ( 'reifiedRelationshipRestriction' )
+            // InternalOML.g:5877:2: 'reifiedRelationshipRestriction'
             {
-             before(grammarAccess.getPartialReifiedRelationshipAccess().getReifiedRelationshipKeyword_1()); 
-            match(input,91,FOLLOW_2); 
-             after(grammarAccess.getPartialReifiedRelationshipAccess().getReifiedRelationshipKeyword_1()); 
+             before(grammarAccess.getReifiedRelationshipRestrictionAccess().getReifiedRelationshipRestrictionKeyword_1()); 
+            match(input,96,FOLLOW_2); 
+             after(grammarAccess.getReifiedRelationshipRestrictionAccess().getReifiedRelationshipRestrictionKeyword_1()); 
 
             }
 
@@ -18519,26 +18520,26 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__PartialReifiedRelationship__Group__1__Impl"
+    // $ANTLR end "rule__ReifiedRelationshipRestriction__Group__1__Impl"
 
 
-    // $ANTLR start "rule__PartialReifiedRelationship__Group__2"
-    // InternalOML.g:5886:1: rule__PartialReifiedRelationship__Group__2 : rule__PartialReifiedRelationship__Group__2__Impl rule__PartialReifiedRelationship__Group__3 ;
-    public final void rule__PartialReifiedRelationship__Group__2() throws RecognitionException {
+    // $ANTLR start "rule__ReifiedRelationshipRestriction__Group__2"
+    // InternalOML.g:5886:1: rule__ReifiedRelationshipRestriction__Group__2 : rule__ReifiedRelationshipRestriction__Group__2__Impl rule__ReifiedRelationshipRestriction__Group__3 ;
+    public final void rule__ReifiedRelationshipRestriction__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOML.g:5890:1: ( rule__PartialReifiedRelationship__Group__2__Impl rule__PartialReifiedRelationship__Group__3 )
-            // InternalOML.g:5891:2: rule__PartialReifiedRelationship__Group__2__Impl rule__PartialReifiedRelationship__Group__3
+            // InternalOML.g:5890:1: ( rule__ReifiedRelationshipRestriction__Group__2__Impl rule__ReifiedRelationshipRestriction__Group__3 )
+            // InternalOML.g:5891:2: rule__ReifiedRelationshipRestriction__Group__2__Impl rule__ReifiedRelationshipRestriction__Group__3
             {
             pushFollow(FOLLOW_13);
-            rule__PartialReifiedRelationship__Group__2__Impl();
+            rule__ReifiedRelationshipRestriction__Group__2__Impl();
 
             state._fsp--;
 
             pushFollow(FOLLOW_2);
-            rule__PartialReifiedRelationship__Group__3();
+            rule__ReifiedRelationshipRestriction__Group__3();
 
             state._fsp--;
 
@@ -18557,35 +18558,35 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__PartialReifiedRelationship__Group__2"
+    // $ANTLR end "rule__ReifiedRelationshipRestriction__Group__2"
 
 
-    // $ANTLR start "rule__PartialReifiedRelationship__Group__2__Impl"
-    // InternalOML.g:5898:1: rule__PartialReifiedRelationship__Group__2__Impl : ( ( rule__PartialReifiedRelationship__NameAssignment_2 ) ) ;
-    public final void rule__PartialReifiedRelationship__Group__2__Impl() throws RecognitionException {
+    // $ANTLR start "rule__ReifiedRelationshipRestriction__Group__2__Impl"
+    // InternalOML.g:5898:1: rule__ReifiedRelationshipRestriction__Group__2__Impl : ( ( rule__ReifiedRelationshipRestriction__NameAssignment_2 ) ) ;
+    public final void rule__ReifiedRelationshipRestriction__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOML.g:5902:1: ( ( ( rule__PartialReifiedRelationship__NameAssignment_2 ) ) )
-            // InternalOML.g:5903:1: ( ( rule__PartialReifiedRelationship__NameAssignment_2 ) )
+            // InternalOML.g:5902:1: ( ( ( rule__ReifiedRelationshipRestriction__NameAssignment_2 ) ) )
+            // InternalOML.g:5903:1: ( ( rule__ReifiedRelationshipRestriction__NameAssignment_2 ) )
             {
-            // InternalOML.g:5903:1: ( ( rule__PartialReifiedRelationship__NameAssignment_2 ) )
-            // InternalOML.g:5904:2: ( rule__PartialReifiedRelationship__NameAssignment_2 )
+            // InternalOML.g:5903:1: ( ( rule__ReifiedRelationshipRestriction__NameAssignment_2 ) )
+            // InternalOML.g:5904:2: ( rule__ReifiedRelationshipRestriction__NameAssignment_2 )
             {
-             before(grammarAccess.getPartialReifiedRelationshipAccess().getNameAssignment_2()); 
-            // InternalOML.g:5905:2: ( rule__PartialReifiedRelationship__NameAssignment_2 )
-            // InternalOML.g:5905:3: rule__PartialReifiedRelationship__NameAssignment_2
+             before(grammarAccess.getReifiedRelationshipRestrictionAccess().getNameAssignment_2()); 
+            // InternalOML.g:5905:2: ( rule__ReifiedRelationshipRestriction__NameAssignment_2 )
+            // InternalOML.g:5905:3: rule__ReifiedRelationshipRestriction__NameAssignment_2
             {
             pushFollow(FOLLOW_2);
-            rule__PartialReifiedRelationship__NameAssignment_2();
+            rule__ReifiedRelationshipRestriction__NameAssignment_2();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getPartialReifiedRelationshipAccess().getNameAssignment_2()); 
+             after(grammarAccess.getReifiedRelationshipRestrictionAccess().getNameAssignment_2()); 
 
             }
 
@@ -18604,26 +18605,26 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__PartialReifiedRelationship__Group__2__Impl"
+    // $ANTLR end "rule__ReifiedRelationshipRestriction__Group__2__Impl"
 
 
-    // $ANTLR start "rule__PartialReifiedRelationship__Group__3"
-    // InternalOML.g:5913:1: rule__PartialReifiedRelationship__Group__3 : rule__PartialReifiedRelationship__Group__3__Impl rule__PartialReifiedRelationship__Group__4 ;
-    public final void rule__PartialReifiedRelationship__Group__3() throws RecognitionException {
+    // $ANTLR start "rule__ReifiedRelationshipRestriction__Group__3"
+    // InternalOML.g:5913:1: rule__ReifiedRelationshipRestriction__Group__3 : rule__ReifiedRelationshipRestriction__Group__3__Impl rule__ReifiedRelationshipRestriction__Group__4 ;
+    public final void rule__ReifiedRelationshipRestriction__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOML.g:5917:1: ( rule__PartialReifiedRelationship__Group__3__Impl rule__PartialReifiedRelationship__Group__4 )
-            // InternalOML.g:5918:2: rule__PartialReifiedRelationship__Group__3__Impl rule__PartialReifiedRelationship__Group__4
+            // InternalOML.g:5917:1: ( rule__ReifiedRelationshipRestriction__Group__3__Impl rule__ReifiedRelationshipRestriction__Group__4 )
+            // InternalOML.g:5918:2: rule__ReifiedRelationshipRestriction__Group__3__Impl rule__ReifiedRelationshipRestriction__Group__4
             {
-            pushFollow(FOLLOW_40);
-            rule__PartialReifiedRelationship__Group__3__Impl();
+            pushFollow(FOLLOW_41);
+            rule__ReifiedRelationshipRestriction__Group__3__Impl();
 
             state._fsp--;
 
             pushFollow(FOLLOW_2);
-            rule__PartialReifiedRelationship__Group__4();
+            rule__ReifiedRelationshipRestriction__Group__4();
 
             state._fsp--;
 
@@ -18642,12 +18643,12 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__PartialReifiedRelationship__Group__3"
+    // $ANTLR end "rule__ReifiedRelationshipRestriction__Group__3"
 
 
-    // $ANTLR start "rule__PartialReifiedRelationship__Group__3__Impl"
-    // InternalOML.g:5925:1: rule__PartialReifiedRelationship__Group__3__Impl : ( '{' ) ;
-    public final void rule__PartialReifiedRelationship__Group__3__Impl() throws RecognitionException {
+    // $ANTLR start "rule__ReifiedRelationshipRestriction__Group__3__Impl"
+    // InternalOML.g:5925:1: rule__ReifiedRelationshipRestriction__Group__3__Impl : ( '{' ) ;
+    public final void rule__ReifiedRelationshipRestriction__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
@@ -18658,9 +18659,9 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:5930:1: ( '{' )
             // InternalOML.g:5931:2: '{'
             {
-             before(grammarAccess.getPartialReifiedRelationshipAccess().getLeftCurlyBracketKeyword_3()); 
+             before(grammarAccess.getReifiedRelationshipRestrictionAccess().getLeftCurlyBracketKeyword_3()); 
             match(input,77,FOLLOW_2); 
-             after(grammarAccess.getPartialReifiedRelationshipAccess().getLeftCurlyBracketKeyword_3()); 
+             after(grammarAccess.getReifiedRelationshipRestrictionAccess().getLeftCurlyBracketKeyword_3()); 
 
             }
 
@@ -18679,26 +18680,26 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__PartialReifiedRelationship__Group__3__Impl"
+    // $ANTLR end "rule__ReifiedRelationshipRestriction__Group__3__Impl"
 
 
-    // $ANTLR start "rule__PartialReifiedRelationship__Group__4"
-    // InternalOML.g:5940:1: rule__PartialReifiedRelationship__Group__4 : rule__PartialReifiedRelationship__Group__4__Impl rule__PartialReifiedRelationship__Group__5 ;
-    public final void rule__PartialReifiedRelationship__Group__4() throws RecognitionException {
+    // $ANTLR start "rule__ReifiedRelationshipRestriction__Group__4"
+    // InternalOML.g:5940:1: rule__ReifiedRelationshipRestriction__Group__4 : rule__ReifiedRelationshipRestriction__Group__4__Impl rule__ReifiedRelationshipRestriction__Group__5 ;
+    public final void rule__ReifiedRelationshipRestriction__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOML.g:5944:1: ( rule__PartialReifiedRelationship__Group__4__Impl rule__PartialReifiedRelationship__Group__5 )
-            // InternalOML.g:5945:2: rule__PartialReifiedRelationship__Group__4__Impl rule__PartialReifiedRelationship__Group__5
+            // InternalOML.g:5944:1: ( rule__ReifiedRelationshipRestriction__Group__4__Impl rule__ReifiedRelationshipRestriction__Group__5 )
+            // InternalOML.g:5945:2: rule__ReifiedRelationshipRestriction__Group__4__Impl rule__ReifiedRelationshipRestriction__Group__5
             {
             pushFollow(FOLLOW_6);
-            rule__PartialReifiedRelationship__Group__4__Impl();
+            rule__ReifiedRelationshipRestriction__Group__4__Impl();
 
             state._fsp--;
 
             pushFollow(FOLLOW_2);
-            rule__PartialReifiedRelationship__Group__5();
+            rule__ReifiedRelationshipRestriction__Group__5();
 
             state._fsp--;
 
@@ -18717,12 +18718,12 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__PartialReifiedRelationship__Group__4"
+    // $ANTLR end "rule__ReifiedRelationshipRestriction__Group__4"
 
 
-    // $ANTLR start "rule__PartialReifiedRelationship__Group__4__Impl"
-    // InternalOML.g:5952:1: rule__PartialReifiedRelationship__Group__4__Impl : ( 'source' ) ;
-    public final void rule__PartialReifiedRelationship__Group__4__Impl() throws RecognitionException {
+    // $ANTLR start "rule__ReifiedRelationshipRestriction__Group__4__Impl"
+    // InternalOML.g:5952:1: rule__ReifiedRelationshipRestriction__Group__4__Impl : ( 'source' ) ;
+    public final void rule__ReifiedRelationshipRestriction__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
@@ -18733,9 +18734,9 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:5957:1: ( 'source' )
             // InternalOML.g:5958:2: 'source'
             {
-             before(grammarAccess.getPartialReifiedRelationshipAccess().getSourceKeyword_4()); 
+             before(grammarAccess.getReifiedRelationshipRestrictionAccess().getSourceKeyword_4()); 
             match(input,93,FOLLOW_2); 
-             after(grammarAccess.getPartialReifiedRelationshipAccess().getSourceKeyword_4()); 
+             after(grammarAccess.getReifiedRelationshipRestrictionAccess().getSourceKeyword_4()); 
 
             }
 
@@ -18754,26 +18755,26 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__PartialReifiedRelationship__Group__4__Impl"
+    // $ANTLR end "rule__ReifiedRelationshipRestriction__Group__4__Impl"
 
 
-    // $ANTLR start "rule__PartialReifiedRelationship__Group__5"
-    // InternalOML.g:5967:1: rule__PartialReifiedRelationship__Group__5 : rule__PartialReifiedRelationship__Group__5__Impl rule__PartialReifiedRelationship__Group__6 ;
-    public final void rule__PartialReifiedRelationship__Group__5() throws RecognitionException {
+    // $ANTLR start "rule__ReifiedRelationshipRestriction__Group__5"
+    // InternalOML.g:5967:1: rule__ReifiedRelationshipRestriction__Group__5 : rule__ReifiedRelationshipRestriction__Group__5__Impl rule__ReifiedRelationshipRestriction__Group__6 ;
+    public final void rule__ReifiedRelationshipRestriction__Group__5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOML.g:5971:1: ( rule__PartialReifiedRelationship__Group__5__Impl rule__PartialReifiedRelationship__Group__6 )
-            // InternalOML.g:5972:2: rule__PartialReifiedRelationship__Group__5__Impl rule__PartialReifiedRelationship__Group__6
+            // InternalOML.g:5971:1: ( rule__ReifiedRelationshipRestriction__Group__5__Impl rule__ReifiedRelationshipRestriction__Group__6 )
+            // InternalOML.g:5972:2: rule__ReifiedRelationshipRestriction__Group__5__Impl rule__ReifiedRelationshipRestriction__Group__6
             {
             pushFollow(FOLLOW_26);
-            rule__PartialReifiedRelationship__Group__5__Impl();
+            rule__ReifiedRelationshipRestriction__Group__5__Impl();
 
             state._fsp--;
 
             pushFollow(FOLLOW_2);
-            rule__PartialReifiedRelationship__Group__6();
+            rule__ReifiedRelationshipRestriction__Group__6();
 
             state._fsp--;
 
@@ -18792,12 +18793,12 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__PartialReifiedRelationship__Group__5"
+    // $ANTLR end "rule__ReifiedRelationshipRestriction__Group__5"
 
 
-    // $ANTLR start "rule__PartialReifiedRelationship__Group__5__Impl"
-    // InternalOML.g:5979:1: rule__PartialReifiedRelationship__Group__5__Impl : ( '=' ) ;
-    public final void rule__PartialReifiedRelationship__Group__5__Impl() throws RecognitionException {
+    // $ANTLR start "rule__ReifiedRelationshipRestriction__Group__5__Impl"
+    // InternalOML.g:5979:1: rule__ReifiedRelationshipRestriction__Group__5__Impl : ( '=' ) ;
+    public final void rule__ReifiedRelationshipRestriction__Group__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
@@ -18808,9 +18809,9 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:5984:1: ( '=' )
             // InternalOML.g:5985:2: '='
             {
-             before(grammarAccess.getPartialReifiedRelationshipAccess().getEqualsSignKeyword_5()); 
+             before(grammarAccess.getReifiedRelationshipRestrictionAccess().getEqualsSignKeyword_5()); 
             match(input,74,FOLLOW_2); 
-             after(grammarAccess.getPartialReifiedRelationshipAccess().getEqualsSignKeyword_5()); 
+             after(grammarAccess.getReifiedRelationshipRestrictionAccess().getEqualsSignKeyword_5()); 
 
             }
 
@@ -18829,26 +18830,26 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__PartialReifiedRelationship__Group__5__Impl"
+    // $ANTLR end "rule__ReifiedRelationshipRestriction__Group__5__Impl"
 
 
-    // $ANTLR start "rule__PartialReifiedRelationship__Group__6"
-    // InternalOML.g:5994:1: rule__PartialReifiedRelationship__Group__6 : rule__PartialReifiedRelationship__Group__6__Impl rule__PartialReifiedRelationship__Group__7 ;
-    public final void rule__PartialReifiedRelationship__Group__6() throws RecognitionException {
+    // $ANTLR start "rule__ReifiedRelationshipRestriction__Group__6"
+    // InternalOML.g:5994:1: rule__ReifiedRelationshipRestriction__Group__6 : rule__ReifiedRelationshipRestriction__Group__6__Impl rule__ReifiedRelationshipRestriction__Group__7 ;
+    public final void rule__ReifiedRelationshipRestriction__Group__6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOML.g:5998:1: ( rule__PartialReifiedRelationship__Group__6__Impl rule__PartialReifiedRelationship__Group__7 )
-            // InternalOML.g:5999:2: rule__PartialReifiedRelationship__Group__6__Impl rule__PartialReifiedRelationship__Group__7
+            // InternalOML.g:5998:1: ( rule__ReifiedRelationshipRestriction__Group__6__Impl rule__ReifiedRelationshipRestriction__Group__7 )
+            // InternalOML.g:5999:2: rule__ReifiedRelationshipRestriction__Group__6__Impl rule__ReifiedRelationshipRestriction__Group__7
             {
             pushFollow(FOLLOW_39);
-            rule__PartialReifiedRelationship__Group__6__Impl();
+            rule__ReifiedRelationshipRestriction__Group__6__Impl();
 
             state._fsp--;
 
             pushFollow(FOLLOW_2);
-            rule__PartialReifiedRelationship__Group__7();
+            rule__ReifiedRelationshipRestriction__Group__7();
 
             state._fsp--;
 
@@ -18867,35 +18868,35 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__PartialReifiedRelationship__Group__6"
+    // $ANTLR end "rule__ReifiedRelationshipRestriction__Group__6"
 
 
-    // $ANTLR start "rule__PartialReifiedRelationship__Group__6__Impl"
-    // InternalOML.g:6006:1: rule__PartialReifiedRelationship__Group__6__Impl : ( ( rule__PartialReifiedRelationship__SourceAssignment_6 ) ) ;
-    public final void rule__PartialReifiedRelationship__Group__6__Impl() throws RecognitionException {
+    // $ANTLR start "rule__ReifiedRelationshipRestriction__Group__6__Impl"
+    // InternalOML.g:6006:1: rule__ReifiedRelationshipRestriction__Group__6__Impl : ( ( rule__ReifiedRelationshipRestriction__SourceAssignment_6 ) ) ;
+    public final void rule__ReifiedRelationshipRestriction__Group__6__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOML.g:6010:1: ( ( ( rule__PartialReifiedRelationship__SourceAssignment_6 ) ) )
-            // InternalOML.g:6011:1: ( ( rule__PartialReifiedRelationship__SourceAssignment_6 ) )
+            // InternalOML.g:6010:1: ( ( ( rule__ReifiedRelationshipRestriction__SourceAssignment_6 ) ) )
+            // InternalOML.g:6011:1: ( ( rule__ReifiedRelationshipRestriction__SourceAssignment_6 ) )
             {
-            // InternalOML.g:6011:1: ( ( rule__PartialReifiedRelationship__SourceAssignment_6 ) )
-            // InternalOML.g:6012:2: ( rule__PartialReifiedRelationship__SourceAssignment_6 )
+            // InternalOML.g:6011:1: ( ( rule__ReifiedRelationshipRestriction__SourceAssignment_6 ) )
+            // InternalOML.g:6012:2: ( rule__ReifiedRelationshipRestriction__SourceAssignment_6 )
             {
-             before(grammarAccess.getPartialReifiedRelationshipAccess().getSourceAssignment_6()); 
-            // InternalOML.g:6013:2: ( rule__PartialReifiedRelationship__SourceAssignment_6 )
-            // InternalOML.g:6013:3: rule__PartialReifiedRelationship__SourceAssignment_6
+             before(grammarAccess.getReifiedRelationshipRestrictionAccess().getSourceAssignment_6()); 
+            // InternalOML.g:6013:2: ( rule__ReifiedRelationshipRestriction__SourceAssignment_6 )
+            // InternalOML.g:6013:3: rule__ReifiedRelationshipRestriction__SourceAssignment_6
             {
             pushFollow(FOLLOW_2);
-            rule__PartialReifiedRelationship__SourceAssignment_6();
+            rule__ReifiedRelationshipRestriction__SourceAssignment_6();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getPartialReifiedRelationshipAccess().getSourceAssignment_6()); 
+             after(grammarAccess.getReifiedRelationshipRestrictionAccess().getSourceAssignment_6()); 
 
             }
 
@@ -18914,26 +18915,26 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__PartialReifiedRelationship__Group__6__Impl"
+    // $ANTLR end "rule__ReifiedRelationshipRestriction__Group__6__Impl"
 
 
-    // $ANTLR start "rule__PartialReifiedRelationship__Group__7"
-    // InternalOML.g:6021:1: rule__PartialReifiedRelationship__Group__7 : rule__PartialReifiedRelationship__Group__7__Impl rule__PartialReifiedRelationship__Group__8 ;
-    public final void rule__PartialReifiedRelationship__Group__7() throws RecognitionException {
+    // $ANTLR start "rule__ReifiedRelationshipRestriction__Group__7"
+    // InternalOML.g:6021:1: rule__ReifiedRelationshipRestriction__Group__7 : rule__ReifiedRelationshipRestriction__Group__7__Impl rule__ReifiedRelationshipRestriction__Group__8 ;
+    public final void rule__ReifiedRelationshipRestriction__Group__7() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOML.g:6025:1: ( rule__PartialReifiedRelationship__Group__7__Impl rule__PartialReifiedRelationship__Group__8 )
-            // InternalOML.g:6026:2: rule__PartialReifiedRelationship__Group__7__Impl rule__PartialReifiedRelationship__Group__8
+            // InternalOML.g:6025:1: ( rule__ReifiedRelationshipRestriction__Group__7__Impl rule__ReifiedRelationshipRestriction__Group__8 )
+            // InternalOML.g:6026:2: rule__ReifiedRelationshipRestriction__Group__7__Impl rule__ReifiedRelationshipRestriction__Group__8
             {
             pushFollow(FOLLOW_6);
-            rule__PartialReifiedRelationship__Group__7__Impl();
+            rule__ReifiedRelationshipRestriction__Group__7__Impl();
 
             state._fsp--;
 
             pushFollow(FOLLOW_2);
-            rule__PartialReifiedRelationship__Group__8();
+            rule__ReifiedRelationshipRestriction__Group__8();
 
             state._fsp--;
 
@@ -18952,12 +18953,12 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__PartialReifiedRelationship__Group__7"
+    // $ANTLR end "rule__ReifiedRelationshipRestriction__Group__7"
 
 
-    // $ANTLR start "rule__PartialReifiedRelationship__Group__7__Impl"
-    // InternalOML.g:6033:1: rule__PartialReifiedRelationship__Group__7__Impl : ( 'target' ) ;
-    public final void rule__PartialReifiedRelationship__Group__7__Impl() throws RecognitionException {
+    // $ANTLR start "rule__ReifiedRelationshipRestriction__Group__7__Impl"
+    // InternalOML.g:6033:1: rule__ReifiedRelationshipRestriction__Group__7__Impl : ( 'target' ) ;
+    public final void rule__ReifiedRelationshipRestriction__Group__7__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
@@ -18968,9 +18969,9 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:6038:1: ( 'target' )
             // InternalOML.g:6039:2: 'target'
             {
-             before(grammarAccess.getPartialReifiedRelationshipAccess().getTargetKeyword_7()); 
+             before(grammarAccess.getReifiedRelationshipRestrictionAccess().getTargetKeyword_7()); 
             match(input,94,FOLLOW_2); 
-             after(grammarAccess.getPartialReifiedRelationshipAccess().getTargetKeyword_7()); 
+             after(grammarAccess.getReifiedRelationshipRestrictionAccess().getTargetKeyword_7()); 
 
             }
 
@@ -18989,26 +18990,26 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__PartialReifiedRelationship__Group__7__Impl"
+    // $ANTLR end "rule__ReifiedRelationshipRestriction__Group__7__Impl"
 
 
-    // $ANTLR start "rule__PartialReifiedRelationship__Group__8"
-    // InternalOML.g:6048:1: rule__PartialReifiedRelationship__Group__8 : rule__PartialReifiedRelationship__Group__8__Impl rule__PartialReifiedRelationship__Group__9 ;
-    public final void rule__PartialReifiedRelationship__Group__8() throws RecognitionException {
+    // $ANTLR start "rule__ReifiedRelationshipRestriction__Group__8"
+    // InternalOML.g:6048:1: rule__ReifiedRelationshipRestriction__Group__8 : rule__ReifiedRelationshipRestriction__Group__8__Impl rule__ReifiedRelationshipRestriction__Group__9 ;
+    public final void rule__ReifiedRelationshipRestriction__Group__8() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOML.g:6052:1: ( rule__PartialReifiedRelationship__Group__8__Impl rule__PartialReifiedRelationship__Group__9 )
-            // InternalOML.g:6053:2: rule__PartialReifiedRelationship__Group__8__Impl rule__PartialReifiedRelationship__Group__9
+            // InternalOML.g:6052:1: ( rule__ReifiedRelationshipRestriction__Group__8__Impl rule__ReifiedRelationshipRestriction__Group__9 )
+            // InternalOML.g:6053:2: rule__ReifiedRelationshipRestriction__Group__8__Impl rule__ReifiedRelationshipRestriction__Group__9
             {
             pushFollow(FOLLOW_26);
-            rule__PartialReifiedRelationship__Group__8__Impl();
+            rule__ReifiedRelationshipRestriction__Group__8__Impl();
 
             state._fsp--;
 
             pushFollow(FOLLOW_2);
-            rule__PartialReifiedRelationship__Group__9();
+            rule__ReifiedRelationshipRestriction__Group__9();
 
             state._fsp--;
 
@@ -19027,12 +19028,12 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__PartialReifiedRelationship__Group__8"
+    // $ANTLR end "rule__ReifiedRelationshipRestriction__Group__8"
 
 
-    // $ANTLR start "rule__PartialReifiedRelationship__Group__8__Impl"
-    // InternalOML.g:6060:1: rule__PartialReifiedRelationship__Group__8__Impl : ( '=' ) ;
-    public final void rule__PartialReifiedRelationship__Group__8__Impl() throws RecognitionException {
+    // $ANTLR start "rule__ReifiedRelationshipRestriction__Group__8__Impl"
+    // InternalOML.g:6060:1: rule__ReifiedRelationshipRestriction__Group__8__Impl : ( '=' ) ;
+    public final void rule__ReifiedRelationshipRestriction__Group__8__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
@@ -19043,9 +19044,9 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:6065:1: ( '=' )
             // InternalOML.g:6066:2: '='
             {
-             before(grammarAccess.getPartialReifiedRelationshipAccess().getEqualsSignKeyword_8()); 
+             before(grammarAccess.getReifiedRelationshipRestrictionAccess().getEqualsSignKeyword_8()); 
             match(input,74,FOLLOW_2); 
-             after(grammarAccess.getPartialReifiedRelationshipAccess().getEqualsSignKeyword_8()); 
+             after(grammarAccess.getReifiedRelationshipRestrictionAccess().getEqualsSignKeyword_8()); 
 
             }
 
@@ -19064,26 +19065,26 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__PartialReifiedRelationship__Group__8__Impl"
+    // $ANTLR end "rule__ReifiedRelationshipRestriction__Group__8__Impl"
 
 
-    // $ANTLR start "rule__PartialReifiedRelationship__Group__9"
-    // InternalOML.g:6075:1: rule__PartialReifiedRelationship__Group__9 : rule__PartialReifiedRelationship__Group__9__Impl rule__PartialReifiedRelationship__Group__10 ;
-    public final void rule__PartialReifiedRelationship__Group__9() throws RecognitionException {
+    // $ANTLR start "rule__ReifiedRelationshipRestriction__Group__9"
+    // InternalOML.g:6075:1: rule__ReifiedRelationshipRestriction__Group__9 : rule__ReifiedRelationshipRestriction__Group__9__Impl rule__ReifiedRelationshipRestriction__Group__10 ;
+    public final void rule__ReifiedRelationshipRestriction__Group__9() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOML.g:6079:1: ( rule__PartialReifiedRelationship__Group__9__Impl rule__PartialReifiedRelationship__Group__10 )
-            // InternalOML.g:6080:2: rule__PartialReifiedRelationship__Group__9__Impl rule__PartialReifiedRelationship__Group__10
+            // InternalOML.g:6079:1: ( rule__ReifiedRelationshipRestriction__Group__9__Impl rule__ReifiedRelationshipRestriction__Group__10 )
+            // InternalOML.g:6080:2: rule__ReifiedRelationshipRestriction__Group__9__Impl rule__ReifiedRelationshipRestriction__Group__10
             {
             pushFollow(FOLLOW_27);
-            rule__PartialReifiedRelationship__Group__9__Impl();
+            rule__ReifiedRelationshipRestriction__Group__9__Impl();
 
             state._fsp--;
 
             pushFollow(FOLLOW_2);
-            rule__PartialReifiedRelationship__Group__10();
+            rule__ReifiedRelationshipRestriction__Group__10();
 
             state._fsp--;
 
@@ -19102,35 +19103,35 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__PartialReifiedRelationship__Group__9"
+    // $ANTLR end "rule__ReifiedRelationshipRestriction__Group__9"
 
 
-    // $ANTLR start "rule__PartialReifiedRelationship__Group__9__Impl"
-    // InternalOML.g:6087:1: rule__PartialReifiedRelationship__Group__9__Impl : ( ( rule__PartialReifiedRelationship__TargetAssignment_9 ) ) ;
-    public final void rule__PartialReifiedRelationship__Group__9__Impl() throws RecognitionException {
+    // $ANTLR start "rule__ReifiedRelationshipRestriction__Group__9__Impl"
+    // InternalOML.g:6087:1: rule__ReifiedRelationshipRestriction__Group__9__Impl : ( ( rule__ReifiedRelationshipRestriction__TargetAssignment_9 ) ) ;
+    public final void rule__ReifiedRelationshipRestriction__Group__9__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOML.g:6091:1: ( ( ( rule__PartialReifiedRelationship__TargetAssignment_9 ) ) )
-            // InternalOML.g:6092:1: ( ( rule__PartialReifiedRelationship__TargetAssignment_9 ) )
+            // InternalOML.g:6091:1: ( ( ( rule__ReifiedRelationshipRestriction__TargetAssignment_9 ) ) )
+            // InternalOML.g:6092:1: ( ( rule__ReifiedRelationshipRestriction__TargetAssignment_9 ) )
             {
-            // InternalOML.g:6092:1: ( ( rule__PartialReifiedRelationship__TargetAssignment_9 ) )
-            // InternalOML.g:6093:2: ( rule__PartialReifiedRelationship__TargetAssignment_9 )
+            // InternalOML.g:6092:1: ( ( rule__ReifiedRelationshipRestriction__TargetAssignment_9 ) )
+            // InternalOML.g:6093:2: ( rule__ReifiedRelationshipRestriction__TargetAssignment_9 )
             {
-             before(grammarAccess.getPartialReifiedRelationshipAccess().getTargetAssignment_9()); 
-            // InternalOML.g:6094:2: ( rule__PartialReifiedRelationship__TargetAssignment_9 )
-            // InternalOML.g:6094:3: rule__PartialReifiedRelationship__TargetAssignment_9
+             before(grammarAccess.getReifiedRelationshipRestrictionAccess().getTargetAssignment_9()); 
+            // InternalOML.g:6094:2: ( rule__ReifiedRelationshipRestriction__TargetAssignment_9 )
+            // InternalOML.g:6094:3: rule__ReifiedRelationshipRestriction__TargetAssignment_9
             {
             pushFollow(FOLLOW_2);
-            rule__PartialReifiedRelationship__TargetAssignment_9();
+            rule__ReifiedRelationshipRestriction__TargetAssignment_9();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getPartialReifiedRelationshipAccess().getTargetAssignment_9()); 
+             after(grammarAccess.getReifiedRelationshipRestrictionAccess().getTargetAssignment_9()); 
 
             }
 
@@ -19149,21 +19150,21 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__PartialReifiedRelationship__Group__9__Impl"
+    // $ANTLR end "rule__ReifiedRelationshipRestriction__Group__9__Impl"
 
 
-    // $ANTLR start "rule__PartialReifiedRelationship__Group__10"
-    // InternalOML.g:6102:1: rule__PartialReifiedRelationship__Group__10 : rule__PartialReifiedRelationship__Group__10__Impl ;
-    public final void rule__PartialReifiedRelationship__Group__10() throws RecognitionException {
+    // $ANTLR start "rule__ReifiedRelationshipRestriction__Group__10"
+    // InternalOML.g:6102:1: rule__ReifiedRelationshipRestriction__Group__10 : rule__ReifiedRelationshipRestriction__Group__10__Impl ;
+    public final void rule__ReifiedRelationshipRestriction__Group__10() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOML.g:6106:1: ( rule__PartialReifiedRelationship__Group__10__Impl )
-            // InternalOML.g:6107:2: rule__PartialReifiedRelationship__Group__10__Impl
+            // InternalOML.g:6106:1: ( rule__ReifiedRelationshipRestriction__Group__10__Impl )
+            // InternalOML.g:6107:2: rule__ReifiedRelationshipRestriction__Group__10__Impl
             {
             pushFollow(FOLLOW_2);
-            rule__PartialReifiedRelationship__Group__10__Impl();
+            rule__ReifiedRelationshipRestriction__Group__10__Impl();
 
             state._fsp--;
 
@@ -19182,12 +19183,12 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__PartialReifiedRelationship__Group__10"
+    // $ANTLR end "rule__ReifiedRelationshipRestriction__Group__10"
 
 
-    // $ANTLR start "rule__PartialReifiedRelationship__Group__10__Impl"
-    // InternalOML.g:6113:1: rule__PartialReifiedRelationship__Group__10__Impl : ( '}' ) ;
-    public final void rule__PartialReifiedRelationship__Group__10__Impl() throws RecognitionException {
+    // $ANTLR start "rule__ReifiedRelationshipRestriction__Group__10__Impl"
+    // InternalOML.g:6113:1: rule__ReifiedRelationshipRestriction__Group__10__Impl : ( '}' ) ;
+    public final void rule__ReifiedRelationshipRestriction__Group__10__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
@@ -19198,9 +19199,9 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:6118:1: ( '}' )
             // InternalOML.g:6119:2: '}'
             {
-             before(grammarAccess.getPartialReifiedRelationshipAccess().getRightCurlyBracketKeyword_10()); 
+             before(grammarAccess.getReifiedRelationshipRestrictionAccess().getRightCurlyBracketKeyword_10()); 
             match(input,78,FOLLOW_2); 
-             after(grammarAccess.getPartialReifiedRelationshipAccess().getRightCurlyBracketKeyword_10()); 
+             after(grammarAccess.getReifiedRelationshipRestrictionAccess().getRightCurlyBracketKeyword_10()); 
 
             }
 
@@ -19219,7 +19220,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__PartialReifiedRelationship__Group__10__Impl"
+    // $ANTLR end "rule__ReifiedRelationshipRestriction__Group__10__Impl"
 
 
     // $ANTLR start "rule__UnreifiedRelationship__Group__0"
@@ -19232,7 +19233,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:6133:1: ( rule__UnreifiedRelationship__Group__0__Impl rule__UnreifiedRelationship__Group__1 )
             // InternalOML.g:6134:2: rule__UnreifiedRelationship__Group__0__Impl rule__UnreifiedRelationship__Group__1
             {
-            pushFollow(FOLLOW_41);
+            pushFollow(FOLLOW_42);
             rule__UnreifiedRelationship__Group__0__Impl();
 
             state._fsp--;
@@ -19377,7 +19378,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:6174:2: 'unreifiedRelationship'
             {
              before(grammarAccess.getUnreifiedRelationshipAccess().getUnreifiedRelationshipKeyword_1()); 
-            match(input,96,FOLLOW_2); 
+            match(input,97,FOLLOW_2); 
              after(grammarAccess.getUnreifiedRelationshipAccess().getUnreifiedRelationshipKeyword_1()); 
 
             }
@@ -19570,7 +19571,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:6241:1: ( rule__UnreifiedRelationship__Group__4__Impl rule__UnreifiedRelationship__Group__5 )
             // InternalOML.g:6242:2: rule__UnreifiedRelationship__Group__4__Impl rule__UnreifiedRelationship__Group__5
             {
-            pushFollow(FOLLOW_40);
+            pushFollow(FOLLOW_41);
             rule__UnreifiedRelationship__Group__4__Impl();
 
             state._fsp--;
@@ -20195,7 +20196,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:6457:1: ( rule__Scalar__Group__0__Impl rule__Scalar__Group__1 )
             // InternalOML.g:6458:2: rule__Scalar__Group__0__Impl rule__Scalar__Group__1
             {
-            pushFollow(FOLLOW_42);
+            pushFollow(FOLLOW_43);
             rule__Scalar__Group__0__Impl();
 
             state._fsp--;
@@ -20340,7 +20341,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:6498:2: 'scalar'
             {
              before(grammarAccess.getScalarAccess().getScalarKeyword_1()); 
-            match(input,97,FOLLOW_2); 
+            match(input,98,FOLLOW_2); 
              after(grammarAccess.getScalarAccess().getScalarKeyword_1()); 
 
             }
@@ -20453,7 +20454,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:6538:1: ( rule__Structure__Group__0__Impl rule__Structure__Group__1 )
             // InternalOML.g:6539:2: rule__Structure__Group__0__Impl rule__Structure__Group__1
             {
-            pushFollow(FOLLOW_43);
+            pushFollow(FOLLOW_44);
             rule__Structure__Group__0__Impl();
 
             state._fsp--;
@@ -20598,7 +20599,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:6579:2: 'structure'
             {
              before(grammarAccess.getStructureAccess().getStructureKeyword_1()); 
-            match(input,98,FOLLOW_2); 
+            match(input,99,FOLLOW_2); 
              after(grammarAccess.getStructureAccess().getStructureKeyword_1()); 
 
             }
@@ -20711,7 +20712,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:6619:1: ( rule__EntityStructuredDataProperty__Group__0__Impl rule__EntityStructuredDataProperty__Group__1 )
             // InternalOML.g:6620:2: rule__EntityStructuredDataProperty__Group__0__Impl rule__EntityStructuredDataProperty__Group__1
             {
-            pushFollow(FOLLOW_44);
+            pushFollow(FOLLOW_45);
             rule__EntityStructuredDataProperty__Group__0__Impl();
 
             state._fsp--;
@@ -20814,7 +20815,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:6646:1: ( rule__EntityStructuredDataProperty__Group__1__Impl rule__EntityStructuredDataProperty__Group__2 )
             // InternalOML.g:6647:2: rule__EntityStructuredDataProperty__Group__1__Impl rule__EntityStructuredDataProperty__Group__2
             {
-            pushFollow(FOLLOW_45);
+            pushFollow(FOLLOW_46);
             rule__EntityStructuredDataProperty__Group__1__Impl();
 
             state._fsp--;
@@ -20856,7 +20857,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:6660:2: 'entityStructuredDataProperty'
             {
              before(grammarAccess.getEntityStructuredDataPropertyAccess().getEntityStructuredDataPropertyKeyword_1()); 
-            match(input,99,FOLLOW_2); 
+            match(input,100,FOLLOW_2); 
              after(grammarAccess.getEntityStructuredDataPropertyAccess().getEntityStructuredDataPropertyKeyword_1()); 
 
             }
@@ -20889,7 +20890,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:6673:1: ( rule__EntityStructuredDataProperty__Group__2__Impl rule__EntityStructuredDataProperty__Group__3 )
             // InternalOML.g:6674:2: rule__EntityStructuredDataProperty__Group__2__Impl rule__EntityStructuredDataProperty__Group__3
             {
-            pushFollow(FOLLOW_45);
+            pushFollow(FOLLOW_46);
             rule__EntityStructuredDataProperty__Group__2__Impl();
 
             state._fsp--;
@@ -20935,7 +20936,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt58=2;
             int LA58_0 = input.LA(1);
 
-            if ( (LA58_0==163) ) {
+            if ( (LA58_0==164) ) {
                 alt58=1;
             }
             switch (alt58) {
@@ -21070,7 +21071,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:6727:1: ( rule__EntityStructuredDataProperty__Group__4__Impl rule__EntityStructuredDataProperty__Group__5 )
             // InternalOML.g:6728:2: rule__EntityStructuredDataProperty__Group__4__Impl rule__EntityStructuredDataProperty__Group__5
             {
-            pushFollow(FOLLOW_46);
+            pushFollow(FOLLOW_47);
             rule__EntityStructuredDataProperty__Group__4__Impl();
 
             state._fsp--;
@@ -21187,7 +21188,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:6768:2: 'domain'
             {
              before(grammarAccess.getEntityStructuredDataPropertyAccess().getDomainKeyword_5()); 
-            match(input,100,FOLLOW_2); 
+            match(input,101,FOLLOW_2); 
              after(grammarAccess.getEntityStructuredDataPropertyAccess().getDomainKeyword_5()); 
 
             }
@@ -21220,7 +21221,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:6781:1: ( rule__EntityStructuredDataProperty__Group__6__Impl rule__EntityStructuredDataProperty__Group__7 )
             // InternalOML.g:6782:2: rule__EntityStructuredDataProperty__Group__6__Impl rule__EntityStructuredDataProperty__Group__7
             {
-            pushFollow(FOLLOW_47);
+            pushFollow(FOLLOW_48);
             rule__EntityStructuredDataProperty__Group__6__Impl();
 
             state._fsp--;
@@ -21347,7 +21348,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:6822:2: 'range'
             {
              before(grammarAccess.getEntityStructuredDataPropertyAccess().getRangeKeyword_7()); 
-            match(input,101,FOLLOW_2); 
+            match(input,102,FOLLOW_2); 
              after(grammarAccess.getEntityStructuredDataPropertyAccess().getRangeKeyword_7()); 
 
             }
@@ -21535,7 +21536,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:6889:1: ( rule__EntityScalarDataProperty__Group__0__Impl rule__EntityScalarDataProperty__Group__1 )
             // InternalOML.g:6890:2: rule__EntityScalarDataProperty__Group__0__Impl rule__EntityScalarDataProperty__Group__1
             {
-            pushFollow(FOLLOW_48);
+            pushFollow(FOLLOW_49);
             rule__EntityScalarDataProperty__Group__0__Impl();
 
             state._fsp--;
@@ -21638,7 +21639,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:6916:1: ( rule__EntityScalarDataProperty__Group__1__Impl rule__EntityScalarDataProperty__Group__2 )
             // InternalOML.g:6917:2: rule__EntityScalarDataProperty__Group__1__Impl rule__EntityScalarDataProperty__Group__2
             {
-            pushFollow(FOLLOW_45);
+            pushFollow(FOLLOW_46);
             rule__EntityScalarDataProperty__Group__1__Impl();
 
             state._fsp--;
@@ -21680,7 +21681,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:6930:2: 'entityScalarDataProperty'
             {
              before(grammarAccess.getEntityScalarDataPropertyAccess().getEntityScalarDataPropertyKeyword_1()); 
-            match(input,102,FOLLOW_2); 
+            match(input,103,FOLLOW_2); 
              after(grammarAccess.getEntityScalarDataPropertyAccess().getEntityScalarDataPropertyKeyword_1()); 
 
             }
@@ -21713,7 +21714,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:6943:1: ( rule__EntityScalarDataProperty__Group__2__Impl rule__EntityScalarDataProperty__Group__3 )
             // InternalOML.g:6944:2: rule__EntityScalarDataProperty__Group__2__Impl rule__EntityScalarDataProperty__Group__3
             {
-            pushFollow(FOLLOW_45);
+            pushFollow(FOLLOW_46);
             rule__EntityScalarDataProperty__Group__2__Impl();
 
             state._fsp--;
@@ -21759,7 +21760,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt60=2;
             int LA60_0 = input.LA(1);
 
-            if ( (LA60_0==163) ) {
+            if ( (LA60_0==164) ) {
                 alt60=1;
             }
             switch (alt60) {
@@ -21894,7 +21895,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:6997:1: ( rule__EntityScalarDataProperty__Group__4__Impl rule__EntityScalarDataProperty__Group__5 )
             // InternalOML.g:6998:2: rule__EntityScalarDataProperty__Group__4__Impl rule__EntityScalarDataProperty__Group__5
             {
-            pushFollow(FOLLOW_46);
+            pushFollow(FOLLOW_47);
             rule__EntityScalarDataProperty__Group__4__Impl();
 
             state._fsp--;
@@ -22011,7 +22012,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:7038:2: 'domain'
             {
              before(grammarAccess.getEntityScalarDataPropertyAccess().getDomainKeyword_5()); 
-            match(input,100,FOLLOW_2); 
+            match(input,101,FOLLOW_2); 
              after(grammarAccess.getEntityScalarDataPropertyAccess().getDomainKeyword_5()); 
 
             }
@@ -22044,7 +22045,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:7051:1: ( rule__EntityScalarDataProperty__Group__6__Impl rule__EntityScalarDataProperty__Group__7 )
             // InternalOML.g:7052:2: rule__EntityScalarDataProperty__Group__6__Impl rule__EntityScalarDataProperty__Group__7
             {
-            pushFollow(FOLLOW_47);
+            pushFollow(FOLLOW_48);
             rule__EntityScalarDataProperty__Group__6__Impl();
 
             state._fsp--;
@@ -22171,7 +22172,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:7092:2: 'range'
             {
              before(grammarAccess.getEntityScalarDataPropertyAccess().getRangeKeyword_7()); 
-            match(input,101,FOLLOW_2); 
+            match(input,102,FOLLOW_2); 
              after(grammarAccess.getEntityScalarDataPropertyAccess().getRangeKeyword_7()); 
 
             }
@@ -22359,7 +22360,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:7159:1: ( rule__StructuredDataProperty__Group__0__Impl rule__StructuredDataProperty__Group__1 )
             // InternalOML.g:7160:2: rule__StructuredDataProperty__Group__0__Impl rule__StructuredDataProperty__Group__1
             {
-            pushFollow(FOLLOW_49);
+            pushFollow(FOLLOW_50);
             rule__StructuredDataProperty__Group__0__Impl();
 
             state._fsp--;
@@ -22504,7 +22505,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:7200:2: 'structuredDataProperty'
             {
              before(grammarAccess.getStructuredDataPropertyAccess().getStructuredDataPropertyKeyword_1()); 
-            match(input,103,FOLLOW_2); 
+            match(input,104,FOLLOW_2); 
              after(grammarAccess.getStructuredDataPropertyAccess().getStructuredDataPropertyKeyword_1()); 
 
             }
@@ -22622,7 +22623,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:7240:1: ( rule__StructuredDataProperty__Group__3__Impl rule__StructuredDataProperty__Group__4 )
             // InternalOML.g:7241:2: rule__StructuredDataProperty__Group__3__Impl rule__StructuredDataProperty__Group__4
             {
-            pushFollow(FOLLOW_46);
+            pushFollow(FOLLOW_47);
             rule__StructuredDataProperty__Group__3__Impl();
 
             state._fsp--;
@@ -22739,7 +22740,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:7281:2: 'domain'
             {
              before(grammarAccess.getStructuredDataPropertyAccess().getDomainKeyword_4()); 
-            match(input,100,FOLLOW_2); 
+            match(input,101,FOLLOW_2); 
              after(grammarAccess.getStructuredDataPropertyAccess().getDomainKeyword_4()); 
 
             }
@@ -22772,7 +22773,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:7294:1: ( rule__StructuredDataProperty__Group__5__Impl rule__StructuredDataProperty__Group__6 )
             // InternalOML.g:7295:2: rule__StructuredDataProperty__Group__5__Impl rule__StructuredDataProperty__Group__6
             {
-            pushFollow(FOLLOW_47);
+            pushFollow(FOLLOW_48);
             rule__StructuredDataProperty__Group__5__Impl();
 
             state._fsp--;
@@ -22899,7 +22900,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:7335:2: 'range'
             {
              before(grammarAccess.getStructuredDataPropertyAccess().getRangeKeyword_6()); 
-            match(input,101,FOLLOW_2); 
+            match(input,102,FOLLOW_2); 
              after(grammarAccess.getStructuredDataPropertyAccess().getRangeKeyword_6()); 
 
             }
@@ -23087,7 +23088,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:7402:1: ( rule__ScalarDataProperty__Group__0__Impl rule__ScalarDataProperty__Group__1 )
             // InternalOML.g:7403:2: rule__ScalarDataProperty__Group__0__Impl rule__ScalarDataProperty__Group__1
             {
-            pushFollow(FOLLOW_50);
+            pushFollow(FOLLOW_51);
             rule__ScalarDataProperty__Group__0__Impl();
 
             state._fsp--;
@@ -23232,7 +23233,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:7443:2: 'scalarDataProperty'
             {
              before(grammarAccess.getScalarDataPropertyAccess().getScalarDataPropertyKeyword_1()); 
-            match(input,104,FOLLOW_2); 
+            match(input,105,FOLLOW_2); 
              after(grammarAccess.getScalarDataPropertyAccess().getScalarDataPropertyKeyword_1()); 
 
             }
@@ -23350,7 +23351,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:7483:1: ( rule__ScalarDataProperty__Group__3__Impl rule__ScalarDataProperty__Group__4 )
             // InternalOML.g:7484:2: rule__ScalarDataProperty__Group__3__Impl rule__ScalarDataProperty__Group__4
             {
-            pushFollow(FOLLOW_46);
+            pushFollow(FOLLOW_47);
             rule__ScalarDataProperty__Group__3__Impl();
 
             state._fsp--;
@@ -23467,7 +23468,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:7524:2: 'domain'
             {
              before(grammarAccess.getScalarDataPropertyAccess().getDomainKeyword_4()); 
-            match(input,100,FOLLOW_2); 
+            match(input,101,FOLLOW_2); 
              after(grammarAccess.getScalarDataPropertyAccess().getDomainKeyword_4()); 
 
             }
@@ -23500,7 +23501,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:7537:1: ( rule__ScalarDataProperty__Group__5__Impl rule__ScalarDataProperty__Group__6 )
             // InternalOML.g:7538:2: rule__ScalarDataProperty__Group__5__Impl rule__ScalarDataProperty__Group__6
             {
-            pushFollow(FOLLOW_47);
+            pushFollow(FOLLOW_48);
             rule__ScalarDataProperty__Group__5__Impl();
 
             state._fsp--;
@@ -23627,7 +23628,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:7578:2: 'range'
             {
              before(grammarAccess.getScalarDataPropertyAccess().getRangeKeyword_6()); 
-            match(input,101,FOLLOW_2); 
+            match(input,102,FOLLOW_2); 
              after(grammarAccess.getScalarDataPropertyAccess().getRangeKeyword_6()); 
 
             }
@@ -23857,7 +23858,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:7659:2: 'rule'
             {
              before(grammarAccess.getChainRuleAccess().getRuleKeyword_0()); 
-            match(input,105,FOLLOW_2); 
+            match(input,106,FOLLOW_2); 
              after(grammarAccess.getChainRuleAccess().getRuleKeyword_0()); 
 
             }
@@ -23890,7 +23891,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:7672:1: ( rule__ChainRule__Group__1__Impl rule__ChainRule__Group__2 )
             // InternalOML.g:7673:2: rule__ChainRule__Group__1__Impl rule__ChainRule__Group__2
             {
-            pushFollow(FOLLOW_51);
+            pushFollow(FOLLOW_52);
             rule__ChainRule__Group__1__Impl();
 
             state._fsp--;
@@ -24017,7 +24018,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:7713:2: 'infers'
             {
              before(grammarAccess.getChainRuleAccess().getInfersKeyword_2()); 
-            match(input,106,FOLLOW_2); 
+            match(input,107,FOLLOW_2); 
              after(grammarAccess.getChainRuleAccess().getInfersKeyword_2()); 
 
             }
@@ -24050,7 +24051,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:7726:1: ( rule__ChainRule__Group__3__Impl rule__ChainRule__Group__4 )
             // InternalOML.g:7727:2: rule__ChainRule__Group__3__Impl rule__ChainRule__Group__4
             {
-            pushFollow(FOLLOW_52);
+            pushFollow(FOLLOW_53);
             rule__ChainRule__Group__3__Impl();
 
             state._fsp--;
@@ -24135,7 +24136,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:7753:1: ( rule__ChainRule__Group__4__Impl rule__ChainRule__Group__5 )
             // InternalOML.g:7754:2: rule__ChainRule__Group__4__Impl rule__ChainRule__Group__5
             {
-            pushFollow(FOLLOW_53);
+            pushFollow(FOLLOW_54);
             rule__ChainRule__Group__4__Impl();
 
             state._fsp--;
@@ -24177,7 +24178,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:7767:2: 'if'
             {
              before(grammarAccess.getChainRuleAccess().getIfKeyword_4()); 
-            match(input,107,FOLLOW_2); 
+            match(input,108,FOLLOW_2); 
              after(grammarAccess.getChainRuleAccess().getIfKeyword_4()); 
 
             }
@@ -24290,7 +24291,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:7807:1: ( rule__RuleBodySegment__Group__0__Impl rule__RuleBodySegment__Group__1 )
             // InternalOML.g:7808:2: rule__RuleBodySegment__Group__0__Impl rule__RuleBodySegment__Group__1
             {
-            pushFollow(FOLLOW_54);
+            pushFollow(FOLLOW_55);
             rule__RuleBodySegment__Group__0__Impl();
 
             state._fsp--;
@@ -24416,7 +24417,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt63=2;
             int LA63_0 = input.LA(1);
 
-            if ( (LA63_0==108) ) {
+            if ( (LA63_0==109) ) {
                 alt63=1;
             }
             switch (alt63) {
@@ -24466,7 +24467,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:7861:1: ( rule__RuleBodySegment__Group_1__0__Impl rule__RuleBodySegment__Group_1__1 )
             // InternalOML.g:7862:2: rule__RuleBodySegment__Group_1__0__Impl rule__RuleBodySegment__Group_1__1
             {
-            pushFollow(FOLLOW_53);
+            pushFollow(FOLLOW_54);
             rule__RuleBodySegment__Group_1__0__Impl();
 
             state._fsp--;
@@ -24508,7 +24509,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:7875:2: '&&'
             {
              before(grammarAccess.getRuleBodySegmentAccess().getAmpersandAmpersandKeyword_1_0()); 
-            match(input,108,FOLLOW_2); 
+            match(input,109,FOLLOW_2); 
              after(grammarAccess.getRuleBodySegmentAccess().getAmpersandAmpersandKeyword_1_0()); 
 
             }
@@ -24621,7 +24622,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:7915:1: ( rule__SegmentPredicate__Group_1__0__Impl rule__SegmentPredicate__Group_1__1 )
             // InternalOML.g:7916:2: rule__SegmentPredicate__Group_1__0__Impl rule__SegmentPredicate__Group_1__1
             {
-            pushFollow(FOLLOW_55);
+            pushFollow(FOLLOW_56);
             rule__SegmentPredicate__Group_1__0__Impl();
 
             state._fsp--;
@@ -24738,7 +24739,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:7956:2: '('
             {
              before(grammarAccess.getSegmentPredicateAccess().getLeftParenthesisKeyword_1_1()); 
-            match(input,109,FOLLOW_2); 
+            match(input,110,FOLLOW_2); 
              after(grammarAccess.getSegmentPredicateAccess().getLeftParenthesisKeyword_1_1()); 
 
             }
@@ -24771,7 +24772,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:7969:1: ( rule__SegmentPredicate__Group_1__2__Impl rule__SegmentPredicate__Group_1__3 )
             // InternalOML.g:7970:2: rule__SegmentPredicate__Group_1__2__Impl rule__SegmentPredicate__Group_1__3
             {
-            pushFollow(FOLLOW_56);
+            pushFollow(FOLLOW_57);
             rule__SegmentPredicate__Group_1__2__Impl();
 
             state._fsp--;
@@ -24893,7 +24894,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8009:2: ')'
             {
              before(grammarAccess.getSegmentPredicateAccess().getRightParenthesisKeyword_1_3()); 
-            match(input,110,FOLLOW_2); 
+            match(input,111,FOLLOW_2); 
              after(grammarAccess.getSegmentPredicateAccess().getRightParenthesisKeyword_1_3()); 
 
             }
@@ -24926,7 +24927,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8023:1: ( rule__SegmentPredicate__Group_2__0__Impl rule__SegmentPredicate__Group_2__1 )
             // InternalOML.g:8024:2: rule__SegmentPredicate__Group_2__0__Impl rule__SegmentPredicate__Group_2__1
             {
-            pushFollow(FOLLOW_55);
+            pushFollow(FOLLOW_56);
             rule__SegmentPredicate__Group_2__0__Impl();
 
             state._fsp--;
@@ -24968,7 +24969,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8037:2: 'invSource'
             {
              before(grammarAccess.getSegmentPredicateAccess().getInvSourceKeyword_2_0()); 
-            match(input,111,FOLLOW_2); 
+            match(input,112,FOLLOW_2); 
              after(grammarAccess.getSegmentPredicateAccess().getInvSourceKeyword_2_0()); 
 
             }
@@ -25043,7 +25044,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8064:2: '('
             {
              before(grammarAccess.getSegmentPredicateAccess().getLeftParenthesisKeyword_2_1()); 
-            match(input,109,FOLLOW_2); 
+            match(input,110,FOLLOW_2); 
              after(grammarAccess.getSegmentPredicateAccess().getLeftParenthesisKeyword_2_1()); 
 
             }
@@ -25076,7 +25077,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8077:1: ( rule__SegmentPredicate__Group_2__2__Impl rule__SegmentPredicate__Group_2__3 )
             // InternalOML.g:8078:2: rule__SegmentPredicate__Group_2__2__Impl rule__SegmentPredicate__Group_2__3
             {
-            pushFollow(FOLLOW_56);
+            pushFollow(FOLLOW_57);
             rule__SegmentPredicate__Group_2__2__Impl();
 
             state._fsp--;
@@ -25198,7 +25199,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8117:2: ')'
             {
              before(grammarAccess.getSegmentPredicateAccess().getRightParenthesisKeyword_2_3()); 
-            match(input,110,FOLLOW_2); 
+            match(input,111,FOLLOW_2); 
              after(grammarAccess.getSegmentPredicateAccess().getRightParenthesisKeyword_2_3()); 
 
             }
@@ -25231,7 +25232,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8131:1: ( rule__SegmentPredicate__Group_3__0__Impl rule__SegmentPredicate__Group_3__1 )
             // InternalOML.g:8132:2: rule__SegmentPredicate__Group_3__0__Impl rule__SegmentPredicate__Group_3__1
             {
-            pushFollow(FOLLOW_55);
+            pushFollow(FOLLOW_56);
             rule__SegmentPredicate__Group_3__0__Impl();
 
             state._fsp--;
@@ -25348,7 +25349,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8172:2: '('
             {
              before(grammarAccess.getSegmentPredicateAccess().getLeftParenthesisKeyword_3_1()); 
-            match(input,109,FOLLOW_2); 
+            match(input,110,FOLLOW_2); 
              after(grammarAccess.getSegmentPredicateAccess().getLeftParenthesisKeyword_3_1()); 
 
             }
@@ -25381,7 +25382,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8185:1: ( rule__SegmentPredicate__Group_3__2__Impl rule__SegmentPredicate__Group_3__3 )
             // InternalOML.g:8186:2: rule__SegmentPredicate__Group_3__2__Impl rule__SegmentPredicate__Group_3__3
             {
-            pushFollow(FOLLOW_56);
+            pushFollow(FOLLOW_57);
             rule__SegmentPredicate__Group_3__2__Impl();
 
             state._fsp--;
@@ -25503,7 +25504,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8225:2: ')'
             {
              before(grammarAccess.getSegmentPredicateAccess().getRightParenthesisKeyword_3_3()); 
-            match(input,110,FOLLOW_2); 
+            match(input,111,FOLLOW_2); 
              after(grammarAccess.getSegmentPredicateAccess().getRightParenthesisKeyword_3_3()); 
 
             }
@@ -25536,7 +25537,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8239:1: ( rule__SegmentPredicate__Group_4__0__Impl rule__SegmentPredicate__Group_4__1 )
             // InternalOML.g:8240:2: rule__SegmentPredicate__Group_4__0__Impl rule__SegmentPredicate__Group_4__1
             {
-            pushFollow(FOLLOW_55);
+            pushFollow(FOLLOW_56);
             rule__SegmentPredicate__Group_4__0__Impl();
 
             state._fsp--;
@@ -25578,7 +25579,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8253:2: 'invTarget'
             {
              before(grammarAccess.getSegmentPredicateAccess().getInvTargetKeyword_4_0()); 
-            match(input,112,FOLLOW_2); 
+            match(input,113,FOLLOW_2); 
              after(grammarAccess.getSegmentPredicateAccess().getInvTargetKeyword_4_0()); 
 
             }
@@ -25653,7 +25654,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8280:2: '('
             {
              before(grammarAccess.getSegmentPredicateAccess().getLeftParenthesisKeyword_4_1()); 
-            match(input,109,FOLLOW_2); 
+            match(input,110,FOLLOW_2); 
              after(grammarAccess.getSegmentPredicateAccess().getLeftParenthesisKeyword_4_1()); 
 
             }
@@ -25686,7 +25687,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8293:1: ( rule__SegmentPredicate__Group_4__2__Impl rule__SegmentPredicate__Group_4__3 )
             // InternalOML.g:8294:2: rule__SegmentPredicate__Group_4__2__Impl rule__SegmentPredicate__Group_4__3
             {
-            pushFollow(FOLLOW_56);
+            pushFollow(FOLLOW_57);
             rule__SegmentPredicate__Group_4__2__Impl();
 
             state._fsp--;
@@ -25808,7 +25809,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8333:2: ')'
             {
              before(grammarAccess.getSegmentPredicateAccess().getRightParenthesisKeyword_4_3()); 
-            match(input,110,FOLLOW_2); 
+            match(input,111,FOLLOW_2); 
              after(grammarAccess.getSegmentPredicateAccess().getRightParenthesisKeyword_4_3()); 
 
             }
@@ -25841,7 +25842,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8347:1: ( rule__SegmentPredicate__Group_5__0__Impl rule__SegmentPredicate__Group_5__1 )
             // InternalOML.g:8348:2: rule__SegmentPredicate__Group_5__0__Impl rule__SegmentPredicate__Group_5__1
             {
-            pushFollow(FOLLOW_55);
+            pushFollow(FOLLOW_56);
             rule__SegmentPredicate__Group_5__0__Impl();
 
             state._fsp--;
@@ -25883,7 +25884,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8361:2: 'inv'
             {
              before(grammarAccess.getSegmentPredicateAccess().getInvKeyword_5_0()); 
-            match(input,113,FOLLOW_2); 
+            match(input,114,FOLLOW_2); 
              after(grammarAccess.getSegmentPredicateAccess().getInvKeyword_5_0()); 
 
             }
@@ -25958,7 +25959,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8388:2: '('
             {
              before(grammarAccess.getSegmentPredicateAccess().getLeftParenthesisKeyword_5_1()); 
-            match(input,109,FOLLOW_2); 
+            match(input,110,FOLLOW_2); 
              after(grammarAccess.getSegmentPredicateAccess().getLeftParenthesisKeyword_5_1()); 
 
             }
@@ -25991,7 +25992,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8401:1: ( rule__SegmentPredicate__Group_5__2__Impl rule__SegmentPredicate__Group_5__3 )
             // InternalOML.g:8402:2: rule__SegmentPredicate__Group_5__2__Impl rule__SegmentPredicate__Group_5__3
             {
-            pushFollow(FOLLOW_56);
+            pushFollow(FOLLOW_57);
             rule__SegmentPredicate__Group_5__2__Impl();
 
             state._fsp--;
@@ -26113,7 +26114,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8441:2: ')'
             {
              before(grammarAccess.getSegmentPredicateAccess().getRightParenthesisKeyword_5_3()); 
-            match(input,110,FOLLOW_2); 
+            match(input,111,FOLLOW_2); 
              after(grammarAccess.getSegmentPredicateAccess().getRightParenthesisKeyword_5_3()); 
 
             }
@@ -26146,7 +26147,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8455:1: ( rule__AnonymousConceptUnionAxiom__Group__0__Impl rule__AnonymousConceptUnionAxiom__Group__1 )
             // InternalOML.g:8456:2: rule__AnonymousConceptUnionAxiom__Group__0__Impl rule__AnonymousConceptUnionAxiom__Group__1
             {
-            pushFollow(FOLLOW_57);
+            pushFollow(FOLLOW_58);
             rule__AnonymousConceptUnionAxiom__Group__0__Impl();
 
             state._fsp--;
@@ -26249,7 +26250,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8482:1: ( rule__AnonymousConceptUnionAxiom__Group__1__Impl rule__AnonymousConceptUnionAxiom__Group__2 )
             // InternalOML.g:8483:2: rule__AnonymousConceptUnionAxiom__Group__1__Impl rule__AnonymousConceptUnionAxiom__Group__2
             {
-            pushFollow(FOLLOW_55);
+            pushFollow(FOLLOW_56);
             rule__AnonymousConceptUnionAxiom__Group__1__Impl();
 
             state._fsp--;
@@ -26291,7 +26292,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8496:2: 'anonymousConceptUnion'
             {
              before(grammarAccess.getAnonymousConceptUnionAxiomAccess().getAnonymousConceptUnionKeyword_1()); 
-            match(input,114,FOLLOW_2); 
+            match(input,115,FOLLOW_2); 
              after(grammarAccess.getAnonymousConceptUnionAxiomAccess().getAnonymousConceptUnionKeyword_1()); 
 
             }
@@ -26366,7 +26367,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8523:2: '('
             {
              before(grammarAccess.getAnonymousConceptUnionAxiomAccess().getLeftParenthesisKeyword_2()); 
-            match(input,109,FOLLOW_2); 
+            match(input,110,FOLLOW_2); 
              after(grammarAccess.getAnonymousConceptUnionAxiomAccess().getLeftParenthesisKeyword_2()); 
 
             }
@@ -26399,7 +26400,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8536:1: ( rule__AnonymousConceptUnionAxiom__Group__3__Impl rule__AnonymousConceptUnionAxiom__Group__4 )
             // InternalOML.g:8537:2: rule__AnonymousConceptUnionAxiom__Group__3__Impl rule__AnonymousConceptUnionAxiom__Group__4
             {
-            pushFollow(FOLLOW_56);
+            pushFollow(FOLLOW_57);
             rule__AnonymousConceptUnionAxiom__Group__3__Impl();
 
             state._fsp--;
@@ -26526,7 +26527,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8577:2: ')'
             {
              before(grammarAccess.getAnonymousConceptUnionAxiomAccess().getRightParenthesisKeyword_4()); 
-            match(input,110,FOLLOW_2); 
+            match(input,111,FOLLOW_2); 
              after(grammarAccess.getAnonymousConceptUnionAxiomAccess().getRightParenthesisKeyword_4()); 
 
             }
@@ -26559,7 +26560,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8590:1: ( rule__AnonymousConceptUnionAxiom__Group__5__Impl rule__AnonymousConceptUnionAxiom__Group__6 )
             // InternalOML.g:8591:2: rule__AnonymousConceptUnionAxiom__Group__5__Impl rule__AnonymousConceptUnionAxiom__Group__6
             {
-            pushFollow(FOLLOW_58);
+            pushFollow(FOLLOW_59);
             rule__AnonymousConceptUnionAxiom__Group__5__Impl();
 
             state._fsp--;
@@ -26634,7 +26635,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8617:1: ( rule__AnonymousConceptUnionAxiom__Group__6__Impl rule__AnonymousConceptUnionAxiom__Group__7 )
             // InternalOML.g:8618:2: rule__AnonymousConceptUnionAxiom__Group__6__Impl rule__AnonymousConceptUnionAxiom__Group__7
             {
-            pushFollow(FOLLOW_58);
+            pushFollow(FOLLOW_59);
             rule__AnonymousConceptUnionAxiom__Group__6__Impl();
 
             state._fsp--;
@@ -26682,7 +26683,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                 int alt65=2;
                 int LA65_0 = input.LA(1);
 
-                if ( (LA65_0==75||LA65_0==114||LA65_0==116) ) {
+                if ( (LA65_0==75||LA65_0==115||LA65_0==117) ) {
                     alt65=1;
                 }
 
@@ -26691,7 +26692,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             	case 1 :
             	    // InternalOML.g:8632:3: rule__AnonymousConceptUnionAxiom__DisjunctionsAssignment_6
             	    {
-            	    pushFollow(FOLLOW_59);
+            	    pushFollow(FOLLOW_60);
             	    rule__AnonymousConceptUnionAxiom__DisjunctionsAssignment_6();
 
             	    state._fsp--;
@@ -26807,7 +26808,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8671:1: ( rule__RootConceptTaxonomyAxiom__Group__0__Impl rule__RootConceptTaxonomyAxiom__Group__1 )
             // InternalOML.g:8672:2: rule__RootConceptTaxonomyAxiom__Group__0__Impl rule__RootConceptTaxonomyAxiom__Group__1
             {
-            pushFollow(FOLLOW_60);
+            pushFollow(FOLLOW_61);
             rule__RootConceptTaxonomyAxiom__Group__0__Impl();
 
             state._fsp--;
@@ -26910,7 +26911,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8698:1: ( rule__RootConceptTaxonomyAxiom__Group__1__Impl rule__RootConceptTaxonomyAxiom__Group__2 )
             // InternalOML.g:8699:2: rule__RootConceptTaxonomyAxiom__Group__1__Impl rule__RootConceptTaxonomyAxiom__Group__2
             {
-            pushFollow(FOLLOW_55);
+            pushFollow(FOLLOW_56);
             rule__RootConceptTaxonomyAxiom__Group__1__Impl();
 
             state._fsp--;
@@ -26952,7 +26953,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8712:2: 'rootConceptTaxonomy'
             {
              before(grammarAccess.getRootConceptTaxonomyAxiomAccess().getRootConceptTaxonomyKeyword_1()); 
-            match(input,115,FOLLOW_2); 
+            match(input,116,FOLLOW_2); 
              after(grammarAccess.getRootConceptTaxonomyAxiomAccess().getRootConceptTaxonomyKeyword_1()); 
 
             }
@@ -27027,7 +27028,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8739:2: '('
             {
              before(grammarAccess.getRootConceptTaxonomyAxiomAccess().getLeftParenthesisKeyword_2()); 
-            match(input,109,FOLLOW_2); 
+            match(input,110,FOLLOW_2); 
              after(grammarAccess.getRootConceptTaxonomyAxiomAccess().getLeftParenthesisKeyword_2()); 
 
             }
@@ -27060,7 +27061,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8752:1: ( rule__RootConceptTaxonomyAxiom__Group__3__Impl rule__RootConceptTaxonomyAxiom__Group__4 )
             // InternalOML.g:8753:2: rule__RootConceptTaxonomyAxiom__Group__3__Impl rule__RootConceptTaxonomyAxiom__Group__4
             {
-            pushFollow(FOLLOW_56);
+            pushFollow(FOLLOW_57);
             rule__RootConceptTaxonomyAxiom__Group__3__Impl();
 
             state._fsp--;
@@ -27187,7 +27188,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8793:2: ')'
             {
              before(grammarAccess.getRootConceptTaxonomyAxiomAccess().getRightParenthesisKeyword_4()); 
-            match(input,110,FOLLOW_2); 
+            match(input,111,FOLLOW_2); 
              after(grammarAccess.getRootConceptTaxonomyAxiomAccess().getRightParenthesisKeyword_4()); 
 
             }
@@ -27220,7 +27221,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8806:1: ( rule__RootConceptTaxonomyAxiom__Group__5__Impl rule__RootConceptTaxonomyAxiom__Group__6 )
             // InternalOML.g:8807:2: rule__RootConceptTaxonomyAxiom__Group__5__Impl rule__RootConceptTaxonomyAxiom__Group__6
             {
-            pushFollow(FOLLOW_58);
+            pushFollow(FOLLOW_59);
             rule__RootConceptTaxonomyAxiom__Group__5__Impl();
 
             state._fsp--;
@@ -27295,7 +27296,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8833:1: ( rule__RootConceptTaxonomyAxiom__Group__6__Impl rule__RootConceptTaxonomyAxiom__Group__7 )
             // InternalOML.g:8834:2: rule__RootConceptTaxonomyAxiom__Group__6__Impl rule__RootConceptTaxonomyAxiom__Group__7
             {
-            pushFollow(FOLLOW_58);
+            pushFollow(FOLLOW_59);
             rule__RootConceptTaxonomyAxiom__Group__6__Impl();
 
             state._fsp--;
@@ -27343,7 +27344,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                 int alt67=2;
                 int LA67_0 = input.LA(1);
 
-                if ( (LA67_0==75||LA67_0==114||LA67_0==116) ) {
+                if ( (LA67_0==75||LA67_0==115||LA67_0==117) ) {
                     alt67=1;
                 }
 
@@ -27352,7 +27353,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             	case 1 :
             	    // InternalOML.g:8848:3: rule__RootConceptTaxonomyAxiom__DisjunctionsAssignment_6
             	    {
-            	    pushFollow(FOLLOW_59);
+            	    pushFollow(FOLLOW_60);
             	    rule__RootConceptTaxonomyAxiom__DisjunctionsAssignment_6();
 
             	    state._fsp--;
@@ -27468,7 +27469,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8887:1: ( rule__SpecificDisjointConceptAxiom__Group__0__Impl rule__SpecificDisjointConceptAxiom__Group__1 )
             // InternalOML.g:8888:2: rule__SpecificDisjointConceptAxiom__Group__0__Impl rule__SpecificDisjointConceptAxiom__Group__1
             {
-            pushFollow(FOLLOW_61);
+            pushFollow(FOLLOW_62);
             rule__SpecificDisjointConceptAxiom__Group__0__Impl();
 
             state._fsp--;
@@ -27571,7 +27572,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8914:1: ( rule__SpecificDisjointConceptAxiom__Group__1__Impl rule__SpecificDisjointConceptAxiom__Group__2 )
             // InternalOML.g:8915:2: rule__SpecificDisjointConceptAxiom__Group__1__Impl rule__SpecificDisjointConceptAxiom__Group__2
             {
-            pushFollow(FOLLOW_55);
+            pushFollow(FOLLOW_56);
             rule__SpecificDisjointConceptAxiom__Group__1__Impl();
 
             state._fsp--;
@@ -27613,7 +27614,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8928:2: 'disjointLeaf'
             {
              before(grammarAccess.getSpecificDisjointConceptAxiomAccess().getDisjointLeafKeyword_1()); 
-            match(input,116,FOLLOW_2); 
+            match(input,117,FOLLOW_2); 
              after(grammarAccess.getSpecificDisjointConceptAxiomAccess().getDisjointLeafKeyword_1()); 
 
             }
@@ -27688,7 +27689,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8955:2: '('
             {
              before(grammarAccess.getSpecificDisjointConceptAxiomAccess().getLeftParenthesisKeyword_2()); 
-            match(input,109,FOLLOW_2); 
+            match(input,110,FOLLOW_2); 
              after(grammarAccess.getSpecificDisjointConceptAxiomAccess().getLeftParenthesisKeyword_2()); 
 
             }
@@ -27721,7 +27722,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:8968:1: ( rule__SpecificDisjointConceptAxiom__Group__3__Impl rule__SpecificDisjointConceptAxiom__Group__4 )
             // InternalOML.g:8969:2: rule__SpecificDisjointConceptAxiom__Group__3__Impl rule__SpecificDisjointConceptAxiom__Group__4
             {
-            pushFollow(FOLLOW_56);
+            pushFollow(FOLLOW_57);
             rule__SpecificDisjointConceptAxiom__Group__3__Impl();
 
             state._fsp--;
@@ -27843,7 +27844,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:9008:2: ')'
             {
              before(grammarAccess.getSpecificDisjointConceptAxiomAccess().getRightParenthesisKeyword_4()); 
-            match(input,110,FOLLOW_2); 
+            match(input,111,FOLLOW_2); 
              after(grammarAccess.getSpecificDisjointConceptAxiomAccess().getRightParenthesisKeyword_4()); 
 
             }
@@ -27876,7 +27877,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:9022:1: ( rule__EntityExistentialRestrictionAxiom__Group__0__Impl rule__EntityExistentialRestrictionAxiom__Group__1 )
             // InternalOML.g:9023:2: rule__EntityExistentialRestrictionAxiom__Group__0__Impl rule__EntityExistentialRestrictionAxiom__Group__1
             {
-            pushFollow(FOLLOW_62);
+            pushFollow(FOLLOW_63);
             rule__EntityExistentialRestrictionAxiom__Group__0__Impl();
 
             state._fsp--;
@@ -28021,7 +28022,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:9063:2: 'someEntities'
             {
              before(grammarAccess.getEntityExistentialRestrictionAxiomAccess().getSomeEntitiesKeyword_1()); 
-            match(input,117,FOLLOW_2); 
+            match(input,118,FOLLOW_2); 
              after(grammarAccess.getEntityExistentialRestrictionAxiomAccess().getSomeEntitiesKeyword_1()); 
 
             }
@@ -28054,7 +28055,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:9076:1: ( rule__EntityExistentialRestrictionAxiom__Group__2__Impl rule__EntityExistentialRestrictionAxiom__Group__3 )
             // InternalOML.g:9077:2: rule__EntityExistentialRestrictionAxiom__Group__2__Impl rule__EntityExistentialRestrictionAxiom__Group__3
             {
-            pushFollow(FOLLOW_63);
+            pushFollow(FOLLOW_64);
             rule__EntityExistentialRestrictionAxiom__Group__2__Impl();
 
             state._fsp--;
@@ -28181,7 +28182,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:9117:2: '.'
             {
              before(grammarAccess.getEntityExistentialRestrictionAxiomAccess().getFullStopKeyword_3()); 
-            match(input,118,FOLLOW_2); 
+            match(input,119,FOLLOW_2); 
              after(grammarAccess.getEntityExistentialRestrictionAxiomAccess().getFullStopKeyword_3()); 
 
             }
@@ -28214,7 +28215,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:9130:1: ( rule__EntityExistentialRestrictionAxiom__Group__4__Impl rule__EntityExistentialRestrictionAxiom__Group__5 )
             // InternalOML.g:9131:2: rule__EntityExistentialRestrictionAxiom__Group__4__Impl rule__EntityExistentialRestrictionAxiom__Group__5
             {
-            pushFollow(FOLLOW_64);
+            pushFollow(FOLLOW_65);
             rule__EntityExistentialRestrictionAxiom__Group__4__Impl();
 
             state._fsp--;
@@ -28341,7 +28342,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:9171:2: 'in'
             {
              before(grammarAccess.getEntityExistentialRestrictionAxiomAccess().getInKeyword_5()); 
-            match(input,119,FOLLOW_2); 
+            match(input,120,FOLLOW_2); 
              after(grammarAccess.getEntityExistentialRestrictionAxiomAccess().getInKeyword_5()); 
 
             }
@@ -28454,7 +28455,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:9211:1: ( rule__EntityUniversalRestrictionAxiom__Group__0__Impl rule__EntityUniversalRestrictionAxiom__Group__1 )
             // InternalOML.g:9212:2: rule__EntityUniversalRestrictionAxiom__Group__0__Impl rule__EntityUniversalRestrictionAxiom__Group__1
             {
-            pushFollow(FOLLOW_65);
+            pushFollow(FOLLOW_66);
             rule__EntityUniversalRestrictionAxiom__Group__0__Impl();
 
             state._fsp--;
@@ -28599,7 +28600,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:9252:2: 'allEntities'
             {
              before(grammarAccess.getEntityUniversalRestrictionAxiomAccess().getAllEntitiesKeyword_1()); 
-            match(input,120,FOLLOW_2); 
+            match(input,121,FOLLOW_2); 
              after(grammarAccess.getEntityUniversalRestrictionAxiomAccess().getAllEntitiesKeyword_1()); 
 
             }
@@ -28632,7 +28633,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:9265:1: ( rule__EntityUniversalRestrictionAxiom__Group__2__Impl rule__EntityUniversalRestrictionAxiom__Group__3 )
             // InternalOML.g:9266:2: rule__EntityUniversalRestrictionAxiom__Group__2__Impl rule__EntityUniversalRestrictionAxiom__Group__3
             {
-            pushFollow(FOLLOW_63);
+            pushFollow(FOLLOW_64);
             rule__EntityUniversalRestrictionAxiom__Group__2__Impl();
 
             state._fsp--;
@@ -28759,7 +28760,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:9306:2: '.'
             {
              before(grammarAccess.getEntityUniversalRestrictionAxiomAccess().getFullStopKeyword_3()); 
-            match(input,118,FOLLOW_2); 
+            match(input,119,FOLLOW_2); 
              after(grammarAccess.getEntityUniversalRestrictionAxiomAccess().getFullStopKeyword_3()); 
 
             }
@@ -28792,7 +28793,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:9319:1: ( rule__EntityUniversalRestrictionAxiom__Group__4__Impl rule__EntityUniversalRestrictionAxiom__Group__5 )
             // InternalOML.g:9320:2: rule__EntityUniversalRestrictionAxiom__Group__4__Impl rule__EntityUniversalRestrictionAxiom__Group__5
             {
-            pushFollow(FOLLOW_64);
+            pushFollow(FOLLOW_65);
             rule__EntityUniversalRestrictionAxiom__Group__4__Impl();
 
             state._fsp--;
@@ -28919,7 +28920,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:9360:2: 'in'
             {
              before(grammarAccess.getEntityUniversalRestrictionAxiomAccess().getInKeyword_5()); 
-            match(input,119,FOLLOW_2); 
+            match(input,120,FOLLOW_2); 
              after(grammarAccess.getEntityUniversalRestrictionAxiomAccess().getInKeyword_5()); 
 
             }
@@ -29135,7 +29136,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:9427:1: ( rule__AspectSpecializationAxiom__Group__1__Impl rule__AspectSpecializationAxiom__Group__2 )
             // InternalOML.g:9428:2: rule__AspectSpecializationAxiom__Group__1__Impl rule__AspectSpecializationAxiom__Group__2
             {
-            pushFollow(FOLLOW_66);
+            pushFollow(FOLLOW_67);
             rule__AspectSpecializationAxiom__Group__1__Impl();
 
             state._fsp--;
@@ -29262,7 +29263,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:9468:2: 'extendsAspect'
             {
              before(grammarAccess.getAspectSpecializationAxiomAccess().getExtendsAspectKeyword_2()); 
-            match(input,121,FOLLOW_2); 
+            match(input,122,FOLLOW_2); 
              after(grammarAccess.getAspectSpecializationAxiomAccess().getExtendsAspectKeyword_2()); 
 
             }
@@ -29478,7 +29479,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:9535:1: ( rule__ConceptSpecializationAxiom__Group__1__Impl rule__ConceptSpecializationAxiom__Group__2 )
             // InternalOML.g:9536:2: rule__ConceptSpecializationAxiom__Group__1__Impl rule__ConceptSpecializationAxiom__Group__2
             {
-            pushFollow(FOLLOW_67);
+            pushFollow(FOLLOW_68);
             rule__ConceptSpecializationAxiom__Group__1__Impl();
 
             state._fsp--;
@@ -29605,7 +29606,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:9576:2: 'extendsConcept'
             {
              before(grammarAccess.getConceptSpecializationAxiomAccess().getExtendsConceptKeyword_2()); 
-            match(input,122,FOLLOW_2); 
+            match(input,123,FOLLOW_2); 
              after(grammarAccess.getConceptSpecializationAxiomAccess().getExtendsConceptKeyword_2()); 
 
             }
@@ -29821,7 +29822,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:9643:1: ( rule__ReifiedRelationshipSpecializationAxiom__Group__1__Impl rule__ReifiedRelationshipSpecializationAxiom__Group__2 )
             // InternalOML.g:9644:2: rule__ReifiedRelationshipSpecializationAxiom__Group__1__Impl rule__ReifiedRelationshipSpecializationAxiom__Group__2
             {
-            pushFollow(FOLLOW_68);
+            pushFollow(FOLLOW_69);
             rule__ReifiedRelationshipSpecializationAxiom__Group__1__Impl();
 
             state._fsp--;
@@ -29948,7 +29949,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:9684:2: 'extendsRelationship'
             {
              before(grammarAccess.getReifiedRelationshipSpecializationAxiomAccess().getExtendsRelationshipKeyword_2()); 
-            match(input,123,FOLLOW_2); 
+            match(input,124,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipSpecializationAxiomAccess().getExtendsRelationshipKeyword_2()); 
 
             }
@@ -30164,7 +30165,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:9751:1: ( rule__SubObjectPropertyOfAxiom__Group__1__Impl rule__SubObjectPropertyOfAxiom__Group__2 )
             // InternalOML.g:9752:2: rule__SubObjectPropertyOfAxiom__Group__1__Impl rule__SubObjectPropertyOfAxiom__Group__2
             {
-            pushFollow(FOLLOW_69);
+            pushFollow(FOLLOW_70);
             rule__SubObjectPropertyOfAxiom__Group__1__Impl();
 
             state._fsp--;
@@ -30291,7 +30292,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:9792:2: 'subObjectPropertyOf'
             {
              before(grammarAccess.getSubObjectPropertyOfAxiomAccess().getSubObjectPropertyOfKeyword_2()); 
-            match(input,124,FOLLOW_2); 
+            match(input,125,FOLLOW_2); 
              after(grammarAccess.getSubObjectPropertyOfAxiomAccess().getSubObjectPropertyOfKeyword_2()); 
 
             }
@@ -30404,7 +30405,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:9832:1: ( rule__SubDataPropertyOfAxiom__Group__0__Impl rule__SubDataPropertyOfAxiom__Group__1 )
             // InternalOML.g:9833:2: rule__SubDataPropertyOfAxiom__Group__0__Impl rule__SubDataPropertyOfAxiom__Group__1
             {
-            pushFollow(FOLLOW_70);
+            pushFollow(FOLLOW_71);
             rule__SubDataPropertyOfAxiom__Group__0__Impl();
 
             state._fsp--;
@@ -30507,7 +30508,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:9859:1: ( rule__SubDataPropertyOfAxiom__Group__1__Impl rule__SubDataPropertyOfAxiom__Group__2 )
             // InternalOML.g:9860:2: rule__SubDataPropertyOfAxiom__Group__1__Impl rule__SubDataPropertyOfAxiom__Group__2
             {
-            pushFollow(FOLLOW_71);
+            pushFollow(FOLLOW_72);
             rule__SubDataPropertyOfAxiom__Group__1__Impl();
 
             state._fsp--;
@@ -30634,7 +30635,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:9900:2: 'subDataPropertyOf'
             {
              before(grammarAccess.getSubDataPropertyOfAxiomAccess().getSubDataPropertyOfKeyword_2()); 
-            match(input,125,FOLLOW_2); 
+            match(input,126,FOLLOW_2); 
              after(grammarAccess.getSubDataPropertyOfAxiomAccess().getSubDataPropertyOfKeyword_2()); 
 
             }
@@ -30747,7 +30748,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:9940:1: ( rule__EntityScalarDataPropertyExistentialRestrictionAxiom__Group__0__Impl rule__EntityScalarDataPropertyExistentialRestrictionAxiom__Group__1 )
             // InternalOML.g:9941:2: rule__EntityScalarDataPropertyExistentialRestrictionAxiom__Group__0__Impl rule__EntityScalarDataPropertyExistentialRestrictionAxiom__Group__1
             {
-            pushFollow(FOLLOW_72);
+            pushFollow(FOLLOW_73);
             rule__EntityScalarDataPropertyExistentialRestrictionAxiom__Group__0__Impl();
 
             state._fsp--;
@@ -30892,7 +30893,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:9981:2: 'someData'
             {
              before(grammarAccess.getEntityScalarDataPropertyExistentialRestrictionAxiomAccess().getSomeDataKeyword_1()); 
-            match(input,126,FOLLOW_2); 
+            match(input,127,FOLLOW_2); 
              after(grammarAccess.getEntityScalarDataPropertyExistentialRestrictionAxiomAccess().getSomeDataKeyword_1()); 
 
             }
@@ -30925,7 +30926,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:9994:1: ( rule__EntityScalarDataPropertyExistentialRestrictionAxiom__Group__2__Impl rule__EntityScalarDataPropertyExistentialRestrictionAxiom__Group__3 )
             // InternalOML.g:9995:2: rule__EntityScalarDataPropertyExistentialRestrictionAxiom__Group__2__Impl rule__EntityScalarDataPropertyExistentialRestrictionAxiom__Group__3
             {
-            pushFollow(FOLLOW_63);
+            pushFollow(FOLLOW_64);
             rule__EntityScalarDataPropertyExistentialRestrictionAxiom__Group__2__Impl();
 
             state._fsp--;
@@ -31052,7 +31053,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:10035:2: '.'
             {
              before(grammarAccess.getEntityScalarDataPropertyExistentialRestrictionAxiomAccess().getFullStopKeyword_3()); 
-            match(input,118,FOLLOW_2); 
+            match(input,119,FOLLOW_2); 
              after(grammarAccess.getEntityScalarDataPropertyExistentialRestrictionAxiomAccess().getFullStopKeyword_3()); 
 
             }
@@ -31085,7 +31086,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:10048:1: ( rule__EntityScalarDataPropertyExistentialRestrictionAxiom__Group__4__Impl rule__EntityScalarDataPropertyExistentialRestrictionAxiom__Group__5 )
             // InternalOML.g:10049:2: rule__EntityScalarDataPropertyExistentialRestrictionAxiom__Group__4__Impl rule__EntityScalarDataPropertyExistentialRestrictionAxiom__Group__5
             {
-            pushFollow(FOLLOW_64);
+            pushFollow(FOLLOW_65);
             rule__EntityScalarDataPropertyExistentialRestrictionAxiom__Group__4__Impl();
 
             state._fsp--;
@@ -31212,7 +31213,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:10089:2: 'in'
             {
              before(grammarAccess.getEntityScalarDataPropertyExistentialRestrictionAxiomAccess().getInKeyword_5()); 
-            match(input,119,FOLLOW_2); 
+            match(input,120,FOLLOW_2); 
              after(grammarAccess.getEntityScalarDataPropertyExistentialRestrictionAxiomAccess().getInKeyword_5()); 
 
             }
@@ -31325,7 +31326,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:10129:1: ( rule__EntityScalarDataPropertyParticularRestrictionAxiom__Group__0__Impl rule__EntityScalarDataPropertyParticularRestrictionAxiom__Group__1 )
             // InternalOML.g:10130:2: rule__EntityScalarDataPropertyParticularRestrictionAxiom__Group__0__Impl rule__EntityScalarDataPropertyParticularRestrictionAxiom__Group__1
             {
-            pushFollow(FOLLOW_73);
+            pushFollow(FOLLOW_74);
             rule__EntityScalarDataPropertyParticularRestrictionAxiom__Group__0__Impl();
 
             state._fsp--;
@@ -31470,7 +31471,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:10170:2: 'every'
             {
              before(grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomAccess().getEveryKeyword_1()); 
-            match(input,127,FOLLOW_2); 
+            match(input,128,FOLLOW_2); 
              after(grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomAccess().getEveryKeyword_1()); 
 
             }
@@ -31503,7 +31504,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:10183:1: ( rule__EntityScalarDataPropertyParticularRestrictionAxiom__Group__2__Impl rule__EntityScalarDataPropertyParticularRestrictionAxiom__Group__3 )
             // InternalOML.g:10184:2: rule__EntityScalarDataPropertyParticularRestrictionAxiom__Group__2__Impl rule__EntityScalarDataPropertyParticularRestrictionAxiom__Group__3
             {
-            pushFollow(FOLLOW_63);
+            pushFollow(FOLLOW_64);
             rule__EntityScalarDataPropertyParticularRestrictionAxiom__Group__2__Impl();
 
             state._fsp--;
@@ -31630,7 +31631,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:10224:2: '.'
             {
              before(grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomAccess().getFullStopKeyword_3()); 
-            match(input,118,FOLLOW_2); 
+            match(input,119,FOLLOW_2); 
              after(grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomAccess().getFullStopKeyword_3()); 
 
             }
@@ -31748,7 +31749,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:10264:1: ( rule__EntityScalarDataPropertyParticularRestrictionAxiom__Group__5__Impl rule__EntityScalarDataPropertyParticularRestrictionAxiom__Group__6 )
             // InternalOML.g:10265:2: rule__EntityScalarDataPropertyParticularRestrictionAxiom__Group__5__Impl rule__EntityScalarDataPropertyParticularRestrictionAxiom__Group__6
             {
-            pushFollow(FOLLOW_74);
+            pushFollow(FOLLOW_75);
             rule__EntityScalarDataPropertyParticularRestrictionAxiom__Group__5__Impl();
 
             state._fsp--;
@@ -31823,7 +31824,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:10291:1: ( rule__EntityScalarDataPropertyParticularRestrictionAxiom__Group__6__Impl rule__EntityScalarDataPropertyParticularRestrictionAxiom__Group__7 )
             // InternalOML.g:10292:2: rule__EntityScalarDataPropertyParticularRestrictionAxiom__Group__6__Impl rule__EntityScalarDataPropertyParticularRestrictionAxiom__Group__7
             {
-            pushFollow(FOLLOW_75);
+            pushFollow(FOLLOW_76);
             rule__EntityScalarDataPropertyParticularRestrictionAxiom__Group__6__Impl();
 
             state._fsp--;
@@ -31949,7 +31950,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt78=2;
             int LA78_0 = input.LA(1);
 
-            if ( (LA78_0==128) ) {
+            if ( (LA78_0==129) ) {
                 alt78=1;
             }
             switch (alt78) {
@@ -32041,7 +32042,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:10359:2: '^^'
             {
              before(grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomAccess().getCircumflexAccentCircumflexAccentKeyword_7_0()); 
-            match(input,128,FOLLOW_2); 
+            match(input,129,FOLLOW_2); 
              after(grammarAccess.getEntityScalarDataPropertyParticularRestrictionAxiomAccess().getCircumflexAccentCircumflexAccentKeyword_7_0()); 
 
             }
@@ -32154,7 +32155,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:10399:1: ( rule__EntityScalarDataPropertyUniversalRestrictionAxiom__Group__0__Impl rule__EntityScalarDataPropertyUniversalRestrictionAxiom__Group__1 )
             // InternalOML.g:10400:2: rule__EntityScalarDataPropertyUniversalRestrictionAxiom__Group__0__Impl rule__EntityScalarDataPropertyUniversalRestrictionAxiom__Group__1
             {
-            pushFollow(FOLLOW_76);
+            pushFollow(FOLLOW_77);
             rule__EntityScalarDataPropertyUniversalRestrictionAxiom__Group__0__Impl();
 
             state._fsp--;
@@ -32299,7 +32300,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:10440:2: 'allData'
             {
              before(grammarAccess.getEntityScalarDataPropertyUniversalRestrictionAxiomAccess().getAllDataKeyword_1()); 
-            match(input,129,FOLLOW_2); 
+            match(input,130,FOLLOW_2); 
              after(grammarAccess.getEntityScalarDataPropertyUniversalRestrictionAxiomAccess().getAllDataKeyword_1()); 
 
             }
@@ -32332,7 +32333,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:10453:1: ( rule__EntityScalarDataPropertyUniversalRestrictionAxiom__Group__2__Impl rule__EntityScalarDataPropertyUniversalRestrictionAxiom__Group__3 )
             // InternalOML.g:10454:2: rule__EntityScalarDataPropertyUniversalRestrictionAxiom__Group__2__Impl rule__EntityScalarDataPropertyUniversalRestrictionAxiom__Group__3
             {
-            pushFollow(FOLLOW_63);
+            pushFollow(FOLLOW_64);
             rule__EntityScalarDataPropertyUniversalRestrictionAxiom__Group__2__Impl();
 
             state._fsp--;
@@ -32459,7 +32460,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:10494:2: '.'
             {
              before(grammarAccess.getEntityScalarDataPropertyUniversalRestrictionAxiomAccess().getFullStopKeyword_3()); 
-            match(input,118,FOLLOW_2); 
+            match(input,119,FOLLOW_2); 
              after(grammarAccess.getEntityScalarDataPropertyUniversalRestrictionAxiomAccess().getFullStopKeyword_3()); 
 
             }
@@ -32492,7 +32493,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:10507:1: ( rule__EntityScalarDataPropertyUniversalRestrictionAxiom__Group__4__Impl rule__EntityScalarDataPropertyUniversalRestrictionAxiom__Group__5 )
             // InternalOML.g:10508:2: rule__EntityScalarDataPropertyUniversalRestrictionAxiom__Group__4__Impl rule__EntityScalarDataPropertyUniversalRestrictionAxiom__Group__5
             {
-            pushFollow(FOLLOW_64);
+            pushFollow(FOLLOW_65);
             rule__EntityScalarDataPropertyUniversalRestrictionAxiom__Group__4__Impl();
 
             state._fsp--;
@@ -32619,7 +32620,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:10548:2: 'in'
             {
              before(grammarAccess.getEntityScalarDataPropertyUniversalRestrictionAxiomAccess().getInKeyword_5()); 
-            match(input,119,FOLLOW_2); 
+            match(input,120,FOLLOW_2); 
              after(grammarAccess.getEntityScalarDataPropertyUniversalRestrictionAxiomAccess().getInKeyword_5()); 
 
             }
@@ -32732,7 +32733,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:10588:1: ( rule__EntityStructuredDataPropertyParticularRestrictionAxiom__Group__0__Impl rule__EntityStructuredDataPropertyParticularRestrictionAxiom__Group__1 )
             // InternalOML.g:10589:2: rule__EntityStructuredDataPropertyParticularRestrictionAxiom__Group__0__Impl rule__EntityStructuredDataPropertyParticularRestrictionAxiom__Group__1
             {
-            pushFollow(FOLLOW_73);
+            pushFollow(FOLLOW_74);
             rule__EntityStructuredDataPropertyParticularRestrictionAxiom__Group__0__Impl();
 
             state._fsp--;
@@ -32877,7 +32878,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:10629:2: 'every'
             {
              before(grammarAccess.getEntityStructuredDataPropertyParticularRestrictionAxiomAccess().getEveryKeyword_1()); 
-            match(input,127,FOLLOW_2); 
+            match(input,128,FOLLOW_2); 
              after(grammarAccess.getEntityStructuredDataPropertyParticularRestrictionAxiomAccess().getEveryKeyword_1()); 
 
             }
@@ -32910,7 +32911,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:10642:1: ( rule__EntityStructuredDataPropertyParticularRestrictionAxiom__Group__2__Impl rule__EntityStructuredDataPropertyParticularRestrictionAxiom__Group__3 )
             // InternalOML.g:10643:2: rule__EntityStructuredDataPropertyParticularRestrictionAxiom__Group__2__Impl rule__EntityStructuredDataPropertyParticularRestrictionAxiom__Group__3
             {
-            pushFollow(FOLLOW_63);
+            pushFollow(FOLLOW_64);
             rule__EntityStructuredDataPropertyParticularRestrictionAxiom__Group__2__Impl();
 
             state._fsp--;
@@ -33037,7 +33038,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:10683:2: '.'
             {
              before(grammarAccess.getEntityStructuredDataPropertyParticularRestrictionAxiomAccess().getFullStopKeyword_3()); 
-            match(input,118,FOLLOW_2); 
+            match(input,119,FOLLOW_2); 
              after(grammarAccess.getEntityStructuredDataPropertyParticularRestrictionAxiomAccess().getFullStopKeyword_3()); 
 
             }
@@ -33230,7 +33231,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:10750:1: ( rule__EntityStructuredDataPropertyParticularRestrictionAxiom__Group__6__Impl rule__EntityStructuredDataPropertyParticularRestrictionAxiom__Group__7 )
             // InternalOML.g:10751:2: rule__EntityStructuredDataPropertyParticularRestrictionAxiom__Group__6__Impl rule__EntityStructuredDataPropertyParticularRestrictionAxiom__Group__7
             {
-            pushFollow(FOLLOW_77);
+            pushFollow(FOLLOW_78);
             rule__EntityStructuredDataPropertyParticularRestrictionAxiom__Group__6__Impl();
 
             state._fsp--;
@@ -33305,7 +33306,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:10777:1: ( rule__EntityStructuredDataPropertyParticularRestrictionAxiom__Group__7__Impl rule__EntityStructuredDataPropertyParticularRestrictionAxiom__Group__8 )
             // InternalOML.g:10778:2: rule__EntityStructuredDataPropertyParticularRestrictionAxiom__Group__7__Impl rule__EntityStructuredDataPropertyParticularRestrictionAxiom__Group__8
             {
-            pushFollow(FOLLOW_77);
+            pushFollow(FOLLOW_78);
             rule__EntityStructuredDataPropertyParticularRestrictionAxiom__Group__7__Impl();
 
             state._fsp--;
@@ -33362,7 +33363,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             	case 1 :
             	    // InternalOML.g:10792:3: rule__EntityStructuredDataPropertyParticularRestrictionAxiom__Alternatives_7
             	    {
-            	    pushFollow(FOLLOW_78);
+            	    pushFollow(FOLLOW_79);
             	    rule__EntityStructuredDataPropertyParticularRestrictionAxiom__Alternatives_7();
 
             	    state._fsp--;
@@ -33741,7 +33742,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:10912:1: ( rule__RestrictionStructuredDataPropertyTuple__Group__3__Impl rule__RestrictionStructuredDataPropertyTuple__Group__4 )
             // InternalOML.g:10913:2: rule__RestrictionStructuredDataPropertyTuple__Group__3__Impl rule__RestrictionStructuredDataPropertyTuple__Group__4
             {
-            pushFollow(FOLLOW_77);
+            pushFollow(FOLLOW_78);
             rule__RestrictionStructuredDataPropertyTuple__Group__3__Impl();
 
             state._fsp--;
@@ -33816,7 +33817,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:10939:1: ( rule__RestrictionStructuredDataPropertyTuple__Group__4__Impl rule__RestrictionStructuredDataPropertyTuple__Group__5 )
             // InternalOML.g:10940:2: rule__RestrictionStructuredDataPropertyTuple__Group__4__Impl rule__RestrictionStructuredDataPropertyTuple__Group__5
             {
-            pushFollow(FOLLOW_77);
+            pushFollow(FOLLOW_78);
             rule__RestrictionStructuredDataPropertyTuple__Group__4__Impl();
 
             state._fsp--;
@@ -33873,7 +33874,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             	case 1 :
             	    // InternalOML.g:10954:3: rule__RestrictionStructuredDataPropertyTuple__Alternatives_4
             	    {
-            	    pushFollow(FOLLOW_78);
+            	    pushFollow(FOLLOW_79);
             	    rule__RestrictionStructuredDataPropertyTuple__Alternatives_4();
 
             	    state._fsp--;
@@ -34177,7 +34178,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:11047:1: ( rule__RestrictionScalarDataPropertyValue__Group__2__Impl rule__RestrictionScalarDataPropertyValue__Group__3 )
             // InternalOML.g:11048:2: rule__RestrictionScalarDataPropertyValue__Group__2__Impl rule__RestrictionScalarDataPropertyValue__Group__3
             {
-            pushFollow(FOLLOW_74);
+            pushFollow(FOLLOW_75);
             rule__RestrictionScalarDataPropertyValue__Group__2__Impl();
 
             state._fsp--;
@@ -34252,7 +34253,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:11074:1: ( rule__RestrictionScalarDataPropertyValue__Group__3__Impl rule__RestrictionScalarDataPropertyValue__Group__4 )
             // InternalOML.g:11075:2: rule__RestrictionScalarDataPropertyValue__Group__3__Impl rule__RestrictionScalarDataPropertyValue__Group__4
             {
-            pushFollow(FOLLOW_75);
+            pushFollow(FOLLOW_76);
             rule__RestrictionScalarDataPropertyValue__Group__3__Impl();
 
             state._fsp--;
@@ -34378,7 +34379,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt85=2;
             int LA85_0 = input.LA(1);
 
-            if ( (LA85_0==128) ) {
+            if ( (LA85_0==129) ) {
                 alt85=1;
             }
             switch (alt85) {
@@ -34470,7 +34471,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:11142:2: '^^'
             {
              before(grammarAccess.getRestrictionScalarDataPropertyValueAccess().getCircumflexAccentCircumflexAccentKeyword_4_0()); 
-            match(input,128,FOLLOW_2); 
+            match(input,129,FOLLOW_2); 
              after(grammarAccess.getRestrictionScalarDataPropertyValueAccess().getCircumflexAccentCircumflexAccentKeyword_4_0()); 
 
             }
@@ -34583,7 +34584,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:11182:1: ( rule__BinaryScalarRestriction__Group__0__Impl rule__BinaryScalarRestriction__Group__1 )
             // InternalOML.g:11183:2: rule__BinaryScalarRestriction__Group__0__Impl rule__BinaryScalarRestriction__Group__1
             {
-            pushFollow(FOLLOW_79);
+            pushFollow(FOLLOW_80);
             rule__BinaryScalarRestriction__Group__0__Impl();
 
             state._fsp--;
@@ -34728,7 +34729,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:11223:2: 'binaryScalarRestriction'
             {
              before(grammarAccess.getBinaryScalarRestrictionAccess().getBinaryScalarRestrictionKeyword_1()); 
-            match(input,130,FOLLOW_2); 
+            match(input,131,FOLLOW_2); 
              after(grammarAccess.getBinaryScalarRestrictionAccess().getBinaryScalarRestrictionKeyword_1()); 
 
             }
@@ -34846,7 +34847,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:11263:1: ( rule__BinaryScalarRestriction__Group__3__Impl rule__BinaryScalarRestriction__Group__4 )
             // InternalOML.g:11264:2: rule__BinaryScalarRestriction__Group__3__Impl rule__BinaryScalarRestriction__Group__4
             {
-            pushFollow(FOLLOW_80);
+            pushFollow(FOLLOW_81);
             rule__BinaryScalarRestriction__Group__3__Impl();
 
             state._fsp--;
@@ -34921,7 +34922,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:11290:1: ( rule__BinaryScalarRestriction__Group__4__Impl rule__BinaryScalarRestriction__Group__5 )
             // InternalOML.g:11291:2: rule__BinaryScalarRestriction__Group__4__Impl rule__BinaryScalarRestriction__Group__5
             {
-            pushFollow(FOLLOW_81);
+            pushFollow(FOLLOW_82);
             rule__BinaryScalarRestriction__Group__4__Impl();
 
             state._fsp--;
@@ -35048,7 +35049,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:11331:2: 'restrictedRange'
             {
              before(grammarAccess.getBinaryScalarRestrictionAccess().getRestrictedRangeKeyword_5()); 
-            match(input,131,FOLLOW_2); 
+            match(input,132,FOLLOW_2); 
              after(grammarAccess.getBinaryScalarRestrictionAccess().getRestrictedRangeKeyword_5()); 
 
             }
@@ -35236,7 +35237,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:11398:1: ( rule__BinaryScalarRestriction__Group_4_0__0__Impl rule__BinaryScalarRestriction__Group_4_0__1 )
             // InternalOML.g:11399:2: rule__BinaryScalarRestriction__Group_4_0__0__Impl rule__BinaryScalarRestriction__Group_4_0__1
             {
-            pushFollow(FOLLOW_82);
+            pushFollow(FOLLOW_83);
             rule__BinaryScalarRestriction__Group_4_0__0__Impl();
 
             state._fsp--;
@@ -35278,7 +35279,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:11412:2: 'length'
             {
              before(grammarAccess.getBinaryScalarRestrictionAccess().getLengthKeyword_4_0_0()); 
-            match(input,132,FOLLOW_2); 
+            match(input,133,FOLLOW_2); 
              after(grammarAccess.getBinaryScalarRestrictionAccess().getLengthKeyword_4_0_0()); 
 
             }
@@ -35391,7 +35392,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:11452:1: ( rule__BinaryScalarRestriction__Group_4_1__0__Impl rule__BinaryScalarRestriction__Group_4_1__1 )
             // InternalOML.g:11453:2: rule__BinaryScalarRestriction__Group_4_1__0__Impl rule__BinaryScalarRestriction__Group_4_1__1
             {
-            pushFollow(FOLLOW_82);
+            pushFollow(FOLLOW_83);
             rule__BinaryScalarRestriction__Group_4_1__0__Impl();
 
             state._fsp--;
@@ -35433,7 +35434,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:11466:2: 'minLength'
             {
              before(grammarAccess.getBinaryScalarRestrictionAccess().getMinLengthKeyword_4_1_0()); 
-            match(input,133,FOLLOW_2); 
+            match(input,134,FOLLOW_2); 
              after(grammarAccess.getBinaryScalarRestrictionAccess().getMinLengthKeyword_4_1_0()); 
 
             }
@@ -35546,7 +35547,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:11506:1: ( rule__BinaryScalarRestriction__Group_4_2__0__Impl rule__BinaryScalarRestriction__Group_4_2__1 )
             // InternalOML.g:11507:2: rule__BinaryScalarRestriction__Group_4_2__0__Impl rule__BinaryScalarRestriction__Group_4_2__1
             {
-            pushFollow(FOLLOW_82);
+            pushFollow(FOLLOW_83);
             rule__BinaryScalarRestriction__Group_4_2__0__Impl();
 
             state._fsp--;
@@ -35588,7 +35589,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:11520:2: 'maxLength'
             {
              before(grammarAccess.getBinaryScalarRestrictionAccess().getMaxLengthKeyword_4_2_0()); 
-            match(input,134,FOLLOW_2); 
+            match(input,135,FOLLOW_2); 
              after(grammarAccess.getBinaryScalarRestrictionAccess().getMaxLengthKeyword_4_2_0()); 
 
             }
@@ -35701,7 +35702,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:11560:1: ( rule__IRIScalarRestriction__Group__0__Impl rule__IRIScalarRestriction__Group__1 )
             // InternalOML.g:11561:2: rule__IRIScalarRestriction__Group__0__Impl rule__IRIScalarRestriction__Group__1
             {
-            pushFollow(FOLLOW_83);
+            pushFollow(FOLLOW_84);
             rule__IRIScalarRestriction__Group__0__Impl();
 
             state._fsp--;
@@ -35846,7 +35847,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:11601:2: 'iriScalarRestriction'
             {
              before(grammarAccess.getIRIScalarRestrictionAccess().getIriScalarRestrictionKeyword_1()); 
-            match(input,135,FOLLOW_2); 
+            match(input,136,FOLLOW_2); 
              after(grammarAccess.getIRIScalarRestrictionAccess().getIriScalarRestrictionKeyword_1()); 
 
             }
@@ -35964,7 +35965,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:11641:1: ( rule__IRIScalarRestriction__Group__3__Impl rule__IRIScalarRestriction__Group__4 )
             // InternalOML.g:11642:2: rule__IRIScalarRestriction__Group__3__Impl rule__IRIScalarRestriction__Group__4
             {
-            pushFollow(FOLLOW_84);
+            pushFollow(FOLLOW_85);
             rule__IRIScalarRestriction__Group__3__Impl();
 
             state._fsp--;
@@ -36039,7 +36040,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:11668:1: ( rule__IRIScalarRestriction__Group__4__Impl rule__IRIScalarRestriction__Group__5 )
             // InternalOML.g:11669:2: rule__IRIScalarRestriction__Group__4__Impl rule__IRIScalarRestriction__Group__5
             {
-            pushFollow(FOLLOW_81);
+            pushFollow(FOLLOW_82);
             rule__IRIScalarRestriction__Group__4__Impl();
 
             state._fsp--;
@@ -36166,7 +36167,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:11709:2: 'restrictedRange'
             {
              before(grammarAccess.getIRIScalarRestrictionAccess().getRestrictedRangeKeyword_5()); 
-            match(input,131,FOLLOW_2); 
+            match(input,132,FOLLOW_2); 
              after(grammarAccess.getIRIScalarRestrictionAccess().getRestrictedRangeKeyword_5()); 
 
             }
@@ -36354,7 +36355,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:11776:1: ( rule__IRIScalarRestriction__Group_4_0__0__Impl rule__IRIScalarRestriction__Group_4_0__1 )
             // InternalOML.g:11777:2: rule__IRIScalarRestriction__Group_4_0__0__Impl rule__IRIScalarRestriction__Group_4_0__1
             {
-            pushFollow(FOLLOW_82);
+            pushFollow(FOLLOW_83);
             rule__IRIScalarRestriction__Group_4_0__0__Impl();
 
             state._fsp--;
@@ -36396,7 +36397,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:11790:2: 'length'
             {
              before(grammarAccess.getIRIScalarRestrictionAccess().getLengthKeyword_4_0_0()); 
-            match(input,132,FOLLOW_2); 
+            match(input,133,FOLLOW_2); 
              after(grammarAccess.getIRIScalarRestrictionAccess().getLengthKeyword_4_0_0()); 
 
             }
@@ -36509,7 +36510,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:11830:1: ( rule__IRIScalarRestriction__Group_4_1__0__Impl rule__IRIScalarRestriction__Group_4_1__1 )
             // InternalOML.g:11831:2: rule__IRIScalarRestriction__Group_4_1__0__Impl rule__IRIScalarRestriction__Group_4_1__1
             {
-            pushFollow(FOLLOW_82);
+            pushFollow(FOLLOW_83);
             rule__IRIScalarRestriction__Group_4_1__0__Impl();
 
             state._fsp--;
@@ -36551,7 +36552,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:11844:2: 'minLength'
             {
              before(grammarAccess.getIRIScalarRestrictionAccess().getMinLengthKeyword_4_1_0()); 
-            match(input,133,FOLLOW_2); 
+            match(input,134,FOLLOW_2); 
              after(grammarAccess.getIRIScalarRestrictionAccess().getMinLengthKeyword_4_1_0()); 
 
             }
@@ -36664,7 +36665,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:11884:1: ( rule__IRIScalarRestriction__Group_4_2__0__Impl rule__IRIScalarRestriction__Group_4_2__1 )
             // InternalOML.g:11885:2: rule__IRIScalarRestriction__Group_4_2__0__Impl rule__IRIScalarRestriction__Group_4_2__1
             {
-            pushFollow(FOLLOW_82);
+            pushFollow(FOLLOW_83);
             rule__IRIScalarRestriction__Group_4_2__0__Impl();
 
             state._fsp--;
@@ -36706,7 +36707,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:11898:2: 'maxLength'
             {
              before(grammarAccess.getIRIScalarRestrictionAccess().getMaxLengthKeyword_4_2_0()); 
-            match(input,134,FOLLOW_2); 
+            match(input,135,FOLLOW_2); 
              after(grammarAccess.getIRIScalarRestrictionAccess().getMaxLengthKeyword_4_2_0()); 
 
             }
@@ -36819,7 +36820,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:11938:1: ( rule__IRIScalarRestriction__Group_4_3__0__Impl rule__IRIScalarRestriction__Group_4_3__1 )
             // InternalOML.g:11939:2: rule__IRIScalarRestriction__Group_4_3__0__Impl rule__IRIScalarRestriction__Group_4_3__1
             {
-            pushFollow(FOLLOW_85);
+            pushFollow(FOLLOW_86);
             rule__IRIScalarRestriction__Group_4_3__0__Impl();
 
             state._fsp--;
@@ -36861,7 +36862,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:11952:2: 'pattern'
             {
              before(grammarAccess.getIRIScalarRestrictionAccess().getPatternKeyword_4_3_0()); 
-            match(input,136,FOLLOW_2); 
+            match(input,137,FOLLOW_2); 
              after(grammarAccess.getIRIScalarRestrictionAccess().getPatternKeyword_4_3_0()); 
 
             }
@@ -36974,7 +36975,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:11992:1: ( rule__NumericScalarRestriction__Group__0__Impl rule__NumericScalarRestriction__Group__1 )
             // InternalOML.g:11993:2: rule__NumericScalarRestriction__Group__0__Impl rule__NumericScalarRestriction__Group__1
             {
-            pushFollow(FOLLOW_86);
+            pushFollow(FOLLOW_87);
             rule__NumericScalarRestriction__Group__0__Impl();
 
             state._fsp--;
@@ -37119,7 +37120,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:12033:2: 'numericScalarRestriction'
             {
              before(grammarAccess.getNumericScalarRestrictionAccess().getNumericScalarRestrictionKeyword_1()); 
-            match(input,137,FOLLOW_2); 
+            match(input,138,FOLLOW_2); 
              after(grammarAccess.getNumericScalarRestrictionAccess().getNumericScalarRestrictionKeyword_1()); 
 
             }
@@ -37237,7 +37238,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:12073:1: ( rule__NumericScalarRestriction__Group__3__Impl rule__NumericScalarRestriction__Group__4 )
             // InternalOML.g:12074:2: rule__NumericScalarRestriction__Group__3__Impl rule__NumericScalarRestriction__Group__4
             {
-            pushFollow(FOLLOW_87);
+            pushFollow(FOLLOW_88);
             rule__NumericScalarRestriction__Group__3__Impl();
 
             state._fsp--;
@@ -37312,7 +37313,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:12100:1: ( rule__NumericScalarRestriction__Group__4__Impl rule__NumericScalarRestriction__Group__5 )
             // InternalOML.g:12101:2: rule__NumericScalarRestriction__Group__4__Impl rule__NumericScalarRestriction__Group__5
             {
-            pushFollow(FOLLOW_81);
+            pushFollow(FOLLOW_82);
             rule__NumericScalarRestriction__Group__4__Impl();
 
             state._fsp--;
@@ -37439,7 +37440,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:12141:2: 'restrictedRange'
             {
              before(grammarAccess.getNumericScalarRestrictionAccess().getRestrictedRangeKeyword_5()); 
-            match(input,131,FOLLOW_2); 
+            match(input,132,FOLLOW_2); 
              after(grammarAccess.getNumericScalarRestrictionAccess().getRestrictedRangeKeyword_5()); 
 
             }
@@ -37627,7 +37628,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:12208:1: ( rule__NumericScalarRestriction__Group_4_0__0__Impl rule__NumericScalarRestriction__Group_4_0__1 )
             // InternalOML.g:12209:2: rule__NumericScalarRestriction__Group_4_0__0__Impl rule__NumericScalarRestriction__Group_4_0__1
             {
-            pushFollow(FOLLOW_74);
+            pushFollow(FOLLOW_75);
             rule__NumericScalarRestriction__Group_4_0__0__Impl();
 
             state._fsp--;
@@ -37669,7 +37670,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:12222:2: 'minInclusive'
             {
              before(grammarAccess.getNumericScalarRestrictionAccess().getMinInclusiveKeyword_4_0_0()); 
-            match(input,138,FOLLOW_2); 
+            match(input,139,FOLLOW_2); 
              after(grammarAccess.getNumericScalarRestrictionAccess().getMinInclusiveKeyword_4_0_0()); 
 
             }
@@ -37782,7 +37783,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:12262:1: ( rule__NumericScalarRestriction__Group_4_1__0__Impl rule__NumericScalarRestriction__Group_4_1__1 )
             // InternalOML.g:12263:2: rule__NumericScalarRestriction__Group_4_1__0__Impl rule__NumericScalarRestriction__Group_4_1__1
             {
-            pushFollow(FOLLOW_74);
+            pushFollow(FOLLOW_75);
             rule__NumericScalarRestriction__Group_4_1__0__Impl();
 
             state._fsp--;
@@ -37824,7 +37825,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:12276:2: 'maxInclusive'
             {
              before(grammarAccess.getNumericScalarRestrictionAccess().getMaxInclusiveKeyword_4_1_0()); 
-            match(input,139,FOLLOW_2); 
+            match(input,140,FOLLOW_2); 
              after(grammarAccess.getNumericScalarRestrictionAccess().getMaxInclusiveKeyword_4_1_0()); 
 
             }
@@ -37937,7 +37938,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:12316:1: ( rule__NumericScalarRestriction__Group_4_2__0__Impl rule__NumericScalarRestriction__Group_4_2__1 )
             // InternalOML.g:12317:2: rule__NumericScalarRestriction__Group_4_2__0__Impl rule__NumericScalarRestriction__Group_4_2__1
             {
-            pushFollow(FOLLOW_74);
+            pushFollow(FOLLOW_75);
             rule__NumericScalarRestriction__Group_4_2__0__Impl();
 
             state._fsp--;
@@ -37979,7 +37980,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:12330:2: 'minExclusive'
             {
              before(grammarAccess.getNumericScalarRestrictionAccess().getMinExclusiveKeyword_4_2_0()); 
-            match(input,140,FOLLOW_2); 
+            match(input,141,FOLLOW_2); 
              after(grammarAccess.getNumericScalarRestrictionAccess().getMinExclusiveKeyword_4_2_0()); 
 
             }
@@ -38092,7 +38093,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:12370:1: ( rule__NumericScalarRestriction__Group_4_3__0__Impl rule__NumericScalarRestriction__Group_4_3__1 )
             // InternalOML.g:12371:2: rule__NumericScalarRestriction__Group_4_3__0__Impl rule__NumericScalarRestriction__Group_4_3__1
             {
-            pushFollow(FOLLOW_74);
+            pushFollow(FOLLOW_75);
             rule__NumericScalarRestriction__Group_4_3__0__Impl();
 
             state._fsp--;
@@ -38134,7 +38135,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:12384:2: 'maxExclusive'
             {
              before(grammarAccess.getNumericScalarRestrictionAccess().getMaxExclusiveKeyword_4_3_0()); 
-            match(input,141,FOLLOW_2); 
+            match(input,142,FOLLOW_2); 
              after(grammarAccess.getNumericScalarRestrictionAccess().getMaxExclusiveKeyword_4_3_0()); 
 
             }
@@ -38247,7 +38248,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:12424:1: ( rule__PlainLiteralScalarRestriction__Group__0__Impl rule__PlainLiteralScalarRestriction__Group__1 )
             // InternalOML.g:12425:2: rule__PlainLiteralScalarRestriction__Group__0__Impl rule__PlainLiteralScalarRestriction__Group__1
             {
-            pushFollow(FOLLOW_88);
+            pushFollow(FOLLOW_89);
             rule__PlainLiteralScalarRestriction__Group__0__Impl();
 
             state._fsp--;
@@ -38392,7 +38393,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:12465:2: 'plainLiteralScalarRestriction'
             {
              before(grammarAccess.getPlainLiteralScalarRestrictionAccess().getPlainLiteralScalarRestrictionKeyword_1()); 
-            match(input,142,FOLLOW_2); 
+            match(input,143,FOLLOW_2); 
              after(grammarAccess.getPlainLiteralScalarRestrictionAccess().getPlainLiteralScalarRestrictionKeyword_1()); 
 
             }
@@ -38510,7 +38511,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:12505:1: ( rule__PlainLiteralScalarRestriction__Group__3__Impl rule__PlainLiteralScalarRestriction__Group__4 )
             // InternalOML.g:12506:2: rule__PlainLiteralScalarRestriction__Group__3__Impl rule__PlainLiteralScalarRestriction__Group__4
             {
-            pushFollow(FOLLOW_89);
+            pushFollow(FOLLOW_90);
             rule__PlainLiteralScalarRestriction__Group__3__Impl();
 
             state._fsp--;
@@ -38585,7 +38586,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:12532:1: ( rule__PlainLiteralScalarRestriction__Group__4__Impl rule__PlainLiteralScalarRestriction__Group__5 )
             // InternalOML.g:12533:2: rule__PlainLiteralScalarRestriction__Group__4__Impl rule__PlainLiteralScalarRestriction__Group__5
             {
-            pushFollow(FOLLOW_81);
+            pushFollow(FOLLOW_82);
             rule__PlainLiteralScalarRestriction__Group__4__Impl();
 
             state._fsp--;
@@ -38712,7 +38713,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:12573:2: 'restrictedRange'
             {
              before(grammarAccess.getPlainLiteralScalarRestrictionAccess().getRestrictedRangeKeyword_5()); 
-            match(input,131,FOLLOW_2); 
+            match(input,132,FOLLOW_2); 
              after(grammarAccess.getPlainLiteralScalarRestrictionAccess().getRestrictedRangeKeyword_5()); 
 
             }
@@ -38900,7 +38901,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:12640:1: ( rule__PlainLiteralScalarRestriction__Group_4_0__0__Impl rule__PlainLiteralScalarRestriction__Group_4_0__1 )
             // InternalOML.g:12641:2: rule__PlainLiteralScalarRestriction__Group_4_0__0__Impl rule__PlainLiteralScalarRestriction__Group_4_0__1
             {
-            pushFollow(FOLLOW_82);
+            pushFollow(FOLLOW_83);
             rule__PlainLiteralScalarRestriction__Group_4_0__0__Impl();
 
             state._fsp--;
@@ -38942,7 +38943,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:12654:2: 'length'
             {
              before(grammarAccess.getPlainLiteralScalarRestrictionAccess().getLengthKeyword_4_0_0()); 
-            match(input,132,FOLLOW_2); 
+            match(input,133,FOLLOW_2); 
              after(grammarAccess.getPlainLiteralScalarRestrictionAccess().getLengthKeyword_4_0_0()); 
 
             }
@@ -39055,7 +39056,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:12694:1: ( rule__PlainLiteralScalarRestriction__Group_4_1__0__Impl rule__PlainLiteralScalarRestriction__Group_4_1__1 )
             // InternalOML.g:12695:2: rule__PlainLiteralScalarRestriction__Group_4_1__0__Impl rule__PlainLiteralScalarRestriction__Group_4_1__1
             {
-            pushFollow(FOLLOW_82);
+            pushFollow(FOLLOW_83);
             rule__PlainLiteralScalarRestriction__Group_4_1__0__Impl();
 
             state._fsp--;
@@ -39097,7 +39098,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:12708:2: 'minLength'
             {
              before(grammarAccess.getPlainLiteralScalarRestrictionAccess().getMinLengthKeyword_4_1_0()); 
-            match(input,133,FOLLOW_2); 
+            match(input,134,FOLLOW_2); 
              after(grammarAccess.getPlainLiteralScalarRestrictionAccess().getMinLengthKeyword_4_1_0()); 
 
             }
@@ -39210,7 +39211,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:12748:1: ( rule__PlainLiteralScalarRestriction__Group_4_2__0__Impl rule__PlainLiteralScalarRestriction__Group_4_2__1 )
             // InternalOML.g:12749:2: rule__PlainLiteralScalarRestriction__Group_4_2__0__Impl rule__PlainLiteralScalarRestriction__Group_4_2__1
             {
-            pushFollow(FOLLOW_82);
+            pushFollow(FOLLOW_83);
             rule__PlainLiteralScalarRestriction__Group_4_2__0__Impl();
 
             state._fsp--;
@@ -39252,7 +39253,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:12762:2: 'maxLength'
             {
              before(grammarAccess.getPlainLiteralScalarRestrictionAccess().getMaxLengthKeyword_4_2_0()); 
-            match(input,134,FOLLOW_2); 
+            match(input,135,FOLLOW_2); 
              after(grammarAccess.getPlainLiteralScalarRestrictionAccess().getMaxLengthKeyword_4_2_0()); 
 
             }
@@ -39365,7 +39366,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:12802:1: ( rule__PlainLiteralScalarRestriction__Group_4_3__0__Impl rule__PlainLiteralScalarRestriction__Group_4_3__1 )
             // InternalOML.g:12803:2: rule__PlainLiteralScalarRestriction__Group_4_3__0__Impl rule__PlainLiteralScalarRestriction__Group_4_3__1
             {
-            pushFollow(FOLLOW_85);
+            pushFollow(FOLLOW_86);
             rule__PlainLiteralScalarRestriction__Group_4_3__0__Impl();
 
             state._fsp--;
@@ -39407,7 +39408,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:12816:2: 'pattern'
             {
              before(grammarAccess.getPlainLiteralScalarRestrictionAccess().getPatternKeyword_4_3_0()); 
-            match(input,136,FOLLOW_2); 
+            match(input,137,FOLLOW_2); 
              after(grammarAccess.getPlainLiteralScalarRestrictionAccess().getPatternKeyword_4_3_0()); 
 
             }
@@ -39520,7 +39521,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:12856:1: ( rule__PlainLiteralScalarRestriction__Group_4_4__0__Impl rule__PlainLiteralScalarRestriction__Group_4_4__1 )
             // InternalOML.g:12857:2: rule__PlainLiteralScalarRestriction__Group_4_4__0__Impl rule__PlainLiteralScalarRestriction__Group_4_4__1
             {
-            pushFollow(FOLLOW_90);
+            pushFollow(FOLLOW_91);
             rule__PlainLiteralScalarRestriction__Group_4_4__0__Impl();
 
             state._fsp--;
@@ -39562,7 +39563,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:12870:2: 'langRange'
             {
              before(grammarAccess.getPlainLiteralScalarRestrictionAccess().getLangRangeKeyword_4_4_0()); 
-            match(input,143,FOLLOW_2); 
+            match(input,144,FOLLOW_2); 
              after(grammarAccess.getPlainLiteralScalarRestrictionAccess().getLangRangeKeyword_4_4_0()); 
 
             }
@@ -39675,7 +39676,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:12910:1: ( rule__ScalarOneOfRestriction__Group__0__Impl rule__ScalarOneOfRestriction__Group__1 )
             // InternalOML.g:12911:2: rule__ScalarOneOfRestriction__Group__0__Impl rule__ScalarOneOfRestriction__Group__1
             {
-            pushFollow(FOLLOW_91);
+            pushFollow(FOLLOW_92);
             rule__ScalarOneOfRestriction__Group__0__Impl();
 
             state._fsp--;
@@ -39820,7 +39821,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:12951:2: 'scalarOneOfRestriction'
             {
              before(grammarAccess.getScalarOneOfRestrictionAccess().getScalarOneOfRestrictionKeyword_1()); 
-            match(input,144,FOLLOW_2); 
+            match(input,145,FOLLOW_2); 
              after(grammarAccess.getScalarOneOfRestrictionAccess().getScalarOneOfRestrictionKeyword_1()); 
 
             }
@@ -39938,7 +39939,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:12991:1: ( rule__ScalarOneOfRestriction__Group__3__Impl rule__ScalarOneOfRestriction__Group__4 )
             // InternalOML.g:12992:2: rule__ScalarOneOfRestriction__Group__3__Impl rule__ScalarOneOfRestriction__Group__4
             {
-            pushFollow(FOLLOW_81);
+            pushFollow(FOLLOW_82);
             rule__ScalarOneOfRestriction__Group__3__Impl();
 
             state._fsp--;
@@ -40055,7 +40056,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:13032:2: 'restrictedRange'
             {
              before(grammarAccess.getScalarOneOfRestrictionAccess().getRestrictedRangeKeyword_4()); 
-            match(input,131,FOLLOW_2); 
+            match(input,132,FOLLOW_2); 
              after(grammarAccess.getScalarOneOfRestrictionAccess().getRestrictedRangeKeyword_4()); 
 
             }
@@ -40243,7 +40244,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:13099:1: ( rule__ScalarOneOfLiteralAxiom__Group__0__Impl rule__ScalarOneOfLiteralAxiom__Group__1 )
             // InternalOML.g:13100:2: rule__ScalarOneOfLiteralAxiom__Group__0__Impl rule__ScalarOneOfLiteralAxiom__Group__1
             {
-            pushFollow(FOLLOW_92);
+            pushFollow(FOLLOW_93);
             rule__ScalarOneOfLiteralAxiom__Group__0__Impl();
 
             state._fsp--;
@@ -40388,7 +40389,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:13140:2: 'oneOf'
             {
              before(grammarAccess.getScalarOneOfLiteralAxiomAccess().getOneOfKeyword_1()); 
-            match(input,145,FOLLOW_2); 
+            match(input,146,FOLLOW_2); 
              after(grammarAccess.getScalarOneOfLiteralAxiomAccess().getOneOfKeyword_1()); 
 
             }
@@ -40506,7 +40507,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:13180:1: ( rule__ScalarOneOfLiteralAxiom__Group__3__Impl rule__ScalarOneOfLiteralAxiom__Group__4 )
             // InternalOML.g:13181:2: rule__ScalarOneOfLiteralAxiom__Group__3__Impl rule__ScalarOneOfLiteralAxiom__Group__4
             {
-            pushFollow(FOLLOW_74);
+            pushFollow(FOLLOW_75);
             rule__ScalarOneOfLiteralAxiom__Group__3__Impl();
 
             state._fsp--;
@@ -40581,7 +40582,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:13207:1: ( rule__ScalarOneOfLiteralAxiom__Group__4__Impl rule__ScalarOneOfLiteralAxiom__Group__5 )
             // InternalOML.g:13208:2: rule__ScalarOneOfLiteralAxiom__Group__4__Impl rule__ScalarOneOfLiteralAxiom__Group__5
             {
-            pushFollow(FOLLOW_75);
+            pushFollow(FOLLOW_76);
             rule__ScalarOneOfLiteralAxiom__Group__4__Impl();
 
             state._fsp--;
@@ -40707,7 +40708,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt92=2;
             int LA92_0 = input.LA(1);
 
-            if ( (LA92_0==128) ) {
+            if ( (LA92_0==129) ) {
                 alt92=1;
             }
             switch (alt92) {
@@ -40799,7 +40800,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:13275:2: '^^'
             {
              before(grammarAccess.getScalarOneOfLiteralAxiomAccess().getCircumflexAccentCircumflexAccentKeyword_5_0()); 
-            match(input,128,FOLLOW_2); 
+            match(input,129,FOLLOW_2); 
              after(grammarAccess.getScalarOneOfLiteralAxiomAccess().getCircumflexAccentCircumflexAccentKeyword_5_0()); 
 
             }
@@ -40912,7 +40913,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:13315:1: ( rule__StringScalarRestriction__Group__0__Impl rule__StringScalarRestriction__Group__1 )
             // InternalOML.g:13316:2: rule__StringScalarRestriction__Group__0__Impl rule__StringScalarRestriction__Group__1
             {
-            pushFollow(FOLLOW_93);
+            pushFollow(FOLLOW_94);
             rule__StringScalarRestriction__Group__0__Impl();
 
             state._fsp--;
@@ -41057,7 +41058,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:13356:2: 'stringScalarRestriction'
             {
              before(grammarAccess.getStringScalarRestrictionAccess().getStringScalarRestrictionKeyword_1()); 
-            match(input,146,FOLLOW_2); 
+            match(input,147,FOLLOW_2); 
              after(grammarAccess.getStringScalarRestrictionAccess().getStringScalarRestrictionKeyword_1()); 
 
             }
@@ -41175,7 +41176,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:13396:1: ( rule__StringScalarRestriction__Group__3__Impl rule__StringScalarRestriction__Group__4 )
             // InternalOML.g:13397:2: rule__StringScalarRestriction__Group__3__Impl rule__StringScalarRestriction__Group__4
             {
-            pushFollow(FOLLOW_84);
+            pushFollow(FOLLOW_85);
             rule__StringScalarRestriction__Group__3__Impl();
 
             state._fsp--;
@@ -41250,7 +41251,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:13423:1: ( rule__StringScalarRestriction__Group__4__Impl rule__StringScalarRestriction__Group__5 )
             // InternalOML.g:13424:2: rule__StringScalarRestriction__Group__4__Impl rule__StringScalarRestriction__Group__5
             {
-            pushFollow(FOLLOW_81);
+            pushFollow(FOLLOW_82);
             rule__StringScalarRestriction__Group__4__Impl();
 
             state._fsp--;
@@ -41377,7 +41378,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:13464:2: 'restrictedRange'
             {
              before(grammarAccess.getStringScalarRestrictionAccess().getRestrictedRangeKeyword_5()); 
-            match(input,131,FOLLOW_2); 
+            match(input,132,FOLLOW_2); 
              after(grammarAccess.getStringScalarRestrictionAccess().getRestrictedRangeKeyword_5()); 
 
             }
@@ -41565,7 +41566,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:13531:1: ( rule__StringScalarRestriction__Group_4_0__0__Impl rule__StringScalarRestriction__Group_4_0__1 )
             // InternalOML.g:13532:2: rule__StringScalarRestriction__Group_4_0__0__Impl rule__StringScalarRestriction__Group_4_0__1
             {
-            pushFollow(FOLLOW_82);
+            pushFollow(FOLLOW_83);
             rule__StringScalarRestriction__Group_4_0__0__Impl();
 
             state._fsp--;
@@ -41607,7 +41608,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:13545:2: 'length'
             {
              before(grammarAccess.getStringScalarRestrictionAccess().getLengthKeyword_4_0_0()); 
-            match(input,132,FOLLOW_2); 
+            match(input,133,FOLLOW_2); 
              after(grammarAccess.getStringScalarRestrictionAccess().getLengthKeyword_4_0_0()); 
 
             }
@@ -41720,7 +41721,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:13585:1: ( rule__StringScalarRestriction__Group_4_1__0__Impl rule__StringScalarRestriction__Group_4_1__1 )
             // InternalOML.g:13586:2: rule__StringScalarRestriction__Group_4_1__0__Impl rule__StringScalarRestriction__Group_4_1__1
             {
-            pushFollow(FOLLOW_82);
+            pushFollow(FOLLOW_83);
             rule__StringScalarRestriction__Group_4_1__0__Impl();
 
             state._fsp--;
@@ -41762,7 +41763,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:13599:2: 'minLength'
             {
              before(grammarAccess.getStringScalarRestrictionAccess().getMinLengthKeyword_4_1_0()); 
-            match(input,133,FOLLOW_2); 
+            match(input,134,FOLLOW_2); 
              after(grammarAccess.getStringScalarRestrictionAccess().getMinLengthKeyword_4_1_0()); 
 
             }
@@ -41875,7 +41876,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:13639:1: ( rule__StringScalarRestriction__Group_4_2__0__Impl rule__StringScalarRestriction__Group_4_2__1 )
             // InternalOML.g:13640:2: rule__StringScalarRestriction__Group_4_2__0__Impl rule__StringScalarRestriction__Group_4_2__1
             {
-            pushFollow(FOLLOW_82);
+            pushFollow(FOLLOW_83);
             rule__StringScalarRestriction__Group_4_2__0__Impl();
 
             state._fsp--;
@@ -41917,7 +41918,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:13653:2: 'maxLength'
             {
              before(grammarAccess.getStringScalarRestrictionAccess().getMaxLengthKeyword_4_2_0()); 
-            match(input,134,FOLLOW_2); 
+            match(input,135,FOLLOW_2); 
              after(grammarAccess.getStringScalarRestrictionAccess().getMaxLengthKeyword_4_2_0()); 
 
             }
@@ -42030,7 +42031,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:13693:1: ( rule__StringScalarRestriction__Group_4_3__0__Impl rule__StringScalarRestriction__Group_4_3__1 )
             // InternalOML.g:13694:2: rule__StringScalarRestriction__Group_4_3__0__Impl rule__StringScalarRestriction__Group_4_3__1
             {
-            pushFollow(FOLLOW_85);
+            pushFollow(FOLLOW_86);
             rule__StringScalarRestriction__Group_4_3__0__Impl();
 
             state._fsp--;
@@ -42072,7 +42073,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:13707:2: 'pattern'
             {
              before(grammarAccess.getStringScalarRestrictionAccess().getPatternKeyword_4_3_0()); 
-            match(input,136,FOLLOW_2); 
+            match(input,137,FOLLOW_2); 
              after(grammarAccess.getStringScalarRestrictionAccess().getPatternKeyword_4_3_0()); 
 
             }
@@ -42185,7 +42186,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:13747:1: ( rule__SynonymScalarRestriction__Group__0__Impl rule__SynonymScalarRestriction__Group__1 )
             // InternalOML.g:13748:2: rule__SynonymScalarRestriction__Group__0__Impl rule__SynonymScalarRestriction__Group__1
             {
-            pushFollow(FOLLOW_94);
+            pushFollow(FOLLOW_95);
             rule__SynonymScalarRestriction__Group__0__Impl();
 
             state._fsp--;
@@ -42330,7 +42331,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:13788:2: 'synonymScalarRestriction'
             {
              before(grammarAccess.getSynonymScalarRestrictionAccess().getSynonymScalarRestrictionKeyword_1()); 
-            match(input,147,FOLLOW_2); 
+            match(input,148,FOLLOW_2); 
              after(grammarAccess.getSynonymScalarRestrictionAccess().getSynonymScalarRestrictionKeyword_1()); 
 
             }
@@ -42448,7 +42449,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:13828:1: ( rule__SynonymScalarRestriction__Group__3__Impl rule__SynonymScalarRestriction__Group__4 )
             // InternalOML.g:13829:2: rule__SynonymScalarRestriction__Group__3__Impl rule__SynonymScalarRestriction__Group__4
             {
-            pushFollow(FOLLOW_81);
+            pushFollow(FOLLOW_82);
             rule__SynonymScalarRestriction__Group__3__Impl();
 
             state._fsp--;
@@ -42565,7 +42566,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:13869:2: 'restrictedRange'
             {
              before(grammarAccess.getSynonymScalarRestrictionAccess().getRestrictedRangeKeyword_4()); 
-            match(input,131,FOLLOW_2); 
+            match(input,132,FOLLOW_2); 
              after(grammarAccess.getSynonymScalarRestrictionAccess().getRestrictedRangeKeyword_4()); 
 
             }
@@ -42753,7 +42754,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:13936:1: ( rule__TimeScalarRestriction__Group__0__Impl rule__TimeScalarRestriction__Group__1 )
             // InternalOML.g:13937:2: rule__TimeScalarRestriction__Group__0__Impl rule__TimeScalarRestriction__Group__1
             {
-            pushFollow(FOLLOW_95);
+            pushFollow(FOLLOW_96);
             rule__TimeScalarRestriction__Group__0__Impl();
 
             state._fsp--;
@@ -42898,7 +42899,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:13977:2: 'timeScalarRestriction'
             {
              before(grammarAccess.getTimeScalarRestrictionAccess().getTimeScalarRestrictionKeyword_1()); 
-            match(input,148,FOLLOW_2); 
+            match(input,149,FOLLOW_2); 
              after(grammarAccess.getTimeScalarRestrictionAccess().getTimeScalarRestrictionKeyword_1()); 
 
             }
@@ -43016,7 +43017,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:14017:1: ( rule__TimeScalarRestriction__Group__3__Impl rule__TimeScalarRestriction__Group__4 )
             // InternalOML.g:14018:2: rule__TimeScalarRestriction__Group__3__Impl rule__TimeScalarRestriction__Group__4
             {
-            pushFollow(FOLLOW_87);
+            pushFollow(FOLLOW_88);
             rule__TimeScalarRestriction__Group__3__Impl();
 
             state._fsp--;
@@ -43091,7 +43092,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:14044:1: ( rule__TimeScalarRestriction__Group__4__Impl rule__TimeScalarRestriction__Group__5 )
             // InternalOML.g:14045:2: rule__TimeScalarRestriction__Group__4__Impl rule__TimeScalarRestriction__Group__5
             {
-            pushFollow(FOLLOW_81);
+            pushFollow(FOLLOW_82);
             rule__TimeScalarRestriction__Group__4__Impl();
 
             state._fsp--;
@@ -43218,7 +43219,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:14085:2: 'restrictedRange'
             {
              before(grammarAccess.getTimeScalarRestrictionAccess().getRestrictedRangeKeyword_5()); 
-            match(input,131,FOLLOW_2); 
+            match(input,132,FOLLOW_2); 
              after(grammarAccess.getTimeScalarRestrictionAccess().getRestrictedRangeKeyword_5()); 
 
             }
@@ -43406,7 +43407,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:14152:1: ( rule__TimeScalarRestriction__Group_4_0__0__Impl rule__TimeScalarRestriction__Group_4_0__1 )
             // InternalOML.g:14153:2: rule__TimeScalarRestriction__Group_4_0__0__Impl rule__TimeScalarRestriction__Group_4_0__1
             {
-            pushFollow(FOLLOW_96);
+            pushFollow(FOLLOW_97);
             rule__TimeScalarRestriction__Group_4_0__0__Impl();
 
             state._fsp--;
@@ -43448,7 +43449,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:14166:2: 'minInclusive'
             {
              before(grammarAccess.getTimeScalarRestrictionAccess().getMinInclusiveKeyword_4_0_0()); 
-            match(input,138,FOLLOW_2); 
+            match(input,139,FOLLOW_2); 
              after(grammarAccess.getTimeScalarRestrictionAccess().getMinInclusiveKeyword_4_0_0()); 
 
             }
@@ -43561,7 +43562,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:14206:1: ( rule__TimeScalarRestriction__Group_4_1__0__Impl rule__TimeScalarRestriction__Group_4_1__1 )
             // InternalOML.g:14207:2: rule__TimeScalarRestriction__Group_4_1__0__Impl rule__TimeScalarRestriction__Group_4_1__1
             {
-            pushFollow(FOLLOW_96);
+            pushFollow(FOLLOW_97);
             rule__TimeScalarRestriction__Group_4_1__0__Impl();
 
             state._fsp--;
@@ -43603,7 +43604,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:14220:2: 'maxInclusive'
             {
              before(grammarAccess.getTimeScalarRestrictionAccess().getMaxInclusiveKeyword_4_1_0()); 
-            match(input,139,FOLLOW_2); 
+            match(input,140,FOLLOW_2); 
              after(grammarAccess.getTimeScalarRestrictionAccess().getMaxInclusiveKeyword_4_1_0()); 
 
             }
@@ -43716,7 +43717,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:14260:1: ( rule__TimeScalarRestriction__Group_4_2__0__Impl rule__TimeScalarRestriction__Group_4_2__1 )
             // InternalOML.g:14261:2: rule__TimeScalarRestriction__Group_4_2__0__Impl rule__TimeScalarRestriction__Group_4_2__1
             {
-            pushFollow(FOLLOW_96);
+            pushFollow(FOLLOW_97);
             rule__TimeScalarRestriction__Group_4_2__0__Impl();
 
             state._fsp--;
@@ -43758,7 +43759,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:14274:2: 'minExclusive'
             {
              before(grammarAccess.getTimeScalarRestrictionAccess().getMinExclusiveKeyword_4_2_0()); 
-            match(input,140,FOLLOW_2); 
+            match(input,141,FOLLOW_2); 
              after(grammarAccess.getTimeScalarRestrictionAccess().getMinExclusiveKeyword_4_2_0()); 
 
             }
@@ -43871,7 +43872,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:14314:1: ( rule__TimeScalarRestriction__Group_4_3__0__Impl rule__TimeScalarRestriction__Group_4_3__1 )
             // InternalOML.g:14315:2: rule__TimeScalarRestriction__Group_4_3__0__Impl rule__TimeScalarRestriction__Group_4_3__1
             {
-            pushFollow(FOLLOW_96);
+            pushFollow(FOLLOW_97);
             rule__TimeScalarRestriction__Group_4_3__0__Impl();
 
             state._fsp--;
@@ -43913,7 +43914,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:14328:2: 'maxExclusive'
             {
              before(grammarAccess.getTimeScalarRestrictionAccess().getMaxExclusiveKeyword_4_3_0()); 
-            match(input,141,FOLLOW_2); 
+            match(input,142,FOLLOW_2); 
              after(grammarAccess.getTimeScalarRestrictionAccess().getMaxExclusiveKeyword_4_3_0()); 
 
             }
@@ -44284,7 +44285,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:14449:1: ( rule__DescriptionBoxRefinement__Group__0__Impl rule__DescriptionBoxRefinement__Group__1 )
             // InternalOML.g:14450:2: rule__DescriptionBoxRefinement__Group__0__Impl rule__DescriptionBoxRefinement__Group__1
             {
-            pushFollow(FOLLOW_97);
+            pushFollow(FOLLOW_98);
             rule__DescriptionBoxRefinement__Group__0__Impl();
 
             state._fsp--;
@@ -44429,7 +44430,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:14490:2: 'refines'
             {
              before(grammarAccess.getDescriptionBoxRefinementAccess().getRefinesKeyword_1()); 
-            match(input,149,FOLLOW_2); 
+            match(input,150,FOLLOW_2); 
              after(grammarAccess.getDescriptionBoxRefinementAccess().getRefinesKeyword_1()); 
 
             }
@@ -44645,7 +44646,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:14557:1: ( rule__SingletonInstanceScalarDataPropertyValue__Group__1__Impl rule__SingletonInstanceScalarDataPropertyValue__Group__2 )
             // InternalOML.g:14558:2: rule__SingletonInstanceScalarDataPropertyValue__Group__1__Impl rule__SingletonInstanceScalarDataPropertyValue__Group__2
             {
-            pushFollow(FOLLOW_63);
+            pushFollow(FOLLOW_64);
             rule__SingletonInstanceScalarDataPropertyValue__Group__1__Impl();
 
             state._fsp--;
@@ -44772,7 +44773,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:14598:2: '.'
             {
              before(grammarAccess.getSingletonInstanceScalarDataPropertyValueAccess().getFullStopKeyword_2()); 
-            match(input,118,FOLLOW_2); 
+            match(input,119,FOLLOW_2); 
              after(grammarAccess.getSingletonInstanceScalarDataPropertyValueAccess().getFullStopKeyword_2()); 
 
             }
@@ -44890,7 +44891,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:14638:1: ( rule__SingletonInstanceScalarDataPropertyValue__Group__4__Impl rule__SingletonInstanceScalarDataPropertyValue__Group__5 )
             // InternalOML.g:14639:2: rule__SingletonInstanceScalarDataPropertyValue__Group__4__Impl rule__SingletonInstanceScalarDataPropertyValue__Group__5
             {
-            pushFollow(FOLLOW_74);
+            pushFollow(FOLLOW_75);
             rule__SingletonInstanceScalarDataPropertyValue__Group__4__Impl();
 
             state._fsp--;
@@ -44965,7 +44966,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:14665:1: ( rule__SingletonInstanceScalarDataPropertyValue__Group__5__Impl rule__SingletonInstanceScalarDataPropertyValue__Group__6 )
             // InternalOML.g:14666:2: rule__SingletonInstanceScalarDataPropertyValue__Group__5__Impl rule__SingletonInstanceScalarDataPropertyValue__Group__6
             {
-            pushFollow(FOLLOW_75);
+            pushFollow(FOLLOW_76);
             rule__SingletonInstanceScalarDataPropertyValue__Group__5__Impl();
 
             state._fsp--;
@@ -45091,7 +45092,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt99=2;
             int LA99_0 = input.LA(1);
 
-            if ( (LA99_0==128) ) {
+            if ( (LA99_0==129) ) {
                 alt99=1;
             }
             switch (alt99) {
@@ -45183,7 +45184,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:14733:2: '^^'
             {
              before(grammarAccess.getSingletonInstanceScalarDataPropertyValueAccess().getCircumflexAccentCircumflexAccentKeyword_6_0()); 
-            match(input,128,FOLLOW_2); 
+            match(input,129,FOLLOW_2); 
              after(grammarAccess.getSingletonInstanceScalarDataPropertyValueAccess().getCircumflexAccentCircumflexAccentKeyword_6_0()); 
 
             }
@@ -45296,7 +45297,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:14773:1: ( rule__SingletonInstanceStructuredDataPropertyValue__Group__0__Impl rule__SingletonInstanceStructuredDataPropertyValue__Group__1 )
             // InternalOML.g:14774:2: rule__SingletonInstanceStructuredDataPropertyValue__Group__0__Impl rule__SingletonInstanceStructuredDataPropertyValue__Group__1
             {
-            pushFollow(FOLLOW_98);
+            pushFollow(FOLLOW_99);
             rule__SingletonInstanceStructuredDataPropertyValue__Group__0__Impl();
 
             state._fsp--;
@@ -45399,7 +45400,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:14800:1: ( rule__SingletonInstanceStructuredDataPropertyValue__Group__1__Impl rule__SingletonInstanceStructuredDataPropertyValue__Group__2 )
             // InternalOML.g:14801:2: rule__SingletonInstanceStructuredDataPropertyValue__Group__1__Impl rule__SingletonInstanceStructuredDataPropertyValue__Group__2
             {
-            pushFollow(FOLLOW_63);
+            pushFollow(FOLLOW_64);
             rule__SingletonInstanceStructuredDataPropertyValue__Group__1__Impl();
 
             state._fsp--;
@@ -45526,7 +45527,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:14841:2: '.'
             {
              before(grammarAccess.getSingletonInstanceStructuredDataPropertyValueAccess().getFullStopKeyword_2()); 
-            match(input,118,FOLLOW_2); 
+            match(input,119,FOLLOW_2); 
              after(grammarAccess.getSingletonInstanceStructuredDataPropertyValueAccess().getFullStopKeyword_2()); 
 
             }
@@ -45719,7 +45720,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:14908:1: ( rule__SingletonInstanceStructuredDataPropertyValue__Group__5__Impl rule__SingletonInstanceStructuredDataPropertyValue__Group__6 )
             // InternalOML.g:14909:2: rule__SingletonInstanceStructuredDataPropertyValue__Group__5__Impl rule__SingletonInstanceStructuredDataPropertyValue__Group__6
             {
-            pushFollow(FOLLOW_77);
+            pushFollow(FOLLOW_78);
             rule__SingletonInstanceStructuredDataPropertyValue__Group__5__Impl();
 
             state._fsp--;
@@ -45794,7 +45795,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:14935:1: ( rule__SingletonInstanceStructuredDataPropertyValue__Group__6__Impl rule__SingletonInstanceStructuredDataPropertyValue__Group__7 )
             // InternalOML.g:14936:2: rule__SingletonInstanceStructuredDataPropertyValue__Group__6__Impl rule__SingletonInstanceStructuredDataPropertyValue__Group__7
             {
-            pushFollow(FOLLOW_77);
+            pushFollow(FOLLOW_78);
             rule__SingletonInstanceStructuredDataPropertyValue__Group__6__Impl();
 
             state._fsp--;
@@ -45851,7 +45852,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             	case 1 :
             	    // InternalOML.g:14950:3: rule__SingletonInstanceStructuredDataPropertyValue__Alternatives_6
             	    {
-            	    pushFollow(FOLLOW_78);
+            	    pushFollow(FOLLOW_79);
             	    rule__SingletonInstanceStructuredDataPropertyValue__Alternatives_6();
 
             	    state._fsp--;
@@ -46230,7 +46231,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:15070:1: ( rule__StructuredDataPropertyTuple__Group__3__Impl rule__StructuredDataPropertyTuple__Group__4 )
             // InternalOML.g:15071:2: rule__StructuredDataPropertyTuple__Group__3__Impl rule__StructuredDataPropertyTuple__Group__4
             {
-            pushFollow(FOLLOW_77);
+            pushFollow(FOLLOW_78);
             rule__StructuredDataPropertyTuple__Group__3__Impl();
 
             state._fsp--;
@@ -46305,7 +46306,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:15097:1: ( rule__StructuredDataPropertyTuple__Group__4__Impl rule__StructuredDataPropertyTuple__Group__5 )
             // InternalOML.g:15098:2: rule__StructuredDataPropertyTuple__Group__4__Impl rule__StructuredDataPropertyTuple__Group__5
             {
-            pushFollow(FOLLOW_77);
+            pushFollow(FOLLOW_78);
             rule__StructuredDataPropertyTuple__Group__4__Impl();
 
             state._fsp--;
@@ -46362,7 +46363,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             	case 1 :
             	    // InternalOML.g:15112:3: rule__StructuredDataPropertyTuple__Alternatives_4
             	    {
-            	    pushFollow(FOLLOW_78);
+            	    pushFollow(FOLLOW_79);
             	    rule__StructuredDataPropertyTuple__Alternatives_4();
 
             	    state._fsp--;
@@ -46666,7 +46667,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:15205:1: ( rule__ScalarDataPropertyValue__Group__2__Impl rule__ScalarDataPropertyValue__Group__3 )
             // InternalOML.g:15206:2: rule__ScalarDataPropertyValue__Group__2__Impl rule__ScalarDataPropertyValue__Group__3
             {
-            pushFollow(FOLLOW_74);
+            pushFollow(FOLLOW_75);
             rule__ScalarDataPropertyValue__Group__2__Impl();
 
             state._fsp--;
@@ -46741,7 +46742,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:15232:1: ( rule__ScalarDataPropertyValue__Group__3__Impl rule__ScalarDataPropertyValue__Group__4 )
             // InternalOML.g:15233:2: rule__ScalarDataPropertyValue__Group__3__Impl rule__ScalarDataPropertyValue__Group__4
             {
-            pushFollow(FOLLOW_75);
+            pushFollow(FOLLOW_76);
             rule__ScalarDataPropertyValue__Group__3__Impl();
 
             state._fsp--;
@@ -46867,7 +46868,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt105=2;
             int LA105_0 = input.LA(1);
 
-            if ( (LA105_0==128) ) {
+            if ( (LA105_0==129) ) {
                 alt105=1;
             }
             switch (alt105) {
@@ -46959,7 +46960,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:15300:2: '^^'
             {
              before(grammarAccess.getScalarDataPropertyValueAccess().getCircumflexAccentCircumflexAccentKeyword_4_0()); 
-            match(input,128,FOLLOW_2); 
+            match(input,129,FOLLOW_2); 
              after(grammarAccess.getScalarDataPropertyValueAccess().getCircumflexAccentCircumflexAccentKeyword_4_0()); 
 
             }
@@ -47072,7 +47073,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:15340:1: ( rule__ConceptInstance__Group__0__Impl rule__ConceptInstance__Group__1 )
             // InternalOML.g:15341:2: rule__ConceptInstance__Group__0__Impl rule__ConceptInstance__Group__1
             {
-            pushFollow(FOLLOW_99);
+            pushFollow(FOLLOW_100);
             rule__ConceptInstance__Group__0__Impl();
 
             state._fsp--;
@@ -47175,7 +47176,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:15367:1: ( rule__ConceptInstance__Group__1__Impl rule__ConceptInstance__Group__2 )
             // InternalOML.g:15368:2: rule__ConceptInstance__Group__1__Impl rule__ConceptInstance__Group__2
             {
-            pushFollow(FOLLOW_55);
+            pushFollow(FOLLOW_56);
             rule__ConceptInstance__Group__1__Impl();
 
             state._fsp--;
@@ -47217,7 +47218,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:15381:2: 'conceptInstance'
             {
              before(grammarAccess.getConceptInstanceAccess().getConceptInstanceKeyword_1()); 
-            match(input,150,FOLLOW_2); 
+            match(input,151,FOLLOW_2); 
              after(grammarAccess.getConceptInstanceAccess().getConceptInstanceKeyword_1()); 
 
             }
@@ -47292,7 +47293,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:15408:2: '('
             {
              before(grammarAccess.getConceptInstanceAccess().getLeftParenthesisKeyword_2()); 
-            match(input,109,FOLLOW_2); 
+            match(input,110,FOLLOW_2); 
              after(grammarAccess.getConceptInstanceAccess().getLeftParenthesisKeyword_2()); 
 
             }
@@ -47325,7 +47326,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:15421:1: ( rule__ConceptInstance__Group__3__Impl rule__ConceptInstance__Group__4 )
             // InternalOML.g:15422:2: rule__ConceptInstance__Group__3__Impl rule__ConceptInstance__Group__4
             {
-            pushFollow(FOLLOW_100);
+            pushFollow(FOLLOW_101);
             rule__ConceptInstance__Group__3__Impl();
 
             state._fsp--;
@@ -47452,7 +47453,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:15462:2: 'is-a'
             {
              before(grammarAccess.getConceptInstanceAccess().getIsAKeyword_4()); 
-            match(input,151,FOLLOW_2); 
+            match(input,152,FOLLOW_2); 
              after(grammarAccess.getConceptInstanceAccess().getIsAKeyword_4()); 
 
             }
@@ -47485,7 +47486,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:15475:1: ( rule__ConceptInstance__Group__5__Impl rule__ConceptInstance__Group__6 )
             // InternalOML.g:15476:2: rule__ConceptInstance__Group__5__Impl rule__ConceptInstance__Group__6
             {
-            pushFollow(FOLLOW_56);
+            pushFollow(FOLLOW_57);
             rule__ConceptInstance__Group__5__Impl();
 
             state._fsp--;
@@ -47607,7 +47608,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:15515:2: ')'
             {
              before(grammarAccess.getConceptInstanceAccess().getRightParenthesisKeyword_6()); 
-            match(input,110,FOLLOW_2); 
+            match(input,111,FOLLOW_2); 
              after(grammarAccess.getConceptInstanceAccess().getRightParenthesisKeyword_6()); 
 
             }
@@ -47640,7 +47641,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:15529:1: ( rule__ReifiedRelationshipInstance__Group__0__Impl rule__ReifiedRelationshipInstance__Group__1 )
             // InternalOML.g:15530:2: rule__ReifiedRelationshipInstance__Group__0__Impl rule__ReifiedRelationshipInstance__Group__1
             {
-            pushFollow(FOLLOW_101);
+            pushFollow(FOLLOW_102);
             rule__ReifiedRelationshipInstance__Group__0__Impl();
 
             state._fsp--;
@@ -47743,7 +47744,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:15556:1: ( rule__ReifiedRelationshipInstance__Group__1__Impl rule__ReifiedRelationshipInstance__Group__2 )
             // InternalOML.g:15557:2: rule__ReifiedRelationshipInstance__Group__1__Impl rule__ReifiedRelationshipInstance__Group__2
             {
-            pushFollow(FOLLOW_55);
+            pushFollow(FOLLOW_56);
             rule__ReifiedRelationshipInstance__Group__1__Impl();
 
             state._fsp--;
@@ -47785,7 +47786,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:15570:2: 'reifiedRelationshipInstance'
             {
              before(grammarAccess.getReifiedRelationshipInstanceAccess().getReifiedRelationshipInstanceKeyword_1()); 
-            match(input,152,FOLLOW_2); 
+            match(input,153,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipInstanceAccess().getReifiedRelationshipInstanceKeyword_1()); 
 
             }
@@ -47860,7 +47861,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:15597:2: '('
             {
              before(grammarAccess.getReifiedRelationshipInstanceAccess().getLeftParenthesisKeyword_2()); 
-            match(input,109,FOLLOW_2); 
+            match(input,110,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipInstanceAccess().getLeftParenthesisKeyword_2()); 
 
             }
@@ -47893,7 +47894,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:15610:1: ( rule__ReifiedRelationshipInstance__Group__3__Impl rule__ReifiedRelationshipInstance__Group__4 )
             // InternalOML.g:15611:2: rule__ReifiedRelationshipInstance__Group__3__Impl rule__ReifiedRelationshipInstance__Group__4
             {
-            pushFollow(FOLLOW_100);
+            pushFollow(FOLLOW_101);
             rule__ReifiedRelationshipInstance__Group__3__Impl();
 
             state._fsp--;
@@ -48020,7 +48021,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:15651:2: 'is-a'
             {
              before(grammarAccess.getReifiedRelationshipInstanceAccess().getIsAKeyword_4()); 
-            match(input,151,FOLLOW_2); 
+            match(input,152,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipInstanceAccess().getIsAKeyword_4()); 
 
             }
@@ -48053,7 +48054,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:15664:1: ( rule__ReifiedRelationshipInstance__Group__5__Impl rule__ReifiedRelationshipInstance__Group__6 )
             // InternalOML.g:15665:2: rule__ReifiedRelationshipInstance__Group__5__Impl rule__ReifiedRelationshipInstance__Group__6
             {
-            pushFollow(FOLLOW_56);
+            pushFollow(FOLLOW_57);
             rule__ReifiedRelationshipInstance__Group__5__Impl();
 
             state._fsp--;
@@ -48175,7 +48176,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:15704:2: ')'
             {
              before(grammarAccess.getReifiedRelationshipInstanceAccess().getRightParenthesisKeyword_6()); 
-            match(input,110,FOLLOW_2); 
+            match(input,111,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipInstanceAccess().getRightParenthesisKeyword_6()); 
 
             }
@@ -48208,7 +48209,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:15718:1: ( rule__ReifiedRelationshipInstanceDomain__Group__0__Impl rule__ReifiedRelationshipInstanceDomain__Group__1 )
             // InternalOML.g:15719:2: rule__ReifiedRelationshipInstanceDomain__Group__0__Impl rule__ReifiedRelationshipInstanceDomain__Group__1
             {
-            pushFollow(FOLLOW_102);
+            pushFollow(FOLLOW_103);
             rule__ReifiedRelationshipInstanceDomain__Group__0__Impl();
 
             state._fsp--;
@@ -48311,7 +48312,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:15745:1: ( rule__ReifiedRelationshipInstanceDomain__Group__1__Impl rule__ReifiedRelationshipInstanceDomain__Group__2 )
             // InternalOML.g:15746:2: rule__ReifiedRelationshipInstanceDomain__Group__1__Impl rule__ReifiedRelationshipInstanceDomain__Group__2
             {
-            pushFollow(FOLLOW_55);
+            pushFollow(FOLLOW_56);
             rule__ReifiedRelationshipInstanceDomain__Group__1__Impl();
 
             state._fsp--;
@@ -48353,7 +48354,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:15759:2: 'domain'
             {
              before(grammarAccess.getReifiedRelationshipInstanceDomainAccess().getDomainKeyword_1()); 
-            match(input,100,FOLLOW_2); 
+            match(input,101,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipInstanceDomainAccess().getDomainKeyword_1()); 
 
             }
@@ -48428,7 +48429,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:15786:2: '('
             {
              before(grammarAccess.getReifiedRelationshipInstanceDomainAccess().getLeftParenthesisKeyword_2()); 
-            match(input,109,FOLLOW_2); 
+            match(input,110,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipInstanceDomainAccess().getLeftParenthesisKeyword_2()); 
 
             }
@@ -48461,7 +48462,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:15799:1: ( rule__ReifiedRelationshipInstanceDomain__Group__3__Impl rule__ReifiedRelationshipInstanceDomain__Group__4 )
             // InternalOML.g:15800:2: rule__ReifiedRelationshipInstanceDomain__Group__3__Impl rule__ReifiedRelationshipInstanceDomain__Group__4
             {
-            pushFollow(FOLLOW_56);
+            pushFollow(FOLLOW_57);
             rule__ReifiedRelationshipInstanceDomain__Group__3__Impl();
 
             state._fsp--;
@@ -48588,7 +48589,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:15840:2: ')'
             {
              before(grammarAccess.getReifiedRelationshipInstanceDomainAccess().getRightParenthesisKeyword_4()); 
-            match(input,110,FOLLOW_2); 
+            match(input,111,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipInstanceDomainAccess().getRightParenthesisKeyword_4()); 
 
             }
@@ -48776,7 +48777,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:15907:1: ( rule__ReifiedRelationshipInstanceRange__Group__0__Impl rule__ReifiedRelationshipInstanceRange__Group__1 )
             // InternalOML.g:15908:2: rule__ReifiedRelationshipInstanceRange__Group__0__Impl rule__ReifiedRelationshipInstanceRange__Group__1
             {
-            pushFollow(FOLLOW_103);
+            pushFollow(FOLLOW_104);
             rule__ReifiedRelationshipInstanceRange__Group__0__Impl();
 
             state._fsp--;
@@ -48879,7 +48880,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:15934:1: ( rule__ReifiedRelationshipInstanceRange__Group__1__Impl rule__ReifiedRelationshipInstanceRange__Group__2 )
             // InternalOML.g:15935:2: rule__ReifiedRelationshipInstanceRange__Group__1__Impl rule__ReifiedRelationshipInstanceRange__Group__2
             {
-            pushFollow(FOLLOW_55);
+            pushFollow(FOLLOW_56);
             rule__ReifiedRelationshipInstanceRange__Group__1__Impl();
 
             state._fsp--;
@@ -48921,7 +48922,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:15948:2: 'range'
             {
              before(grammarAccess.getReifiedRelationshipInstanceRangeAccess().getRangeKeyword_1()); 
-            match(input,101,FOLLOW_2); 
+            match(input,102,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipInstanceRangeAccess().getRangeKeyword_1()); 
 
             }
@@ -48996,7 +48997,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:15975:2: '('
             {
              before(grammarAccess.getReifiedRelationshipInstanceRangeAccess().getLeftParenthesisKeyword_2()); 
-            match(input,109,FOLLOW_2); 
+            match(input,110,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipInstanceRangeAccess().getLeftParenthesisKeyword_2()); 
 
             }
@@ -49029,7 +49030,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:15988:1: ( rule__ReifiedRelationshipInstanceRange__Group__3__Impl rule__ReifiedRelationshipInstanceRange__Group__4 )
             // InternalOML.g:15989:2: rule__ReifiedRelationshipInstanceRange__Group__3__Impl rule__ReifiedRelationshipInstanceRange__Group__4
             {
-            pushFollow(FOLLOW_56);
+            pushFollow(FOLLOW_57);
             rule__ReifiedRelationshipInstanceRange__Group__3__Impl();
 
             state._fsp--;
@@ -49156,7 +49157,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:16029:2: ')'
             {
              before(grammarAccess.getReifiedRelationshipInstanceRangeAccess().getRightParenthesisKeyword_4()); 
-            match(input,110,FOLLOW_2); 
+            match(input,111,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipInstanceRangeAccess().getRightParenthesisKeyword_4()); 
 
             }
@@ -49344,7 +49345,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:16096:1: ( rule__UnreifiedRelationshipInstanceTuple__Group__0__Impl rule__UnreifiedRelationshipInstanceTuple__Group__1 )
             // InternalOML.g:16097:2: rule__UnreifiedRelationshipInstanceTuple__Group__0__Impl rule__UnreifiedRelationshipInstanceTuple__Group__1
             {
-            pushFollow(FOLLOW_104);
+            pushFollow(FOLLOW_105);
             rule__UnreifiedRelationshipInstanceTuple__Group__0__Impl();
 
             state._fsp--;
@@ -49489,7 +49490,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:16137:2: 'tuple'
             {
              before(grammarAccess.getUnreifiedRelationshipInstanceTupleAccess().getTupleKeyword_1()); 
-            match(input,153,FOLLOW_2); 
+            match(input,154,FOLLOW_2); 
              after(grammarAccess.getUnreifiedRelationshipInstanceTupleAccess().getTupleKeyword_1()); 
 
             }
@@ -49522,7 +49523,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:16150:1: ( rule__UnreifiedRelationshipInstanceTuple__Group__2__Impl rule__UnreifiedRelationshipInstanceTuple__Group__3 )
             // InternalOML.g:16151:2: rule__UnreifiedRelationshipInstanceTuple__Group__2__Impl rule__UnreifiedRelationshipInstanceTuple__Group__3
             {
-            pushFollow(FOLLOW_105);
+            pushFollow(FOLLOW_106);
             rule__UnreifiedRelationshipInstanceTuple__Group__2__Impl();
 
             state._fsp--;
@@ -49639,7 +49640,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:16191:2: 'unreifiedRelationship'
             {
              before(grammarAccess.getUnreifiedRelationshipInstanceTupleAccess().getUnreifiedRelationshipKeyword_3()); 
-            match(input,96,FOLLOW_2); 
+            match(input,97,FOLLOW_2); 
              after(grammarAccess.getUnreifiedRelationshipInstanceTupleAccess().getUnreifiedRelationshipKeyword_3()); 
 
             }
@@ -49672,7 +49673,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:16204:1: ( rule__UnreifiedRelationshipInstanceTuple__Group__4__Impl rule__UnreifiedRelationshipInstanceTuple__Group__5 )
             // InternalOML.g:16205:2: rule__UnreifiedRelationshipInstanceTuple__Group__4__Impl rule__UnreifiedRelationshipInstanceTuple__Group__5
             {
-            pushFollow(FOLLOW_46);
+            pushFollow(FOLLOW_47);
             rule__UnreifiedRelationshipInstanceTuple__Group__4__Impl();
 
             state._fsp--;
@@ -49799,7 +49800,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:16245:2: 'domain'
             {
              before(grammarAccess.getUnreifiedRelationshipInstanceTupleAccess().getDomainKeyword_5()); 
-            match(input,100,FOLLOW_2); 
+            match(input,101,FOLLOW_2); 
              after(grammarAccess.getUnreifiedRelationshipInstanceTupleAccess().getDomainKeyword_5()); 
 
             }
@@ -49832,7 +49833,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:16258:1: ( rule__UnreifiedRelationshipInstanceTuple__Group__6__Impl rule__UnreifiedRelationshipInstanceTuple__Group__7 )
             // InternalOML.g:16259:2: rule__UnreifiedRelationshipInstanceTuple__Group__6__Impl rule__UnreifiedRelationshipInstanceTuple__Group__7
             {
-            pushFollow(FOLLOW_47);
+            pushFollow(FOLLOW_48);
             rule__UnreifiedRelationshipInstanceTuple__Group__6__Impl();
 
             state._fsp--;
@@ -49959,7 +49960,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:16299:2: 'range'
             {
              before(grammarAccess.getUnreifiedRelationshipInstanceTupleAccess().getRangeKeyword_7()); 
-            match(input,101,FOLLOW_2); 
+            match(input,102,FOLLOW_2); 
              after(grammarAccess.getUnreifiedRelationshipInstanceTupleAccess().getRangeKeyword_7()); 
 
             }
@@ -50147,7 +50148,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:16366:1: ( rule__LiteralBoolean__Group__0__Impl rule__LiteralBoolean__Group__1 )
             // InternalOML.g:16367:2: rule__LiteralBoolean__Group__0__Impl rule__LiteralBoolean__Group__1
             {
-            pushFollow(FOLLOW_106);
+            pushFollow(FOLLOW_107);
             rule__LiteralBoolean__Group__0__Impl();
 
             state._fsp--;
@@ -50302,7 +50303,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:16420:1: ( rule__LiteralDateTime__Group__0__Impl rule__LiteralDateTime__Group__1 )
             // InternalOML.g:16421:2: rule__LiteralDateTime__Group__0__Impl rule__LiteralDateTime__Group__1
             {
-            pushFollow(FOLLOW_96);
+            pushFollow(FOLLOW_97);
             rule__LiteralDateTime__Group__0__Impl();
 
             state._fsp--;
@@ -50457,7 +50458,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:16474:1: ( rule__LiteralQuotedString__Group__0__Impl rule__LiteralQuotedString__Group__1 )
             // InternalOML.g:16475:2: rule__LiteralQuotedString__Group__0__Impl rule__LiteralQuotedString__Group__1
             {
-            pushFollow(FOLLOW_107);
+            pushFollow(FOLLOW_108);
             rule__LiteralQuotedString__Group__0__Impl();
 
             state._fsp--;
@@ -50767,7 +50768,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:16582:1: ( rule__LiteralUUID__Group__0__Impl rule__LiteralUUID__Group__1 )
             // InternalOML.g:16583:2: rule__LiteralUUID__Group__0__Impl rule__LiteralUUID__Group__1
             {
-            pushFollow(FOLLOW_108);
+            pushFollow(FOLLOW_109);
             rule__LiteralUUID__Group__0__Impl();
 
             state._fsp--;
@@ -50922,7 +50923,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:16636:1: ( rule__LiteralURI__Group__0__Impl rule__LiteralURI__Group__1 )
             // InternalOML.g:16637:2: rule__LiteralURI__Group__0__Impl rule__LiteralURI__Group__1
             {
-            pushFollow(FOLLOW_109);
+            pushFollow(FOLLOW_110);
             rule__LiteralURI__Group__0__Impl();
 
             state._fsp--;
@@ -51077,7 +51078,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:16690:1: ( rule__LiteralReal__Group__0__Impl rule__LiteralReal__Group__1 )
             // InternalOML.g:16691:2: rule__LiteralReal__Group__0__Impl rule__LiteralReal__Group__1
             {
-            pushFollow(FOLLOW_110);
+            pushFollow(FOLLOW_111);
             rule__LiteralReal__Group__0__Impl();
 
             state._fsp--;
@@ -51232,7 +51233,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:16744:1: ( rule__LiteralRational__Group__0__Impl rule__LiteralRational__Group__1 )
             // InternalOML.g:16745:2: rule__LiteralRational__Group__0__Impl rule__LiteralRational__Group__1
             {
-            pushFollow(FOLLOW_111);
+            pushFollow(FOLLOW_112);
             rule__LiteralRational__Group__0__Impl();
 
             state._fsp--;
@@ -51387,7 +51388,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:16798:1: ( rule__LiteralFloat__Group__0__Impl rule__LiteralFloat__Group__1 )
             // InternalOML.g:16799:2: rule__LiteralFloat__Group__0__Impl rule__LiteralFloat__Group__1
             {
-            pushFollow(FOLLOW_112);
+            pushFollow(FOLLOW_113);
             rule__LiteralFloat__Group__0__Impl();
 
             state._fsp--;
@@ -51542,7 +51543,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:16852:1: ( rule__LiteralDecimal__Group_0__0__Impl rule__LiteralDecimal__Group_0__1 )
             // InternalOML.g:16853:2: rule__LiteralDecimal__Group_0__0__Impl rule__LiteralDecimal__Group_0__1
             {
-            pushFollow(FOLLOW_82);
+            pushFollow(FOLLOW_83);
             rule__LiteralDecimal__Group_0__0__Impl();
 
             state._fsp--;
@@ -52197,7 +52198,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:17070:1: ( rule__ReifiedRelationship__UnorderedGroup_4__Impl ( rule__ReifiedRelationship__UnorderedGroup_4__1 )? )
             // InternalOML.g:17071:2: rule__ReifiedRelationship__UnorderedGroup_4__Impl ( rule__ReifiedRelationship__UnorderedGroup_4__1 )?
             {
-            pushFollow(FOLLOW_113);
+            pushFollow(FOLLOW_114);
             rule__ReifiedRelationship__UnorderedGroup_4__Impl();
 
             state._fsp--;
@@ -52248,7 +52249,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:17082:1: ( rule__ReifiedRelationship__UnorderedGroup_4__Impl ( rule__ReifiedRelationship__UnorderedGroup_4__2 )? )
             // InternalOML.g:17083:2: rule__ReifiedRelationship__UnorderedGroup_4__Impl ( rule__ReifiedRelationship__UnorderedGroup_4__2 )?
             {
-            pushFollow(FOLLOW_113);
+            pushFollow(FOLLOW_114);
             rule__ReifiedRelationship__UnorderedGroup_4__Impl();
 
             state._fsp--;
@@ -52299,7 +52300,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:17094:1: ( rule__ReifiedRelationship__UnorderedGroup_4__Impl ( rule__ReifiedRelationship__UnorderedGroup_4__3 )? )
             // InternalOML.g:17095:2: rule__ReifiedRelationship__UnorderedGroup_4__Impl ( rule__ReifiedRelationship__UnorderedGroup_4__3 )?
             {
-            pushFollow(FOLLOW_113);
+            pushFollow(FOLLOW_114);
             rule__ReifiedRelationship__UnorderedGroup_4__Impl();
 
             state._fsp--;
@@ -52350,7 +52351,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:17106:1: ( rule__ReifiedRelationship__UnorderedGroup_4__Impl ( rule__ReifiedRelationship__UnorderedGroup_4__4 )? )
             // InternalOML.g:17107:2: rule__ReifiedRelationship__UnorderedGroup_4__Impl ( rule__ReifiedRelationship__UnorderedGroup_4__4 )?
             {
-            pushFollow(FOLLOW_113);
+            pushFollow(FOLLOW_114);
             rule__ReifiedRelationship__UnorderedGroup_4__Impl();
 
             state._fsp--;
@@ -52401,7 +52402,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:17118:1: ( rule__ReifiedRelationship__UnorderedGroup_4__Impl ( rule__ReifiedRelationship__UnorderedGroup_4__5 )? )
             // InternalOML.g:17119:2: rule__ReifiedRelationship__UnorderedGroup_4__Impl ( rule__ReifiedRelationship__UnorderedGroup_4__5 )?
             {
-            pushFollow(FOLLOW_113);
+            pushFollow(FOLLOW_114);
             rule__ReifiedRelationship__UnorderedGroup_4__Impl();
 
             state._fsp--;
@@ -52452,7 +52453,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:17130:1: ( rule__ReifiedRelationship__UnorderedGroup_4__Impl ( rule__ReifiedRelationship__UnorderedGroup_4__6 )? )
             // InternalOML.g:17131:2: rule__ReifiedRelationship__UnorderedGroup_4__Impl ( rule__ReifiedRelationship__UnorderedGroup_4__6 )?
             {
-            pushFollow(FOLLOW_113);
+            pushFollow(FOLLOW_114);
             rule__ReifiedRelationship__UnorderedGroup_4__Impl();
 
             state._fsp--;
@@ -52503,7 +52504,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:17142:1: ( rule__ReifiedRelationship__UnorderedGroup_4__Impl ( rule__ReifiedRelationship__UnorderedGroup_4__7 )? )
             // InternalOML.g:17143:2: rule__ReifiedRelationship__UnorderedGroup_4__Impl ( rule__ReifiedRelationship__UnorderedGroup_4__7 )?
             {
-            pushFollow(FOLLOW_113);
+            pushFollow(FOLLOW_114);
             rule__ReifiedRelationship__UnorderedGroup_4__Impl();
 
             state._fsp--;
@@ -52554,7 +52555,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:17154:1: ( rule__ReifiedRelationship__UnorderedGroup_4__Impl ( rule__ReifiedRelationship__UnorderedGroup_4__8 )? )
             // InternalOML.g:17155:2: rule__ReifiedRelationship__UnorderedGroup_4__Impl ( rule__ReifiedRelationship__UnorderedGroup_4__8 )?
             {
-            pushFollow(FOLLOW_113);
+            pushFollow(FOLLOW_114);
             rule__ReifiedRelationship__UnorderedGroup_4__Impl();
 
             state._fsp--;
@@ -53138,7 +53139,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:17342:1: ( rule__UnreifiedRelationship__UnorderedGroup_4__Impl ( rule__UnreifiedRelationship__UnorderedGroup_4__1 )? )
             // InternalOML.g:17343:2: rule__UnreifiedRelationship__UnorderedGroup_4__Impl ( rule__UnreifiedRelationship__UnorderedGroup_4__1 )?
             {
-            pushFollow(FOLLOW_113);
+            pushFollow(FOLLOW_114);
             rule__UnreifiedRelationship__UnorderedGroup_4__Impl();
 
             state._fsp--;
@@ -53189,7 +53190,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:17354:1: ( rule__UnreifiedRelationship__UnorderedGroup_4__Impl ( rule__UnreifiedRelationship__UnorderedGroup_4__2 )? )
             // InternalOML.g:17355:2: rule__UnreifiedRelationship__UnorderedGroup_4__Impl ( rule__UnreifiedRelationship__UnorderedGroup_4__2 )?
             {
-            pushFollow(FOLLOW_113);
+            pushFollow(FOLLOW_114);
             rule__UnreifiedRelationship__UnorderedGroup_4__Impl();
 
             state._fsp--;
@@ -53240,7 +53241,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:17366:1: ( rule__UnreifiedRelationship__UnorderedGroup_4__Impl ( rule__UnreifiedRelationship__UnorderedGroup_4__3 )? )
             // InternalOML.g:17367:2: rule__UnreifiedRelationship__UnorderedGroup_4__Impl ( rule__UnreifiedRelationship__UnorderedGroup_4__3 )?
             {
-            pushFollow(FOLLOW_113);
+            pushFollow(FOLLOW_114);
             rule__UnreifiedRelationship__UnorderedGroup_4__Impl();
 
             state._fsp--;
@@ -53291,7 +53292,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:17378:1: ( rule__UnreifiedRelationship__UnorderedGroup_4__Impl ( rule__UnreifiedRelationship__UnorderedGroup_4__4 )? )
             // InternalOML.g:17379:2: rule__UnreifiedRelationship__UnorderedGroup_4__Impl ( rule__UnreifiedRelationship__UnorderedGroup_4__4 )?
             {
-            pushFollow(FOLLOW_113);
+            pushFollow(FOLLOW_114);
             rule__UnreifiedRelationship__UnorderedGroup_4__Impl();
 
             state._fsp--;
@@ -53342,7 +53343,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:17390:1: ( rule__UnreifiedRelationship__UnorderedGroup_4__Impl ( rule__UnreifiedRelationship__UnorderedGroup_4__5 )? )
             // InternalOML.g:17391:2: rule__UnreifiedRelationship__UnorderedGroup_4__Impl ( rule__UnreifiedRelationship__UnorderedGroup_4__5 )?
             {
-            pushFollow(FOLLOW_113);
+            pushFollow(FOLLOW_114);
             rule__UnreifiedRelationship__UnorderedGroup_4__Impl();
 
             state._fsp--;
@@ -53393,7 +53394,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:17402:1: ( rule__UnreifiedRelationship__UnorderedGroup_4__Impl ( rule__UnreifiedRelationship__UnorderedGroup_4__6 )? )
             // InternalOML.g:17403:2: rule__UnreifiedRelationship__UnorderedGroup_4__Impl ( rule__UnreifiedRelationship__UnorderedGroup_4__6 )?
             {
-            pushFollow(FOLLOW_113);
+            pushFollow(FOLLOW_114);
             rule__UnreifiedRelationship__UnorderedGroup_4__Impl();
 
             state._fsp--;
@@ -53444,7 +53445,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:17414:1: ( rule__UnreifiedRelationship__UnorderedGroup_4__Impl ( rule__UnreifiedRelationship__UnorderedGroup_4__7 )? )
             // InternalOML.g:17415:2: rule__UnreifiedRelationship__UnorderedGroup_4__Impl ( rule__UnreifiedRelationship__UnorderedGroup_4__7 )?
             {
-            pushFollow(FOLLOW_113);
+            pushFollow(FOLLOW_114);
             rule__UnreifiedRelationship__UnorderedGroup_4__Impl();
 
             state._fsp--;
@@ -53495,7 +53496,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:17426:1: ( rule__UnreifiedRelationship__UnorderedGroup_4__Impl ( rule__UnreifiedRelationship__UnorderedGroup_4__8 )? )
             // InternalOML.g:17427:2: rule__UnreifiedRelationship__UnorderedGroup_4__Impl ( rule__UnreifiedRelationship__UnorderedGroup_4__8 )?
             {
-            pushFollow(FOLLOW_113);
+            pushFollow(FOLLOW_114);
             rule__UnreifiedRelationship__UnorderedGroup_4__Impl();
 
             state._fsp--;
@@ -53584,13 +53585,13 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt131=2;
             int LA131_0 = input.LA(1);
 
-            if ( LA131_0 == 132 && getUnorderedGroupHelper().canSelect(grammarAccess.getBinaryScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
+            if ( LA131_0 == 133 && getUnorderedGroupHelper().canSelect(grammarAccess.getBinaryScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
                 alt131=1;
             }
-            else if ( LA131_0 == 133 && getUnorderedGroupHelper().canSelect(grammarAccess.getBinaryScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
+            else if ( LA131_0 == 134 && getUnorderedGroupHelper().canSelect(grammarAccess.getBinaryScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
                 alt131=1;
             }
-            else if ( LA131_0 == 134 && getUnorderedGroupHelper().canSelect(grammarAccess.getBinaryScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
+            else if ( LA131_0 == 135 && getUnorderedGroupHelper().canSelect(grammarAccess.getBinaryScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
                 alt131=1;
             }
             switch (alt131) {
@@ -53642,13 +53643,13 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt132=3;
             int LA132_0 = input.LA(1);
 
-            if ( LA132_0 == 132 && getUnorderedGroupHelper().canSelect(grammarAccess.getBinaryScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
+            if ( LA132_0 == 133 && getUnorderedGroupHelper().canSelect(grammarAccess.getBinaryScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
                 alt132=1;
             }
-            else if ( LA132_0 == 133 && getUnorderedGroupHelper().canSelect(grammarAccess.getBinaryScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
+            else if ( LA132_0 == 134 && getUnorderedGroupHelper().canSelect(grammarAccess.getBinaryScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
                 alt132=2;
             }
-            else if ( LA132_0 == 134 && getUnorderedGroupHelper().canSelect(grammarAccess.getBinaryScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
+            else if ( LA132_0 == 135 && getUnorderedGroupHelper().canSelect(grammarAccess.getBinaryScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
                 alt132=3;
             }
             else {
@@ -53829,7 +53830,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:17524:1: ( rule__BinaryScalarRestriction__UnorderedGroup_4__Impl ( rule__BinaryScalarRestriction__UnorderedGroup_4__1 )? )
             // InternalOML.g:17525:2: rule__BinaryScalarRestriction__UnorderedGroup_4__Impl ( rule__BinaryScalarRestriction__UnorderedGroup_4__1 )?
             {
-            pushFollow(FOLLOW_114);
+            pushFollow(FOLLOW_115);
             rule__BinaryScalarRestriction__UnorderedGroup_4__Impl();
 
             state._fsp--;
@@ -53838,13 +53839,13 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt133=2;
             int LA133_0 = input.LA(1);
 
-            if ( LA133_0 == 132 && getUnorderedGroupHelper().canSelect(grammarAccess.getBinaryScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
+            if ( LA133_0 == 133 && getUnorderedGroupHelper().canSelect(grammarAccess.getBinaryScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
                 alt133=1;
             }
-            else if ( LA133_0 == 133 && getUnorderedGroupHelper().canSelect(grammarAccess.getBinaryScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
+            else if ( LA133_0 == 134 && getUnorderedGroupHelper().canSelect(grammarAccess.getBinaryScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
                 alt133=1;
             }
-            else if ( LA133_0 == 134 && getUnorderedGroupHelper().canSelect(grammarAccess.getBinaryScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
+            else if ( LA133_0 == 135 && getUnorderedGroupHelper().canSelect(grammarAccess.getBinaryScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
                 alt133=1;
             }
             switch (alt133) {
@@ -53890,7 +53891,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:17536:1: ( rule__BinaryScalarRestriction__UnorderedGroup_4__Impl ( rule__BinaryScalarRestriction__UnorderedGroup_4__2 )? )
             // InternalOML.g:17537:2: rule__BinaryScalarRestriction__UnorderedGroup_4__Impl ( rule__BinaryScalarRestriction__UnorderedGroup_4__2 )?
             {
-            pushFollow(FOLLOW_114);
+            pushFollow(FOLLOW_115);
             rule__BinaryScalarRestriction__UnorderedGroup_4__Impl();
 
             state._fsp--;
@@ -53899,13 +53900,13 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt134=2;
             int LA134_0 = input.LA(1);
 
-            if ( LA134_0 == 132 && getUnorderedGroupHelper().canSelect(grammarAccess.getBinaryScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
+            if ( LA134_0 == 133 && getUnorderedGroupHelper().canSelect(grammarAccess.getBinaryScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
                 alt134=1;
             }
-            else if ( LA134_0 == 133 && getUnorderedGroupHelper().canSelect(grammarAccess.getBinaryScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
+            else if ( LA134_0 == 134 && getUnorderedGroupHelper().canSelect(grammarAccess.getBinaryScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
                 alt134=1;
             }
-            else if ( LA134_0 == 134 && getUnorderedGroupHelper().canSelect(grammarAccess.getBinaryScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
+            else if ( LA134_0 == 135 && getUnorderedGroupHelper().canSelect(grammarAccess.getBinaryScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
                 alt134=1;
             }
             switch (alt134) {
@@ -53989,16 +53990,16 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt135=2;
             int LA135_0 = input.LA(1);
 
-            if ( LA135_0 == 132 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
+            if ( LA135_0 == 133 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
                 alt135=1;
             }
-            else if ( LA135_0 == 133 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
+            else if ( LA135_0 == 134 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
                 alt135=1;
             }
-            else if ( LA135_0 == 134 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
+            else if ( LA135_0 == 135 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
                 alt135=1;
             }
-            else if ( LA135_0 == 136 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
+            else if ( LA135_0 == 137 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
                 alt135=1;
             }
             switch (alt135) {
@@ -54050,16 +54051,16 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt136=4;
             int LA136_0 = input.LA(1);
 
-            if ( LA136_0 == 132 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
+            if ( LA136_0 == 133 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
                 alt136=1;
             }
-            else if ( LA136_0 == 133 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
+            else if ( LA136_0 == 134 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
                 alt136=2;
             }
-            else if ( LA136_0 == 134 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
+            else if ( LA136_0 == 135 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
                 alt136=3;
             }
-            else if ( LA136_0 == 136 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
+            else if ( LA136_0 == 137 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
                 alt136=4;
             }
             else {
@@ -54286,7 +54287,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:17649:1: ( rule__IRIScalarRestriction__UnorderedGroup_4__Impl ( rule__IRIScalarRestriction__UnorderedGroup_4__1 )? )
             // InternalOML.g:17650:2: rule__IRIScalarRestriction__UnorderedGroup_4__Impl ( rule__IRIScalarRestriction__UnorderedGroup_4__1 )?
             {
-            pushFollow(FOLLOW_115);
+            pushFollow(FOLLOW_116);
             rule__IRIScalarRestriction__UnorderedGroup_4__Impl();
 
             state._fsp--;
@@ -54295,16 +54296,16 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt137=2;
             int LA137_0 = input.LA(1);
 
-            if ( LA137_0 == 132 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
+            if ( LA137_0 == 133 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
                 alt137=1;
             }
-            else if ( LA137_0 == 133 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
+            else if ( LA137_0 == 134 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
                 alt137=1;
             }
-            else if ( LA137_0 == 134 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
+            else if ( LA137_0 == 135 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
                 alt137=1;
             }
-            else if ( LA137_0 == 136 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
+            else if ( LA137_0 == 137 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
                 alt137=1;
             }
             switch (alt137) {
@@ -54350,7 +54351,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:17661:1: ( rule__IRIScalarRestriction__UnorderedGroup_4__Impl ( rule__IRIScalarRestriction__UnorderedGroup_4__2 )? )
             // InternalOML.g:17662:2: rule__IRIScalarRestriction__UnorderedGroup_4__Impl ( rule__IRIScalarRestriction__UnorderedGroup_4__2 )?
             {
-            pushFollow(FOLLOW_115);
+            pushFollow(FOLLOW_116);
             rule__IRIScalarRestriction__UnorderedGroup_4__Impl();
 
             state._fsp--;
@@ -54359,16 +54360,16 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt138=2;
             int LA138_0 = input.LA(1);
 
-            if ( LA138_0 == 132 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
+            if ( LA138_0 == 133 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
                 alt138=1;
             }
-            else if ( LA138_0 == 133 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
+            else if ( LA138_0 == 134 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
                 alt138=1;
             }
-            else if ( LA138_0 == 134 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
+            else if ( LA138_0 == 135 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
                 alt138=1;
             }
-            else if ( LA138_0 == 136 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
+            else if ( LA138_0 == 137 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
                 alt138=1;
             }
             switch (alt138) {
@@ -54414,7 +54415,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:17673:1: ( rule__IRIScalarRestriction__UnorderedGroup_4__Impl ( rule__IRIScalarRestriction__UnorderedGroup_4__3 )? )
             // InternalOML.g:17674:2: rule__IRIScalarRestriction__UnorderedGroup_4__Impl ( rule__IRIScalarRestriction__UnorderedGroup_4__3 )?
             {
-            pushFollow(FOLLOW_115);
+            pushFollow(FOLLOW_116);
             rule__IRIScalarRestriction__UnorderedGroup_4__Impl();
 
             state._fsp--;
@@ -54423,16 +54424,16 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt139=2;
             int LA139_0 = input.LA(1);
 
-            if ( LA139_0 == 132 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
+            if ( LA139_0 == 133 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
                 alt139=1;
             }
-            else if ( LA139_0 == 133 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
+            else if ( LA139_0 == 134 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
                 alt139=1;
             }
-            else if ( LA139_0 == 134 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
+            else if ( LA139_0 == 135 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
                 alt139=1;
             }
-            else if ( LA139_0 == 136 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
+            else if ( LA139_0 == 137 && getUnorderedGroupHelper().canSelect(grammarAccess.getIRIScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
                 alt139=1;
             }
             switch (alt139) {
@@ -54516,16 +54517,16 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt140=2;
             int LA140_0 = input.LA(1);
 
-            if ( LA140_0 == 138 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
+            if ( LA140_0 == 139 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
                 alt140=1;
             }
-            else if ( LA140_0 == 139 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
+            else if ( LA140_0 == 140 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
                 alt140=1;
             }
-            else if ( LA140_0 == 140 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
+            else if ( LA140_0 == 141 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
                 alt140=1;
             }
-            else if ( LA140_0 == 141 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
+            else if ( LA140_0 == 142 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
                 alt140=1;
             }
             switch (alt140) {
@@ -54577,16 +54578,16 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt141=4;
             int LA141_0 = input.LA(1);
 
-            if ( LA141_0 == 138 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
+            if ( LA141_0 == 139 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
                 alt141=1;
             }
-            else if ( LA141_0 == 139 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
+            else if ( LA141_0 == 140 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
                 alt141=2;
             }
-            else if ( LA141_0 == 140 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
+            else if ( LA141_0 == 141 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
                 alt141=3;
             }
-            else if ( LA141_0 == 141 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
+            else if ( LA141_0 == 142 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
                 alt141=4;
             }
             else {
@@ -54813,7 +54814,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:17786:1: ( rule__NumericScalarRestriction__UnorderedGroup_4__Impl ( rule__NumericScalarRestriction__UnorderedGroup_4__1 )? )
             // InternalOML.g:17787:2: rule__NumericScalarRestriction__UnorderedGroup_4__Impl ( rule__NumericScalarRestriction__UnorderedGroup_4__1 )?
             {
-            pushFollow(FOLLOW_116);
+            pushFollow(FOLLOW_117);
             rule__NumericScalarRestriction__UnorderedGroup_4__Impl();
 
             state._fsp--;
@@ -54822,16 +54823,16 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt142=2;
             int LA142_0 = input.LA(1);
 
-            if ( LA142_0 == 138 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
+            if ( LA142_0 == 139 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
                 alt142=1;
             }
-            else if ( LA142_0 == 139 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
+            else if ( LA142_0 == 140 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
                 alt142=1;
             }
-            else if ( LA142_0 == 140 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
+            else if ( LA142_0 == 141 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
                 alt142=1;
             }
-            else if ( LA142_0 == 141 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
+            else if ( LA142_0 == 142 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
                 alt142=1;
             }
             switch (alt142) {
@@ -54877,7 +54878,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:17798:1: ( rule__NumericScalarRestriction__UnorderedGroup_4__Impl ( rule__NumericScalarRestriction__UnorderedGroup_4__2 )? )
             // InternalOML.g:17799:2: rule__NumericScalarRestriction__UnorderedGroup_4__Impl ( rule__NumericScalarRestriction__UnorderedGroup_4__2 )?
             {
-            pushFollow(FOLLOW_116);
+            pushFollow(FOLLOW_117);
             rule__NumericScalarRestriction__UnorderedGroup_4__Impl();
 
             state._fsp--;
@@ -54886,16 +54887,16 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt143=2;
             int LA143_0 = input.LA(1);
 
-            if ( LA143_0 == 138 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
+            if ( LA143_0 == 139 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
                 alt143=1;
             }
-            else if ( LA143_0 == 139 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
+            else if ( LA143_0 == 140 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
                 alt143=1;
             }
-            else if ( LA143_0 == 140 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
+            else if ( LA143_0 == 141 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
                 alt143=1;
             }
-            else if ( LA143_0 == 141 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
+            else if ( LA143_0 == 142 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
                 alt143=1;
             }
             switch (alt143) {
@@ -54941,7 +54942,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:17810:1: ( rule__NumericScalarRestriction__UnorderedGroup_4__Impl ( rule__NumericScalarRestriction__UnorderedGroup_4__3 )? )
             // InternalOML.g:17811:2: rule__NumericScalarRestriction__UnorderedGroup_4__Impl ( rule__NumericScalarRestriction__UnorderedGroup_4__3 )?
             {
-            pushFollow(FOLLOW_116);
+            pushFollow(FOLLOW_117);
             rule__NumericScalarRestriction__UnorderedGroup_4__Impl();
 
             state._fsp--;
@@ -54950,16 +54951,16 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt144=2;
             int LA144_0 = input.LA(1);
 
-            if ( LA144_0 == 138 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
+            if ( LA144_0 == 139 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
                 alt144=1;
             }
-            else if ( LA144_0 == 139 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
+            else if ( LA144_0 == 140 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
                 alt144=1;
             }
-            else if ( LA144_0 == 140 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
+            else if ( LA144_0 == 141 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
                 alt144=1;
             }
-            else if ( LA144_0 == 141 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
+            else if ( LA144_0 == 142 && getUnorderedGroupHelper().canSelect(grammarAccess.getNumericScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
                 alt144=1;
             }
             switch (alt144) {
@@ -55043,19 +55044,19 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt145=2;
             int LA145_0 = input.LA(1);
 
-            if ( LA145_0 == 132 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
+            if ( LA145_0 == 133 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
                 alt145=1;
             }
-            else if ( LA145_0 == 133 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
+            else if ( LA145_0 == 134 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
                 alt145=1;
             }
-            else if ( LA145_0 == 134 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
+            else if ( LA145_0 == 135 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
                 alt145=1;
             }
-            else if ( LA145_0 == 136 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
+            else if ( LA145_0 == 137 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
                 alt145=1;
             }
-            else if ( LA145_0 == 143 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 4) ) {
+            else if ( LA145_0 == 144 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 4) ) {
                 alt145=1;
             }
             switch (alt145) {
@@ -55107,19 +55108,19 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt146=5;
             int LA146_0 = input.LA(1);
 
-            if ( LA146_0 == 132 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
+            if ( LA146_0 == 133 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
                 alt146=1;
             }
-            else if ( LA146_0 == 133 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
+            else if ( LA146_0 == 134 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
                 alt146=2;
             }
-            else if ( LA146_0 == 134 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
+            else if ( LA146_0 == 135 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
                 alt146=3;
             }
-            else if ( LA146_0 == 136 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
+            else if ( LA146_0 == 137 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
                 alt146=4;
             }
-            else if ( LA146_0 == 143 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 4) ) {
+            else if ( LA146_0 == 144 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 4) ) {
                 alt146=5;
             }
             else {
@@ -55392,7 +55393,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:17938:1: ( rule__PlainLiteralScalarRestriction__UnorderedGroup_4__Impl ( rule__PlainLiteralScalarRestriction__UnorderedGroup_4__1 )? )
             // InternalOML.g:17939:2: rule__PlainLiteralScalarRestriction__UnorderedGroup_4__Impl ( rule__PlainLiteralScalarRestriction__UnorderedGroup_4__1 )?
             {
-            pushFollow(FOLLOW_117);
+            pushFollow(FOLLOW_118);
             rule__PlainLiteralScalarRestriction__UnorderedGroup_4__Impl();
 
             state._fsp--;
@@ -55401,19 +55402,19 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt147=2;
             int LA147_0 = input.LA(1);
 
-            if ( LA147_0 == 132 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
+            if ( LA147_0 == 133 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
                 alt147=1;
             }
-            else if ( LA147_0 == 133 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
+            else if ( LA147_0 == 134 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
                 alt147=1;
             }
-            else if ( LA147_0 == 134 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
+            else if ( LA147_0 == 135 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
                 alt147=1;
             }
-            else if ( LA147_0 == 136 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
+            else if ( LA147_0 == 137 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
                 alt147=1;
             }
-            else if ( LA147_0 == 143 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 4) ) {
+            else if ( LA147_0 == 144 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 4) ) {
                 alt147=1;
             }
             switch (alt147) {
@@ -55459,7 +55460,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:17950:1: ( rule__PlainLiteralScalarRestriction__UnorderedGroup_4__Impl ( rule__PlainLiteralScalarRestriction__UnorderedGroup_4__2 )? )
             // InternalOML.g:17951:2: rule__PlainLiteralScalarRestriction__UnorderedGroup_4__Impl ( rule__PlainLiteralScalarRestriction__UnorderedGroup_4__2 )?
             {
-            pushFollow(FOLLOW_117);
+            pushFollow(FOLLOW_118);
             rule__PlainLiteralScalarRestriction__UnorderedGroup_4__Impl();
 
             state._fsp--;
@@ -55468,19 +55469,19 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt148=2;
             int LA148_0 = input.LA(1);
 
-            if ( LA148_0 == 132 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
+            if ( LA148_0 == 133 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
                 alt148=1;
             }
-            else if ( LA148_0 == 133 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
+            else if ( LA148_0 == 134 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
                 alt148=1;
             }
-            else if ( LA148_0 == 134 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
+            else if ( LA148_0 == 135 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
                 alt148=1;
             }
-            else if ( LA148_0 == 136 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
+            else if ( LA148_0 == 137 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
                 alt148=1;
             }
-            else if ( LA148_0 == 143 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 4) ) {
+            else if ( LA148_0 == 144 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 4) ) {
                 alt148=1;
             }
             switch (alt148) {
@@ -55526,7 +55527,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:17962:1: ( rule__PlainLiteralScalarRestriction__UnorderedGroup_4__Impl ( rule__PlainLiteralScalarRestriction__UnorderedGroup_4__3 )? )
             // InternalOML.g:17963:2: rule__PlainLiteralScalarRestriction__UnorderedGroup_4__Impl ( rule__PlainLiteralScalarRestriction__UnorderedGroup_4__3 )?
             {
-            pushFollow(FOLLOW_117);
+            pushFollow(FOLLOW_118);
             rule__PlainLiteralScalarRestriction__UnorderedGroup_4__Impl();
 
             state._fsp--;
@@ -55535,19 +55536,19 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt149=2;
             int LA149_0 = input.LA(1);
 
-            if ( LA149_0 == 132 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
+            if ( LA149_0 == 133 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
                 alt149=1;
             }
-            else if ( LA149_0 == 133 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
+            else if ( LA149_0 == 134 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
                 alt149=1;
             }
-            else if ( LA149_0 == 134 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
+            else if ( LA149_0 == 135 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
                 alt149=1;
             }
-            else if ( LA149_0 == 136 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
+            else if ( LA149_0 == 137 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
                 alt149=1;
             }
-            else if ( LA149_0 == 143 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 4) ) {
+            else if ( LA149_0 == 144 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 4) ) {
                 alt149=1;
             }
             switch (alt149) {
@@ -55593,7 +55594,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:17974:1: ( rule__PlainLiteralScalarRestriction__UnorderedGroup_4__Impl ( rule__PlainLiteralScalarRestriction__UnorderedGroup_4__4 )? )
             // InternalOML.g:17975:2: rule__PlainLiteralScalarRestriction__UnorderedGroup_4__Impl ( rule__PlainLiteralScalarRestriction__UnorderedGroup_4__4 )?
             {
-            pushFollow(FOLLOW_117);
+            pushFollow(FOLLOW_118);
             rule__PlainLiteralScalarRestriction__UnorderedGroup_4__Impl();
 
             state._fsp--;
@@ -55602,19 +55603,19 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt150=2;
             int LA150_0 = input.LA(1);
 
-            if ( LA150_0 == 132 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
+            if ( LA150_0 == 133 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
                 alt150=1;
             }
-            else if ( LA150_0 == 133 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
+            else if ( LA150_0 == 134 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
                 alt150=1;
             }
-            else if ( LA150_0 == 134 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
+            else if ( LA150_0 == 135 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
                 alt150=1;
             }
-            else if ( LA150_0 == 136 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
+            else if ( LA150_0 == 137 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
                 alt150=1;
             }
-            else if ( LA150_0 == 143 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 4) ) {
+            else if ( LA150_0 == 144 && getUnorderedGroupHelper().canSelect(grammarAccess.getPlainLiteralScalarRestrictionAccess().getUnorderedGroup_4(), 4) ) {
                 alt150=1;
             }
             switch (alt150) {
@@ -55698,16 +55699,16 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt151=2;
             int LA151_0 = input.LA(1);
 
-            if ( LA151_0 == 132 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
+            if ( LA151_0 == 133 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
                 alt151=1;
             }
-            else if ( LA151_0 == 133 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
+            else if ( LA151_0 == 134 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
                 alt151=1;
             }
-            else if ( LA151_0 == 134 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
+            else if ( LA151_0 == 135 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
                 alt151=1;
             }
-            else if ( LA151_0 == 136 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
+            else if ( LA151_0 == 137 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
                 alt151=1;
             }
             switch (alt151) {
@@ -55759,16 +55760,16 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt152=4;
             int LA152_0 = input.LA(1);
 
-            if ( LA152_0 == 132 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
+            if ( LA152_0 == 133 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
                 alt152=1;
             }
-            else if ( LA152_0 == 133 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
+            else if ( LA152_0 == 134 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
                 alt152=2;
             }
-            else if ( LA152_0 == 134 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
+            else if ( LA152_0 == 135 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
                 alt152=3;
             }
-            else if ( LA152_0 == 136 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
+            else if ( LA152_0 == 137 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
                 alt152=4;
             }
             else {
@@ -55995,7 +55996,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:18087:1: ( rule__StringScalarRestriction__UnorderedGroup_4__Impl ( rule__StringScalarRestriction__UnorderedGroup_4__1 )? )
             // InternalOML.g:18088:2: rule__StringScalarRestriction__UnorderedGroup_4__Impl ( rule__StringScalarRestriction__UnorderedGroup_4__1 )?
             {
-            pushFollow(FOLLOW_115);
+            pushFollow(FOLLOW_116);
             rule__StringScalarRestriction__UnorderedGroup_4__Impl();
 
             state._fsp--;
@@ -56004,16 +56005,16 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt153=2;
             int LA153_0 = input.LA(1);
 
-            if ( LA153_0 == 132 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
+            if ( LA153_0 == 133 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
                 alt153=1;
             }
-            else if ( LA153_0 == 133 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
+            else if ( LA153_0 == 134 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
                 alt153=1;
             }
-            else if ( LA153_0 == 134 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
+            else if ( LA153_0 == 135 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
                 alt153=1;
             }
-            else if ( LA153_0 == 136 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
+            else if ( LA153_0 == 137 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
                 alt153=1;
             }
             switch (alt153) {
@@ -56059,7 +56060,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:18099:1: ( rule__StringScalarRestriction__UnorderedGroup_4__Impl ( rule__StringScalarRestriction__UnorderedGroup_4__2 )? )
             // InternalOML.g:18100:2: rule__StringScalarRestriction__UnorderedGroup_4__Impl ( rule__StringScalarRestriction__UnorderedGroup_4__2 )?
             {
-            pushFollow(FOLLOW_115);
+            pushFollow(FOLLOW_116);
             rule__StringScalarRestriction__UnorderedGroup_4__Impl();
 
             state._fsp--;
@@ -56068,16 +56069,16 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt154=2;
             int LA154_0 = input.LA(1);
 
-            if ( LA154_0 == 132 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
+            if ( LA154_0 == 133 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
                 alt154=1;
             }
-            else if ( LA154_0 == 133 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
+            else if ( LA154_0 == 134 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
                 alt154=1;
             }
-            else if ( LA154_0 == 134 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
+            else if ( LA154_0 == 135 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
                 alt154=1;
             }
-            else if ( LA154_0 == 136 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
+            else if ( LA154_0 == 137 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
                 alt154=1;
             }
             switch (alt154) {
@@ -56123,7 +56124,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:18111:1: ( rule__StringScalarRestriction__UnorderedGroup_4__Impl ( rule__StringScalarRestriction__UnorderedGroup_4__3 )? )
             // InternalOML.g:18112:2: rule__StringScalarRestriction__UnorderedGroup_4__Impl ( rule__StringScalarRestriction__UnorderedGroup_4__3 )?
             {
-            pushFollow(FOLLOW_115);
+            pushFollow(FOLLOW_116);
             rule__StringScalarRestriction__UnorderedGroup_4__Impl();
 
             state._fsp--;
@@ -56132,16 +56133,16 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt155=2;
             int LA155_0 = input.LA(1);
 
-            if ( LA155_0 == 132 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
+            if ( LA155_0 == 133 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
                 alt155=1;
             }
-            else if ( LA155_0 == 133 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
+            else if ( LA155_0 == 134 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
                 alt155=1;
             }
-            else if ( LA155_0 == 134 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
+            else if ( LA155_0 == 135 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
                 alt155=1;
             }
-            else if ( LA155_0 == 136 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
+            else if ( LA155_0 == 137 && getUnorderedGroupHelper().canSelect(grammarAccess.getStringScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
                 alt155=1;
             }
             switch (alt155) {
@@ -56225,16 +56226,16 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt156=2;
             int LA156_0 = input.LA(1);
 
-            if ( LA156_0 == 138 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
+            if ( LA156_0 == 139 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
                 alt156=1;
             }
-            else if ( LA156_0 == 139 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
+            else if ( LA156_0 == 140 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
                 alt156=1;
             }
-            else if ( LA156_0 == 140 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
+            else if ( LA156_0 == 141 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
                 alt156=1;
             }
-            else if ( LA156_0 == 141 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
+            else if ( LA156_0 == 142 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
                 alt156=1;
             }
             switch (alt156) {
@@ -56286,16 +56287,16 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt157=4;
             int LA157_0 = input.LA(1);
 
-            if ( LA157_0 == 138 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
+            if ( LA157_0 == 139 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
                 alt157=1;
             }
-            else if ( LA157_0 == 139 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
+            else if ( LA157_0 == 140 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
                 alt157=2;
             }
-            else if ( LA157_0 == 140 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
+            else if ( LA157_0 == 141 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
                 alt157=3;
             }
-            else if ( LA157_0 == 141 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
+            else if ( LA157_0 == 142 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
                 alt157=4;
             }
             else {
@@ -56522,7 +56523,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:18224:1: ( rule__TimeScalarRestriction__UnorderedGroup_4__Impl ( rule__TimeScalarRestriction__UnorderedGroup_4__1 )? )
             // InternalOML.g:18225:2: rule__TimeScalarRestriction__UnorderedGroup_4__Impl ( rule__TimeScalarRestriction__UnorderedGroup_4__1 )?
             {
-            pushFollow(FOLLOW_116);
+            pushFollow(FOLLOW_117);
             rule__TimeScalarRestriction__UnorderedGroup_4__Impl();
 
             state._fsp--;
@@ -56531,16 +56532,16 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt158=2;
             int LA158_0 = input.LA(1);
 
-            if ( LA158_0 == 138 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
+            if ( LA158_0 == 139 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
                 alt158=1;
             }
-            else if ( LA158_0 == 139 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
+            else if ( LA158_0 == 140 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
                 alt158=1;
             }
-            else if ( LA158_0 == 140 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
+            else if ( LA158_0 == 141 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
                 alt158=1;
             }
-            else if ( LA158_0 == 141 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
+            else if ( LA158_0 == 142 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
                 alt158=1;
             }
             switch (alt158) {
@@ -56586,7 +56587,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:18236:1: ( rule__TimeScalarRestriction__UnorderedGroup_4__Impl ( rule__TimeScalarRestriction__UnorderedGroup_4__2 )? )
             // InternalOML.g:18237:2: rule__TimeScalarRestriction__UnorderedGroup_4__Impl ( rule__TimeScalarRestriction__UnorderedGroup_4__2 )?
             {
-            pushFollow(FOLLOW_116);
+            pushFollow(FOLLOW_117);
             rule__TimeScalarRestriction__UnorderedGroup_4__Impl();
 
             state._fsp--;
@@ -56595,16 +56596,16 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt159=2;
             int LA159_0 = input.LA(1);
 
-            if ( LA159_0 == 138 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
+            if ( LA159_0 == 139 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
                 alt159=1;
             }
-            else if ( LA159_0 == 139 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
+            else if ( LA159_0 == 140 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
                 alt159=1;
             }
-            else if ( LA159_0 == 140 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
+            else if ( LA159_0 == 141 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
                 alt159=1;
             }
-            else if ( LA159_0 == 141 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
+            else if ( LA159_0 == 142 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
                 alt159=1;
             }
             switch (alt159) {
@@ -56650,7 +56651,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:18248:1: ( rule__TimeScalarRestriction__UnorderedGroup_4__Impl ( rule__TimeScalarRestriction__UnorderedGroup_4__3 )? )
             // InternalOML.g:18249:2: rule__TimeScalarRestriction__UnorderedGroup_4__Impl ( rule__TimeScalarRestriction__UnorderedGroup_4__3 )?
             {
-            pushFollow(FOLLOW_116);
+            pushFollow(FOLLOW_117);
             rule__TimeScalarRestriction__UnorderedGroup_4__Impl();
 
             state._fsp--;
@@ -56659,16 +56660,16 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             int alt160=2;
             int LA160_0 = input.LA(1);
 
-            if ( LA160_0 == 138 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
+            if ( LA160_0 == 139 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_4(), 0) ) {
                 alt160=1;
             }
-            else if ( LA160_0 == 139 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
+            else if ( LA160_0 == 140 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_4(), 1) ) {
                 alt160=1;
             }
-            else if ( LA160_0 == 140 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
+            else if ( LA160_0 == 141 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_4(), 2) ) {
                 alt160=1;
             }
-            else if ( LA160_0 == 141 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
+            else if ( LA160_0 == 142 && getUnorderedGroupHelper().canSelect(grammarAccess.getTimeScalarRestrictionAccess().getUnorderedGroup_4(), 3) ) {
                 alt160=1;
             }
             switch (alt160) {
@@ -58743,7 +58744,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:19024:4: 'functional'
             {
              before(grammarAccess.getReifiedRelationshipAccess().getIsFunctionalFunctionalKeyword_4_0_0()); 
-            match(input,154,FOLLOW_2); 
+            match(input,155,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipAccess().getIsFunctionalFunctionalKeyword_4_0_0()); 
 
             }
@@ -58788,7 +58789,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:19043:4: 'inverseFunctional'
             {
              before(grammarAccess.getReifiedRelationshipAccess().getIsInverseFunctionalInverseFunctionalKeyword_4_1_0()); 
-            match(input,155,FOLLOW_2); 
+            match(input,156,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipAccess().getIsInverseFunctionalInverseFunctionalKeyword_4_1_0()); 
 
             }
@@ -58833,7 +58834,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:19062:4: 'essential'
             {
              before(grammarAccess.getReifiedRelationshipAccess().getIsEssentialEssentialKeyword_4_2_0()); 
-            match(input,156,FOLLOW_2); 
+            match(input,157,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipAccess().getIsEssentialEssentialKeyword_4_2_0()); 
 
             }
@@ -58878,7 +58879,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:19081:4: 'inverseEssential'
             {
              before(grammarAccess.getReifiedRelationshipAccess().getIsInverseEssentialInverseEssentialKeyword_4_3_0()); 
-            match(input,157,FOLLOW_2); 
+            match(input,158,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipAccess().getIsInverseEssentialInverseEssentialKeyword_4_3_0()); 
 
             }
@@ -58923,7 +58924,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:19100:4: 'symmetric'
             {
              before(grammarAccess.getReifiedRelationshipAccess().getIsSymmetricSymmetricKeyword_4_4_0()); 
-            match(input,158,FOLLOW_2); 
+            match(input,159,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipAccess().getIsSymmetricSymmetricKeyword_4_4_0()); 
 
             }
@@ -58968,7 +58969,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:19119:4: 'asymmetric'
             {
              before(grammarAccess.getReifiedRelationshipAccess().getIsAsymmetricAsymmetricKeyword_4_5_0()); 
-            match(input,159,FOLLOW_2); 
+            match(input,160,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipAccess().getIsAsymmetricAsymmetricKeyword_4_5_0()); 
 
             }
@@ -59013,7 +59014,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:19138:4: 'reflexive'
             {
              before(grammarAccess.getReifiedRelationshipAccess().getIsReflexiveReflexiveKeyword_4_6_0()); 
-            match(input,160,FOLLOW_2); 
+            match(input,161,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipAccess().getIsReflexiveReflexiveKeyword_4_6_0()); 
 
             }
@@ -59058,7 +59059,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:19157:4: 'irreflexive'
             {
              before(grammarAccess.getReifiedRelationshipAccess().getIsIrreflexiveIrreflexiveKeyword_4_7_0()); 
-            match(input,161,FOLLOW_2); 
+            match(input,162,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipAccess().getIsIrreflexiveIrreflexiveKeyword_4_7_0()); 
 
             }
@@ -59103,7 +59104,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:19176:4: 'transitive'
             {
              before(grammarAccess.getReifiedRelationshipAccess().getIsTransitiveTransitiveKeyword_4_8_0()); 
-            match(input,162,FOLLOW_2); 
+            match(input,163,FOLLOW_2); 
              after(grammarAccess.getReifiedRelationshipAccess().getIsTransitiveTransitiveKeyword_4_8_0()); 
 
             }
@@ -59384,9 +59385,9 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__InverseProperty__NameAssignment"
 
 
-    // $ANTLR start "rule__PartialReifiedRelationship__AnnotationsAssignment_0"
-    // InternalOML.g:19285:1: rule__PartialReifiedRelationship__AnnotationsAssignment_0 : ( ruleAnnotationPropertyValue ) ;
-    public final void rule__PartialReifiedRelationship__AnnotationsAssignment_0() throws RecognitionException {
+    // $ANTLR start "rule__ReifiedRelationshipRestriction__AnnotationsAssignment_0"
+    // InternalOML.g:19285:1: rule__ReifiedRelationshipRestriction__AnnotationsAssignment_0 : ( ruleAnnotationPropertyValue ) ;
+    public final void rule__ReifiedRelationshipRestriction__AnnotationsAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
@@ -59397,13 +59398,13 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:19290:2: ( ruleAnnotationPropertyValue )
             // InternalOML.g:19291:3: ruleAnnotationPropertyValue
             {
-             before(grammarAccess.getPartialReifiedRelationshipAccess().getAnnotationsAnnotationPropertyValueParserRuleCall_0_0()); 
+             before(grammarAccess.getReifiedRelationshipRestrictionAccess().getAnnotationsAnnotationPropertyValueParserRuleCall_0_0()); 
             pushFollow(FOLLOW_2);
             ruleAnnotationPropertyValue();
 
             state._fsp--;
 
-             after(grammarAccess.getPartialReifiedRelationshipAccess().getAnnotationsAnnotationPropertyValueParserRuleCall_0_0()); 
+             after(grammarAccess.getReifiedRelationshipRestrictionAccess().getAnnotationsAnnotationPropertyValueParserRuleCall_0_0()); 
 
             }
 
@@ -59422,12 +59423,12 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__PartialReifiedRelationship__AnnotationsAssignment_0"
+    // $ANTLR end "rule__ReifiedRelationshipRestriction__AnnotationsAssignment_0"
 
 
-    // $ANTLR start "rule__PartialReifiedRelationship__NameAssignment_2"
-    // InternalOML.g:19300:1: rule__PartialReifiedRelationship__NameAssignment_2 : ( RULE_ID ) ;
-    public final void rule__PartialReifiedRelationship__NameAssignment_2() throws RecognitionException {
+    // $ANTLR start "rule__ReifiedRelationshipRestriction__NameAssignment_2"
+    // InternalOML.g:19300:1: rule__ReifiedRelationshipRestriction__NameAssignment_2 : ( RULE_ID ) ;
+    public final void rule__ReifiedRelationshipRestriction__NameAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
@@ -59438,9 +59439,9 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:19305:2: ( RULE_ID )
             // InternalOML.g:19306:3: RULE_ID
             {
-             before(grammarAccess.getPartialReifiedRelationshipAccess().getNameIDTerminalRuleCall_2_0()); 
+             before(grammarAccess.getReifiedRelationshipRestrictionAccess().getNameIDTerminalRuleCall_2_0()); 
             match(input,RULE_ID,FOLLOW_2); 
-             after(grammarAccess.getPartialReifiedRelationshipAccess().getNameIDTerminalRuleCall_2_0()); 
+             after(grammarAccess.getReifiedRelationshipRestrictionAccess().getNameIDTerminalRuleCall_2_0()); 
 
             }
 
@@ -59459,12 +59460,12 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__PartialReifiedRelationship__NameAssignment_2"
+    // $ANTLR end "rule__ReifiedRelationshipRestriction__NameAssignment_2"
 
 
-    // $ANTLR start "rule__PartialReifiedRelationship__SourceAssignment_6"
-    // InternalOML.g:19315:1: rule__PartialReifiedRelationship__SourceAssignment_6 : ( ( ruleReference ) ) ;
-    public final void rule__PartialReifiedRelationship__SourceAssignment_6() throws RecognitionException {
+    // $ANTLR start "rule__ReifiedRelationshipRestriction__SourceAssignment_6"
+    // InternalOML.g:19315:1: rule__ReifiedRelationshipRestriction__SourceAssignment_6 : ( ( ruleReference ) ) ;
+    public final void rule__ReifiedRelationshipRestriction__SourceAssignment_6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
@@ -59475,21 +59476,21 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:19320:2: ( ( ruleReference ) )
             // InternalOML.g:19321:3: ( ruleReference )
             {
-             before(grammarAccess.getPartialReifiedRelationshipAccess().getSourceEntityCrossReference_6_0()); 
+             before(grammarAccess.getReifiedRelationshipRestrictionAccess().getSourceEntityCrossReference_6_0()); 
             // InternalOML.g:19322:3: ( ruleReference )
             // InternalOML.g:19323:4: ruleReference
             {
-             before(grammarAccess.getPartialReifiedRelationshipAccess().getSourceEntityReferenceParserRuleCall_6_0_1()); 
+             before(grammarAccess.getReifiedRelationshipRestrictionAccess().getSourceEntityReferenceParserRuleCall_6_0_1()); 
             pushFollow(FOLLOW_2);
             ruleReference();
 
             state._fsp--;
 
-             after(grammarAccess.getPartialReifiedRelationshipAccess().getSourceEntityReferenceParserRuleCall_6_0_1()); 
+             after(grammarAccess.getReifiedRelationshipRestrictionAccess().getSourceEntityReferenceParserRuleCall_6_0_1()); 
 
             }
 
-             after(grammarAccess.getPartialReifiedRelationshipAccess().getSourceEntityCrossReference_6_0()); 
+             after(grammarAccess.getReifiedRelationshipRestrictionAccess().getSourceEntityCrossReference_6_0()); 
 
             }
 
@@ -59508,12 +59509,12 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__PartialReifiedRelationship__SourceAssignment_6"
+    // $ANTLR end "rule__ReifiedRelationshipRestriction__SourceAssignment_6"
 
 
-    // $ANTLR start "rule__PartialReifiedRelationship__TargetAssignment_9"
-    // InternalOML.g:19334:1: rule__PartialReifiedRelationship__TargetAssignment_9 : ( ( ruleReference ) ) ;
-    public final void rule__PartialReifiedRelationship__TargetAssignment_9() throws RecognitionException {
+    // $ANTLR start "rule__ReifiedRelationshipRestriction__TargetAssignment_9"
+    // InternalOML.g:19334:1: rule__ReifiedRelationshipRestriction__TargetAssignment_9 : ( ( ruleReference ) ) ;
+    public final void rule__ReifiedRelationshipRestriction__TargetAssignment_9() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
@@ -59524,21 +59525,21 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:19339:2: ( ( ruleReference ) )
             // InternalOML.g:19340:3: ( ruleReference )
             {
-             before(grammarAccess.getPartialReifiedRelationshipAccess().getTargetEntityCrossReference_9_0()); 
+             before(grammarAccess.getReifiedRelationshipRestrictionAccess().getTargetEntityCrossReference_9_0()); 
             // InternalOML.g:19341:3: ( ruleReference )
             // InternalOML.g:19342:4: ruleReference
             {
-             before(grammarAccess.getPartialReifiedRelationshipAccess().getTargetEntityReferenceParserRuleCall_9_0_1()); 
+             before(grammarAccess.getReifiedRelationshipRestrictionAccess().getTargetEntityReferenceParserRuleCall_9_0_1()); 
             pushFollow(FOLLOW_2);
             ruleReference();
 
             state._fsp--;
 
-             after(grammarAccess.getPartialReifiedRelationshipAccess().getTargetEntityReferenceParserRuleCall_9_0_1()); 
+             after(grammarAccess.getReifiedRelationshipRestrictionAccess().getTargetEntityReferenceParserRuleCall_9_0_1()); 
 
             }
 
-             after(grammarAccess.getPartialReifiedRelationshipAccess().getTargetEntityCrossReference_9_0()); 
+             after(grammarAccess.getReifiedRelationshipRestrictionAccess().getTargetEntityCrossReference_9_0()); 
 
             }
 
@@ -59557,7 +59558,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__PartialReifiedRelationship__TargetAssignment_9"
+    // $ANTLR end "rule__ReifiedRelationshipRestriction__TargetAssignment_9"
 
 
     // $ANTLR start "rule__UnreifiedRelationship__AnnotationsAssignment_0"
@@ -59656,7 +59657,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:19391:4: 'functional'
             {
              before(grammarAccess.getUnreifiedRelationshipAccess().getIsFunctionalFunctionalKeyword_4_0_0()); 
-            match(input,154,FOLLOW_2); 
+            match(input,155,FOLLOW_2); 
              after(grammarAccess.getUnreifiedRelationshipAccess().getIsFunctionalFunctionalKeyword_4_0_0()); 
 
             }
@@ -59701,7 +59702,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:19410:4: 'inverseFunctional'
             {
              before(grammarAccess.getUnreifiedRelationshipAccess().getIsInverseFunctionalInverseFunctionalKeyword_4_1_0()); 
-            match(input,155,FOLLOW_2); 
+            match(input,156,FOLLOW_2); 
              after(grammarAccess.getUnreifiedRelationshipAccess().getIsInverseFunctionalInverseFunctionalKeyword_4_1_0()); 
 
             }
@@ -59746,7 +59747,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:19429:4: 'essential'
             {
              before(grammarAccess.getUnreifiedRelationshipAccess().getIsEssentialEssentialKeyword_4_2_0()); 
-            match(input,156,FOLLOW_2); 
+            match(input,157,FOLLOW_2); 
              after(grammarAccess.getUnreifiedRelationshipAccess().getIsEssentialEssentialKeyword_4_2_0()); 
 
             }
@@ -59791,7 +59792,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:19448:4: 'inverseEssential'
             {
              before(grammarAccess.getUnreifiedRelationshipAccess().getIsInverseEssentialInverseEssentialKeyword_4_3_0()); 
-            match(input,157,FOLLOW_2); 
+            match(input,158,FOLLOW_2); 
              after(grammarAccess.getUnreifiedRelationshipAccess().getIsInverseEssentialInverseEssentialKeyword_4_3_0()); 
 
             }
@@ -59836,7 +59837,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:19467:4: 'symmetric'
             {
              before(grammarAccess.getUnreifiedRelationshipAccess().getIsSymmetricSymmetricKeyword_4_4_0()); 
-            match(input,158,FOLLOW_2); 
+            match(input,159,FOLLOW_2); 
              after(grammarAccess.getUnreifiedRelationshipAccess().getIsSymmetricSymmetricKeyword_4_4_0()); 
 
             }
@@ -59881,7 +59882,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:19486:4: 'asymmetric'
             {
              before(grammarAccess.getUnreifiedRelationshipAccess().getIsAsymmetricAsymmetricKeyword_4_5_0()); 
-            match(input,159,FOLLOW_2); 
+            match(input,160,FOLLOW_2); 
              after(grammarAccess.getUnreifiedRelationshipAccess().getIsAsymmetricAsymmetricKeyword_4_5_0()); 
 
             }
@@ -59926,7 +59927,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:19505:4: 'reflexive'
             {
              before(grammarAccess.getUnreifiedRelationshipAccess().getIsReflexiveReflexiveKeyword_4_6_0()); 
-            match(input,160,FOLLOW_2); 
+            match(input,161,FOLLOW_2); 
              after(grammarAccess.getUnreifiedRelationshipAccess().getIsReflexiveReflexiveKeyword_4_6_0()); 
 
             }
@@ -59971,7 +59972,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:19524:4: 'irreflexive'
             {
              before(grammarAccess.getUnreifiedRelationshipAccess().getIsIrreflexiveIrreflexiveKeyword_4_7_0()); 
-            match(input,161,FOLLOW_2); 
+            match(input,162,FOLLOW_2); 
              after(grammarAccess.getUnreifiedRelationshipAccess().getIsIrreflexiveIrreflexiveKeyword_4_7_0()); 
 
             }
@@ -60016,7 +60017,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:19543:4: 'transitive'
             {
              before(grammarAccess.getUnreifiedRelationshipAccess().getIsTransitiveTransitiveKeyword_4_8_0()); 
-            match(input,162,FOLLOW_2); 
+            match(input,163,FOLLOW_2); 
              after(grammarAccess.getUnreifiedRelationshipAccess().getIsTransitiveTransitiveKeyword_4_8_0()); 
 
             }
@@ -60356,7 +60357,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:19675:4: '+'
             {
              before(grammarAccess.getEntityStructuredDataPropertyAccess().getIsIdentityCriteriaPlusSignKeyword_2_0()); 
-            match(input,163,FOLLOW_2); 
+            match(input,164,FOLLOW_2); 
              after(grammarAccess.getEntityStructuredDataPropertyAccess().getIsIdentityCriteriaPlusSignKeyword_2_0()); 
 
             }
@@ -60577,7 +60578,7 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             // InternalOML.g:19762:4: '+'
             {
              before(grammarAccess.getEntityScalarDataPropertyAccess().getIsIdentityCriteriaPlusSignKeyword_2_0()); 
-            match(input,163,FOLLOW_2); 
+            match(input,164,FOLLOW_2); 
              after(grammarAccess.getEntityScalarDataPropertyAccess().getIsIdentityCriteriaPlusSignKeyword_2_0()); 
 
             }
@@ -68616,18 +68617,18 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
     }
     static final String dfa_13s = "\10\uffff";
     static final String dfa_14s = "\1\4\1\12\2\uffff\1\112\1\20\2\4";
-    static final String dfa_15s = "\1\u0094\1\12\2\uffff\1\112\1\21\2\u0094";
+    static final String dfa_15s = "\1\u0095\1\12\2\uffff\1\112\1\21\2\u0095";
     static final String dfa_16s = "\2\uffff\1\1\1\2\4\uffff";
     static final String dfa_17s = "\10\uffff}>";
     static final String[] dfa_18s = {
-            "\2\3\4\uffff\1\3\100\uffff\1\1\6\uffff\1\2\2\uffff\2\2\2\uffff\3\3\4\uffff\4\3\2\uffff\4\3\13\uffff\1\3\2\uffff\1\3\5\uffff\2\3\1\uffff\2\3\4\uffff\1\3\1\uffff\1\3\4\uffff\1\3\1\uffff\5\3",
+            "\2\3\4\uffff\1\3\100\uffff\1\1\6\uffff\1\2\2\uffff\2\2\2\uffff\3\3\4\uffff\5\3\2\uffff\4\3\13\uffff\1\3\2\uffff\1\3\5\uffff\2\3\1\uffff\2\3\4\uffff\1\3\1\uffff\1\3\4\uffff\1\3\1\uffff\5\3",
             "\1\4",
             "",
             "",
             "\1\5",
             "\1\6\1\7",
-            "\2\3\4\uffff\1\3\100\uffff\1\1\6\uffff\1\2\2\uffff\2\2\2\uffff\3\3\4\uffff\4\3\2\uffff\3\3\14\uffff\1\3\2\uffff\1\3\5\uffff\2\3\1\uffff\2\3\4\uffff\1\3\1\uffff\1\3\4\uffff\1\3\1\uffff\5\3",
-            "\2\3\4\uffff\1\3\100\uffff\1\1\6\uffff\1\2\2\uffff\2\2\2\uffff\3\3\4\uffff\4\3\2\uffff\3\3\14\uffff\1\3\2\uffff\1\3\5\uffff\2\3\1\uffff\2\3\4\uffff\1\3\1\uffff\1\3\4\uffff\1\3\1\uffff\5\3"
+            "\2\3\4\uffff\1\3\100\uffff\1\1\6\uffff\1\2\2\uffff\2\2\2\uffff\3\3\4\uffff\5\3\2\uffff\3\3\14\uffff\1\3\2\uffff\1\3\5\uffff\2\3\1\uffff\2\3\4\uffff\1\3\1\uffff\1\3\4\uffff\1\3\1\uffff\5\3",
+            "\2\3\4\uffff\1\3\100\uffff\1\1\6\uffff\1\2\2\uffff\2\2\2\uffff\3\3\4\uffff\5\3\2\uffff\3\3\14\uffff\1\3\2\uffff\1\3\5\uffff\2\3\1\uffff\2\3\4\uffff\1\3\1\uffff\1\3\4\uffff\1\3\1\uffff\5\3"
     };
 
     static final short[] dfa_13 = DFA.unpackEncodedString(dfa_13s);
@@ -68656,11 +68657,11 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
     }
     static final String dfa_19s = "\12\uffff";
     static final String dfa_20s = "\1\4\1\12\4\uffff\1\112\1\20\2\4";
-    static final String dfa_21s = "\1\u0094\1\12\4\uffff\1\112\1\21\2\u0094";
+    static final String dfa_21s = "\1\u0095\1\12\4\uffff\1\112\1\21\2\u0095";
     static final String dfa_22s = "\2\uffff\1\1\1\2\1\3\1\4\4\uffff";
     static final String dfa_23s = "\12\uffff}>";
     static final String[] dfa_24s = {
-            "\2\3\4\uffff\1\3\100\uffff\1\1\5\uffff\1\5\1\2\2\uffff\2\2\2\uffff\3\3\4\uffff\4\3\2\uffff\4\3\11\uffff\1\4\1\uffff\1\3\2\uffff\1\3\5\uffff\2\3\1\uffff\2\3\4\uffff\1\3\1\uffff\1\3\4\uffff\1\3\1\uffff\5\3",
+            "\2\3\4\uffff\1\3\100\uffff\1\1\5\uffff\1\5\1\2\2\uffff\2\2\2\uffff\3\3\4\uffff\5\3\2\uffff\4\3\11\uffff\1\4\1\uffff\1\3\2\uffff\1\3\5\uffff\2\3\1\uffff\2\3\4\uffff\1\3\1\uffff\1\3\4\uffff\1\3\1\uffff\5\3",
             "\1\6",
             "",
             "",
@@ -68668,8 +68669,8 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             "",
             "\1\7",
             "\1\10\1\11",
-            "\2\3\4\uffff\1\3\100\uffff\1\1\5\uffff\1\5\1\2\2\uffff\2\2\2\uffff\3\3\4\uffff\4\3\2\uffff\3\3\12\uffff\1\4\1\uffff\1\3\2\uffff\1\3\5\uffff\2\3\1\uffff\2\3\4\uffff\1\3\1\uffff\1\3\4\uffff\1\3\1\uffff\5\3",
-            "\2\3\4\uffff\1\3\100\uffff\1\1\5\uffff\1\5\1\2\2\uffff\2\2\2\uffff\3\3\4\uffff\4\3\2\uffff\3\3\12\uffff\1\4\1\uffff\1\3\2\uffff\1\3\5\uffff\2\3\1\uffff\2\3\4\uffff\1\3\1\uffff\1\3\4\uffff\1\3\1\uffff\5\3"
+            "\2\3\4\uffff\1\3\100\uffff\1\1\5\uffff\1\5\1\2\2\uffff\2\2\2\uffff\3\3\4\uffff\5\3\2\uffff\3\3\12\uffff\1\4\1\uffff\1\3\2\uffff\1\3\5\uffff\2\3\1\uffff\2\3\4\uffff\1\3\1\uffff\1\3\4\uffff\1\3\1\uffff\5\3",
+            "\2\3\4\uffff\1\3\100\uffff\1\1\5\uffff\1\5\1\2\2\uffff\2\2\2\uffff\3\3\4\uffff\5\3\2\uffff\3\3\12\uffff\1\4\1\uffff\1\3\2\uffff\1\3\5\uffff\2\3\1\uffff\2\3\4\uffff\1\3\1\uffff\1\3\4\uffff\1\3\1\uffff\5\3"
     };
 
     static final short[] dfa_19 = DFA.unpackEncodedString(dfa_19s);
@@ -68697,12 +68698,12 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
         }
     }
     static final String dfa_25s = "\27\uffff";
-    static final String dfa_26s = "\1\4\1\12\7\uffff\3\166\1\112\1\4\1\20\3\112\2\4\1\6\2\uffff";
-    static final String dfa_27s = "\1\u0099\1\12\7\uffff\3\166\1\112\1\12\1\21\3\112\2\u0099\1\115\2\uffff";
+    static final String dfa_26s = "\1\4\1\12\7\uffff\3\167\1\112\1\4\1\20\3\112\2\4\1\6\2\uffff";
+    static final String dfa_27s = "\1\u009a\1\12\7\uffff\3\167\1\112\1\12\1\21\3\112\2\u009a\1\115\2\uffff";
     static final String dfa_28s = "\2\uffff\1\1\1\2\1\3\1\4\1\5\1\6\1\7\14\uffff\1\11\1\10";
     static final String dfa_29s = "\27\uffff}>";
     static final String[] dfa_30s = {
-            "\1\11\1\13\4\uffff\1\12\100\uffff\1\1\11\uffff\1\2\16\uffff\1\6\1\7\57\uffff\1\3\1\4\1\uffff\1\5\1\10",
+            "\1\11\1\13\4\uffff\1\12\100\uffff\1\1\11\uffff\1\2\17\uffff\1\6\1\7\57\uffff\1\3\1\4\1\uffff\1\5\1\10",
             "\1\14",
             "",
             "",
@@ -68720,8 +68721,8 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             "\1\24",
             "\1\24",
             "\1\24",
-            "\1\11\1\13\4\uffff\1\12\100\uffff\1\1\11\uffff\1\2\16\uffff\1\6\1\7\57\uffff\1\3\1\4\1\uffff\1\5\1\10",
-            "\1\11\1\13\4\uffff\1\12\100\uffff\1\1\11\uffff\1\2\16\uffff\1\6\1\7\57\uffff\1\3\1\4\1\uffff\1\5\1\10",
+            "\1\11\1\13\4\uffff\1\12\100\uffff\1\1\11\uffff\1\2\17\uffff\1\6\1\7\57\uffff\1\3\1\4\1\uffff\1\5\1\10",
+            "\1\11\1\13\4\uffff\1\12\100\uffff\1\1\11\uffff\1\2\17\uffff\1\6\1\7\57\uffff\1\3\1\4\1\uffff\1\5\1\10",
             "\4\26\1\uffff\2\26\2\uffff\6\26\70\uffff\1\25",
             "",
             ""
@@ -68793,14 +68794,14 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
         }
     }
     static final String[] dfa_37s = {
-            "\2\2\4\uffff\1\2\100\uffff\1\1\15\uffff\3\3\4\uffff\4\3\2\uffff\4\3\13\uffff\1\2\2\uffff\1\2\5\uffff\2\2\1\uffff\1\2\1\3\4\uffff\1\3\1\uffff\1\3\4\uffff\1\3\1\uffff\1\3\1\2\3\3",
+            "\2\2\4\uffff\1\2\100\uffff\1\1\15\uffff\3\3\4\uffff\5\3\2\uffff\4\3\13\uffff\1\2\2\uffff\1\2\5\uffff\2\2\1\uffff\1\2\1\3\4\uffff\1\3\1\uffff\1\3\4\uffff\1\3\1\uffff\1\3\1\2\3\3",
             "\1\4",
             "",
             "",
             "\1\5",
             "\1\6\1\7",
-            "\2\2\4\uffff\1\2\100\uffff\1\1\15\uffff\3\3\4\uffff\4\3\2\uffff\3\3\14\uffff\1\2\2\uffff\1\2\5\uffff\2\2\1\uffff\1\2\1\3\4\uffff\1\3\1\uffff\1\3\4\uffff\1\3\1\uffff\1\3\1\2\3\3",
-            "\2\2\4\uffff\1\2\100\uffff\1\1\15\uffff\3\3\4\uffff\4\3\2\uffff\3\3\14\uffff\1\2\2\uffff\1\2\5\uffff\2\2\1\uffff\1\2\1\3\4\uffff\1\3\1\uffff\1\3\4\uffff\1\3\1\uffff\1\3\1\2\3\3"
+            "\2\2\4\uffff\1\2\100\uffff\1\1\15\uffff\3\3\4\uffff\5\3\2\uffff\3\3\14\uffff\1\2\2\uffff\1\2\5\uffff\2\2\1\uffff\1\2\1\3\4\uffff\1\3\1\uffff\1\3\4\uffff\1\3\1\uffff\1\3\1\2\3\3",
+            "\2\2\4\uffff\1\2\100\uffff\1\1\15\uffff\3\3\4\uffff\5\3\2\uffff\3\3\14\uffff\1\2\2\uffff\1\2\5\uffff\2\2\1\uffff\1\2\1\3\4\uffff\1\3\1\uffff\1\3\4\uffff\1\3\1\uffff\1\3\1\2\3\3"
     };
     static final short[][] dfa_37 = unpackEncodedStringArray(dfa_37s);
 
@@ -68823,11 +68824,11 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
     }
     static final String dfa_38s = "\13\uffff";
     static final String dfa_39s = "\1\113\1\12\5\uffff\1\112\1\20\2\113";
-    static final String dfa_40s = "\1\u0094\1\12\5\uffff\1\112\1\21\2\u0094";
+    static final String dfa_40s = "\1\u0095\1\12\5\uffff\1\112\1\21\2\u0095";
     static final String dfa_41s = "\2\uffff\1\1\1\2\1\3\1\4\1\5\4\uffff";
     static final String dfa_42s = "\13\uffff}>";
     static final String[] dfa_43s = {
-            "\1\1\15\uffff\2\2\1\3\4\uffff\1\3\2\4\1\5\2\uffff\3\5\1\6\30\uffff\1\4\4\uffff\1\4\1\uffff\1\4\4\uffff\1\4\1\uffff\1\4\1\uffff\3\4",
+            "\1\1\15\uffff\2\2\1\3\4\uffff\2\3\2\4\1\5\2\uffff\3\5\1\6\30\uffff\1\4\4\uffff\1\4\1\uffff\1\4\4\uffff\1\4\1\uffff\1\4\1\uffff\3\4",
             "\1\7",
             "",
             "",
@@ -68836,8 +68837,8 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             "",
             "\1\10",
             "\1\11\1\12",
-            "\1\1\15\uffff\2\2\1\3\4\uffff\1\3\2\4\1\5\2\uffff\3\5\31\uffff\1\4\4\uffff\1\4\1\uffff\1\4\4\uffff\1\4\1\uffff\1\4\1\uffff\3\4",
-            "\1\1\15\uffff\2\2\1\3\4\uffff\1\3\2\4\1\5\2\uffff\3\5\31\uffff\1\4\4\uffff\1\4\1\uffff\1\4\4\uffff\1\4\1\uffff\1\4\1\uffff\3\4"
+            "\1\1\15\uffff\2\2\1\3\4\uffff\2\3\2\4\1\5\2\uffff\3\5\31\uffff\1\4\4\uffff\1\4\1\uffff\1\4\4\uffff\1\4\1\uffff\1\4\1\uffff\3\4",
+            "\1\1\15\uffff\2\2\1\3\4\uffff\2\3\2\4\1\5\2\uffff\3\5\31\uffff\1\4\4\uffff\1\4\1\uffff\1\4\4\uffff\1\4\1\uffff\1\4\1\uffff\3\4"
     };
 
     static final short[] dfa_38 = DFA.unpackEncodedString(dfa_38s);
@@ -68897,56 +68898,49 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             return "2943:1: rule__AtomicEntity__Alternatives : ( ( ruleAspect ) | ( ruleConcept ) );";
         }
     }
-    static final String dfa_47s = "\1\113\1\12\1\5\1\uffff\1\112\1\115\1\20\1\134\2\113\2\uffff";
-    static final String dfa_48s = "\1\140\1\12\1\5\1\uffff\1\112\1\115\1\21\1\u00a2\2\140\2\uffff";
-    static final String dfa_49s = "\3\uffff\1\3\6\uffff\1\2\1\1";
-    static final String[] dfa_50s = {
-            "\1\1\17\uffff\1\2\4\uffff\1\3",
-            "\1\4",
+    static final String dfa_47s = "\1\141\1\12\3\uffff\1\112\1\21\2\141";
+    static final String[] dfa_48s = {
+            "\1\1\17\uffff\1\2\4\uffff\1\3\1\4",
             "\1\5",
             "",
-            "\1\6",
-            "\1\7",
-            "\1\10\1\11",
-            "\1\13\1\12\74\uffff\11\13",
-            "\1\1\17\uffff\1\2\4\uffff\1\3",
-            "\1\1\17\uffff\1\2\4\uffff\1\3",
             "",
-            ""
+            "",
+            "\1\6",
+            "\1\7\1\10",
+            "\1\1\17\uffff\1\2\4\uffff\1\3\1\4",
+            "\1\1\17\uffff\1\2\4\uffff\1\3\1\4"
     };
     static final char[] dfa_47 = DFA.unpackEncodedStringToUnsignedChars(dfa_47s);
-    static final char[] dfa_48 = DFA.unpackEncodedStringToUnsignedChars(dfa_48s);
-    static final short[] dfa_49 = DFA.unpackEncodedString(dfa_49s);
-    static final short[][] dfa_50 = unpackEncodedStringArray(dfa_50s);
+    static final short[][] dfa_48 = unpackEncodedStringArray(dfa_48s);
 
     class DFA10 extends DFA {
 
         public DFA10(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
             this.decisionNumber = 10;
-            this.eot = dfa_1;
-            this.eof = dfa_1;
-            this.min = dfa_47;
-            this.max = dfa_48;
-            this.accept = dfa_49;
-            this.special = dfa_5;
-            this.transition = dfa_50;
+            this.eot = dfa_31;
+            this.eof = dfa_31;
+            this.min = dfa_32;
+            this.max = dfa_47;
+            this.accept = dfa_34;
+            this.special = dfa_35;
+            this.transition = dfa_48;
         }
         public String getDescription() {
-            return "2964:1: rule__EntityRelationship__Alternatives : ( ( ruleReifiedRelationship ) | ( rulePartialReifiedRelationship ) | ( ruleUnreifiedRelationship ) );";
+            return "2964:1: rule__EntityRelationship__Alternatives : ( ( ruleReifiedRelationship ) | ( ruleReifiedRelationshipRestriction ) | ( ruleUnreifiedRelationship ) );";
         }
     }
-    static final String[] dfa_51s = {
-            "\1\1\25\uffff\1\2\1\3\37\uffff\1\2\4\uffff\1\2\1\uffff\1\2\4\uffff\1\2\1\uffff\1\2\1\uffff\3\2",
+    static final String[] dfa_49s = {
+            "\1\1\26\uffff\1\2\1\3\37\uffff\1\2\4\uffff\1\2\1\uffff\1\2\4\uffff\1\2\1\uffff\1\2\1\uffff\3\2",
             "\1\4",
             "",
             "",
             "\1\5",
             "\1\6\1\7",
-            "\1\1\25\uffff\1\2\1\3\37\uffff\1\2\4\uffff\1\2\1\uffff\1\2\4\uffff\1\2\1\uffff\1\2\1\uffff\3\2",
-            "\1\1\25\uffff\1\2\1\3\37\uffff\1\2\4\uffff\1\2\1\uffff\1\2\4\uffff\1\2\1\uffff\1\2\1\uffff\3\2"
+            "\1\1\26\uffff\1\2\1\3\37\uffff\1\2\4\uffff\1\2\1\uffff\1\2\4\uffff\1\2\1\uffff\1\2\1\uffff\3\2",
+            "\1\1\26\uffff\1\2\1\3\37\uffff\1\2\4\uffff\1\2\1\uffff\1\2\4\uffff\1\2\1\uffff\1\2\1\uffff\3\2"
     };
-    static final short[][] dfa_51 = unpackEncodedStringArray(dfa_51s);
+    static final short[][] dfa_49 = unpackEncodedStringArray(dfa_49s);
 
     class DFA11 extends DFA {
 
@@ -68959,23 +68953,23 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             this.max = dfa_15;
             this.accept = dfa_16;
             this.special = dfa_17;
-            this.transition = dfa_51;
+            this.transition = dfa_49;
         }
         public String getDescription() {
             return "2991:1: rule__Datatype__Alternatives : ( ( ruleScalarDataRange ) | ( ruleStructure ) );";
         }
     }
-    static final String[] dfa_52s = {
-            "\1\1\25\uffff\1\2\40\uffff\1\3\4\uffff\1\3\1\uffff\1\3\4\uffff\1\3\1\uffff\1\3\1\uffff\3\3",
+    static final String[] dfa_50s = {
+            "\1\1\26\uffff\1\2\40\uffff\1\3\4\uffff\1\3\1\uffff\1\3\4\uffff\1\3\1\uffff\1\3\1\uffff\3\3",
             "\1\4",
             "",
             "",
             "\1\5",
             "\1\6\1\7",
-            "\1\1\25\uffff\1\2\40\uffff\1\3\4\uffff\1\3\1\uffff\1\3\4\uffff\1\3\1\uffff\1\3\1\uffff\3\3",
-            "\1\1\25\uffff\1\2\40\uffff\1\3\4\uffff\1\3\1\uffff\1\3\4\uffff\1\3\1\uffff\1\3\1\uffff\3\3"
+            "\1\1\26\uffff\1\2\40\uffff\1\3\4\uffff\1\3\1\uffff\1\3\4\uffff\1\3\1\uffff\1\3\1\uffff\3\3",
+            "\1\1\26\uffff\1\2\40\uffff\1\3\4\uffff\1\3\1\uffff\1\3\4\uffff\1\3\1\uffff\1\3\1\uffff\3\3"
     };
-    static final short[][] dfa_52 = unpackEncodedStringArray(dfa_52s);
+    static final short[][] dfa_50 = unpackEncodedStringArray(dfa_50s);
 
     class DFA12 extends DFA {
 
@@ -68988,17 +68982,17 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             this.max = dfa_15;
             this.accept = dfa_16;
             this.special = dfa_17;
-            this.transition = dfa_52;
+            this.transition = dfa_50;
         }
         public String getDescription() {
             return "3012:1: rule__ScalarDataRange__Alternatives : ( ( ruleScalar ) | ( ruleRestrictedDataRange ) );";
         }
     }
-    static final String dfa_53s = "\1\113\1\12\10\uffff\1\112\1\20\2\113";
-    static final String dfa_54s = "\1\u0094\1\12\10\uffff\1\112\1\21\2\u0094";
-    static final String dfa_55s = "\2\uffff\1\1\1\2\1\3\1\4\1\5\1\6\1\7\1\10\4\uffff";
-    static final String[] dfa_56s = {
-            "\1\1\66\uffff\1\2\4\uffff\1\3\1\uffff\1\4\4\uffff\1\5\1\uffff\1\6\1\uffff\1\7\1\10\1\11",
+    static final String dfa_51s = "\1\113\1\12\10\uffff\1\112\1\20\2\113";
+    static final String dfa_52s = "\1\u0095\1\12\10\uffff\1\112\1\21\2\u0095";
+    static final String dfa_53s = "\2\uffff\1\1\1\2\1\3\1\4\1\5\1\6\1\7\1\10\4\uffff";
+    static final String[] dfa_54s = {
+            "\1\1\67\uffff\1\2\4\uffff\1\3\1\uffff\1\4\4\uffff\1\5\1\uffff\1\6\1\uffff\1\7\1\10\1\11",
             "\1\12",
             "",
             "",
@@ -69010,13 +69004,13 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             "",
             "\1\13",
             "\1\14\1\15",
-            "\1\1\66\uffff\1\2\4\uffff\1\3\1\uffff\1\4\4\uffff\1\5\1\uffff\1\6\1\uffff\1\7\1\10\1\11",
-            "\1\1\66\uffff\1\2\4\uffff\1\3\1\uffff\1\4\4\uffff\1\5\1\uffff\1\6\1\uffff\1\7\1\10\1\11"
+            "\1\1\67\uffff\1\2\4\uffff\1\3\1\uffff\1\4\4\uffff\1\5\1\uffff\1\6\1\uffff\1\7\1\10\1\11",
+            "\1\1\67\uffff\1\2\4\uffff\1\3\1\uffff\1\4\4\uffff\1\5\1\uffff\1\6\1\uffff\1\7\1\10\1\11"
     };
-    static final char[] dfa_53 = DFA.unpackEncodedStringToUnsignedChars(dfa_53s);
-    static final char[] dfa_54 = DFA.unpackEncodedStringToUnsignedChars(dfa_54s);
-    static final short[] dfa_55 = DFA.unpackEncodedString(dfa_55s);
-    static final short[][] dfa_56 = unpackEncodedStringArray(dfa_56s);
+    static final char[] dfa_51 = DFA.unpackEncodedStringToUnsignedChars(dfa_51s);
+    static final char[] dfa_52 = DFA.unpackEncodedStringToUnsignedChars(dfa_52s);
+    static final short[] dfa_53 = DFA.unpackEncodedString(dfa_53s);
+    static final short[][] dfa_54 = unpackEncodedStringArray(dfa_54s);
 
     class DFA13 extends DFA {
 
@@ -69025,20 +69019,20 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             this.decisionNumber = 13;
             this.eot = dfa_7;
             this.eof = dfa_7;
-            this.min = dfa_53;
-            this.max = dfa_54;
-            this.accept = dfa_55;
+            this.min = dfa_51;
+            this.max = dfa_52;
+            this.accept = dfa_53;
             this.special = dfa_11;
-            this.transition = dfa_56;
+            this.transition = dfa_54;
         }
         public String getDescription() {
             return "3033:1: rule__RestrictedDataRange__Alternatives : ( ( ruleBinaryScalarRestriction ) | ( ruleIRIScalarRestriction ) | ( ruleNumericScalarRestriction ) | ( rulePlainLiteralScalarRestriction ) | ( ruleScalarOneOfRestriction ) | ( ruleStringScalarRestriction ) | ( ruleSynonymScalarRestriction ) | ( ruleTimeScalarRestriction ) );";
         }
     }
-    static final String dfa_57s = "\1\113\1\12\4\uffff\1\112\1\20\2\113";
-    static final String dfa_58s = "\1\150\1\12\4\uffff\1\112\1\21\2\150";
-    static final String[] dfa_59s = {
-            "\1\1\27\uffff\1\2\2\uffff\1\3\1\4\1\5",
+    static final String dfa_55s = "\1\113\1\12\4\uffff\1\112\1\20\2\113";
+    static final String dfa_56s = "\1\151\1\12\4\uffff\1\112\1\21\2\151";
+    static final String[] dfa_57s = {
+            "\1\1\30\uffff\1\2\2\uffff\1\3\1\4\1\5",
             "\1\6",
             "",
             "",
@@ -69046,12 +69040,12 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             "",
             "\1\7",
             "\1\10\1\11",
-            "\1\1\27\uffff\1\2\2\uffff\1\3\1\4\1\5",
-            "\1\1\27\uffff\1\2\2\uffff\1\3\1\4\1\5"
+            "\1\1\30\uffff\1\2\2\uffff\1\3\1\4\1\5",
+            "\1\1\30\uffff\1\2\2\uffff\1\3\1\4\1\5"
     };
-    static final char[] dfa_57 = DFA.unpackEncodedStringToUnsignedChars(dfa_57s);
-    static final char[] dfa_58 = DFA.unpackEncodedStringToUnsignedChars(dfa_58s);
-    static final short[][] dfa_59 = unpackEncodedStringArray(dfa_59s);
+    static final char[] dfa_55 = DFA.unpackEncodedStringToUnsignedChars(dfa_55s);
+    static final char[] dfa_56 = DFA.unpackEncodedStringToUnsignedChars(dfa_56s);
+    static final short[][] dfa_57 = unpackEncodedStringArray(dfa_57s);
 
     class DFA14 extends DFA {
 
@@ -69060,23 +69054,23 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             this.decisionNumber = 14;
             this.eot = dfa_19;
             this.eof = dfa_19;
-            this.min = dfa_57;
-            this.max = dfa_58;
+            this.min = dfa_55;
+            this.max = dfa_56;
             this.accept = dfa_22;
             this.special = dfa_23;
-            this.transition = dfa_59;
+            this.transition = dfa_57;
         }
         public String getDescription() {
             return "3090:1: rule__DataRelationship__Alternatives : ( ( ruleEntityStructuredDataProperty ) | ( ruleEntityScalarDataProperty ) | ( ruleStructuredDataProperty ) | ( ruleScalarDataProperty ) );";
         }
     }
-    static final String dfa_60s = "\31\uffff";
-    static final String dfa_61s = "\1\4\1\12\2\uffff\1\4\1\uffff\3\171\1\112\3\166\3\uffff\1\20\3\4\3\112\1\6\1\uffff";
-    static final String dfa_62s = "\1\u0091\1\12\2\uffff\1\12\1\uffff\3\175\1\112\3\166\3\uffff\1\21\1\12\2\u0091\3\112\1\115\1\uffff";
-    static final String dfa_63s = "\2\uffff\1\1\1\2\1\uffff\1\4\7\uffff\1\6\1\5\1\7\10\uffff\1\3";
-    static final String dfa_64s = "\31\uffff}>";
-    static final String[] dfa_65s = {
-            "\1\6\1\10\4\uffff\1\7\100\uffff\1\1\51\uffff\1\2\2\uffff\1\2\5\uffff\1\3\1\4\1\uffff\1\3\17\uffff\1\5",
+    static final String dfa_58s = "\31\uffff";
+    static final String dfa_59s = "\1\4\1\12\2\uffff\1\4\1\uffff\3\172\1\112\3\167\3\uffff\1\20\3\4\3\112\1\6\1\uffff";
+    static final String dfa_60s = "\1\u0092\1\12\2\uffff\1\12\1\uffff\3\176\1\112\3\167\3\uffff\1\21\1\12\2\u0092\3\112\1\115\1\uffff";
+    static final String dfa_61s = "\2\uffff\1\1\1\2\1\uffff\1\4\7\uffff\1\6\1\5\1\7\10\uffff\1\3";
+    static final String dfa_62s = "\31\uffff}>";
+    static final String[] dfa_63s = {
+            "\1\6\1\10\4\uffff\1\7\100\uffff\1\1\52\uffff\1\2\2\uffff\1\2\5\uffff\1\3\1\4\1\uffff\1\3\17\uffff\1\5",
             "\1\11",
             "",
             "",
@@ -69094,8 +69088,8 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             "",
             "\1\22\1\23",
             "\1\24\1\26\4\uffff\1\25",
-            "\1\6\1\10\4\uffff\1\7\100\uffff\1\1\51\uffff\1\2\2\uffff\1\2\5\uffff\1\3\1\4\1\uffff\1\3\17\uffff\1\5",
-            "\1\6\1\10\4\uffff\1\7\100\uffff\1\1\51\uffff\1\2\2\uffff\1\2\5\uffff\1\3\1\4\1\uffff\1\3\17\uffff\1\5",
+            "\1\6\1\10\4\uffff\1\7\100\uffff\1\1\52\uffff\1\2\2\uffff\1\2\5\uffff\1\3\1\4\1\uffff\1\3\17\uffff\1\5",
+            "\1\6\1\10\4\uffff\1\7\100\uffff\1\1\52\uffff\1\2\2\uffff\1\2\5\uffff\1\3\1\4\1\uffff\1\3\17\uffff\1\5",
             "\1\27",
             "\1\27",
             "\1\27",
@@ -69103,43 +69097,43 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             ""
     };
 
-    static final short[] dfa_60 = DFA.unpackEncodedString(dfa_60s);
-    static final char[] dfa_61 = DFA.unpackEncodedStringToUnsignedChars(dfa_61s);
-    static final char[] dfa_62 = DFA.unpackEncodedStringToUnsignedChars(dfa_62s);
-    static final short[] dfa_63 = DFA.unpackEncodedString(dfa_63s);
-    static final short[] dfa_64 = DFA.unpackEncodedString(dfa_64s);
-    static final short[][] dfa_65 = unpackEncodedStringArray(dfa_65s);
+    static final short[] dfa_58 = DFA.unpackEncodedString(dfa_58s);
+    static final char[] dfa_59 = DFA.unpackEncodedStringToUnsignedChars(dfa_59s);
+    static final char[] dfa_60 = DFA.unpackEncodedStringToUnsignedChars(dfa_60s);
+    static final short[] dfa_61 = DFA.unpackEncodedString(dfa_61s);
+    static final short[] dfa_62 = DFA.unpackEncodedString(dfa_62s);
+    static final short[][] dfa_63 = unpackEncodedStringArray(dfa_63s);
 
     class DFA15 extends DFA {
 
         public DFA15(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
             this.decisionNumber = 15;
-            this.eot = dfa_60;
-            this.eof = dfa_60;
-            this.min = dfa_61;
-            this.max = dfa_62;
-            this.accept = dfa_63;
-            this.special = dfa_64;
-            this.transition = dfa_65;
+            this.eot = dfa_58;
+            this.eof = dfa_58;
+            this.min = dfa_59;
+            this.max = dfa_60;
+            this.accept = dfa_61;
+            this.special = dfa_62;
+            this.transition = dfa_63;
         }
         public String getDescription() {
             return "3123:1: rule__TermAxiom__Alternatives : ( ( ruleEntityRestrictionAxiom ) | ( ruleEntityScalarDataPropertyRestrictionAxiom ) | ( ruleEntityStructuredDataPropertyRestrictionAxiom ) | ( ruleScalarOneOfLiteralAxiom ) | ( ruleSpecializationAxiom ) | ( ruleSubObjectPropertyOfAxiom ) | ( ruleSubDataPropertyOfAxiom ) );";
         }
     }
-    static final String dfa_66s = "\1\170\1\12\2\uffff\1\112\1\21\2\170";
-    static final String[] dfa_67s = {
-            "\1\1\51\uffff\1\2\2\uffff\1\3",
+    static final String dfa_64s = "\1\171\1\12\2\uffff\1\112\1\21\2\171";
+    static final String[] dfa_65s = {
+            "\1\1\52\uffff\1\2\2\uffff\1\3",
             "\1\4",
             "",
             "",
             "\1\5",
             "\1\6\1\7",
-            "\1\1\51\uffff\1\2\2\uffff\1\3",
-            "\1\1\51\uffff\1\2\2\uffff\1\3"
+            "\1\1\52\uffff\1\2\2\uffff\1\3",
+            "\1\1\52\uffff\1\2\2\uffff\1\3"
     };
-    static final char[] dfa_66 = DFA.unpackEncodedStringToUnsignedChars(dfa_66s);
-    static final short[][] dfa_67 = unpackEncodedStringArray(dfa_67s);
+    static final char[] dfa_64 = DFA.unpackEncodedStringToUnsignedChars(dfa_64s);
+    static final short[][] dfa_65 = unpackEncodedStringArray(dfa_65s);
 
     class DFA16 extends DFA {
 
@@ -69149,29 +69143,29 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             this.eot = dfa_13;
             this.eof = dfa_13;
             this.min = dfa_44;
-            this.max = dfa_66;
+            this.max = dfa_64;
             this.accept = dfa_16;
             this.special = dfa_17;
-            this.transition = dfa_67;
+            this.transition = dfa_65;
         }
         public String getDescription() {
             return "3174:1: rule__EntityRestrictionAxiom__Alternatives : ( ( ruleEntityExistentialRestrictionAxiom ) | ( ruleEntityUniversalRestrictionAxiom ) );";
         }
     }
-    static final String dfa_68s = "\1\u0081\1\12\3\uffff\1\112\1\21\2\u0081";
-    static final String[] dfa_69s = {
-            "\1\1\62\uffff\1\2\1\3\1\uffff\1\4",
+    static final String dfa_66s = "\1\u0082\1\12\3\uffff\1\112\1\21\2\u0082";
+    static final String[] dfa_67s = {
+            "\1\1\63\uffff\1\2\1\3\1\uffff\1\4",
             "\1\5",
             "",
             "",
             "",
             "\1\6",
             "\1\7\1\10",
-            "\1\1\62\uffff\1\2\1\3\1\uffff\1\4",
-            "\1\1\62\uffff\1\2\1\3\1\uffff\1\4"
+            "\1\1\63\uffff\1\2\1\3\1\uffff\1\4",
+            "\1\1\63\uffff\1\2\1\3\1\uffff\1\4"
     };
-    static final char[] dfa_68 = DFA.unpackEncodedStringToUnsignedChars(dfa_68s);
-    static final short[][] dfa_69 = unpackEncodedStringArray(dfa_69s);
+    static final char[] dfa_66 = DFA.unpackEncodedStringToUnsignedChars(dfa_66s);
+    static final short[][] dfa_67 = unpackEncodedStringArray(dfa_67s);
 
     class DFA17 extends DFA {
 
@@ -69181,19 +69175,19 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             this.eot = dfa_31;
             this.eof = dfa_31;
             this.min = dfa_32;
-            this.max = dfa_68;
+            this.max = dfa_66;
             this.accept = dfa_34;
             this.special = dfa_35;
-            this.transition = dfa_69;
+            this.transition = dfa_67;
         }
         public String getDescription() {
             return "3195:1: rule__EntityScalarDataPropertyRestrictionAxiom__Alternatives : ( ( ruleEntityScalarDataPropertyExistentialRestrictionAxiom ) | ( ruleEntityScalarDataPropertyParticularRestrictionAxiom ) | ( ruleEntityScalarDataPropertyUniversalRestrictionAxiom ) );";
         }
     }
-    static final String dfa_70s = "\1\4\1\12\3\171\1\112\3\uffff\1\20\2\4";
-    static final String dfa_71s = "\1\113\1\12\3\173\1\112\3\uffff\1\21\2\113";
-    static final String dfa_72s = "\6\uffff\1\1\1\3\1\2\3\uffff";
-    static final String[] dfa_73s = {
+    static final String dfa_68s = "\1\4\1\12\3\172\1\112\3\uffff\1\20\2\4";
+    static final String dfa_69s = "\1\113\1\12\3\174\1\112\3\uffff\1\21\2\113";
+    static final String dfa_70s = "\6\uffff\1\1\1\3\1\2\3\uffff";
+    static final String[] dfa_71s = {
             "\1\2\1\4\4\uffff\1\3\100\uffff\1\1",
             "\1\5",
             "\1\10\1\6\1\7",
@@ -69207,10 +69201,10 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             "\1\2\1\4\4\uffff\1\3\100\uffff\1\1",
             "\1\2\1\4\4\uffff\1\3\100\uffff\1\1"
     };
-    static final char[] dfa_70 = DFA.unpackEncodedStringToUnsignedChars(dfa_70s);
-    static final char[] dfa_71 = DFA.unpackEncodedStringToUnsignedChars(dfa_71s);
-    static final short[] dfa_72 = DFA.unpackEncodedString(dfa_72s);
-    static final short[][] dfa_73 = unpackEncodedStringArray(dfa_73s);
+    static final char[] dfa_68 = DFA.unpackEncodedStringToUnsignedChars(dfa_68s);
+    static final char[] dfa_69 = DFA.unpackEncodedStringToUnsignedChars(dfa_69s);
+    static final short[] dfa_70 = DFA.unpackEncodedString(dfa_70s);
+    static final short[][] dfa_71 = unpackEncodedStringArray(dfa_71s);
 
     class DFA18 extends DFA {
 
@@ -69219,29 +69213,29 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             this.decisionNumber = 18;
             this.eot = dfa_1;
             this.eof = dfa_1;
-            this.min = dfa_70;
-            this.max = dfa_71;
-            this.accept = dfa_72;
+            this.min = dfa_68;
+            this.max = dfa_69;
+            this.accept = dfa_70;
             this.special = dfa_5;
-            this.transition = dfa_73;
+            this.transition = dfa_71;
         }
         public String getDescription() {
             return "3222:1: rule__SpecializationAxiom__Alternatives : ( ( ruleConceptSpecializationAxiom ) | ( ruleAspectSpecializationAxiom ) | ( ruleReifiedRelationshipSpecializationAxiom ) );";
         }
     }
-    static final String dfa_74s = "\1\164\1\12\2\uffff\1\112\1\21\2\164";
-    static final String[] dfa_75s = {
-            "\1\1\46\uffff\1\2\1\uffff\1\3",
+    static final String dfa_72s = "\1\165\1\12\2\uffff\1\112\1\21\2\165";
+    static final String[] dfa_73s = {
+            "\1\1\47\uffff\1\2\1\uffff\1\3",
             "\1\4",
             "",
             "",
             "\1\5",
             "\1\6\1\7",
-            "\1\1\46\uffff\1\2\1\uffff\1\3",
-            "\1\1\46\uffff\1\2\1\uffff\1\3"
+            "\1\1\47\uffff\1\2\1\uffff\1\3",
+            "\1\1\47\uffff\1\2\1\uffff\1\3"
     };
-    static final char[] dfa_74 = DFA.unpackEncodedStringToUnsignedChars(dfa_74s);
-    static final short[][] dfa_75 = unpackEncodedStringArray(dfa_75s);
+    static final char[] dfa_72 = DFA.unpackEncodedStringToUnsignedChars(dfa_72s);
+    static final short[][] dfa_73 = unpackEncodedStringArray(dfa_73s);
 
     class DFA19 extends DFA {
 
@@ -69251,19 +69245,19 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             this.eot = dfa_13;
             this.eof = dfa_13;
             this.min = dfa_44;
-            this.max = dfa_74;
+            this.max = dfa_72;
             this.accept = dfa_16;
             this.special = dfa_17;
-            this.transition = dfa_75;
+            this.transition = dfa_73;
         }
         public String getDescription() {
             return "3249:1: rule__DisjointUnionOfConceptsAxiom__Alternatives : ( ( ruleAnonymousConceptUnionAxiom ) | ( ruleSpecificDisjointConceptAxiom ) );";
         }
     }
-    static final String dfa_76s = "\1\4\1\12\4\112\1\6\1\20\2\uffff\2\4";
-    static final String dfa_77s = "\1\113\1\12\4\112\1\115\1\21\2\uffff\2\113";
-    static final String dfa_78s = "\10\uffff\1\1\1\2\2\uffff";
-    static final String[] dfa_79s = {
+    static final String dfa_74s = "\1\4\1\12\4\112\1\6\1\20\2\uffff\2\4";
+    static final String dfa_75s = "\1\113\1\12\4\112\1\115\1\21\2\uffff\2\113";
+    static final String dfa_76s = "\10\uffff\1\1\1\2\2\uffff";
+    static final String[] dfa_77s = {
             "\1\2\1\4\4\uffff\1\3\100\uffff\1\1",
             "\1\5",
             "\1\6",
@@ -69277,10 +69271,10 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             "\1\2\1\4\4\uffff\1\3\100\uffff\1\1",
             "\1\2\1\4\4\uffff\1\3\100\uffff\1\1"
     };
-    static final char[] dfa_76 = DFA.unpackEncodedStringToUnsignedChars(dfa_76s);
-    static final char[] dfa_77 = DFA.unpackEncodedStringToUnsignedChars(dfa_77s);
-    static final short[] dfa_78 = DFA.unpackEncodedString(dfa_78s);
-    static final short[][] dfa_79 = unpackEncodedStringArray(dfa_79s);
+    static final char[] dfa_74 = DFA.unpackEncodedStringToUnsignedChars(dfa_74s);
+    static final char[] dfa_75 = DFA.unpackEncodedStringToUnsignedChars(dfa_75s);
+    static final short[] dfa_76 = DFA.unpackEncodedString(dfa_76s);
+    static final short[][] dfa_77 = unpackEncodedStringArray(dfa_77s);
 
     class DFA21 extends DFA {
 
@@ -69289,11 +69283,11 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             this.decisionNumber = 21;
             this.eot = dfa_1;
             this.eof = dfa_1;
-            this.min = dfa_76;
-            this.max = dfa_77;
-            this.accept = dfa_78;
+            this.min = dfa_74;
+            this.max = dfa_75;
+            this.accept = dfa_76;
             this.special = dfa_5;
-            this.transition = dfa_79;
+            this.transition = dfa_77;
         }
         public String getDescription() {
             return "3315:1: rule__EntityStructuredDataPropertyParticularRestrictionAxiom__Alternatives_7 : ( ( ( rule__EntityStructuredDataPropertyParticularRestrictionAxiom__StructuredDataPropertyRestrictionsAssignment_7_0 ) ) | ( ( rule__EntityStructuredDataPropertyParticularRestrictionAxiom__ScalarDataPropertyRestrictionsAssignment_7_1 ) ) );";
@@ -69307,29 +69301,29 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             this.decisionNumber = 22;
             this.eot = dfa_1;
             this.eof = dfa_1;
-            this.min = dfa_76;
-            this.max = dfa_77;
-            this.accept = dfa_78;
+            this.min = dfa_74;
+            this.max = dfa_75;
+            this.accept = dfa_76;
             this.special = dfa_5;
-            this.transition = dfa_79;
+            this.transition = dfa_77;
         }
         public String getDescription() {
             return "3336:1: rule__RestrictionStructuredDataPropertyTuple__Alternatives_4 : ( ( ( rule__RestrictionStructuredDataPropertyTuple__StructuredDataPropertyRestrictionsAssignment_4_0 ) ) | ( ( rule__RestrictionStructuredDataPropertyTuple__ScalarDataPropertyRestrictionsAssignment_4_1 ) ) );";
         }
     }
-    static final String dfa_80s = "\1\u0098\1\12\2\uffff\1\112\1\21\2\u0098";
-    static final String[] dfa_81s = {
-            "\1\1\112\uffff\1\2\1\uffff\1\3",
+    static final String dfa_78s = "\1\u0099\1\12\2\uffff\1\112\1\21\2\u0099";
+    static final String[] dfa_79s = {
+            "\1\1\113\uffff\1\2\1\uffff\1\3",
             "\1\4",
             "",
             "",
             "\1\5",
             "\1\6\1\7",
-            "\1\1\112\uffff\1\2\1\uffff\1\3",
-            "\1\1\112\uffff\1\2\1\uffff\1\3"
+            "\1\1\113\uffff\1\2\1\uffff\1\3",
+            "\1\1\113\uffff\1\2\1\uffff\1\3"
     };
-    static final char[] dfa_80 = DFA.unpackEncodedStringToUnsignedChars(dfa_80s);
-    static final short[][] dfa_81 = unpackEncodedStringArray(dfa_81s);
+    static final char[] dfa_78 = DFA.unpackEncodedStringToUnsignedChars(dfa_78s);
+    static final short[][] dfa_79 = unpackEncodedStringArray(dfa_79s);
 
     class DFA23 extends DFA {
 
@@ -69339,10 +69333,10 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             this.eot = dfa_13;
             this.eof = dfa_13;
             this.min = dfa_44;
-            this.max = dfa_80;
+            this.max = dfa_78;
             this.accept = dfa_16;
             this.special = dfa_17;
-            this.transition = dfa_81;
+            this.transition = dfa_79;
         }
         public String getDescription() {
             return "3357:1: rule__ConceptualEntitySingletonInstance__Alternatives : ( ( ruleConceptInstance ) | ( ruleReifiedRelationshipInstance ) );";
@@ -69356,18 +69350,18 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             this.decisionNumber = 24;
             this.eot = dfa_1;
             this.eof = dfa_1;
-            this.min = dfa_76;
-            this.max = dfa_77;
-            this.accept = dfa_78;
+            this.min = dfa_74;
+            this.max = dfa_75;
+            this.accept = dfa_76;
             this.special = dfa_5;
-            this.transition = dfa_79;
+            this.transition = dfa_77;
         }
         public String getDescription() {
             return "3378:1: rule__SingletonInstanceStructuredDataPropertyValue__Alternatives_6 : ( ( ( rule__SingletonInstanceStructuredDataPropertyValue__StructuredPropertyTuplesAssignment_6_0 ) ) | ( ( rule__SingletonInstanceStructuredDataPropertyValue__ScalarDataPropertyValuesAssignment_6_1 ) ) );";
         }
     }
-    static final String dfa_82s = "\10\uffff\1\2\1\1\2\uffff";
-    static final String[] dfa_83s = {
+    static final String dfa_80s = "\10\uffff\1\2\1\1\2\uffff";
+    static final String[] dfa_81s = {
             "\1\2\1\4\4\uffff\1\3\100\uffff\1\1",
             "\1\5",
             "\1\6",
@@ -69381,8 +69375,8 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             "\1\2\1\4\4\uffff\1\3\100\uffff\1\1",
             "\1\2\1\4\4\uffff\1\3\100\uffff\1\1"
     };
-    static final short[] dfa_82 = DFA.unpackEncodedString(dfa_82s);
-    static final short[][] dfa_83 = unpackEncodedStringArray(dfa_83s);
+    static final short[] dfa_80 = DFA.unpackEncodedString(dfa_80s);
+    static final short[][] dfa_81 = unpackEncodedStringArray(dfa_81s);
 
     class DFA25 extends DFA {
 
@@ -69391,22 +69385,22 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             this.decisionNumber = 25;
             this.eot = dfa_1;
             this.eof = dfa_1;
-            this.min = dfa_76;
-            this.max = dfa_77;
-            this.accept = dfa_82;
+            this.min = dfa_74;
+            this.max = dfa_75;
+            this.accept = dfa_80;
             this.special = dfa_5;
-            this.transition = dfa_83;
+            this.transition = dfa_81;
         }
         public String getDescription() {
             return "3399:1: rule__StructuredDataPropertyTuple__Alternatives_4 : ( ( ( rule__StructuredDataPropertyTuple__StructuredPropertyTuplesAssignment_4_0 ) ) | ( ( rule__StructuredDataPropertyTuple__ScalarDataPropertyValuesAssignment_4_1 ) ) );";
         }
     }
-    static final String dfa_84s = "\1\134\12\uffff";
-    static final String dfa_85s = "\1\u00a2\12\uffff";
-    static final String dfa_86s = "\1\uffff\11\1\1\2";
-    static final String dfa_87s = "\1\0\12\uffff}>";
-    static final String[] dfa_88s = {
-            "\1\12\75\uffff\1\1\1\2\1\3\1\4\1\5\1\6\1\7\1\10\1\11",
+    static final String dfa_82s = "\1\134\12\uffff";
+    static final String dfa_83s = "\1\u00a3\12\uffff";
+    static final String dfa_84s = "\1\uffff\11\1\1\2";
+    static final String dfa_85s = "\1\0\12\uffff}>";
+    static final String[] dfa_86s = {
+            "\1\12\76\uffff\1\1\1\2\1\3\1\4\1\5\1\6\1\7\1\10\1\11",
             "",
             "",
             "",
@@ -69418,11 +69412,11 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             "",
             ""
     };
-    static final char[] dfa_84 = DFA.unpackEncodedStringToUnsignedChars(dfa_84s);
-    static final char[] dfa_85 = DFA.unpackEncodedStringToUnsignedChars(dfa_85s);
-    static final short[] dfa_86 = DFA.unpackEncodedString(dfa_86s);
-    static final short[] dfa_87 = DFA.unpackEncodedString(dfa_87s);
-    static final short[][] dfa_88 = unpackEncodedStringArray(dfa_88s);
+    static final char[] dfa_82 = DFA.unpackEncodedStringToUnsignedChars(dfa_82s);
+    static final char[] dfa_83 = DFA.unpackEncodedStringToUnsignedChars(dfa_83s);
+    static final short[] dfa_84 = DFA.unpackEncodedString(dfa_84s);
+    static final short[] dfa_85 = DFA.unpackEncodedString(dfa_85s);
+    static final short[][] dfa_86 = unpackEncodedStringArray(dfa_86s);
 
     class DFA111 extends DFA {
 
@@ -69431,11 +69425,11 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             this.decisionNumber = 111;
             this.eot = dfa_38;
             this.eof = dfa_38;
-            this.min = dfa_84;
-            this.max = dfa_85;
-            this.accept = dfa_86;
-            this.special = dfa_87;
-            this.transition = dfa_88;
+            this.min = dfa_82;
+            this.max = dfa_83;
+            this.accept = dfa_84;
+            this.special = dfa_85;
+            this.transition = dfa_86;
         }
         public String getDescription() {
             return "16908:2: ( rule__ReifiedRelationship__UnorderedGroup_4__0 )?";
@@ -69451,23 +69445,23 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                         int index111_0 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( LA111_0 == 154 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 0) ) {s = 1;}
+                        if ( LA111_0 == 155 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 0) ) {s = 1;}
 
-                        else if ( LA111_0 == 155 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 1) ) {s = 2;}
+                        else if ( LA111_0 == 156 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 1) ) {s = 2;}
 
-                        else if ( LA111_0 == 156 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 2) ) {s = 3;}
+                        else if ( LA111_0 == 157 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 2) ) {s = 3;}
 
-                        else if ( LA111_0 == 157 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 3) ) {s = 4;}
+                        else if ( LA111_0 == 158 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 3) ) {s = 4;}
 
-                        else if ( LA111_0 == 158 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 4) ) {s = 5;}
+                        else if ( LA111_0 == 159 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 4) ) {s = 5;}
 
-                        else if ( LA111_0 == 159 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 5) ) {s = 6;}
+                        else if ( LA111_0 == 160 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 5) ) {s = 6;}
 
-                        else if ( LA111_0 == 160 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 6) ) {s = 7;}
+                        else if ( LA111_0 == 161 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 6) ) {s = 7;}
 
-                        else if ( LA111_0 == 161 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 7) ) {s = 8;}
+                        else if ( LA111_0 == 162 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 7) ) {s = 8;}
 
-                        else if ( LA111_0 == 162 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 8) ) {s = 9;}
+                        else if ( LA111_0 == 163 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 8) ) {s = 9;}
 
                         else if ( (LA111_0==92) ) {s = 10;}
 
@@ -69482,11 +69476,11 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             throw nvae;
         }
     }
-    static final String dfa_89s = "\1\u009a\11\uffff";
-    static final String dfa_90s = "\1\u00a2\11\uffff";
-    static final String dfa_91s = "\1\uffff\1\1\1\2\1\3\1\4\1\5\1\6\1\7\1\10\1\11";
-    static final String dfa_92s = "\1\0\11\uffff}>";
-    static final String[] dfa_93s = {
+    static final String dfa_87s = "\1\u009b\11\uffff";
+    static final String dfa_88s = "\1\u00a3\11\uffff";
+    static final String dfa_89s = "\1\uffff\1\1\1\2\1\3\1\4\1\5\1\6\1\7\1\10\1\11";
+    static final String dfa_90s = "\1\0\11\uffff}>";
+    static final String[] dfa_91s = {
             "\1\1\1\2\1\3\1\4\1\5\1\6\1\7\1\10\1\11",
             "",
             "",
@@ -69498,11 +69492,11 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             "",
             ""
     };
-    static final char[] dfa_89 = DFA.unpackEncodedStringToUnsignedChars(dfa_89s);
-    static final char[] dfa_90 = DFA.unpackEncodedStringToUnsignedChars(dfa_90s);
-    static final short[] dfa_91 = DFA.unpackEncodedString(dfa_91s);
-    static final short[] dfa_92 = DFA.unpackEncodedString(dfa_92s);
-    static final short[][] dfa_93 = unpackEncodedStringArray(dfa_93s);
+    static final char[] dfa_87 = DFA.unpackEncodedStringToUnsignedChars(dfa_87s);
+    static final char[] dfa_88 = DFA.unpackEncodedStringToUnsignedChars(dfa_88s);
+    static final short[] dfa_89 = DFA.unpackEncodedString(dfa_89s);
+    static final short[] dfa_90 = DFA.unpackEncodedString(dfa_90s);
+    static final short[][] dfa_91 = unpackEncodedStringArray(dfa_91s);
 
     class DFA112 extends DFA {
 
@@ -69511,11 +69505,11 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             this.decisionNumber = 112;
             this.eot = dfa_19;
             this.eof = dfa_19;
-            this.min = dfa_89;
-            this.max = dfa_90;
-            this.accept = dfa_91;
-            this.special = dfa_92;
-            this.transition = dfa_93;
+            this.min = dfa_87;
+            this.max = dfa_88;
+            this.accept = dfa_89;
+            this.special = dfa_90;
+            this.transition = dfa_91;
         }
         public String getDescription() {
             return "16922:3: ( ({...}? => ( ( ( rule__ReifiedRelationship__IsFunctionalAssignment_4_0 ) ) ) ) | ({...}? => ( ( ( rule__ReifiedRelationship__IsInverseFunctionalAssignment_4_1 ) ) ) ) | ({...}? => ( ( ( rule__ReifiedRelationship__IsEssentialAssignment_4_2 ) ) ) ) | ({...}? => ( ( ( rule__ReifiedRelationship__IsInverseEssentialAssignment_4_3 ) ) ) ) | ({...}? => ( ( ( rule__ReifiedRelationship__IsSymmetricAssignment_4_4 ) ) ) ) | ({...}? => ( ( ( rule__ReifiedRelationship__IsAsymmetricAssignment_4_5 ) ) ) ) | ({...}? => ( ( ( rule__ReifiedRelationship__IsReflexiveAssignment_4_6 ) ) ) ) | ({...}? => ( ( ( rule__ReifiedRelationship__IsIrreflexiveAssignment_4_7 ) ) ) ) | ({...}? => ( ( ( rule__ReifiedRelationship__IsTransitiveAssignment_4_8 ) ) ) ) )";
@@ -69531,23 +69525,23 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                         int index112_0 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( LA112_0 == 154 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 0) ) {s = 1;}
+                        if ( LA112_0 == 155 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 0) ) {s = 1;}
 
-                        else if ( LA112_0 == 155 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 1) ) {s = 2;}
+                        else if ( LA112_0 == 156 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 1) ) {s = 2;}
 
-                        else if ( LA112_0 == 156 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 2) ) {s = 3;}
+                        else if ( LA112_0 == 157 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 2) ) {s = 3;}
 
-                        else if ( LA112_0 == 157 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 3) ) {s = 4;}
+                        else if ( LA112_0 == 158 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 3) ) {s = 4;}
 
-                        else if ( LA112_0 == 158 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 4) ) {s = 5;}
+                        else if ( LA112_0 == 159 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 4) ) {s = 5;}
 
-                        else if ( LA112_0 == 159 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 5) ) {s = 6;}
+                        else if ( LA112_0 == 160 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 5) ) {s = 6;}
 
-                        else if ( LA112_0 == 160 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 6) ) {s = 7;}
+                        else if ( LA112_0 == 161 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 6) ) {s = 7;}
 
-                        else if ( LA112_0 == 161 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 7) ) {s = 8;}
+                        else if ( LA112_0 == 162 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 7) ) {s = 8;}
 
-                        else if ( LA112_0 == 162 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 8) ) {s = 9;}
+                        else if ( LA112_0 == 163 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 8) ) {s = 9;}
 
                          
                         input.seek(index112_0);
@@ -69568,11 +69562,11 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             this.decisionNumber = 113;
             this.eot = dfa_38;
             this.eof = dfa_38;
-            this.min = dfa_84;
-            this.max = dfa_85;
-            this.accept = dfa_86;
-            this.special = dfa_87;
-            this.transition = dfa_88;
+            this.min = dfa_82;
+            this.max = dfa_83;
+            this.accept = dfa_84;
+            this.special = dfa_85;
+            this.transition = dfa_86;
         }
         public String getDescription() {
             return "17072:2: ( rule__ReifiedRelationship__UnorderedGroup_4__1 )?";
@@ -69588,23 +69582,23 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                         int index113_0 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( LA113_0 == 154 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 0) ) {s = 1;}
+                        if ( LA113_0 == 155 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 0) ) {s = 1;}
 
-                        else if ( LA113_0 == 155 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 1) ) {s = 2;}
+                        else if ( LA113_0 == 156 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 1) ) {s = 2;}
 
-                        else if ( LA113_0 == 156 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 2) ) {s = 3;}
+                        else if ( LA113_0 == 157 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 2) ) {s = 3;}
 
-                        else if ( LA113_0 == 157 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 3) ) {s = 4;}
+                        else if ( LA113_0 == 158 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 3) ) {s = 4;}
 
-                        else if ( LA113_0 == 158 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 4) ) {s = 5;}
+                        else if ( LA113_0 == 159 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 4) ) {s = 5;}
 
-                        else if ( LA113_0 == 159 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 5) ) {s = 6;}
+                        else if ( LA113_0 == 160 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 5) ) {s = 6;}
 
-                        else if ( LA113_0 == 160 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 6) ) {s = 7;}
+                        else if ( LA113_0 == 161 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 6) ) {s = 7;}
 
-                        else if ( LA113_0 == 161 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 7) ) {s = 8;}
+                        else if ( LA113_0 == 162 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 7) ) {s = 8;}
 
-                        else if ( LA113_0 == 162 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 8) ) {s = 9;}
+                        else if ( LA113_0 == 163 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 8) ) {s = 9;}
 
                         else if ( (LA113_0==92) ) {s = 10;}
 
@@ -69627,11 +69621,11 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             this.decisionNumber = 114;
             this.eot = dfa_38;
             this.eof = dfa_38;
-            this.min = dfa_84;
-            this.max = dfa_85;
-            this.accept = dfa_86;
-            this.special = dfa_87;
-            this.transition = dfa_88;
+            this.min = dfa_82;
+            this.max = dfa_83;
+            this.accept = dfa_84;
+            this.special = dfa_85;
+            this.transition = dfa_86;
         }
         public String getDescription() {
             return "17084:2: ( rule__ReifiedRelationship__UnorderedGroup_4__2 )?";
@@ -69647,23 +69641,23 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                         int index114_0 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( LA114_0 == 154 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 0) ) {s = 1;}
+                        if ( LA114_0 == 155 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 0) ) {s = 1;}
 
-                        else if ( LA114_0 == 155 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 1) ) {s = 2;}
+                        else if ( LA114_0 == 156 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 1) ) {s = 2;}
 
-                        else if ( LA114_0 == 156 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 2) ) {s = 3;}
+                        else if ( LA114_0 == 157 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 2) ) {s = 3;}
 
-                        else if ( LA114_0 == 157 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 3) ) {s = 4;}
+                        else if ( LA114_0 == 158 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 3) ) {s = 4;}
 
-                        else if ( LA114_0 == 158 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 4) ) {s = 5;}
+                        else if ( LA114_0 == 159 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 4) ) {s = 5;}
 
-                        else if ( LA114_0 == 159 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 5) ) {s = 6;}
+                        else if ( LA114_0 == 160 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 5) ) {s = 6;}
 
-                        else if ( LA114_0 == 160 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 6) ) {s = 7;}
+                        else if ( LA114_0 == 161 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 6) ) {s = 7;}
 
-                        else if ( LA114_0 == 161 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 7) ) {s = 8;}
+                        else if ( LA114_0 == 162 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 7) ) {s = 8;}
 
-                        else if ( LA114_0 == 162 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 8) ) {s = 9;}
+                        else if ( LA114_0 == 163 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 8) ) {s = 9;}
 
                         else if ( (LA114_0==92) ) {s = 10;}
 
@@ -69686,11 +69680,11 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             this.decisionNumber = 115;
             this.eot = dfa_38;
             this.eof = dfa_38;
-            this.min = dfa_84;
-            this.max = dfa_85;
-            this.accept = dfa_86;
-            this.special = dfa_87;
-            this.transition = dfa_88;
+            this.min = dfa_82;
+            this.max = dfa_83;
+            this.accept = dfa_84;
+            this.special = dfa_85;
+            this.transition = dfa_86;
         }
         public String getDescription() {
             return "17096:2: ( rule__ReifiedRelationship__UnorderedGroup_4__3 )?";
@@ -69706,23 +69700,23 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                         int index115_0 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( LA115_0 == 154 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 0) ) {s = 1;}
+                        if ( LA115_0 == 155 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 0) ) {s = 1;}
 
-                        else if ( LA115_0 == 155 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 1) ) {s = 2;}
+                        else if ( LA115_0 == 156 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 1) ) {s = 2;}
 
-                        else if ( LA115_0 == 156 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 2) ) {s = 3;}
+                        else if ( LA115_0 == 157 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 2) ) {s = 3;}
 
-                        else if ( LA115_0 == 157 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 3) ) {s = 4;}
+                        else if ( LA115_0 == 158 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 3) ) {s = 4;}
 
-                        else if ( LA115_0 == 158 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 4) ) {s = 5;}
+                        else if ( LA115_0 == 159 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 4) ) {s = 5;}
 
-                        else if ( LA115_0 == 159 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 5) ) {s = 6;}
+                        else if ( LA115_0 == 160 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 5) ) {s = 6;}
 
-                        else if ( LA115_0 == 160 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 6) ) {s = 7;}
+                        else if ( LA115_0 == 161 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 6) ) {s = 7;}
 
-                        else if ( LA115_0 == 161 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 7) ) {s = 8;}
+                        else if ( LA115_0 == 162 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 7) ) {s = 8;}
 
-                        else if ( LA115_0 == 162 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 8) ) {s = 9;}
+                        else if ( LA115_0 == 163 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 8) ) {s = 9;}
 
                         else if ( (LA115_0==92) ) {s = 10;}
 
@@ -69745,11 +69739,11 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             this.decisionNumber = 116;
             this.eot = dfa_38;
             this.eof = dfa_38;
-            this.min = dfa_84;
-            this.max = dfa_85;
-            this.accept = dfa_86;
-            this.special = dfa_87;
-            this.transition = dfa_88;
+            this.min = dfa_82;
+            this.max = dfa_83;
+            this.accept = dfa_84;
+            this.special = dfa_85;
+            this.transition = dfa_86;
         }
         public String getDescription() {
             return "17108:2: ( rule__ReifiedRelationship__UnorderedGroup_4__4 )?";
@@ -69765,23 +69759,23 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                         int index116_0 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( LA116_0 == 154 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 0) ) {s = 1;}
+                        if ( LA116_0 == 155 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 0) ) {s = 1;}
 
-                        else if ( LA116_0 == 155 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 1) ) {s = 2;}
+                        else if ( LA116_0 == 156 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 1) ) {s = 2;}
 
-                        else if ( LA116_0 == 156 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 2) ) {s = 3;}
+                        else if ( LA116_0 == 157 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 2) ) {s = 3;}
 
-                        else if ( LA116_0 == 157 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 3) ) {s = 4;}
+                        else if ( LA116_0 == 158 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 3) ) {s = 4;}
 
-                        else if ( LA116_0 == 158 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 4) ) {s = 5;}
+                        else if ( LA116_0 == 159 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 4) ) {s = 5;}
 
-                        else if ( LA116_0 == 159 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 5) ) {s = 6;}
+                        else if ( LA116_0 == 160 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 5) ) {s = 6;}
 
-                        else if ( LA116_0 == 160 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 6) ) {s = 7;}
+                        else if ( LA116_0 == 161 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 6) ) {s = 7;}
 
-                        else if ( LA116_0 == 161 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 7) ) {s = 8;}
+                        else if ( LA116_0 == 162 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 7) ) {s = 8;}
 
-                        else if ( LA116_0 == 162 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 8) ) {s = 9;}
+                        else if ( LA116_0 == 163 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 8) ) {s = 9;}
 
                         else if ( (LA116_0==92) ) {s = 10;}
 
@@ -69804,11 +69798,11 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             this.decisionNumber = 117;
             this.eot = dfa_38;
             this.eof = dfa_38;
-            this.min = dfa_84;
-            this.max = dfa_85;
-            this.accept = dfa_86;
-            this.special = dfa_87;
-            this.transition = dfa_88;
+            this.min = dfa_82;
+            this.max = dfa_83;
+            this.accept = dfa_84;
+            this.special = dfa_85;
+            this.transition = dfa_86;
         }
         public String getDescription() {
             return "17120:2: ( rule__ReifiedRelationship__UnorderedGroup_4__5 )?";
@@ -69824,23 +69818,23 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                         int index117_0 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( LA117_0 == 154 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 0) ) {s = 1;}
+                        if ( LA117_0 == 155 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 0) ) {s = 1;}
 
-                        else if ( LA117_0 == 155 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 1) ) {s = 2;}
+                        else if ( LA117_0 == 156 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 1) ) {s = 2;}
 
-                        else if ( LA117_0 == 156 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 2) ) {s = 3;}
+                        else if ( LA117_0 == 157 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 2) ) {s = 3;}
 
-                        else if ( LA117_0 == 157 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 3) ) {s = 4;}
+                        else if ( LA117_0 == 158 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 3) ) {s = 4;}
 
-                        else if ( LA117_0 == 158 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 4) ) {s = 5;}
+                        else if ( LA117_0 == 159 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 4) ) {s = 5;}
 
-                        else if ( LA117_0 == 159 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 5) ) {s = 6;}
+                        else if ( LA117_0 == 160 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 5) ) {s = 6;}
 
-                        else if ( LA117_0 == 160 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 6) ) {s = 7;}
+                        else if ( LA117_0 == 161 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 6) ) {s = 7;}
 
-                        else if ( LA117_0 == 161 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 7) ) {s = 8;}
+                        else if ( LA117_0 == 162 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 7) ) {s = 8;}
 
-                        else if ( LA117_0 == 162 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 8) ) {s = 9;}
+                        else if ( LA117_0 == 163 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 8) ) {s = 9;}
 
                         else if ( (LA117_0==92) ) {s = 10;}
 
@@ -69863,11 +69857,11 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             this.decisionNumber = 118;
             this.eot = dfa_38;
             this.eof = dfa_38;
-            this.min = dfa_84;
-            this.max = dfa_85;
-            this.accept = dfa_86;
-            this.special = dfa_87;
-            this.transition = dfa_88;
+            this.min = dfa_82;
+            this.max = dfa_83;
+            this.accept = dfa_84;
+            this.special = dfa_85;
+            this.transition = dfa_86;
         }
         public String getDescription() {
             return "17132:2: ( rule__ReifiedRelationship__UnorderedGroup_4__6 )?";
@@ -69883,23 +69877,23 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                         int index118_0 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( LA118_0 == 154 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 0) ) {s = 1;}
+                        if ( LA118_0 == 155 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 0) ) {s = 1;}
 
-                        else if ( LA118_0 == 155 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 1) ) {s = 2;}
+                        else if ( LA118_0 == 156 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 1) ) {s = 2;}
 
-                        else if ( LA118_0 == 156 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 2) ) {s = 3;}
+                        else if ( LA118_0 == 157 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 2) ) {s = 3;}
 
-                        else if ( LA118_0 == 157 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 3) ) {s = 4;}
+                        else if ( LA118_0 == 158 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 3) ) {s = 4;}
 
-                        else if ( LA118_0 == 158 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 4) ) {s = 5;}
+                        else if ( LA118_0 == 159 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 4) ) {s = 5;}
 
-                        else if ( LA118_0 == 159 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 5) ) {s = 6;}
+                        else if ( LA118_0 == 160 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 5) ) {s = 6;}
 
-                        else if ( LA118_0 == 160 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 6) ) {s = 7;}
+                        else if ( LA118_0 == 161 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 6) ) {s = 7;}
 
-                        else if ( LA118_0 == 161 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 7) ) {s = 8;}
+                        else if ( LA118_0 == 162 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 7) ) {s = 8;}
 
-                        else if ( LA118_0 == 162 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 8) ) {s = 9;}
+                        else if ( LA118_0 == 163 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 8) ) {s = 9;}
 
                         else if ( (LA118_0==92) ) {s = 10;}
 
@@ -69922,11 +69916,11 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             this.decisionNumber = 119;
             this.eot = dfa_38;
             this.eof = dfa_38;
-            this.min = dfa_84;
-            this.max = dfa_85;
-            this.accept = dfa_86;
-            this.special = dfa_87;
-            this.transition = dfa_88;
+            this.min = dfa_82;
+            this.max = dfa_83;
+            this.accept = dfa_84;
+            this.special = dfa_85;
+            this.transition = dfa_86;
         }
         public String getDescription() {
             return "17144:2: ( rule__ReifiedRelationship__UnorderedGroup_4__7 )?";
@@ -69942,23 +69936,23 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                         int index119_0 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( LA119_0 == 154 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 0) ) {s = 1;}
+                        if ( LA119_0 == 155 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 0) ) {s = 1;}
 
-                        else if ( LA119_0 == 155 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 1) ) {s = 2;}
+                        else if ( LA119_0 == 156 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 1) ) {s = 2;}
 
-                        else if ( LA119_0 == 156 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 2) ) {s = 3;}
+                        else if ( LA119_0 == 157 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 2) ) {s = 3;}
 
-                        else if ( LA119_0 == 157 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 3) ) {s = 4;}
+                        else if ( LA119_0 == 158 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 3) ) {s = 4;}
 
-                        else if ( LA119_0 == 158 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 4) ) {s = 5;}
+                        else if ( LA119_0 == 159 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 4) ) {s = 5;}
 
-                        else if ( LA119_0 == 159 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 5) ) {s = 6;}
+                        else if ( LA119_0 == 160 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 5) ) {s = 6;}
 
-                        else if ( LA119_0 == 160 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 6) ) {s = 7;}
+                        else if ( LA119_0 == 161 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 6) ) {s = 7;}
 
-                        else if ( LA119_0 == 161 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 7) ) {s = 8;}
+                        else if ( LA119_0 == 162 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 7) ) {s = 8;}
 
-                        else if ( LA119_0 == 162 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 8) ) {s = 9;}
+                        else if ( LA119_0 == 163 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 8) ) {s = 9;}
 
                         else if ( (LA119_0==92) ) {s = 10;}
 
@@ -69981,11 +69975,11 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             this.decisionNumber = 120;
             this.eot = dfa_38;
             this.eof = dfa_38;
-            this.min = dfa_84;
-            this.max = dfa_85;
-            this.accept = dfa_86;
-            this.special = dfa_87;
-            this.transition = dfa_88;
+            this.min = dfa_82;
+            this.max = dfa_83;
+            this.accept = dfa_84;
+            this.special = dfa_85;
+            this.transition = dfa_86;
         }
         public String getDescription() {
             return "17156:2: ( rule__ReifiedRelationship__UnorderedGroup_4__8 )?";
@@ -70001,23 +69995,23 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                         int index120_0 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( LA120_0 == 154 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 0) ) {s = 1;}
+                        if ( LA120_0 == 155 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 0) ) {s = 1;}
 
-                        else if ( LA120_0 == 155 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 1) ) {s = 2;}
+                        else if ( LA120_0 == 156 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 1) ) {s = 2;}
 
-                        else if ( LA120_0 == 156 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 2) ) {s = 3;}
+                        else if ( LA120_0 == 157 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 2) ) {s = 3;}
 
-                        else if ( LA120_0 == 157 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 3) ) {s = 4;}
+                        else if ( LA120_0 == 158 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 3) ) {s = 4;}
 
-                        else if ( LA120_0 == 158 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 4) ) {s = 5;}
+                        else if ( LA120_0 == 159 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 4) ) {s = 5;}
 
-                        else if ( LA120_0 == 159 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 5) ) {s = 6;}
+                        else if ( LA120_0 == 160 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 5) ) {s = 6;}
 
-                        else if ( LA120_0 == 160 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 6) ) {s = 7;}
+                        else if ( LA120_0 == 161 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 6) ) {s = 7;}
 
-                        else if ( LA120_0 == 161 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 7) ) {s = 8;}
+                        else if ( LA120_0 == 162 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 7) ) {s = 8;}
 
-                        else if ( LA120_0 == 162 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 8) ) {s = 9;}
+                        else if ( LA120_0 == 163 && getUnorderedGroupHelper().canSelect(grammarAccess.getReifiedRelationshipAccess().getUnorderedGroup_4(), 8) ) {s = 9;}
 
                         else if ( (LA120_0==92) ) {s = 10;}
 
@@ -70032,9 +70026,9 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             throw nvae;
         }
     }
-    static final String dfa_94s = "\1\135\12\uffff";
-    static final String[] dfa_95s = {
-            "\1\12\74\uffff\1\1\1\2\1\3\1\4\1\5\1\6\1\7\1\10\1\11",
+    static final String dfa_92s = "\1\135\12\uffff";
+    static final String[] dfa_93s = {
+            "\1\12\75\uffff\1\1\1\2\1\3\1\4\1\5\1\6\1\7\1\10\1\11",
             "",
             "",
             "",
@@ -70046,8 +70040,8 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             "",
             ""
     };
-    static final char[] dfa_94 = DFA.unpackEncodedStringToUnsignedChars(dfa_94s);
-    static final short[][] dfa_95 = unpackEncodedStringArray(dfa_95s);
+    static final char[] dfa_92 = DFA.unpackEncodedStringToUnsignedChars(dfa_92s);
+    static final short[][] dfa_93 = unpackEncodedStringArray(dfa_93s);
 
     class DFA121 extends DFA {
 
@@ -70056,11 +70050,11 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             this.decisionNumber = 121;
             this.eot = dfa_38;
             this.eof = dfa_38;
-            this.min = dfa_94;
-            this.max = dfa_85;
-            this.accept = dfa_86;
-            this.special = dfa_87;
-            this.transition = dfa_95;
+            this.min = dfa_92;
+            this.max = dfa_83;
+            this.accept = dfa_84;
+            this.special = dfa_85;
+            this.transition = dfa_93;
         }
         public String getDescription() {
             return "17180:2: ( rule__UnreifiedRelationship__UnorderedGroup_4__0 )?";
@@ -70076,23 +70070,23 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                         int index121_0 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( LA121_0 == 154 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 0) ) {s = 1;}
+                        if ( LA121_0 == 155 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 0) ) {s = 1;}
 
-                        else if ( LA121_0 == 155 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 1) ) {s = 2;}
+                        else if ( LA121_0 == 156 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 1) ) {s = 2;}
 
-                        else if ( LA121_0 == 156 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 2) ) {s = 3;}
+                        else if ( LA121_0 == 157 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 2) ) {s = 3;}
 
-                        else if ( LA121_0 == 157 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 3) ) {s = 4;}
+                        else if ( LA121_0 == 158 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 3) ) {s = 4;}
 
-                        else if ( LA121_0 == 158 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 4) ) {s = 5;}
+                        else if ( LA121_0 == 159 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 4) ) {s = 5;}
 
-                        else if ( LA121_0 == 159 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 5) ) {s = 6;}
+                        else if ( LA121_0 == 160 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 5) ) {s = 6;}
 
-                        else if ( LA121_0 == 160 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 6) ) {s = 7;}
+                        else if ( LA121_0 == 161 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 6) ) {s = 7;}
 
-                        else if ( LA121_0 == 161 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 7) ) {s = 8;}
+                        else if ( LA121_0 == 162 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 7) ) {s = 8;}
 
-                        else if ( LA121_0 == 162 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 8) ) {s = 9;}
+                        else if ( LA121_0 == 163 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 8) ) {s = 9;}
 
                         else if ( (LA121_0==93) ) {s = 10;}
 
@@ -70115,11 +70109,11 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             this.decisionNumber = 122;
             this.eot = dfa_19;
             this.eof = dfa_19;
-            this.min = dfa_89;
-            this.max = dfa_90;
-            this.accept = dfa_91;
-            this.special = dfa_92;
-            this.transition = dfa_93;
+            this.min = dfa_87;
+            this.max = dfa_88;
+            this.accept = dfa_89;
+            this.special = dfa_90;
+            this.transition = dfa_91;
         }
         public String getDescription() {
             return "17194:3: ( ({...}? => ( ( ( rule__UnreifiedRelationship__IsFunctionalAssignment_4_0 ) ) ) ) | ({...}? => ( ( ( rule__UnreifiedRelationship__IsInverseFunctionalAssignment_4_1 ) ) ) ) | ({...}? => ( ( ( rule__UnreifiedRelationship__IsEssentialAssignment_4_2 ) ) ) ) | ({...}? => ( ( ( rule__UnreifiedRelationship__IsInverseEssentialAssignment_4_3 ) ) ) ) | ({...}? => ( ( ( rule__UnreifiedRelationship__IsSymmetricAssignment_4_4 ) ) ) ) | ({...}? => ( ( ( rule__UnreifiedRelationship__IsAsymmetricAssignment_4_5 ) ) ) ) | ({...}? => ( ( ( rule__UnreifiedRelationship__IsReflexiveAssignment_4_6 ) ) ) ) | ({...}? => ( ( ( rule__UnreifiedRelationship__IsIrreflexiveAssignment_4_7 ) ) ) ) | ({...}? => ( ( ( rule__UnreifiedRelationship__IsTransitiveAssignment_4_8 ) ) ) ) )";
@@ -70135,23 +70129,23 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                         int index122_0 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( LA122_0 == 154 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 0) ) {s = 1;}
+                        if ( LA122_0 == 155 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 0) ) {s = 1;}
 
-                        else if ( LA122_0 == 155 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 1) ) {s = 2;}
+                        else if ( LA122_0 == 156 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 1) ) {s = 2;}
 
-                        else if ( LA122_0 == 156 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 2) ) {s = 3;}
+                        else if ( LA122_0 == 157 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 2) ) {s = 3;}
 
-                        else if ( LA122_0 == 157 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 3) ) {s = 4;}
+                        else if ( LA122_0 == 158 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 3) ) {s = 4;}
 
-                        else if ( LA122_0 == 158 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 4) ) {s = 5;}
+                        else if ( LA122_0 == 159 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 4) ) {s = 5;}
 
-                        else if ( LA122_0 == 159 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 5) ) {s = 6;}
+                        else if ( LA122_0 == 160 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 5) ) {s = 6;}
 
-                        else if ( LA122_0 == 160 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 6) ) {s = 7;}
+                        else if ( LA122_0 == 161 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 6) ) {s = 7;}
 
-                        else if ( LA122_0 == 161 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 7) ) {s = 8;}
+                        else if ( LA122_0 == 162 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 7) ) {s = 8;}
 
-                        else if ( LA122_0 == 162 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 8) ) {s = 9;}
+                        else if ( LA122_0 == 163 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 8) ) {s = 9;}
 
                          
                         input.seek(index122_0);
@@ -70172,11 +70166,11 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             this.decisionNumber = 123;
             this.eot = dfa_38;
             this.eof = dfa_38;
-            this.min = dfa_94;
-            this.max = dfa_85;
-            this.accept = dfa_86;
-            this.special = dfa_87;
-            this.transition = dfa_95;
+            this.min = dfa_92;
+            this.max = dfa_83;
+            this.accept = dfa_84;
+            this.special = dfa_85;
+            this.transition = dfa_93;
         }
         public String getDescription() {
             return "17344:2: ( rule__UnreifiedRelationship__UnorderedGroup_4__1 )?";
@@ -70192,23 +70186,23 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                         int index123_0 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( LA123_0 == 154 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 0) ) {s = 1;}
+                        if ( LA123_0 == 155 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 0) ) {s = 1;}
 
-                        else if ( LA123_0 == 155 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 1) ) {s = 2;}
+                        else if ( LA123_0 == 156 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 1) ) {s = 2;}
 
-                        else if ( LA123_0 == 156 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 2) ) {s = 3;}
+                        else if ( LA123_0 == 157 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 2) ) {s = 3;}
 
-                        else if ( LA123_0 == 157 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 3) ) {s = 4;}
+                        else if ( LA123_0 == 158 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 3) ) {s = 4;}
 
-                        else if ( LA123_0 == 158 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 4) ) {s = 5;}
+                        else if ( LA123_0 == 159 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 4) ) {s = 5;}
 
-                        else if ( LA123_0 == 159 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 5) ) {s = 6;}
+                        else if ( LA123_0 == 160 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 5) ) {s = 6;}
 
-                        else if ( LA123_0 == 160 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 6) ) {s = 7;}
+                        else if ( LA123_0 == 161 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 6) ) {s = 7;}
 
-                        else if ( LA123_0 == 161 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 7) ) {s = 8;}
+                        else if ( LA123_0 == 162 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 7) ) {s = 8;}
 
-                        else if ( LA123_0 == 162 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 8) ) {s = 9;}
+                        else if ( LA123_0 == 163 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 8) ) {s = 9;}
 
                         else if ( (LA123_0==93) ) {s = 10;}
 
@@ -70231,11 +70225,11 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             this.decisionNumber = 124;
             this.eot = dfa_38;
             this.eof = dfa_38;
-            this.min = dfa_94;
-            this.max = dfa_85;
-            this.accept = dfa_86;
-            this.special = dfa_87;
-            this.transition = dfa_95;
+            this.min = dfa_92;
+            this.max = dfa_83;
+            this.accept = dfa_84;
+            this.special = dfa_85;
+            this.transition = dfa_93;
         }
         public String getDescription() {
             return "17356:2: ( rule__UnreifiedRelationship__UnorderedGroup_4__2 )?";
@@ -70251,23 +70245,23 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                         int index124_0 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( LA124_0 == 154 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 0) ) {s = 1;}
+                        if ( LA124_0 == 155 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 0) ) {s = 1;}
 
-                        else if ( LA124_0 == 155 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 1) ) {s = 2;}
+                        else if ( LA124_0 == 156 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 1) ) {s = 2;}
 
-                        else if ( LA124_0 == 156 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 2) ) {s = 3;}
+                        else if ( LA124_0 == 157 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 2) ) {s = 3;}
 
-                        else if ( LA124_0 == 157 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 3) ) {s = 4;}
+                        else if ( LA124_0 == 158 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 3) ) {s = 4;}
 
-                        else if ( LA124_0 == 158 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 4) ) {s = 5;}
+                        else if ( LA124_0 == 159 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 4) ) {s = 5;}
 
-                        else if ( LA124_0 == 159 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 5) ) {s = 6;}
+                        else if ( LA124_0 == 160 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 5) ) {s = 6;}
 
-                        else if ( LA124_0 == 160 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 6) ) {s = 7;}
+                        else if ( LA124_0 == 161 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 6) ) {s = 7;}
 
-                        else if ( LA124_0 == 161 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 7) ) {s = 8;}
+                        else if ( LA124_0 == 162 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 7) ) {s = 8;}
 
-                        else if ( LA124_0 == 162 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 8) ) {s = 9;}
+                        else if ( LA124_0 == 163 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 8) ) {s = 9;}
 
                         else if ( (LA124_0==93) ) {s = 10;}
 
@@ -70290,11 +70284,11 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             this.decisionNumber = 125;
             this.eot = dfa_38;
             this.eof = dfa_38;
-            this.min = dfa_94;
-            this.max = dfa_85;
-            this.accept = dfa_86;
-            this.special = dfa_87;
-            this.transition = dfa_95;
+            this.min = dfa_92;
+            this.max = dfa_83;
+            this.accept = dfa_84;
+            this.special = dfa_85;
+            this.transition = dfa_93;
         }
         public String getDescription() {
             return "17368:2: ( rule__UnreifiedRelationship__UnorderedGroup_4__3 )?";
@@ -70310,23 +70304,23 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                         int index125_0 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( LA125_0 == 154 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 0) ) {s = 1;}
+                        if ( LA125_0 == 155 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 0) ) {s = 1;}
 
-                        else if ( LA125_0 == 155 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 1) ) {s = 2;}
+                        else if ( LA125_0 == 156 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 1) ) {s = 2;}
 
-                        else if ( LA125_0 == 156 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 2) ) {s = 3;}
+                        else if ( LA125_0 == 157 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 2) ) {s = 3;}
 
-                        else if ( LA125_0 == 157 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 3) ) {s = 4;}
+                        else if ( LA125_0 == 158 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 3) ) {s = 4;}
 
-                        else if ( LA125_0 == 158 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 4) ) {s = 5;}
+                        else if ( LA125_0 == 159 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 4) ) {s = 5;}
 
-                        else if ( LA125_0 == 159 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 5) ) {s = 6;}
+                        else if ( LA125_0 == 160 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 5) ) {s = 6;}
 
-                        else if ( LA125_0 == 160 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 6) ) {s = 7;}
+                        else if ( LA125_0 == 161 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 6) ) {s = 7;}
 
-                        else if ( LA125_0 == 161 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 7) ) {s = 8;}
+                        else if ( LA125_0 == 162 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 7) ) {s = 8;}
 
-                        else if ( LA125_0 == 162 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 8) ) {s = 9;}
+                        else if ( LA125_0 == 163 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 8) ) {s = 9;}
 
                         else if ( (LA125_0==93) ) {s = 10;}
 
@@ -70349,11 +70343,11 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             this.decisionNumber = 126;
             this.eot = dfa_38;
             this.eof = dfa_38;
-            this.min = dfa_94;
-            this.max = dfa_85;
-            this.accept = dfa_86;
-            this.special = dfa_87;
-            this.transition = dfa_95;
+            this.min = dfa_92;
+            this.max = dfa_83;
+            this.accept = dfa_84;
+            this.special = dfa_85;
+            this.transition = dfa_93;
         }
         public String getDescription() {
             return "17380:2: ( rule__UnreifiedRelationship__UnorderedGroup_4__4 )?";
@@ -70369,23 +70363,23 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                         int index126_0 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( LA126_0 == 154 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 0) ) {s = 1;}
+                        if ( LA126_0 == 155 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 0) ) {s = 1;}
 
-                        else if ( LA126_0 == 155 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 1) ) {s = 2;}
+                        else if ( LA126_0 == 156 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 1) ) {s = 2;}
 
-                        else if ( LA126_0 == 156 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 2) ) {s = 3;}
+                        else if ( LA126_0 == 157 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 2) ) {s = 3;}
 
-                        else if ( LA126_0 == 157 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 3) ) {s = 4;}
+                        else if ( LA126_0 == 158 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 3) ) {s = 4;}
 
-                        else if ( LA126_0 == 158 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 4) ) {s = 5;}
+                        else if ( LA126_0 == 159 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 4) ) {s = 5;}
 
-                        else if ( LA126_0 == 159 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 5) ) {s = 6;}
+                        else if ( LA126_0 == 160 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 5) ) {s = 6;}
 
-                        else if ( LA126_0 == 160 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 6) ) {s = 7;}
+                        else if ( LA126_0 == 161 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 6) ) {s = 7;}
 
-                        else if ( LA126_0 == 161 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 7) ) {s = 8;}
+                        else if ( LA126_0 == 162 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 7) ) {s = 8;}
 
-                        else if ( LA126_0 == 162 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 8) ) {s = 9;}
+                        else if ( LA126_0 == 163 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 8) ) {s = 9;}
 
                         else if ( (LA126_0==93) ) {s = 10;}
 
@@ -70408,11 +70402,11 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             this.decisionNumber = 127;
             this.eot = dfa_38;
             this.eof = dfa_38;
-            this.min = dfa_94;
-            this.max = dfa_85;
-            this.accept = dfa_86;
-            this.special = dfa_87;
-            this.transition = dfa_95;
+            this.min = dfa_92;
+            this.max = dfa_83;
+            this.accept = dfa_84;
+            this.special = dfa_85;
+            this.transition = dfa_93;
         }
         public String getDescription() {
             return "17392:2: ( rule__UnreifiedRelationship__UnorderedGroup_4__5 )?";
@@ -70428,23 +70422,23 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                         int index127_0 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( LA127_0 == 154 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 0) ) {s = 1;}
+                        if ( LA127_0 == 155 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 0) ) {s = 1;}
 
-                        else if ( LA127_0 == 155 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 1) ) {s = 2;}
+                        else if ( LA127_0 == 156 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 1) ) {s = 2;}
 
-                        else if ( LA127_0 == 156 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 2) ) {s = 3;}
+                        else if ( LA127_0 == 157 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 2) ) {s = 3;}
 
-                        else if ( LA127_0 == 157 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 3) ) {s = 4;}
+                        else if ( LA127_0 == 158 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 3) ) {s = 4;}
 
-                        else if ( LA127_0 == 158 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 4) ) {s = 5;}
+                        else if ( LA127_0 == 159 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 4) ) {s = 5;}
 
-                        else if ( LA127_0 == 159 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 5) ) {s = 6;}
+                        else if ( LA127_0 == 160 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 5) ) {s = 6;}
 
-                        else if ( LA127_0 == 160 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 6) ) {s = 7;}
+                        else if ( LA127_0 == 161 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 6) ) {s = 7;}
 
-                        else if ( LA127_0 == 161 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 7) ) {s = 8;}
+                        else if ( LA127_0 == 162 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 7) ) {s = 8;}
 
-                        else if ( LA127_0 == 162 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 8) ) {s = 9;}
+                        else if ( LA127_0 == 163 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 8) ) {s = 9;}
 
                         else if ( (LA127_0==93) ) {s = 10;}
 
@@ -70467,11 +70461,11 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             this.decisionNumber = 128;
             this.eot = dfa_38;
             this.eof = dfa_38;
-            this.min = dfa_94;
-            this.max = dfa_85;
-            this.accept = dfa_86;
-            this.special = dfa_87;
-            this.transition = dfa_95;
+            this.min = dfa_92;
+            this.max = dfa_83;
+            this.accept = dfa_84;
+            this.special = dfa_85;
+            this.transition = dfa_93;
         }
         public String getDescription() {
             return "17404:2: ( rule__UnreifiedRelationship__UnorderedGroup_4__6 )?";
@@ -70487,23 +70481,23 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                         int index128_0 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( LA128_0 == 154 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 0) ) {s = 1;}
+                        if ( LA128_0 == 155 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 0) ) {s = 1;}
 
-                        else if ( LA128_0 == 155 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 1) ) {s = 2;}
+                        else if ( LA128_0 == 156 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 1) ) {s = 2;}
 
-                        else if ( LA128_0 == 156 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 2) ) {s = 3;}
+                        else if ( LA128_0 == 157 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 2) ) {s = 3;}
 
-                        else if ( LA128_0 == 157 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 3) ) {s = 4;}
+                        else if ( LA128_0 == 158 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 3) ) {s = 4;}
 
-                        else if ( LA128_0 == 158 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 4) ) {s = 5;}
+                        else if ( LA128_0 == 159 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 4) ) {s = 5;}
 
-                        else if ( LA128_0 == 159 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 5) ) {s = 6;}
+                        else if ( LA128_0 == 160 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 5) ) {s = 6;}
 
-                        else if ( LA128_0 == 160 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 6) ) {s = 7;}
+                        else if ( LA128_0 == 161 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 6) ) {s = 7;}
 
-                        else if ( LA128_0 == 161 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 7) ) {s = 8;}
+                        else if ( LA128_0 == 162 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 7) ) {s = 8;}
 
-                        else if ( LA128_0 == 162 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 8) ) {s = 9;}
+                        else if ( LA128_0 == 163 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 8) ) {s = 9;}
 
                         else if ( (LA128_0==93) ) {s = 10;}
 
@@ -70526,11 +70520,11 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             this.decisionNumber = 129;
             this.eot = dfa_38;
             this.eof = dfa_38;
-            this.min = dfa_94;
-            this.max = dfa_85;
-            this.accept = dfa_86;
-            this.special = dfa_87;
-            this.transition = dfa_95;
+            this.min = dfa_92;
+            this.max = dfa_83;
+            this.accept = dfa_84;
+            this.special = dfa_85;
+            this.transition = dfa_93;
         }
         public String getDescription() {
             return "17416:2: ( rule__UnreifiedRelationship__UnorderedGroup_4__7 )?";
@@ -70546,23 +70540,23 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                         int index129_0 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( LA129_0 == 154 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 0) ) {s = 1;}
+                        if ( LA129_0 == 155 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 0) ) {s = 1;}
 
-                        else if ( LA129_0 == 155 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 1) ) {s = 2;}
+                        else if ( LA129_0 == 156 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 1) ) {s = 2;}
 
-                        else if ( LA129_0 == 156 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 2) ) {s = 3;}
+                        else if ( LA129_0 == 157 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 2) ) {s = 3;}
 
-                        else if ( LA129_0 == 157 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 3) ) {s = 4;}
+                        else if ( LA129_0 == 158 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 3) ) {s = 4;}
 
-                        else if ( LA129_0 == 158 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 4) ) {s = 5;}
+                        else if ( LA129_0 == 159 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 4) ) {s = 5;}
 
-                        else if ( LA129_0 == 159 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 5) ) {s = 6;}
+                        else if ( LA129_0 == 160 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 5) ) {s = 6;}
 
-                        else if ( LA129_0 == 160 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 6) ) {s = 7;}
+                        else if ( LA129_0 == 161 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 6) ) {s = 7;}
 
-                        else if ( LA129_0 == 161 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 7) ) {s = 8;}
+                        else if ( LA129_0 == 162 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 7) ) {s = 8;}
 
-                        else if ( LA129_0 == 162 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 8) ) {s = 9;}
+                        else if ( LA129_0 == 163 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 8) ) {s = 9;}
 
                         else if ( (LA129_0==93) ) {s = 10;}
 
@@ -70585,11 +70579,11 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
             this.decisionNumber = 130;
             this.eot = dfa_38;
             this.eof = dfa_38;
-            this.min = dfa_94;
-            this.max = dfa_85;
-            this.accept = dfa_86;
-            this.special = dfa_87;
-            this.transition = dfa_95;
+            this.min = dfa_92;
+            this.max = dfa_83;
+            this.accept = dfa_84;
+            this.special = dfa_85;
+            this.transition = dfa_93;
         }
         public String getDescription() {
             return "17428:2: ( rule__UnreifiedRelationship__UnorderedGroup_4__8 )?";
@@ -70605,23 +70599,23 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
                         int index130_0 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( LA130_0 == 154 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 0) ) {s = 1;}
+                        if ( LA130_0 == 155 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 0) ) {s = 1;}
 
-                        else if ( LA130_0 == 155 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 1) ) {s = 2;}
+                        else if ( LA130_0 == 156 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 1) ) {s = 2;}
 
-                        else if ( LA130_0 == 156 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 2) ) {s = 3;}
+                        else if ( LA130_0 == 157 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 2) ) {s = 3;}
 
-                        else if ( LA130_0 == 157 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 3) ) {s = 4;}
+                        else if ( LA130_0 == 158 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 3) ) {s = 4;}
 
-                        else if ( LA130_0 == 158 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 4) ) {s = 5;}
+                        else if ( LA130_0 == 159 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 4) ) {s = 5;}
 
-                        else if ( LA130_0 == 159 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 5) ) {s = 6;}
+                        else if ( LA130_0 == 160 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 5) ) {s = 6;}
 
-                        else if ( LA130_0 == 160 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 6) ) {s = 7;}
+                        else if ( LA130_0 == 161 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 6) ) {s = 7;}
 
-                        else if ( LA130_0 == 161 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 7) ) {s = 8;}
+                        else if ( LA130_0 == 162 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 7) ) {s = 8;}
 
-                        else if ( LA130_0 == 162 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 8) ) {s = 9;}
+                        else if ( LA130_0 == 163 && getUnorderedGroupHelper().canSelect(grammarAccess.getUnreifiedRelationshipAccess().getUnorderedGroup_4(), 8) ) {s = 9;}
 
                         else if ( (LA130_0==93) ) {s = 10;}
 
@@ -70651,15 +70645,15 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000800L});
     public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
     public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000000000000L,0x0000000000002000L});
-    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000000000430L,0xC12003CF0E644800L,0x00000000001F4286L});
-    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000000000432L,0xC12003CF0E640800L,0x00000000001F4286L});
+    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000000000430L,0x8240079F0E644800L,0x00000000003E850DL});
+    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000000000432L,0x8240079F0E640800L,0x00000000003E850DL});
     public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000000000000L,0x0000000000008000L});
-    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000000000430L,0xC12803CF0E664800L,0x00000000001F4286L});
-    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000000000000432L,0xC12803CF0E660800L,0x00000000001F4286L});
+    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000000000430L,0x8250079F0E664800L,0x00000000003E850DL});
+    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000000000000432L,0x8250079F0E660800L,0x00000000003E850DL});
     public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000000000000000L,0x0000000000010000L});
-    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000000000000430L,0x0000003000204800L,0x0000000003600000L});
-    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000000000000432L,0x0000003000200800L,0x0000000003600000L});
-    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000000000000430L,0xC12803CF0E660800L,0x00000000001F4286L});
+    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000000000000430L,0x0000006000204800L,0x0000000006C00000L});
+    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000000000000432L,0x0000006000200800L,0x0000000006C00000L});
+    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000000000000430L,0x8250079F0E660800L,0x00000000003E850DL});
     public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040800L});
     public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
     public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0000000000000000L,0x0000000000100000L});
@@ -70673,87 +70667,88 @@ public class InternalOMLParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_33 = new BitSet(new long[]{0x0000000000000020L});
     public static final BitSet FOLLOW_34 = new BitSet(new long[]{0x0000000000000000L,0x0000000006000800L});
     public static final BitSet FOLLOW_35 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000800L});
-    public static final BitSet FOLLOW_36 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x00000007FC000000L});
+    public static final BitSet FOLLOW_36 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000FF8000000L});
     public static final BitSet FOLLOW_37 = new BitSet(new long[]{0x0000000000000000L,0x0000000010000000L});
     public static final BitSet FOLLOW_38 = new BitSet(new long[]{0x0000000000000000L,0x00000000A0000000L});
     public static final BitSet FOLLOW_39 = new BitSet(new long[]{0x0000000000000000L,0x0000000040000000L});
-    public static final BitSet FOLLOW_40 = new BitSet(new long[]{0x0000000000000000L,0x0000000020000000L});
-    public static final BitSet FOLLOW_41 = new BitSet(new long[]{0x0000000000000000L,0x0000000108000800L});
-    public static final BitSet FOLLOW_42 = new BitSet(new long[]{0x0000000000000000L,0x0000000200000800L});
-    public static final BitSet FOLLOW_43 = new BitSet(new long[]{0x0000000000000000L,0x0000000600000800L,0x00000000001D4284L});
-    public static final BitSet FOLLOW_44 = new BitSet(new long[]{0x0000000000000000L,0x0000000800000800L});
-    public static final BitSet FOLLOW_45 = new BitSet(new long[]{0x0000000000000020L,0x0000000000000000L,0x0000000800000000L});
-    public static final BitSet FOLLOW_46 = new BitSet(new long[]{0x0000000000000000L,0x0000001000000000L});
+    public static final BitSet FOLLOW_40 = new BitSet(new long[]{0x0000000000000000L,0x0000000100000800L});
+    public static final BitSet FOLLOW_41 = new BitSet(new long[]{0x0000000000000000L,0x0000000020000000L});
+    public static final BitSet FOLLOW_42 = new BitSet(new long[]{0x0000000000000000L,0x0000000308000800L});
+    public static final BitSet FOLLOW_43 = new BitSet(new long[]{0x0000000000000000L,0x0000000400000800L});
+    public static final BitSet FOLLOW_44 = new BitSet(new long[]{0x0000000000000000L,0x0000000C00000800L,0x00000000003A8508L});
+    public static final BitSet FOLLOW_45 = new BitSet(new long[]{0x0000000000000000L,0x0000001000000800L});
+    public static final BitSet FOLLOW_46 = new BitSet(new long[]{0x0000000000000020L,0x0000000000000000L,0x0000001000000000L});
     public static final BitSet FOLLOW_47 = new BitSet(new long[]{0x0000000000000000L,0x0000002000000000L});
-    public static final BitSet FOLLOW_48 = new BitSet(new long[]{0x0000000000000000L,0x0000004000000800L});
+    public static final BitSet FOLLOW_48 = new BitSet(new long[]{0x0000000000000000L,0x0000004000000000L});
     public static final BitSet FOLLOW_49 = new BitSet(new long[]{0x0000000000000000L,0x0000008000000800L});
-    public static final BitSet FOLLOW_50 = new BitSet(new long[]{0x0000000000000000L,0x000001C800000800L});
-    public static final BitSet FOLLOW_51 = new BitSet(new long[]{0x0000000000000000L,0x0000040000000000L});
+    public static final BitSet FOLLOW_50 = new BitSet(new long[]{0x0000000000000000L,0x0000010000000800L});
+    public static final BitSet FOLLOW_51 = new BitSet(new long[]{0x0000000000000000L,0x0000039000000800L});
     public static final BitSet FOLLOW_52 = new BitSet(new long[]{0x0000000000000000L,0x0000080000000000L});
-    public static final BitSet FOLLOW_53 = new BitSet(new long[]{0x0000000000000430L,0x0003800060000800L});
-    public static final BitSet FOLLOW_54 = new BitSet(new long[]{0x0000000000000000L,0x0000100000000000L});
+    public static final BitSet FOLLOW_53 = new BitSet(new long[]{0x0000000000000000L,0x0000100000000000L});
+    public static final BitSet FOLLOW_54 = new BitSet(new long[]{0x0000000000000430L,0x0007000060000800L});
     public static final BitSet FOLLOW_55 = new BitSet(new long[]{0x0000000000000000L,0x0000200000000000L});
     public static final BitSet FOLLOW_56 = new BitSet(new long[]{0x0000000000000000L,0x0000400000000000L});
-    public static final BitSet FOLLOW_57 = new BitSet(new long[]{0x0000000000000000L,0x0004000000000000L});
-    public static final BitSet FOLLOW_58 = new BitSet(new long[]{0x0000000000000000L,0x0010000000004800L});
-    public static final BitSet FOLLOW_59 = new BitSet(new long[]{0x0000000000000002L,0x0010000000000800L});
-    public static final BitSet FOLLOW_60 = new BitSet(new long[]{0x0000000000000000L,0x0008000000000800L});
+    public static final BitSet FOLLOW_57 = new BitSet(new long[]{0x0000000000000000L,0x0000800000000000L});
+    public static final BitSet FOLLOW_58 = new BitSet(new long[]{0x0000000000000000L,0x0008000000000000L});
+    public static final BitSet FOLLOW_59 = new BitSet(new long[]{0x0000000000000000L,0x0020000000004800L});
+    public static final BitSet FOLLOW_60 = new BitSet(new long[]{0x0000000000000002L,0x0020000000000800L});
     public static final BitSet FOLLOW_61 = new BitSet(new long[]{0x0000000000000000L,0x0010000000000800L});
     public static final BitSet FOLLOW_62 = new BitSet(new long[]{0x0000000000000000L,0x0020000000000800L});
-    public static final BitSet FOLLOW_63 = new BitSet(new long[]{0x0000000000000000L,0x0040000000000000L});
+    public static final BitSet FOLLOW_63 = new BitSet(new long[]{0x0000000000000000L,0x0040000000000800L});
     public static final BitSet FOLLOW_64 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
-    public static final BitSet FOLLOW_65 = new BitSet(new long[]{0x0000000000000000L,0x0120000000000800L});
-    public static final BitSet FOLLOW_66 = new BitSet(new long[]{0x0000000000000000L,0x0200000000000000L});
+    public static final BitSet FOLLOW_65 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
+    public static final BitSet FOLLOW_66 = new BitSet(new long[]{0x0000000000000000L,0x0240000000000800L});
     public static final BitSet FOLLOW_67 = new BitSet(new long[]{0x0000000000000000L,0x0400000000000000L});
     public static final BitSet FOLLOW_68 = new BitSet(new long[]{0x0000000000000000L,0x0800000000000000L});
     public static final BitSet FOLLOW_69 = new BitSet(new long[]{0x0000000000000000L,0x1000000000000000L});
-    public static final BitSet FOLLOW_70 = new BitSet(new long[]{0x0000000000000430L,0xC120000000000800L,0x0000000000020002L});
-    public static final BitSet FOLLOW_71 = new BitSet(new long[]{0x0000000000000000L,0x2000000000000000L});
-    public static final BitSet FOLLOW_72 = new BitSet(new long[]{0x0000000000000000L,0x4000000000000800L});
+    public static final BitSet FOLLOW_70 = new BitSet(new long[]{0x0000000000000000L,0x2000000000000000L});
+    public static final BitSet FOLLOW_71 = new BitSet(new long[]{0x0000000000000430L,0x8240000000000800L,0x0000000000040005L});
+    public static final BitSet FOLLOW_72 = new BitSet(new long[]{0x0000000000000000L,0x4000000000000000L});
     public static final BitSet FOLLOW_73 = new BitSet(new long[]{0x0000000000000000L,0x8000000000000800L});
-    public static final BitSet FOLLOW_74 = new BitSet(new long[]{0x00000000001F9BC0L});
-    public static final BitSet FOLLOW_75 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_76 = new BitSet(new long[]{0x0000000000000000L,0xC000000000000800L,0x0000000000000002L});
-    public static final BitSet FOLLOW_77 = new BitSet(new long[]{0x0000000000000430L,0x0000000000004800L});
-    public static final BitSet FOLLOW_78 = new BitSet(new long[]{0x0000000000000432L,0x0000000000000800L});
-    public static final BitSet FOLLOW_79 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L,0x0000000000000004L});
-    public static final BitSet FOLLOW_80 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000070L});
-    public static final BitSet FOLLOW_81 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000008L});
-    public static final BitSet FOLLOW_82 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_83 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L,0x0000000000000080L});
-    public static final BitSet FOLLOW_84 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000170L});
-    public static final BitSet FOLLOW_85 = new BitSet(new long[]{0x0000000000002000L});
-    public static final BitSet FOLLOW_86 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L,0x0000000000000200L});
-    public static final BitSet FOLLOW_87 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000003C00L});
-    public static final BitSet FOLLOW_88 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L,0x0000000000004000L});
-    public static final BitSet FOLLOW_89 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000008170L});
-    public static final BitSet FOLLOW_90 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_91 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L,0x0000000000010000L});
+    public static final BitSet FOLLOW_74 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L,0x0000000000000001L});
+    public static final BitSet FOLLOW_75 = new BitSet(new long[]{0x00000000001F9BC0L});
+    public static final BitSet FOLLOW_76 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_77 = new BitSet(new long[]{0x0000000000000000L,0x8000000000000800L,0x0000000000000005L});
+    public static final BitSet FOLLOW_78 = new BitSet(new long[]{0x0000000000000430L,0x0000000000004800L});
+    public static final BitSet FOLLOW_79 = new BitSet(new long[]{0x0000000000000432L,0x0000000000000800L});
+    public static final BitSet FOLLOW_80 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L,0x0000000000000008L});
+    public static final BitSet FOLLOW_81 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x00000000000000E0L});
+    public static final BitSet FOLLOW_82 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000010L});
+    public static final BitSet FOLLOW_83 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_84 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L,0x0000000000000100L});
+    public static final BitSet FOLLOW_85 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x00000000000002E0L});
+    public static final BitSet FOLLOW_86 = new BitSet(new long[]{0x0000000000002000L});
+    public static final BitSet FOLLOW_87 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L,0x0000000000000400L});
+    public static final BitSet FOLLOW_88 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000007800L});
+    public static final BitSet FOLLOW_89 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L,0x0000000000008000L});
+    public static final BitSet FOLLOW_90 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x00000000000102E0L});
+    public static final BitSet FOLLOW_91 = new BitSet(new long[]{0x0000000000004000L});
     public static final BitSet FOLLOW_92 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L,0x0000000000020000L});
     public static final BitSet FOLLOW_93 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L,0x0000000000040000L});
     public static final BitSet FOLLOW_94 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L,0x0000000000080000L});
-    public static final BitSet FOLLOW_95 = new BitSet(new long[]{0x0000000000000000L,0x0000000200000800L,0x00000000001D4284L});
-    public static final BitSet FOLLOW_96 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_97 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L,0x0000000000200000L});
-    public static final BitSet FOLLOW_98 = new BitSet(new long[]{0x0000000000000430L,0x0000003000200800L,0x0000000003600000L});
-    public static final BitSet FOLLOW_99 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L,0x0000000000400000L});
-    public static final BitSet FOLLOW_100 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000800000L});
-    public static final BitSet FOLLOW_101 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L,0x0000000001000000L});
-    public static final BitSet FOLLOW_102 = new BitSet(new long[]{0x0000000000000000L,0x0000001000000800L});
+    public static final BitSet FOLLOW_95 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L,0x0000000000100000L});
+    public static final BitSet FOLLOW_96 = new BitSet(new long[]{0x0000000000000000L,0x0000000400000800L,0x00000000003A8508L});
+    public static final BitSet FOLLOW_97 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_98 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L,0x0000000000400000L});
+    public static final BitSet FOLLOW_99 = new BitSet(new long[]{0x0000000000000430L,0x0000006000200800L,0x0000000006C00000L});
+    public static final BitSet FOLLOW_100 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L,0x0000000000800000L});
+    public static final BitSet FOLLOW_101 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000001000000L});
+    public static final BitSet FOLLOW_102 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L,0x0000000002000000L});
     public static final BitSet FOLLOW_103 = new BitSet(new long[]{0x0000000000000000L,0x0000002000000800L});
-    public static final BitSet FOLLOW_104 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L,0x0000000002000000L});
-    public static final BitSet FOLLOW_105 = new BitSet(new long[]{0x0000000000000000L,0x0000000100000000L});
-    public static final BitSet FOLLOW_106 = new BitSet(new long[]{0x0000000000001800L});
-    public static final BitSet FOLLOW_107 = new BitSet(new long[]{0x0000000000010000L});
-    public static final BitSet FOLLOW_108 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_109 = new BitSet(new long[]{0x0000000000000080L});
-    public static final BitSet FOLLOW_110 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_111 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_112 = new BitSet(new long[]{0x0000000000080000L});
-    public static final BitSet FOLLOW_113 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x00000007FC000000L});
-    public static final BitSet FOLLOW_114 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000000000000070L});
-    public static final BitSet FOLLOW_115 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000000000000170L});
-    public static final BitSet FOLLOW_116 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000000000003C00L});
-    public static final BitSet FOLLOW_117 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000000000008170L});
+    public static final BitSet FOLLOW_104 = new BitSet(new long[]{0x0000000000000000L,0x0000004000000800L});
+    public static final BitSet FOLLOW_105 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L,0x0000000004000000L});
+    public static final BitSet FOLLOW_106 = new BitSet(new long[]{0x0000000000000000L,0x0000000200000000L});
+    public static final BitSet FOLLOW_107 = new BitSet(new long[]{0x0000000000001800L});
+    public static final BitSet FOLLOW_108 = new BitSet(new long[]{0x0000000000010000L});
+    public static final BitSet FOLLOW_109 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_110 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_111 = new BitSet(new long[]{0x0000000000040000L});
+    public static final BitSet FOLLOW_112 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_113 = new BitSet(new long[]{0x0000000000080000L});
+    public static final BitSet FOLLOW_114 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000000FF8000000L});
+    public static final BitSet FOLLOW_115 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x00000000000000E0L});
+    public static final BitSet FOLLOW_116 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x00000000000002E0L});
+    public static final BitSet FOLLOW_117 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000000000007800L});
+    public static final BitSet FOLLOW_118 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x00000000000102E0L});
 
 }

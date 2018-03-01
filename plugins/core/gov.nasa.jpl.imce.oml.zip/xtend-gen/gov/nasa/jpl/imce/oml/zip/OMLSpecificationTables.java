@@ -78,10 +78,10 @@ import gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction;
-import gov.nasa.jpl.imce.oml.model.terminologies.PartialReifiedRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.Predicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship;
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictableRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue;
@@ -201,7 +201,7 @@ public class OMLSpecificationTables {
   
   protected final Map<String, Pair<ReifiedRelationship, Map<String, String>>> reifiedRelationships;
   
-  protected final Map<String, Pair<PartialReifiedRelationship, Map<String, String>>> partialReifiedRelationships;
+  protected final Map<String, Pair<ReifiedRelationshipRestriction, Map<String, String>>> reifiedRelationshipRestrictions;
   
   protected final Map<String, Pair<ForwardProperty, Map<String, String>>> forwardProperties;
   
@@ -390,8 +390,8 @@ public class OMLSpecificationTables {
     this.structuredDataProperties = _hashMap_26;
     HashMap<String, Pair<ReifiedRelationship, Map<String, String>>> _hashMap_27 = new HashMap<String, Pair<ReifiedRelationship, Map<String, String>>>();
     this.reifiedRelationships = _hashMap_27;
-    HashMap<String, Pair<PartialReifiedRelationship, Map<String, String>>> _hashMap_28 = new HashMap<String, Pair<PartialReifiedRelationship, Map<String, String>>>();
-    this.partialReifiedRelationships = _hashMap_28;
+    HashMap<String, Pair<ReifiedRelationshipRestriction, Map<String, String>>> _hashMap_28 = new HashMap<String, Pair<ReifiedRelationshipRestriction, Map<String, String>>>();
+    this.reifiedRelationshipRestrictions = _hashMap_28;
     HashMap<String, Pair<ForwardProperty, Map<String, String>>> _hashMap_29 = new HashMap<String, Pair<ForwardProperty, Map<String, String>>>();
     this.forwardProperties = _hashMap_29;
     HashMap<String, Pair<InverseProperty, Map<String, String>>> _hashMap_30 = new HashMap<String, Pair<InverseProperty, Map<String, String>>>();
@@ -715,11 +715,11 @@ public class OMLSpecificationTables {
       } finally {
         zos.closeArchiveEntry();
       }
-      ZipArchiveEntry _zipArchiveEntry_28 = new ZipArchiveEntry("PartialReifiedRelationships.json");
+      ZipArchiveEntry _zipArchiveEntry_28 = new ZipArchiveEntry("ReifiedRelationshipRestrictions.json");
       entry = _zipArchiveEntry_28;
       zos.putArchiveEntry(entry);
       try {
-        zos.write(OMLSpecificationTables.partialReifiedRelationshipsByteArray(e));
+        zos.write(OMLSpecificationTables.reifiedRelationshipRestrictionsByteArray(e));
       } finally {
         zos.closeArchiveEntry();
       }
@@ -1913,10 +1913,10 @@ public class OMLSpecificationTables {
     return bos.toByteArray();
   }
   
-  protected static byte[] partialReifiedRelationshipsByteArray(final Extent e) {
+  protected static byte[] reifiedRelationshipRestrictionsByteArray(final Extent e) {
     final ByteArrayOutputStream bos = new ByteArrayOutputStream();
     final PrintWriter pw = new PrintWriter(bos);
-    final Consumer<PartialReifiedRelationship> _function = (PartialReifiedRelationship it) -> {
+    final Consumer<ReifiedRelationshipRestriction> _function = (ReifiedRelationshipRestriction it) -> {
       pw.print("{");
       pw.print("\"uuid\":");
       pw.print("\"");
@@ -1942,7 +1942,7 @@ public class OMLSpecificationTables {
       pw.print(OMLTables.toString(it.name()));
       pw.println("}");
     };
-    OMLTables.partialReifiedRelationships(e).forEach(_function);
+    OMLTables.reifiedRelationshipRestrictions(e).forEach(_function);
     pw.close();
     return bos.toByteArray();
   }
@@ -3254,8 +3254,8 @@ public class OMLSpecificationTables {
               case "ReifiedRelationships.json":
                 tables.readReifiedRelationships(ext, lines);
                 break;
-              case "PartialReifiedRelationships.json":
-                tables.readPartialReifiedRelationships(ext, lines);
+              case "ReifiedRelationshipRestrictions.json":
+                tables.readReifiedRelationshipRestrictions(ext, lines);
                 break;
               case "ForwardProperties.json":
                 tables.readForwardProperties(ext, lines);
@@ -4035,19 +4035,19 @@ public class OMLSpecificationTables {
     }
   }
   
-  protected void readPartialReifiedRelationships(final Extent ext, final ArrayList<String> lines) {
+  protected void readReifiedRelationshipRestrictions(final Extent ext, final ArrayList<String> lines) {
     final ArrayList<Map<String, String>> kvs = OMLZipResource.lines2tuples(lines);
     while ((!kvs.isEmpty())) {
       {
         int _size = kvs.size();
         int _minus = (_size - 1);
         final Map<String, String> kv = kvs.remove(_minus);
-        final PartialReifiedRelationship oml = this.omlTerminologiesFactory.createPartialReifiedRelationship();
+        final ReifiedRelationshipRestriction oml = this.omlTerminologiesFactory.createReifiedRelationshipRestriction();
         final String uuid = kv.remove("uuid");
         oml.setName(OMLTables.toLocalName(kv.remove("name")));
-        final Pair<PartialReifiedRelationship, Map<String, String>> pair = new Pair<PartialReifiedRelationship, Map<String, String>>(oml, kv);
-        this.partialReifiedRelationships.put(uuid, pair);
-        this.includePartialReifiedRelationships(uuid, oml);
+        final Pair<ReifiedRelationshipRestriction, Map<String, String>> pair = new Pair<ReifiedRelationshipRestriction, Map<String, String>>(oml, kv);
+        this.reifiedRelationshipRestrictions.put(uuid, pair);
+        this.includeReifiedRelationshipRestrictions(uuid, oml);
       }
     }
   }
@@ -4850,7 +4850,7 @@ public class OMLSpecificationTables {
     this.predicates.put(uuid, _pair_4);
   }
   
-  protected void includePartialReifiedRelationships(final String uuid, final PartialReifiedRelationship oml) {
+  protected void includeReifiedRelationshipRestrictions(final String uuid, final ReifiedRelationshipRestriction oml) {
     Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
     Pair<LogicalElement, Map<String, String>> _pair = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap);
     this.logicalElements.put(uuid, _pair);
@@ -5130,7 +5130,7 @@ public class OMLSpecificationTables {
     this.<LogicalElement, ScalarDataProperty>includeMap(this.logicalElements, this.scalarDataProperties);
     this.<LogicalElement, StructuredDataProperty>includeMap(this.logicalElements, this.structuredDataProperties);
     this.<LogicalElement, ReifiedRelationship>includeMap(this.logicalElements, this.reifiedRelationships);
-    this.<LogicalElement, PartialReifiedRelationship>includeMap(this.logicalElements, this.partialReifiedRelationships);
+    this.<LogicalElement, ReifiedRelationshipRestriction>includeMap(this.logicalElements, this.reifiedRelationshipRestrictions);
     this.<LogicalElement, ForwardProperty>includeMap(this.logicalElements, this.forwardProperties);
     this.<LogicalElement, InverseProperty>includeMap(this.logicalElements, this.inverseProperties);
     this.<LogicalElement, UnreifiedRelationship>includeMap(this.logicalElements, this.unreifiedRelationships);
@@ -5165,12 +5165,12 @@ public class OMLSpecificationTables {
     this.<Entity, Aspect>includeMap(this.entities, this.aspects);
     this.<Entity, Concept>includeMap(this.entities, this.concepts);
     this.<Entity, ReifiedRelationship>includeMap(this.entities, this.reifiedRelationships);
-    this.<Entity, PartialReifiedRelationship>includeMap(this.entities, this.partialReifiedRelationships);
+    this.<Entity, ReifiedRelationshipRestriction>includeMap(this.entities, this.reifiedRelationshipRestrictions);
     this.<EntityRelationship, ReifiedRelationship>includeMap(this.entityRelationships, this.reifiedRelationships);
-    this.<EntityRelationship, PartialReifiedRelationship>includeMap(this.entityRelationships, this.partialReifiedRelationships);
+    this.<EntityRelationship, ReifiedRelationshipRestriction>includeMap(this.entityRelationships, this.reifiedRelationshipRestrictions);
     this.<EntityRelationship, UnreifiedRelationship>includeMap(this.entityRelationships, this.unreifiedRelationships);
     this.<ConceptualRelationship, ReifiedRelationship>includeMap(this.conceptualRelationships, this.reifiedRelationships);
-    this.<ConceptualRelationship, PartialReifiedRelationship>includeMap(this.conceptualRelationships, this.partialReifiedRelationships);
+    this.<ConceptualRelationship, ReifiedRelationshipRestriction>includeMap(this.conceptualRelationships, this.reifiedRelationshipRestrictions);
     this.<DataRange, Scalar>includeMap(this.dataRanges, this.scalars);
     this.<DataRange, BinaryScalarRestriction>includeMap(this.dataRanges, this.binaryScalarRestrictions);
     this.<DataRange, IRIScalarRestriction>includeMap(this.dataRanges, this.iriScalarRestrictions);
@@ -5187,7 +5187,7 @@ public class OMLSpecificationTables {
     this.<Predicate, Aspect>includeMap(this.predicates, this.aspects);
     this.<Predicate, Concept>includeMap(this.predicates, this.concepts);
     this.<Predicate, ReifiedRelationship>includeMap(this.predicates, this.reifiedRelationships);
-    this.<Predicate, PartialReifiedRelationship>includeMap(this.predicates, this.partialReifiedRelationships);
+    this.<Predicate, ReifiedRelationshipRestriction>includeMap(this.predicates, this.reifiedRelationshipRestrictions);
     this.<Predicate, ForwardProperty>includeMap(this.predicates, this.forwardProperties);
     this.<Predicate, InverseProperty>includeMap(this.predicates, this.inverseProperties);
     this.<Predicate, UnreifiedRelationship>includeMap(this.predicates, this.unreifiedRelationships);
@@ -5229,7 +5229,7 @@ public class OMLSpecificationTables {
     this.resolveScalarDataProperties(rs);
     this.resolveStructuredDataProperties(rs);
     this.resolveReifiedRelationships(rs);
-    this.resolvePartialReifiedRelationships(rs);
+    this.resolveReifiedRelationshipRestrictions(rs);
     this.resolveForwardProperties(rs);
     this.resolveInverseProperties(rs);
     this.resolveUnreifiedRelationships(rs);
@@ -5999,9 +5999,9 @@ public class OMLSpecificationTables {
     this.reifiedRelationships.forEach(_function);
   }
   
-  protected void resolvePartialReifiedRelationships(final ResourceSet rs) {
-    final BiConsumer<String, Pair<PartialReifiedRelationship, Map<String, String>>> _function = (String uuid, Pair<PartialReifiedRelationship, Map<String, String>> oml_kv) -> {
-      final PartialReifiedRelationship oml = oml_kv.getKey();
+  protected void resolveReifiedRelationshipRestrictions(final ResourceSet rs) {
+    final BiConsumer<String, Pair<ReifiedRelationshipRestriction, Map<String, String>>> _function = (String uuid, Pair<ReifiedRelationshipRestriction, Map<String, String>> oml_kv) -> {
+      final ReifiedRelationshipRestriction oml = oml_kv.getKey();
       final Map<String, String> kv = oml_kv.getValue();
       boolean _isEmpty = kv.isEmpty();
       boolean _not = (!_isEmpty);
@@ -6009,24 +6009,24 @@ public class OMLSpecificationTables {
         final String tboxXRef = kv.remove("tboxUUID");
         final Pair<TerminologyBox, Map<String, String>> tboxPair = this.terminologyBoxes.get(tboxXRef);
         if ((null == tboxPair)) {
-          throw new IllegalArgumentException(("Null cross-reference lookup for tbox in partialReifiedRelationships: " + tboxXRef));
+          throw new IllegalArgumentException(("Null cross-reference lookup for tbox in reifiedRelationshipRestrictions: " + tboxXRef));
         }
         oml.setTbox(tboxPair.getKey());
         final String sourceXRef = kv.remove("sourceUUID");
         final Pair<Entity, Map<String, String>> sourcePair = this.entities.get(sourceXRef);
         if ((null == sourcePair)) {
-          throw new IllegalArgumentException(("Null cross-reference lookup for source in partialReifiedRelationships: " + sourceXRef));
+          throw new IllegalArgumentException(("Null cross-reference lookup for source in reifiedRelationshipRestrictions: " + sourceXRef));
         }
         oml.setSource(sourcePair.getKey());
         final String targetXRef = kv.remove("targetUUID");
         final Pair<Entity, Map<String, String>> targetPair = this.entities.get(targetXRef);
         if ((null == targetPair)) {
-          throw new IllegalArgumentException(("Null cross-reference lookup for target in partialReifiedRelationships: " + targetXRef));
+          throw new IllegalArgumentException(("Null cross-reference lookup for target in reifiedRelationshipRestrictions: " + targetXRef));
         }
         oml.setTarget(targetPair.getKey());
       }
     };
-    this.partialReifiedRelationships.forEach(_function);
+    this.reifiedRelationshipRestrictions.forEach(_function);
   }
   
   protected void resolveForwardProperties(final ResourceSet rs) {
@@ -7515,12 +7515,12 @@ public class OMLSpecificationTables {
           }
         }
         if (!_matched_1) {
-          if (e instanceof PartialReifiedRelationship) {
+          if (e instanceof ReifiedRelationshipRestriction) {
             _matched_1=true;
             Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
-            final Pair<PartialReifiedRelationship, Map<String, String>> pair = new Pair<PartialReifiedRelationship, Map<String, String>>(((PartialReifiedRelationship)e), _emptyMap_1);
-            this.partialReifiedRelationships.put(((PartialReifiedRelationship)e).uuid(), pair);
-            String _uuid_1 = ((PartialReifiedRelationship)e).uuid();
+            final Pair<ReifiedRelationshipRestriction, Map<String, String>> pair = new Pair<ReifiedRelationshipRestriction, Map<String, String>>(((ReifiedRelationshipRestriction)e), _emptyMap_1);
+            this.reifiedRelationshipRestrictions.put(((ReifiedRelationshipRestriction)e).uuid(), pair);
+            String _uuid_1 = ((ReifiedRelationshipRestriction)e).uuid();
             Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
             Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
             this.logicalElements.put(_uuid_1, _pair_1);

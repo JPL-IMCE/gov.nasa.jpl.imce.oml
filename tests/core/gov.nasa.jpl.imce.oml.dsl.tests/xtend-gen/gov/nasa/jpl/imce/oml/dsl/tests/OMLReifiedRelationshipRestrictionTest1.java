@@ -29,8 +29,8 @@ import gov.nasa.jpl.imce.oml.model.terminologies.AspectSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty;
-import gov.nasa.jpl.imce.oml.model.terminologies.PartialReifiedRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship;
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesFactory;
 import java.io.ByteArrayOutputStream;
@@ -49,7 +49,7 @@ import org.junit.runner.RunWith;
 @RunWith(XtextRunner.class)
 @InjectWith(OMLInjectorProvider.class)
 @SuppressWarnings("all")
-public class OMLSpecializedReifiedRelationshipTest1 {
+public class OMLReifiedRelationshipRestrictionTest1 {
   @Inject
   private Provider<XtextResourceSet> resourceSetProvider;
   
@@ -200,7 +200,7 @@ public class OMLSpecializedReifiedRelationshipTest1 {
     U2_extends_U1.setTbox(g);
     U2_extends_U1.setSubRelationship(U2);
     U2_extends_U1.setSuperRelationship(U1);
-    final PartialReifiedRelationship U3 = this.terminologiesF.createPartialReifiedRelationship();
+    final ReifiedRelationshipRestriction U3 = this.terminologiesF.createReifiedRelationshipRestriction();
     U3.setTbox(g);
     U3.setName("U3");
     U3.setSource(A3);
@@ -209,7 +209,7 @@ public class OMLSpecializedReifiedRelationshipTest1 {
     U3_extends_U2.setTbox(g);
     U3_extends_U2.setSubRelationship(U3);
     U3_extends_U2.setSuperRelationship(U2);
-    final PartialReifiedRelationship V2 = this.terminologiesF.createPartialReifiedRelationship();
+    final ReifiedRelationshipRestriction V2 = this.terminologiesF.createReifiedRelationshipRestriction();
     V2.setTbox(g);
     V2.setName("V2");
     V2.setSource(C2);
@@ -218,7 +218,7 @@ public class OMLSpecializedReifiedRelationshipTest1 {
     V2_extends_V1.setTbox(g);
     V2_extends_V1.setSubRelationship(V2);
     V2_extends_V1.setSuperRelationship(V1);
-    final PartialReifiedRelationship V3 = this.terminologiesF.createPartialReifiedRelationship();
+    final ReifiedRelationshipRestriction V3 = this.terminologiesF.createReifiedRelationshipRestriction();
     V3.setTbox(g);
     V3.setName("V3");
     V3.setSource(C3);
@@ -227,7 +227,7 @@ public class OMLSpecializedReifiedRelationshipTest1 {
     V3_extends_V2.setTbox(g);
     V3_extends_V2.setSubRelationship(V3);
     V3_extends_V2.setSuperRelationship(V2);
-    final PartialReifiedRelationship W = this.terminologiesF.createPartialReifiedRelationship();
+    final ReifiedRelationshipRestriction W = this.terminologiesF.createReifiedRelationshipRestriction();
     W.setTbox(g);
     W.setName("W");
     W.setSource(E);
@@ -415,7 +415,7 @@ public class OMLSpecializedReifiedRelationshipTest1 {
     _builder.newLine();
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("reifiedRelationship U3 {");
+    _builder.append("reifiedRelationshipRestriction U3 {");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("source = A3");
@@ -425,7 +425,7 @@ public class OMLSpecializedReifiedRelationshipTest1 {
     _builder.newLine();
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("reifiedRelationship V2 {");
+    _builder.append("reifiedRelationshipRestriction V2 {");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("source = C2");
@@ -435,7 +435,7 @@ public class OMLSpecializedReifiedRelationshipTest1 {
     _builder.newLine();
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("reifiedRelationship V3 {");
+    _builder.append("reifiedRelationshipRestriction V3 {");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("source = C3");
@@ -445,7 +445,7 @@ public class OMLSpecializedReifiedRelationshipTest1 {
     _builder.newLine();
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("reifiedRelationship W {");
+    _builder.append("reifiedRelationshipRestriction W {");
     _builder.newLine();
     _builder.append("\t\t");
     _builder.append("source = E");
