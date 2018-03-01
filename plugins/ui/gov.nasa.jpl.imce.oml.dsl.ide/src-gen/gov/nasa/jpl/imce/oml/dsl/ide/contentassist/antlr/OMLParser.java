@@ -94,7 +94,7 @@ public class OMLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getConceptAccess().getGroup(), "rule__Concept__Group__0");
 					put(grammarAccess.getReifiedRelationshipAccess().getGroup(), "rule__ReifiedRelationship__Group__0");
 					put(grammarAccess.getReifiedRelationshipAccess().getGroup_8(), "rule__ReifiedRelationship__Group_8__0");
-					put(grammarAccess.getPartialReifiedRelationshipAccess().getGroup(), "rule__PartialReifiedRelationship__Group__0");
+					put(grammarAccess.getReifiedRelationshipRestrictionAccess().getGroup(), "rule__ReifiedRelationshipRestriction__Group__0");
 					put(grammarAccess.getUnreifiedRelationshipAccess().getGroup(), "rule__UnreifiedRelationship__Group__0");
 					put(grammarAccess.getScalarAccess().getGroup(), "rule__Scalar__Group__0");
 					put(grammarAccess.getStructureAccess().getGroup(), "rule__Structure__Group__0");
@@ -248,10 +248,10 @@ public class OMLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getReifiedRelationshipAccess().getTargetAssignment_14(), "rule__ReifiedRelationship__TargetAssignment_14");
 					put(grammarAccess.getForwardPropertyAccess().getNameAssignment(), "rule__ForwardProperty__NameAssignment");
 					put(grammarAccess.getInversePropertyAccess().getNameAssignment(), "rule__InverseProperty__NameAssignment");
-					put(grammarAccess.getPartialReifiedRelationshipAccess().getAnnotationsAssignment_0(), "rule__PartialReifiedRelationship__AnnotationsAssignment_0");
-					put(grammarAccess.getPartialReifiedRelationshipAccess().getNameAssignment_2(), "rule__PartialReifiedRelationship__NameAssignment_2");
-					put(grammarAccess.getPartialReifiedRelationshipAccess().getSourceAssignment_6(), "rule__PartialReifiedRelationship__SourceAssignment_6");
-					put(grammarAccess.getPartialReifiedRelationshipAccess().getTargetAssignment_9(), "rule__PartialReifiedRelationship__TargetAssignment_9");
+					put(grammarAccess.getReifiedRelationshipRestrictionAccess().getAnnotationsAssignment_0(), "rule__ReifiedRelationshipRestriction__AnnotationsAssignment_0");
+					put(grammarAccess.getReifiedRelationshipRestrictionAccess().getNameAssignment_2(), "rule__ReifiedRelationshipRestriction__NameAssignment_2");
+					put(grammarAccess.getReifiedRelationshipRestrictionAccess().getSourceAssignment_6(), "rule__ReifiedRelationshipRestriction__SourceAssignment_6");
+					put(grammarAccess.getReifiedRelationshipRestrictionAccess().getTargetAssignment_9(), "rule__ReifiedRelationshipRestriction__TargetAssignment_9");
 					put(grammarAccess.getUnreifiedRelationshipAccess().getAnnotationsAssignment_0(), "rule__UnreifiedRelationship__AnnotationsAssignment_0");
 					put(grammarAccess.getUnreifiedRelationshipAccess().getNameAssignment_2(), "rule__UnreifiedRelationship__NameAssignment_2");
 					put(grammarAccess.getUnreifiedRelationshipAccess().getIsFunctionalAssignment_4_0(), "rule__UnreifiedRelationship__IsFunctionalAssignment_4_0");

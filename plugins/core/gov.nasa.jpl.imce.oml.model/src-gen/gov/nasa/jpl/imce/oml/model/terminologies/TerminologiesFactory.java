@@ -92,13 +92,13 @@ public interface TerminologiesFactory extends EFactory {
 	ReifiedRelationship createReifiedRelationship();
 
 	/**
-	 * Returns a new object of class '<em>Partial Reified Relationship</em>'.
+	 * Returns a new object of class '<em>Reified Relationship Restriction</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Partial Reified Relationship</em>'.
+	 * @return a new object of class '<em>Reified Relationship Restriction</em>'.
 	 * @generated
 	 */
-	PartialReifiedRelationship createPartialReifiedRelationship();
+	ReifiedRelationshipRestriction createReifiedRelationshipRestriction();
 
 	/**
 	 * Returns a new object of class '<em>Unreified Relationship</em>'.

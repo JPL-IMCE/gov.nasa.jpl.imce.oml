@@ -62,9 +62,9 @@ import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataPropertyParticularRestrictionAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction;
-import gov.nasa.jpl.imce.oml.model.terminologies.PartialReifiedRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship;
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple;
@@ -497,7 +497,7 @@ public class OMLFormatter extends AbstractFormatter2 {
     document.prepend(this.textRegionExtensions.regionFor(rr).keyword("target"), _function_18);
   }
   
-  protected void _format(final PartialReifiedRelationship prr, @Extension final IFormattableDocument document) {
+  protected void _format(final ReifiedRelationshipRestriction prr, @Extension final IFormattableDocument document) {
     final Consumer<AnnotationPropertyValue> _function = (AnnotationPropertyValue it) -> {
       final Procedure1<IHiddenRegionFormatter> _function_1 = (IHiddenRegionFormatter it_1) -> {
         it_1.setNewLines(1);
@@ -2159,14 +2159,14 @@ public class OMLFormatter extends AbstractFormatter2 {
     } else if (t instanceof NumericScalarRestriction) {
       _format((NumericScalarRestriction)t, document);
       return;
-    } else if (t instanceof PartialReifiedRelationship) {
-      _format((PartialReifiedRelationship)t, document);
-      return;
     } else if (t instanceof PlainLiteralScalarRestriction) {
       _format((PlainLiteralScalarRestriction)t, document);
       return;
     } else if (t instanceof ReifiedRelationship) {
       _format((ReifiedRelationship)t, document);
+      return;
+    } else if (t instanceof ReifiedRelationshipRestriction) {
+      _format((ReifiedRelationshipRestriction)t, document);
       return;
     } else if (t instanceof ScalarOneOfRestriction) {
       _format((ScalarOneOfRestriction)t, document);

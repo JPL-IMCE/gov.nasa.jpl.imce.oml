@@ -2843,14 +2843,14 @@ public interface TerminologiesPackage extends EPackage {
 	int REIFIED_RELATIONSHIP_OPERATION_COUNT = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 2;
 
 	/**
-	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.PartialReifiedRelationshipImpl <em>Partial Reified Relationship</em>}' class.
+	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipRestrictionImpl <em>Reified Relationship Restriction</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.PartialReifiedRelationshipImpl
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getPartialReifiedRelationship()
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipRestrictionImpl
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getReifiedRelationshipRestriction()
 	 * @generated
 	 */
-	int PARTIAL_REIFIED_RELATIONSHIP = 20;
+	int REIFIED_RELATIONSHIP_RESTRICTION = 20;
 
 	/**
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
@@ -2859,7 +2859,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARTIAL_REIFIED_RELATIONSHIP__UUID = CONCEPTUAL_RELATIONSHIP__UUID;
+	int REIFIED_RELATIONSHIP_RESTRICTION__UUID = CONCEPTUAL_RELATIONSHIP__UUID;
 
 	/**
 	 * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
@@ -2868,7 +2868,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARTIAL_REIFIED_RELATIONSHIP__ANNOTATIONS = CONCEPTUAL_RELATIONSHIP__ANNOTATIONS;
+	int REIFIED_RELATIONSHIP_RESTRICTION__ANNOTATIONS = CONCEPTUAL_RELATIONSHIP__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Tbox</b></em>' container reference.
@@ -2877,7 +2877,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARTIAL_REIFIED_RELATIONSHIP__TBOX = CONCEPTUAL_RELATIONSHIP__TBOX;
+	int REIFIED_RELATIONSHIP_RESTRICTION__TBOX = CONCEPTUAL_RELATIONSHIP__TBOX;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2886,7 +2886,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARTIAL_REIFIED_RELATIONSHIP__NAME = CONCEPTUAL_RELATIONSHIP__NAME;
+	int REIFIED_RELATIONSHIP_RESTRICTION__NAME = CONCEPTUAL_RELATIONSHIP__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Source</b></em>' reference.
@@ -2895,7 +2895,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARTIAL_REIFIED_RELATIONSHIP__SOURCE = CONCEPTUAL_RELATIONSHIP__SOURCE;
+	int REIFIED_RELATIONSHIP_RESTRICTION__SOURCE = CONCEPTUAL_RELATIONSHIP__SOURCE;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -2904,16 +2904,16 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARTIAL_REIFIED_RELATIONSHIP__TARGET = CONCEPTUAL_RELATIONSHIP__TARGET;
+	int REIFIED_RELATIONSHIP_RESTRICTION__TARGET = CONCEPTUAL_RELATIONSHIP__TARGET;
 
 	/**
-	 * The number of structural features of the '<em>Partial Reified Relationship</em>' class.
+	 * The number of structural features of the '<em>Reified Relationship Restriction</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARTIAL_REIFIED_RELATIONSHIP_FEATURE_COUNT = CONCEPTUAL_RELATIONSHIP_FEATURE_COUNT + 0;
+	int REIFIED_RELATIONSHIP_RESTRICTION_FEATURE_COUNT = CONCEPTUAL_RELATIONSHIP_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Module Context</em>' operation.
@@ -2922,7 +2922,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARTIAL_REIFIED_RELATIONSHIP___MODULE_CONTEXT = CONCEPTUAL_RELATIONSHIP___MODULE_CONTEXT;
+	int REIFIED_RELATIONSHIP_RESTRICTION___MODULE_CONTEXT = CONCEPTUAL_RELATIONSHIP___MODULE_CONTEXT;
 
 	/**
 	 * The operation id for the '<em>Iri</em>' operation.
@@ -2931,7 +2931,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARTIAL_REIFIED_RELATIONSHIP___IRI = CONCEPTUAL_RELATIONSHIP___IRI;
+	int REIFIED_RELATIONSHIP_RESTRICTION___IRI = CONCEPTUAL_RELATIONSHIP___IRI;
 
 	/**
 	 * The operation id for the '<em>Abbrev IRI</em>' operation.
@@ -2940,7 +2940,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARTIAL_REIFIED_RELATIONSHIP___ABBREV_IRI = CONCEPTUAL_RELATIONSHIP___ABBREV_IRI;
+	int REIFIED_RELATIONSHIP_RESTRICTION___ABBREV_IRI = CONCEPTUAL_RELATIONSHIP___ABBREV_IRI;
 
 	/**
 	 * The operation id for the '<em>Name</em>' operation.
@@ -2949,7 +2949,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARTIAL_REIFIED_RELATIONSHIP___NAME = CONCEPTUAL_RELATIONSHIP___NAME;
+	int REIFIED_RELATIONSHIP_RESTRICTION___NAME = CONCEPTUAL_RELATIONSHIP___NAME;
 
 	/**
 	 * The operation id for the '<em>Uuid</em>' operation.
@@ -2958,7 +2958,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARTIAL_REIFIED_RELATIONSHIP___UUID = CONCEPTUAL_RELATIONSHIP___UUID;
+	int REIFIED_RELATIONSHIP_RESTRICTION___UUID = CONCEPTUAL_RELATIONSHIP___UUID;
 
 	/**
 	 * The operation id for the '<em>Term</em>' operation.
@@ -2967,7 +2967,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARTIAL_REIFIED_RELATIONSHIP___TERM = CONCEPTUAL_RELATIONSHIP___TERM;
+	int REIFIED_RELATIONSHIP_RESTRICTION___TERM = CONCEPTUAL_RELATIONSHIP___TERM;
 
 	/**
 	 * The operation id for the '<em>Relation Domain</em>' operation.
@@ -2976,7 +2976,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARTIAL_REIFIED_RELATIONSHIP___RELATION_DOMAIN = CONCEPTUAL_RELATIONSHIP___RELATION_DOMAIN;
+	int REIFIED_RELATIONSHIP_RESTRICTION___RELATION_DOMAIN = CONCEPTUAL_RELATIONSHIP___RELATION_DOMAIN;
 
 	/**
 	 * The operation id for the '<em>Relation Range</em>' operation.
@@ -2985,7 +2985,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARTIAL_REIFIED_RELATIONSHIP___RELATION_RANGE = CONCEPTUAL_RELATIONSHIP___RELATION_RANGE;
+	int REIFIED_RELATIONSHIP_RESTRICTION___RELATION_RANGE = CONCEPTUAL_RELATIONSHIP___RELATION_RANGE;
 
 	/**
 	 * The operation id for the '<em>All Nested Elements</em>' operation.
@@ -2994,7 +2994,7 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARTIAL_REIFIED_RELATIONSHIP___ALL_NESTED_ELEMENTS = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 0;
+	int REIFIED_RELATIONSHIP_RESTRICTION___ALL_NESTED_ELEMENTS = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Root Reified Relationships</em>' operation.
@@ -3003,16 +3003,16 @@ public interface TerminologiesPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARTIAL_REIFIED_RELATIONSHIP___ROOT_REIFIED_RELATIONSHIPS = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 1;
+	int REIFIED_RELATIONSHIP_RESTRICTION___ROOT_REIFIED_RELATIONSHIPS = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>Partial Reified Relationship</em>' class.
+	 * The number of operations of the '<em>Reified Relationship Restriction</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARTIAL_REIFIED_RELATIONSHIP_OPERATION_COUNT = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 2;
+	int REIFIED_RELATIONSHIP_RESTRICTION_OPERATION_COUNT = CONCEPTUAL_RELATIONSHIP_OPERATION_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.UnreifiedRelationshipImpl <em>Unreified Relationship</em>}' class.
@@ -10497,34 +10497,34 @@ public interface TerminologiesPackage extends EPackage {
 	EOperation getReifiedRelationship__RootReifiedRelationships();
 
 	/**
-	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.PartialReifiedRelationship <em>Partial Reified Relationship</em>}'.
+	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction <em>Reified Relationship Restriction</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Partial Reified Relationship</em>'.
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.PartialReifiedRelationship
+	 * @return the meta object for class '<em>Reified Relationship Restriction</em>'.
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction
 	 * @generated
 	 */
-	EClass getPartialReifiedRelationship();
+	EClass getReifiedRelationshipRestriction();
 
 	/**
-	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.PartialReifiedRelationship#allNestedElements() <em>All Nested Elements</em>}' operation.
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction#allNestedElements() <em>All Nested Elements</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>All Nested Elements</em>' operation.
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.PartialReifiedRelationship#allNestedElements()
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction#allNestedElements()
 	 * @generated
 	 */
-	EOperation getPartialReifiedRelationship__AllNestedElements();
+	EOperation getReifiedRelationshipRestriction__AllNestedElements();
 
 	/**
-	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.PartialReifiedRelationship#rootReifiedRelationships() <em>Root Reified Relationships</em>}' operation.
+	 * Returns the meta object for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction#rootReifiedRelationships() <em>Root Reified Relationships</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Root Reified Relationships</em>' operation.
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.PartialReifiedRelationship#rootReifiedRelationships()
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction#rootReifiedRelationships()
 	 * @generated
 	 */
-	EOperation getPartialReifiedRelationship__RootReifiedRelationships();
+	EOperation getReifiedRelationshipRestriction__RootReifiedRelationships();
 
 	/**
 	 * Returns the meta object for class '{@link gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship <em>Unreified Relationship</em>}'.
@@ -13172,14 +13172,14 @@ public interface TerminologiesPackage extends EPackage {
 		EOperation REIFIED_RELATIONSHIP___ROOT_REIFIED_RELATIONSHIPS = eINSTANCE.getReifiedRelationship__RootReifiedRelationships();
 
 		/**
-		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.PartialReifiedRelationshipImpl <em>Partial Reified Relationship</em>}' class.
+		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipRestrictionImpl <em>Reified Relationship Restriction</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.PartialReifiedRelationshipImpl
-		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getPartialReifiedRelationship()
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.ReifiedRelationshipRestrictionImpl
+		 * @see gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologiesPackageImpl#getReifiedRelationshipRestriction()
 		 * @generated
 		 */
-		EClass PARTIAL_REIFIED_RELATIONSHIP = eINSTANCE.getPartialReifiedRelationship();
+		EClass REIFIED_RELATIONSHIP_RESTRICTION = eINSTANCE.getReifiedRelationshipRestriction();
 
 		/**
 		 * The meta object literal for the '<em><b>All Nested Elements</b></em>' operation.
@@ -13187,7 +13187,7 @@ public interface TerminologiesPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation PARTIAL_REIFIED_RELATIONSHIP___ALL_NESTED_ELEMENTS = eINSTANCE.getPartialReifiedRelationship__AllNestedElements();
+		EOperation REIFIED_RELATIONSHIP_RESTRICTION___ALL_NESTED_ELEMENTS = eINSTANCE.getReifiedRelationshipRestriction__AllNestedElements();
 
 		/**
 		 * The meta object literal for the '<em><b>Root Reified Relationships</b></em>' operation.
@@ -13195,7 +13195,7 @@ public interface TerminologiesPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation PARTIAL_REIFIED_RELATIONSHIP___ROOT_REIFIED_RELATIONSHIPS = eINSTANCE.getPartialReifiedRelationship__RootReifiedRelationships();
+		EOperation REIFIED_RELATIONSHIP_RESTRICTION___ROOT_REIFIED_RELATIONSHIPS = eINSTANCE.getReifiedRelationshipRestriction__RootReifiedRelationships();
 
 		/**
 		 * The meta object literal for the '{@link gov.nasa.jpl.imce.oml.model.terminologies.impl.UnreifiedRelationshipImpl <em>Unreified Relationship</em>}' class.

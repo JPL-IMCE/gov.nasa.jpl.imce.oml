@@ -37,7 +37,7 @@ import gov.nasa.jpl.imce.oml.model.graphs.ConceptDesignationTerminologyAxiom;
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyGraph;
 import gov.nasa.jpl.imce.oml.model.terminologies.Aspect;
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
-import gov.nasa.jpl.imce.oml.model.terminologies.ConceptualEntity;
+import gov.nasa.jpl.imce.oml.model.terminologies.ConceptualRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.DataRange;
 import gov.nasa.jpl.imce.oml.model.terminologies.Entity;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship;
@@ -47,6 +47,7 @@ import gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.Predicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship;
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictableRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarOneOfRestriction;
@@ -293,16 +294,6 @@ public class OMLScopeExtensions {
     return this.<Entity>terminologyScope(tbox, _function, _function_1);
   }
   
-  public IScope allConceptualRelationshipsScope(final TerminologyBox tbox) {
-    final Function<TerminologyBox, Iterable<ConceptualEntity>> _function = (TerminologyBox it) -> {
-      return this._oMLExtensions.localConceptualEntities(it);
-    };
-    final Function<Pair<TerminologyBox, ConceptualEntity>, QualifiedName> _function_1 = (Pair<TerminologyBox, ConceptualEntity> it) -> {
-      return this.<ConceptualEntity>importedResourceNameFunction(it);
-    };
-    return this.<ConceptualEntity>terminologyScope(tbox, _function, _function_1);
-  }
-  
   public IScope allRangesScope(final TerminologyBox tbox) {
     final Function<TerminologyBox, Iterable<DataRange>> _function = (TerminologyBox it) -> {
       return this._oMLExtensions.localRanges(it);
@@ -341,6 +332,26 @@ public class OMLScopeExtensions {
       return this.<Concept>importedResourceNameFunction(it);
     };
     return this.<Concept>terminologyScope(tbox, _function, _function_1);
+  }
+  
+  public IScope allConceptualRelationshipsScope(final TerminologyBox tbox) {
+    final Function<TerminologyBox, Iterable<ConceptualRelationship>> _function = (TerminologyBox it) -> {
+      return this._oMLExtensions.localConceptualRelationships(it);
+    };
+    final Function<Pair<TerminologyBox, ConceptualRelationship>, QualifiedName> _function_1 = (Pair<TerminologyBox, ConceptualRelationship> it) -> {
+      return this.<ConceptualRelationship>importedResourceNameFunction(it);
+    };
+    return this.<ConceptualRelationship>terminologyScope(tbox, _function, _function_1);
+  }
+  
+  public IScope allReifiedRelationshipRestrictionsScope(final TerminologyBox tbox) {
+    final Function<TerminologyBox, Iterable<ReifiedRelationshipRestriction>> _function = (TerminologyBox it) -> {
+      return this._oMLExtensions.localReifiedRelationshipRestrictions(it);
+    };
+    final Function<Pair<TerminologyBox, ReifiedRelationshipRestriction>, QualifiedName> _function_1 = (Pair<TerminologyBox, ReifiedRelationshipRestriction> it) -> {
+      return this.<ReifiedRelationshipRestriction>importedResourceNameFunction(it);
+    };
+    return this.<ReifiedRelationshipRestriction>terminologyScope(tbox, _function, _function_1);
   }
   
   public IScope allReifiedRelationshipsScope(final TerminologyBox tbox) {

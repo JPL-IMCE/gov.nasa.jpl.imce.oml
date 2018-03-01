@@ -178,8 +178,8 @@ public class TerminologiesAdapterFactory extends AdapterFactoryImpl {
 				return createReifiedRelationshipAdapter();
 			}
 			@Override
-			public Adapter casePartialReifiedRelationship(PartialReifiedRelationship object) {
-				return createPartialReifiedRelationshipAdapter();
+			public Adapter caseReifiedRelationshipRestriction(ReifiedRelationshipRestriction object) {
+				return createReifiedRelationshipRestrictionAdapter();
 			}
 			@Override
 			public Adapter caseUnreifiedRelationship(UnreifiedRelationship object) {
@@ -730,16 +730,16 @@ public class TerminologiesAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.terminologies.PartialReifiedRelationship <em>Partial Reified Relationship</em>}'.
+	 * Creates a new adapter for an object of class '{@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction <em>Reified Relationship Restriction</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see gov.nasa.jpl.imce.oml.model.terminologies.PartialReifiedRelationship
+	 * @see gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction
 	 * @generated
 	 */
-	public Adapter createPartialReifiedRelationshipAdapter() {
+	public Adapter createReifiedRelationshipRestrictionAdapter() {
 		return null;
 	}
 

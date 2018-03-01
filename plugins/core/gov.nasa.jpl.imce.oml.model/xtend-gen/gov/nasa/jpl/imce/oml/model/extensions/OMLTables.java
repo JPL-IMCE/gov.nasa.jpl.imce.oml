@@ -88,10 +88,10 @@ import gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction;
-import gov.nasa.jpl.imce.oml.model.terminologies.PartialReifiedRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.Predicate;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship;
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionScalarDataPropertyValue;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictionStructuredDataPropertyTuple;
@@ -311,15 +311,15 @@ public class OMLTables {
     return _xblockexpression;
   }
   
-  public static List<PartialReifiedRelationship> partialReifiedRelationships(final Extent e) {
-    List<PartialReifiedRelationship> _xblockexpression = null;
+  public static List<ReifiedRelationshipRestriction> reifiedRelationshipRestrictions(final Extent e) {
+    List<ReifiedRelationshipRestriction> _xblockexpression = null;
     {
-      final List<PartialReifiedRelationship> result = new ArrayList<PartialReifiedRelationship>();
+      final List<ReifiedRelationshipRestriction> result = new ArrayList<ReifiedRelationshipRestriction>();
       final Consumer<TerminologyBox> _function = (TerminologyBox tbox) -> {
-        Iterables.<PartialReifiedRelationship>addAll(result, Iterables.<PartialReifiedRelationship>filter(tbox.getBoxStatements(), PartialReifiedRelationship.class));
+        Iterables.<ReifiedRelationshipRestriction>addAll(result, Iterables.<ReifiedRelationshipRestriction>filter(tbox.getBoxStatements(), ReifiedRelationshipRestriction.class));
       };
       OMLTables.terminologies(e).forEach(_function);
-      _xblockexpression = result.parallelStream().sorted(OMLTables.<PartialReifiedRelationship>crossReferencabilityComparator()).collect(Collectors.<PartialReifiedRelationship>toList());
+      _xblockexpression = result.parallelStream().sorted(OMLTables.<ReifiedRelationshipRestriction>crossReferencabilityComparator()).collect(Collectors.<ReifiedRelationshipRestriction>toList());
     }
     return _xblockexpression;
   }

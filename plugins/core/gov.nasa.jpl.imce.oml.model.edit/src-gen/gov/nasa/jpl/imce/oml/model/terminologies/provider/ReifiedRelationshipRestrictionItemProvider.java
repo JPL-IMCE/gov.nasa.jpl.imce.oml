@@ -19,7 +19,7 @@
 package gov.nasa.jpl.imce.oml.model.terminologies.provider;
 
 
-import gov.nasa.jpl.imce.oml.model.terminologies.PartialReifiedRelationship;
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction;
 
 import java.util.Collection;
 import java.util.List;
@@ -30,19 +30,19 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
 /**
- * This is the item provider adapter for a {@link gov.nasa.jpl.imce.oml.model.terminologies.PartialReifiedRelationship} object.
+ * This is the item provider adapter for a {@link gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class PartialReifiedRelationshipItemProvider extends ConceptualRelationshipItemProvider {
+public class ReifiedRelationshipRestrictionItemProvider extends ConceptualRelationshipItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PartialReifiedRelationshipItemProvider(AdapterFactory adapterFactory) {
+	public ReifiedRelationshipRestrictionItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -62,14 +62,14 @@ public class PartialReifiedRelationshipItemProvider extends ConceptualRelationsh
 	}
 
 	/**
-	 * This returns PartialReifiedRelationship.gif.
+	 * This returns ReifiedRelationshipRestriction.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/PartialReifiedRelationship"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ReifiedRelationshipRestriction"));
 	}
 
 	/**
@@ -80,10 +80,10 @@ public class PartialReifiedRelationshipItemProvider extends ConceptualRelationsh
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((PartialReifiedRelationship)object).getName();
+		String label = ((ReifiedRelationshipRestriction)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_PartialReifiedRelationship_type") :
-			getString("_UI_PartialReifiedRelationship_type") + " " + label;
+			getString("_UI_ReifiedRelationshipRestriction_type") :
+			getString("_UI_ReifiedRelationshipRestriction_type") + " " + label;
 	}
 	
 

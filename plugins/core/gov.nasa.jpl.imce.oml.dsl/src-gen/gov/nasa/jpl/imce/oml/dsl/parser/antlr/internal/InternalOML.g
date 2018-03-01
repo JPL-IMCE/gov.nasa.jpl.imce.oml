@@ -1436,11 +1436,11 @@ ruleEntityRelationship returns [EObject current=null]
 		}
 		    |
 		{
-			newCompositeNode(grammarAccess.getEntityRelationshipAccess().getPartialReifiedRelationshipParserRuleCall_1());
+			newCompositeNode(grammarAccess.getEntityRelationshipAccess().getReifiedRelationshipRestrictionParserRuleCall_1());
 		}
-		this_PartialReifiedRelationship_1=rulePartialReifiedRelationship
+		this_ReifiedRelationshipRestriction_1=ruleReifiedRelationshipRestriction
 		{
-			$current = $this_PartialReifiedRelationship_1.current;
+			$current = $this_ReifiedRelationshipRestriction_1.current;
 			afterParserOrEnumRuleCall();
 		}
 		    |
@@ -2572,15 +2572,15 @@ ruleInverseProperty returns [EObject current=null]
 	)
 ;
 
-// Entry rule entryRulePartialReifiedRelationship
-entryRulePartialReifiedRelationship returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getPartialReifiedRelationshipRule()); }
-	iv_rulePartialReifiedRelationship=rulePartialReifiedRelationship
-	{ $current=$iv_rulePartialReifiedRelationship.current; }
+// Entry rule entryRuleReifiedRelationshipRestriction
+entryRuleReifiedRelationshipRestriction returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getReifiedRelationshipRestrictionRule()); }
+	iv_ruleReifiedRelationshipRestriction=ruleReifiedRelationshipRestriction
+	{ $current=$iv_ruleReifiedRelationshipRestriction.current; }
 	EOF;
 
-// Rule PartialReifiedRelationship
-rulePartialReifiedRelationship returns [EObject current=null]
+// Rule ReifiedRelationshipRestriction
+ruleReifiedRelationshipRestriction returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -2591,12 +2591,12 @@ rulePartialReifiedRelationship returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getPartialReifiedRelationshipAccess().getAnnotationsAnnotationPropertyValueParserRuleCall_0_0());
+					newCompositeNode(grammarAccess.getReifiedRelationshipRestrictionAccess().getAnnotationsAnnotationPropertyValueParserRuleCall_0_0());
 				}
 				lv_annotations_0_0=ruleAnnotationPropertyValue
 				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getPartialReifiedRelationshipRule());
+						$current = createModelElementForParent(grammarAccess.getReifiedRelationshipRestrictionRule());
 					}
 					add(
 						$current,
@@ -2607,19 +2607,19 @@ rulePartialReifiedRelationship returns [EObject current=null]
 				}
 			)
 		)*
-		otherlv_1='reifiedRelationship'
+		otherlv_1='reifiedRelationshipRestriction'
 		{
-			newLeafNode(otherlv_1, grammarAccess.getPartialReifiedRelationshipAccess().getReifiedRelationshipKeyword_1());
+			newLeafNode(otherlv_1, grammarAccess.getReifiedRelationshipRestrictionAccess().getReifiedRelationshipRestrictionKeyword_1());
 		}
 		(
 			(
 				lv_name_2_0=RULE_ID
 				{
-					newLeafNode(lv_name_2_0, grammarAccess.getPartialReifiedRelationshipAccess().getNameIDTerminalRuleCall_2_0());
+					newLeafNode(lv_name_2_0, grammarAccess.getReifiedRelationshipRestrictionAccess().getNameIDTerminalRuleCall_2_0());
 				}
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getPartialReifiedRelationshipRule());
+						$current = createModelElement(grammarAccess.getReifiedRelationshipRestrictionRule());
 					}
 					setWithLastConsumed(
 						$current,
@@ -2631,25 +2631,25 @@ rulePartialReifiedRelationship returns [EObject current=null]
 		)
 		otherlv_3='{'
 		{
-			newLeafNode(otherlv_3, grammarAccess.getPartialReifiedRelationshipAccess().getLeftCurlyBracketKeyword_3());
+			newLeafNode(otherlv_3, grammarAccess.getReifiedRelationshipRestrictionAccess().getLeftCurlyBracketKeyword_3());
 		}
 		otherlv_4='source'
 		{
-			newLeafNode(otherlv_4, grammarAccess.getPartialReifiedRelationshipAccess().getSourceKeyword_4());
+			newLeafNode(otherlv_4, grammarAccess.getReifiedRelationshipRestrictionAccess().getSourceKeyword_4());
 		}
 		otherlv_5='='
 		{
-			newLeafNode(otherlv_5, grammarAccess.getPartialReifiedRelationshipAccess().getEqualsSignKeyword_5());
+			newLeafNode(otherlv_5, grammarAccess.getReifiedRelationshipRestrictionAccess().getEqualsSignKeyword_5());
 		}
 		(
 			(
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getPartialReifiedRelationshipRule());
+						$current = createModelElement(grammarAccess.getReifiedRelationshipRestrictionRule());
 					}
 				}
 				{
-					newCompositeNode(grammarAccess.getPartialReifiedRelationshipAccess().getSourceEntityCrossReference_6_0());
+					newCompositeNode(grammarAccess.getReifiedRelationshipRestrictionAccess().getSourceEntityCrossReference_6_0());
 				}
 				ruleReference
 				{
@@ -2659,21 +2659,21 @@ rulePartialReifiedRelationship returns [EObject current=null]
 		)
 		otherlv_7='target'
 		{
-			newLeafNode(otherlv_7, grammarAccess.getPartialReifiedRelationshipAccess().getTargetKeyword_7());
+			newLeafNode(otherlv_7, grammarAccess.getReifiedRelationshipRestrictionAccess().getTargetKeyword_7());
 		}
 		otherlv_8='='
 		{
-			newLeafNode(otherlv_8, grammarAccess.getPartialReifiedRelationshipAccess().getEqualsSignKeyword_8());
+			newLeafNode(otherlv_8, grammarAccess.getReifiedRelationshipRestrictionAccess().getEqualsSignKeyword_8());
 		}
 		(
 			(
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getPartialReifiedRelationshipRule());
+						$current = createModelElement(grammarAccess.getReifiedRelationshipRestrictionRule());
 					}
 				}
 				{
-					newCompositeNode(grammarAccess.getPartialReifiedRelationshipAccess().getTargetEntityCrossReference_9_0());
+					newCompositeNode(grammarAccess.getReifiedRelationshipRestrictionAccess().getTargetEntityCrossReference_9_0());
 				}
 				ruleReference
 				{
@@ -2683,7 +2683,7 @@ rulePartialReifiedRelationship returns [EObject current=null]
 		)
 		otherlv_10='}'
 		{
-			newLeafNode(otherlv_10, grammarAccess.getPartialReifiedRelationshipAccess().getRightCurlyBracketKeyword_10());
+			newLeafNode(otherlv_10, grammarAccess.getReifiedRelationshipRestrictionAccess().getRightCurlyBracketKeyword_10());
 		}
 	)
 ;

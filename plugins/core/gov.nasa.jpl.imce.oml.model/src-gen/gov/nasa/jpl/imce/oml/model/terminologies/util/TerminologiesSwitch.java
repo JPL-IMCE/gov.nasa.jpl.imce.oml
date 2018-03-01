@@ -403,24 +403,24 @@ public class TerminologiesSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case TerminologiesPackage.PARTIAL_REIFIED_RELATIONSHIP: {
-				PartialReifiedRelationship partialReifiedRelationship = (PartialReifiedRelationship)theEObject;
-				T result = casePartialReifiedRelationship(partialReifiedRelationship);
-				if (result == null) result = caseConceptualRelationship(partialReifiedRelationship);
-				if (result == null) result = caseConceptualEntity(partialReifiedRelationship);
-				if (result == null) result = caseEntityRelationship(partialReifiedRelationship);
-				if (result == null) result = caseEntity(partialReifiedRelationship);
-				if (result == null) result = caseDirectedBinaryRelationshipKind(partialReifiedRelationship);
-				if (result == null) result = caseTerm(partialReifiedRelationship);
-				if (result == null) result = casePredicate(partialReifiedRelationship);
-				if (result == null) result = caseTerminologyBoxStatement(partialReifiedRelationship);
-				if (result == null) result = caseResource(partialReifiedRelationship);
-				if (result == null) result = caseModuleElement(partialReifiedRelationship);
-				if (result == null) result = caseIntrinsicIdentityKind(partialReifiedRelationship);
-				if (result == null) result = caseLogicalElement(partialReifiedRelationship);
-				if (result == null) result = caseCrossReferencableKind(partialReifiedRelationship);
-				if (result == null) result = caseIdentityKind(partialReifiedRelationship);
-				if (result == null) result = caseCrossReferencabilityKind(partialReifiedRelationship);
+			case TerminologiesPackage.REIFIED_RELATIONSHIP_RESTRICTION: {
+				ReifiedRelationshipRestriction reifiedRelationshipRestriction = (ReifiedRelationshipRestriction)theEObject;
+				T result = caseReifiedRelationshipRestriction(reifiedRelationshipRestriction);
+				if (result == null) result = caseConceptualRelationship(reifiedRelationshipRestriction);
+				if (result == null) result = caseConceptualEntity(reifiedRelationshipRestriction);
+				if (result == null) result = caseEntityRelationship(reifiedRelationshipRestriction);
+				if (result == null) result = caseEntity(reifiedRelationshipRestriction);
+				if (result == null) result = caseDirectedBinaryRelationshipKind(reifiedRelationshipRestriction);
+				if (result == null) result = caseTerm(reifiedRelationshipRestriction);
+				if (result == null) result = casePredicate(reifiedRelationshipRestriction);
+				if (result == null) result = caseTerminologyBoxStatement(reifiedRelationshipRestriction);
+				if (result == null) result = caseResource(reifiedRelationshipRestriction);
+				if (result == null) result = caseModuleElement(reifiedRelationshipRestriction);
+				if (result == null) result = caseIntrinsicIdentityKind(reifiedRelationshipRestriction);
+				if (result == null) result = caseLogicalElement(reifiedRelationshipRestriction);
+				if (result == null) result = caseCrossReferencableKind(reifiedRelationshipRestriction);
+				if (result == null) result = caseIdentityKind(reifiedRelationshipRestriction);
+				if (result == null) result = caseCrossReferencabilityKind(reifiedRelationshipRestriction);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -1535,17 +1535,17 @@ public class TerminologiesSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Partial Reified Relationship</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Reified Relationship Restriction</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Partial Reified Relationship</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Reified Relationship Restriction</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T casePartialReifiedRelationship(PartialReifiedRelationship object) {
+	public T caseReifiedRelationshipRestriction(ReifiedRelationshipRestriction object) {
 		return null;
 	}
 
