@@ -82,7 +82,7 @@ import gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction
-import gov.nasa.jpl.imce.oml.model.terminologies.PartialReifiedRelationship
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom
@@ -490,6 +490,14 @@ public class OMLExtensions {
 		localConcepts + allImportedTerminologies(it).map[localConcepts].flatten
 	}
 
+	def Iterable<ConceptualRelationship> localConceptualRelationships(TerminologyBox it) {
+		boxStatements.filter(ConceptualRelationship)
+	}
+
+	def Iterable<ReifiedRelationshipRestriction> localReifiedRelationshipRestrictions(TerminologyBox it) {
+		boxStatements.filter(ReifiedRelationshipRestriction)
+	}
+
 	def Iterable<ReifiedRelationship> localReifiedRelationships(TerminologyBox it) {
 		boxStatements.filter(ReifiedRelationship)
 	}
@@ -539,7 +547,7 @@ public class OMLExtensions {
 		localEntityRelationships + allImportedTerminologies(it).map[localEntityRelationships].flatten
 	}
 
-	static def EList<ReifiedRelationship> rootReifiedRelationships(PartialReifiedRelationship prr) {
+	static def EList<ReifiedRelationship> rootReifiedRelationships(ReifiedRelationshipRestriction prr) {
 		val result = new HashSet<ReifiedRelationship>()
 		
 		val horizon = new HashSet<ConceptualRelationship>()
@@ -560,8 +568,8 @@ public class OMLExtensions {
 				val moreReifiedRelationships = parents.filter(ReifiedRelationship)
 				result.addAll(moreReifiedRelationships)
 				
-				val morePartialReifiedRelationships = parents.filter(PartialReifiedRelationship)
-				horizon.addAll(morePartialReifiedRelationships)
+				val moreReifiedRelationshipRestrictions = parents.filter(ReifiedRelationshipRestriction)
+				horizon.addAll(moreReifiedRelationshipRestrictions)
 				
 				more = !horizon.empty
 			}
@@ -733,8 +741,8 @@ public class OMLExtensions {
 				'IRIScalarRestriction'
 			NumericScalarRestriction:
 				'NumericScalarRestriction'
-			PartialReifiedRelationship:
-				'PartialReifiedRelationship'
+			ReifiedRelationshipRestriction:
+				'ReifiedRelationshipRestriction'
 			PlainLiteralScalarRestriction:
 				'PlainLiteralScalarRestriction'
 			ReifiedRelationship:
@@ -814,7 +822,7 @@ public class OMLExtensions {
 				10021
 			ReifiedRelationship:
 				10030
-			PartialReifiedRelationship:
+			ReifiedRelationshipRestriction:
 				10031
 			ReifiedRelationshipSpecializationAxiom:
 				10032
@@ -918,7 +926,7 @@ public class OMLExtensions {
 				"00011-"
 			ReifiedRelationship:
 				"00012-"
-			PartialReifiedRelationship:
+			ReifiedRelationshipRestriction:
 				"00013-"
 			UnreifiedRelationship:
 				"00014-"

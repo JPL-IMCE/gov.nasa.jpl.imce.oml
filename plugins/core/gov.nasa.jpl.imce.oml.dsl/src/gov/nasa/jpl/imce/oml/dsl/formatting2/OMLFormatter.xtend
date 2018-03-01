@@ -76,7 +76,7 @@ import gov.nasa.jpl.imce.oml.model.terminologies.RuleBodySegment
 import gov.nasa.jpl.imce.oml.model.terminologies.SubObjectPropertyOfAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.SubDataPropertyOfAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityRestrictionAxiom
-import gov.nasa.jpl.imce.oml.model.terminologies.PartialReifiedRelationship
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom
 
 class OMLFormatter extends AbstractFormatter2 {
@@ -204,7 +204,7 @@ class OMLFormatter extends AbstractFormatter2 {
 		rr.regionFor.keyword('target').prepend[newLine]
 	}
 	
-	def dispatch void format(PartialReifiedRelationship prr, extension IFormattableDocument document) {
+	def dispatch void format(ReifiedRelationshipRestriction prr, extension IFormattableDocument document) {
 		prr.annotations.forEach[format.append[setNewLines(1)]]
 		prr.regionFor.keyword('reifiedRelationship').append[oneSpace]
 		

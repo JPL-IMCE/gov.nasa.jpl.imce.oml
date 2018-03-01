@@ -587,14 +587,14 @@ class ReifiedRelationship extends ConceptualRelationship, CharacterizedEntityRel
 }
 
 /*
- * An OML PartialReifiedRelationship is an OML ConceptualRelationship 
+ * An OML ReifiedRelationshipRestriction is an OML ConceptualRelationship 
  * that plays the role of a specific entity for one or more OML ReifiedRelationshipSpecializationAxioms
  * with respect to an OML ConceptualRelationship as its general entity.
  * Note that this statement is well formed in a given OML TerminologyBox
  * iff it is the specific entity of at least one OML ReifiedRelationshipSpecializationAxiom
  * asserted in that OML TerminologyBox.
  */
-class PartialReifiedRelationship extends ConceptualRelationship {
+class ReifiedRelationshipRestriction extends ConceptualRelationship {
 
 	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.LogicalElement]")
 	@Collection(kind="Set")
