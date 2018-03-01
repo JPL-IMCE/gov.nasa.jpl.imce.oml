@@ -1,0 +1,31 @@
+gov.nasa.jpl.imce.oml.tycho 0.9.5 is an API-breaking change from 0.9.4
+
+## Planned scope & Issues resolved:
+
+### [#258 Propose a better name than PartialReifiedRelationship](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/258)
+
+## Summary of changes from 0.9.4
+
+### API
+
+- `ReifiedRelationshipRestriction` in 0.9.5 replaces `PartialReifiedRelationship` in 0.9.4
+
+### Concrete Syntax
+
+In 0.9.5:
+
+```
+reifiedRelationshipRestriction <name> {
+   source <domain>
+   target <range>
+}
+```
+
+In 0.9.4:
+
+```
+partial reifiedRelationship <name> {
+   source <domain>
+   target <range>
+}
+```
