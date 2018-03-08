@@ -29,6 +29,7 @@ import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
 import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
 import gov.nasa.jpl.imce.oml.model.common.Module;
+import gov.nasa.jpl.imce.oml.model.common.Resource;
 import gov.nasa.jpl.imce.oml.model.descriptions.ConceptualEntitySingletonInstance;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox;
 import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstance;
@@ -56,10 +57,13 @@ import gov.nasa.jpl.imce.oml.model.terminologies.StructuredDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox;
 import gov.nasa.jpl.imce.oml.model.terminologies.UnreifiedRelationship;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.IEObjectDescription;
@@ -77,6 +81,833 @@ public class OMLScopeExtensions {
   @Inject
   @Extension
   private OMLExtensions _oMLExtensions;
+  
+  private final static String RESOURCE_SET_OML_IMPORTED_RESOURCE_NAME_CACHE = "RESOURCE_SET_OML_IMPORTED_RESOURCE_NAME_CACHE";
+  
+  private final static String RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_TERMINOLOGIES_CACHE = "RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_TERMINOLOGIES_CACHE";
+  
+  private final static String RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_DESCRIPTIONS_CACHE = "RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_DESCRIPTIONS_CACHE";
+  
+  private final static String RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_ENTITIES_CACHE = "RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_ENTITIES_CACHE";
+  
+  private final static String RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_RANGES_CACHE = "RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_RANGES_CACHE";
+  
+  private final static String RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_STRUCTURES_CACHE = "RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_STRUCTURES_CACHE";
+  
+  private final static String RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_ASPECTS_CACHE = "RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_ASPECTS_CACHE";
+  
+  private final static String RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_CONCEPTS_CACHE = "RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_CONCEPTS_CACHE";
+  
+  private final static String RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_CONCEPTUAL_RELATIONSHIPS_CACHE = "RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_CONCEPTUAL_RELATIONSHIPS_CACHE";
+  
+  private final static String RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_REIFIED_RELATIONSHIP_RESTRICTIONS_CACHE = "RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_REIFIED_RELATIONSHIP_RESTRICTIONS_CACHE";
+  
+  private final static String RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_REIFIED_RELATIONSHIPS_CACHE = "RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_REIFIED_RELATIONSHIPS_CACHE";
+  
+  private final static String RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_UNREIFIED_RELATIONSHIPS_CACHE = "RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_UNREIFIED_RELATIONSHIPS_CACHE";
+  
+  private final static String RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_ENTITY_RELATIONSHIPS_CACHE = "RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_ENTITY_RELATIONSHIPS_CACHE";
+  
+  private final static String RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_PREDICATES_CACHE = "RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_PREDICATES_CACHE";
+  
+  private final static String RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_FORWARD_PROPERTIES_CACHE = "RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_FORWARD_PROPERTIES_CACHE";
+  
+  private final static String RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_INVERSE_PROPERTIES_CACHE = "RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_INVERSE_PROPERTIES_CACHE";
+  
+  private final static String RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_RESTRICTABLE_RELATIONSHIPS_CACHE = "RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_RESTRICTABLE_RELATIONSHIPS_CACHE";
+  
+  private final static String RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_ENTITY_SCALAR_DATA_PROPERTIES_CACHE = "RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_ENTITY_SCALAR_DATA_PROPERTIES_CACHE";
+  
+  private final static String RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_ENTITY_STRUCTURED_DATA_PROPERTIES_CACHE = "RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_ENTITY_STRUCTURED_DATA_PROPERTIES_CACHE";
+  
+  private final static String RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_SCALAR_DATA_PROPERTIES_CACHE = "RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_SCALAR_DATA_PROPERTIES_CACHE";
+  
+  private final static String RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_STRUCTURED_DATA_PROPERTIES_CACHE = "RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_STRUCTURED_DATA_PROPERTIES_CACHE";
+  
+  private final static String RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_SCALAR_ONE_OF_RESTRICTIONS_CACHE = "RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_SCALAR_ONE_OF_RESTRICTIONS_CACHE";
+  
+  public static void clearCache(final ResourceSet rs) {
+    rs.getLoadOptions().remove(OMLScopeExtensions.RESOURCE_SET_OML_IMPORTED_RESOURCE_NAME_CACHE);
+    rs.getLoadOptions().remove(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_TERMINOLOGIES_CACHE);
+    rs.getLoadOptions().remove(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_DESCRIPTIONS_CACHE);
+    rs.getLoadOptions().remove(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_ENTITIES_CACHE);
+    rs.getLoadOptions().remove(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_RANGES_CACHE);
+    rs.getLoadOptions().remove(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_STRUCTURES_CACHE);
+    rs.getLoadOptions().remove(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_ASPECTS_CACHE);
+    rs.getLoadOptions().remove(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_CONCEPTS_CACHE);
+    rs.getLoadOptions().remove(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_CONCEPTUAL_RELATIONSHIPS_CACHE);
+    rs.getLoadOptions().remove(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_REIFIED_RELATIONSHIP_RESTRICTIONS_CACHE);
+    rs.getLoadOptions().remove(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_REIFIED_RELATIONSHIPS_CACHE);
+    rs.getLoadOptions().remove(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_UNREIFIED_RELATIONSHIPS_CACHE);
+    rs.getLoadOptions().remove(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_ENTITY_RELATIONSHIPS_CACHE);
+    rs.getLoadOptions().remove(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_PREDICATES_CACHE);
+    rs.getLoadOptions().remove(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_FORWARD_PROPERTIES_CACHE);
+    rs.getLoadOptions().remove(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_INVERSE_PROPERTIES_CACHE);
+    rs.getLoadOptions().remove(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_RESTRICTABLE_RELATIONSHIPS_CACHE);
+    rs.getLoadOptions().remove(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_ENTITY_SCALAR_DATA_PROPERTIES_CACHE);
+    rs.getLoadOptions().remove(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_ENTITY_STRUCTURED_DATA_PROPERTIES_CACHE);
+    rs.getLoadOptions().remove(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_SCALAR_DATA_PROPERTIES_CACHE);
+    rs.getLoadOptions().remove(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_STRUCTURED_DATA_PROPERTIES_CACHE);
+    rs.getLoadOptions().remove(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_SCALAR_ONE_OF_RESTRICTIONS_CACHE);
+  }
+  
+  public static void initializeCache(final ResourceSet rs) {
+    Map<Object, Object> _loadOptions = rs.getLoadOptions();
+    HashMap<Module, HashMap<Resource, QualifiedName>> _hashMap = new HashMap<Module, HashMap<Resource, QualifiedName>>();
+    _loadOptions.put(OMLScopeExtensions.RESOURCE_SET_OML_IMPORTED_RESOURCE_NAME_CACHE, _hashMap);
+    Map<Object, Object> _loadOptions_1 = rs.getLoadOptions();
+    HashMap<Module, IScope> _hashMap_1 = new HashMap<Module, IScope>();
+    _loadOptions_1.put(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_TERMINOLOGIES_CACHE, _hashMap_1);
+    Map<Object, Object> _loadOptions_2 = rs.getLoadOptions();
+    HashMap<DescriptionBox, IScope> _hashMap_2 = new HashMap<DescriptionBox, IScope>();
+    _loadOptions_2.put(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_DESCRIPTIONS_CACHE, _hashMap_2);
+    Map<Object, Object> _loadOptions_3 = rs.getLoadOptions();
+    HashMap<TerminologyBox, IScope> _hashMap_3 = new HashMap<TerminologyBox, IScope>();
+    _loadOptions_3.put(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_ENTITIES_CACHE, _hashMap_3);
+    Map<Object, Object> _loadOptions_4 = rs.getLoadOptions();
+    HashMap<TerminologyBox, IScope> _hashMap_4 = new HashMap<TerminologyBox, IScope>();
+    _loadOptions_4.put(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_RANGES_CACHE, _hashMap_4);
+    Map<Object, Object> _loadOptions_5 = rs.getLoadOptions();
+    HashMap<TerminologyBox, IScope> _hashMap_5 = new HashMap<TerminologyBox, IScope>();
+    _loadOptions_5.put(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_STRUCTURES_CACHE, _hashMap_5);
+    Map<Object, Object> _loadOptions_6 = rs.getLoadOptions();
+    HashMap<TerminologyBox, IScope> _hashMap_6 = new HashMap<TerminologyBox, IScope>();
+    _loadOptions_6.put(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_ASPECTS_CACHE, _hashMap_6);
+    Map<Object, Object> _loadOptions_7 = rs.getLoadOptions();
+    HashMap<TerminologyBox, IScope> _hashMap_7 = new HashMap<TerminologyBox, IScope>();
+    _loadOptions_7.put(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_CONCEPTS_CACHE, _hashMap_7);
+    Map<Object, Object> _loadOptions_8 = rs.getLoadOptions();
+    HashMap<TerminologyBox, IScope> _hashMap_8 = new HashMap<TerminologyBox, IScope>();
+    _loadOptions_8.put(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_CONCEPTUAL_RELATIONSHIPS_CACHE, _hashMap_8);
+    Map<Object, Object> _loadOptions_9 = rs.getLoadOptions();
+    HashMap<TerminologyBox, IScope> _hashMap_9 = new HashMap<TerminologyBox, IScope>();
+    _loadOptions_9.put(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_REIFIED_RELATIONSHIP_RESTRICTIONS_CACHE, _hashMap_9);
+    Map<Object, Object> _loadOptions_10 = rs.getLoadOptions();
+    HashMap<TerminologyBox, IScope> _hashMap_10 = new HashMap<TerminologyBox, IScope>();
+    _loadOptions_10.put(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_REIFIED_RELATIONSHIPS_CACHE, _hashMap_10);
+    Map<Object, Object> _loadOptions_11 = rs.getLoadOptions();
+    HashMap<TerminologyBox, IScope> _hashMap_11 = new HashMap<TerminologyBox, IScope>();
+    _loadOptions_11.put(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_UNREIFIED_RELATIONSHIPS_CACHE, _hashMap_11);
+    Map<Object, Object> _loadOptions_12 = rs.getLoadOptions();
+    HashMap<TerminologyBox, IScope> _hashMap_12 = new HashMap<TerminologyBox, IScope>();
+    _loadOptions_12.put(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_ENTITY_RELATIONSHIPS_CACHE, _hashMap_12);
+    Map<Object, Object> _loadOptions_13 = rs.getLoadOptions();
+    HashMap<TerminologyBox, IScope> _hashMap_13 = new HashMap<TerminologyBox, IScope>();
+    _loadOptions_13.put(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_PREDICATES_CACHE, _hashMap_13);
+    Map<Object, Object> _loadOptions_14 = rs.getLoadOptions();
+    HashMap<TerminologyBox, IScope> _hashMap_14 = new HashMap<TerminologyBox, IScope>();
+    _loadOptions_14.put(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_FORWARD_PROPERTIES_CACHE, _hashMap_14);
+    Map<Object, Object> _loadOptions_15 = rs.getLoadOptions();
+    HashMap<TerminologyBox, IScope> _hashMap_15 = new HashMap<TerminologyBox, IScope>();
+    _loadOptions_15.put(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_INVERSE_PROPERTIES_CACHE, _hashMap_15);
+    Map<Object, Object> _loadOptions_16 = rs.getLoadOptions();
+    HashMap<TerminologyBox, IScope> _hashMap_16 = new HashMap<TerminologyBox, IScope>();
+    _loadOptions_16.put(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_RESTRICTABLE_RELATIONSHIPS_CACHE, _hashMap_16);
+    Map<Object, Object> _loadOptions_17 = rs.getLoadOptions();
+    HashMap<TerminologyBox, IScope> _hashMap_17 = new HashMap<TerminologyBox, IScope>();
+    _loadOptions_17.put(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_ENTITY_SCALAR_DATA_PROPERTIES_CACHE, _hashMap_17);
+    Map<Object, Object> _loadOptions_18 = rs.getLoadOptions();
+    HashMap<TerminologyBox, IScope> _hashMap_18 = new HashMap<TerminologyBox, IScope>();
+    _loadOptions_18.put(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_ENTITY_STRUCTURED_DATA_PROPERTIES_CACHE, _hashMap_18);
+    Map<Object, Object> _loadOptions_19 = rs.getLoadOptions();
+    HashMap<TerminologyBox, IScope> _hashMap_19 = new HashMap<TerminologyBox, IScope>();
+    _loadOptions_19.put(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_SCALAR_DATA_PROPERTIES_CACHE, _hashMap_19);
+    Map<Object, Object> _loadOptions_20 = rs.getLoadOptions();
+    HashMap<TerminologyBox, IScope> _hashMap_20 = new HashMap<TerminologyBox, IScope>();
+    _loadOptions_20.put(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_STRUCTURED_DATA_PROPERTIES_CACHE, _hashMap_20);
+    Map<Object, Object> _loadOptions_21 = rs.getLoadOptions();
+    HashMap<TerminologyBox, IScope> _hashMap_21 = new HashMap<TerminologyBox, IScope>();
+    _loadOptions_21.put(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_SCALAR_ONE_OF_RESTRICTIONS_CACHE, _hashMap_21);
+  }
+  
+  public static HashMap<Module, HashMap<Resource, QualifiedName>> lookupImportedResourceNameCache(final ResourceSet rs) {
+    HashMap<Module, HashMap<Resource, QualifiedName>> _xblockexpression = null;
+    {
+      final Object cache = rs.getLoadOptions().get(OMLScopeExtensions.RESOURCE_SET_OML_IMPORTED_RESOURCE_NAME_CACHE);
+      HashMap<Module, HashMap<Resource, QualifiedName>> _switchResult = null;
+      boolean _matched = false;
+      if (cache instanceof HashMap) {
+        _matched=true;
+        _switchResult = ((HashMap<Module, HashMap<Resource, QualifiedName>>)cache);
+      }
+      _xblockexpression = _switchResult;
+    }
+    return _xblockexpression;
+  }
+  
+  public static HashMap<Module, HashMap<Resource, QualifiedName>> lookupImportedResourceNameCache(final EObject e) {
+    HashMap<Module, HashMap<Resource, QualifiedName>> _xblockexpression = null;
+    {
+      org.eclipse.emf.ecore.resource.Resource _eResource = null;
+      if (e!=null) {
+        _eResource=e.eResource();
+      }
+      ResourceSet _resourceSet = null;
+      if (_eResource!=null) {
+        _resourceSet=_eResource.getResourceSet();
+      }
+      final ResourceSet rs = _resourceSet;
+      HashMap<Module, HashMap<Resource, QualifiedName>> _xifexpression = null;
+      if ((null != rs)) {
+        _xifexpression = OMLScopeExtensions.lookupImportedResourceNameCache(rs);
+      } else {
+        _xifexpression = null;
+      }
+      _xblockexpression = _xifexpression;
+    }
+    return _xblockexpression;
+  }
+  
+  public static HashMap<Module, IScope> lookupAllTerminologiesCache(final Module m) {
+    HashMap<Module, IScope> _xblockexpression = null;
+    {
+      org.eclipse.emf.ecore.resource.Resource _eResource = null;
+      if (m!=null) {
+        _eResource=m.eResource();
+      }
+      ResourceSet _resourceSet = null;
+      if (_eResource!=null) {
+        _resourceSet=_eResource.getResourceSet();
+      }
+      Map<Object, Object> _loadOptions = null;
+      if (_resourceSet!=null) {
+        _loadOptions=_resourceSet.getLoadOptions();
+      }
+      Object _get = null;
+      if (_loadOptions!=null) {
+        _get=_loadOptions.get(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_TERMINOLOGIES_CACHE);
+      }
+      final Object cache = _get;
+      HashMap<Module, IScope> _switchResult = null;
+      boolean _matched = false;
+      if (cache instanceof HashMap) {
+        _matched=true;
+        _switchResult = ((HashMap<Module, IScope>)cache);
+      }
+      _xblockexpression = _switchResult;
+    }
+    return _xblockexpression;
+  }
+  
+  public static HashMap<DescriptionBox, IScope> lookupAllDescriptionsCache(final DescriptionBox m) {
+    HashMap<DescriptionBox, IScope> _xblockexpression = null;
+    {
+      org.eclipse.emf.ecore.resource.Resource _eResource = null;
+      if (m!=null) {
+        _eResource=m.eResource();
+      }
+      ResourceSet _resourceSet = null;
+      if (_eResource!=null) {
+        _resourceSet=_eResource.getResourceSet();
+      }
+      Map<Object, Object> _loadOptions = null;
+      if (_resourceSet!=null) {
+        _loadOptions=_resourceSet.getLoadOptions();
+      }
+      Object _get = null;
+      if (_loadOptions!=null) {
+        _get=_loadOptions.get(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_DESCRIPTIONS_CACHE);
+      }
+      final Object cache = _get;
+      HashMap<DescriptionBox, IScope> _switchResult = null;
+      boolean _matched = false;
+      if (cache instanceof HashMap) {
+        _matched=true;
+        _switchResult = ((HashMap<DescriptionBox, IScope>)cache);
+      }
+      _xblockexpression = _switchResult;
+    }
+    return _xblockexpression;
+  }
+  
+  public static HashMap<TerminologyBox, IScope> lookupAllEntitiesCache(final TerminologyBox tbox) {
+    HashMap<TerminologyBox, IScope> _xblockexpression = null;
+    {
+      org.eclipse.emf.ecore.resource.Resource _eResource = null;
+      if (tbox!=null) {
+        _eResource=tbox.eResource();
+      }
+      ResourceSet _resourceSet = null;
+      if (_eResource!=null) {
+        _resourceSet=_eResource.getResourceSet();
+      }
+      Map<Object, Object> _loadOptions = null;
+      if (_resourceSet!=null) {
+        _loadOptions=_resourceSet.getLoadOptions();
+      }
+      Object _get = null;
+      if (_loadOptions!=null) {
+        _get=_loadOptions.get(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_ENTITIES_CACHE);
+      }
+      final Object cache = _get;
+      HashMap<TerminologyBox, IScope> _switchResult = null;
+      boolean _matched = false;
+      if (cache instanceof HashMap) {
+        _matched=true;
+        _switchResult = ((HashMap<TerminologyBox, IScope>)cache);
+      }
+      _xblockexpression = _switchResult;
+    }
+    return _xblockexpression;
+  }
+  
+  public static HashMap<TerminologyBox, IScope> lookupAllRangesCache(final TerminologyBox tbox) {
+    HashMap<TerminologyBox, IScope> _xblockexpression = null;
+    {
+      org.eclipse.emf.ecore.resource.Resource _eResource = null;
+      if (tbox!=null) {
+        _eResource=tbox.eResource();
+      }
+      ResourceSet _resourceSet = null;
+      if (_eResource!=null) {
+        _resourceSet=_eResource.getResourceSet();
+      }
+      Map<Object, Object> _loadOptions = null;
+      if (_resourceSet!=null) {
+        _loadOptions=_resourceSet.getLoadOptions();
+      }
+      Object _get = null;
+      if (_loadOptions!=null) {
+        _get=_loadOptions.get(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_RANGES_CACHE);
+      }
+      final Object cache = _get;
+      HashMap<TerminologyBox, IScope> _switchResult = null;
+      boolean _matched = false;
+      if (cache instanceof HashMap) {
+        _matched=true;
+        _switchResult = ((HashMap<TerminologyBox, IScope>)cache);
+      }
+      _xblockexpression = _switchResult;
+    }
+    return _xblockexpression;
+  }
+  
+  public static HashMap<TerminologyBox, IScope> lookupAllStructuresCache(final TerminologyBox tbox) {
+    HashMap<TerminologyBox, IScope> _xblockexpression = null;
+    {
+      org.eclipse.emf.ecore.resource.Resource _eResource = null;
+      if (tbox!=null) {
+        _eResource=tbox.eResource();
+      }
+      ResourceSet _resourceSet = null;
+      if (_eResource!=null) {
+        _resourceSet=_eResource.getResourceSet();
+      }
+      Map<Object, Object> _loadOptions = null;
+      if (_resourceSet!=null) {
+        _loadOptions=_resourceSet.getLoadOptions();
+      }
+      Object _get = null;
+      if (_loadOptions!=null) {
+        _get=_loadOptions.get(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_STRUCTURES_CACHE);
+      }
+      final Object cache = _get;
+      HashMap<TerminologyBox, IScope> _switchResult = null;
+      boolean _matched = false;
+      if (cache instanceof HashMap) {
+        _matched=true;
+        _switchResult = ((HashMap<TerminologyBox, IScope>)cache);
+      }
+      _xblockexpression = _switchResult;
+    }
+    return _xblockexpression;
+  }
+  
+  public static HashMap<TerminologyBox, IScope> lookupAllAspectsCache(final TerminologyBox tbox) {
+    HashMap<TerminologyBox, IScope> _xblockexpression = null;
+    {
+      org.eclipse.emf.ecore.resource.Resource _eResource = null;
+      if (tbox!=null) {
+        _eResource=tbox.eResource();
+      }
+      ResourceSet _resourceSet = null;
+      if (_eResource!=null) {
+        _resourceSet=_eResource.getResourceSet();
+      }
+      Map<Object, Object> _loadOptions = null;
+      if (_resourceSet!=null) {
+        _loadOptions=_resourceSet.getLoadOptions();
+      }
+      Object _get = null;
+      if (_loadOptions!=null) {
+        _get=_loadOptions.get(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_ASPECTS_CACHE);
+      }
+      final Object cache = _get;
+      HashMap<TerminologyBox, IScope> _switchResult = null;
+      boolean _matched = false;
+      if (cache instanceof HashMap) {
+        _matched=true;
+        _switchResult = ((HashMap<TerminologyBox, IScope>)cache);
+      }
+      _xblockexpression = _switchResult;
+    }
+    return _xblockexpression;
+  }
+  
+  public static HashMap<TerminologyBox, IScope> lookupAllConceptsCache(final TerminologyBox tbox) {
+    HashMap<TerminologyBox, IScope> _xblockexpression = null;
+    {
+      org.eclipse.emf.ecore.resource.Resource _eResource = null;
+      if (tbox!=null) {
+        _eResource=tbox.eResource();
+      }
+      ResourceSet _resourceSet = null;
+      if (_eResource!=null) {
+        _resourceSet=_eResource.getResourceSet();
+      }
+      Map<Object, Object> _loadOptions = null;
+      if (_resourceSet!=null) {
+        _loadOptions=_resourceSet.getLoadOptions();
+      }
+      Object _get = null;
+      if (_loadOptions!=null) {
+        _get=_loadOptions.get(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_CONCEPTS_CACHE);
+      }
+      final Object cache = _get;
+      HashMap<TerminologyBox, IScope> _switchResult = null;
+      boolean _matched = false;
+      if (cache instanceof HashMap) {
+        _matched=true;
+        _switchResult = ((HashMap<TerminologyBox, IScope>)cache);
+      }
+      _xblockexpression = _switchResult;
+    }
+    return _xblockexpression;
+  }
+  
+  public static HashMap<TerminologyBox, IScope> lookupAllConceptualRelationshipsCache(final TerminologyBox tbox) {
+    HashMap<TerminologyBox, IScope> _xblockexpression = null;
+    {
+      org.eclipse.emf.ecore.resource.Resource _eResource = null;
+      if (tbox!=null) {
+        _eResource=tbox.eResource();
+      }
+      ResourceSet _resourceSet = null;
+      if (_eResource!=null) {
+        _resourceSet=_eResource.getResourceSet();
+      }
+      Map<Object, Object> _loadOptions = null;
+      if (_resourceSet!=null) {
+        _loadOptions=_resourceSet.getLoadOptions();
+      }
+      Object _get = null;
+      if (_loadOptions!=null) {
+        _get=_loadOptions.get(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_CONCEPTUAL_RELATIONSHIPS_CACHE);
+      }
+      final Object cache = _get;
+      HashMap<TerminologyBox, IScope> _switchResult = null;
+      boolean _matched = false;
+      if (cache instanceof HashMap) {
+        _matched=true;
+        _switchResult = ((HashMap<TerminologyBox, IScope>)cache);
+      }
+      _xblockexpression = _switchResult;
+    }
+    return _xblockexpression;
+  }
+  
+  public static HashMap<TerminologyBox, IScope> lookupAllReifiedRelationshipRestrictionsCache(final TerminologyBox tbox) {
+    HashMap<TerminologyBox, IScope> _xblockexpression = null;
+    {
+      org.eclipse.emf.ecore.resource.Resource _eResource = null;
+      if (tbox!=null) {
+        _eResource=tbox.eResource();
+      }
+      ResourceSet _resourceSet = null;
+      if (_eResource!=null) {
+        _resourceSet=_eResource.getResourceSet();
+      }
+      Map<Object, Object> _loadOptions = null;
+      if (_resourceSet!=null) {
+        _loadOptions=_resourceSet.getLoadOptions();
+      }
+      Object _get = null;
+      if (_loadOptions!=null) {
+        _get=_loadOptions.get(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_REIFIED_RELATIONSHIP_RESTRICTIONS_CACHE);
+      }
+      final Object cache = _get;
+      HashMap<TerminologyBox, IScope> _switchResult = null;
+      boolean _matched = false;
+      if (cache instanceof HashMap) {
+        _matched=true;
+        _switchResult = ((HashMap<TerminologyBox, IScope>)cache);
+      }
+      _xblockexpression = _switchResult;
+    }
+    return _xblockexpression;
+  }
+  
+  public static HashMap<TerminologyBox, IScope> lookupAllReifiedRelationshipsCache(final TerminologyBox tbox) {
+    HashMap<TerminologyBox, IScope> _xblockexpression = null;
+    {
+      org.eclipse.emf.ecore.resource.Resource _eResource = null;
+      if (tbox!=null) {
+        _eResource=tbox.eResource();
+      }
+      ResourceSet _resourceSet = null;
+      if (_eResource!=null) {
+        _resourceSet=_eResource.getResourceSet();
+      }
+      Map<Object, Object> _loadOptions = null;
+      if (_resourceSet!=null) {
+        _loadOptions=_resourceSet.getLoadOptions();
+      }
+      Object _get = null;
+      if (_loadOptions!=null) {
+        _get=_loadOptions.get(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_REIFIED_RELATIONSHIPS_CACHE);
+      }
+      final Object cache = _get;
+      HashMap<TerminologyBox, IScope> _switchResult = null;
+      boolean _matched = false;
+      if (cache instanceof HashMap) {
+        _matched=true;
+        _switchResult = ((HashMap<TerminologyBox, IScope>)cache);
+      }
+      _xblockexpression = _switchResult;
+    }
+    return _xblockexpression;
+  }
+  
+  public static HashMap<TerminologyBox, IScope> lookupAllUnreifiedRelationshipsCache(final TerminologyBox tbox) {
+    HashMap<TerminologyBox, IScope> _xblockexpression = null;
+    {
+      org.eclipse.emf.ecore.resource.Resource _eResource = null;
+      if (tbox!=null) {
+        _eResource=tbox.eResource();
+      }
+      ResourceSet _resourceSet = null;
+      if (_eResource!=null) {
+        _resourceSet=_eResource.getResourceSet();
+      }
+      Map<Object, Object> _loadOptions = null;
+      if (_resourceSet!=null) {
+        _loadOptions=_resourceSet.getLoadOptions();
+      }
+      Object _get = null;
+      if (_loadOptions!=null) {
+        _get=_loadOptions.get(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_UNREIFIED_RELATIONSHIPS_CACHE);
+      }
+      final Object cache = _get;
+      HashMap<TerminologyBox, IScope> _switchResult = null;
+      boolean _matched = false;
+      if (cache instanceof HashMap) {
+        _matched=true;
+        _switchResult = ((HashMap<TerminologyBox, IScope>)cache);
+      }
+      _xblockexpression = _switchResult;
+    }
+    return _xblockexpression;
+  }
+  
+  public static HashMap<TerminologyBox, IScope> lookupAllEntityRelationshipsCache(final TerminologyBox tbox) {
+    HashMap<TerminologyBox, IScope> _xblockexpression = null;
+    {
+      org.eclipse.emf.ecore.resource.Resource _eResource = null;
+      if (tbox!=null) {
+        _eResource=tbox.eResource();
+      }
+      ResourceSet _resourceSet = null;
+      if (_eResource!=null) {
+        _resourceSet=_eResource.getResourceSet();
+      }
+      Map<Object, Object> _loadOptions = null;
+      if (_resourceSet!=null) {
+        _loadOptions=_resourceSet.getLoadOptions();
+      }
+      Object _get = null;
+      if (_loadOptions!=null) {
+        _get=_loadOptions.get(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_ENTITY_RELATIONSHIPS_CACHE);
+      }
+      final Object cache = _get;
+      HashMap<TerminologyBox, IScope> _switchResult = null;
+      boolean _matched = false;
+      if (cache instanceof HashMap) {
+        _matched=true;
+        _switchResult = ((HashMap<TerminologyBox, IScope>)cache);
+      }
+      _xblockexpression = _switchResult;
+    }
+    return _xblockexpression;
+  }
+  
+  public static HashMap<TerminologyBox, IScope> lookupAllPredicatesCache(final TerminologyBox tbox) {
+    HashMap<TerminologyBox, IScope> _xblockexpression = null;
+    {
+      org.eclipse.emf.ecore.resource.Resource _eResource = null;
+      if (tbox!=null) {
+        _eResource=tbox.eResource();
+      }
+      ResourceSet _resourceSet = null;
+      if (_eResource!=null) {
+        _resourceSet=_eResource.getResourceSet();
+      }
+      Map<Object, Object> _loadOptions = null;
+      if (_resourceSet!=null) {
+        _loadOptions=_resourceSet.getLoadOptions();
+      }
+      Object _get = null;
+      if (_loadOptions!=null) {
+        _get=_loadOptions.get(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_PREDICATES_CACHE);
+      }
+      final Object cache = _get;
+      HashMap<TerminologyBox, IScope> _switchResult = null;
+      boolean _matched = false;
+      if (cache instanceof HashMap) {
+        _matched=true;
+        _switchResult = ((HashMap<TerminologyBox, IScope>)cache);
+      }
+      _xblockexpression = _switchResult;
+    }
+    return _xblockexpression;
+  }
+  
+  public static HashMap<TerminologyBox, IScope> lookupAllForwardPropertiesCache(final TerminologyBox tbox) {
+    HashMap<TerminologyBox, IScope> _xblockexpression = null;
+    {
+      org.eclipse.emf.ecore.resource.Resource _eResource = null;
+      if (tbox!=null) {
+        _eResource=tbox.eResource();
+      }
+      ResourceSet _resourceSet = null;
+      if (_eResource!=null) {
+        _resourceSet=_eResource.getResourceSet();
+      }
+      Map<Object, Object> _loadOptions = null;
+      if (_resourceSet!=null) {
+        _loadOptions=_resourceSet.getLoadOptions();
+      }
+      Object _get = null;
+      if (_loadOptions!=null) {
+        _get=_loadOptions.get(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_FORWARD_PROPERTIES_CACHE);
+      }
+      final Object cache = _get;
+      HashMap<TerminologyBox, IScope> _switchResult = null;
+      boolean _matched = false;
+      if (cache instanceof HashMap) {
+        _matched=true;
+        _switchResult = ((HashMap<TerminologyBox, IScope>)cache);
+      }
+      _xblockexpression = _switchResult;
+    }
+    return _xblockexpression;
+  }
+  
+  public static HashMap<TerminologyBox, IScope> lookupAllInversePropertiesCache(final TerminologyBox tbox) {
+    HashMap<TerminologyBox, IScope> _xblockexpression = null;
+    {
+      org.eclipse.emf.ecore.resource.Resource _eResource = null;
+      if (tbox!=null) {
+        _eResource=tbox.eResource();
+      }
+      ResourceSet _resourceSet = null;
+      if (_eResource!=null) {
+        _resourceSet=_eResource.getResourceSet();
+      }
+      Map<Object, Object> _loadOptions = null;
+      if (_resourceSet!=null) {
+        _loadOptions=_resourceSet.getLoadOptions();
+      }
+      Object _get = null;
+      if (_loadOptions!=null) {
+        _get=_loadOptions.get(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_INVERSE_PROPERTIES_CACHE);
+      }
+      final Object cache = _get;
+      HashMap<TerminologyBox, IScope> _switchResult = null;
+      boolean _matched = false;
+      if (cache instanceof HashMap) {
+        _matched=true;
+        _switchResult = ((HashMap<TerminologyBox, IScope>)cache);
+      }
+      _xblockexpression = _switchResult;
+    }
+    return _xblockexpression;
+  }
+  
+  public static HashMap<TerminologyBox, IScope> lookupAllRestrictableRelationshipsCache(final TerminologyBox tbox) {
+    HashMap<TerminologyBox, IScope> _xblockexpression = null;
+    {
+      org.eclipse.emf.ecore.resource.Resource _eResource = null;
+      if (tbox!=null) {
+        _eResource=tbox.eResource();
+      }
+      ResourceSet _resourceSet = null;
+      if (_eResource!=null) {
+        _resourceSet=_eResource.getResourceSet();
+      }
+      Map<Object, Object> _loadOptions = null;
+      if (_resourceSet!=null) {
+        _loadOptions=_resourceSet.getLoadOptions();
+      }
+      Object _get = null;
+      if (_loadOptions!=null) {
+        _get=_loadOptions.get(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_RESTRICTABLE_RELATIONSHIPS_CACHE);
+      }
+      final Object cache = _get;
+      HashMap<TerminologyBox, IScope> _switchResult = null;
+      boolean _matched = false;
+      if (cache instanceof HashMap) {
+        _matched=true;
+        _switchResult = ((HashMap<TerminologyBox, IScope>)cache);
+      }
+      _xblockexpression = _switchResult;
+    }
+    return _xblockexpression;
+  }
+  
+  public static HashMap<TerminologyBox, IScope> lookupAllEntityScalarDataPropertiesCache(final TerminologyBox tbox) {
+    HashMap<TerminologyBox, IScope> _xblockexpression = null;
+    {
+      org.eclipse.emf.ecore.resource.Resource _eResource = null;
+      if (tbox!=null) {
+        _eResource=tbox.eResource();
+      }
+      ResourceSet _resourceSet = null;
+      if (_eResource!=null) {
+        _resourceSet=_eResource.getResourceSet();
+      }
+      Map<Object, Object> _loadOptions = null;
+      if (_resourceSet!=null) {
+        _loadOptions=_resourceSet.getLoadOptions();
+      }
+      Object _get = null;
+      if (_loadOptions!=null) {
+        _get=_loadOptions.get(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_ENTITY_SCALAR_DATA_PROPERTIES_CACHE);
+      }
+      final Object cache = _get;
+      HashMap<TerminologyBox, IScope> _switchResult = null;
+      boolean _matched = false;
+      if (cache instanceof HashMap) {
+        _matched=true;
+        _switchResult = ((HashMap<TerminologyBox, IScope>)cache);
+      }
+      _xblockexpression = _switchResult;
+    }
+    return _xblockexpression;
+  }
+  
+  public static HashMap<TerminologyBox, IScope> lookupAllEntityStructuredDataPropertiesCache(final TerminologyBox tbox) {
+    HashMap<TerminologyBox, IScope> _xblockexpression = null;
+    {
+      org.eclipse.emf.ecore.resource.Resource _eResource = null;
+      if (tbox!=null) {
+        _eResource=tbox.eResource();
+      }
+      ResourceSet _resourceSet = null;
+      if (_eResource!=null) {
+        _resourceSet=_eResource.getResourceSet();
+      }
+      Map<Object, Object> _loadOptions = null;
+      if (_resourceSet!=null) {
+        _loadOptions=_resourceSet.getLoadOptions();
+      }
+      Object _get = null;
+      if (_loadOptions!=null) {
+        _get=_loadOptions.get(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_ENTITY_STRUCTURED_DATA_PROPERTIES_CACHE);
+      }
+      final Object cache = _get;
+      HashMap<TerminologyBox, IScope> _switchResult = null;
+      boolean _matched = false;
+      if (cache instanceof HashMap) {
+        _matched=true;
+        _switchResult = ((HashMap<TerminologyBox, IScope>)cache);
+      }
+      _xblockexpression = _switchResult;
+    }
+    return _xblockexpression;
+  }
+  
+  public static HashMap<TerminologyBox, IScope> lookupAllScalarDataPropertiesCache(final TerminologyBox tbox) {
+    HashMap<TerminologyBox, IScope> _xblockexpression = null;
+    {
+      org.eclipse.emf.ecore.resource.Resource _eResource = null;
+      if (tbox!=null) {
+        _eResource=tbox.eResource();
+      }
+      ResourceSet _resourceSet = null;
+      if (_eResource!=null) {
+        _resourceSet=_eResource.getResourceSet();
+      }
+      Map<Object, Object> _loadOptions = null;
+      if (_resourceSet!=null) {
+        _loadOptions=_resourceSet.getLoadOptions();
+      }
+      Object _get = null;
+      if (_loadOptions!=null) {
+        _get=_loadOptions.get(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_SCALAR_DATA_PROPERTIES_CACHE);
+      }
+      final Object cache = _get;
+      HashMap<TerminologyBox, IScope> _switchResult = null;
+      boolean _matched = false;
+      if (cache instanceof HashMap) {
+        _matched=true;
+        _switchResult = ((HashMap<TerminologyBox, IScope>)cache);
+      }
+      _xblockexpression = _switchResult;
+    }
+    return _xblockexpression;
+  }
+  
+  public static HashMap<TerminologyBox, IScope> lookupAllStructuredDataPropertiesCache(final TerminologyBox tbox) {
+    HashMap<TerminologyBox, IScope> _xblockexpression = null;
+    {
+      org.eclipse.emf.ecore.resource.Resource _eResource = null;
+      if (tbox!=null) {
+        _eResource=tbox.eResource();
+      }
+      ResourceSet _resourceSet = null;
+      if (_eResource!=null) {
+        _resourceSet=_eResource.getResourceSet();
+      }
+      Map<Object, Object> _loadOptions = null;
+      if (_resourceSet!=null) {
+        _loadOptions=_resourceSet.getLoadOptions();
+      }
+      Object _get = null;
+      if (_loadOptions!=null) {
+        _get=_loadOptions.get(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_STRUCTURED_DATA_PROPERTIES_CACHE);
+      }
+      final Object cache = _get;
+      HashMap<TerminologyBox, IScope> _switchResult = null;
+      boolean _matched = false;
+      if (cache instanceof HashMap) {
+        _matched=true;
+        _switchResult = ((HashMap<TerminologyBox, IScope>)cache);
+      }
+      _xblockexpression = _switchResult;
+    }
+    return _xblockexpression;
+  }
+  
+  public static HashMap<TerminologyBox, IScope> lookupAllScalarOneOfRestrictionsCache(final TerminologyBox tbox) {
+    HashMap<TerminologyBox, IScope> _xblockexpression = null;
+    {
+      org.eclipse.emf.ecore.resource.Resource _eResource = null;
+      if (tbox!=null) {
+        _eResource=tbox.eResource();
+      }
+      ResourceSet _resourceSet = null;
+      if (_eResource!=null) {
+        _resourceSet=_eResource.getResourceSet();
+      }
+      Map<Object, Object> _loadOptions = null;
+      if (_resourceSet!=null) {
+        _loadOptions=_resourceSet.getLoadOptions();
+      }
+      Object _get = null;
+      if (_loadOptions!=null) {
+        _get=_loadOptions.get(OMLScopeExtensions.RESOURCE_SET_OML_SCOPE_EXTENSIONS_ALL_SCALAR_ONE_OF_RESTRICTIONS_CACHE);
+      }
+      final Object cache = _get;
+      HashMap<TerminologyBox, IScope> _switchResult = null;
+      boolean _matched = false;
+      if (cache instanceof HashMap) {
+        _matched=true;
+        _switchResult = ((HashMap<TerminologyBox, IScope>)cache);
+      }
+      _xblockexpression = _switchResult;
+    }
+    return _xblockexpression;
+  }
   
   @Inject
   private IQualifiedNameConverter qnc;
@@ -129,10 +960,10 @@ public class OMLScopeExtensions {
   public IScope scope_BundledTerminologyAxiom_bundledTerminology(final BundledTerminologyAxiom context) {
     IScope _xblockexpression = null;
     {
-      final Function1<Resource, Iterable<Extent>> _function = (Resource it) -> {
+      final Function1<org.eclipse.emf.ecore.resource.Resource, Iterable<Extent>> _function = (org.eclipse.emf.ecore.resource.Resource it) -> {
         return Iterables.<Extent>filter(it.getContents(), Extent.class);
       };
-      final Iterable<Extent> exts = Iterables.<Extent>concat(ListExtensions.<Resource, Iterable<Extent>>map(context.eResource().getResourceSet().getResources(), _function));
+      final Iterable<Extent> exts = Iterables.<Extent>concat(ListExtensions.<org.eclipse.emf.ecore.resource.Resource, Iterable<Extent>>map(context.eResource().getResourceSet().getResources(), _function));
       final Function1<Extent, Iterable<TerminologyBox>> _function_1 = (Extent it) -> {
         Iterable<TerminologyGraph> _terminologyGraphs = this._oMLExtensions.terminologyGraphs(it);
         Iterable<Bundle> _bundles = this._oMLExtensions.bundles(it);
@@ -151,10 +982,10 @@ public class OMLScopeExtensions {
   public IScope scope_ConceptDesignationTerminologyAxiom_designatedTerminology(final ConceptDesignationTerminologyAxiom context) {
     IScope _xblockexpression = null;
     {
-      final Function1<Resource, Iterable<Extent>> _function = (Resource it) -> {
+      final Function1<org.eclipse.emf.ecore.resource.Resource, Iterable<Extent>> _function = (org.eclipse.emf.ecore.resource.Resource it) -> {
         return Iterables.<Extent>filter(it.getContents(), Extent.class);
       };
-      final Iterable<Extent> exts = Iterables.<Extent>concat(ListExtensions.<Resource, Iterable<Extent>>map(context.eResource().getResourceSet().getResources(), _function));
+      final Iterable<Extent> exts = Iterables.<Extent>concat(ListExtensions.<org.eclipse.emf.ecore.resource.Resource, Iterable<Extent>>map(context.eResource().getResourceSet().getResources(), _function));
       final Function1<Extent, Iterable<TerminologyBox>> _function_1 = (Extent it) -> {
         Iterable<TerminologyGraph> _terminologyGraphs = this._oMLExtensions.terminologyGraphs(it);
         Iterable<Bundle> _bundles = this._oMLExtensions.bundles(it);
@@ -177,21 +1008,22 @@ public class OMLScopeExtensions {
   public IScope allTerminologies(final TerminologyBox context) {
     IScope _xblockexpression = null;
     {
-      final Function1<Resource, Iterable<Extent>> _function = (Resource it) -> {
-        return Iterables.<Extent>filter(it.getContents(), Extent.class);
-      };
-      final Iterable<Extent> exts = Iterables.<Extent>concat(ListExtensions.<Resource, Iterable<Extent>>map(context.eResource().getResourceSet().getResources(), _function));
-      final Function1<Extent, Iterable<TerminologyBox>> _function_1 = (Extent it) -> {
-        Iterable<TerminologyGraph> _terminologyGraphs = this._oMLExtensions.terminologyGraphs(it);
-        Iterable<Bundle> _bundles = this._oMLExtensions.bundles(it);
-        return Iterables.<TerminologyBox>concat(_terminologyGraphs, _bundles);
-      };
-      final Iterable<TerminologyBox> tboxes = Iterables.<TerminologyBox>concat(IterableExtensions.<Extent, Iterable<TerminologyBox>>map(exts, _function_1));
-      final Function<TerminologyBox, QualifiedName> _function_2 = (TerminologyBox it) -> {
-        return this.qnc.toQualifiedName(it.nsPrefix());
-      };
-      _xblockexpression = Scopes.<TerminologyBox>scopeFor(tboxes, _function_2, 
-        IScope.NULLSCOPE);
+      final HashMap<Module, IScope> cache = OMLScopeExtensions.lookupAllTerminologiesCache(context);
+      IScope _elvis = null;
+      IScope _computeIfAbsent = null;
+      if (cache!=null) {
+        final java.util.function.Function<Module, IScope> _function = (Module it) -> {
+          return this.computeAllTerminologies(it);
+        };
+        _computeIfAbsent=cache.computeIfAbsent(context, _function);
+      }
+      if (_computeIfAbsent != null) {
+        _elvis = _computeIfAbsent;
+      } else {
+        IScope _computeAllTerminologies = this.computeAllTerminologies(context);
+        _elvis = _computeAllTerminologies;
+      }
+      _xblockexpression = _elvis;
     }
     return _xblockexpression;
   }
@@ -199,10 +1031,33 @@ public class OMLScopeExtensions {
   public IScope allTerminologies(final DescriptionBox context) {
     IScope _xblockexpression = null;
     {
-      final Function1<Resource, Iterable<Extent>> _function = (Resource it) -> {
+      final HashMap<Module, IScope> cache = OMLScopeExtensions.lookupAllTerminologiesCache(context);
+      IScope _elvis = null;
+      IScope _computeIfAbsent = null;
+      if (cache!=null) {
+        final java.util.function.Function<Module, IScope> _function = (Module it) -> {
+          return this.computeAllTerminologies(it);
+        };
+        _computeIfAbsent=cache.computeIfAbsent(context, _function);
+      }
+      if (_computeIfAbsent != null) {
+        _elvis = _computeIfAbsent;
+      } else {
+        IScope _computeAllTerminologies = this.computeAllTerminologies(context);
+        _elvis = _computeAllTerminologies;
+      }
+      _xblockexpression = _elvis;
+    }
+    return _xblockexpression;
+  }
+  
+  private IScope computeAllTerminologies(final Module context) {
+    IScope _xblockexpression = null;
+    {
+      final Function1<org.eclipse.emf.ecore.resource.Resource, Iterable<Extent>> _function = (org.eclipse.emf.ecore.resource.Resource it) -> {
         return Iterables.<Extent>filter(it.getContents(), Extent.class);
       };
-      final Iterable<Extent> exts = Iterables.<Extent>concat(ListExtensions.<Resource, Iterable<Extent>>map(context.eResource().getResourceSet().getResources(), _function));
+      final Iterable<Extent> exts = Iterables.<Extent>concat(ListExtensions.<org.eclipse.emf.ecore.resource.Resource, Iterable<Extent>>map(context.eResource().getResourceSet().getResources(), _function));
       final Function1<Extent, Iterable<TerminologyBox>> _function_1 = (Extent it) -> {
         Iterable<TerminologyGraph> _terminologyGraphs = this._oMLExtensions.terminologyGraphs(it);
         Iterable<Bundle> _bundles = this._oMLExtensions.bundles(it);
@@ -221,10 +1076,33 @@ public class OMLScopeExtensions {
   public IScope allDescriptions(final DescriptionBox context) {
     IScope _xblockexpression = null;
     {
-      final Function1<Resource, Iterable<Extent>> _function = (Resource it) -> {
+      final HashMap<DescriptionBox, IScope> cache = OMLScopeExtensions.lookupAllDescriptionsCache(context);
+      IScope _elvis = null;
+      IScope _computeIfAbsent = null;
+      if (cache!=null) {
+        final java.util.function.Function<DescriptionBox, IScope> _function = (DescriptionBox it) -> {
+          return this.computeAllDescriptions(it);
+        };
+        _computeIfAbsent=cache.computeIfAbsent(context, _function);
+      }
+      if (_computeIfAbsent != null) {
+        _elvis = _computeIfAbsent;
+      } else {
+        IScope _computeAllDescriptions = this.computeAllDescriptions(context);
+        _elvis = _computeAllDescriptions;
+      }
+      _xblockexpression = _elvis;
+    }
+    return _xblockexpression;
+  }
+  
+  private IScope computeAllDescriptions(final DescriptionBox context) {
+    IScope _xblockexpression = null;
+    {
+      final Function1<org.eclipse.emf.ecore.resource.Resource, Iterable<Extent>> _function = (org.eclipse.emf.ecore.resource.Resource it) -> {
         return Iterables.<Extent>filter(it.getContents(), Extent.class);
       };
-      final Iterable<Extent> exts = Iterables.<Extent>concat(ListExtensions.<Resource, Iterable<Extent>>map(context.eResource().getResourceSet().getResources(), _function));
+      final Iterable<Extent> exts = Iterables.<Extent>concat(ListExtensions.<org.eclipse.emf.ecore.resource.Resource, Iterable<Extent>>map(context.eResource().getResourceSet().getResources(), _function));
       final Function1<Extent, Iterable<DescriptionBox>> _function_1 = (Extent it) -> {
         return this._oMLExtensions.descriptions(it);
       };
@@ -260,31 +1138,144 @@ public class OMLScopeExtensions {
     return _xblockexpression;
   }
   
-  public <T extends gov.nasa.jpl.imce.oml.model.common.Resource> QualifiedName importedResourceNameFunction(final Pair<TerminologyBox, T> p) {
-    String _nsPrefix = p.getKey().nsPrefix();
-    String _plus = (_nsPrefix + ":");
-    String _name = p.getValue().name();
-    String _plus_1 = (_plus + _name);
-    return this.qnc.toQualifiedName(_plus_1);
+  /**
+   * This method can be invoked very often for large models.
+   * To enable read-only cache optimization, invoke OMLLinkingService.initializeCache(ResourceSet)
+   */
+  public <T extends Resource> QualifiedName importedResourceNameFunction(final Pair<TerminologyBox, T> p) {
+    QualifiedName _xblockexpression = null;
+    {
+      final HashMap<Module, HashMap<Resource, QualifiedName>> importedResourceNameCache = OMLScopeExtensions.lookupImportedResourceNameCache(p.getKey());
+      QualifiedName _xifexpression = null;
+      if ((null != importedResourceNameCache)) {
+        QualifiedName _xblockexpression_1 = null;
+        {
+          final java.util.function.Function<Module, HashMap<Resource, QualifiedName>> _function = (Module it) -> {
+            return new HashMap<Resource, QualifiedName>();
+          };
+          final HashMap<Resource, QualifiedName> nameMap = importedResourceNameCache.computeIfAbsent(p.getKey(), _function);
+          final java.util.function.Function<Resource, QualifiedName> _function_1 = (Resource it) -> {
+            String _nsPrefix = p.getKey().nsPrefix();
+            String _plus = (_nsPrefix + ":");
+            String _name = p.getValue().name();
+            String _plus_1 = (_plus + _name);
+            return this.qnc.toQualifiedName(_plus_1);
+          };
+          _xblockexpression_1 = nameMap.computeIfAbsent(p.getValue(), _function_1);
+        }
+        _xifexpression = _xblockexpression_1;
+      } else {
+        String _nsPrefix = p.getKey().nsPrefix();
+        String _plus = (_nsPrefix + ":");
+        String _name = p.getValue().name();
+        String _plus_1 = (_plus + _name);
+        _xifexpression = this.qnc.toQualifiedName(_plus_1);
+      }
+      _xblockexpression = _xifexpression;
+    }
+    return _xblockexpression;
   }
   
-  public <T extends gov.nasa.jpl.imce.oml.model.common.Resource> QualifiedName importedBundleNameFunction(final Pair<Bundle, T> p) {
-    String _nsPrefix = p.getKey().nsPrefix();
-    String _plus = (_nsPrefix + ":");
-    String _name = p.getValue().name();
-    String _plus_1 = (_plus + _name);
-    return this.qnc.toQualifiedName(_plus_1);
+  /**
+   * This method can be invoked very often for large models.
+   * To enable read-only cache optimization, invoke OMLLinkingService.initializeCache(ResourceSet)
+   */
+  public <T extends Resource> QualifiedName importedBundleNameFunction(final Pair<Bundle, T> p) {
+    QualifiedName _xblockexpression = null;
+    {
+      final HashMap<Module, HashMap<Resource, QualifiedName>> importedResourceNameCache = OMLScopeExtensions.lookupImportedResourceNameCache(p.getKey());
+      QualifiedName _xifexpression = null;
+      if ((null != importedResourceNameCache)) {
+        QualifiedName _xblockexpression_1 = null;
+        {
+          final java.util.function.Function<Module, HashMap<Resource, QualifiedName>> _function = (Module it) -> {
+            return new HashMap<Resource, QualifiedName>();
+          };
+          final HashMap<Resource, QualifiedName> nameMap = importedResourceNameCache.computeIfAbsent(p.getKey(), _function);
+          final java.util.function.Function<Resource, QualifiedName> _function_1 = (Resource it) -> {
+            String _nsPrefix = p.getKey().nsPrefix();
+            String _plus = (_nsPrefix + ":");
+            String _name = p.getValue().name();
+            String _plus_1 = (_plus + _name);
+            return this.qnc.toQualifiedName(_plus_1);
+          };
+          _xblockexpression_1 = nameMap.computeIfAbsent(p.getValue(), _function_1);
+        }
+        _xifexpression = _xblockexpression_1;
+      } else {
+        String _nsPrefix = p.getKey().nsPrefix();
+        String _plus = (_nsPrefix + ":");
+        String _name = p.getValue().name();
+        String _plus_1 = (_plus + _name);
+        _xifexpression = this.qnc.toQualifiedName(_plus_1);
+      }
+      _xblockexpression = _xifexpression;
+    }
+    return _xblockexpression;
   }
   
-  public <T extends gov.nasa.jpl.imce.oml.model.common.Resource> QualifiedName importedDescriptionNameFunction(final Pair<DescriptionBox, T> p) {
-    String _nsPrefix = p.getKey().nsPrefix();
-    String _plus = (_nsPrefix + ":");
-    String _name = p.getValue().name();
-    String _plus_1 = (_plus + _name);
-    return this.qnc.toQualifiedName(_plus_1);
+  /**
+   * This method can be invoked very often for large models.
+   * To enable read-only cache optimization, invoke OMLLinkingService.initializeCache(ResourceSet)
+   */
+  public <T extends Resource> QualifiedName importedDescriptionNameFunction(final Pair<DescriptionBox, T> p) {
+    QualifiedName _xblockexpression = null;
+    {
+      final HashMap<Module, HashMap<Resource, QualifiedName>> importedResourceNameCache = OMLScopeExtensions.lookupImportedResourceNameCache(p.getKey());
+      QualifiedName _xifexpression = null;
+      if ((null != importedResourceNameCache)) {
+        QualifiedName _xblockexpression_1 = null;
+        {
+          final java.util.function.Function<Module, HashMap<Resource, QualifiedName>> _function = (Module it) -> {
+            return new HashMap<Resource, QualifiedName>();
+          };
+          final HashMap<Resource, QualifiedName> nameMap = importedResourceNameCache.computeIfAbsent(p.getKey(), _function);
+          final java.util.function.Function<Resource, QualifiedName> _function_1 = (Resource it) -> {
+            String _nsPrefix = p.getKey().nsPrefix();
+            String _plus = (_nsPrefix + ":");
+            String _name = p.getValue().name();
+            String _plus_1 = (_plus + _name);
+            return this.qnc.toQualifiedName(_plus_1);
+          };
+          _xblockexpression_1 = nameMap.computeIfAbsent(p.getValue(), _function_1);
+        }
+        _xifexpression = _xblockexpression_1;
+      } else {
+        String _nsPrefix = p.getKey().nsPrefix();
+        String _plus = (_nsPrefix + ":");
+        String _name = p.getValue().name();
+        String _plus_1 = (_plus + _name);
+        _xifexpression = this.qnc.toQualifiedName(_plus_1);
+      }
+      _xblockexpression = _xifexpression;
+    }
+    return _xblockexpression;
   }
   
   public IScope allEntitiesScope(final TerminologyBox tbox) {
+    IScope _xblockexpression = null;
+    {
+      final HashMap<TerminologyBox, IScope> cache = OMLScopeExtensions.lookupAllEntitiesCache(tbox);
+      IScope _elvis = null;
+      IScope _computeIfAbsent = null;
+      if (cache!=null) {
+        final java.util.function.Function<TerminologyBox, IScope> _function = (TerminologyBox it) -> {
+          return this.computeAllEntities(it);
+        };
+        _computeIfAbsent=cache.computeIfAbsent(tbox, _function);
+      }
+      if (_computeIfAbsent != null) {
+        _elvis = _computeIfAbsent;
+      } else {
+        IScope _computeAllEntities = this.computeAllEntities(tbox);
+        _elvis = _computeAllEntities;
+      }
+      _xblockexpression = _elvis;
+    }
+    return _xblockexpression;
+  }
+  
+  private IScope computeAllEntities(final TerminologyBox tbox) {
     final Function<TerminologyBox, Iterable<Entity>> _function = (TerminologyBox it) -> {
       return this._oMLExtensions.localEntities(it);
     };
@@ -295,6 +1286,29 @@ public class OMLScopeExtensions {
   }
   
   public IScope allRangesScope(final TerminologyBox tbox) {
+    IScope _xblockexpression = null;
+    {
+      final HashMap<TerminologyBox, IScope> cache = OMLScopeExtensions.lookupAllRangesCache(tbox);
+      IScope _elvis = null;
+      IScope _computeIfAbsent = null;
+      if (cache!=null) {
+        final java.util.function.Function<TerminologyBox, IScope> _function = (TerminologyBox it) -> {
+          return this.computeAllRanges(it);
+        };
+        _computeIfAbsent=cache.computeIfAbsent(tbox, _function);
+      }
+      if (_computeIfAbsent != null) {
+        _elvis = _computeIfAbsent;
+      } else {
+        IScope _computeAllRanges = this.computeAllRanges(tbox);
+        _elvis = _computeAllRanges;
+      }
+      _xblockexpression = _elvis;
+    }
+    return _xblockexpression;
+  }
+  
+  private IScope computeAllRanges(final TerminologyBox tbox) {
     final Function<TerminologyBox, Iterable<DataRange>> _function = (TerminologyBox it) -> {
       return this._oMLExtensions.localRanges(it);
     };
@@ -305,6 +1319,29 @@ public class OMLScopeExtensions {
   }
   
   public IScope allStructuresScope(final TerminologyBox tbox) {
+    IScope _xblockexpression = null;
+    {
+      final HashMap<TerminologyBox, IScope> cache = OMLScopeExtensions.lookupAllStructuresCache(tbox);
+      IScope _elvis = null;
+      IScope _computeIfAbsent = null;
+      if (cache!=null) {
+        final java.util.function.Function<TerminologyBox, IScope> _function = (TerminologyBox it) -> {
+          return this.computeAllStructures(it);
+        };
+        _computeIfAbsent=cache.computeIfAbsent(tbox, _function);
+      }
+      if (_computeIfAbsent != null) {
+        _elvis = _computeIfAbsent;
+      } else {
+        IScope _computeAllStructures = this.computeAllStructures(tbox);
+        _elvis = _computeAllStructures;
+      }
+      _xblockexpression = _elvis;
+    }
+    return _xblockexpression;
+  }
+  
+  private IScope computeAllStructures(final TerminologyBox tbox) {
     final Function<TerminologyBox, Iterable<Structure>> _function = (TerminologyBox it) -> {
       return this._oMLExtensions.localStructures(it);
     };
@@ -315,6 +1352,29 @@ public class OMLScopeExtensions {
   }
   
   public IScope allAspectsScope(final TerminologyBox tbox) {
+    IScope _xblockexpression = null;
+    {
+      final HashMap<TerminologyBox, IScope> cache = OMLScopeExtensions.lookupAllAspectsCache(tbox);
+      IScope _elvis = null;
+      IScope _computeIfAbsent = null;
+      if (cache!=null) {
+        final java.util.function.Function<TerminologyBox, IScope> _function = (TerminologyBox it) -> {
+          return this.computeAllAspects(it);
+        };
+        _computeIfAbsent=cache.computeIfAbsent(tbox, _function);
+      }
+      if (_computeIfAbsent != null) {
+        _elvis = _computeIfAbsent;
+      } else {
+        IScope _computeAllAspects = this.computeAllAspects(tbox);
+        _elvis = _computeAllAspects;
+      }
+      _xblockexpression = _elvis;
+    }
+    return _xblockexpression;
+  }
+  
+  private IScope computeAllAspects(final TerminologyBox tbox) {
     final Function<TerminologyBox, Iterable<Aspect>> _function = (TerminologyBox it) -> {
       return this._oMLExtensions.localAspects(it);
     };
@@ -325,6 +1385,29 @@ public class OMLScopeExtensions {
   }
   
   public IScope allConceptsScope(final TerminologyBox tbox) {
+    IScope _xblockexpression = null;
+    {
+      final HashMap<TerminologyBox, IScope> cache = OMLScopeExtensions.lookupAllConceptsCache(tbox);
+      IScope _elvis = null;
+      IScope _computeIfAbsent = null;
+      if (cache!=null) {
+        final java.util.function.Function<TerminologyBox, IScope> _function = (TerminologyBox it) -> {
+          return this.computeAllConcepts(it);
+        };
+        _computeIfAbsent=cache.computeIfAbsent(tbox, _function);
+      }
+      if (_computeIfAbsent != null) {
+        _elvis = _computeIfAbsent;
+      } else {
+        IScope _computeAllConcepts = this.computeAllConcepts(tbox);
+        _elvis = _computeAllConcepts;
+      }
+      _xblockexpression = _elvis;
+    }
+    return _xblockexpression;
+  }
+  
+  private IScope computeAllConcepts(final TerminologyBox tbox) {
     final Function<TerminologyBox, Iterable<Concept>> _function = (TerminologyBox it) -> {
       return this._oMLExtensions.localConcepts(it);
     };
@@ -335,6 +1418,29 @@ public class OMLScopeExtensions {
   }
   
   public IScope allConceptualRelationshipsScope(final TerminologyBox tbox) {
+    IScope _xblockexpression = null;
+    {
+      final HashMap<TerminologyBox, IScope> cache = OMLScopeExtensions.lookupAllConceptualRelationshipsCache(tbox);
+      IScope _elvis = null;
+      IScope _computeIfAbsent = null;
+      if (cache!=null) {
+        final java.util.function.Function<TerminologyBox, IScope> _function = (TerminologyBox it) -> {
+          return this.computeAllConceptualRelationships(it);
+        };
+        _computeIfAbsent=cache.computeIfAbsent(tbox, _function);
+      }
+      if (_computeIfAbsent != null) {
+        _elvis = _computeIfAbsent;
+      } else {
+        IScope _computeAllConceptualRelationships = this.computeAllConceptualRelationships(tbox);
+        _elvis = _computeAllConceptualRelationships;
+      }
+      _xblockexpression = _elvis;
+    }
+    return _xblockexpression;
+  }
+  
+  private IScope computeAllConceptualRelationships(final TerminologyBox tbox) {
     final Function<TerminologyBox, Iterable<ConceptualRelationship>> _function = (TerminologyBox it) -> {
       return this._oMLExtensions.localConceptualRelationships(it);
     };
@@ -345,6 +1451,29 @@ public class OMLScopeExtensions {
   }
   
   public IScope allReifiedRelationshipRestrictionsScope(final TerminologyBox tbox) {
+    IScope _xblockexpression = null;
+    {
+      final HashMap<TerminologyBox, IScope> cache = OMLScopeExtensions.lookupAllReifiedRelationshipRestrictionsCache(tbox);
+      IScope _elvis = null;
+      IScope _computeIfAbsent = null;
+      if (cache!=null) {
+        final java.util.function.Function<TerminologyBox, IScope> _function = (TerminologyBox it) -> {
+          return this.computeAllReifiedRelationshipRestrictions(it);
+        };
+        _computeIfAbsent=cache.computeIfAbsent(tbox, _function);
+      }
+      if (_computeIfAbsent != null) {
+        _elvis = _computeIfAbsent;
+      } else {
+        IScope _computeAllReifiedRelationshipRestrictions = this.computeAllReifiedRelationshipRestrictions(tbox);
+        _elvis = _computeAllReifiedRelationshipRestrictions;
+      }
+      _xblockexpression = _elvis;
+    }
+    return _xblockexpression;
+  }
+  
+  private IScope computeAllReifiedRelationshipRestrictions(final TerminologyBox tbox) {
     final Function<TerminologyBox, Iterable<ReifiedRelationshipRestriction>> _function = (TerminologyBox it) -> {
       return this._oMLExtensions.localReifiedRelationshipRestrictions(it);
     };
@@ -355,6 +1484,29 @@ public class OMLScopeExtensions {
   }
   
   public IScope allReifiedRelationshipsScope(final TerminologyBox tbox) {
+    IScope _xblockexpression = null;
+    {
+      final HashMap<TerminologyBox, IScope> cache = OMLScopeExtensions.lookupAllReifiedRelationshipsCache(tbox);
+      IScope _elvis = null;
+      IScope _computeIfAbsent = null;
+      if (cache!=null) {
+        final java.util.function.Function<TerminologyBox, IScope> _function = (TerminologyBox it) -> {
+          return this.computeAllReifiedRelationships(it);
+        };
+        _computeIfAbsent=cache.computeIfAbsent(tbox, _function);
+      }
+      if (_computeIfAbsent != null) {
+        _elvis = _computeIfAbsent;
+      } else {
+        IScope _computeAllReifiedRelationships = this.computeAllReifiedRelationships(tbox);
+        _elvis = _computeAllReifiedRelationships;
+      }
+      _xblockexpression = _elvis;
+    }
+    return _xblockexpression;
+  }
+  
+  private IScope computeAllReifiedRelationships(final TerminologyBox tbox) {
     final Function<TerminologyBox, Iterable<ReifiedRelationship>> _function = (TerminologyBox it) -> {
       return this._oMLExtensions.localReifiedRelationships(it);
     };
@@ -365,6 +1517,29 @@ public class OMLScopeExtensions {
   }
   
   public IScope allUnreifiedRelationshipsScope(final TerminologyBox tbox) {
+    IScope _xblockexpression = null;
+    {
+      final HashMap<TerminologyBox, IScope> cache = OMLScopeExtensions.lookupAllUnreifiedRelationshipsCache(tbox);
+      IScope _elvis = null;
+      IScope _computeIfAbsent = null;
+      if (cache!=null) {
+        final java.util.function.Function<TerminologyBox, IScope> _function = (TerminologyBox it) -> {
+          return this.computeAllUnreifiedRelationships(it);
+        };
+        _computeIfAbsent=cache.computeIfAbsent(tbox, _function);
+      }
+      if (_computeIfAbsent != null) {
+        _elvis = _computeIfAbsent;
+      } else {
+        IScope _computeAllUnreifiedRelationships = this.computeAllUnreifiedRelationships(tbox);
+        _elvis = _computeAllUnreifiedRelationships;
+      }
+      _xblockexpression = _elvis;
+    }
+    return _xblockexpression;
+  }
+  
+  private IScope computeAllUnreifiedRelationships(final TerminologyBox tbox) {
     final Function<TerminologyBox, Iterable<UnreifiedRelationship>> _function = (TerminologyBox it) -> {
       return this._oMLExtensions.localUnreifiedRelationships(it);
     };
@@ -375,6 +1550,29 @@ public class OMLScopeExtensions {
   }
   
   public IScope allEntityRelationshipsScope(final TerminologyBox tbox) {
+    IScope _xblockexpression = null;
+    {
+      final HashMap<TerminologyBox, IScope> cache = OMLScopeExtensions.lookupAllEntityRelationshipsCache(tbox);
+      IScope _elvis = null;
+      IScope _computeIfAbsent = null;
+      if (cache!=null) {
+        final java.util.function.Function<TerminologyBox, IScope> _function = (TerminologyBox it) -> {
+          return this.computeAllEntityRelationships(it);
+        };
+        _computeIfAbsent=cache.computeIfAbsent(tbox, _function);
+      }
+      if (_computeIfAbsent != null) {
+        _elvis = _computeIfAbsent;
+      } else {
+        IScope _computeAllEntityRelationships = this.computeAllEntityRelationships(tbox);
+        _elvis = _computeAllEntityRelationships;
+      }
+      _xblockexpression = _elvis;
+    }
+    return _xblockexpression;
+  }
+  
+  private IScope computeAllEntityRelationships(final TerminologyBox tbox) {
     final Function<TerminologyBox, Iterable<EntityRelationship>> _function = (TerminologyBox it) -> {
       return this._oMLExtensions.localEntityRelationships(it);
     };
@@ -385,6 +1583,29 @@ public class OMLScopeExtensions {
   }
   
   public IScope allPredicatesScope(final TerminologyBox tbox) {
+    IScope _xblockexpression = null;
+    {
+      final HashMap<TerminologyBox, IScope> cache = OMLScopeExtensions.lookupAllPredicatesCache(tbox);
+      IScope _elvis = null;
+      IScope _computeIfAbsent = null;
+      if (cache!=null) {
+        final java.util.function.Function<TerminologyBox, IScope> _function = (TerminologyBox it) -> {
+          return this.computeAllPredicates(it);
+        };
+        _computeIfAbsent=cache.computeIfAbsent(tbox, _function);
+      }
+      if (_computeIfAbsent != null) {
+        _elvis = _computeIfAbsent;
+      } else {
+        IScope _computeAllPredicates = this.computeAllPredicates(tbox);
+        _elvis = _computeAllPredicates;
+      }
+      _xblockexpression = _elvis;
+    }
+    return _xblockexpression;
+  }
+  
+  private IScope computeAllPredicates(final TerminologyBox tbox) {
     final Function<TerminologyBox, Iterable<Predicate>> _function = (TerminologyBox it) -> {
       return this._oMLExtensions.localPredicates(it);
     };
@@ -395,6 +1616,29 @@ public class OMLScopeExtensions {
   }
   
   public IScope allForwardPropertiesScope(final TerminologyBox tbox) {
+    IScope _xblockexpression = null;
+    {
+      final HashMap<TerminologyBox, IScope> cache = OMLScopeExtensions.lookupAllForwardPropertiesCache(tbox);
+      IScope _elvis = null;
+      IScope _computeIfAbsent = null;
+      if (cache!=null) {
+        final java.util.function.Function<TerminologyBox, IScope> _function = (TerminologyBox it) -> {
+          return this.computeAllForwardProperties(it);
+        };
+        _computeIfAbsent=cache.computeIfAbsent(tbox, _function);
+      }
+      if (_computeIfAbsent != null) {
+        _elvis = _computeIfAbsent;
+      } else {
+        IScope _computeAllForwardProperties = this.computeAllForwardProperties(tbox);
+        _elvis = _computeAllForwardProperties;
+      }
+      _xblockexpression = _elvis;
+    }
+    return _xblockexpression;
+  }
+  
+  private IScope computeAllForwardProperties(final TerminologyBox tbox) {
     final Function<TerminologyBox, Iterable<ForwardProperty>> _function = (TerminologyBox it) -> {
       return this._oMLExtensions.localForwardProperties(it);
     };
@@ -405,6 +1649,29 @@ public class OMLScopeExtensions {
   }
   
   public IScope allInversePropertiesScope(final TerminologyBox tbox) {
+    IScope _xblockexpression = null;
+    {
+      final HashMap<TerminologyBox, IScope> cache = OMLScopeExtensions.lookupAllInversePropertiesCache(tbox);
+      IScope _elvis = null;
+      IScope _computeIfAbsent = null;
+      if (cache!=null) {
+        final java.util.function.Function<TerminologyBox, IScope> _function = (TerminologyBox it) -> {
+          return this.computeAllInverseProperties(it);
+        };
+        _computeIfAbsent=cache.computeIfAbsent(tbox, _function);
+      }
+      if (_computeIfAbsent != null) {
+        _elvis = _computeIfAbsent;
+      } else {
+        IScope _computeAllInverseProperties = this.computeAllInverseProperties(tbox);
+        _elvis = _computeAllInverseProperties;
+      }
+      _xblockexpression = _elvis;
+    }
+    return _xblockexpression;
+  }
+  
+  private IScope computeAllInverseProperties(final TerminologyBox tbox) {
     final Function<TerminologyBox, Iterable<InverseProperty>> _function = (TerminologyBox it) -> {
       return this._oMLExtensions.localInverseProperties(it);
     };
@@ -415,6 +1682,29 @@ public class OMLScopeExtensions {
   }
   
   public IScope allRestrictableRelationshipsScope(final TerminologyBox tbox) {
+    IScope _xblockexpression = null;
+    {
+      final HashMap<TerminologyBox, IScope> cache = OMLScopeExtensions.lookupAllRestrictableRelationshipsCache(tbox);
+      IScope _elvis = null;
+      IScope _computeIfAbsent = null;
+      if (cache!=null) {
+        final java.util.function.Function<TerminologyBox, IScope> _function = (TerminologyBox it) -> {
+          return this.computeAllRestrictableRelationships(it);
+        };
+        _computeIfAbsent=cache.computeIfAbsent(tbox, _function);
+      }
+      if (_computeIfAbsent != null) {
+        _elvis = _computeIfAbsent;
+      } else {
+        IScope _computeAllRestrictableRelationships = this.computeAllRestrictableRelationships(tbox);
+        _elvis = _computeAllRestrictableRelationships;
+      }
+      _xblockexpression = _elvis;
+    }
+    return _xblockexpression;
+  }
+  
+  private IScope computeAllRestrictableRelationships(final TerminologyBox tbox) {
     final Function<TerminologyBox, Iterable<RestrictableRelationship>> _function = (TerminologyBox it) -> {
       return this._oMLExtensions.localRestrictableRelationships(it);
     };
@@ -425,6 +1715,29 @@ public class OMLScopeExtensions {
   }
   
   public IScope allEntityScalarDataPropertiesScope(final TerminologyBox tbox) {
+    IScope _xblockexpression = null;
+    {
+      final HashMap<TerminologyBox, IScope> cache = OMLScopeExtensions.lookupAllEntityScalarDataPropertiesCache(tbox);
+      IScope _elvis = null;
+      IScope _computeIfAbsent = null;
+      if (cache!=null) {
+        final java.util.function.Function<TerminologyBox, IScope> _function = (TerminologyBox it) -> {
+          return this.computeAllEntityScalarDataProperties(it);
+        };
+        _computeIfAbsent=cache.computeIfAbsent(tbox, _function);
+      }
+      if (_computeIfAbsent != null) {
+        _elvis = _computeIfAbsent;
+      } else {
+        IScope _computeAllEntityScalarDataProperties = this.computeAllEntityScalarDataProperties(tbox);
+        _elvis = _computeAllEntityScalarDataProperties;
+      }
+      _xblockexpression = _elvis;
+    }
+    return _xblockexpression;
+  }
+  
+  private IScope computeAllEntityScalarDataProperties(final TerminologyBox tbox) {
     final Function<TerminologyBox, Iterable<EntityScalarDataProperty>> _function = (TerminologyBox it) -> {
       return this._oMLExtensions.localEntityScalarDataProperties(it);
     };
@@ -435,6 +1748,29 @@ public class OMLScopeExtensions {
   }
   
   public IScope allEntityStructuredDataPropertiesScope(final TerminologyBox tbox) {
+    IScope _xblockexpression = null;
+    {
+      final HashMap<TerminologyBox, IScope> cache = OMLScopeExtensions.lookupAllEntityStructuredDataPropertiesCache(tbox);
+      IScope _elvis = null;
+      IScope _computeIfAbsent = null;
+      if (cache!=null) {
+        final java.util.function.Function<TerminologyBox, IScope> _function = (TerminologyBox it) -> {
+          return this.computeAllEntityStructuredDataProperties(it);
+        };
+        _computeIfAbsent=cache.computeIfAbsent(tbox, _function);
+      }
+      if (_computeIfAbsent != null) {
+        _elvis = _computeIfAbsent;
+      } else {
+        IScope _computeAllEntityStructuredDataProperties = this.computeAllEntityStructuredDataProperties(tbox);
+        _elvis = _computeAllEntityStructuredDataProperties;
+      }
+      _xblockexpression = _elvis;
+    }
+    return _xblockexpression;
+  }
+  
+  private IScope computeAllEntityStructuredDataProperties(final TerminologyBox tbox) {
     final Function<TerminologyBox, Iterable<EntityStructuredDataProperty>> _function = (TerminologyBox it) -> {
       return this._oMLExtensions.localEntityStructuredDataProperties(it);
     };
@@ -445,6 +1781,29 @@ public class OMLScopeExtensions {
   }
   
   public IScope allScalarDataPropertiesScope(final TerminologyBox tbox) {
+    IScope _xblockexpression = null;
+    {
+      final HashMap<TerminologyBox, IScope> cache = OMLScopeExtensions.lookupAllScalarDataPropertiesCache(tbox);
+      IScope _elvis = null;
+      IScope _computeIfAbsent = null;
+      if (cache!=null) {
+        final java.util.function.Function<TerminologyBox, IScope> _function = (TerminologyBox it) -> {
+          return this.computeAllScalarDataProperties(it);
+        };
+        _computeIfAbsent=cache.computeIfAbsent(tbox, _function);
+      }
+      if (_computeIfAbsent != null) {
+        _elvis = _computeIfAbsent;
+      } else {
+        IScope _computeAllScalarDataProperties = this.computeAllScalarDataProperties(tbox);
+        _elvis = _computeAllScalarDataProperties;
+      }
+      _xblockexpression = _elvis;
+    }
+    return _xblockexpression;
+  }
+  
+  private IScope computeAllScalarDataProperties(final TerminologyBox tbox) {
     final Function<TerminologyBox, Iterable<ScalarDataProperty>> _function = (TerminologyBox it) -> {
       return this._oMLExtensions.localScalarDataProperties(it);
     };
@@ -455,6 +1814,29 @@ public class OMLScopeExtensions {
   }
   
   public IScope allStructuredDataPropertiesScope(final TerminologyBox tbox) {
+    IScope _xblockexpression = null;
+    {
+      final HashMap<TerminologyBox, IScope> cache = OMLScopeExtensions.lookupAllStructuredDataPropertiesCache(tbox);
+      IScope _elvis = null;
+      IScope _computeIfAbsent = null;
+      if (cache!=null) {
+        final java.util.function.Function<TerminologyBox, IScope> _function = (TerminologyBox it) -> {
+          return this.computeAllStructuredDataProperties(it);
+        };
+        _computeIfAbsent=cache.computeIfAbsent(tbox, _function);
+      }
+      if (_computeIfAbsent != null) {
+        _elvis = _computeIfAbsent;
+      } else {
+        IScope _computeAllStructuredDataProperties = this.computeAllStructuredDataProperties(tbox);
+        _elvis = _computeAllStructuredDataProperties;
+      }
+      _xblockexpression = _elvis;
+    }
+    return _xblockexpression;
+  }
+  
+  private IScope computeAllStructuredDataProperties(final TerminologyBox tbox) {
     final Function<TerminologyBox, Iterable<StructuredDataProperty>> _function = (TerminologyBox it) -> {
       return this._oMLExtensions.localStructuredDataProperties(it);
     };
@@ -465,6 +1847,29 @@ public class OMLScopeExtensions {
   }
   
   public IScope allScalarOneOfRestrictionsScope(final TerminologyBox tbox) {
+    IScope _xblockexpression = null;
+    {
+      final HashMap<TerminologyBox, IScope> cache = OMLScopeExtensions.lookupAllScalarOneOfRestrictionsCache(tbox);
+      IScope _elvis = null;
+      IScope _computeIfAbsent = null;
+      if (cache!=null) {
+        final java.util.function.Function<TerminologyBox, IScope> _function = (TerminologyBox it) -> {
+          return this.computeAllScalarOneOfRestrictions(it);
+        };
+        _computeIfAbsent=cache.computeIfAbsent(tbox, _function);
+      }
+      if (_computeIfAbsent != null) {
+        _elvis = _computeIfAbsent;
+      } else {
+        IScope _computeAllScalarOneOfRestrictions = this.computeAllScalarOneOfRestrictions(tbox);
+        _elvis = _computeAllScalarOneOfRestrictions;
+      }
+      _xblockexpression = _elvis;
+    }
+    return _xblockexpression;
+  }
+  
+  private IScope computeAllScalarOneOfRestrictions(final TerminologyBox tbox) {
     final Function<TerminologyBox, Iterable<ScalarOneOfRestriction>> _function = (TerminologyBox it) -> {
       return this._oMLExtensions.localScalarOneOfRestrictions(it);
     };
