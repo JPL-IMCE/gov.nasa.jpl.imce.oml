@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.resource.URIHandler
 import org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl
 import java.net.URL
 import org.eclipse.core.runtime.FileLocator
+import java.io.File
 
 /**
  * CatalogURIConverter is a kind of ExtensibleURIConverterImpl
@@ -88,24 +89,24 @@ class CatalogURIConverter extends ExtensibleURIConverterImpl {
 	 * to delegate normalizing the URI.
 	 */
 	override def URI normalize(URI uri) {
-		if (uri.file)
+		if (uri.file) {
 			uri
-		else if (uri.platform) {
-			val purl = new URL(uri.toString)
-			val furl = FileLocator.toFileURL(purl)
-			if (furl != purl)
-				URI.createFileURI(furl.file)
-			else
-				throw new IllegalArgumentException(
-					"CatalogURIConverter.normalize() failed to resolve platform URI: " + uri)
+		} else if (uri.platform) {
+			uri
 		} else {
 			val resolved = catalog.resolveURI(uri.toString)
 			if (null !== resolved && resolved.startsWith("file:"))
 				URI.createURI(resolved)
 			else if (null !== uriConverter)
 				uriConverter.normalize(uri)
-			else
-				throw new IllegalArgumentException('''No parent URIConverter and no catalog mapping for URI: «uri»''')
+			else {
+				val purl = new URL(uri.toString)
+				val furl = FileLocator.toFileURL(purl)
+				if (null !== furl && furl != purl)
+					URI.createFileURI(furl.file)
+				else
+					throw new IllegalArgumentException('''No parent URIConverter and no catalog mapping for URI: «uri»''')
+			}	
 		}
 	}
 
@@ -120,17 +121,23 @@ class CatalogURIConverter extends ExtensibleURIConverterImpl {
 		switch fileExtension {
 			String: 
 				if (!fileExtension.nullOrEmpty) {
-					val normalizedFileURI = 
-					if (null === normalizedExt)
-						normalized.appendFileExtension(fileExtension)
-					else if (normalizedExt == fileExtension)
-						normalized
-					else
-						throw new IllegalArgumentException(
+					val normalizedFileURI = if (null === normalizedExt)
+							normalized.appendFileExtension(fileExtension)
+						else if (normalizedExt == fileExtension)
+							normalized
+						else
+							throw new IllegalArgumentException(
 							'''CatalogURIConverter.createOutputStream() invalid URI file extension «normalizedExt» should be instead «fileExtension» in normalized URI: «normalized»''')
-						
-					getURIHandler(normalizedFileURI).createOutputStream(normalizedFileURI,
-						new OptionsMap(URIConverter.OPTION_URI_CONVERTER, this, options))
+
+					val scheme = normalizedFileURI.scheme
+
+					if ("file" == scheme || "platform" == scheme) {
+						getURIHandler(normalizedFileURI).createOutputStream(normalizedFileURI,
+							new OptionsMap(URIConverter.OPTION_URI_CONVERTER, this, options))
+					} else
+						throw new IllegalArgumentException(
+							'''CatalogURIConverter.createOutputStream() URI scheme should be 'file' or 'platform'; got: '«scheme»' for «uri» as file URI: «normalizedFileURI»''')
+
 				} else
 					throw new IllegalArgumentException(
 						"CatalogURIConverter.createOutputStream() requires the option: 'file.extension' to append a resource-specific OML file extension.")
@@ -155,17 +162,30 @@ class CatalogURIConverter extends ExtensibleURIConverterImpl {
 		switch fileExtension {
 			String:
 				if (!fileExtension.nullOrEmpty) {
-					val normalizedFileURI = 
-					if (null === normalizedExt)
-						normalized.appendFileExtension(fileExtension)
-					else if (normalizedExt == fileExtension)
-						normalized
-					else
-						throw new IllegalArgumentException(
+					val normalizedFileURI = if (null === normalizedExt)
+							normalized.appendFileExtension(fileExtension)
+						else if (normalizedExt == fileExtension)
+							normalized
+						else
+							throw new IllegalArgumentException(
 							'''CatalogURIConverter.createInputStream() invalid URI file extension «normalizedExt» should be instead «fileExtension» in normalized URI: «normalized»''')
-						
-					getURIHandler(normalizedFileURI).createInputStream(normalizedFileURI,
-						new OptionsMap(URIConverter.OPTION_URI_CONVERTER, this, options))
+
+					val scheme = normalizedFileURI.scheme
+
+					if ("bundleresource" == scheme || "classpath" == scheme || "file" == scheme || "platform" == scheme) {
+						if (normalizedFileURI.file) {
+							val path = normalizedFileURI.toFileString
+							val file = new File(path)
+							if (!file.exists)
+								throw new IllegalArgumentException(
+							'''CatalogURIConverter.createInputStream() «uri» resolves to a non-existent file URI: «normalizedFileURI»''')
+						}
+						getURIHandler(normalizedFileURI).createInputStream(normalizedFileURI,
+							new OptionsMap(URIConverter.OPTION_URI_CONVERTER, this, options))
+					} else
+						throw new IllegalArgumentException(
+							'''CatalogURIConverter.createInputStream() URI scheme should be 'file', 'platform', 'classpath' or 'bundleresource'; got: '«scheme»' for «uri» as file URI: «normalizedFileURI»''')
+
 				} else
 					throw new IllegalArgumentException(
 						"CatalogURIConverter.createInputStream() requires the option: 'file.extension' to append a resource-specific OML file extension.")
