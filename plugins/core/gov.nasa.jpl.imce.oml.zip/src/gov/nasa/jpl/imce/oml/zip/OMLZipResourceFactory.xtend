@@ -20,26 +20,16 @@ package gov.nasa.jpl.imce.oml.zip
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.resource.IResourceFactory
-import com.google.inject.Provider
-import com.google.inject.Inject
 
 /**
  * OMLZipResourceFactory is a Resource.Factory for OMLZipResources.
  */
 class OMLZipResourceFactory implements IResourceFactory {
 	
-//	private Provider<OMLZipResource> provider
-	
-//	@Inject
-//	new(Provider<OMLZipResource> resourceProvider) {
-//		this.provider = resourceProvider
-//	}
-	
 	new(){		
 	}
 	
 	override def Resource createResource(URI uri) {
-		//val OMLZipResource r = provider.get()
 		val r = new OMLZipResource()
 		r.URI = uri
 		r
