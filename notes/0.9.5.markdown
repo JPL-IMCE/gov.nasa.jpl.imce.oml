@@ -4,6 +4,12 @@ gov.nasa.jpl.imce.oml.tycho 0.9.5 is an API-breaking change from 0.9.4
 
 ### [#258 Propose a better name than PartialReifiedRelationship](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/258)
 
+### [#260 Performance improvements for OMLZip.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/260)
+
+### [#263 Restore OMLZipResource factory registrations](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/263)
+
+### [#265 Eclipse EMF Normalized URIs.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/265)
+
 ## Summary of changes from 0.9.4
 
 ### API

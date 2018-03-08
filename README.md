@@ -26,7 +26,10 @@ The [OML Workbench](releng/gov.nasa.jpl.imce.oml.product/README.md) is an Eclips
 
 ## OML Development Process notes
 
-- Make sure the Eclipse/Workspace "Text file encoding" is set to UTF-8
+- In Eclipse Preferences:
+    Workspace:
+        "Text file encoding" must be set to "UTF-8"
+        "New text file line delimiter" must be set to "unix"
 
 - Publish a new version:
 
