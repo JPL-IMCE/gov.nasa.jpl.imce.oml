@@ -130,6 +130,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.resource.XtextResource;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
@@ -3159,217 +3161,230 @@ public class OMLSpecificationTables {
       final Extent ext = tables.omlCommonFactory.createExtent();
       r.getContents().add(ext);
       final ZipFile zip = new ZipFile(omlZipFile);
-      final Consumer<ZipArchiveEntry> _function = (ZipArchiveEntry ze) -> {
-        try {
-          final InputStream is = zip.getInputStream(ze);
-          InputStreamReader _inputStreamReader = new InputStreamReader(is, StandardCharsets.UTF_8);
-          final BufferedReader buffer = new BufferedReader(_inputStreamReader);
-          final ArrayList<String> lines = new ArrayList<String>();
-          Iterables.<String>addAll(lines, IteratorExtensions.<String>toIterable(buffer.lines().iterator()));
-          is.close();
-          String _name = ze.getName();
-          if (_name != null) {
-            switch (_name) {
-              case "TerminologyGraphs.json":
-                tables.readTerminologyGraphs(ext, lines);
-                break;
-              case "Bundles.json":
-                tables.readBundles(ext, lines);
-                break;
-              case "DescriptionBoxes.json":
-                tables.readDescriptionBoxes(ext, lines);
-                break;
-              case "AnnotationProperties.json":
-                tables.readAnnotationProperties(ext, lines);
-                break;
-              case "Aspects.json":
-                tables.readAspects(ext, lines);
-                break;
-              case "Concepts.json":
-                tables.readConcepts(ext, lines);
-                break;
-              case "Scalars.json":
-                tables.readScalars(ext, lines);
-                break;
-              case "Structures.json":
-                tables.readStructures(ext, lines);
-                break;
-              case "ConceptDesignationTerminologyAxioms.json":
-                tables.readConceptDesignationTerminologyAxioms(ext, lines);
-                break;
-              case "TerminologyExtensionAxioms.json":
-                tables.readTerminologyExtensionAxioms(ext, lines);
-                break;
-              case "TerminologyNestingAxioms.json":
-                tables.readTerminologyNestingAxioms(ext, lines);
-                break;
-              case "BundledTerminologyAxioms.json":
-                tables.readBundledTerminologyAxioms(ext, lines);
-                break;
-              case "DescriptionBoxExtendsClosedWorldDefinitions.json":
-                tables.readDescriptionBoxExtendsClosedWorldDefinitions(ext, lines);
-                break;
-              case "DescriptionBoxRefinements.json":
-                tables.readDescriptionBoxRefinements(ext, lines);
-                break;
-              case "BinaryScalarRestrictions.json":
-                tables.readBinaryScalarRestrictions(ext, lines);
-                break;
-              case "IRIScalarRestrictions.json":
-                tables.readIRIScalarRestrictions(ext, lines);
-                break;
-              case "NumericScalarRestrictions.json":
-                tables.readNumericScalarRestrictions(ext, lines);
-                break;
-              case "PlainLiteralScalarRestrictions.json":
-                tables.readPlainLiteralScalarRestrictions(ext, lines);
-                break;
-              case "ScalarOneOfRestrictions.json":
-                tables.readScalarOneOfRestrictions(ext, lines);
-                break;
-              case "ScalarOneOfLiteralAxioms.json":
-                tables.readScalarOneOfLiteralAxioms(ext, lines);
-                break;
-              case "StringScalarRestrictions.json":
-                tables.readStringScalarRestrictions(ext, lines);
-                break;
-              case "SynonymScalarRestrictions.json":
-                tables.readSynonymScalarRestrictions(ext, lines);
-                break;
-              case "TimeScalarRestrictions.json":
-                tables.readTimeScalarRestrictions(ext, lines);
-                break;
-              case "EntityScalarDataProperties.json":
-                tables.readEntityScalarDataProperties(ext, lines);
-                break;
-              case "EntityStructuredDataProperties.json":
-                tables.readEntityStructuredDataProperties(ext, lines);
-                break;
-              case "ScalarDataProperties.json":
-                tables.readScalarDataProperties(ext, lines);
-                break;
-              case "StructuredDataProperties.json":
-                tables.readStructuredDataProperties(ext, lines);
-                break;
-              case "ReifiedRelationships.json":
-                tables.readReifiedRelationships(ext, lines);
-                break;
-              case "ReifiedRelationshipRestrictions.json":
-                tables.readReifiedRelationshipRestrictions(ext, lines);
-                break;
-              case "ForwardProperties.json":
-                tables.readForwardProperties(ext, lines);
-                break;
-              case "InverseProperties.json":
-                tables.readInverseProperties(ext, lines);
-                break;
-              case "UnreifiedRelationships.json":
-                tables.readUnreifiedRelationships(ext, lines);
-                break;
-              case "ChainRules.json":
-                tables.readChainRules(ext, lines);
-                break;
-              case "RuleBodySegments.json":
-                tables.readRuleBodySegments(ext, lines);
-                break;
-              case "SegmentPredicates.json":
-                tables.readSegmentPredicates(ext, lines);
-                break;
-              case "EntityExistentialRestrictionAxioms.json":
-                tables.readEntityExistentialRestrictionAxioms(ext, lines);
-                break;
-              case "EntityUniversalRestrictionAxioms.json":
-                tables.readEntityUniversalRestrictionAxioms(ext, lines);
-                break;
-              case "EntityScalarDataPropertyExistentialRestrictionAxioms.json":
-                tables.readEntityScalarDataPropertyExistentialRestrictionAxioms(ext, lines);
-                break;
-              case "EntityScalarDataPropertyParticularRestrictionAxioms.json":
-                tables.readEntityScalarDataPropertyParticularRestrictionAxioms(ext, lines);
-                break;
-              case "EntityScalarDataPropertyUniversalRestrictionAxioms.json":
-                tables.readEntityScalarDataPropertyUniversalRestrictionAxioms(ext, lines);
-                break;
-              case "EntityStructuredDataPropertyParticularRestrictionAxioms.json":
-                tables.readEntityStructuredDataPropertyParticularRestrictionAxioms(ext, lines);
-                break;
-              case "RestrictionStructuredDataPropertyTuples.json":
-                tables.readRestrictionStructuredDataPropertyTuples(ext, lines);
-                break;
-              case "RestrictionScalarDataPropertyValues.json":
-                tables.readRestrictionScalarDataPropertyValues(ext, lines);
-                break;
-              case "AspectSpecializationAxioms.json":
-                tables.readAspectSpecializationAxioms(ext, lines);
-                break;
-              case "ConceptSpecializationAxioms.json":
-                tables.readConceptSpecializationAxioms(ext, lines);
-                break;
-              case "ReifiedRelationshipSpecializationAxioms.json":
-                tables.readReifiedRelationshipSpecializationAxioms(ext, lines);
-                break;
-              case "SubDataPropertyOfAxioms.json":
-                tables.readSubDataPropertyOfAxioms(ext, lines);
-                break;
-              case "SubObjectPropertyOfAxioms.json":
-                tables.readSubObjectPropertyOfAxioms(ext, lines);
-                break;
-              case "RootConceptTaxonomyAxioms.json":
-                tables.readRootConceptTaxonomyAxioms(ext, lines);
-                break;
-              case "AnonymousConceptUnionAxioms.json":
-                tables.readAnonymousConceptUnionAxioms(ext, lines);
-                break;
-              case "SpecificDisjointConceptAxioms.json":
-                tables.readSpecificDisjointConceptAxioms(ext, lines);
-                break;
-              case "ConceptInstances.json":
-                tables.readConceptInstances(ext, lines);
-                break;
-              case "ReifiedRelationshipInstances.json":
-                tables.readReifiedRelationshipInstances(ext, lines);
-                break;
-              case "ReifiedRelationshipInstanceDomains.json":
-                tables.readReifiedRelationshipInstanceDomains(ext, lines);
-                break;
-              case "ReifiedRelationshipInstanceRanges.json":
-                tables.readReifiedRelationshipInstanceRanges(ext, lines);
-                break;
-              case "UnreifiedRelationshipInstanceTuples.json":
-                tables.readUnreifiedRelationshipInstanceTuples(ext, lines);
-                break;
-              case "SingletonInstanceStructuredDataPropertyValues.json":
-                tables.readSingletonInstanceStructuredDataPropertyValues(ext, lines);
-                break;
-              case "SingletonInstanceScalarDataPropertyValues.json":
-                tables.readSingletonInstanceScalarDataPropertyValues(ext, lines);
-                break;
-              case "StructuredDataPropertyTuples.json":
-                tables.readStructuredDataPropertyTuples(ext, lines);
-                break;
-              case "ScalarDataPropertyValues.json":
-                tables.readScalarDataPropertyValues(ext, lines);
-                break;
-              case "AnnotationPropertyValues.json":
-                tables.readAnnotationPropertyValues(ext, lines);
-                break;
-              default:
-                String _name_1 = ze.getName();
-                String _plus_1 = ("OMLSpecificationTables.load(): unrecognized table name: " + _name_1);
-                throw new IllegalArgumentException(_plus_1);
+      try {
+        final Consumer<ZipArchiveEntry> _function = (ZipArchiveEntry ze) -> {
+          try {
+            final InputStream is = zip.getInputStream(ze);
+            InputStreamReader _inputStreamReader = new InputStreamReader(is, StandardCharsets.UTF_8);
+            final BufferedReader buffer = new BufferedReader(_inputStreamReader);
+            final ArrayList<String> lines = new ArrayList<String>();
+            Iterables.<String>addAll(lines, IteratorExtensions.<String>toIterable(buffer.lines().iterator()));
+            is.close();
+            String _name = ze.getName();
+            if (_name != null) {
+              switch (_name) {
+                case "TerminologyGraphs.json":
+                  tables.readTerminologyGraphs(ext, lines);
+                  break;
+                case "Bundles.json":
+                  tables.readBundles(ext, lines);
+                  break;
+                case "DescriptionBoxes.json":
+                  tables.readDescriptionBoxes(ext, lines);
+                  break;
+                case "AnnotationProperties.json":
+                  tables.readAnnotationProperties(ext, lines);
+                  break;
+                case "Aspects.json":
+                  tables.readAspects(ext, lines);
+                  break;
+                case "Concepts.json":
+                  tables.readConcepts(ext, lines);
+                  break;
+                case "Scalars.json":
+                  tables.readScalars(ext, lines);
+                  break;
+                case "Structures.json":
+                  tables.readStructures(ext, lines);
+                  break;
+                case "ConceptDesignationTerminologyAxioms.json":
+                  tables.readConceptDesignationTerminologyAxioms(ext, lines);
+                  break;
+                case "TerminologyExtensionAxioms.json":
+                  tables.readTerminologyExtensionAxioms(ext, lines);
+                  break;
+                case "TerminologyNestingAxioms.json":
+                  tables.readTerminologyNestingAxioms(ext, lines);
+                  break;
+                case "BundledTerminologyAxioms.json":
+                  tables.readBundledTerminologyAxioms(ext, lines);
+                  break;
+                case "DescriptionBoxExtendsClosedWorldDefinitions.json":
+                  tables.readDescriptionBoxExtendsClosedWorldDefinitions(ext, lines);
+                  break;
+                case "DescriptionBoxRefinements.json":
+                  tables.readDescriptionBoxRefinements(ext, lines);
+                  break;
+                case "BinaryScalarRestrictions.json":
+                  tables.readBinaryScalarRestrictions(ext, lines);
+                  break;
+                case "IRIScalarRestrictions.json":
+                  tables.readIRIScalarRestrictions(ext, lines);
+                  break;
+                case "NumericScalarRestrictions.json":
+                  tables.readNumericScalarRestrictions(ext, lines);
+                  break;
+                case "PlainLiteralScalarRestrictions.json":
+                  tables.readPlainLiteralScalarRestrictions(ext, lines);
+                  break;
+                case "ScalarOneOfRestrictions.json":
+                  tables.readScalarOneOfRestrictions(ext, lines);
+                  break;
+                case "ScalarOneOfLiteralAxioms.json":
+                  tables.readScalarOneOfLiteralAxioms(ext, lines);
+                  break;
+                case "StringScalarRestrictions.json":
+                  tables.readStringScalarRestrictions(ext, lines);
+                  break;
+                case "SynonymScalarRestrictions.json":
+                  tables.readSynonymScalarRestrictions(ext, lines);
+                  break;
+                case "TimeScalarRestrictions.json":
+                  tables.readTimeScalarRestrictions(ext, lines);
+                  break;
+                case "EntityScalarDataProperties.json":
+                  tables.readEntityScalarDataProperties(ext, lines);
+                  break;
+                case "EntityStructuredDataProperties.json":
+                  tables.readEntityStructuredDataProperties(ext, lines);
+                  break;
+                case "ScalarDataProperties.json":
+                  tables.readScalarDataProperties(ext, lines);
+                  break;
+                case "StructuredDataProperties.json":
+                  tables.readStructuredDataProperties(ext, lines);
+                  break;
+                case "ReifiedRelationships.json":
+                  tables.readReifiedRelationships(ext, lines);
+                  break;
+                case "ReifiedRelationshipRestrictions.json":
+                  tables.readReifiedRelationshipRestrictions(ext, lines);
+                  break;
+                case "ForwardProperties.json":
+                  tables.readForwardProperties(ext, lines);
+                  break;
+                case "InverseProperties.json":
+                  tables.readInverseProperties(ext, lines);
+                  break;
+                case "UnreifiedRelationships.json":
+                  tables.readUnreifiedRelationships(ext, lines);
+                  break;
+                case "ChainRules.json":
+                  tables.readChainRules(ext, lines);
+                  break;
+                case "RuleBodySegments.json":
+                  tables.readRuleBodySegments(ext, lines);
+                  break;
+                case "SegmentPredicates.json":
+                  tables.readSegmentPredicates(ext, lines);
+                  break;
+                case "EntityExistentialRestrictionAxioms.json":
+                  tables.readEntityExistentialRestrictionAxioms(ext, lines);
+                  break;
+                case "EntityUniversalRestrictionAxioms.json":
+                  tables.readEntityUniversalRestrictionAxioms(ext, lines);
+                  break;
+                case "EntityScalarDataPropertyExistentialRestrictionAxioms.json":
+                  tables.readEntityScalarDataPropertyExistentialRestrictionAxioms(ext, lines);
+                  break;
+                case "EntityScalarDataPropertyParticularRestrictionAxioms.json":
+                  tables.readEntityScalarDataPropertyParticularRestrictionAxioms(ext, lines);
+                  break;
+                case "EntityScalarDataPropertyUniversalRestrictionAxioms.json":
+                  tables.readEntityScalarDataPropertyUniversalRestrictionAxioms(ext, lines);
+                  break;
+                case "EntityStructuredDataPropertyParticularRestrictionAxioms.json":
+                  tables.readEntityStructuredDataPropertyParticularRestrictionAxioms(ext, lines);
+                  break;
+                case "RestrictionStructuredDataPropertyTuples.json":
+                  tables.readRestrictionStructuredDataPropertyTuples(ext, lines);
+                  break;
+                case "RestrictionScalarDataPropertyValues.json":
+                  tables.readRestrictionScalarDataPropertyValues(ext, lines);
+                  break;
+                case "AspectSpecializationAxioms.json":
+                  tables.readAspectSpecializationAxioms(ext, lines);
+                  break;
+                case "ConceptSpecializationAxioms.json":
+                  tables.readConceptSpecializationAxioms(ext, lines);
+                  break;
+                case "ReifiedRelationshipSpecializationAxioms.json":
+                  tables.readReifiedRelationshipSpecializationAxioms(ext, lines);
+                  break;
+                case "SubDataPropertyOfAxioms.json":
+                  tables.readSubDataPropertyOfAxioms(ext, lines);
+                  break;
+                case "SubObjectPropertyOfAxioms.json":
+                  tables.readSubObjectPropertyOfAxioms(ext, lines);
+                  break;
+                case "RootConceptTaxonomyAxioms.json":
+                  tables.readRootConceptTaxonomyAxioms(ext, lines);
+                  break;
+                case "AnonymousConceptUnionAxioms.json":
+                  tables.readAnonymousConceptUnionAxioms(ext, lines);
+                  break;
+                case "SpecificDisjointConceptAxioms.json":
+                  tables.readSpecificDisjointConceptAxioms(ext, lines);
+                  break;
+                case "ConceptInstances.json":
+                  tables.readConceptInstances(ext, lines);
+                  break;
+                case "ReifiedRelationshipInstances.json":
+                  tables.readReifiedRelationshipInstances(ext, lines);
+                  break;
+                case "ReifiedRelationshipInstanceDomains.json":
+                  tables.readReifiedRelationshipInstanceDomains(ext, lines);
+                  break;
+                case "ReifiedRelationshipInstanceRanges.json":
+                  tables.readReifiedRelationshipInstanceRanges(ext, lines);
+                  break;
+                case "UnreifiedRelationshipInstanceTuples.json":
+                  tables.readUnreifiedRelationshipInstanceTuples(ext, lines);
+                  break;
+                case "SingletonInstanceStructuredDataPropertyValues.json":
+                  tables.readSingletonInstanceStructuredDataPropertyValues(ext, lines);
+                  break;
+                case "SingletonInstanceScalarDataPropertyValues.json":
+                  tables.readSingletonInstanceScalarDataPropertyValues(ext, lines);
+                  break;
+                case "StructuredDataPropertyTuples.json":
+                  tables.readStructuredDataPropertyTuples(ext, lines);
+                  break;
+                case "ScalarDataPropertyValues.json":
+                  tables.readScalarDataPropertyValues(ext, lines);
+                  break;
+                case "AnnotationPropertyValues.json":
+                  tables.readAnnotationPropertyValues(ext, lines);
+                  break;
+                default:
+                  String _name_1 = ze.getName();
+                  String _plus_1 = ("OMLSpecificationTables.load(): unrecognized table name: " + _name_1);
+                  throw new IllegalArgumentException(_plus_1);
+              }
+            } else {
+              String _name_1 = ze.getName();
+              String _plus_1 = ("OMLSpecificationTables.load(): unrecognized table name: " + _name_1);
+              throw new IllegalArgumentException(_plus_1);
             }
-          } else {
-            String _name_1 = ze.getName();
-            String _plus_1 = ("OMLSpecificationTables.load(): unrecognized table name: " + _name_1);
-            throw new IllegalArgumentException(_plus_1);
+          } catch (Throwable _e) {
+            throw Exceptions.sneakyThrow(_e);
           }
-        } catch (Throwable _e) {
-          throw Exceptions.sneakyThrow(_e);
-        }
-      };
-      Collections.<ZipArchiveEntry>list(zip.getEntries()).forEach(_function);
-      zip.close();
+        };
+        Collections.<ZipArchiveEntry>list(zip.getEntries()).forEach(_function);
+      } finally {
+        zip.close();
+      }
       tables.processQueue(rs);
+      boolean _isEmpty_2 = tables.iriLoadQueue.isEmpty();
+      boolean _not = (!_isEmpty_2);
+      if (_not) {
+        throw new IllegalArgumentException("OMLSpecificationTables.load(): iriLoadQueue not empty!");
+      }
+      boolean _isEmpty_3 = tables.moduleQueue.isEmpty();
+      boolean _not_1 = (!_isEmpty_3);
+      if (_not_1) {
+        throw new IllegalArgumentException("OMLSpecificationTables.load(): moduleQueue not empty!");
+      }
       tables.resolve(rs, r);
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
@@ -3388,25 +3403,63 @@ public class OMLSpecificationTables {
         boolean _isEmpty = this.iriLoadQueue.isEmpty();
         boolean _not = (!_isEmpty);
         if (_not) {
+          more = Boolean.valueOf(true);
           final String iri = this.iriLoadQueue.remove();
           boolean _add = this.visitedIRIs.add(iri);
           if (_add) {
-            more = Boolean.valueOf(true);
+            int _size = this.visitedIRIs.size();
+            String _plus = ("processQueue: visitedIRIs=" + Integer.valueOf(_size));
+            String _plus_1 = (_plus + ", iriLoadQueue=");
+            int _size_1 = this.iriLoadQueue.size();
+            String _plus_2 = (_plus_1 + Integer.valueOf(_size_1));
+            String _plus_3 = (_plus_2 + ", moduleQueue=");
+            int _size_2 = this.moduleQueue.size();
+            String _plus_4 = (_plus_3 + Integer.valueOf(_size_2));
+            String _plus_5 = (_plus_4 + ", visitedModules=");
+            int _size_3 = this.visitedModules.size();
+            String _plus_6 = (_plus_5 + Integer.valueOf(_size_3));
+            System.out.println(_plus_6);
+            System.out.println(("=> loadOMLZipResource: " + iri));
             this.loadOMLZipResource(rs, URI.createURI(iri));
           }
         }
         boolean _isEmpty_1 = this.moduleQueue.isEmpty();
         boolean _not_1 = (!_isEmpty_1);
         if (_not_1) {
+          more = Boolean.valueOf(true);
           final Module m = this.moduleQueue.remove();
           boolean _add_1 = this.visitedModules.add(m);
           if (_add_1) {
-            more = Boolean.valueOf(true);
+            int _size_4 = this.visitedIRIs.size();
+            String _plus_7 = ("processQueue: visitedIRIs=" + Integer.valueOf(_size_4));
+            String _plus_8 = (_plus_7 + ", iriLoadQueue=");
+            int _size_5 = this.iriLoadQueue.size();
+            String _plus_9 = (_plus_8 + Integer.valueOf(_size_5));
+            String _plus_10 = (_plus_9 + ", moduleQueue=");
+            int _size_6 = this.moduleQueue.size();
+            String _plus_11 = (_plus_10 + Integer.valueOf(_size_6));
+            String _plus_12 = (_plus_11 + ", visitedModules=");
+            int _size_7 = this.visitedModules.size();
+            String _plus_13 = (_plus_12 + Integer.valueOf(_size_7));
+            System.out.println(_plus_13);
+            String _iri = m.iri();
+            String _plus_14 = ("=> includeModule: " + _iri);
+            System.out.println(_plus_14);
             this.includeModule(m);
           }
         }
       }
     } while((more).booleanValue());
+    boolean _isEmpty = this.iriLoadQueue.isEmpty();
+    boolean _not = (!_isEmpty);
+    if (_not) {
+      throw new IllegalArgumentException("OMLSpecificationTables.load(): iriLoadQueue not empty!");
+    }
+    boolean _isEmpty_1 = this.moduleQueue.isEmpty();
+    boolean _not_1 = (!_isEmpty_1);
+    if (_not_1) {
+      throw new IllegalArgumentException("OMLSpecificationTables.load(): moduleQueue not empty!");
+    }
   }
   
   protected void readTerminologyGraphs(final Extent ext, final ArrayList<String> lines) {
@@ -4585,14 +4638,23 @@ public class OMLSpecificationTables {
     }
   }
   
-  protected <U extends Object, V extends U> void includeMap(final Map<String, Pair<U, Map<String, String>>> uMap, final Map<String, Pair<V, Map<String, String>>> vMap) {
-    final BiConsumer<String, Pair<V, Map<String, String>>> _function = (String uuid, Pair<V, Map<String, String>> kv) -> {
-      V _key = kv.getKey();
-      Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
-      Pair<U, Map<String, String>> _pair = new Pair<U, Map<String, String>>(_key, _emptyMap);
-      uMap.put(uuid, _pair);
-    };
-    vMap.forEach(_function);
+  protected <U extends Object, V extends U> Boolean includeMap(final Map<String, Pair<U, Map<String, String>>> uMap, final Map<String, Pair<V, Map<String, String>>> vMap) {
+    Boolean _xblockexpression = null;
+    {
+      final Boolean[] updated = ((Boolean[])Conversions.unwrapArray(Collections.<Boolean>unmodifiableSet(CollectionLiterals.<Boolean>newHashSet(Boolean.valueOf(false))), Boolean.class));
+      final BiConsumer<String, Pair<V, Map<String, String>>> _function = (String uuid, Pair<V, Map<String, String>> kv) -> {
+        V _key = kv.getKey();
+        Map<String, String> _emptyMap = Collections.<String, String>emptyMap();
+        Pair<U, Map<String, String>> _pair = new Pair<U, Map<String, String>>(_key, _emptyMap);
+        final Pair<U, Map<String, String>> prev = uMap.put(uuid, _pair);
+        if ((null == prev)) {
+          updated[0] = Boolean.valueOf(true);
+        }
+      };
+      vMap.forEach(_function);
+      _xblockexpression = updated[0];
+    }
+    return _xblockexpression;
   }
   
   protected void includeTerminologyGraphs(final String uuid, final TerminologyGraph oml) {
@@ -4634,10 +4696,6 @@ public class OMLSpecificationTables {
     Map<String, String> _emptyMap_1 = Collections.<String, String>emptyMap();
     Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(oml, _emptyMap_1);
     this.logicalElements.put(uuid, _pair_1);
-    String _iri = oml.iri();
-    Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
-    Pair<DescriptionBox, Map<String, String>> _pair_2 = new Pair<DescriptionBox, Map<String, String>>(oml, _emptyMap_2);
-    this.descriptionBoxes.put(_iri, _pair_2);
   }
   
   protected void includeAnnotationProperties(final String uuid, final AnnotationProperty oml) {
@@ -5103,107 +5161,414 @@ public class OMLSpecificationTables {
   }
   
   protected void resolve(final ResourceSet rs, final OMLZipResource r) {
-    this.<LogicalElement, TerminologyGraph>includeMap(this.logicalElements, this.terminologyGraphs);
-    this.<LogicalElement, Bundle>includeMap(this.logicalElements, this.bundles);
-    this.<LogicalElement, DescriptionBox>includeMap(this.logicalElements, this.descriptionBoxes);
-    this.<LogicalElement, Aspect>includeMap(this.logicalElements, this.aspects);
-    this.<LogicalElement, Concept>includeMap(this.logicalElements, this.concepts);
-    this.<LogicalElement, Scalar>includeMap(this.logicalElements, this.scalars);
-    this.<LogicalElement, Structure>includeMap(this.logicalElements, this.structures);
-    this.<LogicalElement, ConceptDesignationTerminologyAxiom>includeMap(this.logicalElements, this.conceptDesignationTerminologyAxioms);
-    this.<LogicalElement, TerminologyExtensionAxiom>includeMap(this.logicalElements, this.terminologyExtensionAxioms);
-    this.<LogicalElement, TerminologyNestingAxiom>includeMap(this.logicalElements, this.terminologyNestingAxioms);
-    this.<LogicalElement, BundledTerminologyAxiom>includeMap(this.logicalElements, this.bundledTerminologyAxioms);
-    this.<LogicalElement, DescriptionBoxExtendsClosedWorldDefinitions>includeMap(this.logicalElements, this.descriptionBoxExtendsClosedWorldDefinitions);
-    this.<LogicalElement, DescriptionBoxRefinement>includeMap(this.logicalElements, this.descriptionBoxRefinements);
-    this.<LogicalElement, BinaryScalarRestriction>includeMap(this.logicalElements, this.binaryScalarRestrictions);
-    this.<LogicalElement, IRIScalarRestriction>includeMap(this.logicalElements, this.iriScalarRestrictions);
-    this.<LogicalElement, NumericScalarRestriction>includeMap(this.logicalElements, this.numericScalarRestrictions);
-    this.<LogicalElement, PlainLiteralScalarRestriction>includeMap(this.logicalElements, this.plainLiteralScalarRestrictions);
-    this.<LogicalElement, ScalarOneOfRestriction>includeMap(this.logicalElements, this.scalarOneOfRestrictions);
-    this.<LogicalElement, ScalarOneOfLiteralAxiom>includeMap(this.logicalElements, this.scalarOneOfLiteralAxioms);
-    this.<LogicalElement, StringScalarRestriction>includeMap(this.logicalElements, this.stringScalarRestrictions);
-    this.<LogicalElement, SynonymScalarRestriction>includeMap(this.logicalElements, this.synonymScalarRestrictions);
-    this.<LogicalElement, TimeScalarRestriction>includeMap(this.logicalElements, this.timeScalarRestrictions);
-    this.<LogicalElement, EntityScalarDataProperty>includeMap(this.logicalElements, this.entityScalarDataProperties);
-    this.<LogicalElement, EntityStructuredDataProperty>includeMap(this.logicalElements, this.entityStructuredDataProperties);
-    this.<LogicalElement, ScalarDataProperty>includeMap(this.logicalElements, this.scalarDataProperties);
-    this.<LogicalElement, StructuredDataProperty>includeMap(this.logicalElements, this.structuredDataProperties);
-    this.<LogicalElement, ReifiedRelationship>includeMap(this.logicalElements, this.reifiedRelationships);
-    this.<LogicalElement, ReifiedRelationshipRestriction>includeMap(this.logicalElements, this.reifiedRelationshipRestrictions);
-    this.<LogicalElement, ForwardProperty>includeMap(this.logicalElements, this.forwardProperties);
-    this.<LogicalElement, InverseProperty>includeMap(this.logicalElements, this.inverseProperties);
-    this.<LogicalElement, UnreifiedRelationship>includeMap(this.logicalElements, this.unreifiedRelationships);
-    this.<LogicalElement, ChainRule>includeMap(this.logicalElements, this.chainRules);
-    this.<LogicalElement, RuleBodySegment>includeMap(this.logicalElements, this.ruleBodySegments);
-    this.<LogicalElement, SegmentPredicate>includeMap(this.logicalElements, this.segmentPredicates);
-    this.<LogicalElement, EntityExistentialRestrictionAxiom>includeMap(this.logicalElements, this.entityExistentialRestrictionAxioms);
-    this.<LogicalElement, EntityUniversalRestrictionAxiom>includeMap(this.logicalElements, this.entityUniversalRestrictionAxioms);
-    this.<LogicalElement, EntityScalarDataPropertyExistentialRestrictionAxiom>includeMap(this.logicalElements, this.entityScalarDataPropertyExistentialRestrictionAxioms);
-    this.<LogicalElement, EntityScalarDataPropertyParticularRestrictionAxiom>includeMap(this.logicalElements, this.entityScalarDataPropertyParticularRestrictionAxioms);
-    this.<LogicalElement, EntityScalarDataPropertyUniversalRestrictionAxiom>includeMap(this.logicalElements, this.entityScalarDataPropertyUniversalRestrictionAxioms);
-    this.<LogicalElement, EntityStructuredDataPropertyParticularRestrictionAxiom>includeMap(this.logicalElements, this.entityStructuredDataPropertyParticularRestrictionAxioms);
-    this.<LogicalElement, RestrictionStructuredDataPropertyTuple>includeMap(this.logicalElements, this.restrictionStructuredDataPropertyTuples);
-    this.<LogicalElement, RestrictionScalarDataPropertyValue>includeMap(this.logicalElements, this.restrictionScalarDataPropertyValues);
-    this.<LogicalElement, AspectSpecializationAxiom>includeMap(this.logicalElements, this.aspectSpecializationAxioms);
-    this.<LogicalElement, ConceptSpecializationAxiom>includeMap(this.logicalElements, this.conceptSpecializationAxioms);
-    this.<LogicalElement, ReifiedRelationshipSpecializationAxiom>includeMap(this.logicalElements, this.reifiedRelationshipSpecializationAxioms);
-    this.<LogicalElement, SubDataPropertyOfAxiom>includeMap(this.logicalElements, this.subDataPropertyOfAxioms);
-    this.<LogicalElement, SubObjectPropertyOfAxiom>includeMap(this.logicalElements, this.subObjectPropertyOfAxioms);
-    this.<LogicalElement, RootConceptTaxonomyAxiom>includeMap(this.logicalElements, this.rootConceptTaxonomyAxioms);
-    this.<LogicalElement, AnonymousConceptUnionAxiom>includeMap(this.logicalElements, this.anonymousConceptUnionAxioms);
-    this.<LogicalElement, SpecificDisjointConceptAxiom>includeMap(this.logicalElements, this.specificDisjointConceptAxioms);
-    this.<LogicalElement, ConceptInstance>includeMap(this.logicalElements, this.conceptInstances);
-    this.<LogicalElement, ReifiedRelationshipInstance>includeMap(this.logicalElements, this.reifiedRelationshipInstances);
-    this.<LogicalElement, ReifiedRelationshipInstanceDomain>includeMap(this.logicalElements, this.reifiedRelationshipInstanceDomains);
-    this.<LogicalElement, ReifiedRelationshipInstanceRange>includeMap(this.logicalElements, this.reifiedRelationshipInstanceRanges);
-    this.<LogicalElement, UnreifiedRelationshipInstanceTuple>includeMap(this.logicalElements, this.unreifiedRelationshipInstanceTuples);
-    this.<LogicalElement, SingletonInstanceStructuredDataPropertyValue>includeMap(this.logicalElements, this.singletonInstanceStructuredDataPropertyValues);
-    this.<LogicalElement, SingletonInstanceScalarDataPropertyValue>includeMap(this.logicalElements, this.singletonInstanceScalarDataPropertyValues);
-    this.<LogicalElement, StructuredDataPropertyTuple>includeMap(this.logicalElements, this.structuredDataPropertyTuples);
-    this.<LogicalElement, ScalarDataPropertyValue>includeMap(this.logicalElements, this.scalarDataPropertyValues);
-    this.<Entity, Aspect>includeMap(this.entities, this.aspects);
-    this.<Entity, Concept>includeMap(this.entities, this.concepts);
-    this.<Entity, ReifiedRelationship>includeMap(this.entities, this.reifiedRelationships);
-    this.<Entity, ReifiedRelationshipRestriction>includeMap(this.entities, this.reifiedRelationshipRestrictions);
-    this.<EntityRelationship, ReifiedRelationship>includeMap(this.entityRelationships, this.reifiedRelationships);
-    this.<EntityRelationship, ReifiedRelationshipRestriction>includeMap(this.entityRelationships, this.reifiedRelationshipRestrictions);
-    this.<EntityRelationship, UnreifiedRelationship>includeMap(this.entityRelationships, this.unreifiedRelationships);
-    this.<ConceptualRelationship, ReifiedRelationship>includeMap(this.conceptualRelationships, this.reifiedRelationships);
-    this.<ConceptualRelationship, ReifiedRelationshipRestriction>includeMap(this.conceptualRelationships, this.reifiedRelationshipRestrictions);
-    this.<DataRange, Scalar>includeMap(this.dataRanges, this.scalars);
-    this.<DataRange, BinaryScalarRestriction>includeMap(this.dataRanges, this.binaryScalarRestrictions);
-    this.<DataRange, IRIScalarRestriction>includeMap(this.dataRanges, this.iriScalarRestrictions);
-    this.<DataRange, NumericScalarRestriction>includeMap(this.dataRanges, this.numericScalarRestrictions);
-    this.<DataRange, PlainLiteralScalarRestriction>includeMap(this.dataRanges, this.plainLiteralScalarRestrictions);
-    this.<DataRange, ScalarOneOfRestriction>includeMap(this.dataRanges, this.scalarOneOfRestrictions);
-    this.<DataRange, StringScalarRestriction>includeMap(this.dataRanges, this.stringScalarRestrictions);
-    this.<DataRange, SynonymScalarRestriction>includeMap(this.dataRanges, this.synonymScalarRestrictions);
-    this.<DataRange, TimeScalarRestriction>includeMap(this.dataRanges, this.timeScalarRestrictions);
-    this.<DataRelationshipToScalar, EntityScalarDataProperty>includeMap(this.dataRelationshipToScalars, this.entityScalarDataProperties);
-    this.<DataRelationshipToScalar, ScalarDataProperty>includeMap(this.dataRelationshipToScalars, this.scalarDataProperties);
-    this.<DataRelationshipToStructure, EntityStructuredDataProperty>includeMap(this.dataRelationshipToStructures, this.entityStructuredDataProperties);
-    this.<DataRelationshipToStructure, StructuredDataProperty>includeMap(this.dataRelationshipToStructures, this.structuredDataProperties);
-    this.<Predicate, Aspect>includeMap(this.predicates, this.aspects);
-    this.<Predicate, Concept>includeMap(this.predicates, this.concepts);
-    this.<Predicate, ReifiedRelationship>includeMap(this.predicates, this.reifiedRelationships);
-    this.<Predicate, ReifiedRelationshipRestriction>includeMap(this.predicates, this.reifiedRelationshipRestrictions);
-    this.<Predicate, ForwardProperty>includeMap(this.predicates, this.forwardProperties);
-    this.<Predicate, InverseProperty>includeMap(this.predicates, this.inverseProperties);
-    this.<Predicate, UnreifiedRelationship>includeMap(this.predicates, this.unreifiedRelationships);
-    this.<RestrictableRelationship, ForwardProperty>includeMap(this.restrictableRelationships, this.forwardProperties);
-    this.<RestrictableRelationship, InverseProperty>includeMap(this.restrictableRelationships, this.inverseProperties);
-    this.<RestrictableRelationship, UnreifiedRelationship>includeMap(this.restrictableRelationships, this.unreifiedRelationships);
-    this.<RestrictionStructuredDataPropertyContext, EntityStructuredDataPropertyParticularRestrictionAxiom>includeMap(this.restrictionStructuredDataPropertyContexts, this.entityStructuredDataPropertyParticularRestrictionAxioms);
-    this.<RestrictionStructuredDataPropertyContext, RestrictionStructuredDataPropertyTuple>includeMap(this.restrictionStructuredDataPropertyContexts, this.restrictionStructuredDataPropertyTuples);
-    this.<TerminologyBox, TerminologyGraph>includeMap(this.terminologyBoxes, this.terminologyGraphs);
-    this.<TerminologyBox, Bundle>includeMap(this.terminologyBoxes, this.bundles);
-    this.<ConceptTreeDisjunction, RootConceptTaxonomyAxiom>includeMap(this.conceptTreeDisjunctions, this.rootConceptTaxonomyAxioms);
-    this.<ConceptTreeDisjunction, AnonymousConceptUnionAxiom>includeMap(this.conceptTreeDisjunctions, this.anonymousConceptUnionAxioms);
-    this.<ConceptualEntitySingletonInstance, ConceptInstance>includeMap(this.conceptualEntitySingletonInstances, this.conceptInstances);
-    this.<ConceptualEntitySingletonInstance, ReifiedRelationshipInstance>includeMap(this.conceptualEntitySingletonInstances, this.reifiedRelationshipInstances);
-    this.<SingletonInstanceStructuredDataPropertyContext, SingletonInstanceStructuredDataPropertyValue>includeMap(this.singletonInstanceStructuredDataPropertyContexts, this.singletonInstanceStructuredDataPropertyValues);
-    this.<SingletonInstanceStructuredDataPropertyContext, StructuredDataPropertyTuple>includeMap(this.singletonInstanceStructuredDataPropertyContexts, this.structuredDataPropertyTuples);
+    URI _uRI = r.getURI();
+    String _plus = ("Resolve: " + _uRI);
+    System.out.println(_plus);
+    final long t0 = System.currentTimeMillis();
+    Boolean _includeMap = this.<LogicalElement, TerminologyGraph>includeMap(this.logicalElements, this.terminologyGraphs);
+    if ((_includeMap).booleanValue()) {
+      System.out.println("+ logicalElements, terminologyGraphs");
+    }
+    Boolean _includeMap_1 = this.<LogicalElement, Bundle>includeMap(this.logicalElements, this.bundles);
+    if ((_includeMap_1).booleanValue()) {
+      System.out.println("+ logicalElements, bundles");
+    }
+    Boolean _includeMap_2 = this.<LogicalElement, DescriptionBox>includeMap(this.logicalElements, this.descriptionBoxes);
+    if ((_includeMap_2).booleanValue()) {
+      System.out.println("+ logicalElements, descriptionBoxes");
+    }
+    Boolean _includeMap_3 = this.<LogicalElement, Aspect>includeMap(this.logicalElements, this.aspects);
+    if ((_includeMap_3).booleanValue()) {
+      System.out.println("+ logicalElements, aspects");
+    }
+    Boolean _includeMap_4 = this.<LogicalElement, Concept>includeMap(this.logicalElements, this.concepts);
+    if ((_includeMap_4).booleanValue()) {
+      System.out.println("+ logicalElements, concepts");
+    }
+    Boolean _includeMap_5 = this.<LogicalElement, Scalar>includeMap(this.logicalElements, this.scalars);
+    if ((_includeMap_5).booleanValue()) {
+      System.out.println("+ logicalElements, scalars");
+    }
+    Boolean _includeMap_6 = this.<LogicalElement, Structure>includeMap(this.logicalElements, this.structures);
+    if ((_includeMap_6).booleanValue()) {
+      System.out.println("+ logicalElements, structures");
+    }
+    Boolean _includeMap_7 = this.<LogicalElement, ConceptDesignationTerminologyAxiom>includeMap(this.logicalElements, this.conceptDesignationTerminologyAxioms);
+    if ((_includeMap_7).booleanValue()) {
+      System.out.println("+ logicalElements, conceptDesignationTerminologyAxioms");
+    }
+    Boolean _includeMap_8 = this.<LogicalElement, TerminologyExtensionAxiom>includeMap(this.logicalElements, this.terminologyExtensionAxioms);
+    if ((_includeMap_8).booleanValue()) {
+      System.out.println("+ logicalElements, terminologyExtensionAxioms");
+    }
+    Boolean _includeMap_9 = this.<LogicalElement, TerminologyNestingAxiom>includeMap(this.logicalElements, this.terminologyNestingAxioms);
+    if ((_includeMap_9).booleanValue()) {
+      System.out.println("+ logicalElements, terminologyNestingAxioms");
+    }
+    Boolean _includeMap_10 = this.<LogicalElement, BundledTerminologyAxiom>includeMap(this.logicalElements, this.bundledTerminologyAxioms);
+    if ((_includeMap_10).booleanValue()) {
+      System.out.println("+ logicalElements, bundledTerminologyAxioms");
+    }
+    Boolean _includeMap_11 = this.<LogicalElement, DescriptionBoxExtendsClosedWorldDefinitions>includeMap(this.logicalElements, this.descriptionBoxExtendsClosedWorldDefinitions);
+    if ((_includeMap_11).booleanValue()) {
+      System.out.println("+ logicalElements, descriptionBoxExtendsClosedWorldDefinitions");
+    }
+    Boolean _includeMap_12 = this.<LogicalElement, DescriptionBoxRefinement>includeMap(this.logicalElements, this.descriptionBoxRefinements);
+    if ((_includeMap_12).booleanValue()) {
+      System.out.println("+ logicalElements, descriptionBoxRefinements");
+    }
+    Boolean _includeMap_13 = this.<LogicalElement, BinaryScalarRestriction>includeMap(this.logicalElements, this.binaryScalarRestrictions);
+    if ((_includeMap_13).booleanValue()) {
+      System.out.println("+ logicalElements, binaryScalarRestrictions");
+    }
+    Boolean _includeMap_14 = this.<LogicalElement, IRIScalarRestriction>includeMap(this.logicalElements, this.iriScalarRestrictions);
+    if ((_includeMap_14).booleanValue()) {
+      System.out.println("+ logicalElements, iriScalarRestrictions");
+    }
+    Boolean _includeMap_15 = this.<LogicalElement, NumericScalarRestriction>includeMap(this.logicalElements, this.numericScalarRestrictions);
+    if ((_includeMap_15).booleanValue()) {
+      System.out.println("+ logicalElements, numericScalarRestrictions");
+    }
+    Boolean _includeMap_16 = this.<LogicalElement, PlainLiteralScalarRestriction>includeMap(this.logicalElements, this.plainLiteralScalarRestrictions);
+    if ((_includeMap_16).booleanValue()) {
+      System.out.println("+ logicalElements, plainLiteralScalarRestrictions");
+    }
+    Boolean _includeMap_17 = this.<LogicalElement, ScalarOneOfRestriction>includeMap(this.logicalElements, this.scalarOneOfRestrictions);
+    if ((_includeMap_17).booleanValue()) {
+      System.out.println("+ logicalElements, scalarOneOfRestrictions");
+    }
+    Boolean _includeMap_18 = this.<LogicalElement, ScalarOneOfLiteralAxiom>includeMap(this.logicalElements, this.scalarOneOfLiteralAxioms);
+    if ((_includeMap_18).booleanValue()) {
+      System.out.println("+ logicalElements, scalarOneOfLiteralAxioms");
+    }
+    Boolean _includeMap_19 = this.<LogicalElement, StringScalarRestriction>includeMap(this.logicalElements, this.stringScalarRestrictions);
+    if ((_includeMap_19).booleanValue()) {
+      System.out.println("+ logicalElements, stringScalarRestrictions");
+    }
+    Boolean _includeMap_20 = this.<LogicalElement, SynonymScalarRestriction>includeMap(this.logicalElements, this.synonymScalarRestrictions);
+    if ((_includeMap_20).booleanValue()) {
+      System.out.println("+ logicalElements, synonymScalarRestrictions");
+    }
+    Boolean _includeMap_21 = this.<LogicalElement, TimeScalarRestriction>includeMap(this.logicalElements, this.timeScalarRestrictions);
+    if ((_includeMap_21).booleanValue()) {
+      System.out.println("+ logicalElements, timeScalarRestrictions");
+    }
+    Boolean _includeMap_22 = this.<LogicalElement, EntityScalarDataProperty>includeMap(this.logicalElements, this.entityScalarDataProperties);
+    if ((_includeMap_22).booleanValue()) {
+      System.out.println("+ logicalElements, entityScalarDataProperties");
+    }
+    Boolean _includeMap_23 = this.<LogicalElement, EntityStructuredDataProperty>includeMap(this.logicalElements, this.entityStructuredDataProperties);
+    if ((_includeMap_23).booleanValue()) {
+      System.out.println("+ logicalElements, entityStructuredDataProperties");
+    }
+    Boolean _includeMap_24 = this.<LogicalElement, ScalarDataProperty>includeMap(this.logicalElements, this.scalarDataProperties);
+    if ((_includeMap_24).booleanValue()) {
+      System.out.println("+ logicalElements, scalarDataProperties");
+    }
+    Boolean _includeMap_25 = this.<LogicalElement, StructuredDataProperty>includeMap(this.logicalElements, this.structuredDataProperties);
+    if ((_includeMap_25).booleanValue()) {
+      System.out.println("+ logicalElements, structuredDataProperties");
+    }
+    Boolean _includeMap_26 = this.<LogicalElement, ReifiedRelationship>includeMap(this.logicalElements, this.reifiedRelationships);
+    if ((_includeMap_26).booleanValue()) {
+      System.out.println("+ logicalElements, reifiedRelationships");
+    }
+    Boolean _includeMap_27 = this.<LogicalElement, ReifiedRelationshipRestriction>includeMap(this.logicalElements, this.reifiedRelationshipRestrictions);
+    if ((_includeMap_27).booleanValue()) {
+      System.out.println("+ logicalElements, reifiedRelationshipRestrictions");
+    }
+    Boolean _includeMap_28 = this.<LogicalElement, ForwardProperty>includeMap(this.logicalElements, this.forwardProperties);
+    if ((_includeMap_28).booleanValue()) {
+      System.out.println("+ logicalElements, forwardProperties");
+    }
+    Boolean _includeMap_29 = this.<LogicalElement, InverseProperty>includeMap(this.logicalElements, this.inverseProperties);
+    if ((_includeMap_29).booleanValue()) {
+      System.out.println("+ logicalElements, inverseProperties");
+    }
+    Boolean _includeMap_30 = this.<LogicalElement, UnreifiedRelationship>includeMap(this.logicalElements, this.unreifiedRelationships);
+    if ((_includeMap_30).booleanValue()) {
+      System.out.println("+ logicalElements, unreifiedRelationships");
+    }
+    Boolean _includeMap_31 = this.<LogicalElement, ChainRule>includeMap(this.logicalElements, this.chainRules);
+    if ((_includeMap_31).booleanValue()) {
+      System.out.println("+ logicalElements, chainRules");
+    }
+    Boolean _includeMap_32 = this.<LogicalElement, RuleBodySegment>includeMap(this.logicalElements, this.ruleBodySegments);
+    if ((_includeMap_32).booleanValue()) {
+      System.out.println("+ logicalElements, ruleBodySegments");
+    }
+    Boolean _includeMap_33 = this.<LogicalElement, SegmentPredicate>includeMap(this.logicalElements, this.segmentPredicates);
+    if ((_includeMap_33).booleanValue()) {
+      System.out.println("+ logicalElements, segmentPredicates");
+    }
+    Boolean _includeMap_34 = this.<LogicalElement, EntityExistentialRestrictionAxiom>includeMap(this.logicalElements, this.entityExistentialRestrictionAxioms);
+    if ((_includeMap_34).booleanValue()) {
+      System.out.println("+ logicalElements, entityExistentialRestrictionAxioms");
+    }
+    Boolean _includeMap_35 = this.<LogicalElement, EntityUniversalRestrictionAxiom>includeMap(this.logicalElements, this.entityUniversalRestrictionAxioms);
+    if ((_includeMap_35).booleanValue()) {
+      System.out.println("+ logicalElements, entityUniversalRestrictionAxioms");
+    }
+    Boolean _includeMap_36 = this.<LogicalElement, EntityScalarDataPropertyExistentialRestrictionAxiom>includeMap(this.logicalElements, this.entityScalarDataPropertyExistentialRestrictionAxioms);
+    if ((_includeMap_36).booleanValue()) {
+      System.out.println("+ logicalElements, entityScalarDataPropertyExistentialRestrictionAxioms");
+    }
+    Boolean _includeMap_37 = this.<LogicalElement, EntityScalarDataPropertyParticularRestrictionAxiom>includeMap(this.logicalElements, this.entityScalarDataPropertyParticularRestrictionAxioms);
+    if ((_includeMap_37).booleanValue()) {
+      System.out.println("+ logicalElements, entityScalarDataPropertyParticularRestrictionAxioms");
+    }
+    Boolean _includeMap_38 = this.<LogicalElement, EntityScalarDataPropertyUniversalRestrictionAxiom>includeMap(this.logicalElements, this.entityScalarDataPropertyUniversalRestrictionAxioms);
+    if ((_includeMap_38).booleanValue()) {
+      System.out.println("+ logicalElements, entityScalarDataPropertyUniversalRestrictionAxioms");
+    }
+    Boolean _includeMap_39 = this.<LogicalElement, EntityStructuredDataPropertyParticularRestrictionAxiom>includeMap(this.logicalElements, this.entityStructuredDataPropertyParticularRestrictionAxioms);
+    if ((_includeMap_39).booleanValue()) {
+      System.out.println("+ logicalElements, entityStructuredDataPropertyParticularRestrictionAxioms");
+    }
+    Boolean _includeMap_40 = this.<LogicalElement, RestrictionStructuredDataPropertyTuple>includeMap(this.logicalElements, this.restrictionStructuredDataPropertyTuples);
+    if ((_includeMap_40).booleanValue()) {
+      System.out.println("+ logicalElements, restrictionStructuredDataPropertyTuples");
+    }
+    Boolean _includeMap_41 = this.<LogicalElement, RestrictionScalarDataPropertyValue>includeMap(this.logicalElements, this.restrictionScalarDataPropertyValues);
+    if ((_includeMap_41).booleanValue()) {
+      System.out.println("+ logicalElements, restrictionScalarDataPropertyValues");
+    }
+    Boolean _includeMap_42 = this.<LogicalElement, AspectSpecializationAxiom>includeMap(this.logicalElements, this.aspectSpecializationAxioms);
+    if ((_includeMap_42).booleanValue()) {
+      System.out.println("+ logicalElements, aspectSpecializationAxioms");
+    }
+    Boolean _includeMap_43 = this.<LogicalElement, ConceptSpecializationAxiom>includeMap(this.logicalElements, this.conceptSpecializationAxioms);
+    if ((_includeMap_43).booleanValue()) {
+      System.out.println("+ logicalElements, conceptSpecializationAxioms");
+    }
+    Boolean _includeMap_44 = this.<LogicalElement, ReifiedRelationshipSpecializationAxiom>includeMap(this.logicalElements, this.reifiedRelationshipSpecializationAxioms);
+    if ((_includeMap_44).booleanValue()) {
+      System.out.println("+ logicalElements, reifiedRelationshipSpecializationAxioms");
+    }
+    Boolean _includeMap_45 = this.<LogicalElement, SubDataPropertyOfAxiom>includeMap(this.logicalElements, this.subDataPropertyOfAxioms);
+    if ((_includeMap_45).booleanValue()) {
+      System.out.println("+ logicalElements, subDataPropertyOfAxioms");
+    }
+    Boolean _includeMap_46 = this.<LogicalElement, SubObjectPropertyOfAxiom>includeMap(this.logicalElements, this.subObjectPropertyOfAxioms);
+    if ((_includeMap_46).booleanValue()) {
+      System.out.println("+ logicalElements, subObjectPropertyOfAxioms");
+    }
+    Boolean _includeMap_47 = this.<LogicalElement, RootConceptTaxonomyAxiom>includeMap(this.logicalElements, this.rootConceptTaxonomyAxioms);
+    if ((_includeMap_47).booleanValue()) {
+      System.out.println("+ logicalElements, rootConceptTaxonomyAxioms");
+    }
+    Boolean _includeMap_48 = this.<LogicalElement, AnonymousConceptUnionAxiom>includeMap(this.logicalElements, this.anonymousConceptUnionAxioms);
+    if ((_includeMap_48).booleanValue()) {
+      System.out.println("+ logicalElements, anonymousConceptUnionAxioms");
+    }
+    Boolean _includeMap_49 = this.<LogicalElement, SpecificDisjointConceptAxiom>includeMap(this.logicalElements, this.specificDisjointConceptAxioms);
+    if ((_includeMap_49).booleanValue()) {
+      System.out.println("+ logicalElements, specificDisjointConceptAxioms");
+    }
+    Boolean _includeMap_50 = this.<LogicalElement, ConceptInstance>includeMap(this.logicalElements, this.conceptInstances);
+    if ((_includeMap_50).booleanValue()) {
+      System.out.println("+ logicalElements, conceptInstances");
+    }
+    Boolean _includeMap_51 = this.<LogicalElement, ReifiedRelationshipInstance>includeMap(this.logicalElements, this.reifiedRelationshipInstances);
+    if ((_includeMap_51).booleanValue()) {
+      System.out.println("+ logicalElements, reifiedRelationshipInstances");
+    }
+    Boolean _includeMap_52 = this.<LogicalElement, ReifiedRelationshipInstanceDomain>includeMap(this.logicalElements, this.reifiedRelationshipInstanceDomains);
+    if ((_includeMap_52).booleanValue()) {
+      System.out.println("+ logicalElements, reifiedRelationshipInstanceDomains");
+    }
+    Boolean _includeMap_53 = this.<LogicalElement, ReifiedRelationshipInstanceRange>includeMap(this.logicalElements, this.reifiedRelationshipInstanceRanges);
+    if ((_includeMap_53).booleanValue()) {
+      System.out.println("+ logicalElements, reifiedRelationshipInstanceRanges");
+    }
+    Boolean _includeMap_54 = this.<LogicalElement, UnreifiedRelationshipInstanceTuple>includeMap(this.logicalElements, this.unreifiedRelationshipInstanceTuples);
+    if ((_includeMap_54).booleanValue()) {
+      System.out.println("+ logicalElements, unreifiedRelationshipInstanceTuples");
+    }
+    Boolean _includeMap_55 = this.<LogicalElement, SingletonInstanceStructuredDataPropertyValue>includeMap(this.logicalElements, this.singletonInstanceStructuredDataPropertyValues);
+    if ((_includeMap_55).booleanValue()) {
+      System.out.println("+ logicalElements, singletonInstanceStructuredDataPropertyValues");
+    }
+    Boolean _includeMap_56 = this.<LogicalElement, SingletonInstanceScalarDataPropertyValue>includeMap(this.logicalElements, this.singletonInstanceScalarDataPropertyValues);
+    if ((_includeMap_56).booleanValue()) {
+      System.out.println("+ logicalElements, singletonInstanceScalarDataPropertyValues");
+    }
+    Boolean _includeMap_57 = this.<LogicalElement, StructuredDataPropertyTuple>includeMap(this.logicalElements, this.structuredDataPropertyTuples);
+    if ((_includeMap_57).booleanValue()) {
+      System.out.println("+ logicalElements, structuredDataPropertyTuples");
+    }
+    Boolean _includeMap_58 = this.<LogicalElement, ScalarDataPropertyValue>includeMap(this.logicalElements, this.scalarDataPropertyValues);
+    if ((_includeMap_58).booleanValue()) {
+      System.out.println("+ logicalElements, scalarDataPropertyValues");
+    }
+    Boolean _includeMap_59 = this.<Entity, Aspect>includeMap(this.entities, this.aspects);
+    if ((_includeMap_59).booleanValue()) {
+      System.out.println("+ entities, aspects");
+    }
+    Boolean _includeMap_60 = this.<Entity, Concept>includeMap(this.entities, this.concepts);
+    if ((_includeMap_60).booleanValue()) {
+      System.out.println("+ entities, concepts");
+    }
+    Boolean _includeMap_61 = this.<Entity, ReifiedRelationship>includeMap(this.entities, this.reifiedRelationships);
+    if ((_includeMap_61).booleanValue()) {
+      System.out.println("+ entities, reifiedRelationships");
+    }
+    Boolean _includeMap_62 = this.<Entity, ReifiedRelationshipRestriction>includeMap(this.entities, this.reifiedRelationshipRestrictions);
+    if ((_includeMap_62).booleanValue()) {
+      System.out.println("+ entities, reifiedRelationshipRestrictions");
+    }
+    Boolean _includeMap_63 = this.<EntityRelationship, ReifiedRelationship>includeMap(this.entityRelationships, this.reifiedRelationships);
+    if ((_includeMap_63).booleanValue()) {
+      System.out.println("+ entities, reifiedRelationships");
+    }
+    Boolean _includeMap_64 = this.<EntityRelationship, ReifiedRelationshipRestriction>includeMap(this.entityRelationships, this.reifiedRelationshipRestrictions);
+    if ((_includeMap_64).booleanValue()) {
+      System.out.println("+ entities, reifiedRelationshipRestrictions");
+    }
+    Boolean _includeMap_65 = this.<EntityRelationship, UnreifiedRelationship>includeMap(this.entityRelationships, this.unreifiedRelationships);
+    if ((_includeMap_65).booleanValue()) {
+      System.out.println("+ entities, unreifiedRelationships");
+    }
+    Boolean _includeMap_66 = this.<ConceptualRelationship, ReifiedRelationship>includeMap(this.conceptualRelationships, this.reifiedRelationships);
+    if ((_includeMap_66).booleanValue()) {
+      System.out.println("+ entities, reifiedRelationships");
+    }
+    Boolean _includeMap_67 = this.<ConceptualRelationship, ReifiedRelationshipRestriction>includeMap(this.conceptualRelationships, this.reifiedRelationshipRestrictions);
+    if ((_includeMap_67).booleanValue()) {
+      System.out.println("+ entities, reifiedRelationshipRestrictions");
+    }
+    Boolean _includeMap_68 = this.<DataRange, Scalar>includeMap(this.dataRanges, this.scalars);
+    if ((_includeMap_68).booleanValue()) {
+      System.out.println("+ entities, scalars");
+    }
+    Boolean _includeMap_69 = this.<DataRange, BinaryScalarRestriction>includeMap(this.dataRanges, this.binaryScalarRestrictions);
+    if ((_includeMap_69).booleanValue()) {
+      System.out.println("+ entities, binaryScalarRestrictions");
+    }
+    Boolean _includeMap_70 = this.<DataRange, IRIScalarRestriction>includeMap(this.dataRanges, this.iriScalarRestrictions);
+    if ((_includeMap_70).booleanValue()) {
+      System.out.println("+ entities, iriScalarRestrictions");
+    }
+    Boolean _includeMap_71 = this.<DataRange, NumericScalarRestriction>includeMap(this.dataRanges, this.numericScalarRestrictions);
+    if ((_includeMap_71).booleanValue()) {
+      System.out.println("+ entities, numericScalarRestrictions");
+    }
+    Boolean _includeMap_72 = this.<DataRange, PlainLiteralScalarRestriction>includeMap(this.dataRanges, this.plainLiteralScalarRestrictions);
+    if ((_includeMap_72).booleanValue()) {
+      System.out.println("+ entities, plainLiteralScalarRestrictions");
+    }
+    Boolean _includeMap_73 = this.<DataRange, ScalarOneOfRestriction>includeMap(this.dataRanges, this.scalarOneOfRestrictions);
+    if ((_includeMap_73).booleanValue()) {
+      System.out.println("+ entities, scalarOneOfRestrictions");
+    }
+    Boolean _includeMap_74 = this.<DataRange, StringScalarRestriction>includeMap(this.dataRanges, this.stringScalarRestrictions);
+    if ((_includeMap_74).booleanValue()) {
+      System.out.println("+ entities, stringScalarRestrictions");
+    }
+    Boolean _includeMap_75 = this.<DataRange, SynonymScalarRestriction>includeMap(this.dataRanges, this.synonymScalarRestrictions);
+    if ((_includeMap_75).booleanValue()) {
+      System.out.println("+ entities, synonymScalarRestrictions");
+    }
+    Boolean _includeMap_76 = this.<DataRange, TimeScalarRestriction>includeMap(this.dataRanges, this.timeScalarRestrictions);
+    if ((_includeMap_76).booleanValue()) {
+      System.out.println("+ entities, timeScalarRestrictions");
+    }
+    Boolean _includeMap_77 = this.<DataRelationshipToScalar, EntityScalarDataProperty>includeMap(this.dataRelationshipToScalars, this.entityScalarDataProperties);
+    if ((_includeMap_77).booleanValue()) {
+      System.out.println("+ entities, entityScalarDataProperties");
+    }
+    Boolean _includeMap_78 = this.<DataRelationshipToScalar, ScalarDataProperty>includeMap(this.dataRelationshipToScalars, this.scalarDataProperties);
+    if ((_includeMap_78).booleanValue()) {
+      System.out.println("+ entities, scalarDataProperties");
+    }
+    Boolean _includeMap_79 = this.<DataRelationshipToStructure, EntityStructuredDataProperty>includeMap(this.dataRelationshipToStructures, this.entityStructuredDataProperties);
+    if ((_includeMap_79).booleanValue()) {
+      System.out.println("+ entities, entityStructuredDataProperties");
+    }
+    Boolean _includeMap_80 = this.<DataRelationshipToStructure, StructuredDataProperty>includeMap(this.dataRelationshipToStructures, this.structuredDataProperties);
+    if ((_includeMap_80).booleanValue()) {
+      System.out.println("+ entities, structuredDataProperties");
+    }
+    Boolean _includeMap_81 = this.<Predicate, Aspect>includeMap(this.predicates, this.aspects);
+    if ((_includeMap_81).booleanValue()) {
+      System.out.println("+ entities, aspects");
+    }
+    Boolean _includeMap_82 = this.<Predicate, Concept>includeMap(this.predicates, this.concepts);
+    if ((_includeMap_82).booleanValue()) {
+      System.out.println("+ entities, concepts");
+    }
+    Boolean _includeMap_83 = this.<Predicate, ReifiedRelationship>includeMap(this.predicates, this.reifiedRelationships);
+    if ((_includeMap_83).booleanValue()) {
+      System.out.println("+ entities, reifiedRelationships");
+    }
+    Boolean _includeMap_84 = this.<Predicate, ReifiedRelationshipRestriction>includeMap(this.predicates, this.reifiedRelationshipRestrictions);
+    if ((_includeMap_84).booleanValue()) {
+      System.out.println("+ entities, reifiedRelationshipRestrictions");
+    }
+    Boolean _includeMap_85 = this.<Predicate, ForwardProperty>includeMap(this.predicates, this.forwardProperties);
+    if ((_includeMap_85).booleanValue()) {
+      System.out.println("+ entities, forwardProperties");
+    }
+    Boolean _includeMap_86 = this.<Predicate, InverseProperty>includeMap(this.predicates, this.inverseProperties);
+    if ((_includeMap_86).booleanValue()) {
+      System.out.println("+ entities, inverseProperties");
+    }
+    Boolean _includeMap_87 = this.<Predicate, UnreifiedRelationship>includeMap(this.predicates, this.unreifiedRelationships);
+    if ((_includeMap_87).booleanValue()) {
+      System.out.println("+ entities, unreifiedRelationships");
+    }
+    Boolean _includeMap_88 = this.<RestrictableRelationship, ForwardProperty>includeMap(this.restrictableRelationships, this.forwardProperties);
+    if ((_includeMap_88).booleanValue()) {
+      System.out.println("+ entities, forwardProperties");
+    }
+    Boolean _includeMap_89 = this.<RestrictableRelationship, InverseProperty>includeMap(this.restrictableRelationships, this.inverseProperties);
+    if ((_includeMap_89).booleanValue()) {
+      System.out.println("+ entities, inverseProperties");
+    }
+    Boolean _includeMap_90 = this.<RestrictableRelationship, UnreifiedRelationship>includeMap(this.restrictableRelationships, this.unreifiedRelationships);
+    if ((_includeMap_90).booleanValue()) {
+      System.out.println("+ entities, unreifiedRelationships");
+    }
+    Boolean _includeMap_91 = this.<RestrictionStructuredDataPropertyContext, EntityStructuredDataPropertyParticularRestrictionAxiom>includeMap(this.restrictionStructuredDataPropertyContexts, this.entityStructuredDataPropertyParticularRestrictionAxioms);
+    if ((_includeMap_91).booleanValue()) {
+      System.out.println("+ entities, entityStructuredDataPropertyParticularRestrictionAxioms");
+    }
+    Boolean _includeMap_92 = this.<RestrictionStructuredDataPropertyContext, RestrictionStructuredDataPropertyTuple>includeMap(this.restrictionStructuredDataPropertyContexts, this.restrictionStructuredDataPropertyTuples);
+    if ((_includeMap_92).booleanValue()) {
+      System.out.println("+ entities, restrictionStructuredDataPropertyTuples");
+    }
+    Boolean _includeMap_93 = this.<TerminologyBox, TerminologyGraph>includeMap(this.terminologyBoxes, this.terminologyGraphs);
+    if ((_includeMap_93).booleanValue()) {
+      System.out.println("+ entities, terminologyGraphs");
+    }
+    Boolean _includeMap_94 = this.<TerminologyBox, Bundle>includeMap(this.terminologyBoxes, this.bundles);
+    if ((_includeMap_94).booleanValue()) {
+      System.out.println("+ entities, bundles");
+    }
+    Boolean _includeMap_95 = this.<ConceptTreeDisjunction, RootConceptTaxonomyAxiom>includeMap(this.conceptTreeDisjunctions, this.rootConceptTaxonomyAxioms);
+    if ((_includeMap_95).booleanValue()) {
+      System.out.println("+ entities, rootConceptTaxonomyAxioms");
+    }
+    Boolean _includeMap_96 = this.<ConceptTreeDisjunction, AnonymousConceptUnionAxiom>includeMap(this.conceptTreeDisjunctions, this.anonymousConceptUnionAxioms);
+    if ((_includeMap_96).booleanValue()) {
+      System.out.println("+ entities, anonymousConceptUnionAxioms");
+    }
+    Boolean _includeMap_97 = this.<ConceptualEntitySingletonInstance, ConceptInstance>includeMap(this.conceptualEntitySingletonInstances, this.conceptInstances);
+    if ((_includeMap_97).booleanValue()) {
+      System.out.println("+ entities, conceptInstances");
+    }
+    Boolean _includeMap_98 = this.<ConceptualEntitySingletonInstance, ReifiedRelationshipInstance>includeMap(this.conceptualEntitySingletonInstances, this.reifiedRelationshipInstances);
+    if ((_includeMap_98).booleanValue()) {
+      System.out.println("+ entities, reifiedRelationshipInstances");
+    }
+    Boolean _includeMap_99 = this.<SingletonInstanceStructuredDataPropertyContext, SingletonInstanceStructuredDataPropertyValue>includeMap(this.singletonInstanceStructuredDataPropertyContexts, this.singletonInstanceStructuredDataPropertyValues);
+    if ((_includeMap_99).booleanValue()) {
+      System.out.println("+ entities, singletonInstanceStructuredDataPropertyValues");
+    }
+    Boolean _includeMap_100 = this.<SingletonInstanceStructuredDataPropertyContext, StructuredDataPropertyTuple>includeMap(this.singletonInstanceStructuredDataPropertyContexts, this.structuredDataPropertyTuples);
+    if ((_includeMap_100).booleanValue()) {
+      System.out.println("+ entities, structuredDataPropertyTuples");
+    }
     this.resolveAnnotationProperties(rs);
     this.resolveAspects(rs);
     this.resolveConcepts(rs);
@@ -5262,6 +5627,18 @@ public class OMLSpecificationTables {
     this.resolveStructuredDataPropertyTuples(rs);
     this.resolveScalarDataPropertyValues(rs);
     this.resolveAnnotationPropertyValues(rs);
+    long _currentTimeMillis = System.currentTimeMillis();
+    final long dt = (t0 - _currentTimeMillis);
+    final long ms = (dt % 1000);
+    final long s = (dt / 1000);
+    URI _uRI_1 = r.getURI();
+    String _plus_1 = ("Resolve: " + _uRI_1);
+    String _plus_2 = (_plus_1 + " in ");
+    String _plus_3 = (_plus_2 + Long.valueOf(s));
+    String _plus_4 = (_plus_3 + "s, ");
+    String _plus_5 = (_plus_4 + Long.valueOf(ms));
+    String _plus_6 = (_plus_5 + "ms");
+    System.out.println(_plus_6);
   }
   
   protected void resolveAnnotationProperties(final ResourceSet rs) {
@@ -7009,22 +7386,16 @@ public class OMLSpecificationTables {
         if ((null == omlCatalog)) {
           throw new IllegalArgumentException("loadOMLZipResource: ResourceSet must have an OMLCatalog!");
         }
-        boolean scan = false;
         final String uriString = uri.toString();
         Resource _xifexpression = null;
         boolean _startsWith = uriString.startsWith("file:");
         if (_startsWith) {
-          Resource _xblockexpression_1 = null;
-          {
-            scan = true;
-            _xblockexpression_1 = rs.getResource(uri, true);
-          }
-          _xifexpression = _xblockexpression_1;
+          _xifexpression = rs.getResource(uri, true);
         } else {
           Resource _xifexpression_1 = null;
           boolean _startsWith_1 = uriString.startsWith("http:");
           if (_startsWith_1) {
-            Resource _xblockexpression_2 = null;
+            Resource _xblockexpression_1 = null;
             {
               final Resource r0a = rs.getResource(uri, false);
               final Function1<Resource, Boolean> _function = (Resource r) -> {
@@ -7056,25 +7427,9 @@ public class OMLSpecificationTables {
               final Resource r0 = _elvis;
               Resource _xifexpression_2 = null;
               if ((null != r0)) {
-                Resource _xblockexpression_3 = null;
-                {
-                  boolean _matched = false;
-                  if (r0 instanceof OMLZipResource) {
-                    _matched=true;
-                  }
-                  if (!_matched) {
-                    if (r0 instanceof XtextResource) {
-                      _matched=true;
-                      scan = true;
-                    }
-                  }
-                  if (!_matched) {
-                  }
-                  _xblockexpression_3 = r0;
-                }
-                _xifexpression_2 = _xblockexpression_3;
+                _xifexpression_2 = r0;
               } else {
-                Resource _xblockexpression_4 = null;
+                Resource _xblockexpression_2 = null;
                 {
                   final String r1 = omlCatalog.resolveURI((uriString + ".oml"));
                   final String r2 = omlCatalog.resolveURI((uriString + ".omlzip"));
@@ -7103,7 +7458,6 @@ public class OMLSpecificationTables {
                     _xifexpression_5 = null;
                   }
                   final File f3 = _xifexpression_5;
-                  scan = true;
                   Resource _xifexpression_6 = null;
                   if ((((null != f1) && f1.exists()) && f1.canRead())) {
                     _xifexpression_6 = rs.getResource(URI.createURI(r1), true);
@@ -7122,29 +7476,31 @@ public class OMLSpecificationTables {
                     }
                     _xifexpression_6 = _xifexpression_7;
                   }
-                  _xblockexpression_4 = _xifexpression_6;
+                  _xblockexpression_2 = _xifexpression_6;
                 }
-                _xifexpression_2 = _xblockexpression_4;
+                _xifexpression_2 = _xblockexpression_2;
               }
-              _xblockexpression_2 = _xifexpression_2;
+              _xblockexpression_1 = _xifexpression_2;
             }
-            _xifexpression_1 = _xblockexpression_2;
+            _xifexpression_1 = _xblockexpression_1;
           }
           _xifexpression = _xifexpression_1;
         }
         final Resource r = _xifexpression;
-        if (scan) {
+        boolean _matched = false;
+        if (r instanceof XtextResource) {
+          _matched=true;
           final Consumer<EObject> _function = (EObject e) -> {
-            boolean _matched = false;
+            boolean _matched_1 = false;
             if (e instanceof Extent) {
-              _matched=true;
+              _matched_1=true;
               final Consumer<Module> _function_1 = (Module it) -> {
-                this.includeModule(it);
+                this.queueModule(it);
               };
               ((Extent)e).getModules().forEach(_function_1);
             }
           };
-          r.getContents().forEach(_function);
+          ((XtextResource)r).getContents().forEach(_function);
         }
         _xblockexpression = r;
       }

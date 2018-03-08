@@ -21,7 +21,9 @@ import gov.nasa.jpl.imce.oml.dsl.OMLStandaloneSetup;
 import gov.nasa.jpl.imce.oml.model.extensions.CatalogURIConverter;
 import gov.nasa.jpl.imce.oml.model.extensions.OMLCatalog;
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
+import gov.nasa.jpl.imce.oml.zip.OMLZipResourceFactory;
 import java.net.URL;
+import java.util.Map;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -56,6 +58,12 @@ public class OMLZipResourceSet extends ResourceSetImpl {
   public static void doSetup() {
     XcoreStandaloneSetup.doSetup();
     OMLStandaloneSetup.doSetup();
+    Map<String, Object> _contentTypeToFactoryMap = Resource.Factory.Registry.INSTANCE.getContentTypeToFactoryMap();
+    OMLZipResourceFactory _oMLZipResourceFactory = new OMLZipResourceFactory();
+    _contentTypeToFactoryMap.put("omlzip", _oMLZipResourceFactory);
+    Map<String, Object> _extensionToFactoryMap = Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap();
+    OMLZipResourceFactory _oMLZipResourceFactory_1 = new OMLZipResourceFactory();
+    _extensionToFactoryMap.put("omlzip", _oMLZipResourceFactory_1);
   }
   
   /**
