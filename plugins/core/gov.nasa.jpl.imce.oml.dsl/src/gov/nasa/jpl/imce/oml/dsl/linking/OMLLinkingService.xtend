@@ -18,23 +18,28 @@
 package gov.nasa.jpl.imce.oml.dsl.linking
 
 import com.google.inject.Inject
+import gov.nasa.jpl.imce.oml.dsl.scoping.OMLScopeExtensions
 import gov.nasa.jpl.imce.oml.model.bundles.Bundle
 import gov.nasa.jpl.imce.oml.model.bundles.BundlesPackage
 import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage
 import gov.nasa.jpl.imce.oml.model.common.Extent
+import gov.nasa.jpl.imce.oml.model.common.LogicalElement
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsPackage
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox
 import java.util.Collections
+import java.util.HashMap
+import java.util.List
 import org.apache.xml.resolver.Catalog
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EReference
 import org.eclipse.emf.ecore.resource.Resource.Diagnostic
+import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.xtext.CrossReference
 import org.eclipse.xtext.linking.impl.DefaultLinkingService
 import org.eclipse.xtext.linking.impl.IllegalNodeException
@@ -43,14 +48,52 @@ import org.eclipse.xtext.naming.QualifiedName
 import org.eclipse.xtext.nodemodel.INode
 import org.eclipse.xtext.resource.IEObjectDescription
 import org.eclipse.xtext.scoping.IScope
-import gov.nasa.jpl.imce.oml.model.common.LogicalElement
 
+/**
+ * OMLLinkingService resolves Xtext cross-references in OML textual models.
+ * The implementation of getLinkedObjects(context, ref, node) involves a significant work 
+ * to find the intended reference in the scope of possible objects in the context for the given reference property.
+ * 
+ * The result of this expensive cross-reference linking service can be cached when the resource set will not change
+ * (i.e., the contents are effectively read-only). 
+ */
 class OMLLinkingService extends DefaultLinkingService {
 
+	static val String RESOURCE_SET_READONLY_OML_LINKING_CACHE = "RESOURCE_SET_READONLY_OML_LINKING_CACHE"
+	
+	static def void clearCache(ResourceSet rs) {
+		OMLScopeExtensions.clearCache(rs)
+		rs.loadOptions.remove(RESOURCE_SET_READONLY_OML_LINKING_CACHE)
+	}
+	
+	static def void initializeCache(ResourceSet rs) {
+		OMLScopeExtensions.initializeCache(rs)
+		val cache = new HashMap<EObject, HashMap<EReference, List<EObject>>>()
+		val prev = rs.loadOptions.put(RESOURCE_SET_READONLY_OML_LINKING_CACHE, cache)
+		if (null !== prev)
+			throw new IllegalArgumentException("OMLLinkingService.initializeReadOnlyOMLLinkiCache(): The cache should be initialized only once!")
+	}
+	
+	static def HashMap<EObject, HashMap<EReference, List<EObject>>> lookupReadOnlyOMLLinkingCache(ResourceSet rs) {
+		val cache = rs.loadOptions.get(RESOURCE_SET_READONLY_OML_LINKING_CACHE)
+		switch cache {
+			HashMap<EObject, HashMap<EReference, List<EObject>>>:
+				cache
+		}
+	}
+	
+	static def HashMap<EObject, HashMap<EReference, List<EObject>>> lookupReadOnlyOMLLinkingCache(EObject context) {
+		val rs = context?.eResource?.resourceSet
+		if (null !== rs)
+			lookupReadOnlyOMLLinkingCache(rs)
+		else
+			null
+	}
+	
 	@Inject
 	private IQualifiedNameConverter qualifiedNameConverter
 
-	override getLinkedObjects(EObject context, EReference ref, INode node) throws IllegalNodeException {
+	override List<EObject> getLinkedObjects(EObject context, EReference ref, INode node) throws IllegalNodeException {
 		val EClass requiredType = ref.getEReferenceType()
 		if (null === requiredType)
 			return Collections.<EObject>emptyList()
@@ -171,6 +214,17 @@ class OMLLinkingService extends DefaultLinkingService {
 			}
 		}
 
+		var HashMap<EReference, List<EObject>> refCache = null
+		
+		val contextCache = lookupReadOnlyOMLLinkingCache(context)
+		if (null !== contextCache) {
+			refCache = contextCache.computeIfAbsent(context, [new HashMap<EReference, List<EObject>>()])
+			
+			val result = refCache.get(ref)
+			if (null !== result)
+				return result
+		}
+		
 		if (AnnotationPropertyValue.isInstance(context) && ref == CommonPackage.eINSTANCE.annotationPropertyValue_Property) {
 			// Look for what the next node is...
 			val aContext = AnnotationPropertyValue.cast(context)
@@ -204,15 +258,20 @@ class OMLLinkingService extends DefaultLinkingService {
 		val QualifiedName qualifiedLinkName = qualifiedNameConverter.toQualifiedName(crossRefString)
 		val IEObjectDescription eObjectDescription = scope.getSingleElement(qualifiedLinkName)
 
-		if (null === eObjectDescription) {
+		val List<EObject> result = if (null === eObjectDescription) {
 			val defaultResult = super.getLinkedObjects(context, ref, node)
 			if (defaultResult !== null && !defaultResult.empty)
-				return defaultResult
+				defaultResult
 			else
-				return Collections.emptyList()
+				Collections.emptyList()
+		} else {
+			val e = eObjectDescription.getEObjectOrProxy()
+			Collections.singletonList(e)
 		}
-		val e = eObjectDescription.getEObjectOrProxy()
-		return Collections.singletonList(e)
+		 
+		refCache?.put(ref, result)
+		
+		result
 	}
 
 }

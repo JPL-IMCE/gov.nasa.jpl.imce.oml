@@ -134,6 +134,8 @@ class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespaceAware
 	
  	override getScope(EObject context, EReference reference) {
  		var IScope scope = null
+ 		val rs = context?.eResource?.resourceSet
+ 		
 		switch context {
  			AnnotationPropertyValue:
  				if (reference == CommonPackage.eINSTANCE.annotationPropertyValue_Property) {
