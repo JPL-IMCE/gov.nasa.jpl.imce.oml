@@ -18,6 +18,7 @@
 package gov.nasa.jpl.imce.oml.zip
 
 import gov.nasa.jpl.imce.oml.dsl.OMLStandaloneSetup
+import gov.nasa.jpl.imce.oml.model.extensions.CatalogURIConverter
 import gov.nasa.jpl.imce.oml.model.extensions.OMLCatalog
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions
 import java.net.URL
@@ -26,8 +27,6 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
 import org.eclipse.emf.ecore.xcore.XcoreStandaloneSetup
-import gov.nasa.jpl.imce.oml.model.extensions.CatalogURIConverter
-import com.google.inject.Provider
 
 /**
  * An OMLZipResourceSet is a ResourceSet for creating, loading and saving OMLZipResource(s)
@@ -43,13 +42,6 @@ import com.google.inject.Provider
  */
 class OMLZipResourceSet extends ResourceSetImpl {
 	
-//	static val Provider<OMLZipResource> omlZipResourceProvider = new Provider<OMLZipResource>() {
-//		
-//			override def OMLZipResource get() {
-//				val r = new OMLZipResource()
-//				r
-//			}
-//	}
 	/**
 	 * Registers the OML-specific content & extension from the plugin.xml:
 	 * 
@@ -64,8 +56,8 @@ class OMLZipResourceSet extends ResourceSetImpl {
 		XcoreStandaloneSetup.doSetup
 		OMLStandaloneSetup.doSetup
 		
-//		Resource.Factory.Registry.INSTANCE.contentTypeToFactoryMap.put("omlzip", new OMLZipResourceFactory())
-//		Resource.Factory.Registry.INSTANCE.extensionToFactoryMap.put("omlzip", new OMLZipResourceFactory())
+		Resource.Factory.Registry.INSTANCE.contentTypeToFactoryMap.put("omlzip", new OMLZipResourceFactory())
+		Resource.Factory.Registry.INSTANCE.extensionToFactoryMap.put("omlzip", new OMLZipResourceFactory())
 	}
 		
 	/**

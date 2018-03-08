@@ -82,6 +82,8 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.scoping.IScope;
@@ -319,6 +321,15 @@ public class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespa
     IScope _xblockexpression = null;
     {
       IScope scope = null;
+      Resource _eResource = null;
+      if (context!=null) {
+        _eResource=context.eResource();
+      }
+      ResourceSet _resourceSet = null;
+      if (_eResource!=null) {
+        _resourceSet=_eResource.getResourceSet();
+      }
+      final ResourceSet rs = _resourceSet;
       boolean _matched = false;
       if (context instanceof AnnotationPropertyValue) {
         _matched=true;

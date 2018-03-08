@@ -2811,141 +2811,144 @@ class OMLSpecificationTables {
     val ext = tables.omlCommonFactory.createExtent()
     r.contents.add(ext)
     val zip = new ZipFile(omlZipFile)
-  	Collections.list(zip.entries).forEach[ze | 
-      val is = zip.getInputStream(ze)
-      val buffer = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))
-      val lines = new ArrayList<String>()
-      lines.addAll(buffer.lines().iterator.toIterable)
-      is.close()
-      switch ze.name {
-  	    case "TerminologyGraphs.json":
-  	      tables.readTerminologyGraphs(ext, lines)
-  	    case "Bundles.json":
-  	      tables.readBundles(ext, lines)
-  	    case "DescriptionBoxes.json":
-  	      tables.readDescriptionBoxes(ext, lines)
-  	    case "AnnotationProperties.json":
-  	      tables.readAnnotationProperties(ext, lines)
-  	    case "Aspects.json":
-  	      tables.readAspects(ext, lines)
-  	    case "Concepts.json":
-  	      tables.readConcepts(ext, lines)
-  	    case "Scalars.json":
-  	      tables.readScalars(ext, lines)
-  	    case "Structures.json":
-  	      tables.readStructures(ext, lines)
-  	    case "ConceptDesignationTerminologyAxioms.json":
-  	      tables.readConceptDesignationTerminologyAxioms(ext, lines)
-  	    case "TerminologyExtensionAxioms.json":
-  	      tables.readTerminologyExtensionAxioms(ext, lines)
-  	    case "TerminologyNestingAxioms.json":
-  	      tables.readTerminologyNestingAxioms(ext, lines)
-  	    case "BundledTerminologyAxioms.json":
-  	      tables.readBundledTerminologyAxioms(ext, lines)
-  	    case "DescriptionBoxExtendsClosedWorldDefinitions.json":
-  	      tables.readDescriptionBoxExtendsClosedWorldDefinitions(ext, lines)
-  	    case "DescriptionBoxRefinements.json":
-  	      tables.readDescriptionBoxRefinements(ext, lines)
-  	    case "BinaryScalarRestrictions.json":
-  	      tables.readBinaryScalarRestrictions(ext, lines)
-  	    case "IRIScalarRestrictions.json":
-  	      tables.readIRIScalarRestrictions(ext, lines)
-  	    case "NumericScalarRestrictions.json":
-  	      tables.readNumericScalarRestrictions(ext, lines)
-  	    case "PlainLiteralScalarRestrictions.json":
-  	      tables.readPlainLiteralScalarRestrictions(ext, lines)
-  	    case "ScalarOneOfRestrictions.json":
-  	      tables.readScalarOneOfRestrictions(ext, lines)
-  	    case "ScalarOneOfLiteralAxioms.json":
-  	      tables.readScalarOneOfLiteralAxioms(ext, lines)
-  	    case "StringScalarRestrictions.json":
-  	      tables.readStringScalarRestrictions(ext, lines)
-  	    case "SynonymScalarRestrictions.json":
-  	      tables.readSynonymScalarRestrictions(ext, lines)
-  	    case "TimeScalarRestrictions.json":
-  	      tables.readTimeScalarRestrictions(ext, lines)
-  	    case "EntityScalarDataProperties.json":
-  	      tables.readEntityScalarDataProperties(ext, lines)
-  	    case "EntityStructuredDataProperties.json":
-  	      tables.readEntityStructuredDataProperties(ext, lines)
-  	    case "ScalarDataProperties.json":
-  	      tables.readScalarDataProperties(ext, lines)
-  	    case "StructuredDataProperties.json":
-  	      tables.readStructuredDataProperties(ext, lines)
-  	    case "ReifiedRelationships.json":
-  	      tables.readReifiedRelationships(ext, lines)
-  	    case "ReifiedRelationshipRestrictions.json":
-  	      tables.readReifiedRelationshipRestrictions(ext, lines)
-  	    case "ForwardProperties.json":
-  	      tables.readForwardProperties(ext, lines)
-  	    case "InverseProperties.json":
-  	      tables.readInverseProperties(ext, lines)
-  	    case "UnreifiedRelationships.json":
-  	      tables.readUnreifiedRelationships(ext, lines)
-  	    case "ChainRules.json":
-  	      tables.readChainRules(ext, lines)
-  	    case "RuleBodySegments.json":
-  	      tables.readRuleBodySegments(ext, lines)
-  	    case "SegmentPredicates.json":
-  	      tables.readSegmentPredicates(ext, lines)
-  	    case "EntityExistentialRestrictionAxioms.json":
-  	      tables.readEntityExistentialRestrictionAxioms(ext, lines)
-  	    case "EntityUniversalRestrictionAxioms.json":
-  	      tables.readEntityUniversalRestrictionAxioms(ext, lines)
-  	    case "EntityScalarDataPropertyExistentialRestrictionAxioms.json":
-  	      tables.readEntityScalarDataPropertyExistentialRestrictionAxioms(ext, lines)
-  	    case "EntityScalarDataPropertyParticularRestrictionAxioms.json":
-  	      tables.readEntityScalarDataPropertyParticularRestrictionAxioms(ext, lines)
-  	    case "EntityScalarDataPropertyUniversalRestrictionAxioms.json":
-  	      tables.readEntityScalarDataPropertyUniversalRestrictionAxioms(ext, lines)
-  	    case "EntityStructuredDataPropertyParticularRestrictionAxioms.json":
-  	      tables.readEntityStructuredDataPropertyParticularRestrictionAxioms(ext, lines)
-  	    case "RestrictionStructuredDataPropertyTuples.json":
-  	      tables.readRestrictionStructuredDataPropertyTuples(ext, lines)
-  	    case "RestrictionScalarDataPropertyValues.json":
-  	      tables.readRestrictionScalarDataPropertyValues(ext, lines)
-  	    case "AspectSpecializationAxioms.json":
-  	      tables.readAspectSpecializationAxioms(ext, lines)
-  	    case "ConceptSpecializationAxioms.json":
-  	      tables.readConceptSpecializationAxioms(ext, lines)
-  	    case "ReifiedRelationshipSpecializationAxioms.json":
-  	      tables.readReifiedRelationshipSpecializationAxioms(ext, lines)
-  	    case "SubDataPropertyOfAxioms.json":
-  	      tables.readSubDataPropertyOfAxioms(ext, lines)
-  	    case "SubObjectPropertyOfAxioms.json":
-  	      tables.readSubObjectPropertyOfAxioms(ext, lines)
-  	    case "RootConceptTaxonomyAxioms.json":
-  	      tables.readRootConceptTaxonomyAxioms(ext, lines)
-  	    case "AnonymousConceptUnionAxioms.json":
-  	      tables.readAnonymousConceptUnionAxioms(ext, lines)
-  	    case "SpecificDisjointConceptAxioms.json":
-  	      tables.readSpecificDisjointConceptAxioms(ext, lines)
-  	    case "ConceptInstances.json":
-  	      tables.readConceptInstances(ext, lines)
-  	    case "ReifiedRelationshipInstances.json":
-  	      tables.readReifiedRelationshipInstances(ext, lines)
-  	    case "ReifiedRelationshipInstanceDomains.json":
-  	      tables.readReifiedRelationshipInstanceDomains(ext, lines)
-  	    case "ReifiedRelationshipInstanceRanges.json":
-  	      tables.readReifiedRelationshipInstanceRanges(ext, lines)
-  	    case "UnreifiedRelationshipInstanceTuples.json":
-  	      tables.readUnreifiedRelationshipInstanceTuples(ext, lines)
-  	    case "SingletonInstanceStructuredDataPropertyValues.json":
-  	      tables.readSingletonInstanceStructuredDataPropertyValues(ext, lines)
-  	    case "SingletonInstanceScalarDataPropertyValues.json":
-  	      tables.readSingletonInstanceScalarDataPropertyValues(ext, lines)
-  	    case "StructuredDataPropertyTuples.json":
-  	      tables.readStructuredDataPropertyTuples(ext, lines)
-  	    case "ScalarDataPropertyValues.json":
-  	      tables.readScalarDataPropertyValues(ext, lines)
-  	    case "AnnotationPropertyValues.json":
-  	      tables.readAnnotationPropertyValues(ext, lines)
-        default:
-          throw new IllegalArgumentException("OMLSpecificationTables.load(): unrecognized table name: "+ze.name)
-      }
-    ]
-    zip.close()   
-    
+    try {
+  		Collections.list(zip.entries).forEach[ze | 
+      		val is = zip.getInputStream(ze)
+      		val buffer = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))
+      		val lines = new ArrayList<String>()
+      		lines.addAll(buffer.lines().iterator.toIterable)
+      		is.close()
+      		switch ze.name {
+  	    			case "TerminologyGraphs.json":
+  	    				tables.readTerminologyGraphs(ext, lines)
+  	    			case "Bundles.json":
+  	    				tables.readBundles(ext, lines)
+  	    			case "DescriptionBoxes.json":
+  	    				tables.readDescriptionBoxes(ext, lines)
+  	    			case "AnnotationProperties.json":
+  	    				tables.readAnnotationProperties(ext, lines)
+  	    			case "Aspects.json":
+  	    				tables.readAspects(ext, lines)
+  	    			case "Concepts.json":
+  	    				tables.readConcepts(ext, lines)
+  	    			case "Scalars.json":
+  	    				tables.readScalars(ext, lines)
+  	    			case "Structures.json":
+  	    				tables.readStructures(ext, lines)
+  	    			case "ConceptDesignationTerminologyAxioms.json":
+  	    				tables.readConceptDesignationTerminologyAxioms(ext, lines)
+  	    			case "TerminologyExtensionAxioms.json":
+  	    				tables.readTerminologyExtensionAxioms(ext, lines)
+  	    			case "TerminologyNestingAxioms.json":
+  	    				tables.readTerminologyNestingAxioms(ext, lines)
+  	    			case "BundledTerminologyAxioms.json":
+  	    				tables.readBundledTerminologyAxioms(ext, lines)
+  	    			case "DescriptionBoxExtendsClosedWorldDefinitions.json":
+  	    				tables.readDescriptionBoxExtendsClosedWorldDefinitions(ext, lines)
+  	    			case "DescriptionBoxRefinements.json":
+  	    				tables.readDescriptionBoxRefinements(ext, lines)
+  	    			case "BinaryScalarRestrictions.json":
+  	    				tables.readBinaryScalarRestrictions(ext, lines)
+  	    			case "IRIScalarRestrictions.json":
+  	    				tables.readIRIScalarRestrictions(ext, lines)
+  	    			case "NumericScalarRestrictions.json":
+  	    				tables.readNumericScalarRestrictions(ext, lines)
+  	    			case "PlainLiteralScalarRestrictions.json":
+  	    				tables.readPlainLiteralScalarRestrictions(ext, lines)
+  	    			case "ScalarOneOfRestrictions.json":
+  	    				tables.readScalarOneOfRestrictions(ext, lines)
+  	    			case "ScalarOneOfLiteralAxioms.json":
+  	    				tables.readScalarOneOfLiteralAxioms(ext, lines)
+  	    			case "StringScalarRestrictions.json":
+  	    				tables.readStringScalarRestrictions(ext, lines)
+  	    			case "SynonymScalarRestrictions.json":
+  	    				tables.readSynonymScalarRestrictions(ext, lines)
+  	    			case "TimeScalarRestrictions.json":
+  	    				tables.readTimeScalarRestrictions(ext, lines)
+  	    			case "EntityScalarDataProperties.json":
+  	    				tables.readEntityScalarDataProperties(ext, lines)
+  	    			case "EntityStructuredDataProperties.json":
+  	    				tables.readEntityStructuredDataProperties(ext, lines)
+  	    			case "ScalarDataProperties.json":
+  	    				tables.readScalarDataProperties(ext, lines)
+  	    			case "StructuredDataProperties.json":
+  	    				tables.readStructuredDataProperties(ext, lines)
+  	    			case "ReifiedRelationships.json":
+  	    				tables.readReifiedRelationships(ext, lines)
+  	    			case "ReifiedRelationshipRestrictions.json":
+  	    				tables.readReifiedRelationshipRestrictions(ext, lines)
+  	    			case "ForwardProperties.json":
+  	    				tables.readForwardProperties(ext, lines)
+  	    			case "InverseProperties.json":
+  	    				tables.readInverseProperties(ext, lines)
+  	    			case "UnreifiedRelationships.json":
+  	    				tables.readUnreifiedRelationships(ext, lines)
+  	    			case "ChainRules.json":
+  	    				tables.readChainRules(ext, lines)
+  	    			case "RuleBodySegments.json":
+  	    				tables.readRuleBodySegments(ext, lines)
+  	    			case "SegmentPredicates.json":
+  	    				tables.readSegmentPredicates(ext, lines)
+  	    			case "EntityExistentialRestrictionAxioms.json":
+  	    				tables.readEntityExistentialRestrictionAxioms(ext, lines)
+  	    			case "EntityUniversalRestrictionAxioms.json":
+  	    				tables.readEntityUniversalRestrictionAxioms(ext, lines)
+  	    			case "EntityScalarDataPropertyExistentialRestrictionAxioms.json":
+  	    				tables.readEntityScalarDataPropertyExistentialRestrictionAxioms(ext, lines)
+  	    			case "EntityScalarDataPropertyParticularRestrictionAxioms.json":
+  	    				tables.readEntityScalarDataPropertyParticularRestrictionAxioms(ext, lines)
+  	    			case "EntityScalarDataPropertyUniversalRestrictionAxioms.json":
+  	    				tables.readEntityScalarDataPropertyUniversalRestrictionAxioms(ext, lines)
+  	    			case "EntityStructuredDataPropertyParticularRestrictionAxioms.json":
+  	    				tables.readEntityStructuredDataPropertyParticularRestrictionAxioms(ext, lines)
+  	    			case "RestrictionStructuredDataPropertyTuples.json":
+  	    				tables.readRestrictionStructuredDataPropertyTuples(ext, lines)
+  	    			case "RestrictionScalarDataPropertyValues.json":
+  	    				tables.readRestrictionScalarDataPropertyValues(ext, lines)
+  	    			case "AspectSpecializationAxioms.json":
+  	    				tables.readAspectSpecializationAxioms(ext, lines)
+  	    			case "ConceptSpecializationAxioms.json":
+  	    				tables.readConceptSpecializationAxioms(ext, lines)
+  	    			case "ReifiedRelationshipSpecializationAxioms.json":
+  	    				tables.readReifiedRelationshipSpecializationAxioms(ext, lines)
+  	    			case "SubDataPropertyOfAxioms.json":
+  	    				tables.readSubDataPropertyOfAxioms(ext, lines)
+  	    			case "SubObjectPropertyOfAxioms.json":
+  	    				tables.readSubObjectPropertyOfAxioms(ext, lines)
+  	    			case "RootConceptTaxonomyAxioms.json":
+  	    				tables.readRootConceptTaxonomyAxioms(ext, lines)
+  	    			case "AnonymousConceptUnionAxioms.json":
+  	    				tables.readAnonymousConceptUnionAxioms(ext, lines)
+  	    			case "SpecificDisjointConceptAxioms.json":
+  	    				tables.readSpecificDisjointConceptAxioms(ext, lines)
+  	    			case "ConceptInstances.json":
+  	    				tables.readConceptInstances(ext, lines)
+  	    			case "ReifiedRelationshipInstances.json":
+  	    				tables.readReifiedRelationshipInstances(ext, lines)
+  	    			case "ReifiedRelationshipInstanceDomains.json":
+  	    				tables.readReifiedRelationshipInstanceDomains(ext, lines)
+  	    			case "ReifiedRelationshipInstanceRanges.json":
+  	    				tables.readReifiedRelationshipInstanceRanges(ext, lines)
+  	    			case "UnreifiedRelationshipInstanceTuples.json":
+  	    				tables.readUnreifiedRelationshipInstanceTuples(ext, lines)
+  	    			case "SingletonInstanceStructuredDataPropertyValues.json":
+  	    				tables.readSingletonInstanceStructuredDataPropertyValues(ext, lines)
+  	    			case "SingletonInstanceScalarDataPropertyValues.json":
+  	    				tables.readSingletonInstanceScalarDataPropertyValues(ext, lines)
+  	    			case "StructuredDataPropertyTuples.json":
+  	    				tables.readStructuredDataPropertyTuples(ext, lines)
+  	    			case "ScalarDataPropertyValues.json":
+  	    				tables.readScalarDataPropertyValues(ext, lines)
+  	    			case "AnnotationPropertyValues.json":
+  	    				tables.readAnnotationPropertyValues(ext, lines)
+        			default:
+          			throw new IllegalArgumentException("OMLSpecificationTables.load(): unrecognized table name: "+ze.name)
+      		}
+    		]
+    } finally {
+	    zip.close()
+	}
+
     tables.processQueue(rs)
     
     	tables.resolve(rs, r)
@@ -2960,18 +2963,18 @@ class OMLSpecificationTables {
     do {
         more = false
         	if (!iriLoadQueue.empty) {
+        		more = true
         		val iri = iriLoadQueue.remove
         		if (visitedIRIs.add(iri)) {
-        			more = true
-     	 	    	loadOMLZipResource(rs, URI.createURI(iri))	
+				loadOMLZipResource(rs, URI.createURI(iri))	
      	 	}
         }
         	
         	if (!moduleQueue.empty) {
+        		more = true
         		val m = moduleQueue.remove
         		if (visitedModules.add(m)) {
-        			more = true
-        			includeModule(m)
+				includeModule(m)
         		}
         	}
     } while (more)
@@ -3867,8 +3870,15 @@ class OMLSpecificationTables {
   	}
   }
   
-  protected def <U,V extends U> void includeMap(Map<String, Pair<U, Map<String, String>>> uMap, Map<String, Pair<V, Map<String, String>>> vMap) {
-    vMap.forEach[uuid,kv|uMap.put(uuid, new Pair<U, Map<String, String>>(kv.key, Collections.emptyMap))]
+  protected def <U,V extends U> Boolean includeMap(Map<String, Pair<U, Map<String, String>>> uMap, Map<String, Pair<V, Map<String, String>>> vMap) {
+    val Boolean[] updated = #{ false }
+    vMap.forEach[uuid,kv|
+    		val prev = uMap.put(uuid, new Pair<U, Map<String, String>>(kv.key, Collections.emptyMap))
+        	if (null === prev) {
+        		updated.set(0, true)
+        	}
+    ]
+    updated.get(0)
   }
 
   protected def void includeTerminologyGraphs(String uuid, TerminologyGraph oml) {
@@ -3888,7 +3898,6 @@ class OMLSpecificationTables {
   protected def void includeDescriptionBoxes(String uuid, DescriptionBox oml) {
   	modules.put(uuid, new Pair<Module, Map<String, String>>(oml, Collections.emptyMap))
   	logicalElements.put(uuid, new Pair<LogicalElement, Map<String, String>>(oml, Collections.emptyMap))
-  	descriptionBoxes.put(oml.iri(), new Pair<DescriptionBox, Map<String, String>>(oml, Collections.emptyMap))
   	
   }
   protected def void includeAnnotationProperties(String uuid, AnnotationProperty oml) {
@@ -4163,134 +4172,339 @@ class OMLSpecificationTables {
   }
   
   protected def void resolve(ResourceSet rs, OMLZipResource r) {
-	// Lookup table for LogicalElement cross references
-    includeMap(logicalElements, terminologyGraphs)
-    includeMap(logicalElements, bundles)
-    includeMap(logicalElements, descriptionBoxes)
-    includeMap(logicalElements, aspects)
-    includeMap(logicalElements, concepts)
-    includeMap(logicalElements, scalars)
-    includeMap(logicalElements, structures)
-    includeMap(logicalElements, conceptDesignationTerminologyAxioms)
-    includeMap(logicalElements, terminologyExtensionAxioms)
-    includeMap(logicalElements, terminologyNestingAxioms)
-    includeMap(logicalElements, bundledTerminologyAxioms)
-    includeMap(logicalElements, descriptionBoxExtendsClosedWorldDefinitions)
-    includeMap(logicalElements, descriptionBoxRefinements)
-    includeMap(logicalElements, binaryScalarRestrictions)
-    includeMap(logicalElements, iriScalarRestrictions)
-    includeMap(logicalElements, numericScalarRestrictions)
-    includeMap(logicalElements, plainLiteralScalarRestrictions)
-    includeMap(logicalElements, scalarOneOfRestrictions)
-    includeMap(logicalElements, scalarOneOfLiteralAxioms)
-    includeMap(logicalElements, stringScalarRestrictions)
-    includeMap(logicalElements, synonymScalarRestrictions)
-    includeMap(logicalElements, timeScalarRestrictions)
-    includeMap(logicalElements, entityScalarDataProperties)
-    includeMap(logicalElements, entityStructuredDataProperties)
-    includeMap(logicalElements, scalarDataProperties)
-    includeMap(logicalElements, structuredDataProperties)
-    includeMap(logicalElements, reifiedRelationships)
-    includeMap(logicalElements, reifiedRelationshipRestrictions)
-    includeMap(logicalElements, forwardProperties)
-    includeMap(logicalElements, inverseProperties)
-    includeMap(logicalElements, unreifiedRelationships)
-    includeMap(logicalElements, chainRules)
-    includeMap(logicalElements, ruleBodySegments)
-    includeMap(logicalElements, segmentPredicates)
-    includeMap(logicalElements, entityExistentialRestrictionAxioms)
-    includeMap(logicalElements, entityUniversalRestrictionAxioms)
-    includeMap(logicalElements, entityScalarDataPropertyExistentialRestrictionAxioms)
-    includeMap(logicalElements, entityScalarDataPropertyParticularRestrictionAxioms)
-    includeMap(logicalElements, entityScalarDataPropertyUniversalRestrictionAxioms)
-    includeMap(logicalElements, entityStructuredDataPropertyParticularRestrictionAxioms)
-    includeMap(logicalElements, restrictionStructuredDataPropertyTuples)
-    includeMap(logicalElements, restrictionScalarDataPropertyValues)
-    includeMap(logicalElements, aspectSpecializationAxioms)
-    includeMap(logicalElements, conceptSpecializationAxioms)
-    includeMap(logicalElements, reifiedRelationshipSpecializationAxioms)
-    includeMap(logicalElements, subDataPropertyOfAxioms)
-    includeMap(logicalElements, subObjectPropertyOfAxioms)
-    includeMap(logicalElements, rootConceptTaxonomyAxioms)
-    includeMap(logicalElements, anonymousConceptUnionAxioms)
-    includeMap(logicalElements, specificDisjointConceptAxioms)
-    includeMap(logicalElements, conceptInstances)
-    includeMap(logicalElements, reifiedRelationshipInstances)
-    includeMap(logicalElements, reifiedRelationshipInstanceDomains)
-    includeMap(logicalElements, reifiedRelationshipInstanceRanges)
-    includeMap(logicalElements, unreifiedRelationshipInstanceTuples)
-    includeMap(logicalElements, singletonInstanceStructuredDataPropertyValues)
-    includeMap(logicalElements, singletonInstanceScalarDataPropertyValues)
-    includeMap(logicalElements, structuredDataPropertyTuples)
-    includeMap(logicalElements, scalarDataPropertyValues)
+  	
+  	System.out.println("Resolve: "+r.URI)
+  	val t0 = System.currentTimeMillis
+  	// Lookup table for LogicalElement cross references
+    if (includeMap(logicalElements, terminologyGraphs)) {
+    		System.out.println("+ logicalElements, terminologyGraphs")
+    	}
+    if (includeMap(logicalElements, bundles)) {
+    		System.out.println("+ logicalElements, bundles")
+    	}
+    if (includeMap(logicalElements, descriptionBoxes)) {
+    		System.out.println("+ logicalElements, descriptionBoxes")
+    	}
+    if (includeMap(logicalElements, aspects)) {
+    		System.out.println("+ logicalElements, aspects")
+    	}
+    if (includeMap(logicalElements, concepts)) {
+    		System.out.println("+ logicalElements, concepts")
+    	}
+    if (includeMap(logicalElements, scalars)) {
+    		System.out.println("+ logicalElements, scalars")
+    	}
+    if (includeMap(logicalElements, structures)) {
+    		System.out.println("+ logicalElements, structures")
+    	}
+    if (includeMap(logicalElements, conceptDesignationTerminologyAxioms)) {
+    		System.out.println("+ logicalElements, conceptDesignationTerminologyAxioms")
+    	}
+    if (includeMap(logicalElements, terminologyExtensionAxioms)) {
+    		System.out.println("+ logicalElements, terminologyExtensionAxioms")
+    	}
+    if (includeMap(logicalElements, terminologyNestingAxioms)) {
+    		System.out.println("+ logicalElements, terminologyNestingAxioms")
+    	}
+    if (includeMap(logicalElements, bundledTerminologyAxioms)) {
+    		System.out.println("+ logicalElements, bundledTerminologyAxioms")
+    	}
+    if (includeMap(logicalElements, descriptionBoxExtendsClosedWorldDefinitions)) {
+    		System.out.println("+ logicalElements, descriptionBoxExtendsClosedWorldDefinitions")
+    	}
+    if (includeMap(logicalElements, descriptionBoxRefinements)) {
+    		System.out.println("+ logicalElements, descriptionBoxRefinements")
+    	}
+    if (includeMap(logicalElements, binaryScalarRestrictions)) {
+    		System.out.println("+ logicalElements, binaryScalarRestrictions")
+    	}
+    if (includeMap(logicalElements, iriScalarRestrictions)) {
+    		System.out.println("+ logicalElements, iriScalarRestrictions")
+    	}
+    if (includeMap(logicalElements, numericScalarRestrictions)) {
+    		System.out.println("+ logicalElements, numericScalarRestrictions")
+    	}
+    if (includeMap(logicalElements, plainLiteralScalarRestrictions)) {
+    		System.out.println("+ logicalElements, plainLiteralScalarRestrictions")
+    	}
+    if (includeMap(logicalElements, scalarOneOfRestrictions)) {
+    		System.out.println("+ logicalElements, scalarOneOfRestrictions")
+    	}
+    if (includeMap(logicalElements, scalarOneOfLiteralAxioms)) {
+    		System.out.println("+ logicalElements, scalarOneOfLiteralAxioms")
+    	}
+    if (includeMap(logicalElements, stringScalarRestrictions)) {
+    		System.out.println("+ logicalElements, stringScalarRestrictions")
+    	}
+    if (includeMap(logicalElements, synonymScalarRestrictions)) {
+    		System.out.println("+ logicalElements, synonymScalarRestrictions")
+    	}
+    if (includeMap(logicalElements, timeScalarRestrictions)) {
+    		System.out.println("+ logicalElements, timeScalarRestrictions")
+    	}
+    if (includeMap(logicalElements, entityScalarDataProperties)) {
+    		System.out.println("+ logicalElements, entityScalarDataProperties")
+    	}
+    if (includeMap(logicalElements, entityStructuredDataProperties)) {
+    		System.out.println("+ logicalElements, entityStructuredDataProperties")
+    	}
+    if (includeMap(logicalElements, scalarDataProperties)) {
+    		System.out.println("+ logicalElements, scalarDataProperties")
+    	}
+    if (includeMap(logicalElements, structuredDataProperties)) {
+    		System.out.println("+ logicalElements, structuredDataProperties")
+    	}
+    if (includeMap(logicalElements, reifiedRelationships)) {
+    		System.out.println("+ logicalElements, reifiedRelationships")
+    	}
+    if (includeMap(logicalElements, reifiedRelationshipRestrictions)) {
+    		System.out.println("+ logicalElements, reifiedRelationshipRestrictions")
+    	}
+    if (includeMap(logicalElements, forwardProperties)) {
+    		System.out.println("+ logicalElements, forwardProperties")
+    	}
+    if (includeMap(logicalElements, inverseProperties)) {
+    		System.out.println("+ logicalElements, inverseProperties")
+    	}
+    if (includeMap(logicalElements, unreifiedRelationships)) {
+    		System.out.println("+ logicalElements, unreifiedRelationships")
+    	}
+    if (includeMap(logicalElements, chainRules)) {
+    		System.out.println("+ logicalElements, chainRules")
+    	}
+    if (includeMap(logicalElements, ruleBodySegments)) {
+    		System.out.println("+ logicalElements, ruleBodySegments")
+    	}
+    if (includeMap(logicalElements, segmentPredicates)) {
+    		System.out.println("+ logicalElements, segmentPredicates")
+    	}
+    if (includeMap(logicalElements, entityExistentialRestrictionAxioms)) {
+    		System.out.println("+ logicalElements, entityExistentialRestrictionAxioms")
+    	}
+    if (includeMap(logicalElements, entityUniversalRestrictionAxioms)) {
+    		System.out.println("+ logicalElements, entityUniversalRestrictionAxioms")
+    	}
+    if (includeMap(logicalElements, entityScalarDataPropertyExistentialRestrictionAxioms)) {
+    		System.out.println("+ logicalElements, entityScalarDataPropertyExistentialRestrictionAxioms")
+    	}
+    if (includeMap(logicalElements, entityScalarDataPropertyParticularRestrictionAxioms)) {
+    		System.out.println("+ logicalElements, entityScalarDataPropertyParticularRestrictionAxioms")
+    	}
+    if (includeMap(logicalElements, entityScalarDataPropertyUniversalRestrictionAxioms)) {
+    		System.out.println("+ logicalElements, entityScalarDataPropertyUniversalRestrictionAxioms")
+    	}
+    if (includeMap(logicalElements, entityStructuredDataPropertyParticularRestrictionAxioms)) {
+    		System.out.println("+ logicalElements, entityStructuredDataPropertyParticularRestrictionAxioms")
+    	}
+    if (includeMap(logicalElements, restrictionStructuredDataPropertyTuples)) {
+    		System.out.println("+ logicalElements, restrictionStructuredDataPropertyTuples")
+    	}
+    if (includeMap(logicalElements, restrictionScalarDataPropertyValues)) {
+    		System.out.println("+ logicalElements, restrictionScalarDataPropertyValues")
+    	}
+    if (includeMap(logicalElements, aspectSpecializationAxioms)) {
+    		System.out.println("+ logicalElements, aspectSpecializationAxioms")
+    	}
+    if (includeMap(logicalElements, conceptSpecializationAxioms)) {
+    		System.out.println("+ logicalElements, conceptSpecializationAxioms")
+    	}
+    if (includeMap(logicalElements, reifiedRelationshipSpecializationAxioms)) {
+    		System.out.println("+ logicalElements, reifiedRelationshipSpecializationAxioms")
+    	}
+    if (includeMap(logicalElements, subDataPropertyOfAxioms)) {
+    		System.out.println("+ logicalElements, subDataPropertyOfAxioms")
+    	}
+    if (includeMap(logicalElements, subObjectPropertyOfAxioms)) {
+    		System.out.println("+ logicalElements, subObjectPropertyOfAxioms")
+    	}
+    if (includeMap(logicalElements, rootConceptTaxonomyAxioms)) {
+    		System.out.println("+ logicalElements, rootConceptTaxonomyAxioms")
+    	}
+    if (includeMap(logicalElements, anonymousConceptUnionAxioms)) {
+    		System.out.println("+ logicalElements, anonymousConceptUnionAxioms")
+    	}
+    if (includeMap(logicalElements, specificDisjointConceptAxioms)) {
+    		System.out.println("+ logicalElements, specificDisjointConceptAxioms")
+    	}
+    if (includeMap(logicalElements, conceptInstances)) {
+    		System.out.println("+ logicalElements, conceptInstances")
+    	}
+    if (includeMap(logicalElements, reifiedRelationshipInstances)) {
+    		System.out.println("+ logicalElements, reifiedRelationshipInstances")
+    	}
+    if (includeMap(logicalElements, reifiedRelationshipInstanceDomains)) {
+    		System.out.println("+ logicalElements, reifiedRelationshipInstanceDomains")
+    	}
+    if (includeMap(logicalElements, reifiedRelationshipInstanceRanges)) {
+    		System.out.println("+ logicalElements, reifiedRelationshipInstanceRanges")
+    	}
+    if (includeMap(logicalElements, unreifiedRelationshipInstanceTuples)) {
+    		System.out.println("+ logicalElements, unreifiedRelationshipInstanceTuples")
+    	}
+    if (includeMap(logicalElements, singletonInstanceStructuredDataPropertyValues)) {
+    		System.out.println("+ logicalElements, singletonInstanceStructuredDataPropertyValues")
+    	}
+    if (includeMap(logicalElements, singletonInstanceScalarDataPropertyValues)) {
+    		System.out.println("+ logicalElements, singletonInstanceScalarDataPropertyValues")
+    	}
+    if (includeMap(logicalElements, structuredDataPropertyTuples)) {
+    		System.out.println("+ logicalElements, structuredDataPropertyTuples")
+    	}
+    if (includeMap(logicalElements, scalarDataPropertyValues)) {
+    		System.out.println("+ logicalElements, scalarDataPropertyValues")
+    	}
   	
 	// Lookup table for Entity cross references
-  	includeMap(entities, aspects)
-  	includeMap(entities, concepts)
-  	includeMap(entities, reifiedRelationships)
-  	includeMap(entities, reifiedRelationshipRestrictions)
+  	if (includeMap(entities, aspects)) {
+  		System.out.println("+ entities, aspects")
+  	}
+  	if (includeMap(entities, concepts)) {
+  		System.out.println("+ entities, concepts")
+  	}
+  	if (includeMap(entities, reifiedRelationships)) {
+  		System.out.println("+ entities, reifiedRelationships")
+  	}
+  	if (includeMap(entities, reifiedRelationshipRestrictions)) {
+  		System.out.println("+ entities, reifiedRelationshipRestrictions")
+  	}
     
 	// Lookup table for EntityRelationship cross references
-    includeMap(entityRelationships, reifiedRelationships)
-    includeMap(entityRelationships, reifiedRelationshipRestrictions)
-    includeMap(entityRelationships, unreifiedRelationships)
+    if (includeMap(entityRelationships, reifiedRelationships)) {
+    		System.out.println("+ entities, reifiedRelationships")
+    	}
+    if (includeMap(entityRelationships, reifiedRelationshipRestrictions)) {
+    		System.out.println("+ entities, reifiedRelationshipRestrictions")
+    	}
+    if (includeMap(entityRelationships, unreifiedRelationships)) {
+    		System.out.println("+ entities, unreifiedRelationships")
+    	}
     
 	// Lookup table for ConceptualRelationship cross references
-    includeMap(conceptualRelationships, reifiedRelationships)
-    includeMap(conceptualRelationships, reifiedRelationshipRestrictions)
+    if (includeMap(conceptualRelationships, reifiedRelationships)) {
+    		 System.out.println("+ entities, reifiedRelationships")
+    	}
+    if (includeMap(conceptualRelationships, reifiedRelationshipRestrictions)) {
+    		 System.out.println("+ entities, reifiedRelationshipRestrictions")
+    	}
     
 	// Lookup table for DataRange cross references
-    includeMap(dataRanges, scalars)
-    includeMap(dataRanges, binaryScalarRestrictions)
-    includeMap(dataRanges, iriScalarRestrictions)
-    includeMap(dataRanges, numericScalarRestrictions)
-    includeMap(dataRanges, plainLiteralScalarRestrictions)
-    includeMap(dataRanges, scalarOneOfRestrictions)
-    includeMap(dataRanges, stringScalarRestrictions)
-    includeMap(dataRanges, synonymScalarRestrictions)
-    includeMap(dataRanges, timeScalarRestrictions)
+    if (includeMap(dataRanges, scalars)) {
+    		 System.out.println("+ entities, scalars")
+    	}
+    if (includeMap(dataRanges, binaryScalarRestrictions)) {
+    		 System.out.println("+ entities, binaryScalarRestrictions")
+    	}
+    if (includeMap(dataRanges, iriScalarRestrictions)) {
+    		 System.out.println("+ entities, iriScalarRestrictions")
+    	}
+    if (includeMap(dataRanges, numericScalarRestrictions)) {
+    		 System.out.println("+ entities, numericScalarRestrictions")
+    	}
+    if (includeMap(dataRanges, plainLiteralScalarRestrictions)) {
+    		 System.out.println("+ entities, plainLiteralScalarRestrictions")
+    	}
+    if (includeMap(dataRanges, scalarOneOfRestrictions)) {
+    		 System.out.println("+ entities, scalarOneOfRestrictions")
+    	}
+    if (includeMap(dataRanges, stringScalarRestrictions)) {
+    		 System.out.println("+ entities, stringScalarRestrictions")
+    	}
+    if (includeMap(dataRanges, synonymScalarRestrictions)) {
+    		 System.out.println("+ entities, synonymScalarRestrictions")
+    	}
+    if (includeMap(dataRanges, timeScalarRestrictions)) {
+    		 System.out.println("+ entities, timeScalarRestrictions")
+    	}
   	
 	// Lookup table for DataRelationshipToScalar cross references
-  	includeMap(dataRelationshipToScalars, entityScalarDataProperties)
-  	includeMap(dataRelationshipToScalars, scalarDataProperties)
+  	if (includeMap(dataRelationshipToScalars, entityScalarDataProperties)) {
+  		 System.out.println("+ entities, entityScalarDataProperties")
+  	}
+  	if (includeMap(dataRelationshipToScalars, scalarDataProperties)) {
+  		 System.out.println("+ entities, scalarDataProperties")
+  	}
   	
 	// Lookup table for DataRelationshipToStructure cross references
-  	includeMap(dataRelationshipToStructures, entityStructuredDataProperties)
-  	includeMap(dataRelationshipToStructures, structuredDataProperties)
+  	if (includeMap(dataRelationshipToStructures, entityStructuredDataProperties)) {
+  		System.out.println("+ entities, entityStructuredDataProperties")
+  	}
+  	if (includeMap(dataRelationshipToStructures, structuredDataProperties)) {
+  		System.out.println("+ entities, structuredDataProperties")
+  	}
   	
 	// Lookup table for Predicate cross references
-    includeMap(predicates, aspects)
-    includeMap(predicates, concepts)
-    includeMap(predicates, reifiedRelationships)
-    includeMap(predicates, reifiedRelationshipRestrictions)
-    includeMap(predicates, forwardProperties)
-    includeMap(predicates, inverseProperties)
-    includeMap(predicates, unreifiedRelationships)
+    if (includeMap(predicates, aspects)) {
+    		System.out.println("+ entities, aspects")
+    	}
+    if (includeMap(predicates, concepts)) {
+    		System.out.println("+ entities, concepts")
+    	}
+    if (includeMap(predicates, reifiedRelationships)) {
+    		System.out.println("+ entities, reifiedRelationships")
+    	}
+    if (includeMap(predicates, reifiedRelationshipRestrictions)) {
+    		System.out.println("+ entities, reifiedRelationshipRestrictions")
+    	}
+    if (includeMap(predicates, forwardProperties)) {
+    		System.out.println("+ entities, forwardProperties")
+    	}
+    if (includeMap(predicates, inverseProperties)) {
+    		System.out.println("+ entities, inverseProperties")
+    	}
+    if (includeMap(predicates, unreifiedRelationships)) {
+    		System.out.println("+ entities, unreifiedRelationships")
+    	}
 
 	// Lookup table for RestrictableRelationship cross references
-    includeMap(restrictableRelationships, forwardProperties)
-    includeMap(restrictableRelationships, inverseProperties)
-    includeMap(restrictableRelationships, unreifiedRelationships)
+    if (includeMap(restrictableRelationships, forwardProperties)) {
+    		System.out.println("+ entities, forwardProperties")
+    	}
+    if (includeMap(restrictableRelationships, inverseProperties)) {
+    		System.out.println("+ entities, inverseProperties")
+    	}
+    if (includeMap(restrictableRelationships, unreifiedRelationships)) {
+    		System.out.println("+ entities, unreifiedRelationships")
+    	}
 
 	// Lookup table for RestrictionStructuredDataPropertyContext cross references
-  	includeMap(restrictionStructuredDataPropertyContexts, entityStructuredDataPropertyParticularRestrictionAxioms)
-  	includeMap(restrictionStructuredDataPropertyContexts, restrictionStructuredDataPropertyTuples)
+  	if (includeMap(restrictionStructuredDataPropertyContexts, entityStructuredDataPropertyParticularRestrictionAxioms)) {
+  		System.out.println("+ entities, entityStructuredDataPropertyParticularRestrictionAxioms")
+  	}
+  	if (includeMap(restrictionStructuredDataPropertyContexts, restrictionStructuredDataPropertyTuples)) {
+  		System.out.println("+ entities, restrictionStructuredDataPropertyTuples")
+  	}
   	
 	// Lookup table for TerminologyBox cross references
-  	includeMap(terminologyBoxes, terminologyGraphs)
-  	includeMap(terminologyBoxes, bundles)
+  	if (includeMap(terminologyBoxes, terminologyGraphs)) {
+  		System.out.println("+ entities, terminologyGraphs")
+  	}
+  	if (includeMap(terminologyBoxes, bundles)) {
+  		System.out.println("+ entities, bundles")
+  	}
   	
 	// Lookup table for ConceptTreeDisjunction cross references
-  	includeMap(conceptTreeDisjunctions, rootConceptTaxonomyAxioms)
-  	includeMap(conceptTreeDisjunctions, anonymousConceptUnionAxioms)
+  	if (includeMap(conceptTreeDisjunctions, rootConceptTaxonomyAxioms)) {
+  		System.out.println("+ entities, rootConceptTaxonomyAxioms")
+  	}
+  	if (includeMap(conceptTreeDisjunctions, anonymousConceptUnionAxioms)) {
+  		System.out.println("+ entities, anonymousConceptUnionAxioms")
+  	}
   	
 	// Lookup table for ConceptualEntitySingletonInstance cross references
-  	includeMap(conceptualEntitySingletonInstances, conceptInstances)
-  	includeMap(conceptualEntitySingletonInstances, reifiedRelationshipInstances)
+  	if (includeMap(conceptualEntitySingletonInstances, conceptInstances)) {
+  		System.out.println("+ entities, conceptInstances")
+  	}
+  	if (includeMap(conceptualEntitySingletonInstances, reifiedRelationshipInstances)) {
+  		System.out.println("+ entities, reifiedRelationshipInstances")
+  	}
   	
 	// Lookup table for SingletonInstanceStructuredDataPropertyContext cross references
-  	includeMap(singletonInstanceStructuredDataPropertyContexts, singletonInstanceStructuredDataPropertyValues)
-  	includeMap(singletonInstanceStructuredDataPropertyContexts, structuredDataPropertyTuples)
+  	if (includeMap(singletonInstanceStructuredDataPropertyContexts, singletonInstanceStructuredDataPropertyValues)) {
+  		System.out.println("+ entities, singletonInstanceStructuredDataPropertyValues")
+  	}
+  	if (includeMap(singletonInstanceStructuredDataPropertyContexts, structuredDataPropertyTuples)) {
+  		System.out.println("+ entities, structuredDataPropertyTuples")
+  	}
   	
     resolveAnnotationProperties(rs)
     resolveAspects(rs)
@@ -4350,6 +4564,11 @@ class OMLSpecificationTables {
     resolveStructuredDataPropertyTuples(rs)
     resolveScalarDataPropertyValues(rs)
     resolveAnnotationPropertyValues(rs)
+    
+    val dt = t0 - System.currentTimeMillis
+    val ms = dt % 1000
+    val s = dt / 1000
+    System.out.println("Resolve: "+r.URI+" in "+s+"s, "+ms+"ms")
   }
 
   protected def void resolveAnnotationProperties(ResourceSet rs) {
@@ -5745,10 +5964,8 @@ class OMLSpecificationTables {
   	if (null === omlCatalog)
   		throw new IllegalArgumentException("loadOMLZipResource: ResourceSet must have an OMLCatalog!")
 
-	var scan = false
 	val uriString = uri.toString
   	val Resource r = if (uriString.startsWith("file:")) {
-  		scan = true
   		rs.getResource(uri, true)
   	} else if (uriString.startsWith("http:")) {
 		val r0a = rs.getResource(uri, false)
@@ -5762,15 +5979,6 @@ class OMLSpecificationTables {
 		]]
 		val r0 = r0a ?: r0b
 		if (null !== r0) {
-			switch r0 {
-				OMLZipResource: {
-				}
-				XtextResource: {
-					scan = true
-				}
-				default: {
-				}
-			}
 			r0
 		} else {
 			val r1 = omlCatalog.resolveURI(uriString + ".oml")
@@ -5780,8 +5988,6 @@ class OMLSpecificationTables {
 	  		val f1 = if (null !== r1 && r1.startsWith("file:")) new File(r1.substring(5)) else null
 	  		val f2 = if (null !== r2 && r2.startsWith("file:")) new File(r2.substring(5)) else null
 	  		val f3 = if (null !== r3 && r3.startsWith("file:")) new File(r3.substring(5)) else null
-	  	
-	  		scan = true
 	  		
 	  		if (null !== f1 && f1.exists && f1.canRead)
 	  			rs.getResource(URI.createURI(r1), true)
@@ -5794,15 +6000,17 @@ class OMLSpecificationTables {
   		}
   	}
   	
-  	if (scan)
-  		r.contents.forEach[e|
-  			switch e {
-  				Extent: {
-  					e.modules.forEach[includeModule]
-  				}
-  			}
-  		]
-  	
+  	switch r {
+  		XtextResource:
+  			r.contents.forEach[e|
+  				switch e {
+  					Extent: {
+  						e.modules.forEach[queueModule]
+					}
+				}
+			]
+	}
+
   	r
   }
 

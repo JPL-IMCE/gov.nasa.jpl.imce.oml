@@ -19,6 +19,7 @@ package gov.nasa.jpl.imce.oml.model.extensions;
 
 import com.google.common.base.Objects;
 import gov.nasa.jpl.imce.oml.model.extensions.OMLCatalog;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -289,24 +290,9 @@ public class CatalogURIConverter extends ExtensibleURIConverterImpl {
         URI _xifexpression_1 = null;
         boolean _isPlatform = uri.isPlatform();
         if (_isPlatform) {
-          URI _xblockexpression = null;
-          {
-            String _string = uri.toString();
-            final URL purl = new URL(_string);
-            final URL furl = FileLocator.toFileURL(purl);
-            URI _xifexpression_2 = null;
-            boolean _notEquals = (!Objects.equal(furl, purl));
-            if (_notEquals) {
-              _xifexpression_2 = URI.createFileURI(furl.getFile());
-            } else {
-              throw new IllegalArgumentException(
-                ("CatalogURIConverter.normalize() failed to resolve platform URI: " + uri));
-            }
-            _xblockexpression = _xifexpression_2;
-          }
-          _xifexpression_1 = _xblockexpression;
+          _xifexpression_1 = uri;
         } else {
-          URI _xblockexpression_1 = null;
+          URI _xblockexpression = null;
           {
             final String resolved = this.catalog.resolveURI(uri.toString());
             URI _xifexpression_2 = null;
@@ -317,16 +303,29 @@ public class CatalogURIConverter extends ExtensibleURIConverterImpl {
               if ((null != this.uriConverter)) {
                 _xifexpression_3 = this.uriConverter.normalize(uri);
               } else {
-                StringConcatenation _builder = new StringConcatenation();
-                _builder.append("No parent URIConverter and no catalog mapping for URI: ");
-                _builder.append(uri);
-                throw new IllegalArgumentException(_builder.toString());
+                URI _xblockexpression_1 = null;
+                {
+                  String _string = uri.toString();
+                  final URL purl = new URL(_string);
+                  final URL furl = FileLocator.toFileURL(purl);
+                  URI _xifexpression_4 = null;
+                  if (((null != furl) && (!Objects.equal(furl, purl)))) {
+                    _xifexpression_4 = URI.createFileURI(furl.getFile());
+                  } else {
+                    StringConcatenation _builder = new StringConcatenation();
+                    _builder.append("No parent URIConverter and no catalog mapping for URI: ");
+                    _builder.append(uri);
+                    throw new IllegalArgumentException(_builder.toString());
+                  }
+                  _xblockexpression_1 = _xifexpression_4;
+                }
+                _xifexpression_3 = _xblockexpression_1;
               }
               _xifexpression_2 = _xifexpression_3;
             }
-            _xblockexpression_1 = _xifexpression_2;
+            _xblockexpression = _xifexpression_2;
           }
-          _xifexpression_1 = _xblockexpression_1;
+          _xifexpression_1 = _xblockexpression;
         }
         _xifexpression = _xifexpression_1;
       }
@@ -382,9 +381,23 @@ public class CatalogURIConverter extends ExtensibleURIConverterImpl {
               _xifexpression_1 = _xifexpression_2;
             }
             final URI normalizedFileURI = _xifexpression_1;
-            URIHandler _uRIHandler = this.getURIHandler(normalizedFileURI);
-            CatalogURIConverter.OptionsMap _optionsMap = new CatalogURIConverter.OptionsMap(URIConverter.OPTION_URI_CONVERTER, this, options);
-            _xblockexpression_1 = _uRIHandler.createOutputStream(normalizedFileURI, _optionsMap);
+            final String scheme = normalizedFileURI.scheme();
+            OutputStream _xifexpression_3 = null;
+            if ((Objects.equal("file", scheme) || Objects.equal("platform", scheme))) {
+              URIHandler _uRIHandler = this.getURIHandler(normalizedFileURI);
+              CatalogURIConverter.OptionsMap _optionsMap = new CatalogURIConverter.OptionsMap(URIConverter.OPTION_URI_CONVERTER, this, options);
+              _xifexpression_3 = _uRIHandler.createOutputStream(normalizedFileURI, _optionsMap);
+            } else {
+              StringConcatenation _builder_1 = new StringConcatenation();
+              _builder_1.append("CatalogURIConverter.createOutputStream() URI scheme should be \'file\' or \'platform\'; got: \'");
+              _builder_1.append(scheme);
+              _builder_1.append("\' for ");
+              _builder_1.append(uri);
+              _builder_1.append(" as file URI: ");
+              _builder_1.append(normalizedFileURI);
+              throw new IllegalArgumentException(_builder_1.toString());
+            }
+            _xblockexpression_1 = _xifexpression_3;
           }
           _xifexpression = _xblockexpression_1;
         } else {
@@ -454,9 +467,42 @@ public class CatalogURIConverter extends ExtensibleURIConverterImpl {
               _xifexpression_1 = _xifexpression_2;
             }
             final URI normalizedFileURI = _xifexpression_1;
-            URIHandler _uRIHandler = this.getURIHandler(normalizedFileURI);
-            CatalogURIConverter.OptionsMap _optionsMap = new CatalogURIConverter.OptionsMap(URIConverter.OPTION_URI_CONVERTER, this, options);
-            _xblockexpression_1 = _uRIHandler.createInputStream(normalizedFileURI, _optionsMap);
+            final String scheme = normalizedFileURI.scheme();
+            InputStream _xifexpression_3 = null;
+            if ((((Objects.equal("bundleresource", scheme) || Objects.equal("classpath", scheme)) || Objects.equal("file", scheme)) || Objects.equal("platform", scheme))) {
+              InputStream _xblockexpression_2 = null;
+              {
+                boolean _isFile = normalizedFileURI.isFile();
+                if (_isFile) {
+                  final String path = normalizedFileURI.toFileString();
+                  final File file = new File(path);
+                  boolean _exists = file.exists();
+                  boolean _not_1 = (!_exists);
+                  if (_not_1) {
+                    StringConcatenation _builder_1 = new StringConcatenation();
+                    _builder_1.append("CatalogURIConverter.createInputStream() ");
+                    _builder_1.append(uri);
+                    _builder_1.append(" resolves to a non-existent file URI: ");
+                    _builder_1.append(normalizedFileURI);
+                    throw new IllegalArgumentException(_builder_1.toString());
+                  }
+                }
+                URIHandler _uRIHandler = this.getURIHandler(normalizedFileURI);
+                CatalogURIConverter.OptionsMap _optionsMap = new CatalogURIConverter.OptionsMap(URIConverter.OPTION_URI_CONVERTER, this, options);
+                _xblockexpression_2 = _uRIHandler.createInputStream(normalizedFileURI, _optionsMap);
+              }
+              _xifexpression_3 = _xblockexpression_2;
+            } else {
+              StringConcatenation _builder_1 = new StringConcatenation();
+              _builder_1.append("CatalogURIConverter.createInputStream() URI scheme should be \'file\', \'platform\', \'classpath\' or \'bundleresource\'; got: \'");
+              _builder_1.append(scheme);
+              _builder_1.append("\' for ");
+              _builder_1.append(uri);
+              _builder_1.append(" as file URI: ");
+              _builder_1.append(normalizedFileURI);
+              throw new IllegalArgumentException(_builder_1.toString());
+            }
+            _xblockexpression_1 = _xifexpression_3;
           }
           _xifexpression = _xblockexpression_1;
         } else {
