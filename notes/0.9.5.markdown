@@ -10,6 +10,8 @@ gov.nasa.jpl.imce.oml.tycho 0.9.5 is an API-breaking change from 0.9.4
 
 ### [#265 Eclipse EMF Normalized URIs.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/265)
 
+### [#268 Problems with multi-threaded EMF Resource operations in Sirius](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/268)
+
 ## Summary of changes from 0.9.4
 
 ### API
