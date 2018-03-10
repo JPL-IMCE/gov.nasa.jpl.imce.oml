@@ -120,6 +120,13 @@ class OMLZipResource extends ResourceImpl {
 	 * is the result of parsing all the tables in the *.omlzip file.
 	 */
 	override def void load(Map<?, ?> options) throws IOException {
+		synchronized(this) {
+			if (!loaded)
+				loadInternal(options)
+		}
+	}
+	
+	protected def void loadInternal(Map<?, ?> options) throws IOException {
 		System.out.println("OMLZip. Loading: " + uri)
 		val started = System.currentTimeMillis
 		val response = if (null === options)
