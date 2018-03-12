@@ -174,6 +174,16 @@ public class OMLZipResource extends ResourceImpl {
    */
   @Override
   public void load(final Map<?, ?> options) throws IOException {
+    synchronized (this) {
+      boolean _isLoaded = this.isLoaded();
+      boolean _not = (!_isLoaded);
+      if (_not) {
+        this.loadInternal(options);
+      }
+    }
+  }
+  
+  protected void loadInternal(final Map<?, ?> options) throws IOException {
     System.out.println(("OMLZip. Loading: " + this.uri));
     final long started = System.currentTimeMillis();
     Map<?, ?> _xifexpression = null;

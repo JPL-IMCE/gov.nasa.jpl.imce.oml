@@ -3375,16 +3375,6 @@ public class OMLSpecificationTables {
         zip.close();
       }
       tables.processQueue(rs);
-      boolean _isEmpty_2 = tables.iriLoadQueue.isEmpty();
-      boolean _not = (!_isEmpty_2);
-      if (_not) {
-        throw new IllegalArgumentException("OMLSpecificationTables.load(): iriLoadQueue not empty!");
-      }
-      boolean _isEmpty_3 = tables.moduleQueue.isEmpty();
-      boolean _not_1 = (!_isEmpty_3);
-      if (_not_1) {
-        throw new IllegalArgumentException("OMLSpecificationTables.load(): moduleQueue not empty!");
-      }
       tables.resolve(rs, r);
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
@@ -3407,19 +3397,6 @@ public class OMLSpecificationTables {
           final String iri = this.iriLoadQueue.remove();
           boolean _add = this.visitedIRIs.add(iri);
           if (_add) {
-            int _size = this.visitedIRIs.size();
-            String _plus = ("processQueue: visitedIRIs=" + Integer.valueOf(_size));
-            String _plus_1 = (_plus + ", iriLoadQueue=");
-            int _size_1 = this.iriLoadQueue.size();
-            String _plus_2 = (_plus_1 + Integer.valueOf(_size_1));
-            String _plus_3 = (_plus_2 + ", moduleQueue=");
-            int _size_2 = this.moduleQueue.size();
-            String _plus_4 = (_plus_3 + Integer.valueOf(_size_2));
-            String _plus_5 = (_plus_4 + ", visitedModules=");
-            int _size_3 = this.visitedModules.size();
-            String _plus_6 = (_plus_5 + Integer.valueOf(_size_3));
-            System.out.println(_plus_6);
-            System.out.println(("=> loadOMLZipResource: " + iri));
             this.loadOMLZipResource(rs, URI.createURI(iri));
           }
         }
@@ -3430,36 +3407,11 @@ public class OMLSpecificationTables {
           final Module m = this.moduleQueue.remove();
           boolean _add_1 = this.visitedModules.add(m);
           if (_add_1) {
-            int _size_4 = this.visitedIRIs.size();
-            String _plus_7 = ("processQueue: visitedIRIs=" + Integer.valueOf(_size_4));
-            String _plus_8 = (_plus_7 + ", iriLoadQueue=");
-            int _size_5 = this.iriLoadQueue.size();
-            String _plus_9 = (_plus_8 + Integer.valueOf(_size_5));
-            String _plus_10 = (_plus_9 + ", moduleQueue=");
-            int _size_6 = this.moduleQueue.size();
-            String _plus_11 = (_plus_10 + Integer.valueOf(_size_6));
-            String _plus_12 = (_plus_11 + ", visitedModules=");
-            int _size_7 = this.visitedModules.size();
-            String _plus_13 = (_plus_12 + Integer.valueOf(_size_7));
-            System.out.println(_plus_13);
-            String _iri = m.iri();
-            String _plus_14 = ("=> includeModule: " + _iri);
-            System.out.println(_plus_14);
             this.includeModule(m);
           }
         }
       }
     } while((more).booleanValue());
-    boolean _isEmpty = this.iriLoadQueue.isEmpty();
-    boolean _not = (!_isEmpty);
-    if (_not) {
-      throw new IllegalArgumentException("OMLSpecificationTables.load(): iriLoadQueue not empty!");
-    }
-    boolean _isEmpty_1 = this.moduleQueue.isEmpty();
-    boolean _not_1 = (!_isEmpty_1);
-    if (_not_1) {
-      throw new IllegalArgumentException("OMLSpecificationTables.load(): moduleQueue not empty!");
-    }
   }
   
   protected void readTerminologyGraphs(final Extent ext, final ArrayList<String> lines) {
