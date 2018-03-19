@@ -12,7 +12,33 @@ gov.nasa.jpl.imce.oml.tycho 0.9.5 is an API-breaking change from 0.9.4
 
 ### [#268 Problems with multi-threaded EMF Resource operations in Sirius](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/268)
 
+### [#272 OMLStandaloneSetup needs to register a content factory for 'oml'](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/272)
+
 ## Summary of changes from 0.9.4
+
+### Loading OML & OMLZip Resources
+
+```xtend
+// Create an XtextResourceSet to load either *.oml or *.omlzip files.
+OMLZipResourceSet.doSetup()
+val rs = new XtextResourceSet()
+val OMLCatalog omlCatalog = OMLExtensions.getCatalog(rs)
+try {
+	omlCatalog.parseCatalog(omlCatalogXML.toURI.toURL)
+} catch (IOException ex) {
+	throw new CoreException(new Status(IStatus.ERROR, EFSEAdapterActivator.ID, '''Failed to load OML Catalog file: «omlCatalogXML»''', ex))
+}
+
+// Loading an OML resource; note that the file extension is not a required part of the URI!
+val r_fse = rs.createResource(URI.createURI("http://imce.jpl.nasa.gov/discipline/fse/fse"), "oml")
+r_fse.load(Collections.EMPTY_MAP)
+fse = r_fse.contents.filter(Extent)?.head?.modules?.filter(TerminologyGraph)?.head
+
+// Loading an OMLZip resource; note that the file extension is not a required part of the URI!
+val r_refdes = rs.createResource(URI.createURI("..."), "omlzip") // ... could be a file:// or http:// URI; with or without extension
+r_refdes.load(Collections.EMPTY_MAP)
+refdes = r_refdes.contents.filter(Extent)?.head?.modules?.filter(TerminologyGraph)?.head
+```
 
 ### API
 
