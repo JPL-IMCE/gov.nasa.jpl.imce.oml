@@ -24,6 +24,7 @@ import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage
 import gov.nasa.jpl.imce.oml.model.graphs.GraphsPackage
 import gov.nasa.jpl.imce.oml.model.bundles.BundlesPackage
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsPackage
+import org.eclipse.emf.ecore.resource.Resource
 
 /**
  * Initialization support for running Xtext languages without Equinox extension registry.
@@ -51,5 +52,7 @@ class OMLStandaloneSetup extends OMLStandaloneSetupGenerated {
 			EPackage.Registry.INSTANCE.put(DescriptionsPackage.eNS_URI, DescriptionsPackage.eINSTANCE);
 		}
 		super.register(injector)
+		
+		Resource.Factory.Registry.INSTANCE.contentTypeToFactoryMap.put("oml", Resource.Factory.Registry.INSTANCE.extensionToFactoryMap.get("oml"))
 	}
 }
