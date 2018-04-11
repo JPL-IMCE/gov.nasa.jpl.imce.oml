@@ -14,6 +14,11 @@ gov.nasa.jpl.imce.oml.tycho 0.9.5 is an API-breaking change from 0.9.4
 
 ### [#272 OMLStandaloneSetup needs to register a content factory for 'oml'](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/272)
 
+### [#278 Eclipse Oxygen p2 installable units have disappeared... again!](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/278)
+
+  Switched from Sirius 5.0.1 to 5.1.1 (Xtext is still at 2.12)
+  
+  
 ## Summary of changes from 0.9.4
 
 ### Loading OML & OMLZip Resources
