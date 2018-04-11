@@ -14,6 +14,8 @@ gov.nasa.jpl.imce.oml.tycho 0.9.5 is an API-breaking change from 0.9.4
 
 ### [#272 OMLStandaloneSetup needs to register a content factory for 'oml'](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/272)
 
+### [#276 Force a deterministic timestamp for OMLZip](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/276)
+
 ## Summary of changes from 0.9.4
 
 ### Loading OML & OMLZip Resources
