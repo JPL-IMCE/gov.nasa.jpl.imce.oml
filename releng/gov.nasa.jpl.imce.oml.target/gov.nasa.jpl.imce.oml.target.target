@@ -49,8 +49,10 @@
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.e4.core.tools.feature.source.feature.group" version="4.7.0.v20170515-1617"/>
+<!--
 <unit id="org.eclipse.e4.rcp.feature.group" version="1.6.3.v20180214-0345"/>
 <unit id="org.eclipse.e4.rcp.source.feature.group" version="1.6.3.v20180214-0345"/>
+-->
 <unit id="org.eclipse.egit.feature.group" version="4.9.2.201712150930-r"/>
 <unit id="org.eclipse.egit.gitflow.feature.feature.group" version="4.9.2.201712150930-r"/>
 <unit id="org.eclipse.egit.mylyn.feature.group" version="4.9.2.201712150930-r"/>
@@ -71,8 +73,10 @@
 <unit id="org.eclipse.emf.transaction.sdk.feature.group" version="1.11.0.201706061339"/>
 <unit id="org.eclipse.emf.validation.sdk.feature.group" version="1.11.0.201706061352"/>
 <unit id="org.eclipse.equinox.compendium.sdk.feature.group" version="3.13.1.v20170811-1407"/>
+<!--
 <unit id="org.eclipse.equinox.core.feature.feature.group" version="1.4.1.v20170928-1321"/>
 <unit id="org.eclipse.equinox.core.sdk.feature.group" version="3.13.1.v20170928-1321"/>
+-->
 <unit id="org.eclipse.equinox.p2.core.feature.feature.group" version="1.4.1.v20170928-1405"/>
 <unit id="org.eclipse.equinox.p2.core.feature.source.feature.group" version="1.4.1.v20170928-1405"/>
 <unit id="org.eclipse.equinox.p2.discovery.feature.feature.group" version="1.1.1.v20170906-1259"/>
@@ -92,7 +96,9 @@
 <unit id="org.eclipse.mylyn.github.feature.feature.group" version="4.9.0.201710071750-r"/>
 <unit id="org.eclipse.pde.source.feature.group" version="3.13.4.v20180330-0640"/>
 <unit id="org.eclipse.platform.sdk" version="4.7.3.M20180330-0640"/>
+<!--
 <unit id="org.eclipse.rcp.sdk.id" version="4.7.3.M20180330-0640"/>
+-->
 <unit id="org.eclipse.swtbot.ide.feature.group" version="2.6.0.201706141832"/>
 <unit id="org.eclipse.uml2.sdk.feature.group" version="5.3.0.v20170605-1616"/>
 <unit id="org.eclipse.wst.common.fproj.feature.group" version="3.7.1.v201707201954"/>
@@ -111,8 +117,8 @@
 <repository location="http://download.eclipse.org/releases/oxygen/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.acceleo.feature.group" version="3.7.1.201705121344"/>
-<repository location="http://download.eclipse.org/acceleo/updates/releases/3.7/R201705121344/"/>
+<unit id="org.eclipse.acceleo.feature.group" version="3.7.2.201708211328"/>
+<repository location="http://download.eclipse.org/acceleo/updates/releases/3.7"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.apache.poi" version="3.9.0.v201405241750"/>
