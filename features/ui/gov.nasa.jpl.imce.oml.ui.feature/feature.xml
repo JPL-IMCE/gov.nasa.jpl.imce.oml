@@ -538,28 +538,28 @@ License Terms
          id="org.eclipse.sirius.editor"
          download-size="0"
          install-size="0"
-         version="5.0.1.201706290936"
+         version="0.0.0"
          unpack="false"/>
 
    <plugin
          id="org.eclipse.jdt.junit"
          download-size="0"
          install-size="0"
-         version="3.10.50.v20171004-1157"
+         version="0.0.0"
          unpack="false"/>
 
    <plugin
          id="org.eclipse.jdt.junit.core"
          download-size="0"
          install-size="0"
-         version="3.9.50.v20170927-1941"
+         version="0.0.0"
          unpack="false"/>
 
    <plugin
          id="org.eclipse.jdt.junit.runtime"
          download-size="0"
          install-size="0"
-         version="3.4.650.v20170920-1015"
+         version="0.0.0"
          unpack="false"/>
 
    <plugin
@@ -594,7 +594,7 @@ License Terms
          id="org.eclipse.sirius.editor.properties"
          download-size="0"
          install-size="0"
-         version="5.0.1.201706290936"
+         version="0.0.0"
          unpack="false"/>
 
    <plugin
@@ -762,21 +762,21 @@ License Terms
          id="org.eclipse.acceleo.annotations"
          download-size="0"
          install-size="0"
-         version="6.0.1.201705121344"
+         version="0.0.0"
          unpack="false"/>
 
    <plugin
          id="org.eclipse.acceleo.query"
          download-size="0"
          install-size="0"
-         version="6.0.1.201705121344"
+         version="0.0.0"
          unpack="false"/>
 
    <plugin
          id="org.eclipse.acceleo.query.ide.ui"
          download-size="0"
          install-size="0"
-         version="6.0.1.201705121344"
+         version="0.0.0"
          unpack="false"/>
 
 </feature>
