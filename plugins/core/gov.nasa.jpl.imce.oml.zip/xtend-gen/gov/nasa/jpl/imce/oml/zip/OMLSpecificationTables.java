@@ -495,6 +495,7 @@ public class OMLSpecificationTables {
       ZipArchiveEntry entry = null;
       ZipArchiveEntry _zipArchiveEntry = new ZipArchiveEntry("TerminologyGraphs.json");
       entry = _zipArchiveEntry;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.terminologyGraphsByteArray(e));
@@ -503,6 +504,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_1 = new ZipArchiveEntry("Bundles.json");
       entry = _zipArchiveEntry_1;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.bundlesByteArray(e));
@@ -511,6 +513,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_2 = new ZipArchiveEntry("DescriptionBoxes.json");
       entry = _zipArchiveEntry_2;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.descriptionBoxesByteArray(e));
@@ -519,6 +522,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_3 = new ZipArchiveEntry("AnnotationProperties.json");
       entry = _zipArchiveEntry_3;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.annotationPropertiesByteArray(e));
@@ -527,6 +531,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_4 = new ZipArchiveEntry("Aspects.json");
       entry = _zipArchiveEntry_4;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.aspectsByteArray(e));
@@ -535,6 +540,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_5 = new ZipArchiveEntry("Concepts.json");
       entry = _zipArchiveEntry_5;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.conceptsByteArray(e));
@@ -543,6 +549,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_6 = new ZipArchiveEntry("Scalars.json");
       entry = _zipArchiveEntry_6;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.scalarsByteArray(e));
@@ -551,6 +558,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_7 = new ZipArchiveEntry("Structures.json");
       entry = _zipArchiveEntry_7;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.structuresByteArray(e));
@@ -559,6 +567,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_8 = new ZipArchiveEntry("ConceptDesignationTerminologyAxioms.json");
       entry = _zipArchiveEntry_8;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.conceptDesignationTerminologyAxiomsByteArray(e));
@@ -567,6 +576,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_9 = new ZipArchiveEntry("TerminologyExtensionAxioms.json");
       entry = _zipArchiveEntry_9;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.terminologyExtensionAxiomsByteArray(e));
@@ -575,6 +585,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_10 = new ZipArchiveEntry("TerminologyNestingAxioms.json");
       entry = _zipArchiveEntry_10;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.terminologyNestingAxiomsByteArray(e));
@@ -583,6 +594,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_11 = new ZipArchiveEntry("BundledTerminologyAxioms.json");
       entry = _zipArchiveEntry_11;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.bundledTerminologyAxiomsByteArray(e));
@@ -591,6 +603,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_12 = new ZipArchiveEntry("DescriptionBoxExtendsClosedWorldDefinitions.json");
       entry = _zipArchiveEntry_12;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.descriptionBoxExtendsClosedWorldDefinitionsByteArray(e));
@@ -599,6 +612,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_13 = new ZipArchiveEntry("DescriptionBoxRefinements.json");
       entry = _zipArchiveEntry_13;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.descriptionBoxRefinementsByteArray(e));
@@ -607,6 +621,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_14 = new ZipArchiveEntry("BinaryScalarRestrictions.json");
       entry = _zipArchiveEntry_14;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.binaryScalarRestrictionsByteArray(e));
@@ -615,6 +630,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_15 = new ZipArchiveEntry("IRIScalarRestrictions.json");
       entry = _zipArchiveEntry_15;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.iriScalarRestrictionsByteArray(e));
@@ -623,6 +639,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_16 = new ZipArchiveEntry("NumericScalarRestrictions.json");
       entry = _zipArchiveEntry_16;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.numericScalarRestrictionsByteArray(e));
@@ -631,6 +648,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_17 = new ZipArchiveEntry("PlainLiteralScalarRestrictions.json");
       entry = _zipArchiveEntry_17;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.plainLiteralScalarRestrictionsByteArray(e));
@@ -639,6 +657,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_18 = new ZipArchiveEntry("ScalarOneOfRestrictions.json");
       entry = _zipArchiveEntry_18;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.scalarOneOfRestrictionsByteArray(e));
@@ -647,6 +666,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_19 = new ZipArchiveEntry("ScalarOneOfLiteralAxioms.json");
       entry = _zipArchiveEntry_19;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.scalarOneOfLiteralAxiomsByteArray(e));
@@ -655,6 +675,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_20 = new ZipArchiveEntry("StringScalarRestrictions.json");
       entry = _zipArchiveEntry_20;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.stringScalarRestrictionsByteArray(e));
@@ -663,6 +684,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_21 = new ZipArchiveEntry("SynonymScalarRestrictions.json");
       entry = _zipArchiveEntry_21;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.synonymScalarRestrictionsByteArray(e));
@@ -671,6 +693,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_22 = new ZipArchiveEntry("TimeScalarRestrictions.json");
       entry = _zipArchiveEntry_22;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.timeScalarRestrictionsByteArray(e));
@@ -679,6 +702,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_23 = new ZipArchiveEntry("EntityScalarDataProperties.json");
       entry = _zipArchiveEntry_23;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.entityScalarDataPropertiesByteArray(e));
@@ -687,6 +711,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_24 = new ZipArchiveEntry("EntityStructuredDataProperties.json");
       entry = _zipArchiveEntry_24;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.entityStructuredDataPropertiesByteArray(e));
@@ -695,6 +720,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_25 = new ZipArchiveEntry("ScalarDataProperties.json");
       entry = _zipArchiveEntry_25;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.scalarDataPropertiesByteArray(e));
@@ -703,6 +729,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_26 = new ZipArchiveEntry("StructuredDataProperties.json");
       entry = _zipArchiveEntry_26;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.structuredDataPropertiesByteArray(e));
@@ -711,6 +738,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_27 = new ZipArchiveEntry("ReifiedRelationships.json");
       entry = _zipArchiveEntry_27;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.reifiedRelationshipsByteArray(e));
@@ -719,6 +747,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_28 = new ZipArchiveEntry("ReifiedRelationshipRestrictions.json");
       entry = _zipArchiveEntry_28;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.reifiedRelationshipRestrictionsByteArray(e));
@@ -727,6 +756,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_29 = new ZipArchiveEntry("ForwardProperties.json");
       entry = _zipArchiveEntry_29;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.forwardPropertiesByteArray(e));
@@ -735,6 +765,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_30 = new ZipArchiveEntry("InverseProperties.json");
       entry = _zipArchiveEntry_30;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.inversePropertiesByteArray(e));
@@ -743,6 +774,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_31 = new ZipArchiveEntry("UnreifiedRelationships.json");
       entry = _zipArchiveEntry_31;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.unreifiedRelationshipsByteArray(e));
@@ -751,6 +783,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_32 = new ZipArchiveEntry("ChainRules.json");
       entry = _zipArchiveEntry_32;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.chainRulesByteArray(e));
@@ -759,6 +792,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_33 = new ZipArchiveEntry("RuleBodySegments.json");
       entry = _zipArchiveEntry_33;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.ruleBodySegmentsByteArray(e));
@@ -767,6 +801,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_34 = new ZipArchiveEntry("SegmentPredicates.json");
       entry = _zipArchiveEntry_34;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.segmentPredicatesByteArray(e));
@@ -775,6 +810,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_35 = new ZipArchiveEntry("EntityExistentialRestrictionAxioms.json");
       entry = _zipArchiveEntry_35;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.entityExistentialRestrictionAxiomsByteArray(e));
@@ -783,6 +819,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_36 = new ZipArchiveEntry("EntityUniversalRestrictionAxioms.json");
       entry = _zipArchiveEntry_36;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.entityUniversalRestrictionAxiomsByteArray(e));
@@ -791,6 +828,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_37 = new ZipArchiveEntry("EntityScalarDataPropertyExistentialRestrictionAxioms.json");
       entry = _zipArchiveEntry_37;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.entityScalarDataPropertyExistentialRestrictionAxiomsByteArray(e));
@@ -799,6 +837,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_38 = new ZipArchiveEntry("EntityScalarDataPropertyParticularRestrictionAxioms.json");
       entry = _zipArchiveEntry_38;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.entityScalarDataPropertyParticularRestrictionAxiomsByteArray(e));
@@ -807,6 +846,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_39 = new ZipArchiveEntry("EntityScalarDataPropertyUniversalRestrictionAxioms.json");
       entry = _zipArchiveEntry_39;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.entityScalarDataPropertyUniversalRestrictionAxiomsByteArray(e));
@@ -815,6 +855,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_40 = new ZipArchiveEntry("EntityStructuredDataPropertyParticularRestrictionAxioms.json");
       entry = _zipArchiveEntry_40;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.entityStructuredDataPropertyParticularRestrictionAxiomsByteArray(e));
@@ -823,6 +864,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_41 = new ZipArchiveEntry("RestrictionStructuredDataPropertyTuples.json");
       entry = _zipArchiveEntry_41;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.restrictionStructuredDataPropertyTuplesByteArray(e));
@@ -831,6 +873,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_42 = new ZipArchiveEntry("RestrictionScalarDataPropertyValues.json");
       entry = _zipArchiveEntry_42;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.restrictionScalarDataPropertyValuesByteArray(e));
@@ -839,6 +882,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_43 = new ZipArchiveEntry("AspectSpecializationAxioms.json");
       entry = _zipArchiveEntry_43;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.aspectSpecializationAxiomsByteArray(e));
@@ -847,6 +891,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_44 = new ZipArchiveEntry("ConceptSpecializationAxioms.json");
       entry = _zipArchiveEntry_44;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.conceptSpecializationAxiomsByteArray(e));
@@ -855,6 +900,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_45 = new ZipArchiveEntry("ReifiedRelationshipSpecializationAxioms.json");
       entry = _zipArchiveEntry_45;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.reifiedRelationshipSpecializationAxiomsByteArray(e));
@@ -863,6 +909,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_46 = new ZipArchiveEntry("SubDataPropertyOfAxioms.json");
       entry = _zipArchiveEntry_46;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.subDataPropertyOfAxiomsByteArray(e));
@@ -871,6 +918,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_47 = new ZipArchiveEntry("SubObjectPropertyOfAxioms.json");
       entry = _zipArchiveEntry_47;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.subObjectPropertyOfAxiomsByteArray(e));
@@ -879,6 +927,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_48 = new ZipArchiveEntry("RootConceptTaxonomyAxioms.json");
       entry = _zipArchiveEntry_48;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.rootConceptTaxonomyAxiomsByteArray(e));
@@ -887,6 +936,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_49 = new ZipArchiveEntry("AnonymousConceptUnionAxioms.json");
       entry = _zipArchiveEntry_49;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.anonymousConceptUnionAxiomsByteArray(e));
@@ -895,6 +945,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_50 = new ZipArchiveEntry("SpecificDisjointConceptAxioms.json");
       entry = _zipArchiveEntry_50;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.specificDisjointConceptAxiomsByteArray(e));
@@ -903,6 +954,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_51 = new ZipArchiveEntry("ConceptInstances.json");
       entry = _zipArchiveEntry_51;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.conceptInstancesByteArray(e));
@@ -911,6 +963,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_52 = new ZipArchiveEntry("ReifiedRelationshipInstances.json");
       entry = _zipArchiveEntry_52;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.reifiedRelationshipInstancesByteArray(e));
@@ -919,6 +972,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_53 = new ZipArchiveEntry("ReifiedRelationshipInstanceDomains.json");
       entry = _zipArchiveEntry_53;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.reifiedRelationshipInstanceDomainsByteArray(e));
@@ -927,6 +981,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_54 = new ZipArchiveEntry("ReifiedRelationshipInstanceRanges.json");
       entry = _zipArchiveEntry_54;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.reifiedRelationshipInstanceRangesByteArray(e));
@@ -935,6 +990,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_55 = new ZipArchiveEntry("UnreifiedRelationshipInstanceTuples.json");
       entry = _zipArchiveEntry_55;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.unreifiedRelationshipInstanceTuplesByteArray(e));
@@ -943,6 +999,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_56 = new ZipArchiveEntry("SingletonInstanceStructuredDataPropertyValues.json");
       entry = _zipArchiveEntry_56;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.singletonInstanceStructuredDataPropertyValuesByteArray(e));
@@ -951,6 +1008,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_57 = new ZipArchiveEntry("SingletonInstanceScalarDataPropertyValues.json");
       entry = _zipArchiveEntry_57;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.singletonInstanceScalarDataPropertyValuesByteArray(e));
@@ -959,6 +1017,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_58 = new ZipArchiveEntry("StructuredDataPropertyTuples.json");
       entry = _zipArchiveEntry_58;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.structuredDataPropertyTuplesByteArray(e));
@@ -967,6 +1026,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_59 = new ZipArchiveEntry("ScalarDataPropertyValues.json");
       entry = _zipArchiveEntry_59;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.scalarDataPropertyValuesByteArray(e));
@@ -975,6 +1035,7 @@ public class OMLSpecificationTables {
       }
       ZipArchiveEntry _zipArchiveEntry_60 = new ZipArchiveEntry("AnnotationPropertyValues.json");
       entry = _zipArchiveEntry_60;
+      entry.setTime(0L);
       zos.putArchiveEntry(entry);
       try {
         zos.write(OMLSpecificationTables.annotationPropertyValuesByteArray(e));

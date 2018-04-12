@@ -318,6 +318,7 @@ class OMLSpecificationTables {
     var ZipArchiveEntry entry = null
     // TerminologyGraph
     entry = new ZipArchiveEntry("TerminologyGraphs.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(terminologyGraphsByteArray(e))
@@ -326,6 +327,7 @@ class OMLSpecificationTables {
     }
     // Bundle
     entry = new ZipArchiveEntry("Bundles.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(bundlesByteArray(e))
@@ -334,6 +336,7 @@ class OMLSpecificationTables {
     }
     // DescriptionBox
     entry = new ZipArchiveEntry("DescriptionBoxes.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(descriptionBoxesByteArray(e))
@@ -342,6 +345,7 @@ class OMLSpecificationTables {
     }
     // AnnotationProperty
     entry = new ZipArchiveEntry("AnnotationProperties.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(annotationPropertiesByteArray(e))
@@ -350,6 +354,7 @@ class OMLSpecificationTables {
     }
     // Aspect
     entry = new ZipArchiveEntry("Aspects.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(aspectsByteArray(e))
@@ -358,6 +363,7 @@ class OMLSpecificationTables {
     }
     // Concept
     entry = new ZipArchiveEntry("Concepts.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(conceptsByteArray(e))
@@ -366,6 +372,7 @@ class OMLSpecificationTables {
     }
     // Scalar
     entry = new ZipArchiveEntry("Scalars.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(scalarsByteArray(e))
@@ -374,6 +381,7 @@ class OMLSpecificationTables {
     }
     // Structure
     entry = new ZipArchiveEntry("Structures.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(structuresByteArray(e))
@@ -382,6 +390,7 @@ class OMLSpecificationTables {
     }
     // ConceptDesignationTerminologyAxiom
     entry = new ZipArchiveEntry("ConceptDesignationTerminologyAxioms.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(conceptDesignationTerminologyAxiomsByteArray(e))
@@ -390,6 +399,7 @@ class OMLSpecificationTables {
     }
     // TerminologyExtensionAxiom
     entry = new ZipArchiveEntry("TerminologyExtensionAxioms.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(terminologyExtensionAxiomsByteArray(e))
@@ -398,6 +408,7 @@ class OMLSpecificationTables {
     }
     // TerminologyNestingAxiom
     entry = new ZipArchiveEntry("TerminologyNestingAxioms.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(terminologyNestingAxiomsByteArray(e))
@@ -406,6 +417,7 @@ class OMLSpecificationTables {
     }
     // BundledTerminologyAxiom
     entry = new ZipArchiveEntry("BundledTerminologyAxioms.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(bundledTerminologyAxiomsByteArray(e))
@@ -414,6 +426,7 @@ class OMLSpecificationTables {
     }
     // DescriptionBoxExtendsClosedWorldDefinitions
     entry = new ZipArchiveEntry("DescriptionBoxExtendsClosedWorldDefinitions.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(descriptionBoxExtendsClosedWorldDefinitionsByteArray(e))
@@ -422,6 +435,7 @@ class OMLSpecificationTables {
     }
     // DescriptionBoxRefinement
     entry = new ZipArchiveEntry("DescriptionBoxRefinements.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(descriptionBoxRefinementsByteArray(e))
@@ -430,6 +444,7 @@ class OMLSpecificationTables {
     }
     // BinaryScalarRestriction
     entry = new ZipArchiveEntry("BinaryScalarRestrictions.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(binaryScalarRestrictionsByteArray(e))
@@ -438,6 +453,7 @@ class OMLSpecificationTables {
     }
     // IRIScalarRestriction
     entry = new ZipArchiveEntry("IRIScalarRestrictions.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(iriScalarRestrictionsByteArray(e))
@@ -446,6 +462,7 @@ class OMLSpecificationTables {
     }
     // NumericScalarRestriction
     entry = new ZipArchiveEntry("NumericScalarRestrictions.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(numericScalarRestrictionsByteArray(e))
@@ -454,6 +471,7 @@ class OMLSpecificationTables {
     }
     // PlainLiteralScalarRestriction
     entry = new ZipArchiveEntry("PlainLiteralScalarRestrictions.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(plainLiteralScalarRestrictionsByteArray(e))
@@ -462,6 +480,7 @@ class OMLSpecificationTables {
     }
     // ScalarOneOfRestriction
     entry = new ZipArchiveEntry("ScalarOneOfRestrictions.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(scalarOneOfRestrictionsByteArray(e))
@@ -470,6 +489,7 @@ class OMLSpecificationTables {
     }
     // ScalarOneOfLiteralAxiom
     entry = new ZipArchiveEntry("ScalarOneOfLiteralAxioms.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(scalarOneOfLiteralAxiomsByteArray(e))
@@ -478,6 +498,7 @@ class OMLSpecificationTables {
     }
     // StringScalarRestriction
     entry = new ZipArchiveEntry("StringScalarRestrictions.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(stringScalarRestrictionsByteArray(e))
@@ -486,6 +507,7 @@ class OMLSpecificationTables {
     }
     // SynonymScalarRestriction
     entry = new ZipArchiveEntry("SynonymScalarRestrictions.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(synonymScalarRestrictionsByteArray(e))
@@ -494,6 +516,7 @@ class OMLSpecificationTables {
     }
     // TimeScalarRestriction
     entry = new ZipArchiveEntry("TimeScalarRestrictions.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(timeScalarRestrictionsByteArray(e))
@@ -502,6 +525,7 @@ class OMLSpecificationTables {
     }
     // EntityScalarDataProperty
     entry = new ZipArchiveEntry("EntityScalarDataProperties.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(entityScalarDataPropertiesByteArray(e))
@@ -510,6 +534,7 @@ class OMLSpecificationTables {
     }
     // EntityStructuredDataProperty
     entry = new ZipArchiveEntry("EntityStructuredDataProperties.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(entityStructuredDataPropertiesByteArray(e))
@@ -518,6 +543,7 @@ class OMLSpecificationTables {
     }
     // ScalarDataProperty
     entry = new ZipArchiveEntry("ScalarDataProperties.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(scalarDataPropertiesByteArray(e))
@@ -526,6 +552,7 @@ class OMLSpecificationTables {
     }
     // StructuredDataProperty
     entry = new ZipArchiveEntry("StructuredDataProperties.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(structuredDataPropertiesByteArray(e))
@@ -534,6 +561,7 @@ class OMLSpecificationTables {
     }
     // ReifiedRelationship
     entry = new ZipArchiveEntry("ReifiedRelationships.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(reifiedRelationshipsByteArray(e))
@@ -542,6 +570,7 @@ class OMLSpecificationTables {
     }
     // ReifiedRelationshipRestriction
     entry = new ZipArchiveEntry("ReifiedRelationshipRestrictions.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(reifiedRelationshipRestrictionsByteArray(e))
@@ -550,6 +579,7 @@ class OMLSpecificationTables {
     }
     // ForwardProperty
     entry = new ZipArchiveEntry("ForwardProperties.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(forwardPropertiesByteArray(e))
@@ -558,6 +588,7 @@ class OMLSpecificationTables {
     }
     // InverseProperty
     entry = new ZipArchiveEntry("InverseProperties.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(inversePropertiesByteArray(e))
@@ -566,6 +597,7 @@ class OMLSpecificationTables {
     }
     // UnreifiedRelationship
     entry = new ZipArchiveEntry("UnreifiedRelationships.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(unreifiedRelationshipsByteArray(e))
@@ -574,6 +606,7 @@ class OMLSpecificationTables {
     }
     // ChainRule
     entry = new ZipArchiveEntry("ChainRules.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(chainRulesByteArray(e))
@@ -582,6 +615,7 @@ class OMLSpecificationTables {
     }
     // RuleBodySegment
     entry = new ZipArchiveEntry("RuleBodySegments.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(ruleBodySegmentsByteArray(e))
@@ -590,6 +624,7 @@ class OMLSpecificationTables {
     }
     // SegmentPredicate
     entry = new ZipArchiveEntry("SegmentPredicates.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(segmentPredicatesByteArray(e))
@@ -598,6 +633,7 @@ class OMLSpecificationTables {
     }
     // EntityExistentialRestrictionAxiom
     entry = new ZipArchiveEntry("EntityExistentialRestrictionAxioms.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(entityExistentialRestrictionAxiomsByteArray(e))
@@ -606,6 +642,7 @@ class OMLSpecificationTables {
     }
     // EntityUniversalRestrictionAxiom
     entry = new ZipArchiveEntry("EntityUniversalRestrictionAxioms.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(entityUniversalRestrictionAxiomsByteArray(e))
@@ -614,6 +651,7 @@ class OMLSpecificationTables {
     }
     // EntityScalarDataPropertyExistentialRestrictionAxiom
     entry = new ZipArchiveEntry("EntityScalarDataPropertyExistentialRestrictionAxioms.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(entityScalarDataPropertyExistentialRestrictionAxiomsByteArray(e))
@@ -622,6 +660,7 @@ class OMLSpecificationTables {
     }
     // EntityScalarDataPropertyParticularRestrictionAxiom
     entry = new ZipArchiveEntry("EntityScalarDataPropertyParticularRestrictionAxioms.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(entityScalarDataPropertyParticularRestrictionAxiomsByteArray(e))
@@ -630,6 +669,7 @@ class OMLSpecificationTables {
     }
     // EntityScalarDataPropertyUniversalRestrictionAxiom
     entry = new ZipArchiveEntry("EntityScalarDataPropertyUniversalRestrictionAxioms.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(entityScalarDataPropertyUniversalRestrictionAxiomsByteArray(e))
@@ -638,6 +678,7 @@ class OMLSpecificationTables {
     }
     // EntityStructuredDataPropertyParticularRestrictionAxiom
     entry = new ZipArchiveEntry("EntityStructuredDataPropertyParticularRestrictionAxioms.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(entityStructuredDataPropertyParticularRestrictionAxiomsByteArray(e))
@@ -646,6 +687,7 @@ class OMLSpecificationTables {
     }
     // RestrictionStructuredDataPropertyTuple
     entry = new ZipArchiveEntry("RestrictionStructuredDataPropertyTuples.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(restrictionStructuredDataPropertyTuplesByteArray(e))
@@ -654,6 +696,7 @@ class OMLSpecificationTables {
     }
     // RestrictionScalarDataPropertyValue
     entry = new ZipArchiveEntry("RestrictionScalarDataPropertyValues.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(restrictionScalarDataPropertyValuesByteArray(e))
@@ -662,6 +705,7 @@ class OMLSpecificationTables {
     }
     // AspectSpecializationAxiom
     entry = new ZipArchiveEntry("AspectSpecializationAxioms.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(aspectSpecializationAxiomsByteArray(e))
@@ -670,6 +714,7 @@ class OMLSpecificationTables {
     }
     // ConceptSpecializationAxiom
     entry = new ZipArchiveEntry("ConceptSpecializationAxioms.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(conceptSpecializationAxiomsByteArray(e))
@@ -678,6 +723,7 @@ class OMLSpecificationTables {
     }
     // ReifiedRelationshipSpecializationAxiom
     entry = new ZipArchiveEntry("ReifiedRelationshipSpecializationAxioms.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(reifiedRelationshipSpecializationAxiomsByteArray(e))
@@ -686,6 +732,7 @@ class OMLSpecificationTables {
     }
     // SubDataPropertyOfAxiom
     entry = new ZipArchiveEntry("SubDataPropertyOfAxioms.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(subDataPropertyOfAxiomsByteArray(e))
@@ -694,6 +741,7 @@ class OMLSpecificationTables {
     }
     // SubObjectPropertyOfAxiom
     entry = new ZipArchiveEntry("SubObjectPropertyOfAxioms.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(subObjectPropertyOfAxiomsByteArray(e))
@@ -702,6 +750,7 @@ class OMLSpecificationTables {
     }
     // RootConceptTaxonomyAxiom
     entry = new ZipArchiveEntry("RootConceptTaxonomyAxioms.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(rootConceptTaxonomyAxiomsByteArray(e))
@@ -710,6 +759,7 @@ class OMLSpecificationTables {
     }
     // AnonymousConceptUnionAxiom
     entry = new ZipArchiveEntry("AnonymousConceptUnionAxioms.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(anonymousConceptUnionAxiomsByteArray(e))
@@ -718,6 +768,7 @@ class OMLSpecificationTables {
     }
     // SpecificDisjointConceptAxiom
     entry = new ZipArchiveEntry("SpecificDisjointConceptAxioms.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(specificDisjointConceptAxiomsByteArray(e))
@@ -726,6 +777,7 @@ class OMLSpecificationTables {
     }
     // ConceptInstance
     entry = new ZipArchiveEntry("ConceptInstances.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(conceptInstancesByteArray(e))
@@ -734,6 +786,7 @@ class OMLSpecificationTables {
     }
     // ReifiedRelationshipInstance
     entry = new ZipArchiveEntry("ReifiedRelationshipInstances.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(reifiedRelationshipInstancesByteArray(e))
@@ -742,6 +795,7 @@ class OMLSpecificationTables {
     }
     // ReifiedRelationshipInstanceDomain
     entry = new ZipArchiveEntry("ReifiedRelationshipInstanceDomains.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(reifiedRelationshipInstanceDomainsByteArray(e))
@@ -750,6 +804,7 @@ class OMLSpecificationTables {
     }
     // ReifiedRelationshipInstanceRange
     entry = new ZipArchiveEntry("ReifiedRelationshipInstanceRanges.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(reifiedRelationshipInstanceRangesByteArray(e))
@@ -758,6 +813,7 @@ class OMLSpecificationTables {
     }
     // UnreifiedRelationshipInstanceTuple
     entry = new ZipArchiveEntry("UnreifiedRelationshipInstanceTuples.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(unreifiedRelationshipInstanceTuplesByteArray(e))
@@ -766,6 +822,7 @@ class OMLSpecificationTables {
     }
     // SingletonInstanceStructuredDataPropertyValue
     entry = new ZipArchiveEntry("SingletonInstanceStructuredDataPropertyValues.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(singletonInstanceStructuredDataPropertyValuesByteArray(e))
@@ -774,6 +831,7 @@ class OMLSpecificationTables {
     }
     // SingletonInstanceScalarDataPropertyValue
     entry = new ZipArchiveEntry("SingletonInstanceScalarDataPropertyValues.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(singletonInstanceScalarDataPropertyValuesByteArray(e))
@@ -782,6 +840,7 @@ class OMLSpecificationTables {
     }
     // StructuredDataPropertyTuple
     entry = new ZipArchiveEntry("StructuredDataPropertyTuples.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(structuredDataPropertyTuplesByteArray(e))
@@ -790,6 +849,7 @@ class OMLSpecificationTables {
     }
     // ScalarDataPropertyValue
     entry = new ZipArchiveEntry("ScalarDataPropertyValues.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(scalarDataPropertyValuesByteArray(e))
@@ -798,6 +858,7 @@ class OMLSpecificationTables {
     }
     // AnnotationPropertyValue
     entry = new ZipArchiveEntry("AnnotationPropertyValues.json")
+    entry.time = 0L
     zos.putArchiveEntry(entry)
     try {
       zos.write(annotationPropertyValuesByteArray(e))
