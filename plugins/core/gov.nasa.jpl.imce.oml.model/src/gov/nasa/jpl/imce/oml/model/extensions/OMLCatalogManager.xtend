@@ -8,7 +8,6 @@ class OMLCatalogManager extends CatalogManager {
 		val catalog = new OMLCatalog()
 		catalog.setCatalogManager(this)
 		catalog.setupReaders()
-		catalog.loadSystemCatalogs()
 		return catalog
 	}
 
