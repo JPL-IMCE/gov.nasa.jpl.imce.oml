@@ -20,6 +20,8 @@ gov.nasa.jpl.imce.oml.tycho 0.9.5 is an API-breaking change from 0.9.4
 
   Switched from Sirius 5.0.1 to 5.1.1 (Xtext is still at 2.12)
 
+### [#280 OMLCatalogManager should not load system catalogs.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/280)
+
 ## Summary of changes from 0.9.4
 
 ### Loading OML & OMLZip Resources
