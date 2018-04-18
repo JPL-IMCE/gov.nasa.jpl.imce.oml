@@ -22,6 +22,8 @@ gov.nasa.jpl.imce.oml.tycho 0.9.5 is an API-breaking change from 0.9.4
 
 ### [#280 OMLCatalogManager should not load system catalogs.](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/280)
 
+### [#282 Incomplete loading of heterogeneous OML and OMLZip](https://github.com/JPL-IMCE/gov.nasa.jpl.imce.oml/issues/282)
+
 ## Summary of changes from 0.9.4
 
 ### Loading OML & OMLZip Resources
