@@ -7653,6 +7653,7 @@ public class OMLSpecificationTables {
             Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
             Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
             this.logicalElements.put(_uuid_1, _pair_1);
+            this.queueModule(((ConceptDesignationTerminologyAxiom)e).target());
           }
         }
         if (!_matched_1) {
@@ -7665,6 +7666,7 @@ public class OMLSpecificationTables {
             Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
             Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
             this.logicalElements.put(_uuid_1, _pair_1);
+            this.queueModule(((TerminologyExtensionAxiom)e).target());
           }
         }
         if (!_matched_1) {
@@ -7677,6 +7679,7 @@ public class OMLSpecificationTables {
             Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
             Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
             this.logicalElements.put(_uuid_1, _pair_1);
+            this.queueModule(((TerminologyNestingAxiom)e).target());
           }
         }
         if (!_matched_1) {
@@ -7689,6 +7692,7 @@ public class OMLSpecificationTables {
             Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
             Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
             this.logicalElements.put(_uuid_1, _pair_1);
+            this.queueModule(((BundledTerminologyAxiom)e).target());
           }
         }
         if (!_matched_1) {
@@ -7701,6 +7705,7 @@ public class OMLSpecificationTables {
             Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
             Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
             this.logicalElements.put(_uuid_1, _pair_1);
+            this.queueModule(((DescriptionBoxExtendsClosedWorldDefinitions)e).targetModule());
           }
         }
         if (!_matched_1) {
@@ -7713,6 +7718,7 @@ public class OMLSpecificationTables {
             Map<String, String> _emptyMap_2 = Collections.<String, String>emptyMap();
             Pair<LogicalElement, Map<String, String>> _pair_1 = new Pair<LogicalElement, Map<String, String>>(((LogicalElement)e), _emptyMap_2);
             this.logicalElements.put(_uuid_1, _pair_1);
+            this.queueModule(((DescriptionBoxRefinement)e).targetModule());
           }
         }
         if (!_matched_1) {
