@@ -6128,31 +6128,37 @@ class OMLSpecificationTables {
   	        val pair = new Pair<ConceptDesignationTerminologyAxiom, Map<String,String>>(e, Collections.emptyMap)
   	        conceptDesignationTerminologyAxioms.put(e.uuid(), pair)
   	        logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	        queueModule(e.target)
   	      }
   	      TerminologyExtensionAxiom: {
   	        val pair = new Pair<TerminologyExtensionAxiom, Map<String,String>>(e, Collections.emptyMap)
   	        terminologyExtensionAxioms.put(e.uuid(), pair)
   	        logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	        queueModule(e.target)
   	      }
   	      TerminologyNestingAxiom: {
   	        val pair = new Pair<TerminologyNestingAxiom, Map<String,String>>(e, Collections.emptyMap)
   	        terminologyNestingAxioms.put(e.uuid(), pair)
   	        logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	        queueModule(e.target)
   	      }
   	      BundledTerminologyAxiom: {
   	        val pair = new Pair<BundledTerminologyAxiom, Map<String,String>>(e, Collections.emptyMap)
   	        bundledTerminologyAxioms.put(e.uuid(), pair)
   	        logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	        queueModule(e.target)
   	      }
   	      DescriptionBoxExtendsClosedWorldDefinitions: {
   	        val pair = new Pair<DescriptionBoxExtendsClosedWorldDefinitions, Map<String,String>>(e, Collections.emptyMap)
   	        descriptionBoxExtendsClosedWorldDefinitions.put(e.uuid(), pair)
   	        logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	        queueModule(e.targetModule)
   	      }
   	      DescriptionBoxRefinement: {
   	        val pair = new Pair<DescriptionBoxRefinement, Map<String,String>>(e, Collections.emptyMap)
   	        descriptionBoxRefinements.put(e.uuid(), pair)
   	        logicalElements.put(e.uuid(), new Pair<LogicalElement, Map<String,String>>(e, Collections.emptyMap))
+  	        queueModule(e.targetModule)
   	      }
   	      BinaryScalarRestriction: {
   	        val pair = new Pair<BinaryScalarRestriction, Map<String,String>>(e, Collections.emptyMap)
