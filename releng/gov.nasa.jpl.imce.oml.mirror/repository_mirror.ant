@@ -1,0 +1,12 @@
+<project name="Create Mirror" default="create-mirror" basedir=".">
+	<property name="target.dir" location="${user.home}/p2" />
+	<target name="create-mirror">
+	    <p2.mirror destination="${target.dir}/releases/photon">
+	    	<source>
+				<repository location="http://download.eclipse.org/releases/photon"/>
+			</source>
+		    <slicingOptions followStrict="false" platformFilter="macosx,cocoa,x86_64"/>
+		    <iu id="org.eclipse.platform.sdk" />
+	    </p2.mirror>
+	</target>
+</project>

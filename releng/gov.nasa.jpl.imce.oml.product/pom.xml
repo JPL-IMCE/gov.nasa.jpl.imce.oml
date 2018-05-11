@@ -3,15 +3,14 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>gov.nasa.jpl.imce.oml</groupId>
 	<artifactId>gov.nasa.jpl.imce.oml.product</artifactId>
-	<version>0.9.0-SNAPSHOT</version>
+	<version>0.9.5.3</version>
 	<packaging>eclipse-repository</packaging>
-	
 	<parent>
 		<groupId>gov.nasa.jpl.imce.oml</groupId>
-		<artifactId>gov.nasa.jpl.imce.oml.releng</artifactId>
-		<version>0.9.0-SNAPSHOT</version>
+		<artifactId>gov.nasa.jpl.imce.oml.parent</artifactId>
+		<version>0.9.5.3</version>
+		<relativePath>../gov.nasa.jpl.imce.oml.parent</relativePath>
 	</parent>
-
 	<build>
 		<plugins>
 			<plugin>
@@ -34,7 +33,7 @@
 					</formats>
 					<products>
 						<product>
-							<id>gov.nasa.jpl.imce.oml.rcp.product</id>
+							<id>gov.nasa.jpl.imce.oml.product</id>
 							<rootFolders>
 								<macosx>OML Workbench.app</macosx>
 							</rootFolders>

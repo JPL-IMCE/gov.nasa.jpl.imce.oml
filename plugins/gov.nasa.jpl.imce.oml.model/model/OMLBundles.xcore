@@ -1,0 +1,329 @@
+@Ecore(
+	nsPrefix="omlb", 
+	nsURI="http://imce.jpl.nasa.gov/oml/bundles"
+)
+@GenModel(
+	copyrightText="\nCopyright 2017 California Institute of Technology (\"Caltech\").\nU.S. Government sponsorship acknowledged.\n\nLicensed under the Apache License, Version 2.0 (the \"License\");\nyou may not use this file except in compliance with the License.\nYou may obtain a copy of the License at\n\n     http://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software\ndistributed under the License is distributed on an \"AS IS\" BASIS,\nWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and\nlimitations under the License.\n",
+	modelDirectory="/gov.nasa.jpl.imce.oml.model/src-gen/",
+	editDirectory="/gov.nasa.jpl.imce.oml.model.edit/src-gen/",
+	editPluginClass="gov.nasa.jpl.imce.oml.model.edit.provider.OMLEditPlugin"
+)
+package gov.nasa.jpl.imce.oml.model.bundles
+/**
+ * Copyright 2017 California Institute of Technology (\"Caltech\").
+ * U.S. Government sponsorship acknowledged.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the \"License\")
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * 		http://www.apache.org/licenses/LICENSE-2.0
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an \"AS IS\" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ */
+ 
+import org.eclipse.emf.common.util.BasicEList
+import org.eclipse.emf.common.util.ECollections
+
+import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions
+
+import gov.nasa.jpl.imce.oml.model.common.Collection
+import gov.nasa.jpl.imce.oml.model.common.CopyConstructor
+import gov.nasa.jpl.imce.oml.model.common.DerivedUUID
+import gov.nasa.jpl.imce.oml.model.common.ElementCrossReferenceTuple
+import gov.nasa.jpl.imce.oml.model.common.Factory
+import gov.nasa.jpl.imce.oml.model.common.FunctionalInterface
+import gov.nasa.jpl.imce.oml.model.common.Glossary
+import gov.nasa.jpl.imce.oml.model.common.ImplicitExtent
+import gov.nasa.jpl.imce.oml.model.common.IRIReference
+import gov.nasa.jpl.imce.oml.model.common.LocalName
+import gov.nasa.jpl.imce.oml.model.common.LogicalElement
+import gov.nasa.jpl.imce.oml.model.common.Module
+import gov.nasa.jpl.imce.oml.model.common.ModuleEdge
+import gov.nasa.jpl.imce.oml.model.common.ModuleElement
+import gov.nasa.jpl.imce.oml.model.common.NamespaceUUID
+import gov.nasa.jpl.imce.oml.model.common.NotFunctionalAPI
+import gov.nasa.jpl.imce.oml.model.common.NotSchema
+import gov.nasa.jpl.imce.oml.model.common.Override
+import gov.nasa.jpl.imce.oml.model.common.OverrideVal
+import gov.nasa.jpl.imce.oml.model.common.Scala
+import gov.nasa.jpl.imce.oml.model.common.UUID
+import gov.nasa.jpl.imce.oml.model.terminologies.Concept
+import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox
+/*
+ * An OML Bundle is an OML TerminologyBox that is 
+ * an acyclic logical aggregate of other OML TerminologyBox(es)
+ * and that logically assert OML TerminologyBundleStatement(s).
+ */
+@Glossary
+class Bundle extends TerminologyBox {
+		
+	/*
+	 * The BundledTerminologyAxioms asserted in this Bundle
+	 */
+	@NotSchema
+	@Collection(kind="Set")
+	contains TerminologyBundleAxiom[] bundleAxioms opposite bundle
+	
+	/*
+	 * The TerminologyBundleStatements asserted in this Bundle
+	 */
+	@NotSchema
+	@Collection(kind="Set")
+	contains TerminologyBundleStatement[] bundleStatements opposite bundle
+	
+	@Scala(code="extent.lookupBoxAxioms(this) ++ extent.lookupBundleAxioms(this)")
+	@Collection(kind="Set")
+	@ImplicitExtent
+	@NotSchema
+	@Override
+	op ModuleEdge[] moduleEdges() {
+		val me = new BasicEList<ModuleEdge>()
+		me.addAll(boxAxioms)
+		me.addAll(bundleAxioms)
+		me
+	}
+	
+	@Scala(code="extent.lookupBundleStatements(this) ++ extent.lookupBoxStatements(this)")
+	@Collection(kind="Set")
+	@NotSchema
+	@ImplicitExtent
+	op ModuleElement[] moduleElements() {
+		val mes = new BasicEList<ModuleElement>()
+		mes.addAll(boxStatements)
+		mes.addAll(bundleStatements)
+		mes
+	}
+}
+
+/*
+ * An OML TerminologyBundleStatement is a logical axiom about an OML TerminologyThing
+ * in an OML Bundle.
+ */
+@Glossary
+abstract class TerminologyBundleStatement extends ModuleElement {
+	
+	@CopyConstructor
+	container Bundle[1] bundle opposite bundleStatements
+	
+	@Scala(code="extent.bundleOfTerminologyBundleStatement.get(this)")
+	@NotSchema
+	@ImplicitExtent
+	op Module[?] moduleContext() { bundle }
+}
+
+/*
+ * An OML TerminologyBundleAxiom is a TerminologyAxiom that asserts a logical statement in an OML Bundle.
+ */
+@Glossary
+abstract class TerminologyBundleAxiom extends TerminologyAxiom {
+
+	@CopyConstructor
+	container Bundle[1] bundle opposite bundleAxioms
+
+}
+
+/*
+ * An OML ConceptTreeDisjunction represents the root & non-leaf nodes of a concept taxonomy:
+ * - Root node is a RootConceptTaxonomyAxiom.
+ * - Non-leaf nodes are AnonymousConceptTaxonomyAxioms.
+ */
+@Glossary
+abstract class ConceptTreeDisjunction extends ElementCrossReferenceTuple {
+	
+	@Collection(kind="Set")
+	contains DisjointUnionOfConceptsAxiom[] disjunctions opposite disjointTaxonomyParent
+	
+	@ImplicitExtent
+	@NotSchema
+	op Bundle[?] bundleContainer()
+	
+	@Collection(kind="Set")
+	@NotSchema
+	@ImplicitExtent
+	op LogicalElement[] allNestedElements()
+}
+
+/*
+ * An OML DisjointUnionOfConceptsAxiom(s) specifies the logical union of non-leaf & leaf nodes in a concept taxonomy tree:
+ * - Each non-leaf node is an OML AnonymousConceptUnionAxiom.
+ * - Each leaf nodes is an OML SpecificDisjointConceptAxiom.
+ */
+@Glossary
+abstract class DisjointUnionOfConceptsAxiom extends ElementCrossReferenceTuple {
+	
+	/*
+	 * The parent of this node in a disjoint concept taxonomy tree.
+	 */
+	@Factory
+	container ConceptTreeDisjunction[1] disjointTaxonomyParent opposite disjunctions
+	
+	@Scala(code="extent.conceptTreeDisjunctionOfDisjointUnionOfConceptsAxiom.get(this)")
+	@ImplicitExtent
+	@NotSchema
+	op ConceptTreeDisjunction[?] conceptTreeDisjunctionParent() { disjointTaxonomyParent }
+	
+	@Scala(code="conceptTreeDisjunctionParent().flatMap(_.bundleContainer())")
+	@NotSchema
+	@ImplicitExtent
+	op Module[?] moduleContext() { disjointTaxonomyParent?.bundleContainer }
+	
+	@Collection(kind="Set")
+	@NotSchema
+	@ImplicitExtent
+	op LogicalElement[] allNestedElements()
+}
+
+/*
+ * An OML SpecificDisjointConceptAxiom specifies a leaf in a concept taxonomy tree.
+ */
+@Glossary
+@DerivedUUID
+class SpecificDisjointConceptAxiom extends DisjointUnionOfConceptsAxiom {
+	
+	/*
+	 * A Concept that is a disjoint leaf in a taxonomy tree.
+	 */
+	refers Concept[1] disjointLeaf
+	
+	@FunctionalInterface
+	@OverrideVal
+	op UUID[1] uuid() {
+		OMLExtensions.derivedUUID(
+		"SpecificDisjointConceptAxiom",
+		"disjointTaxonomyParent" -> disjointTaxonomyParent?.uuid()?.toString,
+		"disjointLeaf" -> disjointLeaf?.uuid()?.toString
+		)?.toString
+	}
+	
+	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.LogicalElement]")
+	@Collection(kind="Set")
+	@NotSchema
+	@ImplicitExtent
+	op LogicalElement[] allNestedElements() { ECollections.emptyEList }
+}
+
+/*
+ * An OML AnonymousConceptUnionAxiom specifies an anonymous logical union of DisjointUnionOfEntityAxioms in a concept taxonomy tree.
+ * Although it is semantically anonymous, it is syntactically identified with name whose 
+ * only purpose is for generating the axiom's namespace UUID.
+ */
+@Glossary
+@NamespaceUUID(namespace="disjointTaxonomyParent", factors="name")
+class AnonymousConceptUnionAxiom extends DisjointUnionOfConceptsAxiom, ConceptTreeDisjunction {
+	
+	LocalName[1] name
+	
+	@FunctionalInterface
+	@OverrideVal
+	op UUID[1] uuid() {
+		OMLExtensions.namespaceUUID(disjointTaxonomyParent?.uuid()?.toString, "name" -> getName?.toString)?.toString
+	}
+	
+	@Scala(code="conceptTreeDisjunctionParent().flatMap(_.bundleContainer())")
+	@NotSchema
+	@ImplicitExtent
+	@Override
+	op Bundle[?] bundleContainer() { disjointTaxonomyParent?.bundleContainer() }
+	
+	@Scala(code="scala.collection.immutable.Set.empty[resolver.api.ElementCrossReferenceTuple]")
+	@Collection(kind="Set")
+	@NotSchema
+	@ImplicitExtent
+	op LogicalElement[] allNestedElements() {
+		val nes = new BasicEList<LogicalElement>()
+		nes.addAll(disjunctions)
+		disjunctions.forEach[d| nes.addAll(d.allNestedElements) ]
+		nes
+	}
+	
+}
+
+/*
+ * An OML RootConceptTaxonomyAxiom asserts that, in the scope of a Bundle, a particular OML Concept
+ * is the root of a taxonomy of concept specializations.
+ */
+@Glossary
+@DerivedUUID
+class RootConceptTaxonomyAxiom extends TerminologyBundleStatement, ConceptTreeDisjunction {
+	
+	@FunctionalInterface
+	@OverrideVal
+	op UUID[1] uuid() {
+		OMLExtensions.derivedUUID(
+		"RootConceptTaxonomyAxiom",
+		"bundle" -> bundle?.uuid()?.toString,
+		"root" -> root?.uuid()?.toString
+		)?.toString
+	}
+	
+	/*
+	 * The Concept that is at the root of a taxonomy of disjunctions.
+	 */
+	refers Concept[1] root
+	
+	@Scala(code="extent.bundleOfTerminologyBundleStatement.get(this)")
+	@NotSchema
+	@ImplicitExtent
+	@Override
+	op Bundle[?] bundleContainer() { bundle }
+	
+	@Scala(code="extent.lookupDisjunctions(this).flatMap{ d => scala.collection.immutable.Set.empty[resolver.api.LogicalElement] + d ++ d.allNestedElements() }")
+	@Collection(kind="Set")
+	@NotSchema
+	@ImplicitExtent
+	op LogicalElement[] allNestedElements() {
+		val nes = new BasicEList<LogicalElement>()
+		nes.addAll(disjunctions)
+		disjunctions.forEach[d| nes.addAll(d.allNestedElements)]
+		nes
+	}
+	
+}
+
+/*
+ * An OML BundledTerminologyAxiom identifies an OML TerminologyBox that an OML Bundle aggregates.
+ * An OML BundledTerminologyAxiom allows an OML Bundle to
+ * make references (via OML TerminologyStatement(s)) to OML TerminologyThing(s)
+ * within the transitive closure of a bundledTerminology.
+ */
+@Glossary
+@DerivedUUID
+class BundledTerminologyAxiom extends TerminologyBundleAxiom {
+
+	@IRIReference
+	refers TerminologyBox[1] bundledTerminology
+	
+	/*
+	 * The bundle is the source
+	 */
+	@Scala(code="extent.bundleOfTerminologyBundleAxiom.get(this)")
+	@ImplicitExtent
+	@NotSchema
+	@Override
+	op TerminologyBox[?] source() { bundle }
+	
+	/*
+	 * The bundledTerminology is the target
+	 */
+	@IRIReference
+	@ImplicitExtent
+	@NotSchema
+	@Override
+	op TerminologyBox[1] target() { bundledTerminology }
+	
+	@NotFunctionalAPI
+	@NotSchema
+	op UUID[1] uuid() {
+		OMLExtensions.derivedUUID(
+		"BundledTerminologyAxiom",
+		"bundle" -> bundle?.uuid()?.toString,
+		"bundledTerminology" -> bundledTerminology?.uuid()?.toString
+		)?.toString
+	}
+}
