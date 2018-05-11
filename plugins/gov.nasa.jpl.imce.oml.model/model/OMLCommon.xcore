@@ -1,0 +1,541 @@
+@Ecore(
+	nsPrefix="omlc", 
+	nsURI="http://imce.jpl.nasa.gov/oml/common"
+)
+@GenModel(
+	copyrightText="\nCopyright 2017 California Institute of Technology (\"Caltech\").\nU.S. Government sponsorship acknowledged.\n\nLicensed under the Apache License, Version 2.0 (the \"License\");\nyou may not use this file except in compliance with the License.\nYou may obtain a copy of the License at\n\n     http://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software\ndistributed under the License is distributed on an \"AS IS\" BASIS,\nWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and\nlimitations under the License.\n",
+	modelDirectory="/gov.nasa.jpl.imce.oml.model/src-gen/",
+	editDirectory="/gov.nasa.jpl.imce.oml.model.edit/src-gen/",
+	editPluginClass="gov.nasa.jpl.imce.oml.model.edit.provider.OMLEditPlugin"
+)
+package gov.nasa.jpl.imce.oml.model.common
+/**
+ * Copyright 2017 California Institute of Technology (\"Caltech\").
+ * U.S. Government sponsorship acknowledged.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the \"License\")
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * 		http://www.apache.org/licenses/LICENSE-2.0
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an \"AS IS\" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ */
+
+import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions
+
+/* 
+ * If present, the value of the 'kind' key specifies a Scala immutable collection.
+ * Recognized values are 'Map' (the key type is specified in the 'key' value) and 'Set'
+ */
+annotation "http://imce.jpl.nasa.gov/oml/Collection" as Collection
+
+/*
+ * If present, indicates that the metaclass is for the resolver API only.
+ */
+annotation "http://imce.jpl.nasa.gov/oml/ResolverAPI" as ResolverAPI
+
+/* 
+ * If present, indicates that this feature overrides another feature in a parent.
+ * Normally, this information should be accessible from the EMF API; however,
+ * it is not obvious how to get it.
+ */
+annotation "http://imce.jpl.nasa.gov/oml/Override" as Override
+
+/* 
+ * If present, indicates that this feature overrides another feature in a parent.
+ * Normally, this information should be accessible from the EMF API; however,
+ * it is not obvious how to get it.
+ */
+annotation "http://imce.jpl.nasa.gov/oml/OverrideVal" as OverrideVal
+
+/*
+ * If present, disables including the feature in the resolver API & resolver Implementation
+ * This is used for:
+ * - classes that are intended for the EMF API but not the functional resolver API
+ * - operations that will generate an EMF API operation but have no sensible equivalent in the functional resolver API
+ * - structural features with a corresponding read-only immutable query operation
+ *   (the structural feature is not part of the functional API; the immutable query operation is)
+ * - inverse container features
+ */
+annotation "http://imce.jpl.nasa.gov/oml/NotFunctionalAPI" as NotFunctionalAPI
+
+annotation "http://imce.jpl.nasa.gov/oml/FunctionalInterface" as FunctionalInterface
+
+/*
+ * If present, disables including the feature in the normalized schema tables API
+ */
+annotation "http://imce.jpl.nasa.gov/oml/NotSchema" as NotSchema
+
+/*
+ * If present, indicates that a Class represents a value in some other table
+ */
+annotation "http://imce.jpl.nasa.gov/oml/ValueTable" as ValueTable
+
+/*
+ * Use @Scala(code="...") when the XCore operation body
+ * is an Xbase XMemberFeatureCall because the XCore API
+ * assumes that the generated code is for Java so it internally
+ * converts feature calls into Java query operation calls.
+ */
+annotation "http://imce.jpl.nasa.gov/oml/Scala" as Scala
+
+/*
+ * Use on structural features to specify whether it participates in ordering criteria for instances of the class.
+ */
+annotation "http://imce.jpl.nasa.gov/oml/IsOrderingKey" as IsOrderingKey
+
+/*
+ * Use on a structural feature to specify that the OMLResolvedFactory needs to include a "copy" constructor
+ * to clone an instance of the feature's class replacing the value of the annotated feature. 
+ */
+annotation "http://imce.jpl.nasa.gov/oml/CopyConstructor" as CopyConstructor
+
+/*
+ * If present, indicates that a glossary entry must be generated for the documentation.
+ */
+annotation "http://imce.jpl.nasa.gov/oml/Glossary" as Glossary
+
+annotation "http://imce.jpl.nasa.gov/oml/ExtentContainer" as ExtentContainer
+
+annotation "http://imce.jpl.nasa.gov/oml/ExtentManaged" as ExtentManaged
+
+annotation "http://imce.jpl.nasa.gov/oml/Factory" as Factory
+
+annotation "http://imce.jpl.nasa.gov/oml/ImplicitExtent" as ImplicitExtent
+
+annotation "http://imce.jpl.nasa.gov/oml/NamespaceUUID" as NamespaceUUID
+
+annotation "http://imce.jpl.nasa.gov/oml/DerivedUUID" as DerivedUUID
+
+annotation "http://imce.jpl.nasa.gov/oml/IRIReference" as IRIReference
+
+/*
+ * An IRI based on RFC 3987
+ */
+type IRI wraps String
+/*
+ * A local name of an IRI
+ */
+type LocalName wraps String
+/*
+ * An RFC-4122 Version 5 UUID (SHA-1 hash & namespace) 
+ */
+type UUID wraps String
+
+type AbbrevIRI wraps String
+
+type NamespacePrefix wraps String
+
+type PositiveIntegerLiteral wraps gov.nasa.jpl.imce.oml.model.datatypes.PositiveIntegerValue
+
+type LiteralPattern wraps gov.nasa.jpl.imce.oml.model.datatypes.PatternValue
+
+abstract class LiteralValue {
+	op String[1] value()
+}
+
+class LiteralBoolean extends LiteralValue {
+	boolean bool
+	
+	op String[1] value() { bool.toString }
+}
+
+class LiteralDateTime extends LiteralValue {
+	DateTimeDataType[1] dateTime
+	
+	op String[1] value() { dateTime.toString }
+}
+
+abstract class LiteralString extends LiteralValue {
+	op StringDataType[1] stringValue()
+	
+	op String[1] value() { stringValue().toString }
+}
+
+class LiteralQuotedString extends LiteralString {
+	QuotedStringDataType[1] string
+	
+	op StringDataType[1] stringValue() { string }
+}
+
+class LiteralRawString extends LiteralString {
+	RawStringDataType[1] string
+	
+	op StringDataType[1] stringValue() { string }
+}
+
+
+class LiteralUUID extends LiteralValue {
+	UUIDDataType[1] uuid
+	
+	op String[1] value() { uuid.toString }
+}
+class LiteralURI extends LiteralValue {
+	URIDataType[1] uri
+	
+	op String[1] value() { uri.toString }
+}
+
+abstract class LiteralNumber extends LiteralValue {}
+
+type RealDataType wraps gov.nasa.jpl.imce.oml.model.datatypes.RealValue
+
+class LiteralReal extends LiteralNumber {
+	RealDataType[1] real
+	
+	op String[1] value() { real.toString }
+}
+
+type RationalDataType wraps gov.nasa.jpl.imce.oml.model.datatypes.RationalValue
+
+class LiteralRational extends LiteralNumber {
+	RationalDataType[1] rational
+	
+	op String[1] value() { rational.toString }
+}
+
+type FloatDataType wraps gov.nasa.jpl.imce.oml.model.datatypes.FloatValue
+
+class LiteralFloat extends LiteralNumber {
+	FloatDataType[1] ^float
+	
+	op String[1] value() { float.toString }
+}
+
+type AbstractDecimalDataType wraps gov.nasa.jpl.imce.oml.model.datatypes.AbstractDecimalValue
+
+type DecimalDataType wraps gov.nasa.jpl.imce.oml.model.datatypes.DecimalValue
+
+class LiteralDecimal extends LiteralNumber {
+	AbstractDecimalDataType[1] decimal
+	
+	op String[1] value() { decimal.toString }
+}
+
+type DateTimeDataType wraps gov.nasa.jpl.imce.oml.model.datatypes.DateTimeValue
+
+type LanguageTagDataType wraps gov.nasa.jpl.imce.oml.model.datatypes.LanguageTagValue
+
+type StringDataType wraps gov.nasa.jpl.imce.oml.model.datatypes.StringValue
+
+type RawStringDataType wraps gov.nasa.jpl.imce.oml.model.datatypes.RawStringValue
+
+type QuotedStringDataType wraps gov.nasa.jpl.imce.oml.model.datatypes.QuotedStringValue
+
+type UUIDDataType wraps gov.nasa.jpl.imce.oml.model.datatypes.UUIDValue 
+
+type URIDataType wraps gov.nasa.jpl.imce.oml.model.datatypes.URIValue
+
+/*
+ * OML CrossReferencabilityKind categorizes OML things that have a globally unique Version 5 UUID
+ * according to whether the UUID can be used as a cross reference outside of containment purposes.
+ * 
+ * From a database perspective, the UUID is a single primary key of an OML CrossReferencabilityKind.
+ */
+@Glossary
+abstract class CrossReferencabilityKind {
+	
+	@ImplicitExtent
+	@IsOrderingKey
+	derived readonly UUID[1] uuid get { uuid() }
+	
+	@NotFunctionalAPI
+	@NotSchema
+	op UUID[1] uuid()
+}
+
+/*
+ * OML CrossReferencableKind is the category of OML things
+ * that can be cross-referenced outside of containment purposes.
+ *
+ * From a logical perspective, 
+ * The particular representation and serialization of a cross reference
+ * depends on the API used or the serialization format respectively.
+ */
+@Glossary
+abstract class CrossReferencableKind extends CrossReferencabilityKind {}
+
+/*
+ * OML CrossReferencableKind is the category of OML things
+ * that cannot be cross-referenced except for containment purposes.
+ */
+@Glossary
+abstract class NonCrossReferencableKind extends CrossReferencabilityKind {}
+
+/*
+ * An OML IdentityKind categorizes OML CrossReferencabilityKind according
+ * to which kind of identity criteria are available for computing
+ * the Version 5 UUID namespace hash.
+ */
+@Glossary
+abstract class IdentityKind extends CrossReferencabilityKind {}
+
+/*
+ * An OML IntrinsicIdentityKind is an abstraction for a kind of OML IdentityKind
+ * where identity stems from a single intrinsic criteria: a globally unique IRI.
+ * 
+ * An OML IntrinsicIdentityKind is also an OML CrossReferencableKind
+ * where the cross reference is logically the primary key uuid.
+ */
+abstract class IntrinsicIdentityKind extends IdentityKind, CrossReferencableKind {
+	
+	@ImplicitExtent
+	@NotSchema
+	op IRI[?] iri()
+	
+}
+
+/*
+ * An OML ExtrinsicIdentityKind is an abstraction for a kind of OML IdentityKind
+ * where identity stems from a combination of multiple extrinsic criteria, 
+ * including a tuple of at least two cross references to other OML CrossReferencableKind(s).
+ */
+abstract class ExtrinsicIdentityKind extends IdentityKind {}
+
+/*
+ * An OML ElementCrossReferenceTuple is an abstraction for a kind of OML Element
+ * categorized as a OML CrossReferencableKind and OML ExtrinsicIdentityKind
+ * where the extrinsic identity criteria is precisely 
+ * a tuple of at least 2 cross references to other OML IdentityKind(s)
+ * and nothing else.
+ */
+@Glossary
+abstract class ElementCrossReferenceTuple extends ExtrinsicIdentityKind, CrossReferencableKind, LogicalElement {}
+
+/*
+ * An OML ValueCrossReferenceTuple is an abstraction for a kind of OML ExtrinsicIdentityKind
+ * where the extrinsic identity criteria is precisely the combination
+ * of a tuple of at least 2 cross references to other OML CrossReferencableKind(s),
+ * at least one scalar value typed by an OML DataRange and nothing else.
+ * Note that the identity of an OML DataRange value is itself.
+ */
+@Glossary
+abstract class ValueCrossReferenceTuple extends ExtrinsicIdentityKind, NonCrossReferencableKind {}
+
+/*
+ * An OML Element is a logical abstraction
+ * for everything involved in OML that
+ * is globally identified by a version 5 namespace UUID deterministically 
+ * derived from essential information about the OML Element.
+ * An OML Element can be the subject of multiple OML AnnotationPropertyValues;
+ * however, there can be at most one OML AnnotationPropertyValue for a given
+ * pair of OML Element and OML AnnotationProperty.
+ */
+@Glossary
+abstract class LogicalElement extends IdentityKind {
+	
+	@Collection(kind="Seq")
+	@NotSchema
+	@ImplicitExtent
+	contains AnnotationPropertyValue[] annotations opposite subject
+	
+	@NotSchema
+	@ImplicitExtent
+	op Module[?] moduleContext()
+}
+
+/*
+ * 
+ */
+@Glossary
+abstract class NonLogicalElement extends IdentityKind {}
+
+/*
+ * An OML Resource is an abstraction for 
+ * a kind of an OML Element that has intrinsic identity
+ * based on a single identity criteria: an IRI.
+ * An OML Resource has a name; the relationship between 
+ * the name and IRI depends on the kind of OML Resource.
+ */
+@Glossary
+abstract class Resource extends LogicalElement, IntrinsicIdentityKind {
+	
+	@NotSchema
+	op LocalName[1] name()
+	
+	@ImplicitExtent
+	@NotSchema
+	op String[?] abbrevIRI()
+}
+
+/*
+ * An OML ModuleElement is an OML Element defined in the scope of an OML Module
+ */
+@Glossary
+abstract class ModuleElement extends LogicalElement {
+	
+	@Collection(kind="Set")
+	@NotSchema
+	@ImplicitExtent
+	op LogicalElement[] allNestedElements()
+}
+
+/*
+ * An OML ModuleEdge is a binary, directed relationship from one OML Module to another
+ */
+@Glossary
+abstract class ModuleEdge extends ElementCrossReferenceTuple {
+	
+	@NotSchema
+	@ImplicitExtent
+	op Module[?] sourceModule()
+	
+	@IRIReference
+	@NotSchema
+	@ImplicitExtent
+	op Module[1] targetModule()
+	
+	@NotSchema
+	@ImplicitExtent
+	op Module[?] moduleContext() { sourceModule }
+}
+
+/*
+ * An OML AnnotationProperty maps to a functional restriction of an [OWL2 AnnotationProperty].
+ * Like OWL2, an OML AnnotationProperty is a non-logical property for associating some information
+ * to an OML Element; unlike OWL2, an OML AnnotationProperty is functional in the sense
+ * that an OML Element can have at most one OML AnnotationPropertyValue for a given OML AnnotationProperty.
+ */
+@Glossary
+@NamespaceUUID(namespace="iri", factors="")
+class AnnotationProperty extends IntrinsicIdentityKind, NonLogicalElement {
+
+	@Factory
+	container Module[1] module opposite annotationProperties
+	
+	@Scala(code="extent.moduleOfAnnotationProperty.get(this)")
+	@NotSchema
+	@ImplicitExtent
+	op Module[?] moduleContext() { module }
+	
+	@Scala(code="com.fasterxml.uuid.Generators.nameBasedGenerator(com.fasterxml.uuid.impl.NameBasedGenerator.NAMESPACE_URL).generate(iri)")
+	@NotSchema
+	@OverrideVal
+	op UUID[1] uuid() {
+		OMLExtensions.namespaceUUID(iri())?.toString
+	}
+
+	IRI[1] iri
+	
+	id AbbrevIRI[1] abbrevIRI
+	
+	@Scala(code="scala.Some(iri)")
+	@ImplicitExtent
+	@NotSchema
+	@Override
+	op IRI[?] iri() { getIri }
+}
+
+/* 
+ * For the OML tabular interchange representation,
+ * an OML AnnotationPropertyValue is a triple <S,P,V>
+ * where S is an OML Element, P an OML AnnotationProperty 
+ * and V is the value of P asserted about S by this triple.
+ * The UUID of an OML AnnotationPropertyValue is deterministically derived
+ * from its subject and property. This means that two OML AnnotationPropertyValues
+ * with the same subject and property must have the same value otherwise they would
+ * be structurally distinct triples with the same UUID, which would be ill-formed.
+ */
+@Glossary
+class AnnotationPropertyValue extends ValueCrossReferenceTuple, NonLogicalElement {
+	
+	@NotFunctionalAPI
+	@NotSchema
+	@Override
+	op UUID[1] uuid() {
+		OMLExtensions.derivedUUID(
+		"AnnotationPropertyValue", 
+		"subject" -> subject?.uuid()?.toString,
+		"property" -> property?.uuid()?.toString,
+		"value" -> value?.value
+		)?.toString
+	}
+
+	container LogicalElement[1] subject opposite annotations
+	
+	refers AnnotationProperty[1] property
+	
+	contains LiteralString[1] value
+}
+
+/*
+ * An OML Extent is an in-memory store of all OML Element(s)
+ * loaded from external OML documents.
+ */
+@ExtentContainer
+@Glossary
+@ResolverAPI
+class Extent {
+	
+	@NotFunctionalAPI
+	@NotSchema
+	contains Module[] modules opposite extent
+	
+}
+
+/*
+ * An OML Module maps to an [OWL2-DL Ontology];
+ * it is a kind of OML Resource that is a logical container of OML ModuleElement(s)
+ * and a non-logical container of OML Annotation(s).
+ */
+@Glossary
+@ExtentManaged
+@NamespaceUUID(namespace="iri", factors="")
+abstract class Module extends Resource {
+	
+	@Collection(kind="Set")
+	@NotSchema
+	contains AnnotationProperty[] annotationProperties opposite module
+	
+	@NotFunctionalAPI
+	@NotSchema
+	container Extent[1] extent opposite modules
+	
+	@Collection(kind="Set")
+	@ImplicitExtent
+	@NotSchema
+	op ModuleEdge[] moduleEdges()
+	
+	id IRI[1] iri
+	
+	@Scala(code="scala.Some(iri)")
+	@ImplicitExtent
+	@NotSchema
+	@Override
+	op IRI[?] iri() { getIri }
+	
+	@Scala(code="gov.nasa.jpl.imce.oml.tables.taggedTypes.namespacePrefix(iri.substring(1+iri.lastIndexOf('/')))")
+	@NotSchema
+ 	op NamespacePrefix[1] nsPrefix() { getIri()?.substring(1+getIri().lastIndexOf('/')) }
+	
+	@Scala(code="gov.nasa.jpl.imce.oml.tables.taggedTypes.localName(nsPrefix)")
+	@NotSchema
+	op LocalName[1] name() { nsPrefix }
+	
+	@Scala(code="scala.Some(nsPrefix)")
+	@ImplicitExtent
+	@NotSchema
+	op String[?] abbrevIRI() { nsPrefix }
+	
+	@NotFunctionalAPI
+	@NotSchema
+	@Override
+	op UUID[1] uuid() {
+		OMLExtensions.namespaceUUID(iri()?:"")?.toString
+	}
+	
+	@Scala(code="scala.Some(this)")
+	@NotSchema
+	@ImplicitExtent
+	op Module[?] moduleContext() { this }
+	
+	@Collection(kind="Set")
+	@NotSchema
+	@ImplicitExtent
+	op ModuleElement[] moduleElements()
+}
