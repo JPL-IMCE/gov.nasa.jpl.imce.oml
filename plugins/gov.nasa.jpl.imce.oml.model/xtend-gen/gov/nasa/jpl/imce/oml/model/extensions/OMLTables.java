@@ -42,7 +42,6 @@ import gov.nasa.jpl.imce.oml.model.common.LiteralString;
 import gov.nasa.jpl.imce.oml.model.common.LiteralURI;
 import gov.nasa.jpl.imce.oml.model.common.LiteralUUID;
 import gov.nasa.jpl.imce.oml.model.common.LiteralValue;
-import gov.nasa.jpl.imce.oml.model.common.Module;
 import gov.nasa.jpl.imce.oml.model.datatypes.AbstractDecimalValue;
 import gov.nasa.jpl.imce.oml.model.datatypes.DateTimeValue;
 import gov.nasa.jpl.imce.oml.model.datatypes.DecimalValue;
@@ -148,7 +147,7 @@ public class OMLTables {
     List<AnnotationProperty> _xblockexpression = null;
     {
       final ArrayList<AnnotationProperty> result = new ArrayList<AnnotationProperty>();
-      final Consumer<Module> _function = (Module m) -> {
+      final Consumer<gov.nasa.jpl.imce.oml.model.common.Module> _function = (gov.nasa.jpl.imce.oml.model.common.Module m) -> {
         result.addAll(m.getAnnotationProperties());
       };
       e.getModules().forEach(_function);

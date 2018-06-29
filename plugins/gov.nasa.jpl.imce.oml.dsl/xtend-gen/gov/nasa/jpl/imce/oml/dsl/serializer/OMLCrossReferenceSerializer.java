@@ -2,7 +2,6 @@ package gov.nasa.jpl.imce.oml.dsl.serializer;
 
 import com.google.common.base.Objects;
 import com.google.inject.Inject;
-import gov.nasa.jpl.imce.oml.model.common.Module;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.CrossReference;
 import org.eclipse.xtext.linking.impl.LinkingHelper;
@@ -30,9 +29,9 @@ public class OMLCrossReferenceSerializer extends CrossReferenceSerializer {
       if (_equals) {
         String _switchResult = null;
         boolean _matched = false;
-        if (target instanceof Module) {
+        if (target instanceof gov.nasa.jpl.imce.oml.model.common.Module) {
           _matched=true;
-          String _iri = ((Module)target).iri();
+          String _iri = ((gov.nasa.jpl.imce.oml.model.common.Module)target).iri();
           String _plus = ("<" + _iri);
           _switchResult = (_plus + ">");
         }

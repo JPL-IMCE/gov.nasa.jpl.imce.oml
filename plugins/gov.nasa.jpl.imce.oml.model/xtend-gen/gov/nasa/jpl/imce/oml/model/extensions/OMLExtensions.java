@@ -136,6 +136,7 @@ import java.util.function.Consumer;
 import org.apache.xml.resolver.Catalog;
 import org.apache.xml.resolver.CatalogManager;
 import org.apache.xml.resolver.tools.CatalogResolver;
+import org.eclipse.emf.cdo.CDOObject;
 import org.eclipse.emf.common.CommonPlugin;
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
@@ -145,6 +146,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
@@ -301,7 +303,6 @@ public class OMLExtensions {
         return c;
       } catch (final Throwable _t) {
         if (_t instanceof IOException) {
-          final IOException ex = (IOException)_t;
           current = current.trimSegments(1);
         } else {
           throw Exceptions.sneakyThrow(_t);
@@ -1866,9 +1867,22 @@ public class OMLExtensions {
     return list;
   }
   
+  public static void removeAllINodes(final List<EObject> queue) {
+    boolean _isEmpty = queue.isEmpty();
+    boolean _not = (!_isEmpty);
+    if (_not) {
+      final EObject e = queue.remove(0);
+      final List<INode> nodes = IterableExtensions.<INode>toList(Iterables.<INode>filter(e.eAdapters(), INode.class));
+      e.eAdapters().removeAll(nodes);
+      queue.addAll(e.eContents());
+      OMLExtensions.removeAllINodes(queue);
+    }
+  }
+  
   protected static void _normalize(final Extent ext) {
     final ArrayList<EObject> queue = new ArrayList<EObject>();
     queue.add(ext);
+    OMLExtensions.removeAllINodes(queue);
     final Function1<Module, String> _function = (Module it) -> {
       return it.abbrevIRI();
     };

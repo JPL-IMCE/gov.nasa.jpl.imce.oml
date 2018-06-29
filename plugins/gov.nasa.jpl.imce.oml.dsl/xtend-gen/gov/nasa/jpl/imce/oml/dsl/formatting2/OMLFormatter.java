@@ -30,7 +30,6 @@ import gov.nasa.jpl.imce.oml.model.bundles.TerminologyBundleStatement;
 import gov.nasa.jpl.imce.oml.model.common.AnnotationProperty;
 import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue;
 import gov.nasa.jpl.imce.oml.model.common.Extent;
-import gov.nasa.jpl.imce.oml.model.common.Module;
 import gov.nasa.jpl.imce.oml.model.descriptions.ConceptInstance;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBoxExtendsClosedWorldDefinitions;
@@ -109,8 +108,8 @@ public class OMLFormatter extends AbstractFormatter2 {
       it.noSpace();
     };
     document.<Extent>prepend(extent, _function);
-    final Module lastM = IterableExtensions.<Module>last(extent.getModules());
-    final Consumer<Module> _function_1 = (Module m) -> {
+    final gov.nasa.jpl.imce.oml.model.common.Module lastM = IterableExtensions.<gov.nasa.jpl.imce.oml.model.common.Module>last(extent.getModules());
+    final Consumer<gov.nasa.jpl.imce.oml.model.common.Module> _function_1 = (gov.nasa.jpl.imce.oml.model.common.Module m) -> {
       final Procedure1<IHiddenRegionFormatter> _function_2 = (IHiddenRegionFormatter it) -> {
         int _xifexpression = (int) 0;
         boolean _equals = Objects.equal(lastM, m);
@@ -121,7 +120,7 @@ public class OMLFormatter extends AbstractFormatter2 {
         }
         it.setNewLines(_xifexpression);
       };
-      document.<Module>append(document.<Module>format(m), _function_2);
+      document.<gov.nasa.jpl.imce.oml.model.common.Module>append(document.<gov.nasa.jpl.imce.oml.model.common.Module>format(m), _function_2);
     };
     extent.getModules().forEach(_function_1);
   }

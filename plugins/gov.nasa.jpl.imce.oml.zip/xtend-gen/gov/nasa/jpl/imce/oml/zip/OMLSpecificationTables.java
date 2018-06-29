@@ -129,6 +129,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
@@ -7499,17 +7500,21 @@ public class OMLSpecificationTables {
           _xifexpression = _xifexpression_1;
         }
         final Resource r = _xifexpression;
-        final Consumer<EObject> _function = (EObject e) -> {
-          boolean _matched = false;
-          if (e instanceof Extent) {
-            _matched=true;
-            final Consumer<Module> _function_1 = (Module it) -> {
-              this.queueModule(it);
-            };
-            ((Extent)e).getModules().forEach(_function_1);
-          }
-        };
-        r.getContents().forEach(_function);
+        boolean _matched = false;
+        if (r instanceof XtextResource) {
+          _matched=true;
+          final Consumer<EObject> _function = (EObject e) -> {
+            boolean _matched_1 = false;
+            if (e instanceof Extent) {
+              _matched_1=true;
+              final Consumer<Module> _function_1 = (Module it) -> {
+                this.queueModule(it);
+              };
+              ((Extent)e).getModules().forEach(_function_1);
+            }
+          };
+          ((XtextResource)r).getContents().forEach(_function);
+        }
         _xblockexpression = r;
       }
       return _xblockexpression;

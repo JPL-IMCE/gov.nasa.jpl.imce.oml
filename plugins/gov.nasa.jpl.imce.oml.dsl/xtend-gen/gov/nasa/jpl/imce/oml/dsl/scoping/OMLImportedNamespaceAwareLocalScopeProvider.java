@@ -31,7 +31,6 @@ import gov.nasa.jpl.imce.oml.model.bundles.TerminologyBundleAxiom;
 import gov.nasa.jpl.imce.oml.model.common.AnnotationProperty;
 import gov.nasa.jpl.imce.oml.model.common.AnnotationPropertyValue;
 import gov.nasa.jpl.imce.oml.model.common.CommonPackage;
-import gov.nasa.jpl.imce.oml.model.common.Module;
 import gov.nasa.jpl.imce.oml.model.common.ModuleEdge;
 import gov.nasa.jpl.imce.oml.model.descriptions.ConceptInstance;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox;
@@ -303,7 +302,7 @@ public class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespa
     boolean _matched = false;
     if (object instanceof ModuleEdge) {
       _matched=true;
-      Module _targetModule = ((ModuleEdge)object).targetModule();
+      gov.nasa.jpl.imce.oml.model.common.Module _targetModule = ((ModuleEdge)object).targetModule();
       String _iri = null;
       if (_targetModule!=null) {
         _iri=_targetModule.iri();
