@@ -78,6 +78,9 @@ import gov.nasa.jpl.imce.oml.model.terminologies.SubDataPropertyOfAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityRestrictionAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipSpecializationAxiom
+import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedAspect
+import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedConcept
+import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedReifiedRelationship
 
 class OMLFormatter extends AbstractFormatter2 {
 	
@@ -173,9 +176,27 @@ class OMLFormatter extends AbstractFormatter2 {
 		aspect.regionFor.keyword('aspect').append[oneSpace]
 	}
 		
+	def dispatch void format(CardinalityRestrictedAspect aspect, extension IFormattableDocument document) {
+		aspect.annotations.forEach[format.append[setNewLines(1)]]
+		aspect.regionFor.keyword('aspect').append[oneSpace]
+		aspect.regionFor.keyword('<=').surround[oneSpace]
+		aspect.regionFor.keyword('>=').surround[oneSpace]
+		aspect.regionFor.keyword('==').surround[oneSpace]
+		aspect.regionFor.keyword('.').surround[noSpace]
+	}
+	
 	def dispatch void format(Concept concept, extension IFormattableDocument document) {
 		concept.annotations.forEach[format.append[setNewLines(1)]]
 		concept.regionFor.keyword('concept').append[oneSpace]
+	}
+	
+	def dispatch void format(CardinalityRestrictedConcept concept, extension IFormattableDocument document) {
+		concept.annotations.forEach[format.append[setNewLines(1)]]
+		concept.regionFor.keyword('concept').append[oneSpace]
+		concept.regionFor.keyword('<=').surround[oneSpace]
+		concept.regionFor.keyword('>=').surround[oneSpace]
+		concept.regionFor.keyword('==').surround[oneSpace]
+		concept.regionFor.keyword('.').surround[noSpace]
 	}
 	
 	def dispatch void format(ReifiedRelationship rr, extension IFormattableDocument document) {
@@ -216,6 +237,15 @@ class OMLFormatter extends AbstractFormatter2 {
 		
 		prr.regionFor.keyword('source').prepend[newLine]
 		prr.regionFor.keyword('target').prepend[newLine]
+	}
+	
+	def dispatch void format(CardinalityRestrictedReifiedRelationship rr, extension IFormattableDocument document) {
+		rr.annotations.forEach[format.append[setNewLines(1)]]
+		rr.regionFor.keyword('reifiedRelationship').append[oneSpace]
+		rr.regionFor.keyword('<=').surround[oneSpace]
+		rr.regionFor.keyword('>=').surround[oneSpace]
+		rr.regionFor.keyword('==').surround[oneSpace]
+		rr.regionFor.keyword('.').surround[noSpace]
 	}
 	
 	def dispatch void format(UnreifiedRelationship ur, extension IFormattableDocument document) {

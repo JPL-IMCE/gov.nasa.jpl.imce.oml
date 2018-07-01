@@ -54,7 +54,7 @@ import gov.nasa.jpl.imce.oml.model.common.Resource
 import gov.nasa.jpl.imce.oml.model.common.Scala
 import gov.nasa.jpl.imce.oml.model.common.UUID
 import gov.nasa.jpl.imce.oml.model.common.ValueCrossReferenceTuple
-import gov.nasa.jpl.imce.oml.model.terminologies.Concept
+import gov.nasa.jpl.imce.oml.model.terminologies.ConceptKind
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptualEntity
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptualRelationship
 import gov.nasa.jpl.imce.oml.model.terminologies.DataRange
@@ -498,7 +498,7 @@ class ConceptInstance extends ConceptualEntitySingletonInstance {
 	@Factory
 	container DescriptionBox[1] descriptionBox opposite conceptInstances
 	
-	refers Concept[1] singletonConceptClassifier
+	refers ConceptKind[1] singletonConceptClassifier
 	
 	@NotSchema
 	@Override

@@ -41,7 +41,7 @@ import gov.nasa.jpl.imce.oml.model.common.Override
 import gov.nasa.jpl.imce.oml.model.common.Scala
 import gov.nasa.jpl.imce.oml.model.common.UUID
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions
-import gov.nasa.jpl.imce.oml.model.terminologies.Concept
+import gov.nasa.jpl.imce.oml.model.terminologies.ConceptKind
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBoxAxiom
 
@@ -100,7 +100,7 @@ class ConceptDesignationTerminologyAxiom extends TerminologyBoxAxiom {
 	@IRIReference
 	refers TerminologyBox[1] designatedTerminology
 	
-	refers Concept[1] designatedConcept
+	refers ConceptKind[1] designatedConcept
 	 
 	/*
 	 * The designationTerminologyGraph is the source
@@ -161,7 +161,7 @@ class TerminologyNestingAxiom extends TerminologyBoxAxiom {
 		}
 	 }
 
-  	refers Concept[1] nestingContext
+  	refers ConceptKind[1] nestingContext
   	
 	/*
 	 * The nestedTerminology is the source

@@ -76,6 +76,9 @@ import org.eclipse.xtext.naming.IQualifiedNameConverter
 import org.eclipse.xtext.scoping.IScope
 import org.eclipse.xtext.scoping.impl.ImportNormalizer
 import org.eclipse.xtext.scoping.impl.ImportedNamespaceAwareLocalScopeProvider
+import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedAspect
+import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedConcept
+import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedReifiedRelationship
 
 class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespaceAwareLocalScopeProvider {
 	
@@ -134,7 +137,6 @@ class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespaceAware
 	
  	override getScope(EObject context, EReference reference) {
  		var IScope scope = null
- 		val rs = context?.eResource?.resourceSet
  		
 		switch context {
  			AnnotationPropertyValue:
@@ -146,6 +148,24 @@ class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespaceAware
 				if (reference == TerminologiesPackage.eINSTANCE.terminologyExtensionAxiom_ExtendedTerminology)
 					scope = context.tbox.allTerminologies
 				
+			CardinalityRestrictedAspect:
+				if (reference == TerminologiesPackage.eINSTANCE.cardinalityRestrictedAspect_RestrictedRelationship)
+					scope = context.tbox.allRestrictableRelationshipsScope
+				else if (reference == TerminologiesPackage.eINSTANCE.cardinalityRestrictedAspect_RestrictedRange)
+					scope = context.tbox.allEntitiesScope
+					
+			CardinalityRestrictedConcept:
+				if (reference == TerminologiesPackage.eINSTANCE.cardinalityRestrictedConcept_RestrictedRelationship)
+					scope = context.tbox.allRestrictableRelationshipsScope
+				else if (reference == TerminologiesPackage.eINSTANCE.cardinalityRestrictedConcept_RestrictedRange)
+					scope = context.tbox.allEntitiesScope
+					
+			CardinalityRestrictedReifiedRelationship:
+				if (reference == TerminologiesPackage.eINSTANCE.cardinalityRestrictedReifiedRelationship_RestrictedRelationship)
+					scope = context.tbox.allRestrictableRelationshipsScope
+				else if (reference == TerminologiesPackage.eINSTANCE.cardinalityRestrictedReifiedRelationship_RestrictedRange)
+					scope = context.tbox.allEntitiesScope
+					
 			EntityRelationship:
 				if (reference == TerminologiesPackage.eINSTANCE.entityRelationship_Source ||
 					reference == TerminologiesPackage.eINSTANCE.entityRelationship_Target)

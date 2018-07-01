@@ -52,7 +52,7 @@ import gov.nasa.jpl.imce.oml.model.common.Override
 import gov.nasa.jpl.imce.oml.model.common.OverrideVal
 import gov.nasa.jpl.imce.oml.model.common.Scala
 import gov.nasa.jpl.imce.oml.model.common.UUID
-import gov.nasa.jpl.imce.oml.model.terminologies.Concept
+import gov.nasa.jpl.imce.oml.model.terminologies.ConceptKind
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox
 /*
@@ -189,7 +189,7 @@ class SpecificDisjointConceptAxiom extends DisjointUnionOfConceptsAxiom {
 	/*
 	 * A Concept that is a disjoint leaf in a taxonomy tree.
 	 */
-	refers Concept[1] disjointLeaf
+	refers ConceptKind[1] disjointLeaf
 	
 	@FunctionalInterface
 	@OverrideVal
@@ -265,7 +265,7 @@ class RootConceptTaxonomyAxiom extends TerminologyBundleStatement, ConceptTreeDi
 	/*
 	 * The Concept that is at the root of a taxonomy of disjunctions.
 	 */
-	refers Concept[1] root
+	refers ConceptKind[1] root
 	
 	@Scala(code="extent.bundleOfTerminologyBundleStatement.get(this)")
 	@NotSchema

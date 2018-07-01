@@ -62,10 +62,14 @@ import gov.nasa.jpl.imce.oml.model.graphs.ConceptDesignationTerminologyAxiom
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyGraph
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyNestingAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.Aspect
+import gov.nasa.jpl.imce.oml.model.terminologies.AspectKind
 import gov.nasa.jpl.imce.oml.model.terminologies.AspectSpecializationAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.BinaryScalarRestriction
+import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedAspect
+import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedConcept
 import gov.nasa.jpl.imce.oml.model.terminologies.ChainRule
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept
+import gov.nasa.jpl.imce.oml.model.terminologies.ConceptKind
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptSpecializationAxiom
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptualEntity
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptualRelationship
@@ -84,6 +88,7 @@ import gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.IRIScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty
 import gov.nasa.jpl.imce.oml.model.terminologies.NumericScalarRestriction
+import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.PlainLiteralScalarRestriction
 import gov.nasa.jpl.imce.oml.model.terminologies.Predicate
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship
@@ -117,6 +122,7 @@ import java.net.URL
 import java.util.ArrayList
 import java.util.Comparator
 import java.util.HashSet
+import java.util.List
 import java.util.UUID
 import org.apache.xml.resolver.CatalogManager
 import org.apache.xml.resolver.tools.CatalogResolver
@@ -128,9 +134,11 @@ import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.emf.ecore.util.EcoreUtil
+import org.eclipse.xtext.nodemodel.INode
 import org.eclipse.xtext.xbase.lib.Functions.Function1
 
 import static com.google.common.base.Preconditions.checkNotNull
+import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedReifiedRelationship
 
 public class OMLExtensions {
 
@@ -472,19 +480,19 @@ public class OMLExtensions {
 		localConceptualEntities + allImportedTerminologies(it).map[localConceptualEntities].flatten
 	}
 
-	def Iterable<Aspect> localAspects(TerminologyBox it) {
-		boxStatements.filter(Aspect)
+	def Iterable<AspectKind> localAspects(TerminologyBox it) {
+		boxStatements.filter(AspectKind)
 	}
 
-	def Iterable<Aspect> allAspects(TerminologyBox it) {
+	def Iterable<AspectKind> allAspects(TerminologyBox it) {
 		localAspects + allImportedTerminologies(it).map[localAspects].flatten
 	}
 
-	def Iterable<Concept> localConcepts(TerminologyBox it) {
-		boxStatements.filter(Concept)
+	def Iterable<ConceptKind> localConcepts(TerminologyBox it) {
+		boxStatements.filter(ConceptKind)
 	}
 
-	def Iterable<Concept> allConcepts(TerminologyBox it) {
+	def Iterable<ConceptKind> allConcepts(TerminologyBox it) {
 		localConcepts + allImportedTerminologies(it).map[localConcepts].flatten
 	}
 
@@ -496,15 +504,15 @@ public class OMLExtensions {
 		boxStatements.filter(ReifiedRelationshipRestriction)
 	}
 
-	def Iterable<ReifiedRelationship> localReifiedRelationships(TerminologyBox it) {
-		boxStatements.filter(ReifiedRelationship)
+	def Iterable<ConceptualRelationship> localReifiedRelationships(TerminologyBox it) {
+		boxStatements.filter(ConceptualRelationship)
 	}
 
 	def Iterable<UnreifiedRelationship> localUnreifiedRelationships(TerminologyBox it) {
 		boxStatements.filter(UnreifiedRelationship)
 	}
 
-	def Iterable<ReifiedRelationship> allReifiedRelationships(TerminologyBox it) {
+	def Iterable<ConceptualRelationship> allReifiedRelationships(TerminologyBox it) {
 		localReifiedRelationships + allImportedTerminologies(it).map[localReifiedRelationships].flatten
 	}
 
@@ -514,9 +522,14 @@ public class OMLExtensions {
 
 	def Iterable<Predicate> localPredicates(TerminologyBox it) {
 		val result = new ArrayList<Predicate>()
-		localReifiedRelationships.forEach[rr| 
-			result.add(rr.forwardProperty)
-			result.add(rr.inverseProperty)
+		localReifiedRelationships.forEach[rr|
+			switch rr {
+				ReifiedRelationship: {
+					result.add(rr.forwardProperty)
+					result.add(rr.inverseProperty)
+				}
+			}
+
 		]
 		result.addAll(localUnreifiedRelationships)
 		result.addAll(localEntities)
@@ -524,18 +537,36 @@ public class OMLExtensions {
 	}
 	
 	def Iterable<ForwardProperty> localForwardProperties(TerminologyBox it) {
-		localReifiedRelationships.map[forwardProperty].filterNull
+		localReifiedRelationships.map[rr|
+			switch rr {
+				ReifiedRelationship:
+					rr.forwardProperty
+				default:
+					null
+				}
+		].filterNull
 	}
 
 	def Iterable<InverseProperty> localInverseProperties(TerminologyBox it) {
-		localReifiedRelationships.map[inverseProperty].filterNull
+		localReifiedRelationships.map[rr|
+			switch rr {
+				ReifiedRelationship:
+					rr.inverseProperty
+				default:
+					null
+				}
+		].filterNull
 	}
 
 	def Iterable<RestrictableRelationship> localRestrictableRelationships(TerminologyBox it) {
 		val result = new ArrayList<RestrictableRelationship>()
-		localReifiedRelationships.forEach[rr| 
-			result.add(rr.forwardProperty)
-			result.add(rr.inverseProperty)
+		localReifiedRelationships.forEach[rr|
+			switch rr {
+				ReifiedRelationship: {
+					result.add(rr.forwardProperty)
+					result.add(rr.inverseProperty)
+				}
+			}
 		]
 		result.addAll(localUnreifiedRelationships)
 		result.filterNull
@@ -697,6 +728,8 @@ public class OMLExtensions {
 				'AnonymousConceptUnionAxiom'
 			Aspect:
 				'Aspect'
+			CardinalityRestrictedAspect:
+				'CardinalityRestrictedAspect'
 			AspectSpecializationAxiom:
 				'AspectSpecializationAxiom'
 			BinaryScalarRestriction:
@@ -709,6 +742,8 @@ public class OMLExtensions {
 				'ChainRule'
 			Concept:
 				'Concept'
+			CardinalityRestrictedConcept:
+				'CardinalityRestrictedConcept'
 			ConceptDesignationTerminologyAxiom:
 				'ConceptDesignationTerminologyAxiom'
 			ConceptInstance:
@@ -745,6 +780,8 @@ public class OMLExtensions {
 				'PlainLiteralScalarRestriction'
 			ReifiedRelationship:
 				'ReifiedRelationship'
+			CardinalityRestrictedReifiedRelationship:
+				'CardinalityRestrictedReifiedRelationship'
 			ReifiedRelationshipInstance:
 				'ReifiedRelationshipInstance'
 			ReifiedRelationshipInstanceDomain:
@@ -814,16 +851,22 @@ public class OMLExtensions {
 		switch e {
 			Aspect:
 				10000
+			CardinalityRestrictedAspect:
+				10001
 			Concept:
 				10020
-			ConceptSpecializationAxiom:
+			CardinalityRestrictedConcept:
 				10021
+			ConceptSpecializationAxiom:
+				10022
 			ReifiedRelationship:
 				10030
-			ReifiedRelationshipRestriction:
+			CardinalityRestrictedReifiedRelationship:
 				10031
-			ReifiedRelationshipSpecializationAxiom:
+			ReifiedRelationshipRestriction:
 				10032
+			ReifiedRelationshipSpecializationAxiom:
+				10033
 			AspectSpecializationAxiom:
 				10040
 			UnreifiedRelationship:
@@ -920,10 +963,16 @@ public class OMLExtensions {
 				"00002-"
 			Aspect:
 				"00010-"
+			CardinalityRestrictedAspect:
+				"00010+"
 			Concept:
 				"00011-"
+			CardinalityRestrictedConcept:
+				"00011+"
 			ReifiedRelationship:
 				"00012-"
+			CardinalityRestrictedReifiedRelationship:
+				"00012+"
 			ReifiedRelationshipRestriction:
 				"00013-"
 			UnreifiedRelationship:

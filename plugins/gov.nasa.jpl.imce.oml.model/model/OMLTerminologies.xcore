@@ -320,18 +320,162 @@ abstract class Entity extends Term, Predicate {
 abstract class ConceptualEntity extends Entity {}
 
 /*
- * An OML Aspect is a kind of OML Entity of OML UnaryTermKind.
+ * 
+ */
+@Glossary
+enum CardinalityRestrictionKind {
+	Min
+	Max
+	Exact
+}
+
+/*
+ * An OML AspectKind is a kind of OML Entity of OML UnaryTermKind.
  * It is intended to be used as a specialization parent
  * for one or more OML ConceptualEntity.
  */
 @Glossary
-class Aspect extends Entity, UnaryTermKind {}
+abstract class AspectKind extends Entity, UnaryTermKind {}
 
 /*
- * An OML Concept is an OML ConceptualEntity of OML UnaryTermKind.
+ * An OML Aspect is an OML AspectKind defined by name only.
  */
 @Glossary
-class Concept extends ConceptualEntity, UnaryTermKind {}
+class Aspect extends AspectKind {}
+
+/*
+ * An OML CardinalityRestrictedAspect is an OML AspectKind defined as a named
+ * cardinality restriction of an OML RestrictableRelationship whose domain is an OML AspectKind
+ * and that can be optionally qualified by a restricted range OML Entity.
+ * 
+ * An OML CardinalityRestrictedAspect`(A, Min, n, Rel)` corresponds 
+ * to the following in OWL2 Functional Syntax:
+ * 
+ * ```
+ * Declaration(Class A))
+ * SubClassOf(A ObjectMinCardinality(n Rel))
+ * ```
+ * 
+ * An OML CardinalityRestrictedAspect`(A, Min, n, Rel, Ran)` corresponds 
+ * to the following in OWL2 Functional Syntax:
+ * 
+ * ```
+ * Declaration(Class A))
+ * SubClassOf(A ObjectMinCardinality(n Rel Ran))
+ * ```
+ * 
+ * An OML CardinalityRestrictedAspect`(A, Max, n, Rel)` corresponds 
+ * to the following in OWL2 Functional Syntax:
+ * 
+ * ```
+ * Declaration(Class A))
+ * SubClassOf(A ObjectMaxCardinality(n Rel))
+ * ```
+ * 
+ * An OML CardinalityRestrictedAspect`(A, Max, n, Rel, Ran)` corresponds 
+ * to the following in OWL2 Functional Syntax:
+ * 
+ * ```
+ * Declaration(Class A))
+ * SubClassOf(A ObjectMaxCardinality(n Rel Ran))
+ * ```
+ * 
+ * An OML CardinalityRestrictedAspect`(A, Equal, n, Rel)` corresponds 
+ * to the following in OWL2 Functional Syntax:
+ * 
+ * ```
+ * Declaration(Class A))
+ * SubClassOf(A ObjectExactCardinality(n Rel))
+ * ```
+ * 
+ * An OML CardinalityRestrictedAspect`(A, Equal, n, Rel)` corresponds 
+ * to the following in OWL2 Functional Syntax:
+ * 
+ * ```
+ * Declaration(Class A))
+ * SubClassOf(A ObjectExactCardinality(n Rel))
+ * ```
+ */
+@Glossary
+class CardinalityRestrictedAspect extends AspectKind {
+	CardinalityRestrictionKind[1] restrictionKind
+	refers RestrictableRelationship[1] restrictedRelationship
+	refers Entity[?] restrictedRange
+	PositiveIntegerLiteral[1] restrictedCardinality
+}
+
+/*
+ * An OML ConceptKind is an OML ConceptualEntity of OML UnaryTermKind.
+ */
+@Glossary
+abstract class ConceptKind extends ConceptualEntity, UnaryTermKind {}
+
+/*
+ * An OML Concept is an OML ConceptKind defined by name only.
+ */
+@Glossary
+class Concept extends ConceptKind {}
+
+/*
+ * An OML CardinalityRestrictedConcept is an OML ConceptKind defined as a named
+ * cardinality restriction of an OML RestrictableRelationship whose domain is an OML ConceptKind
+ * and that can be optionally qualified by a restricted range OML Entity.
+ * 
+ * An OML CardinalityRestrictedConcept`(C, Min, n, Rel)` corresponds 
+ * to the following in OWL2 Functional Syntax:
+ * 
+ * ```
+ * Declaration(Class C))
+ * SubClassOf(C ObjectMinCardinality(n Rel))
+ * ```
+ * 
+ * An OML CardinalityRestrictedConcept`(C, Min, n, Rel, Ran)` corresponds 
+ * to the following in OWL2 Functional Syntax:
+ * 
+ * ```
+ * Declaration(Class C))
+ * SubClassOf(C ObjectMinCardinality(n Rel Ran))
+ * ```
+ * 
+ * An OML CardinalityRestrictedConcept`(C, Max, n, Rel)` corresponds 
+ * to the following in OWL2 Functional Syntax:
+ * 
+ * ```
+ * Declaration(Class C))
+ * SubClassOf(C ObjectMaxCardinality(n Rel))
+ * ```
+ * 
+ * An OML CardinalityRestrictedConcept`(C, Max, n, Rel, Ran)` corresponds 
+ * to the following in OWL2 Functional Syntax:
+ * 
+ * ```
+ * Declaration(Class C))
+ * SubClassOf(C ObjectMaxCardinality(n Rel Ran))
+ * ```
+ * 
+ * An OML CardinalityRestrictedConcept`(C, Equal, n, Rel)` corresponds 
+ * to the following in OWL2 Functional Syntax:
+ * 
+ * ```
+ * Declaration(Class C))
+ * SubClassOf(C ObjectExactCardinality(n Rel))
+ * ```
+ * 
+ * An OML CardinalityRestrictedConcept`(C, Equal, n, Rel)` corresponds 
+ * to the following in OWL2 Functional Syntax:
+ * 
+ * ```
+ * Declaration(Class C))
+ * SubClassOf(C ObjectExactCardinality(n Rel))
+ * ```
+ */
+@Glossary
+class CardinalityRestrictedConcept extends ConceptKind {
+	CardinalityRestrictionKind[1] restrictionKind
+	refers RestrictableRelationship[1] restrictedRelationship
+	refers Entity[?] restrictedRange
+	PositiveIntegerLiteral[1] restrictedCardinality
+}
 
 /*
  * An OML EntityRelationship is a kind of OML Term that
@@ -605,6 +749,67 @@ class ReifiedRelationshipRestriction extends ConceptualRelationship {
 	op ReifiedRelationship[*] rootReifiedRelationships() { 
 		OMLExtensions.rootReifiedRelationships(this)
 	}
+}
+
+/*
+ * An OML CardinalityRestrictedReifiedRelationship is an OML ConceptualRelationship defined as a named
+ * cardinality restriction of an OML RestrictableRelationship whose domain is an OML ConceptualRelationship
+ * and that can be optionally qualified by a restricted range OML Entity.
+ * 
+ * An OML CardinalityRestrictedReifiedRelationship`(RR, Min, n, Rel)` corresponds 
+ * to the following in OWL2 Functional Syntax:
+ * 
+ * ```
+ * Declaration(RRlass C))
+ * SubClassOf(RR ObjectMinCardinality(n Rel))
+ * ```
+ * 
+ * An OML CardinalityRestrictedReifiedRelationship`(RR, Min, n, Rel, Ran)` corresponds 
+ * to the following in OWL2 Functional Syntax:
+ * 
+ * ```
+ * Declaration(RRlass C))
+ * SubClassOf(RR ObjectMinCardinality(n Rel Ran))
+ * ```
+ * 
+ * An OML CardinalityRestrictedReifiedRelationship`(RR, Max, n, Rel)` corresponds 
+ * to the following in OWL2 Functional Syntax:
+ * 
+ * ```
+ * Declaration(RRlass C))
+ * SubClassOf(RR ObjectMaxCardinality(n Rel))
+ * ```
+ * 
+ * An OML CardinalityRestrictedReifiedRelationship`(RR, Max, n, Rel, Ran)` corresponds 
+ * to the following in OWL2 Functional Syntax:
+ * 
+ * ```
+ * Declaration(RRlass C))
+ * SubClassOf(RR ObjectMaxCardinality(n Rel Ran))
+ * ```
+ * 
+ * An OML CardinalityRestrictedReifiedRelationship`(RR, Equal, n, Rel)` corresponds 
+ * to the following in OWL2 Functional Syntax:
+ * 
+ * ```
+ * Declaration(RRlass C))
+ * SubClassOf(RR ObjectExactCardinality(n Rel))
+ * ```
+ * 
+ * An OML CardinalityRestrictedReifiedRelationship`(RR, Equal, n, Rel)` corresponds 
+ * to the following in OWL2 Functional Syntax:
+ * 
+ * ```
+ * Declaration(RRlass C))
+ * SubClassOf(RR ObjectExactCardinality(n Rel))
+ * ```
+ */
+@Glossary
+class CardinalityRestrictedReifiedRelationship extends ConceptualRelationship {
+	CardinalityRestrictionKind[1] restrictionKind
+	refers RestrictableRelationship[1] restrictedRelationship
+	refers Entity[?] restrictedRange
+	PositiveIntegerLiteral[1] restrictedCardinality
 }
 
 /*
@@ -1009,7 +1214,6 @@ class SegmentPredicate extends ElementCrossReferenceTuple {
 	}
 }
 
-
 /*
  * An OML TermAxiom is a logical axiom about an OML Term.
  */
@@ -1122,7 +1326,7 @@ class AspectSpecializationAxiom extends SpecializationAxiom {
 	/*
 	 * The super (parent) aspect
 	 */
-	refers Aspect[1] superAspect
+	refers AspectKind[1] superAspect
 	/*
 	 * Get the sub (child) entity
 	 */
@@ -1157,8 +1361,8 @@ class AspectSpecializationAxiom extends SpecializationAxiom {
 @DerivedUUID
 class ConceptSpecializationAxiom extends SpecializationAxiom {
 	
-	refers Concept[1] subConcept
-	refers Concept[1] superConcept
+	refers ConceptKind[1] subConcept
+	refers ConceptKind[1] superConcept
 	/*
 	 * Get the sub (child) entity
 	 */
