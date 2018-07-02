@@ -24,7 +24,7 @@ import gov.nasa.jpl.imce.oml.model.graphs.GraphsPackage;
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyGraph;
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyNestingAxiom;
 
-import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
+import gov.nasa.jpl.imce.oml.model.terminologies.ConceptKind;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologyBox;
 
 import gov.nasa.jpl.imce.oml.model.terminologies.impl.TerminologyBoxAxiomImpl;
@@ -38,6 +38,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -77,7 +78,7 @@ public class TerminologyNestingAxiomImpl extends TerminologyBoxAxiomImpl impleme
 	 * @generated
 	 * @ordered
 	 */
-	protected Concept nestingContext;
+	protected ConceptKind nestingContext;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -104,7 +105,7 @@ public class TerminologyNestingAxiomImpl extends TerminologyBoxAxiomImpl impleme
 	 * @generated
 	 */
 	public TerminologyBox getNestingTerminology() {
-		if (nestingTerminology != null && nestingTerminology.eIsProxy()) {
+		if (nestingTerminology != null && ((EObject)nestingTerminology).eIsProxy()) {
 			InternalEObject oldNestingTerminology = (InternalEObject)nestingTerminology;
 			nestingTerminology = (TerminologyBox)eResolveProxy(oldNestingTerminology);
 			if (nestingTerminology != oldNestingTerminology) {
@@ -141,10 +142,10 @@ public class TerminologyNestingAxiomImpl extends TerminologyBoxAxiomImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Concept getNestingContext() {
-		if (nestingContext != null && nestingContext.eIsProxy()) {
+	public ConceptKind getNestingContext() {
+		if (nestingContext != null && ((EObject)nestingContext).eIsProxy()) {
 			InternalEObject oldNestingContext = (InternalEObject)nestingContext;
-			nestingContext = (Concept)eResolveProxy(oldNestingContext);
+			nestingContext = (ConceptKind)eResolveProxy(oldNestingContext);
 			if (nestingContext != oldNestingContext) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, GraphsPackage.TERMINOLOGY_NESTING_AXIOM__NESTING_CONTEXT, oldNestingContext, nestingContext));
@@ -158,7 +159,7 @@ public class TerminologyNestingAxiomImpl extends TerminologyBoxAxiomImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Concept basicGetNestingContext() {
+	public ConceptKind basicGetNestingContext() {
 		return nestingContext;
 	}
 
@@ -167,8 +168,8 @@ public class TerminologyNestingAxiomImpl extends TerminologyBoxAxiomImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setNestingContext(Concept newNestingContext) {
-		Concept oldNestingContext = nestingContext;
+	public void setNestingContext(ConceptKind newNestingContext) {
+		ConceptKind oldNestingContext = nestingContext;
 		nestingContext = newNestingContext;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, GraphsPackage.TERMINOLOGY_NESTING_AXIOM__NESTING_CONTEXT, oldNestingContext, nestingContext));
@@ -219,7 +220,7 @@ public class TerminologyNestingAxiomImpl extends TerminologyBoxAxiomImpl impleme
 	public String uuid() {
 		String _string = this.getTbox().uuid().toString();
 		Pair<String, String> _mappedTo = Pair.<String, String>of("tbox", _string);
-		Concept _nestingContext = this.getNestingContext();
+		ConceptKind _nestingContext = this.getNestingContext();
 		String _uuid = null;
 		if (_nestingContext!=null) {
 			_uuid=_nestingContext.uuid();
@@ -278,7 +279,7 @@ public class TerminologyNestingAxiomImpl extends TerminologyBoxAxiomImpl impleme
 				setNestingTerminology((TerminologyBox)newValue);
 				return;
 			case GraphsPackage.TERMINOLOGY_NESTING_AXIOM__NESTING_CONTEXT:
-				setNestingContext((Concept)newValue);
+				setNestingContext((ConceptKind)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -296,7 +297,7 @@ public class TerminologyNestingAxiomImpl extends TerminologyBoxAxiomImpl impleme
 				setNestingTerminology((TerminologyBox)null);
 				return;
 			case GraphsPackage.TERMINOLOGY_NESTING_AXIOM__NESTING_CONTEXT:
-				setNestingContext((Concept)null);
+				setNestingContext((ConceptKind)null);
 				return;
 		}
 		super.eUnset(featureID);

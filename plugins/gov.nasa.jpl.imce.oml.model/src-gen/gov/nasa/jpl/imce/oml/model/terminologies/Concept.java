@@ -25,7 +25,7 @@ package gov.nasa.jpl.imce.oml.model.terminologies;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * An OML Concept is an OML ConceptualEntity of OML UnaryTermKind.
+ * An OML Concept is an OML ConceptKind defined by name only.
  * <!-- end-model-doc -->
  *
  *
@@ -33,5 +33,5 @@ package gov.nasa.jpl.imce.oml.model.terminologies;
  * @model
  * @generated
  */
-public interface Concept extends ConceptualEntity, UnaryTermKind {
+public interface Concept extends ConceptKind {
 } // Concept

@@ -20,7 +20,7 @@ package gov.nasa.jpl.imce.oml.model.terminologies.impl;
 
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
 
-import gov.nasa.jpl.imce.oml.model.terminologies.Aspect;
+import gov.nasa.jpl.imce.oml.model.terminologies.AspectKind;
 import gov.nasa.jpl.imce.oml.model.terminologies.AspectSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.Entity;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage;
@@ -34,6 +34,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -73,7 +74,7 @@ public class AspectSpecializationAxiomImpl extends SpecializationAxiomImpl imple
 	 * @generated
 	 * @ordered
 	 */
-	protected Aspect superAspect;
+	protected AspectKind superAspect;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -100,7 +101,7 @@ public class AspectSpecializationAxiomImpl extends SpecializationAxiomImpl imple
 	 * @generated
 	 */
 	public Entity getSubEntity() {
-		if (subEntity != null && subEntity.eIsProxy()) {
+		if (subEntity != null && ((EObject)subEntity).eIsProxy()) {
 			InternalEObject oldSubEntity = (InternalEObject)subEntity;
 			subEntity = (Entity)eResolveProxy(oldSubEntity);
 			if (subEntity != oldSubEntity) {
@@ -137,10 +138,10 @@ public class AspectSpecializationAxiomImpl extends SpecializationAxiomImpl imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Aspect getSuperAspect() {
-		if (superAspect != null && superAspect.eIsProxy()) {
+	public AspectKind getSuperAspect() {
+		if (superAspect != null && ((EObject)superAspect).eIsProxy()) {
 			InternalEObject oldSuperAspect = (InternalEObject)superAspect;
-			superAspect = (Aspect)eResolveProxy(oldSuperAspect);
+			superAspect = (AspectKind)eResolveProxy(oldSuperAspect);
 			if (superAspect != oldSuperAspect) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, TerminologiesPackage.ASPECT_SPECIALIZATION_AXIOM__SUPER_ASPECT, oldSuperAspect, superAspect));
@@ -154,7 +155,7 @@ public class AspectSpecializationAxiomImpl extends SpecializationAxiomImpl imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Aspect basicGetSuperAspect() {
+	public AspectKind basicGetSuperAspect() {
 		return superAspect;
 	}
 
@@ -163,8 +164,8 @@ public class AspectSpecializationAxiomImpl extends SpecializationAxiomImpl imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSuperAspect(Aspect newSuperAspect) {
-		Aspect oldSuperAspect = superAspect;
+	public void setSuperAspect(AspectKind newSuperAspect) {
+		AspectKind oldSuperAspect = superAspect;
 		superAspect = newSuperAspect;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.ASPECT_SPECIALIZATION_AXIOM__SUPER_ASPECT, oldSuperAspect, superAspect));
@@ -196,7 +197,7 @@ public class AspectSpecializationAxiomImpl extends SpecializationAxiomImpl imple
 	public String uuid() {
 		String _uuid = this.getTbox().uuid();
 		Pair<String, String> _mappedTo = Pair.<String, String>of("tbox", _uuid);
-		Aspect _superAspect = this.getSuperAspect();
+		AspectKind _superAspect = this.getSuperAspect();
 		String _uuid_1 = null;
 		if (_superAspect!=null) {
 			_uuid_1=_superAspect.uuid();
@@ -255,7 +256,7 @@ public class AspectSpecializationAxiomImpl extends SpecializationAxiomImpl imple
 				setSubEntity((Entity)newValue);
 				return;
 			case TerminologiesPackage.ASPECT_SPECIALIZATION_AXIOM__SUPER_ASPECT:
-				setSuperAspect((Aspect)newValue);
+				setSuperAspect((AspectKind)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -273,7 +274,7 @@ public class AspectSpecializationAxiomImpl extends SpecializationAxiomImpl imple
 				setSubEntity((Entity)null);
 				return;
 			case TerminologiesPackage.ASPECT_SPECIALIZATION_AXIOM__SUPER_ASPECT:
-				setSuperAspect((Aspect)null);
+				setSuperAspect((AspectKind)null);
 				return;
 		}
 		super.eUnset(featureID);

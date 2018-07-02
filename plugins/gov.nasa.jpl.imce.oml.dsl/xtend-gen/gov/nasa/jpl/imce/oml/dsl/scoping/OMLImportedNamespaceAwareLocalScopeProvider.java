@@ -50,6 +50,9 @@ import gov.nasa.jpl.imce.oml.model.graphs.GraphsPackage;
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyGraph;
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyNestingAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.AspectSpecializationAxiom;
+import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedAspect;
+import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedConcept;
+import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedReifiedRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.ChainRule;
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.EntityRelationship;
@@ -81,8 +84,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.scoping.IScope;
@@ -320,15 +321,6 @@ public class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespa
     IScope _xblockexpression = null;
     {
       IScope scope = null;
-      Resource _eResource = null;
-      if (context!=null) {
-        _eResource=context.eResource();
-      }
-      ResourceSet _resourceSet = null;
-      if (_eResource!=null) {
-        _resourceSet=_eResource.getResourceSet();
-      }
-      final ResourceSet rs = _resourceSet;
       boolean _matched = false;
       if (context instanceof AnnotationPropertyValue) {
         _matched=true;
@@ -345,6 +337,54 @@ public class OMLImportedNamespaceAwareLocalScopeProvider extends ImportedNamespa
           boolean _equals = Objects.equal(reference, _terminologyExtensionAxiom_ExtendedTerminology);
           if (_equals) {
             scope = this._oMLScopeExtensions.allTerminologies(((TerminologyExtensionAxiom)context).getTbox());
+          }
+        }
+      }
+      if (!_matched) {
+        if (context instanceof CardinalityRestrictedAspect) {
+          _matched=true;
+          EReference _cardinalityRestrictedAspect_RestrictedRelationship = TerminologiesPackage.eINSTANCE.getCardinalityRestrictedAspect_RestrictedRelationship();
+          boolean _equals = Objects.equal(reference, _cardinalityRestrictedAspect_RestrictedRelationship);
+          if (_equals) {
+            scope = this._oMLScopeExtensions.allRestrictableRelationshipsScope(((CardinalityRestrictedAspect)context).getTbox());
+          } else {
+            EReference _cardinalityRestrictedAspect_RestrictedRange = TerminologiesPackage.eINSTANCE.getCardinalityRestrictedAspect_RestrictedRange();
+            boolean _equals_1 = Objects.equal(reference, _cardinalityRestrictedAspect_RestrictedRange);
+            if (_equals_1) {
+              scope = this._oMLScopeExtensions.allEntitiesScope(((CardinalityRestrictedAspect)context).getTbox());
+            }
+          }
+        }
+      }
+      if (!_matched) {
+        if (context instanceof CardinalityRestrictedConcept) {
+          _matched=true;
+          EReference _cardinalityRestrictedConcept_RestrictedRelationship = TerminologiesPackage.eINSTANCE.getCardinalityRestrictedConcept_RestrictedRelationship();
+          boolean _equals = Objects.equal(reference, _cardinalityRestrictedConcept_RestrictedRelationship);
+          if (_equals) {
+            scope = this._oMLScopeExtensions.allRestrictableRelationshipsScope(((CardinalityRestrictedConcept)context).getTbox());
+          } else {
+            EReference _cardinalityRestrictedConcept_RestrictedRange = TerminologiesPackage.eINSTANCE.getCardinalityRestrictedConcept_RestrictedRange();
+            boolean _equals_1 = Objects.equal(reference, _cardinalityRestrictedConcept_RestrictedRange);
+            if (_equals_1) {
+              scope = this._oMLScopeExtensions.allEntitiesScope(((CardinalityRestrictedConcept)context).getTbox());
+            }
+          }
+        }
+      }
+      if (!_matched) {
+        if (context instanceof CardinalityRestrictedReifiedRelationship) {
+          _matched=true;
+          EReference _cardinalityRestrictedReifiedRelationship_RestrictedRelationship = TerminologiesPackage.eINSTANCE.getCardinalityRestrictedReifiedRelationship_RestrictedRelationship();
+          boolean _equals = Objects.equal(reference, _cardinalityRestrictedReifiedRelationship_RestrictedRelationship);
+          if (_equals) {
+            scope = this._oMLScopeExtensions.allRestrictableRelationshipsScope(((CardinalityRestrictedReifiedRelationship)context).getTbox());
+          } else {
+            EReference _cardinalityRestrictedReifiedRelationship_RestrictedRange = TerminologiesPackage.eINSTANCE.getCardinalityRestrictedReifiedRelationship_RestrictedRange();
+            boolean _equals_1 = Objects.equal(reference, _cardinalityRestrictedReifiedRelationship_RestrictedRange);
+            if (_equals_1) {
+              scope = this._oMLScopeExtensions.allEntitiesScope(((CardinalityRestrictedReifiedRelationship)context).getTbox());
+            }
           }
         }
       }

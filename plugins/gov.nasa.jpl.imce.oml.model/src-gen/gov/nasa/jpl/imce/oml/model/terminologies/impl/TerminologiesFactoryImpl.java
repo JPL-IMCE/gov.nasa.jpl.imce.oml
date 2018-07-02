@@ -73,45 +73,48 @@ public class TerminologiesFactoryImpl extends EFactoryImpl implements Terminolog
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case TerminologiesPackage.TERMINOLOGY_EXTENSION_AXIOM: return createTerminologyExtensionAxiom();
-			case TerminologiesPackage.ASPECT: return createAspect();
-			case TerminologiesPackage.CONCEPT: return createConcept();
-			case TerminologiesPackage.FORWARD_PROPERTY: return createForwardProperty();
-			case TerminologiesPackage.INVERSE_PROPERTY: return createInverseProperty();
-			case TerminologiesPackage.REIFIED_RELATIONSHIP: return createReifiedRelationship();
-			case TerminologiesPackage.REIFIED_RELATIONSHIP_RESTRICTION: return createReifiedRelationshipRestriction();
-			case TerminologiesPackage.UNREIFIED_RELATIONSHIP: return createUnreifiedRelationship();
-			case TerminologiesPackage.SCALAR: return createScalar();
-			case TerminologiesPackage.ENTITY_STRUCTURED_DATA_PROPERTY: return createEntityStructuredDataProperty();
-			case TerminologiesPackage.ENTITY_SCALAR_DATA_PROPERTY: return createEntityScalarDataProperty();
-			case TerminologiesPackage.STRUCTURED_DATA_PROPERTY: return createStructuredDataProperty();
-			case TerminologiesPackage.SCALAR_DATA_PROPERTY: return createScalarDataProperty();
-			case TerminologiesPackage.STRUCTURE: return createStructure();
-			case TerminologiesPackage.CHAIN_RULE: return createChainRule();
-			case TerminologiesPackage.RULE_BODY_SEGMENT: return createRuleBodySegment();
-			case TerminologiesPackage.SEGMENT_PREDICATE: return createSegmentPredicate();
-			case TerminologiesPackage.ENTITY_EXISTENTIAL_RESTRICTION_AXIOM: return createEntityExistentialRestrictionAxiom();
-			case TerminologiesPackage.ENTITY_UNIVERSAL_RESTRICTION_AXIOM: return createEntityUniversalRestrictionAxiom();
-			case TerminologiesPackage.ASPECT_SPECIALIZATION_AXIOM: return createAspectSpecializationAxiom();
-			case TerminologiesPackage.CONCEPT_SPECIALIZATION_AXIOM: return createConceptSpecializationAxiom();
-			case TerminologiesPackage.REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM: return createReifiedRelationshipSpecializationAxiom();
-			case TerminologiesPackage.SUB_OBJECT_PROPERTY_OF_AXIOM: return createSubObjectPropertyOfAxiom();
-			case TerminologiesPackage.SUB_DATA_PROPERTY_OF_AXIOM: return createSubDataPropertyOfAxiom();
-			case TerminologiesPackage.ENTITY_SCALAR_DATA_PROPERTY_EXISTENTIAL_RESTRICTION_AXIOM: return createEntityScalarDataPropertyExistentialRestrictionAxiom();
-			case TerminologiesPackage.ENTITY_SCALAR_DATA_PROPERTY_UNIVERSAL_RESTRICTION_AXIOM: return createEntityScalarDataPropertyUniversalRestrictionAxiom();
-			case TerminologiesPackage.ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM: return createEntityScalarDataPropertyParticularRestrictionAxiom();
-			case TerminologiesPackage.ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM: return createEntityStructuredDataPropertyParticularRestrictionAxiom();
-			case TerminologiesPackage.RESTRICTION_STRUCTURED_DATA_PROPERTY_TUPLE: return createRestrictionStructuredDataPropertyTuple();
-			case TerminologiesPackage.RESTRICTION_SCALAR_DATA_PROPERTY_VALUE: return createRestrictionScalarDataPropertyValue();
-			case TerminologiesPackage.BINARY_SCALAR_RESTRICTION: return createBinaryScalarRestriction();
-			case TerminologiesPackage.IRI_SCALAR_RESTRICTION: return createIRIScalarRestriction();
-			case TerminologiesPackage.NUMERIC_SCALAR_RESTRICTION: return createNumericScalarRestriction();
-			case TerminologiesPackage.PLAIN_LITERAL_SCALAR_RESTRICTION: return createPlainLiteralScalarRestriction();
-			case TerminologiesPackage.STRING_SCALAR_RESTRICTION: return createStringScalarRestriction();
-			case TerminologiesPackage.TIME_SCALAR_RESTRICTION: return createTimeScalarRestriction();
-			case TerminologiesPackage.SYNONYM_SCALAR_RESTRICTION: return createSynonymScalarRestriction();
-			case TerminologiesPackage.SCALAR_ONE_OF_RESTRICTION: return createScalarOneOfRestriction();
-			case TerminologiesPackage.SCALAR_ONE_OF_LITERAL_AXIOM: return createScalarOneOfLiteralAxiom();
+			case TerminologiesPackage.TERMINOLOGY_EXTENSION_AXIOM: return (EObject)createTerminologyExtensionAxiom();
+			case TerminologiesPackage.ASPECT: return (EObject)createAspect();
+			case TerminologiesPackage.CARDINALITY_RESTRICTED_ASPECT: return (EObject)createCardinalityRestrictedAspect();
+			case TerminologiesPackage.CONCEPT: return (EObject)createConcept();
+			case TerminologiesPackage.CARDINALITY_RESTRICTED_CONCEPT: return (EObject)createCardinalityRestrictedConcept();
+			case TerminologiesPackage.FORWARD_PROPERTY: return (EObject)createForwardProperty();
+			case TerminologiesPackage.INVERSE_PROPERTY: return (EObject)createInverseProperty();
+			case TerminologiesPackage.REIFIED_RELATIONSHIP: return (EObject)createReifiedRelationship();
+			case TerminologiesPackage.REIFIED_RELATIONSHIP_RESTRICTION: return (EObject)createReifiedRelationshipRestriction();
+			case TerminologiesPackage.CARDINALITY_RESTRICTED_REIFIED_RELATIONSHIP: return (EObject)createCardinalityRestrictedReifiedRelationship();
+			case TerminologiesPackage.UNREIFIED_RELATIONSHIP: return (EObject)createUnreifiedRelationship();
+			case TerminologiesPackage.SCALAR: return (EObject)createScalar();
+			case TerminologiesPackage.ENTITY_STRUCTURED_DATA_PROPERTY: return (EObject)createEntityStructuredDataProperty();
+			case TerminologiesPackage.ENTITY_SCALAR_DATA_PROPERTY: return (EObject)createEntityScalarDataProperty();
+			case TerminologiesPackage.STRUCTURED_DATA_PROPERTY: return (EObject)createStructuredDataProperty();
+			case TerminologiesPackage.SCALAR_DATA_PROPERTY: return (EObject)createScalarDataProperty();
+			case TerminologiesPackage.STRUCTURE: return (EObject)createStructure();
+			case TerminologiesPackage.CHAIN_RULE: return (EObject)createChainRule();
+			case TerminologiesPackage.RULE_BODY_SEGMENT: return (EObject)createRuleBodySegment();
+			case TerminologiesPackage.SEGMENT_PREDICATE: return (EObject)createSegmentPredicate();
+			case TerminologiesPackage.ENTITY_EXISTENTIAL_RESTRICTION_AXIOM: return (EObject)createEntityExistentialRestrictionAxiom();
+			case TerminologiesPackage.ENTITY_UNIVERSAL_RESTRICTION_AXIOM: return (EObject)createEntityUniversalRestrictionAxiom();
+			case TerminologiesPackage.ASPECT_SPECIALIZATION_AXIOM: return (EObject)createAspectSpecializationAxiom();
+			case TerminologiesPackage.CONCEPT_SPECIALIZATION_AXIOM: return (EObject)createConceptSpecializationAxiom();
+			case TerminologiesPackage.REIFIED_RELATIONSHIP_SPECIALIZATION_AXIOM: return (EObject)createReifiedRelationshipSpecializationAxiom();
+			case TerminologiesPackage.SUB_OBJECT_PROPERTY_OF_AXIOM: return (EObject)createSubObjectPropertyOfAxiom();
+			case TerminologiesPackage.SUB_DATA_PROPERTY_OF_AXIOM: return (EObject)createSubDataPropertyOfAxiom();
+			case TerminologiesPackage.ENTITY_SCALAR_DATA_PROPERTY_EXISTENTIAL_RESTRICTION_AXIOM: return (EObject)createEntityScalarDataPropertyExistentialRestrictionAxiom();
+			case TerminologiesPackage.ENTITY_SCALAR_DATA_PROPERTY_UNIVERSAL_RESTRICTION_AXIOM: return (EObject)createEntityScalarDataPropertyUniversalRestrictionAxiom();
+			case TerminologiesPackage.ENTITY_SCALAR_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM: return (EObject)createEntityScalarDataPropertyParticularRestrictionAxiom();
+			case TerminologiesPackage.ENTITY_STRUCTURED_DATA_PROPERTY_PARTICULAR_RESTRICTION_AXIOM: return (EObject)createEntityStructuredDataPropertyParticularRestrictionAxiom();
+			case TerminologiesPackage.RESTRICTION_STRUCTURED_DATA_PROPERTY_TUPLE: return (EObject)createRestrictionStructuredDataPropertyTuple();
+			case TerminologiesPackage.RESTRICTION_SCALAR_DATA_PROPERTY_VALUE: return (EObject)createRestrictionScalarDataPropertyValue();
+			case TerminologiesPackage.BINARY_SCALAR_RESTRICTION: return (EObject)createBinaryScalarRestriction();
+			case TerminologiesPackage.IRI_SCALAR_RESTRICTION: return (EObject)createIRIScalarRestriction();
+			case TerminologiesPackage.NUMERIC_SCALAR_RESTRICTION: return (EObject)createNumericScalarRestriction();
+			case TerminologiesPackage.PLAIN_LITERAL_SCALAR_RESTRICTION: return (EObject)createPlainLiteralScalarRestriction();
+			case TerminologiesPackage.STRING_SCALAR_RESTRICTION: return (EObject)createStringScalarRestriction();
+			case TerminologiesPackage.TIME_SCALAR_RESTRICTION: return (EObject)createTimeScalarRestriction();
+			case TerminologiesPackage.SYNONYM_SCALAR_RESTRICTION: return (EObject)createSynonymScalarRestriction();
+			case TerminologiesPackage.SCALAR_ONE_OF_RESTRICTION: return (EObject)createScalarOneOfRestriction();
+			case TerminologiesPackage.SCALAR_ONE_OF_LITERAL_AXIOM: return (EObject)createScalarOneOfLiteralAxiom();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -127,6 +130,8 @@ public class TerminologiesFactoryImpl extends EFactoryImpl implements Terminolog
 		switch (eDataType.getClassifierID()) {
 			case TerminologiesPackage.TERMINOLOGY_KIND:
 				return createTerminologyKindFromString(eDataType, initialValue);
+			case TerminologiesPackage.CARDINALITY_RESTRICTION_KIND:
+				return createCardinalityRestrictionKindFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -142,6 +147,8 @@ public class TerminologiesFactoryImpl extends EFactoryImpl implements Terminolog
 		switch (eDataType.getClassifierID()) {
 			case TerminologiesPackage.TERMINOLOGY_KIND:
 				return convertTerminologyKindToString(eDataType, instanceValue);
+			case TerminologiesPackage.CARDINALITY_RESTRICTION_KIND:
+				return convertCardinalityRestrictionKindToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -172,9 +179,29 @@ public class TerminologiesFactoryImpl extends EFactoryImpl implements Terminolog
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public CardinalityRestrictedAspect createCardinalityRestrictedAspect() {
+		CardinalityRestrictedAspectImpl cardinalityRestrictedAspect = new CardinalityRestrictedAspectImpl();
+		return cardinalityRestrictedAspect;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Concept createConcept() {
 		ConceptImpl concept = new ConceptImpl();
 		return concept;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CardinalityRestrictedConcept createCardinalityRestrictedConcept() {
+		CardinalityRestrictedConceptImpl cardinalityRestrictedConcept = new CardinalityRestrictedConceptImpl();
+		return cardinalityRestrictedConcept;
 	}
 
 	/**
@@ -215,6 +242,16 @@ public class TerminologiesFactoryImpl extends EFactoryImpl implements Terminolog
 	public ReifiedRelationshipRestriction createReifiedRelationshipRestriction() {
 		ReifiedRelationshipRestrictionImpl reifiedRelationshipRestriction = new ReifiedRelationshipRestrictionImpl();
 		return reifiedRelationshipRestriction;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CardinalityRestrictedReifiedRelationship createCardinalityRestrictedReifiedRelationship() {
+		CardinalityRestrictedReifiedRelationshipImpl cardinalityRestrictedReifiedRelationship = new CardinalityRestrictedReifiedRelationshipImpl();
+		return cardinalityRestrictedReifiedRelationship;
 	}
 
 	/**
@@ -554,6 +591,26 @@ public class TerminologiesFactoryImpl extends EFactoryImpl implements Terminolog
 	 * @generated
 	 */
 	public String convertTerminologyKindToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CardinalityRestrictionKind createCardinalityRestrictionKindFromString(EDataType eDataType, String initialValue) {
+		CardinalityRestrictionKind result = CardinalityRestrictionKind.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertCardinalityRestrictionKindToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

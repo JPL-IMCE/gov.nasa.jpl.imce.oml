@@ -25,9 +25,7 @@ package gov.nasa.jpl.imce.oml.model.terminologies;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * An OML Aspect is a kind of OML Entity of OML UnaryTermKind.
- * It is intended to be used as a specialization parent
- * for one or more OML ConceptualEntity.
+ * An OML Aspect is an OML AspectKind defined by name only.
  * <!-- end-model-doc -->
  *
  *
@@ -35,5 +33,5 @@ package gov.nasa.jpl.imce.oml.model.terminologies;
  * @model
  * @generated
  */
-public interface Aspect extends Entity, UnaryTermKind {
+public interface Aspect extends AspectKind {
 } // Aspect

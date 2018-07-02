@@ -20,7 +20,7 @@ package gov.nasa.jpl.imce.oml.model.bundles;
 
 import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
 
-import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
+import gov.nasa.jpl.imce.oml.model.terminologies.ConceptKind;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -53,12 +53,12 @@ public interface SpecificDisjointConceptAxiom extends DisjointUnionOfConceptsAxi
 	 * A Concept that is a disjoint leaf in a taxonomy tree.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Disjoint Leaf</em>' reference.
-	 * @see #setDisjointLeaf(Concept)
+	 * @see #setDisjointLeaf(ConceptKind)
 	 * @see gov.nasa.jpl.imce.oml.model.bundles.BundlesPackage#getSpecificDisjointConceptAxiom_DisjointLeaf()
 	 * @model required="true"
 	 * @generated
 	 */
-	Concept getDisjointLeaf();
+	ConceptKind getDisjointLeaf();
 
 	/**
 	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.bundles.SpecificDisjointConceptAxiom#getDisjointLeaf <em>Disjoint Leaf</em>}' reference.
@@ -68,13 +68,13 @@ public interface SpecificDisjointConceptAxiom extends DisjointUnionOfConceptsAxi
 	 * @see #getDisjointLeaf()
 	 * @generated
 	 */
-	void setDisjointLeaf(Concept value);
+	void setDisjointLeaf(ConceptKind value);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model dataType="gov.nasa.jpl.imce.oml.model.common.UUID" unique="false" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%gov.nasa.jpl.imce.oml.model.bundles.ConceptTreeDisjunction%&gt; _disjointTaxonomyParent = this.getDisjointTaxonomyParent();\n&lt;%java.lang.String%&gt; _uuid = null;\nif (_disjointTaxonomyParent!=null)\n{\n\t_uuid=_disjointTaxonomyParent.uuid();\n}\n&lt;%java.lang.String%&gt; _string = null;\nif (_uuid!=null)\n{\n\t_string=_uuid.toString();\n}\n&lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt; _mappedTo = &lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;.&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt;of(\"disjointTaxonomyParent\", _string);\n&lt;%gov.nasa.jpl.imce.oml.model.terminologies.Concept%&gt; _disjointLeaf = this.getDisjointLeaf();\n&lt;%java.lang.String%&gt; _uuid_1 = null;\nif (_disjointLeaf!=null)\n{\n\t_uuid_1=_disjointLeaf.uuid();\n}\n&lt;%java.lang.String%&gt; _string_1 = null;\nif (_uuid_1!=null)\n{\n\t_string_1=_uuid_1.toString();\n}\n&lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt; _mappedTo_1 = &lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;.&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt;of(\"disjointLeaf\", _string_1);\n&lt;%java.util.UUID%&gt; _derivedUUID = &lt;%gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions%&gt;.derivedUUID(\n\t\"SpecificDisjointConceptAxiom\", _mappedTo, _mappedTo_1);\n&lt;%java.lang.String%&gt; _string_2 = null;\nif (_derivedUUID!=null)\n{\n\t_string_2=_derivedUUID.toString();\n}\nreturn _string_2;'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%gov.nasa.jpl.imce.oml.model.bundles.ConceptTreeDisjunction%&gt; _disjointTaxonomyParent = this.getDisjointTaxonomyParent();\n&lt;%java.lang.String%&gt; _uuid = null;\nif (_disjointTaxonomyParent!=null)\n{\n\t_uuid=_disjointTaxonomyParent.uuid();\n}\n&lt;%java.lang.String%&gt; _string = null;\nif (_uuid!=null)\n{\n\t_string=_uuid.toString();\n}\n&lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt; _mappedTo = &lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;.&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt;of(\"disjointTaxonomyParent\", _string);\n&lt;%gov.nasa.jpl.imce.oml.model.terminologies.ConceptKind%&gt; _disjointLeaf = this.getDisjointLeaf();\n&lt;%java.lang.String%&gt; _uuid_1 = null;\nif (_disjointLeaf!=null)\n{\n\t_uuid_1=_disjointLeaf.uuid();\n}\n&lt;%java.lang.String%&gt; _string_1 = null;\nif (_uuid_1!=null)\n{\n\t_string_1=_uuid_1.toString();\n}\n&lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt; _mappedTo_1 = &lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;.&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt;of(\"disjointLeaf\", _string_1);\n&lt;%java.util.UUID%&gt; _derivedUUID = &lt;%gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions%&gt;.derivedUUID(\n\t\"SpecificDisjointConceptAxiom\", _mappedTo, _mappedTo_1);\n&lt;%java.lang.String%&gt; _string_2 = null;\nif (_derivedUUID!=null)\n{\n\t_string_2=_derivedUUID.toString();\n}\nreturn _string_2;'"
 	 * @generated
 	 */
 	String uuid();

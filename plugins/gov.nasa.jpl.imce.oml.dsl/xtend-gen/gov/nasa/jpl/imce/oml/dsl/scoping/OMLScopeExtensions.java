@@ -35,8 +35,8 @@ import gov.nasa.jpl.imce.oml.model.descriptions.ReifiedRelationshipInstance;
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
 import gov.nasa.jpl.imce.oml.model.graphs.ConceptDesignationTerminologyAxiom;
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyGraph;
-import gov.nasa.jpl.imce.oml.model.terminologies.Aspect;
-import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
+import gov.nasa.jpl.imce.oml.model.terminologies.AspectKind;
+import gov.nasa.jpl.imce.oml.model.terminologies.ConceptKind;
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptualRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.DataRange;
 import gov.nasa.jpl.imce.oml.model.terminologies.Entity;
@@ -46,7 +46,6 @@ import gov.nasa.jpl.imce.oml.model.terminologies.EntityStructuredDataProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.ForwardProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.InverseProperty;
 import gov.nasa.jpl.imce.oml.model.terminologies.Predicate;
-import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.ReifiedRelationshipRestriction;
 import gov.nasa.jpl.imce.oml.model.terminologies.RestrictableRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.ScalarDataProperty;
@@ -1374,13 +1373,13 @@ public class OMLScopeExtensions {
   }
   
   private IScope computeAllAspects(final TerminologyBox tbox) {
-    final Function<TerminologyBox, Iterable<Aspect>> _function = (TerminologyBox it) -> {
+    final Function<TerminologyBox, Iterable<AspectKind>> _function = (TerminologyBox it) -> {
       return this._oMLExtensions.localAspects(it);
     };
-    final Function<Pair<TerminologyBox, Aspect>, QualifiedName> _function_1 = (Pair<TerminologyBox, Aspect> it) -> {
-      return this.<Aspect>importedResourceNameFunction(it);
+    final Function<Pair<TerminologyBox, AspectKind>, QualifiedName> _function_1 = (Pair<TerminologyBox, AspectKind> it) -> {
+      return this.<AspectKind>importedResourceNameFunction(it);
     };
-    return this.<Aspect>terminologyScope(tbox, _function, _function_1);
+    return this.<AspectKind>terminologyScope(tbox, _function, _function_1);
   }
   
   public IScope allConceptsScope(final TerminologyBox tbox) {
@@ -1407,13 +1406,13 @@ public class OMLScopeExtensions {
   }
   
   private IScope computeAllConcepts(final TerminologyBox tbox) {
-    final Function<TerminologyBox, Iterable<Concept>> _function = (TerminologyBox it) -> {
+    final Function<TerminologyBox, Iterable<ConceptKind>> _function = (TerminologyBox it) -> {
       return this._oMLExtensions.localConcepts(it);
     };
-    final Function<Pair<TerminologyBox, Concept>, QualifiedName> _function_1 = (Pair<TerminologyBox, Concept> it) -> {
-      return this.<Concept>importedResourceNameFunction(it);
+    final Function<Pair<TerminologyBox, ConceptKind>, QualifiedName> _function_1 = (Pair<TerminologyBox, ConceptKind> it) -> {
+      return this.<ConceptKind>importedResourceNameFunction(it);
     };
-    return this.<Concept>terminologyScope(tbox, _function, _function_1);
+    return this.<ConceptKind>terminologyScope(tbox, _function, _function_1);
   }
   
   public IScope allConceptualRelationshipsScope(final TerminologyBox tbox) {
@@ -1506,13 +1505,13 @@ public class OMLScopeExtensions {
   }
   
   private IScope computeAllReifiedRelationships(final TerminologyBox tbox) {
-    final Function<TerminologyBox, Iterable<ReifiedRelationship>> _function = (TerminologyBox it) -> {
+    final Function<TerminologyBox, Iterable<ConceptualRelationship>> _function = (TerminologyBox it) -> {
       return this._oMLExtensions.localReifiedRelationships(it);
     };
-    final Function<Pair<TerminologyBox, ReifiedRelationship>, QualifiedName> _function_1 = (Pair<TerminologyBox, ReifiedRelationship> it) -> {
-      return this.<ReifiedRelationship>importedResourceNameFunction(it);
+    final Function<Pair<TerminologyBox, ConceptualRelationship>, QualifiedName> _function_1 = (Pair<TerminologyBox, ConceptualRelationship> it) -> {
+      return this.<ConceptualRelationship>importedResourceNameFunction(it);
     };
-    return this.<ReifiedRelationship>terminologyScope(tbox, _function, _function_1);
+    return this.<ConceptualRelationship>terminologyScope(tbox, _function, _function_1);
   }
   
   public IScope allUnreifiedRelationshipsScope(final TerminologyBox tbox) {
@@ -1906,13 +1905,13 @@ public class OMLScopeExtensions {
   }
   
   public IScope allConceptsScope(final Bundle b) {
-    final Function<TerminologyBox, Iterable<Concept>> _function = (TerminologyBox it) -> {
+    final Function<TerminologyBox, Iterable<ConceptKind>> _function = (TerminologyBox it) -> {
       return this._oMLExtensions.localConcepts(it);
     };
-    final Function<Pair<TerminologyBox, Concept>, QualifiedName> _function_1 = (Pair<TerminologyBox, Concept> it) -> {
-      return this.<Concept>importedResourceNameFunction(it);
+    final Function<Pair<TerminologyBox, ConceptKind>, QualifiedName> _function_1 = (Pair<TerminologyBox, ConceptKind> it) -> {
+      return this.<ConceptKind>importedResourceNameFunction(it);
     };
-    return this.<Concept>bundleScope(b, _function, _function_1);
+    return this.<ConceptKind>bundleScope(b, _function, _function_1);
   }
   
   public <T extends LogicalElement> IScope descriptionScope(final DescriptionBox dbox, final Function<DescriptionBox, Iterable<T>> localScopeFunction, final Function<Pair<DescriptionBox, T>, QualifiedName> nameFunction) {
@@ -2055,10 +2054,10 @@ public class OMLScopeExtensions {
       final Iterable<TerminologyBox> tboxes = this._oMLExtensions.allImportedTerminologiesFromDescription(dbox);
       final ArrayList<IEObjectDescription> result = Lists.<IEObjectDescription>newArrayList();
       final Function1<TerminologyBox, Iterable<IEObjectDescription>> _function = (TerminologyBox tbox) -> {
-        final Function<Concept, QualifiedName> _function_1 = (Concept importedThing) -> {
-          return this.<Concept>importedResourceNameFunction(Pair.<TerminologyBox, Concept>of(tbox, importedThing));
+        final Function<ConceptKind, QualifiedName> _function_1 = (ConceptKind importedThing) -> {
+          return this.<ConceptKind>importedResourceNameFunction(Pair.<TerminologyBox, ConceptKind>of(tbox, importedThing));
         };
-        return Scopes.<Concept>scopedElementsFor(
+        return Scopes.<ConceptKind>scopedElementsFor(
           this._oMLExtensions.localConcepts(tbox), _function_1);
       };
       final Iterable<IEObjectDescription> inc = Iterables.<IEObjectDescription>concat(IterableExtensions.<TerminologyBox, Iterable<IEObjectDescription>>map(tboxes, _function));
@@ -2074,10 +2073,10 @@ public class OMLScopeExtensions {
       final Iterable<TerminologyBox> tboxes = this._oMLExtensions.allImportedTerminologiesFromDescription(dbox);
       final ArrayList<IEObjectDescription> result = Lists.<IEObjectDescription>newArrayList();
       final Function1<TerminologyBox, Iterable<IEObjectDescription>> _function = (TerminologyBox tbox) -> {
-        final Function<ReifiedRelationship, QualifiedName> _function_1 = (ReifiedRelationship importedThing) -> {
-          return this.<ReifiedRelationship>importedResourceNameFunction(Pair.<TerminologyBox, ReifiedRelationship>of(tbox, importedThing));
+        final Function<ConceptualRelationship, QualifiedName> _function_1 = (ConceptualRelationship importedThing) -> {
+          return this.<ConceptualRelationship>importedResourceNameFunction(Pair.<TerminologyBox, ConceptualRelationship>of(tbox, importedThing));
         };
-        return Scopes.<ReifiedRelationship>scopedElementsFor(
+        return Scopes.<ConceptualRelationship>scopedElementsFor(
           this._oMLExtensions.localReifiedRelationships(tbox), _function_1);
       };
       final Iterable<IEObjectDescription> inc = Iterables.<IEObjectDescription>concat(IterableExtensions.<TerminologyBox, Iterable<IEObjectDescription>>map(tboxes, _function));

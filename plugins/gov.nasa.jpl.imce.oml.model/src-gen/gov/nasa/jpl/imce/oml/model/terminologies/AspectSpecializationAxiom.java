@@ -76,12 +76,12 @@ public interface AspectSpecializationAxiom extends SpecializationAxiom {
 	 * The super (parent) aspect
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Super Aspect</em>' reference.
-	 * @see #setSuperAspect(Aspect)
+	 * @see #setSuperAspect(AspectKind)
 	 * @see gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage#getAspectSpecializationAxiom_SuperAspect()
 	 * @model required="true"
 	 * @generated
 	 */
-	Aspect getSuperAspect();
+	AspectKind getSuperAspect();
 
 	/**
 	 * Sets the value of the '{@link gov.nasa.jpl.imce.oml.model.terminologies.AspectSpecializationAxiom#getSuperAspect <em>Super Aspect</em>}' reference.
@@ -91,7 +91,7 @@ public interface AspectSpecializationAxiom extends SpecializationAxiom {
 	 * @see #getSuperAspect()
 	 * @generated
 	 */
-	void setSuperAspect(Aspect value);
+	void setSuperAspect(AspectKind value);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -121,7 +121,7 @@ public interface AspectSpecializationAxiom extends SpecializationAxiom {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model dataType="gov.nasa.jpl.imce.oml.model.common.UUID" unique="false" required="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%java.lang.String%&gt; _uuid = this.getTbox().uuid();\n&lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt; _mappedTo = &lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;.&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt;of(\"tbox\", _uuid);\n&lt;%gov.nasa.jpl.imce.oml.model.terminologies.Aspect%&gt; _superAspect = this.getSuperAspect();\n&lt;%java.lang.String%&gt; _uuid_1 = null;\nif (_superAspect!=null)\n{\n\t_uuid_1=_superAspect.uuid();\n}\n&lt;%java.lang.String%&gt; _string = null;\nif (_uuid_1!=null)\n{\n\t_string=_uuid_1.toString();\n}\n&lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt; _mappedTo_1 = &lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;.&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt;of(\"superAspect\", _string);\n&lt;%gov.nasa.jpl.imce.oml.model.terminologies.Entity%&gt; _subEntity = this.getSubEntity();\n&lt;%java.lang.String%&gt; _uuid_2 = null;\nif (_subEntity!=null)\n{\n\t_uuid_2=_subEntity.uuid();\n}\n&lt;%java.lang.String%&gt; _string_1 = null;\nif (_uuid_2!=null)\n{\n\t_string_1=_uuid_2.toString();\n}\n&lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt; _mappedTo_2 = &lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;.&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt;of(\"subEntity\", _string_1);\n&lt;%java.util.UUID%&gt; _derivedUUID = &lt;%gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions%&gt;.derivedUUID(\n\t\"AspectSpecializationAxiom\", _mappedTo, _mappedTo_1, _mappedTo_2);\n&lt;%java.lang.String%&gt; _string_2 = null;\nif (_derivedUUID!=null)\n{\n\t_string_2=_derivedUUID.toString();\n}\nreturn _string_2;'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='&lt;%java.lang.String%&gt; _uuid = this.getTbox().uuid();\n&lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt; _mappedTo = &lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;.&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt;of(\"tbox\", _uuid);\n&lt;%gov.nasa.jpl.imce.oml.model.terminologies.AspectKind%&gt; _superAspect = this.getSuperAspect();\n&lt;%java.lang.String%&gt; _uuid_1 = null;\nif (_superAspect!=null)\n{\n\t_uuid_1=_superAspect.uuid();\n}\n&lt;%java.lang.String%&gt; _string = null;\nif (_uuid_1!=null)\n{\n\t_string=_uuid_1.toString();\n}\n&lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt; _mappedTo_1 = &lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;.&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt;of(\"superAspect\", _string);\n&lt;%gov.nasa.jpl.imce.oml.model.terminologies.Entity%&gt; _subEntity = this.getSubEntity();\n&lt;%java.lang.String%&gt; _uuid_2 = null;\nif (_subEntity!=null)\n{\n\t_uuid_2=_subEntity.uuid();\n}\n&lt;%java.lang.String%&gt; _string_1 = null;\nif (_uuid_2!=null)\n{\n\t_string_1=_uuid_2.toString();\n}\n&lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt; _mappedTo_2 = &lt;%org.eclipse.xtext.xbase.lib.Pair%&gt;.&lt;&lt;%java.lang.String%&gt;, &lt;%java.lang.String%&gt;&gt;of(\"subEntity\", _string_1);\n&lt;%java.util.UUID%&gt; _derivedUUID = &lt;%gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions%&gt;.derivedUUID(\n\t\"AspectSpecializationAxiom\", _mappedTo, _mappedTo_1, _mappedTo_2);\n&lt;%java.lang.String%&gt; _string_2 = null;\nif (_derivedUUID!=null)\n{\n\t_string_2=_derivedUUID.toString();\n}\nreturn _string_2;'"
 	 * @generated
 	 */
 	String uuid();

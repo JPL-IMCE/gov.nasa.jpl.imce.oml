@@ -803,33 +803,43 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.AtomicEntity");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cAspectParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cConceptParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cCardinalityRestrictedAspectParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cConceptParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cCardinalityRestrictedConceptParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
 		//AtomicEntity Entity:
-		//	Aspect | Concept;
+		//	Aspect | CardinalityRestrictedAspect | Concept | CardinalityRestrictedConcept;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//Aspect | Concept
+		//Aspect | CardinalityRestrictedAspect | Concept | CardinalityRestrictedConcept
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//Aspect
 		public RuleCall getAspectParserRuleCall_0() { return cAspectParserRuleCall_0; }
 		
+		//CardinalityRestrictedAspect
+		public RuleCall getCardinalityRestrictedAspectParserRuleCall_1() { return cCardinalityRestrictedAspectParserRuleCall_1; }
+		
 		//Concept
-		public RuleCall getConceptParserRuleCall_1() { return cConceptParserRuleCall_1; }
+		public RuleCall getConceptParserRuleCall_2() { return cConceptParserRuleCall_2; }
+		
+		//CardinalityRestrictedConcept
+		public RuleCall getCardinalityRestrictedConceptParserRuleCall_3() { return cCardinalityRestrictedConceptParserRuleCall_3; }
 	}
 	public class EntityRelationshipElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.EntityRelationship");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cReifiedRelationshipParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cReifiedRelationshipRestrictionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cUnreifiedRelationshipParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cCardinalityRestrictedReifiedRelationshipParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cUnreifiedRelationshipParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
 		//EntityRelationship:
-		//	ReifiedRelationship | ReifiedRelationshipRestriction | UnreifiedRelationship;
+		//	ReifiedRelationship | ReifiedRelationshipRestriction | CardinalityRestrictedReifiedRelationship |
+		//	UnreifiedRelationship;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//ReifiedRelationship | ReifiedRelationshipRestriction | UnreifiedRelationship
+		//ReifiedRelationship | ReifiedRelationshipRestriction | CardinalityRestrictedReifiedRelationship | UnreifiedRelationship
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//ReifiedRelationship
@@ -838,8 +848,11 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//ReifiedRelationshipRestriction
 		public RuleCall getReifiedRelationshipRestrictionParserRuleCall_1() { return cReifiedRelationshipRestrictionParserRuleCall_1; }
 		
+		//CardinalityRestrictedReifiedRelationship
+		public RuleCall getCardinalityRestrictedReifiedRelationshipParserRuleCall_2() { return cCardinalityRestrictedReifiedRelationshipParserRuleCall_2; }
+		
 		//UnreifiedRelationship
-		public RuleCall getUnreifiedRelationshipParserRuleCall_2() { return cUnreifiedRelationshipParserRuleCall_2; }
+		public RuleCall getUnreifiedRelationshipParserRuleCall_3() { return cUnreifiedRelationshipParserRuleCall_3; }
 	}
 	public class DatatypeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.Datatype");
@@ -1163,6 +1176,91 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
 	}
+	public class CardinalityRestrictedAspectElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.CardinalityRestrictedAspect");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cAnnotationsAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cAnnotationsAnnotationPropertyValueParserRuleCall_0_0 = (RuleCall)cAnnotationsAssignment_0.eContents().get(0);
+		private final Keyword cAspectKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Assignment cRestrictionKindAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cRestrictionKindCardinalityRestrictionKindEnumRuleCall_3_0 = (RuleCall)cRestrictionKindAssignment_3.eContents().get(0);
+		private final Assignment cRestrictedCardinalityAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cRestrictedCardinalityPositiveIntegerLiteralParserRuleCall_4_0 = (RuleCall)cRestrictedCardinalityAssignment_4.eContents().get(0);
+		private final Assignment cRestrictedRelationshipAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final CrossReference cRestrictedRelationshipRestrictableRelationshipCrossReference_5_0 = (CrossReference)cRestrictedRelationshipAssignment_5.eContents().get(0);
+		private final RuleCall cRestrictedRelationshipRestrictableRelationshipReferenceParserRuleCall_5_0_1 = (RuleCall)cRestrictedRelationshipRestrictableRelationshipCrossReference_5_0.eContents().get(1);
+		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
+		private final Keyword cFullStopKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
+		private final Assignment cRestrictedRangeAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
+		private final CrossReference cRestrictedRangeEntityCrossReference_6_1_0 = (CrossReference)cRestrictedRangeAssignment_6_1.eContents().get(0);
+		private final RuleCall cRestrictedRangeEntityReferenceParserRuleCall_6_1_0_1 = (RuleCall)cRestrictedRangeEntityCrossReference_6_1_0.eContents().get(1);
+		
+		//CardinalityRestrictedAspect:
+		//	annotations+=AnnotationPropertyValue*
+		//	'aspect' name=ID
+		//	restrictionKind=CardinalityRestrictionKind
+		//	restrictedCardinality=PositiveIntegerLiteral
+		//	restrictedRelationship=[RestrictableRelationship|Reference] ('.' restrictedRange=[Entity|Reference])?;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//annotations+=AnnotationPropertyValue* 'aspect' name=ID restrictionKind=CardinalityRestrictionKind
+		//restrictedCardinality=PositiveIntegerLiteral restrictedRelationship=[RestrictableRelationship|Reference] ('.'
+		//restrictedRange=[Entity|Reference])?
+		public Group getGroup() { return cGroup; }
+		
+		//annotations+=AnnotationPropertyValue*
+		public Assignment getAnnotationsAssignment_0() { return cAnnotationsAssignment_0; }
+		
+		//AnnotationPropertyValue
+		public RuleCall getAnnotationsAnnotationPropertyValueParserRuleCall_0_0() { return cAnnotationsAnnotationPropertyValueParserRuleCall_0_0; }
+		
+		//'aspect'
+		public Keyword getAspectKeyword_1() { return cAspectKeyword_1; }
+		
+		//name=ID
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
+		
+		//restrictionKind=CardinalityRestrictionKind
+		public Assignment getRestrictionKindAssignment_3() { return cRestrictionKindAssignment_3; }
+		
+		//CardinalityRestrictionKind
+		public RuleCall getRestrictionKindCardinalityRestrictionKindEnumRuleCall_3_0() { return cRestrictionKindCardinalityRestrictionKindEnumRuleCall_3_0; }
+		
+		//restrictedCardinality=PositiveIntegerLiteral
+		public Assignment getRestrictedCardinalityAssignment_4() { return cRestrictedCardinalityAssignment_4; }
+		
+		//PositiveIntegerLiteral
+		public RuleCall getRestrictedCardinalityPositiveIntegerLiteralParserRuleCall_4_0() { return cRestrictedCardinalityPositiveIntegerLiteralParserRuleCall_4_0; }
+		
+		//restrictedRelationship=[RestrictableRelationship|Reference]
+		public Assignment getRestrictedRelationshipAssignment_5() { return cRestrictedRelationshipAssignment_5; }
+		
+		//[RestrictableRelationship|Reference]
+		public CrossReference getRestrictedRelationshipRestrictableRelationshipCrossReference_5_0() { return cRestrictedRelationshipRestrictableRelationshipCrossReference_5_0; }
+		
+		//Reference
+		public RuleCall getRestrictedRelationshipRestrictableRelationshipReferenceParserRuleCall_5_0_1() { return cRestrictedRelationshipRestrictableRelationshipReferenceParserRuleCall_5_0_1; }
+		
+		//('.' restrictedRange=[Entity|Reference])?
+		public Group getGroup_6() { return cGroup_6; }
+		
+		//'.'
+		public Keyword getFullStopKeyword_6_0() { return cFullStopKeyword_6_0; }
+		
+		//restrictedRange=[Entity|Reference]
+		public Assignment getRestrictedRangeAssignment_6_1() { return cRestrictedRangeAssignment_6_1; }
+		
+		//[Entity|Reference]
+		public CrossReference getRestrictedRangeEntityCrossReference_6_1_0() { return cRestrictedRangeEntityCrossReference_6_1_0; }
+		
+		//Reference
+		public RuleCall getRestrictedRangeEntityReferenceParserRuleCall_6_1_0_1() { return cRestrictedRangeEntityReferenceParserRuleCall_6_1_0_1; }
+	}
 	public class ConceptElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.Concept");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -1194,6 +1292,91 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
+	}
+	public class CardinalityRestrictedConceptElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.CardinalityRestrictedConcept");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cAnnotationsAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cAnnotationsAnnotationPropertyValueParserRuleCall_0_0 = (RuleCall)cAnnotationsAssignment_0.eContents().get(0);
+		private final Keyword cConceptKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Assignment cRestrictionKindAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cRestrictionKindCardinalityRestrictionKindEnumRuleCall_3_0 = (RuleCall)cRestrictionKindAssignment_3.eContents().get(0);
+		private final Assignment cRestrictedCardinalityAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cRestrictedCardinalityPositiveIntegerLiteralParserRuleCall_4_0 = (RuleCall)cRestrictedCardinalityAssignment_4.eContents().get(0);
+		private final Assignment cRestrictedRelationshipAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final CrossReference cRestrictedRelationshipRestrictableRelationshipCrossReference_5_0 = (CrossReference)cRestrictedRelationshipAssignment_5.eContents().get(0);
+		private final RuleCall cRestrictedRelationshipRestrictableRelationshipReferenceParserRuleCall_5_0_1 = (RuleCall)cRestrictedRelationshipRestrictableRelationshipCrossReference_5_0.eContents().get(1);
+		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
+		private final Keyword cFullStopKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
+		private final Assignment cRestrictedRangeAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
+		private final CrossReference cRestrictedRangeEntityCrossReference_6_1_0 = (CrossReference)cRestrictedRangeAssignment_6_1.eContents().get(0);
+		private final RuleCall cRestrictedRangeEntityReferenceParserRuleCall_6_1_0_1 = (RuleCall)cRestrictedRangeEntityCrossReference_6_1_0.eContents().get(1);
+		
+		//CardinalityRestrictedConcept:
+		//	annotations+=AnnotationPropertyValue*
+		//	'concept' name=ID
+		//	restrictionKind=CardinalityRestrictionKind
+		//	restrictedCardinality=PositiveIntegerLiteral
+		//	restrictedRelationship=[RestrictableRelationship|Reference] ('.' restrictedRange=[Entity|Reference])?;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//annotations+=AnnotationPropertyValue* 'concept' name=ID restrictionKind=CardinalityRestrictionKind
+		//restrictedCardinality=PositiveIntegerLiteral restrictedRelationship=[RestrictableRelationship|Reference] ('.'
+		//restrictedRange=[Entity|Reference])?
+		public Group getGroup() { return cGroup; }
+		
+		//annotations+=AnnotationPropertyValue*
+		public Assignment getAnnotationsAssignment_0() { return cAnnotationsAssignment_0; }
+		
+		//AnnotationPropertyValue
+		public RuleCall getAnnotationsAnnotationPropertyValueParserRuleCall_0_0() { return cAnnotationsAnnotationPropertyValueParserRuleCall_0_0; }
+		
+		//'concept'
+		public Keyword getConceptKeyword_1() { return cConceptKeyword_1; }
+		
+		//name=ID
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
+		
+		//restrictionKind=CardinalityRestrictionKind
+		public Assignment getRestrictionKindAssignment_3() { return cRestrictionKindAssignment_3; }
+		
+		//CardinalityRestrictionKind
+		public RuleCall getRestrictionKindCardinalityRestrictionKindEnumRuleCall_3_0() { return cRestrictionKindCardinalityRestrictionKindEnumRuleCall_3_0; }
+		
+		//restrictedCardinality=PositiveIntegerLiteral
+		public Assignment getRestrictedCardinalityAssignment_4() { return cRestrictedCardinalityAssignment_4; }
+		
+		//PositiveIntegerLiteral
+		public RuleCall getRestrictedCardinalityPositiveIntegerLiteralParserRuleCall_4_0() { return cRestrictedCardinalityPositiveIntegerLiteralParserRuleCall_4_0; }
+		
+		//restrictedRelationship=[RestrictableRelationship|Reference]
+		public Assignment getRestrictedRelationshipAssignment_5() { return cRestrictedRelationshipAssignment_5; }
+		
+		//[RestrictableRelationship|Reference]
+		public CrossReference getRestrictedRelationshipRestrictableRelationshipCrossReference_5_0() { return cRestrictedRelationshipRestrictableRelationshipCrossReference_5_0; }
+		
+		//Reference
+		public RuleCall getRestrictedRelationshipRestrictableRelationshipReferenceParserRuleCall_5_0_1() { return cRestrictedRelationshipRestrictableRelationshipReferenceParserRuleCall_5_0_1; }
+		
+		//('.' restrictedRange=[Entity|Reference])?
+		public Group getGroup_6() { return cGroup_6; }
+		
+		//'.'
+		public Keyword getFullStopKeyword_6_0() { return cFullStopKeyword_6_0; }
+		
+		//restrictedRange=[Entity|Reference]
+		public Assignment getRestrictedRangeAssignment_6_1() { return cRestrictedRangeAssignment_6_1; }
+		
+		//[Entity|Reference]
+		public CrossReference getRestrictedRangeEntityCrossReference_6_1_0() { return cRestrictedRangeEntityCrossReference_6_1_0; }
+		
+		//Reference
+		public RuleCall getRestrictedRangeEntityReferenceParserRuleCall_6_1_0_1() { return cRestrictedRangeEntityReferenceParserRuleCall_6_1_0_1; }
 	}
 	public class ReifiedRelationshipElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.ReifiedRelationship");
@@ -1513,6 +1696,91 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_10() { return cRightCurlyBracketKeyword_10; }
+	}
+	public class CardinalityRestrictedReifiedRelationshipElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.CardinalityRestrictedReifiedRelationship");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cAnnotationsAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cAnnotationsAnnotationPropertyValueParserRuleCall_0_0 = (RuleCall)cAnnotationsAssignment_0.eContents().get(0);
+		private final Keyword cReifiedRelationshipKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Assignment cRestrictionKindAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cRestrictionKindCardinalityRestrictionKindEnumRuleCall_3_0 = (RuleCall)cRestrictionKindAssignment_3.eContents().get(0);
+		private final Assignment cRestrictedCardinalityAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cRestrictedCardinalityPositiveIntegerLiteralParserRuleCall_4_0 = (RuleCall)cRestrictedCardinalityAssignment_4.eContents().get(0);
+		private final Assignment cRestrictedRelationshipAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final CrossReference cRestrictedRelationshipRestrictableRelationshipCrossReference_5_0 = (CrossReference)cRestrictedRelationshipAssignment_5.eContents().get(0);
+		private final RuleCall cRestrictedRelationshipRestrictableRelationshipReferenceParserRuleCall_5_0_1 = (RuleCall)cRestrictedRelationshipRestrictableRelationshipCrossReference_5_0.eContents().get(1);
+		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
+		private final Keyword cFullStopKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
+		private final Assignment cRestrictedRangeAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
+		private final CrossReference cRestrictedRangeEntityCrossReference_6_1_0 = (CrossReference)cRestrictedRangeAssignment_6_1.eContents().get(0);
+		private final RuleCall cRestrictedRangeEntityReferenceParserRuleCall_6_1_0_1 = (RuleCall)cRestrictedRangeEntityCrossReference_6_1_0.eContents().get(1);
+		
+		//CardinalityRestrictedReifiedRelationship:
+		//	annotations+=AnnotationPropertyValue*
+		//	'reifiedRelationship' name=ID
+		//	restrictionKind=CardinalityRestrictionKind
+		//	restrictedCardinality=PositiveIntegerLiteral
+		//	restrictedRelationship=[RestrictableRelationship|Reference] ('.' restrictedRange=[Entity|Reference])?;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//annotations+=AnnotationPropertyValue* 'reifiedRelationship' name=ID restrictionKind=CardinalityRestrictionKind
+		//restrictedCardinality=PositiveIntegerLiteral restrictedRelationship=[RestrictableRelationship|Reference] ('.'
+		//restrictedRange=[Entity|Reference])?
+		public Group getGroup() { return cGroup; }
+		
+		//annotations+=AnnotationPropertyValue*
+		public Assignment getAnnotationsAssignment_0() { return cAnnotationsAssignment_0; }
+		
+		//AnnotationPropertyValue
+		public RuleCall getAnnotationsAnnotationPropertyValueParserRuleCall_0_0() { return cAnnotationsAnnotationPropertyValueParserRuleCall_0_0; }
+		
+		//'reifiedRelationship'
+		public Keyword getReifiedRelationshipKeyword_1() { return cReifiedRelationshipKeyword_1; }
+		
+		//name=ID
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
+		
+		//restrictionKind=CardinalityRestrictionKind
+		public Assignment getRestrictionKindAssignment_3() { return cRestrictionKindAssignment_3; }
+		
+		//CardinalityRestrictionKind
+		public RuleCall getRestrictionKindCardinalityRestrictionKindEnumRuleCall_3_0() { return cRestrictionKindCardinalityRestrictionKindEnumRuleCall_3_0; }
+		
+		//restrictedCardinality=PositiveIntegerLiteral
+		public Assignment getRestrictedCardinalityAssignment_4() { return cRestrictedCardinalityAssignment_4; }
+		
+		//PositiveIntegerLiteral
+		public RuleCall getRestrictedCardinalityPositiveIntegerLiteralParserRuleCall_4_0() { return cRestrictedCardinalityPositiveIntegerLiteralParserRuleCall_4_0; }
+		
+		//restrictedRelationship=[RestrictableRelationship|Reference]
+		public Assignment getRestrictedRelationshipAssignment_5() { return cRestrictedRelationshipAssignment_5; }
+		
+		//[RestrictableRelationship|Reference]
+		public CrossReference getRestrictedRelationshipRestrictableRelationshipCrossReference_5_0() { return cRestrictedRelationshipRestrictableRelationshipCrossReference_5_0; }
+		
+		//Reference
+		public RuleCall getRestrictedRelationshipRestrictableRelationshipReferenceParserRuleCall_5_0_1() { return cRestrictedRelationshipRestrictableRelationshipReferenceParserRuleCall_5_0_1; }
+		
+		//('.' restrictedRange=[Entity|Reference])?
+		public Group getGroup_6() { return cGroup_6; }
+		
+		//'.'
+		public Keyword getFullStopKeyword_6_0() { return cFullStopKeyword_6_0; }
+		
+		//restrictedRange=[Entity|Reference]
+		public Assignment getRestrictedRangeAssignment_6_1() { return cRestrictedRangeAssignment_6_1; }
+		
+		//[Entity|Reference]
+		public CrossReference getRestrictedRangeEntityCrossReference_6_1_0() { return cRestrictedRangeEntityCrossReference_6_1_0; }
+		
+		//Reference
+		public RuleCall getRestrictedRangeEntityReferenceParserRuleCall_6_1_0_1() { return cRestrictedRangeEntityReferenceParserRuleCall_6_1_0_1; }
 	}
 	public class UnreifiedRelationshipElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.UnreifiedRelationship");
@@ -5572,6 +5840,43 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		//'closed'
 		public Keyword getClosedWorldDesignationsClosedKeyword_1_0() { return cClosedWorldDesignationsClosedKeyword_1_0; }
 	}
+	public class CardinalityRestrictionKindElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.CardinalityRestrictionKind");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cMinEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cMinLessThanSignEqualsSignKeyword_0_0 = (Keyword)cMinEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cMaxEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cMaxGreaterThanSignEqualsSignKeyword_1_0 = (Keyword)cMaxEnumLiteralDeclaration_1.eContents().get(0);
+		private final EnumLiteralDeclaration cExactEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
+		private final Keyword cExactEqualsSignEqualsSignKeyword_2_0 = (Keyword)cExactEnumLiteralDeclaration_2.eContents().get(0);
+		
+		//enum CardinalityRestrictionKind:
+		//	Min='<=' |
+		//	Max='>=' |
+		//	Exact='==';
+		public EnumRule getRule() { return rule; }
+		
+		//Min='<=' | Max='>=' | Exact='=='
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//Min='<='
+		public EnumLiteralDeclaration getMinEnumLiteralDeclaration_0() { return cMinEnumLiteralDeclaration_0; }
+		
+		//'<='
+		public Keyword getMinLessThanSignEqualsSignKeyword_0_0() { return cMinLessThanSignEqualsSignKeyword_0_0; }
+		
+		//Max='>='
+		public EnumLiteralDeclaration getMaxEnumLiteralDeclaration_1() { return cMaxEnumLiteralDeclaration_1; }
+		
+		//'>='
+		public Keyword getMaxGreaterThanSignEqualsSignKeyword_1_0() { return cMaxGreaterThanSignEqualsSignKeyword_1_0; }
+		
+		//Exact='=='
+		public EnumLiteralDeclaration getExactEnumLiteralDeclaration_2() { return cExactEnumLiteralDeclaration_2; }
+		
+		//'=='
+		public Keyword getExactEqualsSignEqualsSignKeyword_2_0() { return cExactEqualsSignEqualsSignKeyword_2_0; }
+	}
 	public class DescriptionKindElements extends AbstractEnumRuleElementFinder {
 		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "gov.nasa.jpl.imce.oml.dsl.OML.DescriptionKind");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
@@ -5632,12 +5937,16 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	private final ConceptTreeDisjunctionElements pConceptTreeDisjunction;
 	private final DisjointUnionOfConceptsAxiomElements pDisjointUnionOfConceptsAxiom;
 	private final TerminologyKindElements eTerminologyKind;
+	private final CardinalityRestrictionKindElements eCardinalityRestrictionKind;
 	private final AspectElements pAspect;
+	private final CardinalityRestrictedAspectElements pCardinalityRestrictedAspect;
 	private final ConceptElements pConcept;
+	private final CardinalityRestrictedConceptElements pCardinalityRestrictedConcept;
 	private final ReifiedRelationshipElements pReifiedRelationship;
 	private final ForwardPropertyElements pForwardProperty;
 	private final InversePropertyElements pInverseProperty;
 	private final ReifiedRelationshipRestrictionElements pReifiedRelationshipRestriction;
+	private final CardinalityRestrictedReifiedRelationshipElements pCardinalityRestrictedReifiedRelationship;
 	private final UnreifiedRelationshipElements pUnreifiedRelationship;
 	private final ScalarElements pScalar;
 	private final StructureElements pStructure;
@@ -5811,12 +6120,16 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		this.pConceptTreeDisjunction = new ConceptTreeDisjunctionElements();
 		this.pDisjointUnionOfConceptsAxiom = new DisjointUnionOfConceptsAxiomElements();
 		this.eTerminologyKind = new TerminologyKindElements();
+		this.eCardinalityRestrictionKind = new CardinalityRestrictionKindElements();
 		this.pAspect = new AspectElements();
+		this.pCardinalityRestrictedAspect = new CardinalityRestrictedAspectElements();
 		this.pConcept = new ConceptElements();
+		this.pCardinalityRestrictedConcept = new CardinalityRestrictedConceptElements();
 		this.pReifiedRelationship = new ReifiedRelationshipElements();
 		this.pForwardProperty = new ForwardPropertyElements();
 		this.pInverseProperty = new InversePropertyElements();
 		this.pReifiedRelationshipRestriction = new ReifiedRelationshipRestrictionElements();
+		this.pCardinalityRestrictedReifiedRelationship = new CardinalityRestrictedReifiedRelationshipElements();
 		this.pUnreifiedRelationship = new UnreifiedRelationshipElements();
 		this.pScalar = new ScalarElements();
 		this.pStructure = new StructureElements();
@@ -6166,7 +6479,7 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//AtomicEntity Entity:
-	//	Aspect | Concept;
+	//	Aspect | CardinalityRestrictedAspect | Concept | CardinalityRestrictedConcept;
 	public AtomicEntityElements getAtomicEntityAccess() {
 		return pAtomicEntity;
 	}
@@ -6176,7 +6489,8 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//EntityRelationship:
-	//	ReifiedRelationship | ReifiedRelationshipRestriction | UnreifiedRelationship;
+	//	ReifiedRelationship | ReifiedRelationshipRestriction | CardinalityRestrictedReifiedRelationship |
+	//	UnreifiedRelationship;
 	public EntityRelationshipElements getEntityRelationshipAccess() {
 		return pEntityRelationship;
 	}
@@ -6329,6 +6643,18 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		return getTerminologyKindAccess().getRule();
 	}
 	
+	//enum CardinalityRestrictionKind:
+	//	Min='<=' |
+	//	Max='>=' |
+	//	Exact='==';
+	public CardinalityRestrictionKindElements getCardinalityRestrictionKindAccess() {
+		return eCardinalityRestrictionKind;
+	}
+	
+	public EnumRule getCardinalityRestrictionKindRule() {
+		return getCardinalityRestrictionKindAccess().getRule();
+	}
+	
 	//// 2 Atomic Entity Terms
 	//Aspect:
 	//	annotations+=AnnotationPropertyValue*
@@ -6341,6 +6667,20 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 		return getAspectAccess().getRule();
 	}
 	
+	//CardinalityRestrictedAspect:
+	//	annotations+=AnnotationPropertyValue*
+	//	'aspect' name=ID
+	//	restrictionKind=CardinalityRestrictionKind
+	//	restrictedCardinality=PositiveIntegerLiteral
+	//	restrictedRelationship=[RestrictableRelationship|Reference] ('.' restrictedRange=[Entity|Reference])?;
+	public CardinalityRestrictedAspectElements getCardinalityRestrictedAspectAccess() {
+		return pCardinalityRestrictedAspect;
+	}
+	
+	public ParserRule getCardinalityRestrictedAspectRule() {
+		return getCardinalityRestrictedAspectAccess().getRule();
+	}
+	
 	//Concept:
 	//	annotations+=AnnotationPropertyValue*
 	//	'concept' name=ID;
@@ -6350,6 +6690,20 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getConceptRule() {
 		return getConceptAccess().getRule();
+	}
+	
+	//CardinalityRestrictedConcept:
+	//	annotations+=AnnotationPropertyValue*
+	//	'concept' name=ID
+	//	restrictionKind=CardinalityRestrictionKind
+	//	restrictedCardinality=PositiveIntegerLiteral
+	//	restrictedRelationship=[RestrictableRelationship|Reference] ('.' restrictedRange=[Entity|Reference])?;
+	public CardinalityRestrictedConceptElements getCardinalityRestrictedConceptAccess() {
+		return pCardinalityRestrictedConcept;
+	}
+	
+	public ParserRule getCardinalityRestrictedConceptRule() {
+		return getCardinalityRestrictedConceptAccess().getRule();
 	}
 	
 	//// 2 EntityRelationship Terms
@@ -6402,6 +6756,20 @@ public class OMLGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getReifiedRelationshipRestrictionRule() {
 		return getReifiedRelationshipRestrictionAccess().getRule();
+	}
+	
+	//CardinalityRestrictedReifiedRelationship:
+	//	annotations+=AnnotationPropertyValue*
+	//	'reifiedRelationship' name=ID
+	//	restrictionKind=CardinalityRestrictionKind
+	//	restrictedCardinality=PositiveIntegerLiteral
+	//	restrictedRelationship=[RestrictableRelationship|Reference] ('.' restrictedRange=[Entity|Reference])?;
+	public CardinalityRestrictedReifiedRelationshipElements getCardinalityRestrictedReifiedRelationshipAccess() {
+		return pCardinalityRestrictedReifiedRelationship;
+	}
+	
+	public ParserRule getCardinalityRestrictedReifiedRelationshipRule() {
+		return getCardinalityRestrictedReifiedRelationshipAccess().getRule();
 	}
 	
 	//UnreifiedRelationship:

@@ -20,7 +20,7 @@ package gov.nasa.jpl.imce.oml.model.terminologies.impl;
 
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
 
-import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
+import gov.nasa.jpl.imce.oml.model.terminologies.ConceptKind;
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.Entity;
 import gov.nasa.jpl.imce.oml.model.terminologies.TerminologiesPackage;
@@ -35,6 +35,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -64,7 +65,7 @@ public class ConceptSpecializationAxiomImpl extends SpecializationAxiomImpl impl
 	 * @generated
 	 * @ordered
 	 */
-	protected Concept subConcept;
+	protected ConceptKind subConcept;
 
 	/**
 	 * The cached value of the '{@link #getSuperConcept() <em>Super Concept</em>}' reference.
@@ -74,7 +75,7 @@ public class ConceptSpecializationAxiomImpl extends SpecializationAxiomImpl impl
 	 * @generated
 	 * @ordered
 	 */
-	protected Concept superConcept;
+	protected ConceptKind superConcept;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -100,10 +101,10 @@ public class ConceptSpecializationAxiomImpl extends SpecializationAxiomImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Concept getSubConcept() {
-		if (subConcept != null && subConcept.eIsProxy()) {
+	public ConceptKind getSubConcept() {
+		if (subConcept != null && ((EObject)subConcept).eIsProxy()) {
 			InternalEObject oldSubConcept = (InternalEObject)subConcept;
-			subConcept = (Concept)eResolveProxy(oldSubConcept);
+			subConcept = (ConceptKind)eResolveProxy(oldSubConcept);
 			if (subConcept != oldSubConcept) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, TerminologiesPackage.CONCEPT_SPECIALIZATION_AXIOM__SUB_CONCEPT, oldSubConcept, subConcept));
@@ -117,7 +118,7 @@ public class ConceptSpecializationAxiomImpl extends SpecializationAxiomImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Concept basicGetSubConcept() {
+	public ConceptKind basicGetSubConcept() {
 		return subConcept;
 	}
 
@@ -126,8 +127,8 @@ public class ConceptSpecializationAxiomImpl extends SpecializationAxiomImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSubConcept(Concept newSubConcept) {
-		Concept oldSubConcept = subConcept;
+	public void setSubConcept(ConceptKind newSubConcept) {
+		ConceptKind oldSubConcept = subConcept;
 		subConcept = newSubConcept;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.CONCEPT_SPECIALIZATION_AXIOM__SUB_CONCEPT, oldSubConcept, subConcept));
@@ -138,10 +139,10 @@ public class ConceptSpecializationAxiomImpl extends SpecializationAxiomImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Concept getSuperConcept() {
-		if (superConcept != null && superConcept.eIsProxy()) {
+	public ConceptKind getSuperConcept() {
+		if (superConcept != null && ((EObject)superConcept).eIsProxy()) {
 			InternalEObject oldSuperConcept = (InternalEObject)superConcept;
-			superConcept = (Concept)eResolveProxy(oldSuperConcept);
+			superConcept = (ConceptKind)eResolveProxy(oldSuperConcept);
 			if (superConcept != oldSuperConcept) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, TerminologiesPackage.CONCEPT_SPECIALIZATION_AXIOM__SUPER_CONCEPT, oldSuperConcept, superConcept));
@@ -155,7 +156,7 @@ public class ConceptSpecializationAxiomImpl extends SpecializationAxiomImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Concept basicGetSuperConcept() {
+	public ConceptKind basicGetSuperConcept() {
 		return superConcept;
 	}
 
@@ -164,8 +165,8 @@ public class ConceptSpecializationAxiomImpl extends SpecializationAxiomImpl impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSuperConcept(Concept newSuperConcept) {
-		Concept oldSuperConcept = superConcept;
+	public void setSuperConcept(ConceptKind newSuperConcept) {
+		ConceptKind oldSuperConcept = superConcept;
 		superConcept = newSuperConcept;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, TerminologiesPackage.CONCEPT_SPECIALIZATION_AXIOM__SUPER_CONCEPT, oldSuperConcept, superConcept));
@@ -201,7 +202,7 @@ public class ConceptSpecializationAxiomImpl extends SpecializationAxiomImpl impl
 			_uuid=_tbox.uuid();
 		}
 		Pair<String, String> _mappedTo = Pair.<String, String>of("tbox", _uuid);
-		Concept _superConcept = this.getSuperConcept();
+		ConceptKind _superConcept = this.getSuperConcept();
 		String _uuid_1 = null;
 		if (_superConcept!=null) {
 			_uuid_1=_superConcept.uuid();
@@ -211,7 +212,7 @@ public class ConceptSpecializationAxiomImpl extends SpecializationAxiomImpl impl
 			_string=_uuid_1.toString();
 		}
 		Pair<String, String> _mappedTo_1 = Pair.<String, String>of("superConcept", _string);
-		Concept _subConcept = this.getSubConcept();
+		ConceptKind _subConcept = this.getSubConcept();
 		String _uuid_2 = null;
 		if (_subConcept!=null) {
 			_uuid_2=_subConcept.uuid();
@@ -257,10 +258,10 @@ public class ConceptSpecializationAxiomImpl extends SpecializationAxiomImpl impl
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case TerminologiesPackage.CONCEPT_SPECIALIZATION_AXIOM__SUB_CONCEPT:
-				setSubConcept((Concept)newValue);
+				setSubConcept((ConceptKind)newValue);
 				return;
 			case TerminologiesPackage.CONCEPT_SPECIALIZATION_AXIOM__SUPER_CONCEPT:
-				setSuperConcept((Concept)newValue);
+				setSuperConcept((ConceptKind)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -275,10 +276,10 @@ public class ConceptSpecializationAxiomImpl extends SpecializationAxiomImpl impl
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case TerminologiesPackage.CONCEPT_SPECIALIZATION_AXIOM__SUB_CONCEPT:
-				setSubConcept((Concept)null);
+				setSubConcept((ConceptKind)null);
 				return;
 			case TerminologiesPackage.CONCEPT_SPECIALIZATION_AXIOM__SUPER_CONCEPT:
-				setSuperConcept((Concept)null);
+				setSuperConcept((ConceptKind)null);
 				return;
 		}
 		super.eUnset(featureID);

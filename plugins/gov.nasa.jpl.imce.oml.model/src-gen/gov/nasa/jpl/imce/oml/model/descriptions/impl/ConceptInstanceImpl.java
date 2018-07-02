@@ -24,7 +24,7 @@ import gov.nasa.jpl.imce.oml.model.descriptions.ConceptInstance;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionBox;
 import gov.nasa.jpl.imce.oml.model.descriptions.DescriptionsPackage;
 
-import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
+import gov.nasa.jpl.imce.oml.model.terminologies.ConceptKind;
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptualEntity;
 
 import java.lang.reflect.InvocationTargetException;
@@ -36,6 +36,7 @@ import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -65,7 +66,7 @@ public class ConceptInstanceImpl extends ConceptualEntitySingletonInstanceImpl i
 	 * @generated
 	 * @ordered
 	 */
-	protected Concept singletonConceptClassifier;
+	protected ConceptKind singletonConceptClassifier;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -123,7 +124,7 @@ public class ConceptInstanceImpl extends ConceptualEntitySingletonInstanceImpl i
 	 */
 	public void setDescriptionBox(DescriptionBox newDescriptionBox) {
 		if (newDescriptionBox != eInternalContainer() || (eContainerFeatureID() != DescriptionsPackage.CONCEPT_INSTANCE__DESCRIPTION_BOX && newDescriptionBox != null)) {
-			if (EcoreUtil.isAncestor(this, newDescriptionBox))
+			if (EcoreUtil.isAncestor(this, (EObject)newDescriptionBox))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
@@ -142,10 +143,10 @@ public class ConceptInstanceImpl extends ConceptualEntitySingletonInstanceImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Concept getSingletonConceptClassifier() {
-		if (singletonConceptClassifier != null && singletonConceptClassifier.eIsProxy()) {
+	public ConceptKind getSingletonConceptClassifier() {
+		if (singletonConceptClassifier != null && ((EObject)singletonConceptClassifier).eIsProxy()) {
 			InternalEObject oldSingletonConceptClassifier = (InternalEObject)singletonConceptClassifier;
-			singletonConceptClassifier = (Concept)eResolveProxy(oldSingletonConceptClassifier);
+			singletonConceptClassifier = (ConceptKind)eResolveProxy(oldSingletonConceptClassifier);
 			if (singletonConceptClassifier != oldSingletonConceptClassifier) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DescriptionsPackage.CONCEPT_INSTANCE__SINGLETON_CONCEPT_CLASSIFIER, oldSingletonConceptClassifier, singletonConceptClassifier));
@@ -159,7 +160,7 @@ public class ConceptInstanceImpl extends ConceptualEntitySingletonInstanceImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Concept basicGetSingletonConceptClassifier() {
+	public ConceptKind basicGetSingletonConceptClassifier() {
 		return singletonConceptClassifier;
 	}
 
@@ -168,8 +169,8 @@ public class ConceptInstanceImpl extends ConceptualEntitySingletonInstanceImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSingletonConceptClassifier(Concept newSingletonConceptClassifier) {
-		Concept oldSingletonConceptClassifier = singletonConceptClassifier;
+	public void setSingletonConceptClassifier(ConceptKind newSingletonConceptClassifier) {
+		ConceptKind oldSingletonConceptClassifier = singletonConceptClassifier;
 		singletonConceptClassifier = newSingletonConceptClassifier;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DescriptionsPackage.CONCEPT_INSTANCE__SINGLETON_CONCEPT_CLASSIFIER, oldSingletonConceptClassifier, singletonConceptClassifier));
@@ -276,7 +277,7 @@ public class ConceptInstanceImpl extends ConceptualEntitySingletonInstanceImpl i
 				setDescriptionBox((DescriptionBox)newValue);
 				return;
 			case DescriptionsPackage.CONCEPT_INSTANCE__SINGLETON_CONCEPT_CLASSIFIER:
-				setSingletonConceptClassifier((Concept)newValue);
+				setSingletonConceptClassifier((ConceptKind)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -294,7 +295,7 @@ public class ConceptInstanceImpl extends ConceptualEntitySingletonInstanceImpl i
 				setDescriptionBox((DescriptionBox)null);
 				return;
 			case DescriptionsPackage.CONCEPT_INSTANCE__SINGLETON_CONCEPT_CLASSIFIER:
-				setSingletonConceptClassifier((Concept)null);
+				setSingletonConceptClassifier((ConceptKind)null);
 				return;
 		}
 		super.eUnset(featureID);

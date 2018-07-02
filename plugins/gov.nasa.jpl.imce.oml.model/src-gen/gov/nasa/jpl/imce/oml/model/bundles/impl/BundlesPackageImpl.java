@@ -675,7 +675,7 @@ public class BundlesPackageImpl extends EPackageImpl implements BundlesPackage {
 		initEOperation(getDisjointUnionOfConceptsAxiom__AllNestedElements(), theCommonPackage.getLogicalElement(), "allNestedElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(specificDisjointConceptAxiomEClass, SpecificDisjointConceptAxiom.class, "SpecificDisjointConceptAxiom", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSpecificDisjointConceptAxiom_DisjointLeaf(), theTerminologiesPackage.getConcept(), null, "disjointLeaf", null, 1, 1, SpecificDisjointConceptAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSpecificDisjointConceptAxiom_DisjointLeaf(), theTerminologiesPackage.getConceptKind(), null, "disjointLeaf", null, 1, 1, SpecificDisjointConceptAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getSpecificDisjointConceptAxiom__Uuid(), theCommonPackage.getUUID(), "uuid", 1, 1, !IS_UNIQUE, IS_ORDERED);
 
@@ -691,7 +691,7 @@ public class BundlesPackageImpl extends EPackageImpl implements BundlesPackage {
 		initEOperation(getAnonymousConceptUnionAxiom__AllNestedElements(), theCommonPackage.getLogicalElement(), "allNestedElements", 0, -1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(rootConceptTaxonomyAxiomEClass, RootConceptTaxonomyAxiom.class, "RootConceptTaxonomyAxiom", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getRootConceptTaxonomyAxiom_Root(), theTerminologiesPackage.getConcept(), null, "root", null, 1, 1, RootConceptTaxonomyAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRootConceptTaxonomyAxiom_Root(), theTerminologiesPackage.getConceptKind(), null, "root", null, 1, 1, RootConceptTaxonomyAxiom.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getRootConceptTaxonomyAxiom__Uuid(), theCommonPackage.getUUID(), "uuid", 1, 1, !IS_UNIQUE, IS_ORDERED);
 

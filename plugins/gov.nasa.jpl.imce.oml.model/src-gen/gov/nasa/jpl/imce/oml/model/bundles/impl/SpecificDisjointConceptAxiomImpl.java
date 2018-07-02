@@ -26,7 +26,7 @@ import gov.nasa.jpl.imce.oml.model.common.LogicalElement;
 
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
 
-import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
+import gov.nasa.jpl.imce.oml.model.terminologies.ConceptKind;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -38,6 +38,7 @@ import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -66,7 +67,7 @@ public class SpecificDisjointConceptAxiomImpl extends DisjointUnionOfConceptsAxi
 	 * @generated
 	 * @ordered
 	 */
-	protected Concept disjointLeaf;
+	protected ConceptKind disjointLeaf;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -92,10 +93,10 @@ public class SpecificDisjointConceptAxiomImpl extends DisjointUnionOfConceptsAxi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Concept getDisjointLeaf() {
-		if (disjointLeaf != null && disjointLeaf.eIsProxy()) {
+	public ConceptKind getDisjointLeaf() {
+		if (disjointLeaf != null && ((EObject)disjointLeaf).eIsProxy()) {
 			InternalEObject oldDisjointLeaf = (InternalEObject)disjointLeaf;
-			disjointLeaf = (Concept)eResolveProxy(oldDisjointLeaf);
+			disjointLeaf = (ConceptKind)eResolveProxy(oldDisjointLeaf);
 			if (disjointLeaf != oldDisjointLeaf) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, BundlesPackage.SPECIFIC_DISJOINT_CONCEPT_AXIOM__DISJOINT_LEAF, oldDisjointLeaf, disjointLeaf));
@@ -109,7 +110,7 @@ public class SpecificDisjointConceptAxiomImpl extends DisjointUnionOfConceptsAxi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Concept basicGetDisjointLeaf() {
+	public ConceptKind basicGetDisjointLeaf() {
 		return disjointLeaf;
 	}
 
@@ -118,8 +119,8 @@ public class SpecificDisjointConceptAxiomImpl extends DisjointUnionOfConceptsAxi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setDisjointLeaf(Concept newDisjointLeaf) {
-		Concept oldDisjointLeaf = disjointLeaf;
+	public void setDisjointLeaf(ConceptKind newDisjointLeaf) {
+		ConceptKind oldDisjointLeaf = disjointLeaf;
 		disjointLeaf = newDisjointLeaf;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, BundlesPackage.SPECIFIC_DISJOINT_CONCEPT_AXIOM__DISJOINT_LEAF, oldDisjointLeaf, disjointLeaf));
@@ -141,7 +142,7 @@ public class SpecificDisjointConceptAxiomImpl extends DisjointUnionOfConceptsAxi
 			_string=_uuid.toString();
 		}
 		Pair<String, String> _mappedTo = Pair.<String, String>of("disjointTaxonomyParent", _string);
-		Concept _disjointLeaf = this.getDisjointLeaf();
+		ConceptKind _disjointLeaf = this.getDisjointLeaf();
 		String _uuid_1 = null;
 		if (_disjointLeaf!=null) {
 			_uuid_1=_disjointLeaf.uuid();
@@ -193,7 +194,7 @@ public class SpecificDisjointConceptAxiomImpl extends DisjointUnionOfConceptsAxi
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case BundlesPackage.SPECIFIC_DISJOINT_CONCEPT_AXIOM__DISJOINT_LEAF:
-				setDisjointLeaf((Concept)newValue);
+				setDisjointLeaf((ConceptKind)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -208,7 +209,7 @@ public class SpecificDisjointConceptAxiomImpl extends DisjointUnionOfConceptsAxi
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case BundlesPackage.SPECIFIC_DISJOINT_CONCEPT_AXIOM__DISJOINT_LEAF:
-				setDisjointLeaf((Concept)null);
+				setDisjointLeaf((ConceptKind)null);
 				return;
 		}
 		super.eUnset(featureID);

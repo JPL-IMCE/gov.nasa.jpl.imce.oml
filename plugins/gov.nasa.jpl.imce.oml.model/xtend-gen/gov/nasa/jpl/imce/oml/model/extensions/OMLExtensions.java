@@ -71,10 +71,15 @@ import gov.nasa.jpl.imce.oml.model.graphs.ConceptDesignationTerminologyAxiom;
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyGraph;
 import gov.nasa.jpl.imce.oml.model.graphs.TerminologyNestingAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.Aspect;
+import gov.nasa.jpl.imce.oml.model.terminologies.AspectKind;
 import gov.nasa.jpl.imce.oml.model.terminologies.AspectSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.BinaryScalarRestriction;
+import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedAspect;
+import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedConcept;
+import gov.nasa.jpl.imce.oml.model.terminologies.CardinalityRestrictedReifiedRelationship;
 import gov.nasa.jpl.imce.oml.model.terminologies.ChainRule;
 import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
+import gov.nasa.jpl.imce.oml.model.terminologies.ConceptKind;
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptSpecializationAxiom;
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptualEntity;
 import gov.nasa.jpl.imce.oml.model.terminologies.ConceptualRelationship;
@@ -681,30 +686,30 @@ public class OMLExtensions {
     return Iterables.<ConceptualEntity>concat(_localConceptualEntities, _flatten);
   }
   
-  public Iterable<Aspect> localAspects(final TerminologyBox it) {
-    return Iterables.<Aspect>filter(it.getBoxStatements(), Aspect.class);
+  public Iterable<AspectKind> localAspects(final TerminologyBox it) {
+    return Iterables.<AspectKind>filter(it.getBoxStatements(), AspectKind.class);
   }
   
-  public Iterable<Aspect> allAspects(final TerminologyBox it) {
-    Iterable<Aspect> _localAspects = this.localAspects(it);
-    final Function1<TerminologyBox, Iterable<Aspect>> _function = (TerminologyBox it_1) -> {
+  public Iterable<AspectKind> allAspects(final TerminologyBox it) {
+    Iterable<AspectKind> _localAspects = this.localAspects(it);
+    final Function1<TerminologyBox, Iterable<AspectKind>> _function = (TerminologyBox it_1) -> {
       return this.localAspects(it_1);
     };
-    Iterable<Aspect> _flatten = Iterables.<Aspect>concat(IterableExtensions.<TerminologyBox, Iterable<Aspect>>map(OMLExtensions.allImportedTerminologies(it), _function));
-    return Iterables.<Aspect>concat(_localAspects, _flatten);
+    Iterable<AspectKind> _flatten = Iterables.<AspectKind>concat(IterableExtensions.<TerminologyBox, Iterable<AspectKind>>map(OMLExtensions.allImportedTerminologies(it), _function));
+    return Iterables.<AspectKind>concat(_localAspects, _flatten);
   }
   
-  public Iterable<Concept> localConcepts(final TerminologyBox it) {
-    return Iterables.<Concept>filter(it.getBoxStatements(), Concept.class);
+  public Iterable<ConceptKind> localConcepts(final TerminologyBox it) {
+    return Iterables.<ConceptKind>filter(it.getBoxStatements(), ConceptKind.class);
   }
   
-  public Iterable<Concept> allConcepts(final TerminologyBox it) {
-    Iterable<Concept> _localConcepts = this.localConcepts(it);
-    final Function1<TerminologyBox, Iterable<Concept>> _function = (TerminologyBox it_1) -> {
+  public Iterable<ConceptKind> allConcepts(final TerminologyBox it) {
+    Iterable<ConceptKind> _localConcepts = this.localConcepts(it);
+    final Function1<TerminologyBox, Iterable<ConceptKind>> _function = (TerminologyBox it_1) -> {
       return this.localConcepts(it_1);
     };
-    Iterable<Concept> _flatten = Iterables.<Concept>concat(IterableExtensions.<TerminologyBox, Iterable<Concept>>map(OMLExtensions.allImportedTerminologies(it), _function));
-    return Iterables.<Concept>concat(_localConcepts, _flatten);
+    Iterable<ConceptKind> _flatten = Iterables.<ConceptKind>concat(IterableExtensions.<TerminologyBox, Iterable<ConceptKind>>map(OMLExtensions.allImportedTerminologies(it), _function));
+    return Iterables.<ConceptKind>concat(_localConcepts, _flatten);
   }
   
   public Iterable<ConceptualRelationship> localConceptualRelationships(final TerminologyBox it) {
@@ -715,21 +720,21 @@ public class OMLExtensions {
     return Iterables.<ReifiedRelationshipRestriction>filter(it.getBoxStatements(), ReifiedRelationshipRestriction.class);
   }
   
-  public Iterable<ReifiedRelationship> localReifiedRelationships(final TerminologyBox it) {
-    return Iterables.<ReifiedRelationship>filter(it.getBoxStatements(), ReifiedRelationship.class);
+  public Iterable<ConceptualRelationship> localReifiedRelationships(final TerminologyBox it) {
+    return Iterables.<ConceptualRelationship>filter(it.getBoxStatements(), ConceptualRelationship.class);
   }
   
   public Iterable<UnreifiedRelationship> localUnreifiedRelationships(final TerminologyBox it) {
     return Iterables.<UnreifiedRelationship>filter(it.getBoxStatements(), UnreifiedRelationship.class);
   }
   
-  public Iterable<ReifiedRelationship> allReifiedRelationships(final TerminologyBox it) {
-    Iterable<ReifiedRelationship> _localReifiedRelationships = this.localReifiedRelationships(it);
-    final Function1<TerminologyBox, Iterable<ReifiedRelationship>> _function = (TerminologyBox it_1) -> {
+  public Iterable<ConceptualRelationship> allReifiedRelationships(final TerminologyBox it) {
+    Iterable<ConceptualRelationship> _localReifiedRelationships = this.localReifiedRelationships(it);
+    final Function1<TerminologyBox, Iterable<ConceptualRelationship>> _function = (TerminologyBox it_1) -> {
       return this.localReifiedRelationships(it_1);
     };
-    Iterable<ReifiedRelationship> _flatten = Iterables.<ReifiedRelationship>concat(IterableExtensions.<TerminologyBox, Iterable<ReifiedRelationship>>map(OMLExtensions.allImportedTerminologies(it), _function));
-    return Iterables.<ReifiedRelationship>concat(_localReifiedRelationships, _flatten);
+    Iterable<ConceptualRelationship> _flatten = Iterables.<ConceptualRelationship>concat(IterableExtensions.<TerminologyBox, Iterable<ConceptualRelationship>>map(OMLExtensions.allImportedTerminologies(it), _function));
+    return Iterables.<ConceptualRelationship>concat(_localReifiedRelationships, _flatten);
   }
   
   public Iterable<EntityRelationship> localEntityRelationships(final TerminologyBox it) {
@@ -740,9 +745,13 @@ public class OMLExtensions {
     Iterable<Predicate> _xblockexpression = null;
     {
       final ArrayList<Predicate> result = new ArrayList<Predicate>();
-      final Consumer<ReifiedRelationship> _function = (ReifiedRelationship rr) -> {
-        result.add(rr.getForwardProperty());
-        result.add(rr.getInverseProperty());
+      final Consumer<ConceptualRelationship> _function = (ConceptualRelationship rr) -> {
+        boolean _matched = false;
+        if (rr instanceof ReifiedRelationship) {
+          _matched=true;
+          result.add(((ReifiedRelationship)rr).getForwardProperty());
+          result.add(((ReifiedRelationship)rr).getInverseProperty());
+        }
       };
       this.localReifiedRelationships(it).forEach(_function);
       Iterables.<Predicate>addAll(result, this.localUnreifiedRelationships(it));
@@ -753,26 +762,48 @@ public class OMLExtensions {
   }
   
   public Iterable<ForwardProperty> localForwardProperties(final TerminologyBox it) {
-    final Function1<ReifiedRelationship, ForwardProperty> _function = (ReifiedRelationship it_1) -> {
-      return it_1.getForwardProperty();
+    final Function1<ConceptualRelationship, ForwardProperty> _function = (ConceptualRelationship rr) -> {
+      ForwardProperty _switchResult = null;
+      boolean _matched = false;
+      if (rr instanceof ReifiedRelationship) {
+        _matched=true;
+        _switchResult = ((ReifiedRelationship)rr).getForwardProperty();
+      }
+      if (!_matched) {
+        _switchResult = null;
+      }
+      return _switchResult;
     };
-    return IterableExtensions.<ForwardProperty>filterNull(IterableExtensions.<ReifiedRelationship, ForwardProperty>map(this.localReifiedRelationships(it), _function));
+    return IterableExtensions.<ForwardProperty>filterNull(IterableExtensions.<ConceptualRelationship, ForwardProperty>map(this.localReifiedRelationships(it), _function));
   }
   
   public Iterable<InverseProperty> localInverseProperties(final TerminologyBox it) {
-    final Function1<ReifiedRelationship, InverseProperty> _function = (ReifiedRelationship it_1) -> {
-      return it_1.getInverseProperty();
+    final Function1<ConceptualRelationship, InverseProperty> _function = (ConceptualRelationship rr) -> {
+      InverseProperty _switchResult = null;
+      boolean _matched = false;
+      if (rr instanceof ReifiedRelationship) {
+        _matched=true;
+        _switchResult = ((ReifiedRelationship)rr).getInverseProperty();
+      }
+      if (!_matched) {
+        _switchResult = null;
+      }
+      return _switchResult;
     };
-    return IterableExtensions.<InverseProperty>filterNull(IterableExtensions.<ReifiedRelationship, InverseProperty>map(this.localReifiedRelationships(it), _function));
+    return IterableExtensions.<InverseProperty>filterNull(IterableExtensions.<ConceptualRelationship, InverseProperty>map(this.localReifiedRelationships(it), _function));
   }
   
   public Iterable<RestrictableRelationship> localRestrictableRelationships(final TerminologyBox it) {
     Iterable<RestrictableRelationship> _xblockexpression = null;
     {
       final ArrayList<RestrictableRelationship> result = new ArrayList<RestrictableRelationship>();
-      final Consumer<ReifiedRelationship> _function = (ReifiedRelationship rr) -> {
-        result.add(rr.getForwardProperty());
-        result.add(rr.getInverseProperty());
+      final Consumer<ConceptualRelationship> _function = (ConceptualRelationship rr) -> {
+        boolean _matched = false;
+        if (rr instanceof ReifiedRelationship) {
+          _matched=true;
+          result.add(((ReifiedRelationship)rr).getForwardProperty());
+          result.add(((ReifiedRelationship)rr).getInverseProperty());
+        }
       };
       this.localReifiedRelationships(it).forEach(_function);
       Iterables.<RestrictableRelationship>addAll(result, this.localUnreifiedRelationships(it));
@@ -984,6 +1015,12 @@ public class OMLExtensions {
       }
     }
     if (!_matched) {
+      if (e instanceof CardinalityRestrictedAspect) {
+        _matched=true;
+        _switchResult = "CardinalityRestrictedAspect";
+      }
+    }
+    if (!_matched) {
       if (e instanceof AspectSpecializationAxiom) {
         _matched=true;
         _switchResult = "AspectSpecializationAxiom";
@@ -1017,6 +1054,12 @@ public class OMLExtensions {
       if (e instanceof Concept) {
         _matched=true;
         _switchResult = "Concept";
+      }
+    }
+    if (!_matched) {
+      if (e instanceof CardinalityRestrictedConcept) {
+        _matched=true;
+        _switchResult = "CardinalityRestrictedConcept";
       }
     }
     if (!_matched) {
@@ -1125,6 +1168,12 @@ public class OMLExtensions {
       if (e instanceof ReifiedRelationship) {
         _matched=true;
         _switchResult = "ReifiedRelationship";
+      }
+    }
+    if (!_matched) {
+      if (e instanceof CardinalityRestrictedReifiedRelationship) {
+        _matched=true;
+        _switchResult = "CardinalityRestrictedReifiedRelationship";
       }
     }
     if (!_matched) {
@@ -1321,15 +1370,27 @@ public class OMLExtensions {
       _switchResult = 10000;
     }
     if (!_matched) {
+      if (e instanceof CardinalityRestrictedAspect) {
+        _matched=true;
+        _switchResult = 10001;
+      }
+    }
+    if (!_matched) {
       if (e instanceof Concept) {
         _matched=true;
         _switchResult = 10020;
       }
     }
     if (!_matched) {
-      if (e instanceof ConceptSpecializationAxiom) {
+      if (e instanceof CardinalityRestrictedConcept) {
         _matched=true;
         _switchResult = 10021;
+      }
+    }
+    if (!_matched) {
+      if (e instanceof ConceptSpecializationAxiom) {
+        _matched=true;
+        _switchResult = 10022;
       }
     }
     if (!_matched) {
@@ -1339,15 +1400,21 @@ public class OMLExtensions {
       }
     }
     if (!_matched) {
-      if (e instanceof ReifiedRelationshipRestriction) {
+      if (e instanceof CardinalityRestrictedReifiedRelationship) {
         _matched=true;
         _switchResult = 10031;
       }
     }
     if (!_matched) {
-      if (e instanceof ReifiedRelationshipSpecializationAxiom) {
+      if (e instanceof ReifiedRelationshipRestriction) {
         _matched=true;
         _switchResult = 10032;
+      }
+    }
+    if (!_matched) {
+      if (e instanceof ReifiedRelationshipSpecializationAxiom) {
+        _matched=true;
+        _switchResult = 10033;
       }
     }
     if (!_matched) {
@@ -1583,15 +1650,33 @@ public class OMLExtensions {
       }
     }
     if (!_matched) {
+      if (e instanceof CardinalityRestrictedAspect) {
+        _matched=true;
+        _switchResult = "00010+";
+      }
+    }
+    if (!_matched) {
       if (e instanceof Concept) {
         _matched=true;
         _switchResult = "00011-";
       }
     }
     if (!_matched) {
+      if (e instanceof CardinalityRestrictedConcept) {
+        _matched=true;
+        _switchResult = "00011+";
+      }
+    }
+    if (!_matched) {
       if (e instanceof ReifiedRelationship) {
         _matched=true;
         _switchResult = "00012-";
+      }
+    }
+    if (!_matched) {
+      if (e instanceof CardinalityRestrictedReifiedRelationship) {
+        _matched=true;
+        _switchResult = "00012+";
       }
     }
     if (!_matched) {
@@ -2217,7 +2302,7 @@ public class OMLExtensions {
         if (e instanceof RootConceptTaxonomyAxiom) {
           _matched=true;
           String _elvis = null;
-          Concept _root = ((RootConceptTaxonomyAxiom)e).getRoot();
+          ConceptKind _root = ((RootConceptTaxonomyAxiom)e).getRoot();
           String _abbrevIRI = null;
           if (_root!=null) {
             _abbrevIRI=_root.abbrevIRI();
@@ -2235,7 +2320,7 @@ public class OMLExtensions {
         if (e instanceof SpecificDisjointConceptAxiom) {
           _matched=true;
           String _elvis = null;
-          Concept _disjointLeaf = ((SpecificDisjointConceptAxiom)e).getDisjointLeaf();
+          ConceptKind _disjointLeaf = ((SpecificDisjointConceptAxiom)e).getDisjointLeaf();
           String _abbrevIRI = null;
           if (_disjointLeaf!=null) {
             _abbrevIRI=_disjointLeaf.abbrevIRI();

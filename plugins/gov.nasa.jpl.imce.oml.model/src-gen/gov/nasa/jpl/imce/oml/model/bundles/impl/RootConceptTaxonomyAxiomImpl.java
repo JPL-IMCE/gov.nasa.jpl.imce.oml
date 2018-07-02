@@ -34,7 +34,7 @@ import gov.nasa.jpl.imce.oml.model.common.ModuleElement;
 
 import gov.nasa.jpl.imce.oml.model.extensions.OMLExtensions;
 
-import gov.nasa.jpl.imce.oml.model.terminologies.Concept;
+import gov.nasa.jpl.imce.oml.model.terminologies.ConceptKind;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -50,6 +50,7 @@ import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -92,7 +93,7 @@ public class RootConceptTaxonomyAxiomImpl extends TerminologyBundleStatementImpl
 	 * @generated
 	 * @ordered
 	 */
-	protected Concept root;
+	protected ConceptKind root;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -130,10 +131,10 @@ public class RootConceptTaxonomyAxiomImpl extends TerminologyBundleStatementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Concept getRoot() {
-		if (root != null && root.eIsProxy()) {
+	public ConceptKind getRoot() {
+		if (root != null && ((EObject)root).eIsProxy()) {
 			InternalEObject oldRoot = (InternalEObject)root;
-			root = (Concept)eResolveProxy(oldRoot);
+			root = (ConceptKind)eResolveProxy(oldRoot);
 			if (root != oldRoot) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, BundlesPackage.ROOT_CONCEPT_TAXONOMY_AXIOM__ROOT, oldRoot, root));
@@ -147,7 +148,7 @@ public class RootConceptTaxonomyAxiomImpl extends TerminologyBundleStatementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Concept basicGetRoot() {
+	public ConceptKind basicGetRoot() {
 		return root;
 	}
 
@@ -156,8 +157,8 @@ public class RootConceptTaxonomyAxiomImpl extends TerminologyBundleStatementImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setRoot(Concept newRoot) {
-		Concept oldRoot = root;
+	public void setRoot(ConceptKind newRoot) {
+		ConceptKind oldRoot = root;
 		root = newRoot;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, BundlesPackage.ROOT_CONCEPT_TAXONOMY_AXIOM__ROOT, oldRoot, root));
@@ -179,7 +180,7 @@ public class RootConceptTaxonomyAxiomImpl extends TerminologyBundleStatementImpl
 			_string=_uuid.toString();
 		}
 		Pair<String, String> _mappedTo = Pair.<String, String>of("bundle", _string);
-		Concept _root = this.getRoot();
+		ConceptKind _root = this.getRoot();
 		String _uuid_1 = null;
 		if (_root!=null) {
 			_uuid_1=_root.uuid();
@@ -288,7 +289,7 @@ public class RootConceptTaxonomyAxiomImpl extends TerminologyBundleStatementImpl
 				getDisjunctions().addAll((Collection<? extends DisjointUnionOfConceptsAxiom>)newValue);
 				return;
 			case BundlesPackage.ROOT_CONCEPT_TAXONOMY_AXIOM__ROOT:
-				setRoot((Concept)newValue);
+				setRoot((ConceptKind)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -306,7 +307,7 @@ public class RootConceptTaxonomyAxiomImpl extends TerminologyBundleStatementImpl
 				getDisjunctions().clear();
 				return;
 			case BundlesPackage.ROOT_CONCEPT_TAXONOMY_AXIOM__ROOT:
-				setRoot((Concept)null);
+				setRoot((ConceptKind)null);
 				return;
 		}
 		super.eUnset(featureID);
